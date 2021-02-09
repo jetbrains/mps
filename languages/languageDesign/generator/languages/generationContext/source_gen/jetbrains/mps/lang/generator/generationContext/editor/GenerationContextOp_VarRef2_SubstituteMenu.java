@@ -49,7 +49,7 @@ public class GenerationContextOp_VarRef2_SubstituteMenu extends SubstituteMenuBa
   public class SMP_ReferenceScope_73zcn0_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_73zcn0_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GenerationContextOp_VarRef2$2B, LINKS.vardecl$xfU6);
     }
     @NotNull

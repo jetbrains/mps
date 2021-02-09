@@ -50,7 +50,7 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist4 = Collections.emptyList();
@@ -78,7 +78,7 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
         for (SNode child8 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child8);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

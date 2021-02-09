@@ -135,7 +135,7 @@ public class MoveNodesUtil {
       }
       @Override
       public void prepareRefactoring() {
-        // do nothing 
+        // donothing
       }
       @Override
       public void doRefactor(final Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, SNode, SNode, SNode>> participantStates, RefactoringSession refactoringSession) {

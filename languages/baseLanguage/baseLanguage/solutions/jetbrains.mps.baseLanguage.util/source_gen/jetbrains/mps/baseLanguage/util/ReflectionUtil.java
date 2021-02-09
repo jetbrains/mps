@@ -33,8 +33,8 @@ public final class ReflectionUtil {
     if (SNodeOperations.isInstanceOf(classNode, CONCEPTS.UnitConcept$1g)) {
       className = ((String) BHReflection.invoke0(SNodeOperations.cast(classNode, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR")));
     } else {
-      // XXX in fact, shall account for nested classes, take classNode.getNestedName() and replace '.' with '$' there, if any, and to use relevant part of getFqName() then 
-      //     to respect possible packageName override. However, I expect all regular cases to get into UnitConcept alternative, and leave this placeholder as a reminder. 
+      // XXXinfact,shallaccountfornestedclasses,takeclassNode.getNestedName()andreplace'.'with'$'there,ifany,andtouserelevantpartofgetFqName()then
+      // torespectpossiblepackageNameoverride.However,IexpectallregularcasestogetintoUnitConceptalternative,andleavethisplaceholderasareminder.
       className = ((String) BHReflection.invoke0(classNode, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     }
     try {

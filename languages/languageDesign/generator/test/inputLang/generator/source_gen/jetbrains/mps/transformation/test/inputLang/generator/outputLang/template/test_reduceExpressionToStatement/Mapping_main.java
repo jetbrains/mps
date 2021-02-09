@@ -62,7 +62,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           tnode2.setProperty(myProperties[0], "my expression");
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

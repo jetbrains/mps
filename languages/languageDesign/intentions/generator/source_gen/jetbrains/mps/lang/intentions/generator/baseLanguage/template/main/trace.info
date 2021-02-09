@@ -27,8 +27,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590354(jetbrains.mps.lang.intentions.generator.baseLanguage.template.main@generator)/1192798704064">
     <file name="QueriesGenerated.java">
-      <node id="7228083082548033676" at="63,92,64,21" concept="6" />
-      <node id="3804167831988830138" at="64,21,65,86" concept="5" />
+      <node id="7228083082548033676" at="63,92,64,19" concept="6" />
+      <node id="3804167831988830138" at="64,19,65,86" concept="5" />
       <node id="5264392666049412673" at="125,93,126,25" concept="5" />
       <node id="1188842953199099128" at="128,93,129,25" concept="5" />
       <node id="5264392666049483292" at="214,92,215,74" concept="5" />
@@ -135,10 +135,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590354(jetbrains.mps.lang.intentions.generator.baseLanguage.template.main@generator)/2897519568668637315">
     <file name="QueriesGenerated.java">
-      <node id="7228083082547972382" at="67,83,68,21" concept="6" />
-      <node id="2030416617762091403" at="68,21,69,94" concept="5" />
-      <node id="8100708479158694804" at="161,93,162,76" concept="6" />
-      <node id="8100708479158496699" at="162,76,163,109" concept="5" />
+      <node id="7228083082547972382" at="67,83,68,19" concept="6" />
+      <node id="2030416617762091403" at="68,19,69,94" concept="5" />
+      <node id="8100708479158694804" at="161,93,162,69" concept="6" />
+      <node id="8100708479158496699" at="162,69,163,109" concept="5" />
       <node id="1570228009929814969" at="322,14,323,56" concept="1" />
       <node id="1570228009929814969" at="339,15,340,58" concept="5" />
       <node id="4147950839246952263" at="640,73,641,79" concept="1" />
@@ -159,8 +159,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590354(jetbrains.mps.lang.intentions.generator.baseLanguage.template.main@generator)/3304831519086067285">
     <file name="QueriesGenerated.java">
-      <node id="3304831519086092787" at="210,78,211,108" concept="6" />
-      <node id="3304831519086090929" at="211,108,212,144" concept="5" />
+      <node id="3304831519086092787" at="210,78,211,92" concept="6" />
+      <node id="3304831519086090929" at="211,92,212,144" concept="5" />
       <node id="3304831519086081873" at="573,57,574,57" concept="1" />
       <node id="3304831519086081873" at="620,16,621,61" concept="5" />
       <node id="3304831519086081876" at="210,0,214,0" concept="8" trace="ifMacro_Condition_7_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />

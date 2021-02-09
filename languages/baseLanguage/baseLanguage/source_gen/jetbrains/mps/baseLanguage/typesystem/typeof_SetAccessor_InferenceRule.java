@@ -23,7 +23,7 @@ public class typeof_SetAccessor_InferenceRule extends AbstractInferenceRule_Runt
   public void applyRule(final SNode setAccessor, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(setAccessor, LINKS.statementList$hO$9));
 
-    // shouldn't return any values 
+    // shouldn'treturnanyvalues
     for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
       if ((SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92) != null)) {
         {

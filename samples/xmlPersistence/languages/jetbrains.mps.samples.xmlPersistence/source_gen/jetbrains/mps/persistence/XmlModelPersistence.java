@@ -76,14 +76,14 @@ public class XmlModelPersistence implements ModelFactory {
   @NotNull
   @Override
   public SModel load(@NotNull DataSource dataSource, @NotNull ModelLoadingOption... options) throws ModelLoadException, UnsupportedDataSourceException {
-    // TODO calling support may not be needed 
+    // TODOcallingsupportmaynotbeneeded
     if (!((supports(dataSource)))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
-    // Create a path-based id 
+    // Createapath-basedid
     final SModelId id = myFacade.createModelId("path:" + dataSource);
-    // Create a model reference (internal API, the need for handling this manually will be eliminated eventually) 
-    // TODO Getting the correct name is tricky 
+    // Createamodelreference(internalAPI,theneedforhandlingthismanuallywillbeeliminatedeventually)
+    // TODOGettingthecorrectnameistricky
     String name = id.getModelName();
     if (id instanceof jetbrains.mps.smodel.SModelId.RelativePathSModelId) {
       name = FileUtil.getNameWithoutExtension(((jetbrains.mps.smodel.SModelId.RelativePathSModelId) id).getFileName());
@@ -97,13 +97,13 @@ public class XmlModelPersistence implements ModelFactory {
   @NotNull
   @Override
   public SModel create(@NotNull DataSource dataSource, @NotNull SModelName modelName, @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException, ModelCreationException {
-    // TODO calling support may not be needed 
+    // TODOcallingsupportmaynotbeneeded
     if (!((supports(dataSource)))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
-    // Create a path-based id 
+    // Createapath-basedid
     final SModelId id = myFacade.createModelId("path:" + dataSource);
-    // Create a model reference (internal API, the need for handling this manually will be eliminated eventually) 
+    // Createamodelreference(internalAPI,theneedforhandlingthismanuallywillbeeliminatedeventually)
     final SModelReference ref = myFacade.createModelReference(null, id, modelName);
 
     XmlPersistenceModelDescriptor newModelDescriptor = new XmlPersistenceModelDescriptor(ref, dataSource);
@@ -124,7 +124,7 @@ public class XmlModelPersistence implements ModelFactory {
    */
   @Override
   public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, IOException {
-    // TODO calling support may not be needed 
+    // TODOcallingsupportmaynotbeneeded
     if (!((supports(dataSource)))) {
       throw new UnsupportedDataSourceException(dataSource);
     }

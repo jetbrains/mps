@@ -58,21 +58,21 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
                 final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                 environment.associate(tnode4, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
                 tnode3.addChild(myAggregationLinks[0], tnode4);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
                 environment.associate(tnode5, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Class");
                 tnode3.addChild(myAggregationLinks[1], tnode5);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -86,11 +86,11 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
             for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
               tnode6.addChild(myAggregationLinks[3], child8);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[1], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     return TemplateUtil.singletonList(tnode1);

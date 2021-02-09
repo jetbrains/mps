@@ -61,7 +61,7 @@ public class XmlPersistenceModelDescriptor extends EditableModelDescriptor {
         LOG.warn(e.getMessage(), e);
         DefaultSModel.InvalidDefaultSModel invalidModel = new DefaultSModel.InvalidDefaultSModel(this.getReference(), new ModelReadException("Cannot read model", e));
         return new ModelLoadResult(invalidModel, ModelLoadingState.FULLY_LOADED);
-        // TODO should not be FULLY_LOADED 
+        // TODOshouldnotbeFULLY_LOADED
       }
     }
   }
@@ -105,7 +105,7 @@ public class XmlPersistenceModelDescriptor extends EditableModelDescriptor {
     if (root == null) {
       throw new ModelSaveException("cannot save empty model", Collections.<org.jetbrains.mps.openapi.model.SModel.Problem>singletonList(new PersistenceProblem(org.jetbrains.mps.openapi.model.SModel.Problem.Kind.Save, "cannot save empty model", null, true)));
     }
-    // TODO check concepts 
+    // TODOcheckconcepts
     if (IterableUtil.copyToList(modelData.getRootNodes()).size() > 1) {
       throw new ModelSaveException("cannot save more than one root into .xml file", Collections.<org.jetbrains.mps.openapi.model.SModel.Problem>singletonList(new PersistenceProblem(org.jetbrains.mps.openapi.model.SModel.Problem.Kind.Save, "cannot save more than one root into .xml file", null, true, -1, -1, root.getReference())));
     }

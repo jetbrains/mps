@@ -128,13 +128,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.content$66ly);
   }
   public static void mappingScript_CodeBlock_8(final MappingScriptContext _context) {
-    // find all text nodes 
+    // findalltextnodes
     List<SNode> texts = SModelOperations.nodes(_context.getModel(), CONCEPTS.Text$vU);
     for (SNode text : ListSequence.fromList(texts)) {
-      // replace with a 'label' element 
+      // replacewitha'label'element
       SNode label = SNodeOperations.replaceWithNewChild(text, CONCEPTS.Element$hR);
       SPropertyOperations.assign(label, PROPS.name$MnvL, "label");
-      // Add a text attribute to the 'label' element 
+      // Addatextattributetothe'label'element
       SNode attribute = SLinkOperations.addNewChild(label, LINKS.attribute$666x, null);
       SPropertyOperations.assign(attribute, PROPS.name$MnvL, "text");
       SPropertyOperations.assign(attribute, PROPS.value$5Qmy, SPropertyOperations.getString(text, PROPS.text$6d81));

@@ -95,7 +95,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       if (monitor.isCanceled()) {
         break;
       }
-      // Check for unresolved references 
+      // Checkforunresolvedreferences
       for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
         if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink()).get(node) != null)) {
           continue;

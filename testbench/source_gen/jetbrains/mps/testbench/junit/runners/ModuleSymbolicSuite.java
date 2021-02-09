@@ -163,7 +163,7 @@ public class ModuleSymbolicSuite extends ParentRunner<Runner> implements Environ
     }
 
     private Description createTestDescription(String text) {
-      // this is the only way to construct Description from string 
+      // thisistheonlywaytoconstructDescriptionfromstring
       return Description.createSuiteDescription(String.format("%s(%s)", text, myClassName));
     }
   }

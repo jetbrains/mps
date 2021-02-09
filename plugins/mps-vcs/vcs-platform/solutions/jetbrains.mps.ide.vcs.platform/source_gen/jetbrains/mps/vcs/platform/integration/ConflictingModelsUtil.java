@@ -175,7 +175,7 @@ public class ConflictingModelsUtil {
       return myResolvedModelFiles;
     }
     public List<VirtualFile> getUnresolvedFiles() {
-      // list of old files with possible errors because of 8th persistence merge 
+      // listofoldfileswithpossibleerrorsbecauseof8thpersistencemerge
       return myUnresolvedModelFiles;
     }
 
@@ -222,7 +222,7 @@ public class ConflictingModelsUtil {
           }
 
           final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>(null);
-          // read action: 
+          // readaction:
           ma.runReadAction(new Runnable() {
             public void run() {
               mergeSession.value = MergeSession.createMergeSession(baseModel.value, mineModel.value, repoModel.value);
@@ -260,7 +260,7 @@ public class ConflictingModelsUtil {
                 try {
                   resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext.value);
                 } catch (Throwable error) {
-                  // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge 
+                  // thiscanbewhensavingin9persistenceaftermergewith8persistence=>leaveitforUImerge
                   if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
                     ListSequence.fromList(myUnresolvedModelFiles).addElement(file);
                   } else {

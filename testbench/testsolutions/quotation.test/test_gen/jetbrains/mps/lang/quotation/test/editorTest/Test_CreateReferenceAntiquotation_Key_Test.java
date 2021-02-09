@@ -34,8 +34,8 @@ public class Test_CreateReferenceAntiquotation_Key_Test extends BaseTransformati
     public void testMethodImpl() throws Exception {
       initEditorComponent("7167051279291148616", "7167051279291148632");
       typeString("^");
-      // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing 
-      // todo remove it when it will be possible to have the antiquotation with an error under the test 
+      // todothisisdonebecauseantiquotation"antisuppress"theerrorsandtypesystemtestisfailing
+      // todoremoveitwhenitwillbepossibletohavetheantiquotationwithanerrorunderthetest
       typeString("theNode");
 
     }

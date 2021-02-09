@@ -62,7 +62,7 @@ public final class ConceptTextGenDeclaration__BehaviorDescriptor extends BaseBHD
     SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.textGenBlock$DXZg, null);
   }
   /*package*/ static boolean shallProduceOutputUnit_id3fG6dkhfrk3(@NotNull SNode __thisNode__) {
-    // keep the knowledge which concepts we deem as TextUnit origin in a single place 
+    // keeptheknowledgewhichconceptswedeemasTextUnitorigininasingleplace
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$$0ms), CONCEPTS.ConceptDeclaration$gH) && SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaration$$0ms), CONCEPTS.ConceptDeclaration$gH), PROPS.rootable$_9pz);
   }
   /*package*/ static boolean needsUnitConfigure_id1SvnOIGt_fM(@NotNull SNode __thisNode__) {

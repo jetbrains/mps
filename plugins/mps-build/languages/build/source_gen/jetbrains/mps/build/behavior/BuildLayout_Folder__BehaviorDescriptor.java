@@ -58,7 +58,7 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     helper.putContentLocation(__thisNode__, folderLocation);
     for (SNode ic : Sequence.fromIterable(BuildLayout_Folder__BehaviorDescriptor.getImportContentChildren_id675BBdHStY4.invoke(__thisNode__))) {
       SNode node = SLinkOperations.getTarget(ic, LINKS.target$HFO4);
-      // note: if node is imported directly - do not override its original location 
+      // note:ifnodeisimporteddirectly-donotoverrideitsoriginallocation
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$Rb) && helper.getLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$Rb)) == null) {
         helper.putLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$Rb), folderLocation);
       }

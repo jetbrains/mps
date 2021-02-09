@@ -108,8 +108,8 @@ public class RunMigrationScripts_Action extends BaseAction {
     final RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ((Frame) MapSequence.fromMap(_params).get("frame")), allScripts.value);
     int x = ((Frame) MapSequence.fromMap(_params).get("frame")).getX() + ((Frame) MapSequence.fromMap(_params).get("frame")).getWidth() / 2 - dialog.getWidth() / 2;
     int y = ((Frame) MapSequence.fromMap(_params).get("frame")).getY() + ((Frame) MapSequence.fromMap(_params).get("frame")).getHeight() / 2 - dialog.getHeight() / 2;
-    // cast to Component eliminates out of search scope error in Java8 vs Java6 
-    //  setLocation() has got implementation in Window class since Java7 
+    // casttoComponenteliminatesoutofsearchscopeerrorinJava8vsJava6
+    // setLocation()hasgotimplementationinWindowclasssinceJava7
     ((Component) dialog).setLocation(x, y);
     dialog.setVisible(true);
     ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().executeCommand(new Runnable() {

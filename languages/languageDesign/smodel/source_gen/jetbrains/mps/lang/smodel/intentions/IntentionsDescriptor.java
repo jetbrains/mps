@@ -33,21 +33,21 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceWithPointer_Intention();
         }
         break;
       case 1:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertCastToNodeCast_Intention();
         }
         break;
       case 2:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new ConceptNodeType2SConceptType_Intention();
           intentions[1] = new ConceptNodeType2NodeType_Intention();
@@ -55,28 +55,28 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 3:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConceptRef2Concept_Intention();
         }
         break;
       case 4:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddSNodeCastStatement_Intention();
         }
         break;
       case 5:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertInstanceofToNodeInstanceof_Intention();
         }
         break;
       case 6:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new ReplaceWithModuleRef_Intention();
           intentions[1] = new ReplaceWithResolveExpr_Intention();
@@ -84,56 +84,56 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 7:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new LinkRef2Link_Intention();
         }
         break;
       case 8:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertLinkSetToAssignment_Intention();
         }
         break;
       case 9:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new Replace_ListType_withNodeListType_Intention();
         }
         break;
       case 10:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertConceptNodeToSCOncept_Intention();
         }
         break;
       case 11:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceConceptIsWithConceptEquals_Intention();
         }
         break;
       case 12:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertPropertySetToAssignment_Intention();
         }
         break;
       case 13:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddOperationParameter_Intention();
         }
         break;
       case 14:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new ChangeAsCast_Intention();
           intentions[1] = new ConvertCastToSConceptType_Intention();

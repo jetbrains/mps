@@ -193,7 +193,7 @@
       <unit id="4613144939628065112" at="10,0,22,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.JavaWatchableNodeActions_ActionGroup" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="4613144939628065112" at="30,14,31,61" concept="2" />
+      <node id="4613144939628065112" at="30,13,31,61" concept="2" />
       <node id="4613144939628065116" at="37,103,38,175" concept="2" />
     </file>
   </root>
@@ -245,8 +245,8 @@
     <file name="Runtime_ApplicationPlugin.java">
       <node id="7162597690968011948" at="13,0,14,0" concept="3" trace="myId" />
       <node id="7162597690968011948" at="19,27,20,16" concept="8" />
-      <node id="7162597690968011948" at="23,30,24,30" concept="9" />
-      <node id="7162597690968011948" at="29,46,30,14" concept="9" />
+      <node id="7162597690968011948" at="23,30,24,27" concept="9" />
+      <node id="7162597690968011948" at="29,46,30,13" concept="9" />
       <node id="7162597690968011948" at="15,0,17,0" concept="1" trace="Runtime_ApplicationPlugin#()V" />
       <node id="7162597690968011948" at="18,0,22,0" concept="6" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
       <node id="7162597690968011948" at="36,0,40,0" concept="6" trace="adjustRegularGroups#()V" />
@@ -317,7 +317,7 @@
       <unit id="8643693251546861633" at="16,0,41,0" name="jetbrains.mps.debugger.java.runtime.ui.actions.AddWatchAction_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
-      <node id="8643693251546861633" at="24,30,25,43" concept="2" />
+      <node id="8643693251546861633" at="24,27,25,43" concept="2" />
     </file>
   </root>
   <root nodeRef="r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/8643693251546861699">

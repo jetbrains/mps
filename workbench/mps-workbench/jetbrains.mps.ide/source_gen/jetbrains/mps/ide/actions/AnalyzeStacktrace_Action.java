@@ -33,12 +33,12 @@ public class AnalyzeStacktrace_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // In messages tool window show action only on lines with exception 
+    // Inmessagestoolwindowshowactiononlyonlineswithexception
     if (MPSActionPlaces.MPS_MESSAGES_POPUP.equals(event.getPlace())) {
       return ((Throwable) MapSequence.fromMap(_params).get("exception")) != null;
     }
-    // project is required for platform AnalyzeStacktraceAction action, 
-    // so we leave it in parameters and use it to avoid warning 
+    // projectisrequiredforplatformAnalyzeStacktraceActionaction,
+    // soweleaveitinparametersanduseittoavoidwarning
     return ((Project) MapSequence.fromMap(_params).get("project")) != null;
   }
   @Override
@@ -67,16 +67,16 @@ public class AnalyzeStacktrace_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     String message = event.getData(IdeErrorsDialog.CURRENT_TRACE_KEY);
     if (message != null) {
-      // In case we are in IDE Fatal Errors dialog just show trace from dialog in console. 
-      // Copy/Paste from com.intellij.unscramble.UnscrambleAction#actionPerformed 
+      // IncaseweareinIDEFatalErrorsdialogjustshowtracefromdialoginconsole.
+      // Copy/Pastefromcom.intellij.unscramble.UnscrambleAction#actionPerformed
       AnalyzeStacktraceUtil.addConsole(((Project) MapSequence.fromMap(_params).get("project")), null, "<Stacktrace>", message);
     } else if (((Throwable) MapSequence.fromMap(_params).get("exception")) != null) {
       StringWriter writer = new StringWriter();
       ((Throwable) MapSequence.fromMap(_params).get("exception")).printStackTrace(new PrintWriter(writer));
-      // In case Throwable was provided just show it in console 
+      // IncaseThrowablewasprovidedjustshowitinconsole
       AnalyzeStacktraceUtil.addConsole(((Project) MapSequence.fromMap(_params).get("project")), null, "<Stacktrace>", writer.toString());
     } else {
-      // Reuse platform action 
+      // Reuseplatformaction
       new AnalyzeStacktraceAction().actionPerformed(event);
     }
   }

@@ -23,7 +23,7 @@ public class check_UnknownNameRef_NonTypesystemRule extends AbstractNonTypesyste
   }
   public void applyRule(final SNode unkName, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(unkName)), CONCEPTS.UnknownNameRef$WL))) {
-      // it's subconcept, leave the work to them 
+      // it'ssubconcept,leavetheworktothem
       return;
     }
 

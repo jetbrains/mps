@@ -44,9 +44,9 @@ public class InternalModelsFindUsagesParticipant implements Disposable, FindUsag
         }
       } else
       if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
-        // FIXME why on earth do we consume descriptor model here? Though it's internal model indeed, why there's assumption it's empty and what's wrong with an empty model 
-        //        not processed by a general 'walk-it' mechanism? What's that "optimization" (5fa1980f) was about? 
-        // language descriptor models are empty 
+        // FIXMEwhyonearthdoweconsumedescriptormodelhere?Thoughit'sinternalmodelindeed,whythere'sassumptionit'semptyandwhat'swrongwithanemptymodel
+        // notprocessedbyageneral'walk-it'mechanism?What'sthat"optimization"(5fa1980f)wasabout?
+        // languagedescriptormodelsareempty
         processedConsumer.consume(model);
       }
     }
@@ -56,8 +56,8 @@ public class InternalModelsFindUsagesParticipant implements Disposable, FindUsag
   public void findInstances(Collection<SModel> scope, Set<SAbstractConcept> concepts, Consumer<SNode> consumer, Consumer<SModel> processedConsumer) {
     for (SModel model : scope) {
       if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
-        // FIXME see above 
-        // language descriptor models are empty 
+        // FIXMEseeabove
+        // languagedescriptormodelsareempty
         processedConsumer.consume(model);
       }
 
@@ -68,7 +68,7 @@ public class InternalModelsFindUsagesParticipant implements Disposable, FindUsag
   public void findModelUsages(Collection<SModel> scope, Set<SModelReference> modelReferences, Consumer<SModel> consumer, Consumer<SModel> processedConsumer) {
     for (SModel model : scope) {
       if (model instanceof LanguageDescriptorModelProvider.LanguageModelDescriptor) {
-        // language descriptor models are empty 
+        // languagedescriptormodelsareempty
         processedConsumer.consume(model);
       }
 

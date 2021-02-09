@@ -34,7 +34,7 @@ public final class QueriesUtil {
     if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ReferenceReductionRule$t0)) {
       return SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.ReferenceReductionRule$t0), LINKS.link$FUJ3)), CONCEPTS.AbstractConceptDeclaration$KA);
     }
-    // ============ 
+    // ============
     SNode rootAnnotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(SNodeOperations.getContainingRoot(node));
     return SLinkOperations.getTarget(SNodeOperations.cast(rootAnnotation, CONCEPTS.RootTemplateAnnotation$9O), LINKS.applicableConcept$LAIX);
   }

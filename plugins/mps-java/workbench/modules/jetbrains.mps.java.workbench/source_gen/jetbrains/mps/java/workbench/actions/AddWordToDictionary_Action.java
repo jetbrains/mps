@@ -31,10 +31,10 @@ public class AddWordToDictionary_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    // To contribute the action to editor menu, I use EditorPopup which is defined in plugin.xml 
-    // Therefore, all contributions have to be declared in plugin.xml as well (at least in j.m.java.workbench 
-    // as it doesn't use plugin.standalone). However, contributions through plugin.xml can not be dynamic, 
-    // and I'm limited to a static contribution of a single action. Therefore, I show action for the first mistake only. 
+    // Tocontributetheactiontoeditormenu,IuseEditorPopupwhichisdefinedinplugin.xml
+    // Therefore,allcontributionshavetobedeclaredinplugin.xmlaswell(atleastinj.m.java.workbench
+    // asitdoesn'tuseplugin.standalone).However,contributionsthroughplugin.xmlcannotbedynamic,
+    // andI'mlimitedtoastaticcontributionofasingleaction.Therefore,Ishowactionforthefirstmistakeonly.
     for (SimpleEditorMessage msg : event.getData(MPSEditorDataKeys.EDITOR_CELL).getMessages()) {
       if (!(CommentSpellChecker.isSpellcheckerMessage(msg))) {
         continue;

@@ -97,7 +97,7 @@ public class thisExpression extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        //  'qualified this' - only in inner classes 
+        // 'qualifiedthis'-onlyininnerclasses
         List<SNode> result = new ArrayList<SNode>();
         SNode classifier = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Classifier$Ix, false, false);
         if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier))) {

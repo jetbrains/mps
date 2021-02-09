@@ -80,16 +80,16 @@ public final class MpsEnvironment extends EnvironmentBase {
 
   @Override
   protected void initLibraries(@NotNull LibraryInitializer libInitializer) {
-    // can do it only here as root CL is initialized in super.init(). Once I get rid of its uses in IdeaEnvironment, 
-    // can move the field here and init CLs along with field initialization 
+    // candoitonlyhereasrootCLisinitializedinsuper.init().OnceIgetridofitsusesinIdeaEnvironment,
+    // canmovethefieldhereandinitCLsalongwithfieldinitialization
     myPlugins.buildClassLoaders(getRootClassLoader());
     final List<LibraryContributor> libContribs = ListSequence.fromList(new ArrayList<LibraryContributor>());
     LibraryContributorHelper helper = new LibraryContributorHelper();
     if (SetSequence.fromSet(myConfig.getLibs()).isNotEmpty()) {
       ListSequence.fromList(libContribs).addElement(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader()));
     }
-    // FIXME at the moment, we always build CP for a plugin, despite the fact it could be in a global CP already 
-    //       need to respect global CP scenario and to use rootCL as plugin CL directly in that case 
+    // FIXMEatthemoment,wealwaysbuildCPforaplugin,despitethefactitcouldbeinaglobalCPalready
+    // needtorespectglobalCPscenarioandtouserootCLaspluginCLdirectlyinthatcase
     if (!(myPlugins.isEmpty())) {
       ListSequence.fromList(libContribs).addElement(helper.createLibContributorForPlugins(myPlugins));
     }
@@ -124,7 +124,7 @@ public final class MpsEnvironment extends EnvironmentBase {
 
   @Override
   public void flushAllEvents() {
-    // do nothing 
+    // donothing
     checkInitialized();
   }
 

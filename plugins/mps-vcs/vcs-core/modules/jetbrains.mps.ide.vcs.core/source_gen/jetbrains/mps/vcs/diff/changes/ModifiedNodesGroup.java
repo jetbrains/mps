@@ -206,7 +206,7 @@ public final class ModifiedNodesGroup {
       }
     });
 
-    //  insert only really new nodes, the moved nodes should be moved separately 
+    // insertonlyreallynewnodes,themovednodesshouldbemovedseparately
     final Set<SNodeId> dependantIds = SetSequence.fromSet(new HashSet<SNodeId>());
     SetSequence.fromSet(dependantIds).addSequence(SetSequence.fromSet(myDependantGroups).translate(new ITranslator2<ModifiedNodesGroup, SNodeId>() {
       public Iterable<SNodeId> translate(ModifiedNodesGroup it) {
@@ -230,9 +230,9 @@ public final class ModifiedNodesGroup {
       beforeAnchor = nodeCopier.getNode(model, beforeAnchorId);
 
       if (beforeAnchor == null) {
-        // this can happen in the merge process if the node was deleted in another branch and that change was accepted 
-        // in this case we don't know where to insert. we could use the index of the anchor id in the base model, however it's also does not look as a good solution 
-        //  let us keep the anchor == null, i.e. insert at the end. 
+        // thiscanhappeninthemergeprocessifthenodewasdeletedinanotherbranchandthatchangewasaccepted
+        // inthiscasewedon'tknowwheretoinsert.wecouldusetheindexoftheanchoridinthebasemodel,howeverit'salsodoesnotlookasagoodsolution
+        // letuskeeptheanchor==null,i.e.insertattheend.
       }
     } else {
       beforeAnchor = null;
@@ -255,7 +255,7 @@ public final class ModifiedNodesGroup {
   }
 
   private void fixReferences(SNode copiedNode, final SModel model, final Set<SNodeId> nodeIds) {
-    // set references that are not in the model back to old model 
+    // setreferencesthatarenotinthemodelbacktooldmodel
     ListSequence.fromList(SNodeOperations.getNodeDescendants(copiedNode, null, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
       public void visit(SNode node) {
         for (SReference reference : SNodeOperations.getReferences(node)) {

@@ -30,15 +30,15 @@ public class check_TemplateDeclaration_NonTypesystemRule extends AbstractNonType
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(td, LINKS.contentNode$CQ7t), "No template fragments found", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7952422520064723850", null, errorTarget);
       }
     }
-    // FIXME copy-paste of identical code from InlineTemplateWithContext_RuleConsequence 
-    // see TemplateContainer#checkAdjacentFragments 
+    // FIXMEcopy-pasteofidenticalcodefromInlineTemplateWithContext_RuleConsequence
+    // seeTemplateContainer#checkAdjacentFragments
     SNode commonParent = null;
     SContainmentLink commonAggregationLink = null;
     for (SNode tf : SNodeOperations.getNodeDescendants(td, CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{})) {
       SNode fragmentParent = SNodeOperations.getParent(tf);
       SContainmentLink containmentLink = fragmentParent.getContainmentLink();
       if (commonParent == null) {
-        // first fragment - remember its parent and role to use as reference value 
+        // firstfragment-rememberitsparentandroletouseasreferencevalue
         commonParent = SNodeOperations.getParent(fragmentParent);
         commonAggregationLink = containmentLink;
       } else {

@@ -41,11 +41,11 @@ public class check_UnqualifiedStaticFieldReference_NonTypesystemRule extends Abs
 
     Scope varScope = Scope.getScope(varRef, null, CONCEPTS.VariableDeclaration$Y0);
     if (varScope.contains(target)) {
-      // it's ok, no need to worry 
+      // it'sok,noneedtoworry
       return;
     }
 
-    // out of scope, let's make this reference non-local, but qualified 
+    // outofscope,let'smakethisreferencenon-local,butqualified
     SNode thatClass = SNodeOperations.getNodeAncestor(target, CONCEPTS.Classifier$Ix, false, false);
     SNode sfr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
     SLinkOperations.setTarget(sfr, LINKS.classifier$BPY8, thatClass);

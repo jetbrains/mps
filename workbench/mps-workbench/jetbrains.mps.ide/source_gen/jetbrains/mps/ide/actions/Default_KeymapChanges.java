@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2443880313834662249", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.ide.actions.CloneModel_Action", getShortcut("shift F5"));
     addSimpleShortcut("jetbrains.mps.ide.actions.CloneModule_Action", getShortcut("shift F5"));
     addSimpleShortcut("jetbrains.mps.ide.actions.CloneRoot_Action", getShortcut("shift F5"));
@@ -59,13 +59,13 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInInspector_Action", getShortcut("ctrl alt I"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInfo_Action", getShortcut("ctrl Q"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowParameters_Action", getShortcut("ctrl P"));
-    // simple parameterized 
+    // simpleparameterized
     addComplexShortcut("jetbrains.mps.ide.actions.FileDelete_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut(" DELETE")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToAction_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl shift A")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToFile_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl shift N")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToNamedNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl alt shift N")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToRootNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl N")));
-    // complex 
+    // complex
     addComplexShortcut("jetbrains.mps.ide.actions.DeleteModels_Action", new DeleteModels_ShortcutChange_qjewi8_g());
     addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new GoToBookmark_ShortcutChange_qjewi8_zb());
     addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new SetBookmark_ShortcutChange_qjewi8_ac());

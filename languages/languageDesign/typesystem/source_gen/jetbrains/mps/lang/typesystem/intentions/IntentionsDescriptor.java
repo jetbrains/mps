@@ -33,7 +33,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new FlipInequality_Intention();
           intentions[1] = new MakeInequalityCheckOnly_Intention();
@@ -41,35 +41,35 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateTypesystemIntention_Intention();
         }
         break;
       case 2:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddMessageAnnotation_Intention();
         }
         break;
       case 3:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertPatternRule_Intention();
         }
         break;
       case 4:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateQFixFromUsageInREStmt_Intention();
         }
         break;
       case 5:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateQFixFromUsageInTSIntention_Intention();
         }

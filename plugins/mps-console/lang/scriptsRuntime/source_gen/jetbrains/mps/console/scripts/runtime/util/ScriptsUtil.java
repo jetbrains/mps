@@ -26,7 +26,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 public class ScriptsUtil {
 
   public static void executeScript(final ConsoleContext context, SNode script) {
-    // it's essential to have collection one can iterate outside of model read (inside invokeLater, see MPS-32986) 
+    // it'sessentialtohavecollectiononecaniterateoutsideofmodelread(insideinvokeLater,seeMPS-32986)
     final List<SNode> commands = Sequence.fromIterable(AbstractConsoleScript__BehaviorDescriptor.getCommands_id1whNchEKZry.invoke(script)).toListSequence();
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {

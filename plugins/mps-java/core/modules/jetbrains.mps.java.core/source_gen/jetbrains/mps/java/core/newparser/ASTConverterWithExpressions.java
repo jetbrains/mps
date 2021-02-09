@@ -92,9 +92,9 @@ public class ASTConverterWithExpressions extends ASTConverter {
     if (typeRef instanceof ParameterizedSingleTypeReference) {
       return ((ParameterizedSingleTypeReference) typeRef).typeArguments;
     } else if (typeRef instanceof ParameterizedQualifiedTypeReference) {
-      // ignoring type arguments in not last components, e.g. Class1<T>.Class2 
+      // ignoringtypeargumentsinnotlastcomponents,e.g.Class1<T>.Class2
       TypeReference[][] allArgs = ((ParameterizedQualifiedTypeReference) typeRef).typeArguments;
-      // return only type arguments of the last component 
+      // returnonlytypeargumentsofthelastcomponent
       return allArgs[allArgs.length - 1];
     } else {
       return new TypeReference[0];
@@ -118,7 +118,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
   private void adjustClassReference(SNode clsType, SNode source, SReferenceLink role) {
     SReference sref = SNodeOperations.getReference(clsType, LINKS.classifier$cxMr);
     if (SLinkOperations.isDynamic(sref)) {
-      // code that used to be here ( bcea8a63) intentionally didn't pass additional target model info 
+      // codethatusedtobehere(bcea8a63)intentionallydidn'tpassadditionaltargetmodelinfo
       source.setReference(role, ResolveInfo.of(SLinkOperations.getResolveInfo(sref)));
     } else if (sref instanceof StaticReference) {
       source.setReferenceTarget(role, sref.getTargetNode());
@@ -403,10 +403,10 @@ public class ASTConverterWithExpressions extends ASTConverter {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression"));
     SLinkOperations.setTarget(result, LINKS.expression$XDmN, convertExpressionWrap(x.expression));
 
-    // x.type is expression, not type reference 
-    // we're making TypeReference out of NameReference 
+    // x.typeisexpression,nottypereference
+    // we'remakingTypeReferenceoutofNameReference
 
-    // in idea 12's eclipse parser seems to give us type reference right away 
+    // inidea12'seclipseparserseemstogiveustypereferencerightaway
     if (!(x.type instanceof TypeReference)) {
       LOG.error("Class in class cast expession is not a type reference. Class name: " + x.type.toString());
       return null;
@@ -465,16 +465,16 @@ public class ASTConverterWithExpressions extends ASTConverter {
   }
 
   /*package*/ SNode convertExpression(MessageSend x) throws JavaParseException {
-    // it's a method call 
-    //  results in either LocalStaticMethodCall, LocalInstanceMethodCall, StaticMethodCall 
-    //  or DotExpression with MethodCallOperation 
+    // it'samethodcall
+    // resultsineitherLocalStaticMethodCall,LocalInstanceMethodCall,StaticMethodCall
+    // orDotExpressionwithMethodCallOperation
 
     String methodName = new String(x.selector);
     SNode result = null;
     SNode call = null;
 
     if (x.receiver instanceof ThisReference && ((ThisReference) x.receiver).isImplicitThis()) {
-      // it's a local call, f() 
+      // it'salocalcall,f()
 
 
       SNode lmc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
@@ -484,14 +484,14 @@ public class ASTConverterWithExpressions extends ASTConverter {
       call = lmc;
 
     } else {
-      // it's something.method(...) 
-      // let's see if 'something' is SingleNameRef or QualifiedNameRef; if yes let's see if it's a class 
-      // if either it's not a name ref or not a class then handle it just as some random expression 
+      // it'ssomething.method(...)
+      // let'sseeif'something'isSingleNameReforQualifiedNameRef;ifyeslet'sseeifit'saclass
+      // ifeitherit'snotanamerefornotaclassthenhandleitjustassomerandomexpression
 
       Expression receiver = x.receiver;
 
       if (receiver instanceof NameReference) {
-        // handle this special case 
+        // handlethisspecialcase
 
         SNode unkDotCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc7b5L, "jetbrains.mps.baseLanguage.structure.UnknownDotCall"));
         SPropertyOperations.assign(unkDotCall, PROPS.callee$uWRA, methodName);
@@ -510,7 +510,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
           }
 
         } else {
-          // TODO report error 
+          // TODOreporterror
           return null;
         }
 
@@ -534,7 +534,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
         call = smc;
 
       } else {
-        // we can already know that it should be an InstanceMethodCall 
+        // wecanalreadyknowthatitshouldbeanInstanceMethodCall
 
         SNode dotExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
         SLinkOperations.setTarget(dotExpr, LINKS.operand$w6IR, convertExpressionWrap(x.receiver));
@@ -678,7 +678,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
       addCallArgs(cls, x.arguments);
       addTypeArgs(typeArguments(x.type), SLinkOperations.getChildren(cls, LINKS.typeParameter$F9H8));
     } else {
-      // TODO what is enclosing instance? handle it 
+      // TODOwhatisenclosinginstance?handleit
       if (x.enclosingInstance() == null) {
         return convertExpression((AllocationExpression) x);
       }
@@ -699,7 +699,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
       } else if (x instanceof NullLiteral) {
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"));
       } else {
-        // import token as string constant even if it was an error in literal 
+        // importtokenasstringconstantevenifitwasanerrorinliteral
         return _quotation_createNode_do26wr_a1a0c0qb(NameUtil.escapeString(new String(((Literal) x).source())));
       }
     }

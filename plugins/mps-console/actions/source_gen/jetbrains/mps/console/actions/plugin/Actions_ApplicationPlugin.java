@@ -21,11 +21,11 @@ public class Actions_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new FindInstancesByCondition_Action());
     addAction(new ModifyInstancesByCondition_Action());
     addAction(new ShowGenerationPlan_Action());
-    // groups 
+    // groups
     addGroup(new FindByConditionGroup_ActionGroup(this));
     addGroup(new TextPreviewGroup_Console_ActionGroup(this));
   }

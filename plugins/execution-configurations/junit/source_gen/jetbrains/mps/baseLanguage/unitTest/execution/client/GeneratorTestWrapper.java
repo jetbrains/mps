@@ -25,9 +25,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     myMethods = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tests$gTrp)).select(new ISelector<SNode, TransformMatchStatementWrapper>() {
       public TransformMatchStatementWrapper select(SNode it) {
         final int i = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tests$gTrp)).indexOf(it);
-        // FIXME this is a hack. I don't want to introduce getMethodName into TestAssertion, and the only information passed during test 
-        // execution is method name (JUnit's Request/Description), therefore I'm forced to use method name to match ITestNodeWrappers in UI. 
-        // Perhaps, with JUnit5 there's a way to pass additional identification of a test so that we are not bound to generated method names. 
+        // FIXMEthisisahack.Idon'twanttointroducegetMethodNameintoTestAssertion,andtheonlyinformationpassedduringtest
+        // executionismethodname(JUnit'sRequest/Description),thereforeI'mforcedtousemethodnametomatchITestNodeWrappersinUI.
+        // Perhaps,withJUnit5there'sawaytopassadditionalidentificationofatestsothatwearenotboundtogeneratedmethodnames.
         final String methodName = "testTransformAndMatch" + i;
         return new TransformMatchStatementWrapper(GeneratorTestWrapper.this, it, methodName);
       }

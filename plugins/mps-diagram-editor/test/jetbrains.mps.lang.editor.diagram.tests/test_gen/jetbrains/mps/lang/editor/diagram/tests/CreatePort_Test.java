@@ -43,8 +43,8 @@ public class CreatePort_Test extends BaseTransformationTest {
           SNodeFactoryOperations.addNewChild(getNodeById("2278461409093572746"), LINKS.outputs$oKtu, null);
         }
       });
-      // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that 
-      // by the time events are processed, the command to add a new node is over for sure. 
+      // HereusedtobeMA.flushEventQueue,whichseemsuselesshere,pressmousewouldpostitsowneventstoEDT,sothat
+      // bythetimeeventsareprocessed,thecommandtoaddanewnodeisoverforsure.
       {
         int x_rszpwe_d0 = 87;
         int y_rszpwe_d0 = 42;

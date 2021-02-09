@@ -113,7 +113,7 @@ public class ParameterizedByPrimitiveType extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          // Check that we can use parameterObject of a primitive type without errors 
+          // CheckthatwecanuseparameterObjectofaprimitivetypewithouterrors
           int param = myParameterObject;
           if (myParameterObject < 3) {
             param++;

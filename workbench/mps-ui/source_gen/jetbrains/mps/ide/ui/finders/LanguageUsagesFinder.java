@@ -78,7 +78,7 @@ public class LanguageUsagesFinder implements IFinder {
     } else {
       return Collections.emptyList();
     }
-    // FIXME likely it's smarter to unwrap devkit at the caller's, wrapped with CompositeFinder 
+    // FIXMElikelyit'ssmartertounwrapdevkitatthecaller's,wrappedwithCompositeFinder
     if (searchedModule instanceof DevKit) {
       ArrayList<SLanguage> rv = new ArrayList<SLanguage>();
       rv.addAll(IterableUtil.asCollection(((DevKit) searchedModule).getAllExportedLanguageIds()));

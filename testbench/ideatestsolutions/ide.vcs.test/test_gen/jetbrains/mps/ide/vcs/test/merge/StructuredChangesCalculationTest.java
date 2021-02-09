@@ -37,8 +37,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class StructuredChangesCalculationTest extends ChangesTestBase {
   @Test
   public void changeProperty() {
-    // public void f0() {} => 
-    // public void f0a() {} 
+    // publicvoidf0(){}=>
+    // publicvoidf0a(){}
     testDiffCorectness(0, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new SetPropertyStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), PROPS.name$MnvL, "f0a")};
@@ -47,8 +47,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void changeBooleanProperty() {
-    // public void f1() {} => 
-    // public final void f1() {} 
+    // publicvoidf1(){}=>
+    // publicfinalvoidf1(){}
     testDiffCorectness(1, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new SetPropertyStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), PROPS.isFinal$eVPk, "true")};
@@ -58,8 +58,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void replaceSingleChild() {
-    // public int f2() {} => 
-    // public string f2() {} 
+    // publicintf2(){}=>
+    // publicstringf2(){}
     testDiffCorectness(2, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$5xoi, 0, 1, 0, 1)};
@@ -69,8 +69,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void deleteSingleChild() {
-    // public void f3() { int var = 7; } => 
-    // public void f3() { int var; } 
+    // publicvoidf3(){intvar=7;}=>
+    // publicvoidf3(){intvar;}
     testDiffCorectness(3, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
@@ -89,8 +89,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void addSingleChild() {
-    // public void f4() { int var; } => 
-    // public void f4() { int var = 12 + (9 - 8) * 7; } 
+    // publicvoidf4(){intvar;}=>
+    // publicvoidf4(){intvar=12+(9-8)*7;}
     testDiffCorectness(4, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
@@ -109,8 +109,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void deleteChild() {
-    // public void f5(int a, int b, int c, int d) { } => 
-    // public void f5(int a, int c, int d) { } 
+    // publicvoidf5(inta,intb,intc,intd){}=>
+    // publicvoidf5(inta,intc,intd){}
     testDiffCorectness(5, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 2, 1, 1)};
@@ -119,8 +119,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void deleteChildren() {
-    // public void f6(int a, int b, int c, int d, int e) { } => 
-    // public void f6(int a, int b, int e) { } 
+    // publicvoidf6(inta,intb,intc,intd,inte){}=>
+    // publicvoidf6(inta,intb,inte){}
     testDiffCorectness(6, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 2, 4, 2, 2)};
@@ -129,8 +129,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void addChild() {
-    // public void f7(int a, int c, int d) { } => 
-    // public void f7(int a, int b, int c, int d) { } 
+    // publicvoidf7(inta,intc,intd){}=>
+    // publicvoidf7(inta,intb,intc,intd){}
     testDiffCorectness(7, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 2)};
@@ -139,8 +139,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void addChildren() {
-    // public void f8(int a, int e) { } => 
-    // public void f8(int a, int b, int c, int d, int e) { } 
+    // publicvoidf8(inta,inte){}=>
+    // publicvoidf8(inta,intb,intc,intd,inte){}
     testDiffCorectness(8, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 4)};
@@ -149,8 +149,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void replaceChildren() {
-    // public void f9() { //xx; int a = 5; int b = 6; int c = 7; int d = 8; } => 
-    // public void f9() { //xx; int a = 5; a = 8; a++; a = a + 9; int d = 8; } 
+    // publicvoidf9(){//xx;inta=5;intb=6;intc=7;intd=8;}=>
+    // publicvoidf9(){//xx;inta=5;a=8;a++;a=a+9;intd=8;}
     testDiffCorectness(9, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), SLinkOperations.getTarget(n1, LINKS.body$5xQk).getNodeId(), SLinkOperations.getTarget(n2, LINKS.body$5xQk).getNodeId(), LINKS.statement$53DE, 2, 4, 2, 5)};
@@ -159,8 +159,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void changeReference() {
-    // public void f10(int a, int b) { a = 10; } => 
-    // public void f10(int a, int b) { b = 10; } 
+    // publicvoidf10(inta,intb){a=10;}=>
+    // publicvoidf10(inta,intb){b=10;}
     testDiffCorectness(10, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).first();
@@ -173,8 +173,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void sameReferenceToParent() {
-    // public void f11() { f11(); } => 
-    // public void f11() { f11(); } 
+    // publicvoidf11(){f11();}=>
+    // publicvoidf11(){f11();}
     testDiffCorectness(11, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{};
@@ -183,8 +183,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void similarReferenceInModel() {
-    // public void f12() { n = 10; } => 
-    // public void f12() { n = 10; } 
+    // publicvoidf12(){n=10;}=>
+    // publicvoidf12(){n=10;}
     testDiffCorectness(12, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(n1, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).first();
@@ -196,8 +196,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void sameOutsideReference() {
-    // public void f13() { System.out.println(Root.class); } => 
-    // public void f13() { System.out.println(Root.class); } 
+    // publicvoidf13(){System.out.println(Root.class);}=>
+    // publicvoidf13(){System.out.println(Root.class);}
     testDiffCorectness(13, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{};
@@ -206,8 +206,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void sameDescendantReference() {
-    // public void f14() { //todo } => 
-    // public void f14() { //todo } 
+    // publicvoidf14(){//todo}=>
+    // publicvoidf14(){//todo}
     testDiffCorectness(14, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{};
@@ -216,8 +216,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void sameInnerReferences() {
-    // public void f15() {  } => 
-    // public void f15() {  } 
+    // publicvoidf15(){}=>
+    // publicvoidf15(){}
     testDiffCorectness(15, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{};
@@ -226,8 +226,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void sameReferencesToFirstModel() {
-    // public void f17() { new Test1(); } => 
-    // public void f17() { new Test1(); } 
+    // publicvoidf17(){newTest1();}=>
+    // publicvoidf17(){newTest1();}
     testDiffCorectness(17, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{};
@@ -237,8 +237,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void maximumCommonLength() {
-    // public void f16(int ... params) { f16(0, 1+1, 2*2, 3-3, 4/4); } => 
-    // public void f16(int ... params) { f16(0, 1, 3-3, 2*2, 3-3, 4/4, 3-3); } 
+    // publicvoidf16(int...params){f16(0,1+1,2*2,3-3,4/4);}=>
+    // publicvoidf16(int...params){f16(0,1,3-3,2*2,3-3,4/4,3-3);}
     testDiffCorectness(16, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).first();
@@ -249,8 +249,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void similarNodesDeepComparison() {
-    // public void f18(int ... params) { f18(0, 1+1, 2*2, 3-3, 4/4); } => 
-    // public void f18(int ... params) { f18(0, 1+2, 3-3, 2*2, 3-3, 4/4, 3-3); } 
+    // publicvoidf18(int...params){f18(0,1+1,2*2,3-3,4/4);}=>
+    // publicvoidf18(int...params){f18(0,1+2,3-3,2*2,3-3,4/4,3-3);}
     testDiffCorectness(18, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         SNode n11 = ListSequence.fromList(SNodeOperations.getNodeDescendants(n1, CONCEPTS.LocalMethodCall$zT, false, new SAbstractConcept[]{})).first();
@@ -263,8 +263,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void addCommentMultipleRole() {
-    // public void f19(int a) { } => 
-    // public void f19(int a, /*int b*/) { } 
+    // publicvoidf19(inta){}=>
+    // publicvoidf19(inta,/*intb*/){}
     testDiffCorectness(19, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 1, 1, 1, 2)};
@@ -273,8 +273,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void commentChid() {
-    // public void f20(int a) { } => 
-    // public void f20(/*int a*/) { } 
+    // publicvoidf20(inta){}=>
+    // publicvoidf20(/*inta*/){}
     testDiffCorectness(20, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.parameter$5xBj, 0, 1, 0, 1)};
@@ -283,8 +283,8 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void addCommentSingleRole() {
-    // public long f21() {return 1; } => 
-    // public /*int*/ long f21() {return 1; } 
+    // publiclongf21(){return1;}=>
+    // public/*int*/longf21(){return1;}
     testDiffCorectness(21, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.returnType$5xoi, 0, 0, 0, 1)};
@@ -293,9 +293,9 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   }
   @Test
   public void addNodeAttribute() {
-    // public long f22() {return 1; } => 
-    // /*@return f22 */ 
-    // public long f22() {return 1; } 
+    // publiclongf22(){return1;}=>
+    // /*@returnf22*/
+    // publiclongf22(){return1;}
     testDiffCorectness(22, new _FunctionTypes._return_P2_E0<ModelChange[], SNode, SNode>() {
       public ModelChange[] invoke(SNode n1, SNode n2) {
         return new ModelChange[]{new NodeGroupStructChange(getChangeSet(), n1.getNodeId(), n2.getNodeId(), LINKS.smodelAttribute$KJ43, 0, 0, 0, 1)};
@@ -330,13 +330,13 @@ public class StructuredChangesCalculationTest extends ChangesTestBase {
   private void testDiffCorectness(final int ix, final _FunctionTypes._return_P2_E0<? extends ModelChange[], ? super SNode, ? super SNode> ch) {
     getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        // test with the same model 
+        // testwiththesamemodel
         SNode n1 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071558326"), LINKS.member$L_2d)).getElement(ix), CONCEPTS.MethodDeclaration$_P);
         SNode n2 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)", "2193727838071561667"), LINKS.member$L_2d)).getElement(ix), CONCEPTS.MethodDeclaration$_P);
         ModelChange[] changes = ch.invoke(n1, n2);
         testDiffCorrectness(n1, n2, changes);
 
-        // test with other model 
+        // testwithothermodel
         SNode n3 = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)", "2193727838071561667"), LINKS.member$L_2d)).getElement(ix), CONCEPTS.MethodDeclaration$_P);
         ModelChange[] changes2 = ch.invoke(n1, n3);
         testDiffCorrectness(n1, n3, changes2);

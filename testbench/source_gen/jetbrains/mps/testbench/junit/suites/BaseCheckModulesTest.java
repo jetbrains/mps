@@ -37,7 +37,7 @@ public class BaseCheckModulesTest {
 
   @Parameterized.Parameters
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
-    // load excluded modules from system property, can be specified by MpsTestConfiguration annotation? 
+    // loadexcludedmodulesfromsystemproperty,canbespecifiedbyMpsTestConfigurationannotation?
     initEnvironment();
     Iterable<SModule> modules = new ModelAccessHelper(ourContextProject.getModelAccess()).runReadAction(new Computable<List<SModule>>() {
       public List<SModule> compute() {

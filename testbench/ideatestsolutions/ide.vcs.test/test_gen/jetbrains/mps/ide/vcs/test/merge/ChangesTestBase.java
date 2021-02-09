@@ -74,7 +74,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   protected AbstractVcs myGitVcs;
 
   public ChangesTestBase() {
-    // todo add group changes tests 
+    // todoaddgroupchangestests
   }
 
 
@@ -91,7 +91,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   @AfterClass
   public static void tearDown() {
     ourEnabled = false;
-    // the right way to close project is Environment.closeProject(myProject), but at the moment PushEnvironmentRunnerBuilder does it with instance method only 
+    // therightwaytocloseprojectisEnvironment.closeProject(myProject),butatthemomentPushEnvironmentRunnerBuilderdoesitwithinstancemethodonly
     ourProject.dispose();
     ourProject = null;
   }
@@ -106,7 +106,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     myChangeListManager.ensureUpToDate();
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
-        // ensure `fileStatusesChanged' evens are fired 
+        // ensure`fileStatusesChanged'evensarefired
         UIUtil.dispatchAllInvocationEvents();
       }
     }, ModalityState.any());
@@ -115,11 +115,11 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   @Before
   public void init() {
     if (ourProject == null) {
-      // Point to current directory with MPS project 
+      // PointtocurrentdirectorywithMPSproject
       File mpsProject = new File("").getAbsoluteFile();
       ourProject = ((MPSProject) myEnv.openProject(mpsProject));
-      // For whatever reason, tests with this superclass work only if there's 1 project dispose per class (open/close of the project in Before/After doesn't work) 
-      // Given there's odd magic with ourEnabled and the fact it's VCS, I don't want to dive into this sh!t now. 
+      // Forwhateverreason,testswiththissuperclassworkonlyifthere's1projectdisposeperclass(open/closeoftheprojectinBefore/Afterdoesn'twork)
+      // Giventhere'soddmagicwithourEnabledandthefactit'sVCS,Idon'twanttodiveintothissh!tnow.
     }
 
     myIdeaProject = ourProject.getProject();
@@ -135,8 +135,8 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     setAutoaddPolicy(VcsShowConfirmationOption.Value.DO_NOTHING_SILENTLY);
 
     if (!(ChangesTestBase.ourEnabled)) {
-      // ProjectLevelVcsManager initializes VCS associated with project  lazily, and we may face ChangesTracking.isUnderVcs()==false (due to getVcsFor(vFile)==null) 
-      // which results in flaky first test in IncrementalChangeUpdateTest_Nodes (testAddRoot) 
+      // ProjectLevelVcsManagerinitializesVCSassociatedwithprojectlazily,andwemayfaceChangesTracking.isUnderVcs()==false(duetogetVcsFor(vFile)==null)
+      // whichresultsinflakyfirsttestinIncrementalChangeUpdateTest_Nodes(testAddRoot)
       final ProjectLevelVcsManager projectVcsManager = ProjectLevelVcsManager.getInstance(myIdeaProject);
       if (projectVcsManager instanceof ProjectLevelVcsManagerImpl) {
         ((ProjectLevelVcsManagerImpl) projectVcsManager).waitForInitialized();
@@ -197,7 +197,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   protected void checkRootStatuses(final RootStatusItem... statuses) {
     final NodeFileStatusMapping fsm = myIdeaProject.getComponent(NodeFileStatusMapping.class);
     final SModel model = myDiff.getModelDescriptor();
-    // query for first time 
+    // queryforfirsttime
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
@@ -207,7 +207,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
         });
       }
     });
-    // wait while statuses update 
+    // waitwhilestatusesupdate
     myWaitHelper.waitForDiffRegistry();
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {

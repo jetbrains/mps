@@ -21,11 +21,11 @@ public class TreeHighlighterFactory implements Disposable {
 
   public TreeHighlighterFactory(@NotNull Project project) {
     myProject = project;
-    // given cycle in TreeHighlighter (queue(myHighlightAllFeaturesUpdate), myHighlightAllFeaturesUpdate.run-> queue(myHighlightAllFeaturesUpdate)), 
-    // it's vital not to allow pass-through model of MergingUpdateQueue, otherwise we risk StackOverflowException, see MPS-29973 
+    // givencycleinTreeHighlighter(queue(myHighlightAllFeaturesUpdate),myHighlightAllFeaturesUpdate.run->queue(myHighlightAllFeaturesUpdate)),
+    // it'svitalnottoallowpass-throughmodelofMergingUpdateQueue,otherwiseweriskStackOverflowException,seeMPS-29973
     myQueue.setPassThrough(false);
-    // MUQ used to be per-TH, which lead to memory leaks as not all MPSTree instances get properly disposed (e.g usage views from AnalyzeDependenciesViewTool) 
-    // leaving MUQ instances not disposed (didn't show up unless MUQ ceased to be EDT, see Alarm.create logic) 
+    // MUQusedtobeper-TH,whichleadtomemoryleaksasnotallMPSTreeinstancesgetproperlydisposed(e.gusageviewsfromAnalyzeDependenciesViewTool)
+    // leavingMUQinstancesnotdisposed(didn'tshowupunlessMUQceasedtobeEDT,seeAlarm.createlogic)
   }
 
   public static TreeHighlighterFactory getInstance(Project ideaProject) {
@@ -35,7 +35,7 @@ public class TreeHighlighterFactory implements Disposable {
   @Override
   public void dispose() {
     myQueue.cancelAllUpdates();
-    // for non-edt queue, queue itself is parent disposable for alarm pool, and have to be disposed properly to avoid mem leaks. 
+    // fornon-edtqueue,queueitselfisparentdisposableforalarmpool,andhavetobedisposedproperlytoavoidmemleaks.
     Disposer.dispose(myQueue);
   }
 

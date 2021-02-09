@@ -34,7 +34,7 @@ public class RemoveVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    // project.isProjectModule would say true for a generator under a language, and we don't want to set VF for it 
+    // project.isProjectModulewouldsaytrueforageneratorunderalanguage,andwedon'twanttosetVFforit
     boolean isApplicable = !(event.getData(MPSCommonDataKeys.MODULES).isEmpty());
     boolean hasVirtualFolder = false;
     for (SModule module : event.getData(MPSCommonDataKeys.MODULES)) {

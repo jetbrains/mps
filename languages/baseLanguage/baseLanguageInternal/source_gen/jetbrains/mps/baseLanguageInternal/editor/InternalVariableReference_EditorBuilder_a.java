@@ -217,8 +217,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       } else {
         result = ListSequence.fromList(new ArrayList<String>());
       }
-      // we need this because of smart input 
-      // DO NOT REMOVE IT 
+      // weneedthisbecauseofsmartinput
+      // DONOTREMOVEIT
       if (SPropertyOperations.getString(node, PROPS.name$H5iD) != null) {
         ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, PROPS.name$H5iD));
       }

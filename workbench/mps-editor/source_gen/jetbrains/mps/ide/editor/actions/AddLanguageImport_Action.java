@@ -33,7 +33,7 @@ public class AddLanguageImport_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // 'editable' flag for a context parameter implies 'required', hence the check 
+    // 'editable'flagforacontextparameterimplies'required',hencethecheck
     return (((SModel) MapSequence.fromMap(_params).get("model")) instanceof EditableSModel && !(((SModel) MapSequence.fromMap(_params).get("model")).isReadOnly())) || (((SModel) MapSequence.fromMap(_params).get("model")) == null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof DevKit);
   }
   @Override
@@ -76,6 +76,6 @@ public class AddLanguageImport_Action extends BaseAction {
     }
   }
   protected void configureImportHelper(LanguageImportHelper helper, final Map<String, Object> _params) {
-    // no-op, intended to be overridden in subclass (mps-idea-plugin needs additional activities to be executed when a language is added to a model) 
+    // no-op,intendedtobeoverriddeninsubclass(mps-idea-pluginneedsadditionalactivitiestobeexecutedwhenalanguageisaddedtoamodel)
   }
 }

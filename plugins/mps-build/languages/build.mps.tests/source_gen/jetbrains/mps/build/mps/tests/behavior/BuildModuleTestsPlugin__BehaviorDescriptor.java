@@ -49,12 +49,12 @@ public final class BuildModuleTestsPlugin__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
 
-    // find mps-test.jar 
+    // findmps-test.jar
     SNode mpsTestModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(project, "mps-test"), CONCEPTS.BuildSource_JavaModule$NC);
     if ((mpsTestModule != null)) {
       SNode mpsTestJar = SNodeOperations.as(artifacts.findArtifact(mpsTestModule), CONCEPTS.BuildLayout_Node$Rb);
       if ((mpsTestJar != null)) {
-        // seems that there's no use for artifact labeled 'mps-test' any more, reduce_TestModules uses mps-test-folder 
+        // seemsthatthere'snouseforartifactlabeled'mps-test'anymore,reduce_TestModulesusesmps-test-folder
         builder.addWithTag(SNodeOperations.cast(artifacts.parent(mpsTestJar), CONCEPTS.BuildLayout_Folder$AH), "mps-test-folder");
       }
     }

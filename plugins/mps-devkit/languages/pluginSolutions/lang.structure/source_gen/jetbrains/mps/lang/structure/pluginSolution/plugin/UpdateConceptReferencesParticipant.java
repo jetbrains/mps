@@ -46,7 +46,7 @@ public class UpdateConceptReferencesParticipant extends UpdateReferencesParticip
     if (ListSequence.fromList(selectedOptions).contains(WriteSubconceptMigrationParticipant.OPTION)) {
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
-      // do nothing 
+      // donothing
     }
   }
   @Override

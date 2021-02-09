@@ -162,7 +162,7 @@
       <node id="3813199577742770528" at="32,9,33,172" concept="6" />
       <node id="3813199577742770840" at="33,172,34,80" concept="2" />
       <node id="3813199577742770528" at="34,80,35,71" concept="2" />
-      <node id="1092174338855517520" at="38,5,39,69" concept="8" />
+      <node id="1092174338855517520" at="38,5,39,59" concept="8" />
       <node id="3813199577742747459" at="41,50,42,48" concept="7" />
       <node id="3813199577742747459" at="44,68,45,102" concept="7" />
       <node id="3813199577742747459" at="47,30,48,17" concept="7" />
@@ -200,7 +200,7 @@
       <scope id="243673576855078673" at="28,5,38,5">
         <var name="e" id="243673576855078675" />
       </scope>
-      <scope id="3813199577742747460" at="24,137,39,69" />
+      <scope id="3813199577742747460" at="24,137,39,59" />
       <scope id="3813199577742747459" at="24,0,41,0">
         <var name="status" id="3813199577742747459" />
         <var name="suppressErrorsAnnotation" id="3813199577742747459" />
@@ -418,7 +418,7 @@
       </scope>
     </file>
     <file name="check_LinkAttribute_NonTypesystemRule.java">
-      <node id="6109541130566307242" at="30,126,31,150" concept="8" />
+      <node id="6109541130566307242" at="30,126,31,129" concept="8" />
       <node id="8519076342981064186" at="32,134,33,13" concept="7" />
       <node id="6063712545515033463" at="36,7,37,66" concept="6" />
       <node id="6063712545515033463" at="37,66,38,255" concept="6" />
@@ -442,7 +442,7 @@
       <node id="5394253938404192056" at="88,0,89,0" concept="10" trace="linkId$P9Fc" />
       <node id="5394253938404192056" at="92,0,93,0" concept="10" trace="LinkAttribute$v_" />
       <node id="5394253938404192056" at="28,0,30,0" concept="1" trace="check_LinkAttribute_NonTypesystemRule#()V" />
-      <node id="8519076342981057643" at="31,150,34,5" concept="4" />
+      <node id="8519076342981057643" at="31,129,34,5" concept="4" />
       <node id="5394253938404275996" at="47,0,50,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/language/SReferenceLink;)Z" />
       <node id="5394253938404192056" at="73,0,76,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5394253938404192056" at="76,0,79,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

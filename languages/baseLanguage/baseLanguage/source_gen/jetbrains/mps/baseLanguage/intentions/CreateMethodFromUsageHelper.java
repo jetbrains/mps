@@ -83,7 +83,7 @@ public class CreateMethodFromUsageHelper {
       return false;
     }
 
-    // check err cell 
+    // checkerrcell
     EditorCell cell = myEditorContext.getContextCell();
     if (!((cell instanceof EditorCell_Label))) {
       return false;
@@ -104,7 +104,7 @@ public class CreateMethodFromUsageHelper {
 
     Executor ex = (dryRun ? Executor.NoOp : Executor.Normal);
 
-    // created is different from "method!=null", differs in case ex does not execute passed closure 
+    // createdisdifferentfrom"method!=null",differsincaseexdoesnotexecutepassedclosure
     boolean created = false;
     if (SNodeOperations.hasRole(myNode, LINKS.operation$gs9E)) {
       created = true;

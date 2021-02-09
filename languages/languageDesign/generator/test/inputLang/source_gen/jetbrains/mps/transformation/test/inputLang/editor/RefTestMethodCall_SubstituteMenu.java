@@ -49,7 +49,7 @@ public class RefTestMethodCall_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_5bwta2_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_5bwta2_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.RefTestMethodCall$3G, LINKS.method$YwrB);
     }
     @NotNull

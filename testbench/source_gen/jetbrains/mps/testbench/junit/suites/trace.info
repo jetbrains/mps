@@ -45,8 +45,8 @@
       <node id="6450649963067081295" at="61,0,62,0" concept="4" trace="myEnvironment" />
       <node id="1884528325077570777" at="62,0,63,0" concept="4" trace="myChildren" />
       <node id="1884528325076895761" at="69,90,70,50" concept="14" />
-      <node id="1884528325077735060" at="70,50,71,69" concept="10" />
-      <node id="1884528325078028479" at="71,69,72,42" concept="3" />
+      <node id="1884528325077735060" at="70,50,71,59" concept="10" />
+      <node id="1884528325078028479" at="71,59,72,42" concept="3" />
       <node id="3021026760600222180" at="72,42,73,89" concept="3" />
       <node id="3770363708349312575" at="73,89,74,96" concept="8" />
       <node id="1884528325077575781" at="74,96,75,74" concept="3" />
@@ -66,10 +66,10 @@
       <node id="7781441327979273282" at="101,34,102,35" concept="8" />
       <node id="359089172091153908" at="103,32,104,17" concept="2" />
       <node id="7781441327979371090" at="105,7,106,50" concept="3" />
-      <node id="359089172091162672" at="106,50,107,159" concept="10" />
-      <node id="359089172091192003" at="107,159,108,87" concept="10" />
-      <node id="5730725694409693170" at="109,53,110,87" concept="10" />
-      <node id="359089172091891660" at="110,87,111,41" concept="8" />
+      <node id="359089172091162672" at="106,50,107,138" concept="10" />
+      <node id="359089172091192003" at="107,138,108,75" concept="10" />
+      <node id="5730725694409693170" at="109,53,110,78" concept="10" />
+      <node id="359089172091891660" at="110,78,111,41" concept="8" />
       <node id="5730725694409867720" at="111,41,112,117" concept="8" />
       <node id="359089172092141341" at="113,36,114,81" concept="3" />
       <node id="7781441327979365199" at="117,5,118,18" concept="9" />
@@ -112,7 +112,7 @@
       <node id="5060931773414838896" at="147,79,153,11" concept="6" />
       <node id="2243224168873762643" at="168,145,175,15" concept="15" />
       <node id="1884528325076767161" at="69,0,77,0" concept="1" trace="MpsTestsSuite#(Ljava/lang/Class;Lorg/junit/runners/model/RunnerBuilder;)V" />
-      <node id="359089172091160557" at="108,87,116,7" concept="6" />
+      <node id="359089172091160557" at="108,75,116,7" concept="6" />
       <node id="768083588668045171" at="156,160,164,15" concept="15" />
       <node id="149846544988526529" at="123,103,132,7" concept="6" />
       <node id="2243224168873656245" at="166,71,176,13" concept="5" />
@@ -247,8 +247,8 @@
     <file name="TestMakeUtil.java">
       <node id="1045949688409696621" at="19,0,20,0" concept="4" trace="myPlatform" />
       <node id="1045949688409696625" at="21,45,22,29" concept="3" />
-      <node id="1045949688409698151" at="25,46,26,49" concept="10" />
-      <node id="1045949688409698153" at="26,49,27,107" concept="8" />
+      <node id="1045949688409698151" at="25,46,26,45" concept="10" />
+      <node id="1045949688409698153" at="26,45,27,107" concept="8" />
       <node id="1045949688409698159" at="29,25,30,46" concept="8" />
       <node id="1045949688409698164" at="30,46,31,186" concept="3" />
       <node id="1045949688409698188" at="36,27,37,123" concept="3" />
@@ -284,7 +284,7 @@
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/3567142084943000351">
     <file name="MPSAuditConstraints.java">
       <node id="3567142084943000358" at="11,46,12,18" concept="14" />
-      <node id="8404419601375393155" at="14,41,15,58" concept="10" />
+      <node id="8404419601375393155" at="14,41,15,50" concept="10" />
       <node id="3567142084943201402" at="19,34,20,29" concept="3" />
       <node id="3567142084943199497" at="20,29,21,0" concept="11" />
       <node id="3567142084943000373" at="21,0,22,29" concept="3" />
@@ -292,7 +292,7 @@
       <node id="3567142084943201398" at="14,0,17,0" concept="7" trace="processExcludedModules#()V" />
       <node id="3567142084943000362" at="17,0,24,0" concept="7" trace="checkConstraints#()V" />
       <scope id="3567142084943000357" at="11,46,12,18" />
-      <scope id="3567142084943201224" at="14,41,15,58" />
+      <scope id="3567142084943201224" at="14,41,15,50" />
       <scope id="3567142084943000354" at="11,0,14,0">
         <var name="module" id="3567142084943000360" />
       </scope>
@@ -409,8 +409,8 @@
   </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/5835181105767457626">
     <file name="AntModuleTestSuite.java">
-      <node id="1200485062307286105" at="18,10,19,20" concept="10" />
-      <node id="1200485062307168332" at="19,20,20,93" concept="3" />
+      <node id="1200485062307286105" at="18,10,19,18" concept="10" />
+      <node id="1200485062307168332" at="19,18,20,93" concept="3" />
       <scope id="1200485062307168297" at="18,10,20,93" />
       <unit id="5835181105767457626" at="14,0,23,0" name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite" />
     </file>
@@ -460,7 +460,7 @@
       <node id="3321270849807854400" at="42,89,43,0" concept="11" />
       <node id="3321270849807855669" at="43,0,44,62" concept="8" />
       <node id="3321270849807845030" at="47,57,48,22" concept="9" />
-      <node id="3321270849807848152" at="49,9,50,29" concept="10" />
+      <node id="3321270849807848152" at="49,9,50,25" concept="10" />
       <node id="3321270849807852220" at="51,100,52,22" concept="9" />
       <node id="3321270849807886352" at="53,9,54,63" concept="3" />
       <node id="3321270849807846312" at="54,63,55,20" concept="9" />
@@ -473,7 +473,7 @@
       <node id="4549117124867217102" at="78,33,79,24" concept="9" />
       <node id="7308922687953975590" at="31,0,34,0" concept="1" trace="BaseProjectsTest#(Ljava/lang/String;)V" />
       <node id="3321270849807841061" at="46,48,49,9" concept="6" />
-      <node id="3321270849807850932" at="50,29,53,9" concept="6" />
+      <node id="3321270849807850932" at="50,25,53,9" concept="6" />
       <node id="3321270849807907739" at="74,0,77,0" concept="7" trace="getContextProject#()Ljetbrains/mps/project/Project;" />
       <node id="4549117124867217098" at="78,0,81,0" concept="7" trace="getProjectDir#()Ljava/lang/String;" />
       <node id="3321270849807942826" at="68,0,72,0" concept="7" trace="closeProject#()V" />
@@ -637,8 +637,8 @@
       <node id="9170334376386357063" at="31,0,32,0" concept="12" trace="ourContextProject" />
       <node id="9170334376386357066" at="32,0,33,0" concept="4" trace="myModule" />
       <node id="9170334376386357075" at="34,47,35,27" concept="3" />
-      <node id="9170334376386357253" at="39,104,40,104" concept="10" />
-      <node id="115383379929303713" at="40,104,41,22" concept="3" />
+      <node id="9170334376386357253" at="39,104,40,92" concept="10" />
+      <node id="115383379929303713" at="40,92,41,22" concept="3" />
       <node id="6511039084739465737" at="43,38,44,67" concept="9" />
       <node id="9170334376386357087" at="46,7,47,52" concept="9" />
       <node id="6452630887101449038" at="50,98,51,92" concept="3" />

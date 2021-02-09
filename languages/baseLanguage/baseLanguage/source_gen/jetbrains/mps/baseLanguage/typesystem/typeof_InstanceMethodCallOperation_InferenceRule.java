@@ -45,7 +45,7 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
     }
 
     final SNode methodClassifier = SNodeOperations.getNodeAncestor(mdecl, CONCEPTS.Classifier$Ix, false, false);
-    // --- 
+    // ---
     final SNode instanceType_typevar_1204064731338 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(mcallop);
@@ -59,9 +59,9 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(instanceType_typevar_1204064731338), (SNode) _quotation_createNode_ecn83h_a1a0c0a0h0b(methodClassifier), true, false, _info_12389875345);
       }
     }
-    // --- following piece of cake is identical for any method call --- 
+    // ---followingpieceofcakeisidenticalforanymethodcall---
 
-    // extract typeof's of arguments outside the when_concrete block 
+    // extracttypeof'sofargumentsoutsidethewhen_concreteblock
     final List<SNode> argTypes = new ArrayList<SNode>();
     for (SNode a : ListSequence.fromList(SLinkOperations.getChildren(mcallop, LINKS.actualArgument$pzdx))) {
       ListSequence.fromList(argTypes).addElement(typeCheckingContext.typeOf(a, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3058438378413336012", true));
@@ -70,7 +70,7 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
       final SNode IT = typeCheckingContext.getRepresentative(instanceType_typevar_1204064731338);
       typeCheckingContext.whenConcrete(IT, new Runnable() {
         public void run() {
-          // ensure it's a classifier type 
+          // ensureit'saclassifiertype
           SNode ctype = typeCheckingContext.getExpandedNode(IT);
           if (!(SNodeOperations.isInstanceOf(ctype, CONCEPTS.ClassifierType$bL))) {
             ctype = TypecheckingFacade.getFromContext().coerceType(ctype, CONCEPTS.ClassifierType$bL);
@@ -78,10 +78,10 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
           final boolean rawInstanceType = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(ctype, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(ctype, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
 
           final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
-          // check the inference context 
+          // checktheinferencecontext
           if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(mcallop))) {
             for (SNode tvd : ListSequence.fromList(BaseMethodDeclaration__BehaviorDescriptor.getInferrableTypeVars_id5W9RYt5baxk.invoke(mdecl))) {
-              // assume all unbound type vars outside an inference context are Object or its bound 
+              // assumeallunboundtypevarsoutsideaninferencecontextareObjectoritsbound
               MapSequence.fromMap(subs).put(tvd, ((SLinkOperations.getTarget(tvd, LINKS.bound$aZCB) == null) ? _quotation_createNode_ecn83h_a0a1a0a7a0a0b0a1a31a1() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, LINKS.bound$aZCB))));
             }
           }

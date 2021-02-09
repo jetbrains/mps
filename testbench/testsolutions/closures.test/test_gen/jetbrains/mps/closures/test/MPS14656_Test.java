@@ -13,7 +13,7 @@ public class MPS14656_Test {
       MPS14656_helper.valid();
       Assert.fail();
     } catch (IOException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test
@@ -22,7 +22,7 @@ public class MPS14656_Test {
       MPS14656_helper.valid();
       Assert.fail();
     } catch (IOException e) {
-      // expected exception 
+      // expectedexception
     }
   }
 }

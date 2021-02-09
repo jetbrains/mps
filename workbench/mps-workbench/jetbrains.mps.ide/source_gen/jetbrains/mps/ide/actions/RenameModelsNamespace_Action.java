@@ -85,7 +85,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
     InputValidatorEx inputValidator = new ModelNamespaceInputValidator(node, originalNamespacePrefix);
     final String modifiedNamespacePrefix = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.virtual.package.rename.on.models.text"), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"), null, originalNamespacePrefix, inputValidator);
 
-    // Allow passing of an empty string which will result in virtual folder removal 
+    // Allowpassingofanemptystringwhichwillresultinvirtualfolderremoval
     if (modifiedNamespacePrefix == null || Objects.equals(originalNamespacePrefix, modifiedNamespacePrefix)) {
       return;
     }

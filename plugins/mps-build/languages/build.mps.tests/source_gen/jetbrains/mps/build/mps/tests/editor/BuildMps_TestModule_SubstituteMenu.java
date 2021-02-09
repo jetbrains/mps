@@ -49,7 +49,7 @@ public class BuildMps_TestModule_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_w1eb5a_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_w1eb5a_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BuildMps_TestModule$oW, LINKS.module$V8pj);
     }
     @NotNull

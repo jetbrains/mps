@@ -83,7 +83,7 @@ public class NewModuleUtil {
     assert !(descriptorFile.exists());
     SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
 
-    // XXX I don't see a reason to use Language.getAllExtendedLanguages, but this is the way it was introduced in 5057107c 
+    // XXXIdon'tseeareasontouseLanguage.getAllExtendedLanguages,butthisisthewayitwasintroducedin5057107c
     {
       Iterator<Language> extLang_it = SetSequence.fromSet(language.getAllExtendedLanguages()).iterator();
       Language extLang_var;
@@ -135,7 +135,7 @@ public class NewModuleUtil {
     IFile generatorLocation = descriptorFile.getParent().findChild("generator");
     generatorLocation.mkdirs();
 
-    //  it's the first and only generator in the language, no need to generate some unique long value 
+    // it'sthefirstandonlygeneratorinthelanguage,noneedtogeneratesomeuniquelongvalue
     final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + ".generator", generatorLocation, null);
     generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
@@ -144,13 +144,13 @@ public class NewModuleUtil {
     Language language = (Language) projectRepoFacade.instantiate(languageDescriptor, descriptorFile);
     project.addModule(language);
     Generator generator = (Generator) projectRepoFacade.instantiate(generatorDescriptor, descriptorFile);
-    // though generator lives under the language, Project respects both nested and standalone generators now,  we have to do project.addModule(generator) to ensure it is properly registered with a repo 
+    // thoughgeneratorlivesunderthelanguage,Projectrespectsbothnestedandstandalonegeneratorsnow,wehavetodoproject.addModule(generator)toensureitisproperlyregisteredwitharepo
     project.addModule(generator);
 
     try {
       createMainLanguageAspects(language);
     } catch (IOException e) {
-      // todo: ??? 
+      // todo:???
       throw new RuntimeException(e);
     }
 
@@ -212,7 +212,7 @@ public class NewModuleUtil {
     if (namespace.length() == 0) {
       return "Namespace should be specified";
     }
-    // If don't have repository then there are no duplicated module name 
+    // Ifdon'thaverepositorythentherearenoduplicatedmodulename
     boolean duplicateName = (repo == null ? false : new ModelAccessHelper(repo).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         return !(new ModuleRepositoryFacade(repo).getModulesByName(namespace).isEmpty());
@@ -225,8 +225,8 @@ public class NewModuleUtil {
       return "Enter valid namespace";
     }
     IFile moduleDir = getModuleFile(namespace, rootPath, extension).getParent();
-    // FIXME it's suspicious to check existence of a model directory to tell existence of a module 
-    // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring 
+    // FIXMEit'ssuspicioustocheckexistenceofamodeldirectorytotellexistenceofamodule
+    // E.g.itmightbeempty,ornameddifferently.Leftintactfornow,althoughdeservesarefactoring
     if (moduleDir.findChild(Language.LANGUAGE_MODELS).exists() || moduleDir.findChild(Language.LEGACY_LANGUAGE_MODELS).exists() || moduleDir.findChild(Solution.SOLUTION_MODELS).exists()) {
       return "Module already exists in this folder";
     }
@@ -249,7 +249,7 @@ public class NewModuleUtil {
       }
       SModel templateModel = SModuleOperations.createModelWithAdjustments(new SModelName(namespace, "templates", SModelStereotype.GENERATOR).getValue(), newGenerator.getModelRoots().iterator().next());
       SNode mappingConfiguration = SModelOperations.createNewNode(templateModel, null, CONCEPTS.MappingConfiguration$7j);
-      // both model and MC named 'main' was a bit confusing (not to mention 'main' alias of the module itself), therefore the model to hold templates is 'templates' now 
+      // bothmodelandMCnamed'main'wasabitconfusing(nottomention'main'aliasofthemoduleitself),thereforethemodeltoholdtemplatesis'templates'now
       SPropertyOperations.assign(mappingConfiguration, PROPS.name$MnvL, "main");
       SModelOperations.addRootNode(templateModel, mappingConfiguration);
       ((EditableSModel) templateModel).save();
@@ -279,15 +279,15 @@ public class NewModuleUtil {
     final GeneratorDescriptor generatorDescriptor = new GeneratorDescriptor();
     generatorDescriptor.setNamespace(namespace);
     generatorDescriptor.setId(ModuleId.regular());
-    // unlike other modules, in outburst of pure antagonism, namespace in generator used to mean alias. Now, it's the way it has to be. 
+    // unlikeothermodules,inoutburstofpureantagonism,namespaceingeneratorusedtomeanalias.Now,it'sthewayithastobe.
     generatorDescriptor.setAlias("main");
     ModelRootDescriptor modelRootDescriptor;
-    // there are 2 possible approaches, contentRoot = moduleRoot + sourceRoot descendant, and the one with both pointing to the same location 
+    // thereare2possibleapproaches,contentRoot=moduleRoot+sourceRootdescendant,andtheonewithbothpointingtothesamelocation
     if (templateModelsLocation == null) {
-      // I use distinct content and source roots here as it looks better in persistence (some values serialized in both tags compared to "." attribute of createSingleFolderDescroptor case 
+      // Iusedistinctcontentandsourcerootshereasitlooksbetterinpersistence(somevaluesserializedinbothtagscomparedto"."attributeofcreateSingleFolderDescroptorcase
       modelRootDescriptor = DefaultModelRoot.createDescriptor(generatorModuleLocation, generatorModuleLocation.findChild("templates"));
     } else {
-      // however, not to bother with templateModelsLocation relative to generatorModuleLocation, I stick to single folder as both content and source root 
+      // however,nottobotherwithtemplateModelsLocationrelativetogeneratorModuleLocation,Isticktosinglefolderasbothcontentandsourceroot
       modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
     }
     generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
@@ -310,7 +310,7 @@ public class NewModuleUtil {
     if (modelsDir.exists() && modelsDir.getChildren().size() != 0) {
       throw new IllegalStateException("Trying to create a solution in an existing solution's directory: " + moduleLocation);
     } else {
-      // we assume create happens under proper application write lock, would be odd to manage locks here 
+      // weassumecreatehappensunderproperapplicationwritelock,wouldbeoddtomanagelockshere
       modelsDir.mkdirs();
     }
 
@@ -346,9 +346,9 @@ public class NewModuleUtil {
     for (ModelRoot root : module.getModelRoots()) {
       if (root.canCreateModels() && root.canCreateModel(modelName)) {
         EditableSModel model = (EditableSModel) root.createModel(modelName);
-        // todo: ??? 
-        // this is strict model loading. without it save() not working - isLoaded() returns false in save method 
-        // model.getSModel() 
+        // todo:???
+        // thisisstrictmodelloading.withoutitsave()notworking-isLoaded()returnsfalseinsavemethod
+        // model.getSModel()
         model.save();
         return model;
       }

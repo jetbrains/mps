@@ -24,14 +24,14 @@ public class typeof_LoopMacroNamespace_InferenceRule extends AbstractInferenceRu
   }
   public void applyRule(final SNode loopMacroNamespace, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(loopMacroNamespace, PROPS.variable$ww9P), 0x14d5f8229234079eL)) {
-      // Counter variable 
+      // Countervariable
       {
         SNode _nodeToCheck_1029348928467 = loopMacroNamespace;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1501378878163399030", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1501378878163397638", true), (SNode) createIntegerType_9u1jwr_a1a0c0b0a0b(), _info_12389875345);
       }
     } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(loopMacroNamespace, PROPS.variable$ww9P), 0x14d5f8229234079dL)) {
-      // Input node 
+      // Inputnode
       SNode inputNodeType = createSNodeType_9u1jwr_a0b0a0a1(NodeMacro__BehaviorDescriptor.getPreviousInputNodeType_id1kTmBBnrdlu.invoke(AbstractNodeMacroNamespace__BehaviorDescriptor.getTargetMacro_id2vVmcK3imJA.invoke(loopMacroNamespace)));
       {
         SNode _nodeToCheck_1029348928467 = loopMacroNamespace;

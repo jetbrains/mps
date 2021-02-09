@@ -153,7 +153,7 @@ public class SuperConceptExpression_TransformationMenu extends TransformationMen
           } else {
             SLinkOperations.setTarget(_context.getNode(), LINKS.superConcept$VRMH, result);
           }
-          // I expect superConcept to be the only editable cell there, so didn't bother with custom cell id 
+          // IexpectsuperConcepttobetheonlyeditablecellthere,sodidn'tbotherwithcustomcellid
           SelectionUtil.selectCell(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_EDITABLE_CELL);
         }
 

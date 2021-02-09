@@ -62,7 +62,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "METHOD");
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
-    // node here is ClassExport 
+    // nodehereisClassExport
     return _context.getOutputForInputAndLabel("EXPORTED_METHOD", ((SNode) _context.getVariable("var:loopInput")), _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
@@ -75,7 +75,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.methods$YPx5);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
-    // FIXME I'd like to use LOOP.inputNode here once MPS-32699 is merged into master 
+    // FIXMEI'dliketouseLOOP.inputNodehereonceMPS-32699ismergedintomaster
     final SNode rtc = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.RefTestClass$MJ);
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -90,12 +90,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode();
   }
   public static SNode labelMapNode1_0(final TemplateQueryContext _context) {
-    // Though I can leave this query blank and use 'current input node', I feel scenario with 
-    // custom query is more generic than the one with default (can emulate non-functional default with a query, if necessary) 
+    // ThoughIcanleavethisqueryblankanduse'currentinputnode',Ifeelscenariowith
+    // customqueryismoregenericthantheonewithdefault(canemulatenon-functionaldefaultwithaquery,ifnecessary)
     return _context.getNode();
   }
   public static SNode labelMapNode1_1(final TemplateQueryContext _context) {
-    // FIXME I'd like to use LOOP.inputNode once MPS-32699 is merged into master 
+    // FIXMEI'dliketouseLOOP.inputNodeonceMPS-32699ismergedintomaster
     return ((SNode) _context.getVariable("var:key"));
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();

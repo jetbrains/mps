@@ -63,10 +63,10 @@ public class LogBuilder {
     final int moduleVersion = module.getModuleVersion();
     String refactoringName = session.getRefactoringName();
     String refactoringLogName = (refactoringName == null ? "RefactoringLog" : "Refactor_" + NameUtil.toValidCamelIdentifier(refactoringName));
-    // Keeping both name from session and caption from constructor is redundant. 
-    // Currently name from session represents only refactoring kind: e.g. MoveStaticField, 
-    // but action also points to node's name. But pushing caption from constructor is not a good way 
-    // because it relies on order in which getChanges() is called for node subtree. 
+    // Keepingbothnamefromsessionandcaptionfromconstructorisredundant.
+    // Currentlynamefromsessionrepresentsonlyrefactoringkind:e.g.MoveStaticField,
+    // butactionalsopointstonode'sname.Butpushingcaptionfromconstructorisnotagoodway
+    // becauseitreliesonorderinwhichgetChanges()iscalledfornodesubtree.
     myRefactoringStep = createRefactoringLog_1o8b1n_a0h0d(moduleVersion, (caption == null ? refactoringLogName + "_" + moduleVersion : caption));
     session.registerChange(new Runnable() {
       public void run() {

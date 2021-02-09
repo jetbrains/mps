@@ -130,7 +130,7 @@ public class PasteNode_Action extends BaseAction {
           paster.paste(((SNode) MapSequence.fromMap(_params).get("node")), PasteEnv.PROJECT_TREE, PasteNode_Action.this.getContextPackage(_params));
         }
         ResolverComponent.getInstance().resolveScopesOnly(refsToResolve, ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
-        // make sure editor will be open 
+        // makesureeditorwillbeopen
         if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) == null) {
           SNode root = pasteNodes.get(0).getContainingRoot();
           assert root != null;

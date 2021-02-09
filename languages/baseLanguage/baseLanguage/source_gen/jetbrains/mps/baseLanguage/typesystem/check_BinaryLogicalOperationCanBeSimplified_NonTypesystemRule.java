@@ -36,7 +36,7 @@ public class check_BinaryLogicalOperationCanBeSimplified_NonTypesystemRule exten
     Boolean value;
     SModule module = SNodeOperations.getModel(binaryOperation).getModule();
 
-    // Both sides could be eliminated 
+    // Bothsidescouldbeeliminated
     if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(binaryOperation)) {
       Object binaryValue = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(binaryOperation, module);
       if (binaryValue != null && binaryValue instanceof Boolean) {

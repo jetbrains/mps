@@ -83,7 +83,7 @@
   <root nodeRef="r:87ca99dc-4ebb-4b25-aad1-a314895ec01e(jetbrains.mps.ide.mpsmigration.v_2017_1)/4140180342946030802">
     <file name="RemoveHistoryFiles.java">
       <node id="4140180342946076749" at="24,31,25,97" concept="15" />
-      <node id="2395946271876055851" at="28,45,29,58" concept="11" />
+      <node id="2395946271876055851" at="28,45,29,52" concept="11" />
       <node id="4140180342946106171" at="30,5,31,70" concept="9" />
       <node id="4140180342946106171" at="31,70,32,90" concept="9" />
       <node id="4140180342946106171" at="34,52,35,36" concept="10" />
@@ -106,7 +106,7 @@
       <node id="4140180342946106171" at="32,90,37,8" concept="9" />
       <node id="4140180342946106986" at="55,0,60,9" concept="4" />
       <node id="4140180342946156584" at="37,8,54,9" concept="9" />
-      <node id="4140180342946106171" at="29,58,61,5" concept="1" />
+      <node id="4140180342946106171" at="29,52,61,5" concept="1" />
       <node id="4140180342946030861" at="27,0,64,0" concept="8" trace="doExecute#(Ljetbrains/mps/project/Project;)Z" />
       <scope id="4140180342946076747" at="24,31,25,97" />
       <scope id="4140180342946106171" at="34,52,35,36" />

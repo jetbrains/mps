@@ -355,7 +355,7 @@ public class KeyMapKeystroke_TransformationMenu extends TransformationMenuBase {
         SLinkOperations.setTarget(shortcut, LINKS.action$wOJd, SLinkOperations.getTarget(currentShortcut, LINKS.action$wOJd));
         SNode keyStrokeConverted = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke"));
         SPropertyOperations.set(keyStrokeConverted, PROPS.modifiers$4CNz, "alt+shift");
-        // Use simple replacement here instead of VK_F([1-9]) -> VK_$1 
+        // UsesimplereplacementhereinsteadofVK_F([1-9])->VK_$1
         SPropertyOperations.set(keyStrokeConverted, PROPS.keycode$4D2$, SPropertyOperations.getString(_context.getNode(), PROPS.keycode$4D2$).replaceAll("VK_F", "VK_"));
         SPropertyOperations.setEnum(keyStrokeConverted, PROPS.change$QdWn, 0x5e2b603c8f036669L, "replace_all");
         ListSequence.fromList(SLinkOperations.getChildren(shortcut, LINKS.keystroke$Nxja)).addElement(keyStrokeConverted);

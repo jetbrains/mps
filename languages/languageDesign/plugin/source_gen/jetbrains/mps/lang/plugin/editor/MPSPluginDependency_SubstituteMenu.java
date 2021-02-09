@@ -49,7 +49,7 @@ public class MPSPluginDependency_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_3m2jlx_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_3m2jlx_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.MPSPluginDependency$82, LINKS.plugin$lEsz);
     }
     @NotNull

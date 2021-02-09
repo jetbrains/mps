@@ -113,7 +113,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode();
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    // first class is already handled in the first if branch 
+    // firstclassisalreadyhandledinthefirstifbranch
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:methods"))).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {

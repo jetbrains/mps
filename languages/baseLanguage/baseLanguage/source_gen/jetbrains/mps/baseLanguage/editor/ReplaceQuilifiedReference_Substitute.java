@@ -147,7 +147,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          // todo: visibility icon 
+          // todo:visibilityicon
           return IconResourceUtil.getIconResourceForNode(myParameterObject);
         }
       }

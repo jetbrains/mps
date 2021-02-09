@@ -16,7 +16,7 @@ import jetbrains.mps.tool.environment.IdeaEnvironment;
 @GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/5835181105767457626", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class AntModuleTestSuite {
   static {
-    // old behavior 
+    // oldbehavior
     System.setProperty(IdeaEnvironment.CREATE_PLUGIN_CLASSLOADERS, Boolean.FALSE.toString());
   }
 }

@@ -77,7 +77,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
       SPropertyOperations.set(t, PROPS.name$MnvL, name);
       SLinkOperations.setTarget(t, LINKS.applicableConcept$JSvx, applicableConcept);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
-      //  initialize 'content node' 
+      // initialize'contentnode'
       SNode ownerRule = SNodeOperations.getNodeAncestor(node, CONCEPTS.Weaving_MappingRule$qb, false, false);
       SNode contextNodeType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(ownerRule, CONCEPTS.Weaving_MappingRule$qb), LINKS.contextNodeQuery$ix$f));
       if (SNodeOperations.isInstanceOf(contextNodeType, CONCEPTS.SNodeType$hR)) {
@@ -88,7 +88,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
           }
         }
       }
-      //  make reference 
+      // makereference
       SLinkOperations.setNewChild(node, LINKS.templateCall$byhU, null);
       SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.templateCall$byhU), LINKS.template$6_6, t);
       SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(node, LINKS.templateCall$byhU), SelectionManager.FIRST_EDITABLE_CELL);

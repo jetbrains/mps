@@ -122,7 +122,7 @@ public class RenameNode_Action extends BaseAction {
     RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("project")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("project")), "Rename Node"), refactoringBody);
   }
   private boolean canBeRenamed(final Map<String, Object> _params) {
-    // we won't rename nodes, for which there is getter without setter 
+    // wewon'trenamenodes,forwhichthereisgetterwithoutsetter
     SAbstractConcept concept = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("target")));
     ConstraintsDescriptor cd = ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
     PropertyConstraintsDescriptor propertyConstraint = cd.getProperty(PROPS.name$MnvL);

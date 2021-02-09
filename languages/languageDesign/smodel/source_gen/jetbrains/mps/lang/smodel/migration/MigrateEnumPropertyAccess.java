@@ -139,7 +139,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         }
       };
 
-      // node.enumProp 
+      // node.enumProp
       for (SNode propertyAccess : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SPropertyAccess$d9, false))) {
         SNode newProperty = migration.migratePropertyReference(propertyAccess, LINKS.property$UiOu);
         if (newProperty != null) {
@@ -171,7 +171,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         ListSequence.fromList(SLinkOperations.getChildren(res, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(dotExpression, LINKS.smodelAttribute$KJ43)));
       }
 
-      // enum/.../.op 
+      // enum/.../.op
       for (SNode enumOpInvocation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SEnumOperationInvocation$_F, false))) {
         SNode operation = SLinkOperations.getTarget(enumOpInvocation, LINKS.operation$hgaB);
 
@@ -208,7 +208,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
           continue;
         }
 
-        // theoretical extensions of SEnumOperation_Old should be migrated by their implementors 
+        // theoreticalextensionsofSEnumOperation_Oldshouldbemigratedbytheirimplementors
       }
 
       for (SNode enumMemberValueRef : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EnumMemberValueRefExpression$QG, false))) {
@@ -234,7 +234,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(dotExpression), CONCEPTS.DotExpression$yW)) {
       SNode grandDotExpression = SNodeOperations.as(SNodeOperations.getParent(dotExpression), CONCEPTS.DotExpression$yW);
 
-      // node.enumProp.is(< enumMember >) 
+      // node.enumProp.is(<enumMember>)
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_HasValue_Enum$dn)) {
         SNode operation = SNodeOperations.cast(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_HasValue_Enum$dn);
         if (ListSequence.fromList(SNodeOperations.getNodeDescendants(operation, CONCEPTS.Attribute$g1, false, new SAbstractConcept[]{})).isNotEmpty()) {
@@ -247,12 +247,12 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         return;
       }
 
-      // node.enumProp.set(...) 
+      // node.enumProp.set(...)
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_SetOperation$ot)) {
         SNode operation = SNodeOperations.cast(SLinkOperations.getTarget(grandDotExpression, LINKS.operation$gs9E), CONCEPTS.Property_SetOperation$ot);
         SNode value = SLinkOperations.getTarget(operation, LINKS.value$VXqu);
 
-        // set(< ... >) 
+        // set(<...>)
         if (SNodeOperations.isInstanceOf(value, CONCEPTS.EnumMemberReference_Old$15)) {
           if (ListSequence.fromList(SLinkOperations.getChildren(value, LINKS.smodelAttribute$KJ43)).isNotEmpty()) {
             return;
@@ -267,7 +267,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
       }
     }
 
-    // node.enumProp = ... 
+    // node.enumProp=...
     if (SNodeOperations.hasRole(dotExpression, LINKS.lValue$splI)) {
       SNode assigmentExpression = SNodeOperations.cast(SNodeOperations.getParent(dotExpression), CONCEPTS.AssignmentExpression$SE);
       SNode value = SLinkOperations.getTarget(assigmentExpression, LINKS.rValue$spNK);
@@ -276,7 +276,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
       return;
     }
 
-    // by default surround existing dotExpression with member->value conversion code 
+    // bydefaultsurroundexistingdotExpressionwithmember->valueconversioncode
     migration.downgradeExpressionType(newEnum, dotExpression);
   }
 

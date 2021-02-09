@@ -44,7 +44,7 @@ public class CellModel_WithRole_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // relations (links,properties etc.) declared in hierarchy of edited concept 
+            // relations(links,propertiesetc.)declaredinhierarchyofeditedconcept
             SNode editorComponent = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseEditorComponent$49, true, false);
             SNode editedConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent);
             return new ConceptAndSuperConceptsScope(editedConcept);

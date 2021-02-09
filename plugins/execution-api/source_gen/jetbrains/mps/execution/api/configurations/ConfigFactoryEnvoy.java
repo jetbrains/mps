@@ -43,16 +43,16 @@ import java.lang.reflect.InvocationTargetException;
    * Factory may get invalidated independent from ConfigurationType (i.e. if the latter is defined in another, non-reloaded plugin)
    */
   /*package*/ void invalidate() {
-    // package-local, perhaps, with ConfigType.invalidateFactory(Class<RunConfiguration>) 
+    // package-local,perhaps,withConfigType.invalidateFactory(Class<RunConfiguration>)
     myIsIvalid = true;
-    //  perhaps, shall nullify myDelegateClass to release any reference to stale class? 
+    // perhaps,shallnullifymyDelegateClasstoreleaseanyreferencetostaleclass?
   }
 
   @NotNull
   @Override
   public String getId() {
-    // though javadoc in superclass suggests to use getType().getId(), it doesn't allow to distinguish multiple factories for the same type 
-    // However, would be better to distinguish id from user-friendly name 
+    // thoughjavadocinsuperclasssuggeststousegetType().getId(),itdoesn'tallowtodistinguishmultiplefactoriesforthesametype
+    // However,wouldbebettertodistinguishidfromuser-friendlyname
     return myName;
   }
 
@@ -66,7 +66,7 @@ import java.lang.reflect.InvocationTargetException;
   @Override
   public RunConfiguration createTemplateConfiguration(@NotNull Project project) {
     try {
-      // Constructor signature to match one in weave_RunConfigurationConstructor 
+      // Constructorsignaturetomatchoneinweave_RunConfigurationConstructor
       Constructor<? extends BaseMpsRunConfiguration> c = myDelegateClass.getConstructor(Project.class, ConfigurationFactory.class, String.class);
       return c.newInstance(project, this, "");
     } catch (Exception ex) {

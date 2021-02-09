@@ -46,7 +46,7 @@ import jetbrains.mps.vcs.diff.changes.SetConceptChange;
     Object oldValue = type.fromString(oldPropValue);
     Object newValue = type.fromString(newPropValue);
     if (oldValue == SType.NOT_A_VALUE || newValue == SType.NOT_A_VALUE) {
-      // If there is no language available (e.g. in merge driver) then we compare raw property values 
+      // Ifthereisnolanguageavailable(e.g.inmergedriver)thenwecomparerawpropertyvalues
       oldValue = oldPropValue;
       newValue = newPropValue;
     }

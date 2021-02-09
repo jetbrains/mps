@@ -108,7 +108,7 @@ public final class SModelOperations {
     if (model != null) {
       result = model.createNode(MetaAdapterByDeclaration.asInstanceConcept(concept), id);
     } else {
-      // legacy mechanism 
+      // legacymechanism
       result = SModelUtil_new.instantiateConceptDeclaration(concept, model, id, false);
     }
     if (result == null) {
@@ -142,13 +142,13 @@ public final class SModelOperations {
 
   public static SNode getModuleStub(SModel model) {
     SModule module = model.getModule();
-    // FIXME  we have to reference javastub classes, as we don't want j.m.runtime solution to depend from j.m.project 
-    // FIXME     though the true defect is that Model_GetModule operation (which uses this rt code) lives in lang.smodel that doesn't 
-    // FIXME     expose j.m.project as its runtime. Likely, shall move Model_GetModule operation to a distinct language with j.m.project a\s RT 
-    // FIXME     or to specify j.m.project as lang.smodel's RT. This method has to get moved into respective solution regardless. 
-    // I don't want to create blank model so provide the original one as a node factory. As long as PSB doesn't change it, it's all the same. 
-    // XXX the only defect with stateless approach is that each query gets a new instance, therefore n1.model.module != n1.model.module 
-    // XXX Guess, we shall support any SModule here, but at the moment PSB deals with AbstractModule only 
+    // FIXMEwehavetoreferencejavastubclasses,aswedon'twantj.m.runtimesolutiontodependfromj.m.project
+    // FIXMEthoughthetruedefectisthatModel_GetModuleoperation(whichusesthisrtcode)livesinlang.smodelthatdoesn't
+    // FIXMEexposej.m.projectasitsruntime.Likely,shallmoveModel_GetModuleoperationtoadistinctlanguagewithj.m.projecta\sRT
+    // FIXMEortospecifyj.m.projectaslang.smodel'sRT.Thismethodhastogetmovedintorespectivesolutionregardless.
+    // Idon'twanttocreateblankmodelsoprovidetheoriginaloneasanodefactory.AslongasPSBdoesn'tchangeit,it'sallthesame.
+    // XXXtheonlydefectwithstatelessapproachisthateachquerygetsanewinstance,thereforen1.model.module!=n1.model.module
+    // XXXGuess,weshallsupportanySModulehere,butatthemomentPSBdealswithAbstractModuleonly
     if (module instanceof AbstractModule) {
       return (SNode) new ProjectStructureBuilder((AbstractModule) module, model).convert();
     }

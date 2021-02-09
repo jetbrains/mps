@@ -79,14 +79,14 @@ public class ScriptBuilder_Test extends MockTestCase {
   }
   @Test
   public void test_noFacets() throws Exception {
-    // Test empty script (no languages/make facets involved) 
+    // Testemptyscript(nolanguages/makefacetsinvolved)
     ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
     scb.withFinalTarget(new ITarget.Name("none"));
     IScript sc = scb.toScript();
     Assert.assertNotNull(sc);
     Assert.assertFalse(sc.isValid());
     Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).count() == 1);
-    // Fake ScriptBuilder invocation, to satisfy mock expectations of setUp/tearDown 
+    // FakeScriptBuilderinvocation,tosatisfymockexpectationsofsetUp/tearDown
     scb = new ScriptBuilder(myFacetRegistry);
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
       public IFacet.Name select(IFacet f) {
@@ -139,7 +139,7 @@ public class ScriptBuilder_Test extends MockTestCase {
       }
     });
     myFacetRegistry = new FacetRegistry(null);
-    // foe now, need to make instance available through FR.getInstance() 
+    // foenow,needtomakeinstanceavailablethroughFR.getInstance()
     myFacetRegistry.init();
     myFacetRegistry.register(fmake);
     myFacetRegistry.register(fgen);

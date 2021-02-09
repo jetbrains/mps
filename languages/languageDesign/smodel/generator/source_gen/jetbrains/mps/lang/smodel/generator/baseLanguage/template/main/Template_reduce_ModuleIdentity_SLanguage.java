@@ -51,19 +51,19 @@ public class Template_reduce_ModuleIdentity_SLanguage extends TemplateDeclaratio
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_120_0(new PropertyMacroContext(context2, "0L", propertyMacro_8q5ep1_c0a2a0a1a3a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_120_1(new PropertyMacroContext(context2, "0L", propertyMacro_8q5ep1_c0a2a0a1a4a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
         SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_120_2(new PropertyMacroContext(context2, "", propertyMacro_8q5ep1_c0a2a0a1a5a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode5);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

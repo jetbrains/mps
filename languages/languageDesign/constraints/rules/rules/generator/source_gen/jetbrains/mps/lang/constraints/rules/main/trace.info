@@ -237,11 +237,11 @@
       <node id="3562920471664415513" at="139,0,140,123" concept="5" />
       <node id="4636242761502992639" at="147,39,148,77" concept="5" />
       <node id="4622342125580709023" at="164,86,165,224" concept="1" />
-      <node id="315923949161308723" at="177,78,178,96" concept="6" />
-      <node id="315923949161308738" at="178,96,179,62" concept="6" />
+      <node id="315923949161308723" at="177,78,178,83" concept="6" />
+      <node id="315923949161308738" at="178,83,179,53" concept="6" />
       <node id="315923949161324805" at="180,181,181,54" concept="5" />
-      <node id="315923949161308774" at="183,155,184,114" concept="6" />
-      <node id="315923949161308797" at="184,114,185,120" concept="1" />
+      <node id="315923949161308774" at="183,155,184,93" concept="6" />
+      <node id="315923949161308797" at="184,93,185,120" concept="1" />
       <node id="315923949161328670" at="186,7,187,83" concept="5" />
       <node id="8804574841118214537" at="190,78,191,85" concept="4" />
       <node id="8804574841118217565" at="192,23,193,70" concept="1" />
@@ -299,7 +299,7 @@
       <node id="315923949161308770" at="182,10,188,5" concept="0" />
       <node id="4636242761502992625" at="145,0,152,0" concept="8" trace="sourceNodesQuery_2_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="8804574841118220463" at="190,0,197,0" concept="8" trace="varMacro_Value_2_1#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
-      <node id="315923949161308752" at="179,62,188,5" concept="2" />
+      <node id="315923949161308752" at="179,53,188,5" concept="2" />
       <node id="315923949161315805" at="177,0,190,0" concept="8" trace="varMacro_Value_2_0#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
       <scope id="7077979228229598718" at="65,88,66,111" />
       <scope id="2219208159861526306" at="68,88,69,86" />

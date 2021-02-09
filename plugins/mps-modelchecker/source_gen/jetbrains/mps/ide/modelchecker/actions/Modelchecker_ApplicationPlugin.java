@@ -26,7 +26,7 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new CheckModel_Action());
     addAction(new CheckModule_Action());
     addAction(new CheckNamespace_Action());
@@ -34,7 +34,7 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new FindCrossTemplateReferences_Action());
     addAction(new FindReferencesToNonReferenceable_Action());
     addAction(new FindWrongAspectDependencies_Action());
-    // groups 
+    // groups
     addGroup(new CheckModel_ActionGroup(this));
     addGroup(new CheckModule_ActionGroup(this));
     addGroup(new CheckNamespace_ActionGroup(this));

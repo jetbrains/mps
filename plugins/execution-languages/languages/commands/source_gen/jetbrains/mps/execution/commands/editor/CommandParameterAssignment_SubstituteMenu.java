@@ -49,7 +49,7 @@ public class CommandParameterAssignment_SubstituteMenu extends SubstituteMenuBas
   public class SMP_ReferenceScope_hj1tk6_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_hj1tk6_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CommandParameterAssignment$ZP, LINKS.parameterDeclaration$Zibc);
     }
     @NotNull

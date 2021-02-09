@@ -287,7 +287,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private JComponent _QueryFunction_JComponent_vny568_a0b6a() {
     final RelativePathHelper rph = RelativePathHelper.forModule(SNodeOperations.getModel(myNode).getModule());
     if (rph == null) {
-      // never happens, see show if condition on outer cell 
+      // neverhappens,seeshowifconditiononoutercell
       return null;
     }
     return EditorUtil.createSelectImageButton(myNode, PROPS.internalBaseDirectory$_8Zr, getEditorContext(), new _FunctionTypes._return_P1_E0<String, String>() {

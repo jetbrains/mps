@@ -85,7 +85,7 @@ public final class NewTemplateInReductionRule_Intention extends AbstractIntentio
       SPropertyOperations.set(t, PROPS.name$MnvL, name);
       SLinkOperations.setTarget(t, LINKS.applicableConcept$JSvx, applicableConcept);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
-      // make reference 
+      // makereference
       SNode tr = SNodeFactoryOperations.setNewChild(node, LINKS.ruleConsequence$UqzC, CONCEPTS.TemplateDeclarationReference$QT);
       SLinkOperations.setTarget(tr, LINKS.template$6_6, t);
       SelectionUtil.selectCell(editorContext, tr, SelectionManager.FIRST_EDITABLE_CELL);

@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.model.SModelName;
   @Nullable
   @Override
   public String getErrorText(String input) {
-    // Use caching to avoid double check from consequence calls of checkInput & getErrorText 
+    // UsecachingtoavoiddoublecheckfromconsequencecallsofcheckInput&getErrorText
     if (Objects.equals(input, myLastInput)) {
       return myError;
     }

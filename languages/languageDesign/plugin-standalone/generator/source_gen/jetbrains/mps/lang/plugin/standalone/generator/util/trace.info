@@ -13,17 +13,17 @@
     <file name="PluginUtils.java">
       <node id="5023285075122028228" at="20,53,21,749" concept="4" />
       <node id="5023285075122038876" at="23,57,24,644" concept="4" />
-      <node id="2220549924074045193" at="26,88,27,116" concept="5" />
-      <node id="2220549924074046224" at="27,116,28,125" concept="5" />
+      <node id="2220549924074045193" at="26,88,27,104" concept="5" />
+      <node id="2220549924074046224" at="27,104,28,105" concept="5" />
       <node id="6362460243896632403" at="29,136,30,13" concept="4" />
       <node id="5115557898426114451" at="32,134,33,13" concept="4" />
       <node id="6362460243896632408" at="34,5,35,0" concept="6" />
       <node id="812693349008551611" at="35,0,36,54" concept="3" />
       <node id="2220549924074047168" at="36,54,37,0" concept="6" />
-      <node id="2220549924074061359" at="38,201,39,91" concept="5" />
-      <node id="2220549924074061375" at="39,91,40,126" concept="5" />
-      <node id="2220549924074816857" at="40,126,41,161" concept="5" />
-      <node id="2220549924074061302" at="41,161,42,13" concept="4" />
+      <node id="2220549924074061359" at="38,201,39,79" concept="5" />
+      <node id="2220549924074061375" at="39,79,40,115" concept="5" />
+      <node id="2220549924074816857" at="40,115,41,138" concept="5" />
+      <node id="2220549924074061302" at="41,138,42,13" concept="4" />
       <node id="2220549924074047228" at="43,5,44,0" concept="6" />
       <node id="812693349008551779" at="44,0,45,71" concept="3" />
       <node id="6362460243896632414" at="46,72,47,13" concept="4" />
@@ -45,7 +45,7 @@
       <node id="681855071694482338" at="18,0,20,0" concept="0" trace="PluginUtils#()V" />
       <node id="681855071694482342" at="20,0,23,0" concept="8" trace="needAppPlugin#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="681855071694482362" at="23,0,26,0" concept="8" trace="needProjectPlugin#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="6362460243896632387" at="28,125,31,5" concept="2" />
+      <node id="6362460243896632387" at="28,105,31,5" concept="2" />
       <node id="5115557898426114449" at="31,5,34,5" concept="2" />
       <node id="812693349008551481" at="45,71,48,5" concept="2" />
       <node id="2220549924074049150" at="37,0,43,5" concept="2" />

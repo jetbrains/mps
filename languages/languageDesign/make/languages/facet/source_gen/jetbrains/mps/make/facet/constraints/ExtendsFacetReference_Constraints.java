@@ -47,7 +47,7 @@ public class ExtendsFacetReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // todo: rewrite using filtering scope on facets scope! 
+            // todo:rewriteusingfilteringscopeonfacetsscope!
             return ListScope.forResolvableElements(Sequence.fromIterable(new FacetsScope(_context.getContextNode()).getAvailableElements(null)).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 return SNodeOperations.cast(it, CONCEPTS.FacetDeclaration$Nd);

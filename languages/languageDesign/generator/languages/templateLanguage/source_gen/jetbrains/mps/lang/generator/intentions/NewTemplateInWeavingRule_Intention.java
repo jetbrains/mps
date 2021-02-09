@@ -83,7 +83,7 @@ public final class NewTemplateInWeavingRule_Intention extends AbstractIntentionD
       SPropertyOperations.set(t, PROPS.name$MnvL, name);
       SLinkOperations.setTarget(t, LINKS.applicableConcept$JSvx, applicableConcept);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
-      //  initialize 'content node' in template 
+      // initialize'contentnode'intemplate
       SNode contextNodeType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Weaving_MappingRule$qb), LINKS.contextNodeQuery$ix$f));
       if (SNodeOperations.isInstanceOf(contextNodeType, CONCEPTS.SNodeType$hR)) {
         SNode contextNodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(contextNodeType, CONCEPTS.SNodeType$hR), LINKS.concept$OMgE);
@@ -93,7 +93,7 @@ public final class NewTemplateInWeavingRule_Intention extends AbstractIntentionD
           }
         }
       }
-      // make reference 
+      // makereference
       SNode tr = SNodeFactoryOperations.setNewChild(node, LINKS.ruleConsequence$JzSl, CONCEPTS.TemplateDeclarationReference$QT);
       SLinkOperations.setTarget(tr, LINKS.template$6_6, t);
       SelectionUtil.selectCell(editorContext, tr, SelectionManager.FIRST_EDITABLE_CELL);

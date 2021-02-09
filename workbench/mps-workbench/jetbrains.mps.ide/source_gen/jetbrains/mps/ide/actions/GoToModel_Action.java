@@ -55,7 +55,7 @@ public class GoToModel_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.model");
 
-    // PsiDocumentManager.getInstance(project).commitAllDocuments(); 
+    // PsiDocumentManager.getInstance(project).commitAllDocuments();
     final ConditionalScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), null, null);
     final ConditionalScope globalScope = new ConditionalScope(new FilteredGlobalScope(), null, null);
 

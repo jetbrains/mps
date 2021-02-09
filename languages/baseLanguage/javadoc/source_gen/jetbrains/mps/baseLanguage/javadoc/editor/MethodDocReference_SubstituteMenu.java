@@ -50,7 +50,7 @@ public class MethodDocReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_wsoffm_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_wsoffm_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.MethodDocReference$cu, LINKS.methodDeclaration$z_UH);
     }
     @NotNull

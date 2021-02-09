@@ -49,7 +49,7 @@ public class CompletionCustomization_PropertyFeature_SubstituteMenu extends Subs
   public class SMP_ReferenceScope_jtpam7_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_jtpam7_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CompletionCustomization_PropertyFeature$U, LINKS.property$gitv);
     }
     @NotNull

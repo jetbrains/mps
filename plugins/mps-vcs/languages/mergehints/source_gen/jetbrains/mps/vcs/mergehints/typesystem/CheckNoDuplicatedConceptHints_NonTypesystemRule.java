@@ -33,7 +33,7 @@ public class CheckNoDuplicatedConceptHints_NonTypesystemRule extends AbstractNon
       return;
     }
 
-    // check only one hint is specified for exact concept 
+    // checkonlyonehintisspecifiedforexactconcept
     Iterable<SNode> sameConceptHints = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(cd), CONCEPTS.VCSHints$kA)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return SLinkOperations.getChildren(it, LINKS.concepts$nb$7);

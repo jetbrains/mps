@@ -71,7 +71,7 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
   protected List<SNodeReference> collectCandidates(final ProgressMonitor progress) {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     if (mpsProject == null) {
-      //  e.g. default idea project 
+      // e.g.defaultideaproject
       return ListSequence.fromList(new ArrayList<SNodeReference>());
     }
     ModelAccessHelper accessHelper = new ModelAccessHelper(mpsProject.getRepository());

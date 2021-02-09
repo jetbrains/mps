@@ -47,7 +47,7 @@ public class Template_MyOutputRoot2 extends TemplateDeclarationBase {
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

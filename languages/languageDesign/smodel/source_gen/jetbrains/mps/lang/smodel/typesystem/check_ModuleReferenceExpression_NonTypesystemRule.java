@@ -22,7 +22,7 @@ public class check_ModuleReferenceExpression_NonTypesystemRule extends AbstractN
   }
   public void applyRule(final SNode moduleRefExpr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (ModuleReferenceExpression__BehaviorDescriptor.getModule_id3wj3sjzQUV1.invoke(moduleRefExpr) == null) {
-      // XXX CheckedModuleReference does the same with property constraint, what's the right approach? 
+      // XXXCheckedModuleReferencedoesthesamewithpropertyconstraint,what'stherightapproach?
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(moduleRefExpr, (SPropertyOperations.getString(moduleRefExpr, PROPS.moduleId$cMi1) == null ? "Module is not specified" : "Couldn't find module"), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "6857306964584715722", null, errorTarget);

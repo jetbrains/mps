@@ -159,7 +159,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
         SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$5xQk), LINKS.statement$53DE, null);
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(_quotation_createNode_x9xljz_a0a31a0m0a());
         ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(equalsDeclaration);
-        // Method equals() is generated, now hashCode method body generation begins 
+        // Methodequals()isgenerated,nowhashCodemethodbodygenerationbegins
         SNode hashCodeDeclaration = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_x9xljz_a0a0a61a0m0a()), CONCEPTS.InstanceMethodDeclaration$39);
         SNode resultDeclaration = _quotation_createNode_x9xljz_a0r0a21a0();
         SNode resultReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);

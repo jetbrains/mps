@@ -41,11 +41,11 @@ public final class UnitTestProcessListener extends ProcessAdapter {
 
     TestEventMessage testEvent = TestEventMessage.parse(text.trim());
     if (testEvent != null) {
-      // event happened 
+      // eventhappened
       myLastEvent = testEvent;
       myDispatcher.onTestEvent(testEvent);
     } else {
-      // just text came 
+      // justtextcame
       if (isErrorOutputInProgress()) {
         outputKind = ProcessOutputTypes.STDERR;
       }

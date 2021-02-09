@@ -56,23 +56,23 @@ public class DebugMappingsBuilder {
         assert keyInputNode != null;
         SLinkOperations.setNewChild(entry, LINKS.inputNode$NcgX, null);
         SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.ElementaryNodeId$Yd);
-        // keyInputNode comes from one of transient models, and we need to replace it with a 'stable' version, exposed in a CP (or initial) model 
-        // XXX what if keyInputNode IS from CP model, wouldn't that give us wrong origin (the one from previous trace)? 
-        //     Indeed, this makes sense only as long as we use user objects to pass origin value (TT object is essentially stateless), and copy these 
-        //     when creating a CP model. If TT keeps map for the given transition only (bounded to previous CP), then the issue is likely less important 
-        //     (though still valid - in case node id of a CP node matches nodeid of some irrelevant transient one). Would be great if we can tell if keyInputNode 
-        //     comes from a transient, external or CP model. FIXME I still need to deal with 'foreign' nodes as ML keys, and then I could decide better what to do here. 
+        // keyInputNodecomesfromoneoftransientmodels,andweneedtoreplaceitwitha'stable'version,exposedinaCP(orinitial)model
+        // XXXwhatifkeyInputNodeISfromCPmodel,wouldn'tthatgiveuswrongorigin(theonefromprevioustrace)?
+        // Indeed,thismakessenseonlyaslongasweuseuserobjectstopassoriginvalue(TTobjectisessentiallystateless),andcopythese
+        // whencreatingaCPmodel.IfTTkeepsmapforthegiventransitiononly(boundedtopreviousCP),thentheissueislikelylessimportant
+        // (thoughstillvalid-incasenodeidofaCPnodematchesnodeidofsomeirrelevanttransientone).WouldbegreatifwecantellifkeyInputNode
+        // comesfromatransient,externalorCPmodel.FIXMEIstillneedtodealwith'foreign'nodesasMLkeys,andthenIcoulddecidebetterwhattodohere.
         SNodeId inputNodeId = (myOriginTrace.hasOrigin(keyInputNode) ? myOriginTrace.getOrigin(keyInputNode) : keyInputNode.getNodeId());
         SPropertyOperations.assign(inputNodeIdentity, PROPS.nodeId$2ASg, inputNodeId.toString());
         SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB, inputNodeIdentity);
         SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), PROPS.presentation$FmHa, keyInputNode.getPresentation());
         SModel inputNodeModel = keyInputNode.getModel();
-        // in fact, inputNodeModel when keyInputNode is from the same model is unlikely to be checkpoint, we need its counterpart 
-        // from myOriginTrace's checkpoint model, but I have no idea how to get one here. 
+        // infact,inputNodeModelwhenkeyInputNodeisfromthesamemodelisunlikelytobecheckpoint,weneeditscounterpart
+        // frommyOriginTrace'scheckpointmodel,butIhavenoideahowtogetonehere.
         if (inputNodeModel != null && (isCheckpointModel(inputNodeModel) || !(inputNodeModel instanceof TransientSModel))) {
-          // no reason to save reference to a model that would be disposed and eventually break the reference 
+          // noreasontosavereferencetoamodelthatwouldbedisposedandeventuallybreakthereference
           SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), PROPS.modelName$F5oU, inputNodeModel.getName().getValue());
-          // The problem with direct reference is that I need to respect change in model reference for persisted CP model if it changes 
+          // TheproblemwithdirectreferenceisthatIneedtorespectchangeinmodelreferenceforpersistedCPmodelifitchanges
           SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.nodePtr$Fm07, keyInputNode);
         }
         SNodeReference origin = TracingUtil.getInput(keyInputNode);
@@ -125,15 +125,15 @@ public class DebugMappingsBuilder {
   }
 
   private void fill(SNode input, SNode presentation) {
-    // XXX copied from similar code for GeneratorDebug_InputNode, above 
+    // XXXcopiedfromsimilarcodeforGeneratorDebug_InputNode,above
     SNodeId inputNodeId = (myOriginTrace.hasOrigin(input) ? myOriginTrace.getOrigin(input) : input.getNodeId());
     SPropertyOperations.assign(presentation, PROPS.nodeId$wvdy, inputNodeId.toString());
     SPropertyOperations.assign(presentation, PROPS.presentation$PQVs, input.getPresentation());
     SModel inputNodeModel = input.getModel();
     if (inputNodeModel != null && (isCheckpointModel(inputNodeModel) || !(inputNodeModel instanceof TransientSModel))) {
-      // no reason to save reference to a model that would be disposed and eventually break the reference 
+      // noreasontosavereferencetoamodelthatwouldbedisposedandeventuallybreakthereference
       SPropertyOperations.assign(presentation, PROPS.modelName$PRat, inputNodeModel.getName().getValue());
-      // The problem with direct reference is that I need to respect change in model reference for persisted CP model if it changes 
+      // TheproblemwithdirectreferenceisthatIneedtorespectchangeinmodelreferenceforpersistedCPmodelifitchanges
       SLinkOperations.setTarget(presentation, LINKS.nodePtr$Snb7, input);
     }
     SNodeReference origin = TracingUtil.getInput(input);
@@ -151,7 +151,7 @@ public class DebugMappingsBuilder {
    * or that we would mistakenly take a wrong one (i.e. if aforementioned script removes a node registered as an ouput and adds another one with the same id).
    */
   private SNode substituteOutputNode(SModel checkpointModel, SNode n) {
-    // Generator 
+    // Generator
     SNode tn = checkpointModel.getNode(n.getNodeId());
     if (tn == null) {
       Message m = new Message(MessageKind.ERROR, getClass(), "Didn't find labeled output node in a checkpoint model, original value left.");
@@ -163,8 +163,8 @@ public class DebugMappingsBuilder {
   }
 
   private boolean isCheckpointModel(SModel m) {
-    // CP models may be exposed as transients; we need to keep references to CP models 
-    // Need better condition than just model attribute, though. 
+    // CPmodelsmaybeexposedastransients;weneedtokeepreferencestoCPmodels
+    // Needbetterconditionthanjustmodelattribute,though.
     return CrossModelEnvironment.isCheckpointModel(m);
   }
 

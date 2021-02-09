@@ -57,9 +57,9 @@ public class FileSetUtil {
       for (SNode fm : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.children$aMRO), CONCEPTS.BuildLayout_Filemode$sx))) {
         if (hasExplicitFilesetsDescendant(fm)) {
           ListSequence.fromList(rv).addElement(fm);
-          // I do truly need to go inside a Filemode container - each Filemode that has 'explicit' filesets get distinct temp directory, 
-          //   not part of ancestor temp dir; each such Filemode get independent <zipfileset> in reduce_FilemodeRootsFileset 
-          //   So in case there's nested Filemode, still need to go further down. 
+          // IdotrulyneedtogoinsideaFilemodecontainer-eachFilemodethathas'explicit'filesetsgetdistincttempdirectory,
+          // notpartofancestortempdir;eachsuchFilemodegetindependent<zipfileset>inreduce_FilemodeRootsFileset
+          // Soincasethere'snestedFilemode,stillneedtogofurtherdown.
         }
         queue.addLast(fm);
       }
@@ -70,9 +70,9 @@ public class FileSetUtil {
     return rv;
   }
   private static boolean hasExplicitFilesetsDescendant(SNode container) {
-    // FIXME not that I care to get BL_Node, it's just a defect in descendants implementation that ignore stop concepts unless there's specific concept to look up. 
-    // JFTR, we care to get "explicit" (generated explicitly, as part of 'assembly' task, not as part of archive) of this Filemode node, not of any  
-    // potential Filemode descendant, hence use of stop concept in descendants (and !BL_Filemode check, too). 
+    // FIXMEnotthatIcaretogetBL_Node,it'sjustadefectindescendantsimplementationthatignorestopconceptsunlessthere'sspecificconcepttolookup.
+    // JFTR,wecaretoget"explicit"(generatedexplicitly,aspartof'assembly'task,notaspartofarchive)ofthisFilemodenode,notofany
+    // potentialFilemodedescendant,henceuseofstopconceptindescendants(and!BL_Filemodecheck,too).
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.BuildLayout_Node$Rb, false, new SAbstractConcept[]{CONCEPTS.BuildLayout_Filemode$sx})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.hasRole(it, LINKS.children$aMRO);
@@ -85,11 +85,11 @@ public class FileSetUtil {
   }
 
   public static boolean hasExplicitFilesets(SNode container) {
-    // XXX why do we recurse hasExplicitFilesets() into BL_Folder only, and not into BL_Filemode? What if there's Filemode with nested FileSet.isImplicit=false  
-    // (_CustomCopy with few processors, e.g. translated file) - do we recognize it as 'explicit'?  
-    //  ^^^^ Seems that we treat each Filemode's explicit fileset independently 
-    //  
-    // Also, I don't quite understand why children other than specified are treated as explicit filesets, e.g. BL_ExportAsJavaLibrary or BuildMpsLayout_ModuleSources 
+    // XXXwhydowerecursehasExplicitFilesets()intoBL_Folderonly,andnotintoBL_Filemode?Whatifthere'sFilemodewithnestedFileSet.isImplicit=false
+    // (_CustomCopywithfewprocessors,e.g.translatedfile)-dowerecognizeitas'explicit'?
+    // ^^^^SeemsthatwetreateachFilemode'sexplicitfilesetindependently
+    // 
+    // Also,Idon'tquiteunderstandwhychildrenotherthanspecifiedaretreatedasexplicitfilesets,e.g.BL_ExportAsJavaLibraryorBuildMpsLayout_ModuleSources
     return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH)) || hasExplicitFilesets(SNodeOperations.cast(it, CONCEPTS.BuildLayout_Folder$AH)));

@@ -85,8 +85,8 @@ import org.apache.log4j.Level;
     addPluginsToStartupArgs(startupArgs);
     startupArgs.setLoadBootstrapLibraries(true);
 
-    // XXX May want to pass value of idea.additional.classpath system property further to new IdeaApplication instance to ensure plugins that are 
-    // loaded from sources could get loaded in the new application as well. 
+    // XXXMaywanttopassvalueofidea.additional.classpathsystempropertyfurthertonewIdeaApplicationinstancetoensurepluginsthatare
+    // loadedfromsourcescouldgetloadedinthenewapplicationaswell.
     for (ITestNodeWrapper test : ListSequence.fromList(myTestsToRun.getTests())) {
       args.addTest(test);
     }
@@ -113,9 +113,9 @@ import org.apache.log4j.Level;
 
   private void addModulesAndDepsToStartupArgs(@Mutable ScriptData startupArgs) {
     final RepositoryDescriptor rd = new RepositoryDescriptor();
-    // I've got set of reference to modules I need to present in a new MPS instance 
-    // and now have to guess their locations to pass to the new instance. 
-    // XXX here, we exploit the assumption module descriptor file resides under a module root 
+    // I'vegotsetofreferencetomodulesIneedtopresentinanewMPSinstance
+    // andnowhavetoguesstheirlocationstopasstothenewinstance.
+    // XXXhere,weexploittheassumptionmoduledescriptorfileresidesunderamoduleroot
     myRepo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
@@ -126,10 +126,10 @@ import org.apache.log4j.Level;
           }
         }
         Collection<SModule> execClosure = collectExecuteCP(ListSequence.fromList(modules).distinct());
-        // XXX don't we need to add respective generator module jars like we do inMpsTestsSuite and GenerateTask so tha 
-        //     environment started from WithPlatformTestExecutor loads all modules properly? 
-        //     OTOH, language and generator modules from the MPS platform are likely to get loaded regardless of the setting, 
-        //           while languages and generators from the active project are non-deployed anyway 
+        // XXXdon'tweneedtoaddrespectivegeneratormodulejarslikewedoinMpsTestsSuiteandGenerateTasksotha
+        // environmentstartedfromWithPlatformTestExecutorloadsallmodulesproperly?
+        // OTOH,languageandgeneratormodulesfromtheMPSplatformarelikelytogetloadedregardlessofthesetting,
+        // whilelanguagesandgeneratorsfromtheactiveprojectarenon-deployedanyway
         for (SModule m : CollectionSequence.fromCollection(execClosure)) {
           if (false == m instanceof AbstractModule) {
             continue;
@@ -138,8 +138,8 @@ import org.apache.log4j.Level;
           if (descriptorFile == null) {
             continue;
           }
-          // XXX in fact, for non-deployed module this would end up with a module source dir, which is not 'file' per se, but as long as there's 
-          // no distinction in processing rd.files and rd.folders (ModulesMiner doesn't care), I don't bother here either. 
+          // XXXinfact,fornon-deployedmodulethiswouldendupwithamodulesourcedir,whichisnot'file'perse,butaslongasthere's
+          // nodistinctioninprocessingrd.filesandrd.folders(ModulesMinerdoesn'tcare),Idon'tbotherhereeither.
           rd.files.add(descriptorFile.getBundleHome().getPath());
         }
       }
@@ -148,7 +148,7 @@ import org.apache.log4j.Level;
   }
 
   private Set<SModule> collectExecuteCP(Iterable<SModule> modules) {
-    // yes, assuming that... 
+    // yes,assumingthat...
     final Map<Solution, List<Language>> allRTs2Lang = this.getRTs2LangInRepo();
     Collection<SModule> modulesWithDeps = getExecuteDeps(Sequence.fromIterable(modules).toListSequence());
     Iterable<SModule> javaModules = CollectionSequence.fromCollection(modulesWithDeps).where(new IWhereFilter<SModule>() {
@@ -156,7 +156,7 @@ import org.apache.log4j.Level;
         return it.getFacet(JavaModuleFacet.class) != null;
       }
     });
-    // rt modules in our closure 
+    // rtmodulesinourclosure
     Iterable<SModule> rtsModules = Sequence.fromIterable(javaModules).where(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
         return it instanceof Solution && MapSequence.fromMap(allRTs2Lang).containsKey((Solution) it);
@@ -167,8 +167,8 @@ import org.apache.log4j.Level;
         return MapSequence.fromMap(allRTs2Lang).get((Solution) it);
       }
     }).where(new NotNullWhereFilter<Language>()).distinct();
-    // used lang for runtimes we need since we are not capable of locating the runtime classes 
-    // when we are running java class for example 
+    // usedlangforruntimesweneedsincewearenotcapableoflocatingtheruntimeclasses
+    // whenwearerunningjavaclassforexample
     return SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(javaModules).union(CollectionSequence.fromCollection(getExecuteDeps(Sequence.fromIterable(usedLangsForRTs).toListSequence()))));
   }
 
@@ -203,16 +203,16 @@ import org.apache.log4j.Level;
   }
 
   private void addMacrosToStartupArgs(@Mutable ScriptData startupArgs) {
-    // FIXME Shall use proper ComponentHost.findComponent to access PathMacros instance 
+    // FIXMEShalluseproperComponentHost.findComponenttoaccessPathMacrosinstance
     PathMacros pathMacros = PathMacros.getInstance();
-    // XXX not sure why we iterate over user names only (not getNames()), it's the way it used to be in LanguageTestWrapper/AbstractTestWrapper for a long time 
+    // XXXnotsurewhyweiterateoverusernamesonly(notgetNames()),it'sthewayitusedtobeinLanguageTestWrapper/AbstractTestWrapperforalongtime
     for (String key : pathMacros.getUserNames()) {
       String value = pathMacros.getValue(key);
       if (value != null) {
         startupArgs.addMacro(key, value);
       } else {
-        // XXX EnvironmentBase is not quite friendly to null macro values. I can't decide whether it's better to relax this restriction (who cares what macro value is 
-        // except its consumer?), to report a warning here or to let EnvironmentBase do that. 
+        // XXXEnvironmentBaseisnotquitefriendlytonullmacrovalues.Ican'tdecidewhetherit'sbettertorelaxthisrestriction(whocareswhatmacrovalueis
+        // exceptitsconsumer?),toreportawarninghereortoletEnvironmentBasedothat.
         if (LOG.isEnabledFor(Level.WARN)) {
           LOG.warn(String.format("No value for macro %s, ignored", key));
         }

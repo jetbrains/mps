@@ -38,7 +38,7 @@ public class CheckpointSynchronization_Constraints extends BaseConstraintsDescri
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // do not allow synchronize with a checkpoint that references another one, always use original CP declaration 
+    // donotallowsynchronizewithacheckpointthatreferencesanotherone,alwaysuseoriginalCPdeclaration
     if (link.equals(LINKS.checkpoint$18uq)) {
       return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.DeclaredCheckpointSpec$HD) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.InPlaceCheckpointRefSpec$H6);
     }

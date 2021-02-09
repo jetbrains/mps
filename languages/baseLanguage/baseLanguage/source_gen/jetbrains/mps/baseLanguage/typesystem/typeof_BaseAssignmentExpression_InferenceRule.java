@@ -51,7 +51,7 @@ public class typeof_BaseAssignmentExpression_InferenceRule extends AbstractInfer
               }
             }
           } else {
-            // Ensure rval is an IntegerType 
+            // EnsurervalisanIntegerType
             if (!(typeCheckingContext.isSingleTypeComputation())) {
               {
                 SNode _nodeToCheck_1029348928467 = baseAssignmentExpression;

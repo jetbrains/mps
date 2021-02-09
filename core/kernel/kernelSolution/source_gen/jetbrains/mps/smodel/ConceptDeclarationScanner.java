@@ -52,7 +52,7 @@ public class ConceptDeclarationScanner {
     List<SNode> roots = SModelOperations.roots(m, null);
     for (SNode cd : SNodeOperations.ofConcept(roots, CONCEPTS.ConceptDeclaration$gH)) {
       SNode ex = SLinkOperations.getTarget(cd, LINKS.extends$_Isg);
-      // ex could be null if no explicit BaseConcept in super 
+      // excouldbenullifnoexplicitBaseConceptinsuper
       if (ex != null && SNodeOperations.getModel(ex) != m) {
         myExternalConcepts.add(ex);
       }
@@ -72,14 +72,14 @@ public class ConceptDeclarationScanner {
     for (SNode cd : myExternalConcepts) {
       myExtendedModels.add(SNodeOperations.getModel(cd));
     }
-    // XXX for the time being, consider implements of a CD as 'extends' relation between the languages, although this needs extra consideration 
-    // perhaps, shall not treat CD.implements (but still ICD.extends) as mandatory for 'extends' between languages, as it's common to see marker interfaces 
-    // (like IMainClass) that bring (sometimes huge) dependency hierarchy for no added value. 
+    // XXXforthetimebeing,considerimplementsofaCDas'extends'relationbetweenthelanguages,althoughthisneedsextraconsideration
+    // perhaps,shallnottreatCD.implements(butstillICD.extends)asmandatoryfor'extends'betweenlanguages,asit'scommontoseemarkerinterfaces
+    // (likeIMainClass)thatbring(sometimeshuge)dependencyhierarchyfornoaddedvalue.
     for (SNode cd : myExternalIfaces) {
       myExtendedModels.add(SNodeOperations.getModel(cd));
     }
     if (myExcludeLangCore) {
-      // here comes an odd way to deal with missing model-reference expression 
+      // herecomesanoddwaytodealwithmissingmodel-referenceexpression
       final SModelReference langCoreStructureModelRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626").getModelReference();
 
       myExtendedModels.removeIf(new Predicate<SModel>() {

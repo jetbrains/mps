@@ -49,7 +49,7 @@ public class MultiForEachVariableReference_SubstituteMenu extends SubstituteMenu
   public class SMP_ReferenceScope_gbjrjx_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_gbjrjx_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.MultiForEachVariableReference$4f, LINKS.variable$ZC9Q);
     }
     @NotNull

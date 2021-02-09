@@ -24,7 +24,7 @@ public class SModelLang_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$mzxB)).addElement(parm);
         }
       }
-      // init default parms 
+      // initdefaultparms
       if (ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$mzxB)).isEmpty()) {
         SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$mzxB, CONCEPTS.OperationParm_Concept$WJ);
       }
@@ -38,7 +38,7 @@ public class SModelLang_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$mzxB)).addElement(parm);
         }
       }
-      // init default parms 
+      // initdefaultparms
       if (ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$mzxB)).isEmpty()) {
         SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$mzxB, CONCEPTS.OperationParm_Concept$WJ);
       }

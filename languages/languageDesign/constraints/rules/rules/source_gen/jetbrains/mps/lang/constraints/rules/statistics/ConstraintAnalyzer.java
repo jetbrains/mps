@@ -151,7 +151,7 @@ public class ConstraintAnalyzer {
           SNode returnStatement = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).first(), CONCEPTS.ReturnStatement$lt);
           if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92), CONCEPTS.BooleanConstant$n4)) {
             if (SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92), CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M) == true) {
-              // do nothing 
+              // donothing
             } else {
               ListSequence.fromList(rules).addElement(createRule_6fp4o1_a0a0a0a0b0b0b0o5("rule" + (ListSequence.fromList(rules).count() + 1), invertExpression(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17))));
             }
@@ -436,9 +436,9 @@ public class ConstraintAnalyzer {
   }
 
   public Map<Class<Result>, List<SNode>> classify(SearchScope searchScope) {
-    // in MPS project: 
-    // ResultStatefulVariable: 7 nodes 
-    // ResultIfLatter: 286 nodes 
+    // inMPSproject:
+    // ResultStatefulVariable:7nodes
+    // ResultIfLatter:286nodes
     {
       SearchScope scope_6fp4o1_d0q = CommandUtil.createScope(searchScope);
       final SearchScope scope_6fp4o1_d0q_0 = scope_6fp4o1_d0q;

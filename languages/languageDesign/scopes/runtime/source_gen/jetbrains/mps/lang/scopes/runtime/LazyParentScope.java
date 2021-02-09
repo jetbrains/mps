@@ -20,7 +20,7 @@ public class LazyParentScope extends DelegatingScope {
   protected Scope getScope() {
     if (!(isCalculated)) {
       scope = ScopeUtils.parentScope(node, kind);
-      // todo: think about this case... 
+      // todo:thinkaboutthiscase...
       if (scope == null) {
         scope = new EmptyScope();
       }

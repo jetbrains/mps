@@ -57,7 +57,7 @@ public class Set_WrapperFactory extends ValueWrapperFactory {
       }, Collections.<CustomJavaWatchable>emptyList());
     }
     protected List<CustomJavaWatchable> getSubvaluesImpl(IObjectValueProxy value) throws EvaluationException {
-      // again, same as ListViewer 
+      // again,sameasListViewer
       List<CustomJavaWatchable> watchables = new ArrayList<CustomJavaWatchable>();
 
       PrimitiveValueProxy size = ((PrimitiveValueProxy) value.invokeMethod("size", "()I", getThreadReference()));

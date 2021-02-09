@@ -78,11 +78,11 @@ public final class SmartRefGeneratedMenuMigration_MigrationScript extends BaseMi
       @Override
       public void doUpdateInstanceNode(SNode node) {
         final SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.SubstituteMenu_Named$cm);
-        // we need a scope with project modules (the script deals with modules in a project). 
-        // I assume the node comes from a project module here. Since there's no RepositoryScope, 
-        // I resort to GlobalScope that takes SRepository. I don't need to persist/re-run these find results 
-        // therefore I'm ok with a non-FindUsagesScope subclass. 
-        // FIXME introduce a ProjectRepository, decide where to place if (tough part), use it here. 
+        // weneedascopewithprojectmodules(thescriptdealswithmodulesinaproject).
+        // Iassumethenodecomesfromaprojectmodulehere.Sincethere'snoRepositoryScope,
+        // IresorttoGlobalScopethattakesSRepository.Idon'tneedtopersist/re-runthesefindresults
+        // thereforeI'mokwithanon-FindUsagesScopesubclass.
+        // FIXMEintroduceaProjectRepository,decidewheretoplaceif(toughpart),useithere.
         GlobalScope projectRepository = new GlobalScope(SNodeOperations.getModel(node).getRepository());
         SearchResults<SNode> results = FindUtils.getSearchResults(new EmptyProgressMonitor(), parent, projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder");
         List<SearchResult<SNode>> usages = results.getSearchResults();

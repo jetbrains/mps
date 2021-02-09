@@ -11,12 +11,12 @@ import javax.swing.KeyStroke;
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2151742525039069961", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class DefaultForGNOME_KeymapChanges extends BaseKeymapChanges {
   public DefaultForGNOME_KeymapChanges() {
-    // simple 
-    // simple with remove/replace 
+    // simple
+    // simplewithremove/replace
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindLanguageConceptsUsages_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 8"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindModuleUsage_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 7"), false, true));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "Default for GNOME";

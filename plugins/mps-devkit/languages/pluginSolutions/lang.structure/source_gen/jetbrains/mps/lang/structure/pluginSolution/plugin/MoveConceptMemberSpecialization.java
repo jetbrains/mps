@@ -19,7 +19,7 @@ public abstract class MoveConceptMemberSpecialization<T extends SConceptFeature>
   public void updateMigrationDescription(SNode initialMoveRoot, SNode finalMoveRoot, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder) {
     ListSequence.fromList(migrationBuilder.myDescription.memberArgs).addElement(SPropertyOperations.getString(SNodeOperations.cast(finalMoveRoot, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL));
     if (ListSequence.fromList(migrationBuilder.myDescription.conceptArgs).isNotEmpty()) {
-      // link are moved together with concepts 
+      // linkaremovedtogetherwithconcepts
       return;
     }
     String targetConceptName = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(finalMoveRoot), CONCEPTS.AbstractConceptDeclaration$KA), PROPS.name$MnvL);

@@ -48,7 +48,7 @@ public class HelpConceptReference_SmartReference extends SubstituteMenuBase {
   public class SMP_ReferenceScope_gtqjni_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_gtqjni_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.HelpConceptReference$Y8, LINKS.command$b3Jl);
     }
     @NotNull

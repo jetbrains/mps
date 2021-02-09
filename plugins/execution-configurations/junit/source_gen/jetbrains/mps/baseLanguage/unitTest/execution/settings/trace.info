@@ -791,8 +791,8 @@
       <node id="2034046503361594471" at="65,35,66,56" concept="12" />
       <node id="2034046503361594477" at="66,56,67,66" concept="12" />
       <node id="4621654600889254096" at="67,66,68,28" concept="6" />
-      <node id="5527695573014234271" at="69,9,70,138" concept="14" />
-      <node id="5527695573014349491" at="70,138,71,89" concept="14" />
+      <node id="5527695573014234271" at="69,9,70,119" concept="14" />
+      <node id="5527695573014349491" at="70,119,71,76" concept="14" />
       <node id="5527695573014189430" at="73,48,74,58" concept="6" />
       <node id="4621654600889295111" at="78,7,79,83" concept="13" />
       <node id="5026218632386564183" at="82,56,83,23" concept="6" />
@@ -806,7 +806,7 @@
       <node id="4621654600889589766" at="82,0,86,0" concept="11" trace="setModel#(Lorg/jetbrains/mps/openapi/model/SModelReference;)V" />
       <node id="4621654600889589800" at="87,0,91,0" concept="11" trace="getReference#()Lorg/jetbrains/mps/openapi/model/SModelReference;" />
       <node id="2034046503361594461" at="64,139,69,9" concept="9" />
-      <node id="5527695573014083072" at="71,89,76,9" concept="9" />
+      <node id="5527695573014083072" at="71,76,76,9" concept="9" />
       <node id="6062668769034852770" at="39,0,46,0" concept="11" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
       <node id="2865394311376218361" at="37,29,46,9" concept="6" />
       <node id="7901631964423889604" at="36,30,47,5" concept="10" />
@@ -836,7 +836,7 @@
       <scope id="2034046503361594461" at="64,139,69,9">
         <var name="node" id="2034046503361594500" />
       </scope>
-      <scope id="5527695573014083072" at="71,89,76,9">
+      <scope id="5527695573014083072" at="71,76,76,9">
         <var name="m" id="5527695573014083075" />
       </scope>
       <scope id="6062668769034852770" at="39,0,46,0">
@@ -870,8 +870,8 @@
       <node id="4621654600888483987" at="32,60,33,30" concept="6" />
       <node id="6062668769034852916" at="37,53,38,145" concept="12" />
       <node id="5527695573014602004" at="39,28,40,27" concept="6" />
-      <node id="5527695573014641538" at="47,52,48,107" concept="14" />
-      <node id="5248278678442357220" at="48,107,49,32" concept="0" />
+      <node id="5527695573014641538" at="47,52,48,96" concept="14" />
+      <node id="5248278678442357220" at="48,96,49,32" concept="0" />
       <node id="5248278678442218066" at="49,32,50,62" concept="13" />
       <node id="5248278678441841141" at="54,31,55,55" concept="13" />
       <node id="4621654600888518562" at="56,5,57,90" concept="12" />
@@ -943,17 +943,17 @@
     <file name="JUnitSettings_Configuration.java">
       <node id="6062668769034854986" at="40,0,41,0" concept="16" trace="LOG" />
       <node id="6062668769034855239" at="46,85,47,74" concept="20" />
-      <node id="6062668769034855248" at="48,5,49,110" concept="14" />
-      <node id="6062668769034855250" at="49,110,50,70" concept="14" />
-      <node id="3605230134779723230" at="50,70,51,32" concept="12" />
+      <node id="6062668769034855248" at="48,5,49,92" concept="14" />
+      <node id="6062668769034855250" at="49,92,50,62" concept="14" />
+      <node id="3605230134779723230" at="50,62,51,32" concept="12" />
       <node id="5740494279799452455" at="51,32,52,67" concept="12" />
       <node id="5740494279801222195" at="52,67,53,33" concept="6" />
       <node id="5740494279801128787" at="54,82,55,24" concept="6" />
       <node id="6062668769034854986" at="59,76,60,57" concept="6" />
       <node id="6062668769034854986" at="65,26,66,81" concept="20" />
       <node id="6062668769034854986" at="67,5,68,83" concept="6" />
-      <node id="6271661604554627794" at="71,46,72,33" concept="14" />
-      <node id="4875410293292915425" at="72,33,73,56" concept="13" />
+      <node id="6271661604554627794" at="71,46,72,28" concept="14" />
+      <node id="4875410293292915425" at="72,28,73,56" concept="13" />
       <node id="6001962652596703097" at="76,43,77,34" concept="13" />
       <node id="6001962652596705694" at="78,12,79,41" concept="13" />
       <node id="8164059936046359828" at="82,32,83,83" concept="12" />
@@ -977,9 +977,9 @@
       <node id="6062668769034855177" at="138,57,139,35" concept="13" />
       <node id="6857586439137216022" at="143,73,144,52" concept="13" />
       <node id="6062668769034854986" at="147,46,148,62" concept="12" />
-      <node id="6062668769034854986" at="149,9,150,102" concept="14" />
-      <node id="6062668769034854986" at="150,102,151,84" concept="14" />
-      <node id="6062668769034854986" at="151,84,152,48" concept="6" />
+      <node id="6062668769034854986" at="149,9,150,90" concept="14" />
+      <node id="6062668769034854986" at="150,90,151,71" concept="14" />
+      <node id="6062668769034854986" at="151,71,152,48" concept="6" />
       <node id="6062668769034854986" at="154,42,155,26" concept="6" />
       <node id="6062668769034854986" at="157,5,158,17" concept="13" />
       <node id="6062668769034854986" at="161,31,162,30" concept="13" />
@@ -1398,8 +1398,8 @@
   <root nodeRef="r:e12fc70b-3d1d-4dc2-9467-5147656e0455(jetbrains.mps.baseLanguage.unitTest.execution.settings)/6062668769034855735">
     <file name="JUnitRunTypes.java">
       <node id="4023783813282848357" at="37,136,38,73" concept="13" />
-      <node id="4023783813281575812" at="41,88,42,32" concept="14" />
-      <node id="4023783813281576099" at="42,32,43,22" concept="14" />
+      <node id="4023783813281575812" at="41,88,42,28" concept="14" />
+      <node id="4023783813281576099" at="42,28,43,19" concept="14" />
       <node id="6062668769034856123" at="44,53,45,49" concept="13" />
       <node id="6062668769034856129" at="46,7,47,18" concept="13" />
       <node id="4023783813282902238" at="49,92,50,105" concept="13" />
@@ -1461,7 +1461,7 @@
       <node id="6062668769034855745" at="233,0,234,0" concept="11" trace="check#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Ljava/lang/String;" />
       <node id="6062668769034855735" at="236,0,237,0" concept="16" trace="compileInMPS$2Q_X" />
       <node id="6062668769034855753" at="194,0,196,0" concept="3" trace="JUnitRunTypes#()V" />
-      <node id="6062668769034856121" at="43,22,46,7" concept="10" />
+      <node id="6062668769034856121" at="43,19,46,7" concept="10" />
       <node id="4023783813282010852" at="49,0,52,0" concept="11" trace="hasTests#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Z" />
       <node id="6062668769034856017" at="57,78,60,7" concept="10" />
       <node id="6062668769034856039" at="63,88,66,7" concept="10" />

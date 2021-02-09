@@ -49,7 +49,7 @@ public class Template_reduce_GetChildrenOperation_whereLinkQualifier extends Tem
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist4 = null;
@@ -70,7 +70,7 @@ public class Template_reduce_GetChildrenOperation_whereLinkQualifier extends Tem
         for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child6);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

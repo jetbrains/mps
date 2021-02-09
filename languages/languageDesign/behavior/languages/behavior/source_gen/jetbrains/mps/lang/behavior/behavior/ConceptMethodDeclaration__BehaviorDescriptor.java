@@ -110,7 +110,7 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$qvtK);
   }
   /*package*/ static SNode getNearestOverriddenMethod_id4DuBHEkPTzU(@NotNull SNode __thisNode__) {
-    // fixme 
+    // fixme
     return SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$quKH);
   }
   /*package*/ static boolean supportsCheckedExceptions_id7orZYjMoFMH(@NotNull SNode __thisNode__) {

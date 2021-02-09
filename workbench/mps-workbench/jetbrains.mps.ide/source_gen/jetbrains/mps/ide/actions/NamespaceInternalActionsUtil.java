@@ -18,7 +18,7 @@ public class NamespaceInternalActionsUtil {
       return null;
     }
     DefaultActionGroup newGroup = new DefaultActionGroup("New", true);
-    // Actions should be disabled for modules pool 
+    // Actionsshouldbedisabledformodulespool
     if (node.getPath().length > 1 && node.getPath()[1] instanceof ProjectModulesPoolTreeNode) {
       return null;
     }

@@ -47,15 +47,15 @@ public class EventContext implements Context {
     return myEventProcessor.getRequestManager();
   }
   /*package*/ void vote() {
-    // only called from ContextManager 
+    // onlycalledfromContextManager
     myVotesToVote--;
   }
   /*package*/ boolean isProcessed() {
-    // only called from ContextManager 
+    // onlycalledfromContextManager
     return myVotesToVote == 0;
   }
   /*package*/ void resume() {
-    // only called from ContextManager 
+    // onlycalledfromContextManager
     myEventSet.resume();
   }
   @NotNull

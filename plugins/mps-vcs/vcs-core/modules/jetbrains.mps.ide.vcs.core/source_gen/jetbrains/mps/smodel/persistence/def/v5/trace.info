@@ -47,17 +47,17 @@
       <node id="2286463592495096552" at="75,12,76,51" concept="8" />
       <node id="2286463592495096552" at="77,23,78,46" concept="2" />
       <node id="2286463592495096552" at="83,115,84,104" concept="8" />
-      <node id="2286463592495096552" at="85,26,86,14" concept="10" />
-      <node id="2286463592495096553" at="86,14,87,29" concept="2" />
+      <node id="2286463592495096552" at="85,26,86,13" concept="10" />
+      <node id="2286463592495096553" at="86,13,87,29" concept="2" />
       <node id="2286463592495096552" at="88,12,89,72" concept="2" />
       <node id="2286463592495096552" at="90,5,91,0" concept="11" />
-      <node id="2286463592495096552" at="91,0,92,22" concept="10" />
+      <node id="2286463592495096552" at="91,0,92,20" concept="10" />
       <node id="2286463592495096552" at="94,46,95,78" concept="12" />
       <node id="2286463592495096552" at="97,5,98,0" concept="11" />
       <node id="2286463592495096552" at="98,0,99,53" concept="8" />
       <node id="2286463592495096552" at="100,34,101,42" concept="2" />
       <node id="2286463592495096552" at="102,5,103,0" concept="11" />
-      <node id="2286463592495096552" at="103,0,104,25" concept="10" />
+      <node id="2286463592495096552" at="103,0,104,23" concept="10" />
       <node id="2286463592495096552" at="105,54,106,43" concept="8" />
       <node id="2286463592495096552" at="106,43,107,44" concept="8" />
       <node id="2286463592495096552" at="107,44,108,51" concept="2" />
@@ -232,8 +232,8 @@
       <node id="4525774333072919125" at="423,7,427,7" concept="6" />
       <node id="4525774333072919126" at="427,7,431,7" concept="6" />
       <node id="2286463592495096552" at="75,10,80,5" concept="0" />
-      <node id="2286463592495096552" at="92,22,97,5" concept="5" />
-      <node id="2286463592495096552" at="104,25,109,5" concept="4" />
+      <node id="2286463592495096552" at="92,20,97,5" concept="5" />
+      <node id="2286463592495096552" at="104,23,109,5" concept="4" />
       <node id="2286463592495498107" at="225,0,230,0" concept="7" trace="handleChild_2286463592495498109#(Ljava/lang/Object;Ljava/lang/Object;)V" />
       <node id="3912764103614069901" at="439,0,444,0" concept="7" trace="createObject#(Lorg/xml/sax/Attributes;)Ljava/lang/Object;" />
       <node id="2286463592495096552" at="84,104,90,5" concept="6" />
@@ -494,10 +494,10 @@
       <scope id="355506112072964453" at="413,0,417,0">
         <var name="attrs" id="355506112072964453" />
       </scope>
-      <scope id="2286463592495096552" at="92,22,97,5">
+      <scope id="2286463592495096552" at="92,20,97,5">
         <var name="attr" id="2286463592495096552" />
       </scope>
-      <scope id="2286463592495096552" at="104,25,109,5">
+      <scope id="2286463592495096552" at="104,23,109,5">
         <var name="i" id="2286463592495096552" />
       </scope>
       <scope id="2286463592495498107" at="225,0,230,0">
@@ -649,9 +649,9 @@
   </root>
   <root nodeRef="r:2cdd9596-2ed5-4152-b387-8144a1963c4c(jetbrains.mps.smodel.persistence.def.v5)/453110257780703035">
     <file name="ModelReader5.java">
-      <node id="453110257780703064" at="13,77,14,66" concept="10" />
+      <node id="453110257780703064" at="13,77,14,57" concept="10" />
       <node id="453110257780703046" at="12,0,16,0" concept="7" trace="readRefactorings#(Lorg/jdom/Element;Ljetbrains/mps/smodel/DefaultSModel;)V" />
-      <scope id="453110257780703052" at="13,77,14,66" />
+      <scope id="453110257780703052" at="13,77,14,57" />
       <scope id="453110257780703046" at="12,0,16,0">
         <var name="model" id="453110257780703050" />
         <var name="rootElement" id="453110257780703048" />
@@ -708,17 +708,17 @@
       <node id="651246788329828609" at="54,12,55,51" concept="8" />
       <node id="651246788329828609" at="56,23,57,46" concept="2" />
       <node id="651246788329828609" at="62,115,63,104" concept="8" />
-      <node id="651246788329828609" at="64,26,65,14" concept="10" />
-      <node id="651246788329828627" at="65,14,66,29" concept="2" />
+      <node id="651246788329828609" at="64,26,65,13" concept="10" />
+      <node id="651246788329828627" at="65,13,66,29" concept="2" />
       <node id="651246788329828609" at="67,12,68,72" concept="2" />
       <node id="651246788329828609" at="69,5,70,0" concept="11" />
-      <node id="651246788329828609" at="70,0,71,22" concept="10" />
+      <node id="651246788329828609" at="70,0,71,20" concept="10" />
       <node id="651246788329828609" at="73,46,74,78" concept="12" />
       <node id="651246788329828609" at="76,5,77,0" concept="11" />
       <node id="651246788329828609" at="77,0,78,53" concept="8" />
       <node id="651246788329828609" at="79,34,80,44" concept="2" />
       <node id="651246788329828609" at="81,5,82,0" concept="11" />
-      <node id="651246788329828609" at="82,0,83,25" concept="10" />
+      <node id="651246788329828609" at="82,0,83,23" concept="10" />
       <node id="651246788329828609" at="84,54,85,43" concept="8" />
       <node id="651246788329828609" at="85,43,86,44" concept="8" />
       <node id="651246788329828609" at="86,44,87,51" concept="2" />
@@ -821,8 +821,8 @@
       <node id="651246788329829035" at="250,0,254,0" concept="7" trace="createObject#(Lorg/xml/sax/Attributes;)Ljava/lang/String;" />
       <node id="651246788329829056" at="259,0,263,0" concept="7" trace="createObject#(Lorg/xml/sax/Attributes;)Ljava/lang/String;" />
       <node id="651246788329828609" at="54,10,59,5" concept="0" />
-      <node id="651246788329828609" at="71,22,76,5" concept="5" />
-      <node id="651246788329828609" at="83,25,88,5" concept="4" />
+      <node id="651246788329828609" at="71,20,76,5" concept="5" />
+      <node id="651246788329828609" at="83,23,88,5" concept="4" />
       <node id="651246788329828627" at="130,0,135,0" concept="7" trace="createObject#(Lorg/xml/sax/Attributes;)Ljava/util/List;" />
       <node id="651246788329828609" at="63,104,69,5" concept="6" />
       <node id="651246788329828609" at="112,0,118,0" concept="7" trace="handleText#(Ljava/lang/Object;Ljava/lang/String;)V" />
@@ -980,10 +980,10 @@
       <scope id="651246788329828609" at="40,80,45,5">
         <var name="current" id="651246788329828609" />
       </scope>
-      <scope id="651246788329828609" at="71,22,76,5">
+      <scope id="651246788329828609" at="71,20,76,5">
         <var name="attr" id="651246788329828609" />
       </scope>
-      <scope id="651246788329828609" at="83,25,88,5">
+      <scope id="651246788329828609" at="83,23,88,5">
         <var name="i" id="651246788329828609" />
       </scope>
       <scope id="651246788329828627" at="130,0,135,0">

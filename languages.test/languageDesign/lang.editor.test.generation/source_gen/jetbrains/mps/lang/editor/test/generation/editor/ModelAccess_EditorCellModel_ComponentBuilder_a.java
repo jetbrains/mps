@@ -119,7 +119,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       if (var) {
-        // just usage of var 
+        // justusageofvar
       }
     }
     protected boolean isReferentPresentation() {
@@ -236,7 +236,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       boolean var = node != null || model != null || editorContext != null;
       if (var) {
-        // just usage of var 
+        // justusageofvar
       }
     }
     public String getMatchingText() {

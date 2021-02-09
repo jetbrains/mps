@@ -71,7 +71,7 @@ public final class NewTemplateInSwitchDefault_Intention extends AbstractIntentio
       SNode t = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$5G, null);
       SPropertyOperations.set(t, PROPS.name$MnvL, name);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
-      // make reference 
+      // makereference
       SNode tr = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateDeclarationReference$QT, null);
       SLinkOperations.setTarget(tr, LINKS.template$6_6, t);
       SLinkOperations.setTarget(node, LINKS.defaultConsequence$GvWY, tr);

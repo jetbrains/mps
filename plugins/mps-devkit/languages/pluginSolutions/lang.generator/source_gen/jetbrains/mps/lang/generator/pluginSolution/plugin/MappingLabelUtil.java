@@ -30,7 +30,7 @@ public class MappingLabelUtil {
         }
       }
     }
-    // ---- 
+    // ----
     if (mappingLabel == null) {
       SNode mc;
       List<SNode> localMCs = SModelOperations.roots(SNodeOperations.getModel(templateNode), CONCEPTS.MappingConfiguration$7j);
@@ -47,7 +47,7 @@ public class MappingLabelUtil {
         mc = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(templateNode), CONCEPTS.MappingConfiguration$7j, null);
         SPropertyOperations.assign(mc, PROPS.name$MnvL, "MappingLabels");
       }
-      // new mapping label 
+      // newmappinglabel
       SNode newLabel = SNodeFactoryOperations.addNewChild(mc, LINKS.mappingLabel$Wvfj, CONCEPTS.MappingLabelDeclaration$MV);
       SPropertyOperations.assign(newLabel, PROPS.name$MnvL, labelName);
       mappingLabel = newLabel;

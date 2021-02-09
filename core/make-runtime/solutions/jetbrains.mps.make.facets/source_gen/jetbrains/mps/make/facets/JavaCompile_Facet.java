@@ -102,7 +102,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
               if (SetSequence.fromSet(toCompile).isEmpty()) {
                 return new IResult.SUCCESS(_output_wf1ya0_a0a);
               }
-              // XXX it's odd to use dedicated ErrorsLoggingHandler provided ModuleMaker reports errors to log itself (in addition to IMessageHandler, see MessageSender). Do I need ELH here? 
+              // XXXit'soddtousededicatedErrorsLoggingHandlerprovidedModuleMakerreportserrorstologitself(inadditiontoIMessageHandler,seeMessageSender).DoIneedELHhere?
               final IMessageHandler msgHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).compose(monitor.getSession().getMessageHandler());
               MPSCompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(new Computable<MPSCompilationResult>() {
                 public MPSCompilationResult compute() {
@@ -227,7 +227,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
           progressMonitor.start("", IntStream.of(1000).sum());
           switch (0) {
             case 0:
-              // FIXME project property is no longer needed (we take project from make session), remove after 2017.2 
+              // FIXMEprojectpropertyisnolongerneeded(wetakeprojectfrommakesession),removeafter2017.2
               if (Boolean.TRUE.equals(Target_compile.vars(pa.global()).skipCompilation())) {
                 _output_wf1ya0_a0b = Sequence.fromIterable(_output_wf1ya0_a0b).concat(Sequence.fromIterable(input));
                 return new IResult.SUCCESS(_output_wf1ya0_a0b);
@@ -243,14 +243,14 @@ public class JavaCompile_Facet extends IFacet.Stub {
                 return new IResult.FAILURE(_output_wf1ya0_a0b);
               }
 
-              // collect modules to compile 
+              // collectmodulestocompile
               final Iterable<TResource> toCompile = Sequence.fromIterable(input).where(new IWhereFilter<TResource>() {
                 public boolean accept(TResource it) {
                   return SModuleOperations.isCompileInIdea(it.module());
                 }
               });
 
-              // compile modules 
+              // compilemodules
               if (Sequence.fromIterable(toCompile).isEmpty()) {
                 return new IResult.SUCCESS(_output_wf1ya0_a0b);
               }

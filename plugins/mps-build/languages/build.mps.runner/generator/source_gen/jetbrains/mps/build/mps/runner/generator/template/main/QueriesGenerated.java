@@ -67,11 +67,11 @@ public class QueriesGenerated extends QueryProviderBase {
     SNode mpsAspect = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.aspects$6r0Q), CONCEPTS.BuildMpsAspect$Ey)).first();
 
     int heapSize;
-    // 0 as default value and 0 as heap size should be distinguished 
+    // 0asdefaultvalueand0asheapsizeshouldbedistinguished
     if ((mpsAspect != null) && (isNotEmptyString(mpsAspect.getProperty(PROPS.generationMaxHeapSizeInMb$XSHx)))) {
       heapSize = SPropertyOperations.getInteger(mpsAspect, PROPS.generationMaxHeapSizeInMb$XSHx);
     } else {
-      // default size 
+      // defaultsize
       heapSize = 512;
     }
 
@@ -113,7 +113,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }), _context, _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_0_2(final SourceSubstituteMacroNodesContext _context) {
-    // see reduce_TestModules, LOOP for mps.tests.path for details 
+    // seereduce_TestModules,LOOPformps.tests.pathfordetails
     Iterable<SNode> libs = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
     final SNode project = ((SNode) _context.getVariable("var:buildProject"));
     return Sequence.fromIterable(libs).where(new IWhereFilter<SNode>() {

@@ -35,7 +35,7 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        // no-op 
+        // no-op
       }
       @Override
       public boolean isShowAsIntention() {
@@ -61,7 +61,7 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        // no-op 
+        // no-op
       }
       @Override
       public boolean isShowAsIntention() {

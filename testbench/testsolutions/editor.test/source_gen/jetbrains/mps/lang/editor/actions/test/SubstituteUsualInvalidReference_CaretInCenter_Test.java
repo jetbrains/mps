@@ -38,12 +38,12 @@ public class SubstituteUsualInvalidReference_CaretInCenter_Test extends BaseTran
       initEditorComponent("2389096682426283929", "2389096682426283933");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
-          // replace node with the other node 
+          // replacenodewiththeothernode
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
           typeString("usualOtherNode");
 
-          // go to the reference 
+          // gotothereference
           invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
@@ -52,7 +52,7 @@ public class SubstituteUsualInvalidReference_CaretInCenter_Test extends BaseTran
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
 
-          // put caret in after the usu| 
+          // putcaretinaftertheusu|
           invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
           pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " TAB"));
           invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");

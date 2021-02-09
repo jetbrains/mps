@@ -159,7 +159,7 @@
       <node id="8432634623182580017" at="42,112,43,53" concept="13" />
       <node id="8432634623182580021" at="43,53,44,42" concept="2" />
       <node id="8432634623182580040" at="47,43,48,117" concept="8" />
-      <node id="9117911255445293004" at="52,82,53,43" concept="9" />
+      <node id="9117911255445293004" at="52,82,53,37" concept="9" />
       <node id="7515092869553799148" at="54,28,55,167" concept="8" />
       <node id="7515092869553799159" at="56,5,57,89" concept="7" />
       <node id="7515092869553799170" at="57,89,58,0" concept="10" />
@@ -177,7 +177,7 @@
       <node id="8432634623182579978" at="97,0,98,0" concept="11" trace="ConceptDeclaration$gH" />
       <node id="8432634623182579978" at="98,0,99,0" concept="11" trace="INamedConcept$Kd" />
       <node id="7515092869554152531" at="38,0,41,0" concept="12" trace="isOverridden#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7515092869553799146" at="53,43,56,5" concept="5" />
+      <node id="7515092869553799146" at="53,37,56,5" concept="5" />
       <node id="7515092869553799193" at="62,12,65,7" concept="4" />
       <node id="7515092869553799214" at="69,0,72,0" concept="12" trace="getTextFromOverride#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="8432634623182580034" at="46,0,50,0" concept="6" trace="met#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Z" />

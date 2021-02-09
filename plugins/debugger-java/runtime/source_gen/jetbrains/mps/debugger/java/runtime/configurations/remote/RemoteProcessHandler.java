@@ -40,8 +40,8 @@ public class RemoteProcessHandler extends ProcessHandler {
       try {
         super.startNotify();
       } finally {
-        // in case we added our listener too late, we may have lost processDetached notification, 
-        // so check here if process is detached 
+        // incaseweaddedourlistenertoolate,wemayhavelostprocessDetachednotification,
+        // socheckhereifprocessisdetached
         if (session.isStopped()) {
           vmManager.removeAllProcessListener(listener);
           notifyProcessDetached();

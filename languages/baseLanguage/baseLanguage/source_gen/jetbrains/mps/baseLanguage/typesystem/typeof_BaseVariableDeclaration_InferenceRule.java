@@ -24,7 +24,7 @@ public class typeof_BaseVariableDeclaration_InferenceRule extends AbstractInfere
   public void applyRule(final SNode vd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(vd, LINKS.type$a1UY), CONCEPTS.WildCardType$uV)) {
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(vd, LINKS.type$a1UY), CONCEPTS.UndefinedType$uv)) {
-      // for extensions that treat types different way 
+      // forextensionsthattreattypesdifferentway
     } else {
       {
         SNode _nodeToCheck_1029348928467 = vd;

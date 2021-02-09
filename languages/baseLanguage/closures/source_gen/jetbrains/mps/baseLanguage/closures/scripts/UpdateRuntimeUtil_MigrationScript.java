@@ -63,7 +63,7 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
           return;
         }
 
-        // these will be replaced with new contents 
+        // thesewillbereplacedwithnewcontents
         ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$8PWE)).clear();
 
         SNode fncls = SPointerOperations.resolveNode(new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402581510"), SNodeOperations.getModel(node).getRepository());

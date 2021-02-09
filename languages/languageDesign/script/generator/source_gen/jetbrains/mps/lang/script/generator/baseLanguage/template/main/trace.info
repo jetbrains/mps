@@ -23,8 +23,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590324(jetbrains.mps.lang.script.generator.baseLanguage.template.main@generator)/1177464516957">
     <file name="QueriesGenerated.java">
-      <node id="7228083082548027904" at="58,92,59,21" concept="4" />
-      <node id="9121160240702754612" at="59,21,60,83" concept="3" />
+      <node id="7228083082548027904" at="58,92,59,19" concept="4" />
+      <node id="9121160240702754612" at="59,19,60,83" concept="3" />
       <node id="485782669715990914" at="495,14,496,55" concept="0" />
       <node id="485782669715990914" at="512,15,513,68" concept="3" />
       <node id="485782669715990916" at="58,0,62,0" concept="5" trace="createRootRule_Condition_0_0#(Ljetbrains/mps/generator/template/CreateRootRuleContext;)Z" />
@@ -185,10 +185,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590324(jetbrains.mps.lang.script.generator.baseLanguage.template.main@generator)/2897519568668637315">
     <file name="QueriesGenerated.java">
-      <node id="7228083082547972382" at="62,84,63,21" concept="4" />
-      <node id="2030416617762091403" at="63,21,64,91" concept="3" />
-      <node id="8100708479158694804" at="290,94,291,73" concept="4" />
-      <node id="8100708479158496699" at="291,73,292,106" concept="3" />
+      <node id="7228083082547972382" at="62,84,63,19" concept="4" />
+      <node id="2030416617762091403" at="63,19,64,91" concept="3" />
+      <node id="8100708479158694804" at="290,94,291,66" concept="4" />
+      <node id="8100708479158496699" at="291,66,292,106" concept="3" />
       <node id="1570228009929814969" at="469,14,470,56" concept="0" />
       <node id="1570228009929814969" at="486,15,487,59" concept="3" />
       <node id="4147950839246952263" at="911,64,912,76" concept="0" />

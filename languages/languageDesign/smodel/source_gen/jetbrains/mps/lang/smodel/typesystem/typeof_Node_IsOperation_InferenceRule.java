@@ -29,7 +29,7 @@ public class typeof_Node_IsOperation_InferenceRule extends AbstractInferenceRule
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3661776679762944967", true), (SNode) _quotation_createNode_k1s1n6_a1a0c0a0b(), _info_12389875345);
     }
 
-    // checking 
+    // checking
     SNode target = NodeIdentity__BehaviorDescriptor.toNode_id46J8CTY3sAt.invoke(SLinkOperations.getTarget(op, LINKS.ref$yDrt), SNodeOperations.getModel(op).getRepository());
     SNode targetConcept = RulesUtil.closestConceptNode(SNodeOperations.getConcept(target));
 

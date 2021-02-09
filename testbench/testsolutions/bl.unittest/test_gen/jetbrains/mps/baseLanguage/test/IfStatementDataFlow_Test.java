@@ -52,8 +52,8 @@ public class IfStatementDataFlow_Test extends BaseTransformationTest {
 
     public void test_IfStatementDataFlow() throws Exception {
       addNodeById("1217271587920");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928604755() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451228488");

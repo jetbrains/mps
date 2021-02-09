@@ -66,15 +66,15 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
 
     MessagesViewTool messagesView = MessagesViewTool.getInstance(context.getProject());
 
-    // by default, show generation plan as Make/Generate would see it. 
-    // If forced, however, may ignore context and show default (model content based) plan. 
+    // bydefault,showgenerationplanasMake/Generatewouldseeit.
+    // Ifforced,however,mayignorecontextandshowdefault(modelcontentbased)plan.
 
     IMessageHandler mh = messagesView.newHandler();
     GenPlanExtractor gpExtractor = new GenPlanExtractor(repo, mh.compose(new IMessageHandler() {
       private final HashSet<String> dupMsg = new HashSet<String>();
       @Override
       public void handle(IMessage m) {
-        // GPE reports some of its processing details via IMessageHandler, show them to user to help him understand the process of picking GP 
+        // GPEreportssomeofitsprocessingdetailsviaIMessageHandler,showthemtousertohelphimunderstandtheprocessofpickingGP
         if (dupMsg.add(m.getText())) {
           if (m.getHintObject() instanceof SNodeReference) {
             SNode cn = SModelOperations.createNewNode(model, null, CONCEPTS.ClickableNode$L0);
@@ -101,7 +101,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
       console.addText("Model uses custom plan configured externally\n");
       gp = externalPlan;
     } else {
-      // regular sequence, do not ignore external plan, but there's none 
+      // regularsequence,donotignoreexternalplan,butthere'snone
       gp = new GenerationPlan(model);
     }
 

@@ -93,7 +93,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
   }
   @Before
   public void setUp() {
-    // FIXME in fact, shall access project instance MpsTestsSuite runnner has created from mps.test.modules list 
+    // FIXMEinfact,shallaccessprojectinstanceMpsTestsSuiterunnnerhascreatedfrommps.test.moduleslist
     projectRepository = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
   }
   private SModule testPackagedLanguageModule() {

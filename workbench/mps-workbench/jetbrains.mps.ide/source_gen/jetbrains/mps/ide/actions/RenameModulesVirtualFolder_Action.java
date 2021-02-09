@@ -80,7 +80,7 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
 
     final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, null);
 
-    // Allow passing of an empty string which will result in virtual folder removal 
+    // Allowpassingofanemptystringwhichwillresultinvirtualfolderremoval
     if (modifiedVFolder == null || Objects.equals(originalVFolder, modifiedVFolder)) {
       return;
     }

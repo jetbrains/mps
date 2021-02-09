@@ -58,7 +58,7 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static List<SNode> getAllMethodsInPriorityOrder_id7TwdR6lloFy(@NotNull SNode __thisNode__) {
     List<SNode> methods = ListSequence.fromList(new ArrayList<SNode>());
 
-    // collect methods from extended concepts 
+    // collectmethodsfromextendedconcepts
     Set<SNode> extendedConcepts = SetSequence.fromSet(new HashSet<SNode>());
     SNode concept = __thisNode__;
     while ((concept != null) && !(SetSequence.fromSet(extendedConcepts).contains(concept))) {
@@ -67,7 +67,7 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
       concept = ((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) != null) ? SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) : SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
     }
 
-    // collect methods from implemented interfaces 
+    // collectmethodsfromimplementedinterfaces
     for (SNode interfaceConcept : SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.implements$u_P2), LINKS.intfc$zM4e)) {
       ListSequence.fromList(methods).addSequence(ListSequence.fromList(InterfaceConceptDeclaration__BehaviorDescriptor.getAllMethodsInPriorityOrder_id7TwdR6lloGH.invoke(interfaceConcept)));
     }

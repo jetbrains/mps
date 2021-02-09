@@ -13,11 +13,11 @@ import java.util.ArrayList;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3121818631993911011", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
   public Mac_10_5_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.ide.actions.NewElement_Action", getShortcut("meta N"), getShortcut("ctrl ENTER"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowDefinitionInMenu_Action", getShortcut("alt SPACE"), getShortcut("meta Y"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowDefinition_Action", getShortcut("alt SPACE"), getShortcut("meta Y"));
-    // simple with remove/replace 
+    // simplewithremove/replace
     addSimpleShortcut("jetbrains.mps.ide.actions.FindTextInProject_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt shift F"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToModel_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("meta shift O"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToModule_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("meta alt O"), false, true));
@@ -26,10 +26,10 @@ public class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl H"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl H"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInfo_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl Q"), false, true));
-    // simple parameterized 
-    // simple parameterized remove/replace  
+    // simpleparameterized
+    // simpleparameterizedremove/replace
     addComplexShortcut("jetbrains.mps.ide.actions.GoToRootNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(new BaseKeymapChanges.ShortcutWrapper(getShortcut("meta O"), false, true)));
-    // complex 
+    // complex
     addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper(new GoToBookmark_ShortcutChange_yfpb4i_f(), false, true));
     addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper(new SetBookmark_ShortcutChange_yfpb4i_g(), false, true));
   }

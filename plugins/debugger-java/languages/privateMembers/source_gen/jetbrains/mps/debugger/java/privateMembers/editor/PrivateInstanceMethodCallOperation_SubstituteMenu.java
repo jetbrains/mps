@@ -49,7 +49,7 @@ public class PrivateInstanceMethodCallOperation_SubstituteMenu extends Substitut
   public class SMP_ReferenceScope_j9hbfo_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_j9hbfo_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PrivateInstanceMethodCallOperation$sh, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull

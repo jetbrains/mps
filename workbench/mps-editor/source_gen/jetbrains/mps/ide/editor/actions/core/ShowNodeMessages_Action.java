@@ -86,7 +86,7 @@ public class ShowNodeMessages_Action extends BaseAction {
         return isEmptyString(it.getMessage());
       }
     });
-    // Try to guess messages text size 
+    // Trytoguessmessagestextsize
     StringBuilder sb = new StringBuilder(200 * ListSequence.fromList(messages).count());
     sb.append("<html>");
     for (SimpleEditorMessage message : messages) {

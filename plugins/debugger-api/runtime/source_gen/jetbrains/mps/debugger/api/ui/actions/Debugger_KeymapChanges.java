@@ -11,7 +11,7 @@ import javax.swing.KeyStroke;
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/4073774232572770202", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class Debugger_KeymapChanges extends BaseKeymapChanges {
   public Debugger_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action", getShortcut("alt F8"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.Resume_Action", getShortcut(" F9"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.StepInto_Action", getShortcut(" F7"));
@@ -19,8 +19,8 @@ public class Debugger_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.StepOver_Action", getShortcut(" F8"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.ToggleBreakpoint_Action", getShortcut("ctrl F8"));
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.ViewBreakpoints_Action", getShortcut("ctrl shift F8"));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "$default";

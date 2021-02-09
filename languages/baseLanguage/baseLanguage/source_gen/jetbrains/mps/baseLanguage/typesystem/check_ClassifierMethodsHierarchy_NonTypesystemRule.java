@@ -26,8 +26,8 @@ public class check_ClassifierMethodsHierarchy_NonTypesystemRule extends Abstract
   public check_ClassifierMethodsHierarchy_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // [node to check + node to report to] -- hack to work with enum constant declarations 
-    // I think that it must be solved if we pull up all the traversing code to IMemberContainer (or smth like this) 
+    // [nodetocheck+nodetoreportto]--hacktoworkwithenumconstantdeclarations
+    // IthinkthatitmustbesolvedifwepullupallthetraversingcodetoIMemberContainer(orsmthlikethis)
     List<Pair<SNode, SNode>> toCheck = ListSequence.fromList(new ArrayList<Pair<SNode, SNode>>());
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).isNotEmpty()) {
       ListSequence.fromList(toCheck).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).select(new ISelector<SNode, Pair<SNode, SNode>>() {

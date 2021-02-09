@@ -36,7 +36,7 @@ public class check_AnonymousClassHasConstructorDeclaration_NonTypesystemRule ext
           }
         }
       } else {
-        // MethodCallsFixer_Rule resolves the correct constructor 
+        // MethodCallsFixer_Ruleresolvesthecorrectconstructor
       }
     }
   }

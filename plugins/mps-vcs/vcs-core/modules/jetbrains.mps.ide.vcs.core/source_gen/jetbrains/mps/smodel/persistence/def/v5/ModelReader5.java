@@ -11,6 +11,6 @@ import jetbrains.mps.smodel.DefaultSModel;
 public class ModelReader5 extends ModelReader4 {
   @Override
   protected void readRefactorings(Element rootElement, DefaultSModel model) {
-    // refactorings are extracted into separate file in version 5 
+    // refactoringsareextractedintoseparatefileinversion5
   }
 }

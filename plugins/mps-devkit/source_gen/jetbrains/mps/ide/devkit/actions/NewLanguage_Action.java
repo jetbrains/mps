@@ -55,7 +55,7 @@ public class NewLanguage_Action extends BaseAction {
       return;
     }
 
-    // TODO: Sync ProjectPane.rebuildTree() with NewSolution, CloneModule actions 
+    // TODO:SyncProjectPane.rebuildTree()withNewSolution,CloneModuleactions
     ProjectPane projectPane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
     projectPane.selectModule(l, false);
   }

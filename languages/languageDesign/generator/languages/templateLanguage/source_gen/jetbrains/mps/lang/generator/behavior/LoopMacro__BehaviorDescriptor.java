@@ -64,7 +64,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   @Deprecated
   /*package*/ static String getCounterVarName_id5KmckUrI7Lz(@NotNull SNode __thisNode__) {
-    // name of counter as available in TemplateContext, similar to VarMacro.getName() 
+    // nameofcounterasavailableinTemplateContext,similartoVarMacro.getName()
     return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$YOXn);
   }
   /*package*/ static boolean isLoopVariableUsed_id5UJTmNZqi81(@NotNull SNode __thisNode__, final SEnumerationLiteral variable) {
@@ -86,7 +86,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return rv;
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    // child is not under any other macro except this one 
+    // childisnotunderanyothermacroexceptthisone
     return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.AbstractMacro$bo)).isNotEmpty();

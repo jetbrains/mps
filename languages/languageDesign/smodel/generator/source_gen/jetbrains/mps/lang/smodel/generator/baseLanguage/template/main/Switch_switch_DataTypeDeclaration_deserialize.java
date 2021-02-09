@@ -93,7 +93,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -122,7 +122,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -157,25 +157,25 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_137_0(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a2a0a1a3a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_137_1(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a2a0a1a4a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode3);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_137_2(new PropertyMacroContext(context1, "0l", propertyMacro_s05n17_c0a2a0a1a5a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
           SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_137_3(new PropertyMacroContext(context1, "fqName", propertyMacro_s05n17_c0a2a0a1a6a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist6 = null;
@@ -184,7 +184,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
           for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
             tnode1.addChild(myAggregationLinks[0], child7);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

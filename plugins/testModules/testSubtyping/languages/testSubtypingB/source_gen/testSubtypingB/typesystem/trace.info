@@ -24,10 +24,10 @@
     </file>
     <file name="customType_InequationReplacementRule.java">
       <node id="2078093584693330843" at="20,97,21,169" concept="5" />
-      <node id="2078093584693351904" at="23,253,24,10" concept="6" />
+      <node id="2078093584693351904" at="23,253,24,9" concept="6" />
       <node id="2078093584693330100" at="26,207,27,35" concept="4" />
-      <node id="2078093584693351904" at="27,35,28,10" concept="6" />
-      <node id="2078093584693330100" at="28,10,29,27" concept="5" />
+      <node id="2078093584693351904" at="27,35,28,9" concept="6" />
+      <node id="2078093584693330100" at="28,9,29,27" concept="5" />
       <node id="2078093584693330100" at="31,27,32,16" concept="5" />
       <node id="2078093584693330100" at="34,71,35,105" concept="5" />
       <node id="2078093584693330100" at="37,73,38,107" concept="5" />
@@ -46,7 +46,7 @@
       <node id="2078093584693330100" at="26,0,31,0" concept="3" trace="checkInequation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/EquationInfo;Ljetbrains/mps/lang/typesystem/runtime/IsApplicable2Status;ZZ)Z" />
       <scope id="2078093584693330100" at="18,49,18,49" />
       <scope id="2078093584693330177" at="20,97,21,169" />
-      <scope id="2078093584693330101" at="23,253,24,10" />
+      <scope id="2078093584693330101" at="23,253,24,9" />
       <scope id="2078093584693330100" at="31,27,32,16" />
       <scope id="2078093584693330100" at="34,71,35,105" />
       <scope id="2078093584693330100" at="37,73,38,107" />

@@ -126,8 +126,8 @@
       <node id="7277057533221824130" at="92,7,93,0" concept="9" />
       <node id="7277057533221824131" at="93,0,94,169" concept="1" />
       <node id="7277057533221693591" at="95,5,96,0" concept="9" />
-      <node id="7277057533221695827" at="96,0,97,23" concept="8" />
-      <node id="7277057533221530774" at="97,23,98,114" concept="6" />
+      <node id="7277057533221695827" at="96,0,97,21" concept="8" />
+      <node id="7277057533221530774" at="97,21,98,114" concept="6" />
       <node id="7277057533221534829" at="98,114,99,0" concept="9" />
       <node id="7277057533221533275" at="99,0,100,18" concept="7" />
       <node id="7277057533220966091" at="104,0,105,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

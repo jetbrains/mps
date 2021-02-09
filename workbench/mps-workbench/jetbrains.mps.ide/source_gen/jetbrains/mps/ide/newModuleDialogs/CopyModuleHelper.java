@@ -48,7 +48,7 @@ public final class CopyModuleHelper {
   @Nullable
   public AbstractModule copy() throws CopyNotSupportedException {
     if (myOriginal.isPackaged()) {
-      // Do not handle this case since packaged module may not contain it sources 
+      // Donothandlethiscasesincepackagedmodulemaynotcontainitsources
       throw new CopyNotSupportedException("Cloning has not supported for packaged modules");
     }
     ModuleDescriptor moduleDescriptor = myOriginal.getModuleDescriptor();
@@ -136,7 +136,7 @@ public final class CopyModuleHelper {
       if (targetModelRoot instanceof ModelRootBase) {
         ((ModelRootBase) targetModelRoot).setModule(target);
       }
-      // noinspection unchecked 
+      // noinspectionunchecked
       ((CopyableModelRoot) sourceModelRoot).copyTo((CopyableModelRoot) targetModelRoot);
       targetModelRoots.add(targetModelRoot);
     }
@@ -158,6 +158,6 @@ public final class CopyModuleHelper {
    * However facets are going to become totally independent from the module
    */
   public static void copyFacets(AbstractModule source, AbstractModule target) throws CopyNotSupportedException {
-    // nop 
+    // nop
   }
 }

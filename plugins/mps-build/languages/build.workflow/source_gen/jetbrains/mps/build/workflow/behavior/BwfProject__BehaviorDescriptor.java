@@ -34,7 +34,7 @@ public final class BwfProject__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.BwfTask$ZZ)) {
-      // TODO search in libraries 
+      // TODOsearchinlibraries
     }
     return null;
   }

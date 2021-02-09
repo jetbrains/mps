@@ -29,9 +29,9 @@ public class DeployScriptCreator {
     SNode deployProject = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
     SPropertyOperations.set(deployProject, PROPS.name$MnvL, "deploy");
     SPropertyOperations.set(deployProject, PROPS.fileName$VjWd, "deploy.xml");
-    // FIXME figure out what's expected format of internalBaseDirectory (absolute/relative, separators) 
-    //       and if/how shall we use baseDir value for it (DeployScript passes some temp location, is it what we need?) 
-    // deployProject.internalBaseDirectory.set(baseDir)? 
+    // FIXMEfigureoutwhat'sexpectedformatofinternalBaseDirectory(absolute/relative,separators)
+    // andif/howshallweusebaseDirvalueforit(DeployScriptpassessometemplocation,isitwhatweneed?)
+    // deployProject.internalBaseDirectory.set(baseDir)?
 
     SLinkOperations.getChildren(deployProject, LINKS.plugins$AsCR).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
     SLinkOperations.getChildren(deployProject, LINKS.plugins$AsCR).add(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));

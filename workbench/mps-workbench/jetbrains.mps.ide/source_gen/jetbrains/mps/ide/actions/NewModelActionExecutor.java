@@ -68,7 +68,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
    */
   @Override
   protected void onModelCreated(final SModel model) {
-    // Model creation will lead to indexes update, dialog and navigation should be performed after that 
+    // Modelcreationwillleadtoindexesupdate,dialogandnavigationshouldbeperformedafterthat
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         showSettingsForCreatedModel(model);
@@ -99,7 +99,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   public static String getDefaultNamespaceFor(SModule module) {
     String namespace = module.getModuleName();
     if (module instanceof Generator) {
-      // in fact, we could check any module name for # char. Though, at the moment one may encounter # in generator modules only. 
+      // infact,wecouldcheckanymodulenamefor#char.Though,atthemomentonemayencounter#ingeneratormodulesonly.
       int sharpIndex = namespace.indexOf('#');
       if (sharpIndex != -1) {
         namespace = namespace.substring(0, sharpIndex);

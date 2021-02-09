@@ -55,8 +55,8 @@ public class MigrateCastExpression extends MigrationScriptBase {
       };
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SNodeTypeCastExpression$TK, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          // left_expression_old was completely removed 
-          // concept_old was completely removed 
+          // left_expression_oldwascompletelyremoved
+          // concept_oldwascompletelyremoved
           if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$lGRx) == null)) {
             SReference conceptRef = SNodeOperations.getReference(it, LINKS.concept$C5xM);
             SLinkOperations.setTarget(it, LINKS.conceptArgument$lGRx, _quotation_createNode_r15y35_a0b0c0a0a0a0a6((SNode) SLinkOperations.getTargetNode(conceptRef)));

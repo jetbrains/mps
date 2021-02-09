@@ -39,7 +39,7 @@ public class RefactoringIdHelper {
   }
 
   public static void migrate(SRepository repo, SNode node) {
-    // todo try to remove duplication here 
+    // todotrytoremoveduplicationhere
     SNode movePart = SNodeOperations.getNodeAncestor(node, CONCEPTS.MoveNodeMigrationPart$zn, false, false);
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.MoveConcept$i2)) {
       SNode mc = SNodeOperations.cast(node, CONCEPTS.MoveConcept$i2);

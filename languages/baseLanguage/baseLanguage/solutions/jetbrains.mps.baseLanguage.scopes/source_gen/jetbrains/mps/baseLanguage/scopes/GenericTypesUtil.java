@@ -38,10 +38,10 @@ public class GenericTypesUtil {
     SNode typeCopy = SNodeOperations.copyNode(type);
     for (SNode typeVariableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(typeCopy, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{}))) {
       if (!(SetSequence.fromSet(typeParams).contains(SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$Lz1I)))) {
-        // not from our type params, skipping 
+        // notfromourtypeparams,skipping
         continue;
       }
-      // let's see if it's inside ? extends E or ? super E, we want to avoid invalid types like ? extends ? 
+      // let'sseeifit'sinside?extendsEor?superE,wewanttoavoidinvalidtypeslike?extends?
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(typeVariableRef), CONCEPTS.UpperBoundType$RS) && SNodeOperations.hasRole(typeVariableRef, LINKS.bound$ciZM) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(typeVariableRef), CONCEPTS.LowerBoundType$nl) && SNodeOperations.hasRole(typeVariableRef, LINKS.bound$$a6H)) {
         SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(typeVariableRef), CONCEPTS.WildCardType$uV);
       } else {

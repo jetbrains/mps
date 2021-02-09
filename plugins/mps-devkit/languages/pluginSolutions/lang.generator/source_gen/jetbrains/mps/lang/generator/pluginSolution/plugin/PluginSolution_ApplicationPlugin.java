@@ -20,12 +20,12 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new AttachMappingLabel_Action());
     addAction(new DeriveGenPlanModel_Action());
     addAction(new NewCreateRootRule_Action());
     addAction(new NewRootMappingRule_Action());
-    // groups 
+    // groups
     addGroup(new ShowAsIntentions_Generator_ActionGroup(this));
   }
   public void adjustRegularGroups() {

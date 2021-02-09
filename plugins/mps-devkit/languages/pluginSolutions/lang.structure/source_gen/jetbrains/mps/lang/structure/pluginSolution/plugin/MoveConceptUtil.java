@@ -36,7 +36,7 @@ public class MoveConceptUtil {
     }).toListSequence();
   }
   public static Map<LanguageAspect, List<SNode>> getAspectNodes(Language language, Iterable<SNode> nodes) {
-    // map with aspects to roots solely attached to list of given nodes 
+    // mapwithaspectstorootssolelyattachedtolistofgivennodes
     Map<LanguageAspect, List<SNode>> aspectNodesMap = MapSequence.fromMap(new HashMap<LanguageAspect, List<SNode>>());
     for (LanguageAspect aspect : LanguageAspect.values()) {
       List<SNode> aspectNodes = MoveConceptUtil.getConceptsAspects(nodes, aspect.get(language));

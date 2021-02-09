@@ -59,8 +59,8 @@
   </root>
   <root nodeRef="r:d4a54057-bfb5-417b-b29a-fd853f994035(jetbrains.mps.lang.checkedName.generator.template.main@generator)/8697758915834156926">
     <file name="QueriesGenerated.java">
-      <node id="4227269532953790341" at="40,93,41,57" concept="4" />
-      <node id="1239207160870" at="41,57,42,248" concept="2" />
+      <node id="4227269532953790341" at="40,93,41,48" concept="4" />
+      <node id="1239207160870" at="41,48,42,248" concept="2" />
       <node id="4227269532953763825" at="43,118,44,146" concept="3" />
       <node id="1189519421088802732" at="46,118,47,146" concept="3" />
       <node id="4227269532953782932" at="48,5,49,144" concept="3" />
@@ -69,8 +69,8 @@
       <node id="5834820604012870139" at="54,118,55,146" concept="3" />
       <node id="5834820604012870148" at="57,118,58,146" concept="3" />
       <node id="5834820604012870155" at="59,5,60,144" concept="3" />
-      <node id="5834820604012874899" at="62,93,63,57" concept="4" />
-      <node id="5834820604012874901" at="63,57,64,248" concept="2" />
+      <node id="5834820604012874899" at="62,93,63,48" concept="4" />
+      <node id="5834820604012874901" at="63,48,64,248" concept="2" />
       <node id="5834820604012874911" at="65,118,66,146" concept="3" />
       <node id="5834820604012874920" at="68,118,69,146" concept="3" />
       <node id="5834820604012874927" at="70,5,71,144" concept="3" />

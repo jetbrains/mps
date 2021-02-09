@@ -16,8 +16,8 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="2897519568668509944" at="10,0,11,0" concept="3" trace="myId" />
       <node id="2897519568668509944" at="16,27,17,16" concept="7" />
-      <node id="2897519568668509944" at="20,30,21,30" concept="8" />
-      <node id="2897519568668509944" at="22,36,23,14" concept="8" />
+      <node id="2897519568668509944" at="20,30,21,27" concept="8" />
+      <node id="2897519568668509944" at="22,36,23,13" concept="8" />
       <node id="2897519568668509944" at="12,0,14,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
       <node id="2897519568668509944" at="26,0,29,0" concept="5" trace="adjustRegularGroups#()V" />
       <node id="2897519568668509944" at="15,0,19,0" concept="5" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
@@ -35,7 +35,7 @@
   </root>
   <root nodeRef="r:81f2d26c-7afe-43c5-850e-0e2c49e4cf00(jetbrains.mps.samples.customAspect.documentation.pluginSolution.plugin)/670382098842380811">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="670382098842380811" at="21,30,22,36" concept="2" />
+      <node id="670382098842380811" at="21,27,22,36" concept="2" />
     </file>
     <file name="ShowDoc_Action.java">
       <node id="670382098842380811" at="20,0,21,0" concept="10" trace="ICON" />
@@ -142,7 +142,7 @@
       <unit id="670382098842561432" at="9,0,19,0" name="jetbrains.mps.samples.customAspect.documentation.pluginSolution.plugin.CodeAddition_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="670382098842561432" at="23,14,24,49" concept="2" />
+      <node id="670382098842561432" at="23,13,24,49" concept="2" />
       <node id="670382098842561439" at="26,37,27,117" concept="2" />
     </file>
   </root>

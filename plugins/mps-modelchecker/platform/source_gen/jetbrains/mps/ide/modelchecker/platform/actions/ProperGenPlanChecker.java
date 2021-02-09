@@ -45,9 +45,9 @@ public class ProperGenPlanChecker extends SpecificChecker {
     if (!(gpExt.hasPlan(toCheck))) {
       return;
     }
-    // FIXME this is workaround for MPS-32687 - our GP for descriptor model does not indeed cover all required 
-    //      languages that may show up in descriptor model. As I can not fix it now, and errors are not acceptable, 
-    //      I still reveal the issues, but as infos. 
+    // FIXMEthisisworkaroundforMPS-32687-ourGPfordescriptormodeldoesnotindeedcoverallrequired
+    // languagesthatmayshowupindescriptormodel.AsIcannotfixitnow,anderrorsarenotacceptable,
+    // Istillrevealtheissues,butasinfos.
     final boolean isDescriptorModel = SModelStereotype.isDescriptorModel(toCheck);
     final ModelGenerationPlan externalPlan = gpExt.getPlan(toCheck);
     HashSet<SLanguage> coveredLanguages = new HashSet<SLanguage>();
@@ -75,7 +75,7 @@ public class ProperGenPlanChecker extends SpecificChecker {
       if (coveredLanguages.contains(inUse)) {
         continue;
       }
-      // not mentioned in GP - does it get generator at all? 
+      // notmentionedinGP-doesitgetgeneratoratall?
       LanguageRuntime lr = languageRegistry.getLanguage(inUse);
       if (lr == null) {
         String m = String.format("No runtime information for language %s", inUse.getQualifiedName());
@@ -87,7 +87,7 @@ public class ProperGenPlanChecker extends SpecificChecker {
         continue;
       }
       String m = String.format("Model uses language %s with %d generator(s), none of which is engaged with the active generation plan", lr.getNamespace(), nGeneratorsOfLanguageInUse);
-      // XXX not sure whether this is an error or a warning. However, Make doesn't stop unless it's an error, hence I stick to that. 
+      // XXXnotsurewhetherthisisanerrororawarning.However,Makedoesn'tstopunlessit'sanerror,henceIsticktothat.
       errorCollector.accept((isDescriptorModel ? info(toCheck, m) : error(toCheck, m)));
     }
     monitor.advance(2);

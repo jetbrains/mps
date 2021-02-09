@@ -29,7 +29,7 @@ public final class SubstituteMenu_Named__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean canBeAppliedToNode_id7IH442d05tK(@NotNull SAbstractConcept __thisConcept__, SNode candidate) {
-    //  disable deprecated aspect 
+    // disabledeprecatedaspect
     return false;
   }
 

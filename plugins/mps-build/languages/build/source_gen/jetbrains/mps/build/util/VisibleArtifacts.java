@@ -33,8 +33,8 @@ public class VisibleArtifacts {
     if (!(localProjectOnly)) {
       collectOnlyExternal();
     }
-    // FIXME why do we need artifacts from this very project?! It dates back to 6404ac9c with no clear explanation why do we need it there. 
-    //      I assume now we need modules of this project only in cases when localProjectOnly == true. 
+    // FIXMEwhydoweneedartifactsfromthisveryproject?!Itdatesbackto6404ac9cwithnoclearexplanationwhydoweneeditthere.
+    // IassumenowweneedmodulesofthisprojectonlyincaseswhenlocalProjectOnly==true.
     collectProjectArtifacts();
   }
 

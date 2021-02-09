@@ -57,7 +57,7 @@ public final class BaseMappingRule__BehaviorDescriptor extends BaseBHDescriptor 
     return null;
   }
   /*package*/ static boolean hasMappingLabel_id3uqP$qKDAVt(@NotNull SNode __thisNode__) {
-    // to avoid coding same code that check non-empty mapping label 
+    // toavoidcodingsamecodethatchecknon-emptymappinglabel
     return (SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$4kKU) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.labelDeclaration$4kKU), PROPS.name$MnvL));
   }
 

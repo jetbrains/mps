@@ -33,7 +33,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
 
     for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumerationDeclaration, LINKS.members$wmsL))) {
       if (isEmptyString(SPropertyOperations.getString(member, PROPS.name$MnvL))) {
-        // already red due to name constraint 
+        // alreadyredduetonameconstraint
       } else {
         names.putValue(SPropertyOperations.getString(member, PROPS.name$MnvL), member);
       }

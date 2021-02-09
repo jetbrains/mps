@@ -69,7 +69,7 @@ public class Where_Test extends Util_Test {
       it.next();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test

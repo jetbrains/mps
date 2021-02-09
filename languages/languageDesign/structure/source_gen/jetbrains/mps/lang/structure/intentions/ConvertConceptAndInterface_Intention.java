@@ -66,7 +66,7 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
         SNode icd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration"));
         ConceptConversionHelper.copy(node, icd);
         ListSequence.fromList(SLinkOperations.getChildren(icd, LINKS.extends$nawU)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), LINKS.implements$u_P2)));
-        // what to do with concept's "extends"? Copy to implements? 
+        // whattodowithconcept's"extends"?Copytoimplements?
         created = icd;
       } else {
         SNode cd = SModelOperations.createNewRootNode(SNodeOperations.getModel(node), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));

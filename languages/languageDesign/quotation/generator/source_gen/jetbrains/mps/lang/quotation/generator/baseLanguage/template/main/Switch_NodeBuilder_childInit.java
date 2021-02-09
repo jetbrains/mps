@@ -78,7 +78,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
             }
           });
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -89,13 +89,13 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
             }
           });
           tnode1.addChild(myAggregationLinks[0], tnode3);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_6_0(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2g)));
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -123,7 +123,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
@@ -134,13 +134,13 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
             }
           });
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
           SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_6_1(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2h)));
           tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -170,7 +170,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

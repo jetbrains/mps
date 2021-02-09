@@ -73,11 +73,11 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.FacetDeclaration$Nd)).isNotEmpty();
   }
   public static boolean createRootRule_Condition_0_1(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.FacetDeclaration$Nd)).isNotEmpty();
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
@@ -108,7 +108,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(_context.getNode(), LINKS.type$q$C9), CONCEPTS.PrimitiveType$sR) != null) || (TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(_context.getNode(), LINKS.type$q$C9), CONCEPTS.StringType$uX) != null);
   }
   public static boolean rule_Condition_15_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "plugin") && ListSequence.fromList(SModelOperations.roots(((SModel) _context.getVariable("model")), CONCEPTS.FacetDeclaration$Nd)).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -136,7 +136,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return TargetDeclaration__BehaviorDescriptor.getTargetFqName_idLXloLaM9s9.invoke(SNodeOperations.getNodeAncestor(_context.getOriginalCopiedInputNode(_context.getNode()), CONCEPTS.TargetDeclaration$Kf, true, false)) + "." + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    // node.classifierName() should be nested class of node.facetDeclaration().classifierName 
+    // node.classifierName()shouldbenestedclassofnode.facetDeclaration().classifierName
     return JavaNameUtil.shortName(IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
@@ -231,7 +231,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.as(TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(_context.getNode(), LINKS.type$q$C9), CONCEPTS.ClassifierType$bL), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
   }
   public static Object referenceMacro_GetReferent_15_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output FacetAspectDescriptorCons for model model; 
+    // TODOgenContext.getoutputFacetAspectDescriptorConsformodelmodel;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".FacetAspectDescriptor";
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {

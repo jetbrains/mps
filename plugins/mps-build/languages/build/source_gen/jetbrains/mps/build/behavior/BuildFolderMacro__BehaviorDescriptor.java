@@ -44,7 +44,7 @@ public final class BuildFolderMacro__BehaviorDescriptor extends BaseBHDescriptor
       context.put(key, usedMacro);
     }
     if (SetSequence.fromSet(usedMacro).contains(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
-      // cycle 
+      // cycle
       return null;
     }
     SetSequence.fromSet(usedMacro).addElement(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));

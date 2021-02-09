@@ -16,7 +16,7 @@ public final class KindUtil {
   }
 
   public static SNodeReference matchContextForRuleKind(SNode kind, TemplateQueryContext genContext) {
-    // original copied for the case when we are in the same model where the kind is located 
+    // originalcopiedforthecasewhenweareinthesamemodelwherethekindislocated
     kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), CONCEPTS.RuleKind$7C);
     SNodeReference pointer = SNodeOperations.getPointer(kind);
     if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {
@@ -33,7 +33,7 @@ public final class KindUtil {
   }
 
   public static String matchKindForRuleKind(SNode kind, TemplateQueryContext genContext) {
-    // original copied for the case when we are in the same model where the kind is located 
+    // originalcopiedforthecasewhenweareinthesamemodelwherethekindislocated
     kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), CONCEPTS.RuleKind$7C);
     SNodeReference pointer = SNodeOperations.getPointer(kind);
     if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {

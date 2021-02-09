@@ -35,24 +35,24 @@ public class FetchDependenciesProcessor {
    * and another for j.m.build language parts (respectively identified as "build.mps" and "j.m.build")
    */
   public void alternativeProcess(final String token) {
-    // Though I'd prefer no custom ArtifactLookup to avoid conversion to original node, DH doesn't get putArtifact unless I supply one 
+    // ThoughI'dprefernocustomArtifactLookuptoavoidconversiontooriginalnode,DHdoesn'tgetputArtifactunlessIsupplyone
     VisibleArtifacts artifacts = new VisibleArtifacts(project) {
       @Override
       protected ArtifactLookup createLookup() {
-        // i assume createLookup happens *after* I register UnpackHelper instance few lines down from here 
+        // iassumecreateLookuphappens*after*IregisterUnpackHelperinstancefewlinesdownfromhere
         return new ArtifactLookup(this, DependenciesHelper.get(FetchDependenciesProcessor.this.genContext, this.project, token));
       }
     };
     artifacts.collectOnlyExternal();
     UnpackHelper helper = new UnpackHelper(artifacts, genContext);
-    // token and session object is just to access same DH instance in few build.mps/main (and friends) locations without need to pass DH parameter explicitly 
+    // tokenandsessionobjectisjusttoaccesssameDHinstanceinfewbuild.mps/main(andfriends)locationswithoutneedtopassDHparameterexplicitly
     DependenciesHelper.put(helper, token);
     for (SNode dep : SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildExternalDependency$vq, false, new SAbstractConcept[]{})) {
       BuildExternalDependency__BehaviorDescriptor.fetchDependencies_id57YmpYyL8F1.invoke(dep, artifacts, new RequiredDependenciesBuilderImpl(artifacts, dep, helper));
     }
     helper.eval();
 
-    // FIXME drop this code once 2020.3 is out, support for custom fetchDependencies has been moved to templates 
+    // FIXMEdropthiscodeonce2020.3isout,supportforcustomfetchDependencieshasbeenmovedtotemplates
     List<SNode> statements = helper.getStatements();
     if (!(ListSequence.fromList(statements).isEmpty())) {
       SNode wf = SModelOperations.createNewNode(SNodeOperations.getModel(project), null, CONCEPTS.BuildCustomWorkflow$jk);

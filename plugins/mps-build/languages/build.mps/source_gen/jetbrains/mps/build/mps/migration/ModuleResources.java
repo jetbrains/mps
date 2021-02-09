@@ -39,8 +39,8 @@ public class ModuleResources extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // Default set of resources (icons/* and resources/*) is added. Most modules don't need these, but since build language used to copy these for any module, 
-    // it's essential to behave the same for safe migration. 
+    // Defaultsetofresources(icons/*andresources/*)isadded.Mostmodulesdon'tneedthese,butsincebuildlanguageusedtocopytheseforanymodule,
+    // it'sessentialtobehavethesameforsafemigration.
     final SNode proto = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleResources"));
     SNode fs = SLinkOperations.setNewChild(proto, LINKS.files$uRjo, null);
     SNode includes = SLinkOperations.addNewChild(fs, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
@@ -53,7 +53,7 @@ public class ModuleResources extends MigrationScriptBase {
           return scope_tzykqk_g0e_0;
         }
       };
-      // path.isNotNull check is a tribute to IF condition in template. In fact, it's likely just to filter out _Generator module, as others always have path 
+      // path.isNotNullcheckisatributetoIFconditionintemplate.Infact,it'slikelyjusttofilterout_Generatormodule,asothersalwayshavepath
       CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BuildMps_Module$JW, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleResources$M6)).isEmpty() && (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null);
@@ -61,7 +61,7 @@ public class ModuleResources extends MigrationScriptBase {
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNode cp = SNodeOperations.copyNode(proto);
-          // assume module root is the one with descriptor file (it's the way it used to be in templates) 
+          // assumemodulerootistheonewithdescriptorfile(it'sthewayitusedtobeintemplates)
           SLinkOperations.setTarget(SNodeOperations.as(SLinkOperations.getTarget(cp, LINKS.files$uRjo), CONCEPTS.BuildInputFiles$lR), LINKS.dir$e6r$, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(SLinkOperations.getTarget(it, LINKS.path$iYKB)));
           ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.sources$mT1j)).addElement(cp);
         }

@@ -67,7 +67,7 @@ public class CreateReferenceConcept_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    // structure 
+    // structure
     SNode concept = _quotation_createNode_vn7eng_a0b0a(NameUtil.decapitalize(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$MnvL)), event.getData(MPSCommonDataKeys.NODE), SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.name$MnvL) + "Reference");
     SModelOperations.addRootNode(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept);
     SPropertyOperations.assign(concept, PROPS.conceptId$rrGe, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), concept) + "");
@@ -75,11 +75,11 @@ public class CreateReferenceConcept_Action extends BaseAction {
     SPropertyOperations.assign(link, PROPS.linkId$mi9g, ConceptIdHelper.generateLinkId(concept, link) + "");
     SPropertyOperations.set(concept, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));
 
-    // find editor model 
+    // findeditormodel
     Language language = Language.getLanguageFor(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)));
     SModel editorModel = SModuleOperations.getAspect(language, "editor");
 
-    // editor 
+    // editor
     SNode editor = _quotation_createNode_vn7eng_a0n0a(concept, link);
     SModelOperations.addRootNode(editorModel, editor);
     SPropertyOperations.set(editor, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl));

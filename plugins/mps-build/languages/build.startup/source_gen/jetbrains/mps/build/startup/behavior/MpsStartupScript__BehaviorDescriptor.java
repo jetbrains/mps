@@ -118,16 +118,16 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
     }
 
     if ((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(branding)) {
-      // assume there is either plain text or version.major + version.minor "macros" will be used 
+      // assumethereiseitherplaintextorversion.major+version.minor"macros"willbeused
       String result = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(branding, LINKS.product$RfQu), null) + BuildMps_Branding__BehaviorDescriptor.getVersionMajor_id3AMbuf0qvyc.invoke(branding, null) + "." + BuildMps_Branding__BehaviorDescriptor.getVersionMinor_id3AMbuf0qHKA.invoke(branding, null);
       if (result.contains("$")) {
-        // substitute with the "macros" 
+        // substitutewiththe"macros"
         result = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(branding, LINKS.product$RfQu), null) + "$version.major$.$version.minor$";
       }
       return result;
     }
 
-    // Assume that brandig.codename always consists from instances of BuildTextStringPart so we don't need MacroHelper 
+    // Assumethatbrandig.codenamealwaysconsistsfrominstancesofBuildTextStringPartsowedon'tneedMacroHelper
     return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(branding, LINKS.product$RfQu), null) + SPropertyOperations.getInteger(branding, PROPS.major$o5cB) + "." + SPropertyOperations.getInteger(branding, PROPS.minor$o5rC);
   }
 

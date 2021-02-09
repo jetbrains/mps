@@ -176,20 +176,20 @@ __switch__:
       }, "-1");
       Assert.fail();
     } catch (ProcessingException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test
   public void test_closureLiteralAsComparator() throws Exception {
     List<Integer> list = ListSequence.fromList(new ArrayList<Integer>());
     ListSequence.fromList(list).addSequence(ListSequence.fromList(Arrays.asList(new Integer[]{4, 3, 5, 1, 2})));
-    // =================================================================== 
-    // The following is a hack! 
-    // In reality we could only substitute an interface that has a single method. 
-    // This example works only because java.util.Comparator defines compare() before equals() 
-    // Why declare equals() in an interface escapes me: it's already there and declaring it in an interface doesn't change anything 
-    // Besides, overriding only equals() without overriding also hashCode() is simply plain wrong. 
-    // =================================================================== 
+    // ===================================================================
+    // Thefollowingisahack!
+    // Inrealitywecouldonlysubstituteaninterfacethathasasinglemethod.
+    // Thisexampleworksonlybecausejava.util.Comparatordefinescompare()beforeequals()
+    // Whydeclareequals()inaninterfaceescapesme:it'salreadythereanddeclaringitinaninterfacedoesn'tchangeanything
+    // Besides,overridingonlyequals()withoutoverridingalsohashCode()issimplyplainwrong.
+    // ===================================================================
     Collections.sort(list, new Comparator<Object>() {
       public int compare(Object a, Object b) {
         return a.hashCode() - b.hashCode();
@@ -246,7 +246,7 @@ __switch__:
       prc.process("foobar");
       Assert.fail();
     } catch (ProcessingException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test
@@ -272,7 +272,7 @@ __switch__:
     }.invoke();
     Assert.assertSame(2, count.value);
 
-    // testing compilation 
+    // testingcompilation
     new _FunctionTypes._return_P0_E0<Object>() {
       public Object invoke() {
         return null;
@@ -380,7 +380,7 @@ __switch__:
       });
       Assert.fail();
     } catch (RuntimeException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   public void acceptWorker(Worker one, Worker two) {

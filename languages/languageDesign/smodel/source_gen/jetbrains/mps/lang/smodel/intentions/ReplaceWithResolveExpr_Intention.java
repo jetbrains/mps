@@ -66,9 +66,9 @@ public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDes
       SNode mp = SLinkOperations.setNewChild(expr, LINKS.moduleId$APaR, CONCEPTS.ModulePointer$Ay);
       ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(mp, moduleRef);
       SNode imco = SLinkOperations.setNewChild(de, LINKS.operation$gs9E, CONCEPTS.InstanceMethodCallOperation$uu);
-      // FIXME need an operation to set link target using nodePointer 
+      // FIXMEneedanoperationtosetlinktargetusingnodePointer
       SLinkOperations.setPointer(imco, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)", "~SModuleReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
-      // blank arg for SRepo 
+      // blankargforSRepo
       SLinkOperations.addNewChild(imco, LINKS.actualArgument$pzdx, null);
     }
     @Override

@@ -61,10 +61,10 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
           }));
           if ((keyMap.value == null)) {
             keyMap.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"));
-            // Enum value has not got any constraint, so it needs to be converted to valid identifier 
+            // Enumvaluehasnotgotanyconstraint,soitneedstobeconvertedtovalididentifier
             SPropertyOperations.set(keyMap.value, PROPS.name$MnvL, NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
             SPropertyOperations.setEnum(keyMap.value, PROPS.keymap$Oqju, it);
-            // If IdeaConfigurationXml exists, take it in account 
+            // IfIdeaConfigurationXmlexists,takeitinaccount
             SPropertyOperations.set(keyMap.value, PROPS.isPluginXmlKeymap$OQ3Q, ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty());
             if (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty()) {
               ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).where(new IWhereFilter<SNode>() {
@@ -86,13 +86,13 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
             SModelOperations.addRootNode(model, keyMap.value);
           }
 
-          // Have to copy node, because can't add same node to several concepts as child 
+          // Havetocopynode,becausecan'taddsamenodetoseveralconceptsaschild
           _shortcutChange.value = SNodeOperations.copyNode(_shortcutChange.value);
           ListSequence.fromList(SLinkOperations.getChildren(keyMap.value, LINKS.shortcutChange$L1Z4)).addElement(_shortcutChange.value);
 
           EditorPanelManager editorPanelManager = editorContext.getEditorPanelManager();
           if (editorPanelManager != null) {
-            // Focus on last keystroke as newly added will be last 
+            // Focusonlastkeystrokeasnewlyaddedwillbelast
             editorPanelManager.openEditor(ListSequence.fromList(SLinkOperations.getChildren(_shortcutChange.value, LINKS.keystroke$Nxja)).last());
           }
         }

@@ -62,10 +62,10 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
             continue;
           }
           if (i < ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$oqG$)).count()) {
-            // substitute the typevar ref with the existing type from the original CT 
+            // substitutethetypevarrefwiththeexistingtypefromtheoriginalCT
             SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$oqG$)).getElement(i)));
           } else {
-            // this is a (partially) raw class 
+            // thisisa(partially)rawclass
             typeParam.delete();
           }
         }

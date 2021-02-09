@@ -77,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   public SNode getLocationNode() {
     JavaStackFrame javaStackFrame = myUiState.getStackFrame();
     JavaLocation location;
-    // FIXME is there true need to access node, not SNodeReference here? 
+    // FIXMEistheretrueneedtoaccessnode,notSNodeReferencehere?
 
     if (javaStackFrame != null && (location = javaStackFrame.getLocation()) != null) {
       AbstractDebugSession<?> debugSession = javaStackFrame.getThread().getDebugSession();
@@ -103,8 +103,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return super.getClassPath();
     }
 
-    // todo duplication between this method and java.getClasspath 
-    // but java command is in execution.configurations plugin, so the dependency is backward 
+    // tododuplicationbetweenthismethodandjava.getClasspath
+    // butjavacommandisinexecution.configurationsplugin,sothedependencyisbackward
     Set<String> classpath = JavaModuleOperations.collectExecuteClasspath(Collections.singleton(locationModule));
     classpath.removeAll(CommonPaths.getJDKPath());
     return ListSequence.fromListWithValues(new ArrayList<String>(), classpath);
@@ -159,7 +159,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     JavaLocation javaLocation;
     if (javaStackFrame != null && (javaLocation = javaStackFrame.getLocation()) != null) {
       try {
-        // XXX Code identical to JavaLocalVariable.getSourceNode 
+        // XXXCodeidenticaltoJavaLocalVariable.getSourceNode
         AbstractDebugSession<?> debugSession = javaStackFrame.getThread().getDebugSession();
         TraceInfoProvider traceProvider = debugSession.getTraceProvider();
         for (Iterator<DebugInfo> it = traceProvider.debugInfo(JavaUiState.modelNameFromLocation(javaLocation)).iterator(); it.hasNext();) {
@@ -229,7 +229,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       if (location == null) {
         return null;
       }
-      // XXX Code almost identical to JavaThisObject.getSourceNode(), could reuse? 
+      // XXXCodealmostidenticaltoJavaThisObject.getSourceNode(),couldreuse?
       AbstractDebugSession<?> debugSession = frame.getThread().getDebugSession();
       TraceInfoProvider traceProvider = debugSession.getTraceProvider();
       for (Iterator<DebugInfo> it = traceProvider.debugInfo(JavaUiState.modelNameFromLocation(location)).iterator(); it.hasNext();) {
@@ -250,7 +250,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   @Override
   public SNode getThisClassifierType(_FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType) {
     IWatchable contextWatchable = myUiState.getStackFrame().getContextWatchable();
-    // todo 
+    // todo
     if (contextWatchable == null || !(contextWatchable instanceof JavaThisObject)) {
       return null;
     }
@@ -259,7 +259,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
   @Nullable
   private SNode getMpsTypeFromJdiType(Type type, _FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType) throws ClassNotLoadedException {
-    // TODO generics 
+    // TODOgenerics
     if (type instanceof PrimitiveType) {
       if (type instanceof BooleanType) {
         return _quotation_createNode_4zsmpx_a0a0a1a01();

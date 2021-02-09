@@ -170,9 +170,9 @@ public class NewModelFromSource_Action extends BaseAction {
         parser.convertToMps(ifilesToParse, new ProgressMonitorAdapter(indicator));
       }
     });
-    // FIXME MigrateSourcesToMPS doesn't need model write inside platform write to saveAll, which one is correct? Seems like this one,  
-    // as saveAll saves models, but it's the same commit 661288c838da9be3a6d7352ed9804172fbb4f51f that changed both classes in a different way, on purpose, perhaps? 
-    // Another odd thing is that JavaToMpsConverter is capable to grab appropriate model access as needed (and does so), why it doesn't do that for saveAll? 
+    // FIXMEMigrateSourcesToMPSdoesn'tneedmodelwriteinsideplatformwritetosaveAll,whichoneiscorrect?Seemslikethisone,
+    // assaveAllsavesmodels,butit'sthesamecommit661288c838da9be3a6d7352ed9804172fbb4f51fthatchangedbothclassesinadifferentway,onpurpose,perhaps?
+    // AnotheroddthingisthatJavaToMpsConverteriscapabletograbappropriatemodelaccessasneeded(anddoesso),whyitdoesn'tdothatforsaveAll?
     ApplicationManager.getApplication().runWriteAction(new Runnable() {
       public void run() {
         ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runWriteAction(new Runnable() {
@@ -182,8 +182,8 @@ public class NewModelFromSource_Action extends BaseAction {
         });
       }
     });
-    // workaround for project pane not rebuilding itself when a model has been added 
-    // not in a command but in a write action 
+    // workaroundforprojectpanenotrebuildingitselfwhenamodelhasbeenadded
+    // notinacommandbutinawriteaction
     ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).rebuild();
 
     List<SModel> resulting = parser.getModels();

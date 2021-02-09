@@ -89,8 +89,8 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
     ListSequence.fromList(allModels).addElement(model);
     SRepository repository = model.getRepository();
     if (repository != null) {
-      // could have employed ModelDependencyResolver code (either just directImports or together with implicitImports), 
-      // just don't want to access LanguageRegistry here, nor feel we truly need accessory models for CommonDataKeys subclasses. 
+      // couldhaveemployedModelDependencyResolvercode(eitherjustdirectImportsortogetherwithimplicitImports),
+      // justdon'twanttoaccessLanguageRegistryhere,norfeelwetrulyneedaccessorymodelsforCommonDataKeyssubclasses.
       for (SModelReference mr : new ModelImports(model).getImportedModels()) {
         SModel imported = mr.resolve(repository);
         if (imported != null) {
@@ -107,9 +107,9 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
         return Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(it)).isNotEmpty();
       }
     });
-    // I collect extended *ClassifierType*, not *Classifier* (e.g. by getAllExtendedClassifiers or getAllSuperClassifiers) 
-    // as I'm going to check CT.classifier reference target only, and don't care to get full node (let alone can't decide which  
-    // one of these getAll... is the right one ;) 
+    // Icollectextended*ClassifierType*,not*Classifier*(e.g.bygetAllExtendedClassifiersorgetAllSuperClassifiers)
+    // asI'mgoingtocheckCT.classifierreferencetargetonly,anddon'tcaretogetfullnode(letalonecan'tdecidewhich
+    // oneofthesegetAll...istherightone;)
     return Sequence.fromIterable(clsWithStaticFields).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((boolean) ActionDataParameterDeclaration__BehaviorDescriptor.isCommonDataKeysDescendant_id2KcpybedV57.invoke(__thisConcept__, it));

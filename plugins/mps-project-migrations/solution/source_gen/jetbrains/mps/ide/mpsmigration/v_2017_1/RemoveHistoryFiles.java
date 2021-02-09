@@ -26,7 +26,7 @@ public class RemoveHistoryFiles extends BaseProjectMigration {
   }
   @Override
   public boolean doExecute(Project project) {
-    // remove all *.history files under DefaultModelRoots 
+    // removeall*.historyfilesunderDefaultModelRoots
     {
       SearchScope scope_kkza83_b0b = CommandUtil.createScope(project);
       final SearchScope scope_kkza83_b0b_0 = new EditableFilteringScope(scope_kkza83_b0b);

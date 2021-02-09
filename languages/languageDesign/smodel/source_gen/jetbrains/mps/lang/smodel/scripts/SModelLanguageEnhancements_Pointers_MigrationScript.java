@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class SModelLanguageEnhancements_Pointers_MigrationScript extends BaseMigrationScript {
   public SModelLanguageEnhancements_Pointers_MigrationScript() {
     super("SModel Lanugage Enhancements (node-ptr<> and model-ptr)");
-    // whitespace 
-    // whitespace 
+    // whitespace
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -292,8 +292,8 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
-    // whitespace 
+    // whitespace
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -403,7 +403,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -456,7 +456,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -509,7 +509,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -562,9 +562,9 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
-    // whitespace 
-    // whitespace 
+    // whitespace
+    // whitespace
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -617,8 +617,8 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
-    // whitespace 
+    // whitespace
+    // whitespace
     this.addRefactoring(new AbstractMigrationRefactoring() {
       @Override
       public String getName() {
@@ -671,7 +671,7 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
         return true;
       }
     });
-    // whitespace 
+    // whitespace
   }
 
   @Nullable

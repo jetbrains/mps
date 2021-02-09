@@ -165,13 +165,13 @@ import java.io.OutputStream;
 
     @Nullable
     private byte[] getBaseVersionContent(@NotNull VirtualFile file) {
-      // returns the same content if file is not in changelist 
+      // returnsthesamecontentiffileisnotinchangelist
       try {
         ChangeListManager manager = ChangeListManager.getInstance(myProject);
         Change change = manager.getChange(file);
 
         if (change == null) {
-          // no changes, use current file content 
+          // nochanges,usecurrentfilecontent
           try {
             if (!(file.exists())) {
               if (LOG.isEnabledFor(Level.WARN)) {

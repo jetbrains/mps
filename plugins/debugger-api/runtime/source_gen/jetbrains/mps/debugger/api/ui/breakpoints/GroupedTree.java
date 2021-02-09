@@ -89,17 +89,17 @@ import javax.swing.UIManager;
   private class GroupTreeNode<T> extends MPSTreeNode {
 
     public GroupTreeNode(@NotNull GroupKind<D, T> kind, @NotNull T group, Collection<D> data) {
-      // populate tree element with all data necessary for rendering, so that CheckBoxNodeRenderer shall not care to grab a model lock 
-      // CheckBoxNodeRenderer deals with 
+      // populatetreeelementwithalldatanecessaryforrendering,sothatCheckBoxNodeRenderershallnotcaretograbamodellock
+      // CheckBoxNodeRendererdealswith
       String text = kind.getText(group);
       setNodeIdentifier(text);
       setText(text);
-      // XXX any reason to set it here provided there's renderer that likely does its own coloring? 
+      // XXXanyreasontosetithereprovidedthere'srendererthatlikelydoesitsowncoloring?
       setColor(UIManager.getColor("Tree.textForeground"));
       setIcon(kind.getIcon(group));
 
-      // CheckBoxNodeRenderer uses NodeData to represent checked state, therefore we have to attach NodeData to group node to 
-      // represent composite state of its children 
+      // CheckBoxNodeRendererusesNodeDatatorepresentcheckedstate,thereforewehavetoattachNodeDatatogroupnodeto
+      // representcompositestateofitschildren
       setUserObject(new CheckBoxNodeRenderer.NodeData() {
         @Override
         public Icon getIcon() {
@@ -119,7 +119,7 @@ import javax.swing.UIManager;
                 return false;
               }
             }
-            // ignore other tree nodes 
+            // ignoreothertreenodes
           }
           return true;
         }

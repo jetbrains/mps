@@ -85,7 +85,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
   }
 
   public boolean importVersionsUpdateRequired(Iterable<SModule> modules) {
-    // not to check once for every module later 
+    // nottocheckonceforeverymodulelater
     ModuleDependencyVersions mv = new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository());
     for (SModule module : ListSequence.fromList(myMpsProject.getProjectModulesWithGenerators())) {
       if (!(mv.dependenciesPresent(module))) {
@@ -134,7 +134,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
 
   private ProjectMigration next(final ProjectMigrationProgress migrationProgress, final boolean cleanup) {
     List<ProjectMigration> mig = ProjectMigrationsRegistry.getInstance().getMigrations();
-    // important thing is that we only consider PMs of the required cleanup state only not to add odd PMs to considered 
+    // importantthingisthatweonlyconsiderPMsoftherequiredcleanupstateonlynottoaddoddPMstoconsidered
     return ListSequence.fromList(mig).where(new IWhereFilter<ProjectMigration>() {
       public boolean accept(ProjectMigration it) {
         return cleanup == it instanceof CleanupProjectMigration;
@@ -210,11 +210,11 @@ public class MigrationRegistryImpl implements MigrationRegistry {
             return;
           }
         } else {
-          // todo get rid of explicit class mention 
+          // todogetridofexplicitclassmention
           throw new IllegalArgumentException();
         }
 
-        // no applicable found by id 
+        // noapplicablefoundbyid
         result.value = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
           public Iterable<ScriptApplied> translate(SModule module) {
             return getAllSteps(module, true);
@@ -231,7 +231,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
 
 
   private boolean canBeExecutedImmediately(ScriptApplied script) {
-    // todo remove explicit class mention 
+    // todoremoveexplicitclassmention
 
     AbstractModule moduleToMigrate = (AbstractModule) script.getModule(myMpsProject.getRepository());
     if (script.getScriptReference() instanceof MigrationScriptReference) {

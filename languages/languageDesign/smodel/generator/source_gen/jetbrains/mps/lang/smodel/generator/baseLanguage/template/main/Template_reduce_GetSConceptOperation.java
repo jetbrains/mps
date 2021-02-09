@@ -48,7 +48,7 @@ public class Template_reduce_GetSConceptOperation extends TemplateDeclarationBas
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

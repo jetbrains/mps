@@ -33,7 +33,7 @@ public final class QuotationConsequence__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean isMyAntiquotationExpression_id4SwrQttKYC0(@NotNull SNode __thisNode__, SNode expression) {
-    // when quotation is embedded into transform statement via QuotationConsequoence, antiquotations detach nodes passed to them 
+    // whenquotationisembeddedintotransformstatementviaQuotationConsequoence,antiquotationsdetachnodespassedtothem
     if (!(SNodeOperations.hasRole(expression, LINKS.expression$hE$)) || SNodeOperations.getNodeAncestor(expression, CONCEPTS.Quotation$Vl, false, false) != SLinkOperations.getTarget(__thisNode__, LINKS.quotation$Fkf)) {
       return false;
     }

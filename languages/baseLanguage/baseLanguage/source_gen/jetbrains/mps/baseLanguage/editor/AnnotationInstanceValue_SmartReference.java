@@ -43,7 +43,7 @@ public class AnnotationInstanceValue_SmartReference extends SubstituteMenuBase {
   public class SMP_ReferenceScope_lyrsmi_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_lyrsmi_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.AnnotationInstanceValue$T7, LINKS.key$bSmV);
     }
     @NotNull

@@ -65,7 +65,7 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
       }
 
 
-      // Invert condition 
+      // Invertcondition
       SNode condition = SLinkOperations.getTarget(node, LINKS.condition$5R17);
       if ((condition != null)) {
         if (SNodeOperations.isInstanceOf(condition, CONCEPTS.NotExpression$Pc)) {
@@ -99,12 +99,12 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
           }
         }
       }
-      // Flip ifTrue and ifFalse 
+      // FlipifTrueandifFalse
       SNode ifTrue = SLinkOperations.getTarget(node, LINKS.ifTrue$5Rg8);
       SNode ifFalse = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK);
       SNode newIfTrue;
       SNode newIfFalse;
-      // Set new ifFalse 
+      // SetnewifFalse
       if (ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$53DE)).isEmpty()) {
         newIfFalse = null;
       } else
@@ -114,7 +114,7 @@ public final class InvertIfCondition_Intention extends AbstractIntentionDescript
         newIfFalse = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$u4, null);
         SLinkOperations.setTarget(SNodeOperations.cast(newIfFalse, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M, ifTrue);
       }
-      // Set new ifTrue 
+      // SetnewifTrue
       if (SNodeOperations.isInstanceOf(ifFalse, CONCEPTS.BlockStatement$u4)) {
         newIfTrue = SLinkOperations.getTarget(SNodeOperations.cast(ifFalse, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M);
       } else {

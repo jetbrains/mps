@@ -37,7 +37,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   }
   @Override
   protected void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
-    // do nothing 
+    // donothing
   }
   public static final FlavouredItem.ReportItemFlavour<SuppressedWrapperReportItem, SNodeReference> FLAVOUR_ACTIVE_SUPPRESSOR = new ReportItemBase.SimpleReportItemFlavour<SuppressedWrapperReportItem, SNodeReference>("FLAVOUR_ACTIVE_SUPPRESSOR", SuppressedWrapperReportItem.class, new Function<SuppressedWrapperReportItem, SNodeReference>() {
     public SNodeReference apply(SuppressedWrapperReportItem reportItem) {

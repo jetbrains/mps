@@ -83,9 +83,9 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
             File artifacts = new File(script.getArtifactsPath());
 
             if (myRunConfiguration.getSkipModulesLoading()) {
-              // using the same "advanced" technique we use for copying current project in mps command 
-              // configuration supports only plugin construction 
-              // which implies that plugin.xml can be only in PLUGIN_HOME/META-INF 
+              // usingthesame"advanced"techniqueweuseforcopyingcurrentprojectinmpscommand
+              // configurationsupportsonlypluginconstruction
+              // whichimpliesthatplugin.xmlcanbeonlyinPLUGIN_HOME/META-INF
               for (File pluginDir : artifacts.listFiles()) {
                 File pluginXml = new File(new File(pluginDir, "META-INF"), "plugin.xml");
                 if (!(pluginXml.exists())) {
@@ -96,9 +96,9 @@ public class DeployPlugins_Configuration_RunProfileState implements RunProfileSt
                   myRunConfiguration.removeLanguageLibraries(document.getRootElement(), projectFinal);
                   JDOMUtil.writeDocument(document, pluginXml);
                 } catch (JDOMException e) {
-                  // ignore and hope for the best 
+                  // ignoreandhopeforthebest
                 } catch (IOException e) {
-                  // same as previous 
+                  // sameasprevious
                 }
               }
             }

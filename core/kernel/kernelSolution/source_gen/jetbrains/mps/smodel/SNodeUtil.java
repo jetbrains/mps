@@ -95,7 +95,7 @@ public final class SNodeUtil {
   @Deprecated
   @ToRemove(version = 2018.3)
   public static boolean isDefaultSubstitutable(SAbstractConcept concept) {
-    // 1 use in mbeddr 
+    // 1useinmbeddr
     return !(concept.isAbstract()) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IDontSubstituteByDefault$GY));
   }
   public static int getMetaLevel(SNode node) {
@@ -169,13 +169,13 @@ public final class SNodeUtil {
   @Deprecated
   @ToRemove(version = 2019.3)
   private static String defaultCardinalityIfNotSet(String cardinality) {
-    // couldn't use type for cardinality (enummember<Cardinality> is SNode) 
-    // can't use link.sourceCardinality.is because I need sourceCardinality to be *bootstrap* property, which is possible at the moment 
-    // only for PropertyIdRefExpression, and not for SPropertyAccess 
+    // couldn'tusetypeforcardinality(enummember<Cardinality>isSNode)
+    // can'tuselink.sourceCardinality.isbecauseIneedsourceCardinalitytobe*bootstrap*property,whichispossibleatthemoment
+    // onlyforPropertyIdRefExpression,andnotforSPropertyAccess
     return (cardinality == null ? SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1")) : cardinality);
   }
   public static boolean isAssociationLink(String metaclass) {
-    // same as cardinality, would like to access LinkDeclaration.metaClass via bootstrap property 
+    // sameascardinality,wouldliketoaccessLinkDeclaration.metaClassviabootstrapproperty
     return metaclass == null || SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b8L, "reference")).equals(metaclass);
   }
   public static String getConstrainedDataTypeDeclaration_constraint(SNode constrainedDataType) {

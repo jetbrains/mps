@@ -91,7 +91,7 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
-      // treat raw type as if all params were Object or the appropriate bound 
+      // treatrawtypeasifallparamswereObjectortheappropriatebound
       for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp))) {
         MapSequence.fromMap(substitutions).put(tvd, ((SLinkOperations.getTarget(tvd, LINKS.bound$aZCB) == null) ? _quotation_createNode_ja7850_a0a0a1a2a2() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, LINKS.bound$aZCB))));
       }
@@ -105,14 +105,14 @@ public final class NamedTupleType__BehaviorDescriptor extends BaseBHDescriptor {
           tvd_var = tvd_it.next();
           tval_var = tval_it.next();
           MapSequence.fromMap(substitutions).put(tvd_var, SNodeOperations.copyNode(tval_var));
-          // iterate recursively into each parameter type if generic 
+          // iteraterecursivelyintoeachparametertypeifgeneric
           if (SNodeOperations.isInstanceOf(tval_var, CONCEPTS.IGenericType$13)) {
             IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(tval_var, CONCEPTS.IGenericType$13), substitutions);
           }
         }
       }
     }
-    // traverse all extended/implemented classifiers 
+    // traverseallextended/implementedclassifiers
     IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.extended$2Fzf), substitutions);
     for (SNode ifc : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.implements$1gsv))) {
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(ifc, substitutions);

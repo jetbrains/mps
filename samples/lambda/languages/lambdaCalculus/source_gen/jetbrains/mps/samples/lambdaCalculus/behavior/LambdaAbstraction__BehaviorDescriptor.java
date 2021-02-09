@@ -44,7 +44,7 @@ public final class LambdaAbstraction__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static List<SNode> getAllVariables_id4pfsEnSNEj7(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    // Is it OK to create lists recursively? 
+    // IsitOKtocreatelistsrecursively?
     ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.variable$doJv)));
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0), CONCEPTS.LambdaAbstraction$p9)) {
       ListSequence.fromList(result).addSequence(ListSequence.fromList(LambdaAbstraction__BehaviorDescriptor.getAllVariables_id4pfsEnSNEj7.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.body$dwv0), CONCEPTS.LambdaAbstraction$p9))));

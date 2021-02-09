@@ -118,8 +118,8 @@ public class assignments extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNode source = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), createdNode);
-        // since BaseAssignmentExpressions are right-associative we should LT parent 
-        // BaseAssignmentExpressions or it's lValue depenting on current position 
+        // sinceBaseAssignmentExpressionsareright-associativeweshouldLTparent
+        // BaseAssignmentExpressionsorit'slValuedepentingoncurrentposition
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$PA) && Objects.equals(SNodeOperations.getContainingLink(source), LINKS.lValue$splI)) {
           source = SNodeOperations.cast(SNodeOperations.getParent(source), CONCEPTS.BaseAssignmentExpression$PA);
         }

@@ -54,7 +54,7 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
     for (SNode extendedClassifierType : Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(classifier)) {
       SNode extendedClassifier = SLinkOperations.getTarget(extendedClassifierType, LINKS.classifier$cxMr);
       if ((extendedClassifier == null)) {
-        // broken reference, reported elsewhere, just go on with those valid  
+        // brokenreference,reportedelsewhere,justgoonwiththosevalid
         continue;
       }
       if (SNodeOperations.is(extendedClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
@@ -63,7 +63,7 @@ public class CheckForReexportExtendedClassifier_NonTypesystemRule extends Abstra
       SModule classifierModule = extendedClassifier.getModel().getModule();
       assert classifierModule != null;
       if (jdkModuleRef.equals(classifierModule.getModuleReference())) {
-        // assume JDK is always there, don't force to re-export it from any module that extend regular Java classes. 
+        // assumeJDKisalwaysthere,don'tforcetore-exportitfromanymodulethatextendregularJavaclasses.
         continue;
       }
       if (deps.contains(classifierModule) && !(depsReexport.contains(classifierModule))) {

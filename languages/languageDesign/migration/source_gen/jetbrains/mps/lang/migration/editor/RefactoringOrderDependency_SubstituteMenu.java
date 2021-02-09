@@ -49,7 +49,7 @@ public class RefactoringOrderDependency_SubstituteMenu extends SubstituteMenuBas
   public class SMP_ReferenceScope_gjfk1b_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_gjfk1b_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.RefactoringOrderDependency$Mm, LINKS.refactoring$cu5K);
     }
     @NotNull

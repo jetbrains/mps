@@ -39,8 +39,8 @@ public final class BuildMps_Generator__BehaviorDescriptor extends BaseBHDescript
     return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$RA) ? SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildMps_Language$RA) : SLinkOperations.getTarget(__thisNode__, LINKS.sourceLanguage$A51U));
   }
   /*package*/ static boolean isManagedBy_idtxX2LHveIs(@NotNull SNode __thisNode__, SNode language) {
-    // managed, as I reconstruct now, means 'generator module that shares mpl, but listed directly under BuildProject, not BM_Language' 
-    // standalone generators, with their own module descriptor file and dedicated 'module' entry in layout, are not 'managed' 
+    // managed,asIreconstructnow,means'generatormodulethatsharesmpl,butlisteddirectlyunderBuildProject,notBM_Language'
+    // standalonegenerators,withtheirownmoduledescriptorfileanddedicated'module'entryinlayout,arenot'managed'
     if ((SLinkOperations.getTarget(language, LINKS.generator$OCOG) != null) && SLinkOperations.getTarget(language, LINKS.generator$OCOG) == __thisNode__) {
       return true;
     }

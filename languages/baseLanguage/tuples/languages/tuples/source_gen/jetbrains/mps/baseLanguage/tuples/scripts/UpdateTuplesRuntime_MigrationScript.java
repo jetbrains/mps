@@ -125,7 +125,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        // in case there are classes, keep the nodes intact, just in case there are references to them (e.g. from templates) 
+        // incasethereareclasses,keepthenodesintact,justincasetherearereferencestothem(e.g.fromtemplates)
         TreeMap<String, SNode> implClasses = new TreeMap<String, SNode>();
         for (SNode cc : Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node), CONCEPTS.ClassConcept$bK))) {
           if (SPropertyOperations.getBoolean(cc, PROPS.isStatic$3WAz) && SPropertyOperations.getString(cc, PROPS.name$MnvL).matches("_[0-9]+")) {
@@ -133,7 +133,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           }
         }
         final int MAX_TUPLE_COMPONENTS = 10;
-        // Here I assume these updaters (aka refactoring scripts) are executed sequentially, and TupleInterface has been executed already 
+        // HereIassumetheseupdaters(akarefactoringscripts)areexecutedsequentially,andTupleInterfacehasbeenexecutedalready
         final SNode[] tupleIfaces = new SNode[MAX_TUPLE_COMPONENTS];
         SNode tuplesCC = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -148,15 +148,15 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           assert tupleIfaces[tiIndex] == null;
           tupleIfaces[tiIndex] = ti;
         }
-        // sanity check 
+        // sanitycheck
         for (int i = 0; i < tupleIfaces.length; i++) {
           if (tupleIfaces[i] == null) {
             throw new IllegalStateException(String.format("No Tuples._%d interface declaration found", i));
           }
         }
-        // it is MultiTuple class concept that we are editing here, _0 extends MultiTuple, _1 extends _0 and so on 
+        // itisMultiTupleclassconceptthatweareeditinghere,_0extendsMultiTuple,_1extends_0andsoon
         SNode prevIC = node;
-        // XXX perhaps, shall utilize javax.annotation.Generated to denote members that could be safely re-generated 
+        // XXXperhaps,shallutilizejavax.annotation.Generatedtodenotemembersthatcouldbesafelyre-generated
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
           final String icname = "_" + i;
           SNode ic = implClasses.get(icname);
@@ -172,15 +172,15 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
               SNode td = SLinkOperations.addNewChild(ic, LINKS.typeVariableDeclaration$Lipp, null);
               SPropertyOperations.assign(td, PROPS.name$MnvL, "T" + j);
               if (j < i - 1) {
-                // all but the last one Type variable are shared with superclass 
+                // allbutthelastoneTypevariablearesharedwithsuperclass
                 SLinkOperations.setTarget(SLinkOperations.addNewChild(superclassType, LINKS.parameter$oqG$, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I, td);
               }
               SLinkOperations.setTarget(SLinkOperations.addNewChild(implementedIface, LINKS.parameter$oqG$, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I, td);
             }
           }
-          // first cons takes Object... 
-          // second cons is for subclasses, takes int and passes it up to MultiTuple to initialize array 
-          // third cons is no-arg cons for use in empty() 
+          // firstconstakesObject...
+          // secondconsisforsubclasses,takesintandpassesituptoMultiTupletoinitializearray
+          // thirdconsisno-argconsforuseinempty()
           SNode c1 = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
           SNode c2 = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
           SNode c3 = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
@@ -190,8 +190,8 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           SLinkOperations.setNewChild(c1, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
           SLinkOperations.setNewChild(c2, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
           SLinkOperations.setNewChild(c3, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
-          // FIXME there used to be code (e.g.TResource) that did new MultiTuple._2 instead of MultiTuple.from() 
-          //      I fixed templates in 2020.1; can replace with 'protected' once 2020.1 is out 
+          // FIXMEthereusedtobecode(e.g.TResource)thatdidnewMultiTuple._2insteadofMultiTuple.from()
+          // Ifixedtemplatesin2020.1;canreplacewith'protected'once2020.1isout
           SLinkOperations.setNewChild(c1, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
           SLinkOperations.setNewChild(c2, LINKS.visibility$Yyua, CONCEPTS.ProtectedVisibility$hr);
           SLinkOperations.setNewChild(c3, LINKS.visibility$Yyua, CONCEPTS.ProtectedVisibility$hr);
@@ -210,7 +210,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           SLinkOperations.setTarget(c3This, LINKS.baseMethodDeclaration$pyYw, c2);
 
           if (i > 0) {
-            // get(), set() 
+            // get(),set()
             SNode mSet = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.InstanceMethodDeclaration$39);
             SNode mGet = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.InstanceMethodDeclaration$39);
             SLinkOperations.setNewChild(mSet, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
@@ -235,16 +235,16 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
             SLinkOperations.setPointer(getCall, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)", "1238932917172"));
             SPropertyOperations.assign(SLinkOperations.addNewChild(getCall, LINKS.actualArgument$pzdx, CONCEPTS.IntegerConstant$Na), PROPS.value$jgCM, i - 1);
           }
-          // assign() 
+          // assign()
           SNode assignMethod = SLinkOperations.addNewChild(ic, LINKS.member$L_2d, CONCEPTS.InstanceMethodDeclaration$39);
           SLinkOperations.setNewChild(assignMethod, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
           SLinkOperations.setNewChild(assignMethod, LINKS.body$5xQk, null);
           SPropertyOperations.assign(assignMethod, PROPS.name$MnvL, "assign");
-          // aka tupleIfaces[i] with proper TypeVariableReference 
+          // akatupleIfaces[i]withproperTypeVariableReference
           SLinkOperations.setTarget(assignMethod, LINKS.returnType$5xoi, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(ic, LINKS.implementedInterface$rujG)).first()));
           SNode assignMethodParam = SLinkOperations.addNewChild(assignMethod, LINKS.parameter$5xBj, null);
           SPropertyOperations.assign(assignMethodParam, PROPS.name$MnvL, "from");
-          // can't just copy return type, 'from' parameter needs 'extends' for each type variable reference 
+          // can'tjustcopyreturntype,'from'parameterneeds'extends'foreachtypevariablereference
           SNode ampType = SLinkOperations.setNewChild(assignMethodParam, LINKS.type$a1UY, CONCEPTS.ClassifierType$bL);
           SLinkOperations.setTarget(ampType, LINKS.classifier$cxMr, tupleIfaces[i]);
           for (int j = 0; j < i; j++) {
@@ -276,13 +276,13 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
               }
             }));
           }
-          // uf, what a piece of code... 
+          // uf,whatapieceofcode...
 
           if (implClasses.get(icname) == null) {
-            // don't attach ic until all its children are ready to save some notifications 
-            // OTOH, I can face node id conflicts and broken references (e.g. if an id of TypeVariableDeclaration changes, all  
-            // TypeVariableReferences may get broken. I hope that they are not 'mature' by the time I insert the class into model, 
-            // and therefore would be updated properly) 
+            // don'tattachicuntilallitschildrenarereadytosavesomenotifications
+            // OTOH,Icanfacenodeidconflictsandbrokenreferences(e.g.ifanidofTypeVariableDeclarationchanges,all
+            // TypeVariableReferencesmaygetbroken.Ihopethattheyarenot'mature'bythetimeIinserttheclassintomodel,
+            // andthereforewouldbeupdatedproperly)
             implClasses.put(icname, ic);
             SLinkOperations.addNewChild(node, LINKS.member$L_2d, CONCEPTS.PlaceholderMember$s8);
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(ic);
@@ -290,8 +290,8 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
 
           prevIC = ic;
         }
-        //  
-        // from(...) methods 
+        // 
+        // from(...)methods
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
           SNode classCreator = createClassCreator_yti4yq_a0a0q0a1(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(implClasses.get("_" + i))).first());
           SNode retType = createClassifierType_yti4yq_a0b0q0a1(tupleIfaces[i]);
@@ -309,10 +309,10 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           }
           ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(fromMethod);
         }
-        //  
-        // emptyN() methods 
+        // 
+        // emptyN()methods
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
-          // it's third cons that takes no args 
+          // it'sthirdconsthattakesnoargs
           SNode classCreator = createClassCreator_yti4yq_a0b0t0a1(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(implClasses.get("_" + i))).skip(2).first());
           SNode retType = createClassifierType_yti4yq_a0c0t0a1(tupleIfaces[i]);
           SNode ret = createReturnStatement_yti4yq_a0d0t0a1(classCreator);
@@ -333,7 +333,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
         return false;
       }
     });
-    // whitespace 
+    // whitespace
   }
 
   @Nullable

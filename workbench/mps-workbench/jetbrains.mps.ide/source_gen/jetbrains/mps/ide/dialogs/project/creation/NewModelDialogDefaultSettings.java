@@ -87,7 +87,7 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
       if (root.canCreateModels()) {
         model.addElement(root);
       } else if (myModule instanceof Language && root instanceof FileBasedModelRoot) {
-        // Can fix only FileBased model root (default for language) 
+        // CanfixonlyFileBasedmodelroot(defaultforlanguage)
         model.addElement(root);
       }
     }

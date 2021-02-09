@@ -80,12 +80,12 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                 for (TResource tres : Sequence.fromIterable(input)) {
                   JavaModuleFacet facet = tres.module().getFacet(JavaModuleFacet.class);
                   if (facet == null) {
-                    // not java module 
-                    // todo: do something?! 
+                    // notjavamodule
+                    // todo:dosomething?!
                     continue;
                   }
                   if (!(facet.isCompileInMps())) {
-                    // idea copies trace.info files 
+                    // ideacopiestrace.infofiles
                     continue;
                   }
 

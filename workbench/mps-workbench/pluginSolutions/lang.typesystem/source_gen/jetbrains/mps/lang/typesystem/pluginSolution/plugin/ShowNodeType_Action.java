@@ -80,7 +80,7 @@ public class ShowNodeType_Action extends BaseAction {
         TypecheckingFacade tf = TypecheckingFacade.getFromContext();
         type.value = tf.getTypeOf(((SNode) MapSequence.fromMap(_params).get("node")));
 
-        // TODO errors reported while computing type 
+        // TODOerrorsreportedwhilecomputingtype
         if (error.value == null && TypesUtil.hasVariablesInside(type.value)) {
           error.value = new SimpleErrorReporter(((SNode) MapSequence.fromMap(_params).get("node")), "Type was not fully instantiated", null);
         }
@@ -112,9 +112,9 @@ public class ShowNodeType_Action extends BaseAction {
     } finally {
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
         public void run() {
-          // XXX what's the need to remove type node from the model we dispose anyway? 
-          // YYY maybe b/c the type object can be referenced elsewhere and we don't want to break that code 
-          // YYY that's the price one pays for having "free floating" nodes as part of the design 
+          // XXXwhat'stheneedtoremovetypenodefromthemodelwedisposeanyway?
+          // YYYmaybeb/cthetypeobjectcanbereferencedelsewhereandwedon'twanttobreakthatcode
+          // YYYthat'sthepriceonepaysforhaving"freefloating"nodesaspartofthedesign
           tmpModel.value.removeRootNode(type.value);
           TemporaryModels.getInstance().dispose(tmpModel.value);
         }

@@ -162,9 +162,9 @@ public class MethodResolveUtil {
       }
       typeOfParam = GenericTypesUtil.getTypeWithResolvedTypeVars(typeOfParam, typeByTypeVar);
       typeOfParam = GenericTypesUtil.methodParamTypeWoutTypeVars(typeOfParam, methodTypeVariableDecls);
-      // only respect boxing-unboxing 
+      // onlyrespectboxing-unboxing
       boolean boxingInvolved = SNodeOperations.isInstanceOf(typeOfArg, CONCEPTS.PrimitiveType$sR) != SNodeOperations.isInstanceOf(typeOfParam, CONCEPTS.PrimitiveType$sR);
-      // in case boxing is involved and isWeak is false, isSubtype is always false 
+      // incaseboxingisinvolvedandisWeakisfalse,isSubtypeisalwaysfalse
       if ((isWeak || !(boxingInvolved)) && TypecheckingFacade.getFromContext().isSubtype(typeOfArg, typeOfParam)) {
         List<SNode> methods = MapSequence.fromMap(typesOfParamToMethods).get(new NodeWrapper(typeOfParam));
         if (methods == null) {
@@ -214,7 +214,7 @@ with_next_t:
           continue with_next_t;
         }
       }
-      // invariant: no element of subtypes is either same as or a sub/supertype of t 
+      // invariant:noelementofsubtypesiseithersameasorasub/supertypeoft
       ListSequence.fromList(subtypes).addElement(t);
     }
 
@@ -329,8 +329,8 @@ with_next_t:
   }
 
   private static Map<SNode, SNode> getTypeByTypeVar(SNode methodCall) {
-    // FIXME in fact, returned map doesn't depend on IMethodCall itself, rather its getInstanceType():ClassifierType, 
-    // which we likely can use here to cache information to avoid rebuilding it for each method call from within a class. 
+    // FIXMEinfact,returnedmapdoesn'tdependonIMethodCallitself,ratheritsgetInstanceType():ClassifierType,
+    // whichwelikelycanuseheretocacheinformationtoavoidrebuildingitforeachmethodcallfromwithinaclass.
     return IMethodCall__BehaviorDescriptor.getTypesByTypeVars_idJfLh5LDMrj.invoke(methodCall);
   }
 
@@ -447,7 +447,7 @@ with_next_t:
       if (!(that instanceof NodeWrapper)) {
         return false;
       }
-      // ignore attributes while matching types 
+      // ignoreattributeswhilematchingtypes
       return MatchingUtil.matchNodes(this.myNode, ((NodeWrapper) that).myNode, IMatchModifier.DEFAULT, false);
     }
   }

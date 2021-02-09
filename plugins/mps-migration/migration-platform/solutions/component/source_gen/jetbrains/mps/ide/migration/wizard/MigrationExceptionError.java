@@ -12,7 +12,7 @@ public class MigrationExceptionError extends MigrationError {
   public MigrationExceptionError() {
   }
   public MigrationExceptionError(Throwable t) {
-    // todo 
+    // todo
   }
   @Override
   public String getShortMessage() {

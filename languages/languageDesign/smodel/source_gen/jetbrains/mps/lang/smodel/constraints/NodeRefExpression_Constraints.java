@@ -42,7 +42,7 @@ public class NodeRefExpression_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // roots only 
+            // rootsonly
             return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.BaseConcept$gP);
           }
         };

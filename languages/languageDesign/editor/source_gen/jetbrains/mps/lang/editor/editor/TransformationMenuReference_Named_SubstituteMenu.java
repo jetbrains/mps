@@ -53,7 +53,7 @@ public class TransformationMenuReference_Named_SubstituteMenu extends Substitute
   public class SMP_ReferenceScope_psoaul_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_psoaul_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TransformationMenuReference_Named$rf, LINKS.menu$8pZB);
     }
     @NotNull

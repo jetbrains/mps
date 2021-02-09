@@ -70,8 +70,8 @@ public class ClassifierUpdater {
   private final Documentation myJavadocSupplier;
 
   public ClassifierUpdater(ASMClass asmClass, boolean skipPrivate, ReferenceFactory handler, @Nullable Documentation doc) {
-    // we treat skipPrivate here as 'hide implementation details', thus only public and protected 
-    // members are visible if skipPrivate == true (i.e. those visible to outer code) 
+    // wetreatskipPrivatehereas'hideimplementationdetails',thusonlypublicandprotected
+    // membersarevisibleifskipPrivate==true(i.e.thosevisibletooutercode)
     mySkipPrivate = skipPrivate;
     myHandler = handler;
     myParsedClass = asmClass;
@@ -140,7 +140,7 @@ public class ClassifierUpdater {
   }
   private void updateVisibility() {
     if (SLinkOperations.getTarget(myClassifier, LINKS.visibility$Yyua) == null) {
-      // for inner classes, visibility and other access fields is initialized at creation time 
+      // forinnerclasses,visibilityandotheraccessfieldsisinitializedatcreationtime
       SLinkOperations.setTarget(myClassifier, LINKS.visibility$Yyua, (myParsedClass.isPublic() ? createPublicVisibility_ol94f8_a0a1a0a41() : null));
     }
   }
@@ -173,7 +173,7 @@ public class ClassifierUpdater {
           if (SNodeOperations.isInstanceOf(typeByASMType, CONCEPTS.ClassifierType$bL)) {
             ListSequence.fromList(SLinkOperations.getChildren(tvd, LINKS.auxBounds$jgLr)).addElement(SNodeOperations.cast(typeByASMType, CONCEPTS.ClassifierType$bL));
           } else {
-            // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
+            // TODO:avoidthisquickfixforSchemeProcessorclassinscheme.ktfromIDEAplatform
             if (LOG.isEnabledFor(Level.WARN)) {
               LOG.warn("ClassifierType was expected, but received: " + typeByASMType + " when parsing the " + myClassifier);
             }
@@ -202,7 +202,7 @@ public class ClassifierUpdater {
           if (SNodeOperations.isInstanceOf(typeByASMType, CONCEPTS.ClassifierType$bL)) {
             ListSequence.fromList(SLinkOperations.getChildren(tvd, LINKS.auxBounds$jgLr)).addElement(SNodeOperations.cast(typeByASMType, CONCEPTS.ClassifierType$bL));
           } else {
-            // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
+            // TODO:avoidthisquickfixforSchemeProcessorclassinscheme.ktfromIDEAplatform
             if (LOG.isEnabledFor(Level.WARN)) {
               LOG.warn("ClassifierType was expected, but received: " + typeByASMType);
             }

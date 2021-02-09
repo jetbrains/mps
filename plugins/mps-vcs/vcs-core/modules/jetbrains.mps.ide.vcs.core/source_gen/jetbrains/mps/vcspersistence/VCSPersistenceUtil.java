@@ -42,8 +42,8 @@ import jetbrains.mps.project.structure.modules.ModuleReference;
 @GeneratedClass(node = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/2076945889653642029", model = "r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)")
 public class VCSPersistenceUtil {
   public static SModel loadModel(final byte[] content, String extension) {
-    // returns null if an error occurred, as its predecessor in PersistenceUtil. 
-    // [MM] not sure this is correct, just left it unchanged 
+    // returnsnullifanerroroccurred,asitspredecessorinPersistenceUtil.
+    // [MM]notsurethisiscorrect,justleftitunchanged
 
     SModel oldModel = loadFromOldMPSPersistence(content);
     if (oldModel != null) {
@@ -79,7 +79,7 @@ public class VCSPersistenceUtil {
   public static byte[] saveModel(ModelFactoryService modelFactorySvc, SModel model, String modelFactoryTypeSelector, String ext) {
     String resultString;
     if (MPSExtentions.MODEL_HEADER.equals(modelFactoryTypeSelector) || MPSExtentions.MODEL_ROOT.equals(modelFactoryTypeSelector)) {
-      // special support for per-root persistence 
+      // specialsupportforper-rootpersistence
       resultString = savePerRootModel(modelFactorySvc, model, MPSExtentions.MODEL_HEADER.equals(modelFactoryTypeSelector));
     } else {
       resultString = saveModel(modelFactorySvc, model, ext);
@@ -88,7 +88,7 @@ public class VCSPersistenceUtil {
   }
 
   private static String savePerRootModel(ModelFactoryService modelFactories, final SModel model, boolean isHeader) {
-    // FIXME this odd code has been copied as is form PersistenceUtil, desperately needs a refactoring! 
+    // FIXMEthisoddcodehasbeencopiedasisformPersistenceUtil,desperatelyneedsarefactoring!
     ModelFactory factory = modelFactories.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
     if (factory == null) {
       return null;
@@ -113,7 +113,7 @@ public class VCSPersistenceUtil {
   }
 
   private static String saveModel(ModelFactoryService modelFactories, final SModel model, String ext) {
-    // FIXME this odd code has been copied as is form PersistenceUtil, desperately needs a refactoring! 
+    // FIXMEthisoddcodehasbeencopiedasisformPersistenceUtil,desperatelyneedsarefactoring!
     ModelFactory factory = modelFactories.getDefaultModelFactory(FileExtensionDataSourceType.of(ext));
     if (factory == null) {
       return null;
@@ -130,7 +130,7 @@ public class VCSPersistenceUtil {
 
 
   public static boolean isModelFullyLoaded(@Nullable SModel model) {
-    //  call after loadModel to fully load model and check for errors 
+    // callafterloadModeltofullyloadmodelandcheckforerrors
     if (model == null) {
       return false;
     }
@@ -205,7 +205,7 @@ public class VCSPersistenceUtil {
     String modelName = parseResult.o2.o2;
     SModuleReference moduleRef = (moduleId != null || moduleName != null ? new ModuleReference(moduleName, moduleId) : null);
     if (moduleRef == null && !((modelId.isGloballyUnique()))) {
-      // make globally unique anyway to avoid exception for old models without modules 
+      // makegloballyuniqueanywaytoavoidexceptionforoldmodelswithoutmodules
       modelId = new SModelIdProxy(modelId);
     }
     return new jetbrains.mps.smodel.SModelReference(moduleRef, modelId, modelName);

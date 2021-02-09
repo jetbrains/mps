@@ -47,7 +47,7 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
   }
 
   public static int getCurrentPort() {
-    // default needed if http-support is loaded as pure modules, not as an idea plugin (i.e. in generate task, w/o IDEA platform). Even in this case, we should support generation of http-support language concepts, that uses MPSInternalPortManager internally. For such cases returning default value == 63220 (Regardless absence of idea plugins, port key can be customized with vm option -Dide.httpsupport.internalPort) 
+    // defaultneededifhttp-supportisloadedaspuremodules,notasanideaplugin(i.e.ingeneratetask,w/oIDEAplatform).Eveninthiscase,weshouldsupportgenerationofhttp-supportlanguageconcepts,thatusesMPSInternalPortManagerinternally.Forsuchcasesreturningdefaultvalue==63220(Regardlessabsenceofideaplugins,portkeycanbecustomizedwithvmoption-Dide.httpsupport.internalPort)
     return Registry.intValue(PORT_KEY, 63320);
   }
 }

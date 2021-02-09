@@ -48,7 +48,7 @@ import java.util.Collections;
   @Nullable
   @Override
   public SNodeReference getSourceNode() {
-    //  todo from location??? 
+    // todofromlocation???
     return null;
   }
 

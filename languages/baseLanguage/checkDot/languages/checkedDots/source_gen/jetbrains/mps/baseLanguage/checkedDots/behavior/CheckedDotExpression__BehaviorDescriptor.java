@@ -47,7 +47,7 @@ public final class CheckedDotExpression__BehaviorDescriptor extends BaseBHDescri
     }).isNotEmpty()) {
       return true;
     }
-    // todo: VariableReference on FieldDeclaration? 
+    // todo:VariableReferenceonFieldDeclaration?
     return false;
   }
   /*package*/ static boolean allowsNullOperand_id3Yy2P0QQESt(@NotNull SNode __thisNode__) {

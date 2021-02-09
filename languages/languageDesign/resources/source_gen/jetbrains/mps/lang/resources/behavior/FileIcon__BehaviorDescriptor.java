@@ -54,7 +54,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull SNode __thisNode__, IFile outputDir) {
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$686H))) {
-      // todo compatibility code to be removed after 3.4 
+      // todocompatibilitycodetoberemovedafter3.4
       return null;
     }
 
@@ -64,10 +64,10 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     final String name = FileUtil.getNameWithoutExtension(source);
     final String ext = FileUtil.getExtension(source);
 
-    // copy 
+    // copy
     List<Tuples._2<IFile, byte[]>> res = ListSequence.fromList(new ArrayList<Tuples._2<IFile, byte[]>>());
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, source, outputDir, ((boolean) true)));
-    // list of suffixes can be found in ImageLoader.ImgeDescList.create() 
+    // listofsuffixescanbefoundinImageLoader.ImgeDescList.create()
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "@2x." + ext, outputDir, ((boolean) false)));
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "@2x_dark." + ext, outputDir, ((boolean) false)));
     ListSequence.fromList(res).addElement(FileIcon__BehaviorDescriptor.copyFile_id34SjXUxB1C6.invoke(__thisNode__, name + "_dark." + ext, outputDir, ((boolean) false)));

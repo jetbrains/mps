@@ -83,7 +83,7 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
         return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$jc, true, new SAbstractConcept[]{});
       }
     })) {
-      // XXX would be great not to create ModuleChecker here 
+      // XXXwouldbegreatnottocreateModuleCheckerhere
       ModuleDescriptor md = ml.createModuleChecker(dk).getModuleDescriptor();
       if (false == md instanceof DevkitDescriptor) {
         continue;
@@ -97,9 +97,9 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
         continue;
       }
       SNode planNode = gp.getRootNodes().iterator().next();
-      // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution 
-      // FIXME once these classes are not part of MPS.Core (generator shall get separate stub), need to figure out proper approach to perform this check 
-      // the code below is the same as in ValidationUtil 
+      // usestubclassesofj.m.generator.impl,availablethroughMPS.Core,toavoiddependencytoj.m.generatorsolution
+      // FIXMEoncetheseclassesarenotpartofMPS.Core(generatorshallgetseparatestub),needtofigureoutproperapproachtoperformthischeck
+      // thecodebelowisthesameasinValidationUtil
       GenPlanTranslator gpt = new GenPlanTranslator(planNode);
       DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
       gpt.feed(dcpb);

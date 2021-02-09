@@ -26,9 +26,9 @@ public class MigrationScriptExecutor {
     this.title = title;
   }
   public void execImmediately(ProgressMonitor promon) {
-    // up to the point ot MigrationScriptController.process, we are fine with read action 
-    // However, at the moment, we do not care to speed up UI stuff as it would require thorough refactoring, while simplicity is my goal now. 
-    // E.g. shall split prepare() to run in read action, to collect applicable SNodeReference, and separate apply() to run as command in UI thread 
+    // uptothepointotMigrationScriptController.process,wearefinewithreadaction
+    // However,atthemoment,wedonotcaretospeedupUIstuffasitwouldrequirethoroughrefactoring,whilesimplicityismygoalnow.
+    // E.g.shallsplitprepare()toruninreadaction,tocollectapplicableSNodeReference,andseparateapply()torunascommandinUIthread
     getMPSProject().getModelAccess().checkWriteAccess();
 
     SNode scriptNode = (SNode) script.resolve(getMPSProject().getRepository());

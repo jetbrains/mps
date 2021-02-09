@@ -55,14 +55,14 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   private final SRepository myRepo;
 
   public DiffModelTree(SRepository repo) {
-    // FIXME This code deserves a refactoring much like MergeModelsPanel, as there's unlikely need for repository lock when we diff detached models. 
+    // FIXMEThiscodedeservesarefactoringmuchlikeMergeModelsPanel,asthere'sunlikelyneedforrepositorylockwhenwediffdetachedmodels.
     myRepo = repo;
     setCellRenderer(new ColoredTreeCellRenderer() {
       @Override
       public void customizeCellRenderer(JTree p0, Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
         if (value instanceof TreeNode) {
           final TreeNode tn = (TreeNode) value;
-          // FIXME this code is poor, need to check TreeNode subclasses if they really care to have model access 
+          // FIXMEthiscodeispoor,needtocheckTreeNodesubclassesiftheyreallycaretohavemodelaccess
           myRepo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
               tn.doUpdatePresentation();
@@ -72,7 +72,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
         }
       }
     });
-    // listen for selection changes 
+    // listenforselectionchanges
     getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
         RootTreeNode[] node = getSelectedNodes(RootTreeNode.class, null);
@@ -95,7 +95,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void dispose() {
-    // Workaround for MPS-31166 and similar issues where tree cell is about to be repainted but the model is already disposed 
+    // WorkaroundforMPS-31166andsimilarissueswheretreecellisabouttoberepaintedbutthemodelisalreadydisposed
     setCellRenderer(null);
   }
 
@@ -142,9 +142,9 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void setSelected(@Nullable SNodeId rootId) {
-    // FIXME there's hidden assumption that null rootId means 'select model properties changes' 
-    //      because MetadataTeeeNode is RootTreeNode with null rootId 
-    // todo: find path by rootId 
+    // FIXMEthere'shiddenassumptionthatnullrootIdmeans'selectmodelpropertieschanges'
+    // becauseMetadataTeeeNodeisRootTreeNodewithnullrootId
+    // todo:findpathbyrootId
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
       RootTreeNode node = as_5x0uld_a0a0a4a21(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);

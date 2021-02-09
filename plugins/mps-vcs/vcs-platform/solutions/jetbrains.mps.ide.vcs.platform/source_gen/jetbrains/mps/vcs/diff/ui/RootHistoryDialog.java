@@ -116,14 +116,14 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
 
   public RootHistoryDialog(MPSProject project, VirtualFile actualFile, AbstractVcs vcs, VcsHistorySession session, boolean compareModels) {
     super(project.getProject(), "MPS.RootHistoryDialog", false);
-    // no idea why VcsSelectionHistoryDialog uses isDialog == false 
+    // noideawhyVcsSelectionHistoryDialogusesisDialog==false
     myMPSProject = project;
     myActualFile = actualFile;
     myActiveVcs = vcs;
     myCompareModels = compareModels;
     VcsHistoryProvider vcsHistoryProvider = vcs.getVcsHistoryProvider();
 
-    // copied from VcsSelectionHistoryDialog 
+    // copiedfromVcsSelectionHistoryDialog
     myHelpId = ObjectUtils.notNull(vcsHistoryProvider.getHelpId(), "reference.dialogs.vcs.selection.history");
     myComments = new JEditorPane(UIUtil.HTML_MIME, "");
     myComments.setPreferredSize(new JBDimension(150, 100));
@@ -199,7 +199,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   public void show(Collection<SNodeId> selection) {
-    // for the moment, I support single node scenario. Moreover, root node, as DiffModelViewer (along with ChangeSet) is incapable to show changes for anything but root 
+    // forthemoment,Isupportsinglenodescenario.Moreover,rootnode,asDiffModelViewer(alongwithChangeSet)isincapabletoshowchangesforanythingbutroot
     myRoot = selection.iterator().next();
     myRevisionsExtractor = createHistoryExtractor();
     BackgroundTaskUtil.executeOnPooledThread(this, myRevisionsExtractor);
@@ -294,7 +294,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     if (myRevisionsExtractor.isLoading()) {
       myDiffPanel.setRequest(new LoadingDiffRequest());
     } else {
-      // FIXME throw an exception from createDiffContent, catch it here and present to user through MessageDiffRequest (there's no DiffContent that could do that instead) 
+      // FIXMEthrowanexceptionfromcreateDiffContent,catchithereandpresenttouserthroughMessageDiffRequest(there'snoDiffContentthatcoulddothatinstead)
       myDiffPanel.setRequest(new MessageDiffRequest("Error", "Failed to build diff for selected revisions"));
     }
   }
@@ -366,7 +366,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     } catch (Exception ex) {
       return null;
     }
-    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion 
+    // ModelDiffViewerdoesn'ttoleratereusabledetachedmodels,itregistersanddisposessuchmodelssolelyonitsowndiscretion
     return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded, myActualFile.getFileType()));
   }
 

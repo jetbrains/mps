@@ -295,7 +295,7 @@
       <node id="7406771907178598565" at="187,0,188,0" concept="7" trace="rebuild#(Ljetbrains/mps/ide/ui/tree/MPSTreeNode;Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;)V" />
       <node id="7704359791231500632" at="190,0,191,0" concept="7" trace="getModel#()Ljetbrains/mps/debugger/java/runtime/evaluation/container/IEvaluationContainer;" />
       <node id="4157161565487791228" at="196,79,197,51" concept="2" />
-      <node id="4120145653580383006" at="197,51,198,15" concept="10" />
+      <node id="4120145653580383006" at="197,51,198,14" concept="10" />
       <node id="7406771907178598604" at="205,79,206,54" concept="2" />
       <node id="7406771907178598619" at="212,0,213,0" concept="3" trace="myThreadReference" />
       <node id="148720074658494222" at="213,0,214,0" concept="3" trace="myPresentation" />
@@ -462,7 +462,7 @@
       <scope id="6053191321461498154" at="127,32,129,33" />
       <scope id="7406771907178598572" at="185,0,187,0" />
       <scope id="7406771907178598578" at="193,0,195,0" />
-      <scope id="7406771907178598588" at="196,79,198,15" />
+      <scope id="7406771907178598588" at="196,79,198,14" />
       <scope id="7406771907178598593" at="202,0,204,0" />
       <scope id="7704359791231501374" at="243,89,245,24" />
       <scope id="7406771907178599432" at="289,67,291,22" />

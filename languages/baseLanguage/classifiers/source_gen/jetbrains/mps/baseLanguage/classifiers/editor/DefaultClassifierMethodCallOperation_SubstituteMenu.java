@@ -49,7 +49,7 @@ public class DefaultClassifierMethodCallOperation_SubstituteMenu extends Substit
   public class SMP_ReferenceScope_3h2q5l_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_3h2q5l_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.DefaultClassifierMethodCallOperation$9$, LINKS.member$oLt6);
     }
     @NotNull

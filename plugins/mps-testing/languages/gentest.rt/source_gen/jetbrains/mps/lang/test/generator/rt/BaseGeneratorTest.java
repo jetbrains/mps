@@ -42,10 +42,10 @@ public class BaseGeneratorTest implements EnvironmentAware {
   @Override
   public void setEnvironment(@NotNull Environment env) {
     myEnv = env;
-    // FIXME AntModuleTestSuite opens a project and I don't see a reason for the test to open another one. 
-    //       Project shall be external configuration setting. 
-    //       As long as I don't have access to the project created inside MpsTestsSuite, I decided to resort to a CL repository for now, 
-    //       though there's a chance to override this with setProject() 
+    // FIXMEAntModuleTestSuiteopensaprojectandIdon'tseeareasonforthetesttoopenanotherone.
+    // Projectshallbeexternalconfigurationsetting.
+    // AslongasIdon'thaveaccesstotheprojectcreatedinsideMpsTestsSuite,IdecidedtoresorttoaCLrepositoryfornow,
+    // thoughthere'sachancetooverridethiswithsetProject()
     myRepository = myEnv.getPlatform().findComponent(MPSModuleRepository.class);
   }
 
@@ -58,22 +58,22 @@ public class BaseGeneratorTest implements EnvironmentAware {
   }
 
   protected final TransformHelper newTransformer() {
-    // Perhaps, we shall use a handler that pipes everything to stdout (warn -> stdout, error -> stderr?), but for now it's just 
-    // a logger with a category matching name of a test class 
+    // Perhaps,weshalluseahandlerthatpipeseverythingtostdout(warn->stdout,error->stderr?),butfornowit'sjust
+    // aloggerwithacategorymatchingnameofatestclass
     TransformHelper rv = new TransformHelper(myRepository, new LogHandler(Logger.getLogger(getClass())));
     myTransformHelpers.add(rv);
     return rv;
   }
 
   protected final void assertMatch(final SModel m1, final SModel m2) {
-    // Next is wishful thinking, imagined contract, not necessarily real at the moment, 
-    // IOW, what I'd like match(m1,m2) contract to look like. Have to refactor 
-    // NodesMatcher first, and write some tests for it to ensure the contract: 
-    // return true if models are the same from structure, metadata, value and reference perspectives 
-    // equality from reference perspective means that references within the same model point to 
-    // equal (in aforementioned sense) nodes, for external references that the target is equal is java sense. 
-    // FIXME use of myProject.getModelAccess() is wrong, empty project we've just created doesn't have modules with test data, 
-    //       however, at the moment I've got no better idea how to access project of MpsTestsSuite 
+    // Nextiswishfulthinking,imaginedcontract,notnecessarilyrealatthemoment,
+    // IOW,whatI'dlikematch(m1,m2)contracttolooklike.Havetorefactor
+    // NodesMatcherfirst,andwritesometestsforittoensurethecontract:
+    // returntrueifmodelsarethesamefromstructure,metadata,valueandreferenceperspectives
+    // equalityfromreferenceperspectivemeansthatreferenceswithinthesamemodelpointto
+    // equal(inaforementionedsense)nodes,forexternalreferencesthatthetargetisequalisjavasense.
+    // FIXMEuseofmyProject.getModelAccess()iswrong,emptyprojectwe'vejustcreateddoesn'thavemoduleswithtestdata,
+    // however,atthemomentI'vegotnobetterideahowtoaccessprojectofMpsTestsSuite
     List<NodeDifference> diff = new ModelAccessHelper(myRepository.getModelAccess()).runReadAction(new Computable<List<NodeDifference>>() {
       public List<NodeDifference> compute() {
         return new NodesMatcher(SModelOperations.roots(m1, null), SModelOperations.roots(m2, null)).diff();
@@ -90,7 +90,7 @@ public class BaseGeneratorTest implements EnvironmentAware {
   }
 
   protected final void assertMatch(Collection<SModel> actual, SModel... expected) {
-    // FIXME move all assert methods into dedicated ModelAsserts class 
+    // FIXMEmoveallassertmethodsintodedicatedModelAssertsclass
     assert actual.size() == expected.length;
     Iterator<SModel> it = actual.iterator();
     for (SModel ex : expected) {
@@ -110,8 +110,8 @@ public class BaseGeneratorTest implements EnvironmentAware {
   }
 
   protected final SModel findModel(String modelRef) {
-    // FIXME lacking proper model access, works as mr.resolve just complains with WARN if there's no model read 
-    //       Need to decide how to grab model locks effectively, don't want to grab it here, either shall wrap whole prepareArguments() or test method 
+    // FIXMElackingpropermodelaccess,worksasmr.resolvejustcomplainswithWARNifthere'snomodelread
+    // Needtodecidehowtograbmodellockseffectively,don'twanttograbithere,eithershallwrapwholeprepareArguments()ortestmethod
     SModelReference mr = PersistenceFacade.getInstance().createModelReference(modelRef);
     return mr.resolve(myRepository);
   }

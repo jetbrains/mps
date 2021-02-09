@@ -38,7 +38,7 @@ public class SetReferenceStructChange extends SetReferenceChange {
       if (getTargetNodeId() == null) {
         node.setReference(getRoleLink(), SNodeOperations.qualifiedResolveInfo(getRoleLink(), targetModelReference, getResolveInfo()));
       } else {
-        // try to convert SNodeId 
+        // trytoconvertSNodeId
         StructChangeSet changeset = (StructChangeSet) getChangeSet();
         SNodeId targetNodeId = getTargetNodeId();
         SNodeId mapToOldId = changeset.mapToOldId(targetNodeId);
@@ -58,7 +58,7 @@ public class SetReferenceStructChange extends SetReferenceChange {
     SReference ref = node.getReference(getRoleLink());
     SModelReference targetModel = check_xjb9w7_a0d0d(ref);
     if (Objects.equals(SModelOperations.getPointer(getChangeSet().getOldModel()), targetModel)) {
-      // This is internal reference 
+      // Thisisinternalreference
       targetModel = null;
     }
 

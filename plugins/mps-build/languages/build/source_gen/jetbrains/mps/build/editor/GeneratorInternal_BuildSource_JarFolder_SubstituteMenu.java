@@ -49,7 +49,7 @@ public class GeneratorInternal_BuildSource_JarFolder_SubstituteMenu extends Subs
   public class SMP_ReferenceScope_o5vowq_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_o5vowq_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GeneratorInternal_BuildSource_JarFolder$n6, LINKS.targetFolder$gAO3);
     }
     @NotNull

@@ -47,7 +47,7 @@ public class TestSubstituteExceptionReferenceVisibleMatchingTextChild_Substitute
   public class SMP_ReferenceScope_smhjc8_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_smhjc8_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TestSubstituteExceptionReferenceVisibleMatchingTextChild$Iu, LINKS.reference$Cmf1);
     }
     @NotNull

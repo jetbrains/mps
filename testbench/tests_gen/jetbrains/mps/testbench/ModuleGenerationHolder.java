@@ -89,7 +89,7 @@ public class ModuleGenerationHolder {
       isSuccessful = true;
       return;
     }
-    // sanity check build() doesn't come after diff() (due to broken test method ordering) 
+    // sanitycheckbuild()doesn'tcomeafterdiff()(duetobrokentestmethodordering)
     assert tmpPath != null;
     final GenerationOptions.OptionsBuilder optBuilder = GenerationOptions.getDefaults();
     boolean isParallel = "true".equalsIgnoreCase(System.getProperty("parallel.generation"));
@@ -98,11 +98,11 @@ public class ModuleGenerationHolder {
     }
 
     IResult result;
-    // XXX there's BuildMakeService that creates defaultScriptBuilder itself. Why don't we do the same here in TestMakeService? 
+    // XXXthere'sBuildMakeServicethatcreatesdefaultScriptBuilderitself.Whydon'twedothesamehereinTestMakeService?
     IScript scr = defaultScriptBuilder().toScript();
     final MakeSession session = new MakeSession(project, myMessageHandler, true);
-    // trace.info is useless for tests, however we do keep these files in repo, and diffModule test 
-    // fails if we don't generate one here 
+    // trace.infoisuselessfortests,howeverwedokeepthesefilesinrepo,anddiffModuletest
+    // failsifwedon'tgenerateonehere
     TextGenFacetInitializer tgfi = new TextGenFacetInitializer().generateDebugInfo(true);
     MakeFacetInitializer mfi = new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
       public IFile invoke(String path) {
@@ -130,8 +130,8 @@ public class ModuleGenerationHolder {
   private Map<File, File> dirsWithDiff;
 
   public List<String> diff() {
-    // path2tmp may have few entries that may end up diffing the same dir, e.g. source_gen, source_gen/language and source_gen/language/[editor|structure|aspect].  
-    // If there's a diff in any file for an aspect, it might get reported 3 times! 
+    // path2tmpmayhavefewentriesthatmayendupdiffingthesamedir,e.g.source_gen,source_gen/languageandsource_gen/language/[editor|structure|aspect].
+    // Ifthere'sadiffinanyfileforanaspect,itmightgetreported3times!
     dirsWithDiff = new HashMap<File, File>();
 
     List<String> diffs = ListSequence.fromList(new ArrayList<String>());
@@ -141,7 +141,7 @@ public class ModuleGenerationHolder {
       if (orig.exists() && revd.exists() && orig.isDirectory() && revd.isDirectory()) {
         diffDirs(orig, revd, diffs);
       } else if (!(orig.exists()) && !(revd.exists())) {
-        // Don't assume there shall be anything just based on the fact make asked for a path 
+        // Don'tassumethereshallbeanythingjustbasedonthefactmakeaskedforapath
       } else if (!(orig.exists())) {
         ListSequence.fromList(diffs).addElement("Created: " + revd);
       } else if (!(revd.exists())) {
@@ -167,7 +167,7 @@ public class ModuleGenerationHolder {
 
   private void diffDirs(final File orig, File revd, final List<String> diffs) {
     if (revd.equals(dirsWithDiff.get(orig))) {
-      // this pair of dirs has been diffed already, no reason to diff its files again 
+      // thispairofdirshasbeendiffedalready,noreasontodiffitsfilesagain
       return;
     }
     dirsWithDiff.put(orig, revd);
@@ -204,14 +204,14 @@ public class ModuleGenerationHolder {
             continue;
           }
           if ((onext.length() == 0 || rnext.length() == 0) && onext.length() != rnext.length()) {
-            // no reason to dump whole file single diff for a completely replaced file. 
+            // noreasontodumpwholefilesinglediffforacompletelyreplacedfile.
             ListSequence.fromList(diffs).addElement(String.format("Content replaced: %s (%d -> %d)", onext.getPath(), onext.length(), rnext.length()));
             continue;
           }
           List<String> olines = fileToStrings(onext);
           List<String> rlines = fileToStrings(rnext);
           Iterable<String> diffLines = ListSequence.fromList(olines).subtract(ListSequence.fromList(rlines)).union(ListSequence.fromList(rlines).subtract(ListSequence.fromList(olines)));
-          // note, empty diffLines not necessarily mean there're no changes, re-arranged lines would go unnoticed by sequence subtraction 
+          // note,emptydiffLinesnotnecessarilymeanthere'renochanges,re-arrangedlineswouldgounnoticedbysequencesubtraction
           if (Sequence.fromIterable(diffLines).count() >= 100) {
             ListSequence.fromList(diffs).addElement(String.format("Too many changed lines (%d) in file %s", Sequence.fromIterable(diffLines).count(), onext.getPath()));
             continue;

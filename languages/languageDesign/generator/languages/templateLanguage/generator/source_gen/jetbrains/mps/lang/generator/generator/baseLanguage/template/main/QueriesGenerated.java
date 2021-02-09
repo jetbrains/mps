@@ -186,7 +186,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_0_15(final PropertyMacroContext _context) {
     SNode root = SNodeOperations.getContainingRoot(_context.getNode());
-    // there's only 1 code block per script, no need to add more than one identity key, hence sequence from 1 (name sequence left just in case assumption fails) 
+    // there'sonly1codeblockperscript,noneedtoaddmorethanoneidentitykey,hencesequencefrom1(namesequenceleftjustincaseassumptionfails)
     return _context.createIndexedName("mappingScript_CodeBlock_" + root.getUserObject("identityKey"), null, true);
   }
   public static Object propertyMacro_GetValue_0_16(final PropertyMacroContext _context) {
@@ -195,7 +195,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_0_17(final PropertyMacroContext _context) {
     SNode root = SNodeOperations.getContainingRoot(_context.getNode());
-    // there's only 1 applicability condition per MC, which is root. No need for extra identity key, though name seq. of global context is still here to catch failed assumptions 
+    // there'sonly1applicabilityconditionperMC,whichisroot.Noneedforextraidentitykey,thoughnameseq.ofglobalcontextisstillheretocatchfailedassumptions
     return _context.createIndexedName("mc_Condition_" + root.getUserObject("identityKey"), null, true);
   }
   public static Object propertyMacro_GetValue_0_18(final PropertyMacroContext _context) {
@@ -223,8 +223,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_8_1(final PropertyMacroContext _context) {
-    // to keep name of the variable "context" even if I need to create subContext with name, alter name of the parameter 
-    // if there's ML, local variable "context" would get declared 
+    // tokeepnameofthevariable"context"evenifIneedtocreatesubContextwithname,alternameoftheparameter
+    // ifthere'sML,localvariable"context"wouldgetdeclared
     return ((SLinkOperations.getTarget(_context.getNode(), LINKS.labelDeclaration$ORJN) != null) ? "contextNoLabel" : "context");
   }
   public static Object propertyMacro_GetValue_8_2(final PropertyMacroContext _context) {
@@ -463,8 +463,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((VariableNameSource) _context.getVariable("ctx")).newName();
   }
   public static Object propertyMacro_GetValue_26_2(final PropertyMacroContext _context) {
-    // XXX I hate this code, but there's no mechanism yet to generate a.b().b().b() calls, hence this index dance 
-    // Hope, number of args always matches number of parameters 
+    // XXXIhatethiscode,butthere'snomechanismyettogeneratea.b().b().b()calls,hencethisindexdance
+    // Hope,numberofargsalwaysmatchesnumberofparameters
     int argIndex = (Integer) _context.getVariable("loop:index") + 1;
     return SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) _context.getVariable("var:params"))).getElement(argIndex), PROPS.name$MnvL);
   }
@@ -610,7 +610,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.template$6_6), LINKS.parameter$5PGb)).first(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_42_1(final PropertyMacroContext _context) {
-    // XXX copied from reduce_TemplateDeclarationReferenceConsequence 
+    // XXXcopiedfromreduce_TemplateDeclarationReferenceConsequence
     int argIndex = (Integer) _context.getVariable("loop:index") + 1;
     return SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) _context.getVariable("var:params"))).getElement(argIndex), PROPS.name$MnvL);
   }
@@ -632,9 +632,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return n;
   }
   public static Object propertyMacro_GetValue_46_0(final PropertyMacroContext _context) {
-    // FIXME can't use saveListVar as it doesn't force value override, 
-    // which is essential as there's already another name associated with the node 
-    // (i.e. its name inside applyNode() method) 
+    // FIXMEcan'tusesaveListVarasitdoesn'tforcevalueoverride,
+    // whichisessentialasthere'salreadyanothernameassociatedwiththenode
+    // (i.e.itsnameinsideapplyNode()method)
     String name = "tlist" + ++((int[]) _context.getVariable("varindex"))[0];
     _context.putTransientObject(_context.getNode(), name);
     return name;
@@ -821,7 +821,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(_context.getNode()).getName();
   }
   public static Object propertyMacro_GetValue_67_6(final PropertyMacroContext _context) {
-    // in case porperty value contains backslash or anything else not suited for Java 
+    // incaseporpertyvaluecontainsbackslashoranythingelsenotsuitedforJava
     return NameUtil.escapeString(SNodeOperations.getParent(_context.getNode()).getProperty(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(_context.getNode())));
   }
   public static Object propertyMacro_GetValue_67_7(final PropertyMacroContext _context) {
@@ -853,8 +853,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_74_2(final PropertyMacroContext _context) {
     SNode templateTarget = SNodeOperations.getParent(_context.getNode()).getReferenceTarget(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
-    // This is what MacroResolver used to do in getDefaultResolveInfo(). 
-    // I wonder why IResolveInfo case wasn't considered 
+    // ThisiswhatMacroResolverusedtodoingetDefaultResolveInfo().
+    // IwonderwhyIResolveInfocasewasn'tconsidered
     return (templateTarget == null ? "null" : templateTarget.getName());
   }
   public static Object propertyMacro_GetValue_74_3(final PropertyMacroContext _context) {
@@ -897,7 +897,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_78_0(final PropertyMacroContext _context) {
-    // use macro's id, not the one of the query to match QueryKey.getTemplateNode() 
+    // usemacro'sid,nottheoneofthequerytomatchQueryKey.getTemplateNode()
     return QueryKey.valueOf(SNodeOperations.getParent(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_78_1(final PropertyMacroContext _context) {
@@ -907,7 +907,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_79_0(final PropertyMacroContext _context) {
-    // use macro's id, not the one of the post-processing block to match QueryKey.getTemplateNode() 
+    // usemacro'sid,nottheoneofthepost-processingblocktomatchQueryKey.getTemplateNode()
     return QueryKey.valueOf(SNodeOperations.getParent(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_79_1(final PropertyMacroContext _context) {
@@ -988,7 +988,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.mappingLabel$jbOO), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_94_0(final PropertyMacroContext _context) {
-    // LABEL macro got 2 LMIQ queries, can't use macro itself to map LIQ impl 
+    // LABELmacrogot2LMIQqueries,can'tusemacroitselftomapLIQimpl
     return QueryKey.valueOf(_context.getNode());
   }
   public static Object propertyMacro_GetValue_94_1(final PropertyMacroContext _context) {
@@ -1010,7 +1010,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) _context.getTransientObject(SNodeOperations.getParent(_context.getNode()));
   }
   public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {
-    // FIXME don't see a reason why can't use getVar(genContext, node.parent, 0) here, not getVarHack 
+    // FIXMEdon'tseeareasonwhycan'tusegetVar(genContext,node.parent,0)here,notgetVarHack
     return GenUtil.getVarHack(_context, SNodeOperations.getParent(_context.getNode()));
   }
   public static Object referenceMacro_GetReferent_8_1(final ReferenceMacroContext _context) {
@@ -1340,7 +1340,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "templateDeclNoArgCons");
   }
   public static Object referenceMacro_GetReferent_40_3(final ReferenceMacroContext _context) {
-    //  we know there are no arguments for root templates 
+    // weknowtherearenoargumentsforroottemplates
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "templateDeclNoArgCons");
   }
   public static Object referenceMacro_GetReferent_42_0(final ReferenceMacroContext _context) {
@@ -1389,7 +1389,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByMappingLabel("QueriesGenerated", null);
   }
   public static Object referenceMacro_GetReferent_56_0(final ReferenceMacroContext _context) {
-    // method parameter 
+    // methodparameter
     return "_context";
   }
   public static Object referenceMacro_GetReferent_57_0(final ReferenceMacroContext _context) {
@@ -1657,8 +1657,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return false;
   }
   public static boolean ifMacro_Condition_8_3(final IfMacroContext _context) {
-    // FIXME if I call reduce_TemplateFragment instead of reduce_Node, above, it seems that 
-    //      I could avoid this line of code 
+    // FIXMEifIcallreduce_TemplateFragmentinsteadofreduce_Node,above,itseemsthat
+    // Icouldavoidthislineofcode
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.labelDeclaration$ORJN) != null);
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
@@ -1920,7 +1920,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.mapperFunction$SOMn) == null) && GenUtil.getVar(_context, SNodeOperations.getParent(_context.getNode()), ((Integer) _context.getVariable("macrosToSkip"))) != null;
   }
   public static boolean ifMacro_Condition_19_0(final IfMacroContext _context) {
-    //  FIXME resembles reduce_fragmentParts a lot 
+    // FIXMEresemblesreduce_fragmentPartsalot
     Iterable<SNode> selected = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("nodes"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return GenUtil.getVarHack(_context, it) != null;
@@ -2010,7 +2010,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.template$6_6), LINKS.parameter$5PGb)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_27_0(final IfMacroContext _context) {
-    // reduce_WeavingRule used to associate WeaverRule.mappingLabel (if any) with weaved nodes, now we do it here (and in CallSiteImpl.weave()) 
+    // reduce_WeavingRuleusedtoassociateWeaverRule.mappingLabel(ifany)withweavednodes,nowwedoithere(andinCallSiteImpl.weave())
     return !((boolean) BaseMappingRule__BehaviorDescriptor.hasMappingLabel_id3uqP$qKDAVt.invoke(((SNode) _context.getVariable("weaveRule"))));
   }
   public static boolean ifMacro_Condition_28_0(final IfMacroContext _context) {
@@ -2047,8 +2047,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.reductionMappingRule$h9pm)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_31_4(final IfMacroContext _context) {
-    // switch may not necessarily end up with created node (e.g. dismiss rule exception) 
-    // that's why after switch_Consequence can't use return unconditionally 
+    // switchmaynotnecessarilyendupwithcreatednode(e.g.dismissruleexception)
+    // that'swhyafterswitch_Consequencecan'tusereturnunconditionally
     return GenUtil.getVarHack(_context, SLinkOperations.getTarget(_context.getNode(), LINKS.defaultConsequence$GvWY)) != null;
   }
   public static boolean ifMacro_Condition_31_5(final IfMacroContext _context) {
@@ -2128,8 +2128,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return GenUtil.getVarHack(_context, SLinkOperations.getTarget(_context.getNode(), LINKS.ruleConsequence$8_rf)) != null;
   }
   public static boolean ifMacro_Condition_42_0(final IfMacroContext _context) {
-    // reduce_TemplateDeclarationReferenceConsequence checks for node.template.parameter, 
-    // though the rest of the code uses actualArguments to tell presence of arguments. Which one is right? 
+    // reduce_TemplateDeclarationReferenceConsequencechecksfornode.template.parameter,
+    // thoughtherestofthecodeusesactualArgumentstotellpresenceofarguments.Whichoneisright?
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_42_1(final IfMacroContext _context) {
@@ -2138,7 +2138,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean ifMacro_Condition_43_0(final IfMacroContext _context) {
     boolean directRef = SNodeOperations.getModel(((SNode) _context.getVariable("template"))) == SNodeOperations.getModel(_context.getNode());
     if (directRef && !(SNodeOperations.isInstanceOf(((SNode) _context.getVariable("template")), CONCEPTS.TemplateDeclaration$5G))) {
-      // check template 
+      // checktemplate
       if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(((SNode) _context.getVariable("template"))) == null) {
         _context.showErrorMessage(_context.getNode(), "cannot refer template root without template annotation");
         return false;
@@ -2326,9 +2326,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return (boolean) NodeMacro__BehaviorDescriptor.hasMappingLabel_id5KmckUrKj9u.invoke(_context.getNode());
   }
   public static boolean ifMacro_Condition_90_0(final IfMacroContext _context) {
-    // generate templates option is per module, any template from the same model 
-    // would be generated 
-    // FIXME However, we are inside transient model now, I'm not sure what does model.getModule() gives here 
+    // generatetemplatesoptionispermodule,anytemplatefromthesamemodel
+    // wouldbegenerated
+    // FIXMEHowever,weareinsidetransientmodelnow,I'mnotsurewhatdoesmodel.getModule()giveshere
     return SNodeOperations.getModel(((SNode) _context.getVariable("callSite"))).getModule() == SNodeOperations.getModel(_context.getNode()).getModule();
   }
   public static boolean ifMacro_Condition_91_0(final IfMacroContext _context) {
@@ -2401,7 +2401,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_0_20(final SourceSubstituteMacroNodeContext _context) {
-    // need a fake node, otherwise INCLUDE won't proceed 
+    // needafakenode,otherwiseINCLUDEwon'tproceed
     return SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.BaseConcept$gP);
   }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
@@ -2679,8 +2679,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_89_0(final SourceSubstituteMacroNodeContext _context) {
-    // FIXME why not node.type, and do the rest with typesystem inference rules? 
-    // FIXME why do we need ClassifierTypeUtil here, are types not capable to reduce at the proper time? 
+    // FIXMEwhynotnode.type,anddotherestwithtypesysteminferencerules?
+    // FIXMEwhydoweneedClassifierTypeUtilhere,aretypesnotcapabletoreduceatthepropertime?
     SNode classifierType = ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.vardecl$C7NG), LINKS.type$EpCe));
     return ((classifierType != null) ? classifierType : SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.vardecl$C7NG), LINKS.type$EpCe));
   }
@@ -2718,15 +2718,15 @@ public class QueriesGenerated extends QueryProviderBase {
     }).distinct();
   }
   public static Object templateArgumentQuery_12_0(final TemplateArgumentContext _context) {
-    // XXX I believe mapperFunction.isNull check here is of no true meaning, what's wrong with substitute(mapperFunction) call that goes on 
-    // when mapperFunction.isNotNull? Nevertheless, I see no value in extracting mapsrc at all (except as a nice exercise). Commit comment 
-    // doesn't help to understand this, either ("extract nodes under MAP_SRC into separate apply method"). 
+    // XXXIbelievemapperFunction.isNullcheckhereisofnotruemeaning,what'swrongwithsubstitute(mapperFunction)callthatgoeson
+    // whenmapperFunction.isNotNull?Nevertheless,Iseenovalueinextractingmapsrcatall(exceptasaniceexercise).Commitcomment
+    // doesn'thelptounderstandthis,either("extractnodesunderMAP_SRCintoseparateapplymethod").
 
-    // XXX reduce_Node template call in apply(), below, receives varindex == 0, while reduce_Node doesn't invoke extracted methods for varindex == 0 
-    //     therefore a MAP_SRC node on a root node shall not get extracted (otherwise it's processed twice, identically in applyPart0() and apply()) 
+    // XXXreduce_Nodetemplatecallinapply(),below,receivesvarindex==0,whilereduce_Nodedoesn'tinvokeextractedmethodsforvarindex==0
+    // thereforeaMAP_SRCnodeonarootnodeshallnotgetextracted(otherwiseit'sprocessedtwice,identicallyinapplyPart0()andapply())
 
-    // XXX I feel this extracted is useless in case MapSrc macro is not the first one in the list of macros, see reduce_Node and condition  
-    //    macrosToSkip == 0 there 
+    // XXXIfeelthisextractedisuselessincaseMapSrcmacroisnotthefirstoneinthelistofmacros,seereduce_Nodeandcondition
+    // macrosToSkip==0there
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.MapSrcNodeMacro$p5, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getParent(it) != _context.getNode() && (SLinkOperations.getTarget(it, LINKS.mapperFunction$vvDY) == null);
@@ -2987,13 +2987,13 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.condition$LWP1)).where(new NotNullWhereFilter<SNode>());
   }
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
-    // If we found condition or a rule with condition inside a template declaration or under rule 
-    // consequence (argh! except inline switch - corner case), 
-    // we assume it's  lang.generator as target language then, and do not generate any code for it. 
-    // Altenatively, shall filter by condition's parent and grandparent (reduction rules could be 
-    // inside Switch and MC, while Pattern and RootMR could be inside MC only) 
-    // which I consider more complicated query compared to the one with ancestors, though I don't 
-    // like that conditions here and in inject_DirectMethodAccess are different 
+    // Ifwefoundconditionorarulewithconditioninsideatemplatedeclarationorunderrule
+    // consequence(argh!exceptinlineswitch-cornercase),
+    // weassumeit'slang.generatorastargetlanguagethen,anddonotgenerateanycodeforit.
+    // Altenatively,shallfilterbycondition'sparentandgrandparent(reductionrulescouldbe
+    // insideSwitchandMC,whilePatternandRootMRcouldbeinsideMConly)
+    // whichIconsidermorecomplicatedquerycomparedtotheonewithancestors,thoughIdon't
+    // likethatconditionshereandininject_DirectMethodAccessaredifferent
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.BaseMappingRule_Condition$Ru)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.InlineSwitch_Case$ml) || SNodeOperations.getNodeAncestorWhereConceptInList(it, new SAbstractConcept[]{CONCEPTS.RuleConsequence$uG, CONCEPTS.TemplateDeclaration$5G}, false, false) == null;
@@ -3001,9 +3001,9 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_0_4(final SourceSubstituteMacroNodesContext _context) {
-    // isAttribute check is to ensure we don't process PropertyMacro which is template target (i.e. if one generates template models) 
-    // Note, this check (containmentLink == smodelAttributes) won't suffice once we we have PropertyMacro not as a top template node 
-    // (i.e. if we produce a template with few PropertyMacro inside it), although not sure if we ever get to such scenario. 
+    // isAttributecheckistoensurewedon'tprocessPropertyMacrowhichistemplatetarget(i.e.ifonegeneratestemplatemodels)
+    // Note,thischeck(containmentLink==smodelAttributes)won'tsufficeoncewewehavePropertyMacronotasatoptemplatenode
+    // (i.e.ifweproduceatemplatewithfewPropertyMacroinsideit),althoughnotsureifweevergettosuchscenario.
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PropertyMacro$c9)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3011,7 +3011,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.propertyValueFunction$7Sh_);
   }
   public static Iterable<SNode> sourceNodesQuery_0_5(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceMacro$30)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3022,7 +3022,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collect(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceReductionRule$t0), LINKS.referentFunction$8CUG);
   }
   public static Iterable<SNode> sourceNodesQuery_0_7(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IfMacro$Xy)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3030,7 +3030,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.conditionFunction$yWGz);
   }
   public static Iterable<SNode> sourceNodesQuery_0_8(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3048,7 +3048,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(_context.getNode(), CONCEPTS.TemplateArgumentQueryExpression$Zq), LINKS.query$31w3), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_0_11(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.WeaveEach_RuleConsequence$tI) || SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3056,7 +3056,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_0_12(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_MapperFunction$fO)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3064,7 +3064,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_0_13(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_PostMapperFunction$Yp)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3079,7 +3079,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.contextNodeQuery$ix$f);
   }
   public static Iterable<SNode> sourceNodesQuery_0_15(final SourceSubstituteMacroNodesContext _context) {
-    // WeaveAnchorQuery could be hosted both in $WEAVE$ macro and under a rule 
+    // WeaveAnchorQuerycouldbehostedbothin$WEAVE$macroandunderarule
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.WeavingAnchorQuery$jP)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it)) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.Weaving_MappingRule$qb);
@@ -3108,7 +3108,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.condition$2Y_U);
   }
   public static Iterable<SNode> sourceNodesQuery_0_19(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InsertMacro$pL)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3116,7 +3116,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.createNodeQuery$ZB7Q);
   }
   public static Iterable<SNode> sourceNodesQuery_0_20(final SourceSubstituteMacroNodesContext _context) {
-    // see LOOP propertyMacro, above, for isAttribute reasoning 
+    // seeLOOPpropertyMacro,above,forisAttributereasoning
     return SLinkOperations.collect(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.VarMacro2$rh)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3124,8 +3124,8 @@ public class QueriesGenerated extends QueryProviderBase {
     }), LINKS.variables$Eqmf), LINKS.value$EuM$);
   }
   public static Iterable<SNode> sourceNodesQuery_0_21(final SourceSubstituteMacroNodesContext _context) {
-    // XXX I keep TQC type (not LabelKeyQueryContext) for argument here intentionally, as there's no use for specific subclass yet in the query body. 
-    //    Once there's anything that would need specific LKQC, I'd need to regenerate this class anyway, can introduce the proper parameter type then. 
+    // XXXIkeepTQCtype(notLabelKeyQueryContext)forargumenthereintentionally,asthere'snouseforspecificsubclassyetinthequerybody.
+    // Oncethere'sanythingthatwouldneedspecificLKQC,I'dneedtoregeneratethisclassanyway,canintroducetheproperparametertypethen.
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.LabelMacroInputQuery$qC)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3233,9 +3233,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.referenceReductionRule$11fs);
   }
   public static Iterable<SNode> sourceNodesQuery_17_0(final SourceSubstituteMacroNodesContext _context) {
-    // see comment in the same code in reduce_TemplateDeclarationReferenceConsequence 
-    // for reason why we iterate arguments, not parameter declarations 
-    // Besides, actualArgument.isNotEmpty is condition for the field, above 
+    // seecommentinthesamecodeinreduce_TemplateDeclarationReferenceConsequence
+    // forreasonwhyweiteratearguments,notparameterdeclarations
+    // Besides,actualArgument.isNotEmptyisconditionforthefield,above
     return SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg);
   }
   public static Iterable<SNode> sourceNodesQuery_19_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3261,13 +3261,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return fragments;
   }
   public static Iterable<SNode> sourceNodesQuery_26_0(final SourceSubstituteMacroNodesContext _context) {
-    // XXX It's not obvious whether it's better to iterate over actual arguments 
-    //     or declared parameters. If both match, it's all the same, however, 
-    //     we may face cases when it's not true. Iterating over parameter declarations 
-    //     looks safer (we can always inject null value for missing argument). 
-    //     Nevertheless, I decided to iterate over arguments as I hope some day to 
-    //     have parameters with default values, so that we'd need to take only 
-    //     actual arguments here anyway 
+    // XXXIt'snotobviouswhetherit'sbettertoiterateoveractualarguments
+    // ordeclaredparameters.Ifbothmatch,it'sallthesame,however,
+    // wemayfacecaseswhenit'snottrue.Iteratingoverparameterdeclarations
+    // lookssafer(wecanalwaysinjectnullvalueformissingargument).
+    // Nevertheless,IdecidedtoiterateoverargumentsasIhopesomedayto
+    // haveparameterswithdefaultvalues,sothatwe'dneedtotakeonly
+    // actualargumentshereanyway
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg)).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_27_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3296,15 +3296,15 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_42_0(final SourceSubstituteMacroNodesContext _context) {
-    // see reduce_TemplateDeclarationReferenceConsequence for details 
-    // of atualArgument choice for iteration 
+    // seereduce_TemplateDeclarationReferenceConsequencefordetails
+    // ofatualArgumentchoiceforiteration
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg)).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_45_0(final SourceSubstituteMacroNodesContext _context) {
     return ((Iterable<SNode>) _context.getVariable("toExtract"));
   }
   public static Iterable<SNode> sourceNodesQuery_49_0(final SourceSubstituteMacroNodesContext _context) {
-    // for reasons to iterate actualArgument, not parameter role look into reduce_TemplateDeclarationReferenceConsequence 
+    // forreasonstoiterateactualArgument,notparameterrolelookintoreduce_TemplateDeclarationReferenceConsequence
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.ruleConsequence$O2B4), LINKS.actualArgument$ZcRg);
   }
   public static Iterable<SNode> sourceNodesQuery_52_0(final SourceSubstituteMacroNodesContext _context) {
@@ -3507,11 +3507,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((List<SNode>) _context.getVariable("queries"));
   }
   public static void mappingScript_CodeBlock_2(final MappingScriptContext _context) {
-    // There seems to be no reason to keep hint for TemplateFunctionParameter_sourceNode as it gets translated 
-    // at the first step, with TLB_main. GenerationContextOp IOperations listed below, however, are processed 
-    // when generator model is dropped and only QueriesGenerated class is present - hence can't access types from 
-    //  referenced elements (e.g. _VarRef can't reach VarMacro to find out its type and name (which, by the way, got 
-    // into name_intern with ReduceReferenceToText neighbour script)) 
+    // ThereseemstobenoreasontokeephintforTemplateFunctionParameter_sourceNodeasitgetstranslated
+    // atthefirststep,withTLB_main.GenerationContextOpIOperationslistedbelow,however,areprocessed
+    // whengeneratormodelisdroppedandonlyQueriesGeneratedclassispresent-hencecan'taccesstypesfrom
+    // referencedelements(e.g._VarRefcan'treachVarMacrotofindoutitstypeandname(which,bytheway,got
+    // intoname_internwithReduceReferenceToTextneighbourscript))
     List<SNode> nodes = new ArrayList<SNode>();
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_PatternRef$B1)));
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_ParameterRef$YS)));
@@ -3525,12 +3525,12 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
-    // references on mapping label will be lost because 
-    // TLBase generator executes first and doesn't copy 
-    // mapping configs (where labels are declared) to output model 
+    // referencesonmappinglabelwillbelostbecause
+    // TLBasegeneratorexecutesfirstanddoesn'tcopy
+    // mappingconfigs(wherelabelsaredeclared)tooutputmodel
     // 
     {
-      // references in 'get by label' 
+      // referencesin'getbylabel'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GetOutputByLabel$HU);
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, LINKS.label$V_zA);
@@ -3543,7 +3543,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     {
-      // references in 'get by label and node' 
+      // referencesin'getbylabelandnode'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GetOutputByLabelAndInput$Kl);
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, LINKS.label$VAL6);
@@ -3556,7 +3556,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     {
-      // references in 'get by label and node and ref.scope' 
+      // referencesin'getbylabelandnodeandref.scope'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope$Wn);
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, LINKS.label$Vr1N);
@@ -3569,7 +3569,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     {
-      // references in 'get all by label and node' 
+      // referencesin'getallbylabelandnode'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GetOutputListByLabelAndInput$To);
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, LINKS.label$hDc7);
@@ -3582,7 +3582,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     {
-      // references in 'get prev input by label' 
+      // referencesin'getprevinputbylabel'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GetPrevInputByLabel$4b);
       for (SNode op : ops) {
         SNode label = SLinkOperations.getTarget(op, LINKS.label$hgG6);
@@ -3596,7 +3596,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     {
       {
-        // references in 'parameter reference' 
+        // referencesin'parameterreference'
         List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_ParameterRef$YS);
         for (SNode op : ops) {
           SNode param = SLinkOperations.getTarget(op, LINKS.parameter$zzKZ);
@@ -3608,7 +3608,7 @@ public class QueriesGenerated extends QueryProviderBase {
           SLinkOperations.setTarget(op, LINKS.parameter$zzKZ, null);
         }
       }
-      // references in 'variable reference' 
+      // referencesin'variablereference'
       List<SNode> vr2 = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_VarRef2$2B);
       for (SNode vr : ListSequence.fromList(vr2)) {
         SNode vardecl = SLinkOperations.getTarget(vr, LINKS.vardecl$xfU6);
@@ -3617,7 +3617,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     {
-      // references in 'get prev input by label' 
+      // referencesin'getprevinputbylabel'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_PatternRef$B1);
       for (SNode op : ops) {
         SNode patternVar = GenerationContextOp_PatternRef__BehaviorDescriptor.getTarget_id1xCtdgeTQHC.invoke(op);
@@ -3630,7 +3630,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
     {
-      // references in 'get prev input by label' 
+      // referencesin'getprevinputbylabel'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GenParameterRef$h_);
       for (SNode op : ops) {
         SNode paramref = SLinkOperations.getTarget(op, LINKS.importClause$np6);
@@ -3688,12 +3688,12 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static void mappingScript_CodeBlock_85(final MappingScriptContext _context) {
-    // Purpose of this script is to give an unique key to group macros within containing template/switch/mc and to generate query method names in a way 
-    // that a change in another template/switch/mc won't renumerate all methods for queries of the same kind. 
+    // Purposeofthisscriptistogiveanuniquekeytogroupmacroswithincontainingtemplate/switch/mcandtogeneratequerymethodnamesinaway
+    // thatachangeinanothertemplate/switch/mcwon'trenumerateallmethodsforqueriesofthesamekind.
 
-    // XXX I know 'modifies model' says 'false', though I do modify model here by changing SNode's user object. 
-    //     However, for generator purposes change of user object doesn't constitute a 'model change' (which is rather structural/attribute change) 
-    //     and to save extra model copy I mark the script as 'read-only' 
+    // XXXIknow'modifiesmodel'says'false',thoughIdomodifymodelherebychangingSNode'suserobject.
+    // However,forgeneratorpurposeschangeofuserobjectdoesn'tconstitutea'modelchange'(whichisratherstructural/attributechange)
+    // andtosaveextramodelcopyImarkthescriptas'read-only'
     int i = 0;
     for (SNode r : ListSequence.fromList(SModelOperations.roots(_context.getModel(), null))) {
       r.putUserObject("identityKey", Integer.toString(i++));
@@ -3712,8 +3712,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     SNode generator = SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), CONCEPTS.Generator$zR);
-    // XXX At the moment, we don't utilize non-reflective queries in generated templates (static methods 
-    // get invoked directly) 
+    // XXXAtthemoment,wedon'tutilizenon-reflectivequeriesingeneratedtemplates(staticmethods
+    // getinvokeddirectly)
     return (generator != null) && !(SPropertyOperations.getBoolean(generator, PROPS.generateTemplates$FATW));
   }
   public static Object varMacro_Value_8_0(final TemplateVarContext _context) {
@@ -3737,7 +3737,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
       SNode referenceNode;
       if (SNodeOperations.getModel(targetNode) == SNodeOperations.getModel(_context.getNode())) {
-        // internal reference 
+        // internalreference
         SNode refNode = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.GeneratorInternal_InternalReferenceDescriptor$TS);
         SPropertyOperations.assign(refNode, PROPS.templateNodeId$FX8J, GeneratorUtil.getTemplateNodeId(_context.getOriginalCopiedInputNode(targetNode)));
 
@@ -3848,7 +3848,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_8(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.WeaveMacro$t$)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it) && (SLinkOperations.getTarget(it, LINKS.anchorQuery$IPGu) != null);
@@ -3870,7 +3870,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_11(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3878,7 +3878,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_12(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.WeaveEach_RuleConsequence$tI) || SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3886,7 +3886,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_13(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.PropertyMacro$c9)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3894,7 +3894,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_14(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IfMacro$Xy)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3905,7 +3905,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InlineSwitch_Case$ml);
   }
   public static Object varMacro_Value_55_16(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceMacro$30)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3916,7 +3916,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ReferenceReductionRule$t0);
   }
   public static Object varMacro_Value_55_18(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return Sequence.fromIterable(SLinkOperations.collectMany(ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.VarMacro2$rh)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3934,7 +3934,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_21(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.InsertMacro$pL)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(it);
@@ -3942,7 +3942,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_22(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_MapperFunction$fO)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));
@@ -3950,7 +3950,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }).toListSequence();
   }
   public static Object varMacro_Value_55_23(final TemplateVarContext _context) {
-    // see QueriesGenerated, LOOP propertyMacro, for isAttribute reasoning 
+    // seeQueriesGenerated,LOOPpropertyMacro,forisAttributereasoning
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.MapSrcMacro_PostMapperFunction$Yp)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isAttribute(SNodeOperations.getParent(it));

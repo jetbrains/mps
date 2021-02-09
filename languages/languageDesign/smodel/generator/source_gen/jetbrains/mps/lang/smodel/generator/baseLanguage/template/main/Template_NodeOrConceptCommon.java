@@ -52,7 +52,7 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
           for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
             tnode2.addChild(myAggregationLinks[0], child4);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);

@@ -90,7 +90,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
     myTestModel = new ModelAccessHelper(repo).runReadAction(new Computable<SModel>() {
       public SModel compute() {
         SModel testModel = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)"), repo);
-        // make an identical clone of original model, and keep it detached from a repository to avoid model access control 
+        // makeanidenticalcloneoforiginalmodel,andkeepitdetachedfromarepositorytoavoidmodelaccesscontrol
         return PersistenceUtil.detachedCopyThroughPersistence(testModel, ourProject.getComponent(ModelFactoryService.class));
       }
     });
@@ -469,7 +469,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void moveChild() {
-    // todo? 
+    // todo?
   }
 
   private ChangeSetImpl createFakeChangeSet() {
@@ -507,10 +507,10 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private List<ModelChange> applyAndDiff(Runnable todo, boolean trackMovedNodes) {
-    // the reason we have to modify detached model inside a model read is that some tests touch references, and our Root sample 
-    // has references pointing outside. We'd rather fix this sample to be self-contained 
+    // thereasonwehavetomodifydetachedmodelinsideamodelreadisthatsometeststouchreferences,andourRootsample
+    // hasreferencespointingoutside.We'dratherfixthissampletobeself-contained
     ourProject.getModelAccess().runReadAction(todo);
-    // diff of detached models shall not require model read 
+    // diffofdetachedmodelsshallnotrequiremodelread
     if (trackMovedNodes) {
       return ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
     }

@@ -150,7 +150,7 @@
       <node id="7496726876599914771" at="44,40,45,172" concept="7" />
       <node id="7496726876599914771" at="45,172,46,169" concept="2" />
       <node id="7496726876599914771" at="47,61,48,57" concept="2" />
-      <node id="7496726876599914771" at="49,9,50,31" concept="9" />
+      <node id="7496726876599914771" at="49,9,50,28" concept="9" />
       <node id="6736062018948453396" at="52,5,53,55" concept="2" />
       <node id="6736062018948453396" at="58,34,59,38" concept="7" />
       <node id="6736062018948453396" at="59,38,60,196" concept="2" />
@@ -192,7 +192,7 @@
       </scope>
       <scope id="6736062018948453396" at="57,0,63,0" />
       <scope id="6736062018948453396" at="73,0,79,0" />
-      <scope id="7496726876599914771" at="43,7,50,31">
+      <scope id="7496726876599914771" at="43,7,50,28">
         <var name="copyListInput2" id="7496726876599914771" />
         <var name="tlist2" id="7496726876599914771" />
       </scope>
@@ -418,8 +418,8 @@
   </root>
   <root nodeRef="r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)/6736062018948578754">
     <file name="QueriesGenerated.java">
-      <node id="6736062018948580461" at="27,88,28,114" concept="9" />
-      <node id="6736062018948579126" at="28,114,29,51" concept="8" />
+      <node id="6736062018948580461" at="27,88,28,105" concept="9" />
+      <node id="6736062018948579126" at="28,105,29,51" concept="8" />
       <node id="6736062018948578789" at="27,0,31,0" concept="11" trace="propertyMacro_GetValue_4_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <scope id="6736062018948578790" at="27,88,29,51" />
       <scope id="6736062018948578789" at="27,0,31,0">

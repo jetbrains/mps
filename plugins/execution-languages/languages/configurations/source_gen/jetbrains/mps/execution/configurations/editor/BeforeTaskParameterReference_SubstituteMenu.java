@@ -49,7 +49,7 @@ public class BeforeTaskParameterReference_SubstituteMenu extends SubstituteMenuB
   public class SMP_ReferenceScope_3p5155_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_3p5155_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BeforeTaskParameterReference$g9, LINKS.variableDeclaration$N1XG);
     }
     @NotNull

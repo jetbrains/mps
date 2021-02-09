@@ -26,12 +26,12 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
     myTestCase = null;
     myName = ITestCase__BehaviorDescriptor.getSimpleClassName_idhSQIE8p.invoke(test);
     myQualifiedName = ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(test);
-    // It used to be TestNodeWrapperFactory.tryWrap for test.getTestMethods(), however, with EditorTestCase being both ITestCase AND ITestMethod, 
-    // there's no chance for TNWF to guess proper LTW constructor without further refactoring (it ends up with two identical LTW instances, both isTestCase == true), 
-    // therefore, we use explicit cons for child LTW (used to be a hack 919afafa, that gave method's name if node happens to be ITestMethod). 
-    // With that, indeed, we loose extensibility of TNWF, but I don't care too much as it's MPS-controlled factory anyway (let alone I doubt there's ever need to 
-    // have anything else under a wrapper for ITestCase). 
-    //  Proper fix would be to introduce tryToWrap(ITestNodeWrapper container, node<>) method, that would respect owner testcase explicitly. 
+    // ItusedtobeTestNodeWrapperFactory.tryWrapfortest.getTestMethods(),however,withEditorTestCasebeingbothITestCaseANDITestMethod,
+    // there'snochanceforTNWFtoguessproperLTWconstructorwithoutfurtherrefactoring(itendsupwithtwoidenticalLTWinstances,bothisTestCase==true),
+    // therefore,weuseexplicitconsforchildLTW(usedtobeahack919afafa,thatgavemethod'snameifnodehappenstobeITestMethod).
+    // Withthat,indeed,welooseextensibilityofTNWF,butIdon'tcaretoomuchasit'sMPS-controlledfactoryanyway(letaloneIdoubtthere'severneedto
+    // haveanythingelseunderawrapperforITestCase).
+    // ProperfixwouldbetointroducetryToWrap(ITestNodeWrappercontainer,node<>)method,thatwouldrespectownertestcaseexplicitly.
     myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(test)).select(new ISelector<SNode, LanguageTestWrapper>() {
       public LanguageTestWrapper select(SNode it) {
         return new LanguageTestWrapper(LanguageTestWrapper.this, it);
@@ -40,7 +40,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
   }
 
   public LanguageTestWrapper(@NotNull ITestNodeWrapper testCase, @NotNull SNode testMethod) {
-    // perhaps, shall derive MPS requirement form ITestNodeWrapper, but as long as isMpsStartRequired is in ITestable, don't see a reason. 
+    // perhaps,shallderiveMPSrequirementformITestNodeWrapper,butaslongasisMpsStartRequiredisinITestable,don'tseeareason.
     super(testMethod, testCase.canRunInProcess(), (boolean) ITestable__BehaviorDescriptor.isMpsStartRequired_id2RMg39tmiFh.invoke(testMethod));
     myTestCase = testCase;
     myName = ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(testMethod);
@@ -67,7 +67,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
 
   @Override
   public int hashCode() {
-    // I need this for the EditorTestCase for which two LTW were equal 
+    // IneedthisfortheEditorTestCaseforwhichtwoLTWwereequal
     return Objects.hash(myNodePointer, isTestCase());
   }
 
@@ -81,7 +81,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
     }
 
     LanguageTestWrapper that = (LanguageTestWrapper) o;
-    // I need this for the EditorTestCase for which two LTW were equal 
+    // IneedthisfortheEditorTestCaseforwhichtwoLTWwereequal
     return myNodePointer.equals(that.myNodePointer) && isTestCase() == that.isTestCase();
   }
 

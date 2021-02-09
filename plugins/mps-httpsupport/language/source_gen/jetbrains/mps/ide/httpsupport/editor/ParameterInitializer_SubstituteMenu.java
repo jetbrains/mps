@@ -49,7 +49,7 @@ public class ParameterInitializer_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_llas0f_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_llas0f_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ParameterInitializer$k5, LINKS.parameter$DxS8);
     }
     @NotNull

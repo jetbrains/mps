@@ -159,8 +159,8 @@ with_meet:
       return;
     }
     if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
-      //  TEMP HACK: proceed only if the "right" expression is a ClosureLiteral, balk otherwise 
-      //  This may cause unexpected results, so please disable in case of difficulties generating some code 
+      // TEMPHACK:proceedonlyifthe"right"expressionisaClosureLiteral,balkotherwise
+      // Thismaycauseunexpectedresults,sopleasedisableincaseofdifficultiesgeneratingsomecode
       if (!(SNodeOperations.isInstanceOf(rexpr, CONCEPTS.ClosureLiteral$rp))) {
         return;
       }

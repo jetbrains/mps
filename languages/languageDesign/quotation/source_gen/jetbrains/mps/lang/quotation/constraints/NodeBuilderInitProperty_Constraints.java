@@ -79,7 +79,7 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
     if (childNode == null) {
       return childConcept.isAbstract() || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.NodeBuilderInitPropertyValue$uj);
     } else {
-      // todo: remove clause after 2020.1  
+      // todo:removeclauseafter2020.1
       return true;
     }
   }

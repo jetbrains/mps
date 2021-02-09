@@ -57,7 +57,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
 
     public void test_testPerformance() throws Exception {
       addNodeById("5968606277575949800");
-      // the goal of that test is to ensure more efficient than quadratic complexity 
+      // thegoalofthattestistoensuremoreefficientthanquadraticcomplexity
       Duration durationA = this.measureSuppressPerformance(4 * 1000);
       Duration durationB = this.measureSuppressPerformance(40 * 1000);
       Assert.assertTrue(String.format("%d expected to be approximately 10 times greater that %d", durationB.toMillis(), durationA.toMillis()), durationA.multipliedBy(15).compareTo(durationB) > 0);

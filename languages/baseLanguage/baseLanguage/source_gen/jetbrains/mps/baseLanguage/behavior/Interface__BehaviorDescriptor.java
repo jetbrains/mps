@@ -102,7 +102,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static String getUnitName_id4pl5GY7LKmR(@NotNull SNode __thisNode__) {
-    // same as in ClassConcept 
+    // sameasinClassConcept
     SNode ancestorClass = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
     if (ancestorClass == null) {
       return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__);
@@ -129,14 +129,14 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
-    // populate own members 
+    // populateownmembers
     for (SNode member : SNodeOperations.getChildren(__thisNode__)) {
       if (SNodeOperations.isInstanceOf(member, CONCEPTS.IClassifierMember$Na)) {
         IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(SNodeOperations.cast(member, CONCEPTS.IClassifierMember$Na), context, classifierType);
       }
     }
 
-    // populate extended interfaces members 
+    // populateextendedinterfacesmembers
     for (SNode extendedInterface : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.extendedInterface$PDVO)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (it != null);
@@ -145,7 +145,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(extendedInterface, context, classifierType);
     }
 
-    // populate Object members in case of classifierType.getClassifier() == this classifier 
+    // populateObjectmembersincaseofclassifierType.getClassifier()==thisclassifier
     if (IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType) == __thisNode__) {
       if ((SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") != null)) {
         IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")), context, classifierType);

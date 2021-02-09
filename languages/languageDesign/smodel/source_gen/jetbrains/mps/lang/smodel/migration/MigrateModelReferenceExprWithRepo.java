@@ -63,7 +63,7 @@ public class MigrateModelReferenceExprWithRepo extends MigrationScriptBase {
 
           final SNode repoAccessExpr = SLinkOperations.getTarget(it, LINKS.repo$cK2X);
           SNode imco = SModelOperations.createNewNode(where, null, CONCEPTS.InstanceMethodCallOperation$uu);
-          // FIXME node// here awaits when node.reference.set(nodePointer) operation is added to get replaced with the one. 
+          // FIXMEnode//hereawaitswhennode.reference.set(nodePointer)operationisaddedtogetreplacedwiththeone.
           SLinkOperations.setPointer(imco, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModelReference.resolve(org.jetbrains.mps.openapi.module.SRepository)"));
           SNode dotExp = SNodeOperations.replaceWithNewChild(it, CONCEPTS.DotExpression$yW);
           SLinkOperations.setTarget(dotExp, LINKS.operand$w6IR, newRef);

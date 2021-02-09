@@ -38,7 +38,7 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
   private MPSFileNodeEditor nodeEditor;
 
   public EmbeddableEditor(Project project, boolean editable) {
-    // todo: merge with UIEditorComponent ? 
+    // todo:mergewithUIEditorComponent?
     super(new BorderLayout());
     this.project = project;
     this.repository = project.getRepository();
@@ -86,7 +86,7 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
 
   private MPSFileNodeEditor createEditorForNode(SNode node) {
     if (SNodeOperations.getModel(node) == null) {
-      // node is not in repository 
+      // nodeisnotinrepository
       if (!(editable)) {
         if (temporaryModel == null) {
           temporaryModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());

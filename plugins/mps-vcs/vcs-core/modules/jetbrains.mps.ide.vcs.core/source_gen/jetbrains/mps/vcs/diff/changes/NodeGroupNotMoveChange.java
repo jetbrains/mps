@@ -32,7 +32,7 @@ public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel 
+    // get"nonconflicting"attributeinmetamodel
     SNode n = getParent(false);
     MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink());
     if (hint != null) {
@@ -68,7 +68,7 @@ public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
   private String getRemovedDescription(boolean verbose) {
     String role = getLink().getName();
     int removedSize = ListSequence.fromList(getModifiedNodes(false)).count();
-    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+    // FIXMEgetridofthisdirtymagicwithrolenames"pluralization".PLEASE!!!
     String removedItems = (removedSize == 1 ? role : NameUtil.formatNumericalString(removedSize, role));
     return String.format("Removed %s", removedItems);
   }
@@ -76,7 +76,7 @@ public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
   private String getAddedDescription(boolean verbose) {
     String role = getLink().getName();
     int addedSize = ListSequence.fromList(getModifiedNodes(true)).count();
-    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+    // FIXMEgetridofthisdirtymagicwithrolenames"pluralization".PLEASE!!!
     String addedItems = (addedSize == 1 ? role : NameUtil.formatNumericalString(addedSize, role));
     if (verbose) {
       String addedOrInserted = (getBeforeAnchorId(false) == null ? "Added" : "Inserted");
@@ -90,7 +90,7 @@ public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
     String role = getLink().getName();
     int removedSize = ListSequence.fromList(getModifiedNodes(false)).count();
     int addedSize = ListSequence.fromList(getModifiedNodes(true)).count();
-    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+    // FIXMEgetridofthisdirtymagicwithrolenames"pluralization".PLEASE!!!
     String removedItems = (removedSize == 1 ? role : NameUtil.formatNumericalString(removedSize, role));
     String addedItems = (addedSize == 1 ? role : NameUtil.formatNumericalString(addedSize, role));
     addedItems = (addedSize == 1 && removedSize == 1 ? "another" : "another " + addedItems);

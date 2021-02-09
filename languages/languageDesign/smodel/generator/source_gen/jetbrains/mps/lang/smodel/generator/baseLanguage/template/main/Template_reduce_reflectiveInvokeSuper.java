@@ -70,7 +70,7 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
         for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
           tnode2.addChild(myAggregationLinks[0], child4);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -81,7 +81,7 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
           }
         });
         tnode2.addChild(myAggregationLinks[0], tnode5);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[0]);
@@ -93,7 +93,7 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
             final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
             SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_116_0(new PropertyMacroContext(context4, "foo", propertyMacro_3yq9wq_c0a2a0a1a3a1a5a5a6)));
             tnode6.addChild(myAggregationLinks[0], tnode7);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist8 = Collections.emptyList();
@@ -113,17 +113,17 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
             for (SNode child11 : TemplateUtil.asNotNull(tlist8)) {
               tnode6.addChild(myAggregationLinks[0], child11);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode12 = environment.createOutputNode(myConcepts[2]);
             SNodeAccessUtil.setPropertyValue(tnode12, myProperties[0], QueriesGenerated.propertyMacro_GetValue_116_1(new PropertyMacroContext(context4, "1234567890", propertyMacro_3yq9wq_c0a2a0a1a5a1a5a5a6)));
             tnode6.addChild(myAggregationLinks[0], tnode12);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode2.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist13 = null;
@@ -133,7 +133,7 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
         for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
           tnode2.addChild(myAggregationLinks[0], child14);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

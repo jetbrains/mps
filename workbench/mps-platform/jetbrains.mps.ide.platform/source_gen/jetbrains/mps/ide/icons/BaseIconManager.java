@@ -55,7 +55,7 @@ public class BaseIconManager {
   }
 
   public void invalidate(Set<ReloadableModule> modules) {
-    // todo by-module invalidation 
+    // todoby-moduleinvalidation
     MapSequence.fromMap(myConceptToIcon).clear();
     MapSequence.fromMap(myResToIcon).clear();
   }
@@ -220,7 +220,7 @@ public class BaseIconManager {
     Class provider = ir.getProvider();
     Icon icon = IconLoadingUtil.loadIcon(ir.getResourceId(), provider);
     if (provider != null && icon instanceof IconLoader.CachedImageIcon) {
-      // see MPS-30995. There's no way to ensure the provider will not be disposed already when the icon will be required the first time. That's why we ensure here that for a non-default provider we load the icon exactly at the moment it's requested 
+      // seeMPS-30995.There'snowaytoensuretheproviderwillnotbedisposedalreadywhentheiconwillberequiredthefirsttime.That'swhyweensureherethatforanon-defaultproviderweloadtheiconexactlyatthemomentit'srequested
       icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
     }
     if (icon == null) {

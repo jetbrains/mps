@@ -19,7 +19,7 @@ public class check_NoFinalOverrides_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode method, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode overriddenMethod = SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH);
     if (overriddenMethod != null) {
-      // todo 
+      // todo
     }
   }
   public SAbstractConcept getApplicableConcept() {

@@ -38,7 +38,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // only applicable to root nodes 
+    // onlyapplicabletorootnodes
     if (SNodeOperations.getParent(event.getData(MPSCommonDataKeys.NODE)) != null) {
       return false;
     }

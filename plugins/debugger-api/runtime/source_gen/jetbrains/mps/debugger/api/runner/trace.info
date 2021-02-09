@@ -14,10 +14,10 @@
     <file name="MPSDebugRunner.java">
       <node id="4551500037857467360" at="34,94,35,195" concept="7" />
       <node id="4474271214083126730" at="40,31,41,34" concept="7" />
-      <node id="4474271214083127122" at="44,138,45,62" concept="8" />
-      <node id="4474271214083126747" at="45,62,46,137" concept="7" />
+      <node id="4474271214083127122" at="44,138,45,60" concept="8" />
+      <node id="4474271214083126747" at="45,60,46,137" concept="7" />
       <node id="4474271214083126769" at="49,206,50,23" concept="6" />
-      <node id="4474271214083127124" at="50,23,51,36" concept="8" />
+      <node id="4474271214083127124" at="50,23,51,32" concept="8" />
       <node id="4474271214083126783" at="52,51,53,92" concept="3" />
       <node id="4474271214083126778" at="54,12,55,64" concept="9" />
       <node id="4474271214083126799" at="57,27,58,59" concept="9" />
@@ -36,7 +36,7 @@
       <node id="4474271214083126849" at="68,0,72,0" concept="5" trace="getSettingsEditor#(Lcom/intellij/execution/Executor;Lcom/intellij/execution/configurations/RunConfiguration;)Lcom/intellij/openapi/options/SettingsEditor;" />
       <node id="4474271214083126726" at="38,0,43,0" concept="5" trace="getRunnerId#()Ljava/lang/String;" />
       <node id="4474271214083126733" at="43,0,48,0" concept="5" trace="doExecute#(Lcom/intellij/execution/configurations/RunProfileState;Lcom/intellij/execution/runners/ExecutionEnvironment;)Lcom/intellij/execution/ui/RunContentDescriptor;" />
-      <node id="4474271214083126772" at="51,36,56,5" concept="4" />
+      <node id="4474271214083126772" at="51,32,56,5" concept="4" />
       <node id="4474271214083126755" at="48,0,68,0" concept="5" trace="createContentDescriptor#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/Executor;Lcom/intellij/execution/configurations/RunProfileState;Lcom/intellij/execution/ui/RunContentDescriptor;Lcom/intellij/execution/runners/ExecutionEnvironment;)Lcom/intellij/execution/ui/RunContentDescriptor;" />
       <scope id="4474271214083126651" at="30,27,30,27" />
       <scope id="4474271214083126661" at="34,94,35,195" />

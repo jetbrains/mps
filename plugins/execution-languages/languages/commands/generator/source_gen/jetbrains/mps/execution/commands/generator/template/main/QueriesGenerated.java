@@ -339,7 +339,7 @@ public class QueriesGenerated extends QueryProviderBase {
       String name = CommandParameterDeclaration__BehaviorDescriptor.getSetterLongName_id3gpm$NHlR8F.invoke(SLinkOperations.getTarget(argument, LINKS.parameterDeclaration$Zibc));
       expression = _quotation_createNode_x583g4_a0e0b0cd(expression, ref, name);
     }
-    // todo resolve a problem the other way 
+    // todoresolveaproblemtheotherway
     return expression;
   }
   public static void mapSrcMacro_post_4_0(final MapSrcMacroPostProcContext _context) {
@@ -364,7 +364,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_9(final MappingScriptContext _context) {
     for (SNode commandRef : ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.CommandParameterReference$LM))) {
       SPropertyOperations.set(commandRef, PROPS.resolveInfo$Zb9G, SPropertyOperations.getString(SLinkOperations.getTarget(commandRef, LINKS.parameter$ZboH), PROPS.name$MnvL));
-      // this is a hack to generate command parameter references into field references incide of process builder expression 
+      // thisisahacktogeneratecommandparameterreferencesintofieldreferencesincideofprocessbuilderexpression
     }
   }
   public static void mappingScript_CodeBlock_10(final MappingScriptContext _context) {

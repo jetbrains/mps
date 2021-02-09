@@ -140,11 +140,11 @@ __switch__:
                       this.__CP__ = 4;
                       break;
                     case 8:
-                      // don't look inside closures and other code-blocks 
-                      // don't look inside commented statements 
-                      // don't look inside single-line comments 
-                      // don't look inside anything that implements IStatementListContainer (for extensibility) 
-                      // don't look inside anonymous classes 
+                      // don'tlookinsideclosuresandothercode-blocks
+                      // don'tlookinsidecommentedstatements
+                      // don'tlookinsidesingle-linecomments
+                      // don'tlookinsideanythingthatimplementsIStatementListContainer(forextensibility)
+                      // don'tlookinsideanonymousclasses
                       this.__CP__ = 1;
                       break;
                     case 10:
@@ -334,7 +334,7 @@ __switch__:
               SNode componentType = SLinkOperations.getTarget(matchedNode_5ahx9e_f0c0i, LINKS.componentType$ypmi);
               final SNode matchedType = inference_matchTypeWithTypeVariables(typeCheckingContext, componentType, mmap);
               if (ListSequence.fromList(SLinkOperations.getChildren(mc, LINKS.actualArgument$pzdx)).count() == ListSequence.fromList(parameterDeclarations).count()) {
-                // the actual parameter may appear to be an array instead of vararg 
+                // theactualparametermayappeartobeanarrayinsteadofvararg
                 final SNode actual = actualIterator.next();
                 {
                   final SNode actualType = typeCheckingContext.typeOf(actual, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1220347108709", true);
@@ -355,7 +355,7 @@ __switch__:
                   }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1220347102532", false, false);
                 }
               } else {
-                // in this case the actual parameter is definitely a vararg 
+                // inthiscasetheactualparameterisdefinitelyavararg
                 while (actualIterator.hasNext()) {
                   SNode actual = actualIterator.next();
                   {
@@ -531,7 +531,7 @@ __switch__:
         continue;
       }
       if (SNodeOperations.getParent(namesake) != classifier) {
-        // can't be duplicated, is overriden 
+        // can'tbeduplicated,isoverriden
         continue;
       }
       if (ListSequence.fromList(SLinkOperations.getChildren(namesake, LINKS.parameter$5xBj)).count() != ListSequence.fromList(SLinkOperations.getChildren(ownMethod, LINKS.parameter$5xBj)).count()) {

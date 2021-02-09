@@ -85,13 +85,13 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
       }
     }
 
-    // retain all imports if 'unknown' concepts still present 
+    // retainallimportsif'unknown'conceptsstillpresent
     if (unknownPresent) {
       return;
     }
-    // on the other hand, if everything is resolved, remove all imports altogether 
+    // ontheotherhand,ifeverythingisresolved,removeallimportsaltogether
     if (dynRefsPresent == false) {
-      // quick-fix 
+      // quick-fix
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2235632002330933633", null, errorTarget);
@@ -102,8 +102,8 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
       }
       return;
     }
-    // removing only those single-type imports that didn't get into retain set 
-    // quick fix 
+    // removingonlythosesingle-typeimportsthatdidn'tgetintoretainset
+    // quickfix
     Iterable<SNode> unneeded = Sequence.fromIterable(MapSequence.fromMap(importsByName).values()).subtract(SetSequence.fromSet(retain));
     if (Sequence.fromIterable(unneeded).count() < ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(clas), LINKS.entries$neZo)).count()) {
       {
@@ -116,7 +116,7 @@ public class check_UnneededJavaImports_NonTypesystemRule extends AbstractNonType
         }
       }
     } else {
-      // removing all imports at once 
+      // removingallimportsatonce
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(clas, "Java imports annotation is present", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4988876388990444236", null, errorTarget);

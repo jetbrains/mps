@@ -48,7 +48,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -68,7 +68,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
               tnode4.addChild(myAggregationLinks[1], child6);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist7 = null;
@@ -83,11 +83,11 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
               tnode4.addChild(myAggregationLinks[1], child8);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[2], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
@@ -107,7 +107,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
               tnode9.addChild(myAggregationLinks[1], child11);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist12 = null;
@@ -122,11 +122,11 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             for (SNode child13 : TemplateUtil.asNotNull(tlist12)) {
               tnode9.addChild(myAggregationLinks[1], child13);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[3], tnode9);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode14 = environment.createOutputNode(myConcepts[1]);
@@ -146,7 +146,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             for (SNode child16 : TemplateUtil.asNotNull(tlist15)) {
               tnode14.addChild(myAggregationLinks[1], child16);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist17 = null;
@@ -161,16 +161,16 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             for (SNode child18 : TemplateUtil.asNotNull(tlist17)) {
               tnode14.addChild(myAggregationLinks[1], child18);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode19 = environment.createOutputNode(myConcepts[2]);
             tnode14.addChild(myAggregationLinks[1], tnode19);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[4], tnode14);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(5, tnode1);

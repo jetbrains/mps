@@ -23,7 +23,7 @@ public class UnpackHelper extends DependenciesHelper {
   /*package*/ UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
     super(genContext, visible.getProject());
     this.visible = visible;
-    // PathProvider shares its state regardless of legacyDH just to make sure temp paths are consistent 
+    // PathProvidersharesitsstateregardlessoflegacyDHjusttomakesuretemppathsareconsistent
     this.myPathProvider = new PathProvider(genContext, visible.getProject());
   }
 
@@ -53,7 +53,7 @@ public class UnpackHelper extends DependenciesHelper {
     }
   }
   public boolean isRequired(SNode n) {
-    // FIXME no uses for the method, delete? 
+    // FIXMEnousesforthemethod,delete?
     return requiredSet.contains(n);
   }
   public boolean isContentRequired(SNode n) {

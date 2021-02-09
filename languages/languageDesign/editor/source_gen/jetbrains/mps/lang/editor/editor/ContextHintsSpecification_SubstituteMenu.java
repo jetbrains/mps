@@ -89,7 +89,7 @@ public class ContextHintsSpecification_SubstituteMenu extends SubstituteMenuBase
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      // TODO: Use link scopes here 
+      // TODO:Uselinkscopeshere
       Iterable<SNode> rv = new ModelPlusImportedScope(_context.getModel(), false, CONCEPTS.ConceptEditorHintDeclaration$e2).getAvailableElements(null);
       return (Iterable<SNode>) rv;
     }

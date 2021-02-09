@@ -175,13 +175,13 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
-    // source node not specified or (likely, erroneously) points to the same (transient) model, 
-    // therefore, we try to use generator's trace to original 
+    // sourcenodenotspecifiedor(likely,erroneously)pointstothesame(transient)model,
+    // therefore,wetrytousegenerator'stracetooriginal
     if (SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNode$OjgC) == null || SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNode$OjgC) == _context.getNode()) {
       return TracingUtil.getInput(_context.getNode());
     } else {
       if (SNodeOperations.getModel(SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNode$OjgC)) == SNodeOperations.getModel(_context.getNode())) {
-        // if it points to a node in the same transient model, use it, but warn user not to expect anything good. 
+        // ifitpointstoanodeinthesametransientmodel,useit,butwarnusernottoexpectanythinggood.
         _context.showWarningMessage(_context.getNode(), "The source node of the rule is from the same transient model");
       }
       return SLinkOperations.getPointer(_context.getNode(), LINKS.sourceNode$OjgC);

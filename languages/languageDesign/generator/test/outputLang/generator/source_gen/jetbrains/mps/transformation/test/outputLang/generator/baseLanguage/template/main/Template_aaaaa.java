@@ -41,7 +41,7 @@ public class Template_aaaaa extends TemplateDeclarationBase {
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

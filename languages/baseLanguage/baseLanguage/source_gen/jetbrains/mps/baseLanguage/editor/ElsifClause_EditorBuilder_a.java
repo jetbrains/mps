@@ -94,9 +94,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      // todo: this is quite a hackish stuff but we need it 
-      // todo: but we need it since we can't enable/disable 
-      // todo: menu items by condition 
+      // todo:thisisquiteahackishstuffbutweneedit
+      // todo:butweneeditsincewecan'tenable/disable
+      // todo:menuitemsbycondition
       SNode ifStatement = ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(node);
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       if ((SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK) == null)) {

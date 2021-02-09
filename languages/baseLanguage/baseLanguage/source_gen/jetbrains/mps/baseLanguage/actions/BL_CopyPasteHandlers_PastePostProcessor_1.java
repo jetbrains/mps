@@ -51,21 +51,21 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
         SNode fieldReferenceOperation = (SNode) SLinkOperations.getTarget(parentDotExpression, LINKS.operation$gs9E);
         SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag);
 
-        // External reference 
+        // Externalreference
         final String resolveInfo = SLinkOperations.getResolveInfo(fieldDeclarationReference);
 
-        // Collecting possible classConcepts (this. targets) 
+        // CollectingpossibleclassConcepts(this.targets)
         List<SNode> possibleClassConcepts = new ArrayList<SNode>();
         for (SNode clazz = containingClass; clazz != null; clazz = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(clazz) ? null : SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false))) {
           ListSequence.fromList(possibleClassConcepts).addElement(clazz);
         }
 
         if (SNodeOperations.getReference(pastedNode, LINKS.classConcept$zzjZ) != null && ListSequence.fromList(possibleClassConcepts).contains(SLinkOperations.getTarget(pastedNode, LINKS.classConcept$zzjZ))) {
-          // if we paste qualified this, don't care to check if any other class than the referenced one got a field that matches the name 
-          // E.g. if we got classes A and B, both with field f, and anonymous B subclass inside A has A.this.f copied and pasted, it's odd 
-          // to replace it with simply this.f as it's completely different field. 
+          // ifwepastequalifiedthis,don'tcaretocheckifanyotherclassthanthereferencedonegotafieldthatmatchesthename
+          // E.g.ifwegotclassesAandB,bothwithfieldf,andanonymousBsubclassinsideAhasA.this.fcopiedandpasted,it'sodd
+          // toreplaceitwithsimplythis.fasit'scompletelydifferentfield.
           if (SLinkOperations.getTarget(pastedNode, LINKS.classConcept$zzjZ) == containingClass) {
-            // we still have to clear qualification when we paste qualified reference right into the class with access to the field. 
+            // westillhavetoclearqualificationwhenwepastequalifiedreferencerightintotheclasswithaccesstothefield.
             SLinkOperations.setTarget(pastedNode, LINKS.classConcept$zzjZ, null);
           }
           return;

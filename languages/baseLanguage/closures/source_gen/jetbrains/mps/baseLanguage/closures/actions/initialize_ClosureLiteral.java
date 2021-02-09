@@ -33,7 +33,7 @@ public class initialize_ClosureLiteral {
               Iterable<SNode> methods = Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(SNodeOperations.cast(pdtype, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
               if (Sequence.fromIterable(methods).count() == 1) {
                 SNode adaptTo = Sequence.fromIterable(methods).first();
-                // TODO: generic parameters 
+                // TODO:genericparameters
                 for (SNode adaptToPD : SLinkOperations.getChildren(adaptTo, LINKS.parameter$5xBj)) {
                   SNode pd = ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$b4Y3)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterDeclaration$RG, null));
                   SPropertyOperations.assign(pd, PROPS.name$MnvL, SPropertyOperations.getString(adaptToPD, PROPS.name$MnvL));

@@ -20,8 +20,8 @@
     <file name="TaskLibrariesHelper.java">
       <node id="1117643560963219144" at="30,0,31,0" concept="5" trace="project" />
       <node id="1117643560963219147" at="31,0,32,0" concept="5" trace="genContext" />
-      <node id="3350985893290196795" at="32,78,33,121" concept="12" />
-      <node id="1117643560963219128" at="33,121,34,27" concept="4" />
+      <node id="3350985893290196795" at="32,78,33,101" concept="12" />
+      <node id="1117643560963219128" at="33,101,34,27" concept="4" />
       <node id="1117643560963219134" at="34,27,35,33" concept="4" />
       <node id="1117643560963218939" at="38,28,39,52" concept="10" />
       <node id="1117643560963218948" at="40,82,41,151" concept="4" />
@@ -37,7 +37,7 @@
       <node id="1117643560963219092" at="63,42,64,84" concept="4" />
       <node id="4701820937132275165" at="65,16,66,64" concept="10" />
       <node id="4701820937132275201" at="67,139,68,75" concept="4" />
-      <node id="5096397858823412428" at="72,5,73,42" concept="12" />
+      <node id="5096397858823412428" at="72,5,73,36" concept="12" />
       <node id="5096397858823412388" at="74,49,75,115" concept="4" />
       <node id="1117643560963218873" at="80,0,81,0" concept="14" trace="target$UbI8" />
       <node id="1117643560963218873" at="81,0,82,0" concept="14" trace="imports$B1XX" />
@@ -47,7 +47,7 @@
       <node id="1117643560963218873" at="91,0,92,0" concept="14" trace="BwfTaskLibrary$kP" />
       <node id="1117643560963218946" at="39,52,42,5" concept="7" />
       <node id="4701820937132275174" at="66,64,69,11" concept="8" />
-      <node id="5096397858823412354" at="73,42,76,5" concept="6" />
+      <node id="5096397858823412354" at="73,36,76,5" concept="6" />
       <node id="1117643560963219124" at="32,0,37,0" concept="2" trace="TaskLibrariesHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)V" />
       <node id="1117643560963218997" at="47,72,52,11" concept="8" />
       <node id="4701820937132275140" at="65,14,70,9" concept="1" />
@@ -68,7 +68,7 @@
       <scope id="1117643560963218946" at="39,52,42,5">
         <var name="tldep" id="1117643560963218955" />
       </scope>
-      <scope id="5096397858823412354" at="73,42,76,5">
+      <scope id="5096397858823412354" at="73,36,76,5">
         <var name="i" id="5096397858823412357" />
       </scope>
       <scope id="4701820937132275141" at="65,16,69,11">
@@ -306,8 +306,8 @@
       <node id="1659807394255068918" at="107,60,108,70" concept="4" />
       <node id="2421088390712351316" at="110,41,111,82" concept="11" />
       <node id="1659807394255068917" at="113,10,114,0" concept="13" />
-      <node id="7926701909975747460" at="114,0,115,97" concept="12" />
-      <node id="7385586609667640613" at="115,97,116,54" concept="10" />
+      <node id="7926701909975747460" at="114,0,115,84" concept="12" />
+      <node id="7385586609667640613" at="115,84,116,54" concept="10" />
       <node id="7926701909975523885" at="116,54,117,51" concept="10" />
       <node id="6647099934207248055" at="117,51,118,59" concept="10" />
       <node id="6647099934207035810" at="118,59,119,48" concept="10" />

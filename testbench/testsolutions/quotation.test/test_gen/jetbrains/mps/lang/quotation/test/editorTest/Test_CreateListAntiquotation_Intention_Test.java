@@ -36,8 +36,8 @@ public class Test_CreateListAntiquotation_Intention_Test extends BaseTransformat
       initEditorComponent("7167051279291080562", "7167051279291080572");
       Assert.assertTrue(isIntentionApplicable("jetbrains.mps.lang.quotation.intentions.CreateListAntiquotation_Intention", myStart.getNode()));
       invokeIntention("jetbrains.mps.lang.quotation.intentions.CreateListAntiquotation_Intention", myStart.getNode());
-      // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing 
-      // todo remove it when it will be possible to have the antiquotation with an error under the test 
+      // todothisisdonebecauseantiquotation"antisuppress"theerrorsandtypesystemtestisfailing
+      // todoremoveitwhenitwillbepossibletohavetheantiquotationwithanerrorunderthetest
       typeString("nodes");
 
     }

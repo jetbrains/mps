@@ -49,7 +49,7 @@ public class SLinkListAccess_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_x9z1qc_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_x9z1qc_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.SLinkListAccess$oO, LINKS.link$RcG0);
     }
     @NotNull

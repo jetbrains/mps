@@ -49,11 +49,11 @@ public abstract class AbstractEnvironment implements Environment {
 
   @Override
   public void dispose() {
-    // no-op, nothing to do here as we didn't allocate anything 
+    // no-op,nothingtodohereaswedidn'tallocateanything
   }
 
   @Override
   public void flushAllEvents() {
-    // no-op, (a) no idea what this method is supposed to do anyway (b) this environment can't do anything about whatever events. 
+    // no-op,(a)noideawhatthismethodissupposedtodoanyway(b)thisenvironmentcan'tdoanythingaboutwhateverevents.
   }
 }

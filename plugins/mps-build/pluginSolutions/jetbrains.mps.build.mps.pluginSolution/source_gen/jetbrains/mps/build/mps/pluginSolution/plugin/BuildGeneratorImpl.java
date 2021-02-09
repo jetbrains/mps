@@ -152,7 +152,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     try {
       IFile descendant = targetDir.findChild(targetName);
       if (descendant.exists()) {
-        // do not overwrite existing icons 
+        // donotoverwriteexistingicons
         return;
       }
       out = descendant.openOutputStream();
@@ -192,7 +192,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       Solution solution;
       if (getCreateSolution()) {
         IFile projectBaseDir = FileSystem.getInstance().getFile(getBasePath());
-        //  get solution 
+        // getsolution
         String solutionName = getNewSolutionName();
         IFile solutionBaseDir = projectBaseDir.findChild("solutions").findChild(solutionName);
         indicator.setText("Creating Solution...");
@@ -220,12 +220,12 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
 
 
   public boolean isValidModelName(final String text) {
-    // text can be null and SModelName require @NotNull parameter in constructor, to spare read action - also check for empty string 
+    // textcanbenullandSModelNamerequire@NotNullparameterinconstructor,tosparereadaction-alsocheckforemptystring
     if ((text == null || text.length() == 0)) {
       return false;
     }
 
-    // FIXME once there's no single model repository, there would be no reason to limit model name to unique in the repo 
+    // FIXMEoncethere'snosinglemodelrepository,therewouldbenoreasontolimitmodelnametouniqueintherepo
     return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         return new ModuleRepositoryFacade(myProject).getModelsByName(new SModelName(text)).isEmpty();
@@ -234,7 +234,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   }
 
   public boolean isValidSolutionName(final String text) {
-    // text can be null and method getModulesByName require @NotNull parameter, to spare read action - also check for empty string 
+    // textcanbenullandmethodgetModulesByNamerequire@NotNullparameter,tosparereadaction-alsocheckforemptystring
     if ((text == null || text.length() == 0)) {
       return false;
     }
@@ -247,13 +247,13 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   }
 
   protected Iterable<SNode> createBuildScripts(SModel targetModelDescriptor, String name, List<NodeData> selectedData) {
-    // setup build project 
+    // setupbuildproject
     SNode buildProject = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject"));
     SPropertyOperations.set(buildProject, PROPS.name$MnvL, name);
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.plugins$AsCR)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5c3f3e2c1ce9ac67L, "jetbrains.mps.build.structure.BuildJavaPlugin")));
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.plugins$AsCR)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin")));
 
-    // internal base dir is a project base dir 
+    // internalbasedirisaprojectbasedir
     try {
       String relativeToModuleProjectPath = RelativePathHelper.forModule(targetModelDescriptor.getModule()).makeRelative(getBasePath());
       SPropertyOperations.set(buildProject, PROPS.internalBaseDirectory$_8Zr, relativeToModuleProjectPath);
@@ -263,7 +263,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       }
     }
 
-    // deps and macro 
+    // depsandmacro
     Set<String> userMacroNames = new LinkedHashSet<String>(PathMacros.getInstance().getUserMacroNames());
     List<SNode> macros = new ArrayList<SNode>();
     List<SNode> dependencies = new ArrayList<SNode>();
@@ -288,7 +288,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     } else if (Objects.equals(getDependencyKind(), DependencyStep.DependencyKind.STANDALONE)) {
       dateMacro = _quotation_createNode_un708i_a0a0b71a52();
       ListSequence.fromList(macros).addElement(dateMacro);
-      // Need to use version from generic distribution, but for now assume that it equals to used MPS version 
+      // Needtouseversionfromgenericdistribution,butfornowassumethatitequalstousedMPSversion
       buildNumber = _quotation_createNode_un708i_a0d0b71a52(ApplicationInfo.getInstance().getBuild().getBaselineVersion() + ".SNAPSHOT");
       ListSequence.fromList(macros).addElement(buildNumber);
       SNode macro = _quotation_createNode_un708i_a0f0b71a52();
@@ -308,7 +308,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.macros$r8_A)).addSequence(ListSequence.fromList(macros));
     ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.dependencies$redY)).addSequence(ListSequence.fromList(dependencies));
 
-    // project structure and layout 
+    // projectstructureandlayout
     Set<ModuleData> moduleData = SetSequence.fromSet(new LinkedHashSet<ModuleData>());
     extractModules(selectedData, moduleData);
     Comparator<ModuleData> langFirst = new Comparator<ModuleData>() {
@@ -353,7 +353,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), LINKS.children$aMRO)).addElement(_quotation_createNode_un708i_a0a0a0jb0z_0(name + ".zip", plugin));
     }
 
-    // add mps layout to the target model 
+    // addmpslayouttothetargetmodel
     SModelOperations.addRootNode(targetModelDescriptor, buildProject);
 
     ModuleLoader ml = new ModuleLoader(buildProject, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
@@ -401,9 +401,9 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     SNode infoPlistMac = stringToCompositePath(generatedOutputPath + "Info.plist.xml");
 
 
-    // copy-paste from buildDistribution 
-    // we do not want to invent something complicated just before release 
-    // copy-pasting, really, is better than what we had with custommps 
+    // copy-pastefrombuildDistribution
+    // wedonotwanttoinventsomethingcomplicatedjustbeforerelease
+    // copy-pasting,really,isbetterthanwhatwehadwithcustommps
 
     SNode linuxTar = _quotation_createNode_un708i_a0gb0bb(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), convertToMacroRelative(_quotation_createNode_un708i_a0a0a1b0a0gb0bb(), mpsHomeMacro), vmoptions, vmoptions64, shLinux, SPropertyOperations.getString(buildProject, PROPS.name$MnvL), buildNumber);
     ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(buildStandalone, LINKS.layout$r7bw), LINKS.children$aMRO)).addElement(linuxTar);
@@ -473,10 +473,10 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       myLanguageNodes.put(module.getModuleReference(), langNode);
       return langNode;
     } else if (module instanceof Generator) {
-      // it's ok if we won't find it, 'reload from sources' could discover it (provided language module is there and has been loaded/extracted already) 
+      // it'sokifwewon'tfindit,'reloadfromsources'coulddiscoverit(providedlanguagemoduleisthereandhasbeenloaded/extractedalready)
       SNode srcLang = myLanguageNodes.get(((Generator) module).sourceLanguage().getSourceModuleReference());
-      // at the moment, LanguagesStep uses project.getProjectModules() to populate tree, hence only standalone generator modules could end up here 
-      // If, however, we would need to make sure it's top-level module here, likely would have to resort to GeneratorDescriptor.isStandaloneModule check here. 
+      // atthemoment,LanguagesStepusesproject.getProjectModules()topopulatetree,henceonlystandalonegeneratormodulescouldenduphere
+      // If,however,wewouldneedtomakesureit'stop-levelmodulehere,likelywouldhavetoresorttoGeneratorDescriptor.isStandaloneModulecheckhere.
       return _quotation_createNode_un708i_a4a1f0kb(path, srcLang);
     } else {
       return _quotation_createNode_un708i_a0a0f0kb(path);

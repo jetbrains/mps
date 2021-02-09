@@ -40,11 +40,11 @@ public final class ModelImportLookup {
       }
       monitor.advance(1);
     }
-    // FIXME need a mechanism to figure out uses of accessory language models, that are not explicitly mentioned in the imports. 
-    //    FindUsagesUtil relied on SModelOperations.allImportedModels, which resorted to global repository. As I don't want it here, 
-    //    stick to explicit imports only. May pass an optional LanguageRegistry for scenarios where we can access one. 
-    //    Besides, there could be implicit import to satisfy some references, and I don't know a way to find them out 
-    //    except for complete model iteration (aka ModelDependencyScanner) 
+    // FIXMEneedamechanismtofigureoutusesofaccessorylanguagemodels,thatarenotexplicitlymentionedintheimports.
+    // FindUsagesUtilreliedonSModelOperations.allImportedModels,whichresortedtoglobalrepository.AsIdon'twantithere,
+    // sticktoexplicitimportsonly.MaypassanoptionalLanguageRegistryforscenarioswherewecanaccessone.
+    // Besides,therecouldbeimplicitimporttosatisfysomereferences,andIdon'tknowawaytofindthemout
+    // exceptforcompletemodeliteration(akaModelDependencyScanner)
     monitor.done();
   }
 

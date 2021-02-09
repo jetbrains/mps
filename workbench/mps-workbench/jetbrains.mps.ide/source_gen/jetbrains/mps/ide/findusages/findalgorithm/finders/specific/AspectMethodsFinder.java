@@ -30,7 +30,7 @@ public class AspectMethodsFinder implements IFinder {
 
   @Override
   public void find(SearchQuery query, @NotNull IFinder.FindCallback callback, ProgressMonitor monitor) {
-    // I've got no idea what aspect methods it looks for. MPS Integration plugin in Idea takes PsiMethod and pass here package statement and method name 
+    // I'vegotnoideawhataspectmethodsitlooksfor.MPSIntegrationplugininIdeatakesPsiMethodandpassherepackagestatementandmethodname
     final AspectMethodQueryData data = (AspectMethodQueryData) query.getObjectHolder().getObject();
     final List<SModel> applicableModelDescriptors = new ArrayList<SModel>();
     for (SModel model : query.getScope().getModels()) {

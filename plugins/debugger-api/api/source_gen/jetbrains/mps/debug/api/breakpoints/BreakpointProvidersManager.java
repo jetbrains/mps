@@ -19,7 +19,7 @@ public class BreakpointProvidersManager {
   private final Map<String, IBreakpointKind> myNameToKind = new HashMap<String, IBreakpointKind>();
 
   public void registerProvider(IBreakpointsProvider<? extends IBreakpoint, ? extends IBreakpointKind<? extends IBreakpoint>> provider) {
-    //  I just love generics in java 
+    // Ijustlovegenericsinjava
     for (IBreakpointKind kind : provider.getAllKinds()) {
       myKindToProvider.put(kind, provider);
       myNameToKind.put(kind.getName(), kind);

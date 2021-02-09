@@ -48,8 +48,8 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
   public class SMP_Group_my4xy0_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      // Allow use of genContext expression inside template calls without need to wrap them with ConceptFunction instance 
-      // but don't show it twice inside a CF, where CFPs get contributed by dedicated menu contributor 
+      // AllowuseofgenContextexpressioninsidetemplatecallswithoutneedtowrapthemwithConceptFunctioninstance
+      // butdon'tshowittwiceinsideaCF,whereCFPsgetcontributedbydedicatedmenucontributor
       return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ITemplateCall$ab, true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConceptFunction$mf, true, false) == null);
     }
     @NotNull

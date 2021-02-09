@@ -32,9 +32,9 @@ public class MPSRequestManager extends HttpRequestHandler {
 
   @Override
   public boolean isAccessible(@NotNull HttpRequest request) {
-    // Do same things that super.isAccessible(request) does except that this definition 
-    // also accepts local requests that triggered by trusted hosts (not only by user directly) 
-    // TODO At current stage user can not define their own trusted hosts (see MPS-27006) 
+    // Dosamethingsthatsuper.isAccessible(request)doesexceptthatthisdefinition
+    // alsoacceptslocalrequeststhattriggeredbytrustedhosts(notonlybyuserdirectly)
+    // TODOAtcurrentstageusercannotdefinetheirowntrustedhosts(seeMPS-27006)
 
     String host = NettyKt.getHost(request);
     if ((host == null || host.length() == 0) || !(NettyKt.parseAndCheckIsLocalHost("http://" + host))) {
@@ -46,7 +46,7 @@ public class MPSRequestManager extends HttpRequestHandler {
       referrer = NettyKt.getReferrer(request);
     }
     if ((referrer == null || referrer.length() == 0)) {
-      // refferer is local host 
+      // reffererislocalhost
       return true;
     }
 

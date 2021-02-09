@@ -45,10 +45,10 @@ public class SetReferenceChange extends NodeChange {
     super(changeSet, sourceNodeId, oppositeNodeId);
     myRole = role;
     myTargetModelReference = targetModelReference;
-    // if target node id is null and resolve info is not-null it's dynamic reference 
+    // iftargetnodeidisnullandresolveinfoisnot-nullit'sdynamicreference
     myTargetNodeId = targetNodeId;
     myResolveInfo = resolveInfo;
-    // check if only resolve info for static reference changed - then it cannot conflict with other changes 
+    // checkifonlyresolveinfoforstaticreferencechanged-thenitcannotconflictwithotherchanges
     myResolveInfoOnly = resolveInfoOnly;
 
     myDescription = createDescription();
@@ -108,7 +108,7 @@ public class SetReferenceChange extends NodeChange {
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel 
+    // get"nonconflicting"attributeinmetamodel
     SNode n = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(myRole);
     if (hint != null) {
@@ -129,7 +129,7 @@ public class SetReferenceChange extends NodeChange {
   }
 
   private String createDescription() {
-    // TODO consider dynamic references 
+    // TODOconsiderdynamicreferences
     SReference oldRef = check_mgdhcs_a0b0ib(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myRole, this);
     SReference newRef = check_mgdhcs_a0c0ib(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myRole, this);
     if (oldRef == null) {
@@ -180,7 +180,7 @@ public class SetReferenceChange extends NodeChange {
     SReference ref = node.getReference(getRoleLink());
     SModelReference targetModel = check_mgdhcs_a0d0mb(ref);
     if (Objects.equals(SModelOperations.getPointer(getChangeSet().getOldModel()), targetModel)) {
-      // This is internal reference 
+      // Thisisinternalreference
       targetModel = null;
     }
     return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a83(ref), check_mgdhcs_g0a5a83(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);

@@ -41,15 +41,15 @@ public class BuildAspect_MpsTestModules_Constraints extends BaseConstraintsDescr
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode)) {
-      // anything in generator 
+      // anythingingenerator
       return true;
     }
     SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildProject$ae, true, false);
     if ((buildProject != null)) {
-      // limit use of this concept in a project with MPS plugin 
+      // limituseofthisconceptinaprojectwithMPSplugin
       return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$AsCR), CONCEPTS.BuildModuleTestsPlugin$mU)).isNotEmpty();
     }
-    // XXX here used to be a check project.getVisibleProjects(false).findFirst(name == "mps"), but I see no justification to keep that 
+    // XXXhereusedtobeacheckproject.getVisibleProjects(false).findFirst(name=="mps"),butIseenojustificationtokeepthat
     return false;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566784");

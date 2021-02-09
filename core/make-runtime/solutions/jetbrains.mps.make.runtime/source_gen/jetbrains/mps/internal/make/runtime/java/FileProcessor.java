@@ -58,10 +58,10 @@ public class FileProcessor {
   }
 
   private boolean saveContent(FileContent fileContent) {
-    // XXX though it seems more honest to collect all fileContent 
-    //     and make decision whether isChanged right before the write operation 
-    //     I need to tell written/touch at this moment, therefore isChanged is here 
-    //     and no reason to keep the data we aren't going to write anyway 
+    // XXXthoughitseemsmorehonesttocollectallfileContent
+    // andmakedecisionwhetherisChangedrightbeforethewriteoperation
+    // Ineedtotellwritten/touchatthismoment,thereforeisChangedishere
+    // andnoreasontokeepthedatawearen'tgoingtowriteanyway
     if (fileContent.isChanged()) {
       myFilesAndContents.add(fileContent);
       return true;
@@ -70,7 +70,7 @@ public class FileProcessor {
   }
 
   public void filesToDelete(Collection<IFile> files) {
-    // FIXME remove? 
+    // FIXMEremove?
     myFilesToDelete.addAll(files);
   }
 
@@ -124,7 +124,7 @@ public class FileProcessor {
         return false;
       }
 
-      // stream.read(byte[0]) never gives -1 
+      // stream.read(byte[0])nevergives-1
       assert myContent.length > 0;
 
       byte[] res = new byte[Math.min(1 << 13, myContent.length)];

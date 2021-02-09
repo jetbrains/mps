@@ -74,8 +74,8 @@ public final class ClosureLiteral__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getTarget(__thisNode__, LINKS.body$Ujx2);
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
-    // everything which is not void and null is good, 
-    // look at ExpressionStatement.canServeAsReturn 
+    // everythingwhichisnotvoidandnullisgood,
+    // lookatExpressionStatement.canServeAsReturn
     return _quotation_createNode_l77foe_a2a5();
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {

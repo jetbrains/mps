@@ -33,8 +33,8 @@ public final class BuildMps_IdeaPlugin__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    // todo [MM] remove after 3.5. This check is needed as there was a string here and I'm not sure the 
-    // BuildLayout_NC.containerName wasn't expected here 
+    // todo[MM]removeafter3.5.ThischeckisneededastherewasastringhereandI'mnotsurethe
+    // BuildLayout_NC.containerNamewasn'texpectedhere
     assert !(LINKS.containerName$ES_Y.equals(role)) : "If this exception happens, change BuildMps_IdeaPlugin.isValidPart()-considered concepts";
     if (LINKS.containerName$xQbG.equals(role)) {
       return !((propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\")));

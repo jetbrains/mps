@@ -49,7 +49,7 @@ public class ElementReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_inm3f8_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_inm3f8_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ElementReference$XB, LINKS.element$rQ9F);
     }
     @NotNull

@@ -36,7 +36,7 @@ public class InternalPartialInstanceMethodCall_Constraints extends BaseConstrain
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // override IOperation.canBeChild 
+    // overrideIOperation.canBeChild
     return true;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)", "1227128029536559766");

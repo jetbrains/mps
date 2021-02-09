@@ -53,7 +53,7 @@ public class NodeReferentConstraint_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_lmi3tj_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_lmi3tj_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.NodeReferentConstraint$PH, LINKS.applicableLink$7IrX);
     }
     @NotNull

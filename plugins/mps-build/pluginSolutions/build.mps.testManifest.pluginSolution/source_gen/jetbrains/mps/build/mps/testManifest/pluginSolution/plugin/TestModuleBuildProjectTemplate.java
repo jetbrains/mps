@@ -78,7 +78,7 @@ public class TestModuleBuildProjectTemplate {
           SLinkOperations.setTarget(la, LINKS.path$iYKB, path);
 
           SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(la, LINKS.sources$mT1j, CONCEPTS.BuildMps_ModuleResources$M6), LINKS.files$uRjo, null);
-          // XXX this is not nice way to find module root location, but I can't come up with a better one now. 
+          // XXXthisisnotnicewaytofindmodulerootlocation,butIcan'tcomeupwithabetteronenow.
           String moduleDir = moduleFile.substring(0, moduleFile.lastIndexOf('/'));
           SLinkOperations.setTarget(resourcesSelector, LINKS.dir$e6r$, pathBuilder.buildRelative(moduleDir));
           SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb), PROPS.pattern$u5_$, "icons/**, resources/**");
@@ -104,7 +104,7 @@ public class TestModuleBuildProjectTemplate {
       }
       return null;
     }
-    // XXX getProjectFile in fact gives project directory, what a surprise 
+    // XXXgetProjectFileinfactgivesprojectdirectory,whatasurprise
     final RelativePathHelper relativePathHelper = new RelativePathHelper(projectFile.getPath());
     List<SNode> result = new ArrayList<SNode>();
 
@@ -122,7 +122,7 @@ public class TestModuleBuildProjectTemplate {
           SNode path = pathBuilder.buildRelative(moduleFile);
           SLinkOperations.setTarget(sol, LINKS.path$iYKB, path);
           SNode resourcesSelector = SLinkOperations.setNewChild(SLinkOperations.addNewChild(sol, LINKS.sources$mT1j, CONCEPTS.BuildMps_ModuleResources$M6), LINKS.files$uRjo, null);
-          // XXX this is not nice way to find module root location, but I can't come up with a better one now. 
+          // XXXthisisnotnicewaytofindmodulerootlocation,butIcan'tcomeupwithabetteronenow.
           String moduleDir = moduleFile.substring(0, moduleFile.lastIndexOf('/'));
           SLinkOperations.setTarget(resourcesSelector, LINKS.dir$e6r$, pathBuilder.buildRelative(moduleDir));
           SPropertyOperations.set(SLinkOperations.addNewChild(resourcesSelector, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb), PROPS.pattern$u5_$, "icons/**, resources/**");

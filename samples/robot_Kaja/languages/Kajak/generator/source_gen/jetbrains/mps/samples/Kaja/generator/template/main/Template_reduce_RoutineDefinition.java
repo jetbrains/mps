@@ -47,12 +47,12 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         tnode2.addChild(myAggregationLinks[0], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
         tnode2.addChild(myAggregationLinks[1], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
@@ -65,11 +65,11 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
             for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
               tnode5.addChild(myAggregationLinks[2], child7);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode2.addChild(myAggregationLinks[3], tnode5);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

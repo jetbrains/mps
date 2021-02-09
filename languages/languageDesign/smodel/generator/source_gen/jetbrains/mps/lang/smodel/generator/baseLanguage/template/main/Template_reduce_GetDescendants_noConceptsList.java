@@ -55,7 +55,7 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist4 = null;
@@ -63,13 +63,13 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_22_0(new PropertyMacroContext(context1, null, propertyMacro_btzevu_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
@@ -83,7 +83,7 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                 final SNode tnode9 = environment.createOutputNode(myConcepts[4]);
                 environment.associate(tnode9, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
                 tnode8.addChild(myAggregationLinks[1], tnode9);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final List<SNode> tlist10 = new ArrayList<SNode>();
@@ -107,15 +107,15 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                 for (SNode child12 : TemplateUtil.asNotNull(tlist10)) {
                   tnode8.addChild(myAggregationLinks[2], child12);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode7.addChild(myAggregationLinks[3], tnode8);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[0], tnode7);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(4, tnode1);

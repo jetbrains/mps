@@ -113,7 +113,7 @@ public class SubmitToTracker_Action extends BaseAction {
       Response response = dialog.getResult();
       String message = response.getMessage();
       if (!(response.isSuccess())) {
-        // It is only make sense to show dialog to user if issue creation failed. 
+        // Itisonlymakesensetoshowdialogtouserifissuecreationfailed.
         Messages.showErrorDialog(((Project) MapSequence.fromMap(_params).get("project")), message, "Issue Submission Failed");
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error("Issue submission failed: " + message, response.getThrowable());

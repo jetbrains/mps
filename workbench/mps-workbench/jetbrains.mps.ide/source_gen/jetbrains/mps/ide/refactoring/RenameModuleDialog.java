@@ -52,7 +52,7 @@ public class RenameModuleDialog extends RenameDialog {
             continue;
           }
 
-          // module.getModuleName() can be null 
+          // module.getModuleName()canbenull
           if (fqName.equals(module.getModuleName())) {
             checkResult.value = IdeBundle.message("actions.module.rename.name.in.repository");
             break;

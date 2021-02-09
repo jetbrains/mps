@@ -88,7 +88,7 @@ public class ModelCheckerViewer extends JPanel {
     add(myUsagesView.getComponent(), BorderLayout.CENTER);
 
     JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    // XXX fix button might be an action along with others above (i.e. button in the left pane) 
+    // XXXfixbuttonmightbeanactionalongwithothersabove(i.e.buttonintheleftpane)
     if (canFix) {
       myFixButton = new JButton("Perform Quick Fixes");
       myFixButton.addActionListener(new ActionListener() {
@@ -102,14 +102,14 @@ public class ModelCheckerViewer extends JPanel {
     add(buttonPanel, BorderLayout.SOUTH);
   }
   protected void close() {
-    // no-op, override to react on view close action 
+    // no-op,overridetoreactonviewcloseaction
   }
   public void performQuickFixes() {
-    // Ask if need to fix 
+    // Askifneedtofix
 
-    // Perform quick fixes 
+    // Performquickfixes
     final Wrappers._int fixedTotal = new Wrappers._int(0);
-    // Select all fixable issues 
+    // Selectallfixableissues
     final List<IssueKindReportItem> issuesToFix = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<List<IssueKindReportItem>>() {
       public List<IssueKindReportItem> compute() {
         return getIssuesToFix();
@@ -144,7 +144,7 @@ public class ModelCheckerViewer extends JPanel {
       }
     });
 
-    // Perform recheck if needed 
+    // Performrecheckifneeded
     if (fixedTotal.value != 0) {
       int dialogAnswer1 = Messages.showYesNoDialog(myIdeaProject, "Model checker fixed " + fixedTotal.value + " issues. Do you wish to recheck?", "Recheck", null);
       if (dialogAnswer1 != 0) {

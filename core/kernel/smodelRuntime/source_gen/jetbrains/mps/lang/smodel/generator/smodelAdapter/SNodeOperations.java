@@ -76,7 +76,7 @@ public class SNodeOperations {
     }
     int metaLevel = (sameMetaLevel ? SModelUtil_new.getMetaLevel(node) : 0);
 
-    // look up for certain concept 
+    // lookupforcertainconcept
     if (root) {
       SNode rootParent = node.getContainingRoot();
       if (rootParent.getModel() != null && isInstanceOf(rootParent, ancestorConcept)) {
@@ -87,7 +87,7 @@ public class SNodeOperations {
       return null;
     }
 
-    // look-up parent of required type 
+    // look-upparentofrequiredtype
     SNode outputNode;
     if (inclusion) {
       outputNode = node;
@@ -132,7 +132,7 @@ public class SNodeOperations {
       return null;
     }
 
-    // look-up parent of required type 
+    // look-upparentofrequiredtype
     SNode outputNode;
     if (inclusion) {
       outputNode = node;
@@ -202,8 +202,8 @@ public class SNodeOperations {
       return getNodeDescendants(node, childConcept, inclusion);
     }
     if (childConcept == null) {
-      // It's odd to ignore stop condition when there's no designated childConcept, 
-      // but this is how it used to be from revision ad249caf since 2009. 
+      // It'soddtoignorestopconditionwhenthere'snodesignatedchildConcept,
+      // butthisishowitusedtobefromrevisionad249cafsince2009.
       return getNodeDescendants(node, null, inclusion);
     }
     return descendantsAsList(node, inclusion, new InstanceOfCondition(childConcept), new InstanceOfCondition(stopConceptFqNames));
@@ -224,7 +224,7 @@ public class SNodeOperations {
     return descendantsAsList(node, inclusion, new InstanceOfCondition(descendantConcepts), new InstanceOfCondition(stopConcepts));
   }
   private static List<SNode> descendantsAsList(SNode node, boolean inclusion, Condition<SNode> condition, Condition<SNode> stopCondition) {
-    // can't use TreeFilterIterator as nodes that match both condition and stopCondition are proper return values 
+    // can'tuseTreeFilterIteratorasnodesthatmatchbothconditionandstopConditionareproperreturnvalues
     ArrayList<SNode> rv = new ArrayList<SNode>();
     final DescendantsTreeIterator it = new DescendantsTreeIterator(node);
     if (!(inclusion) && it.hasNext()) {
@@ -470,7 +470,7 @@ public class SNodeOperations {
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrProperty))) {
         SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")));
         if (!(newChild.getConcept().getProperties().contains(property))) {
-          // no such property in new child : don't copy the attribute 
+          // nosuchpropertyinnewchild:don'tcopytheattribute
           String m = "couldn't copy attribute %s for property '%s': no such property in concept %s";
           LOG.error(String.format(m, attribute.getConcept().getName(), property.getName(), newChild.getConcept().getName()), newChild);
           continue;
@@ -479,7 +479,7 @@ public class SNodeOperations {
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrLink))) {
         SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrLink)), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")));
         if (!(newChild.getConcept().getReferenceLinks().contains(link))) {
-          // no such link in new child : don't copy the attribute 
+          // nosuchlinkinnewchild:don'tcopytheattribute
           String m = "couldn't copy attribute %s for link '%s': no such link in concept %s";
           LOG.error(String.format(m, attribute.getConcept().getName(), link.getName(), newChild.getConcept().getName()), newChild);
           continue;
@@ -608,14 +608,14 @@ public class SNodeOperations {
     }
     SNodeReference sourceNode = concept.getSourceNode();
     if (sourceNode != null) {
-      // no way to get repository here 
+      // nowaytogetrepositoryhere
       SNode node = sourceNode.resolve(MPSModuleRepository.getInstance());
       if (node != null) {
         return (SNode) node;
       }
     }
 
-    // this should not be executed, still, left as-is for the release 
+    // thisshouldnotbeexecuted,still,leftas-isfortherelease
     return (SNode) concept.getDeclarationNode();
   }
   public static SAbstractConcept asSConcept(SNode node) {
@@ -648,7 +648,7 @@ public class SNodeOperations {
     return childNode.getContainmentLink();
   }
   public static String getContainingLinkRole(SNode childNode) {
-    // there are still uses of Node_GetContainingRoleOperation in mbeddr 
+    // therearestillusesofNode_GetContainingRoleOperationinmbeddr
     if (childNode == null) {
       return null;
     }
@@ -690,7 +690,7 @@ public class SNodeOperations {
 
   public static SNode copyIfNecessary(SNode node) {
     if (node != null && (node.getParent() != null || node.getModel() != null)) {
-      // this copies all the attributes, because can be used in migration scripts 
+      // thiscopiesalltheattributes,becausecanbeusedinmigrationscripts
       return CopyUtil.copy(node, true);
     } else {
       return node;

@@ -40,80 +40,80 @@ public class Null_Test {
       llEmpty.getFirst();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       llEmpty.getLast();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       llEmpty.get(0);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       llEmpty.get(-1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       llEmpty.get(1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       blEmpty.get(0);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       blEmpty.get(-1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       blEmpty.get(1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       blCEmpty.get(0);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       blCEmpty.get(-1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       blCEmpty.get(1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     Assert.assertEquals(llSingle.get(0), (Integer) 566);
     try {
       llSingle.get(1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       llSingle.get(-1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     Assert.assertNull(ListSequence.fromList(cNull).getElement(0));
     Assert.assertNull(ListSequence.fromList(cNull).getElement(-1));
@@ -124,13 +124,13 @@ public class Null_Test {
       ListSequence.fromList(cEmpty).getElement(1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       ListSequence.fromList(cEmpty).getElement(-2);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     Assert.assertNull(ListSequence.fromList(cBlEmpty).getElement(0));
     Assert.assertNull(ListSequence.fromList(cBlEmpty).getElement(-1));
@@ -138,13 +138,13 @@ public class Null_Test {
       ListSequence.fromList(cBlEmpty).getElement(1);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       ListSequence.fromList(cBlEmpty).getElement(-2);
       Assert.fail();
     } catch (IndexOutOfBoundsException e) {
-      // expected exception 
+      // expectedexception
     }
   }
 }

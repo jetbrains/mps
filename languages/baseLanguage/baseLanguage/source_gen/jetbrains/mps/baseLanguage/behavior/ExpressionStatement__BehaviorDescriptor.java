@@ -41,13 +41,13 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
       return false;
     }
 
-    // no return inside void methods or constructors 
+    // noreturninsidevoidmethodsorconstructors
     SNode retType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(methodLike);
     if (retType == null || SNodeOperations.isInstanceOf(retType, CONCEPTS.VoidType$BF)) {
       return false;
     }
 
-    // statement 'a.b()' where b returns void can't produce return value 
+    // statement'a.b()'wherebreturnsvoidcan'tproducereturnvalue
     SNode methodCall = null;
     SNode expression = SLinkOperations.getTarget(__thisNode__, LINKS.expression$5L7M);
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IMethodCall$M9)) {
@@ -59,13 +59,13 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
       return false;
     }
 
-    // Check our position within IMethodLike 
+    // CheckourpositionwithinIMethodLike
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodLike);
-    // trivial case: this statement is the last one 
+    // trivialcase:thisstatementisthelastone
     if (lastStatement == __thisNode__) {
       return true;
     }
-    // check if body ends with if and this statement completes this if 
+    // checkifbodyendswithifandthisstatementcompletesthisif
     if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.IfStatement$Q4) && SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IfStatement$Q4, false, false) == lastStatement) {
       SNode ifStmt = SNodeOperations.cast(lastStatement, CONCEPTS.IfStatement$Q4);
       if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$psZK) == __thisNode__) {

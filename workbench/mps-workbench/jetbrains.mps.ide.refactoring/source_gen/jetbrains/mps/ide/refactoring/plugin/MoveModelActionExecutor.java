@@ -148,7 +148,7 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
     }
 
     public void doCleanup() {
-      // do nothing 
+      // donothing
     }
 
     public EditableSModel getNewModel() {

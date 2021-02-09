@@ -49,7 +49,7 @@ public class CustomConstructorUsage_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_tf9v1s_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_tf9v1s_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CustomConstructorUsage$L9, LINKS.customConstructor$6$s7);
     }
     @NotNull

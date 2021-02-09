@@ -162,8 +162,8 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959031a(jetbrains.mps.lang.refactoring.generator.baseLanguage.template.main@generator)/3221607489886518483">
     <file name="QueriesGenerated.java">
       <node id="7356053917602964435" at="68,84,69,96" concept="4" />
-      <node id="8100708479158694804" at="147,94,148,79" concept="5" />
-      <node id="8100708479158496699" at="148,79,149,116" concept="4" />
+      <node id="8100708479158694804" at="147,94,148,72" concept="5" />
+      <node id="8100708479158496699" at="148,72,149,116" concept="4" />
       <node id="3221607489886520481" at="265,56,266,56" concept="1" />
       <node id="3221607489886520481" at="290,15,291,59" concept="4" />
       <node id="7356053917602985058" at="572,60,573,85" concept="1" />
@@ -356,8 +356,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959031a(jetbrains.mps.lang.refactoring.generator.baseLanguage.template.main@generator)/478744034994715795">
     <file name="QueriesGenerated.java">
-      <node id="9098014410655421336" at="52,92,53,17" concept="5" />
-      <node id="9098014410655419203" at="53,17,54,88" concept="4" />
+      <node id="9098014410655421336" at="52,92,53,16" concept="5" />
+      <node id="9098014410655419203" at="53,16,54,88" concept="4" />
       <node id="5934994956486892158" at="56,83,57,77" concept="4" />
       <node id="5934994956486892167" at="59,83,60,148" concept="4" />
       <node id="5934994956486892155" at="261,14,262,56" concept="1" />

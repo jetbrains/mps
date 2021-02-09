@@ -43,11 +43,11 @@ public class ModulesCluster {
   }
 
   private void collectRequired(Iterable<SModule> pool) {
-    // keep graph with dependencies, with vertexes for modules being clusterized only (i.e. no vertex for a module that is among dependencies but not being built) 
+    // keepgraphwithdependencies,withvertexesformodulesbeingclusterizedonly(i.e.novertexforamodulethatisamongdependenciesbutnotbeingbuilt)
     MapSequence.fromMap(myDepsGraph).clear();
-    // keep track of a module that results in a deployed language; these need to be build prior to their uses 
+    // keeptrackofamodulethatresultsinadeployedlanguage;theseneedtobebuildpriortotheiruses
     MapSequence.fromMap(languageModules).clear();
-    // ensure we've got all the vertexes of our graph ready 
+    // ensurewe'vegotallthevertexesofourgraphready
     for (SModule m : Sequence.fromIterable(pool)) {
       SModuleReference mr = m.getModuleReference();
       ModuleDeps md = new ModuleDeps(m);
@@ -73,33 +73,33 @@ public class ModulesCluster {
   }
 
   public Iterable<SLanguage> usedLanguage(SModule m) {
-    // we need used languages to determine build order (in case language/generator module is among those being built) 
-    // and also we need these languages to detect facets to activate in build script. Not to build this set twice, re-use once computed 
+    // weneedusedlanguagestodeterminebuildorder(incaselanguage/generatormoduleisamongthosebeingbuilt)
+    // andalsoweneedtheselanguagestodetectfacetstoactivateinbuildscript.Nottobuildthissettwice,re-useoncecomputed
     assert MapSequence.fromMap(myDepsGraph).containsKey(m.getModuleReference());
     return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference()).usedLanguages;
   }
 
   private void fillEdges(ModuleDeps rv) {
     final SModule mod = rv.getModule();
-    // get a set of modules we are going to build transitive dependencies for 
+    // getasetofmoduleswearegoingtobuildtransitivedependenciesfor
     ArrayList<SModule> modExt = new ArrayList<SModule>();
     modExt.add(mod);
 
     Set<SLanguage> moduleUsedLanguages;
-    // inv: reference existing vertexes only 
+    // inv:referenceexistingvertexesonly
     Set<ModuleDeps> reqs = SetSequence.fromSet(new HashSet<ModuleDeps>());
     if (mod instanceof Generator) {
       Generator generator = (Generator) mod;
-      // Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here 
+      // Unfortunately,GMDMdoesn'trecognizegenerator'ssourcelanguageasCOMPILEorVISIBLEdependency,thereforehavetoaddithere
       assert mod.getRepository() != null;
       SModule sourceLang = generator.sourceLanguage().getSourceModuleReference().resolve(mod.getRepository());
       if (sourceLang != null) {
-        // perhaps, we could use slanguage.sourceModuleReference only (right into reqs if among vertexes), i.e. no resolve, but this would 
-        // affect transitive dependencies, and it's unlikely what I need here. It's seems better to collect more than to get unpleasant compile errors due 
-        // to improper make order. 
+        // perhaps,wecoulduseslanguage.sourceModuleReferenceonly(rightintoreqsifamongvertexes),i.e.noresolve,butthiswould
+        // affecttransitivedependencies,andit'sunlikelywhatIneedhere.It'sseemsbettertocollectmorethantogetunpleasantcompileerrorsdue
+        // toimpropermakeorder.
         modExt.add(sourceLang);
-        // XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there 
-        //     is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed) 
+        // XXXthoughitlookssuspiciousthatwerequiresourcelanguagemoduletobuildagenerator,thereasontohaveitthere
+        // islikelytheneedtosatisfymoduleloaddependency(nottheneedtohavelanguageavailablethemomentgeneratormoduleisbeinggenerated/textgen'ed)
       }
       moduleUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
       for (SModel m : generator.getModels()) {
@@ -107,8 +107,8 @@ public class ModulesCluster {
       }
     } else {
       moduleUsedLanguages = mod.getUsedLanguages();
-      // XXX ModelContentUtil adds auto-imported and engaged on generation languages as well, shall I use it here, too? 
-      //     I didn't add them as previous version relied on SModule.getUsedLanguages() collection, which does not include engaged nor auto-imports, and is working for years 
+      // XXXModelContentUtiladdsauto-importedandengagedongenerationlanguagesaswell,shallIuseithere,too?
+      // Ididn'taddthemaspreviousversionreliedonSModule.getUsedLanguages()collection,whichdoesnotincludeengagednorauto-imports,andisworkingforyears
     }
 
     while (SetSequence.fromSet(moduleUsedLanguages).isNotEmpty()) {
@@ -119,20 +119,20 @@ public class ModulesCluster {
       }
       SetSequence.fromSet(rv.usedLanguages).addElement(language);
       if (MapSequence.fromMap(languageModules).containsKey(language)) {
-        // module uses a language which is part of the make sequence 
+        // moduleusesalanguagewhichispartofthemakesequence
         ModuleDeps lmd = MapSequence.fromMap(languageModules).get(language);
         Language lm = as_7qjyo9_a0a2a4a01a21(lmd.getModule(), Language.class);
-        // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
-        // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged, 
-        // and we make RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first 
-        // there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
+        // ifamoduleofanyusedlanguagehappenstobeamongmodulestobuild,ensureit'sbuildfirst,aswellastheirgenerators...
+        // Notewiththisapproachweignoreworkspacedependenciesofadeployedlanguage.E.g.ifthere'sachangedRTsolution,itslanguagemoduleunchanged,
+        // andwemakeRTsolutionandtheonethatusesthelanguage,wemaymissthedependencythatRTneedstobe'Make'first
+        // there'svertexforthislanguagemodule,don'tcaretocalculateitsdependencies,willgettothatanywayatrespectivefillEdgescall
         SetSequence.fromSet(reqs).addElement(lmd);
         for (Generator g : CollectionSequence.fromCollection(lm.getGenerators())) {
           ModuleDeps gmd = MapSequence.fromMap(myDepsGraph).get(g.getModuleReference());
           if (gmd != null) {
             SetSequence.fromSet(reqs).addElement(gmd);
           } else {
-            // we aren't going to clusterize required generator, but perhaps we do some of its dependencies 
+            // wearen'tgoingtoclusterizerequiredgenerator,butperhapswedosomeofitsdependencies
             modExt.add(g);
           }
         }
@@ -140,17 +140,17 @@ public class ModulesCluster {
           SetSequence.fromSet(moduleUsedLanguages).addElement(MetaAdapterFactory.getLanguage(ext));
         }
       } else {
-        // module uses a language which is not part of the make sequence, yet those it extends may 
+        // moduleusesalanguagewhichisnotpartofthemakesequence,yetthoseitextendsmay
         Set<SLanguage> extended = new SLanguageHierarchy(myLanguageRegistry, Collections.singleton(language)).getExtended();
         extended.removeAll(rv.usedLanguages);
         SetSequence.fromSet(moduleUsedLanguages).addSequence(SetSequence.fromSet(extended));
       }
     }
 
-    // XXX in fact, don't need to build complete set of dependencies, more effective is to follow one by one to see if it's vertex in the graph or it's known not to give any new dependency 
+    // XXXinfact,don'tneedtobuildcompletesetofdependencies,moreeffectiveistofollowonebyonetoseeifit'svertexinthegraphorit'sknownnottogiveanynewdependency
     GlobalModuleDependenciesManager depman = new GlobalModuleDependenciesManager(modExt);
     Iterable<SModule> reqmods = depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
-    // record edges only to existing vertexes 
+    // recordedgesonlytoexistingvertexes
     SetSequence.fromSet(reqs).addSequence(Sequence.fromIterable(reqmods).select(new ISelector<SModule, ModuleDeps>() {
       public ModuleDeps select(SModule m) {
         return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference());
@@ -158,8 +158,8 @@ public class ModulesCluster {
     }).where(new NotNullWhereFilter<ModuleDeps>()));
 
 
-    // XXX perhaps, we shall respect target languages of used languages as well, as they may appear while generating this module. 
-    //     We need them anyway to build required facets in ModulesClusterizer.allLanguagesToActivateFacets 
+    // XXXperhaps,weshallrespecttargetlanguagesofusedlanguagesaswell,astheymayappearwhilegeneratingthismodule.
+    // WeneedthemanywaytobuildrequiredfacetsinModulesClusterizer.allLanguagesToActivateFacets
 
     rv.requires(reqs);
   }
@@ -179,7 +179,7 @@ public class ModulesCluster {
     }
 
     public Iterable<ModuleDeps> dependent() {
-      // AFAIU, self-dependency is a result of MPS-15018 fix (a3220e6e), though not sure I get the reason how come this helps 
+      // AFAIU,self-dependencyisaresultofMPS-15018fix(a3220e6e),thoughnotsureIgetthereasonhowcomethishelps
       return ListSequence.fromList(myDependent).concat(Sequence.fromIterable(Sequence.<ModuleDeps>singleton(this)));
     }
     public Iterable<ModuleDeps> required() {
@@ -220,7 +220,7 @@ public class ModulesCluster {
     }
 
     public List<Cycle> compactTotalOrder() {
-      // with compact() code moved to GraphAnalyzer, no need to use old method 
+      // withcompact()codemovedtoGraphAnalyzer,noneedtouseoldmethod
       List<List<ModuleDeps>> order = totalOrder(true);
       return ListSequence.fromList(order).select(new ISelector<List<ModuleDeps>, Cycle>() {
         public Cycle select(List<ModuleDeps> it) {
@@ -231,7 +231,7 @@ public class ModulesCluster {
 
     public List<Cycle> compactTotalOrderOld() {
       List<List<ModuleDeps>> order = totalOrder();
-      // XXX what's the point of this code, what do we 'compact' here? Do we merge cycles so that they are built together and later has a chance to load ok? 
+      // XXXwhat'sthepointofthiscode,whatdowe'compact'here?Dowemergecyclessothattheyarebuilttogetherandlaterhasachancetoloadok?
       Cycle prev = null;
       List<Cycle> rv = ListSequence.fromList(new ArrayList<Cycle>());
       for (List<ModuleDeps> c : ListSequence.fromList(order)) {
@@ -265,7 +265,7 @@ public class ModulesCluster {
       }
 
       /*package*/ boolean independent(Cycle other) {
-        // name of the method is pure guess 
+        // nameofthemethodispureguess
         return Sequence.fromIterable(other.allRequired()).intersect(Sequence.fromIterable(allDependent())).isEmpty();
       }
 

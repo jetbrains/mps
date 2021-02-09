@@ -29,14 +29,14 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
   public typeOf_ConceptFunction_InferenceRule() {
   }
   public void applyRule(final SNode func, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // function is expected to return value of any type 
+    // functionisexpectedtoreturnvalueofanytype
     final SNode expectedRetType = (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func))), CONCEPTS.WildCardType$uV) ? null : ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(func));
     boolean noReturnExpected = ((expectedRetType == null) || TypecheckingFacade.getFromContext().isSubtype(expectedRetType, _quotation_createNode_bbraw4_b0a0a0c0b()));
     if (!(noReturnExpected)) {
       final SNode LCS_typevar_1186052624152 = typeCheckingContext.createNewRuntimeTypesVariable();
       Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(func, LINKS.body$e68K));
-      // should return subtypes of the 'expected type' 
-      // if 'expected type' is null - should still return some value (of any type) 
+      // shouldreturnsubtypesofthe'expectedtype'
+      // if'expectedtype'isnull-shouldstillreturnsomevalue(ofanytype)
       for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
         if ((SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92) == null)) {
           {
@@ -60,7 +60,7 @@ public class typeOf_ConceptFunction_InferenceRule extends AbstractInferenceRule_
           }
         }
       }
-      // last expression statement can serve as return statement 
+      // lastexpressionstatementcanserveasreturnstatement
       SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(func);
       if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ExpressionStatement$O8)) {
         final SNode expression = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);

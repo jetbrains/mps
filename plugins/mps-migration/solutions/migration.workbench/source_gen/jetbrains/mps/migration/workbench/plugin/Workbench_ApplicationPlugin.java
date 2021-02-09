@@ -19,7 +19,7 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new ExecuteRerunnableMigrations_Action());
     addAction(new FindDeprecatedCodeWithNoUsages_Action());
     addAction(new FindDeprecatedCode_Action());
@@ -27,7 +27,7 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RunMigrationAssistant_Action());
     addAction(new RunPreUpdateCheck_Action());
     addAction(new TestMigrationWizard_Action());
-    // groups 
+    // groups
     addGroup(new LanguageMigrations_ActionGroup(this));
     addGroup(new MigrationsMenuLegacyCode_ActionGroup(this));
     addGroup(new MigrationsMenu_ActionGroup(this));

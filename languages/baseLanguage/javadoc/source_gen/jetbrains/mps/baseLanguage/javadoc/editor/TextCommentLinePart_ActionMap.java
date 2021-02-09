@@ -42,7 +42,7 @@ public class TextCommentLinePart_ActionMap {
         isFirstLine = (SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode)) == null);
         if (isFirstPart) {
           if (isFirstLine) {
-            //  This is beginning of comment lines container 
+            // Thisisbeginningofcommentlinescontainer
             if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$bU)) {
               SNode docComment = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$bU);
               if (DeletionApproverUtil.approve(editorContext, docComment, "commentCollection")) {
@@ -58,7 +58,7 @@ public class TextCommentLinePart_ActionMap {
             }
             return;
           } else {
-            //  This is the beginning of line 
+            // Thisisthebeginningofline
             SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$hJ);
             SNode prevLine = SNodeOperations.cast(SNodeOperations.getPrevSibling(curLine), CONCEPTS.CommentLine$hJ);
             nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$QuzQ)).last();
@@ -77,7 +77,7 @@ public class TextCommentLinePart_ActionMap {
             return;
           }
         } else {
-          //  Caret is at the beginning of text part inside comment line 
+          // Caretisatthebeginningoftextpartinsidecommentline
           if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.TextCommentLinePart$Eb)) {
             nodeToSelect = SNodeOperations.getPrevSibling(currentNode);
             SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb);
@@ -178,7 +178,7 @@ public class TextCommentLinePart_ActionMap {
             editorContext.selectWRTFocusPolicy(nodeToSelect);
             return;
           } else if (selectedCell.getCaretPosition() == selectedCell.getText().length()) {
-            //  Caret is at the end of part 
+            // Caretisattheendofpart
             boolean isLastPart;
             boolean isLastLine;
             SNode currentNode = editorContext.getSelectedNode();
@@ -186,9 +186,9 @@ public class TextCommentLinePart_ActionMap {
             isLastLine = (SNodeOperations.getNextSibling(SNodeOperations.getParent(currentNode)) == null);
             if (isLastPart) {
               if (isLastLine) {
-                //  This is end of comment lines container 
+                // Thisisendofcommentlinescontainer
                 if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$bU)) {
-                  //  Shouldn't delete documentation comment 
+                  // Shouldn'tdeletedocumentationcomment
                 } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$DG)) {
                   NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$DG), ((boolean) false));
                   editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
@@ -196,7 +196,7 @@ public class TextCommentLinePart_ActionMap {
                 }
                 return;
               } else {
-                //  This is the end of line 
+                // Thisistheendofline
                 SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$hJ);
                 SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$hJ);
                 nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$QuzQ)).last();
@@ -215,7 +215,7 @@ public class TextCommentLinePart_ActionMap {
                 return;
               }
             } else {
-              //  Caret is at the end of text part inside comment line 
+              // Caretisattheendoftextpartinsidecommentline
               if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$Eb)) {
                 nodeToSelect = SNodeOperations.getNextSibling(currentNode);
                 if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd))) {
@@ -248,11 +248,11 @@ public class TextCommentLinePart_ActionMap {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // setactionsthatwereactuallydefined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // IfwesetaDELETEactionbutnoBACKSPACEaction,
+    // usetheDELETEactionforBACKSPACEaswell.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -269,18 +269,18 @@ public class TextCommentLinePart_ActionMap {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // setcellactionsfromallimportedactionmaps
 
-    // set cell actions defined directly in this action map 
+    // setcellactionsdefineddirectlyinthisactionmap
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // setcellaction(s)ofthegiventypefromimportedactionmaps
 
-    // set cell action of the given type defined directly in this action map 
+    // setcellactionofthegiventypedefineddirectlyinthisactionmap
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
     }

@@ -49,7 +49,7 @@ public class TestListReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_5gn4im_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_5gn4im_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TestListReference$ig, LINKS.listPattern$Bpdk);
     }
     @NotNull

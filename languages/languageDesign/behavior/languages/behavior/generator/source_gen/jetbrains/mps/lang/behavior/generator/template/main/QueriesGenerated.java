@@ -42,14 +42,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @Generated
 public class QueriesGenerated {
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "behavior");
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF);
   }
   public static boolean rule_Condition_10_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "behavior");
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
@@ -176,7 +176,7 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "BHMethodImpl");
   }
   public static Object referenceMacro_GetReferent_10_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output BehaviorAspectDescriptorCons for model model; 
+    // TODOgenContext.getoutputBehaviorAspectDescriptorConsformodelmodel;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".BehaviorAspectDescriptor";
   }
   public static Object referenceMacro_GetReferent_11_0(final ReferenceMacroContext _context) {

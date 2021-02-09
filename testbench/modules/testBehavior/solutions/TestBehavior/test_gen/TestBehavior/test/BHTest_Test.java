@@ -235,7 +235,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     SNode nodeA = createB_a2wy8c_a0a0db0();
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, BHL3.behavior.A__BehaviorDescriptor.foo_id6EMTxOPT7e1.invoke(nodeA));
     SNode nodeB = createB_a2wy8c_a0c0db0();
-    // checks that methods are resolved by id not by name 
+    // checksthatmethodsareresolvedbyidnotbyname
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, BHL3.behavior.A__BehaviorDescriptor.foo_id6EMTxOPT7e1.invoke(nodeB));
     Assert.assertSame(TestResults.NON_VIRTUAL_CHILD, B__BehaviorDescriptor.foo_id6EMTxOPT7o8.invoke(nodeB));
   }
@@ -299,7 +299,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_constructorInvocation3() throws Exception {
-    // test checks that I2 constructor overrides I1 constructor 
+    // testchecksthatI2constructoroverridesI1constructor
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Jx, null);
@@ -309,7 +309,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_constructorInvocation4() throws Exception {
-    // test checks that all super constructors are invoked 
+    // testchecksthatallsuperconstructorsareinvoked
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$xl, null);
@@ -393,7 +393,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_superBehaviorOneArgumentNullCall() throws Exception {
-    // against wrong varargs treatment 
+    // againstwrongvarargstreatment
     SNode nodeB = createD_a2wy8c_a0b0bc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo4_id1olXtyGAKpB.invoke(nodeB));
   }
@@ -465,7 +465,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_methodOverrideWithTheSameName1() throws Exception {
-    // this and the next tests check current behavior to be able to resolve the method calls with identical signature 
+    // thisandthenexttestscheckcurrentbehaviortobeabletoresolvethemethodcallswithidenticalsignature
     SNode node1 = createD_a2wy8c_a0b0oc0();
     Assert.assertSame(1, (int) BHL7.behavior.I1__BehaviorDescriptor.foo_id5ivDaCiFP9X.invoke(node1));
     SNode node2 = createD_a2wy8c_a0d0oc0();
@@ -555,20 +555,20 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_seqConcept() throws Exception {
-    // fix 
+    // fix
   }
   @Before
   public void setUp() {
     myProject = myEnvironment.openProject(new File(PROJECT_PATH));
-    // Piece of knowledge: 
-    // MPSProject loads its modules and injects them into repository with classloading event dispatch paused (uses runNonReloadableTransaction) 
-    // The reason for this is assumption there's StartupModuleMaker that would compile dirty modules and then brand new and shiny languages can get loaded. 
-    // However, in test app, there's DummyStartupModuleMakerImpl, which is no-op. Without languages properly registered, tests issue 
-    // a warning "No language for: BHL1.structure.A, while looking for the behavior descriptor" and eventually fail. 
-    // Nevertheless, it seems right NOT to compile project modules during test mode automatically. Instead, we can explicitly 
-    // make target projects in a test like this one (which knows it gonna use languages from the target project). 
-    // As for module-added events not being dispatched on project init, once we switch to distinct project and classloading repositories, there would be no need for 
-    // runNonReloadableTransaction, events from project repository won't trigger classloading anyway. 
+    // Pieceofknowledge:
+    // MPSProjectloadsitsmodulesandinjectsthemintorepositorywithclassloadingeventdispatchpaused(usesrunNonReloadableTransaction)
+    // Thereasonforthisisassumptionthere'sStartupModuleMakerthatwouldcompiledirtymodulesandthenbrandnewandshinylanguagescangetloaded.
+    // However,intestapp,there'sDummyStartupModuleMakerImpl,whichisno-op.Withoutlanguagesproperlyregistered,testsissue
+    // awarning"Nolanguagefor:BHL1.structure.A,whilelookingforthebehaviordescriptor"andeventuallyfail.
+    // Nevertheless,itseemsrightNOTtocompileprojectmodulesduringtestmodeautomatically.Instead,wecanexplicitly
+    // maketargetprojectsinatestlikethisone(whichknowsitgonnauselanguagesfromthetargetproject).
+    // Asformodule-addedeventsnotbeingdispatchedonprojectinit,onceweswitchtodistinctprojectandclassloadingrepositories,therewouldbenoneedfor
+    // runNonReloadableTransaction,eventsfromprojectrepositorywon'ttriggerclassloadinganyway.
     // 
     myProject.getModelAccess().runWriteAction(new Runnable() {
       public void run() {

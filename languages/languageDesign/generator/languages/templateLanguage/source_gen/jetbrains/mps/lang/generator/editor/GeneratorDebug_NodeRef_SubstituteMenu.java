@@ -49,7 +49,7 @@ public class GeneratorDebug_NodeRef_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_qqztgz_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_qqztgz_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GeneratorDebug_NodeRef$2a, LINKS.node$JBUG);
     }
     @NotNull

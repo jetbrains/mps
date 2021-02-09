@@ -79,11 +79,11 @@ public class StatementList_Actions {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // set actions that were actually defined 
+    // setactionsthatwereactuallydefined
     setDefinedCellActions(editorCell, node, context);
 
-    // If we set a DELETE action but no BACKSPACE action, 
-    // use the DELETE action for BACKSPACE as well. 
+    // IfwesetaDELETEactionbutnoBACKSPACEaction,
+    // usetheDELETEactionforBACKSPACEaswell.
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -100,9 +100,9 @@ public class StatementList_Actions {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // set cell actions from all imported action maps 
+    // setcellactionsfromallimportedactionmaps
 
-    // set cell actions defined directly in this action map 
+    // setcellactionsdefineddirectlyinthisactionmap
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
     editorCell.setAction(CellActionType.INSERT_PLACEHOLDER, createAction_INSERT_PLACEHOLDER(node));
     editorCell.setAction(CellActionType.INSERT_PLACEHOLDER_BEFORE, createAction_INSERT_PLACEHOLDER_BEFORE(node));
@@ -110,9 +110,9 @@ public class StatementList_Actions {
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // set cell action(s) of the given type from imported action maps 
+    // setcellaction(s)ofthegiventypefromimportedactionmaps
 
-    // set cell action of the given type defined directly in this action map 
+    // setcellactionofthegiventypedefineddirectlyinthisactionmap
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
       editorCell.setAction(actionType, createAction_COMMENT(node));
     }

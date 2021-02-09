@@ -50,7 +50,7 @@ public class DerivedMethods_Finder extends GeneratedFinder {
     try {
       SNode classifier = (SNode) SNodeOperations.getParent(node);
       final SNode instanceMethod = node;
-      // FIXME Can we move this finder out of BL to facilitate explicit Project knowledge? 
+      // FIXMECanwemovethisfinderoutofBLtofacilitateexplicitProjectknowledge?
       for (SNode derivedClassifier : ListSequence.fromList(ClassifierSuccessors.getInstance().getDerivedClassifiers(classifier, scope))) {
         if (monitor.isCanceled()) {
           return;

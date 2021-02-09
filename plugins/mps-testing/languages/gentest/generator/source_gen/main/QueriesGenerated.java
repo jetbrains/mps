@@ -50,23 +50,23 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.reOpenProject$2WSq);
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    // XXX would prefer template.input to reference GeneratorTest instead of node.parent 
+    // XXXwouldprefertemplate.inputtoreferenceGeneratorTestinsteadofnode.parent
     return _context.createIndexedName(_context.getTemplateValue(), SNodeOperations.getParent(_context.getNode()), false);
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.referenceModels$wG8X)).count();
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
-    // XXX would prefer template.input to reference GeneratorTest instead of node.parent 
-    // XXX don't use templateValue as I'd like the name of the method to be the same for both single and multiple match 
-    //     Just to avoid complicated hack with method name in GneratorTestWrapper 
+    // XXXwouldprefertemplate.inputtoreferenceGeneratorTestinsteadofnode.parent
+    // XXXdon'tusetemplateValueasI'dlikethenameofthemethodtobethesameforbothsingleandmultiplematch
+    // JusttoavoidcomplicatedhackwithmethodnameinGneratorTestWrapper
     return _context.createIndexedName("testTransformAndMatch", SNodeOperations.getParent(_context.getNode()), false);
   }
   public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    // XXX GeneratorTest ancestor is proper context 
+    // XXXGeneratorTestancestorispropercontext
     return _context.createIndexedName("myArg_" + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL), SNodeOperations.getParent(_context.getNode()), true);
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
@@ -99,9 +99,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "TestArg2Field");
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    // BEWARE, this method needs to get executed prior to prepareArguments() to ensure findModel uses repository of a project configured here 
-    // FWIW, @Before, not @Rule as BaseTransformTest does for initializeOnce call as I don't expect subclasses of this generated class. 
-    // See LOOP above for reasons why originalModel, not inputModel 
+    // BEWARE,thismethodneedstogetexecutedpriortoprepareArguments()toensurefindModelusesrepositoryofaprojectconfiguredhere
+    // FWIW,@Before,not@RuleasBaseTransformTestdoesforinitializeOncecallasIdon'texpectsubclassesofthisgeneratedclass.
+    // SeeLOOPaboveforreasonswhyoriginalModel,notinputModel
     return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), CONCEPTS.TestInfo$9q)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
@@ -111,8 +111,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.transformationPlan$wGQ0) != null);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    // unfortunately, had to resort to originalModel as lang.test jumps in front of 
-    // lang.test.generator and drops TestInfo roots 
+    // unfortunately,hadtoresorttooriginalModelaslang.testjumpsinfrontof
+    // lang.test.generatoranddropsTestInforoots
     return ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), CONCEPTS.TestInfo$9q)).take(1);
   }
   public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {

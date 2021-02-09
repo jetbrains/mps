@@ -103,7 +103,7 @@ public final class AddReferenceMacroParam_link_Intention extends AbstractIntenti
       SLinkOperations.setTarget(expressionStatement, LINKS.expression$5L7M, dotExpression);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$e68K), LINKS.statement$53DE)).addElement(expressionStatement);
       SLinkOperations.setTarget(referenceMacro, LINKS.referentFunction$6c9k, referentValue);
-      // set caret 
+      // setcaret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, referenceMacro, SelectionManager.FIRST_CELL, 2);
     }
     @Override

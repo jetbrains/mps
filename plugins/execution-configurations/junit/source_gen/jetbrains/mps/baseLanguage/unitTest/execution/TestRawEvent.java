@@ -18,7 +18,7 @@ public final class TestRawEvent {
   private final long myTime;
 
   public TestRawEvent(@NotNull Description description) {
-    // note: description.getTestClass() may be null (e.g. when failure indicates an issue with loading of test class) 
+    // note:description.getTestClass()maybenull(e.g.whenfailureindicatesanissuewithloadingoftestclass)
     myTestKey = constructKeyFromDescription(description);
     Runtime runtime = Runtime.getRuntime();
     myMemoryUsage = runtime.totalMemory() - runtime.freeMemory();

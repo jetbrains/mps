@@ -51,7 +51,7 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist4 = null;
@@ -59,13 +59,13 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_36_0(new PropertyMacroContext(context1, null, propertyMacro_mxkg5_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

@@ -43,7 +43,7 @@ public final class MigrateEnumPropertyAttributes_MigrationScript extends BaseMig
             return Objects.equals(it.getName(), "StringToTypedValueMigrationInfo");
           }
         })) {
-          // property will take care for providing the intention 
+          // propertywilltakecareforprovidingtheintention
           return false;
         }
         return SNodeOperations.isInstanceOf(SNodeOperations.getParent(PropertyAttribute__BehaviorDescriptor.getPropertyDeclaration_id121FNPYBLc9.invoke(node)), CONCEPTS.EnumPropertyMigrationInfo$O3);

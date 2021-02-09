@@ -14,7 +14,7 @@ public class MpsRunnerTask extends MpsLoadTask {
 
   public MpsRunnerTask() {
     super("jetbrains.mps.build.mps.runner.runtime.MpsRunnerWorker");
-    // XXX JFTR, here we don't care about worker classpath, j.m.build.mps.runner.runtime solution, as it's part of j.m.core IDEA plugin (see mpsCore import of mpsBootstrap/ant) 
+    // XXXJFTR,herewedon'tcareaboutworkerclasspath,j.m.build.mps.runner.runtimesolution,asit'spartofj.m.coreIDEAplugin(seempsCoreimportofmpsBootstrap/ant)
     myProperties = new MpsRunnerProperties(myWhatToDo);
   }
 

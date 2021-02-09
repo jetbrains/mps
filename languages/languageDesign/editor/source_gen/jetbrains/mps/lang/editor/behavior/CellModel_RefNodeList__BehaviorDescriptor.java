@@ -48,9 +48,9 @@ public final class CellModel_RefNodeList__BehaviorDescriptor extends BaseBHDescr
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.AbstractConceptDeclaration$KA) && child != null && child == SLinkOperations.getTarget(__thisNode__, LINKS.emptyCellModel$ZSa$)) {
-      // Empty cells belong to the parent node, not child, so return null here to avoid calling the superclass 
-      // implementation which would return the scope from the point of view of the child. 
-      // Instead, returning null will cause the search for scope provider to continue upwards in cell hierarchy. 
+      // Emptycellsbelongtotheparentnode,notchild,soreturnnullheretoavoidcallingthesuperclass
+      // implementationwhichwouldreturnthescopefromthepointofviewofthechild.
+      // Instead,returningnullwillcausethesearchforscopeprovidertocontinueupwardsincellhierarchy.
       return null;
     }
 

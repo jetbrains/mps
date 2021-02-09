@@ -147,7 +147,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     Classifier__BehaviorDescriptor.dfs_id3rj45ZVCYEm.invoke(__thisNode__, callback, __thisNode__, SetSequence.fromSet(new HashSet<SNode>()), new TraversalControllerImpl());
   }
   /*package*/ static void dfs_id3rj45ZVCYEm(@NotNull SNode __thisNode__, @NotNull ClassifierTraversalCallback callback, SNode current, Set<SNode> seen, TraversalControllerImpl controller) {
-    //  I could use queue though need exit time and this way code is better (i think) 
+    // Icouldusequeuethoughneedexittimeandthiswaycodeisbetter(ithink)
 
     if (controller.isStopTraversal()) {
       return;
@@ -174,7 +174,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     Classifier__BehaviorDescriptor.traverseClassifierHierarchy_id3rj45ZUtGbP.invoke(__thisNode__, new ClassifierTraversalCallback() {
       @Override
       public void onEntered(@NotNull ClassifierTraversalCallback.TraversalInfo info) {
-        // nop 
+        // nop
       }
 
       private String createParamErasedSignature(SNode method) {
@@ -260,8 +260,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   }
   @Deprecated
   /*package*/ static Scope getMembers_id1UeCwxlVpJs(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
-    // use sequence<node<IClassifierMember> getMembers() instead 
-    // returns all accessible classifier members in classifier 
+    // usesequence<node<IClassifierMember>getMembers()instead
+    // returnsallaccessibleclassifiermembersinclassifier
     SNode thisType = IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__);
     Iterable<SNode> members = SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(thisType), SNodeOperations.asSConcept(kind));
 
@@ -313,8 +313,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static Set<SNode> getAllExtendedClassifiers_id2xreLMO8jma(@NotNull SNode __thisNode__) {
-    // should be cached // based on extended classifiers 
-    // without cyclic dependencies checking 
+    // shouldbecached//basedonextendedclassifiers
+    // withoutcyclicdependencieschecking
     Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
     Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jm_.invoke(__thisNode__, result);
     return result;
@@ -365,7 +365,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
 
       if (SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.ClassifierType$bL) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentContextAncestor), CONCEPTS.TypeVariableDeclaration$4Y))) {
-        // The type variable parametrizes the target of the ClassifierType reference 
+        // ThetypevariableparametrizesthetargetoftheClassifierTypereference
         if (Objects.equals(SNodeOperations.getParent(SNodeOperations.getParent(currentContextAncestor)), __thisNode__)) {
           ListSequence.fromList(contextContainers).addElement(__thisNode__);
         }
@@ -410,7 +410,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       for (int i = index + 1; i < ListSequence.fromList(targetContainers).count(); i++) {
         ListSequence.fromList(newContainers).addElement(ListSequence.fromList(targetContainers).getElement(i));
       }
-      // IF empty then the target is an ancestor to the contextNode 
+      // IFemptythenthetargetisanancestortothecontextNode
       if (ListSequence.fromList(newContainers).isEmpty()) {
         ListSequence.fromList(newContainers).addElement(__thisNode__);
       }
@@ -441,14 +441,14 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   }
   @Deprecated
   /*package*/ static boolean isStatic_idsWroEc0xXc(@NotNull SNode __thisNode__) {
-    // use virtual method instead 
+    // usevirtualmethodinstead
     return ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__));
   }
   /*package*/ static boolean isStatic_id6r77ob2USS8(@NotNull SNode __thisNode__) {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$db)) {
       return true;
     }
-    // ignore the value of nonStatic for top-level classes 
+    // ignorethevalueofnonStaticfortop-levelclasses
     return SNodeOperations.getParent(__thisNode__) == null || !(SPropertyOperations.getBoolean(__thisNode__, PROPS.nonStatic$aWW8));
   }
   /*package*/ static boolean isInner_idsWroEc0xXl(@NotNull SNode __thisNode__) {
@@ -558,7 +558,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     final boolean isStaticContext = !((child == null)) && ((SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierMember$At) && (boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(SNodeOperations.cast(child, CONCEPTS.ClassifierMember$At))) || (SNodeOperations.isInstanceOf(child, CONCEPTS.Classifier$Ix) && (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(child, CONCEPTS.Classifier$Ix))) || SNodeOperations.isInstanceOf(child, CONCEPTS.StaticInitializer$Ev));
 
-    // todo: remove this logic from Classifier 
+    // todo:removethislogicfromClassifier
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
       Iterable<SNode> staticImportedFields = null;
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(__thisNode__) != null)) {
@@ -566,11 +566,11 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
       Iterable<SNode> variables = SNodeOperations.ofConcept(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          // add instance fields + static fields; use ofConcept to cast to VD to get assignment clean (all of FieldDeclarations are VD) 
+          // addinstancefields+staticfields;useofConcepttocasttoVDtogetassignmentclean(allofFieldDeclarationsareVD)
           return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR) || (SNodeOperations.isInstanceOf(it, CONCEPTS.FieldDeclaration$ie) && !(isStaticContext));
         }
       }).concat(Sequence.fromIterable(staticImportedFields)), CONCEPTS.VariableDeclaration$Y0);
-      // todo: name clashing? 
+      // todo:nameclashing?
       return Scopes.forVariables(kind, variables, ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
 
@@ -581,12 +581,12 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
       Iterable<SNode> methods = SNodeOperations.ofConcept(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          // add instance methods + static methods + static imported methods 
+          // addinstancemethods+staticmethods+staticimportedmethods
           return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ) || (SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) && !(isStaticContext));
         }
       }).concat(Sequence.fromIterable(staticImportedMethods)), CONCEPTS.MethodDeclaration$_P);
 
-      // todo: name clashing 
+      // todo:nameclashing
       return Scopes.forMethods(kind, new MethodsScope(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__), methods), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
 
@@ -606,7 +606,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.BaseMethodDeclaration$kD)) {
       noneMatched = false;
-      // add instance fields + static fields 
+      // addinstancefields+staticfields
       Iterable<SNode> staticMethods = SNodeOperations.ofConcept(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(__thisNode__), CONCEPTS.StaticMethodDeclaration$FJ);
       if (!(isStaticContext)) {
         Iterable<SNode> instanceMethods = SNodeOperations.ofConcept(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(__thisNode__), CONCEPTS.InstanceMethodDeclaration$39);
@@ -644,8 +644,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ClassifierMember$At)) {
       noneMatched = false;
-      // in other cases - hide everything by name... 
-      // todo: change! 
+      // inothercases-hideeverythingbyname...
+      // todo:change!
       Scope addition = null;
       if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.StaticKind$IK)) {
         Iterable<SNode> members = SNodeOperations.ofConcept(SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), SNodeOperations.asSConcept(kind)), CONCEPTS.INamedConcept$Kd);
@@ -670,10 +670,10 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return ((SNode) Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__));
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
-    // do nothing by default 
+    // donothingbydefault
   }
   /*package*/ static Iterable<SNode> members_id1hodSy8nQmC(@NotNull SNode __thisNode__) {
-    // todo: change on .members 
+    // todo:changeon.members
     List<SNode> members = ListSequence.fromList(new ArrayList<SNode>());
 
     SNode asClass = SNodeOperations.as(__thisNode__, CONCEPTS.ClassConcept$bK);
@@ -723,8 +723,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       } else {
         ListSequence.fromList(result).addElement(current);
         if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(current)) {
-          // according to Java rules static inner classifiers can be only on the second level so we can 
-          // safely break here 
+          // accordingtoJavarulesstaticinnerclassifierscanbeonlyonthesecondlevelsowecan
+          // safelybreakhere
           break;
         }
       }

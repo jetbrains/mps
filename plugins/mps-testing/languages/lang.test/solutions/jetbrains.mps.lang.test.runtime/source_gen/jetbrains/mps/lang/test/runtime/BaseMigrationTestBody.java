@@ -51,7 +51,7 @@ public abstract class BaseMigrationTestBody extends BaseTestBody {
     if (shouldCheckStableIds()) {
       model2 = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       CopyUtil.copyModelContentAndPreserveIds(model, model2);
-      // It is unclear why CopyUtil does not update internal references by itself and we have to do it explicitly 
+      // ItisunclearwhyCopyUtildoesnotupdateinternalreferencesbyitselfandwehavetodoitexplicitly
       for (Tuples._2<SNode, SReferenceLink> ref : ListSequence.fromList(SModelOperations.nodes(model2, null)).translate(new ITranslator2<SNode, SReference>() {
         public Iterable<SReference> translate(SNode it) {
           return SNodeOperations.getReferences(it);

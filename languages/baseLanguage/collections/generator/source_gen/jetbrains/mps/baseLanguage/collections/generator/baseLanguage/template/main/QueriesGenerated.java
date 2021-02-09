@@ -127,7 +127,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$splI), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.ValueAccessOperation$3k);
   }
   public static boolean rule_Condition_4_0(final BaseMappingRuleContext _context) {
-    // Reduce skip statement to break statement 
+    // Reduceskipstatementtobreakstatement
     SNode cl = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClosureLiteral$rp);
     if (cl == null) {
       return false;
@@ -142,7 +142,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return false;
   }
   public static boolean rule_Condition_4_1(final BaseMappingRuleContext _context) {
-    // Reduce stop statement to break statement 
+    // Reducestopstatementtobreakstatement
     SNode cl = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ClosureLiteral$rp);
     if (cl == null) {
       return false;
@@ -1351,8 +1351,8 @@ public class QueriesGenerated extends QueryProviderBase {
       dType = TypecheckingFacade.getFromContext().getTypeOf(((SNode) _context.getVariable("newExpr")));
     }
     if ((dType != null)) {
-      // although Values.CREATOR is set in all legitimate cases, it's not extracted to shared 
-      // code to keep dType clear of any flag in case neither expected if is hit 
+      // althoughValues.CREATORissetinalllegitimatecases,it'snotextractedtoshared
+      // codetokeepdTypeclearofanyflagincaseneitherexpectedifishit
       if ((SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$DKAJ) != null)) {
         if ((TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$DKAJ)), CONCEPTS.SequenceType$_s) != null)) {
           Values.CREATOR.set(dType, _context.getNode());
@@ -1364,7 +1364,7 @@ public class QueriesGenerated extends QueryProviderBase {
           _context.showWarningMessage(null, "copyFrom for creator in GenericNewExpression is not either Array or Sequence");
         }
       } else {
-        // copyFrom == null 
+        // copyFrom==null
         Values.CREATOR.set(dType, _context.getNode());
         if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.initValue$Wx_W)).isNotEmpty()) {
           Values.CREATOR_INIT_VALUES.set(dType, Boolean.TRUE);

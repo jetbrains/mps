@@ -75,10 +75,10 @@
   </root>
   <root nodeRef="r:0dff1723-c756-41af-8aa7-4cfea375b0ba(jetbrains.mps.make.facet.generator.template.main@generator)/2897519568668637315">
     <file name="QueriesGenerated.java">
-      <node id="7228083082547972382" at="110,84,111,21" concept="4" />
-      <node id="2030416617762091403" at="111,21,112,224" concept="3" />
-      <node id="8100708479158694804" at="233,94,234,77" concept="4" />
-      <node id="8100708479158496699" at="234,77,235,110" concept="3" />
+      <node id="7228083082547972382" at="110,84,111,19" concept="4" />
+      <node id="2030416617762091403" at="111,19,112,224" concept="3" />
+      <node id="8100708479158694804" at="233,94,234,70" concept="4" />
+      <node id="8100708479158496699" at="234,70,235,110" concept="3" />
       <node id="1570228009929814969" at="398,54,399,56" concept="0" />
       <node id="1570228009929814969" at="433,15,434,59" concept="3" />
       <node id="4147950839246952263" at="736,64,737,80" concept="0" />
@@ -139,10 +139,10 @@
   </root>
   <root nodeRef="r:0dff1723-c756-41af-8aa7-4cfea375b0ba(jetbrains.mps.make.facet.generator.template.main@generator)/5086995156117116955">
     <file name="QueriesGenerated.java">
-      <node id="7228083082548012023" at="75,92,76,21" concept="4" />
-      <node id="671853460608725579" at="76,21,77,126" concept="3" />
-      <node id="7228083082548013583" at="79,92,80,21" concept="4" />
-      <node id="7228083082547848756" at="80,21,81,126" concept="3" />
+      <node id="7228083082548012023" at="75,92,76,19" concept="4" />
+      <node id="671853460608725579" at="76,19,77,126" concept="3" />
+      <node id="7228083082548013583" at="79,92,80,19" concept="4" />
+      <node id="7228083082547848756" at="80,19,81,126" concept="3" />
       <node id="8170824575195255924" at="83,83,84,150" concept="3" />
       <node id="8170824575195255946" at="86,83,87,150" concept="3" />
       <node id="8703512757937217048" at="89,83,90,126" concept="3" />
@@ -455,8 +455,8 @@
   </root>
   <root nodeRef="r:0dff1723-c756-41af-8aa7-4cfea375b0ba(jetbrains.mps.make.facet.generator.template.main@generator)/5086995156117328657">
     <file name="QueriesGenerated.java">
-      <node id="5997052361990378383" at="138,88,139,94" concept="4" />
-      <node id="5997052361990378386" at="139,94,140,129" concept="3" />
+      <node id="5997052361990378383" at="138,88,139,87" concept="4" />
+      <node id="5997052361990378386" at="139,87,140,129" concept="3" />
       <node id="899969561582417866" at="142,88,143,204" concept="3" />
       <node id="7219266275016638726" at="145,88,146,83" concept="3" />
       <node id="1675547159918601338" at="148,88,149,596" concept="3" />

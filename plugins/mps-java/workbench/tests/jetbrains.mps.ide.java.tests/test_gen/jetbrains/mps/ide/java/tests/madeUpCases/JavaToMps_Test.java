@@ -133,16 +133,16 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
       IFile guavaPath = this.testsLocation().findChild("realCodeBase").findChild("google-guava");
-      // FIXME there's google-guava.zip (since 2012, 4c3f4878 and 39d5fb7b), I have no idea how come this test passed prior to failure in my branch in 2019 due to PathFormatException from new FS 
-      //        Discussed with Daniil, according to him the test has never been completely functional. I leave it as is (it passes now, as it used to do for few years now), for a brave new person to get it fixed. 
+      // FIXMEthere'sgoogle-guava.zip(since2012,4c3f4878and39d5fb7b),Ihavenoideahowcomethistestpassedpriortofailureinmybranchin2019duetoPathFormatExceptionfromnewFS
+      // DiscussedwithDaniil,accordingtohimthetesthasneverbeencompletelyfunctional.Ileaveitasis(itpassesnow,asitusedtodoforfewyearsnow),forabravenewpersontogetitfixed.
       new JavaToMpsUtils(myProject.getRepository()).compareBinAndSrcStubs(guavaPath.findChild("guava-12.0.1.jar"), guavaPath.findChild("src"));
     }
 
     public IFile testsLocation() {
       SModule testMaterial = PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myProject.getRepository());
-      // FIXME resurrected getOutputPath 
-      //        beware, there's custom src jar packaging to make sure {module}/resources/testData output path is available under -src.jar/module/, where getOutputPath() resolves to 
-      //        Could utilize the fact there's BuildMps_ModuleResources root that points to resources/ and copies required resource files to binary distribution jar 
+      // FIXMEresurrectedgetOutputPath
+      // beware,there'scustomsrcjarpackagingtomakesure{module}/resources/testDataoutputpathisavailableunder-src.jar/module/,wheregetOutputPath()resolvesto
+      // Couldutilizethefactthere'sBuildMps_ModuleResourcesrootthatpointstoresources/andcopiesrequiredresourcefilestobinarydistributionjar
       return ((AbstractModule) testMaterial).getOutputPath();
     }
   }

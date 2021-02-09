@@ -68,8 +68,8 @@ public class snodeOperation extends SubstituteMenuBase {
         public ApplicableTypesInfo compute() {
           ApplicableTypesInfo result = new ApplicableTypesInfo();
           if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$yW))) {
-            // according to GroupMenuPart, variables are initialized *before* group condition is checked. 
-            // Guess, could be null return value here, but doesn't seem to hurt to keep non-null value.  
+            // accordingtoGroupMenuPart,variablesareinitialized*before*groupconditionischecked.
+            // Guess,couldbenullreturnvaluehere,butdoesn'tseemtohurttokeepnon-nullvalue.
             return result;
           }
           SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
@@ -82,18 +82,18 @@ public class snodeOperation extends SubstituteMenuBase {
               result.myLinkToConcept = true;
             }
           }
-          // is concept ? 
+          // isconcept?
           if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.ConceptNodeType$92) != null) {
             result.myToConcept = true;
           }
           if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SConceptType$pb) != null) {
             result.myToSConcept = true;
           }
-          // is node ? 
+          // isnode?
           if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SNodeType$hR) != null) {
             result.myToNode = true;
           }
-          // is smodel ? 
+          // issmodel?
           if (TypecheckingFacade.getFromContext().strongCoerceType(leftType, CONCEPTS.SModelType$Ke) != null) {
             result.myToModel = true;
           }
@@ -147,12 +147,12 @@ public class snodeOperation extends SubstituteMenuBase {
         SNode linkAccess = appTypesInfo.myLinkAccess;
         if (linkAccess != null) {
           if ((boolean) ILinkAccess__BehaviorDescriptor.isAggregation_id3vpu_siOTrm.invoke(linkAccess)) {
-            //  some operations are only applicable to reference links 
+            // someoperationsareonlyapplicabletoreferencelinks
             if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Link_SetTargetPointerOperation$6D)) {
               return false;
             }
           } else {
-            //  some operations are only applicable to aggregation links 
+            // someoperationsareonlyapplicabletoaggregationlinks
             if (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Link_SetNewChildOperation$J_)) {
               return false;
             }
@@ -167,7 +167,7 @@ public class snodeOperation extends SubstituteMenuBase {
         if (SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.DotExpression$yW)) {
           leftOperation = SLinkOperations.getTarget(SNodeOperations.cast(leftExpression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E);
         }
-        // --- 
+        // ---
         if (leftOperation != null) {
           if (SNodeOperations.isInstanceOf(leftOperation, CONCEPTS.SPropertyAccess$d9)) {
             SNode dataType = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(leftOperation, CONCEPTS.SPropertyAccess$d9), LINKS.property$UiOu), LINKS.dataType$5j5Y);
@@ -176,10 +176,10 @@ public class snodeOperation extends SubstituteMenuBase {
             }
           }
         }
-        // ========== 
+        // ==========
         if (linkAccess != null) {
           if ((boolean) ILinkAccess__BehaviorDescriptor.isSingularCardinality_id3vpu_siOTrf.invoke(linkAccess)) {
-            // some ops are only applicable to 'link to concept' 
+            // someopsareonlyapplicableto'linktoconcept'
             if ((boolean) SNodeOperation__BehaviorDescriptor.applicableToConcept_id1653mnvAgvQ.invoke(SNodeOperations.asSConcept(parameterOp)) && !((boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(parameterOp)))) {
               return ((boolean) SNodeOperation__BehaviorDescriptor.applicableToLink_id1653mnvAgvK.invoke(SNodeOperations.asSConcept(parameterOp)) && appTypesInfo.myLinkToConcept);
             }
@@ -187,23 +187,23 @@ public class snodeOperation extends SubstituteMenuBase {
           }
           return (boolean) SNodeOperation__BehaviorDescriptor.applicableToLinkList_id1653mnvAgwe.invoke(SNodeOperations.asSConcept(parameterOp));
         }
-        // is concept ? 
+        // isconcept?
         if (appTypesInfo.myToConcept) {
           return (boolean) SNodeOperation__BehaviorDescriptor.applicableToConcept_id1653mnvAgvQ.invoke(SNodeOperations.asSConcept(parameterOp));
         }
-        // is sconcept ? 
+        // issconcept?
         if (appTypesInfo.myToSConcept) {
           return (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(parameterOp));
         }
-        // is node ? 
+        // isnode?
         if (appTypesInfo.myToNode) {
           return (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(parameterOp));
         }
-        // is smodel ? 
+        // issmodel?
         if (appTypesInfo.myToModel) {
           return (boolean) SNodeOperation__BehaviorDescriptor.applicableToModel_id1653mnvAf1y.invoke(SNodeOperations.asSConcept(parameterOp));
         }
-        // is enum member ? 
+        // isenummember?
         if (appTypesInfo.myToEnumMember) {
           return SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_IsNullOperation$A7) || SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.Node_IsNotNullOperation$t5);
         }

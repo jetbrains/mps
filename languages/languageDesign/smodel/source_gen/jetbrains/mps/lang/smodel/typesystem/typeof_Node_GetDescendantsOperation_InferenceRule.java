@@ -26,8 +26,8 @@ public class typeof_Node_GetDescendantsOperation_InferenceRule extends AbstractI
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1207353493596", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1207353493598", true), (SNode) _quotation_createNode_iyyi8n_a1a0c0c0b(typeCheckingContext.getRepresentative(ConceptFromOpParm_typevar_1207353217271)), _info_12389875345);
     }
-    // commenting out this workaround for MPS-21199 since it caused solving inequation before whenConcrete triggers 
-    // so typeof(op) was simply nlist<> without concept 
+    // commentingoutthisworkaroundforMPS-21199sinceitcausedsolvinginequationbeforewhenConcretetriggers
+    // sotypeof(op)wassimplynlist<>withoutconcept
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.Node_GetDescendantsOperation$Xn;

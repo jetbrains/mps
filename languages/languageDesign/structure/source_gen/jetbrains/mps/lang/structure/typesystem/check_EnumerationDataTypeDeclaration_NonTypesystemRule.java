@@ -33,7 +33,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
     final boolean deriveFromExternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$Joen), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fab106L, "derive_from_presentation"));
     final boolean deriveFromInternal = Objects.equals(SPropertyOperations.getEnum(enumerationDataTypeDeclaration, PROPS.memberIdentifierPolicy$Joen), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x116d5fab105L, "jetbrains.mps.lang.structure.structure.EnumerationMemberIdentifierPolicy"), 0x116d5fd31b6L, "derive_from_internal_value"));
 
-    // Suggest using internal values, if they are present in all members 
+    // Suggestusinginternalvalues,iftheyarepresentinallmembers
     if (deriveFromExternal && ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$tmHO)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(it, PROPS.internalValue$1ost) != null;
@@ -51,7 +51,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
 
     ListSequence.fromList(SLinkOperations.getChildren(enumerationDataTypeDeclaration, LINKS.member$tmHO)).visitAll(new IVisitor<SNode>() {
       public void visit(final SNode member) {
-        // Warn about duplication in presentation 
+        // Warnaboutduplicationinpresentation
         if (!(deriveFromExternal) && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la), PROPS.externalValue$1oFu), SPropertyOperations.getString(member, PROPS.externalValue$1oFu));
@@ -63,7 +63,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
           }
         }
 
-        // Report duplicate values 
+        // Reportduplicatevalues
         if (!(deriveFromInternal) && SPropertyOperations.getString(member, PROPS.internalValue$1ost) != null && ListSequence.fromList(SNodeOperations.getAllSiblings(member, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.EnumerationMemberDeclaration_Old$la), PROPS.internalValue$1ost), SPropertyOperations.getString(member, PROPS.internalValue$1ost));
@@ -75,7 +75,7 @@ public class check_EnumerationDataTypeDeclaration_NonTypesystemRule extends Abst
           }
         }
 
-        // Report duplicate derived identifiers, be it presentation, internal value or java identifiers 
+        // Reportduplicatederivedidentifiers,beitpresentation,internalvalueorjavaidentifiers
         final String memberValidId = EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(member);
         if (memberValidId == null) {
           {

@@ -64,11 +64,11 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[0], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist5 = null;
@@ -89,7 +89,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
             tnode1.addChild(myAggregationLinks[0], child7);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -120,11 +120,11 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[0], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist5 = null;
@@ -145,7 +145,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
             tnode1.addChild(myAggregationLinks[0], child7);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -176,11 +176,11 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[0], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist5 = null;
@@ -201,7 +201,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
             tnode1.addChild(myAggregationLinks[0], child7);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -231,13 +231,13 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_34_0(new PropertyMacroContext(context1, "false", propertyMacro_y3pd1p_c0a2a0a1a4a2a1g)));
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -267,13 +267,13 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_34_1(new PropertyMacroContext(context1, "false", propertyMacro_y3pd1p_c0a2a0a1a4a2a1h)));
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -303,7 +303,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -312,7 +312,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -348,7 +348,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -373,7 +373,7 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

@@ -18,35 +18,35 @@ public class TestRelativePathHelper_Test {
     File baseDir = new File(tmpFile, "build/scripts");
     baseDir.mkdirs();
 
-    // 1 go up 
+    // 1goup
     String scriptsFolder = baseDir.getCanonicalPath();
     String targetFolder = new File(tmpFile, "build2").getCanonicalPath();
 
     Assert.assertEquals("../../build2", new RelativePathHelper(scriptsFolder).makeRelative(targetFolder));
 
-    // back 
+    // back
     Assert.assertEquals(targetFolder.replace("\\", "/"), new RelativePathHelper(scriptsFolder).makeAbsolute("../../build2"));
     Assert.assertEquals(targetFolder.replace("\\", "/"), new RelativePathHelper(scriptsFolder).makeAbsolute("../../build2/"));
 
-    // 2 same folder 
+    // 2samefolder
     Assert.assertEquals("", new RelativePathHelper(scriptsFolder).makeRelative(scriptsFolder));
 
-    // back 
+    // back
     Assert.assertEquals(RelativePathHelper.normalizePath(scriptsFolder, true), new RelativePathHelper(scriptsFolder).makeAbsolute(""));
 
-    // 3 one level up 
+    // 3onelevelup
     String oneUp = baseDir.getParentFile().getCanonicalPath();
     Assert.assertEquals("..", new RelativePathHelper(scriptsFolder).makeRelative(oneUp));
 
-    // back 
+    // back
     Assert.assertEquals(oneUp.replace("\\", "/"), new RelativePathHelper(scriptsFolder).makeAbsolute(".."));
     Assert.assertEquals(oneUp.replace("\\", "/"), new RelativePathHelper(scriptsFolder).makeAbsolute("../"));
   }
   @Test
   public void test_nonExistentPath() throws Exception {
-    // rph assumes its initial path is directory, i.e. "someFolder/" 
+    // rphassumesitsinitialpathisdirectory,i.e."someFolder/"
     RelativePathHelper rph = new RelativePathHelper("common-root/build/someFolder");
-    // makeRelative doesn's assume whether it's file or directory, and shall keep result the same 
+    // makeRelativedoesn'sassumewhetherit'sfileordirectory,andshallkeepresultthesame
     String r1 = rph.makeRelative("common-root/code/other");
     String r2 = rph.makeRelative("common-root/code/other/");
     Assert.assertEquals("../../code/other", r1);

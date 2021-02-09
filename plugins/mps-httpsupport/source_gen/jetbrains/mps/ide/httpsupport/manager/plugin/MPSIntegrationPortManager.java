@@ -40,7 +40,7 @@ public class MPSIntegrationPortManager extends CustomPortServerManagerBase {
 
         return port;
       } catch (BindException e) {
-        // continue  
+        // continue
       } catch (IOException e) {
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error("IOException while traversing ports for integration port manager", e);

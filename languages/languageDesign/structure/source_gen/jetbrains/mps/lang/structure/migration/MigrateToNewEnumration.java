@@ -227,18 +227,18 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   private static NamingStrategy chooseMigrationStrategy(SNode migrationInfo) {
     SNode oldEnum = SLinkOperations.getTarget(migrationInfo, LINKS.oldEnum$mg5q);
 
-    // attributes of old enum member (internalValue, externalValue, javaIdentifier) don't have any constraints 
-    // while name of new enum member has to be valid identifier. Here, we trying to choose such attribute that 
-    // satisifies name constraint for all enum member, in the precedence that reduces amount of migration changes in 
-    // user smodel codebase. If no attributes are sufficient, than fallback to #getConstantName() 
+    // attributesofoldenummember(internalValue,externalValue,javaIdentifier)don'thaveanyconstraints
+    // whilenameofnewenummemberhastobevalididentifier.Here,wetryingtochoosesuchattributethat
+    // satisifiesnameconstraintforallenummember,intheprecedencethatreducesamountofmigrationchangesin
+    // usersmodelcodebase.Ifnoattributesaresufficient,thanfallbackto#getConstantName()
     NamingStrategy namingStrategy = BY_OLD_NAME;
 
-    // smodel code operations: 
-    // 1) value attirubte -> enumMember.value / enum.memberForValue / node.enumProp 
-    // 2) name attribute  -> enumMember.name  / enum.memberForName 
+    // smodelcodeoperations:
+    // 1)valueattirubte->enumMember.value/enum.memberForValue/node.enumProp
+    // 2)nameattribute->enumMember.name/enum.memberForName
 
-    // As first operations have much more usages, we initially trying to migrate them in a sane way, 
-    // then care about latter 
+    // Asfirstoperationshavemuchmoreusages,weinitiallytryingtomigratetheminasaneway,
+    // thencareaboutlatter
 
     SPropertyOperations.setEnum(migrationInfo, PROPS.valueOpMigration$UswM, 0x5a14f103596433d8L, "by_custom_methods");
     SPropertyOperations.setEnum(migrationInfo, PROPS.nameOpMigration$L1EO, 0x5a14f10359640645L, "by_custom_methods");
@@ -424,7 +424,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   }
 
   private static String serializeReplacementKind(SEnumerationLiteral replacementKind) {
-    // TODO support new enums in quotations 
+    // TODOsupportnewenumsinquotations
     SEnumeration enumeration = MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind");
     return enumeration.toString(replacementKind);
   }

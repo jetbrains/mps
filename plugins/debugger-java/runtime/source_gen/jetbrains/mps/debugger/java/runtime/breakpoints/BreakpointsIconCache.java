@@ -96,8 +96,8 @@ public class BreakpointsIconCache implements ProjectComponent {
   private DeployListener myDeployListener = new DeployListener() {
     @Override
     public void onUnloaded(Set<ReloadableModule> set, @NotNull ProgressMonitor monitor) {
-      // FIXME not sure it's proper moment to invalidate BP icons here (modules are still loaded, would any BP report it's no longer valid?) 
-      // nor do I think it's a nice idea to handle icons the way they are handled now. Just don't want to get too deep into all this crap. 
+      // FIXMEnotsureit'spropermomenttoinvalidateBPiconshere(modulesarestillloaded,wouldanyBPreportit'snolongervalid?)
+      // nordoIthinkit'saniceideatohandleiconsthewaytheyarehandlednow.Justdon'twanttogettoodeepintoallthiscrap.
       myUpdateFromCurrent.invoke();
     }
     @Override

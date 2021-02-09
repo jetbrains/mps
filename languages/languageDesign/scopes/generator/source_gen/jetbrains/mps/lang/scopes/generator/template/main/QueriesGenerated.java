@@ -54,7 +54,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
     List<SNode> parameters = SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0, false, false), LINKS.parameter$5xBj);
-    // kind & child 
+    // kind&child
     return ListSequence.fromList(parameters).count() == 2;
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {

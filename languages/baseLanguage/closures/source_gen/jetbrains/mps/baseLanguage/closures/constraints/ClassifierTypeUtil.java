@@ -41,7 +41,7 @@ public class ClassifierTypeUtil {
     return maybeWildcard;
   }
   public static SNode getTypeCoercedToClassifierType(SNode type) {
-    // cast is such to avoid exception if MeetType 
+    // castissuchtoavoidexceptionifMeetType
     SNode purified = (SNode) type;
     if (SNodeOperations.isInstanceOf(purified, CONCEPTS.InternalClassifierType$s8)) {
       return purified;
@@ -136,8 +136,8 @@ with_meet:
   }
   private static boolean isFunctionTypeClassifier(SNode classifier) {
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$db)) {
-      // no idea what's the reason for this check and whether it's right to decide by model name; what I do know is that there's no reason to duplicate RT model with java_stub 
-      // FIXME once RuntimeUtil switches to use regular nodes instead of stubs, shall fix this as well. 
+      // noideawhat'sthereasonforthischeckandwhetherit'srighttodecidebymodelname;whatIdoknowisthatthere'snoreasontoduplicateRTmodelwithjava_stub
+      // FIXMEonceRuntimeUtilswitchestouseregularnodesinsteadofstubs,shallfixthisaswell.
       SModelReference closuresRT = PersistenceFacade.getInstance().createModelReference("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)");
       SModelReference closuresRTstub = PersistenceFacade.getInstance().createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.baseLanguage.closures.runtime(MPS.Core/)");
       String modelName = SNodeOperations.getModel(classifier).getReference().getModelName();
@@ -272,7 +272,7 @@ with_meet:
     if ((cType == null)) {
       cType = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.ClassifierType$bL);
     }
-    // avoid coercing if the classifier type is not the immediate supertype 
+    // avoidcoercingiftheclassifiertypeisnottheimmediatesupertype
     if ((cType != null)) {
       for (Object imsup : TypeChecker.getInstance().getSubtypingManager().collectImmediateSupertypes(type, true)) {
         if (SLinkOperations.getTarget(SNodeOperations.as(((SNode) imsup), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(cType, LINKS.classifier$cxMr)) {

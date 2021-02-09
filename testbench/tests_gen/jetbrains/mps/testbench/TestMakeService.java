@@ -69,7 +69,7 @@ public class TestMakeService extends AbstractMakeService implements IMakeService
     if (ctl != null) {
       return ctl;
     }
-    // it's MakeService client's responsibility to populate properties of possible facets, by default, we do nothing and use blank default controller 
+    // it'sMakeServiceclient'sresponsibilitytopopulatepropertiesofpossiblefacets,bydefault,wedonothinganduseblankdefaultcontroller
     return new IScriptController.Stub2(makeSession);
   }
 }

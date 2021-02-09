@@ -47,8 +47,8 @@ public class BuildMpsLayout_ModuleJars_Constraints extends BaseConstraintsDescri
             return (outer == null ? null : new FilteringScope(outer) {
               @Override
               public boolean isExcluded(SNode node) {
-                // it's ok to reference generators that are project parts, but those that come as part of a language 
-                // get processed together with language and doesn't need distinct layout 
+                // it'soktoreferencegeneratorsthatareprojectparts,butthosethatcomeaspartofalanguage
+                // getprocessedtogetherwithlanguageanddoesn'tneeddistinctlayout
                 return SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_Generator$RQ) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BuildMps_Language$RA);
               }
             });

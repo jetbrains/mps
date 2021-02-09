@@ -166,7 +166,7 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
   private boolean isInCellMode(EditorComponent editorComponent) {
     EditorCell nodeCell = getNodeCell(editorComponent);
     if (nodeCell == null) {
-      // whatever 
+      // whatever
       return false;
     }
     EditorCell_Collection parent = nodeCell.getParent();
@@ -174,13 +174,13 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
       return false;
     }
     if (parent.getCellLayout() instanceof CellLayout_Horizontal) {
-      // if immediate parent is a horisontal collection 
+      // ifimmediateparentisahorisontalcollection
       return true;
     }
     return CellFinderUtil.findParent(nodeCell, new Condition<EditorCell_Collection>() {
       @Override
       public boolean met(EditorCell_Collection cellCollection) {
-        // do not want an explicit dependency on table.runtime 
+        // donotwantanexplicitdependencyontable.runtime
         return Objects.equals(cellCollection.getClass().getSimpleName(), "EditorCell_Table");
       }
     }) != null;

@@ -31,8 +31,8 @@
       <node id="2220861080745131150" at="75,6,76,131" concept="4" />
       <node id="1350734474210764464" at="76,131,77,42" concept="1" />
       <node id="2220861080745131150" at="77,42,78,22" concept="5" />
-      <node id="1227128029536566451" at="81,95,82,31" concept="6" />
-      <node id="1227128029536566453" at="82,31,83,18" concept="5" />
+      <node id="1227128029536566451" at="81,95,82,28" concept="6" />
+      <node id="1227128029536566453" at="82,28,83,18" concept="5" />
       <node id="1227128029536566464" at="84,5,85,219" concept="5" />
       <node id="2220861080745131150" at="87,0,88,0" concept="8" trace="canBeChildBreakingPoint" />
       <node id="2220861080745131150" at="88,0,89,0" concept="8" trace="breakingNode_bt7fcz_a0a0a0a0a1a0a0a0d" />

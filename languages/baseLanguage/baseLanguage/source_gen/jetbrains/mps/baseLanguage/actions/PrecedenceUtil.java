@@ -24,20 +24,20 @@ public class PrecedenceUtil {
     SNode targetNode = contextNode;
     for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$mB); parentNode = SNodeOperations.getParent(targetNode)) {
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$Ws)) {
-        // if parent expression is IMethodCall then targetNode is either actualArgument 
-        // or typeArgument (parameters of method call), so we should not go upper 
-        // same with ParenthesizedExpression 
+        // ifparentexpressionisIMethodCallthentargetNodeiseitheractualArgument
+        // ortypeArgument(parametersofmethodcall),soweshouldnotgoupper
+        // samewithParenthesizedExpression
         break;
       }
       SContainmentLink targetContainingLink = SNodeOperations.getContainingLink(targetNode);
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$W1) && Objects.equals(targetContainingLink, LINKS.leftExpression$sEj)) {
-        // if parent expression is BinaryOperation and target is left child of it 
-        // then we should rather transform current target 
+        // ifparentexpressionisBinaryOperationandtargetisleftchildofit
+        // thenweshouldrathertransformcurrenttarget
         break;
       }
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && Objects.equals(targetContainingLink, LINKS.operand$w6IR)) {
-        // if parent expression is DotExpression and target is operand ("left" part of the expression) 
-        // then we should rather transform current target 
+        // ifparentexpressionisDotExpressionandtargetisoperand("left"partoftheexpression)
+        // thenweshouldrathertransformcurrenttarget
         break;
       }
       targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$mB);
@@ -50,14 +50,14 @@ public class PrecedenceUtil {
     SNode targetNode = contextNode;
     for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$mB) && getPriority(SNodeOperations.castConcept(SNodeOperations.getConcept(parentNode), CONCEPTS.Expression$mB)).ordinal() < resultingExpressionPriority; parentNode = SNodeOperations.getParent(targetNode)) {
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$Ws)) {
-        // if parent expression is IMethodCall then targetNode is either actualArgument 
-        // or typeArgument (parameters of method call), so we should not go upper 
-        // same with ParenthesizedExpression 
+        // ifparentexpressionisIMethodCallthentargetNodeiseitheractualArgument
+        // ortypeArgument(parametersofmethodcall),soweshouldnotgoupper
+        // samewithParenthesizedExpression
         break;
       }
       if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$W1) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$nvX)) {
-        // if parent expression is BinaryOperation having higher priority and target is right child of it 
-        // then we should rather transform current target and add additional parenthesis around resulting expression 
+        // ifparentexpressionisBinaryOperationhavinghigherpriorityandtargetisrightchildofit
+        // thenweshouldrathertransformcurrenttargetandaddadditionalparenthesisaroundresultingexpression
         break;
       }
       targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$mB);
@@ -124,8 +124,8 @@ public class PrecedenceUtil {
 
   public static SNode processLeftTransform(SNode sourceNode, SNode result) {
     SNode nodeToProcess = PrecedenceUtil.getTargetForLeftTransform(sourceNode, result);
-    // since BinaryOperations are left-associative we should perform complex LT then 
-    // BinaryOperations is "rightExpression" child of another BinaryOperations with same priority 
+    // sinceBinaryOperationsareleft-associativeweshouldperformcomplexLTthen
+    // BinaryOperationsis"rightExpression"childofanotherBinaryOperationswithsamepriority
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$W1) && Objects.equals(SNodeOperations.getContainingLink(nodeToProcess), LINKS.rightExpression$nvX)) {
       SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$W1);
       if (PrecedenceUtil.isSamePriority(parentBinaryOperation, result)) {
@@ -168,13 +168,13 @@ public class PrecedenceUtil {
     DEFAULT();
 
     Precedence() {
-      // All J_ constants corresponds to the levels "defined" in java - see 
-      // http://www.cs.princeton.edu/introcs/11precedence/ 
+      // AllJ_constantscorrespondstothelevels"defined"injava-see
+      // http://www.cs.princeton.edu/introcs/11precedence/
 
-      // All MPS_ constants were introduced in MPS languages 
+      // AllMPS_constantswereintroducedinMPSlanguages
 
-      // Actual priority of Expression is determined by ordinal of corresponding 
-      // enumeration constant upper constants has higher priority then lower 
+      // ActualpriorityofExpressionisdeterminedbyordinalofcorresponding
+      // enumerationconstantupperconstantshashigherprioritythenlower
     }
   }
 

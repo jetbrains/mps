@@ -62,12 +62,12 @@ public class MyExecuteStreamHandler implements ExecuteStreamHandler {
     try {
       myOutputReadingThread.join();
     } catch (InterruptedException e) {
-      //  ignore 
+      // ignore
     }
     try {
       myErrorReadingThread.join();
     } catch (InterruptedException e) {
-      //  ignore 
+      // ignore
     }
   }
 }

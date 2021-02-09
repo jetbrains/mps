@@ -55,8 +55,8 @@ public final class RuntimeDependencies {
     Iterable<SNode> devkitSolutions = SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(devkits, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportSolution$71), LINKS.solution$qxKS);
     List<SNode> allUsedLang = Sequence.fromIterable(ul).concat(Sequence.fromIterable(devkitLanguages)).where(new NotNullWhereFilter<SNode>()).toListSequence();
     myUsedLanguages.addAll(allUsedLang);
-    // Don't want to find out RTs of extended languages at execution time, record them at once. 
-    // Besides, we care about RTs state the moment code was generated, if newer language version decides to change RT, deployed module won't get affected. 
+    // Don'twanttofindoutRTsofextendedlanguagesatexecutiontime,recordthematonce.
+    // Besides,wecareaboutRTsstatethemomentcodewasgenerated,ifnewerlanguageversiondecidestochangeRT,deployedmodulewon'tgetaffected.
     for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(allUsedLang), LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5), LINKS.solution$3MS)).where(new NotNullWhereFilter<SNode>())) {
       myLangRuntimes.add(rts);
     }
@@ -78,7 +78,7 @@ public final class RuntimeDependencies {
   }
 
   public Iterable<SNode> deploymentDependencies() {
-    // excluding RT solutions, that technically are compilation/deployment dependencies of the module 
+    // excludingRTsolutions,thattechnicallyarecompilation/deploymentdependenciesofthemodule
     return myCompileDeps;
   }
 

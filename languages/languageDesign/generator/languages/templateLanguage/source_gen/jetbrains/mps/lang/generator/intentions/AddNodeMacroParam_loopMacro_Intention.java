@@ -90,7 +90,7 @@ public final class AddNodeMacroParam_loopMacro_Intention extends AbstractIntenti
       SLinkOperations.setTarget(expressionStatement, LINKS.expression$5L7M, dotExpression);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$e68K), LINKS.statement$53DE)).addElement(expressionStatement);
       SLinkOperations.setTarget(loopMacro, LINKS.sourceNodesQuery$XjmI, referentValue);
-      // set caret 
+      // setcaret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, loopMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

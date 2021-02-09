@@ -152,7 +152,7 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
     return ((ObjectReference) originalValue.getJDIValue()).uniqueID();
   }
   private DebugSession getSession(@NotNull IValueProxy value) {
-    // this is just wrong 
+    // thisisjustwrong
     for (Project project : ProjectManager.getInstance().getOpenProjects()) {
       for (AbstractDebugSession session : SetSequence.fromSet(DebugSessionManagerComponent.getInstance(project).getDebugSessions())) {
         if (session instanceof DebugSession) {

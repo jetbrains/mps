@@ -15,7 +15,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ForStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    // todo hack 
+    // todohack
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.variable$JNH6));
     for (SNode additionalVar : SLinkOperations.getChildren(_context.getNode(), LINKS.additionalVar$xxfz)) {
       _context.getBuilder().build((SNode) additionalVar);

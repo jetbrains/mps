@@ -91,10 +91,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$Vl, false, false) != null;
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    // hence inheritors == false not to handle OrPatternClause which is 
-    // handled inside the template for top-most PatternExpression 
-    // If there are reasonable subconcepts, might need to check 
-    // !node.isInstanceOf(OrPatternClause) instead 
+    // henceinheritors==falsenottohandleOrPatternClausewhichis
+    // handledinsidethetemplatefortop-mostPatternExpression
+    // Iftherearereasonablesubconcepts,mightneedtocheck
+    // !node.isInstanceOf(OrPatternClause)instead
     // 
     return true;
   }
@@ -125,7 +125,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.hasRole(SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$vkQ_), CONCEPTS.PatternBuilder$2H, false, false), LINKS.pattern$JWe5);
   }
   public static boolean rule_Condition_8_0(final BaseMappingRuleContext _context) {
-    // under OrPattern, OrPatternVariableReference are reduced to capture() 
+    // underOrPattern,OrPatternVariableReferencearereducedtocapture()
     return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.OrPattern$Lk));
   }
   public static boolean rule_Condition_15_0(final BaseMappingRuleContext _context) {
@@ -189,8 +189,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return PatternVarsUtil.getFieldName(SLinkOperations.getTarget(_context.getNode(), LINKS.variable$AVd3));
   }
   public static Object propertyMacro_GetValue_6_0(final PropertyMacroContext _context) {
-    // there's only one dubious use of hasAntiquotations() method, in TS, where 
-    // it refuses to coerce types matched against patterns with antiquotations. Nobody knows why. 
+    // there'sonlyonedubioususeofhasAntiquotations()method,inTS,where
+    // itrefusestocoercetypesmatchedagainstpatternswithantiquotations.Nobodyknowswhy.
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4), CONCEPTS.AbstractAntiquotation$TS, false, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_6_1(final PropertyMacroContext _context) {
@@ -420,13 +420,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode() != ((SNode) _context.getVariable("topNode"));
   }
   public static boolean ifMacro_Condition_7_1(final IfMacroContext _context) {
-    // OrPatternClause is distinct case of PatternExpression, 
-    // nested inside of the latter, and there's local variable we shall reference. 
-    // PatternExpression owns Quotation, which in turn supplies quoted node == topNode, hence parent.parent 
+    // OrPatternClauseisdistinctcaseofPatternExpression,
+    // nestedinsideofthelatter,andthere'slocalvariableweshallreference.
+    // PatternExpressionownsQuotation,whichinturnsuppliesquotednode==topNode,henceparent.parent
     return _context.getNode() == ((SNode) _context.getVariable("topNode")) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.OrPatternClause$9B);
   }
   public static boolean ifMacro_Condition_7_2(final IfMacroContext _context) {
-    // (PatternExpression|OrPatternClause)->Quotation->topNode 
+    // (PatternExpression|OrPatternClause)->Quotation->topNode
     return _context.getNode() == ((SNode) _context.getVariable("topNode")) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.OrPatternClause$9B));
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
@@ -548,29 +548,29 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_8_7(final SourceSubstituteMacroNodeContext _context) {
-    // OrPatternVariableReference is an Expression, not a NodeAttribute, 
-    // thus we need accessor to this node, not its parent (as we do for Attributes) 
+    // OrPatternVariableReferenceisanExpression,notaNodeAttribute,
+    // thusweneedaccessortothisnode,notitsparent(aswedoforAttributes)
     return _context.getNode();
   }
   public static SNode sourceNodeQuery_8_8(final SourceSubstituteMacroNodeContext _context) {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:disjunctClause"))).first();
   }
   public static SNode sourceNodeQuery_9_0(final SourceSubstituteMacroNodeContext _context) {
-    // OrPattern is parent of OrPatternClause being processed, 
-    // and is the one we shall navigate matcher to, if it's used in place for a node. 
-    // however, the right way is to use it as attribute, thus we account for both cases 
+    // OrPatternisparentofOrPatternClausebeingprocessed,
+    // andistheoneweshallnavigatematcherto,ifit'susedinplaceforanode.
+    // however,therightwayistouseitasattribute,thusweaccountforbothcases
     SNode orPattern = SNodeOperations.getParent(_context.getNode());
     return (SNodeOperations.isAttribute(orPattern) ? SNodeOperations.getParent(orPattern) : orPattern);
   }
   public static SNode sourceNodeQuery_9_1(final SourceSubstituteMacroNodeContext _context) {
-    // handle next clause, pass the tail stripped of this value to the next level 
+    // handlenextclause,passthetailstrippedofthisvaluetothenextlevel
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("tail"))).first();
   }
   public static SNode sourceNodeQuery_11_0(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.getParent(_context.getNode());
   }
   public static SNode sourceNodeQuery_11_1(final SourceSubstituteMacroNodeContext _context) {
-    // Here we assume ListPattern could not be applied to top-most node (as it needs a list of children, while quotation is single node) 
+    // HereweassumeListPatterncouldnotbeappliedtotop-mostnode(asitneedsalistofchildren,whilequotationissinglenode)
     SNode id = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId"));
     ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(id, SNodeOperations.getContainingLink(_context.getNode()));
     return id;
@@ -726,8 +726,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collect(SLinkOperations.collectMany(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.OrPattern$Lk, false, new SAbstractConcept[]{}), LINKS.clause$z7ps), LINKS.pattern$GuFI);
   }
   public static Iterable<SNode> sourceNodesQuery_6_0(final SourceSubstituteMacroNodesContext _context) {
-    // NOTE: DO NOT TRY TO SET MappingLabel here, leave it at nested, as we need 
-    // LocalVariableDeclaration, not LVDStatement as 
+    // NOTE:DONOTTRYTOSETMappingLabelhere,leaveitatnested,asweneed
+    // LocalVariableDeclaration,notLVDStatementas
     return ((Iterable<SNode>) _context.getVariable("var:disjunctionPatterns"));
   }
   public static Iterable<SNode> sourceNodesQuery_6_1(final SourceSubstituteMacroNodesContext _context) {
@@ -740,11 +740,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collect(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.ActionAsPattern$7o, false, new SAbstractConcept[]{}), LINKS.action$_Q47);
   }
   public static Iterable<SNode> sourceNodesQuery_10_0(final SourceSubstituteMacroNodesContext _context) {
-    // under OrPattern, they use OrPatternVariableReference to capture values instead of PatternVariableDeclaration used elsewhere 
-    // (declarations are owned by OrPattern instance). Don't blame me, this is the way someone else think is smart 
+    // underOrPattern,theyuseOrPatternVariableReferencetocapturevaluesinsteadofPatternVariableDeclarationusedelsewhere
+    // (declarationsareownedbyOrPatterninstance).Don'tblameme,thisisthewaysomeoneelsethinkissmart
 
-    // We don't go deeper than OrPattern as there's distinct handling for OrPatternClause (which effectively excludes PVD under OrPattern) 
-    // Since it ends here, in this template, we look for OrPatternVariableReference right away. 
+    // Wedon'tgodeeperthanOrPatternasthere'sdistincthandlingforOrPatternClause(whicheffectivelyexcludesPVDunderOrPattern)
+    // Sinceitendshere,inthistemplate,welookforOrPatternVariableReferencerightaway.
     List<SNode> d = SNodeOperations.getNodeDescendantsWhereConceptInList(((SNode) _context.getVariable("var:quotedNode")), new SAbstractConcept[]{CONCEPTS.Pattern$XL, CONCEPTS.PropertyPatternVariableDeclaration$aQ, CONCEPTS.LinkPatternVariableDeclaration$8a, CONCEPTS.OrPatternVariableReference$O0}, false, new SAbstractConcept[]{CONCEPTS.OrPattern$Lk});
     Iterable<SNode> orPattern = SNodeOperations.getNodeDescendants(((SNode) _context.getVariable("var:quotedNode")), CONCEPTS.OrPattern$Lk, false, new SAbstractConcept[]{});
     return ListSequence.fromList(d).union(Sequence.fromIterable(orPattern));
@@ -788,8 +788,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.collectMany(SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.OrPattern$Lk, false, new SAbstractConcept[]{}), LINKS.clause$z7ps);
   }
   public static Object varMacro_Value_8_0(final TemplateVarContext _context) {
-    // nature of template language dictates generation from right to left 
-    // while order of disjunct registration shall match that in the model 
+    // natureoftemplatelanguagedictatesgenerationfromrighttoleft
+    // whileorderofdisjunctregistrationshallmatchthatinthemodel
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.clause$z7ps)).reversedList();
   }
   public static Object varMacro_Value_10_0(final TemplateVarContext _context) {

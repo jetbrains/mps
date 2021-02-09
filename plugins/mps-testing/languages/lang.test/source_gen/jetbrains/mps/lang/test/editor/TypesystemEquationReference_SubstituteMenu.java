@@ -49,7 +49,7 @@ public class TypesystemEquationReference_SubstituteMenu extends SubstituteMenuBa
   public class SMP_ReferenceScope_fdkso1_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_fdkso1_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TypesystemEquationReference$Zj, LINKS.declaration$oKj7);
     }
     @NotNull

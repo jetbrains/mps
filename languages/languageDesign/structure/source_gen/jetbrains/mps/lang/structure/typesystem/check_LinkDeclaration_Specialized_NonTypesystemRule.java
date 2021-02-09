@@ -33,7 +33,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
       return;
     }
 
-    // metaclass 
+    // metaclass
     if (!(Objects.equals(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$PeKc), SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -41,7 +41,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
       }
     }
 
-    // specialized must be a super-concept of specializing 
+    // specializedmustbeasuper-conceptofspecializing
     if ((SLinkOperations.getTarget(link, LINKS.target$m40F) != null) && (SLinkOperations.getTarget(specializedLink, LINKS.target$m40F) != null)) {
       if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(link, LINKS.target$m40F), SLinkOperations.getTarget(specializedLink, LINKS.target$m40F)))) {
         {
@@ -51,7 +51,7 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
       }
     }
 
-    // cardinality 
+    // cardinality
     if ((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(specializedLink) && !((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(link))) {
       {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$cxYK);

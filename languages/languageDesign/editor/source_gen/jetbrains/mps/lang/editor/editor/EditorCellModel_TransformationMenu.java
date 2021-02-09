@@ -374,7 +374,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         if (assistantUtils.hasFeatures() && SNodeOperations.getParent(_context.getNode()) == assistantUtils.getEditorDeclaration()) {
           return false;
         }
-        // Do not suggest creation of #alias# cell if concept has name property 
+        // Donotsuggestcreationof#alias#cellifconcepthasnameproperty
         if (Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ), ((boolean) true))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468"))) {
           return false;
         }
@@ -804,7 +804,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
         return Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(assistantUtils.getEditorDeclaration()), ((boolean) true))).contains(SLinkOperations.getTarget(left, LINKS.target$m40F));
-        // TODO: add another binary operation action recognizing YouTrack Workflow-like binary operations (with the link to a kind) 
+        // TODO:addanotherbinaryoperationactionrecognizingYouTrackWorkflow-likebinaryoperations(withthelinktoakind)
       }
 
 

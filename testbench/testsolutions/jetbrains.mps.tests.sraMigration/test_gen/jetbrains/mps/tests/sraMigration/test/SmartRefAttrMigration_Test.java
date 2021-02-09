@@ -260,9 +260,9 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   }
   @Before
   public void setUp() {
-    // I don't care to close the project (a) can do it on per-test basis in BTestCase (no BeforeClass), (b) there are too many tests in this class 
-    // (c) PushEnvironmentRunnerBuilder is not yet capable to invoke static setEnvironment (so that we could have static project field 
-    // (d) this test is executed from separate process (mpsSmartRefAttrMigration.xml) and nobody gets affected with the project left open. 
+    // Idon'tcaretoclosetheproject(a)candoitonper-testbasisinBTestCase(noBeforeClass),(b)therearetoomanytestsinthisclass
+    // (c)PushEnvironmentRunnerBuilderisnotyetcapabletoinvokestaticsetEnvironment(sothatwecouldhavestaticprojectfield
+    // (d)thistestisexecutedfromseparateprocess(mpsSmartRefAttrMigration.xml)andnobodygetsaffectedwiththeprojectleftopen.
     project = ((MPSProject) myEnvironment.openProject(new File(PROJECT_PATH)));
   }
 

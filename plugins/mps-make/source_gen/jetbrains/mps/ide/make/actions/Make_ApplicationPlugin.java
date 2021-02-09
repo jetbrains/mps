@@ -29,7 +29,7 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new BuildAllGeneratableGenerators_Action());
     addAction(new BuildAllGenerators_Action());
     addAction(new BuildAllLanguageDescriptors_Action());
@@ -49,7 +49,7 @@ public class Make_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RebuildSelectedModules_Action());
     addAction(new RecompileProject_Action());
     addAction(new TextPreviewModel_Action());
-    // groups 
+    // groups
     addGroup(new GenerateOptions_ActionGroup(this));
     addGroup(new GlobalMake_ActionGroup(this));
     addGroup(new JavaModuleActions_ActionGroup(this));

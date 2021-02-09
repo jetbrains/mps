@@ -48,12 +48,12 @@
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/2580894021251553866">
     <file name="Default_KeymapChanges.java">
-      <node id="2580894021251553866" at="11,34,12,14" concept="10" />
-      <node id="8047970061512463293" at="12,14,13,99" concept="3" />
+      <node id="2580894021251553866" at="11,34,12,13" concept="10" />
+      <node id="8047970061512463293" at="12,13,13,99" concept="3" />
       <node id="830211401282059664" at="13,99,14,99" concept="3" />
       <node id="8784230320738943426" at="14,99,15,105" concept="3" />
-      <node id="2580894021251553866" at="15,105,16,28" concept="10" />
-      <node id="2580894021251553866" at="16,28,17,15" concept="10" />
+      <node id="2580894021251553866" at="15,105,16,26" concept="10" />
+      <node id="2580894021251553866" at="16,26,17,14" concept="10" />
       <node id="2580894021251553866" at="19,29,20,22" concept="9" />
       <node id="2580894021251553866" at="22,53,23,70" concept="9" />
       <node id="2580894021251553866" at="19,0,22,0" concept="7" trace="getScheme#()Ljava/lang/String;" />
@@ -65,7 +65,7 @@
       <scope id="2580894021251553866" at="22,0,25,0">
         <var name="stroke" id="2580894021251553866" />
       </scope>
-      <scope id="2580894021251553866" at="11,34,17,15" />
+      <scope id="2580894021251553866" at="11,34,17,14" />
       <scope id="2580894021251553866" at="11,0,19,0" />
       <unit id="2580894021251553866" at="10,0,26,0" name="jetbrains.mps.ide.refactoring.plugin.Default_KeymapChanges" />
     </file>
@@ -329,7 +329,7 @@
       <node id="4448668666025436404" at="141,7,142,134" concept="3" />
       <node id="4448668666025436411" at="142,134,143,83" concept="3" />
       <node id="4448668666025436428" at="146,57,147,24" concept="9" />
-      <node id="4448668666025436434" at="150,29,151,20" concept="10" />
+      <node id="4448668666025436434" at="150,29,151,18" concept="10" />
       <node id="4448668666025611775" at="154,41,155,24" concept="9" />
       <node id="4448668666025436306" at="159,36,160,61" concept="9" />
       <node id="4448668666025436306" at="161,5,162,16" concept="9" />
@@ -381,7 +381,7 @@
       <scope id="4448668666025436333" at="128,31,129,15" />
       <scope id="4448668666025436370" at="137,110,138,107" />
       <scope id="4448668666025436427" at="146,57,147,24" />
-      <scope id="4448668666025436433" at="150,29,151,20" />
+      <scope id="4448668666025436433" at="150,29,151,18" />
       <scope id="4448668666025583248" at="154,41,155,24" />
       <scope id="4448668666025436306" at="159,36,160,61" />
       <scope id="4448668666025436307" at="165,36,166,63" />
@@ -549,7 +549,7 @@
       <unit id="8047970061511569310" at="20,0,79,0" name="jetbrains.mps.ide.refactoring.plugin.MoveModel_Action" />
     </file>
     <file name="Refactoring_ApplicationPlugin.java">
-      <node id="8047970061511569310" at="27,30,28,38" concept="3" />
+      <node id="8047970061511569310" at="27,27,28,38" concept="3" />
     </file>
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/830211401282058525">
@@ -655,8 +655,8 @@
     <file name="Refactoring_ApplicationPlugin.java">
       <node id="8406474294175974068" at="16,0,17,0" concept="4" trace="myId" />
       <node id="8406474294175974068" at="22,27,23,16" concept="9" />
-      <node id="8406474294175974068" at="26,30,27,30" concept="10" />
-      <node id="8406474294175974068" at="30,39,31,14" concept="10" />
+      <node id="8406474294175974068" at="26,30,27,27" concept="10" />
+      <node id="8406474294175974068" at="30,39,31,13" concept="10" />
       <node id="8406474294175974068" at="43,48,44,92" concept="8" />
       <node id="8406474294175974068" at="45,71,46,15" concept="9" />
       <node id="8406474294175974068" at="18,0,20,0" concept="2" trace="Refactoring_ApplicationPlugin#()V" />
@@ -695,7 +695,7 @@
       <unit id="8784230320738943351" at="9,0,20,0" name="jetbrains.mps.ide.refactoring.plugin.CoreNodeRefactorings_ActionGroup" />
     </file>
     <file name="Refactoring_ApplicationPlugin.java">
-      <node id="8784230320738943351" at="31,14,32,57" concept="3" />
+      <node id="8784230320738943351" at="31,13,32,57" concept="3" />
       <node id="8784230320738944343" at="40,157,41,136" concept="3" />
     </file>
   </root>
@@ -740,8 +740,8 @@
       <node id="8784230320738943405" at="118,26,119,13" concept="9" />
       <node id="3846646991041474831" at="120,5,121,223" concept="8" />
       <node id="8193174057328069111" at="121,223,122,231" concept="3" />
-      <node id="8784230320738948502" at="124,67,125,71" concept="10" />
-      <node id="2546796854245076454" at="125,71,126,112" concept="8" />
+      <node id="8784230320738948502" at="124,67,125,60" concept="10" />
+      <node id="2546796854245076454" at="125,60,126,112" concept="8" />
       <node id="885736485116251747" at="126,112,127,95" concept="8" />
       <node id="1782978073203079389" at="127,95,128,87" concept="8" />
       <node id="3818729150937331795" at="130,42,131,107" concept="3" />

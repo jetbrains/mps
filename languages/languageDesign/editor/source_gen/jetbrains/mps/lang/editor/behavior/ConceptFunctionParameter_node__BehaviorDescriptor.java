@@ -33,7 +33,7 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
 
   /*package*/ static boolean useGenericAccessor_id6E2BWlDjAuB(@NotNull SNode __thisNode__) {
     SNode conceptFunction = ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__);
-    // TODO: remove conceptFunction != null check. It is here only for the compatibility with mbeddr generator 
+    // TODO:removeconceptFunction!=nullcheck.Itishereonlyforthecompatibilitywithmbeddrgenerator
     return conceptFunction != null && (boolean) IContextNodeAccessQualifier__BehaviorDescriptor.useNodeGetter_id6E2BWlDjMQu.invoke(SNodeOperations.as(conceptFunction, CONCEPTS.IContextNodeAccessQualifier$wp));
   }
 

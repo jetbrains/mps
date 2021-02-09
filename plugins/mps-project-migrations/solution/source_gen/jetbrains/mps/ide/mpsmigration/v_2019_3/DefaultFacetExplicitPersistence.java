@@ -43,9 +43,9 @@ public class DefaultFacetExplicitPersistence extends BaseProjectMigration {
       if (md == null) {
         continue;
       }
-      // all modules (except devkits) in MPS used to have Java facet by default, therefore add it without any condition  
+      // allmodules(exceptdevkits)inMPSusedtohaveJavafacetbydefault,thereforeadditwithoutanycondition
       boolean needJavaFacet = !(m instanceof DevKit);
-      // as for Tests facet, that both Languages and Solutions used to have, keep it just in case there are test models (those with @tests stereotype) 
+      // asforTestsfacet,thatbothLanguagesandSolutionsusedtohave,keepitjustincasetherearetestmodels(thosewith@testsstereotype)
       boolean needTestFacet = false;
       if (m instanceof Language || m instanceof Solution) {
         for (SModel mm : m.getModels()) {
@@ -71,7 +71,7 @@ public class DefaultFacetExplicitPersistence extends BaseProjectMigration {
       boolean changed = false;
       if (needJavaFacet && !(javaFacetDescriptorPresent)) {
         SModuleFacet mf = facetRegistry.getFacetFactory(JavaModuleFacet.FACET_TYPE).create(m);
-        // let JMFI.load() use legacyClassesGenLocation() logic to populate default source_gen. Don't want to duplicate it here 
+        // letJMFI.load()uselegacyClassesGenLocation()logictopopulatedefaultsource_gen.Don'twanttoduplicateithere
         mf.load(new MementoImpl());
         md.addFacetDescriptor(mf);
         changed = true;

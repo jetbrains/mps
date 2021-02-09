@@ -134,7 +134,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
           }
         }).isNotEmpty()) {
 
-          // found 
+          // found
           SPropertyOperations.assign(node, PROPS.tokens$J1uk, className + "." + remaining);
           return;
         }

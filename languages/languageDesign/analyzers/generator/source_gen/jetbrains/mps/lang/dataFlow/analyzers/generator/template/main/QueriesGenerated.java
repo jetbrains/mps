@@ -180,7 +180,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
     SNode cons = _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.analyzer$EJZd), "Analyzer2Cons2");
     if (cons == null) {
-      // compatibility, fallback for code that doesn't use GPs 
+      // compatibility,fallbackforcodethatdoesn'tuseGPs
       return Analyzer__BehaviorDescriptor.getAnalyzerRunnerFqName_id9V7Nft_vlj.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.analyzer$EJZd));
     }
     return cons;
@@ -188,7 +188,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {
     SNode instructionClass = _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.instruction$$LAH), "Instruction2Class");
     if (instructionClass == null) {
-      // fallback, compatibility code to deal with models that don't use GPs 
+      // fallback,compatibilitycodetodealwithmodelsthatdon'tuseGPs
       return SModelOperations.getModelName(SNodeOperations.getModel(SLinkOperations.getTarget(_context.getNode(), LINKS.instruction$$LAH))) + '.' + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.instruction$$LAH), PROPS.name$MnvL) + "Instruction";
     }
     return instructionClass;
@@ -202,7 +202,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_16_0(final ReferenceMacroContext _context) {
     SNode cons = _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.analyzer$EJZd), "Analyzer2Cons1");
     if (cons == null) {
-      // compatibility, fallback for code that doesn't use GPs 
+      // compatibility,fallbackforcodethatdoesn'tuseGPs
       return Analyzer__BehaviorDescriptor.getAnalyzerRunnerFqName_id9V7Nft_vlj.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.analyzer$EJZd));
     }
     return cons;
@@ -210,7 +210,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_19_0(final ReferenceMacroContext _context) {
     SNode instructionClass = _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.instruction$dfha), "Instruction2Class");
     if (instructionClass == null) {
-      // fallback, compatibility code to deal with models that don't use GPs 
+      // fallback,compatibilitycodetodealwithmodelsthatdon'tuseGPs
       return SModelOperations.getModelName(SNodeOperations.getModel(SLinkOperations.getTarget(_context.getNode(), LINKS.instruction$dfha))) + '.' + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.instruction$dfha), PROPS.name$MnvL) + "Instruction";
     }
     return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(instructionClass)).first();

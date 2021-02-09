@@ -49,7 +49,7 @@ public class TemplateDeclarationReference_SubstituteMenu extends SubstituteMenuB
   public class SMP_ReferenceScope_oxkip2_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_oxkip2_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TemplateDeclarationReference$QT, LINKS.template$6_6);
     }
     @NotNull

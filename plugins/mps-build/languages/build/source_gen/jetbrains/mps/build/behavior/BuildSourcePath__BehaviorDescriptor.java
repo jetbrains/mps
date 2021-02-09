@@ -44,8 +44,8 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
     return ((String) BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(__thisNode__));
   }
   /*package*/ static String getLastSegment_id5dwDdJ8yckN(@NotNull SNode __thisNode__) {
-    // FIXME pay attention to uses of the method. Its uses may expect certain layout. E.g. its uses with 'module descriptor of' (BuildMpsLayout_ModuleJars) suggest 
-    //       module descriptors always reside under module root (otherwise, LAST segment makes no sense) 
+    // FIXMEpayattentiontousesofthemethod.Itsusesmayexpectcertainlayout.E.g.itsuseswith'moduledescriptorof'(BuildMpsLayout_ModuleJars)suggest
+    // moduledescriptorsalwaysresideundermoduleroot(otherwise,LASTsegmentmakesnosense)
     return null;
   }
   /*package*/ static SNode getParent_id7wpYgMyTXsR(@NotNull SNode __thisNode__) {

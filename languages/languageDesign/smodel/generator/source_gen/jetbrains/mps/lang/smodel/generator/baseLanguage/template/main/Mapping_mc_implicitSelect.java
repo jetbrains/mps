@@ -70,7 +70,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
               tnode2.addChild(myAggregationLinks[0], child4);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist5 = null;
@@ -85,7 +85,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
               tnode2.addChild(myAggregationLinks[0], child6);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -102,7 +102,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
               tnode7.addChild(myAggregationLinks[0], child9);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist10 = null;
@@ -117,7 +117,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
               tnode7.addChild(myAggregationLinks[0], child11);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode7);
@@ -134,7 +134,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
               tnode12.addChild(myAggregationLinks[0], child14);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist15 = null;
@@ -149,7 +149,7 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
             for (SNode child16 : TemplateUtil.asNotNull(tlist15)) {
               tnode12.addChild(myAggregationLinks[0], child16);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode12);

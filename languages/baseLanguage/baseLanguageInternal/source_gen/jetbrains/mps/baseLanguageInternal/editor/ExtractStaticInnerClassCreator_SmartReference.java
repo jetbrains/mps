@@ -49,7 +49,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
   public class SMP_ReferenceScope_369k9v_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_369k9v_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ExtractStaticInnerClassCreator$tF, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull

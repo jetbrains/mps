@@ -126,7 +126,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      // Resolving references by accessing .target node: 
+      // Resolvingreferencesbyaccessing.targetnode:
       ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).visitAll(new IVisitor<SReference>() {
         public void visit(SReference it) {
           SLinkOperations.getTargetNode(it);
@@ -148,11 +148,11 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      // Adding one unspecified reference and checking if it was added properly 
+      // Addingoneunspecifiedreferenceandcheckingifitwasaddedproperly
       int initialSize = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count();
       String unspecifiedReferenceName = this.addUnspecifiedReference(getNodeById("2906110183022432277"), getNodeById("2906110183022219849"));
       Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count());
-      // Checking if unspecified reference is working properly 
+      // Checkingifunspecifiedreferenceisworkingproperly
       Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
           return (SLinkOperations.findLinkDeclaration(it) == null);
@@ -186,9 +186,9 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       final SNode deletedNode = SLinkOperations.getTarget(getNodeById("2906110183022432277"), LINKS.root$cBIX);
       SNodeOperations.deleteNode(deletedNode);
       Assert.assertEquals(initialSize, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count());
-      // the whole test method runs within a command, our model implementation makes sure reference resolution during 
-      // command works even for nodes deleted during the same command (UnregisteredNodes) 
-      // Perhaps, need another test to check association target truly gone once command is over 
+      // thewholetestmethodrunswithinacommand,ourmodelimplementationmakessurereferenceresolutionduring
+      // commandworksevenfornodesdeletedduringthesamecommand(UnregisteredNodes)
+      // Perhaps,needanothertesttocheckassociationtargettrulygoneoncecommandisover
       Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
           return SNodeOperations.getModel(SLinkOperations.getTargetNode(it)) == null;
@@ -197,7 +197,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       Assert.assertEquals(1, Sequence.fromIterable(brokenReferences).count());
       SReference theReference = Sequence.fromIterable(brokenReferences).first();
       Assert.assertSame(deletedNode, SLinkOperations.getTargetNode(theReference));
-      // make sure that the link target is truly deleted from the model 
+      // makesurethatthelinktargetistrulydeletedfromthemodel
       Assert.assertTrue(SNodeOperations.getModel(deletedNode) == null);
       Assert.assertNull(SNodeOperations.getModel(getNodeById("2906110183022219844")).getNode(deletedNode.getNodeId()));
       Assert.assertEquals(LINKS.root$cBIX, SLinkOperations.getRefLink(theReference));

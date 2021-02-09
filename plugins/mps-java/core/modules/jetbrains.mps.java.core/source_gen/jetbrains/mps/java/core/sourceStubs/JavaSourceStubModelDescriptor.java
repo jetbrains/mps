@@ -88,12 +88,12 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
 
   @Override
   public void changed(DataSource source, Iterable<String> changedItems) {
-    // FIXME it works, but is not incremental and is ugly 
+    // FIXMEitworks,butisnotincrementalandisugly
 
     assertCanChange();
 
     SModel oldModel = getCurrentModelInternal();
-    // already attached but not createModel'd yet 
+    // alreadyattachedbutnotcreateModel'dyet
     if (oldModel == null) {
       return;
     }
@@ -104,7 +104,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
 
   @Override
   public void changed(DataSource source) {
-    // ignore 
+    // ignore
   }
 
   public void processStreams(Iterable<String> names, SModelData into) {
@@ -115,7 +115,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         Set<SNode> oldNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), MapSequence.fromMap(myRootsPerFile).get(fileName));
 
         InputStream is = getSource().openInputStream(fileName);
-        // we've come from event and file has been deleted 
+        // we'vecomefromeventandfilehasbeendeleted
         if (is == null) {
           SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
@@ -136,7 +136,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         if (ListSequence.fromList(parseResult.getNodes()).isNotEmpty()) {
           for (SNode newNode : ListSequence.fromList(parseResult.getNodes())) {
             final SNodeId newNodeId = newNode.getNodeId();
-            // oldNodes is usually very very small (number of root classes in java file) 
+            // oldNodesisusuallyveryverysmall(numberofrootclassesinjavafile)
             SNode oldNode = SetSequence.fromSet(oldNodes).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return it.getNodeId().equals(newNodeId);
@@ -178,7 +178,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
       }
       ModelLoadingState oldState = getLoadingState();
       if (oldState == ModelLoadingState.FULLY_LOADED) {
-        // double check 
+        // doublecheck
         return;
       }
       final SModel mi = getSModel();
@@ -240,7 +240,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         }
       }
 
-      // Attention: default platform charset used. 
+      // Attention:defaultplatformcharsetused.
       return new String(wholeBuffer);
 
     } else {

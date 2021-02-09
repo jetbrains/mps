@@ -557,9 +557,9 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       return false;
     }
     int compareResult = revision.getRevisionDate().compareTo(firstRevision.getRevisionDate());
-    // XXX not clear what VcsRevisionNumber.timestamp means (that's what VcsFileRevision.getRevisionDate() looks at) 
-    // and why it's the same for few (or even all?) file revisions. It seems it does not reflect actual commit moment either, 
-    // though I didn't investigate this thoroughly 
+    // XXXnotclearwhatVcsRevisionNumber.timestampmeans(that'swhatVcsFileRevision.getRevisionDate()looksat)
+    // andwhyit'sthesameforfew(orevenall?)filerevisions.Itseemsitdoesnotreflectactualcommitmomenteither,
+    // thoughIdidn'tinvestigatethisthoroughly
     if (compareResult == 0 && revision instanceof VcsFileRevisionEx && firstRevision instanceof VcsFileRevisionEx) {
       Date d1 = ((VcsFileRevisionEx) revision).getAuthorDate();
       Date d2 = ((VcsFileRevisionEx) firstRevision).getAuthorDate();

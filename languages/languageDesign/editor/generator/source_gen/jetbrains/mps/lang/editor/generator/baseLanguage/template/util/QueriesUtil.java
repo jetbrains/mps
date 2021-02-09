@@ -29,7 +29,7 @@ public class QueriesUtil {
   private static Object CELL_READABLE_ID = new Object();
   @Deprecated
   public static SNode getGeneratedClassByAncestor(SNode inputNode, final TemplateQueryContext genctx) {
-    // Since MPS 3.5 not used anymore 
+    // SinceMPS3.5notusedanymore
     List<SNode> ancestors = SNodeOperations.getNodeAncestors(inputNode, null, false);
     Iterable<SNode> outputClasses = ListSequence.fromList(ancestors).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(final SNode it) {

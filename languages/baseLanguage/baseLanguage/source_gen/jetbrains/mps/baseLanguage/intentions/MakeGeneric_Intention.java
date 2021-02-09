@@ -38,7 +38,7 @@ public final class MakeGeneric_Intention extends AbstractIntentionDescriptor imp
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // todo: maybe not "everything except" but "just something"? 
+    // todo:maybenot"everythingexcept"but"justsomething"?
     return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$N0));
   }
   @Override

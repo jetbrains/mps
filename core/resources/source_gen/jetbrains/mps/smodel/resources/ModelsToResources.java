@@ -117,7 +117,7 @@ __switch__:
                       this.__CP__ = 2;
                       break;
                     case 3:
-                      // end marker reached 
+                      // endmarkerreached
                       this.__CP__ = 5;
                       break;
                     case 6:

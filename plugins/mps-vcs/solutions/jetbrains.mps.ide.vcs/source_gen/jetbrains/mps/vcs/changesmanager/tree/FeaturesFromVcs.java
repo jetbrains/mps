@@ -235,7 +235,7 @@ public class FeaturesFromVcs {
       runnable.run();
     } catch (Throwable t) {
       if (t instanceof InterruptedException || getCauseSafe(t) instanceof InterruptedException) {
-        // ignore 
+        // ignore
       } else {
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error("Exception on firing featureStateChanged event", t);

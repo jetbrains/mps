@@ -24,7 +24,7 @@ public final class VisibilityUtil {
   }
 
   public static boolean isVisible(@NotNull SNode context, @NotNull SNode name) {
-    // only check visibility of the name, accessibility of qualifier and if the name is member is not checked here 
+    // onlycheckvisibilityofthename,accessibilityofqualifierandifthenameismemberisnotcheckedhere
     if (SNodeOperations.isInstanceOf(name, CONCEPTS.Classifier$Ix)) {
       return isClassifierAccessible(context, SNodeOperations.cast(name, CONCEPTS.Classifier$Ix));
     }
@@ -37,23 +37,23 @@ public final class VisibilityUtil {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
       return topClassifier(context) == topClassifier(name);
     }
-    // package or protected access 
+    // packageorprotectedaccess
     if (packageName(context).equals(packageName(name))) {
       return true;
     }
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(name, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr)) {
-      //  check special cases of protected access 
+      // checkspecialcasesofprotectedaccess
       SNode classifier = SNodeOperations.getNodeAncestor(name, CONCEPTS.Classifier$Ix, false, false);
       for (SNode cls : ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$Ix, true))) {
         if (BaseLanguageUtil.isAssignable(cls, classifier)) {
           if (SNodeOperations.isInstanceOf(name, CONCEPTS.FieldDeclaration$ie) && SNodeOperations.isInstanceOf(context, CONCEPTS.FieldReferenceOperation$fU) || SNodeOperations.isInstanceOf(name, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(context, CONCEPTS.InstanceMethodCallOperation$uu)) {
-            // check ExpressionName or PrimaryExpression is subclass of cls, works only with right context 
-            //  will not work in the case: otherClass.method(protectedMethod()) with enclosed node as context 
+            // checkExpressionNameorPrimaryExpressionissubclassofcls,worksonlywithrightcontext
+            // willnotworkinthecase:otherClass.method(protectedMethod())withenclosednodeascontext
             if (TypecheckingFacade.getFromContext().isSubtype(DotExpression__BehaviorDescriptor.getOperandType_id7GulAc9z0dN.invoke(SNodeOperations.cast(SNodeOperations.getParent(context), CONCEPTS.DotExpression$yW)), _quotation_createNode_v8uv56_b0a2a0a0a2a7a2(cls))) {
               return true;
             }
           } else if (SNodeOperations.isInstanceOf(name, CONCEPTS.ConstructorDeclaration$yG)) {
-            // check it is superclass constructor invocation or anonymous class instance creation 
+            // checkitissuperclassconstructorinvocationoranonymousclassinstancecreation
             return SNodeOperations.isInstanceOf(context, CONCEPTS.SuperConstructorInvocation$wU) || SNodeOperations.isInstanceOf(context, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(context, CONCEPTS.AnonymousClassCreator$fS);
           } else {
             return true;
@@ -74,7 +74,7 @@ public final class VisibilityUtil {
   }
 
   private static boolean isClassifierAccessible(@NotNull SNode context, @Nullable SNode classifier) {
-    //  check "static" accessibility here 
+    // check"static"accessibilityhere
     if ((classifier == null)) {
       return true;
     }
@@ -92,7 +92,7 @@ public final class VisibilityUtil {
       return true;
     }
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classifier, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr)) {
-      // parent cannot be null here 
+      // parentcannotbenullhere
       Iterable<SNode> enclosing = SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$Ix, true);
       if (SNodeOperations.hasRole(context, LINKS.superclass$Mp9$) || SNodeOperations.hasRole(context, LINKS.implementedInterface$rujG) || SNodeOperations.hasRole(context, LINKS.extendedInterface$PDVO)) {
         enclosing = Sequence.fromIterable(enclosing).skip(1);

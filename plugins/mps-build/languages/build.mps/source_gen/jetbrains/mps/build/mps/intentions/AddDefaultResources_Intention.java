@@ -63,7 +63,7 @@ public final class AddDefaultResources_Intention extends AbstractIntentionDescri
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode mr = SLinkOperations.addNewChild(node, LINKS.sources$mT1j, CONCEPTS.BuildMps_ModuleResources$M6);
       SNode files = SLinkOperations.setNewChild(mr, LINKS.files$uRjo, null);
-      // assume module descriptor file lives under a module dir as a sibling to resources/icons 
+      // assumemoduledescriptorfilelivesunderamoduledirasasiblingtoresources/icons
       SLinkOperations.setTarget(files, LINKS.dir$e6r$, BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(SLinkOperations.getTarget(node, LINKS.path$iYKB)));
       SPropertyOperations.set(SLinkOperations.addNewChild(files, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb), PROPS.pattern$u5_$, "icons/**");
     }

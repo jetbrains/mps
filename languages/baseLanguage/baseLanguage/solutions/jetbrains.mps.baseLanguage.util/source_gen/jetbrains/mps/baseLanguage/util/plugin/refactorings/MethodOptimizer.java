@@ -56,7 +56,7 @@ public class MethodOptimizer {
     if (size < 2) {
       return;
     }
-    // what if statement is not on line of size -2? 
+    // whatifstatementisnotonlineofsize-2?
     SNode beforeLastStatement = ListSequence.fromList(statements).getElement(size - 2);
     if (SNodeOperations.isInstanceOf(beforeLastStatement, CONCEPTS.ExpressionStatement$O8)) {
       SNode expressionStatement = SNodeOperations.cast(beforeLastStatement, CONCEPTS.ExpressionStatement$O8);

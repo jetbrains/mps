@@ -131,24 +131,24 @@ public class MpsLoadTask extends Task {
     myWhatToDo.addLibraryJar(file.getAbsolutePath());
     String fname = file.getName();
     if (file.isFile() && fname.endsWith(".jar")) {
-      // perhaps, it's a language.jar, register corresponding generator.jar, if any. 
-      // FIXME note, this is a hack as build language doesn't record generators among MPSModulesClosure.generationDependenciesClosure() 
-      //       (check MPSModulesPartitioner.buildExternalDependencies() and <generate> task template. 
-      //       MPS used to guess (aka 'derive') generator module from language's module (ProjectPathUtil gave file with "-generator.jar" suffix 
-      //       as classpath for packaged Generator module), in 2017.1 we try to switch to 'honest' modules, gradually moving towards generators listed 
-      //       inside <generate> task. For the transition period, however, the code below mimics what we would have explicitly specified in <generate>. 
+      // perhaps,it'salanguage.jar,registercorrespondinggenerator.jar,ifany.
+      // FIXMEnote,thisisahackasbuildlanguagedoesn'trecordgeneratorsamongMPSModulesClosure.generationDependenciesClosure()
+      // (checkMPSModulesPartitioner.buildExternalDependencies()and<generate>tasktemplate.
+      // MPSusedtoguess(aka'derive')generatormodulefromlanguage'smodule(ProjectPathUtilgavefilewith"-generator.jar"suffix
+      // asclasspathforpackagedGeneratormodule),in2017.1wetrytoswitchto'honest'modules,graduallymovingtowardsgeneratorslisted
+      // inside<generate>task.Forthetransitionperiod,however,thecodebelowmimicswhatwewouldhaveexplicitlyspecifiedin<generate>.
       final String stem = fname.substring(0, fname.length() - 4);
       final int maxGeneratorNumberToStopForSure = 10;
       for (int i = 0; i < maxGeneratorNumberToStopForSure; i++) {
-        // XXX Unless I fix build language templates to list generator.jar explicitly, shall account for lang-N-generator.jar here to support multiple generators per language case. 
+        // XXXUnlessIfixbuildlanguagetemplatestolistgenerator.jarexplicitly,shallaccountforlang-N-generator.jarheretosupportmultiplegeneratorsperlanguagecase.
         File generatorJar = new File(file.getParent(), stem + ((i == 0 ? "" : '-' + String.valueOf(i))) + "-generator.jar");
         if (generatorJar.isFile()) {
           myWhatToDo.addLibraryJar(generatorJar.getAbsolutePath());
         } else {
-          // expect consecutive mudule numbering 
+          // expectconsecutivemudulenumbering
           break;
         }
-        // FIXME there's similar code in MpsTestSuite, but not in jUnit launcher 
+        // FIXMEthere'ssimilarcodeinMpsTestSuite,butnotinjUnitlauncher
       }
     }
   }
@@ -163,9 +163,9 @@ public class MpsLoadTask extends Task {
 
   @Override
   public void execute() throws BuildException {
-    // By default, we build a classpath that presumably contains all necessary MPS jars (expecting MpsEnvironment or even IdeaEnvironment to fire up) 
-    // though specific task subclasses have control over what to include there. Unfortunately, there's no yet fine-grained control e.g. to include 
-    // only jars sufficient for MpsEnvironment (i.e. not to include any IDEA stuff) 
+    // Bydefault,webuildaclasspaththatpresumablycontainsallnecessaryMPSjars(expectingMpsEnvironmentorevenIdeaEnvironmenttofireup)
+    // thoughspecifictasksubclasseshavecontroloverwhattoincludethere.Unfortunately,there'snoyetfine-grainedcontrole.g.toinclude
+    // onlyjarssufficientforMpsEnvironment(i.e.nottoincludeanyIDEAstuff)
     Set<File> classPaths = calculateClassPath(myFork);
     if (myUsePropertiesAsMacro) {
       Hashtable properties = getProject().getProperties();
@@ -288,7 +288,7 @@ public class MpsLoadTask extends Task {
    * This method is part of {@link jetbrains.mps.build.ant.MpsLoadTask#doInProcessWork(Class<?>) }.
    */
   protected Object instantiateInProcessWorker(@NotNull Class<?> workerClass) throws Exception {
-    // First, check if there's a desire to get ProjectComponent, i.e. a worker that is Ant-aware 
+    // First,checkifthere'sadesiretogetProjectComponent,i.e.aworkerthatisAnt-aware
     for (Constructor<?> constructor : workerClass.getConstructors()) {
       if (constructor.getParameterCount() != 2) {
         continue;
@@ -298,7 +298,7 @@ public class MpsLoadTask extends Task {
         return constructor.newInstance(myWhatToDo, this);
       }
     }
-    // Then, resort to a worker that doesn't depend from Ant 
+    // Then,resorttoaworkerthatdoesn'tdependfromAnt
     for (Constructor<?> constructor : workerClass.getConstructors()) {
       if (constructor.getParameterCount() != 1) {
         continue;
@@ -308,7 +308,7 @@ public class MpsLoadTask extends Task {
         return constructor.newInstance(myWhatToDo);
       }
     }
-    // Last, respect the case worker doesn't need anything 
+    // Last,respectthecaseworkerdoesn'tneedanything
     return workerClass.newInstance();
   }
 
@@ -382,8 +382,8 @@ public class MpsLoadTask extends Task {
   protected final File getMpsHome_Checked() {
     File mpsHome = myMpsHome;
     if (mpsHome == null) {
-      // myMpsHome serves as an indicator whether user set its location explicitly (hence, with desire to force its own and ignore default home lookup logic 
-      // presently in MPSClasspathUtil, see #calculateClassPath(boolean)). This method shall not assign myMpsHome value. 
+      // myMpsHomeservesasanindicatorwhetherusersetitslocationexplicitly(hence,withdesiretoforceitsownandignoredefaulthomelookuplogic
+      // presentlyinMPSClasspathUtil,see#calculateClassPath(boolean)).ThismethodshallnotassignmyMpsHomevalue.
       String mpsHomePath = getProject().getProperty("mps.home");
       if ((mpsHomePath == null || mpsHomePath.length() == 0)) {
         mpsHomePath = getProject().getProperty("mps_home");
@@ -398,7 +398,7 @@ public class MpsLoadTask extends Task {
   }
 
   private void checkMpsHome(File mpsHome) {
-    // the following code checks mps home is specified correctly 
+    // thefollowingcodechecksmpshomeisspecifiedcorrectly
     assert mpsHome != null : "MPS home folder must be specified. Use either mpshome task attribute or mps_home or mps.home Ant property to specify home folder.";
     boolean containsBuildTxt = false;
     for (File child : mpsHome.listFiles()) {
@@ -423,8 +423,8 @@ public class MpsLoadTask extends Task {
   protected Set<File> calculateClassPath(boolean fork) {
     List<File> classPathRoots;
     if (myMpsHome != null) {
-      // if user set mps home location explicitly, assume he knows what he's doing and wishes to force it 
-      // XXX perhaps, would be better to have nested <mps> element with rich set of options? 
+      // ifusersetmpshomelocationexplicitly,assumeheknowswhathe'sdoingandwishestoforceit
+      // XXXperhaps,wouldbebettertohavenested<mps>elementwithrichsetofoptions?
       classPathRoots = Collections.singletonList(new File(myMpsHome, "lib/"));
     } else {
       classPathRoots = MPSClasspathUtil.getClassPathRootsFromDependencies(getProject());
@@ -446,8 +446,8 @@ public class MpsLoadTask extends Task {
    */
   @Deprecated
   protected String getWorkerClass() {
-    // I'd like to keep getWorkerClass(), but can't make it public to satisfy Ant and not break binary code compatibility. 
-    // Left for compatibility, just in case there are other subclasses of MpsLoadTask that override the method 
+    // I'dliketokeepgetWorkerClass(),butcan'tmakeitpublictosatisfyAntandnotbreakbinarycodecompatibility.
+    // Leftforcompatibility,justincasethereareothersubclassesofMpsLoadTaskthatoverridethemethod
     String rv = getWorker();
     if (rv == null) {
       throw new IllegalStateException("Please specify 'worker' class to execute");

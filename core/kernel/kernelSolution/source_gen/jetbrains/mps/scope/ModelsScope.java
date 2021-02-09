@@ -26,7 +26,7 @@ public class ModelsScope extends Scope {
   public ModelsScope(Iterable<SModel> models, boolean rootsOnly, @Nullable SAbstractConcept targetConcept) {
     myModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), models);
     myRootsOnly = rootsOnly;
-    //  null means any, essentially BaseConcept but I see no reason to force to specify it explicitly 
+    // nullmeansany,essentiallyBaseConceptbutIseenoreasontoforcetospecifyitexplicitly
     myTargetConcept = targetConcept;
   }
   @Override
@@ -67,7 +67,7 @@ public class ModelsScope extends Scope {
         if (result == null) {
           result = node;
         } else {
-          // ambiguity 
+          // ambiguity
           return null;
         }
       }

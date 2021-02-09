@@ -80,7 +80,7 @@ public class OverrideImplementMethodsHelper {
 
   /*package*/ void update(SNode method, SNode baseMethod) {
     if (SModelStereotype.isStubModel(SNodeOperations.getModel(baseMethod))) {
-      // we only need to find good names for parameters, if they are cryptic e.g. java_sourcestubs deliver proper names 
+      // weonlyneedtofindgoodnamesforparameters,iftheyarecryptice.g.java_sourcestubsdeliverpropernames
       final SNode startNode = (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SPropertyOperations.getString(it, PROPS.name$MnvL).matches("p[0-9]+");

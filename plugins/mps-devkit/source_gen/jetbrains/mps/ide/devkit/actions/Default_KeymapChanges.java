@@ -11,7 +11,7 @@ import javax.swing.KeyStroke;
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/8586967776370449212", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.DeleteGenerator_Action", getShortcut(" DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindLanguageConceptsUsages_Action", getShortcut("alt F8"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.FindModuleUsage_Action", getShortcut("alt F7"));
@@ -25,8 +25,8 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowEditorMenuItemTrace_Action", getShortcut("ctrl alt B"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowNodeInExplorer_Action", getShortcut("alt X"));
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowStructure_Action", getShortcut("ctrl F10"));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "$default";

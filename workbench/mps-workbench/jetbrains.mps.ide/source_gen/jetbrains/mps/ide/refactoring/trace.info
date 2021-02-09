@@ -152,7 +152,7 @@
       <node id="2482360940803571808" at="116,37,117,24" concept="9" />
       <node id="2482360940803571865" at="119,29,120,48" concept="3" />
       <node id="2482360940803571878" at="124,25,125,27" concept="3" />
-      <node id="1092784201483504596" at="127,30,128,40" concept="10" />
+      <node id="1092784201483504596" at="127,30,128,34" concept="10" />
       <node id="2482360940803571981" at="131,25,132,42" concept="3" />
       <node id="2482360940803571469" at="137,0,138,0" concept="4" trace="myFtp" />
       <node id="2482360940803571895" at="138,61,139,18" concept="3" />
@@ -189,7 +189,7 @@
       <node id="2482360940803571659" at="82,65,88,7" concept="3" />
       <node id="2482360940803571680" at="90,0,96,0" concept="7" trace="keyTyped#(Ljava/awt/event/KeyEvent;)V" />
       <node id="2482360940803571690" at="97,43,103,7" concept="3" />
-      <node id="1092784201482656450" at="128,40,134,7" concept="3" />
+      <node id="1092784201482656450" at="128,34,134,7" concept="3" />
       <node id="2482360940803571673" at="88,7,96,7" concept="3" />
       <node id="2482360940803571882" at="127,0,136,0" concept="7" trace="requestFocus#()V" />
       <node id="2482360940803571583" at="60,0,110,0" concept="7" trace="init#(Ljetbrains/mps/ide/platform/refactoring/RefactoringViewAction;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;)V" />
@@ -367,7 +367,7 @@
       <node id="3419948936213592481" at="48,25,49,48" concept="8" />
       <node id="3419948936213626200" at="51,40,52,21" concept="2" />
       <node id="3419948936213626968" at="53,11,54,0" concept="11" />
-      <node id="3419948936213609597" at="54,0,55,48" concept="10" />
+      <node id="3419948936213609597" at="54,0,55,44" concept="10" />
       <node id="3419948936213647764" at="56,54,57,94" concept="3" />
       <node id="3419948936213677440" at="57,94,58,18" concept="0" />
       <node id="3419948936213607287" at="62,7,63,0" concept="11" />
@@ -385,7 +385,7 @@
       <node id="5531833364433310606" at="99,99,100,49" concept="3" />
       <node id="5212816814666653617" at="100,49,101,52" concept="3" />
       <node id="3419948936213621912" at="50,77,53,11" concept="6" />
-      <node id="3419948936213609599" at="55,48,59,11" concept="6" />
+      <node id="3419948936213609599" at="55,44,59,11" concept="6" />
       <node id="6697284547971176912" at="91,37,95,5" concept="6" />
       <node id="1029648736116585380" at="71,0,76,0" concept="7" trace="run#()V" />
       <node id="5212816814666281005" at="97,0,102,5" concept="6" />
@@ -570,8 +570,8 @@
   <root nodeRef="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)/6188135140808769438">
     <file name="NodeHierarchyChooser.java">
       <node id="6188135140808769526" at="25,0,26,0" concept="4" trace="myTree" />
-      <node id="2939130724184861233" at="27,72,28,65" concept="10" />
-      <node id="6188135140808769445" at="28,65,29,66" concept="3" />
+      <node id="2939130724184861233" at="27,72,28,56" concept="10" />
+      <node id="6188135140808769445" at="28,56,29,66" concept="3" />
       <node id="2034046503361595365" at="31,25,32,151" concept="3" />
       <node id="6188135140808769453" at="34,7,35,38" concept="3" />
       <node id="6188135140808769464" at="37,25,38,54" concept="3" />

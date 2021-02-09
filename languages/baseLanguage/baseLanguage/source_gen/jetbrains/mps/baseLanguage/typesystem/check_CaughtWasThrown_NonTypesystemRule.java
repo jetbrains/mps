@@ -44,7 +44,7 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
       if (SNodeOperations.isInstanceOf(caughtType, CONCEPTS.ClassifierType$bL)) {
         SNode caughtClassifier = SLinkOperations.getTarget(SNodeOperations.cast(caughtType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
         if (TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0a0b0b()) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0a0b0b_0()) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Exception")) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
-          // ignore 
+          // ignore
         } else {
           Set<SNode> thrown = SetSequence.fromSet(new HashSet<SNode>());
           {

@@ -85,7 +85,7 @@ public abstract class MergeDriverPacker {
         }
       }
     }
-    // Workaround for rare case when MPS build is invoked with internal flag (MPS-13819) 
+    // WorkaroundforrarecasewhenMPSbuildisinvokedwithinternalflag(MPS-13819)
     if (isForZip && Sequence.fromIterable(classpathDirs).isEmpty()) {
       FileUtil.write(new File(tmpDir, "dummy.txt"), new byte[0]);
     }
@@ -97,7 +97,7 @@ public abstract class MergeDriverPacker {
   private Set<String> getClasspath() {
     Set<String> classpathItems = SetSequence.fromSet(new LinkedHashSet<String>());
 
-    // FIXME why don't we use CommonPath.getMPSPaths(ClassType.[CORE|OPENAPI|ANNOATATION]) That would reduce number of places with jar names we have to keep! 
+    // FIXMEwhydon'tweuseCommonPath.getMPSPaths(ClassType.[CORE|OPENAPI|ANNOATATION])Thatwouldreducenumberofplaceswithjarnameswehavetokeep!
     final String mpsCorePath = getMPSCorePath();
     SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsLibJars).select(new ISelector<String, String>() {
       public String select(String it) {

@@ -62,7 +62,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   private Object myIdeaApplication;
 
   static {
-    // ij itself does not initialize log4j 
+    // ijitselfdoesnotinitializelog4j
     EnvironmentBase.initializeLog4j();
   }
 
@@ -94,10 +94,10 @@ public final class IdeaEnvironment extends EnvironmentBase {
    */
   @Hack
   private void addRequiredPlugins(EnvironmentConfig config) {
-    // [MM]: looks like a hack, should we regenerate it to a regular plugin specification? 
-    // Probably, with plugin-set-ref to ensure the same plugin set is used 
-    // typically, this property is set by generated ant scripts before running tests 
-    // otherwise, we set it from config 
+    // [MM]:lookslikeahack,shouldweregenerateittoaregularpluginspecification?
+    // Probably,withplugin-set-reftoensurethesamepluginsetisused
+    // typically,thispropertyissetbygeneratedantscriptsbeforerunningtests
+    // otherwise,wesetitfromconfig
     if (isNotEmptyString(System.getProperty(PLUGIN_PATH))) {
       return;
     }
@@ -107,20 +107,20 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
   @Hack
   private void setPluginPathProperty() {
-    // [MM]: why do we set ids from config, while path is not config-related? 
+    // [MM]:whydowesetidsfromconfig,whilepathisnotconfig-related?
     StringJoiner pluginPathResult = new StringJoiner(File.pathSeparator);
     if (myConfig.isTestMode()) {
-      // it is comfortable for us to mimic the behavior in the non-test mode when we load by default all the plugins 
-      // from the app_dir/plugins folder. 
-      // In order to avoid duplication plugin problem (we have IDEA loading plugins from cp, from plugin.path property, 
-      // from preinstalled plugins folder (non-test-mode only) 
-      // and from user settings plugins folder) we use filtering below which makes it totally 4 places to look after. 
+      // itiscomfortableforustomimicthebehaviorinthenon-testmodewhenweloadbydefaultalltheplugins
+      // fromtheapp_dir/pluginsfolder.
+      // Inordertoavoidduplicationpluginproblem(wehaveIDEAloadingpluginsfromcp,fromplugin.pathproperty,
+      // frompreinstalledpluginsfolder(non-test-modeonly)
+      // andfromusersettingspluginsfolder)weusefilteringbelowwhichmakesittotally4placestolookafter.
       File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
       if (pluginDir.exists()) {
         for (File pluginFolder : pluginDir.listFiles()) {
-          // Ignore 'Git4Idea' & 'SVN4Idea' plugins 
-          // They load from classpath in: 
-          // PluginManagerCore#computePlatformPluginUrlAndCollectPluginUrls 
+          // Ignore'Git4Idea'&'SVN4Idea'plugins
+          // Theyloadfromclasspathin:
+          // PluginManagerCore#computePlatformPluginUrlAndCollectPluginUrls
           if (pluginFolder.getName().equals("git4idea") || pluginFolder.getName().equals("svn4idea")) {
             continue;
           }
@@ -133,9 +133,9 @@ public final class IdeaEnvironment extends EnvironmentBase {
         pluginPathResult.add(pd.path);
       }
     }
-    // IMPORTANT! "plugin.path" doesn't tell plugin's classpath, it points to location where to read plugin.xml from 
-    // I.e. for unit test mode, complete plugin's classpath has to be in global CP already, 
-    // PluginManagerCore.loadDescriptorsFromClassPath. 
+    // IMPORTANT!"plugin.path"doesn'ttellplugin'sclasspath,itpointstolocationwheretoreadplugin.xmlfrom
+    // I.e.forunittestmode,completeplugin'sclasspathhastobeinglobalCPalready,
+    // PluginManagerCore.loadDescriptorsFromClassPath.
     System.setProperty(PLUGIN_PATH, pluginPathResult.toString());
   }
 
@@ -179,8 +179,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
     }
     final String PERF_LOG_KEY = "idea.log.perf.stats";
     if (System.getProperty(PERF_LOG_KEY) == null) {
-      // see StartUpPerformanceReporter.kt/logStats, which logs statistics when App.isInternal (our case).  
-      // I doubt there's any reason for an end-user to see this statistics in a regular MPS scenario. Still, they could opt to do so with system property explicitly set. 
+      // seeStartUpPerformanceReporter.kt/logStats,whichlogsstatisticswhenApp.isInternal(ourcase).
+      // Idoubtthere'sanyreasonforanend-usertoseethisstatisticsinaregularMPSscenario.Still,theycouldopttodosowithsystempropertyexplicitlyset.
       System.setProperty(PERF_LOG_KEY, Boolean.FALSE.toString());
     }
     System.setProperty("ide.new.project.model", Boolean.toString(false));
@@ -190,7 +190,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
       if (oldValue == null) {
         System.setProperty(CREATE_PLUGIN_CLASSLOADERS, myConfig.doesCreatePluginClassLoaders() + "");
       }
-      // Force GraphicsEnvironment to cache headless false state before TestApplicationManager resets it to true 
+      // ForceGraphicsEnvironmenttocacheheadlessfalsestatebeforeTestApplicationManagerresetsittotrue
       System.setProperty("java.awt.headless", Boolean.FALSE.toString());
       GraphicsEnvironment.isHeadless();
       myIdeaApplication = TestApplicationManager.getInstance();
@@ -209,7 +209,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
         public void dispose() {
         }
       };
-      // for ant tests we run with the flag, which disables the checks 
+      // foranttestswerunwiththeflag,whichdisablesthechecks
       VfsRootAccess.allowRootAccess(disposable0, projectFile.getAbsolutePath());
     }
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
@@ -240,10 +240,10 @@ public final class IdeaEnvironment extends EnvironmentBase {
         List<Project> openedProjects = new ArrayList<Project>(ProjectManager.getInstance().getOpenedProjects());
         for (final Project project : openedProjects) {
           if (project instanceof MPSProject) {
-            // MPSProject need to be disposed outside writeAction to prevent exception: 
-            // java.lang.IllegalStateException: Must not call closeProject() from under write action 
-            // because fireProjectClosing() listeners must have a chance to do something useful 
-            // TODO: find way to put MPSProject#dispose() under writeAction 
+            // MPSProjectneedtobedisposedoutsidewriteActiontopreventexception:
+            // java.lang.IllegalStateException:MustnotcallcloseProject()fromunderwriteaction
+            // becausefireProjectClosing()listenersmusthaveachancetodosomethinguseful
+            // TODO:findwaytoputMPSProject#dispose()underwriteAction
             project.dispose();
           } else {
             application.runWriteAction(new Runnable() {
@@ -255,7 +255,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
         }
         application.runWriteAction(new Runnable() {
           public void run() {
-            // for IdeaTestApplication case (myUnitTestMode == true) dispose() eventually clears DTA.ourInstance field 
+            // forIdeaTestApplicationcase(myUnitTestMode==true)dispose()eventuallyclearsDTA.ourInstancefield
             if (myIdeaApplication instanceof Disposable) {
               Disposer.dispose((Disposable) myIdeaApplication);
             }
@@ -280,7 +280,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
       LibraryContributorHelper helper = new LibraryContributorHelper();
       libInitializer.load(Collections.singletonList(helper.createLibContributorForLibs(myConfig.getLibs(), getRootClassLoader())));
     }
-    // modules from IDEA plugins are loaded with regular platform component mechanism (ext points, PluginLibraryContributor and RepositoryInitializingComponent) 
+    // modulesfromIDEApluginsareloadedwithregularplatformcomponentmechanism(extpoints,PluginLibraryContributorandRepositoryInitializingComponent)
   }
 
   private File createDummyProjectFile() {
@@ -307,7 +307,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
           if (LOG.isInfoEnabled()) {
             LOG.info("Load and open the project with path '" + filePath + "'");
           }
-          // fixme this is an IDE way of opening project 
+          // fixmethisisanIDEwayofopeningproject
           project.set(projectManager.loadAndOpenProject(filePath));
           refreshProjectDir(project.get());
         } catch (Exception e) {
@@ -331,8 +331,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
   }
 
   private void refreshProjectDir(@NotNull com.intellij.openapi.project.Project project) {
-    // calling sync refresh for FS in order to update all modules/models loaded from the project 
-    // if unit-test is executed with the "reuse caches" option. 
+    // callingsyncrefreshforFSinordertoupdateallmodules/modelsloadedfromtheproject
+    // ifunit-testisexecutedwiththe"reusecaches"option.
     String basePath = project.getBasePath();
     if (basePath != null) {
       CachingFileSystem fs = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
@@ -357,7 +357,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
         PlatformTestUtil.dispatchAllEventsInIdeEventQueue();
       }
     }, ModalityState.NON_MODAL);
-    // There's no evidence invokeAndWait() above won't pump all the pending model events, why do it again? 
+    // There'snoevidenceinvokeAndWait()abovewon'tpumpallthependingmodelevents,whydoitagain?
   }
 
   @Override

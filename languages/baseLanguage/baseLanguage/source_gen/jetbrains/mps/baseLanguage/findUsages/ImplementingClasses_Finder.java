@@ -51,7 +51,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                   new _FunctionTypes._void_P1_E0<SNode>() {
                     public void invoke(SNode interfaceNode) {
                       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), CONCEPTS.ClassConcept$bK)) {
-                        // class implements interface case 
+                        // classimplementsinterfacecase
                         if (SNodeOperations.hasRole(interfaceNode, LINKS.implementedInterface$rujG)) {
                           callback.onUsageFound(createSingleResult(SNodeOperations.getParent(interfaceNode)));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
@@ -69,7 +69,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                           }, new SearchQuery(SNodeOperations.getParent(interfaceNode), scope), FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder"));
                         }
                       } else if (SNodeOperations.isInstanceOf(interfaceNode, CONCEPTS.AnonymousClass$Bt)) {
-                        // anonymous class case 
+                        // anonymousclasscase
                         callback.onUsageFound(createSingleResult(interfaceNode));
                       }
                     }

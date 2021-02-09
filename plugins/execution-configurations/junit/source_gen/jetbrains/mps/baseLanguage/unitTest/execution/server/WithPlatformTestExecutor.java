@@ -42,7 +42,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
 
     Environment env = startIdea(execScript.getStartupArguments());
 
-    //  Instead of WithPlatformTestExecutor+TestContributor, could use Suite/ParentRunner without need to wrap my runners into Request (much like MpsTestsSuite does) 
+    // InsteadofWithPlatformTestExecutor+TestContributor,coulduseSuite/ParentRunnerwithoutneedtowrapmyrunnersintoRequest(muchlikeMpsTestsSuitedoes)
     WithPlatformTestExecutor executor = new WithPlatformTestExecutor(new ScriptTestContributor(env, execScript));
     try {
       executor.run();
@@ -54,15 +54,15 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
 
   /*package*/ static IdeaEnvironment startIdea(ScriptData startupArguments) {
 
-    // XXX would be great to have this code as part of init() method, but it's too much of refactoring now. Shall drop init/dispose of TestExecutor. 
+    // XXXwouldbegreattohavethiscodeaspartofinit()method,butit'stoomuchofrefactoringnow.Shalldropinit/disposeofTestExecutor.
     EnvironmentConfig cfg = EnvironmentConfig.defaultConfigNoPluginsSpecified();
-    // Same code is in MpsWorker, we'd better share it 
-    // FIXME Though technically dependency to MpsWorker (j.m.tool.builder) is possible here, I don't want it yet as I plan to split Ant/JUnit stuff from environment-related stuff there. 
+    // SamecodeisinMpsWorker,we'dbettershareit
+    // FIXMEThoughtechnicallydependencytoMpsWorker(j.m.tool.builder)ispossiblehere,Idon'twantityetasIplantosplitAnt/JUnitstufffromenvironment-relatedstuffthere.
     Logger.getRootLogger().setLevel(startupArguments.getLogLevel());
     RepositoryDescriptor rd = startupArguments.getRepo();
     if (rd != null) {
       for (String f : rd.folders) {
-        // MpsWorker does existence check here, do I care? 
+        // MpsWorkerdoesexistencecheckhere,doIcare?
         cfg.addLib(f);
       }
       for (String f : rd.files) {

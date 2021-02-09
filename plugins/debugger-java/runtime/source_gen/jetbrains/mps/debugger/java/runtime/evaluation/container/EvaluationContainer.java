@@ -60,12 +60,12 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
 
   @Override
   public Class generateClass() throws EvaluationException {
-    // XXX this method is invoked from EvaluationUi, from a thread without any model access. 
+    // XXXthismethodisinvokedfromEvaluationUi,fromathreadwithoutanymodelaccess.
     SModel containerModel = myContainerModel.resolve(myDebuggerRepository);
-    // FIXME in fact, I'm pretty sure we can accomplish the same with regular dependency to j.m.d.java.api from EvaluationModule 
-    //       Then, classpath built for EvaluationModule would include everything we try to push here with an extra CL. However, 
-    //       don't want to dive too deep into this mess now, shall refactor make facet to get rid of CResource use anyway, and 
-    //       refresh the whole idea of EvaluationModule and its temp models, and how are they handled/processed. Then, this code is likely to fade away. 
+    // FIXMEinfact,I'mprettysurewecanaccomplishthesamewithregulardependencytoj.m.d.java.apifromEvaluationModule
+    // Then,classpathbuiltforEvaluationModulewouldincludeeverythingwetrytopushherewithanextraCL.However,
+    // don'twanttodivetoodeepintothismessnow,shallrefactormakefacettogetridofCResourceuseanyway,and
+    // refreshthewholeideaofEvaluationModuleanditstempmodels,andhowaretheyhandled/processed.Then,thiscodeislikelytofadeaway.
     ClassLoader extraCL = new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<MPSModuleClassLoader>() {
       public MPSModuleClassLoader compute() {
         SModule extraClasspath = PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)").resolve(myDebuggerRepository);

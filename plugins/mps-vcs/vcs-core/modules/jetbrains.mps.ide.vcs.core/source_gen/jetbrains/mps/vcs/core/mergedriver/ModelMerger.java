@@ -50,7 +50,7 @@ import jetbrains.mps.extapi.model.SModelData;
   @Nullable
   public Tuples._2<Integer, byte[]> mergeContents(FileContent baseContent, FileContent localContent, FileContent latestContent) {
     if (Boolean.getBoolean("mps.mergedriver.model.fail")) {
-      // fail, so the merge will be done in full MPS 
+      // fail,sothemergewillbedoneinfullMPS
       return null;
     }
 
@@ -58,7 +58,7 @@ import jetbrains.mps.extapi.model.SModelData;
 
     String ext = (myExtension == null ? MPSExtentions.MODEL : myExtension);
     if (MPSExtentions.MODEL_HEADER.equals(myExtension) || MPSExtentions.MODEL_ROOT.equals(myExtension)) {
-      // special support for per-root persistence 
+      // specialsupportforper-rootpersistence
       ext = MPSExtentions.MODEL;
     }
 
@@ -77,7 +77,7 @@ import jetbrains.mps.extapi.model.SModelData;
     int localP = getPersistenceVersion(localModel);
     int latestP = getPersistenceVersion(latestModel);
     if (baseP >= 7 && localP >= 7 && latestP >= 7 || baseP < 7 && localP < 7 && latestP < 7) {
-      // ok, can merge 
+      // ok,canmerge
     } else {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error(String.format("%s: Conflicting model persistence versions", myModelName));
@@ -181,7 +181,7 @@ import jetbrains.mps.extapi.model.SModelData;
   }
 
   private static void updateMetaModelInfo(SModel resultModel, SModel baseModel, SModel localModel, SModel remoteModel) {
-    // we don't care to fix MetaModelInfoProvider for versions it was not utilized in. 
+    // wedon'tcaretofixMetaModelInfoProviderforversionsitwasnotutilizedin.
     if (getPersistenceVersion(resultModel) < 9) {
       return;
     }
@@ -192,12 +192,12 @@ import jetbrains.mps.extapi.model.SModelData;
     DefaultSModel baseModelInternal = tryInternalModelData(baseModel);
     DefaultSModel localModelInternal = tryInternalModelData(localModel);
     DefaultSModel remoteModelInternal = tryInternalModelData(remoteModel);
-    // if there's nothing collected during model read, can't help but let it go 
+    // ifthere'snothingcollectedduringmodelread,can'thelpbutletitgo
     if (baseModelInternal == null && localModelInternal == null && remoteModelInternal == null) {
       return;
     }
-    // build sequence of meta-info providers, so that result model would consult local, remote, base and own MMIP sequentially, trying to find meta-info 
-    // If none succeed, fail with null values from BaseMetaModelInfo. Allow MMIP from result model to answer differently 
+    // buildsequenceofmeta-infoproviders,sothatresultmodelwouldconsultlocal,remote,baseandownMMIPsequentially,tryingtofindmeta-info
+    // Ifnonesucceed,failwithnullvaluesfromBaseMetaModelInfo.AllowMMIPfromresultmodeltoanswerdifferently
     MetaModelInfoProvider delegate = resultModelInternal.getSModelHeader().getMetaInfoProvider();
     if (delegate == null) {
       delegate = new MetaModelInfoProvider.BaseMetaModelInfo();

@@ -38,7 +38,7 @@ public class IOperation_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    //  an operation can only be 'operation' child in DotExpression 
+    // anoperationcanonlybe'operation'childinDotExpression
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && (link == LINKS.operation$gs9E);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536558606");

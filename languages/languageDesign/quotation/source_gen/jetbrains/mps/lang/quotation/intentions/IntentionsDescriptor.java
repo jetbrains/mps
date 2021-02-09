@@ -33,7 +33,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[5];
           intentions[0] = new CreateAntiquotation_Intention();
           intentions[1] = new CreateListAntiquotation_Intention();

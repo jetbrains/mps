@@ -43,7 +43,7 @@ public class Template_reduce_ModuleReferenceExpression extends TemplateDeclarati
         environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade");
         environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade.getInstance()");
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -56,11 +56,11 @@ public class Template_reduce_ModuleReferenceExpression extends TemplateDeclarati
             for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
               tnode3.addChild(myAggregationLinks[1], child5);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[2], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(3, tnode1);

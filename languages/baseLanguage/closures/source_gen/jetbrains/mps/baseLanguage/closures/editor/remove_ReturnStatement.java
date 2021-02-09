@@ -42,8 +42,8 @@ public class remove_ReturnStatement extends SubstituteMenuBase {
   public class SMP_Group_jk3faa_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      // return statements must be allowed until we find a way to implement early returns 
-      // http://www.javac.info 
+      // returnstatementsmustbealloweduntilwefindawaytoimplementearlyreturns
+      // http://www.javac.info
       return false && (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClosureLiteral$rp, true, false) != null);
     }
     @NotNull

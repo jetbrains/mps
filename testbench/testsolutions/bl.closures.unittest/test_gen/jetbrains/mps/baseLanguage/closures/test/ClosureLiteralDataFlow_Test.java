@@ -46,8 +46,8 @@ public class ClosureLiteralDataFlow_Test extends BaseTransformationTest {
 
     public void test_ClosureLiteralDataFlow() throws Exception {
       addNodeById("1227886714784");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_ErrorMessagesCheck2501421320959199366() throws Exception {
       SNode nodeToCheck = getRealNodeById("1227886714787");

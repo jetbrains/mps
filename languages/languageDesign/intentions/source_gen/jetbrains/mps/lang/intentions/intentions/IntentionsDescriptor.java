@@ -35,7 +35,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new NodeTransformerBasedIntentionFactory(new ConvertIntention(), NodeTransformer.Kind.INTENTION);
         }

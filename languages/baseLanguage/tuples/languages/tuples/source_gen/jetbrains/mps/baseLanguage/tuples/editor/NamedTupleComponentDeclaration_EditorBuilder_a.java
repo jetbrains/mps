@@ -209,7 +209,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
-      //  copied from VariableDeclaration's editor 
+      // copiedfromVariableDeclaration'seditor
       List<String> result;
       SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$q$C9);
       if (nodeType != null) {
@@ -217,8 +217,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       } else {
         result = ListSequence.fromList(new ArrayList<String>());
       }
-      // we need this because of smart input 
-      // DO NOT REMOVE IT 
+      // weneedthisbecauseofsmartinput
+      // DONOTREMOVEIT
       if (SPropertyOperations.getString(node, PROPS.name$MnvL) != null) {
         ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, PROPS.name$MnvL));
       }

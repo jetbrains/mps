@@ -62,17 +62,17 @@ public class ModulePlugins {
       }
       List<SNode> plugins = ListSequence.fromList(new ArrayList<SNode>());
       for (final SNode p : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(bp, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po))) {
-        // Unfortunately, the moment we get here from weave_Tasks, there's no BML_Plugin (they get unwrapped on alias step) 
-        // and I can not tell fake mps-workbench plugin from any other regular plugin :( 
-        // Therefore, have a hardcoded value here. This is 'fake' idea plugin that represents MPS IDE, no reason to mention it as it's loaded 
-        //  automatically from lib/ jars. 
+        // Unfortunately,themomentwegetherefromweave_Tasks,there'snoBML_Plugin(theygetunwrappedonaliasstep)
+        // andIcannottellfakemps-workbenchpluginfromanyotherregularplugin:(
+        // Therefore,haveahardcodedvaluehere.Thisis'fake'ideapluginthatrepresentsMPSIDE,noreasontomentionitasit'sloaded
+        // automaticallyfromlib/jars.
         boolean __FIXME = !("com.intellij.modules.mps".equals(SPropertyOperations.getString(p, PROPS.id$W4AX)));
 
-        // recognize plugins that get deployed as regular plugins, don't respect hand-crafted 
-        // layouts as there's no guarantee it would end up as a <home>/plugins (that's the case of IdeaPlugin from mpsWorkbench, which 
-        // I don't want to have referenced as <plugin path=".../lib/mps-workbench.jar"/> 
-        // Indeed, use of BML_Plugin doesn't guarantee that either, it's just 'more likely' scenario. 
-        // FWIW, I believe we have to refactor mpsWorkbench and the whole story around IdeaPlugins to make this sane. 
+        // recognizepluginsthatgetdeployedasregularplugins,don'trespecthand-crafted
+        // layoutsasthere'snoguaranteeitwouldendupasa<home>/plugins(that'sthecaseofIdeaPluginfrommpsWorkbench,which
+        // Idon'twanttohavereferencedas<pluginpath=".../lib/mps-workbench.jar"/>
+        // Indeed,useofBML_Plugindoesn'tguaranteethateither,it'sjust'morelikely'scenario.
+        // FWIW,IbelievewehavetorefactormpsWorkbenchandthewholestoryaroundIdeaPluginstomakethissane.
         if (__FIXME || ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(bp, LINKS.layout$r7bw), CONCEPTS.BuildMpsLayout_Plugin$cj, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, LINKS.plugin$9ewC) == p;
@@ -102,22 +102,22 @@ public class ModulePlugins {
       }
     }
 
-    // XXX I wonder if we include dependant plugins, why don't we respect their modules for nonPluginModules, too? 
-    //    seems that we shall include modules that are not part of any plugin only. However, it's odd if there's a module in deps 
-    //    that we didn't find plugin for, but the plugin with this module shows up through dependencies. For this to happen, plugin 
-    //    for module has to be defined in a different project (perhaps, that's the case of mps-core that exports all bootstrap  
-    //    languages, is mentioned as <plugin> under <generate> but bootstrap modules are referenced through mpsBootstrapCore artifact. 
+    // XXXIwonderifweincludedependantplugins,whydon'twerespecttheirmodulesfornonPluginModules,too?
+    // seemsthatweshallincludemodulesthatarenotpartofanypluginonly.However,it'soddifthere'samoduleindeps
+    // thatwedidn'tfindpluginfor,butthepluginwiththismoduleshowsupthroughdependencies.Forthistohappen,plugin
+    // formodulehastobedefinedinadifferentproject(perhaps,that'sthecaseofmps-corethatexportsallbootstrap
+    // languages,ismentionedas<plugin>under<generate>butbootstrapmodulesarereferencedthroughmpsBootstrapCoreartifact.
 
     SetSequence.fromSet(myPluginDependencies).addSequence(Sequence.fromIterable(new RequiredPlugins(initialPlugins).returnDepsWithInitial()));
   }
 
   public Iterable<SNode> getDependency() {
-    // XXX here, usage suggests return value may list elements from transient (non-original) model 
+    // XXXhere,usagesuggestsreturnvaluemaylistelementsfromtransient(non-original)model
     return myPluginDependencies;
   }
 
   public String[] getPluginPaths(TemplateQueryContext context) {
-    // XXX why implicit select (getPlugins().path) doesn't work? 
+    // XXXwhyimplicitselect(getPlugins().path)doesn'twork?
     return ListSequence.fromList(getPlugins(context, false)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.path$4PFd);
@@ -137,12 +137,12 @@ public class ModulePlugins {
     final DependenciesHelper helper = DependenciesHelper.get(context, myInitialProject, "build.mps");
     final VisibleArtifacts local;
     if (allowFromSameProject) {
-      // generally, BP deals with artifacts available through dependencies from other BuildProjects 
-      // however, there are scenarios (like run and test aspects), that legitimately depend on outcome of 'assemble' 
-      // task of this project and may need access to e.g. plugins from the same project they are declared in.  
-      // For this purpose, we keep this argument. 
-      // Same project artifacts used to be part of DH for a long time (FetchDependenciesProcessor collected them) 
-      // I take this chance to strip off some aspect of DH functionality in my quest to get rid of it completely some day. 
+      // generally,BPdealswithartifactsavailablethroughdependenciesfromotherBuildProjects
+      // however,therearescenarios(likerunandtestaspects),thatlegitimatelydependonoutcomeof'assemble'
+      // taskofthisprojectandmayneedaccesstoe.g.pluginsfromthesameprojecttheyaredeclaredin.
+      // Forthispurpose,wekeepthisargument.
+      // SameprojectartifactsusedtobepartofDHforalongtime(FetchDependenciesProcessorcollectedthem)
+      // ItakethischancetostripoffsomeaspectofDHfunctionalityinmyquesttogetridofitcompletelysomeday.
       local = new VisibleArtifacts(myInitialProject);
       local.collectProjectArtifacts();
     } else {
@@ -162,11 +162,11 @@ public class ModulePlugins {
         if (val == null && allowFromSameProject && SNodeOperations.getNodeAncestor(layoutNode, CONCEPTS.BuildProject$ae, false, false) == myInitialProject) {
           Context cc = Context.defaultContext(context);
           if (SNodeOperations.isInstanceOf(layoutNode, CONCEPTS.BuildMpsLayout_Plugin$cj)) {
-            // RR in aliases that transforms BML_Plugin into folder 
+            // RRinaliasesthattransformsBML_Pluginintofolder
             String pv = BuildLayout_Container__BehaviorDescriptor.getChildrenOutputDir_WithMacro_id450ejGzh8bb.invoke(SNodeOperations.as(local.parent(layoutNode), CONCEPTS.BuildLayout_Container$vv), cc);
             val = pv + '/' + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(it, LINKS.containerName$xQbG), cc.getMacros(myInitialProject));
           } else if (SNodeOperations.isInstanceOf(layoutNode, CONCEPTS.BuildMpsLayout_PluginDescriptor$on)) {
-            // container/META-INF/plugin.xml 
+            // container/META-INF/plugin.xml
             val = BuildLayout_Container__BehaviorDescriptor.getChildrenOutputDir_WithMacro_id450ejGzh8bb.invoke(SNodeOperations.as(local.parent(local.parent(layoutNode)), CONCEPTS.BuildLayout_Container$vv), cc);
           }
         }

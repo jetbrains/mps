@@ -95,7 +95,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
                   for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
                     tnode5.addChild(myAggregationLinks[0], child7);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   final List<SNode> tlist8 = new ArrayList<SNode>();
@@ -114,7 +114,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
                   for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
                     tnode5.addChild(myAggregationLinks[0], child9);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   final List<SNode> tlist10 = new ArrayList<SNode>();
@@ -137,7 +137,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
                   for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
                     tnode5.addChild(myAggregationLinks[0], child11);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tlist4.add(tnode5);
@@ -151,7 +151,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
         for (SNode child12 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[1], child12);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

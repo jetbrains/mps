@@ -45,8 +45,8 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     if (artifactId instanceof jetbrains.mps.smodel.SNode) {
       SNode node = (SNode) artifactId;
-      // todo (in 3.0+) plugin should be exported by folder, not by xml 
-      // weeeeell? 
+      // todo(in3.0+)pluginshouldbeexportedbyfolder,notbyxml
+      // weeeeell?
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_IdeaPlugin$po)) {
         return SLinkOperations.getTarget(__thisNode__, LINKS.plugin$ZarS) == node;
       }
@@ -54,9 +54,9 @@ public final class BuildMpsLayout_PluginDescriptor__BehaviorDescriptor extends B
     return ((boolean) BuildLayout_Node__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMpsLayout_PluginDescriptor$on, artifactId));
   }
   /*package*/ static boolean reexportsFromJar_id5bqm540K$Gb(@NotNull SNode __thisNode__, Object o) {
-    // XXX We imply here parent node is BuildLayout_Jar as it's the only place to use InJarNode.reexportsFromJar 
-    //     For folder with BML_PD, #exports shall work, and I don't care yet to remove that as (a) for folder, no unneccesary unzip (in dependants) happens 
-    //     (b) no idea how to let BL_Folder know about BML_PD without introducing something like BL_InFolderNode similar to BL_InJarNode 
+    // XXXWeimplyhereparentnodeisBuildLayout_Jarasit'stheonlyplacetouseInJarNode.reexportsFromJar
+    // ForfolderwithBML_PD,#exportsshallwork,andIdon'tcareyettoremovethatas(a)forfolder,nounneccesaryunzip(independants)happens
+    // (b)noideahowtoletBL_FolderknowaboutBML_PDwithoutintroducingsomethinglikeBL_InFolderNodesimilartoBL_InJarNode
     return o == SLinkOperations.getTarget(__thisNode__, LINKS.plugin$ZarS);
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {

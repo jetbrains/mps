@@ -124,7 +124,7 @@ public class CoreMakeTask {
       List<ITarget.Name> otherTargets = ListSequence.fromList(new ArrayList<ITarget.Name>());
 
       long currentTime = 0;
-      // XXX if we don't need this stats for our users, may condition output with isInternalMode() 
+      // XXXifwedon'tneedthisstatsforourusers,mayconditionoutputwithisInternalMode()
       for (IMapping<ITarget.Name, Long> stat : MapSequence.fromMap(timeStatistic).sort(new ISelector<IMapping<ITarget.Name, Long>, Long>() {
         public Long select(IMapping<ITarget.Name, Long> it) {
           return it.value();

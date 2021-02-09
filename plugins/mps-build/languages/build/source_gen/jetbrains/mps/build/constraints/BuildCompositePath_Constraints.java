@@ -29,8 +29,8 @@ public class BuildCompositePath_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      // perhaps could drop this code if find a way to ensure head value on node init AND  
-      // there's a mechanism to migrate old nodes with head == null (rare case I'd say) 
+      // perhapscoulddropthiscodeiffindawaytoensureheadvalueonnodeinitAND
+      // there'samechanismtomigrateoldnodeswithhead==null(rarecaseI'dsay)
       String value = SPropertyOperations.getString(node, PROPS.head$$gC$);
       return ((value == null || value.length() == 0) ? "" : value);
     }

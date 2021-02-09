@@ -103,7 +103,7 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getTarget(SNodeOperations.cast(rootAnnotation, CONCEPTS.RootTemplateAnnotation$9O), LINKS.applicableConcept$LAIX);
   }
   /*package*/ static boolean hasMappingLabel_id5KmckUrKj9u(@NotNull SNode __thisNode__) {
-    // to avoid coding same code that check non-empty mapping label 
+    // toavoidcodingsamecodethatchecknon-emptymappinglabel
     return (SLinkOperations.getTarget(__thisNode__, LINKS.mappingLabel$jbOO) != null) && isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.mappingLabel$jbOO), PROPS.name$MnvL));
   }
 

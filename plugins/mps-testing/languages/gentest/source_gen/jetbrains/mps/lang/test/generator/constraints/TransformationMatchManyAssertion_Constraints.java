@@ -40,8 +40,8 @@ public class TransformationMatchManyAssertion_Constraints extends BaseConstraint
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // this assertion is allowed to reference arguments that point to model only. 
-    // FIXME introduce an argument kind to hold collection of models and allow to reference it from referenceModels 
+    // thisassertionisallowedtoreferenceargumentsthatpointtomodelonly.
+    // FIXMEintroduceanargumentkindtoholdcollectionofmodelsandallowtoreferenceitfromreferenceModels
     if (childNode != null && SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ArgumentReference$U$)) {
       if (link.equals(LINKS.inputModel$wFEV) || link.equals(LINKS.referenceModels$wG8X) || link.equals(LINKS.transformationPlan$iqJU)) {
         SNode arg = SLinkOperations.getTarget(SNodeOperations.as(childNode, CONCEPTS.ArgumentReference$U$), LINKS.arg$ikdq);

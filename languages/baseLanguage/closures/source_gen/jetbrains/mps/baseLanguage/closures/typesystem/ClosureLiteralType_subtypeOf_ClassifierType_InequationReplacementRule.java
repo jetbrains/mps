@@ -58,8 +58,8 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
           if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF)) {
             errorMsg = ": no result type in function type";
           }
-          // handle the specific case: {=> Object} <: Computable<?> 
-          // also take into account bounded wildcard types 
+          // handlethespecificcase:{=>Object}<:Computable<?>
+          // alsotakeintoaccountboundedwildcardtypes
           if (SNodeOperations.isInstanceOf(retType, CONCEPTS.LowerBoundType$nl)) {
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
@@ -101,7 +101,7 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
             }
           }
         }
-        // dont report error, return immediately 
+        // dontreporterror,returnimmediately
         if (errorMsg == null) {
           return;
         }
@@ -139,8 +139,8 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
             if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.resultType$2oOC), CONCEPTS.VoidType$BF)) {
               errorMsg = ": no result type in function type";
             }
-            // handle the specific case: {=> Object} <: Computable<?> 
-            // also take into account bounded wildcard types 
+            // handlethespecificcase:{=>Object}<:Computable<?>
+            // alsotakeintoaccountboundedwildcardtypes
             if (SNodeOperations.isInstanceOf(retType, CONCEPTS.LowerBoundType$nl)) {
               result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(retType, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), (SNode) SLinkOperations.getTarget(subtype, LINKS.resultType$2oOC));
 
@@ -162,7 +162,7 @@ public class ClosureLiteralType_subtypeOf_ClassifierType_InequationReplacementRu
               result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(mpt_var, LINKS.type$a1UY), supertype), (SNode) fpt_var);
             }
           }
-          // dont report error, return immediately 
+          // dontreporterror,returnimmediately
           if (errorMsg == null) {
             return result_14532009;
           }

@@ -23,10 +23,10 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new ConvertInferenceRuleToCheckingRule_Action());
     addAction(new ShowNodeType_Action());
-    // groups 
+    // groups
     addGroup(new ShowAsIntentions_TypeSystem_ActionGroup(this));
     addGroup(new TypesystemActions_Plugin_ActionGroup(this));
   }

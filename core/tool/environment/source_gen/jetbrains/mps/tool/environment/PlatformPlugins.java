@@ -41,8 +41,8 @@ import java.net.URLClassLoader;
 
 
   /*package*/ PlatformPlugins(EnvironmentConfig config) {
-    // FIXME PathManager.getPluginsPath is a dependency to j.m.tool.common I'd like to get rid of (this class has access to MPS kernel classes 
-    //       and doesn't need to depend from tool.common at all), but I didn't find a proper alternative. Alex P., could you please help me here? 
+    // FIXMEPathManager.getPluginsPathisadependencytoj.m.tool.commonI'dliketogetridof(thisclasshasaccesstoMPSkernelclasses
+    // anddoesn'tneedtodependfromtool.commonatall),butIdidn'tfindaproperalternative.AlexP.,couldyoupleasehelpmehere?
     for (PluginData pd : config.getPlugins()) {
       File pluginLocation = new File(pd.path);
       List<File> cp = detectClasspath(pluginLocation);
@@ -67,10 +67,10 @@ import java.net.URLClassLoader;
         }
       } else {
         if (detectedId != null) {
-          // regular scenario, when <plugin> has path only and no id (e.g. <generate> task), use the one from plugin.xml 
+          // regularscenario,when<plugin>haspathonlyandnoid(e.g.<generate>task),usetheonefromplugin.xml
           pluginId = detectedId;
         } else {
-          // use uniqie value not to overwrite map entries 
+          // useuniqievaluenottooverwritemapentries
           pluginId = String.format("plugin.%x", System.identityHashCode(pd));
           if (LOG.isEnabledFor(Level.WARN)) {
             LOG.warn(String.format("Could not detect id for plugin at %s", pluginLocation));
@@ -78,8 +78,8 @@ import java.net.URLClassLoader;
         }
       }
 
-      // XXX detect dependencies from other plugins to create proper classloading dependencies,  match <depends></depends> much like plugin id, above 
-      //     meanwhile, hope there's no plugin code that references classes from its dependencies. 
+      // XXXdetectdependenciesfromotherpluginstocreateproperclassloadingdependencies,match<depends></depends>muchlikepluginid,above
+      // meanwhile,hopethere'snoplugincodethatreferencesclassesfromitsdependencies.
       Descriptor d = new Descriptor(pluginId, pluginLocation, cp, langLibs);
       myPlugins.put(pluginId, d);
       if (LOG.isDebugEnabled()) {
@@ -97,14 +97,14 @@ import java.net.URLClassLoader;
       cb.flip();
       return cb;
     } catch (Exception ex) {
-      // ignore 
+      // ignore
     } finally {
       try {
         if (reader != null) {
           reader.close();
         }
       } catch (Exception ex) {
-        // ignore 
+        // ignore
       }
     }
     return "";
@@ -123,7 +123,7 @@ import java.net.URLClassLoader;
   }
 
   /*package*/ Collection<Descriptor> found() {
-    //  provisional method, just to move forward. I intend to hide implementation structures from the outer world eventually. 
+    // provisionalmethod,justtomoveforward.Iintendtohideimplementationstructuresfromtheouterworldeventually.
     return Collections.<Descriptor>unmodifiableCollection(myPlugins.values());
   }
 
@@ -133,8 +133,8 @@ import java.net.URLClassLoader;
   }
 
   private List<File> detectClasspath(File pluginLocation) {
-    // copied from IdeaPluginDescriptorImpl.getClassPath() to match cp in either base platform 
-    // even that we don't support .zip-bundled plugins (!isDirectory branch) 
+    // copiedfromIdeaPluginDescriptorImpl.getClassPath()tomatchcpineitherbaseplatform
+    // eventhatwedon'tsupport.zip-bundledplugins(!isDirectorybranch)
     if (pluginLocation.isDirectory()) {
       final List<File> result = new ArrayList<File>();
       final File classesDir = new File(pluginLocation, "classes");
@@ -172,10 +172,10 @@ import java.net.URLClassLoader;
       } while (m.find());
       return rv;
     }
-    // if we didn't find LanguageLibrary while parsing plugin.xml, use hardcoded locations for mps modules distributed in plugins 
-    // in most cases it's "languages" (LL dir="/" value is often the same as "languages", I didn't find a plugin to put modules under root 
-    // for deployment, though quite a few keep modules at root in sources. 
-    // e.g. mps-build uses both "solutions" and "pluginSolutions", projectMigrations uses "solution", mps-console uses "lang" 
+    // ifwedidn'tfindLanguageLibrarywhileparsingplugin.xml,usehardcodedlocationsformpsmodulesdistributedinplugins
+    // inmostcasesit's"languages"(LLdir="/"valueisoftenthesameas"languages",Ididn'tfindaplugintoputmodulesunderroot
+    // fordeployment,thoughquiteafewkeepmodulesatrootinsources.
+    // e.g.mps-buildusesboth"solutions"and"pluginSolutions",projectMigrationsuses"solution",mps-consoleuses"lang"
     for (String loc : new String[]{"languages", "solutions", "pluginSolutions", "solution", "lang"}) {
       File f = new File(pluginLocation, loc);
       if (f.exists()) {
@@ -196,26 +196,26 @@ import java.net.URLClassLoader;
       } catch (MalformedURLException ignored) {
       }
     }
-    // XXX classloader relations are tricky, given that there might be few <plugin> tags along with few <library> tags 
-    //     in a single task: without IDEA, how does dependencies between two different <plugin> work? If there's shared 
-    //     classloader (global classpath), then myRootClassLoader has to represent one. If classloader is distinct per plugin, 
-    //     we would need to manage dependencies here, take them into account and do not use myRootClassLoader here. 
-    //     As for <library>-specified modules, what if it points to a module coming from a plugin with a dependency to the 
-    //     sibling <plugin>? This is not necessarily 'proper' scenario, as we should use <plugin> rather than <library> in this case, 
-    //     but alas mps.build language has its own perspective (the point is, can not control that). Again, for shared classpath 
-    //     it's ok to reference this global CL here with myRootClassLoader. If one day plugins get distinct CL, then we would need to 
-    //     decide whether a <library> specified module may depend on classes available from <plugin> (note, dependency on a module 
-    //     distributed with <plugin> is fine, as the latter would get proper plugin CL as a fallback. Does scenario that concerns me 
-    //     here, with <library> dependency on <plugin> CLASSPATH, relevant at all?) 
-    // FIXME the funny thing about plugin CL here is that at the moment we collect plugin CP with all the libraries into global 
-    //       classpath and we could use myRootClassLoader right away. Moreover, CL built here is plain wrong for IdeaEnvironment case 
-    //       as <plugin>/lib/ classes are already available in the global CP and it's odd to expose them again for SLibrary's fallback CL. 
-    //       What saves us here is the fact ClassLoader consults parent CL first and finds the classes there. 
-    //       I keep it this way just for the record, and as a reference for future implementation if I decide to use distinct plugin 
-    //       classloaders after all. 
-    // Here used to be outdated copy of IDEA's UrlClassLoader, with uncertain benefits over standard Java's one. 
-    // I don't think there's anything wrong with java.net counterpart. The only issue I'm aware of, http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5041014 
-    // is not important in a scenario we use MpsEnvironment for. Besides, there's #close() method now we may use to address the issue in case we ever face it. 
+    // XXXclassloaderrelationsaretricky,giventhattheremightbefew<plugin>tagsalongwithfew<library>tags
+    // inasingletask:withoutIDEA,howdoesdependenciesbetweentwodifferent<plugin>work?Ifthere'sshared
+    // classloader(globalclasspath),thenmyRootClassLoaderhastorepresentone.Ifclassloaderisdistinctperplugin,
+    // wewouldneedtomanagedependencieshere,takethemintoaccountanddonotusemyRootClassLoaderhere.
+    // Asfor<library>-specifiedmodules,whatifitpointstoamodulecomingfromapluginwithadependencytothe
+    // sibling<plugin>?Thisisnotnecessarily'proper'scenario,asweshoulduse<plugin>ratherthan<library>inthiscase,
+    // butalasmps.buildlanguagehasitsownperspective(thepointis,cannotcontrolthat).Again,forsharedclasspath
+    // it'soktoreferencethisglobalCLherewithmyRootClassLoader.IfonedaypluginsgetdistinctCL,thenwewouldneedto
+    // decidewhethera<library>specifiedmodulemaydependonclassesavailablefrom<plugin>(note,dependencyonamodule
+    // distributedwith<plugin>isfine,asthelatterwouldgetproperpluginCLasafallback.Doesscenariothatconcernsme
+    // here,with<library>dependencyon<plugin>CLASSPATH,relevantatall?)
+    // FIXMEthefunnythingaboutpluginCLhereisthatatthemomentwecollectpluginCPwithallthelibrariesintoglobal
+    // classpathandwecouldusemyRootClassLoaderrightaway.Moreover,CLbuilthereisplainwrongforIdeaEnvironmentcase
+    // as<plugin>/lib/classesarealreadyavailableintheglobalCPandit'soddtoexposethemagainforSLibrary'sfallbackCL.
+    // WhatsavesushereisthefactClassLoaderconsultsparentCLfirstandfindstheclassesthere.
+    // Ikeepitthiswayjustfortherecord,andasareferenceforfutureimplementationifIdecidetousedistinctplugin
+    // classloadersafterall.
+    // HereusedtobeoutdatedcopyofIDEA'sUrlClassLoader,withuncertainbenefitsoverstandardJava'sone.
+    // Idon'tthinkthere'sanythingwrongwithjava.netcounterpart.TheonlyissueI'mawareof,http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5041014
+    // isnotimportantinascenarioweuseMpsEnvironmentfor.Besides,there's#close()methodnowwemayusetoaddresstheissueincaseweeverfaceit.
     return new URLClassLoader(urls.toArray(new URL[urls.size()]), rootCL);
   }
 

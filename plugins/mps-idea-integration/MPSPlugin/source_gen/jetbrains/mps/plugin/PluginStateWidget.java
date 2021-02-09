@@ -38,12 +38,12 @@ public class PluginStateWidget implements StatusBarWidget, StatusBarWidget.IconP
       @Override
       public void actionPerformed(ActionEvent e) {
         if (myConnecting) {
-          // too complicated to do stuff here 
-          // lets not write sophisticated code, it is not worth it :( 
-          // another possibility to consider is use the Future that executeOnPooledThread returnes and when the next one wants to start just interrupt the old one 
-          // but I'm not sure, what happens when we interrupt a thread in a middle of rmi call 
-          // according to the stack trace ordinary io is used 
-          // so I'm guessing that just the thread interrupted state is set 
+          // toocomplicatedtodostuffhere
+          // letsnotwritesophisticatedcode,itisnotworthit:(
+          // anotherpossibilitytoconsiderisusetheFuturethatexecuteOnPooledThreadreturnesandwhenthenextonewantstostartjustinterrupttheoldone
+          // butI'mnotsure,whathappenswhenweinterruptathreadinamiddleofrmicall
+          // accordingtothestacktraceordinaryioisused
+          // soI'mguessingthatjustthethreadinterruptedstateisset
           return;
         }
         myConnecting = true;

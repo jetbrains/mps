@@ -30,7 +30,7 @@ public class TaskLibrariesHelper {
   private SNode project;
   private TemplateQueryContext genContext;
   public TaskLibrariesHelper(SNode project, TemplateQueryContext genContext) {
-    // XXX if want to reuse this code, replace gencontext with e.g. IMessageHandler, as its only use is to report errors 
+    // XXXifwanttoreusethiscode,replacegencontextwithe.g.IMessageHandler,asitsonlyuseistoreporterrors
     this.project = project;
     this.genContext = genContext;
   }
@@ -70,7 +70,7 @@ public class TaskLibrariesHelper {
         }
       }
     }
-    // we add everything in the beginning 
+    // weaddeverythinginthebeginning
     for (int i = parts.size() - 1; i >= 0; i--) {
       ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.parts$$VTL)).insertElement(0, parts.get(i));
     }

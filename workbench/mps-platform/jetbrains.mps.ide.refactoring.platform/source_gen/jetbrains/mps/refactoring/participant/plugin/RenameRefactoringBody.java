@@ -39,7 +39,7 @@ public class RenameRefactoringBody implements RefactoringProcessor.RefactoringBo
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), myNode);
   }
   public void prepareRefactoring() {
-    // do nothing 
+    // donothing
   }
   public void doRefactor(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SNode, String, SNode, String>> participantStates, RefactoringSession refactoringSession) {
     SPropertyOperations.assign(myNode, PROPS.name$MnvL, myNewNodeName);
@@ -53,7 +53,7 @@ public class RenameRefactoringBody implements RefactoringProcessor.RefactoringBo
     }
   }
   public void doCleanup() {
-    // do nothing 
+    // donothing
   }
 
 

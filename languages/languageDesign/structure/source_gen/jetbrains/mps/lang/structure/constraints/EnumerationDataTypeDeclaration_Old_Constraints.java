@@ -97,7 +97,7 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // members declared here 
+            // membersdeclaredhere
             return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(_context.getReferenceNode(), null, false, new SAbstractConcept[]{}));
           }
         };

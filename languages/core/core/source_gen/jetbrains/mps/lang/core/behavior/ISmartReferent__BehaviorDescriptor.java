@@ -39,7 +39,7 @@ public final class ISmartReferent__BehaviorDescriptor extends BaseBHDescriptor {
     return ((String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__));
   }
   /*package*/ static String getMatchingText_id69Qfsw3InJX(@NotNull SNode __thisNode__, SNode reference) {
-    // IResolveInfo now uses to distinct matchingText and visibleMatchingText 
+    // IResolveInfonowusestodistinctmatchingTextandvisibleMatchingText
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.IResolveInfo$$k)) {
       return SPropertyOperations.getString((SNodeOperations.cast(__thisNode__, CONCEPTS.IResolveInfo$$k)), PROPS.resolveInfo$lW9a);
     }

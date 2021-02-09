@@ -234,13 +234,13 @@
   </root>
   <root nodeRef="r:746f58a1-d17e-4009-b865-845d0d70ab6f(jetbrains.mps.samples.generator_demo.demoLang5.generator.template.main@generator)/3978102045101460212">
     <file name="QueriesGenerated.java">
-      <node id="3978102045101588697" at="130,85,131,27" concept="5" />
-      <node id="3978102045101468575" at="131,27,132,86" concept="3" />
-      <node id="3978102045101588110" at="133,53,134,40" concept="5" />
-      <node id="3978102045101486307" at="134,40,135,83" concept="3" />
+      <node id="3978102045101588697" at="130,85,131,23" concept="5" />
+      <node id="3978102045101468575" at="131,23,132,86" concept="3" />
+      <node id="3978102045101588110" at="133,53,134,35" concept="5" />
+      <node id="3978102045101486307" at="134,35,135,83" concept="3" />
       <node id="3978102045101471162" at="135,83,136,66" concept="0" />
-      <node id="3978102045101587539" at="136,66,137,53" concept="5" />
-      <node id="3978102045101559641" at="137,53,138,87" concept="3" />
+      <node id="3978102045101587539" at="136,66,137,45" concept="5" />
+      <node id="3978102045101559641" at="137,45,138,87" concept="3" />
       <node id="3978102045101495902" at="138,87,139,69" concept="0" />
       <node id="3978102045101569051" at="139,69,140,116" concept="0" />
       <node id="3978102045101460212" at="180,14,181,57" concept="0" />

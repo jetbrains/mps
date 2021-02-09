@@ -49,7 +49,7 @@ public class CellMenuComponentFeature_Link_SubstituteMenu extends SubstituteMenu
   public class SMP_ReferenceScope_hic4wc_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_hic4wc_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CellMenuComponentFeature_Link$Sg, LINKS.relationDeclaration$$vVu);
     }
     @NotNull

@@ -23,7 +23,7 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
   }
   @Override
   public void init() {
-    // register kinds 
+    // registerkinds
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
     {
       ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Demo", AllIcons.RunConfigurations.Application, "Demo", "Demo");
@@ -32,9 +32,9 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
 
-    // add foreign factories 
+    // addforeignfactories
 
-    // register creators 
+    // registercreators
     ExtensionPoint<RuntimeConfigurationProducer> producerExtensionPoint = Extensions.getArea(null).getExtensionPoint(RuntimeConfigurationProducer.RUNTIME_CONFIGURATION_PRODUCER);
     for (ConfigurationType ext : configurationExtensionPoint.getExtensions()) {
       if ("Demo".equals(ext.getId())) {
@@ -51,9 +51,9 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
   public void dispose() {
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
 
-    // invalidate factories from this plugin for types declared elsewhere (we have no idea whether that plugins would be reloaded/invalidated as well) 
+    // invalidatefactoriesfromthispluginfortypesdeclaredelsewhere(wehavenoideawhetherthatpluginswouldbereloaded/invalidatedaswell)
 
-    // factories from this plugin would get invalidated along with configuration types, no need to do that explicitly (although it wouldn't hurt either) 
+    // factoriesfromthispluginwouldgetinvalidatedalongwithconfigurationtypes,noneedtodothatexplicitly(althoughitwouldn'thurteither)
     for (Iterator<ConfigTypeEnvoy> it = RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.descendingIterator(); it.hasNext();) {
       ConfigTypeEnvoy configKind = it.next();
       configKind.invalidate();

@@ -44,7 +44,7 @@ public class CompositeScope extends Scope {
         if (result == null) {
           result = r;
         } else if (result != r) {
-          // ambiguity 
+          // ambiguity
           return null;
         }
       }
@@ -68,7 +68,7 @@ public class CompositeScope extends Scope {
         if (result == null) {
           result = refText;
         } else {
-          // ambiguity 
+          // ambiguity
           return null;
         }
       }

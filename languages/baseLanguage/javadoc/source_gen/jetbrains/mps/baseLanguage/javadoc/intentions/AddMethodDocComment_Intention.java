@@ -78,28 +78,28 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
       if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(node, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))) {
         SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
       }
-      //  Method parameters 
+      // Methodparameters
       for (SNode parameterDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj))) {
         SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
         SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_i2k1f8_a0b0k0a(parameterDeclaration));
         ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(paramTag);
       }
 
-      //  Type variables 
+      // Typevariables
       for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp))) {
         SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
         SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_i2k1f8_a0b0n0a(typeVariableDeclaration));
         ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(paramTag);
       }
 
-      //  Thrown exceptions 
+      // Thrownexceptions
       for (SNode throwsItem : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$))) {
         SNode throwsTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ThrowsBlockDocTag$bu, null);
         SLinkOperations.setTarget(throwsTag, LINKS.exceptionType$7VDs, SNodeOperations.copyNode(throwsItem));
         ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(throwsTag);
       }
 
-      //  Return value 
+      // Returnvalue
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
         ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnBlockDocTag$KD, null));
       }

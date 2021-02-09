@@ -35,7 +35,7 @@ public class HierarchycalTableModelWithHeader extends HierarchycalTableModel {
   @Override
   public void deleteRow(int rowNumber) {
     if (rowNumber == 0) {
-      // it's not possible to delete header row 
+      // it'snotpossibletodeleteheaderrow
       return;
     }
     super.deleteRow(rowNumber - 1);
@@ -43,7 +43,7 @@ public class HierarchycalTableModelWithHeader extends HierarchycalTableModel {
   @Override
   public void insertRow(int rowNumber) {
     if (rowNumber == 0) {
-      // it's not possible to insert row before header 
+      // it'snotpossibletoinsertrowbeforeheader
       rowNumber = 1;
     }
     super.insertRow(rowNumber - 1);

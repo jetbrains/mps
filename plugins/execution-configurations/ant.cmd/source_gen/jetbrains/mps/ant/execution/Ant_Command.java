@@ -128,11 +128,11 @@ public class Ant_Command {
   private static Iterable<CommandPart> getMacroValues(final List<String> toDefine, final String options) {
     final PathMacros pathMacros = PathMacros.getInstance();
     List<CommandPart> macroValues = ListSequence.fromList(new ArrayList<CommandPart>());
-    // rather questionable : why do you feel ok passing MPS_HOME explicitly when you are running from cmd 
-    // but running the same build script (obviusly with empty MPS_HOME macro) from MPS needs to be hacked? 
-    // I would say ant command will not know about mps at all. 
-    // It is going to be totally transferred to the build script rc producer or 
-    // better a separate build script creating ant-mps.jar will be created and everyone will depend on it 
+    // ratherquestionable:whydoyoufeelokpassingMPS_HOMEexplicitlywhenyouarerunningfromcmd
+    // butrunningthesamebuildscript(obviuslywithemptyMPS_HOMEmacro)fromMPSneedstobehacked?
+    // Iwouldsayantcommandwillnotknowaboutmpsatall.
+    // Itisgoingtobetotallytransferredtothebuildscriptrcproduceror
+    // betteraseparatebuildscriptcreatingant-mps.jarwillbecreatedandeveryonewilldependonit
     String mpsHomeMacroName = MacrosFactory.MPS_HOME_MACRO_NAME;
     if (ListSequence.fromList(toDefine).contains(mpsHomeMacroName)) {
       if (!(Ant_Command.optionsAlreadyContainMacro(options, mpsHomeMacroName))) {
@@ -163,7 +163,7 @@ public class Ant_Command {
   private static String getGeneratedFileName(SNode project) {
     IFile file;
     SModel model = SNodeOperations.getModel(project);
-    // XXX note, build scripts are copied/deployed to a different location with CopyGeneratedScripts, here we use origin, not the 'deployed' script location. 
+    // XXXnote,buildscriptsarecopied/deployedtoadifferentlocationwithCopyGeneratedScripts,hereweuseorigin,notthe'deployed'scriptlocation.
     file = model.getModule().getFacet(JavaModuleFacet.class).getOutputLocation(model);
     file = file.findChild(SPropertyOperations.getString(project, PROPS.name$MnvL) + ".xml");
     return file.getPath();

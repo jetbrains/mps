@@ -29,7 +29,7 @@ public final class DependentModulesUtil {
   public DependentModulesUtil(SRepository scope) {
     reverseDependency = MapSequence.fromMap(new HashMap<SModuleReference, List<Tuples._2<Boolean, SModule>>>());
 
-    // XXX perhaps, could be SRepository.getModules, just want to keep knowledge here used to be GlobalScope 
+    // XXXperhaps,couldbeSRepository.getModules,justwanttokeepknowledgehereusedtobeGlobalScope
     Iterable<SModule> modules = new GlobalScope(scope).getModules();
 
     for (SModule module : Sequence.fromIterable(modules)) {

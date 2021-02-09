@@ -30,7 +30,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
   public check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule() {
   }
   public void applyRule(final SNode jarLoc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // if a CustomJarLocation points maps a file module has no dependency to, report a warning. Such a mapping would get ignored when generating module.xml 
+    // ifaCustomJarLocationpointsmapsafilemodulehasnodependencyto,reportawarning.Suchamappingwouldgetignoredwhengeneratingmodule.xml
     SNode module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleJars$MZ), LINKS.module$iRYT);
     if (module == null) {
       module = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(jarLoc), CONCEPTS.BuildMpsLayout_ModuleXml$_e), LINKS.module$yKRo);
@@ -39,7 +39,7 @@ public class check_BuildMpsLayout_ModuleXml_CustomJarLocation_NonTypesystemRule 
       return;
     }
     final String expectedPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarLoc, LINKS.path$t1zS));
-    // This logic is from BuildMpsLayout_ModuleXml template in main MC to create <library> elements 
+    // ThislogicisfromBuildMpsLayout_ModuleXmltemplateinmainMCtocreate<library>elements
     Iterable<SNode> moduleDeps = BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(SNodeOperations.as(module, CONCEPTS.BuildMps_Module$JW));
     if (Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(moduleDeps, CONCEPTS.BuildMps_ModuleDependencyJar$Rm), LINKS.path$yTVo)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {

@@ -49,7 +49,7 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_mohvzt_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_mohvzt_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PropertyDeclaration$1S, LINKS.dataType$5j5Y);
     }
     @NotNull

@@ -20,7 +20,7 @@ public class UsedLanguageChange extends MetadataChange {
     super(changeSet);
     myLanguage = language;
     myNewVersion = version;
-    // ChangeType:  ADD - language added, DELETE - language deleted, CHANGE - version changed 
+    // ChangeType:ADD-languageadded,DELETE-languagedeleted,CHANGE-versionchanged
     myChangeType = changeType;
   }
 

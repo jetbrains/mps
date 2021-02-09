@@ -49,7 +49,7 @@ public class WhenConcreteVariableReference_SubstituteMenu extends SubstituteMenu
   public class SMP_ReferenceScope_a7xbxw_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_a7xbxw_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.WhenConcreteVariableReference$mi, LINKS.whenConcreteVar$7S8F);
     }
     @NotNull

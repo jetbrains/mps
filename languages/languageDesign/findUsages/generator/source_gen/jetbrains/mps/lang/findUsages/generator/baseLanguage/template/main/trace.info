@@ -25,8 +25,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959035c(jetbrains.mps.lang.findUsages.generator.baseLanguage.template.main@generator)/1197044812173">
     <file name="QueriesGenerated.java">
-      <node id="7228083082548039669" at="57,92,58,21" concept="5" />
-      <node id="7991477654791680155" at="58,21,59,86" concept="4" />
+      <node id="7228083082548039669" at="57,92,58,19" concept="5" />
+      <node id="7991477654791680155" at="58,19,59,86" concept="4" />
       <node id="4192433084863763944" at="65,88,66,167" concept="4" />
       <node id="7518998791520133703" at="68,88,69,167" concept="4" />
       <node id="7518998791520106754" at="71,88,72,167" concept="4" />
@@ -430,10 +430,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959035c(jetbrains.mps.lang.findUsages.generator.baseLanguage.template.main@generator)/2897519568668637315">
     <file name="QueriesGenerated.java">
-      <node id="7228083082547972382" at="61,83,62,21" concept="5" />
-      <node id="2030416617762091403" at="62,21,63,94" concept="4" />
-      <node id="8100708479158694804" at="122,93,123,76" concept="5" />
-      <node id="8100708479158496699" at="123,76,124,109" concept="4" />
+      <node id="7228083082547972382" at="61,83,62,19" concept="5" />
+      <node id="2030416617762091403" at="62,19,63,94" concept="4" />
+      <node id="8100708479158694804" at="122,93,123,69" concept="5" />
+      <node id="8100708479158496699" at="123,69,124,109" concept="4" />
       <node id="1570228009929814969" at="269,14,270,56" concept="1" />
       <node id="1570228009929814969" at="286,15,287,58" concept="4" />
       <node id="4147950839246952263" at="595,69,596,78" concept="1" />

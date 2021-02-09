@@ -49,7 +49,7 @@ public class ListParameterReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_j4n9yk_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_j4n9yk_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ListParameterReference$Mj, LINKS.parameter$3II8);
     }
     @NotNull

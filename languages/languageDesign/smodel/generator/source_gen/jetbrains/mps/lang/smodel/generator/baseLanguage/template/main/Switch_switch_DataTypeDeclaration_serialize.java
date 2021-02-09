@@ -84,7 +84,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -97,11 +97,11 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[1], child5);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[2], tnode3);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -139,7 +139,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[3], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

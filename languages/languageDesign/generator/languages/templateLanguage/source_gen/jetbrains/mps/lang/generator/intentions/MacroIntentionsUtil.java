@@ -37,7 +37,7 @@ public final class MacroIntentionsUtil {
   private static SNode getConceptFrom(SNode macro) {
     SNode query = QueriesUtil.getQueryFunction_fromSourceSubstituteMacro(macro);
     SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(query);
-    // ====== 
+    // ======
     if (SNodeOperations.isInstanceOf(query, CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)) {
       {
         GeneratedMatchingPattern pattern_iiuth6_a0d0b = new Pattern_iiuth6_a0a0a0d0b(_quotation_createNode_iiuth6_a0a0a0a0d0b());
@@ -91,12 +91,12 @@ public final class MacroIntentionsUtil {
     return result;
   }
   public static String getPresentation(SNode intentionParam) {
-    //  characters '_' and '&' are treated as mnemonics in AnAction that is created for each intention, 
-    //  however it's common to see '_' in link/property/conecept/template names, and removing this char 
-    //  (as mnemonics processing does) results in incorrect name shown to user, which is wrong. 
-    // Here I escape only '_' as it's unlikely to see '&' in metamodel-level names, 
-    // although correct (but impossible now) solution would be to change the way actions for intentions are created 
-    // (i.e. without mnemonics processing). 
+    // characters'_'and'&'aretreatedasmnemonicsinAnActionthatiscreatedforeachintention,
+    // howeverit'scommontosee'_'inlink/property/conecept/templatenames,andremovingthischar
+    // (asmnemonicsprocessingdoes)resultsinincorrectnameshowntouser,whichiswrong.
+    // HereIescapeonly'_'asit'sunlikelytosee'&'inmetamodel-levelnames,
+    // althoughcorrect(butimpossiblenow)solutionwouldbetochangethewayactionsforintentionsarecreated
+    // (i.e.withoutmnemonicsprocessing).
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(intentionParam).replaceAll("_{1}", "__");
   }
   public static void copyVirtualPackage(SNode to, SNode from) {

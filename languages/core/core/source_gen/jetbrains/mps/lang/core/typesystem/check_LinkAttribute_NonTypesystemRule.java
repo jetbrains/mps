@@ -28,7 +28,7 @@ public class check_LinkAttribute_NonTypesystemRule extends AbstractNonTypesystem
   public check_LinkAttribute_NonTypesystemRule() {
   }
   public void applyRule(final SNode linkAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // todo: why we allow using attributes outside smodelAttribute role? It doesn't look quite sound such usage in quotations and generator templates 
+    // todo:whyweallowusingattributesoutsidesmodelAttributerole?Itdoesn'tlookquitesoundsuchusageinquotationsandgeneratortemplates
     if ((SNodeOperations.getParent(linkAttribute) == null) || !(SNodeOperations.hasRole(linkAttribute, LINKS.smodelAttribute$KJ43))) {
       return;
     }

@@ -180,7 +180,7 @@ public final class RuleUtil {
     return getMappingLabelName(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$4kKU));
   }
   public static boolean labelNeedsTwoInputs(SNode macro) {
-    // though mappingLable comes from NodeMacro, it's only LabelMacro that supports 2 inputs 
+    // thoughmappingLablecomesfromNodeMacro,it'sonlyLabelMacrothatsupports2inputs
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(macro, LINKS.mappingLabel$jbOO), LINKS.sourceConcept2$sSLi) != null);
   }
 

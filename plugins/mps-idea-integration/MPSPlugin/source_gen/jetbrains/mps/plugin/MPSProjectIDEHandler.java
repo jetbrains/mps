@@ -78,7 +78,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   private Project myProject;
 
   static {
-    // has to be called before instantiation of MPSProjectIDEHandler to make the instance available only at localhost 
+    // hastobecalledbeforeinstantiationofMPSProjectIDEHandlertomaketheinstanceavailableonlyatlocalhost
     RemoteServer.setupRMI(true);
   }
 
@@ -158,7 +158,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
               return scope_xnj2f8_e0a0a1a11_0;
             }
           };
-          // we first look up in models with the given name (better chance to succeed), then in all other models 
+          // wefirstlookupinmodelswiththegivenname(betterchancetosucceed),theninallothermodels
           ListSequence.fromList(modelsByName).addSequence(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
             public boolean accept(SModel it) {
               return Objects.equals(SModelOperations.getModelName(it), modelHint);
@@ -180,7 +180,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
             }
             continue;
           }
-          // IMPORTANT: line+1 because the line parameter means "line, starting with 0", while in debug info it starts from 1 
+          // IMPORTANT:line+1becausethelineparametermeans"line,startingwith0",whileindebuginfoitstartsfrom1
           SNodePointer np = getBestNodeForPosition(di, fileName, line + 1);
           bestNode = np.resolve(mpsProject.getRepository());
           if (bestNode != null) {
@@ -212,7 +212,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
       }
     })) {
       Collection<TraceablePositionInfo> positions = root.getPositions();
-      // for each root we get the nearest position that contains the given line 
+      // foreachrootwegetthenearestpositionthatcontainsthegivenline
       TraceablePositionInfo info = CollectionSequence.fromCollection(positions).where(new IWhereFilter<TraceablePositionInfo>() {
         public boolean accept(TraceablePositionInfo it) {
           return it.contains(fileName, line);
@@ -234,7 +234,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
       return new SNodePointer(null);
     }
 
-    // now, between all those "best local" positions, we select the global best one 
+    // now,betweenallthose"bestlocal"positions,weselecttheglobalbestone
     Pair<TraceablePositionInfo, DebugInfoRoot> bestPosition = ListSequence.fromList(nicePositions).sort(new ISelector<Pair<TraceablePositionInfo, DebugInfoRoot>, Integer>() {
       public Integer select(Pair<TraceablePositionInfo, DebugInfoRoot> it) {
         return it.o1.getStartLine();
@@ -329,8 +329,8 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
     UsagesViewTool.showUsages(myProject, provider, new SearchQuery(node, scope), opt);
   }
   private static SNode findClassByName(SearchScope scope, String classFqName) {
-    // This is slightly updated SModelUtil.findNodeByFQName, which moved here as it's the only place we use it 
-    // FIXME however, it's ugly and needs rework 
+    // ThisisslightlyupdatedSModelUtil.findNodeByFQName,whichmovedhereasit'stheonlyplaceweuseit
+    // FIXMEhowever,it'suglyandneedsrework
     String modelName = NameUtil.namespaceFromLongName(classFqName);
     String name = NameUtil.shortNameFromLongName(classFqName);
     for (SModel m : Sequence.fromIterable(scope.getModels())) {

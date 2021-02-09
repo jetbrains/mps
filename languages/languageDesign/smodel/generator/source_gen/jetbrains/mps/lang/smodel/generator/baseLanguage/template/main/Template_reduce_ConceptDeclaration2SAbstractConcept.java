@@ -57,25 +57,25 @@ public class Template_reduce_ConceptDeclaration2SAbstractConcept extends Templat
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode4, myProperties[2], QueriesGenerated.propertyMacro_GetValue_65_0(new PropertyMacroContext(context2, "0l", propertyMacro_ohq67j_c0a2a0a1a3a1a1a3a2a6)));
               tnode3.addChild(myAggregationLinks[0], tnode4);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode5, myProperties[2], QueriesGenerated.propertyMacro_GetValue_65_1(new PropertyMacroContext(context2, "0l", propertyMacro_ohq67j_c0a2a0a1a4a1a1a3a2a6)));
               tnode3.addChild(myAggregationLinks[0], tnode5);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode6, myProperties[2], QueriesGenerated.propertyMacro_GetValue_65_2(new PropertyMacroContext(context2, "0l", propertyMacro_ohq67j_c0a2a0a1a5a1a1a3a2a6)));
               tnode3.addChild(myAggregationLinks[0], tnode6);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
               SNodeAccessUtil.setPropertyValue(tnode7, myProperties[3], QueriesGenerated.propertyMacro_GetValue_65_3(new PropertyMacroContext(context2, "fqName", propertyMacro_ohq67j_c0a2a0a1a6a1a1a3a2a6)));
               tnode3.addChild(myAggregationLinks[0], tnode7);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tlist2 = TemplateUtil.singletonList(tnode3);
@@ -89,25 +89,25 @@ public class Template_reduce_ConceptDeclaration2SAbstractConcept extends Templat
               final SNode tnode9 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode9, myProperties[2], QueriesGenerated.propertyMacro_GetValue_65_4(new PropertyMacroContext(context3, "0l", propertyMacro_ohq67j_c0a2a0a1a3a1a0b0d0c0g)));
               tnode8.addChild(myAggregationLinks[0], tnode9);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode10 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode10, myProperties[2], QueriesGenerated.propertyMacro_GetValue_65_5(new PropertyMacroContext(context3, "0l", propertyMacro_ohq67j_c0a2a0a1a4a1a0b0d0c0g)));
               tnode8.addChild(myAggregationLinks[0], tnode10);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode11 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode11, myProperties[2], QueriesGenerated.propertyMacro_GetValue_65_6(new PropertyMacroContext(context3, "0l", propertyMacro_ohq67j_c0a2a0a1a5a1a0b0d0c0g)));
               tnode8.addChild(myAggregationLinks[0], tnode11);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode12 = environment.createOutputNode(myConcepts[3]);
               SNodeAccessUtil.setPropertyValue(tnode12, myProperties[3], QueriesGenerated.propertyMacro_GetValue_65_7(new PropertyMacroContext(context3, "fqName", propertyMacro_ohq67j_c0a2a0a1a6a1a0b0d0c0g)));
               tnode8.addChild(myAggregationLinks[0], tnode12);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tlist2 = TemplateUtil.singletonList(tnode8);
@@ -115,7 +115,7 @@ public class Template_reduce_ConceptDeclaration2SAbstractConcept extends Templat
         for (SNode child13 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[1], child13);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(2, tnode1);

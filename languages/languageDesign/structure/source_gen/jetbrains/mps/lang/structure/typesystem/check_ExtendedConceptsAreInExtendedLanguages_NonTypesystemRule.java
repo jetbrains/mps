@@ -41,10 +41,10 @@ public class check_ExtendedConceptsAreInExtendedLanguages_NonTypesystemRule exte
     List<SNode> superConcepts = new ArrayList<SNode>();
     if (SNodeOperations.isInstanceOf(cd, CONCEPTS.ConceptDeclaration$gH)) {
       ListSequence.fromList(superConcepts).addElement(SLinkOperations.getTarget(SNodeOperations.as(cd, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg));
-      // for implemented interfaces, we do not require extends between languages. 
-      // I'm not quite sure we shall demand extends between languages even for super-concepts, but it's just too much to lift this restriction now ;) 
-      // Generally, however, it seems reasonable to demand extends in super-concepts case, as it means re-use of functionality, and absence of this 
-      // constraint would encourage people to have bad design and extend concepts they shall not extend. OTOH, each language extending lang.core look odd. 
+      // forimplementedinterfaces,wedonotrequireextendsbetweenlanguages.
+      // I'mnotquitesureweshalldemandextendsbetweenlanguagesevenforsuper-concepts,butit'sjusttoomuchtoliftthisrestrictionnow;)
+      // Generally,however,itseemsreasonabletodemandextendsinsuper-conceptscase,asitmeansre-useoffunctionality,andabsenceofthis
+      // constraintwouldencouragepeopletohavebaddesignandextendconceptstheyshallnotextend.OTOH,eachlanguageextendinglang.corelookodd.
     } else if (SNodeOperations.isInstanceOf(cd, CONCEPTS.InterfaceConceptDeclaration$CG)) {
       ListSequence.fromList(superConcepts).addSequence(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(cd, CONCEPTS.InterfaceConceptDeclaration$CG), LINKS.extends$nawU), LINKS.intfc$zM4e)));
     }

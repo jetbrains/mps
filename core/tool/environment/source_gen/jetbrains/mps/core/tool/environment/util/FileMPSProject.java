@@ -35,8 +35,8 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
 
   @NotNull
   private MacroHelper createMacroHelper() {
-    // todo [MM] investigate why it fails when using just path (where those . and .. come from) 
-    // XXX here uses to be LocalIoFileSystem.getInstance, therefore I stick to JAVA_IO_FILE_FS, not just FILE_FS, thoufh see no apparent reason to be that specific. 
+    // todo[MM]investigatewhyitfailswhenusingjustpath(wherethose.and..comefrom)
+    // XXXhereusestobeLocalIoFileSystem.getInstance,thereforeIsticktoJAVA_IO_FILE_FS,notjustFILE_FS,thoufhseenoapparentreasontobethatspecific.
     IFileSystem fs = getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
     return MacrosFactory.forProjectFile(fs.getFile(getProjectFile()));
   }

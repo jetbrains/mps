@@ -78,7 +78,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
       if (SNodeOperations.isInstanceOf(artifact, CONCEPTS.BuildLayout_AbstractCopy$Ss)) {
         SNode file = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(artifact, CONCEPTS.BuildLayout_AbstractCopy$Ss), LINKS.fileset$tUzn), CONCEPTS.BuildInputSingleFile$4U);
         if ((file != null)) {
-          // again, register real path here to enable "import jar ...." construction 
+          // again,registerrealpathheretoenable"importjar...."construction
           artifacts.findArtifact(SLinkOperations.getTarget(file, LINKS.path$dYr6));
         }
       }
@@ -135,12 +135,12 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
 
     for (SNode dep : Sequence.fromIterable(BuildMps_Module__BehaviorDescriptor.getJarDeps_id3WZD5LHqufx.invoke(__thisNode__.getConcept(), dependency))) {
       if ((SLinkOperations.getTarget(dep, LINKS.customLocation$e43G) != null)) {
-        // XXX here used to be dep.customLocation.getDependencyTarget() that didn't work in scenario, when there's module A with 'jar' dependency using external location 
-        //     within the same project, and module B that depends on A. B.fetchDependencies() discovered A's jar, but getDependencyTarget() == null as both A and its external jar 
-        //     live under the same root. Here, however, I need to decide whether I shall fetch anything for either A or its jar, so I don't care about them being in the same root 
-        //     Here it's important to me that the external jar is foreign to the dependant module, so I can not use BuildSource_JavaExternalJarRef.getDependencyTarget, 
-        //     and stick to JavaExportUtil directly 
-        // Truth is I have no idea why there's 'same root' check is in getDependencyTarget(), what's good about it, but am afraid to change it. 
+        // XXXhereusedtobedep.customLocation.getDependencyTarget()thatdidn'tworkinscenario,whenthere'smoduleAwith'jar'dependencyusingexternallocation
+        // withinthesameproject,andmoduleBthatdependsonA.B.fetchDependencies()discoveredA'sjar,butgetDependencyTarget()==nullasbothAanditsexternaljar
+        // liveunderthesameroot.Here,however,IneedtodecidewhetherIshallfetchanythingforeitherAoritsjar,soIdon'tcareaboutthembeinginthesameroot
+        // Hereit'simportanttomethattheexternaljarisforeigntothedependantmodule,soIcannotuseBuildSource_JavaExternalJarRef.getDependencyTarget,
+        // andsticktoJavaExportUtildirectly
+        // TruthisIhavenoideawhythere's'sameroot'checkisingetDependencyTarget(),what'sgoodaboutit,butamafraidtochangeit.
         Tuples._2<SNode, Boolean> dependencyTarget = JavaExportUtil.requireJar(artifacts, SLinkOperations.getTarget(SLinkOperations.getTarget(dep, LINKS.customLocation$e43G), LINKS.jar$JLD3), __thisNode__);
         if (dependencyTarget != null) {
           if ((boolean) dependencyTarget._1()) {
@@ -152,8 +152,8 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
         }
       } else {
         if (dependencyComesFromAnotherRoot) {
-          // guess, dependencyComesFromAnotherRoot condition here is sort of assumption that jars referenced from a same-root dependency don't need to get fetched 
-          // and are universally available, yet I don't know if it's true. Why not to check containment root of the jar, rather than that of module dependency? 
+          // guess,dependencyComesFromAnotherRootconditionhereissortofassumptionthatjarsreferencedfromasame-rootdependencydon'tneedtogetfetched
+          // andareuniversallyavailable,yetIdon'tknowifit'strue.Whynottocheckcontainmentrootofthejar,ratherthanthatofmoduledependency?
           needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.addJarPath_id3WZD5LHqnU8.invoke(__thisNode__.getConcept(), SLinkOperations.getTarget(dep, LINKS.path$yTVo), artifacts, builder));
         }
       }

@@ -496,7 +496,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
     @Override
     public void commandStarted() {
-      // nop 
+      // nop
     }
 
     @Override

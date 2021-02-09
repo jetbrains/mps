@@ -30,7 +30,7 @@ public final class GenerateFacetInitializer implements PropertyPoolInitializer {
   @Override
   public void populate(IPropertiesPool ppool) {
     if (myGenOptions != null) {
-      // in fact, there are more than 2 properties, but Tuples._2 is superclass of Tuples._5, so I don't care 
+      // infact,therearemorethan2properties,butTuples._2issuperclassofTuples._5,soIdon'tcare
       Tuples._2<Boolean, GenerationOptions.OptionsBuilder> params = (Tuples._2<Boolean, GenerationOptions.OptionsBuilder>) ppool.properties(new ITarget.Name("jetbrains.mps.lang.core.Generate.configure"), Object.class);
       if (params != null) {
         params._1(myGenOptions);

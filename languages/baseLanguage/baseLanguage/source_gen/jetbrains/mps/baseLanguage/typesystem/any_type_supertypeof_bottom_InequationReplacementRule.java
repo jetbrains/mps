@@ -16,11 +16,11 @@ public class any_type_supertypeof_bottom_InequationReplacementRule extends Abstr
   public any_type_supertypeof_bottom_InequationReplacementRule() {
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    // bottom is always a subtype 
+    // bottomisalwaysasubtype
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    // bottom is always a subtype 
+    // bottomisalwaysasubtype
     return result_14532009;
   }
   public boolean isWeak() {

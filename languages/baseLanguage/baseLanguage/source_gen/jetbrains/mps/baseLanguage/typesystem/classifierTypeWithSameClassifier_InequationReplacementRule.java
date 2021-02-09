@@ -25,8 +25,8 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
     return Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))) && SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr) != SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr);
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    // todo this is a hack helping to avoid type errors when mps code compiled in idea returns back to mps as stubs 
-    // we definitely need proper solution that allows fully functional clear subtyping for such things 
+    // todothisisahackhelpingtoavoidtypeerrorswhenmpscodecompiledinideareturnsbacktompsasstubs
+    // wedefinitelyneedpropersolutionthatallowsfullyfunctionalclearsubtypingforsuchthings
 
     SNode subTypeReplaced = SNodeOperations.copyNode(subtype);
     SLinkOperations.setTarget(subTypeReplaced, LINKS.classifier$cxMr, SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr));
@@ -40,8 +40,8 @@ public class classifierTypeWithSameClassifier_InequationReplacementRule extends 
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
     {
-      // todo this is a hack helping to avoid type errors when mps code compiled in idea returns back to mps as stubs 
-      // we definitely need proper solution that allows fully functional clear subtyping for such things 
+      // todothisisahackhelpingtoavoidtypeerrorswhenmpscodecompiledinideareturnsbacktompsasstubs
+      // wedefinitelyneedpropersolutionthatallowsfullyfunctionalclearsubtypingforsuchthings
 
       SNode subTypeReplaced = SNodeOperations.copyNode(subtype);
       SLinkOperations.setTarget(subTypeReplaced, LINKS.classifier$cxMr, SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr));

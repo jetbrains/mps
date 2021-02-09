@@ -191,7 +191,7 @@ public abstract class GraphAnalyzer<V> {
     w.exit();
   }
   private List<List<Wrapper<V>>> compactCycles(List<List<Wrapper<V>>> cycles) {
-    // the code comes from ModulesCluster 
+    // thecodecomesfromModulesCluster
     List<List<Wrapper<V>>> rv = ListSequence.fromList(new ArrayList<List<Wrapper<V>>>());
     List<Wrapper<V>> prev = null;
     for (List<Wrapper<V>> c : ListSequence.fromList(cycles)) {

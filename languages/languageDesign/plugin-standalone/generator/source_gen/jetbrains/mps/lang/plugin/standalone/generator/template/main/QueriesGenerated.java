@@ -86,11 +86,11 @@ public class QueriesGenerated extends QueryProviderBase {
   public static boolean rule_Condition_11_0(final BaseMappingRuleContext _context) {
     if (PluginUtils.needAppPlugin(_context.getInputModel()) || PluginUtils.needProjectPlugin(_context.getInputModel())) {
       SNode optionalStandaloneMarker = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(_context.getNode()), CONCEPTS.StandalonePluginDescriptor$4y)).first();
-      // if compileInMPS && needInitConfig, it's MPS module with plugin, managed by ModulePluginContributor, therefore 
-      // extension is not needed. 
-      // see PluginUtils for reasons why have to resort to originalModel here 
-      //  Perhaps, needInitConfig is a bit way too much here (parts loaded by ".plugin." convention don't need 
-      // extension as well, I'd like to move forward gradually. 
+      // ifcompileInMPS&&needInitConfig,it'sMPSmodulewithplugin,managedbyModulePluginContributor,therefore
+      // extensionisnotneeded.
+      // seePluginUtilsforreasonswhyhavetoresorttooriginalModelhere
+      // Perhaps,needInitConfigisabitwaytoomuchhere(partsloadedby".plugin."conventiondon'tneed
+      // extensionaswell,I'dliketomoveforwardgradually.
       return !((SPropertyOperations.getBoolean(SModelOperations.getModuleStub(_context.getOriginalInputModel()), PROPS.compileInMPS$2Q_X) && SPropertyOperations.getBoolean(optionalStandaloneMarker, PROPS.needInitConfig$W9CN)));
     }
     return false;

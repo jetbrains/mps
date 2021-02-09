@@ -21,7 +21,7 @@ public class MemberScopes {
   }
   @Deprecated
   public static Scope visibleClassifierMembers(SNode contextClassifier, SAbstractConcept kind, SNode contextNode) {
-    // todo[MM]: concepts here must be replaces with a regular Java enum. No point in using concepts here 
+    // todo[MM]:conceptsheremustbereplaceswitharegularJavaenum.Nopointinusingconceptshere
     Scope membersScope = Classifier__BehaviorDescriptor.getMembers_id1UeCwxlVpJs.invoke(contextClassifier, kind);
     if (membersScope == null) {
       throw new IllegalArgumentException("Member scope for classifier " + SPropertyOperations.getString(contextClassifier, PROPS.name$MnvL) + " and kind " + kind.getName() + " is null");

@@ -83,7 +83,7 @@ public class JavaRunParameters extends MultiTuple._5<String, String, String, Str
     try {
       return (boolean) this.useAlternativeJre();
     } catch (NullPointerException e) {
-      // useAlternativeJre is basically a Boolean, so can be null and a cast (and thus NPE) is inevitable here 
+      // useAlternativeJreisbasicallyaBoolean,socanbenullandacast(andthusNPE)isinevitablehere
       return false;
     }
   }

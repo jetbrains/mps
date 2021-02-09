@@ -48,7 +48,7 @@ public class ModuleUsagesFinder implements IFinder {
   private Set<SModel> myModels2Visit;
 
   public ModuleUsagesFinder() {
-    // by default, look module uses up to model imports only. 
+    // bydefault,lookmoduleusesuptomodelimportsonly.
     this(false);
   }
 
@@ -203,7 +203,7 @@ public class ModuleUsagesFinder implements IFinder {
   }
 
   private static Set<SDependency> findDependencies(SModule from, SModuleReference to) {
-    // FIXME nice candidate to move into SModule (along with findDependencies(SDependencyKind) 
+    // FIXMEnicecandidatetomoveintoSModule(alongwithfindDependencies(SDependencyKind)
     LinkedHashSet<SDependency> rv = new LinkedHashSet<SDependency>();
     for (SDependency dep : from.getDeclaredDependencies()) {
       if (dep.getTargetModule().equals(to)) {
@@ -238,7 +238,7 @@ public class ModuleUsagesFinder implements IFinder {
     /*package*/ void collectImports(Collection<SModel> scope, ProgressMonitor progress) {
       progress.start("", scope.size());
       for (SModel model : scope) {
-        // getImportedModelUIDs doesn't report implicit model imports 
+        // getImportedModelUIDsdoesn'treportimplicitmodelimports
         for (SModelReference mRef : SModelOperations.getImportedModelUIDs(model)) {
           if (myModelsToFind.contains(mRef)) {
             myCallback.onUsageFound(new SearchResult<SModel>(model, USED_BY));
@@ -251,8 +251,8 @@ public class ModuleUsagesFinder implements IFinder {
     }
 
     /*package*/ void collectNodes(Collection<SModel> scope, ProgressMonitor progress) {
-      // unless we have a mechanism to get complete set of model imports (including implicit), 
-      // we check models even if they don't import any model of interest explicitly 
+      // unlesswehaveamechanismtogetcompletesetofmodelimports(includingimplicit),
+      // wecheckmodelseveniftheydon'timportanymodelofinterestexplicitly
       progress.start("", myModelsToFind.size());
       for (SModelReference mr : myModelsToFind) {
         myModelUsageFinder.doFind(mr, scope, myCallback, progress.subTask(1, SubProgressKind.AS_COMMENT));

@@ -25,7 +25,7 @@ public class DispatchMethodCollector {
   }
   private void fill(SNode classToCheck) {
 
-    // Instance methods 
+    // Instancemethods
 
     SNode clas = classToCheck;
 
@@ -45,7 +45,7 @@ public class DispatchMethodCollector {
       g.finalize();
     }
 
-    // Now static methods. They're simpler. No need to take superclasses into account 
+    // Nowstaticmethods.They'resimpler.Noneedtotakesuperclassesintoaccount
     for (SNode m : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticMethods_id4_LVZ3pCeXr.invoke(classToCheck)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return DispatchUtil.isReadyMethod(it);

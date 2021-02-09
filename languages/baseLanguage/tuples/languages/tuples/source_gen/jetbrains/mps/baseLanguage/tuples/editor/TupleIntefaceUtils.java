@@ -40,7 +40,7 @@ public class TupleIntefaceUtils {
       if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
         ListSequence.fromList(accessors).addElement(new Property(method));
       } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).toListSequence().first())) {
-        // matchNodes(RETURNTYPE, FIRST PARAMETER) (sic!) we use tuples in a way that we want set(X) to return X for immediate use 
+        // matchNodes(RETURNTYPE,FIRSTPARAMETER)(sic!)weusetuplesinawaythatwewantset(X)toreturnXforimmediateuse
         ListSequence.fromList(mutators).addElement(new Property(method));
       } else if ("equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.BooleanType$_u)) {
         ignored++;

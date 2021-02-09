@@ -13,7 +13,7 @@ public class Sequence_iteration2 extends TestCase {
   public Sequence_iteration2() {
   }
   public void test_1() {
-    // inner iteration 
+    // inneriteration
     Iterable<String> ss = Sequence.fromClosure(new ISequenceClosure<String>() {
       public Iterable<String> iterable() {
         return new Iterable<String>() {

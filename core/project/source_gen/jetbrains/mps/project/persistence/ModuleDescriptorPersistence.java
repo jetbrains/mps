@@ -158,8 +158,8 @@ public class ModuleDescriptorPersistence {
       child.setAttribute("reexport", Boolean.toString(md.isReexport()));
       child.setText(md.getModuleRef().toString());
       if (md.getScope() != SDependencyScope.DEFAULT) {
-        // the only reason not to serialize DEFIAULT for now is to avoid extra diff with existing descriptors meanwhile 
-        // Once there's migration action, it might be reasonable to serialize each scope 
+        // theonlyreasonnottoserializeDEFIAULTfornowistoavoidextradiffwithexistingdescriptorsmeanwhile
+        // Oncethere'smigrationaction,itmightbereasonabletoserializeeachscope
         child.setAttribute("scope", md.getScope().identify());
       }
       result.addContent(child);
@@ -173,7 +173,7 @@ public class ModuleDescriptorPersistence {
       readMemento(m, element, macroHelper);
       String type = element.getAttributeValue("type");
       if (type == null) {
-        // This is debug code to find out cause of https://youtrack.jetbrains.com/issue/MPS-22589. 
+        // Thisisdebugcodetofindoutcauseofhttps://youtrack.jetbrains.com/issue/MPS-22589.
         String msg = String.format("Unsupported model root detected in module at %s. Likely outdated module is being loaded, please check your environment", macroHelper.expandPath("${module}"));
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error(msg);

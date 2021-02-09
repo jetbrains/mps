@@ -36,7 +36,7 @@ public class check_SuppressErrorsAnnotation_NonTypesystemRule extends AbstractNo
         }
       }
     }
-    // todo: message should be not empty, add migration if necessary 
+    // todo:messageshouldbenotempty,addmigrationifnecessary
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SuppressErrorsAnnotation$D1;

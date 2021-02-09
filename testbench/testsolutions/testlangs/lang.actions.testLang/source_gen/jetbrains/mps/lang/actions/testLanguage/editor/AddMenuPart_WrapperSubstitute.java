@@ -119,7 +119,7 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
-            // additional compilation test for all passed parameters 
+            // additionalcompilationtestforallpassedparameters
             boolean tmpVar = nodeToWrap != null;
             tmpVar = tmpVar && _context.getParentNode() != null;
             tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
@@ -129,7 +129,7 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
             tmpVar = tmpVar && pattern != null;
             tmpVar = tmpVar && nodeToWrap != null;
 
-            // Check if we have read access here 
+            // Checkifwehavereadaccesshere
             String name = SPropertyOperations.getString(nodeToWrap, PROPS.name$MnvL);
 
             SNode wrapperNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec9ad4dL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildWrapper"));
@@ -148,20 +148,20 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
           }
           @Override
           public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-            // compilation test for all passed parameters 
+            // compilationtestforallpassedparameters
             boolean tmpVar = _context.getParentNode() != null;
             tmpVar = tmpVar && createdNode != null;
             tmpVar = tmpVar && _context.getLink() != null;
             tmpVar = tmpVar && _context.getModel() != null;
             tmpVar = tmpVar && _context.getEditorContext() != null;
 
-            // Check if we have read access here 
+            // Checkifwehavereadaccesshere
             String name = SPropertyOperations.getString(SLinkOperations.getTarget(createdNode, LINKS.childToWrap$Qcug), PROPS.name$MnvL);
             if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(createdNode, LINKS.childToWrap$Qcug), CONCEPTS.ActionTestChildToWrap2$gs)) {
               SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.childToWrap$Qcug), SelectionManager.FIRST_CELL, 5);
               return;
             }
-            // selecting a custom cell 
+            // selectingacustomcell
             _context.getEditorContext().flushEvents();
             EditorCell createdNodeCell = _context.getEditorContext().getEditorComponent().findNodeCell(createdNode);
             if (createdNodeCell != null) {

@@ -42,7 +42,7 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel 
+    // get"nonconflicting"attributeinmetamodel
     SNode n = getParent(false);
     MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink());
     if (hint != null) {

@@ -52,7 +52,7 @@ public class ImplementingConcepts_Finder extends GeneratedFinder {
                     public void invoke(SNode interfaceNode) {
                       SNode conceptNode = SNodeOperations.getParent(interfaceNode);
                       if (SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.ConceptDeclaration$gH)) {
-                        // concept implements interface case 
+                        // conceptimplementsinterfacecase
                         if (SNodeOperations.hasRole(interfaceNode, LINKS.implements$u_P2)) {
                           callback.onUsageFound(createSingleResult(conceptNode));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {

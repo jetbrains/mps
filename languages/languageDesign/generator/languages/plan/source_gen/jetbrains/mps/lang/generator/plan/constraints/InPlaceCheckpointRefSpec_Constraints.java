@@ -46,12 +46,12 @@ public class InPlaceCheckpointRefSpec_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // reference checkpoint steps with in-place cp declaration only 
+            // referencecheckpointstepswithin-placecpdeclarationonly
             return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.Checkpoint$ZV)) {
               @Override
               public boolean isExcluded(SNode node) {
-                // node == contextNode is neccessary to avoid cycle when there's already a cp step with in-place declaration, 
-                // and we ask for replacement - do not suggest itself as possible replacement, wrapped into InPlaceCheckpointRefSpec 
+                // node==contextNodeisneccessarytoavoidcyclewhenthere'salreadyacpstepwithin-placedeclaration,
+                // andweaskforreplacement-donotsuggestitselfaspossiblereplacement,wrappedintoInPlaceCheckpointRefSpec
                 return node == _context.getContextNode() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.Checkpoint$ZV), LINKS.cpSpec$v7$t), CONCEPTS.InPlaceCheckpointSpec$pM));
               }
             };

@@ -62,7 +62,7 @@ public class XmlSignature {
       if (SNodeOperations.isInstanceOf(content, CONCEPTS.XmlBaseElement$Ns)) {
         add(SNodeOperations.cast(content, CONCEPTS.XmlElement$fP));
       } else if (SNodeOperations.isInstanceOf(content, CONCEPTS.XmlText$q9) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(content, CONCEPTS.XmlText$q9), PROPS.value$6Orv))) {
-        // ignore 
+        // ignore
       } else {
         hasErrors = true;
       }
@@ -86,7 +86,7 @@ public class XmlSignature {
         sb.append(SPropertyOperations.getString(SNodeOperations.cast(val, CONCEPTS.XmlEntityRefValue$di), PROPS.entityName$BTnn));
         sb.append(";");
       } else if (SNodeOperations.isInstanceOf(val, CONCEPTS.XmlNoSpaceValue$ZP)) {
-        // ignore 
+        // ignore
       } else if (SNodeOperations.isInstanceOf(val, CONCEPTS.XmlTextValue$29)) {
         SNode tv = SNodeOperations.cast(val, CONCEPTS.XmlTextValue$29);
         if ((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(tv)) {

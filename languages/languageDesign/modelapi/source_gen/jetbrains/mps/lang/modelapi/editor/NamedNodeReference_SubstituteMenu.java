@@ -48,7 +48,7 @@ public class NamedNodeReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_t1mmv8_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_t1mmv8_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.NamedNodeReference$ab, LINKS.target$fou_);
     }
     @NotNull

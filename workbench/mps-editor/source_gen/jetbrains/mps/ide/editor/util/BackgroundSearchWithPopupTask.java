@@ -92,7 +92,7 @@ public class BackgroundSearchWithPopupTask extends BackgroundSearchTask {
     }
     List<NodeNavigatable> showingItems = myListModel.getItems();
     newData.removeAll(showingItems);
-    // fix comparator needs read, could transfer the name into a NamedNodeNavigatable composite instead 
+    // fixcomparatorneedsread,couldtransferthenameintoaNamedNodeNavigatablecompositeinstead
     mySettings.myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         Object selected = myList.getSelectedValue();

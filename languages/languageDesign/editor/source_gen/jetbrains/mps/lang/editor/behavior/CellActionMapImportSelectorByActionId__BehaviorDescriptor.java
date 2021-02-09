@@ -48,7 +48,7 @@ public final class CellActionMapImportSelectorByActionId__BehaviorDescriptor ext
     return ((boolean) CellActionMapDeclaration__BehaviorDescriptor.containsItemOfType_id2pg2GNQgnKJ.invoke(actionMap, actionId) ? CheckingResult.success() : CheckingResult.failure("Action map " + SPropertyOperations.getString(actionMap, PROPS.name$MnvL) + " does not define or import " + SEnumOperations.getMemberPresentation(actionId)));
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
-    // navigate to the action item of the matching type 
+    // navigatetotheactionitemofthematchingtype
     return Sequence.fromIterable(CellActionMapDeclaration__BehaviorDescriptor.collectItemsOfType_id5Sx2dSLnOI$.invoke(actionMap, CellActionMapImportSelectorByActionId__BehaviorDescriptor.getActionId_id3XXPjz_5Jxc.invoke(__thisNode__))).last();
   }
 

@@ -422,8 +422,8 @@ public class ClassifierCacher {
       instance(CONCEPTS.VariableArityType$KF);
     } else if (type instanceof ASMTypeVariable) {
       instance(CONCEPTS.TypeVariableReference$WL);
-      // usages handled on upper level as for resolve we should load model 
-      // another variant is just to search for occurence in the same model 
+      // usageshandledonupperlevelasforresolveweshouldloadmodel
+      // anothervariantisjusttosearchforoccurenceinthesamemodel
     } else if (type instanceof ASMClassType) {
       ASMClassType c = (ASMClassType) type;
       instance(CONCEPTS.ClassifierType$bL);

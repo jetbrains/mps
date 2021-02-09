@@ -36,7 +36,7 @@ public final class ToggleDefaultMenu_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // disable for legacy concepts 
+    // disableforlegacyconcepts
     return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.SubstituteMenu$EF) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn);
   }
   @Override

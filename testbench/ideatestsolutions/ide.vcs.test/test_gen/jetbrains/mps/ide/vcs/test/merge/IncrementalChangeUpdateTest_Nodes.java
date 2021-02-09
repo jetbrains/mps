@@ -32,16 +32,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   /*package*/ SNode getTestRoot() {
-    // expects proper (at least read) model access 
+    // expectsproper(atleastread)modelaccess
     return SPointerOperations.resolveNode(new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), getProject().getRepository());
   }
   /*package*/ SNode getTestMethod1() {
-    // expects proper (at least read) model access 
+    // expectsproper(atleastread)modelaccess
     return SPointerOperations.resolveNode(new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610"), getProject().getRepository());
   }
 
   /*package*/ SNode getTestCommentedMethod() {
-    // expects proper (at least read) model access 
+    // expectsproper(atleastread)modelaccess
     return SPointerOperations.resolveNode(new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5297043982019668093"), getProject().getRepository());
   }
 

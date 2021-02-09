@@ -94,9 +94,9 @@ public class BaseLanguageHierarchyViewTool extends AbstractHierarchyView {
     @Override
     protected Set<SNode> getDescendants(SNode node, Set<SNode> visited) {
       FindUsagesFacade fuFacade = FindUsagesFacade.getInstance();
-      // FIXME there's ClassifierSuccessor index we can use here, although shall not use them directly 
-      // but rather through FindUsagesFacade, with dedicated 'successor' query, so that there'd be single HierarchyViewTool, and finders plug through 
-      // FindUsages to get accessed in a generic way. 
+      // FIXMEthere'sClassifierSuccessorindexwecanusehere,althoughshallnotusethemdirectly
+      // butratherthroughFindUsagesFacade,withdedicated'successor'query,sothatthere'dbesingleHierarchyViewTool,andfindersplugthrough
+      // FindUsagestogetaccessedinagenericway.
       Set<SReference> usages = fuFacade.findUsages(AllUserModelsScope.getInstance(), Collections.<SNode>singleton(node), new EmptyProgressMonitor());
       Set<SNode> result = new HashSet<SNode>();
       for (SReference usage : usages) {

@@ -135,7 +135,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       }
     };
 
-    // Check that file has one of the possible MPS module extensions 
+    // CheckthatfilehasoneofthepossibleMPSmoduleextensions
     final Condition<VirtualFile> isModuleFile = new Condition<VirtualFile>() {
       private final Set<String> EXTENTIONS = new HashSet<String>(Arrays.asList(MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, MPSExtentions.GENERATOR));
 
@@ -176,7 +176,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       public void run(AnActionButton button) {
         FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFilesNoJarsDescriptor().withFileFilter(isModuleFile);
 
-        // Do not use method with consumer, because it uses com.intellij.util.Consumer instead of java.util.function.Consumer 
+        // Donotusemethodwithconsumer,becauseitusescom.intellij.util.Consumerinsteadofjava.util.function.Consumer
         VirtualFile[] files = FileChooser.chooseFiles(descriptor, myModulesList, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
 
         filesToModulePathsProcessor.accept(Arrays.asList(files));

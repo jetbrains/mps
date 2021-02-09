@@ -11,10 +11,10 @@ import javax.swing.KeyStroke;
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/8513716958726547010", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class Trace_KeymapChanges extends BaseKeymapChanges {
   public Trace_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.ide.devkit.actions.ShowTypeSystemTrace_Action", getShortcut("ctrl shift X"));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "$default";

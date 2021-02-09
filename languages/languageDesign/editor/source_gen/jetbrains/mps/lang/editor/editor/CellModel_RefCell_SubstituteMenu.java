@@ -53,7 +53,7 @@ public class CellModel_RefCell_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_hnmfkt_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_hnmfkt_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CellModel_RefCell$7g, LINKS.relationDeclaration$E2hc);
     }
     @NotNull

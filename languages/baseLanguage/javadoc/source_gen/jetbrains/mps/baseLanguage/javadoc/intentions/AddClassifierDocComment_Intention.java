@@ -79,7 +79,7 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
       SNode line = SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(node), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
       SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
 
-      //  Type variables 
+      // Typevariables
       for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp))) {
         SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
         SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_peeqac_a0b0j0a(typeVariableDeclaration));

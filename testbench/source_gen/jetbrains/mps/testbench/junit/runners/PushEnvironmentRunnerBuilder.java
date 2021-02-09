@@ -32,7 +32,7 @@ public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
 
   public PushEnvironmentRunnerBuilder(Environment environmentToPush) {
     this(environmentToPush, new AllDefaultPossibilitiesBuilder(true));
-    // true for suite just because I see no reason why to forbid it, though not sure there's none. 
+    // trueforsuitejustbecauseIseenoreasonwhytoforbidit,thoughnotsurethere'snone.
   }
 
   public PushEnvironmentRunnerBuilder(Environment environmentToPush, RunnerBuilder delegate) {
@@ -43,14 +43,14 @@ public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
   @Override
   public Runner runnerForClass(Class<?> aClass) throws Throwable {
     if (EnvironmentAware.class.isAssignableFrom(aClass)) {
-      // Here, we assume it's generated (i.e. those we've full control over) tests that bear EnvironmentAware, therefore 
-      // we don't support neither @Ignored not @RunWith here. 
+      // Here,weassumeit'sgenerated(i.e.thosewe'vefullcontrolover)teststhatbearEnvironmentAware,therefore
+      // wedon'tsupportneither@Ignorednot@RunWithhere.
       if (TestCase.class.isAssignableFrom(aClass)) {
         return new JUnit38ClassRunner(new JUnit38SuiteAdapter(aClass));
       }
       return new PushEnvJUnit4Runner(aClass);
     } else {
-      // push this environment-aware RunnerBuilder down to next RunWith runner, if any. 
+      // pushthisenvironment-awareRunnerBuilderdowntonextRunWithrunner,ifany.
       Runner runWithRunner = new AnnotatedBuilder(this).runnerForClass(aClass);
       if (runWithRunner instanceof EnvironmentAware) {
         ((EnvironmentAware) runWithRunner).setEnvironment(myEnvironmentToPush);
@@ -67,8 +67,8 @@ public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
 
     @Override
     protected Object createTest() throws Exception {
-      // FIXME Seems better to invoke cons(Environment), if present, to instantiate test object, rather than use setter. 
-      // Need another (marker) interface then (not to force empty EA.setEnvironment) 
+      // FIXMESeemsbettertoinvokecons(Environment),ifpresent,toinstantiatetestobject,ratherthanusesetter.
+      // Needanother(marker)interfacethen(nottoforceemptyEA.setEnvironment)
       Object target = super.createTest();
       if (target instanceof EnvironmentAware) {
         ((EnvironmentAware) target).setEnvironment(myEnvironmentToPush);
@@ -96,7 +96,7 @@ public final class PushEnvironmentRunnerBuilder extends RunnerBuilder {
         return;
       }
       if (test instanceof EnvironmentAware) {
-        //  well, could be assert as it's the first think we check in runnerForClass, above. Nevertheless, why not to check gracefully? 
+        // well,couldbeassertasit'sthefirstthinkwecheckinrunnerForClass,above.Nevertheless,whynottocheckgracefully?
         ((EnvironmentAware) test).setEnvironment(myEnvironmentToPush);
       }
       super.runTest(test, result);

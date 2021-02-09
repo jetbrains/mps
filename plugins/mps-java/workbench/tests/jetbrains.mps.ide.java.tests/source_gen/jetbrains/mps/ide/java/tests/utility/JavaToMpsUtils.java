@@ -163,7 +163,7 @@ public class JavaToMpsUtils {
       ListSequence.fromList(models).addElement(md);
     }
 
-    // normalizing 
+    // normalizing
     List<SModel> expectedModels = ListSequence.fromList(new ArrayList<SModel>());
     for (SModelReference expmr : expected) {
       SModel m = expmr.resolve(myRepo);
@@ -191,20 +191,20 @@ public class JavaToMpsUtils {
 
       ModelRootDescriptor mrDesc = new ModelRootDescriptor(PersistenceRegistry.DEFAULT_MODEL_ROOT, mem);
 
-      // DirParser uses API to create models through ModelRoot, therefore we've got root descriptor here 
-      // OTOH, it seems Utils is the only client of DirParser now, and we don't need to keep it generic, 
-      //       and could use whatever we like for model creation, e.g. explicit new RegularModelDescriptor 
-      //       along with SModuleBase.registerModel(). 
+      // DirParserusesAPItocreatemodelsthroughModelRoot,thereforewe'vegotrootdescriptorhere
+      // OTOH,itseemsUtilsistheonlyclientofDirParsernow,andwedon'tneedtokeepitgeneric,
+      // andcouldusewhateverwelikeformodelcreation,e.g.explicitnewRegularModelDescriptor
+      // alongwithSModuleBase.registerModel().
       TempModuleOptions tempModOpts = TempModuleOptions.forNewModule(Collections.singleton(mrDesc));
       testMaterials = tempModOpts.createModule();
 
-      // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a 
-      // repository (to get references resolved). The best we can do here is to have own repository for the 
-      // testMaterials module which is capable to delegate to another (one supplied at construction). 
+      // ItlookslikedirParseranditsuseofYetUnknownResolverneedsamodelfromamoduleattachedtoa
+      // repository(togetreferencesresolved).Thebestwecandohereistohaveownrepositoryforthe
+      // testMaterialsmodulewhichiscapabletodelegatetoanother(onesuppliedatconstruction).
       DirParser dirParser = new DirParser(testMaterials, myRepo.getModelAccess(), dirPath);
-      // XXX the use of model access in DirParser looks odd. Here, we are inside a command already (test setting), 
-      // and DirParser assumes it can execute command, so we can not be in model read here. As long as it's the 
-      // only use of DirParser, perhaps, we shall not use ModelAccess at all, as we ensure we're inside command. 
+      // XXXtheuseofmodelaccessinDirParserlooksodd.Here,weareinsideacommandalready(testsetting),
+      // andDirParserassumesitcanexecutecommand,sowecannotbeinmodelreadhere.Aslongasit'sthe
+      // onlyuseofDirParser,perhaps,weshallnotuseModelAccessatall,asweensurewe'reinsidecommand.
 
       dirParser.parseDirs();
 
@@ -233,7 +233,7 @@ public class JavaToMpsUtils {
   public void compareBinAndSrcStubs(IFile binPath, IFile sourcePath) {
     JavaSourceStubModelRoot src2 = new JavaSourceStubModelRoot();
 
-    // just 2 distinct modules 
+    // just2distinctmodules
     SModule mod1 = PersistenceFacade.getInstance().createModuleReference("c3786d2b-aba2-45e5-8de0-1124fd14259b(jetbrains.mps.ide.java.tests)").resolve(myRepo);
     SModule mod2 = PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myRepo);
 
@@ -254,7 +254,7 @@ public class JavaToMpsUtils {
 
         NodePatcher.sortNestedClass(SNodeOperations.cast(binRoot, CONCEPTS.Classifier$Ix));
 
-        // FIXME should be fixed in java source stubs 
+        // FIXMEshouldbefixedinjavasourcestubs
         NodePatcher.removeStatements(binRoot);
       }
     }
@@ -296,7 +296,7 @@ public class JavaToMpsUtils {
 
     Assert.assertTrue(SetSequence.fromSet(MapSequence.fromMap(leftModelMap).keySet()).containsSequence(SetSequence.fromSet(MapSequence.fromMap(rightModelMap).keySet())) && SetSequence.fromSet(MapSequence.fromMap(rightModelMap).keySet()).containsSequence(SetSequence.fromSet(MapSequence.fromMap(leftModelMap).keySet())));
 
-    // constructing the map of corresponding nodes 
+    // constructingthemapofcorrespondingnodes
     Map<SNode, SNode> classMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (String name : MapSequence.fromMap(leftModelMap).keySet()) {
       SModel binModel = MapSequence.fromMap(leftModelMap).get(name);
@@ -359,7 +359,7 @@ public class JavaToMpsUtils {
   }
 
   public static void buildClassifierNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
-    // handling this class and nested classes 
+    // handlingthisclassandnestedclasses
     Map<String, SNode> rightNestedIndex = MapSequence.fromMap(new HashMap<String, SNode>());
     for (SNode cl : ListSequence.fromList(SNodeOperations.getNodeDescendants(right, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
       MapSequence.fromMap(rightNestedIndex).put(SPropertyOperations.getString(cl, PROPS.name$MnvL), cl);
@@ -409,10 +409,10 @@ public class JavaToMpsUtils {
 
   public static void buildMethodBodyNodeMap(SNode left, SNode right, Map<SNode, SNode> nodeMap) {
 
-    //  type vars 
+    // typevars
     buildJustNodeMap(SLinkOperations.getChildren(left, LINKS.typeVariableDeclaration$Lipp), SLinkOperations.getChildren(right, LINKS.typeVariableDeclaration$Lipp), nodeMap);
 
-    // local vars and params 
+    // localvarsandparams
     List<SNode> leftVars = new ArrayList<SNode>();
     ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SLinkOperations.getChildren(left, LINKS.parameter$5xBj)));
     ListSequence.fromList(leftVars).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(left, CONCEPTS.LocalVariableDeclaration$41, false, new SAbstractConcept[]{CONCEPTS.AnonymousClass$Bt})));
@@ -423,7 +423,7 @@ public class JavaToMpsUtils {
 
     buildJustNodeMap(leftVars, rightVars, nodeMap);
 
-    // anonymous classes and their insides 
+    // anonymousclassesandtheirinsides
   }
 
   public static void buildJustNodeMap(List<SNode> left, List<SNode> right, Map<SNode, SNode> nodeMap) {

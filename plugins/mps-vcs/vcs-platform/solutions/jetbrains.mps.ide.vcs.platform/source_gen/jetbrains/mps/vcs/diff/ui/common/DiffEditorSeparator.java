@@ -44,11 +44,11 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
   @Deprecated
   public DiffEditorSeparator(SRepository repoWithChanges, ChangeGroupLayout changeGroupLayout) {
     myChangeGroupLayout = changeGroupLayout;
-    // FIXME It seems that changes in ChangeGroupLayout may be tied to live models in a repository, therfore, access to model 
-    //       properties e.g. in ModelChange.getDescription() shall be guarded by model read. It's odd to guard each distinct getDescription 
-    //       from within ModelChange, therefore looks reasonable to do it at this level, where we do bulk analyze of all the changes. However, 
-    //       EditorSeparator doesn't sound like a proper place to require some SRepository, and I wonder if we can make ModelChange to be 'weakly' 
-    //       tied to attached models or otherwise relax requirement to have model read for them. 
+    // FIXMEItseemsthatchangesinChangeGroupLayoutmaybetiedtolivemodelsinarepository,therfore,accesstomodel
+    // propertiese.g.inModelChange.getDescription()shallbeguardedbymodelread.It'soddtoguardeachdistinctgetDescription
+    // fromwithinModelChange,thereforelooksreasonabletodoitatthislevel,wherewedobulkanalyzeofallthechanges.However,
+    // EditorSeparatordoesn'tsoundlikeaproperplacetorequiresomeSRepository,andIwonderifwecanmakeModelChangetobe'weakly'
+    // tiedtoattachedmodelsorotherwiserelaxrequirementtohavemodelreadforthem.
     myRepoWithChanges = repoWithChanges;
     ChangeListener viewportListener = new ChangeListener() {
       public void stateChanged(ChangeEvent e) {
@@ -64,7 +64,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
         invalidateAndRepaint();
       }
     });
-    // this allows com.intellij.ide.IdeTooltipManager#eventDispatched to get notification for events over this component and draw tool tip with text from getToolTipText method 
+    // thisallowscom.intellij.ide.IdeTooltipManager#eventDispatchedtogetnotificationforeventsoverthiscomponentanddrawtooltipwithtextfromgetToolTipTextmethod
     this.addMouseListener(this.myMouseAdapter);
   }
 
@@ -166,7 +166,7 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
   }
 
   public void dispose() {
-    // TODO: remove? 
+    // TODO:remove?
     this.removeMouseListener(myMouseAdapter);
   }
 

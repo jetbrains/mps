@@ -84,7 +84,7 @@ public class StringChooserDialog extends RefactoringDialog {
   private void validateValue() {
     if (!(allowUnchangedValue()) && myInitValue != null && myTextField.getText().equals(myInitValue)) {
       getRefactorAction().setEnabled(false);
-      // This is not error, we just disable refactoring action in that case 
+      // Thisisnoterror,wejustdisablerefactoringactioninthatcase
       setErrorText(null);
       return;
     }

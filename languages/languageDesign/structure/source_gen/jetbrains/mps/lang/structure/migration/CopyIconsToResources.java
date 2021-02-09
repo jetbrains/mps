@@ -53,7 +53,7 @@ public class CopyIconsToResources extends MigrationScriptBase {
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          // we re-shrink paths to convert ${language_descriptoe} to ${module} at the same time 
+          // were-shrinkpathstoconvert${language_descriptoe}to${module}atthesametime
           MacroHelper macros = MacrosFactory.forModule(m);
           String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$WAri)));
           SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$HKhR, CONCEPTS.FileIcon$Z0), PROPS.file$686H, newPath);

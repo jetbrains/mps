@@ -793,12 +793,12 @@
   <root nodeRef="r:f88361e7-5098-4f71-afec-1ad5641911e8(jetbrains.mps.lang.plugin.standalone.generator.template.main@generator)/7956539249523024687">
     <file name="QueriesGenerated.java">
       <node id="2220549924074119540" at="87,121,88,179" concept="4" />
-      <node id="2220549924074145019" at="88,179,89,119" concept="6" />
-      <node id="2220549924074155838" at="89,119,90,34" concept="6" />
-      <node id="2220549924074820160" at="90,34,91,78" concept="6" />
-      <node id="2220549924075138248" at="91,78,92,111" concept="6" />
-      <node id="2220549924075139619" at="92,111,93,64" concept="6" />
-      <node id="2220549924074074278" at="93,64,94,227" concept="5" />
+      <node id="2220549924074145019" at="88,179,89,106" concept="6" />
+      <node id="2220549924074155838" at="89,106,90,30" concept="6" />
+      <node id="2220549924074820160" at="90,30,91,67" concept="6" />
+      <node id="2220549924075138248" at="91,67,92,94" concept="6" />
+      <node id="2220549924075139619" at="92,94,93,55" concept="6" />
+      <node id="2220549924074074278" at="93,55,94,227" concept="5" />
       <node id="2220549924074073745" at="95,5,96,17" concept="5" />
       <node id="7956539249525275755" at="125,89,126,198" concept="5" />
       <node id="7956539249525281585" at="128,89,129,187" concept="5" />

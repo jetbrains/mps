@@ -65,17 +65,17 @@ public final class BuildLayout_Jar__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {
       final SNode node = (SNode) object;
-      // FIXME if I replace BS_JavaModule with BS_CompilablePart (which is target of BL_CompileOutputOf.module we compare against), 
-      //      build for MPS modules fails to find certain BM_Module (like MPS.IDEA or j.m.typesystemEngine). I don't think this is 
-      //      right, though not yet sure whether to address this by BL_CompileOutputOf being BL_InJarMode or by union of scanInJarNodes  
-      //      with this custom handling of BL_COO. 
+      // FIXMEifIreplaceBS_JavaModulewithBS_CompilablePart(whichistargetofBL_CompileOutputOf.modulewecompareagainst),
+      // buildforMPSmodulesfailstofindcertainBM_Module(likeMPS.IDEAorj.m.typesystemEngine).Idon'tthinkthisis
+      // right,thoughnotyetsurewhethertoaddressthisbyBL_CompileOutputOfbeingBL_InJarModeorbyunionofscanInJarNodes
+      // withthiscustomhandlingofBL_COO.
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSource_JavaModule$NC)) {
         List<SNode> children = SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO);
-        // XXX BL_ImportContent is the one I need at the moment, though likely need to respect BL_Import, too. 
+        // XXXBL_ImportContentistheoneIneedatthemoment,thoughlikelyneedtorespectBL_Import,too.
         Iterable<SNode> importedContent = SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(children, CONCEPTS.BuildLayout_ImportContent$wC), LINKS.target$HFO4), LINKS.children$aMRO);
-        // FIXME Does anybody have an idea why BuildSource_JavaModule is processed here independently from the logic in scanInJarNodes(), below? 
-        // i.e. what if I put _CompileOutputOf under a folder or a 'transparent' container? Why not _CompileOutputOf is not _InJarNode (there's even constraint that  
-        // forbids creating _CompileOutputOf under anything but _Jar!) 
+        // FIXMEDoesanybodyhaveanideawhyBuildSource_JavaModuleisprocessedhereindependentlyfromthelogicinscanInJarNodes(),below?
+        // i.e.whatifIput_CompileOutputOfunderafolderora'transparent'container?Whynot_CompileOutputOfisnot_InJarNode(there'sevenconstraintthat
+        // forbidscreating_CompileOutputOfunderanythingbut_Jar!)
         return Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(children).union(Sequence.fromIterable(importedContent)), CONCEPTS.BuildLayout_CompileOutputOf$1E)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, LINKS.module$qsl4) == node;

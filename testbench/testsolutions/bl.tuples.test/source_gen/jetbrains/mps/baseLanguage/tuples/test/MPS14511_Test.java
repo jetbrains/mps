@@ -15,7 +15,7 @@ public class MPS14511_Test {
       fb.run();
       Assert.fail();
     } catch (RuntimeException e) {
-      // expected exception 
+      // expectedexception
     }
   }
 }

@@ -217,8 +217,8 @@
       <node id="7048882195103545961" at="36,23,37,42" concept="8" />
       <node id="7048882195103545969" at="38,5,39,16" concept="8" />
       <node id="4664028035454842426" at="43,124,44,66" concept="7" />
-      <node id="4664028035454939741" at="44,66,45,109" concept="9" />
-      <node id="4664028035454946658" at="45,109,46,167" concept="9" />
+      <node id="4664028035454939741" at="44,66,45,92" concept="9" />
+      <node id="4664028035454946658" at="45,92,46,139" concept="9" />
       <node id="4664028035454723828" at="49,159,50,37" concept="7" />
       <node id="4664028035454848582" at="50,37,51,120" concept="7" />
       <node id="4664028035454915842" at="53,48,54,29" concept="8" />
@@ -233,7 +233,7 @@
       <node id="4664028035454707633" at="48,39,57,9" concept="3" />
       <node id="4664028035454318804" at="30,0,41,0" concept="6" trace="getPosition#(Ljetbrains/mps/debug/api/programState/ILocation;Ljetbrains/mps/debug/api/AbstractDebugSession;)Ljetbrains/mps/debug/api/source/NodeSourcePosition;" />
       <node id="4664028035454890854" at="48,0,60,0" concept="6" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="4664028035454874718" at="46,167,60,7" concept="8" />
+      <node id="4664028035454874718" at="46,139,60,7" concept="8" />
       <node id="4664028035454346317" at="42,0,62,0" concept="6" trace="getSNodePointer#(Ljetbrains/mps/debug/api/programState/ILocation;Ljetbrains/mps/debug/api/AbstractDebugSession;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <scope id="7048882195103545927" at="25,54,26,27" />
       <scope id="7048882195103545951" at="32,63,33,18" />

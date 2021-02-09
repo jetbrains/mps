@@ -120,14 +120,14 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_1_3(final SourceSubstituteMacroNodeContext _context) {
     SNode operationType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E));
     if (SNodeOperations.isInstanceOf(operationType, CONCEPTS.PrimitiveType$sR)) {
-      // I don't want void return type to become java.lang.Void, nor do I need extra boxing for boolean/int values 
-      // I don't do the same for method arguments, however, as expect a lot of primitives as operand or variable references. 
+      // Idon'twantvoidreturntypetobecomejava.lang.Void,nordoIneedextraboxingforboolean/intvalues
+      // Idon'tdothesameformethodarguments,however,asexpectalotofprimitivesasoperandorvariablereferences.
       return operationType;
     }
     if (SNodeOperations.isInstanceOf(operationType, CONCEPTS.ArrayType$rh)) {
-      // coerce(AnAction[] as ClassifierType) gives Serializable. 
-      // This gonna fail once we face array of smth that is not ClassifierType (e.g. concept<>[]) 
-      // and our only hope is that proper generator shows up afterwards. 
+      // coerce(AnAction[]asClassifierType)givesSerializable.
+      // ThisgonnafailoncewefacearrayofsmththatisnotClassifierType(e.g.concept<>[])
+      // andouronlyhopeisthatpropergeneratorshowsupafterwards.
       return operationType;
     }
     return TypecheckingFacade.getFromContext().coerceType(operationType, CONCEPTS.ClassifierType$bL);
@@ -135,7 +135,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_1_4(final SourceSubstituteMacroNodeContext _context) {
     SNode operandType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operand$w6IR));
     if (SNodeOperations.isInstanceOf(operandType, CONCEPTS.ArrayType$rh)) {
-      //  see similar code and corresponding comment of return value 
+      // seesimilarcodeandcorrespondingcommentofreturnvalue
       return operandType;
     }
     SNode result = TypecheckingFacade.getFromContext().coerceType(operandType, CONCEPTS.ClassifierType$bL);
@@ -147,7 +147,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_1_5(final SourceSubstituteMacroNodeContext _context) {
     SNode nodeType = TypecheckingFacade.getFromContext().getTypeOf(_context.getNode());
     if (SNodeOperations.isInstanceOf(nodeType, CONCEPTS.ArrayType$rh)) {
-      //  see similar code and corresponding comment of return value 
+      // seesimilarcodeandcorrespondingcommentofreturnvalue
       return nodeType;
     }
     return TypecheckingFacade.getFromContext().coerceType(nodeType, CONCEPTS.ClassifierType$bL);

@@ -59,8 +59,8 @@ public final class ConceptMethodSuperCall {
       SNode specifiedSuperConcept;
       specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, CONCEPTS.SuperExpression$pj)));
       if (specifiedSuperConcept != null) {
-        // if there is no implementation in the provided concept we will fail on runtime 
-        // fixme quickfix for this case 
+        // ifthereisnoimplementationintheprovidedconceptwewillfailonruntime
+        // fixmequickfixforthiscase
         return new InvokationTarget(specifiedSuperConcept, methodDecl, InvokationType.INVOKE);
       } else {
         SNode behavior = SNodeOperations.getNodeAncestor(myCall, CONCEPTS.ConceptBehavior$2, false, true);

@@ -77,7 +77,7 @@ public class ModulesClusterizer {
     }
 
     Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) input)).subtract(ListSequence.fromList(mres)).subtract(ListSequence.fromList(emptyInput));
-    // FIXME use ProgressMonitor as graph ordering may take some time 
+    // FIXMEuseProgressMonitorasgraphorderingmaytakesometime
     Iterable<Cluster> mr2cluster = (NEW_CLUSTERS ? moduleResourcesToClustersNew(mres) : moduleResourcesToClustersOld(mres));
     ListSequence.fromList(result).addSequence(Sequence.fromIterable(mr2cluster));
 
@@ -167,8 +167,8 @@ public class ModulesClusterizer {
     Set<GeneratorRuntime> seen = SetSequence.fromSet(new HashSet<GeneratorRuntime>());
     Queue<SLanguage> nsq = QueueSequence.fromQueue(new LinkedList<SLanguage>());
     QueueSequence.fromQueue(nsq).addSequence(Sequence.fromIterable(usedLanguages).distinct());
-    // We need to care about used languages of employed generators as we need to respect 
-    // all facets of all languages that may appear during generation of a model/module in the make script 
+    // Weneedtocareaboutusedlanguagesofemployedgeneratorsasweneedtorespect
+    // allfacetsofalllanguagesthatmayappearduringgenerationofamodel/moduleinthemakescript
     while (QueueSequence.fromQueue(nsq).isNotEmpty()) {
       SLanguage ns = QueueSequence.fromQueue(nsq).removeFirstElement();
       if (SetSequence.fromSet(namespaces).contains(ns)) {

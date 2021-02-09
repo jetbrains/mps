@@ -41,19 +41,19 @@ public class MappingLabelExtractor {
           rv.addNewOutputNode(labelName, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).first(), LINKS.node$JBUG).getNodeId());
           continue;
         }
-        // reference to input node may not necessarily exist or resolve, 
-        // for inputs from transient models we don't keep nodePtr, just NodeIdentity 
+        // referencetoinputnodemaynotnecessarilyexistorresolve,
+        // forinputsfromtransientmodelswedon'tkeepnodePtr,justNodeIdentity
         final SNodeId inputNodeId;
         if ((SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.nodePtr$Fm07) != null)) {
-          // FIXME in fact, nodePtr likely to point to external model (either CP or completely 
-          //       independent one). MappingsMemento, however, is limited to SNodeId only, implying 
-          //       all ML's inputs come from the same model (node GeneratorMappings does not imply that). 
+          // FIXMEinfact,nodePtrlikelytopointtoexternalmodel(eitherCPorcompletely
+          // independentone).MappingsMemento,however,islimitedtoSNodeIdonly,implying
+          // allML'sinputscomefromthesamemodel(nodeGeneratorMappingsdoesnotimplythat).
           SReference ref = SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX).getReference(LINKS.nodePtr$Fm07);
           inputNodeId = ref.getTargetNodeId();
         } else {
           inputNodeId = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB), CONCEPTS.NodeIdentity$rN, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
         }
-        // output node shall resolve as it's from the same node as debugNode, it's checkpoint model, after all. 
+        // outputnodeshallresolveasit'sfromthesamenodeasdebugNode,it'scheckpointmodel,afterall.
         if (ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).count() == 1) {
           rv.addOutputNodeByInputNodeAndMappingName(inputNodeId, labelName, SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).first(), LINKS.node$JBUG));
         } else {

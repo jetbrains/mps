@@ -56,8 +56,8 @@ public class DataFlowInClosure_Test extends BaseTransformationTest {
 
     public void test_DataFlowInClosure() throws Exception {
       addNodeById("1217271586413");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624928941627() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230032");

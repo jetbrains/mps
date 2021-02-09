@@ -49,7 +49,7 @@ public class ExternalFigureReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_2fg9j2_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_2fg9j2_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ExternalFigureReference$$X, LINKS.figure$O2V);
     }
     @NotNull

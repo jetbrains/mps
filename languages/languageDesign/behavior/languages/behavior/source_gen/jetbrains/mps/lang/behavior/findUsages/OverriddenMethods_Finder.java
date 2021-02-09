@@ -65,7 +65,7 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
   protected void doFind0(@NotNull SNode node, SearchScope scope, final IFinder.FindCallback callback, final ProgressMonitor monitor) {
     monitor.start(getDescription(), 1);
     try {
-      // top-most ancestor by the lang.behavior 
+      // top-mostancestorbythelang.behavior
       final SNode topMostOverriddenMethod = ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node);
       FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
         public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -103,7 +103,7 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
                   return ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(it) == topMostOverriddenMethod;
                 }
               }).toListSequence();
-              // supposedly there are no more than one method 
+              // supposedlytherearenomorethanonemethod
               for (SNode candidateMethod : ListSequence.fromList(candidateMethodsInAncestor)) {
                 callback.onUsageFound(createSingleResult(candidateMethod));
               }

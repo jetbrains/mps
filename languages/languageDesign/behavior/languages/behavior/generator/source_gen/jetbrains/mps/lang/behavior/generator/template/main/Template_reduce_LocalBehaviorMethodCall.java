@@ -92,13 +92,13 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                       }
                     });
                     tnode8.addChild(myAggregationLinks[0], tnode9);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
                     environment.associate(tnode10, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode.getConcept()");
                     tnode8.addChild(myAggregationLinks[1], tnode10);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist6 = TemplateUtil.singletonList(tnode8);
@@ -108,7 +108,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
             for (SNode child11 : TemplateUtil.asNotNull(tlist4)) {
               tnode3.addChild(myAggregationLinks[2], child11);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final List<SNode> tlist12 = new ArrayList<SNode>();
@@ -142,7 +142,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                         for (SNode child18 : TemplateUtil.asNotNull(tlist17)) {
                           tnode16.addChild(myAggregationLinks[3], child18);
                         }
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                       {
                         Collection<SNode> tlist19 = null;
@@ -151,11 +151,11 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                         for (SNode child20 : TemplateUtil.asNotNull(tlist19)) {
                           tnode16.addChild(myAggregationLinks[4], child20);
                         }
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode15.addChild(myAggregationLinks[5], tnode16);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist13 = TemplateUtil.singletonList(tnode15);
@@ -165,11 +165,11 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
             for (SNode child21 : TemplateUtil.asNotNull(tlist12)) {
               tnode3.addChild(myAggregationLinks[2], child21);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode2.addChild(myAggregationLinks[1], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode22 = environment.createOutputNode(myConcepts[5]);
@@ -189,15 +189,15 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                 for (SNode child25 : TemplateUtil.asNotNull(tlist24)) {
                   tnode23.addChild(myAggregationLinks[6], child25);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode22.addChild(myAggregationLinks[7], tnode23);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode2.addChild(myAggregationLinks[0], tnode22);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

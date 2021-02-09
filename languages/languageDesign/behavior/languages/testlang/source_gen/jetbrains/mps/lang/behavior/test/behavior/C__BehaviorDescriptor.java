@@ -56,9 +56,9 @@ public final class C__BehaviorDescriptor extends BaseBHDescriptor {
     // 
     B__BehaviorDescriptor.abstractVirtualMethod_id46FlynTbIB0.invoke(__thisNode__, ((int) 0));
     B__BehaviorDescriptor.abstractVirtualMethod_id46FlynTbIB0.invoke(__thisNode__, ((int) 0));
-    // staticAbstractVirtualMethod() 
-    // staticVirtualAbstractFromInterfaceConcept() FIXME possible to declare static abstract virtual method in iface, 
-    // implement it here (override), but impossible to invoke 
+    // staticAbstractVirtualMethod()
+    // staticVirtualAbstractFromInterfaceConcept()FIXMEpossibletodeclarestaticabstractvirtualmethodiniface,
+    // implementithere(override),butimpossibletoinvoke
     // 
     I__BehaviorDescriptor.virtualAbstractFromInterfaceConcept_id46FlynTbALM.invoke(__thisNode__, ((int) 0));
     I__BehaviorDescriptor.virtualAbstractFromInterfaceConcept_id46FlynTbALM.invoke(__thisNode__, ((int) 0));

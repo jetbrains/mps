@@ -21,11 +21,11 @@ public class customType_InequationReplacementRule extends AbstractInequationRepl
     return String.valueOf(SPropertyOperations.getString(subtype, PROPS.name$MnvL)).startsWith(String.valueOf(SPropertyOperations.getString(supertype, PROPS.name$MnvL)));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    // ok 
+    // ok
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    // ok 
+    // ok
     return result_14532009;
   }
   public boolean isWeak() {

@@ -19,7 +19,7 @@ import com.intellij.openapi.progress.PerformInBackgroundOption;
 public final class MakeServiceConfiguration implements PersistentStateComponent<MakeServiceConfiguration> {
   private boolean myMakeInBackground = false;
   public static MakeServiceConfiguration getInstance(Project project) {
-    // implementation inspired by c.i.openapi.vcs.VcsConfiguration 
+    // implementationinspiredbyc.i.openapi.vcs.VcsConfiguration
     return ServiceManager.getService(project, MakeServiceConfiguration.class);
   }
 

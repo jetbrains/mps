@@ -47,14 +47,14 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
     if ((path == null || path.length() == 0)) {
       return path;
     }
-    // path came here may be from UI or from sources with system separators 
+    // pathcameheremaybefromUIorfromsourceswithsystemseparators
     return MacrosFactory.getGlobal().expandPath(PathUtil.toSystemIndependent(path));
   }
   private String shrinkPath(String path) {
     if ((path == null || path.length() == 0)) {
       return path;
     }
-    // path came here may be from UI or from sources with system separators 
+    // pathcameheremaybefromUIorfromsourceswithsystemseparators
     return MacrosFactory.getGlobal().shrinkPath(PathUtil.toSystemIndependent(path));
   }
   public void setShrinkedSettingsPath(@NotNull String path) {
@@ -76,8 +76,8 @@ public class MpsStartupSettings_Configuration implements IPersistentConfiguratio
   public MpsStartupSettings_Configuration clone() {
     MpsStartupSettings_Configuration clone = createCloneTemplate();
     try {
-      // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-      // the value of myState, and != clone as regular Java passer-by would expect. 
+      // beware,PersistenceConfiguration.thisofnewlycreatedMyStateinstancewouldbethesameas
+      // thevalueofmyState,and!=cloneasregularJavapasser-bywouldexpect.
       clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {

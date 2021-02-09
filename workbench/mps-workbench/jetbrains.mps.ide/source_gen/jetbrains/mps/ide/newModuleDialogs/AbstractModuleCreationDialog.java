@@ -31,7 +31,7 @@ public abstract class AbstractModuleCreationDialog<R extends AbstractModule> ext
   }
 
   protected String getProjectPath() {
-    // looks like magic 
+    // lookslikemagic
     return (myProject != null ? ((!(ProjectKt.isDirectoryBased(myProject.getProject())) ? myProject.getProjectFile().getParentFile().getAbsolutePath() : myProject.getProjectFile().getAbsolutePath())) : null);
   }
 

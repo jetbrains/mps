@@ -61,7 +61,7 @@ public final class ReplaceConditionalWithIf_Intention extends AbstractIntentionD
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // variable initialization case - split or you'll loose this var from scope 
+      // variableinitializationcase-splitoryou'llloosethisvarfromscope
       SNode stmtNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$P6, false, false), CONCEPTS.Statement$P6);
       if (SNodeOperations.isInstanceOf(stmtNode, CONCEPTS.LocalVariableDeclarationStatement$4w)) {
         SNode variableDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(stmtNode, CONCEPTS.LocalVariableDeclarationStatement$4w), LINKS.localVariableDeclaration$RpjM);
@@ -77,20 +77,20 @@ public final class ReplaceConditionalWithIf_Intention extends AbstractIntentionD
         stmtNode = SNodeOperations.replaceWithNewChild(stmtNode, CONCEPTS.ReturnStatement$lt);
         SLinkOperations.setTarget(SNodeOperations.cast(stmtNode, CONCEPTS.ReturnStatement$lt), LINKS.expression$eJ92, originalExpression);
       }
-      // Get used nodes 
+      // Getusednodes
       SNode nodeParent = SNodeOperations.getParent(node);
       int nodeIndex = ListSequence.fromList(SNodeOperations.getChildren(nodeParent)).indexOf(node);
       SNode nodeCopy = SNodeOperations.copyNode(node);
-      // make + node 
+      // make+node
       SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(nodeCopy, LINKS.ifTrue$Tg0R));
       SNode trueStmt = SNodeOperations.copyNode(stmtNode);
-      // make - node 
+      // make-node
       SNodeOperations.replaceWithAnother(ListSequence.fromList(SNodeOperations.getChildren(nodeParent)).getElement(nodeIndex), SLinkOperations.getTarget(nodeCopy, LINKS.ifFalse$Wbma));
-      // make the best - block ever 
+      // makethebest-blockever
       SNode falseBlockStmt = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$u4, null);
       SNodeFactoryOperations.setNewChild(falseBlockStmt, LINKS.statements$q65M, null);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(falseBlockStmt, LINKS.statements$q65M), LINKS.statement$53DE)).insertElement(0, SNodeOperations.copyNode(stmtNode));
-      // make if-statement and replace 
+      // makeif-statementandreplace
       SNode ifNode = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
       SLinkOperations.setTarget(ifNode, LINKS.condition$5R17, SLinkOperations.getTarget(node, LINKS.condition$nwNI));
       SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifTrue$5Rg8, null);

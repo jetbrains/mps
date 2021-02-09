@@ -40,7 +40,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // implemented in languages that aggregate the patten concept 
+    // implementedinlanguagesthataggregatethepattenconcept
   }
   @Override
   public Iterable<Problem> check(SModule m) {

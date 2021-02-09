@@ -9,7 +9,7 @@ import javax.swing.KeyStroke;
 
 public class Default_KeymapChanges extends BaseKeymapChanges {
   public Default_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.baseLanguage.pluginSolution.plugin.ExtractMethod_Action", getShortcut("ctrl alt M"));
     addSimpleShortcut("jetbrains.mps.baseLanguage.pluginSolution.plugin.InlineField_Action", getShortcut("ctrl alt N"));
     addSimpleShortcut("jetbrains.mps.baseLanguage.pluginSolution.plugin.InlineLocalVariable_Action", getShortcut("ctrl alt N"));
@@ -20,8 +20,8 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameMethod_Action", getShortcut("shift F6"));
     addSimpleShortcut("jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameVariable_Action", getShortcut("shift F6"));
     addSimpleShortcut("jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action", getShortcut("alt DELETE"));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "$default";

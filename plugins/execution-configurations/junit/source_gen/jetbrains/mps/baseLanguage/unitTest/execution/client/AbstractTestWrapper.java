@@ -38,7 +38,7 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
 
   public AbstractTestWrapper(@NotNull N node, boolean runsInProcess, boolean needsMPS) {
     myNodePointer = new SNodePointer(node);
-    // FIXME there's no need to keep myRepo once last use of getNode() or withNode() gone 
+    // FIXMEthere'snoneedtokeepmyRepooncelastuseofgetNode()orwithNode()gone
     myRepo = SNodeOperations.getModel(node).getRepository();
     myRunsInProcess = runsInProcess;
     myNeedsMPS = needsMPS;
@@ -148,12 +148,12 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
       if (isAnnotatedToLaunch(clazz)) {
         return true;
       }
-      // check java stub target only to avoid dependency from j.m.testbench module which is not part of MPS build (only via Testbench stub solution) 
+      // checkjavastubtargetonlytoavoiddependencyfromj.m.testbenchmodulewhichisnotpartofMPSbuild(onlyviaTestbenchstubsolution)
       if (SNodeOperations.is(clazz, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench(Testbench/)", "~EnvironmentAwareTestCase"))) {
         return true;
       }
-      // check both java stub and regular node for EnvironmentAware as  j.m.tool.environment is part of MPS build (unlike j.m.testbench) 
-      // IMPORTANT! there are TWO checks is(EnvironmentAware). Please make sure one points to java stub while another points to regular node! 
+      // checkbothjavastubandregularnodeforEnvironmentAwareasj.m.tool.environmentispartofMPSbuild(unlikej.m.testbench)
+      // IMPORTANT!thereareTWOchecksis(EnvironmentAware).Pleasemakesureonepointstojavastubwhileanotherpointstoregularnode!
       if (ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)", "~EnvironmentAware")) || SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)", "8946405811982722281"));
@@ -166,7 +166,7 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
     return false;
   }
   /*package*/ static boolean isAnnotatedToLaunch(SNode withAnnotation) {
-    // MPSLaunch lives in j.m.testbench which is not part of MPS build, therefore check here for java stub only 
+    // MPSLaunchlivesinj.m.testbenchwhichisnotpartofMPSbuild,thereforecheckhereforjavastubonly
     return ListSequence.fromList(SLinkOperations.getChildren(withAnnotation, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)", "~MPSLaunch"));

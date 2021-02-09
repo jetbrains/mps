@@ -14,7 +14,7 @@ public class DelegatingScope extends Scope {
     this.wrapped = wrapped;
   }
   protected DelegatingScope() {
-    // setup wrapped field later, before using the scope! 
+    // setupwrappedfieldlater,beforeusingthescope!
   }
   @Override
   public SNode resolve(SNode contextNode, String refText) {

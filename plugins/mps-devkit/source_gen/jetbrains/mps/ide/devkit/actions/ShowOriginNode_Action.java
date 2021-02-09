@@ -35,7 +35,7 @@ public class ShowOriginNode_Action extends BaseAction {
     if (SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)) instanceof TransientSModel) {
       SNodeReference originRef = TracingUtil.getInput(event.getData(MPSCommonDataKeys.NODE));
       SNode origin = (originRef == null ? null : originRef.resolve(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()));
-      // I'd like to have the action visible (although not necessarily enabled) for any transient node, hence can't use enable()/disable() 
+      // I'dliketohavetheactionvisible(althoughnotnecessarilyenabled)foranytransientnode,hencecan'tuseenable()/disable()
       event.getPresentation().setVisible(true);
       event.getPresentation().setEnabled(origin != null);
     } else {

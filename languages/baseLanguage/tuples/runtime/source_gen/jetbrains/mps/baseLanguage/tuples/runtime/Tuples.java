@@ -8,7 +8,7 @@ public final class Tuples {
   }
 
   public static <V> V[] asArray(V... ts) {
-    // just a handy way to avoid casts and explicit types 
+    // justahandywaytoavoidcastsandexplicittypes
     return ts;
   }
 

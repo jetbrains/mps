@@ -852,13 +852,13 @@
       <node id="6896005762093592231" at="196,88,197,78" concept="6" />
       <node id="6896005762093592286" at="427,39,428,186" concept="6" />
       <node id="6896005762093592331" at="431,37,432,62" concept="6" />
-      <node id="3604682073895897692" at="444,86,445,104" concept="7" />
-      <node id="3604682073895898040" at="445,104,446,73" concept="7" />
-      <node id="3604682073895898393" at="446,73,447,94" concept="7" />
-      <node id="3604682073895898750" at="447,94,448,97" concept="7" />
-      <node id="3604682073895977938" at="448,97,449,85" concept="7" />
-      <node id="3921354090741528685" at="449,85,450,82" concept="7" />
-      <node id="3921354090741529374" at="450,82,451,55" concept="7" />
+      <node id="3604682073895897692" at="444,86,445,88" concept="7" />
+      <node id="3604682073895898040" at="445,88,446,63" concept="7" />
+      <node id="3604682073895898393" at="446,63,447,78" concept="7" />
+      <node id="3604682073895898750" at="447,78,448,83" concept="7" />
+      <node id="3604682073895977938" at="448,83,449,69" concept="7" />
+      <node id="3921354090741528685" at="449,69,450,71" concept="7" />
+      <node id="3921354090741529374" at="450,71,451,47" concept="7" />
       <node id="3921354090741540973" at="452,114,453,165" concept="5" />
       <node id="3921354090741569743" at="454,46,455,52" concept="5" />
       <node id="3921354090741574488" at="456,29,457,265" concept="1" />
@@ -881,7 +881,7 @@
       <node id="3921354090741573251" at="455,52,458,9" concept="3" />
       <node id="3921354090741541894" at="453,165,459,7" concept="3" />
       <node id="6896005762093592260" at="425,104,434,7" concept="6" />
-      <node id="3921354090741525873" at="451,55,460,5" concept="3" />
+      <node id="3921354090741525873" at="451,47,460,5" concept="3" />
       <node id="6896005762093592258" at="425,0,436,0" concept="9" trace="sourceNodesQuery_4_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="3604682073892742994" at="444,0,462,0" concept="9" trace="mapSrcMacro_post_4_0#(Ljetbrains/mps/generator/template/MapSrcMacroPostProcContext;)V" />
       <scope id="6896005762093592340" at="190,88,191,239" />
@@ -931,8 +931,8 @@
   <root nodeRef="r:d8d06a40-eb90-4ad9-a679-19e3fc235859(jetbrains.mps.build.workflow.generator.template.main@generator)/7385586609667789438">
     <file name="QueriesGenerated.java">
       <node id="7926701909975931931" at="153,88,154,86" concept="6" />
-      <node id="4416461515996789012" at="156,88,157,13" concept="7" />
-      <node id="2059109515400317577" at="157,13,158,216" concept="6" />
+      <node id="4416461515996789012" at="156,88,157,12" concept="7" />
+      <node id="2059109515400317577" at="157,12,158,216" concept="6" />
       <node id="6647099934207240062" at="160,88,161,86" concept="6" />
       <node id="4416461515995183379" at="163,88,164,111" concept="6" />
       <node id="1659807394254658126" at="166,88,167,89" concept="6" />

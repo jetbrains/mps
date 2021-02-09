@@ -17,7 +17,7 @@ import java.util.Date;
 public class MergeDriverBackupUtil {
   private static String backupDirPath;
   public MergeDriverBackupUtil() {
-    // Used in MergeProviderDecorator 
+    // UsedinMergeProviderDecorator
   }
   public static File zipModel(byte[][] contents, @Nullable SModelName modelName) throws IOException {
     String shortFileName = "unknown.mps";

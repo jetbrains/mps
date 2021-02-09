@@ -77,7 +77,7 @@ public class ModelDifferenceViewer implements DataProvider {
   public ModelDifferenceViewer(MPSProject project, boolean showTree) {
     myProject = project;
 
-    // create panels 
+    // createpanels
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
 
     myPanel.setSecondComponent(myNoRootPanel);
@@ -85,7 +85,7 @@ public class ModelDifferenceViewer implements DataProvider {
       myTree = new ModelDifferenceTree(project.getRepository());
       myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myTree));
 
-      // actions connected to model tree 
+      // actionsconnectedtomodeltree
       myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();
       myGoToNeighbourRootActions.previous().registerCustomShortcutSet(GoToNeighbourRootActions.PREV_ROOT_SHORTCUT, myComponent);
       myGoToNeighbourRootActions.next().registerCustomShortcutSet(GoToNeighbourRootActions.NEXT_ROOT_SHORTCUT, myComponent);
@@ -103,7 +103,7 @@ public class ModelDifferenceViewer implements DataProvider {
     myOldRegistered = SNodeOperations.isRegistered(oldModel);
     myNewRegistered = SNodeOperations.isRegistered(newModel);
     myEditable = newModel instanceof EditableSModel && myNewRegistered;
-    // register models in repository and create changeset 
+    // registermodelsinrepositoryandcreatechangeset
     myProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         try {
@@ -130,8 +130,8 @@ public class ModelDifferenceViewer implements DataProvider {
       }
     });
     if (myTree != null) {
-      // Beware, ModelDifferenceTree is inner class that access fields of this one while constructing the tree, 
-      //   rebuild shall happen no earlier than we've got everything in this class ready. 
+      // Beware,ModelDifferenceTreeisinnerclassthataccessfieldsofthisonewhileconstructingthetree,
+      // rebuildshallhappennoearlierthanwe'vegoteverythinginthisclassready.
       myTree.rebuildNow();
     }
   }

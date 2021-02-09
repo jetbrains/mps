@@ -58,7 +58,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
       CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
       return new NodeCaretPair(prev, caret);
     } else {
-      //  Merging first line 
+      // Mergingfirstline
       for (SNode part : ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).first(), LINKS.part$QuzQ))) {
         SNodeOperations.insertPrevSiblingChild(__thisNode__, part);
       }
@@ -69,7 +69,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
       }
       CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
 
-      //  Merging other lines 
+      // Mergingotherlines
       SNode lastElementLine = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).last();
       for (SNode elementLine : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.line$Psfe)).reversedList()) {
         SNodeOperations.insertNextSiblingChild(line, elementLine);
@@ -84,7 +84,7 @@ public final class HTMLElement__BehaviorDescriptor extends BaseBHDescriptor {
         }
         CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(line, ((int) (index - 1)));
       } else {
-        //  Merging last line parts 
+        // Merginglastlineparts
         index = ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, LINKS.part$QuzQ)).count() - 1;
         for (SNode linePart : ListSequence.fromList(SNodeOperations.getNextSiblings(__thisNode__, false))) {
           ListSequence.fromList(SLinkOperations.getChildren(lastElementLine, LINKS.part$QuzQ)).addElement(SNodeOperations.cast(linePart, CONCEPTS.CommentLinePart$DG));

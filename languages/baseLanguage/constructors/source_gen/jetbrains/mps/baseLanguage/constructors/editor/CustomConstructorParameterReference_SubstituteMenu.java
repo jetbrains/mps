@@ -49,7 +49,7 @@ public class CustomConstructorParameterReference_SubstituteMenu extends Substitu
   public class SMP_ReferenceScope_x2t0ti_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_x2t0ti_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CustomConstructorParameterReference$j6, LINKS.parameter$3II8);
     }
     @NotNull

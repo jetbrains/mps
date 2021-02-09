@@ -81,9 +81,9 @@ public class StructChangeSetBuilder {
     }
   }
   private void buildForNode(final Map<SNode, SNode> oldToNewMap, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
-    // updates oldToNewMap with new mappings 
+    // updatesoldToNewMapwithnewmappings
     if (!(Objects.equals(SNodeOperations.getConcept(oldNode), SNodeOperations.getConcept(newNode)))) {
-      // todo: should be whole node change instead of going into details... 
+      // todo:shouldbewholenodechangeinsteadofgoingintodetails...
     }
     MapSequence.fromMap(oldToNewMap).put(oldNode, newNode);
 
@@ -102,7 +102,7 @@ public class StructChangeSetBuilder {
   }
 
   private void buildForNodeRole(Map<SNode, SNode> oldToNewMap, List<SNode> oldChildren, List<SNode> newChildren, SNodeId parentId, SNodeId newParentId, SContainmentLink role) {
-    // updates oldToNewMap with new mappings 
+    // updatesoldToNewMapwithnewmappings
     final Map<SNode, Integer> nodeClasses = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
     Map<SNode, SNode> old2NewMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
@@ -130,12 +130,12 @@ outer:
     }).toListSequence();
     LongestCommonSubsequenceFinder<Integer> finder = new LongestCommonSubsequenceFinder<Integer>(oldClasses, newClasses);
 
-    // add matched Nodes 
+    // addmatchedNodes
     List<Tuples._2<Integer, Integer>> commonIndices = finder.getCommonIndices();
     for (Tuples._2<Integer, Integer> ix : ListSequence.fromList(commonIndices)) {
       addMatchedNodes(oldToNewMap, ListSequence.fromList(oldChildren).getElement((int) ix._0()), ListSequence.fromList(newChildren).getElement((int) ix._1()));
     }
-    // Finding insertings, deletings and replacings 
+    // Findinginsertings,deletingsandreplacings
     List<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>> differentIndices = finder.getDifferentIndices();
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(differentIndices)) {
       Tuples._2<Integer, Integer> oldIndices = indices._0();
@@ -152,11 +152,11 @@ outer:
         }
       }).toListSequence();
       LongestCommonSubsequenceFinder<SConcept> finder2 = new LongestCommonSubsequenceFinder<SConcept>(oldC, newC);
-      // concepts were not matched: 
+      // conceptswerenotmatched:
       for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> ixs : ListSequence.fromList(finder2.getDifferentIndices())) {
         ListSequence.fromList(myNewChanges).addElement(new NodeGroupStructChange(myChangeSet, parentId, newParentId, role, (int) oldIndices._0() + (int) ixs._0()._0(), (int) oldIndices._0() + (int) ixs._0()._1(), (int) newIndices._0() + (int) ixs._1()._0(), (int) newIndices._0() + (int) ixs._1()._1()));
       }
-      // Finding changes for "matched" children 
+      // Findingchangesfor"matched"children
       for (Tuples._2<Integer, Integer> ixs : ListSequence.fromList(finder2.getCommonIndices())) {
         buildForNode(oldToNewMap, ListSequence.fromList(oldChildren).getElement((int) oldIndices._0() + (int) ixs._0()), ListSequence.fromList(newChildren).getElement((int) newIndices._0() + (int) ixs._1()));
       }
@@ -198,7 +198,7 @@ outer:
         continue;
       }
       if (Objects.equals(oldRef.getTargetSModelReference(), SModelOperations.getPointer(myChangeSet.getOldModel())) && Objects.equals(ch.getTargetModelReference(), SModelOperations.getPointer(myChangeSet.getNewModel())) && Objects.equals(MapSequence.fromMap(myOldToNewMap).get(oldRef.getTargetNodeId()), ch.getTargetNodeId())) {
-        // ?? should the resolveInfo be the same ?? 
+        // ??shouldtheresolveInfobethesame??
         ListSequence.fromList(myNewChanges).removeElement(ch);
       }
     }
@@ -246,8 +246,8 @@ outer:
     Object value1 = type.fromString(propValue1);
     Object value2 = type.fromString(propValue2);
     if (value1 == SType.NOT_A_VALUE || value2 == SType.NOT_A_VALUE) {
-      // NOT_A_VALUE can be when raw string property value is invalid, this doesn't mean that both values are equal 
-      //  so we use raw values to compare 
+      // NOT_A_VALUEcanbewhenrawstringpropertyvalueisinvalid,thisdoesn'tmeanthatbothvaluesareequal
+      // soweuserawvaluestocompare
       value1 = propValue1;
       value2 = propValue2;
     }
@@ -270,7 +270,7 @@ outer:
   }
 
   private static boolean equalsNodeStructure(@NotNull SNode n1, @NotNull SNode n2, Map<SNode, SNode> oldToNewMap, boolean easyRef) {
-    // updates oldToNewMap with new mapping if matched 
+    // updatesoldToNewMapwithnewmappingifmatched
     if (!(Objects.equals(SNodeOperations.getConcept(n1), SNodeOperations.getConcept(n2)))) {
       return false;
     }

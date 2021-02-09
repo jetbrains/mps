@@ -35,27 +35,27 @@ public class ConceptRef {
     SConcept exprConcept = CONCEPTS.Expression$mB;
     SConcept c1 = exprConcept;
     SConcept c2 = (SConcept) c1;
-    // ====== to node 
-    // - ok - 
+    // ======tonode
+    // -ok-
     SNode n1 = SNodeOperations.asNode(exprConcept);
     SNode n2 = SNodeOperations.asNode(exprConcept);
-    // -- not ok -- 
-    // ====== to concept 
-    // - ok - 
+    // --notok--
+    // ======toconcept
+    // -ok-
     SConcept exprConc = CONCEPTS.Expression$mB;
     SConcept bExprConc = SNodeOperations.castConcept(exprConc, CONCEPTS.BinaryOperation$W1);
     exprConc = bExprConc;
-    // -- not ok -- 
+    // --notok--
   }
 
   public void concept_hierarchy1(SAbstractConcept concept) {
-    // supers 
+    // supers
     List<SAbstractConcept> supers_all = SConceptOperations.getAllSuperConcepts(concept, false);
     List<SAbstractConcept> supers_all_inclusive = SConceptOperations.getAllSuperConcepts(concept, true);
-    // direct supers 
+    // directsupers
     List<SAbstractConcept> supers_direct = SConceptOperations.getDirectSuperConcepts(concept, false);
     List<SAbstractConcept> supers_direct_inclusive = SConceptOperations.getDirectSuperConcepts(concept, true);
-    // ====== 
+    // ======
     boolean yes1 = SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.Expression$mB), CONCEPTS.BinaryOperation$W1);
     boolean yes2 = SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.Expression$mB), SNodeOperations.asSConcept(CONCEPTS.BinaryOperation$W1));
     boolean yes3 = SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.BinaryOperation$W1), CONCEPTS.Expression$mB);

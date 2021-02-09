@@ -49,7 +49,7 @@ public class SampleDeclMigration extends MigrationScriptBase {
     return null;
   }
   public void doExecute(final SModule m) {
-    // migrate everything except migration aspects 
+    // migrateeverythingexceptmigrationaspects
     SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, new Condition<SModel>() {
       public boolean met(SModel it) {
         return !(SModuleOperations.isAspect(it, "migration"));
@@ -65,23 +65,23 @@ public class SampleDeclMigration extends MigrationScriptBase {
         }
       };
 
-      // get all old instances in all models of the module 
+      // getalloldinstancesinallmodelsofthemodule
       List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, true)).toListSequence();
 
-      // for each old instance create a new one 
+      // foreacholdinstancecreateanewone
       ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
         public void visit(SNode oldNode) {
           SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$dqVz), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
-          // add it to the model 
+          // addittothemodel
           SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
-          // create the data annotation to hold mapping between old and new ids of the instances 
+          // createthedataannotationtoholdmappingbetweenoldandnewidsoftheinstances
           SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct).addNew(newNode, CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
 
         }
       });
 
-      // remove the old instances from their models 
+      // removetheoldinstancesfromtheirmodels
       ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.deleteNode(it);

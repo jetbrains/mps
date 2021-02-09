@@ -185,7 +185,7 @@ public class ChangeSetBuilder {
       }
     });
 
-    // Finding insertings, deletings and replacings 
+    // Findinginsertings,deletingsandreplacings
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(finder.getDifferentIndices())) {
       final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
       List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
@@ -251,7 +251,7 @@ public class ChangeSetBuilder {
         }
         ListSequence.fromList(myNewChanges).addElement(new NodeGroupChange(myChangeSet, oldParentId, newParentId, role, oldStart, oldEnd, newStart, newEnd));
       }
-      // Finding changes for children 
+      // Findingchangesforchildren
       ListSequence.fromList(commonIndices1).select(new ISelector<Tuples._2<Integer, Integer>, SNodeId>() {
         public SNodeId select(Tuples._2<Integer, Integer> in) {
           return ListSequence.fromList(oldIds1).getElement((int) in._0());
@@ -320,13 +320,13 @@ public class ChangeSetBuilder {
     SModelBase newModel = (SModelBase) myNewModel;
     Set<SLanguage> oldLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), oldModel.importedLanguageIds());
     Set<SLanguage> newLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), newModel.importedLanguageIds());
-    // deleted 
+    // deleted
     for (SLanguage lang : SetSequence.fromSet(oldLanguages).subtract(SetSequence.fromSet(newLanguages))) {
       int oldVersion = oldModel.getLanguageImportVersion(lang);
       UsedLanguageChange change = new UsedLanguageChange(myChangeSet, lang, oldVersion, ChangeType.DELETE);
       ListSequence.fromList(myNewChanges).addElement(change);
     }
-    // added & changed 
+    // added&changed
     for (SLanguage lang : SetSequence.fromSet(newLanguages)) {
       int newVersion = newModel.getLanguageImportVersion(lang);
       if (!((SetSequence.fromSet(oldLanguages).contains(lang)))) {
@@ -376,7 +376,7 @@ public class ChangeSetBuilder {
           }
         }
       });
-      // check if any attribute has been deleted in the new version of the model 
+      // checkifanyattributehasbeendeletedinthenewversionofthemodel
       oldModel.forEachAttribute(new BiConsumer<String, String>() {
         public void accept(String k, String v) {
           if (!(seenAttr.contains(k))) {

@@ -78,7 +78,7 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
         for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child4);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist5 = null;
@@ -87,13 +87,13 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
         for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
           tnode1.addChild(myAggregationLinks[0], child6);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode7, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "foobar", propertyMacro_38z9ys_c0a2a0a1a6a2a5)));
         tnode1.addChild(myAggregationLinks[0], tnode7);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

@@ -164,7 +164,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       graphics.setFont(font);
     }
     FontMetrics metrics = graphics.getFontMetrics();
-    // display text only if at least half of it can be visible 
+    // displaytextonlyifatleasthalfofitcanbevisible
     if (height >= metrics.getHeight()) {
       int textY = (int) bounds.start() + (height - metrics.getHeight()) / 2 + metrics.getAscent();
       for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns).where(new IWhereFilter<AnnotationAspectSubcolumn>() {

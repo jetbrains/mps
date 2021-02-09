@@ -57,8 +57,8 @@ public class NewGeneratorDialog extends DialogWrapper {
     myProject = project;
     setTitle("New Generator");
     mySourceLanguage = sourceLanguage;
-    // I don't know what's proper mechanism to obtain FS for the project. Could use one from sourceLanguage's descriptor file 
-    // but would prefer not to access module's descriptor file at all. 
+    // Idon'tknowwhat'spropermechanismtoobtainFSfortheproject.CoulduseonefromsourceLanguage'sdescriptorfile
+    // butwouldprefernottoaccessmodule'sdescriptorfileatall.
     myProjectFS = project.getFileSystem();
     myContentPane = new JBPanel(new GridLayout(5, 1));
     myContentPane.setPreferredSize(new Dimension(600, 100));
@@ -97,7 +97,7 @@ public class NewGeneratorDialog extends DialogWrapper {
   private void updateTemplateModelsDir() {
     IFile moduleDir = mySourceLanguage.getModuleSourceDir();
     assert moduleDir != null;
-    // do not start with 'folder not empty' warning right away when adding a new generator for an existing language already owning a generator. 
+    // donotstartwith'foldernotempty'warningrightawaywhenaddinganewgeneratorforanexistinglanguagealreadyowningagenerator.
     String folderName = "generator";
     int cnt = 1;
     IFile newChild;
@@ -142,13 +142,13 @@ public class NewGeneratorDialog extends DialogWrapper {
     do {
       File f = q.removeFirst();
       if (f.isFile()) {
-        // don't use component in VI, otherwise one needs to hover over the component to see the warning 
+        // don'tusecomponentinVI,otherwiseoneneedstohoveroverthecomponenttoseethewarning
         ValidationInfo vi = new ValidationInfo("Module folder is not empty").asWarning().withOKEnabled();
-        // warn but still allow create a module 
+        // warnbutstillallowcreateamodule
         return vi;
       }
-      // assert f.isDirectory == true 
-      // assert f.listFiles() != null 
+      // assertf.isDirectory==true
+      // assertf.listFiles()!=null
       q.addAll(Arrays.asList(f.listFiles()));
     } while (!(q.isEmpty()));
     return null;
@@ -158,7 +158,7 @@ public class NewGeneratorDialog extends DialogWrapper {
   @Nullable
   @Override
   protected ValidationInfo doValidate() {
-    // AFAIU, this method is invoked regularly on dedicated alarm 
+    // AFAIU,thismethodisinvokedregularlyondedicatedalarm
     ValidationInfo vi = checkAlias(myGeneratorName.getText());
     if (vi != null) {
       return vi;
@@ -169,7 +169,7 @@ public class NewGeneratorDialog extends DialogWrapper {
 
   @Override
   protected void doOKAction() {
-    // DialogWrapper invokes doValidate() prior to processing ok action 
+    // DialogWrapperinvokesdoValidate()priortoprocessingokaction
     String filePath = myModuleDir.getText();
     final String name = myGeneratorName.getText();
     final IFile generatorModuleLocation = myProjectFS.getFile(filePath);
@@ -177,16 +177,16 @@ public class NewGeneratorDialog extends DialogWrapper {
       public void invoke() {
         Generator newGenerator;
         try {
-          // see MPS-18743 
+          // seeMPS-18743
           myProject.getRepository().saveAll();
-          // XXX why saveAll is not part of NewModuleUtil.runModuleCreation? 
+          // XXXwhysaveAllisnotpartofNewModuleUtil.runModuleCreation?
           generatorModuleLocation.mkdirs();
           final GeneratorDescriptor generatorDescriptor = NewModuleUtil.createGeneratorDescriptor(newGeneratorNamespace(), generatorModuleLocation, null);
           generatorDescriptor.setAlias(name);
           newGenerator = createNewGenerator(generatorDescriptor, generatorModuleLocation);
           NewModuleUtil.createTemplateModelIfNoneYet(newGenerator);
         } catch (Exception e) {
-          // XXX again, why it's not common for any runModuleCreation? 
+          // XXXagain,whyit'snotcommonforanyrunModuleCreation?
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Failed to create new generator module", e);
           }
@@ -199,10 +199,10 @@ public class NewGeneratorDialog extends DialogWrapper {
   }
 
   /*package*/ String newGeneratorNamespace() {
-    //  assumes model read for project models 
+    // assumesmodelreadforprojectmodels
     String namespace;
     int cnt = mySourceLanguage.getGenerators().size();
-    // XXX in fact, need to be specific here whether I care about project modules or all available modules not to match namespace 
+    // XXXinfact,needtobespecificherewhetherIcareaboutprojectmodulesorallavailablemodulesnottomatchnamespace
     final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(myProject);
     do {
       namespace = String.format("%s.generator%02d", mySourceLanguage.getModuleName(), cnt++);
@@ -222,9 +222,9 @@ public class NewGeneratorDialog extends DialogWrapper {
     } else {
       generatorDescriptor.standaloneModule(true);
       IFile moduleFile = generatorModuleLocation.findChild(generatorDescriptor.getNamespace().replace("#", "") + MPSExtentions.DOT_GENERATOR);
-      // FIXME would be nice not to cast here 
+      // FIXMEwouldbenicenottocasthere
       Generator gm = (Generator) repoFacade.instantiate(generatorDescriptor, moduleFile);
-      // FIXME why there's no mechanism to add module with path? 
+      // FIXMEwhythere'snomechanismtoaddmodulewithpath?
       myProject.addModule(gm);
       if (myVirtualFolder != null && myProject instanceof StandaloneMPSProject) {
         ((StandaloneMPSProject) myProject).setFolderFor(gm, myVirtualFolder);

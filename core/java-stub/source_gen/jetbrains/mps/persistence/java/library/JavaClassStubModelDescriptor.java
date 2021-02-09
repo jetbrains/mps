@@ -90,14 +90,14 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
       final ModelLoadingState oldState;
       synchronized (myLoadLock) {
         if (myIsLoadInProgress) {
-          // we are inside nested load() within update 
-          // the check shall be inside synchronized block, otherwise any other thread won't block on load 
+          // weareinsidenestedload()withinupdate
+          // thecheckshallbeinsidesynchronizedblock,otherwiseanyotherthreadwon'tblockonload
           return;
         }
         final SModel mi = getSModel();
         oldState = getLoadingState();
         if (oldState == ModelLoadingState.FULLY_LOADED) {
-          // another thread succeeded first 
+          // anotherthreadsucceededfirst
           return;
         }
         myIsLoadInProgress = true;
@@ -177,8 +177,8 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
   public void reloadFromDiskSafe() {
     SRepository repo = getRepository();
     if (repo == null) {
-      // detached model, don't care to make it up-to-date 
-      // XXX same code is in EitableSModelBase, could I refactor to avoid that? 
+      // detachedmodel,don'tcaretomakeitup-to-date
+      // XXXsamecodeisinEitableSModelBase,couldIrefactortoavoidthat?
       return;
     }
     repo.getModelAccess().runWriteAction(new Runnable() {
@@ -201,7 +201,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
     if (oldModel == null) {
       return;
     }
-    // XXX shall I synchronize(myLoadLock) so that unload and subsequent partial load are from the same thread? I'm in the write anyway. 
+    // XXXshallIsynchronize(myLoadLock)sothatunloadandsubsequentpartialloadarefromthesamethread?I'minthewriteanyway.
     replace(createModel());
   }
 

@@ -33,7 +33,7 @@ public final class CellModel_WithRole__BehaviorDescriptor extends BaseBHDescript
   @Deprecated
   @ToRemove(version = 2018.2)
   /*package*/ static String getRoleForCell_idhGPLstu(@NotNull SNode __thisNode__) {
-    // use getLinkForCell/getPropertyForCell in inheritors instead 
+    // usegetLinkForCell/getPropertyForCellininheritorsinstead
     return null;
   }
 

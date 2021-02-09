@@ -22,7 +22,7 @@
       <node id="8568892084424435696" at="23,0,24,0" concept="12" trace="GENERATED_FINDER" />
       <node id="8568892084424435700" at="24,0,25,0" concept="12" trace="CLASS_NAME" />
       <node id="8568892084424435704" at="25,0,26,0" concept="5" trace="myFinder" />
-      <node id="8568892084424435930" at="26,23,27,123" concept="11" />
+      <node id="8568892084424435930" at="26,23,27,109" concept="11" />
       <node id="8568892084424435717" at="30,46,31,22" concept="4" />
       <node id="8568892084424435724" at="34,31,35,37" concept="10" />
       <node id="8568892084424435742" at="40,9,41,46" concept="4" />
@@ -59,7 +59,7 @@
       <node id="8568892084424435780" at="54,0,68,0" concept="8" trace="write#(Lorg/jdom/Element;Ljetbrains/mps/project/Project;)V" />
       <node id="8568892084424435849" at="71,33,85,5" concept="7" />
       <node id="8568892084424435837" at="69,0,87,0" concept="8" trace="read#(Lorg/jdom/Element;Ljetbrains/mps/project/Project;)V" />
-      <scope id="8568892084424435710" at="26,23,27,123" />
+      <scope id="8568892084424435710" at="26,23,27,109" />
       <scope id="8568892084424435716" at="30,46,31,22" />
       <scope id="8568892084424435723" at="34,31,35,37" />
       <scope id="8568892084424435741" at="40,9,41,46" />
@@ -168,8 +168,8 @@
       <node id="8568892084424437379" at="74,16,75,40" concept="4" />
       <node id="8568892084424437396" at="80,45,81,147" concept="4" />
       <node id="8568892084424437401" at="82,16,83,64" concept="4" />
-      <node id="8568892084424437586" at="90,98,91,52" concept="11" />
-      <node id="8568892084424437420" at="91,52,92,59" concept="9" />
+      <node id="8568892084424437586" at="90,98,91,50" concept="11" />
+      <node id="8568892084424437420" at="91,50,92,59" concept="9" />
       <node id="8568892084424437423" at="92,59,93,42" concept="4" />
       <node id="8568892084424437428" at="93,42,94,33" concept="10" />
       <node id="8568892084424437432" at="96,0,97,0" concept="8" trace="doFindResults#(Ljetbrains/mps/ide/findusages/model/SearchQuery;Ljetbrains/mps/ide/findusages/findalgorithm/finders/IFinder/FindCallback;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />

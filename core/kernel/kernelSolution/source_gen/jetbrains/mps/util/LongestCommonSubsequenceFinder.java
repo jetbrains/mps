@@ -29,9 +29,9 @@ public class LongestCommonSubsequenceFinder<E> {
   }
   @NotNull
   public int[][] getCommonLengths() {
-    // This method finds lengths of longest common subsequence for each 
-    // i first elements of a and j first elements of b. This lengths are in result 
-    // two-dimensional array at [i][j] position 
+    // Thismethodfindslengthsoflongestcommonsubsequenceforeach
+    // ifirstelementsofaandjfirstelementsofb.Thislengthsareinresult
+    // two-dimensionalarrayat[i][j]position
     if (myCommonLengths == null) {
       myCommonLengths = new int[ListSequence.fromList(myA).count() + 1][ListSequence.fromList(myB).count() + 1];
 
@@ -49,8 +49,8 @@ public class LongestCommonSubsequenceFinder<E> {
   }
   @NotNull
   public List<Tuples._2<Integer, Integer>> getCommonIndices() {
-    // This method finds pairs of indices in a and b lists which are 
-    // elements of longest common subsequence 
+    // Thismethodfindspairsofindicesinaandblistswhichare
+    // elementsoflongestcommonsubsequence
     if (myCommonIndices == null) {
       getCommonLengths();
 
@@ -76,8 +76,8 @@ public class LongestCommonSubsequenceFinder<E> {
   }
   @NotNull
   public List<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>> getDifferentIndices() {
-    // This methods finds pairs of begin-end pairs of original lists a and b 
-    // which are not included into longest common subsequence 
+    // Thismethodsfindspairsofbegin-endpairsoforiginallistsaandb
+    // whicharenotincludedintolongestcommonsubsequence
     if (myDifferentIndices == null) {
       myDifferentIndices = ListSequence.fromList(new ArrayList<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>>());
       int i = 0;
@@ -125,8 +125,8 @@ __switch__:
   }
   @NotNull
   public List<Tuples._2<Iterable<E>, Iterable<E>>> getDifferentSubsequences() {
-    // This methods finds pairs of subsequences of original lists a and b 
-    // which are not included into longest common subsequence 
+    // Thismethodsfindspairsofsubsequencesoforiginallistsaandb
+    // whicharenotincludedintolongestcommonsubsequence
     if (myDifferentSubsequences == null) {
       myDifferentSubsequences = ListSequence.fromList(getDifferentIndices()).select(new ISelector<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>, Tuples._2<Iterable<E>, Iterable<E>>>() {
         public Tuples._2<Iterable<E>, Iterable<E>> select(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> pair) {

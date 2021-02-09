@@ -89,7 +89,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
 
   @Override
   public RefactoringScript resolve(final Project p, final boolean silent) {
-    // todo store ModuleRef instead of SModule 
+    // todostoreModuleRefinsteadofSModule
     final Wrappers._T<RefactoringScript> implementation = new Wrappers._T<RefactoringScript>(null);
     p.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {

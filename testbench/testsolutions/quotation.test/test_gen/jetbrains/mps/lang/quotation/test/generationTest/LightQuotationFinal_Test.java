@@ -143,7 +143,7 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
         SNode l = createStatementList_3vdjo8_a0a2a8q(value);
         Assert.fail();
       } catch (NullPointerException e) {
-        // expected exception 
+        // expectedexception
       }
     }
     public void test_containmentLinkMultipleList() throws Exception {
@@ -162,13 +162,13 @@ public class LightQuotationFinal_Test extends BaseTransformationTest {
         SNode q = _quotation_createNode_3vdjo8_a0a1a01q(value);
         Assert.fail();
       } catch (NullPointerException e) {
-        // expected exception 
+        // expectedexception
       }
       try {
         SNode l = createStatementList_3vdjo8_a0a2a01q(value);
         Assert.fail();
       } catch (NullPointerException e) {
-        // expected exception 
+        // expectedexception
       }
     }
     public void test_referenceLink() throws Exception {

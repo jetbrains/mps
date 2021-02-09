@@ -12,7 +12,7 @@ import javax.swing.SwingUtilities;
     SwingUtilities.invokeAndWait(new Runnable() {
       @Override
       public void run() {
-        // empty task 
+        // emptytask
       }
     });
   }

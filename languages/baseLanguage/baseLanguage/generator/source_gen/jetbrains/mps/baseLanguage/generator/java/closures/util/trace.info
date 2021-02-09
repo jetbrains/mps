@@ -18,27 +18,27 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ce(jetbrains.mps.baseLanguage.generator.java.closures.util)/1170730182541">
     <file name="QueriesUtil.java">
       <node id="1170874244152" at="22,89,23,113" concept="8" />
-      <node id="7376433222636453425" at="24,33,25,33" concept="10" />
-      <node id="1170874244175" at="25,33,26,43" concept="3" />
+      <node id="7376433222636453425" at="24,33,25,28" concept="10" />
+      <node id="1170874244175" at="25,28,26,43" concept="3" />
       <node id="1170874251230" at="27,5,28,91" concept="9" />
       <node id="7376433222636453997" at="30,76,31,7" concept="10" />
-      <node id="7376433222636454367" at="31,7,32,79" concept="10" />
-      <node id="7376433222636453191" at="32,79,33,7" concept="10" />
+      <node id="7376433222636454367" at="31,7,32,66" concept="10" />
+      <node id="7376433222636453191" at="32,66,33,7" concept="10" />
       <node id="1196275097909" at="33,7,34,118" concept="8" />
       <node id="1196275130422" at="35,33,36,186" concept="9" />
       <node id="1196275252361" at="37,5,38,200" concept="8" />
-      <node id="7376433222636454313" at="38,200,39,22" concept="10" />
+      <node id="7376433222636454313" at="38,200,39,19" concept="10" />
       <node id="1196275352611" at="40,86,41,62" concept="8" />
       <node id="1196275925819" at="41,62,42,203" concept="8" />
       <node id="1196275978015" at="42,203,43,84" concept="3" />
       <node id="1196276013890" at="43,84,44,77" concept="3" />
       <node id="1196276092985" at="44,77,45,22" concept="9" />
-      <node id="7376433222636453201" at="46,5,47,30" concept="10" />
+      <node id="7376433222636453201" at="46,5,47,26" concept="10" />
       <node id="1196276396237" at="48,198,49,199" concept="8" />
       <node id="1196276456964" at="49,199,50,83" concept="3" />
       <node id="1196276479211" at="50,83,51,22" concept="9" />
-      <node id="7376433222636454293" at="52,5,53,25" concept="10" />
-      <node id="1196276566545" at="53,25,54,184" concept="9" />
+      <node id="7376433222636454293" at="52,5,53,21" concept="10" />
+      <node id="1196276566545" at="53,21,54,184" concept="9" />
       <node id="1219331740449" at="56,44,57,147" concept="9" />
       <node id="1196777970339" at="59,63,60,63" concept="8" />
       <node id="1196777970339" at="60,63,61,30" concept="8" />
@@ -69,8 +69,8 @@
       <node id="1196275120554" at="34,118,37,5" concept="6" />
       <node id="1219331728661" at="56,0,59,0" concept="12" trace="getJavaLangObject#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1170874244159" at="23,113,27,5" concept="6" />
-      <node id="1196276308421" at="47,30,52,5" concept="6" />
-      <node id="1196275284506" at="39,22,46,5" concept="6" />
+      <node id="1196276308421" at="47,26,52,5" concept="6" />
+      <node id="1196275284506" at="39,19,46,5" concept="6" />
       <node id="1219331742419" at="72,0,79,0" concept="12" trace="_quotation_createNode_w9106s_a0a0a3#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1170874151016" at="22,0,30,0" concept="12" trace="getTypeVars_from_Closure_enclosingClass#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
       <node id="1196777970339" at="59,0,72,0" concept="12" trace="_quotation_createNode_w9106s_a0a0h0c#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -138,7 +138,7 @@
       <node id="9209581912525119078" at="67,58,68,106" concept="3" />
       <node id="9209581912525119088" at="69,82,70,108" concept="3" />
       <node id="9209581912525119099" at="71,14,72,100" concept="3" />
-      <node id="6017788484734288422" at="76,100,77,31" concept="10" />
+      <node id="6017788484734288422" at="76,100,77,29" concept="10" />
       <node id="6017788484734288429" at="78,41,79,142" concept="8" />
       <node id="6017788484734288444" at="80,36,81,77" concept="3" />
       <node id="9209581912525175315" at="81,77,82,77" concept="3" />
@@ -158,7 +158,7 @@
       <node id="1238943597840" at="123,70,124,19" concept="9" />
       <node id="1238943614625" at="125,5,126,120" concept="9" />
       <node id="1238943796964" at="128,132,129,35" concept="8" />
-      <node id="7376433222636453135" at="130,82,131,28" concept="10" />
+      <node id="7376433222636453135" at="130,82,131,25" concept="10" />
       <node id="1238943843476" at="132,69,133,17" concept="2" />
       <node id="1238943942114" at="135,527,136,143" concept="8" />
       <node id="1238943963345" at="137,64,138,80" concept="3" />
@@ -212,7 +212,7 @@
       <node id="1238943097097" at="111,76,114,9" concept="6" />
       <node id="1238943088053" at="115,7,118,7" concept="6" />
       <node id="1238943587999" at="122,131,125,5" concept="6" />
-      <node id="1238943833030" at="131,28,134,7" concept="6" />
+      <node id="1238943833030" at="131,25,134,7" concept="6" />
       <node id="1238944032260" at="141,14,144,9" concept="6" />
       <node id="1238941563858" at="150,140,153,5" concept="6" />
       <node id="1238944665118" at="162,39,165,7" concept="6" />
@@ -241,7 +241,7 @@
       <node id="1238941203403" at="149,0,156,0" concept="12" trace="getClosureContextData#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljetbrains/mps/baseLanguage/generator/java/closures/util/ClosuresUtil/ClosureContextData;" />
       <node id="1238944338253" at="194,0,201,0" concept="7" trace="ensureInitialized#()V" />
       <node id="9209581912525119076" at="66,5,74,5" concept="6" />
-      <node id="6017788484734288473" at="77,31,85,5" concept="13" />
+      <node id="6017788484734288473" at="77,29,85,5" concept="13" />
       <node id="1238942562292" at="97,0,106,0" concept="12" trace="processConceptFunction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Z" />
       <node id="1238942180118" at="87,0,97,0" concept="12" trace="processMethodDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Z" />
       <node id="6017788484734288415" at="76,0,87,0" concept="12" trace="getClosureContext#(Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/util/Map;" />

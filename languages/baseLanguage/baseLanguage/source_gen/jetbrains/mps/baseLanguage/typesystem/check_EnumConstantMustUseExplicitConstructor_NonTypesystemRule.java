@@ -56,7 +56,7 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
           }
         }
       }
-      // MethodCallsFixer_Rule takes care of the missing reference, if the constructor reference is null 
+      // MethodCallsFixer_Ruletakescareofthemissingreference,iftheconstructorreferenceisnull
     }
   }
   public SAbstractConcept getApplicableConcept() {

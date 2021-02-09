@@ -58,7 +58,7 @@ import jetbrains.mps.debugger.java.api.evaluation.proxies.INullValueProxy;
   }
   @Override
   public IValueProxy invokeMethod(String name, String jniSignature, final ThreadReference threadReference, Object... args) throws EvaluationException {
-    // we can't use Evaluators similar method cause we find methods in Object, but invoke them for Array 
+    // wecan'tuseEvaluatorssimilarmethodcausewefindmethodsinObject,butinvokethemforArray
     ClassType objectType = (ClassType) EvaluationUtils.getInstance().findClassType("java.lang.Object", myValue.virtualMachine());
     final Method method = EvaluationUtils.getInstance().findMethod(objectType, name, jniSignature);
     final List<Value> argValues = MirrorUtil.getInstance().getValues(myValue.virtualMachine(), args);

@@ -45,7 +45,7 @@ public final class ForbidIncomingReferencesInSubconcepts_Intention extends Abstr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // todo: temporary disabled, see MPS-18470 
+    // todo:temporarydisabled,seeMPS-18470
     return false;
   }
   @Override

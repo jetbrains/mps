@@ -55,9 +55,9 @@ public class CurrentDifferenceRegistry {
     Project ideaProject = myMpsProject.getProject();
     FileStatusManager.getInstance(ideaProject).addFileStatusListener(myFileStatusListener, ideaProject);
     new RepoListenerRegistrar(myMpsProject.getRepository(), myModelRepositoryListener).attach();
-    // do not start the command thread immediately, let project refresh its structures and components. 
-    // Not sure whether to use StartupManager.registerPostStartupActivity or runWhenSmart; chose latter as its javadoc 
-    // promises initialized project in addition to indexing done (to some extent). 
+    // donotstartthecommandthreadimmediately,letprojectrefreshitsstructuresandcomponents.
+    // NotsurewhethertouseStartupManager.registerPostStartupActivityorrunWhenSmart;choselatterasitsjavadoc
+    // promisesinitializedprojectinadditiontoindexingdone(tosomeextent).
     DumbService.getInstance(getProject()).runWhenSmart(new Runnable() {
       public void run() {
         myCommandQueue.startThread();
@@ -208,7 +208,7 @@ public class CurrentDifferenceRegistry {
     @Override
     protected void startListening(@NotNull SModel model) {
       if (isIncluded(model)) {
-        // we care about modelReplaced event 
+        // wecareaboutmodelReplacedevent
         model.addModelListener(this);
         updateModelIfTracked(model.getReference(), false);
       }
@@ -244,7 +244,7 @@ public class CurrentDifferenceRegistry {
 
     public void addListener(SModel model, SModelCommandListener listener) {
       if (!(myListeners.containsKey(model.getReference()))) {
-        //  first time we see the model, tell EventCollector we are interested 
+        // firsttimeweseethemodel,tellEventCollectorweareinterested
         startListeningToModel(model);
       }
       myListeners.putValue(model.getReference(), listener);
@@ -252,7 +252,7 @@ public class CurrentDifferenceRegistry {
     private void removeListener(SModel model, SModelCommandListener listener) {
       myListeners.remove(model.getReference(), listener);
       if (!(myListeners.containsKey(model.getReference()))) {
-        // no more listeners, no reason to listen any more 
+        // nomorelisteners,noreasontolistenanymore
         stopListeningToModel(model);
       }
     }

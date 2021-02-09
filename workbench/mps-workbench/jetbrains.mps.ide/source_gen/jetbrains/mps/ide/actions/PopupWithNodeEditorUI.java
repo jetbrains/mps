@@ -257,7 +257,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
     public ImplementationNode(@NotNull SNode node) {
       myNode = node;
       myNodePresentation = (SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.InstanceMethodDeclaration$39) && node.getParent() != null ? node.getParent() + "." + node.getPresentation() : node.getPresentation());
-      // getIconFor requires read access 
+      // getIconForrequiresreadaccess
       myNodeIcon = GlobalIconManager.getInstance().getIconFor(node);
       SModel model = node.getModel();
       SModule module = (model != null ? model.getModule() : null);

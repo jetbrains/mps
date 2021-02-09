@@ -39,7 +39,7 @@ public class check_LocalStaticMethodCall_NonTypesystemRule extends AbstractNonTy
       }
     }
     if (!(SetSequence.fromSet(containersAndParentClasses).contains(SNodeOperations.getParent(SLinkOperations.getTarget(localMethodCall, LINKS.baseMethodDeclaration$pyYw))))) {
-      // todo: should be disabled? 
+      // todo:shouldbedisabled?
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(localMethodCall, "This method can't be called from the current context", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1228992682236", null, errorTarget);

@@ -49,7 +49,7 @@ public class StateMachineTest_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_4nt6vc_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_4nt6vc_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.StateMachineTest$oe, LINKS.stateMachine$rUP6);
     }
     @NotNull

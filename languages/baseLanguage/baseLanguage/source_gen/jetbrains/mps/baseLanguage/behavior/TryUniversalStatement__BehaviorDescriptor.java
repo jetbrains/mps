@@ -68,7 +68,7 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
       }));
     }
 
-    // remove what we have caught 
+    // removewhatwehavecaught
     for (SNode catchClause : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$Q4F))) {
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode thrownFromBody : SetSequence.fromSet(thrownsFromBody)) {
@@ -83,7 +83,7 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
     }
     SetSequence.fromSet(throwables).addSequence(SetSequence.fromSet(thrownsFromBody));
 
-    // now collect what was thrown in catch blocks 
+    // nowcollectwhatwasthrownincatchblocks
     for (SNode catchClause : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$Q4F))) {
       StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(catchClause, LINKS.catchBody$UX12), throwables, ((boolean) ignoreMayBeThrowables));
     }

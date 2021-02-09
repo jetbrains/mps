@@ -24,8 +24,8 @@
       <node id="6346338635721157190" at="34,55,35,72" concept="1" />
       <node id="6346338635721157190" at="36,9,37,0" concept="7" />
       <node id="6346338635721157190" at="37,0,38,22" concept="5" />
-      <node id="6346338635721157658" at="42,128,43,82" concept="6" />
-      <node id="6346338635721160458" at="43,82,44,116" concept="6" />
+      <node id="6346338635721157658" at="42,128,43,70" concept="6" />
+      <node id="6346338635721160458" at="43,70,44,99" concept="6" />
       <node id="6346338635721157662" at="46,136,47,124" concept="4" />
       <node id="6346338635721157670" at="47,124,48,149" concept="5" />
       <node id="6346338635721157704" at="50,5,51,16" concept="5" />
@@ -40,7 +40,7 @@
       <node id="6346338635721157190" at="23,0,26,0" concept="0" trace="TransformationMatchManyAssertion_Constraints#()V" />
       <node id="6346338635721157190" at="33,0,36,9" concept="2" />
       <node id="6346338635721189776" at="45,133,49,7" concept="2" />
-      <node id="6346338635721157660" at="44,116,50,5" concept="2" />
+      <node id="6346338635721157660" at="44,99,50,5" concept="2" />
       <node id="6346338635721157190" at="30,0,40,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="6346338635721157190" at="42,0,53,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="6346338635721157190" at="28,105,40,6" concept="5" />
@@ -82,10 +82,10 @@
       <node id="7985317431306261563" at="34,55,35,72" concept="1" />
       <node id="7985317431306261563" at="36,9,37,0" concept="7" />
       <node id="7985317431306261563" at="37,0,38,22" concept="5" />
-      <node id="7985317431306318365" at="42,128,43,82" concept="6" />
+      <node id="7985317431306318365" at="42,128,43,70" concept="6" />
       <node id="2681075272524284113" at="45,135,46,124" concept="4" />
       <node id="2681075272524279859" at="46,124,47,149" concept="5" />
-      <node id="6346338635721187647" at="48,7,49,22" concept="6" />
+      <node id="6346338635721187647" at="48,7,49,20" concept="6" />
       <node id="7985317431306314909" at="50,5,51,16" concept="5" />
       <node id="7985317431306261563" at="53,0,54,0" concept="8" trace="canBeParentBreakingPoint" />
       <node id="7985317431306261563" at="56,0,57,0" concept="8" trace="TransformationMatchAssertion$SC" />
@@ -98,7 +98,7 @@
       <node id="7985317431306261563" at="23,0,26,0" concept="0" trace="TransformationMatchAssertion_Constraints#()V" />
       <node id="7985317431306261563" at="33,0,36,9" concept="2" />
       <node id="6346338635721168381" at="44,133,48,7" concept="2" />
-      <node id="7985317431306272010" at="43,82,50,5" concept="2" />
+      <node id="7985317431306272010" at="43,70,50,5" concept="2" />
       <node id="7985317431306261563" at="30,0,40,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="7985317431306261563" at="42,0,53,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="7985317431306261563" at="28,105,40,6" concept="5" />
@@ -109,7 +109,7 @@
         <var name="arg" id="2681075272524284114" />
       </scope>
       <scope id="7985317431306261563" at="23,0,26,0" />
-      <scope id="7985317431306272012" at="44,133,49,22" />
+      <scope id="7985317431306272012" at="44,133,49,20" />
       <scope id="7985317431306261563" at="31,128,38,22">
         <var name="result" id="7985317431306261563" />
       </scope>

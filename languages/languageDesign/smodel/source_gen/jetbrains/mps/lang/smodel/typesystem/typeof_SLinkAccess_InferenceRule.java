@@ -25,7 +25,7 @@ public class typeof_SLinkAccess_InferenceRule extends AbstractInferenceRule_Runt
     if (linkDecl == null) {
       return;
     }
-    // assign type 
+    // assigntype
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1206103335045", 0, null);

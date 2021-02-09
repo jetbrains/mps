@@ -124,7 +124,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       String url = this.buildRequest("/handlerTest/conflict");
       this.testRequestResponse(url, 200, "handled");
 
-      // If request handlers conflict with each other, only one of them should handle incoming request 
+      // Ifrequesthandlersconflictwitheachother,onlyoneofthemshouldhandleincomingrequest
       Assert.assertEquals(PingStorage.pingCount(), 1);
     }
 

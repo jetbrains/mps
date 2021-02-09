@@ -27,7 +27,7 @@ public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new AddModuleToVcs_Action());
     addAction(new CompareTransientModels_Action());
     addAction(new IgnoreModuleInVcs_Action());
@@ -36,7 +36,7 @@ public class Vcs_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowDiffererenceWithCurrentRevision_Action());
     addAction(new ShowNodeDifference_Action());
     addAction(new TestMergeAction_Action());
-    // groups 
+    // groups
     addGroup(new MakeFromChangesView_ActionGroup(this));
     addGroup(new ModuleVcsActions_ActionGroup(this));
     addGroup(new ShowDiffWithCurrRev_ActionGroup(this));

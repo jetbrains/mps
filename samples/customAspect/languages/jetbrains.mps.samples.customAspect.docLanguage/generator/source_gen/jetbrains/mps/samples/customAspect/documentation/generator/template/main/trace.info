@@ -79,8 +79,8 @@
   </root>
   <root nodeRef="r:291c2e75-1693-4702-b50c-6c96d8d6956d(jetbrains.mps.samples.customAspect.documentation.generator.template.main@generator)/2897519568668637315">
     <file name="QueriesGenerated.java">
-      <node id="7228083082547972382" at="51,83,52,21" concept="3" />
-      <node id="2030416617762091403" at="52,21,53,97" concept="2" />
+      <node id="7228083082547972382" at="51,83,52,19" concept="3" />
+      <node id="2030416617762091403" at="52,19,53,97" concept="2" />
       <node id="4565427742315565556" at="65,90,66,112" concept="2" />
       <node id="5700381506346626450" at="68,90,69,158" concept="2" />
       <node id="1570228009929814969" at="80,14,81,56" concept="0" />

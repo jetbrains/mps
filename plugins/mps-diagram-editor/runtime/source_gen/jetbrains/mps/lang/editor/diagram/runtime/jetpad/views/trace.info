@@ -99,10 +99,10 @@
       <node id="1897569136988749785" at="26,0,27,0" concept="5" trace="myCornerResizeHandlePositions" />
       <node id="1897569136990748031" at="27,0,28,0" concept="5" trace="mySideResizeHandlePositions" />
       <node id="1897569136986861119" at="32,93,33,51" concept="4" />
-      <node id="4046741574151796389" at="33,51,34,42" concept="11" />
+      <node id="4046741574151796389" at="33,51,34,38" concept="11" />
       <node id="1897569136988902900" at="36,29,37,85" concept="4" />
       <node id="1897569136988928638" at="41,29,42,85" concept="4" />
-      <node id="4046741574151871400" at="44,12,45,40" concept="11" />
+      <node id="4046741574151871400" at="44,12,45,36" concept="11" />
       <node id="1897569136991171584" at="47,29,48,106" concept="4" />
       <node id="1897569136990985437" at="52,29,53,106" concept="4" />
       <node id="1897569136991029404" at="57,29,58,106" concept="4" />
@@ -113,7 +113,7 @@
       <node id="1897569136987503189" at="69,97,70,107" concept="4" />
       <node id="1897569136990081572" at="70,107,71,104" concept="4" />
       <node id="4046741574152680622" at="75,12,76,0" concept="12" />
-      <node id="4046741574152039677" at="76,0,77,33" concept="11" />
+      <node id="4046741574152039677" at="76,0,77,30" concept="11" />
       <node id="4046741574155743360" at="79,101,80,72" concept="9" />
       <node id="4046741574155550187" at="82,21,83,125" concept="10" />
       <node id="4046741574155947535" at="84,21,85,126" concept="10" />
@@ -121,7 +121,7 @@
       <node id="4046741574155949298" at="88,21,89,126" concept="10" />
       <node id="4046741574155875572" at="90,22,91,60" concept="0" />
       <node id="4046741574155964324" at="92,13,93,24" concept="10" />
-      <node id="4046741574152165998" at="95,12,96,31" concept="11" />
+      <node id="4046741574152165998" at="95,12,96,28" concept="11" />
       <node id="4046741574156064627" at="98,101,99,70" concept="9" />
       <node id="4046741574156064637" at="101,21,102,91" concept="10" />
       <node id="4046741574156064652" at="103,21,104,91" concept="10" />
@@ -199,9 +199,9 @@
       <node id="1897569136991293622" at="140,62,144,7" concept="7" />
       <node id="4046741574155377938" at="162,0,166,0" concept="2" trace="ResizeHandleMapper#(Ljetbrains/jetpad/geometry/Vector;null)V" />
       <node id="4046741574154088137" at="208,0,212,0" concept="2" trace="RectangleUpdater#(ZZ)V" />
-      <node id="1897569136988651893" at="34,42,39,12" concept="4" />
+      <node id="1897569136988651893" at="34,38,39,12" concept="4" />
       <node id="1897569136988706229" at="39,12,44,12" concept="4" />
-      <node id="1897569136991171576" at="45,40,50,12" concept="4" />
+      <node id="1897569136991171576" at="45,36,50,12" concept="4" />
       <node id="1897569136990824539" at="50,12,55,12" concept="4" />
       <node id="1897569136991029396" at="55,12,60,12" concept="4" />
       <node id="1585775323792995351" at="181,0,186,0" concept="8" trace="dragStarted#(Ljetbrains/jetpad/geometry/Vector;)V" />
@@ -224,8 +224,8 @@
       <node id="1897569136989235707" at="79,0,95,0" concept="8" trace="createMapper#(Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/mapper/Mapper;" />
       <node id="1897569136991625576" at="98,0,114,0" concept="8" trace="createMapper#(Ljetbrains/jetpad/geometry/Vector;)Ljetbrains/jetpad/mapper/Mapper;" />
       <node id="1897569136988866659" at="118,0,135,0" concept="8" trace="updateCornerResizeHandlePositions#(ZLjetbrains/jetpad/geometry/Rectangle;)V" />
-      <node id="1897569136989191667" at="77,33,95,12" concept="4" />
-      <node id="1897569136991570850" at="96,31,114,12" concept="4" />
+      <node id="1897569136989191667" at="77,30,95,12" concept="4" />
+      <node id="1897569136991570850" at="96,28,114,12" concept="4" />
       <node id="1897569136990921889" at="135,0,160,0" concept="8" trace="updateSideResizeHandlePositions#(ZZLjetbrains/jetpad/geometry/Rectangle;)V" />
       <node id="1897569136986861106" at="31,0,116,0" concept="8" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
       <node id="1897569136986852980" at="29,40,116,19" concept="4" />

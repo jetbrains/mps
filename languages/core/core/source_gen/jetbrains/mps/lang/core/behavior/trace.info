@@ -1350,7 +1350,7 @@
       <node id="7094926192234036210" at="31,0,32,0" concept="9" trace="getDescriptionText_id69Qfsw3IqwE" />
       <node id="7094926192234036210" at="33,0,34,0" concept="9" trace="BH_METHODS" />
       <node id="7094926192234040417" at="38,105,39,101" concept="6" />
-      <node id="398063826497180300" at="41,105,42,78" concept="7" />
+      <node id="398063826497180300" at="41,105,42,70" concept="7" />
       <node id="398063826497142516" at="43,79,44,131" concept="6" />
       <node id="7094926192234041460" at="45,5,46,119" concept="6" />
       <node id="7094926192234043579" at="48,112,49,119" concept="6" />
@@ -1373,7 +1373,7 @@
       <node id="7094926192234036210" at="35,0,37,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7094926192234036210" at="55,0,57,0" concept="0" trace="ISmartReferent__BehaviorDescriptor#()V" />
       <node id="7094926192234036210" at="38,0,41,0" concept="10" trace="getPresentation_id69Qfsw3IoJg#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="398063826497137225" at="42,78,45,5" concept="3" />
+      <node id="398063826497137225" at="42,70,45,5" concept="3" />
       <node id="7094926192234036210" at="48,0,51,0" concept="10" trace="getVisibleMatchingText_id69Qfsw3Ipre#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7094926192234036210" at="51,0,54,0" concept="10" trace="getDescriptionText_id69Qfsw3IqwE#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7094926192234036210" at="65,49,68,5" concept="3" />

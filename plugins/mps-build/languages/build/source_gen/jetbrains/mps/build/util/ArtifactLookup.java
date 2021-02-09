@@ -56,11 +56,11 @@ public class ArtifactLookup {
   public SNode findArtifact(Object id) {
     if (id instanceof SNode) {
       SNode node = (SNode) id;
-      // FIXME any idea what's the purpose of this code? 
+      // FIXMEanyideawhat'sthepurposeofthiscode?
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_PathElement$ei) && myArtifacts.parent(SNodeOperations.as(node, CONCEPTS.BuildLayout_PathElement$ei)) != null) {
         return SNodeOperations.cast(node, CONCEPTS.BuildLayout_PathElement$ei);
       }
-      // fall-through, just doFind() 
+      // fall-through,justdoFind()
     }
     return doFind(id);
   }

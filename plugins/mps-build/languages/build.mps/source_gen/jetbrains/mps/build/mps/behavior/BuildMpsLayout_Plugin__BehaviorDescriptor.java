@@ -67,7 +67,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     sb.append(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), null));
   }
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
-    // TODO extract! (it is a copy of Folder behavior) 
+    // TODOextract!(itisacopyofFolderbehavior)
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
     String folderLocation = parentLocation + "/" + BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.containerName$xQbG), helper.getMacroHelper());
@@ -76,7 +76,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     for (SNode ic : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.children$aMRO), CONCEPTS.BuildLayout_ImportContent$wC))) {
       SNode node = SNodeOperations.as(SLinkOperations.getTarget(ic, LINKS.target$HFO4), CONCEPTS.BuildLayout_PathElement$ei);
       if ((node != null)) {
-        // note: if node is imported directly - do not override its original location 
+        // note:ifnodeisimporteddirectly-donotoverrideitsoriginallocation
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_Node$Rb) && helper.getLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$Rb)) == null) {
           helper.putLocation(SNodeOperations.as(node, CONCEPTS.BuildLayout_Node$Rb), folderLocation);
         }
@@ -85,14 +85,14 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         }
       }
     }
-    // Next is a solution not to calculate location paths for modules exposed from this plugin at 
-    // a later step through location() call. fetchDependencies() and unpack run at a given transformation 
-    // step, while location() is queried few steps later. SNode, used as artifactId, comes from the latter step, 
-    // and this.plugin.content.first(it.exports(artifactId)) fails to match as 'this' artifact was recorded (and retrieved from DH) 
-    // with the value of the former step (e.g. plugin@2_0.location(module@4_1)) 
-    // Here we collect all modules known at this time, and record their location to avoid its calculation later at location() method. 
-    // As long as modules are not artifacts (this concept, plugin layout node is), we use dedicated DH methods to record locations. 
-    // In fact, this is the same code as location() below (if SNode branch), done at once. 
+    // Nextisasolutionnottocalculatelocationpathsformodulesexposedfromthispluginat
+    // alaterstepthroughlocation()call.fetchDependencies()andunpackrunatagiventransformation
+    // step,whilelocation()isqueriedfewstepslater.SNode,usedasartifactId,comesfromthelatterstep,
+    // andthis.plugin.content.first(it.exports(artifactId))failstomatchas'this'artifactwasrecorded(andretrievedfromDH)
+    // withthevalueoftheformerstep(e.g.plugin@2_0.location(module@4_1))
+    // Herewecollectallmodulesknownatthistime,andrecordtheirlocationtoavoiditscalculationlateratlocation()method.
+    // Aslongasmodulesarenotartifacts(thisconcept,pluginlayoutnodeis),weusededicatedDHmethodstorecordlocations.
+    // Infact,thisisthesamecodeaslocation()below(ifSNodebranch),doneatonce.
     final String baseLocation = folderLocation + "/languages/";
     for (SNode ipc : SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.plugin$9ewC), LINKS.content$9T6D)) {
       Iterable<SNode> modules = null;
@@ -113,12 +113,12 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     if (artifactId instanceof SNode) {
       SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
-        // try pre-calculated location 
+        // trypre-calculatedlocation
         String layoutRelativePath = helper.getLayoutRelativePath(__thisNode__, node);
         if ((layoutRelativePath != null && layoutRelativePath.length() > 0)) {
           return layoutRelativePath;
         }
-        // fallback to default path calculation 
+        // fallbacktodefaultpathcalculation
         final Wrappers._T<SNode> module = new Wrappers._T<SNode>(SNodeOperations.cast(node, CONCEPTS.BuildMps_AbstractModule$FZ));
         boolean isGenerator = SNodeOperations.isInstanceOf(module.value, CONCEPTS.BuildMps_Generator$RQ);
         if (isGenerator) {
@@ -130,7 +130,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
           }
         });
         if ((container != null)) {
-          // todo: seems to be rather messy 
+          // todo:seemstoberathermessy
           SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
           if ((SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null)) {
             if ((group != null) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invoke(__thisNode__)))) {
@@ -156,7 +156,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     return ((String) BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invokeSuper(__thisNode__, CONCEPTS.BuildMpsLayout_Plugin$cj, helper, artifactId));
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
-    // TODO extract! (it is a copy of Folder behavior) 
+    // TODOextract!(itisacopyofFolderbehavior)
     if (artifactId instanceof SNode) {
       final SNode node = (SNode) artifactId;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_IdeaPlugin$po)) {
@@ -248,7 +248,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static void unpackPluginModules_id6ZIjmBZXud7(@NotNull SNode __thisNode__, Iterable<SNode> modules, UnpackHelper helper, final String baseLocation, String groupSuffix) {
     for (SNode m : Sequence.fromIterable(modules)) {
       if (SNodeOperations.isInstanceOf(m, CONCEPTS.BuildMps_Generator$RQ)) {
-        // j.m.build.mps, loadMods moves generator modules out of their languages, expect them to be among group.modules 
+        // j.m.build.mps,loadModsmovesgeneratormodulesoutoftheirlanguages,expectthemtobeamonggroup.modules
         helper.putLayoutRelativePath(__thisNode__, m, baseLocation + groupSuffix + SPropertyOperations.getString(BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(SNodeOperations.cast(m, CONCEPTS.BuildMps_Generator$RQ)), PROPS.name$MnvL) + "-generator.jar");
       } else {
         helper.putLayoutRelativePath(__thisNode__, m, baseLocation + groupSuffix + SPropertyOperations.getString(m, PROPS.name$MnvL) + ".jar");

@@ -34,7 +34,7 @@ public interface IAttributeDescriptor {
     return false;
   }
   default void update(@NotNull SNode attribute) {
-    // no-op 
+    // no-op
   }
   default SNode setNew(@Nullable SNode recipient) {
     return null;
@@ -80,7 +80,7 @@ public interface IAttributeDescriptor {
     }
 
     protected final SAbstractConcept attrConcept() {
-      // myAttributeConcept == null only for AllAttributes qualifier, in which case it used to be qualifier.getTargetConcept() == node/Attribute/ 
+      // myAttributeConcept==nullonlyforAllAttributesqualifier,inwhichcaseitusedtobequalifier.getTargetConcept()==node/Attribute/
       return (myAttributeConcept != null ? myAttributeConcept : CONCEPTS.Attribute$g1);
     }
     @Override
@@ -117,7 +117,7 @@ public interface IAttributeDescriptor {
         SNode attr = Sequence.fromIterable(list).first();
         if (Sequence.fromIterable(list).count() > 1) {
           String f = "%d nodes match single value attribute during attribute replacing. Only the first found node replaced.\n node=%s; attribute concept=%s(%s)";
-          // log error from logging language doesn't handle statements in a class that is not top-level (can't weave LOG field)) 
+          // logerrorfromlogginglanguagedoesn'thandlestatementsinaclassthatisnottop-level(can'tweaveLOGfield))
           Logger.getLogger(getClass()).error(String.format(f, Sequence.fromIterable(list).count(), recipient.getReference(), SNodeOperations.getConcept(attr).getName(), attr.getNodeId()));
         }
         SNodeOperations.replaceWithAnother(attr, attrValue);
@@ -135,7 +135,7 @@ public interface IAttributeDescriptor {
     }
 
     private SNode doAdd(SNode recipient, SNode attrValue) {
-      // assume attrValue != null 
+      // assumeattrValue!=null
       ListSequence.fromList(SLinkOperations.getChildren(recipient, LINKS.smodelAttribute$KJ43)).addElement(attrValue);
       update(attrValue);
       return attrValue;

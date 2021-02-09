@@ -46,7 +46,7 @@ import org.junit.runner.Description;
 
   @Override
   public Iterable<Request> gatherTests() throws Exception {
-    // XXX likely, need better control over context repository to load test modules from 
+    // XXXlikely,needbettercontrolovercontextrepositorytoloadtestmodulesfrom
     final SRepository repo = myEnv.getPlatform().findComponent(MPSModuleRepository.class);
     return new ModelAccessHelper(repo).runReadAction(new Computable<ArrayList<Request>>() {
       public ArrayList<Request> compute() {

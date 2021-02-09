@@ -42,8 +42,8 @@ public class BootstrapLanguages {
     return PersistenceFacade.getInstance().createModuleReference("fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)");
   }
   public static SModuleReference getGeneratorTemplatesDevKit() {
-    // unless we introduce anything like SLanguage for DevKit runtime, SModuleReference is the way 
-    // we identify devkit at RT. 
+    // unlessweintroduceanythinglikeSLanguageforDevKitruntime,SModuleReferenceistheway
+    // weidentifydevkitatRT.
     return PersistenceFacade.getInstance().createModuleReference("a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)");
   }
   public static SModuleReference getStructureAspectDevKit() {

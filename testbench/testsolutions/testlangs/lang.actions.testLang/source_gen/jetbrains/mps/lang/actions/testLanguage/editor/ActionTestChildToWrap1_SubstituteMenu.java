@@ -159,7 +159,7 @@ public class ActionTestChildToWrap1_SubstituteMenu extends SubstituteMenuBase {
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          // selecting a custom cell 
+          // selectingacustomcell
           _context.getEditorContext().flushEvents();
           EditorCell createdNodeCell = _context.getEditorContext().getEditorComponent().findNodeCell(createdNode);
           if (createdNodeCell != null) {

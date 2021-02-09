@@ -154,8 +154,8 @@ public final class CopyPasteUtil {
         newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, newTargetNode);
       } else {
         if (oldTargetNode != null) {
-          // model can be null in case it's generation process and the target node was removed due to in-place transformation 
-          //  see MPS-24188, this may be fixed when MPS-23902 is fixed 
+          // modelcanbenullincaseit'sgenerationprocessandthetargetnodewasremovedduetoin-placetransformation
+          // seeMPS-24188,thismaybefixedwhenMPS-23902isfixed
           SModel model = oldTargetNode.getModel();
           newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, (model == null ? null : model.getReference()), oldTargetNode.getNodeId());
         } else
@@ -173,20 +173,20 @@ public final class CopyPasteUtil {
     for (SReference sourceReference : allReferences) {
       SNode oldSourceNode = sourceReference.getSourceNode();
       SNode newSourceNode = sourceNodesToNewNodes.get(oldSourceNode);
-      // XXX sourceReference.getTargetNodeReference would suffice, with a bit of refactoring 
+      // XXXsourceReference.getTargetNodeReferencewouldsuffice,withabitofrefactoring
       SNode oldTargetNode = sourceReference.getTargetNode();
       SNode newTargetNode = sourceNodesToNewNodes.get(oldTargetNode);
       SReference newReference;
       if (newTargetNode != null) {
         newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, newTargetNode);
       } else {
-        // XXX special hack for BL, oh, really? 
+        // XXXspecialhackforBL,oh,really?
         if ((SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.ClassifierType$bL)) && oldTargetNode != null) {
           newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, oldTargetNode);
         } else {
-          // XXX the code below is quite suspicious and deserves a refactoring. It seems the point here is to keep resolveInfo of original link, otherwise 
-          // SReference.create(newSource, oldTarget) would suffice. Is it our true intention, and is it the smart way to do? If it's common scenario, 
-          // why don't we expose it as a distinct #create factory method? 
+          // XXXthecodebelowisquitesuspiciousanddeservesarefactoring.ItseemsthepointhereistokeepresolveInfooforiginallink,otherwise
+          // SReference.create(newSource,oldTarget)wouldsuffice.Isitourtrueintention,andisitthesmartwaytodo?Ifit'scommonscenario,
+          // whydon'tweexposeitasadistinct#createfactorymethod?
           String resolveInfo = (oldTargetNode == null ? ((jetbrains.mps.smodel.SReference) sourceReference).getResolveInfo() : oldTargetNode.getName());
           if (resolveInfo != null) {
             if (oldTargetNode != null) {
@@ -318,19 +318,19 @@ public final class CopyPasteUtil {
         final LanguageRegistry langReg = mpsProject.getComponent(LanguageRegistry.class);
         List<SModelReference> allImportedModels = new ArrayList<SModelReference>();
         ModelDependencyResolver mdr = new ModelDependencyResolver(langReg, mpsProject.getRepository());
-        //  XXX in fact, neither old allImportedModels nor MDR give us implicit imports, while one in necessaryImports may actually be imported already as implicit 
-        // need better way to deal with implicit imports. 
+        // XXXinfact,neitheroldallImportedModelsnorMDRgiveusimplicitimports,whileoneinnecessaryImportsmayactuallybeimportedalreadyasimplicit
+        // needbetterwaytodealwithimplicitimports.
         for (SModel sm : mdr.directImports(targetModel)) {
-          // XXX could just add ModelImports.getImportedModels directly, no point in resolving them to SModel. 
-          //    however, this mimics what SModelOperations.allImportedModels used to do for years. 
+          // XXXcouldjustaddModelImports.getImportedModelsdirectly,nopointinresolvingthemtoSModel.
+          // however,thismimicswhatSModelOperations.allImportedModelsusedtodoforyears.
           allImportedModels.add(sm.getReference());
         }
-        // these are not aforementioned  'implicit=true' imports, just accessory models coming from used languages 
+        // thesearenotaforementioned'implicit=true'imports,justaccessorymodelscomingfromusedlanguages
         for (SModel sm : mdr.implicitImports(targetModel)) {
           allImportedModels.add(sm.getReference());
         }
 
-        // MDR doesn't include target model as its own import; denote imports to self are not necessary 
+        // MDRdoesn'tincludetargetmodelasitsownimport;denoteimportstoselfarenotnecessary
         allImportedModels.add(targetModel.getReference());
         for (SModelReference modelReference : necessaryImports) {
           assert modelReference != null;
@@ -362,9 +362,9 @@ public final class CopyPasteUtil {
   }
   @Nullable
   public static Runnable addImportsWithDialog(PasteNodeData pasteNodeData, SModel targetModel, Project mpsProject) {
-    // shows dialog if necessary and pasted nodes were taken not from the same model 
+    // showsdialogifnecessaryandpastednodesweretakennotfromthesamemodel
     SModelReference oldModel = pasteNodeData.getSourceModel();
-    // no dialog if copying from the same model 
+    // nodialogifcopyingfromthesamemodel
     if (oldModel != null && targetModel.getReference().equals(oldModel)) {
       return null;
     }
@@ -379,14 +379,14 @@ public final class CopyPasteUtil {
     return new Runnable() {
       @Override
       public void run() {
-        //  model properties 
+        // modelproperties
         for (SModelReference imported : requiredImports) {
           ((SModelInternal) targetModel).addModelImport(imported);
         }
         for (SLanguage language : requiredLanguages) {
           ((SModelInternal) targetModel).addLanguage(language);
         }
-        //  model's module properties 
+        // model'smoduleproperties
         SModule targetModule = targetModel.getModule();
         if (targetModule == null) {
           return;
@@ -408,9 +408,9 @@ public final class CopyPasteUtil {
     };
   }
   public static boolean isStringOnTopOfClipboard() {
-    // This method was created in accordance with TextPasteUtil.hasStringInClipboard()/.getStringFromClipboard() 
-    // methods we should consider reimplementing these methods in order to iterrate over .getAllContents() collection 
-    // in case first available Transferable does not support neither stringFlavor nor sNode one. 
+    // ThismethodwascreatedinaccordancewithTextPasteUtil.hasStringInClipboard()/.getStringFromClipboard()
+    // methodsweshouldconsiderreimplementingthesemethodsinordertoiterrateover.getAllContents()collection
+    // incasefirstavailableTransferabledoesnotsupportneitherstringFlavornorsNodeone.
     for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
       if (trf != null) {
         for (DataFlavor nextFlavor : trf.getTransferDataFlavors()) {

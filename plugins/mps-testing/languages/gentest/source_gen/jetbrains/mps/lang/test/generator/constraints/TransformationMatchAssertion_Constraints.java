@@ -40,13 +40,13 @@ public class TransformationMatchAssertion_Constraints extends BaseConstraintsDes
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // this assertion is allowed to reference arguments that point to model only. 
+    // thisassertionisallowedtoreferenceargumentsthatpointtomodelonly.
     if (childNode != null && SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ArgumentReference$U$)) {
       if (link.equals(LINKS.inputModel$ip$P) || link.equals(LINKS.referenceModel$iq2R) || link.equals(LINKS.transformationPlan$iqJU)) {
         SNode arg = SLinkOperations.getTarget(SNodeOperations.as(childNode, CONCEPTS.ArgumentReference$U$), LINKS.arg$ikdq);
         return (arg == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(arg)), CONCEPTS.ModelArgument$2Y);
       }
-      // fall through 
+      // fallthrough
     }
     return true;
   }

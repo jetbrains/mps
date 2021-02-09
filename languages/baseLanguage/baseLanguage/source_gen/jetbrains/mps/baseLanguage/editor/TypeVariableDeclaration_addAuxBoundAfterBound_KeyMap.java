@@ -52,14 +52,14 @@ public class TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap extends KeyMap
         return false;
       }
 
-      // Selected node should be within TypeVariableDeclaration 
+      // SelectednodeshouldbewithinTypeVariableDeclaration
       SNode selectedNode = ListSequence.fromList(selectedNodes).first();
       SNode typeVarDeclaration = SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.TypeVariableDeclaration$4Y, true, false);
       if (typeVarDeclaration == null) {
         return false;
       }
 
-      // Next cell should belong to some other SNode, not our typeVarDeclaration 
+      // NextcellshouldbelongtosomeotherSNode,notourtypeVarDeclaration
       EditorCell selectedCell = editorContext.getSelectedCell();
       EditorCell nextLeaf = CellTraversalUtil.getNextLeaf(selectedCell);
       if (nextLeaf == null) {

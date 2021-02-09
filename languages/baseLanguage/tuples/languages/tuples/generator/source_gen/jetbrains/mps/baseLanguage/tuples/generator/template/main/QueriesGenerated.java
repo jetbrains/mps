@@ -233,8 +233,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return "_" + (SNodeOperations.getIndexInParent(_context.getNode()) + ((Integer) _context.getVariable("var:componentsInSuper")));
   }
   public static Object propertyMacro_GetValue_4_12(final PropertyMacroContext _context) {
-    // XXX may introduce another switch into RuntimeNodePointers to pick proper set method and use regular method call and reference macro, 
-    // but even this is much better than it was 
+    // XXXmayintroduceanotherswitchintoRuntimeNodePointerstopickpropersetmethodanduseregularmethodcallandreferencemacro,
+    // buteventhisismuchbetterthanitwas
     return "_" + (Integer) _context.getVariable("loop:index");
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
@@ -250,7 +250,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return RuntimeNodePointers.tupleImplFromMethod(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.component$uznI)).count());
   }
   public static Object referenceMacro_GetReferent_0_4(final ReferenceMacroContext _context) {
-    // alternatively, could restore vardecl context node with MAP_SRC and rely on generator to restore reference. Would need a VAR to keep node, anyway. 
+    // alternatively,couldrestorevardeclcontextnodewithMAP_SRCandrelyongeneratortorestorereference.WouldneedaVARtokeepnode,anyway.
     return ((String) _context.getVariable("var:tmpVar"));
   }
   public static Object referenceMacro_GetReferent_0_5(final ReferenceMacroContext _context) {

@@ -100,7 +100,7 @@ public class TextGen_Facet extends IFacet.Stub {
           final Iterable<IResource> input = (Iterable) (Iterable) rawInput;
           switch (0) {
             case 0:
-              // no-op now 
+              // no-opnow
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_21gswx_a0a);
@@ -183,7 +183,7 @@ public class TextGen_Facet extends IFacet.Stub {
                   continue;
                 }
                 // 
-                // collect changes in a module-wide context 
+                // collectchangesinamodule-widecontext
                 ModuleStaleFileManager sfm = moduleStaleFilesMap.get(resource.module());
                 if (sfm == null) {
                   sfm = new ModuleStaleFileManager(resource.module(), Target_make.vars(pa.global()).pathToFile(), genDepsCache, messageHandler);
@@ -194,8 +194,8 @@ public class TextGen_Facet extends IFacet.Stub {
                     }
                   }));
                 }
-                // Perhaps, shall check res.status.isError(), however not sure if there 
-                // couldn't be an output model with error state, and we'd like to see erroneous text to localize error 
+                // Perhaps,shallcheckres.status.isError(),howevernotsureifthere
+                // couldn'tbeanoutputmodelwitherrorstate,andwe'dliketoseeerroneoustexttolocalizeerror
                 if (!(sfm.hasGenerationTarget(resource.model()))) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("no output location for " + resource.model().getName())));
                   continue;
@@ -206,8 +206,8 @@ public class TextGen_Facet extends IFacet.Stub {
                   sfm.collectGeneratedFiles(resource.model());
                 }
 
-                // need exact number of textgen tasks I'm going to schedule as it's the counter for the poll() loop, and we might get into trouble if 
-                // number of scheduled models doesn't match that we expect to poll. 
+                // needexactnumberoftextgentasksI'mgoingtoscheduleasit'sthecounterforthepoll()loop,andwemightgetintotroubleif
+                // numberofscheduledmodelsdoesn'tmatchthatweexpecttopoll.
                 modelsCount += outputModels.size();
                 ListSequence.fromList(resourcesWithOutput).addElement(resource);
               }
@@ -215,12 +215,12 @@ public class TextGen_Facet extends IFacet.Stub {
               final TextGeneratorEngine tgEngine = new TextGeneratorEngine(messageHandler);
 
               if (modelsCount == 0) {
-                // jftr, ArrayBlockingQueue doesn't tolerate 0 size 
+                // jftr,ArrayBlockingQueuedoesn'ttolerate0size
                 monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf("No models to generate text from")));
                 return new IResult.SUCCESS(_output_21gswx_a0b);
               }
 
-              // configure 
+              // configure
               final boolean _generateDebugInfo = vars(pa.global()).generateDebugInfo() == null || vars(pa.global()).generateDebugInfo();
 
               final ProgressMonitor subProgress_q0a0b = progressMonitor.subTask(1000);
@@ -229,15 +229,15 @@ public class TextGen_Facet extends IFacet.Stub {
               try {
                 final ArrayBlockingQueue<TextGenResult> resultQueue = new ArrayBlockingQueue<TextGenResult>(modelsCount);
                 final Map<SModel, GResource> textGenInput2Resource = new HashMap<SModel, GResource>(modelsCount * 2);
-                // We queue all models first, prior to poll(), and though ArrayBlockingQueue won't allow more than specified number of result elements, I don't care much. 
-                // If I hit the limit and resultQueue is blocked, scheduled textgen tasks would get parked with tgEngine's executor service and proceed once we get to poll(). 
-                // Nevertheless, the fact I did my best to get modelsCount right makes me feel I'd never face this scenario. 
+                // Wequeueallmodelsfirst,priortopoll(),andthoughArrayBlockingQueuewon'tallowmorethanspecifiednumberofresultelements,Idon'tcaremuch.
+                // IfIhitthelimitandresultQueueisblocked,scheduledtextgentaskswouldgetparkedwithtgEngine'sexecutorserviceandproceedoncewegettopoll().
+                // Nevertheless,thefactIdidmybesttogetmodelsCountrightmakesmefeelI'dneverfacethisscenario.
                 mpsProject.getModelAccess().runReadAction(new Runnable() {
                   public void run() {
                     for (GResource res : ListSequence.fromList(resourcesWithOutput)) {
                       for (SModel model2generate : CollectionSequence.fromCollection(res.status().getOutputModels())) {
                         textGenInput2Resource.put(model2generate, res);
-                        // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too. 
+                        // FIXMEstatus.getOutputRepositoryistheonetolockforbreakDownToUnits(downinschedule()call),and,perhaps,fortheouterrunReadActionhere,too.
                         tgEngine.schedule(model2generate, resultQueue);
                       }
                     }
@@ -247,14 +247,14 @@ public class TextGen_Facet extends IFacet.Stub {
                 subProgress_q0a0b.advance(3);
 
                 final Map<GResource, ResourceDeltaCollector> deltas2 = new HashMap<GResource, ResourceDeltaCollector>();
-                // there's no really any use of the cached bl dependencies, provided each model from the set of resources is generated once and the cache is only populated, not read. 
-                // however, it's better than global singleton, and, perhaps, some day we could pass it further to make to use readily available bl dependencies in ModuleMaker, so that it 
-                // doesn't need to read these 'dependencies' files again with its Dependencies class. 
+                // there'snoreallyanyuseofthecachedbldependencies,providedeachmodelfromthesetofresourcesisgeneratedonceandthecacheisonlypopulated,notread.
+                // however,it'sbetterthanglobalsingleton,and,perhaps,somedaywecouldpassitfurthertomaketousereadilyavailablebldependenciesinModuleMaker,sothatit
+                // doesn'tneedtoreadthese'dependencies'filesagainwithitsDependenciesclass.
                 final BLDependenciesCache blDepsCache = new BLDependenciesCache();
-                // same as above applies to cache of trace.info 
+                // sameasaboveappliestocacheoftrace.info
                 final TraceInfoCache traceInfoCache = new TraceInfoCache();
-                // we don't care about cached values of 'generated', but we need a way to read values, if any (e.g. StaleFilesCollector), 
-                // and the cache instance doesn't hurt 
+                // wedon'tcareaboutcachedvaluesof'generated',butweneedawaytoreadvalues,ifany(e.g.StaleFilesCollector),
+                // andthecacheinstancedoesn'thurt
                 while (modelsCount-- > 0) {
                   final TextGenResult tgr = resultQueue.poll(3, TimeUnit.MINUTES);
 
@@ -277,7 +277,7 @@ public class TextGen_Facet extends IFacet.Stub {
 
                   SRepository outputModelRepo = inputResource.status().getOutputRepository();
                   if (outputModelRepo == null) {
-                    // just in case, generally shall never happen, provided we generate models from a repository 
+                    // justincase,generallyshallneverhappen,providedwegeneratemodelsfromarepository
                     outputModelRepo = mpsProject.getRepository();
                   }
 
@@ -285,23 +285,23 @@ public class TextGen_Facet extends IFacet.Stub {
                     public void run() {
                       ResourceDeltaCollector rdm = MapSequence.fromMap(deltas2).get(inputResource);
                       if (rdm == null) {
-                        // there could be few output model per same input resource, and as long as we need to report delta per input resource (TResource), 
-                        // collect deltas for all output models with a help of RDC instance cached against input resource 
+                        // therecouldbefewoutputmodelpersameinputresource,andaslongasweneedtoreportdeltaperinputresource(TResource),
+                        // collectdeltasforalloutputmodelswithahelpofRDCinstancecachedagainstinputresource
                         rdm = new ResourceDeltaCollector();
                         MapSequence.fromMap(deltas2).put(inputResource, rdm);
                       }
                       ModuleStaleFileManager staleFilesManager = moduleStaleFilesMap.get(inputResource.module());
                       assert staleFilesManager != null;
 
-                      // we'd like to report delta per (module, model) pair (DResource is not sufficient, there are TResource clients) 
-                      // And I don't want to report complete module delta for each model just not to face any trouble with delta merge. 
-                      // Therefore, I don't use staleFilesManager.completeDelta, but report (module, model) deltas here with ResourceDeltaCollector 
-                      // and separately report module-wide delta with staleFilesManager.getModuleWideDelta. 
-                      // However, would like to get this fixed (get rid of TResource use and report single combined delta per module) 
+                      // we'dliketoreportdeltaper(module,model)pair(DResourceisnotsufficient,thereareTResourceclients)
+                      // AndIdon'twanttoreportcompletemoduledeltaforeachmodeljustnottofaceanytroublewithdeltamerge.
+                      // Therefore,Idon'tusestaleFilesManager.completeDelta,butreport(module,model)deltasherewithResourceDeltaCollector
+                      // andseparatelyreportmodule-widedeltawithstaleFilesManager.getModuleWideDelta.
+                      // However,wouldliketogetthisfixed(getridofTResourceuseandreportsinglecombineddeltapermodule)
                       FileDeltaCollector javaSourcesLoc = staleFilesManager.getPrimaryStreamHandler(inputResource.model());
                       FileDeltaCollector cachesLocation = staleFilesManager.getCacheStreamHandler(inputResource.model());
                       // 
-                      // Serialize outcome 
+                      // Serializeoutcome
                       GenerationDependencies genDeps = inputResource.status().getDependencies();
                       HashSet<String> seenFileNames = new HashSet<String>();
                       for (TextUnit tu : tgr.getUnits()) {
@@ -313,7 +313,7 @@ public class TextGen_Facet extends IFacet.Stub {
                         }
                         if (tgState == TextUnit.Status.Failed) {
                           monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(String.format("Text outcome for %s has been generated with errors", tu.getFileName()))));
-                          // fall through 
+                          // fallthrough
                         }
                         if (tu.getFilePath() == null) {
                           if (!(seenFileNames.add(tu.getFileName()))) {
@@ -327,7 +327,7 @@ public class TextGen_Facet extends IFacet.Stub {
                         }
                       }
                       // 
-                      // Update caches and auxiliary artifacts 
+                      // Updatecachesandauxiliaryartifacts
                       CacheGenLayout cgl = new CacheGenLayout(messageHandler);
                       cgl.register(cachesLocation, blDepsCache.newCacheGenerator(new BLDependenciesBuilder().build(tgr)));
                       cgl.register(cachesLocation, genDepsCache.getGenerator());
@@ -339,8 +339,8 @@ public class TextGen_Facet extends IFacet.Stub {
                       if (status.isError()) {
                         monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(status.getMessage())));
                       }
-                      // collect delta for (module, model) pair to get dispatched as TResource later (staleFilesManager could do it with DResource only) 
-                      // FIXME check if I can dispatch TResource without a model, if clients could tolerate that. If yes, get rid of ResourceDeltaCollector and report delta from ModuleStaleFileManager 
+                      // collectdeltafor(module,model)pairtogetdispatchedasTResourcelater(staleFilesManagercoulddoitwithDResourceonly)
+                      // FIXMEcheckifIcandispatchTResourcewithoutamodel,ifclientscouldtoleratethat.Ifyes,getridofResourceDeltaCollectorandreportdeltafromModuleStaleFileManager
                       rdm.addDelta(javaSourcesLoc.getDelta());
                       rdm.addDelta(cachesLocation.getDelta());
                     }
@@ -348,12 +348,12 @@ public class TextGen_Facet extends IFacet.Stub {
                 }
                 List<IDelta> moduleWideStaleFiles = ListSequence.fromList(new ArrayList<IDelta>());
                 for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
-                  // Though we no longer walk FS when completing the delta, let it do the job prior to flushing anything to disk not to get confused with new files just in case. 
+                  // ThoughwenolongerwalkFSwhencompletingthedelta,letitdothejobpriortoflushinganythingtodisknottogetconfusedwithnewfilesjustincase.
                   ListSequence.fromList(moduleWideStaleFiles).addSequence(ListSequence.fromList(sfm.getModuleWideDelta()));
                 }
                 _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(moduleWideStaleFiles))));
 
-                // flush stream handlers 
+                // flushstreamhandlers
                 if (!(FileSystem.getInstance().runWriteTransaction(new Runnable() {
                   public void run() {
                     for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
@@ -364,7 +364,7 @@ public class TextGen_Facet extends IFacet.Stub {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to save files")));
                   return new IResult.FAILURE(_output_21gswx_a0b);
                 }
-                // notify that status for models we've been generating could have changed 
+                // notifythatstatusformodelswe'vebeengeneratingcouldhavechanged
                 ModelGenerationStatusManager genStatusManager = monitor.getSession().getProject().getComponent(ModelGenerationStatusManager.class);
                 genStatusManager.invalidateData(Sequence.fromIterable(input).select(new ISelector<GResource, SModel>() {
                   public SModel select(GResource it) {
@@ -372,7 +372,7 @@ public class TextGen_Facet extends IFacet.Stub {
                   }
                 }));
 
-                // output result 
+                // outputresult
                 for (GResource resource : SetSequence.fromSet(MapSequence.fromMap(deltas2).keySet())) {
                   _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new TResource(MapSequence.fromMap(deltas2).get(resource).getDelta(), resource.module(), resource.model()))));
                 }
@@ -380,7 +380,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("TextGen interrupted")));
                 return new IResult.FAILURE(_output_21gswx_a0b);
               } catch (Exception ex) {
-                // FIXME need an expression in ReportFeedbackStatement that would take Throwable and pass it to IFeedback 
+                // FIXMEneedanexpressioninReportFeedbackStatementthatwouldtakeThrowableandpassittoIFeedback
                 ex.printStackTrace();
                 monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Exception during TextGen:" + ex.toString())));
                 return new IResult.FAILURE(_output_21gswx_a0b);
@@ -479,9 +479,9 @@ public class TextGen_Facet extends IFacet.Stub {
                 for (GResource resource : Sequence.fromIterable(input)) {
                   Collection<SModel> outputModels = resource.status().getOutputModels();
                   if (outputModels.isEmpty()) {
-                    // used to be a 'failure', with text generation result collected so far. 
-                    // Now, 'failure' here would yield empty result, always. 
-                    // It looks like 'best effort' (generate all possible) is reasonable alternative. 
+                    // usedtobea'failure',withtextgenerationresultcollectedsofar.
+                    // Now,'failure'herewouldyieldemptyresult,always.
+                    // Itlookslike'besteffort'(generateallpossible)isreasonablealternative.
                     monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(String.format("No transformed output models for %s", resource.status().getInputModel().getName()))));
                   } else {
                     modelsCount += outputModels.size();
@@ -508,7 +508,7 @@ public class TextGen_Facet extends IFacet.Stub {
                   _output_21gswx_a0c = Sequence.fromIterable(_output_21gswx_a0c).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new TextGenOutcomeResource(tgr.getModel(), tgr.getModel().getModule(), tgr))));
                 }
               } catch (InterruptedException ex) {
-                // fine, no more text generation 
+                // fine,nomoretextgeneration
                 monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("TextGen interrupted")));
               } finally {
                 tgEngine.shutdown();

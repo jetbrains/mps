@@ -65,42 +65,42 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$vDHE) != null) {
-      // operation has been preprocessed by mapping script in TLBase 
+      // operationhasbeenpreprocessedbymappingscriptinTLBase
       return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$vDHE);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.label$V_zA), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$BJ1m) != null) {
-      // operation has been preprocessed by mapping script in TLBase 
+      // operationhasbeenpreprocessedbymappingscriptinTLBase
       return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$BJ1m);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.label$VAL6), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$BJ1m) != null) {
-      // operation has been preprocessed by mapping script in TLBase 
+      // operationhasbeenpreprocessedbymappingscriptinTLBase
       return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$BJ1m);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.label$VAL6), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_0_3(final PropertyMacroContext _context) {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$hCX6) != null) {
-      // operation has been preprocessed by mapping script in TLBase 
+      // operationhasbeenpreprocessedbymappingscriptinTLBase
       return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$hCX6);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.label$hDc7), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_0_4(final PropertyMacroContext _context) {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$ChaR) != null) {
-      // operation has been preprocessed by mapping script in TLBase 
+      // operationhasbeenpreprocessedbymappingscriptinTLBase
       return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$ChaR);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.label$Vr1N), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_0_5(final PropertyMacroContext _context) {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$hhCa) != null) {
-      // operation has been preprocessed by mapping script in TLBase 
+      // operationhasbeenpreprocessedbymappingscriptinTLBase
       return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$hhCa);
     }
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.label$hgG6), PROPS.name$MnvL);
@@ -133,7 +133,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.labelName_intern$O_xc);
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
-    // method parameter 
+    // methodparameter
     return "_context";
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
@@ -155,7 +155,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.referenceNode$sMJ3) != null;
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    // delegate reduction to operation 
+    // delegatereductiontooperation
     return SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
@@ -225,7 +225,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(_context.getNode()), LINKS.operand$w6IR);
   }
   public static SNode sourceNodeQuery_0_23(final SourceSubstituteMacroNodeContext _context) {
-    // there's TypeHintAttribute that provides proper type of original DotExpression 
+    // there'sTypeHintAttributethatprovidespropertypeoforiginalDotExpression
     return ClassifierTypeUtil.getTypeCoercedToClassifierType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(_context.getNode())));
   }
   public static SNode sourceNodeQuery_0_24(final SourceSubstituteMacroNodeContext _context) {
@@ -304,7 +304,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.messageText$jgLE);
   }
   public static SNode sourceNodeQuery_0_49(final SourceSubstituteMacroNodeContext _context) {
-    // delegate reduction to operation 
+    // delegatereductiontooperation
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.lValue$splI), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E);
   }
   public static SNode sourceNodeQuery_0_50(final SourceSubstituteMacroNodeContext _context) {

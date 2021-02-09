@@ -47,7 +47,7 @@ public class BaseProjectsTest {
         if (!(file.isValid()) || !(file.isDirectory())) {
           return true;
         }
-        // is a project dir? 
+        // isaprojectdir?
         if (!(file.getName().equals(com.intellij.openapi.project.Project.DIRECTORY_STORE_FOLDER))) {
           return true;
         }

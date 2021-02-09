@@ -67,7 +67,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_139_0(new PropertyMacroContext(context3, "1", propertyMacro_rc46g0_c0a2a0a1a1a5a3a1a2a6)));
               tnode3.addChild(myAggregationLinks[0], tnode4);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist5 = Collections.emptyList();
@@ -83,7 +83,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               for (SNode child8 : TemplateUtil.asNotNull(tlist5)) {
                 tnode3.addChild(myAggregationLinks[1], child8);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tlist2.add(tnode3);
@@ -91,7 +91,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
         for (SNode child9 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[2], child9);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
@@ -116,19 +116,19 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                     final SNode tnode14 = environment.createOutputNode(myConcepts[7]);
                     SNodeAccessUtil.setPropertyValue(tnode14, myProperties[3], QueriesGenerated.propertyMacro_GetValue_139_1(new PropertyMacroContext(context7, "0L", propertyMacro_rc46g0_c0a2a0a1a3a4a3a1a1a1a2a2a6)));
                     tnode13.addChild(myAggregationLinks[3], tnode14);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode15 = environment.createOutputNode(myConcepts[7]);
                     SNodeAccessUtil.setPropertyValue(tnode15, myProperties[3], QueriesGenerated.propertyMacro_GetValue_139_2(new PropertyMacroContext(context7, "0L", propertyMacro_rc46g0_c0a2a0a1a4a4a3a1a1a1a2a2a6)));
                     tnode13.addChild(myAggregationLinks[3], tnode15);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode16 = environment.createOutputNode(myConcepts[7]);
                     SNodeAccessUtil.setPropertyValue(tnode16, myProperties[3], QueriesGenerated.propertyMacro_GetValue_139_3(new PropertyMacroContext(context7, "0L", propertyMacro_rc46g0_c0a2a0a1a5a4a3a1a1a1a2a2a6)));
                     tnode13.addChild(myAggregationLinks[3], tnode16);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final List<SNode> tlist17 = new ArrayList<SNode>();
@@ -145,18 +145,18 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                     for (SNode child19 : TemplateUtil.asNotNull(tlist17)) {
                       tnode13.addChild(myAggregationLinks[3], child19);
                     }
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist12 = TemplateUtil.singletonList(tnode13);
                 for (SNode child20 : TemplateUtil.asNotNull(tlist12)) {
                   tnode11.addChild(myAggregationLinks[4], child20);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode10.addChild(myAggregationLinks[5], tnode11);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode21 = environment.createOutputNode(myConcepts[8]);
@@ -170,15 +170,15 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                 for (SNode child23 : TemplateUtil.asNotNull(tlist22)) {
                   tnode21.addChild(myAggregationLinks[3], child23);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode10.addChild(myAggregationLinks[6], tnode21);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[7], tnode10);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist24 = Collections.emptyList();
@@ -223,7 +223,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                           for (SNode child33 : TemplateUtil.asNotNull(tlist31)) {
                             tnode30.addChild(myAggregationLinks[8], child33);
                           }
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                         {
                           Collection<SNode> tlist34 = null;
@@ -232,11 +232,11 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                           for (SNode child35 : TemplateUtil.asNotNull(tlist34)) {
                             tnode30.addChild(myAggregationLinks[9], child35);
                           }
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                       }
                       tnode29.addChild(myAggregationLinks[10], tnode30);
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tlist28 = TemplateUtil.singletonList(tnode29);
@@ -244,7 +244,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                 for (SNode child36 : TemplateUtil.asNotNull(tlist28)) {
                   tnode27.addChild(myAggregationLinks[11], child36);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 Collection<SNode> tlist37 = Collections.emptyList();
@@ -265,7 +265,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                             }
                           });
                           tnode39.addChild(myAggregationLinks[9], tnode40);
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                         {
                           Collection<SNode> tlist41 = null;
@@ -287,11 +287,11 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                           for (SNode child43 : TemplateUtil.asNotNull(tlist41)) {
                             tnode39.addChild(myAggregationLinks[8], child43);
                           }
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                       }
                       tnode38.addChild(myAggregationLinks[10], tnode39);
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tlist37 = TemplateUtil.singletonList(tnode38);
@@ -299,7 +299,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                 for (SNode child44 : TemplateUtil.asNotNull(tlist37)) {
                   tnode27.addChild(myAggregationLinks[11], child44);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 Collection<SNode> tlist45 = Collections.emptyList();
@@ -327,7 +327,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                       for (SNode child49 : TemplateUtil.asNotNull(tlist47)) {
                         tnode46.addChild(myAggregationLinks[12], child49);
                       }
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tlist45 = TemplateUtil.singletonList(tnode46);
@@ -335,7 +335,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                 for (SNode child50 : TemplateUtil.asNotNull(tlist45)) {
                   tnode27.addChild(myAggregationLinks[11], child50);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist25 = TemplateUtil.singletonList(tnode27);
@@ -345,7 +345,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
         for (SNode child51 : TemplateUtil.asNotNull(tlist24)) {
           tnode1.addChild(myAggregationLinks[13], child51);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(11, tnode1);

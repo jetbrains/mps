@@ -29,10 +29,10 @@ public class typeof_ConceptFunctionParameter_sourceNode_InferenceRule extends Ab
     SNode functionParent = SNodeOperations.getParent(function);
     SNode link;
     if (SNodeOperations.isInstanceOf(functionParent, CONCEPTS.CellMenuPart_Abstract$Fh)) {
-      // we are in inline cell menu 
+      // weareininlinecellmenu
       link = CellMenuPart_Abstract__BehaviorDescriptor.getEditedLink_idhJEvotS.invoke((SNodeOperations.as(functionParent, CONCEPTS.CellMenuPart_Abstract$Fh)));
     } else {
-      // we are in 'ref. presentation' cell 
+      // wearein'ref.presentation'cell
       link = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(functionParent, CONCEPTS.CellModel_RefCell$7g, false, false), LINKS.relationDeclaration$E2hc);
     }
     {

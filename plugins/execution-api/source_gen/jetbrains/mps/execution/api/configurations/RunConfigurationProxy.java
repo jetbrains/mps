@@ -66,30 +66,30 @@ import jetbrains.mps.execution.api.settings.SettingsEditorEx;
 
   @Override
   public void readExternal(@NotNull Element element) {
-    // both IPersistentConfiguration and superclass 
+    // bothIPersistentConfigurationandsuperclass
   }
 
   @Override
   public void writeExternal(Element element) {
-    // both IPersistentConfiguration and superclass 
+    // bothIPersistentConfigurationandsuperclass
   }
 
   @Override
   public void checkConfiguration(PersistentConfigurationContext context) throws RuntimeConfigurationException {
-    // IPersistentConfiguration 
+    // IPersistentConfiguration
     ((IPersistentConfiguration) myDelegate).checkConfiguration(context);
   }
 
 
   @Override
   public SettingsEditorEx<? extends IPersistentConfiguration> getEditor() {
-    // IPersistentConfiguration 
+    // IPersistentConfiguration
     return ((IPersistentConfiguration) myDelegate).getEditor();
   }
 
   @Override
   public IPersistentConfiguration createCloneTemplate() {
-    // IPersistentConfiguration 
+    // IPersistentConfiguration
     return null;
   }
 }

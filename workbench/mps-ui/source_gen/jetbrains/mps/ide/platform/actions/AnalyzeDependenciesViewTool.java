@@ -34,7 +34,7 @@ public class AnalyzeDependenciesViewTool extends BaseProjectTool {
 
   @Override
   protected void createTool() {
-    // constructs UI lazily, on demand, see getComponent 
+    // constructsUIlazily,ondemand,seegetComponent
   }
 
   public void setContent(@NotNull DependencyViewerScope from, @Nullable DependencyViewerScope limitTo, boolean meta) {

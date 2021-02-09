@@ -75,7 +75,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                       final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
                       environment.associate(tnode5, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030432");
                       tnode4.addChild(myAggregationLinks[0], tnode5);
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tlist3 = TemplateUtil.singletonList(tnode4);
@@ -85,7 +85,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             for (SNode child6 : TemplateUtil.asNotNull(tlist3)) {
               tnode2.addChild(myAggregationLinks[1], child6);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -99,11 +99,11 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
                   tnode7.addChild(myAggregationLinks[2], child9);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[3], tnode7);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -129,7 +129,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                       final SNode tnode13 = environment.createOutputNode(myConcepts[2]);
                       environment.associate(tnode13, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030432");
                       tnode12.addChild(myAggregationLinks[0], tnode13);
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tlist11 = TemplateUtil.singletonList(tnode12);
@@ -139,7 +139,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             for (SNode child14 : TemplateUtil.asNotNull(tlist11)) {
               tnode10.addChild(myAggregationLinks[1], child14);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode15 = environment.createOutputNode(myConcepts[3]);
@@ -153,11 +153,11 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                 for (SNode child17 : TemplateUtil.asNotNull(tlist16)) {
                   tnode15.addChild(myAggregationLinks[2], child17);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode10.addChild(myAggregationLinks[3], tnode15);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode10);
@@ -197,7 +197,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                     final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                     environment.associate(tnode4, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030432");
                     tnode3.addChild(myAggregationLinks[0], tnode4);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist2 = TemplateUtil.singletonList(tnode3);
@@ -207,7 +207,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
           for (SNode child5 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[1], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -221,7 +221,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
                 tnode6.addChild(myAggregationLinks[2], child8);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist9 = null;
@@ -230,11 +230,11 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
                 tnode6.addChild(myAggregationLinks[2], child10);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[3], tnode6);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -272,7 +272,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                     final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                     environment.associate(tnode4, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030432");
                     tnode3.addChild(myAggregationLinks[0], tnode4);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist2 = TemplateUtil.singletonList(tnode3);
@@ -282,7 +282,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
           for (SNode child5 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[1], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -296,7 +296,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
                 tnode6.addChild(myAggregationLinks[2], child8);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist9 = null;
@@ -305,11 +305,11 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
                 tnode6.addChild(myAggregationLinks[2], child10);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[3], tnode6);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -347,7 +347,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                     final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                     environment.associate(tnode4, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030432");
                     tnode3.addChild(myAggregationLinks[0], tnode4);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist2 = TemplateUtil.singletonList(tnode3);
@@ -357,7 +357,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
           for (SNode child5 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[1], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -371,7 +371,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
                 tnode6.addChild(myAggregationLinks[2], child8);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist9 = Collections.emptyList();
@@ -390,11 +390,11 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child11 : TemplateUtil.asNotNull(tlist9)) {
                 tnode6.addChild(myAggregationLinks[2], child11);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[3], tnode6);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -432,7 +432,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
                     final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                     environment.associate(tnode4, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030432");
                     tnode3.addChild(myAggregationLinks[0], tnode4);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tlist2 = TemplateUtil.singletonList(tnode3);
@@ -442,7 +442,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
           for (SNode child5 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[1], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -456,7 +456,7 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
                 tnode6.addChild(myAggregationLinks[2], child8);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist9 = Collections.emptyList();
@@ -475,11 +475,11 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               for (SNode child11 : TemplateUtil.asNotNull(tlist9)) {
                 tnode6.addChild(myAggregationLinks[2], child11);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[3], tnode6);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

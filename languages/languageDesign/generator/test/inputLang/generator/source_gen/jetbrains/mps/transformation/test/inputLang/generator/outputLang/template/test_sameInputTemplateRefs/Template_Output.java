@@ -54,20 +54,20 @@ public class Template_Output extends TemplateDeclarationBase {
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(myAggregationLinks[0], child5);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[1], tnode3);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
         tnode1.addChild(myAggregationLinks[3], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

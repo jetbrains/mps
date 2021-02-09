@@ -54,7 +54,7 @@ public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
     Iterable<ModulesMiner.ModuleHandle> minedHandles = mm.collectModules(projectRoot).getCollectedModules();
     List<ModulesMiner.ModuleHandle> moduleHandles = Sequence.fromIterable(minedHandles).where(new IWhereFilter<ModulesMiner.ModuleHandle>() {
       public boolean accept(ModulesMiner.ModuleHandle it) {
-        // temporary ignore .iml files 
+        // temporaryignore.imlfiles
         return !(it.getFile().getName().endsWith(".iml"));
       }
     }).toListSequence();

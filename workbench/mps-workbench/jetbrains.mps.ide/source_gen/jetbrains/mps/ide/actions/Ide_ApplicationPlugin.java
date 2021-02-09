@@ -24,7 +24,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new AnalyzeModuleDependencies_Action());
     addAction(new CalcClassifiersInRootsStatistic_Action());
     addAction(new CalcSNodeStatistic_Action());
@@ -111,9 +111,9 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowParameters_Action());
     addAction(new ShowTodoViewer_Action());
     addAction(new SubmitToTracker_Action());
-    // actions w/o parameters that override existing actions 
+    // actionsw/oparametersthatoverrideexistingactions
     replaceAction(new AnalyzeStacktrace_Action());
-    // groups 
+    // groups
     addGroup(new AbstractFileActions_ActionGroup(this));
     addGroup(new AnalyzeModule_ActionGroup(this));
     addGroup(new Analyze_ActionGroup(this));

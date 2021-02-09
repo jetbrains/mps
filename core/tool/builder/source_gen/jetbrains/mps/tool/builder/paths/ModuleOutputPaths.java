@@ -24,7 +24,7 @@ public class ModuleOutputPaths {
   private String[] sortedTestOutCacheDirs;
   private String[] sortedModelDirs;
   public ModuleOutputPaths(Iterable<SModule> _modules) {
-    // FIXME consider re-use of SModuleOperations#getOutputRoots, avoid code duplication 
+    // FIXMEconsiderre-useofSModuleOperations#getOutputRoots,avoidcodeduplication
     Iterable<SModule> modulesWithJavaFacet = Sequence.fromIterable(_modules).where(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
         return it.getFacet(JavaModuleFacet.class) != null;
@@ -58,8 +58,8 @@ public class ModuleOutputPaths {
         return it.getPath();
       }
     }));
-    // todo: use union of output paths for models? Would be nice to (no need for getOutputRoot() notion then) but the way makeFacet.pathToFile 
-    //       is invoked now suggests we get only path/to/module/source_gen here, which won't match any model path 
+    // todo:useunionofoutputpathsformodels?Wouldbeniceto(noneedforgetOutputRoot()notionthen)butthewaymakeFacet.pathToFile
+    // isinvokednowsuggestswegetonlypath/to/module/source_genhere,whichwon'tmatchanymodelpath
     Iterable<SModule> modulesWithTestsFacet = Sequence.fromIterable(_modules).where(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
         return it.getFacet(TestsFacet.class) != null;
@@ -94,7 +94,7 @@ public class ModuleOutputPaths {
       }
     }));
 
-    // XXX would be nice if model root tells its path as an object, rather than string 
+    // XXXwouldbeniceifmodelroottellsitspathasanobject,ratherthanstring
     Iterable<String> modelRootPaths = Sequence.fromIterable(_modules).translate(new ITranslator2<SModule, ModelRoot>() {
       public Iterable<ModelRoot> translate(SModule mod) {
         return mod.getModelRoots();
@@ -139,7 +139,7 @@ public class ModuleOutputPaths {
     if (idx >= 0) {
       return DirUtil.withoutPrefix(normPath, sortedDirs[idx]);
     }
-    // not found 
+    // notfound
     return null;
   }
   public Iterable<String> getOutputPaths() {

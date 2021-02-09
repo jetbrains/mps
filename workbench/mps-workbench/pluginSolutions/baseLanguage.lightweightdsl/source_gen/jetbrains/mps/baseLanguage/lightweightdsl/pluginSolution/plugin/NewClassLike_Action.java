@@ -52,7 +52,7 @@ public class NewClassLike_Action extends BaseAction {
     Icon icon;
     SNode pc = SLinkOperations.getTarget(NewClassLike_Action.this.descr, LINKS.preferredConcept$1q4V);
     if (pc != null) {
-      // viva la interpretation! 
+      // vivalainterpretation!
       SAbstractConcept concept = SNodeOperations.asSConcept(pc);
       icon = GlobalIconManager.getInstance().getIconFor(concept);
     } else {

@@ -61,7 +61,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -76,7 +76,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist6 = null;
@@ -85,7 +85,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
           for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
             tnode1.addChild(myAggregationLinks[0], child7);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -114,7 +114,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -136,7 +136,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist7 = null;
@@ -145,7 +145,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[0], child8);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

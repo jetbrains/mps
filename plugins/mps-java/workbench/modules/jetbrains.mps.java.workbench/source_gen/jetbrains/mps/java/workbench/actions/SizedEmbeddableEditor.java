@@ -26,7 +26,7 @@ public class SizedEmbeddableEditor extends EmbeddableEditor {
   @Transient
   @Override
   public Dimension getMinimumSize() {
-    // Try to fit the preferred height size, only if it is not greater than the specified size 
+    // Trytofitthepreferredheightsize,onlyifitisnotgreaterthanthespecifiedsize
     Dimension prefered = this.getPreferredSize();
     double height = prefered.getHeight();
     if (myMaxMinimumHeight < height) {

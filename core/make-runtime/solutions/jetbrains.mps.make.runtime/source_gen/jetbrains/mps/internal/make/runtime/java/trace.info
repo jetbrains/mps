@@ -44,12 +44,12 @@
       <node id="4101850974336850579" at="54,49,55,28" concept="3" />
       <node id="4101850974336850591" at="56,12,57,25" concept="3" />
       <node id="92821396556221316" at="61,55,62,39" concept="3" />
-      <node id="5456008070437991332" at="65,54,66,121" concept="11" />
+      <node id="5456008070437991332" at="65,54,66,101" concept="11" />
       <node id="4101850974336851679" at="67,49,68,28" concept="3" />
       <node id="4101850974336851691" at="69,12,70,25" concept="3" />
-      <node id="4391024623894074646" at="75,37,76,143" concept="11" />
-      <node id="4391024623894077356" at="76,143,77,56" concept="11" />
-      <node id="4101850974336844431" at="77,56,78,31" concept="9" />
+      <node id="4391024623894074646" at="75,37,76,123" concept="11" />
+      <node id="4391024623894077356" at="76,123,77,44" concept="11" />
+      <node id="4101850974336844431" at="77,44,78,31" concept="9" />
       <node id="4101850974336844437" at="78,31,79,23" concept="3" />
       <node id="4101850974336844443" at="79,23,80,25" concept="10" />
       <node id="4101850974336738548" at="82,38,83,43" concept="10" />
@@ -63,7 +63,7 @@
       <node id="6192537295995272" at="32,0,37,0" concept="2" trace="FileDeltaCollector#(Ljetbrains/mps/internal/make/runtime/util/FilesDelta;Ljetbrains/mps/vfs/IFile;Ljetbrains/mps/internal/make/runtime/java/FileProcessor;)V" />
       <node id="4101850974336814551" at="44,31,49,5" concept="7" />
       <node id="4101850974336850577" at="53,31,58,5" concept="7" />
-      <node id="4101850974336851677" at="66,121,71,5" concept="7" />
+      <node id="4101850974336851677" at="66,101,71,5" concept="7" />
       <node id="92821396556212864" at="65,0,73,0" concept="8" trace="saveStream#(Ljetbrains/mps/vfs/IFile;[B)V" />
       <node id="4101850974336563175" at="74,0,82,0" concept="8" trace="touch#(Ljava/lang/String;)Z" />
       <node id="4101850974336562989" at="42,0,51,0" concept="8" trace="saveStream#(Ljava/lang/String;Ljava/lang/String;)V" />
@@ -143,15 +143,15 @@
       <node id="816097550967310985" at="50,30,51,35" concept="3" />
       <node id="4328738523548226020" at="52,5,53,65" concept="10" />
       <node id="4145682539058277854" at="56,58,57,55" concept="10" />
-      <node id="5503243484309882190" at="60,56,61,66" concept="11" />
-      <node id="5503243484309898534" at="61,66,62,80" concept="11" />
-      <node id="5503243484309912180" at="62,80,63,84" concept="11" />
-      <node id="5503243484309926265" at="63,84,64,74" concept="11" />
+      <node id="5503243484309882190" at="60,56,61,56" concept="11" />
+      <node id="5503243484309898534" at="61,56,62,66" concept="11" />
+      <node id="5503243484309912180" at="62,66,63,68" concept="11" />
+      <node id="5503243484309926265" at="63,68,64,57" concept="11" />
       <node id="4328738523548226034" at="65,34,66,42" concept="3" />
       <node id="8839126579642559260" at="66,42,67,18" concept="10" />
       <node id="2813163484575228077" at="68,5,69,17" concept="10" />
-      <node id="720911163586668764" at="72,54,73,21" concept="11" />
-      <node id="4328738523548226046" at="73,21,74,34" concept="3" />
+      <node id="720911163586668764" at="72,54,73,19" concept="11" />
+      <node id="4328738523548226046" at="73,19,74,34" concept="3" />
       <node id="4328738523548226060" at="78,56,79,47" concept="3" />
       <node id="4328738523548226069" at="81,40,82,28" concept="3" />
       <node id="8839126579642422455" at="87,0,88,0" concept="4" trace="myFile" />
@@ -171,8 +171,8 @@
       <node id="798733910009264704" at="120,36,121,20" concept="10" />
       <node id="7178080042736988912" at="123,21,124,21" concept="10" />
       <node id="7178080042737019501" at="125,7,126,0" concept="12" />
-      <node id="7178080042737038883" at="126,0,127,45" concept="11" />
-      <node id="7178080042737002726" at="127,45,128,34" concept="0" />
+      <node id="7178080042737038883" at="126,0,127,41" concept="11" />
+      <node id="7178080042737002726" at="127,41,128,34" concept="0" />
       <node id="798733910009264708" at="128,34,129,0" concept="12" />
       <node id="798733910009264710" at="129,0,130,65" concept="9" />
       <node id="798733910009264727" at="130,65,131,32" concept="9" />
@@ -194,7 +194,7 @@
       <node id="798733910009264685" at="119,33,122,7" concept="7" />
       <node id="7178080042736979982" at="122,7,125,7" concept="7" />
       <node id="2155523297396651613" at="137,47,140,13" concept="7" />
-      <node id="8839126579642536943" at="64,74,68,5" concept="7" />
+      <node id="8839126579642536943" at="64,57,68,5" concept="7" />
       <node id="4328738523548226039" at="72,0,76,0" concept="8" trace="filesToDelete#(Ljava/util/Collection;)V" />
       <node id="4145682539058277877" at="90,0,94,0" concept="2" trace="FileContent#(Ljetbrains/mps/vfs/IFile;[B)V" />
       <node id="4145682539058277914" at="106,29,110,11" concept="14" />

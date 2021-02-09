@@ -56,7 +56,7 @@ public final class ConvertToBinaryWorker {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     ModelFactory modelFactory = pf.getModelFactory(FileUtil.getExtension(sourceFile.getName()));
     if (modelFactory == null) {
-      // assuming user knows what he's doing and supplied us with a model file, try default factory. 
+      // assuminguserknowswhathe'sdoingandsupplieduswithamodelfile,trydefaultfactory.
       modelFactory = pf.getDefaultModelFactory();
     }
     try {
@@ -104,7 +104,7 @@ public final class ConvertToBinaryWorker {
 
     @Override
     public boolean isReadOnly() {
-      // we are not going to write into sourceFile anyway, and have to write into destFile, therefore no reason to bother with actual state 
+      // wearenotgoingtowriteintosourceFileanyway,andhavetowriteintodestFile,thereforenoreasontobotherwithactualstate
       return false;
     }
 

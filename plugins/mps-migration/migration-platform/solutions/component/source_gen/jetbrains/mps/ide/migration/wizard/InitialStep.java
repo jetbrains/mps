@@ -65,7 +65,7 @@ public class InitialStep extends BaseStep {
 
   @Override
   protected void doCreateComponent(JComponent mainPanel) {
-    // Set preferred size to avoid trim of Help button (if no icon presented) 
+    // SetpreferredsizetoavoidtrimofHelpbutton(ifnoiconpresented)
     mainPanel.setPreferredSize(new Dimension(600, 400));
     mainPanel.setLayout(new BorderLayout());
 
@@ -121,7 +121,7 @@ public class InitialStep extends BaseStep {
 
   private JComponent createMigrationsInfo() {
     final Project project = mySession.getProject();
-    // root 
+    // root
     final DefaultMutableTreeNode root = new DefaultMutableTreeNode("empty");
 
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -129,7 +129,7 @@ public class InitialStep extends BaseStep {
         MigrationRegistry manager = mySession.getMigrationRegistry();
         final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
 
-        // project migrations 
+        // projectmigrations
         final DefaultMutableTreeNode croot = new DefaultMutableTreeNode("Cleanups");
         croot.add(new MyTreeNode("Re-save project", migrationIcon));
         if (mySession.getRequiredSteps().contains(MigrationSession.MigrationStepKind.UPDATE_VERSIONS)) {
@@ -161,7 +161,7 @@ public class InitialStep extends BaseStep {
           }
         }).distinct();
 
-        // language migrations 
+        // languagemigrations
         final Map<SLanguage, DefaultMutableTreeNode> l2n = MapSequence.fromMap(new HashMap<SLanguage, DefaultMutableTreeNode>());
         Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).select(new ISelector<MigrationScriptReference, SLanguage>() {
           public SLanguage select(MigrationScriptReference it) {
@@ -198,7 +198,7 @@ public class InitialStep extends BaseStep {
           root.add(lroot);
         }
 
-        // module migrations 
+        // modulemigrations
         final Map<SModuleReference, DefaultMutableTreeNode> m2n = MapSequence.fromMap(new HashMap<SModuleReference, DefaultMutableTreeNode>());
         Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, SModuleReference>() {
           public SModuleReference select(RefactoringScriptReference it) {

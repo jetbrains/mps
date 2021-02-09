@@ -136,7 +136,7 @@ public class CommentSpellChecker extends BaseEditorChecker {
       int s = 0;
       int e = w.length() - 1;
       while (s < e) {
-        // main purpose is to strip off quotation marks around words, but do not touch apostrophes (e.g. "isn't") 
+        // mainpurposeistostripoffquotationmarksaroundwords,butdonottouchapostrophes(e.g."isn't")
         final char c1 = w.charAt(s);
         final char c2 = w.charAt(e);
         final int t1 = Character.getType(c1);
@@ -147,7 +147,7 @@ public class CommentSpellChecker extends BaseEditorChecker {
           continue;
         }
         if (t1 == Character.INITIAL_QUOTE_PUNCTUATION && t2 == Character.FINAL_QUOTE_PUNCTUATION) {
-          // e.g. « and » 
+          // e.g.«and»
           s++;
           e--;
           continue;
@@ -156,31 +156,31 @@ public class CommentSpellChecker extends BaseEditorChecker {
         if (t1 == Character.START_PUNCTUATION) {
           s++;
           found = true;
-          // fallthrough 
+          // fallthrough
         }
         if (t2 == Character.END_PUNCTUATION) {
           e--;
           found = true;
-          // fall through 
+          // fallthrough
         }
         if (!(found)) {
           break;
         }
       }
       if (s >= e) {
-        // s==e is legitimate 1-letter case, but I don't care to check it. 
+        // s==eislegitimate1-lettercase,butIdon'tcaretocheckit.
         continue;
       }
       if (s > 0 || e < w.length() - 1) {
-        // we stripped off some heading/trailing chars 
+        // westrippedoffsomeheading/trailingchars
         w = w.substring(s, e + 1);
         if (!(spcm.hasProblem(w))) {
           continue;
         }
-        // otherwise, fall through 
+        // otherwise,fallthrough
       }
       if (!(isRegularWord(w))) {
-        // not sure whether 'word' check is faster than dictionary presence check, assume latter is faster, hence comes first. 
+        // notsurewhether'word'checkisfasterthandictionarypresencecheck,assumelatterisfaster,hencecomesfirst.
         continue;
       }
       if (mistakes == null) {
@@ -197,7 +197,7 @@ public class CommentSpellChecker extends BaseEditorChecker {
   private boolean isRegularWord(String w) {
     for (int i = 0; i < w.length(); i++) {
       char ch = w.charAt(i);
-      // any non-letter character immediately renders word irregular. perhaps, shall treat quoted words separately (words that start and end with the same quotation mark) 
+      // anynon-lettercharacterimmediatelyrenderswordirregular.perhaps,shalltreatquotedwordsseparately(wordsthatstartandendwiththesamequotationmark)
       if (!(Character.isLetter(ch))) {
         return false;
       }
@@ -261,9 +261,9 @@ public class CommentSpellChecker extends BaseEditorChecker {
         final String renderedText = tl.getText();
         g.setColor(getColor());
         int s = 0;
-        // highlight each word only once (just for simplicity now, perhaps, shall highlight all entries. just need to be careful about 
-        // word boundaries to avoid sub-matches) 
-        // assume mistakes are reported in the order they are encountered in the text (though not a big deal not to care about order) 
+        // highlighteachwordonlyonce(justforsimplicitynow,perhaps,shallhighlightallentries.justneedtobecarefulabout
+        // wordboundariestoavoidsub-matches)
+        // assumemistakesarereportedintheordertheyareencounteredinthetext(thoughnotabigdealnottocareaboutorder)
         for (String w : myWords) {
           int i = renderedText.indexOf(w, s);
           if (i >= s) {

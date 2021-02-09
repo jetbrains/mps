@@ -51,12 +51,12 @@ public final class IIncludeSubstituteMenuPart__BehaviorDescriptor extends BaseBH
           boolean noneMatched = true;
           if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$KA)) {
             noneMatched = false;
-            // Default scope of AbstractConceptDeclaration 
+            // DefaultscopeofAbstractConceptDeclaration
             return new FilteringScope(Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$KA));
           }
           if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.SubstituteMenu_Named$cm)) {
             noneMatched = false;
-            // Default scope of SubstituteMenu_Named - more or less 
+            // DefaultscopeofSubstituteMenu_Named-moreorless
             return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.SubstituteMenu_Named$cm);
           }
       }

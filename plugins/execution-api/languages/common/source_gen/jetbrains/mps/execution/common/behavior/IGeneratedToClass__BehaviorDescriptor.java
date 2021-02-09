@@ -82,11 +82,11 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
     return string.substring(0, index) + string.substring(index, index + 1).toUpperCase() + ((index + 1 < string.length() ? string.substring(index + 1) : ""));
   }
   /*package*/ static String getValidClassName_id3gpm$NHlLi1(@NotNull SAbstractConcept __thisConcept__, @NonNls String name) {
-    // in between 
+    // inbetween
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a1a52, new _Replacer_mgabp8_a0a0b0z(null));
-    // in the end 
+    // intheend
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a3a52, new _Replacer_mgabp8_a0a0d0z(null));
-    // in the beggining 
+    // inthebeggining
     name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a5a52, new _Replacer_mgabp8_a0a0f0z(null));
     return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$Cg), name, ((int) 0));
   }

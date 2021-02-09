@@ -38,7 +38,7 @@ public final class CellActionMapImportWildcardSelector__BehaviorDescriptor exten
     return CheckingResult.success();
   }
   /*package*/ static SNode getNavigatableNodeWithin_id5Sx2dSLnDj7(@NotNull SNode __thisNode__, SNode actionMap) {
-    // wildcard import navigates to the whole actionMap 
+    // wildcardimportnavigatestothewholeactionMap
     return actionMap;
   }
 

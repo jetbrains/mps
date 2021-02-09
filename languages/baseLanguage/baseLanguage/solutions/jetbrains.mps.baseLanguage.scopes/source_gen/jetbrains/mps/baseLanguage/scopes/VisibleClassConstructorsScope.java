@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class VisibleClassConstructorsScope extends Scope {
   private final Scope classifiers;
   public VisibleClassConstructorsScope(@NotNull SNode contextNode) {
-    // todo: find not all classifiers, only class concept! 
+    // todo:findnotallclassifiers,onlyclassconcept!
     Scope visibleClassifiersScope = ClassifierScopes.getVisibleClassifiersScope(contextNode, true);
     classifiers = new FilteringScope((visibleClassifiersScope != null ? visibleClassifiersScope : new EmptyScope())) {
       @Override
@@ -51,7 +51,7 @@ public class VisibleClassConstructorsScope extends Scope {
   }
   @Override
   public boolean contains(SNode node) {
-    // todo: visibility check! 
+    // todo:visibilitycheck!
     return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$yG) && classifiers.contains(SNodeOperations.getParent(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$yG)));
   }
   @Nullable
@@ -67,26 +67,26 @@ public class VisibleClassConstructorsScope extends Scope {
       return null;
     }
 
-    // resolve only by name 
+    // resolveonlybyname
     List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK))).toListSequence();
     if (ListSequence.fromList(constructors).count() == 1) {
       return ListSequence.fromList(constructors).first();
     }
 
-    // use arguments 
+    // usearguments
     if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ClassCreator$ZG))) {
       return null;
     }
     List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.actualArgument$pzdx);
     List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw);
 
-    // use arguments count 
+    // useargumentscount
     constructors = (List<SNode>) MethodResolveUtil.selectByParmCount(constructors, actualArguments);
     if (constructors.size() == 1) {
       return ListSequence.fromList(constructors).first();
     }
 
-    // use types 
+    // usetypes
     Iterator<SNode> typeParms = (Iterator<SNode>) typeParameters.iterator();
     Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp).iterator();
     Map<SNode, SNode> typeByTypeVar = new HashMap<SNode, SNode>();

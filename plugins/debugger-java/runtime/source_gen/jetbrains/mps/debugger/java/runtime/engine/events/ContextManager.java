@@ -51,7 +51,7 @@ public class ContextManager {
     } else if (context instanceof UserContext) {
       assert myUserContext == context;
       myUserContext = null;
-      // I do not want to have resume method in the interface and do not want to create a class 
+      // Idonotwanttohaveresumemethodintheinterfaceanddonotwanttocreateaclass
       tryResume5Times(((UserContext) context), new _FunctionTypes._void_P1_E0<UserContext>() {
         public void invoke(UserContext c) {
           c.resume();
@@ -68,13 +68,13 @@ public class ContextManager {
         resume.invoke(context);
         break;
       } catch (ObjectCollectedException e) {
-        //  according to error reports set.resume() may throw this if one of the threads has been collected 
+        // accordingtoerrorreportsset.resume()maythrowthisifoneofthethreadshasbeencollected
       } catch (InternalException e) {
-        // InternalException 13 means that there are running threads that we are trying to resume 
-        // On MacOS it happened that native thread didn't stop while some java thread reached breakpoint 
+        // InternalException13meansthattherearerunningthreadsthatwearetryingtoresume
+        // OnMacOSithappenedthatnativethreaddidn'tstopwhilesomejavathreadreachedbreakpoint
         if (e.errorCode() == 13 && context.getSuspendPolicy() == EventRequest.SUSPEND_ALL) {
-          // Patches.MAC_RESUME_VM_HACK && 
-          // Its funny, but second resume solves the problem 
+          // Patches.MAC_RESUME_VM_HACK&&
+          // Itsfunny,butsecondresumesolvestheproblem
         } else {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("", e);

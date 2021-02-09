@@ -49,7 +49,7 @@ public class BuildMps_IdeaPluginModule_SmartReference extends SubstituteMenuBase
   public class SMP_ReferenceScope_wbo7rb_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_wbo7rb_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BuildMps_IdeaPluginModule$rY, LINKS.target$ccfo);
     }
     @NotNull

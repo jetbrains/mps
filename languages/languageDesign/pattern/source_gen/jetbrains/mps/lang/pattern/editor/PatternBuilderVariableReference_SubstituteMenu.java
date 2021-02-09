@@ -48,7 +48,7 @@ public class PatternBuilderVariableReference_SubstituteMenu extends SubstituteMe
   public class SMP_ReferenceScope_ya5k1m_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_ya5k1m_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PatternBuilderVariableReference$5T, LINKS.declaration$vkQ_);
     }
     @NotNull

@@ -22,7 +22,7 @@ public interface CurrentDifferenceListener extends EventListener {
    * ofcourse we could add new changes instead, but I am in a bugfix
    */
   default void modelStatusChanged(@NotNull SModelReference mref) {
-    // nop 
+    // nop
   }
 
   default void changesAdded(@NotNull List<ModelChange> changes) {

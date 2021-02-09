@@ -52,7 +52,7 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
 
-    // copy 
+    // copy
     String source = Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__);
     if (source == null) {
       return null;
@@ -60,7 +60,7 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
 
     byte[] iconData = IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
       public void consume(IconCreationUtil.DrawContext dc) {
-        // todo copy layered icon into core 
+        // todocopylayerediconintocore
         LayeredIcon res = new LayeredIcon(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).count());
         for (SNode layer : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD))) {
           res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).indexOf(layer));

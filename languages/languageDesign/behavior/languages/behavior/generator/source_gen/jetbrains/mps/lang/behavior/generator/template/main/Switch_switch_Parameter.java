@@ -78,12 +78,12 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
           for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child4);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
           tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -121,12 +121,12 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
           for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child4);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
           tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

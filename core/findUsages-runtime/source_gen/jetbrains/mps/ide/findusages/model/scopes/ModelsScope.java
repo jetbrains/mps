@@ -39,8 +39,8 @@ public class ModelsScope extends FindUsagesScope {
   @NotNull
   @Override
   public Iterable<SModule> getModules() {
-    // FIXME shall return modules of the models it was initialized with 
-    // we've already collected required modules in the superclass, and it's safe to return scope here as nobody has been using this method anyway 
+    // FIXMEshallreturnmodulesofthemodelsitwasinitializedwith
+    // we'vealreadycollectedrequiredmodulesinthesuperclass,andit'ssafetoreturnscopehereasnobodyhasbeenusingthismethodanyway
     throw new UnsupportedOperationException();
   }
   private static List<SModel> resolveModels(Element element, SRepository repo) throws CantLoadSomethingException {

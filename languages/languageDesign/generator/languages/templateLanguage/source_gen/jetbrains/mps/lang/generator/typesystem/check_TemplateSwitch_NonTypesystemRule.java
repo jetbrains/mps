@@ -39,8 +39,8 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
     if (SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$h3H5) == null) {
       return;
     }
-    // allow to modify/extend switches that accept exactly same parameters only, not superset thereof. 
-    // the reason is sub-switch may be invoked directly, while the rules of its parent would expect more parameters than there're actually 
+    // allowtomodify/extendswitchesthatacceptexactlysameparametersonly,notsupersetthereof.
+    // thereasonissub-switchmaybeinvokeddirectly,whiletherulesofitsparentwouldexpectmoreparametersthanthere'reactually
     SNode modified = SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$h3H5);
     if (ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$5PGb)).count() != ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).count()) {
       {
@@ -57,7 +57,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).getElement(i);
       SNode p2 = ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$5PGb)).getElement(i);
       if (!(Objects.equals(SPropertyOperations.getString(p1, PROPS.name$MnvL), SPropertyOperations.getString(p2, PROPS.name$MnvL)))) {
-        // names shall be identical as we identify them with strings in TemplateContext 
+        // namesshallbeidenticalasweidentifythemwithstringsinTemplateContext
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Name of parameter #%d, %s, doesn't match name of the original parameter (%s)", i + 1, SPropertyOperations.getString(p1, PROPS.name$MnvL), SPropertyOperations.getString(p2, PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479871387", null, errorTarget);
@@ -67,8 +67,8 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
           }
         }
       }
-      // extending switch may declare more generic parameter types (basically, it tells it supports wider set of parameters than the switch it modifies) 
-      // It's perfectly ok when invoked directly, and when invoked as extension of modified switch, it's guaranteed to receive only subtype of expected parameter type. 
+      // extendingswitchmaydeclaremoregenericparametertypes(basically,ittellsitsupportswidersetofparametersthantheswitchitmodifies)
+      // It'sperfectlyokwheninvokeddirectly,andwheninvokedasextensionofmodifiedswitch,it'sguaranteedtoreceiveonlysubtypeofexpectedparametertype.
       if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(p2, LINKS.type$Q7dG), SLinkOperations.getTarget(p1, LINKS.type$Q7dG)))) {
         {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.type$Q7dG);

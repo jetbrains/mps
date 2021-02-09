@@ -88,10 +88,10 @@ public class EditorCell_Empty extends EditorCell_Basic implements WithCaret {
     myCaretState.touch();
     repaintCaret();
     final CellActionType actionType;
-    // As it is specified in a constraints of First/LastPositionAllowedStyleClassItem, 
-    // they can only be appliedto a sub-concepts of CellModel_AbstractLabel 
-    // so, if the editor model was created without mistakes, both following conditions 
-    // should be evaluated to false 
+    // AsitisspecifiedinaconstraintsofFirst/LastPositionAllowedStyleClassItem,
+    // theycanonlybeappliedtoasub-conceptsofCellModel_AbstractLabel
+    // so,iftheeditormodelwascreatedwithoutmistakes,bothfollowingconditions
+    // shouldbeevaluatedtofalse
     if (isFirstCaretPosition()) {
       actionType = CellActionType.LEFT_TRANSFORM;
     } else if (isLastCaretPosition()) {

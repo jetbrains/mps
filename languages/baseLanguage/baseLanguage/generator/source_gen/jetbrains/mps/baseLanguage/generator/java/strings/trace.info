@@ -469,18 +469,18 @@
   </root>
   <root nodeRef="r:b4d7d620-6723-4aa2-856b-118497e84e9e(jetbrains.mps.baseLanguage.generator.java.strings@generator)/4592826945244850025">
     <file name="QueriesGenerated.java">
-      <node id="1482495884796544222" at="99,94,100,112" concept="5" />
-      <node id="1482495884798639541" at="100,112,101,74" concept="5" />
-      <node id="1482495884798646099" at="101,74,102,108" concept="3" />
+      <node id="1482495884796544222" at="99,94,100,96" concept="5" />
+      <node id="1482495884798639541" at="100,96,101,62" concept="5" />
+      <node id="1482495884798646099" at="101,62,102,108" concept="3" />
       <node id="1482495884796525446" at="102,108,103,137" concept="4" />
       <node id="6269300764714537263" at="136,98,137,106" concept="0" />
       <node id="6269300764714537270" at="137,106,138,18" concept="4" />
       <node id="6269300764714537278" at="139,5,140,17" concept="4" />
       <node id="4592826945244850079" at="202,93,203,98" concept="4" />
       <node id="3505562578125797804" at="205,93,206,98" concept="4" />
-      <node id="405327229898183486" at="215,79,216,70" concept="5" />
-      <node id="405327229898189105" at="216,70,217,70" concept="5" />
-      <node id="405327229898192525" at="217,70,218,61" concept="5" />
+      <node id="405327229898183486" at="215,79,216,63" concept="5" />
+      <node id="405327229898189105" at="216,63,217,58" concept="5" />
+      <node id="405327229898192525" at="217,58,218,56" concept="5" />
       <node id="405327229898177388" at="220,39,221,97" concept="4" />
       <node id="4592826945244850077" at="311,56,312,56" concept="0" />
       <node id="3505562578125797802" at="312,56,313,56" concept="0" />
@@ -496,7 +496,7 @@
       <node id="3505562578125797802" at="205,0,208,0" concept="6" trace="sourceNodeQuery_11_1#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="405327229898177386" at="220,0,223,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6269300764714537261" at="135,79,139,5" concept="1" />
-      <node id="6269300764714932129" at="218,61,223,41" concept="4" />
+      <node id="6269300764714932129" at="218,56,223,41" concept="4" />
       <node id="1482495884796522426" at="99,0,105,0" concept="6" trace="referenceMacro_GetReferent_11_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
       <node id="6269300764714516440" at="135,0,142,0" concept="6" trace="ifMacro_Condition_11_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
       <node id="6269300764714539646" at="215,0,225,0" concept="6" trace="varMacro_Value_11_0#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />

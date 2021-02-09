@@ -42,7 +42,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
     if (SNodeOperations.getModel(iMethodLike).getModule() instanceof TransientModelsModule) {
       return;
     }
-    // Find possible NPE 
+    // FindpossibleNPE
     CustomAnalyzerRunner<Map<SNode, NullableState>> nullableRunner = new NullableAnalyzerRunner(iMethodLike);
     AnalysisResult<Map<SNode, NullableState>> result = nullableRunner.analyze();
     Program program = nullableRunner.getProgram();
@@ -85,7 +85,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
         continue;
       }
 
-      // Test equals and not equals is always true or false 
+      // Testequalsandnotequalsisalwaystrueorfalse
       checkingResult = NullableUtil.isAlwaysTrueOrFalse(instruction, parent, source, varState);
       if (checkingResult != null) {
         warning = checkingResult._0();
@@ -98,7 +98,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
       }
 
 
-      // Find Nullable assignements to NotNull variables 
+      // FindNullableassignementstoNotNullvariables
       if (instruction instanceof WriteInstruction) {
         checkingResult = NullableUtil.checkNullableAssignment(((WriteInstruction) instruction), result);
         if (checkingResult != null) {
@@ -113,7 +113,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
       }
 
     }
-    // Find Nullable returns of NotNull methods 
+    // FindNullablereturnsofNotNullmethods
     if (SNodeOperations.isInstanceOf(iMethodLike, CONCEPTS.BaseMethodDeclaration$kD)) {
       SNode method = SNodeOperations.cast(iMethodLike, CONCEPTS.BaseMethodDeclaration$kD);
       if (Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, LINKS.annotation$K49I), LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {

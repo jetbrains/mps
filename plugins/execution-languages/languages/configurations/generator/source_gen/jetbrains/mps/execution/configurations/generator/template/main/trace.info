@@ -125,9 +125,9 @@
       <node id="5812151570929690819" at="94,83,95,130" concept="5" />
       <node id="5475888311765592519" at="97,83,98,115" concept="5" />
       <node id="5475888311765592539" at="100,83,101,115" concept="5" />
-      <node id="7699828872023755099" at="103,83,104,106" concept="6" />
-      <node id="7699828872023756541" at="104,106,105,91" concept="6" />
-      <node id="7244675116808105170" at="105,91,106,246" concept="5" />
+      <node id="7699828872023755099" at="103,83,104,92" concept="6" />
+      <node id="7699828872023756541" at="104,92,105,75" concept="6" />
+      <node id="7244675116808105170" at="105,75,106,246" concept="5" />
       <node id="529406319400452330" at="108,83,109,153" concept="5" />
       <node id="2572811016744697060" at="111,83,112,144" concept="5" />
       <node id="1594211126127774372" at="114,83,115,135" concept="5" />
@@ -1253,7 +1253,7 @@
     <file name="QueriesGenerated.java">
       <node id="7699828872023428159" at="192,88,193,78" concept="5" />
       <node id="7699828872023471668" at="195,88,196,240" concept="5" />
-      <node id="7699828872023497945" at="198,88,199,79" concept="6" />
+      <node id="7699828872023497945" at="198,88,199,67" concept="6" />
       <node id="7699828872023512360" at="200,92,201,87" concept="5" />
       <node id="7699828872023520477" at="202,5,203,240" concept="5" />
       <node id="8990324920604837969" at="205,88,206,78" concept="5" />
@@ -1269,7 +1269,7 @@
       <node id="7699828872023731219" at="414,92,415,74" concept="5" />
       <node id="7699828872024472861" at="494,39,495,97" concept="5" />
       <node id="3945544195318608420" at="499,104,500,94" concept="5" />
-      <node id="738510297334268497" at="502,104,503,103" concept="6" />
+      <node id="738510297334268497" at="502,104,503,90" concept="6" />
       <node id="4042467058397505472" at="505,39,506,97" concept="5" />
       <node id="4013739085301550934" at="510,104,511,98" concept="5" />
       <node id="738510297334286740" at="515,39,516,97" concept="5" />
@@ -1313,7 +1313,7 @@
       <node id="738510297334286695" at="1242,16,1243,70" concept="5" />
       <node id="7699828872023428157" at="192,0,195,0" concept="7" trace="propertyMacro_GetValue_9_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7699828872023470530" at="195,0,198,0" concept="7" trace="propertyMacro_GetValue_9_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
-      <node id="7699828872023508400" at="199,79,202,5" concept="2" />
+      <node id="7699828872023508400" at="199,67,202,5" concept="2" />
       <node id="8990324920604830232" at="205,0,208,0" concept="7" trace="propertyMacro_GetValue_9_3#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="8990324920604855107" at="208,0,211,0" concept="7" trace="propertyMacro_GetValue_9_4#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7699828872023894014" at="211,0,214,0" concept="7" trace="propertyMacro_GetValue_9_5#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
@@ -1331,7 +1331,7 @@
       <node id="4013739085301550929" at="510,0,513,0" concept="7" trace="sourceNodesQuery_9_3#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="738510297334286738" at="515,0,518,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7699828872024472851" at="492,104,497,7" concept="5" />
-      <node id="4042467058397505462" at="503,103,508,7" concept="5" />
+      <node id="4042467058397505462" at="503,90,508,7" concept="5" />
       <node id="738510297334286730" at="513,104,518,7" concept="5" />
       <node id="7699828872023491135" at="198,0,205,0" concept="7" trace="propertyMacro_GetValue_9_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="7699828872024457450" at="492,0,499,0" concept="7" trace="sourceNodesQuery_9_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />

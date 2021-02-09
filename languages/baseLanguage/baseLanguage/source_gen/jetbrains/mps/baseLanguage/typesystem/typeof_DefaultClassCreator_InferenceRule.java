@@ -42,7 +42,7 @@ public class typeof_DefaultClassCreator_InferenceRule extends AbstractInferenceR
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "primitive type not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7179268497749415918", null, errorTarget);
       }
     }
-    // --- 
+    // ---
     SNode constructedType = _quotation_createNode_9il0ce_a0d0b(SLinkOperations.getTarget(defaultClassCreator, LINKS.classifier$9NRM), SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3));
     {
       SNode _nodeToCheck_1029348928467 = defaultClassCreator;

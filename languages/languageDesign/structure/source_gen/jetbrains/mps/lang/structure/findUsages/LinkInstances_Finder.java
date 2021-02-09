@@ -46,20 +46,20 @@ public class LinkInstances_Finder extends GeneratedFinder {
   @Override
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     try {
-      // collect roles 
+      // collectroles
       Set<String> roles = SetSequence.fromSet(new HashSet<String>());
       SNode curNode = node;
       do {
         SetSequence.fromSet(roles).addElement(SPropertyOperations.getString(curNode, PROPS.role$Nsjf));
         curNode = SLinkOperations.getTarget(curNode, LINKS.specializedLink$7ZCN);
       } while (curNode != null);
-      // find concept 
+      // findconcept
       SNode conceptDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
       if ((conceptDeclaration == null)) {
         return;
       }
       boolean isChild = SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
-      // find instances and link examples 
+      // findinstancesandlinkexamples
       for (SNode instance : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder", conceptDeclaration, scope, monitor))) {
         if (isChild) {
           for (SNode child : Sequence.fromIterable(instance.getChildren())) {

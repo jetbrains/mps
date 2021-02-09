@@ -18,10 +18,10 @@ public class ActionWithProgress_ApplicationPlugin extends BaseApplicationPlugin 
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new BackgroundableProgressAction_Action());
     addAction(new ModalProgressAction_Action());
-    // groups 
+    // groups
     addGroup(new ProgressActionsGroup_ActionGroup(this));
   }
   public void adjustRegularGroups() {

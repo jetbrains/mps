@@ -21,7 +21,7 @@ public class ModuleDependencyNode extends MPSTreeNode {
   private final SModuleReference myModule;
   private final boolean myIsUsedLang;
   /*package*/ ModuleDependencyNode(SModuleReference module, Iterable<DepLink> relations, boolean isUsedLanguage) {
-    // module serves as dependency target (dependencies are captured with relations sequence) 
+    // moduleservesasdependencytarget(dependenciesarecapturedwithrelationssequence)
     super(Sequence.fromIterable(relations).toListSequence());
     myModule = module;
     myIsUsedLang = isUsedLanguage;
@@ -63,7 +63,7 @@ public class ModuleDependencyNode extends MPSTreeNode {
     DependencyTree tree = (DependencyTree) getTree();
     for (DepPath c : Sequence.fromIterable(myCycles).distinct()) {
       Iterator<DepLink> itr = Sequence.fromIterable(c.elements()).iterator();
-      // skip first path element, which is always the one from my getCapturedDependencies() 
+      // skipfirstpathelement,whichisalwaystheonefrommygetCapturedDependencies()
       itr.next();
       MPSTreeNode parent = this;
       while (itr.hasNext()) {

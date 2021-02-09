@@ -13,9 +13,9 @@ public class Helper {
   public static boolean isCollectionElementAccess(SNode expression) {
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$yW)) {
       SNode dotExpr = SNodeOperations.cast(expression, CONCEPTS.DotExpression$yW);
-      // of course, there's more than a .size operation that doesn't consistute sequence element access, 
-      // but at the moment I cover only most wide-spread case - there seems to be no simple way to tell 
-      // true element access operations from other. 
+      // ofcourse,there'smorethana.sizeoperationthatdoesn'tconsistutesequenceelementaccess,
+      // butatthemomentIcoveronlymostwide-spreadcase-thereseemstobenosimplewaytotell
+      // trueelementaccessoperationsfromother.
       return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, LINKS.operation$gs9E), CONCEPTS.SequenceOperation$9o) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(dotExpr, LINKS.operation$gs9E), CONCEPTS.GetSizeOperation$A_));
     }
     if (SNodeOperations.isInstanceOf(expression, CONCEPTS.MapElement$NJ)) {

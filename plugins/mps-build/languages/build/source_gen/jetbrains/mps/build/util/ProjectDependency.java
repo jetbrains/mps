@@ -116,19 +116,19 @@ public class ProjectDependency {
   private boolean isProjectLocal(SNode dep) {
     SModel targetScriptModel = SNodeOperations.getModel(SLinkOperations.getTarget(dep, LINKS.script$6Ehy));
     if (targetScriptModel == null || SNodeOperations.getModel(myProject) == null) {
-      // "local" doesn't make sense unless there's location (i.e. my BP's model) to check againts 
+      // "local"doesn'tmakesenseunlessthere'slocation(i.e.myBP'smodel)tocheckagaints
       return false;
     }
     if (targetScriptModel == SNodeOperations.getModel(myProject)) {
-      // XXX what if we introduce per-root transformation, when one root (BuildProject) comes from transient model, while 
-      // target comes from source? Guess, would need to rely on module.isPackaged check below 
+      // XXXwhatifweintroduceper-roottransformation,whenoneroot(BuildProject)comesfromtransientmodel,while
+      // targetcomesfromsource?Guess,wouldneedtorelyonmodule.isPackagedcheckbelow
       return true;
     }
     SModule targetScriptModule = targetScriptModel.getModule();
     if (targetScriptModule == SNodeOperations.getModel(myProject).getModule()) {
       return true;
     }
-    // FIXME add an option Module.isPackaged (to access it like node.model.module.isPackaged) 
+    // FIXMEaddanoptionModule.isPackaged(toaccessitlikenode.model.module.isPackaged)
     return !(targetScriptModule.isPackaged());
   }
 

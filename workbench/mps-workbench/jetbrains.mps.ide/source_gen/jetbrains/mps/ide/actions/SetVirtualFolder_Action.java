@@ -34,7 +34,7 @@ public class SetVirtualFolder_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // project.isProjectModule would say true for a generator under a language, and we don't want to set VF for it 
+    // project.isProjectModulewouldsaytrueforageneratorunderalanguage,andwedon'twanttosetVFforit
     event.getPresentation().setText(IdeBundle.message("actions.module.set.virtual.folder.text"));
     boolean isApplicable = !(((List<SModule>) MapSequence.fromMap(_params).get("modules")).isEmpty());
     for (SModule module : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
@@ -85,7 +85,7 @@ public class SetVirtualFolder_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     String oldFolder = SetVirtualFolder_Action.this.extractCommonVirtualFolder(_params);
     final String newFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), oldFolder, null);
-    // Only do something on OK or input is different from original string  
+    // OnlydosomethingonOKorinputisdifferentfromoriginalstring
     if (newFolder == null || oldFolder.equals(newFolder)) {
       return;
     }

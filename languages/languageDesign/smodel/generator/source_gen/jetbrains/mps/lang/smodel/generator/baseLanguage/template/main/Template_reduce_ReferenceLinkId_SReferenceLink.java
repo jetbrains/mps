@@ -51,31 +51,31 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_102_0(new PropertyMacroContext(context2, "0L", propertyMacro_y9ad0i_c0a2a0a1a3a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_102_1(new PropertyMacroContext(context2, "0L", propertyMacro_y9ad0i_c0a2a0a1a4a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_102_2(new PropertyMacroContext(context2, "0L", propertyMacro_y9ad0i_c0a2a0a1a5a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode5);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_102_3(new PropertyMacroContext(context2, "0L", propertyMacro_y9ad0i_c0a2a0a1a6a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
         SNodeAccessUtil.setPropertyValue(tnode7, myProperties[1], QueriesGenerated.propertyMacro_GetValue_102_4(new PropertyMacroContext(context2, "", propertyMacro_y9ad0i_c0a2a0a1a7a5a6)));
         tnode2.addChild(myAggregationLinks[0], tnode7);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

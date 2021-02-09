@@ -49,7 +49,7 @@ public class PropertyQualifier_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_tf6bsx_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_tf6bsx_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PropertyQualifier$7l, LINKS.property$zWb1);
     }
     @NotNull

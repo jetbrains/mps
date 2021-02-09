@@ -121,8 +121,8 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   }
 
   private void repaintConflictedMessages(Graphics graphics, EditorCell cell) {
-    // This is a workaround for case when any change message is going to be painted over 
-    // "conflicted" red frame. In this case, we repaint conflicted red frame again 
+    // Thisisaworkaroundforcasewhenanychangemessageisgoingtobepaintedover
+    // "conflicted"redframe.Inthiscase,werepaintconflictedredframeagain
     EditorCell_Collection parent = cell.getParent();
     if (parent != null && parent.getCellsCount() == 1) {
       ChangeEditorMessage messageToRepaint = Sequence.fromIterable(((Iterable<ChangeEditorMessage>) CellMessagesUtil.getMessages(parent, ChangeEditorMessage.class))).findFirst(new IWhereFilter<ChangeEditorMessage>() {

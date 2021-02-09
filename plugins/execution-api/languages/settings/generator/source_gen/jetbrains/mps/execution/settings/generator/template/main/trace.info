@@ -242,11 +242,11 @@
       <node id="5041115067675810390" at="227,94,228,109" concept="5" />
       <node id="5041115067675810401" at="230,94,231,109" concept="5" />
       <node id="3930437502076386617" at="322,78,323,67" concept="5" />
-      <node id="7337446690843378068" at="325,78,326,26" concept="6" />
+      <node id="7337446690843378068" at="325,78,326,23" concept="6" />
       <node id="7337446690843358384" at="328,39,329,113" concept="5" />
-      <node id="7337446690843381586" at="333,78,334,26" concept="6" />
+      <node id="7337446690843381586" at="333,78,334,23" concept="6" />
       <node id="7337446690843381597" at="336,39,337,113" concept="5" />
-      <node id="7337446690843384169" at="341,78,342,26" concept="6" />
+      <node id="7337446690843384169" at="341,78,342,23" concept="6" />
       <node id="7337446690843384180" at="344,39,345,113" concept="5" />
       <node id="5041115067675810620" at="349,78,350,125" concept="5" />
       <node id="3930437502076316668" at="352,78,353,125" concept="5" />
@@ -271,7 +271,7 @@
       <node id="5041115067675810697" at="533,105,534,90" concept="5" />
       <node id="5041115067675810296" at="538,39,539,113" concept="5" />
       <node id="5041115067675810366" at="545,39,546,113" concept="5" />
-      <node id="7337446690843368549" at="614,78,615,74" concept="6" />
+      <node id="7337446690843368549" at="614,78,615,62" concept="6" />
       <node id="7337446690843386568" at="617,39,618,113" concept="5" />
       <node id="5041115067675810725" at="777,56,778,56" concept="1" />
       <node id="5041115067675810733" at="778,56,779,56" concept="1" />
@@ -422,16 +422,16 @@
       <node id="5041115067675810294" at="538,0,541,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5041115067675810364" at="545,0,548,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7337446690843386566" at="617,0,620,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="7337446690843358376" at="326,26,331,20" concept="5" />
-      <node id="7337446690843381588" at="334,26,339,20" concept="5" />
-      <node id="7337446690843384171" at="342,26,347,20" concept="5" />
+      <node id="7337446690843358376" at="326,23,331,20" concept="5" />
+      <node id="7337446690843381588" at="334,23,339,20" concept="5" />
+      <node id="7337446690843384171" at="342,23,347,20" concept="5" />
       <node id="5041115067675810585" at="487,104,492,7" concept="5" />
       <node id="5041115067675810487" at="497,104,502,7" concept="5" />
       <node id="5041115067675810552" at="504,104,509,7" concept="5" />
       <node id="5041115067675810846" at="523,104,528,7" concept="5" />
       <node id="5041115067675810288" at="536,105,541,7" concept="5" />
       <node id="5041115067675810358" at="543,105,548,7" concept="5" />
-      <node id="3930437502076367348" at="615,74,620,20" concept="5" />
+      <node id="3930437502076367348" at="615,62,620,20" concept="5" />
       <node id="5041115067675810583" at="487,0,494,0" concept="8" trace="sourceNodesQuery_2_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="5041115067675810485" at="497,0,504,0" concept="8" trace="sourceNodesQuery_2_2#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="5041115067675810550" at="504,0,511,0" concept="8" trace="sourceNodesQuery_2_3#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />

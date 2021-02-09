@@ -48,7 +48,7 @@ public class templateCallArguments_Contribution extends SubstituteMenuBase {
   public class SMP_Group_rzydzc_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      // under template call but not under a CF. There's a contribution for CFP that adds all CFP of a CF if there's one, avoid menu item duplication. 
+      // undertemplatecallbutnotunderaCF.There'sacontributionforCFPthataddsallCFPofaCFifthere'sone,avoidmenuitemduplication.
       return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ITemplateCall$ab, true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConceptFunction$mf, true, false) == null);
     }
     @NotNull

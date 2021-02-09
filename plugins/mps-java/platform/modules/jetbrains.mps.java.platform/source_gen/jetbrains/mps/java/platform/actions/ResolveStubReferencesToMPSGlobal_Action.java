@@ -67,7 +67,7 @@ public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
     OptimizeImportsHelper oiHelper = new OptimizeImportsHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelsAutoImportsManager.class));
     oiHelper.optimizeModelsImports(models, new EmptyProgressMonitor());
 
-    // FIXME what's the reason to reload modules here? Expecting optimized model imports to affect module dependencies?!  
+    // FIXMEwhat'sthereasontoreloadmoduleshere?Expectingoptimizedmodelimportstoaffectmoduledependencies?!
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ClassLoaderManager.class).reloadAll(new EmptyProgressMonitor());
   }
 }

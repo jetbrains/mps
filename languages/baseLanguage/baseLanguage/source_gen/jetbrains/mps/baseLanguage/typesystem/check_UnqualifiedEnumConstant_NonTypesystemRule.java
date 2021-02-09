@@ -34,12 +34,12 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
   public check_UnqualifiedEnumConstant_NonTypesystemRule() {
   }
   public void applyRule(final SNode varRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // Q: is there a better way for this? 
+    // Q:isthereabetterwayforthis?
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(varRef)), CONCEPTS.VariableReference$TC))) {
       return;
     }
 
-    // FIXME: duplicate code with JavaToMpsConverter 
+    // FIXME:duplicatecodewithJavaToMpsConverter
 
     SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$N1XG);
     if (!(SLinkOperations.isDynamic(ref))) {
@@ -49,7 +49,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       return;
     }
 
-    // now we can try to search 
+    // nowwecantrytosearch
     final String enumConstName = SLinkOperations.getResolveInfo(ref);
 
     for (SNode enclosingEnum : ListSequence.fromList(SNodeOperations.getNodeAncestors(varRef, CONCEPTS.EnumClass$Vk, false))) {
@@ -94,16 +94,16 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
       String enumClassCandidateName = Tokens__BehaviorDescriptor.withoutLastToken_id5ll4uk6512$.invoke(singleNameImport);
       SNode enumClassCandidate = ResolveUnknownUtil.findClass(varRef, enumClassCandidateName);
       if ((enumClassCandidate == null)) {
-        // seems like there is no need to continue 
-        // we had import of the form: import static <class>.<ourName> 
-        // if we meet <ourName> in java code then it must strictly reference this import, not any other 
+        // seemslikethereisnoneedtocontinue
+        // wehadimportoftheform:importstatic<class>.<ourName>
+        // ifwemeet<ourName>injavacodethenitmuststrictlyreferencethisimport,notanyother
         return;
       }
       if (!(SNodeOperations.isInstanceOf(enumClassCandidate, CONCEPTS.EnumClass$Vk))) {
         return;
       }
 
-      // Q: maybe not findFirst, but rather fail if there are more than one... 
+      // Q:maybenotfindFirst,butratherfailiftherearemorethanone...
       SNode enumConst = Sequence.fromIterable(Members.visibleEnumConstants(SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk))).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return enumConstName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
@@ -114,7 +114,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
         return;
       }
 
-      // success 
+      // success
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
       SLinkOperations.setTarget(result, LINKS.enumClass$bGAj, SNodeOperations.cast(enumClassCandidate, CONCEPTS.EnumClass$Vk));
       SLinkOperations.setTarget(result, LINKS.enumConstantDeclaration$f1_N, enumConst);

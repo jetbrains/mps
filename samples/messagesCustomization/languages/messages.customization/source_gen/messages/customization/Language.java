@@ -56,7 +56,7 @@ public class Language extends LanguageRuntime {
     }
 
 
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
+    // AP:legacypart,mustbemigratedfromswitch:pleaseuselang.descriptormappinglabel
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new messages.customization.constraints.ConstraintsAspectDescriptor());
     }

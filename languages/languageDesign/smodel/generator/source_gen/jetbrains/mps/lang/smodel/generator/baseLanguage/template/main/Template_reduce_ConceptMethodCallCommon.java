@@ -49,7 +49,7 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
           for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
             tnode2.addChild(myAggregationLinks[0], child4);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist5 = null;
@@ -57,7 +57,7 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
           for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
             tnode2.addChild(myAggregationLinks[1], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);

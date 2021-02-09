@@ -50,7 +50,7 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
     SNode thisType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(contextClassifier);
 
     final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
-    // check the inference context 
+    // checktheinferencecontext
     if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(methodCall))) {
       List<SNode> inferrableTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(mdecl, LINKS.returnType$5xoi), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
@@ -75,7 +75,7 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
         }
       }).toListSequence();
       for (SNode tvd : ListSequence.fromList(inferrableTypeVars).subtract(ListSequence.fromList(boundTypeVars))) {
-        // assume all unbound type vars outside an inference context are Object 
+        // assumeallunboundtypevarsoutsideaninferencecontextareObject
         MapSequence.fromMap(subs).put(tvd, _quotation_createNode_okooqp_a0b0c0k0b());
       }
     }

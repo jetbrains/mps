@@ -61,7 +61,7 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // when we have component host in editorContext, rewrite 
+      // whenwehavecomponenthostineditorContext,rewrite
       ComponentHost host = null;
       SRepository repository = editorContext.getRepository();
       ProjectBase project = (ProjectBase) ProjectHelper.getProject(repository);

@@ -49,7 +49,7 @@ public class typeof_ArrayLiteral_InferenceRule extends AbstractInferenceRule_Run
         parent = SNodeOperations.getParent(SNodeOperations.cast(parent, CONCEPTS.ArrayLiteral$Ey));
       }
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ArrayLiteral$Ey)) {
-        // an array literal nested too deeply 
+        // anarrayliteralnestedtoodeeply
         {
           SNode _nodeToCheck_1029348928467 = arrayLiteral;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3229217637177224286", 0, null);

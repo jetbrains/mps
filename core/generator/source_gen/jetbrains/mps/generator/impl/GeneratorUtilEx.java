@@ -49,7 +49,7 @@ public final class GeneratorUtilEx {
     final SConcept conceptTemplateFragment = CONCEPTS.TemplateFragment$eq;
     while (!(queue.isEmpty())) {
       SNode subnode = queue.removeFirst();
-      // do not look for TemplateFragments in subnode's children as TFs couldn't be nested 
+      // donotlookforTemplateFragmentsinsubnode'schildrenasTFscouldn'tbenested
       boolean tfFound = false;
       for (SNode attr : SLinkOperations.getChildren(subnode, LINKS.smodelAttribute$KJ43)) {
         if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(attr)), SNodeOperations.asSConcept(conceptTemplateFragment))) {
@@ -75,19 +75,19 @@ public final class GeneratorUtilEx {
    * @return true if expression is not simple enough to get evaluated in runtime without actual Java code generated
    */
   public static boolean shallGenerateFunctionToEvaluate(SNode expr) {
-    // Some Expressions (e.g. genContext.variable) used to get wrapped with TypeHintExpression at startup (see AddTypeHints script), 
-    // but now it's TypeHintAttribute we shall not notice here 
-    //  
-    // For generated templates, assumptions here shall match switch_Argument, 
-    // for interpreted, TemplateCall#toExpressionRuntime 
+    // SomeExpressions(e.g.genContext.variable)usedtogetwrappedwithTypeHintExpressionatstartup(seeAddTypeHintsscript),
+    // butnowit'sTypeHintAttributeweshallnotnoticehere
+    // 
+    // Forgeneratedtemplates,assumptionshereshallmatchswitch_Argument,
+    // forinterpreted,TemplateCall#toExpressionRuntime
     if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentQueryExpression$Zq)) {
       return true;
     }
     boolean customProcessing = SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentVarRefExpression2$1W);
     customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentPatternRef$dA);
     customProcessing |= SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentParameterExpression$$z);
-    // XXX generated templates are fine with genContext operations, however, there's no support for these in TemplateCall#toExpressionRuntime() yet. 
-    // I'd need a switch by GenerationContextOp_Base subconcepts that get translated into respective TemplateContext call. 
+    // XXXgeneratedtemplatesarefinewithgenContextoperations,however,there'snosupportfortheseinTemplateCall#toExpressionRuntime()yet.
+    // I'dneedaswitchbyGenerationContextOp_BasesubconceptsthatgettranslatedintorespectiveTemplateContextcall.
     if (customProcessing) {
       return false;
     }
@@ -135,7 +135,7 @@ public final class GeneratorUtilEx {
   }
   public static DismissTopMappingRuleException.MessageType getGeneratorMessage_kind(SNode generatorMessage) {
     if (generatorMessage == null) {
-      // this is how it used to be, although to me default to warn/info might be better 
+      // thisishowitusedtobe,althoughtomedefaulttowarn/infomightbebetter
       return null;
     }
     if (SEnumOperations.isMember(SPropertyOperations.getEnum(generatorMessage, PROPS.messageType$vgra), 0x11055c831d8L)) {

@@ -53,7 +53,7 @@ public class BuildMps_ModuleSolutionRuntime_SubstituteMenu extends SubstituteMen
   public class SMP_ReferenceScope_ge1ifl_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_ge1ifl_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BuildMps_ModuleSolutionRuntime$b5, LINKS.solution$3MS);
     }
     @NotNull

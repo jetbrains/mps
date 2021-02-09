@@ -33,7 +33,7 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   public check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule() {
   }
   public void applyRule(final SNode switchCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // FIXME: almost duplicate code with MultipleFilesParser 
+    // FIXME:almostduplicatecodewithMultipleFilesParser
     List<SNode> exps = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6));
     ListSequence.fromList(exps).visitAll(new IVisitor<SNode>() {
       public void visit(SNode caseExp) {

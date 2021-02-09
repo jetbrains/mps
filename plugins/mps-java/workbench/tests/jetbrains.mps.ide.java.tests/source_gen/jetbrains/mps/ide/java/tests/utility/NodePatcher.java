@@ -73,7 +73,7 @@ public class NodePatcher {
     });
 
     for (SNode thisAnnoInst : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AnnotationInstance$yl, false, new SAbstractConcept[]{}))) {
-      // getting value of retention annotation for this annotation 
+      // gettingvalueofretentionannotationforthisannotation
       SNode retensionExp = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(thisAnnoInst, LINKS.annotation$12Ek), LINKS.annotation$K49I)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == retentionAnno;

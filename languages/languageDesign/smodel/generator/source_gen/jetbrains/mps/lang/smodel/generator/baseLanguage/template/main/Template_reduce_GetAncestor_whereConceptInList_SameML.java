@@ -55,7 +55,7 @@ public class Template_reduce_GetAncestor_whereConceptInList_SameML extends Templ
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -69,7 +69,7 @@ public class Template_reduce_GetAncestor_whereConceptInList_SameML extends Templ
                 final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
                 environment.associate(tnode6, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept");
                 tnode5.addChild(myAggregationLinks[1], tnode6);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final List<SNode> tlist7 = new ArrayList<SNode>();
@@ -93,33 +93,33 @@ public class Template_reduce_GetAncestor_whereConceptInList_SameML extends Templ
                 for (SNode child9 : TemplateUtil.asNotNull(tlist7)) {
                   tnode5.addChild(myAggregationLinks[2], child9);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode4.addChild(myAggregationLinks[3], tnode5);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[0], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
         SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_54_0(new PropertyMacroContext(context1, null, propertyMacro_nv63xn_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode10);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[4]);
         SNodeAccessUtil.setPropertyValue(tnode11, myProperties[0], QueriesGenerated.propertyMacro_GetValue_54_1(new PropertyMacroContext(context1, null, propertyMacro_nv63xn_c0a2a0a1a6a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode11);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode12 = environment.createOutputNode(myConcepts[4]);
         tnode12.setProperty(myProperties[0], "true");
         tnode1.addChild(myAggregationLinks[0], tnode12);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(4, tnode1);

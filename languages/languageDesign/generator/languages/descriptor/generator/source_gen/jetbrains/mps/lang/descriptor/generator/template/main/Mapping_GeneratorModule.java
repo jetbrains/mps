@@ -83,7 +83,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
               tnode2.addChild(myAggregationLinks[0], child4);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist5 = null;
@@ -92,7 +92,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
               tnode2.addChild(myAggregationLinks[0], child6);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -109,7 +109,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
               tnode7.addChild(myAggregationLinks[0], child9);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist10 = null;
@@ -118,7 +118,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
               tnode7.addChild(myAggregationLinks[0], child11);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode7);
@@ -135,7 +135,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
               tnode12.addChild(myAggregationLinks[0], child14);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist15 = null;
@@ -144,7 +144,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child16 : TemplateUtil.asNotNull(tlist15)) {
               tnode12.addChild(myAggregationLinks[0], child16);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode12);
@@ -161,7 +161,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child19 : TemplateUtil.asNotNull(tlist18)) {
               tnode17.addChild(myAggregationLinks[0], child19);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist20 = null;
@@ -170,7 +170,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child21 : TemplateUtil.asNotNull(tlist20)) {
               tnode17.addChild(myAggregationLinks[0], child21);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode17);
@@ -187,7 +187,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child24 : TemplateUtil.asNotNull(tlist23)) {
               tnode22.addChild(myAggregationLinks[0], child24);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist25 = null;
@@ -196,7 +196,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
             for (SNode child26 : TemplateUtil.asNotNull(tlist25)) {
               tnode22.addChild(myAggregationLinks[0], child26);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode22);
@@ -220,7 +220,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a3a2a1j)));
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist3 = null;
@@ -229,7 +229,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
             tnode1.addChild(myAggregationLinks[0], child4);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -251,19 +251,19 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a3a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a4a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode3);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a5a2a1k)));
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -314,7 +314,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

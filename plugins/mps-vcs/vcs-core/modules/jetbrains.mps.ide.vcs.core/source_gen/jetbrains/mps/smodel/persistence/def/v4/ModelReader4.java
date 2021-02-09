@@ -40,34 +40,34 @@ public class ModelReader4 implements IModelReader {
     Element rootElement = document.getRootElement();
     SModelReference modelReference = VCSPersistenceUtil.createModelReference(rootElement.getAttributeValue(VCSPersistenceSupport.MODEL_UID));
     DefaultSModel model = new DefaultSModel(modelReference, header);
-    // languages 
+    // languages
     List languages = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE);
     for (Object language : languages) {
       Element element = (Element) language;
       String languageNamespace = element.getAttributeValue(VCSPersistenceSupport.NAMESPACE);
       new SModelLegacy(model).addLanguage(PersistenceFacade.getInstance().createModuleReference(languageNamespace));
       List<Element> aspectElements = element.getChildren(VCSPersistenceSupport.LANGUAGE_ASPECT);
-      // aspect models versions 
+      // aspectmodelsversions
       readLanguageAspects(model, aspectElements);
     }
-    // additional aspects 
+    // additionalaspects
     List<Element> aspectElements = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE_ASPECT);
     readLanguageAspects(model, aspectElements);
-    // languages engaged on generation 
+    // languagesengagedongeneration
     List languagesEOG = rootElement.getChildren(VCSPersistenceSupport.LANGUAGE_ENGAGED_ON_GENERATION);
     for (Object languageEOG : languagesEOG) {
       Element element = (Element) languageEOG;
       String languageNamespace = element.getAttributeValue(VCSPersistenceSupport.NAMESPACE);
       new SModelLegacy(model).addEngagedOnGenerationLanguage(PersistenceFacade.getInstance().createModuleReference(languageNamespace));
     }
-    // devkits 
+    // devkits
     List devkits = rootElement.getChildren(VCSPersistenceSupport.DEVKIT);
     for (Object devkit : devkits) {
       Element element = (Element) devkit;
       String devkitNamespace = element.getAttributeValue(VCSPersistenceSupport.NAMESPACE);
       model.addDevKit(PersistenceFacade.getInstance().createModuleReference(devkitNamespace));
     }
-    // imports 
+    // imports
     List imports = rootElement.getChildren(VCSPersistenceSupport.IMPORT_ELEMENT);
     for (Object anImport : imports) {
       Element element = (Element) anImport;
@@ -75,7 +75,7 @@ public class ModelReader4 implements IModelReader {
       int importIndex = Integer.parseInt(indexValue);
       String importedModelUIDString = element.getAttributeValue(VCSPersistenceSupport.MODEL_UID);
       if (importedModelUIDString == null) {
-        // read in old manner... 
+        // readinoldmanner...
         importedModelUIDString = getLegacyImportedModelUIDString(element);
       }
       if (importedModelUIDString == null) {
@@ -87,7 +87,7 @@ public class ModelReader4 implements IModelReader {
     }
     ArrayList<IReferencePersister> referenceDescriptors = new ArrayList<IReferencePersister>();
     readRefactorings(rootElement, model);
-    // nodes 
+    // nodes
     List children = rootElement.getChildren(VCSPersistenceSupport.NODE);
     for (Object child : children) {
       Element element = (Element) child;
@@ -104,7 +104,7 @@ public class ModelReader4 implements IModelReader {
   }
   protected void readRefactorings(Element rootElement, DefaultSModel model) {
     rootElement.getChild("refactoringHistory");
-    // no-op, we do not care about refactorings in that old persistence versions 
+    // no-op,wedonotcareaboutrefactoringsinthatoldpersistenceversions
   }
   protected void readLanguageAspects(DefaultSModel model, List<Element> aspectElements) {
     for (Element aspectElement : aspectElements) {

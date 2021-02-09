@@ -56,7 +56,7 @@ public class ConvertConstraintsToRulesAutomatically extends IntentionsFactory {
 
 
   private boolean isApplicableHelper(SNode node, EditorContext editorContext) {
-    // research feature, probably one day we introduce an automated migrations from that 
+    // researchfeature,probablyonedayweintroduceanautomatedmigrationsfromthat
     return false;
   }
 

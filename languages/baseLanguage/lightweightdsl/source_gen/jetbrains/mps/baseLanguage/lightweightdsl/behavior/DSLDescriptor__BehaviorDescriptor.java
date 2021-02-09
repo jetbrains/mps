@@ -55,7 +55,7 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
     }
     try {
       String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(__thisNode__);
-      // FIXME here's an assumption that implementation class has been generated in the same module as node<DSLDescriptor> 
+      // FIXMEhere'sanassumptionthatimplementationclasshasbeengeneratedinthesamemoduleasnode<DSLDescriptor>
       SModule classModule = __thisNode__.getModel().getModule();
       Method[] methods = ClassLoaderManager.getInstance().getClass(classModule, className).getMethods();
       for (Method m : methods) {

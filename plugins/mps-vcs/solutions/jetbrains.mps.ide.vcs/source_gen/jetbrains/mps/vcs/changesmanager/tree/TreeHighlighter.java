@@ -64,13 +64,13 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
    * use TreeHighlighterFactory to instantiate
    */
   /*package*/ TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal, @NotNull MergingUpdateQueue queue) {
-    // package 
+    // package
     myRegistry = registry;
     myFeaturesFromVcs = featureForestMapSupport.getMap();
     myTree = tree;
     myFeatureExtractor = featureExtractor;
-    // XXX what does this mean? 
-    // myGlobalModelListener = removeNodesOnModelDisposal ? new MyModelDisposeListener() : null; 
+    // XXXwhatdoesthismean?
+    // myGlobalModelListener=removeNodesOnModelDisposal?newMyModelDisposeListener():null;
     myQueue = queue;
   }
 
@@ -81,10 +81,10 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     myInitialized = true;
     myFeaturesFromVcs.addListener(myFeatureListener);
     myTree.addTreeNodeListener(myTreeNodeListener);
-    // FileStatusManager.getInstance(myRegistry.getProject()).addFileStatusListener(myFileStatusListener); 
-    // if (myGlobalModelListener != null) { 
-    // new RepoListenerRegistrar(getProjectRepository(), myGlobalModelListener).attach(); 
-    // } 
+    // FileStatusManager.getInstance(myRegistry.getProject()).addFileStatusListener(myFileStatusListener);
+    // if(myGlobalModelListener!=null){
+    // newRepoListenerRegistrar(getProjectRepository(),myGlobalModelListener).attach();
+    // }
     getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
         MPSTreeNode rootNode = myTree.getRootNode();
@@ -101,10 +101,10 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       return;
     }
     myInitialized = false;
-    // if (myGlobalModelListener != null) { 
-    // new RepoListenerRegistrar(getProjectRepository(), myGlobalModelListener).detach(); 
-    // } 
-    // FileStatusManager.getInstance(myRegistry.getProject()).removeFileStatusListener(myFileStatusListener); 
+    // if(myGlobalModelListener!=null){
+    // newRepoListenerRegistrar(getProjectRepository(),myGlobalModelListener).detach();
+    // }
+    // FileStatusManager.getInstance(myRegistry.getProject()).removeFileStatusListener(myFileStatusListener);
     myTree.removeTreeNodeListener(myTreeNodeListener);
     myFeaturesFromVcs.removeListener(myFeatureListener);
   }
@@ -136,7 +136,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   }
 
   private void registerNode(@NotNull MPSTreeNode node) {
-    // LOG.debug("registering the node " + node); 
+    // LOG.debug("registeringthenode"+node);
     FeatureWithParent parentfwp = null;
     if (node.getParent() instanceof MPSTreeNode) {
       Collection<FeatureWithParent> featuresByNode = myFeaturesVisibleInTree.getFeaturesByNode((MPSTreeNode) node.getParent());
@@ -232,7 +232,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       public boolean test(SModelReference mRef) {
         CurrentDifference existingCurDifference = myRegistry.getExistingCurDifference(mRef);
         if (existingCurDifference != null) {
-          // already something is initialized, lets wait 
+          // alreadysomethingisinitialized,letswait
           if (existingCurDifference.setEnabled(true)) {
             result.add(mRef);
           }
@@ -241,7 +241,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         return true;
       }
     };
-    // already something is initialized, lets wait 
+    // alreadysomethingisinitialized,letswait
     return (List<SModelReference>) modelReferences.stream().filter(needReadToDecide).collect(Collectors.toList());
   }
 
@@ -269,7 +269,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private void rehighlightFeatures0(@NotNull Collection<Feature> features) {
     LOG.trace("Rehighlighting " + features.size() + " features");
     for (Feature feature : features) {
-      // LOG.info("Rehighlighting " + feature); 
+      // LOG.info("Rehighlighting"+feature);
       List<MPSTreeNode> toUpdate = new ArrayList<MPSTreeNode>();
       synchronized (myFeaturesVisibleInTree) {
         Collection<MPSTreeNode> nodesByFeature = myFeaturesVisibleInTree.getNodesByFeature(feature);
@@ -350,8 +350,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
     @Override
     public void run() {
-      // schedules node update to run in correct thread 
-      // fixme why do we need read in that edt 
+      // schedulesnodeupdatetorunincorrectthread
+      // fixmewhydoweneedreadinthatedt
       myTreeHighlighter.getProjectRepository().getModelAccess().runReadInEDT(new Runnable() {
         @Override
         public void run() {
@@ -374,7 +374,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
     @Override
     public boolean canEat(Update update) {
-      // this one would re-highlight all, why bother with a single request 
+      // thisonewouldre-highlightall,whybotherwithasinglerequest
       if (update instanceof HighlightNodeAndFeature) {
         return ((HighlightNodeAndFeature) update).isSameHighlighter(TreeHighlighter.this);
       }
@@ -387,7 +387,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     public void run() {
       MPSProject mpsProject = myRegistry.getMPSProject();
       if (mpsProject.getComponent(MakeServiceComponent.class).isSessionActive()) {
-        // re-queue, it will be executed in next batch after delay 
+        // re-queue,itwillbeexecutedinnextbatchafterdelay
         rehighlightAllFeaturesLater();
       } else {
         rehighlightAllFeaturesNow();
@@ -410,7 +410,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   @Nullable
   private TreeMessage getMessage(@NotNull FileStatus fileStatus) {
     if (fileStatus == FileStatus.NOT_CHANGED) {
-      // just like when initialized 
+      // justlikewheninitialized
       return null;
     }
     return myTreeMessages.computeIfAbsent(fileStatus, new Function<FileStatus, TreeMessage>() {
@@ -492,7 +492,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
             return fpw.getFeature();
           }
         }).collect(Collectors.toList());
-        // adding all the ancestors visible in the tree 
+        // addingalltheancestorsvisibleinthetree
         allFeatures.addAll(featuresInUITree);
         for (Feature f : featuresInUITree) {
           FeatureWithParent parent = myFeaturesVisibleInTree.resolveParentInfo(f).getParent();
@@ -559,9 +559,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     public void removeNode(MPSTreeNode node) {
       Collection<FeatureWithParent> removed = myFeatureToNodesBack.remove(node);
       if (removed == null) {
-        // if (LOG.isEnabledFor(Level.ERROR)) { 
-        // LOG.error("trying to remove tree node which was not registered: " + node.getClass().getName()); 
-        // } 
+        // if(LOG.isEnabledFor(Level.ERROR)){
+        // LOG.error("tryingtoremovetreenodewhichwasnotregistered:"+node.getClass().getName());
+        // }
         return;
       }
       for (FeatureWithParent fwp : removed) {
@@ -594,7 +594,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       if (fwp != null) {
         return fwp;
       } else {
-        // for example not yet present in tree 
+        // forexamplenotyetpresentintree
         return null;
       }
     }

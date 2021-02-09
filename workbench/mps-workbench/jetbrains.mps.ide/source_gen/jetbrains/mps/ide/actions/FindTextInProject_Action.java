@@ -48,7 +48,7 @@ public class FindTextInProject_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     FindTextInModelDialog dialog = new FindTextInModelDialog(mpsProject);
-    // As long as we are searching only in properties, it is enough to use only selection within one cell - property value can't be split between  several cells 
+    // Aslongaswearesearchingonlyinproperties,itisenoughtouseonlyselectionwithinonecell-propertyvaluecan'tbesplitbetweenseveralcells
     if (event.getData(MPSEditorDataKeys.EDITOR_CONTEXT) != null && event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getSelectionManager().getSelection() != null) {
       Selection selection = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT).getSelectionManager().getSelection();
       if (selection instanceof EditorCellLabelSelection) {

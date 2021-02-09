@@ -133,16 +133,16 @@ public class Script implements IScript {
     ListSequence.fromList(this.errors).addElement(new ValidationError(this, message));
   }
   /*package*/ FacetRegistry getFacetRegistry() {
-    // nullable 
+    // nullable
     return myFacetRegistry;
   }
   public void setFacetRegistry(FacetRegistry facetRegistry) {
-    // FIXME provisional mechanism to get FacetRegistry instance for use in PropertiesWithBackstore 
-    //       Shall be set prior to execute() call. General MPS implementation supplies one as MResource it uses are of IResourceWithProperties kind 
-    //       and chances are we get to loadProperties(IFacet.Name). Tests that don't use MResource don't need to bother. 
-    //       Alternatively, could extract FacetRegistry from IJobMonitor.getSession().getProject().getComponent() inside #executeTargets 
-    //       but find this setter much more straightforward (although don't like the approach in general - not clear what's Script and what's its relation  
-    //       to FacetRegistry as long as it keeps ITarget.Name. Still, there's execute, so it's not pure target container, and I'm in doubt how to wrap it up right, hence fixme) 
+    // FIXMEprovisionalmechanismtogetFacetRegistryinstanceforuseinPropertiesWithBackstore
+    // Shallbesetpriortoexecute()call.GeneralMPSimplementationsuppliesoneasMResourceitusesareofIResourceWithPropertieskind
+    // andchancesarewegettoloadProperties(IFacet.Name).Teststhatdon'tuseMResourcedon'tneedtobother.
+    // Alternatively,couldextractFacetRegistryfromIJobMonitor.getSession().getProject().getComponent()inside#executeTargets
+    // butfindthissettermuchmorestraightforward(althoughdon'tliketheapproachingeneral-notclearwhat'sScriptandwhat'sitsrelation
+    // toFacetRegistryaslongasitkeepsITarget.Name.Still,there'sexecute,soit'snotpuretargetcontainer,andI'mindoubthowtowrapitupright,hencefixme)
     myFacetRegistry = facetRegistry;
   }
   @Override
@@ -249,7 +249,7 @@ __switch__:
   }
   private void executeTargets(IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
-    // add time statistic result first - in composite result output() is the last one 
+    // addtimestatisticresultfirst-incompositeresultoutput()isthelastone
     results.addResult(TIME_STATISTIC_RESULT_NAME, new IResult.SUCCESS(Sequence.<IResource>singleton(new TimeStatisticResource(timeStatistic))));
 
     ctl.runJobWithMonitor(new _FunctionTypes._void_P1_E0<IJobMonitor>() {
@@ -317,7 +317,7 @@ with_targets:
                 MapSequence.fromMap(timeStatistic).put(trg.getName(), ((MapSequence.fromMap(timeStatistic).containsKey(trg.getName()) ? MapSequence.fromMap(timeStatistic).get(trg.getName()) : 0)) + (System.currentTimeMillis() - startTime));
               }
               if (!(trg.producesOutput())) {
-                // ignore the output 
+                // ignoretheoutput
                 jr = new SubsOutputResult(jr, (trg.requiresInput() ? Sequence.fromIterable(rawInput).subtract(Sequence.fromIterable(input)) : rawInput));
               }
               results.addResult(trg.getName(), jr);
@@ -395,7 +395,7 @@ with_targets:
             try {
               orig = cls.cast(available);
             } catch (ClassCastException cce) {
-              // ignore, just assume the original value is null 
+              // ignore,justassumetheoriginalvalueisnull
               Script.LOG.debug("can't cast original parameters to required class [" + cls.getName() + "]");
               Script.LOG.debug("requested class's classloader " + cls.getClassLoader() + "@" + System.identityHashCode(cls.getClassLoader()));
               Script.LOG.debug("original object's classloader " + available.getClass().getClassLoader() + "@" + System.identityHashCode(available.getClass().getClassLoader()));

@@ -32,10 +32,10 @@
       <node id="9076354678697146042" at="66,88,67,208" concept="4" />
       <node id="9076354678697482803" at="67,208,68,0" concept="7" />
       <node id="9076354678697019754" at="68,0,69,17" concept="4" />
-      <node id="9076354678697317676" at="69,17,70,69" concept="6" />
+      <node id="9076354678697317676" at="69,17,70,57" concept="6" />
       <node id="9076354678697242887" at="71,113,72,97" concept="1" />
-      <node id="9076354678697292260" at="73,12,74,22" concept="6" />
-      <node id="9076354678697273093" at="74,22,75,21" concept="1" />
+      <node id="9076354678697292260" at="73,12,74,20" concept="6" />
+      <node id="9076354678697273093" at="74,20,75,21" concept="1" />
       <node id="9076354678697001650" at="76,5,77,0" concept="7" />
       <node id="9076354678696953776" at="77,0,78,35" concept="5" />
       <node id="6102524510012313620" at="80,88,81,172" concept="5" />
@@ -51,8 +51,8 @@
       <node id="3639941018583111201" at="104,52,105,0" concept="7" />
       <node id="8053876061332234779" at="107,104,108,101" concept="4" />
       <node id="4031822141862175847" at="110,39,111,145" concept="5" />
-      <node id="4031822141862228715" at="115,104,116,67" concept="6" />
-      <node id="4031822141862196873" at="116,67,117,101" concept="4" />
+      <node id="4031822141862228715" at="115,104,116,60" concept="6" />
+      <node id="4031822141862196873" at="116,60,117,101" concept="4" />
       <node id="8849917859617278427" at="117,101,118,77" concept="4" />
       <node id="4031822141862196889" at="120,39,121,102" concept="5" />
       <node id="3919210978214507610" at="125,104,126,167" concept="5" />
@@ -117,7 +117,7 @@
       <node id="6593674873636749813" at="97,107,102,24" concept="4" />
       <node id="3919210978214505259" at="108,101,113,38" concept="5" />
       <node id="4031822141862211093" at="118,77,123,7" concept="5" />
-      <node id="9076354678697016618" at="70,69,76,5" concept="2" />
+      <node id="9076354678697016618" at="70,57,76,5" concept="2" />
       <node id="3919210978214504484" at="107,0,115,0" concept="8" trace="sourceNodesQuery_0_1#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="4031822141862196871" at="115,0,125,0" concept="8" trace="sourceNodesQuery_0_2#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="3919210978214521412" at="95,0,107,0" concept="8" trace="sourceNodesQuery_0_0#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />

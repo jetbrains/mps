@@ -24,7 +24,7 @@ public final class ReferencesFinder {
   private final DependencyViewerScope myInitialScope;
 
   public ReferencesFinder(@Nullable DependencyViewerScope initialScope) {
-    // null value is tolerated unless #findRefsFromScopeToOuter or #getRefsBetweenScopes (i.e. non-meta methods) are invoked 
+    // nullvalueistoleratedunless#findRefsFromScopeToOuteror#getRefsBetweenScopes(i.e.non-metamethods)areinvoked
     myInitialScope = initialScope;
   }
 
@@ -112,7 +112,7 @@ public final class ReferencesFinder {
         if (!(to.contains(targetNode))) {
           continue;
         }
-        // XXX same node might be reported several times, is it what we need? 
+        // XXXsamenodemightbereportedseveraltimes,isitwhatweneed?
         results.add(new SearchResult<SNode>(node, "references"));
         break;
       }
@@ -132,7 +132,7 @@ public final class ReferencesFinder {
     ArrayList<SearchResult<SNode>> results = new ArrayList<SearchResult<SNode>>();
     for (SNode node : ListSequence.fromList(nodes)) {
       SConcept concept = node.getConcept();
-      // todo replace targetScope.contains with SConcept check 
+      // todoreplacetargetScope.containswithSConceptcheck
       if (concept.isValid() && targetScope.contains(concept.getDeclarationNode())) {
         results.add(new SearchResult(node, "language"));
       }

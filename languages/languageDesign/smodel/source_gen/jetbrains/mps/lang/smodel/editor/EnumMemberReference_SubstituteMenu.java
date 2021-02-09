@@ -49,7 +49,7 @@ public class EnumMemberReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_pzcnlg_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_pzcnlg_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.EnumMemberReference$b5, LINKS.decl$$49r);
     }
     @NotNull

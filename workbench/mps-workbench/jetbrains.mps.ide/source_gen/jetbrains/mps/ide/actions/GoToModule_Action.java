@@ -62,7 +62,7 @@ public class GoToModule_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.module");
 
-    // PsiDocumentManager.getInstance(project).commitAllDocuments(); 
+    // PsiDocumentManager.getInstance(project).commitAllDocuments();
     final Condition<SModule> knownModules = new ModuleInstanceCondition(Solution.class, Language.class, DevKit.class);
     final SearchScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), knownModules, null);
     final SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(), knownModules, null);

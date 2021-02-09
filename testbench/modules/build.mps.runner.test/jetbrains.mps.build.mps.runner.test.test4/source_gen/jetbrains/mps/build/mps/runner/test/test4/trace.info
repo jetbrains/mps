@@ -29,18 +29,18 @@
       <node id="1891402444881759161" at="47,7,48,135" concept="0" />
       <node id="1891402444881801788" at="52,44,53,61" concept="4" />
       <node id="1891402444881815168" at="57,7,58,25" concept="0" />
-      <node id="8634171685214362830" at="58,25,59,27" concept="5" />
+      <node id="8634171685214362830" at="58,25,59,24" concept="5" />
       <node id="8634171685214378757" at="63,43,64,94" concept="4" />
       <node id="8634171685214381442" at="68,7,69,24" concept="0" />
       <node id="1891402444881819650" at="69,24,70,0" concept="6" />
-      <node id="1891402444881939340" at="70,0,71,25" concept="5" />
-      <node id="8634171685214412103" at="71,25,72,67" concept="3" />
+      <node id="1891402444881939340" at="70,0,71,22" concept="5" />
+      <node id="8634171685214412103" at="71,22,72,67" concept="3" />
       <node id="8634171685214228739" at="76,33,77,147" concept="1" />
       <node id="8634171685214445366" at="79,47,80,86" concept="4" />
       <node id="8634171685214458928" at="86,7,87,32" concept="0" />
       <node id="1891402444881935197" at="87,32,88,0" concept="6" />
-      <node id="2304492758936197644" at="88,0,89,56" concept="5" />
-      <node id="2304492758936197493" at="89,56,90,66" concept="1" />
+      <node id="2304492758936197644" at="88,0,89,48" concept="5" />
+      <node id="2304492758936197493" at="89,48,90,66" concept="1" />
       <node id="8634171685214339052" at="92,71,93,63" concept="3" />
       <node id="8634171685214339052" at="93,63,94,30" concept="3" />
       <node id="8634171685214339052" at="94,30,95,30" concept="3" />
@@ -68,7 +68,7 @@
       <node id="1891402444881821365" at="61,0,68,0" concept="2" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8634171685214220726" at="76,0,84,0" concept="2" trace="invoke#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1891402444881784923" at="48,135,57,7" concept="3" />
-      <node id="8634171685214359061" at="59,27,68,7" concept="3" />
+      <node id="8634171685214359061" at="59,24,68,7" concept="3" />
       <node id="8634171685214215594" at="74,25,84,12" concept="1" />
       <node id="1912033194715263585" at="74,0,86,0" concept="2" trace="run#()V" />
       <node id="8634171685214339052" at="92,0,105,0" concept="8" trace="_quotation_createNode_ea23db_a0a0a0a0a0a0p0e#()Lorg/jetbrains/mps/openapi/model/SNode;" />

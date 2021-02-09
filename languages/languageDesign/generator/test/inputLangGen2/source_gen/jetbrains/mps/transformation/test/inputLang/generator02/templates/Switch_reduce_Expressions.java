@@ -84,11 +84,11 @@ public class Switch_reduce_Expressions extends TemplateSwitchBase implements Tem
               for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[0], child6);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode2.addChild(myAggregationLinks[1], tnode3);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       Collection<SNode> tlist7 = TemplateUtil.asList(tlist1, tnode2);

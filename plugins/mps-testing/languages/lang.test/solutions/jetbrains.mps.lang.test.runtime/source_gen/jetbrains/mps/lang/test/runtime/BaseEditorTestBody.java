@@ -158,7 +158,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   protected void checkAssertion() throws Throwable {
     final Wrappers._T<Throwable> throwable = new Wrappers._T<Throwable>(null);
     flushEvents();
-    // FIXME why do we need model write here? 
+    // FIXMEwhydoweneedmodelwritehere?
     ThreadUtils.runInUIThreadAndWait(new Runnable() {
       public void run() {
         myProject.getModelAccess().runWriteAction(new Runnable() {
@@ -372,22 +372,22 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private void flushEDTEvents() throws InvocationTargetException, InterruptedException {
-    // wait for all events currently in EDT queue 
+    // waitforalleventscurrentlyinEDTqueue
     SwingUtilities.invokeAndWait(new Runnable() {
       @Override
       public void run() {
-        // empty task 
+        // emptytask
       }
     });
-    // flushing model events 
+    // flushingmodelevents
     flushEvents();
   }
 
   private void flushEvents() {
-    // XXX MA.flushEventQueue has been commented out intentionally, don't bring it back unless you've got a bullet-proof justification 
-    //     There's no flushEventQueue() in openapi.MA and I don't want to introduce one unless utterly necessary. 
-    //     It it comes to a point we need to flush model events AND empty EDT cmd of flushEDTEvents is not sufficient, we may 
-    //     consider doing smth like myProject.getModelAccess().runWriteInEDT() here, with some synchronization primitive. 
+    // XXXMA.flushEventQueuehasbeencommentedoutintentionally,don'tbringitbackunlessyou'vegotabullet-proofjustification
+    // There'snoflushEventQueue()inopenapi.MAandIdon'twanttointroduceoneunlessutterlynecessary.
+    // ItitcomestoapointweneedtoflushmodeleventsANDemptyEDTcmdofflushEDTEventsisnotsufficient,wemay
+    // considerdoingsmthlikemyProject.getModelAccess().runWriteInEDT()here,withsomesynchronizationprimitive.
   }
 
   protected void switchToInspector() throws InvocationTargetException, InterruptedException {
@@ -445,7 +445,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
       throw new RuntimeException("Failure during editor test execution", exception);
     }
     flushEDTEvents();
-    // some actions (Copy/Paste) are running one more command later 
+    // someactions(Copy/Paste)arerunningonemorecommandlater
     flushEDTEvents();
     undoManager.setEditorProvider(oldEditorProvider);
   }

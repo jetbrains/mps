@@ -30,7 +30,7 @@ public class typeof_SNodeTypeCastExpression_InferenceRule extends AbstractInfere
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3906496115198930867", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(LeftType_typevar_1186061665928), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "3906496115198930871", true), _info_12389875345);
     }
-    //  this when concrete has a sense of overloading 
+    // thiswhenconcretehasasenseofoverloading
     {
       final SNode ignore1 = typeCheckingContext.getRepresentative(LeftType_typevar_1186061665928);
       typeCheckingContext.whenConcrete(ignore1, new Runnable() {

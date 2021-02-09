@@ -31,7 +31,7 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
     SNode originalMethod = SLinkOperations.getTarget(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.baseMethodDeclaration$pyYw);
     SNode arityParam = null;
 
-    // Save last arg (if variable arity) for later (no need to be matched to a previous argument) 
+    // Savelastarg(ifvariablearity)forlater(noneedtobematchedtoapreviousargument)
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
       arityParam = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
     }
@@ -46,23 +46,23 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       }
     }).toListSequence();
 
-    // Number of regular arguments that the method will have at the end 
+    // Numberofregularargumentsthatthemethodwillhaveattheend
     int regularParamCount = ListSequence.fromList(callTypes).count();
     if ((arityParam != null)) {
       SNode arityType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(arityParam, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
 
-      // Remove all the terminal types that could match the arity (non mapped to previous arg + matching type) 
+      // Removealltheterminaltypesthatcouldmatchthearity(nonmappedtopreviousarg+matchingtype)
       while (regularParamCount > 0 && TypecheckingFacade.getFromContext().isSubtype(ListSequence.fromList(callTypes).getElement(regularParamCount - 1), arityType) && callToDeclParam[regularParamCount - 1] < 0) {
         regularParamCount--;
       }
     }
 
-    // Then fill the parameters with new parameters 
+    // Thenfilltheparameterswithnewparameters
     for (int i = 0; i < regularParamCount; i++) {
       if (callToDeclParam[i] >= 0) {
         ListSequence.fromList(newParameters).addElement(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).getElement(callToDeclParam[i]));
       } else {
-        // Create new parameter matching type 
+        // Createnewparametermatchingtype
         SNode param = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
         SPropertyOperations.assign(param, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).getElement(i), SNodeOperations.as(ListSequence.fromList(callTypes).getElement(i), CONCEPTS.Type$bu), ListSequence.fromList(newParameters).select(new ISelector<SNode, String>() {
           public String select(SNode it) {
@@ -79,7 +79,7 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       ListSequence.fromList(newParameters).addElement(arityParam);
     }
 
-    // Perform refactoring 
+    // Performrefactoring
     ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).clear();
     ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(newParameters));
   }

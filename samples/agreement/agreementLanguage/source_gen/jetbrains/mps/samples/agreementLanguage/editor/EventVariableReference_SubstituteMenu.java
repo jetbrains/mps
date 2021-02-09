@@ -49,7 +49,7 @@ public class EventVariableReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_8sx8tt_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_8sx8tt_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.EventVariableReference$13, LINKS.eventVariable$v2WC);
     }
     @NotNull

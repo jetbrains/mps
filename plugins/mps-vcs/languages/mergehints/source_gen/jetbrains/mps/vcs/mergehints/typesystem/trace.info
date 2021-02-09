@@ -19,7 +19,7 @@
     <file name="CheckNoDuplicatedConceptHints_NonTypesystemRule.java">
       <node id="6556262262332932692" at="32,68,33,13" concept="6" />
       <node id="6556262262332932695" at="34,5,35,0" concept="8" />
-      <node id="6556262262332744354" at="35,0,36,58" concept="7" />
+      <node id="6556262262332744354" at="35,0,36,49" concept="7" />
       <node id="6556262262332689284" at="38,50,39,68" concept="6" />
       <node id="6556262262332689293" at="42,39,43,114" concept="6" />
       <node id="6556262262332720020" at="47,7,48,87" concept="5" />
@@ -41,7 +41,7 @@
       <node id="6556262262332625094" at="59,0,62,0" concept="4" trace="overrides#()Z" />
       <node id="6556262262332720020" at="46,63,50,7" concept="0" />
       <node id="6556262262332668954" at="45,7,51,5" concept="3" />
-      <node id="6556262262332689272" at="36,58,45,7" concept="5" />
+      <node id="6556262262332689272" at="36,49,45,7" concept="5" />
       <node id="6556262262332625094" at="31,0,53,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="6556262262332625094" at="29,60,29,60" />
       <scope id="6556262262332924470" at="32,68,33,13" />

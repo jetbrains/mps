@@ -311,7 +311,7 @@
       <node id="1195170418623" at="46,40,47,172" concept="7" />
       <node id="1195170418623" at="47,172,48,163" concept="2" />
       <node id="1195170418623" at="49,61,50,57" concept="2" />
-      <node id="1195170418623" at="51,9,52,31" concept="9" />
+      <node id="1195170418623" at="51,9,52,28" concept="9" />
       <node id="1195168984336" at="54,5,55,55" concept="2" />
       <node id="1195168984336" at="60,34,61,38" concept="7" />
       <node id="1195168984336" at="61,38,62,196" concept="2" />
@@ -354,7 +354,7 @@
       </scope>
       <scope id="1195168984336" at="59,0,65,0" />
       <scope id="1195168984336" at="75,0,81,0" />
-      <scope id="1195170418623" at="45,7,52,31">
+      <scope id="1195170418623" at="45,7,52,28">
         <var name="copyListInput2" id="1195170418623" />
         <var name="tlist2" id="1195170418623" />
       </scope>
@@ -376,14 +376,14 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)/1195509228077">
     <file name="QueriesGenerated.java">
-      <node id="7376433222636453951" at="52,85,53,18" concept="9" />
+      <node id="7376433222636453951" at="52,85,53,16" concept="9" />
       <node id="1202246979893" at="54,54,55,13" concept="8" />
       <node id="1206478331710" at="56,5,57,64" concept="2" />
       <node id="1195510471017" at="57,64,58,129" concept="2" />
       <node id="1195598105572" at="58,129,59,234" concept="7" />
       <node id="1195598114060" at="59,234,60,100" concept="2" />
       <node id="1202340629491" at="60,100,61,90" concept="2" />
-      <node id="1202245790005" at="53,18,56,5" concept="5" />
+      <node id="1202245790005" at="53,16,56,5" concept="5" />
       <node id="1195509228078" at="52,0,63,0" concept="11" trace="mappingScript_CodeBlock_3#(Ljetbrains/mps/generator/template/MappingScriptContext;)V" />
       <scope id="1202245790006" at="54,54,55,13" />
       <scope id="1195509228079" at="52,85,61,90">
@@ -426,8 +426,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)/1195510384868">
     <file name="QueriesGenerated.java">
-      <node id="7376433222636454223" at="63,85,64,18" concept="9" />
-      <node id="1206478452703" at="64,18,65,66" concept="7" />
+      <node id="7376433222636454223" at="63,85,64,16" concept="9" />
+      <node id="1206478452703" at="64,16,65,66" concept="7" />
       <node id="1206478475661" at="66,25,67,13" concept="8" />
       <node id="1195510384871" at="68,5,69,130" concept="2" />
       <node id="1195510606892" at="69,130,70,237" concept="7" />

@@ -22,11 +22,11 @@ public class Actions_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new TurnBold_Action());
     addAction(new TurnItalics_Action());
     addAction(new TurnUnderlined_Action());
-    // groups 
+    // groups
   }
   public List<BaseKeymapChanges> initKeymaps() {
     List<BaseKeymapChanges> res = ListSequence.fromList(new ArrayList<BaseKeymapChanges>());

@@ -39,8 +39,8 @@ public enum JUnitRunTypes {
     }
     @Override
     public String check(JUnitSettings_Configuration configuration, MPSProject project) {
-      // #check is used nowhere 
-      // TODO: use it 
+      // #checkisusednowhere
+      // TODO:useit
       if (!(this.hasTests(configuration, project))) {
         return "Project does not contain tests.";
       }

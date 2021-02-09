@@ -49,7 +49,7 @@ public class GeneratorInternal_BuildSource_JavaLibrary_SubstituteMenu extends Su
   public class SMP_ReferenceScope_vxr8sy_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_vxr8sy_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GeneratorInternal_BuildSource_JavaLibrary$23, LINKS.targetLibrary$pWiz);
     }
     @NotNull

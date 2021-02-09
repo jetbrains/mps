@@ -511,8 +511,8 @@
       <node id="865001690840233397" at="337,87,338,0" concept="7" />
       <node id="6131607264791621042" at="338,0,339,177" concept="4" />
       <node id="865001690840233398" at="339,177,340,80" concept="0" />
-      <node id="865001690840233418" at="341,5,342,44" concept="6" />
-      <node id="865001690840233526" at="342,44,343,22" concept="5" />
+      <node id="865001690840233418" at="341,5,342,37" concept="6" />
+      <node id="865001690840233526" at="342,37,343,22" concept="5" />
       <node id="701359002710702710" at="347,39,348,198" concept="5" />
       <node id="865001690840233550" at="351,39,352,102" concept="5" />
       <node id="865001690840233563" at="355,57,356,161" concept="0" />
@@ -994,13 +994,13 @@
   <root nodeRef="r:306cd397-957b-4622-bdc0-c989a7388e3a(jetbrains.mps.execution.commands.generator.template.main@generator)/865001690840234105">
     <file name="QueriesGenerated.java">
       <node id="865001690840234114" at="365,136,366,175" concept="0" />
-      <node id="865001690840234125" at="366,175,367,124" concept="6" />
+      <node id="865001690840234125" at="366,175,367,107" concept="6" />
       <node id="865001690840234105" at="446,14,447,56" concept="0" />
       <node id="865001690840234105" at="465,15,466,58" concept="0" />
       <node id="865001690840234105" at="466,58,467,17" concept="5" />
       <node id="865001690840234108" at="364,85,368,5" concept="1" />
       <node id="865001690840234106" at="364,0,370,0" concept="8" trace="mappingScript_CodeBlock_9#(Ljetbrains/mps/generator/template/MappingScriptContext;)V" />
-      <scope id="865001690840234113" at="365,136,367,124" />
+      <scope id="865001690840234113" at="365,136,367,107" />
       <scope id="865001690840234105" at="465,15,467,17" />
       <scope id="865001690840234107" at="364,85,368,5" />
       <scope id="865001690840234108" at="364,85,368,5">

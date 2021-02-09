@@ -36,7 +36,7 @@ public final class BuildMps_TestModules_Content__BehaviorDescriptor extends Base
     return Sequence.fromIterable(BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(__thisNode__)).contains(module);
   }
   /*package*/ static Iterable<SNode> getModules_id3X9rC2XzJij(@NotNull SNode __thisNode__) {
-    // for the editor abstract instances 
+    // fortheeditorabstractinstances
     return ListSequence.fromList(new ArrayList<SNode>());
   }
 

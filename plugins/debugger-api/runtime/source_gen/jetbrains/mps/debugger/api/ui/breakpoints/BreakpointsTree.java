@@ -36,7 +36,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
     return "Tree View";
   }
   public void toggleModuleGroup(boolean value) {
-    //  todo: refactor 
+    // todo:refactor
     myModuleKind.setVisible(value);
     BreakpointViewSettingsComponent.getInstance(myProject).setGroupByModule(value);
   }

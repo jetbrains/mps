@@ -34,7 +34,7 @@ public class check_LinkDeclaration_NonTypesystemRule extends AbstractNonTypesyst
   public check_LinkDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode linkToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // link role shouldn't hide roles in super-concepts 
+    // linkroleshouldn'thiderolesinsuper-concepts
     if (SPropertyOperations.getString(linkToCheck, PROPS.role$Nsjf) == null) {
       return;
     }

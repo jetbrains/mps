@@ -506,7 +506,7 @@ public class Matrix<T> {
           System.arraycopy(r.myCarrier[i], 0, myCarrier[i], 0, myColumns);
         }
       } else {
-        // dataflow reports false positives without the if statement 
+        // dataflowreportsfalsepositiveswithouttheifstatement
       }
       return;
     }

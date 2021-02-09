@@ -52,7 +52,7 @@ public class PrivateFieldReferenceOperation_Constraints extends BaseConstraintsD
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
-            // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
+            // fieldsdeclaredinhierarhyofclassspecifiedbyleftexpression.onlyapplicabletoexpressionsofclassifier-type
             if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.DotExpression$yW))) {
               return new EmptyScope();
             }

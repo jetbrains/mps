@@ -80,7 +80,7 @@ public class CheckModel_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    // check all models in model 
+    // checkallmodelsinmodel
     List<SModel> modelsToCheck = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(new Computable<List<SModel>>() {
       public List<SModel> compute() {
         List<SModel> rv = CheckModel_Action.this.selectedModels(_params);

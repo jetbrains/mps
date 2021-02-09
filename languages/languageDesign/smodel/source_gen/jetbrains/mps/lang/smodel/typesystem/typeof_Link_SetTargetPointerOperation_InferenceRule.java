@@ -26,7 +26,7 @@ public class typeof_Link_SetTargetPointerOperation_InferenceRule extends Abstrac
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "942336824646366895", true), (SNode) _quotation_createNode_tji19q_a1a0c0a0b(), _info_12389875345);
     }
 
-    // checking 
+    // checking
     SNode parameter = SLinkOperations.getTarget(op, LINKS.linkTarget$BrA0);
     if ((parameter != null)) {
       final SNode ExpectedType_typevar_942336824646366871 = typeCheckingContext.createNewRuntimeTypesVariable();

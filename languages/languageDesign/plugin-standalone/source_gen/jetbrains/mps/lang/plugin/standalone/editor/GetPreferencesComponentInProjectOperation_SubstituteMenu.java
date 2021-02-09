@@ -53,7 +53,7 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
   public class SMP_ReferenceScope_r7b91_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_r7b91_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GetPreferencesComponentInProjectOperation$XZ, LINKS.componentDeclaration$puA7);
     }
     @NotNull

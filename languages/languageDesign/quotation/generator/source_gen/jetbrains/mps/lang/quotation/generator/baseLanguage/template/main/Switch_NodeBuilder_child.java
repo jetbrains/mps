@@ -102,7 +102,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
               for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
                 tnode4.addChild(myAggregationLinks[0], child7);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode8 = environment.createOutputNode(myConcepts[3]);
@@ -121,7 +121,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                         }
                       });
                       tnode9.addChild(myAggregationLinks[1], tnode10);
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                     {
                       Collection<SNode> tlist11 = Collections.emptyList();
@@ -143,7 +143,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                             for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
                               tnode12.addChild(myAggregationLinks[2], child14);
                             }
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tlist11 = TemplateUtil.singletonList(tnode12);
@@ -155,11 +155,11 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                       for (SNode child16 : TemplateUtil.asNotNull(tlist11)) {
                         tnode9.addChild(myAggregationLinks[3], child16);
                       }
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tnode8.addChild(myAggregationLinks[1], tnode9);
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   Collection<SNode> tlist17 = null;
@@ -176,7 +176,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                         {
                           final SNode tnode19 = environment.createOutputNode(myConcepts[6]);
                           tnode18.addChild(myAggregationLinks[2], tnode19);
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                       }
                       tlist17 = TemplateUtil.singletonList(tnode18);
@@ -186,11 +186,11 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                   for (SNode child20 : TemplateUtil.asNotNull(tlist17)) {
                     tnode8.addChild(myAggregationLinks[3], child20);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tnode4.addChild(myAggregationLinks[4], tnode8);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tlist3 = TemplateUtil.singletonList(tnode4);
@@ -198,7 +198,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
           for (SNode child21 : TemplateUtil.asNotNull(tlist3)) {
             tnode2.addChild(myAggregationLinks[5], child21);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
@@ -226,11 +226,11 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                     final SNode tnode26 = environment.createOutputNode(myConcepts[9]);
                     environment.associate(tnode26, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~UnsupportedOperationException.<init>()");
                     tnode25.addChild(myAggregationLinks[6], tnode26);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode24.addChild(myAggregationLinks[7], tnode25);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist23 = TemplateUtil.singletonList(tnode24);
@@ -272,7 +272,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                     {
                       final SNode tnode5 = environment.createOutputNode(myConcepts[6]);
                       tnode4.addChild(myAggregationLinks[2], tnode5);
-                      // TODO validate child 
+                      // TODOvalidatechild
                     }
                   }
                   tlist3 = TemplateUtil.singletonList(tnode4);
@@ -282,7 +282,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
               for (SNode child6 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[3], child6);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -297,7 +297,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                     }
                   });
                   tnode7.addChild(myAggregationLinks[1], tnode8);
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   Collection<SNode> tlist9 = Collections.emptyList();
@@ -319,7 +319,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                         for (SNode child12 : TemplateUtil.asNotNull(tlist11)) {
                           tnode10.addChild(myAggregationLinks[2], child12);
                         }
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tlist9 = TemplateUtil.singletonList(tnode10);
@@ -331,15 +331,15 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                   for (SNode child14 : TemplateUtil.asNotNull(tlist9)) {
                     tnode7.addChild(myAggregationLinks[3], child14);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tnode2.addChild(myAggregationLinks[1], tnode7);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[7], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

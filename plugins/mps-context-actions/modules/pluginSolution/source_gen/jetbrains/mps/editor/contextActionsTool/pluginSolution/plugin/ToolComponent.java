@@ -73,7 +73,7 @@ public class ToolComponent extends JComponent {
 
   @Override
   public void setBounds(int x, int y, int w, int h) {
-    // Relayout the folders after resizing the tool 
+    // Relayoutthefoldersafterresizingthetool
 
     boolean widthChanged = w != getSize().width;
     super.setBounds(x, y, w, h);

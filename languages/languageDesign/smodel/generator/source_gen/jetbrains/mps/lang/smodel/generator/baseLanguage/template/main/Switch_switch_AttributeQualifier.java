@@ -49,7 +49,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         environment.associate(tnode2, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030573");
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     return TemplateUtil.singletonList(tnode1);
@@ -68,7 +68,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           environment.associate(tnode2, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030573");
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -102,11 +102,11 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[1], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -140,7 +140,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[1], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist5 = null;
@@ -161,11 +161,11 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
                 tnode2.addChild(myAggregationLinks[1], child7);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -199,7 +199,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[1], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist5 = null;
@@ -220,11 +220,11 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
                 tnode2.addChild(myAggregationLinks[1], child7);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -258,7 +258,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[1], child4);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist5 = null;
@@ -279,11 +279,11 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
                 tnode2.addChild(myAggregationLinks[1], child7);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

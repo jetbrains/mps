@@ -147,7 +147,7 @@ public final class VcsActionsUtil {
           DiffContent currentContent = diffContentFactory.create(ideaProject, vFile);
           List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), revisionNumber.asString() + " (Read-Only)", "Your Version");
           DiffRequest req = new SimpleDiffRequest(myContainingRootName, Arrays.asList(revisionContent, currentContent), titles);
-          // put hint to show only one root and navigate 
+          // puthinttoshowonlyonerootandnavigate
           req.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, id);
           req.putUserData(ModelDiffViewer.DIFF_NAVIGATE_TO, bounds);
           request.set(req);
@@ -314,8 +314,8 @@ __switch__:
       }
     });
     final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(mpsProject.getProject()).getVcsFor(vf.value);
-    // see RootHistoryDialog.show for explanation why I resort to roots. The reason I do it here, not in show(), as I don't want to care about model read access there (it's likely in background). 
-    // copied from IDEA's SelectedBlockHistoryAction 
+    // seeRootHistoryDialog.showforexplanationwhyIresorttoroots.ThereasonIdoithere,notinshow(),asIdon'twanttocareaboutmodelreadaccessthere(it'slikelyinbackground).
+    // copiedfromIDEA'sSelectedBlockHistoryAction
     VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf.value), VcsBackgroundableActions.HISTORY_FOR_SELECTION, new Consumer<VcsHistorySession>() {
       public void consume(VcsHistorySession vcsSession) {
         if (vcsSession != null) {

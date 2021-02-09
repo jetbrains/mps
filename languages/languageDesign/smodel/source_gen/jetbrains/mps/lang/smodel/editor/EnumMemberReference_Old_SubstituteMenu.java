@@ -53,7 +53,7 @@ public class EnumMemberReference_Old_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_jz4s40_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_jz4s40_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.EnumMemberReference_Old$15, LINKS.enumMember$hl0V);
     }
     @NotNull

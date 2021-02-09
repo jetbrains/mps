@@ -30,7 +30,7 @@ public class ClassifierType_comparableTo_raw_ClassifierType_ComparisonRule exten
         return SNodeOperations.isInstanceOf(it, CONCEPTS.WildCardType$uV) || SNodeOperations.isInstanceOf(it, CONCEPTS.TypeVariableReference$WL);
       }
     })) {
-      // formatting 
+      // formatting
       return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(node1, LINKS.classifier$cxMr), SLinkOperations.getTarget(node2, LINKS.classifier$cxMr)) || (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(node2, LINKS.classifier$cxMr), SLinkOperations.getTarget(node1, LINKS.classifier$cxMr));
     }
     return false;

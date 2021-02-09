@@ -49,7 +49,7 @@ public class BwfValueReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_utnl06_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_utnl06_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BwfValueReference$7M, LINKS.path$vGq5);
     }
     @NotNull

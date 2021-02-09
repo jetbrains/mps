@@ -55,11 +55,11 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "findUsages");
   }
   public static boolean rule_Condition_7_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "findUsages");
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -120,7 +120,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.forConcept$tZey);
   }
   public static Object referenceMacro_GetReferent_7_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output FindUsagesDescriptorCons for model model; 
+    // TODOgenContext.getoutputFindUsagesDescriptorConsformodelmodel;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".FindUsagesDescriptor";
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {

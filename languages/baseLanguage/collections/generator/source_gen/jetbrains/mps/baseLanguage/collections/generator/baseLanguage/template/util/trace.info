@@ -87,10 +87,10 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c89590330(jetbrains.mps.baseLanguage.collections.generator.baseLanguage.template.util)/3446310095634935953">
     <file name="Helper.java">
       <node id="3446310095635120207" at="14,78,15,82" concept="6" />
-      <node id="5577619521063250909" at="15,82,16,105" concept="8" />
-      <node id="5577619521063252206" at="16,105,17,104" concept="8" />
-      <node id="5577619521063293966" at="17,104,18,52" concept="8" />
-      <node id="3446310095635028235" at="18,52,19,254" concept="7" />
+      <node id="5577619521063250909" at="15,82,16,91" concept="8" />
+      <node id="5577619521063252206" at="16,91,17,84" concept="8" />
+      <node id="5577619521063293966" at="17,84,18,46" concept="8" />
+      <node id="3446310095635028235" at="18,46,19,254" concept="7" />
       <node id="3446310095634978794" at="21,75,22,18" concept="7" />
       <node id="3446310095634986528" at="24,92,25,18" concept="7" />
       <node id="3446310095635001314" at="27,94,28,94" concept="6" />

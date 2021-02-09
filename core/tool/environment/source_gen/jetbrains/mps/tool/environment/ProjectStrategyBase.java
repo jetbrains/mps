@@ -83,7 +83,7 @@ public abstract class ProjectStrategyBase implements ProjectStrategy {
       LOG.info("Reloading built modules");
     }
 
-    // todo create make process listeners, class loading is a client 
+    // todocreatemakeprocesslisteners,classloadingisaclient
     project.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         ClassLoaderManager.getInstance().reloadModules(changed);

@@ -91,7 +91,7 @@ public class CommandLineTestsContributor implements TestsContributor {
     if (classReq == null) {
       return null;
     }
-    // Copied from Request.method(Class<?>, String); all we care is uniqueId (built from class and methods names), so don't care about Class<> instance 
+    // CopiedfromRequest.method(Class<?>,String);allwecareisuniqueId(builtfromclassandmethodsnames),sodon'tcareaboutClass<>instance
     return classReq.filterWith(Description.createTestDescription(testClassName, testMethod));
   }
 

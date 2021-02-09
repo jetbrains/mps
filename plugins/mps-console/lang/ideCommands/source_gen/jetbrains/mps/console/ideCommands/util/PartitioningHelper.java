@@ -43,7 +43,7 @@ public class PartitioningHelper {
   }
 
   public void show(ModelGenerationPlan plan) {
-    // print all rules 
+    // printallrules
     messageViewDelimiter();
     for (TemplateModule generator : plan.getGenerators()) {
       Collection<TemplateMappingPriorityRule> rules = generator.getPriorities();
@@ -63,7 +63,7 @@ public class PartitioningHelper {
         printPlanConflicts(planImpl.getConflicts(), "Conflicting mapping priority rules encountered:");
       }
     }
-    // show partitioning 
+    // showpartitioning
     console.addText("---------------------  mappings partitioning  -----------------------------------\n\n");
     int stepCount = 1;
     for (ModelGenerationPlan.Step step : plan.getSteps()) {
@@ -92,10 +92,10 @@ public class PartitioningHelper {
         console.addText(indentString);
         console.addText(" ");
         console.addNode(node);
-        // if there's a template model with simple name like 'main', one needs to click on the entry to find out owner generator module 
+        // ifthere'satemplatemodelwithsimplenamelike'main',oneneedstoclickontheentrytofindoutownergeneratormodule
         String namespace = templateModule.getModuleReference().getModuleName();
         if (namespace != null && namespace.indexOf('#') > 0) {
-          // MPS legacy, generator names often use '#' in their names 
+          // MPSlegacy,generatornamesoftenuse'#'intheirnames
           namespace = namespace.substring(0, namespace.indexOf('#'));
         }
         if (!(string.o1.startsWith(namespace))) {
@@ -116,7 +116,7 @@ public class PartitioningHelper {
   }
 
   public void printConnectedComponents(Iterable<SModel> models) {
-    // other 
+    // other
     List<SNode> roots = new ArrayList<SNode>();
     for (SModel md : models) {
       for (SNode root : md.getRootNodes()) {
@@ -126,34 +126,34 @@ public class PartitioningHelper {
     ConnectedComponentPartitioner ccp = new ConnectedComponentPartitioner(roots);
     console.addText(ccp.toString());
 
-    // viewTool.append("---------- conflicts ------------\n"); 
-    //  
-    // Map<String, String> existing = new HashMap<String, String>(); 
-    // MPSModuleRepository repo = MPSModuleRepository.getInstance(); 
-    // for(Generator g : repo.getAllGenerators()) { 
-    //  List<SModel> templateModels = g.getOwnTemplateModels(); 
-    //  for (SModel templateModel : templateModels) { 
-    //    SModel m = templateModel; 
-    //    for(SNode root : m.getRoots()) { 
-    //      for(SNode node : root.getDescendants(new IsInstanceCondition(MappingLabelDeclaration.concept))){ 
-    //        MappingLabelDeclaration label = (MappingLabelDeclaration) node.getAdapter(); 
-    //        String name = label.getName(); 
-    //        String descr = "model = " + m.toString() + ", root =" + root.toString(); 
-    //        if(existing.containsKey(name)) { 
-    //          viewTool.append("conflict: name = " + name + ", " + descr + ": with + " + existing.get(name) + "\n"); 
-    //        } else { 
-    //          existing.put(name, descr); 
-    //        } 
-    //      } 
-    //    } 
-    //  } 
-    // } 
+    // viewTool.append("----------conflicts------------\n");
+    // 
+    // Map<String,String>existing=newHashMap<String,String>();
+    // MPSModuleRepositoryrepo=MPSModuleRepository.getInstance();
+    // for(Generatorg:repo.getAllGenerators()){
+    // List<SModel>templateModels=g.getOwnTemplateModels();
+    // for(SModeltemplateModel:templateModels){
+    // SModelm=templateModel;
+    // for(SNoderoot:m.getRoots()){
+    // for(SNodenode:root.getDescendants(newIsInstanceCondition(MappingLabelDeclaration.concept))){
+    // MappingLabelDeclarationlabel=(MappingLabelDeclaration)node.getAdapter();
+    // Stringname=label.getName();
+    // Stringdescr="model="+m.toString()+",root="+root.toString();
+    // if(existing.containsKey(name)){
+    // viewTool.append("conflict:name="+name+","+descr+":with+"+existing.get(name)+"\n");
+    // }else{
+    // existing.put(name,descr);
+    // }
+    // }
+    // }
+    // }
+    // }
   }
 
   public void printLanguages(LanguageRegistry langRegistry, Collection<SLanguage> languagesInUse, Collection<TemplateModule> actualGenerators) {
     console.addText("Model directly uses next languages (including explicitly engaged, if any):\n");
     HashSet<SLanguage> coveredByPlanGenerators = new HashSet<SLanguage>();
-    // XXX perhaps, shall change/extend contract of MGP.coversLanguage() instead of collecting source languages from templates. 
+    // XXXperhaps,shallchange/extendcontractofMGP.coversLanguage()insteadofcollectingsourcelanguagesfromtemplates.
     for (TemplateModule tm : actualGenerators) {
       coveredByPlanGenerators.add(tm.getSourceLanguage().getIdentity());
     }

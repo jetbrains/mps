@@ -103,8 +103,8 @@ public class MigrationDataUtil {
   }
 
   private static IFile getDataFile(AbstractModule module) {
-    // XXX note, next code implies data files are kept along with META-INF/module.xml for packaged modules, but who cares provided these files were never distributed with a build 
-    //     (there's no support in build language) 
+    // XXXnote,nextcodeimpliesdatafilesarekeptalongwithMETA-INF/module.xmlforpackagedmodules,butwhocaresprovidedthesefileswereneverdistributedwithabuild
+    // (there'snosupportinbuildlanguage)
     IFile descriptorFile = module.getDescriptorFile();
     if (descriptorFile == null) {
       return null;
@@ -112,7 +112,7 @@ public class MigrationDataUtil {
     String dataFileName = FileUtil.getNameWithoutExtension(descriptorFile.getName());
     if (module instanceof Generator) {
       dataFileName = dataFileName + "generator.migration";
-      // sic(!), no dot in front, that's how it was 
+      // sic(!),nodotinfront,that'showitwas
     } else {
       dataFileName = dataFileName + ".migration";
     }

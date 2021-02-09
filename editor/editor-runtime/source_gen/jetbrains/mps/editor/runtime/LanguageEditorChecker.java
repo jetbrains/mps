@@ -67,8 +67,8 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
 
   @Override
   public boolean isLaterThan(EditorChecker checker) {
-    // since this is default editor checker, 
-    // every other checker knows whether it should be later or earlier than this one 
+    // sincethisisdefaulteditorchecker,
+    // everyothercheckerknowswhetheritshouldbelaterorearlierthanthisone
     if (checker instanceof LanguageEditorChecker) {
       return false;
     }
@@ -105,7 +105,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
     boolean inspector = editorComponent instanceof InspectorEditorComponent;
 
-    // FIXME assuming it's safe to access legacy session 
+    // FIXMEassumingit'ssafetoaccesslegacysession
     LegacyTypecheckingQueries ltq = editorComponent.getTypecheckingSession().getQueries(LegacyTypecheckingQueries.class);
     TypeCheckingContext typeCheckingContext = ltq.getTypeCheckingContext();
 
@@ -120,8 +120,8 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
       return Collections.emptySet();
     }
     if (node.getModel() == null || SNodeOperations.getModel(editedNode) == null) {
-      // descriptor is null for a replaced model 
-      // after model is replaced but before it is disposed (this can happen asyncronously) 
+      // descriptorisnullforareplacedmodel
+      // aftermodelisreplacedbutbeforeitisdisposed(thiscanhappenasyncronously)
       return Collections.emptySet();
     }
 
@@ -137,7 +137,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     myMessagesChanged = runChecks(inspector, errorsComponent, typeCheckingContext, node, editorContext, cancellable);
 
     if (!(myMessagesChanged)) {
-      // skipping further processing if nothing was changed 
+      // skippingfurtherprocessingifnothingwaschanged
       return Collections.emptySet();
     }
 
@@ -166,11 +166,11 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     boolean runQuickFixes = shouldRunQuickFixs(editorContext.getModel(), inspector);
     final List<QuickFixBase> quickFixesToExecute = ListSequence.fromList(new ArrayList<QuickFixBase>());
     for (NodeReportItem errorReporter : errorsComponent.getErrors()) {
-      // todo here should be processor-based architecture, like in other checkers 
+      // todohereshouldbeprocessor-basedarchitecture,likeinothercheckers
       SNode nodeWithError = errorReporter.getNode().resolve(editorContext.getRepository());
 
       if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeWithError, null, true)).contains(editedNode))) {
-        // in inspector skipping all messages for invisible nodes 
+        // ininspectorskippingallmessagesforinvisiblenodes
         continue;
       }
       HighlighterMessage message = new HighlighterMessage(this, errorReporter, errorReporter.getNode().resolve(editorContext.getRepository()));
@@ -186,7 +186,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     if (inspector) {
       return result;
     }
-    // running quick fixes in main editor only 
+    // runningquickfixesinmaineditoronly
     final boolean wasForceRunQuickFixes = myForceRunQuickFixes;
     myForceRunQuickFixes = false;
     if (ListSequence.fromList(quickFixesToExecute).isNotEmpty()) {
@@ -198,7 +198,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
                 if (fix.isAlive(editorContext.getRepository())) {
                   QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
                   if (wasForceRunQuickFixes) {
-                    // forcing to execute quickFixes for all errors reported on the modified model 
+                    // forcingtoexecutequickFixesforallerrorsreportedonthemodifiedmodel
                     myForceRunQuickFixes = true;
                   }
                 }

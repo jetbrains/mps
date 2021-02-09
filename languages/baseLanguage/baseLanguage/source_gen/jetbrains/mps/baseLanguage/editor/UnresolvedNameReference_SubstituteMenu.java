@@ -121,7 +121,7 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
             SNode smc = SNodeFactoryOperations.createNewNode(CONCEPTS.StaticMethodCall$Fg, null);
             SReferenceLink role = LINKS.baseMethodDeclaration$pyYw;
             SReference sReference = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu).getReference(role);
-            // XXX why model of source node is considered for target, not sReference.getTargetModelReference? 
+            // XXXwhymodelofsourcenodeisconsideredfortarget,notsReference.getTargetModelReference?
             smc.setReference(role, new StaticReference(role, smc, SModelOperations.getPointer(SNodeOperations.getModel(smc)), null, ((jetbrains.mps.smodel.SReference) sReference).getResolveInfo()));
             SNodeOperations.replaceWithAnother(dotExpression, smc);
             return smc;

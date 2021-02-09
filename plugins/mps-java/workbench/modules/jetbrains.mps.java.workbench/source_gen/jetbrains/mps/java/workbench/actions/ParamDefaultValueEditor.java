@@ -51,7 +51,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     SNode defaultValue = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(newParameter, LINKS.type$a1UY), CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4")));
 
-    // Set a parent to host the value 
+    // Setaparenttohostthevalue
     this.parentExpression = createAssignmentExpression_crlydh_a0g0k(newParameter, ((defaultValue != null) ? defaultValue : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"))));
 
     this.project = project;
@@ -65,7 +65,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   protected void build() {
     project.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
-        // Temporary model for the edition of the default value 
+        // Temporarymodelfortheeditionofthedefaultvalue
         model = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
         model.addRootNode(parentExpression);
         model.addChangeListener(ParamDefaultValueEditor.this);
@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (model != null) {
       project.getModelAccess().runWriteAction(new Runnable() {
         public void run() {
-          // Dispose temporary model 
+          // Disposetemporarymodel
           TemporaryModels.getInstance().dispose(model);
         }
       });

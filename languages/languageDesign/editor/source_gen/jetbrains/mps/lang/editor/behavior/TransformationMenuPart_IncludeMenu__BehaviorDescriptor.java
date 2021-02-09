@@ -52,12 +52,12 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
           boolean noneMatched = true;
           if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$KA)) {
             noneMatched = false;
-            // Default scope of AbstractConceptDeclaration 
+            // DefaultscopeofAbstractConceptDeclaration
             return Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$KA);
           }
           if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TransformationMenu_Named$dh)) {
             noneMatched = false;
-            // Default scope of TransformationMenu_Named - more or less 
+            // DefaultscopeofTransformationMenu_Named-moreorless
             return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.TransformationMenu_Named$dh);
           }
       }

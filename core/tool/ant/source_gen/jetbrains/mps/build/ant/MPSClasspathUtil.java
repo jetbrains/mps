@@ -32,7 +32,7 @@ public class MPSClasspathUtil {
     if (!(containingJar.toLowerCase().endsWith(".jar"))) {
       throw new BuildException("cannot detect jar location: got `" + containingJar + "'");
     }
-    // for bootstrap purposes, assume all relevant libraries are next to ant-mps.jar  
+    // forbootstrappurposes,assumeallrelevantlibrariesarenexttoant-mps.jar
     return new File(containingJar).getParentFile();
   }
 
@@ -54,7 +54,7 @@ public class MPSClasspathUtil {
     if (url == null) {
       throw new BuildException("cannot detect jar location; no resource `" + path + "'");
     }
-    // try to decode non-latin characters in url (MPS-20091) 
+    // trytodecodenon-latincharactersinurl(MPS-20091)
     try {
       url = new URL(url.getProtocol(), url.getHost(), url.getPort(), URLDecoder.decode(url.getFile(), "UTF-8"));
     } catch (MalformedURLException e) {
@@ -129,30 +129,30 @@ public class MPSClasspathUtil {
     final String mpsStandaloneHome = project.getProperty("artifacts.mpsStandalone");
 
     if ((mpsHome != null && mpsHome.length() > 0)) {
-      // we've got regular MPS installation and everything we need is under its "lib/" folder, both IDEA platform and MPS stuff (including lib/ext) 
+      // we'vegotregularMPSinstallationandeverythingweneedisunderits"lib/"folder,bothIDEAplatformandMPSstuff(includinglib/ext)
       roots.add(new File(project.resolveFile(mpsHome).getPath(), "lib"));
     } else if ((pluginHome != null && pluginHome.length() > 0) && (ideaHome != null && ideaHome.length() > 0)) {
-      // buildPlugin + IDEA 
-      // XXX not sure if it's possible to build with an MPS-generated script having just an MPS-IDEA plugin, but anyway... 
+      // buildPlugin+IDEA
+      // XXXnotsureifit'spossibletobuildwithanMPS-generatedscripthavingjustanMPS-IDEAplugin,butanyway...
       roots.add(new File(project.resolveFile(ideaHome).getPath(), "lib"));
       roots.add(new File(project.resolveFile(pluginHome).getPath(), "mps-core/lib"));
     } else if ((mpsCoreHome != null && mpsCoreHome.length() > 0) && (ideaHome != null && ideaHome.length() > 0)) {
-      // we are building something with dependency to mpsBootstrapCore, likely part of MPS itself. 
-      // There's IDEA installation we use, and we shall reference MPS-built artifacts 
+      // wearebuildingsomethingwithdependencytompsBootstrapCore,likelypartofMPSitself.
+      // There'sIDEAinstallationweuse,andweshallreferenceMPS-builtartifacts
       roots.add(new File(project.resolveFile(mpsCoreHome).getPath(), "lib"));
       roots.add(new File(project.resolveFile(ideaHome).getPath(), "lib"));
       if ((mpsWorkbenchHome != null && mpsWorkbenchHome.length() > 0)) {
         roots.add(new File(project.resolveFile(mpsWorkbenchHome).getPath(), "lib"));
       }
     } else if ((ideaHome != null && ideaHome.length() > 0) && "mpsBootstrapCore".equals(project.getName())) {
-      // bootstrap hack. mpsBootstrapCore uses ant tasks defined in the jars it is about to compile/assemble. 
-      // In particular, it's copyModels in <assemble> task that needs to start MPS in-process at PERSISTENCE level. 
+      // bootstraphack.mpsBootstrapCoreusesanttasksdefinedinthejarsitisabouttocompile/assemble.
+      // Inparticular,it'scopyModelsin<assemble>taskthatneedstostartMPSin-processatPERSISTENCElevel.
       roots.add(new File(project.resolveFile(ideaHome).getPath(), "lib"));
       File antJarsHome = getAntJARRelativeHome();
       project.log("Bootstrap jar location: " + antJarsHome);
       roots.add(antJarsHome);
     } else if ((mpsStandaloneHome != null && mpsStandaloneHome.length() > 0)) {
-      // pretty much identical to artifacts.mps, reduced set of modules for standalone applications 
+      // prettymuchidenticaltoartifacts.mps,reducedsetofmodulesforstandaloneapplications
       roots.add(new File(project.resolveFile(mpsStandaloneHome).getPath(), "lib"));
     }
 
@@ -173,10 +173,10 @@ public class MPSClasspathUtil {
       project.log(String.format("Failed to read directory %s, ignored", dir.getAbsolutePath()), Project.MSG_WARN);
       return;
     }
-    //  we do not want trove different from ours in $mps.home$/lib 
+    // wedonotwanttrovedifferentfromoursin$mps.home$/lib
     String troveJar = "trove" + File.separator + "lib" + File.separator + "trove";
-    //  to provide right order of class loading, 
-    //  files go first, we replace them with null to process directories later 
+    // toproviderightorderofclassloading,
+    // filesgofirst,wereplacethemwithnulltoprocessdirectorieslater
     for (int i = 0; i < children.length; i++) {
       File f = children[i];
       if (f.isDirectory()) {
@@ -191,7 +191,7 @@ public class MPSClasspathUtil {
       if (f == null) {
         continue;
       }
-      // inv: f.isDirectory() 
+      // inv:f.isDirectory()
       gatherAllClassesAndJarsUnder(project, f, result);
     }
   }

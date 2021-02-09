@@ -85,23 +85,23 @@ public class Test_Test extends BaseTransformationTest {
 
     public void test_testError() throws Exception {
       addNodeById("6594325605663717987");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_hasType() throws Exception {
       addNodeById("6594325605663717987");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_hasError() throws Exception {
       addNodeById("6594325605663717987");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_hasTypeInSet() throws Exception {
       addNodeById("6594325605663717987");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_ErrorMessagesCheck2501421320959199196() throws Exception {
       SNode nodeToCheck = getRealNodeById("6594325605663831239");

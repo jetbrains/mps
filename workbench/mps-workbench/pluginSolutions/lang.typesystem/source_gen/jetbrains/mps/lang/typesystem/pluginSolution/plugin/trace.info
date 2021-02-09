@@ -114,12 +114,12 @@
       <unit id="1699587386715537784" at="27,0,108,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="1699587386715537784" at="26,30,27,63" concept="2" />
+      <node id="1699587386715537784" at="26,27,27,63" concept="2" />
     </file>
   </root>
   <root nodeRef="r:c4d60913-c4ac-4da1-b5c2-2281d3022e80(jetbrains.mps.lang.typesystem.pluginSolution.plugin)/1699587386715575723">
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="1699587386715575723" at="29,14,30,64" concept="2" />
+      <node id="1699587386715575723" at="29,13,30,64" concept="2" />
       <node id="1699587386715575725" at="33,37,34,145" concept="2" />
     </file>
     <file name="ShowAsIntentions_TypeSystem_ActionGroup.java">
@@ -184,7 +184,7 @@
       <node id="4091399266696931729" at="79,25,80,68" concept="7" />
       <node id="4091399266696924317" at="80,68,81,86" concept="2" />
       <node id="4091399266696994966" at="81,86,82,0" concept="10" />
-      <node id="4091399266697009445" at="82,0,83,53" concept="9" />
+      <node id="4091399266697009445" at="82,0,83,47" concept="9" />
       <node id="4091399266697003982" at="84,78,85,141" concept="2" />
       <node id="4091399266697043475" at="86,9,87,0" concept="10" />
       <node id="4091399266697049417" at="87,0,88,116" concept="2" />
@@ -202,17 +202,17 @@
       <node id="723345233651878706" at="108,9,109,0" concept="10" />
       <node id="5487985028841908800" at="109,0,110,138" concept="2" />
       <node id="723345233651879438" at="110,138,111,0" concept="10" />
-      <node id="8311156516541781935" at="114,27,115,87" concept="9" />
-      <node id="4091399266697163929" at="115,87,116,108" concept="9" />
-      <node id="4091399266697180477" at="116,108,117,98" concept="9" />
-      <node id="2034046503381295230" at="117,98,118,52" concept="2" />
+      <node id="8311156516541781935" at="114,27,115,73" concept="9" />
+      <node id="4091399266697163929" at="115,73,116,90" concept="9" />
+      <node id="4091399266697180477" at="116,90,117,82" concept="9" />
+      <node id="2034046503381295230" at="117,82,118,52" concept="2" />
       <node id="2034046503381295235" at="118,52,119,64" concept="2" />
       <node id="5487985028841908720" at="42,95,45,5" concept="5" />
       <node id="8690790800951525618" at="48,53,51,7" concept="5" />
       <node id="5487985028841908727" at="54,90,57,7" concept="5" />
       <node id="5487985028841908728" at="58,75,61,7" concept="5" />
       <node id="723345233651839942" at="65,53,68,7" concept="5" />
-      <node id="4091399266697003974" at="83,53,86,9" concept="5" />
+      <node id="4091399266697003974" at="83,47,86,9" concept="5" />
       <node id="5487985028841908720" at="37,0,41,0" concept="6" trace="isDumbAware#()Z" />
       <node id="5487985028841908720" at="32,0,37,0" concept="1" trace="ShowNodeType_Action#()V" />
       <node id="6277318027977508733" at="91,0,96,5" concept="5" />
@@ -283,10 +283,10 @@
   </root>
   <root nodeRef="r:c4d60913-c4ac-4da1-b5c2-2281d3022e80(jetbrains.mps.lang.typesystem.pluginSolution.plugin)/5487985028841909059">
     <file name="Default_KeymapChanges.java">
-      <node id="5487985028841909059" at="11,34,12,14" concept="9" />
-      <node id="5487985028841909064" at="12,14,13,126" concept="2" />
-      <node id="5487985028841909059" at="13,126,14,28" concept="9" />
-      <node id="5487985028841909059" at="14,28,15,15" concept="9" />
+      <node id="5487985028841909059" at="11,34,12,13" concept="9" />
+      <node id="5487985028841909064" at="12,13,13,126" concept="2" />
+      <node id="5487985028841909059" at="13,126,14,26" concept="9" />
+      <node id="5487985028841909059" at="14,26,15,14" concept="9" />
       <node id="5487985028841909059" at="17,29,18,22" concept="8" />
       <node id="5487985028841909059" at="20,53,21,70" concept="8" />
       <node id="5487985028841909059" at="17,0,20,0" concept="6" trace="getScheme#()Ljava/lang/String;" />
@@ -298,7 +298,7 @@
       <scope id="5487985028841909059" at="20,0,23,0">
         <var name="stroke" id="5487985028841909059" />
       </scope>
-      <scope id="5487985028841909059" at="11,34,15,15" />
+      <scope id="5487985028841909059" at="11,34,15,14" />
       <scope id="5487985028841909059" at="11,0,17,0" />
       <unit id="5487985028841909059" at="10,0,24,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.Default_KeymapChanges" />
     </file>
@@ -310,8 +310,8 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690967702203" at="15,0,16,0" concept="3" trace="myId" />
       <node id="7162597690967702203" at="21,27,22,16" concept="8" />
-      <node id="7162597690967702203" at="25,30,26,30" concept="9" />
-      <node id="7162597690967702203" at="28,41,29,14" concept="9" />
+      <node id="7162597690967702203" at="25,30,26,27" concept="9" />
+      <node id="7162597690967702203" at="28,41,29,13" concept="9" />
       <node id="7162597690967702203" at="37,48,38,92" concept="7" />
       <node id="7162597690967702203" at="41,70,42,15" concept="8" />
       <node id="7162597690967702203" at="17,0,19,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
@@ -336,11 +336,11 @@
   </root>
   <root nodeRef="r:c4d60913-c4ac-4da1-b5c2-2281d3022e80(jetbrains.mps.lang.typesystem.pluginSolution.plugin)/7887795815985523300">
     <file name="MacOSX_KeymapChanges.java">
-      <node id="7887795815985523300" at="11,33,12,14" concept="9" />
-      <node id="7887795815985523300" at="12,14,13,34" concept="9" />
-      <node id="7887795815985523301" at="13,34,14,178" concept="2" />
-      <node id="7887795815985523300" at="14,178,15,28" concept="9" />
-      <node id="7887795815985523300" at="15,28,16,15" concept="9" />
+      <node id="7887795815985523300" at="11,33,12,13" concept="9" />
+      <node id="7887795815985523300" at="12,13,13,31" concept="9" />
+      <node id="7887795815985523301" at="13,31,14,178" concept="2" />
+      <node id="7887795815985523300" at="14,178,15,26" concept="9" />
+      <node id="7887795815985523300" at="15,26,16,14" concept="9" />
       <node id="7887795815985523300" at="18,29,19,22" concept="8" />
       <node id="7887795815985523300" at="21,53,22,70" concept="8" />
       <node id="7887795815985523300" at="18,0,21,0" concept="6" trace="getScheme#()Ljava/lang/String;" />
@@ -352,7 +352,7 @@
       <scope id="7887795815985523300" at="21,0,24,0">
         <var name="stroke" id="7887795815985523300" />
       </scope>
-      <scope id="7887795815985523300" at="11,33,16,15" />
+      <scope id="7887795815985523300" at="11,33,16,14" />
       <scope id="7887795815985523300" at="11,0,18,0" />
       <unit id="7887795815985523300" at="10,0,25,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.MacOSX_KeymapChanges" />
     </file>
@@ -362,11 +362,11 @@
   </root>
   <root nodeRef="r:c4d60913-c4ac-4da1-b5c2-2281d3022e80(jetbrains.mps.lang.typesystem.pluginSolution.plugin)/7887795815985523303">
     <file name="MacOSX105_KeymapChanges.java">
-      <node id="7887795815985523303" at="11,36,12,14" concept="9" />
-      <node id="7887795815985523303" at="12,14,13,34" concept="9" />
-      <node id="7887795815985523304" at="13,34,14,178" concept="2" />
-      <node id="7887795815985523303" at="14,178,15,28" concept="9" />
-      <node id="7887795815985523303" at="15,28,16,15" concept="9" />
+      <node id="7887795815985523303" at="11,36,12,13" concept="9" />
+      <node id="7887795815985523303" at="12,13,13,31" concept="9" />
+      <node id="7887795815985523304" at="13,31,14,178" concept="2" />
+      <node id="7887795815985523303" at="14,178,15,26" concept="9" />
+      <node id="7887795815985523303" at="15,26,16,14" concept="9" />
       <node id="7887795815985523303" at="18,29,19,28" concept="8" />
       <node id="7887795815985523303" at="21,53,22,70" concept="8" />
       <node id="7887795815985523303" at="18,0,21,0" concept="6" trace="getScheme#()Ljava/lang/String;" />
@@ -378,7 +378,7 @@
       <scope id="7887795815985523303" at="21,0,24,0">
         <var name="stroke" id="7887795815985523303" />
       </scope>
-      <scope id="7887795815985523303" at="11,36,16,15" />
+      <scope id="7887795815985523303" at="11,36,16,14" />
       <scope id="7887795815985523303" at="11,0,18,0" />
       <unit id="7887795815985523303" at="10,0,25,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.MacOSX105_KeymapChanges" />
     </file>

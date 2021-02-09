@@ -38,7 +38,7 @@ public class QueriesUtil {
     SNode enclosingMacro = SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{CONCEPTS.PropertyMacro$c9, CONCEPTS.ReferenceMacro$30, CONCEPTS.NodeMacro$qU}, false, false);
     if (enclosingMacro != null) {
       if (SNodeOperations.isInstanceOf(enclosingMacro, CONCEPTS.MapSrcNodeMacro$p5)) {
-        // inside mapper func or post-mapper function? 
+        // insidemapperfuncorpost-mapperfunction?
         if ((SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{CONCEPTS.MapSrcMacro_MapperFunction$fO, CONCEPTS.MapSrcMacro_PostMapperFunction$Yp}, true, false) != null)) {
           SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, CONCEPTS.MapSrcNodeMacro$p5), LINKS.sourceNodeQuery$n0M9);
           if (query != null) {
@@ -48,7 +48,7 @@ public class QueriesUtil {
         }
       }
       if (SNodeOperations.isInstanceOf(enclosingMacro, CONCEPTS.MapSrcListMacro$bk)) {
-        // inside mapper func or post-mapper function? 
+        // insidemapperfuncorpost-mapperfunction?
         if ((SNodeOperations.getNodeAncestorWhereConceptInList(contextNode, new SAbstractConcept[]{CONCEPTS.MapSrcMacro_MapperFunction$fO, CONCEPTS.MapSrcMacro_PostMapperFunction$Yp}, true, false) != null)) {
           SNode query = SLinkOperations.getTarget(SNodeOperations.cast(enclosingMacro, CONCEPTS.MapSrcListMacro$bk), LINKS.sourceNodesQuery$Em90);
           if (query != null) {
@@ -66,7 +66,7 @@ public class QueriesUtil {
         return;
       }
     }
-    // =============== 
+    // ===============
     SNode applicableConcept = jetbrains.mps.lang.generator.helper.QueriesUtil.getApplicableConcept_fromEnvironment(contextNode);
     {
       SNode _nodeToCheck_1029348928467 = null;
@@ -85,7 +85,7 @@ public class QueriesUtil {
       }
       SNode ifMacro = SNodeOperations.cast(parent, CONCEPTS.IfMacro$Xy);
       if (SLinkOperations.getTarget(ifMacro, LINKS.alternativeConsequence$5VBt) == node) {
-        //  if we inside a macro under ELSE, start looking for enclosing macro from IF 
+        // ifweinsideamacrounderELSE,startlookingforenclosingmacrofromIF
         currMacroNode = ifMacro;
         node = SNodeOperations.getParent(ifMacro);
       } else {
@@ -95,7 +95,7 @@ public class QueriesUtil {
     List<SNode> attributes = (currMacroNode == null ? new IAttributeDescriptor.AllAttributes().list(node) : SNodeOperations.getPrevSiblings(currMacroNode, false));
     SNode prevMacro = SNodeOperations.as(Sequence.fromIterable(SNodeOperations.ofConcept(attributes, CONCEPTS.SourceSubstituteMacro$Uv)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        // macros can change source, skip those that do not change it due to missing optional query 
+        // macroscanchangesource,skipthosethatdonotchangeitduetomissingoptionalquery
         if (SNodeOperations.isInstanceOf(it, CONCEPTS.MapSrcNodeMacro$p5) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MapSrcNodeMacro$p5), LINKS.sourceNodeQuery$n0M9) == null)) {
           return false;
         }
@@ -113,14 +113,14 @@ public class QueriesUtil {
         return true;
       }
     }).last(), CONCEPTS.SourceSubstituteMacro$Uv);
-    // ======== 
+    // ========
     if (prevMacro != null) {
       return prevMacro;
     }
     return getEnclosing_SourceSubstituteMacro(SNodeOperations.getParent(node), null);
   }
   public static SNode getEnclosing_TemplateFragment(SNode node) {
-    //  find first ancestor (inclusive) which has a template fragment attribute 
+    // findfirstancestor(inclusive)whichhasatemplatefragmentattribute
     Iterable<SNode> TFs = ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(final SNode it) {
         return new Iterable<SNode>() {

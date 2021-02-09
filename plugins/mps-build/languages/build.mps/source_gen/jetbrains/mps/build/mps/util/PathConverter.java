@@ -38,7 +38,7 @@ public class PathConverter {
   public PathConverter(final Context ctx, SNode project) {
     String workingDir = BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(project, ctx);
     this.workingDirectory = new RelativePathHelper(workingDir);
-    // model argument is merely a factory of new path nodes and doesn't need to be 'original' one 
+    // modelargumentismerelyafactoryofnewpathnodesanddoesn'tneedtobe'original'one
     myPathBuilder = new PathBuilder(SNodeOperations.getModel(project));
 
     final List<Tuples._2<String, SNode>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, SNode>>());
@@ -77,8 +77,8 @@ public class PathConverter {
     final boolean startsWithMacroPrefix = path.startsWith("$");
     for (Tuples._2<String, SNode> m : Sequence.fromIterable(macros)) {
       String mdir = (startsWithMacroPrefix ? "${" + SPropertyOperations.getString(m._1(), PROPS.name$MnvL) + "}/" : m._0());
-      // XXX what's the check path.length < mdir.length supposed to do? If the path is shorter 
-      // than macro path, it would never match? 
+      // XXXwhat'sthecheckpath.length<mdir.lengthsupposedtodo?Ifthepathisshorter
+      // thanmacropath,itwouldnevermatch?
       String currPath = (path.length() < mdir.length() ? withSlash : path);
 
       if (currPath.startsWith(mdir)) {
@@ -110,8 +110,8 @@ public class PathConverter {
   }
 
   private static String normalizePath(String path, boolean addSlash) {
-    // FIXME much similar to RelativePathHelper.normalize, except that this one resorts to full path when there's no macro variable (which is generally not the case 
-    // provided PathConverter is used to populate build project from module descriptor (where BP macros are not available) 
+    // FIXMEmuchsimilartoRelativePathHelper.normalize,exceptthatthisoneresortstofullpathwhenthere'snomacrovariable(whichisgenerallynotthecase
+    // providedPathConverterisusedtopopulatebuildprojectfrommoduledescriptor(whereBPmacrosarenotavailable)
     if (path == null || (path == null || path.length() == 0)) {
       return null;
     }
@@ -119,7 +119,7 @@ public class PathConverter {
       path = (path.startsWith("${") ? path : new File(path).getCanonicalPath());
       path = path.replace("\\", "/");
     } catch (IOException ignore) {
-      // ignore 
+      // ignore
     }
     if (addSlash && !(path.endsWith("/"))) {
       path = path + "/";

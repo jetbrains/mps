@@ -105,10 +105,10 @@ public abstract class BreakpointsUiComponentEx<B, L extends B> {
         if (debuggableOrTraceableCell == null) {
           return false;
         }
-        //  todo do we need to know about ui? 
+        // tododoweneedtoknowaboutui?
         EditorCell iconAnchorCell = BreakpointIconRenderrerEx.getBreakpointIconAnchorCell(editorComponent.findNodeCell(debuggableOrTraceableCell.getSNode()));
-        //  ignoring mouse clicks to any other rows except one containing "BreakpointIconAnchorCell" 
-        //  (this cell will be marked with breakpoint icon in LeftEditorHighlighter) 
+        // ignoringmouseclickstoanyotherrowsexceptonecontaining"BreakpointIconAnchorCell"
+        // (thiscellwillbemarkedwithbreakpointiconinLeftEditorHighlighter)
         return iconAnchorCell != null && (y >= iconAnchorCell.getY() && iconAnchorCell.getBaseline() >= y);
       }
     });
@@ -149,8 +149,8 @@ public abstract class BreakpointsUiComponentEx<B, L extends B> {
       editorComponent.removeAdditionalPainterByItem(breakpoint);
       editorComponent.getLeftEditorHighlighter().removeAllIconRenderers(myBreakpointRender.get(breakpoint));
     }
-    // stale renderers may persist in myBreakpointRenderer, I have no means to identify EditorComponents to use them as additional key along with breakpoint itself 
-    // I don't care as these stale renders are only for equals() match in removeAllIconsRenderers(). 
+    // stalerenderersmaypersistinmyBreakpointRenderer,IhavenomeanstoidentifyEditorComponentstousethemasadditionalkeyalongwithbreakpointitself
+    // Idon'tcareasthesestalerendersareonlyforequals()matchinremoveAllIconsRenderers().
   }
 
   protected void addLocationBreakpoint(L breakpoint) {

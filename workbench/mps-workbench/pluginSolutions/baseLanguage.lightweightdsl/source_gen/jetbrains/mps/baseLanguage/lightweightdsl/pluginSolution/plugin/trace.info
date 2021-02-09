@@ -179,7 +179,7 @@
       <unit id="3402736933910154624" at="37,0,97,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="3402736933910154624" at="29,14,30,47" concept="2" />
+      <node id="3402736933910154624" at="29,13,30,47" concept="2" />
       <node id="3402736933910155209" at="32,37,33,131" concept="2" />
     </file>
   </root>
@@ -196,8 +196,8 @@
       <node id="3402736933911092789" at="50,162,51,167" concept="2" />
       <node id="6327362524873711307" at="51,167,52,14" concept="7" />
       <node id="6305381134221606040" at="52,14,53,102" concept="7" />
-      <node id="6327362524873728757" at="54,21,55,33" concept="9" />
-      <node id="8335510736429048564" at="55,33,56,64" concept="7" />
+      <node id="6327362524873728757" at="54,21,55,30" concept="9" />
+      <node id="8335510736429048564" at="55,30,56,64" concept="7" />
       <node id="8335510736429943140" at="56,64,57,65" concept="2" />
       <node id="8335510736429048580" at="58,12,59,58" concept="7" />
       <node id="8335510736429943163" at="59,58,60,65" concept="2" />
@@ -321,8 +321,8 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="3402736933910793048" at="16,0,17,0" concept="3" trace="myId" />
       <node id="3402736933910793048" at="22,27,23,16" concept="8" />
-      <node id="3402736933910793048" at="26,30,27,30" concept="9" />
-      <node id="3402736933910793048" at="28,50,29,14" concept="9" />
+      <node id="3402736933910793048" at="26,30,27,27" concept="9" />
+      <node id="3402736933910793048" at="28,50,29,13" concept="9" />
       <node id="3402736933910793048" at="35,48,36,92" concept="7" />
       <node id="3402736933910793048" at="37,71,38,15" concept="8" />
       <node id="3402736933910793048" at="18,0,20,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
@@ -378,9 +378,9 @@
       <node id="4636688088951520053" at="94,0,95,0" concept="3" trace="myClassLikeConcepts" />
       <node id="501275604382786526" at="95,0,96,0" concept="3" trace="myLangRegistry" />
       <node id="501275604384195880" at="96,0,97,0" concept="3" trace="myDeploymentRepo" />
-      <node id="9084267520849004492" at="100,22,101,93" concept="9" />
-      <node id="9084267520849005015" at="101,93,102,78" concept="9" />
-      <node id="501275604382812333" at="102,78,103,116" concept="2" />
+      <node id="9084267520849004492" at="100,22,101,78" concept="9" />
+      <node id="9084267520849005015" at="101,78,102,73" concept="9" />
+      <node id="501275604382812333" at="102,73,103,116" concept="2" />
       <node id="501275604382816375" at="103,116,104,143" concept="2" />
       <node id="501275604384418148" at="104,143,105,121" concept="2" />
       <node id="4636688088951498961" at="105,121,106,103" concept="2" />
@@ -486,10 +486,10 @@
   </root>
   <root nodeRef="d43affd0-e5f9-482c-adc1-9400b73f2a8d/r:b2267b28-bfcc-40f1-8447-02c15480f0d2(jetbrains.mps.lang.classLike.pluginSolution/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin)/4786287919262031781">
     <file name="Default_KeymapChanges.java">
-      <node id="4786287919262031781" at="11,34,12,14" concept="9" />
-      <node id="4786287919262031790" at="12,14,13,141" concept="2" />
-      <node id="4786287919262031781" at="13,141,14,28" concept="9" />
-      <node id="4786287919262031781" at="14,28,15,15" concept="9" />
+      <node id="4786287919262031781" at="11,34,12,13" concept="9" />
+      <node id="4786287919262031790" at="12,13,13,141" concept="2" />
+      <node id="4786287919262031781" at="13,141,14,26" concept="9" />
+      <node id="4786287919262031781" at="14,26,15,14" concept="9" />
       <node id="4786287919262031781" at="17,29,18,22" concept="8" />
       <node id="4786287919262031781" at="20,53,21,70" concept="8" />
       <node id="4786287919262031781" at="17,0,20,0" concept="6" trace="getScheme#()Ljava/lang/String;" />
@@ -501,7 +501,7 @@
       <scope id="4786287919262031781" at="20,0,23,0">
         <var name="stroke" id="4786287919262031781" />
       </scope>
-      <scope id="4786287919262031781" at="11,34,15,15" />
+      <scope id="4786287919262031781" at="11,34,15,14" />
       <scope id="4786287919262031781" at="11,0,17,0" />
       <unit id="4786287919262031781" at="10,0,24,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.Default_KeymapChanges" />
     </file>
@@ -551,7 +551,7 @@
       <node id="4197537290463557562" at="48,5,49,66" concept="7" />
       <node id="4197537290463557563" at="50,22,51,21" concept="8" />
       <node id="7381594984973208058" at="53,5,54,16" concept="8" />
-      <node id="7690266557986076225" at="57,96,58,59" concept="9" />
+      <node id="7690266557986076225" at="57,96,58,50" concept="9" />
       <node id="1894540706997223490" at="60,39,61,193" concept="7" />
       <node id="1894540706997223500" at="61,193,62,60" concept="8" />
       <node id="7690266557985940381" at="64,7,65,115" concept="2" />
@@ -564,7 +564,7 @@
       <node id="1894540706997223488" at="60,0,64,0" concept="6" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="7381594984973208058" at="25,0,30,0" concept="1" trace="GoToMemberDeclaration_Action#()V" />
       <node id="4197537290463557562" at="47,5,53,5" concept="0" />
-      <node id="1894540706997223477" at="58,59,64,7" concept="7" />
+      <node id="1894540706997223477" at="58,50,64,7" concept="7" />
       <node id="7381594984973312042" at="38,5,47,5" concept="0" />
       <node id="7381594984973208058" at="56,0,67,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="7381594984973208058" at="34,0,56,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
@@ -603,7 +603,7 @@
       <unit id="7381594984973208058" at="22,0,72,0" name="jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.GoToMemberDeclaration_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="7381594984973208058" at="27,30,28,50" concept="2" />
+      <node id="7381594984973208058" at="27,27,28,50" concept="2" />
     </file>
   </root>
 </debug-info>

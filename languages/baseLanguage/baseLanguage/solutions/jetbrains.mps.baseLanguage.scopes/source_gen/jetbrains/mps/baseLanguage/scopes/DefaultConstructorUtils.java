@@ -26,7 +26,7 @@ public final class DefaultConstructorUtils {
   }
 
   public static boolean hasDefaultConstructor(SNode clazz) {
-    // tell if there's implicit constructor for clazz. Explicit no-argument cons is not deemed as default cons 
+    // tellifthere'simplicitconstructorforclazz.Explicitno-argumentconsisnotdeemedasdefaultcons
     if (!((boolean) Classifier__BehaviorDescriptor.checkLoops_id3sXyOQUqKq0.invoke(clazz))) {
       return false;
     }

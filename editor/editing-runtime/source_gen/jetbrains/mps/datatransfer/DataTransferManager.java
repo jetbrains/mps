@@ -52,7 +52,7 @@ public final class DataTransferManager implements LanguageRegistryListener {
 
   @Override
   public void afterLanguagesLoaded(Iterable<LanguageRuntime> iterable) {
-    // nop. cache will be builded lazily 
+    // nop.cachewillbebuildedlazily
   }
 
   @Override

@@ -133,8 +133,8 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     }, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        // do nothing 
-        // do nothing 
+        // donothing
+        // donothing
       }
     }, new _FunctionTypes._void_P1_E0<List<SNode>>() {
       public void invoke(List<SNode> nodesToMove) {
@@ -174,10 +174,10 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   }
   @Test
   public void test_moveConceptWithNotDeployedConcepts() throws Exception {
-    // here we test that option 'Update local partitipants' is not shown if language is not deployed 
-    // cleaning class files to make test behavior determinate: 
-    // local execution might have .class files copied from project 
-    // on the buildserver there are no .class files 
+    // herewetestthatoption'Updatelocalpartitipants'isnotshowniflanguageisnotdeployed
+    // cleaningclassfilestomaketestbehaviordeterminate:
+    // localexecutionmighthave.classfilescopiedfromproject
+    // onthebuildserverthereareno.classfiles
     runCommand(new Runnable() {
       public void run() {
         List<SModule> projectModules = project.getProjectModulesWithGenerators();
@@ -196,7 +196,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
             return LanguageRegistry.getInstance(project.getRepository()).getLanguage(it);
           }
         });
-        // this is a hack needed to clear global registry to unload languages like no languages were loaded at all 
+        // thisisahackneededtoclearglobalregistrytounloadlanguageslikenolanguageswereloadedatall
         ConceptRegistry.getInstance().afterLanguagesLoaded(projectLanguages);
       }
     });
@@ -341,7 +341,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     }, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        // do nothing 
+        // donothing
       }
     }, new _FunctionTypes._void_P1_E0<List<SNode>>() {
       public void invoke(List<SNode> nodesToMove) {
@@ -472,9 +472,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
 
 
   public void commonTest(final _FunctionTypes._void_P1_E0<? super List<RefactoringParticipant.Option>> setOptions, final _FunctionTypes._void_P0_E0 prepareNodes, final _FunctionTypes._void_P1_E0<? super List<SNode>> setNodesToMove, final _FunctionTypes._return_P0_E0<? extends MoveNodesUtil.NodeProcessor> nodeProcessor, final _FunctionTypes._void_P0_E0 additionalCheck) {
-    // cleaning class files to make test behavior determinate: 
-    // local execution might have .class filess copied from project 
-    // on the buildserver there are no .class files 
+    // cleaningclassfilestomaketestbehaviordeterminate:
+    // localexecutionmighthave.classfilesscopiedfromproject
+    // onthebuildserverthereareno.classfiles
     runCommand(new Runnable() {
       public void run() {
         if (LOG.isInfoEnabled()) {
@@ -496,12 +496,12 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
             return LanguageRegistry.getInstance(project.getRepository()).getLanguage(it);
           }
         });
-        // this is a hack needed to clear global registry to unload languages like no languages were loaded at all 
+        // thisisahackneededtoclearglobalregistrytounloadlanguageslikenolanguageswereloadedatall
         ConceptRegistry.getInstance().afterLanguagesLoaded(projectLanguages);
       }
     });
     doMake(project.getProjectModulesWithGenerators(), true);
-    // this is not formally correct to store SModule, but ok for testing purposes 
+    // thisisnotformallycorrecttostoreSModule,butokfortestingpurposes
     final Wrappers._T<SModule> sourceModule = new Wrappers._T<SModule>();
     final Wrappers._T<SModule> targetModule = new Wrappers._T<SModule>();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -535,7 +535,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
         }
       }
     });
-    // not really needed, but still let's end the transaction before checking 
+    // notreallyneeded,butstilllet'sendthetransactionbeforechecking
 
     if (LOG.isInfoEnabled()) {
       LOG.info("Checking for errors after refactoring...");

@@ -35,8 +35,8 @@ import java.util.concurrent.TimeoutException;
   private boolean isCanceled = false;
   public MakeTask(@Nullable Project project, @NotNull String title, MakeSequence makeSeq, IScriptController ctl, IMessageHandler mh, PerformInBackgroundOption bgoption) {
     super(project, title, true, bgoption);
-    // XXX might be nice to pass CoreMakeTask here, instead of long list of arguments to construct one. 
-    // however not it's too much of refactoring for WorkbenchMakeTask 
+    // XXXmightbenicetopassCoreMakeTaskhere,insteadoflonglistofargumentstoconstructone.
+    // howevernotit'stoomuchofrefactoringforWorkbenchMakeTask
     coreTask = new WorkbenchMakeTask(title, makeSeq, ctl, mh);
   }
 
@@ -60,7 +60,7 @@ import java.util.concurrent.TimeoutException;
         coreTask.getMessageHandler().handle(msg);
       }
     };
-    // the flag "daemon" must be set in order for ThreadGroup to be garbage-collected 
+    // theflag"daemon"mustbesetinorderforThreadGrouptobegarbage-collected
     tg.setDaemon(true);
     Thread makeThread = new Thread(tg, new Runnable() {
       @Override

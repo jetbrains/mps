@@ -60,16 +60,16 @@ public abstract class FindUsagesScope extends BaseScope implements SearchScope, 
    * Subclasses shall override to react to scope change
    */
   protected void scopeChanged() {
-    // no-op 
+    // no-op
   }
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
-    // use constructor(Element, Project) instead! 
+    // useconstructor(Element,Project)instead!
     throw new UnsupportedOperationException();
   }
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
-    // do nothing by default 
+    // donothingbydefault
   }
   public static FindUsagesScope load(Element element, Project project) throws CantLoadSomethingException {
     Element scopeXml = element.getChild(SCOPE_TAG);

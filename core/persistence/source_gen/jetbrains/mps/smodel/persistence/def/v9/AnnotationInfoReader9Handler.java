@@ -72,13 +72,13 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
-      // root 
+      // root
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
-    // check required 
+    // checkrequired
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -90,7 +90,7 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
       myResult = (List<LineContent>) result;
     }
 
-    // handle attributes 
+    // handleattributes
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);
@@ -271,9 +271,9 @@ public class AnnotationInfoReader9Handler extends XMLSAXHandler<List<LineContent
         return nodeHandler;
       }
       myChildHandlersStack.push(null);
-      // Here I handle (in fact, just ignore) any other tag, including <uo> (user object), and tags that present in some MPS models that 
-      // were saved in a non-release v9 persistence back in Nov 2014 (e.g. check rev 19209b72) to avoid exceptions like in MPS-30616 (also see MPS-21246). 
-      // this handler here is just to hold this comment. 
+      // HereIhandle(infact,justignore)anyothertag,including<uo>(userobject),andtagsthatpresentinsomeMPSmodelsthat
+      // weresavedinanon-releasev9persistencebackinNov2014(e.g.checkrev19209b72)toavoidexceptionslikeinMPS-30616(alsoseeMPS-21246).
+      // thishandlerhereisjusttoholdthiscomment.
       return defaultHandler;
     }
     private void handleChild_7167172773708891066(Object resultObject, Object value) throws SAXException {

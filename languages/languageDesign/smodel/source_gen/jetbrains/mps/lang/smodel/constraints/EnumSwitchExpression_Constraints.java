@@ -38,10 +38,10 @@ public class EnumSwitchExpression_Constraints extends BaseConstraintsDescriptor 
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StatementList$m_)) {
-      // Just to make completion works :( 
+      // Justtomakecompletionworks:(
       return true;
     }
-    // generation into bl is supported only for these cases 
+    // generationintoblissupportedonlyforthesecases
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ExpressionStatement$O8) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ReturnStatement$lt) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AssignmentExpression$SE) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.ExpressionStatement$O8);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "2453008993630109573");

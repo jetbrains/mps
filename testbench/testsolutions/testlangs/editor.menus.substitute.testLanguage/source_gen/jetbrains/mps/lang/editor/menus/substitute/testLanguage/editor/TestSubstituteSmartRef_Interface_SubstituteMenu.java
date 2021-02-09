@@ -43,7 +43,7 @@ public class TestSubstituteSmartRef_Interface_SubstituteMenu extends SubstituteM
   public class SMP_ReferenceScope_l5co44_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_l5co44_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TestSubstituteSmartRef_Interface$hJ, LINKS.childToReference$SdgS);
     }
     @NotNull

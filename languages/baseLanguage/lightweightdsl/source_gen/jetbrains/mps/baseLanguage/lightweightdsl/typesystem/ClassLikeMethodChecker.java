@@ -24,17 +24,17 @@ public class ClassLikeMethodChecker {
     try {
       doCheck(method, visitor);
     } catch (StopMethodCheckerException s) {
-      // do nothing, this just stops processing 
+      // donothing,thisjuststopsprocessing
     }
   }
 
   private boolean doCheck(final SNode method, ClassLikeMethodProblemVisitor visitor) throws StopMethodCheckerException {
-    // name 
+    // name
     if (!(Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$QvLv), PROPS.name$MnvL)))) {
       visitor.visitName(method, SPropertyOperations.getString(SLinkOperations.getTarget(method, LINKS.decl$QvLv), PROPS.name$MnvL));
     }
 
-    // ret type 
+    // rettype
     final SNode retType = MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(SLinkOperations.getTarget(method, LINKS.decl$QvLv));
     if (SNodeOperations.isInstanceOf(retType, CONCEPTS.DependentTypeDescriptor$ny)) {
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9)) || SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9), LINKS.decl$HI1L) != retType) {
@@ -54,7 +54,7 @@ public class ClassLikeMethodChecker {
       }
     }
 
-    // parameters 
+    // parameters
     for (int i = 0, cur = 0; i < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$QvLv), LINKS.param$HGTA)).count(); i++) {
       final SNode formalPar = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$QvLv), LINKS.param$HGTA)).getElement(i);
       if (cur == ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count()) {
@@ -70,11 +70,11 @@ public class ClassLikeMethodChecker {
 
       SNode actualPar = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).getElement(cur);
 
-      // todo this condition should be removed after migration to our params 
+      // todothisconditionshouldberemovedaftermigrationtoourparams
       if (SNodeOperations.isInstanceOf(actualPar, CONCEPTS.MethodParameterInstance$SI)) {
-        // conditional? need to check presence conforms with condition 
+        // conditional?needtocheckpresenceconformswithcondition
         if (SLinkOperations.getTarget(formalPar, LINKS.condition$uzGY) != null) {
-          // needed, but not present 
+          // needed,butnotpresent
           if ((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) != formalPar) {
             visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
               public SNode invoke() {
@@ -83,12 +83,12 @@ public class ClassLikeMethodChecker {
             });
             continue;
           }
-          // not needed, but present 
+          // notneeded,butpresent
           if (!((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) == formalPar) {
             visitor.visitOddParam(actualPar);
             continue;
           }
-          // otherwise, check as a regular parameter 
+          // otherwise,checkasaregularparameter
         }
 
         if (SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) != formalPar) {

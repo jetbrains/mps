@@ -13,16 +13,16 @@ import java.util.ArrayList;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3734045384533036331", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Mac_KeymapChanges extends BaseKeymapChanges {
   public Mac_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.ide.actions.NewElement_Action", getShortcut("ctrl N"), getShortcut("ctrl ENTER"));
     addSimpleShortcut("jetbrains.mps.ide.actions.SafeDelete_Action", getShortcut("meta DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action", getShortcut("ctrl H"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", getShortcut("ctrl H"));
-    // simple with remove/replace 
+    // simplewithremove/replace
     addSimpleShortcut("jetbrains.mps.ide.actions.FindTextInProject_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt shift F"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowNodeInfo_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl Q"), false, true));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
     addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper(new GoToBookmark_ShortcutChange_tqv_f(), false, true));
     addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new BaseKeymapChanges.ComplexShortcut.ComplexShortcutWrapper(new SetBookmark_ShortcutChange_tqv_g(), false, true));
   }

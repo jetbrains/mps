@@ -67,8 +67,8 @@ public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
           SModelReference md = SModelOperations.getPointer(model);
           modelRefs.add(md);
         }
-        // chances are there are @tests models with test concepts that doesn't extend odd ITestCase (e.g. GeneratorTest), doesn't hurt to 
-        // list all @tests model (after all, why would anyone use that stereotype then?) 
+        // chancesarethereare@testsmodelswithtestconceptsthatdoesn'textendoddITestCase(e.g.GeneratorTest),doesn'thurtto
+        // listall@testsmodel(afterall,whywouldanyoneusethatstereotypethen?)
         for (SModel m : scope.getModels()) {
           if (SModelStereotype.isTestModel(m)) {
             modelRefs.add(SModelOperations.getPointer(m));

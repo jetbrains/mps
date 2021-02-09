@@ -59,7 +59,7 @@
       <node id="8287048028052283703" at="146,35,147,72" concept="8" />
       <node id="8287048028052371068" at="148,109,149,80" concept="8" />
       <node id="8287048028052359193" at="150,213,151,225" concept="8" />
-      <node id="8287048028054198635" at="153,193,154,28" concept="10" />
+      <node id="8287048028054198635" at="153,193,154,26" concept="10" />
       <node id="1867733327983937821" at="155,20,156,223" concept="3" />
       <node id="1867733327983994718" at="158,18,159,268" concept="3" />
       <node id="8287048028052358842" at="161,16,162,316" concept="8" />
@@ -178,9 +178,9 @@
       <node id="2085578213934987902" at="426,89,427,193" concept="8" />
       <node id="8287048028054294187" at="428,35,429,113" concept="3" />
       <node id="8287048028054264411" at="432,170,433,56" concept="3" />
-      <node id="6838242606158390239" at="438,76,439,23" concept="10" />
-      <node id="6838242606158069117" at="439,23,440,39" concept="10" />
-      <node id="6838242606158213231" at="440,39,441,33" concept="10" />
+      <node id="6838242606158390239" at="438,76,439,20" concept="10" />
+      <node id="6838242606158069117" at="439,20,440,36" concept="10" />
+      <node id="6838242606158213231" at="440,36,441,30" concept="10" />
       <node id="6838242606157478435" at="442,5,443,74" concept="8" />
       <node id="6838242606157478435" at="443,74,444,62" concept="8" />
       <node id="6838242606157478435" at="446,52,447,36" concept="9" />
@@ -389,7 +389,7 @@
       <node id="4811383651108928795" at="467,0,489,0" concept="13" trace="_quotation_createNode_6fp4o1_a0a4a0c0h0e0k#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8287048028051408604" at="414,0,437,0" concept="7" trace="replaceConceptFunctions#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Map;)V" />
       <node id="8287048028052111862" at="146,0,170,0" concept="7" trace="build#()Ljetbrains/mps/lang/constraints/rules/statistics/ConstraintAnalyzer/ResultIfLatter;" />
-      <node id="6838242606157478435" at="441,33,465,5" concept="0" />
+      <node id="6838242606157478435" at="441,30,465,5" concept="0" />
       <node id="4811383651090263659" at="347,7,375,7" concept="6" />
       <node id="6838242606157318115" at="438,0,467,0" concept="7" trace="classify#(Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljava/util/Map;" />
       <node id="4811383651093069553" at="317,5,391,5" concept="6" />
@@ -412,7 +412,7 @@
       <scope id="4811383651113197198" at="137,35,138,60" />
       <scope id="4811383651088575445" at="140,34,141,67" />
       <scope id="4811383651097549534" at="143,30,144,53" />
-      <scope id="8287048028054184897" at="153,193,154,28" />
+      <scope id="8287048028054184897" at="153,193,154,26" />
       <scope id="8287048028054196101" at="155,20,156,223" />
       <scope id="8287048028054185025" at="158,18,159,268" />
       <scope id="6838242606155851143" at="269,45,270,260" />

@@ -46,8 +46,8 @@ public class ForLoop_Test extends BaseTransformationTest {
 
     public void test_ForLoop() throws Exception {
       addNodeById("1217271585525");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_ErrorMessagesCheck2501421320959199424() throws Exception {
       SNode nodeToCheck = getRealNodeById("1215444253196");

@@ -41,7 +41,7 @@ public class MpsRunnerWorker extends WorkerBase {
     final MpsRunnerProperties properties = new MpsRunnerProperties(myWhatToDo);
     final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
 
-    // XXX no idea why model write, perhaps, read would suffice 
+    // XXXnoideawhymodelwrite,perhaps,readwouldsuffice
     Class<?> mainClass = new ModelAccessHelper(repo).runWriteAction(new Computable<Class<?>>() {
       public Class<?> compute() {
         SModuleReference solutionRef = ModuleReference.parseReference(properties.getSolution());
@@ -72,13 +72,13 @@ public class MpsRunnerWorker extends WorkerBase {
         error(String.format("No public static method %s in the class %s", methodName, mainClass.getName()));
         return;
       }
-      // First, look for methods with parameters. Prefer one with Environment over the one with Platform as more specific. 
-      // However, we shall not document or encourage use of Environment instead of Platform. Environment is mostly for our own use (MPS internals aware). 
-      // Most clients shall be fine with Platform. 
-      // XXX Perhaps, shall invoke instance method, and pass Platform as cons argument. 
-      //     Do we need an option to open a project and pass project instance into the method? 
+      // First,lookformethodswithparameters.PreferonewithEnvironmentovertheonewithPlatformasmorespecific.
+      // However,weshallnotdocumentorencourageuseofEnvironmentinsteadofPlatform.Environmentismostlyforourownuse(MPSinternalsaware).
+      // MostclientsshallbefinewithPlatform.
+      // XXXPerhaps,shallinvokeinstancemethod,andpassPlatformasconsargument.
+      // Doweneedanoptiontoopenaprojectandpassprojectinstanceintothemethod?
       // 
-      // I) public static void mpsMain(Environment env) 
+      // I)publicstaticvoidmpsMain(Environmentenv)
       for (Method m : methods) {
         Class<?>[] parameterTypes = m.getParameterTypes();
         if (parameterTypes.length != 1) {
@@ -90,7 +90,7 @@ public class MpsRunnerWorker extends WorkerBase {
         }
       }
       // 
-      // II) public static void mpsMain(Platform p) 
+      // II)publicstaticvoidmpsMain(Platformp)
       for (Method m : methods) {
         Class<?>[] parameterTypes = m.getParameterTypes();
         if (parameterTypes.length != 1) {
@@ -101,8 +101,8 @@ public class MpsRunnerWorker extends WorkerBase {
           return;
         }
       }
-      // Otherwise, resort to no-arg method 
-      // III) public static mpsMain() 
+      // Otherwise,resorttono-argmethod
+      // III)publicstaticmpsMain()
       for (Method m : methods) {
         Class<?>[] parameterTypes = m.getParameterTypes();
         if (parameterTypes.length != 0) {

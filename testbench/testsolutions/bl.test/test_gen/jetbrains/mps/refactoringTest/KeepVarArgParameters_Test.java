@@ -58,19 +58,19 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
       addNodeById("6365792264556597683");
       ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("6365792264556597660"));
 
-      // Add params 
+      // Addparams
       SNode boolParam = _quotation_createNode_in913d_a0f0d7();
       SNode intParam = _quotation_createNode_in913d_a0g0d7();
       List<SNode> parameters = SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj);
       parameters.add(1, boolParam);
       parameters.add(2, intParam);
 
-      // Add default values 
+      // Adddefaultvalues
       Map<SNode, SNode> defaultValues = MapSequence.fromMap(new HashMap<SNode, SNode>());
       MapSequence.fromMap(defaultValues).put(boolParam, _quotation_createNode_in913d_a0n0d7());
       MapSequence.fromMap(defaultValues).put(intParam, _quotation_createNode_in913d_a0o0d7());
 
-      // Usages 
+      // Usages
       List<SNode> usages = ListSequence.fromList(new ArrayList<SNode>(2));
       ListSequence.fromList(usages).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getNodeById("6365792264556597669"), LINKS.body$5xQk), LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
@@ -78,7 +78,7 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
         }
       }));
 
-      // Create refactoring and add usages 
+      // Createrefactoringandaddusages
       ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("6365792264556597660"), defaultValues);
       ref.setUsages(usages);
 

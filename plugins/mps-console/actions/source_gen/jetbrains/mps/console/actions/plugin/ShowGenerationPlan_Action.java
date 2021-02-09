@@ -40,9 +40,9 @@ public class ShowGenerationPlan_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // I'd love to update presentation to reflect alternative action with keyboard modifier, but IDEA 
-    // doesn't update action on key pressed once menu is visible, and doesn't pass initial modifiers, 
-    // see com.intellij.openapi.actionSystem.impl.Util#expandActionGroup:135 (always 0). 
+    // I'dlovetoupdatepresentationtoreflectalternativeactionwithkeyboardmodifier,butIDEA
+    // doesn'tupdateactiononkeypressedoncemenuisvisible,anddoesn'tpassinitialmodifiers,
+    // seecom.intellij.openapi.actionSystem.impl.Util#expandActionGroup:135(always0).
     return GenerationFacade.canGenerate(event.getData(MPSCommonDataKeys.MODEL));
   }
   @Override
@@ -75,7 +75,7 @@ public class ShowGenerationPlan_Action extends BaseAction {
     SPropertyOperations.assign(command, PROPS.ignoreExternalPlan$C8Pc, alternative);
     SLinkOperations.setTarget(command, LINKS.targetModel$AZJC, ModelPointer__BehaviorDescriptor.create_id_GDk1qZ2JP.invoke(SNodeOperations.asSConcept(CONCEPTS.ModelPointer$6N), event.getData(MPSCommonDataKeys.MODEL), event.getData(MPSCommonDataKeys.MODEL)));
     ConsoleTool ct = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ConsoleTool.class);
-    // next code comes from ConsoleTool.executeCommand(node<Command>) 
+    // nextcodecomesfromConsoleTool.executeCommand(node<Command>)
     ConsoleTool.TabState ts = new ConsoleTool.TabState();
     ts.isHistoryTab = true;
     ts.title = String.format("%s plan", NameUtil.compactModelName(event.getData(MPSCommonDataKeys.MODEL).getReference()));

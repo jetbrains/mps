@@ -98,8 +98,8 @@ public class NodeCopier {
   }
 
   public void restoreIds(boolean affectOthers) {
-    // no idea if the reasons that lead to this code still hold  
-    // With UN being tracked for repository-attached models and within command only, do we still get errors here? 
+    // noideaifthereasonsthatleadtothiscodestillhold
+    // WithUNbeingtrackedforrepository-attachedmodelsandwithincommandonly,dowestillgeterrorshere?
     UnregisteredNodes.WarningLevel oldWarningLevel = UnregisteredNodes.setWarningLevel(UnregisteredNodes.WarningLevel.WARNING);
     try {
       softRestoreIds();
@@ -133,7 +133,7 @@ public class NodeCopier {
   private void softRestoreIds() {
     for (SNodeId id : SetSequence.fromSet(MapSequence.fromMap(myIdReplacementCache).keySet())) {
       if (MapSequence.fromMap(myIdReplacementCache).get(id) != null && myModel.getNode(id) == null) {
-        // node id is free now! 
+        // nodeidisfreenow!
         setId(myModel.getNode(MapSequence.fromMap(myIdReplacementCache).get(id)), id);
 
         MapSequence.fromMap(myIdReplacementCache).put(id, null);

@@ -43,7 +43,7 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode2.setProperty(myProperties[0], "true");
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -56,11 +56,11 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
             for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
               tnode3.addChild(myAggregationLinks[1], child5);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[2], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

@@ -84,7 +84,7 @@ public class MethodModel {
       }
     }
     text.append(")");
-    //  Add throw intems 
+    // Addthrowintems
     if (ListSequence.fromList(this.getThrowItems()).isNotEmpty()) {
       text.append("throws\n");
       boolean first = true;

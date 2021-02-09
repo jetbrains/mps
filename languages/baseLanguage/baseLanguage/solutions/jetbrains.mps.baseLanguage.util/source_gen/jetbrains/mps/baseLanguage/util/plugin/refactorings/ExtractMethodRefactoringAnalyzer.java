@@ -236,7 +236,7 @@ public class ExtractMethodRefactoringAnalyzer {
   public List<MethodParameter> getInputVariables() {
     Map<SNode, MethodParameter> result = MapSequence.fromMap(new LinkedHashMap<SNode, MethodParameter>(16, (float) 0.75, false));
     this.addDataflowParameters(result);
-    // added to fix problems with closures 
+    // addedtofixproblemswithclosures
     addExternalParameters(result);
     for (SNode node : ListSequence.fromList(this.myPartToExtract)) {
       for (SNode parameter : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IParameter$HE, true, new SAbstractConcept[]{}))) {

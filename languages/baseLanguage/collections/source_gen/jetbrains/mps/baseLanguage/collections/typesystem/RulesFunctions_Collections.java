@@ -47,9 +47,9 @@ public class RulesFunctions_Collections {
   }
   @InferenceMethod
   public static void setInputSequenceType(final TypeCheckingContext typeCheckingContext, SNode op, SNode target) {
-    // 1. Take input expression 
-    // 2. Assert that it is coerceable to sequence 
-    // 3. Assign the sequence type to the target 
+    // 1.Takeinputexpression
+    // 2.Assertthatitiscoerceabletosequence
+    // 3.Assignthesequencetypetothetarget
     SNode input = getInput(typeCheckingContext, op);
     if ((input != null)) {
       final SNode elementType_typevar_1184784638219 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -67,9 +67,9 @@ public class RulesFunctions_Collections {
   }
   @InferenceMethod
   public static void setInputElementType(final TypeCheckingContext typeCheckingContext, SNode op, SNode target) {
-    // 1. Take input expression 
-    // 2. Assert that it is coerceable to sequence 
-    // 3. Assign the sequence element type to the target 
+    // 1.Takeinputexpression
+    // 2.Assertthatitiscoerceabletosequence
+    // 3.Assignthesequenceelementtypetothetarget
     SNode input = getInput(typeCheckingContext, op);
     if ((input != null)) {
       final SNode elementType_typevar_1184844804662 = typeCheckingContext.createNewRuntimeTypesVariable();
@@ -87,9 +87,9 @@ public class RulesFunctions_Collections {
   }
   @InferenceMethod
   public static void isInputElementType(final TypeCheckingContext typeCheckingContext, SNode op, SNode target) {
-    // 1. Take input expression 
-    // 2. Assert that it is coerceable to sequence 
-    // 3. Assert that target has sequence element type 
+    // 1.Takeinputexpression
+    // 2.Assertthatitiscoerceabletosequence
+    // 3.Assertthattargethassequenceelementtype
     SNode input = getInput(typeCheckingContext, op);
     if ((input != null)) {
       final SNode elementType_typevar_1184850451264 = typeCheckingContext.createNewRuntimeTypesVariable();

@@ -140,30 +140,30 @@
       <node id="4575047236827101453" at="17,95,18,76" concept="5" />
       <node id="4575047236827101453" at="18,76,19,82" concept="5" />
       <node id="4575047236827101453" at="19,82,20,0" concept="8" />
-      <node id="4575047236827101453" at="20,0,21,46" concept="7" />
-      <node id="4575047236827101453" at="21,46,22,53" concept="1" />
+      <node id="4575047236827101453" at="20,0,21,40" concept="7" />
+      <node id="4575047236827101453" at="21,40,22,53" concept="1" />
       <node id="4575047236827101453" at="22,53,23,0" concept="8" />
-      <node id="4575047236827101453" at="23,0,24,58" concept="7" />
-      <node id="4575047236827101453" at="24,58,25,52" concept="7" />
-      <node id="4575047236827101453" at="25,52,26,68" concept="5" />
+      <node id="4575047236827101453" at="23,0,24,48" concept="7" />
+      <node id="4575047236827101453" at="24,48,25,44" concept="7" />
+      <node id="4575047236827101453" at="25,44,26,68" concept="5" />
       <node id="4575047236827101453" at="26,68,27,74" concept="5" />
       <node id="4575047236827101453" at="28,69,29,61" concept="1" />
       <node id="4575047236827101453" at="31,35,32,84" concept="1" />
       <node id="4575047236827101453" at="34,41,35,87" concept="1" />
       <node id="4575047236827101453" at="39,0,40,0" concept="9" trace="OB" />
-      <node id="4575047236827101453" at="41,102,42,54" concept="7" />
-      <node id="4575047236827101454" at="42,54,43,93" concept="1" />
+      <node id="4575047236827101453" at="41,102,42,46" concept="7" />
+      <node id="4575047236827101454" at="42,46,43,93" concept="1" />
       <node id="4575047236827101453" at="43,93,44,0" concept="8" />
-      <node id="4575047236827101453" at="44,0,45,60" concept="7" />
+      <node id="4575047236827101453" at="44,0,45,51" concept="7" />
       <node id="4575047236827101453" at="48,135,49,0" concept="8" />
-      <node id="4575047236827101453" at="49,0,50,70" concept="7" />
+      <node id="4575047236827101453" at="49,0,50,59" concept="7" />
       <node id="4575047236827101454" at="51,60,52,95" concept="1" />
       <node id="4575047236827101453" at="53,5,54,0" concept="8" />
-      <node id="4575047236827101453" at="54,0,55,77" concept="7" />
+      <node id="4575047236827101453" at="54,0,55,64" concept="7" />
       <node id="4575047236827101453" at="27,74,30,5" concept="3" />
       <node id="4575047236827101453" at="30,5,33,5" concept="3" />
       <node id="4575047236827101453" at="33,5,36,5" concept="3" />
-      <node id="4575047236827101454" at="50,70,53,5" concept="3" />
+      <node id="4575047236827101454" at="50,59,53,5" concept="3" />
       <node id="4575047236827101453" at="41,0,47,0" concept="10" trace="setDefinedCellActions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4575047236827101453" at="48,0,57,0" concept="10" trace="setDefinedCellActionsOfType#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;Ljetbrains/mps/openapi/editor/cells/CellActionType;)V" />
       <node id="4575047236827101453" at="17,0,38,0" concept="10" trace="setCellActions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -171,13 +171,13 @@
       <scope id="4575047236827101453" at="31,35,32,84" />
       <scope id="4575047236827101453" at="34,41,35,87" />
       <scope id="4575047236827101454" at="51,60,52,95" />
-      <scope id="4575047236827101453" at="41,102,45,60" />
+      <scope id="4575047236827101453" at="41,102,45,51" />
       <scope id="4575047236827101453" at="41,0,47,0">
         <var name="context" id="4575047236827101453" />
         <var name="editorCell" id="4575047236827101453" />
         <var name="node" id="4575047236827101453" />
       </scope>
-      <scope id="4575047236827101453" at="48,135,55,77" />
+      <scope id="4575047236827101453" at="48,135,55,64" />
       <scope id="4575047236827101453" at="48,0,57,0">
         <var name="actionType" id="4575047236827101453" />
         <var name="context" id="4575047236827101453" />

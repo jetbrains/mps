@@ -63,13 +63,13 @@ public class LineToContentMapReader6Handler extends XMLSAXHandler<List<LineConte
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
     ElementHandler current = (myHandlersStack.empty() ? (ElementHandler) null : myHandlersStack.peek());
     if (current == null) {
-      // root 
+      // root
       current = modelHandler;
     } else {
       current = current.createChild(myValues.peek(), qName, attributes);
     }
 
-    // check required 
+    // checkrequired
     for (String attr : current.requiredAttributes()) {
       if (attributes.getValue(attr) == null) {
         throw new SAXParseException("attribute " + attr + " is absent", null);
@@ -81,7 +81,7 @@ public class LineToContentMapReader6Handler extends XMLSAXHandler<List<LineConte
       myResult = (List<LineContent>) result;
     }
 
-    // handle attributes 
+    // handleattributes
     for (int i = 0; i < attributes.getLength(); i++) {
       String name = attributes.getQName(i);
       String value = attributes.getValue(i);

@@ -116,8 +116,8 @@ public class NewRuntimeModule_Action extends BaseAction {
         repo.getModelAccess().runWriteInEDT(new Runnable() {
           public void run() {
             language.getModuleDescriptor().getRuntimeModules().add((SModuleReference) p0);
-            // next code has been inspired by ModulePropertiesConfigurable.RuntimeTableModel#apply() 
-            // which has been abandoned since (e748150fb6017dd56e477b8aa5897cea5fd72af8), not sure what's the proper way 
+            // nextcodehasbeeninspiredbyModulePropertiesConfigurable.RuntimeTableModel#apply()
+            // whichhasbeenabandonedsince(e748150fb6017dd56e477b8aa5897cea5fd72af8),notsurewhat'stheproperway
             ModuleDependencyVersions mdv = new ModuleDependencyVersions(((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(LanguageRegistry.class), repo);
             for (Generator g : language.getOwnedGenerators()) {
               mdv.update(g);

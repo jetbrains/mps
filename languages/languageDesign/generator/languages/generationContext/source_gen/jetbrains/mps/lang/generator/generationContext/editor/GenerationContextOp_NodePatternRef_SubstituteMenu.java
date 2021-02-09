@@ -49,7 +49,7 @@ public class GenerationContextOp_NodePatternRef_SubstituteMenu extends Substitut
   public class SMP_ReferenceScope_k9cp1y_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_k9cp1y_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GenerationContextOp_NodePatternRef$PJ, LINKS.patternVarDecl$Mi3o);
     }
     @NotNull

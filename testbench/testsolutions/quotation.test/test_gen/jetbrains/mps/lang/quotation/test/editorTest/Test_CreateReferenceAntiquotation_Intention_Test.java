@@ -36,8 +36,8 @@ public class Test_CreateReferenceAntiquotation_Intention_Test extends BaseTransf
       initEditorComponent("7167051279291141157", "7167051279291141170");
       Assert.assertTrue(isIntentionApplicable("jetbrains.mps.lang.quotation.intentions.CreateReferenceAntiquotation_Intention", myStart.getNode()));
       invokeIntention("jetbrains.mps.lang.quotation.intentions.CreateReferenceAntiquotation_Intention", myStart.getNode());
-      // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing 
-      // todo remove it when it will be possible to have the antiquotation with an error under the test 
+      // todothisisdonebecauseantiquotation"antisuppress"theerrorsandtypesystemtestisfailing
+      // todoremoveitwhenitwillbepossibletohavetheantiquotationwithanerrorunderthetest
       typeString("theNode");
 
     }

@@ -61,8 +61,8 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
     return null;
   }
   /*package*/ static boolean supportsCheckedExceptions_id7orZYjMoFMH(@NotNull SNode __thisNode__) {
-    // afaik, tells RulesFunction_BaseLanguage that it's not possible to augment list of checked exceptions 
-    // thrown from this function 
+    // afaik,tellsRulesFunction_BaseLanguagethatit'snotpossibletoaugmentlistofcheckedexceptions
+    // thrownfromthisfunction
     return false;
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
@@ -92,9 +92,9 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static String getHeader_id2v69eKc6GlE(@NotNull SNode __thisNode__) {
     StringBuilder result = new StringBuilder();
-    // by default 'alias' is not shown. 
-    // if you need presentation like alias(...)->.. 
-    // then use the ConceptFunctionAliased_Component 
+    // bydefault'alias'isnotshown.
+    // ifyouneedpresentationlikealias(...)->..
+    // thenusetheConceptFunctionAliased_Component
     if ((boolean) ConceptFunction__BehaviorDescriptor.showName_id1653mnvAgry.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)))) {
       result.append(ConceptFunction__BehaviorDescriptor.getName_idhGVcmek.invoke(__thisNode__));
     }
@@ -136,7 +136,7 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
     return result.toString();
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    // todo: rewrite using filtering scope 
+    // todo:rewriteusingfilteringscope
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
     if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.LocalVariableDeclaration$41)) {

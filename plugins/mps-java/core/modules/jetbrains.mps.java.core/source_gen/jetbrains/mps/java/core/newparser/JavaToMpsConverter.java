@@ -124,8 +124,8 @@ public class JavaToMpsConverter {
   }
 
   public JavaToMpsConverter(SModule module, SRepository repository, boolean perRoot, boolean inPlace, ModelFactoryService modelFactoryService, IMessageHandler messageHandler) {
-    // currently perRoot==false and inPlace==true doesn't make it in-place 
-    // because of how DefaultModelRoot is implemented 
+    // currentlyperRoot==falseandinPlace==truedoesn'tmakeitin-place
+    // becauseofhowDefaultModelRootisimplemented
     myModule = module;
     myCreatePerRoot = perRoot;
     myCreateInplace = inPlace;
@@ -162,7 +162,7 @@ public class JavaToMpsConverter {
   public void convertToMps(List<IFile> files, ProgressMonitor progress) {
     progress.start("Converting...", 31);
 
-    // first we build AST 
+    // firstwebuildAST
     ProgressMonitor parseProgress = progress.subTask(1);
     parseProgress.start("Parsing...", ListSequence.fromList(files).count());
 
@@ -183,7 +183,7 @@ public class JavaToMpsConverter {
 
     parseProgress.done();
 
-    // now we attach the models and try to resolve 
+    // nowweattachthemodelsandtrytoresolve
 
     myModelAccess.runWriteAction(new Runnable() {
       public void run() {
@@ -209,11 +209,11 @@ public class JavaToMpsConverter {
           }
 
         } else {
-          // todo maybe do something clever with packages <-> java imports 
-          // with regard to model where we put it all 
+          // todomaybedosomethingcleverwithpackages<->javaimports
+          // withregardtomodelwhereweputitall
 
           for (SNode root : ListSequence.fromList(myRoots)) {
-            // todo be more accurate with duplicates 
+            // todobemoreaccuratewithduplicates
             MapSequence.fromMap(myRootsToModels).put(root, myModel);
           }
           myModels = Sequence.fromIterable(Sequence.<SModel>singleton(myModel)).toListSequence();
@@ -226,13 +226,13 @@ public class JavaToMpsConverter {
     if (myModelAccess.isCommandAction()) {
       modelAccess.value = IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE;
     } else if (myModel != null) {
-      // import into single already existing model; use proper command for replacing nodes 
+      // importintosinglealreadyexistingmodel;usepropercommandforreplacingnodes
       modelAccess.value = new IncrementalModelAccessWithCommand(myModelAccess, myModels, myMessageHandler);
     } else {
       modelAccess.value = new IncrementalModelAccessWithoutCommand(myModelAccess, myModels, myMessageHandler);
     }
 
-    // actually attach roots 
+    // actuallyattachroots
     modelAccess.value.replaceNodes(new Runnable() {
       public void run() {
         ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
@@ -269,7 +269,7 @@ public class JavaToMpsConverter {
   }
 
   private void tryResolveRefs(Iterable<SNode> nodes, FeatureKind level, ProgressMonitor progress, IncrementalModelAccess modelAccess) {
-    // 11 - number of progress.subTask() below 
+    // 11-numberofprogress.subTask()below
     progress.start("Resolving...", 11);
 
     if (FeatureKind.CLASS.equals(level)) {
@@ -288,13 +288,13 @@ public class JavaToMpsConverter {
       }, progress.subTask(1), modelAccess);
     }
 
-    // this happens on the level of expressions, but relies on top-level references (from class and method 
-    // declarations) having been resolved 
+    // thishappensonthelevelofexpressions,butreliesontop-levelreferences(fromclassandmethod
+    // declarations)havingbeenresolved
     ProgressMonitor resolvePM = progress.subTask(1);
     resolvePM.start("", ListSequence.fromList(myModels).count());
     for (SModel m : ListSequence.fromList(myModels)) {
-      // Here used to be a code JavaParser.tryToResolveUnknowns(myAttachedRoots...), which used to take model of a supplied node to update its imports 
-      // Now, with YetUnknownResolver that works on a per-model basis, need to group elements of myAttachedRoots by their model, hence intersect(), below 
+      // HereusedtobeacodeJavaParser.tryToResolveUnknowns(myAttachedRoots...),whichusedtotakemodelofasuppliednodetoupdateitsimports
+      // Now,withYetUnknownResolverthatworksonaper-modelbasis,needtogroupelementsofmyAttachedRootsbytheirmodel,henceintersect(),below
       YetUnknownResolver yur = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
       yur.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING), modelAccess);
     }
@@ -411,7 +411,7 @@ public class JavaToMpsConverter {
     String pkg = parseResult.getPackage();
 
     if (pkg == null) {
-      // default package (i.e. none), bad 
+      // defaultpackage(i.e.none),bad
       if (!(wasDefaultPkg)) {
         myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("default package is not supported in java source directory input (first such file in dir: %s)", file.getName())));
         wasDefaultPkg = true;
@@ -426,9 +426,9 @@ public class JavaToMpsConverter {
     }
 
     IFile currentDir = MapSequence.fromMap(packageDirs).get(pkg);
-    // if it's already set, leave it as is 
-    // it means one package is present in more than one dir, but we will have only one model 
-    // and it has to be somewhere 
+    // ifit'salreadyset,leaveitasis
+    // itmeansonepackageispresentinmorethanonedir,butwewillhaveonlyonemodel
+    // andithastobesomewhere
     if (currentDir == null) {
       MapSequence.fromMap(packageDirs).put(pkg, dir);
     }
@@ -490,7 +490,7 @@ public class JavaToMpsConverter {
   private void codeTransformPass(final Iterable<SNode> nodes, final ProgressMonitor progress, IncrementalModelAccess modelAccess) {
     progress.start("Code transforms", Sequence.fromIterable(nodes).count() * 5 + 1);
 
-    // all this can be replaced by one map old -> new 
+    // allthiscanbereplacedbyonemapold->new
     final List<SNode> toReplaceWithArrayLength = ListSequence.fromList(new ArrayList<SNode>());
     final List<SNode> toReplaceWithArrayClone = ListSequence.fromList(new ArrayList<SNode>());
     final Map<SNode, SNode> enumConstRefs = MapSequence.fromMap(new HashMap<SNode, SNode>());
@@ -663,7 +663,7 @@ public class JavaToMpsConverter {
   }
 
   private SNode transformUnqualifedEnum(SNode varRef) {
-    // FIXME share or re-use code with the corresponding NonTypesystemRule 
+    // FIXMEshareorre-usecodewiththecorrespondingNonTypesystemRule
 
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(varRef)), CONCEPTS.VariableReference$TC))) {
       return null;
@@ -677,7 +677,7 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    // now we can try to search 
+    // nowwecantrytosearch
     SNode gateway = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70ea1dc4c5721865L, "jetbrains.mps.baseLanguage.structure.IYetUnresolved")));
 
     String enumConstName = SLinkOperations.getResolveInfo(ref);
@@ -706,9 +706,9 @@ public class JavaToMpsConverter {
       String enumClassCandidateName = ((String) BHReflection.invoke0(singleNameImport, CONCEPTS.Tokens$ej, SMethodTrimmedId.create("withoutLastToken", CONCEPTS.Tokens$ej, "5ll4uk6512$")));
       SNode enumClassCandidate = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("findClass", CONCEPTS.IYetUnresolved$h4, "4ykJ8Y83bdr"), varRef, enumClassCandidateName));
       if ((enumClassCandidate == null)) {
-        // seems like there is no need to continue 
-        // we had import of the form: import static <class>.<ourName> 
-        // if we meet <ourName> in java code then it must strictly reference this import, not any other 
+        // seemslikethereisnoneedtocontinue
+        // wehadimportoftheform:importstatic<class>.<ourName>
+        // ifwemeet<ourName>injavacodethenitmuststrictlyreferencethisimport,notanyother
         return null;
       }
       if (!(SNodeOperations.isInstanceOf(enumClassCandidate, CONCEPTS.EnumClass$Vk))) {
@@ -737,7 +737,7 @@ public class JavaToMpsConverter {
   }
 
   private SNode makeEnumConstRef(SNode enumClass, final String constName) {
-    // Q: maybe not findFirst, but rather fail if there are more than one... 
+    // Q:maybenotfindFirst,butratherfailiftherearemorethanone...
     SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(enumClass, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return constName.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
@@ -755,7 +755,7 @@ public class JavaToMpsConverter {
   }
 
   private SNode transformUnqualifedEnumUnderSwitch(SNode switchCase) {
-    // FIXME share or re-use code with the corresponding NonTypesystemRule 
+    // FIXMEshareorre-usecodewiththecorrespondingNonTypesystemRule
 
     SNode caseExp = SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6);
     if (!(SNodeOperations.isInstanceOf(caseExp, CONCEPTS.VariableReference$TC))) {
@@ -797,7 +797,7 @@ public class JavaToMpsConverter {
 
 
   private SNode transformLocalCall(SNode localCall) {
-    // FIXME share or re-use code with the corresponding NonTypesystemRule 
+    // FIXMEshareorre-usecodewiththecorrespondingNonTypesystemRule
 
     SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$pyYw);
     if (!(ref instanceof StaticReference)) {
@@ -813,7 +813,7 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    // it's out of scope, let's make it StaticMethodCall 
+    // it'soutofscope,let'smakeitStaticMethodCall
     SNode smc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
     SLinkOperations.setTarget(smc, LINKS.classConcept$M5BC, SNodeOperations.getNodeAncestor(target, CONCEPTS.Classifier$Ix, false, false));
     SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(target, CONCEPTS.StaticMethodDeclaration$FJ));
@@ -828,9 +828,9 @@ public class JavaToMpsConverter {
   }
 
   private SNode transformLocalNameRef(SNode varRef) {
-    // it's either EnumConstReference or StaticFieldReference 
+    // it'seitherEnumConstReferenceorStaticFieldReference
 
-    // FIXME share or re-use code with the corresponding NonTypesystemRule 
+    // FIXMEshareorre-usecodewiththecorrespondingNonTypesystemRule
 
     SReference ref = SNodeOperations.getReference(varRef, LINKS.variableDeclaration$N1XG);
     if (!(ref instanceof StaticReference)) {
@@ -841,16 +841,16 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    // now check whether it's in another class 
+    // nowcheckwhetherit'sinanotherclass
     SNode thisClass = SNodeOperations.getNodeAncestor(varRef, CONCEPTS.Classifier$Ix, false, false);
     SNode thatClass = SNodeOperations.getNodeAncestor(target, CONCEPTS.Classifier$Ix, false, false);
-    // it should be ok to use ==, I think 
+    // itshouldbeoktouse==,Ithink
     if (thisClass == thatClass) {
-      // same class, such local method call is ok in baseLanguage 
+      // sameclass,suchlocalmethodcallisokinbaseLanguage
       return null;
     }
 
-    // different class, let's make this reference non-local, but qualified 
+    // differentclass,let'smakethisreferencenon-local,butqualified
     SNode sfr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
     SLinkOperations.setTarget(sfr, LINKS.classifier$BPY8, thatClass);
     SLinkOperations.setTarget(sfr, LINKS.variableDeclaration$N1XG, SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$jR));
@@ -860,7 +860,7 @@ public class JavaToMpsConverter {
 
 
   private Iterable<SNode> getImportsToRemove(SNode root) {
-    // FIXME share or re-use code with the corresponding NonTypesystemRule 
+    // FIXMEshareorre-usecodewiththecorrespondingNonTypesystemRule
 
     final Map<String, SNode> importsByName = MapSequence.fromMap(new HashMap<String, SNode>());
     ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root), LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
@@ -903,17 +903,17 @@ public class JavaToMpsConverter {
       }
     }
 
-    // retain all imports if 'unknown' concepts still present 
+    // retainallimportsif'unknown'conceptsstillpresent
     if (unknownPresent) {
       return null;
     }
-    // on the other hand, if everything is resolved, remove all imports altogether 
+    // ontheotherhand,ifeverythingisresolved,removeallimportsaltogether
     if (dynRefsPresent == false) {
-      // quick-fix 
+      // quick-fix
       return SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root), LINKS.entries$neZo);
     }
-    // removing only those single-type imports that didn't get into retain set 
-    // quick fix 
+    // removingonlythosesingle-typeimportsthatdidn'tgetintoretainset
+    // quickfix
     Iterable<SNode> unneeded = Sequence.fromIterable(MapSequence.fromMap(importsByName).values()).subtract(SetSequence.fromSet(retain));
     return unneeded;
   }
@@ -1043,7 +1043,7 @@ public class JavaToMpsConverter {
         public void visit(SReference it) {
           SModelReference targetModelRef = it.getTargetSModelReference();
           if (!(sourceModel.getReference().equals(targetModelRef))) {
-            // avoiding self-import 
+            // avoidingself-import
             ((SModelInternal) sourceModel).addModelImport(targetModelRef);
           }
           node.setReference(it.getLink(), it);
@@ -1060,13 +1060,13 @@ public class JavaToMpsConverter {
       ListSequence.fromList(refs).addSequence(Sequence.fromIterable(deepReferences(child)));
     }
     return refs;
-    // generator for yield broken? 
+    // generatorforyieldbroken?
   }
 
   private SModel getModel(String pkgFqName, IFile pkgDir) {
     for (SModel model : Sequence.fromIterable(myModule.getModels())) {
-      // not handling stereotype on purpose: if there's my.pkg@java_stub, it shouldn't prevent us 
-      // from creating my.pkg 
+      // nothandlingstereotypeonpurpose:ifthere'smy.pkg@java_stub,itshouldn'tpreventus
+      // fromcreatingmy.pkg
       if (pkgFqName.equals(model.getModelName())) {
         return model;
       }
@@ -1145,9 +1145,9 @@ public class JavaToMpsConverter {
   }
 
   private Tuples._2<DefaultModelRoot, SourceRoot> getRootContainingDir(IFile dir) {
-    // returns modelRoot and sourceRoot within 
+    // returnsmodelRootandsourceRootwithin
     for (ModelRoot modelRoot : Sequence.fromIterable(myModule.getModelRoots())) {
-      // or maybe more general: file based model root? 
+      // ormaybemoregeneral:filebasedmodelroot?
       if (!(modelRoot instanceof DefaultModelRoot)) {
         continue;
       }

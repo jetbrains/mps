@@ -70,7 +70,7 @@ public final class GoToRulesHelper {
       return Collections.emptyList();
     }
 
-    // todo: populate rules from other typesystem models! 
+    // todo:populaterulesfromothertypesystemmodels!
     List<SNode> rules = ListSequence.fromList(SModelOperations.roots(typesystem, CONCEPTS.AbstractRule$o9)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode node) {
         return isApplicable(node, concept, exactConcept);

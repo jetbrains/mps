@@ -82,7 +82,7 @@ public abstract class WorkerBase {
     RepositoryDescriptor repo = whatToDo.getRepoDescriptor();
     if (repo != null) {
       config = config.withBootstrapLibraries().withWorkbenchPath();
-      // todo make this code more typed 
+      // todomakethiscodemoretyped
       for (String folder : repo.folders) {
         if (!(new File(folder).exists())) {
           warning("Modules folder does not exist: " + folder);
@@ -111,9 +111,9 @@ public abstract class WorkerBase {
       }
       config.addLib(jar);
     }
-    // let Environment know which idea plugins are expected to be loaded. 
-    // Note, this doesn't address plugin classpath, as it's up to respective Task to decide whether respective plugins and their classes/libraries 
-    // are in a global classpath or plugin classes are loaded in any other way. 
+    // letEnvironmentknowwhichideapluginsareexpectedtobeloaded.
+    // Note,thisdoesn'taddresspluginclasspath,asit'suptorespectiveTasktodecidewhetherrespectivepluginsandtheirclasses/libraries
+    // areinaglobalclasspathorpluginclassesareloadedinanyotherway.
     for (PluginData pd : ListSequence.fromList(whatToDo.getPlugins())) {
       config.addPlugin(pd.path, pd.id);
     }
@@ -206,8 +206,8 @@ public abstract class WorkerBase {
   protected Set<SModule> processModuleFiles(SRepository repo, final Collection<File> moduleSourceDescriptorFiles) {
     Set<SModule> modules = new LinkedHashSet<SModule>();
 
-    // XXX need a way to figure which FS to use here. Technically, it should come from a project as we are going to 
-    // use these modules as part of the project. OTOH, we know these are local FS files. 
+    // XXXneedawaytofigurewhichFStousehere.Technically,itshouldcomefromaprojectaswearegoingto
+    // usethesemodulesaspartoftheproject.OTOH,weknowthesearelocalFSfiles.
     final IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
     DescriptorIOFacade descriptorIOFacade = myEnvironment.getPlatform().findComponent(DescriptorIOFacade.class);
     final ModulesMiner mminer = new ModulesMiner(Collections.<IFile>emptySet(), descriptorIOFacade);
@@ -222,8 +222,8 @@ public abstract class WorkerBase {
     ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(repo);
     final SRepositoryExt repoExt = ((SRepositoryExt) mrf.getRepository());
     for (ModulesMiner.ModuleHandle mh : mminer.getCollectedModules()) {
-      // seems reasonable just to instantiate a module here and leave its registration to caller 
-      // however, at the moment, Generator modules need access to their source Language module, which they look up in the repository 
+      // seemsreasonablejusttoinstantiateamodulehereandleaveitsregistrationtocaller
+      // however,atthemoment,GeneratormodulesneedaccesstotheirsourceLanguagemodule,whichtheylookupintherepository
       SModule module = repoExt.registerModule(mrf.instantiate(mh.getDescriptor(), mh.getFile()), myOwner);
       info("Loaded module " + module);
       modules.add(module);

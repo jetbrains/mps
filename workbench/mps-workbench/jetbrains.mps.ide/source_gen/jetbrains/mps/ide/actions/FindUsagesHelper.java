@@ -42,7 +42,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
   }
 
   /*package*/ FindUsagesHelper prepareOptions(EditorCell cell, SNode node) {
-    // needs model read 
+    // needsmodelread
     myOperationNode = (cell == null ? node : APICellAdapter.getSNodeWRTReference(cell));
     String concept = SNodeOperations.getConcept(myOperationNode).getQualifiedName();
     FindUsagesOptions preset = getDefaultOptions().getDefaultSearchOptions(concept);
@@ -52,16 +52,16 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
   }
 
   /*package*/ FindUsagesHelper showDialog() {
-    // this method is optional. Since it deals with UI, shall not get invoked inside model read/command 
-    // that's the reason why FindSpecificNodeUsages_Action does that. 
-    // However, FinderOptions inside FindUsageDialog need model access for the node supplied, would be nice to deal with that in a proper way 
+    // thismethodisoptional.SinceitdealswithUI,shallnotgetinvokedinsidemodelread/command
+    // that'sthereasonwhyFindSpecificNodeUsages_Actiondoesthat.
+    // However,FinderOptionsinsideFindUsageDialogneedmodelaccessforthenodesupplied,wouldbenicetodealwiththatinaproperway
 
     FindUsagesDialog dialog = new FindUsagesDialog(myUsageOptions, myOperationNode, myIdeaProject);
     dialog.show();
     if (dialog.isCancelled()) {
       myOperationNode = null;
       myUsageOptions = null;
-      // indicate we shall cancel 
+      // indicateweshallcancel
     } else {
       myUsageOptions = dialog.getResult();
     }
@@ -69,9 +69,9 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
   }
 
   /*package*/ void invoke() {
-    // this one requires model read as well, due to scopeOptions.getScope() and SearchQuery(SNode) 
+    // thisonerequiresmodelreadaswell,duetoscopeOptions.getScope()andSearchQuery(SNode)
     if (myUsageOptions == null) {
-      // no-op, dialog was cancelled 
+      // no-op,dialogwascancelled
       return;
     }
     IResultProvider provider = myUsageOptions.getFindersOptions().getResult();

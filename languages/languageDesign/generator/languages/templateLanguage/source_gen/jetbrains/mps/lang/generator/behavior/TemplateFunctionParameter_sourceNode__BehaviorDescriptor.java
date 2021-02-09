@@ -31,7 +31,7 @@ public final class TemplateFunctionParameter_sourceNode__BehaviorDescriptor exte
   }
 
   /*package*/ static boolean needConceptFunction_idhZKliUO(@NotNull SNode __thisNode__) {
-    // we could use this cf parameter in ITemplateCall argument expressions 
+    // wecouldusethiscfparameterinITemplateCallargumentexpressions
     return (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITemplateCall$ab, false, false) == null);
   }
 

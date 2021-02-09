@@ -11,11 +11,11 @@ import javax.swing.KeyStroke;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1382572689121738550", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class TraceActions_KeymapChanges extends BaseKeymapChanges {
   public TraceActions_KeymapChanges() {
-    // simple 
+    // simple
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToNode_Action", getShortcut(" F3"));
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToRule_Action", getShortcut(" F4"));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "$default";

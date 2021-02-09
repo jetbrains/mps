@@ -28,7 +28,7 @@ public class ConceptAndSuperConceptsScope extends Scope {
 
   @Override
   public SNode resolve(SNode anchor, String refText) {
-    // [MM] left intact, change if needed 
+    // [MM]leftintact,changeifneeded
     return null;
   }
 
@@ -65,8 +65,8 @@ public class ConceptAndSuperConceptsScope extends Scope {
     }
     List<SNode> result = new ArrayList<SNode>();
     for (SNode node : ((Iterable<SNode>) BHReflection.invoke0(myTopConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getAllSuperConcepts", CONCEPTS.AbstractConceptDeclaration$KA, "2A8AB0rAWpG"), ((boolean) true)))) {
-      // FIXME why do we collect *all* children, including InterfaceConceptReference of implements/extends, ACD.helpURL and CD.icon? 
-      // I suppose all we need here is linkDeclaration + propertyDeclaration, both available in node<ACD> we've got here 
+      // FIXMEwhydowecollect*all*children,includingInterfaceConceptReferenceofimplements/extends,ACD.helpURLandCD.icon?
+      // IsupposeallweneedhereislinkDeclaration+propertyDeclaration,bothavailableinnode<ACD>we'vegothere
       for (SNode n : SNodeUtil.getDescendants(node, condition, true)) {
         result.add(n);
       }

@@ -119,7 +119,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
         return "Move Concept";
       }
     }
-    // should never happen 
+    // shouldneverhappen
     return null;
   }
 

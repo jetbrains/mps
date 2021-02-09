@@ -58,11 +58,11 @@ public class JUnitTestExecutor implements TestExecutor {
       JUnitCore jUnitCore = prepareJUnitCore(requests);
       doExecute(jUnitCore, requests);
       if (myListener != null) {
-        // no real reason, just it's nice to clean up after yourself 
+        // norealreason,justit'snicetocleanupafteryourself
         jUnitCore.removeListener(myListener);
       }
     } catch (Throwable t) {
-      // XXX myFailureCount may get invalid if exception is thrown from core.run 
+      // XXXmyFailureCountmaygetinvalidifexceptionisthrownfromcore.run
       processThrowable(t);
     }
   }
@@ -96,7 +96,7 @@ public class JUnitTestExecutor implements TestExecutor {
 
   protected void processThrowable(Throwable t) {
     if (!(t instanceof StoppedByUserException)) {
-      // StoppedByUserException means external intention to stop tests, no reason to log 
+      // StoppedByUserExceptionmeansexternalintentiontostoptests,noreasontolog
       myException = t;
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Exception in the test framework", t);
@@ -132,9 +132,9 @@ public class JUnitTestExecutor implements TestExecutor {
 
   @NotNull
   protected RunListener createListener(Iterable<Request> requests) {
-    // In fact, wrap of System.out makes little sense here. One of the CommandOutputStream ideas is to track 
-    // output and ensure there's \n in front of a synch token. However, any output to System.out here would go 
-    // unnoticed. For the COS to work as expected, a belly dance of DefaultTestExecutor is needed (when a COS is System.out) 
+    // Infact,wrapofSystem.outmakeslittlesensehere.OneoftheCommandOutputStreamideasistotrack
+    // outputandensurethere's\ninfrontofasynchtoken.However,anyoutputtoSystem.outherewouldgo
+    // unnoticed.FortheCOStoworkasexpected,abellydanceofDefaultTestExecutorisneeded(whenaCOSisSystem.out)
     return new DefaultRunListener(new CommandOutputStream(System.out));
   }
 }

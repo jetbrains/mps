@@ -19,12 +19,12 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new PrintDFAResult_Action());
     addAction(new PrintInitializationInformation_Action());
     addAction(new PrintReachingDefinintionsInformation_Action());
     addAction(new ShowDFA_Action());
-    // groups 
+    // groups
     addGroup(new DFAActions_ActionGroup(this));
     addGroup(new DataFlowInternal_ActionGroup(this));
   }

@@ -43,8 +43,8 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
       return;
     }
 
-    // next lines needed for to be sure that all classes in dispose() loaded after init() 
-    // basically: this code do nothing, but class loading 
+    // nextlinesneededfortobesurethatallclassesindispose()loadedafterinit()
+    // basically:thiscodedonothing,butclassloading
     for (BreakpointCreator creator : SetSequence.fromSet(DebugInfoProvider_AppPluginPart.this.myCreators)) {
     }
     {

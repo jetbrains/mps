@@ -51,17 +51,17 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
             tnode2.addChild(myAggregationLinks[0], tnode3);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
             tnode4.setProperty(myProperties[1], "0");
             tnode2.addChild(myAggregationLinks[1], tnode4);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[2], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
@@ -74,11 +74,11 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
             for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
               tnode5.addChild(myAggregationLinks[3], child7);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[4], tnode5);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
@@ -88,17 +88,17 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
             final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
             SNodeAccessUtil.setPropertyValue(tnode9, myProperties[1], QueriesGenerated.propertyMacro_GetValue_7_1(new PropertyMacroContext(context4, "10", propertyMacro_9c7i7b_c0a2a0a1a1a1a3a2a6)));
             tnode8.addChild(myAggregationLinks[5], tnode9);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
             environment.resolveInTemplateLater(tnode10, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a2a1a3a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context4);
             tnode8.addChild(myAggregationLinks[6], tnode10);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[7], tnode8);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
@@ -108,11 +108,11 @@ public class Template_reduce_Repeat extends TemplateDeclarationBase {
             final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
             environment.resolveInTemplateLater(tnode12, myAssociationLinks[0], templateNode_9c7i7b_c0a0a1a1a1a4a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039660399", "i", context5);
             tnode11.addChild(myAggregationLinks[8], tnode12);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[9], tnode11);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(3, tnode1);

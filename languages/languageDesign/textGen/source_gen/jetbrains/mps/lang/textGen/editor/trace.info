@@ -7001,25 +7001,25 @@
       <node id="4653211395000726910" at="35,95,36,76" concept="7" />
       <node id="4653211395000726910" at="36,76,37,82" concept="7" />
       <node id="4653211395000726910" at="37,82,38,0" concept="10" />
-      <node id="4653211395000726910" at="38,0,39,46" concept="9" />
-      <node id="4653211395000726910" at="39,46,40,53" concept="2" />
+      <node id="4653211395000726910" at="38,0,39,40" concept="9" />
+      <node id="4653211395000726910" at="39,40,40,53" concept="2" />
       <node id="4653211395000726910" at="40,53,41,0" concept="10" />
-      <node id="4653211395000726910" at="41,0,42,58" concept="9" />
-      <node id="4653211395000726910" at="42,58,43,52" concept="9" />
-      <node id="4653211395000726910" at="43,52,44,68" concept="7" />
+      <node id="4653211395000726910" at="41,0,42,48" concept="9" />
+      <node id="4653211395000726910" at="42,48,43,44" concept="9" />
+      <node id="4653211395000726910" at="43,44,44,68" concept="7" />
       <node id="4653211395000726910" at="44,68,45,74" concept="7" />
       <node id="4653211395000726910" at="46,69,47,61" concept="2" />
       <node id="4653211395000726910" at="49,35,50,84" concept="2" />
       <node id="4653211395000726910" at="52,41,53,87" concept="2" />
       <node id="4653211395000726910" at="57,0,58,0" concept="11" trace="OB" />
-      <node id="4653211395000726910" at="59,102,60,54" concept="9" />
-      <node id="4653211395000726910" at="60,54,61,0" concept="10" />
-      <node id="4653211395000726910" at="61,0,62,60" concept="9" />
-      <node id="4653211395000726911" at="62,60,63,75" concept="2" />
+      <node id="4653211395000726910" at="59,102,60,46" concept="9" />
+      <node id="4653211395000726910" at="60,46,61,0" concept="10" />
+      <node id="4653211395000726910" at="61,0,62,51" concept="9" />
+      <node id="4653211395000726911" at="62,51,63,75" concept="2" />
       <node id="4653211395000726910" at="66,135,67,0" concept="10" />
-      <node id="4653211395000726910" at="67,0,68,70" concept="9" />
-      <node id="4653211395000726910" at="68,70,69,0" concept="10" />
-      <node id="4653211395000726910" at="69,0,70,77" concept="9" />
+      <node id="4653211395000726910" at="67,0,68,59" concept="9" />
+      <node id="4653211395000726910" at="68,59,69,0" concept="10" />
+      <node id="4653211395000726910" at="69,0,70,64" concept="9" />
       <node id="4653211395000726911" at="71,60,72,66" concept="2" />
       <node id="4653211395000726910" at="77,0,78,0" concept="11" trace="separator$jRB0" />
       <node id="4653211395000726910" at="78,0,79,0" concept="11" trace="withSeparator$Pdf8" />
@@ -7027,7 +7027,7 @@
       <node id="4653211395000726910" at="45,74,48,5" concept="5" />
       <node id="4653211395000726910" at="48,5,51,5" concept="5" />
       <node id="4653211395000726910" at="51,5,54,5" concept="5" />
-      <node id="4653211395000726911" at="70,77,73,5" concept="5" />
+      <node id="4653211395000726911" at="70,64,73,5" concept="5" />
       <node id="4653211395000726911" at="26,0,31,0" concept="6" trace="execute_internal#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4653211395000726910" at="59,0,65,0" concept="12" trace="setDefinedCellActions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4653211395000726910" at="66,0,75,0" concept="12" trace="setDefinedCellActionsOfType#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;Ljetbrains/mps/openapi/editor/cells/CellActionType;)V" />

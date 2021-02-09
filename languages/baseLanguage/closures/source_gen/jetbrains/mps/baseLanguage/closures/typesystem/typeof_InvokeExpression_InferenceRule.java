@@ -45,7 +45,7 @@ public class typeof_InvokeExpression_InferenceRule extends AbstractInferenceRule
       }
       ListSequence.fromList(ptypes).addElement(typeCheckingContext.getRepresentative(ClosureFormalParamType_typevar_7073484723012007681));
     }
-    // TODO the commented out code did not work 
+    // TODOthecommentedoutcodedidnotwork
     {
       final SNode clt = typeCheckingContext.typeOf(cl, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "3399831762712131029", true);
       typeCheckingContext.whenConcrete(clt, new Runnable() {

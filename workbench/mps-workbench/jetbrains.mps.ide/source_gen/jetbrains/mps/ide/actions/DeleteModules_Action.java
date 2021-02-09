@@ -56,7 +56,7 @@ public class DeleteModules_Action extends BaseAction {
       if (((List<SModule>) MapSequence.fromMap(_params).get("modules")).size() > 1) {
         presentation.setText(IdeBundle.message("actions.module.delete.text.modules"), true);
       } else {
-        // If isApplicable and !(modules > 1) => modules == 1 
+        // IfisApplicableand!(modules>1)=>modules==1
         SModule module = ((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(0);
         if (module instanceof Solution) {
           presentation.setText(IdeBundle.message("actions.module.delete.text.solution"), true);
@@ -65,7 +65,7 @@ public class DeleteModules_Action extends BaseAction {
         } else if (module instanceof DevKit) {
           presentation.setText(IdeBundle.message("actions.module.delete.text.devkit"), true);
         } else if (module instanceof Generator) {
-          // For future implementation 
+          // Forfutureimplementation
           presentation.setText(IdeBundle.message("actions.module.delete.text.generator"), true);
         } else {
           presentation.setText(IdeBundle.message("actions.module.delete.text.module"), true);
@@ -131,7 +131,7 @@ public class DeleteModules_Action extends BaseAction {
     }
 
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    // While don't support undo no need for command here 
+    // Whiledon'tsupportundononeedforcommandhere
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
         new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, deleteFiles);

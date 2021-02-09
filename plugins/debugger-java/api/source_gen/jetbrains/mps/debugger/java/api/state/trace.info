@@ -12,9 +12,9 @@
       <node id="3432969378036015508" at="17,60,18,24" concept="6" />
       <node id="3432969378036015510" at="20,0,21,0" concept="1" trace="getThisObject#()Lcom/sun/jdi/ObjectReference;" />
       <node id="7279139148253430327" at="35,69,36,45" concept="2" />
-      <node id="7279139148252748845" at="36,45,37,85" concept="4" />
-      <node id="7279139148252750275" at="37,85,38,73" concept="4" />
-      <node id="7279139148252750431" at="38,73,39,44" concept="2" />
+      <node id="7279139148252748845" at="36,45,37,72" concept="4" />
+      <node id="7279139148252750275" at="37,72,38,65" concept="4" />
+      <node id="7279139148252750431" at="38,65,39,44" concept="2" />
       <node id="7279139148252751194" at="39,44,40,65" concept="3" />
       <node id="3432969378036015514" at="21,0,23,0" concept="1" trace="getStackFrame#()Ljetbrains/mps/debugger/java/api/state/proxy/JavaStackFrame;" />
       <node id="3432969378036015518" at="23,0,25,0" concept="1" trace="getThread#()Ljetbrains/mps/debugger/java/api/state/proxy/JavaThread;" />

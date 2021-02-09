@@ -28,7 +28,7 @@ public class typeof_Node_InsertPrevSiblingOperation_InferenceRule extends Abstra
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(parameter, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186057110415", true), (SNode) _quotation_createNode_vszmfv_a1a0c0a0b0b(), false, false, _info_12389875345);
       }
     }
-    // op returns node passed in parameter 
+    // opreturnsnodepassedinparameter
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1225408525102", 0, null);

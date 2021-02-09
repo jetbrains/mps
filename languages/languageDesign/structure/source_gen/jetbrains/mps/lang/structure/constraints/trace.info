@@ -107,8 +107,8 @@
       <node id="1213104840673" at="69,0,70,22" concept="6" />
       <node id="1213104841230" at="78,44,79,20" concept="6" />
       <node id="1213104841230" at="86,63,87,57" concept="6" />
-      <node id="6836281137582805247" at="90,80,91,35" concept="7" />
-      <node id="6836281137582805249" at="91,35,92,111" concept="6" />
+      <node id="6836281137582805247" at="90,80,91,32" concept="7" />
+      <node id="6836281137582805249" at="91,32,92,111" concept="6" />
       <node id="1213104840673" at="96,6,97,131" concept="5" />
       <node id="1213104841230" at="97,131,98,42" concept="1" />
       <node id="1213104840673" at="98,42,99,22" concept="6" />
@@ -235,7 +235,7 @@
       <node id="1213104841300" at="121,61,122,22" concept="6" />
       <node id="1213104841301" at="128,44,129,20" concept="6" />
       <node id="1213104841301" at="136,63,137,57" concept="6" />
-      <node id="6836281137582805255" at="140,80,141,65" concept="7" />
+      <node id="6836281137582805255" at="140,80,141,58" concept="7" />
       <node id="6836281137582805259" at="142,54,143,26" concept="6" />
       <node id="6836281137582805264" at="144,13,145,160" concept="5" />
       <node id="6836281137582805273" at="145,160,146,56" concept="5" />
@@ -266,7 +266,7 @@
       <node id="5424895381998078260" at="80,85,83,7" concept="3" />
       <node id="3924233675613941682" at="93,0,96,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="3924233675613941682" at="112,0,115,0" concept="10" trace="staticSetPropertyValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
-      <node id="6836281137582805257" at="141,65,144,13" concept="3" />
+      <node id="6836281137582805257" at="141,58,144,13" concept="3" />
       <node id="6836281137582805316" at="152,49,155,19" concept="3" />
       <node id="589716822028322822" at="46,0,50,0" concept="4" trace="hasOwnValidator#()Z" />
       <node id="241647608299431197" at="67,0,71,0" concept="4" trace="hasOwnValidator#()Z" />
@@ -425,8 +425,8 @@
       <node id="1213104847155" at="80,89,81,22" concept="6" />
       <node id="1213104847176" at="87,44,88,20" concept="6" />
       <node id="1213104847176" at="95,63,96,57" concept="6" />
-      <node id="6836281137582805032" at="99,80,100,37" concept="7" />
-      <node id="6836281137582805034" at="100,37,101,155" concept="6" />
+      <node id="6836281137582805032" at="99,80,100,34" concept="7" />
+      <node id="6836281137582805034" at="100,34,101,155" concept="6" />
       <node id="1213104847155" at="105,6,106,131" concept="5" />
       <node id="1213104847176" at="106,131,107,42" concept="1" />
       <node id="1213104847155" at="107,42,108,22" concept="6" />

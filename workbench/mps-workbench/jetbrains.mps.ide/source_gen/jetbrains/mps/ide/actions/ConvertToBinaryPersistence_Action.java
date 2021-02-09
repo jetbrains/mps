@@ -101,7 +101,7 @@ public class ConvertToBinaryPersistence_Action extends BaseAction {
 
     repo.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
-        // see MPS-18743 
+        // seeMPS-18743
         repo.saveAll();
 
         for (SModel smodel : Sequence.fromIterable(seq)) {
@@ -140,7 +140,7 @@ public class ConvertToBinaryPersistence_Action extends BaseAction {
               LOG.error("cannot write " + smodel, ex);
             }
           } catch (ModelSaveException ex) {
-            // shouldn't happen 
+            // shouldn'thappen
             if (LOG.isEnabledFor(Level.ERROR)) {
               LOG.error("cannot write " + smodel, ex);
             }

@@ -14,7 +14,7 @@ public class MPS14653_Test {
       function.invoke();
       Assert.fail();
     } catch (Exception e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test
@@ -28,7 +28,7 @@ public class MPS14653_Test {
       new MPS14653_helper.Context().acceptFunction(fun);
       Assert.fail();
     } catch (Exception e) {
-      // expected exception 
+      // expectedexception
     }
   }
 }

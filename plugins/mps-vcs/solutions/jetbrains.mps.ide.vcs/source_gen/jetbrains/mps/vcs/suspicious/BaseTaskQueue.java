@@ -36,8 +36,8 @@ import java.util.List;
     if (myTimerTask != null) {
       throw new IllegalStateException();
     }
-    //  Don't want a distinct thread sleeping and waiting for tasks to come, that's why got a timer 
-    // note, IDEA's scheduler doesn't support scheduleAtFixedRate(). 
+    // Don'twantadistinctthreadsleepingandwaitingfortaskstocome,that'swhygotatimer
+    // note,IDEA'sschedulerdoesn'tsupportscheduleAtFixedRate().
     myTimerTask = myScheduler.scheduleWithFixedDelay(new Runnable() {
       public void run() {
         scheduleProcessing();
@@ -60,8 +60,8 @@ import java.util.List;
     if (myTasks.isEmpty()) {
       return;
     }
-    // we don't care to wait until processing starts. If there's one already scheduled, just let it complete, either it would 
-    // pick newly added tasks (if not started yet), or would process tasks at the next timer tick, if already running 
+    // wedon'tcaretowaituntilprocessingstarts.Ifthere'sonealreadyscheduled,justletitcomplete,eitheritwould
+    // picknewlyaddedtasks(ifnotstartedyet),orwouldprocesstasksatthenexttimertick,ifalreadyrunning
     if (myProcessingSemaphore.tryAcquire()) {
       myScheduler.execute(new Runnable() {
         public void run() {

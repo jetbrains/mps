@@ -67,7 +67,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     File scriptFile = new File(scriptPath, scriptFilename);
     File okFile = new File(scriptPath, "ok.log");
 
-    // remove ok.log file if any 
+    // removeok.logfileifany
     if (okFile.exists() && !(okFile.delete())) {
       Assert.fail("Cannot delete " + okFile.getAbsolutePath());
     }
@@ -99,7 +99,7 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
       Assert.fail("Exited with code " + exitCode);
     }
 
-    // check and delete ok.log file 
+    // checkanddeleteok.logfile
     if (!(okFile.exists())) {
       Assert.fail("Test failed: the file was not created");
     }

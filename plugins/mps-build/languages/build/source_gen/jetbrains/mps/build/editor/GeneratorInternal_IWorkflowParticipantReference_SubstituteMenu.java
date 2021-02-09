@@ -49,7 +49,7 @@ public class GeneratorInternal_IWorkflowParticipantReference_SubstituteMenu exte
   public class SMP_ReferenceScope_4td9tv_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_4td9tv_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GeneratorInternal_IWorkflowParticipantReference$YB, LINKS.participant$AU$z);
     }
     @NotNull

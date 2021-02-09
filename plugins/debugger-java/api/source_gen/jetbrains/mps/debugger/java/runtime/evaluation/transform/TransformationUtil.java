@@ -65,7 +65,7 @@ public class TransformationUtil {
     SNodeOperations.replaceWithAnother(superMethodCall, _quotation_createNode_crriw5_a0a4a6(invokeMethodCall, returnProxyType));
   }
   public static void replaceAssignment(SNode baseAssignment) {
-    // todo get rid of copy & paste 
+    // todogetridofcopy&paste
     SNode lvalueType = ((SNode) baseAssignment.getUserObject(TransformatorImpl.LTYPE));
     SNode rvalueType = ((SNode) baseAssignment.getUserObject(TransformatorImpl.RTYPE));
 
@@ -131,7 +131,7 @@ public class TransformationUtil {
     SNodeOperations.replaceWithAnother(classExpression, _quotation_createNode_crriw5_a0a0a41(classFqNameNode));
   }
   public static void checkForAnonimousClassCreations(SNode evaluator) {
-    // TODO in some cases, we might actually support anonymous classes creation 
+    // TODOinsomecases,wemightactuallysupportanonymousclassescreation
     SNode evalMethod = findEvaluateMethod(evaluator);
     if (ListSequence.fromList(SNodeOperations.getNodeDescendants(evalMethod, CONCEPTS.AnonymousClass$Bt, false, new SAbstractConcept[]{})).isNotEmpty()) {
       throw new UnsupportedOperationException("Anonimous classes evaluation is not supported.");
@@ -154,7 +154,7 @@ public class TransformationUtil {
     return false;
   }
   private static SNode findEvaluateMethod(SNode evaluator) {
-    // TODO use this method everywhere 
+    // TODOusethismethodeverywhere
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("evaluate");
@@ -165,9 +165,9 @@ public class TransformationUtil {
     if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.DebuggedType$zx)) {
       rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(rawType, CONCEPTS.DebuggedType$zx), LINKS.lowType$CzbW));
     }
-    // we can't cast from Object to primitive, so we must box primitive types 
-    // stupid java "everything is an object, except the things which are not" 
-    // "and we do not care that MS with C# is taking over the world" 
+    // wecan'tcastfromObjecttoprimitive,sowemustboxprimitivetypes
+    // stupidjava"everythingisanobject,exceptthethingswhicharenot"
+    // "andwedonotcarethatMSwithC#istakingovertheworld"
     if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.IntegerType$7a)) {
       return _quotation_createNode_crriw5_a0a4a02();
     } else if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.ByteType$Ms)) {
@@ -193,7 +193,7 @@ public class TransformationUtil {
   }
   public static SNode createClassFqNameNode(SModel model, SNode classConcept) {
     SNode fqNameNode;
-    // TODO this is not completely correct: model can contain several classes 
+    // TODOthisisnotcompletelycorrect:modelcancontainseveralclasses
     if (ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Classifier$Ix)).contains(classConcept)) {
       fqNameNode = _quotation_createNode_crriw5_a0a0c0w();
     } else {
@@ -248,8 +248,8 @@ public class TransformationUtil {
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.DebuggedType$zx)) {
       type = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.DebuggedType$zx), LINKS.lowType$CzbW);
     }
-    // why subtyping? 
-    // I do not know 
+    // whysubtyping?
+    // Idonotknow
     if (TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_crriw5_b0a4a72())) {
       return "Z";
     } else if (TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_crriw5_b0a0e0bb())) {
@@ -279,7 +279,7 @@ public class TransformationUtil {
       }
       SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(typeCopy, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
       assert classifier != null;
-      // we have to deal with the fact that inners in stubs are not inners 
+      // wehavetodealwiththefactthatinnersinstubsarenotinners
       String realFqName;
       if (SPropertyOperations.getString(classifier, PROPS.name$MnvL).contains(".")) {
         String fqName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
@@ -346,7 +346,7 @@ public class TransformationUtil {
     } else {
       SLinkOperations.setTarget(foreachStatement, LINKS.iterable$mImK, _quotation_createNode_crriw5_a0a0a0b0jb(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$mImK)));
     }
-    // next two lines add type parameters in a specific magical way so the test would pass 
+    // nexttwolinesaddtypeparametersinaspecificmagicalwaysothetestwouldpass
     ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$mImK), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.typeArgument$jaIN)).addElement(SNodeOperations.copyNode(valueProxyType));
     SLinkOperations.setTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY, _quotation_createNode_crriw5_a0a4a53(valueProxyType));
   }

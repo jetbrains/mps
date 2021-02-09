@@ -50,7 +50,7 @@ public class DefaultClassCreator_SmartReference extends SubstituteMenuBase {
   public class SMP_ReferenceScope_8tkoyu_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_8tkoyu_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.DefaultClassCreator$TC, LINKS.classifier$9NRM);
     }
     @NotNull

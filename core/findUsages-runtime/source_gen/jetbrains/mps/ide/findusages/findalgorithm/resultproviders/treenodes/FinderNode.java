@@ -24,7 +24,7 @@ public class FinderNode extends BaseLeaf {
   private static final String CLASS_NAME = "class_name";
   private IFinder myFinder;
   public FinderNode() {
-    // IMPORTANT: leave default constructor intact, it's in use when IResultProvider is de-serialized, see BaseNode.read() 
+    // IMPORTANT:leavedefaultconstructorintact,it'sinusewhenIResultProviderisde-serialized,seeBaseNode.read()
   }
 
   public FinderNode(@NotNull IFinder finder) {

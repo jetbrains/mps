@@ -9,13 +9,13 @@ import javax.swing.KeyStroke;
 
 public class MacOSX105_KeymapChanges extends BaseKeymapChanges {
   public MacOSX105_KeymapChanges() {
-    // simple 
-    // simple with remove/replace 
+    // simple
+    // simplewithremove/replace
     addSimpleShortcut("jetbrains.mps.lang.text.actions.plugin.TurnBold_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl B"), false, true));
     addSimpleShortcut("jetbrains.mps.lang.text.actions.plugin.TurnItalics_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl I"), false, true));
     addSimpleShortcut("jetbrains.mps.lang.text.actions.plugin.TurnUnderlined_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl U"), false, true));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "Mac OS X 10.5+";

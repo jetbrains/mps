@@ -110,9 +110,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "MODULE2LAYOUT");
   }
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
-    // in case there's reference to a macro variable, use `<jvmarg line>` attribute, 
-    // otherwise, keep distinct `<jvmarg value>` to generate same xml files as before 
-    // FIXME I do it for fun, I see no reason not to use jvmarg line universally to keep this code simple 
+    // incasethere'sreferencetoamacrovariable,use`<jvmargline>`attribute,
+    // otherwise,keepdistinct`<jvmargvalue>`togeneratesamexmlfilesasbefore
+    // FIXMEIdoitforfun,Iseenoreasonnottousejvmarglineuniversallytokeepthiscodesimple
     return isNotEmptyString(((String) _context.getVariable("var:jvmargs"))) && !(((String) _context.getVariable("var:jvmargs")).startsWith("$"));
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
@@ -140,14 +140,14 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     final SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
-    // FIXME there's some issues with type calculation if I don't use local var for sequence here, any collection operation after where doesn't get its element type recognized 
+    // FIXMEthere'ssomeissueswithtypecalculationifIdon'tuselocalvarforsequencehere,anycollectionoperationafterwheredoesn'tgetitselementtyperecognized
     Iterable<SNode> seq = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:modules"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getNodeAncestor(it, CONCEPTS.BuildProject$ae, false, false) == project;
       }
     });
-    // MPSModuleClosure indeed uses linked hashset for some of its collection, but not for all. 
-    // Though I don't like sorting it here, just too lazy to modify MPSModuleClosure right now and find all the places I'd need to rebuild then. 
+    // MPSModuleClosureindeeduseslinkedhashsetforsomeofitscollection,butnotforall.
+    // ThoughIdon'tlikesortingithere,justtoolazytomodifyMPSModuleClosurerightnowandfindalltheplacesI'dneedtorebuildthen.
     return Sequence.fromIterable(seq).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.name$MnvL);
@@ -158,14 +158,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((List<SNode>) _context.getVariable("var:requiredPlugins"));
   }
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
-    // I suppose test modules come from the same project, though not 100% sure, therefore, 
-    // in case there are test modules referenced from external project, there's still 
-    // old LOOP with regular DH.getLocation() code 
-    // For modules from the same project, we may rely on MODULE2LAYOUT ML from build.mps/main 
-    // to give us BL_Node BM_Module would end up into. Prefer references to DH/strings 
-    //  
-    // XXX If there would be no no prepare_dependencies top-pri MC and I'd have CP to record 
-    //    build.mps->build transition, what would I change here? 
+    // Isupposetestmodulescomefromthesameproject,thoughnot100%sure,therefore,
+    // incasetherearetestmodulesreferencedfromexternalproject,there'sstill
+    // oldLOOPwithregularDH.getLocation()code
+    // Formodulesfromthesameproject,wemayrelyonMODULE2LAYOUTMLfrombuild.mps/main
+    // togiveusBL_NodeBM_Modulewouldendupinto.PreferreferencestoDH/strings
+    // 
+    // XXXIftherewouldbenonoprepare_dependenciestop-priMCandI'dhaveCPtorecord
+    // build.mps->buildtransition,whatwouldIchangehere?
     final SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
     Iterable<SNode> seq = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
@@ -219,7 +219,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF), macroHelper);
   }
   public static Object varMacro_Value_0_2(final TemplateVarContext _context) {
-    // design-time because of editor tests we need languages 
+    // design-timebecauseofeditortestsweneedlanguages
     return new MPSModulesClosure(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);

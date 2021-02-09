@@ -49,7 +49,7 @@ public class DataDependencyReference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_dny9mp_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_dny9mp_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.DataDependencyReference$QA, LINKS.dataDependency$LwFM);
     }
     @NotNull

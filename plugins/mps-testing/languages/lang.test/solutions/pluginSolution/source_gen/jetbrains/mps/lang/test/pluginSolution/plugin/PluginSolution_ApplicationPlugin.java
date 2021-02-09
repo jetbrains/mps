@@ -19,8 +19,8 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
-    // groups 
+    // actionsw/oparameters
+    // groups
     addGroup(new EditorInternalAddition_ActionGroup(this));
   }
   public void adjustRegularGroups() {

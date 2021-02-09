@@ -23,8 +23,8 @@ public final class DeploymentDescriptorPersistence {
   public DeploymentDescriptorPersistence() {
   }
   public DeploymentDescriptor load(final IFile file) {
-    // XXX perhaps, need to use Element instead of file here, like in other module descriptor persistences, 
-    // OTOH I don expect deployed modules crafted manually (tests, perhaps?) 
+    // XXXperhaps,needtouseElementinsteadoffilehere,likeinothermoduledescriptorpersistences,
+    // OTOHIdonexpectdeployedmodulescraftedmanually(tests,perhaps?)
     DeploymentDescriptor descriptor;
 
     try {
@@ -49,10 +49,10 @@ public final class DeploymentDescriptorPersistence {
           for (Element a : Sequence.fromIterable(XmlUtil.children(rootElement, "dependencies"))) {
             for (Element module : Sequence.fromIterable(XmlUtil.children(a, "module"))) {
               SModuleReference mr = pf.createModuleReference(module.getAttributeValue("ref"));
-              // without kind attribute, it used to be 'DEFAULT'. Nevertheless, DD dependencies were treated as runtime 
-              // dependencies, and as long I don't care to support strict backward compatibility (newer MPS doesn't care to read 
-              // old deployed modules), and it's only MPS that reads these deps in a controlled scenario, stick to RUNTIME kind. 
-              // see RuntimesOfUsedLanguageCalculator.DeploymentStrategy 
+              // withoutkindattribute,itusedtobe'DEFAULT'.Nevertheless,DDdependenciesweretreatedasruntime
+              // dependencies,andaslongIdon'tcaretosupportstrictbackwardcompatibility(newerMPSdoesn'tcaretoread
+              // olddeployedmodules),andit'sonlyMPSthatreadsthesedepsinacontrolledscenario,sticktoRUNTIMEkind.
+              // seeRuntimesOfUsedLanguageCalculator.DeploymentStrategy
               SDependencyScope scope = SDependencyScope.RUNTIME;
               String kindAttr = module.getAttributeValue("kind");
               if (kindAttr != null) {

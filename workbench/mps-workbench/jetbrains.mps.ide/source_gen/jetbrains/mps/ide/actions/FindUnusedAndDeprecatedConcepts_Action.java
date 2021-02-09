@@ -100,7 +100,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
           public List<SNodeReference> compute() {
             Iterable<? extends SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModulesWithGenerators();
             int totalWork = Sequence.fromIterable(modules).count() * 2;
-            // iterate all modules: 1/2, + 1/8 + 1/4 + 1/8 
+            // iterateallmodules:1/2,+1/8+1/4+1/8
             monitor.start("Find unused  and deprecated concepts", totalWork);
             ModelDependencyScanner scanner = new ModelDependencyScanner().usedConcepts(true).usedLanguages(false).crossModelReferences(false);
             for (SModule module : modules) {
@@ -116,7 +116,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
             monitor.step("Complete concept hierarchy...");
             final HashSet<String> conceptsInUse = new HashSet<String>();
             for (SConcept inUse : scanner.getConcepts()) {
-              // could use concept<>.super-concepts/all<+> here, but resort to code that has been there for a while 
+              // coulduseconcept<>.super-concepts/all<+>here,butresorttocodethathasbeenthereforawhile
               for (SAbstractConcept c : new DepthFirstConceptIterator(inUse)) {
                 conceptsInUse.add(c.getQualifiedName());
               }
@@ -134,7 +134,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
             monitor.advance(totalWork / 4);
 
             monitor.step("Filter unused and deprecated...");
-            // FIXME why it's not a dedicated IFinder that takes AbstractConceptDeclaration instances as search query and nodes/models as scope? 
+            // FIXMEwhyit'snotadedicatedIFinderthattakesAbstractConceptDeclarationinstancesassearchqueryandnodes/modelsasscope?
             Iterable<SNode> allConcepts = SNodeOperations.ofConcept(Sequence.fromIterable(searchResults).select(new ISelector<SearchResult<Object>, Object>() {
               public Object select(SearchResult<Object> it) {
                 return it.getObject();

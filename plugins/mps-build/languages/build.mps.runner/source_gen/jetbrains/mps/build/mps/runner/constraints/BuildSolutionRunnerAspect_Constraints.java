@@ -79,7 +79,7 @@ public class BuildSolutionRunnerAspect_Constraints extends BaseConstraintsDescri
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(parentNode)) {
-      // anything in generator 
+      // anythingingenerator
       return true;
     }
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(parentNode, CONCEPTS.BuildProject$ae), LINKS.plugins$AsCR), CONCEPTS.BuildSolutionRunnerPlugin$wZ)).isNotEmpty();

@@ -47,12 +47,12 @@ public class ClassifierType_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // TEMP doing it not through ScopeProvider for now 
+            // TEMPdoingitnotthroughScopeProviderfornow
             final boolean isExtends = SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.superclass$Mp9$);
             boolean resolvingSuperClass = isExtends || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.implementedInterface$rujG) || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.extendedInterface$PDVO);
             Scope scope = ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), !(resolvingSuperClass));
             if (resolvingSuperClass) {
-              // remove this Classifier from the completion menu 
+              // removethisClassifierfromthecompletionmenu
               return new FilteringScope(scope) {
                 @Override
                 public boolean isExcluded(SNode node) {

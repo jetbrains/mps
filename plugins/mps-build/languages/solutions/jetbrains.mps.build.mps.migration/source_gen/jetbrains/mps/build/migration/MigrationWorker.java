@@ -46,7 +46,7 @@ public class MigrationWorker extends WorkerBase {
 
   @Override
   public void work() {
-    // todo the following line is needed until we introduce layered migration 
+    // todothefollowinglineisneededuntilweintroducelayeredmigration
     new WorkerHelper(myEnvironment).make(myJavaCompilerOptions);
 
     for (File file : myWhatToDo.getMPSProjectFiles()) {
@@ -74,8 +74,8 @@ public class MigrationWorker extends WorkerBase {
       ApplicationManager.getApplication().invokeAndWait(new Runnable() {
         public void run() {
           try {
-            // XXX instead of explicit IDEA's PluginManager, we could use CL of "j.m.migration.component" MPS module to load desired class 
-            // MPS would resort to proper plugin CL to perform the task. 
+            // XXXinsteadofexplicitIDEA'sPluginManager,wecoulduseCLof"j.m.migration.component"MPSmoduletoloaddesiredclass
+            // MPSwouldresorttoproperpluginCLtoperformthetask.
             Class<?> euClass = PluginManagerCore.getPlugin(PluginId.getId(MIGRATION_PLUGIN)).getPluginClassLoader().loadClass(TASK_EXEC_CLASS);
             Method method = euClass.getMethod("migrate", Project.class);
             method.invoke(null, project);

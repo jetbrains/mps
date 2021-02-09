@@ -94,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       public void run() {
         IProjectHandler handler = MPSPlugin.getInstance().getProjectHandler(check_tz3sru_a0a0a0a0a1a5(p.getProjectFile()));
         if (handler != null) {
-          // unsuppress 2 errors here 
+          // unsuppress2errorshere
           try {
             todo.invoke(handler);
             result.value = true;

@@ -43,7 +43,7 @@ public class UnresolvedReferencesChecker extends SpecificChecker {
       if (monitor.isCanceled()) {
         break;
       }
-      // Check for unresolved references 
+      // Checkforunresolvedreferences
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
         if (jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref) == null) {
           ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, new Runnable() {

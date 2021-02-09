@@ -89,8 +89,8 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
    */
   @Nullable
   public IInterfacedFinder getFinder(@Nullable String finderIdentity) {
-    // Function.identity magic is to convey the idea finderIdentity is an identity, not a class name. 
-    // and to avoid IDEA's warning, too ;) 
+    // Function.identitymagicistoconveytheideafinderIdentityisanidentity,notaclassname.
+    // andtoavoidIDEA'swarning,too;)
     final String className = Function.<String>identity().apply(finderIdentity);
     if (className == null) {
       return null;
@@ -103,7 +103,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
       return null;
     }
     final String declaringLanguageName = className.substring(0, aspectNamePos);
-    // finderMangledName == NameUtil.toValidIdentifier(finder.name) 
+    // finderMangledName==NameUtil.toValidIdentifier(finder.name)
     final String finderMangledName = className.substring(aspectNamePos + aspectNameWithDots.length(), className.length() - cnSuffix.length());
     for (LanguageFinders lf : myLanguageFindersMap.values()) {
       if (!(lf.matchesLanguage(declaringLanguageName))) {
@@ -120,8 +120,8 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     load();
   }
   private synchronized void load() {
-    // withAvailableLanguages doesn't require model read 
-    // yet we may get here from different threads (e.g. highlighter and main/EDT, MPS-29909), have to be careful not to initialize twice 
+    // withAvailableLanguagesdoesn'trequiremodelread
+    // yetwemaygetherefromdifferentthreads(e.g.highlighterandmain/EDT,MPS-29909),havetobecarefulnottoinitializetwice
     if (myLoaded) {
       return;
     }
@@ -140,7 +140,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     try {
       FindUsageAspectDescriptor descr = language.getAspect(FindUsageAspectDescriptor.class);
       if (descr != null) {
-        // FIXME shall refactor load/clear mechanism to drop/load relevant LanguageFinder instances only. 
+        // FIXMEshallrefactorload/clearmechanismtodrop/loadrelevantLanguageFinderinstancesonly.
         assert !(myLanguageFindersMap.containsKey(language.getId())) : "At the moment, there's clear() once any language is unloaded, we shall not replace finders.";
         LanguageFinders finders = new LanguageFinders(language);
         myLanguageFindersMap.put(language.getId(), finders);
@@ -155,9 +155,9 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
   }
   @Override
   public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
-    // FIXME shall drop relevant LanguageFinder instances only! 
-    // However myNodesByFinder is global and would either keep stale entries or cleared altogether on any reload. 
-    // Perhaps, shall drop it as it's not vital to have getDeclarationNode for legacy (non-migrated) finders. 
+    // FIXMEshalldroprelevantLanguageFinderinstancesonly!
+    // HowevermyNodesByFinderisglobalandwouldeitherkeepstaleentriesorclearedaltogetheronanyreload.
+    // Perhaps,shalldropitasit'snotvitaltohavegetDeclarationNodeforlegacy(non-migrated)finders.
     clear();
   }
   private static final class LanguageFinders implements FinderRegistry {
@@ -199,7 +199,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     }
     private IInterfacedFinder instantiate(int token) {
       FindUsageAspectDescriptor descr = myLanguageRuntime.getAspect(FindUsageAspectDescriptor.class);
-      // could have passed descr instance as cons argument, otoh LR keeps its instance anyway, why bother. 
+      // couldhavepasseddescrinstanceasconsargument,otohLRkeepsitsinstanceanyway,whybother.
       assert descr != null;
       return descr.instantiate(token);
     }

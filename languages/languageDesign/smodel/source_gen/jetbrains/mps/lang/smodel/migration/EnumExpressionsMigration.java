@@ -73,10 +73,10 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   public void optimize() {
     for (SNode expr : ListSequence.fromList(myToValueExpressionsToOptimize)) {
       if (SNodeOperations.getModel(expr) == null) {
-        // e.g. expr reduced during other optimization 
+        // e.g.exprreducedduringotheroptimization
         continue;
       }
-      // value( x ) . is[Not]Empty  --> x . is[Not]Null 
+      // value(x).is[Not]Empty-->x.is[Not]Null
       {
         SNode dotExpr = SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.DotExpression$yW);
         SNode operand = SLinkOperations.getTarget(dotExpr, LINKS.operand$w6IR);
@@ -95,7 +95,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
           }
         }
       }
-      // value( from value( x ) )   --> x 
+      // value(fromvalue(x))-->x
       {
         Tuples._2<SNode, SNode> valueOpMatched = matchValueOperation(expr);
         if (valueOpMatched != null) {
@@ -107,7 +107,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
           }
         }
       }
-      // value( x ) :comparison: value( y )   --> x :comparison: y 
+      // value(x):comparison:value(y)-->x:comparison:y
       {
         SNode binop = SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.BinaryOperation$W1);
         if (ListSequence.fromList(SLinkOperations.getChildren(binop, LINKS.smodelAttribute$KJ43)).isEmpty() && optimizationApplicableForBinOp(SNodeOperations.getConcept(binop))) {
@@ -135,7 +135,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
             }
           }
         }
-        // value ( x ) .equals( value(y) )  --> x == y  
+        // value(x).equals(value(y))-->x==y
         {
           SNode imco = SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.InstanceMethodCallOperation$uu);
           if (imco == null) {
@@ -174,10 +174,10 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
     }
     for (SNode expr : ListSequence.fromList(myFromValueExpressionsToOptimize)) {
       if (SNodeOperations.getModel(expr) == null) {
-        // e.g. expr reduced during other optimization 
+        // e.g.exprreducedduringotheroptimization
         continue;
       }
-      // from value(value(x))  --> x 
+      // fromvalue(value(x))-->x
       {
         Tuples._2<SNode, SNode> fromValueOpMatched = matchFromValueOperation(expr);
         if (fromValueOpMatched != null) {

@@ -95,8 +95,8 @@
       <node id="2977221198762589350" at="136,5,137,18" concept="2" />
       <node id="8917462567969353820" at="137,18,138,36" concept="6" />
       <node id="6281853519869717704" at="138,36,139,27" concept="2" />
-      <node id="3467421744644281267" at="142,59,143,97" concept="8" />
-      <node id="3467421744644281269" at="143,97,144,88" concept="8" />
+      <node id="3467421744644281267" at="142,59,143,84" concept="8" />
+      <node id="3467421744644281269" at="143,84,144,76" concept="8" />
       <node id="3467421744644281263" at="145,58,146,23" concept="7" />
       <node id="6281853519869763028" at="147,9,148,49" concept="7" />
       <node id="8917462567969266672" at="150,6,151,61" concept="2" />
@@ -117,7 +117,7 @@
       <node id="8917462567969266682" at="127,98,130,5" concept="4" />
       <node id="7105003223552462263" at="130,5,133,5" concept="4" />
       <node id="2977221198762589339" at="133,5,136,5" concept="4" />
-      <node id="3467421744644281239" at="144,88,147,9" concept="4" />
+      <node id="3467421744644281239" at="144,76,147,9" concept="4" />
       <node id="1657638272963439215" at="166,0,169,0" concept="11" trace="getInstance#()Ljetbrains/mps/ide/tooltips/MPSToolTipManager;" />
       <node id="7530108077312637985" at="35,0,39,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
       <node id="1657638272963450913" at="49,0,53,0" concept="5" trace="registerComponent#(Ljava/awt/Component;)V" />

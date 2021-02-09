@@ -53,7 +53,7 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
       link = ReferenceMacro_GetReferent__BehaviorDescriptor.fromRefReductionRule_id2I_OWQO_d$v.invoke(__thisNode__, SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$t0));
     }
     SNode targetConcept = SLinkOperations.getTarget(link, LINKS.target$m40F);
-    // reference may be resolved dynamically? 
+    // referencemayberesolveddynamically?
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(targetConcept), CONCEPTS.IResolveInfo$$k)) {
       return _quotation_createNode_mxwyp3_a0a5a0(targetConcept, targetConcept);
     } else {
@@ -63,7 +63,7 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
   /*package*/ static SNode fromMacro_id2I_OWQO_cV$(@NotNull SNode __thisNode__, SNode refMacro) {
     SNode attributedNode = SNodeOperations.getParent(refMacro);
     SReferenceLink link = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(refMacro);
-    // here we are still looking at language sources because there is no information about specialized links in compiled language 
+    // herewearestilllookingatlanguagesourcesbecausethereisnoinformationaboutspecializedlinksincompiledlanguage
     return new LinkDeclarationLookup(SNodeOperations.getConcept(attributedNode)).getMostSpecificLinkDeclarationFor(link);
   }
   /*package*/ static SNode fromRefReductionRule_id2I_OWQO_d$v(@NotNull SNode __thisNode__, SNode reductionRule) {

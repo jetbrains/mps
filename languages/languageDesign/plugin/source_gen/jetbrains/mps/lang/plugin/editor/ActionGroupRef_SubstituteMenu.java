@@ -49,7 +49,7 @@ public class ActionGroupRef_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_cqiz2f_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_cqiz2f_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ActionGroupRef$dX, LINKS.group$jHq3);
     }
     @NotNull

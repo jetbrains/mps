@@ -53,15 +53,15 @@ public final class TransitionTracePersistence {
 
   public void save(TransitionTrace originTrace) {
     if (!(myUseAttributes)) {
-      // though it's likely the model is attached to a repository and can not be modified w/o write/command, let TT care about that 
-      // as long as it modifies UO only, it's fine (there's no model access guard for UO) 
+      // thoughit'slikelythemodelisattachedtoarepositoryandcannotbemodifiedw/owrite/command,letTTcareaboutthat
+      // aslongasitmodifiesUOonly,it'sfine(there'snomodelaccessguardforUO)
       originTrace.prepareForSave(SNodeUtil.getDescendants(myCheckpointModel));
       markCheckpointModelAsBearingUserObject();
-      // it's assumed that CheckpointVault forces persistence of UO when we don't use attributes 
+      // it'sassumedthatCheckpointVaultforcespersistenceofUOwhenwedon'tuseattributes
       return;
     }
     markCheckpointModelAttributesForUserObject();
-    // myCheckpointModel.nodes() gives a list! 
+    // myCheckpointModel.nodes()givesalist!
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
       if (!(originTrace.hasOrigin(n))) {
         continue;
@@ -84,9 +84,9 @@ public final class TransitionTracePersistence {
       }
       SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$MM7K), CONCEPTS.NodeIdentity$rN, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
       into.setOrigin(n, value);
-      // I'd love to save some memory by not keeping attribute, however, present pattern to use TTP is NOT the moment model is about to get serialized or just accessed from a storage. 
-      // ModelTransitions.loadTransition is invoked once trace is needed for a model that might have been loaded and published long ago, and could not be modified without proper model access 
-      // I don't care that much these days, as I plan to switch to UO persistence any moment now. 
+      // I'dlovetosavesomememorybynotkeepingattribute,however,presentpatterntouseTTPisNOTthemomentmodelisabouttogetserializedorjustaccessedfromastorage.
+      // ModelTransitions.loadTransitionisinvokedoncetraceisneededforamodelthatmighthavebeenloadedandpublishedlongago,andcouldnotbemodifiedwithoutpropermodelaccess
+      // Idon'tcarethatmuchthesedays,asIplantoswitchtoUOpersistenceanymomentnow.
     }
   }
 

@@ -37,7 +37,7 @@ public class DispatchModifier_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // applicable only to java methods 
+    // applicableonlytojavamethods
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MethodDeclaration$_P) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IncompleteMemberDeclaration$jI);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:3d7b3732-9bef-45a8-98fa-22d696f27853(jetbrains.mps.baseLanguage.doubleDispatch.constraints)", "1227128029536560217");

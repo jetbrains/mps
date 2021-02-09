@@ -58,7 +58,7 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
             } else if (SNodeOperations.isInstanceOf(container, CONCEPTS.EnumSwitchCase$4B)) {
               enumDelcaration = EnumSwitchExpression__BehaviorDescriptor.getEnumDecl_id28aPEVv7w3k.invoke(SNodeOperations.as(SNodeOperations.getParent(container), CONCEPTS.EnumSwitchExpression$Sw));
             } else if (SNodeOperations.isInstanceOf(container, CONCEPTS.EnumSwitchExpression$Sw)) {
-              // to make completion works 
+              // tomakecompletionworks
               enumDelcaration = EnumSwitchExpression__BehaviorDescriptor.getEnumDecl_id28aPEVv7w3k.invoke(SNodeOperations.cast(container, CONCEPTS.EnumSwitchExpression$Sw));
             }
             if (enumDelcaration != null) {

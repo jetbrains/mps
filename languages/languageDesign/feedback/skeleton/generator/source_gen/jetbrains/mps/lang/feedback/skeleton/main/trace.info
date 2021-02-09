@@ -43,9 +43,9 @@
       <node id="6624226371216167500" at="113,79,114,58" concept="2" />
       <node id="1938781798616774167" at="125,78,126,78" concept="5" />
       <node id="8878450512091125820" at="126,78,127,22" concept="6" />
-      <node id="668954446731987622" at="129,78,130,119" concept="7" />
-      <node id="6962554783879280006" at="130,119,131,124" concept="7" />
-      <node id="6962554783879280002" at="131,124,132,8" concept="7" />
+      <node id="668954446731987622" at="129,78,130,101" concept="7" />
+      <node id="6962554783879280006" at="130,101,131,107" concept="7" />
+      <node id="6962554783879280002" at="131,107,132,7" concept="7" />
       <node id="8878450512091060896" at="134,39,135,161" concept="5" />
       <node id="8878450512091060905" at="135,161,136,107" concept="6" />
       <node id="668954446732559948" at="288,14,289,56" concept="2" />
@@ -64,7 +64,7 @@
       <node id="8878450512091070847" at="125,0,129,0" concept="8" trace="varMacro_Value_1_0#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
       <node id="8878450512091060894" at="134,0,138,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6624226371216010010" at="92,0,98,0" concept="4" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8878450512091053851" at="132,8,138,7" concept="6" />
+      <node id="8878450512091053851" at="132,7,138,7" concept="6" />
       <node id="6624226371216167054" at="109,0,116,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6624226371216156681" at="107,42,116,9" concept="2" />
       <node id="1938781798616685025" at="129,0,140,0" concept="8" trace="varMacro_Value_1_1#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />

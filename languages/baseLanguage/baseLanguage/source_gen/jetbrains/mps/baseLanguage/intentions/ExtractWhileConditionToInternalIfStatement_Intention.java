@@ -60,9 +60,9 @@ public final class ExtractWhileConditionToInternalIfStatement_Intention extends 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // produce break statement 
+      // producebreakstatement
       SNode breakStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.BreakStatement$WM, null);
-      // produce if statement 
+      // produceifstatement
       SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
       SNode conditionExpr = SNodeFactoryOperations.setNewChild(ifStatement, LINKS.condition$5R17, CONCEPTS.NotExpression$Pc);
       SLinkOperations.setTarget(conditionExpr, LINKS.expression$sv_H, SLinkOperations.getTarget(node, LINKS.condition$KEkM));
@@ -70,7 +70,7 @@ public final class ExtractWhileConditionToInternalIfStatement_Intention extends 
 
       SNodeFactoryOperations.setNewChild(ifStatement, LINKS.ifTrue$5Rg8, null);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).insertElement(0, breakStatement);
-      // insert if statement and replace condition with true 
+      // insertifstatementandreplaceconditionwithtrue
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$c1sm), LINKS.statement$53DE)).insertElement(0, ifStatement);
       SNode condition = SNodeFactoryOperations.setNewChild(node, LINKS.condition$KEkM, CONCEPTS.BooleanConstant$n4);
       SPropertyOperations.set(condition, PROPS.value$5y_M, true);

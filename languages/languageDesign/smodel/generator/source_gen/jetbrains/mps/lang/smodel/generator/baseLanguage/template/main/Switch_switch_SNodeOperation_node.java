@@ -68,7 +68,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -306,7 +306,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -327,7 +327,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -473,7 +473,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -498,7 +498,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -589,7 +589,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -614,7 +614,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -639,7 +639,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -660,7 +660,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -685,7 +685,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -710,7 +710,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -739,7 +739,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -768,7 +768,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -783,7 +783,7 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

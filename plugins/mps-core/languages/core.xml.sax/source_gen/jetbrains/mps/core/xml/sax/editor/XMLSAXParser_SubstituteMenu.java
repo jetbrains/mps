@@ -49,7 +49,7 @@ public class XMLSAXParser_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_42km6r_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_42km6r_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.XMLSAXParser$dk, LINKS.root$ACJu);
     }
     @NotNull

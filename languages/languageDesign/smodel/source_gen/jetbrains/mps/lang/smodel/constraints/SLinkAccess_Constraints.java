@@ -50,7 +50,7 @@ public class SLinkAccess_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // links with cardinality 1 or 0..1 
+            // linkswithcardinality1or0..1
             SNode enclosingDot = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.DotExpression$yW, true, false);
             if (enclosingDot == null) {
               return new EmptyScope();

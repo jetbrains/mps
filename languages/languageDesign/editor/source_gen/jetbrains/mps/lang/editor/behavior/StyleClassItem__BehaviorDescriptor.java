@@ -37,22 +37,22 @@ public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
 
   @Deprecated
   /*package*/ static boolean isApplicableToCell_idhEUcU7K(@NotNull SNode __thisNode__, SNode cellModel) {
-    // Since MPS 3.5 is deprecated. 
-    // Use one of isApplicableToCellConcept/isApplicableForLayout/isApplicableInLayout 
-    // methods instead 
+    // SinceMPS3.5isdeprecated.
+    // UseoneofisApplicableToCellConcept/isApplicableForLayout/isApplicableInLayout
+    // methodsinstead
     return true;
   }
   /*package*/ static boolean isApplicableToCellConcept_id2u3gVK1lsco(@NotNull SAbstractConcept __thisConcept__, SConcept cellConcept) {
-    // Return true if this StyleClassItem may be applied to the cell with the specified concept 
+    // ReturntrueifthisStyleClassItemmaybeappliedtothecellwiththespecifiedconcept
     return true;
   }
   /*package*/ static boolean isApplicableForLayout_iditlittOTie(@NotNull SAbstractConcept __thisConcept__, SConcept layoutConcept) {
-    // Return true if this StyleClassItem may be applied for the cell having specified layout 
-    // null passed as an argument for cells having no layouts (e.g. CellModel_Constant instance) 
+    // ReturntrueifthisStyleClassItemmaybeappliedforthecellhavingspecifiedlayout
+    // nullpassedasanargumentforcellshavingnolayouts(e.g.CellModel_Constantinstance)
     return true;
   }
   /*package*/ static boolean isApplicableInLayout_iditlittOTkB(@NotNull SAbstractConcept __thisConcept__, SConcept layoutConcept) {
-    // Return true if this StyleClassItem may be applied for the cell located inside specified layout 
+    // ReturntrueifthisStyleClassItemmaybeappliedforthecelllocatedinsidespecifiedlayout
     return true;
   }
   /*package*/ static SNode getStyleContainer_id6VCLXpKS8DC(@NotNull SNode __thisNode__) {

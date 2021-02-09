@@ -49,7 +49,7 @@ public class Template_reduce_InsertNewPrevSiblingOperation extends TemplateDecla
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         Collection<SNode> tlist4 = null;
@@ -64,7 +64,7 @@ public class Template_reduce_InsertNewPrevSiblingOperation extends TemplateDecla
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

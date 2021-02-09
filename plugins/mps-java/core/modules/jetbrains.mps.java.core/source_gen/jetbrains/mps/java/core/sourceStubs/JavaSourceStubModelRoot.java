@@ -53,7 +53,7 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
 
   @Override
   public SModel getModel(SModelId id) {
-    // TODO 
+    // TODO
     return null;
   }
 
@@ -93,8 +93,8 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
       String pkg = dataSource.guessPackage();
       if (pkg != null) {
         JavaPackageNameStub packStub = new JavaPackageNameStub(pkg);
-        // default package is not handled by MPS; classes in default pkg can be referenced only 
-        // from the default pkg as well, but there are no models that correspond to it 
+        // defaultpackageisnothandledbyMPS;classesindefaultpkgcanbereferencedonly
+        // fromthedefaultpkgaswell,buttherearenomodelsthatcorrespondtoit
         if (!(packStub.isDefaultPackage())) {
           JavaSourceStubModelDescriptor model = new JavaSourceStubModelDescriptor(packStub.asModelReference(getModule().getModuleReference()), dataSource);
           SetSequence.fromSet(models).addElement(model);
@@ -104,7 +104,7 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
       }
     }
 
-    // should be one line: dir.getChildren().where cannot be entered... 
+    // shouldbeoneline:dir.getChildren().wherecannotbeentered...
     Iterable<IFile> children = dir.getChildren();
     Iterable<IFile> subDirs = Sequence.fromIterable(children).where(new IWhereFilter<IFile>() {
       public boolean accept(IFile it) {

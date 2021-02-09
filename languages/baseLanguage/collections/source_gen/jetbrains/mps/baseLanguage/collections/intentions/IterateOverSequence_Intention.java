@@ -40,7 +40,7 @@ public final class IterateOverSequence_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // TODO replace with isSubtype() when MPS-10610 is fixed 
+    // TODOreplacewithisSubtype()whenMPS-10610isfixed
     return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.SequenceType$_s) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.ListType$LR) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.SetType$g6) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(node), _quotation_createNode_7wizo7_b0a0b0a());
   }
   @Override

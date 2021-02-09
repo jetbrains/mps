@@ -50,7 +50,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.inputChild$4qxF);
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
-    // test1 only 
+    // test1only
     if (!(QueriesUtil.isTest1(_context.getModel()))) {
       return;
     }
@@ -61,7 +61,7 @@ public class QueriesGenerated {
     SPropertyOperations.setEnum(inputRoot, PROPS.useInTest$1LnL, 0x117eb3f7612L, "test1");
   }
   public static void mappingScript_CodeBlock_4(final MappingScriptContext _context) {
-    // test1 only 
+    // test1only
     Object object = _context.getStepObject("run post-processing");
     if (object == null) {
       return;

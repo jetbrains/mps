@@ -55,7 +55,7 @@ public class GoToMemberDeclaration_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    // XXX we don't need node here, node-ptr would suffice 
+    // XXXwedon'tneednodehere,node-ptrwouldsuffice
     SNodeReference ptr = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
       public SNodeReference compute() {
         SNode methodDescriptor = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.MemberInstance$YT));

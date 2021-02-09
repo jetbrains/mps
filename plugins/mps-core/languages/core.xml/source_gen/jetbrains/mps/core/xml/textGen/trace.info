@@ -726,9 +726,9 @@
     </file>
     <file name="XmlNoSpaceValue_TextGen.java">
       <node id="3080189811177517772" at="11,54,12,55" concept="6" />
-      <node id="3080189811177517775" at="12,55,13,13" concept="8" />
+      <node id="3080189811177517775" at="12,55,13,12" concept="8" />
       <node id="3080189811177517772" at="10,0,15,0" concept="5" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="3080189811177517772" at="11,54,13,13">
+      <scope id="3080189811177517772" at="11,54,13,12">
         <var name="tgs" id="3080189811177517772" />
       </scope>
       <scope id="3080189811177517772" at="10,0,15,0">

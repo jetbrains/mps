@@ -65,9 +65,9 @@ public class SetNodePackageDialog extends DialogWrapper {
   @Nullable
   @Override
   public JComponent getPreferredFocusedComponent() {
-    // TODO: remove this condition after JRE-1071 is fixed 
+    // TODO:removethisconditionafterJRE-1071isfixed
     if (SystemInfo.isMac && SystemInfo.isJetBrainsJvm) {
-      // For some reason MacOS & JB JDK require direct point to editor of ComboBox to avoid problems like MPS-28806 
+      // ForsomereasonMacOS&JBJDKrequiredirectpointtoeditorofComboBoxtoavoidproblemslikeMPS-28806
       Component editorComponent = myCbPackage.getEditor().getEditorComponent();
       return (editorComponent instanceof JComponent ? ((JComponent) editorComponent) : null);
     }

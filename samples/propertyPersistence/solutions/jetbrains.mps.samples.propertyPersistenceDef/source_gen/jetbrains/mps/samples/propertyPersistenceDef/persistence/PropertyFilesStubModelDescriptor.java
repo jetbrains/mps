@@ -62,7 +62,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
       PropertyFilesStubModelDescriptor.LOG.warn(e.getMessage(), e);
       DefaultSModel.InvalidDefaultSModel invalidModel = new DefaultSModel.InvalidDefaultSModel(this.getReference(), new ModelReadException("Cannot read model", e));
       return new ModelLoadResult(invalidModel, ModelLoadingState.FULLY_LOADED);
-      // TODO should not be FULLY_LOADED 
+      // TODOshouldnotbeFULLY_LOADED
     }
   }
 
@@ -81,7 +81,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
       try {
         InputStream in = getSource().openInputStream(fileName);
         try {
-          // we've come from an event and the file has been deleted 
+          // we'vecomefromaneventandthefilehasbeendeleted
           if (in == null) {
             SetSequence.fromSet(oldNodes).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
@@ -127,7 +127,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
               SNodeOperations.deleteNode(it);
             }
           });
-          // We only have one root contributed by a file into the model, so the collection only holds a single entry 
+          // Weonlyhaveonerootcontributedbyafileintothemodel,sothecollectiononlyholdsasingleentry
           MapSequence.fromMap(myRootsPerFile).put(fileName, SetSequence.fromSetAndArray(new HashSet<SNode>(), propertyFileRootNode));
         } finally {
           FileUtil.closeFileSafe(in);

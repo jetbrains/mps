@@ -86,9 +86,9 @@ public class ScriptBuilder {
   }
   public IScript toScript() {
     if (SetSequence.fromSet(facets).isEmpty()) {
-      // well, in fact this could be legitimate scenario, when there are no facets for a set of models/modules and the set could be ignored  
-      // however, at the moment, with lang.core as a super-language of any other and make facets it provides by default, empty script is likely an error 
-      // we do handle 'no used languages' case (MPS-26995) in ModulesClusterizer at the moment. 
+      // well,infactthiscouldbelegitimatescenario,whentherearenofacetsforasetofmodels/modulesandthesetcouldbeignored
+      // however,atthemoment,withlang.coreasasuper-languageofanyotherandmakefacetsitprovidesbydefault,emptyscriptislikelyanerror
+      // wedohandle'nousedlanguages'case(MPS-26995)inModulesClusterizeratthemoment.
       error("No facets requested for the script, nothing to make");
       return new InvalidScript(errors);
     }

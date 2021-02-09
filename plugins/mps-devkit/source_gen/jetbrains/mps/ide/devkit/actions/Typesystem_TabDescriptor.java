@@ -59,7 +59,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
         boolean aConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
         boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
 
-        // rules with concept references go first 
+        // ruleswithconceptreferencesgofirst
         if (aConceptRef && !(bConceptRef)) {
           return 1;
         }
@@ -67,7 +67,7 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
           return -1;
         }
 
-        // rules with concept references - more specific goes first 
+        // ruleswithconceptreferences-morespecificgoesfirst
         if (aConceptRef && bConceptRef) {
           SNode aConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
           SNode bConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);

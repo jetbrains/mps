@@ -30,7 +30,7 @@ public abstract class NodeChange extends StructureChange {
     SModel oldModel = changeSet.getOldModel();
     SNode node = oldModel.getNode(affectedNodeId);
     if (node == null) {
-      // I don't fully understand how this can happen 
+      // Idon'tfullyunderstandhowthiscanhappen
       return null;
     }
     SNode containingRoot = node.getContainingRoot();

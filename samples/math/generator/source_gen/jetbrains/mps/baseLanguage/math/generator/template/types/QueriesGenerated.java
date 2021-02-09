@@ -54,37 +54,37 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    // unknown expression 
+    // unknownexpression
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x12022f528eeL, "unknown");
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    // long to biginteger 
+    // longtobiginteger
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x1200fba5bb1L, "primitive__biginteger");
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    // double to complex 
+    // doubletocomplex
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x1200fba8c47L, "primitive__complex");
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
-    // double to bigdecimal 
+    // doubletobigdecimal
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x120513c399eL, "double__bigdecimal");
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x120566f9e33L, "biginteger__bigdecimal");
   }
   public static boolean rule_Condition_0_5(final BaseMappingRuleContext _context) {
-    // double to bigcomplex 
+    // doubletobigcomplex
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x1205787300fL, "double__bigcomplex");
   }
   public static boolean rule_Condition_0_6(final BaseMappingRuleContext _context) {
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x120578748f7L, "biginteger__bigcomplex");
   }
   public static boolean rule_Condition_0_7(final BaseMappingRuleContext _context) {
-    // bigdecimal -> bigcomplex 
+    // bigdecimal->bigcomplex
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x12057879f06L, "bigdecimal__bigcomplex");
   }
   public static boolean rule_Condition_0_8(final BaseMappingRuleContext _context) {
-    // complex to bigcomplex 
+    // complextobigcomplex
     return SPropertyOperations.getEnum(_context.getNode(), PROPS.target$qjwS) == SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x1200fba5bb0L, "jetbrains.mps.baseLanguage.math.structure.CastTargetDescriptor"), 0x1205787df2cL, "complex__bigcomplex");
   }
   public static boolean rule_Condition_0_9(final BaseMappingRuleContext _context) {

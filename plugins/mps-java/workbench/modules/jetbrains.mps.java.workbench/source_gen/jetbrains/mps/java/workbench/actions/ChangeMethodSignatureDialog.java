@@ -68,7 +68,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     setTitle("Change Method Signature");
     this.myProject = project;
     this.myDeclaration = node;
-    // TODO: call this constructor inside read action? 
+    // TODO:callthisconstructorinsidereadaction?
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         ChangeMethodSignatureDialog.this.myParameters = new ChangeMethodSignatureParameters(myDeclaration);
@@ -100,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         ChangeMethodSignatureDialog.this.myEditor = new SizedEmbeddableEditor(myProject, true, 300);
         myEditor.editNode(baseMethodDeclaration);
 
-        // Set focus on the editor 
+        // Setfocusontheeditor
         if (myEditor.getEditor().getCurrentEditorComponent() instanceof JComponent) {
           parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0n0a0a0a0b0n(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
         }
@@ -123,7 +123,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    // Create default panel first because createSignaturePanel below requires it 
+    // CreatedefaultpanelfirstbecausecreateSignaturePanelbelowrequiresit
     myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject, this.myParameters.getDeclaration());
 
     DialogPanel panel = new DialogPanel(new GridBagLayout());
@@ -132,13 +132,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
     c.gridx = 0;
     c.weightx = 1;
 
-    // Signature 
+    // Signature
     c.fill = GridBagConstraints.BOTH;
     c.gridy = 0;
     c.weighty = 1;
     panel.add(this.createSignaturePanel(panel), c);
 
-    // Warning label 
+    // Warninglabel
     myStaticWarningLabel = new JLabel("Static/non static transformation not allowed in this refactoring.", Icons.WARNING_ICON, JLabel.LEFT);
     myStaticWarningLabel.setVisible(false);
     c.fill = GridBagConstraints.HORIZONTAL;
@@ -146,7 +146,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     c.weighty = 0;
     panel.add(myStaticWarningLabel, c);
 
-    // Default values 
+    // Defaultvalues
     c.fill = GridBagConstraints.HORIZONTAL;
     c.gridy = 2;
     c.weighty = 0;
@@ -179,7 +179,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     });
     ListSequence.fromList(methodsToRefactor.value).addElement(myDeclaration);
 
-    // Get default values for new parameters (if any) 
+    // Getdefaultvaluesfornewparameters(ifany)
     final Wrappers._T<Map<SNode, SNode>> defaultValues = new Wrappers._T<Map<SNode, SNode>>(MapSequence.fromMap(new HashMap<SNode, SNode>()));
 
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -188,7 +188,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     });
 
-    // Create refactorings 
+    // Createrefactorings
     myRefactorings = ListSequence.fromList(new ArrayList<ChangeMethodSignatureRefactoring>());
     for (SNode method : ListSequence.fromList(methodsToRefactor.value)) {
       ListSequence.fromList(myRefactorings).addElement(new ChangeMethodSignatureRefactoring(this.myParameters, method, defaultValues.value));
@@ -233,18 +233,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
     SNode declaration = myParameters.getDeclaration();
 
-    // If the node we were editing was removed 
+    // Ifthenodewewereeditingwasremoved
     if (event.getChild() == declaration) {
-      // Add it back 
+      // Additback
       myTempModel.addRootNode(declaration);
 
-      // Display warning 
+      // Displaywarning
       myStaticWarningLabel.setVisible(true);
       myStaticWarningLabel.revalidate();
 
     }
 
-    // Ensure the body is a stub statement list 
+    // Ensurethebodyisastubstatementlist
     if ((SLinkOperations.getTarget(declaration, LINKS.body$5xQk) == null) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.body$5xQk), CONCEPTS.StubStatementList$v6))) {
       SLinkOperations.setTarget(declaration, LINKS.body$5xQk, createStubStatementList_vatimf_a0a0g0ab());
     }

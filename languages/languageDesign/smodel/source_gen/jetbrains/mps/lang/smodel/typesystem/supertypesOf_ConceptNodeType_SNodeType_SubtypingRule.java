@@ -27,10 +27,10 @@ public class supertypesOf_ConceptNodeType_SNodeType_SubtypingRule extends Subtyp
       if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$gH) && !(SNodeOperations.is(concept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
         return _quotation_createNode_aqm90v_a0a0a1a1();
       }
-      // commented out because: 
-      // in a node of type concept<SomeInterfaceConcept> could be stored a value node<SomeConcreteConcept> 
-      // if SomeConcreteConcept is a subconcept of SomeInterfaceConcept. 
-      // (see rule supertypesOf_SConceptTypeType_SConceptTypeType) 
+      // commentedoutbecause:
+      // inanodeoftypeconcept<SomeInterfaceConcept>couldbestoredavaluenode<SomeConcreteConcept>
+      // ifSomeConcreteConceptisasubconceptofSomeInterfaceConcept.
+      // (seerulesupertypesOf_SConceptTypeType_SConceptTypeType)
     }
     return _quotation_createNode_aqm90v_a2a1();
   }

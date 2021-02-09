@@ -47,11 +47,11 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
           dc.g.setColor(fillColor);
           dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
         } else {
-          // outer 
+          // outer
           dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
           dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
 
-          // inner 
+          // inner
           int border = 2;
           dc.g.setColor(fillColor);
           dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2);

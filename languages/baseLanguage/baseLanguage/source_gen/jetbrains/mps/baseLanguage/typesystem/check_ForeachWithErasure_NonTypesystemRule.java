@@ -40,7 +40,7 @@ public class check_ForeachWithErasure_NonTypesystemRule extends AbstractNonTypes
       if (coercedNode_gn1qzs_d0 != null) {
       } else {
         SNode variableType = SLinkOperations.getTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY);
-        // not an iterable or an erasure 
+        // notaniterableoranerasure
         if (!((MatchingUtil.matchNodes(variableType, _quotation_createNode_aftnu9_a0a0c0a2a3a1())))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();

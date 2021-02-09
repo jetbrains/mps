@@ -7,9 +7,9 @@ import jetbrains.mps.smodel.SNodePointer;
 
 public class RuntimeNodePointers {
   public static SNodeReference tuplesIfaceByComponents(int componentCount) {
-    // this code could be generated as part of UpdateTuplesRuntime script if needed, 
-    // I just feel the runtime class won't get changed that often to care about that. 
-    // Generator module depends from runtime solution, it's not big deal to utilize this code from rt solution, if it is generated there ever  
+    // thiscodecouldbegeneratedaspartofUpdateTuplesRuntimescriptifneeded,
+    // Ijustfeeltheruntimeclasswon'tgetchangedthatoftentocareaboutthat.
+    // Generatormoduledependsfromruntimesolution,it'snotbigdealtoutilizethiscodefromrtsolution,ifitisgeneratedthereever
     switch (componentCount) {
       case 0:
         return new SNodePointer("r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)", "4690171080784600066");
@@ -62,9 +62,9 @@ public class RuntimeNodePointers {
   }
 
   public static SNodeReference tupleImplFromMethod(int componentCount) {
-    // this switch is fragile, as UpdateTuplesRuntime doesn't preserve identity of from() methods, and it's hard to distinguish these methods here 
-    // perhaps, if ever face a need to regenerate tuples runtime, shall consider upgrading the script to preserve from() methods 
-    // Note, unlike from(), emptyN() methods have different name and get resolved by name in templates. 
+    // thisswitchisfragile,asUpdateTuplesRuntimedoesn'tpreserveidentityoffrom()methods,andit'shardtodistinguishthesemethodshere
+    // perhaps,ifeverfaceaneedtoregeneratetuplesruntime,shallconsiderupgradingthescripttopreservefrom()methods
+    // Note,unlikefrom(),emptyN()methodshavedifferentnameandgetresolvedbynameintemplates.
     switch (componentCount) {
       case 0:
         return new SNodePointer("r:33366a6f-09e8-45e7-ae7f-cb8cf0c7ed05(jetbrains.mps.baseLanguage.tuples.runtime)", "574925412489016223");

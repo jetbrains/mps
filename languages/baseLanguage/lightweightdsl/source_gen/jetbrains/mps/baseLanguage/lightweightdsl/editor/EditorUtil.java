@@ -30,14 +30,14 @@ public class EditorUtil {
     if (SNodeOperations.isInstanceOf(mi, CONCEPTS.MemberInstance$YT)) {
       decl.value = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(mi, CONCEPTS.MemberInstance$YT));
     } else {
-      // custom members 
+      // custommembers
       decl.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(ListSequence.fromList(SNodeOperations.getNodeAncestors(mi, CONCEPTS.ClassConcept$bK, false)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
         }
       })), LINKS.descriptor$aNbO), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          // viva la interpretation! 
+          // vivalainterpretation!
           return SNodeOperations.getConcept(mi).equals(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(it, LINKS.cncpt$IpcN)));
         }
       });

@@ -728,8 +728,8 @@
       </scope>
     </file>
     <file name="check_MissingTextGenBlock_NonTypesystemRule.java">
-      <node id="3741392693834275311" at="25,120,26,93" concept="8" />
-      <node id="3741392693834274548" at="26,93,27,15" concept="7" />
+      <node id="3741392693834275311" at="25,120,26,80" concept="8" />
+      <node id="3741392693834274548" at="26,80,27,15" concept="7" />
       <node id="3741392693834267247" at="29,7,30,66" concept="6" />
       <node id="3741392693834267247" at="30,66,31,250" concept="6" />
       <node id="3741392693834244501" at="35,50,36,49" concept="7" />

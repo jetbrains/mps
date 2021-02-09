@@ -49,7 +49,7 @@ public class PrivateFieldReferenceOperation_SubstituteMenu extends SubstituteMen
   public class SMP_ReferenceScope_bcin3m_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_bcin3m_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PrivateFieldReferenceOperation$xF, LINKS.fieldDeclaration$H7Ag);
     }
     @NotNull

@@ -49,7 +49,7 @@ public class InPlaceCheckpointRefSpec_SubstituteMenu extends SubstituteMenuBase 
   public class SMP_ReferenceScope_nb3zbu_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_nb3zbu_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.InPlaceCheckpointRefSpec$H6, LINKS.checkpoint$4Q6y);
     }
     @NotNull

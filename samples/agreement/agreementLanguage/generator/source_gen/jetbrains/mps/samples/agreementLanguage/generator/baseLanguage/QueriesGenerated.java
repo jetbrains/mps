@@ -54,7 +54,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // apply rule if at least one Plan exists in input model 
+    // applyruleifatleastonePlanexistsininputmodel
     List<SNode> plans = SModelOperations.roots(_context.getInputModel(), CONCEPTS.Plan$Qb);
     return ListSequence.fromList(plans).isNotEmpty();
   }
@@ -186,7 +186,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ("tax".equals(SPropertyOperations.getString(accountType, PROPS.name$MnvL))) {
       return new SNodePointer("r:54cc1fc5-5f96-4560-9408-18b968230021(postingrules)", "6531435794299654335");
     }
-    // error 
+    // error
     return null;
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {

@@ -86,8 +86,8 @@ public class UnusedContribution extends TransformationMenuBase {
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        // Action from an extending language that is not used by the tests. It should not appear in the menu 
-        // at runtime. 
+        // Actionfromanextendinglanguagethatisnotusedbythetests.Itshouldnotappearinthemenu
+        // atruntime.
         return "action from unused language";
       }
 

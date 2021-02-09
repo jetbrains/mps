@@ -54,14 +54,14 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "dataFlow");
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.BaseInstructionOperation$BM);
   }
   public static boolean rule_Condition_25_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "dataFlow");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
@@ -126,7 +126,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (descriptorClass != null) {
       return descriptorClass;
     }
-    // fallback, backward compatibility. 
+    // fallback,backwardcompatibility.
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".DataFlowAspectDescriptorImpl";
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {

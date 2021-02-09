@@ -144,7 +144,7 @@ public class EditorCell_Table extends EditorCell_Collection {
   }
   @Override
   public int getBottomInset() {
-    // Necesary for properly painting bottom table line 
+    // Necesaryforproperlypaintingbottomtableline
     return 1;
   }
 
@@ -163,14 +163,14 @@ public class EditorCell_Table extends EditorCell_Collection {
       assert nextRow instanceof jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
       ListSequence.fromList(positionsY).addElement(nextRow.getY());
       if (!(rowsIterator.hasNext())) {
-        // adding last row bottom coordinates 
+        // addinglastrowbottomcoordinates
         ListSequence.fromList(positionsY).addElement(nextRow.getY() + nextRow.getHeight());
       }
       int index = -1;
       for (Iterator<EditorCell> cellIterator = ((jetbrains.mps.openapi.editor.cells.EditorCell_Collection) nextRow).iterator(); cellIterator.hasNext(); index++) {
         EditorCell nextCell = cellIterator.next();
         if (index < 0) {
-          //  skipping first cell 
+          // skippingfirstcell
           continue;
         }
         int x = nextCell.getX();
@@ -293,8 +293,8 @@ public class EditorCell_Table extends EditorCell_Collection {
     return EditorSettings.getInstance().getVerticalBoundWidth() / columnCount;
   }
   public static EditorCell_Collection createTable(EditorContext editorContext, SNode node, final TableModel model, String uniquePrefix) {
-    // using EditorCell_Collection class as a return value just for compatibility reasons. 
-    //  it should be replaced with interface after MPS 3.0 
+    // usingEditorCell_Collectionclassasareturnvaluejustforcompatibilityreasons.
+    // itshouldbereplacedwithinterfaceafterMPS3.0
     return new EditorCell_Table(editorContext, node, new CellLayout_Table(), model, uniquePrefix);
   }
   public class SelectColumnAction extends AbstractCellAction {

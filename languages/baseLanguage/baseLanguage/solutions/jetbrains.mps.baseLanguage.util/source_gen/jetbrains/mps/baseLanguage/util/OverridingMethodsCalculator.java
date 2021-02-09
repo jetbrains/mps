@@ -118,7 +118,7 @@ public final class OverridingMethodsCalculator {
     Map<String, Set<SNode>> methodNameToMethodMapCopy = copyMap(nameToMethodsMap);
     for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        // not very comprehensible condition (it is a dummy anonymous stub for enum constant) AP 
+        // notverycomprehensiblecondition(itisadummyanonymousstubforenumconstant)AP
         boolean enumConstant = SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$Bt) && SNodeOperations.getModel(classifier) == null;
         return canBeOverridden(it) && ((SLinkOperations.getTarget(it, LINKS.visibility$Yyua) != null) || enumConstant || packagesAreTheSame(superClassifier, classifier));
       }

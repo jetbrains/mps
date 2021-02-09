@@ -56,7 +56,7 @@ public class ModelFocusSynchronizer implements FrameStateListener {
           Set<SModel> models = SetSequence.fromSet(new HashSet<SModel>());
           for (VirtualFile vf : FileEditorManager.getInstance(project).getSelectedFiles()) {
             if (vf instanceof MPSNodeVirtualFile) {
-              // XXX as long as we update VFS files, why do we care to find actual edited node? Why vf.getNode() is not sufficient? 
+              // XXXaslongasweupdateVFSfiles,whydowecaretofindactualeditednode?Whyvf.getNode()isnotsufficient?
               MPSNodeVirtualFile nvf = ((MPSNodeVirtualFile) vf);
               SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nvf);
               if (node == null) {
@@ -76,10 +76,10 @@ public class ModelFocusSynchronizer implements FrameStateListener {
         }
       });
     }
-    //  the sole reason for invokeLater here is to run after all runReadInEDT. IOW, we implicitly 
-    // synchronize file collection task with refresh task by using EDT thread. Just don't want to bother with 
-    // explicit sync (e.g. semaphore incremented before runReadInEDT, decremented in the end and RefreshQueue waiting for 
-    // semaphore == 0. 
+    // thesolereasonforinvokeLaterhereistorunafterallrunReadInEDT.IOW,weimplicitly
+    // synchronizefilecollectiontaskwithrefreshtaskbyusingEDTthread.Justdon'twanttobotherwith
+    // explicitsync(e.g.semaphoreincrementedbeforerunReadInEDT,decrementedintheendandRefreshQueuewaitingfor
+    // semaphore==0.
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         if (!(SetSequence.fromSet(files).isEmpty())) {
@@ -105,8 +105,8 @@ public class ModelFocusSynchronizer implements FrameStateListener {
         }
       }
     }, ModalityState.NON_MODAL);
-    // XXX explicit use of NON_MODAL is an attempt to fix MPS-32243. We don't quite understand how come default modality state here is one of the "Failed to Download" dialog, 
-    // as FrameStateListener. onFrameActivated() has to get invoked for IDE frame and therefore default modality state has to be that of IDE window.  
-    // As long as invokeLater here is just to make sure we run some time later, I don't feel postponing the execution till the dialog closes would hurt. 
+    // XXXexplicituseofNON_MODALisanattempttofixMPS-32243.Wedon'tquiteunderstandhowcomedefaultmodalitystatehereisoneofthe"FailedtoDownload"dialog,
+    // asFrameStateListener.onFrameActivated()hastogetinvokedforIDEframeandthereforedefaultmodalitystatehastobethatofIDEwindow.
+    // AslongasinvokeLaterhereisjusttomakesurewerunsometimelater,Idon'tfeelpostponingtheexecutiontillthedialogcloseswouldhurt.
   }
 }

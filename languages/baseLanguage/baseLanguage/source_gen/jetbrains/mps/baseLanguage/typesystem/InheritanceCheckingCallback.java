@@ -137,7 +137,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
     for (SNode directSuperClassifier : Sequence.fromIterable(getDirectSupers(currentClassifier))) {
       List<SNode> baseClassifiersOfSuper = MapSequence.fromMap(myClassifier2AllBaseClassifiers).get(directSuperClassifier);
       if (baseClassifiersOfSuper == null) {
-        // likely cyclic hierarchy 
+        // likelycyclichierarchy
         break;
       }
       ListSequence.fromList(MapSequence.fromMap(myClassifier2AllBaseClassifiers).get(currentClassifier)).addSequence(ListSequence.fromList(baseClassifiersOfSuper));
@@ -150,7 +150,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   }
 
   private void reportCyclicHierarchy() {
-    // cyclic hierarchy 
+    // cyclichierarchy
     ErrorReportingItem item = new ErrorReportingItem() {
       @CheckingMethod
       @Override
@@ -197,7 +197,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
     for (SNode directSuperClassifier : Sequence.fromIterable(getDirectSupers(currentClassifier))) {
       SignatureRecord superRecord = MapSequence.fromMap(myClassifier2Signatures).get(directSuperClassifier);
       if (superRecord == null) {
-        // likely it is a cyclic hierarchy 
+        // likelyitisacyclichierarchy
         return;
       }
       for (Signature superSignature : SetSequence.fromSet(MapSequence.fromMap(superRecord.mySignature2TopMostImpl).keySet())) {
@@ -213,17 +213,17 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
 
   private SNode chooseDominatingMethodOrReportError(final SNode baseMethod1, final SNode baseMethod2) {
     if (baseMethod1 == null) {
-      // no record of such method in the current classifier whatsoever => copy 
+      // norecordofsuchmethodinthecurrentclassifierwhatsoever=>copy
       return baseMethod2;
     } else if (baseMethod1 == baseMethod2) {
-      // same impl record => nothing to do 
+      // sameimplrecord=>nothingtodo
     } else if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(baseMethod2)) {
-      // nop 
+      // nop
     } else if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(baseMethod1)) {
-      // replace abstract with impl 
+      // replaceabstractwithimpl
       return baseMethod2;
     } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod2), CONCEPTS.ClassConcept$bK)) {
-      // classes implementations are better than default implementations in interfaces => rewrite 
+      // classesimplementationsarebetterthandefaultimplementationsininterfaces=>rewrite
       return baseMethod2;
     } else if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod1), CONCEPTS.ClassConcept$bK))) {
       if (isDescendant(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.Classifier$Ix), SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.Classifier$Ix))) {
@@ -232,7 +232,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       if (isDescendant(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.Classifier$Ix), SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.Classifier$Ix))) {
         return baseMethod2;
       }
-      // two interface implementations came from unrelated supers => error 
+      // twointerfaceimplementationscamefromunrelatedsupers=>error
       reportUnrelatedDefaults(baseMethod1, baseMethod2);
     }
     return baseMethod1;

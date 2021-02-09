@@ -95,7 +95,7 @@ public final class VisibleModules {
         }
       }
       for (SNode newModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildMps_AbstractModule$FZ, false, new SAbstractConcept[]{}))) {
-        // check duplicated id 
+        // checkduplicatedid
         SNode existing = myId2Module.get(SPropertyOperations.getString(newModule, PROPS.uuid$pC01));
         if (existing != null) {
           String msg = "There are two modules visible from the project [%s] with the id '%s'. The first module is '%s'[%s] from the model %s, the second module is '%s'[%s] from the model %s";
@@ -103,8 +103,8 @@ public final class VisibleModules {
         } else {
           myId2Module.put(SPropertyOperations.getString(newModule, PROPS.uuid$pC01), newModule);
         }
-        // check duplicated name 
-        // FIXME given we use only UUID of module identity to resolve modules, myName2Module is of no use for us. Besides, it forces unique module names, something we don't really care about. Why not to drop it altogether? 
+        // checkduplicatedname
+        // FIXMEgivenweuseonlyUUIDofmoduleidentitytoresolvemodules,myName2Moduleisofnouseforus.Besides,itforcesuniquemodulenames,somethingwedon'treallycareabout.Whynottodropitaltogether?
         existing = myName2Module.get(SPropertyOperations.getString(newModule, PROPS.name$MnvL));
         if (existing != null) {
           String msg = "There are two modules visible from the project [%s] with the same name '%s'. The first module is from project [%s] from the model %s, the second module is from [%s] from the model %s";
@@ -121,9 +121,9 @@ public final class VisibleModules {
   }
 
   public SNode resolve(SLanguage language) {
-    // FIXME need a better fix, shall record language modules using their id separately from 
-    // solutions and generators, so that I can find by SLanguageId object 
-    // i.e. take SLanguageId from SModuleReference from module descriptor, and use it as a map key instead of string 
+    // FIXMEneedabetterfix,shallrecordlanguagemodulesusingtheiridseparatelyfrom
+    // solutionsandgenerators,sothatIcanfindbySLanguageIdobject
+    // i.e.takeSLanguageIdfromSModuleReferencefrommoduledescriptor,anduseitasamapkeyinsteadofstring
     ModuleId langModuleId = ModuleId.regular(MetaIdHelper.getLanguage(language).getIdValue());
     return SNodeOperations.as(resolveById(langModuleId.toString()), CONCEPTS.BuildMps_Language$RA);
   }

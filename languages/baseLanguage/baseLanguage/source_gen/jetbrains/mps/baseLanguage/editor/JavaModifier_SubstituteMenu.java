@@ -61,10 +61,10 @@ public class JavaModifier_SubstituteMenu extends SubstituteMenuBase {
       }).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      // Simon, Alex, I need to put it in every next modifier down the hierarchy 
-      // in order for the descendant modifiers to work properly (if we are using the subconcepts construction) 
-      // this is totally about the case of wrapping this substitute menu into a transformation menu -- 
-      // because of that I cannot put it simply into the constraints aspect 
+      // Simon,Alex,Ineedtoputitineverynextmodifierdownthehierarchy
+      // inorderforthedescendantmodifierstoworkproperly(ifweareusingthesubconceptsconstruction)
+      // thisistotallyaboutthecaseofwrappingthissubstitutemenuintoatransformationmenu--
+      // becauseofthatIcannotputitsimplyintotheconstraintsaspect
       if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$et))) {
         return true;
       }

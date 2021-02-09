@@ -101,7 +101,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
         this.testSwitchInStatement(null);
         Assert.fail("null");
       } catch (IllegalArgumentException e) {
-        // expected exception 
+        // expectedexception
       }
     }
     public void test_switchInReturn() throws Exception {
@@ -119,7 +119,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
         this.testSwitchInReturn(null);
         Assert.fail("null");
       } catch (IllegalArgumentException e) {
-        // expected exception 
+        // expectedexception
       }
     }
     public void test_switchInAssignment() throws Exception {
@@ -137,7 +137,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
         this.testSwitchInAssignment(null);
         Assert.fail("null");
       } catch (IllegalArgumentException e) {
-        // expected exception 
+        // expectedexception
       }
     }
     public void test_switchInLVD() throws Exception {
@@ -155,7 +155,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
         this.testSwitchInLVD(null);
         Assert.fail("null");
       } catch (IllegalArgumentException e) {
-        // expected exception 
+        // expectedexception
       }
     }
     public void test_ErrorMessagesCheck7978163097786003032() throws Exception {

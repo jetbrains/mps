@@ -20,7 +20,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new CreateReferenceConcept_Action());
     addAction(new DropEnumMigrationAttribute_Action());
     addAction(new DropEnumPropertyMigrationAttribute_Action());
@@ -28,7 +28,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowHelpForAspect_Action());
     addAction(new ShowHelpForNode_Action());
     addAction(new ShowHelpForRoot_Action());
-    // groups 
+    // groups
     addGroup(new ShowAsIntentions_LangStructure_ActionGroup(this));
     addGroup(new ShowHelp_ActionGroup(this));
     addGroup(new Structure_ActionGroup(this));

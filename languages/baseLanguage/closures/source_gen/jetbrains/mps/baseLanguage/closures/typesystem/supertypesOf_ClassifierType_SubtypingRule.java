@@ -39,12 +39,12 @@ public class supertypesOf_ClassifierType_SubtypingRule extends SubtypingRule_Run
     SNode classifier = SLinkOperations.getTarget(ct, LINKS.classifier$cxMr);
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$db) || SPropertyOperations.getBoolean(SNodeOperations.as(classifier, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) {
 
-      // Here used to be cache of ['is functional interface', single method] tuple, which used to save tens of microseconds. 
-      // If it's indeed a bottleneck, I'd rather introduce 'cache' statement to keep data like that in TypeCheckingContext of ISubtypingRule_Runtime.getSubOrSuperTypes() 
-      // or fix SubtypingResolver to cache immediateSuperTypes values in searchInSuperTypes() rather than do it on a per-rule basis using a cache associated with a global model access. 
+      // Hereusedtobecacheof['isfunctionalinterface',singlemethod]tuple,whichusedtosavetensofmicroseconds.
+      // Ifit'sindeedabottleneck,I'dratherintroduce'cache'statementtokeepdatalikethatinTypeCheckingContextofISubtypingRule_Runtime.getSubOrSuperTypes()
+      // orfixSubtypingResolvertocacheimmediateSuperTypesvaluesinsearchInSuperTypes()ratherthandoitonaper-rulebasisusingacacheassociatedwithaglobalmodelaccess.
 
-      // here, use of classifier.member.ofConceptM<> instead of methods() is intentional. First of all, we don't care about legacy roles (man, they have been deprecated centuries ago!), 
-      //  second, I'd like to benefit from lazy sequences rather than heavy-weight list of members() to speed things up. 
+      // here,useofclassifier.member.ofConceptM<>insteadofmethods()isintentional.Firstofall,wedon'tcareaboutlegacyroles(man,theyhavebeendeprecatedcenturiesago!),
+      // second,I'dliketobenefitfromlazysequencesratherthanheavy-weightlistofmembers()tospeedthingsup.
       Iterable<SNode> methods = SNodeOperations.ofConcept(SLinkOperations.getChildren(classifier, LINKS.member$L_2d), CONCEPTS.InstanceMethodDeclaration$39);
       Iterator<SNode> cands = Sequence.fromIterable(methods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode m) {

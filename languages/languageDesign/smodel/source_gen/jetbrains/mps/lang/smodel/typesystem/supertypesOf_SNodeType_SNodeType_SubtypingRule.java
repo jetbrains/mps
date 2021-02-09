@@ -27,7 +27,7 @@ public class supertypesOf_SNodeType_SNodeType_SubtypingRule extends SubtypingRul
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> list = new ArrayList<SNode>();
     SNode concept = SLinkOperations.getTarget(type, LINKS.concept$OMgE);
-    // DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE 
+    // DONOTTOUCHTHIS.CONCEPTMIGHTBEATYPEVARIABLE
     if (concept != null && SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$KA)) {
       List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, CONCEPTS.AbstractConceptDeclaration$KA));
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {

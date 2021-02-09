@@ -99,8 +99,8 @@ public class ScriptData {
     for (PluginData p : myPlugins) {
       root.addContent(new Element(ELEM_PLUGIN).setAttribute(PATH, p.path).setAttribute(ID, (p.id == null ? "" : p.id)));
     }
-    // auxiliary properties one may want to share using this script. They are not interpreted by MPS startup sequence 
-    // and therefore shall not be part of the class, perhaps. OTOH, it's quite convenient to keep everything related to values passed between task and worker in a single place. 
+    // auxiliarypropertiesonemaywanttoshareusingthisscript.TheyarenotinterpretedbyMPSstartupsequence
+    // andthereforeshallnotbepartoftheclass,perhaps.OTOH,it'squiteconvenienttokeepeverythingrelatedtovaluespassedbetweentaskandworkerinasingleplace.
     for (String key : myProperties.keySet()) {
       root.addContent(new Element(ELEM_PROPERTY).setAttribute(NAME, key).setAttribute(VALUE, myProperties.get(key)));
     }
@@ -132,7 +132,7 @@ public class ScriptData {
       for (Element f : e.getChildren(ELEM_REPO_MODULEFILE)) {
         repo.files.add(f.getAttributeValue(PATH));
       }
-      // I know I'm inside a loop, but I don't expect more that 1 <repo> tag 
+      // IknowI'minsidealoop,butIdon'texpectmorethat1<repo>tag
       setRepo(repo);
     }
 

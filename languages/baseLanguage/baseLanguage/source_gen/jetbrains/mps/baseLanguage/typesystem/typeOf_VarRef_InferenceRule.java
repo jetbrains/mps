@@ -37,12 +37,12 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
 
       SNode contextClassifier = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), varRef);
       if (contextClassifier == null) {
-        // referencing the field from an unknown non-java context 
-        // todo Should expandGenerics to something general like Object in case it's a generic type 
-        // but if we give an empty subst we'll get the same node with no substitutions 
-        // (expandGenerics impls are written in a way to return node as is if subst doesn't map it) 
-        // So we have to know the list of generic params, but there seems to be no link 
-        // from IGenericType to GenericDeclaration (its type params) 
+        // referencingthefieldfromanunknownnon-javacontext
+        // todoShouldexpandGenericstosomethinggenerallikeObjectincaseit'sagenerictype
+        // butifwegiveanemptysubstwe'llgetthesamenodewithnosubstitutions
+        // (expandGenericsimplsarewritteninawaytoreturnnodeasisifsubstdoesn'tmapit)
+        // Sowehavetoknowthelistofgenericparams,butthereseemstobenolink
+        // fromIGenericTypetoGenericDeclaration(itstypeparams)
         {
           SNode _nodeToCheck_1029348928467 = varRef;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7723500226000485921", 0, null);
@@ -75,7 +75,7 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
       return;
     }
 
-    // main code 
+    // maincode
     SNode variableDeclaration = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG);
     {
       SNode matchedNode_lcu2lp_e0 = SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY);

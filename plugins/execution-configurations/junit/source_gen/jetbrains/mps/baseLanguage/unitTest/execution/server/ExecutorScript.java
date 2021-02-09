@@ -25,7 +25,7 @@ public final class ExecutorScript {
    * executor to load proper test classes and run them with JUnit.
    */
   public void addTest(ITestNodeWrapper testWrap) {
-    // XXX have to tell test class from test method here 
+    // XXXhavetotelltestclassfromtestmethodhere
     PersistenceFacade pf = PersistenceFacade.getInstance();
 
     final String testModule = pf.asString(testWrap.getTestNodeModule());

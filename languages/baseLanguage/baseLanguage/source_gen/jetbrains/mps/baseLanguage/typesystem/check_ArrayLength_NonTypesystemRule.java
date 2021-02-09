@@ -28,7 +28,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
   public check_ArrayLength_NonTypesystemRule() {
   }
   public void applyRule(final SNode fieldRefOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // FIXME: almost duplicate code with MultipleFilesParser 
+    // FIXME:almostduplicatecodewithMultipleFilesParser
     SReference fieldRef = SNodeOperations.getReference(fieldRefOperation, LINKS.fieldDeclaration$H7Ag);
     if (!((SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef))))) {
       return;
@@ -41,7 +41,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
         return SLinkOperations.isDynamic(it);
       }
     })) {
-      // let's not mess with dynamic references 
+      // let'snotmesswithdynamicreferences
       return;
     }
 

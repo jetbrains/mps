@@ -94,7 +94,7 @@ public class Binaries_Facet extends IFacet.Stub {
               try {
                 final List<IDelta> deltaList = ListSequence.fromList(new ArrayList<IDelta>());
 
-                // XXX there seems to be no need to depend from Generate task now? 
+                // XXXthereseemstobenoneedtodependfromGeneratetasknow?
                 final SRepository repository = monitor.getSession().getProject().getRepository();
                 final Wrappers._boolean fail = new Wrappers._boolean(false);
                 repository.getModelAccess().runReadAction(new Runnable() {
@@ -138,7 +138,7 @@ public class Binaries_Facet extends IFacet.Stub {
                           }
                         }
                       });
-                      // though StaleFilesCollector is discouraged, we need to delete old resource files, therefore we have to use it here unless we move Resource processing into textgen aspect 
+                      // thoughStaleFilesCollectorisdiscouraged,weneedtodeleteoldresourcefiles,thereforewehavetouseithereunlesswemoveResourceprocessingintotextgenaspect
                       new StaleFilesCollector(outputDir).updateDelta(fdc.getDelta());
                       ListSequence.fromList(deltaList).addElement(fdc.getDelta());
                     }

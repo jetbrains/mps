@@ -27,13 +27,13 @@ public class HidingByNameScope extends Scope {
   private final Set<String> names;
 
   public HidingByNameScope(SAbstractConcept hidingConcept, SAbstractConcept kind, @NotNull Scope scope, @NotNull Scope parentScope) {
-    // hiding root: all subconcepts of hidingRoot hide each other 
+    // hidingroot:allsubconceptsofhidingRoothideeachother
     this.scope = scope;
     this.parentScope = parentScope;
     this.hidingRootConcept = hidingConcept;
     this.kindConcept = kind;
-    // todo: maybe lazy in getAvailableElements? 
-    // todo: I need this micro optimizations? 
+    // todo:maybelazyingetAvailableElements?
+    // todo:Ineedthismicrooptimizations?
     Iterable<SNode> tmpResult = scope.getAvailableElements(null);
     this.names = new HashSet<String>(Sequence.fromIterable(tmpResult).count());
     for (SNode node : Sequence.fromIterable(tmpResult)) {
@@ -65,7 +65,7 @@ public class HidingByNameScope extends Scope {
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
-    // todo: recheck this code 
+    // todo:recheckthiscode
     return (SetSequence.fromSet(names).contains(refText) ? scope.resolve(contextNode, refText) : parentScope.resolve(contextNode, refText));
   }
   @Nullable

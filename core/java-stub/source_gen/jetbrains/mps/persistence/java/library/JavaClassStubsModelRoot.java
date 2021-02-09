@@ -63,7 +63,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
 
   @Override
   public SModel getModel(@NotNull SModelId id) {
-    // todo implement 
+    // todoimplement
     return null;
   }
 
@@ -71,13 +71,13 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   public void load(@NotNull Memento memento) {
     String provided = memento.get("provided");
     if (myStubPathProvider != null && provided != null && myStubPathProvider.supports(provided)) {
-      // in case provider add anything to memento, don't want anyone to see that changes or try to persist them afterwards 
+      // incaseprovideraddanythingtomemento,don'twantanyonetoseethatchangesortrytopersistthemafterwards
       Memento copy = memento.copy();
       myStubPathProvider.configure(provided, copy);
       memento = copy;
     }
     super.load(memento);
-    // Perhaps, shall support multiple scope configurations per root 
+    // Perhaps,shallsupportmultiplescopeconfigurationsperroot
     Memento packScope = memento.getChild("PackageScope");
     if (packScope != null) {
       myPackageScope = new PackageScopeControl();
@@ -87,7 +87,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     if (srcSpec != null) {
       String srcZip = srcSpec.get("zipPath");
       if (srcZip != null) {
-        // don't want to bother with MementoWithFS and/or where to take FileSystem from to use IFile, stick to java.io 
+        // don'twanttobotherwithMementoWithFSand/orwheretotakeFileSystemfromtouseIFile,sticktojava.io
         File zipFile = new File(srcZip);
         if (zipFile.isFile()) {
           myDocSupplier = new SingleZipWithJavaSources(zipFile);
@@ -100,7 +100,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   public void save(@NotNull Memento memento) {
     super.save(memento);
     if (myPackageScope != null) {
-      // XXX save package scope iff it was part or initial memento, not from path provider 
+      // XXXsavepackagescopeiffitwaspartorinitialmemento,notfrompathprovider
       myPackageScope.save(memento.createChild("PackageScope"));
     }
   }
@@ -117,8 +117,8 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     for (IFile file : files) {
       collectJarFiles(file, excludedFiles, jarsToLoad);
 
-      // we suppose here that each path can be either a jar-file or a classes directory or a jar directory, 
-      // but does not contain both jar files and class files 
+      // wesupposeherethateachpathcanbeeitherajar-fileoraclassesdirectoryorajardirectory,
+      // butdoesnotcontainbothjarfilesandclassfiles
       if (SetSequence.fromSet(jarsToLoad).isNotEmpty()) {
         continue;
       }
@@ -126,8 +126,8 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       SetSequence.fromSet(cpRootsToLoad).addElement(file);
     }
 
-    // FIXME though IFile("whatever.jar") could be already from JAR FS (e.g. CommonPaths creates IFiles using JAR FS for jar files right away), I found no way to figure it out 
-    //        therefore have to resort to this stupid way to step into jar 
+    // FIXMEthoughIFile("whatever.jar")couldbealreadyfromJARFS(e.g.CommonPathscreatesIFilesusingJARFSforjarfilesrightaway),Ifoundnowaytofigureitout
+    // thereforehavetoresorttothisstupidwaytostepintojar
     SetSequence.fromSet(jarsToLoad).select(new ISelector<IFile, IFile>() {
       public IFile select(IFile it) {
         return getFileSystem().getFile(it.getPath() + Path.ARCHIVE_SEPARATOR);
@@ -224,7 +224,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       if (Sequence.fromIterable(rootClasses).isNotEmpty()) {
         SModelReference modelReference = new JavaPackageNameStub(pack).asModelReference(module.getModuleReference());
         JavaClassStubModelDescriptor smd;
-        // FIXME: hack, see comment below 
+        // FIXME:hack,seecommentbelow
         SModel modelDescriptor = getModelAlreadyRegistered(module, modelReference);
         if (modelDescriptor != null) {
           assert modelDescriptor instanceof JavaClassStubModelDescriptor;

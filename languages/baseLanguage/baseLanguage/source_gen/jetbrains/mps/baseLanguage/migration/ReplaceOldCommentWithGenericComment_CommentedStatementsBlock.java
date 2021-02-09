@@ -22,7 +22,7 @@ public class ReplaceOldCommentWithGenericComment_CommentedStatementsBlock extend
     return null;
   }
   public void doExecute(final SModule m) {
-    // concept completely removed 
+    // conceptcompletelyremoved
   }
   public MigrationScriptReference getDescriptor() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 3);

@@ -54,7 +54,7 @@ public class NewCreateRootRule_Action extends BaseAction {
     if (ListSequence.fromList(configs).isEmpty()) {
       return false;
     }
-    //  not used in a rule yet? 
+    // notusedinaruleyet?
     return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.createRootRule$kw86)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.templateNode$vPtI) == event.getData(MPSCommonDataKeys.NODE);
@@ -99,12 +99,12 @@ public class NewCreateRootRule_Action extends BaseAction {
       }
     }
     if (ListSequence.fromList(configs).count() > 1) {
-      // TODO: let user to choose mapping config? 
+      // TODO:letusertochoosemappingconfig?
     }
-    //  add new rule 
+    // addnewrule
     SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), LINKS.createRootRule$kw86, null);
     SLinkOperations.setTarget(rule, LINKS.templateNode$vPtI, event.getData(MPSCommonDataKeys.NODE));
-    //  open in editor 
+    // openineditor
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), rule, true, true);
   }
 

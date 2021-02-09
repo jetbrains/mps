@@ -92,7 +92,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
     if (creatingRawClass) {
       newType = _quotation_createNode_4w0o2k_a0a0r0b(classifier);
     } else {
-      // TODO: this is to avoid collecting generics from explicitly substituted types 
+      // TODO:thisistoavoidcollectinggenericsfromexplicitlysubstitutedtypes
       List<SNode> typeParam = ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode tp) {
           final SNode TP_typevar_4340163696368051056 = typeCheckingContext.createNewRuntimeTypesVariable();

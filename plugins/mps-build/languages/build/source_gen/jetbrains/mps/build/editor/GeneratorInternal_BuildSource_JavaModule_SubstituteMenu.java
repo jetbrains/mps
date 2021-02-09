@@ -49,7 +49,7 @@ public class GeneratorInternal_BuildSource_JavaModule_SubstituteMenu extends Sub
   public class SMP_ReferenceScope_lnpg2_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_lnpg2_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.GeneratorInternal_BuildSource_JavaModule$pC, LINKS.targetModule$4853);
     }
     @NotNull

@@ -40,7 +40,7 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
       staticSetPropertyValue(node, SPropertyOperations.castString(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, String propertyValue) {
-      // nothing - resolveInfo is read-only 
+      // nothing-resolveInfoisread-only
     }
   }
   @Override

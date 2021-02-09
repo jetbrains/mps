@@ -67,7 +67,7 @@
       <node id="8351223626654699460" at="144,80,145,24" concept="2" />
       <node id="3432969378036017163" at="148,60,149,73" concept="9" />
       <node id="4054603036795398272" at="151,63,152,70" concept="9" />
-      <node id="3714688570620105130" at="154,63,155,26" concept="10" />
+      <node id="3714688570620105130" at="154,63,155,22" concept="10" />
       <node id="3714688570619965274" at="159,122,160,42" concept="9" />
       <node id="3714688570619965709" at="164,5,165,16" concept="9" />
       <node id="7129857096177641101" at="167,93,168,91" concept="9" />
@@ -103,7 +103,7 @@
       <node id="4054603036795014619" at="125,0,132,5" concept="6" />
       <node id="547466970563566903" at="156,76,163,7" concept="5" />
       <node id="3432969378036017190" at="72,0,81,0" concept="7" trace="getValueWrapperFactories#(Ljetbrains/mps/debugger/java/api/evaluation/proxies/IValueProxy;)Ljava/util/Set;" />
-      <node id="547466970563562942" at="155,26,164,5" concept="5" />
+      <node id="547466970563562942" at="155,22,164,5" concept="5" />
       <node id="6108369403999471637" at="85,11,96,9" concept="6" />
       <node id="4054603036794687119" at="112,0,124,5" concept="6" />
       <node id="4054603036795140421" at="135,0,148,0" concept="7" trace="setValueWrapper#(Ljetbrains/mps/debugger/java/api/evaluation/proxies/IValueProxy;Ljetbrains/mps/debugger/java/api/state/proxy/ValueWrapperFactory;Ljetbrains/mps/debugger/java/runtime/state/DebugSession;)V" />
@@ -193,7 +193,7 @@
       <scope id="3432969378036017190" at="72,0,81,0">
         <var name="originalValue" id="3432969378036017194" />
       </scope>
-      <scope id="547466970563562942" at="155,26,164,5">
+      <scope id="547466970563562942" at="155,22,164,5">
         <var name="project" id="547466970563562944" />
       </scope>
       <scope id="4054603036794687122" at="113,45,123,7">

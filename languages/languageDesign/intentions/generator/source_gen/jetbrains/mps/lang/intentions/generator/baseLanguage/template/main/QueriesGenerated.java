@@ -61,11 +61,11 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "intentions");
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "intentions");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
@@ -159,7 +159,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "map_isApplicable_helper");
   }
   public static Object referenceMacro_GetReferent_6_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output IntentionsDescriptorCons for model model; 
+    // TODOgenContext.getoutputIntentionsDescriptorConsformodelmodel;
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".IntentionsDescriptor";
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
@@ -208,7 +208,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return TypeCalculator.isParametrized(_context.getNode());
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
-    //  XXX kind of odd way to check != null, provided priority is declared as ErrorIntentionPriority[0..1] 
+    // XXXkindofoddwaytocheck!=null,providedpriorityisdeclaredasErrorIntentionPriority[0..1]
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.priority$HQFL), CONCEPTS.ErrorIntentionPriority$8B);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {

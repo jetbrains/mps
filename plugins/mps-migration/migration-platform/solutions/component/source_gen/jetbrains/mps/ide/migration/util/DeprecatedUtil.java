@@ -168,7 +168,7 @@ public class DeprecatedUtil {
           return scope_i2l0ze_a0i_0;
         }
       };
-      // --------concepts 
+      // --------concepts
       Iterable<SNode> dc = DeprecatedUtil.depConcepts(depScope);
 
       final Wrappers._T<String> cat = new Wrappers._T<String>("Deprecated Concept Instance");
@@ -195,7 +195,7 @@ public class DeprecatedUtil {
         }
       });
 
-      // --------properties 
+      // --------properties
       Iterable<SNode> dp = DeprecatedUtil.depProps(depScope);
 
       cat.value = "Deprecated Property Instances";
@@ -226,7 +226,7 @@ public class DeprecatedUtil {
         }
       });
 
-      // --------links 
+      // --------links
       Iterable<SNode> dl = DeprecatedUtil.depLinks(depScope);
 
       cat.value = "Deprecated Link Instances";

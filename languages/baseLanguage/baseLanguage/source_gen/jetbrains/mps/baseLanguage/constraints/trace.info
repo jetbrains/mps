@@ -231,7 +231,7 @@
       <node id="1213104840453" at="92,61,93,22" concept="8" />
       <node id="4477882950024251248" at="99,44,100,20" concept="8" />
       <node id="4477882950024251248" at="107,63,108,57" concept="8" />
-      <node id="6836281137582643226" at="111,80,112,119" concept="9" />
+      <node id="6836281137582643226" at="111,80,112,103" concept="9" />
       <node id="6836281137582643230" at="113,133,114,99" concept="8" />
       <node id="6836281137582643242" at="115,13,116,0" concept="10" />
       <node id="6836281137582643243" at="116,0,117,219" concept="7" />
@@ -261,7 +261,7 @@
       <node id="1213104840454" at="61,0,64,0" concept="2" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1213104840454" at="79,99,82,7" concept="5" />
       <node id="1213104840454" at="85,0,88,0" concept="12" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
-      <node id="6836281137582643228" at="112,119,115,13" concept="5" />
+      <node id="6836281137582643228" at="112,103,115,13" concept="5" />
       <node id="6836281137582643255" at="117,219,120,13" concept="5" />
       <node id="1213104840453" at="134,0,137,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="1213104840454" at="64,0,68,0" concept="6" trace="hasOwnGetter#()Z" />
@@ -1861,8 +1861,8 @@
       <node id="1213104860474" at="31,48,32,47" concept="13" />
       <node id="1213104860475" at="39,44,40,20" concept="8" />
       <node id="1213104860475" at="47,63,48,57" concept="8" />
-      <node id="6836281137582643831" at="51,80,52,132" concept="9" />
-      <node id="6836281137582643833" at="52,132,53,258" concept="7" />
+      <node id="6836281137582643831" at="51,80,52,116" concept="9" />
+      <node id="6836281137582643833" at="52,116,53,258" concept="7" />
       <node id="3902758784054570085" at="55,34,56,79" concept="8" />
       <node id="6836281137582643841" at="58,15,59,130" concept="7" />
       <node id="6836281137582643851" at="60,93,61,38" concept="8" />
@@ -2067,8 +2067,8 @@
       <node id="1225995033549" at="32,55,33,71" concept="3" />
       <node id="1225995033549" at="34,9,35,0" concept="10" />
       <node id="1225995033549" at="35,0,36,22" concept="8" />
-      <node id="1227128029536558608" at="40,128,41,68" concept="9" />
-      <node id="1227128029536558610" at="41,68,42,113" concept="8" />
+      <node id="1227128029536558608" at="40,128,41,58" concept="9" />
+      <node id="1227128029536558610" at="41,58,42,113" concept="8" />
       <node id="1225995033549" at="44,0,45,0" concept="11" trace="canBeChildBreakingPoint" />
       <node id="1225995033549" at="47,0,48,0" concept="11" trace="IOperation$ga" />
       <node id="1225995033549" at="48,0,49,0" concept="11" trace="DotExpression$yW" />
@@ -3041,7 +3041,7 @@
       <node id="6836281137582643345" at="77,37,78,38" concept="8" />
       <node id="6836281137582643351" at="79,13,80,139" concept="7" />
       <node id="5096335680367641209" at="80,139,81,95" concept="7" />
-      <node id="5096335680367647702" at="81,95,82,76" concept="9" />
+      <node id="5096335680367647702" at="81,95,82,72" concept="9" />
       <node id="7554792790600629523" at="84,47,85,185" concept="8" />
       <node id="5139199381138639049" at="91,6,92,131" concept="7" />
       <node id="5139199381139047378" at="92,131,93,42" concept="3" />
@@ -3065,7 +3065,7 @@
       <node id="5139199381138639049" at="96,0,99,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="5139199381139047378" at="62,0,66,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="5139199381139047378" at="70,0,74,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582643366" at="82,76,87,16" concept="8" />
+      <node id="6836281137582643366" at="82,72,87,16" concept="8" />
       <node id="5096335680367641212" at="99,0,106,0" concept="12" trace="_quotation_createNode_yrz94z_a0d0b0a0a0b0a0a0a3#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5139199381138639049" at="47,0,57,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="5139199381138639049" at="45,103,57,6" concept="8" />
@@ -3139,11 +3139,11 @@
       <node id="517741769066354020" at="29,39,30,38" concept="13" />
       <node id="5597228709659794578" at="37,44,38,20" concept="8" />
       <node id="5597228709659794578" at="45,63,46,57" concept="8" />
-      <node id="6836281137582643071" at="49,80,50,63" concept="9" />
-      <node id="382812245247556356" at="50,63,51,114" concept="7" />
+      <node id="6836281137582643071" at="49,80,50,55" concept="9" />
+      <node id="382812245247556356" at="50,55,51,114" concept="7" />
       <node id="6836281137582643073" at="51,114,52,227" concept="7" />
       <node id="8058290629774331925" at="52,227,53,121" concept="7" />
-      <node id="8058290629774347166" at="54,38,55,65" concept="9" />
+      <node id="8058290629774347166" at="54,38,55,58" concept="9" />
       <node id="8058290629774345241" at="58,55,59,366" concept="8" />
       <node id="6836281137582643088" at="62,13,63,25" concept="8" />
       <node id="517741769066354020" at="67,6,68,131" concept="7" />
@@ -3161,7 +3161,7 @@
       <node id="5597228709659794578" at="36,0,40,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="5597228709659794578" at="44,0,48,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="8058290629774345235" at="57,0,61,0" concept="6" trace="isExcluded#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="8058290629774345228" at="55,65,61,16" concept="8" />
+      <node id="8058290629774345228" at="55,58,61,16" concept="8" />
       <node id="8058290629774343485" at="53,121,62,13" concept="5" />
       <node id="5597228709659794578" at="48,0,65,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
       <node id="5597228709659794578" at="42,56,65,10" concept="8" />
@@ -3428,7 +3428,7 @@
       <node id="6836281137582643680" at="78,37,79,38" concept="8" />
       <node id="6836281137582643686" at="80,13,81,139" concept="7" />
       <node id="6836281137582643694" at="81,139,82,95" concept="7" />
-      <node id="5096335680367568579" at="82,95,83,162" concept="9" />
+      <node id="5096335680367568579" at="82,95,83,145" concept="9" />
       <node id="7554792790600743451" at="85,47,86,219" concept="8" />
       <node id="5862977038373005231" at="92,6,93,131" concept="7" />
       <node id="5862977038373005232" at="93,131,94,42" concept="3" />
@@ -3454,7 +3454,7 @@
       <node id="1227128029536558664" at="99,27,102,7" concept="5" />
       <node id="5862977038373005232" at="63,0,67,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="5862977038373005232" at="71,0,75,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582643701" at="83,162,88,16" concept="8" />
+      <node id="6836281137582643701" at="83,145,88,16" concept="8" />
       <node id="1227128029536558662" at="98,101,103,5" concept="5" />
       <node id="6836281137582643697" at="106,0,113,0" concept="12" trace="_quotation_createNode_pyukpt_a0d0b0a0a0b0a0a0a3#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5862977038373005231" at="97,0,106,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

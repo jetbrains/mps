@@ -18,7 +18,7 @@ public class MainClass {
       public void run() {
         coreRepo.getModelAccess().runWriteAction(new Runnable() {
           public void run() {
-            // Note, IFileSystem.getFile(String) requires absolute path 
+            // Note,IFileSystem.getFile(String)requiresabsolutepath
             IFile okFile = fs.getFile(new File("ok.log"));
             okFile.refresh();
             okFile.createNewFile();

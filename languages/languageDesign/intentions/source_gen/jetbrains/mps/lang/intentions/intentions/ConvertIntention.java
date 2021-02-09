@@ -123,10 +123,10 @@ public class ConvertIntention extends IntentionsFactory {
     SNode oldIsApplicable = SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.isApplicableFunction$xRE3), LINKS.body$e68K);
     SNode oldChildFilter = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.childFilterFunction$xRr2), CONCEPTS.ChildFilterFunction$q_), LINKS.body$e68K);
 
-    // create new intention 
+    // createnewintention
     SNode newIntention = SNodeFactoryOperations.createNewNode(CONCEPTS.Intention$zo, null);
 
-    // obtain references to members 
+    // obtainreferencestomembers
 
     SNode newExecute = SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063981347"), newIntention)).first(), CONCEPTS.MethodInstance$jE);
     SNode newDescription = SNodeOperations.cast(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982514"), newIntention)).first(), CONCEPTS.MethodInstance$jE);
@@ -150,7 +150,7 @@ public class ConvertIntention extends IntentionsFactory {
       resolveReference(newIsApplicable, newIsApplicable);
     }
 
-    // set members 
+    // setmembers
     SPropertyOperations.assign(newIntention, PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
     SLinkOperations.setTarget(newIntention, LINKS.forConcept$Mnu4, SLinkOperations.getTarget(node, LINKS.forConcept$zyGL));
 

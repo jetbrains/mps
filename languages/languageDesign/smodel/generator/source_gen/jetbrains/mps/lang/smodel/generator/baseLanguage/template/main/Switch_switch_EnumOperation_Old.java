@@ -78,13 +78,13 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_117_0(new PropertyMacroContext(context1, "1L", propertyMacro_vmdyp3_c0a2a0a1a4a2a1g)));
           tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist5 = Collections.emptyList();
@@ -99,7 +99,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child8 : TemplateUtil.asNotNull(tlist5)) {
             tnode1.addChild(myAggregationLinks[0], child8);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -135,7 +135,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -160,7 +160,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -175,7 +175,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -203,7 +203,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
                 final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                 tnode4.setProperty(myProperties[1], "");
                 tnode3.addChild(myAggregationLinks[1], tnode4);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 Collection<SNode> tlist5 = null;
@@ -212,7 +212,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
                 for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
                   tnode3.addChild(myAggregationLinks[2], child6);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist2 = TemplateUtil.singletonList(tnode3);
@@ -225,7 +225,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child8 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child8);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist9 = null;
@@ -240,7 +240,7 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
           for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
             tnode1.addChild(myAggregationLinks[0], child10);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

@@ -75,7 +75,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
       TemporaryModels.getInstance().dispose(model);
     }
     public void test_quotationTreeNodeId() throws Exception {
-      // when quotation constructs a tree of nodes, make sure it's only the top one that gets the id 
+      // whenquotationconstructsatreeofnodes,makesureit'sonlythetoponethatgetstheid
       SNodeId.Regular id = new SNodeId.Regular(239);
       SNode node = _quotation_createNode_fw7ydn_a0c0f9(null, id);
       Assert.assertTrue(Objects.equals(node.getNodeId(), id));

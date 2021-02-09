@@ -21,7 +21,7 @@ public class typeof_LocalMethodCall_InferenceRule extends AbstractInferenceRule_
   public typeof_LocalMethodCall_InferenceRule() {
   }
   public void applyRule(final SNode localMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // This is a hack made for convenience while trying to decrease number of DependentTypeInstance occurences 
+    // ThisisahackmadeforconveniencewhiletryingtodecreasenumberofDependentTypeInstanceoccurences
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(localMethodCall, LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9)) {
       {
         SNode _nodeToCheck_1029348928467 = localMethodCall;

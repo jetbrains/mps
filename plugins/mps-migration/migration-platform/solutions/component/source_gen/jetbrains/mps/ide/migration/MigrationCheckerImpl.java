@@ -120,7 +120,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
   public void checkProject(final ProgressMonitor pm, final Processor<IssueKindReportItem> processor) {
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        // todo inline 
+        // todoinline
         List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
         pm.start("Checking...", 10 + ListSequence.fromList(modules).count());
 
@@ -152,8 +152,8 @@ public class MigrationCheckerImpl implements MigrationChecker {
             List<EditableSModel> models = Sequence.fromIterable(((Iterable<SModel>) module.getModels())).ofType(EditableSModel.class).toListSequence();
             ProgressMonitor moduleSubtask = pm.subTask(1, SubProgressKind.AS_COMMENT);
             moduleSubtask.start(NameUtil.compactNamespace(module.getModuleName()), ListSequence.fromList(models).count());
-            // find missing concepts, when language's not missing 
-            // find missing concept features when concept's not missing 
+            // findmissingconcepts,whenlanguage'snotmissing
+            // findmissingconceptfeatureswhenconcept'snotmissing
             for (EditableSModel model : ListSequence.fromList(models)) {
               final Wrappers._boolean stop = new Wrappers._boolean(false);
               IChecker.AbstractModelChecker<NodeReportItem> checker = new StructureChecker().withoutCardinalities().asModelChecker();
@@ -233,7 +233,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
           }
         }
 
-        // todo show only annotations left by our run migrations 
+        // todoshowonlyannotationsleftbyourrunmigrations
         for (ScriptApplied sa : Sequence.fromIterable(migrations)) {
           for (Problem p : Sequence.fromIterable(((MigrationScriptReference) sa.getScriptReference()).resolve(myProject, false).check(sa.getModule(myProject.getRepository())))) {
             if (!(processor.process(p))) {

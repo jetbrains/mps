@@ -34,8 +34,8 @@ public class Test_CreateListAntiquotation_Key_Test extends BaseTransformationTes
     public void testMethodImpl() throws Exception {
       initEditorComponent("7167051279291154490", "7167051279291154500");
       typeString("*");
-      // todo this is done because antiquotation "antisuppress" the errors and typesystem test is failing 
-      // todo remove it when it will be possible to have the antiquotation with an error under the test 
+      // todothisisdonebecauseantiquotation"antisuppress"theerrorsandtypesystemtestisfailing
+      // todoremoveitwhenitwillbepossibletohavetheantiquotationwithanerrorunderthetest
       typeString("nodes");
 
     }

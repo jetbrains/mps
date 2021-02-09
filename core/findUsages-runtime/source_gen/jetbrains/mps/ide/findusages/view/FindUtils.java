@@ -100,9 +100,9 @@ public class FindUtils {
       }
       final FinderNode fn;
       if (finder instanceof GeneratedFinder) {
-        // just in case IResultProvider get serialized later, we give it an indication this one could get reloaded 
-        // XXX OTOH, it mught be IResultProvider itself to care about GeneratedFinder on write as it does on read for ReloadableFinders (so that RF 
-        // knowledge stays in a single place)? 
+        // justincaseIResultProvidergetserializedlater,wegiveitanindicationthisonecouldgetreloaded
+        // XXXOTOH,itmughtbeIResultProvideritselftocareaboutGeneratedFinderonwriteasitdoesonreadforReloadableFinders(sothatRF
+        // knowledgestaysinasingleplace)?
         fn = new FinderNode(new ReloadableFinder((GeneratedFinder) finder));
       } else {
         fn = new FinderNode(finder);

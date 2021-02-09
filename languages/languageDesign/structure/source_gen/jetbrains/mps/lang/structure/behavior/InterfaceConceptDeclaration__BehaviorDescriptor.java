@@ -61,7 +61,7 @@ public final class InterfaceConceptDeclaration__BehaviorDescriptor extends BaseB
     SetSequence.fromSet(concepts).addElement(__thisNode__);
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0ykew.invoke(__thisNode__, LanguageAspect.BEHAVIOR), CONCEPTS.ConceptBehavior$2), LINKS.method$w_in)));
     for (SNode extendsInterface : SLinkOperations.collect(SLinkOperations.getChildren(__thisNode__, LINKS.extends$nawU), LINKS.intfc$zM4e)) {
-      // todo: equal methods in different interfaces check! 
+      // todo:equalmethodsindifferentinterfacescheck!
       InterfaceConceptDeclaration__BehaviorDescriptor.collectAllMethodsInPriorityOrder_id3waV7Ya5fRc.invoke(extendsInterface, methods, concepts);
     }
   }

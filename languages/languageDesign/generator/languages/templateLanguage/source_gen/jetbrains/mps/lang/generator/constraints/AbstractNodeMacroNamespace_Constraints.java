@@ -41,11 +41,11 @@ public class AbstractNodeMacroNamespace_Constraints extends BaseConstraintsDescr
     SNode templateQueryAncestor = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.TemplateQueryBase$zY, false, false);
     SConcept nsConcept = SNodeOperations.castConcept(childConcept, CONCEPTS.AbstractNodeMacroNamespace$Cq);
 
-    // Expression in a query + enclosed in a LOOP macro (start search of the loop from the parent template query) 
+    // Expressioninaquery+enclosedinaLOOPmacro(startsearchoftheloopfromtheparenttemplatequery)
     if ((templateQueryAncestor != null)) {
       return (AbstractNodeMacroNamespace__BehaviorDescriptor.getTargetMacroOfConceptFrom_id2vVmcK3rHVe.invoke(SNodeOperations.asSConcept(nsConcept), AbstractNodeMacroNamespace__BehaviorDescriptor.getMacroConcept_id2vVmcK3iiCI.invoke(SNodeOperations.asSConcept(nsConcept)), templateQueryAncestor) != null);
     }
-    // namespace expression could be part of template call argument expression not nested inside a query 
+    // namespaceexpressioncouldbepartoftemplatecallargumentexpressionnotnestedinsideaquery
     return (AbstractNodeMacroNamespace__BehaviorDescriptor.getTargetMacro_id2vVmcK3imJA.invoke(node) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902e2(jetbrains.mps.lang.generator.constraints)", "2880994019885266657");

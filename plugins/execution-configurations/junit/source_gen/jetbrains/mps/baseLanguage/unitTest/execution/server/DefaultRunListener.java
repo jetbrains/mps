@@ -76,7 +76,7 @@ public class DefaultRunListener extends RunListener {
   private void printSyncToken(@NotNull String tokenPrefix, @NotNull Description description) {
     StringBuilder builder = new StringBuilder();
     builder.append(tokenPrefix);
-    // Beware, description.getTestClass may be null. 
+    // Beware,description.getTestClassmaybenull.
     builder.append(description.getClassName());
     String methodName = description.getMethodName();
     if (methodName != null) {

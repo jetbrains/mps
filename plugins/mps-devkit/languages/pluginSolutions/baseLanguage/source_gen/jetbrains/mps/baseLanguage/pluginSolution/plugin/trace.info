@@ -956,7 +956,7 @@
       <unit id="2370003301088191" at="29,0,115,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.ExtractMethod_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="2370003301088191" at="26,30,27,42" concept="4" />
+      <node id="2370003301088191" at="26,27,27,42" concept="4" />
     </file>
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/2370003301088263">
@@ -3643,11 +3643,11 @@
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/5300313260164424007">
     <file name="Mac_10_5_KeymapChanges.java">
-      <node id="5300313260164424007" at="11,35,12,14" concept="12" />
-      <node id="5300313260164424007" at="12,14,13,34" concept="12" />
-      <node id="3505395887578881034" at="13,34,14,185" concept="4" />
-      <node id="5300313260164424007" at="14,185,15,28" concept="12" />
-      <node id="5300313260164424007" at="15,28,16,15" concept="12" />
+      <node id="5300313260164424007" at="11,35,12,13" concept="12" />
+      <node id="5300313260164424007" at="12,13,13,31" concept="12" />
+      <node id="3505395887578881034" at="13,31,14,185" concept="4" />
+      <node id="5300313260164424007" at="14,185,15,26" concept="12" />
+      <node id="5300313260164424007" at="15,26,16,14" concept="12" />
       <node id="5300313260164424007" at="18,29,19,28" concept="11" />
       <node id="5300313260164424007" at="21,53,22,70" concept="11" />
       <node id="5300313260164424007" at="18,0,21,0" concept="9" trace="getScheme#()Ljava/lang/String;" />
@@ -3659,7 +3659,7 @@
       <scope id="5300313260164424007" at="21,0,24,0">
         <var name="stroke" id="5300313260164424007" />
       </scope>
-      <scope id="5300313260164424007" at="11,35,16,15" />
+      <scope id="5300313260164424007" at="11,35,16,14" />
       <scope id="5300313260164424007" at="11,0,18,0" />
       <unit id="5300313260164424007" at="10,0,25,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.Mac_10_5_KeymapChanges" />
     </file>
@@ -3669,8 +3669,8 @@
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/5300313260164424437">
     <file name="Default_KeymapChanges.java">
-      <node id="5300313260164424437" at="11,34,12,14" concept="12" />
-      <node id="6573807532044006755" at="12,14,13,122" concept="4" />
+      <node id="5300313260164424437" at="11,34,12,13" concept="12" />
+      <node id="6573807532044006755" at="12,13,13,122" concept="4" />
       <node id="8032461659236460737" at="13,122,14,120" concept="4" />
       <node id="6573807532044006765" at="14,120,15,128" concept="4" />
       <node id="6573807532044006767" at="15,128,16,121" concept="4" />
@@ -3680,8 +3680,8 @@
       <node id="6573807532044006789" at="19,126,20,119" concept="4" />
       <node id="6573807532044006777" at="20,119,21,121" concept="4" />
       <node id="2738433904382592287" at="21,121,22,132" concept="4" />
-      <node id="5300313260164424437" at="22,132,23,28" concept="12" />
-      <node id="5300313260164424437" at="23,28,24,15" concept="12" />
+      <node id="5300313260164424437" at="22,132,23,26" concept="12" />
+      <node id="5300313260164424437" at="23,26,24,14" concept="12" />
       <node id="5300313260164424437" at="26,29,27,22" concept="11" />
       <node id="5300313260164424437" at="29,53,30,70" concept="11" />
       <node id="5300313260164424437" at="26,0,29,0" concept="9" trace="getScheme#()Ljava/lang/String;" />
@@ -3693,7 +3693,7 @@
       <scope id="5300313260164424437" at="29,0,32,0">
         <var name="stroke" id="5300313260164424437" />
       </scope>
-      <scope id="5300313260164424437" at="11,34,24,15" />
+      <scope id="5300313260164424437" at="11,34,24,14" />
       <scope id="5300313260164424437" at="11,0,26,0" />
       <unit id="5300313260164424437" at="10,0,33,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.Default_KeymapChanges" />
     </file>
@@ -3907,7 +3907,7 @@
       <unit id="6573807532044005513" at="9,0,19,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.AnalyzersActions_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="6573807532044005513" at="40,14,41,53" concept="4" />
+      <node id="6573807532044005513" at="40,13,41,53" concept="4" />
       <node id="6573807532044005514" at="47,206,48,93" concept="4" />
     </file>
   </root>
@@ -3915,8 +3915,8 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690965088109" at="15,0,16,0" concept="5" trace="myId" />
       <node id="7162597690965088109" at="21,27,22,16" concept="11" />
-      <node id="7162597690965088109" at="25,30,26,30" concept="12" />
-      <node id="7162597690965088109" at="39,40,40,14" concept="12" />
+      <node id="7162597690965088109" at="25,30,26,27" concept="12" />
+      <node id="7162597690965088109" at="39,40,40,13" concept="12" />
       <node id="7162597690965088109" at="50,48,51,92" concept="10" />
       <node id="7162597690965088109" at="53,72,54,15" concept="11" />
       <node id="7162597690965088109" at="17,0,19,0" concept="3" trace="PluginSolution_ApplicationPlugin#()V" />

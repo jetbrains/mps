@@ -52,7 +52,7 @@ public class Template_reduce_ConceptMethodCallReflectiveWithThis extends Templat
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[0], child5);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               Collection<SNode> tlist6 = null;
@@ -61,11 +61,11 @@ public class Template_reduce_ConceptMethodCallReflectiveWithThis extends Templat
               for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
                 tnode3.addChild(myAggregationLinks[1], child7);
               }
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode2.addChild(myAggregationLinks[2], tnode3);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);

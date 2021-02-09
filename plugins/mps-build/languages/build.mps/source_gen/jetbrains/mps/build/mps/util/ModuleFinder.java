@@ -29,7 +29,7 @@ public class ModuleFinder {
     final DependenciesHelper helper = DependenciesHelper.get(genContext, project, "build.mps");
     return Sequence.fromIterable(modules).select(new ISelector<SNode, String>() {
       public String select(SNode module) {
-        // similar code is in BuildMps_Module.fetchDependencies() behavior (at least). 
+        // similarcodeisinBuildMps_Module.fetchDependencies()behavior(atleast).
         SNode layoutNode = helper.getArtifact(module);
         if (layoutNode == null) {
           genContext.showErrorMessage(node, "mps module " + SPropertyOperations.getString(module, PROPS.name$MnvL) + " was not found in the layout of `" + SPropertyOperations.getString(project, PROPS.name$MnvL) + "'");

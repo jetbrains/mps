@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @Generated
 public class QueriesGenerated {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    // the same as in property macro over x LocalVariableDeclaration 
+    // thesameasinpropertymacrooverxLocalVariableDeclaration
     return "var" + ((Integer) _context.getVariable("idx")) + "decl";
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {

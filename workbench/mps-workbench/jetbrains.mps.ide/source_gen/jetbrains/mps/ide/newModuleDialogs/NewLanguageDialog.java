@@ -33,7 +33,7 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
 
   @Override
   protected void runCreation() {
-    // TODO: reuse runnable in DefaultLanguageProjectTemplate 
+    // TODO:reuserunnableinDefaultLanguageProjectTemplate
 
     Language language = NewModuleUtil.createLanguage(mySettings.getModuleName(), mySettings.getModuleLocation(), (MPSProject) myProject, false);
     ((StandaloneMPSProject) myProject).setFolderFor(language, myVirtualFolder);
@@ -45,7 +45,7 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
         language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution.getModuleReference());
         ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
         mv.update(language);
-        // XXX Do I care to update standalone versions here. And, if yes, don't I need to save them? 
+        // XXXDoIcaretoupdatestandaloneversionshere.And,ifyes,don'tIneedtosavethem?
         for (Generator gen : CollectionSequence.fromCollection(language.getGenerators())) {
           mv.update(gen);
         }
@@ -56,7 +56,7 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
         ((StandaloneMPSProject) myProject).setFolderFor(sandboxSolution, myVirtualFolder);
       }
     } catch (IOException e) {
-      // todo: ! 
+      // todo:!
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Cannot create runtime / sandbox module", e);
       }

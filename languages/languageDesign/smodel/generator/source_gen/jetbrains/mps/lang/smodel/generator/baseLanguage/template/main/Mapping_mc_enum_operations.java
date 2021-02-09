@@ -231,7 +231,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(myAggregationLinks[0], child5);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist2.add(tnode3);
@@ -240,7 +240,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[1], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       Collection<SNode> tlist7 = null;
@@ -292,7 +292,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                     tnode3.addChild(myAggregationLinks[2], child5);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   Collection<SNode> tlist6 = Collections.emptyList();
@@ -311,7 +311,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                             for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
                               tnode8.addChild(myAggregationLinks[3], child10);
                             }
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                           {
                             Collection<SNode> tlist11 = null;
@@ -320,11 +320,11 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                             for (SNode child12 : TemplateUtil.asNotNull(tlist11)) {
                               tnode8.addChild(myAggregationLinks[4], child12);
                             }
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tnode7.addChild(myAggregationLinks[5], tnode8);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tlist6 = TemplateUtil.singletonList(tnode7);
@@ -332,7 +332,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   for (SNode child13 : TemplateUtil.asNotNull(tlist6)) {
                     tnode3.addChild(myAggregationLinks[2], child13);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   Collection<SNode> tlist14 = Collections.emptyList();
@@ -353,7 +353,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                               }
                             });
                             tnode16.addChild(myAggregationLinks[3], tnode17);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                           {
                             Collection<SNode> tlist18 = null;
@@ -362,11 +362,11 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                             for (SNode child19 : TemplateUtil.asNotNull(tlist18)) {
                               tnode16.addChild(myAggregationLinks[4], child19);
                             }
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tnode15.addChild(myAggregationLinks[5], tnode16);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tlist14 = TemplateUtil.singletonList(tnode15);
@@ -374,7 +374,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   for (SNode child20 : TemplateUtil.asNotNull(tlist14)) {
                     tnode3.addChild(myAggregationLinks[2], child20);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   Collection<SNode> tlist21 = Collections.emptyList();
@@ -385,7 +385,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   for (SNode child23 : TemplateUtil.asNotNull(tlist21)) {
                     tnode3.addChild(myAggregationLinks[2], child23);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
                 {
                   Collection<SNode> tlist24 = Collections.emptyList();
@@ -400,7 +400,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                         for (SNode child27 : TemplateUtil.asNotNull(tlist26)) {
                           tnode25.addChild(myAggregationLinks[6], child27);
                         }
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tlist24 = TemplateUtil.singletonList(tnode25);
@@ -408,15 +408,15 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   for (SNode child28 : TemplateUtil.asNotNull(tlist24)) {
                     tnode3.addChild(myAggregationLinks[2], child28);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tnode2.addChild(myAggregationLinks[7], tnode3);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           tnode1.addChild(myAggregationLinks[2], tnode2);
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -445,7 +445,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(myAggregationLinks[5], child5);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist2 = TemplateUtil.singletonList(tnode3);
@@ -453,7 +453,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[2], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist7 = Collections.emptyList();
@@ -472,7 +472,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                     for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
                       tnode9.addChild(myAggregationLinks[3], child11);
                     }
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     Collection<SNode> tlist12 = null;
@@ -481,11 +481,11 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                     for (SNode child13 : TemplateUtil.asNotNull(tlist12)) {
                       tnode9.addChild(myAggregationLinks[4], child13);
                     }
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode8.addChild(myAggregationLinks[5], tnode9);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist7 = TemplateUtil.singletonList(tnode8);
@@ -493,7 +493,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
           for (SNode child14 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[2], child14);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist15 = Collections.emptyList();
@@ -514,7 +514,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                       }
                     });
                     tnode17.addChild(myAggregationLinks[3], tnode18);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     Collection<SNode> tlist19 = null;
@@ -523,11 +523,11 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                     for (SNode child20 : TemplateUtil.asNotNull(tlist19)) {
                       tnode17.addChild(myAggregationLinks[4], child20);
                     }
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode16.addChild(myAggregationLinks[5], tnode17);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist15 = TemplateUtil.singletonList(tnode16);
@@ -535,7 +535,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
           for (SNode child21 : TemplateUtil.asNotNull(tlist15)) {
             tnode1.addChild(myAggregationLinks[2], child21);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist22 = Collections.emptyList();
@@ -546,7 +546,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
           for (SNode child24 : TemplateUtil.asNotNull(tlist22)) {
             tnode1.addChild(myAggregationLinks[2], child24);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist25 = Collections.emptyList();
@@ -561,7 +561,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 for (SNode child28 : TemplateUtil.asNotNull(tlist27)) {
                   tnode26.addChild(myAggregationLinks[6], child28);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tlist25 = TemplateUtil.singletonList(tnode26);
@@ -569,7 +569,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
           for (SNode child29 : TemplateUtil.asNotNull(tlist25)) {
             tnode1.addChild(myAggregationLinks[2], child29);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

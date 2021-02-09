@@ -63,7 +63,7 @@ public final class BuildAspect_MpsTestModules__BehaviorDescriptor extends BaseBH
     });
     MPSModulesClosure designtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
 
-    // fetch required plugins 
+    // fetchrequiredplugins
     ModulePlugins plugins = new ModulePlugins(project);
     List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.options$gctq), LINKS.requiredPlugins$eyJB)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
@@ -78,7 +78,7 @@ public final class BuildAspect_MpsTestModules__BehaviorDescriptor extends BaseBH
       }
     }
 
-    // fetch modules 
+    // fetchmodules
     Iterable<SNode> modules = Sequence.fromIterable(designtimeClosure.getAllModules()).union(Sequence.fromIterable(originalModules));
     for (SNode m : Sequence.fromIterable(modules)) {
       SNode artifact;

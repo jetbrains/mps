@@ -11,7 +11,7 @@ public final class FileUtil {
   }
 
   public static String getAbsolutePath(String path) {
-    // copy of j.m.util.PathUtil.getAbsolutePath, to avoid dependency from MPS.Core/[kernel] 
+    // copyofj.m.util.PathUtil.getAbsolutePath,toavoiddependencyfromMPS.Core/[kernel]
     if (path.startsWith("~/") || path.startsWith("~\\")) {
       path = System.getProperty("user.home") + path.substring(1);
     }

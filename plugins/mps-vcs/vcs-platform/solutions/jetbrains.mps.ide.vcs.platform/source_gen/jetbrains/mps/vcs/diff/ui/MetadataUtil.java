@@ -49,8 +49,8 @@ public class MetadataUtil {
     metadataModel.addLanguage(MetaAdapterFactory.getLanguage(0x86ef829012bb4ca7L, 0x947f093788f263a9L, "jetbrains.mps.lang.project"));
     new MetadataUtil(metadataModel).createModelRoot(model);
     DiffModelUtil.renameModelAndRegister(metadataModel, version);
-    // XXX it looks isChanged used as indication whether there's anything in the model to apply. 
-    // If yes, why not use dedicated flag in MergeTemporaryModel, and cease being EditableSModel? 
+    // XXXitlooksisChangedusedasindicationwhetherthere'sanythinginthemodeltoapply.
+    // Ifyes,whynotusededicatedflaginMergeTemporaryModel,andceasebeingEditableSModel?
     metadataModel.setChanged(false);
     return metadataModel;
   }
@@ -65,7 +65,7 @@ public class MetadataUtil {
 
   private void createModelRoot(SModel origin) {
     SModelBase modelBase = (SModelBase) origin;
-    // create root with fixed Id (see inspector) 
+    // createrootwithfixedId(seeinspector)
     SNode root = SModelOperations.createNewNode(myMetadataModel, getMetadataRootId(), CONCEPTS.Model$fS);
     SPropertyOperations.assign(root, PROPS.longname$LR$t, SModelOperations.getModelName(origin));
     if (origin instanceof ModelWithAttributes) {
@@ -91,17 +91,17 @@ public class MetadataUtil {
   }
 
   private SNode createLanguageNode(SLanguage lang, int version) {
-    // Though it's possible to reduce mps.ide.vcs.modelmetadata language to no concepts but Model, 
-    // and re-use various *Identity concepts from lang.modelapi/lang.smodel, I leave these custom wrappers for string properties 
-    // to keep the language simple and isolated 
+    // Thoughit'spossibletoreducemps.ide.vcs.modelmetadatalanguagetonoconceptsbutModel,
+    // andre-usevarious*Identityconceptsfromlang.modelapi/lang.smodel,Ileavethesecustomwrappersforstringproperties
+    // tokeepthelanguagesimpleandisolated
     // 
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     final String langIdentity = pf.asString(lang);
-    // IMPORTANT! model.new node set custom node id. See createModuleRefNode, below, for explanation why we need custom id 
+    // IMPORTANT!model.newnodesetcustomnodeid.SeecreateModuleRefNode,below,forexplanationwhyweneedcustomid
     SNode rv = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + langIdentity), CONCEPTS.LanguageDependency$4_);
-    // XXX it's bad to cast to implementation class, but it's MPS internal code and this is fastest approach 
-    // (although the right way is to extract part of smodel language related to metadata handling, like LanguageIdentity 
-    // into separate language and re-use it here). 
+    // XXXit'sbadtocasttoimplementationclass,butit'sMPSinternalcodeandthisisfastestapproach
+    // (althoughtherightwayistoextractpartofsmodellanguagerelatedtometadatahandling,likeLanguageIdentity
+    // intoseparatelanguageandre-useithere).
     SPropertyOperations.assign(rv, PROPS.value$2RyI, langIdentity);
     return rv;
   }
@@ -113,9 +113,9 @@ public class MetadataUtil {
   private SNode createModuleRefNode(SModuleReference module) {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     String moduleIdentity = pf.asString(module);
-    // The purpose of custom node id here is to have identical IDs for the same imports in different models 
-    // That's why don't we rely on automatic node id. This doesn't help, however, in case of duplicated imports! 
-    // SNodeId.Foreign.ID_PREFIX dependency is not mandatory, in fact. There's code, above, that uses hardcoded values anyway ("~root") 
+    // ThepurposeofcustomnodeidhereistohaveidenticalIDsforthesameimportsindifferentmodels
+    // That'swhydon'twerelyonautomaticnodeid.Thisdoesn'thelp,however,incaseofduplicatedimports!
+    // SNodeId.Foreign.ID_PREFIXdependencyisnotmandatory,infact.There'scode,above,thatuseshardcodedvaluesanyway("~root")
     SNode node = SModelOperations.createNewNode(myMetadataModel, pf.createNodeId(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + moduleIdentity), CONCEPTS.ModuleReference$Bc);
     SPropertyOperations.assign(node, PROPS.stringValue$wrBY, moduleIdentity);
     return node;
@@ -162,9 +162,9 @@ public class MetadataUtil {
     SetSequence.fromSet(impLang).subtract(SetSequence.fromSet(oldImpLang)).visitAll(new IVisitor<SLanguage>() {
       public void visit(SLanguage it) {
         modelBase.addLanguage(it);
-        // Each time after add language we should call: 
-        // but now we don't know what version to take. 
-        // It is hacked for Merge in fixLanguageImportVersionsAfterMerge() but not for Diff. 
+        // Eachtimeafteraddlanguageweshouldcall:
+        // butnowwedon'tknowwhatversiontotake.
+        // ItishackedforMergeinfixLanguageImportVersionsAfterMerge()butnotforDiff.
       }
     });
 
@@ -223,7 +223,7 @@ public class MetadataUtil {
   }
 
   public static void fixLanguageImportVersionsAfterMerge(SModel resultModel, SModel model1, SModel model2) {
-    // set common language version if both merged models have the same version 
+    // setcommonlanguageversionifbothmergedmodelshavethesameversion
     SModelBase resultModelBase = (SModelBase) resultModel;
     SModelBase modelBase1 = (SModelBase) model1;
     SModelBase modelBase2 = (SModelBase) model2;

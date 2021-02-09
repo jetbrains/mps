@@ -94,7 +94,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getExtendedClassifierTypes_id1UeCwxlWKny(@NotNull SNode __thisNode__) {
     List<SNode> extendsClassifiers = new ArrayList<SNode>();
     if (!(SNodeOperations.is(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")))) {
-      // can't I use getSuperclass() call here. Does its override in other classifiers matter? 
+      // can'tIusegetSuperclass()callhere.Doesitsoverrideinotherclassifiersmatter?
       SNode superClassifier = SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$);
       ListSequence.fromList(extendsClassifiers).addElement(((SLinkOperations.getTarget(superClassifier, LINKS.classifier$cxMr) != null) ? superClassifier : _quotation_createNode_xjj00_a0a0c0b0a()));
     }
@@ -160,7 +160,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     SetSequence.fromSet(visited).addElement(__thisNode__);
-    // todo: not only superclass 
+    // todo:notonlysuperclass
     return (boolean) Classifier__BehaviorDescriptor.checkLoops_id3sXyOQUqKq5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), visited);
   }
   /*package*/ static SNode getMainMethod_idhEwIClG(@NotNull SNode __thisNode__) {
@@ -220,7 +220,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
       return Classifier__BehaviorDescriptor.getMembers_id1UeCwxlVpJs.invokeSuper(__thisNode__, CONCEPTS.ClassConcept$bK, kind);
     }
 
-    // todo: remove this code from getMembers to getScope? 
+    // todo:removethiscodefromgetMemberstogetScope?
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ThisConstructorKind$A7)) {
       return new NamedElementsScope(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(__thisNode__));
     }
@@ -262,18 +262,18 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.ClassConcept$bK, kind, child));
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
-    // populate own members 
+    // populateownmembers
     for (SNode member : SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), CONCEPTS.IClassifierMember$Na)) {
       IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(member, context, classifierType);
     }
 
-    // populate super class members 
+    // populatesuperclassmembers
     SNode superClass = ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__);
     if ((superClass != null)) {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(superClass, context, classifierType);
     }
 
-    // populate implemented interfaces members 
+    // populateimplementedinterfacesmembers
     for (SNode implementedInterface : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).where(new NotNullWhereFilter<SNode>())) {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(implementedInterface, context, classifierType);
     }
@@ -288,7 +288,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(__thisNode__), CONCEPTS.FieldDeclaration$ie);
   }
   /*package*/ static Iterable<SNode> staticMethods_id4_LVZ3pCeXr(@NotNull SNode __thisNode__) {
-    // todo do we need this for compatibility? 
+    // tododoweneedthisforcompatibility?
     return ((Iterable<SNode>) Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invokeSpecial(__thisNode__));
   }
   /*package*/ static Iterable<SNode> constructors_id4_LVZ3pCvsd(@NotNull SNode __thisNode__) {

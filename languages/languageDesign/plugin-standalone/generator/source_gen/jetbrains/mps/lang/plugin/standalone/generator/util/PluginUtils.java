@@ -24,8 +24,8 @@ public class PluginUtils {
     return (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.StandalonePluginDescriptor$4y)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaInitializerDescriptor$UQ)).isNotEmpty()) && (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.EditorTab$zO)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.BaseToolDeclaration$cK)).isNotEmpty() || ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.PreferencesComponentDeclaration$3m)).isNotEmpty()) || ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ProjectPluginDeclaration$IW)).isNotEmpty();
   }
   public static void checkPluginModelName(TemplateQueryContext genContext, SNode node) {
-    // likely, it's assumed there's plugin.xml that controls instantiation of corresponding app/project components. 
-    // however, it's not always the case, as we might want to generate plugin.xml ourselves and copy it into proper location 
+    // likely,it'sassumedthere'splugin.xmlthatcontrolsinstantiationofcorrespondingapp/projectcomponents.
+    // however,it'snotalwaysthecase,aswemightwanttogenerateplugin.xmlourselvesandcopyitintoproperlocation
     if (ListSequence.fromList(SModelOperations.roots(genContext.getInputModel(), CONCEPTS.IdeaInitializerDescriptor$UQ)).isNotEmpty()) {
       return;
     }
@@ -36,9 +36,9 @@ public class PluginUtils {
     SModel model = genContext.getOriginalInputModel();
 
     if (SPropertyOperations.getBoolean(SModelOperations.getModuleStub(genContext.getOriginalInputModel()), PROPS.compileInMPS$2Q_X) && SPropertyOperations.getBoolean(node, PROPS.needInitConfig$W9CN)) {
-      // it's an MPS module that would get loaded with PluginLoaderRegistry and contribute 
-      // its app/project component parts through ModulePluginContributor's mechanism, which respects startup.properties file. 
-      // Unfortunately, have no other way but resort to originalModel to find out 'compileInMPS' setting - node.model is transient and bears no reasonable value 
+      // it'sanMPSmodulethatwouldgetloadedwithPluginLoaderRegistryandcontribute
+      // itsapp/projectcomponentpartsthroughModulePluginContributor'smechanism,whichrespectsstartup.propertiesfile.
+      // Unfortunately,havenootherwaybutresorttooriginalModeltofindout'compileInMPS'setting-node.modelistransientandbearsnoreasonablevalue
       return;
     }
 

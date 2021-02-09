@@ -80,7 +80,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
             }
             final SNode enclosingProperty = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Property$iK, false, false);
             SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0b0a0a0a3(classifier);
-            // XXX Beware, classifier.getMembers() gives members of that classifier only, unlike classifierType.getMembers() that gives inherited members as well 
+            // XXXBeware,classifier.getMembers()givesmembersofthatclassifieronly,unlikeclassifierType.getMembers()thatgivesinheritedmembersaswell
             return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.Property$iK)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(it, classifier, _context.getContextNode()) && (enclosingProperty == null || !(Objects.equals(it, enclosingProperty)));

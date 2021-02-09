@@ -298,8 +298,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_7v1nzk_a9b2a() {
-    // this will be shown only when generating into a concept 
-    // otherwise, only concept id will be shown in inspector 
+    // thiswillbeshownonlywhengeneratingintoaconcept
+    // otherwise,onlyconceptidwillbeshownininspector
     return SModelStereotype.isGeneratorModel(SNodeOperations.getModel(myNode)) || (SNodeOperations.getModel(myNode).getModule() instanceof TransientModelsModule);
   }
   private EditorCell createConstant_4() {

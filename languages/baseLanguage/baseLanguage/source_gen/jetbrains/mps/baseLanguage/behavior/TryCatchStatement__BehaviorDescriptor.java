@@ -52,7 +52,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
     StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(body, thrownsFromBody, ((boolean) ignoreMayBeThrowables));
 
-    // remove what we have catched 
+    // removewhatwehavecatched
     for (SNode caatch : ListSequence.fromList(catchClause)) {
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode thrownFromBody : SetSequence.fromSet(thrownsFromBody)) {
@@ -67,7 +67,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     }
     SetSequence.fromSet(throwables).addSequence(SetSequence.fromSet(thrownsFromBody));
 
-    // now collect what was thrown in catch blocks 
+    // nowcollectwhatwasthrownincatchblocks
     for (SNode caatch : ListSequence.fromList(catchClause)) {
       StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(AbstractCatchClause__BehaviorDescriptor.getCatchBody_id4iVGRTTf1R5.invoke(caatch), throwables, ((boolean) ignoreMayBeThrowables));
     }

@@ -54,7 +54,7 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
         SNode mpNew = SModelOperations.createNewNode(SNodeOperations.getModel(mre), null, CONCEPTS.ModulePointer$7i);
         SPropertyOperations.assign(mpNew, PROPS.moduleName$RP9b, SPropertyOperations.getString(mpOld, PROPS.moduleName$QKD6));
         SPropertyOperations.assign(mpNew, PROPS.moduleId$2ksh, SPropertyOperations.getString(mpOld, PROPS.moduleId$QL78));
-        // unlike 'replace with new(concept), replace with(node) doesn't copy attributes; we are going to process and update attributes manually. 
+        // unlike'replacewithnew(concept),replacewith(node)doesn'tcopyattributes;wearegoingtoprocessandupdateattributesmanually.
         SNodeOperations.replaceWithAnother(mpOld, mpNew);
         SProperty oldModuleIdPropAttr = PROPS.moduleId$QL78;
         SProperty oldModuleNamePropAttr = PROPS.moduleName$QKD6;
@@ -66,7 +66,7 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
             } else if (oldModuleNamePropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
               PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleName$RP9b);
             }
-            // fall-through 
+            // fall-through
           }
           ListSequence.fromList(SLinkOperations.getChildren(mpNew, LINKS.smodelAttribute$KJ43)).addElement(attr);
         }

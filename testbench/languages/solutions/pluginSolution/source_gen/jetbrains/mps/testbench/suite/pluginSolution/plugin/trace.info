@@ -265,7 +265,7 @@
       <unit id="5487985028841967992" at="53,0,223,0" name="jetbrains.mps.testbench.suite.pluginSolution.plugin.CollectTests_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841967992" at="22,30,23,41" concept="3" />
+      <node id="5487985028841967992" at="22,27,23,41" concept="3" />
     </file>
   </root>
   <root nodeRef="r:2697625c-4713-4f72-ac5a-260e305311d8(jetbrains.mps.testbench.suite.pluginSolution.plugin)/5487985028841968445">
@@ -283,7 +283,7 @@
       <unit id="5487985028841968445" at="9,0,19,0" name="jetbrains.mps.testbench.suite.pluginSolution.plugin.CollectTestsGroup_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841968445" at="24,14,25,54" concept="3" />
+      <node id="5487985028841968445" at="24,13,25,54" concept="3" />
       <node id="5487985028841968446" at="27,37,28,133" concept="3" />
     </file>
   </root>
@@ -291,8 +291,8 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690968188474" at="11,0,12,0" concept="4" trace="myId" />
       <node id="7162597690968188474" at="17,27,18,16" concept="9" />
-      <node id="7162597690968188474" at="21,30,22,30" concept="10" />
-      <node id="7162597690968188474" at="23,41,24,14" concept="10" />
+      <node id="7162597690968188474" at="21,30,22,27" concept="10" />
+      <node id="7162597690968188474" at="23,41,24,13" concept="10" />
       <node id="7162597690968188474" at="13,0,15,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
       <node id="7162597690968188474" at="27,0,30,0" concept="7" trace="adjustRegularGroups#()V" />
       <node id="7162597690968188474" at="16,0,20,0" concept="7" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />

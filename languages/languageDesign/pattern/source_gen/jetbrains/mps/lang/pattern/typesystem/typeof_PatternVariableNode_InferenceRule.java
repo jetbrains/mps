@@ -26,7 +26,7 @@ public class typeof_PatternVariableNode_InferenceRule extends AbstractInferenceR
   public void applyRule(final SNode nodeVar, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.hasRole(nodeVar, LINKS.initValue$qHpN)) {
       SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeVar), CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5);
-      // todo: Why cannot I use an enum switch here? 
+      // todo:WhycannotIuseanenumswitchhere?
       if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(link)) {
         {
           SNode _nodeToCheck_1029348928467 = nodeVar;

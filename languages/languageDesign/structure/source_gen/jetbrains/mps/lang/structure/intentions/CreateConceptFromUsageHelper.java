@@ -58,7 +58,7 @@ public class CreateConceptFromUsageHelper {
       return false;
     }
 
-    // check err cell 
+    // checkerrcell
     EditorCell cell = myEditorContext.getContextCell();
     if (!((cell instanceof EditorCell_Label))) {
       return false;
@@ -75,7 +75,7 @@ public class CreateConceptFromUsageHelper {
 
     Executor ex = (dryRun ? Executor.NoOp : Executor.Normal);
 
-    // created is different from "method!=null", differs in case ex does not execute passed closure 
+    // createdisdifferentfrom"method!=null",differsincaseexdoesnotexecutepassedclosure
     boolean created = false;
     final Wrappers._T<SNode> createdConcept = new Wrappers._T<SNode>(null);
     if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && LINKS.target$m40F.equals(cell.getSRole())) {
@@ -88,7 +88,7 @@ public class CreateConceptFromUsageHelper {
         }
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptReference$O4)) {
-      // ref concept already created, but no reference is set 
+      // refconceptalreadycreated,butnoreferenceisset
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
@@ -98,7 +98,7 @@ public class CreateConceptFromUsageHelper {
         }
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.implements$u_P2.equals(cell.getSRole())) {
-      // ref concept not yet created, but no reference is set 
+      // refconceptnotyetcreated,butnoreferenceisset
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
@@ -117,7 +117,7 @@ public class CreateConceptFromUsageHelper {
         }
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && LINKS.extends$nawU.equals(cell.getSRole())) {
-      // ref concept not yet created, but no reference is set 
+      // refconceptnotyetcreated,butnoreferenceisset
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {

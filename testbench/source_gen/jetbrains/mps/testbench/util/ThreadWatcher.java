@@ -26,7 +26,7 @@ public class ThreadWatcher implements Output {
     static {
       final StringBuilder builder = new StringBuilder();
 
-      // --------- Java threads ----------- 
+      // ---------Javathreads-----------
       builder.append("(AWT\\-.*)");
       builder.append("|(Image Fetch.*)");
       builder.append("|(Finalizer.*)");
@@ -35,97 +35,97 @@ public class ThreadWatcher implements Output {
       builder.append("|(TimerQueue)");
       builder.append("|(Change List.*)");
 
-      // java.util.Timer 
+      // java.util.Timer
       builder.append("|(Timer\\-.*)");
 
-      // Java 9+ Cleaner thread 
+      // Java9+Cleanerthread
       builder.append("|(Common-Cleaner)");
-      // -------------------------------- 
+      // --------------------------------
 
 
-      // ---- IntelliJ Platform threads --- 
+      // ----IntelliJPlatformthreads---
 
-      // com.intellij.util.Alarm 
+      // com.intellij.util.Alarm
       builder.append("|(Alarm Pool)");
 
-      // no idea why this thread hangs 
+      // noideawhythisthreadhangs
       builder.append("|(AWT.*)");
 
-      // com.intellij.openapi.vfs.newvfs.persistent.FlushingDaemon 
+      // com.intellij.openapi.vfs.newvfs.persistent.FlushingDaemon
       builder.append("|(Flushing Daemon)");
 
-      // com.intellij.util.concurrency.AppScheduledExecutorService 
+      // com.intellij.util.concurrency.AppScheduledExecutorService
       builder.append("|(ApplicationImpl.*)");
 
-      // com.intellij.util.concurrency.AppDelayQueue 
+      // com.intellij.util.concurrency.AppDelayQueue
       builder.append("|(Periodic task.*)");
 
-      // com.intellij.util.io.BaseDataReader 
+      // com.intellij.util.io.BaseDataReader
       builder.append("|(BaseDataReader: error stream of .*git(\\.exe)?.*)");
       builder.append("|(BaseDataReader: output stream of .*git(\\.exe)?.*)");
       builder.append("|(BaseDataReader: setsid .*git(\\.exe)?.*)");
 
-      // com.intellij.execution.process.ProcessIOExecutorService 
+      // com.intellij.execution.process.ProcessIOExecutorService
       builder.append("|(I/O pool [0-9]+)");
 
       builder.append("|(JobScheduler FJ pool.*)");
 
-      // com.intellij.psi.impl.DocumentCommitThread 
+      // com.intellij.psi.impl.DocumentCommitThread
       builder.append("|(Document Committing Pool)");
 
-      // com.intellij.util.indexing.ChangedFilesCollector 
+      // com.intellij.util.indexing.ChangedFilesCollector
       builder.append("|(FileBasedIndex Vfs Event Processor)");
 
-      // com.intellij.openapi.project.CacheUpdateRunner#createRunnable 
+      // com.intellij.openapi.project.CacheUpdateRunner#createRunnable
       builder.append("|(Indexing)");
 
-      // java.util.concurrent.ForkJoinPool#workerNamePrefix 
+      // java.util.concurrent.ForkJoinPool#workerNamePrefix
       builder.append("|(ForkJoinPool.*)");
-      // -------------------------------- 
+      // --------------------------------
 
 
-      // ----------- MPS threads ---------- 
+      // -----------MPSthreads----------
 
-      // jetbrains.mps.smodel.TryRunPlatformWriteHelper 
+      // jetbrains.mps.smodel.TryRunPlatformWriteHelper
       builder.append("|(MPS interrupting thread)");
 
-      // jetbrains.mps.smodel.EDTExecutorInternal 
+      // jetbrains.mps.smodel.EDTExecutorInternal
       builder.append("|(MPS EDT Executor.*)");
 
-      // jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry 
+      // jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry
       builder.append("|(ChangesManager command queue)");
 
-      // com.intellij.util.io.storage.RefCountingStorage 
+      // com.intellij.util.io.storage.RefCountingStorage
       builder.append("|(RefCountingStorage.*)");
 
-      // jetbrains.mps.plugins.PluginLoaderRegistry.UpdatingTask 
+      // jetbrains.mps.plugins.PluginLoaderRegistry.UpdatingTask
       builder.append("|(Reloading MPS Plugins)");
 
-      // jetbrains.mps.nodeEditor.Highlighter#startUpdater 
+      // jetbrains.mps.nodeEditor.Highlighter#startUpdater
       builder.append("|(Highlighter)");
 
-      // jetbrains.mps.editor.runtime#HighlightUsagesSupport  
+      // jetbrains.mps.editor.runtime#HighlightUsagesSupport
       builder.append("|(HighlightUsages)");
-      // -------------------------------- 
+      // --------------------------------
 
 
-      // ------ Other & unsorted threads ----- 
+      // ------Other&unsortedthreads-----
 
       builder.append("|(Keep\\-Alive.*)");
       builder.append("|(AnimatorThread)");
 
-      // macOS specific thread 
+      // macOSspecificthread
       builder.append("|(Poller SunPKCS11-Darwin)");
 
-      // Linux specific thread 
+      // Linuxspecificthread
       builder.append("|(process reaper)");
 
-      // org.apache.batik.util.CleanerThread from batik-util library 
+      // org.apache.batik.util.CleanerThreadfrombatik-utillibrary
       builder.append("|(Batik CleanerThread)");
 
-      // org.jetbrains.io.BuiltInServer 
+      // org.jetbrains.io.BuiltInServer
       builder.append("|(Netty Builtin Server [0-9]+)");
-      // -------------------------------- 
+      // --------------------------------
 
       IGNORED_THREAD = Pattern.compile(builder.toString());
     }

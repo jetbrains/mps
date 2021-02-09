@@ -76,7 +76,7 @@ public final class LineContentAccumulator {
     }
   }
   public List<LineContent> getLineToContentMap() {
-    // XXX vital to keep by-reference value here 
+    // XXXvitaltokeepby-referencevaluehere
     return myLineToContentMap;
   }
 }

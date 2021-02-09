@@ -71,7 +71,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       if (monitor.isCanceled()) {
         break;
       }
-      // Check for unresolved references 
+      // Checkforunresolvedreferences
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
         if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink()).get(node) != null)) {
           continue;

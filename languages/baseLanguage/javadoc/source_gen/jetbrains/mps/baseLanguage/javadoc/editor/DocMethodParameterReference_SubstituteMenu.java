@@ -49,7 +49,7 @@ public class DocMethodParameterReference_SubstituteMenu extends SubstituteMenuBa
   public class SMP_ReferenceScope_7j3pri_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_7j3pri_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.DocMethodParameterReference$OR, LINKS.param$eUNL);
     }
     @NotNull

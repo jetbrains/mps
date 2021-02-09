@@ -64,7 +64,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
   @Override
   public void disposeComponent() {
     myBreakpointsIO = null;
-    //  dispose 
+    // dispose
   }
   public void setBreakpointsIO(IBreakpointsIO io) {
     myBreakpointsIO = io;
@@ -87,7 +87,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     if (breakpointsForModel == null) {
       myRootsToBreakpointsMap.put(node.getModelReference(), breakpointsForModel = new HashSet<ILocationBreakpoint>());
     }
-    //  check the following assumption: one breakpoint for one node 
+    // checkthefollowingassumption:onebreakpointforonenode
     for (ILocationBreakpoint bp : breakpointsForModel) {
       if (bp.getLocation().equals(breakpoint.getLocation())) {
         LOG.error("Trying to add a second breakpoint for node", bp.getLocation().getPresentation());

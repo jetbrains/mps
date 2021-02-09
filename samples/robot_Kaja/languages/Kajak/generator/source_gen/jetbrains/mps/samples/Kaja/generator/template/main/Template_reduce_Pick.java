@@ -49,7 +49,7 @@ public class Template_reduce_Pick extends TemplateDeclarationBase {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
                 environment.associate(tnode4, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569953");
                 tnode3.addChild(myAggregationLinks[0], tnode4);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -63,11 +63,11 @@ public class Template_reduce_Pick extends TemplateDeclarationBase {
                         final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
                         environment.associate(tnode7, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570119");
                         tnode6.addChild(myAggregationLinks[1], tnode7);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode5.addChild(myAggregationLinks[2], tnode6);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
@@ -77,15 +77,15 @@ public class Template_reduce_Pick extends TemplateDeclarationBase {
                         final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
                         environment.associate(tnode9, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
                         tnode8.addChild(myAggregationLinks[1], tnode9);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode5.addChild(myAggregationLinks[2], tnode8);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode3.addChild(myAggregationLinks[3], tnode5);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final SNode tnode10 = environment.createOutputNode(myConcepts[0]);
@@ -108,31 +108,31 @@ public class Template_reduce_Pick extends TemplateDeclarationBase {
                                 final SNode tnode14 = environment.createOutputNode(myConcepts[5]);
                                 tnode14.setProperty(myProperties[0], "Nothing to pick. The cell is empty.");
                                 tnode13.addChild(myAggregationLinks[4], tnode14);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                             }
                             tnode12.addChild(myAggregationLinks[1], tnode13);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tnode11.addChild(myAggregationLinks[2], tnode12);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode10.addChild(myAggregationLinks[5], tnode11);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode3.addChild(myAggregationLinks[6], tnode10);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[5], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(2, tnode1);

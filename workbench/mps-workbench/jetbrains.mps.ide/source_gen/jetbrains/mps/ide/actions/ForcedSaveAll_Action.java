@@ -110,14 +110,14 @@ public class ForcedSaveAll_Action extends BaseAction {
                     return;
                   }
 
-                  // save module 
+                  // savemodule
                   module.updateExternalReferences();
                   if (!(moduleRef instanceof Generator)) {
-                    // generators are saved as part of owning Language's save, no need to do it twice 
+                    // generatorsaresavedaspartofowningLanguage'ssave,noneedtodoittwice
                     module.save();
                   }
 
-                  // save its models 
+                  // saveitsmodels
                   for (EditableSModel model : Sequence.fromIterable(((Iterable<SModel>) module.getModels())).ofType(EditableSModel.class).where(new IWhereFilter<EditableSModel>() {
                     public boolean accept(EditableSModel it) {
                       return !(SModelStereotype.isStubModel(it));
@@ -127,9 +127,9 @@ public class ForcedSaveAll_Action extends BaseAction {
                       continue;
                     }
                     try {
-                      // ensure model is loaded 
+                      // ensuremodelisloaded
                       model.load();
-                      //  and force to save model 
+                      // andforcetosavemodel
                       model.setChanged(true);
                       if (model.isChanged()) {
                         model.save();

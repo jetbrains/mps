@@ -53,7 +53,7 @@ public final class TurnToIfStatement_Intention extends AbstractIntentionDescript
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // Invert condition 
+      // Invertcondition
       SNode condition = SLinkOperations.getTarget(node, LINKS.condition$$N9Y);
       if ((condition != null)) {
         if (SNodeOperations.isInstanceOf(condition, CONCEPTS.NotExpression$Pc)) {

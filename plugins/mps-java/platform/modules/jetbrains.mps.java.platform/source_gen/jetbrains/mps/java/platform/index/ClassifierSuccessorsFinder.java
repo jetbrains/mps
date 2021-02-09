@@ -48,13 +48,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, Disposable {
 
   public ClassifierSuccessorsFinder() {
-    // I've got several options here how to approach IDEA's component->service transition and to address indexer need for project: 
-    //  - follow MPSModelsFastFindSupport$Plug approach with postStartupActivity (or some projectListener) and keep Project 
-    //    right inside Finder instance. This would require change in ClassifierSuccessor to support multiple Finders; besides, 
-    //    there was already Project exposed in CS API (isIndexReady(Project)), that's why I decided not to follow 'per-project'  
-    //    instance trail. 
-    //  - Keep single Finder (CS.setFinder()), and use AppLifecycleListener. For our purpose here, just to setFinder(), I see 
-    //    no apparent benefit in replacing AppComponent with an AppLifecycleListener. 
+    // I'vegotseveraloptionsherehowtoapproachIDEA'scomponent->servicetransitionandtoaddressindexerneedforproject:
+    // -followMPSModelsFastFindSupport$PlugapproachwithpostStartupActivity(orsomeprojectListener)andkeepProject
+    // rightinsideFinderinstance.ThiswouldrequirechangeinClassifierSuccessortosupportmultipleFinders;besides,
+    // therewasalreadyProjectexposedinCSAPI(isIndexReady(Project)),that'swhyIdecidednottofollow'per-project'
+    // instancetrail.
+    // -KeepsingleFinder(CS.setFinder()),anduseAppLifecycleListener.Forourpurposehere,justtosetFinder(),Isee
+    // noapparentbenefitinreplacingAppComponentwithanAppLifecycleListener.
     ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
     if (cc != null) {
       cc.setFinder(this);
@@ -90,17 +90,17 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
         VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(modelFile);
         SetSequence.fromSet(unModifiedModelFiles).addElement(vf);
         if (ideaProject == null) {
-          // FIXME this is just a hack. There are uses of ClassifierSuccessors from IDEA-agnostic code 
-          // (e.g. findUsages aspect), and we can not pass Project there, have to guess it from files. 
-          // Indeed, we get ourselves exposed to all kind of troubles here (e.g. long story around IDEA-241738) 
-          // And yes, we don't care if VFs come from different projects, first one != null is good enough for us to satisfy 
-          // IDEA.  
-          // FIXME In fact, I don't see any reason to pass VFs into indexing at all. The idea of the index, as I see 
-          //      it, is not to keep per-file key-value Map, but to answer 'key' queries fast without the need 
-          //      to pass specific files. We should do it other way round, get all possible values for a key, 
-          //      and then filter out those matching MPS search scope, rather than constructing IDEA's 
-          //      scope with VFs and Project we don't have anyway. 
-          //      However, it's a bigger activity and I can not afford addressing this right now. 
+          // FIXMEthisisjustahack.ThereareusesofClassifierSuccessorsfromIDEA-agnosticcode
+          // (e.g.findUsagesaspect),andwecannotpassProjectthere,havetoguessitfromfiles.
+          // Indeed,wegetourselvesexposedtoallkindoftroubleshere(e.g.longstoryaroundIDEA-241738)
+          // Andyes,wedon'tcareifVFscomefromdifferentprojects,firstone!=nullisgoodenoughforustosatisfy
+          // IDEA.
+          // FIXMEInfact,Idon'tseeanyreasontopassVFsintoindexingatall.Theideaoftheindex,asIsee
+          // it,isnottokeepper-filekey-valueMap,buttoanswer'key'queriesfastwithouttheneed
+          // topassspecificfiles.Weshoulddoitotherwayround,getallpossiblevaluesforakey,
+          // andthenfilteroutthosematchingMPSsearchscope,ratherthanconstructingIDEA's
+          // scopewithVFsandProjectwedon'thaveanyway.
+          // However,it'sabiggeractivityandIcannotaffordaddressingthisrightnow.
           ideaProject = ProjectLocator.getInstance().guessProjectForFile(vf);
         }
       }

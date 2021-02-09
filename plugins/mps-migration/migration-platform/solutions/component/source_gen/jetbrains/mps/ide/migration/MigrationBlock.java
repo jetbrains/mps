@@ -65,8 +65,8 @@ import java.util.Arrays;
 
   public void checkMigrationIfNecessary() {
     if (myShouldCheckAfterUnblock) {
-      // calling checkMigrationNeeded() before unsetting myShouldCheckAfterUnblock to avoid infinite loop 
-      // calling checkMigrationNeeded() before unsetting myShouldCheckAfterUnblock to avoid infinite loop 
+      // callingcheckMigrationNeeded()beforeunsettingmyShouldCheckAfterUnblocktoavoidinfiniteloop
+      // callingcheckMigrationNeeded()beforeunsettingmyShouldCheckAfterUnblocktoavoidinfiniteloop
       myMigrationTrigger.checkMigrationNeeded();
       myShouldCheckAfterUnblock = false;
     }

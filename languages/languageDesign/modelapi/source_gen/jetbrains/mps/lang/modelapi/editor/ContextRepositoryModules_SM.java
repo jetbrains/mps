@@ -157,7 +157,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
           return canExecute_internal(pattern, true);
         }
         public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-          // copied from lang.smodel.editor.RepositoryModules_Substitute, not sure what it does 
+          // copiedfromlang.smodel.editor.RepositoryModules_Substitute,notsurewhatitdoes
           String moduleName = myParameterObject.getModuleName();
           if (moduleName == null) {
             return false;

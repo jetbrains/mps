@@ -132,8 +132,8 @@
       </scope>
     </file>
     <file name="check_GenerationContextOp_Base_NonTypesystemRule.java">
-      <node id="7376433222636454073" at="24,115,25,36" concept="7" />
-      <node id="1225121875077" at="25,36,26,197" concept="5" />
+      <node id="7376433222636454073" at="24,115,25,31" concept="7" />
+      <node id="1225121875077" at="25,31,26,197" concept="5" />
       <node id="1216860931285" at="27,90,28,64" concept="5" />
       <node id="1216860931285" at="28,64,29,252" concept="5" />
       <node id="1216860931280" at="32,50,33,48" concept="6" />
@@ -478,7 +478,7 @@
       </scope>
     </file>
     <file name="typeof_GenerationContextOp_GetCopiedOutputByInput_InferenceRule.java">
-      <node id="7376433222636453639" at="20,115,21,32" concept="7" />
+      <node id="7376433222636453639" at="20,115,21,26" concept="7" />
       <node id="1217884997103" at="22,5,23,44" concept="5" />
       <node id="1217884997103" at="23,44,24,217" concept="5" />
       <node id="1217884997103" at="24,217,25,461" concept="2" />
@@ -491,7 +491,7 @@
       <node id="1217884943203" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1217884943203" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1217884943203" at="34,0,37,0" concept="4" trace="overrides#()Z" />
-      <node id="1217884997103" at="21,32,26,5" concept="0" />
+      <node id="1217884997103" at="21,26,26,5" concept="0" />
       <node id="1217884943203" at="20,0,28,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1217884943203" at="18,76,18,76" />
       <scope id="1217884943203" at="28,50,29,66" />
@@ -906,7 +906,7 @@
       </scope>
     </file>
     <file name="typeof_GenerationContextOp_ShowMessageBase_InferenceRule.java">
-      <node id="7376433222636453757" at="22,115,23,33" concept="7" />
+      <node id="7376433222636453757" at="22,115,23,29" concept="7" />
       <node id="654553635094958668" at="24,5,25,44" concept="5" />
       <node id="654553635094958668" at="25,44,26,222" concept="5" />
       <node id="654553635094958668" at="26,222,27,303" concept="2" />
@@ -938,7 +938,7 @@
       <node id="1892993302480476553" at="44,0,47,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1892993302480476553" at="47,0,50,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1892993302480476553" at="50,0,53,0" concept="4" trace="overrides#()Z" />
-      <node id="654553635094958668" at="23,33,28,5" concept="0" />
+      <node id="654553635094958668" at="23,29,28,5" concept="0" />
       <node id="1892993302480476557" at="29,59,34,7" concept="0" />
       <node id="1892993302480476566" at="36,59,41,7" concept="0" />
       <node id="654553635094958814" at="53,0,59,0" concept="9" trace="_quotation_createNode_x5n1pq_a1a0c0b0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1750,8 +1750,8 @@
     </file>
     <file name="check_GenerationContextOp_GetOutputByLabel_NonTypesystemRule.java">
       <node id="6851978633175412625" at="28,71,29,13" concept="6" />
-      <node id="6851978633175575020" at="30,5,31,133" concept="7" />
-      <node id="6851978633175416458" at="31,133,32,124" concept="5" />
+      <node id="6851978633175575020" at="30,5,31,111" concept="7" />
+      <node id="6851978633175416458" at="31,111,32,124" concept="5" />
       <node id="6851978633175408976" at="33,113,34,64" concept="5" />
       <node id="6851978633175408976" at="34,64,35,299" concept="5" />
       <node id="6851978633175404723" at="38,50,39,60" concept="6" />

@@ -33,7 +33,7 @@ public class ProjectCloneSupport {
     if (sourceProjectDir.isDirectory()) {
       FileUtil.copyDir(sourceProjectDir, destinationDir);
     } else {
-      // it is allowed to have zipped directory here 
+      // itisallowedtohavezippeddirectoryhere
       try {
         boolean success = destinationDir.mkdir();
         if (!(success)) {
@@ -51,7 +51,7 @@ public class ProjectCloneSupport {
 
   public void closeAndDelete() {
     assert myProject != null;
-    // flushAllEvents merely copied from BaseMpsTest.closeClonedProject() without further consideration, perhaps could be removed. 
+    // flushAllEventsmerelycopiedfromBaseMpsTest.closeClonedProject()withoutfurtherconsideration,perhapscouldberemoved.
     myEnv.flushAllEvents();
     myEnv.closeProject(myProject);
     FileUtil.delete(myDestinationDir);

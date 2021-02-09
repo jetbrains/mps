@@ -98,7 +98,7 @@ public class MigrationTask {
       try {
         runResave(m.subTask((update ? 80 : 100)));
         if (update) {
-          // add label to local history if requested 
+          // addlabeltolocalhistoryifrequested
           runVersionsUpdate(m.subTask(20));
           if (!(migrate)) {
             return;
@@ -130,14 +130,14 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(4)) {
-      // null - no error, true - must stop, false - can ignore 
+      // null-noerror,true-muststop,false-canignore
       boolean errors = checkModels(myMonitor.subTask(10));
       if (errors) {
         throw new PreCheckError(mySession, errors);
       }
     }
 
-    // from here, we don't ignore errors 
+    // fromhere,wedon'tignoreerrors
     addGlobalLabel(mySession.getProject(), STARTED);
     if (!((runProjectMigrations(myMonitor.subTask(5))))) {
       throw new MigrationExceptionError();
@@ -147,7 +147,7 @@ public class MigrationTask {
     }
     addGlobalLabel(mySession.getProject(), FINISHED);
 
-    // todo move from here to migration annotations 
+    // todomovefromheretomigrationannotations
     if (findNotMigrated(myMonitor.subTask(15))) {
       throw new PostCheckError(mySession.getProject(), myWereRun, false, mySession.getChecker());
     }
@@ -184,8 +184,8 @@ public class MigrationTask {
   private boolean executeSingleStep(final ProgressMonitor m, final String localHistCaption, final _FunctionTypes._void_P0_E0 execute, final _FunctionTypes._return_P0_E0<? extends Boolean> merge) {
     final Wrappers._boolean noException = new Wrappers._boolean(true);
 
-    // todo pass ModalityState to constructor/via session? 
-    // in tests, we have EmptyProgressIndicator and use NON_MODAL 
+    // todopassModalityStatetoconstructor/viasession?
+    // intests,wehaveEmptyProgressIndicatoranduseNON_MODAL
     JComponent modalityComponent = check_ajmasp_a0e0bb(as_ajmasp_a0a0e0cb(myMonitor.getIndicator(), InlineProgressIndicator.class));
     ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
@@ -226,11 +226,11 @@ public class MigrationTask {
   }
 
   private void saveProject(Project project) {
-    // essential for project migrations to update the list of migrations run to the disk, however, suitable also for language migrations 
+    // essentialforprojectmigrationstoupdatethelistofmigrationsruntothedisk,however,suitablealsoforlanguagemigrations
     ((ProjectBase) project).save();
     if (project instanceof MPSProject) {
       com.intellij.openapi.project.Project ijProject = ((MPSProject) project).getProject();
-      // ij does not save the project in headless which is not acceptable for us, copying the ij internals 
+      // ijdoesnotsavetheprojectinheadlesswhichisnotacceptableforus,copyingtheijinternals
       StoreUtil.saveSettings(ijProject, false);
     }
   }
@@ -371,9 +371,9 @@ public class MigrationTask {
                         return !(it.isReadOnly());
                       }
                     })) {
-                      // ensure model is loaded 
+                      // ensuremodelisloaded
                       model.load();
-                      // and force to save model 
+                      // andforcetosavemodel
                       model.setChanged(true);
                       model.save();
                     }

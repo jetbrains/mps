@@ -19,9 +19,9 @@ public class Actions_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new CorrectLanguageVersion_Action());
-    // groups 
+    // groups
     addGroup(new MigrationGroup_ActionGroup(this));
   }
   public void adjustRegularGroups() {

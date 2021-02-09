@@ -49,7 +49,7 @@ public class TemplateCall_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_vzs5r4_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_vzs5r4_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TemplateCall$9v, LINKS.template$6_6);
     }
     @NotNull

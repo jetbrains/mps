@@ -97,7 +97,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       Assert.assertTrue(c.myPropertyValues.contains("instance of ClassConcept"));
     }
     public void test_testPersistenceReadWrite() throws Exception {
-      // tests write and read in each supported persistence, check that model is not changed after write/read cycle 
+      // testswriteandreadineachsupportedpersistence,checkthatmodelisnotchangedafterwrite/readcycle
       TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
       for (int i = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; i <= ModelPersistence.LAST_VERSION; ++i) {
         PersistenceUtil.InMemoryStreamDataSource dataSource = new PersistenceUtil.InMemoryStreamDataSource();
@@ -114,23 +114,23 @@ public class TestPersistence_Test extends BaseTransformationTest {
       TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
 
       final ModelFactoryService mfsvc = myProject.getComponent(ModelFactoryService.class);
-      // tests that it's possible to upgrade to the latest persistence from any supported persistence 
+      // teststhatit'spossibletoupgradetothelatestpersistencefromanysupportedpersistence
       for (int fromVersion = TestPersistenceHelper.START_PERSISTENCE_TEST_VERSION; fromVersion < ModelPersistence.LAST_VERSION; fromVersion++) {
-        // prepare data source in requested version 
+        // preparedatasourceinrequestedversion
         PersistenceUtil.InMemoryStreamDataSource notUpgradedData = new PersistenceUtil.InMemoryStreamDataSource();
         helper.saveTestModelInPersistence(notUpgradedData, fromVersion);
 
-        // load model from source version 
+        // loadmodelfromsourceversion
         SModelBase notUpgradedModel = ((SModelBase) PersistenceUtil.loadModel(notUpgradedData.getContentBytes(), mfsvc.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML)));
 
-        // save model in last persistence 
+        // savemodelinlastpersistence
         PersistenceUtil.InMemoryStreamDataSource upgradedData = new PersistenceUtil.InMemoryStreamDataSource();
         ModelPersistence.saveModel(notUpgradedModel.getSModel(), upgradedData, ModelPersistence.LAST_VERSION);
 
-        // load model in last persistence from saved 
+        // loadmodelinlastpersistencefromsaved
         SModelBase upgradedModel = ((SModelBase) PersistenceUtil.loadModel(upgradedData.getContentBytes(), mfsvc.getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML)));
 
-        // do test 
+        // dotest
         this.assertDeepModelEquals(notUpgradedModel.getSModel(), upgradedModel.getSModel());
 
         notUpgradedModel.getSModel().dispose();
@@ -260,7 +260,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       }
     }
     public Map<SReferenceLink, Set<SReference>> createRoleToReferenceMap(SNode n) {
-      // XXX I don't get why there's map with set, MPS doesn't support associations with cardinality > 1 
+      // XXXIdon'tgetwhythere'smapwithset,MPSdoesn'tsupportassociationswithcardinality>1
       Map<SReferenceLink, Set<SReference>> expRoleToReferenceMap = new HashMap<SReferenceLink, Set<SReference>>();
       for (SReference ref : n.getReferences()) {
         Set<SReference> set = expRoleToReferenceMap.get(ref.getLink());
@@ -278,7 +278,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
         return;
       }
       Assert.assertNotNull(errorString, actualReference);
-      // assertIdEqualsOrBothNull(errorString, expectedReference.getTargetNode(), actualReference.getTargetNode()); 
+      // assertIdEqualsOrBothNull(errorString,expectedReference.getTargetNode(),actualReference.getTargetNode());
       Assert.assertEquals(errorString, ((jetbrains.mps.smodel.SReference) expectedReference).getResolveInfo(), ((jetbrains.mps.smodel.SReference) actualReference).getResolveInfo());
       Assert.assertEquals(errorString, expectedReference.getLink(), actualReference.getLink());
       Assert.assertEquals(errorString, expectedReference.getTargetNodeId(), actualReference.getTargetNodeId());

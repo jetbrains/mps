@@ -55,7 +55,7 @@ public class ConceptInstances_Finder extends GeneratedFinder {
     try {
       SAbstractConcept concept = SNodeOperations.asSConcept(node);
       if (concept == null) {
-        // doesn't hurt to protect finder implementation from unexpected input 
+        // doesn'thurttoprotectfinderimplementationfromunexpectedinput
         StringBuilder sb = new StringBuilder();
         sb.append("Concept is not found for concept declaration ");
         sb.append(NameUtil.nodeFQName(node));

@@ -11,11 +11,11 @@ import javax.swing.KeyStroke;
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/5738289212619994244", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class DefaultForGNOME_KeymapChanges extends BaseKeymapChanges {
   public DefaultForGNOME_KeymapChanges() {
-    // simple 
-    // simple with remove/replace 
+    // simple
+    // simplewithremove/replace
     addSimpleShortcut("jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("alt shift 8"), false, true));
-    // simple parameterized 
-    // complex 
+    // simpleparameterized
+    // complex
   }
   public String getScheme() {
     return "Default for GNOME";

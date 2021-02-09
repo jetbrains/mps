@@ -117,16 +117,16 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final SModelReference modelReference = ((SModel) MapSequence.fromMap(_params).get("model")).getReference();
-    // this.model came from repo, so it must be supported by ModelPersistence 
-    // XXX ^^^ WHY? 
-    // FIXME prefer ModelFactory.save(openapi.SModel, in-memory stream data source); perhaps PersVersAware.getModelFactory()? 
-    // In fact, we need to use actual model persistence format, as strings in the zip are likely plain text from VCS, which, 
-    // for the same model, usually means same persistence as current (unless persistence has been changed). 
+    // this.modelcamefromrepo,soitmustbesupportedbyModelPersistence
+    // XXX^^^WHY?
+    // FIXMEpreferModelFactory.save(openapi.SModel,in-memorystreamdatasource);perhapsPersVersAware.getModelFactory()?
+    // Infact,weneedtouseactualmodelpersistenceformat,asstringsintheziparelikelyplaintextfromVCS,which,
+    // forthesamemodel,usuallymeanssamepersistenceascurrent(unlesspersistencehasbeenchanged).
     String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(new Computable<String>() {
       public String compute() {
-        // FIXME as long as we use modelData to match against 'mine' content from merge backup, we implicitly assume here 
-        //      that merge uses the same ModelFactory to save model into backup as we use here to obtain actual content 
-        //      I'd say it has to use VCSPersistenceUtil.saveModel so that one can expect that persistence approach to backup and actual content matches 
+        // FIXMEaslongasweusemodelDatatomatchagainst'mine'contentfrommergebackup,weimplicitlyassumehere
+        // thatmergeusesthesameModelFactorytosavemodelintobackupasweuseheretoobtainactualcontent
+        // I'dsayithastouseVCSPersistenceUtil.saveModelsothatonecanexpectthatpersistenceapproachtobackupandactualcontentmatches
         ModelFactory xmlPersistence = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(ModelFactoryService.class).getDefaultModelFactory(PreinstalledDataSourceTypes.MPS);
         byte[] modelAsBytes = PersistenceUtil.modelAsBytes(((SModel) MapSequence.fromMap(_params).get("model")), xmlPersistence);
         return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
@@ -160,7 +160,7 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
         if (LOG.isEnabledFor(Level.WARN)) {
           LOG.warn("", e);
         }
-        // Skip this backup 
+        // Skipthisbackup
         continue;
       } catch (InvalidDiffRequestException e) {
         if (LOG.isEnabledFor(Level.ERROR)) {

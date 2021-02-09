@@ -58,9 +58,9 @@ public abstract class BaseLanguagesImportHelper {
       SModel targetModel = SNodeOperations.getModel(SLinkOperations.getTargetNode(reference));
       if (!(Objects.equals(targetModel, containerModel))) {
         SModel scopeModel = targetModel.getReference().resolve(containerModel.getRepository());
-        // XXX I don't understand this code, and not sure it ever worked (how come model != model.reference.resolve(global repo) 
-        // just refactored it a bit, with a guess that intention is to replace references pointing outside of debugger repository 
-        // with dynamics that would get resolved with proper debugger node later on. 
+        // XXXIdon'tunderstandthiscode,andnotsureiteverworked(howcomemodel!=model.reference.resolve(globalrepo)
+        // justrefactoreditabit,withaguessthatintentionistoreplacereferencespointingoutsideofdebuggerrepository
+        // withdynamicsthatwouldgetresolvedwithproperdebuggernodelateron.
         if (scopeModel != null && !(Objects.equals(scopeModel, targetModel))) {
           String resolveInfo = SLinkOperations.getResolveInfo(reference);
           if ((resolveInfo == null || resolveInfo.length() == 0)) {
@@ -83,7 +83,7 @@ public abstract class BaseLanguagesImportHelper {
     }
   }
   private void transformNode(SNode node, final SModel containerModel) {
-    // try to resolve variables 
+    // trytoresolvevariables
     ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ListSequence.fromList(SNodeOperations.getChildren(it)).isEmpty();
@@ -93,7 +93,7 @@ public abstract class BaseLanguagesImportHelper {
         transformNodeToProperVariableReference(it, containerModel);
       }
     });
-    // all links to subs -> to debugger stubs 
+    // alllinkstosubs->todebuggerstubs
     for (SNode d : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{}))) {
       replaceStubReferences(d, containerModel);
     }

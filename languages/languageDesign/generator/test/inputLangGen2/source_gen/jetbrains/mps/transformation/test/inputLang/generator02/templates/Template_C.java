@@ -66,12 +66,12 @@ public class Template_C extends TemplateDeclarationBase {
         for (SNode child5 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child5);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
         tnode1.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final List<SNode> tlist7 = new ArrayList<SNode>();
@@ -88,17 +88,17 @@ public class Template_C extends TemplateDeclarationBase {
             {
               final SNode tnode9 = environment.createOutputNode(myConcepts[3]);
               tnode8.addChild(myAggregationLinks[1], tnode9);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
               tnode8.addChild(myAggregationLinks[2], tnode10);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
               tnode8.addChild(myAggregationLinks[3], tnode11);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
@@ -109,11 +109,11 @@ public class Template_C extends TemplateDeclarationBase {
                   final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
                   environment.associate(tnode13, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String");
                   tnode12.addChild(myAggregationLinks[4], tnode13);
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tnode8.addChild(myAggregationLinks[5], tnode12);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           environment.registerLabel(itnode7, tnode8, "TRACE");
@@ -122,12 +122,12 @@ public class Template_C extends TemplateDeclarationBase {
         for (SNode child14 : TemplateUtil.asNotNull(tlist7)) {
           tnode1.addChild(myAggregationLinks[0], child14);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode15 = environment.createOutputNode(myConcepts[8]);
         tnode1.addChild(myAggregationLinks[2], tnode15);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

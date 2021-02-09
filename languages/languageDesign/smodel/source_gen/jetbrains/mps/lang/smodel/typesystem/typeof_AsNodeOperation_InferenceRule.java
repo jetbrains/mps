@@ -43,7 +43,7 @@ public class typeof_AsNodeOperation_InferenceRule extends AbstractInferenceRule_
             }
           }
           if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SConceptType$pb)) {
-            // todo: use something like isInterfaceConcept() or isConcreteConcept() methods in SConcept instead? 
+            // todo:usesomethinglikeisInterfaceConcept()orisConcreteConcept()methodsinSConceptinstead?
             if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SConceptType$pb), LINKS.conceptDeclaraton$K4R0), CONCEPTS.ConceptDeclaration$gH)) {
               {
                 SNode _nodeToCheck_1029348928467 = operation;
@@ -74,10 +74,10 @@ public class typeof_AsNodeOperation_InferenceRule extends AbstractInferenceRule_
               }
             }
           }
-          // logic like for ConceptDeclaration is impossible for InterfaceConceptDeclaration because: 
-          // in a node of type concept<SomeInterfaceConcept> could be stored a value node<SomeConcreteConcept> 
-          // if SomeConcreteConcept is a subconcept of SomeInterfaceConcept. 
-          // (see rule supertypesOf_SConceptTypeType_SConceptTypeType) 
+          // logiclikeforConceptDeclarationisimpossibleforInterfaceConceptDeclarationbecause:
+          // inanodeoftypeconcept<SomeInterfaceConcept>couldbestoredavaluenode<SomeConcreteConcept>
+          // ifSomeConcreteConceptisasubconceptofSomeInterfaceConcept.
+          // (seerulesupertypesOf_SConceptTypeType_SConceptTypeType)
         }
       }, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8866923313515936417", false, false);
     }

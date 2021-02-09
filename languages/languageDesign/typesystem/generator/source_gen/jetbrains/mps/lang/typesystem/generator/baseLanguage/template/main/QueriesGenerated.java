@@ -84,7 +84,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem");
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
@@ -309,7 +309,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.IsApplicableConceptFunction$l4, false, false) != null);
   }
   public static boolean rule_Condition_93_0(final BaseMappingRuleContext _context) {
-    // see MPS-24613 
+    // seeMPS-24613
     return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "typesystem");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
@@ -952,12 +952,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern(MPS.Core/)", "~DefaultMatchingPattern.getMatchedNode(java.lang.String)");
   }
   public static Object referenceMacro_GetReferent_93_0(final ReferenceMacroContext _context) {
-    // TODO genContext.get output TypesystemDescriptorCons for model model; 
+    // TODOgenContext.getoutputTypesystemDescriptorConsformodelmodel;
     SNode descriptorClass = _context.getOutputNodeByMappingLabel("descriptorClass", ((SModel) _context.getVariable("model")));
     if (descriptorClass != null) {
       return descriptorClass;
     }
-    // fallback for legacy code 
+    // fallbackforlegacycode
     return SModelOperations.getModelName(((SModel) _context.getVariable("model"))) + ".TypesystemDescriptor";
   }
   public static Object referenceMacro_GetReferent_94_0(final ReferenceMacroContext _context) {
@@ -1906,11 +1906,11 @@ public class QueriesGenerated extends QueryProviderBase {
     _context.getNode().putUserObject("origin", _context.getNode());
   }
   public static void mappingScript_CodeBlock_59(final MappingScriptContext _context) {
-    // Inference and Checking methods are for typesystem use, don't look for them in models that simply 
-    // utilize (not define) type system. 
-    // The right way to accomplish would be refactoring of main and Inequations map configurations, to 
-    // split generation of TS definition from TS use (i.e. everything related to rules including this script 
-    // goes to former, while .type, coerce() and others go to latter) 
+    // InferenceandCheckingmethodsarefortypesystemuse,don'tlookfortheminmodelsthatsimply
+    // utilize(notdefine)typesystem.
+    // TherightwaytoaccomplishwouldberefactoringofmainandInequationsmapconfigurations,to
+    // splitgenerationofTSdefinitionfromTSuse(i.e.everythingrelatedtorulesincludingthisscript
+    // goestoformer,while.type,coerce()andothersgotolatter)
     if (!((SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem")))) {
       return;
     }
@@ -1947,8 +1947,8 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static void mappingScript_CodeBlock_62(final MappingScriptContext _context) {
-    // this code change add for all quotations method with TypeCheckingContext. For now MPS works without this script 
-    // btw generator for quotations is changed so if we need this script it should be rewritten 
+    // thiscodechangeaddforallquotationsmethodwithTypeCheckingContext.FornowMPSworkswithoutthisscript
+    // btwgeneratorforquotationsischangedsoifweneedthisscriptitshouldberewritten
   }
   public static void mappingScript_CodeBlock_63(final MappingScriptContext _context) {
     final SNode getRTSupportExpression = _quotation_createNode_x583g4_a0a0cs();
@@ -1959,7 +1959,7 @@ public class QueriesGenerated extends QueryProviderBase {
         continue;
       }
       SNode baseMethodDeclaration = SNodeOperations.getNodeAncestor(instanceMethodCall, CONCEPTS.BaseMethodDeclaration$kD, false, false);
-      // anonymous inner classes 
+      // anonymousinnerclasses
       SNode oldBMD = null;
       while (baseMethodDeclaration != null) {
         oldBMD = baseMethodDeclaration;

@@ -58,7 +58,7 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
       return nodes;
     }
 
-    // todo [MM] use aspectModel// expression here when possible 
+    // todo[MM]useaspectModel//expressionherewhenpossible
     Iterable<SModel> models = module.getModels();
     SModel vcsModel = Sequence.fromIterable(models).findFirst(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {
@@ -90,7 +90,7 @@ public class Version_Control_TabDescriptor extends RelationDescriptor {
     SModule module = SNodeOperations.getModel(node).getModule();
     assert module instanceof Language;
 
-    // todo [MM] use aspectModel// expression here when possible 
+    // todo[MM]useaspectModel//expressionherewhenpossible
     Iterable<SModel> models = module.getModels();
     SModel aspectModel = Sequence.fromIterable(models).findFirst(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {

@@ -112,38 +112,38 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean isSetterVisible_id5WTl5xSBxvj(@NotNull SNode __thisNode__, final SNode contextClassifier, SNode contextNode) {
     SNode setterVisibility = Property__BehaviorDescriptor.getSetterVisibility_idhEwIJ0k.invoke(__thisNode__);
-    // public 
+    // public
     if (SNodeOperations.isInstanceOf(setterVisibility, CONCEPTS.PublicVisibility$R0)) {
       return true;
     }
-    // private 
+    // private
     if (SNodeOperations.isInstanceOf(setterVisibility, CONCEPTS.PrivateVisibility$l0)) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).last() == ListSequence.fromList(SNodeOperations.getNodeAncestors(contextClassifier, CONCEPTS.Classifier$Ix, true)).last();
     }
-    // default 
+    // default
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
     String contextClassifierPackage = VisibilityUtil.packageName(contextClassifier);
     if ((setterVisibility == null)) {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
-    // protected 
+    // protected
     if (SNodeOperations.isInstanceOf(setterVisibility, CONCEPTS.ProtectedVisibility$hr)) {
       String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), __thisNode__));
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
 
-      // two cases: 1) from class 2) from dot expression 
+      // twocases:1)fromclass2)fromdotexpression
       Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(contextClassifier);
         }
       });
       if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.DotExpression$yW))) {
-        // 1 
+        // 1
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
-        // 2 
+        // 2
         SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, CONCEPTS.DotExpression$yW));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
@@ -163,7 +163,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
     return ((IconResource) IVisible__BehaviorDescriptor.getVisibilityIcon_id4mxbjAOAG0d.invoke(__thisNode__));
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    // todo: just populate for now, make it right! 
+    // todo:justpopulatefornow,makeitright!
     context.exposeMember(__thisNode__, null);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {

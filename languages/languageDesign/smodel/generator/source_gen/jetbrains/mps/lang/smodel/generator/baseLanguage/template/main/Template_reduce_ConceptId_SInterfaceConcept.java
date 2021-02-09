@@ -65,19 +65,19 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
         for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child4);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
         SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_97_0(new PropertyMacroContext(context1, "0L", propertyMacro_acp5hl_c0a2a0a1a4a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode5);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
         SNodeAccessUtil.setPropertyValue(tnode6, myProperties[1], QueriesGenerated.propertyMacro_GetValue_97_1(new PropertyMacroContext(context1, "", propertyMacro_acp5hl_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

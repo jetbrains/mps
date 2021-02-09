@@ -116,8 +116,8 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-        // this condition is to prevent inspector from opening for VarMacro2 nodes, with nothing valueable in 
-        // inspector (I believe original motivation behind selection code was to get cursor in a macro's query) 
+        // thisconditionistopreventinspectorfromopeningforVarMacro2nodes,withnothingvalueablein
+        // inspector(Ibelieveoriginalmotivationbehindselectioncodewastogetcursorinamacro'squery)
         if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(createdNode), CONCEPTS.ConceptFunction$mf)).isNotEmpty()) {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_CELL, 1);
           _context.getEditorContext().openInspector();

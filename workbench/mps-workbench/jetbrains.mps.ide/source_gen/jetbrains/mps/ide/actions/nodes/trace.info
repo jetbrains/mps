@@ -34,7 +34,7 @@
       <node id="1979649482475613568" at="67,5,68,76" concept="9" />
       <node id="1979649482475659788" at="69,29,70,37" concept="10" />
       <node id="3256144589678340657" at="71,5,72,0" concept="12" />
-      <node id="3256144589678342678" at="72,0,73,58" concept="11" />
+      <node id="3256144589678342678" at="72,0,73,51" concept="11" />
       <node id="3256144589678342150" at="75,41,76,57" concept="10" />
       <node id="3256144589678340766" at="78,24,79,0" concept="12" />
       <node id="4832363360995121875" at="79,0,80,17" concept="10" />
@@ -77,7 +77,7 @@
       <node id="4832363360995121945" at="95,111,98,5" concept="7" />
       <node id="4832363360995121952" at="98,5,101,5" concept="7" />
       <node id="1957937214731212318" at="125,0,128,0" concept="8" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
-      <node id="4832363360995121735" at="73,58,78,24" concept="9" />
+      <node id="4832363360995121735" at="73,51,78,24" concept="9" />
       <node id="4832363360995121975" at="107,10,112,5" concept="7" />
       <node id="1957937214731204258" at="119,0,124,0" concept="2" trace="NavigateAction#(Ljetbrains/mps/project/Project;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljava/lang/String;Ljavax/swing/Icon;)V" />
       <node id="1957937214731422195" at="41,49,48,5" concept="7" />

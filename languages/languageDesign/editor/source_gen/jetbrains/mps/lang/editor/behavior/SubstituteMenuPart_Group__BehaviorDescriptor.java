@@ -41,8 +41,8 @@ public final class SubstituteMenuPart_Group__BehaviorDescriptor extends BaseBHDe
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SubstituteMenuVariableDeclaration$F7)) {
-      // For simplicity this does not take into account the position of the child, so variables declared earlier may 
-      // (incorrectly) reference variables declared later. 
+      // Forsimplicitythisdoesnottakeintoaccountthepositionofthechild,sovariablesdeclaredearliermay
+      // (incorrectly)referencevariablesdeclaredlater.
       return new HidingByNameScope(CONCEPTS.SubstituteMenuVariableDeclaration$F7, kind, new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$yprQ)), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);

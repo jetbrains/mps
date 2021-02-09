@@ -49,7 +49,7 @@ public class PersistentPropertyReferenceOperation_SubstituteMenu extends Substit
   public class SMP_ReferenceScope_wh42hk_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_wh42hk_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PersistentPropertyReferenceOperation$iR, LINKS.variableDeclaration$Yx_P);
     }
     @NotNull

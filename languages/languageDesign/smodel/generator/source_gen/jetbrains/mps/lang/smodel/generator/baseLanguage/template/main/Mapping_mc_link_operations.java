@@ -57,7 +57,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -72,7 +72,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child5);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -101,7 +101,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -122,7 +122,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist7 = Collections.emptyList();
@@ -144,7 +144,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child10 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[0], child10);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -173,7 +173,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -194,7 +194,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist7 = null;
@@ -203,7 +203,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[0], child8);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -228,7 +228,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -249,7 +249,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist7 = null;
@@ -270,7 +270,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child9 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[0], child9);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -299,7 +299,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -320,7 +320,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -349,7 +349,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist4 = null;
@@ -370,7 +370,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(myAggregationLinks[0], child6);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
         {
           Collection<SNode> tlist7 = null;
@@ -385,7 +385,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[0], child8);
           }
-          // TODO validate child 
+          // TODOvalidatechild
         }
       }
       return TemplateUtil.singletonList(tnode1);

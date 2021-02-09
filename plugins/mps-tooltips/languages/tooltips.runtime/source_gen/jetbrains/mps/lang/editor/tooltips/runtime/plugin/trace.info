@@ -26,7 +26,7 @@
       <node id="6843388714518455287" at="17,0,18,0" concept="2" trace="myCreateListener" />
       <node id="5159115383886427709" at="18,0,19,0" concept="2" trace="managersPool" />
       <node id="6456794239869953222" at="25,98,26,20" concept="6" />
-      <node id="6430309498760674686" at="30,98,31,73" concept="7" />
+      <node id="6430309498760674686" at="30,98,31,64" concept="7" />
       <node id="5159115383886590389" at="33,60,34,43" concept="6" />
       <node id="25756970155634817" at="40,100,41,102" concept="5" />
       <node id="25756970155637643" at="42,25,43,23" concept="1" />
@@ -37,7 +37,7 @@
       <node id="25756970155636328" at="41,102,44,9" concept="3" />
       <node id="6456794239869952361" at="24,0,28,0" concept="4" trace="isApplicable#(Ljetbrains/mps/openapi/editor/EditorComponent;)Z" />
       <node id="2877762237606545487" at="49,0,53,0" concept="4" trace="dispose#(Ljetbrains/mps/project/MPSProject;)V" />
-      <node id="5159115383886570962" at="31,73,36,11" concept="1" />
+      <node id="5159115383886570962" at="31,64,36,11" concept="1" />
       <node id="6456794239869952383" at="39,0,46,0" concept="4" trace="uninstall#(Ljetbrains/mps/openapi/editor/EditorComponent;)V" />
       <node id="6456794239869952372" at="29,0,38,0" concept="4" trace="install#(Ljetbrains/mps/openapi/editor/EditorComponent;)V" />
       <node id="6456794239869902866" at="22,40,46,6" concept="1" />

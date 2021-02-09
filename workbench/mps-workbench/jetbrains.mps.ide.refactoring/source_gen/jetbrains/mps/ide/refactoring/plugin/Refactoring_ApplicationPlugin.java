@@ -24,11 +24,11 @@ public class Refactoring_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new MoveModel_Action());
     addAction(new MoveNodes_Action());
     addAction(new RenameNode_Action());
-    // groups 
+    // groups
     addGroup(new CoreNodeRefactorings_ActionGroup(this));
     addGroup(new ModelRefactoring_ActionGroup(this));
     addGroup(new TouchBarDefault_shift_move_ActionGroup(this));

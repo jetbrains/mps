@@ -49,7 +49,7 @@ public class DummyRunConfigurationInitializer_SubstituteMenu extends SubstituteM
   public class SMP_ReferenceScope_72d96c_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_72d96c_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.DummyRunConfigurationInitializer$KX, LINKS.configuration$8YRo);
     }
     @NotNull

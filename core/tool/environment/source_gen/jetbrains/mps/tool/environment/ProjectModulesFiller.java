@@ -29,23 +29,23 @@ public final class ProjectModulesFiller {
   }
 
   public Project load() {
-    // have to use MRF as module factory for now, as long as Generator module needs its Language in cons 
+    // havetouseMRFasmodulefactoryfornow,aslongasGeneratormoduleneedsitsLanguageincons
     final ModuleInstanceFactory mf = new ModuleRepositoryFacade(myProject);
     myProject.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         for (ModulesMiner.ModuleHandle moduleHandle : myHandlesToLoad) {
           ModuleDescriptor md = moduleHandle.getDescriptor();
           if (md == null) {
-            // generally, shall never happen as the only way to get null as MD inside ModuleHandle is to use deprecated loadHandle(IFile) 
-            // nevertheless, account for Nullable until contract changes 
+            // generally,shallneverhappenastheonlywaytogetnullasMDinsideModuleHandleistousedeprecatedloadHandle(IFile)
+            // nevertheless,accountforNullableuntilcontractchanges
             if (LOG.isEnabledFor(Level.ERROR)) {
               LOG.error("No module in file" + moduleHandle.getFile());
             }
             continue;
           }
           SModule module = mf.instantiate(md, moduleHandle.getFile());
-          // With MM delivering GeneratorDescriptors and MRF capable of instantiating them, we can face Generator modules here, 
-          // both standalone and those owned by a language. Project has to deal with that. 
+          // WithMMdeliveringGeneratorDescriptorsandMRFcapableofinstantiatingthem,wecanfaceGeneratormoduleshere,
+          // bothstandaloneandthoseownedbyalanguage.Projecthastodealwiththat.
           myProject.addModule(module);
         }
       }

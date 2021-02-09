@@ -42,7 +42,7 @@ public class Template_map_RootConcept extends TemplateDeclarationBase {
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -51,21 +51,21 @@ public class Template_map_RootConcept extends TemplateDeclarationBase {
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
             tnode3.addChild(myAggregationLinks[1], tnode4);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
             tnode3.addChild(myAggregationLinks[0], tnode5);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
             tnode3.addChild(myAggregationLinks[2], tnode6);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[3], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

@@ -46,7 +46,7 @@ public abstract class CheckExpectedMessageRunnable implements Runnable {
   }
 
   public boolean isMessageExpected(@NotNull NodeReportItem errorReport) {
-    // I presume that empty messages are equivalent to no messages at all 
+    // Ipresumethatemptymessagesareequivalenttonomessagesatall
     return Objects.equals(errorReport.getSeverity(), myExpectedMessageStatus) && ((myExpectedMessageText == null || myExpectedMessageText.length() == 0) || Objects.equals(myExpectedMessageText, errorReport.getMessage()));
   }
 

@@ -98,7 +98,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     if (models.isEmpty()) {
       return;
     }
-    // likely, an optimization that takes into account the way MPS identifies nodes in stub models 
+    // likely,anoptimizationthattakesintoaccountthewayMPSidentifiesnodesinstubmodels
     Set<SNode> oddFilteredNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it.getNodeId() instanceof SNodeId.StringBasedId;
@@ -110,10 +110,10 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
     });
     for (SNode nn : Sequence.fromIterable(SNodeOperations.ofConcept(oddFilteredNodes, CONCEPTS.TypeVariableDeclaration$4Y))) {
-      // I don't know the reason why we extend supplied scope for Type variables. The code is here for a decade, I wonder if it there's any reason to keep it. 
+      // Idon'tknowthereasonwhyweextendsuppliedscopeforTypevariables.Thecodeishereforadecade,Iwonderifitthere'sanyreasontokeepit.
       SModel mm = SNodeOperations.getModel(nn);
       if (mm != null) {
-        // just in case, don't want to get unexpected NPE down the road 
+        // justincase,don'twanttogetunexpectedNPEdowntheroad
         candidates.add(mm);
       }
     }
@@ -140,14 +140,14 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     }
 
     final SLanguage bl = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    // XXX odd filtering by concept language. What about subconcepts of BL concepts in languages that extend BL?  
+    // XXXoddfilteringbyconceptlanguage.WhataboutsubconceptsofBLconceptsinlanguagesthatextendBL?
     concepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), SetSequence.fromSet(concepts).where(new IWhereFilter<SAbstractConcept>() {
       public boolean accept(SAbstractConcept it) {
         return bl.equals(it.getLanguage());
       }
     }));
 
-    // FIXME make sure there's index for concept qualified name! 
+    // FIXMEmakesurethere'sindexforconceptqualifiedname!
     Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, new Function<SAbstractConcept, String>() {
       public String apply(SAbstractConcept k) {
         return k.getQualifiedName();
@@ -195,7 +195,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       return Collections.emptySet();
     }
 
-    // get all files in scope 
+    // getallfilesinscope
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<SModel, VirtualFile>();
 
     Set<FolderSetDataSource> sources = new THashSet<FolderSetDataSource>();
@@ -227,21 +227,21 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
         }
       }
       for (VirtualFile vf : vFiles) {
-        // do not enter any directories but one at the top level.  Java package (corresponds to model) is just a list of files under single folder, 
-        // nested folder corresponds to another package 
+        // donotenteranydirectoriesbutoneatthetoplevel.Javapackage(correspondstomodel)isjustalistoffilesundersinglefolder,
+        // nestedfoldercorrespondstoanotherpackage
         if (vf.isDirectory()) {
           continue;
         }
         scopeFiles.addLink(sm, vf);
       }
       if (!(vFiles.isEmpty())) {
-        // for stub models not backed by IDEA's VF, we shall not tell we've processed them. 
-        // Let another find participant (e.g. the slowest default that walks model) to look up usages. 
+        // forstubmodelsnotbackedbyIDEA'sVF,weshallnottellwe'veprocessedthem.
+        // Letanotherfindparticipant(e.g.theslowestdefaultthatwalksmodel)tolookupusages.
         processedConsumer.consume(sm);
       }
     }
 
-    // filter files with usages 
+    // filterfileswithusages
     ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(myModelFilter.project().getProject(), scopeFiles.getSecond());
     final Set<SModel> result = new HashSet<SModel>();
     for (T elem : elems) {
@@ -250,11 +250,11 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       try {
         Collection<VirtualFile> matchingFiles = FileBasedIndex.getInstance().getContainingFiles(IdIndex.NAME, new IdIndexEntry(nodeId, true), allFiles);
         for (VirtualFile vf : matchingFiles) {
-          // back-transform 
+          // back-transform
           result.addAll(scopeFiles.getBySecond(vf));
         }
       } catch (ProcessCanceledException | IndexNotReadyException ce) {
-        // ignore 
+        // ignore
       }
     }
     return result;

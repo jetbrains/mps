@@ -48,10 +48,10 @@ public class NodeFactory_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // concepts from this language 
+            // conceptsfromthislanguage
             Language language = Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode()));
             SModel structureModel = language.getStructureModelDescriptor();
-            // XXX in fact, shall include concepts from extended languages as well 
+            // XXXinfact,shallincludeconceptsfromextendedlanguagesaswell
             return new ListScope(SModelOperations.roots(structureModel, CONCEPTS.AbstractConceptDeclaration$KA)) {
               public String getName(SNode child) {
                 return SPropertyOperations.getString(child, PROPS.name$MnvL);

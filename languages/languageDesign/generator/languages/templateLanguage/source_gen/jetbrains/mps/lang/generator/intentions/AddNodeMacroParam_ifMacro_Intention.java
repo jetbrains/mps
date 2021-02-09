@@ -100,7 +100,7 @@ public final class AddNodeMacroParam_ifMacro_Intention extends AbstractIntention
       SLinkOperations.setTarget(expressionStatement, LINKS.expression$5L7M, dotExpression);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifMacro_Condition, LINKS.body$e68K), LINKS.statement$53DE)).addElement(expressionStatement);
       SLinkOperations.setTarget(ifMacro, LINKS.conditionFunction$yWGz, ifMacro_Condition);
-      // set caret 
+      // setcaret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, ifMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

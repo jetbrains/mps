@@ -28,9 +28,9 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
   @Test
   public void test_mps21769() throws Exception {
     SModel m = null;
-    // first build script, with L1 and L2 (which extends L1), and corresponding generators 
-    // (generators shall extend each other as well, but this sort of depdendency is not considered by ModuleChecker anyway - it looks into 
-    // GeneratorDescriptor.getDependencies() only) 
+    // firstbuildscript,withL1andL2(whichextendsL1),andcorrespondinggenerators
+    // (generatorsshallextendeachotheraswell,butthissortofdepdendencyisnotconsideredbyModuleCheckeranyway-itlooksinto
+    // GeneratorDescriptor.getDependencies()only)
     SNode project1 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildProject$ae);
     SNode l1 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Language$RA);
     SNode g1 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Generator$RQ);
@@ -41,7 +41,7 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
     SLinkOperations.setTarget(l2, LINKS.generator$OCOG, g2);
     ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$mGDj)).addElement(l1);
     ListSequence.fromList(SLinkOperations.getChildren(project1, LINKS.parts$mGDj)).addElement(l2);
-    // second build script, with a model that uses L2 
+    // secondbuildscript,withamodelthatusesL2
     SNode project2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildProject$ae);
     SNode s2 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildMps_Solution$R7);
     ListSequence.fromList(SLinkOperations.getChildren(project2, LINKS.parts$mGDj)).addElement(s2);

@@ -101,7 +101,7 @@ public class ShowParameters_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.showParameters");
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        // Try to show tooltip over caret or in case of active selection - over the middle of the cell 
+        // Trytoshowtooltipovercaretorincaseofactiveselection-overthemiddleofthecell
         int caretRelativePosition = ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() - ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX();
         boolean isCaretInsideCell = caretRelativePosition >= 0 && caretRelativePosition <= ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth();
         Point point = new Point((isCaretInsideCell ? ((EditorCell) MapSequence.fromMap(_params).get("cell")).getCaretX() : ((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth() / 2), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY());
@@ -122,7 +122,7 @@ public class ShowParameters_Action extends BaseAction {
     return ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode();
   }
   private <T> JComponent createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {
-    // TODO: make IDEA like 
+    // TODO:makeIDEAlike
     JPanel panel = new JPanel(new GridBagLayout());
     panel.setBackground(HintUtil.getInformationColor());
     panel.setBorder(new EmptyBorder(0, 4, 0, 4));

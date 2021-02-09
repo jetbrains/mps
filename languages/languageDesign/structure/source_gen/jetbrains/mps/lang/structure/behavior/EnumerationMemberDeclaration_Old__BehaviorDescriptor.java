@@ -62,7 +62,7 @@ public final class EnumerationMemberDeclaration_Old__BehaviorDescriptor extends 
     return SPropertyOperations.getString(__thisNode__, PROPS.javaIdentifier$ZEac);
   }
   /*package*/ static SNode findReplacement_id54m$yuDZW0l(@NotNull final SNode __thisNode__) {
-    // old-enum-member | old-enum | enum-migration-info | new-enum 
+    // old-enum-member|old-enum|enum-migration-info|new-enum
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__))), CONCEPTS.EnumerationDeclaration$hv), LINKS.members$wmsL)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.oldMember$tsh) == __thisNode__;

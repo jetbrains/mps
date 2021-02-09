@@ -74,7 +74,7 @@ public class Template_reduce_Parameters extends TemplateDeclarationBase {
                 for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
                   tnode5.addChild(myAggregationLinks[0], child7);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 Collection<SNode> tlist8 = null;
@@ -83,11 +83,11 @@ public class Template_reduce_Parameters extends TemplateDeclarationBase {
                 for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
                   tnode5.addChild(myAggregationLinks[1], child9);
                 }
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode4.addChild(myAggregationLinks[2], tnode5);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tlist2 = TemplateUtil.singletonList(tnode4);

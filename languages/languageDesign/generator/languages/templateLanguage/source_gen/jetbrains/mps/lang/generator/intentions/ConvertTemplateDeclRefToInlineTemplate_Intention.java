@@ -74,9 +74,9 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
       SNodeOperations.deleteNode(TFtoDelete);
       SNode inlineTemplate = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplate_RuleConsequence$u9);
       SLinkOperations.setTarget(inlineTemplate, LINKS.templateNode$1Rss, fragmentToSet);
-      // ------ 
+      // ------
       if (!(Sequence.fromIterable(SLinkOperations.collect(SModelOperations.nodes(SNodeOperations.getModel(node), CONCEPTS.ITemplateCall$ab), LINKS.template$6_6)).contains(oldTemplate))) {
-        // nobody in the same model uses this template, drop it (if you care about external references, why would you use intention then?) 
+        // nobodyinthesamemodelusesthistemplate,dropit(ifyoucareaboutexternalreferences,whywouldyouuseintentionthen?)
         SNodeOperations.deleteNode(oldTemplate);
       }
     }

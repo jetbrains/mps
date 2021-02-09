@@ -47,7 +47,7 @@ public class MPSJavaSrcDataSource extends FolderDataSource {
         String pkg = null;
         try {
           IFile file = ((FileDataSource) source).getFile();
-          // fixme probably it is better not to read the whole file? 
+          // fixmeprobablyitisbetternottoreadthewholefile?
           String code = IFileUtil.getTextContents(file);
           pkg = JavaParser.peekPackage(code);
         } catch (IOException e) {

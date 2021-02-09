@@ -49,7 +49,7 @@ public class SimpleBuilderPropertyBuilder_SubstituteMenu extends SubstituteMenuB
   public class SMP_ReferenceScope_3dcfn1_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_3dcfn1_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.SimpleBuilderPropertyBuilder$NO, LINKS.declaration$5Vjc);
     }
     @NotNull

@@ -19,7 +19,7 @@ public class Scopes {
     if (parentScope == null) {
       return variablesScope;
     }
-    // hiding for variables only name based. so I can use SimpleScope and HidingByNameScope 
+    // hidingforvariablesonlynamebased.soIcanuseSimpleScopeandHidingByNameScope
     return new HidingByNameScope(CONCEPTS.IVariableDeclaration$Zo, kind, variablesScope, parentScope);
   }
   public static Scope forVariables(SAbstractConcept kind, Iterable<SNode> variables, Scope parentScope) {
@@ -32,22 +32,22 @@ public class Scopes {
     if (parentScope == null) {
       return methodsScope;
     }
-    // should be used for methods in getScope() 
+    // shouldbeusedformethodsingetScope()
     return new HidingByNameScope(CONCEPTS.BaseMethodDeclaration$kD, kind, methodsScope, parentScope);
   }
   public static Scope defaultWithNameHiding(SAbstractConcept kind, Scope scope, @Nullable Scope parentScope) {
     if (parentScope == null) {
       return scope;
     }
-    // hide anything by name 
+    // hideanythingbyname
     return new HidingByNameScope(CONCEPTS.INamedConcept$Kd, kind, scope, parentScope);
   }
   public static Scope forLoopLabels(Iterable<SNode> labels, Scope parentScope) {
-    // Hiding only other LoopLabels 
+    // HidingonlyotherLoopLabels
     return new HidingByNameScope(CONCEPTS.LoopLabel$jQ, CONCEPTS.LoopLabel$jQ, new NamedElementsScope(labels), parentScope);
   }
   public static Scope forTypeVariables(Iterable<SNode> variables, Scope parentScope) {
-    // Hiding only other type variables 
+    // Hidingonlyothertypevariables
     return new HidingByNameScope(CONCEPTS.TypeVariableDeclaration$4Y, CONCEPTS.TypeVariableDeclaration$4Y, new NamedElementsScope(variables), parentScope);
   }
 

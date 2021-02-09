@@ -84,7 +84,7 @@ public class Makeup_Facet extends IFacet.Stub {
               final FileProcessor fp = new FileProcessor(monitor.getSession().getMessageHandler());
               List<IDelta> deltas = ListSequence.fromList(new ArrayList<IDelta>());
 
-              // XXX can I ask e.g. project for its FS? 
+              // XXXcanIaske.g.projectforitsFS?
               final FileSystem localFileSystem = FileSystem.getInstance();
 
               for (TextGenOutcomeResource res : Sequence.fromIterable(input)) {
@@ -98,8 +98,8 @@ public class Makeup_Facet extends IFacet.Stub {
                   continue;
                 }
                 final MacroHelper moduleMacros = MacrosFactory.forModule(res.getModule());
-                //  FIXME would be nice to have output repository in TextGenOutcomeResource, much like for generator outcome 
-                // inspired by TextGen facet approach 
+                // FIXMEwouldbenicetohaveoutputrepositoryinTextGenOutcomeResource,muchlikeforgeneratoroutcome
+                // inspiredbyTextGenfacetapproach
                 SRepository outputModelRepo = res.getTextGenResult().getModel().getRepository();
                 if (outputModelRepo == null) {
                   outputModelRepo = monitor.getSession().getProject().getRepository();
@@ -113,7 +113,7 @@ public class Makeup_Facet extends IFacet.Stub {
                       if ((annotationCopy == null)) {
                         continue;
                       }
-                      // TODO process macro/property values in the location, but assume it's absolute path for now 
+                      // TODOprocessmacro/propertyvaluesinthelocation,butassumeit'sabsolutepathfornow
                       String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$Jy3A);
                       if ((destination == null || destination.length() == 0)) {
                         continue;
@@ -123,7 +123,7 @@ public class Makeup_Facet extends IFacet.Stub {
                       }
                       monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf(String.format("copy textgen outcome: %s --> %s", tu.getFileName(), destination))));
 
-                      // next code could be outside of model read 
+                      // nextcodecouldbeoutsideofmodelread
                       IFile destFile = localFileSystem.getFile(destination);
                       boolean changed = fp.saveContent(destFile, tu.getBytes());
                       if (changed) {

@@ -20,8 +20,8 @@
       <node id="1757086175615617820" at="35,0,36,0" concept="3" trace="temporaryModel" />
       <node id="1757086175614073086" at="37,0,38,0" concept="3" trace="node" />
       <node id="1757086175614073068" at="38,0,39,0" concept="3" trace="nodeEditor" />
-      <node id="7289758734948951620" at="40,62,41,44" concept="8" />
-      <node id="1757086175614410808" at="41,44,42,30" concept="10" />
+      <node id="7289758734948951620" at="40,62,41,39" concept="8" />
+      <node id="1757086175614410808" at="41,39,42,30" concept="10" />
       <node id="1757086175615025379" at="42,30,43,27" concept="2" />
       <node id="1757086175615730566" at="43,27,44,46" concept="2" />
       <node id="1757086175615137760" at="44,46,45,29" concept="2" />
@@ -38,7 +38,7 @@
       <node id="1757086175614073296" at="74,29,75,38" concept="7" />
       <node id="1757086175614410849" at="81,59,82,24" concept="7" />
       <node id="1757086175614410851" at="83,5,84,16" concept="7" />
-      <node id="1757086175615229905" at="88,49,89,35" concept="8" />
+      <node id="1757086175615229905" at="88,49,89,30" concept="8" />
       <node id="1757086175615438139" at="91,37,92,110" concept="2" />
       <node id="1757086175615452701" at="93,9,94,59" concept="2" />
       <node id="1757086175615337851" at="94,59,95,72" concept="2" />
@@ -63,7 +63,7 @@
       <node id="1757086175614410805" at="40,0,47,0" concept="1" trace="EmbeddableEditor#(Ljetbrains/mps/project/Project;Z)V" />
       <node id="1465517691620102429" at="103,31,110,5" concept="4" />
       <node id="1757086175614410833" at="78,0,86,0" concept="5" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
-      <node id="1757086175615229928" at="89,35,98,7" concept="4" />
+      <node id="1757086175615229928" at="89,30,98,7" concept="4" />
       <node id="1757086175614073164" at="48,0,59,0" concept="5" trace="editNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1757086175615202505" at="87,61,99,5" concept="4" />
       <node id="1757086175615580927" at="103,0,115,0" concept="5" trace="disposeEditor#()V" />

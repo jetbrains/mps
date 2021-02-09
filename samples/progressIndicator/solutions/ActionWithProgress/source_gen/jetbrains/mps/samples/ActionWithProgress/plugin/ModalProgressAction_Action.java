@@ -56,12 +56,12 @@ public class ModalProgressAction_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    // Indicates whether the progress dialog has the'Cancel' option 
+    // Indicateswhethertheprogressdialoghasthe'Cancel'option
     boolean canBeCanceled = true;
 
-    // This is a common modal task. It can't be sent to the background, but can be canceled 
-    // Your code needs to frequently check if the process has been canceled (between every calculation steps) 
-    // and handle yourself all steps to revert the action 
+    // Thisisacommonmodaltask.Itcan'tbesenttothebackground,butcanbecanceled
+    // Yourcodeneedstofrequentlycheckiftheprocesshasbeencanceled(betweeneverycalculationsteps)
+    // andhandleyourselfallstepstoreverttheaction
     final Task.Modal modalTask = new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Modal cancelable task", canBeCanceled) {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
@@ -71,16 +71,16 @@ public class ModalProgressAction_Action extends BaseAction {
         adapter.start("Progress in progress...", 9);
         int stepValue = 1;
 
-        // a normal step 
+        // anormalstep
         adapter.step("Do simple work...");
         ModalProgressAction_Action.this.doWork(event);
         adapter.advance(stepValue);
-        // Check if progress is canceled 
+        // Checkifprogressiscanceled
         if (adapter.isCanceled()) {
           return;
         }
 
-        // ReadAction in step is ok 
+        // ReadActioninstepisok
         repository.getModelAccess().runReadAction(new Runnable() {
           public void run() {
             adapter.step("Do some work with Read Lock...");
@@ -92,7 +92,7 @@ public class ModalProgressAction_Action extends BaseAction {
           return;
         }
 
-        // WriteAction in step is ok 
+        // WriteActioninstepisok
         repository.getModelAccess().runWriteAction(new Runnable() {
           public void run() {
             adapter.step("Do some work with Write Lock...");
@@ -112,8 +112,8 @@ public class ModalProgressAction_Action extends BaseAction {
           return;
         }
 
-        // The correct way to call command with progress is as follows 
-        // The dialog might not show up if the method for the usual read & write locks are used 
+        // Thecorrectwaytocallcommandwithprogressisasfollows
+        // Thedialogmightnotshowupifthemethodfortheusualread&writelocksareused
         adapter.step("Do some work in command in EDT...");
         WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
           public void run() {
@@ -161,7 +161,7 @@ public class ModalProgressAction_Action extends BaseAction {
           return;
         }
 
-        // Any EDT access lock brokes normal progress behaviour 
+        // AnyEDTaccesslockbrokesnormalprogressbehaviour
         adapter.step("Do some work with Write Lock in EDT using jdk...");
         repository.getModelAccess().runWriteInEDT(new Runnable() {
           public void run() {
@@ -176,7 +176,7 @@ public class ModalProgressAction_Action extends BaseAction {
           return;
         }
 
-        // Any EDT access lock brokes normal progress behaviour 
+        // AnyEDTaccesslockbrokesnormalprogressbehaviour
 
         ModalProgressAction_Action.this.doWork(event);
 
@@ -193,13 +193,13 @@ public class ModalProgressAction_Action extends BaseAction {
       @Override
       public void onCancel() {
         super.onCancel();
-        // Needs to handle reverting changes for all the finished steps 
-        // This method does not interrupt the steps - steps must be either short or have such interruption capability 
+        // Needstohandlerevertingchangesforallthefinishedsteps
+        // Thismethoddoesnotinterruptthesteps-stepsmustbeeithershortorhavesuchinterruptioncapability
       }
     };
 
-    // The execute() method of actions must be very quick 
-    // so every long calculation must be invoked outside of this method like this: 
+    // Theexecute()methodofactionsmustbeveryquick
+    // soeverylongcalculationmustbeinvokedoutsideofthismethodlikethis:
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         ProgressManager.getInstance().run(modalTask);
@@ -214,11 +214,11 @@ public class ModalProgressAction_Action extends BaseAction {
     }
   }
   private void doWork(final AnActionEvent event) {
-    // 42 because it is ultimate answer to everything =) 
+    // 42becauseitisultimateanswertoeverything=)
     ModalProgressAction_Action.this.fib(44, event);
   }
   private int fib(int n, final AnActionEvent event) {
-    // Very ineffective implementation with exponential time complexity 
+    // Veryineffectiveimplementationwithexponentialtimecomplexity
     if (n < 1) {
       throw new IllegalArgumentException();
     }

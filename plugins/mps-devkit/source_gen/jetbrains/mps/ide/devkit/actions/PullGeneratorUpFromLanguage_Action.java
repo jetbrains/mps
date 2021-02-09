@@ -87,14 +87,14 @@ public class PullGeneratorUpFromLanguage_Action extends BaseAction {
     final GeneratorDescriptor md = ((Generator) event.getData(MPSCommonDataKeys.MODULE)).getModuleDescriptor();
     final Language sourceLanguage = (Language) repoFacade.getModule(md.getSourceLanguage());
     final String virtualFolder = (myProject instanceof StandaloneMPSProject ? ((StandaloneMPSProject) myProject).getFolderFor(sourceLanguage) : null);
-    //  see NewGeneratorDialog 
+    // seeNewGeneratorDialog
     myProject.removeModule(event.getData(MPSCommonDataKeys.MODULE));
     repoFacade.unregisterModule(event.getData(MPSCommonDataKeys.MODULE));
     sourceLanguage.getModuleDescriptor().getGenerators().remove(md);
     sourceLanguage.setChanged();
     md.standaloneModule(true);
     IFile generatorModuleLocation = sourceLanguage.getFileSystem().getFile(ProjectPathUtil.getGeneratorOutputPath(md)).getParent();
-    // FIXME need a naming convention for generator module names  
+    // FIXMEneedanamingconventionforgeneratormodulenames
     IFile moduleFile = generatorModuleLocation.findChild(md.getNamespace().replace("#", "") + MPSExtentions.DOT_GENERATOR);
     SModule gm = repoFacade.instantiate(md, moduleFile);
     myProject.addModule(gm);

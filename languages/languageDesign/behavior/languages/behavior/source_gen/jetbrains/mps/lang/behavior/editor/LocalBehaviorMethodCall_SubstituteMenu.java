@@ -49,7 +49,7 @@ public class LocalBehaviorMethodCall_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_e68vfy_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_e68vfy_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.LocalBehaviorMethodCall$Y1, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull

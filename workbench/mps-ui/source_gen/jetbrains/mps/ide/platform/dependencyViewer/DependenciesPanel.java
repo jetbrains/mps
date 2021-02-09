@@ -66,7 +66,7 @@ public class DependenciesPanel extends JPanel {
   }
 
   public void resetContent(@Nullable DependencyViewerScope scope, boolean isMeta) {
-    // preserve TargetsView limitation, if any 
+    // preserveTargetsViewlimitation,ifany
     resetContent(scope, myTargetsView.limitedTo(), isMeta);
   }
 
@@ -166,7 +166,7 @@ public class DependenciesPanel extends JPanel {
   }
 
   public void close() {
-    // hides the tool but leaves its button in the buttons strip 
+    // hidesthetoolbutleavesitsbuttoninthebuttonsstrip
     myTool.close();
   }
 

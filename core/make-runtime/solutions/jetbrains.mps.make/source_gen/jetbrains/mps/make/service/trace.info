@@ -109,7 +109,7 @@
       <node id="5571413097247548842" at="123,9,124,93" concept="7" />
       <node id="5571413097247530367" at="124,93,125,0" concept="10" />
       <node id="1278023359872564763" at="125,0,126,27" concept="7" />
-      <node id="6253178419397090359" at="126,27,127,99" concept="9" />
+      <node id="6253178419397090359" at="126,27,127,84" concept="9" />
       <node id="1278023359872362550" at="129,61,130,28" concept="8" />
       <node id="6253178419396540861" at="133,47,134,179" concept="2" />
       <node id="1278023359872596001" at="134,179,135,38" concept="2" />
@@ -153,7 +153,7 @@
       <node id="4634869729621189845" at="78,67,88,11" concept="5" />
       <node id="7184932954667865582" at="53,0,64,0" concept="6" trace="run#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
       <node id="2298333944697014007" at="155,30,166,5" concept="5" />
-      <node id="1278023359872293852" at="127,99,139,7" concept="4" />
+      <node id="1278023359872293852" at="127,84,139,7" concept="4" />
       <node id="2298333944697014003" at="155,0,168,0" concept="6" trace="reconcile#()V" />
       <node id="4634869729621182189" at="77,0,117,0" concept="6" trace="invoke#(Ljetbrains/mps/make/script/IScript;Ljava/lang/Iterable;)Ljava/lang/Boolean;" />
       <node id="4634869729620919683" at="75,53,117,9" concept="2" />
@@ -239,7 +239,7 @@
         <var name="monitor" id="7184932954667890620" />
       </scope>
       <scope id="2298333944697014006" at="155,30,166,5" />
-      <scope id="1278023359872293852" at="127,99,139,7">
+      <scope id="1278023359872293852" at="127,84,139,7">
         <var name="stat" id="1278023359872293854" />
       </scope>
       <scope id="2298333944697014003" at="155,0,168,0" />

@@ -92,20 +92,20 @@ public final class EditorCellModel__BehaviorDescriptor extends BaseBHDescriptor 
     SNode topCellModel = EditorCellModel__BehaviorDescriptor.getTopAncestorCellModel_idM76vXnqh08.invoke(__thisNode__);
     String defaultCellId = EditorCellModel__BehaviorDescriptor.getDefaultCellId_id3VYF6qfIQs_.invoke(__thisNode__);
     if (defaultCellId != null) {
-      // just in case there's more than 1 cell with the same defaultCellId (i.e. property_name in nested InlineEditorComponent) 
+      // justincasethere'smorethan1cellwiththesamedefaultCellId(i.e.property_nameinnestedInlineEditorComponent)
       return gc.createIndexedName(EditorCellModel__BehaviorDescriptor.getUniqueCellIdPrefix_id7c58AbNRrel.invoke(__thisNode__) + defaultCellId, topCellModel, true);
     }
     String baseName = EditorCellModel__BehaviorDescriptor.getCellModelKind_idhHfCaJf.invoke(__thisNode__) + '_';
-    // HACK. 
-    // With proper context (topCellModel) and 'gc.name from', we can generate unique and 
-    // stable names. However, there's AnonymousCellAnnotation in tests, that keep cell id, 
-    // and any change to cell id generation mechanism shall get reflected in its 2830 usages. 
+    // HACK.
+    // Withpropercontext(topCellModel)and'gc.namefrom',wecangenerateuniqueand
+    // stablenames.However,there'sAnonymousCellAnnotationintests,thatkeepcellid,
+    // andanychangetocellidgenerationmechanismshallgetreflectedinits2830usages.
     if (Objects.equals(SNodeOperations.getContainingLink(topCellModel), LINKS.inspectedCellModel$WqhU)) {
-      // next code comes from implementation of gc.unique name and is here to 
-      // generate id that look similar to the one gc.unique name produces but without a defect 
-      // of unpredicted sequence during parallel generation. Besides, it makes cell ids somewhat 
-      // unique provided editors could get mixed and then it would be impossible to tell 
-      // "Constant_1" of one editor from "Constant_1" from an editor of another language. 
+      // nextcodecomesfromimplementationofgc.uniquenameandishereto
+      // generateidthatlooksimilartotheonegc.uniquenameproducesbutwithoutadefect
+      // ofunpredictedsequenceduringparallelgeneration.Besides,itmakescellidssomewhat
+      // uniqueprovidededitorscouldgetmixedandthenitwouldbeimpossibletotell
+      // "Constant_1"ofoneeditorfrom"Constant_1"fromaneditorofanotherlanguage.
       String containerName = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.INamedConcept$Kd, false, false), PROPS.name$MnvL);
       if (containerName != null) {
         baseName += Integer.toString(containerName.hashCode() >>> 1, Character.MAX_RADIX) + '_';
@@ -140,10 +140,10 @@ public final class EditorCellModel__BehaviorDescriptor extends BaseBHDescriptor 
     return sb.toString();
   }
   /*package*/ static SNode getTopAncestorCellModel_idM76vXnqh08(@NotNull SNode __thisNode__) {
-    // InlineEditorComponent are transparent for CellModel ancestor walk here, i.e. for an 
-    // InlineEditorComponent or similar residing under a cellModel of another BaseEditorComponent, top-most cell 
-    // would be the one from topmost BaseEditorComponent.cellModel/ConceptEditorDeclaration.inspectedCellModel, 
-    // not the one from InlineEditorComponent.cellModel 
+    // InlineEditorComponentaretransparentforCellModelancestorwalkhere,i.e.foran
+    // InlineEditorComponentorsimilarresidingunderacellModelofanotherBaseEditorComponent,top-mostcell
+    // wouldbetheonefromtopmostBaseEditorComponent.cellModel/ConceptEditorDeclaration.inspectedCellModel,
+    // nottheonefromInlineEditorComponent.cellModel
     SNode topmostCellModel = __thisNode__;
     SNode p = SNodeOperations.getParent(__thisNode__);
     do {

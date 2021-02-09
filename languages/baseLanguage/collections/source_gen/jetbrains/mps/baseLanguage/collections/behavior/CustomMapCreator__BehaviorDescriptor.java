@@ -42,7 +42,7 @@ public final class CustomMapCreator__BehaviorDescriptor extends BaseBHDescriptor
 
   /*package*/ static SNode createType_id1ny5gPbZSFj(@NotNull SNode __thisNode__) {
     SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$QVZa), LINKS.containerType$WQze));
-    //  workaround an SModel's dumbness 
+    // workaroundanSModel'sdumbness
     final List<SNode> params = ListSequence.fromList(new ArrayList<SNode>());
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.keyType$Uj4M) != null)) {
       ListSequence.fromList(params).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.keyType$Uj4M));

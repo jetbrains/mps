@@ -55,7 +55,7 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
       })) {
         SNode moduleId = SNodeOperations.cast(SLinkOperations.getTarget(lre, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
         if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(moduleId)).isNotEmpty() || ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_))).isNotEmpty()) {
-          // likely, some generator macros that require human intervention to get them fixed properly 
+          // likely,somegeneratormacrosthatrequirehumaninterventiontogetthemfixedproperly
           continue;
         }
         SModuleReference mref = ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_));

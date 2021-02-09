@@ -97,7 +97,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       tryToImport(evaluatorNode, nodesToImport);
     }
 
-    // XXX updateImportedModels() likely could live with null here, accessory models may be imported directly 
+    // XXXupdateImportedModels()likelycouldlivewithnullhere,accessorymodelsmaybeimporteddirectly
     new ModelDependencyUpdate(containerModel).updateUsedLanguages().updateImportedModels(myDebuggerRepository).updateModuleDependencies(myDebuggerRepository);
   }
 
@@ -120,7 +120,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   }
 
   protected SNode createEvaluatorNode() {
-    // FIXME remove Evaluator concept as it's no longer in use (has been part of EvaluationContainer.createEvaluatorNode(), recently removed) 
+    // FIXMEremoveEvaluatorconceptasit'snolongerinuse(hasbeenpartofEvaluationContainer.createEvaluatorNode(),recentlyremoved)
     SNode evaluatorConcept = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept"));
     SLinkOperations.setNewChild(evaluatorConcept, LINKS.evaluatedStatements$Ka5h, null);
     SPropertyOperations.set(evaluatorConcept, PROPS.isShowContext$I6Gy, myIsInWatch);
@@ -128,7 +128,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   }
 
   private void createVars() {
-    // 2 uses. setUpNode() is invoked within command; updateState runs new command itself 
+    // 2uses.setUpNode()isinvokedwithincommand;updateStaterunsnewcommanditself
     fillVariables(SNodeOperations.cast(getNode(), CONCEPTS.EvaluatorConcept$pu));
   }
   private void fillVariables(SNode evaluatorConcept) {
@@ -152,7 +152,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         SNode lowLevelVarNode = MapSequence.fromMap(declaredVariables).get(name);
 
         if (needUpdateVariables()) {
-          // we should update variables if we are first time here or if we do not show context (i.e. in evaluation) 
+          // weshouldupdatevariablesifwearefirsttimehereorifwedonotshowcontext(i.e.inevaluation)
           if (lowLevelVarNode == null) {
             lowLevelVarNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariable"));
             ListSequence.fromList(SLinkOperations.getChildren(evaluatorConcept, LINKS.variables$I5Ku)).addElement(lowLevelVarNode);
@@ -164,7 +164,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         SetSequence.fromSet(foundVars).addElement(lowLevelVarNode);
       }
 
-      // now mark vars which are currently out of scope 
+      // nowmarkvarswhicharecurrentlyoutofscope
       Sequence.fromIterable(MapSequence.fromMap(declaredVariables).values()).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SPropertyOperations.set(it, PROPS.isOutOfScope$49K_, !(SetSequence.fromSet(foundVars).contains(it)));
@@ -172,12 +172,12 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       });
 
       if (needUpdateVariables()) {
-        // create static context type 
+        // createstaticcontexttype
         SLinkOperations.setTarget(evaluatorConcept, LINKS.contextNode$G$iW, myEvaluationContext.getStaticContextType(createClassifierType));
-        // create this 
+        // createthis
         SLinkOperations.setTarget(evaluatorConcept, LINKS.thisNode$GzOU, myEvaluationContext.getThisClassifierType(createClassifierType));
       }
-      // todo highlight when this type or static context type are invalid 
+      // todohighlightwhenthistypeorstaticcontexttypeareinvalid
     } catch (InvalidStackFrameException e) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("InvalidStackFrameException", e);
@@ -190,9 +190,9 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   public void updateState() {
     super.updateState();
     if (myDebugSession.getEvaluationProvider().canEvaluate()) {
-      // createVars used to execute command (runWriteActionInCommand), hence I assume (a) we've got proper thread here 
-      // (b) there's need to run inside a command. Although it looks undoTransparent (the one that doesn't record any changes) 
-      // is suited much better here. 
+      // createVarsusedtoexecutecommand(runWriteActionInCommand),henceIassume(a)we'vegotproperthreadhere
+      // (b)there'sneedtoruninsideacommand.AlthoughitlooksundoTransparent(theonethatdoesn'trecordanychanges)
+      // issuitedmuchbetterhere.
       myDebuggerRepository.getModelAccess().executeCommand(new Runnable() {
         public void run() {
           createVars();
@@ -211,10 +211,10 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     return classifierType;
   }
   public SNode findUnit(final String unitName) {
-    // I hate the next piece of code 
-    // (and this class in general, since it inherited a lot of the ugly stuff from the old evaluation code) 
+    // Ihatethenextpieceofcode
+    // (andthisclassingeneral,sinceitinheritedalotoftheuglystufffromtheoldevaluationcode)
     ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myDebuggerRepository);
-    // first, try @java_stub model 
+    // first,try@java_stubmodel
     final String qualifiedModelName = modelFqNameFromUnitName(unitName);
     for (SModel stub : repoFacade.getModelsByName(new SModelName(new JavaPackageNameStub(qualifiedModelName).asModelId().getModelName()))) {
       SNode node = ListSequence.fromList(SModelOperations.nodes(stub, CONCEPTS.UnitConcept$1g)).findFirst(new IWhereFilter<SNode>() {
@@ -226,12 +226,12 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         return node;
       }
     }
-    // try other (non-stub) models 
-    // XXX for whatever reason, we used to check models with stereotypes matching SModelStereotype.values (i.e. none, tests and generator). 
-    //     as I don't see why a model with another stereotype can't serve as a source one for generated code, now we search all models with 
-    //     incompletely matching name (i.e. match qualified name only). 
-    //     With that, there's little reason to handle @java_stub explicitly, above (other than give them priority), perhaps, shall 
-    //     combine into single piece of code? Need to pay attention, though, if stubs get indexed or not (common code could't use FindUsagesFacade if not, then) 
+    // tryother(non-stub)models
+    // XXXforwhateverreason,weusedtocheckmodelswithstereotypesmatchingSModelStereotype.values(i.e.none,testsandgenerator).
+    // asIdon'tseewhyamodelwithanotherstereotypecan'tserveasasourceoneforgeneratedcode,nowwesearchallmodelswith
+    // incompletelymatchingname(i.e.matchqualifiednameonly).
+    // Withthat,there'slittlereasontohandle@java_stubexplicitly,above(otherthangivethempriority),perhaps,shall
+    // combineintosinglepieceofcode?Needtopayattention,though,ifstubsgetindexedornot(commoncodecould'tuseFindUsagesFacadeifnot,then)
     ModelsScope scope = new ModelsScope(Sequence.fromIterable(((Iterable<SModel>) repoFacade.getAllModels())).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {
         return it.getName().getLongName().equals(qualifiedModelName);
@@ -271,7 +271,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         onNodeSetUp.invoke(rv);
       }
     });
-    // FIXME return value is ignored (callback is employed instead), shall change IEvaluationContainer.copy to reflect this 
+    // FIXMEreturnvalueisignored(callbackisemployedinstead),shallchangeIEvaluationContainer.copytoreflectthis
     return rv;
   }
   public static List<String> getDebuggerStubPath() {

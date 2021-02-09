@@ -120,7 +120,7 @@ public class GenerateGetters_Action extends BaseAction {
           SLinkOperations.setTarget(dotExpr, LINKS.operation$gs9E, _quotation_createNode_xzx12x_a0d0a0a31a0(field));
 
           final String getterName = GenerateGettersAndSettersUtil.getFieldGetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-          // Method creation begins 
+          // Methodcreationbegins
           if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
             lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_xzx12x_a0a0a0h0a0a31a0(SLinkOperations.getTarget(field, LINKS.type$a1UY), dotExpr, getterName));
           } else {

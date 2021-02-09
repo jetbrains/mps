@@ -86,7 +86,7 @@ public class QuotationConverter {
   }
   private SNode convertPropertyOrAntiquotation(SProperty property, SNode attribute, String value) throws NumberFormatException {
     SNode pval = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty"));
-    // cast to node-ptr<> is not worse than property.getDeclarationNode() as PropertyDeclaration cast 
+    // casttonode-ptr<>isnotworsethanproperty.getDeclarationNode()asPropertyDeclarationcast
     SNodeReference declptr = (SNodeReference) property.getSourceNode();
     SLinkOperations.setPointer(pval, LINKS.property$Y_u4, declptr);
     SNode pExpr = SLinkOperations.setNewChild(pval, LINKS.initValue$fqch, CONCEPTS.NodeBuilderPropertyExpression$_M);

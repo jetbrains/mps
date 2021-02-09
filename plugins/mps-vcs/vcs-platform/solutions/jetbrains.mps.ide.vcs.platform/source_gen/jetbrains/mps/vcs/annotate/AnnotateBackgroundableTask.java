@@ -113,7 +113,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
 
   @Override
   public void onSuccess() {
-    // (in UI thread) 
+    // (inUIthread)
     if (myException != null) {
       AbstractVcsHelper.getInstance(getProject()).showErrors(Arrays.asList(myException), "Exception on retrieving annotation");
     }

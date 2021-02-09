@@ -16,12 +16,12 @@ public abstract class SimpleScope extends Scope {
   public SimpleScope(Iterable<SNode> nodes) {
     this.nodes = ListSequence.fromList(new ArrayList<SNode>());
 
-    // Checking nodes var for null first because null value can be easily passed here as a result of the combination of 
-    // smodel language calls & bahaviour method calls on top of it like: 
-    //     sNodeType.concept.getPropertyDeclarations() 
-    // in this case, if conept (reference inside sNodeType) is null (not specified yet) then the result of 
-    // .getPropertyDeclarations() method call will be null despite null-safety inside any of smodel/collection 
-    // languages returning empty collections in similar cases. 
+    // Checkingnodesvarfornullfirstbecausenullvaluecanbeeasilypassedhereasaresultofthecombinationof
+    // smodellanguagecalls&bahaviourmethodcallsontopofitlike:
+    // sNodeType.concept.getPropertyDeclarations()
+    // inthiscase,ifconept(referenceinsidesNodeType)isnull(notspecifiedyet)thentheresultof
+    // .getPropertyDeclarations()methodcallwillbenulldespitenull-safetyinsideanyofsmodel/collection
+    // languagesreturningemptycollectionsinsimilarcases.
     if (nodes != null) {
       for (SNode node : nodes) {
         if ((node != null)) {
@@ -40,7 +40,7 @@ public abstract class SimpleScope extends Scope {
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     if (prefix == null) {
-      // todo: copy nodes? immutable list? 
+      // todo:copynodes?immutablelist?
       return nodes;
     }
 
@@ -58,14 +58,14 @@ public abstract class SimpleScope extends Scope {
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
-    // todo: maybe map name -> node? 
+    // todo:maybemapname->node?
     SNode result = null;
     for (SNode node : nodes) {
       if (refText.equals(getReferenceText(node))) {
         if (result == null) {
           result = node;
         } else {
-          // ambiguity 
+          // ambiguity
           return null;
         }
       }

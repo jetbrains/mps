@@ -56,7 +56,7 @@ public class NewSolution_Action extends BaseAction {
       return;
     }
 
-    // TODO: Sync ProjectPane.rebuildTree() with NewSolution, CloneModule actions 
+    // TODO:SyncProjectPane.rebuildTree()withNewSolution,CloneModuleactions
     ProjectPane projectPane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject());
     projectPane.selectModule(solution, false);
   }

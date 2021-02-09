@@ -61,15 +61,15 @@ public class Template_processStatement extends TemplateDeclarationBase {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
                     tnode5.setProperty(myProperties[0], "ss");
                     tnode4.addChild(myAggregationLinks[0], tnode5);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode3.addChild(myAggregationLinks[1], tnode4);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
@@ -83,7 +83,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
                     tnode7.addChild(myAggregationLinks[3], tnode8);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     Collection<SNode> tlist9 = null;
@@ -92,19 +92,19 @@ public class Template_processStatement extends TemplateDeclarationBase {
                     for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
                       tnode7.addChild(myAggregationLinks[4], child10);
                     }
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode6.addChild(myAggregationLinks[5], tnode7);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[2], tnode6);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[6], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(2, tnode1);
@@ -132,15 +132,15 @@ public class Template_processStatement extends TemplateDeclarationBase {
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[7]);
                     tnode4.addChild(myAggregationLinks[3], tnode5);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode3.addChild(myAggregationLinks[5], tnode4);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[2], tnode3);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[8]);
@@ -154,25 +154,25 @@ public class Template_processStatement extends TemplateDeclarationBase {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[10]);
                     environment.resolveInTemplateLater(tnode8, myAssociationLinks[0], templateNode_iblz6q_c0a0a1a1a1a1a1a2a1a1a2a8, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980649133", "e", context6);
                     tnode7.addChild(myAggregationLinks[7], tnode8);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[11]);
                     tnode9.setProperty(myProperties[2], "5");
                     tnode7.addChild(myAggregationLinks[8], tnode9);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode6.addChild(myAggregationLinks[9], tnode7);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode2.addChild(myAggregationLinks[2], tnode6);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[6], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(2, tnode1);

@@ -84,34 +84,34 @@ public final class BinaryOperation__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
     switch (((int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(__thisConcept__))) {
       case 2:
-        // || 
+        // ||
         return PrecedenceUtil.Precedence.J_13;
       case 3:
-        // && 
+        // &&
         return PrecedenceUtil.Precedence.J_12;
       case 4:
-        // | 
+        // |
         return PrecedenceUtil.Precedence.J_11;
       case 5:
-        // ^ 
+        // ^
         return PrecedenceUtil.Precedence.J_10;
       case 6:
-        // & 
+        // &
         return PrecedenceUtil.Precedence.J_9;
       case 7:
-        // ==, != 
+        // ==,!=
         return PrecedenceUtil.Precedence.J_8;
       case 8:
-        // <, <=, >, >= 
+        // <,<=,>,>=
         return PrecedenceUtil.Precedence.J_7;
       case 9:
-        // >>, << 
+        // >>,<<
         return PrecedenceUtil.Precedence.J_6;
       case 10:
-        // +, - 
+        // +,-
         return PrecedenceUtil.Precedence.J_5;
       case 11:
-        // *, /, % 
+        // *,/,%
         return PrecedenceUtil.Precedence.J_4;
       default:
         return PrecedenceUtil.Precedence.DEFAULT;

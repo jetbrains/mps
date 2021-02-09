@@ -56,12 +56,12 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       Assert.assertFalse(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.BaseConcept$gP), CONCEPTS.INamedConcept$Kd));
       Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd), SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd)));
       Assert.assertTrue(CONCEPTS.INamedConcept$Kd instanceof SInterfaceConcept);
-      //  there's suspicious code in SConceptAdapter.getSuperInterfaces, make sure it didn't get out elsewhere 
+      // there'ssuspiciouscodeinSConceptAdapter.getSuperInterfaces,makesureitdidn'tgetoutelsewhere
       Assert.assertTrue(CONCEPTS.ImplementationWithStubPart$Lx.getSuperInterfaces().iterator().next().equals(CONCEPTS.ImplementationPart$LI));
     }
     public void test_conceptSuperConcept() throws Exception {
-      // state the fact we do not report BaseConcept as its own super-concept 
-      // it's questionable, as it makes BC the only concept without superconcept. 
+      // statethefactwedonotreportBaseConceptasitsownsuper-concept
+      // it'squestionable,asitmakesBCtheonlyconceptwithoutsuperconcept.
       SConcept baseConcept = CONCEPTS.BaseConcept$gP;
       Assert.assertNull(baseConcept.getSuperConcept());
       Assert.assertFalse(baseConcept.getSuperInterfaces().iterator().hasNext());
@@ -72,7 +72,7 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       SAbstractConcept defaultIfaceConcept = SNodeOperations.getConcept(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.INamedConcept$Kd)));
       Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
       Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.BaseConcept$gP));
-      // next two checks are questionable, as it puzzles users (see mbeddr slack Sep 17, 2016) 
+      // nexttwochecksarequestionable,asitpuzzlesusers(seembeddrslackSep17,2016)
       Assert.assertFalse(defaultIfaceConcept.equals(CONCEPTS.INamedConcept$Kd));
       Assert.assertFalse(SConceptOperations.isExactly(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
 

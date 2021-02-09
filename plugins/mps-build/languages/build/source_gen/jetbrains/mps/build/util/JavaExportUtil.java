@@ -59,7 +59,7 @@ public class JavaExportUtil {
           }
 
         } else {
-          // fatal, unknown element 
+          // fatal,unknownelement
           ListSequence.fromList(result).clear();
           break;
         }
@@ -98,11 +98,11 @@ public class JavaExportUtil {
   }
   public static void requireModule(VisibleArtifacts artifacts, SNode target, SNode contextNode, RequiredDependenciesBuilder builder) {
 
-    // dependencies closure 
+    // dependenciesclosure
     JavaModulesClosure closure = new JavaModulesClosure(target).closure(true);
 
-    // search for artifacts 
-    // XXX how come we concat BuildSource_JavaModule with BuildSourcePath, and use findArtifact for both? 
+    // searchforartifacts
+    // XXXhowcomeweconcatBuildSource_JavaModulewithBuildSourcePath,andusefindArtifactforboth?
     Iterable<SNode> required = Sequence.fromIterable(closure.getModules()).concat(Sequence.fromIterable(closure.getJars()).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.path$M9si);
@@ -155,7 +155,7 @@ public class JavaExportUtil {
   }
   @Nullable
   public static Tuples._2<SNode, Boolean> requireJar(VisibleArtifacts artifacts, SNode jar, SNode contextNode) {
-    // FIXME there's little value in contextNode, perhaps, shall leave the check to outer code (in case it cares at all) 
+    // FIXMEthere'slittlevalueincontextNode,perhaps,shallleavethechecktooutercode(incaseitcaresatall)
     if (SNodeOperations.getContainingRoot(jar) == SNodeOperations.getContainingRoot(contextNode)) {
       return null;
     }

@@ -35,7 +35,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
     Iterable<SNode> returnStatements = RulesFunctions_BaseLanguage.collectReturnStatements(SLinkOperations.getTarget(getAccessor, LINKS.statementList$HQ20));
     SNode expectedRetType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(getAccessor);
 
-    // should return subtypes of the 'expected type' 
+    // shouldreturnsubtypesofthe'expectedtype'
     for (SNode returnStatement : Sequence.fromIterable(returnStatements)) {
       if ((SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92) == null)) {
         {
@@ -53,7 +53,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
         }
       }
     }
-    // last expression statement can serve as return statement 
+    // lastexpressionstatementcanserveasreturnstatement
     SNode lastStatement = IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(getAccessor);
     if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ExpressionStatement$O8)) {
       SNode returnType = typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582401", true);

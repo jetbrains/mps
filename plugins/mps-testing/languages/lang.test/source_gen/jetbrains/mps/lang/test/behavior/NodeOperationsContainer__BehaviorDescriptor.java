@@ -63,7 +63,7 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
         IReferenceAttachable__BehaviorDescriptor.attachReference_id2wBFdLy8qmn.invoke(node, reference);
       }
     }
-    // only local 
+    // onlylocal
     if (PathManager.isFromSources()) {
       SLinkOperations.setTarget(newNode, LINKS.expectedMessage$6o6s, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, "jetbrains.mps.lang.test.structure.ExpectedMessageContainer")));
       SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.expectedMessage$6o6s), PROPS.text$ppyZ, reporter.getMessage());

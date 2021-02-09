@@ -49,7 +49,7 @@ public class ReplaceSingleLineCommentsWithGenericComments extends MigrationScrip
     Sequence.fromIterable(models).visitAll(new IVisitor<SModel>() {
       public void visit(SModel model) {
 
-        // Remove meaningless empty text comment parts 
+        // Removemeaninglessemptytextcommentparts
         ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.TextCommentPart$LX)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.SingleLineComment$Kw) && isEmptyString(trim_o7ozeo_a0a0a0a0a0a0a0c0a0a0a0b0e(SPropertyOperations.getString(it, PROPS.text$ag2i))) && ListSequence.fromList(SNodeOperations.getAllSiblings(it, false)).isNotEmpty();

@@ -105,8 +105,8 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
         }
       case METHOD_BREAKPOINT:
         {
-          //  I am going to replace method breakpoints with a new ones, so I temporary read old method breakpoints into line breakpoints 
-          //  todo new method breakpoints 
+          // Iamgoingtoreplacemethodbreakpointswithanewones,soItemporaryreadoldmethodbreakpointsintolinebreakpoints
+          // todonewmethodbreakpoints
           final JavaBreakpointInfo lineBreakpointInfo = XmlSerializer.deserialize(state, JavaBreakpointInfo.class);
           if (!(lineBreakpointInfo.isInitialized())) {
             return null;
@@ -133,7 +133,7 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
   @Override
   @Nullable
   public Element saveToState(@NotNull JavaBreakpoint breakpoint) {
-    //  MPS-11065 exception while saving breakpoints 
+    // MPS-11065exceptionwhilesavingbreakpoints
     if (breakpoint instanceof ILocationBreakpoint) {
       ILocationBreakpoint locationBreakpoint = (ILocationBreakpoint) breakpoint;
       BreakpointLocation location = locationBreakpoint.getLocation();

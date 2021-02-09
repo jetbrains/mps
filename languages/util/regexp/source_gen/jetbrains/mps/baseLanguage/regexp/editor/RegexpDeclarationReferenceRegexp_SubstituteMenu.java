@@ -49,7 +49,7 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
   public class SMP_ReferenceScope_xnowcq_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_xnowcq_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.RegexpDeclarationReferenceRegexp$LD, LINKS.regexp$ouw0);
     }
     @NotNull

@@ -70,54 +70,54 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
     myLoading = true;
     try {
       NodeSet ns = new NodeSet(myRoot);
-      // revision with the last revision we've analyzed content for 
+      // revisionwiththelastrevisionwe'veanalyzedcontentfor
       VcsFileRevision prevRevision = null;
       ContentRange prevContentRange = null;
-      // I assume first revision to be CurrentRevision with actual model/file content and myRoot node present 
+      // IassumefirstrevisiontobeCurrentRevisionwithactualmodel/filecontentandmyRootnodepresent
       for (VcsFileRevision rev : myInitialRevisions) {
         myProcessedRevisions++;
         try {
           byte[] revContent = rev.loadContent();
           List<LineContent> lineToContentMap = VCSPersistenceSupport.getLineToContentMap(revContent, true);
           if (lineToContentMap == null) {
-            // FIXME report somehow 
+            // FIXMEreportsomehow
             continue;
           }
           ContentRange contentRange = buildRanges(ns, lineToContentMap);
           if (prevRevision != null && contentRange.changedAgainst(prevContentRange)) {
-            // prevRevision == null when we process the very first revision, aka CurrentRevision. All we need to do then is to record state for further steps. 
-            // contentRange might be isEmpty, which indicates node addition/removal. Shall record the revision and go on, just in case the node is back in earlier revisions. 
+            // prevRevision==nullwhenweprocesstheveryfirstrevision,akaCurrentRevision.Allweneedtodothenistorecordstateforfurthersteps.
+            // contentRangemightbeisEmpty,whichindicatesnodeaddition/removal.Shallrecordtherevisionandgoon,justincasethenodeisbackinearlierrevisions.
             synchronized (myFilteredRevisions) {
               myFilteredRevisions.add(prevRevision);
             }
-            // fall-through 
+            // fall-through
           }
-          // if no changes, just skip this revision. Through there's no need to update prevContentRange as it's the same, do it for code simplicity 
+          // ifnochanges,justskipthisrevision.Throughthere'snoneedtoupdateprevContentRangeasit'sthesame,doitforcodesimplicity
           prevContentRange = contentRange;
-          // prevRevision, however, shall always point to the processed revision 
+          // prevRevision,however,shallalwayspointtotheprocessedrevision
           prevRevision = rev;
           myOnUpdate.run();
 
         } catch (ProcessCanceledException ex) {
-          // re-throw, it's handled further in the outside catch, just don't log. See MPS-30613 
+          // re-throw,it'shandledfurtherintheoutsidecatch,justdon'tlog.SeeMPS-30613
           throw ex;
         } catch (Exception ex) {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Error processing revision " + rev, ex);
           }
-          // FIXME report the exception in UI 
+          // FIXMEreporttheexceptioninUI
         }
       }
       if (prevContentRange != null && !(prevContentRange.isEmpty())) {
-        // last revision we've checked has some content that corresponds to node (e.g. node introduced in the very first revision of the file) 
-        // XXX perhaps, shall do it for any prevRevision != null just to get revision with no node (aka 'base') to give diff in any case (think of a single revision file with the node) 
+        // lastrevisionwe'vecheckedhassomecontentthatcorrespondstonode(e.g.nodeintroducedintheveryfirstrevisionofthefile)
+        // XXXperhaps,shalldoitforanyprevRevision!=nulljusttogetrevisionwithnonode(aka'base')togivediffinanycase(thinkofasinglerevisionfilewiththenode)
         synchronized (myFilteredRevisions) {
           myFilteredRevisions.add(prevRevision);
         }
       }
     } catch (ProcessCanceledException ex) {
-      // Though this exception is not manifested, chances are ProgressManager.checkCanceled() call somewhere deep down the call stack may cause it, 
-      // just ignore the exception and stop annotating. 
+      // Thoughthisexceptionisnotmanifested,chancesareProgressManager.checkCanceled()callsomewheredeepdownthecallstackmaycauseit,
+      // justignoretheexceptionandstopannotating.
     } finally {
       myLoading = false;
     }
@@ -134,18 +134,18 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
         if (ns.isOfInterest(lineNodeId)) {
           Integer start = firstLines.remove(lineNodeId);
           if (start != null) {
-            // assume it's the closing NodeLineContent for the same node id 
-            // FIXME instead of this assumptions, may want to introduce "closing tag" flag into NodeLineContent to detect start/end of a node range properly 
+            // assumeit'stheclosingNodeLineContentforthesamenodeid
+            // FIXMEinsteadofthisassumptions,maywanttointroduce"closingtag"flagintoNodeLineContenttodetectstart/endofanoderangeproperly
             contentRange.recordRange(lineNodeId, start, line, lineToContentMap);
           } else {
-            // first time we encountered a node of interest, record its start 
+            // firsttimeweencounteredanodeofinterest,recorditsstart
             firstLines.put(lineNodeId, line);
           }
         }
       }
       line++;
     }
-    // if there were no closing NodeLineContent, assume these records are one-liners 
+    // iftherewerenoclosingNodeLineContent,assumetheserecordsareone-liners
     for (SNodeId nid : firstLines.keySet()) {
       Integer l = firstLines.get(nid);
       contentRange.recordRange(nid, l, l, lineToContentMap);

@@ -95,9 +95,9 @@ public enum TestNodeWrapperFactory {
   JUnit4MethodsNodeWrapperFactory(CONCEPTS.InstanceMethodDeclaration$39, false) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
-      // XXX it's not clear to me how this story works in case test method comes from an abstract class (i.e. if we've got non-trivial test class hierarchy) 
-      //     It seems that in this case we just create an odd testcase for the abstract class. 
-      //     JUnit4MethodWrapper.getTestCase used to take node.ancestor<ClassConcept>, so it has been like that for a while. 
+      // XXXit'snotcleartomehowthisstoryworksincasetestmethodcomesfromanabstractclass(i.e.ifwe'vegotnon-trivialtestclasshierarchy)
+      // Itseemsthatinthiscasewejustcreateanoddtestcasefortheabstractclass.
+      // JUnit4MethodWrapper.getTestCaseusedtotakenode.ancestor<ClassConcept>,soithasbeenlikethatforawhile.
       if (JUnit4MethodWrapper.isJUnit4TestMethod(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$39))) {
         ITestNodeWrapper testCase = TestNodeWrapperFactory.JUnit4TestNodeWrapperFactory.wrap(SNodeOperations.getParent(node));
         return (testCase == null ? null : new JUnit4MethodWrapper(testCase, node));

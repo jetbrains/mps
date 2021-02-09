@@ -49,7 +49,7 @@ public class BeforeTaskCall_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_tv94kr_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_tv94kr_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BeforeTaskCall$iu, LINKS.beforeTask$2WC7);
     }
     @NotNull

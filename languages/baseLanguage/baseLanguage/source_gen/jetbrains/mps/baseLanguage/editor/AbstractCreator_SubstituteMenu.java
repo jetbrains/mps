@@ -201,7 +201,7 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
                 newTypeParam = SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), LINKS.typeParameter$F9H8, CONCEPTS.ClassifierType$bL);
                 SLinkOperations.setPointer(SNodeOperations.cast(newTypeParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"));
               }
-              // replace all type vars with new ones 
+              // replacealltypevarswithnewones
               Iterable<SNode> typeVarRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(creator, LINKS.cls$Saf6), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return Objects.equals(SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I), originalVar);

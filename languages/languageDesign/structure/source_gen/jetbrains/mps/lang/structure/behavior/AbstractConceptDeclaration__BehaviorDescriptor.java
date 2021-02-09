@@ -88,7 +88,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   @Deprecated
   @ToRemove(version = 3.3)
   /*package*/ static SModel getAspectModel_id7g4OXB0yli3(@NotNull SNode __thisNode__, LanguageAspect aspect) {
-    // [MM] this usage of LanguageAspect is reviewed 
+    // [MM]thisusageofLanguageAspectisreviewed
     Language language = SModelUtil.getDeclaringLanguage(__thisNode__);
     if (language == null) {
       return null;
@@ -102,7 +102,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   @Deprecated
   @ToRemove(version = 3.3)
   /*package*/ static List<SNode> findConceptAspectCollection_id1n18fON7w20(@NotNull SNode __thisNode__, LanguageAspect aspect) {
-    // [MM] this usage of LanguageAspect is reviewed 
+    // [MM]thisusageofLanguageAspectisreviewed
     List<SNode> result = new ArrayList<SNode>();
     SModel model = AbstractConceptDeclaration__BehaviorDescriptor.getAspectModel_id7g4OXB0yli3.invoke(__thisNode__, aspect);
     AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id7g4OXB0yl26.invoke(__thisNode__, model, result);
@@ -162,7 +162,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
           if (SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateDeclaration$5G) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TemplateDeclaration$5G), LINKS.applicableConcept$JSvx) == __thisNode__ || SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(node), LINKS.applicableConcept$LAIX) == __thisNode__) {
             ListSequence.fromList(result).addElement(node);
           } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.MappingConfiguration$7j) || SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateSwitch$j_)) {
-            // generator rules 
+            // generatorrules
             for (SNode r : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseMappingRule$O5, false, new SAbstractConcept[]{}))) {
               if (SLinkOperations.getTarget(r, LINKS.applicableConcept$Hpnk) == __thisNode__ || (SPropertyOperations.getBoolean(r, PROPS.applyToConceptInheritors$PfLi) && Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) false))).contains(SLinkOperations.getTarget(r, LINKS.applicableConcept$Hpnk)))) {
                 ListSequence.fromList(result).addElement(r);
@@ -259,15 +259,15 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     return abstractMethods;
   }
   /*package*/ static List<SNode> getLinkDeclarations_idhEwILKK(@NotNull SNode __thisNode__) {
-    // aka ConceptAndSuperConceptsCache.getLinkDeclarationsExcludingOverridden 
+    // akaConceptAndSuperConceptsCache.getLinkDeclarationsExcludingOverridden
 
     List<SNode> allLinks = Sequence.fromIterable(SLinkOperations.collectMany(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(__thisNode__, ((boolean) true)), LINKS.linkDeclaration$YU1f)).distinct().toListSequence();
     final Set<SNode> overridden = SetSequence.fromSet(new HashSet<SNode>());
-    // here I imply concepts are sorted from top to bottom, i.e. this concept coming first, its immediate superconcepts next and so on up to BaseConcept. 
-    // therefore, the moment we get to a link declaration that has been overridden in a subconcept, we expect it to be recorded in the 'overridden' set. 
-    //  
-    // Two scenarios in mind: given (C1.r1), (C2.r2) and (C3.r3), C3 extends C2 extends C1; first scenario is transitive, r2 specializes r1, r3 specializes r2;  
-    // second when both r2 and r3 specialize r1. For C3, there'd be 1 link declaration in the first scenario, namely {r3}, while for the second case it would be {r3,r2} 
+    // hereIimplyconceptsaresortedfromtoptobottom,i.e.thisconceptcomingfirst,itsimmediatesuperconceptsnextandsoonuptoBaseConcept.
+    // therefore,themomentwegettoalinkdeclarationthathasbeenoverriddeninasubconcept,weexpectittoberecordedinthe'overridden'set.
+    // 
+    // Twoscenariosinmind:given(C1.r1),(C2.r2)and(C3.r3),C3extendsC2extendsC1;firstscenarioistransitive,r2specializesr1,r3specializesr2;
+    // secondwhenbothr2andr3specializer1.ForC3,there'dbe1linkdeclarationinthefirstscenario,namely{r3},whileforthesecondcaseitwouldbe{r3,r2}
     ListSequence.fromList(allLinks).removeWhere(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         if ((SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null)) {
@@ -309,8 +309,8 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
       SetSequence.fromSet(concepts).addElement(__thisNode__);
     }
     AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invoke(__thisNode__.getConcept(), __thisNode__, concepts);
-    // getImmediateSuperconcepts for an interface declaration doesn't give BaseConcept, while it's necessary when we'd like to access BaseConcept properties and links 
-    // for a node with type of pure interface (e.g. DotExpression.operation:IOperation.virtualPackage) 
+    // getImmediateSuperconceptsforaninterfacedeclarationdoesn'tgiveBaseConcept,whileit'snecessarywhenwe'dliketoaccessBaseConceptpropertiesandlinks
+    // foranodewithtypeofpureinterface(e.g.DotExpression.operation:IOperation.virtualPackage)
     SetSequence.fromSet(concepts).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
     return concepts;
   }
@@ -322,7 +322,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     }
   }
   /*package*/ static SNode computeInHierarchy_id3CiBrVcn5fe(@NotNull SNode __thisNode__, _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> predicate) {
-    // todo: comment method!, use generics 
+    // todo:commentmethod!,usegenerics
     SNode result = predicate.invoke(__thisNode__);
     if (result != null) {
       return result;
@@ -342,7 +342,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     return null;
   }
   /*package*/ static Pair<Set<SNode>, Set<SNode>> getInLanguageAndNotInLanguageAncestors_id54xSEBmK0MK(@NotNull SNode __thisNode__) {
-    // todo: use tuple 
+    // todo:usetuple
     Set<SNode> inLanguageAncestors = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> notInLanguageAncestors = SetSequence.fromSet(new HashSet<SNode>());
 
@@ -355,7 +355,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
           SetSequence.fromSet(inLanguageAncestors).addSequence(SetSequence.fromSet(superconceptResult.o1));
           SetSequence.fromSet(notInLanguageAncestors).addSequence(SetSequence.fromSet(superconceptResult.o2));
         } else {
-          // other language 
+          // otherlanguage
           SetSequence.fromSet(notInLanguageAncestors).addElement(superconcept);
         }
       }

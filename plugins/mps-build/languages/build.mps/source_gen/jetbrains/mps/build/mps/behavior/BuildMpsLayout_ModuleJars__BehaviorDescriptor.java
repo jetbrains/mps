@@ -47,25 +47,25 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
     String parentLocation = helper.getContentLocation(parent);
     String moduleLocation = parentLocation + "/" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), PROPS.name$MnvL) + ".jar";
     helper.putLocation(__thisNode__, moduleLocation);
-    // XXX next is location() implementation moved to a proper moment of time, for the reason see BuildMpsLayout_Plugin_Behavior#unpack 
+    // XXXnextislocation()implementationmovedtoapropermomentoftime,forthereasonseeBuildMpsLayout_Plugin_Behavior#unpack
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA)) {
       moduleLocation = moduleLocation.substring(0, moduleLocation.length() - ".jar".length());
       int i = 0;
       SNode asLang = SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA);
-      // BEWARE here comes some odd peculiarity of build language. We do unpack for dependencies both from the same model (@0 transient) 
-      //   and external models that are not intended for modification (putLayoutRelativePath adds UO to the node), and what helps us here 
-      //   is that managedGenerators are initialized for @0 model and are empty otherwise. This leads to troubles referencing not the  
-      //   first one (default) generator from an external (different model) project - we don't know its i value from outside. 
-      // XXX perhaps, shall introduce an int property into Generator to keep its index? Or just force independent 'module' layout for managed  
-      // generators as well? Still, it's all just workarounds to get this bloody logic fixed, instead, shall use checkpoint models with  
-      // respective values obtained right from the intermediate model rather than introducing values into original model to support this sh!t 
+      // BEWAREherecomessomeoddpeculiarityofbuildlanguage.Wedounpackfordependenciesbothfromthesamemodel(@0transient)
+      // andexternalmodelsthatarenotintendedformodification(putLayoutRelativePathaddsUOtothenode),andwhathelpsushere
+      // isthatmanagedGeneratorsareinitializedfor@0modelandareemptyotherwise.Thisleadstotroublesreferencingnotthe
+      // firstone(default)generatorfromanexternal(differentmodel)project-wedon'tknowitsivaluefromoutside.
+      // XXXperhaps,shallintroduceanintpropertyintoGeneratortokeepitsindex?Orjustforceindependent'module'layoutformanaged
+      // generatorsaswell?Still,it'salljustworkaroundstogetthisbloodylogicfixed,instead,shallusecheckpointmodelswith
+      // respectivevaluesobtainedrightfromtheintermediatemodelratherthanintroducingvaluesintooriginalmodeltosupportthissh!t
       for (SNode gm : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(asLang, LINKS.managedGenerators$Hbof), LINKS.generator$98gH))) {
-        // see property macro for module-generator.jar name in reduce_BuildMpsLayout_ModuleJars 
+        // seepropertymacroformodule-generator.jarnameinreduce_BuildMpsLayout_ModuleJars
         helper.putLayoutRelativePath(__thisNode__, gm, moduleLocation + ((i > 0 ? String.format("-%d-generator.jar", i) : "-generator.jar")));
         i++;
       }
-      // I assume unpack() is invoked *after* loadMods MC (loadModules script) moves generator modules as language siblings 
-      // load_deps MC with prepare_dependencies script/FetchProcessor goes after loadMods 
+      // Iassumeunpack()isinvoked*after*loadModsMC(loadModulesscript)movesgeneratormodulesaslanguagesiblings
+      // load_depsMCwithprepare_dependenciesscript/FetchProcessorgoesafterloadMods
     }
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
@@ -73,30 +73,30 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
       SNode node = (SNode) artifactId;
       String moduleLocation = helper.getLocation(__thisNode__);
 
-      // could be generator that is part of a language (aka managed), then it would have layoutRelativePath set in unpack(), above 
-      //   this further falls into 2 options, when language/generator are part of the same model (and get layoutRelativePath set), 
-      //   or when they are part of external project and therefore we have only location for this layout node only. 
-      // also it could be a standalone generator module, or a 'managed' generator which is not part of the Language module. 
+      // couldbegeneratorthatispartofalanguage(akamanaged),thenitwouldhavelayoutRelativePathsetinunpack(),above
+      // thisfurtherfallsinto2options,whenlanguage/generatorarepartofthesamemodel(andgetlayoutRelativePathset),
+      // orwhentheyarepartofexternalprojectandthereforewehaveonlylocationforthislayoutnodeonly.
+      // alsoitcouldbeastandalonegeneratormodule,ora'managed'generatorwhichisnotpartoftheLanguagemodule.
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_Generator$RQ)) {
-        // I'd like to check this.module.isInstanceOf(BM_Language) not to give  
-        // location for arbitrary standalone generator modules. However, location() may get invoked with 'this' from transient model 0, 
-        // with artifactId from transient model 6+, and attempt to navigate 'this.module' may end up in disposed model,  
-        // rendering isInstanceOf check false. 
-        // Moreover, model 0 may get disposed during TC/test execution, and not disposed in IDE, leading to hard-to-tackle inconsistency defects.  
-        // If generator comes from the same model, utilize values calculated above in unpack() 
+        // I'dliketocheckthis.module.isInstanceOf(BM_Language)nottogive
+        // locationforarbitrarystandalonegeneratormodules.However,location()maygetinvokedwith'this'fromtransientmodel0,
+        // withartifactIdfromtransientmodel6+,andattempttonavigate'this.module'mayendupindisposedmodel,
+        // renderingisInstanceOfcheckfalse.
+        // Moreover,model0maygetdisposedduringTC/testexecution,andnotdisposedinIDE,leadingtohard-to-tackleinconsistencydefects.
+        // Ifgeneratorcomesfromthesamemodel,utilizevaluescalculatedaboveinunpack()
         String layoutRelativePath = helper.getLayoutRelativePath(__thisNode__, node);
         if ((layoutRelativePath != null && layoutRelativePath.length() > 0)) {
           return layoutRelativePath;
         }
-        // if there's no value, generator is either from external model (expect module from the same model to get UO with path) or is standalone 
-        // for external model case, this.module would point to a non-transient module; if it's a language, we are in layout node to cover language and 
-        // its managed generators. We don't have a mechanism to find out specific index of the managed generator, and default to the first one, which  
-        // is incorrect but tolerable as long as MPS itself doesn't expose managed generators for use in dependent projects. 
+        // ifthere'snovalue,generatoriseitherfromexternalmodel(expectmodulefromthesamemodeltogetUOwithpath)orisstandalone
+        // forexternalmodelcase,this.modulewouldpointtoanon-transientmodule;ifit'salanguage,weareinlayoutnodetocoverlanguageand
+        // itsmanagedgenerators.Wedon'thaveamechanismtofindoutspecificindexofthemanagedgenerator,anddefaulttothefirstone,which
+        // isincorrectbuttolerableaslongasMPSitselfdoesn'texposemanagedgeneratorsforuseindependentprojects.
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA)) {
-          // fallback to default path calculation, which doesn't respect multiple generators per language, by the way. 
+          // fallbacktodefaultpathcalculation,whichdoesn'trespectmultiplegeneratorsperlanguage,bytheway.
           return moduleLocation.substring(0, moduleLocation.length() - ".jar".length()) + "-generator.jar";
         }
-        // fall-through, for standalone generators with their own 'module' layout, we don't have layoutRelativePath, the one to use is that of layoutNode. 
+        // fall-through,forstandalonegeneratorswiththeirown'module'layout,wedon'thavelayoutRelativePath,theonetouseisthatoflayoutNode.
       }
 
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
@@ -112,7 +112,7 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
         return true;
       }
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_Generator$RQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA)) {
-        // layout 'module' for a language exports managed generators for the language (those that share mpl). 
+        // layout'module'foralanguageexportsmanagedgeneratorsforthelanguage(thosethatsharempl).
         SNode generator = SNodeOperations.cast(node, CONCEPTS.BuildMps_Generator$RQ);
         SNode sourceLanguage = BuildMps_Generator__BehaviorDescriptor.getSourceLanguage_id7YI57w6ZMdZ.invoke(generator);
         return SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT) == sourceLanguage && (boolean) BuildMps_Generator__BehaviorDescriptor.isManagedBy_idtxX2LHveIs.invoke(generator, sourceLanguage);

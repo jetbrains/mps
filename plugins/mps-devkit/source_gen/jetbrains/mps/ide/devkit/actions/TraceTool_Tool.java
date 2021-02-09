@@ -34,7 +34,7 @@ public class TraceTool_Tool extends GeneratedTool {
     TraceTool_Tool.this.myPanel = new TypeSystemTracePanel(TraceTool_Tool.this);
 
     ToolWindow toolWindow = TraceTool_Tool.this.getToolWindow();
-    // TODO: find way to rewrite this 
+    // TODO:findwaytorewritethis
 
     TraceTool_Tool.this.myBusConnection = project.getMessageBus().connect();
     TraceTool_Tool.this.myBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new EditorComponentCreateListener() {

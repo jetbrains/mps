@@ -146,7 +146,7 @@ __switch__:
     new _FunctionTypes._return_P0_E0<byte[]>() {
       public byte[] invoke() {
         return bytes.value = new byte[3];
-        //  no return value 
+        // noreturnvalue
       }
     }.invoke();
     Assert.assertSame(3, bytes.value.length);

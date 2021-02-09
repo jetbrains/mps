@@ -70,7 +70,7 @@ public final class PatternTest__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    // any child under nodeToMatch is of no interest for us 
+    // anychildundernodeToMatchisofnointerestforus
     return (SLinkOperations.getTarget(__thisNode__, LINKS.nodeToMatch$bNss) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.nodeToMatch$bNss));
   }
 

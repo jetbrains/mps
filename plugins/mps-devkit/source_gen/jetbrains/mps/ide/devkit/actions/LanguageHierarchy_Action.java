@@ -65,7 +65,7 @@ public class LanguageHierarchy_Action extends BaseAction {
     MPSLanguageVirtualFile file = MPSLanguagesVirtualFileSystem.getInstance().getFileFor(language);
     FileEditorManager editorManager = FileEditorManager.getInstance(event.getData(CommonDataKeys.PROJECT));
     FileEditor[] res = editorManager.openFile(file, true, true);
-    // no idea why explicit requestFocus when openFile() already asked for one. 
+    // noideawhyexplicitrequestFocuswhenopenFile()alreadyaskedforone.
     res[0].getComponent().requestFocus();
   }
 }

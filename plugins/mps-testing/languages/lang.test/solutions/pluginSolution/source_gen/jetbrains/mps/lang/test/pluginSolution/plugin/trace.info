@@ -41,7 +41,7 @@
       <unit id="5487985028841906241" at="9,0,18,0" name="jetbrains.mps.lang.test.pluginSolution.plugin.EditorInternalAddition_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
-      <node id="5487985028841906241" at="23,14,24,59" concept="2" />
+      <node id="5487985028841906241" at="23,13,24,59" concept="2" />
       <node id="5487985028841906242" at="26,37,27,137" concept="2" />
     </file>
   </root>
@@ -49,8 +49,8 @@
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="7162597690967702202" at="11,0,12,0" concept="3" trace="myId" />
       <node id="7162597690967702202" at="17,27,18,16" concept="5" />
-      <node id="7162597690967702202" at="21,30,22,30" concept="6" />
-      <node id="7162597690967702202" at="22,30,23,14" concept="6" />
+      <node id="7162597690967702202" at="21,30,22,27" concept="6" />
+      <node id="7162597690967702202" at="22,27,23,13" concept="6" />
       <node id="7162597690967702202" at="13,0,15,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
       <node id="7162597690967702202" at="26,0,29,0" concept="4" trace="adjustRegularGroups#()V" />
       <node id="7162597690967702202" at="16,0,20,0" concept="4" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />

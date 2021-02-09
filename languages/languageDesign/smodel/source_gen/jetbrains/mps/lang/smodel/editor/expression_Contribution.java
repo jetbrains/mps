@@ -84,7 +84,7 @@ public class expression_Contribution extends TransformationMenuBase {
   public class TMP_Group_2hw6rf_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      // use weak coerce because we want ':' to be applicable to SNode (class), linkAccess etc. 
+      // useweakcoercebecausewewant':'tobeapplicabletoSNode(class),linkAccessetc.
       SNode nodeType = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.SNodeType$hR);
       return nodeType != null;
     }

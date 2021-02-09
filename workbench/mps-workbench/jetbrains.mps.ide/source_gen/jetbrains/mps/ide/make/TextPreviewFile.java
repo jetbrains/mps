@@ -37,7 +37,7 @@ public class TextPreviewFile extends VirtualFile {
   }
 
   public TextPreviewFile(TextUnit textUnit, String modelName) {
-    // FIXME what's in modelName, do we really care to prepend it to file name? 
+    // FIXMEwhat'sinmodelName,dowereallycaretoprependittofilename?
     this(textUnit.getFileName(), textUnit, modelName);
   }
 
@@ -268,7 +268,7 @@ public class TextPreviewFile extends VirtualFile {
   }
   @Override
   public void refresh(boolean b, boolean b1, @Nullable Runnable runnable) {
-    // Do nothing and don't throw exception as StubVirtualFile to prevent error from TextPreviewModel_Action 
+    // Donothinganddon'tthrowexceptionasStubVirtualFiletopreventerrorfromTextPreviewModel_Action
   }
 
   @Override

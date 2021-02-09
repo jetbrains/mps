@@ -37,7 +37,7 @@ public class ModelAttributeChange extends MetadataChange {
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
-    // inspired by SetPropertyChange 
+    // inspiredbySetPropertyChange
     ChangeSet ocs = getChangeSet().getOppositeChangeSet();
     SModel m = ocs.getOldModel();
     String value = null;

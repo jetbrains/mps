@@ -40,8 +40,8 @@ public class DispatchUtil {
     });
   }
   public static Iterable<SNode> ancestors(final SNode arg, boolean concreteFirst) {
-    // true for baseLanguage, 
-    // for smodel it would be node<BaseConcept> 
+    // trueforbaseLanguage,
+    // forsmodelitwouldbenode<BaseConcept>
     final SNode rootOfHierarchy = SNodeOperations.cast(SLinkOperations.getTarget(_quotation_createNode_pzuztq_a0a0c0d(), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
 
     Iterable<SNode> classes = Sequence.fromClosure(new ISequenceClosure<SNode>() {
@@ -117,10 +117,10 @@ __switch__:
     });
 
     if (concreteFirst) {
-      // lazy seqeunce 
+      // lazyseqeunce
       return classes;
     } else {
-      // becomes strict 
+      // becomesstrict
       return ListSequence.fromList(Sequence.fromIterable(classes).toListSequence()).reversedList();
     }
   }
@@ -131,7 +131,7 @@ __switch__:
       while (c != base && (c != null)) {
         c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
       }
-      // either c==base or c is null 
+      // eitherc==baseorcisnull
       return (c != null);
     }
 

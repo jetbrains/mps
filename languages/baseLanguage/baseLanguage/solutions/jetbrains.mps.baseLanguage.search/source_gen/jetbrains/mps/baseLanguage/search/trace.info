@@ -43,32 +43,32 @@
   </root>
   <root nodeRef="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/3161373106581137350">
     <file name="VisibilityUtil.java">
-      <node id="2990203945682755988" at="27,80,28,115" concept="9" />
+      <node id="2990203945682755988" at="27,80,28,96" concept="9" />
       <node id="2990203945682755992" at="29,69,30,97" concept="8" />
       <node id="2933227483039242799" at="32,95,33,18" concept="8" />
       <node id="2990203945682756003" at="35,200,36,18" concept="8" />
       <node id="2990203945682756018" at="38,126,39,59" concept="8" />
-      <node id="2990203945682756030" at="40,5,41,35" concept="9" />
+      <node id="2990203945682756030" at="40,5,41,31" concept="9" />
       <node id="2990203945682756034" at="42,57,43,18" concept="8" />
-      <node id="2990203945682756043" at="45,128,46,50" concept="9" />
-      <node id="2990203945682756045" at="46,50,47,101" concept="7" />
-      <node id="2990203945682756139" at="50,318,51,107" concept="9" />
-      <node id="46179992838786363" at="51,107,52,110" concept="9" />
+      <node id="2990203945682756043" at="45,128,46,43" concept="9" />
+      <node id="2990203945682756045" at="46,43,47,101" concept="7" />
+      <node id="2990203945682756139" at="50,318,51,94" concept="9" />
+      <node id="46179992838786363" at="51,94,52,97" concept="9" />
       <node id="546439919561133701" at="53,343,54,26" concept="8" />
-      <node id="2990203945682756163" at="56,94,57,98" concept="9" />
-      <node id="2990203945682756165" at="57,98,58,242" concept="8" />
+      <node id="2990203945682756163" at="56,94,57,87" concept="9" />
+      <node id="2990203945682756165" at="57,87,58,242" concept="8" />
       <node id="2990203945682756184" at="59,18,60,24" concept="8" />
       <node id="2990203945682756199" at="64,5,65,17" concept="8" />
       <node id="1114046917061967736" at="67,57,68,87" concept="7" />
       <node id="3192866263144677118" at="68,87,69,52" concept="8" />
       <node id="3192866263144677178" at="71,58,72,110" concept="8" />
-      <node id="2684528044289749171" at="74,101,75,42" concept="9" />
+      <node id="2684528044289749171" at="74,101,75,37" concept="9" />
       <node id="2684528044289748980" at="76,31,77,18" concept="8" />
       <node id="2684528044289748956" at="79,132,80,65" concept="8" />
       <node id="6139857295094308053" at="81,5,82,101" concept="7" />
       <node id="2684528044289798057" at="83,53,84,19" concept="8" />
       <node id="2684528044289749000" at="86,187,87,18" concept="8" />
-      <node id="6139857295094308117" at="89,134,90,36" concept="9" />
+      <node id="6139857295094308117" at="89,134,90,31" concept="9" />
       <node id="2684528044289749116" at="92,100,93,22" concept="8" />
       <node id="2684528044289749121" at="96,5,97,17" concept="8" />
       <node id="3342685437084052880" at="99,88,100,63" concept="7" />
@@ -94,20 +94,20 @@
       <node id="3161373106581137350" at="126,0,127,0" concept="11" trace="visibility$Yyua" />
       <node id="3161373106581137352" at="25,0,27,0" concept="1" trace="VisibilityUtil#()V" />
       <node id="2990203945682756180" at="59,16,61,11" concept="0" />
-      <node id="2990203945682755990" at="28,115,31,5" concept="5" />
+      <node id="2990203945682755990" at="28,96,31,5" concept="5" />
       <node id="2933227483039242782" at="31,5,34,5" concept="5" />
       <node id="2990203945682756001" at="34,5,37,5" concept="5" />
       <node id="2990203945682756016" at="37,5,40,5" concept="5" />
-      <node id="2990203945682756032" at="41,35,44,5" concept="5" />
-      <node id="546439919561133667" at="52,110,55,13" concept="5" />
+      <node id="2990203945682756032" at="41,31,44,5" concept="5" />
+      <node id="546439919561133667" at="52,97,55,13" concept="5" />
       <node id="3192866263144677170" at="71,0,74,0" concept="12" trace="topClassifier#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2684528044289748970" at="75,42,78,5" concept="5" />
+      <node id="2684528044289748970" at="75,37,78,5" concept="5" />
       <node id="2684528044289748939" at="78,5,81,5" concept="5" />
       <node id="2684528044289798020" at="82,101,85,5" concept="5" />
       <node id="2684528044289748983" at="85,5,88,5" concept="5" />
       <node id="2684528044289749091" at="91,120,94,9" concept="5" />
       <node id="3192866263144677099" at="67,0,71,0" concept="12" trace="packageName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="2684528044289749072" at="90,36,95,7" concept="4" />
+      <node id="2684528044289749072" at="90,31,95,7" concept="4" />
       <node id="3342685437084052880" at="99,0,106,0" concept="12" trace="_quotation_createNode_v8uv56_b0a2a0a0a2a7a1#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2684528044289749053" at="88,5,96,5" concept="5" />
       <node id="2990203945682756128" at="49,61,61,11" concept="5" />
@@ -143,7 +143,7 @@
         <var name="node" id="3192866263144677104" />
       </scope>
       <scope id="2990203945682756138" at="50,318,55,13" />
-      <scope id="2684528044289749072" at="90,36,95,7">
+      <scope id="2684528044289749072" at="90,31,95,7">
         <var name="cls" id="2684528044289749073" />
       </scope>
       <scope id="3342685437084052880" at="99,88,104,24">

@@ -100,9 +100,9 @@ public class GenTestWorker extends BaseGeneratorWorker {
    * than collect some modules (under Project's MA lock!), but process them independently using ObjectsToProcess
    */
   /*package*/ Set<SModule> collectFromModuleFiles(SRepository repo) {
-    // XXX don't want to have ordering here but used to be that way in GenTestWorker and might be helpful 
-    // to reproduce errors/get predictable behavior. 
-    // FIXME GenTestWorker/GenTestTask still use module files as configuration argument (from Java code perspective, need to check actual tasks in scripts and generator thereof) 
+    // XXXdon'twanttohaveorderingherebutusedtobethatwayinGenTestWorkerandmightbehelpful
+    // toreproduceerrors/getpredictablebehavior.
+    // FIXMEGenTestWorker/GenTestTaskstillusemodulefilesasconfigurationargument(fromJavacodeperspective,needtocheckactualtasksinscriptsandgeneratorthereof)
     return processModuleFiles(repo, myWhatToDo.getModules());
   }
 
@@ -158,8 +158,8 @@ public class GenTestWorker extends BaseGeneratorWorker {
     IScriptController ctl = new IScriptController.Stub2(ms, ppi.toArray(new PropertyPoolInitializer[ppi.size()]));
     try {
       BuildMakeService bms = new BuildMakeService();
-      // FIXME I've got a solid feeling that without Test make facet, myReporter makes no sense, as well as both ITestReporter implementations 
-      //       Though they do not bother me at the moment, hence left alive. 
+      // FIXMEI'vegotasolidfeelingthatwithoutTestmakefacet,myReportermakesnosense,aswellasbothITestReporterimplementations
+      // Thoughtheydonotbothermeatthemoment,henceleftalive.
       myReporter.finishRun();
       myReporter.startRun(myWhatToDo.getProperty("ant.project.name"));
       Future<IResult> result = bms.make(ms, collectResources(project, modules), null, ctl);
@@ -180,18 +180,18 @@ public class GenTestWorker extends BaseGeneratorWorker {
         new ModuleMaker().make(modules, new EmptyProgressMonitor() {
           @Override
           public void step(String text) {
-            // silently 
+            // silently
           }
           @Override
           public void start(@NotNull String taskName, int work) {
-            // silently 
+            // silently
           }
         }, myJavaCompilerOptions);
       }
     });
     access.runWriteAction(new Runnable() {
       public void run() {
-        // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case) 
+        // thefollowingupdatesstubmodelsthatcouldchangeduetothecompilationhappened(webr,3.0migrationcase)
         for (SModule m : project.getRepository().getModules()) {
           if (!((m instanceof AbstractModule))) {
             continue;

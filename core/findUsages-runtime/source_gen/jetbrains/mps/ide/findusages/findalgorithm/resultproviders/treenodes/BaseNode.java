@@ -88,7 +88,7 @@ public abstract class BaseNode implements IResultProvider {
   @NotNull
   @Override
   public SearchResults getResults(@NotNull SearchQuery query, @Nullable ProgressMonitor monitor) {
-    // assert !ThreadUtils.isEventDispatchThread(); 
+    // assert!ThreadUtils.isEventDispatchThread();
     CollectingCallback callback = new CollectingCallback();
     findResults(query, callback, monitor);
     return callback.getResults();

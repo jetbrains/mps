@@ -63,7 +63,7 @@ public final class EvaluationModule extends AbstractModule implements SModule {
   public void addClassPathItem(String path) {
     if (!(SetSequence.fromSet(myClassPaths).contains(path))) {
       SetSequence.fromSet(myClassPaths).addElement(path);
-      // Here, we use File just to populate MRD, which keeps strings, therefore we don't care to use anything but a mechanism to access parent/name. 
+      // Here,weuseFilejusttopopulateMRD,whichkeepsstrings,thereforewedon'tcaretouseanythingbutamechanismtoaccessparent/name.
       ModelRootDescriptor javaStubRoot = ModelRootDescriptor.addJavaStubModelRoot(new File(path), myDescriptor.getModelRootDescriptors());
       if (javaStubRoot != null) {
         myDescriptor.getModelRootDescriptors().add(javaStubRoot);

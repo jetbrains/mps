@@ -49,7 +49,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     setBorder(new TitledBorder("Default values"));
 
-    // Not visible by default -> need to add elements through SNodeChangeListener's callbacks 
+    // Notvisiblebydefault->needtoaddelementsthroughSNodeChangeListener'scallbacks
     setVisible(false);
     myBaseMethod = baseMethod;
   }
@@ -94,7 +94,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
    * @param parameter parameter with no current editor
    */
   private void createEditorFor(SNode parameter) {
-    // No editor for parameters with arity type 
+    // Noeditorforparameterswitharitytype
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
       return;
     }
@@ -112,7 +112,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   @Override
   public void nodeAdded(@NotNull SNodeAddEvent event) {
-    // Parameter declaration added 
+    // Parameterdeclarationadded
     {
       final SNode param = event.getChild();
       if (SNodeOperations.isInstanceOf(param, CONCEPTS.ParameterDeclaration$RG)) {
@@ -121,13 +121,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
 
-    // Some parameter edited (parameter change?) 
+    // Someparameteredited(parameterchange?)
     {
       final SNode parent = event.getParent();
       if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BaseConcept$gP)) {
         final SNode ancestor = SNodeOperations.getNodeAncestor(parent, CONCEPTS.ParameterDeclaration$RG, true, false);
         if ((ancestor != null) && (SLinkOperations.getTarget(ancestor, LINKS.type$a1UY) != null)) {
-          // Find editor (if any yet) 
+          // Findeditor(ifanyyet)
           boolean isArityType = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ancestor, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF);
           ParamDefaultValueEditor editor = ListSequence.fromList(parameters).findFirst(new IWhereFilter<ParamDefaultValueEditor>() {
             public boolean accept(ParamDefaultValueEditor it) {
@@ -136,20 +136,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
           });
 
           if (editor == null) {
-            // If no editor and the type is not arity type (checked inside method), there should be an editor 
+            // Ifnoeditorandthetypeisnotaritytype(checkedinsidemethod),thereshouldbeaneditor
             createEditorFor(ancestor);
 
           } else if (isArityType) {
-            // Variable arity + editor -> no need for default value anymore 
+            // Variablearity+editor->noneedfordefaultvalueanymore
             ListSequence.fromList(parameters).removeElement(editor);
             editor.dispose();
             updateVisibility();
 
           } else if (!(editor.isTouched())) {
-            // Untouched editor -> update value according to type 
+            // Untouchededitor->updatevalueaccordingtotype
             editor.setDefaultValue(((SNode) BHReflection.invoke0(SLinkOperations.getTarget(ancestor, LINKS.type$a1UY), CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4"))));
 
-            // Set touched back to false after a change has been made 
+            // Settouchedbacktofalseafterachangehasbeenmade
             editor.setTouched(false);
           }
 
@@ -159,7 +159,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   @Override
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
-    // Remove editor of deleted parameters 
+    // Removeeditorofdeletedparameters
     {
       final SNode param = event.getChild();
       if (SNodeOperations.isInstanceOf(param, CONCEPTS.ParameterDeclaration$RG)) {

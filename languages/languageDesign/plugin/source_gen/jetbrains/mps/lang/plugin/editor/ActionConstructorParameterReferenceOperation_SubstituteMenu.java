@@ -49,7 +49,7 @@ public class ActionConstructorParameterReferenceOperation_SubstituteMenu extends
   public class SMP_ReferenceScope_jidviz_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_jidviz_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.ActionConstructorParameterReferenceOperation$eO, LINKS.member$oLt6);
     }
     @NotNull

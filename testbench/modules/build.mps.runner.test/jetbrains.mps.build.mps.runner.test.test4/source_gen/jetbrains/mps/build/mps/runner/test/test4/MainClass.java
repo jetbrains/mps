@@ -56,7 +56,7 @@ public class MainClass {
       }
     });
     assert model != null;
-    // check model content 
+    // checkmodelcontent
     final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<SNode>() {
       public SNode compute() {
         return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
@@ -68,7 +68,7 @@ public class MainClass {
     });
     assert node != null;
 
-    // test write access 
+    // testwriteaccess
     final Wrappers._T<SNode> result = new Wrappers._T<SNode>(null);
     ThreadUtils.runInUIThreadAndWait(new Runnable() {
       public void run() {
@@ -86,7 +86,7 @@ public class MainClass {
     });
     assert result.value != null;
 
-    // create resulting file to signal everything is OK 
+    // createresultingfiletosignaleverythingisOK
     jetbrains.mps.build.mps.runner.test.test1.MainClass.mpsMain();
   }
   private static SNode _quotation_createNode_ea23db_a0a0a0a0a0a0p0e() {

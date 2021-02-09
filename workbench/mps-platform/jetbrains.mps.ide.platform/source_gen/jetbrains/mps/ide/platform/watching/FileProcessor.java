@@ -186,7 +186,7 @@ import java.util.Arrays;
   private static boolean acceptDescendant(String eventPath, FileSystemListener listenerToChildFile, EventKind kind) {
     IFile childFile = listenerToChildFile.getFileToListen();
     String realChildPath = childFile.toRealPath();
-    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well 
+    // contracttocommentoutlater;someproblemswithIJstartsWith,itdoesnothandlejarpathswith!/toowell
     assert StringUtil.startsWith(realChildPath, eventPath) || FileUtil.startsWith(realChildPath, eventPath) : "Contract is broken: " + realChildPath + " does not start with " + eventPath;
     if (kind == EventKind.CREATED && listenerToChildFile.listeningPreferences().notifyOnParentCreation) {
       return true;
@@ -201,7 +201,7 @@ import java.util.Arrays;
   private static boolean acceptAncestor(String eventPath, FileSystemListener listenerToParentFile, EventKind kind) {
     IFile parentFile = listenerToParentFile.getFileToListen();
     String realParentPath = parentFile.toRealPath();
-    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well 
+    // contracttocommentoutlater;someproblemswithIJstartsWith,itdoesnothandlejarpathswith!/toowell
     assert StringUtil.startsWith(eventPath, realParentPath) || FileUtil.startsWith(eventPath, realParentPath) : "Contract is broken: " + eventPath + " does not start with " + realParentPath;
     if (kind == EventKind.CREATED && listenerToParentFile.listeningPreferences().notifyOnChildCreation) {
       return true;

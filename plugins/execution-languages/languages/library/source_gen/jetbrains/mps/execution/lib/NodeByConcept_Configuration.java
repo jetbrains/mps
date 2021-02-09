@@ -92,8 +92,8 @@ public class NodeByConcept_Configuration implements IPersistentConfiguration {
   public NodeByConcept_Configuration clone() {
     NodeByConcept_Configuration clone = createCloneTemplate();
     try {
-      // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-      // the value of myState, and != clone as regular Java passer-by would expect. 
+      // beware,PersistenceConfiguration.thisofnewlycreatedMyStateinstancewouldbethesameas
+      // thevalueofmyState,and!=cloneasregularJavapasser-bywouldexpect.
       clone.myState = (MyState) myState.clone();
     } catch (CloneNotSupportedException ex) {
       if (LOG.isEnabledFor(Level.ERROR)) {

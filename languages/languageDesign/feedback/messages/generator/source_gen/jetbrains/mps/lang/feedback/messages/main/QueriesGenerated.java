@@ -59,8 +59,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.message$imTD) != null;
   }
   public static boolean ifMacro_Condition_1_1(final IfMacroContext _context) {
-    // XXX Not that I like this code, but don't want to deal with the complete restructuring of message/feedback/context languages 
-    //   
+    // XXXNotthatIlikethiscode,butdon'twanttodealwiththecompleterestructuringofmessage/feedback/contextlanguages
+    // 
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.message$imTD), LINKS.part$kCpv), CONCEPTS.MacroMessageExpression$DF)).isEmpty();
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {

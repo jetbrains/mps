@@ -51,13 +51,13 @@ public class Template_reduce_GetAllSiblingsOperation extends TemplateDeclaration
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_19_0(new PropertyMacroContext(context1, null, propertyMacro_qcgeyz_c0a2a0a1a4a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

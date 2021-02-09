@@ -36,8 +36,8 @@ public final class LinkDeclarationLookup {
 
   public LinkDeclarationLookup(@NotNull SAbstractConcept concept) {
     myConcept = (SNode) concept.getDeclarationNode();
-    // XXX what if it's not our ACD that served as concept declaration node, shall I respect this scenario here? 
-    //    I do not respect it right away as I merely refactoring existing code that did exactly that, cast getDeclarationNode(). 
+    // XXXwhatifit'snotourACDthatservedasconceptdeclarationnode,shallIrespectthisscenariohere?
+    // IdonotrespectitrightawayasImerelyrefactoringexistingcodethatdidexactlythat,castgetDeclarationNode().
   }
 
   /**
@@ -49,7 +49,7 @@ public final class LinkDeclarationLookup {
       return override;
     }
     final String linkName = link.getName();
-    // with findOverride() we have checked links with specializedLink!=null, only plain LD left to check 
+    // withfindOverride()wehavecheckedlinkswithspecializedLink!=null,onlyplainLDlefttocheck
     return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) == null) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), linkName);
@@ -82,18 +82,18 @@ public final class LinkDeclarationLookup {
    *   C3.getLinkDeclarations() = { ld3, ld2 } (order!). LinkDeclarationLookup(C3).getMostSpecificLinkDeclarationFor(ld1) == ld3
    */
   private SNode findOverride(SAbstractLink link) {
-    // Two scenarios in mind: given (C1.r1), (C2.r2) and (C3.r3), C3 extends C2 extends C1; first scenario is transitive, r2 specializes r1, r3 specializes r2;  
-    // second when both r2 and r3 specialize r1. For C3, there'd be 1 link declaration in the first scenario, namely {r3}, while for the second case it would be {r3,r2} 
+    // Twoscenariosinmind:given(C1.r1),(C2.r2)and(C3.r3),C3extendsC2extendsC1;firstscenarioistransitive,r2specializesr1,r3specializesr2;
+    // secondwhenbothr2andr3specializer1.ForC3,there'dbe1linkdeclarationinthefirstscenario,namely{r3},whileforthesecondcaseitwouldbe{r3,r2}
 
-    // SAbstractLink is always the "base"/persistence one; the one that could be specialized in a subconcept 
-    // getLinkDeclarations gives most specific LD instance if there are few specialization, that's why the first one to match is fine (assuming no unrelated links with the same name) 
+    // SAbstractLinkisalwaysthe"base"/persistenceone;theonethatcouldbespecializedinasubconcept
+    // getLinkDeclarationsgivesmostspecificLDinstanceiftherearefewspecialization,that'swhythefirstonetomatchisfine(assumingnounrelatedlinkswiththesamename)
     final String linkName = link.getName();
     for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null;
       }
     })) {
-      // specializedLink may point to another LD with specializedLink 
+      // specializedLinkmaypointtoanotherLDwithspecializedLink
       SNode sl = SLinkOperations.getTarget(ld, LINKS.specializedLink$7ZCN);
       while (SLinkOperations.getTarget(sl, LINKS.specializedLink$7ZCN) != null) {
         sl = SLinkOperations.getTarget(sl, LINKS.specializedLink$7ZCN);

@@ -68,10 +68,10 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
 
-    // fetch generation deps 
+    // fetchgenerationdeps
     BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invoke(__thisNode__, artifacts, builder);
 
-    // fetch stuff for ant task classpath 
+    // fetchstuffforanttaskclasspath
     SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(project, "ant-mps"), CONCEPTS.BuildSource_JavaModule$NC);
     if ((antMpsModule != null)) {
       SNode antMpsJar = SNodeOperations.as(artifacts.findArtifact(antMpsModule), CONCEPTS.BuildLayout_Node$Rb);
@@ -79,8 +79,8 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
         builder.addWithTag(antMpsJar, "ant-mps");
       }
     }
-    // FIXME consider JavaExternalLibraryHelper re-use 
-    // XXX isn't it odd to populate DependenciesHelper here (addWithTag hides this now, but still), and not in unpack? 
+    // FIXMEconsiderJavaExternalLibraryHelperre-use
+    // XXXisn'titoddtopopulateDependenciesHelperhere(addWithTaghidesthisnow,butstill),andnotinunpack?
     SNode jdomLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$6q, LINKS.parts$mGDj, ((int) 0)).resolve(project, "jdom-lib"), CONCEPTS.BuildSource_JavaLibrary$6q);
     if (jdomLib != null) {
       SNode jdomJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(jdomLib, LINKS.elements$fli0), CONCEPTS.BuildSource_JavaLibraryCP$up)).first(), LINKS.classpath$WEG$), CONCEPTS.BuildSource_JavaLibraryExternalJar$gz), LINKS.extJar$Hzyz);
@@ -98,7 +98,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }
 
-    // fetch jetbrains.mps.tool.gentest language which holds Diff and Test make facets 
+    // fetchjetbrains.mps.tool.gentestlanguagewhichholdsDiffandTestmakefacets
     SNode gentest = SNodeOperations.cast(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildMps_Module$JW, LINKS.parts$mGDj, ((int) 0)).resolve(project, "jetbrains.mps.tool.gentest"), CONCEPTS.BuildMps_Module$JW);
 
     if ((gentest != null) && SNodeOperations.getContainingRoot(gentest) != SNodeOperations.getContainingRoot(__thisNode__)) {
@@ -133,7 +133,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void fetchGenerationDeps_id3WZD5LHqDLU(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesPartitioner partitioner = new MPSModulesPartitioner(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));
-    // XXX I see no apparent reason to build chunks as long as all we use is set of 'external' modules 
+    // XXXIseenoapparentreasontobuildchunksaslongasallweuseissetof'external'modules
     partitioner.buildExternalDependencies();
     Iterable<SNode> allModules = partitioner.getExternal();
     for (SNode generationDep : Sequence.fromIterable(allModules)) {

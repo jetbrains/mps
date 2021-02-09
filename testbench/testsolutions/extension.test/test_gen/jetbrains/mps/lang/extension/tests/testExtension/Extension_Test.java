@@ -32,7 +32,7 @@ public class Extension_Test {
       it.next();
       Assert.fail("unexpected value");
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
     TestObject to = ext.get();
     TEST_OBJECT = to;

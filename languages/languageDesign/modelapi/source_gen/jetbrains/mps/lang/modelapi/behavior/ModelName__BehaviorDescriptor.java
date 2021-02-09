@@ -67,7 +67,7 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
     return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$NlW3));
   }
   /*package*/ static void updateValue_id2bm9xT0zPoJ(@NotNull SNode __thisNode__, SModelName modelName) {
-    // I don't expect to get null value here, if null comes, it's better to fail right away, rather than unexpectedly on later getNamespace()  
+    // Idon'texpecttogetnullvaluehere,ifnullcomes,it'sbettertofailrightaway,ratherthanunexpectedlyonlatergetNamespace()
     SPropertyOperations.assign(__thisNode__, PROPS.value$NlW3, modelName.getValue());
   }
 

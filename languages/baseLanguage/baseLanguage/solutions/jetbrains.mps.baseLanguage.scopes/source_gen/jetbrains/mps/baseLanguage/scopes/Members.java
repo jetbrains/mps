@@ -14,7 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Members {
   private Members() {
-    // todo: extension methods? 
+    // todo:extensionmethods?
   }
   public static Iterable<SNode> visibleInstanceFields(SNode classifierType, SNode contextNode) {
     return visible(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.FieldDeclaration$ie), classifierType, contextNode);

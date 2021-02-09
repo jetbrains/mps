@@ -63,7 +63,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
     }
     synchronized (this) {
       if (myZipFile != null) {
-        // e.g. other thread got the guard to 0 and about to release the zip, but we got into synchronized section first 
+        // e.g.otherthreadgottheguardto0andabouttoreleasethezip,butwegotintosynchronizedsectionfirst
         return;
       }
       try {
@@ -84,7 +84,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       return;
     }
     synchronized (this) {
-      // while we were getting ready to release the zip, someone else came and tries to acquire(), don't need to release then. 
+      // whileweweregettingreadytoreleasethezip,someoneelsecameandtriestoacquire(),don'tneedtoreleasethen.
       if (myZipGuard.get() != 0) {
         return;
       }
@@ -105,13 +105,13 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
     if (myZipFile == null) {
       return null;
     }
-    // XXX shall I limit javadoc to public classes/non-private members only? 
-    //  
+    // XXXshallIlimitjavadoctopublicclasses/non-privatemembersonly?
+    // 
     Documentation d = myClassToDoc.get(aClass.getName());
     if (d != null) {
       return d;
     }
-    //  
+    // 
     ZipEntry entry = myZipFile.getEntry(aClass.getName() + ".java");
     if (entry == null) {
       return null;
@@ -125,9 +125,9 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       ProblemReporter pr = new ProblemReporter(DefaultErrorHandlingPolicies.ignoreAllProblems(), myOptions, new DefaultProblemFactory());
       Parser p = new Parser(pr, false);
       CompilationUnitDeclaration cud = p.dietParse(cu, cr);
-      // I know there could be more than 1 type declaration in a single CU, I just don't want to deal with any  irregular .java files at the moment. 
-      // Even if I iterate over all TypeDeclarations in a CU, I would have hard time to ensure I parse correct CU the moment I'm asked for a class. To do it right, 
-      // I'd need to read CUs from the whole directory first anyway. 
+      // Iknowtherecouldbemorethan1typedeclarationinasingleCU,Ijustdon'twanttodealwithanyirregular.javafilesatthemoment.
+      // EvenifIiterateoverallTypeDeclarationsinaCU,IwouldhavehardtimetoensureIparsecorrectCUthemomentI'maskedforaclass.Todoitright,
+      // I'dneedtoreadCUsfromthewholedirectoryfirstanyway.
       if (cud.types != null && cud.types.length == 1) {
         d = buildFor(contents, cud.types[0]);
       }
@@ -137,7 +137,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       myClassToDoc.put(aClass.getName(), d);
       return d;
     } catch (Exception ex) {
-      // fine, no documentation for the class 
+      // fine,nodocumentationfortheclass
       Logger.getLogger(SingleZipWithJavaSources.class).debug(String.format("Failed to read/parse source for %s from %s", entry.getName(), myZipFile.getName()), ex);
       return null;
     } finally {
@@ -170,7 +170,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
         method2Doc.put(signature.getStringSignature(), methodDoc);
       }
     }
-    // FIXME caller has to look into memberTypes if it needs to 
+    // FIXMEcallerhastolookintomemberTypesifitneedsto
     return new ZipDoc(classDoc, fieldName2Doc, method2Doc);
   }
 
@@ -192,11 +192,11 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
     final int STAR = 1;
     final int STAR2 = 2;
     final int TEXT = 3;
-    // strip head off 
+    // stripheadoff
     int state = SLASH;
     for (; from < to; from++) {
       if (state == SLASH) {
-        // ignore any character prior to /** 
+        // ignoreanycharacterpriorto/**
         if (contents[from] == '/') {
           state = STAR;
         }
@@ -223,11 +223,11 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
     if (state != TEXT) {
       return Collections.<String>emptyList();
     }
-    // strip tail off 
+    // striptailoff
     state = SLASH;
     for (; to > from; to--) {
       if (state == SLASH) {
-        // ignore any character after */ 
+        // ignoreanycharacterafter*/
         if (contents[to] == '/') {
           state = STAR;
         }
@@ -247,7 +247,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
     if (state != TEXT || to - from < 2) {
       return Collections.<String>emptyList();
     }
-    // ok, now contents[from..to] has leading and trailing javadoc 'brackets' and extra '*' stripped off 
+    // ok,nowcontents[from..to]hasleadingandtrailingjavadoc'brackets'andextra'*'strippedoff
     int lineStart = -1;
     ArrayList<String> rv = new ArrayList<String>(4);
     state = STAR;
@@ -272,7 +272,7 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
         state = STAR;
       }
     }
-    // in case last line doesn't end up with '\n' 
+    // incaselastlinedoesn'tendupwith'\n'
     if (state == TEXT) {
       rv.add(new String(contents, lineStart, to - lineStart));
     }

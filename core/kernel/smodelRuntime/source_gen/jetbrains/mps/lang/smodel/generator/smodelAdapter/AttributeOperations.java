@@ -103,7 +103,7 @@ public class AttributeOperations {
     if (role == null) {
       return false;
     }
-    // XXX why not isInstanceOf(Attribute)? Do we allow not node<Attribute> as attributes? 
+    // XXXwhynotisInstanceOf(Attribute)?Doweallownotnode<Attribute>asattributes?
     return role.equals(LINKS.smodelAttribute$KJ43);
   }
 

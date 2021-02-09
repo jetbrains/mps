@@ -238,8 +238,8 @@ public class ModelCheckerBuilder {
 
     @Override
     public IssueKindReportItem.ItemKind getIssueKind() {
-      // no idea how to construct ItemKind (and no proper documentation, despite MPS-26043 marked as fixed), 
-      // just took other similar classes for inspiration 
+      // noideahowtoconstructItemKind(andnoproperdocumentation,despiteMPS-26043markedasfixed),
+      // justtookothersimilarclassesforinspiration
       return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind("exception");
     }
   }
@@ -250,7 +250,7 @@ public class ModelCheckerBuilder {
 
     @Override
     public IssueKindReportItem.ItemKind getIssueKind() {
-      // see CancelForModel#getIssueKind for whine and frustration 
+      // seeCancelForModel#getIssueKindforwhineandfrustration
       return IssueKindReportItem.MODULE_PROPERTIES.deriveItemKind("exception");
     }
   }

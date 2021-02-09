@@ -41,15 +41,15 @@ public final class AbstractNodeMacroNamespace__BehaviorDescriptor extends BaseBH
   /*package*/ static SNode getTargetMacroOfConceptFrom_id2vVmcK3rHVe(@NotNull SAbstractConcept __thisConcept__, final SAbstractConcept macroConcept, SNode parent) {
     SNode nodeMacroAncestor = SNodeOperations.getNodeAncestor(parent, CONCEPTS.NodeMacro$qU, true, false);
     if ((nodeMacroAncestor != null)) {
-      // If the node is contained in a node macro 
+      // Ifthenodeiscontainedinanodemacro
       do {
-        // Use the built in method to get the previous macro 
+        // Usethebuiltinmethodtogetthepreviousmacro
         nodeMacroAncestor = NodeMacro__BehaviorDescriptor.getPreviousNodeMacro_idhEwIot7.invoke(nodeMacroAncestor);
       } while ((nodeMacroAncestor != null) && !(SNodeOperations.isInstanceOf(nodeMacroAncestor, SNodeOperations.asSConcept(macroConcept))));
 
       return nodeMacroAncestor;
     } else {
-      // Otherwise find it manually 
+      // Otherwisefinditmanually
       SNode ancestor = parent;
       while (ancestor != null && !(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(ancestor)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {

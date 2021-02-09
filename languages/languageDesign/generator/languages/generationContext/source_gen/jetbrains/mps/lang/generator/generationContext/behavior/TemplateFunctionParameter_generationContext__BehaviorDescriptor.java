@@ -37,7 +37,7 @@ public final class TemplateFunctionParameter_generationContext__BehaviorDescript
     return _quotation_createNode_fkq6n5_a0a0();
   }
   /*package*/ static boolean needConceptFunction_idhZKliUO(@NotNull SNode __thisNode__) {
-    // we could use this cf parameter in ITemplateCall argument expressions without need to wrap with query 
+    // wecouldusethiscfparameterinITemplateCallargumentexpressionswithoutneedtowrapwithquery
     return (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ITemplateCall$ab, false, false) == null);
   }
 

@@ -23,7 +23,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   }
 
   public void createGroups() {
-    // actions w/o parameters 
+    // actionsw/oparameters
     addAction(new ExtractMethod_Action());
     addAction(new InlineField_Action());
     addAction(new InlineLocalVariable_Action());
@@ -37,7 +37,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RenameVariable_Action());
     addAction(new SafeDeleteConceptMethod_Action());
     addAction(new ShowNullDFA_Action());
-    // groups 
+    // groups
     addGroup(new AnalyzersActions_ActionGroup(this));
     addGroup(new RefactoringAdditions_ActionGroup(this));
     addGroup(new TouchBarDefault_shift_ActionGroup(this));

@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class YieldSNodeTest_Test {
   @Test
   public void test_MPS29957() throws Exception {
-    // This test is to ensure that the code is generated and compiled correctly 
+    // Thistestistoensurethatthecodeisgeneratedandcompiledcorrectly
     Assert.assertEquals(Sequence.fromIterable(createCollection1()).count(), 3);
     Assert.assertEquals(Sequence.fromIterable(createCollection2()).count(), 1);
     Assert.assertEquals(Sequence.fromIterable(createCollection3()).count(), 1);

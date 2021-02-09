@@ -294,8 +294,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206463694662">
     <file name="ForStatement_DataFlow.java">
-      <node id="7376433222636453143" at="17,60,18,17" concept="11" />
-      <node id="1206987765749" at="18,17,19,108" concept="4" />
+      <node id="7376433222636453143" at="17,60,18,15" concept="11" />
+      <node id="1206987765749" at="18,15,19,108" concept="4" />
       <node id="1032195626824969341" at="20,107,21,57" concept="4" />
       <node id="1207063213423" at="22,5,23,45" concept="4" />
       <node id="3337377470784677503" at="24,137,25,142" concept="9" />
@@ -2911,8 +2911,8 @@
       <node id="7701013275659683355" at="31,5,32,104" concept="9" />
       <node id="7701013275659689000" at="32,104,33,0" concept="12" />
       <node id="7701013275659689808" at="33,0,34,137" concept="9" />
-      <node id="7701013275659696870" at="35,21,36,33" concept="11" />
-      <node id="7701013275659701005" at="37,26,38,85" concept="11" />
+      <node id="7701013275659696870" at="35,21,36,30" concept="11" />
+      <node id="7701013275659701005" at="37,26,38,75" concept="11" />
       <node id="7701013275659709424" at="39,9,40,31" concept="9" />
       <node id="7701013275659709424" at="41,47,42,35" concept="9" />
       <node id="7701013275659709424" at="42,35,43,58" concept="9" />
@@ -2927,7 +2927,7 @@
       <node id="7701013275659713511" at="56,121,57,140" concept="4" />
       <node id="7701013275659713511" at="57,140,58,40" concept="4" />
       <node id="7701013275659713511" at="58,40,59,72" concept="4" />
-      <node id="7701013275659698025" at="63,5,64,86" concept="11" />
+      <node id="7701013275659698025" at="63,5,64,74" concept="11" />
       <node id="7701013275659650163" at="68,0,69,0" concept="13" trace="InstanceOfExpression$cu" />
       <node id="7701013275659650163" at="69,0,70,0" concept="13" trace="IConditional$CG" />
       <node id="7701013275659650163" at="73,0,74,0" concept="13" trace="leftExpression$StkV" />
@@ -2936,10 +2936,10 @@
       <node id="7701013275659650163" at="20,0,25,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7701013275659709424" at="40,31,48,11" concept="7" />
       <node id="7701013275659713511" at="52,49,60,11" concept="7" />
-      <node id="7701013275659709424" at="38,85,49,9" concept="1" />
+      <node id="7701013275659709424" at="38,75,49,9" concept="1" />
       <node id="7701013275659713511" at="50,14,61,9" concept="1" />
       <node id="7701013275659713314" at="50,12,62,7" concept="1" />
-      <node id="7701013275659699264" at="36,33,62,7" concept="7" />
+      <node id="7701013275659699264" at="36,30,62,7" concept="7" />
       <node id="7701013275659694418" at="34,137,63,5" concept="7" />
       <node id="7701013275659650163" at="28,0,66,0" concept="8" trace="performActions#(Ljetbrains/mps/lang/dataFlow/framework/Program;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="7701013275659650163" at="25,50,26,44" />
@@ -2971,7 +2971,7 @@
       <scope id="7701013275659713315" at="50,14,61,9" />
       <scope id="7701013275659699266" at="37,26,49,9" />
       <scope id="7701013275659694420" at="35,21,62,7" />
-      <scope id="7701013275659672206" at="28,53,64,86">
+      <scope id="7701013275659672206" at="28,53,64,74">
         <var name="conditional" id="7701013275659683356" />
         <var name="pp" id="7701013275659689809" />
       </scope>

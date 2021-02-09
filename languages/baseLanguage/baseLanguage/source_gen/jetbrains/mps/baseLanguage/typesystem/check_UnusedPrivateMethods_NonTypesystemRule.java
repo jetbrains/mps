@@ -43,7 +43,7 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
           if (matches_sl9v9q_a0a0a) {
             {
               if (SNodeOperations.isInstanceOf(matchedNode_sl9v9q_a0a0, CONCEPTS.ConstructorDeclaration$yG) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(matchedNode_sl9v9q_a0a0, CONCEPTS.ConstructorDeclaration$yG), LINKS.parameter$5xBj)).isEmpty() && Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.as(SNodeOperations.getParent(matchedNode_sl9v9q_a0a0), CONCEPTS.ClassConcept$bK))).count() == 1) {
-                // an idiom - uninstantiable class 
+                // anidiom-uninstantiableclass
                 return;
               }
               SNode topClassifier = SNodeOperations.getNodeAncestor(matchedNode_sl9v9q_a0a0, CONCEPTS.Classifier$Ix, false, false);

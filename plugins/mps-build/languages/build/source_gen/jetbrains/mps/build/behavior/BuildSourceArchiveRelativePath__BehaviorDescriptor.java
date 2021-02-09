@@ -50,7 +50,7 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
     return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$ic$p)) + "!/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW));
   }
   /*package*/ static String getAntPath_id7ro1ZztyOh5(@NotNull SNode __thisNode__, Context context) {
-    // no idea if context could be null, but doesn't hurt to check 
+    // noideaifcontextcouldbenull,butdoesn'thurttocheck
     String unpackPath = (context == null ? null : BuildSourceArchiveRelativePath__BehaviorDescriptor.getUnpackPath_id7ro1Zzt$ck7.invoke(__thisNode__, context));
     if ((unpackPath == null || unpackPath.length() == 0)) {
       return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(__thisNode__);
@@ -58,15 +58,15 @@ public final class BuildSourceArchiveRelativePath__BehaviorDescriptor extends Ba
     return unpackPath + "/" + BuildCompositePath__BehaviorDescriptor.getPath_id7usrAn05okK.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.compositePart$blMW));
   }
   /*package*/ static String getUnpackPath_id7ro1Zzt$ck7(@NotNull SNode __thisNode__, Context context) {
-    // this method is intended for use solely during generation, when nodes could be modified freely. 
-    // the method preserves state as node's user object, for different templates to share unpacked location 
+    // thismethodisintendedforusesolelyduringgeneration,whennodescouldbemodifiedfreely.
+    // themethodpreservesstateasnode'suserobject,fordifferenttemplatestoshareunpackedlocation
     assert context != null;
     final String CACHED_VALUE_KEY = "BSARP.unpackPath";
     Object value = __thisNode__.getUserObject(CACHED_VALUE_KEY);
     if (value instanceof String) {
       return (String) value;
     }
-    // copied from #calculateUnpackPath(), although doesn't match e.g. BL_Zip pattern for temp names, perhaps worth a change 
+    // copiedfrom#calculateUnpackPath(),althoughdoesn'tmatche.g.BL_Zippatternfortempnames,perhapsworthachange
     SNode nlayout = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildNamedLayout$ZG, true, false);
     String tempPath = context.getTempPath(__thisNode__, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.archivePath$ic$p)).replace('.', '_'), ((nlayout != null) ? SPropertyOperations.getString(nlayout, PROPS.name$MnvL) : "default"));
     __thisNode__.putUserObject(CACHED_VALUE_KEY, tempPath);

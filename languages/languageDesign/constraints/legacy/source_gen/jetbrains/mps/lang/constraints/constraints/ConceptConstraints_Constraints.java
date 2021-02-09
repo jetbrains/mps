@@ -132,7 +132,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode conceptNode = SLinkOperations.getTarget(SNodeOperations.as(_context.getReferenceNode(), CONCEPTS.ConceptConstraints$Yt), LINKS.concept$EVpZ);
-            // why not for the same language? 
+            // whynotforthesamelanguage?
             return new FilteringScope(Scopes.forLanguageConcepts(conceptNode, CONCEPTS.ConceptDeclaration$gH)) {
               @Override
               public boolean isExcluded(SNode n) {

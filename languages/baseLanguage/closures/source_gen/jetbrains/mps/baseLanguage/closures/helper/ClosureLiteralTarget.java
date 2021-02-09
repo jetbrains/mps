@@ -50,7 +50,7 @@ public class ClosureLiteralTarget {
     if ((SLinkOperations.getTarget(meth, LINKS.returnType$5xoi) != null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(meth, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
       matcher.matchReturnType(SLinkOperations.getTarget(meth, LINKS.returnType$5xoi), FunctionType__BehaviorDescriptor.getNormalizedReturnType_idhEwIOp4.invoke(funType));
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(meth, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL)) {
-        // TODO: refactor this code 
+        // TODO:refactorthiscode
         SNode absRetCT = SNodeOperations.copyNode(SNodeOperations.cast(SLinkOperations.getTarget(meth, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL));
         SNode ftResCT = FunctionTypeUtil.unmeet(FunctionType__BehaviorDescriptor.getNormalizedReturnType_idhEwIOp4.invoke(funType));
         String adapterName = JavaNameUtil.shortName(SPropertyOperations.getString(SLinkOperations.getTarget(absRetCT, LINKS.classifier$cxMr), PROPS.name$MnvL)) + JavaNameUtil.shortName(SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ftResCT)), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), PROPS.name$MnvL)) + "Adapter";
@@ -77,7 +77,7 @@ public class ClosureLiteralTarget {
     }
 
     {
-      // TODO: rewrite throws types matching algorithm 
+      // TODO:rewritethrowstypesmatchingalgorithm
       List<SNode> normFunThrowsTypes = FunctionType__BehaviorDescriptor.getNormalizedThrowsTypes_id2ZrgyPlTDZP.invoke(funType);
       Iterator<SNode> funThrIt = ListSequence.fromList(normFunThrowsTypes).sort(new ISelector<SNode, Comparable<?>>() {
         @Override
@@ -98,7 +98,7 @@ public class ClosureLiteralTarget {
 
     Values.TYPE_MAP.set(genContext, targetIfaceErase, matcher.getMap());
 
-    // Copy reified target ClassifierType parameters to the erasure target ClassifierType 
+    // CopyreifiedtargetClassifierTypeparameterstotheerasuretargetClassifierType
     Map<SNode, SNode> map = matcher.getMap();
     if (map != null) {
       Iterator<SNode> reifiedTypeIt = ListSequence.fromList(reifiedTargetIfaceTypeParams).iterator();
@@ -107,9 +107,9 @@ public class ClosureLiteralTarget {
         SNode typeVar = targetTypeVarIt.next();
         SNode rtp = reifiedTypeIt.next();
         SNode substituteType = (MapSequence.fromMap(map).containsKey(typeVar) ? SNodeOperations.copyNode(MapSequence.fromMap(map).get(typeVar)) : SNodeOperations.copyNode(rtp));
-        // TODO: we need a better way to handle wildcards in the substitutes 
-        // Any (completely) reified type has precedence over calculated function type's parameter 
-        // Example: String s = { => null; } must use String, not Object as the return value 
+        // TODO:weneedabetterwaytohandlewildcardsinthesubstitutes
+        // Any(completely)reifiedtypehasprecedenceovercalculatedfunctiontype'sparameter
+        // Example:Strings={=>null;}mustuseString,notObjectasthereturnvalue
         if (!(hasTypeVariable(rtp)) && !(TypecheckingFacade.getFromContext().isSubtype(substituteType, rtp))) {
           substituteType = ClassifierTypeUtil.getTypeCoercedToClassifierType(SNodeOperations.copyNode(rtp));
         }

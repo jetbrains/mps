@@ -52,7 +52,7 @@ public class Language extends LanguageRuntime {
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
 
 
-    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
+    // AP:legacypart,mustbemigratedfromswitch:pleaseuselang.descriptormappinglabel
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.samples.xmlLiterals.constraints.ConstraintsAspectDescriptor());
     }

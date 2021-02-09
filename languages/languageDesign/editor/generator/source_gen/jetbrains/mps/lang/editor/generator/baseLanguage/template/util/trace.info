@@ -21,8 +21,8 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902a0(jetbrains.mps.lang.editor.generator.baseLanguage.template.util)/1186771508849">
     <file name="QueriesUtil.java">
       <node id="1210358696034" at="29,0,30,0" concept="14" trace="CELL_READABLE_ID" />
-      <node id="18955805659963974" at="31,103,32,38" concept="12" />
-      <node id="1186776238853" at="32,38,33,85" concept="10" />
+      <node id="18955805659963974" at="31,103,32,32" concept="12" />
+      <node id="1186776238853" at="32,32,33,85" concept="10" />
       <node id="1227876793089" at="39,0,40,0" concept="5" trace="__CP__" />
       <node id="1227876793089" at="45,28,46,54" concept="0" />
       <node id="1227876793089" at="46,54,47,35" concept="11" />

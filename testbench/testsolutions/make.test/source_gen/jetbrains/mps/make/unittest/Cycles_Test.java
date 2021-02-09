@@ -131,7 +131,7 @@ public class Cycles_Test {
 
     GraphAnalyzer<String> cd = graph.getCycleDetector();
 
-    // L3, S9, L1, {S1, M1, M2, S2, S0}, S3, S6, {S4,L2} 
+    // L3,S9,L1,{S1,M1,M2,S2,S0},S3,S6,{S4,L2}
     Assert.assertEquals(7, ListSequence.fromList(cd.totalOrder(false)).count());
 
     List<List<String>> cycles = cd.totalOrder(true);
@@ -144,16 +144,16 @@ public class Cycles_Test {
   @Test
   public void test_totalOrderCompactWithSelfEdges() throws Exception {
     final Graph<String> graph = forTotalOrder();
-    // same graph as above, with each node keeping dependency to self 
-    // The idea here is to see how MPS-15018 fix (a3220e6e) affects the outcome graph 
-    // Compare the outcome with the result in totalOrderCompactNoSelfEdges(), above, to see the difference 
-    // It's still unclear to me how come this change helps to address the issue, the test added just to capture this difference 
+    // samegraphasabove,witheachnodekeepingdependencytoself
+    // TheideahereistoseehowMPS-15018fix(a3220e6e)affectstheoutcomegraph
+    // ComparetheoutcomewiththeresultintotalOrderCompactNoSelfEdges(),above,toseethedifference
+    // It'sstilluncleartomehowcomethischangehelpstoaddresstheissue,thetestaddedjusttocapturethisdifference
     Sequence.fromIterable(graph.getVertices()).visitAll(new IVisitor<String>() {
       public void visit(String it) {
         graph.addEdges(it, it);
       }
     });
-    //  
+    // 
     GraphAnalyzer<String> cd = graph.getCycleDetector();
     List<List<String>> cycles = cd.totalOrder(true);
     Assert.assertEquals(6, ListSequence.fromList(cycles).count());
@@ -184,27 +184,27 @@ public class Cycles_Test {
   }
   private Graph<String> forTotalOrder() {
     Graph<String> graph = new Graph<String>();
-    // addEdges: add 'forward' edge aka 'dependent', not 'required'. Read "'from' is a dependency for 'to' )  
-    //  cycle of 3 (S0 <- S1 <- S2 <- S0) 
+    // addEdges:add'forward'edgeaka'dependent',not'required'.Read"'from'isadependencyfor'to')
+    // cycleof3(S0<-S1<-S2<-S0)
     graph.addEdges("S0", "S1");
     graph.addEdges("S1", "S2");
     graph.addEdges("S2", "S0");
-    // dependent outside of the first cycle (S1 uses L1) 
-    // L1 <- S1 
+    // dependentoutsideofthefirstcycle(S1usesL1)
+    // L1<-S1
     graph.addEdges("L1", "S1");
-    // another dependent (pair of, S3 and S6) out of the cycle 
-    // S2 <- S3 <- S6 <- S4 
+    // anotherdependent(pairof,S3andS6)outofthecycle
+    // S2<-S3<-S6<-S4
     graph.addEdges("S2", "S3");
     graph.addEdges("S3", "S6");
     graph.addEdges("S6", "S4");
-    // S4+L2 is one more cycle 
-    // S4 <-> L2 
+    // S4+L2isonemorecycle
+    // S4<->L2
     graph.addEdges("L2", "S4");
     graph.addEdges("S4", "L2");
-    // part of graph independent from above (simulates a project language, independent from anything else in the project, and a solution written in the language) 
-    // L3 <- S9 
+    // partofgraphindependentfromabove(simulatesaprojectlanguage,independentfromanythingelseintheproject,andasolutionwritteninthelanguage)
+    // L3<-S9
     graph.addEdges("L3", "S9");
-    // bigger cycle that includes the first one, S1 <- M1 <- M2 <- S2 
+    // biggercyclethatincludesthefirstone,S1<-M1<-M2<-S2
     graph.addEdges("S1", "M1");
     graph.addEdges("M1", "M2");
     graph.addEdges("M2", "S2");

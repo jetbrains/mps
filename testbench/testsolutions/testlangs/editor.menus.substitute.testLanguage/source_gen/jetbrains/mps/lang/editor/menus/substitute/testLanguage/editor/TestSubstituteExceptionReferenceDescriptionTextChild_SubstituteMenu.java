@@ -47,7 +47,7 @@ public class TestSubstituteExceptionReferenceDescriptionTextChild_SubstituteMenu
   public class SMP_ReferenceScope_utuqn2_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_utuqn2_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TestSubstituteExceptionReferenceDescriptionTextChild$70, LINKS.reference$V2w1);
     }
     @NotNull

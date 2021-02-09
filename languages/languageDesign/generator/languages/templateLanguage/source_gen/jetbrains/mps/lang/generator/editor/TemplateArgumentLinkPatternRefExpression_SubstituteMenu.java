@@ -49,7 +49,7 @@ public class TemplateArgumentLinkPatternRefExpression_SubstituteMenu extends Sub
   public class SMP_ReferenceScope_ba8qhy_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_ba8qhy_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.TemplateArgumentLinkPatternRefExpression$Bu, LINKS.patternVar$CqNH);
     }
     @NotNull

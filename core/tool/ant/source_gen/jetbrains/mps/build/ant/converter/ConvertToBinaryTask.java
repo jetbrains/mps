@@ -65,7 +65,7 @@ public class ConvertToBinaryTask extends Copy {
   @Override
   public void execute() throws BuildException {
     super.execute();
-    // create output dir in any case, dest dir used in src packaging and fails if models dir not exists 
+    // createoutputdirinanycase,destdirusedinsrcpackagingandfailsifmodelsdirnotexists
     if (destDir != null) {
       destDir.mkdirs();
     }

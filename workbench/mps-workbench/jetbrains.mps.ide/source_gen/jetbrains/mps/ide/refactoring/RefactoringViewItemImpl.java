@@ -125,7 +125,7 @@ public abstract class RefactoringViewItemImpl implements RefactoringViewItem.Ref
     myUsagesView.dispose();
   }
   public void requestFocus() {
-    // TODO: why does it invokes later? 
+    // TODO:whydoesitinvokeslater?
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {

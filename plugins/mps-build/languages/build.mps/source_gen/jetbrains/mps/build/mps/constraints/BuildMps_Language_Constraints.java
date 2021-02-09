@@ -45,10 +45,10 @@ public class BuildMps_Language_Constraints extends BaseConstraintsDescriptor {
     }
     SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildProject$ae, true, false);
     if ((buildProject != null)) {
-      // limit use of this concept in a project with MPS plugin 
+      // limituseofthisconceptinaprojectwithMPSplugin
       return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).isNotEmpty();
     }
-    // XXX I'm not sure there's solid reason to preven reuse of this node, but failed to find reason for that, therefore, left as is. 
+    // XXXI'mnotsurethere'ssolidreasontoprevenreuseofthisnode,butfailedtofindreasonforthat,therefore,leftasis.
     return false;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "1227128029536567183");

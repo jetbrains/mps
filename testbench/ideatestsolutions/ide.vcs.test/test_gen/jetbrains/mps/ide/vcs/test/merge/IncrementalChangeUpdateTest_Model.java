@@ -128,10 +128,10 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
         });
       }
     });
-    // Once VFS changed in the write action, above, FSChangesWatcher starts a reload session with a help of ReloadManager. Session is queued with MergingUpdateQueue (EDT, 500ms) and have little 
-    // chance to send out DataSource.changed event till the moment DiffRegistry completes ChangesTracking.update(false) for the modified file. As long as ChangesTracking cares about changes of model  
-    // against 'repository' revision (BaseVersionUtil.getBaseVersionModel() -> getBaseVersionContent() -> change.getBeforeRevision()), there are no differences with in-memory model content and 
-    // myDiff.getChangeSet is empty. With the flush(), we try to force model notice its changes (i.e. reload based on changedContent), giving ChangesTracking.update code a chance to build actual changeset. 
+    // OnceVFSchangedinthewriteaction,above,FSChangesWatcherstartsareloadsessionwithahelpofReloadManager.SessionisqueuedwithMergingUpdateQueue(EDT,500ms)andhavelittle
+    // chancetosendoutDataSource.changedeventtillthemomentDiffRegistrycompletesChangesTracking.update(false)forthemodifiedfile.AslongasChangesTrackingcaresaboutchangesofmodel
+    // against'repository'revision(BaseVersionUtil.getBaseVersionModel()->getBaseVersionContent()->change.getBeforeRevision()),therearenodifferenceswithin-memorymodelcontentand
+    // myDiff.getChangeSetisempty.Withtheflush(),wetrytoforcemodelnoticeitschanges(i.e.reloadbasedonchangedContent),givingChangesTracking.updatecodeachancetobuildactualchangeset.
     ApplicationManager.getApplication().getComponent(ReloadManager.class).flush();
     myEnv.flushAllEvents();
     updateChangeListManager();

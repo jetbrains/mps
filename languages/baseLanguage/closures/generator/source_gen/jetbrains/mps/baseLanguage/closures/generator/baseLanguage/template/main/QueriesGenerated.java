@@ -1493,8 +1493,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static void mappingScript_CodeBlock_14(final MappingScriptContext _context) {
     if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
-      //  FunctionUtil.prepAdaptations has the same constant check inside 
-      // so the idea is to filter out irrelevant nodes asap 
+      // FunctionUtil.prepAdaptationshasthesameconstantcheckinside
+      // sotheideaistofilteroutirrelevantnodesasap
       for (SNode cl : SModelOperations.nodes(_context.getModel(), CONCEPTS.ClosureLiteral$rp)) {
         if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(cl), CONCEPTS.BaseMethodCall$kV)) || !(SNodeOperations.hasRole(cl, LINKS.actualArgument$pzdx))) {
           continue;
@@ -1514,7 +1514,7 @@ public class QueriesGenerated extends QueryProviderBase {
         }
       }
     } else {
-      //  original code 
+      // originalcode
       List<SNode> bmcs = SModelOperations.nodes(_context.getModel(), CONCEPTS.BaseMethodCall$kV);
       for (SNode bmc : bmcs) {
         List<SNode> args = SLinkOperations.getChildren(bmc, LINKS.actualArgument$pzdx);
@@ -1543,7 +1543,7 @@ public class QueriesGenerated extends QueryProviderBase {
         FunctionTypeUtil.prepAdaptations(_context, TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ae, LINKS.lValue$splI)), SLinkOperations.getTarget(ae, LINKS.rValue$spNK));
       }
     } else {
-      //  original code 
+      // originalcode
       List<SNode> aes = SModelOperations.nodes(_context.getModel(), CONCEPTS.AssignmentExpression$SE);
       for (SNode ae : aes) {
         FunctionTypeUtil.prepAdaptations(_context, TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(ae, LINKS.lValue$splI)), SLinkOperations.getTarget(ae, LINKS.rValue$spNK));
@@ -1569,7 +1569,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
       for (SNode cl : SModelOperations.nodes(_context.getModel(), CONCEPTS.ClosureLiteral$rp)) {
         if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(cl), CONCEPTS.InstanceMethodCallOperation$uu)) || !(SNodeOperations.hasRole(cl, LINKS.actualArgument$pzdx))) {
-          // TODO in case there's method call with more than one closure arg, we'll process it again, guard against this 
+          // TODOincasethere'smethodcallwithmorethanoneclosurearg,we'llprocessitagain,guardagainstthis
           continue;
         }
         SNode imco = SNodeOperations.cast(SNodeOperations.getParent(cl), CONCEPTS.InstanceMethodCallOperation$uu);
@@ -1601,7 +1601,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     } else {
       for (SNode de : SModelOperations.nodes(_context.getModel(), CONCEPTS.DotExpression$yW)) {
-        //  why IMCO only from DotExpression? 
+        // whyIMCOonlyfromDotExpression?
         if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(de, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu)) {
           SNode imco = SNodeOperations.cast(SLinkOperations.getTarget(de, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu);
           List<SNode> args = SLinkOperations.getChildren(imco, LINKS.actualArgument$pzdx);
@@ -1614,8 +1614,8 @@ public class QueriesGenerated extends QueryProviderBase {
             if (argsItr.hasNext()) {
               SNode arg = argsItr.next();
               if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
-                //  TEMP HACK: proceed only if the "right" expression is a ClosureLiteral, balk otherwise 
-                //  This may cause unexpected results, so please disable in case of difficulties generating some code 
+                // TEMPHACK:proceedonlyifthe"right"expressionisaClosureLiteral,balkotherwise
+                // Thismaycauseunexpectedresults,sopleasedisableincaseofdifficultiesgeneratingsomecode
                 if (!(SNodeOperations.isInstanceOf(arg, CONCEPTS.ClosureLiteral$rp))) {
                   continue;
                 }
@@ -1821,7 +1821,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (SNodeOperations.isInstanceOf(t, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(t, CONCEPTS.ArrayType$rh) || SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$WL)) {
       return t;
     }
-    // null will end up in Switch's null handler, seems to be fine. 
+    // nullwillendupinSwitch'snullhandler,seemstobefine.
     return TypecheckingFacade.getFromContext().coerceType(SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY), CONCEPTS.ClassifierType$bL);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();

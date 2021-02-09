@@ -78,9 +78,9 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
     if (getSettings().OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT && mpsProject != null) {
       final SRepository repository = mpsProject.getRepository();
       SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(repository);
-      // FIXME there's getVirtualFiles that we can make use of to get IFile, provided there's access to project FS through MPSProject 
+      // FIXMEthere'sgetVirtualFilesthatwecanmakeuseoftogetIFile,providedthere'saccesstoprojectFSthroughMPSProject
       Collection<File> affectedFiles = myPanel.getFiles();
-      // XXX getFiles gives deleted files as well (unlike getVirtualFiles), are we sure we'd need to use this method?!  
+      // XXXgetFilesgivesdeletedfilesaswell(unlikegetVirtualFiles),arewesurewe'dneedtousethismethod?!
       final List<SModel> affectedModels = new ArrayList<SModel>();
       for (File file : affectedFiles) {
         SModel model = modelFileTracker.findModel(FileSystem.getInstance().getFile(file.getAbsolutePath()));
@@ -90,7 +90,7 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
         affectedModels.add(model);
       }
       ThreadUtils.assertEDT();
-      // TODO: extract common code from OptimizeModelImports 
+      // TODO:extractcommoncodefromOptimizeModelImports
       Task.Modal task = new Task.Modal(this.myProject, "Optimizing model imports", true) {
         public void run(@NotNull ProgressIndicator indicator) {
           final ProgressMonitorAdapter monitor = new ProgressMonitorAdapter(indicator);

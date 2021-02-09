@@ -49,7 +49,7 @@ public class RefConcept_Reference_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_lx70kr_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_lx70kr_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.RefConcept_Reference$Ij, LINKS.conceptDeclaration$3mP7);
     }
     @NotNull

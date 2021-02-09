@@ -24,7 +24,7 @@ public class BaseTestBody {
   protected BaseTestBody(TransformationTest owner) {
     myMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
 
-    // this is what BaseTransformationTest.runTest() used to do 
+    // thisiswhatBaseTransformationTest.runTest()usedtodo
     myModel = owner.getTransientModelDescriptor();
     myProject = owner.getProject();
   }

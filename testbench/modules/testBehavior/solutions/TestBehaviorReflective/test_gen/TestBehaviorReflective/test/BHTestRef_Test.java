@@ -223,7 +223,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     SNode nodeA = createB_cc8y9n_a0a0db0();
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, ((Object) BHReflection.invoke0(nodeA, CONCEPTS.A$x5, SMethodTrimmedId.create("foo", CONCEPTS.A$x5, "6EMTxOPT7e1"))));
     SNode nodeB = createB_cc8y9n_a0c0db0();
-    // checks that methods are resolved by id not by name 
+    // checksthatmethodsareresolvedbyidnotbyname
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, ((Object) BHReflection.invoke0(nodeB, CONCEPTS.A$x5, SMethodTrimmedId.create("foo", CONCEPTS.A$x5, "6EMTxOPT7e1"))));
     Assert.assertSame(TestResults.NON_VIRTUAL_CHILD, ((Object) BHReflection.invoke0(nodeB, CONCEPTS.B$jB, SMethodTrimmedId.create("foo", CONCEPTS.B$jB, "6EMTxOPT7o8"))));
   }
@@ -287,7 +287,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_constructorInvocation3() throws Exception {
-    // test checks that I2 constructor overrides I1 constructor 
+    // testchecksthatI2constructoroverridesI1constructor
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Jx, null);
@@ -297,7 +297,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_constructorInvocation4() throws Exception {
-    // test checks that all super constructors are invoked 
+    // testchecksthatallsuperconstructorsareinvoked
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$xl, null);
@@ -379,7 +379,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_superBehaviorOneArgumentNullCall() throws Exception {
-    // against wrong varargs treatment 
+    // againstwrongvarargstreatment
     SNode nodeB = createD_cc8y9n_a0b0bc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo4", CONCEPTS.B$ke, "1olXtyGAKpB"))));
   }
@@ -451,7 +451,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_methodOverrideWithTheSameName1() throws Exception {
-    // this and the next tests check current behavior to be able to resolve the method calls with identical signature 
+    // thisandthenexttestscheckcurrentbehaviortobeabletoresolvethemethodcallswithidenticalsignature
     SNode node1 = createD_cc8y9n_a0b0oc0();
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(node1, CONCEPTS.I1$oB, SMethodTrimmedId.create("foo", null, "5ivDaCiFP9X"))));
     SNode node2 = createD_cc8y9n_a0d0oc0();
@@ -531,9 +531,9 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Before
   public void setUp() {
-    // MpsEnvironment suffice 
+    // MpsEnvironmentsuffice
     myProject = myEnvironment.openProject(new File(BHTestRef_Test.PROJECT_PATH));
-    // see BHTest for detailed explanation why we make project here 
+    // seeBHTestfordetailedexplanationwhywemakeprojecthere
     new TestMakeUtil(myEnvironment.getPlatform()).make(myProject);
   }
   private static SNode createA_cc8y9n_a0a0a0() {

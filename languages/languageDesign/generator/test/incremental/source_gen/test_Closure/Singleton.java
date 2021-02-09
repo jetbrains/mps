@@ -5,7 +5,7 @@ package test_Closure;
 
 public class Singleton {
   public Singleton() {
-    // class without dependencies, can be regenerated separately 
+    // classwithoutdependencies,canberegeneratedseparately
   }
   public void defaultMeth() {
   }

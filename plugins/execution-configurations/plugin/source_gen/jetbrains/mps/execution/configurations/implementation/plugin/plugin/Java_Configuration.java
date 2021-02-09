@@ -140,9 +140,9 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
         public Boolean compute() {
           SNode source = nodePointer.resolve(repository);
           if (!(SNodeOperations.isInstanceOf(source, CONCEPTS.Classifier$Ix))) {
-            // XXX Seems that this code assumes source to be descendant of a classifier, exactly as described in MPS-25114 
-            //     If, however, source points to a non-classifier root (e.g. samples.shapes.Canvas which implements IMainClass) 
-            //     the code below looks odd (StaticMethodDeclaration ancestor?!). 
+            // XXXSeemsthatthiscodeassumessourcetobedescendantofaclassifier,exactlyasdescribedinMPS-25114
+            // If,however,sourcepointstoanon-classifierroot(e.g.samples.shapes.CanvaswhichimplementsIMainClass)
+            // thecodebelowlooksodd(StaticMethodDeclarationancestor?!).
             SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, CONCEPTS.StaticMethodDeclaration$FJ, true, false);
             if (mainMethodCandidate != null && (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate)) {
               SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, CONCEPTS.Classifier$Ix, false, false);

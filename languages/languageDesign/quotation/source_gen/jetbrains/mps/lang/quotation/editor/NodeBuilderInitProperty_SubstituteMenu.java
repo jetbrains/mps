@@ -49,7 +49,7 @@ public class NodeBuilderInitProperty_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_5m6b1p_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_5m6b1p_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.NodeBuilderInitProperty$xv, LINKS.property$Y_u4);
     }
     @NotNull

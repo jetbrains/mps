@@ -47,7 +47,7 @@ public class ProjectDescriptorPersistence {
         return shrinkPath(p);
       }
     }, true)) {
-      // TODO: move from MacrosFactory to PathMacroUtil 
+      // TODO:movefromMacrosFactorytoPathMacroUtil
       XmlUtil.tagWithAttributes(projectModules, MODULE_PATH_TAG, PATH_TAG, shrinkPath(path), FOLDER_TAG, path.getVirtualFolder());
     }
     project.addContent(projectModules);
@@ -56,7 +56,7 @@ public class ProjectDescriptorPersistence {
 
   private String shrinkPath(@NotNull ModulePath p) {
     String shrinkedPath = myMacroHelper.shrinkPath(p.getPath());
-    // fixme such filepath convertation is not supported by Path (IDEA stores windows paths as C:/smth !) 
+    // fixmesuchfilepathconvertationisnotsupportedbyPath(IDEAstoreswindowspathsasC:/smth!)
     return shrinkedPath.replace(Path.WIN_SEPARATOR, Path.UNIX_SEPARATOR);
   }
 
@@ -81,7 +81,7 @@ public class ProjectDescriptorPersistence {
   public Element loadProjectElement() {
     try {
       File projectFile = findProjectFile();
-      // XXX why findProjectFile throws exception when myBaseDir doesn't exist, but here we simply return null if the file there does not exist? 
+      // XXXwhyfindProjectFilethrowsexceptionwhenmyBaseDirdoesn'texist,butherewesimplyreturnnullifthefiletheredoesnotexist?
       if (!(projectFile.exists())) {
         return null;
       }

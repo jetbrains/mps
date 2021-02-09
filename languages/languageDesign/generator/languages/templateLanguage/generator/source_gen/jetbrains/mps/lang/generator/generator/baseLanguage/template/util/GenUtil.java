@@ -27,11 +27,11 @@ public class GenUtil {
     return (String) context.getTransientObject(MultiTuple.<String,SNode>from(KEY, real));
   }
   public static String saveListVar(TemplateQueryContext context, SNode node, int varIndex) {
-    // Don't want "tlist" and "tnode" scattered around 
+    // Don'twant"tlist"and"tnode"scatteredaround
     return saveVar(context, node, "tlist" + varIndex);
   }
   public static String saveNodeVar(TemplateQueryContext context, SNode node, int varIndex, boolean canBeNull) {
-    // Don't want "tlist" and "tnode" scattered around 
+    // Don'twant"tlist"and"tnode"scatteredaround
     String varName = saveVar(context, node, "tnode" + varIndex);
     node.putUserObject("GenUtil:NotNull", Boolean.valueOf(!(canBeNull)));
     return varName;
@@ -39,20 +39,20 @@ public class GenUtil {
   public static String saveVar(TemplateQueryContext context, SNode node, String var) {
     SNode original = (SNodeOperations.isInstanceOf(node, CONCEPTS.NodeMacro$qU) ? SNodeOperations.getParent(node) : node);
     if (context.getTransientObject(original) == null) {
-      // guess, it's a mechanism to access variable name without knowledge of skipMacro value 
+      // guess,it'samechanismtoaccessvariablenamewithoutknowledgeofskipMacrovalue
       context.putTransientObject(original, var);
     }
     context.putTransientObject(MultiTuple.<String,SNode>from(KEY, node), var);
     return var;
   }
   public static String getVarHack(TemplateQueryContext context, SNode node) {
-    // see saveVar above 
+    // seesaveVarabove
     Object obj = context.getTransientObject(node);
     return (obj instanceof String ? (String) obj : null);
   }
 
   public static boolean isCollectionVariable(TemplateQueryContext context, SNode node) {
-    // or !startsWith("tnode")? 
+    // or!startsWith("tnode")?
     String n = getVarHack(context, node);
     return n != null && n.startsWith("tlist");
   }
@@ -113,8 +113,8 @@ public class GenUtil {
       } else if (Character.isJavaIdentifierStart(c) && c != '$') {
         sb.append(c);
       } else {
-        // replace all non-identifier characters with underscore 
-        //  I realize that may lead to name clashes, but odds are too low and do not justify e.g. _x0020 in the name with spaces 
+        // replaceallnon-identifiercharacterswithunderscore
+        // Irealizethatmayleadtonameclashes,butoddsaretoolowanddonotjustifye.g._x0020inthenamewithspaces
         sb.append('_');
       }
     }
@@ -127,7 +127,7 @@ public class GenUtil {
    * to resolve output using this template node as identity)
    */
   public static void markHasIncomingRefs(SNode n) {
-    //  just care about the fact there are references, not their number nor nature 
+    // justcareaboutthefacttherearereferences,nottheirnumbernornature
     n.putUserObject("hasIncomingRefs", Boolean.TRUE);
   }
   /**

@@ -73,7 +73,7 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
                 environment.associate(tnode5, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
                 tnode4.addChild(myAggregationLinks[0], tnode5);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             switchContext3 = environment.withCallSiteNode(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832218463"), switchContext3, TemplateUtil.singletonList(tnode4));
@@ -89,12 +89,12 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
         for (SNode child6 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[1], child6);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
         tnode1.addChild(myAggregationLinks[2], tnode7);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
@@ -105,7 +105,7 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
             for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
               tnode8.addChild(myAggregationLinks[3], child10);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final List<SNode> tlist11 = new ArrayList<SNode>();
@@ -140,7 +140,7 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
                   for (SNode child16 : TemplateUtil.asNotNull(tlist13)) {
                     tnode12.addChild(myAggregationLinks[4], child16);
                   }
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tlist11.add(tnode12);
@@ -148,7 +148,7 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
             for (SNode child17 : TemplateUtil.asNotNull(tlist11)) {
               tnode8.addChild(myAggregationLinks[3], child17);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             Collection<SNode> tlist18 = null;
@@ -184,11 +184,11 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
                         final SNode tnode23 = environment.createOutputNode(myConcepts[9]);
                         SNodeAccessUtil.setPropertyValue(tnode23, myProperties[1], QueriesGenerated.propertyMacro_GetValue_4_1(new PropertyMacroContext(context12, "", propertyMacro_6isgpe_c0a2a0a1a2a1a1a2a5a6a3a1a4a2a6)));
                         tnode22.addChild(myAggregationLinks[5], tnode23);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode21.addChild(myAggregationLinks[6], tnode22);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 switchContext20 = environment.withCallSiteNode(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832539919"), switchContext20, TemplateUtil.singletonList(tnode21));
@@ -204,16 +204,16 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
             for (SNode child24 : TemplateUtil.asNotNull(tlist18)) {
               tnode8.addChild(myAggregationLinks[3], child24);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[7], tnode8);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode25 = environment.createOutputNode(myConcepts[10]);
         tnode1.addChild(myAggregationLinks[8], tnode25);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(9, tnode1);

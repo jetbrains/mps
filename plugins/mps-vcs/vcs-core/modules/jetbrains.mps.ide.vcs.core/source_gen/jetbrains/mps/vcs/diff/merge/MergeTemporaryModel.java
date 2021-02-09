@@ -43,7 +43,7 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   }
 
   private static MergeTemporaryModel cloneDataInto(MergeTemporaryModel rv, SModel origin) {
-    // TODO generalize merge for any SModel 
+    // TODOgeneralizemergeforanySModel
     jetbrains.mps.smodel.SModel resModel = CopyUtil.copyModel(((SModelBase) origin).getSModel());
     rv.replace(new ModelLoadResult<jetbrains.mps.smodel.SModel>(resModel, ModelLoadingState.FULLY_LOADED));
     return rv;
@@ -51,7 +51,7 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @NotNull
   protected ModelLoadResult<jetbrains.mps.smodel.SModel> createModel() {
-    // XXX why not UnsupportedOperationException? Generally, we shall never get here (well, except of unloaded model) 
+    // XXXwhynotUnsupportedOperationException?Generally,weshallnevergethere(well,exceptofunloadedmodel)
     return new ModelLoadResult<jetbrains.mps.smodel.SModel>(new jetbrains.mps.smodel.SModel(getReference()), ModelLoadingState.FULLY_LOADED);
   }
 
@@ -62,7 +62,7 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @Override
   public void save() {
-    // no-op 
+    // no-op
   }
 
   @Override
@@ -82,7 +82,7 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @Override
   public void updateTimestamp() {
-    // no-op 
+    // no-op
   }
   @Override
   public boolean needsReloading() {
@@ -103,8 +103,8 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @Nullable
   public ModelFactory getModelFactory() {
-    // in fact, shall derive persistence from models being merged, however, so far we've got merge for default/xml persistence only, thus it's ok to hardcode specific factory 
-    // XXX is there any use of the method during merge? Perhaps, could go with plain 'null'? 
+    // infact,shallderivepersistencefrommodelsbeingmerged,however,sofarwe'vegotmergefordefault/xmlpersistenceonly,thusit'soktohardcodespecificfactory
+    // XXXisthereanyuseofthemethodduringmerge?Perhaps,couldgowithplain'null'?
     return PersistenceFacade.getInstance().getDefaultModelFactory();
   }
 

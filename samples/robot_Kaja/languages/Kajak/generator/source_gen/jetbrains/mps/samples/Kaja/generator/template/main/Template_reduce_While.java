@@ -45,7 +45,7 @@ public class Template_reduce_While extends TemplateDeclarationBase {
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -58,11 +58,11 @@ public class Template_reduce_While extends TemplateDeclarationBase {
             for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
               tnode4.addChild(myAggregationLinks[1], child6);
             }
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[2], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

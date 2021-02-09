@@ -58,7 +58,7 @@ public abstract class GeneratedFinder implements IInterfacedFinder {
   }
 
   protected SNodeReference buildNodePointer(SModelReference modelRef, String nodeId) {
-    // auxiliary method to help generated code deal with string node id values 
+    // auxiliarymethodtohelpgeneratedcodedealwithstringnodeidvalues
     return new SNodePointer(modelRef, PersistenceFacade.getInstance().createNodeId(nodeId));
   }
 
@@ -81,7 +81,7 @@ public abstract class GeneratedFinder implements IInterfacedFinder {
   }
 
   protected void doFind0(@NotNull SNode node, @NotNull SearchScope scope, @NotNull IFinder.FindCallback callback, @NotNull ProgressMonitor monitor) {
-    // abstract 
+    // abstract
     List<SNode> result = new ArrayList<SNode>();
     doFind(node, scope, result, monitor);
     for (SNode res : result) {
@@ -101,11 +101,11 @@ public abstract class GeneratedFinder implements IInterfacedFinder {
 
   @NotNull
   public List<SNode> getElementsToLookFor(@NotNull SNode toSearch, @NotNull SearchScope scope) {
-    // default implementation for all generated finders with an empty section 
+    // defaultimplementationforallgeneratedfinderswithanemptysection
     List<SNode> res = new ArrayList<SNode>();
     getSearchedNodes(toSearch, scope, res);
     return Collections.unmodifiableList(res);
-    // return Collections.singletonList(toSearch); 
+    // returnCollections.singletonList(toSearch);
   }
 
   public String getNodeCategory(SNode node) {

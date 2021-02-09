@@ -41,7 +41,7 @@ public class check_BuildSolutionRunnerAspect_NonTypesystemRule extends AbstractN
     final SRepository repo = SNodeOperations.getModel(buildSolutionRunner).getRepository();
     SNode solution = SLinkOperations.getTarget(buildSolutionRunner, LINKS.solution$MOiH);
     if (solution == null) {
-      // solution is still not filled => error in constraints 
+      // solutionisstillnotfilled=>errorinconstraints
       return;
     }
     SModuleReference moduleReference = ModuleReference.parseReference(BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(solution));

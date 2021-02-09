@@ -7,7 +7,7 @@ public class SidewaysIfSample {
   public SidewaysIfSample() {
   }
   public static void main(String[] args) {
-    // This is a good old "if", just displayed differently on the screen 
+    // Thisisagoodold"if",justdisplayeddifferentlyonthescreen
     if (args.length > 1) {
       int value1 = Integer.parseInt(args[0]);
       int value2 = Integer.parseInt(args[1]);
@@ -19,6 +19,6 @@ public class SidewaysIfSample {
       System.out.println("Done");
     }
 
-    // Try Alt + Enter on the "on condition that" text to turn in back to standard "if" 
+    // TryAlt+Enteronthe"onconditionthat"texttoturninbacktostandard"if"
   }
 }

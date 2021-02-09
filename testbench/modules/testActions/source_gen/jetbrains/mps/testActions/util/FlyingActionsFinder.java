@@ -89,7 +89,7 @@ public class FlyingActionsFinder {
     set.add("jetbrains.mps.samples.ActionWithProgress.plugin.ProgressActionsGroup_ActionGroup");
     set.add("Git.LogContextMenu");
 
-    // Special group of actions from PlatformActions.xml 
+    // SpecialgroupofactionsfromPlatformActions.xml
     set.add("Diff.ComparePartial.Base.Left");
     set.add("Diff.ComparePartial.Base.Right");
     set.add("Diff.ComparePartial.Left.Right");

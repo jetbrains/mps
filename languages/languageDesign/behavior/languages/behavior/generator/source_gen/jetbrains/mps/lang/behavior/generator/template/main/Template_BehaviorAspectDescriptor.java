@@ -69,13 +69,13 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
             {
               final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
               tnode4.addChild(myAggregationLinks[0], tnode5);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
               environment.associate(tnode6, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~BHDescriptor");
               tnode4.addChild(myAggregationLinks[1], tnode6);
-              // TODO validate child 
+              // TODOvalidatechild
             }
             {
               final SNode tnode7 = environment.createOutputNode(myConcepts[4]);
@@ -90,11 +90,11 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
                     }
                   });
                   tnode7.addChild(myAggregationLinks[2], tnode8);
-                  // TODO validate child 
+                  // TODOvalidatechild
                 }
               }
               tnode4.addChild(myAggregationLinks[3], tnode7);
-              // TODO validate child 
+              // TODOvalidatechild
             }
           }
           environment.registerLabel(itnode3, tnode4, "BHDescriptorField");
@@ -103,18 +103,18 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
         for (SNode child9 : TemplateUtil.asNotNull(tlist3)) {
           tnode2.addChild(myAggregationLinks[4], child9);
         }
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
         tnode2.addChild(myAggregationLinks[4], tnode10);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode11 = environment.createOutputNode(myConcepts[3]);
         environment.associate(tnode11, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac4/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.runtime/)", "~BaseBehaviorAspectDescriptor");
         tnode2.addChild(myAggregationLinks[5], tnode11);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode12 = environment.createOutputNode(myConcepts[7]);
@@ -124,26 +124,26 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
           {
             final SNode tnode13 = environment.createOutputNode(myConcepts[8]);
             tnode12.addChild(myAggregationLinks[6], tnode13);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode14 = environment.createOutputNode(myConcepts[9]);
             tnode12.addChild(myAggregationLinks[7], tnode14);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode15 = environment.createOutputNode(myConcepts[10]);
             tnode12.addChild(myAggregationLinks[0], tnode15);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode2.addChild(myAggregationLinks[4], tnode12);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode16 = environment.createOutputNode(myConcepts[6]);
         tnode2.addChild(myAggregationLinks[4], tnode16);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode17 = environment.createOutputNode(myConcepts[11]);
@@ -155,13 +155,13 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
           {
             final SNode tnode18 = environment.createOutputNode(myConcepts[10]);
             tnode17.addChild(myAggregationLinks[0], tnode18);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode19 = environment.createOutputNode(myConcepts[3]);
             environment.associate(tnode19, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~BHDescriptor");
             tnode17.addChild(myAggregationLinks[6], tnode19);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode20 = environment.createOutputNode(myConcepts[12]);
@@ -172,23 +172,23 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
               {
                 final SNode tnode21 = environment.createOutputNode(myConcepts[13]);
                 tnode20.addChild(myAggregationLinks[1], tnode21);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final SNode tnode22 = environment.createOutputNode(myConcepts[14]);
                 environment.associate(tnode22, myAssociationLinks[2], "3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull");
                 tnode20.addChild(myAggregationLinks[8], tnode22);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode17.addChild(myAggregationLinks[9], tnode20);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode23 = environment.createOutputNode(myConcepts[14]);
             environment.associate(tnode23, myAssociationLinks[2], "3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable");
             tnode17.addChild(myAggregationLinks[8], tnode23);
-            // TODO validate child 
+            // TODOvalidatechild
           }
           {
             final SNode tnode24 = environment.createOutputNode(myConcepts[9]);
@@ -202,7 +202,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
                     final SNode tnode26 = environment.createOutputNode(myConcepts[16]);
                     environment.resolveInTemplateLater(tnode26, myAssociationLinks[3], templateNode_v965vj_c0a0a1a1a1a1a1a8a1a9a5a5, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/7385785963572924722", "concept", context10);
                     tnode25.addChild(myAggregationLinks[10], tnode26);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final List<SNode> tlist27 = new ArrayList<SNode>();
@@ -232,15 +232,15 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
                                     }
                                   });
                                   tnode30.addChild(myAggregationLinks[11], tnode31);
-                                  // TODO validate child 
+                                  // TODOvalidatechild
                                 }
                               }
                               tnode29.addChild(myAggregationLinks[12], tnode30);
-                              // TODO validate child 
+                              // TODOvalidatechild
                             }
                           }
                           tnode28.addChild(myAggregationLinks[13], tnode29);
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                         {
                           final SNode tnode32 = environment.createOutputNode(myConcepts[19]);
@@ -251,7 +251,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
                             }
                           });
                           tnode28.addChild(myAggregationLinks[14], tnode32);
-                          // TODO validate child 
+                          // TODOvalidatechild
                         }
                       }
                       tlist27.add(tnode28);
@@ -259,16 +259,16 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
                     for (SNode child33 : TemplateUtil.asNotNull(tlist27)) {
                       tnode25.addChild(myAggregationLinks[15], child33);
                     }
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode34 = environment.createOutputNode(myConcepts[9]);
                     tnode25.addChild(myAggregationLinks[16], tnode34);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode24.addChild(myAggregationLinks[12], tnode25);
-                // TODO validate child 
+                // TODOvalidatechild
               }
               {
                 final SNode tnode35 = environment.createOutputNode(myConcepts[18]);
@@ -277,24 +277,24 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
                   {
                     final SNode tnode36 = environment.createOutputNode(myConcepts[20]);
                     tnode35.addChild(myAggregationLinks[11], tnode36);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode24.addChild(myAggregationLinks[12], tnode35);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode17.addChild(myAggregationLinks[7], tnode24);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode2.addChild(myAggregationLinks[4], tnode17);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode37 = environment.createOutputNode(myConcepts[10]);
         tnode2.addChild(myAggregationLinks[0], tnode37);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

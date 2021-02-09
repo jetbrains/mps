@@ -157,7 +157,7 @@ public class HandlerUtil {
   }
 
   public static void requestFocus(final Project project) {
-    // requires EDT 
+    // requiresEDT
     ThreadUtils.assertEDT();
     com.intellij.ide.impl.ProjectUtil.focusProjectWindow(ideaProject(project), true);
   }

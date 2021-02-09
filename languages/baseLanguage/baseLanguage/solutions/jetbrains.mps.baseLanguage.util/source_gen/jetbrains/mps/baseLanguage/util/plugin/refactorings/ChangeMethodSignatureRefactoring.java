@@ -77,15 +77,15 @@ public class ChangeMethodSignatureRefactoring {
         boolean isArityType = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF);
 
         if (index != -1) {
-          // If last parameter has variable arity type 
+          // Iflastparameterhasvariablearitytype
           if (isArityType && index == ListSequence.fromList(this.myParameters.getIdList()).count() - 1) {
-            // Copy remainder 
+            // Copyremainder
             while (index < ListSequence.fromList(oldArgs).count()) {
               call.addArgument(ListSequence.fromList(oldArgs).getElement(index));
               index += 1;
             }
           } else {
-            // Regular parameter 
+            // Regularparameter
             call.addArgument(ListSequence.fromList(oldArgs).getElement(index));
           }
 
@@ -110,7 +110,7 @@ public class ChangeMethodSignatureRefactoring {
     List<SNode> newParams = SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$5xBj);
 
     for (final Wrappers._int index = new Wrappers._int(0); index.value < ListSequence.fromList(oldParams).count(); index.value += 1) {
-      // Deleted parameter 
+      // Deletedparameter
       if ((ListSequence.fromList(newParams).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return it.getNodeId().toString().equals(ListSequence.fromList(myParameters.getIdList()).getElement(index.value));
@@ -118,7 +118,7 @@ public class ChangeMethodSignatureRefactoring {
       }) == null)) {
         final SNode replacedParam = ListSequence.fromList(oldParams).getElement(index.value);
 
-        // Type of the new variable 
+        // Typeofthenewvariable
         SNode replacedType = SNodeOperations.copyNode(SLinkOperations.getTarget(replacedParam, LINKS.type$a1UY));
         {
           final SNode arityType = replacedType;
@@ -127,7 +127,7 @@ public class ChangeMethodSignatureRefactoring {
           }
         }
 
-        // Find references 
+        // Findreferences
         Iterable<SNode> refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(myDeclaration, LINKS.body$5xQk), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == replacedParam;
@@ -135,9 +135,9 @@ public class ChangeMethodSignatureRefactoring {
         });
 
 
-        // More than one usage 
+        // Morethanoneusage
         if (Sequence.fromIterable(refs).isNotEmpty()) {
-          // Introduce new local variable 
+          // Introducenewlocalvariable
           final SNode newDecl = createLocalVariableDeclaration_k2naws_a0b0l0b0d0l(replacedType, SPropertyOperations.getString(replacedParam, PROPS.name$MnvL));
 
           SLinkOperations.setTarget(newDecl, LINKS.initializer$2twD, VariableInitializationUtil.createDefaultInitializer(newDecl));

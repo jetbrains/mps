@@ -50,10 +50,10 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object artifactId) {
     if (artifactId instanceof SNode) {
       SNode node = (SNode) artifactId;
-      // check node.containing root == this.containing root is from initial commit e0a6b1f), but I don't see a reason 
-      // why a file from an external layout shall not match requested BuildSourcePath. Perhaps, it's due to 'source' part of the name, i.e. 
-      // that the path is supposed to reference smth from project source. However, we've got BuildSourceArchiveRelativePath which may 
-      // legitimately point to a file from an external layout, and the restriction is not clear here. 
+      // checknode.containingroot==this.containingrootisfrominitialcommite0a6b1f),butIdon'tseeareason
+      // whyafilefromanexternallayoutshallnotmatchrequestedBuildSourcePath.Perhaps,it'sdueto'source'partofthename,i.e.
+      // thatthepathissupposedtoreferencesmthfromprojectsource.However,we'vegotBuildSourceArchiveRelativePathwhichmay
+      // legitimatelypointtoafilefromanexternallayout,andtherestrictionisnotclearhere.
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSourcePath$H) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
         SNode required = SNodeOperations.cast(node, CONCEPTS.BuildSourcePath$H);
         return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo)));

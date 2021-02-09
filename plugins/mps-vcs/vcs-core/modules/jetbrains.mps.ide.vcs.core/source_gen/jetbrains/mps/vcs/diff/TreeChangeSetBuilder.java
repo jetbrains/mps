@@ -278,7 +278,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
       SNode oldParent = getModel(false).getNode(parentId);
       SNode newParent = getModel(true).getNode(parentId);
       if (oldParent == null || newParent == null) {
-        // if old or new parent of the top modified nodes is null, it means all children were moved somewhere 
+        // ifoldornewparentofthetopmodifiednodesisnull,itmeansallchildrenweremovedsomewhere
         storeMovedChildren(oldParent, newParent, link);
         continue;
       }
@@ -402,7 +402,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
   private Set<ModelChange> collectPresenceAndIdChangesFromGroup(ModifiedNodesGroup oldGroup, ModifiedNodesGroup newGroup) {
 
     Set<ModelChange> result = SetSequence.fromSet(new HashSet<ModelChange>());
-    // Collect ID changes 
+    // CollectIDchanges
     List<Pair<SNodeId, SNodeId>> newToOldPairs = createIdChangesMap(oldGroup.getIds(), newGroup.getIds());
     if (ListSequence.fromList(newToOldPairs).isEmpty()) {
       SetSequence.fromSet(result).addElement(new NodeGroupNotMoveChange(myChangeSet, oldGroup, newGroup));

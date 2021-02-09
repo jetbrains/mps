@@ -74,7 +74,7 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
       return null;
     }
 
-    // todo replace with SProperty here 
+    // todoreplacewithSPropertyhere
     final String p = EditingUtil.getEditedPropertyName(editorContext.getSelectedCell());
     if (p == null) {
       return null;
@@ -118,7 +118,7 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
       SLinkOperations.setTarget(expressionStatement, LINKS.expression$5L7M, dotExpression);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(propertyValue, LINKS.body$e68K), LINKS.statement$53DE)).addElement(expressionStatement);
       SLinkOperations.setTarget(propertyMacro, LINKS.propertyValueFunction$7Sh_, propertyValue);
-      // set caret 
+      // setcaret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, propertyMacro, SelectionManager.FIRST_CELL, 0);
     }
     @Override

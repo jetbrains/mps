@@ -116,7 +116,7 @@ public class QueriesGenerated {
     return SPropertyOperations.getString(_context.getNode(), PROPS.targetNodeId$mmM_);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    //  the 'node' expression may have been already mapped and unique name created for it 
+    // the'node'expressionmayhavebeenalreadymappedanduniquenamecreatedforit
     String key = "parameterFromExpressions_" + _context.getNode().getNodeId().toString();
     String uniqName = (String) _context.getTransientObject(key);
     uniqName = (uniqName != null ? uniqName : "parameter_" + QuotationUtil.genQuotationNodeId(_context, ((SNode) _context.getVariable("var:inputNode"))));
@@ -584,15 +584,15 @@ public class QueriesGenerated {
       if (targetAncestor != null) {
         innerQuotationRef = targetAncestor == originalAncestor;
       } else {
-        // target node is not under any quotation, two possible cases: 
+        // targetnodeisnotunderanyquotation,twopossiblecases:
         if (originalAncestor == null) {
-          // 1) source node is not under quotation, the case for regular nodes wrapped into quotation 
-          // (e.g. pattern test lang wraps a regular nodeToMatch into quotation) 
-          // I can't come up with a solution, here's a hack: assume if roots match, then 
-          // this is reference to quotaion internals 
+          // 1)sourcenodeisnotunderquotation,thecaseforregularnodeswrappedintoquotation
+          // (e.g.patterntestlangwrapsaregularnodeToMatchintoquotation)
+          // Ican'tcomeupwithasolution,here'sahack:assumeifrootsmatch,then
+          // thisisreferencetoquotaioninternals
           innerQuotationRef = SNodeOperations.getContainingRoot(targetNode) == SNodeOperations.getContainingRoot(originalNode);
         } else {
-          // 2) source node is under quotation, target node is external to the quotation then 
+          // 2)sourcenodeisunderquotation,targetnodeisexternaltothequotationthen
           innerQuotationRef = false;
         }
       }
@@ -601,13 +601,13 @@ public class QueriesGenerated {
       }
 
       // 
-      // thus we compare ancestor of current(transient) node - assuming reference targets get updated and point to the same model. 
+      // thuswecompareancestorofcurrent(transient)node-assumingreferencetargetsgetupdatedandpointtothesamemodel.
       if (targetAncestor != null && targetAncestor == originalAncestor) {
         continue;
       }
       SNode referenceNode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_ReferenceDescriptor$3E);
-      //  try to make reference up-to-date, not like it was recorded in the model file (e.g. may have outdated name) 
-      // This is merely to replace smodel.SModelReference.update() call which used to be here, I'm not 100% confident there's any reason to update references this way 
+      // trytomakereferenceup-to-date,notlikeitwasrecordedinthemodelfile(e.g.mayhaveoutdatedname)
+      // Thisismerelytoreplacesmodel.SModelReference.update()callwhichusedtobehere,I'mnot100%confidentthere'sanyreasontoupdatereferencesthisway
       SModel targetModel = ref.getTargetSModelReference().resolve(repo);
       final PersistenceFacade pf = PersistenceFacade.getInstance();
       SPropertyOperations.assign(referenceNode, PROPS.targetModel$C$SJ, pf.asString((targetModel == null ? ref.getTargetSModelReference() : targetModel.getReference())));

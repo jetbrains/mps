@@ -43,12 +43,12 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
         tnode1.addChild(myAggregationLinks[1], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -67,7 +67,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                     environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System");
                     environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out");
                     tnode6.addChild(myAggregationLinks[2], tnode7);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -86,43 +86,43 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 final SNode tnode11 = environment.createOutputNode(myConcepts[9]);
                                 tnode11.setProperty(myProperties[1], "I'm");
                                 tnode10.addChild(myAggregationLinks[3], tnode11);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
                                 SNodeAccessUtil.setPropertyValue(tnode12, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context7, "name", propertyMacro_irzm9l_c0a2a0a1a2a1a1a1a2a1a2a1a1a1a1a1a4a2a6)));
                                 tnode10.addChild(myAggregationLinks[4], tnode12);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                           {
                             final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
                             tnode13.setProperty(myProperties[1], "#0");
                             tnode9.addChild(myAggregationLinks[4], tnode13);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tnode8.addChild(myAggregationLinks[5], tnode9);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode6.addChild(myAggregationLinks[6], tnode8);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode5.addChild(myAggregationLinks[7], tnode6);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode4.addChild(myAggregationLinks[8], tnode5);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[9], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(10, tnode1);
@@ -137,12 +137,12 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
         tnode1.addChild(myAggregationLinks[1], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -161,7 +161,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                     environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System");
                     environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out");
                     tnode6.addChild(myAggregationLinks[2], tnode7);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -176,7 +176,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                             final SNode tnode10 = environment.createOutputNode(myConcepts[9]);
                             tnode10.setProperty(myProperties[1], "#1");
                             tnode9.addChild(myAggregationLinks[4], tnode10);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                           {
                             final SNode tnode11 = environment.createOutputNode(myConcepts[8]);
@@ -186,37 +186,37 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
                                 tnode12.setProperty(myProperties[1], "I'm");
                                 tnode11.addChild(myAggregationLinks[3], tnode12);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                               {
                                 final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
                                 SNodeAccessUtil.setPropertyValue(tnode13, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_2(new PropertyMacroContext(context7, "name", propertyMacro_irzm9l_c0a2a0a1a2a1a2a1a2a1a2a1a1a1a1a1a4a2a7)));
                                 tnode11.addChild(myAggregationLinks[4], tnode13);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode11);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tnode8.addChild(myAggregationLinks[5], tnode9);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode6.addChild(myAggregationLinks[6], tnode8);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode5.addChild(myAggregationLinks[7], tnode6);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode4.addChild(myAggregationLinks[8], tnode5);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[9], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(10, tnode1);
@@ -231,12 +231,12 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
         tnode1.addChild(myAggregationLinks[1], tnode3);
-        // TODO validate child 
+        // TODOvalidatechild
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -255,7 +255,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                     environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System");
                     environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~System.out");
                     tnode6.addChild(myAggregationLinks[2], tnode7);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                   {
                     final SNode tnode8 = environment.createOutputNode(myConcepts[7]);
@@ -274,43 +274,43 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                                 final SNode tnode11 = environment.createOutputNode(myConcepts[9]);
                                 tnode11.setProperty(myProperties[1], "I'm");
                                 tnode10.addChild(myAggregationLinks[3], tnode11);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
                                 SNodeAccessUtil.setPropertyValue(tnode12, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_4(new PropertyMacroContext(context7, "name", propertyMacro_irzm9l_c0a2a0a1a2a1a1a1a2a1a2a1a1a1a1a1a4a2a8)));
                                 tnode10.addChild(myAggregationLinks[4], tnode12);
-                                // TODO validate child 
+                                // TODOvalidatechild
                               }
                             }
                             tnode9.addChild(myAggregationLinks[3], tnode10);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                           {
                             final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
                             tnode13.setProperty(myProperties[1], "#2");
                             tnode9.addChild(myAggregationLinks[4], tnode13);
-                            // TODO validate child 
+                            // TODOvalidatechild
                           }
                         }
                         tnode8.addChild(myAggregationLinks[5], tnode9);
-                        // TODO validate child 
+                        // TODOvalidatechild
                       }
                     }
                     tnode6.addChild(myAggregationLinks[6], tnode8);
-                    // TODO validate child 
+                    // TODOvalidatechild
                   }
                 }
                 tnode5.addChild(myAggregationLinks[7], tnode6);
-                // TODO validate child 
+                // TODOvalidatechild
               }
             }
             tnode4.addChild(myAggregationLinks[8], tnode5);
-            // TODO validate child 
+            // TODOvalidatechild
           }
         }
         tnode1.addChild(myAggregationLinks[9], tnode4);
-        // TODO validate child 
+        // TODOvalidatechild
       }
     }
     FragmentResult rv = nodeFragment(10, tnode1);

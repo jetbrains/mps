@@ -49,7 +49,7 @@ public class RoutineCall_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_4wzuuz_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_4wzuuz_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.RoutineCall$mS, LINKS.definition$J8D4);
     }
     @NotNull

@@ -41,7 +41,7 @@ public class EditorActionUtils {
   }
   /*package*/ static EditorCell getEditorCellToInsert(EditorComponent editorComponent) {
     Selection selection = editorComponent.getSelectionManager().getSelection();
-    // TODO: remove this limitation 
+    // TODO:removethislimitation
     if (!(selection instanceof SingularSelection)) {
       return null;
     }
@@ -56,11 +56,11 @@ public class EditorActionUtils {
    * Expects model read lock
    */
   public static EditorCell getSiblingCollectionForInsert(@NotNull EditorCell cell, boolean forward) {
-    // TODO FIXME rewrite without hasSingleRolesAtLeftBoundary, cleanup ChildrenCollectionFinder 
+    // TODOFIXMErewritewithouthasSingleRolesAtLeftBoundary,cleanupChildrenCollectionFinder
     EditorCell nextLeaf = (forward ? CellTraversalUtil.getNextLeaf(cell) : CellTraversalUtil.getPrevLeaf(cell));
 
     if ((cell.isBig() || GeometryUtil.isLastPositionInBigCell(cell)) && ((forward ? hasSingleRolesAtRightBoundary(cell) : hasSingleRolesAtLeftBoundary(cell))) && nextLeaf != null) {
-      // Looking for the next child collection in parents 
+      // Lookingforthenextchildcollectioninparents
       return new ChildrenCollectionFinder(nextLeaf, cell, forward, true).find();
     }
     return null;
@@ -104,10 +104,10 @@ public class EditorActionUtils {
   private static void callAction(EditorCell cell, CellActionType cellAction, boolean after) {
     ActionHandler actionHandler = cell.getEditorComponent().getActionHandler();
     if (cell instanceof EditorCell_Label && !(isLinkCollection(cell))) {
-      // Looking for the next child collection to the right from this cell 
+      // Lookingforthenextchildcollectiontotherightfromthiscell
       EditorCell cellWithRole = new ChildrenCollectionFinder(cell, after, false).find();
       if (cellWithRole == null) {
-        // Looking for the next child collection in parents 
+        // Lookingforthenextchildcollectioninparents
         cellWithRole = getSiblingCollectionForInsert(cell, after);
       }
       if (cellWithRole != null && actionHandler.executeAction(cellWithRole, cellAction)) {

@@ -26,7 +26,7 @@ public class VersionUtil {
     myModelRef = model.getReference();
     myImports = new HashMap<SModelReference, SModel.ImportElement>();
     fillReferenceIDs(model);
-    // replace "-1" indice to valid values and advance maxImportIndex 
+    // replace"-1"indicetovalidvaluesandadvancemaxImportIndex
     for (SModel.ImportElement elem : model.importedModels()) {
       myImports.put(elem.getModelReference(), elem);
     }
@@ -104,9 +104,9 @@ public class VersionUtil {
   }
   private ParseResult parse(String src, boolean hasmodel) {
     ParseResult res = parseWithoutCheck(src, hasmodel);
-    // check integrity except concepts and attribute roles 
+    // checkintegrityexceptconceptsandattributeroles
     if (hasmodel) {
-      // && !AttributeOperations.isOldAttributeRole(res.text)) { // todo: ? remove this persistence? 
+      // &&!AttributeOperations.isOldAttributeRole(res.text)){//todo:?removethispersistence?
       SModel.ImportElement elem = myImports.get(getSModelReference(res.modelID));
       if (elem == null || res.version != myImports.get(getSModelReference(res.modelID)).getUsedVersion()) {
         LOG.error("wrong version of " + src + ", model=" + getSModelReference(res.modelID) + ". Possible reason: merge conflict was not resolved.");
@@ -120,7 +120,7 @@ public class VersionUtil {
     int i0 = -1;
     int i1 = chars.length;
     if (hasmodel) {
-      // false means we shouldn't try to parse model id 
+      // falsemeansweshouldn'ttrytoparsemodelid
       while (++i0 < i1) {
         if (!(Character.isDigit(chars[i0]))) {
           break;

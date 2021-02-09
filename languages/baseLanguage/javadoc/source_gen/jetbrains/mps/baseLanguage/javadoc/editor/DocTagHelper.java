@@ -56,7 +56,7 @@ public class DocTagHelper {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ReturnBlockDocTag$KD);
       }
     });
-    // converting sequence toList to "calculate" the sequence and prevent it from being modified by the next tags.clean operation 
+    // convertingsequencetoListto"calculate"thesequenceandpreventitfrombeingmodifiedbythenexttags.cleanoperation
     List<SNode> sortedTags = Sequence.fromIterable(author).concat(Sequence.fromIterable(since)).concat(Sequence.fromIterable(version)).concat(Sequence.fromIterable(see)).concat(Sequence.fromIterable(param)).concat(Sequence.fromIterable(thr)).concat(Sequence.fromIterable(deprecated)).concat(Sequence.fromIterable(returns)).toListSequence();
     ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.tags$stUD)).clear();
     ListSequence.fromList(sortedTags).visitAll(new IVisitor<SNode>() {

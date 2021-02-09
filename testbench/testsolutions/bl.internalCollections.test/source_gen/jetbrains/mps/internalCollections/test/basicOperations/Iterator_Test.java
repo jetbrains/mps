@@ -27,13 +27,13 @@ public class Iterator_Test extends Util_Test {
       Sequence.fromIterable(test).iterator().next();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
     try {
       Sequence.fromIterable(test).enumerator().current();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test
@@ -47,7 +47,7 @@ public class Iterator_Test extends Util_Test {
       is.next();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
     IEnumerator<Integer> is2 = Sequence.fromIterable(test).enumerator();
     Assert.assertTrue(is2.moveNext());
@@ -57,7 +57,7 @@ public class Iterator_Test extends Util_Test {
       is2.current();
       Assert.fail();
     } catch (NoSuchElementException e) {
-      // expected exception 
+      // expectedexception
     }
   }
   @Test

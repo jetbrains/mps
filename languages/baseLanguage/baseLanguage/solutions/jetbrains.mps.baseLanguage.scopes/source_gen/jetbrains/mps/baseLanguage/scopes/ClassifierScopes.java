@@ -90,15 +90,15 @@ public class ClassifierScopes {
           }
         });
         if (noArgCons != null) {
-          // Treat no-arg cons the same way as implicit default cons. 
-          // First of all, it's the way JLS tells us 'new' expression should look like (see 15.9 Class Instance Creation Expressions) 
-          // Second, it's much more handy to have single ML in templates for a class with no-arg cons, and use it to restore references in a declaration like: 
-          //         ->[MyClass] x = new ->[MyClass](); 
-          //         Use of ClassCreator there instead of DefaultClassCreator requires extra ML for the cons. 
+          // Treatno-argconsthesamewayasimplicitdefaultcons.
+          // Firstofall,it'sthewayJLStellsus'new'expressionshouldlooklike(see15.9ClassInstanceCreationExpressions)
+          // Second,it'smuchmorehandytohavesingleMLintemplatesforaclasswithno-argcons,anduseittorestorereferencesinadeclarationlike:
+          // ->[MyClass]x=new->[MyClass]();
+          // UseofClassCreatorthereinsteadofDefaultClassCreatorrequiresextraMLforthecons.
           return !((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(noArgCons, clazz, contextNode));
         }
-        // note: http://docs.oracle.com/javase/specs/jls/se5.0/html/classes.html#8.8.9 
-        // visibility of default constructor not implies by visibility of class 
+        // note:http://docs.oracle.com/javase/specs/jls/se5.0/html/classes.html#8.8.9
+        // visibilityofdefaultconstructornotimpliesbyvisibilityofclass
         return !(DefaultConstructorUtils.hasDefaultConstructor(clazz));
       }
     };
@@ -124,7 +124,7 @@ public class ClassifierScopes {
     return new FilteringScope(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$bK)) {
       @Override
       public boolean isExcluded(SNode node) {
-        // check extended classes only as Throwable is class 
+        // checkextendedclassesonlyasThrowableisclass
         SNode cc = SNodeOperations.as(node, CONCEPTS.ClassConcept$bK);
         while (cc != null) {
           if (SNodeOperations.is(cc, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
@@ -141,7 +141,7 @@ public class ClassifierScopes {
   }
   public static Scope getClassesForExtends(@NotNull SNode contextNode) {
     SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
-    // not final ClassConcepts 
+    // notfinalClassConcepts
     return new FilteringScope(ClassifierScopes.filterWithClassExpressionClassifiers(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$bK))) {
       @Override
       public boolean isExcluded(SNode node) {
@@ -166,11 +166,11 @@ public class ClassifierScopes {
         }
 
         List<SNode> ancestors = SNodeOperations.getNodeAncestors(classifier, null, true);
-        // Filtering out Classifiers located in third-party containers (not Classifiers) 
-        // and having no common Classifier container with enclosing node. 
-        // Useful for Classifiers contained in EditorTestCases 
-        // ("result" should not be able to access classifiers from "nodeToEdit")... 
-        // todo: VOODOO PEOPLE MAGIC PEOPLE 
+        // FilteringoutClassifierslocatedinthird-partycontainers(notClassifiers)
+        // andhavingnocommonClassifiercontainerwithenclosingnode.
+        // UsefulforClassifierscontainedinEditorTestCases
+        // ("result"shouldnotbeabletoaccessclassifiersfrom"nodeToEdit")...
+        // todo:VOODOOPEOPLEMAGICPEOPLE
         return ListSequence.fromList(ancestors).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix));

@@ -49,7 +49,7 @@ public class MathSymbolIndexReference_SubstituteMenu extends SubstituteMenuBase 
   public class SMP_ReferenceScope_kbkb4f_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_kbkb4f_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.MathSymbolIndexReference$m_, LINKS.indexRef$Qa4L);
     }
     @NotNull

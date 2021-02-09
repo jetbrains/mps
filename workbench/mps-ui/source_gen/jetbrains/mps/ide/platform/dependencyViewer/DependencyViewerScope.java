@@ -29,10 +29,10 @@ public class DependencyViewerScope {
   private final SRepository myRepo;
 
   public DependencyViewerScope(SRepository contextRepo) {
-    // This class assumes clients are responsible to obtain proper model read access 
-    // (they pass/obtain model/node/module, so that they need access anyway). 
-    // Scope doesn't keep model/node instances not to hog/retain too much, and resolve them as needed 
-    // with the repository supplied 
+    // Thisclassassumesclientsareresponsibletoobtainpropermodelreadaccess
+    // (theypass/obtainmodel/node/module,sothattheyneedaccessanyway).
+    // Scopedoesn'tkeepmodel/nodeinstancesnottohog/retaintoomuch,andresolvethemasneeded
+    // withtherepositorysupplied
     myModules = CollectionSequence.fromCollection(new LinkedHashSet<SModuleReference>());
     myModels = CollectionSequence.fromCollection(new LinkedHashSet<SModelReference>());
     myRoots = CollectionSequence.fromCollection(new LinkedHashSet<SNodeReference>());
@@ -90,8 +90,8 @@ public class DependencyViewerScope {
     if (nodeRef == null) {
       return;
     }
-    // indeed, nodeRef is not necessarily points to root node, 
-    // we shall account for this once we resolve back to nodes. 
+    // indeed,nodeRefisnotnecessarilypointstorootnode,
+    // weshallaccountforthisonceweresolvebacktonodes.
     CollectionSequence.fromCollection(myRoots).addElement(nodeRef);
   }
 

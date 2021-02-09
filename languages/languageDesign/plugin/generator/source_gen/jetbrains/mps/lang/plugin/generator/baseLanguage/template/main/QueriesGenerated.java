@@ -193,7 +193,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6)), _quotation_createNode_x583g4_b0a0a92())) {
       return true;
     }
-    // next is taken from switch_actionParameterType as is, and I'm not sure it's reasonable 
+    // nextistakenfromswitch_actionParameterTypeasis,andI'mnotsureit'sreasonable
     SNode pdType = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6), LINKS.type$a1UY);
     return SNodeOperations.isInstanceOf(pdType, CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(pdType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SModel"));
   }
@@ -219,7 +219,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "_par";
   }
   public static Object propertyMacro_GetValue_0_6(final PropertyMacroContext _context) {
-    // I beg for pleasure to kick a person that designed and named NonDumbAwareActions list.  
+    // IbegforpleasuretokickapersonthatdesignedandnamedNonDumbAwareActionslist.
     return !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.NonDumbAwareActions$o$), LINKS.actions$kiHz), LINKS.actionDeclaration$kjs3)).contains(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_0_7(final PropertyMacroContext _context) {
@@ -244,7 +244,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "LABEL_ID_" + SPropertyOperations.getString(SNodeOperations.cast(_context.getNode(), CONCEPTS.GroupAnchor$JV), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
-    // todo this is a workaround for IDEA bug with using names in schemes instead of IDs 
+    // todothisisaworkaroundforIDEAbugwithusingnamesinschemesinsteadofIDs
     return (SPropertyOperations.getString(_context.getNode(), PROPS.caption$Zw0A) != null ? SPropertyOperations.getString(_context.getNode(), PROPS.caption$Zw0A) : SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
@@ -1017,7 +1017,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
-    // todo compatibility code to be removed after 3.4 
+    // todocompatibilitycodetoberemovedafter3.4
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
@@ -1144,7 +1144,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$);
   }
   public static SNode sourceNodeQuery_44_1(final SourceSubstituteMacroNodeContext _context) {
-    // todo compatibility code to be removed after 3.4 
+    // todocompatibilitycodetoberemovedafter3.4
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU);
   }
   public static SNode sourceNodeQuery_44_2(final SourceSubstituteMacroNodeContext _context) {
@@ -1181,7 +1181,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5);
   }
   public static SNode sourceNodeQuery_52_1(final SourceSubstituteMacroNodeContext _context) {
-    // todo compatibility code to be removed after 3.4 
+    // todocompatibilitycodetoberemovedafter3.4
     return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU);
   }
   public static SNode sourceNodeQuery_52_2(final SourceSubstituteMacroNodeContext _context) {
@@ -1505,7 +1505,7 @@ public class QueriesGenerated extends QueryProviderBase {
             }
             ListSequence.fromList(actions).addElement(action);
           } else if (SNodeOperations.isInstanceOf(el, CONCEPTS.Separator$fe) || SNodeOperations.isInstanceOf(el, CONCEPTS.GroupAnchor$JV)) {
-            // ok 
+            // ok
           } else {
             _context.showErrorMessage(it, "group with unknown content found");
           }
@@ -1566,7 +1566,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return groupMembers;
   }
   public static Iterable<SNode> sourceNodesQuery_63_6(final SourceSubstituteMacroNodesContext _context) {
-    // TODO fix if group is not declared yet 
+    // TODOfixifgroupisnotdeclaredyet
     return SLinkOperations.getChildren(_context.getNode(), LINKS.modifier$Cb5t);
   }
   public static Iterable<SNode> sourceNodesQuery_63_7(final SourceSubstituteMacroNodesContext _context) {
@@ -1577,7 +1577,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }, true);
   }
   public static Iterable<SNode> sourceNodesQuery_63_8(final SourceSubstituteMacroNodesContext _context) {
-    // TODO fix if group is not declared yet 
+    // TODOfixifgroupisnotdeclaredyet
     return SLinkOperations.getChildren(_context.getNode(), LINKS.modifier$Cb5t);
   }
   public static Iterable<SNode> sourceNodesQuery_64_0(final SourceSubstituteMacroNodesContext _context) {
@@ -1614,7 +1614,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
       for (SNode mc : ListSequence.fromList(SNodeOperations.getNodeDescendants(action, CONCEPTS.DefaultClassifierMethodCallOperation$9$, false, new SAbstractConcept[]{}))) {
         if (SNodeOperations.getParent(SLinkOperations.getTarget(mc, LINKS.member$oLt6)) != action) {
-          // is it a call for the method declared in the same action? 
+          // isitacallforthemethoddeclaredinthesameaction?
           continue;
         }
         if (needActionContextCopy) {

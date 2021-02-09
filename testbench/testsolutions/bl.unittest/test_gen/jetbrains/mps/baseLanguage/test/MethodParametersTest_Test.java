@@ -60,8 +60,8 @@ public class MethodParametersTest_Test extends BaseTransformationTest {
 
     public void test_MethodParametersTest() throws Exception {
       addNodeById("1217271585643");
-      // Check statement was moved to node annotation 
-      // check <node>error messages 
+      // Checkstatementwasmovedtonodeannotation
+      // checkgetNodeById(string):node<>errormessages
     }
     public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624927544278() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451230144");

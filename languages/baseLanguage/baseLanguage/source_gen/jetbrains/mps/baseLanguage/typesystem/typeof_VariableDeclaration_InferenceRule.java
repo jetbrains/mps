@@ -28,7 +28,7 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
     boolean abstractInitializer = sconcept != null && sconcept.isAbstract();
     if ((initializer != null)) {
       if (abstractInitializer && ((SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY))), CONCEPTS.Type$bu))) {
-        // needed for MPS-20925 
+        // neededforMPS-20925
         return;
       } else {
         if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY), initializer)))) {
@@ -54,7 +54,7 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
             }
           }
         } else {
-          // Ensure the initializer is an IntegerType 
+          // EnsuretheinitializerisanIntegerType
           if (!(typeCheckingContext.isSingleTypeComputation())) {
             {
               SNode _nodeToCheck_1029348928467 = initializer;

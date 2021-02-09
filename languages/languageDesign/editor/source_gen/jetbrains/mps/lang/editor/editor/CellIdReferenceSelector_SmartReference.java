@@ -43,7 +43,7 @@ public class CellIdReferenceSelector_SmartReference extends SubstituteMenuBase {
   public class SMP_ReferenceScope_vhwei_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_vhwei_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.CellIdReferenceSelector$vW, LINKS.id$X9uE);
     }
     @NotNull

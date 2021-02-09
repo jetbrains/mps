@@ -44,7 +44,7 @@ public class ConceptSubstitutePartTest extends SubstituteMenuBase {
   public class SMP_Group_rd4mcj_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      // additional compilation test for all passed parameters 
+      // additionalcompilationtestforallpassedparameters
       boolean tmpVar = _context.getParentNode() != null;
       tmpVar = tmpVar && _context.getCurrentTargetNode() != null;
       tmpVar = tmpVar && _context.getLink() != null;

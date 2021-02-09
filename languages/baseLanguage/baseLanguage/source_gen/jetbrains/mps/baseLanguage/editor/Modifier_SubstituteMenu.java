@@ -88,8 +88,8 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
         }).collect(Collectors.toList());
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-        // link is null when it is called from the transformation menu so constraints are not checked, 
-        // and we check them again 
+        // linkisnullwhenitiscalledfromthetransformationmenusoconstraintsarenotchecked,
+        // andwecheckthemagain
         List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$et), LINKS.modifiers$F5MM);
         return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {

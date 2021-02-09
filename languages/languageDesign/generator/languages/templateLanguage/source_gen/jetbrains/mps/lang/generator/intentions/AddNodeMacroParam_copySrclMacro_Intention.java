@@ -90,7 +90,7 @@ public final class AddNodeMacroParam_copySrclMacro_Intention extends AbstractInt
       SLinkOperations.setTarget(expressionStatement, LINKS.expression$5L7M, dotExpression);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$e68K), LINKS.statement$53DE)).addElement(expressionStatement);
       SLinkOperations.setTarget(copySrcListMacro, LINKS.sourceNodesQuery$RIct, referentValue);
-      // set caret 
+      // setcaret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, copySrcListMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

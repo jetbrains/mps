@@ -103,7 +103,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        // Adds shortcut to Default keymap (creates keymap if it doesn't exists) 
+        // AddsshortcuttoDefaultkeymap(createskeymapifitdoesn'texists)
         return "Add default shortcut";
       }
 
@@ -132,7 +132,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
           return true;
         }
 
-        // Only if there is no any shortcut for this action 
+        // Onlyifthereisnoanyshortcutforthisaction
         return (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(keymapDefault, LINKS.shortcutChange$L1Z4), CONCEPTS.SimpleShortcutChange$R8)).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SLinkOperations.getTarget(it, LINKS.action$wOJd) == _context.getNode();
@@ -183,7 +183,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        // Adds shortcut to Mac, Mac 10.5+ and Gnome keymaps (creates each keymap) 
+        // AddsshortcuttoMac,Mac10.5+andGnomekeymaps(createseachkeymap)
         return "Add OS-specific shortcuts";
       }
 
@@ -204,7 +204,7 @@ public class ActionDeclaration_TransformationMenu extends TransformationMenuBase
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        // Use only in case there is not any KeymapChangesDeclaration other than Default 
+        // UseonlyincasethereisnotanyKeymapChangesDeclarationotherthanDefault
         return !(ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.KeymapChangesDeclaration$QD)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.keymap$Oqju), 0x21ea68327baf70c0L));

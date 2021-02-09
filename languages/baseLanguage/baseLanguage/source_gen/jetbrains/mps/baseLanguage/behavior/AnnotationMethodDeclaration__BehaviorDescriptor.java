@@ -45,7 +45,7 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$rh)) {
       SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi);
       if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$rh)) {
-        // nested array types are prohibited 
+        // nestedarraytypesareprohibited
         return false;
       }
       return ((boolean) AnnotationMethodDeclaration__BehaviorDescriptor.isGoodReturnType_id5JI19Xbr7EK.invoke(__thisNode__, componentType));

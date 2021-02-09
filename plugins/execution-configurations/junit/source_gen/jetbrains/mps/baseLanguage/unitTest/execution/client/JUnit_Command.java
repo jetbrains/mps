@@ -78,7 +78,7 @@ public class JUnit_Command {
   }
   public ProcessHandler createProcess(Project project, List<ITestNodeWrapper> tests) throws ExecutionException {
     TestsWithParameters testsWithParams = TestsWithParameters.createFromTest2RunList(tests);
-    // It's fine to demand an MPS project when we launch MPS tests from ITestNodeWrapper 
+    // It'sfinetodemandanMPSprojectwhenwelaunchMPStestsfromITestNodeWrapper
     final SRepository repo = project.getRepository();
     TestsWithParametersAndConfiguration settings = new TestsWithParametersAndConfiguration(repo, testsWithParams);
 

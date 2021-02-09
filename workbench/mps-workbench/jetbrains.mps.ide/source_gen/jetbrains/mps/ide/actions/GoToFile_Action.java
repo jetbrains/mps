@@ -29,7 +29,7 @@ public class GoToFile_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    // Quick fix for MPS-21683, see GoToAction 
+    // QuickfixforMPS-21683,seeGoToAction
     if (!(ActionPlaces.MAIN_MENU.equals(event.getPlace()))) {
       return false;
     }

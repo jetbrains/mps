@@ -187,8 +187,8 @@
       <node id="8418462919995316095" at="146,84,147,47" concept="10" />
       <node id="8418462919995434934" at="152,25,153,85" concept="3" />
       <node id="8418462919995434945" at="153,85,154,30" concept="3" />
-      <node id="8102822537233189517" at="159,58,160,20" concept="11" />
-      <node id="8102822537233176998" at="160,20,161,28" concept="3" />
+      <node id="8102822537233189517" at="159,58,160,18" concept="11" />
+      <node id="8102822537233176998" at="160,18,161,28" concept="3" />
       <node id="4040225811302007249" at="161,28,162,85" concept="3" />
       <node id="6309237009046057539" at="165,70,166,102" concept="10" />
       <node id="8418462919994597201" at="168,63,169,103" concept="10" />
@@ -413,8 +413,8 @@
     <file name="Nodeaccess_ApplicationPlugin.java">
       <node id="4927751493714246913" at="11,0,12,0" concept="4" trace="myId" />
       <node id="4927751493714246913" at="17,27,18,16" concept="10" />
-      <node id="4927751493714246913" at="21,30,22,30" concept="11" />
-      <node id="4927751493714246913" at="23,45,24,14" concept="11" />
+      <node id="4927751493714246913" at="21,30,22,27" concept="11" />
+      <node id="4927751493714246913" at="23,45,24,13" concept="11" />
       <node id="4927751493714246913" at="13,0,15,0" concept="2" trace="Nodeaccess_ApplicationPlugin#()V" />
       <node id="4927751493714246913" at="16,0,20,0" concept="8" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
       <node id="4927751493714246913" at="27,0,31,0" concept="8" trace="adjustRegularGroups#()V" />
@@ -654,7 +654,7 @@
       <unit id="64850105743122272" at="26,0,87,0" name="jetbrains.mps.ide.httpsupport.nodeaccess.plugin.NodeReferenceURL_Action" />
     </file>
     <file name="Nodeaccess_ApplicationPlugin.java">
-      <node id="64850105743122272" at="22,30,23,45" concept="3" />
+      <node id="64850105743122272" at="22,27,23,45" concept="3" />
     </file>
   </root>
   <root nodeRef="r:7fa64b2e-9276-48d0-83e8-bd0a49298c05(jetbrains.mps.ide.httpsupport.nodeaccess.plugin)/64850105743184362">
@@ -672,7 +672,7 @@
       <unit id="64850105743184362" at="9,0,19,0" name="jetbrains.mps.ide.httpsupport.nodeaccess.plugin.NodeAsUriActions_ActionGroup" />
     </file>
     <file name="Nodeaccess_ApplicationPlugin.java">
-      <node id="64850105743184362" at="24,14,25,53" concept="3" />
+      <node id="64850105743184362" at="24,13,25,53" concept="3" />
       <node id="4918095400551917823" at="27,37,28,127" concept="3" />
       <node id="64850105743189293" at="28,127,29,97" concept="3" />
     </file>

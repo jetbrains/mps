@@ -55,12 +55,12 @@ public class AddVarArgParameter_Test extends BaseTransformationTest {
       addNodeById("3053244449233869717");
       ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("3053244449233869682"));
 
-      // Add params 
+      // Addparams
       SNode intArityParam = _quotation_createNode_os1acc_a0f0d7();
       List<SNode> parameters = SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj);
       parameters.add(intArityParam);
 
-      // Usages 
+      // Usages
       List<SNode> usages = ListSequence.fromList(new ArrayList<SNode>(2));
       ListSequence.fromList(usages).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(getNodeById("3053244449233869694"), LINKS.body$5xQk), LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
@@ -68,7 +68,7 @@ public class AddVarArgParameter_Test extends BaseTransformationTest {
         }
       }));
 
-      // Create refactoring and add usages 
+      // Createrefactoringandaddusages
       ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("3053244449233869682"));
       ref.setUsages(usages);
 

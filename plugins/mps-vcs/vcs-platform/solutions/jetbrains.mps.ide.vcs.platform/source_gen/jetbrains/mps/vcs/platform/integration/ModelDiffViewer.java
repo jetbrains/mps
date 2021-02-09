@@ -66,7 +66,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     } else {
       SModel oldModel = ModelDiffViewer.getModel(mpsProject, contents.get(0), type);
       SModel newModel = ModelDiffViewer.getModel(mpsProject, contents.get(1), type);
-      //  show one root only if requested 
+      // showonerootonlyifrequested
       rootId = request.getUserData(DIFF_SHOW_ROOTID);
       final boolean showTree = DIFF_SHOW_TREE.get(request, true);
       myViewer = new ModelDifferenceViewer(mpsProject, showTree);
@@ -75,10 +75,10 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     List<String> titles = request.getContentTitles();
     myViewer.setContentTitles(titles.get(0), titles.get(1));
     if (rootId != null) {
-      // beware, rootId == null is treated as 'show model metadata changes', regardless of whether there are such changes  
+      // beware,rootId==nullistreatedas'showmodelmetadatachanges',regardlessofwhethertherearesuchchanges
       myViewer.setCurrentRoot(rootId);
     }
-    // navigate to specific place in editor if requested 
+    // navigatetospecificplaceineditorifrequested
     Bounds scrollTo = request.getUserData(DIFF_NAVIGATE_TO);
     if (scrollTo != null) {
       myViewer.navigate(scrollTo);
@@ -151,7 +151,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
 
   @Nullable
   private static SModel readModel(DiffContent content, FileType type) {
-    // already a model? 
+    // alreadyamodel?
     if (content instanceof ModelDiffContent) {
       return ((ModelDiffContent) content).getModel();
     }
@@ -164,11 +164,11 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       InputStream inputStream = null;
       try {
         inputStream = file.getInputStream();
-        // I'm fine with exception in case file length is > than 2^31 
+        // I'mfinewithexceptionincasefilelengthis>than2^31
         byte[] data = ReadUtil.read(inputStream, (int) file.getLength());
         return VCSPersistenceUtil.loadModel(data, file.getExtension());
       } catch (IOException ex) {
-        // ignore error 
+        // ignoreerror
         FileUtil.closeFileSafe(inputStream);
         return null;
       }
@@ -182,11 +182,11 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
 
   @Nullable
   private static SModel getModel(MPSProject mpsProject, @NotNull DiffContent content, FileType type) {
-    // already a model? 
+    // alreadyamodel?
     if (content instanceof ModelDiffContent) {
       return ((ModelDiffContent) content).getModel();
     }
-    // try to find model in repository 
+    // trytofindmodelinrepository
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile();
       IdeaFileSystem fs = mpsProject.getFileSystem();
@@ -198,18 +198,18 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
         return model;
       }
     }
-    // read model from content 
+    // readmodelfromcontent
     return readModel(content, type);
   }
 
   @Nullable
   private static Tuples._2<SModel, SNodeId> getModelAndRoot(MPSProject mpsProject, DiffContent content, FileType type) {
-    // first read model from file and get root Id 
+    // firstreadmodelfromfileandgetrootId
     SModel model = readModel(content, type);
-    // there should be no more than one root in the model from this file  
+    // thereshouldbenomorethanonerootinthemodelfromthisfile
     SNodeId rootId = check_qg7y9c_a0d0x(ListSequence.fromList(SModelOperations.roots(model, null)).first());
 
-    // try to find model in repository 
+    // trytofindmodelinrepository
     if (content instanceof FileContent) {
       VirtualFile file = ((FileContent) content).getFile().getParent();
       IdeaFileSystem fs = mpsProject.getFileSystem();

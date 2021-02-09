@@ -49,7 +49,7 @@ public class BuildExternalLayoutDependency_SubstituteMenu extends SubstituteMenu
   public class SMP_ReferenceScope_ye7991_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_ye7991_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.BuildExternalLayoutDependency$oL, LINKS.layout$GC7_);
     }
     @NotNull

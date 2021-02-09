@@ -80,7 +80,7 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
       SNode switchMacro = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateSwitchMacro$3G, null);
       SNodeOperations.replaceWithAnother(nodeMacro, switchMacro);
       SLinkOperations.setTarget(switchMacro, LINKS.template$6_6, myParameter);
-      // set caret 
+      // setcaret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, switchMacro, SelectionManager.FIRST_CELL, 1);
     }
     @Override

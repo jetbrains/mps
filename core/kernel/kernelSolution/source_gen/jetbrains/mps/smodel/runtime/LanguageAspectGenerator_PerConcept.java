@@ -94,7 +94,7 @@ public abstract class LanguageAspectGenerator_PerConcept extends LanguageAspectG
       ListSequence.fromList(methods).addElement(_quotation_createNode_mxlioj_a0a8a3a5(ifStmts, acd.getInterfaceClass(), conceptParamDecl, acd.getGeneratedMethodName()));
     }
 
-    // resulting class 
+    // resultingclass
     SNode result = _quotation_createNode_mxlioj_a0g0f(getInterfaceClass(), methods, getGeneratedClassShortName());
 
     return result;

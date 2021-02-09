@@ -143,7 +143,7 @@ public class NextPreviousTraverser {
     return check_mf966z_a5a51(changeGroup, left);
   }
   private synchronized Bounds getNeighbourGroupBounds(boolean previous) {
-    // -1 means that group is not available 
+    // -1meansthatgroupisnotavailable
 
     int currentY = ((jetbrains.mps.nodeEditor.EditorComponent) myLastEditor).getViewport().getViewPosition().y;
     EditorCell selectedCell = ((jetbrains.mps.nodeEditor.EditorComponent) myLastEditor).getSelectedCell();

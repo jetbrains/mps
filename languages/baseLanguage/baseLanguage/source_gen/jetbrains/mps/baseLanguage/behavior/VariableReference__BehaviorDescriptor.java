@@ -73,7 +73,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
               return c;
             }
           } catch (Throwable t) {
-            // do nothing 
+            // donothing
           }
         }
         if (module == null) {
@@ -105,7 +105,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invokeSuper(__thisNode__, CONCEPTS.VariableReference$TC));
   }
   /*package*/ static boolean isParameterOfThisMethod_idi3dhek3(@NotNull SNode __thisNode__) {
-    // todo: method from ParameterReference. Remove. 
+    // todo:methodfromParameterReference.Remove.
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG))) {
       throw new IllegalArgumentException();
     }
@@ -117,7 +117,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     return false;
   }
   /*package*/ static boolean isVariableDefinedInThisMethod_idhPiSGi6(@NotNull SNode __thisNode__) {
-    // todo: method from LocalVariableReference. Remove 
+    // todo:methodfromLocalVariableReference.Remove
     if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
       throw new IllegalArgumentException();
     }
@@ -133,7 +133,7 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
     return false;
   }
   /*package*/ static SNode getDeclaration_id2P5W1FWMYZ5(@NotNull SNode __thisNode__) {
-    // todo: method from LocalVariableReference. Remove 
+    // todo:methodfromLocalVariableReference.Remove
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
       return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
     } else {

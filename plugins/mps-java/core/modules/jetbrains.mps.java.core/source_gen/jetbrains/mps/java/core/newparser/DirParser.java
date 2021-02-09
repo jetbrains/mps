@@ -84,8 +84,8 @@ public class DirParser {
   private void addSourceFromDirectory(IFile dir) throws IOException, JavaParseException {
     assert dir.isDirectory();
 
-    // packages which match the directory 
-    // in the proper case: there should be only one 
+    // packageswhichmatchthedirectory
+    // inthepropercase:thereshouldbeonlyone
     String pkg = null;
     boolean wasDefaultPkg = false;
     final List<SNode> roots = new ArrayList<SNode>();
@@ -99,7 +99,7 @@ public class DirParser {
         String p = parseRes.getPackage();
 
         if (p == null) {
-          // default package (i.e. none), bad 
+          // defaultpackage(i.e.none),bad
           if (!(wasDefaultPkg)) {
             LOG.error("default package is not supported in java source directory input (first such file in dir: " + file.getName() + ")");
             wasDefaultPkg = true;
@@ -123,7 +123,7 @@ public class DirParser {
       }
     }
 
-    // do model stuff 
+    // domodelstuff
     final String finalPkg = pkg;
     if (pkg != null && ListSequence.fromList(roots).isNotEmpty()) {
       myModelAccess.executeCommand(new Runnable() {
@@ -151,15 +151,15 @@ public class DirParser {
   private SModel registerModelForPackage(String fqName) {
     for (SModel model : myModule.getModels()) {
       if (fqName.equals(model.getName().getLongName())) {
-        // package is already present... 
-        // maybe we shouldn't touch it then, maybe it should be an option 
+        // packageisalreadypresent...
+        // maybeweshouldn'ttouchitthen,maybeitshouldbeanoption
         return model;
       }
     }
     return createModel(fqName);
   }
   private SModel createModel(String packageName) {
-    // first check if it is possible 
+    // firstcheckifitispossible
     if (getRootToCreateModel(packageName) == null) {
       LOG.error("Cannot create model " + packageName + " in module " + myModule.getModuleName());
       return null;
@@ -181,8 +181,8 @@ public class DirParser {
   }
   public static boolean checkPackageMatchesSourceDirectory(String pkg, IFile sourceDir) {
     String pathPostfix = NameUtil.pathFromNamespace(pkg);
-    // pathFromNamespace returns system-dependent path 
-    // while IdeaFile.getPath() returns system-independent 
+    // pathFromNamespacereturnssystem-dependentpath
+    // whileIdeaFile.getPath()returnssystem-independent
     String sourceDirSysDep = NameUtil.toSystemDependentPath(sourceDir.getPath());
     return sourceDirSysDep.endsWith(pathPostfix);
   }

@@ -38,7 +38,7 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
           return (SLinkOperations.getTarget(it, LINKS.cpSpec$v7$t) == null);
         }
       })) {
-        // since there's property constraint for INamedConcept.name in Checkpoint, can't use cps.name directly 
+        // sincethere'spropertyconstraintforINamedConcept.nameinCheckpoint,can'tusecps.namedirectly
         String cpName = cps.getProperty(PROPS.name$MnvL);
         cps.setProperty(PROPS.name$MnvL, null);
         SPropertyOperations.assign(SLinkOperations.setNewChild(cps, LINKS.cpSpec$v7$t, CONCEPTS.InPlaceCheckpointSpec$pM), PROPS.name$MnvL, cpName);

@@ -40,7 +40,7 @@ public class MethodMessageContainer extends MessageContainerBase<LeafTestMessage
 
   @Override
   public boolean matches(@NotNull MessageFilter filter) {
-    // here nodes must coincide if not null 
+    // herenodesmustcoincideifnotnull
     return filter.accept(myMethodNode);
   }
 

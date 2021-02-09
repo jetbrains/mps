@@ -22,7 +22,7 @@ public class check_GenerationContextOp_Base_NonTypesystemRule extends AbstractNo
   public check_GenerationContextOp_Base_NonTypesystemRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    //  only applicable to 'genctx' 
+    // onlyapplicableto'genctx'
     SNode contextType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(op), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR));
     if (!(SNodeOperations.isInstanceOf(contextType, CONCEPTS.GenerationContextType$Xq))) {
       final MessageTarget errorTarget = new NodeMessageTarget();

@@ -50,7 +50,7 @@ public class typeof_InvokeIntentionStatement_InferenceRule extends AbstractInfer
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "8933192351752331291", true), (SNode) type, false, true, _info_12389875345);
       }
     } else {
-      // Not a parameterized intention - should not have a parameter 
+      // Notaparameterizedintention-shouldnothaveaparameter
       if ((SLinkOperations.getTarget(statement, LINKS.parameter$TyS_) != null)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();

@@ -109,7 +109,7 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        // XXX no idea when this menu is in use, if I select whole language// and ask for completion, I don't see anything from this menu, imo. 
+        // XXXnoideawhenthismenuisinuse,ifIselectwholelanguage//andaskforcompletion,Idon'tseeanythingfromthismenu,imo.
         SLinkOperations.setTarget(_context.getNode(), LINKS.languageId$xSH1, createdNode);
       }
 

@@ -92,7 +92,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     JPanel panel = new JPanel();
     panel.setBorder(IdeBorderFactory.createTitledBorder("Cleanup"));
     panel.setLayout(new VerticalFlowLayout());
-    // todo 
+    // todo
     return panel;
   }
 
@@ -198,7 +198,7 @@ public class MigrationTestConfigDialog extends DialogWrapper {
       public boolean error;
 
       public PMigration(String id1, boolean hasOptions1, boolean error1) {
-        // todo cleanup 
+        // todocleanup
         id = id1;
         hasOptions = hasOptions1;
         error = error1;

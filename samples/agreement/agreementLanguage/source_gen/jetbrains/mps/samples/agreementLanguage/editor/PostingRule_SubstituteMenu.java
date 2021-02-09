@@ -49,7 +49,7 @@ public class PostingRule_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_ReferenceScope_79mqlp_a extends ReferenceScopeSubstituteMenuPart {
 
     public SMP_ReferenceScope_79mqlp_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
+      // thatcastisneededforpreventtheusersfromhttps://youtrack.jetbrains.com/issue/MPS-29051
       super((SAbstractConcept) CONCEPTS.PostingRule$C5, LINKS.account$M1gv);
     }
     @NotNull

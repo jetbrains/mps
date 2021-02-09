@@ -338,7 +338,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
 
       List<Method> methods = new ArrayList<Method>();
       methods.addAll(Arrays.asList(jetbrains.mps.smodel.SNode.class.getDeclaredMethods()));
-      // 'delete' must be last checked method 
+      // 'delete'mustbelastcheckedmethod
       for (int i = 0; i < methods.size(); i++) {
         if (methods.get(i).getName().equals("delete") && i != (methods.size() - 1)) {
           Collections.swap(methods, i, (methods.size() - 1));
@@ -426,7 +426,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       Assert.assertTrue("In method " + fullyQualifiedMethodName + " current count " + reads + ", prev count " + map.get(fullyQualifiedMethodName).intValue(), this.isReadsCountUnChanged(map.get(fullyQualifiedMethodName).intValue(), reads));
     }
     public boolean isReadsCountUnChanged(int previous, int current) {
-      // just check that reads doesn't appear or disappear quietly 
+      // justcheckthatreadsdoesn'tappearordisappearquietly
       return (previous == 0 ? current == 0 : current > 0);
     }
   }

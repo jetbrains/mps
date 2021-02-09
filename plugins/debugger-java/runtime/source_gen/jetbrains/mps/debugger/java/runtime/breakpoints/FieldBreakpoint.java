@@ -79,7 +79,7 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
       requestManager.enableRequest(fieldModificationRequest);
     } catch (ClassNotPreparedException ex) {
       LOG.warn("ClassNotPreparedException: " + ex.getMessage());
-      //  there's a chance to add a breakpoint when the class is prepared 
+      // there'sachancetoaddabreakpointwhentheclassisprepared
     } catch (ObjectCollectedException ex) {
       LOG.warn("ObjectCollectedException: " + ex.getMessage());
     } catch (InternalException ex) {

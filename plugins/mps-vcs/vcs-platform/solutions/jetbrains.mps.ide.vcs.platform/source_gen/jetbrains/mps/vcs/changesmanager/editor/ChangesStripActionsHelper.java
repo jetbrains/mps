@@ -129,13 +129,13 @@ public final class ChangesStripActionsHelper {
     assert changeGroup != null;
 
     final SModel oldModel = ListSequence.fromList(changeGroup.getChanges()).first().getChangeSet().getOldModel();
-    // do we need??? there were no de-registration 
+    // doweneed???therewerenode-registration
     if (oldModel.getModule() == null) {
-      // without model registration reference resolving doesn't work during paste: should be fixed 
+      // withoutmodelregistrationreferenceresolvingdoesn'tworkduringpaste:shouldbefixed
       DiffModelUtil.renameModelAndRegister(oldModel, "old");
     }
 
-    // compute paths to root 
+    // computepathstoroot
     Iterable<SNode> baseNodes = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, SNode>() {
       public Iterable<SNode> translate(ModelChange ch) {
         if (ch instanceof NodeChange) {
@@ -157,7 +157,7 @@ public final class ChangesStripActionsHelper {
       }
     }).toListSequence();
 
-    // find common path 
+    // findcommonpath
     final Wrappers._T<List<SNode>> commonPath = new Wrappers._T<List<SNode>>(ListSequence.fromList(paths).getElement(0));
     for (List<SNode> pathToRoot : ListSequence.fromList(paths)) {
       for (int i = 0; i < Math.min(ListSequence.fromList(commonPath.value).count(), ListSequence.fromList(pathToRoot).count()); i++) {
@@ -172,7 +172,7 @@ public final class ChangesStripActionsHelper {
     }
     assert !(ListSequence.fromList(commonPath.value).isEmpty());
 
-    // by default, copy common ancestor 
+    // bydefault,copycommonancestor
     SNode commonNode = ListSequence.fromList(commonPath.value).last();
     List<SNode> nodesToCopy = Sequence.fromIterable(Sequence.<SNode>singleton(commonNode)).toListSequence();
 
