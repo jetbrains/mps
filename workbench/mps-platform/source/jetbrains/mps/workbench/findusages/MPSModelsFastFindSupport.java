@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,6 +105,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
       return;
     }
     monitor.start("Find usages", 3);
+    // XXX projectModelsOnly not necessarily filters out models that are not from project modules!
     scope = myModelFilter.projectModelsOnly(scope);
     if (scope.isEmpty()) {
       monitor.done();
@@ -211,6 +212,12 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
           break;
         }
 
+        // FIXME use of getOrCreateVirtualFile() leads to VF creation for models that reside in project libraries
+        //       e.g. deployed modules. One have to be careful to make sure these files get indexed (i.e. covered
+        //       by indexable roots, see MPSIndexableSetContributor & IndexableRootCalculator), otherwise we may
+        //       mark model as 'consumed' here while it wasn't indexed at all.
+        // FIXME Perhaps, there's an API to find out whether VF is part of index, so that we don't consume its model here
+        //       unless it is in the index.
         VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(modelFile);
         if (vf == null) {
           LogManager.getLogger(MPSModelsFastFindSupport.class).warn(

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,11 @@ import java.util.Collections;
     return myProject;
   }
 
+  /**
+   * FIXME notion of 'project' model is well-defined here. Now, this code
+   *   makes sure the model is 'available' to the project, not that it belongs to
+   *   one of project modules.
+   */
   public Collection<SModel> projectModelsOnly(Collection<SModel> models) {
     if (!myProject.getModelAccess().canRead()) {
       // it's some other project's repository we are accessing now

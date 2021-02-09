@@ -27,6 +27,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.IndexableSetContributorModificationTracker;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.IdeaFile;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
@@ -120,12 +122,21 @@ final class IndexableRootCalculator implements Disposable {
     final Set<VirtualFile> files = new HashSet<>();
 
     myProject.getModelAccess().runReadAction(() -> {
+      final IdeaFileSystem fs = myProject.getFileSystem();
       for (final SModule m : myProject.getRepository().getModules()) {
-        for (IFile path : getIndexablePaths(m)) {
-          // FIXME perhaps, shall use myProject.getFileSystem() instead of VFU static?
-          VirtualFile file = VirtualFileUtils.getVirtualFile(path);
-          if (file != null) {
-            files.add(file);
+        for (IFile f : getIndexablePaths(m)) {
+          // XXX can't just use VirtualFileUtils.getVirtualFile(f) as for packaged modules
+          //     IFile coming won't be IdeaFile, and getVF() would give null, effectively excluding
+          //     module location from indexing. In fact, it might be the right way to go, as it's not
+          //     clear whether we have to index models from within distributed modules (or whether we
+          //     have to use IDEA's index mechanism for the task). However, as of this writing,
+          //     MPSModelsFastFindSupport assumes any model available through ProjectRepository is indexed
+          //     and without this code it may yield wrong results (i.e. consume a model that has not been
+          //     indexed, omitting some instances)
+          final IdeaFile ideaFile = fs.getFile(f.getPath());
+          VirtualFile vf = ideaFile == null ? null : ideaFile.getVirtualFile();
+          if (vf != null) {
+            files.add(vf);
           }
         }
       }
