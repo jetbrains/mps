@@ -23,6 +23,7 @@ import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ArtifactsRelativePathHelper {
@@ -36,7 +37,7 @@ public class ArtifactsRelativePathHelper {
     while (parent.value != null) {
       MapSequence.fromMap(prefixes).put(parent.value, sb.toString());
       if (SNodeOperations.isInstanceOf(parent.value, CONCEPTS.BuildLayout_Folder$AH)) {
-        // Although not sure, the code below seems to address multiple folder entiries with the same name under single parent (build language allows that) 
+        // Although not sure, the code below seems to address multiple folder entries with the same name under single parent (build language allows that) 
         for (SNode sfolder : Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(parent.value, false), CONCEPTS.BuildLayout_Folder$AH)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return it != parent.value && equalFolders(SNodeOperations.as(parent.value, CONCEPTS.BuildLayout_Folder$AH), it);
@@ -103,6 +104,18 @@ public class ArtifactsRelativePathHelper {
       }
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_File$Kk) && isLast) {
       return BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.BuildLayout_File$Kk), LINKS.path$xmoo));
+    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMpsLayout_Plugin$cj)) {
+      // FIXME first, no idea why this class, ARPH, is part of mps.build.mps, not just mps.build, how come basic build 
+      //      functionality of mps.build lives without relative paths. Indeed, it's handy here as I won't reference 
+      //      BML_Plugin if ARPH would be part of mps.build. 
+      //      second, I don't understand why this code makes explicit container (e.g. folder) access, see getRelativePath 
+      //      above, it takes prefix of *parent* of discovered layout element, therefore there had to be a name of layout  
+      //      element (and this code, that duplicates logic of BL_PE.appendName, BL_PE.unpack and so on). E.g. 
+      //      given folder xxx, with jar yyy and file zzz, relative path from yyy to zzz would look like ../xxx/zzz 
+      //      instead of just zzz, without any xxx reference. 
+      //      [!] Third, and it's duplication story again, I don't quite get why not to use DH.getContentLocation(node) 
+      //      - if all layout nodes manifest their location to DH, why do we use alternative approach here? 
+      return getBSName(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.BuildMpsLayout_Plugin$cj), LINKS.plugin$9ewC), LINKS.containerName$xQbG));
     }
     throw new RelativePathException("cannot build relative path for " + SNodeOperations.getConcept(node).getName());
   }
@@ -149,6 +162,7 @@ public class ArtifactsRelativePathHelper {
     /*package*/ static final SConcept BuildLayout_Copy$E8 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
     /*package*/ static final SConcept BuildInputSingleFile$4U = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
     /*package*/ static final SConcept BuildLayout_File$Kk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, "jetbrains.mps.build.structure.BuildLayout_File");
+    /*package*/ static final SConcept BuildMpsLayout_Plugin$cj = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
     /*package*/ static final SConcept BuildTextStringPart$3R = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
   }
 
@@ -157,6 +171,8 @@ public class ArtifactsRelativePathHelper {
     /*package*/ static final SContainmentLink path$dYr6 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
     /*package*/ static final SContainmentLink containerName$ES_Y = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
     /*package*/ static final SContainmentLink path$xmoo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
+    /*package*/ static final SReferenceLink plugin$9ewC = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
+    /*package*/ static final SContainmentLink containerName$xQbG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4def2c96L, "containerName");
     /*package*/ static final SContainmentLink parts$uJA0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts");
   }
 
