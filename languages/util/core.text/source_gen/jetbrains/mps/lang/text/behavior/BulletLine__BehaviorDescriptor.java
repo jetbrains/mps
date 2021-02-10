@@ -51,7 +51,7 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
     if ((f == null)) {
       return false;
     }
-    return SPropertyOperations.getString(f, PROPS.value$zQr_).matches("[*|-]") && (SNodeOperations.getNextSibling(f) != null);
+    return SPropertyOperations.getString(f, PROPS.value$zQr_) != null && SPropertyOperations.getString(f, PROPS.value$zQr_).matches("[*|-]") && (SNodeOperations.getNextSibling(f) != null);
   }
   /*package*/ static String wrapTextForClipboard_id2iG$EWuTXuU(@NotNull SNode __thisNode__, String text) {
     return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + "* " + text;

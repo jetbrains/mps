@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -244,6 +245,21 @@ public class Line_Actions {
 
     };
   }
+  /*package*/ static AbstractCellAction createAction_PASTE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SNode f = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elements$_j45)).first();
+        if ((f == null)) {
+          f = SNodeFactoryOperations.addNewChild(node, LINKS.elements$_j45, CONCEPTS.Word$Dn);
+        }
+        PasteHandler.paste(editorContext, f, false);
+      }
+
+    };
+  }
 
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
@@ -282,6 +298,7 @@ public class Line_Actions {
     editorCell.setAction(CellActionType.SELECT_END, createAction_SELECT_END(node));
     editorCell.setAction(CellActionType.SELECT_LOCAL_HOME, createAction_SELECT_LOCAL_HOME(node));
     editorCell.setAction(CellActionType.SELECT_LOCAL_END, createAction_SELECT_LOCAL_END(node));
+    editorCell.setAction(CellActionType.PASTE, createAction_PASTE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
@@ -316,6 +333,9 @@ public class Line_Actions {
     if (Objects.equals(actionType, CellActionType.SELECT_LOCAL_END)) {
       editorCell.setAction(actionType, createAction_SELECT_LOCAL_END(node));
     }
+    if (Objects.equals(actionType, CellActionType.PASTE)) {
+      editorCell.setAction(actionType, createAction_PASTE(node));
+    }
   }
   private static <T> T as_h5gcex_a0a1a1a0a0a1(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
@@ -348,6 +368,7 @@ public class Line_Actions {
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
     /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class LINKS {

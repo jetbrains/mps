@@ -10,9 +10,6 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
@@ -51,7 +48,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -163,9 +159,6 @@
   <node concept="PlHQZ" id="6GJhO0n1XxQ">
     <property role="EcuMT" value="7723470226553559158" />
     <property role="TrG5h" value="IHoldLines" />
-    <node concept="asaX9" id="69wk_bF4W2j" role="lGtFl">
-      <property role="YLQ7P" value="IHoldParagraphs should be used instead" />
-    </node>
   </node>
   <node concept="PlHQZ" id="2MpFNjy3tyx">
     <property role="EcuMT" value="3213792450771277985" />

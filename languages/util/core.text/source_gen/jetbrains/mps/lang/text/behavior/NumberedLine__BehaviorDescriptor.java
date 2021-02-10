@@ -76,7 +76,7 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     if ((f == null)) {
       return false;
     }
-    boolean b = SPropertyOperations.getString(f, PROPS.value$zQr_).length() == 2 && SPropertyOperations.getString(f, PROPS.value$zQr_).substring(0, 1).matches("[0-9]") && SPropertyOperations.getString(f, PROPS.value$zQr_).substring(1, 2).equals(".") && (SNodeOperations.getNextSibling(f) != null);
+    boolean b = SPropertyOperations.getString(f, PROPS.value$zQr_) != null && SPropertyOperations.getString(f, PROPS.value$zQr_).length() == 2 && SPropertyOperations.getString(f, PROPS.value$zQr_).substring(0, 1).matches("[0-9]") && SPropertyOperations.getString(f, PROPS.value$zQr_).substring(1, 2).equals(".") && (SNodeOperations.getNextSibling(f) != null);
     return b;
   }
   /*package*/ static String wrapTextForClipboard_id2iG$EWuTXuU(@NotNull SNode __thisNode__, String text) {
