@@ -32,8 +32,9 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6GJhO0n1Xys").build();
   public static final SMethod<List<SNode>> getParagraphs_id2MpFNjy3tMn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParagraphs").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2MpFNjy3tMn").build();
   public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addParagraph").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fxHsktC$hi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4YwcerggR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getLines_id6GJhO0n1Xys, getParagraphs_id2MpFNjy3tMn, addParagraph_idfxHsktC$hi);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getLines_id6GJhO0n1Xys, getParagraphs_id2MpFNjy3tMn, addParagraph_idfxHsktC$hi, addLine_id7q4YwcerggR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr)).clear();
@@ -60,6 +61,9 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static void addParagraph_idfxHsktC$hi(@NotNull SNode __thisNode__, SNode p) {
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.paragraphs$z2IK)).addElement(p);
   }
+  /*package*/ static void addLine_id7q4YwcerggR(@NotNull SNode __thisNode__, SNode l) {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr)).addElement(l);
+  }
 
   /*package*/ MultiLineComment__BehaviorDescriptor() {
   }
@@ -84,6 +88,9 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
         return (T) ((List<SNode>) getParagraphs_id2MpFNjy3tMn(node));
       case 3:
         addParagraph_idfxHsktC$hi(node, (SNode) parameters[0]);
+        return null;
+      case 4:
+        addLine_id7q4YwcerggR(node, (SNode) parameters[0]);
         return null;
       default:
         throw new BHMethodNotFoundException(this, method);

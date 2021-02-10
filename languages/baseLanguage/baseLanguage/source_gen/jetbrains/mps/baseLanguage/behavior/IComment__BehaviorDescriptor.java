@@ -33,8 +33,9 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getTextualRepresentation_idfB3l80ylIb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fB3l80ylIb").build();
   public static final SMethod<Boolean> isTODOComment_idfB3l7ZufMD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fB3l7ZufMD").build();
   public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addParagraph").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fxHsktC$hi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4YwcerggR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD, addParagraph_idfxHsktC$hi);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD, addParagraph_idfxHsktC$hi, addLine_id7q4YwcerggR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -59,7 +60,7 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static boolean isTODOComment_idfB3l7ZufMD(@NotNull SNode __thisNode__) {
-    String text = trim_63o2sb_a0a0a0l(IComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
+    String text = trim_63o2sb_a0a0a0m(IComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
     return text.startsWith("TODO ") || text.startsWith("FIX ");
   }
 
@@ -110,7 +111,7 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  public static String trim_63o2sb_a0a0a0l(String str) {
+  public static String trim_63o2sb_a0a0a0m(String str) {
     return (str == null ? null : str.trim());
   }
 

@@ -44,12 +44,12 @@ public final class AddRuntimeExceptionToMethodSignature_Intention extends Abstra
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // checkthatthisisdoneinamethod
+    // check that this is done in a method 
     SNode methodDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMethodDeclaration$kD, false, false);
     if (methodDecl == null) {
       return false;
     }
-    // getexceptiontype
+    // get exception type 
     final SNode exceptionType = (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.throwable$kKKg)), CONCEPTS.ClassifierType$bL));
     if (exceptionType == null) {
       return false;
@@ -58,11 +58,11 @@ public final class AddRuntimeExceptionToMethodSignature_Intention extends Abstra
     if (exceptionJavaType == null) {
       return false;
     }
-    // checkit'sinstanceofRuntimeException
+    // check it's instance of RuntimeException 
     if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(exceptionJavaType, (SNode) SLinkOperations.getTarget(_quotation_createNode_7gg82q_a0a0a0j0a(), LINKS.classifier$cxMr)))) {
       return false;
     }
-    // checkifit'snotthrownbyamethodyet
+    // check if it's not thrown by a method yet 
     if (ListSequence.fromList(SLinkOperations.getChildren(methodDecl, LINKS.throwsItem$CdW$)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$bL) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(exceptionType, LINKS.classifier$cxMr);

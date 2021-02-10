@@ -56,45 +56,45 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
   }
   /*package*/ static boolean isVisible_id70J2WaK_oVl(@NotNull SNode __thisNode__, SNode contextClassifier, SNode contextNode) {
     final Wrappers._T<SNode> _contextClassifier = new Wrappers._T<SNode>(contextClassifier);
-    // FIXMEthiscodeduplicatesVisibilityUtil.isVisible(contextNode,this),isn'tit?
-    // E.g.check_ClassCreatorConstructorVisibilityusesVisibilityUtil,whileDefaultConstructorUtilsresortstothismethod.
+    // FIXME this code duplicates VisibilityUtil.isVisible(contextNode, this), isn't it? 
+    //       E.g. check_ClassCreatorConstructorVisibility uses VisibilityUtil, while DefaultConstructorUtils resorts to this method. 
     if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticKind$IK)) {
-      // todo:readspecification!
+      // todo: read specification! 
       _contextClassifier.value = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), __thisNode__);
     }
 
-    // public
+    // public 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0)) {
       return true;
     }
-    // private
+    // private 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
       return VisibilityUtil.topClassifier(contextNode) == VisibilityUtil.topClassifier(_contextClassifier.value);
     }
-    // default
+    // default 
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
     String contextClassifierPackage = VisibilityUtil.packageName(_contextClassifier.value);
     String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), __thisNode__));
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua) == null)) {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
-    // protected
+    // protected 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr)) {
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
 
-      // twocases:1)fromclass2)fromdotexpression
+      // two cases: 1) from class 2) from dot expression 
       Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(_contextClassifier.value);
         }
       });
       if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.DotExpression$yW))) {
-        // 1
+        // 1 
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
-        // 2
+        // 2 
         SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, CONCEPTS.DotExpression$yW));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
@@ -108,7 +108,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
     return false;
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    // donothingbydefault
+    // do nothing by default 
   }
   /*package*/ static boolean isVisible_id5laDzmpBPv8(@NotNull SNode __thisNode__, SNode contextClassifierType, SNode contextNode) {
     return ((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(__thisNode__, SNodeOperations.cast(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(contextClassifierType), CONCEPTS.Classifier$Ix), contextNode));

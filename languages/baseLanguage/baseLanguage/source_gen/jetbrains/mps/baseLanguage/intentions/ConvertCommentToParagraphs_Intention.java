@@ -12,14 +12,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class ConvertCommentToParagraphs_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
@@ -39,7 +39,7 @@ public final class ConvertCommentToParagraphs_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).isNotEmpty();
+    return ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).isNotEmpty() || ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(node)).isNotEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -56,18 +56,30 @@ public final class ConvertCommentToParagraphs_Intention extends AbstractIntentio
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Convert to Paragraphs";
+      return (ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).isNotEmpty() ? "Convert to Paragraphs 2" : "Convert to Lines 2");
+
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          SNode p = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
-          IComment__BehaviorDescriptor.addParagraph_idfxHsktC$hi.invoke(node, p);
-          SNodeOperations.deleteNode(it);
-          Paragraph__BehaviorDescriptor.initializeFromLine_id6n6K0Pj71DU.invoke(p, it);
-        }
-      });
+      if (ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).isNotEmpty()) {
+        ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).visitAll(new IVisitor<SNode>() {
+          public void visit(SNode l) {
+            SNode p = Line__BehaviorDescriptor.createParagraphInstance_id7q4Ywce6rMl.invoke(l);
+            Paragraph__BehaviorDescriptor.initializeFromLine_id6n6K0Pj71DU.invoke(p, l);
+            IComment__BehaviorDescriptor.addParagraph_idfxHsktC$hi.invoke(node, p);
+            SNodeOperations.deleteNode(l);
+          }
+        });
+      } else {
+        ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(node)).visitAll(new IVisitor<SNode>() {
+          public void visit(SNode p) {
+            SNode l = Paragraph__BehaviorDescriptor.createLineInstance_id7q4Ywce6bwW.invoke(p);
+            Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, p);
+            IComment__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(node, l);
+            SNodeOperations.deleteNode(p);
+          }
+        });
+      }
     }
     @Override
     public IntentionDescriptor getDescriptor() {

@@ -577,12 +577,6 @@
       </concept>
       <concept id="767145758118872833" name="jetbrains.mps.lang.actions.structure.NF_LinkList_AddNewChildOperation" flags="nn" index="2DeJg1" />
     </language>
-    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
-      <concept id="6332851714983831325" name="jetbrains.mps.baseLanguage.logging.structure.MsgStatement" flags="ng" index="2xdQw9">
-        <property id="6332851714983843871" name="severity" index="2xdLsb" />
-        <child id="5721587534047265374" name="message" index="9lYJi" />
-      </concept>
-    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179168000618" name="jetbrains.mps.lang.smodel.structure.Node_GetIndexInParentOperation" flags="nn" index="2bSWHS" />
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -33099,65 +33093,6 @@
                           <node concept="37vLTw" id="7q4Ywce7bT5" role="37wK5m">
                             <ref role="3cqZAo" node="7q4Ywce6XR5" resolve="pastedParagraph" />
                           </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="2xdQw9" id="7q4YwceebQX" role="3cqZAp">
-                      <property role="2xdLsb" value="gZ5fksE/warn" />
-                      <node concept="3cpWs3" id="7q4Ywceeekw" role="9lYJi">
-                        <node concept="2OqwBi" id="7q4YwceeewO" role="3uHU7w">
-                          <node concept="37vLTw" id="7q4Ywceeel0" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7q4Ywce7bn6" resolve="l" />
-                          </node>
-                          <node concept="2qgKlT" id="7q4YwceeeHu" role="2OqNvi">
-                            <ref role="37wK5l" to="vdrq:2iG$EWuTXv2" resolve="representAsText" />
-                          </node>
-                        </node>
-                        <node concept="3cpWs3" id="7q4YwceedYu" role="3uHU7B">
-                          <node concept="3cpWs3" id="7q4YwceecjO" role="3uHU7B">
-                            <node concept="Xl_RD" id="7q4YwceebQZ" role="3uHU7B">
-                              <property role="Xl_RC" value="AAAAAAAA " />
-                            </node>
-                            <node concept="2OqwBi" id="7q4YwceecAF" role="3uHU7w">
-                              <node concept="1PxgMI" id="7q4YwceecvS" role="2Oq$k0">
-                                <property role="1BlNFB" value="true" />
-                                <node concept="chp4Y" id="7q4Ywceecxd" role="3oSUPX">
-                                  <ref role="cht4Q" to="zqge:4ruP0NLeIr4" resolve="IndentedPoint" />
-                                </node>
-                                <node concept="37vLTw" id="7q4Ywceeclc" role="1m5AlR">
-                                  <ref role="3cqZAo" node="7q4Ywce7bn6" resolve="l" />
-                                </node>
-                              </node>
-                              <node concept="3TrcHB" id="7q4YwceecNU" role="2OqNvi">
-                                <ref role="3TsBF5" to="zqge:4ruP0NLeIrV" resolve="indentation" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="7q4YwceedYY" role="3uHU7w">
-                            <property role="Xl_RC" value=":" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="2xdQw9" id="7q4YwcegD1_" role="3cqZAp">
-                      <property role="2xdLsb" value="gZ5fh_4/error" />
-                      <node concept="3cpWs3" id="7q4YwcegDtb" role="9lYJi">
-                        <node concept="2OqwBi" id="7q4YwcegDPi" role="3uHU7w">
-                          <node concept="1PxgMI" id="7q4YwcegDEN" role="2Oq$k0">
-                            <property role="1BlNFB" value="true" />
-                            <node concept="chp4Y" id="7q4YwcegDFS" role="3oSUPX">
-                              <ref role="cht4Q" to="zqge:4ruP0NLeIr4" resolve="IndentedPoint" />
-                            </node>
-                            <node concept="37vLTw" id="7q4YwcegDu_" role="1m5AlR">
-                              <ref role="3cqZAo" node="7q4Ywce6XR5" resolve="pastedParagraph" />
-                            </node>
-                          </node>
-                          <node concept="3TrcHB" id="7q4YwcegE2h" role="2OqNvi">
-                            <ref role="3TsBF5" to="zqge:4ruP0NLeIrV" resolve="indentation" />
-                          </node>
-                        </node>
-                        <node concept="Xl_RD" id="7q4YwcegD1B" role="3uHU7B">
-                          <property role="Xl_RC" value="BBBBBBB " />
                         </node>
                       </node>
                     </node>

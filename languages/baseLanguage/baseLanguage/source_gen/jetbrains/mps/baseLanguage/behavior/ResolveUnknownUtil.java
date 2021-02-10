@@ -38,7 +38,7 @@ public final class ResolveUnknownUtil {
       return null;
     }
     if (SNodeOperations.isInstanceOf(result, CONCEPTS.Classifier$Ix)) {
-      // changetosomethingrealasdefault,e.g.staticfieldaccessexpressionwithoutthefield
+      // change to something real as default, e.g. static field access expression without the field 
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode fieldRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
@@ -68,7 +68,7 @@ public final class ResolveUnknownUtil {
       return null;
     }
 
-    // success
+    // success 
     return new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
         SNode result = (SPropertyOperations.getBoolean(x, PROPS.isSuper$7ZQO) ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation")));
@@ -136,7 +136,7 @@ public final class ResolveUnknownUtil {
 
         if ((ctor == null)) {
 
-          // wecan'tusedefaultconstructorinthiscase
+          // we can't use default constructor in this case 
           if (ListSequence.fromList(SLinkOperations.getChildren(x, LINKS.actualArgument$pzdx)).isNotEmpty()) {
             return null;
           }
@@ -197,7 +197,7 @@ public final class ResolveUnknownUtil {
       };
 
     } else if (SNodeOperations.isInstanceOf(operand, CONCEPTS.Expression$mB)) {
-      // operandissomeotherexpression.it'ssupposedtobeaninstancemethodcallthen
+      // operand is some other expression. it's supposed to be an instance method call then 
 
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
@@ -222,9 +222,9 @@ public final class ResolveUnknownUtil {
 
   }
   public static SNode resolveTokens(SNode x) {
-    // returnseithernode<Expression>withanormalbaseLanguageexpression
-    // ornode<Classifier>ifalltokensformanameclass
-    // returnsnullifcouldnotresolve
+    // returns either node<Expression> with a normal baseLanguage expression 
+    // or node<Classifier> if all tokens form a name class 
+    // returns null if could not resolve 
 
     String[] tokens = SPropertyOperations.getString(x, PROPS.tokens$J1uk).split("\\.");
 
@@ -234,12 +234,12 @@ public final class ResolveUnknownUtil {
     SNode mbVarRef = ResolveUnknownUtil.tryFirstTokenAsVarRef(x);
 
     if ((mbVarRef != null)) {
-      // it'savariable
+      // it's a variable 
       operand = mbVarRef;
       tokPos = 1;
 
     } else {
-      // itmustbeaclass
+      // it must be a class 
       Tuples._2<SNode, Integer> classAndPos = ResolveUnknownUtil.tryFindClass(x);
       if (classAndPos == null) {
         return null;
@@ -249,12 +249,12 @@ public final class ResolveUnknownUtil {
       tokPos = (int) classAndPos._1();
 
       if (tokPos == tokens.length) {
-        // notokensleft,allofthemformaclassname
-        // done
+        // no tokens left, all of them form a class name 
+        // done 
         return cls;
 
       } else {
-        // thereisatleastonetokenthatmustrepresentastaticfield(orenumconstant)
+        // there is at least one token that must represent a static field (or enum constant) 
 
         final String memberName = tokens[tokPos];
         SNode mbEnumConst = null;
@@ -279,7 +279,7 @@ public final class ResolveUnknownUtil {
           statFieldRef.setReference(LINKS.variableDeclaration$N1XG, ResolveInfo.of(memberName));
           operand = statFieldRef;
         }
-        // +1isherebecausestaticfieldtakesoneextratoken
+        // +1 is here because static field takes one extra token 
         tokPos = tokPos + 1;
       }
     }
@@ -288,7 +288,7 @@ public final class ResolveUnknownUtil {
       return null;
     }
 
-    // success.nowthestructureisdetermined,onlyneedtoputdynamicreferencestonodes
+    // success. now the structure is determined, only need to put dynamic references to nodes 
     while (tokPos < tokens.length) {
       SNode dotExpr = ResolveUnknownUtil.makeFieldDotExpression(operand, tokens[tokPos]);
       operand = dotExpr;
@@ -308,14 +308,14 @@ public final class ResolveUnknownUtil {
   public static SNode tryFirstTokenAsVarRef(SNode x) {
     Scope scope = Scope.getScope(SNodeOperations.getParent(x), x, CONCEPTS.VariableDeclaration$Y0);
     if (scope == null) {
-      // TODOmakeitmoreinformative
+      // TODO make it more informative 
       return null;
     }
 
     String name = Tokens__BehaviorDescriptor.firstToken_id17WpDCYRWCz.invoke(x);
 
     if (Sequence.fromIterable(scope.getAvailableElements(name)).isNotEmpty()) {
-      // it'savariable
+      // it's a variable 
 
       SNode varRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
       varRef.setReference(LINKS.variableDeclaration$N1XG, ResolveInfo.of(name));
@@ -341,10 +341,10 @@ public final class ResolveUnknownUtil {
       k++;
     }
 
-    // TODOmaybeshouldreturnalistofpossiblesalongwiththeirtokencount
-    // sothattheclientcanchoosetherightoneitself
+    // TODO maybe should return a list of possible s along with their token count 
+    // so that the client can choose the right one itself 
 
-    // trythelongestnamefirst,theshortestlast
+    // try the longest name first, the shortest last 
     for (int p = dotPositions.length - 1; p >= 0; p--) {
       String className = sb.substring(0, dotPositions[p]);
       SNode cls = findClass(x, className);

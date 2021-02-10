@@ -54,14 +54,14 @@ public class CreateClassFromUsageHelper {
   }
 
   public boolean doRun(boolean dryRun) {
-    // improvelaterwithdialogforchoosingmodel
+    // improve later with dialog for choosing model 
     SModel chosen = SNodeOperations.getModel(myNode);
 
     if (SModelStereotype.isStubModel(chosen) || chosen.isReadOnly() || chosen.getModule().isReadOnly()) {
       return false;
     }
 
-    // checkerrcell
+    // check err cell 
     EditorCell cell = myEditorContext.getContextCell();
     if (!((cell instanceof EditorCell_Label))) {
       return false;

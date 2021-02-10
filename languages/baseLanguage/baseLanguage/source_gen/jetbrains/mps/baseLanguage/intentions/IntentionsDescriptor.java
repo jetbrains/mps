@@ -33,14 +33,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateRootClassFromUsage_Intention();
         }
         break;
       case 1:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ConvertToClosure_Intention();
           intentions[1] = new RemoveTVDInAnonymousClass_Intention();
@@ -48,28 +48,28 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 2:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new RemoveArrayType_Intention();
         }
         break;
       case 3:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceAssertWithIf_Intention();
         }
         break;
       case 4:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateMethodFromUsage_Intention();
         }
         break;
       case 5:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[5];
           intentions[0] = new MakeGeneric_Intention();
           intentions[1] = new AddThrows_Intention();
@@ -80,7 +80,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 6:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new FlipBinaryOperation_Intention();
           intentions[1] = new OrToAndAndBack_Intention();
@@ -88,7 +88,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 7:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ReplaceBlockWithItsContent_Intention();
           intentions[1] = new UnwrapBlockStatement_Intention();
@@ -96,7 +96,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 8:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[3];
           intentions[0] = new MakeClassAbstract_Intention();
           intentions[1] = new MakeClassFinal_Intention();
@@ -105,14 +105,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 9:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertClassCreatorToAnonimous_Intention();
         }
         break;
       case 10:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ChangeStaticInInner_Intention();
           intentions[1] = new AutoSpacing_Intention();
@@ -120,14 +120,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 11:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new FixMissingDefaultConstructor_Intention();
         }
         break;
       case 12:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ElsifSwapWithMain_Intention();
           intentions[1] = new ConvertElsifToNewIfStatement_Intention();
@@ -135,14 +135,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 13:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceEqualityWithEquals_Intention();
         }
         break;
       case 14:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[10];
           intentions[0] = new SurroundWithParenthesis_Intention();
           intentions[1] = new SurroundWithTypeCast_Intention();
@@ -158,7 +158,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 15:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new IterateOverIterable_Intention();
           intentions[1] = new ConvertToReturnStatement_Intention();
@@ -166,7 +166,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 16:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[4];
           intentions[0] = new MoveInitializerToConstructor_Intention();
           intentions[1] = new MakeFieldVolatile_Intention();
@@ -176,49 +176,49 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 17:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceForLoopWithWhileLoop_Intention();
         }
         break;
       case 18:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ReplaceForEachLoopWithIndexedLoop_Intention();
         }
         break;
       case 19:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateSetAccessor_Intention();
         }
         break;
       case 20:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddAnnotation_Intention();
         }
         break;
       case 21:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new MakeDeprecated_Intention();
         }
         break;
       case 22:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertCommentToParagraphs_Intention();
         }
         break;
       case 23:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new AlterStatementListContainer_Intention();
           intentions[1] = new UnwrapStatementList_Intention();
@@ -226,14 +226,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 24:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddTypeParameters_Intention();
         }
         break;
       case 25:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[12];
           intentions[0] = new AddCastStatement_Intention();
           intentions[1] = new InvertIfCondition_Intention();
@@ -251,7 +251,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 26:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ReplaceEqualsWithEquality_Intention();
           intentions[1] = new FilpEqualsIntention_Intention();
@@ -259,7 +259,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 27:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[4];
           intentions[0] = new ToggleBLMethodAbstract_Intention();
           intentions[1] = new MakeClassAbstractFromMethod_Intention();
@@ -269,42 +269,42 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 28:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new SpecifyClass_Intention();
         }
         break;
       case 29:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new SplitIntoDeclarationAndAssignment_Intention();
         }
         break;
       case 30:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ToggleMethodStatic_Intention();
         }
         break;
       case 31:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFieldForUnUsedParameter_Intention();
         }
         break;
       case 32:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new MergeStringConcatenation_Intention();
         }
         break;
       case 33:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[3];
           intentions[0] = new SwitchToCustomPropertyImplementation_Intention();
           intentions[1] = new SwitchToDefaultPropertyImplementation_Intention();
@@ -313,14 +313,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 34:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new UpdateCommentToSingleLineStructure_Intention();
         }
         break;
       case 35:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[14];
           intentions[0] = new CreateInternalLabel_Intention();
           intentions[1] = new SurroundWithIf_Intention();
@@ -340,7 +340,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 36:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[3];
           intentions[0] = new RemoveStaticFieldModifier_Intention();
           intentions[1] = new MakeStaticFieldVolatile_Intention();
@@ -349,14 +349,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 37:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new SplitStringIntoConcatenation_Intention();
         }
         break;
       case 38:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ReplaceConditionalWithIf_Intention();
           intentions[1] = new SwapTernaryBranches_Intention();
@@ -364,35 +364,35 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 39:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateReferenceOnClass_Intention();
         }
         break;
       case 40:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRuntimeExceptionToMethodSignature_Intention();
         }
         break;
       case 41:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToArrayType_Intention();
         }
         break;
       case 42:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFinalModifierToAny_Intention();
         }
         break;
       case 43:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[3];
           intentions[0] = new ExpandBoolean_Intention();
           intentions[1] = new ConvertAssignmentToVariableDeclaration_Intention();
@@ -401,7 +401,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 44:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ExtractWhileConditionToInternalIfStatement_Intention();
         }

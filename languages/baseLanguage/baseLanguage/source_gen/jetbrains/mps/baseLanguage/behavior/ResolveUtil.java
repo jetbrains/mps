@@ -147,7 +147,7 @@ public class ResolveUtil {
     List<SNode> params = SLinkOperations.getChildren(concreteSuperClassifierType, LINKS.parameter$oqG$);
     for (SNode typeToModify : types) {
       for (SNode varRef : SNodeOperations.getNodeDescendants(typeToModify, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})) {
-        // maybeavarfrommethod
+        // maybe a var from method 
         SNode typeVariableDeclaration = SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$Lz1I);
         if (SNodeOperations.getParent(typeVariableDeclaration) != result) {
           int index = SNodeOperations.getIndexInParent(typeVariableDeclaration);
@@ -178,15 +178,15 @@ public class ResolveUtil {
         SNode argument = (argumentsItr.hasNext() ? argumentsItr.next() : null);
 
         if (parameterType == varArgType) {
-          // varargreached
+          // vararg reached 
           if (argument == null) {
-            // zerovarargs
+            // zero varargs 
             return true;
           }
           SNode mayBeLastArgumentType = TypecheckingFacade.getFromContext().getTypeOf(argument);
           SNode varArgComponentType = SLinkOperations.getTarget(varArgType, LINKS.componentType$ypmi);
           if ((lastArgument == argument) && SNodeOperations.isInstanceOf(mayBeLastArgumentType, CONCEPTS.ArrayType$rh) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SNodeOperations.cast(mayBeLastArgumentType, CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi), varArgComponentType)) {
-            // arraytypeasvararg
+            // array type as vararg 
             return true;
           } else {
             while (argument != null) {

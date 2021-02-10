@@ -154,14 +154,14 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$Bt, kind, child));
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
-    // populateownmembers
+    // populate own members 
     for (SNode member : SNodeOperations.getChildren(__thisNode__)) {
       if (SNodeOperations.isInstanceOf(member, CONCEPTS.IClassifierMember$Na)) {
         IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(SNodeOperations.cast(member, CONCEPTS.IClassifierMember$Na), context, classifierType);
       }
     }
 
-    // populateextendedmembers
+    // populate extended members 
     SNode superClass = SNodeOperations.as(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__), CONCEPTS.IClassifierType$B1);
     if (SNodeOperations.isInstanceOf(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(superClass), CONCEPTS.ClassConcept$bK)) {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(superClass, context, classifierType);

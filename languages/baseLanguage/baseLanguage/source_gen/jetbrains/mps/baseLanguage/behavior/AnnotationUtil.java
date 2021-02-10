@@ -32,7 +32,7 @@ public class AnnotationUtil {
   }
 
   public static void attachUniqueAnnotation(SNode target, final SNodeReference targetAnnotation) {
-    // unique:ifthere'ssuchannotationalready,donothing
+    // unique: if there's such annotation already, do nothing 
     if (ListSequence.fromList(SLinkOperations.getChildren(target, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(SLinkOperations.getPointer(it, LINKS.annotation$12Ek), targetAnnotation);

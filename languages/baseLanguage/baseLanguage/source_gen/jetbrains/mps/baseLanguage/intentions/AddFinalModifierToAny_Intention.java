@@ -38,7 +38,7 @@ public final class AddFinalModifierToAny_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    // itshouldnotbeapplicableinosideinitializer
+    // it should not be applicable inoside initializer 
     SNode nodeUnderDecl = ListSequence.fromList(SNodeOperations.getNodeAncestors(childNode, null, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getParent(it) == node;

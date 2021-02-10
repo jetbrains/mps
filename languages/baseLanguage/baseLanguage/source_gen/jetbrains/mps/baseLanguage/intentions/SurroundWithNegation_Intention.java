@@ -68,7 +68,7 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
           SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$sv_H), CONCEPTS.ParenthesizedExpression$Ws), LINKS.expression$TlhM, node);
         } else {
           if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$_u))) {
-            // Itseemstobeconvenienttowrapnon-booleanexpressionsinparenssincetheuserislikelytoeditthenegatedexpressionfurther
+            // It seems to be convenient to wrap non-boolean expressions in parens since the user is likely to edit the negated expression further 
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
             SLinkOperations.setTarget(parens, LINKS.expression$TlhM, node);
             SLinkOperations.setTarget(replacement, LINKS.expression$sv_H, parens);

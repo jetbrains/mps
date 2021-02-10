@@ -68,7 +68,7 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return extended;
   }
   /*package*/ static SNode getExtendedEnumJavaType_id6O4rE5gbZ0q(@NotNull SNode __thisNode__) {
-    // enumA{}<=>Ahasasasuper'java.lang.Enum<A>'
+    // enum A {} <=> A has as a super 'java.lang.Enum<A>' 
     SNode concreteEnumType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
     ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$oqG$)).clear();
     ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$oqG$)).addElement(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__));
@@ -80,7 +80,7 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return members;
   }
   /*package*/ static boolean hasStaticMemebers_idhFq8xqE(@NotNull SNode __thisNode__) {
-    // enumsalwayshavestaticoperations:valueOfandvalues
+    // enums always have static operations: valueOf and values 
     return true;
   }
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {

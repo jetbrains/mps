@@ -66,7 +66,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     }).toGenericArray(Object.class);
   }
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
-    // is'experssion'anactualargumentinthismethodcall?
+    // is 'experssion' an actual argument in this method call? 
     if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.actualArgument$pzdx)) {
       SNode method = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
       int i = SNodeOperations.getIndexInParent(expression);
@@ -142,12 +142,12 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReturnStatement$lt), LINKS.expression$eJ92) == __thisNode__ || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExpressionStatement$O8));
   }
   /*package*/ static boolean useScopesForMethodDeclarationFixer_id3EWPnx1lHq(@NotNull SNode __thisNode__) {
-    // todo:usesomethingbetterhere.checkusagesofgetAvailableMethodDeclarationsincharismaetc
+    // todo: use something better here. check usages of getAvailableMethodDeclarations in charisma etc 
     return false;
   }
   @Deprecated
   /*package*/ static Tuples._2<SNode, Boolean> resolveMethod_id28$D10lLyGj(@NotNull SNode __thisNode__) {
-    // todo:thismethodcanbedeletedassoonasMethodCallsFixerwillberemoved
+    // todo: this method can be deleted as soon as MethodCallsFixer will be removed 
     return MethodResolveUtil.resolveMethod(__thisNode__);
   }
 

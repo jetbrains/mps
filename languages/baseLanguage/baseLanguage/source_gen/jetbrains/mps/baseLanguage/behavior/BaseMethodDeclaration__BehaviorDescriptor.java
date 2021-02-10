@@ -105,7 +105,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
     SNode expectedRetType = SLinkOperations.getTarget(__thisNode__, LINKS.returnType$5xoi);
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(expectedRetType)), CONCEPTS.Type$bu) || SNodeOperations.isInstanceOf(expectedRetType, CONCEPTS.VoidType$BF) || ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isReturnsVoid_idhX_$1pM.invoke(__thisNode__))) {
-      // actually-noreturntype
+      // actually - no return type 
       expectedRetType = null;
     }
     return expectedRetType;
@@ -296,14 +296,14 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
 
     if (SNodeOperations.isInstanceOf(ListSequence.fromList(result).last(), CONCEPTS.VariableArityType$KF)) {
       int formalParams = ListSequence.fromList(result).count();
-      // replacethevarargformalparamforeasiercomputations
+      // replace the vararg formal param for easier computations 
       SNode last = ListSequence.fromList(result).removeLastElement();
       if (actualArgs > formalParams) {
         while (actualArgs > ListSequence.fromList(result).count()) {
           ListSequence.fromList(result).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi)));
         }
       } else if (actualArgs == formalParams) {
-        // arraymaybepassedasvalueforvararg
+        // array may be passed as value for vararg 
         ListSequence.fromList(result).addElement(_quotation_createNode_tq0gdw_a0a1a0d0d0cb(SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi)), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi))));
       }
     }

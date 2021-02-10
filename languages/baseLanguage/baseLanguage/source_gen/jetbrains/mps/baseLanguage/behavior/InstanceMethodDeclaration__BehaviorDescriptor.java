@@ -128,7 +128,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       parent = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$);
     } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ClassConcept$bK)) {
       SNode superclass = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$);
-      // XXXisthereaneedtoaccessextendedClassifiersofObject?Can'twejustuseemptysetforextendedClassifiers?
+      // XXX is there a need to access extendedClassifiers of Object? Can't we just use empty set for extendedClassifiers? 
       parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr));
     }
     Set<SNode> extendedClassifiers = ClassifierScopeUtils.getExtendedClassifiers(parent);

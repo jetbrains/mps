@@ -53,7 +53,7 @@ public final class ParenthesizedExpression__BehaviorDescriptor extends BaseBHDes
     return (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$TlhM), module);
   }
   /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
-    // TODO:notsureconcerningParenthesizedExpressionpriorities..
+    // TODO: not sure concerning ParenthesizedExpression priorities.. 
     return PrecedenceUtil.Precedence.PARENTHESES;
   }
 

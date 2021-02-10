@@ -81,7 +81,7 @@ public final class StaticFieldReferenceOperation__BehaviorDescriptor extends Bas
           return c;
         }
       } catch (Throwable t) {
-        // donothing
+        // do nothing 
       }
     }
     if (module == null) {

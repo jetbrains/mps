@@ -67,9 +67,9 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
     return true;
   }
   /*package*/ static boolean isMainMethod_idhEwJkuu(@NotNull final SNode __thisNode__) {
-    // ifwedonotuseresolveaction,typesystemwouldcomputealltypesintheroot
-    // whileinresolvemodeonlytypesrequiredforcalculatingtypeofarecomputed
-    // thedifferencebetweentwomethodsisveryvisibleinmainnodeselectioninjavarunconfiguation()
+    // if we do not use resolve action, type system would compute all types in the root 
+    // while in resolve mode only types required for calculating typeof are computed 
+    // the difference between two methods is very visible in main node selection in java run configuation () 
     return TypecheckingFacade.getFromContext().computeIsolated(new Function<TypecheckingSession, Boolean>() {
       public Boolean apply(TypecheckingSession session) {
         return "main".equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());

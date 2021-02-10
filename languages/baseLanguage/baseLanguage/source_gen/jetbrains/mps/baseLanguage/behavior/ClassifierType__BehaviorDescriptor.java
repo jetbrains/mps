@@ -136,7 +136,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
             continue;
           }
           if (i < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).count()) {
-            // substitutethetypevarrefwiththeexistingtypefromtheoriginalCT
+            // substitute the typevar ref with the existing type from the original CT 
             SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).getElement(i)));
 
           } else {
@@ -382,13 +382,13 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
     return copy;
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, final Map<SNode, SNode> substitutions) {
-    // recursionguard
+    // recursion guard 
     if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr))) {
       return;
     }
     MapSequence.fromMap(substitutions).put(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr));
 
-    // avoidpollutingthesubstitutionsmapwithrecursivereferences
+    // avoid polluting the substitutions map with recursive references 
     if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return MapSequence.fromMap(substitutions).containsKey(it);
@@ -405,7 +405,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
       return;
     }
 
-    // traverseallextended/implementedclassifiers
+    // traverse all extended/implemented classifiers 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), CONCEPTS.AnonymousClass$Bt)) {
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), CONCEPTS.AnonymousClass$Bt)), substitutions);
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK)) {
@@ -419,9 +419,9 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }
 
-    // foreachdeclaredTypeVarsubstituteitsactualvalue
+    // for each declared TypeVar substitute its actual value 
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
-      // treatrawtypeasifallparamswereObjectortheappropriatebound
+      // treat raw type as if all params were Object or the appropriate bound 
       for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp))) {
         MapSequence.fromMap(substitutions).put(tvd, ((SLinkOperations.getTarget(tvd, LINKS.bound$aZCB) == null) ? _quotation_createNode_hz3823_a0a0a1a31a12() : SNodeOperations.copyNode(SLinkOperations.getTarget(tvd, LINKS.bound$aZCB))));
       }
@@ -435,7 +435,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
           tvd_var = tvd_it.next();
           tval_var = tval_it.next();
           MapSequence.fromMap(substitutions).put(tvd_var, SNodeOperations.copyNode(tval_var));
-          // iteraterecursivelyintoeachparametertypeifgeneric
+          // iterate recursively into each parameter type if generic 
           if (SNodeOperations.isInstanceOf(tval_var, CONCEPTS.IGenericType$13)) {
             IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(tval_var, CONCEPTS.IGenericType$13), substitutions);
           }
@@ -443,8 +443,8 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }
 
-    // traverseallenclosingclassifiersifnotinstaticcontext
-    // TODO:movetogenericdeclaration?
+    // traverse all enclosing classifiers if not in static context 
+    // TODO : move to generic declaration? 
     if (!((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr)))) {
       SNode enclosing = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$cxMr), CONCEPTS.Classifier$Ix, false, false);
       if ((enclosing != null)) {

@@ -41,20 +41,21 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6GJhO0n1Xys").build();
   public static final SMethod<List<SNode>> getParagraphs_id2MpFNjy3tMn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParagraphs").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2MpFNjy3tMn").build();
   public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addParagraph").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fxHsktC$hi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4YwcerggR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys, getParagraphs_id2MpFNjy3tMn, addParagraph_idfxHsktC$hi);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getScope_id52_Geb4QDV$, getCommentedNodes_id3$Sh7m_tmZE, parseAndAddWordsIntoLines_id45vN3dBFprj, parseAndAddWords_id13gAna0o0W6, getLines_id6GJhO0n1Xys, getParagraphs_id2MpFNjy3tMn, addParagraph_idfxHsktC$hi, addLine_id7q4YwcerggR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SNodeFactoryOperations.setNewChild(__thisNode__, LINKS.line$9eiT, null);
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    // doingnothing
+    // doing nothing 
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LocalVariableDeclaration$41)) {
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$m_)) {
-        // TODOuseLazyParentScopeinstead
+        // TODO use LazyParentScope instead 
         return Scope.getScope(SNodeOperations.getParent(__thisNode__), ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StatementList$m_))).last(), kind);
       } else {
         return null;
@@ -116,6 +117,9 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static void addParagraph_idfxHsktC$hi(@NotNull SNode __thisNode__, SNode p) {
     SLinkOperations.setTarget(__thisNode__, LINKS.paragraph$y$du, p);
   }
+  /*package*/ static void addLine_id7q4YwcerggR(@NotNull SNode __thisNode__, SNode l) {
+    SLinkOperations.setTarget(__thisNode__, LINKS.line$9eiT, l);
+  }
 
   /*package*/ SingleLineComment__BehaviorDescriptor() {
   }
@@ -151,6 +155,9 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
         return (T) ((List<SNode>) getParagraphs_id2MpFNjy3tMn(node));
       case 7:
         addParagraph_idfxHsktC$hi(node, (SNode) parameters[0]);
+        return null;
+      case 8:
+        addLine_id7q4YwcerggR(node, (SNode) parameters[0]);
         return null;
       default:
         throw new BHMethodNotFoundException(this, method);

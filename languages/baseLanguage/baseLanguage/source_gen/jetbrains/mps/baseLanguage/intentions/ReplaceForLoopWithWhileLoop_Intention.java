@@ -59,23 +59,23 @@ public final class ReplaceForLoopWithWhileLoop_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // replaceforloopwithwhile
+      // replace for loop with while 
       SNode whileStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.WhileStatement$Ay, null);
       SNodeOperations.replaceWithAnother(node, whileStatement);
-      // adjustwhilebody
+      // adjust while body 
       SLinkOperations.setTarget(whileStatement, LINKS.body$c1sm, SLinkOperations.getTarget(node, LINKS.body$c1sm));
-      // adjustprecondition
-      // todo:multiplevars
+      // adjust precondition 
+      // todo: multiple vars 
       SNode preStatement = SNodeFactoryOperations.insertNewPrevSiblingChild(whileStatement, CONCEPTS.LocalVariableDeclarationStatement$4w);
       SLinkOperations.setTarget(preStatement, LINKS.localVariableDeclaration$RpjM, SLinkOperations.getTarget(node, LINKS.variable$JNH6));
-      // adjustiteration
-      // todo:multipleiterations
+      // adjust iteration 
+      // todo: multiple iterations 
       for (SNode iteration : SLinkOperations.getChildren(node, LINKS.iteration$nuP3)) {
         SNode iterStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$O8, null);
         SLinkOperations.setTarget(iterStatement, LINKS.expression$5L7M, iteration);
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(whileStatement, LINKS.body$c1sm), LINKS.statement$53DE)).addElement(iterStatement);
       }
-      // adjustexitcondition
+      // adjust exit condition 
       SLinkOperations.setTarget(whileStatement, LINKS.condition$KEkM, SLinkOperations.getTarget(node, LINKS.condition$wARE));
     }
     @Override

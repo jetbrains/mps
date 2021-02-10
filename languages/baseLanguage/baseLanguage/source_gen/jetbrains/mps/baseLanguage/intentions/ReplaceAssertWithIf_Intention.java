@@ -62,18 +62,18 @@ public final class ReplaceAssertWithIf_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      // producethrowstatement
+      // produce throw statement 
       SNode throwStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ThrowStatement$Zy, null);
       SNode newExpr = _quotation_createNode_a1x6vi_a0c0a();
       SLinkOperations.setTarget(throwStatement, LINKS.throwable$kKKg, newExpr);
-      // produceifstatement
+      // produce if statement 
       SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
       SNode notExpr = SNodeFactoryOperations.setNewChild(ifStatement, LINKS.condition$5R17, CONCEPTS.NotExpression$Pc);
       SLinkOperations.setTarget(notExpr, LINKS.expression$sv_H, SLinkOperations.getTarget(node, LINKS.condition$ccjq));
       IntentionUtils.addParensToNotIfNeeded(notExpr);
       SNodeFactoryOperations.setNewChild(ifStatement, LINKS.ifTrue$5Rg8, null);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).insertElement(0, throwStatement);
-      // replaceassertwithif
+      // replace assert with if 
       SNodeOperations.replaceWithAnother(node, ifStatement);
     }
     @Override
