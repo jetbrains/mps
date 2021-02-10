@@ -30,14 +30,14 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
 
   public static final SMethod<Integer> calculatePosition_id60UJ0IsnRf8 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0IsnRf8").build();
-  public static final SMethod<Boolean> canBeTurnedToBullet_id60UJ0Iso0yR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0yR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> shouldRemoveBullet_id60UJ0Iso0zD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0zD").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeTurnedToNumberedLine_id60UJ0Iso0yR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToNumberedLine").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0yR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> shouldRemoveNumberedLine_id60UJ0Iso0zD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveNumberedLine").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0zD").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id60UJ0IsnXdF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("60UJ0IsnXdF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6rMl").build();
   public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToBullet_id60UJ0Iso0yR, shouldRemoveBullet_id60UJ0Iso0zD, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToNumberedLine_id60UJ0Iso0yR, shouldRemoveNumberedLine_id60UJ0Iso0zD, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -64,14 +64,14 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return 1;
   }
-  /*package*/ static boolean canBeTurnedToBullet_id60UJ0Iso0yR(@NotNull SAbstractConcept __thisConcept__, SNode l) {
+  /*package*/ static boolean canBeTurnedToNumberedLine_id60UJ0Iso0yR(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(l)), CONCEPTS.Line$yC)) {
       return ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invoke(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.NumberedLine$k0) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invoke(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
     }
     return false;
   }
-  /*package*/ static boolean shouldRemoveBullet_id60UJ0Iso0zD(@NotNull SAbstractConcept __thisConcept__, SNode p) {
-    return (boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(p) && (boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(p), CONCEPTS.Line$yC)) && ((SNodeOperations.getNextSibling(p) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(p), CONCEPTS.NumberedLine$k0)));
+  /*package*/ static boolean shouldRemoveNumberedLine_id60UJ0Iso0zD(@NotNull SAbstractConcept __thisConcept__, SNode l) {
+    return (boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(l) && (boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(l), CONCEPTS.Line$yC)) && ((SNodeOperations.getNextSibling(l) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0)));
   }
   /*package*/ static boolean startsWithNumberSpace_id60UJ0IsnXdF(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     SNode f = SNodeOperations.as(Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(l)).first(), CONCEPTS.Word$Dn);
@@ -131,9 +131,9 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 1:
-        return (T) ((Boolean) canBeTurnedToBullet_id60UJ0Iso0yR(concept, (SNode) parameters[0]));
+        return (T) ((Boolean) canBeTurnedToNumberedLine_id60UJ0Iso0yR(concept, (SNode) parameters[0]));
       case 2:
-        return (T) ((Boolean) shouldRemoveBullet_id60UJ0Iso0zD(concept, (SNode) parameters[0]));
+        return (T) ((Boolean) shouldRemoveNumberedLine_id60UJ0Iso0zD(concept, (SNode) parameters[0]));
       case 3:
         return (T) ((Boolean) startsWithNumberSpace_id60UJ0IsnXdF(concept, (SNode) parameters[0]));
       default:

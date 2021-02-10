@@ -3758,7 +3758,7 @@
               <uo k="s:originTrace" v="n:6934061334344530072" />
             </node>
             <node concept="2qgKlT" id="hG" role="2OqNvi">
-              <ref role="37wK5l" to="vdrq:60UJ0Iso0yR" resolve="canBeTurnedToBullet" />
+              <ref role="37wK5l" to="vdrq:60UJ0Iso0yR" resolve="canBeTurnedToNumberedLine" />
               <uo k="s:originTrace" v="n:6934061334344530073" />
               <node concept="37vLTw" id="hH" role="37wK5m">
                 <ref role="3cqZAo" node="gW" resolve="line" />
@@ -4217,7 +4217,7 @@
               <uo k="s:originTrace" v="n:6934061334344522898" />
             </node>
             <node concept="2qgKlT" id="jS" role="2OqNvi">
-              <ref role="37wK5l" to="vdrq:60UJ0Iso0zD" resolve="shouldRemoveBullet" />
+              <ref role="37wK5l" to="vdrq:60UJ0Iso0zD" resolve="shouldRemoveNumberedLine" />
               <uo k="s:originTrace" v="n:6934061334344522899" />
               <node concept="37vLTw" id="jT" role="37wK5m">
                 <ref role="3cqZAo" node="j8" resolve="numberedLine" />

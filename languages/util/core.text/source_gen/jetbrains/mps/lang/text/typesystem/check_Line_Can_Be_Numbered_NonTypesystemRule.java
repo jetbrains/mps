@@ -21,7 +21,7 @@ public class check_Line_Can_Be_Numbered_NonTypesystemRule extends AbstractNonTyp
   public check_Line_Can_Be_Numbered_NonTypesystemRule() {
   }
   public void applyRule(final SNode line, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) NumberedLine__BehaviorDescriptor.canBeTurnedToBullet_id60UJ0Iso0yR.invoke(SNodeOperations.asSConcept(CONCEPTS.NumberedLine$k0), line)) {
+    if ((boolean) NumberedLine__BehaviorDescriptor.canBeTurnedToNumberedLine_id60UJ0Iso0yR.invoke(SNodeOperations.asSConcept(CONCEPTS.NumberedLine$k0), line)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(line, "Can be turned into a bullet point", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "6934061334344530067", null, errorTarget);
