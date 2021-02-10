@@ -23,6 +23,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
@@ -32,8 +33,10 @@ public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> shouldRemoveBullet_id4ruP0NLisxF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4ruP0NLisxF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithBulletSpace_id4ruP0NLgL0C = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithBulletSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("4ruP0NLgL0C").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> wrapTextForClipboard_idfcFkhVLuVF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fcFkhVLuVF").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> createLineInstance_id7q4Ywce6bwW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createLineInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6bwW").build();
+  public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6n6K0Pj71DU").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_id4ruP0NLgI8Q, shouldRemoveBullet_id4ruP0NLisxF, startsWithBulletSpace_id4ruP0NLgL0C, wrapTextForClipboard_idfcFkhVLuVF);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_id4ruP0NLgI8Q, shouldRemoveBullet_id4ruP0NLisxF, startsWithBulletSpace_id4ruP0NLgL0C, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -58,6 +61,15 @@ public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String wrapTextForClipboard_idfcFkhVLuVF(@NotNull SNode __thisNode__, String text) {
     return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + "* " + text;
   }
+  /*package*/ static SNode createLineInstance_id7q4Ywce6bwW(@NotNull SNode __thisNode__) {
+    return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xf2f8c94a6f2a8faL, "jetbrains.mps.lang.text.structure.BulletLine"));
+  }
+  /*package*/ static void initializeFromLine_id6n6K0Pj71DU(@NotNull SNode __thisNode__, SNode l) {
+    Paragraph__BehaviorDescriptor.initializeFromLine_id6n6K0Pj71DU.invokeSuper(__thisNode__, CONCEPTS.BulletPoint$FS, l);
+    if (SNodeOperations.isInstanceOf(l, CONCEPTS.IndentedPoint$BF)) {
+      SPropertyOperations.assign(__thisNode__, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(l, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp));
+    }
+  }
 
   /*package*/ BulletPoint__BehaviorDescriptor() {
   }
@@ -76,6 +88,11 @@ public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 3:
         return (T) ((String) wrapTextForClipboard_idfcFkhVLuVF(node, (String) parameters[0]));
+      case 4:
+        return (T) ((SNode) createLineInstance_id7q4Ywce6bwW(node));
+      case 5:
+        initializeFromLine_id6n6K0Pj71DU(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -115,9 +132,11 @@ public final class BulletPoint__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SConcept BulletPoint$FS = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b6ef400337260c3L, "jetbrains.mps.lang.text.structure.BulletPoint");
     /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
   }
 }

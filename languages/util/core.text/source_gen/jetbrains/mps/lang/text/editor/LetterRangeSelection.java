@@ -102,7 +102,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
   public LetterRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, boolean growingForward, String emptyCellId) {
     super(editorComponent);
-    // swapfirstandlastletterifneeded
+    // swap first and last letter if needed 
     Iterable<? extends SNode> letters = getChildIterable(SNodeOperations.as(SNodeOperations.getParent(firstNode), CONCEPTS.Paragraph$XF));
     for (SNode l : letters) {
       if (Objects.equals(l, firstNode)) {
@@ -156,7 +156,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
         break;
       }
     }
-    // assertingbothfirst/lastnodewasinthischildrencollection
+    // asserting both first/last node was in this children collection 
     assert withinSelection;
     assert breakLoop;
     setSelectedCells(selectedCells);
@@ -249,16 +249,17 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     SNode artificialParent = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text"));
 
     final List<SNode> selectedNodes = getSelectedNodes();
-    List<SNode> lines = new ArrayList<SNode>();
+    List<SNode> paragraphs = new ArrayList<SNode>();
     for (SNode n : selectedNodes) {
       SNode p = SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.Paragraph$XF);
-      if (p != null && !(ListSequence.fromList(lines).contains(p))) {
-        ListSequence.fromList(lines).addElement(p);
+      if (p != null && !(ListSequence.fromList(paragraphs).contains(p))) {
+        ListSequence.fromList(paragraphs).addElement(p);
       }
     }
-    List<SNode> copiesOfLines = new ArrayList<SNode>();
-    for (SNode l : lines) {
-      SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), null);
+    List<SNode> copiesOfParagraphs = new ArrayList<SNode>();
+    for (SNode l : paragraphs) {
+      SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), l);
+      Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(lc);
       Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(lc, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(l)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return selectedNodes.contains(it);
@@ -268,10 +269,10 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
           return SNodeOperations.copyNode(it);
         }
       }));
-      ListSequence.fromList(copiesOfLines).addElement(lc);
+      ListSequence.fromList(copiesOfParagraphs).addElement(lc);
       ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.paragraphs$ZAOz)).addElement(lc);
     }
-    return copiesOfLines;
+    return copiesOfParagraphs;
   }
 
   private String buildTextualRepresentationOfSelectedCells() {

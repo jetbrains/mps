@@ -33,7 +33,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new IncreaseIndentation_Intention();
           intentions[1] = new DecreaseIndentation_Intention();
@@ -41,7 +41,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new ConvertToParagraphs_Intention();
           intentions[1] = new ConvertToLines_Intention();
@@ -49,7 +49,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 2:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[3];
           intentions[0] = new MakeBulletLine_Intention();
           intentions[1] = new MakeNumberedLine_Intention();
@@ -58,7 +58,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 3:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[6];
           intentions[0] = new InsertNodeWrapper_Intention();
           intentions[1] = new InsertUrlIntoParagraph_Intention();
@@ -70,7 +70,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 4:
         if (true) {
-          // concept
+          // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new Unlink_Intention();
         }

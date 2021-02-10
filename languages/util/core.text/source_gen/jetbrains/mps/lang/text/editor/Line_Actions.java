@@ -202,7 +202,7 @@ public class Line_Actions {
 
         SNode previousWord = null;
         if ((SNodeOperations.getPrevSibling(currentWord) == null)) {
-          // cursoratthebeginningofaline
+          // cursor at the beginning of a line 
           previousWord = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentWord)), CONCEPTS.Line$yC))).last();
         } else {
           previousWord = SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$WN);
@@ -230,7 +230,7 @@ public class Line_Actions {
         SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
         SNode nextWord = null;
         if ((SNodeOperations.getNextSibling(currentWord) == null)) {
-          // cursorattheendofaline
+          // cursor at the end of a line 
           nextWord = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentWord)), CONCEPTS.Line$yC))).first();
         } else {
           nextWord = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$WN);
@@ -255,7 +255,7 @@ public class Line_Actions {
         if ((f == null)) {
           f = SNodeFactoryOperations.addNewChild(node, LINKS.elements$_j45, CONCEPTS.Word$Dn);
         }
-        PasteHandler.paste(editorContext, f, false);
+        PasteHandler.paste(editorContext, f);
       }
 
     };
@@ -265,11 +265,11 @@ public class Line_Actions {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // setactionsthatwereactuallydefined
+    // set actions that were actually defined 
     setDefinedCellActions(editorCell, node, context);
 
-    // IfwesetaDELETEactionbutnoBACKSPACEaction,
-    // usetheDELETEactionforBACKSPACEaswell.
+    // If we set a DELETE action but no BACKSPACE action, 
+    // use the DELETE action for BACKSPACE as well. 
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -286,9 +286,9 @@ public class Line_Actions {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // setcellactionsfromallimportedactionmaps
+    // set cell actions from all imported action maps 
 
-    // setcellactionsdefineddirectlyinthisactionmap
+    // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.SELECT_PREVIOUS, createAction_SELECT_PREVIOUS(node));
     editorCell.setAction(CellActionType.SELECT_LEFT, createAction_SELECT_LEFT(node));
     editorCell.setAction(CellActionType.SELECT_NEXT, createAction_SELECT_NEXT(node));
@@ -303,9 +303,9 @@ public class Line_Actions {
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // setcellaction(s)ofthegiventypefromimportedactionmaps
+    // set cell action(s) of the given type from imported action maps 
 
-    // setcellactionofthegiventypedefineddirectlyinthisactionmap
+    // set cell action of the given type defined directly in this action map 
     if (Objects.equals(actionType, CellActionType.SELECT_PREVIOUS)) {
       editorCell.setAction(actionType, createAction_SELECT_PREVIOUS(node));
     }

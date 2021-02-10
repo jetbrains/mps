@@ -34,8 +34,10 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> shouldRemoveBullet_id60UJ0Iso0zD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0zD").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id60UJ0IsnXdF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("60UJ0IsnXdF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6rMl").build();
+  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToBullet_id60UJ0Iso0yR, shouldRemoveBullet_id60UJ0Iso0zD, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToBullet_id60UJ0Iso0yR, shouldRemoveBullet_id60UJ0Iso0zD, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -82,6 +84,15 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String wrapTextForClipboard_id2iG$EWuTXuU(@NotNull SNode __thisNode__, String text) {
     return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + ((int) NumberedLine__BehaviorDescriptor.calculatePosition_id60UJ0IsnRf8.invoke(__thisNode__)) + ". " + text;
   }
+  /*package*/ static SNode createParagraphInstance_id7q4Ywce6rMl(@NotNull SNode __thisNode__) {
+    return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint"));
+  }
+  /*package*/ static void initializeFromParagraphs_id2iG$EWuZbnH(@NotNull SNode __thisNode__, SNode l) {
+    Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invokeSuper(__thisNode__, CONCEPTS.NumberedLine$k0, l);
+    if (SNodeOperations.isInstanceOf(l, CONCEPTS.IndentedPoint$BF)) {
+      SPropertyOperations.assign(__thisNode__, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(l, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp));
+    }
+  }
 
   /*package*/ NumberedLine__BehaviorDescriptor() {
   }
@@ -102,6 +113,11 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Integer) calculatePosition_id60UJ0IsnRf8(node));
       case 4:
         return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
+      case 5:
+        return (T) ((SNode) createParagraphInstance_id7q4Ywce6rMl(node));
+      case 6:
+        initializeFromParagraphs_id2iG$EWuZbnH(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }

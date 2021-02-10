@@ -80,11 +80,11 @@ public class InsertOnTextualElement {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
     CellAction originalBackspace = editorCell.getAction(CellActionType.BACKSPACE);
 
-    // setactionsthatwereactuallydefined
+    // set actions that were actually defined 
     setDefinedCellActions(editorCell, node, context);
 
-    // IfwesetaDELETEactionbutnoBACKSPACEaction,
-    // usetheDELETEactionforBACKSPACEaswell.
+    // If we set a DELETE action but no BACKSPACE action, 
+    // use the DELETE action for BACKSPACE as well. 
     CellAction delete = editorCell.getAction(CellActionType.DELETE);
     CellAction backspace = editorCell.getAction(CellActionType.BACKSPACE);
     if (delete != originalDelete && backspace == originalBackspace) {
@@ -101,19 +101,19 @@ public class InsertOnTextualElement {
   private static final Object OB = new Object();
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
-    // setcellactionsfromallimportedactionmaps
+    // set cell actions from all imported action maps 
     DeleteNonLetter.setDefinedCellActions(editorCell, node, context);
 
-    // setcellactionsdefineddirectlyinthisactionmap
+    // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
-    // setcellaction(s)ofthegiventypefromimportedactionmaps
+    // set cell action(s) of the given type from imported action maps 
     DeleteNonLetter.setDefinedCellActionsOfType(editorCell, node, context, actionType);
 
-    // setcellactionofthegiventypedefineddirectlyinthisactionmap
+    // set cell action of the given type defined directly in this action map 
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }

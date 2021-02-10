@@ -59,7 +59,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), CONCEPTS.TextElement$WN);
       SNode newElement = createNewElement();
 
-      // TestifanewLinefollowingthecurrentLineshouldbecreated
+      // Test if a new Line following the current Line should be created 
       if (currentSibling != null || myIncludeCurrentElement || currentLine == lineContainer || isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(newElement, CONCEPTS.Word$Dn), PROPS.value$zQr_))) {
         SNode newLine = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(currentLine), currentLine);
         ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$_j45)).clear();
@@ -75,7 +75,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
           SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);
         }
       } else {
-        // Nonewlineshouldbecreated,createadefaultnodeintheclosestancestorcollection
+        // No new line should be created, create a default node in the closest ancestor collection 
         SAbstractConcept c = SNodeOperations.getContainingLink(lineContainer).getTargetConcept();
         SNodeOperations.insertNextSiblingChild(lineContainer, SNodeFactoryOperations.createNewNode(c, null));
       }

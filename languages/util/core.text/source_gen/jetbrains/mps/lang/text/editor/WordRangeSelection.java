@@ -29,6 +29,7 @@ import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -62,8 +63,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
   public WordRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException, SelectionRestoreException {
     super(editorComponent);
-    // TODOpreserveandmovethecursorposition
-    // TODOallowper-characterselection
+    // TODO preserve and move the cursor position 
+    // TODO allow per-character selection 
     if (cellInfo != null) {
       throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);
     }
@@ -102,7 +103,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
   public WordRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, boolean growingForward, String emptyCellId) {
     super(editorComponent);
-    // swapfirstandlastletterifneeded
+    // swap first and last letter if needed 
     Iterable<? extends SNode> words = WordRangeSelection.getChildIterable(SNodeOperations.as(SNodeOperations.getParent(firstNode), CONCEPTS.Line$yC));
     for (SNode l : words) {
       if (Objects.equals(l, firstNode)) {
@@ -153,7 +154,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
         break;
       }
     }
-    // assertingbothfirst/lastnodewasinthischildrencollection
+    // asserting both first/last node was in this children collection 
     assert withinSelection;
     assert breakLoop;
     setSelectedCells(selectedCells);
@@ -230,7 +231,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     } else if (type == CellActionType.SELECT_LOCAL_END) {
       selectLocalEnd(editorContext, selectionManager);
     } else if (type == CellActionType.PASTE) {
-      PasteHandler.paste(editorContext, myLastNode, false);
+      PasteHandler.paste(editorContext, myLastNode);
       performDeleteAction(type);
     } else if (type == CellActionType.INSERT || type == CellActionType.INSERT_BEFORE) {
       if (Objects.equals(myFirstParentNode, myLastParentNode)) {
@@ -255,7 +256,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     }
     List<SNode> copiesOfLines = new ArrayList<SNode>();
     for (SNode l : lines) {
-      SNode lc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+      SNode lc = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(l), l);
+      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).clear();
       ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return selectedNodes.contains(it);
@@ -273,10 +275,30 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
   private String buildTextualRepresentationOfSelectedCells() {
     StringBuilder builder = new StringBuilder();
+
+    SNode currentLine = null;
+    StringBuilder currentLineBuilder = new StringBuilder();
     for (EditorCell cell : getSelectedCells()) {
-      builder.append(cell.renderText().getText());
-      builder.append((cell.getNextSibling() == null ? "\n" : " "));
+      SNode n = cell.getSNode();
+      SNode line = SNodeOperations.getNodeAncestor(n, CONCEPTS.Line$yC, false, false);
+      if (line != null && !(Objects.equals(line, currentLine))) {
+        if (currentLine != null) {
+          builder.append(Line__BehaviorDescriptor.wrapTextForClipboard_id2iG$EWuTXuU.invoke(currentLine, currentLineBuilder.toString()));
+        }
+        currentLine = line;
+        currentLineBuilder = new StringBuilder();
+      }
+      currentLineBuilder.append(cell.renderText().getText());
+      if (cell.getNextSibling() == null) {
+        currentLineBuilder.append("\n");
+      } else {
+        currentLineBuilder.append(" ");
+      }
     }
+    if (currentLine != null) {
+      builder.append(Line__BehaviorDescriptor.wrapTextForClipboard_id2iG$EWuTXuU.invoke(currentLine, currentLineBuilder.toString()));
+    }
+
     return builder.toString();
   }
 

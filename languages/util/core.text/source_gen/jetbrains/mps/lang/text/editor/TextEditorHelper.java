@@ -11,8 +11,8 @@ import java.io.IOException;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -50,30 +50,37 @@ public class TextEditorHelper {
     return null;
   }
 
-  public static void insertLineIntoLines(SNode currentLine, SNode currentNode, SNode lineToInsert) {
+  public static SNode insertLineIntoLines(SNode currentLine, SNode currentNode, SNode lineToInsert) {
     SNode restOfLine = Line__BehaviorDescriptor.split_id1YnOZxANc9P.invoke(currentLine, SNodeOperations.as(currentNode, CONCEPTS.TextElement$WN));
     if ((restOfLine != null) && !((boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(restOfLine))) {
       SNodeOperations.insertNextSiblingChild(currentLine, restOfLine);
     }
-    Line__BehaviorDescriptor.merge_id1YnOZxALrLu.invoke(currentLine, lineToInsert);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(lineToInsert)), CONCEPTS.Line$yC)) {
+      Line__BehaviorDescriptor.merge_id1YnOZxALrLu.invoke(currentLine, lineToInsert);
+      return currentLine;
+    } else {
+      SNodeOperations.insertNextSiblingChild(currentLine, lineToInsert);
+      return lineToInsert;
+    }
   }
 
-  public static SNode insertParagraphIntoParagraph(SNode currentParagraph, SNode currentNode, SNode lineToInsert) {
+  public static SNode insertParagraphIntoParagraph(SNode currentParagraph, SNode currentNode, SNode paragraphToInsert) {
     SNode restOfParagraph = Paragraph__BehaviorDescriptor.split_id4HqBHuN_RSC.invoke(currentParagraph, SNodeOperations.as(currentNode, CONCEPTS.TextualElement$9C));
     if ((restOfParagraph != null) && !((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(restOfParagraph))) {
       SNodeOperations.insertNextSiblingChild(currentParagraph, restOfParagraph);
     }
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(lineToInsert)), CONCEPTS.Paragraph$XF)) {
-      Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyw.invoke(currentParagraph, lineToInsert);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(paragraphToInsert)), CONCEPTS.Paragraph$XF)) {
+      Paragraph__BehaviorDescriptor.merge_id4HqBHuNzqyw.invoke(currentParagraph, paragraphToInsert);
       return currentParagraph;
     } else {
-      SNodeOperations.insertNextSiblingChild(currentParagraph, lineToInsert);
-      return lineToInsert;
+      SNodeOperations.insertNextSiblingChild(currentParagraph, paragraphToInsert);
+      return paragraphToInsert;
     }
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
     /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
   }

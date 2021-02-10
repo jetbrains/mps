@@ -58,7 +58,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.IHoldLines:
         if (props_IHoldLines == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
           props_IHoldLines = cpb.create();
         }
         return props_IHoldLines;

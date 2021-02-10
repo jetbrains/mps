@@ -78,7 +78,7 @@ public final class ConvertToLines_Intention extends AbstractIntentionDescriptor 
           }
           ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).addElement(l);
           SNodeOperations.deleteNode(it);
-          Line__BehaviorDescriptor.initializeFromParagraps_id2iG$EWuZbnH.invoke(l, it);
+          Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, it);
         }
       });
     }
