@@ -857,149 +857,148 @@
       <node id="2396239812323710420" at="37,0,38,0" concept="14" trace="APPLICATION_MACRO" />
       <node id="2396239812323710424" at="38,0,39,0" concept="14" trace="LOG_DIR_MACRO" />
       <node id="2396239812323710435" at="43,46,44,60" concept="5" />
-      <node id="2396239812323710440" at="44,60,45,67" concept="10" />
-      <node id="2396239812323710451" at="46,29,47,46" concept="10" />
-      <node id="2396239812323710460" at="48,39,49,65" concept="5" />
-      <node id="2396239812323710684" at="49,65,50,71" concept="12" />
-      <node id="2396239812323710473" at="52,37,53,41" concept="5" />
-      <node id="2396239812323710476" at="53,41,54,15" concept="11" />
-      <node id="2396239812323710477" at="56,5,57,32" concept="5" />
-      <node id="2396239812323710483" at="60,38,61,72" concept="11" />
-      <node id="2396239812323753474" at="63,75,64,44" concept="10" />
-      <node id="2396239812323753478" at="64,44,65,56" concept="5" />
-      <node id="2396239812323753485" at="65,56,66,97" concept="5" />
-      <node id="2396239812323753492" at="66,97,67,54" concept="5" />
-      <node id="2396239812323753500" at="67,54,68,70" concept="10" />
-      <node id="2396239812323765900" at="71,73,72,64" concept="10" />
-      <node id="2396239812323765904" at="72,64,73,120" concept="10" />
-      <node id="2396239812323765928" at="74,13,75,40" concept="11" />
-      <node id="2396239812323765924" at="77,33,78,38" concept="5" />
-      <node id="2396239812323765919" at="79,18,80,46" concept="5" />
-      <node id="2396239812323839979" at="84,57,85,81" concept="5" />
-      <node id="2396239812323753575" at="88,85,89,64" concept="10" />
-      <node id="2396239812323753581" at="89,64,90,56" concept="11" />
-      <node id="2396239812323847741" at="93,69,94,44" concept="11" />
-      <node id="2396239812323710602" at="98,39,99,40" concept="10" />
-      <node id="2396239812323710606" at="99,40,100,18" concept="5" />
-      <node id="2396239812323710608" at="100,18,101,16" concept="11" />
-      <node id="2396239812323710615" at="104,41,105,32" concept="10" />
-      <node id="2396239812323710618" at="105,32,106,54" concept="11" />
-      <node id="2396239812323710629" at="109,38,110,32" concept="10" />
-      <node id="2396239812323710632" at="110,32,111,52" concept="11" />
-      <node id="2396239812323710643" at="114,51,115,45" concept="10" />
-      <node id="2396239812323710646" at="115,45,116,30" concept="5" />
-      <node id="2396239812323710648" at="116,30,117,30" concept="5" />
-      <node id="2396239812323710652" at="117,30,118,84" concept="10" />
-      <node id="2396239812323710672" at="118,84,119,61" concept="5" />
-      <node id="8295097031130555085" at="119,61,120,61" concept="5" />
-      <node id="8295097031130551245" at="123,70,124,90" concept="10" />
-      <node id="8295097031130551252" at="124,90,125,57" concept="10" />
-      <node id="8295097031130551257" at="125,57,126,39" concept="5" />
-      <node id="8295097031130551262" at="126,39,127,38" concept="5" />
-      <node id="8295097031130551267" at="127,38,128,23" concept="11" />
-      <node id="8295097031130552032" at="131,70,132,90" concept="10" />
-      <node id="8295097031130552039" at="132,90,133,57" concept="10" />
-      <node id="8295097031130552044" at="133,57,134,39" concept="5" />
-      <node id="8295097031130552831" at="134,39,135,39" concept="5" />
-      <node id="8295097031130552049" at="135,39,136,38" concept="5" />
-      <node id="8295097031130552054" at="136,38,137,23" concept="11" />
+      <node id="439263599057056509" at="44,60,45,79" concept="12" />
+      <node id="2396239812323710440" at="45,79,46,78" concept="10" />
+      <node id="2396239812323710451" at="46,78,47,44" concept="10" />
+      <node id="2396239812323710460" at="48,37,49,63" concept="5" />
+      <node id="2396239812323710684" at="49,63,50,65" concept="12" />
+      <node id="2396239812323710473" at="52,35,53,39" concept="5" />
+      <node id="2396239812323710477" at="54,12,55,34" concept="5" />
+      <node id="2396239812323710483" at="59,38,60,72" concept="11" />
+      <node id="2396239812323753474" at="62,75,63,44" concept="10" />
+      <node id="2396239812323753478" at="63,44,64,56" concept="5" />
+      <node id="2396239812323753485" at="64,56,65,97" concept="5" />
+      <node id="2396239812323753492" at="65,97,66,54" concept="5" />
+      <node id="2396239812323753500" at="66,54,67,70" concept="10" />
+      <node id="2396239812323765900" at="70,73,71,64" concept="10" />
+      <node id="2396239812323765904" at="71,64,72,120" concept="10" />
+      <node id="2396239812323765928" at="73,13,74,40" concept="11" />
+      <node id="2396239812323765924" at="76,33,77,38" concept="5" />
+      <node id="2396239812323765919" at="78,18,79,46" concept="5" />
+      <node id="2396239812323839979" at="83,57,84,81" concept="5" />
+      <node id="2396239812323753575" at="87,85,88,64" concept="10" />
+      <node id="2396239812323753581" at="88,64,89,56" concept="11" />
+      <node id="2396239812323847741" at="92,69,93,44" concept="11" />
+      <node id="2396239812323710602" at="97,39,98,40" concept="10" />
+      <node id="2396239812323710606" at="98,40,99,18" concept="5" />
+      <node id="2396239812323710608" at="99,18,100,16" concept="11" />
+      <node id="2396239812323710615" at="103,41,104,32" concept="10" />
+      <node id="2396239812323710618" at="104,32,105,54" concept="11" />
+      <node id="2396239812323710629" at="108,38,109,32" concept="10" />
+      <node id="2396239812323710632" at="109,32,110,52" concept="11" />
+      <node id="2396239812323710643" at="113,51,114,45" concept="10" />
+      <node id="2396239812323710646" at="114,45,115,30" concept="5" />
+      <node id="2396239812323710648" at="115,30,116,30" concept="5" />
+      <node id="2396239812323710652" at="116,30,117,84" concept="10" />
+      <node id="2396239812323710672" at="117,84,118,61" concept="5" />
+      <node id="8295097031130555085" at="118,61,119,61" concept="5" />
+      <node id="8295097031130551245" at="122,70,123,90" concept="10" />
+      <node id="8295097031130551252" at="123,90,124,57" concept="10" />
+      <node id="8295097031130551257" at="124,57,125,39" concept="5" />
+      <node id="8295097031130551262" at="125,39,126,38" concept="5" />
+      <node id="8295097031130551267" at="126,38,127,23" concept="11" />
+      <node id="8295097031130552032" at="130,70,131,90" concept="10" />
+      <node id="8295097031130552039" at="131,90,132,57" concept="10" />
+      <node id="8295097031130552044" at="132,57,133,39" concept="5" />
+      <node id="8295097031130552831" at="133,39,134,39" concept="5" />
+      <node id="8295097031130552049" at="134,39,135,38" concept="5" />
+      <node id="8295097031130552054" at="135,38,136,23" concept="11" />
       <node id="2396239812323710428" at="40,0,42,0" concept="2" trace="Log4jInitializer#()V" />
-      <node id="2396239812323765917" at="79,16,81,11" concept="1" />
-      <node id="2396239812323710481" at="60,0,63,0" concept="15" trace="getBinPath#()Ljava/lang/String;" />
-      <node id="2396239812323753588" at="93,0,96,0" concept="15" trace="replace0#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="2396239812323710455" at="47,46,51,7" concept="8" />
-      <node id="2396239812323710468" at="51,7,55,7" concept="8" />
-      <node id="2396239812323753566" at="88,0,92,0" concept="15" trace="replace#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="2396239812323710612" at="104,0,108,0" concept="15" trace="getSystemPath#()Ljava/lang/String;" />
-      <node id="2396239812323710626" at="109,0,113,0" concept="15" trace="getLogPath#()Ljava/lang/String;" />
-      <node id="2396239812323765913" at="76,19,81,11" concept="8" />
-      <node id="2396239812323710598" at="97,0,103,0" concept="15" trace="getCachesPath#()Ljava/io/File;" />
-      <node id="8295097031130551274" at="123,0,130,0" concept="15" trace="createWarnApp#(Lorg/apache/log4j/PatternLayout;)Lorg/apache/log4j/ConsoleAppender;" />
-      <node id="2396239812323710640" at="114,0,122,0" concept="15" trace="configureProgrammatically#()V" />
-      <node id="8295097031130552026" at="131,0,139,0" concept="15" trace="createInfoApp#(Lorg/apache/log4j/PatternLayout;)Lorg/apache/log4j/ConsoleAppender;" />
-      <node id="2396239812323765910" at="73,120,82,9" concept="18" />
-      <node id="2396239812323710444" at="45,67,56,5" concept="8" />
-      <node id="2396239812323765896" at="70,0,84,0" concept="9" trace="createDocument#()Lorg/w3c/dom/Document;" />
-      <node id="2396239812323710432" at="43,0,59,0" concept="15" trace="init#()V" />
-      <node id="2396239812323753506" at="68,70,84,57" concept="10" />
-      <node id="2396239812323753468" at="63,0,87,0" concept="15" trace="configureFromXmlFile#(Ljava/nio/file/Path;)V" />
+      <node id="439263599057055511" at="54,10,56,5" concept="1" />
+      <node id="2396239812323765917" at="78,16,80,11" concept="1" />
+      <node id="2396239812323710481" at="59,0,62,0" concept="15" trace="getBinPath#()Ljava/lang/String;" />
+      <node id="2396239812323753588" at="92,0,95,0" concept="15" trace="replace0#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="2396239812323710455" at="47,44,51,5" concept="8" />
+      <node id="2396239812323753566" at="87,0,91,0" concept="15" trace="replace#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="2396239812323710612" at="103,0,107,0" concept="15" trace="getSystemPath#()Ljava/lang/String;" />
+      <node id="2396239812323710626" at="108,0,112,0" concept="15" trace="getLogPath#()Ljava/lang/String;" />
+      <node id="2396239812323710468" at="51,5,56,5" concept="8" />
+      <node id="2396239812323765913" at="75,19,80,11" concept="8" />
+      <node id="2396239812323710598" at="96,0,102,0" concept="15" trace="getCachesPath#()Ljava/io/File;" />
+      <node id="8295097031130551274" at="122,0,129,0" concept="15" trace="createWarnApp#(Lorg/apache/log4j/PatternLayout;)Lorg/apache/log4j/ConsoleAppender;" />
+      <node id="2396239812323710640" at="113,0,121,0" concept="15" trace="configureProgrammatically#()V" />
+      <node id="8295097031130552026" at="130,0,138,0" concept="15" trace="createInfoApp#(Lorg/apache/log4j/PatternLayout;)Lorg/apache/log4j/ConsoleAppender;" />
+      <node id="2396239812323765910" at="72,120,81,9" concept="18" />
+      <node id="2396239812323765896" at="69,0,83,0" concept="9" trace="createDocument#()Lorg/w3c/dom/Document;" />
+      <node id="2396239812323710432" at="43,0,58,0" concept="15" trace="init#()V" />
+      <node id="2396239812323753506" at="67,70,83,57" concept="10" />
+      <node id="2396239812323753468" at="62,0,86,0" concept="15" trace="configureFromXmlFile#(Ljava/nio/file/Path;)V" />
       <scope id="2396239812323710430" at="40,30,40,30" />
-      <scope id="2396239812323710482" at="60,38,61,72" />
-      <scope id="2396239812323765927" at="74,13,75,40" />
-      <scope id="2396239812323765923" at="77,33,78,38" />
-      <scope id="2396239812323765918" at="79,18,80,46" />
-      <scope id="2396239812323753595" at="93,69,94,44" />
+      <scope id="2396239812323710472" at="52,35,53,39" />
+      <scope id="439263599057055512" at="54,12,55,34" />
+      <scope id="2396239812323710482" at="59,38,60,72" />
+      <scope id="2396239812323765927" at="73,13,74,40" />
+      <scope id="2396239812323765923" at="76,33,77,38" />
+      <scope id="2396239812323765918" at="78,18,79,46" />
+      <scope id="2396239812323753595" at="92,69,93,44" />
       <scope id="2396239812323710428" at="40,0,42,0" />
-      <scope id="2396239812323710459" at="48,39,50,71" />
-      <scope id="2396239812323710472" at="52,37,54,15" />
-      <scope id="2396239812323753573" at="88,85,90,56">
+      <scope id="2396239812323710459" at="48,37,50,65" />
+      <scope id="2396239812323753573" at="87,85,89,56">
         <var name="replacedSlashes" id="2396239812323753574" />
       </scope>
-      <scope id="2396239812323710613" at="104,41,106,54">
+      <scope id="2396239812323710613" at="103,41,105,54">
         <var name="file" id="2396239812323710614" />
       </scope>
-      <scope id="2396239812323710627" at="109,38,111,52">
+      <scope id="2396239812323710627" at="108,38,110,52">
         <var name="file" id="2396239812323710628" />
       </scope>
-      <scope id="2396239812323710481" at="60,0,63,0" />
-      <scope id="2396239812323753588" at="93,0,96,0">
+      <scope id="2396239812323710481" at="59,0,62,0" />
+      <scope id="2396239812323753588" at="92,0,95,0">
         <var name="s1" id="2396239812323753591" />
         <var name="s2" id="2396239812323753593" />
         <var name="text" id="2396239812323753589" />
       </scope>
-      <scope id="2396239812323710600" at="98,39,101,16">
+      <scope id="2396239812323710600" at="97,39,100,16">
         <var name="file" id="2396239812323710601" />
       </scope>
-      <scope id="2396239812323753566" at="88,0,92,0">
+      <scope id="2396239812323753566" at="87,0,91,0">
         <var name="systemMacro" id="2396239812323753569" />
         <var name="systemPath" id="2396239812323753571" />
         <var name="text" id="2396239812323753567" />
       </scope>
-      <scope id="2396239812323710612" at="104,0,108,0" />
-      <scope id="2396239812323710626" at="109,0,113,0" />
-      <scope id="2396239812323765912" at="76,19,81,11" />
-      <scope id="8295097031130551242" at="123,70,128,23">
+      <scope id="2396239812323710612" at="103,0,107,0" />
+      <scope id="2396239812323710626" at="108,0,112,0" />
+      <scope id="2396239812323765912" at="75,19,80,11" />
+      <scope id="8295097031130551242" at="122,70,127,23">
         <var name="consoleWarn" id="8295097031130551246" />
         <var name="warnFilter" id="8295097031130551253" />
       </scope>
-      <scope id="2396239812323710598" at="97,0,103,0" />
-      <scope id="2396239812323710641" at="114,51,120,61">
+      <scope id="2396239812323710598" at="96,0,102,0" />
+      <scope id="2396239812323710641" at="113,51,119,61">
         <var name="layout" id="2396239812323710651" />
         <var name="root" id="2396239812323710642" />
       </scope>
-      <scope id="8295097031130552031" at="131,70,137,23">
+      <scope id="8295097031130552031" at="130,70,136,23">
         <var name="consoleInfo" id="8295097031130552033" />
         <var name="infoFilter" id="8295097031130552040" />
       </scope>
-      <scope id="8295097031130551274" at="123,0,130,0">
+      <scope id="8295097031130551274" at="122,0,129,0">
         <var name="layout" id="8295097031130551269" />
       </scope>
-      <scope id="2396239812323710640" at="114,0,122,0" />
-      <scope id="8295097031130552026" at="131,0,139,0">
+      <scope id="2396239812323710640" at="113,0,121,0" />
+      <scope id="8295097031130552026" at="130,0,138,0">
         <var name="layout" id="8295097031130552029" />
       </scope>
-      <scope id="2396239812323710449" at="46,29,55,7">
-        <var name="configFile" id="2396239812323710450" />
-      </scope>
-      <scope id="2396239812323765899" at="71,73,82,9">
+      <scope id="2396239812323765899" at="70,73,81,9">
         <var name="key" id="2396239812323765901" />
         <var name="property" id="2396239812323765905" />
       </scope>
-      <scope id="2396239812323710434" at="43,46,57,32">
+      <scope id="2396239812323710434" at="43,46,56,5">
+        <var name="configFile" id="2396239812323710450" />
         <var name="configPath" id="2396239812323710439" />
       </scope>
-      <scope id="2396239812323765896" at="70,0,84,0" />
-      <scope id="2396239812323710432" at="43,0,59,0" />
-      <scope id="2396239812323753472" at="63,75,85,81">
+      <scope id="2396239812323765896" at="69,0,83,0" />
+      <scope id="2396239812323710432" at="43,0,58,0" />
+      <scope id="2396239812323753472" at="62,75,84,81">
         <var name="document" id="2396239812323753499" />
         <var name="element" id="2396239812323753505" />
         <var name="text" id="2396239812323753473" />
       </scope>
-      <scope id="2396239812323753468" at="63,0,87,0">
+      <scope id="2396239812323753468" at="62,0,86,0">
         <var name="xmlFile" id="2396239812323753469" />
       </scope>
-      <unit id="2396239812323765895" at="69,43,84,5" name="jetbrains.mps.tool.environment.Log4jInitializer$1" />
-      <unit id="6450649963068439693" at="34,0,140,0" name="jetbrains.mps.tool.environment.Log4jInitializer" />
+      <unit id="2396239812323765895" at="68,43,83,5" name="jetbrains.mps.tool.environment.Log4jInitializer$1" />
+      <unit id="6450649963068439693" at="34,0,139,0" name="jetbrains.mps.tool.environment.Log4jInitializer" />
     </file>
   </root>
   <root nodeRef="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/6450649963068953208">
