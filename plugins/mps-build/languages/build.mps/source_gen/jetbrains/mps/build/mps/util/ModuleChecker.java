@@ -63,6 +63,7 @@ import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -656,7 +657,11 @@ public final class ModuleChecker {
     final BuildModuleFacade buildModuleFacade = new BuildModuleFacade(module);
     if (type.doPartialImport || type.doFullImport) {
 
-      List<SNode> prevRoots = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleModelRoot$Ie)).toListSequence();
+      List<SNode> prevRoots = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleModelRoot$Ie)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SPropertyOperations.getBoolean(it, PROPS.extracted$UUL7);
+        }
+      }).toListSequence();
 
       // see comment next to makeRelative use, below, regarding hardcoded parent location knowledge 
       // XXX instead of myModuleDescriptoFile, could use module.path.getLocalPath() 
@@ -669,14 +674,6 @@ public final class ModuleChecker {
           if (!(mr instanceof DefaultModelRoot)) {
             continue;
           }
-          // XXX here I assume ModuleModelRoot represent DefaultModelRoot and are arranged in module.sources in exactly the same order they are reported by SModule.getModelRoots 
-          // When ModuleModelRoot marked as 'extracted', I assume I can overwrite its paths here as I see fit. If it's not 'extracted', just keep it as is (assume user has modified it according to custom needs). 
-          // XXX I'm aware this approach likely to break the moment one introduces new model roots, just can't craft an utter solution at the moment. 
-          SNode prev = (ListSequence.fromList(prevRoots).isEmpty() ? null : ListSequence.fromList(prevRoots).removeElementAt(0));
-          if (prev != null && !(SPropertyOperations.getBoolean(prev, PROPS.extracted$UUL7))) {
-            continue;
-          }
-          String deployName = null;
           for (SourceRoot sr : ((DefaultModelRoot) mr).getSourceRoots(SourceRootKinds.SOURCES)) {
             String path = sr.getAbsolutePath().getPath();
             SNode p = convertPath(path);
@@ -684,32 +681,33 @@ public final class ModuleChecker {
               continue;
             }
 
-            if (deployName == null) {
-              try {
-                // We used to imply model roots reside under a parent folder of a module descriptor file (in contentOf_BuildMpsLayout_ModuleSources). 
-                // Now, we just extracted the logic here and make the name of the deployment folder explicit. 
-                // FIXME in fact, we shall reference these names inside generated/copied module descriptors and stop implying they match names in the original descriptor source 
-                deployName = moduleRelativePathHelper.makeRelative(path);
-              } catch (RelativePathHelper.PathException ex) {
-                report(String.format("Failed to make model root path %s relative to module %s, using default folder name for deployment", sr, moduleRelativePathHelper.getBasePath()), ex);
-                deployName = "models";
-              }
-              buildModuleFacade.withModelRoot(prev, deployName);
+            // XXX here I assume ModuleModelRoot represent DefaultModelRoot and are arranged in module.sources in exactly the same order they are reported by SModule.getModelRoots 
+            // When ModuleModelRoot marked as 'extracted', I assume I can overwrite its paths here as I see fit. If it's not 'extracted', just keep it as is (assume user has modified it according to custom needs). 
+            // XXX I'm aware this approach likely to break the moment one introduces new model roots, just can't craft an utter solution at the moment. 
+            SNode prev = (ListSequence.fromList(prevRoots).isEmpty() ? null : ListSequence.fromList(prevRoots).removeElementAt(0));
+
+            String deployName = null;
+            try {
+              // We used to imply model roots reside under a parent folder of a module descriptor file (in contentOf_BuildMpsLayout_ModuleSources). 
+              // Now, we just extracted the logic here and make the name of the deployment folder explicit. 
+              // FIXME in fact, we shall reference these names inside generated/copied module descriptors and stop implying they match names in the original descriptor source 
+              deployName = moduleRelativePathHelper.makeRelative(path);
+            } catch (RelativePathHelper.PathException ex) {
+              report(String.format("Failed to make model root path %s relative to module %s, using default folder name for deployment", sr, moduleRelativePathHelper.getBasePath()), ex);
+              deployName = "models";
             }
-            buildModuleFacade.addSourcesToCurrentModelRoot(p);
-          }
-          if (deployName != null) {
-            // well, in fact it's not necessary, as any next model root get deployName = null and withModelRoot() eventually that precedes any addModelSource; still helps to get the idea 
+            // this somewhat puzzling logic is here as a tribute to an attempt to keep single BM_ModuleModelRoot per DefaultModelRoot 
+            // which turned out not nice as source module still listed 2 sources under the root, and complained about missing models  
+            // when reading deployed module. Indeed, would be better to have it fixed in templates not to combine all locations of  
+            // BM_ModuleModelRoot into a single output folder, but this approach, here, looks easier 
+            buildModuleFacade.withModelRoot(prev, deployName);
+            buildModuleFacade.addSourcesToCurrentModelRoot(p, true);
             buildModuleFacade.popModelRoot();
           }
         }
         // if any 'auto-extracted' model root left in the module, remove it 
-        // intentionally kept inside laodedModule != null not to delete user data in case we have no idea what's the module we are trying to deal with 
-        ListSequence.fromList(prevRoots).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getBoolean(it, PROPS.extracted$UUL7);
-          }
-        }).visitAll(new IVisitor<SNode>() {
+        // intentionally kept inside loadedModule != null not to delete user data in case we have no idea what's the module we are trying to deal with 
+        ListSequence.fromList(prevRoots).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.deleteNode(it);
           }
@@ -1185,23 +1183,37 @@ public final class ModuleChecker {
       myCurrentModelRoot = null;
     }
 
-    /*package*/ BuildModuleFacade addSourcesToCurrentModelRoot(final SNode p) {
+    /*package*/ BuildModuleFacade addSourcesToCurrentModelRoot(final SNode p, boolean makeThisPathTheOnlyOne) {
       SNode mroot = myCurrentModelRoot;
-      SNode loc = ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).findFirst(new IWhereFilter<SNode>() {
+      final Wrappers._T<SNode> loc = new Wrappers._T<SNode>(ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.dir$e6r$)).equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p));
         }
-      });
-      if (loc == null) {
-        loc = SLinkOperations.addNewChild(mroot, LINKS.location$UU44, null);
-        SLinkOperations.setTarget(loc, LINKS.dir$e6r$, p);
+      }));
+      if (loc.value == null) {
+        loc.value = SLinkOperations.addNewChild(mroot, LINKS.location$UU44, null);
+        SLinkOperations.setTarget(loc.value, LINKS.dir$e6r$, p);
+      } else {
+        // FIXME this is provisional code to ensure transition from single ModuleModelRoot with 2+ locations to 
+        //      distinct ModuleModelRoot for each location. After some grace period, say, a year, can drop this code path altogether 
+        if (makeThisPathTheOnlyOne) {
+          ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return it != loc.value;
+            }
+          }).toListSequence().visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              SNodeOperations.deleteNode(it);
+            }
+          });
+        }
       }
       // Note, we don't update selectors (unless completely missing), expect that user could change pattern for an 'extracted' root (that's exactly scenario of MPS-30707) 
-      if (ListSequence.fromList(SLinkOperations.getChildren(loc, LINKS.selectors$hp_C)).isNotEmpty()) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(loc.value, LINKS.selectors$hp_C)).isNotEmpty()) {
         return this;
       }
       // use BuildFileIncludesSelector to mimic what contentOf_BuildMpsLayout_ModuleSources used to have 
-      SNode selector = SLinkOperations.addNewChild(loc, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
+      SNode selector = SLinkOperations.addNewChild(loc.value, LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
       // pattern reflects what we know to be regular MPS models (single-file and per-root persistence) 
       SPropertyOperations.assign(selector, PROPS.pattern$u5_$, "**/*.mps, **/*.mpsr, **/.model");
       SPropertyOperations.assign(mroot, PROPS.convert2binary$GPhk, true);
