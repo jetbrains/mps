@@ -337,7 +337,7 @@
       </fileset>
       <zipfileset file="${plugin_home}/lang/base/jetbrains.mps.console.base.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-languageAccessories" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-languageAccessories" prefix="module/languageAccessories" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.scripts.jar" />
@@ -783,7 +783,7 @@
       </fileset>
       <zipfileset file="${plugin_home}/lang/ideCommands/jetbrains.mps.console.ideCommands.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageAccessories" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageAccessories" prefix="module/languageAccessories" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.ideCommands.runtime.jar" />

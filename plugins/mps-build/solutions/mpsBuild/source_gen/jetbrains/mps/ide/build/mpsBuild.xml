@@ -231,7 +231,7 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-build/languages/build/jetbrains.mps.build.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build-utilModels" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build-utilModels" prefix="module/utilModels" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.workflow.jar" />
@@ -394,7 +394,7 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-build/languages/build.workflow/jetbrains.mps.build.workflow.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.workflow-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.workflow-util" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.workflow-util" prefix="module/util" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.workflow-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.mps.jar" />
@@ -571,7 +571,7 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-build/languages/build.mps/jetbrains.mps.build.mps.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps-util" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps-util" prefix="module/util" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.mps.tests.jar" />
@@ -742,7 +742,7 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-build/languages/build.mps.tests/jetbrains.mps.build.mps.tests.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.tests-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.tests-languageAccessories" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.tests-languageAccessories" prefix="module/languageAccessories" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.tests-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.mps.testManifest.jar" />
@@ -1062,7 +1062,7 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-build/languages/build.mps.runner/jetbrains.mps.build.mps.runner.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.runner-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.runner-languageAccessories" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.runner-languageAccessories" prefix="module/languageAccessories" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.mps.runner-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.migration.jar" />

@@ -153,7 +153,7 @@
       </fileset>
       <zipfileset file="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/jetbrains.mps.ide.java.testMaterial.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-java" prefix="module/java" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-jetbrains" prefix="module/java" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-jetbrains" prefix="module/jetbrains" />
       <zipfileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial" prefix="module">
         <include name="resources/" />
       </zipfileset>

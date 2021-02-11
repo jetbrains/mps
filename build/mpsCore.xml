@@ -620,7 +620,7 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-core/languages/core.properties/jetbrains.mps.core.properties.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-core-languages-core.properties-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-core-languages-core.properties-languageAccessories" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-core-languages-core.properties-languageAccessories" prefix="module/languageAccessories" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>

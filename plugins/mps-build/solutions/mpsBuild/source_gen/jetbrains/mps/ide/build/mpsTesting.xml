@@ -433,9 +433,6 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-lang.test-languageModels">
       <fileset dir="${mps_home}/plugins/mps-testing/languages/lang.test/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-languageDesign-test-generator-template">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-lang.test-generator-template">
       <fileset dir="${mps_home}/plugins/mps-testing/languages/lang.test/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
@@ -454,7 +451,6 @@
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-testing/languages/lang.test/jetbrains.mps.lang.test.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-lang.test-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-languageDesign-test-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-lang.test-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.test.runtime.jar" />
