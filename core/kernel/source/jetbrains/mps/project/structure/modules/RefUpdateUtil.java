@@ -167,6 +167,9 @@ public final class RefUpdateUtil {
   // could be public if we decide this class shall be generic and do not deal with Dependency (@see #updateDependencies())
   private SModuleReference update(SModuleReference reference) {
     SModule module = reference.resolve(myRepository);
+    // XXX if there's outdated module reference recorded, next logic doesn't allow us to tell non-existent from unmodified,
+    //     see j.m.baseLanguage.mpl, where incorrect j.m.bl.references.runtime module reference happily lived for 2+ years!
+    //     OTOH, perhaps, it was Migration's Re-save All Modules responsibility?
     return module == null ? reference : module.getModuleReference();
   }
 
