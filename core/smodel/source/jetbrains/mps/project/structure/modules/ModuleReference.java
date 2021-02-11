@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,6 +100,9 @@ public final class ModuleReference implements SModuleReference {
       return ref1 != ref2;
     }
     // both not null
+    if (ref1 == ref2) {
+      return false; // they are immutable
+    }
     return !(Objects.equals(ref1.getModuleId(), ref2.getModuleId()) && Objects.equals(ref1.getModuleName(), ref2.getModuleName()));
   }
 }

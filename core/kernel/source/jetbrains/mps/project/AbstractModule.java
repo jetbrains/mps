@@ -510,6 +510,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   public void onModuleLoad() {
+    // FIXME any reason to update references for read-only (deployed) modules?
     updateExternalReferences();
   }
 

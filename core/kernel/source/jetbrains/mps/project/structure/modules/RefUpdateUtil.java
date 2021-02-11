@@ -126,7 +126,7 @@ public final class RefUpdateUtil {
       return false;
     }
     SModuleReference newRef = update(ref);
-    if (newRef != null) {
+    if (ModuleReference.differs(ref, newRef)) {
       setter.accept(newRef);
       return true;
     }
