@@ -102,7 +102,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
               public String select(SNode it) {
                 return SPropertyOperations.getString(it, PROPS.value$X7Tp);
               }
-            }), " ");
+            }), " ").replaceAll(" ", "");
             SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
             SPropertyOperations.assign(w, PROPS.value$zQr_, text);
             SPropertyOperations.assign(w, PROPS.url$SIrt, address);
