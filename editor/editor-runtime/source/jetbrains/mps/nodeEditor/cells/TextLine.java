@@ -24,9 +24,10 @@ import jetbrains.mps.editor.runtime.style.Measure;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.nodeEditor.EditorComponentSettingsImpl;
 import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
-import jetbrains.mps.openapi.editor.cells.EditorFontMetricsProvider;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
@@ -51,7 +52,7 @@ public class TextLine {
   private int myDescent = 0;
 
   private Font myFont = EditorSettings.getInstance().getDefaultEditorFont();
-  private final EditorFontMetricsProvider myFontMetricsProvider;
+  private final EditorComponentSettings myEditorComponentSettings;
   private EditorFontMetrics myFontMetrics;
 
   private int myCaretPosition = 0;
@@ -69,10 +70,10 @@ public class TextLine {
   private boolean myCaretEnabled = true;
   private int myMinimalLength = 0;
 
-  private double myLineSpacing = EditorSettings.getInstance().getLineSpacing();
+  private final double myLineSpacing = EditorSettings.getInstance().getLineSpacing();
   private Color mySelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
-  private Color myTextSelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
-  private Color myTextSelectedBackgroundColor = EditorSettings.getInstance().getSelectionBackgroundColor();
+  private final Color myTextSelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
+  private final Color myTextSelectedBackgroundColor = EditorSettings.getInstance().getSelectionBackgroundColor();
 
 
   private boolean myShowsErrorColor = false;
@@ -102,32 +103,25 @@ public class TextLine {
   private int myFontCorrectionRightGap;
   private int myFontCorrectionTextShift;
 
-  /**
-   * @deprecated use {@link #TextLine(String, EditorFontMetricsProvider)} instead
-   */
-  @Deprecated
-  public TextLine(String text) {
-    this(text, new StyleImpl(), false);
-  }
-
-  public TextLine(String text, EditorFontMetricsProvider fontMetricsProvider) {
-    this(text, new StyleImpl(), false, fontMetricsProvider);
+  public TextLine(String text, EditorComponentSettings editorComponentSettings) {
+    this(text, new StyleImpl(), false, editorComponentSettings);
   }
 
   /**
-   * @deprecated use {@link #TextLine(String, Style, boolean, EditorFontMetricsProvider)} instead
+   * Used by mps extensions.
+   * @deprecated use {@link #TextLine(String, Style, boolean, EditorComponentSettings)} instead
    */
   @Deprecated
   public TextLine(String text, @NotNull Style style, boolean isNull) {
-    this(text, style, isNull, EditorFontMetricsImpl.DEFAULT_FONT_METRICS_PROVIDER);
+    this(text, style, isNull, EditorComponentSettingsImpl.DEFAULT_SETTINGS);
   }
 
-  public TextLine(String text, @NotNull Style style, boolean isNull, EditorFontMetricsProvider fontMetricsProvider) {
+  public TextLine(String text, @NotNull Style style, boolean isNull, EditorComponentSettings editorComponentSettings) {
     setText(text);
     myNull = isNull;
     myStyle = style;
     showTextColor();
-    myFontMetricsProvider = fontMetricsProvider;
+    myEditorComponentSettings = editorComponentSettings;
   }
 
   public String getText() {
@@ -206,13 +200,14 @@ public class TextLine {
       Integer style = myStyle.get(StyleAttributes.FONT_STYLE);
       String family = styleFontFamily != null ? styleFontFamily : settings.getFontFamily();
       int fontSize = styleFontSize != null ? styleFontSize : settings.getFontSize();
+      fontSize = myEditorComponentSettings.getFontSizeScaled(fontSize);
 
       final Font font = FontRegistry.getInstance().getFont(family, style, fontSize);
       if (ApplicationManager.getApplication() != null) {
         myFont = EditorColorsManager.getInstance().getGlobalScheme().getFontPreferences().useLigatures() ?
                  font.deriveFont(Collections.singletonMap(TextAttribute.LIGATURES, TextAttribute.LIGATURES_ON)) : font;
       }
-      myFontMetrics = myFontMetricsProvider.getFontMetrics(family, style, fontSize);
+      myFontMetrics = myEditorComponentSettings.getFontMetrics(family, style, fontSize);
       myFontCorrectionRightGap = FontRegistry.getInstance().isFakeItalic(family, style) ? 1 : 0;
       myFontCorrectionTextShift = (style & Font.ITALIC) > 0 ? -1 : 0;
     }
@@ -278,10 +273,10 @@ public class TextLine {
       type = Measure.SPACES;
     }
 
-    if (type.equals(Measure.SPACES)) {
+    if (type == Measure.SPACES) {
       return (int) (charWidth() * value);
     }
-    if (type.equals(Measure.PIXELS)) {
+    if (type == Measure.PIXELS) {
       return (int) value;
     }
     return 0;
@@ -295,10 +290,10 @@ public class TextLine {
       type = Measure.SPACES;
     }
 
-    if (type.equals(Measure.SPACES)) {
+    if (type == Measure.SPACES) {
       return (int) (charHeight() * value);
     }
-    if (type.equals(Measure.PIXELS)) {
+    if (type == Measure.PIXELS) {
       return (int) value;
     }
     return 0;

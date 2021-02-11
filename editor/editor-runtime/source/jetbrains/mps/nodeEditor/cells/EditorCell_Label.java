@@ -72,8 +72,8 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   protected EditorCell_Label(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text) {
     super(editorContext, node);
-    myTextLine = new TextLine("", getStyle(), false, editorContext);
-    myNullTextLine = new TextLine("", getStyle(), true, editorContext);
+    myTextLine = new TextLine("", getStyle(), false, editorContext.getEditorComponent().getEditorComponentSettings());
+    myNullTextLine = new TextLine("", getStyle(), true, editorContext.getEditorComponent().getEditorComponentSettings());
 
     myTextLine.setCaretEnabled(true);
     myNullTextLine.setCaretEnabled(true);
@@ -721,7 +721,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    NodeSubstitutePatternEditor pattern = new NodeSubstitutePatternEditor();
+    NodeSubstitutePatternEditor pattern = new NodeSubstitutePatternEditor(getEditor().getEditorComponentSettings());
     pattern.setText(getText());
     pattern.setCaretPosition(getCaretPosition());
     return pattern;

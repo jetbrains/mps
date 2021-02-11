@@ -49,20 +49,18 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
   private static final Logger LOG = LogManager.getLogger(NodeItemCellRenderer.class);
   private static final String EXCEPTION_WAS_THROWN_TEXT = "!Exception was thrown!";
 
-  private SimpleColoredComponent myLeft = new SimpleColoredComponent();
-  private SimpleColoredComponent myRight = new SimpleColoredComponent();
+  private final SimpleColoredComponent myLeft = new SimpleColoredComponent();
+  private final SimpleColoredComponent myRight = new SimpleColoredComponent();
   private static final int HORIZONTAL_GAP = 10;
   private final Color HIGHLIGHT_COLOR = UIUtil.isUnderDarcula() ? new Color(217, 149, 219) : new Color(189, 55, 186);
   private final Color SELECTION_HIGHLIGHT_COLOR = UIUtil.isUnderDarcula() ? HIGHLIGHT_COLOR : new Color(250, 239, 215);
-  private Map<SNode, Icon> myNodeIconMap = new HashMap<>();
-  private Map<SNode, Icon> myConceptIconMap = new HashMap<>();
+  private final Map<SNode, Icon> myNodeIconMap = new HashMap<>();
+  private final Map<SNode, Icon> myConceptIconMap = new HashMap<>();
   private final NodeSubstituteChooser mySubstituteChooser;
 
   NodeItemCellRenderer(@NotNull NodeSubstituteChooser substituteChooser) {
     mySubstituteChooser = substituteChooser;
     setLayout(new BorderLayout(HORIZONTAL_GAP / 2, 0));
-    myLeft.setFont(EditorSettings.getInstance().getDefaultEditorFont());
-    myRight.setFont(EditorSettings.getInstance().getDefaultEditorFont());
     add(myLeft, BorderLayout.WEST);
     add(myRight, BorderLayout.EAST);
   }
@@ -78,12 +76,12 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
   }
 
 
-  Dimension getDimension(SubstituteAction action, JList list) {
+  Dimension getDimension(SubstituteAction action, JList<?> list) {
     setupThis(list, action, false, true);
     return getPreferredSize().getSize();
   }
 
-  private void setupThis(JList list, SubstituteAction action, boolean isSelected, boolean isPrecalculating) {
+  private void setupThis(JList<?> list, SubstituteAction action, boolean isSelected, boolean isPrecalculating) {
     myLeft.clear();
     myRight.clear();
     String pattern = mySubstituteChooser.getPatternEditor().getPattern();
@@ -190,7 +188,7 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
   }
 
   private Font getFont(int style) {
-    Font font = EditorSettings.getInstance().getDefaultEditorFont();
+    Font font = mySubstituteChooser.getEditorComponent().getEditorComponentSettings().getDefaultFont();
     try {
       font = font.deriveFont(style);
     } catch (Throwable t) {

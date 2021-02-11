@@ -3589,7 +3589,7 @@
               <node concept="1Y3b0j" id="65G2vMdnf_z" role="YeSDq">
                 <property role="2bfB8j" value="true" />
                 <ref role="1Y3XeK" to="6lvu:~NodeSubstitutePatternEditor" resolve="NodeSubstitutePatternEditor" />
-                <ref role="37wK5l" to="6lvu:~NodeSubstitutePatternEditor.&lt;init&gt;()" resolve="NodeSubstitutePatternEditor" />
+                <ref role="37wK5l" to="6lvu:~NodeSubstitutePatternEditor.&lt;init&gt;(jetbrains.mps.openapi.editor.EditorComponentSettings)" resolve="NodeSubstitutePatternEditor" />
                 <node concept="3Tm1VV" id="65G2vMdnf_$" role="1B3o_S" />
                 <node concept="3clFb_" id="65G2vMdng1s" role="jymVt">
                   <property role="1EzhhJ" value="false" />
@@ -3735,6 +3735,14 @@
                   </node>
                   <node concept="2AHcQZ" id="6w0WfK8Y8jW" role="2AJF6D">
                     <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="4vzXatnhBq" role="37wK5m">
+                  <node concept="1rXfSq" id="4vzXatngaz" role="2Oq$k0">
+                    <ref role="37wK5l" to="g51k:~EditorCell_Basic.getEditor()" resolve="getEditor" />
+                  </node>
+                  <node concept="liA8E" id="4vzXatnkJA" role="2OqNvi">
+                    <ref role="37wK5l" to="exr9:~EditorComponent.getEditorComponentSettings()" resolve="getEditorComponentSettings" />
                   </node>
                 </node>
               </node>

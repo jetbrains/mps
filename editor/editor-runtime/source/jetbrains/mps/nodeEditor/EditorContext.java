@@ -20,7 +20,6 @@ import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.assist.DisabledContextAssistantManager;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
@@ -29,7 +28,6 @@ import jetbrains.mps.openapi.editor.EditorInspector;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.project.GlobalOperationContext;
 import jetbrains.mps.project.Project;
@@ -335,10 +333,5 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
   @Override
   public EditorPanelManager getEditorPanelManager() {
     return myConfiguration.editorPanelManager;
-  }
-
-  @Override
-  public EditorFontMetrics getFontMetrics(String fontName, int style, int size) {
-    return new EditorFontMetricsImpl(fontName, style, size, myNodeEditorComponent);
   }
 }

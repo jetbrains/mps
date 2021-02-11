@@ -68,7 +68,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
 
   private EditorCell myContextCell;
   private boolean myIsSmart = false;
-  private EditorComponent myEditorComponent;
+  private final EditorComponent myEditorComponent;
   private NodeSubstitutePatternEditor myPatternEditor;
   private SubstituteInfo myNodeSubstituteInfo;
   private List<SubstituteAction> mySubstituteActions = new ArrayList<>();
@@ -77,7 +77,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
   private JList<SubstituteAction> myList;
   private ISubstituteChooserUi myUi;
 
-  private ComponentAdapter myComponentListener = new ComponentAdapter() {
+  private final ComponentAdapter myComponentListener = new ComponentAdapter() {
     @Override
     public void componentMoved(ComponentEvent e) {
       moveToContextCell();
@@ -88,7 +88,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
 
   public NodeSubstituteChooser(EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
-    myPatternEditor = new NodeSubstitutePatternEditor();
+    myPatternEditor = new NodeSubstitutePatternEditor(editorComponent.getEditorComponentSettings());
   }
 
   Window getEditorWindow() {
@@ -348,36 +348,36 @@ public class NodeSubstituteChooser implements KeyboardHandler {
     if (!pattern.isEmpty()) {
       try {
         matchingActions.sort(new SubstituteActionComparator(needToTrim ? trimPattern : pattern) {
-          private Map<SubstituteAction, Integer> myRatesMap = new HashMap<>();
-          private Map<SubstituteAction, String> myVisibleMatchingTextsMap = new HashMap<>();
-          private Map<SubstituteAction, Boolean> myCanSubstituteStrictlyMap = new HashMap<>();
-          private Map<SubstituteAction, Boolean> myStartsWithMap = new HashMap<>();
-          private Map<SubstituteAction, Boolean> myStartsWithLowerCaseMap = new HashMap<>();
+          private final Map<SubstituteAction, Integer> myRatesMap = new HashMap<>();
+          private final Map<SubstituteAction, String> myVisibleMatchingTextsMap = new HashMap<>();
+          private final Map<SubstituteAction, Boolean> myCanSubstituteStrictlyMap = new HashMap<>();
+          private final Map<SubstituteAction, Boolean> myStartsWithMap = new HashMap<>();
+          private final Map<SubstituteAction, Boolean> myStartsWithLowerCaseMap = new HashMap<>();
 
 
           @Override
           protected String getVisibleMatchingText(SubstituteAction action) {
-            return myVisibleMatchingTextsMap.computeIfAbsent(action, a -> super.getVisibleMatchingText(a));
+            return myVisibleMatchingTextsMap.computeIfAbsent(action, super::getVisibleMatchingText);
           }
 
           @Override
           protected boolean canSubstituteStrictly(SubstituteAction action) {
-            return myCanSubstituteStrictlyMap.computeIfAbsent(action, a -> super.canSubstituteStrictly(a));
+            return myCanSubstituteStrictlyMap.computeIfAbsent(action, super::canSubstituteStrictly);
           }
 
           @Override
           protected int getRate(SubstituteAction action) {
-            return myRatesMap.computeIfAbsent(action, a -> super.getRate(a));
+            return myRatesMap.computeIfAbsent(action, super::getRate);
           }
 
           @Override
           protected boolean startsWith(SubstituteAction action) {
-            return myStartsWithMap.computeIfAbsent(action, a -> super.startsWith(a));
+            return myStartsWithMap.computeIfAbsent(action, super::startsWith);
           }
 
           @Override
           protected boolean startsWithLowerCase(SubstituteAction action) {
-            return myStartsWithLowerCaseMap.computeIfAbsent(action, a -> super.startsWithLowerCase(a));
+            return myStartsWithLowerCaseMap.computeIfAbsent(action, super::startsWithLowerCase);
           }
         });
       } catch (Exception e) {

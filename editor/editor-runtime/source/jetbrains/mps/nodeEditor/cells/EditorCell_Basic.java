@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.TIntObjectHashMap;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
@@ -76,7 +77,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
 
   public static final int BRACKET_WIDTH = 7;
 
-  private Map myUserObjects;
+  private Map<Object, Object> myUserObjects;
 
   protected int myX = 0;
   protected int myY = 0;
@@ -95,9 +96,9 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   private SNodeId myNodeId;
   private SubstituteInfo mySubstituteInfo;
   private TransformationMenuLookup myTransformationMenuLookup;
-  private TIntObjectHashMap<CellAction> myActionMap = new TIntObjectHashMap<>();
+  private final TIntObjectHashMap<CellAction> myActionMap = new TIntObjectHashMap<>();
 
-  private Style myStyle = new StyleImpl();
+  private final Style myStyle = new StyleImpl();
 
   private KeyMap myKeyMap;
   private String myCellId;
@@ -393,7 +394,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   @Override
   public void putUserObject(Object key, Object value) {
     if (myUserObjects == null) {
-      myUserObjects = new ListMap();
+      myUserObjects = new ListMap<>();
     }
     myUserObjects.put(key, value);
   }
@@ -534,30 +535,6 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
     }
   }
 
-  private EditorCell findClosestHorizontal(int x, Condition<? super EditorCell> condition, Set<EditorCell> candidates) {
-    EditorCell best = null;
-    int bestDistance = -1;
-    for (EditorCell cell : candidates) {
-      if (!condition.met(cell)) {
-        continue;
-      }
-
-      int distance = horizontalDistance(x, cell);
-      if (bestDistance == -1 || distance < bestDistance) {
-        best = cell;
-        bestDistance = distance;
-      }
-    }
-    return best;
-  }
-
-  private int horizontalDistance(int x, EditorCell cell) {
-    if (x >= cell.getX() && x <= cell.getX() + cell.getWidth()) {
-      return 0;
-    }
-    return Math.min(Math.abs(x - cell.getX()), Math.abs(x - cell.getX() - cell.getWidth()));
-  }
-
   private void collectCellsWithY(EditorCell current, int y, Set<EditorCell> cells) {
     collectCellsWithY(current, y, cells, true);
   }
@@ -604,7 +581,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    return new NodeSubstitutePatternEditor();
+    return new NodeSubstitutePatternEditor(myEditorContext.getEditorComponent().getEditorComponentSettings());
   }
 
   @Override

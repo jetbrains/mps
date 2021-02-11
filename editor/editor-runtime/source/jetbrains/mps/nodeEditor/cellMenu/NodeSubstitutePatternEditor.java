@@ -17,10 +17,11 @@ package jetbrains.mps.nodeEditor.cellMenu;
 
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.EditorComponentSettingsImpl;
 import jetbrains.mps.nodeEditor.MPSColors;
-import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
+import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,12 +40,25 @@ import java.awt.event.KeyEvent;
  * Time: Oct 20, 2003 1:45:39 PM
  */
 public class NodeSubstitutePatternEditor {
+  private final EditorComponentSettings mySettings;
   private EditorWindow myEditorWindow;
   private boolean myEditorActivated;
 
   private String myCachedText = "";
   private int myCachedCaretPosition;
   private int mySavedCaretPosition = 0;
+
+  /**
+   * Use {@link NodeSubstitutePatternEditor#NodeSubstitutePatternEditor(EditorComponentSettings)}
+   */
+  @Deprecated
+  public NodeSubstitutePatternEditor() {
+    this(EditorComponentSettingsImpl.DEFAULT_SETTINGS);
+  }
+
+  public NodeSubstitutePatternEditor(EditorComponentSettings settings) {
+    mySettings = settings;
+  }
 
   public void setText(String text) {
     if (myEditorActivated) {
@@ -151,7 +165,7 @@ public class NodeSubstitutePatternEditor {
   public void activate(Window owner, Point location, Dimension size, boolean show) {
     if (!myEditorActivated) {
       myEditorActivated = true;
-      myEditorWindow = new EditorWindow(owner);
+      myEditorWindow = new EditorWindow(owner, mySettings);
       myEditorWindow.setFocusableWindowState(false);
       myEditorWindow.setLocation(location);
       myEditorWindow.setMinimalSize(size);
@@ -187,14 +201,13 @@ public class NodeSubstitutePatternEditor {
   }
 
   private static class EditorWindow extends JWindow {
-    private TextLine myTextLine;
+    private final TextLine myTextLine;
     private Dimension myMinimalSize;
-    private JPanel myPanel = new EditorPanel();
 
-    public EditorWindow(Window owner) {
+    EditorWindow(Window owner, EditorComponentSettings settings) {
       super(owner);
-      myTextLine = new TextLine("", EditorFontMetricsImpl.DEFAULT_FONT_METRICS_PROVIDER);
-      add(myPanel);
+      myTextLine = new TextLine("", settings);
+      add(new EditorPanel());
     }
 
     public void setMinimalSize(Dimension size) {

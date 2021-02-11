@@ -619,7 +619,7 @@
           <node concept="37vLTI" id="3E$e_gS$Ogj" role="3clFbG">
             <node concept="2ShNRf" id="3E$e_gS$P3c" role="37vLTx">
               <node concept="1pGfFk" id="3E$e_gS$OOh" role="2ShVmc">
-                <ref role="37wK5l" to="g51k:~TextLine.&lt;init&gt;(java.lang.String,jetbrains.mps.openapi.editor.style.Style,boolean,jetbrains.mps.openapi.editor.cells.EditorFontMetricsProvider)" resolve="TextLine" />
+                <ref role="37wK5l" to="g51k:~TextLine.&lt;init&gt;(java.lang.String,jetbrains.mps.openapi.editor.style.Style,boolean,jetbrains.mps.openapi.editor.EditorComponentSettings)" resolve="TextLine" />
                 <node concept="Xl_RD" id="3E$e_gS$PDH" role="37wK5m">
                   <property role="Xl_RC" value="" />
                 </node>
@@ -629,8 +629,18 @@
                 <node concept="3clFbT" id="3E$e_gS$PDJ" role="37wK5m">
                   <property role="3clFbU" value="false" />
                 </node>
-                <node concept="37vLTw" id="3E$e_gS_1a$" role="37wK5m">
-                  <ref role="3cqZAo" node="7dwhomQPrAK" resolve="c" />
+                <node concept="2OqwBi" id="3BLJxv51vE1" role="37wK5m">
+                  <node concept="2OqwBi" id="3BLJxv51vmN" role="2Oq$k0">
+                    <node concept="37vLTw" id="3E$e_gS_1a$" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7dwhomQPrAK" resolve="c" />
+                    </node>
+                    <node concept="liA8E" id="3BLJxv51vyj" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3BLJxv51vQ1" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~EditorComponent.getEditorComponentSettings()" resolve="getEditorComponentSettings" />
+                  </node>
                 </node>
               </node>
             </node>

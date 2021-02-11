@@ -19,9 +19,13 @@ import jetbrains.mps.editor.runtime.style.Measure;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.openapi.editor.EditorComponentSettings;
+import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+
+import java.awt.Font;
 
 public class PunctuationUtil {
 
@@ -116,7 +120,11 @@ public class PunctuationUtil {
     if (padding.getType() == Measure.PIXELS) {
       return (int) padding.getValue();
     } else {
-      return (int) (padding.getValue() * EditorSettings.getInstance().getDefaultEditorFontMetrics().getWidth(" "));
+      EditorContext context = editorCells.getContext();
+      EditorSettings settings = EditorSettings.getInstance();
+      EditorComponentSettings editorComponentSettings = context.getEditorComponent().getEditorComponentSettings();
+      int fontSize = editorComponentSettings.getFontSizeScaled(settings.getFontSize());
+      return (int) (padding.getValue() * editorComponentSettings.getFontMetrics(settings.getFontFamily(), Font.PLAIN, fontSize).getWidth(" "));
     }
   }
 

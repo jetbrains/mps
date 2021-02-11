@@ -26,7 +26,7 @@ public class EditorCell_Empty extends EditorCell_Basic implements WithCaret {
 
   public EditorCell_Empty(EditorContext c, SNode node) {
     super(c, node);
-    myTextLine = new TextLine("", getStyle(), false, c);
+    myTextLine = new TextLine("", getStyle(), false, c.getEditorComponent().getEditorComponentSettings());
     myTextLine.setCaretEnabled(true);
   }
 

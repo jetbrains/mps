@@ -119,6 +119,8 @@ public interface EditorComponent {
 
   void update();
 
+  EditorComponentSettings getEditorComponentSettings();
+
   ActionHandler getActionHandler();
 
   CellAction getComponentAction(CellActionType type);

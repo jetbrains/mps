@@ -39,17 +39,17 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.ex.EditorSettingsExternalizable;
+import com.intellij.openapi.editor.ex.util.EditorUtil;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.IdeGlassPane;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ex.StatusBarEx;
-import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBScrollPane.Flip;
@@ -111,6 +111,7 @@ import jetbrains.mps.nodeEditor.updater.UpdaterImpl;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.ActionHandler;
 import jetbrains.mps.openapi.editor.DeletionApprover;
+import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.assist.ContextAssistant;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -145,7 +146,6 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.Reference;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
@@ -209,6 +209,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
 import java.awt.im.InputMethodRequests;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -385,12 +386,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   @NotNull
   private final EditorComponentFocusTracker myFocusTracker = new EditorComponentFocusTracker(this);
+  private EditorComponentSettingsImpl myEditorComponentSettings;
 
   public EditorComponent(@NotNull SRepository repository) {
     this(repository, EditorConfigurationBuilder.buildDefault());
   }
 
   protected EditorComponent(@NotNull SRepository repository, @NotNull EditorConfiguration configuration) {
+    myEditorComponentSettings = new EditorComponentSettingsImpl(this);
     myRepository = repository;
     myEditorConfiguration = configuration;
     myReadOnly = myEditorConfiguration.readOnly;
@@ -714,9 +717,32 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
 
   protected JScrollPane createScrollPane() {
-    return ScrollPaneFactory.createScrollPane();
+    return new FontSizeChangingScrollPane();
   }
 
+  private final class FontSizeChangingScrollPane extends JBScrollPane {
+
+    private static final int MIN_FONT_SIZE = 8;
+
+    @Override
+    protected void processMouseWheelEvent(MouseWheelEvent e) {
+      if (EditorUtil.isChangeFontSize(e) && EditorSettingsExternalizable.getInstance().isWheelFontChangeEnabled()) {
+        if (e.getWheelRotation() < 0) {
+          myEditorComponentSettings.increaseUIScale();
+        } else {
+          myEditorComponentSettings.decreaseUIScale();
+        }
+        mySettingsListener.settingsChanged();
+      } else {
+        super.processMouseWheelEvent(e);
+      }
+    }
+  }
+
+  @Override
+  public EditorComponentSettings getEditorComponentSettings() {
+    return myEditorComponentSettings;
+  }
 
   boolean hasUI() {
     return myEditorConfiguration.withUI;
@@ -2226,6 +2252,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         additionalPainter.paint(g, this);
       }
     }
+
+    g.dispose();
   }
 
   Dimension getPreferredComponentSize() {
