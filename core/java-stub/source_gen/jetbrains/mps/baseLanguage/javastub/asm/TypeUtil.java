@@ -184,7 +184,7 @@ import java.util.Stack;
     private ASMType myResult;
     private Stack<ASMType> myTypes = new Stack<ASMType>();
     private char myWildcard;
-    private TypeBuilderVisitor myArrayVisitor = null;
+    private List<TypeBuilderVisitor> myArrayVisitors = null;
     public TypeBuilderVisitor() {
     }
     protected void setResult(ASMType type) {
@@ -269,7 +269,12 @@ import java.util.Stack;
     }
     @Override
     public SignatureVisitor visitArrayType() {
-      return myArrayVisitor = new TypeBuilderVisitor();
+      if (myArrayVisitors == null) {
+        myArrayVisitors = new ArrayList<TypeBuilderVisitor>(4);
+      }
+      TypeBuilderVisitor rv = new TypeBuilderVisitor();
+      myArrayVisitors.add(rv);
+      return rv;
     }
     @Override
     public void visitClassType(String name) {
@@ -277,17 +282,25 @@ import java.util.Stack;
     }
     @Override
     public void visitEnd() {
-      if (myArrayVisitor != null) {
-        addPart(new ASMArrayType(myArrayVisitor.getResult()));
-        myArrayVisitor = null;
+      if (myArrayVisitors != null) {
+        consumeArrayTypes();
       } else {
+        // XXX no idea why no finish() when a type (e.g. Function<int[], long[]) has been encountered 
         finish();
       }
     }
+
+    private void consumeArrayTypes() {
+      for (TypeBuilderVisitor av : myArrayVisitors) {
+        addPart(new ASMArrayType(av.getResult()));
+      }
+      myArrayVisitors = null;
+    }
+
     /*package*/ ASMType getResult() {
-      if (myArrayVisitor != null) {
-        addPart(new ASMArrayType(myArrayVisitor.getResult()));
-        myArrayVisitor = null;
+      if (myArrayVisitors != null) {
+        // XXX I don't like this duplication, but don't want to dive too deep into this code 
+        consumeArrayTypes();
       }
       if (myResult == null) {
         finish();
