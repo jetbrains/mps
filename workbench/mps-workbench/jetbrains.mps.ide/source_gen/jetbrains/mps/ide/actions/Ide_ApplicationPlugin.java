@@ -163,6 +163,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new ProjectNewActions_ActionGroup(this));
     addGroup(new PropertyNodeActions_ActionGroup(this));
     addGroup(new ReferenceNodeActions_ActionGroup(this));
+    addGroup(new SearchUsages_ActionGroup(this));
     addGroup(new Search_ActionGroup(this));
     addGroup(new SolutionActions_ActionGroup(this));
     addGroup(new SolutionNewActions_ActionGroup(this));
@@ -256,6 +257,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(EditorPopup_Show_ActionGroup.ID, "EditorPopup_ActionGroupshowIn", null);
     insertGroupIntoAnother(EditorPopupEx_ActionGroup.ID, "EditorPopup_ActionGroupnew", null);
     insertGroupIntoAnother(FindModelUsages_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_modelUsages);
+    insertGroupIntoAnother(SearchUsages_ActionGroup.ID, "FindUsagesMenuGroup", null);
     insertGroupIntoAnother(TouchBarDefault_alt_ActionGroup.ID, "TouchBarDefault_alt", null);
     insertGroupIntoAnother(TouchBarDefault_cmd_ActionGroup.ID, "TouchBarDefault_cmd", null);
     insertGroupIntoAnother(TouchBarDefault_cmd_alt_ActionGroup.ID, "TouchBarDefault_cmd.alt", null);

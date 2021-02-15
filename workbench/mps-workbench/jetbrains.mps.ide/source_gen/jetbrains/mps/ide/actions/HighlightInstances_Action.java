@@ -11,7 +11,6 @@ import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
@@ -50,13 +49,6 @@ public class HighlightInstances_Action extends BaseAction {
       }
       MapSequence.fromMap(_params).put("editorComponent", editorComponent);
       if (editorComponent == null) {
-        return false;
-      }
-    }
-    {
-      EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
-      MapSequence.fromMap(_params).put("editorCell", p);
-      if (p == null) {
         return false;
       }
     }

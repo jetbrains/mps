@@ -22,6 +22,7 @@ import com.intellij.facet.ui.FacetEditorTab;
 import com.intellij.facet.ui.FacetValidatorsManager;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -33,15 +34,16 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.ApiStatus.Internal;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JComponent;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  *
@@ -137,6 +139,22 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     }
   }
 
+  /**
+   * <b>DO NOT USE<b/><br/>
+   * Only used from {@link MPSFrameworkSupportProvider#setupConfiguration}.<br/><br/>
+   * On project creation with MPS facet {@link MPSFacetConfiguration#setConfigurationDefaults()} method does not create any model root because at this point module content entries are not initialized.<br/>
+   * Originally {@link MPSFrameworkSupportProvider#setupConfiguration} called {@link MPSFacet#setConfiguration(MPSConfigurationBean)}. This method sets {@link MPSFacetConfiguration#myMostRecentStateLoaded}, but on component save {@link MPSFacetConfiguration#getState()} ignores it and {@link MPSFacetConfiguration#myActualState} without propper model roots is used.
+   *
+   * @param configurationBean to use instead of active one
+   */
+  @Hack
+  @Internal
+  @Deprecated
+  @ScheduledForRemoval(inVersion = "2021.1")
+  /*package*/ void setConfigurationBean(MPSConfigurationBean configurationBean) {
+    myActualState = configurationBean;
+  }
+
   private void setConfigurationDefaults() {
     if (!myActualState.isModuleIdSet()) {
       // FIXME why do we rely on SolutionIdea to set namespace but set id here? Can we do both in a single place, PLEASE?
@@ -156,19 +174,27 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     }
 
     if (myActualState.getModelRootDescriptors().isEmpty()) {
-      // Create default model root pointing to source root
-      // XXX why do we use folder of module file and not ContentEntry.getFile(), and at the same time use source root from whatever ContentEntry?
-      final VirtualFile moduleFile = myMpsFacet.getModule().getModuleFile();
-      Collection<IFile> sourceRoots = new ArrayList<>();
       final IdeaFileSystem ideaFS = myMpsFacet.getProject().getFileSystem();
-      for (VirtualFile sr : ModuleRootManager.getInstance(myMpsFacet.getModule()).getSourceRoots()) {
-        sourceRoots.add(ideaFS.fromVirtualFile(sr));
+      final ContentEntry[] contentEntries = ModuleRootManager.getInstance(myMpsFacet.getModule()).getContentEntries();
+      ArrayList<ModelRootDescriptor> modelRootDescriptors = new ArrayList<>(contentEntries.length);
+
+      for (ContentEntry contentEntry : contentEntries) {
+        final VirtualFile contentEntryFile = contentEntry.getFile();
+        if (contentEntryFile == null) {
+          continue;
+        }
+
+        final IFile contentRoot = ideaFS.fromVirtualFile(contentEntryFile);
+        final VirtualFile[] sourceFolders = contentEntry.getSourceFolderFiles();
+        ArrayList<IFile> sourceRoots = new ArrayList<>(sourceFolders.length);
+        for (VirtualFile sourceFolder : sourceFolders) {
+          sourceRoots.add(ideaFS.fromVirtualFile(sourceFolder));
+        }
+
+        modelRootDescriptors.add(DefaultModelRoot.createDescriptor(contentRoot, sourceRoots.toArray(new IFile[0])));
       }
-      IFile contentRoot = moduleFile == null ? null : ideaFS.fromVirtualFile(moduleFile.getParent());
-      if (contentRoot != null && !sourceRoots.isEmpty()) {
-        ModelRootDescriptor modelRoot = DefaultModelRoot.createDescriptor(contentRoot, sourceRoots.toArray(new IFile[0]));
-        myActualState.setModelRootDescriptors(Collections.singleton(modelRoot));
-      }
+
+      myActualState.setModelRootDescriptors(modelRootDescriptors);
     }
   }
 

@@ -1739,7 +1739,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.NodeHighlightManager" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
@@ -1919,6 +1918,7 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.RevertMemoryChanges_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SafeDeleteModuleDependency_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SafeDelete_Action" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.SearchUsages_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.Search_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SetBookmarkNoNumber_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SetNodePackage_Action" />
@@ -3249,6 +3249,13 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.actions.SearchUsages_ActionGroup">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.Search_ActionGroup">
     <classNode dependClassName="java.lang.String" />

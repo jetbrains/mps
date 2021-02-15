@@ -13944,11 +13944,6 @@
       <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_COMPONENT" resolve="EDITOR_COMPONENT" />
       <node concept="1oajcY" id="7HZe2EwZDn5" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="cAZ8XCabUg" role="1NuT2Z">
-      <property role="TrG5h" value="editorCell" />
-      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CELL" resolve="EDITOR_CELL" />
-      <node concept="1oajcY" id="7HZe2EwZDmo" role="1oa70y" />
-    </node>
     <node concept="1DS2jV" id="cAZ8XCabUT" role="1NuT2Z">
       <property role="TrG5h" value="model" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.CONTEXT_MODEL" resolve="CONTEXT_MODEL" />
@@ -22986,22 +22981,6 @@
       <node concept="2a7GMi" id="7OCiIuGltO3" role="ftvYc" />
       <node concept="tCFHf" id="1AwcMxS3bn3" role="ftvYc">
         <ref role="tCJdB" node="1AwcMxRXXaC" resolve="FindTextInProject" />
-      </node>
-      <node concept="2a7GMi" id="1AwcMxS3bno" role="ftvYc" />
-      <node concept="tCFHf" id="36a5ISq1XYF" role="ftvYc">
-        <ref role="tCJdB" node="4npc6Q0o$Yc" resolve="FastFindNodeUsages" />
-      </node>
-      <node concept="tCFHf" id="1XNTwqFgLMl" role="ftvYc">
-        <ref role="tCJdB" node="M3eFeZWyG4" resolve="FindConceptInstances" />
-      </node>
-      <node concept="tCFHf" id="7OCiIuGltO6" role="ftvYc">
-        <ref role="tCJdB" node="4npc6Q0oGJs" resolve="FindSpecificNodeUsages" />
-      </node>
-      <node concept="tCFHf" id="7OCiIuGltOa" role="ftvYc">
-        <ref role="tCJdB" node="4NbzjXXK6us" resolve="HighlightUsages" />
-      </node>
-      <node concept="tCFHf" id="7OCiIuGltOc" role="ftvYc">
-        <ref role="tCJdB" node="cAZ8XCabSG" resolve="HighlightInstances" />
       </node>
     </node>
     <node concept="tT9cl" id="3DRvCWg8T37" role="2f5YQi">
@@ -52245,6 +52224,39 @@
     <node concept="3uibUv" id="5I8fr3HLOcl" role="EKbjA">
       <ref role="3uigEE" to="jkm4:~InputValidatorEx" resolve="InputValidatorEx" />
     </node>
+  </node>
+  <node concept="tC5Ba" id="1UYB6Gi4jBS">
+    <property role="3GE5qa" value="Menu.MainMenu" />
+    <property role="TrG5h" value="SearchUsages" />
+    <node concept="ftmFs" id="1UYB6Gi4jCt" role="ftER_">
+      <node concept="tCFHf" id="36a5ISq1XYF" role="ftvYc">
+        <ref role="tCJdB" node="4npc6Q0o$Yc" resolve="FastFindNodeUsages" />
+      </node>
+      <node concept="tCFHf" id="1XNTwqFgLMl" role="ftvYc">
+        <ref role="tCJdB" node="M3eFeZWyG4" resolve="FindConceptInstances" />
+      </node>
+      <node concept="tCFHf" id="7OCiIuGltO6" role="ftvYc">
+        <ref role="tCJdB" node="4npc6Q0oGJs" resolve="FindSpecificNodeUsages" />
+      </node>
+      <node concept="2a7GMi" id="1UYB6Gi4kb7" role="ftvYc" />
+      <node concept="tCFHf" id="7OCiIuGltOa" role="ftvYc">
+        <ref role="tCJdB" node="4NbzjXXK6us" resolve="HighlightUsages" />
+      </node>
+      <node concept="tCFHf" id="7OCiIuGltOc" role="ftvYc">
+        <ref role="tCJdB" node="cAZ8XCabSG" resolve="HighlightInstances" />
+      </node>
+    </node>
+    <node concept="tT9cl" id="1UYB6Gi4jCw" role="2f5YQi">
+      <ref role="tU$_T" node="1UYB6Gi3Hdp" resolve="IDEAFindUsages" />
+    </node>
+  </node>
+  <node concept="1ESbSp" id="1UYB6Gi3Hdp">
+    <property role="3GE5qa" value="Integration" />
+    <property role="TrG5h" value="IDEAFindUsages" />
+    <node concept="Xl_RD" id="1UYB6Gi4jBx" role="3mKD$K">
+      <property role="Xl_RC" value="FindUsagesMenuGroup" />
+    </node>
+    <node concept="ftmFs" id="1UYB6Gi4jBJ" role="ftER_" />
   </node>
 </model>
 

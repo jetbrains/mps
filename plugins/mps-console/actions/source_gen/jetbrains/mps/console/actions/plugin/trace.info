@@ -157,14 +157,15 @@
       <node id="3355341743769583532" at="12,79,13,46" concept="11" />
       <node id="3355341743769583532" at="13,46,14,25" concept="2" />
       <node id="3355341743769583532" at="14,25,15,20" concept="2" />
-      <node id="3355341743769583537" at="15,20,16,124" concept="2" />
-      <node id="3362819150777322640" at="16,124,17,126" concept="2" />
-      <node id="3355341743769583532" at="12,0,19,0" concept="1" trace="FindByConditionGroup_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="3355341743769583532" at="12,79,17,126" />
-      <scope id="3355341743769583532" at="12,0,19,0">
+      <node id="6257086414747762798" at="15,20,16,57" concept="2" />
+      <node id="3355341743769583537" at="16,57,17,124" concept="2" />
+      <node id="3362819150777322640" at="17,124,18,126" concept="2" />
+      <node id="3355341743769583532" at="12,0,20,0" concept="1" trace="FindByConditionGroup_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="3355341743769583532" at="12,79,18,126" />
+      <scope id="3355341743769583532" at="12,0,20,0">
         <var name="plugin" id="3355341743769583532" />
       </scope>
-      <unit id="3355341743769583532" at="9,0,20,0" name="jetbrains.mps.console.actions.plugin.FindByConditionGroup_ActionGroup" />
+      <unit id="3355341743769583532" at="9,0,21,0" name="jetbrains.mps.console.actions.plugin.FindByConditionGroup_ActionGroup" />
     </file>
   </root>
   <root nodeRef="r:bc997d9f-39f7-40e9-8b56-d20b3073f68f(jetbrains.mps.console.actions.plugin)/3362819150777199432">
