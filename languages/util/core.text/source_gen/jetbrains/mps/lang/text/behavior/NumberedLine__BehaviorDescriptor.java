@@ -31,13 +31,12 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Integer> calculatePosition_id60UJ0IsnRf8 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0IsnRf8").build();
   public static final SMethod<Boolean> canBeTurnedToNumberedLine_id60UJ0Iso0yR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToNumberedLine").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0yR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> shouldRemoveNumberedLine_id60UJ0Iso0zD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveNumberedLine").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0zD").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id60UJ0IsnXdF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("60UJ0IsnXdF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6rMl").build();
   public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToNumberedLine_id60UJ0Iso0yR, shouldRemoveNumberedLine_id60UJ0Iso0zD, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToNumberedLine_id60UJ0Iso0yR, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -69,9 +68,6 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
       return ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invoke(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.NumberedLine$k0) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invoke(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
     }
     return false;
-  }
-  /*package*/ static boolean shouldRemoveNumberedLine_id60UJ0Iso0zD(@NotNull SAbstractConcept __thisConcept__, SNode l) {
-    return (boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(l) && (boolean) Line__BehaviorDescriptor.isEmptyLine_id1YnOZxAO76B.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(l), CONCEPTS.Line$yC)) && ((SNodeOperations.getNextSibling(l) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0)));
   }
   /*package*/ static boolean startsWithNumberSpace_id60UJ0IsnXdF(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     SNode f = SNodeOperations.as(Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(l)).first(), CONCEPTS.Word$Dn);
@@ -111,11 +107,11 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((Integer) calculatePosition_id60UJ0IsnRf8(node));
-      case 4:
+      case 3:
         return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
-      case 5:
+      case 4:
         return (T) ((SNode) createParagraphInstance_id7q4Ywce6rMl(node));
-      case 6:
+      case 5:
         initializeFromParagraphs_id2iG$EWuZbnH(node, (SNode) parameters[0]);
         return null;
       default:
@@ -133,8 +129,6 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
       case 1:
         return (T) ((Boolean) canBeTurnedToNumberedLine_id60UJ0Iso0yR(concept, (SNode) parameters[0]));
       case 2:
-        return (T) ((Boolean) shouldRemoveNumberedLine_id60UJ0Iso0zD(concept, (SNode) parameters[0]));
-      case 3:
         return (T) ((Boolean) startsWithNumberSpace_id60UJ0IsnXdF(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);

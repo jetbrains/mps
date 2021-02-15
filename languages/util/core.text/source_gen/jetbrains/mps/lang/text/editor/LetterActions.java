@@ -12,6 +12,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -21,6 +23,7 @@ import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LetterActions {
@@ -125,21 +128,27 @@ public class LetterActions {
           Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(p);
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, SelectionManager.LAST_CELL, -1);
         } else if (pos == 0) {
-          // node is the last node on the previous line, currentNode is the first node on the current line
-          SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$XF);
-          SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$XF);
-          if (prevParagraph != null) {
-            Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(prevParagraph, Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(currentNode, true), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
+          // Remove a bullet paragraph
+          if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(p)), CONCEPTS.Paragraph$XF)) && ((SNodeOperations.getPrevSibling(p) == null) || (SNodeOperations.as(SNodeOperations.getNextSibling(p), CONCEPTS.IndentedPoint$BF) == null))) {
+            SNode np = SNodeFactoryOperations.replaceWithNewChild(p, CONCEPTS.Paragraph$XF);
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(np)).first(), SelectionManager.FIRST_CELL, 0);
+          } else {
+            // node is the last node on the previous line, currentNode is the first node on the current line
+            SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$XF);
+            SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$XF);
+            if (prevParagraph != null) {
+              Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(prevParagraph, Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(currentNode, true), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
+                public boolean accept(SNode it) {
+                  return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
+                }
+              }));
+              SNodeOperations.deleteNode(myParagraph);
+              SNode prevLetter = SNodeOperations.getPrevSibling(currentNode);
+              if ((prevLetter != null)) {
+                SelectionUtil.selectLabelCellAnSetCaret(editorContext, prevLetter, SelectionManager.LAST_CELL, -1);
+              } else {
+                SelectionUtil.selectLabelCellAnSetCaret(editorContext, currentNode, SelectionManager.LAST_CELL, 0);
               }
-            }));
-            SNodeOperations.deleteNode(myParagraph);
-            SNode prevLetter = SNodeOperations.getPrevSibling(currentNode);
-            if ((prevLetter != null)) {
-              SelectionUtil.selectLabelCellAnSetCaret(editorContext, prevLetter, SelectionManager.LAST_CELL, -1);
-            } else {
-              SelectionUtil.selectLabelCellAnSetCaret(editorContext, currentNode, SelectionManager.LAST_CELL, 0);
             }
           }
         } else {
@@ -274,6 +283,7 @@ public class LetterActions {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
     /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
     /*package*/ static final SConcept EmptyParagraphLetter$W6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
   }
 

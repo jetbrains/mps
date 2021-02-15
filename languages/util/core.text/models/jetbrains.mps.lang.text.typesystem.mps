@@ -135,7 +135,6 @@
       <concept id="1139184414036" name="jetbrains.mps.lang.smodel.structure.LinkList_AddNewChildOperation" flags="nn" index="WFELt">
         <reference id="1139877738879" name="concept" index="1A0vxQ" />
       </concept>
-      <concept id="1143511969223" name="jetbrains.mps.lang.smodel.structure.Node_GetPrevSiblingOperation" flags="nn" index="YBYNd" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
@@ -157,7 +156,6 @@
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
-      <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -634,105 +632,6 @@
       </node>
     </node>
   </node>
-  <node concept="18kY7G" id="4ruP0NLi$kZ">
-    <property role="TrG5h" value="check_BulletPoint" />
-    <property role="3GE5qa" value="textual" />
-    <node concept="3clFbS" id="4ruP0NLi$l0" role="18ibNy">
-      <node concept="3clFbJ" id="4ruP0NLizVN" role="3cqZAp">
-        <node concept="3clFbS" id="4ruP0NLizVO" role="3clFbx">
-          <node concept="Dpp1Q" id="4ruP0NLizVP" role="3cqZAp">
-            <node concept="3Cnw8n" id="60UJ0Iso7rj" role="1urrFz">
-              <property role="ARO6o" value="true" />
-              <ref role="QpYPw" node="WJz9iAXdZ_" resolve="RemoveLine" />
-            </node>
-            <node concept="Xl_RD" id="4ruP0NLizVR" role="Dpw9R">
-              <property role="Xl_RC" value="The bullet should be removed" />
-            </node>
-            <node concept="1YBJjd" id="4ruP0NLi$uX" role="1urrMF">
-              <ref role="1YBMHb" node="4ruP0NLi$l2" resolve="bulletPoint" />
-            </node>
-          </node>
-        </node>
-        <node concept="2OqwBi" id="4ruP0NLizVT" role="3clFbw">
-          <node concept="35c_gC" id="4ruP0NLizVU" role="2Oq$k0">
-            <ref role="35c_gD" to="zqge:2HIX00NsA33" resolve="BulletPoint" />
-          </node>
-          <node concept="2qgKlT" id="4ruP0NLizVV" role="2OqNvi">
-            <ref role="37wK5l" to="vdrq:4ruP0NLisxF" resolve="shouldRemoveBullet" />
-            <node concept="1YBJjd" id="4ruP0NLi$mI" role="37wK5m">
-              <ref role="1YBMHb" node="4ruP0NLi$l2" resolve="bulletPoint" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="4ruP0NLi$l2" role="1YuTPh">
-      <property role="TrG5h" value="bulletPoint" />
-      <ref role="1YaFvo" to="zqge:2HIX00NsA33" resolve="BulletPoint" />
-    </node>
-  </node>
-  <node concept="Q5z_Y" id="4ruP0NLi$Vq">
-    <property role="3GE5qa" value="textual" />
-    <property role="TrG5h" value="RemovePoint" />
-    <node concept="Q5ZZ6" id="4ruP0NLi$Vr" role="Q6x$H">
-      <node concept="3clFbS" id="4ruP0NLi$Vs" role="2VODD2">
-        <node concept="3clFbF" id="4ruP0NLi__w" role="3cqZAp">
-          <node concept="2OqwBi" id="4ruP0NLi_UR" role="3clFbG">
-            <node concept="2OqwBi" id="4ruP0NLi_I5" role="2Oq$k0">
-              <node concept="Q6c8r" id="4ruP0NLi__v" role="2Oq$k0" />
-              <node concept="YBYNd" id="4ruP0NLi_TW" role="2OqNvi" />
-            </node>
-            <node concept="3YRAZt" id="4ruP0NLiA9J" role="2OqNvi" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="4ruP0NLi$VL" role="3cqZAp">
-          <node concept="2OqwBi" id="4ruP0NLi$VM" role="3clFbG">
-            <node concept="Q6c8r" id="10ljsgmJX5A" role="2Oq$k0" />
-            <node concept="2DeJnW" id="4ruP0NLi$VO" role="2OqNvi">
-              <ref role="1_rbq0" to="zqge:7Vz6ZmoXeMu" resolve="Paragraph" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="18kY7G" id="10ljsgmIFjS">
-    <property role="TrG5h" value="check_NumberedPoint" />
-    <property role="3GE5qa" value="textual" />
-    <node concept="3clFbS" id="10ljsgmIFjT" role="18ibNy">
-      <node concept="3clFbJ" id="10ljsgmIFjU" role="3cqZAp">
-        <node concept="3clFbS" id="10ljsgmIFjV" role="3clFbx">
-          <node concept="Dpp1Q" id="10ljsgmIFjW" role="3cqZAp">
-            <node concept="3Cnw8n" id="10ljsgmIFjX" role="1urrFz">
-              <property role="ARO6o" value="true" />
-              <ref role="QpYPw" node="4ruP0NLi$Vq" resolve="RemovePoint" />
-            </node>
-            <node concept="Xl_RD" id="10ljsgmIFjY" role="Dpw9R">
-              <property role="Xl_RC" value="The bullet should be removed" />
-            </node>
-            <node concept="1YBJjd" id="10ljsgmIFjZ" role="1urrMF">
-              <ref role="1YBMHb" node="10ljsgmIFk4" resolve="numberedPoint" />
-            </node>
-          </node>
-        </node>
-        <node concept="2OqwBi" id="10ljsgmIFk0" role="3clFbw">
-          <node concept="35c_gC" id="10ljsgmIFk1" role="2Oq$k0">
-            <ref role="35c_gD" to="zqge:5QuCpoxy2bF" resolve="NumberedPoint" />
-          </node>
-          <node concept="2qgKlT" id="10ljsgmIFk2" role="2OqNvi">
-            <ref role="37wK5l" to="vdrq:10ljsgmIK7I" resolve="shouldRemoveNumberPoint" />
-            <node concept="1YBJjd" id="10ljsgmIFk3" role="37wK5m">
-              <ref role="1YBMHb" node="10ljsgmIFk4" resolve="numberedPoint" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="10ljsgmIFk4" role="1YuTPh">
-      <property role="TrG5h" value="numberedPoint" />
-      <ref role="1YaFvo" to="zqge:5QuCpoxy2bF" resolve="NumberedPoint" />
-    </node>
-  </node>
   <node concept="Q5z_Y" id="10ljsgmINOM">
     <property role="3GE5qa" value="textual" />
     <property role="TrG5h" value="TurnIntoNumberedPoint" />
@@ -976,105 +875,6 @@
       </node>
     </node>
   </node>
-  <node concept="18kY7G" id="WJz9iAXdtM">
-    <property role="TrG5h" value="check_BulletLine" />
-    <property role="3GE5qa" value="" />
-    <node concept="3clFbS" id="WJz9iAXdtN" role="18ibNy">
-      <node concept="3clFbJ" id="WJz9iAXdtO" role="3cqZAp">
-        <node concept="3clFbS" id="WJz9iAXdtP" role="3clFbx">
-          <node concept="Dpp1Q" id="WJz9iAXdtQ" role="3cqZAp">
-            <node concept="3Cnw8n" id="WJz9iAXe4p" role="1urrFz">
-              <property role="ARO6o" value="true" />
-              <ref role="QpYPw" node="WJz9iAXdZ_" resolve="RemoveLine" />
-            </node>
-            <node concept="Xl_RD" id="WJz9iAXdtS" role="Dpw9R">
-              <property role="Xl_RC" value="The bullet should be removed" />
-            </node>
-            <node concept="1YBJjd" id="WJz9iAXdtT" role="1urrMF">
-              <ref role="1YBMHb" node="WJz9iAXdtY" resolve="bulletLine" />
-            </node>
-          </node>
-        </node>
-        <node concept="2OqwBi" id="WJz9iAXdtU" role="3clFbw">
-          <node concept="35c_gC" id="WJz9iAXdtV" role="2Oq$k0">
-            <ref role="35c_gD" to="zqge:WJz9iAWEzU" resolve="BulletLine" />
-          </node>
-          <node concept="2qgKlT" id="WJz9iAXdtW" role="2OqNvi">
-            <ref role="37wK5l" to="vdrq:WJz9iAWPgs" resolve="shouldRemoveBullet" />
-            <node concept="1YBJjd" id="WJz9iAXdtX" role="37wK5m">
-              <ref role="1YBMHb" node="WJz9iAXdtY" resolve="bulletLine" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="WJz9iAXdtY" role="1YuTPh">
-      <property role="TrG5h" value="bulletLine" />
-      <ref role="1YaFvo" to="zqge:WJz9iAWEzU" resolve="BulletLine" />
-    </node>
-  </node>
-  <node concept="Q5z_Y" id="WJz9iAXdZ_">
-    <property role="3GE5qa" value="" />
-    <property role="TrG5h" value="RemoveLine" />
-    <node concept="Q5ZZ6" id="WJz9iAXdZA" role="Q6x$H">
-      <node concept="3clFbS" id="WJz9iAXdZB" role="2VODD2">
-        <node concept="3clFbF" id="WJz9iAXdZC" role="3cqZAp">
-          <node concept="2OqwBi" id="WJz9iAXdZD" role="3clFbG">
-            <node concept="2OqwBi" id="WJz9iAXdZE" role="2Oq$k0">
-              <node concept="Q6c8r" id="WJz9iAXdZF" role="2Oq$k0" />
-              <node concept="YBYNd" id="WJz9iAXdZG" role="2OqNvi" />
-            </node>
-            <node concept="3YRAZt" id="WJz9iAXdZH" role="2OqNvi" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="WJz9iAXdZI" role="3cqZAp">
-          <node concept="2OqwBi" id="WJz9iAXdZJ" role="3clFbG">
-            <node concept="Q6c8r" id="WJz9iAXdZK" role="2Oq$k0" />
-            <node concept="2DeJnW" id="WJz9iAXdZL" role="2OqNvi">
-              <ref role="1_rbq0" to="zqge:2cLqkTm6J5A" resolve="Line" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="18kY7G" id="60UJ0Iso5M9">
-    <property role="TrG5h" value="check_NumberedLine" />
-    <property role="3GE5qa" value="" />
-    <node concept="3clFbS" id="60UJ0Iso5Ma" role="18ibNy">
-      <node concept="3clFbJ" id="60UJ0Iso5Mb" role="3cqZAp">
-        <node concept="3clFbS" id="60UJ0Iso5Mc" role="3clFbx">
-          <node concept="Dpp1Q" id="60UJ0Iso5Md" role="3cqZAp">
-            <node concept="3Cnw8n" id="60UJ0Iso5Me" role="1urrFz">
-              <property role="ARO6o" value="true" />
-              <ref role="QpYPw" node="4ruP0NLi$Vq" resolve="RemovePoint" />
-            </node>
-            <node concept="Xl_RD" id="60UJ0Iso5Mf" role="Dpw9R">
-              <property role="Xl_RC" value="The bullet should be removed" />
-            </node>
-            <node concept="1YBJjd" id="60UJ0Iso5Mg" role="1urrMF">
-              <ref role="1YBMHb" node="60UJ0Iso5Ml" resolve="numberedLine" />
-            </node>
-          </node>
-        </node>
-        <node concept="2OqwBi" id="60UJ0Iso5Mh" role="3clFbw">
-          <node concept="35c_gC" id="60UJ0Iso5Mi" role="2Oq$k0">
-            <ref role="35c_gD" to="zqge:60UJ0Isn_12" resolve="NumberedLine" />
-          </node>
-          <node concept="2qgKlT" id="60UJ0Iso5Mj" role="2OqNvi">
-            <ref role="37wK5l" to="vdrq:60UJ0Iso0zD" resolve="shouldRemoveBullet" />
-            <node concept="1YBJjd" id="60UJ0Iso5Mk" role="37wK5m">
-              <ref role="1YBMHb" node="60UJ0Iso5Ml" resolve="numberedLine" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="60UJ0Iso5Ml" role="1YuTPh">
-      <property role="TrG5h" value="numberedLine" />
-      <ref role="1YaFvo" to="zqge:60UJ0Isn_12" resolve="NumberedLine" />
-    </node>
-  </node>
   <node concept="18kY7G" id="60UJ0Iso7yf">
     <property role="TrG5h" value="check_Line_Can_Be_Numbered" />
     <property role="3GE5qa" value="" />
@@ -1099,7 +899,7 @@
             <ref role="35c_gD" to="zqge:60UJ0Isn_12" resolve="NumberedLine" />
           </node>
           <node concept="2qgKlT" id="60UJ0Iso7yp" role="2OqNvi">
-            <ref role="37wK5l" to="vdrq:60UJ0Iso0yR" resolve="canBeTurnedToBullet" />
+            <ref role="37wK5l" to="vdrq:60UJ0Iso0yR" resolve="canBeTurnedToNumberedLine" />
             <node concept="1YBJjd" id="60UJ0Iso7yq" role="37wK5m">
               <ref role="1YBMHb" node="60UJ0Iso7yr" resolve="line" />
             </node>

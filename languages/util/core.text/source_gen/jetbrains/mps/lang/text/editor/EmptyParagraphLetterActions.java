@@ -11,6 +11,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -69,6 +71,12 @@ public class EmptyParagraphLetterActions {
         if (!(Objects.equals(currentNode, node))) {
           SNodeOperations.deleteNode(SNodeOperations.getParent(node));
         } else {
+          // Remove a bullet paragraph
+          if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(node))), CONCEPTS.Paragraph$XF)) && ((SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)) == null) || (SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.IndentedPoint$BF) == null))) {
+            SNode np = SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.Paragraph$XF);
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(np)).first(), SelectionManager.FIRST_CELL, 0);
+            return;
+          }
           if (SNodeOperations.getContainingLink(SNodeOperations.getParent(currentNode)).isMultiple()) {
             SNode prev = SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode));
             SNodeOperations.deleteNode(SNodeOperations.getParent(currentNode));
@@ -187,6 +195,7 @@ public class EmptyParagraphLetterActions {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
+    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
     /*package*/ static final SInterfaceConcept IHoldParagraphs$eh = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L, "jetbrains.mps.lang.text.structure.IHoldParagraphs");
   }
 }

@@ -31,14 +31,13 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint");
 
   public static final SMethod<Integer> calculatePosition_id5QuCpoxy5xM = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5QuCpoxy5xM").build();
-  public static final SMethod<Boolean> shouldRemoveNumberPoint_id10ljsgmIK7I = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveNumberPoint").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("10ljsgmIK7I").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canBeTurnedToNumberedPoint_id10ljsgmITo7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToNumberedPoint").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("10ljsgmITo7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id10ljsgmJ2Al = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("10ljsgmJ2Al").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> wrapTextForClipboard_idfcFkhVLuVF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fcFkhVLuVF").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> createLineInstance_id7q4Ywce6bwW = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createLineInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6bwW").build();
   public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6n6K0Pj71DU").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id5QuCpoxy5xM, shouldRemoveNumberPoint_id10ljsgmIK7I, canBeTurnedToNumberedPoint_id10ljsgmITo7, startsWithNumberSpace_id10ljsgmJ2Al, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id5QuCpoxy5xM, canBeTurnedToNumberedPoint_id10ljsgmITo7, startsWithNumberSpace_id10ljsgmJ2Al, wrapTextForClipboard_idfcFkhVLuVF, createLineInstance_id7q4Ywce6bwW, initializeFromLine_id6n6K0Pj71DU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -64,9 +63,6 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }
     return 1;
-  }
-  /*package*/ static boolean shouldRemoveNumberPoint_id10ljsgmIK7I(@NotNull SAbstractConcept __thisConcept__, SNode p) {
-    return (boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(p) && (boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(p), CONCEPTS.Paragraph$XF)) && ((SNodeOperations.getNextSibling(p) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(p), CONCEPTS.NumberedPoint$ku)));
   }
   /*package*/ static boolean canBeTurnedToNumberedPoint_id10ljsgmITo7(@NotNull SAbstractConcept __thisConcept__, SNode p) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(p)), CONCEPTS.Paragraph$XF)) {
@@ -112,11 +108,11 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((Integer) calculatePosition_id5QuCpoxy5xM(node));
-      case 4:
+      case 3:
         return (T) ((String) wrapTextForClipboard_idfcFkhVLuVF(node, (String) parameters[0]));
-      case 5:
+      case 4:
         return (T) ((SNode) createLineInstance_id7q4Ywce6bwW(node));
-      case 6:
+      case 5:
         initializeFromLine_id6n6K0Pj71DU(node, (SNode) parameters[0]);
         return null;
       default:
@@ -132,10 +128,8 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 1:
-        return (T) ((Boolean) shouldRemoveNumberPoint_id10ljsgmIK7I(concept, (SNode) parameters[0]));
-      case 2:
         return (T) ((Boolean) canBeTurnedToNumberedPoint_id10ljsgmITo7(concept, (SNode) parameters[0]));
-      case 3:
+      case 2:
         return (T) ((Boolean) startsWithNumberSpace_id10ljsgmJ2Al(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
