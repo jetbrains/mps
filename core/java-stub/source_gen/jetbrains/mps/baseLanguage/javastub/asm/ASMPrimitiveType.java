@@ -26,4 +26,28 @@ public class ASMPrimitiveType extends ASMType {
   public String toString() {
     return myName;
   }
+
+  /*package*/ static ASMPrimitiveType from(char descriptor) {
+    switch (descriptor) {
+      case 'B':
+        return BYTE;
+      case 'C':
+        return CHAR;
+      case 'D':
+        return DOUBLE;
+      case 'F':
+        return FLOAT;
+      case 'I':
+        return INT;
+      case 'J':
+        return LONG;
+      case 'S':
+        return SHORT;
+      case 'V':
+        return VOID;
+      case 'Z':
+        return BOOLEAN;
+    }
+    throw new IllegalArgumentException(String.format("Bad primitive type descriptor '%c'", descriptor));
+  }
 }

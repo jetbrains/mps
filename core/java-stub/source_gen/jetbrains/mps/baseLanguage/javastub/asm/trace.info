@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1160998861373:jetbrains.mps.baseLanguage.structure.AssertStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
@@ -15,16 +16,17 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/3275604661365085736">
     <file name="ASMBoundedType.java">
-      <node id="7241381882860008822" at="9,0,10,0" concept="3" trace="myBound" />
-      <node id="7241381882860008830" at="10,40,11,20" concept="2" />
-      <node id="7241381882860008840" at="13,29,14,19" concept="9" />
-      <node id="3275604661365124362" at="16,39,17,20" concept="2" />
-      <node id="7241381882860008825" at="10,0,13,0" concept="1" trace="ASMBoundedType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860008836" at="13,0,16,0" concept="7" trace="getBound#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="3275604661365124254" at="16,0,19,0" concept="7" trace="setBound#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860008822" at="9,0,10,0" concept="4" trace="myBound" />
+      <node id="7241381882860008830" at="10,40,11,20" concept="3" />
+      <node id="7241381882860008840" at="13,29,14,19" concept="10" />
+      <node id="3275604661365124362" at="16,39,17,20" concept="3" />
+      <node id="7241381882860008825" at="10,0,13,0" concept="2" trace="ASMBoundedType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860008836" at="13,0,16,0" concept="8" trace="getBound#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="3275604661365124254" at="16,0,19,0" concept="8" trace="setBound#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
       <scope id="7241381882860008829" at="10,40,11,20" />
       <scope id="7241381882860008839" at="13,29,14,19" />
       <scope id="3275604661365124257" at="16,39,17,20" />
@@ -40,34 +42,34 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/6849912058625332189">
     <file name="ASMAnnotation.java">
-      <node id="6849912058625332191" at="15,0,16,0" concept="3" trace="myType" />
-      <node id="6849912058625332194" at="16,0,17,0" concept="3" trace="myValues" />
-      <node id="6849912058625332205" at="17,45,18,48" concept="2" />
-      <node id="6849912058625332219" at="19,30,20,75" concept="2" />
-      <node id="6849912058625332250" at="21,55,22,40" concept="8" />
-      <node id="6849912058625332261" at="22,40,23,74" concept="8" />
-      <node id="6849912058625332275" at="23,74,24,44" concept="2" />
-      <node id="6849912058625332376" at="28,42,29,110" concept="9" />
-      <node id="6849912058625332390" at="31,28,32,18" concept="9" />
-      <node id="6849912058625332294" at="35,42,36,55" concept="9" />
-      <node id="6849912058625332305" at="38,32,39,45" concept="9" />
-      <node id="6849912058625332316" at="41,36,42,41" concept="8" />
-      <node id="6849912058625332324" at="42,41,43,52" concept="9" />
-      <node id="6849912058625332338" at="45,32,46,31" concept="8" />
-      <node id="6849912058625332356" at="47,45,48,61" concept="2" />
-      <node id="6849912058625332366" at="49,7,50,18" concept="9" />
-      <node id="6849912058625332368" at="51,5,52,17" concept="9" />
-      <node id="6849912058625332370" at="28,0,31,0" concept="7" trace="getValues#()Ljava/util/Map;" />
-      <node id="6849912058625332386" at="31,0,34,0" concept="7" trace="getType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="6849912058625332289" at="34,51,37,5" concept="6" />
-      <node id="6849912058625332300" at="37,5,40,5" concept="6" />
-      <node id="6849912058625332344" at="46,31,49,7" concept="4" />
-      <node id="6849912058625332310" at="40,5,44,5" concept="6" />
-      <node id="6849912058625332233" at="20,75,25,7" concept="4" />
-      <node id="6849912058625332333" at="44,5,51,5" concept="6" />
-      <node id="6849912058625332212" at="18,48,26,5" concept="6" />
-      <node id="6849912058625332199" at="17,0,28,0" concept="1" trace="ASMAnnotation#(Lorg/jetbrains/org/objectweb/asm/tree/AnnotationNode;)V" />
-      <node id="6849912058625332283" at="34,0,54,0" concept="12" trace="processValue#(Ljava/lang/Object;)Ljava/lang/Object;" />
+      <node id="6849912058625332191" at="15,0,16,0" concept="4" trace="myType" />
+      <node id="6849912058625332194" at="16,0,17,0" concept="4" trace="myValues" />
+      <node id="6849912058625332205" at="17,45,18,48" concept="3" />
+      <node id="6849912058625332219" at="19,30,20,75" concept="3" />
+      <node id="6849912058625332250" at="21,55,22,40" concept="9" />
+      <node id="6849912058625332261" at="22,40,23,74" concept="9" />
+      <node id="6849912058625332275" at="23,74,24,44" concept="3" />
+      <node id="6849912058625332376" at="28,42,29,110" concept="10" />
+      <node id="6849912058625332390" at="31,28,32,18" concept="10" />
+      <node id="6849912058625332294" at="35,42,36,55" concept="10" />
+      <node id="6849912058625332305" at="38,32,39,45" concept="10" />
+      <node id="6849912058625332316" at="41,36,42,41" concept="9" />
+      <node id="6849912058625332324" at="42,41,43,52" concept="10" />
+      <node id="6849912058625332338" at="45,32,46,31" concept="9" />
+      <node id="6849912058625332356" at="47,45,48,61" concept="3" />
+      <node id="6849912058625332366" at="49,7,50,18" concept="10" />
+      <node id="6849912058625332368" at="51,5,52,17" concept="10" />
+      <node id="6849912058625332370" at="28,0,31,0" concept="8" trace="getValues#()Ljava/util/Map;" />
+      <node id="6849912058625332386" at="31,0,34,0" concept="8" trace="getType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="6849912058625332289" at="34,51,37,5" concept="7" />
+      <node id="6849912058625332300" at="37,5,40,5" concept="7" />
+      <node id="6849912058625332344" at="46,31,49,7" concept="5" />
+      <node id="6849912058625332310" at="40,5,44,5" concept="7" />
+      <node id="6849912058625332233" at="20,75,25,7" concept="5" />
+      <node id="6849912058625332333" at="44,5,51,5" concept="7" />
+      <node id="6849912058625332212" at="18,48,26,5" concept="7" />
+      <node id="6849912058625332199" at="17,0,28,0" concept="2" trace="ASMAnnotation#(Lorg/jetbrains/org/objectweb/asm/tree/AnnotationNode;)V" />
+      <node id="6849912058625332283" at="34,0,54,0" concept="13" trace="processValue#(Ljava/lang/Object;)Ljava/lang/Object;" />
       <scope id="6849912058625332375" at="28,42,29,110" />
       <scope id="6849912058625332389" at="31,28,32,18" />
       <scope id="6849912058625332293" at="35,42,36,55" />
@@ -105,33 +107,33 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860001929">
     <file name="SignatureVisitorAdapter.java">
-      <node id="8471909024438049477" at="11,36,12,24" concept="13" />
-      <node id="7241381882860007088" at="18,45,19,41" concept="9" />
-      <node id="7241381882860007094" at="22,49,23,41" concept="9" />
-      <node id="7241381882860007100" at="26,45,27,41" concept="9" />
-      <node id="7241381882860007106" at="30,44,31,41" concept="9" />
-      <node id="7241381882860007112" at="34,48,35,41" concept="9" />
-      <node id="7241381882860007118" at="38,45,39,41" concept="9" />
-      <node id="7241381882860007124" at="42,48,43,41" concept="9" />
-      <node id="7241381882860007142" at="52,44,53,41" concept="9" />
-      <node id="7241381882860007166" at="65,60,66,41" concept="9" />
-      <node id="7241381882860007075" at="11,0,14,0" concept="1" trace="SignatureVisitorAdapter#()V" />
-      <node id="7241381882860007078" at="14,0,17,0" concept="7" trace="visitFormalTypeParameter#(Ljava/lang/String;)V" />
-      <node id="7241381882860007126" at="45,0,48,0" concept="7" trace="visitBaseType#(C)V" />
-      <node id="7241381882860007132" at="48,0,51,0" concept="7" trace="visitTypeVariable#(Ljava/lang/String;)V" />
-      <node id="7241381882860007144" at="55,0,58,0" concept="7" trace="visitClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860007150" at="58,0,61,0" concept="7" trace="visitInnerClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860007156" at="61,0,64,0" concept="7" trace="visitTypeArgument#()V" />
-      <node id="7241381882860007168" at="68,0,71,0" concept="7" trace="visitEnd#()V" />
-      <node id="7241381882860007084" at="17,0,21,0" concept="7" trace="visitClassBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007090" at="21,0,25,0" concept="7" trace="visitInterfaceBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007096" at="25,0,29,0" concept="7" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007102" at="29,0,33,0" concept="7" trace="visitInterface#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007108" at="33,0,37,0" concept="7" trace="visitParameterType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007114" at="37,0,41,0" concept="7" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007120" at="41,0,45,0" concept="7" trace="visitExceptionType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007138" at="51,0,55,0" concept="7" trace="visitArrayType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007160" at="64,0,68,0" concept="7" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="8471909024438049477" at="11,36,12,24" concept="14" />
+      <node id="7241381882860007088" at="18,45,19,41" concept="10" />
+      <node id="7241381882860007094" at="22,49,23,41" concept="10" />
+      <node id="7241381882860007100" at="26,45,27,41" concept="10" />
+      <node id="7241381882860007106" at="30,44,31,41" concept="10" />
+      <node id="7241381882860007112" at="34,48,35,41" concept="10" />
+      <node id="7241381882860007118" at="38,45,39,41" concept="10" />
+      <node id="7241381882860007124" at="42,48,43,41" concept="10" />
+      <node id="7241381882860007142" at="52,44,53,41" concept="10" />
+      <node id="7241381882860007166" at="65,60,66,41" concept="10" />
+      <node id="7241381882860007075" at="11,0,14,0" concept="2" trace="SignatureVisitorAdapter#()V" />
+      <node id="7241381882860007078" at="14,0,17,0" concept="8" trace="visitFormalTypeParameter#(Ljava/lang/String;)V" />
+      <node id="7241381882860007126" at="45,0,48,0" concept="8" trace="visitBaseType#(C)V" />
+      <node id="7241381882860007132" at="48,0,51,0" concept="8" trace="visitTypeVariable#(Ljava/lang/String;)V" />
+      <node id="7241381882860007144" at="55,0,58,0" concept="8" trace="visitClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860007150" at="58,0,61,0" concept="8" trace="visitInnerClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860007156" at="61,0,64,0" concept="8" trace="visitTypeArgument#()V" />
+      <node id="7241381882860007168" at="68,0,71,0" concept="8" trace="visitEnd#()V" />
+      <node id="7241381882860007084" at="17,0,21,0" concept="8" trace="visitClassBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007090" at="21,0,25,0" concept="8" trace="visitInterfaceBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007096" at="25,0,29,0" concept="8" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007102" at="29,0,33,0" concept="8" trace="visitInterface#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007108" at="33,0,37,0" concept="8" trace="visitParameterType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007114" at="37,0,41,0" concept="8" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007120" at="41,0,45,0" concept="8" trace="visitExceptionType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007138" at="51,0,55,0" concept="8" trace="visitArrayType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007160" at="64,0,68,0" concept="8" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
       <scope id="7241381882860007083" at="15,53,15,53" />
       <scope id="7241381882860007131" at="46,46,46,46" />
       <scope id="7241381882860007137" at="49,46,49,46" />
@@ -183,11 +185,11 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860002146">
     <file name="ASMArrayType.java">
-      <node id="7241381882860002149" at="9,0,10,0" concept="3" trace="myElementType" />
-      <node id="7241381882860002156" at="10,49,11,32" concept="2" />
-      <node id="7241381882860002166" at="13,35,14,25" concept="9" />
-      <node id="7241381882860002152" at="10,0,13,0" concept="1" trace="ASMArrayType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860002162" at="13,0,16,0" concept="7" trace="getElementType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860002149" at="9,0,10,0" concept="4" trace="myElementType" />
+      <node id="7241381882860002156" at="10,49,11,32" concept="3" />
+      <node id="7241381882860002166" at="13,35,14,25" concept="10" />
+      <node id="7241381882860002152" at="10,0,13,0" concept="2" trace="ASMArrayType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860002162" at="13,0,16,0" concept="8" trace="getElementType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
       <scope id="7241381882860002155" at="10,49,11,32" />
       <scope id="7241381882860002165" at="13,35,14,25" />
       <scope id="7241381882860002152" at="10,0,13,0">
@@ -199,14 +201,14 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860002170">
     <file name="ASMClassType.java">
-      <node id="7241381882860002173" at="9,0,10,0" concept="11" trace="OBJECT" />
-      <node id="7241381882860002179" at="10,0,11,0" concept="3" trace="myName" />
-      <node id="7241381882860002187" at="11,36,12,18" concept="2" />
-      <node id="7241381882860002197" at="14,27,15,18" concept="9" />
-      <node id="7241381882860002205" at="18,28,19,30" concept="9" />
-      <node id="7241381882860002182" at="11,0,14,0" concept="1" trace="ASMClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860002193" at="14,0,17,0" concept="7" trace="getName#()Ljava/lang/String;" />
-      <node id="7241381882860002201" at="17,0,21,0" concept="7" trace="toString#()Ljava/lang/String;" />
+      <node id="7241381882860002173" at="9,0,10,0" concept="12" trace="OBJECT" />
+      <node id="7241381882860002179" at="10,0,11,0" concept="4" trace="myName" />
+      <node id="7241381882860002187" at="11,36,12,18" concept="3" />
+      <node id="7241381882860002197" at="14,27,15,18" concept="10" />
+      <node id="7241381882860002205" at="18,28,19,30" concept="10" />
+      <node id="7241381882860002182" at="11,0,14,0" concept="2" trace="ASMClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860002193" at="14,0,17,0" concept="8" trace="getName#()Ljava/lang/String;" />
+      <node id="7241381882860002201" at="17,0,21,0" concept="8" trace="toString#()Ljava/lang/String;" />
       <scope id="7241381882860002186" at="11,36,12,18" />
       <scope id="7241381882860002196" at="14,27,15,18" />
       <scope id="7241381882860002204" at="18,28,19,30" />
@@ -220,151 +222,151 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860005690">
     <file name="ASMMethod.java">
-      <node id="7241381882860005696" at="20,0,21,0" concept="3" trace="myMethod" />
-      <node id="7241381882860005699" at="21,0,22,0" concept="3" trace="myReturnType" />
-      <node id="7241381882860005702" at="22,0,23,0" concept="3" trace="myGenericReturnType" />
-      <node id="7241381882860005705" at="23,0,24,0" concept="3" trace="myTypeVariables" />
-      <node id="7241381882860005709" at="24,0,25,0" concept="3" trace="myParameterTypes" />
-      <node id="7241381882860005713" at="25,0,26,0" concept="3" trace="myGenericParameterTypes" />
-      <node id="7241381882860005717" at="26,0,27,0" concept="3" trace="myParameterNames" />
-      <node id="7241381882860005721" at="27,0,28,0" concept="3" trace="myParameterAnnotations" />
-      <node id="7241381882860005726" at="28,0,29,0" concept="3" trace="myExceptions" />
-      <node id="7241381882860005730" at="29,0,30,0" concept="3" trace="myAnnotations" />
-      <node id="6678934770475967338" at="30,0,31,0" concept="3" trace="myAnnotationDefault" />
-      <node id="7241381882860005738" at="31,44,32,22" concept="2" />
-      <node id="7241381882860005744" at="32,22,33,70" concept="2" />
-      <node id="7241381882860005769" at="34,35,35,140" concept="2" />
-      <node id="7241381882860005762" at="36,12,37,83" concept="2" />
-      <node id="7241381882860005796" at="39,35,40,69" concept="2" />
-      <node id="7241381882860005787" at="41,12,42,41" concept="2" />
-      <node id="7241381882860005805" at="43,5,44,62" concept="8" />
-      <node id="7241381882860005813" at="44,62,45,150" concept="2" />
-      <node id="7241381882860005836" at="46,34,47,49" concept="2" />
-      <node id="7241381882860005861" at="49,35,50,77" concept="2" />
-      <node id="7241381882860005852" at="51,12,52,49" concept="2" />
-      <node id="3947223005607324292" at="53,5,54,89" concept="10" />
-      <node id="3947223005607410948" at="54,89,55,53" concept="10" />
-      <node id="7241381882860005875" at="56,61,57,57" concept="8" />
-      <node id="7241381882860005885" at="57,57,58,69" concept="8" />
-      <node id="7241381882860005899" at="59,50,60,115" concept="2" />
-      <node id="7241381882860005923" at="62,56,63,48" concept="2" />
-      <node id="7241381882860005933" at="63,48,64,56" concept="2" />
-      <node id="7241381882860005947" at="65,52,66,110" concept="2" />
-      <node id="7241381882860005962" at="69,5,70,89" concept="2" />
-      <node id="7241381882860005985" at="71,55,72,45" concept="8" />
-      <node id="7241381882860006028" at="75,36,76,57" concept="2" />
-      <node id="7241381882860006034" at="77,11,78,49" concept="2" />
-      <node id="7241381882860006079" at="83,36,84,57" concept="2" />
-      <node id="7241381882860006085" at="85,11,86,49" concept="2" />
-      <node id="7241381882860006092" at="88,7,89,129" concept="2" />
-      <node id="7241381882860006109" at="90,5,91,57" concept="8" />
-      <node id="7241381882860006124" at="92,35,93,64" concept="2" />
-      <node id="7241381882860006179" at="95,34,96,32" concept="2" />
-      <node id="7241381882860006138" at="97,12,98,72" concept="2" />
-      <node id="7241381882860006165" at="99,59,100,64" concept="2" />
-      <node id="7241381882860006202" at="103,87,104,185" concept="8" />
-      <node id="7241381882860006240" at="104,185,105,57" concept="2" />
-      <node id="7241381882860006270" at="107,86,108,51" concept="8" />
-      <node id="7241381882860006276" at="108,51,109,32" concept="2" />
-      <node id="7241381882860006304" at="113,88,114,51" concept="8" />
-      <node id="7241381882860006310" at="114,51,115,32" concept="2" />
-      <node id="7241381882860006325" at="119,40,120,72" concept="2" />
-      <node id="1157126008575868679" at="121,58,122,38" concept="2" />
-      <node id="2932024725711515229" at="124,101,125,51" concept="10" />
-      <node id="8278838086631112232" at="125,51,126,48" concept="8" />
-      <node id="2932024725711647088" at="126,48,127,88" concept="8" />
-      <node id="2932024725712010971" at="127,88,128,100" concept="10" />
-      <node id="2932024725711676008" at="128,100,129,50" concept="2" />
-      <node id="2932024725712015971" at="129,50,130,142" concept="10" />
-      <node id="2932024725711994225" at="132,54,133,47" concept="2" />
-      <node id="6678934770475971126" at="138,43,139,81" concept="2" />
-      <node id="6678934770475971106" at="142,40,143,31" concept="9" />
-      <node id="7241381882860006388" at="145,27,146,25" concept="9" />
-      <node id="7241381882860006398" at="148,29,149,56" concept="9" />
-      <node id="7241381882860006413" at="151,30,152,56" concept="9" />
-      <node id="7241381882860006428" at="154,29,155,55" concept="9" />
-      <node id="7241381882860006443" at="157,32,158,58" concept="9" />
-      <node id="7241381882860006458" at="160,39,161,63" concept="9" />
-      <node id="7241381882860006477" at="163,29,164,55" concept="9" />
-      <node id="7241381882860006492" at="166,33,167,59" concept="9" />
-      <node id="7241381882860006507" at="169,28,170,54" concept="9" />
-      <node id="7241381882860006522" at="172,31,173,57" concept="9" />
-      <node id="7241381882860006537" at="175,29,176,55" concept="9" />
-      <node id="1116675434314455517" at="178,32,179,58" concept="9" />
-      <node id="6685532457577045059" at="181,35,182,61" concept="9" />
-      <node id="7241381882860006552" at="184,34,185,42" concept="9" />
-      <node id="7241381882860006565" at="187,40,188,172" concept="9" />
-      <node id="7241381882860006588" at="190,52,191,27" concept="9" />
-      <node id="7241381882860006596" at="193,34,194,24" concept="9" />
-      <node id="7241381882860006604" at="196,41,197,31" concept="9" />
-      <node id="7241381882860006613" at="199,47,200,140" concept="9" />
-      <node id="7241381882860006630" at="202,44,203,58" concept="9" />
-      <node id="7241381882860006640" at="205,51,206,65" concept="9" />
-      <node id="7241381882860006650" at="208,43,209,141" concept="9" />
-      <node id="7241381882860006668" at="211,62,212,64" concept="9" />
-      <node id="7241381882860006678" at="214,44,215,54" concept="9" />
-      <node id="2932024725711873439" at="220,68,221,91" concept="10" />
-      <node id="2932024725711874181" at="221,91,222,33" concept="9" />
-      <node id="7241381882860005760" at="36,10,38,5" concept="0" />
-      <node id="7241381882860005785" at="41,10,43,5" concept="0" />
-      <node id="7241381882860005850" at="51,10,53,5" concept="0" />
-      <node id="7241381882860005831" at="45,150,48,5" concept="5" />
-      <node id="7241381882860005894" at="58,69,61,7" concept="6" />
-      <node id="7241381882860005942" at="64,56,67,9" concept="6" />
-      <node id="7241381882860006023" at="74,98,77,11" concept="6" />
-      <node id="7241381882860006074" at="82,100,85,11" concept="6" />
-      <node id="7241381882860006117" at="91,57,94,5" concept="6" />
-      <node id="7241381882860006153" at="98,72,101,7" concept="5" />
-      <node id="1157126008575868670" at="120,72,123,7" concept="4" />
-      <node id="2932024725711994223" at="131,99,134,11" concept="6" />
-      <node id="6678934770475971112" at="137,5,140,5" concept="6" />
-      <node id="6678934770475968071" at="142,0,145,0" concept="7" trace="getAnnotationDefault#()Ljava/lang/Object;" />
-      <node id="7241381882860006384" at="145,0,148,0" concept="7" trace="getName#()Ljava/lang/String;" />
-      <node id="7241381882860006394" at="148,0,151,0" concept="7" trace="isVarArg#()Z" />
-      <node id="7241381882860006409" at="151,0,154,0" concept="7" trace="isPrivate#()Z" />
-      <node id="7241381882860006424" at="154,0,157,0" concept="7" trace="isPublic#()Z" />
-      <node id="7241381882860006439" at="157,0,160,0" concept="7" trace="isProtected#()Z" />
-      <node id="7241381882860006454" at="160,0,163,0" concept="7" trace="isPackageProtected#()Z" />
-      <node id="7241381882860006473" at="163,0,166,0" concept="7" trace="isStatic#()Z" />
-      <node id="7241381882860006488" at="166,0,169,0" concept="7" trace="isDeprecated#()Z" />
-      <node id="7241381882860006503" at="169,0,172,0" concept="7" trace="isFinal#()Z" />
-      <node id="7241381882860006518" at="172,0,175,0" concept="7" trace="isAbstract#()Z" />
-      <node id="7241381882860006533" at="175,0,178,0" concept="7" trace="isBridge#()Z" />
-      <node id="1116675434314450459" at="178,0,181,0" concept="7" trace="isSynthetic#()Z" />
-      <node id="6685532457576977821" at="181,0,184,0" concept="7" trace="isSynchronized#()Z" />
-      <node id="7241381882860006548" at="184,0,187,0" concept="7" trace="isConstructor#()Z" />
-      <node id="7241381882860006561" at="187,0,190,0" concept="7" trace="isCompilerGenerated#()Z" />
-      <node id="7241381882860006583" at="190,0,193,0" concept="7" trace="getTypeParameters#()Ljava/util/List;" />
-      <node id="7241381882860006592" at="193,0,196,0" concept="7" trace="getReturnType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860006600" at="196,0,199,0" concept="7" trace="getGenericReturnType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860006608" at="199,0,202,0" concept="7" trace="getAnnotations#()Ljava/util/List;" />
-      <node id="7241381882860006625" at="202,0,205,0" concept="7" trace="getParameterTypes#()Ljava/util/List;" />
-      <node id="7241381882860006635" at="205,0,208,0" concept="7" trace="getGenericParameterTypes#()Ljava/util/List;" />
-      <node id="7241381882860006645" at="208,0,211,0" concept="7" trace="getParameterNames#()Ljava/util/List;" />
-      <node id="7241381882860006662" at="211,0,214,0" concept="7" trace="getParameterAnnotations#()Ljava/util/List;" />
-      <node id="7241381882860006673" at="214,0,217,0" concept="7" trace="getExceptionTypes#()Ljava/util/List;" />
-      <node id="7241381882860006258" at="106,48,110,9" concept="5" />
-      <node id="7241381882860006292" at="112,50,116,9" concept="5" />
-      <node id="7241381882860005754" at="33,70,38,5" concept="6" />
-      <node id="7241381882860005779" at="38,5,43,5" concept="6" />
-      <node id="7241381882860005844" at="48,5,53,5" concept="6" />
-      <node id="7241381882860006136" at="97,10,102,5" concept="0" />
-      <node id="2932024725711894602" at="130,142,135,9" concept="4" />
-      <node id="2932024725711872454" at="219,0,224,0" concept="7" trace="compare#(Lorg/jetbrains/org/objectweb/asm/tree/LocalVariableNode;Lorg/jetbrains/org/objectweb/asm/tree/LocalVariableNode;)I" />
-      <node id="7241381882860006009" at="73,108,79,9" concept="5" />
-      <node id="7241381882860006060" at="81,112,87,9" concept="5" />
-      <node id="7241381882860006249" at="105,57,111,7" concept="6" />
-      <node id="7241381882860006283" at="111,7,117,7" concept="6" />
-      <node id="7241381882860005914" at="61,7,68,7" concept="6" />
-      <node id="7241381882860005990" at="72,45,80,7" concept="6" />
-      <node id="7241381882860006041" at="80,7,88,7" concept="6" />
-      <node id="7241381882860006131" at="94,5,102,5" concept="6" />
-      <node id="7241381882860006338" at="123,7,136,7" concept="6" />
-      <node id="7241381882860005870" at="55,53,69,5" concept="6" />
-      <node id="7241381882860006185" at="102,5,118,5" concept="6" />
-      <node id="7241381882860006317" at="118,5,137,5" concept="6" />
-      <node id="7241381882860005976" at="70,89,90,5" concept="4" />
-      <node id="7241381882860005734" at="31,0,142,0" concept="1" trace="ASMMethod#(Lorg/jetbrains/org/objectweb/asm/tree/MethodNode;)V" />
+      <node id="7241381882860005696" at="20,0,21,0" concept="4" trace="myMethod" />
+      <node id="7241381882860005699" at="21,0,22,0" concept="4" trace="myReturnType" />
+      <node id="7241381882860005702" at="22,0,23,0" concept="4" trace="myGenericReturnType" />
+      <node id="7241381882860005705" at="23,0,24,0" concept="4" trace="myTypeVariables" />
+      <node id="7241381882860005709" at="24,0,25,0" concept="4" trace="myParameterTypes" />
+      <node id="7241381882860005713" at="25,0,26,0" concept="4" trace="myGenericParameterTypes" />
+      <node id="7241381882860005717" at="26,0,27,0" concept="4" trace="myParameterNames" />
+      <node id="7241381882860005721" at="27,0,28,0" concept="4" trace="myParameterAnnotations" />
+      <node id="7241381882860005726" at="28,0,29,0" concept="4" trace="myExceptions" />
+      <node id="7241381882860005730" at="29,0,30,0" concept="4" trace="myAnnotations" />
+      <node id="6678934770475967338" at="30,0,31,0" concept="4" trace="myAnnotationDefault" />
+      <node id="7241381882860005738" at="31,44,32,22" concept="3" />
+      <node id="7241381882860005744" at="32,22,33,70" concept="3" />
+      <node id="7241381882860005769" at="34,35,35,140" concept="3" />
+      <node id="7241381882860005762" at="36,12,37,83" concept="3" />
+      <node id="7241381882860005796" at="39,35,40,69" concept="3" />
+      <node id="7241381882860005787" at="41,12,42,41" concept="3" />
+      <node id="7241381882860005805" at="43,5,44,62" concept="9" />
+      <node id="7241381882860005813" at="44,62,45,150" concept="3" />
+      <node id="7241381882860005836" at="46,34,47,49" concept="3" />
+      <node id="7241381882860005861" at="49,35,50,77" concept="3" />
+      <node id="7241381882860005852" at="51,12,52,49" concept="3" />
+      <node id="3947223005607324292" at="53,5,54,89" concept="11" />
+      <node id="3947223005607410948" at="54,89,55,53" concept="11" />
+      <node id="7241381882860005875" at="56,61,57,57" concept="9" />
+      <node id="7241381882860005885" at="57,57,58,69" concept="9" />
+      <node id="7241381882860005899" at="59,50,60,115" concept="3" />
+      <node id="7241381882860005923" at="62,56,63,48" concept="3" />
+      <node id="7241381882860005933" at="63,48,64,56" concept="3" />
+      <node id="7241381882860005947" at="65,52,66,110" concept="3" />
+      <node id="7241381882860005962" at="69,5,70,89" concept="3" />
+      <node id="7241381882860005985" at="71,55,72,45" concept="9" />
+      <node id="7241381882860006028" at="75,36,76,57" concept="3" />
+      <node id="7241381882860006034" at="77,11,78,49" concept="3" />
+      <node id="7241381882860006079" at="83,36,84,57" concept="3" />
+      <node id="7241381882860006085" at="85,11,86,49" concept="3" />
+      <node id="7241381882860006092" at="88,7,89,129" concept="3" />
+      <node id="7241381882860006109" at="90,5,91,57" concept="9" />
+      <node id="7241381882860006124" at="92,35,93,64" concept="3" />
+      <node id="7241381882860006179" at="95,34,96,32" concept="3" />
+      <node id="7241381882860006138" at="97,12,98,72" concept="3" />
+      <node id="7241381882860006165" at="99,59,100,64" concept="3" />
+      <node id="7241381882860006202" at="103,87,104,185" concept="9" />
+      <node id="7241381882860006240" at="104,185,105,57" concept="3" />
+      <node id="7241381882860006270" at="107,86,108,51" concept="9" />
+      <node id="7241381882860006276" at="108,51,109,32" concept="3" />
+      <node id="7241381882860006304" at="113,88,114,51" concept="9" />
+      <node id="7241381882860006310" at="114,51,115,32" concept="3" />
+      <node id="7241381882860006325" at="119,40,120,72" concept="3" />
+      <node id="1157126008575868679" at="121,58,122,38" concept="3" />
+      <node id="2932024725711515229" at="124,101,125,51" concept="11" />
+      <node id="8278838086631112232" at="125,51,126,48" concept="9" />
+      <node id="2932024725711647088" at="126,48,127,88" concept="9" />
+      <node id="2932024725712010971" at="127,88,128,100" concept="11" />
+      <node id="2932024725711676008" at="128,100,129,50" concept="3" />
+      <node id="2932024725712015971" at="129,50,130,142" concept="11" />
+      <node id="2932024725711994225" at="132,54,133,47" concept="3" />
+      <node id="6678934770475971126" at="138,43,139,81" concept="3" />
+      <node id="6678934770475971106" at="142,40,143,31" concept="10" />
+      <node id="7241381882860006388" at="145,27,146,25" concept="10" />
+      <node id="7241381882860006398" at="148,29,149,56" concept="10" />
+      <node id="7241381882860006413" at="151,30,152,56" concept="10" />
+      <node id="7241381882860006428" at="154,29,155,55" concept="10" />
+      <node id="7241381882860006443" at="157,32,158,58" concept="10" />
+      <node id="7241381882860006458" at="160,39,161,63" concept="10" />
+      <node id="7241381882860006477" at="163,29,164,55" concept="10" />
+      <node id="7241381882860006492" at="166,33,167,59" concept="10" />
+      <node id="7241381882860006507" at="169,28,170,54" concept="10" />
+      <node id="7241381882860006522" at="172,31,173,57" concept="10" />
+      <node id="7241381882860006537" at="175,29,176,55" concept="10" />
+      <node id="1116675434314455517" at="178,32,179,58" concept="10" />
+      <node id="6685532457577045059" at="181,35,182,61" concept="10" />
+      <node id="7241381882860006552" at="184,34,185,42" concept="10" />
+      <node id="7241381882860006565" at="187,40,188,172" concept="10" />
+      <node id="7241381882860006588" at="190,52,191,27" concept="10" />
+      <node id="7241381882860006596" at="193,34,194,24" concept="10" />
+      <node id="7241381882860006604" at="196,41,197,31" concept="10" />
+      <node id="7241381882860006613" at="199,47,200,140" concept="10" />
+      <node id="7241381882860006630" at="202,44,203,58" concept="10" />
+      <node id="7241381882860006640" at="205,51,206,65" concept="10" />
+      <node id="7241381882860006650" at="208,43,209,141" concept="10" />
+      <node id="7241381882860006668" at="211,62,212,64" concept="10" />
+      <node id="7241381882860006678" at="214,44,215,54" concept="10" />
+      <node id="2932024725711873439" at="220,68,221,91" concept="11" />
+      <node id="2932024725711874181" at="221,91,222,33" concept="10" />
+      <node id="7241381882860005760" at="36,10,38,5" concept="1" />
+      <node id="7241381882860005785" at="41,10,43,5" concept="1" />
+      <node id="7241381882860005850" at="51,10,53,5" concept="1" />
+      <node id="7241381882860005831" at="45,150,48,5" concept="6" />
+      <node id="7241381882860005894" at="58,69,61,7" concept="7" />
+      <node id="7241381882860005942" at="64,56,67,9" concept="7" />
+      <node id="7241381882860006023" at="74,98,77,11" concept="7" />
+      <node id="7241381882860006074" at="82,100,85,11" concept="7" />
+      <node id="7241381882860006117" at="91,57,94,5" concept="7" />
+      <node id="7241381882860006153" at="98,72,101,7" concept="6" />
+      <node id="1157126008575868670" at="120,72,123,7" concept="5" />
+      <node id="2932024725711994223" at="131,99,134,11" concept="7" />
+      <node id="6678934770475971112" at="137,5,140,5" concept="7" />
+      <node id="6678934770475968071" at="142,0,145,0" concept="8" trace="getAnnotationDefault#()Ljava/lang/Object;" />
+      <node id="7241381882860006384" at="145,0,148,0" concept="8" trace="getName#()Ljava/lang/String;" />
+      <node id="7241381882860006394" at="148,0,151,0" concept="8" trace="isVarArg#()Z" />
+      <node id="7241381882860006409" at="151,0,154,0" concept="8" trace="isPrivate#()Z" />
+      <node id="7241381882860006424" at="154,0,157,0" concept="8" trace="isPublic#()Z" />
+      <node id="7241381882860006439" at="157,0,160,0" concept="8" trace="isProtected#()Z" />
+      <node id="7241381882860006454" at="160,0,163,0" concept="8" trace="isPackageProtected#()Z" />
+      <node id="7241381882860006473" at="163,0,166,0" concept="8" trace="isStatic#()Z" />
+      <node id="7241381882860006488" at="166,0,169,0" concept="8" trace="isDeprecated#()Z" />
+      <node id="7241381882860006503" at="169,0,172,0" concept="8" trace="isFinal#()Z" />
+      <node id="7241381882860006518" at="172,0,175,0" concept="8" trace="isAbstract#()Z" />
+      <node id="7241381882860006533" at="175,0,178,0" concept="8" trace="isBridge#()Z" />
+      <node id="1116675434314450459" at="178,0,181,0" concept="8" trace="isSynthetic#()Z" />
+      <node id="6685532457576977821" at="181,0,184,0" concept="8" trace="isSynchronized#()Z" />
+      <node id="7241381882860006548" at="184,0,187,0" concept="8" trace="isConstructor#()Z" />
+      <node id="7241381882860006561" at="187,0,190,0" concept="8" trace="isCompilerGenerated#()Z" />
+      <node id="7241381882860006583" at="190,0,193,0" concept="8" trace="getTypeParameters#()Ljava/util/List;" />
+      <node id="7241381882860006592" at="193,0,196,0" concept="8" trace="getReturnType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860006600" at="196,0,199,0" concept="8" trace="getGenericReturnType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860006608" at="199,0,202,0" concept="8" trace="getAnnotations#()Ljava/util/List;" />
+      <node id="7241381882860006625" at="202,0,205,0" concept="8" trace="getParameterTypes#()Ljava/util/List;" />
+      <node id="7241381882860006635" at="205,0,208,0" concept="8" trace="getGenericParameterTypes#()Ljava/util/List;" />
+      <node id="7241381882860006645" at="208,0,211,0" concept="8" trace="getParameterNames#()Ljava/util/List;" />
+      <node id="7241381882860006662" at="211,0,214,0" concept="8" trace="getParameterAnnotations#()Ljava/util/List;" />
+      <node id="7241381882860006673" at="214,0,217,0" concept="8" trace="getExceptionTypes#()Ljava/util/List;" />
+      <node id="7241381882860006258" at="106,48,110,9" concept="6" />
+      <node id="7241381882860006292" at="112,50,116,9" concept="6" />
+      <node id="7241381882860005754" at="33,70,38,5" concept="7" />
+      <node id="7241381882860005779" at="38,5,43,5" concept="7" />
+      <node id="7241381882860005844" at="48,5,53,5" concept="7" />
+      <node id="7241381882860006136" at="97,10,102,5" concept="1" />
+      <node id="2932024725711894602" at="130,142,135,9" concept="5" />
+      <node id="2932024725711872454" at="219,0,224,0" concept="8" trace="compare#(Lorg/jetbrains/org/objectweb/asm/tree/LocalVariableNode;Lorg/jetbrains/org/objectweb/asm/tree/LocalVariableNode;)I" />
+      <node id="7241381882860006009" at="73,108,79,9" concept="6" />
+      <node id="7241381882860006060" at="81,112,87,9" concept="6" />
+      <node id="7241381882860006249" at="105,57,111,7" concept="7" />
+      <node id="7241381882860006283" at="111,7,117,7" concept="7" />
+      <node id="7241381882860005914" at="61,7,68,7" concept="7" />
+      <node id="7241381882860005990" at="72,45,80,7" concept="7" />
+      <node id="7241381882860006041" at="80,7,88,7" concept="7" />
+      <node id="7241381882860006131" at="94,5,102,5" concept="7" />
+      <node id="7241381882860006338" at="123,7,136,7" concept="7" />
+      <node id="7241381882860005870" at="55,53,69,5" concept="7" />
+      <node id="7241381882860006185" at="102,5,118,5" concept="7" />
+      <node id="7241381882860006317" at="118,5,137,5" concept="7" />
+      <node id="7241381882860005976" at="70,89,90,5" concept="5" />
+      <node id="7241381882860005734" at="31,0,142,0" concept="2" trace="ASMMethod#(Lorg/jetbrains/org/objectweb/asm/tree/MethodNode;)V" />
       <scope id="7241381882860005768" at="34,35,35,140" />
       <scope id="7241381882860005761" at="36,12,37,83" />
       <scope id="7241381882860005795" at="39,35,40,69" />
@@ -507,81 +509,106 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860006706">
     <file name="ASMPrimitiveType.java">
-      <node id="7241381882860006709" at="9,0,10,0" concept="11" trace="VOID" />
-      <node id="7241381882860006715" at="10,0,11,0" concept="11" trace="BOOLEAN" />
-      <node id="7241381882860006721" at="11,0,12,0" concept="11" trace="CHAR" />
-      <node id="7241381882860006727" at="12,0,13,0" concept="11" trace="BYTE" />
-      <node id="7241381882860006733" at="13,0,14,0" concept="11" trace="SHORT" />
-      <node id="7241381882860006739" at="14,0,15,0" concept="11" trace="INT" />
-      <node id="7241381882860006745" at="15,0,16,0" concept="11" trace="FLOAT" />
-      <node id="7241381882860006751" at="16,0,17,0" concept="11" trace="LONG" />
-      <node id="7241381882860006757" at="17,0,18,0" concept="11" trace="DOUBLE" />
-      <node id="7241381882860006763" at="18,0,19,0" concept="3" trace="myName" />
-      <node id="7241381882860006771" at="19,41,20,18" concept="2" />
-      <node id="7241381882860006781" at="22,27,23,18" concept="9" />
-      <node id="7241381882860006789" at="26,28,27,18" concept="9" />
-      <node id="7241381882860006766" at="19,0,22,0" concept="1" trace="ASMPrimitiveType#(Ljava/lang/String;)V" />
-      <node id="7241381882860006777" at="22,0,25,0" concept="7" trace="getName#()Ljava/lang/String;" />
-      <node id="7241381882860006785" at="25,0,29,0" concept="7" trace="toString#()Ljava/lang/String;" />
+      <node id="7241381882860006709" at="9,0,10,0" concept="12" trace="VOID" />
+      <node id="7241381882860006715" at="10,0,11,0" concept="12" trace="BOOLEAN" />
+      <node id="7241381882860006721" at="11,0,12,0" concept="12" trace="CHAR" />
+      <node id="7241381882860006727" at="12,0,13,0" concept="12" trace="BYTE" />
+      <node id="7241381882860006733" at="13,0,14,0" concept="12" trace="SHORT" />
+      <node id="7241381882860006739" at="14,0,15,0" concept="12" trace="INT" />
+      <node id="7241381882860006745" at="15,0,16,0" concept="12" trace="FLOAT" />
+      <node id="7241381882860006751" at="16,0,17,0" concept="12" trace="LONG" />
+      <node id="7241381882860006757" at="17,0,18,0" concept="12" trace="DOUBLE" />
+      <node id="7241381882860006763" at="18,0,19,0" concept="4" trace="myName" />
+      <node id="7241381882860006771" at="19,41,20,18" concept="3" />
+      <node id="7241381882860006781" at="22,27,23,18" concept="10" />
+      <node id="7241381882860006789" at="26,28,27,18" concept="10" />
+      <node id="2721987268323842640" at="32,15,33,20" concept="10" />
+      <node id="2721987268323857275" at="34,15,35,20" concept="10" />
+      <node id="2721987268323857680" at="36,15,37,22" concept="10" />
+      <node id="2721987268323856715" at="38,15,39,21" concept="10" />
+      <node id="2721987268323858319" at="40,15,41,19" concept="10" />
+      <node id="2721987268323859926" at="42,15,43,20" concept="10" />
+      <node id="2721987268323861531" at="44,15,45,21" concept="10" />
+      <node id="2721987268323861856" at="46,15,47,20" concept="10" />
+      <node id="2721987268323862203" at="48,15,49,23" concept="10" />
+      <node id="2721987268323863807" at="50,5,51,104" concept="16" />
+      <node id="7241381882860006766" at="19,0,22,0" concept="2" trace="ASMPrimitiveType#(Ljava/lang/String;)V" />
+      <node id="7241381882860006777" at="22,0,25,0" concept="8" trace="getName#()Ljava/lang/String;" />
+      <node id="7241381882860006785" at="25,0,29,0" concept="8" trace="toString#()Ljava/lang/String;" />
+      <node id="2721987268323842426" at="30,61,50,5" concept="15" />
+      <node id="2721987268323841785" at="30,0,53,0" concept="13" trace="from#(C)Ljetbrains/mps/baseLanguage/javastub/asm/ASMPrimitiveType;" />
       <scope id="7241381882860006770" at="19,41,20,18" />
       <scope id="7241381882860006780" at="22,27,23,18" />
       <scope id="7241381882860006788" at="26,28,27,18" />
+      <scope id="2721987268323842516" at="32,15,33,20" />
+      <scope id="2721987268323853113" at="34,15,35,20" />
+      <scope id="2721987268323856188" at="36,15,37,22" />
+      <scope id="2721987268323856526" at="38,15,39,21" />
+      <scope id="2721987268323858306" at="40,15,41,19" />
+      <scope id="2721987268323859856" at="42,15,43,20" />
+      <scope id="2721987268323861530" at="44,15,45,21" />
+      <scope id="2721987268323861855" at="46,15,47,20" />
+      <scope id="2721987268323862202" at="48,15,49,23" />
       <scope id="7241381882860006766" at="19,0,22,0">
         <var name="name" id="7241381882860006768" />
       </scope>
       <scope id="7241381882860006777" at="22,0,25,0" />
       <scope id="7241381882860006785" at="25,0,29,0" />
-      <unit id="7241381882860006706" at="7,0,30,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMPrimitiveType" />
+      <scope id="2721987268323841788" at="30,61,51,104" />
+      <scope id="2721987268323841785" at="30,0,53,0">
+        <var name="descriptor" id="2721987268323842249" />
+      </scope>
+      <unit id="7241381882860006706" at="7,0,54,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMPrimitiveType" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860006793">
     <file name="ASMField.java">
-      <node id="7241381882860006795" at="15,0,16,0" concept="3" trace="myField" />
-      <node id="7241381882860006798" at="16,0,17,0" concept="3" trace="myAnnotations" />
-      <node id="7241381882860006802" at="17,0,18,0" concept="3" trace="myType" />
-      <node id="7241381882860006805" at="18,0,19,0" concept="3" trace="myGenericType" />
-      <node id="7241381882860006812" at="19,41,20,20" concept="2" />
-      <node id="7241381882860006827" at="21,45,22,86" concept="2" />
-      <node id="7241381882860006854" at="23,83,24,49" concept="8" />
-      <node id="7241381882860006860" at="24,49,25,30" concept="2" />
-      <node id="7241381882860006867" at="27,5,28,51" concept="2" />
-      <node id="7241381882860006897" at="29,36,30,63" concept="2" />
-      <node id="7241381882860006888" at="31,12,32,29" concept="2" />
-      <node id="7241381882860006912" at="35,27,36,24" concept="9" />
-      <node id="7241381882860006922" at="38,30,39,55" concept="9" />
-      <node id="7241381882860006937" at="41,29,42,54" concept="9" />
-      <node id="7241381882860006952" at="44,32,45,57" concept="9" />
-      <node id="7241381882860006967" at="47,33,48,58" concept="9" />
-      <node id="7241381882860006982" at="50,39,51,63" concept="9" />
-      <node id="7241381882860007001" at="53,29,54,54" concept="9" />
-      <node id="8782008374435591548" at="56,28,57,53" concept="9" />
-      <node id="7241381882860007016" at="59,35,60,52" concept="9" />
-      <node id="4392755664635360990" at="62,32,63,57" concept="9" />
-      <node id="1507995828870743750" at="65,29,66,33" concept="9" />
-      <node id="1507995828870743795" at="68,28,69,25" concept="9" />
-      <node id="7241381882860007044" at="71,28,72,18" concept="9" />
-      <node id="7241381882860007052" at="74,35,75,25" concept="9" />
-      <node id="7241381882860007061" at="77,47,78,133" concept="9" />
-      <node id="7241381882860006886" at="31,10,33,5" concept="0" />
-      <node id="7241381882860006908" at="35,0,38,0" concept="7" trace="getName#()Ljava/lang/String;" />
-      <node id="7241381882860006918" at="38,0,41,0" concept="7" trace="isPrivate#()Z" />
-      <node id="7241381882860006933" at="41,0,44,0" concept="7" trace="isPublic#()Z" />
-      <node id="7241381882860006948" at="44,0,47,0" concept="7" trace="isProtected#()Z" />
-      <node id="7241381882860006963" at="47,0,50,0" concept="7" trace="isDeprecated#()Z" />
-      <node id="7241381882860006978" at="50,0,53,0" concept="7" trace="isPackageProtected#()Z" />
-      <node id="7241381882860006997" at="53,0,56,0" concept="7" trace="isStatic#()Z" />
-      <node id="8782008374435591544" at="56,0,59,0" concept="7" trace="isFinal#()Z" />
-      <node id="7241381882860007012" at="59,0,62,0" concept="7" trace="isEnumConstant#()Z" />
-      <node id="7241381882860007027" at="62,0,65,0" concept="7" trace="isSynthetic#()Z" />
-      <node id="1507995828870743745" at="65,0,68,0" concept="7" trace="hasValue#()Z" />
-      <node id="1507995828870743790" at="68,0,71,0" concept="7" trace="getValue#()Ljava/lang/Object;" />
-      <node id="7241381882860007040" at="71,0,74,0" concept="7" trace="getType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007048" at="74,0,77,0" concept="7" trace="getGenericType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007056" at="77,0,80,0" concept="7" trace="getAnnotations#()Ljava/util/List;" />
-      <node id="7241381882860006842" at="22,86,26,7" concept="5" />
-      <node id="7241381882860006878" at="28,51,33,5" concept="6" />
-      <node id="7241381882860006818" at="20,20,27,5" concept="6" />
-      <node id="7241381882860006808" at="19,0,35,0" concept="1" trace="ASMField#(Lorg/jetbrains/org/objectweb/asm/tree/FieldNode;)V" />
+      <node id="7241381882860006795" at="15,0,16,0" concept="4" trace="myField" />
+      <node id="7241381882860006798" at="16,0,17,0" concept="4" trace="myAnnotations" />
+      <node id="7241381882860006802" at="17,0,18,0" concept="4" trace="myType" />
+      <node id="7241381882860006805" at="18,0,19,0" concept="4" trace="myGenericType" />
+      <node id="7241381882860006812" at="19,41,20,20" concept="3" />
+      <node id="7241381882860006827" at="21,45,22,86" concept="3" />
+      <node id="7241381882860006854" at="23,83,24,49" concept="9" />
+      <node id="7241381882860006860" at="24,49,25,30" concept="3" />
+      <node id="7241381882860006867" at="27,5,28,51" concept="3" />
+      <node id="7241381882860006897" at="29,36,30,63" concept="3" />
+      <node id="7241381882860006888" at="31,12,32,29" concept="3" />
+      <node id="7241381882860006912" at="35,27,36,24" concept="10" />
+      <node id="7241381882860006922" at="38,30,39,55" concept="10" />
+      <node id="7241381882860006937" at="41,29,42,54" concept="10" />
+      <node id="7241381882860006952" at="44,32,45,57" concept="10" />
+      <node id="7241381882860006967" at="47,33,48,58" concept="10" />
+      <node id="7241381882860006982" at="50,39,51,63" concept="10" />
+      <node id="7241381882860007001" at="53,29,54,54" concept="10" />
+      <node id="8782008374435591548" at="56,28,57,53" concept="10" />
+      <node id="7241381882860007016" at="59,35,60,52" concept="10" />
+      <node id="4392755664635360990" at="62,32,63,57" concept="10" />
+      <node id="1507995828870743750" at="65,29,66,33" concept="10" />
+      <node id="1507995828870743795" at="68,28,69,25" concept="10" />
+      <node id="7241381882860007044" at="71,28,72,18" concept="10" />
+      <node id="7241381882860007052" at="74,35,75,25" concept="10" />
+      <node id="7241381882860007061" at="77,47,78,133" concept="10" />
+      <node id="7241381882860006886" at="31,10,33,5" concept="1" />
+      <node id="7241381882860006908" at="35,0,38,0" concept="8" trace="getName#()Ljava/lang/String;" />
+      <node id="7241381882860006918" at="38,0,41,0" concept="8" trace="isPrivate#()Z" />
+      <node id="7241381882860006933" at="41,0,44,0" concept="8" trace="isPublic#()Z" />
+      <node id="7241381882860006948" at="44,0,47,0" concept="8" trace="isProtected#()Z" />
+      <node id="7241381882860006963" at="47,0,50,0" concept="8" trace="isDeprecated#()Z" />
+      <node id="7241381882860006978" at="50,0,53,0" concept="8" trace="isPackageProtected#()Z" />
+      <node id="7241381882860006997" at="53,0,56,0" concept="8" trace="isStatic#()Z" />
+      <node id="8782008374435591544" at="56,0,59,0" concept="8" trace="isFinal#()Z" />
+      <node id="7241381882860007012" at="59,0,62,0" concept="8" trace="isEnumConstant#()Z" />
+      <node id="7241381882860007027" at="62,0,65,0" concept="8" trace="isSynthetic#()Z" />
+      <node id="1507995828870743745" at="65,0,68,0" concept="8" trace="hasValue#()Z" />
+      <node id="1507995828870743790" at="68,0,71,0" concept="8" trace="getValue#()Ljava/lang/Object;" />
+      <node id="7241381882860007040" at="71,0,74,0" concept="8" trace="getType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007048" at="74,0,77,0" concept="8" trace="getGenericType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007056" at="77,0,80,0" concept="8" trace="getAnnotations#()Ljava/util/List;" />
+      <node id="7241381882860006842" at="22,86,26,7" concept="6" />
+      <node id="7241381882860006878" at="28,51,33,5" concept="7" />
+      <node id="7241381882860006818" at="20,20,27,5" concept="7" />
+      <node id="7241381882860006808" at="19,0,35,0" concept="2" trace="ASMField#(Lorg/jetbrains/org/objectweb/asm/tree/FieldNode;)V" />
       <scope id="7241381882860006896" at="29,36,30,63" />
       <scope id="7241381882860006887" at="31,12,32,29" />
       <scope id="7241381882860006911" at="35,27,36,24" />
@@ -630,11 +657,11 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007172">
     <file name="ASMVarArgType.java">
-      <node id="7241381882860007175" at="9,0,10,0" concept="3" trace="myElementType" />
-      <node id="7241381882860007182" at="10,50,11,32" concept="2" />
-      <node id="7241381882860007192" at="13,35,14,25" concept="9" />
-      <node id="7241381882860007178" at="10,0,13,0" concept="1" trace="ASMVarArgType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860007188" at="13,0,16,0" concept="7" trace="getElementType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007175" at="9,0,10,0" concept="4" trace="myElementType" />
+      <node id="7241381882860007182" at="10,50,11,32" concept="3" />
+      <node id="7241381882860007192" at="13,35,14,25" concept="10" />
+      <node id="7241381882860007178" at="10,0,13,0" concept="2" trace="ASMVarArgType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860007188" at="13,0,16,0" concept="8" trace="getElementType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
       <scope id="7241381882860007181" at="10,50,11,32" />
       <scope id="7241381882860007191" at="13,35,14,25" />
       <scope id="7241381882860007178" at="10,0,13,0">
@@ -646,34 +673,34 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007196">
     <file name="NullSignatureVisitor.java">
-      <node id="7241381882860007198" at="11,0,12,0" concept="11" trace="INSTANCE" />
-      <node id="8471909024438077784" at="12,34,13,24" concept="13" />
-      <node id="7241381882860007216" at="19,45,20,16" concept="9" />
-      <node id="7241381882860007222" at="23,49,24,16" concept="9" />
-      <node id="7241381882860007228" at="27,45,28,16" concept="9" />
-      <node id="7241381882860007234" at="31,44,32,16" concept="9" />
-      <node id="7241381882860007240" at="35,48,36,16" concept="9" />
-      <node id="7241381882860007246" at="39,45,40,16" concept="9" />
-      <node id="7241381882860007252" at="43,48,44,16" concept="9" />
-      <node id="7241381882860007270" at="53,44,54,16" concept="9" />
-      <node id="7241381882860007294" at="66,60,67,16" concept="9" />
-      <node id="7241381882860007203" at="12,0,15,0" concept="1" trace="NullSignatureVisitor#()V" />
-      <node id="7241381882860007206" at="15,0,18,0" concept="7" trace="visitFormalTypeParameter#(Ljava/lang/String;)V" />
-      <node id="7241381882860007254" at="46,0,49,0" concept="7" trace="visitBaseType#(C)V" />
-      <node id="7241381882860007260" at="49,0,52,0" concept="7" trace="visitTypeVariable#(Ljava/lang/String;)V" />
-      <node id="7241381882860007272" at="56,0,59,0" concept="7" trace="visitClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860007278" at="59,0,62,0" concept="7" trace="visitInnerClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860007284" at="62,0,65,0" concept="7" trace="visitTypeArgument#()V" />
-      <node id="7241381882860007296" at="69,0,72,0" concept="7" trace="visitEnd#()V" />
-      <node id="7241381882860007212" at="18,0,22,0" concept="7" trace="visitClassBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007218" at="22,0,26,0" concept="7" trace="visitInterfaceBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007224" at="26,0,30,0" concept="7" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007230" at="30,0,34,0" concept="7" trace="visitInterface#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007236" at="34,0,38,0" concept="7" trace="visitParameterType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007242" at="38,0,42,0" concept="7" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007248" at="42,0,46,0" concept="7" trace="visitExceptionType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007266" at="52,0,56,0" concept="7" trace="visitArrayType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007288" at="65,0,69,0" concept="7" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007198" at="11,0,12,0" concept="12" trace="INSTANCE" />
+      <node id="8471909024438077784" at="12,34,13,24" concept="14" />
+      <node id="7241381882860007216" at="19,45,20,16" concept="10" />
+      <node id="7241381882860007222" at="23,49,24,16" concept="10" />
+      <node id="7241381882860007228" at="27,45,28,16" concept="10" />
+      <node id="7241381882860007234" at="31,44,32,16" concept="10" />
+      <node id="7241381882860007240" at="35,48,36,16" concept="10" />
+      <node id="7241381882860007246" at="39,45,40,16" concept="10" />
+      <node id="7241381882860007252" at="43,48,44,16" concept="10" />
+      <node id="7241381882860007270" at="53,44,54,16" concept="10" />
+      <node id="7241381882860007294" at="66,60,67,16" concept="10" />
+      <node id="7241381882860007203" at="12,0,15,0" concept="2" trace="NullSignatureVisitor#()V" />
+      <node id="7241381882860007206" at="15,0,18,0" concept="8" trace="visitFormalTypeParameter#(Ljava/lang/String;)V" />
+      <node id="7241381882860007254" at="46,0,49,0" concept="8" trace="visitBaseType#(C)V" />
+      <node id="7241381882860007260" at="49,0,52,0" concept="8" trace="visitTypeVariable#(Ljava/lang/String;)V" />
+      <node id="7241381882860007272" at="56,0,59,0" concept="8" trace="visitClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860007278" at="59,0,62,0" concept="8" trace="visitInnerClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860007284" at="62,0,65,0" concept="8" trace="visitTypeArgument#()V" />
+      <node id="7241381882860007296" at="69,0,72,0" concept="8" trace="visitEnd#()V" />
+      <node id="7241381882860007212" at="18,0,22,0" concept="8" trace="visitClassBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007218" at="22,0,26,0" concept="8" trace="visitInterfaceBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007224" at="26,0,30,0" concept="8" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007230" at="30,0,34,0" concept="8" trace="visitInterface#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007236" at="34,0,38,0" concept="8" trace="visitParameterType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007242" at="38,0,42,0" concept="8" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007248" at="42,0,46,0" concept="8" trace="visitExceptionType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007266" at="52,0,56,0" concept="8" trace="visitArrayType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007288" at="65,0,69,0" concept="8" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
       <scope id="7241381882860007211" at="16,53,16,53" />
       <scope id="7241381882860007259" at="47,46,47,46" />
       <scope id="7241381882860007265" at="50,46,50,46" />
@@ -725,7 +752,7 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007300">
     <file name="ASMUnboundedType.java">
-      <node id="7241381882860007303" at="9,0,11,0" concept="1" trace="ASMUnboundedType#()V" />
+      <node id="7241381882860007303" at="9,0,11,0" concept="2" trace="ASMUnboundedType#()V" />
       <scope id="7241381882860007305" at="9,29,9,29" />
       <scope id="7241381882860007303" at="9,0,11,0" />
       <unit id="7241381882860007300" at="7,0,12,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType" />
@@ -733,214 +760,212 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860007306">
     <file name="TypeUtil.java">
-      <node id="7241381882860007380" at="18,58,19,49" concept="9" />
-      <node id="7241381882860007397" at="23,21,24,37" concept="9" />
-      <node id="7241381882860007402" at="25,24,26,40" concept="9" />
-      <node id="7241381882860007407" at="27,21,28,37" concept="9" />
-      <node id="7241381882860007412" at="29,21,30,37" concept="9" />
-      <node id="7241381882860007417" at="31,22,32,38" concept="9" />
-      <node id="7241381882860007422" at="33,20,34,36" concept="9" />
-      <node id="7241381882860007427" at="35,22,36,38" concept="9" />
-      <node id="7241381882860007432" at="37,21,38,37" concept="9" />
-      <node id="7241381882860007437" at="39,23,40,39" concept="9" />
-      <node id="7241381882860007442" at="41,23,42,53" concept="9" />
-      <node id="7241381882860007453" at="44,9,45,86" concept="8" />
-      <node id="7241381882860007469" at="46,58,47,46" concept="2" />
-      <node id="7241381882860007480" at="48,11,49,24" concept="9" />
-      <node id="7241381882860007482" at="52,5,53,16" concept="9" />
-      <node id="7241381882860007494" at="56,28,57,18" concept="9" />
-      <node id="7241381882860007496" at="58,5,59,60" concept="8" />
-      <node id="7241381882860007502" at="59,60,60,64" concept="8" />
-      <node id="7241381882860008064" at="63,49,64,23" concept="9" />
-      <node id="7241381882860007517" at="66,7,67,31" concept="9" />
-      <node id="7241381882860007532" at="70,28,71,37" concept="9" />
-      <node id="7241381882860007534" at="72,5,73,60" concept="8" />
-      <node id="7241381882860007540" at="73,60,74,82" concept="8" />
-      <node id="7241381882860008067" at="77,52,78,56" concept="8" />
-      <node id="7241381882860008072" at="78,56,79,24" concept="2" />
-      <node id="7241381882860008077" at="79,24,80,17" concept="9" />
-      <node id="7241381882860007557" at="82,7,83,66" concept="8" />
-      <node id="7241381882860007572" at="84,43,85,31" concept="2" />
-      <node id="7241381882860007579" at="86,5,87,17" concept="9" />
-      <node id="7241381882860007588" at="89,88,90,88" concept="8" />
-      <node id="7241381882860007600" at="91,28,92,20" concept="9" />
-      <node id="7241381882860007602" at="93,5,94,60" concept="8" />
-      <node id="7241381882860007615" at="96,0,97,0" concept="3" trace="name" />
-      <node id="7241381882860007618" at="97,0,98,0" concept="3" trace="classBoundVisitor" />
-      <node id="7241381882860007621" at="98,0,99,0" concept="3" trace="interfaceBoundVisitors" />
-      <node id="7241381882860008093" at="101,32,102,18" concept="2" />
-      <node id="7241381882860008097" at="103,9,104,25" concept="2" />
-      <node id="7241381882860008104" at="107,49,108,53" concept="2" />
-      <node id="7241381882860008111" at="108,53,109,33" concept="9" />
-      <node id="7241381882860008116" at="112,53,113,62" concept="8" />
-      <node id="7241381882860008121" at="113,62,114,44" concept="2" />
-      <node id="7241381882860008128" at="114,44,115,23" concept="9" />
-      <node id="7241381882860008138" at="119,27,120,18" concept="2" />
-      <node id="7241381882860008142" at="121,9,122,39" concept="9" />
-      <node id="7241381882860008152" at="126,27,127,18" concept="2" />
-      <node id="7241381882860008156" at="128,9,129,39" concept="9" />
-      <node id="7241381882860008159" at="131,28,132,94" concept="8" />
-      <node id="7241381882860008178" at="133,61,134,45" concept="2" />
-      <node id="5944751885067649571" at="135,9,136,34" concept="8" />
-      <node id="5944751885067649600" at="137,40,138,53" concept="2" />
-      <node id="5944751885067656596" at="139,51,140,69" concept="8" />
-      <node id="5944751885067656620" at="141,75,142,32" concept="2" />
-      <node id="7241381882860008185" at="145,9,146,82" concept="2" />
-      <node id="7241381882860008207" at="146,82,147,20" concept="2" />
-      <node id="7241381882860008213" at="147,20,148,33" concept="2" />
-      <node id="7241381882860008219" at="148,33,149,39" concept="2" />
-      <node id="7241381882860007645" at="151,7,152,18" concept="9" />
-      <node id="7241381882860007659" at="155,28,156,37" concept="9" />
-      <node id="7241381882860007661" at="157,5,158,60" concept="8" />
-      <node id="7241381882860007667" at="158,60,159,82" concept="8" />
-      <node id="7241381882860008226" at="162,52,163,56" concept="8" />
-      <node id="7241381882860008231" at="163,56,164,24" concept="2" />
-      <node id="7241381882860008236" at="164,24,165,17" concept="9" />
-      <node id="7241381882860007684" at="167,7,168,72" concept="8" />
-      <node id="7241381882860007699" at="169,43,170,31" concept="2" />
-      <node id="7241381882860007706" at="171,5,172,17" concept="9" />
-      <node id="7241381882860007719" at="175,28,176,18" concept="9" />
-      <node id="7241381882860007721" at="177,5,178,64" concept="8" />
-      <node id="7241381882860007726" at="178,64,179,60" concept="8" />
-      <node id="7241381882860007732" at="179,60,180,31" concept="2" />
-      <node id="7241381882860007737" at="180,31,181,31" concept="9" />
-      <node id="7241381882860007309" at="184,0,185,0" concept="3" trace="myResult" />
-      <node id="7241381882860007312" at="185,0,186,0" concept="3" trace="myTypes" />
-      <node id="7241381882860007316" at="186,0,187,0" concept="3" trace="myWildcard" />
-      <node id="7241381882860007319" at="187,0,188,0" concept="3" trace="myArrayVisitors" />
-      <node id="7241381882860007747" at="190,44,191,22" concept="2" />
-      <node id="4580726389547444149" at="193,42,194,106" concept="10" />
-      <node id="4580726389547452667" at="194,106,195,104" concept="10" />
-      <node id="7241381882860007761" at="196,30,197,26" concept="2" />
-      <node id="7241381882860007768" at="197,26,198,15" concept="9" />
-      <node id="7241381882860007778" at="200,51,201,55" concept="8" />
-      <node id="7241381882860007788" at="201,55,202,98" concept="8" />
-      <node id="7241381882860007805" at="203,35,204,86" concept="8" />
-      <node id="7241381882860007815" at="204,86,205,36" concept="2" />
-      <node id="7241381882860007820" at="205,36,206,42" concept="2" />
-      <node id="7241381882860007825" at="207,9,208,34" concept="2" />
-      <node id="3275604661364842497" at="209,60,210,65" concept="8" />
-      <node id="3275604661364851072" at="210,65,211,43" concept="8" />
-      <node id="3275604661365249689" at="211,43,212,37" concept="8" />
-      <node id="3275604661365223605" at="213,52,214,62" concept="2" />
-      <node id="3275604661365224445" at="215,16,216,100" concept="8" />
-      <node id="3275604661365227755" at="216,100,217,40" concept="2" />
-      <node id="3275604661365228664" at="217,40,218,37" concept="2" />
-      <node id="3275604661363994176" at="220,7,221,35" concept="8" />
-      <node id="7241381882860007841" at="222,59,223,69" concept="2" />
-      <node id="7241381882860007861" at="225,41,226,30" concept="2" />
-      <node id="7241381882860007878" at="230,32,231,34" concept="2" />
-      <node id="7241381882860007895" at="233,33,234,22" concept="2" />
-      <node id="4580726389547476905" at="237,40,238,111" concept="10" />
-      <node id="7241381882860007909" at="239,30,240,25" concept="2" />
-      <node id="7241381882860007915" at="240,25,241,40" concept="9" />
-      <node id="7241381882860007926" at="243,30,244,25" concept="2" />
-      <node id="7241381882860007932" at="244,25,245,38" concept="9" />
-      <node id="7241381882860007936" at="246,7,247,18" concept="9" />
-      <node id="3275604661364360304" at="250,43,251,50" concept="9" />
-      <node id="3275604661364499918" at="252,14,253,20" concept="9" />
-      <node id="4580726389547576554" at="257,37,258,38" concept="10" />
-      <node id="4580726389547575794" at="258,38,259,26" concept="2" />
-      <node id="7241381882860007939" at="259,26,260,38" concept="2" />
-      <node id="4580726389547557639" at="263,62,264,63" concept="10" />
-      <node id="4580726389547596755" at="264,63,265,104" concept="10" />
-      <node id="4580726389547627027" at="265,104,266,108" concept="10" />
-      <node id="4580726389547644775" at="266,108,267,70" concept="10" />
-      <node id="4580726389547522186" at="267,70,268,26" concept="2" />
-      <node id="7241381882860007946" at="268,26,269,28" concept="2" />
-      <node id="7241381882860007952" at="269,28,270,18" concept="9" />
-      <node id="4580726389547665472" at="273,48,274,126" concept="10" />
-      <node id="7241381882860007955" at="274,126,275,64" concept="2" />
-      <node id="7241381882860007965" at="278,48,279,41" concept="2" />
-      <node id="2335325656383017931" at="283,36,284,63" concept="2" />
-      <node id="2335325656383090775" at="285,7,286,55" concept="8" />
-      <node id="2335325656383137378" at="286,55,287,30" concept="2" />
-      <node id="7241381882860007973" at="287,30,288,16" concept="9" />
-      <node id="7241381882860007981" at="291,45,292,56" concept="2" />
-      <node id="4580726389547667495" at="295,28,296,120" concept="10" />
-      <node id="2335325656383322501" at="297,36,298,28" concept="2" />
-      <node id="2335325656383334831" at="299,14,300,102" concept="10" />
-      <node id="7241381882860008001" at="300,102,301,17" concept="2" />
-      <node id="4580726389547502138" at="306,36,307,15" concept="9" />
-      <node id="7241381882860008006" at="309,53,310,50" concept="2" />
-      <node id="7241381882860008017" at="311,7,312,29" concept="2" />
-      <node id="2335325656383334530" at="316,36,317,93" concept="10" />
-      <node id="2335325656383330664" at="317,93,318,28" concept="2" />
-      <node id="7241381882860008055" at="320,29,321,17" concept="2" />
-      <node id="7241381882860008059" at="322,7,323,22" concept="9" />
-      <node id="7241381882860007373" at="16,0,18,0" concept="1" trace="TypeUtil#()V" />
-      <node id="7241381882860007322" at="188,0,190,0" concept="1" trace="TypeBuilderVisitor#()V" />
-      <node id="3275604661364481420" at="252,12,254,7" concept="0" />
-      <node id="7241381882860007375" at="18,0,21,0" concept="12" trace="fromDescriptor#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007462" at="45,86,48,11" concept="4" />
-      <node id="7241381882860007489" at="55,62,58,5" concept="6" />
-      <node id="7241381882860007527" at="69,72,72,5" concept="6" />
-      <node id="7241381882860007567" at="83,66,86,5" concept="5" />
-      <node id="7241381882860007595" at="90,88,93,5" concept="6" />
-      <node id="7241381882860008086" at="100,57,103,9" concept="6" />
-      <node id="7241381882860008131" at="118,49,121,9" concept="6" />
-      <node id="7241381882860008145" at="125,49,128,9" concept="6" />
-      <node id="7241381882860008171" at="132,94,135,9" concept="5" />
-      <node id="5944751885067656608" at="140,69,143,13" concept="6" />
-      <node id="7241381882860007654" at="154,67,157,5" concept="6" />
-      <node id="7241381882860007694" at="168,72,171,5" concept="5" />
-      <node id="7241381882860007714" at="174,56,177,5" concept="6" />
-      <node id="7241381882860007324" at="190,0,193,0" concept="7" trace="setResult#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860007832" at="221,35,224,7" concept="6" />
-      <node id="7241381882860007856" at="224,7,227,7" concept="6" />
-      <node id="7241381882860007869" at="229,27,232,7" concept="6" />
-      <node id="7241381882860007887" at="232,7,235,7" concept="6" />
-      <node id="2335325656382997972" at="282,46,285,7" concept="6" />
-      <node id="7241381882860007999" at="299,12,302,7" concept="0" />
-      <node id="4580726389547497152" at="305,38,308,7" concept="6" />
-      <node id="2335325656383220181" at="308,7,311,7" concept="5" />
-      <node id="7241381882860008048" at="319,7,322,7" concept="6" />
-      <node id="7241381882860007514" at="62,0,66,0" concept="7" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007754" at="195,104,199,7" concept="6" />
-      <node id="3275604661365224243" at="215,14,219,9" concept="0" />
-      <node id="7241381882860007902" at="238,111,242,7" concept="6" />
-      <node id="7241381882860007919" at="242,7,246,7" concept="6" />
-      <node id="7241381882860007355" at="277,0,281,0" concept="7" trace="visitTypeVariable#(Ljava/lang/String;)V" />
-      <node id="7241381882860007363" at="290,0,294,0" concept="7" trace="visitClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860008024" at="315,37,319,7" concept="6" />
-      <node id="7241381882860007630" at="106,0,111,0" concept="7" trace="visitClassBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007797" at="202,98,207,9" concept="6" />
-      <node id="3275604661364358360" at="249,42,254,7" concept="6" />
-      <node id="7241381882860007350" at="272,0,277,0" concept="7" trace="visitBaseType#(C)V" />
-      <node id="7241381882860007507" at="60,64,66,7" concept="2" />
-      <node id="7241381882860007554" at="76,0,82,0" concept="7" trace="visitParameterType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007633" at="111,0,117,0" concept="7" trace="visitInterfaceBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="5944751885067650179" at="138,53,144,11" concept="6" />
-      <node id="7241381882860007681" at="161,0,167,0" concept="7" trace="visitExceptionType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007342" at="256,0,262,0" concept="7" trace="visitTypeArgument#()V" />
-      <node id="7241381882860007993" at="296,120,302,7" concept="6" />
-      <node id="7241381882860007451" at="43,22,50,9" concept="0" />
-      <node id="7241381882860007625" at="99,0,106,0" concept="7" trace="visitFormalTypeParameter#(Ljava/lang/String;)V" />
-      <node id="7241381882860007636" at="117,0,124,0" concept="7" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007639" at="124,0,131,0" concept="7" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="3275604661365222295" at="212,37,219,9" concept="6" />
-      <node id="3275604661364265408" at="249,0,256,0" concept="7" trace="unwrap#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007547" at="74,82,82,7" concept="2" />
-      <node id="7241381882860007674" at="159,82,167,7" concept="2" />
-      <node id="7241381882860007334" at="229,0,237,0" concept="7" trace="finish#()V" />
-      <node id="5944751885067649598" at="136,34,145,9" concept="6" />
-      <node id="7241381882860007708" at="174,0,183,0" concept="12" trace="getFieldType#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007360" at="281,0,290,0" concept="7" trace="visitArrayType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="2335325656383297352" at="305,0,314,0" concept="7" trace="consumeArrayTypes#()V" />
-      <node id="7241381882860007345" at="262,0,272,0" concept="7" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860007368" at="294,0,304,0" concept="7" trace="visitEnd#()V" />
-      <node id="7241381882860007371" at="315,0,325,0" concept="7" trace="getResult#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007337" at="237,0,249,0" concept="7" trace="wrap#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007484" at="55,0,69,0" concept="12" trace="getReturnType#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007521" at="69,0,89,0" concept="12" trace="getParameterTypes#(Ljava/lang/String;)Ljava/util/List;" />
-      <node id="7241381882860007642" at="131,0,151,0" concept="7" trace="flush#()V" />
-      <node id="7241381882860007647" at="154,0,174,0" concept="12" trace="getExceptionTypes#(Ljava/lang/String;)Ljava/util/List;" />
-      <node id="7241381882860007769" at="199,7,220,7" concept="6" />
-      <node id="7241381882860007389" at="21,50,52,5" concept="14" />
-      <node id="7241381882860007384" at="21,0,55,0" concept="12" trace="fromType#(Lorg/jetbrains/org/objectweb/asm/Type;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860007329" at="193,0,229,0" concept="7" trace="addPart#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860007608" at="94,60,151,7" concept="2" />
-      <node id="7241381882860007581" at="89,0,154,0" concept="12" trace="getFormalTypeParameters#(Ljava/lang/String;)Ljava/util/List;" />
+      <node id="7241381882860007380" at="18,58,19,49" concept="10" />
+      <node id="7241381882860007397" at="23,21,24,37" concept="10" />
+      <node id="7241381882860007402" at="25,24,26,40" concept="10" />
+      <node id="7241381882860007407" at="27,21,28,37" concept="10" />
+      <node id="7241381882860007412" at="29,21,30,37" concept="10" />
+      <node id="7241381882860007417" at="31,22,32,38" concept="10" />
+      <node id="7241381882860007422" at="33,20,34,36" concept="10" />
+      <node id="7241381882860007427" at="35,22,36,38" concept="10" />
+      <node id="7241381882860007432" at="37,21,38,37" concept="10" />
+      <node id="7241381882860007437" at="39,23,40,39" concept="10" />
+      <node id="7241381882860007442" at="41,23,42,53" concept="10" />
+      <node id="7241381882860007453" at="44,9,45,86" concept="9" />
+      <node id="7241381882860007469" at="46,58,47,46" concept="3" />
+      <node id="7241381882860007480" at="48,11,49,24" concept="10" />
+      <node id="7241381882860007482" at="52,5,53,16" concept="10" />
+      <node id="7241381882860007494" at="56,28,57,18" concept="10" />
+      <node id="7241381882860007496" at="58,5,59,60" concept="9" />
+      <node id="7241381882860007502" at="59,60,60,64" concept="9" />
+      <node id="7241381882860008064" at="63,49,64,23" concept="10" />
+      <node id="7241381882860007517" at="66,7,67,31" concept="10" />
+      <node id="7241381882860007532" at="70,28,71,37" concept="10" />
+      <node id="7241381882860007534" at="72,5,73,60" concept="9" />
+      <node id="7241381882860007540" at="73,60,74,82" concept="9" />
+      <node id="7241381882860008067" at="77,52,78,56" concept="9" />
+      <node id="7241381882860008072" at="78,56,79,24" concept="3" />
+      <node id="7241381882860008077" at="79,24,80,17" concept="10" />
+      <node id="7241381882860007557" at="82,7,83,66" concept="9" />
+      <node id="7241381882860007572" at="84,43,85,31" concept="3" />
+      <node id="7241381882860007579" at="86,5,87,17" concept="10" />
+      <node id="7241381882860007588" at="89,88,90,88" concept="9" />
+      <node id="7241381882860007600" at="91,28,92,20" concept="10" />
+      <node id="7241381882860007602" at="93,5,94,60" concept="9" />
+      <node id="7241381882860007615" at="96,0,97,0" concept="4" trace="name" />
+      <node id="7241381882860007618" at="97,0,98,0" concept="4" trace="classBoundVisitor" />
+      <node id="7241381882860007621" at="98,0,99,0" concept="4" trace="interfaceBoundVisitors" />
+      <node id="7241381882860008093" at="101,32,102,18" concept="3" />
+      <node id="7241381882860008097" at="103,9,104,25" concept="3" />
+      <node id="7241381882860008104" at="107,49,108,53" concept="3" />
+      <node id="7241381882860008111" at="108,53,109,33" concept="10" />
+      <node id="7241381882860008116" at="112,53,113,62" concept="9" />
+      <node id="7241381882860008121" at="113,62,114,44" concept="3" />
+      <node id="7241381882860008128" at="114,44,115,23" concept="10" />
+      <node id="7241381882860008138" at="119,27,120,18" concept="3" />
+      <node id="7241381882860008142" at="121,9,122,39" concept="10" />
+      <node id="7241381882860008152" at="126,27,127,18" concept="3" />
+      <node id="7241381882860008156" at="128,9,129,39" concept="10" />
+      <node id="7241381882860008159" at="131,28,132,94" concept="9" />
+      <node id="7241381882860008178" at="133,61,134,45" concept="3" />
+      <node id="5944751885067649571" at="135,9,136,34" concept="9" />
+      <node id="5944751885067649600" at="137,40,138,53" concept="3" />
+      <node id="5944751885067656596" at="139,51,140,69" concept="9" />
+      <node id="5944751885067656620" at="141,75,142,32" concept="3" />
+      <node id="7241381882860008185" at="145,9,146,82" concept="3" />
+      <node id="7241381882860008207" at="146,82,147,20" concept="3" />
+      <node id="7241381882860008213" at="147,20,148,33" concept="3" />
+      <node id="7241381882860008219" at="148,33,149,39" concept="3" />
+      <node id="7241381882860007645" at="151,7,152,18" concept="10" />
+      <node id="7241381882860007659" at="155,28,156,37" concept="10" />
+      <node id="7241381882860007661" at="157,5,158,60" concept="9" />
+      <node id="7241381882860007667" at="158,60,159,82" concept="9" />
+      <node id="7241381882860008226" at="162,52,163,56" concept="9" />
+      <node id="7241381882860008231" at="163,56,164,24" concept="3" />
+      <node id="7241381882860008236" at="164,24,165,17" concept="10" />
+      <node id="7241381882860007684" at="167,7,168,72" concept="9" />
+      <node id="7241381882860007699" at="169,43,170,31" concept="3" />
+      <node id="7241381882860007706" at="171,5,172,17" concept="10" />
+      <node id="7241381882860007719" at="175,28,176,18" concept="10" />
+      <node id="7241381882860007721" at="177,5,178,64" concept="9" />
+      <node id="7241381882860007726" at="178,64,179,60" concept="9" />
+      <node id="7241381882860007732" at="179,60,180,31" concept="3" />
+      <node id="7241381882860007737" at="180,31,181,31" concept="10" />
+      <node id="7241381882860007309" at="184,0,185,0" concept="4" trace="myResult" />
+      <node id="7241381882860007312" at="185,0,186,0" concept="4" trace="myTypes" />
+      <node id="7241381882860007316" at="186,0,187,0" concept="4" trace="myWildcard" />
+      <node id="7241381882860007319" at="187,0,188,0" concept="4" trace="myArrayVisitor" />
+      <node id="7241381882860007747" at="190,44,191,22" concept="3" />
+      <node id="4580726389547444149" at="193,42,194,106" concept="11" />
+      <node id="4580726389547452667" at="194,106,195,104" concept="11" />
+      <node id="7241381882860007761" at="196,30,197,26" concept="3" />
+      <node id="7241381882860007768" at="197,26,198,15" concept="10" />
+      <node id="7241381882860007778" at="200,51,201,55" concept="9" />
+      <node id="7241381882860007788" at="201,55,202,99" concept="9" />
+      <node id="7241381882860007805" at="203,35,204,86" concept="9" />
+      <node id="7241381882860007815" at="204,86,205,36" concept="3" />
+      <node id="7241381882860007820" at="205,36,206,42" concept="3" />
+      <node id="7241381882860007825" at="207,9,208,34" concept="3" />
+      <node id="3275604661364842497" at="209,60,210,65" concept="9" />
+      <node id="3275604661364851072" at="210,65,211,43" concept="9" />
+      <node id="3275604661365249689" at="211,43,212,37" concept="9" />
+      <node id="3275604661365223605" at="213,52,214,62" concept="3" />
+      <node id="3275604661365224445" at="215,16,216,100" concept="9" />
+      <node id="3275604661365227755" at="216,100,217,40" concept="3" />
+      <node id="3275604661365228664" at="217,40,218,37" concept="3" />
+      <node id="3275604661363994176" at="220,7,221,35" concept="9" />
+      <node id="7241381882860007841" at="222,59,223,69" concept="3" />
+      <node id="7241381882860007861" at="225,41,226,30" concept="3" />
+      <node id="7241381882860007878" at="230,32,231,34" concept="3" />
+      <node id="7241381882860007895" at="233,33,234,22" concept="3" />
+      <node id="4580726389547476905" at="237,40,238,111" concept="11" />
+      <node id="7241381882860007909" at="239,30,240,25" concept="3" />
+      <node id="7241381882860007915" at="240,25,241,40" concept="10" />
+      <node id="7241381882860007926" at="243,30,244,25" concept="3" />
+      <node id="7241381882860007932" at="244,25,245,38" concept="10" />
+      <node id="7241381882860007936" at="246,7,247,18" concept="10" />
+      <node id="3275604661364360304" at="250,43,251,50" concept="10" />
+      <node id="3275604661364499918" at="252,14,253,20" concept="10" />
+      <node id="4580726389547576554" at="257,37,258,38" concept="11" />
+      <node id="4580726389547575794" at="258,38,259,26" concept="3" />
+      <node id="7241381882860007939" at="259,26,260,38" concept="3" />
+      <node id="4580726389547557639" at="263,62,264,63" concept="11" />
+      <node id="4580726389547596755" at="264,63,265,104" concept="11" />
+      <node id="4580726389547627027" at="265,104,266,108" concept="11" />
+      <node id="4580726389547644775" at="266,108,267,70" concept="11" />
+      <node id="4580726389547522186" at="267,70,268,26" concept="3" />
+      <node id="2721987268323798640" at="268,26,269,113" concept="11" />
+      <node id="7241381882860007946" at="269,113,270,28" concept="3" />
+      <node id="7241381882860007952" at="270,28,271,18" concept="10" />
+      <node id="4580726389547665472" at="274,48,275,126" concept="11" />
+      <node id="7241381882860007955" at="275,126,276,49" concept="3" />
+      <node id="7241381882860007965" at="279,48,280,41" concept="3" />
+      <node id="2721987268323608533" at="283,46,284,68" concept="0" />
+      <node id="2335325656383137378" at="284,68,285,48" concept="3" />
+      <node id="7241381882860007973" at="285,48,286,28" concept="10" />
+      <node id="7241381882860007981" at="289,45,290,56" concept="3" />
+      <node id="4580726389547667495" at="293,28,294,120" concept="11" />
+      <node id="2335325656383322501" at="295,35,296,28" concept="3" />
+      <node id="2335325656383334831" at="297,14,298,105" concept="11" />
+      <node id="7241381882860008001" at="298,105,299,17" concept="3" />
+      <node id="4580726389547502138" at="304,35,305,15" concept="10" />
+      <node id="7241381882860008006" at="306,7,307,60" concept="3" />
+      <node id="7241381882860008017" at="307,60,308,28" concept="3" />
+      <node id="2335325656383334530" at="311,37,312,122" concept="11" />
+      <node id="2721987268323739699" at="312,122,313,52" concept="11" />
+      <node id="2335325656383330664" at="313,52,314,26" concept="3" />
+      <node id="7241381882860008055" at="315,29,316,17" concept="3" />
+      <node id="7241381882860008059" at="317,7,318,22" concept="10" />
+      <node id="7241381882860007373" at="16,0,18,0" concept="2" trace="TypeUtil#()V" />
+      <node id="7241381882860007322" at="188,0,190,0" concept="2" trace="TypeBuilderVisitor#()V" />
+      <node id="3275604661364481420" at="252,12,254,7" concept="1" />
+      <node id="7241381882860007375" at="18,0,21,0" concept="13" trace="fromDescriptor#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007462" at="45,86,48,11" concept="5" />
+      <node id="7241381882860007489" at="55,62,58,5" concept="7" />
+      <node id="7241381882860007527" at="69,72,72,5" concept="7" />
+      <node id="7241381882860007567" at="83,66,86,5" concept="6" />
+      <node id="7241381882860007595" at="90,88,93,5" concept="7" />
+      <node id="7241381882860008086" at="100,57,103,9" concept="7" />
+      <node id="7241381882860008131" at="118,49,121,9" concept="7" />
+      <node id="7241381882860008145" at="125,49,128,9" concept="7" />
+      <node id="7241381882860008171" at="132,94,135,9" concept="6" />
+      <node id="5944751885067656608" at="140,69,143,13" concept="7" />
+      <node id="7241381882860007654" at="154,67,157,5" concept="7" />
+      <node id="7241381882860007694" at="168,72,171,5" concept="6" />
+      <node id="7241381882860007714" at="174,56,177,5" concept="7" />
+      <node id="7241381882860007324" at="190,0,193,0" concept="8" trace="setResult#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860007832" at="221,35,224,7" concept="7" />
+      <node id="7241381882860007856" at="224,7,227,7" concept="7" />
+      <node id="7241381882860007869" at="229,27,232,7" concept="7" />
+      <node id="7241381882860007887" at="232,7,235,7" concept="7" />
+      <node id="7241381882860007999" at="297,12,300,7" concept="1" />
+      <node id="4580726389547497152" at="303,38,306,7" concept="7" />
+      <node id="7241381882860008048" at="314,26,317,7" concept="7" />
+      <node id="7241381882860007514" at="62,0,66,0" concept="8" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007754" at="195,104,199,7" concept="7" />
+      <node id="3275604661365224243" at="215,14,219,9" concept="1" />
+      <node id="7241381882860007902" at="238,111,242,7" concept="7" />
+      <node id="7241381882860007919" at="242,7,246,7" concept="7" />
+      <node id="7241381882860007355" at="278,0,282,0" concept="8" trace="visitTypeVariable#(Ljava/lang/String;)V" />
+      <node id="7241381882860007363" at="288,0,292,0" concept="8" trace="visitClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860007630" at="106,0,111,0" concept="8" trace="visitClassBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007797" at="202,99,207,9" concept="7" />
+      <node id="3275604661364358360" at="249,42,254,7" concept="7" />
+      <node id="7241381882860007350" at="273,0,278,0" concept="8" trace="visitBaseType#(C)V" />
+      <node id="7241381882860007507" at="60,64,66,7" concept="3" />
+      <node id="7241381882860007554" at="76,0,82,0" concept="8" trace="visitParameterType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007633" at="111,0,117,0" concept="8" trace="visitInterfaceBound#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="5944751885067650179" at="138,53,144,11" concept="7" />
+      <node id="7241381882860007681" at="161,0,167,0" concept="8" trace="visitExceptionType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007342" at="256,0,262,0" concept="8" trace="visitTypeArgument#()V" />
+      <node id="7241381882860007360" at="282,0,288,0" concept="8" trace="visitArrayType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007993" at="294,120,300,7" concept="7" />
+      <node id="7241381882860007451" at="43,22,50,9" concept="1" />
+      <node id="7241381882860007625" at="99,0,106,0" concept="8" trace="visitFormalTypeParameter#(Ljava/lang/String;)V" />
+      <node id="7241381882860007636" at="117,0,124,0" concept="8" trace="visitReturnType#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007639" at="124,0,131,0" concept="8" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="3275604661365222295" at="212,37,219,9" concept="7" />
+      <node id="3275604661364265408" at="249,0,256,0" concept="8" trace="unwrap#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="2335325656383297352" at="303,0,310,0" concept="8" trace="consumeArrayTypes#()V" />
+      <node id="7241381882860007547" at="74,82,82,7" concept="3" />
+      <node id="7241381882860007674" at="159,82,167,7" concept="3" />
+      <node id="7241381882860007334" at="229,0,237,0" concept="8" trace="finish#()V" />
+      <node id="5944751885067649598" at="136,34,145,9" concept="7" />
+      <node id="7241381882860007708" at="174,0,183,0" concept="13" trace="getFieldType#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007371" at="311,0,320,0" concept="8" trace="getResult#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007368" at="292,0,302,0" concept="8" trace="visitEnd#()V" />
+      <node id="7241381882860007345" at="262,0,273,0" concept="8" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860007337" at="237,0,249,0" concept="8" trace="wrap#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007484" at="55,0,69,0" concept="13" trace="getReturnType#(Ljava/lang/String;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007521" at="69,0,89,0" concept="13" trace="getParameterTypes#(Ljava/lang/String;)Ljava/util/List;" />
+      <node id="7241381882860007642" at="131,0,151,0" concept="8" trace="flush#()V" />
+      <node id="7241381882860007647" at="154,0,174,0" concept="13" trace="getExceptionTypes#(Ljava/lang/String;)Ljava/util/List;" />
+      <node id="7241381882860007769" at="199,7,220,7" concept="7" />
+      <node id="7241381882860007389" at="21,50,52,5" concept="15" />
+      <node id="7241381882860007384" at="21,0,55,0" concept="13" trace="fromType#(Lorg/jetbrains/org/objectweb/asm/Type;)Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860007329" at="193,0,229,0" concept="8" trace="addPart#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860007608" at="94,60,151,7" concept="3" />
+      <node id="7241381882860007581" at="89,0,154,0" concept="13" trace="getFormalTypeParameters#(Ljava/lang/String;)Ljava/util/List;" />
       <scope id="7241381882860007374" at="16,26,16,26" />
       <scope id="7241381882860007393" at="51,14,51,14" />
       <scope id="7241381882860007745" at="188,33,188,33" />
@@ -977,22 +1002,19 @@
       <scope id="7241381882860007894" at="233,33,234,22" />
       <scope id="3275604661364358361" at="250,43,251,50" />
       <scope id="3275604661364481421" at="252,14,253,20" />
-      <scope id="7241381882860007964" at="278,48,279,41" />
-      <scope id="2335325656382997974" at="283,36,284,63" />
-      <scope id="7241381882860007980" at="291,45,292,56" />
-      <scope id="7241381882860008005" at="297,36,298,28" />
-      <scope id="4580726389547497154" at="306,36,307,15" />
-      <scope id="2335325656383220184" at="309,53,310,50" />
-      <scope id="7241381882860008054" at="320,29,321,17" />
+      <scope id="7241381882860007964" at="279,48,280,41" />
+      <scope id="7241381882860007980" at="289,45,290,56" />
+      <scope id="7241381882860008005" at="295,35,296,28" />
+      <scope id="4580726389547497154" at="304,35,305,15" />
+      <scope id="7241381882860008054" at="315,29,316,17" />
       <scope id="7241381882860007373" at="16,0,18,0" />
       <scope id="7241381882860008103" at="107,49,109,33" />
       <scope id="7241381882860007322" at="188,0,190,0" />
       <scope id="7241381882860007760" at="196,30,198,15" />
       <scope id="7241381882860007908" at="239,30,241,40" />
       <scope id="7241381882860007925" at="243,30,245,38" />
-      <scope id="7241381882860007954" at="273,48,275,64" />
-      <scope id="7241381882860008000" at="299,14,301,17" />
-      <scope id="7241381882860008030" at="316,36,318,28" />
+      <scope id="7241381882860007954" at="274,48,276,49" />
+      <scope id="7241381882860008000" at="297,14,299,17" />
       <scope id="7241381882860007375" at="18,0,21,0">
         <var name="desc" id="7241381882860007377" />
       </scope>
@@ -1027,9 +1049,7 @@
         <var name="newBound" id="3275604661365224446" />
       </scope>
       <scope id="7241381882860007938" at="257,37,260,38" />
-      <scope id="2335325656383220181" at="308,7,311,7">
-        <var name="av" id="2335325656383220185" />
-      </scope>
+      <scope id="7241381882860007972" at="283,46,286,28" />
       <scope id="7241381882860007514" at="62,0,66,0" />
       <scope id="7241381882860008085" at="100,57,104,25" />
       <scope id="7241381882860008130" at="118,49,122,39" />
@@ -1037,10 +1057,10 @@
       <scope id="5944751885067650180" at="139,51,143,13">
         <var name="classFormalType" id="5944751885067656597" />
       </scope>
-      <scope id="7241381882860007355" at="277,0,281,0">
+      <scope id="7241381882860007355" at="278,0,282,0">
         <var name="name" id="7241381882860007358" />
       </scope>
-      <scope id="7241381882860007363" at="290,0,294,0">
+      <scope id="7241381882860007363" at="288,0,292,0">
         <var name="name" id="7241381882860007366" />
       </scope>
       <scope id="7241381882860007452" at="44,9,49,24">
@@ -1048,17 +1068,16 @@
       </scope>
       <scope id="7241381882860007630" at="106,0,111,0" />
       <scope id="3275604661364265411" at="249,42,254,7" />
-      <scope id="7241381882860007350" at="272,0,277,0">
+      <scope id="7241381882860007350" at="273,0,278,0">
         <var name="descriptor" id="7241381882860007353" />
       </scope>
+      <scope id="2335325656383297355" at="303,38,308,28" />
       <scope id="7241381882860007554" at="76,0,82,0" />
       <scope id="7241381882860007633" at="111,0,117,0" />
       <scope id="7241381882860007681" at="161,0,167,0" />
       <scope id="7241381882860007868" at="229,27,235,7" />
       <scope id="7241381882860007342" at="256,0,262,0" />
-      <scope id="7241381882860007972" at="282,46,288,16">
-        <var name="rv" id="2335325656383090776" />
-      </scope>
+      <scope id="7241381882860007360" at="282,0,288,0" />
       <scope id="7241381882860007450" at="43,22,50,9" />
       <scope id="7241381882860007625" at="99,0,106,0">
         <var name="name" id="7241381882860007628" />
@@ -1073,31 +1092,29 @@
       <scope id="3275604661364265408" at="249,0,256,0">
         <var name="type" id="3275604661364339916" />
       </scope>
-      <scope id="7241381882860007945" at="263,62,270,18" />
-      <scope id="7241381882860007992" at="295,28,302,7" />
-      <scope id="2335325656383297355" at="305,38,312,29" />
+      <scope id="7241381882860007992" at="293,28,300,7" />
+      <scope id="2335325656383297352" at="303,0,310,0" />
+      <scope id="7241381882860008023" at="311,37,318,22" />
       <scope id="7241381882860007777" at="200,51,208,34">
         <var name="ct" id="7241381882860007779" />
         <var name="replacement" id="7241381882860007789" />
       </scope>
       <scope id="7241381882860007334" at="229,0,237,0" />
-      <scope id="7241381882860008023" at="315,37,323,22" />
+      <scope id="7241381882860007945" at="263,62,271,18" />
       <scope id="7241381882860007708" at="174,0,183,0">
         <var name="signature" id="7241381882860007711" />
       </scope>
-      <scope id="7241381882860007360" at="281,0,290,0" />
-      <scope id="2335325656383297352" at="305,0,314,0" />
+      <scope id="7241381882860007371" at="311,0,320,0" />
       <scope id="3275604661364695680" at="209,60,219,9">
         <var name="bound" id="3275604661364851073" />
         <var name="bounded" id="3275604661364842498" />
         <var name="wrapped" id="3275604661365249690" />
       </scope>
       <scope id="7241381882860007901" at="237,40,247,18" />
-      <scope id="7241381882860007345" at="262,0,272,0">
+      <scope id="7241381882860007368" at="292,0,302,0" />
+      <scope id="7241381882860007345" at="262,0,273,0">
         <var name="wildcard" id="7241381882860007348" />
       </scope>
-      <scope id="7241381882860007368" at="294,0,304,0" />
-      <scope id="7241381882860007371" at="315,0,325,0" />
       <scope id="7241381882860007488" at="55,62,67,31">
         <var name="builder" id="7241381882860007503" />
         <var name="reader" id="7241381882860007497" />
@@ -1150,13 +1167,13 @@
       <unit id="7241381882860007553" at="75,22,82,5" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil$2" />
       <unit id="7241381882860007680" at="160,22,167,5" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil$4" />
       <unit id="7241381882860007614" at="95,22,151,5" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil$3" />
-      <unit id="7241381882860007307" at="183,0,326,0" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil$TypeBuilderVisitor" />
-      <unit id="7241381882860007306" at="14,0,327,0" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil" />
+      <unit id="7241381882860007307" at="183,0,321,0" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil$TypeBuilderVisitor" />
+      <unit id="7241381882860007306" at="14,0,322,0" name="jetbrains.mps.baseLanguage.javastub.asm.TypeUtil" />
     </file>
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008653">
     <file name="ASMType.java">
-      <node id="7241381882860008655" at="9,0,11,0" concept="1" trace="ASMType#()V" />
+      <node id="7241381882860008655" at="9,0,11,0" concept="2" trace="ASMType#()V" />
       <scope id="7241381882860008657" at="9,20,9,20" />
       <scope id="7241381882860008655" at="9,0,11,0" />
       <unit id="7241381882860008653" at="7,0,12,0" name="jetbrains.mps.baseLanguage.javastub.asm.ASMType" />
@@ -1164,15 +1181,15 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008658">
     <file name="ASMEnumValue.java">
-      <node id="7241381882860008660" at="9,0,10,0" concept="3" trace="myType" />
-      <node id="7241381882860008663" at="10,0,11,0" concept="3" trace="myConstant" />
-      <node id="7241381882860008672" at="11,54,12,43" concept="2" />
-      <node id="7241381882860008679" at="12,43,13,22" concept="2" />
-      <node id="7241381882860008689" at="15,28,16,18" concept="9" />
-      <node id="7241381882860008697" at="18,31,19,22" concept="9" />
-      <node id="7241381882860008685" at="15,0,18,0" concept="7" trace="getType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860008693" at="18,0,21,0" concept="7" trace="getConstant#()Ljava/lang/String;" />
-      <node id="7241381882860008666" at="11,0,15,0" concept="1" trace="ASMEnumValue#(Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="7241381882860008660" at="9,0,10,0" concept="4" trace="myType" />
+      <node id="7241381882860008663" at="10,0,11,0" concept="4" trace="myConstant" />
+      <node id="7241381882860008672" at="11,54,12,43" concept="3" />
+      <node id="7241381882860008679" at="12,43,13,22" concept="3" />
+      <node id="7241381882860008689" at="15,28,16,18" concept="10" />
+      <node id="7241381882860008697" at="18,31,19,22" concept="10" />
+      <node id="7241381882860008685" at="15,0,18,0" concept="8" trace="getType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860008693" at="18,0,21,0" concept="8" trace="getConstant#()Ljava/lang/String;" />
+      <node id="7241381882860008666" at="11,0,15,0" concept="2" trace="ASMEnumValue#(Ljava/lang/String;Ljava/lang/String;)V" />
       <scope id="7241381882860008688" at="15,28,16,18" />
       <scope id="7241381882860008696" at="18,31,19,22" />
       <scope id="7241381882860008671" at="11,54,13,22" />
@@ -1187,13 +1204,13 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008701">
     <file name="ASMTypeVariable.java">
-      <node id="7241381882860008704" at="9,0,10,0" concept="3" trace="myName" />
-      <node id="7241381882860008712" at="10,39,11,18" concept="2" />
-      <node id="7241381882860008722" at="13,27,14,18" concept="9" />
-      <node id="7241381882860008730" at="17,28,18,18" concept="9" />
-      <node id="7241381882860008707" at="10,0,13,0" concept="1" trace="ASMTypeVariable#(Ljava/lang/String;)V" />
-      <node id="7241381882860008718" at="13,0,16,0" concept="7" trace="getName#()Ljava/lang/String;" />
-      <node id="7241381882860008726" at="16,0,20,0" concept="7" trace="toString#()Ljava/lang/String;" />
+      <node id="7241381882860008704" at="9,0,10,0" concept="4" trace="myName" />
+      <node id="7241381882860008712" at="10,39,11,18" concept="3" />
+      <node id="7241381882860008722" at="13,27,14,18" concept="10" />
+      <node id="7241381882860008730" at="17,28,18,18" concept="10" />
+      <node id="7241381882860008707" at="10,0,13,0" concept="2" trace="ASMTypeVariable#(Ljava/lang/String;)V" />
+      <node id="7241381882860008718" at="13,0,16,0" concept="8" trace="getName#()Ljava/lang/String;" />
+      <node id="7241381882860008726" at="16,0,20,0" concept="8" trace="toString#()Ljava/lang/String;" />
       <scope id="7241381882860008711" at="10,39,11,18" />
       <scope id="7241381882860008721" at="13,27,14,18" />
       <scope id="7241381882860008729" at="17,28,18,18" />
@@ -1207,8 +1224,8 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008734">
     <file name="ASMSuperType.java">
-      <node id="3275604661365124884" at="9,38,10,17" concept="13" />
-      <node id="3275604661365124846" at="9,0,12,0" concept="1" trace="ASMSuperType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="3275604661365124884" at="9,38,10,17" concept="14" />
+      <node id="3275604661365124846" at="9,0,12,0" concept="2" trace="ASMSuperType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
       <scope id="3275604661365124850" at="9,38,10,17" />
       <scope id="3275604661365124846" at="9,0,12,0">
         <var name="bound" id="3275604661365124858" />
@@ -1218,16 +1235,16 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008759">
     <file name="ASMFormalTypeParameter.java">
-      <node id="7241381882860008762" at="12,0,13,0" concept="3" trace="myClassBound" />
-      <node id="7241381882860008765" at="13,0,14,0" concept="3" trace="myInterfaceBounds" />
-      <node id="7241381882860008779" at="14,97,15,16" concept="13" />
-      <node id="7241381882860008781" at="15,16,16,30" concept="2" />
-      <node id="7241381882860008787" at="16,30,17,140" concept="2" />
-      <node id="7241381882860008805" at="19,34,20,24" concept="9" />
-      <node id="7241381882860008814" at="22,45,23,59" concept="9" />
-      <node id="7241381882860008801" at="19,0,22,0" concept="7" trace="getClassBound#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860008809" at="22,0,25,0" concept="7" trace="getInterfaceBounds#()Ljava/util/List;" />
-      <node id="7241381882860008769" at="14,0,19,0" concept="1" trace="ASMFormalTypeParameter#(Ljava/lang/String;Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;Ljava/util/List;)V" />
+      <node id="7241381882860008762" at="12,0,13,0" concept="4" trace="myClassBound" />
+      <node id="7241381882860008765" at="13,0,14,0" concept="4" trace="myInterfaceBounds" />
+      <node id="7241381882860008779" at="14,97,15,16" concept="14" />
+      <node id="7241381882860008781" at="15,16,16,30" concept="3" />
+      <node id="7241381882860008787" at="16,30,17,140" concept="3" />
+      <node id="7241381882860008805" at="19,34,20,24" concept="10" />
+      <node id="7241381882860008814" at="22,45,23,59" concept="10" />
+      <node id="7241381882860008801" at="19,0,22,0" concept="8" trace="getClassBound#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860008809" at="22,0,25,0" concept="8" trace="getInterfaceBounds#()Ljava/util/List;" />
+      <node id="7241381882860008769" at="14,0,19,0" concept="2" trace="ASMFormalTypeParameter#(Ljava/lang/String;Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;Ljava/util/List;)V" />
       <scope id="7241381882860008804" at="19,34,20,24" />
       <scope id="7241381882860008813" at="22,45,23,59" />
       <scope id="7241381882860008778" at="14,97,17,140" />
@@ -1243,8 +1260,8 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860008819">
     <file name="ASMExtendsType.java">
-      <node id="3275604661365124657" at="9,40,10,17" concept="13" />
-      <node id="3275604661365124618" at="9,0,12,0" concept="1" trace="ASMExtendsType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="3275604661365124657" at="9,40,10,17" concept="14" />
+      <node id="3275604661365124618" at="9,0,12,0" concept="2" trace="ASMExtendsType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
       <scope id="3275604661365124622" at="9,40,10,17" />
       <scope id="3275604661365124618" at="9,0,12,0">
         <var name="bound" id="3275604661365124630" />
@@ -1254,21 +1271,21 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860009267">
     <file name="ASMParameterizedType.java">
-      <node id="7241381882860009270" at="13,0,14,0" concept="3" trace="myRawType" />
-      <node id="7241381882860009273" at="14,0,15,0" concept="3" trace="myTypeArguments" />
-      <node id="7241381882860009286" at="15,87,16,24" concept="2" />
-      <node id="7241381882860009292" at="16,24,17,148" concept="2" />
-      <node id="7241381882860009310" at="19,31,20,21" concept="9" />
-      <node id="7241381882860009319" at="22,43,23,27" concept="2" />
-      <node id="7241381882860009331" at="25,46,26,30" concept="2" />
-      <node id="7241381882860009343" at="28,49,29,57" concept="9" />
-      <node id="7241381882860009352" at="32,28,33,53" concept="9" />
-      <node id="7241381882860009306" at="19,0,22,0" concept="7" trace="getRawType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860009314" at="22,0,25,0" concept="7" trace="addArgument#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860009326" at="25,0,28,0" concept="7" trace="removeArgument#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
-      <node id="7241381882860009338" at="28,0,31,0" concept="7" trace="getActualTypeArguments#()Ljava/util/List;" />
-      <node id="7241381882860009277" at="15,0,19,0" concept="1" trace="ASMParameterizedType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;Ljava/util/List;)V" />
-      <node id="7241381882860009348" at="31,0,35,0" concept="7" trace="toString#()Ljava/lang/String;" />
+      <node id="7241381882860009270" at="13,0,14,0" concept="4" trace="myRawType" />
+      <node id="7241381882860009273" at="14,0,15,0" concept="4" trace="myTypeArguments" />
+      <node id="7241381882860009286" at="15,87,16,24" concept="3" />
+      <node id="7241381882860009292" at="16,24,17,148" concept="3" />
+      <node id="7241381882860009310" at="19,31,20,21" concept="10" />
+      <node id="7241381882860009319" at="22,43,23,27" concept="3" />
+      <node id="7241381882860009331" at="25,46,26,30" concept="3" />
+      <node id="7241381882860009343" at="28,49,29,57" concept="10" />
+      <node id="7241381882860009352" at="32,28,33,53" concept="10" />
+      <node id="7241381882860009306" at="19,0,22,0" concept="8" trace="getRawType#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860009314" at="22,0,25,0" concept="8" trace="addArgument#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860009326" at="25,0,28,0" concept="8" trace="removeArgument#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;)V" />
+      <node id="7241381882860009338" at="28,0,31,0" concept="8" trace="getActualTypeArguments#()Ljava/util/List;" />
+      <node id="7241381882860009277" at="15,0,19,0" concept="2" trace="ASMParameterizedType#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;Ljava/util/List;)V" />
+      <node id="7241381882860009348" at="31,0,35,0" concept="8" trace="toString#()Ljava/lang/String;" />
       <scope id="7241381882860009309" at="19,31,20,21" />
       <scope id="7241381882860009318" at="22,43,23,27" />
       <scope id="7241381882860009330" at="25,46,26,30" />
@@ -1293,114 +1310,114 @@
   </root>
   <root nodeRef="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)/7241381882860009362">
     <file name="ASMClass.java">
-      <node id="7241381882860009409" at="22,0,23,0" concept="3" trace="myNode" />
-      <node id="7241381882860009412" at="23,0,24,0" concept="3" trace="myTypeVariables" />
-      <node id="7241381882860009419" at="24,0,25,0" concept="3" trace="myGenericInterfaces" />
-      <node id="7241381882860009426" at="25,0,26,0" concept="3" trace="myFields" />
-      <node id="7241381882860009433" at="26,0,27,0" concept="3" trace="myMethods" />
-      <node id="7241381882860009440" at="27,0,28,0" concept="3" trace="myConstructors" />
-      <node id="7241381882860009447" at="28,0,29,0" concept="3" trace="myAnnotations" />
-      <node id="7241381882860009451" at="29,0,30,0" concept="3" trace="myGenericSuperclass" />
-      <node id="7241381882860009459" at="30,63,31,29" concept="2" />
-      <node id="7241381882860009466" at="32,9,33,127" concept="2" />
-      <node id="5058383315259648551" at="34,34,35,23" concept="10" />
-      <node id="5058383315259597914" at="35,23,36,13" concept="9" />
-      <node id="7241381882860009537" at="38,35,39,73" concept="8" />
-      <node id="7241381882860010124" at="45,36,46,58" concept="8" />
-      <node id="7241381882860010132" at="46,58,47,80" concept="2" />
-      <node id="7241381882860010144" at="55,36,56,58" concept="8" />
-      <node id="7241381882860010152" at="56,58,57,83" concept="2" />
-      <node id="7241381882860009495" at="63,37,64,83" concept="2" />
-      <node id="7241381882860009523" at="66,61,67,75" concept="2" />
-      <node id="7241381882860009569" at="70,35,71,81" concept="2" />
-      <node id="7241381882860009593" at="73,58,74,37" concept="2" />
-      <node id="7241381882860009614" at="76,61,77,39" concept="8" />
-      <node id="7241381882860009634" at="78,31,79,31" concept="2" />
-      <node id="7241381882860009626" at="80,14,81,26" concept="2" />
-      <node id="7241381882860009658" at="84,83,85,177" concept="8" />
-      <node id="7241381882860009696" at="85,177,86,57" concept="2" />
-      <node id="7241381882860009726" at="88,84,89,51" concept="8" />
-      <node id="7241381882860009732" at="89,51,90,32" concept="2" />
-      <node id="7241381882860009760" at="94,86,95,51" concept="8" />
-      <node id="7241381882860009766" at="95,51,96,32" concept="2" />
-      <node id="7241381882860009777" at="101,31,102,55" concept="9" />
-      <node id="303301571174692719" at="104,29,105,53" concept="9" />
-      <node id="7241381882860009792" at="107,29,108,53" concept="9" />
-      <node id="7241381882860009807" at="110,28,111,52" concept="9" />
-      <node id="7241381882860009822" at="113,33,114,57" concept="9" />
-      <node id="1043983806974678759" at="116,45,117,59" concept="9" />
-      <node id="7241381882860009837" at="119,27,120,52" concept="9" />
-      <node id="9052093979233583444" at="123,30,124,16" concept="9" />
-      <node id="7241381882860009847" at="125,5,126,41" concept="9" />
-      <node id="7894199968368685031" at="128,49,129,31" concept="9" />
-      <node id="7241381882860009862" at="131,52,132,57" concept="9" />
-      <node id="7241381882860009872" at="134,47,135,61" concept="9" />
-      <node id="7241381882860009882" at="137,47,138,133" concept="9" />
-      <node id="7241381882860009898" at="140,41,141,31" concept="9" />
-      <node id="7241381882860009907" at="143,45,144,50" concept="9" />
-      <node id="7241381882860009917" at="146,47,147,51" concept="9" />
-      <node id="7241381882860009927" at="149,52,150,56" concept="9" />
-      <node id="7241381882860009386" at="153,0,154,0" concept="3" trace="myName" />
-      <node id="7241381882860009388" at="154,0,155,0" concept="3" trace="myParameters" />
-      <node id="7241381882860009391" at="155,0,156,0" concept="3" trace="myParentVisitor" />
-      <node id="7241381882860009989" at="158,81,159,38" concept="2" />
-      <node id="7241381882860010037" at="167,55,168,70" concept="2" />
-      <node id="7241381882860010047" at="169,13,170,72" concept="2" />
-      <node id="7241381882860010066" at="175,40,176,56" concept="8" />
-      <node id="7241381882860010083" at="177,55,178,70" concept="2" />
-      <node id="7241381882860010093" at="179,13,180,90" concept="2" />
-      <node id="7241381882860010010" at="186,45,187,38" concept="2" />
-      <node id="7241381882860009624" at="80,12,82,7" concept="0" />
-      <node id="7241381882860009393" at="156,0,158,0" concept="1" trace="ClassifierSignatureVisitor#()V" />
-      <node id="7241381882860009486" at="62,12,65,7" concept="6" />
-      <node id="7241381882860009511" at="65,7,68,7" concept="5" />
-      <node id="7241381882860009560" at="69,5,72,5" concept="6" />
-      <node id="7241381882860009581" at="72,5,75,5" concept="5" />
-      <node id="7241381882860009773" at="101,0,104,0" concept="7" trace="isAbstract#()Z" />
-      <node id="303301571174692715" at="104,0,107,0" concept="7" trace="isStatic#()Z" />
-      <node id="7241381882860009788" at="107,0,110,0" concept="7" trace="isPublic#()Z" />
-      <node id="7241381882860009803" at="110,0,113,0" concept="7" trace="isFinal#()Z" />
-      <node id="7241381882860009818" at="113,0,116,0" concept="7" trace="isDeprecated#()Z" />
-      <node id="1043983806974577004" at="116,0,119,0" concept="7" trace="getClassifierKind#()Ljetbrains/mps/stubs/javastub/classpath/ClassifierKind;" />
-      <node id="7241381882860009833" at="119,0,122,0" concept="7" trace="getName#()Ljava/lang/String;" />
-      <node id="9052093979232890792" at="122,29,125,5" concept="6" />
-      <node id="7894199968368685027" at="128,0,131,0" concept="7" trace="getInnerClasses#()Ljava/util/List;" />
-      <node id="7241381882860009857" at="131,0,134,0" concept="7" trace="getTypeParameters#()Ljava/util/List;" />
-      <node id="7241381882860009867" at="134,0,137,0" concept="7" trace="getGenericInterfaces#()Ljava/util/List;" />
-      <node id="7241381882860009877" at="137,0,140,0" concept="7" trace="getAnnotations#()Ljava/util/List;" />
-      <node id="7241381882860009894" at="140,0,143,0" concept="7" trace="getGenericSuperclass#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
-      <node id="7241381882860009902" at="143,0,146,0" concept="7" trace="getDeclaredFields#()Ljava/util/List;" />
-      <node id="7241381882860009912" at="146,0,149,0" concept="7" trace="getDeclaredMethods#()Ljava/util/List;" />
-      <node id="7241381882860009922" at="149,0,152,0" concept="7" trace="getDeclaredConstructors#()Ljava/util/List;" />
-      <node id="7241381882860009395" at="158,0,161,0" concept="1" trace="ClassifierSignatureVisitor#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMClass/ClassifierSignatureVisitor;)V" />
-      <node id="7241381882860010028" at="166,40,169,13" concept="6" />
-      <node id="7241381882860010074" at="176,56,179,13" concept="6" />
-      <node id="7241381882860009714" at="87,46,91,9" concept="5" />
-      <node id="7241381882860009748" at="93,48,97,9" concept="5" />
-      <node id="7241381882860009404" at="185,0,189,0" concept="7" trace="visitClassType#(Ljava/lang/String;)V" />
-      <node id="7241381882860010112" at="44,0,49,0" concept="7" trace="visitEnd#()V" />
-      <node id="7241381882860010120" at="54,0,59,0" concept="7" trace="visitEnd#()V" />
-      <node id="7241381882860009620" at="77,39,82,7" concept="6" />
-      <node id="5058383315259429772" at="31,29,37,5" concept="15" />
-      <node id="7241381882860009705" at="86,57,92,7" concept="6" />
-      <node id="7241381882860009739" at="92,7,98,7" concept="6" />
-      <node id="7241381882860009843" at="122,0,128,0" concept="7" trace="getFqName#()Ljava/lang/String;" />
-      <node id="7241381882860010021" at="165,52,171,11" concept="6" />
-      <node id="7241381882860010108" at="42,51,49,12" concept="9" />
-      <node id="7241381882860010116" at="52,50,59,12" concept="9" />
-      <node id="7241381882860009484" at="62,10,69,5" concept="0" />
-      <node id="7241381882860010059" at="174,32,181,11" concept="6" />
-      <node id="7241381882860009602" at="75,5,83,5" concept="5" />
-      <node id="7241381882860010000" at="164,0,173,0" concept="7" trace="visitTypeVariable#(Ljava/lang/String;)V" />
-      <node id="7241381882860009554" at="41,0,51,0" concept="7" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860009557" at="51,0,61,0" concept="7" trace="visitInterface#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860010005" at="173,0,183,0" concept="7" trace="visitEnd#()V" />
-      <node id="7241381882860009641" at="83,5,99,5" concept="6" />
-      <node id="7241381882860009996" at="162,62,183,8" concept="9" />
-      <node id="7241381882860009547" at="39,73,61,9" concept="2" />
-      <node id="7241381882860009399" at="161,0,185,0" concept="7" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
-      <node id="7241381882860009476" at="37,5,69,5" concept="6" />
-      <node id="7241381882860009454" at="30,0,101,0" concept="1" trace="ASMClass#(Lorg/jetbrains/org/objectweb/asm/ClassReader;Z)V" />
+      <node id="7241381882860009409" at="22,0,23,0" concept="4" trace="myNode" />
+      <node id="7241381882860009412" at="23,0,24,0" concept="4" trace="myTypeVariables" />
+      <node id="7241381882860009419" at="24,0,25,0" concept="4" trace="myGenericInterfaces" />
+      <node id="7241381882860009426" at="25,0,26,0" concept="4" trace="myFields" />
+      <node id="7241381882860009433" at="26,0,27,0" concept="4" trace="myMethods" />
+      <node id="7241381882860009440" at="27,0,28,0" concept="4" trace="myConstructors" />
+      <node id="7241381882860009447" at="28,0,29,0" concept="4" trace="myAnnotations" />
+      <node id="7241381882860009451" at="29,0,30,0" concept="4" trace="myGenericSuperclass" />
+      <node id="7241381882860009459" at="30,63,31,29" concept="3" />
+      <node id="7241381882860009466" at="32,9,33,127" concept="3" />
+      <node id="5058383315259648551" at="34,34,35,23" concept="11" />
+      <node id="5058383315259597914" at="35,23,36,13" concept="10" />
+      <node id="7241381882860009537" at="38,35,39,73" concept="9" />
+      <node id="7241381882860010124" at="45,36,46,58" concept="9" />
+      <node id="7241381882860010132" at="46,58,47,80" concept="3" />
+      <node id="7241381882860010144" at="55,36,56,58" concept="9" />
+      <node id="7241381882860010152" at="56,58,57,83" concept="3" />
+      <node id="7241381882860009495" at="63,37,64,83" concept="3" />
+      <node id="7241381882860009523" at="66,61,67,75" concept="3" />
+      <node id="7241381882860009569" at="70,35,71,81" concept="3" />
+      <node id="7241381882860009593" at="73,58,74,37" concept="3" />
+      <node id="7241381882860009614" at="76,61,77,39" concept="9" />
+      <node id="7241381882860009634" at="78,31,79,31" concept="3" />
+      <node id="7241381882860009626" at="80,14,81,26" concept="3" />
+      <node id="7241381882860009658" at="84,83,85,177" concept="9" />
+      <node id="7241381882860009696" at="85,177,86,57" concept="3" />
+      <node id="7241381882860009726" at="88,84,89,51" concept="9" />
+      <node id="7241381882860009732" at="89,51,90,32" concept="3" />
+      <node id="7241381882860009760" at="94,86,95,51" concept="9" />
+      <node id="7241381882860009766" at="95,51,96,32" concept="3" />
+      <node id="7241381882860009777" at="101,31,102,55" concept="10" />
+      <node id="303301571174692719" at="104,29,105,53" concept="10" />
+      <node id="7241381882860009792" at="107,29,108,53" concept="10" />
+      <node id="7241381882860009807" at="110,28,111,52" concept="10" />
+      <node id="7241381882860009822" at="113,33,114,57" concept="10" />
+      <node id="1043983806974678759" at="116,45,117,59" concept="10" />
+      <node id="7241381882860009837" at="119,27,120,52" concept="10" />
+      <node id="9052093979233583444" at="123,30,124,16" concept="10" />
+      <node id="7241381882860009847" at="125,5,126,41" concept="10" />
+      <node id="7894199968368685031" at="128,49,129,31" concept="10" />
+      <node id="7241381882860009862" at="131,52,132,57" concept="10" />
+      <node id="7241381882860009872" at="134,47,135,61" concept="10" />
+      <node id="7241381882860009882" at="137,47,138,133" concept="10" />
+      <node id="7241381882860009898" at="140,41,141,31" concept="10" />
+      <node id="7241381882860009907" at="143,45,144,50" concept="10" />
+      <node id="7241381882860009917" at="146,47,147,51" concept="10" />
+      <node id="7241381882860009927" at="149,52,150,56" concept="10" />
+      <node id="7241381882860009386" at="153,0,154,0" concept="4" trace="myName" />
+      <node id="7241381882860009388" at="154,0,155,0" concept="4" trace="myParameters" />
+      <node id="7241381882860009391" at="155,0,156,0" concept="4" trace="myParentVisitor" />
+      <node id="7241381882860009989" at="158,81,159,38" concept="3" />
+      <node id="7241381882860010037" at="167,55,168,70" concept="3" />
+      <node id="7241381882860010047" at="169,13,170,72" concept="3" />
+      <node id="7241381882860010066" at="175,40,176,56" concept="9" />
+      <node id="7241381882860010083" at="177,55,178,70" concept="3" />
+      <node id="7241381882860010093" at="179,13,180,90" concept="3" />
+      <node id="7241381882860010010" at="186,45,187,38" concept="3" />
+      <node id="7241381882860009624" at="80,12,82,7" concept="1" />
+      <node id="7241381882860009393" at="156,0,158,0" concept="2" trace="ClassifierSignatureVisitor#()V" />
+      <node id="7241381882860009486" at="62,12,65,7" concept="7" />
+      <node id="7241381882860009511" at="65,7,68,7" concept="6" />
+      <node id="7241381882860009560" at="69,5,72,5" concept="7" />
+      <node id="7241381882860009581" at="72,5,75,5" concept="6" />
+      <node id="7241381882860009773" at="101,0,104,0" concept="8" trace="isAbstract#()Z" />
+      <node id="303301571174692715" at="104,0,107,0" concept="8" trace="isStatic#()Z" />
+      <node id="7241381882860009788" at="107,0,110,0" concept="8" trace="isPublic#()Z" />
+      <node id="7241381882860009803" at="110,0,113,0" concept="8" trace="isFinal#()Z" />
+      <node id="7241381882860009818" at="113,0,116,0" concept="8" trace="isDeprecated#()Z" />
+      <node id="1043983806974577004" at="116,0,119,0" concept="8" trace="getClassifierKind#()Ljetbrains/mps/stubs/javastub/classpath/ClassifierKind;" />
+      <node id="7241381882860009833" at="119,0,122,0" concept="8" trace="getName#()Ljava/lang/String;" />
+      <node id="9052093979232890792" at="122,29,125,5" concept="7" />
+      <node id="7894199968368685027" at="128,0,131,0" concept="8" trace="getInnerClasses#()Ljava/util/List;" />
+      <node id="7241381882860009857" at="131,0,134,0" concept="8" trace="getTypeParameters#()Ljava/util/List;" />
+      <node id="7241381882860009867" at="134,0,137,0" concept="8" trace="getGenericInterfaces#()Ljava/util/List;" />
+      <node id="7241381882860009877" at="137,0,140,0" concept="8" trace="getAnnotations#()Ljava/util/List;" />
+      <node id="7241381882860009894" at="140,0,143,0" concept="8" trace="getGenericSuperclass#()Ljetbrains/mps/baseLanguage/javastub/asm/ASMType;" />
+      <node id="7241381882860009902" at="143,0,146,0" concept="8" trace="getDeclaredFields#()Ljava/util/List;" />
+      <node id="7241381882860009912" at="146,0,149,0" concept="8" trace="getDeclaredMethods#()Ljava/util/List;" />
+      <node id="7241381882860009922" at="149,0,152,0" concept="8" trace="getDeclaredConstructors#()Ljava/util/List;" />
+      <node id="7241381882860009395" at="158,0,161,0" concept="2" trace="ClassifierSignatureVisitor#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMClass/ClassifierSignatureVisitor;)V" />
+      <node id="7241381882860010028" at="166,40,169,13" concept="7" />
+      <node id="7241381882860010074" at="176,56,179,13" concept="7" />
+      <node id="7241381882860009714" at="87,46,91,9" concept="6" />
+      <node id="7241381882860009748" at="93,48,97,9" concept="6" />
+      <node id="7241381882860009404" at="185,0,189,0" concept="8" trace="visitClassType#(Ljava/lang/String;)V" />
+      <node id="7241381882860010112" at="44,0,49,0" concept="8" trace="visitEnd#()V" />
+      <node id="7241381882860010120" at="54,0,59,0" concept="8" trace="visitEnd#()V" />
+      <node id="7241381882860009620" at="77,39,82,7" concept="7" />
+      <node id="5058383315259429772" at="31,29,37,5" concept="17" />
+      <node id="7241381882860009705" at="86,57,92,7" concept="7" />
+      <node id="7241381882860009739" at="92,7,98,7" concept="7" />
+      <node id="7241381882860009843" at="122,0,128,0" concept="8" trace="getFqName#()Ljava/lang/String;" />
+      <node id="7241381882860010021" at="165,52,171,11" concept="7" />
+      <node id="7241381882860010108" at="42,51,49,12" concept="10" />
+      <node id="7241381882860010116" at="52,50,59,12" concept="10" />
+      <node id="7241381882860009484" at="62,10,69,5" concept="1" />
+      <node id="7241381882860010059" at="174,32,181,11" concept="7" />
+      <node id="7241381882860009602" at="75,5,83,5" concept="6" />
+      <node id="7241381882860010000" at="164,0,173,0" concept="8" trace="visitTypeVariable#(Ljava/lang/String;)V" />
+      <node id="7241381882860009554" at="41,0,51,0" concept="8" trace="visitSuperclass#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860009557" at="51,0,61,0" concept="8" trace="visitInterface#()Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860010005" at="173,0,183,0" concept="8" trace="visitEnd#()V" />
+      <node id="7241381882860009641" at="83,5,99,5" concept="7" />
+      <node id="7241381882860009996" at="162,62,183,8" concept="10" />
+      <node id="7241381882860009547" at="39,73,61,9" concept="3" />
+      <node id="7241381882860009399" at="161,0,185,0" concept="8" trace="visitTypeArgument#(C)Lorg/jetbrains/org/objectweb/asm/signature/SignatureVisitor;" />
+      <node id="7241381882860009476" at="37,5,69,5" concept="7" />
+      <node id="7241381882860009454" at="30,0,101,0" concept="2" trace="ASMClass#(Lorg/jetbrains/org/objectweb/asm/ClassReader;Z)V" />
       <scope id="7241381882860009987" at="156,41,156,41" />
       <scope id="5058383315259429774" at="32,9,33,127" />
       <scope id="7241381882860009494" at="63,37,64,83" />

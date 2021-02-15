@@ -184,7 +184,7 @@ import java.util.Stack;
     private ASMType myResult;
     private Stack<ASMType> myTypes = new Stack<ASMType>();
     private char myWildcard;
-    private List<TypeBuilderVisitor> myArrayVisitors = null;
+    private TypeBuilderVisitor myArrayVisitor = null;
     public TypeBuilderVisitor() {
     }
     protected void setResult(ASMType type) {
@@ -199,7 +199,7 @@ import java.util.Stack;
       }
       if (myTypes.peek() instanceof ASMClassType) {
         ASMClassType ct = (ASMClassType) myTypes.pop();
-        ASMParameterizedType replacement = new ASMParameterizedType(ct, new ArrayList<ASMType>());
+        ASMParameterizedType replacement = new ASMParameterizedType(ct, new ArrayList<ASMType>(4));
         if (!(myTypes.isEmpty())) {
           ASMParameterizedType parent = (ASMParameterizedType) unwrap(myTypes.peek());
           parent.removeArgument(ct);
@@ -266,13 +266,14 @@ import java.util.Stack;
       // for consumeArrayTypes() only inside 2 visitTypeArgument() methods, others (like visitClassType or  
       // visitTypeVariable) are preceded by visitTypeArgument() call. 
       consumeArrayTypes();
+      // XXX why not addPart(new ? extends ASMBoundedType()), with subsequent setBound() instead of wrap/unwrap? 
       myWildcard = wildcard;
       return this;
     }
     @Override
     public void visitBaseType(char descriptor) {
       // not aware of a scenario, where baseType (e.g. int) could come as 'part' after an array, hence no consumeArrayTypes() 
-      addPart(TypeUtil.fromType(Type.getType("" + descriptor)));
+      addPart(ASMPrimitiveType.from(descriptor));
     }
     @Override
     public void visitTypeVariable(String name) {
@@ -280,12 +281,9 @@ import java.util.Stack;
     }
     @Override
     public SignatureVisitor visitArrayType() {
-      if (myArrayVisitors == null) {
-        myArrayVisitors = new ArrayList<TypeBuilderVisitor>(4);
-      }
-      TypeBuilderVisitor rv = new TypeBuilderVisitor();
-      myArrayVisitors.add(rv);
-      return rv;
+      assert myArrayVisitor == null : "more than 1 array per type?";
+      myArrayVisitor = new TypeBuilderVisitor();
+      return myArrayVisitor;
     }
     @Override
     public void visitClassType(String name) {
@@ -294,29 +292,26 @@ import java.util.Stack;
     @Override
     public void visitEnd() {
       // JFTR, this method is invoked for every class name followed by ';', i.e. comes twice for "LConsumer<LString;>;" 
-      if (myArrayVisitors != null) {
+      if (myArrayVisitor != null) {
         consumeArrayTypes();
       } else {
-        // XXX no idea why no finish() when a type (e.g. Function<int[], long[]) has been encountered 
+        // XXX no idea why no finish() when a type (e.g. LFunction<int[], long[]>); has been encountered 
         finish();
       }
     }
 
     private void consumeArrayTypes() {
-      if (myArrayVisitors == null) {
+      if (myArrayVisitor == null) {
         return;
       }
-      for (TypeBuilderVisitor av : myArrayVisitors) {
-        addPart(new ASMArrayType(av.getResult()));
-      }
-      myArrayVisitors = null;
+      addPart(new ASMArrayType(myArrayVisitor.getResult()));
+      myArrayVisitor = null;
     }
 
     /*package*/ ASMType getResult() {
-      if (myArrayVisitors != null) {
-        // XXX I don't like this duplication, but don't want to dive too deep into this code 
-        consumeArrayTypes();
-      }
+      // XXX I don't like this duplication of visitEnd and getResult, but visitEnd is not invoked for primitive types and 
+      // don't want to dive too deep into this code 
+      consumeArrayTypes();
       if (myResult == null) {
         finish();
       }

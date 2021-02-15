@@ -125,6 +125,7 @@
     <classNode extendsClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMType" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.javastub.asm.ASMPrimitiveType">
+    <classNode dependClassName="java.lang.IllegalArgumentException" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
