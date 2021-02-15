@@ -83,6 +83,20 @@ public class GenericArrayParametersTest {
     checkM3(m3);
     checkM4(m4);
     checkM5(m5);
+    // there used to be ASMClass.ClassifierSignatureVisitor that didn't handle generics in extend/implements well
+    // implements BiFunction<int[][], BiFunction<boolean[][], Object[], Object>, long[][]>
+    Assert.assertEquals(1, ac.getGenericInterfaces().size());
+    Assert.assertTrue(ac.getGenericInterfaces().get(0) instanceof ASMParameterizedType);
+    final List<ASMType> typeArguments = ((ASMParameterizedType) ac.getGenericInterfaces().get(0)).getActualTypeArguments();
+    Assert.assertEquals(3, typeArguments.size());
+    checkArrayType(typeArguments.get(0), 2, is(ASMPrimitiveType.INT));
+    checkArrayType(typeArguments.get(2), 2, is(ASMPrimitiveType.LONG));
+    Assert.assertTrue(typeArguments.get(1) instanceof ASMParameterizedType);
+    final List<ASMType> ta2 = ((ASMParameterizedType) typeArguments.get(1)).getActualTypeArguments();
+    Assert.assertEquals(3, ta2.size());
+    checkArrayType(ta2.get(0), 2, is(ASMPrimitiveType.BOOLEAN));
+    checkArrayType(ta2.get(1), 1, classType(Object.class));
+    myErrors.checkThat(ta2.get(2), classType(Object.class));
   }
 
   private void checkAAA(ASMField aaaField) {
