@@ -64,6 +64,17 @@ public class PresentationProviders {
       }
     }
   };
+  public static final IReferentPresentationProvider PRESENTATION_msf9u8_a0a1a0a = new IReferentPresentationProvider() {
+    @NotNull
+    @Override
+    public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
+      if ((SNodeOperations.getNodeAncestor(sourceNode, CONCEPTS.NestedNewExpression$zV, false, false) == null)) {
+        return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(targetNode, SNodeOperations.getParent(sourceNode));
+      } else {
+        return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
+      }
+    }
+  };
   public static final IReferentPresentationProvider PRESENTATION_53xyyk_a0a1a = new IReferentPresentationProvider() {
     @NotNull
     @Override
