@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.build.mps.behavior.BuildMps_Generator__BehaviorDescriptor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -54,7 +55,7 @@ public class MPSModulesClosure {
     myOptions = options;
   }
 
-  private Iterable<SNode> dependencies(SNode module) {
+  private static Iterable<SNode> dependencies(SNode module) {
     return ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$j8Lj)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it);
@@ -110,11 +111,11 @@ public class MPSModulesClosure {
     return Sequence.fromIterable(includingExtendedLanguages(IterableUtil.merge(usedLangs, languagesFromDevkits))).where(new NotNullWhereFilter<SNode>());
   }
 
-  private Iterable<SNode> dependencies_usedLanguages(SNode module) {
+  private static Iterable<SNode> dependencies_usedLanguages(SNode module) {
     return SLinkOperations.collect(SNodeOperations.ofConcept(dependencies(module), CONCEPTS.BuildMps_ModuleDependencyUseLanguage$uH), LINKS.language$udAS);
   }
 
-  private Iterable<SNode> dependencies_usedDevkits(SNode module) {
+  private static Iterable<SNode> dependencies_usedDevkits(SNode module) {
     return SLinkOperations.collect(SNodeOperations.ofConcept(dependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnDevKit$4s), LINKS.devkit$Q_pH);
   }
 
@@ -127,7 +128,7 @@ public class MPSModulesClosure {
     };
   }
 
-  private Iterable<SNode> includingExtendedLanguages(Iterable<SNode> langs) {
+  private static Iterable<SNode> includingExtendedLanguages(Iterable<SNode> langs) {
     return new RecursiveIterator<SNode>(langs, false) {
       @Override
       protected Iterator<SNode> children(SNode node) {
@@ -170,11 +171,14 @@ public class MPSModulesClosure {
       return;
     }
     Set<SNode> langs = SetSequence.fromSet(new HashSet<SNode>());
+    Set<SNode> devkits = (myOptions.doesTrackDevkits() ? myDevkits : null);
+
+    fillUsedLanguages(sequence, langs, devkits);
+
     Set<SNode> langsWithOddRT = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> rtSolutions = SetSequence.fromSet(new HashSet<SNode>());
-    for (SNode module : Sequence.fromIterable(sequence)) {
-      fillUsedLanguageRuntimes(module, langs, langsWithOddRT, rtSolutions);
-    }
+    fillUsedLanguageRuntimes(langs, langsWithOddRT, rtSolutions);
+
     SetSequence.fromSet(rtSolutions).removeSequence(SetSequence.fromSet(myModules));
     SetSequence.fromSet(myModules).addSequence(SetSequence.fromSet(rtSolutions));
     SetSequence.fromSet(myLanguagesWithOddRuntime).addSequence(SetSequence.fromSet(langsWithOddRT));
@@ -238,13 +242,18 @@ public class MPSModulesClosure {
   public MPSModulesClosure closure() {
     // get all direct dependencies abd runtimes, plus re-exported dependencies thereof. 
     Set<SNode> langs = SetSequence.fromSet(new HashSet<SNode>());
+    Set<SNode> devkits = (myOptions.doesTrackDevkits() ? myDevkits : null);
+
+    fillUsedLanguages(myInitialModules, langs, devkits);
+
     Set<SNode> langsWithOddRT = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> solutions = SetSequence.fromSet(new HashSet<SNode>());
+
+    fillUsedLanguageRuntimes(langs, langsWithOddRT, solutions);
 
     for (SNode module : Sequence.fromIterable(myInitialModules)) {
       List<SNode> firstLevelDeps = Sequence.fromIterable(getDependencies(module, false)).toListSequence();
       collectDependencies(firstLevelDeps, true);
-      fillUsedLanguageRuntimes(module, langs, langsWithOddRT, solutions);
       SetSequence.fromSet(myModules).addSequence(ListSequence.fromList(firstLevelDeps));
     }
     SetSequence.fromSet(myModules).addSequence(SetSequence.fromSet(solutions));
@@ -322,11 +331,14 @@ public class MPSModulesClosure {
   public MPSModulesClosure generationDependenciesClosure() {
     // direct and indirect dependencies of used languages and their runtimes; source languages of generators involved 
     Set<SNode> usedLanguages = SetSequence.fromSet(new HashSet<SNode>());
+    Set<SNode> devkits = (myOptions.doesTrackDevkits() ? myDevkits : null);
+    fillUsedLanguages(myInitialModules, usedLanguages, devkits);
+
     Set<SNode> langsWithOddRT = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> solutions = SetSequence.fromSet(new HashSet<SNode>());
-    for (SNode m : Sequence.fromIterable(myInitialModules)) {
-      fillUsedLanguageRuntimes(m, usedLanguages, langsWithOddRT, solutions);
-    }
+
+    fillUsedLanguageRuntimes(usedLanguages, langsWithOddRT, solutions);
+
     // need module of a used language AND anything this module would require to load 
     collectDependencies((Iterable<SNode>) usedLanguages, false);
     collectAllUsedLanguageRuntimesAndTheirDeps((Iterable<SNode>) usedLanguages);
@@ -346,19 +358,45 @@ public class MPSModulesClosure {
   }
 
   /**
-   * Collects and analyzes used languages and their runtime solutions for the given module.
-   * Generally, shall be static and without side-effects, however, at the moment uses {@link jetbrains.mps.build.mps.util.MPSModulesClosure#getUsedLanguagesWithExtended(SNode) } which updates myDevkits field
-   * FIXME refactor, introduce fillUsedLanguages(module, set[languages])and make them static
    * 
-   * @param module given
-   * @param usedLanguages filled with used languages of the module
+   * 
+   * @param modules source modules we need to discover used languages for
+   * @param usedLanguages filled with used languages of the module (directly used and coming through devkits, including extended)
+   * @param usedDevkits filled with used devkits, including extended. If null, no devkits are reported (though still analyzed for the purposes of used languages)
+   */
+  private static void fillUsedLanguages(Iterable<SNode> modules, Set<SNode> usedLanguages, @Nullable Set<SNode> usedDevkits) {
+    // XXX would be great not to create extra copies and use collections supplied as arguments, but 
+    //    no way to make sure they are empty. If they are not, do I care NOT to include their content into 
+    //    calculation of 'extended'? 
+    Set<SNode> ul = SetSequence.fromSet(new LinkedHashSet<SNode>());
+    Set<SNode> dk = SetSequence.fromSet(new LinkedHashSet<SNode>());
+    for (SNode m : Sequence.fromIterable(modules)) {
+      SetSequence.fromSet(ul).addSequence(Sequence.fromIterable(dependencies_usedLanguages(m)));
+      SetSequence.fromSet(dk).addSequence(Sequence.fromIterable(dependencies_usedDevkits(m)));
+    }
+    List<SNode> allDevkits = Sequence.fromIterable(includingExtended(dk)).distinct().toListSequence();
+    Iterable<SNode> languagesFromDevkits = ListSequence.fromList(allDevkits).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV), LINKS.language$qqxl);
+      }
+    });
+    // languagesFromDevkits made distinct once they get added to ul:LinkedHashSet 
+    SetSequence.fromSet(ul).addSequence(Sequence.fromIterable(languagesFromDevkits));
+    SetSequence.fromSet(usedLanguages).addSequence(Sequence.fromIterable(includingExtendedLanguages(ul)).where(new NotNullWhereFilter<SNode>()));
+    if (usedDevkits != null) {
+      SetSequence.fromSet(usedDevkits).addSequence(ListSequence.fromList(allDevkits));
+    }
+  }
+
+  /**
+   * Collects runtime solutions for the given set of languages.
+   * 
+   * @param usedLanguages languages to analyze
    * @param languagesWithRuntime will be filled with the used languages that has runtime which IS NOT a regular runtime solution
    * @param runtimeSolutions filled with runtime solutions found for used languages
    */
-  private void fillUsedLanguageRuntimes(SNode module, Set<SNode> usedLanguages, Set<SNode> languagesWithRuntime, Set<SNode> runtimeSolutions) {
-    List<SNode> ul = Sequence.fromIterable(getUsedLanguagesWithExtended(module)).toListSequence();
-    SetSequence.fromSet(usedLanguages).addSequence(ListSequence.fromList(ul));
-    for (SNode language : ul) {
+  private static void fillUsedLanguageRuntimes(Set<SNode> usedLanguages, Set<SNode> languagesWithRuntime, Set<SNode> runtimeSolutions) {
+    for (SNode language : usedLanguages) {
       boolean hasRuntime = false;
       for (SNode rdep : SLinkOperations.getChildren(language, LINKS.runtime$lxKd)) {
         if (!(SNodeOperations.isInstanceOf(rdep, CONCEPTS.BuildMps_ModuleSolutionRuntime$b5))) {
