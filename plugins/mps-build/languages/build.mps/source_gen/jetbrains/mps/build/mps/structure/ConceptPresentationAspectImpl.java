@@ -14,6 +14,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BuildMpsAspect;
   private ConceptPresentation props_BuildMpsLayout_AutoPluginLayoutType;
   private ConceptPresentation props_BuildMpsLayout_FolderWithSources;
+  private ConceptPresentation props_BuildMpsLayout_Manifest;
   private ConceptPresentation props_BuildMpsLayout_ManualPluginLayoutType;
   private ConceptPresentation props_BuildMpsLayout_ModuleJarContent;
   private ConceptPresentation props_BuildMpsLayout_ModuleJars;
@@ -121,6 +122,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuildMpsLayout_FolderWithSources = cpb.create();
         }
         return props_BuildMpsLayout_FolderWithSources;
+      case LanguageConceptSwitch.BuildMpsLayout_Manifest:
+        if (props_BuildMpsLayout_Manifest == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("enumerates MPS modules of the layout");
+          cpb.rawPresentation("module manifest");
+          props_BuildMpsLayout_Manifest = cpb.create();
+        }
+        return props_BuildMpsLayout_Manifest;
       case LanguageConceptSwitch.BuildMpsLayout_ManualPluginLayoutType:
         if (props_BuildMpsLayout_ManualPluginLayoutType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -326,7 +335,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_IdeaPlugin == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a23b0qc);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a33b0rc);
           props_BuildMps_IdeaPlugin = cpb.create();
         }
         return props_BuildMps_IdeaPlugin;

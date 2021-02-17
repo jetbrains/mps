@@ -1863,5 +1863,13 @@
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
     </node>
   </node>
+  <node concept="1TIwiD" id="34i8I8dquoq">
+    <property role="EcuMT" value="3535927011722257946" />
+    <property role="3GE5qa" value="Layout" />
+    <property role="TrG5h" value="BuildMpsLayout_Manifest" />
+    <property role="34LRSv" value="module manifest" />
+    <property role="R4oN_" value="enumerates MPS modules of the layout" />
+    <ref role="1TJDcQ" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
+  </node>
 </model>
 

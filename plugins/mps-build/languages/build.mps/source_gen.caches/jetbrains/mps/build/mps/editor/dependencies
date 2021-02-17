@@ -189,6 +189,22 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
+  <dependency className="jetbrains.mps.build.mps.editor.BuildMpsLayout_Manifest_Editor">
+    <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_Manifest_EditorBuilder_a" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
+  </dependency>
+  <dependency className="jetbrains.mps.build.mps.editor.BuildMpsLayout_Manifest_EditorBuilder_a">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.cells.BigCellUtil" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
   <dependency className="jetbrains.mps.build.mps.editor.BuildMpsLayout_ManualPluginLayoutType_Editor">
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_ManualPluginLayoutType_EditorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
@@ -3487,6 +3503,7 @@
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsAspect_Editor" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_AutoPluginLayoutType_Editor" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_FolderWithSources_Editor" />
+    <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_Manifest_Editor" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_ManualPluginLayoutType_Editor" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_ModuleJarContent_Editor" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.BuildMpsLayout_ModuleJars_Editor" />

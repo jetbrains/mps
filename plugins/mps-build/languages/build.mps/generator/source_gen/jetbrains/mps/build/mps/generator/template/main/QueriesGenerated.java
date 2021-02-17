@@ -802,6 +802,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_18_1(final ReferenceMacroContext _context) {
     return _context.getNode();
   }
+  public static Object referenceMacro_GetReferent_21_0(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "MODULE2LAYOUT");
+  }
   public static Object referenceReduction_GetReferent_0_zu1o_a0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), CONCEPTS.BuildMps_Module$JW), "javaModule");
   }
@@ -1437,7 +1440,7 @@ public class QueriesGenerated extends QueryProviderBase {
     //    which is to be reduced to path value later. 
     return Sequence.fromIterable(Sequence.fromArray(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPluginPaths(_context))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0e0nm(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0e0om(it);
       }
     });
   }
@@ -1485,7 +1488,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_10_5(final SourceSubstituteMacroNodesContext _context) {
     return Sequence.fromIterable(Sequence.fromArray(((String[]) _context.getVariable("var:requiredPlugins")))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0a0sm(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0a0tm(it);
       }
     });
   }
@@ -1583,6 +1586,10 @@ public class QueriesGenerated extends QueryProviderBase {
         return !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_Generator$RQ));
       }
     });
+  }
+  public static Iterable<SNode> sourceNodesQuery_21_0(final SourceSubstituteMacroNodesContext _context) {
+    SNode bp = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
+    return Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(SLinkOperations.getChildren(bp, LINKS.parts$mGDj), CONCEPTS.BuildMps_Group$Jc), LINKS.modules$JlQo)).union(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(bp, LINKS.parts$mGDj), CONCEPTS.BuildMps_AbstractModule$FZ)));
   }
   public static void mapSrcMacro_post_0_0(final MapSrcMacroPostProcContext _context) {
     Iterable<SNode> f = SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH);
@@ -1859,7 +1866,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a863(it._1(), it._0());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a073(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -2180,6 +2187,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("8624281949505153372", new SNsQ(i++));
     snsqMethods.put("5397230782653454313", new SNsQ(i++));
     snsqMethods.put("8065469100328125740", new SNsQ(i++));
+    snsqMethods.put("3535927011723074303", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -2301,6 +2309,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_17_1(ctx));
         case 52:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_18_0(ctx));
+        case 53:
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_21_0(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -3056,7 +3066,8 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("763829979705940623", new RTQ(12, "s"));
     rtqMethods.put("8065469100328125704", new RTQ(13, "aaa"));
     rtqMethods.put("8065469100328125760", new RTQ(14, "aaa"));
-    rtqMethods.put("884473973751152856", new RTQ(15, null));
+    rtqMethods.put("3535927011723235443", new RTQ(15, null));
+    rtqMethods.put("884473973751152856", new RTQ(16, null));
   }
   @NotNull
   @Override
@@ -3104,6 +3115,8 @@ public class QueriesGenerated extends QueryProviderBase {
         case 14:
           return QueriesGenerated.referenceMacro_GetReferent_18_1(ctx);
         case 15:
+          return QueriesGenerated.referenceMacro_GetReferent_21_0(ctx);
+        case 16:
           return QueriesGenerated.referenceReduction_GetReferent_0_zu1o_a0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -3314,17 +3327,17 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0nm(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0om(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0sm(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0tm(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a863(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a073(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
@@ -3481,6 +3494,8 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
     /*package*/ static final SConcept BuildFolderMacro$mR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro");
     /*package*/ static final SConcept BuildMps_TipsDir$LO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a22c0160L, "jetbrains.mps.build.mps.structure.BuildMps_TipsDir");
+    /*package*/ static final SConcept BuildMps_Group$Jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
+    /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
     /*package*/ static final SConcept BuildMps_GeneratorRef$aa = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L, "jetbrains.mps.build.mps.structure.BuildMps_GeneratorRef");
     /*package*/ static final SConcept BuildLayout_Jar$bd = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f9aL, "jetbrains.mps.build.structure.BuildLayout_Jar");
     /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");

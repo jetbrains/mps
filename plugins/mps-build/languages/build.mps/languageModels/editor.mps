@@ -6428,5 +6428,12 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="34i8I8dquqj">
+    <property role="3GE5qa" value="Layout" />
+    <ref role="1XX52x" to="kdzh:34i8I8dquoq" resolve="BuildMpsLayout_Manifest" />
+    <node concept="PMmxH" id="34i8I8dquql" role="2wV5jI">
+      <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+    </node>
+  </node>
 </model>
 
