@@ -487,68 +487,56 @@
   </root>
   <root nodeRef="r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2722286076674338626">
     <file name="NodeFileStatusProvider.java">
-      <node id="2722286076674338627" at="23,0,24,0" concept="5" trace="myProject" />
-      <node id="2722286076674338630" at="24,0,25,0" concept="5" trace="myMapping" />
-      <node id="2722286076674338639" at="26,62,27,24" concept="4" />
-      <node id="2722286076674338643" at="27,24,28,79" concept="4" />
-      <node id="1897730879367633038" at="33,48,34,18" concept="10" />
-      <node id="3431287636476842280" at="36,35,37,36" concept="10" />
-      <node id="1424674454815262671" at="38,5,39,0" concept="12" />
-      <node id="2722286076674338661" at="39,0,40,66" concept="9" />
-      <node id="3298791906902024165" at="40,66,41,0" concept="12" />
-      <node id="2722286076674338667" at="43,35,44,106" concept="9" />
-      <node id="656293479883096684" at="45,27,46,66" concept="4" />
-      <node id="3298791906902027873" at="48,89,49,22" concept="10" />
-      <node id="4466352272003205977" at="50,9,51,41" concept="10" />
-      <node id="4730325800956751774" at="61,77,62,25" concept="10" />
-      <node id="5583965296156218009" at="65,36,66,51" concept="10" />
-      <node id="5583965296156218009" at="67,5,68,16" concept="10" />
-      <node id="2722286076674338659" at="32,53,35,5" concept="7" />
-      <node id="3431287636476838839" at="35,5,38,5" concept="7" />
-      <node id="656293479883031269" at="44,106,47,9" concept="7" />
-      <node id="2722286076674338673" at="47,9,50,9" concept="7" />
-      <node id="2722286076674338702" at="56,0,59,0" concept="8" trace="refreshFileStatusFromDocument#(Lcom/intellij/openapi/vfs/VirtualFile;Lcom/intellij/openapi/editor/Document;)V" />
-      <node id="5583965296156218009" at="64,78,67,5" concept="7" />
-      <node id="2722286076674338635" at="26,0,30,0" concept="2" trace="NodeFileStatusProvider#(Ljetbrains/mps/project/MPSProject;)V" />
-      <node id="4730325800956751766" at="60,0,64,0" concept="8" trace="getNotChangedDirectoryParentingStatus#(Lcom/intellij/openapi/vfs/VirtualFile;)Lcom/intellij/util/ThreeState;" />
-      <node id="5583965296156218009" at="64,0,70,0" concept="14" trace="check_8p3pkg_a0a0b0a0a0a0f0f#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4466352272003229437" at="43,0,53,0" concept="8" trace="compute#()Lcom/intellij/openapi/vcs/FileStatus;" />
-      <node id="4466352272003109416" at="41,0,53,7" concept="10" />
-      <node id="2722286076674338653" at="31,0,55,0" concept="8" trace="getFileStatus#(Lcom/intellij/openapi/vfs/VirtualFile;)Lcom/intellij/openapi/vcs/FileStatus;" />
-      <scope id="2722286076674338709" at="57,82,57,82" />
-      <scope id="1897730879367633034" at="33,48,34,18" />
-      <scope id="3431287636476838841" at="36,35,37,36" />
-      <scope id="656293479883031272" at="45,27,46,66" />
-      <scope id="2722286076674338674" at="48,89,49,22" />
-      <scope id="4730325800956751772" at="61,77,62,25" />
-      <scope id="5583965296156218009" at="65,36,66,51" />
-      <scope id="2722286076674338638" at="26,62,28,79" />
-      <scope id="2722286076674338702" at="56,0,59,0">
-        <var name="document" id="2722286076674338707" />
-        <var name="file" id="2722286076674338705" />
-      </scope>
-      <scope id="2722286076674338635" at="26,0,30,0">
+      <node id="2722286076674338627" at="21,0,22,0" concept="5" trace="myProject" />
+      <node id="2722286076674338630" at="22,0,23,0" concept="5" trace="myMapping" />
+      <node id="2722286076674338639" at="24,62,25,24" concept="4" />
+      <node id="2722286076674338643" at="25,24,26,79" concept="4" />
+      <node id="1897730879367633038" at="31,48,32,18" concept="10" />
+      <node id="3431287636476842280" at="34,35,35,36" concept="10" />
+      <node id="1424674454815262671" at="36,5,37,0" concept="12" />
+      <node id="2722286076674338661" at="37,0,38,66" concept="9" />
+      <node id="3298791906902024165" at="38,66,39,0" concept="12" />
+      <node id="2722286076674338667" at="41,35,42,106" concept="9" />
+      <node id="656293479883096684" at="43,27,44,66" concept="4" />
+      <node id="3298791906902027873" at="46,89,47,22" concept="10" />
+      <node id="4466352272003205977" at="48,9,49,41" concept="10" />
+      <node id="5583965296156218009" at="54,36,55,51" concept="10" />
+      <node id="5583965296156218009" at="56,5,57,16" concept="10" />
+      <node id="2722286076674338659" at="30,53,33,5" concept="7" />
+      <node id="3431287636476838839" at="33,5,36,5" concept="7" />
+      <node id="656293479883031269" at="42,106,45,9" concept="7" />
+      <node id="2722286076674338673" at="45,9,48,9" concept="7" />
+      <node id="5583965296156218009" at="53,78,56,5" concept="7" />
+      <node id="2722286076674338635" at="24,0,28,0" concept="2" trace="NodeFileStatusProvider#(Ljetbrains/mps/project/MPSProject;)V" />
+      <node id="5583965296156218009" at="53,0,59,0" concept="14" trace="check_8p3pkg_a0a0b0a0a0a0f0f#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4466352272003229437" at="41,0,51,0" concept="8" trace="compute#()Lcom/intellij/openapi/vcs/FileStatus;" />
+      <node id="4466352272003109416" at="39,0,51,7" concept="10" />
+      <node id="2722286076674338653" at="29,0,53,0" concept="8" trace="getFileStatus#(Lcom/intellij/openapi/vfs/VirtualFile;)Lcom/intellij/openapi/vcs/FileStatus;" />
+      <scope id="1897730879367633034" at="31,48,32,18" />
+      <scope id="3431287636476838841" at="34,35,35,36" />
+      <scope id="656293479883031272" at="43,27,44,66" />
+      <scope id="2722286076674338674" at="46,89,47,22" />
+      <scope id="5583965296156218009" at="54,36,55,51" />
+      <scope id="2722286076674338638" at="24,62,26,79" />
+      <scope id="2722286076674338635" at="24,0,28,0">
         <var name="project" id="2722286076674338647" />
       </scope>
-      <scope id="4730325800956751766" at="60,0,64,0">
-        <var name="file" id="4730325800956751770" />
-      </scope>
-      <scope id="5583965296156218009" at="64,78,68,16" />
-      <scope id="5583965296156218009" at="64,0,70,0">
+      <scope id="5583965296156218009" at="53,78,57,16" />
+      <scope id="5583965296156218009" at="53,0,59,0">
         <var name="checkedDotOperand" id="5583965296156218009" />
       </scope>
-      <scope id="4466352272003229441" at="43,35,51,41">
+      <scope id="4466352272003229441" at="41,35,49,41">
         <var name="root" id="2722286076674338668" />
       </scope>
-      <scope id="4466352272003229437" at="43,0,53,0" />
-      <scope id="2722286076674338658" at="32,53,53,7">
+      <scope id="4466352272003229437" at="41,0,51,0" />
+      <scope id="2722286076674338658" at="30,53,51,7">
         <var name="nodeFile" id="2722286076674338662" />
       </scope>
-      <scope id="2722286076674338653" at="31,0,55,0">
+      <scope id="2722286076674338653" at="29,0,53,0">
         <var name="file" id="2722286076674338656" />
       </scope>
-      <unit id="4466352272003229435" at="42,79,53,5" name="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider$1" />
-      <unit id="2722286076674338626" at="21,0,71,0" name="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider" />
+      <unit id="4466352272003229435" at="40,79,51,5" name="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider$1" />
+      <unit id="2722286076674338626" at="19,0,60,0" name="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider" />
     </file>
   </root>
   <root nodeRef="r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3161776655522572366">

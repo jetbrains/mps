@@ -15,8 +15,6 @@ import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
-import com.intellij.openapi.editor.Document;
-import com.intellij.util.ThreeState;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2722286076674338626", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class NodeFileStatusProvider implements FileStatusProvider {
@@ -51,15 +49,6 @@ public class NodeFileStatusProvider implements FileStatusProvider {
         return myMapping.getStatus(root);
       }
     });
-  }
-
-  @Override
-  public void refreshFileStatusFromDocument(VirtualFile file, Document document) {
-  }
-
-  @Override
-  public ThreeState getNotChangedDirectoryParentingStatus(VirtualFile file) {
-    return ThreeState.NO;
   }
   private static SNode check_8p3pkg_a0a0b0a0a0a0f0f(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {

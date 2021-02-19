@@ -6933,15 +6933,15 @@
                 <node concept="3clFbF" id="2QnDi8QvcaC" role="3cqZAp">
                   <node concept="2OqwBi" id="2QnDi8Qvcb0" role="3clFbG">
                     <node concept="37vLTw" id="4henvQNCxoq" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6h1S4muE0Yb" />
+                      <ref role="3cqZAo" node="6h1S4muE0Yb" resolve="myRegistry" />
                     </node>
                     <node concept="liA8E" id="2QnDi8Qvcb6" role="2OqNvi">
-                      <ref role="37wK5l" node="6h1S4muD02u" />
+                      <ref role="37wK5l" node="6h1S4muD02u" resolve="addEventCollector" />
                       <node concept="37vLTw" id="2BHiRxeuDZS" role="37wK5m">
-                        <ref role="3cqZAo" node="2JwSLRbzll2" />
+                        <ref role="3cqZAo" node="2JwSLRbzll2" resolve="myModelDescriptor" />
                       </node>
                       <node concept="37vLTw" id="6h1S4muH5Ut" role="37wK5m">
-                        <ref role="3cqZAo" node="6h1S4muGYko" />
+                        <ref role="3cqZAo" node="6h1S4muGYko" resolve="myEventCollector" />
                       </node>
                     </node>
                   </node>
@@ -14808,57 +14808,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_Sd11" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4Ty7LDC_ebZ" role="jymVt" />
-    <node concept="3clFb_" id="2n7wcdLaAYe" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="refreshFileStatusFromDocument" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="2n7wcdLaAYf" role="1B3o_S" />
-      <node concept="3cqZAl" id="2n7wcdLaAYg" role="3clF45" />
-      <node concept="37vLTG" id="2n7wcdLaAYh" role="3clF46">
-        <property role="TrG5h" value="file" />
-        <node concept="3uibUv" id="2n7wcdLaAYi" role="1tU5fm">
-          <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="2n7wcdLaAYj" role="3clF46">
-        <property role="TrG5h" value="document" />
-        <node concept="3uibUv" id="2n7wcdLaAYk" role="1tU5fm">
-          <ref role="3uigEE" to="s9o5:~Document" resolve="Document" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="2n7wcdLaAYl" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_Sd10" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4Ty7LDC_eso" role="jymVt" />
-    <node concept="3clFb_" id="46_v$3HT6Ym" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getNotChangedDirectoryParentingStatus" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="46_v$3HT6Yn" role="1B3o_S" />
-      <node concept="3uibUv" id="46_v$3HT6Yp" role="3clF45">
-        <ref role="3uigEE" to="9w4s:~ThreeState" resolve="ThreeState" />
-      </node>
-      <node concept="37vLTG" id="46_v$3HT6Yq" role="3clF46">
-        <property role="TrG5h" value="file" />
-        <node concept="3uibUv" id="46_v$3HT6Yr" role="1tU5fm">
-          <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="46_v$3HT6Ys" role="3clF47">
-        <node concept="3clFbF" id="46_v$3HT6Yu" role="3cqZAp">
-          <node concept="Rm8GO" id="46_v$3HTk7P" role="3clFbG">
-            <ref role="1Px2BO" to="9w4s:~ThreeState" resolve="ThreeState" />
-            <ref role="Rm8GQ" to="9w4s:~ThreeState.NO" resolve="NO" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_Sd0Z" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

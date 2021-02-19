@@ -7867,11 +7867,26 @@
           <node concept="3fqX7Q" id="2LxECFpGWP3" role="3cqZAk">
             <node concept="2YIFZM" id="2LxECFpGWP5" role="3fr31v">
               <ref role="1Pybhc" to="qkt:~ActionGroupUtil" resolve="ActionGroupUtil" />
-              <ref role="37wK5l" to="qkt:~ActionGroupUtil.isGroupEmpty(com.intellij.openapi.actionSystem.ActionGroup,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="isGroupEmpty" />
+              <ref role="37wK5l" to="qkt:~ActionGroupUtil.isGroupEmpty(com.intellij.openapi.actionSystem.ActionGroup,com.intellij.openapi.actionSystem.AnActionEvent,boolean)" resolve="isGroupEmpty" />
               <node concept="37vLTw" id="2LxECFpGWP6" role="37wK5m">
                 <ref role="3cqZAo" node="2M3H3BXpUEP" resolve="group" />
               </node>
               <node concept="tl45R" id="2LxECFpGWP7" role="37wK5m" />
+              <node concept="2YIFZM" id="3qk_uJ_43rj" role="37wK5m">
+                <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
+                <ref role="37wK5l" to="33ny:~Objects.requireNonNullElse(java.lang.Object,java.lang.Object)" resolve="requireNonNullElse" />
+                <node concept="2OqwBi" id="3qk_uJ_45kg" role="37wK5m">
+                  <node concept="tl45R" id="3qk_uJ_44Pq" role="2Oq$k0" />
+                  <node concept="liA8E" id="3qk_uJ_45Ct" role="2OqNvi">
+                    <ref role="37wK5l" to="qkt:~AnActionEvent.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
+                    <node concept="10M0yZ" id="3qk_uJ_44CV" role="37wK5m">
+                      <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                      <ref role="3cqZAo" to="qkt:~PlatformDataKeys.IS_MODAL_CONTEXT" resolve="IS_MODAL_CONTEXT" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbT" id="3qk_uJ_43rm" role="37wK5m" />
+              </node>
             </node>
           </node>
         </node>
@@ -14184,11 +14199,11 @@
                   <node concept="3clFbF" id="4Otqc4bkLET" role="3cqZAp">
                     <node concept="2OqwBi" id="LoZaA6PA4p" role="3clFbG">
                       <node concept="2OqwBi" id="LoZaA6P_b2" role="2Oq$k0">
-                        <node concept="37vLTw" id="3T6cOs0Cp9g" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3T6cOs0Cp9b" resolve="editorComponent" />
-                        </node>
                         <node concept="liA8E" id="LoZaA6P_YI" role="2OqNvi">
                           <ref role="37wK5l" to="cj4x:~EditorComponent.getActionHandler()" resolve="getActionHandler" />
+                        </node>
+                        <node concept="37vLTw" id="3T6cOs0Cp9g" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3T6cOs0Cp9b" resolve="editorComponent" />
                         </node>
                       </node>
                       <node concept="liA8E" id="LoZaA6PAfm" role="2OqNvi">
@@ -14197,8 +14212,8 @@
                           <ref role="3cqZAo" node="4Otqc4bkLj9" resolve="cellToDelete" />
                         </node>
                         <node concept="Rm8GO" id="3T6cOs0CoY2" role="37wK5m">
-                          <ref role="Rm8GQ" to="f4zo:~CellActionType.DELETE" resolve="DELETE" />
                           <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                          <ref role="Rm8GQ" to="f4zo:~CellActionType.DELETE" resolve="DELETE" />
                         </node>
                       </node>
                     </node>

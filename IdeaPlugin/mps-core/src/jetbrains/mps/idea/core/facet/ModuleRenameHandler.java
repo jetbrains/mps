@@ -53,7 +53,7 @@ import java.util.Set;
  */
 public class ModuleRenameHandler extends ModuleAdapter {
   @Override
-  public void modulesRenamed(@NotNull final Project project, @NotNull List<Module> modules, @NotNull Function<Module, String> oldNameProvider) {
+  public void modulesRenamed(@NotNull final Project project, @NotNull List<? extends Module> modules, @NotNull Function<? super Module, String> oldNameProvider) {
     for (final Module module : modules) {
       final FacetManager facetManager = FacetManager.getInstance(module);
       final MPSFacet facet = facetManager.getFacetByType(MPSFacetType.ID);
