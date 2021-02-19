@@ -282,6 +282,7 @@
     <delete dir="${basedir}/../plugins/vcs-changeReminder" failonerror="false"/>
     <delete dir="${basedir}/../plugins/markdown" failonerror="false"/>
     <delete dir="${basedir}/../plugins/grazie" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/space" failonerror="false"/>
     <delete dir="${basedir}/../plugins/platform-images" failonerror="false"/>
     <delete dir="${basedir}/../plugins/laf-macos" failonerror="false"/>
     <delete dir="${basedir}/../plugins/laf-win10" failonerror="false"/>

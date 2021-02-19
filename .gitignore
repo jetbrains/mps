@@ -73,6 +73,7 @@ teamcity-info.xml
 /plugins/vcs-changeReminder
 /plugins/markdown
 /plugins/grazie
+/plugins/space
 # some default plugins (not mentioned in MPSProperties.groovy)
 /plugins/platform-images
 /plugins/laf-macos
