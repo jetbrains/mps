@@ -14147,16 +14147,45 @@
               <ref role="37wK5l" to="33ny:~Optional.ifPresent(java.util.function.Consumer)" resolve="ifPresent" />
               <node concept="1bVj0M" id="4Otqc4bkvgr" role="37wK5m">
                 <node concept="3clFbS" id="4Otqc4bkvgs" role="1bW5cS">
+                  <node concept="3cpWs8" id="3T6cOs0Cp9a" role="3cqZAp">
+                    <node concept="3cpWsn" id="3T6cOs0Cp9b" role="3cpWs9">
+                      <property role="TrG5h" value="editorComponent" />
+                      <node concept="3uibUv" id="3T6cOs0Cp1c" role="1tU5fm">
+                        <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+                      </node>
+                      <node concept="2OqwBi" id="3T6cOs0Cp9c" role="33vP2m">
+                        <node concept="37vLTw" id="3T6cOs0Cp9d" role="2Oq$k0">
+                          <ref role="3cqZAo" node="4Otqc4bkuub" resolve="editorContext" />
+                        </node>
+                        <node concept="liA8E" id="3T6cOs0Cp9e" role="2OqNvi">
+                          <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="3T6cOs0CnaX" role="3cqZAp">
+                    <node concept="2OqwBi" id="3T6cOs0Cohs" role="3clFbG">
+                      <node concept="2OqwBi" id="3T6cOs0CnSZ" role="2Oq$k0">
+                        <node concept="37vLTw" id="3T6cOs0Cp9f" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3T6cOs0Cp9b" resolve="editorComponent" />
+                        </node>
+                        <node concept="liA8E" id="3T6cOs0Co73" role="2OqNvi">
+                          <ref role="37wK5l" to="cj4x:~EditorComponent.getDeletionApprover()" resolve="getDeletionApprover" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3T6cOs0CoxC" role="2OqNvi">
+                        <ref role="37wK5l" to="cj4x:~DeletionApprover.approveForDeletion(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="approveForDeletion" />
+                        <node concept="37vLTw" id="3T6cOs0CoNx" role="37wK5m">
+                          <ref role="3cqZAo" node="4Otqc4bkLj9" resolve="cellToDelete" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3clFbF" id="4Otqc4bkLET" role="3cqZAp">
                     <node concept="2OqwBi" id="LoZaA6PA4p" role="3clFbG">
                       <node concept="2OqwBi" id="LoZaA6P_b2" role="2Oq$k0">
-                        <node concept="2OqwBi" id="LoZaA6P$SX" role="2Oq$k0">
-                          <node concept="37vLTw" id="5Q8f32J5NOf" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4Otqc4bkuub" resolve="editorContext" />
-                          </node>
-                          <node concept="liA8E" id="LoZaA6P_6C" role="2OqNvi">
-                            <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
-                          </node>
+                        <node concept="37vLTw" id="3T6cOs0Cp9g" role="2Oq$k0">
+                          <ref role="3cqZAo" node="3T6cOs0Cp9b" resolve="editorComponent" />
                         </node>
                         <node concept="liA8E" id="LoZaA6P_YI" role="2OqNvi">
                           <ref role="37wK5l" to="cj4x:~EditorComponent.getActionHandler()" resolve="getActionHandler" />
@@ -14167,9 +14196,9 @@
                         <node concept="37vLTw" id="5Q8f32J5O9L" role="37wK5m">
                           <ref role="3cqZAo" node="4Otqc4bkLj9" resolve="cellToDelete" />
                         </node>
-                        <node concept="Rm8GO" id="LoZaA6PBoA" role="37wK5m">
-                          <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                        <node concept="Rm8GO" id="3T6cOs0CoY2" role="37wK5m">
                           <ref role="Rm8GQ" to="f4zo:~CellActionType.DELETE" resolve="DELETE" />
+                          <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
                         </node>
                       </node>
                     </node>

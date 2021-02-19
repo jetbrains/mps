@@ -7,6 +7,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Optional;
 import java.util.function.Consumer;
+import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -33,7 +34,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     Optional<EditorCell> cellToDeleteOptional = findCellToDelete(currentSelectedCell);
     cellToDeleteOptional.ifPresent(new Consumer<EditorCell>() {
       public void accept(EditorCell cellToDelete) {
-        editorContext.getEditorComponent().getActionHandler().executeAction(cellToDelete, CellActionType.DELETE);
+        EditorComponent editorComponent = editorContext.getEditorComponent();
+        editorComponent.getDeletionApprover().approveForDeletion(cellToDelete);
+        editorComponent.getActionHandler().executeAction(cellToDelete, CellActionType.DELETE);
       }
     });
   }
