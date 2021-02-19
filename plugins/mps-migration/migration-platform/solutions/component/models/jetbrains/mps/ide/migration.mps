@@ -12278,29 +12278,6 @@
         </node>
       </node>
     </node>
-    <node concept="Wx3nA" id="1dKE89$MqNL" role="jymVt">
-      <property role="TrG5h" value="NOTIFICATION_GROUP" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="1dKE89$MqNM" role="1tU5fm">
-        <ref role="3uigEE" to="fnpx:~NotificationGroup" resolve="NotificationGroup" />
-      </node>
-      <node concept="2ShNRf" id="1dKE89$MqXM" role="33vP2m">
-        <node concept="1pGfFk" id="1dKE89$MqYm" role="2ShVmc">
-          <ref role="37wK5l" to="fnpx:~NotificationGroup.&lt;init&gt;(java.lang.String,com.intellij.notification.NotificationDisplayType,boolean)" resolve="NotificationGroup" />
-          <node concept="Xl_RD" id="1dKE89$Mr7R" role="37wK5m">
-            <property role="Xl_RC" value="Migration" />
-          </node>
-          <node concept="Rm8GO" id="1dKE89$MqZ6" role="37wK5m">
-            <ref role="Rm8GQ" to="fnpx:~NotificationDisplayType.STICKY_BALLOON" resolve="STICKY_BALLOON" />
-            <ref role="1Px2BO" to="fnpx:~NotificationDisplayType" resolve="NotificationDisplayType" />
-          </node>
-          <node concept="3clFbT" id="1dKE89$MqYp" role="37wK5m">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="1dKE89$MqNR" role="1B3o_S" />
-    </node>
     <node concept="Wx3nA" id="5qnBhKy1X01" role="jymVt">
       <property role="TrG5h" value="REF_GOTO_PREFIX" />
       <property role="3TUv4t" value="true" />
@@ -12597,11 +12574,20 @@
               <node concept="1pGfFk" id="53d0N_LgtM2" role="2ShVmc">
                 <ref role="37wK5l" to="fnpx:~Notification.&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,com.intellij.notification.NotificationType,com.intellij.notification.NotificationListener)" resolve="Notification" />
                 <node concept="2OqwBi" id="1dKE89$Mrtt" role="37wK5m">
-                  <node concept="37vLTw" id="1dKE89$Mrhd" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1dKE89$MqNL" resolve="NOTIFICATION_GROUP" />
-                  </node>
                   <node concept="liA8E" id="1dKE89$MrE1" role="2OqNvi">
                     <ref role="37wK5l" to="fnpx:~NotificationGroup.getDisplayId()" resolve="getDisplayId" />
+                  </node>
+                  <node concept="2OqwBi" id="2cjwp5M8WeM" role="2Oq$k0">
+                    <node concept="2YIFZM" id="2cjwp5M8Wi5" role="2Oq$k0">
+                      <ref role="1Pybhc" to="fnpx:~NotificationGroupManager" resolve="NotificationGroupManager" />
+                      <ref role="37wK5l" to="fnpx:~NotificationGroupManager.getInstance()" resolve="getInstance" />
+                    </node>
+                    <node concept="liA8E" id="2cjwp5M8WrU" role="2OqNvi">
+                      <ref role="37wK5l" to="fnpx:~NotificationGroupManager.getNotificationGroup(java.lang.String)" resolve="getNotificationGroup" />
+                      <node concept="Xl_RD" id="2cjwp5M8Sqe" role="37wK5m">
+                        <property role="Xl_RC" value="Migration" />
+                      </node>
+                    </node>
                   </node>
                 </node>
                 <node concept="Xl_RD" id="53d0N_LgtM4" role="37wK5m">

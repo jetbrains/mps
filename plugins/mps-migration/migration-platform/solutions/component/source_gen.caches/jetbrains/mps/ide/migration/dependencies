@@ -189,8 +189,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.migration.MigrationNotificationsSupport">
     <classNode dependClassName="com.intellij.notification.Notification" />
-    <classNode dependClassName="com.intellij.notification.NotificationDisplayType" />
-    <classNode dependClassName="com.intellij.notification.NotificationGroup" />
+    <classNode dependClassName="com.intellij.notification.NotificationGroupManager" />
     <classNode dependClassName="com.intellij.notification.NotificationListener" />
     <classNode dependClassName="com.intellij.notification.NotificationType" />
     <classNode dependClassName="com.intellij.notification.Notifications" />

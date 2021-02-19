@@ -30,5 +30,6 @@
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <projectService serviceInterface="jetbrains.mps.ide.migration.MigrationRegistry"
                     serviceImplementation="jetbrains.mps.ide.migration.MigrationRegistryImpl"/>
+    <notificationGroup id="Migration" displayType="STICKY_BALLOON"/>
   </extensions>
 </idea-plugin>
