@@ -16,8 +16,7 @@
 package jetbrains.mps.ide.memtool;
 
 import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
-import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
@@ -41,10 +40,6 @@ public class MemManager implements StartupActivity.Background {
   public static final int DELAY = 5;
   private static final Logger LOG = LogManager.getLogger(MemManager.class);
   private static final int DELAY2 = DELAY * 2;
-
-  // a) I hate static final fields, but using NotificationsConfiguration.register from ProjectComponent is troublesome (with multiple project in mind)
-  // b) Perhaps, shall use NotificationsConfiguration.LIGHTWEIGHT_PREFIX for a group id?
-  private static final NotificationGroup ourNotificationGroup = new NotificationGroup("MPS Memory Stats", NotificationDisplayType.BALLOON, false);
 
   private Project myProject;
   private ComponentHost myComponentHost;
@@ -85,7 +80,7 @@ public class MemManager implements StartupActivity.Background {
 
   public void cleanupFromAction() {
     if (myComponentHost.findComponent(MakeServiceComponent.class).isSessionActive()) {
-      final Notification n = ourNotificationGroup.createNotification().setContent("Can not perform cleanup while Make is in progress");
+      final Notification n = NotificationGroupManager.getInstance().getNotificationGroup("MPS Memory Stats").createNotification().setContent("Can not perform cleanup while Make is in progress");
       Notifications.Bus.notify(n, myProject);
       return;
     }

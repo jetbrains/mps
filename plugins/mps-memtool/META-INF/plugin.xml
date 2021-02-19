@@ -24,5 +24,6 @@
     <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N seconds. Non-positive value disables models unloading" restartRequired="false"/>
     <statusBarWidgetFactory implementation="jetbrains.mps.ide.memtool.LoadedModelsPanel$WidgetFactory" id="LoadedModels" order="before notificationsWidget"/>
     <backgroundPostStartupActivity implementation="jetbrains.mps.ide.memtool.MemManager" />
+    <notificationGroup id="MPS Memory Stats" displayType="BALLOON" isLogByDefault="false"/>
   </extensions>
 </idea-plugin>
