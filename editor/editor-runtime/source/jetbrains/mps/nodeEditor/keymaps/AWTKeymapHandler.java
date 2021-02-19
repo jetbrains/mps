@@ -133,7 +133,7 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
       keyCode != KeyEvent.VK_SHIFT &&
       keyCode != KeyEvent.VK_UNDEFINED) {
       String keyCodeName = ourJavaKeyCodesMap.get(keyCode);
-      assert keyCodeName != null;
+      assert keyCodeName != null : event.toString();
       keyCodes.add(keyCodeName);
     }
 
