@@ -86,8 +86,6 @@
     <action id="GotoPreviousBookmark" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--    </group>-->
 
-    <group id="GutterMenuBookmarks" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-
     <group id="popup@BookmarkContextMenu" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 <!--    <group id="popup@BookmarkContextMenu">-->
       <action id="EditBookmark" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
