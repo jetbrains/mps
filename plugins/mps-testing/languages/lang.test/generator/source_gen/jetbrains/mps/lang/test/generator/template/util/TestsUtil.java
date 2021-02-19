@@ -8,9 +8,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
-import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -27,17 +24,7 @@ public final class TestsUtil {
     return "";
   }
 
-  /**
-   * 
-   * @deprecated drop once no reflective calls of test methods left (there are 2 uses in mbeddr)
-   */
-  @Deprecated
-  public static String getTestBodyClassName(SNode testCase) {
-    return ITestCase__BehaviorDescriptor.getClassName_idhGBnqtL.invoke(testCase) + "$" + NodesTestCase__BehaviorDescriptor.getTestBodyName_idhOw0ICJ.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd));
-  }
-
   private static final class CONCEPTS {
     /*package*/ static final SConcept TestInfo$9q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
-    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

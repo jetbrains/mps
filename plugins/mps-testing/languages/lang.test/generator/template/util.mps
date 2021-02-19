@@ -4,13 +4,10 @@
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="tp5o" ref="r:00000000-0000-4000-0000-011c89590380(jetbrains.mps.lang.test.behavior)" />
-    <import index="tpe5" ref="r:00000000-0000-4000-0000-011c895902d1(jetbrains.mps.baseLanguage.unitTest.behavior)" />
     <import index="tp5g" ref="r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)" />
-    <import index="tpe3" ref="r:00000000-0000-4000-0000-011c895902d7(jetbrains.mps.baseLanguage.unitTest.structure)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
@@ -20,12 +17,6 @@
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
-      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
-        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-      </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
-        <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -70,7 +61,6 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
-      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
@@ -100,21 +90,6 @@
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
     </language>
-    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
-      </concept>
-      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
-    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
@@ -125,14 +100,8 @@
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
-      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
-        <reference id="1138405853777" name="concept" index="ehGHo" />
-      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -237,57 +206,6 @@
       <node concept="37vLTG" id="7v5ch11EsZ8" role="3clF46">
         <property role="TrG5h" value="model" />
         <node concept="H_c77" id="7v5ch11EsZ7" role="1tU5fm" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="XZsBAoV_bI" role="jymVt" />
-    <node concept="2YIFZL" id="L0xQjiUFHd" role="jymVt">
-      <property role="TrG5h" value="getTestBodyClassName" />
-      <node concept="17QB3L" id="L0xQjiUFHh" role="3clF45" />
-      <node concept="3Tm1VV" id="L0xQjiUFHf" role="1B3o_S" />
-      <node concept="3clFbS" id="L0xQjiUFHg" role="3clF47">
-        <node concept="3cpWs6" id="L0xQjiUFHk" role="3cqZAp">
-          <node concept="3cpWs3" id="L0xQjiUFHt" role="3cqZAk">
-            <node concept="3cpWs3" id="L0xQjiUFHq" role="3uHU7B">
-              <node concept="2OqwBi" id="4DN08aZ_E28" role="3uHU7B">
-                <node concept="37vLTw" id="2BHiRxgm6XM" role="2Oq$k0">
-                  <ref role="3cqZAo" node="L0xQjiUFHi" resolve="testCase" />
-                </node>
-                <node concept="2qgKlT" id="4DN08aZ_E2c" role="2OqNvi">
-                  <ref role="37wK5l" to="tpe5:hGBnqtL" resolve="getClassName" />
-                </node>
-              </node>
-              <node concept="Xl_RD" id="L0xQjiUFHu" role="3uHU7w">
-                <property role="Xl_RC" value="$" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="L_Hr3kEs0d" role="3uHU7w">
-              <node concept="2qgKlT" id="L_Hr3kEs0e" role="2OqNvi">
-                <ref role="37wK5l" to="tp5o:hOw0ICJ" resolve="getTestBodyName" />
-              </node>
-              <node concept="35c_gC" id="7aH5t2gC7yY" role="2Oq$k0">
-                <ref role="35c_gD" to="tp5g:hHlH9T6" resolve="NodesTestCase" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="L0xQjiUFHi" role="3clF46">
-        <property role="TrG5h" value="testCase" />
-        <node concept="3Tqbb2" id="L0xQjiUFHj" role="1tU5fm">
-          <ref role="ehGHo" to="tpe3:hGB2rPm" resolve="ITestCase" />
-        </node>
-      </node>
-      <node concept="P$JXv" id="BYb1OG7zEQ" role="lGtFl">
-        <node concept="TZ5HI" id="BYb1OG7zER" role="3nqlJM">
-          <node concept="TZ5HA" id="BYb1OG7zES" role="3HnX3l">
-            <node concept="1dT_AC" id="BYb1OG7zTJ" role="1dT_Ay">
-              <property role="1dT_AB" value="drop once no reflective calls of test methods left (there are 2 uses in mbeddr)" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="BYb1OG7zET" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
   </node>
