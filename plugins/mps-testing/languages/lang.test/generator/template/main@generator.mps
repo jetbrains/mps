@@ -17,7 +17,6 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tp6m" ref="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)" />
-    <import index="tp48" ref="r:00000000-0000-4000-0000-011c89590374(jetbrains.mps.baseLanguage.classifiers.generator.baseLanguage.template.main@generator)" />
     <import index="tp4h" ref="r:00000000-0000-4000-0000-011c8959036d(jetbrains.mps.baseLanguage.classifiers.behavior)" />
     <import index="tpe5" ref="r:00000000-0000-4000-0000-011c895902d1(jetbrains.mps.baseLanguage.unitTest.behavior)" />
     <import index="tp5o" ref="r:00000000-0000-4000-0000-011c89590380(jetbrains.mps.lang.test.behavior)" />
@@ -724,31 +723,6 @@
             </node>
           </node>
         </node>
-      </node>
-    </node>
-    <node concept="3aamgX" id="hHDBKEW" role="3acgRq">
-      <ref role="30HIoZ" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
-      <node concept="30G5F_" id="hHDBKEY" role="30HLyM">
-        <node concept="3clFbS" id="hHDBKEZ" role="2VODD2">
-          <node concept="3clFbF" id="hHDBKF0" role="3cqZAp">
-            <node concept="2OqwBi" id="hHDBKF1" role="3clFbG">
-              <node concept="2OqwBi" id="hHDBKF2" role="2Oq$k0">
-                <node concept="30H73N" id="hHDBKF3" role="2Oq$k0" />
-                <node concept="2qgKlT" id="hHDBKF4" role="2OqNvi">
-                  <ref role="37wK5l" to="tp4h:hEwIBCW" resolve="getContainer" />
-                </node>
-              </node>
-              <node concept="1mIQ4w" id="hHDBKF5" role="2OqNvi">
-                <node concept="chp4Y" id="hHDBKF6" role="cj9EA">
-                  <ref role="cht4Q" to="tp5g:hHlH9T6" resolve="NodesTestCase" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="j$656" id="hPop1Y_" role="1lVwrX">
-        <ref role="v9R2y" to="tp48:hz1B4cf" resolve="reduce_DefaultClassifierMethodDeclaration" />
       </node>
     </node>
     <node concept="3aamgX" id="hHD$WJF" role="3acgRq">

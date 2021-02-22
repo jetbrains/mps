@@ -6,7 +6,6 @@ import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.classifiers.behavior.IMember__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.classifiers.behavior.ThisClassifierExpression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.test.behavior.IReferenceAttachable__BehaviorDescriptor;
@@ -86,12 +85,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNodeOperations.getParent(_context.getNode()) == null);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(IMember__BehaviorDescriptor.getContainer_idhEwIBCW.invoke(_context.getNode()), CONCEPTS.NodesTestCase$nd);
-  }
-  public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(ThisClassifierExpression__BehaviorDescriptor.getClassifier_idhEwJeDN.invoke(_context.getNode()), CONCEPTS.NodesTestCase$nd);
   }
-  public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.operation$gs9E), CONCEPTS.EditorOperation$OD);
   }
   public static boolean rule_Condition_16_0(final BaseMappingRuleContext _context) {
@@ -581,7 +577,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.nodes$Many);
   }
   public static SNode insertMacro_Query_15_0(final InsertMacroContext _context) {
-    return _quotation_createNode_x583g4_a0a741();
+    return _quotation_createNode_x583g4_a0a641();
   }
   public static Object varMacro_Value_16_0(final TemplateVarContext _context) {
     return SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(_context.getNode()));
@@ -595,7 +591,6 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
-    rrcMethods.put("1217247775420", new RRC(i++));
     rrcMethods.put("1217247038443", new RRC(i++));
     rrcMethods.put("1227010390717", new RRC(i++));
     rrcMethods.put("9018216227568987190", new RRC(i++));
@@ -624,18 +619,16 @@ public class QueriesGenerated extends QueryProviderBase {
         case 1:
           return QueriesGenerated.rule_Condition_0_2(ctx);
         case 2:
-          return QueriesGenerated.rule_Condition_0_3(ctx);
-        case 3:
           return QueriesGenerated.rule_Condition_16_0(ctx);
-        case 4:
+        case 3:
           return QueriesGenerated.rule_Condition_16_1(ctx);
-        case 5:
+        case 4:
           return QueriesGenerated.rule_Condition_16_2(ctx);
-        case 6:
+        case 5:
           return QueriesGenerated.rule_Condition_16_3(ctx);
-        case 7:
+        case 6:
           return QueriesGenerated.rule_Condition_16_4(ctx);
-        case 8:
+        case 7:
           return QueriesGenerated.rule_Condition_16_5(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1270,7 +1263,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a741() {
+  private static SNode _quotation_createNode_x583g4_a0a641() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
