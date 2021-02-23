@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.project.dependency;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHandler;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -58,7 +57,7 @@ class RuntimesOfUsedLanguageCalculator {
   }
 
   private static boolean isPackaged(SModule myModule) {
-    if (myModule instanceof TempModule || myModule instanceof TransientSModule || myModule instanceof ProjectStructureModule) {
+    if (myModule instanceof TempModule || myModule instanceof TransientSModule) {
       return false;
     }
     return myModule.isPackaged();

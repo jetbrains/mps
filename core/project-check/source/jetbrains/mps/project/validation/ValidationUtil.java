@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
@@ -92,7 +91,7 @@ public class ValidationUtil {
 
   public static void validateModule(final SModule m, Processor<? super ModuleValidationProblem> processor) {
     // there's 1 use in mbeddr, in com.mbeddr.mpsutil.projectview.runtime
-    if (m instanceof TransientSModule || m instanceof ProjectStructureModule) {
+    if (m instanceof TransientSModule) {
       return;
     }
 

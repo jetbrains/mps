@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,15 @@
  */
 package jetbrains.mps.ide.ui.tree.module;
 
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
-import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeElement;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -44,7 +38,7 @@ public abstract class ProjectModuleTreeNode extends MPSTreeNode implements MPSMo
   public static ProjectModuleTreeNode createFor(Project project, SModule module, boolean shortNameOnly) {
     if (module instanceof Language) {
       return new ProjectLanguageTreeNode((Language) module, project, shortNameOnly);
-    } else if (module instanceof Solution || module instanceof ProjectStructureModule) {
+    } else if (module instanceof Solution) {
       return new ProjectSolutionTreeNode((AbstractModule) module, project, shortNameOnly);
     } else if (module instanceof DevKit) {
       return new ProjectDevKitTreeNode((DevKit) module, project, false);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.GeneralModuleFactory;
@@ -323,13 +322,6 @@ public class RepoListenerTest implements EnvironmentAware {
 
   private static class ContentAdapter extends SRepositoryContentAdapter {
     private int myModelAdded = 0, myModelRemoved = 0, myModelBeforeRemoved = 0;
-
-    @Override
-    protected boolean isIncluded(SModule module) {
-      // when test module is added, ProjectStructureModule adds a model for it, and obscures results we intend to observe,
-      // thus we don't track it altogether
-      return !(module instanceof ProjectStructureModule);
-    }
 
     @Override
     public void modelAdded(SModule module, org.jetbrains.mps.openapi.model.SModel model) {
