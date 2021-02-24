@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,20 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
       dm.invalidate();
     } else {
       dm = new DescriptorModel(modelReference, module);
-      dm.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
+      /*
+      lang.descriptor legitimately mentions lang.smodel as its generation target.
+      lang.smodel has MPS.Core runtime solution (is it right?).
+      With RTs of engaged languages being respected now (part of MPS-32851), we face undesired MPS.Core dependency
+      in generated code (GeneratedClass annotation weaved from BL generator).
+      Even if we reduce it to Annotation solution, it might be still too much if
+      we want to keep an option to generate pure Java code.
+       */
+//      dm.addDevKit(BootstrapLanguages.getLanguageDescriptorDevKit());
+      // Provisionally turn off lang.descriptor, engaged for solution@descriptor model;
+      // need to sort out lang.smodel runtimes or lang.descriptor generation target first.
+      // Doesn't hurt at the moment as we don't generate anything right now. Perhaps, shall add this
+      // conditionally once there are extensions/extpoints/lang.plugin elements in the solution?
+//      dm.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
       myModels.put(modelReference, dm);
       ((SModuleBase) module).registerModel(dm);
     }
