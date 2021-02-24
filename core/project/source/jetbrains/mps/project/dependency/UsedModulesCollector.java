@@ -81,11 +81,7 @@ public final class UsedModulesCollector {
 
     if (includeNonReexport) {
       if (runtimes) {
-        SRepository contextRepo = module.getRepository();
-        assert contextRepo != null;
-        // FIXME in fact, it's caller responsibility to ensure proper read access with supplied SModule.
-        //       Read access added here just in case clients relied on ModuleRepositoryFacade.getModule(), which obtains read access when needed
-        contextRepo.getModelAccess().runReadAction(() -> collectRuntimeOfUsedLanguages(module, result));
+        collectRuntimeOfUsedLanguages(module, result);
       }
     }
 
