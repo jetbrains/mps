@@ -17,6 +17,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
+import java.util.Collection;
+import jetbrains.mps.smodel.ModelImports;
+import java.util.LinkedList;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ModelReportItemBase;
@@ -51,7 +54,20 @@ public class ProperGenPlanChecker extends SpecificChecker {
     LanguageRegistry languageRegistry = myComponentHost.findComponent(LanguageRegistry.class);
     EngagedGeneratorCollector egc = new EngagedGeneratorCollector(languageRegistry, toCheck);
     monitor.advance(1);
-    for (SLanguage inUse : egc.getDirectlyUsedLanguages()) {
+    Collection<SLanguage> employedLanguages;
+    Collection<SLanguage> engaged = new ModelImports(toCheck).getLanguagesEngagedOnGeneration();
+    if (engaged.isEmpty()) {
+      employedLanguages = egc.getDirectlyUsedLanguages();
+    } else {
+      // Assume 'engaged' languages are off the limits. We use 'engaged' to supply extra generators to get extension to GP's `apply with extended` clause. 
+      // There's no mechanism to tell whether any 'engaged' language contributes anything to generator eager for extension, therefore just exclude all 
+      // 'engaged' languages altogether. Our primary scenario is use of 'engaged' languages in @descriptor models, where devkit's associated plan takes  
+      // any extension for lang.descriptor generator, and we need to give aspect languages a chance to pop in. 
+      // XXX it's not perfect, as we don't distinguish cases when a language is 'engaged' only and both 'engaged' and 'used' 
+      employedLanguages = new LinkedList<SLanguage>(egc.getDirectlyUsedLanguages());
+      employedLanguages.removeAll(engaged);
+    }
+    for (SLanguage inUse : employedLanguages) {
       if (coveredLanguages.contains(inUse)) {
         continue;
       }
