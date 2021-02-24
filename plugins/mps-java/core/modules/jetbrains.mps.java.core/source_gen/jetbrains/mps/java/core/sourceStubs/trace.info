@@ -261,6 +261,7 @@
       <node id="503891309339104902" at="246,12,247,16" concept="11" />
       <node id="2298109797585577413" at="252,54,253,137" concept="11" />
       <node id="2553860361585717672" at="257,51,258,35" concept="11" />
+      <node id="2002774857443972466" at="263,66,264,35" concept="11" />
       <node id="336459899665948603" at="148,18,150,13" concept="1" />
       <node id="503891309339104671" at="246,10,248,5" concept="1" />
       <node id="4423331261408224791" at="56,0,59,0" concept="2" trace="JavaSourceStubModelDescriptor#(Lorg/jetbrains/mps/openapi/model/SModelReference;Lorg/jetbrains/mps/openapi/persistence/MultiStreamDataSource;)V" />
@@ -284,6 +285,7 @@
       <node id="336459899665783490" at="139,89,144,23" concept="10" />
       <node id="336459899666454607" at="154,0,159,11" concept="4" />
       <node id="4078359035441861379" at="191,63,196,13" concept="4" />
+      <node id="2002774857443972453" at="261,0,266,0" concept="9" trace="getLanguagesEngagedOnGeneration#()Ljava/util/Collection;" />
       <node id="336459899665822465" at="144,23,150,13" concept="8" />
       <node id="503891309339217918" at="234,18,240,9" concept="7" />
       <node id="503891309338952161" at="215,0,222,5" concept="19" />
@@ -323,6 +325,7 @@
       <scope id="503891309339104672" at="246,12,247,16" />
       <scope id="2298109797585565066" at="252,54,253,137" />
       <scope id="2553860361585708911" at="257,51,258,35" />
+      <scope id="2002774857443972463" at="263,66,264,35" />
       <scope id="4423331261408511793" at="72,46,74,29" />
       <scope id="4423331261408522893" at="78,24,80,37" />
       <scope id="4114607859880208" at="131,9,133,9">
@@ -370,6 +373,7 @@
       <scope id="4423331261408522889" at="77,0,82,0" />
       <scope id="4423331261408313227" at="83,0,88,0" />
       <scope id="503891309338952165" at="216,22,221,29" />
+      <scope id="2002774857443972453" at="261,0,266,0" />
       <scope id="4423331261408311860" at="62,51,68,83">
         <var name="model" id="391138107891845721" />
       </scope>
@@ -446,7 +450,7 @@
       <unit id="336459899666607110" at="140,68,144,13" name="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor$2" />
       <unit id="336459899666477339" at="155,51,159,9" name="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor$3" />
       <unit id="4078359035441893182" at="192,40,196,11" name="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor$4" />
-      <unit id="4423331261408224789" at="48,0,261,0" name="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor" />
+      <unit id="4423331261408224789" at="48,0,267,0" name="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelDescriptor" />
     </file>
   </root>
   <root nodeRef="r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408331046">

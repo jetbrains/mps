@@ -167,6 +167,12 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
     return Collections.<SModuleReference>emptyList();
   }
 
+  @NotNull
+  @Override
+  public Collection<SLanguage> getLanguagesEngagedOnGeneration() {
+    return Collections.<SLanguage>emptyList();
+  }
+
   @Override
   public void reloadFromDiskSafe() {
     SRepository repo = getRepository();

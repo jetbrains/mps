@@ -37,6 +37,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * Calculates the runtimes of used languages of the given module.
@@ -67,8 +68,23 @@ class RuntimesOfUsedLanguageCalculator {
    * @return the runtimes of the used languages
    */
   public Set<SModuleReference> invoke(@NotNull SModule module) {
-    Strategy strategy = isPackaged(module) ? new DeploymentStrategy() : new SourceStrategy();
+    Strategy strategy = isPackaged(module) ? new DeploymentStrategy(this::getRuntimesCached) : new SourceStrategy(this::getRuntimesCached);
     return strategy.findRuntimes(module);
+  }
+
+  // FIXME why does SLanguage.getLanguageRuntime keeps some sophisticated logic to collect RTs of all extended languages?
+  //       Do I care to keep it there? Why not a simple set of what's known for the language itself?
+  /*package*/ Collection<SModuleReference> getRuntimesCached(SLanguage usedLang) {
+    final Collection<SModuleReference> rv = myLanguageRuntimesCache.get(usedLang);
+    if (rv != null) {
+      return rv;
+    }
+    List<SModuleReference> runtimes = new ArrayList<>(4);
+    myLanguageRuntimesCache.put(usedLang, runtimes);
+    for (SModuleReference runtimeRef : usedLang.getLanguageRuntimes()) {
+      runtimes.add(runtimeRef);
+    }
+    return runtimes;
   }
 
   private interface Strategy {
@@ -83,7 +99,10 @@ class RuntimesOfUsedLanguageCalculator {
   @Hack
   private class DeploymentStrategy implements Strategy {
 
-    public DeploymentStrategy() {
+    private final Function<SLanguage, Collection<SModuleReference>> myCachedAccess;
+
+    public DeploymentStrategy(Function<SLanguage, Collection<SModuleReference>> cachedAccess) {
+      myCachedAccess = cachedAccess;
     }
 
     @Override
@@ -92,12 +111,12 @@ class RuntimesOfUsedLanguageCalculator {
       ModuleDescriptor moduleDescriptor = ((AbstractModule) module).getModuleDescriptor();
       if (moduleDescriptor == null) {
         LOG.warn("Module descriptor could not be found for the module " + module + "; falling back to the SourceStrategy.");
-        return new SourceStrategy().findRuntimes(module);
+        return new SourceStrategy(myCachedAccess).findRuntimes(module);
       }
       DeploymentDescriptor descriptor = moduleDescriptor.getDeploymentDescriptor();
       if (descriptor == null) {
         LOG.debug("The deployment descriptor could not be found for the module " + module + "; falling back to the SourceStrategy.");
-        return new SourceStrategy().findRuntimes(module);
+        return new SourceStrategy(myCachedAccess).findRuntimes(module);
       }
       Collection<Dependency> dependencies = descriptor.getDependencies();
       for (Dependency dependency : dependencies) {
@@ -113,7 +132,10 @@ class RuntimesOfUsedLanguageCalculator {
    * used when we do not have a deployed module; we have to look for the source module of the language to gather its runtimes
    */
   private class SourceStrategy implements Strategy {
-    public SourceStrategy() {
+    private final Function<SLanguage, Collection<SModuleReference>> myCachedAccess;
+
+    public SourceStrategy(Function<SLanguage, Collection<SModuleReference>> cachedAccess) {
+      myCachedAccess = cachedAccess;
     }
 
     @Override
@@ -126,14 +148,7 @@ class RuntimesOfUsedLanguageCalculator {
           }
           continue;
         }
-        if (!myLanguageRuntimesCache.containsKey(usedLang)) {
-          List<SModuleReference> runtimes = new ArrayList<>();
-          myLanguageRuntimesCache.put(usedLang, runtimes);
-          for (SModuleReference runtimeRef : usedLang.getLanguageRuntimes()) {
-            runtimes.add(runtimeRef);
-          }
-        }
-        result.addAll(myLanguageRuntimesCache.get(usedLang));
+        result.addAll(myCachedAccess.apply(usedLang));
       }
       return result;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -785,6 +785,8 @@ public class SModel implements SModelData, UpdateModeSupport {
     if (!myLanguagesEngagedOnGeneration.contains(ref)) {
       myLanguagesEngagedOnGeneration.add(ref);
       // don't send event but mark model as changed
+      // FIXME comment above makes no sense, and is just a historical artifact (there's !isLoaded() when it was introduced)
+      //       however, I wonder why 'markChanged' is guarded by canFireEvent() -  does it mean models that don't fire event deserve no 'changed' state?
       if (canFireEvent()) {
         markChanged();
       }

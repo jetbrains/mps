@@ -257,4 +257,10 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
   public List<SModuleReference> importedDevkits() {
     return Collections.emptyList();
   }
+
+  @NotNull
+  @Override
+  public Collection<SLanguage> getLanguagesEngagedOnGeneration() {
+    return Collections.emptyList();
+  }
 }

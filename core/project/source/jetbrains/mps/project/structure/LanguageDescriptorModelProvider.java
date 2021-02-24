@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -240,33 +240,20 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
     }
 
     /**
-     * FIXME
-     * adding used languages to descriptor model is a hack,
-     * fixing that the runtime solutions of languages engaged on generations are ignored at compilation
+     * Here comes some peculiar piece of MPS architecture when @descriptor model relies on 'engaged' languages that are not manifested
+     *    as used (those user employs to perform activities). These 'engaged' languages are not reflected in module descriptor, their versions
+     *    are not tracked; but they do contribute to module's classpath (RTs of these languages; see UsedModulesCollector)
      */
     void updateGenerationLanguages() {
       jetbrains.mps.smodel.SModel m = getSModel();
       m.addDevKit(BootstrapLanguages.getLanguageDescriptorDevKit());
       m.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
-      Set<SLanguage> importsToRemove = new HashSet<>(m.usedLanguages()); // calculating the delta
-      Set<SLanguage> importsToAdd = new HashSet<>();
       Collection<SModel> aspectModels = LanguageAspectSupport.getAspectModels(myModule);
       for (SModel aspect : aspectModels) {
         Collection<SLanguage> mainLanguages = new ArrayList<>(LanguageAspectSupport.getMainLanguages(aspect));
         mainLanguages.addAll(LanguageAspectSupport.getDefaultDevkitLanguages(aspect));
         for (@NotNull SLanguage aspectLanguage : mainLanguages) {
           addEngagedOnGenerationLanguage(aspectLanguage);
-          importsToRemove.remove(aspectLanguage);
-          importsToAdd.add(aspectLanguage);
-        }
-      }
-      importsToAdd.removeAll(m.usedLanguages()); // not adding the same language again
-      importsToRemove.forEach(m::deleteLanguage); // applying calculated delta
-      importsToAdd.forEach(m::addLanguage);
-      for (SLanguage lang : m.usedLanguages()) {
-        int versionFromModule = myModule.getUsedLanguageVersion(lang, false);
-        if (m.getLanguageImportVersion(lang) != versionFromModule) {
-          m.setLanguageImportVersion(lang, versionFromModule);
         }
       }
     }
@@ -294,7 +281,6 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
       if (hash != null && hashTimestamp == myHashTimestamp) {
         return hash;
       }
-
 
       try {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
