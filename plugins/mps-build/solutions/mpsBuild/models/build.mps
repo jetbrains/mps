@@ -3884,12 +3884,6 @@
             <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
           </node>
         </node>
-        <node concept="1SiIV0" id="4EJ5T3otM1C" role="3bR37C">
-          <node concept="3bR9La" id="4EJ5T3otM1D" role="1SiIV1">
-            <property role="3bR36h" value="true" />
-            <ref role="3bR37D" node="3qkjbZn8c2m" resolve="jetbrains.mps.lang.feedback.context" />
-          </node>
-        </node>
       </node>
       <node concept="1E1JtA" id="1TaHNgiIbIZ" role="2G$12L">
         <property role="BnDLt" value="true" />
