@@ -9,6 +9,7 @@
   </models>
   <facets>
     <facet type="java">
+      <classes generated="true" />
     </facet>
     <facet pluginId="Git4Idea" type="ideaPlugin" />
   </facets>

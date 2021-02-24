@@ -44281,24 +44281,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3yLZsm" id="GF9IugZbdY" role="3yL2VB">
-              <property role="3yLZsk" value="../../git4idea/lib/remote-servers-git.jar" />
-              <node concept="398BVA" id="GF9IugZbdZ" role="3yLZsn">
-                <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="GF9IugZbe0" role="iGT6I">
-                  <property role="2Ry0Am" value="plugins" />
-                  <node concept="2Ry0Ak" id="GF9IugZbe1" role="2Ry0An">
-                    <property role="2Ry0Am" value="git4idea" />
-                    <node concept="2Ry0Ak" id="GF9IugZbe2" role="2Ry0An">
-                      <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="GF9IugZbe3" role="2Ry0An">
-                        <property role="2Ry0Am" value="remote-servers-git.jar" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3yLZsm" id="GF9IugZbfu" role="3yL2VB">
               <property role="3yLZsk" value="../../git4idea/lib/resources_en.jar" />
               <node concept="398BVA" id="GF9IugZbfv" role="3yLZsn">
