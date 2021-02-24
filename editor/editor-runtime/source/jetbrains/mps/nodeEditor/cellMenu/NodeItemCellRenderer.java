@@ -157,7 +157,7 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
     }
     final SimpleTextAttributes base = new SimpleTextAttributes(style, foreground);
 
-    Iterable<TextRange> ranges = getMatchingFragments(pattern, text);
+    Iterable<TextRange> ranges = mySubstituteChooser.isMenuEmpty() ? null : getMatchingFragments(pattern, text);
     if (ranges != null) {
       SimpleTextAttributes highlighted =
           new SimpleTextAttributes(style, isSelected ? SELECTION_HIGHLIGHT_COLOR : HIGHLIGHT_COLOR);
