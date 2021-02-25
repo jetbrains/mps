@@ -55,7 +55,7 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
          */
         editorCell.moveTo(x, editorCell.getY());
       } else {
-        editorCell.moveTo(x + width, editorCell.getY());
+        editorCell.moveTo(x + width, Math.max(editorCell.getY(), y));
       }
       editorCell.relayout();
       width += editorCell.getWidth();

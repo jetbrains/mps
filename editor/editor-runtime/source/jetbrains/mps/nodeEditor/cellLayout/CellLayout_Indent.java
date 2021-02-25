@@ -454,7 +454,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
       PunctuationUtil.addGaps(cell, myLineContent.isEmpty(), last);
 
-      cell.moveTo(myX + myLineWidth, cell.getY());
+      cell.moveTo(myX + myLineWidth, Math.max(cell.getY(), myCell.getY() + myHeight));
       cell.relayout();
 
       myLineAscent = Math.max(myLineAscent, cell.getAscent());
