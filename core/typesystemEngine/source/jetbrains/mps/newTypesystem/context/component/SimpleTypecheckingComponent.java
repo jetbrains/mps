@@ -163,16 +163,14 @@ import java.util.Set;
    * @param node
    * @return
    */
-  protected boolean applyRulesToNode(SNode node) {
+  protected void applyRulesToNode(SNode node) {
     final List<Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>>> nodesAndRules = new ArrayList<>();
 
-    if (!collectNodesAndRules(node, nodesAndRules)) return false;
+    if (!collectNodesAndRules(node, nodesAndRules)) return;
 
     for (Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>> pair : nodesAndRules) {
       applyRulesToNode(pair.o1, pair.o2);
     }
-
-    return true;
   }
 
   @NotNull
@@ -250,14 +248,13 @@ import java.util.Set;
 
   private void applyRulesAndTrackAccess(AccessTracking accessTracking, SNode sNode) {
     accessTracking.installReadListeners();
-    boolean typeAffected;
     try {
       myNodes.add(sNode);
-      typeAffected = applyRulesToNode(sNode);
+      applyRulesToNode(sNode);
     } finally {
       accessTracking.removeReadListeners();
     }
-    accessTracking.postProcess(sNode, typeAffected);
+    accessTracking.postProcess(sNode);
   }
 
   protected SNode typeCalculated(SNode initialNode) {
@@ -321,7 +318,7 @@ import java.util.Set;
 
     protected void removeReadListeners() {}
 
-    protected void postProcess(SNode sNode, boolean typeAffected){}
+    protected void postProcess(SNode sNode){}
   }
 
   public TypeSubstitution lookupSubstitution(SNode origNode, TypeCheckingContext typeCheckingContext) {

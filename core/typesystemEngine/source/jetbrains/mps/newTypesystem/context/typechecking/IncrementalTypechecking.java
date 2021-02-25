@@ -30,7 +30,6 @@ import jetbrains.mps.newTypesystem.context.component.IncrementalTypecheckingComp
 import jetbrains.mps.newTypesystem.context.component.NonTypeSystemComponent;
 import jetbrains.mps.newTypesystem.context.component.TypeSystemComponent;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.event.SModelChildEvent;
@@ -156,15 +155,12 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     }
   }
 
-  /**
-   * Returns true if the node's type is affected.
-   */
-  public boolean runApplyRulesTo(SNode node, Runnable run) {
+  public void runApplyRulesTo(SNode node, Runnable run) {
     myNodeTypeAccess.pushNode(node);
     try {
       run.run();
     } finally {
-      return myNodeTypeAccess.popNode();
+      myNodeTypeAccess.popNode();
     }
   }
 
@@ -190,21 +186,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     myNonTypeSystemComponent.setChecked();
   }
 
-  public void typeOfNodeCalled(SNode node) {
-    myNodeTypeAccess.nodeTypeAccessed(node);
-  }
-
-  public void addDependencyOnCurrent(SNode node, boolean typeAffected) {
-    addDependencyOnCurrent_(node, typeAffected);
-  }
-
   public void addDependencyOnCurrent(SNode node) {
-    addDependencyOnCurrent_(node, true);
-  }
-
-  //"type affected" means that *type* of this node depends on current
-  // used to decide whether call "type will be recalculated" if current invalidated
-  private void addDependencyOnCurrent_(SNode node, boolean typeAffected) {
     if (node == null) {
       LOG.error("Typesystem dependency not tracked. ");
       return;
@@ -213,7 +195,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     Set<SNode> hashSet = myNodeTypeAccess.peekNode() != null ?
                          Collections.singleton(myNodeTypeAccess.peekNode()) :
                          Collections.emptySet();
-    getTypecheckingComponent().addDependentNodesTypeSystem(node, hashSet, typeAffected);
+    getTypecheckingComponent().addDependentNodesTypeSystem(node, hashSet);
   }
 
   public void addDependencyForCurrent(SNode node) {
@@ -225,7 +207,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
     Set<SNode> hashSet = new THashSet<>(1);
     hashSet.add(node);
-    getTypecheckingComponent().addDependentNodesTypeSystem(current, hashSet, true);
+    getTypecheckingComponent().addDependentNodesTypeSystem(current, hashSet);
   }
 
   @Override
@@ -501,27 +483,18 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
   }
 
   private static class NodeTypeAccess {
-    private LinkedList<Pair<SNode, Boolean>> myStack = new LinkedList<>();
+    private LinkedList<SNode> myStack = new LinkedList<>();
 
     private void pushNode(SNode node) {
-      myStack.push(new Pair<>(node, false));
+      myStack.push(node);
     }
 
-    private boolean popNode() {
-      return myStack.pop().o2;
-    }
-
-    private void nodeTypeAccessed(SNode node) {
-      for (Pair<SNode, Boolean> p : myStack) {
-        if (p.o1 == node) {
-          p.o2 = true;
-        }
-      }
+    private void popNode() {
+      myStack.pop();
     }
 
     private SNode peekNode() {
-      if (myStack.isEmpty()) return null;
-      return myStack.peek().o1;
+      return myStack.peek();
     }
   }
 }

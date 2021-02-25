@@ -177,7 +177,6 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   @Override
   protected void processDependency(SNode node, String ruleModel, String ruleId, boolean addDependency) {
     IncrementalTypechecking currentTypesComponent = getTypechecking();
-    currentTypesComponent.typeOfNodeCalled(node);
     if (addDependency) {
       currentTypesComponent.addDependencyOnCurrent(node);
     }
