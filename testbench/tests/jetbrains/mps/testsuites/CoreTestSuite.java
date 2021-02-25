@@ -39,6 +39,8 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.util.IterableUtilTest.class,
     jetbrains.mps.util.NameUtilTest.class,
     jetbrains.mps.util.MacrosTest.class,
+    jetbrains.mps.vfs.path.NonArchivePathTest.class,
+    jetbrains.mps.vfs.path.FilePathTest.class,
     jetbrains.mps.dataFlow.lang.InitializedVariablesAnalysisTest.class,
     jetbrains.mps.dataFlow.lang.LivenessAnalysisTest.class,
     jetbrains.mps.dataFlow.lang.ProgramTest.class,
