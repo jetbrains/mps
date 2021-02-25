@@ -24,6 +24,7 @@ import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
@@ -149,6 +150,12 @@ public class JarEntryFile implements IFile {
   @Override
   public String getPath() {
     return PathUtil.toSystemIndependent(myJarFile.getAbsolutePath()) + "!/" + myEntryPath;
+  }
+
+  @NotNull
+  @Override
+  public Path toPath() {
+    return PathFormats.UNIX.fromParts(myJarFile.getAbsolutePath(), myEntryPath);
   }
 
   @NotNull

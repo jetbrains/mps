@@ -16,6 +16,8 @@
 package jetbrains.mps.extapi.persistence.datasource;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -24,8 +26,6 @@ import org.jetbrains.mps.annotations.Singleton;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -76,6 +76,8 @@ public final class DataSourceFactoryRuleService implements CoreComponent  {
   }
 
   @Nullable
+  @ToRemove(version=2022.2)
+  @Deprecated
   public synchronized DataSourceFactoryFromURL getFactory(@NotNull URL url) {
     for (DataSourceFactoryRule rule : myFactoryRules) {
       DataSourceFactoryFromURL result = rule.spawn(url);
@@ -86,11 +88,22 @@ public final class DataSourceFactoryRuleService implements CoreComponent  {
     return null;
   }
 
-  /**
+  @Nullable
+  public synchronized DataSourceFactoryFromPath getFactory(@NotNull Path path) {
+    for (DataSourceFactoryRule rule : myFactoryRules) {
+      var result = rule.spawn(path);
+      if (result != null) {
+        return result;
+      }
+    }
+    return null;
+  }
+
+   /**
    * @return factories in the reverse order of registration -- from the newest to the oldest.
    */
   @NotNull
   public synchronized List<DataSourceFactoryRule> getFactoryRules() {
-    return Collections.unmodifiableList(new ArrayList<>(myFactoryRules));
+    return List.copyOf(myFactoryRules);
   }
 }

@@ -25,11 +25,17 @@ import java.util.List;
 /**
  * This is a file system path abstraction.
  * Never supposed to address the physical file system.
- * Might be absolute or relative.
+ * Can be absolute or relative.
  * The path scheme is a <root name><root sep><name1><sep><name2><sep>...
+ * The keeper of the scheme is PathFormat, given by {@link #getFormat()}.
  *
- * The aim of this class is to get rid of working with the file paths as Strings in the client code.
- * This comprises working with separators as well as working with archives.
+ * The aim of this class is to stop working with paths as Strings.
+ * This comprises working with separators as well as working with archive paths.
+ *
+ * TODO: our current plan is first to use Path as a mediator between IFile and plain strings;
+ *       then we are going to replace all the strings in jetbrains.mps.vfs package;
+ *       then we go out of the vfs package exposing Path to all the clients of IFile so that they never work with strings
+ *       and never write another slash in their code.
  *
  * @author apyshkin
  */

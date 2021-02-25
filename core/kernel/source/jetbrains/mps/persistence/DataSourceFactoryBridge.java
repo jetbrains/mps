@@ -19,11 +19,10 @@ import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
-import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.path.Path;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -33,8 +32,6 @@ import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import static jetbrains.mps.persistence.DataSourceFactoryBridge.DSourceAndOptions.build;
@@ -129,19 +126,12 @@ public final class DataSourceFactoryBridge {
   DSourceAndOptions<DataSource> create(@NotNull IFile file) {
     assert !file.isDirectory();
     DataSource dataSource = null;
-    try {
-      URL url = file.getUrl();
-      DataSourceFactoryFromURL factory = myDataSourceFactoryRuleService.getFactory(url);
-      if (factory == null) {
-        throw new RuntimeException(new DataSourceFactoryNotFoundException("Could not find factory using the url " + url));
-      }
-      if (factory.supports(url)) {
-        dataSource = factory.create(url);
-      }
-    } catch (URLNotSupportedException | MalformedURLException e) {
-      LOG.error("Could not get URL from IFile : '" + file + "'", e);
-      return null;
+    Path path = file.toPath();
+    var factory = myDataSourceFactoryRuleService.getFactory(path);
+    if (factory == null) {
+      throw new RuntimeException(new DataSourceFactoryNotFoundException("Could not find factory using the path " + path));
     }
+    dataSource = factory.create(path);
     ModelCreationOptions parameters = new ParametersCalculator(myModelRoot).calculate();
     if (dataSource == null) {
       LOG.error("Data source could not be constructed from the file: " + file, new Throwable());

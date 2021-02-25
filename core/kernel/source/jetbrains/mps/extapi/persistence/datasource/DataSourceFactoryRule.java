@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
+import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
@@ -23,7 +25,7 @@ import java.net.URL;
 
 /**
  * Service-provider interface for breeding new {@link DataSourceFactoryFromName} and
- * {@link DataSourceFactoryFromURL} from the given data source type.
+ * {@link DataSourceFactoryFromPath} from the given data source type.
  * Note that only core MPS developers are able to register it as a service.
  * Other clients are welcome to use the platform-level extension point which is located at
  * the <code>jetbrains.mps.persistence.DataSourceFactoryRuleRegistrar</code>
@@ -62,7 +64,22 @@ public interface DataSourceFactoryRule {
    * the rule.
    * @return a new data source factory based on the data source type information
    *         null if the provided data source type does not suit the rule preconditions.
+   * @deprecated use the {@link #spawn(Path)}
    */
   @Nullable
+  @ToRemove(version=2022.2)
+  @Deprecated
   DataSourceFactoryFromURL spawn(@NotNull URL url);
+
+  /**
+   * Constructs a factory from a specified URL.
+   * Might return null which means that the passed argument does not satisfy
+   * the rule.
+   * @return a new data source factory based on the data source type information
+   *         null if the provided data source type does not suit the rule preconditions.
+   */
+  @Nullable
+  default DataSourceFactoryFromPath spawn(@NotNull Path path) {
+    return null;
+  }
 }

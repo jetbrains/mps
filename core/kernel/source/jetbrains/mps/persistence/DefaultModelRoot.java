@@ -25,7 +25,6 @@ import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.persistence.DataSourceFactoryBridge.DSourceAndOptions;
@@ -64,7 +63,7 @@ import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
  * This model root is responsible for loading models from the source roots
  * as well as for creating models and register them in itself.
  *
- * It looks for {@link DataSourceFactoryFromName} and {@link DataSourceFactoryFromURL} instances
+ * It looks for {@link DataSourceFactoryFromName} instances
  * through the {@link DataSourceFactoryRuleService} and
  * finds proper {@link ModelFactory} instances via the {@link ModelFactoryRegistry}
  * data source kind to model factory association.

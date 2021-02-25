@@ -16,19 +16,22 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Use IFileSystem instead
+ * this is going to be revived
  * Note the IFileSystem is per-protocol, in which it differs from FileSystem.
  */
-@Deprecated
-@ToRemove(version = 2019.1)
 public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
-
   @Deprecated
   @ToRemove(version = 2019.1)
   @NotNull IFile getFile(@NotNull String path);
+
+  @NotNull default IFile getFile(@NotNull Path path) {
+    // fixme for now we resort to the text representation, but Path is to be extensively used in IFile implementations
+    return getFile(path.toUnixPathFormat().toText());
+  }
 
   @Deprecated
   @ToRemove(version = 2019.1)

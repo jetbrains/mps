@@ -21,7 +21,6 @@ import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
-import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.FileBasedIndex.InputFilter;
@@ -33,15 +32,15 @@ import com.intellij.util.io.DataExternalizer;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
+import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromPath;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
-import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
+import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
 import jetbrains.mps.workbench.index.ModelRootsData.Entry;
 import org.apache.log4j.LogManager;
@@ -56,11 +55,6 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.net.JarURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -84,16 +78,12 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
 
     if (modelData == null) {
       try {
-        URL url = constructURLFromData(inputData);
-        if (url == null) {
-          LOG.error("URL cannot be created from " + inputData.getFile());
-          return null;
-        }
-        DataSourceFactoryFromURL dataSourceFactory = getDataSourceFactory(mpsPlatform, url);
+        Path path = constructPathFromData(inputData);
+        var dataSourceFactory = getDataSourceFactory(mpsPlatform, path);
         if (dataSourceFactory == null) {
           return null;
         }
-        DataSource dataSource = dataSourceFactory.create(url);
+        DataSource dataSource = dataSourceFactory.create(path);
         DataSourceType type = dataSource.getType();
         if (type == null) {
           return null;
@@ -112,7 +102,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
         inputData.putUserData(PARSED_MODEL, modelData);
       } catch (ModelReadException e) {
         //do nothing. This may happen e.g. when the file is created and not yet filled with content
-      } catch (URLNotSupportedException | IOException e) {
+      } catch (IOException e) {
         LOG.error(String.format("Failed to index %s", inputData.getFileName()), e);
         return null;
       }
@@ -121,18 +111,19 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
   }
 
   @Nullable
-  private static DataSourceFactoryFromURL getDataSourceFactory(ComponentHost mpsPlatform, URL url) {
-    DataSourceFactoryRuleService service = mpsPlatform.findComponent(DataSourceFactoryRuleService.class);
-    DataSourceFactoryFromURL dataSourceFactory = service.getFactory(url);
+  private static DataSourceFactoryFromPath getDataSourceFactory(ComponentHost mpsPlatform, Path path) {
+    var service = mpsPlatform.findComponent(DataSourceFactoryRuleService.class);
+    var dataSourceFactory = service.getFactory(path);
     if (dataSourceFactory == null) {
-      LOG.error("Data Source Factory is not found for " + url);
+      LOG.error("Data Source Factory is not found for " + path);
     }
     return dataSourceFactory;
   }
 
   @Nullable
-  private static URL constructURLFromData(FileContent inputData) {
-    return VirtualFileUtils.extractURLFromVirtualFile(inputData.getFile());
+  private static Path constructPathFromData(FileContent inputData) {
+    String path = inputData.getFile().getPath();
+    return PathFormats.UNIX.fromString(path);
   }
 
   /**

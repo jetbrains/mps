@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.path.Path;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -24,9 +24,6 @@ import java.net.URI;
 import java.net.URL;
 import java.util.Locale;
 
-@Deprecated
-@ToRemove(version = 2019.1)
-//this should go away since we will operate only path-urls
 public final class Files {
   private static final Logger LOG = LogManager.getLogger(Files.class);
 
@@ -34,12 +31,17 @@ public final class Files {
   }
 
   @NotNull
+  @Deprecated
   public static IFile fromURL(@NotNull URL url) {
     String path = URI.create(url.getPath()).getPath();
     // fixme HOTFIX for 203.1, will be gone
     if (System.getProperty("os.name").toLowerCase(Locale.US).startsWith("windows") && path.startsWith("/")) {
       path = path.substring(1);
     }
+    return FileSystemExtPoint.getFS().getFile(path);
+  }
+
+  public static IFile fromPath(@NotNull Path path) {
     return FileSystemExtPoint.getFS().getFile(path);
   }
 }

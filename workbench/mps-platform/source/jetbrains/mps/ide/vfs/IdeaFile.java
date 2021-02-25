@@ -31,6 +31,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
@@ -94,6 +95,12 @@ public class IdeaFile implements IFile, CachingFile {
   public String getPath() {
     VirtualFile virtualFile = findVirtualFile();
     return virtualFile != null ? virtualFile.getPath() : myPath;
+  }
+
+  @NotNull
+  @Override
+  public Path toPath() {
+    return PathFormats.UNIX.fromString(myPath);
   }
 
   @NotNull

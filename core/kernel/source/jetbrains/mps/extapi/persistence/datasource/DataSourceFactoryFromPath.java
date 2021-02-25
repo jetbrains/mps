@@ -15,15 +15,15 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.net.URL;
 
 /**
- * Logic defining how to create data source from the given URL.
- * Supposed to parse URL and give out a corresponding <code>DataSource</code>
+ * Logic defining how to create data source from the given {@link jetbrains.mps.vfs.path.Path}
+ * Supposed to read the path and give out a corresponding <code>DataSource</code>
  * It is used when we read the model from some storage (disk, net, anything).
  *
  * @see DataSource
@@ -31,24 +31,14 @@ import java.net.URL;
  *
  * @author apyshkin
  * @since 29/12/16
- * @deprecated consider using {@link PreinstalledPathDataSourceFactories} instead
  */
-@ToRemove(version=2022.2)
-@Deprecated
-public interface DataSourceFactoryFromURL {
+public interface DataSourceFactoryFromPath {
   /**
    * Creates a new <code>DataSource</code>
    *
-   * @param url -- the abstract absolute location
+   * @param path -- the abstract absolute location
    * @return new <code>DataSource</code> which represents the <code>file</code> on the disk
-   * @throws URLNotSupportedException iff {@link #supports} returns false
    */
   @NotNull
-  DataSource create(@NotNull URL url) throws URLNotSupportedException;
-
-  /**
-   * Returns whether this factory is able to create a data source from the specified uri.
-   * Call it before calling the {@link #create} method -- it is a standard workflow.
-   */
-  boolean supports(@NotNull URL url);
+  DataSource create(@NotNull Path path);
 }

@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
  *
  * It is used when we create a new model from anywhere (IDE, tests, etc.).
  *
- * @see DataSourceFactoryFromURL
+ * @see DataSourceFactoryFromPath
  * @author apyshkin
  * @since 3.5
  */

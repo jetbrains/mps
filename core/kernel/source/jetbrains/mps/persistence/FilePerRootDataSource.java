@@ -16,18 +16,13 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.net.URI;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 /**
  * evgeny, 6/3/13

@@ -21,6 +21,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 /**
+ * This is the place which describes the format of paths.
+ * The logic of the transformation between a single string and a set of so-called path parts is located here.
+ *
  * @author apyshkin
  */
 public interface PathFormat {
@@ -56,4 +59,11 @@ public interface PathFormat {
    * @throws PathParseException if the path cannot be parsed for some reason
    */
   @NotNull Path fromParts(@Nullable String rootPart, @NotNull String... nonRootParts);
+
+  /**
+   * a Path constructed from the given text representation of the path
+   *
+   * @throws PathParseException if the path cannot be parsed for some reason
+   */
+  @NotNull Path fromString(@NotNull String path);
 }

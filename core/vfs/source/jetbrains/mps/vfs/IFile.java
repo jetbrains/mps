@@ -17,6 +17,7 @@ package jetbrains.mps.vfs;
 
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
@@ -75,6 +76,14 @@ public interface IFile {
   @NotNull
   @ImmutableReturn
   String getPath();
+
+  /**
+   * This method is going to replace the String counterpart.
+   * @return an os-aware path object
+   */
+  @NotNull
+  @ImmutableReturn
+  Path toPath();
 
   /**
    * Like java.io.File.#getCanonicalPath

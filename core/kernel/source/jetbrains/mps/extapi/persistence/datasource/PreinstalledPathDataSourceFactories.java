@@ -18,42 +18,28 @@ package jetbrains.mps.extapi.persistence.datasource;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
-import java.net.URL;
-
 /**
  * Bundled data source factories by default.
- * Consider using {@link PreinstalledPathDataSourceFactories} instead
  *
  * @author apyshkin
  * @since 29/12/16
  */
-@ToRemove(version=2022.2)
 @Immutable
-@Deprecated
-public enum PreinstalledURLDataSourceFactories implements DataSourceFactoryFromURL {
+public enum PreinstalledPathDataSourceFactories implements DataSourceFactoryFromPath {
   FILE_OR_FOLDER;
 
   @NotNull
   @Override
-  public DataSource create(@NotNull URL url) throws URLNotSupportedException {
-    if (!supports(url)) {
-      throw new URLNotSupportedException(this, url);
-    }
-    IFile file = Files.fromURL(url);
+  public DataSource create(@NotNull Path path) {
+    IFile file = Files.fromPath(path);
     return createFromFile(file);
-  }
-
-  // fixme elaborate
-  @Override
-  public boolean supports(@NotNull URL url) {
-    return true;
   }
 
   @NotNull

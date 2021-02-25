@@ -20,9 +20,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
@@ -31,14 +29,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 
 import java.io.IOException;
 
-import static jetbrains.mps.extapi.persistence.datasource.PreinstalledURLDataSourceFactories.FILE_OR_FOLDER;
+import static jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSourceFactories.FILE_OR_FOLDER;
 
 /**
  * Helps {@link DefaultModelRoot#copyTo(DefaultModelRoot)}
@@ -77,7 +74,7 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
                                  @NotNull SModelBase modelDataToCopy) throws IOException,
                                                                              URLNotSupportedException,
                                                                              ModelCannotBeCreatedException {
-    DataSource targetDataSource = FILE_OR_FOLDER.create(targetModelFile.getUrl());
+    DataSource targetDataSource = FILE_OR_FOLDER.create(targetModelFile.toPath());
     ParametersCalculator prmCalculator = new ParametersCalculator(myTargetModelRoot);
     SModelName newModelName = new SModelName(convertNameConsideringModule(modelDataToCopy.getName().getValue()));
     ModelCreationOptions options = prmCalculator.calculate(newModelName);

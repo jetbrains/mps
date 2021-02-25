@@ -90,6 +90,13 @@ public class JrtIoFile implements IFile {
 
   @NotNull
   @Override
+  public jetbrains.mps.vfs.path.Path toPath() {
+    // fixme obviously we can support these special paths
+    throw new UnsupportedOperationException();
+  }
+
+  @NotNull
+  @Override
   public String toRealPath() {
     // not much thinking here
     return getPath();
@@ -97,10 +104,8 @@ public class JrtIoFile implements IFile {
 
   @Nullable
   @Override
-  @Deprecated
-  @ToRemove(version = 2019.1)
   public URL getUrl() {
-    return null;
+    throw new UnsupportedOperationException();
   }
 
   @Override

@@ -21,6 +21,7 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.iofs.jrt.JrtIoFileSystem;
+import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -43,6 +44,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
@@ -72,8 +74,10 @@ public class SDKDiscovery {
       }
 
       String jarPath = url.substring(prefix.length(), url.indexOf('!'));
-      return new QualifiedPath(VFSManager.FILE_FS, Files.fromURL(new URL(jarPath)).getPath());
-    } catch (ClassNotFoundException | MalformedURLException e) {
+      // fixme: why to convert back and forth?
+      jetbrains.mps.vfs.path.Path path = PathFormats.getCurrentSystemFormat().fromString(jarPath);
+      return new QualifiedPath(VFSManager.FILE_FS, Files.fromPath(path).getPath());
+    } catch (ClassNotFoundException e) {
       LOG.warn("jar file for class " + toolsJarClass + " could not be found");
       return null;
     } catch (UnsupportedEncodingException e) {
@@ -133,13 +137,8 @@ public class SDKDiscovery {
       }
     }
 
-    result.sort((o1, o2) -> {
-      int res1 = o1.getFsId().compareTo(o2.getFsId());
-      if (res1 != 0) {
-        return res1;
-      }
-      return o1.getPath().compareTo(o2.getPath());
-    });
+    result.sort(Comparator.comparing(QualifiedPath::getFsId)
+                          .thenComparing(QualifiedPath::getPath));
     return result;
   }
 

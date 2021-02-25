@@ -94,6 +94,12 @@ public class PathFormats {
     public Path fromParts(@Nullable String root, @NotNull String... nonRootParts) {
       return constructFilePath(root, nonRootParts, this);
     }
+
+    @NotNull
+    @Override
+    public Path fromString(@NotNull String path) {
+      return constructFilePathFromString(path, this);
+    }
   }
 
   private static final class UnixPathFormat implements PathFormat {
@@ -145,6 +151,12 @@ public class PathFormats {
     public Path fromParts(@Nullable String root, @NotNull String... nonRootParts) {
       return constructFilePath(root, nonRootParts, this);
     }
+
+    @NotNull
+    @Override
+    public Path fromString(@NotNull String path) {
+      return constructFilePathFromString(path, this);
+    }
   }
 
   @NotNull
@@ -155,6 +167,14 @@ public class PathFormats {
                                  .map(path -> NonArchivePath.fromString(path, DEFAULT))
                                  .toArray(NonArchivePath[]::new);
     return FilePath.fromPathParts(NonArchivePath.fromString(root, format), archivePathParts);
+  }
+
+  /**
+   * fixme the invocation goes to FilePath and then back here but for this moment, I do not care
+   */
+  @NotNull
+  private static Path constructFilePathFromString(@NotNull String path, @NotNull PathFormat format) {
+    return FilePath.fromString(path, format);
   }
 
   public static PathFormat getCurrentSystemFormat() {

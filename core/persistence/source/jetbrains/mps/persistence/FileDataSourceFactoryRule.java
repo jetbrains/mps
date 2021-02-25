@@ -16,9 +16,12 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
+import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromPath;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
+import jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSourceFactories;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledURLDataSourceFactories;
+import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
@@ -44,6 +47,12 @@ import java.net.URL;
       return new RegularFileDataSourceFactory((FileExtensionDataSourceType) dataSourceType);
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public DataSourceFactoryFromPath spawn(@NotNull Path path) {
+    return PreinstalledPathDataSourceFactories.FILE_OR_FOLDER;
   }
 
   @Nullable
