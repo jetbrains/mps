@@ -89,7 +89,7 @@ public class SetReferenceChange extends NodeChange {
 
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
-    SNode node = model.getNode(getAffectedNodeId());
+    SNode node = nodeCopier.getNode(model, getAffectedNodeId());
     assert node != null;
     if (myTargetNodeId == null && myResolveInfo == null) {
       node.setReferenceTarget(myRole, null);

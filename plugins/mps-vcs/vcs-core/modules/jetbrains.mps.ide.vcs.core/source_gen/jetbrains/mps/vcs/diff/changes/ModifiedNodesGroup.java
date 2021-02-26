@@ -28,8 +28,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -229,7 +227,7 @@ public final class ModifiedNodesGroup {
     SNodeId beforeAnchorId = getEffectiveBeforeAnchorId(model);
     SNode beforeAnchor;
     if (beforeAnchorId != null) {
-      beforeAnchor = getNodeOrRenamedNode(model, nodeCopier, beforeAnchorId);
+      beforeAnchor = nodeCopier.getNode(model, beforeAnchorId);
 
       if (beforeAnchor == null) {
         // this can happen in the merge process if the node was deleted in another branch and that change was accepted 
@@ -240,7 +238,7 @@ public final class ModifiedNodesGroup {
       beforeAnchor = null;
     }
 
-    SNode parent = getNodeOrRenamedNode(model, nodeCopier, getParentId());
+    SNode parent = nodeCopier.getNode(model, getParentId());
     for (SNode copiedNode : ListSequence.fromList(copiedNodes)) {
       insertNodeBeforeAnchor(parent, copiedNode, beforeAnchor);
     }
@@ -309,7 +307,7 @@ public final class ModifiedNodesGroup {
   }
 
   public SNode getParentOrRenamedParent(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
-    return getNodeOrRenamedNode(model, nodeCopier, getParentId());
+    return nodeCopier.getNode(model, getParentId());
   }
 
   public void deleteFromModel(@NotNull final SModel model) {
@@ -327,20 +325,6 @@ public final class ModifiedNodesGroup {
   protected void insertNodeBeforeAnchor(SNode parent, SNode newNode, SNode anchor) {
     SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : getRole());
     parent.insertChildBefore(link, newNode, anchor);
-  }
-
-  private SNode getNodeOrRenamedNode(SModel model, NodeCopier nodeCopier, SNodeId nodeId) {
-    if (nodeId == null) {
-      return null;
-    }
-    SNode node = model.getNode(nodeId);
-    if ((node == null)) {
-      Map<SNodeId, SNodeId> renamedNodes = nodeCopier.getRenamedNodes();
-      if (MapSequence.fromMap(renamedNodes).containsKey(nodeId)) {
-        node = model.getNode(MapSequence.fromMap(renamedNodes).get(nodeId));
-      }
-    }
-    return node;
   }
 
   @Override
