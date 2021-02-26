@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -154,14 +155,6 @@ public class ModulesWatcher {
       Collection<? extends SModuleReference> allInvalidModules = getBackDependencies(invalidModules);
       for (SModuleReference mRef : allInvalidModules) {
         myStatusMap.put(mRef, SIMPLY_INVALID);
-        if (LOG.isTraceEnabled()) {
-          Collection<SModuleReference> dependencies = getDependencies(Collections.singleton(mRef));
-          for (SModuleReference depRef : dependencies) {
-            if (invalidModules.contains(depRef)) {
-              LOG.trace("The module " + mRef + " is invalid since it has a transitive dependency on the module " + depRef);
-            }
-          }
-        }
       }
       if (!invalidModules.isEmpty()) {
         String message = String.format("%d modules are marked as invalid roots for class loading out of %d modules [totally in the repository]:",
@@ -171,6 +164,7 @@ public class ModulesWatcher {
         print(invalidModules, LOG::warn);
       }
 
+      traceInvalidDeps(invalidModules, allInvalidModules);
       LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading" + (allInvalidModules.isEmpty() ? "."
                                                                                                                                       : ":"));
       if (!allInvalidModules.isEmpty()) {
@@ -178,6 +172,32 @@ public class ModulesWatcher {
       }
 
       checkStatusMapCorrectness();
+    }
+  }
+
+  private void traceInvalidDeps(Collection<? extends SModuleReference> rootInvalid,
+                                Collection<? extends SModuleReference> allInvalid) {
+    if (LOG.isTraceEnabled()) {
+      for (var module : allInvalid) {
+        Collection<SModuleReference> directDependencies = getDirectDependencies(Collections.singleton(module));
+        for (var depRef : directDependencies) {
+          if (rootInvalid.contains(depRef)) {
+            LOG.trace(MessageFormat.format("The module ''{0}'' is invalid" +
+                                           "since it has a direct dependency on the root invalid module ''{1}''", module, depRef));
+          } else if (allInvalid.contains(depRef)) {
+            LOG.trace(MessageFormat.format("The module ''{0}'' is invalid and " +
+                                           "it has a direct dependency on another invalid module ''{1}''", module, depRef));
+          }
+        }
+        Collection<SModuleReference> dependencies = getDependencies(Collections.singleton(module));
+        dependencies.removeAll(directDependencies); // I've already shown these
+        for (var depRef : dependencies) {
+          if (rootInvalid.contains(depRef)) {
+            LOG.trace(MessageFormat.format("The module ''{0}'' is" +
+                                           " invalid since it has a transitive dependency on the root invalid module ''{1}''", module, depRef));
+          }
+        }
+      }
     }
   }
 
