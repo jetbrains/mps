@@ -22,6 +22,7 @@ import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import jetbrains.mps.vfs.refresh.FileListener;
+import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -83,6 +84,7 @@ public interface IFile {
    */
   @NotNull
   @ImmutableReturn
+  @Experimental
   Path toPath();
 
   /**
