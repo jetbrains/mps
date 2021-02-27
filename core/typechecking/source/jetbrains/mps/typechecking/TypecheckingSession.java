@@ -16,6 +16,7 @@
 package jetbrains.mps.typechecking;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
@@ -26,6 +27,12 @@ public interface TypecheckingSession {
   Flags flags();
 
   <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass);
+
+  TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
+
+  TypecheckingQueries getQueries(@NotNull SNode src, SNode trg);
+
+  TypecheckingQueries getQueries(@NotNull SNode node);
 
   /**
    * Provides possibility to release session.

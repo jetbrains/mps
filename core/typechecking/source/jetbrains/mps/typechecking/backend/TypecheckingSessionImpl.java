@@ -19,6 +19,8 @@ import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,6 +55,21 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
   @Override
   public <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass) {
     return getQueries(myController.selectProvider(providerClass));
+  }
+
+  @Override
+  public TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+    return getQueries(myController.selectProvider(src, trg, trgConcept));
+  }
+
+  @Override
+  public TypecheckingQueries getQueries(@NotNull SNode src, SNode trg) {
+    return getQueries(myController.selectProvider(src, trg, null));
+  }
+
+  @Override
+  public TypecheckingQueries getQueries(@NotNull SNode node) {
+    return getQueries(myController.selectProvider(node, null, null));
   }
 
   protected void release() {

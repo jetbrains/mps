@@ -64,7 +64,7 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     SNode containingRoot = src.getContainingRoot();
     if (mySharedSession.flags().getRoot() == containingRoot) {
-      return mySharedSession.getQueries(selectProvider(src, trg, trgConcept));
+      return mySharedSession.getQueries(src, trg, trgConcept);
       
     } else {
       return myDelegate.getQueries(src, trg, trgConcept);

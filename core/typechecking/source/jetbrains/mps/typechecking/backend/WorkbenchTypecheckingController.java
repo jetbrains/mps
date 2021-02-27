@@ -91,7 +91,7 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
       session = myRootSessions.get(new SNodeHandle(src));
     }
     if (session != null) {
-      return session.getQueries(selectProvider(src, trg, trgConcept));
+      return session.getQueries(src, trg, trgConcept);
 
     } else {
       return super.getQueries(src, trg, trgConcept);

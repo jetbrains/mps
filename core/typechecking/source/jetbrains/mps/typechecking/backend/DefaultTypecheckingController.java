@@ -74,8 +74,7 @@ public class DefaultTypecheckingController extends TypecheckingController {
     if (myDefaultSession == null) {
       this.myDefaultSession = new TypecheckingSessionImpl(this, myDefaultFlags);
     }
-    TypecheckingProvider provider = selectProvider(src, trg, trgConcept);
-    return myDefaultSession.getQueries(provider);
+    return myDefaultSession.getQueries(src, trg, trgConcept);
   }
 
 }
