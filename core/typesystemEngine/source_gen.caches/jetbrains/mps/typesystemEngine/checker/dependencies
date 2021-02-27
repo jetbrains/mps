@@ -2,9 +2,11 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="java.util.function.Consumer" />
     <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />
@@ -15,6 +17,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingQueries" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingSession" />
     <classNode dependClassName="jetbrains.mps.typesystem.LegacyTypecheckingQueries" />
     <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />

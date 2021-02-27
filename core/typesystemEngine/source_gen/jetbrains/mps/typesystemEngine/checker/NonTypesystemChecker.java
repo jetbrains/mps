@@ -13,14 +13,16 @@ import jetbrains.mps.typechecking.TypecheckingSession;
 import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
+import java.util.Collections;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
+import java.util.function.Consumer;
 import jetbrains.mps.util.Pair;
 import java.util.List;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
-import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -35,13 +37,25 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
 
         Set<NodeReportItem> errors = SetSequence.fromSet(new HashSet<NodeReportItem>());
 
+        TypecheckingQueries typecheckingQueries = session.getQueries(root);
         // FIXME  assuming it's safe to access the underlying legacy provider 
         LegacyTypecheckingQueries legacyTypecheckingQueries = session.getQueries(LegacyTypecheckingQueries.class);
+        if (typecheckingQueries == null || legacyTypecheckingQueries == null) {
+          return Collections.emptySet();
+        }
         TypeCheckingContext context = legacyTypecheckingQueries.getTypeCheckingContext();
         IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
 
         // update the types first 
-        context.checkIfNotChecked(root, false);
+        typecheckingQueries.checkRecursively(root, new Consumer<NodeReportItem>() {
+          public void accept(NodeReportItem nodeReportItem) {
+            /*
+              NOP 
+
+            */
+
+          }
+        });
         try {
           context.setNonTypesystemComputationMode(TypeCheckingContext.NonTypesystemComputationMode.NORMAL);
           typesComponent.applyNonTypesystemRulesToRoot(context);
@@ -61,7 +75,7 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
     });
   }
   @Override
-  public void check(SNode root, SRepository repository, final Consumer<? super NodeReportItem> errorCollector, final ProgressMonitor monitor) {
+  public void check(SNode root, SRepository repository, final org.jetbrains.mps.openapi.util.Consumer<? super NodeReportItem> errorCollector, final ProgressMonitor monitor) {
     SetSequence.fromSet(getErrors(root, repository)).visitAll(new IVisitor<NodeReportItem>() {
       public void visit(NodeReportItem it) {
         errorCollector.consume(it);
