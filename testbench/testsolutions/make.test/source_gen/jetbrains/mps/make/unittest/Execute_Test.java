@@ -8,7 +8,7 @@ import org.junit.Test;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.make.runtime.script.TargetRange;
 import jetbrains.mps.internal.make.runtime.script.Script;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.baseLanguage.unitTest.sandbox.AbstractTest4Class">
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.unitTest.sandbox.AbstractTestClass">
@@ -25,7 +25,7 @@
   <dependency className="jetbrains.mps.baseLanguage.unitTest.sandbox.Test4">
     <classNode dependClassName="java.lang.RuntimeException" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.sandbox.SimpleRunner" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Ignore" />
     <classNode dependClassName="org.junit.Test" />
     <classNode dependClassName="org.junit.runner.RunWith" />
@@ -38,10 +38,12 @@
   <dependency className="jetbrains.mps.baseLanguage.unitTest.sandbox.Test_Test">
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.After" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Before" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
 </dependenciesRoot>
 

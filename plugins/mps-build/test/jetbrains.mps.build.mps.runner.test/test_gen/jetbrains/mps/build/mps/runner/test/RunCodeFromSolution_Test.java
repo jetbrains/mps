@@ -5,9 +5,12 @@ package jetbrains.mps.build.mps.runner.test;
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import jetbrains.mps.project.Project;
+import org.junit.Test;
+import org.junit.Before;
 import java.io.File;
+import org.junit.After;
 import jetbrains.mps.tool.environment.Log4jInitializer;
-import junit.framework.Assert;
+import org.junit.Assert;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.ant.execution.Ant_Command;
@@ -22,27 +25,35 @@ import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
   private static final String PROJECT_PATH = "testbench/modules/build.mps.runner.test";
   private Project myProject;
+  @Test
   public void test_runBuildSimpleCode() throws Exception {
     runAndCheck(PROJECT_PATH, "test1.xml");
   }
+  @Test
   public void test_callOtherSolution() throws Exception {
     runAndCheck(PROJECT_PATH, "test2.xml");
   }
+  @Test
   public void test_useIFile() throws Exception {
     runAndCheck(PROJECT_PATH, "test3.xml");
   }
+  @Test
   public void test_useModelRepository() throws Exception {
     runAndCheck(PROJECT_PATH, "test4.xml");
   }
+  @Test
   public void test_useAdditionalPlugin() throws Exception {
     runAndCheck(PROJECT_PATH, "test5.xml");
   }
+  @Test
   public void test_useRegistryInDummyPlugin() throws Exception {
     runAndCheck(PROJECT_PATH, "testDummyPlugin.xml");
   }
+  @Before
   public void setUp() {
     myProject = myEnvironment.openProject(new File(PROJECT_PATH));
   }
+  @After
   public void tearDown() {
     myEnvironment.closeProject(myProject);
   }

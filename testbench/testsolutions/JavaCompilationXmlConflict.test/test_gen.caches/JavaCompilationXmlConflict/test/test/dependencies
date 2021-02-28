@@ -14,10 +14,11 @@
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.util.Computable" />
     <classNode dependClassName="jetbrains.mps.util.ModelComputeRunnable" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Assume" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.testbench.EnvironmentAwareTestCase" />
   </dependency>
 </dependenciesRoot>

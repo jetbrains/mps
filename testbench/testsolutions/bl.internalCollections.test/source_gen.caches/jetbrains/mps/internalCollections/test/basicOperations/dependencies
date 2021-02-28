@@ -11,6 +11,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequenceClosure" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.Bar">
@@ -29,7 +30,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequenceClosure" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.Collection_Test">
@@ -41,6 +43,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.Distinct_Test">
@@ -56,7 +59,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequenceClosure" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.Foo" />
@@ -75,7 +79,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.LinkedMap_Test">
@@ -86,7 +91,8 @@
     <classNode dependClassName="java.util.LinkedHashMap" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.List_Test">
@@ -127,7 +133,8 @@
     <classNode dependClassName="jetbrains.mps.internalCollections.test.basicOperations.Foo" />
     <classNode dependClassName="jetbrains.mps.internalCollections.test.basicOperations.MPS_17338" />
     <classNode dependClassName="jetbrains.mps.references.BLOperations" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.MPS_17338">
@@ -166,7 +173,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SortedMapSequence" />
     <classNode dependClassName="jetbrains.mps.references.BLOperations" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.MultiForeachTest_Test">
@@ -184,8 +192,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internalCollections.test.basicOperations.Bar" />
     <classNode dependClassName="jetbrains.mps.internalCollections.test.basicOperations.Foo" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.QueueDequeStack_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -197,8 +205,8 @@
     <classNode dependClassName="java.util.Queue" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.DequeSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.QueueSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.Sequence_Test">
     <classNode dependClassName="java.lang.Character" />
@@ -225,7 +233,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internalCollections.test.basicOperations.Bar" />
     <classNode dependClassName="jetbrains.mps.internalCollections.test.basicOperations.Foo" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.Set_Test">
@@ -255,7 +264,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SortedSetSequence" />
     <classNode dependClassName="jetbrains.mps.util.WeakSet" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.SortedMap_Test">
@@ -266,6 +276,7 @@
     <classNode dependClassName="java.util.SortedMap" />
     <classNode dependClassName="java.util.TreeMap" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SortedMapSequence" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internalCollections.test.basicOperations.SortedSet_Test">
@@ -284,7 +295,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SortedSetSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
 </dependenciesRoot>

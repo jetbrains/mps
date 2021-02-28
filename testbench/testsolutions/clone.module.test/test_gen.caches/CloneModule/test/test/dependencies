@@ -31,12 +31,15 @@
     <classNode dependClassName="jetbrains.mps.util.IFileUtil" />
     <classNode dependClassName="jetbrains.mps.util.Reference" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
+    <classNode dependClassName="org.junit.After" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Before" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.testbench.EnvironmentAwareTestCase" />
   </dependency>
 </dependenciesRoot>

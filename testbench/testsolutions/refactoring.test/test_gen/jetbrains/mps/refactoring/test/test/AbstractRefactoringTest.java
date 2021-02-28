@@ -22,7 +22,7 @@ import jetbrains.mps.ide.make.actions.MakeActionParameters;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.tool.builder.make.BuildMakeService;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.concurrent.ExecutionException;
 
 public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {

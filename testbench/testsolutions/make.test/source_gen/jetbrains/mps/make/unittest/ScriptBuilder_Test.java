@@ -12,7 +12,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.script.IScript;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;

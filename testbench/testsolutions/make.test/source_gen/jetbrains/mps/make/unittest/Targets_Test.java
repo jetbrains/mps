@@ -9,7 +9,7 @@ import jetbrains.mps.internal.make.runtime.script.TargetRange;
 import jetbrains.mps.make.facet.ITarget;
 import org.jmock.Expectations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 

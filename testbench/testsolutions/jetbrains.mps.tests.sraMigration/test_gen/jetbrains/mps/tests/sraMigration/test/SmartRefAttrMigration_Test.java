@@ -7,8 +7,9 @@ import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.project.MPSProject;
+import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SNode;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.structure.util.SmartRefAttributeUtil;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -17,6 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.junit.Before;
 import java.io.File;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -67,6 +69,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   private static final SNodeReference ref_explicitCellMenu_Super_RPCell = ref("r:aeb637c7-e64d-4368-92d6-31aeade23002(test.language.editor)/44712766211689888");
   private static final String PROJECT_PATH = "testbench/modules/testSmartRefAttrMigration/";
   private MPSProject project;
+  @Test
   public void test_testImplicitAttr() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -76,6 +79,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitAttr_OneCustom() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -89,6 +93,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExpicitAttr_OneOfTwo() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -102,6 +107,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExpicitAttr_OneNoReq() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -115,6 +121,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExpicitAttr_Specialized() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -128,6 +135,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -141,6 +149,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_ExplicitReferentPrimary() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -154,6 +163,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_RefPresentation() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -166,6 +176,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_RefPresentation_Custom() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -182,6 +193,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_HasVisible() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -195,6 +207,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_HasVisible_RefPresentation() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -211,6 +224,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_HasInEditor_RefPresentation() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -227,6 +241,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testExplicitCellMenu_HasInEditor_RefPresentation_Custom() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -243,6 +258,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Before
   public void setUp() {
     // I don't care to close the project (a) can do it on per-test basis in BTestCase (no BeforeClass), (b) there are too many tests in this class 
     // (c) PushEnvironmentRunnerBuilder is not yet capable to invoke static setEnvironment (so that we could have static project field 

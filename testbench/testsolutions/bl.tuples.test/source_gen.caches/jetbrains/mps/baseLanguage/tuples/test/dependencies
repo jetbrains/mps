@@ -16,12 +16,13 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.ExtendedNamedTuples_Test">
+    <classNode dependClassName="java.lang.Double" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.test.ExtendedNamedTuples.Bar" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.test.ExtendedNamedTuples.Foo" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.test.ExtendedNamedTuples.Qux" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.GenericNamedTuples_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -29,8 +30,8 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.test.Pair" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.ISample">
     <classNode dependClassName="java.lang.String" />
@@ -61,8 +62,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.IntPair">
     <classNode dependClassName="java.lang.Integer" />
@@ -72,8 +73,8 @@
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.RuntimeException" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.util.Questionnable" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.MPS15234_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -81,8 +82,8 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.util.Sample" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.MPS7408">
     <classNode dependClassName="java.lang.Boolean" />
@@ -132,8 +133,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IterableUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.tuples.test.Nulls">
     <classNode dependClassName="java.lang.Integer" />

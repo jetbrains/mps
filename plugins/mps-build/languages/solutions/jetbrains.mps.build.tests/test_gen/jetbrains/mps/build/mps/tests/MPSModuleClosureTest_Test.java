@@ -5,14 +5,17 @@ package jetbrains.mps.build.mps.tests;
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.junit.Test;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.junit.Before;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.junit.After;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -38,22 +41,26 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
   private SNode sln21;
   private SNode project1;
   private SNode project2;
+  @Test
   public void test_l2DesignClosureContainsDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(l4));
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(sln4));
   }
+  @Test
   public void test_l2DesignClosureContainsSuperLangOfDirectDepLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(l21));
   }
+  @Test
   public void test_l2DesignClosureContainsRexportDepOfDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(sln5));
   }
+  @Test
   public void test_l2DesignClosureDoesNotContainUnnecessaryRTDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
@@ -61,6 +68,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(rt21)));
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(rt2)));
   }
+  @Test
   public void test_l1DesignClosureContainsUsedLangAlongWithDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
@@ -70,6 +78,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     // reexport 
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(sln5));
   }
+  @Test
   public void test_l1DesignClosureContainsSuperOfUsedLangAlongWithDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
@@ -77,49 +86,58 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     // non reexport, but still needs to be in order for l2 language to be fully operational 
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(sln21));
   }
+  @Test
   public void test_l1DesignClosureContainsRTsOfUsedLangAndItsSuper() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(rt2));
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(rt21));
   }
+  @Test
   public void test_l1DesignClosureDoesNotContainRTOfDepOfUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(rt4)));
   }
+  @Test
   public void test_l1DesignClosureDoesNotContainTotallyUnnecessaryUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(l3)));
   }
+  @Test
   public void test_slnDesignClosureContainsUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(l1));
   }
+  @Test
   public void test_slnDesignClosureContainsDirectDepDvk() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(l3));
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(dvk));
   }
+  @Test
   public void test_slnDesignClosureContainsDirectDepNoDvk() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(l3));
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(dvk)));
   }
+  @Test
   public void test_slnDesignClosureContainsUsedLangRuntimeInDvk() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(rt3));
   }
+  @Test
   public void test_slnDesignClosureContainsUsedLangRuntime() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(rt1));
   }
+  @Test
   public void test_slnDesignClosureContainsRTDepsForUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
@@ -127,6 +145,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     // l2 extends l21, so we need its rt as well 
     Assert.assertTrue(Sequence.fromIterable(designDeps).contains(rt21));
   }
+  @Test
   public void test_slnDesignClosureDoesNotContainNonRTDepsForUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
     Iterable<SNode> designDeps = closure.getAllModules();
@@ -137,11 +156,13 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(rt4)));
     Assert.assertTrue(!(Sequence.fromIterable(designDeps).contains(sln21)));
   }
+  @Test
   public void test_l2RTClosureContainsItself() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(l2));
   }
+  @Test
   public void test_l2RTClosureContainsDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
@@ -150,16 +171,19 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(l4));
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(sln4));
   }
+  @Test
   public void test_l2RTClosureContainsReexportDepsOfDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(sln5));
   }
+  @Test
   public void test_l2RTClosureContainsNonReexportDepsOfDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(sln21));
   }
+  @Test
   public void test_l2RTClosureDoesNotContainUnnecessaryRTs() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
@@ -167,22 +191,26 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(rt21)));
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(rt4)));
   }
+  @Test
   public void test_l1RTClosureContainsRTsWithExtended() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(rt2));
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(rt21));
   }
+  @Test
   public void test_l1RTClosureContainsItself() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(l1));
   }
+  @Test
   public void test_l1RTClosureDoesNotContainItselfByDefault() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(l2)));
   }
+  @Test
   public void test_l1RTClosureDoesNotContainUnnecessaryUsedLangsOrTheirDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
@@ -191,22 +219,26 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(sln21)));
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(l4)));
   }
+  @Test
   public void test_slnRTClosureDoesNotContainUsedLangs() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(l1)));
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(l2)));
   }
+  @Test
   public void test_slnRTClosureDoesNotContainUnnecessaryRT() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(rt2)));
   }
+  @Test
   public void test_slnRTClosureContainsItself() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(sln));
   }
+  @Test
   public void test_slnRTClosureContainsRTsOfUsedLangsAndDVK() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
@@ -214,6 +246,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(rt3));
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(dvk));
   }
+  @Test
   public void test_slnRTClosureDoesNotContainUsedDevkitByDefault() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).runtimeClosure();
     Iterable<SNode> rtDeps = closure.getAllModules();
@@ -221,6 +254,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(rtDeps).contains(rt3));
     Assert.assertTrue(!(Sequence.fromIterable(rtDeps).contains(dvk)));
   }
+  @Test
   public void test_l2CompileClosureContainsDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
@@ -228,16 +262,19 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(l4));
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(sln4));
   }
+  @Test
   public void test_l2CompileClosureDoesNotContainNonReexportDepsOfDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(sln21)));
   }
+  @Test
   public void test_l2CompileClosureContainsNonReexportDepsOfDirectDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(sln5));
   }
+  @Test
   public void test_l2CompileClosureDoesNotContainUnnecessaryRTs() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
@@ -245,12 +282,14 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(rt21)));
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(rt4)));
   }
+  @Test
   public void test_l1CompileClosureContainsRTsOfUsedLangAndSuper() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(rt2));
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(rt21));
   }
+  @Test
   public void test_l1CompileClosureDoesNotContainAnythingElse() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
@@ -258,6 +297,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(l21)));
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(rt1)));
   }
+  @Test
   public void test_slnCompileClosureContainsRTsOfUsedLangsNoDVK() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
@@ -265,6 +305,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(rt3));
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(dvk)));
   }
+  @Test
   public void test_slnCompileClosureContainsRTsOfUsedLangsWithDVK() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
@@ -272,6 +313,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(rt3));
     Assert.assertTrue(Sequence.fromIterable(compileDeps).contains(dvk));
   }
+  @Test
   public void test_slnCompileClosureDoesNotContainAnythingElse() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
     Iterable<SNode> compileDeps = closure.getAllModules();
@@ -279,22 +321,26 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(l2)));
     Assert.assertTrue(!(Sequence.fromIterable(compileDeps).contains(l3)));
   }
+  @Test
   public void test_l2GenerateClosureAreEmpty() throws Exception {
     // in the generate task currently we use rtDepsClosure + genDepsClosure 
     MPSModulesClosure closure = new MPSModulesClosure(l2, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(genDeps).isEmpty());
   }
+  @Test
   public void test_l1GenerateClosureContainsUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(l2));
   }
+  @Test
   public void test_l1GenerateClosureContainsSuperOfUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(l21));
   }
+  @Test
   public void test_l1GenerateClosureContainsUsedLangDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
@@ -302,17 +348,20 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(sln21));
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(sln4));
   }
+  @Test
   public void test_l1GenerateClosureContainsUsedLangReexportDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(sln5));
   }
+  @Test
   public void test_l1GenerateClosureDoesNotContainsRTofUsedLang() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(l1, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(rt2)));
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(rt21)));
   }
+  @Test
   public void test_slnGenerateClosureContainsUsedLangsWithDevkit() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
@@ -320,6 +369,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(l3));
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(dvk));
   }
+  @Test
   public void test_slnGenerateClosureContainsUsedLangsNoDevkit() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
@@ -327,24 +377,28 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(l3));
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(dvk)));
   }
+  @Test
   public void test_slnGenerateClosureContainsUsedLangsRuntimeDeps() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(rt2));
     Assert.assertTrue(Sequence.fromIterable(genDeps).contains(rt21));
   }
+  @Test
   public void test_slnGenerateClosureDoesNotContainUsedLangsRT() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(rt1)));
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(rt3)));
   }
+  @Test
   public void test_slnGenerateClosureDoesNotContainUsedLangsOfUsedLangs() throws Exception {
     MPSModulesClosure closure = new MPSModulesClosure(sln, new MPSModulesClosure.ModuleDependenciesOptions()).generationDependenciesClosure();
     Iterable<SNode> genDeps = closure.getAllModules();
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(l2)));
     Assert.assertTrue(!(Sequence.fromIterable(genDeps).contains(l21)));
   }
+  @Before
   public void setUp() {
     // sln uses l1, dvk and lies in the separate project 'project2' 
     // l1 uses l2, has rt1 as runtime 
@@ -398,6 +452,7 @@ public class MPSModuleClosureTest_Test extends EnvironmentAwareTestCase {
     SLinkOperations.setTarget(SLinkOperations.addNewChild(dvk, LINKS.exports$Qvxv, CONCEPTS.BuildMps_DevKitExportLanguage$EV), LINKS.language$qqxl, l3);
     SLinkOperations.setTarget(SLinkOperations.addNewChild(l3, LINKS.runtime$lxKd, CONCEPTS.BuildMps_ModuleSolutionRuntime$b5), LINKS.solution$3MS, rt3);
   }
+  @After
   public void tearDown() {
   }
 

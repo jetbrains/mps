@@ -5,13 +5,13 @@
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Number" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.Child_Test">
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode extendsClassName="jetbrains.mps.closures.test.Parent_Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.ClassifierAdapters_Test">
@@ -44,8 +44,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ITranslator2" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.ClosuresBase_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -56,8 +56,8 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.ExternalReferences_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -73,8 +73,8 @@
     <classNode dependClassName="jetbrains.mps.closures.test.Worker" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ILeftCombinator" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.FinalClosureParameter_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -83,8 +83,8 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.Fruits" />
   <dependency className="jetbrains.mps.closures.test.FunctionTypes_Test">
@@ -100,8 +100,8 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.util.Constants" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.Functions">
     <classNode dependClassName="java.lang.Integer" />
@@ -123,8 +123,8 @@
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.closures.test.MPS14653_helper" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.MPS14653_helper">
     <classNode dependClassName="java.lang.Exception" />
@@ -134,8 +134,8 @@
     <classNode dependClassName="java.io.IOException" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="jetbrains.mps.closures.test.MPS14656_helper" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.MPS14656_helper">
     <classNode dependClassName="java.io.File" />
@@ -192,7 +192,7 @@
   <dependency className="jetbrains.mps.closures.test.MPS_18030_Test">
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="jetbrains.mps.closures.test.MPS_18030" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.NumberGenerator">
     <classNode dependClassName="java.lang.Integer" />
@@ -221,6 +221,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequenceClosure" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.closures.test.ClosuresBase_Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.ThisExpression_Test">
@@ -230,13 +231,13 @@
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.closures.test.ThisProvider" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.ThisProvider">
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.WhileBreak_Test">
     <classNode dependClassName="java.lang.Exception" />
@@ -245,6 +246,7 @@
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.closures.test.ClosuresBase_Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test.Worker">
@@ -276,7 +278,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IterableUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.closures.test.ClosuresBase_Test" />
   </dependency>
   <dependency className="jetbrains.mps.closures.test._Adapters">

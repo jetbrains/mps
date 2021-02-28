@@ -4,6 +4,7 @@ package JavaCompilationXmlConflict.test.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
+import org.junit.Test;
 import jetbrains.mps.project.Project;
 import java.io.File;
 import java.util.List;
@@ -17,11 +18,12 @@ import jetbrains.mps.make.ErrorsLoggingHandler;
 import org.apache.log4j.LogManager;
 import java.util.HashSet;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class TestCompilation_Test extends EnvironmentAwareTestCase {
   private static final String PROJECT_PATH = "testbench/modules/testCompilationJavaXmlConflict/";
+  @Test
   public void test_compileSolution() throws Exception {
     Project project = myEnvironment.openProject(new File(PROJECT_PATH));
     final List<SModule> projectModules = project.getProjectModules();

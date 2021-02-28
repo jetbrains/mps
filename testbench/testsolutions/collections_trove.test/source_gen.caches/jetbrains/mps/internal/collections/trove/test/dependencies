@@ -31,7 +31,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.trove.test.PrimSet_Test">
@@ -65,7 +66,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.internalCollections.test.closures.Util_Test" />
   </dependency>
 </dependenciesRoot>

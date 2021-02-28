@@ -4,9 +4,10 @@ package jetbrains.mps.refactoring.test.test;
 
 import jetbrains.mps.MPSLaunch;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -56,6 +57,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
   private static final String PROJECT_PATH = "testbench/modules/testRefactoring/";
   private SModule myTargetLanguage;
   private SModule mySourceLanguage;
+  @Test
   public void test_moveConceptOptions() throws Exception {
     doMake(project.getProjectModulesWithGenerators(), true);
     runCommand(new Runnable() {
@@ -81,6 +83,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_moveClassOptions() throws Exception {
     runCommand(new Runnable() {
       public void run() {
@@ -100,6 +103,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_moveClassUpdateReferences() throws Exception {
     runCommand(new Runnable() {
       public void run() {
@@ -124,6 +128,7 @@ public class Refactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_moveClassWithoutParticipants() throws Exception {
     runCommand(new Runnable() {
       public void run() {

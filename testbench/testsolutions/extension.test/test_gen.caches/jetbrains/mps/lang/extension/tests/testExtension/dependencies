@@ -18,8 +18,9 @@
     <classNode dependClassName="jetbrains.mps.lang.extension.tests.plugin.TestObject" />
     <classNode dependClassName="jetbrains.mps.smodel.structure.Extension" />
     <classNode dependClassName="jetbrains.mps.smodel.structure.ExtensionPoint" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.After" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
 </dependenciesRoot>
 

@@ -4,7 +4,7 @@ package jetbrains.mps.make.unittest;
 
 import org.junit.Test;
 import jetbrains.mps.make.facet.IFacet;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 

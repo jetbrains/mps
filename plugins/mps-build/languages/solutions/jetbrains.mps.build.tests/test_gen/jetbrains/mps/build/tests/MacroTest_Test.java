@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;

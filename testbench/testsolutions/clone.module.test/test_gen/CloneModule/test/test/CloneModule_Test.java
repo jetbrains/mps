@@ -8,18 +8,21 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSProject;
+import org.junit.Test;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.generator.CustomGenerationModuleFacet;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.junit.Before;
 import java.io.File;
 import jetbrains.mps.util.IFileUtil;
+import org.junit.After;
 import jetbrains.mps.project.validation.MessageCollectProcessor;
 import jetbrains.mps.project.validation.ModuleValidationProblem;
 import jetbrains.mps.project.validation.ValidationUtil;
@@ -45,15 +48,19 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
   private static final SModuleReference TEST_LANG_ACCESORIES = PersistenceFacade.getInstance().createModuleReference("eee56556-94d4-4d71-a8ea-0e2403133b8d(TestLanguage_ACCESORIES)");
   private IFile clonedModulesDirectory;
   private MPSProject project;
+  @Test
   public void test_cloneXMLSolution() throws Exception {
     testModule(resolveSolution(XML), MPSExtentions.DOT_SOLUTION);
   }
+  @Test
   public void test_clonePerRootSolution() throws Exception {
     testModule(resolveSolution(PER_ROOT), MPSExtentions.DOT_SOLUTION);
   }
+  @Test
   public void test_cloneBinarySolution() throws Exception {
     testModule(resolveSolution(BINARY), MPSExtentions.DOT_SOLUTION);
   }
+  @Test
   public void test_cloneFacets() throws Exception {
     Solution copyFacetsModule = as_i3fixg_a0a0a31(testModule(resolveSolution(FACETS), MPSExtentions.DOT_SOLUTION), Solution.class);
 
@@ -67,9 +74,11 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
     // TODO Fix this test when facets copying become done right 
     Assert.assertEquals(PersistenceFacade.getInstance().createModelReference("r:785f2a6c-c64a-4974-9501-91ce4789a01c(FACETS.genplan@genplan)"), customGenerationModuleFacet.getPlanModelReference());
   }
+  @Test
   public void test_cloneLanguage() throws Exception {
     testModule(resolveLanguage(TEST_LANG), MPSExtentions.DOT_LANGUAGE);
   }
+  @Test
   public void test_cloneLanguageWithAcessoryModels() throws Exception {
     final Language originalLang = resolveLanguage(TEST_LANG_ACCESORIES);
 
@@ -94,6 +103,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
       Assert.assertFalse("Same accesory model references", originalAccesoryModel.getReference().equals(clonedAccesoryModel.getReference()));
     }
   }
+  @Before
   public void setUp() {
     project = ((MPSProject) myEnvironment.openProject(new File(PROJECT_PATH)));
     executeUnderLock(new Runnable() {
@@ -102,6 +112,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @After
   public void tearDown() {
     executeUnderLock(new Runnable() {
       public void run() {

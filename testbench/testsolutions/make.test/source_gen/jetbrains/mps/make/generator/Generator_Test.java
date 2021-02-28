@@ -26,7 +26,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import org.junit.Before;

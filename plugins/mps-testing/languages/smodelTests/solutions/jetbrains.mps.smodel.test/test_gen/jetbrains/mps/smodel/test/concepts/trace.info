@@ -89,72 +89,72 @@
   </root>
   <root nodeRef="r:783567bb-6a97-47d3-ab6c-d2a82efd2145(jetbrains.mps.smodel.test.concepts@tests)/6410670351276877495">
     <file name="ConceptCasts_Test.java">
-      <node id="6410670351276877627" at="20,49,21,218" concept="4" />
-      <node id="6410670351276887412" at="23,50,24,104" concept="5" />
-      <node id="6410670351276893674" at="27,51,28,70" concept="5" />
-      <node id="6410670351276910050" at="30,24,31,77" concept="1" />
-      <node id="6410670351277074989" at="33,65,34,218" concept="4" />
-      <node id="6410670351277075000" at="34,218,35,53" concept="4" />
-      <node id="6410670351277075015" at="37,50,38,104" concept="5" />
-      <node id="6410670351277075025" at="41,51,42,86" concept="5" />
-      <node id="6410670351277075033" at="44,24,45,77" concept="1" />
-      <node id="5375498624328879719" at="47,57,48,43" concept="4" />
-      <node id="5375498624329234440" at="48,43,49,53" concept="4" />
-      <node id="5375498624329568615" at="49,53,50,112" concept="4" />
-      <node id="5375498624329581434" at="50,112,51,34" concept="1" />
-      <node id="6410670351276877495" at="55,0,56,0" concept="8" trace="BaseConcept$gP" />
-      <node id="6410670351276877495" at="56,0,57,0" concept="8" trace="ExpressionStatement$O8" />
-      <node id="6410670351276877495" at="57,0,58,0" concept="8" trace="Statement$P6" />
-      <node id="6410670351276877495" at="58,0,59,0" concept="8" trace="INamedAspect$zw" />
-      <node id="6410670351276877495" at="59,0,60,0" concept="8" trace="INamedConcept$Kd" />
-      <node id="6410670351276886922" at="23,0,26,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
-      <node id="6410670351276893368" at="27,0,30,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
-      <node id="6410670351277075013" at="37,0,40,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
-      <node id="6410670351277075023" at="41,0,44,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
-      <node id="5375498624329581386" at="47,0,53,0" concept="3" trace="test_castToBaseConcept#()V" />
-      <node id="6410670351276877911" at="21,218,30,24" concept="4" />
-      <node id="6410670351277075004" at="35,53,44,24" concept="4" />
-      <node id="6410670351276877550" at="20,0,33,0" concept="3" trace="test_MPS_31361#()V" />
-      <node id="6410670351277074985" at="33,0,47,0" concept="3" trace="test_MPS_31361_PoundExpression#()V" />
-      <scope id="6410670351276886923" at="23,50,24,104" />
-      <scope id="6410670351276893369" at="27,51,28,70" />
-      <scope id="6410670351277075014" at="37,50,38,104" />
-      <scope id="6410670351277075024" at="41,51,42,86" />
-      <scope id="6410670351276886922" at="23,0,26,0">
+      <node id="6410670351276877627" at="21,49,22,218" concept="4" />
+      <node id="6410670351276887412" at="24,50,25,104" concept="5" />
+      <node id="6410670351276893674" at="28,51,29,70" concept="5" />
+      <node id="6410670351276910050" at="31,24,32,77" concept="1" />
+      <node id="6410670351277074989" at="35,65,36,218" concept="4" />
+      <node id="6410670351277075000" at="36,218,37,53" concept="4" />
+      <node id="6410670351277075015" at="39,50,40,104" concept="5" />
+      <node id="6410670351277075025" at="43,51,44,86" concept="5" />
+      <node id="6410670351277075033" at="46,24,47,77" concept="1" />
+      <node id="5375498624328879719" at="50,57,51,43" concept="4" />
+      <node id="5375498624329234440" at="51,43,52,53" concept="4" />
+      <node id="5375498624329568615" at="52,53,53,112" concept="4" />
+      <node id="5375498624329581434" at="53,112,54,34" concept="1" />
+      <node id="6410670351276877495" at="58,0,59,0" concept="8" trace="BaseConcept$gP" />
+      <node id="6410670351276877495" at="59,0,60,0" concept="8" trace="ExpressionStatement$O8" />
+      <node id="6410670351276877495" at="60,0,61,0" concept="8" trace="Statement$P6" />
+      <node id="6410670351276877495" at="61,0,62,0" concept="8" trace="INamedAspect$zw" />
+      <node id="6410670351276877495" at="62,0,63,0" concept="8" trace="INamedConcept$Kd" />
+      <node id="6410670351276886922" at="24,0,27,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
+      <node id="6410670351276893368" at="28,0,31,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <node id="6410670351277075013" at="39,0,42,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
+      <node id="6410670351277075023" at="43,0,46,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <node id="5375498624329581386" at="49,0,56,0" concept="3" trace="test_castToBaseConcept#()V" />
+      <node id="6410670351276877911" at="22,218,31,24" concept="4" />
+      <node id="6410670351277075004" at="37,53,46,24" concept="4" />
+      <node id="6410670351276877550" at="20,0,34,0" concept="3" trace="test_MPS_31361#()V" />
+      <node id="6410670351277074985" at="34,0,49,0" concept="3" trace="test_MPS_31361_PoundExpression#()V" />
+      <scope id="6410670351276886923" at="24,50,25,104" />
+      <scope id="6410670351276893369" at="28,51,29,70" />
+      <scope id="6410670351277075014" at="39,50,40,104" />
+      <scope id="6410670351277075024" at="43,51,44,86" />
+      <scope id="6410670351276886922" at="24,0,27,0">
         <var name="it" id="6410670351276886922" />
       </scope>
-      <scope id="6410670351276893368" at="27,0,30,0">
+      <scope id="6410670351276893368" at="28,0,31,0">
         <var name="it" id="6410670351276893368" />
       </scope>
-      <scope id="6410670351277075013" at="37,0,40,0">
+      <scope id="6410670351277075013" at="39,0,42,0">
         <var name="it" id="6410670351277075013" />
       </scope>
-      <scope id="6410670351277075023" at="41,0,44,0">
+      <scope id="6410670351277075023" at="43,0,46,0">
         <var name="it" id="6410670351277075023" />
       </scope>
-      <scope id="5375498624329581389" at="47,57,51,34">
+      <scope id="5375498624329581389" at="50,57,54,34">
         <var name="bc1" id="5375498624328879720" />
         <var name="bc2" id="5375498624329568616" />
         <var name="inc" id="5375498624329234441" />
       </scope>
-      <scope id="5375498624329581386" at="47,0,53,0" />
-      <scope id="6410670351276877553" at="20,49,31,77">
+      <scope id="5375498624329581386" at="49,0,56,0" />
+      <scope id="6410670351276877553" at="21,49,32,77">
         <var name="abstractConcepts" id="6410670351276877630" />
         <var name="statementConcepts" id="6410670351276877914" />
       </scope>
-      <scope id="6410670351277074988" at="33,65,45,77">
+      <scope id="6410670351277074988" at="35,65,47,77">
         <var name="abstractConcepts" id="6410670351277074990" />
         <var name="statement" id="6410670351277075001" />
         <var name="statementConcepts" id="6410670351277075005" />
       </scope>
-      <scope id="6410670351276877550" at="20,0,33,0" />
-      <scope id="6410670351277074985" at="33,0,47,0" />
-      <unit id="6410670351276886922" at="22,89,26,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$1" />
-      <unit id="6410670351276893368" at="26,18,30,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$2" />
-      <unit id="6410670351277075013" at="36,89,40,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$3" />
-      <unit id="6410670351277075023" at="40,18,44,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$4" />
-      <unit id="6410670351276877495" at="54,0,61,0" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$CONCEPTS" />
-      <unit id="6410670351276877495" at="19,0,62,0" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test" />
+      <scope id="6410670351276877550" at="20,0,34,0" />
+      <scope id="6410670351277074985" at="34,0,49,0" />
+      <unit id="6410670351276886922" at="23,89,27,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$1" />
+      <unit id="6410670351276893368" at="27,18,31,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$2" />
+      <unit id="6410670351277075013" at="38,89,42,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$3" />
+      <unit id="6410670351277075023" at="42,18,46,5" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$4" />
+      <unit id="6410670351276877495" at="57,0,64,0" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test$CONCEPTS" />
+      <unit id="6410670351276877495" at="19,0,65,0" name="jetbrains.mps.smodel.test.concepts.ConceptCasts_Test" />
     </file>
   </root>
 </debug-info>

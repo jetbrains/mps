@@ -55,7 +55,6 @@
     <classNode dependClassName="jetbrains.mps.make.script.ScriptBuilder" />
     <classNode dependClassName="jetbrains.mps.make.unittest.Mockups" />
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.hamcrest.BaseMatcher" />
     <classNode dependClassName="org.hamcrest.Description" />
     <classNode dependClassName="org.jmock.Expectations" />
@@ -63,6 +62,7 @@
     <classNode dependClassName="org.jmock.api.Invocation" />
     <classNode dependClassName="org.jmock.integration.junit4.JMock" />
     <classNode dependClassName="org.junit.After" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Before" />
     <classNode dependClassName="org.junit.Test" />
     <classNode dependClassName="org.junit.runner.RunWith" />
@@ -94,9 +94,9 @@
     <classNode dependClassName="jetbrains.mps.make.script.IJobMonitor" />
     <classNode dependClassName="jetbrains.mps.make.script.IPropertiesPool" />
     <classNode dependClassName="jetbrains.mps.make.script.IResult" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode extendsClassName="jetbrains.mps.make.facet.IFacet" />
   </dependency>
   <dependency className="jetbrains.mps.make.generator.Maker__Facet">

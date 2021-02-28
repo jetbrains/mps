@@ -5,8 +5,9 @@ package testPackagedLanguage.test;
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.junit.Test;
 import org.jetbrains.mps.openapi.module.SModule;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
@@ -18,6 +19,7 @@ import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.junit.Before;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -28,6 +30,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
   /*package*/ SRepository projectRepository;
+  @Test
   public void test_testLanguagePresent() throws Exception {
     projectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -37,6 +40,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testStructureModel() throws Exception {
     projectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -46,6 +50,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testEditorModel() throws Exception {
     projectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -55,6 +60,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testIcons() throws Exception {
     projectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -67,6 +73,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_testStubs() throws Exception {
     projectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -84,6 +91,7 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Before
   public void setUp() {
     // FIXME in fact, shall access project instance MpsTestsSuite runnner has created from mps.test.modules list 
     projectRepository = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);

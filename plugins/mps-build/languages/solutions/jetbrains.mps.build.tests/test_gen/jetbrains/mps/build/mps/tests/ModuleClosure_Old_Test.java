@@ -4,6 +4,7 @@ package jetbrains.mps.build.mps.tests;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
+import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -14,7 +15,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.build.mps.util.MPSModulesPartitioner;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import junit.framework.Assert;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.After;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -22,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @MPSLaunch
 public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
+  @Test
   public void test_mps21769() throws Exception {
     SModel m = null;
     // first build script, with L1 and L2 (which extends L1), and corresponding generators 
@@ -52,6 +56,7 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(SetSequence.fromSet(clAsSet).contains(l2));
     Assert.assertTrue(SetSequence.fromSet(clAsSet).contains(l1));
   }
+  @Test
   public void test_mps21770() throws Exception {
     SModel m = null;
     SNode project1 = SModelOperations.createNewNode(m, null, CONCEPTS.BuildProject$ae);
@@ -80,8 +85,10 @@ public class ModuleClosure_Old_Test extends EnvironmentAwareTestCase {
     Assert.assertTrue(SetSequence.fromSet(clAsSet).contains(rt));
     Assert.assertTrue(SetSequence.fromSet(clAsSet).contains(l));
   }
+  @Before
   public void setUp() {
   }
+  @After
   public void tearDown() {
   }
 

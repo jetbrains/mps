@@ -24,10 +24,10 @@
     <classNode dependClassName="jetbrains.mps.tool.builder.make.BuildMakeService" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.util.NameUtil" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode extendsClassName="jetbrains.mps.testbench.EnvironmentAwareTestCase" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.test.test.HeadlessRefactoringUI">
@@ -47,9 +47,9 @@
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringSession" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
+    <classNode dependClassName="org.junit.Assert" />
     <classNode extendsClassName="jetbrains.mps.refactoring.participant.RefactoringUI" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.test.test.MoveConceptRefactoring_Test">
@@ -115,7 +115,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.impl.CompiledConceptDescriptor" />
     <classNode dependClassName="jetbrains.mps.util.Reference" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
@@ -125,6 +124,8 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.Processor" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.test.test.Refactoring_Test">
@@ -173,7 +174,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.util.Reference" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
@@ -183,6 +183,8 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.Processor" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest" />
   </dependency>
 </dependenciesRoot>

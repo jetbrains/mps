@@ -12,7 +12,7 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.SetSequence;

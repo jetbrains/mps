@@ -4,7 +4,7 @@ package jetbrains.mps.make.unittest;
 
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class Utils {
   public Utils() {

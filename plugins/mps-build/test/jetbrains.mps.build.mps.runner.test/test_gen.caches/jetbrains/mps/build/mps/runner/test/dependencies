@@ -20,7 +20,10 @@
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Log4jInitializer" />
     <classNode dependClassName="jetbrains.mps.util.MacrosFactory" />
-    <classNode dependClassName="junit.framework.Assert" />
+    <classNode dependClassName="org.junit.After" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Before" />
+    <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.testbench.EnvironmentAwareTestCase" />
   </dependency>
 </dependenciesRoot>

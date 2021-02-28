@@ -26,7 +26,7 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.UnitTestProcessListener;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 import java.util.concurrent.TimeUnit;
-import junit.framework.Assert;
+import org.junit.Assert;
 import com.intellij.execution.ExecutionException;
 import java.util.Collections;
 

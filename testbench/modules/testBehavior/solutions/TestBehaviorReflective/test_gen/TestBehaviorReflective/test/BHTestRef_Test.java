@@ -5,8 +5,9 @@ package TestBehaviorReflective.test;
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import jetbrains.mps.project.Project;
+import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SNode;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import UtilSolution.util.TestResults;
@@ -18,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.junit.Before;
 import java.io.File;
 import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -29,6 +31,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class BHTestRef_Test extends EnvironmentAwareTestCase {
   private static final String PROJECT_PATH = "testbench/modules/testBehavior";
   /*package*/ Project myProject;
+  @Test
   public void test_conversion1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0a0();
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion1", CONCEPTS.A$jy, "3ZhVC3HVCz2"), ((float) 1))));
@@ -40,18 +43,20 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     Integer A = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion1", CONCEPTS.A$jy, "3ZhVC3HVCz2"), ((float) a)));
     Assert.assertSame(1, A);
   }
+  @Test
   public void test_conversion2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0b0();
-    Assert.assertEquals(1.0f, ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) 1))));
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) 1)))));
     int a = 1;
-    Assert.assertEquals(1.0f, ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) a))));
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) a)))));
     a = (int) ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) a)));
     Float f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) a)));
-    Assert.assertEquals(1.0f, f);
+    Assert.assertEquals(Float.valueOf(1.0f), f);
     f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) new Integer(1))));
     f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion2", CONCEPTS.A$jy, "6rioTyS5hVU"), ((int) (int) ((float) f))));
-    Assert.assertEquals(1.0f, f);
+    Assert.assertEquals(Float.valueOf(1.0f), f);
   }
+  @Test
   public void test_conversion3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0c0();
     int a = 1;
@@ -60,13 +65,15 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     Assert.assertSame(1, ((Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion3", CONCEPTS.A$jy, "6rioTyS5i4m"), ((float) a))));
     Assert.assertSame(1, ((Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion3", CONCEPTS.A$jy, "6rioTyS5i4m"), ((float) f))));
   }
+  @Test
   public void test_conversion4() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0d0();
     int a = 1;
     float f;
     f = ((Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion4", CONCEPTS.A$jy, "6rioTyS5icW"), ((int) a)));
-    Assert.assertEquals(1.0f, ((Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion4", CONCEPTS.A$jy, "6rioTyS5icW"), ((int) (int) f))));
+    Assert.assertEquals(Float.valueOf(1.0f), ((Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion4", CONCEPTS.A$jy, "6rioTyS5icW"), ((int) (int) f))));
   }
+  @Test
   public void test_conversion5() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0e0();
     int a = 1;
@@ -74,119 +81,144 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     a = ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion5", CONCEPTS.A$jy, "6rioTyS5ilG"), f));
     Assert.assertSame(1, a);
   }
+  @Test
   public void test_conversion6() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0f0();
     int a = 1;
     float f;
     f = ((float) (Float) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("conversion6", CONCEPTS.A$jy, "3HzlNjB44YK"), a));
-    Assert.assertEquals(1.0f, f);
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(f));
   }
+  @Test
   public void test_boxing1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0g0();
     Assert.assertSame(1, ((Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("boxing1", CONCEPTS.A$jy, "95Aegakr_K"), ((int) 1))));
   }
+  @Test
   public void test_boxing2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0h0();
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("boxing2", CONCEPTS.A$jy, "95AegakrCe"), new Integer(1))));
   }
+  @Test
   public void test_varArgNull1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0i0();
     Assert.assertSame(true, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgNull", CONCEPTS.A$jy, "56Rew6rCKv6"), null)));
   }
+  @Test
   public void test_varArgNull2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0j0();
     String[] arr = {null};
     Assert.assertSame(false, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgNull", CONCEPTS.A$jy, "56Rew6rCKv6"), arr)));
   }
+  @Test
   public void test_arrArgNull1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0k0();
     Assert.assertSame(true, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrArgNull", CONCEPTS.A$jy, "56Rew6rCKDf"), null)));
   }
+  @Test
   public void test_arrArgNull2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0l0();
     String[] arr = {null};
     Assert.assertSame(false, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrArgNull", CONCEPTS.A$jy, "56Rew6rCKDf"), arr)));
   }
+  @Test
   public void test_varArgParam1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0m0();
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen", CONCEPTS.A$jy, "6yTVdLqTssn"), "", "")));
   }
+  @Test
   public void test_varArgParam2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0n0();
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen", CONCEPTS.A$jy, "6yTVdLqTssn"), "")));
   }
+  @Test
   public void test_varArgParam3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0o0();
     Assert.assertSame(0, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen", CONCEPTS.A$jy, "6yTVdLqTssn"))));
   }
+  @Test
   public void test_varArgParamArr1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0p0();
     String[] arr = {"", ""};
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen", CONCEPTS.A$jy, "6yTVdLqTssn"), arr)));
   }
+  @Test
   public void test_varArgParamArr2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0q0();
     String[] arr = {""};
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen", CONCEPTS.A$jy, "6yTVdLqTssn"), arr)));
   }
+  @Test
   public void test_varArgParamArr3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0r0();
     String[] arr = {};
     Assert.assertSame(0, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen", CONCEPTS.A$jy, "6yTVdLqTssn"), arr)));
   }
+  @Test
   public void test_arrArgParam1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0s0();
     String[] arr = {"", ""};
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrayArg", CONCEPTS.A$jy, "6yTVdLqT_bJ"), arr)));
   }
+  @Test
   public void test_arrArgParam2() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0t0();
     String[] arr = {""};
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrayArg", CONCEPTS.A$jy, "6yTVdLqT_bJ"), arr)));
   }
+  @Test
   public void test_arrArgParam3() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0u0();
     String[] arr = {};
     Assert.assertSame(0, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrayArg", CONCEPTS.A$jy, "6yTVdLqT_bJ"), arr)));
   }
+  @Test
   public void test_arrArgParam4() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0v0();
     String[] arr = {"", ""};
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrayArg1", CONCEPTS.A$jy, "6Jh0tXoSfUR"), arr, "")));
   }
+  @Test
   public void test_primitiveVarArgParam() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0w0();
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("varArgLen4", CONCEPTS.A$jy, "6Jh0tXoS5Ab"), ((int) 1), ((int) 2))));
   }
+  @Test
   public void test_primitiveArrayArgParam() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0x0();
     int[] arr = {1, 2};
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$jy, SMethodTrimmedId.create("arrayArg3", CONCEPTS.A$jy, "6Jh0tXoS5z0"), arr)));
   }
+  @Test
   public void test_virtualMethodCall() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0y0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.I$uc, SMethodTrimmedId.create("foo", null, "5jWiLvujMjC"))));
   }
+  @Test
   public void test_abstractMethodCall() throws Exception {
     SNode nodeI = createA_cc8y9n_a0a0z0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeI, CONCEPTS.I$uc, SMethodTrimmedId.create("foo", null, "5jWiLvujMjC"))));
   }
+  @Test
   public void test_defaultMethodWorks() throws Exception {
     SNode nodeI1 = createA1_cc8y9n_a0a0ab0();
     Assert.assertSame(TestResults.DEFAULT_METHOD, ((Object) BHReflection.invoke0(nodeI1, CONCEPTS.I1$7V, SMethodTrimmedId.create("foo", null, "7Ts2tYwvl$V"))));
   }
+  @Test
   public void test_polymorphism1() throws Exception {
     SNode nodeA = createB_cc8y9n_a0a0bb0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, ((Object) BHReflection.invoke0(nodeA, CONCEPTS.A$xx, SMethodTrimmedId.create("foo", null, "6EMTxOPT5LT"))));
     nodeA = createA_cc8y9n_a0c0bb0();
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, ((Object) BHReflection.invoke0(nodeA, CONCEPTS.A$xx, SMethodTrimmedId.create("foo", null, "6EMTxOPT5LT"))));
   }
+  @Test
   public void test_polymorphism2() throws Exception {
     SNode nodeA = createB_cc8y9n_a0a0cb0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, ((Object) BHReflection.invoke0(nodeA, CONCEPTS.A$xx, SMethodTrimmedId.create("nonVirtual", CONCEPTS.A$xx, "7zO8mNAVlna"))));
     nodeA = createA_cc8y9n_a0c0cb0();
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, ((Object) BHReflection.invoke0(nodeA, CONCEPTS.A$xx, SMethodTrimmedId.create("nonVirtual", CONCEPTS.A$xx, "7zO8mNAVlna"))));
   }
+  @Test
   public void test_nonVirtualMethod() throws Exception {
     SNode nodeA = createB_cc8y9n_a0a0db0();
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, ((Object) BHReflection.invoke0(nodeA, CONCEPTS.A$x5, SMethodTrimmedId.create("foo", CONCEPTS.A$x5, "6EMTxOPT7e1"))));
@@ -195,38 +227,47 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, ((Object) BHReflection.invoke0(nodeB, CONCEPTS.A$x5, SMethodTrimmedId.create("foo", CONCEPTS.A$x5, "6EMTxOPT7e1"))));
     Assert.assertSame(TestResults.NON_VIRTUAL_CHILD, ((Object) BHReflection.invoke0(nodeB, CONCEPTS.B$jB, SMethodTrimmedId.create("foo", CONCEPTS.B$jB, "6EMTxOPT7o8"))));
   }
+  @Test
   public void test_diamond1() throws Exception {
     SNode nodeI = createC1_cc8y9n_a0a0eb0();
     Assert.assertEquals(TestResults.DIAMOND_C1, ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I$zr, SMethodTrimmedId.create("foo", null, "6EMTxOPT9nl"))));
   }
+  @Test
   public void test_diamond2() throws Exception {
     SNode nodeI = createC2_cc8y9n_a0a0fb0();
     Assert.assertEquals(TestResults.DIAMOND_I1, ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I$zr, SMethodTrimmedId.create("foo", null, "6EMTxOPT9nl"))));
   }
+  @Test
   public void test_diamond3() throws Exception {
     SNode nodeI = createC3_cc8y9n_a0a0gb0();
     Assert.assertEquals(TestResults.DIAMOND_I1, ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I$zr, SMethodTrimmedId.create("foo", null, "6EMTxOPT9nl"))));
   }
+  @Test
   public void test_diamond4() throws Exception {
     SNode nodeI = createC4_cc8y9n_a0a0hb0();
     Assert.assertEquals(TestResults.DIAMOND_I2, ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I$zr, SMethodTrimmedId.create("foo", null, "6EMTxOPT9nl"))));
   }
+  @Test
   public void test_diamond5() throws Exception {
     SNode nodeI = createC5_cc8y9n_a0a0ib0();
     Assert.assertEquals(TestResults.DEFAULT_RETURN_VALUE, ((Object) BHReflection.invoke0(nodeI, CONCEPTS.I3$IR, SMethodTrimmedId.create("foo", null, "7MbtyEhkk0m"))));
   }
+  @Test
   public void test_diamond6() throws Exception {
     SNode nodeP = createP_cc8y9n_a0a0jb0();
     Assert.assertEquals("IB", ((String) BHReflection.invoke0(nodeP, CONCEPTS.IA$_z, SMethodTrimmedId.create("foo", null, "6y7bjZdM7v8"))));
   }
+  @Test
   public void test_diamond6_0() throws Exception {
     SNode nodeP = createP_cc8y9n_a0a0kb0();
     Assert.assertEquals("IB", ((String) BHReflection.invoke0(nodeP, CONCEPTS.IA$_z, SMethodTrimmedId.create("foo", null, "6y7bjZdM7v8"))));
   }
+  @Test
   public void test_diamond6_1() throws Exception {
     SNode nodeP = createP_cc8y9n_a0a0lb0();
     Assert.assertEquals("IB", ((String) BHReflection.invoke0(nodeP, CONCEPTS.IA$_z, SMethodTrimmedId.create("foo", null, "6y7bjZdM7v8"))));
   }
+  @Test
   public void test_constructorInvocation1() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -235,6 +276,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocation2() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -243,6 +285,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocation3() throws Exception {
     // test checks that I2 constructor overrides I1 constructor 
     myProject.getModelAccess().runReadAction(new Runnable() {
@@ -252,6 +295,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocation4() throws Exception {
     // test checks that all super constructors are invoked 
     myProject.getModelAccess().runReadAction(new Runnable() {
@@ -262,6 +306,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocationDiamond() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -270,6 +315,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocationSuper1() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -278,6 +324,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocationSuper2() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -286,101 +333,123 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_localBehaviorCall() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0tb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeA, CONCEPTS.A$sT, SMethodTrimmedId.create("foo", CONCEPTS.A$sT, "5mnatV0hwr3"))));
   }
+  @Test
   public void test_thisBehaviorCall() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0ub0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo", CONCEPTS.B$ke, "5mnatV0hwZQ"))));
   }
+  @Test
   public void test_thisStaticBehaviorCall() throws Exception {
     SNode nodeC = createC_cc8y9n_a0a0vb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeC)), CONCEPTS.C$bZ, SMethodTrimmedId.create("foo", CONCEPTS.C$bZ, "5mnatV0hxLf"))));
   }
+  @Test
   public void test_virtualStaticBehaviorCall1() throws Exception {
     SConcept conceptC = CONCEPTS.C$bZ;
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, ((Object) BHReflection.invoke0(SNodeOperations.asSConcept(conceptC), CONCEPTS.C$bZ, SMethodTrimmedId.create("virtual", null, "47lrFSh1$Ca"))));
     conceptC = CONCEPTS.E$KD;
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, ((Object) BHReflection.invoke0(SNodeOperations.asSConcept(conceptC), CONCEPTS.C$bZ, SMethodTrimmedId.create("virtual", null, "47lrFSh1$Ca"))));
   }
+  @Test
   public void test_virtualStaticBehaviorCall2() throws Exception {
     SConcept conceptC = CONCEPTS.C$bZ;
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, ((Object) BHReflection.invoke0(SNodeOperations.asSConcept(conceptC), CONCEPTS.C$bZ, SMethodTrimmedId.create("nonVirtual", CONCEPTS.C$bZ, "7zO8mNAVkj1"))));
     conceptC = CONCEPTS.E$KD;
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, ((Object) BHReflection.invoke0(SNodeOperations.asSConcept(conceptC), CONCEPTS.C$bZ, SMethodTrimmedId.create("nonVirtual", CONCEPTS.C$bZ, "7zO8mNAVkj1"))));
   }
+  @Test
   public void test_superBehaviorCall() throws Exception {
     SNode nodeD = createD_cc8y9n_a0a0yb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeD, CONCEPTS.D$sr, SMethodTrimmedId.create("foo", CONCEPTS.D$sr, "5mnatV0hyg4"))));
   }
+  @Test
   public void test_superBehaviorVirtualCall() throws Exception {
     SNode nodeB = createD_cc8y9n_a0a0zb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo1", null, "5jWiLvujSmw"))));
   }
+  @Test
   public void test_superThisVirtualBehaviorCall() throws Exception {
     SNode nodeB = createD_cc8y9n_a0a0ac0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo2", null, "5jWiLvujSzJ"))));
   }
+  @Test
   public void test_superBehaviorOneArgumentNullCall() throws Exception {
     // against wrong varargs treatment 
     SNode nodeB = createD_cc8y9n_a0b0bc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo4", CONCEPTS.B$ke, "1olXtyGAKpB"))));
   }
+  @Test
   public void test_superPrivateMethodVirtualCall() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0cc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo5", null, "1olXtyGAKsY"))));
     SNode nodeD = createD_cc8y9n_a0c0cc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeD, CONCEPTS.B$ke, SMethodTrimmedId.create("foo5", null, "1olXtyGAKsY"))));
   }
+  @Test
   public void test_superResolving1() throws Exception {
     SNode nodeB = createH_cc8y9n_a0a0dc0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, ((Object) BHReflection.invoke0(nodeB, CONCEPTS.B$ke, SMethodTrimmedId.create("foo6", null, "186XXh$CxOf"))));
     SNode nodeD = createH_cc8y9n_a0c0dc0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, ((Object) BHReflection.invoke0(nodeD, CONCEPTS.B$ke, SMethodTrimmedId.create("foo6", null, "186XXh$CxOf"))));
   }
+  @Test
   public void test_superResolving2() throws Exception {
     SNode nodeI = createJ_cc8y9n_a0a0ec0();
     Assert.assertSame("I2", ((String) BHReflection.invoke0(nodeI, CONCEPTS.I$b4, SMethodTrimmedId.create("foo", null, "yOqIWcnDrn"))));
   }
+  @Test
   public void test_superResolving3() throws Exception {
     SNode nodeI = createJ_cc8y9n_a0a0fc0();
     Assert.assertSame("I", ((String) BHReflection.invoke0(nodeI, CONCEPTS.I$b4, SMethodTrimmedId.create("bar", null, "43RsG_ymtGN"))));
   }
+  @Test
   public void test_superStaticBehaviorCall() throws Exception {
     SNode nodeE = createE_cc8y9n_a0a0gc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeE)), CONCEPTS.E$KD, SMethodTrimmedId.create("foo", CONCEPTS.E$KD, "5mnatV0hyuN"))));
   }
+  @Test
   public void test_primitiveMethodReturnType() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0hc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodTrimmedId.create("primitiveReturnValue", CONCEPTS.B$Um, "4Rfm9LCctz9"))));
   }
+  @Test
   public void test_primitiveParameterPass() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0ic0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodTrimmedId.create("primitiveParameter", CONCEPTS.B$Um, "7zO8mNAVjjo"), ((int) 1), ((boolean) false), ((double) 1.))));
   }
+  @Test
   public void test_nonPrimitiveNullParameterPass() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0jc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodTrimmedId.create("nonPrimitiveParameter", CONCEPTS.B$Um, "4Tk5Y39EB1$"), null)));
   }
+  @Test
   public void test_genericMethodReturnType() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0kc0();
     Assert.assertSame(Integer.class, ((Class<Integer>) BHReflection.invoke0(nodeB, CONCEPTS.B$Um, SMethodTrimmedId.create("genericReturnValue", CONCEPTS.B$Um, "4Rfm9LCcu90"))));
   }
+  @Test
   public void test_voidMethod() throws Exception {
     SNode nodeB = createB_cc8y9n_a0a0lc0();
     BHReflection.invoke0(nodeB, CONCEPTS.A$TR, SMethodTrimmedId.create("justVoidReturnTypeMethod1", CONCEPTS.A$TR, "5mnatV0hB9t"));
   }
+  @Test
   public void test_parameterTypes() throws Exception {
     SNode nodeC = createC_cc8y9n_a0a0mc0();
     Assert.assertSame(TestResults.NOT_SPECIFIED_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeC, CONCEPTS.C$Cz, SMethodTrimmedId.create("argTypeResolve", CONCEPTS.C$Cz, "1hQsMcvxKXP"), new Integer(1))));
     Assert.assertSame(TestResults.SPECIFIED_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(nodeC, CONCEPTS.C$Cz, SMethodTrimmedId.create("argTypeResolve", CONCEPTS.C$Cz, "1hQsMcvxKQo"), new Integer(1))));
   }
+  @Test
   public void test_twoVirtualMethodsWithTheSameName() throws Exception {
     SNode node1 = createH_cc8y9n_a0a0nc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(node1, CONCEPTS.H$S$, SMethodTrimmedId.create("foo", null, "3DBjXYFZcwm"))));
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE + 1, ((int) (Integer) BHReflection.invoke0(node1, CONCEPTS.H$S$, SMethodTrimmedId.create("foo", null, "3DBjXYFZcwx"))));
   }
+  @Test
   public void test_methodOverrideWithTheSameName1() throws Exception {
     // this and the next tests check current behavior to be able to resolve the method calls with identical signature 
     SNode node1 = createD_cc8y9n_a0b0oc0();
@@ -388,6 +457,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     SNode node2 = createD_cc8y9n_a0d0oc0();
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(node2, CONCEPTS.I2$rC, SMethodTrimmedId.create("foo", null, "5ivDaCiFPaC"))));
   }
+  @Test
   public void test_methodOverrideWithTheSameName2() throws Exception {
     SNode nodeF = createF_cc8y9n_a0a0pc0();
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(nodeF, CONCEPTS.I1$oB, SMethodTrimmedId.create("foo", null, "5ivDaCiFP9X"))));
@@ -397,11 +467,13 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     SNode nodeG2 = createG_cc8y9n_a0f0pc0();
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(nodeG2, CONCEPTS.I2$rC, SMethodTrimmedId.create("foo", null, "5ivDaCiFPaC"))));
   }
+  @Test
   public void test_twoEqualMethodOverriding() throws Exception {
     SNode node3 = createE_cc8y9n_a0a0qc0();
     Assert.assertSame(2, ((int) (Integer) BHReflection.invoke0(node3, CONCEPTS.I3$lu, SMethodTrimmedId.create("foo", null, "12MCENn4RcU"))));
     Assert.assertSame(1, ((int) (Integer) BHReflection.invoke0(node3, CONCEPTS.I3$lu, SMethodTrimmedId.create("foo", null, "12MCENn4Rd5"))));
   }
+  @Test
   public void test_conceptConstruction() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -417,6 +489,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_methodResolving() throws Exception {
     SNode nodeC = createC_cc8y9n_a0a0sc0();
     SNode nodeB = createB_cc8y9n_a0b0sc0();
@@ -429,10 +502,12 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     Assert.assertSame(3, ((Object) BHReflection.invoke0(nodeK, CONCEPTS.K$8j, SMethodTrimmedId.create("foo", CONCEPTS.K$8j, "6r9lTJu8BNQ"), nodeB)));
     Assert.assertSame(3, ((Object) BHReflection.invoke0(nodeK, CONCEPTS.K$8j, SMethodTrimmedId.create("foo", CONCEPTS.K$8j, "6r9lTJu8BNQ"), nodeA)));
   }
+  @Test
   public void test_booleanMethodCall1() throws Exception {
     SNode nodeA = createA_cc8y9n_a0a0tc0();
     Assert.assertSame(true, ((boolean) (Boolean) BHReflection.invoke0(nodeA, CONCEPTS.A$TR, SMethodTrimmedId.create("boolMethod1", CONCEPTS.A$TR, "2eC$PxWCtoT"))));
   }
+  @Test
   public void test_booleanMethodCall2() throws Exception {
     final SNode nodeA = createA_cc8y9n_a0a0uc0();
     boolean boolMethod2 = new _FunctionTypes._return_P0_E0<Boolean>() {
@@ -442,16 +517,19 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     }.invoke();
     Assert.assertSame(true, boolMethod2);
   }
+  @Test
   public void test_nullability1() throws Exception {
     SNode l = null;
     Assert.assertEquals(null, ((Object) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodTrimmedId.create("bar", null, "6nxN9oSBS5Q"))));
     Assert.assertEquals(0, ((int) (Integer) BHReflection.invoke0(l, CONCEPTS.L$fY, SMethodTrimmedId.create("foo", null, "6nxN9oSBS58"))));
   }
+  @Test
   public void test_nullability2() throws Exception {
     SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, "BHL7.structure.M"));
     Assert.assertEquals(null, ((Object) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodTrimmedId.create("bar", null, "6nxN9oSBS5Q"))));
     Assert.assertEquals(0, ((int) (Integer) BHReflection.invoke0(SLinkOperations.getTarget(m, LINKS.myL$nVu2), CONCEPTS.L$fY, SMethodTrimmedId.create("foo", null, "6nxN9oSBS58"))));
   }
+  @Before
   public void setUp() {
     // MpsEnvironment suffice 
     myProject = myEnvironment.openProject(new File(BHTestRef_Test.PROJECT_PATH));

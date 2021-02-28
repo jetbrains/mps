@@ -22,7 +22,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.stream.IntStream;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 

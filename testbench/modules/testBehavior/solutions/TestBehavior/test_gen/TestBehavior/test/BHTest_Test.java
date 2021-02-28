@@ -5,8 +5,9 @@ package TestBehavior.test;
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import jetbrains.mps.project.Project;
+import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SNode;
-import junit.framework.Assert;
+import org.junit.Assert;
 import BHL1.behavior.A__BehaviorDescriptor;
 import UtilSolution.util.TestResults;
 import BHL1.behavior.I__BehaviorDescriptor;
@@ -31,6 +32,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import BHL7.behavior.L__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.junit.Before;
 import java.io.File;
 import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -41,6 +43,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class BHTest_Test extends EnvironmentAwareTestCase {
   private static final String PROJECT_PATH = "testbench/modules/testBehavior";
   /*package*/ Project myProject;
+  @Test
   public void test_conversion1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0a0();
     Assert.assertSame(1, (int) A__BehaviorDescriptor.conversion1_id3ZhVC3HVCz2.invoke(nodeA, ((float) 1)));
@@ -52,18 +55,20 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     Integer A = (int) A__BehaviorDescriptor.conversion1_id3ZhVC3HVCz2.invoke(nodeA, ((float) a));
     Assert.assertSame(1, A);
   }
+  @Test
   public void test_conversion2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0b0();
-    Assert.assertEquals(1.0f, (float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) 1)));
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf((float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) 1))));
     int a = 1;
-    Assert.assertEquals(1.0f, (float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) a)));
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf((float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) a))));
     a = (int) (float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) a));
     Float f = (float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) a));
-    Assert.assertEquals(1.0f, f);
+    Assert.assertEquals(Float.valueOf(1.0f), f);
     f = (float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) new Integer(1)));
     f = (float) A__BehaviorDescriptor.conversion2_id6rioTyS5hVU.invoke(nodeA, ((int) (int) ((float) f)));
-    Assert.assertEquals(1.0f, f);
+    Assert.assertEquals(Float.valueOf(1.0f), f);
   }
+  @Test
   public void test_conversion3() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0c0();
     int a = 1;
@@ -72,13 +77,15 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     Assert.assertSame(1, A__BehaviorDescriptor.conversion3_id6rioTyS5i4m.invoke(nodeA, ((float) a)));
     Assert.assertSame(1, A__BehaviorDescriptor.conversion3_id6rioTyS5i4m.invoke(nodeA, ((float) f)));
   }
+  @Test
   public void test_conversion4() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0d0();
     int a = 1;
     float f;
     f = A__BehaviorDescriptor.conversion4_id6rioTyS5icW.invoke(nodeA, ((int) a));
-    Assert.assertEquals(1.0f, A__BehaviorDescriptor.conversion4_id6rioTyS5icW.invoke(nodeA, ((int) (int) f)));
+    Assert.assertEquals(Float.valueOf(1.0f), A__BehaviorDescriptor.conversion4_id6rioTyS5icW.invoke(nodeA, ((int) (int) f)));
   }
+  @Test
   public void test_conversion5() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0e0();
     int a = 1;
@@ -86,119 +93,144 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     a = (int) A__BehaviorDescriptor.conversion5_id6rioTyS5ilG.invoke(nodeA, f);
     Assert.assertSame(1, a);
   }
+  @Test
   public void test_conversion6() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0f0();
     int a = 1;
     float f;
     f = (float) A__BehaviorDescriptor.conversion6_id3HzlNjB44YK.invoke(nodeA, a);
-    Assert.assertEquals(1.0f, f);
+    Assert.assertEquals(Float.valueOf(1.0f), Float.valueOf(f));
   }
+  @Test
   public void test_boxing1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0g0();
     Assert.assertSame(1, A__BehaviorDescriptor.boxing1_id95Aegakr_K.invoke(nodeA, ((int) 1)));
   }
+  @Test
   public void test_boxing2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0h0();
     Assert.assertSame(1, (int) A__BehaviorDescriptor.boxing2_id95AegakrCe.invoke(nodeA, new Integer(1)));
   }
+  @Test
   public void test_varArgNull1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0i0();
     Assert.assertSame(true, (boolean) A__BehaviorDescriptor.varArgNull_id56Rew6rCKv6.invoke(nodeA, null));
   }
+  @Test
   public void test_varArgNull2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0j0();
     String[] arr = {null};
     Assert.assertSame(false, (boolean) A__BehaviorDescriptor.varArgNull_id56Rew6rCKv6.invoke(nodeA, arr));
   }
+  @Test
   public void test_arrArgNull1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0k0();
     Assert.assertSame(true, (boolean) A__BehaviorDescriptor.arrArgNull_id56Rew6rCKDf.invoke(nodeA, null));
   }
+  @Test
   public void test_arrArgNull2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0l0();
     String[] arr = {null};
     Assert.assertSame(false, (boolean) A__BehaviorDescriptor.arrArgNull_id56Rew6rCKDf.invoke(nodeA, arr));
   }
+  @Test
   public void test_varArgParam1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0m0();
     Assert.assertSame(2, (int) A__BehaviorDescriptor.varArgLen_id6yTVdLqTssn.invoke(nodeA, "", ""));
   }
+  @Test
   public void test_varArgParam2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0n0();
     Assert.assertSame(1, (int) A__BehaviorDescriptor.varArgLen_id6yTVdLqTssn.invoke(nodeA, ""));
   }
+  @Test
   public void test_varArgParam3() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0o0();
     Assert.assertSame(0, (int) A__BehaviorDescriptor.varArgLen_id6yTVdLqTssn.invoke(nodeA));
   }
+  @Test
   public void test_varArgParamArr1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0p0();
     String[] arr = {"", ""};
     Assert.assertSame(2, (int) A__BehaviorDescriptor.varArgLen_id6yTVdLqTssn.invoke(nodeA, arr));
   }
+  @Test
   public void test_varArgParamArr2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0q0();
     String[] arr = {""};
     Assert.assertSame(1, (int) A__BehaviorDescriptor.varArgLen_id6yTVdLqTssn.invoke(nodeA, arr));
   }
+  @Test
   public void test_varArgParamArr3() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0r0();
     String[] arr = {};
     Assert.assertSame(0, (int) A__BehaviorDescriptor.varArgLen_id6yTVdLqTssn.invoke(nodeA, arr));
   }
+  @Test
   public void test_arrArgParam1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0s0();
     String[] arr = {"", ""};
     Assert.assertSame(2, (int) A__BehaviorDescriptor.arrayArg_id6yTVdLqT_bJ.invoke(nodeA, arr));
   }
+  @Test
   public void test_arrArgParam2() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0t0();
     String[] arr = {""};
     Assert.assertSame(1, (int) A__BehaviorDescriptor.arrayArg_id6yTVdLqT_bJ.invoke(nodeA, arr));
   }
+  @Test
   public void test_arrArgParam3() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0u0();
     String[] arr = {};
     Assert.assertSame(0, (int) A__BehaviorDescriptor.arrayArg_id6yTVdLqT_bJ.invoke(nodeA, arr));
   }
+  @Test
   public void test_arrArgParam4() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0v0();
     String[] arr = {"", ""};
     Assert.assertSame(2, (int) A__BehaviorDescriptor.arrayArg1_id6Jh0tXoSfUR.invoke(nodeA, arr, ""));
   }
+  @Test
   public void test_primitiveVarArgParam() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0w0();
     Assert.assertSame(2, (int) A__BehaviorDescriptor.varArgLen4_id6Jh0tXoS5Ab.invoke(nodeA, ((int) 1), ((int) 2)));
   }
+  @Test
   public void test_primitiveArrayArgParam() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0x0();
     int[] arr = {1, 2};
     Assert.assertSame(2, (int) A__BehaviorDescriptor.arrayArg3_id6Jh0tXoS5z0.invoke(nodeA, arr));
   }
+  @Test
   public void test_virtualMethodCall() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0y0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) I__BehaviorDescriptor.foo_id5jWiLvujMjC.invoke(nodeA));
   }
+  @Test
   public void test_abstractMethodCall() throws Exception {
     SNode nodeI = createA_a2wy8c_a0a0z0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) I__BehaviorDescriptor.foo_id5jWiLvujMjC.invoke(nodeI));
   }
+  @Test
   public void test_defaultMethodWorks() throws Exception {
     SNode nodeI1 = createA1_a2wy8c_a0a0ab0();
     Assert.assertSame(TestResults.DEFAULT_METHOD, I1__BehaviorDescriptor.foo_id7Ts2tYwvl$V.invoke(nodeI1));
   }
+  @Test
   public void test_polymorphism1() throws Exception {
     SNode nodeA = createB_a2wy8c_a0a0bb0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, BHL2.behavior.A__BehaviorDescriptor.foo_id6EMTxOPT5LT.invoke(nodeA));
     nodeA = createA_a2wy8c_a0c0bb0();
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, BHL2.behavior.A__BehaviorDescriptor.foo_id6EMTxOPT5LT.invoke(nodeA));
   }
+  @Test
   public void test_polymorphism2() throws Exception {
     SNode nodeA = createB_a2wy8c_a0a0cb0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, BHL2.behavior.A__BehaviorDescriptor.nonVirtual_id7zO8mNAVlna.invoke(nodeA));
     nodeA = createA_a2wy8c_a0c0cb0();
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, BHL2.behavior.A__BehaviorDescriptor.nonVirtual_id7zO8mNAVlna.invoke(nodeA));
   }
+  @Test
   public void test_nonVirtualMethod() throws Exception {
     SNode nodeA = createB_a2wy8c_a0a0db0();
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, BHL3.behavior.A__BehaviorDescriptor.foo_id6EMTxOPT7e1.invoke(nodeA));
@@ -207,38 +239,47 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     Assert.assertSame(TestResults.NON_VIRTUAL_PARENT, BHL3.behavior.A__BehaviorDescriptor.foo_id6EMTxOPT7e1.invoke(nodeB));
     Assert.assertSame(TestResults.NON_VIRTUAL_CHILD, B__BehaviorDescriptor.foo_id6EMTxOPT7o8.invoke(nodeB));
   }
+  @Test
   public void test_diamond1() throws Exception {
     SNode nodeI = createC1_a2wy8c_a0a0eb0();
     Assert.assertEquals(TestResults.DIAMOND_C1, BHL4.behavior.I__BehaviorDescriptor.foo_id6EMTxOPT9nl.invoke(nodeI));
   }
+  @Test
   public void test_diamond2() throws Exception {
     SNode nodeI = createC2_a2wy8c_a0a0fb0();
     Assert.assertEquals(TestResults.DIAMOND_I1, BHL4.behavior.I__BehaviorDescriptor.foo_id6EMTxOPT9nl.invoke(nodeI));
   }
+  @Test
   public void test_diamond3() throws Exception {
     SNode nodeI = createC3_a2wy8c_a0a0gb0();
     Assert.assertEquals(TestResults.DIAMOND_I1, BHL4.behavior.I__BehaviorDescriptor.foo_id6EMTxOPT9nl.invoke(nodeI));
   }
+  @Test
   public void test_diamond4() throws Exception {
     SNode nodeI = createC4_a2wy8c_a0a0hb0();
     Assert.assertEquals(TestResults.DIAMOND_I2, BHL4.behavior.I__BehaviorDescriptor.foo_id6EMTxOPT9nl.invoke(nodeI));
   }
+  @Test
   public void test_diamond5() throws Exception {
     SNode nodeI = createC5_a2wy8c_a0a0ib0();
     Assert.assertEquals(TestResults.DEFAULT_RETURN_VALUE, I3__BehaviorDescriptor.foo_id7MbtyEhkk0m.invoke(nodeI));
   }
+  @Test
   public void test_diamond6() throws Exception {
     SNode nodeP = createP_a2wy8c_a0a0jb0();
     Assert.assertEquals("IB", IA__BehaviorDescriptor.foo_id6y7bjZdM7v8.invoke(nodeP));
   }
+  @Test
   public void test_diamond6_0() throws Exception {
     SNode nodeP = createP_a2wy8c_a0a0kb0();
     Assert.assertEquals("IB", IA__BehaviorDescriptor.foo_id6y7bjZdM7v8.invoke(nodeP));
   }
+  @Test
   public void test_diamond6_1() throws Exception {
     SNode nodeP = createP_a2wy8c_a0a0lb0();
     Assert.assertEquals("IB", IA__BehaviorDescriptor.foo_id6y7bjZdM7v8.invoke(nodeP));
   }
+  @Test
   public void test_constructorInvocation1() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -247,6 +288,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocation2() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -255,6 +297,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocation3() throws Exception {
     // test checks that I2 constructor overrides I1 constructor 
     myProject.getModelAccess().runReadAction(new Runnable() {
@@ -264,6 +307,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocation4() throws Exception {
     // test checks that all super constructors are invoked 
     myProject.getModelAccess().runReadAction(new Runnable() {
@@ -274,6 +318,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocationDiamond() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -282,6 +327,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocationSuper1() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -290,6 +336,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_constructorInvocationSuper2() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -300,101 +347,123 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_localBehaviorCall() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0tb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.A__BehaviorDescriptor.foo_id5mnatV0hwr3.invoke(nodeA));
   }
+  @Test
   public void test_thisBehaviorCall() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0ub0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo_id5mnatV0hwZQ.invoke(nodeB));
   }
+  @Test
   public void test_thisStaticBehaviorCall() throws Exception {
     SNode nodeC = createC_a2wy8c_a0a0vb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) C__BehaviorDescriptor.foo_id5mnatV0hxLf.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeC))));
   }
+  @Test
   public void test_virtualStaticBehaviorCall1() throws Exception {
     SConcept conceptC = CONCEPTS.C$bZ;
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, C__BehaviorDescriptor.virtual_id47lrFSh1$Ca.invoke(SNodeOperations.asSConcept(conceptC)));
     conceptC = CONCEPTS.E$KD;
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, C__BehaviorDescriptor.virtual_id47lrFSh1$Ca.invoke(SNodeOperations.asSConcept(conceptC)));
   }
+  @Test
   public void test_virtualStaticBehaviorCall2() throws Exception {
     SConcept conceptC = CONCEPTS.C$bZ;
     Assert.assertSame(TestResults.POLYMORPHIC_PARENT, C__BehaviorDescriptor.nonVirtual_id7zO8mNAVkj1.invoke(SNodeOperations.asSConcept(conceptC)));
     conceptC = CONCEPTS.E$KD;
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, C__BehaviorDescriptor.nonVirtual_id7zO8mNAVkj1.invoke(SNodeOperations.asSConcept(conceptC)));
   }
+  @Test
   public void test_superBehaviorCall() throws Exception {
     SNode nodeD = createD_a2wy8c_a0a0yb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) D__BehaviorDescriptor.foo_id5mnatV0hyg4.invoke(nodeD));
   }
+  @Test
   public void test_superBehaviorVirtualCall() throws Exception {
     SNode nodeB = createD_a2wy8c_a0a0zb0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo1_id5jWiLvujSmw.invoke(nodeB));
   }
+  @Test
   public void test_superThisVirtualBehaviorCall() throws Exception {
     SNode nodeB = createD_a2wy8c_a0a0ac0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo2_id5jWiLvujSzJ.invoke(nodeB));
   }
+  @Test
   public void test_superBehaviorOneArgumentNullCall() throws Exception {
     // against wrong varargs treatment 
     SNode nodeB = createD_a2wy8c_a0b0bc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo4_id1olXtyGAKpB.invoke(nodeB));
   }
+  @Test
   public void test_superPrivateMethodVirtualCall() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0cc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo5_id1olXtyGAKsY.invoke(nodeB));
     SNode nodeD = createD_a2wy8c_a0c0cc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL6.behavior.B__BehaviorDescriptor.foo5_id1olXtyGAKsY.invoke(nodeD));
   }
+  @Test
   public void test_superResolving1() throws Exception {
     SNode nodeB = createH_a2wy8c_a0a0dc0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, BHL6.behavior.B__BehaviorDescriptor.foo6_id186XXh$CxOf.invoke(nodeB));
     SNode nodeD = createH_a2wy8c_a0c0dc0();
     Assert.assertSame(TestResults.POLYMORPHIC_CHILD, BHL6.behavior.B__BehaviorDescriptor.foo6_id186XXh$CxOf.invoke(nodeD));
   }
+  @Test
   public void test_superResolving2() throws Exception {
     SNode nodeI = createJ_a2wy8c_a0a0ec0();
     Assert.assertSame("I2", BHL6.behavior.I__BehaviorDescriptor.foo_idyOqIWcnDrn.invoke(nodeI));
   }
+  @Test
   public void test_superResolving3() throws Exception {
     SNode nodeI = createJ_a2wy8c_a0a0fc0();
     Assert.assertSame("I", BHL6.behavior.I__BehaviorDescriptor.bar_id43RsG_ymtGN.invoke(nodeI));
   }
+  @Test
   public void test_superStaticBehaviorCall() throws Exception {
     SNode nodeE = createE_a2wy8c_a0a0gc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) E__BehaviorDescriptor.foo_id5mnatV0hyuN.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeE))));
   }
+  @Test
   public void test_primitiveMethodReturnType() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0hc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.B__BehaviorDescriptor.primitiveReturnValue_id4Rfm9LCctz9.invoke(nodeB));
   }
+  @Test
   public void test_primitiveParameterPass() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0ic0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.B__BehaviorDescriptor.primitiveParameter_id7zO8mNAVjjo.invoke(nodeB, ((int) 1), ((boolean) false), ((double) 1.)));
   }
+  @Test
   public void test_nonPrimitiveNullParameterPass() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0jc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.B__BehaviorDescriptor.nonPrimitiveParameter_id4Tk5Y39EB1$.invoke(nodeB, null));
   }
+  @Test
   public void test_genericMethodReturnType() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0kc0();
     Assert.assertSame(Integer.class, BHL7.behavior.B__BehaviorDescriptor.genericReturnValue_id4Rfm9LCcu90.invoke(nodeB));
   }
+  @Test
   public void test_voidMethod() throws Exception {
     SNode nodeB = createB_a2wy8c_a0a0lc0();
     BHL7.behavior.A__BehaviorDescriptor.justVoidReturnTypeMethod1_id5mnatV0hB9t.invoke(nodeB);
   }
+  @Test
   public void test_parameterTypes() throws Exception {
     SNode nodeC = createC_a2wy8c_a0a0mc0();
     Assert.assertSame(TestResults.NOT_SPECIFIED_RETURN_VALUE, (int) BHL7.behavior.C__BehaviorDescriptor.argTypeResolve_id1hQsMcvxKXP.invoke(nodeC, new Integer(1)));
     Assert.assertSame(TestResults.SPECIFIED_RETURN_VALUE, (int) BHL7.behavior.C__BehaviorDescriptor.argTypeResolve_id1hQsMcvxKQo.invoke(nodeC, new Integer(1)));
   }
+  @Test
   public void test_twoVirtualMethodsWithTheSameName() throws Exception {
     SNode node1 = createH_a2wy8c_a0a0nc0();
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) H__BehaviorDescriptor.foo_id3DBjXYFZcwm.invoke(node1));
     Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE + 1, (int) H__BehaviorDescriptor.foo_id3DBjXYFZcwx.invoke(node1));
   }
+  @Test
   public void test_methodOverrideWithTheSameName1() throws Exception {
     // this and the next tests check current behavior to be able to resolve the method calls with identical signature 
     SNode node1 = createD_a2wy8c_a0b0oc0();
@@ -402,6 +471,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     SNode node2 = createD_a2wy8c_a0d0oc0();
     Assert.assertSame(2, (int) I2__BehaviorDescriptor.foo_id5ivDaCiFPaC.invoke(node2));
   }
+  @Test
   public void test_methodOverrideWithTheSameName2() throws Exception {
     SNode nodeF = createF_a2wy8c_a0a0pc0();
     Assert.assertSame(1, (int) BHL7.behavior.I1__BehaviorDescriptor.foo_id5ivDaCiFP9X.invoke(nodeF));
@@ -411,11 +481,13 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     SNode nodeG2 = createG_a2wy8c_a0f0pc0();
     Assert.assertSame(2, (int) I2__BehaviorDescriptor.foo_id5ivDaCiFPaC.invoke(nodeG2));
   }
+  @Test
   public void test_twoEqualMethodOverriding() throws Exception {
     SNode node3 = createE_a2wy8c_a0a0qc0();
     Assert.assertSame(2, (int) BHL7.behavior.I3__BehaviorDescriptor.foo_id12MCENn4RcU.invoke(node3));
     Assert.assertSame(1, (int) BHL7.behavior.I3__BehaviorDescriptor.foo_id12MCENn4Rd5.invoke(node3));
   }
+  @Test
   public void test_conceptConstruction() throws Exception {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -431,6 +503,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
       }
     });
   }
+  @Test
   public void test_methodResolving() throws Exception {
     SNode nodeC = createC_a2wy8c_a0a0sc0();
     SNode nodeB = createB_a2wy8c_a0b0sc0();
@@ -443,10 +516,12 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     Assert.assertSame(3, K__BehaviorDescriptor.foo_id6r9lTJu8BNQ.invoke(nodeK, nodeB));
     Assert.assertSame(3, K__BehaviorDescriptor.foo_id6r9lTJu8BNQ.invoke(nodeK, nodeA));
   }
+  @Test
   public void test_booleanMethodCall1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0tc0();
     Assert.assertSame(true, (boolean) BHL7.behavior.A__BehaviorDescriptor.boolMethod1_id2eC$PxWCtoT.invoke(nodeA));
   }
+  @Test
   public void test_booleanMethodCall2() throws Exception {
     final SNode nodeA = createA_a2wy8c_a0a0uc0();
     boolean boolMethod2 = new _FunctionTypes._return_P0_E0<Boolean>() {
@@ -456,6 +531,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     }.invoke();
     Assert.assertSame(true, boolMethod2);
   }
+  @Test
   public void test_seqMethodCall() throws Exception {
     final SNode nodeA = createA_a2wy8c_a0a0vc0();
     Iterable<Boolean> seq = Sequence.fromIterable(BHL7.behavior.A__BehaviorDescriptor.seqMethod_id2eC$PxWCGmD.invoke(nodeA)).select(new ISelector<Boolean, Boolean>() {
@@ -465,19 +541,23 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     });
     Assert.assertTrue(Sequence.fromIterable(seq).isEmpty());
   }
+  @Test
   public void test_nullability1() throws Exception {
     SNode l = null;
     Assert.assertEquals(null, L__BehaviorDescriptor.bar_id6nxN9oSBS5Q.invoke(l));
     Assert.assertEquals(0, (int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(l));
   }
+  @Test
   public void test_nullability2() throws Exception {
     SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x65e1cc96389f81beL, "BHL7.structure.M"));
     Assert.assertEquals(null, L__BehaviorDescriptor.bar_id6nxN9oSBS5Q.invoke(SLinkOperations.getTarget(m, LINKS.myL$nVu2)));
     Assert.assertEquals(0, (int) L__BehaviorDescriptor.foo_id6nxN9oSBS58.invoke(SLinkOperations.getTarget(m, LINKS.myL$nVu2)));
   }
+  @Test
   public void test_seqConcept() throws Exception {
     // fix 
   }
+  @Before
   public void setUp() {
     myProject = myEnvironment.openProject(new File(PROJECT_PATH));
     // Piece of knowledge: 

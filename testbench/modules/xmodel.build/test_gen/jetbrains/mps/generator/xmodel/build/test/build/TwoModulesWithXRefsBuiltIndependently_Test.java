@@ -4,6 +4,7 @@ package jetbrains.mps.generator.xmodel.build.test.build;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
+import org.junit.Test;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
 import com.intellij.openapi.util.Key;
@@ -13,7 +14,8 @@ import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.ant.execution.Ant_Command;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
-import junit.framework.Assert;
+import org.junit.Assert;
+import org.junit.Before;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 
 /**
@@ -44,6 +46,7 @@ import jetbrains.mps.tool.environment.IdeaEnvironment;
  */
 @MPSLaunch
 public class TwoModulesWithXRefsBuiltIndependently_Test extends EnvironmentAwareTestCase {
+  @Test
   public void test_build2projects() throws Exception {
 
     try {
@@ -79,6 +82,7 @@ public class TwoModulesWithXRefsBuiltIndependently_Test extends EnvironmentAware
       Assert.fail("Exception during execution.");
     }
   }
+  @Before
   public void setUp() {
     // Need IdeaEnvironment here because ant command uses IDEA's PathMacros, not that of MPS core. 
     assert myEnvironment instanceof IdeaEnvironment;

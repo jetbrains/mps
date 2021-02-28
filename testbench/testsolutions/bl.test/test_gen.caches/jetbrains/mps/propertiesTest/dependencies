@@ -62,8 +62,8 @@
   <dependency className="jetbrains.mps.propertiesTest.PropertiesTest_Test">
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="jetbrains.mps.propertiesTest.TestClass" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
   </dependency>
   <dependency className="jetbrains.mps.propertiesTest.TestClass">
     <classNode dependClassName="java.lang.Integer" />

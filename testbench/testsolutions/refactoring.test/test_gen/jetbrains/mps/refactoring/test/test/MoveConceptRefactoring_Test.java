@@ -4,6 +4,7 @@ package jetbrains.mps.refactoring.test.test;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.junit.Test;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
@@ -18,7 +19,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SProperty;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -71,6 +72,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   private static final Logger LOG = LogManager.getLogger(MoveConceptRefactoring_Test.class);
   private static final String PROJECT_PATH = "testbench/modules/testRefactoringWithMigration/MoveConcept_MPS_27372/";
+  @Test
   public void test_moveConcept_MPS_27372() throws Exception {
     commonTest(new _FunctionTypes._void_P1_E0<List<RefactoringParticipant.Option>>() {
       public void invoke(List<RefactoringParticipant.Option> options) {
@@ -117,6 +119,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_moveConcept_MPS_27701() throws Exception {
     commonTest(new _FunctionTypes._void_P1_E0<List<RefactoringParticipant.Option>>() {
       public void invoke(List<RefactoringParticipant.Option> options) {
@@ -169,6 +172,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_moveConceptWithNotDeployedConcepts() throws Exception {
     // here we test that option 'Update local partitipants' is not shown if language is not deployed 
     // cleaning class files to make test behavior determinate: 
@@ -225,6 +229,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       LOG.info("Check finished");
     }
   }
+  @Test
   public void test_moveProperty_MPS_27700() throws Exception {
     commonTest(new _FunctionTypes._void_P1_E0<List<RefactoringParticipant.Option>>() {
       public void invoke(List<RefactoringParticipant.Option> options) {
@@ -273,6 +278,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_moveEnumProperty() throws Exception {
     commonTest(new _FunctionTypes._void_P1_E0<List<RefactoringParticipant.Option>>() {
       public void invoke(List<RefactoringParticipant.Option> options) {
@@ -321,6 +327,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     });
   }
+  @Test
   public void test_movedConceptHasCompletion_MPS27494() throws Exception {
     commonTest(new _FunctionTypes._void_P1_E0<List<RefactoringParticipant.Option>>() {
       public void invoke(List<RefactoringParticipant.Option> options) {
