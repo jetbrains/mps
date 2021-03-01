@@ -19,6 +19,7 @@ import org.jetbrains.org.objectweb.asm.Opcodes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import java.util.List;
+import java.util.Collections;
 import java.util.ArrayList;
 import jetbrains.mps.java.stub.ReferenceFactory;
 import java.util.function.Function;
@@ -120,9 +121,12 @@ public class ClassifierLoader {
 
   private Iterable<ClassifierLoader> getInnerClassifiers(ASMClass ac) {
     List<InnerClassNode> innerClasses = ac.getInnerClasses();
+    if (innerClasses.isEmpty()) {
+      return Collections.emptyList();
+    }
     String outerName = myClassReader.getClassName();
     IFile parent = myFile.getParent();
-    ArrayList<ClassifierLoader> rv = new ArrayList<ClassifierLoader>();
+    ArrayList<ClassifierLoader> rv = new ArrayList<ClassifierLoader>(innerClasses.size());
     for (InnerClassNode cn : innerClasses) {
       String name = cn.name;
       if (name == null) {
