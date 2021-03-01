@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class FontFamilySimpleTest_Test extends BaseTransformationTest {

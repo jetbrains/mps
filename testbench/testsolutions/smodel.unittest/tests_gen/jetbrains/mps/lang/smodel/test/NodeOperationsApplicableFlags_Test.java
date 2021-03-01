@@ -20,7 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;

@@ -30,7 +30,7 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.UnitTestProcessListe
 import java.util.concurrent.CountDownLatch;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.concurrent.TimeUnit;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.FakeProcess;
 import com.intellij.execution.ExecutionException;

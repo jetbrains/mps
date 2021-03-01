@@ -13,7 +13,7 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.Set;
 import jetbrains.mps.testActions.util.FlyingActionsFinder;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class ActionsTest_Test extends BaseTransformationTest {

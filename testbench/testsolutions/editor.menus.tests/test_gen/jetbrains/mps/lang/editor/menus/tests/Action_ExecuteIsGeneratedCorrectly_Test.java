@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.testLanguage.editor.ActionExecuteTestHelper;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class Action_ExecuteIsGeneratedCorrectly_Test extends BaseTransformationTest {

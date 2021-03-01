@@ -12,7 +12,7 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.image.BufferedImage;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.io.IOException;
 
 @MPSLaunch

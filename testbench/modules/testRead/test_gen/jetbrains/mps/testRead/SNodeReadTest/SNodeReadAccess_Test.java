@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.Set;
 import java.util.List;
 import jetbrains.mps.util.CollectionUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;

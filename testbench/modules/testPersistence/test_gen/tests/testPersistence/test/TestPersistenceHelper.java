@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.List;
 import java.util.Comparator;
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ package jetbrains.mps.lang.editor.menus.tests;
 
 import jetbrains.mps.openapi.editor.EditorComponent;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class UsedLanguagesUtils {
   public static void assertLanguageUsed(final EditorComponent editorComponent, final SLanguage language) {

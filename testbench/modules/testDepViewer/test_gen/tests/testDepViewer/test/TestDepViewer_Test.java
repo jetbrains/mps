@@ -12,7 +12,7 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SModel;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.ide.platform.dependencyViewer.DependencyViewerScope;
 import jetbrains.mps.ide.platform.dependencyViewer.ReferencesFinder;
 import jetbrains.mps.ide.findusages.model.SearchResults;

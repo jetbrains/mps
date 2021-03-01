@@ -12,7 +12,7 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodRefactoring;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class CheckVisibility_Test extends BaseTransformationTest {

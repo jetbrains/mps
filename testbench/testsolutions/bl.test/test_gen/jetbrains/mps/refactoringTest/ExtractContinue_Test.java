@@ -17,7 +17,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoring;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodWithExitPoints;
 import java.util.List;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;

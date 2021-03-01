@@ -17,7 +17,7 @@ import jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl;
 import java.util.Collections;
 import jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId;
 import jetbrains.mps.lang.dataFlow.framework.Program;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Arrays;

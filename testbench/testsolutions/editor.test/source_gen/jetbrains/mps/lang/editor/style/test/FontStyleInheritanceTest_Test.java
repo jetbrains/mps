@@ -12,7 +12,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.Font;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class FontStyleInheritanceTest_Test extends BaseTransformationTest {

@@ -14,7 +14,7 @@ import org.jetbrains.ide.BuiltInServerManager;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.ide.httpsupport.tests.plugin.PingStorage;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.net.URL;
 import java.net.HttpURLConnection;
 import java.io.BufferedReader;

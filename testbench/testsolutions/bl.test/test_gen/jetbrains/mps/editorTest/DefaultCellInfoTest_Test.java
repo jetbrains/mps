@@ -13,7 +13,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.InspectorTool;
 import java.util.Set;
 import jetbrains.mps.nodeEditor.cells.EditorCell;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class DefaultCellInfoTest_Test extends BaseTransformationTest {

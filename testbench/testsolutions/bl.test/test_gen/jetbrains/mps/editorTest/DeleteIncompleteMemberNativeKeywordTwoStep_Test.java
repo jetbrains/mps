@@ -10,7 +10,7 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class DeleteIncompleteMemberNativeKeywordTwoStep_Test extends BaseTransformationTest {

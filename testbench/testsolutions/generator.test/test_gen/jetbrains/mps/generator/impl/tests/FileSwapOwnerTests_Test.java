@@ -16,7 +16,7 @@ import jetbrains.mps.generator.impl.cache.FileSwapOwner;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import java.io.IOException;
 import java.util.Map;
@@ -100,7 +100,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
         }
       } catch (IOException e) {
         e.printStackTrace();
-        org.junit.Assert.fail(e.getMessage());
+        Assert.fail(e.getMessage());
       }
     }
     public void test_stringUserObjects() throws Exception {
@@ -206,7 +206,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
         }
       } catch (IOException e) {
         e.printStackTrace();
-        org.junit.Assert.fail(e.getMessage());
+        Assert.fail(e.getMessage());
       }
     }
     public void testUserObjectsSaving(Map<Object, Object> userObjects) {

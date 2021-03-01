@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodParameter;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class FindInputVariables_Test extends BaseTransformationTest {

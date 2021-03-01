@@ -9,7 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class SubstituteMenuReference_CantReplaceWithQueryInTransformationContribution_Test extends BaseTransformationTest {

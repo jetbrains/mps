@@ -28,7 +28,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.execution.impl.configurations.tests.commands.CheckTestStateListener;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.UnitTestProcessListener;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
-import junit.framework.Assert;
+import org.junit.Assert;
 import com.intellij.execution.ExecutionException;
 
 @MPSLaunch

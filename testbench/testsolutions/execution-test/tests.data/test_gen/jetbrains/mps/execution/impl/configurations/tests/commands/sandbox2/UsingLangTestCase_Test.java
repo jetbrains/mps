@@ -12,7 +12,7 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import testLangWithRT.runtime.SystemOutInvocator;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class UsingLangTestCase_Test extends BaseTransformationTest {

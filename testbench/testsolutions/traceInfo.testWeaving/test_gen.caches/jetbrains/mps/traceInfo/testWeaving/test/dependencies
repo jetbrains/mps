@@ -14,10 +14,10 @@
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.DebugInfo" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.DefaultTraceInfoProvider" />
-    <classNode dependClassName="junit.framework.Assert" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
+    <classNode dependClassName="org.junit.Assert" />
   </dependency>
   <dependency className="jetbrains.mps.traceInfo.testWeaving.test.TestWeaving_Test">
     <classNode dependClassName="java.lang.Exception" />

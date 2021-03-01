@@ -17,7 +17,7 @@ import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;

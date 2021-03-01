@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Objects;
 import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.ReadingPropertyBTestCase_Test;
 
