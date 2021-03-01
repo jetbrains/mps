@@ -304,7 +304,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
       }
     }, false);
-    junit.framework.Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupChange && ((NodeGroupChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
+    Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupChange && ((NodeGroupChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
   }
 
   @Test
@@ -314,7 +314,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
       }
     }, true);
-    junit.framework.Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupNotMoveChange && ((NodeGroupNotMoveChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
+    Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupNotMoveChange && ((NodeGroupNotMoveChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
   }
 
   @Test

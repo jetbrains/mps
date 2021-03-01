@@ -15,7 +15,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 import jetbrains.mps.lang.editor.menus.extras.runtime.PluginActionMenuItemBase;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test extends BaseTransformationTest {

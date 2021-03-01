@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Set;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
 import jetbrains.mps.internal.collections.runtime.SetSequence;

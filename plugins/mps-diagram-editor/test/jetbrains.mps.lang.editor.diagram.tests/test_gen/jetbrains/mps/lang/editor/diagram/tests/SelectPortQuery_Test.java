@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;

@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.test.matcher.NodeDifference;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Map;
 import jetbrains.mps.testbench.util.CachingAppender;
 import jetbrains.mps.testbench.junit.UncleanTestExecutionException;
@@ -304,7 +304,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
             for (EditorQuickFix fix : CollectionSequence.fromCollection(fixes)) {
               if (matches(quickFixNodeId, fix)) {
                 if (fixToRun != null) {
-                  org.junit.Assert.fail("More than one quick fix to run is available");
+                  Assert.fail("More than one quick fix to run is available");
                   return;
                 }
                 fixToRun = fix;
@@ -315,7 +315,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
         if (fixToRun != null) {
           fixToRun.execute(repository);
         } else {
-          org.junit.Assert.fail("QuickFix not found: " + ((quickFixNodeId == null ? "<theOneAvailable>" : quickFixNodeId)));
+          Assert.fail("QuickFix not found: " + ((quickFixNodeId == null ? "<theOneAvailable>" : quickFixNodeId)));
         }
       }
     });

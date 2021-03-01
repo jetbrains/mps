@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import jetbrains.mps.execution.api.commands.ProcessHandlerBuilder;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.process.ProcessEvent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.execution.process.ProcessAdapter;

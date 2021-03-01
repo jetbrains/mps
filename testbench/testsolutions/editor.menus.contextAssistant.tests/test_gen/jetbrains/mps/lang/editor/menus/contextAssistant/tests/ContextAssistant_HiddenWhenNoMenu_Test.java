@@ -12,7 +12,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.EditorContext;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class ContextAssistant_HiddenWhenNoMenu_Test extends BaseTransformationTest {

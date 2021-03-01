@@ -12,7 +12,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test extends BaseTransformationTest {

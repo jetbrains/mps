@@ -13,7 +13,7 @@ import jetbrains.mps.nodeEditor.EditorContext;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test extends BaseTransformationTest {

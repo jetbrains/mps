@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.List;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
-import junit.framework.Assert;
+import org.junit.Assert;
 import java.util.Objects;
 
 @MPSLaunch

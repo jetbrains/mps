@@ -13,7 +13,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.mps.nodeEditor.cells.jetpad.ConnectorCell;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ConnectorDecoratorView;
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.internal.collections.runtime.Sequence;

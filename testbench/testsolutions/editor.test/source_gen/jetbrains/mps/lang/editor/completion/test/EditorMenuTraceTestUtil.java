@@ -4,7 +4,7 @@ package jetbrains.mps.lang.editor.completion.test;
 
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import java.util.Objects;
 

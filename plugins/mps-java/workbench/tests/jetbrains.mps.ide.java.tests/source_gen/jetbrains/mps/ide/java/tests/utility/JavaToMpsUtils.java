@@ -11,7 +11,7 @@ import jetbrains.mps.java.core.newparser.JavaParser;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import java.util.List;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;

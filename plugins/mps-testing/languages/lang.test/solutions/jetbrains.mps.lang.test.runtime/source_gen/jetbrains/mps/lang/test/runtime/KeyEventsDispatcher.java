@@ -16,7 +16,7 @@ import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.lang.reflect.Method;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import javax.swing.JComponent;

@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class SelectDiagram_Test extends BaseTransformationTest {

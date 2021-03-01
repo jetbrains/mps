@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.jetpad.mapper.Mapper;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.ConnectorDecoratorView;
 
 @MPSLaunch

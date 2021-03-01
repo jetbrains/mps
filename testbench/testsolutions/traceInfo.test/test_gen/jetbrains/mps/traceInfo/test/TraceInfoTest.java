@@ -14,7 +14,7 @@ import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
 import org.junit.After;
 import org.junit.Test;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.textgen.trace.TraceInfo;
 import java.util.function.Predicate;

@@ -12,7 +12,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
 import java.util.Set;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @MPSLaunch

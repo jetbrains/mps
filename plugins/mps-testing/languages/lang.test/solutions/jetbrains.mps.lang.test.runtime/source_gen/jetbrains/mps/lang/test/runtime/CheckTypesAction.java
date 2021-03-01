@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.behavior.NodeTypeCheckingAction;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import java.util.Collection;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 
 public abstract class CheckTypesAction {

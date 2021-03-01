@@ -21,7 +21,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuConte
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransformationTest {

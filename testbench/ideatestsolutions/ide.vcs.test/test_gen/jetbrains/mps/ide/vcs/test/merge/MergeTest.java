@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
@@ -405,7 +405,7 @@ public class MergeTest extends ChangesTestBase {
 
     final MergeSession session = MergeSession.createMergeSession(myBaseModel, myMineModel, myTheirsModel);
 
-    org.junit.Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all(new IWhereFilter<ModelChange>() {
+    Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange c) {
         return Sequence.fromIterable(session.getConflictedWith(c)).isEmpty();
       }
@@ -414,7 +414,7 @@ public class MergeTest extends ChangesTestBase {
     session.applyChanges(Sequence.fromIterable(session.getAllChanges()).toListSequence());
     ModelChangeSet changes = ChangeSetBuilder.buildChangeSet(expectedModel, session.getResultModel());
 
-    org.junit.Assert.assertTrue(dumpChangeSet(changes, session), ListSequence.fromList(changes.getModelChanges()).isEmpty());
+    Assert.assertTrue(dumpChangeSet(changes, session), ListSequence.fromList(changes.getModelChanges()).isEmpty());
   }
 
   private void testMergeNoConflictingChanges(_FunctionTypes._void_P0_E0 change) {

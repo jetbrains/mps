@@ -13,7 +13,7 @@ import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import java.util.Set;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.internal.collections.runtime.ListSequence;

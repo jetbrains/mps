@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import java.util.Set;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @MPSLaunch

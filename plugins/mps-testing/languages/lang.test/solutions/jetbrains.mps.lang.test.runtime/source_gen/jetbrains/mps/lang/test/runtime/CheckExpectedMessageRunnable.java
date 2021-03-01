@@ -12,7 +12,7 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.test.behavior.NodeRuleReference;
 import jetbrains.mps.lang.test.behavior.RuleType;

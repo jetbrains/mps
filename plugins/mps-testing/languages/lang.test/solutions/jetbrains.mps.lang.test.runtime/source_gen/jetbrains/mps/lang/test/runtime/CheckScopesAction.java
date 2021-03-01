@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;

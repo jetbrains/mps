@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
-import junit.framework.Assert;
+import org.junit.Assert;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.nodeEditor.cellMenu.EditorMenuItemStyleImpl;
 import java.util.Objects;

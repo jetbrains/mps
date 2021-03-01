@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.nodeEditor.menus.transformation.DefaultTransformationMenuContext;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItem;
 import jetbrains.mps.lang.editor.menus.extras.runtime.RefactoringMenuItemBase;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @MPSLaunch
 public class RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute_Test extends BaseTransformationTest {
