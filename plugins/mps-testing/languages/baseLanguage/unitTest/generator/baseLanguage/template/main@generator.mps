@@ -23,6 +23,7 @@
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
         <property id="5279705229678483899" name="value" index="2$xPTl" />
       </concept>
@@ -1509,8 +1510,8 @@
       </node>
     </node>
     <node concept="gft3U" id="1xA5AX3YL3z" role="jxRDz">
-      <node concept="2VYdi" id="1xA5AX3YL3_" role="gfFT$">
-        <node concept="37f9Lt" id="1xA5AX3YL4n" role="lGtFl" />
+      <node concept="2tJIrI" id="7CAVoZg0xFT" role="gfFT$">
+        <node concept="37f9Lt" id="7CAVoZg0xFZ" role="lGtFl" />
       </node>
     </node>
   </node>
