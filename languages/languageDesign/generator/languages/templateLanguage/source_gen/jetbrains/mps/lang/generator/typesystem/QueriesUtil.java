@@ -13,6 +13,7 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Iterator;
@@ -24,8 +25,10 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class QueriesUtil {
   public QueriesUtil() {
@@ -100,6 +103,11 @@ public class QueriesUtil {
           return false;
         }
         if (SNodeOperations.isInstanceOf(it, CONCEPTS.TemplateCallMacro$qa) && (SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TemplateCallMacro$qa), LINKS.sourceNodeQuery$r9Sk) == null)) {
+          return false;
+        }
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.ITemplateCall$ab) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ITemplateCall$ab), LINKS.template$6_6), PROPS.needCallSite$fSr_)) {
+          // if we are inside a macro nested under CALL/SWITCH that passes CALL-SITE value, we 
+          // are likely evaluating the value, and need not to look at CALL/SWTICH input node 
           return false;
         }
         return true;
@@ -288,6 +296,7 @@ __switch__:
     /*package*/ static final SConcept SourceSubstituteMacro$Uv = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro");
     /*package*/ static final SConcept TemplateSwitchMacro$3G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, "jetbrains.mps.lang.generator.structure.TemplateSwitchMacro");
     /*package*/ static final SConcept TemplateCallMacro$qa = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14f7f8a311b8f14fL, "jetbrains.mps.lang.generator.structure.TemplateCallMacro");
+    /*package*/ static final SInterfaceConcept ITemplateCall$ab = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
     /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
     /*package*/ static final SConcept SNodeListType$Qe = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, "jetbrains.mps.lang.smodel.structure.SNodeListType");
     /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
@@ -300,7 +309,12 @@ __switch__:
     /*package*/ static final SContainmentLink alternativeConsequence$5VBt = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047c1472deL, 0x1163aea5803L, "alternativeConsequence");
     /*package*/ static final SContainmentLink sourceNodeQuery$eJXb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, 0xda3dc6e5174759eL, "sourceNodeQuery");
     /*package*/ static final SContainmentLink sourceNodeQuery$r9Sk = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14f7f8a311b8f14fL, 0x14f7f8a311b93f35L, "sourceNodeQuery");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
     /*package*/ static final SReferenceLink elementConcept$hlru = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, 0x10aae27c421L, "elementConcept");
     /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty needCallSite$fSr_ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0x18ecef336962ae09L, "needCallSite");
   }
 }
