@@ -159,7 +159,7 @@ final class JdkToolCompilerFacade implements JavaCompiler {
           if (source instanceof JavaFO) {
             final String fqName = ((JavaFO) source).myJavaFile.getClassName();
             output.add(new ClassFileImpl(fqName, null, true));
-            myErrorSink.compileError(fqName, d.getMessage(null), (int) d.getPosition(), (int) d.getLineNumber());
+            myErrorSink.compileError(fqName, d.getMessage(null), (int) d.getLineNumber(), (int) d.getPosition());
           } else {
             // it's odd, but I've seen "class com.sun.tools.javac.file.PathFileObject$JarFileObject cannot be cast
             //    to class jetbrains.mps.make.JdkToolCompilerFacade$JavaFO"

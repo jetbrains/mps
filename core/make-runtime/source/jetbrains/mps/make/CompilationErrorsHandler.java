@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 public class CompilationErrorsHandler implements ErrorSink {
   private final static int MAX_ERRORS = 100;
   private final static String FATAL_ERROR_MSG = "Fatal error during eclipse compilation: %s";
-  private final static String ERROR_FORMAT_STRING = "%s (line: %d)";
+  private final static String ERROR_FORMAT_STRING = "%s (%s:%d)";
 
   private final ModulesContainer myModulesContainer;
   private final MessageSender mySender;
@@ -41,7 +41,7 @@ public class CompilationErrorsHandler implements ErrorSink {
 
     Object hintObject = new FileWithPosition(javaFile.getFile(), offset);
 
-    String errMsg = String.format(ERROR_FORMAT_STRING, message, lineNumber );
+    String errMsg = String.format(ERROR_FORMAT_STRING, message, javaFile.getFile().getName(), lineNumber );
     if (myErrorTracker.errorsBelowLimit()) {
       myErrorTracker.incErrCnt();
       mySender.error(errMsg, hintObject);
