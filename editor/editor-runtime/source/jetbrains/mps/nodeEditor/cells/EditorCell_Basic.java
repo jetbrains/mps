@@ -112,6 +112,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   private boolean myIsNeedRelayout = true;
   private boolean myBig;
   private EditorCellContext myCellContext;
+  private String myCommandGroupId;
 
   /**
    * {@link Entry} fields
@@ -227,6 +228,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   public final void setSNode(@NotNull SNode node) {
     myNode = node;
     myNodeId = node.getNodeId();
+    updateCommandGroupId();
   }
 
   @NotNull
@@ -339,11 +341,20 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   public void setCellId(@NotNull String cellId) {
     assert myCellId == null;
     myCellId = cellId;
+    updateCommandGroupId();
   }
 
   @Override
   public String getCellId() {
     return myCellId;
+  }
+
+  private void updateCommandGroupId() {
+    myCommandGroupId = myCellId + "_" + myNodeId;
+  }
+
+  public String getCommandGroupId() {
+    return myCommandGroupId;
   }
 
   @Deprecated

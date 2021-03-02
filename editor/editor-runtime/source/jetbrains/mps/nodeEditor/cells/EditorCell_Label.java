@@ -842,10 +842,6 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
            getText().equals(getSelectedText());
   }
 
-  public String getCommandGroupId() {
-    return getCellId() + "_" + String.valueOf(getSNodeId());
-  }
-
   private class MoveLeft extends AbstractCellAction {
     private boolean myWithSelection;
 
