@@ -106,7 +106,8 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     @Override
     public SNode getInferredType(SNode expression) {
       if (expression == null) return null;
-      return compute((tcc) -> tcc.getTypeOf(expression, TypeChecker.getInstance()));
+      return compute((tcc) ->
+             TypeChecker.getInstance().getInequalitiesForHole(expression, false).getExpectedType());
     }
 
     @Override

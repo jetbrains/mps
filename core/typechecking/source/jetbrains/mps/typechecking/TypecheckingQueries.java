@@ -44,14 +44,11 @@ public interface TypecheckingQueries {
   SNode getTypeOf(SNode expression);
 
   /**
-   * Provided for compatibility with the legacy system. Is essentially the same as {@code getType()}.
+   * Tries to infer the type for the supplied node.
    * To support the legacy contract, nullable parameter is accepted, in which case null is returned.
    */
   @Nullable
-  default SNode getInferredType(SNode expression) {
-    if (expression == null) return null;
-    return getTypeOf(expression);
-  }
+  SNode getInferredType(SNode expression);
 
   /**
    * Returns true iff the type represented by {@code typeA} can be converted to the type represented by {@code typeB}.
