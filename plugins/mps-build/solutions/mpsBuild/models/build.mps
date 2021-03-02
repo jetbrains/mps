@@ -2039,7 +2039,7 @@
       <node concept="aVJcg" id="3AMbuf1N6Pd" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1N6Pc" role="aVJcq">
           <node concept="3Mxwew" id="7PV5tcO7MHk" role="3MwsjC">
-            <property role="3MwjfP" value=".1" />
+            <property role="3MwjfP" value=".2" />
           </node>
         </node>
       </node>
