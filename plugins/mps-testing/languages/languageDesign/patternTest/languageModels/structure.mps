@@ -8,6 +8,7 @@
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpe3" ref="r:00000000-0000-4000-0000-011c895902d7(jetbrains.mps.baseLanguage.unitTest.structure)" />
+    <import index="tp5g" ref="r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -99,6 +100,9 @@
     </node>
     <node concept="PrWs8" id="7_1vIxGlwnE" role="PzmwI">
       <ref role="PrY4T" to="tpck:2WmWrdnSpX3" resolve="ISuppressErrors" />
+    </node>
+    <node concept="PrWs8" id="1ZcerrmzquW" role="PzmwI">
+      <ref role="PrY4T" to="tp5g:1Zcerrmzb_y" resolve="TestProjectAware" />
     </node>
   </node>
   <node concept="1TIwiD" id="7zmQ_SRAuGe">
