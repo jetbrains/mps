@@ -17,6 +17,7 @@
 # Intellij Idea user workspace setting files
 **/.idea/workspace.xml
 **/.mps/workspace.xml
+**/.mps/product-workspace.xml
 /build/solution/.idea/workspace.xml
 /MPSPlugin/.idea/workspace.xml
 
@@ -93,6 +94,7 @@ teamcity-info.xml
 
 # Path to log files which is overriden in run configuration to allow developers to see log output in run/debug console
 /log/
+/bin/.mps-caches/logs
 
 # Versions of library dependecies required for platform (like Kotlin, JDK etc)
 /build/dependencies
