@@ -24,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/7082523601896465910", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class NodeCopier {
@@ -81,8 +82,8 @@ public class NodeCopier {
 
   public void replaceNodeId(SNode node, SNodeId newNodeId) {
     SNodeId oldNodeId = node.getNodeId();
+    MapSequence.fromMap(myRenamedNodes).put(oldNodeId, newNodeId);
     if (myModel.getNode(newNodeId) == null) {
-      MapSequence.fromMap(myRenamedNodes).put(oldNodeId, newNodeId);
       setId(node, newNodeId);
       return;
     }
@@ -171,11 +172,10 @@ public class NodeCopier {
     });
   }
 
-  public void addRenamedNode(SNodeId sourceId, SNodeId renamedId) {
-    MapSequence.fromMap(myRenamedNodes).put(sourceId, renamedId);
-  }
-
-  public Map<SNodeId, SNodeId> getRenamedNodes() {
-    return myRenamedNodes;
+  @Nullable
+  public SNode getNode(SModel model, SNodeId nodeId) {
+    SNodeId oldOrRenamedId = (MapSequence.fromMap(myRenamedNodes).containsKey(nodeId) ? MapSequence.fromMap(myRenamedNodes).get(nodeId) : nodeId);
+    SNodeId newId = (MapSequence.fromMap(myIdReplacementCache).containsKey(oldOrRenamedId) ? MapSequence.fromMap(myIdReplacementCache).get(oldOrRenamedId) : oldOrRenamedId);
+    return (newId == null ? null : model.getNode(newId));
   }
 }

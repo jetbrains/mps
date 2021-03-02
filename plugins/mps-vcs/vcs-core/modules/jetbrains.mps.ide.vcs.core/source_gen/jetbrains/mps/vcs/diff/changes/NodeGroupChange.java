@@ -17,8 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -188,28 +186,14 @@ public class NodeGroupChange extends StructureChange {
     });
   }
 
-  private SNode getNodeOrRenamedNode(SModel model, NodeCopier nodeCopier, SNodeId nodeId) {
-    if (nodeId == null) {
-      return null;
-    }
-    SNode node = model.getNode(nodeId);
-    if ((node == null)) {
-      Map<SNodeId, SNodeId> renamedNodes = nodeCopier.getRenamedNodes();
-      if (MapSequence.fromMap(renamedNodes).containsKey(nodeId)) {
-        node = model.getNode(MapSequence.fromMap(renamedNodes).get(nodeId));
-      }
-    }
-    return node;
-  }
-
   private void insertNewNodes(@NotNull SModel model, NodeCopier nodeCopier) {
     List<SNode> nodesToAdd = Sequence.fromIterable(copyNodesToInsert(nodeCopier)).toListSequence();
     if (ListSequence.fromList(nodesToAdd).isEmpty()) {
       return;
     }
     SContainmentLink link = (SNodeOperations.isInstanceOf(ListSequence.fromList(nodesToAdd).first(), CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
-    SNode parent = getNodeOrRenamedNode(model, nodeCopier, getParentNodeId(false));
-    SNode beforAnchor = getNodeOrRenamedNode(model, nodeCopier, myBeforeAnchorId);
+    SNode parent = nodeCopier.getNode(model, getParentNodeId(false));
+    SNode beforAnchor = nodeCopier.getNode(model, myBeforeAnchorId);
     for (SNode newNode : ListSequence.fromList(nodesToAdd)) {
       parent.insertChildBefore(link, newNode, beforAnchor);
     }
