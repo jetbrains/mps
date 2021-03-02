@@ -242,6 +242,7 @@
     <classNode extendsClassName="javax.swing.JPanel" />
   </dependency>
   <dependency className="jetbrains.mps.ide.modelchecker.platform.actions.ProperGenPlanChecker">
+    <classNode dependClassName="com.intellij.openapi.util.registry.Registry" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashSet" />

@@ -66,6 +66,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="r99j" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
+    <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
     <import index="r791" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.text(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -8925,6 +8926,23 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
       <node concept="3clFbS" id="4ascWT9gdyt" role="3clF47">
+        <node concept="3clFbJ" id="1SCYqfmVJ_5" role="3cqZAp">
+          <node concept="3clFbS" id="1SCYqfmVJ_7" role="3clFbx">
+            <node concept="3cpWs6" id="1SCYqfmVMIv" role="3cqZAp" />
+          </node>
+          <node concept="3fqX7Q" id="1SCYqfmVLXu" role="3clFbw">
+            <node concept="2YIFZM" id="1SCYqfmVLXw" role="3fr31v">
+              <ref role="37wK5l" to="rfhd:~Registry.is(java.lang.String,boolean)" resolve="is" />
+              <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
+              <node concept="Xl_RD" id="1SCYqfmVLXx" role="37wK5m">
+                <property role="Xl_RC" value="mps.check.model.genplan" />
+              </node>
+              <node concept="3clFbT" id="1SCYqfmVLXy" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4ascWT9gnuS" role="3cqZAp">
           <node concept="3cpWsn" id="4ascWT9gnuT" role="3cpWs9">
             <property role="TrG5h" value="gpExt" />
