@@ -34,11 +34,11 @@ import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
 import com.intellij.openapi.vcs.changes.Change;
-import java.io.IOException;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.vcs.changes.BinaryContentRevision;
 import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.vcs.VcsException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -65,7 +65,11 @@ import java.io.OutputStream;
       return null;
     }
     final ComponentHost mpsPlatform = ProjectHelper.fromIdeaProject(myProject).getPlatform();
-    return loadModel(mpsPlatform, new RedirectingDataSource((MultiStreamDataSource) ds, myProject), guessFactory(model));
+    RedirectingDataSource source = new RedirectingDataSource((MultiStreamDataSource) ds, myProject);
+    if (source.getSubStreams().findAny().isEmpty()) {
+      return null;
+    }
+    return loadModel(mpsPlatform, source, guessFactory(model));
   }
 
   private static SModel loadModel(ComponentHost mpsPlatform, @NotNull DataSource source, @Nullable ModelFactory factory) {
@@ -114,10 +118,16 @@ import java.io.OutputStream;
               @Override
               public StreamDataSource apply(IFile file) {
                 if (!(file.exists())) {
+                  if (LOG.isEnabledFor(Level.WARN)) {
+                    LOG.warn("The file " + file + " does not exist");
+                  }
                   return null;
                 }
                 VirtualFile vFile = VirtualFileUtils.getProjectVirtualFile(file);
                 if (vFile == null) {
+                  if (LOG.isEnabledFor(Level.WARN)) {
+                    LOG.warn("The vfile " + vFile + " is null");
+                  }
                   return null;
                 }
                 byte[] data = getBaseVersionContent(vFile);
@@ -172,20 +182,7 @@ import java.io.OutputStream;
 
         if (change == null) {
           // no changes, use current file content 
-          try {
-            if (!(file.exists())) {
-              if (LOG.isEnabledFor(Level.WARN)) {
-                LOG.warn("file does not exist");
-              }
-              return null;
-            }
-            return file.contentsToByteArray();
-          } catch (IOException ex) {
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("IOException during getting base version content of file " + file.getPath(), ex);
-            }
-            return null;
-          }
+          return loadCurrentFile(file);
         }
 
         ContentRevision beforeRevision = change.getBeforeRevision();
@@ -193,7 +190,7 @@ import java.io.OutputStream;
           if (LOG.isEnabledFor(Level.WARN)) {
             LOG.warn("before revision is null for " + file);
           }
-          return null;
+          return loadCurrentFile(file);
         }
         if (beforeRevision instanceof BinaryContentRevision) {
           return ((BinaryContentRevision) beforeRevision).getBinaryContent();
@@ -203,13 +200,30 @@ import java.io.OutputStream;
             if (LOG.isEnabledFor(Level.WARN)) {
               LOG.warn("content for before revision is null");
             }
-            return null;
+            return loadCurrentFile(file);
           }
           return content.getBytes(FileUtil.DEFAULT_CHARSET);
         }
       } catch (VcsException ex) {
         if (LOG.isEnabledFor(Level.WARN)) {
           LOG.warn("VcsException during getting base version content of file " + file.getPath(), ex);
+        }
+        return loadCurrentFile(file);
+      }
+    }
+
+    private byte[] loadCurrentFile(VirtualFile file) {
+      try {
+        if (!(file.exists())) {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("file does not exist");
+          }
+          return null;
+        }
+        return file.contentsToByteArray();
+      } catch (IOException ex) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("IOException during getting base version content of file " + file.getPath(), ex);
         }
         return null;
       }
