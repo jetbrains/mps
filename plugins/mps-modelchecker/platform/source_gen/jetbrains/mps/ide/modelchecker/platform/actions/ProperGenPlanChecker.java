@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import com.intellij.openapi.util.registry.Registry;
 import jetbrains.mps.generator.GenPlanExtractor;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.generator.ModelGenerationPlan;
@@ -37,6 +38,9 @@ public class ProperGenPlanChecker extends SpecificChecker {
 
   @Override
   public void check(SModel toCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
+    if (!(Registry.is("mps.check.model.genplan", true))) {
+      return;
+    }
     GenPlanExtractor gpExt = new GenPlanExtractor(repository, null);
     if (!(gpExt.hasPlan(toCheck))) {
       return;

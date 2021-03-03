@@ -419,6 +419,9 @@
     <node concept="PrWs8" id="hHqtyfE" role="PzmwI">
       <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
+    <node concept="PrWs8" id="1ZcerrmzquJ" role="PzmwI">
+      <ref role="PrY4T" node="1Zcerrmzb_y" resolve="TestProjectAware" />
+    </node>
     <node concept="PrWs8" id="2deFRo6cC4S" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEv0ln" resolve="ImplementationPart" />
     </node>
@@ -658,6 +661,9 @@
     </node>
     <node concept="PrWs8" id="54ZfFHb0Nwm" role="PzmwI">
       <ref role="PrY4T" to="tpee:i2fhoOR" resolve="IMethodLike" />
+    </node>
+    <node concept="PrWs8" id="1Zcerrmzg6Y" role="PzmwI">
+      <ref role="PrY4T" node="1Zcerrmzb_y" resolve="TestProjectAware" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSv" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/nodesTest.png" />
@@ -1339,6 +1345,9 @@
     <node concept="PrWs8" id="4K12N3pJAkq" role="PzmwI">
       <ref role="PrY4T" to="tpe3:hGBgSCX" resolve="ITestMethod" />
     </node>
+    <node concept="PrWs8" id="1Zcerrmzg7C" role="PzmwI">
+      <ref role="PrY4T" node="1Zcerrmzb_y" resolve="TestProjectAware" />
+    </node>
     <node concept="PrWs8" id="4K12N3pJ$JH" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEv0ln" resolve="ImplementationPart" />
     </node>
@@ -1549,6 +1558,10 @@
       <property role="20kJfa" value="quickfix" />
       <ref role="20lvS9" to="tpd4:hBCnwce" resolve="TypesystemIntention" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="1Zcerrmzb_y">
+    <property role="EcuMT" value="2291269767871117666" />
+    <property role="TrG5h" value="TestProjectAware" />
   </node>
 </model>
 

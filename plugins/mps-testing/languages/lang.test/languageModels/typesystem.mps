@@ -577,12 +577,39 @@
             </node>
             <node concept="1v1jN8" id="2WVu3RsDKWh" role="2OqNvi" />
           </node>
-          <node concept="2OqwBi" id="1mwpTqNMB61" role="3uHU7B">
-            <node concept="1YBJjd" id="1mwpTqNMIY8" role="2Oq$k0">
-              <ref role="1YBMHb" node="1mwpTqNMIW1" resolve="iTestCase" />
+          <node concept="1Wc70l" id="1Zcerrmzf9n" role="3uHU7B">
+            <node concept="2OqwBi" id="1ZcerrmzfM8" role="3uHU7w">
+              <node concept="1PxgMI" id="1ZcerrmzfrU" role="2Oq$k0">
+                <node concept="chp4Y" id="1ZcerrmzfxB" role="3oSUPX">
+                  <ref role="cht4Q" to="tp5g:1Zcerrmzb_y" resolve="TestProjectAware" />
+                </node>
+                <node concept="1YBJjd" id="1ZcerrmzfgZ" role="1m5AlR">
+                  <ref role="1YBMHb" node="1mwpTqNMIW1" resolve="iTestCase" />
+                </node>
+              </node>
+              <node concept="2qgKlT" id="1ZcerrmzfVX" role="2OqNvi">
+                <ref role="37wK5l" to="tp5o:1Zcerrmz81D" resolve="requiresTestInfo" />
+              </node>
             </node>
-            <node concept="2qgKlT" id="1mwpTqNMITU" role="2OqNvi">
-              <ref role="37wK5l" to="tpe5:2RMg39tmiFh" resolve="isMpsStartRequired" />
+            <node concept="1Wc70l" id="1Zcerrmz8Vp" role="3uHU7B">
+              <node concept="2OqwBi" id="1mwpTqNMB61" role="3uHU7B">
+                <node concept="1YBJjd" id="1mwpTqNMIY8" role="2Oq$k0">
+                  <ref role="1YBMHb" node="1mwpTqNMIW1" resolve="iTestCase" />
+                </node>
+                <node concept="2qgKlT" id="1mwpTqNMITU" role="2OqNvi">
+                  <ref role="37wK5l" to="tpe5:2RMg39tmiFh" resolve="isMpsStartRequired" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="1ZcerrmzeJN" role="3uHU7w">
+                <node concept="1YBJjd" id="1Zcerrmzb6b" role="2Oq$k0">
+                  <ref role="1YBMHb" node="1mwpTqNMIW1" resolve="iTestCase" />
+                </node>
+                <node concept="1mIQ4w" id="1Zcerrmzf1w" role="2OqNvi">
+                  <node concept="chp4Y" id="1Zcerrmzf3f" role="cj9EA">
+                    <ref role="cht4Q" to="tp5g:1Zcerrmzb_y" resolve="TestProjectAware" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
