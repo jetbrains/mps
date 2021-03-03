@@ -156,8 +156,6 @@ public class PasteHandler {
           SNodeOperations.insertNextSiblingChild(currentNode.value, wrapper);
           currentNode.value = wrapper;
         }
-
-
       }
       SelectionUtil.selectCell(editorContext, currentNode.value, SelectionManager.LAST_CELL);
     }
