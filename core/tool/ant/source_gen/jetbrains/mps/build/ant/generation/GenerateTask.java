@@ -27,8 +27,8 @@ public class GenerateTask extends MpsLoadTask {
   }
   public void addConfiguredLibrary(ModuleJarDataType jar) {
     if (jar.getManifest() != null) {
-      // FIXME same in MpsRunnerTask; have to be xml parsing 
-      // perhaps, shall pass module manifest file right into Script, and parse there? 
+      // FIXME same in MpsRunnerTask; have to be xml parsing
+      // perhaps, shall pass module manifest file right into Script, and parse there?
       try (BufferedReader br = new BufferedReader(new FileReader(jar.getManifest()))) {
         String f;
         while ((f = br.readLine()) != null) {

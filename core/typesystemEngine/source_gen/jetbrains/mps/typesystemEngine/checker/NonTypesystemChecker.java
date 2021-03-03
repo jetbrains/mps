@@ -38,7 +38,7 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
         Set<NodeReportItem> errors = SetSequence.fromSet(new HashSet<NodeReportItem>());
 
         TypecheckingQueries typecheckingQueries = session.getQueries(root);
-        // FIXME  assuming it's safe to access the underlying legacy provider 
+        // FIXME  assuming it's safe to access the underlying legacy provider
         LegacyTypecheckingQueries legacyTypecheckingQueries = session.getQueries(LegacyTypecheckingQueries.class);
         if (typecheckingQueries == null || legacyTypecheckingQueries == null) {
           return Collections.emptySet();
@@ -46,11 +46,11 @@ public class NonTypesystemChecker extends IChecker.AbstractRootChecker<NodeRepor
         TypeCheckingContext context = legacyTypecheckingQueries.getTypeCheckingContext();
         IncrementalTypechecking typesComponent = context.getBaseNodeTypesComponent();
 
-        // update the types first 
+        // update the types first
         typecheckingQueries.checkRecursively(root, new Consumer<NodeReportItem>() {
           public void accept(NodeReportItem nodeReportItem) {
             /*
-              NOP 
+              NOP
 
             */
 

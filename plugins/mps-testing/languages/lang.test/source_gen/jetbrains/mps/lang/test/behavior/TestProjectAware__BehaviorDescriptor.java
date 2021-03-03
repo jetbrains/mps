@@ -29,11 +29,11 @@ public final class TestProjectAware__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static boolean requiresTestInfo_id1Zcerrmz81D(@NotNull SNode __thisNode__) {
-    // aka requiresProject(), indicates whether code generated for the test gonna utilize 
-    // node<TestInfo> values, like project path, to configure environment.  
-    // Perhaps, this method shall live next to ITestable.isMpsStartRequired(), but as long 
-    // as the only present scenario for the method is a rule to check TestInfo presence in lang.test,  
-    // and TestInfo originates in lang.test, decided not to pollute generic notion 
+    // aka requiresProject(), indicates whether code generated for the test gonna utilize
+    // node<TestInfo> values, like project path, to configure environment. 
+    // Perhaps, this method shall live next to ITestable.isMpsStartRequired(), but as long
+    // as the only present scenario for the method is a rule to check TestInfo presence in lang.test, 
+    // and TestInfo originates in lang.test, decided not to pollute generic notion
     return true;
   }
 

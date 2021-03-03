@@ -38,7 +38,7 @@ public class BuildMpsLayout_Manifest_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // immediate child of layout, at most 1 
+    // immediate child of layout, at most 1
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildLayout$aH) && Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(parentNode), CONCEPTS.BuildMpsLayout_Manifest$yh)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(node))).isEmpty();
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "3535927011722267913");

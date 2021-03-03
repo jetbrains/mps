@@ -78,7 +78,7 @@ public class ASMClass {
       }
     }
     if (myNode.signature != null) {
-      // XXX why not part of node.signature parsing along with superclass/interfaces, above?! 
+      // XXX why not part of node.signature parsing along with superclass/interfaces, above?!
       List<ASMFormalTypeParameter> formalTypeParameters = TypeUtil.getFormalTypeParameters(myNode.signature);
       myTypeVariables = new ArrayList<ASMTypeVariable>(formalTypeParameters);
     }

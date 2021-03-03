@@ -42,12 +42,12 @@ public final class Log4jInitializer {
 
   public static void init() throws Exception {
     System.setProperty("log4j.defaultInitOverride", "true");
-    // if unspecified, try default configuration bundled with MPS, bin/log.xml 
+    // if unspecified, try default configuration bundled with MPS, bin/log.xml
     String configPath = System.getProperty("idea.log.config.file", "log.xml");
     Path configFile = Paths.get(configPath);
     if (!(configFile.isAbsolute())) {
       configFile = Paths.get(getBinPath()).resolve(configPath);
-      // look from the 'bin/' directory where log.xml used to be 
+      // look from the 'bin/' directory where log.xml used to be
     }
     if (Files.exists(configFile)) {
       configureFromXmlFile(configFile);

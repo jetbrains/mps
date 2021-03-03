@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)/5144164107073146701">
+    <file name="FindUsages_Test.java">
+      <node id="5144164107073146701" at="44,28,45,25" concept="8" />
+      <node id="5144164107073146718" at="49,64,50,55" concept="1" />
+      <node id="5144164107073146733" at="53,63,54,54" concept="1" />
+      <node id="5144164107073146701" at="59,52,60,19" concept="8" />
+      <node id="5144164107073251820" at="63,66,64,149" concept="6" />
+      <node id="5144164107073203885" at="64,149,65,38" concept="1" />
+      <node id="5144164107073337708" at="65,38,66,122" concept="6" />
+      <node id="5144164107073207330" at="66,122,67,280" concept="4" />
+      <node id="5144164107073249149" at="67,280,68,129" concept="4" />
+      <node id="5144164107073284850" at="68,129,69,50" concept="4" />
+      <node id="5144164107073406886" at="69,50,70,87" concept="6" />
+      <node id="5144164107073376030" at="70,87,71,45" concept="1" />
+      <node id="5144164107073425281" at="71,45,72,43" concept="4" />
+      <node id="5144164107073289221" at="72,43,73,44" concept="1" />
+      <node id="5144164107073300059" at="73,44,74,61" concept="1" />
+      <node id="5144164107073253535" at="76,65,77,172" concept="6" />
+      <node id="5144164107073203909" at="77,172,78,38" concept="1" />
+      <node id="5144164107073342568" at="78,38,79,24" concept="6" />
+      <node id="5144164107073253821" at="79,24,80,280" concept="4" />
+      <node id="5144164107073253838" at="80,280,81,147" concept="4" />
+      <node id="7357908728869689175" at="81,147,82,66" concept="4" />
+      <node id="5144164107073401045" at="82,66,83,29" concept="6" />
+      <node id="7357908728869715834" at="83,29,84,64" concept="6" />
+      <node id="7357908728869718406" at="84,64,85,47" concept="6" />
+      <node id="7357908728869721029" at="85,47,86,39" concept="6" />
+      <node id="7357908728869723638" at="86,39,87,32" concept="6" />
+      <node id="5144164107073404509" at="87,32,88,126" concept="6" />
+      <node id="5144164107073390610" at="88,126,89,45" concept="1" />
+      <node id="7357908728869703910" at="89,45,90,56" concept="4" />
+      <node id="7357908728869709859" at="90,56,91,73" concept="6" />
+      <node id="5144164107073305686" at="91,73,92,59" concept="1" />
+      <node id="7357908728869694551" at="92,59,93,59" concept="1" />
+      <node id="5144164107073148245" at="96,24,97,192" concept="5" />
+      <node id="5144164107073203695" at="99,24,100,192" concept="5" />
+      <node id="5144164107073265847" at="102,45,103,183" concept="4" />
+      <node id="5144164107073271020" at="107,47,108,51" concept="5" />
+      <node id="5144164107073146701" at="39,0,41,0" concept="7" trace="ourParamCache" />
+      <node id="5144164107073146701" at="41,0,43,0" concept="2" trace="myWithCommandRule" />
+      <node id="5144164107073146701" at="44,0,47,0" concept="0" trace="FindUsages_Test#()V" />
+      <node id="5144164107073146701" at="59,0,62,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5144164107073148127" at="96,0,99,0" concept="3" trace="m1#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="5144164107073203692" at="99,0,102,0" concept="3" trace="m2#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="5144164107073146718" at="48,0,52,0" concept="3" trace="test_FindLanguageConceptNodes#()V" />
+      <node id="5144164107073146733" at="52,0,56,0" concept="3" trace="test_FindLanguageModuleUsage#()V" />
+      <node id="5144164107073270340" at="105,0,110,0" concept="3" trace="getModules#()Ljava/lang/Iterable;" />
+      <node id="5144164107073266110" at="103,183,110,8" concept="5" />
+      <node id="5144164107073259811" at="102,0,112,0" concept="3" trace="getTestModuleScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="5144164107073146718" at="63,0,76,0" concept="3" trace="test_FindLanguageConceptNodes#()V" />
+      <node id="5144164107073146733" at="76,0,95,0" concept="3" trace="test_FindLanguageModuleUsage#()V" />
+      <scope id="5144164107073146701" at="44,28,45,25" />
+      <scope id="5144164107073146718" at="49,64,50,55" />
+      <scope id="5144164107073146733" at="53,63,54,54" />
+      <scope id="5144164107073146701" at="59,52,60,19" />
+      <scope id="5144164107073148127" at="96,24,97,192" />
+      <scope id="5144164107073203692" at="99,24,100,192" />
+      <scope id="5144164107073270346" at="107,47,108,51" />
+      <scope id="5144164107073146701" at="44,0,47,0" />
+      <scope id="5144164107073146701" at="59,0,62,0">
+        <var name="owner" id="5144164107073146701" />
+      </scope>
+      <scope id="5144164107073148127" at="96,0,99,0" />
+      <scope id="5144164107073203692" at="99,0,102,0" />
+      <scope id="5144164107073146718" at="48,0,52,0" />
+      <scope id="5144164107073146733" at="52,0,56,0" />
+      <scope id="5144164107073270340" at="105,0,110,0" />
+      <scope id="5144164107073259811" at="102,45,110,8">
+        <var name="testModule" id="5144164107073265848" />
+      </scope>
+      <scope id="5144164107073259811" at="102,0,112,0" />
+      <scope id="5144164107073146718" at="63,66,74,61">
+        <var name="query" id="5144164107073207329" />
+        <var name="r" id="5144164107073425282" />
+        <var name="results" id="5144164107073284851" />
+        <var name="sr" id="5144164107073249150" />
+      </scope>
+      <scope id="5144164107073146718" at="63,0,76,0" />
+      <scope id="5144164107073146733" at="76,65,93,59">
+        <var name="query" id="5144164107073253822" />
+        <var name="resultObjects" id="7357908728869703911" />
+        <var name="results" id="7357908728869689176" />
+        <var name="sr" id="5144164107073253839" />
+      </scope>
+      <scope id="5144164107073146733" at="76,0,95,0" />
+      <unit id="5144164107073270334" at="104,17,110,7" name="mps.test.findusages.FindUsages_Test$TestBody$1" />
+      <unit id="5144164107073146701" at="57,0,113,0" name="mps.test.findusages.FindUsages_Test$TestBody" />
+      <unit id="5144164107073146701" at="37,0,114,0" name="mps.test.findusages.FindUsages_Test" />
+    </file>
+  </root>
+</debug-info>
+

@@ -374,10 +374,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(DragMouseStatement__BehaviorDescriptor.getPressMouseStatement_id3CVcUJxN49_.invoke(_context.getNode()), "pressMouseY");
   }
   public static Object referenceMacro_GetReferent_3_0(final ReferenceMacroContext _context) {
-    //  FIXME have to decide if intermediate BaseTestBody class makes any sense at all 
+    //  FIXME have to decide if intermediate BaseTestBody class makes any sense at all
 
-    // In fact, could go with a regular template reference as it's 1-1 mapping, but 
-    // decided to keep this RM for the sake of fix me comment, above 
+    // In fact, could go with a regular template reference as it's 1-1 mapping, but
+    // decided to keep this RM for the sake of fix me comment, above
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "Test2Method");
   }
   public static Object referenceMacro_GetReferent_8_0(final ReferenceMacroContext _context) {
@@ -396,10 +396,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.message$SzPZ) == null);
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    // XXX at the moment, tests without write action make little sense, if they are truly tests for nodes. SimpleNodeTest adds copies 
-    // of referenced nodes, therefore BaseTestBody.addNodeById() resorts model command. Then, model checks would need model read, but we can't grab 
-    // read here at the top just not to block addNodeById (can't write from read), therefore test methods have to come up with some ugly way to obtain 
-    // model read or to always use 'runInWrite'. 
+    // XXX at the moment, tests without write action make little sense, if they are truly tests for nodes. SimpleNodeTest adds copies
+    // of referenced nodes, therefore BaseTestBody.addNodeById() resorts model command. Then, model checks would need model read, but we can't grab
+    // read here at the top just not to block addNodeById (can't write from read), therefore test methods have to come up with some ugly way to obtain
+    // model read or to always use 'runInWrite'.
     return (boolean) NodesTestCase__BehaviorDescriptor.needsWriteAction_id5vTxdEzuQjU.invoke(_context.getNode());
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {

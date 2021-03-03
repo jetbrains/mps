@@ -232,7 +232,7 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
             public void run() {
               if (shouldUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, movingNode, refactoringSession)) {
                 doUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, finalState, resolveInfo);
-                // here, containingNode might not get resolved (e.g. if it's pointer to StaticMethodCall node that has been replaced 
+                // here, containingNode might not get resolved (e.g. if it's pointer to StaticMethodCall node that has been replaced
                 if (ListSequence.fromList(selectedOptions).contains(UpdateModelImports.OPTION)) {
                   doUpdateModelImport(selectedOptions, repository, containingModel, finalState);
                 }

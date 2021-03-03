@@ -192,7 +192,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         return container != null;
       }
     } else if (artifactId instanceof LocalSourcePathArtifact) {
-      // FIXME copied from BuildLayout_Folder.exports to support 'files from' under 'plugin' layout 
+      // FIXME copied from BuildLayout_Folder.exports to support 'files from' under 'plugin' layout
       LocalSourcePathArtifact art = (LocalSourcePathArtifact) artifactId;
       if (!(art.isFolder()) || art.getRoot() != SNodeOperations.getContainingRoot(__thisNode__)) {
         return false;

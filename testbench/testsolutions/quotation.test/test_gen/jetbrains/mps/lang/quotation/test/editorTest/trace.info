@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291058222">
+    <file name="Test_CreateAntiquotation_Intention_Test.java">
+      <node id="7167051279291058222" at="19,52,20,25" concept="12" />
+      <node id="7167051279291058222" at="24,74,25,36" concept="2" />
+      <node id="7167051279291058222" at="30,52,31,19" concept="12" />
+      <node id="7167051279291058222" at="35,51,36,72" concept="2" />
+      <node id="7167051279291065237" at="36,72,37,139" concept="2" />
+      <node id="7167051279291072903" at="37,139,38,114" concept="2" />
+      <node id="6181949993339157727" at="38,114,39,105" concept="8" />
+      <node id="6181949993339157844" at="39,105,40,103" concept="8" />
+      <node id="6181949993339157565" at="40,103,41,28" concept="2" />
+      <node id="7167051279291058222" at="16,0,18,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291058222" at="19,0,22,0" concept="1" trace="Test_CreateAntiquotation_Intention_Test#()V" />
+      <node id="7167051279291058222" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291058222" at="23,0,27,0" concept="5" trace="test_Test_CreateAntiquotation_Intention#()V" />
+      <node id="7167051279291058222" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291058222" at="19,52,20,25" />
+      <scope id="7167051279291058222" at="24,74,25,36" />
+      <scope id="7167051279291058222" at="30,52,31,19" />
+      <scope id="7167051279291058222" at="19,0,22,0" />
+      <scope id="7167051279291058222" at="30,0,33,0">
+        <var name="owner" id="7167051279291058222" />
+      </scope>
+      <scope id="7167051279291058222" at="23,0,27,0" />
+      <scope id="7167051279291058222" at="35,51,41,28" />
+      <scope id="7167051279291058222" at="34,0,43,0" />
+      <unit id="7167051279291058222" at="28,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateAntiquotation_Intention_Test$TestBody" />
+      <unit id="7167051279291058222" at="14,0,45,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateAntiquotation_Intention_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291080561">
+    <file name="Test_CreateListAntiquotation_Intention_Test.java">
+      <node id="7167051279291080561" at="19,56,20,25" concept="12" />
+      <node id="7167051279291080561" at="24,78,25,36" concept="2" />
+      <node id="7167051279291080561" at="30,52,31,19" concept="12" />
+      <node id="7167051279291080561" at="35,51,36,72" concept="2" />
+      <node id="7167051279291080585" at="36,72,37,143" concept="2" />
+      <node id="7167051279291080587" at="37,143,38,118" concept="2" />
+      <node id="6181949993339158694" at="38,118,39,105" concept="8" />
+      <node id="6181949993339158696" at="39,105,40,103" concept="8" />
+      <node id="6181949993339158698" at="40,103,41,26" concept="2" />
+      <node id="6181949993339158625" at="41,26,42,0" concept="9" />
+      <node id="7167051279291080561" at="16,0,18,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291080561" at="19,0,22,0" concept="1" trace="Test_CreateListAntiquotation_Intention_Test#()V" />
+      <node id="7167051279291080561" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291080561" at="23,0,27,0" concept="5" trace="test_Test_CreateListAntiquotation_Intention#()V" />
+      <node id="7167051279291080561" at="34,0,44,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291080561" at="19,56,20,25" />
+      <scope id="7167051279291080561" at="24,78,25,36" />
+      <scope id="7167051279291080561" at="30,52,31,19" />
+      <scope id="7167051279291080561" at="19,0,22,0" />
+      <scope id="7167051279291080561" at="30,0,33,0">
+        <var name="owner" id="7167051279291080561" />
+      </scope>
+      <scope id="7167051279291080561" at="23,0,27,0" />
+      <scope id="7167051279291080561" at="35,51,42,0" />
+      <scope id="7167051279291080561" at="34,0,44,0" />
+      <unit id="7167051279291080561" at="28,0,45,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateListAntiquotation_Intention_Test$TestBody" />
+      <unit id="7167051279291080561" at="14,0,46,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateListAntiquotation_Intention_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291084329">
+    <file name="Test_CreatePropertyAntiquotation_Intention_Test.java">
+      <node id="7167051279291084329" at="19,60,20,25" concept="12" />
+      <node id="7167051279291084329" at="24,82,25,36" concept="2" />
+      <node id="7167051279291084329" at="30,52,31,19" concept="12" />
+      <node id="7167051279291084329" at="35,51,36,72" concept="2" />
+      <node id="7167051279291084353" at="36,72,37,147" concept="2" />
+      <node id="7167051279291084355" at="37,147,38,122" concept="2" />
+      <node id="6181949993339159673" at="38,122,39,105" concept="8" />
+      <node id="6181949993339159675" at="39,105,40,103" concept="8" />
+      <node id="6181949993339159677" at="40,103,41,23" concept="2" />
+      <node id="6181949993339159668" at="41,23,42,0" concept="9" />
+      <node id="7167051279291084329" at="16,0,18,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291084329" at="19,0,22,0" concept="1" trace="Test_CreatePropertyAntiquotation_Intention_Test#()V" />
+      <node id="7167051279291084329" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291084329" at="23,0,27,0" concept="5" trace="test_Test_CreatePropertyAntiquotation_Intention#()V" />
+      <node id="7167051279291084329" at="34,0,44,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291084329" at="19,60,20,25" />
+      <scope id="7167051279291084329" at="24,82,25,36" />
+      <scope id="7167051279291084329" at="30,52,31,19" />
+      <scope id="7167051279291084329" at="19,0,22,0" />
+      <scope id="7167051279291084329" at="30,0,33,0">
+        <var name="owner" id="7167051279291084329" />
+      </scope>
+      <scope id="7167051279291084329" at="23,0,27,0" />
+      <scope id="7167051279291084329" at="35,51,42,0" />
+      <scope id="7167051279291084329" at="34,0,44,0" />
+      <unit id="7167051279291084329" at="28,0,45,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreatePropertyAntiquotation_Intention_Test$TestBody" />
+      <unit id="7167051279291084329" at="14,0,46,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreatePropertyAntiquotation_Intention_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291141156">
+    <file name="Test_CreateReferenceAntiquotation_Intention_Test.java">
+      <node id="7167051279291141156" at="19,61,20,25" concept="12" />
+      <node id="7167051279291141156" at="24,83,25,36" concept="2" />
+      <node id="7167051279291141156" at="30,52,31,19" concept="12" />
+      <node id="7167051279291141156" at="35,51,36,72" concept="2" />
+      <node id="7167051279291141167" at="36,72,37,148" concept="2" />
+      <node id="7167051279291141169" at="37,148,38,123" concept="2" />
+      <node id="6181949993339160214" at="38,123,39,105" concept="8" />
+      <node id="6181949993339160216" at="39,105,40,103" concept="8" />
+      <node id="6181949993339160218" at="40,103,41,28" concept="2" />
+      <node id="6181949993339160209" at="41,28,42,0" concept="9" />
+      <node id="7167051279291141156" at="16,0,18,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291141156" at="19,0,22,0" concept="1" trace="Test_CreateReferenceAntiquotation_Intention_Test#()V" />
+      <node id="7167051279291141156" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291141156" at="23,0,27,0" concept="5" trace="test_Test_CreateReferenceAntiquotation_Intention#()V" />
+      <node id="7167051279291141156" at="34,0,44,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291141156" at="19,61,20,25" />
+      <scope id="7167051279291141156" at="24,83,25,36" />
+      <scope id="7167051279291141156" at="30,52,31,19" />
+      <scope id="7167051279291141156" at="19,0,22,0" />
+      <scope id="7167051279291141156" at="30,0,33,0">
+        <var name="owner" id="7167051279291141156" />
+      </scope>
+      <scope id="7167051279291141156" at="23,0,27,0" />
+      <scope id="7167051279291141156" at="35,51,42,0" />
+      <scope id="7167051279291141156" at="34,0,44,0" />
+      <unit id="7167051279291141156" at="28,0,45,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateReferenceAntiquotation_Intention_Test$TestBody" />
+      <unit id="7167051279291141156" at="14,0,46,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateReferenceAntiquotation_Intention_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291147217">
+    <file name="Test_CreatePropertyAntiquotation_Key_Test.java">
+      <node id="7167051279291147217" at="18,54,19,25" concept="12" />
+      <node id="7167051279291147217" at="23,76,24,36" concept="2" />
+      <node id="7167051279291147217" at="29,52,30,19" concept="12" />
+      <node id="7167051279291147217" at="34,51,35,72" concept="2" />
+      <node id="7167051279291148613" at="35,72,36,22" concept="2" />
+      <node id="6181949993339160106" at="36,22,37,105" concept="8" />
+      <node id="6181949993339160108" at="37,105,38,103" concept="8" />
+      <node id="6181949993339160110" at="38,103,39,23" concept="2" />
+      <node id="6181949993339160103" at="39,23,40,0" concept="9" />
+      <node id="7167051279291147217" at="15,0,17,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291147217" at="18,0,21,0" concept="1" trace="Test_CreatePropertyAntiquotation_Key_Test#()V" />
+      <node id="7167051279291147217" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291147217" at="22,0,26,0" concept="5" trace="test_Test_CreatePropertyAntiquotation_Key#()V" />
+      <node id="7167051279291147217" at="33,0,42,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291147217" at="18,54,19,25" />
+      <scope id="7167051279291147217" at="23,76,24,36" />
+      <scope id="7167051279291147217" at="29,52,30,19" />
+      <scope id="7167051279291147217" at="18,0,21,0" />
+      <scope id="7167051279291147217" at="29,0,32,0">
+        <var name="owner" id="7167051279291147217" />
+      </scope>
+      <scope id="7167051279291147217" at="22,0,26,0" />
+      <scope id="7167051279291147217" at="34,51,40,0" />
+      <scope id="7167051279291147217" at="33,0,42,0" />
+      <unit id="7167051279291147217" at="27,0,43,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreatePropertyAntiquotation_Key_Test$TestBody" />
+      <unit id="7167051279291147217" at="13,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreatePropertyAntiquotation_Key_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291148615">
+    <file name="Test_CreateReferenceAntiquotation_Key_Test.java">
+      <node id="7167051279291148615" at="18,55,19,25" concept="12" />
+      <node id="7167051279291148615" at="23,77,24,36" concept="2" />
+      <node id="7167051279291148615" at="29,52,30,19" concept="12" />
+      <node id="7167051279291148615" at="34,51,35,72" concept="2" />
+      <node id="7167051279291149182" at="35,72,36,22" concept="2" />
+      <node id="6181949993339160319" at="36,22,37,105" concept="8" />
+      <node id="6181949993339160321" at="37,105,38,103" concept="8" />
+      <node id="6181949993339160323" at="38,103,39,28" concept="2" />
+      <node id="6181949993339160316" at="39,28,40,0" concept="9" />
+      <node id="7167051279291148615" at="15,0,17,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291148615" at="18,0,21,0" concept="1" trace="Test_CreateReferenceAntiquotation_Key_Test#()V" />
+      <node id="7167051279291148615" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291148615" at="22,0,26,0" concept="5" trace="test_Test_CreateReferenceAntiquotation_Key#()V" />
+      <node id="7167051279291148615" at="33,0,42,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291148615" at="18,55,19,25" />
+      <scope id="7167051279291148615" at="23,77,24,36" />
+      <scope id="7167051279291148615" at="29,52,30,19" />
+      <scope id="7167051279291148615" at="18,0,21,0" />
+      <scope id="7167051279291148615" at="29,0,32,0">
+        <var name="owner" id="7167051279291148615" />
+      </scope>
+      <scope id="7167051279291148615" at="22,0,26,0" />
+      <scope id="7167051279291148615" at="34,51,40,0" />
+      <scope id="7167051279291148615" at="33,0,42,0" />
+      <unit id="7167051279291148615" at="27,0,43,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateReferenceAntiquotation_Key_Test$TestBody" />
+      <unit id="7167051279291148615" at="13,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateReferenceAntiquotation_Key_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291153721">
+    <file name="Test_CreateAntiquotation_Key_Test.java">
+      <node id="7167051279291153721" at="18,46,19,25" concept="12" />
+      <node id="7167051279291153721" at="23,68,24,36" concept="2" />
+      <node id="7167051279291153721" at="29,52,30,19" concept="12" />
+      <node id="7167051279291153721" at="34,51,35,72" concept="2" />
+      <node id="7167051279291154385" at="35,72,36,22" concept="2" />
+      <node id="6181949993339158228" at="36,22,37,105" concept="8" />
+      <node id="6181949993339158230" at="37,105,38,103" concept="8" />
+      <node id="6181949993339158232" at="38,103,39,28" concept="2" />
+      <node id="6181949993339158225" at="39,28,40,0" concept="9" />
+      <node id="7167051279291153721" at="15,0,17,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291153721" at="18,0,21,0" concept="1" trace="Test_CreateAntiquotation_Key_Test#()V" />
+      <node id="7167051279291153721" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291153721" at="22,0,26,0" concept="5" trace="test_Test_CreateAntiquotation_Key#()V" />
+      <node id="7167051279291153721" at="33,0,42,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291153721" at="18,46,19,25" />
+      <scope id="7167051279291153721" at="23,68,24,36" />
+      <scope id="7167051279291153721" at="29,52,30,19" />
+      <scope id="7167051279291153721" at="18,0,21,0" />
+      <scope id="7167051279291153721" at="29,0,32,0">
+        <var name="owner" id="7167051279291153721" />
+      </scope>
+      <scope id="7167051279291153721" at="22,0,26,0" />
+      <scope id="7167051279291153721" at="34,51,40,0" />
+      <scope id="7167051279291153721" at="33,0,42,0" />
+      <unit id="7167051279291153721" at="27,0,43,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateAntiquotation_Key_Test$TestBody" />
+      <unit id="7167051279291153721" at="13,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateAntiquotation_Key_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7167051279291154489">
+    <file name="Test_CreateListAntiquotation_Key_Test.java">
+      <node id="7167051279291154489" at="18,50,19,25" concept="12" />
+      <node id="7167051279291154489" at="23,72,24,36" concept="2" />
+      <node id="7167051279291154489" at="29,52,30,19" concept="12" />
+      <node id="7167051279291154489" at="34,51,35,72" concept="2" />
+      <node id="7167051279291155062" at="35,72,36,22" concept="2" />
+      <node id="6181949993339159173" at="36,22,37,105" concept="8" />
+      <node id="6181949993339159175" at="37,105,38,103" concept="8" />
+      <node id="6181949993339159177" at="38,103,39,26" concept="2" />
+      <node id="6181949993339159106" at="39,26,40,0" concept="9" />
+      <node id="7167051279291154489" at="15,0,17,0" concept="10" trace="ourParamCache" />
+      <node id="7167051279291154489" at="18,0,21,0" concept="1" trace="Test_CreateListAntiquotation_Key_Test#()V" />
+      <node id="7167051279291154489" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7167051279291154489" at="22,0,26,0" concept="5" trace="test_Test_CreateListAntiquotation_Key#()V" />
+      <node id="7167051279291154489" at="33,0,42,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7167051279291154489" at="18,50,19,25" />
+      <scope id="7167051279291154489" at="23,72,24,36" />
+      <scope id="7167051279291154489" at="29,52,30,19" />
+      <scope id="7167051279291154489" at="18,0,21,0" />
+      <scope id="7167051279291154489" at="29,0,32,0">
+        <var name="owner" id="7167051279291154489" />
+      </scope>
+      <scope id="7167051279291154489" at="22,0,26,0" />
+      <scope id="7167051279291154489" at="34,51,40,0" />
+      <scope id="7167051279291154489" at="33,0,42,0" />
+      <unit id="7167051279291154489" at="27,0,43,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateListAntiquotation_Key_Test$TestBody" />
+      <unit id="7167051279291154489" at="13,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_CreateListAntiquotation_Key_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7191184120224190538">
+    <file name="Test_Quotation_Add_Model_Test.java">
+      <node id="7191184120224190538" at="18,42,19,25" concept="12" />
+      <node id="7191184120224190538" at="23,64,24,36" concept="2" />
+      <node id="7191184120224190538" at="29,52,30,19" concept="12" />
+      <node id="7191184120224190538" at="34,51,35,72" concept="2" />
+      <node id="7191184120224190985" at="35,72,36,22" concept="2" />
+      <node id="7191184120224190538" at="15,0,17,0" concept="10" trace="ourParamCache" />
+      <node id="7191184120224190538" at="18,0,21,0" concept="1" trace="Test_Quotation_Add_Model_Test#()V" />
+      <node id="7191184120224190538" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7191184120224190538" at="22,0,26,0" concept="5" trace="test_Test_Quotation_Add_Model#()V" />
+      <node id="7191184120224190538" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7191184120224190538" at="18,42,19,25" />
+      <scope id="7191184120224190538" at="23,64,24,36" />
+      <scope id="7191184120224190538" at="29,52,30,19" />
+      <scope id="7191184120224190538" at="34,51,36,22" />
+      <scope id="7191184120224190538" at="18,0,21,0" />
+      <scope id="7191184120224190538" at="29,0,32,0">
+        <var name="owner" id="7191184120224190538" />
+      </scope>
+      <scope id="7191184120224190538" at="22,0,26,0" />
+      <scope id="7191184120224190538" at="33,0,38,0" />
+      <unit id="7191184120224190538" at="27,0,39,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_Quotation_Add_Model_Test$TestBody" />
+      <unit id="7191184120224190538" at="13,0,40,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_Quotation_Add_Model_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7191184120224190997">
+    <file name="Test_NodeBuilder_Add_Model_Test.java">
+      <node id="7191184120224190997" at="18,44,19,25" concept="12" />
+      <node id="7191184120224190997" at="23,66,24,36" concept="2" />
+      <node id="7191184120224190997" at="29,52,30,19" concept="12" />
+      <node id="7191184120224190997" at="34,51,35,72" concept="2" />
+      <node id="7191184120224191015" at="35,72,36,22" concept="2" />
+      <node id="7191184120224190997" at="15,0,17,0" concept="10" trace="ourParamCache" />
+      <node id="7191184120224190997" at="18,0,21,0" concept="1" trace="Test_NodeBuilder_Add_Model_Test#()V" />
+      <node id="7191184120224190997" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7191184120224190997" at="22,0,26,0" concept="5" trace="test_Test_NodeBuilder_Add_Model#()V" />
+      <node id="7191184120224190997" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7191184120224190997" at="18,44,19,25" />
+      <scope id="7191184120224190997" at="23,66,24,36" />
+      <scope id="7191184120224190997" at="29,52,30,19" />
+      <scope id="7191184120224190997" at="34,51,36,22" />
+      <scope id="7191184120224190997" at="18,0,21,0" />
+      <scope id="7191184120224190997" at="29,0,32,0">
+        <var name="owner" id="7191184120224190997" />
+      </scope>
+      <scope id="7191184120224190997" at="22,0,26,0" />
+      <scope id="7191184120224190997" at="33,0,38,0" />
+      <unit id="7191184120224190997" at="27,0,39,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_NodeBuilder_Add_Model_Test$TestBody" />
+      <unit id="7191184120224190997" at="13,0,40,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_NodeBuilder_Add_Model_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7191184120224191546">
+    <file name="Test_Quotation_Delete_Model_Test.java">
+      <node id="7191184120224191546" at="19,45,20,25" concept="12" />
+      <node id="7191184120224191546" at="24,67,25,36" concept="2" />
+      <node id="7191184120224191546" at="30,52,31,19" concept="12" />
+      <node id="7191184120224191546" at="35,51,36,72" concept="2" />
+      <node id="1241246198932926622" at="38,44,39,76" concept="2" />
+      <node id="7191184120224191546" at="16,0,18,0" concept="10" trace="ourParamCache" />
+      <node id="7191184120224191546" at="19,0,22,0" concept="1" trace="Test_Quotation_Delete_Model_Test#()V" />
+      <node id="7191184120224191546" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1241246198932926620" at="38,0,41,0" concept="5" trace="run#()V" />
+      <node id="7191184120224191546" at="23,0,27,0" concept="5" trace="test_Test_Quotation_Delete_Model#()V" />
+      <node id="1241246198932926618" at="36,72,41,16" concept="2" />
+      <node id="7191184120224191546" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7191184120224191546" at="19,45,20,25" />
+      <scope id="7191184120224191546" at="24,67,25,36" />
+      <scope id="7191184120224191546" at="30,52,31,19" />
+      <scope id="1241246198932926621" at="38,44,39,76" />
+      <scope id="7191184120224191546" at="19,0,22,0" />
+      <scope id="7191184120224191546" at="30,0,33,0">
+        <var name="owner" id="7191184120224191546" />
+      </scope>
+      <scope id="1241246198932926620" at="38,0,41,0" />
+      <scope id="7191184120224191546" at="23,0,27,0" />
+      <scope id="7191184120224191546" at="35,51,41,16" />
+      <scope id="7191184120224191546" at="34,0,43,0" />
+      <unit id="1241246198932926620" at="37,48,41,7" name="jetbrains.mps.lang.quotation.test.editorTest.Test_Quotation_Delete_Model_Test$TestBody$1" />
+      <unit id="7191184120224191546" at="28,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_Quotation_Delete_Model_Test$TestBody" />
+      <unit id="7191184120224191546" at="14,0,45,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_Quotation_Delete_Model_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7191184120224220679">
+    <file name="Test_NodeBuilder_Delete_Model_Test.java">
+      <node id="7191184120224220679" at="19,47,20,25" concept="12" />
+      <node id="7191184120224220679" at="24,69,25,36" concept="2" />
+      <node id="7191184120224220679" at="30,52,31,19" concept="12" />
+      <node id="7191184120224220679" at="35,51,36,72" concept="2" />
+      <node id="7191184120224220922" at="38,44,39,76" concept="2" />
+      <node id="7191184120224220679" at="16,0,18,0" concept="10" trace="ourParamCache" />
+      <node id="7191184120224220679" at="19,0,22,0" concept="1" trace="Test_NodeBuilder_Delete_Model_Test#()V" />
+      <node id="7191184120224220679" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7191184120224220920" at="38,0,41,0" concept="5" trace="run#()V" />
+      <node id="7191184120224220679" at="23,0,27,0" concept="5" trace="test_Test_NodeBuilder_Delete_Model#()V" />
+      <node id="7191184120224220918" at="36,72,41,16" concept="2" />
+      <node id="7191184120224220679" at="34,0,43,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7191184120224220679" at="19,47,20,25" />
+      <scope id="7191184120224220679" at="24,69,25,36" />
+      <scope id="7191184120224220679" at="30,52,31,19" />
+      <scope id="7191184120224220921" at="38,44,39,76" />
+      <scope id="7191184120224220679" at="19,0,22,0" />
+      <scope id="7191184120224220679" at="30,0,33,0">
+        <var name="owner" id="7191184120224220679" />
+      </scope>
+      <scope id="7191184120224220920" at="38,0,41,0" />
+      <scope id="7191184120224220679" at="23,0,27,0" />
+      <scope id="7191184120224220679" at="35,51,41,16" />
+      <scope id="7191184120224220679" at="34,0,43,0" />
+      <unit id="7191184120224220920" at="37,48,41,7" name="jetbrains.mps.lang.quotation.test.editorTest.Test_NodeBuilder_Delete_Model_Test$TestBody$1" />
+      <unit id="7191184120224220679" at="28,0,44,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_NodeBuilder_Delete_Model_Test$TestBody" />
+      <unit id="7191184120224220679" at="14,0,45,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_NodeBuilder_Delete_Model_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)/7335099364343988896">
+    <file name="Test_QuotationDetachNodes_Test.java">
+      <node id="7335099364343992653" at="23,54,24,66" concept="6" />
+      <node id="7335099364343992670" at="24,66,25,66" concept="6" />
+      <node id="7335099364343992676" at="25,66,26,304" concept="2" />
+      <node id="7335099364344055960" at="26,304,27,174" concept="2" />
+      <node id="7335099364344058860" at="27,174,28,0" concept="9" />
+      <node id="7335099364344049261" at="28,0,29,171" concept="2" />
+      <node id="7335099364344274727" at="32,58,33,66" concept="6" />
+      <node id="7335099364344274744" at="33,66,34,66" concept="6" />
+      <node id="7335099364344274750" at="34,66,35,297" concept="2" />
+      <node id="7335099364344274759" at="35,297,36,174" concept="2" />
+      <node id="7335099364344274767" at="36,174,37,0" concept="9" />
+      <node id="7335099364344274768" at="37,0,38,171" concept="2" />
+      <node id="7335099364344062912" at="41,55,42,66" concept="6" />
+      <node id="7335099364344062929" at="42,66,43,213" concept="6" />
+      <node id="7335099364344063961" at="43,213,44,174" concept="2" />
+      <node id="7335099364344063969" at="44,174,45,0" concept="9" />
+      <node id="7335099364344064669" at="45,0,46,174" concept="2" />
+      <node id="7335099364344262957" at="49,59,50,66" concept="6" />
+      <node id="7335099364344262964" at="50,66,51,182" concept="6" />
+      <node id="7335099364344262979" at="51,182,52,174" concept="2" />
+      <node id="7335099364344262987" at="52,174,53,0" concept="9" />
+      <node id="7335099364344262988" at="53,0,54,174" concept="2" />
+      <node id="7335099364344169950" at="57,60,58,66" concept="6" />
+      <node id="7335099364344169973" at="58,66,59,212" concept="6" />
+      <node id="7335099364344430629" at="59,212,60,174" concept="2" />
+      <node id="7335099364344430637" at="60,174,61,0" concept="9" />
+      <node id="7335099364344430638" at="61,0,62,174" concept="2" />
+      <node id="7335099364343995947" at="65,67,66,66" concept="6" />
+      <node id="7335099364343995966" at="66,66,67,181" concept="6" />
+      <node id="2760023158765347495" at="67,181,68,174" concept="2" />
+      <node id="2760023158765351935" at="68,174,69,0" concept="9" />
+      <node id="2760023158765351004" at="69,0,70,174" concept="2" />
+      <node id="7335099364343992656" at="72,62,73,63" concept="6" />
+      <node id="7335099364343992656" at="73,63,74,30" concept="6" />
+      <node id="7335099364343992656" at="74,30,75,30" concept="6" />
+      <node id="7335099364343992656" at="75,30,76,30" concept="6" />
+      <node id="7335099364343992656" at="76,30,77,233" concept="2" />
+      <node id="7335099364343992656" at="77,233,78,232" concept="2" />
+      <node id="7335099364343992656" at="78,232,79,234" concept="2" />
+      <node id="7335099364343992656" at="79,234,80,164" concept="2" />
+      <node id="7335099364343992656" at="80,164,81,165" concept="2" />
+      <node id="7335099364343992656" at="81,165,82,24" concept="7" />
+      <node id="7335099364343992673" at="84,62,85,63" concept="6" />
+      <node id="7335099364343992673" at="85,63,86,30" concept="6" />
+      <node id="7335099364343992673" at="86,30,87,30" concept="6" />
+      <node id="7335099364343992673" at="87,30,88,233" concept="2" />
+      <node id="7335099364343992673" at="88,233,89,232" concept="2" />
+      <node id="7335099364343992673" at="89,232,90,165" concept="2" />
+      <node id="7335099364343992673" at="90,165,91,24" concept="7" />
+      <node id="7335099364344274730" at="93,62,94,63" concept="6" />
+      <node id="7335099364344274730" at="94,63,95,30" concept="6" />
+      <node id="7335099364344274730" at="95,30,96,30" concept="6" />
+      <node id="7335099364344274730" at="96,30,97,30" concept="6" />
+      <node id="7335099364344274730" at="97,30,98,233" concept="2" />
+      <node id="7335099364344274730" at="98,233,99,232" concept="2" />
+      <node id="7335099364344274730" at="99,232,100,234" concept="2" />
+      <node id="7335099364344274730" at="100,234,101,164" concept="2" />
+      <node id="7335099364344274730" at="101,164,102,165" concept="2" />
+      <node id="7335099364344274730" at="102,165,103,24" concept="7" />
+      <node id="7335099364344274747" at="105,62,106,63" concept="6" />
+      <node id="7335099364344274747" at="106,63,107,30" concept="6" />
+      <node id="7335099364344274747" at="107,30,108,30" concept="6" />
+      <node id="7335099364344274747" at="108,30,109,233" concept="2" />
+      <node id="7335099364344274747" at="109,233,110,232" concept="2" />
+      <node id="7335099364344274747" at="110,232,111,165" concept="2" />
+      <node id="7335099364344274747" at="111,165,112,24" concept="7" />
+      <node id="7335099364344062915" at="114,62,115,63" concept="6" />
+      <node id="7335099364344062915" at="115,63,116,30" concept="6" />
+      <node id="7335099364344062915" at="116,30,117,30" concept="6" />
+      <node id="7335099364344062915" at="117,30,118,30" concept="6" />
+      <node id="7335099364344062915" at="118,30,119,233" concept="2" />
+      <node id="7335099364344062915" at="119,233,120,232" concept="2" />
+      <node id="7335099364344062915" at="120,232,121,234" concept="2" />
+      <node id="7335099364344062915" at="121,234,122,164" concept="2" />
+      <node id="7335099364344062915" at="122,164,123,165" concept="2" />
+      <node id="7335099364344062915" at="123,165,124,24" concept="7" />
+      <node id="7335099364344062932" at="126,80,127,63" concept="6" />
+      <node id="7335099364344062932" at="127,63,128,30" concept="6" />
+      <node id="7335099364344062932" at="128,30,129,30" concept="6" />
+      <node id="7335099364344062932" at="129,30,130,30" concept="6" />
+      <node id="7335099364344062932" at="130,30,131,233" concept="2" />
+      <node id="7335099364344062932" at="131,233,132,232" concept="2" />
+      <node id="7335099364344062932" at="132,232,133,39" concept="2" />
+      <node id="7335099364344062932" at="134,31,135,199" concept="2" />
+      <node id="7335099364344062932" at="136,5,137,165" concept="2" />
+      <node id="7335099364344062932" at="137,165,138,24" concept="7" />
+      <node id="7335099364344262960" at="140,62,141,63" concept="6" />
+      <node id="7335099364344262960" at="141,63,142,30" concept="6" />
+      <node id="7335099364344262960" at="142,30,143,30" concept="6" />
+      <node id="7335099364344262960" at="143,30,144,30" concept="6" />
+      <node id="7335099364344262960" at="144,30,145,233" concept="2" />
+      <node id="7335099364344262960" at="145,233,146,232" concept="2" />
+      <node id="7335099364344262960" at="146,232,147,234" concept="2" />
+      <node id="7335099364344262960" at="147,234,148,164" concept="2" />
+      <node id="7335099364344262960" at="148,164,149,165" concept="2" />
+      <node id="7335099364344262960" at="149,165,150,24" concept="7" />
+      <node id="7335099364344262967" at="152,80,153,63" concept="6" />
+      <node id="7335099364344262967" at="153,63,154,30" concept="6" />
+      <node id="7335099364344262967" at="154,30,155,30" concept="6" />
+      <node id="7335099364344262967" at="155,30,156,30" concept="6" />
+      <node id="7335099364344262967" at="156,30,157,233" concept="2" />
+      <node id="7335099364344262967" at="157,233,158,232" concept="2" />
+      <node id="7335099364344262967" at="159,5,160,52" concept="6" />
+      <node id="7335099364344262967" at="161,33,162,194" concept="2" />
+      <node id="7335099364344262967" at="164,5,165,165" concept="2" />
+      <node id="7335099364344262967" at="165,165,166,24" concept="7" />
+      <node id="7335099364344169953" at="168,62,169,63" concept="6" />
+      <node id="7335099364344169953" at="169,63,170,30" concept="6" />
+      <node id="7335099364344169953" at="170,30,171,30" concept="6" />
+      <node id="7335099364344169953" at="171,30,172,30" concept="6" />
+      <node id="7335099364344169953" at="172,30,173,233" concept="2" />
+      <node id="7335099364344169953" at="173,233,174,232" concept="2" />
+      <node id="7335099364344169953" at="174,232,175,234" concept="2" />
+      <node id="7335099364344169953" at="175,234,176,164" concept="2" />
+      <node id="7335099364344169953" at="176,164,177,165" concept="2" />
+      <node id="7335099364344169953" at="177,165,178,24" concept="7" />
+      <node id="7335099364344169976" at="180,69,181,74" concept="6" />
+      <node id="7335099364344169976" at="182,5,183,91" concept="6" />
+      <node id="7335099364344169976" at="184,7,185,103" concept="6" />
+      <node id="7335099364344169976" at="187,5,188,26" concept="7" />
+      <node id="7335099364343995950" at="190,62,191,63" concept="6" />
+      <node id="7335099364343995950" at="191,63,192,30" concept="6" />
+      <node id="7335099364343995950" at="192,30,193,30" concept="6" />
+      <node id="7335099364343995950" at="193,30,194,30" concept="6" />
+      <node id="7335099364343995950" at="194,30,195,233" concept="2" />
+      <node id="7335099364343995950" at="195,233,196,232" concept="2" />
+      <node id="7335099364343995950" at="196,232,197,234" concept="2" />
+      <node id="7335099364343995950" at="197,234,198,164" concept="2" />
+      <node id="7335099364343995950" at="198,164,199,165" concept="2" />
+      <node id="7335099364343995950" at="199,165,200,24" concept="7" />
+      <node id="7335099364343995969" at="202,89,203,74" concept="6" />
+      <node id="7335099364343995969" at="204,5,205,91" concept="6" />
+      <node id="7335099364343995969" at="205,91,206,80" concept="2" />
+      <node id="7335099364343995969" at="207,5,208,26" concept="7" />
+      <node id="7335099364343988896" at="212,0,213,0" concept="10" trace="statements$q65M" />
+      <node id="7335099364343988896" at="213,0,214,0" concept="10" trace="statement$53DE" />
+      <node id="7335099364343988896" at="217,0,218,0" concept="10" trace="BlockStatement$u4" />
+      <node id="7335099364343988896" at="218,0,219,0" concept="10" trace="StatementList$m_" />
+      <node id="7335099364343988896" at="219,0,220,0" concept="10" trace="Statement$P6" />
+      <node id="7335099364344062932" at="133,39,136,5" concept="4" />
+      <node id="7335099364344262967" at="160,52,163,7" concept="3" />
+      <node id="7335099364344169976" at="183,91,186,7" concept="0" />
+      <node id="7335099364343995969" at="203,74,207,5" concept="0" />
+      <node id="7335099364344262967" at="158,232,164,5" concept="0" />
+      <node id="7335099364344169976" at="181,74,187,5" concept="0" />
+      <node id="7335099364344062804" at="40,0,48,0" concept="5" trace="test_quotationCopies#()V" />
+      <node id="7335099364344262953" at="48,0,56,0" concept="5" trace="test_quotationCopiesList#()V" />
+      <node id="7335099364344169946" at="56,0,64,0" concept="5" trace="test_lightQuotationCopies#()V" />
+      <node id="7335099364343994608" at="64,0,72,0" concept="5" trace="test_lightQuotationExceptionList#()V" />
+      <node id="7335099364343995969" at="202,0,210,0" concept="11" trace="createBlockStatement_yc3t95_a0b0f0#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364343990666" at="22,0,31,0" concept="5" trace="test_smodelDetaches#()V" />
+      <node id="7335099364344274723" at="31,0,40,0" concept="5" trace="test_smodelDetachesList#()V" />
+      <node id="7335099364343992673" at="84,0,93,0" concept="11" trace="_quotation_createNode_yc3t95_a0b0a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344274747" at="105,0,114,0" concept="11" trace="_quotation_createNode_yc3t95_a0b0b0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344169976" at="180,0,190,0" concept="11" trace="createBlockStatement_yc3t95_a0b0e0#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364343992656" at="72,0,84,0" concept="11" trace="_quotation_createNode_yc3t95_a0a0a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344274730" at="93,0,105,0" concept="11" trace="_quotation_createNode_yc3t95_a0a0b0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344062915" at="114,0,126,0" concept="11" trace="_quotation_createNode_yc3t95_a0a0c0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344262960" at="140,0,152,0" concept="11" trace="_quotation_createNode_yc3t95_a0a0d0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344169953" at="168,0,180,0" concept="11" trace="_quotation_createNode_yc3t95_a0a0e0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364343995950" at="190,0,202,0" concept="11" trace="_quotation_createNode_yc3t95_a0a0f0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344062932" at="126,0,140,0" concept="11" trace="_quotation_createNode_yc3t95_a0b0c0#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7335099364344262967" at="152,0,168,0" concept="11" trace="_quotation_createNode_yc3t95_a0b0d0#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="7335099364344062932" at="134,31,135,199" />
+      <scope id="7335099364344262967" at="161,33,162,194" />
+      <scope id="7335099364344169976" at="184,7,185,103">
+        <var name="n2" id="7335099364344169976" />
+      </scope>
+      <scope id="7335099364343995969" at="204,5,206,80">
+        <var name="n1" id="7335099364343995969" />
+      </scope>
+      <scope id="7335099364344262967" at="160,52,163,7">
+        <var name="child" id="7335099364344262967" />
+      </scope>
+      <scope id="7335099364344262967" at="159,5,163,7">
+        <var name="nodes" id="7335099364344262967" />
+      </scope>
+      <scope id="7335099364344169976" at="182,5,186,7">
+        <var name="n1" id="7335099364344169976" />
+      </scope>
+      <scope id="7335099364344062807" at="41,55,46,174">
+        <var name="sourceContainer" id="7335099364344062913" />
+        <var name="targetContainer" id="7335099364344062930" />
+      </scope>
+      <scope id="7335099364344262956" at="49,59,54,174">
+        <var name="sourceContainer" id="7335099364344262958" />
+        <var name="targetContainer" id="7335099364344262965" />
+      </scope>
+      <scope id="7335099364344169949" at="57,60,62,174">
+        <var name="sourceContainer" id="7335099364344169951" />
+        <var name="targetContainer" id="7335099364344169974" />
+      </scope>
+      <scope id="7335099364343994611" at="65,67,70,174">
+        <var name="sourceContainer" id="7335099364343995948" />
+        <var name="targetContainer" id="7335099364343995967" />
+      </scope>
+      <scope id="7335099364343990669" at="23,54,29,171">
+        <var name="sourceContainer" id="7335099364343992654" />
+        <var name="targetContainer" id="7335099364343992671" />
+      </scope>
+      <scope id="7335099364344274726" at="32,58,38,171">
+        <var name="sourceContainer" id="7335099364344274728" />
+        <var name="targetContainer" id="7335099364344274745" />
+      </scope>
+      <scope id="7335099364343995969" at="202,89,208,26">
+        <var name="n0" id="7335099364343995969" />
+      </scope>
+      <scope id="7335099364343992673" at="84,62,91,24">
+        <var name="facade" id="7335099364343992673" />
+        <var name="quotedNode_1" id="7335099364343992673" />
+        <var name="quotedNode_2" id="7335099364343992673" />
+      </scope>
+      <scope id="7335099364344274747" at="105,62,112,24">
+        <var name="facade" id="7335099364344274747" />
+        <var name="quotedNode_1" id="7335099364344274747" />
+        <var name="quotedNode_2" id="7335099364344274747" />
+      </scope>
+      <scope id="7335099364344062804" at="40,0,48,0" />
+      <scope id="7335099364344262953" at="48,0,56,0" />
+      <scope id="7335099364344169946" at="56,0,64,0" />
+      <scope id="7335099364343994608" at="64,0,72,0" />
+      <scope id="7335099364344169976" at="180,69,188,26">
+        <var name="n0" id="7335099364344169976" />
+      </scope>
+      <scope id="7335099364343995969" at="202,0,210,0">
+        <var name="p0" id="7335099364343995969" />
+      </scope>
+      <scope id="7335099364343990666" at="22,0,31,0" />
+      <scope id="7335099364344274723" at="31,0,40,0" />
+      <scope id="7335099364343992673" at="84,0,93,0" />
+      <scope id="7335099364344274747" at="105,0,114,0" />
+      <scope id="7335099364343992656" at="72,62,82,24">
+        <var name="facade" id="7335099364343992656" />
+        <var name="quotedNode_1" id="7335099364343992656" />
+        <var name="quotedNode_2" id="7335099364343992656" />
+        <var name="quotedNode_3" id="7335099364343992656" />
+      </scope>
+      <scope id="7335099364344274730" at="93,62,103,24">
+        <var name="facade" id="7335099364344274730" />
+        <var name="quotedNode_1" id="7335099364344274730" />
+        <var name="quotedNode_2" id="7335099364344274730" />
+        <var name="quotedNode_3" id="7335099364344274730" />
+      </scope>
+      <scope id="7335099364344062915" at="114,62,124,24">
+        <var name="facade" id="7335099364344062915" />
+        <var name="quotedNode_1" id="7335099364344062915" />
+        <var name="quotedNode_2" id="7335099364344062915" />
+        <var name="quotedNode_3" id="7335099364344062915" />
+      </scope>
+      <scope id="7335099364344262960" at="140,62,150,24">
+        <var name="facade" id="7335099364344262960" />
+        <var name="quotedNode_1" id="7335099364344262960" />
+        <var name="quotedNode_2" id="7335099364344262960" />
+        <var name="quotedNode_3" id="7335099364344262960" />
+      </scope>
+      <scope id="7335099364344169953" at="168,62,178,24">
+        <var name="facade" id="7335099364344169953" />
+        <var name="quotedNode_1" id="7335099364344169953" />
+        <var name="quotedNode_2" id="7335099364344169953" />
+        <var name="quotedNode_3" id="7335099364344169953" />
+      </scope>
+      <scope id="7335099364344169976" at="180,0,190,0">
+        <var name="p0" id="7335099364344169976" />
+      </scope>
+      <scope id="7335099364343995950" at="190,62,200,24">
+        <var name="facade" id="7335099364343995950" />
+        <var name="quotedNode_1" id="7335099364343995950" />
+        <var name="quotedNode_2" id="7335099364343995950" />
+        <var name="quotedNode_3" id="7335099364343995950" />
+      </scope>
+      <scope id="7335099364343992656" at="72,0,84,0" />
+      <scope id="7335099364344274730" at="93,0,105,0" />
+      <scope id="7335099364344062915" at="114,0,126,0" />
+      <scope id="7335099364344062932" at="126,80,138,24">
+        <var name="facade" id="7335099364344062932" />
+        <var name="quotedNode_2" id="7335099364344062932" />
+        <var name="quotedNode_3" id="7335099364344062932" />
+        <var name="quotedNode_4" id="7335099364344062932" />
+      </scope>
+      <scope id="7335099364344262960" at="140,0,152,0" />
+      <scope id="7335099364344169953" at="168,0,180,0" />
+      <scope id="7335099364343995950" at="190,0,202,0" />
+      <scope id="7335099364344062932" at="126,0,140,0">
+        <var name="parameter_1" id="7335099364344062932" />
+      </scope>
+      <scope id="7335099364344262967" at="152,80,166,24">
+        <var name="facade" id="7335099364344262967" />
+        <var name="quotedNode_2" id="7335099364344262967" />
+        <var name="quotedNode_3" id="7335099364344262967" />
+        <var name="quotedNode_4" id="7335099364344262967" />
+      </scope>
+      <scope id="7335099364344262967" at="152,0,168,0">
+        <var name="parameter_1" id="7335099364344262967" />
+      </scope>
+      <unit id="7335099364343988896" at="211,0,215,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_QuotationDetachNodes_Test$LINKS" />
+      <unit id="7335099364343988896" at="216,0,221,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_QuotationDetachNodes_Test$CONCEPTS" />
+      <unit id="7335099364343988896" at="21,0,222,0" name="jetbrains.mps.lang.quotation.test.editorTest.Test_QuotationDetachNodes_Test" />
+    </file>
+  </root>
+</debug-info>
+

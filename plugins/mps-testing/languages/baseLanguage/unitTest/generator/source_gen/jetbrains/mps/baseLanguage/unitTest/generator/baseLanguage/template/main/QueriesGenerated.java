@@ -56,8 +56,8 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTest$aQbe) != null);
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
-    // there are BTestCases with explicit JUnit4 annotations, e.g. 
-    // in j.m.make.tests 
+    // there are BTestCases with explicit JUnit4 annotations, e.g.
+    // in j.m.make.tests
     return !(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), LINKS.annotation$K49I), LINKS.annotation$12Ek)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.is(it, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
@@ -102,8 +102,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_3_1(final SourceSubstituteMacroNodeContext _context) {
     SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.expected$QBis));
-    // XXX this is just to avoid null input for the switch 
-    //    (it doesn't take it easy) and pass any value to get switch's default triggered 
+    // XXX this is just to avoid null input for the switch
+    //    (it doesn't take it easy) and pass any value to get switch's default triggered
     return (type == null ? _context.getNode() : type);
   }
   public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
@@ -174,9 +174,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.testMethodList$EShx), LINKS.testMethod$eMP1);
   }
   public static Iterable<SNode> sourceNodesQuery_0_4(final SourceSubstituteMacroNodesContext _context) {
-    // BTestCase, despite being ClassConcept, still uses deprecated roles 
-    // to keep its methods/fields, see its editor declaration. Therefore, have to use 
-    // members(), not member 
+    // BTestCase, despite being ClassConcept, still uses deprecated roles
+    // to keep its methods/fields, see its editor declaration. Therefore, have to use
+    // members(), not member
     return Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(_context.getNode())).subtract(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.fields_id4_LVZ3pC27C.invoke(_context.getNode()))).subtract(Sequence.fromIterable(Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(_context.getNode())));
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {

@@ -106,8 +106,8 @@ public class QueriesUtil {
           return false;
         }
         if (SNodeOperations.isInstanceOf(it, CONCEPTS.ITemplateCall$ab) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.ITemplateCall$ab), LINKS.template$6_6), PROPS.needCallSite$fSr_)) {
-          // if we are inside a macro nested under CALL/SWITCH that passes CALL-SITE value, we 
-          // are likely evaluating the value, and need not to look at CALL/SWTICH input node 
+          // if we are inside a macro nested under CALL/SWITCH that passes CALL-SITE value, we
+          // are likely evaluating the value, and need not to look at CALL/SWTICH input node
           return false;
         }
         return true;

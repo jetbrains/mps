@@ -191,8 +191,8 @@ import java.util.Stack;
       myResult = type;
     }
     protected void addPart(ASMType type) {
-      // the idea behind this odd code is to add 'parts' of type specification, where parts are elements  
-      // of generic declaration, e.g. Function<A[], ? extends B>, A and B are parts for `Function` type 
+      // the idea behind this odd code is to add 'parts' of type specification, where parts are elements 
+      // of generic declaration, e.g. Function<A[], ? extends B>, A and B are parts for `Function` type
       if (myTypes.isEmpty()) {
         myTypes.add(type);
         return;
@@ -235,7 +235,7 @@ import java.util.Stack;
       }
     }
     private ASMType wrap(ASMType type) {
-      //  I hate this idea of wildcard state and wrap/unwrap logic, just don't want to refactor this right now 
+      //  I hate this idea of wildcard state and wrap/unwrap logic, just don't want to refactor this right now
       if (myWildcard == '+') {
         myWildcard = '=';
         return new ASMExtendsType(type);
@@ -255,24 +255,24 @@ import java.util.Stack;
     }
     @Override
     public void visitTypeArgument() {
-      // see #visitTypeArgument(char) 
+      // see #visitTypeArgument(char)
       consumeArrayTypes();
       addPart(new ASMUnboundedType());
     }
     @Override
     public SignatureVisitor visitTypeArgument(char wildcard) {
-      // in case prev type argument was an array, add its part 
-      // AFAIK, visitTypeArgument() comes for every type argument, therefore it's sufficient to account 
-      // for consumeArrayTypes() only inside 2 visitTypeArgument() methods, others (like visitClassType or  
-      // visitTypeVariable) are preceded by visitTypeArgument() call. 
+      // in case prev type argument was an array, add its part
+      // AFAIK, visitTypeArgument() comes for every type argument, therefore it's sufficient to account
+      // for consumeArrayTypes() only inside 2 visitTypeArgument() methods, others (like visitClassType or 
+      // visitTypeVariable) are preceded by visitTypeArgument() call.
       consumeArrayTypes();
-      // XXX why not addPart(new ? extends ASMBoundedType()), with subsequent setBound() instead of wrap/unwrap? 
+      // XXX why not addPart(new ? extends ASMBoundedType()), with subsequent setBound() instead of wrap/unwrap?
       myWildcard = wildcard;
       return this;
     }
     @Override
     public void visitBaseType(char descriptor) {
-      // not aware of a scenario, where baseType (e.g. int) could come as 'part' after an array, hence no consumeArrayTypes() 
+      // not aware of a scenario, where baseType (e.g. int) could come as 'part' after an array, hence no consumeArrayTypes()
       addPart(ASMPrimitiveType.from(descriptor));
     }
     @Override
@@ -291,11 +291,11 @@ import java.util.Stack;
     }
     @Override
     public void visitEnd() {
-      // JFTR, this method is invoked for every class name followed by ';', i.e. comes twice for "LConsumer<LString;>;" 
+      // JFTR, this method is invoked for every class name followed by ';', i.e. comes twice for "LConsumer<LString;>;"
       if (myArrayVisitor != null) {
         consumeArrayTypes();
       } else {
-        // XXX no idea why no finish() when a type (e.g. LFunction<int[], long[]>); has been encountered 
+        // XXX no idea why no finish() when a type (e.g. LFunction<int[], long[]>); has been encountered
         finish();
       }
     }
@@ -309,8 +309,8 @@ import java.util.Stack;
     }
 
     /*package*/ ASMType getResult() {
-      // XXX I don't like this duplication of visitEnd and getResult, but visitEnd is not invoked for primitive types and 
-      // don't want to dive too deep into this code 
+      // XXX I don't like this duplication of visitEnd and getResult, but visitEnd is not invoked for primitive types and
+      // don't want to dive too deep into this code
       consumeArrayTypes();
       if (myResult == null) {
         finish();
