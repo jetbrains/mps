@@ -20,6 +20,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -81,6 +83,7 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
         }
       });
       SLinkOperations.addNewChild(node, LINKS.lines$U$m7, CONCEPTS.Line$yC);
+      SelectionUtil.selectCell(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).first(), SelectionManager.FIRST_CELL);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

@@ -79,8 +79,9 @@ public class PasteHandler {
               public void visit(SNode p) {
                 SNode l = Paragraph__BehaviorDescriptor.createLineInstance_id7q4Ywce6bwW.invoke(p);
                 Line__BehaviorDescriptor.initializeFromParagraphs_id2iG$EWuZbnH.invoke(l, p);
+                SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
                 Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
-                currentNode.value = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
+                currentNode.value = t;
               }
             });
           }
@@ -99,8 +100,9 @@ public class PasteHandler {
               currentLine.value = SNodeOperations.as(SNodeOperations.insertNextSiblingChild(currentLine.value, l), CONCEPTS.Line$yC);
             }
           } else {
+            SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
             Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
-            currentNode.value = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
+            currentNode.value = t;
           }
           continue;
         }
@@ -125,8 +127,9 @@ public class PasteHandler {
               }
             }).visitAll(new IVisitor<SNode>() {
               public void visit(SNode l) {
+                SNode t = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
                 Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, l, currentNode.value);
-                currentNode.value = ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).last();
+                currentNode.value = t;
               }
             });
           }
@@ -143,8 +146,9 @@ public class PasteHandler {
             }
           } else {
             // Add a space instead of a new line
+            SNode t = ListSequence.fromList(SLinkOperations.getChildren(pastedLine, LINKS.elements$_j45)).last();
             Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(currentLine.value, pastedLine, currentNode.value);
-            currentNode.value = ListSequence.fromList(SLinkOperations.getChildren(pastedLine, LINKS.elements$_j45)).last();
+            currentNode.value = t;
           }
         } else {
           SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
@@ -179,7 +183,7 @@ public class PasteHandler {
       }
       SelectionUtil.selectCell(editorContext, currentNode, SelectionManager.LAST_CELL);
     } else {
-      text.replaceAll("\n", " ");
+      text = text.replaceAll("\n", " ");
       SNode lastWord = insertWordsIntoLine(SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Line$yC), text);
       SelectionUtil.selectCell(editorContext, lastWord, SelectionManager.LAST_CELL);
     }

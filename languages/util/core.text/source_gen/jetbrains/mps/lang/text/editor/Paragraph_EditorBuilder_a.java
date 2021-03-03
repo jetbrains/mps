@@ -86,7 +86,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        if (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.letters$rNyA)).count() <= 10) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.letters$rNyA)).count() <= 10 || true) {
           return "";
         }
 
