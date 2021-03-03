@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ca5sb1v223tu69r1dgj5vwc04lc2uhs">
+<product version="3" modelHash="-22tzmc9olo53z62o17a8rm88ztl6nsa">
   <files names="ChangeSet.java:ChangeSetBuilder.java:ChangeSetImpl.java:DiffUtil.java:ElementaryChangesBuilder.java:ModelChangeSet.java:StructChangeSet.java:StructChangeSetBuilder.java:StructChangeSetImpl.java:TreeChangeSetBuilder.java" />
 </product>
 

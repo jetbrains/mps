@@ -188,14 +188,10 @@ __switch__:
     SNodeId oldTargetId = (oldReference instanceof DynamicReference ? null : check_z8xa03_a0a2a71(oldReference));
     SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a3a71(newReference));
     SModelReference oldTargetModel = check_z8xa03_a0e0r(oldReference);
-    if (SNodeOperations.getModel(oldNode).getReference().equals(oldTargetModel)) {
-      oldTargetModel = null;
-    }
-    SModelReference newTargetModel = check_z8xa03_a0g0r(newReference);
-    if (SNodeOperations.getModel(newNode).getReference().equals(newTargetModel)) {
-      newTargetModel = null;
-    }
-    return Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel);
+    SModelReference newTargetModel = check_z8xa03_a0f0r(newReference);
+
+    boolean modelsEquals = Objects.equals(oldTargetModel, newTargetModel) || (SNodeOperations.getModel(oldNode).getReference().equals(oldTargetModel) && SNodeOperations.getModel(newNode).getReference().equals(newTargetModel));
+    return Objects.equals(oldTargetId, newTargetId) && modelsEquals;
   }
 
   private static boolean referencesDifferByResolveInfo(SNode oldNode, SNode newNode, SReferenceLink role) {
@@ -308,7 +304,7 @@ __switch__:
     }
     return null;
   }
-  private static SModelReference check_z8xa03_a0g0r(SReference checkedDotOperand) {
+  private static SModelReference check_z8xa03_a0f0r(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }

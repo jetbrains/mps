@@ -12702,39 +12702,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="73Hubh$O04X" role="3cqZAp">
-          <node concept="3clFbS" id="73Hubh$O04Y" role="3clFbx">
-            <node concept="3clFbF" id="73Hubh$O04Z" role="3cqZAp">
-              <node concept="37vLTI" id="73Hubh$O050" role="3clFbG">
-                <node concept="10Nm6u" id="73Hubh$O051" role="37vLTx" />
-                <node concept="37vLTw" id="73Hubh$O052" role="37vLTJ">
-                  <ref role="3cqZAo" node="73Hubh$O04S" resolve="oldTargetModel" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="73Hubh$O053" role="3clFbw">
-            <node concept="2OqwBi" id="73Hubh$O054" role="2Oq$k0">
-              <node concept="liA8E" id="73Hubh$O055" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-              </node>
-              <node concept="2JrnkZ" id="73Hubh$O056" role="2Oq$k0">
-                <node concept="2OqwBi" id="73Hubh$O057" role="2JrQYb">
-                  <node concept="37vLTw" id="73Hubh$O058" role="2Oq$k0">
-                    <ref role="3cqZAo" node="73Hubh$O05S" resolve="oldNode" />
-                  </node>
-                  <node concept="I4A8Y" id="73Hubh$O059" role="2OqNvi" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="73Hubh$O05a" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-              <node concept="37vLTw" id="73Hubh$O05b" role="37wK5m">
-                <ref role="3cqZAo" node="73Hubh$O04S" resolve="oldTargetModel" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="73Hubh$O05c" role="3cqZAp">
           <node concept="3cpWsn" id="73Hubh$O05d" role="3cpWs9">
             <property role="TrG5h" value="newTargetModel" />
@@ -12751,35 +12718,65 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="73Hubh$O05i" role="3cqZAp">
-          <node concept="3clFbS" id="73Hubh$O05j" role="3clFbx">
-            <node concept="3clFbF" id="73Hubh$O05k" role="3cqZAp">
-              <node concept="37vLTI" id="73Hubh$O05l" role="3clFbG">
-                <node concept="10Nm6u" id="73Hubh$O05m" role="37vLTx" />
-                <node concept="37vLTw" id="73Hubh$O05n" role="37vLTJ">
+        <node concept="3clFbH" id="60UInwUGXXm" role="3cqZAp" />
+        <node concept="3cpWs8" id="2zxkGy4vwwB" role="3cqZAp">
+          <node concept="3cpWsn" id="2zxkGy4vwwE" role="3cpWs9">
+            <property role="TrG5h" value="modelsEquals" />
+            <node concept="10P_77" id="2zxkGy4vww_" role="1tU5fm" />
+            <node concept="22lmx$" id="2zxkGy4vA1H" role="33vP2m">
+              <node concept="1eOMI4" id="2zxkGy4vAdg" role="3uHU7w">
+                <node concept="1Wc70l" id="2zxkGy4vCxz" role="1eOMHV">
+                  <node concept="2OqwBi" id="2zxkGy4vAlr" role="3uHU7B">
+                    <node concept="2OqwBi" id="2zxkGy4vAls" role="2Oq$k0">
+                      <node concept="liA8E" id="2zxkGy4vAlt" role="2OqNvi">
+                        <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
+                      </node>
+                      <node concept="2JrnkZ" id="2zxkGy4vAlu" role="2Oq$k0">
+                        <node concept="2OqwBi" id="2zxkGy4vAlv" role="2JrQYb">
+                          <node concept="37vLTw" id="2zxkGy4vAlw" role="2Oq$k0">
+                            <ref role="3cqZAo" node="73Hubh$O05S" resolve="oldNode" />
+                          </node>
+                          <node concept="I4A8Y" id="2zxkGy4vAlx" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2zxkGy4vAly" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                      <node concept="37vLTw" id="2zxkGy4vAlz" role="37wK5m">
+                        <ref role="3cqZAo" node="73Hubh$O04S" resolve="oldTargetModel" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="2zxkGy4vEx8" role="3uHU7w">
+                    <node concept="2OqwBi" id="2zxkGy4vEx9" role="2Oq$k0">
+                      <node concept="liA8E" id="2zxkGy4vExa" role="2OqNvi">
+                        <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
+                      </node>
+                      <node concept="2JrnkZ" id="2zxkGy4vExb" role="2Oq$k0">
+                        <node concept="2OqwBi" id="2zxkGy4vExc" role="2JrQYb">
+                          <node concept="37vLTw" id="2zxkGy4vExd" role="2Oq$k0">
+                            <ref role="3cqZAo" node="73Hubh$O05U" resolve="newNode" />
+                          </node>
+                          <node concept="I4A8Y" id="2zxkGy4vExe" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2zxkGy4vExf" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                      <node concept="37vLTw" id="2zxkGy4vExg" role="37wK5m">
+                        <ref role="3cqZAo" node="73Hubh$O05d" resolve="newTargetModel" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="17R0WA" id="2zxkGy4vyuU" role="3uHU7B">
+                <node concept="37vLTw" id="2zxkGy4vyuV" role="3uHU7B">
+                  <ref role="3cqZAo" node="73Hubh$O04S" resolve="oldTargetModel" />
+                </node>
+                <node concept="37vLTw" id="2zxkGy4vyuW" role="3uHU7w">
                   <ref role="3cqZAo" node="73Hubh$O05d" resolve="newTargetModel" />
                 </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="73Hubh$O05o" role="3clFbw">
-            <node concept="2OqwBi" id="73Hubh$O05p" role="2Oq$k0">
-              <node concept="liA8E" id="73Hubh$O05q" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-              </node>
-              <node concept="2JrnkZ" id="73Hubh$O05r" role="2Oq$k0">
-                <node concept="2OqwBi" id="73Hubh$O05s" role="2JrQYb">
-                  <node concept="37vLTw" id="73Hubh$O05t" role="2Oq$k0">
-                    <ref role="3cqZAo" node="73Hubh$O05U" resolve="newNode" />
-                  </node>
-                  <node concept="I4A8Y" id="73Hubh$O05u" role="2OqNvi" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="73Hubh$O05v" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-              <node concept="37vLTw" id="73Hubh$O05w" role="37wK5m">
-                <ref role="3cqZAo" node="73Hubh$O05d" resolve="newTargetModel" />
               </node>
             </node>
           </node>
@@ -12794,13 +12791,8 @@
                 <ref role="3cqZAo" node="73Hubh$O04H" resolve="newTargetId" />
               </node>
             </node>
-            <node concept="17R0WA" id="73Hubh$O05B" role="3uHU7w">
-              <node concept="37vLTw" id="73Hubh$O05C" role="3uHU7B">
-                <ref role="3cqZAo" node="73Hubh$O04S" resolve="oldTargetModel" />
-              </node>
-              <node concept="37vLTw" id="73Hubh$O05D" role="3uHU7w">
-                <ref role="3cqZAo" node="73Hubh$O05d" resolve="newTargetModel" />
-              </node>
+            <node concept="37vLTw" id="60UInwUGUcH" role="3uHU7w">
+              <ref role="3cqZAo" node="2zxkGy4vwwE" resolve="modelsEquals" />
             </node>
           </node>
         </node>
