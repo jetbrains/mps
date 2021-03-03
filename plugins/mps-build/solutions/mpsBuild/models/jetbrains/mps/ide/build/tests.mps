@@ -25,6 +25,7 @@
         <child id="6593674873639478221" name="haltonfailure" index="24c_eh" />
         <child id="6593674873635848987" name="requiredPlugins" index="24YFd7" />
         <child id="1688667350638517006" name="compressArgs" index="XX84c" />
+        <child id="3609768169816292377" name="jvmArgs" index="1psgkv" />
       </concept>
       <concept id="6593674873635848984" name="jetbrains.mps.build.mps.tests.structure.RequiredPlugin" flags="ng" index="24YFd4">
         <reference id="6593674873635848985" name="plugin" index="24YFd5" />
@@ -270,6 +271,11 @@
         <node concept="NbPM2" id="1tJmw8EBzLa" role="XX84c">
           <node concept="3Mxwew" id="1tJmw8EBzL9" role="3MwsjC">
             <property role="3MwjfP" value="true" />
+          </node>
+        </node>
+        <node concept="NbPM2" id="372aBDf0kSE" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSF" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
           </node>
         </node>
       </node>
@@ -1899,7 +1905,13 @@
     </node>
     <node concept="22LTRH" id="53PdBITeUc9" role="1hWBAP">
       <property role="TrG5h" value="editor" />
-      <node concept="24cAiW" id="5I1s5NvQ4SW" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4SW" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSG" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSH" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="53PdBITeVy$" role="22LTRK">
         <ref role="22LTRG" node="53PdBITeUcb" resolve="editor-tests" />
       </node>
@@ -2797,6 +2809,11 @@
         <node concept="NbPM2" id="6g2MV4s62LI" role="24c_eh">
           <node concept="3Mxwey" id="aAVDHmDgl9" role="3MwsjC">
             <ref role="3Mxwex" node="6g2MV4s3Qza" resolve="mps.junit.haltonfailure" />
+          </node>
+        </node>
+        <node concept="NbPM2" id="372aBDf0kSI" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSJ" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
           </node>
         </node>
       </node>
@@ -3870,6 +3887,11 @@
             <property role="3MwjfP" value="false" />
           </node>
         </node>
+        <node concept="NbPM2" id="372aBDf0kSK" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSL" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
       </node>
       <node concept="22LTRM" id="2LuGVbI__1o" role="22LTRK">
         <ref role="22LTRN" node="2LuGVbI_yZD" resolve="jetbrains.mps.build.tests" />
@@ -3942,7 +3964,13 @@
     </node>
     <node concept="22LTRH" id="yja7V_1HGZ" role="1hWBAP">
       <property role="TrG5h" value="generator" />
-      <node concept="24cAiW" id="5I1s5NvQ4SZ" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4SZ" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSM" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSN" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="yja7V_1JuO" role="22LTRK">
         <ref role="22LTRG" node="yja7V_1HH2" resolve="generator-tests" />
       </node>
@@ -5671,6 +5699,11 @@
             <property role="3MwjfP" value="true" />
           </node>
         </node>
+        <node concept="NbPM2" id="372aBDf0kSO" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSP" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
       </node>
       <node concept="22LTRF" id="PTnqpvDqSS" role="22LTRK">
         <ref role="22LTRG" node="yja7V_1MyU" resolve="java-tests" />
@@ -6013,7 +6046,13 @@
     </node>
     <node concept="22LTRH" id="3yaq6Y8lhnN" role="1hWBAP">
       <property role="TrG5h" value="smodel" />
-      <node concept="24cAiW" id="5I1s5NvQ4T1" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T1" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSQ" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSR" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="3_1qLajoFoI" role="22LTRK">
         <ref role="22LTRG" node="4Etbw8EUKkn" resolve="smodel" />
       </node>
@@ -6520,7 +6559,13 @@
     <property role="2DA0ip" value="../../../../" />
     <node concept="22LTRH" id="2_mwjmp6Ln5" role="1hWBAP">
       <property role="TrG5h" value="actions" />
-      <node concept="24cAiW" id="5I1s5NvQ4T2" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T2" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSS" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kST" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="3uCFJsbkQba" role="22LTRK">
         <ref role="22LTRN" node="5qjB6M$jGbk" resolve="jetbrains.mps.testActions" />
       </node>
@@ -6729,7 +6774,13 @@
     <property role="2DA0ip" value="../../../../" />
     <node concept="22LTRH" id="4lIfGX7EXv4" role="1hWBAP">
       <property role="TrG5h" value="editorDiagram" />
-      <node concept="24cAiW" id="5I1s5NvQ4T3" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T3" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSU" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSV" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="4lIfGX7FocO" role="22LTRK">
         <ref role="22LTRG" node="4lIfGX7Bg6t" resolve="diagram-editor-tests" />
       </node>
@@ -7076,7 +7127,13 @@
     <property role="2DA0ip" value="../../../../" />
     <node concept="22LTRH" id="1NKy5CJqdGa" role="1hWBAP">
       <property role="TrG5h" value="implementationStripping" />
-      <node concept="24cAiW" id="5I1s5NvQ4T4" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T4" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSW" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSX" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="1NKy5CJqdGb" role="22LTRK">
         <ref role="22LTRG" node="1NKy5CJqdGe" resolve="implementation-stripping-tests" />
       </node>
@@ -7811,7 +7868,13 @@
     <node concept="1gjT0q" id="5bAGsVFhMvr" role="10PD9s" />
     <node concept="22LTRH" id="1WSLgzr6j4B" role="1hWBAP">
       <property role="TrG5h" value="packaged" />
-      <node concept="24cAiW" id="5I1s5NvQ4T5" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T5" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kSY" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kSZ" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="1J9x1z49eFC" role="22LTRK">
         <ref role="22LTRN" node="5bAGsVFhMB9" resolve="testPackagedLanguage.test" />
       </node>
@@ -7962,7 +8025,13 @@
     </node>
     <node concept="22LTRH" id="6sT62Z6SkhC" role="1hWBAP">
       <property role="TrG5h" value="mpsTestModules" />
-      <node concept="24cAiW" id="5I1s5NvQ4T6" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T6" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kT0" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kT1" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="6sT62Z6SkhD" role="22LTRK">
         <ref role="22LTRG" node="6sT62Z6Skj9" resolve="behavior-tests" />
       </node>
@@ -9282,7 +9351,13 @@
     </node>
     <node concept="22LTRH" id="3m6iW5ABT2Z" role="1hWBAP">
       <property role="TrG5h" value="imageGenTests" />
-      <node concept="24cAiW" id="5I1s5NvQ4T7" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T7" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kT2" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kT3" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="3m6iW5ABTpe" role="22LTRK">
         <ref role="22LTRG" node="3m6iW5ABSW0" resolve="imagegen-editor-tests" />
       </node>
@@ -9302,7 +9377,13 @@
     <property role="2DA0ip" value="../../../../" />
     <node concept="22LTRH" id="7S0pHCuh8J" role="1hWBAP">
       <property role="TrG5h" value="dataFlow" />
-      <node concept="24cAiW" id="5I1s5NvQ4T8" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T8" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kT4" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kT5" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="7S0pHCuh8K" role="22LTRK">
         <ref role="22LTRN" node="7S0pHCuh8N" resolve="analyzers.test" />
       </node>
@@ -11441,7 +11522,13 @@
     </node>
     <node concept="22LTRH" id="4Sf$XywNuaO" role="1hWBAP">
       <property role="TrG5h" value="transformationMenuTests" />
-      <node concept="24cAiW" id="5I1s5NvQ4T9" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4T9" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kT6" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kT7" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="4Sf$XywNuaP" role="22LTRK">
         <ref role="22LTRG" node="4Sf$XywNuax" resolve="context-assistant-tests" />
       </node>
@@ -11479,7 +11566,13 @@
     <property role="2DA0ip" value="../../../../" />
     <node concept="22LTRH" id="5leSqRbdCLs" role="1hWBAP">
       <property role="TrG5h" value="http-support" />
-      <node concept="24cAiW" id="5I1s5NvQ4Ta" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4Ta" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kT8" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kT9" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="5leSqRbdCMk" role="22LTRK">
         <ref role="22LTRG" node="5leSqRbdCzD" resolve="http-support-tests" />
       </node>
@@ -12016,7 +12109,13 @@
     </node>
     <node concept="22LTRH" id="2w4VT5Ubdow" role="1hWBAP">
       <property role="TrG5h" value="constraints" />
-      <node concept="24cAiW" id="5I1s5NvQ4Tb" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4Tb" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kTa" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTb" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="63dIq7NT$5y" role="22LTRK">
         <ref role="22LTRN" node="2w4VT5Ubdsy" resolve="TestConstraints" />
       </node>
@@ -12091,7 +12190,13 @@
     <property role="turDy" value="mpsSmartRefAttrMigration_gen.xml" />
     <node concept="22LTRH" id="4C1xqj43cDQ" role="1hWBAP">
       <property role="TrG5h" value="sraMigration" />
-      <node concept="24cAiW" id="5I1s5NvQ4Tc" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4Tc" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kTc" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTd" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="4C1xqj43cHF" role="22LTRK">
         <ref role="22LTRN" node="4C1xqj43cz9" resolve="jetbrains.mps.tests.sraMigration" />
       </node>
@@ -12333,6 +12438,11 @@
             <property role="3MwjfP" value="true" />
           </node>
         </node>
+        <node concept="NbPM2" id="372aBDf0kTe" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTf" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
       </node>
       <node concept="22LTRM" id="1Ue8MQkfJm7" role="22LTRK">
         <ref role="22LTRN" node="1Ue8MQkfJlW" resolve="jetbrains.mps.lang.typesystem.test" />
@@ -12385,7 +12495,7 @@
   </node>
   <node concept="1l3spW" id="3HV74$eh7kR">
     <property role="TrG5h" value="mpsText" />
-    <property role="turDy" value="mpsText.xml" />
+    <property role="turDy" value="mpsText.x.ml" />
     <property role="2DA0ip" value="../../../../" />
     <node concept="398rNT" id="3HV74$eh7kS" role="1l3spd">
       <property role="TrG5h" value="mps_home" />
@@ -12423,7 +12533,13 @@
     </node>
     <node concept="22LTRH" id="3HV74$eh7l1" role="1hWBAP">
       <property role="TrG5h" value="text" />
-      <node concept="24cAiW" id="5I1s5NvQ4Te" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4Te" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kTg" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTh" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRF" id="3HV74$eh7l2" role="22LTRK">
         <ref role="22LTRG" node="3HV74$eh7l3" resolve="text" />
       </node>
@@ -12508,7 +12624,13 @@
     <property role="turDy" value="mpsConsole.xml" />
     <node concept="22LTRH" id="7ZKuP1FosmV" role="1hWBAP">
       <property role="TrG5h" value="console" />
-      <node concept="24cAiW" id="5I1s5NvQ4Tf" role="24cAkG" />
+      <node concept="24cAiW" id="5I1s5NvQ4Tf" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kTi" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTj" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="7ZKuP1Fosrt" role="22LTRK">
         <ref role="22LTRN" node="7ZKuP1Fosaj" resolve="jetbrains.mps.console.tests" />
       </node>
@@ -12766,7 +12888,13 @@
       <node concept="22LTRF" id="6IYCYtgo1pX" role="22LTRK">
         <ref role="22LTRG" node="6IYCYtgo1p5" resolve="test" />
       </node>
-      <node concept="24cAiW" id="6IYCYtgo1pZ" role="24cAkG" />
+      <node concept="24cAiW" id="6IYCYtgo1pZ" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kTk" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTl" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="1l3spW" id="2Ew8zTEYB1j">
@@ -12938,7 +13066,13 @@
     </node>
     <node concept="22LTRH" id="2Ew8zTEYB2B" role="1hWBAP">
       <property role="TrG5h" value="feedback" />
-      <node concept="24cAiW" id="2Ew8zTEYB2C" role="24cAkG" />
+      <node concept="24cAiW" id="2Ew8zTEYB2C" role="24cAkG">
+        <node concept="NbPM2" id="372aBDf0kTm" role="1psgkv">
+          <node concept="3Mxwew" id="372aBDf0kTn" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
       <node concept="22LTRM" id="2Ew8zTEYB9a" role="22LTRK">
         <ref role="22LTRN" node="2Ew8zTEYB4a" resolve="messages.sandbox" />
       </node>
