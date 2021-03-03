@@ -2630,7 +2630,7 @@ public class QueriesGenerated {
     return new ConceptMethodSuperCall(_context.getNode()).getMethodCallTarget();
   }
   public static Object varMacro_Value_120_0(final TemplateVarContext _context) {
-    SModuleReference moduleReference = ModuleIdentity__BehaviorDescriptor.getModuleReference_idnJmxU5cSSU.invoke(_context.getNode());
+    SModuleReference moduleReference = jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(_context.getNode());
     if (moduleReference == null) {
       _context.showErrorMessage(_context.getNode(), "module pointer without valid module id");
     }

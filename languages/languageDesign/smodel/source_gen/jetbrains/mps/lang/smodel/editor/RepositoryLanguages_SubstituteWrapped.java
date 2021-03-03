@@ -119,14 +119,14 @@ public class RepositoryLanguages_SubstituteWrapped extends SubstituteMenuBase {
   }
   private static SNode createLanguageIdentityBySourceModule_z8062m_a0a0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LanguageIdentityBySourceModule$T8);
-    n0.forChild(LINKS.moduleReference$Jac_).initNode(p0, CONCEPTS.ModuleIdentity$U1, true);
+    n0.forChild(LINKS.moduleReference$Jac_).initNode(p0, CONCEPTS.ModuleIdentity$2y, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LanguageIdentityBySourceModule$T8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
     /*package*/ static final SConcept ModulePointer$Ay = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
-    /*package*/ static final SInterfaceConcept ModuleIdentity$U1 = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e85338e1eL, "jetbrains.mps.lang.smodel.structure.ModuleIdentity");
+    /*package*/ static final SInterfaceConcept ModuleIdentity$2y = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afc2bc9L, "jetbrains.mps.lang.modelapi.structure.ModuleIdentity");
   }
 
   private static final class LINKS {

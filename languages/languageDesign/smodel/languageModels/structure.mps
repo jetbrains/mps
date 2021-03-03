@@ -2290,16 +2290,13 @@
       <property role="20kJfa" value="languageId" />
       <property role="20lbJX" value="fLJekj4" />
       <property role="IQ2ns" value="3542851458883491298" />
-      <ref role="20lvS9" node="50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+      <ref role="20lvS9" node="34EJa6aIcco" resolve="LanguageIdentity" />
     </node>
   </node>
   <node concept="PlHQZ" id="34EJa6aIcco">
     <property role="TrG5h" value="LanguageIdentity" />
     <property role="3GE5qa" value="identity" />
     <property role="EcuMT" value="3542851458883437336" />
-    <node concept="PrWs8" id="50fTm6QQzRM" role="PrDN$">
-      <ref role="PrY4T" node="50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
-    </node>
   </node>
   <node concept="1TIwiD" id="BpxLfMiwTr">
     <property role="TrG5h" value="ChildAttributeQualifier" />
@@ -2657,15 +2654,6 @@
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
     </node>
   </node>
-  <node concept="PlHQZ" id="50fTm6QQzRL">
-    <property role="TrG5h" value="AbstractLanguageIdentity" />
-    <property role="3GE5qa" value="identity" />
-    <property role="EcuMT" value="5769081855527239153" />
-    <node concept="asaX9" id="5ZqXG2mB6OK" role="lGtFl">
-      <property role="YLPcu" value="2019.2" />
-      <property role="YLQ7P" value="This interface captures nothing and shall not be in use. Use LanguageIdentity instead" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="296OPknU5z2">
     <property role="EcuMT" value="2469893808086079682" />
     <property role="3GE5qa" value="identity" />
@@ -2676,10 +2664,10 @@
       <property role="20lmBu" value="fLJjDmT" />
       <property role="20kJfa" value="moduleReference" />
       <property role="20lbJX" value="fLJekj4" />
-      <ref role="20lvS9" node="nJmxU5cSSu" resolve="ModuleIdentity" />
+      <ref role="20lvS9" to="dvox:_GDk1qZ2J9" resolve="ModuleIdentity" />
     </node>
-    <node concept="PrWs8" id="296OPknU5z3" role="PzmwI">
-      <ref role="PrY4T" node="50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+    <node concept="PrWs8" id="1g73YSPLQgB" role="PzmwI">
+      <ref role="PrY4T" node="34EJa6aIcco" resolve="LanguageIdentity" />
     </node>
   </node>
   <node concept="1TIwiD" id="6qMaajUPFau">

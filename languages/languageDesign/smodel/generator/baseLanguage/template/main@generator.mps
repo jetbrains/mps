@@ -21074,7 +21074,7 @@
   <node concept="13MO4I" id="50fTm6QQQQw">
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="reduce_ModuleIdentity_SLanguage" />
-    <ref role="3gUMe" to="tp25:nJmxU5cSSu" resolve="ModuleIdentity" />
+    <ref role="3gUMe" to="dvox:_GDk1qZ2J9" resolve="ModuleIdentity" />
     <node concept="2YIFZM" id="50fTm6QQSYp" role="13RCb5">
       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
       <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(long,long,java.lang.String)" resolve="getLanguage" />
@@ -21208,8 +21208,8 @@
                   </node>
                   <node concept="2OqwBi" id="3612de$WhMA" role="33vP2m">
                     <node concept="30H73N" id="3612de$WhMB" role="2Oq$k0" />
-                    <node concept="2qgKlT" id="3612de$WhMC" role="2OqNvi">
-                      <ref role="37wK5l" to="tpeu:nJmxU5cSSU" resolve="getModuleReference" />
+                    <node concept="2qgKlT" id="1g73YSPP5UJ" role="2OqNvi">
+                      <ref role="37wK5l" to="xlb7:1Bs_61$mqDd" resolve="toModuleReference" />
                     </node>
                   </node>
                 </node>

@@ -16,7 +16,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.lang.smodel.behavior.ModuleIdentity__BehaviorDescriptor;
+import jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
@@ -58,7 +58,7 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
           // likely, some generator macros that require human intervention to get them fixed properly 
           continue;
         }
-        SModuleReference mref = ModuleIdentity__BehaviorDescriptor.getModuleReference_idnJmxU5cSSU.invoke(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_));
+        SModuleReference mref = ModuleIdentity__BehaviorDescriptor.toModuleReference_id1Bs_61$mqDd.invoke(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_));
         SNode langId = SNodeOperations.replaceWithNewChild(SLinkOperations.getTarget(lre, LINKS.languageId$xSH1), CONCEPTS.LanguageId$UR);
         LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(langId, MetaAdapterFactory.getLanguage(mref));
       }

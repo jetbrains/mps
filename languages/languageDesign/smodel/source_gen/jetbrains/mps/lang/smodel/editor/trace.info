@@ -19934,8 +19934,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/2469893808086378768">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2469893808086378768" at="552,90,553,102" concept="8" />
-      <scope id="2469893808086378768" at="552,90,553,102" />
+      <node id="2469893808086378768" at="579,90,580,102" concept="8" />
+      <scope id="2469893808086378768" at="579,90,580,102" />
     </file>
     <file name="RepositoryLanguages_SubstituteWrapped.java">
       <node id="2469893808086378768" at="42,118,43,140" concept="7" />
@@ -19970,7 +19970,7 @@
       <node id="2469893808086379903" at="122,91,123,26" concept="8" />
       <node id="2469893808086378768" at="127,0,128,0" concept="11" trace="LanguageIdentityBySourceModule$T8" />
       <node id="2469893808086378768" at="128,0,129,0" concept="11" trace="ModulePointer$Ay" />
-      <node id="2469893808086378768" at="129,0,130,0" concept="11" trace="ModuleIdentity$U1" />
+      <node id="2469893808086378768" at="129,0,130,0" concept="11" trace="ModuleIdentity$2y" />
       <node id="2469893808086378768" at="133,0,134,0" concept="11" trace="moduleReference$Jac_" />
       <node id="2469893808086378789" at="102,312,105,11" concept="4" />
       <node id="2469893808086378789" at="116,0,119,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -25026,7 +25026,7 @@
       <node id="4497478346159783452" at="144,48,145,24" concept="8" />
       <node id="4497478346159783452" at="151,118,152,137" concept="2" />
       <node id="4497478346159783452" at="154,42,155,51" concept="2" />
-      <node id="4497478346159783452" at="156,7,157,260" concept="2" />
+      <node id="4497478346159783452" at="156,7,157,244" concept="2" />
       <node id="4497478346159783452" at="160,44,161,41" concept="2" />
       <node id="4497478346159783452" at="161,41,162,110" concept="2" />
       <node id="4497478346159783452" at="163,11,164,56" concept="7" />
@@ -25047,7 +25047,7 @@
       <node id="4497478346159783452" at="189,0,190,0" concept="11" trace="moduleReference$Jac_" />
       <node id="4497478346159783452" at="193,0,194,0" concept="11" trace="LanguageIdentityBySourceModule$T8" />
       <node id="4497478346159783452" at="194,0,195,0" concept="11" trace="LanguageRefExpression$PI" />
-      <node id="4497478346159783452" at="195,0,196,0" concept="11" trace="AbstractLanguageIdentity$x4" />
+      <node id="4497478346159783452" at="195,0,196,0" concept="11" trace="LanguageIdentity$cN" />
       <node id="4497478346159783452" at="42,0,44,0" concept="3" trace="myNode" />
       <node id="4497478346159783452" at="94,10,96,5" concept="0" />
       <node id="4497478346159783452" at="126,0,128,0" concept="3" trace="myNode" />
@@ -25123,7 +25123,7 @@
       <scope id="4497478346159783452" at="140,0,147,0">
         <var name="child" id="4497478346159783452" />
       </scope>
-      <scope id="4497478346159783452" at="150,87,157,260" />
+      <scope id="4497478346159783452" at="150,87,157,244" />
       <scope id="4497478346159785612" at="177,41,184,22">
         <var name="editorCell" id="4497478346159785612" />
         <var name="style" id="4497478346159785612" />
@@ -26246,8 +26246,8 @@
       <unit id="4747359941571311476" at="25,0,105,0" name="jetbrains.mps.lang.smodel.editor.ChildAttributeQualifier_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311476" at="561,91,562,103" concept="8" />
-      <scope id="4747359941571311476" at="561,91,562,103" />
+      <node id="4747359941571311476" at="552,91,553,103" concept="8" />
+      <scope id="4747359941571311476" at="552,91,553,103" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/4747359941571311478">
@@ -27144,8 +27144,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/5503407155930883466">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="5503407155930883466" at="579,79,580,91" concept="8" />
-      <scope id="5503407155930883466" at="579,79,580,91" />
+      <node id="5503407155930883466" at="570,79,571,91" concept="8" />
+      <scope id="5503407155930883466" at="570,79,571,91" />
     </file>
     <file name="IconContainer.java">
       <node id="5503407155931368939" at="9,0,10,0" concept="11" trace="RESOURCE_a0a51e3f_0" />
@@ -27326,11 +27326,15 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/5503407155931295401">
-    <file name="AbstractLanguageIdentity_Transformation.java">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="5503407155931295401" at="420,84,421,100" concept="8" />
+      <scope id="5503407155931295401" at="420,84,421,100" />
+    </file>
+    <file name="LanguageIdentity_Transformation.java">
       <node id="5503407155931295401" at="29,0,30,0" concept="3" trace="myLocations" />
       <node id="5503407155931295401" at="31,67,32,63" concept="8" />
       <node id="5503407155931295401" at="37,99,38,49" concept="2" />
-      <node id="5503407155931295401" at="38,49,39,268" concept="2" />
+      <node id="5503407155931295401" at="38,49,39,260" concept="2" />
       <node id="5503407155931295401" at="40,9,41,44" concept="8" />
       <node id="5503407155931295401" at="42,15,43,50" concept="2" />
       <node id="5503407155931295401" at="49,124,50,156" concept="7" />
@@ -27350,7 +27354,7 @@
       <node id="5503407155930899648" at="50,156,53,5" concept="5" />
       <node id="5503407155930897102" at="78,0,81,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5503407155931295401" at="30,0,34,0" concept="6" trace="isApplicableToLocation#(Ljava/lang/String;)Z" />
-      <node id="5503407155931295401" at="39,268,44,5" concept="14" />
+      <node id="5503407155931295401" at="39,260,44,5" concept="14" />
       <node id="5503407155930897102" at="72,0,78,0" concept="6" trace="getSubstituteMenuLookup#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuLookup;" />
       <node id="5503407155930897102" at="61,51,69,7" concept="14" />
       <node id="5503407155931295401" at="47,0,56,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
@@ -27393,13 +27397,9 @@
       <scope id="5503407155930897102" at="58,0,71,0">
         <var name="context" id="5503407155930897102" />
       </scope>
-      <unit id="5503407155931295401" at="83,0,86,0" name="jetbrains.mps.lang.smodel.editor.AbstractLanguageIdentity_Transformation$CONCEPTS" />
-      <unit id="5503407155930897102" at="57,0,82,0" name="jetbrains.mps.lang.smodel.editor.AbstractLanguageIdentity_Transformation$TMP_IncludeSM_n8gl3s_a0" />
-      <unit id="5503407155931295401" at="28,0,87,0" name="jetbrains.mps.lang.smodel.editor.AbstractLanguageIdentity_Transformation" />
-    </file>
-    <file name="EditorAspectDescriptorImpl.java">
-      <node id="5503407155931295401" at="411,92,412,108" concept="8" />
-      <scope id="5503407155931295401" at="411,92,412,108" />
+      <unit id="5503407155931295401" at="83,0,86,0" name="jetbrains.mps.lang.smodel.editor.LanguageIdentity_Transformation$CONCEPTS" />
+      <unit id="5503407155930897102" at="57,0,82,0" name="jetbrains.mps.lang.smodel.editor.LanguageIdentity_Transformation$TMP_IncludeSM_ijvac9_a0" />
+      <unit id="5503407155931295401" at="28,0,87,0" name="jetbrains.mps.lang.smodel.editor.LanguageIdentity_Transformation" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/5555818573523588048">
@@ -32218,8 +32218,8 @@
       <unit id="8222125370833340695" at="28,0,87,0" name="jetbrains.mps.lang.smodel.editor.Devkits_Transformation" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8222125370833340695" at="420,75,421,91" concept="8" />
-      <scope id="8222125370833340695" at="420,75,421,91" />
+      <node id="8222125370833340695" at="411,75,412,91" concept="8" />
+      <scope id="8222125370833340695" at="411,75,412,91" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/8222125370833345075">
@@ -32411,8 +32411,8 @@
       <unit id="8222125370833345075" at="35,0,186,0" name="jetbrains.mps.lang.smodel.editor.Devkits_Substitute" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8222125370833345075" at="570,71,571,83" concept="8" />
-      <scope id="8222125370833345075" at="570,71,571,83" />
+      <node id="8222125370833345075" at="561,71,562,83" concept="8" />
+      <scope id="8222125370833345075" at="561,71,562,83" />
     </file>
     <file name="IconContainer.java">
       <node id="8222125370833345172" at="10,0,11,0" concept="11" trace="RESOURCE_a0a51e3f_1" />

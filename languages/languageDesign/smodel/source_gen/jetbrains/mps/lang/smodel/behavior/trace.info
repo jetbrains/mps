@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="BehaviorAspectDescriptor.java">
-      <unit at="14,0,392,0" name="jetbrains.mps.lang.smodel.behavior.BehaviorAspectDescriptor" />
+      <unit at="14,0,395,0" name="jetbrains.mps.lang.smodel.behavior.BehaviorAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)/1213877264086">
@@ -5944,6 +5944,105 @@
         <var name="parameters" id="1262430001741720179" />
       </scope>
       <unit id="1262430001741720179" at="21,0,81,0" name="jetbrains.mps.lang.smodel.behavior.Node_GetParentOperation__BehaviorDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)/1443139721374958140">
+    <file name="LanguageIdentityBySourceModule__BehaviorDescriptor.java">
+      <node id="1443139721374958140" at="30,0,31,0" concept="8" trace="CONCEPT" />
+      <node id="1443139721374958140" at="32,0,33,0" concept="8" trace="getLanguage_id34EJa6aIcyj" />
+      <node id="1443139721374958140" at="33,0,34,0" concept="8" trace="setLanguage_id34EJa6aIcyw" />
+      <node id="1443139721374958140" at="34,0,35,0" concept="8" trace="setLanguage_id5e7X3XCKW4J" />
+      <node id="1443139721374958140" at="36,0,37,0" concept="8" trace="BH_METHODS" />
+      <node id="1443139721374962996" at="38,63,39,101" concept="2" />
+      <node id="1443139721374997960" at="42,87,43,186" concept="7" />
+      <node id="1443139721374993186" at="45,102,46,267" concept="2" />
+      <node id="1443139721374958391" at="48,101,49,261" concept="2" />
+      <node id="1443139721374958140" at="56,114,57,21" concept="2" />
+      <node id="1443139721374958140" at="61,114,62,49" concept="6" />
+      <node id="1443139721374958140" at="63,26,64,56" concept="11" />
+      <node id="1443139721374958140" at="67,13,68,65" concept="7" />
+      <node id="1443139721374958140" at="69,13,70,67" concept="2" />
+      <node id="1443139721374958140" at="70,67,71,20" concept="7" />
+      <node id="1443139721374958140" at="72,13,73,66" concept="2" />
+      <node id="1443139721374958140" at="73,66,74,20" concept="7" />
+      <node id="1443139721374958140" at="75,14,76,58" concept="11" />
+      <node id="1443139721374958140" at="81,128,82,49" concept="6" />
+      <node id="1443139721374958140" at="83,26,84,56" concept="11" />
+      <node id="1443139721374958140" at="87,14,88,58" concept="11" />
+      <node id="1443139721374958140" at="94,48,95,22" concept="7" />
+      <node id="1443139721374958140" at="100,40,101,19" concept="7" />
+      <node id="1443139721374958140" at="105,0,106,0" concept="8" trace="moduleReference$Jac_" />
+      <node id="1443139721374958140" at="109,0,110,0" concept="8" trace="ModulePointer$7i" />
+      <node id="1443139721374958140" at="52,0,54,0" concept="1" trace="LanguageIdentityBySourceModule__BehaviorDescriptor#()V" />
+      <node id="1443139721374958140" at="38,0,41,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1443139721374958140" at="42,0,45,0" concept="9" trace="getLanguage_id34EJa6aIcyj#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="1443139721374958140" at="45,0,48,0" concept="9" trace="setLanguage_id34EJa6aIcyw#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SLanguage;)V" />
+      <node id="1443139721374958140" at="48,0,51,0" concept="9" trace="setLanguage_id5e7X3XCKW4J#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/Language;)V" />
+      <node id="1443139721374958140" at="62,49,65,5" concept="4" />
+      <node id="1443139721374958140" at="82,49,85,5" concept="4" />
+      <node id="1443139721374958140" at="55,0,59,0" concept="5" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
+      <node id="1443139721374958140" at="85,5,89,5" concept="10" />
+      <node id="1443139721374958140" at="92,0,97,0" concept="5" trace="getDeclaredMethods#()Ljava/util/List;" />
+      <node id="1443139721374958140" at="98,0,103,0" concept="5" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1443139721374958140" at="80,0,91,0" concept="5" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
+      <node id="1443139721374958140" at="65,5,77,5" concept="10" />
+      <node id="1443139721374958140" at="60,0,79,0" concept="5" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
+      <scope id="1443139721374958140" at="52,68,52,68" />
+      <scope id="1443139721374958140" at="38,63,39,101" />
+      <scope id="1443139721374958155" at="42,87,43,186" />
+      <scope id="1443139721374958165" at="45,102,46,267" />
+      <scope id="1443139721374958175" at="48,101,49,261" />
+      <scope id="1443139721374958140" at="56,114,57,21" />
+      <scope id="1443139721374958140" at="63,26,64,56" />
+      <scope id="1443139721374958140" at="67,13,68,65" />
+      <scope id="1443139721374958140" at="75,14,76,58" />
+      <scope id="1443139721374958140" at="83,26,84,56" />
+      <scope id="1443139721374958140" at="87,14,88,58" />
+      <scope id="1443139721374958140" at="94,48,95,22" />
+      <scope id="1443139721374958140" at="100,40,101,19" />
+      <scope id="1443139721374958140" at="52,0,54,0" />
+      <scope id="1443139721374958140" at="69,13,71,20" />
+      <scope id="1443139721374958140" at="72,13,74,20" />
+      <scope id="1443139721374958140" at="38,0,41,0">
+        <var name="__thisNode__" id="1443139721374958140" />
+      </scope>
+      <scope id="1443139721374958140" at="42,0,45,0">
+        <var name="__thisNode__" id="1443139721374958140" />
+      </scope>
+      <scope id="1443139721374958140" at="45,0,48,0">
+        <var name="__thisNode__" id="1443139721374958140" />
+        <var name="language" id="1443139721374958166" />
+      </scope>
+      <scope id="1443139721374958140" at="48,0,51,0">
+        <var name="__thisNode__" id="1443139721374958140" />
+        <var name="language" id="1443139721374958176" />
+      </scope>
+      <scope id="1443139721374958140" at="55,0,59,0">
+        <var name="constructor" id="1443139721374958140" />
+        <var name="node" id="1443139721374958140" />
+        <var name="parameters" id="1443139721374958140" />
+      </scope>
+      <scope id="1443139721374958140" at="92,0,97,0" />
+      <scope id="1443139721374958140" at="98,0,103,0" />
+      <scope id="1443139721374958140" at="81,128,89,5">
+        <var name="methodIndex" id="1443139721374958140" />
+      </scope>
+      <scope id="1443139721374958140" at="80,0,91,0">
+        <var name="concept" id="1443139721374958140" />
+        <var name="method" id="1443139721374958140" />
+        <var name="parameters" id="1443139721374958140" />
+      </scope>
+      <scope id="1443139721374958140" at="61,114,77,5">
+        <var name="methodIndex" id="1443139721374958140" />
+      </scope>
+      <scope id="1443139721374958140" at="60,0,79,0">
+        <var name="method" id="1443139721374958140" />
+        <var name="node" id="1443139721374958140" />
+        <var name="parameters" id="1443139721374958140" />
+      </scope>
+      <unit id="1443139721374958140" at="104,0,107,0" name="jetbrains.mps.lang.smodel.behavior.LanguageIdentityBySourceModule__BehaviorDescriptor$LINKS" />
+      <unit id="1443139721374958140" at="108,0,111,0" name="jetbrains.mps.lang.smodel.behavior.LanguageIdentityBySourceModule__BehaviorDescriptor$CONCEPTS" />
+      <unit id="1443139721374958140" at="29,0,112,0" name="jetbrains.mps.lang.smodel.behavior.LanguageIdentityBySourceModule__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)/1761385620274347093">

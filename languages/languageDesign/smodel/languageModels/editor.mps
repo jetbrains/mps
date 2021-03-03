@@ -39,6 +39,7 @@
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" />
     <import index="25zl" ref="r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)" />
     <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" implicit="true" />
+    <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
     <import index="wr1s" ref="r:0f9ddbb6-f761-4bd7-8dde-1e5300bd28c2(jetbrains.mps.lang.project.editor)" implicit="true" />
     <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" implicit="true" />
@@ -5073,7 +5074,7 @@
           <property role="39s7Ar" value="true" />
           <ref role="1NtTu8" to="tp25:34EJa6aIpny" resolve="languageId" />
           <node concept="A1WHu" id="4Lw1UpBCaUO" role="3vIgyS">
-            <ref role="A1WHt" node="4Lw1UpBCaUD" resolve="AbstractLanguageIdentity_Transformation" />
+            <ref role="A1WHt" node="4Lw1UpBCaUD" resolve="LanguageIdentity_Transformation" />
           </node>
         </node>
         <node concept="1HlG4h" id="296OPko1$7u" role="1QoS34">
@@ -5100,8 +5101,8 @@
                           <ref role="3Tt5mk" to="tp25:296OPknU5zD" resolve="moduleReference" />
                         </node>
                       </node>
-                      <node concept="2qgKlT" id="296OPko1DN8" role="2OqNvi">
-                        <ref role="37wK5l" to="tpeu:nJmxU5cSSU" resolve="getModuleReference" />
+                      <node concept="2qgKlT" id="3QXsRWR7xJM" role="2OqNvi">
+                        <ref role="37wK5l" to="xlb7:1Bs_61$mqDd" resolve="toModuleReference" />
                       </node>
                     </node>
                     <node concept="liA8E" id="296OPko1G7_" role="2OqNvi">
@@ -7609,9 +7610,9 @@
     </node>
   </node>
   <node concept="3ICUPy" id="4Lw1UpBCaUD">
-    <ref role="aqKnT" to="tp25:50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+    <ref role="aqKnT" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
     <node concept="22hDWg" id="6UtCO5dGFfs" role="22hAXT">
-      <property role="TrG5h" value="AbstractLanguageIdentity_Transformation" />
+      <property role="TrG5h" value="LanguageIdentity_Transformation" />
     </node>
     <node concept="1Qtc8_" id="4Lw1UpBAEiW" role="IW6Ez">
       <node concept="3eGOoe" id="4Lw1UpBAEj0" role="1Qtc8$" />
@@ -10236,7 +10237,7 @@
     </node>
   </node>
   <node concept="22mcaB" id="296OPknVe$g">
-    <ref role="aqKnT" to="tp25:50fTm6QQzRL" resolve="AbstractLanguageIdentity" />
+    <ref role="aqKnT" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
     <node concept="22hDWg" id="6UtCO5dGFz7" role="22hAXT">
       <property role="TrG5h" value="RepositoryLanguages_SubstituteWrapped" />
     </node>

@@ -6510,8 +6510,8 @@
                           <ref role="3Tt5mk" to="tp25:296OPknU5zD" resolve="moduleReference" />
                         </node>
                       </node>
-                      <node concept="2qgKlT" id="5ZqXG2lkbzn" role="2OqNvi">
-                        <ref role="37wK5l" to="tpeu:nJmxU5cSSU" resolve="getModuleReference" />
+                      <node concept="2qgKlT" id="3QXsRWR7yyS" role="2OqNvi">
+                        <ref role="37wK5l" to="xlb7:1Bs_61$mqDd" resolve="toModuleReference" />
                       </node>
                     </node>
                   </node>

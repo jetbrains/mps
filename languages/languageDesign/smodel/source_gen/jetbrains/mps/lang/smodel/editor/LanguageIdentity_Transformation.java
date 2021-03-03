@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class AbstractLanguageIdentity_Transformation extends TransformationMenuBase {
+public class LanguageIdentity_Transformation extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
@@ -36,7 +36,7 @@ public class AbstractLanguageIdentity_Transformation extends TransformationMenuB
   @Override
   public List<TransformationMenuItem> createMenuItems(@NotNull TransformationMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("named transformation menu " + "AbstractLanguageIdentity_Transformation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "5503407155931295401")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("named transformation menu " + "LanguageIdentity_Transformation", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "5503407155931295401")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -49,12 +49,12 @@ public class AbstractLanguageIdentity_Transformation extends TransformationMenuB
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TMP_IncludeSM_n8gl3s_a0());
+      result.add(new TMP_IncludeSM_ijvac9_a0());
     }
     return result;
   }
 
-  public class TMP_IncludeSM_n8gl3s_a0 extends IncludeSubstituteMenuTransformationMenuPart {
+  public class TMP_IncludeSM_ijvac9_a0 extends IncludeSubstituteMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
