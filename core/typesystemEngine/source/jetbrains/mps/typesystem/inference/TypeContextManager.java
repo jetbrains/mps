@@ -364,6 +364,9 @@ public class TypeContextManager implements CoreComponent {
     return newSubtypingCache;
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade}.
+   */
   @Nullable
   /*package*/ SNode getTypeOf(final SNode node) {
     if (node == null) return null;

@@ -218,7 +218,11 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
     return type;
   }
 
+  /**
+   *  @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade}.
+   */
   @Nullable
+  @Deprecated(forRemoval = true)
   public SNode getTypeOf(final SNode node) {
     if (node == null || node.getModel() == null) return null;
     return TypeContextManager.getInstance().getTypeOf(node);

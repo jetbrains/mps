@@ -164,6 +164,7 @@ public abstract class TypeCheckingContext {
 
   public abstract void checkRoot(boolean refreshTypes);
 
+  @Deprecated
   public abstract Set<Pair<SNode, List<IErrorReporter>>> checkRootAndGetErrors(boolean refreshTypes);
 
   public abstract Set<Pair<SNode, List<IErrorReporter>>> getNodesWithErrors(boolean typesystemErrors);
