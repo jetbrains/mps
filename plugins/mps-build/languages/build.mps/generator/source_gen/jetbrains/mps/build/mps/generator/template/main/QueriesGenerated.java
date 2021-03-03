@@ -42,10 +42,10 @@ import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMPSPlugin__BehaviorDescriptor;
 import java.util.List;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
+import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import java.util.ArrayList;
 import jetbrains.mps.build.mps.util.RuntimeDependencies;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -1069,7 +1069,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.folder$ICh7), LINKS.path$zL7z);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
-    return ((MPSModulesClosure) _context.getVariable("var:mdeps")).getInitial();
+    return ((SNode) _context.getVariable("var:mpsModule"));
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
     return SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.plugin$9ewC), LINKS.containerName$xQbG));
@@ -1141,7 +1141,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.element$PGip), CONCEPTS.BuildMps_Branding$M0);
   }
   public static Object templateArgumentQuery_0_0(final TemplateArgumentContext _context) {
-    return ((MPSModulesClosure) _context.getVariable("var:mdeps")).getInitial();
+    return ((SNode) _context.getVariable("var:mpsModule"));
   }
   public static Object templateArgumentQuery_0_1(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.targetPath$MMCS);
@@ -1231,7 +1231,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_4(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode module : Sequence.fromIterable(((MPSModulesClosure) _context.getVariable("var:mdeps")).getModules()).concat(Sequence.fromIterable(Sequence.<SNode>singleton(((MPSModulesClosure) _context.getVariable("var:mdeps")).getInitial()))).where(new IWhereFilter<SNode>() {
+    for (SNode module : Sequence.fromIterable(((MPSModulesClosure) _context.getVariable("var:mdeps")).getModules()).concat(ListSequence.fromList(((MPSModulesClosure) _context.getVariable("var:mdeps")).getInitial())).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getContainingRoot(_context.getNode()) == SNodeOperations.getContainingRoot(it);
       }
@@ -1279,7 +1279,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_0_6(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode module : Sequence.fromIterable(((MPSModulesClosure) _context.getVariable("var:mdeps")).getModules()).sort(new ISelector<SNode, String>() {
+    for (SNode module : Sequence.fromIterable(((MPSModulesClosure) _context.getVariable("var:mdeps")).getModules()).concat(ListSequence.fromList(((MPSModulesClosure) _context.getVariable("var:mdeps")).getInitial())).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.name$MnvL);
       }
@@ -1674,6 +1674,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode();
   }
   public static Object varMacro_Value_0_2(final TemplateVarContext _context) {
+    return _context.getNode();
+  }
+  public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
     // ancestor jar of module descriptor 
     SNode firstAncestorJar = SNodeOperations.getParent(_context.getNode());
     while (SNodeOperations.isInstanceOf(firstAncestorJar, CONCEPTS.BuildLayout_Folder$AH)) {
@@ -1685,7 +1688,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return SNodeOperations.cast(firstAncestorJar, CONCEPTS.BuildLayout_Jar$bd);
   }
-  public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
     SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
     if (project == null) {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
@@ -1696,7 +1699,7 @@ public class QueriesGenerated extends QueryProviderBase {
     localArtifacts.collectProjectArtifacts();
     return localArtifacts;
   }
-  public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
     RuntimeDependencies rtDeps = new RuntimeDependencies();
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.module$yKRo), CONCEPTS.BuildMps_Module$JW)) {
       rtDeps.collectFor(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.module$yKRo), CONCEPTS.BuildMps_Module$JW));
@@ -1859,7 +1862,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a863(it._1(), it._0());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a963(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -3113,26 +3116,27 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
     vvqMethods.put("2409421742521905574", new VVQ(0));
-    vvqMethods.put("4034100441902354106", new VVQ(1));
-    vvqMethods.put("4034100441902341994", new VVQ(2));
-    vvqMethods.put("4034100441902321122", new VVQ(3));
-    vvqMethods.put("1362762974881123189", new VVQ(4));
-    vvqMethods.put("2409421742521905590", new VVQ(5));
-    vvqMethods.put("8137134783397647618", new VVQ(6));
-    vvqMethods.put("2409421742521905593", new VVQ(7));
-    vvqMethods.put("2409421742521905596", new VVQ(8));
-    vvqMethods.put("4031822141866304303", new VVQ(9));
-    vvqMethods.put("2409421742521905606", new VVQ(10));
-    vvqMethods.put("2409421742521905610", new VVQ(11));
-    vvqMethods.put("2409421742521905614", new VVQ(12));
-    vvqMethods.put("5121314058278737571", new VVQ(13));
-    vvqMethods.put("5121314058278757759", new VVQ(14));
-    vvqMethods.put("4438567763349653940", new VVQ(15));
-    vvqMethods.put("2409421742521905625", new VVQ(16));
-    vvqMethods.put("2409421742521905630", new VVQ(17));
-    vvqMethods.put("2409421742521905633", new VVQ(18));
-    vvqMethods.put("2409421742521905636", new VVQ(19));
-    vvqMethods.put("2409421742521905640", new VVQ(20));
+    vvqMethods.put("4567115369870200968", new VVQ(1));
+    vvqMethods.put("4034100441902354106", new VVQ(2));
+    vvqMethods.put("4034100441902341994", new VVQ(3));
+    vvqMethods.put("4034100441902321122", new VVQ(4));
+    vvqMethods.put("1362762974881123189", new VVQ(5));
+    vvqMethods.put("2409421742521905590", new VVQ(6));
+    vvqMethods.put("8137134783397647618", new VVQ(7));
+    vvqMethods.put("2409421742521905593", new VVQ(8));
+    vvqMethods.put("2409421742521905596", new VVQ(9));
+    vvqMethods.put("4031822141866304303", new VVQ(10));
+    vvqMethods.put("2409421742521905606", new VVQ(11));
+    vvqMethods.put("2409421742521905610", new VVQ(12));
+    vvqMethods.put("2409421742521905614", new VVQ(13));
+    vvqMethods.put("5121314058278737571", new VVQ(14));
+    vvqMethods.put("5121314058278757759", new VVQ(15));
+    vvqMethods.put("4438567763349653940", new VVQ(16));
+    vvqMethods.put("2409421742521905625", new VVQ(17));
+    vvqMethods.put("2409421742521905630", new VVQ(18));
+    vvqMethods.put("2409421742521905633", new VVQ(19));
+    vvqMethods.put("2409421742521905636", new VVQ(20));
+    vvqMethods.put("2409421742521905640", new VVQ(21));
   }
   @NotNull
   @Override
@@ -3159,36 +3163,38 @@ public class QueriesGenerated extends QueryProviderBase {
         case 4:
           return QueriesGenerated.varMacro_Value_0_4(ctx);
         case 5:
-          return QueriesGenerated.varMacro_Value_2_0(ctx);
+          return QueriesGenerated.varMacro_Value_0_5(ctx);
         case 6:
-          return QueriesGenerated.varMacro_Value_2_1(ctx);
+          return QueriesGenerated.varMacro_Value_2_0(ctx);
         case 7:
-          return QueriesGenerated.varMacro_Value_3_0(ctx);
+          return QueriesGenerated.varMacro_Value_2_1(ctx);
         case 8:
-          return QueriesGenerated.varMacro_Value_6_0(ctx);
+          return QueriesGenerated.varMacro_Value_3_0(ctx);
         case 9:
-          return QueriesGenerated.varMacro_Value_7_0(ctx);
+          return QueriesGenerated.varMacro_Value_6_0(ctx);
         case 10:
-          return QueriesGenerated.varMacro_Value_10_0(ctx);
+          return QueriesGenerated.varMacro_Value_7_0(ctx);
         case 11:
-          return QueriesGenerated.varMacro_Value_10_1(ctx);
+          return QueriesGenerated.varMacro_Value_10_0(ctx);
         case 12:
-          return QueriesGenerated.varMacro_Value_10_2(ctx);
+          return QueriesGenerated.varMacro_Value_10_1(ctx);
         case 13:
-          return QueriesGenerated.varMacro_Value_10_3(ctx);
+          return QueriesGenerated.varMacro_Value_10_2(ctx);
         case 14:
-          return QueriesGenerated.varMacro_Value_10_4(ctx);
+          return QueriesGenerated.varMacro_Value_10_3(ctx);
         case 15:
-          return QueriesGenerated.varMacro_Value_10_5(ctx);
+          return QueriesGenerated.varMacro_Value_10_4(ctx);
         case 16:
-          return QueriesGenerated.varMacro_Value_10_6(ctx);
+          return QueriesGenerated.varMacro_Value_10_5(ctx);
         case 17:
-          return QueriesGenerated.varMacro_Value_10_7(ctx);
+          return QueriesGenerated.varMacro_Value_10_6(ctx);
         case 18:
-          return QueriesGenerated.varMacro_Value_10_8(ctx);
+          return QueriesGenerated.varMacro_Value_10_7(ctx);
         case 19:
-          return QueriesGenerated.varMacro_Value_10_9(ctx);
+          return QueriesGenerated.varMacro_Value_10_8(ctx);
         case 20:
+          return QueriesGenerated.varMacro_Value_10_9(ctx);
+        case 21:
           return QueriesGenerated.varMacro_Value_10_10(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -3198,7 +3204,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
   {
     caqMethods.put("7753544965996903194", new CAQ(0));
-    caqMethods.put("8252715012761560463", new CAQ(1));
+    caqMethods.put("8252715012761560442", new CAQ(1));
     caqMethods.put("4964617264469629189", new CAQ(2));
     caqMethods.put("4031822141870046784", new CAQ(3));
     caqMethods.put("763829979706275425", new CAQ(4));
@@ -3324,7 +3330,7 @@ public class QueriesGenerated extends QueryProviderBase {
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a863(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a963(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
