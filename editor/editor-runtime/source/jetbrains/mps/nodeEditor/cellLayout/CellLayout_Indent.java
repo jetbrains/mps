@@ -504,6 +504,30 @@ public class CellLayout_Indent extends AbstractCellLayout {
       return expandToUnitStart(result);
     }
 
+    /**
+     * Returns true if that cell is the first of a collection with either a indent or wrap anchor.
+     *
+     * In such case there would be no need to split on this cell
+     */
+    private boolean isFirstAnchoredCell(EditorCell cell) {
+      EditorCell_Collection parent = cell.getParent();
+      while (parent != null && parent.firstCell() == cell) {
+        if (parent.getStyle().get(StyleAttributes.INDENT_LAYOUT_INDENT_ANCHOR) || parent.getStyle().get(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR)) {
+          return true;
+        }
+
+        cell = parent;
+        parent = cell.getParent();
+      }
+
+      return false;
+    }
+
+    /**
+     * Find the start cell of a "unit" (block that cannot be wrapped) on the current line.
+     * @param cell cell to inspect
+     * @return cell where the wrapping can occur
+     */
     private EditorCell expandToUnitStart(EditorCell cell) {
       EditorCell result = cell;
 
@@ -523,7 +547,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
           break;
         }
 
-        if (isNoWrap(result) || result.getStyle().get(StyleAttributes.PUNCTUATION_LEFT)) {
+        if (isNoWrap(result) || result.getStyle().get(StyleAttributes.PUNCTUATION_LEFT) || isFirstAnchoredCell(result)) {
           result = prevLeaf;
         } else {
           break;
