@@ -395,6 +395,12 @@ public class CellLayout_Indent extends AbstractCellLayout {
         y1 = Math.max(y1, child.getY() + child.getHeight());
       }
 
+      // Ensure x/y are as prescribed by parent layout
+      if (collection == myCell) {
+        x0 = myX;
+        y0 = myCell.getY();
+      }
+
       collection.setX(x0);
       collection.setY(y0);
       collection.setWidth(x1 - x0);
