@@ -2274,7 +2274,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForIComment() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage", "IComment", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL);
     b.interface_();
-    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L);
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/281208147558998637");
     b.version(2);
@@ -2961,7 +2960,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1732176556423009631");
     b.version(2);
     b.aggregate("lines", 0x1809ed668ddac789L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("1732176556423038857").done();
-    b.aggregate("paragraphs", 0x62605252eb1ae0e7L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL).optional(true).ordered(true).multiple(true).origin("7088756329566363879").done();
     b.alias("/*");
     return b.create();
   }
@@ -3432,7 +3430,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("commentPart", 0x57d533a7af16ff73L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL).optional(true).ordered(true).multiple(true).origin("6329021646629175155").done();
     b.aggregate("text", 0x12bc996bc5882f24L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("1350122676458893092").done();
     b.aggregate("line", 0x73f69d82391da738L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(false).origin("8356039341262087992").done();
-    b.aggregate("paragraph", 0x62605252eb1b533aL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL).optional(true).ordered(true).multiple(false).origin("7088756329566393146").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("//");
     return b.create();

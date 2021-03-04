@@ -17,9 +17,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
-import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -40,7 +38,7 @@ public final class MakeSingleline_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$lpTr)).count() == 1 || ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$z2IK)).count() == 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$lpTr)).count() == 1;
   }
   @Override
   public boolean isSurroundWith() {
@@ -64,9 +62,7 @@ public final class MakeSingleline_Intention extends AbstractIntentionDescriptor 
       SNode s = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
       SNodeOperations.insertPrevSiblingChild(node, s);
       if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$lpTr)).count() == 1) {
-        IComment__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(s, ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).first());
-      } else {
-        IComment__BehaviorDescriptor.addParagraph_idfxHsktC$hi.invoke(s, ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(node)).first());
+        IHoldLines__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(s, ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(node)).first());
       }
       SNodeOperations.deleteNode(node);
     }
@@ -77,7 +73,6 @@ public final class MakeSingleline_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paragraphs$z2IK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x62605252eb1ae0e7L, "paragraphs");
     /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
   }
 }

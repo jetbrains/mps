@@ -10,16 +10,14 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.TextElement__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -32,35 +30,25 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<String> getTextualRepresentation_idfB3l80ylIb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fB3l80ylIb").build();
   public static final SMethod<Boolean> isTODOComment_idfB3l7ZufMD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTODOComment").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fB3l7ZufMD").build();
-  public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addParagraph").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fxHsktC$hi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> addLine_id7q4YwcerggR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addLine").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4YwcerggR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD, addParagraph_idfxHsktC$hi, addLine_id7q4YwcerggR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_idfB3l80ylIb, isTODOComment_idfB3l7ZufMD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static String getTextualRepresentation_idfB3l80ylIb(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(__thisNode__)).isNotEmpty()) {
-      return IterableUtils.join(ListSequence.fromList(IHoldParagraphs__BehaviorDescriptor.getParagraphs_id2MpFNjy3tMn.invoke(__thisNode__)).select(new ISelector<SNode, String>() {
-        public String select(SNode p) {
-          return (String) Paragraph__BehaviorDescriptor.representAsText_id1iNeTGeVhLf.invoke(p);
-        }
-      }), "\n");
-    } else {
-      return IterableUtils.join(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(__thisNode__)).select(new ISelector<SNode, String>() {
-        public String select(SNode line) {
-          return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).select(new ISelector<SNode, String>() {
-            public String select(SNode element) {
-              return (String) TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(element);
-            }
-          }), " ");
-        }
-      }), "\n");
-    }
+    return IterableUtils.join(ListSequence.fromList(IHoldLines__BehaviorDescriptor.getLines_id6GJhO0n1Xys.invoke(__thisNode__)).select(new ISelector<SNode, String>() {
+      public String select(SNode line) {
+        return IterableUtils.join(ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).select(new ISelector<SNode, String>() {
+          public String select(SNode element) {
+            return (String) TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(element);
+          }
+        }), " ");
+      }
+    }), "\n");
   }
   /*package*/ static boolean isTODOComment_idfB3l7ZufMD(@NotNull SNode __thisNode__) {
-    String text = trim_63o2sb_a0a0a0m(IComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
+    String text = trim_63o2sb_a0a0a0k(IComment__BehaviorDescriptor.getTextualRepresentation_idfB3l80ylIb.invoke(__thisNode__)).toUpperCase();
     return text.startsWith("TODO ") || text.startsWith("FIX ");
   }
 
@@ -111,7 +99,7 @@ public final class IComment__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  public static String trim_63o2sb_a0a0a0m(String str) {
+  public static String trim_63o2sb_a0a0a0k(String str) {
     return (str == null ? null : str.trim());
   }
 

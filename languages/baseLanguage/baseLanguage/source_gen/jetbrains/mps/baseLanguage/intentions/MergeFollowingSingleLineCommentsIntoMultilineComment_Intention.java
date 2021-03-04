@@ -17,7 +17,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -39,7 +39,7 @@ public final class MergeFollowingSingleLineCommentsIntoMultilineComment_Intentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(node), CONCEPTS.SingleLineComment$Kw) && ((SLinkOperations.getTarget(node, LINKS.line$9eiT) != null) || (SLinkOperations.getTarget(node, LINKS.paragraph$y$du) != null));
+    return SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(node), CONCEPTS.SingleLineComment$Kw) && ((SLinkOperations.getTarget(node, LINKS.line$9eiT) != null));
   }
   @Override
   public boolean isSurroundWith() {
@@ -62,26 +62,15 @@ public final class MergeFollowingSingleLineCommentsIntoMultilineComment_Intentio
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode m = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment"));
       ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.lines$lpTr)).clear();
-      ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.paragraphs$z2IK)).clear();
       SNodeOperations.insertPrevSiblingChild(node, m);
       SNode current = node;
-      if ((SLinkOperations.getTarget(node, LINKS.line$9eiT) != null)) {
-        do {
-          SNode l = SLinkOperations.getTarget(SNodeOperations.as(current, CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT);
-          IComment__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(m, l);
-          SNode next = SNodeOperations.getNextSibling(current);
-          SNodeOperations.deleteNode(current);
-          current = next;
-        } while (SNodeOperations.isInstanceOf(current, CONCEPTS.SingleLineComment$Kw) && (SLinkOperations.getTarget(SNodeOperations.as(current, CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT) != null));
-      } else {
-        do {
-          SNode p = SLinkOperations.getTarget(SNodeOperations.as(current, CONCEPTS.SingleLineComment$Kw), LINKS.paragraph$y$du);
-          IComment__BehaviorDescriptor.addParagraph_idfxHsktC$hi.invoke(m, p);
-          SNode next = SNodeOperations.getNextSibling(current);
-          SNodeOperations.deleteNode(current);
-          current = next;
-        } while (SNodeOperations.isInstanceOf(current, CONCEPTS.SingleLineComment$Kw) && (SLinkOperations.getTarget(SNodeOperations.as(current, CONCEPTS.SingleLineComment$Kw), LINKS.paragraph$y$du) != null));
-      }
+      do {
+        SNode l = SLinkOperations.getTarget(SNodeOperations.as(current, CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT);
+        IHoldLines__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(m, l);
+        SNode next = SNodeOperations.getNextSibling(current);
+        SNodeOperations.deleteNode(current);
+        current = next;
+      } while (SNodeOperations.isInstanceOf(current, CONCEPTS.SingleLineComment$Kw) && (SLinkOperations.getTarget(SNodeOperations.as(current, CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT) != null));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -90,10 +79,8 @@ public final class MergeFollowingSingleLineCommentsIntoMultilineComment_Intentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paragraph$y$du = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x62605252eb1b533aL, "paragraph");
     /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
     /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
-    /*package*/ static final SContainmentLink paragraphs$z2IK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x62605252eb1ae0e7L, "paragraphs");
   }
 
   private static final class CONCEPTS {

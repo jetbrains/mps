@@ -8,8 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
@@ -53,9 +51,7 @@ public class UncommentSingleLineComment {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw)) {
           SNode firstWord = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)).first();
           ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT), LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)));
-          SNode firstLetter = Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SLinkOperations.getTarget(node, LINKS.paragraph$y$du))).first();
-          Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw), LINKS.paragraph$y$du), Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SLinkOperations.getTarget(node, LINKS.paragraph$y$du)));
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, ((firstWord != null ? firstWord : firstLetter)), SelectionManager.FIRST_CELL, 0);
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, firstWord, SelectionManager.FIRST_CELL, 0);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
@@ -115,7 +111,6 @@ public class UncommentSingleLineComment {
   private static final class LINKS {
     /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink paragraph$y$du = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x62605252eb1b533aL, "paragraph");
   }
 
   private static final class CONCEPTS {

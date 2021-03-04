@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.IComment__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -57,9 +57,7 @@ public final class MakeMultiline_Intention extends AbstractIntentionDescriptor i
       ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.lines$lpTr)).clear();
       SNodeOperations.insertPrevSiblingChild(node, m);
       if ((SLinkOperations.getTarget(node, LINKS.line$9eiT) != null)) {
-        IComment__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(m, SLinkOperations.getTarget(node, LINKS.line$9eiT));
-      } else {
-        IComment__BehaviorDescriptor.addParagraph_idfxHsktC$hi.invoke(m, SLinkOperations.getTarget(node, LINKS.paragraph$y$du));
+        IHoldLines__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(m, SLinkOperations.getTarget(node, LINKS.line$9eiT));
       }
       SNodeOperations.deleteNode(node);
     }
@@ -72,6 +70,5 @@ public final class MakeMultiline_Intention extends AbstractIntentionDescriptor i
   private static final class LINKS {
     /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
     /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink paragraph$y$du = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x62605252eb1b533aL, "paragraph");
   }
 }
