@@ -1113,20 +1113,6 @@
     <classNode dependClassName="org.junit.Test" />
     <classNode extendsClassName="jetbrains.mps.lang.test.runtime.BaseTransformationTest" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.test.RollBacksNewTypeSystem_Test">
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Throwable" />
-    <classNode dependClassName="jetbrains.mps.MPSLaunch" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.TransformationTest" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.TypeSystemCheckUtil" />
-    <classNode dependClassName="org.junit.ClassRule" />
-    <classNode dependClassName="org.junit.Rule" />
-    <classNode dependClassName="org.junit.Test" />
-    <classNode extendsClassName="jetbrains.mps.lang.test.runtime.BaseTransformationTest" />
-  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.test.SampleConstraints_Test">
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Throwable" />
@@ -1290,20 +1276,6 @@
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TransformationTest" />
     <classNode dependClassName="jetbrains.mps.project.ProjectBase" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.junit.ClassRule" />
-    <classNode dependClassName="org.junit.Rule" />
-    <classNode dependClassName="org.junit.Test" />
-    <classNode extendsClassName="jetbrains.mps.lang.test.runtime.BaseTransformationTest" />
-  </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.test.TestGenerationMode_Test">
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Throwable" />
-    <classNode dependClassName="jetbrains.mps.MPSLaunch" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.TransformationTest" />
-    <classNode dependClassName="jetbrains.mps.lang.test.runtime.TypeSystemCheckUtil" />
     <classNode dependClassName="org.junit.ClassRule" />
     <classNode dependClassName="org.junit.Rule" />
     <classNode dependClassName="org.junit.Test" />

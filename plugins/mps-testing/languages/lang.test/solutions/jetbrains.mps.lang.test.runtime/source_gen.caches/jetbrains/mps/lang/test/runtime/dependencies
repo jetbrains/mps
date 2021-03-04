@@ -510,21 +510,5 @@
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.test.runtime.TypeSystemCheckUtil">
-    <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
-    <classNode dependClassName="jetbrains.mps.newTypesystem.TypesUtil" />
-    <classNode dependClassName="jetbrains.mps.newTypesystem.operation.AbstractOperation" />
-    <classNode dependClassName="jetbrains.mps.newTypesystem.state.State" />
-    <classNode dependClassName="jetbrains.mps.newTypesystem.test.StateMatcher" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />
-    <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeContextManager" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.junit.Assert" />
-  </dependency>
 </dependenciesRoot>
 
