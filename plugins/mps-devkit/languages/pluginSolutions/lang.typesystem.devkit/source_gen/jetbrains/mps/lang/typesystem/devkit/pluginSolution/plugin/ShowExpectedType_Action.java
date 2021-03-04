@@ -11,12 +11,17 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.awt.Frame;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.ui.MessageType;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
+import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import jetbrains.mps.typesystem.uiActions.MyBaseNodeDialog;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.typesystem.inference.TypeChecker;
-import javax.swing.JOptionPane;
 
 public class ShowExpectedType_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -56,23 +61,59 @@ public class ShowExpectedType_Action extends BaseAction {
         return false;
       }
     }
+    {
+      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+      if (editorComponent != null && editorComponent.isInvalid()) {
+        editorComponent = null;
+      }
+      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
+      if (editorComponent == null) {
+        return false;
+      }
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    MyBaseNodeDialog dialog = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(new Computable<MyBaseNodeDialog>() {
-      public MyBaseNodeDialog compute() {
-        SNode type = TypeChecker.getInstance().getInequalitiesForHole(((SNode) MapSequence.fromMap(_params).get("node")), false).getExpectedType();
-        if (type == null) {
-          return null;
-        }
-        return new MyBaseNodeDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), String.format("Type Explorer [%s]", ((SNode) MapSequence.fromMap(_params).get("node"))), type, null);
+    final Wrappers._T<SNode> type = new Wrappers._T<SNode>();
+    final Wrappers._T<String> dialogTitle = new Wrappers._T<String>();
+
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        type.value = TypecheckingFacade.getFromContext().getInferredType(((SNode) MapSequence.fromMap(_params).get("node")));
+        dialogTitle.value = String.format("Type Explorer [%s]", ((SNode) MapSequence.fromMap(_params).get("node")));
       }
     });
-    if (dialog == null) {
-      JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "no expected type");
-    } else {
-      dialog.show();
+
+    if (type.value == null) {
+      ToolWindowManager manager = ToolWindowManager.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject());
+      manager.notifyByBalloon("Messages", MessageType.INFO, "Selected node has no type");
+      return;
+    }
+
+    final Wrappers._T<SModel> tmpModel = new Wrappers._T<SModel>();
+
+    try {
+      ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
+        public void run() {
+          tmpModel.value = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
+          tmpModel.value.addRootNode(type.value);
+          TemporaryModels.getInstance().addMissingImports(tmpModel.value);
+        }
+      });
+
+      new MyBaseNodeDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), dialogTitle.value, type.value, null).show();
+
+    } finally {
+      ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
+        public void run() {
+          // XXX what's the need to remove type node from the model we dispose anyway?
+          // YYY maybe b/c the type object can be referenced elsewhere and we don't want to break that code
+          // YYY that's the price one pays for having "free floating" nodes as part of the design
+          tmpModel.value.removeRootNode(type.value);
+          TemporaryModels.getInstance().dispose(tmpModel.value);
+        }
+      });
     }
   }
 }
