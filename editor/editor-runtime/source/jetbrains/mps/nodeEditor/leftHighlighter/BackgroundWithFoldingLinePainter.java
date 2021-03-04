@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor.leftHighlighter;
 import com.intellij.ui.paint.LinePainter2D;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -58,8 +59,8 @@ public class BackgroundWithFoldingLinePainter extends AbstractHighlighterPainter
     fillTwoAreasSeparatedByDottedLine(g, y, height, foldingLineX, foldingLineWidth, leftAreaColor, rightAreaColor, getDottedLineFgLineColor());
   }
 
-  public static void fillTwoAreasSeparatedByDottedLine(Graphics g, int y, int height, int lineX, int lineWidth, Color leftAreaColor,
-                                                       Color rightAreaColor, Color lineFgColor) {
+  public static void fillTwoAreasSeparatedByDottedLine(Graphics g, int y, int height, int lineX, int lineWidth, @Nullable Color leftAreaColor,
+                                                       @Nullable Color rightAreaColor, @Nullable Color lineFgColor) {
 
     Rectangle clipBounds = g.getClipBounds();
 
@@ -68,17 +69,22 @@ public class BackgroundWithFoldingLinePainter extends AbstractHighlighterPainter
     }
 
     int leftAreaX = clipBounds.x;
-    int leftAreaWidth = lineX - leftAreaX;
-    int rightAreaX = lineX + lineWidth;
-    int rightAreaWidth = leftAreaX + clipBounds.width - rightAreaX;
 
-    g.setColor(leftAreaColor);
-    g.fillRect(leftAreaX, y, leftAreaWidth, height);
-    g.setColor(rightAreaColor);
-    g.fillRect(rightAreaX, y, rightAreaWidth, height);
-
-    g.setColor(lineFgColor);
-    LinePainter2D.paint((Graphics2D) g, lineX, y, lineX, y + height - 1);
+    if (leftAreaColor != null) {
+      int leftAreaWidth = lineX - leftAreaX;
+      g.setColor(leftAreaColor);
+      g.fillRect(leftAreaX, y, leftAreaWidth, height);
+    }
+    if (rightAreaColor != null) {
+      int rightAreaX = lineX + lineWidth;
+      int rightAreaWidth = leftAreaX + clipBounds.width - rightAreaX;
+      g.setColor(rightAreaColor);
+      g.fillRect(rightAreaX, y, rightAreaWidth, height);
+    }
+    if (lineFgColor != null) {
+      g.setColor(lineFgColor);
+      LinePainter2D.paint((Graphics2D) g, lineX, y, lineX, y + height - 1);
+    }
   }
 
 

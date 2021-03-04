@@ -265,7 +265,7 @@ public final class TripleChangeGroupLayout {
           }
         }).visitAll(new IVisitor<DiffEditorChangeLayer>() {
           public void visit(DiffEditorChangeLayer layer) {
-            layer.paintHighlighterBorders(g, x, width, foldingLineX, foldingLineWidth, lineColor);
+            layer.paintHighlighterBorders(g, x, width, foldingLineX, foldingLineWidth, lineColor, rightToLeft);
           }
         });
       }

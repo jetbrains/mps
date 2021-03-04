@@ -10,7 +10,6 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -93,7 +92,7 @@
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="jmi8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util(MPS.IDEA/)" />
-    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
+    <import index="sn11" ref="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
   </imports>
@@ -26890,6 +26889,9 @@
                                     <node concept="37vLTw" id="5eAF82hkZ_b" role="37wK5m">
                                       <ref role="3cqZAo" node="5eAF82hkZ$r" resolve="lineColor" />
                                     </node>
+                                    <node concept="37vLTw" id="tXc8mIFeb2" role="37wK5m">
+                                      <ref role="3cqZAo" node="5eAF82hkZ_m" resolve="rightToLeft" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -30192,6 +30194,18 @@
         </node>
       </node>
     </node>
+    <node concept="Wx3nA" id="3p5ZvGAM3D0" role="jymVt">
+      <property role="TrG5h" value="BORDER_COLOR" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="3p5ZvGALXms" role="1B3o_S" />
+      <node concept="3uibUv" id="3p5ZvGAM3ja" role="1tU5fm">
+        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+      </node>
+      <node concept="10M0yZ" id="3p5ZvGAM7WS" role="33vP2m">
+        <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
+        <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+      </node>
+    </node>
     <node concept="Wx3nA" id="6GIMOf7PZZe" role="jymVt">
       <property role="TrG5h" value="GAP" />
       <property role="3TUv4t" value="true" />
@@ -31265,14 +31279,22 @@
               <node concept="1rXfSq" id="55GhZgDH6JY" role="3K4E3e">
                 <ref role="37wK5l" node="6GIMOf7IAdv" resolve="getMixedColor" />
                 <node concept="37vLTw" id="55GhZgDH7ao" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxcD0" resolve="bgColor" />
+                  <ref role="3cqZAo" node="6lKULjmxcD0" resolve="editorBgColor" />
                 </node>
-              </node>
-              <node concept="1rXfSq" id="55GhZgDH6ez" role="3K4GZi">
-                <ref role="37wK5l" node="3FQns9tEvta" resolve="getColor" />
               </node>
               <node concept="37vLTw" id="6lKULjmy5MP" role="3K4Cdx">
                 <ref role="3cqZAo" node="6lKULjmy19w" resolve="rightToLeft" />
+              </node>
+              <node concept="1eOMI4" id="2eVk_xO2Wtg" role="3K4GZi">
+                <node concept="3K4zz7" id="2eVk_xO2Xis" role="1eOMHV">
+                  <node concept="10Nm6u" id="6RLnVE6lJ7c" role="3K4E3e" />
+                  <node concept="1rXfSq" id="2eVk_xO2YzX" role="3K4GZi">
+                    <ref role="37wK5l" node="3FQns9tEvta" resolve="getColor" />
+                  </node>
+                  <node concept="1rXfSq" id="2eVk_xO2WJ9" role="3K4Cdx">
+                    <ref role="37wK5l" node="6GIMOf7AUnu" resolve="isLeft" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -31290,7 +31312,7 @@
               <node concept="1rXfSq" id="55GhZgDH80d" role="3K4GZi">
                 <ref role="37wK5l" node="6GIMOf7IAdv" resolve="getMixedColor" />
                 <node concept="37vLTw" id="55GhZgDH80e" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxcD0" resolve="bgColor" />
+                  <ref role="3cqZAo" node="6lKULjmxcD0" resolve="editorBgColor" />
                 </node>
               </node>
               <node concept="1rXfSq" id="55GhZgDH8jw" role="3K4E3e">
@@ -31332,6 +31354,39 @@
         </node>
         <node concept="3clFbJ" id="3PHgnzSc_D1" role="3cqZAp">
           <node concept="3clFbS" id="3PHgnzSc_D3" role="3clFbx">
+            <node concept="3cpWs8" id="3p5ZvGALGvN" role="3cqZAp">
+              <node concept="3cpWsn" id="3p5ZvGALGvQ" role="3cpWs9">
+                <property role="TrG5h" value="drawInLeftArea" />
+                <node concept="10P_77" id="3p5ZvGALGvL" role="1tU5fm" />
+                <node concept="22lmx$" id="3p5ZvGALH5Z" role="33vP2m">
+                  <node concept="3fqX7Q" id="3p5ZvGALH60" role="3uHU7w">
+                    <node concept="1rXfSq" id="3p5ZvGALH61" role="3fr31v">
+                      <ref role="37wK5l" node="6GIMOf7AUnu" resolve="isLeft" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3p5ZvGALH62" role="3uHU7B">
+                    <ref role="3cqZAo" node="6lKULjmy19w" resolve="rightToLeft" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="3p5ZvGALItU" role="3cqZAp">
+              <node concept="3cpWsn" id="3p5ZvGALItV" role="3cpWs9">
+                <property role="TrG5h" value="leftBorderColor" />
+                <node concept="3uibUv" id="3p5ZvGALItW" role="1tU5fm">
+                  <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+                </node>
+                <node concept="3K4zz7" id="3p5ZvGAMrGI" role="33vP2m">
+                  <node concept="37vLTw" id="3p5ZvGAMrRD" role="3K4E3e">
+                    <ref role="3cqZAo" node="3p5ZvGAM3D0" resolve="BORDER_COLOR" />
+                  </node>
+                  <node concept="10Nm6u" id="3p5ZvGAMsiZ" role="3K4GZi" />
+                  <node concept="37vLTw" id="3p5ZvGALJ6R" role="3K4Cdx">
+                    <ref role="3cqZAo" node="3p5ZvGALGvQ" resolve="drawInLeftArea" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="6lKULjmyFAe" role="3cqZAp">
               <node concept="2YIFZM" id="6lKULjmyFAf" role="3clFbG">
                 <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
@@ -31351,13 +31406,11 @@
                 <node concept="37vLTw" id="2khTCMUrmxG" role="37wK5m">
                   <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
                 </node>
-                <node concept="10M0yZ" id="6lKULjmyKBF" role="37wK5m">
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                  <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
+                <node concept="37vLTw" id="3p5ZvGALMl9" role="37wK5m">
+                  <ref role="3cqZAo" node="3p5ZvGALItV" resolve="leftBorderColor" />
                 </node>
-                <node concept="10M0yZ" id="6lKULjmyKU0" role="37wK5m">
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
-                  <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
+                <node concept="37vLTw" id="3p5ZvGAMsTo" role="37wK5m">
+                  <ref role="3cqZAo" node="3p5ZvGAM3D0" resolve="BORDER_COLOR" />
                 </node>
                 <node concept="37vLTw" id="6lKULjmyFAn" role="37wK5m">
                   <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
@@ -31388,99 +31441,126 @@
                 <node concept="37vLTw" id="2khTCMUrrqc" role="37wK5m">
                   <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
                 </node>
-                <node concept="10M0yZ" id="6lKULjmyLai" role="37wK5m">
-                  <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                <node concept="37vLTw" id="3p5ZvGALN0R" role="37wK5m">
+                  <ref role="3cqZAo" node="3p5ZvGALItV" resolve="leftBorderColor" />
                 </node>
-                <node concept="10M0yZ" id="6lKULjmyLaj" role="37wK5m">
-                  <ref role="3cqZAo" to="z60i:~Color.GRAY" resolve="GRAY" />
-                  <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+                <node concept="37vLTw" id="3p5ZvGAMtDY" role="37wK5m">
+                  <ref role="3cqZAo" node="3p5ZvGAM3D0" resolve="BORDER_COLOR" />
                 </node>
                 <node concept="37vLTw" id="6lKULjmyLak" role="37wK5m">
                   <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
                 </node>
               </node>
             </node>
+            <node concept="3clFbJ" id="6lKULjmyOCx" role="3cqZAp">
+              <node concept="3clFbS" id="6lKULjmyOCz" role="3clFbx">
+                <node concept="3cpWs8" id="3p5ZvGALNr$" role="3cqZAp">
+                  <node concept="3cpWsn" id="3p5ZvGALNr_" role="3cpWs9">
+                    <property role="TrG5h" value="shadow1" />
+                    <node concept="3uibUv" id="3p5ZvGALNrA" role="1tU5fm">
+                      <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+                    </node>
+                    <node concept="3K4zz7" id="3p5ZvGALP3g" role="33vP2m">
+                      <node concept="37vLTw" id="3p5ZvGALPk0" role="3K4E3e">
+                        <ref role="3cqZAo" node="717zF4SjAt5" resolve="SHADOW_1" />
+                      </node>
+                      <node concept="10Nm6u" id="3p5ZvGALPHB" role="3K4GZi" />
+                      <node concept="37vLTw" id="3p5ZvGALNrE" role="3K4Cdx">
+                        <ref role="3cqZAo" node="3p5ZvGALGvQ" resolve="drawInLeftArea" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs8" id="3p5ZvGALPIV" role="3cqZAp">
+                  <node concept="3cpWsn" id="3p5ZvGALPIW" role="3cpWs9">
+                    <property role="TrG5h" value="shadow2" />
+                    <node concept="3uibUv" id="3p5ZvGALPIX" role="1tU5fm">
+                      <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+                    </node>
+                    <node concept="3K4zz7" id="3p5ZvGALPIY" role="33vP2m">
+                      <node concept="37vLTw" id="3p5ZvGALQBt" role="3K4E3e">
+                        <ref role="3cqZAo" node="6GIMOf7Jm67" resolve="SHADOW_2" />
+                      </node>
+                      <node concept="10Nm6u" id="3p5ZvGALPIZ" role="3K4GZi" />
+                      <node concept="37vLTw" id="3p5ZvGALPJ0" role="3K4Cdx">
+                        <ref role="3cqZAo" node="3p5ZvGALGvQ" resolve="drawInLeftArea" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="6lKULjmyPBF" role="3cqZAp">
+                  <node concept="2YIFZM" id="6lKULjmyPBG" role="3clFbG">
+                    <ref role="1Pybhc" to="px75:~BackgroundWithFoldingLinePainter" resolve="BackgroundWithFoldingLinePainter" />
+                    <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
+                    <node concept="37vLTw" id="6lKULjmyPBH" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxDUq" resolve="g" />
+                    </node>
+                    <node concept="1rXfSq" id="6lKULjmyPBK" role="37wK5m">
+                      <ref role="37wK5l" node="6GIMOf7MdzR" resolve="getEndY" />
+                    </node>
+                    <node concept="3cmrfG" id="6lKULjmyPBL" role="37wK5m">
+                      <property role="3cmrfH" value="1" />
+                    </node>
+                    <node concept="37vLTw" id="6lKULjmyPBM" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxl3h" resolve="lineX" />
+                    </node>
+                    <node concept="37vLTw" id="2khTCMUrnlx" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
+                    </node>
+                    <node concept="37vLTw" id="3p5ZvGALR2V" role="37wK5m">
+                      <ref role="3cqZAo" node="3p5ZvGALNr_" resolve="shadow1" />
+                    </node>
+                    <node concept="37vLTw" id="6lKULjmyQ$1" role="37wK5m">
+                      <ref role="3cqZAo" node="717zF4SjAt5" resolve="SHADOW_1" />
+                    </node>
+                    <node concept="37vLTw" id="6lKULjmyPBQ" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="6lKULjmyQSh" role="3cqZAp">
+                  <node concept="2YIFZM" id="6lKULjmyQSi" role="3clFbG">
+                    <ref role="1Pybhc" to="px75:~BackgroundWithFoldingLinePainter" resolve="BackgroundWithFoldingLinePainter" />
+                    <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
+                    <node concept="37vLTw" id="6lKULjmyQSj" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxDUq" resolve="g" />
+                    </node>
+                    <node concept="3cpWs3" id="6lKULjmySU8" role="37wK5m">
+                      <node concept="3cmrfG" id="6lKULjmyT1r" role="3uHU7w">
+                        <property role="3cmrfH" value="1" />
+                      </node>
+                      <node concept="1rXfSq" id="6lKULjmyQSk" role="3uHU7B">
+                        <ref role="37wK5l" node="6GIMOf7MdzR" resolve="getEndY" />
+                      </node>
+                    </node>
+                    <node concept="3cmrfG" id="6lKULjmyQSl" role="37wK5m">
+                      <property role="3cmrfH" value="1" />
+                    </node>
+                    <node concept="37vLTw" id="2khTCMUrrOM" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxl3h" resolve="lineX" />
+                    </node>
+                    <node concept="37vLTw" id="2khTCMUrsfw" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
+                    </node>
+                    <node concept="37vLTw" id="3p5ZvGALRuO" role="37wK5m">
+                      <ref role="3cqZAo" node="3p5ZvGALPIW" resolve="shadow2" />
+                    </node>
+                    <node concept="37vLTw" id="6lKULjmyRKP" role="37wK5m">
+                      <ref role="3cqZAo" node="6GIMOf7Jm67" resolve="SHADOW_2" />
+                    </node>
+                    <node concept="37vLTw" id="6lKULjmyQSo" role="37wK5m">
+                      <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1rXfSq" id="6lKULjmyPkG" role="3clFbw">
+                <ref role="37wK5l" node="4alR0c18W5t" resolve="hasShadow" />
+              </node>
+            </node>
           </node>
           <node concept="37vLTw" id="3PHgnzScAry" role="3clFbw">
             <ref role="3cqZAo" node="6FQU_9peCWf" resolve="myHasBorders" />
-          </node>
-        </node>
-        <node concept="3clFbJ" id="6lKULjmyOCx" role="3cqZAp">
-          <node concept="3clFbS" id="6lKULjmyOCz" role="3clFbx">
-            <node concept="3clFbF" id="6lKULjmyPBF" role="3cqZAp">
-              <node concept="2YIFZM" id="6lKULjmyPBG" role="3clFbG">
-                <ref role="1Pybhc" to="px75:~BackgroundWithFoldingLinePainter" resolve="BackgroundWithFoldingLinePainter" />
-                <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
-                <node concept="37vLTw" id="6lKULjmyPBH" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxDUq" resolve="g" />
-                </node>
-                <node concept="1rXfSq" id="6lKULjmyPBK" role="37wK5m">
-                  <ref role="37wK5l" node="6GIMOf7MdzR" resolve="getEndY" />
-                </node>
-                <node concept="3cmrfG" id="6lKULjmyPBL" role="37wK5m">
-                  <property role="3cmrfH" value="1" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyPBM" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxl3h" resolve="lineX" />
-                </node>
-                <node concept="37vLTw" id="2khTCMUrnlx" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyQhU" role="37wK5m">
-                  <ref role="3cqZAo" node="717zF4SjAt5" resolve="SHADOW_1" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyQ$1" role="37wK5m">
-                  <ref role="3cqZAo" node="717zF4SjAt5" resolve="SHADOW_1" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyPBQ" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="6lKULjmyQSh" role="3cqZAp">
-              <node concept="2YIFZM" id="6lKULjmyQSi" role="3clFbG">
-                <ref role="1Pybhc" to="px75:~BackgroundWithFoldingLinePainter" resolve="BackgroundWithFoldingLinePainter" />
-                <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
-                <node concept="37vLTw" id="6lKULjmyQSj" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxDUq" resolve="g" />
-                </node>
-                <node concept="3cpWs3" id="6lKULjmySU8" role="37wK5m">
-                  <node concept="3cmrfG" id="6lKULjmyT1r" role="3uHU7w">
-                    <property role="3cmrfH" value="1" />
-                  </node>
-                  <node concept="1rXfSq" id="6lKULjmyQSk" role="3uHU7B">
-                    <ref role="37wK5l" node="6GIMOf7MdzR" resolve="getEndY" />
-                  </node>
-                </node>
-                <node concept="3cmrfG" id="6lKULjmyQSl" role="37wK5m">
-                  <property role="3cmrfH" value="1" />
-                </node>
-                <node concept="37vLTw" id="2khTCMUrrOM" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxl3h" resolve="lineX" />
-                </node>
-                <node concept="37vLTw" id="2khTCMUrsfw" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyRo5" role="37wK5m">
-                  <ref role="3cqZAo" node="6GIMOf7Jm67" resolve="SHADOW_2" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyRKP" role="37wK5m">
-                  <ref role="3cqZAo" node="6GIMOf7Jm67" resolve="SHADOW_2" />
-                </node>
-                <node concept="37vLTw" id="6lKULjmyQSo" role="37wK5m">
-                  <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1Wc70l" id="6FQU_9pf_FM" role="3clFbw">
-            <node concept="37vLTw" id="6FQU_9pfAiI" role="3uHU7B">
-              <ref role="3cqZAo" node="6FQU_9peCWf" resolve="myHasBorders" />
-            </node>
-            <node concept="1rXfSq" id="6lKULjmyPkG" role="3uHU7w">
-              <ref role="37wK5l" node="4alR0c18W5t" resolve="hasShadow" />
-            </node>
           </node>
         </node>
       </node>
@@ -31508,7 +31588,7 @@
         <node concept="10Oyi0" id="6lKULjmxsdS" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="6lKULjmxcD0" role="3clF46">
-        <property role="TrG5h" value="bgColor" />
+        <property role="TrG5h" value="editorBgColor" />
         <node concept="3uibUv" id="6lKULjmxfWn" role="1tU5fm">
           <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
         </node>
@@ -31563,6 +31643,33 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="7wRHcTB5QHd" role="3cqZAp" />
+        <node concept="3cpWs8" id="7wRHcTB6o42" role="3cqZAp">
+          <node concept="3cpWsn" id="7wRHcTB6o43" role="3cpWs9">
+            <property role="TrG5h" value="leftAreaColor" />
+            <node concept="3uibUv" id="7wRHcTB6o44" role="1tU5fm">
+              <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+            </node>
+            <node concept="3K4zz7" id="7wRHcTB6p3V" role="33vP2m">
+              <node concept="37vLTw" id="7wRHcTB6pfV" role="3K4E3e">
+                <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
+              </node>
+              <node concept="10Nm6u" id="7wRHcTB6pDM" role="3K4GZi" />
+              <node concept="1eOMI4" id="7wRHcTB6qW$" role="3K4Cdx">
+                <node concept="22lmx$" id="7wRHcTB6qYw" role="1eOMHV">
+                  <node concept="3fqX7Q" id="7wRHcTB6qYx" role="3uHU7w">
+                    <node concept="1rXfSq" id="7wRHcTB6qYy" role="3fr31v">
+                      <ref role="37wK5l" node="6GIMOf7AUnu" resolve="isLeft" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="7wRHcTB6qYz" role="3uHU7B">
+                    <ref role="3cqZAo" node="7wRHcTB6duD" resolve="rightToLeft" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="6lKULjm$eDs" role="3cqZAp" />
         <node concept="3clFbF" id="6lKULjm$eDI" role="3cqZAp">
           <node concept="2YIFZM" id="6lKULjm$eDJ" role="3clFbG">
@@ -31588,8 +31695,8 @@
             <node concept="37vLTw" id="2khTCMUro9A" role="37wK5m">
               <ref role="3cqZAo" node="6lKULjm$eEL" resolve="lineWidth" />
             </node>
-            <node concept="37vLTw" id="6lKULjm$MzP" role="37wK5m">
-              <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
+            <node concept="37vLTw" id="7wRHcTB6rN9" role="37wK5m">
+              <ref role="3cqZAo" node="7wRHcTB6o43" resolve="leftAreaColor" />
             </node>
             <node concept="37vLTw" id="6lKULjm$MYR" role="37wK5m">
               <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
@@ -31618,8 +31725,8 @@
             <node concept="37vLTw" id="2khTCMUroyX" role="37wK5m">
               <ref role="3cqZAo" node="6lKULjm$eEL" resolve="lineWidth" />
             </node>
-            <node concept="37vLTw" id="6lKULjm$NsB" role="37wK5m">
-              <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
+            <node concept="37vLTw" id="7wRHcTB6seU" role="37wK5m">
+              <ref role="3cqZAo" node="7wRHcTB6o43" resolve="leftAreaColor" />
             </node>
             <node concept="37vLTw" id="6lKULjm$NsJ" role="37wK5m">
               <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
@@ -31653,8 +31760,8 @@
             <node concept="37vLTw" id="2khTCMUrpFO" role="37wK5m">
               <ref role="3cqZAo" node="6lKULjm$eEL" resolve="lineWidth" />
             </node>
-            <node concept="37vLTw" id="6lKULjm$NIM" role="37wK5m">
-              <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
+            <node concept="37vLTw" id="7wRHcTB6sEv" role="37wK5m">
+              <ref role="3cqZAo" node="7wRHcTB6o43" resolve="leftAreaColor" />
             </node>
             <node concept="37vLTw" id="6lKULjm$NIU" role="37wK5m">
               <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
@@ -31683,8 +31790,8 @@
             <node concept="37vLTw" id="2khTCMUrq5b" role="37wK5m">
               <ref role="3cqZAo" node="6lKULjm$eEL" resolve="lineWidth" />
             </node>
-            <node concept="37vLTw" id="6lKULjm$NWr" role="37wK5m">
-              <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
+            <node concept="37vLTw" id="7wRHcTB6t4x" role="37wK5m">
+              <ref role="3cqZAo" node="7wRHcTB6o43" resolve="leftAreaColor" />
             </node>
             <node concept="37vLTw" id="6lKULjm$NWz" role="37wK5m">
               <ref role="3cqZAo" node="hPooVS_WYg" resolve="SELECTED_LAYER_BORDER_COLOR" />
@@ -31723,6 +31830,10 @@
         <node concept="3uibUv" id="6lKULjm$eEQ" role="1tU5fm">
           <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
         </node>
+      </node>
+      <node concept="37vLTG" id="7wRHcTB6duD" role="3clF46">
+        <property role="TrG5h" value="rightToLeft" />
+        <node concept="10P_77" id="7wRHcTB6duE" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="6lKULjm$bHo" role="jymVt" />

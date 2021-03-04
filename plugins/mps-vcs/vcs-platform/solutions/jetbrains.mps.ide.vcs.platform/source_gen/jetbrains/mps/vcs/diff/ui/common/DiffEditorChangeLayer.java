@@ -44,6 +44,7 @@ import java.awt.Graphics2D;
   /*package*/ static final Color SHADOW_1 = new Color(160, 160, 160);
   /*package*/ static final Color SHADOW_2 = Color.LIGHT_GRAY;
   /*package*/ static final Color SELECTED_LAYER_BORDER_COLOR = new Color(64, 64, 64);
+  public static final Color BORDER_COLOR = Color.GRAY;
   private static final int GAP = 0;
   private static final int LINE_HEIGHT = 4;
   private static final int LINE_SHIFT = 2;
@@ -203,36 +204,42 @@ import java.awt.Graphics2D;
     }
   }
 
-  /*package*/ void paintHighlighter(Graphics g, int x, int width, int lineX, int lineWidth, Color bgColor, Color lineColor, boolean rightToLeft) {
+  /*package*/ void paintHighlighter(Graphics g, int x, int width, int lineX, int lineWidth, Color editorBgColor, Color lineColor, boolean rightToLeft) {
 
     if (!(g.hitClip(x, myY, width, myHeight))) {
       return;
     }
 
-    Color leftAreaColor = (rightToLeft ? getMixedColor(bgColor) : getColor());
-    Color rightAreaColor = (rightToLeft ? getColor() : getMixedColor(bgColor));
+    Color leftAreaColor = (rightToLeft ? getMixedColor(editorBgColor) : ((isLeft() ? null : getColor())));
+    Color rightAreaColor = (rightToLeft ? getColor() : getMixedColor(editorBgColor));
 
     BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, myY, myHeight, lineX, lineWidth, leftAreaColor, rightAreaColor, lineColor);
     if (myHasBorders) {
-      BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getY(), 1, lineX, lineWidth, Color.GRAY, Color.GRAY, lineColor);
-      BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY() - 1, 1, lineX, lineWidth, Color.GRAY, Color.GRAY, lineColor);
-    }
-    if (myHasBorders && hasShadow()) {
-      BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY(), 1, lineX, lineWidth, SHADOW_1, SHADOW_1, lineColor);
-      BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY() + 1, 1, lineX, lineWidth, SHADOW_2, SHADOW_2, lineColor);
+      boolean drawInLeftArea = rightToLeft || !(isLeft());
+      Color leftBorderColor = (drawInLeftArea ? BORDER_COLOR : null);
+      BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getY(), 1, lineX, lineWidth, leftBorderColor, BORDER_COLOR, lineColor);
+      BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY() - 1, 1, lineX, lineWidth, leftBorderColor, BORDER_COLOR, lineColor);
+      if (hasShadow()) {
+        Color shadow1 = (drawInLeftArea ? SHADOW_1 : null);
+        Color shadow2 = (drawInLeftArea ? SHADOW_2 : null);
+        BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY(), 1, lineX, lineWidth, shadow1, SHADOW_1, lineColor);
+        BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY() + 1, 1, lineX, lineWidth, shadow2, SHADOW_2, lineColor);
+      }
     }
   }
 
-  /*package*/ void paintHighlighterBorders(Graphics g, int x, int width, int lineX, int lineWidth, Color lineColor) {
+  /*package*/ void paintHighlighterBorders(Graphics g, int x, int width, int lineX, int lineWidth, Color lineColor, boolean rightToLeft) {
 
     if (!(myHasBorders) || !(g.hitClip(x, getY(), width, getHeight()))) {
       return;
     }
 
-    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getY() - 1, 1, lineX, lineWidth, SELECTED_LAYER_BORDER_COLOR, SELECTED_LAYER_BORDER_COLOR, lineColor);
-    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getY(), 1, lineX, lineWidth, SELECTED_LAYER_BORDER_COLOR, SELECTED_LAYER_BORDER_COLOR, lineColor);
-    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY() - 1, 1, lineX, lineWidth, SELECTED_LAYER_BORDER_COLOR, SELECTED_LAYER_BORDER_COLOR, lineColor);
-    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY(), 1, lineX, lineWidth, SELECTED_LAYER_BORDER_COLOR, SELECTED_LAYER_BORDER_COLOR, lineColor);
+    Color leftAreaColor = ((rightToLeft || !(isLeft())) ? SELECTED_LAYER_BORDER_COLOR : null);
+
+    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getY() - 1, 1, lineX, lineWidth, leftAreaColor, SELECTED_LAYER_BORDER_COLOR, lineColor);
+    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getY(), 1, lineX, lineWidth, leftAreaColor, SELECTED_LAYER_BORDER_COLOR, lineColor);
+    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY() - 1, 1, lineX, lineWidth, leftAreaColor, SELECTED_LAYER_BORDER_COLOR, lineColor);
+    BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(g, getEndY(), 1, lineX, lineWidth, leftAreaColor, SELECTED_LAYER_BORDER_COLOR, lineColor);
   }
 
   /*package*/ void paintRectangle(@NotNull Graphics g, int width, Color bgColor) {
