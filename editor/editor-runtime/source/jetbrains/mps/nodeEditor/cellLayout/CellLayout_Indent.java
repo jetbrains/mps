@@ -26,14 +26,15 @@ import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import jetbrains.mps.util.Pair;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.Stack;
 
 public class CellLayout_Indent extends AbstractCellLayout {
   static boolean isOnNewLine(EditorCell root, EditorCell cell) {
@@ -257,21 +258,20 @@ public class CellLayout_Indent extends AbstractCellLayout {
     private int myTopInset;
     private int myBottomInset;
     private boolean myOverflow;
-    private int myLineIndent = 0;
-    private List<EditorCell> myLineContent = new ArrayList<>();
-    private List<Integer> myLineWrapIndent = new ArrayList<>();
-    private int myIndentSize;
+    private final List<EditorCell> myLineContent = new ArrayList<>();
+    private final int myIndentSize;
 
-    private Stack<Integer> myIndentStack = new Stack<>();
-    private Stack<Integer> myWrapStack = new Stack<>();
+    private final HashMap<EditorCell_Collection, Pair<Integer, Integer>> myIndents;
+
     private int myCurrentIndent;
     private int myCurrentIndentAfterWrap;
+
+    private int myPreviousLineWidth;
 
     private CellLayouter(EditorCell_Collection cell, int maxWidth, int indentSize) {
       myCell = cell;
       myX = myCell.getX();
 
-      myWidth = 0;
       myHeight = 0;
 
       myLineWidth = 0;
@@ -286,6 +286,10 @@ public class CellLayout_Indent extends AbstractCellLayout {
       myIndentSize = indentSize;
 
       myCurrentIndentAfterWrap = myIndentSize * 2;
+
+      // Initial indent
+      myIndents = new HashMap<>();
+      myIndents.put(null, new Pair<>(myCurrentIndent, myCurrentIndentAfterWrap));
     }
 
     public void layout() {
@@ -312,7 +316,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
       // Add indent to current cell
       if (cell.getStyle().get(StyleAttributes.INDENT_LAYOUT_INDENT)) {
-        withIndent(myCurrentIndent + myIndentSize, myCurrentIndent + 3 * myIndentSize, () -> appendCell(cell, false));
+        appendCellWithIndent(cell, false);
       } else {
         appendCell(cell, false);
       }
@@ -326,41 +330,56 @@ public class CellLayout_Indent extends AbstractCellLayout {
       }
     }
 
-    private void withIndent(int indent, int wrapIndent, Runnable r) {
-      try {
-        myIndentStack.push(myCurrentIndent);
-        myWrapStack.push(myCurrentIndentAfterWrap);
-        myCurrentIndent = indent;
-        myCurrentIndentAfterWrap = wrapIndent;
-        r.run();
-      } finally {
-        myCurrentIndent = myIndentStack.pop();
-        myCurrentIndentAfterWrap = myWrapStack.pop();
-      }
-    }
-
-    private void layoutCollection(final EditorCell_Collection collection) {
+    /**
+     * Compute indent of the current collection from the current indent values
+     * @param collection collection that will be applied
+     * @param currentIndent value to use for current indent (line width or adequate indent if line empty)
+     */
+    private void computeCollectionIndent(EditorCell_Collection collection, int currentIndent) {
       boolean hasIndent = collection != myCell && collection.getStyle().get(StyleAttributes.INDENT_LAYOUT_INDENT);
       boolean hasAnchor = collection != myCell && collection.getStyle().get(StyleAttributes.INDENT_LAYOUT_INDENT_ANCHOR);
       boolean hasWrapAnchor = collection.getStyle().get(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR);
 
-      int indent = hasIndent && hasAnchor ? currentIndent() + myIndentSize :
+      int indent = hasIndent && hasAnchor ? currentIndent + myIndentSize :
                    hasIndent ? myCurrentIndent + myIndentSize :
-                   hasAnchor ? currentIndent() + getFirstChildLeftGap(collection)
+                   hasAnchor ? currentIndent + getFirstChildLeftGap(collection)
                              : myCurrentIndent;
-      int wrapIndent = hasWrapAnchor ? currentIndent() + getFirstChildLeftGap(collection) :
+      int wrapIndent = hasWrapAnchor ? currentIndent + getFirstChildLeftGap(collection) :
                        (hasAnchor || hasIndent) ? indent + 2 * myIndentSize
                                                 : myCurrentIndentAfterWrap;
 
-      withIndent(indent, wrapIndent, () -> {
-        for (EditorCell child : collection) {
-          if (child instanceof EditorCell_Collection && isIndentCollection((EditorCell_Collection) child)) {
-            layoutCollection((EditorCell_Collection) child);
-          } else {
-            layout(child);
-          }
+      // Apply indent
+      myCurrentIndent = indent;
+      myCurrentIndentAfterWrap = wrapIndent;
+
+      // Save it
+      myIndents.put(collection, new Pair<>(myCurrentIndent, myCurrentIndentAfterWrap));
+    }
+
+    /**
+     * Layout a collection recursively.
+     * @param collection collection to be layouted
+     */
+    private void layoutCollection(final EditorCell_Collection collection) {
+      // Compute and save indent associated with the collection
+      computeCollectionIndent(collection, currentIndent());
+
+      for (EditorCell child : collection) {
+        if (!isIndentCollection(child)) {
+          layout(child);
+        } else {
+          layoutCollection((EditorCell_Collection) child);
+
+          // Restore ours (that may have been changed in case of split)
+          restoreCollectionIndent(collection);
         }
-      });
+      }
+    }
+
+    private void restoreCollectionIndent(EditorCell_Collection collection) {
+      final Pair<Integer, Integer> pair = myIndents.get(collection);
+      myCurrentIndent = pair.o1;
+      myCurrentIndentAfterWrap = pair.o2;
     }
 
     private int currentIndent() {
@@ -417,9 +436,19 @@ public class CellLayout_Indent extends AbstractCellLayout {
       }
     }
 
+    private void appendCellWithIndent(EditorCell cell, boolean last) {
+      myCurrentIndent += myIndentSize;
+      appendCell(cell, last);
+      myCurrentIndent -= myIndentSize;
+    }
+
+    /**
+     * Position and relayout the cell correctly
+     * @param cell cell to be placed on the indent line
+     * @param last whether the cell is the last of the line
+     */
     private void appendCell(EditorCell cell, boolean last) {
       if (myLineContent.isEmpty()) {
-        myLineIndent = myCurrentIndent;
         indent();
       }
 
@@ -436,7 +465,6 @@ public class CellLayout_Indent extends AbstractCellLayout {
       myLineWidth += cell.getWidth();
 
       myLineContent.add(cell);
-      myLineWrapIndent.add(myCurrentIndentAfterWrap);
     }
 
     private void indent() {
@@ -445,14 +473,14 @@ public class CellLayout_Indent extends AbstractCellLayout {
     }
 
     private void newLine(boolean overflow) {
-      int baseLine = myCell.getY() + myHeight + myTopInset + myLineAscent;
+      final int baseLine = myCell.getY() + myHeight + myTopInset + myLineAscent;
+      myPreviousLineWidth = currentIndent();
 
       for (EditorCell cell : myLineContent) {
         cell.setBaseline(baseLine);
         cell.relayout();
       }
 
-      myWidth = Math.max(myWidth, myLineWidth);
       myHeight += myTopInset + myBottomInset + myLineAscent + myLineDescent;
       myOverflow = overflow;
 
@@ -466,7 +494,6 @@ public class CellLayout_Indent extends AbstractCellLayout {
       myTopInset = 0;
       myBottomInset = 0;
       myLineContent.clear();
-      myLineWrapIndent.clear();
     }
 
     private boolean haveToSplit() {
@@ -614,22 +641,118 @@ public class CellLayout_Indent extends AbstractCellLayout {
       final List<EditorCell> oldLine = new ArrayList<>(myLineContent.subList(0, index));
       final List<EditorCell> newLine = new ArrayList<>(myLineContent.subList(index, myLineContent.size()));
 
-      withIndent(myLineIndent, myLineWrapIndent.get(index), () -> {
-        resetLine();
+      final EditorCell firstCell = myLineContent.get(0);
+      final boolean onNewLine = isOnNewLine(myCell, firstCell);
 
-        for (EditorCell cell : oldLine) {
-          appendCell(cell, cell == oldLine.get(oldLine.size() - 1));
-        }
+      // Restore indent of collection before first cell was applied
+      restoreCollectionIndent(getLineParentCollection(firstCell));
+      resetLine();
 
-        if (!oldLine.isEmpty()) {
-          newLine(true);
-        }
+      EditorCell lastCell = oldLine.get(oldLine.size() - 1);
 
-        for (EditorCell cell : newLine) {
-          appendCell(cell, false);
-        }
-      });
+      // Apply first line
+      for (EditorCell cell : oldLine) {
+        appendCellAgain(cell, onNewLine && firstCell == cell, cell == lastCell, true);
+      }
+
+      newLine(true);
+
+      lastCell = newLine.get(newLine.size() - 1);
+
+      // Then new line
+      for (EditorCell cell : newLine) {
+        // No need to apply change for the last cell, as we are already in the layoutCollection of this cell
+        appendCellAgain(cell, false, cell == lastCell && isNewLineAfter(myCell, cell), cell != lastCell);
+      }
     }
+
+    /**
+     * Append a cell again after it has already been added. Re-apply the operations made on the collection
+     * (compute indent) if applicable.
+     *
+     * @param cell cell to append
+     * @param usePreviousLineWidth whether to use previous line width instead of currentIndent for indent computation
+     * @param last whether this cell is the last of the line
+     * @param restoreIndentAfter whether to restore the indent after adding this cell
+     */
+    private void appendCellAgain(EditorCell cell, boolean usePreviousLineWidth, boolean last, boolean restoreIndentAfter) {
+      computeIndentBeforeLeaf(cell, usePreviousLineWidth);
+
+      // Add indent to current cell
+      if (cell.getStyle().get(StyleAttributes.INDENT_LAYOUT_INDENT)) {
+        appendCellWithIndent(cell, last);
+      } else {
+        appendCell(cell, last);
+      }
+
+      if (restoreIndentAfter) {
+        restoreIndentAfterLeaf(cell);
+      }
+    }
+
+
+    /**
+     * Recompute the indent of the collection before the given leaf
+     *
+     * This method reproduce same process than {@link CellLayouter#layoutCollection(EditorCell_Collection)} when a collection
+     * starts re-layouting, but from the leaves instead of from the root. It can be used to override previous layout when the line is split.
+     *
+     * @param child child item
+     */
+    private void computeIndentBeforeLeaf(EditorCell child, boolean usePreviousLineWidth) {
+      EditorCell_Collection collection = child.getParent();
+
+      if (isIndentCollection(collection) && collection.firstCell() == child) {
+        // Recursive call (so above collection have their record called first)
+        computeIndentBeforeLeaf(collection, usePreviousLineWidth);
+
+        // Compute indent again as the line has changed (in case of anchoring, changes everything)
+        computeCollectionIndent(collection, usePreviousLineWidth ? myPreviousLineWidth : currentIndent());
+      }
+    }
+
+    /**
+     * Restore indent of collection containing the next cell
+     *
+     * @see #computeIndentBeforeLeaf(EditorCell, boolean)
+     * @param source child item
+     */
+    private void restoreIndentAfterLeaf(EditorCell source) {
+      EditorCell child = source;
+      EditorCell_Collection collection = source.getParent();
+
+      while (isIndentCollection(collection) && collection.lastCell() == child) {
+        child = collection;
+        collection = collection.getParent();
+      }
+
+      // Restore indent of collection containing the next cell
+      if (collection != source.getParent()) {
+        restoreCollectionIndent(collection);
+      }
+    }
+
   }
 
+
+  /**
+   * Return the collection that was active before the given cell (and collections triggered
+   * by this cell) was applied.
+   *
+   * It is equivalent to find to parent of the first non null previous sibling among parents.
+   *
+   * @param firstCell cell to search parent from
+   * @return ancestor of the line
+   */
+  static EditorCell_Collection getLineParentCollection(EditorCell firstCell) {
+    EditorCell_Collection lineParentCollection = firstCell.getParent();
+
+    // Find the collection whose indent was active before the line
+    while (isIndentCollection(lineParentCollection) && lineParentCollection.firstCell() == firstCell) {
+      firstCell = lineParentCollection;
+      lineParentCollection = lineParentCollection.getParent();
+    }
+
+    return isIndentCollection(lineParentCollection) ? lineParentCollection : null;
+  }
 }
