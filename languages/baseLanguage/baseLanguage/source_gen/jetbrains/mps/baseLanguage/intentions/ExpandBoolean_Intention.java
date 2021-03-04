@@ -73,16 +73,16 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode statementNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.Statement$P6, false, false), CONCEPTS.Statement$P6);
-      // 
+      //  
       SNode ifNode = SNodeFactoryOperations.insertNewPrevSiblingChild(statementNode, CONCEPTS.IfStatement$Q4);
       SNode ifTrue = SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifTrue$5Rg8, null);
       SNode ifFalse = SNodeFactoryOperations.setNewChild(SNodeFactoryOperations.setNewChild(ifNode, LINKS.ifFalseStatement$psZK, CONCEPTS.BlockStatement$u4), LINKS.statements$q65M, null);
-      // 
+      //  
       SLinkOperations.setTarget(ifNode, LINKS.condition$5R17, SNodeOperations.copyNode(node));
-      // 
+      //  
       ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$53DE)).insertElement(0, SNodeOperations.copyNode(statementNode));
       ListSequence.fromList(SLinkOperations.getChildren(ifFalse, LINKS.statement$53DE)).insertElement(0, SNodeOperations.copyNode(statementNode));
-      // 
+      //  
       final SNode fake_node = node;
       Iterable<SNode> refs;
       refs = ListSequence.fromList(SNodeOperations.getNodeDescendants(ListSequence.fromList(SLinkOperations.getChildren(ifTrue, LINKS.statement$53DE)).first(), null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
@@ -107,7 +107,7 @@ public final class ExpandBoolean_Intention extends AbstractIntentionDescriptor i
           SPropertyOperations.set(booleanConstant, PROPS.value$5y_M, false);
         }
       });
-      // 
+      //  
       SNodeOperations.deleteNode(statementNode);
     }
     @Override

@@ -94,7 +94,7 @@ public class MetadataUtil {
     // Though it's possible to reduce mps.ide.vcs.modelmetadata language to no concepts but Model,
     // and re-use various *Identity concepts from lang.modelapi/lang.smodel, I leave these custom wrappers for string properties
     // to keep the language simple and isolated
-    // 
+    //  
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     final String langIdentity = pf.asString(lang);
     // IMPORTANT! model.new node set custom node id. See createModuleRefNode, below, for explanation why we need custom id

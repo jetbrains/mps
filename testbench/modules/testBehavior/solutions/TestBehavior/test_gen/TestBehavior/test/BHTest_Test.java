@@ -569,7 +569,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
     // make target projects in a test like this one (which knows it gonna use languages from the target project).
     // As for module-added events not being dispatched on project init, once we switch to distinct project and classloading repositories, there would be no need for
     // runNonReloadableTransaction, events from project repository won't trigger classloading anyway.
-    // 
+    //  
     myProject.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
       }

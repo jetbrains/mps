@@ -186,14 +186,14 @@ public class QueriesGenerated extends QueryProviderBase {
     // is that to introduce least possible change now. Once I've got this functional,
     // shall get back and refactor this condition, as well as inspiring match in reduceMPSModule.
     // Check comment in the IF macro there for extra insight.
-    // 
+    //  
     // For the time being, for any layout node not from the same project (even from the same model,
     // i.e. being transformed simultaneously), take jar classpath element directly (like reduceMPSModule
     // does for dependencies between MpsModules). The problem with external jar is that BuildLayout_Node
     // comes from a different transformation step (now we collect them in a pre-processing script in a distinct
     // step (e.g @2_0), hence reference macro (@4_1->@5_0) yields a stale target) and generation fails unless
     // transient models are turned on.
-    // 
+    //  
     // In fact, this condition would never be true, provided BL_File comes from DependenciesHelper artifacts
     // that are collected at distinct step, however, I'd like to keep both alternatives for completeness.
     return SNodeOperations.getContainingRoot(((SNode) _context.getVariable("currentModule"))) != SNodeOperations.getContainingRoot(_context.getNode());
@@ -1762,7 +1762,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // Even though this BL dependencies are often look reasonable and point to external layout nodes, I feel this part of build story is inconsistent, perhaps
     // 'java library' element shall get jars assigned with layout rather than reference layout node with extenal jar? OTOH, it's not clear what to do if I don't want
     // to include jar into layout, but would like to depend from it for compilation/build time?
-    // 
+    //  
     // Here's small discrepancy, for a _SingleFolder node, getContentLocation is invoked inside switch_ExternalJar, while for _SingleFile I do getLocation
     // here right away. It's only to save extra DependenciesHelper initialization and to stay with existing two-element tuple.
     return MultiTuple.<SNode,String>from(layoutNode, helper.getLocation(layoutNode));

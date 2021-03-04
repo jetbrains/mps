@@ -600,7 +600,7 @@ public class QueriesGenerated {
         continue;
       }
 
-      // 
+      //  
       // thus we compare ancestor of current(transient) node - assuming reference targets get updated and point to the same model.
       if (targetAncestor != null && targetAncestor == originalAncestor) {
         continue;

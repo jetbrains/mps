@@ -94,7 +94,7 @@ public class ClassifiersScope extends FilteringScope {
     }
     // end of hack
     // TODO Must be done through ScopeProvider
-    // 
+    //  
     if ((contextClassifier == null)) {
       // no class outside, just use simple old logic
       return ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) wrapped);

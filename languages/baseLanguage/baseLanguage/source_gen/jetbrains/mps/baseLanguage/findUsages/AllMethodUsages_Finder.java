@@ -93,7 +93,7 @@ public class AllMethodUsages_Finder extends GeneratedFinder {
     } else {
       ListSequence.fromList(methodDeclarations).addSequence(ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder", node, scope, new EmptyProgressMonitor())));
     }
-    // 
+    //  
     for (SNode methodDeclaration : methodDeclarations) {
       ListSequence.fromList(_results).addElement(methodDeclaration);
     }

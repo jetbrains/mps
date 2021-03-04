@@ -69,19 +69,19 @@ public final class MoveInitializerToConstructor_Intention extends AbstractIntent
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode classNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
-      // 
+      //  
       SNode assignmentStmt = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$O8, null);
       SNode assignmentExpr = SNodeFactoryOperations.setNewChild(assignmentStmt, LINKS.expression$5L7M, CONCEPTS.AssignmentExpression$SE);
       SLinkOperations.setTarget(assignmentExpr, LINKS.rValue$spNK, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.initializer$2twD)));
-      // 
+      //  
       SNode lValue = SNodeFactoryOperations.setNewChild(assignmentExpr, LINKS.lValue$splI, CONCEPTS.DotExpression$yW);
       SNodeFactoryOperations.setNewChild(lValue, LINKS.operand$w6IR, CONCEPTS.ThisExpression$$o);
       SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(lValue, LINKS.operation$gs9E, CONCEPTS.FieldReferenceOperation$fU), LINKS.fieldDeclaration$H7Ag, node);
-      // 
+      //  
       for (SNode constr : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classNode))) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(constr, LINKS.body$5xQk), LINKS.statement$53DE)).insertElement(0, SNodeOperations.copyNode(assignmentStmt));
       }
-      // 
+      //  
       SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.initializer$2twD));
     }
     @Override

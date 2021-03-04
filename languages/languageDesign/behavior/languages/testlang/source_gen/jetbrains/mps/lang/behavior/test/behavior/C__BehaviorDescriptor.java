@@ -44,7 +44,7 @@ public final class C__BehaviorDescriptor extends BaseBHDescriptor {
     A__BehaviorDescriptor.nonVirtualMethod_id46FlynTbAz8.invokeSpecial(__thisNode__, "from A", ((int) 0));
     B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invokeSuper(__thisNode__, CONCEPTS.C$7j, "from B", ((int) 0));
     A__BehaviorDescriptor.virtualMethod_id46FlynTbAzL.invokeSuper(__thisNode__, CONCEPTS.C$7j, "from A", ((int) 0));
-    // 
+    //  
     B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invoke(__thisNode__, "from B", ((int) 0));
     B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invoke(__thisNode__, "from B", ((int) 0));
     A__BehaviorDescriptor.virtualMethod_id46FlynTbAzL.invoke(__thisNode__, "from A", ((int) 0));
@@ -53,13 +53,13 @@ public final class C__BehaviorDescriptor extends BaseBHDescriptor {
     B__BehaviorDescriptor.nonVirtualMethod_id46FlynTbICr.invoke(__thisNode__, "from B", ((int) 0));
     A__BehaviorDescriptor.nonVirtualMethod_id46FlynTbAz8.invoke(__thisNode__, "from A", ((int) 0));
     A__BehaviorDescriptor.nonVirtualMethod_id46FlynTbAz8.invoke(__thisNode__, "from A", ((int) 0));
-    // 
+    //  
     B__BehaviorDescriptor.abstractVirtualMethod_id46FlynTbIB0.invoke(__thisNode__, ((int) 0));
     B__BehaviorDescriptor.abstractVirtualMethod_id46FlynTbIB0.invoke(__thisNode__, ((int) 0));
     // staticAbstractVirtualMethod()
     // staticVirtualAbstractFromInterfaceConcept() FIXME possible to declare static abstract virtual method in iface,
     // implement it here (override), but impossible to invoke
-    // 
+    //  
     I__BehaviorDescriptor.virtualAbstractFromInterfaceConcept_id46FlynTbALM.invoke(__thisNode__, ((int) 0));
     I__BehaviorDescriptor.virtualAbstractFromInterfaceConcept_id46FlynTbALM.invoke(__thisNode__, ((int) 0));
     I__BehaviorDescriptor.virtualFromInterfaceConcept_id46FlynTbB2v.invoke(__thisNode__, "");

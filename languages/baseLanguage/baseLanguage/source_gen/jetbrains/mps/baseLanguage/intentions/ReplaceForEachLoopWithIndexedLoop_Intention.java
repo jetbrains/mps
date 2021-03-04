@@ -151,7 +151,7 @@ public final class ReplaceForEachLoopWithIndexedLoop_Intention extends AbstractI
       });
       SLinkOperations.setTarget(forStatement, LINKS.body$c1sm, SLinkOperations.getTarget(node, LINKS.body$c1sm));
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(forStatement, LINKS.body$c1sm), LINKS.statement$53DE)).insertElement(0, firstStatement);
-      // 
+      //  
       SNodeOperations.replaceWithAnother(node, forStatement);
     }
     @Override

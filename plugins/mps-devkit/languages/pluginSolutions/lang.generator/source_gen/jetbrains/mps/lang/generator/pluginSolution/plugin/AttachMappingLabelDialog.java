@@ -74,7 +74,7 @@ public class AttachMappingLabelDialog extends DialogWrapper {
   @Override
   protected JComponent createCenterPanel() {
     setOKButtonText("Attach label");
-    // 
+    //  
     JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
     c.fill = GridBagConstraints.HORIZONTAL;

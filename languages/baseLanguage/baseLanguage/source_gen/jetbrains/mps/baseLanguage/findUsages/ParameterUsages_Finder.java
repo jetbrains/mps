@@ -47,12 +47,12 @@ public class ParameterUsages_Finder extends GeneratedFinder {
     monitor.start(getDescription(), 2);
     try {
       SNode nodeParentMethod = SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.InstanceMethodDeclaration$39, CONCEPTS.StaticMethodDeclaration$FJ}, false, false);
-      // 
+      //  
       List<SNode> overridingMethods = ListSequence.fromListAndArray(new ArrayList<SNode>(), nodeParentMethod);
       if (SNodeOperations.isInstanceOf(nodeParentMethod, CONCEPTS.InstanceMethodDeclaration$39)) {
         ListSequence.fromList(overridingMethods).addSequence(ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.OverridingMethods_Finder", nodeParentMethod, scope, monitor.subTask(1))));
       }
-      // 
+      //  
       for (SNode methodNode : ListSequence.fromList(overridingMethods)) {
         SNode parameterNode = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(methodNode, CONCEPTS.BaseMethodDeclaration$kD), LINKS.parameter$5xBj)).getElement(SNodeOperations.getIndexInParent(node));
         for (SNode parameterUsage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder", parameterNode, scope, monitor.subTask(1)))) {
@@ -67,12 +67,12 @@ public class ParameterUsages_Finder extends GeneratedFinder {
   @Override
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     SNode nodeParentMethod = SNodeOperations.getNodeAncestorWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.InstanceMethodDeclaration$39, CONCEPTS.StaticMethodDeclaration$FJ}, false, false);
-    // 
+    //  
     List<SNode> overridingMethods = ListSequence.fromListAndArray(new ArrayList<SNode>(), nodeParentMethod);
     if (SNodeOperations.isInstanceOf(nodeParentMethod, CONCEPTS.InstanceMethodDeclaration$39)) {
       ListSequence.fromList(overridingMethods).addSequence(ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.OverridingMethods_Finder", nodeParentMethod, scope, new EmptyProgressMonitor())));
     }
-    // 
+    //  
     for (SNode methodNode : ListSequence.fromList(overridingMethods)) {
       ListSequence.fromList(_results).addElement(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(methodNode, CONCEPTS.BaseMethodDeclaration$kD), LINKS.parameter$5xBj)).getElement(SNodeOperations.getIndexInParent(node)));
     }

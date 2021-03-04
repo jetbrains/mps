@@ -266,7 +266,7 @@
       <node id="2916770566929595851" at="568,125,569,113" concept="5" />
       <node id="1045949688409839569" at="569,113,570,164" concept="5" />
       <node id="1045949688409840433" at="570,164,571,101" concept="5" />
-      <node id="2916770566929625992" at="571,101,572,7" concept="5" />
+      <node id="2916770566929625992" at="571,101,572,8" concept="5" />
       <node id="1045949688409820903" at="576,7,577,66" concept="0" />
       <node id="7546323081797954782" at="579,48,580,61" concept="3" />
       <node id="7546323081797954782" at="580,61,581,26" concept="4" />
@@ -465,7 +465,7 @@
       <node id="5167083683070704864" at="324,0,328,0" concept="2" trace="run#()V" />
       <node id="2569465595672247942" at="333,0,337,0" concept="2" trace="run#()V" />
       <node id="2569465595680925155" at="556,0,560,0" concept="2" trace="test_seqConcept#()V" />
-      <node id="2916770566929477357" at="572,7,576,7" concept="0" />
+      <node id="2916770566929477357" at="572,8,576,7" concept="0" />
       <node id="7546323081797954782" at="579,0,583,0" concept="8" trace="createA_a2wy8c_a0a0a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7409093844552465721" at="583,0,587,0" concept="8" trace="createA_a2wy8c_a0a0b0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7409093844552467718" at="587,0,591,0" concept="8" trace="createA_a2wy8c_a0a0c0#()Lorg/jetbrains/mps/openapi/model/SNode;" />

@@ -28,9 +28,9 @@ public class QueriesUtil {
     return SLinkOperations.getChildren(enclosingClass, LINKS.typeVariableDeclaration$Lipp);
   }
   public static SNode create_enclosingClassObject(SNode nodeInsideClosure) {
-    // 
+    //  
     // must be invoked in $COPY-SRC$ because use ref on class in 'input model'
-    // 
+    //  
     SNode enclosingClass = SNodeOperations.getNodeAncestor(nodeInsideClosure, CONCEPTS.ClassConcept$bK, false, false);
     if (enclosingClass == null) {
       return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"));

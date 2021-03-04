@@ -95,7 +95,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // handled inside the template for top-most PatternExpression
     // If there are reasonable subconcepts, might need to check
     // !node.isInstanceOf(OrPatternClause) instead
-    // 
+    //  
     return true;
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {

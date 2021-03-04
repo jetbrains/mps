@@ -77,7 +77,7 @@ public class MpsRunnerWorker extends WorkerBase {
       // Most clients shall be fine with Platform.
       // XXX Perhaps, shall invoke instance method, and pass Platform as cons argument.
       //     Do we need an option to open a project and pass project instance into the method?
-      // 
+      //  
       // I) public static void mpsMain(Environment env)
       for (Method m : methods) {
         Class<?>[] parameterTypes = m.getParameterTypes();
@@ -89,7 +89,7 @@ public class MpsRunnerWorker extends WorkerBase {
           return;
         }
       }
-      // 
+      //  
       // II) public static void mpsMain(Platform p)
       for (Method m : methods) {
         Class<?>[] parameterTypes = m.getParameterTypes();

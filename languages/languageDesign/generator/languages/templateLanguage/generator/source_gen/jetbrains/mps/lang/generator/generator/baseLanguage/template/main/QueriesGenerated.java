@@ -3528,7 +3528,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // references on mapping label will be lost because
     // TLBase generator executes first and doesn't copy
     // mapping configs (where labels are declared) to output model
-    // 
+    //  
     {
       // references in 'get by label'
       List<SNode> ops = SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GetOutputByLabel$HU);

@@ -51,15 +51,15 @@ public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static void doInvokeAll_id46FlynTbBkw(@NotNull SNode __thisNode__) {
     A__BehaviorDescriptor.nonVirtualMethod_id46FlynTbAz8.invoke(__thisNode__, "", ((int) 0));
     A__BehaviorDescriptor.nonVirtualMethod_id46FlynTbAz8.invoke(__thisNode__, "", ((int) 0));
-    // 
+    //  
     A__BehaviorDescriptor.virtualMethod_id46FlynTbAzL.invoke(__thisNode__, "", ((int) 0));
     A__BehaviorDescriptor.virtualMethod_id46FlynTbAzL.invoke(__thisNode__, "", ((int) 0));
-    // 
+    //  
     A__BehaviorDescriptor.finalVirtualMethod_id46FlynTbB7_.invoke(__thisNode__, "", ((int) 0));
     A__BehaviorDescriptor.finalVirtualMethod_id46FlynTbB7_.invoke(__thisNode__, "", ((int) 0));
-    // 
+    //  
     A__BehaviorDescriptor.staticMethod_id46FlynTbAAs.invoke(__thisNode__.getConcept(), "", ((int) 0));
-    // 
+    //  
     A__BehaviorDescriptor.staticVirtualMethod_id46FlynTbAGG.invoke(__thisNode__.getConcept(), "", ((int) 0));
   }
 

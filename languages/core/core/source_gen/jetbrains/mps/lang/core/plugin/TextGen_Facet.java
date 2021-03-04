@@ -182,7 +182,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 if (outputModels.isEmpty()) {
                   continue;
                 }
-                // 
+                //  
                 // collect changes in a module-wide context
                 ModuleStaleFileManager sfm = moduleStaleFilesMap.get(resource.module());
                 if (sfm == null) {
@@ -300,7 +300,7 @@ public class TextGen_Facet extends IFacet.Stub {
                       // However, would like to get this fixed (get rid of TResource use and report single combined delta per module)
                       FileDeltaCollector javaSourcesLoc = staleFilesManager.getPrimaryStreamHandler(inputResource.model());
                       FileDeltaCollector cachesLocation = staleFilesManager.getCacheStreamHandler(inputResource.model());
-                      // 
+                      //  
                       // Serialize outcome
                       GenerationDependencies genDeps = inputResource.status().getDependencies();
                       HashSet<String> seenFileNames = new HashSet<String>();
@@ -326,7 +326,7 @@ public class TextGen_Facet extends IFacet.Stub {
                           rdm.addDelta(fdc.getDelta());
                         }
                       }
-                      // 
+                      //  
                       // Update caches and auxiliary artifacts
                       CacheGenLayout cgl = new CacheGenLayout(messageHandler);
                       cgl.register(cachesLocation, blDepsCache.newCacheGenerator(new BLDependenciesBuilder().build(tgr)));
