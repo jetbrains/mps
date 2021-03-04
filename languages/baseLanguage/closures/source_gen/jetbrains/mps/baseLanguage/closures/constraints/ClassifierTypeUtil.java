@@ -18,7 +18,6 @@ import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -272,15 +271,7 @@ with_meet:
     if ((cType == null)) {
       cType = TypecheckingFacade.getFromContext().coerceType(type, CONCEPTS.ClassifierType$bL);
     }
-    // avoid coercing if the classifier type is not the immediate supertype
-    if ((cType != null)) {
-      for (Object imsup : TypeChecker.getInstance().getSubtypingManager().collectImmediateSupertypes(type, true)) {
-        if (SLinkOperations.getTarget(SNodeOperations.as(((SNode) imsup), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(cType, LINKS.classifier$cxMr)) {
-          return cType;
-        }
-      }
-    }
-    return null;
+    return cType;
   }
   private static SNode _quotation_createNode_zgotlq_a0a1a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
