@@ -109,14 +109,13 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="javax.swing.JPopupMenu" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ILeftCombinator" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorSettings" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.FontRegistry" />
@@ -134,7 +133,6 @@
     <classNode dependClassName="jetbrains.mps.vcs.annotate.LineAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RevisionAspectSubcolumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.ViewActionGroup" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.Bounds" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionUtils" />
     <classNode dependClassName="jetbrains.mps.workbench.action.BaseAction" />
     <classNode dependClassName="jetbrains.mps.workbench.action.BaseGroup" />
@@ -250,9 +248,7 @@
     <classNode dependClassName="com.intellij.util.ui.update.Update" />
     <classNode dependClassName="git4idea.GitVcs" />
     <classNode dependClassName="java.awt.Color" />
-    <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Math" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
@@ -263,12 +259,14 @@
     <classNode dependClassName="java.util.Date" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.HashSet" />
+    <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.NavigableSet" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="java.util.concurrent.ConcurrentHashMap" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicReference" />
     <classNode dependClassName="java.util.function.BiConsumer" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
@@ -293,7 +291,6 @@
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RevisionNodeChange" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RootAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.ShowDiffFromAnnotationAction" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.Bounds" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeColors" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -348,8 +345,10 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.LineAnnotation">
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
+    <classNode dependClassName="java.lang.Math" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.NodeAnnotation">

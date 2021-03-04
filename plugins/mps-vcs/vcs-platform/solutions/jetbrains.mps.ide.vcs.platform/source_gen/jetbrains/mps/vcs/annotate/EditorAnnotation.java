@@ -16,9 +16,7 @@ import com.intellij.openapi.vcs.history.CurrentRevision;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.vcs.diff.ui.common.Bounds;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.util.ui.update.Update;
@@ -27,6 +25,7 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import com.intellij.openapi.application.ApplicationManager;
@@ -41,9 +40,9 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import java.awt.Color;
 import com.intellij.util.ui.UIUtil;
 import java.util.Objects;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.Iterator;
 import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collections;
 import jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil;
@@ -52,9 +51,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
 import com.intellij.openapi.vcs.history.VcsFileRevisionEx;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Comparator;
 import com.intellij.util.containers.ContainerUtil;
 import java.util.NavigableSet;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.vcs.annotate.FileAnnotation;
 import com.intellij.openapi.editor.Editor;
@@ -78,7 +79,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private final MergingUpdateQueue myUpdateQueue;
   private final CurrentRevision myLocalRevision;
   private final List<List<RevisionNodeChange>> myVcsChangesGroups = ListSequence.fromList(new ArrayList<List<RevisionNodeChange>>());
-  private Map<Bounds, LineAnnotation> myLineAnnotations = MapSequence.fromMap(new HashMap<Bounds, LineAnnotation>());
+  private AtomicReference<List<LineAnnotation>> myLineAnnotationsRef = new AtomicReference<List<LineAnnotation>>(ListSequence.fromList(new ArrayList<LineAnnotation>()));
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
 
 
@@ -358,126 +359,29 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ListSequence.fromList(newMessages).addElement(cellMessage);
   }
 
-  private static class BoundsGroup {
-
-    private final Set<Bounds> myBounds = SetSequence.fromSet(new HashSet<Bounds>());
-    private int myStart;
-    private int myEnd;
-
-    private BoundsGroup(Bounds bounds) {
-      SetSequence.fromSet(myBounds).addElement(bounds);
-      myStart = (int) bounds.start();
-      myEnd = (int) bounds.end();
-    }
-
-    public int getStart() {
-      return myStart;
-    }
-
-    public int getEnd() {
-      return myEnd;
-    }
-
-    public Bounds getGroupBounds() {
-      return new Bounds(myStart, myEnd);
-    }
-
-    public boolean intersectsWith(BoundsGroup group) {
-      return myStart < group.getEnd() && group.getStart() < myEnd;
-    }
-
-    public boolean isEmpty() {
-      return SetSequence.fromSet(myBounds).isEmpty();
-    }
-
-    public boolean containsBounds(Bounds bounds) {
-      return SetSequence.fromSet(myBounds).contains(bounds);
-    }
-
-    public void absorbGroup(BoundsGroup group) {
-      SetSequence.fromSet(myBounds).addSequence(SetSequence.fromSet(group.myBounds));
-      SetSequence.fromSet(group.myBounds).clear();
-      myStart = Math.min(myStart, group.getStart());
-      myEnd = Math.max(myEnd, group.getEnd());
-    }
-  }
-
   private void updateLineAnnotations() {
-
-    Set<Bounds> allBounds = SetSequence.fromSetWithValues(new HashSet<Bounds>(), Sequence.fromIterable(MapSequence.fromMap(myEditorMessages).values()).select(new ISelector<AnnotatedCellMessage, Bounds>() {
-      public Bounds select(AnnotatedCellMessage it) {
-        return new Bounds(it.getCell().getY(), it.getCell().getBottom());
-      }
-    }));
-
-    final Wrappers._T<Collection<BoundsGroup>> groups = new Wrappers._T<Collection<BoundsGroup>>(SetSequence.fromSet(allBounds).select(new ISelector<Bounds, BoundsGroup>() {
-      public BoundsGroup select(Bounds it) {
-        return new BoundsGroup(it);
-      }
-    }).toListSequence());
-    for (BoundsGroup g1 : CollectionSequence.fromCollection(groups.value)) {
-      if (g1.isEmpty()) {
-        continue;
-      }
-      for (BoundsGroup g2 : CollectionSequence.fromCollection(groups.value)) {
-        if (Objects.equals(g1, g2) || g2.isEmpty()) {
-          continue;
-        }
-        if (g1.intersectsWith(g2)) {
-          g1.absorbGroup(g2);
-        }
-      }
-    }
-    groups.value = CollectionSequence.fromCollection(groups.value).where(new IWhereFilter<BoundsGroup>() {
-      public boolean accept(BoundsGroup it) {
-        return !(it.isEmpty());
-      }
-    }).sort(new ISelector<BoundsGroup, Integer>() {
-      public Integer select(BoundsGroup it) {
-        return it.getStart();
-      }
-    }, true).toListSequence();
-
-    final Map<Bounds, BoundsGroup> boundsGroupMap = MapSequence.fromMap(new HashMap<Bounds, BoundsGroup>());
-    SetSequence.fromSet(allBounds).visitAll(new IVisitor<Bounds>() {
-      public void visit(final Bounds bounds) {
-        MapSequence.fromMap(boundsGroupMap).put(bounds, CollectionSequence.fromCollection(groups.value).findFirst(new IWhereFilter<BoundsGroup>() {
-          public boolean accept(BoundsGroup group) {
-            return group.containsBounds(bounds);
-          }
-        }));
-      }
-    });
-    final Map<Bounds, LineAnnotation> lineAnnotations = MapSequence.fromMap(new HashMap<Bounds, LineAnnotation>());
+    final List<LineAnnotation> lineAnnotations = ListSequence.fromList(new ArrayList<LineAnnotation>());
     Sequence.fromIterable(MapSequence.fromMap(myEditorMessages).values()).visitAll(new IVisitor<AnnotatedCellMessage>() {
       public void visit(AnnotatedCellMessage message) {
-        EditorCell cell = message.getCell();
-        Bounds cellBounds = new Bounds(cell.getY(), cell.getBottom());
-        Bounds groupBounds = check_coav66_a0c0a0a01a36(MapSequence.fromMap(boundsGroupMap).get(cellBounds));
-        if (groupBounds != null) {
-          LineAnnotation lineAnnotation = MapSequence.fromMap(lineAnnotations).get(groupBounds);
-          if (lineAnnotation == null || lineAnnotation.isEarlierThanRevision(message.getRevision())) {
-            MapSequence.fromMap(lineAnnotations).put(groupBounds, new LineAnnotation(message.getRevision(), message.getPrevRevision(), message.getRevisionDescription()));
+        LineAnnotation la = new LineAnnotation(message);
+        Iterator<LineAnnotation> iterator = ListSequence.fromList(lineAnnotations).iterator();
+        while (iterator.hasNext()) {
+          LineAnnotation la1 = iterator.next();
+          if (la1.intersectsWith(la)) {
+            la = la.union(la1);
+            iterator.remove();
           }
         }
+        ListSequence.fromList(lineAnnotations).addElement(la);
       }
     });
-    if (MapSequence.fromMap(lineAnnotations).isEmpty()) {
-      return;
-    }
-    synchronized (myLineAnnotations) {
-      MapSequence.fromMap(myLineAnnotations).clear();
-      MapSequence.fromMap(myLineAnnotations).putAll(lineAnnotations);
-    }
-    check_coav66_a31a36(myLineAnnotationsUpdateListener);
+    myLineAnnotationsRef.set(lineAnnotations);
+    check_coav66_a3a16(myLineAnnotationsUpdateListener);
   }
 
-  public Map<Bounds, LineAnnotation> getLineAnnotations() {
-    Map<Bounds, LineAnnotation> lineAnnotations = MapSequence.fromMap(new HashMap<Bounds, LineAnnotation>());
-    synchronized (myLineAnnotations) {
-      MapSequence.fromMap(lineAnnotations).putAll(myLineAnnotations);
-    }
-    return lineAnnotations;
+  @NotNull
+  public Collection<LineAnnotation> getLineAnnotations() {
+    return myLineAnnotationsRef.get();
   }
 
   private List<EditorCell> getCells(final RevisionNodeChange revisionNodeChange) {
@@ -709,13 +613,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   public ShowDiffFromAnnotationAction createDiffAction(VcsFileRevision revision, VcsFileRevision prevRevision) {
     return new ShowDiffFromAnnotationAction(revision, prevRevision, myEditorComponent.getEditedNode(), myProject, myFile.getExtension());
   }
-  private static Bounds check_coav66_a0c0a0a01a36(BoundsGroup checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getGroupBounds();
-    }
-    return null;
-  }
-  private static void check_coav66_a31a36(LineAnnotationsUpdateListener checkedDotOperand) {
+  private static void check_coav66_a3a16(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.lineAnnotationsUpdated();
     }

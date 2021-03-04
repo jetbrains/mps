@@ -7,34 +7,71 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6338414166361132708", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
-public final class LineAnnotation {
+/*package*/ final class LineAnnotation {
 
   @NotNull
   private final VcsFileRevision myRevision;
   private final VcsFileRevision myPrevRevision;
   private final String myDescription;
+  private final int myStart;
+  private final int myEnd;
 
+  /*package*/ LineAnnotation(@NotNull AnnotatedCellMessage message) {
+    this(message.getRevision(), message.getPrevRevision(), message.getRevisionDescription(), message.getCell().getY(), message.getCell().getBottom());
+  }
 
-  public LineAnnotation(@NotNull VcsFileRevision revision, VcsFileRevision prevRevision, String description) {
+  private LineAnnotation(@NotNull VcsFileRevision revision, VcsFileRevision prevRevision, String description, int start, int end) {
     myRevision = revision;
     myPrevRevision = prevRevision;
     myDescription = description;
+    myStart = start;
+    myEnd = end;
   }
 
-  public String getDescription() {
+  /*package*/ int getStart() {
+    return myStart;
+  }
+
+  /*package*/ int getEnd() {
+    return myEnd;
+  }
+
+  /*package*/ boolean intersectsWith(LineAnnotation lineAnnotation) {
+    return myStart < lineAnnotation.getEnd() && lineAnnotation.getStart() < myEnd;
+  }
+
+  /*package*/ LineAnnotation union(LineAnnotation lineAnnotation) {
+    if (myStart == lineAnnotation.getStart() && myEnd == lineAnnotation.getEnd() && myRevision == lineAnnotation.getRevision()) {
+      return this;
+    }
+    int start = Math.min(myStart, lineAnnotation.getStart());
+    int end = Math.max(myEnd, lineAnnotation.getEnd());
+    VcsFileRevision revision;
+    VcsFileRevision parentRevision;
+    String description;
+    int comp = lineAnnotation.getRevision().getRevisionDate().compareTo(myRevision.getRevisionDate());
+    if (comp > 0) {
+      revision = lineAnnotation.getRevision();
+      parentRevision = lineAnnotation.getPrevRevision();
+      description = lineAnnotation.getDescription();
+    } else {
+      revision = myRevision;
+      parentRevision = myPrevRevision;
+      description = myDescription;
+    }
+    return new LineAnnotation(revision, parentRevision, description, start, end);
+  }
+
+  /*package*/ String getDescription() {
     return myDescription;
   }
 
   @NotNull
-  public VcsFileRevision getRevision() {
+  /*package*/ VcsFileRevision getRevision() {
     return myRevision;
   }
 
-  public VcsFileRevision getPrevRevision() {
+  /*package*/ VcsFileRevision getPrevRevision() {
     return myPrevRevision;
-  }
-
-  public boolean isEarlierThanRevision(@NotNull VcsFileRevision revision) {
-    return revision != myRevision && revision.getRevisionDate().compareTo(myRevision.getRevisionDate()) > 0;
   }
 }
