@@ -9,14 +9,15 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.GenerationPlanBuilder;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,18 +51,20 @@ public final class GenPlanTranslator {
    * @return {@code this} for convenience
    */
   public GenPlanTranslator feed(@NotNull GenerationPlanBuilder planBuilder) {
-    ArrayList<SLanguage> langueges = new ArrayList<SLanguage>();
     ArrayList<SModuleReference> generators = new ArrayList<SModuleReference>();
 
     for (SNode stepNode : SLinkOperations.getChildren(myPlanDeclaration, LINKS.steps$Xwbb)) {
       if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.Checkpoint$ZV)) {
         planBuilder.recordCheckpoint(cpIdentity(SLinkOperations.getTarget(SNodeOperations.as(stepNode, CONCEPTS.Checkpoint$ZV), LINKS.cpSpec$v7$t)));
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.Transform$a_)) {
+        GenerationPlanBuilder.TransformStepBuilder stepBuilder = planBuilder.transform();
         for (SNode lid : SLinkOperations.getChildren(SNodeOperations.as(stepNode, CONCEPTS.Transform$a_), LINKS.languages$AUhz)) {
-          langueges.add(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$cN, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))));
+          stepBuilder.include(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$cN, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))), GenerationPlanBuilder.BuilderOption.None);
         }
-        planBuilder.transformLanguage(langueges.toArray(new SLanguage[langueges.size()]));
-        langueges.clear();
+        for (SNode le : SLinkOperations.getChildren(SNodeOperations.as(stepNode, CONCEPTS.Transform$a_), LINKS.entries$T03u)) {
+          stepBuilder.include(((SLanguage) BHReflection.invoke0(SLinkOperations.getTarget(le, LINKS.language$pqOb), CONCEPTS.LanguageIdentity$cN, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))), option(le));
+        }
+        stepBuilder.complete();
       } else if (SNodeOperations.isInstanceOf(stepNode, CONCEPTS.ApplyGenerators$PQ)) {
         SNode applyGeneratorsStep = SNodeOperations.as(stepNode, CONCEPTS.ApplyGenerators$PQ);
         final boolean withExtended = SPropertyOperations.getBoolean(applyGeneratorsStep, PROPS.withExtended$Vq9q);
@@ -116,10 +119,21 @@ public final class GenPlanTranslator {
     throw new IllegalStateException("Unsupported checkpoint specification " + SNodeOperations.getConcept(cpSpec));
   }
 
+  private static GenerationPlanBuilder.BuilderOption option(SNode le) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(le, PROPS.kind$xL6K), 0x100024c0a63c4817L)) {
+      return GenerationPlanBuilder.BuilderOption.Extend;
+    }
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(le, PROPS.kind$xL6K), 0x100024c0a63c4814L)) {
+      return GenerationPlanBuilder.BuilderOption.TargetTo;
+    }
+    return GenerationPlanBuilder.BuilderOption.None;
+  }
+
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty withExtended$Vq9q = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xc11e5088a799353L, "withExtended");
     /*package*/ static final SProperty withPriorityRules$G6xp = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0xf738996443c35afL, "withPriorityRules");
+    /*package*/ static final SProperty kind$xL6K = MetaAdapterFactory.getProperty(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x100024c0a63c480fL, 0x100024c0a63c5feeL, "kind");
   }
 
   private static final class CONCEPTS {
@@ -142,6 +156,8 @@ public final class GenPlanTranslator {
   private static final class LINKS {
     /*package*/ static final SContainmentLink cpSpec$v7$t = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071801L, 0x340cd07aed7cb2d2L, "cpSpec");
     /*package*/ static final SContainmentLink languages$AUhz = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");
+    /*package*/ static final SContainmentLink language$pqOb = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x100024c0a63c480fL, 0x100024c0a63c4810L, "language");
+    /*package*/ static final SContainmentLink entries$T03u = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x100024c0a63c5ff6L, "entries");
     /*package*/ static final SContainmentLink module$u1do = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x73246de9adecb80dL, 0x73246de9adecb874L, "module");
     /*package*/ static final SContainmentLink generator$bWty = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x73246de9adeca171L, 0x73246de9adf5a45cL, "generator");
     /*package*/ static final SContainmentLink checkpoint$18uq = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,21 @@ public class DependencyCollectorPlanBuilder implements GenerationPlanBuilder {
     // I don't expect to get different instances of the same module during single model traverse operation, hence IDENTITY
     myLanguages = new THashSet<>(TObjectHashingStrategy.IDENTITY);
     myGenerators = new THashSet<SModuleReference>(TObjectHashingStrategy.IDENTITY);
+  }
+
+  @Override
+  public TransformStepBuilder transform() {
+    return new TransformStepBuilder() {
+      @Override
+      public void include(@NotNull SLanguage language, BuilderOption option) {
+        myLanguages.add(language); // XXX what about extended, do I care to support these?
+      }
+
+      @Override
+      public void complete() {
+        // no-op
+      }
+    };
   }
 
   @Override

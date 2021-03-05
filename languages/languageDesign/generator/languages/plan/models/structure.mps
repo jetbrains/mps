@@ -2,7 +2,6 @@
 <model ref="r:4a23ef0d-9c2f-48a6-8597-fbdd5b11f792(jetbrains.mps.lang.generator.plan.structure)">
   <persistence version="9" />
   <languages>
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -11,8 +10,18 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
+      <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
+        <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -102,9 +111,16 @@
     <node concept="1TJgyj" id="2ztrlDPivEd" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="languages" />
-      <property role="20lbJX" value="fLJekj6/1..n" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="IQ2ns" value="2944629966652439181" />
       <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
+    </node>
+    <node concept="1TJgyj" id="1009c2Af5ZQ" role="1TKVEi">
+      <property role="IQ2ns" value="1152961914448142326" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="entries" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="1009c2Af4wf" resolve="LanguageEntry" />
     </node>
   </node>
   <node concept="1TIwiD" id="7c$ruAHVa5L">
@@ -269,6 +285,40 @@
     </node>
     <node concept="t5JxF" id="2JQwL_F4Efe" role="lGtFl">
       <property role="t5JxN" value="Fork transformation sequence into two branches, one goes on with active plan, another spins off with another plan." />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1009c2Af4wf">
+    <property role="EcuMT" value="1152961914448136207" />
+    <property role="TrG5h" value="LanguageEntry" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1009c2Af4wg" role="1TKVEi">
+      <property role="IQ2ns" value="1152961914448136208" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="language" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tp25:34EJa6aIcco" resolve="LanguageIdentity" />
+    </node>
+    <node concept="1TJgyi" id="1009c2Af5ZI" role="1TKVEl">
+      <property role="IQ2nx" value="1152961914448142318" />
+      <property role="TrG5h" value="kind" />
+      <ref role="AX2Wp" node="1009c2Af4wi" resolve="TransformKind" />
+    </node>
+  </node>
+  <node concept="25R3W" id="1009c2Af4wi">
+    <property role="3F6X1D" value="1152961914448136210" />
+    <property role="TrG5h" value="TransformKind" />
+    <ref role="1H5jkz" node="1009c2Af4wj" resolve="Transform" />
+    <node concept="25R33" id="1009c2Af4wj" role="25R1y">
+      <property role="3tVfz5" value="1152961914448136211" />
+      <property role="TrG5h" value="Transform" />
+    </node>
+    <node concept="25R33" id="1009c2Af4wk" role="25R1y">
+      <property role="3tVfz5" value="1152961914448136212" />
+      <property role="TrG5h" value="TargetAt" />
+    </node>
+    <node concept="25R33" id="1009c2Af4wn" role="25R1y">
+      <property role="3tVfz5" value="1152961914448136215" />
+      <property role="TrG5h" value="Extend" />
     </node>
   </node>
 </model>

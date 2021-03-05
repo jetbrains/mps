@@ -9312,25 +9312,6 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1UVrAZQmU_$" role="3clF47">
-        <node concept="3cpWs8" id="1UVrAZQnlhc" role="3cqZAp">
-          <node concept="3cpWsn" id="1UVrAZQnlhd" role="3cpWs9">
-            <property role="TrG5h" value="langueges" />
-            <node concept="3uibUv" id="1UVrAZQnlha" role="1tU5fm">
-              <ref role="3uigEE" to="33ny:~ArrayList" resolve="ArrayList" />
-              <node concept="3uibUv" id="1UVrAZQnlTr" role="11_B2D">
-                <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
-              </node>
-            </node>
-            <node concept="2ShNRf" id="1UVrAZQnlWd" role="33vP2m">
-              <node concept="1pGfFk" id="1UVrAZQnmlN" role="2ShVmc">
-                <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-                <node concept="3uibUv" id="1UVrAZQnxw5" role="1pMfVU">
-                  <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="1UVrAZQnv5h" role="3cqZAp">
           <node concept="3cpWsn" id="1UVrAZQnv5i" role="3cpWs9">
             <property role="TrG5h" value="generators" />
@@ -9395,15 +9376,31 @@
               </node>
               <node concept="3eNFk2" id="1UVrAZQmViW" role="3eNLev">
                 <node concept="3clFbS" id="1UVrAZQmViX" role="3eOfB_">
+                  <node concept="3cpWs8" id="2exa1FzxoNm" role="3cqZAp">
+                    <node concept="3cpWsn" id="2exa1FzxoNn" role="3cpWs9">
+                      <property role="TrG5h" value="stepBuilder" />
+                      <node concept="3uibUv" id="2exa1FzxnLt" role="1tU5fm">
+                        <ref role="3uigEE" to="ap4t:~GenerationPlanBuilder$TransformStepBuilder" resolve="GenerationPlanBuilder.TransformStepBuilder" />
+                      </node>
+                      <node concept="2OqwBi" id="2exa1FzxoNo" role="33vP2m">
+                        <node concept="37vLTw" id="2exa1FzxoNp" role="2Oq$k0">
+                          <ref role="3cqZAo" node="1UVrAZQmUB_" resolve="planBuilder" />
+                        </node>
+                        <node concept="liA8E" id="2exa1FzxoNq" role="2OqNvi">
+                          <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder.transform()" resolve="transform" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="1DcWWT" id="1UVrAZQmVjb" role="3cqZAp">
                     <node concept="3clFbS" id="1UVrAZQmVjc" role="2LFqv$">
-                      <node concept="3clFbF" id="1UVrAZQnzAY" role="3cqZAp">
-                        <node concept="2OqwBi" id="1UVrAZQn$XJ" role="3clFbG">
-                          <node concept="37vLTw" id="1UVrAZQnzAW" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1UVrAZQnlhd" resolve="langueges" />
+                      <node concept="3clFbF" id="2exa1FzxDbr" role="3cqZAp">
+                        <node concept="2OqwBi" id="2exa1FzxGo1" role="3clFbG">
+                          <node concept="37vLTw" id="2exa1FzxDbp" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2exa1FzxoNn" resolve="stepBuilder" />
                           </node>
-                          <node concept="liA8E" id="1UVrAZQnBg5" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~ArrayList.add(java.lang.Object)" resolve="add" />
+                          <node concept="liA8E" id="2exa1FzxKC5" role="2OqNvi">
+                            <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder$TransformStepBuilder.include(org.jetbrains.mps.openapi.language.SLanguage,jetbrains.mps.generator.GenerationPlanBuilder$BuilderOption)" resolve="include" />
                             <node concept="2OqwBi" id="1UVrAZQmVjj" role="37wK5m">
                               <node concept="37vLTw" id="1UVrAZQmVjk" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1UVrAZQmVjB" resolve="lid" />
@@ -9411,6 +9408,10 @@
                               <node concept="2qgKlT" id="1UVrAZQmVjl" role="2OqNvi">
                                 <ref role="37wK5l" to="tpeu:34EJa6aIcyj" resolve="getLanguage" />
                               </node>
+                            </node>
+                            <node concept="Rm8GO" id="2exa1Fzy2eU" role="37wK5m">
+                              <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.None" resolve="None" />
+                              <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
                             </node>
                           </node>
                         </node>
@@ -9437,48 +9438,66 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbF" id="1UVrAZQnEKR" role="3cqZAp">
-                    <node concept="2OqwBi" id="1UVrAZQnFfB" role="3clFbG">
-                      <node concept="37vLTw" id="1UVrAZQnEKP" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1UVrAZQmUB_" resolve="planBuilder" />
-                      </node>
-                      <node concept="liA8E" id="1UVrAZQnFlc" role="2OqNvi">
-                        <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder.transformLanguage(org.jetbrains.mps.openapi.language.SLanguage...)" resolve="transformLanguage" />
-                        <node concept="2OqwBi" id="1UVrAZQnQJ5" role="37wK5m">
-                          <node concept="37vLTw" id="1UVrAZQnFmj" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1UVrAZQnlhd" resolve="langueges" />
+                  <node concept="1DcWWT" id="2exa1Fzy_Lr" role="3cqZAp">
+                    <node concept="3clFbS" id="2exa1Fzy_Lt" role="2LFqv$">
+                      <node concept="3clFbF" id="2exa1Fzz5wG" role="3cqZAp">
+                        <node concept="2OqwBi" id="2exa1Fzzahp" role="3clFbG">
+                          <node concept="37vLTw" id="2exa1Fzz5wE" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2exa1FzxoNn" resolve="stepBuilder" />
                           </node>
-                          <node concept="liA8E" id="1UVrAZQnT3o" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~ArrayList.toArray(java.lang.Object[])" resolve="toArray" />
-                            <node concept="2ShNRf" id="1UVrAZQnTfr" role="37wK5m">
-                              <node concept="3$_iS1" id="1UVrAZQnUw4" role="2ShVmc">
-                                <node concept="3$GHV9" id="1UVrAZQnUw6" role="3$GQph">
-                                  <node concept="2OqwBi" id="1UVrAZQnVEi" role="3$I4v7">
-                                    <node concept="37vLTw" id="1UVrAZQnUDr" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="1UVrAZQnlhd" resolve="langueges" />
-                                    </node>
-                                    <node concept="liA8E" id="1UVrAZQnY0R" role="2OqNvi">
-                                      <ref role="37wK5l" to="33ny:~ArrayList.size()" resolve="size" />
-                                    </node>
-                                  </node>
+                          <node concept="liA8E" id="2exa1FzzeG6" role="2OqNvi">
+                            <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder$TransformStepBuilder.include(org.jetbrains.mps.openapi.language.SLanguage,jetbrains.mps.generator.GenerationPlanBuilder$BuilderOption)" resolve="include" />
+                            <node concept="2OqwBi" id="2exa1FzzwnY" role="37wK5m">
+                              <node concept="2OqwBi" id="2exa1Fzzn2v" role="2Oq$k0">
+                                <node concept="37vLTw" id="2exa1FzziKe" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2exa1Fzy_Lu" resolve="le" />
                                 </node>
-                                <node concept="3uibUv" id="1UVrAZQnUnj" role="3$_nBY">
-                                  <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
+                                <node concept="3TrEf2" id="2exa1FzzsaI" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="bjdw:1009c2Af4wg" resolve="language" />
                                 </node>
+                              </node>
+                              <node concept="2qgKlT" id="2exa1Fzz$$L" role="2OqNvi">
+                                <ref role="37wK5l" to="tpeu:34EJa6aIcyj" resolve="getLanguage" />
+                              </node>
+                            </node>
+                            <node concept="1rXfSq" id="2exa1Fz$r7M" role="37wK5m">
+                              <ref role="37wK5l" node="2exa1Fz$ljb" resolve="option" />
+                              <node concept="37vLTw" id="2exa1Fz$vj4" role="37wK5m">
+                                <ref role="3cqZAo" node="2exa1Fzy_Lu" resolve="le" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
                     </node>
-                  </node>
-                  <node concept="3clFbF" id="1UVrAZQnGhA" role="3cqZAp">
-                    <node concept="2OqwBi" id="1UVrAZQnHEq" role="3clFbG">
-                      <node concept="37vLTw" id="1UVrAZQnGh$" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1UVrAZQnlhd" resolve="langueges" />
+                    <node concept="3cpWsn" id="2exa1Fzy_Lu" role="1Duv9x">
+                      <property role="TrG5h" value="le" />
+                      <node concept="3Tqbb2" id="2exa1FzyCQE" role="1tU5fm">
+                        <ref role="ehGHo" to="bjdw:1009c2Af4wf" resolve="LanguageEntry" />
                       </node>
-                      <node concept="liA8E" id="1UVrAZQnJWI" role="2OqNvi">
-                        <ref role="37wK5l" to="33ny:~ArrayList.clear()" resolve="clear" />
+                    </node>
+                    <node concept="2OqwBi" id="2exa1FzyYa$" role="1DdaDG">
+                      <node concept="1PxgMI" id="2exa1FzyQBS" role="2Oq$k0">
+                        <property role="1BlNFB" value="true" />
+                        <node concept="chp4Y" id="2exa1FzyU2c" role="3oSUPX">
+                          <ref role="cht4Q" to="bjdw:1_4co2y1Lw2" resolve="Transform" />
+                        </node>
+                        <node concept="37vLTw" id="2exa1FzyMV8" role="1m5AlR">
+                          <ref role="3cqZAo" node="1UVrAZQmVl7" resolve="stepNode" />
+                        </node>
+                      </node>
+                      <node concept="3Tsc0h" id="2exa1Fzz1pA" role="2OqNvi">
+                        <ref role="3TtcxE" to="bjdw:1009c2Af5ZQ" resolve="entries" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="2exa1FzzPRL" role="3cqZAp">
+                    <node concept="2OqwBi" id="2exa1FzzU6C" role="3clFbG">
+                      <node concept="37vLTw" id="2exa1FzzPRJ" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2exa1FzxoNn" resolve="stepBuilder" />
+                      </node>
+                      <node concept="liA8E" id="2exa1FzzYR6" role="2OqNvi">
+                        <ref role="37wK5l" to="ap4t:~GenerationPlanBuilder$TransformStepBuilder.complete()" resolve="complete" />
                       </node>
                     </node>
                   </node>
@@ -10234,6 +10253,78 @@
         <property role="TrG5h" value="cpSpec" />
         <node concept="3Tqbb2" id="274NGw8PIU6" role="1tU5fm">
           <ref role="ehGHo" to="bjdw:3gcO7FHva5$" resolve="CheckpointSpecification" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2exa1Fz$7gO" role="jymVt" />
+    <node concept="2YIFZL" id="2exa1Fz$ljb" role="jymVt">
+      <property role="TrG5h" value="option" />
+      <node concept="3clFbS" id="2exa1Fz$lje" role="3clF47">
+        <node concept="3clFbJ" id="2exa1Fz$$l9" role="3cqZAp">
+          <node concept="2OqwBi" id="2exa1Fz_2g8" role="3clFbw">
+            <node concept="2OqwBi" id="2exa1Fz$GD5" role="2Oq$k0">
+              <node concept="37vLTw" id="2exa1Fz$Cnr" role="2Oq$k0">
+                <ref role="3cqZAo" node="2exa1Fz$pX8" resolve="le" />
+              </node>
+              <node concept="3TrcHB" id="2exa1Fz$LK$" role="2OqNvi">
+                <ref role="3TsBF5" to="bjdw:1009c2Af5ZI" resolve="kind" />
+              </node>
+            </node>
+            <node concept="21noJN" id="2exa1Fz_7os" role="2OqNvi">
+              <node concept="21nZrQ" id="2exa1Fz_fsL" role="21noJM">
+                <ref role="21nZrZ" to="bjdw:1009c2Af4wn" resolve="Extend" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="2exa1Fz$$lb" role="3clFbx">
+            <node concept="3cpWs6" id="2exa1Fz_jv8" role="3cqZAp">
+              <node concept="Rm8GO" id="2exa1Fz_wba" role="3cqZAk">
+                <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.Extend" resolve="Extend" />
+                <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2exa1Fz_D9k" role="3cqZAp">
+          <node concept="3clFbS" id="2exa1Fz_D9m" role="3clFbx">
+            <node concept="3cpWs6" id="2exa1FzA7gK" role="3cqZAp">
+              <node concept="Rm8GO" id="2exa1FzAbAC" role="3cqZAk">
+                <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.TargetTo" resolve="TargetTo" />
+                <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="2exa1Fz_Tua" role="3clFbw">
+            <node concept="2OqwBi" id="2exa1Fz_LtN" role="2Oq$k0">
+              <node concept="37vLTw" id="2exa1Fz_HbY" role="2Oq$k0">
+                <ref role="3cqZAo" node="2exa1Fz$pX8" resolve="le" />
+              </node>
+              <node concept="3TrcHB" id="2exa1Fz_Pus" role="2OqNvi">
+                <ref role="3TsBF5" to="bjdw:1009c2Af5ZI" resolve="kind" />
+              </node>
+            </node>
+            <node concept="21noJN" id="2exa1Fz_Y_B" role="2OqNvi">
+              <node concept="21nZrQ" id="2exa1FzA2BY" role="21noJM">
+                <ref role="21nZrZ" to="bjdw:1009c2Af4wk" resolve="TargetAt" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2exa1FzAslD" role="3cqZAp">
+          <node concept="Rm8GO" id="2exa1FzA$rC" role="3cqZAk">
+            <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.None" resolve="None" />
+            <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2exa1Fz$gub" role="1B3o_S" />
+      <node concept="3uibUv" id="2exa1Fz$lhu" role="3clF45">
+        <ref role="3uigEE" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
+      </node>
+      <node concept="37vLTG" id="2exa1Fz$pX8" role="3clF46">
+        <property role="TrG5h" value="le" />
+        <node concept="3Tqbb2" id="2exa1Fz$pX7" role="1tU5fm">
+          <ref role="ehGHo" to="bjdw:1009c2Af4wf" resolve="LanguageEntry" />
         </node>
       </node>
     </node>

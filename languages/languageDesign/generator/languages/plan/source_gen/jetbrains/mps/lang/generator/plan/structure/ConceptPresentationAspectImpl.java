@@ -21,6 +21,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_InPlaceCheckpointRefSpec;
   private ConceptPresentation props_InPlaceCheckpointSpec;
   private ConceptPresentation props_IncludePlan;
+  private ConceptPresentation props_LanguageEntry;
   private ConceptPresentation props_Plan;
   private ConceptPresentation props_Step;
   private ConceptPresentation props_TextDocLine;
@@ -123,6 +124,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IncludePlan = cpb.create();
         }
         return props_IncludePlan;
+      case LanguageConceptSwitch.LanguageEntry:
+        if (props_LanguageEntry == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("LanguageEntry");
+          props_LanguageEntry = cpb.create();
+        }
+        return props_LanguageEntry;
       case LanguageConceptSwitch.Plan:
         if (props_Plan == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import jetbrains.mps.generator.plan.PlanIdentity;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -54,6 +53,11 @@ public class RigidPlanBuilder implements GenerationPlanBuilder {
   }
 
   @Override
+  public TransformStepBuilder transform() {
+    throw new UnsupportedOperationException("This implementation of plan builder doesn't support requested functionality");
+  }
+
+  @Override
   public void transformLanguage(@NotNull SLanguage ... languages) {
     ArrayList<TemplateMappingConfiguration> mc = new ArrayList<>();
     for (SLanguage language : languages) {
@@ -67,22 +71,6 @@ public class RigidPlanBuilder implements GenerationPlanBuilder {
       for (GeneratorRuntime gr : lr.getGenerators()) {
         fillMC(gr, mc);
       }
-    }
-    mySteps.add(new Transform(mc));
-  }
-
-  @Override
-  public void applyGenerator(@NotNull SModule ... generators) {
-    ArrayList<TemplateMappingConfiguration> mc = new ArrayList<>();
-    for (SModule generator : generators) {
-      if (!(generator instanceof Generator)) {
-        continue; // FIXME throw an RT exception
-      }
-      GeneratorRuntime gr = myLanguageRegistry.getGenerator(generator.getModuleReference());
-      if (gr == null) {
-        continue; // FIXME throw an RT exception
-      }
-      fillMC(gr, mc);
     }
     mySteps.add(new Transform(mc));
   }

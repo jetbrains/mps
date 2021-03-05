@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -48,6 +49,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -111,8 +114,43 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
   }
 
   @Override
-  public void applyGenerator(@NotNull SModule... generators) {
-    mySteps.add(new TransformEntry(this, asTemplateModules(generators), true, false));
+  public TransformStepBuilder transform() {
+    class TSB implements TransformStepBuilder {
+      private final List<Predicate<? super TemplateModule>> subSteps = new ArrayList<>(4);
+      @Override
+      public void include(@NotNull SLanguage language, BuilderOption option) {
+        if (BuilderOption.Extend.presentIn(option)) {
+          final Set<SLanguage> extending = new SLanguageHierarchy(myLanguageRegistry, Collections.singleton(language)).getExtending();
+          extending.remove(language);
+          // all generators of extending are subject to be consumed by this step in case they show up in actual model
+          subSteps.add(ofLanguage(extending));
+        } else if (BuilderOption.TargetTo.presentIn(option)) {
+          // consume all where TemplateModule.getTargetLanguage()
+          subSteps.add(ofTarget(language));
+        } else {
+          subSteps.add(ofLanguage(language));
+        }
+      }
+
+      @Override
+      public void complete() {
+        mySteps.add(new TransformEntry2(subSteps));
+      }
+
+      private Predicate<TemplateModule> ofLanguage(final SLanguage l) {
+        return tm -> l.equals(tm.getSourceLanguage().getIdentity());
+      }
+
+      private Predicate<TemplateModule> ofLanguage(final Collection<SLanguage> ll) {
+        return tm -> ll.stream().anyMatch(l -> l.equals(tm.getSourceLanguage().getIdentity()));
+      }
+
+      private Predicate<TemplateModule> ofTarget(final SLanguage l) {
+        return tm -> tm.getTargetLanguages().contains(l);
+      }
+
+    };
+    return new TSB();
   }
 
   @Override
@@ -318,7 +356,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
     /**
      * Step has a chance to 'consume' {@code extCandidate} generator if the step explicitly lists any of {@code directExtendedGenerators} as engaged.
-     * 'Consumed' here doesn't mean other steps could not consume it as well. Basically, its PlanBulder telling its step entries: "look, here's a generator
+     * 'Consumed' here doesn't mean other steps could not consume it as well. Basically, its PlanBuilder telling its step entries: "look, here's a generator
      * I'd like to put somewhere, grab it if you like".
      * @param directExtendedGenerators generators directly extended by {@code extCandidate}, just an handy, calculated-once set.
      * @param extCandidate generator
@@ -383,6 +421,46 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         generators.flatMap(tm -> tm.getModels().stream()).map(TemplateModel::getConfigurations).forEach(tmc::addAll);
         steps.add(new Transform(tmc));
       }
+    }
+  }
+
+  private static class TransformEntry2 implements StepEntry {
+    private final ArrayList<TemplateModule> myGenerators = new ArrayList<>(4);
+    private final List<Predicate<? super TemplateModule>> myConditions;
+
+    TransformEntry2(List<Predicate<? super TemplateModule>> conditions) {
+      myConditions = conditions;
+    }
+
+    @Override
+    public void reportInvolvedGenerators(Collection<TemplateModule> result) {
+      // no-op, this step doesn't involve any specific generator directly
+    }
+
+    @Override
+    public void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
+      // don't expect myGenerators to ever contain extCandidate already, I assume extCandidate values are unique, and we don't add anything
+      // but these values into myGenerators
+      assert !myGenerators.contains(extCandidate); // just sanity check
+      //
+      if (myConditions.stream().anyMatch(c -> c.test(extCandidate))) {
+        myGenerators.add(extCandidate);
+      }
+    }
+
+    @Override
+    public void createStep(List<Step> steps) {
+      if (myGenerators.isEmpty()) {
+        // FIXME need feedback so that user can find out there's nothing in the step.
+        //       either provide it here or add a dedicated step that indicates none matched the step
+        //       (perhaps, can use ordinal to distinguish the step, or introduce an optional name for a step?)
+        return;
+      }
+      Stream<TemplateModule> generators = myGenerators.stream();
+
+      ArrayList<TemplateMappingConfiguration> tmc = new ArrayList<>();
+      generators.flatMap(tm -> tm.getModels().stream()).map(TemplateModel::getConfigurations).forEach(tmc::addAll);
+      steps.add(new Transform(tmc));
     }
   }
 

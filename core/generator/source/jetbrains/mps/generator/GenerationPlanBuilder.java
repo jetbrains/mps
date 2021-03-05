@@ -56,23 +56,19 @@ import java.util.stream.Collectors;
 public interface GenerationPlanBuilder {
   /**
    * Apply generators of languages specified to reduce their concepts.
-   * FIXME It's unspecified at the moment what happens with generators that are extended or referenced from those involved (i.e. if they are part of the step).
+   * Only explicitly mentioned languages are consulted for generators.
+   * To include extended languages, or languages that generate into a specified one, use {@link #transform()}.
    * @param languages languages to reduce
    */
   void transformLanguage(@NotNull SLanguage ... languages);
 
   /**
-   * Specified generators (exact set, unlike {@link #applyGeneratorWithExtended(SModule...)} no extended relation between generators is taken into account)
-   * applied as a single transformation step.
-   * FIXME shall decide what happens if a generator references/extends another one, not mentioned.
-   * @deprecated use {@link #applyGenerators(Collection, BuilderOption...)} instead
-   * @param generators generator modules
+   * Get a builder to fill transformation step with languages and generators.
+   * Once over, complete the step with {@link TransformStepBuilder#complete()}
+   * @return builder to populate transformation step
+   * @since 2021.1
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  default void applyGenerator(@NotNull SModule ... generators) {
-    applyGenerators(Arrays.stream(generators).map(SModule::getModuleReference).collect(Collectors.toList()), BuilderOption.None);
-  }
+  TransformStepBuilder transform();
 
   /**
    * Specified generators and those extending them AND visible from scope applied as a single transformation step.
@@ -157,7 +153,17 @@ public interface GenerationPlanBuilder {
    * {@link #WithPriorityRules} means priority rules of involved generators (those explicitly specified and extending) are respected.
    */
   enum BuilderOption {
-    None, WithExtendedGenerators, WithPriorityRules;
+    None, WithExtendedGenerators, WithPriorityRules,
+    /**
+     * Reduce languages that produce specified one, i.e. it's their generation 'target'.
+     * Note, this excludes the specified language. I expect scenarios where target language have to
+     * get processed later, not together with those targeting it
+     */
+    TargetTo,
+    /**
+     *
+     */
+    Extend;
 
     public boolean presentIn(BuilderOption... options) {
       for (BuilderOption o : options) {
@@ -167,5 +173,12 @@ public interface GenerationPlanBuilder {
       }
       return false;
     }
+  }
+
+  interface TransformStepBuilder {
+    // TODO include(SModuleReference generator, BuilderOption)
+    // XXX perhaps, includeAllOtherwiseUnhandledLanguages() as well.
+    void include(@NotNull SLanguage  language, BuilderOption option);
+    void complete();
   }
 }
