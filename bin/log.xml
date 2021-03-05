@@ -12,7 +12,6 @@ DIALOG is responsible for showing ERROR level (at least) events in UI (events ar
 MPS additionally logs VCS events to mpsvcs.log file: categories are used for that.
 
 Appenders CONSOLE-* can be used to debug purposes to get application output to the console.
-Note that adding this appenders to root appender will result in duplication of entries in idea.log file.
 
 CONTINUOUS_FILE appender can also be used for debugging.
 It does not interfere with console output and idea.log, but uses separate continuous.log file.
@@ -24,9 +23,17 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
 <!-- Parameter 'follow = true' in appenders with class 'ConsoleAppender' is required for proper test light execution -->
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-  <!-- Output events with level at least WARN to console. See org.apache.log4j.Level.WARN -->
+  <!-- Output all events to console -->
+  <appender name="CONSOLE-ALL" class="org.apache.log4j.ConsoleAppender">
+    <param name="follow" value="false"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%7r] %6p - %30.60c - %m \n"/>
+    </layout>
+  </appender>
+
+  <!-- Output events with level at least WARN to err console. See org.apache.log4j.Level.WARN -->
   <appender name="CONSOLE-WARN" class="org.apache.log4j.ConsoleAppender">
-    <param name="follow" value="true"/>
+    <param name="follow" value="false"/>
     <param name="target" value="System.err"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="[%7r] %6p - %30.60c - %m \n"/>
@@ -36,9 +43,22 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
     </filter>
   </appender>
 
+
+  <!-- Output events with level INFO to console. See org.apache.log4j.Level.INFO -->
+  <appender name="CONSOLE-INFO" class="org.apache.log4j.ConsoleAppender">
+    <param name="follow" value="false"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%7r] %6p - %30.60c - %m \n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+      <param name="LevelMax" value="INFO"/>
+    </filter>
+  </appender>
+
   <!-- Output only events with level DEBUG to console. See org.apache.log4j.Level.DEBUG -->
   <appender name="CONSOLE-DEBUG" class="org.apache.log4j.ConsoleAppender">
-    <param name="follow" value="true"/>
+    <param name="follow" value="false"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="[%7r] %6p - %30.60c - %m \n"/>
     </layout>
@@ -50,7 +70,7 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
 
   <!-- Output only events with level TRACE to console. See org.apache.log4j.Level.TRACE -->
   <appender name="CONSOLE-TRACE" class="org.apache.log4j.ConsoleAppender">
-    <param name="follow" value="true"/>
+    <param name="follow" value="false"/>
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="[%7r] %6p - %30.60c - %m \n"/>
     </layout>
@@ -58,14 +78,6 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
       <param name="LevelMin" value="TRACE"/>
       <param name="LevelMax" value="TRACE"/>
     </filter>
-  </appender>
-
-  <!-- Output all events to console -->
-  <appender name="CONSOLE-ALL" class="org.apache.log4j.ConsoleAppender">
-    <param name="follow" value="true"/>
-    <layout class="org.apache.log4j.PatternLayout">
-      <param name="ConversionPattern" value="[%7r] %6p - %30.60c - %m \n"/>
-    </layout>
   </appender>
 
   <!-- Show events with level at least ERROR in UI -->
@@ -85,6 +97,9 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
     <layout class="org.apache.log4j.PatternLayout">
       <param name="ConversionPattern" value="%d [%7r] %6p - %30.60c - %m \n"/>
     </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+    </filter>
   </appender>
 
   <!-- Log all events to continuous.log file. Note that file is overridden on each application start -->
@@ -121,35 +136,36 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
 
   <!--
   Template category for debugging:
-  Set required logger prefix and choose appropriate appender.
+  Set required logger prefix (java package) and choose appropriate appender.
   Set required priority: TRACE, DEBUG, INFO, WARN, ERROR etc (See org.apache.log4j.Level).
   Choose required debug appender or add your own.
   -->
   <!--
   <category name="logger.prefix">
-    <priority value="TRACE"/>
+    <priority value="ALL"/>
+    <appender-ref ref="CONSOLE-ALL"/>
     <appender-ref ref="CONSOLE-WARN"/>
+    <appender-ref ref="CONSOLE-INFO"/>
     <appender-ref ref="CONSOLE-DEBUG"/>
     <appender-ref ref="CONSOLE-TRACE"/>
-    <appender-ref ref="CONSOLE-ALL"/>
     <appender-ref ref="CONTINUOUS_FILE" />
   </category>
   -->
 
   <root>
-    <priority value="INFO"/>
+    <priority value="ALL"/>
+
+    <!-- IDE related -->
     <appender-ref ref="DIALOG"/>
     <appender-ref ref="FILE"/>
+    <!--<appender-ref ref="CONTINUOUS_FILE" />-->
 
-    <!-- For quick debug: -->
-    <!-- Note: to see messages with a level lower then INFO
-               change the 'priority' value of the root to the required level.
-               Optionally: to avoid duplicated messages in idea.log, please,
-               set runtime parameter -Dintellij.log.stdout=false in Run Configuration -->
-    <!--<appender-ref ref="CONSOLE-ALL" />-->
+    <!-- Console output options: use either CONSOLE-ALL or combination of other appenders -->
+    <!-- Consider to use <category> to filter only packages under investigation -->
+    <!--<appender-ref ref="CONSOLE-ALL"/>-->
     <!--<appender-ref ref="CONSOLE-WARN"/>-->
+    <!--<appender-ref ref="CONSOLE-INFO"/>-->
     <!--<appender-ref ref="CONSOLE-DEBUG"/>-->
     <!--<appender-ref ref="CONSOLE-TRACE"/>-->
-    <!--<appender-ref ref="CONTINUOUS_FILE" />-->
   </root>
 </log4j:configuration>
