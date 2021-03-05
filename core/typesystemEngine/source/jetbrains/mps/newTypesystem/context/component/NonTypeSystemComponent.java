@@ -25,6 +25,8 @@ import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.NodeReadEventsCaster;
+import jetbrains.mps.typechecking.TypeAccessListener;
+import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext.NonTypesystemComputationMode;
 import jetbrains.mps.typesystemEngine.util.TypeSystemUtil;
 import jetbrains.mps.util.Cancellable;
@@ -287,13 +289,13 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
   }
 
   // true iff was fully executed (not cancelled)
-  public boolean applyNonTypeSystemRulesToRoot(final TypeCheckingContext typeCheckingContext, final SNode rootNode, final Cancellable c) {
+  public boolean applyNonTypeSystemRulesToRoot(final TypeCheckingContext typeCheckingContext, final SNode rootNode, final Cancellable c, TypecheckingObservable observable) {
     if (rootNode == null) return false;
-    return LanguageScopeExecutor.execWithModelScope(rootNode.getModel(), () -> applyRulesToRoot(typeCheckingContext, rootNode, c));
+    return LanguageScopeExecutor.execWithModelScope(rootNode.getModel(), () -> applyRulesToRoot(typeCheckingContext, rootNode, c, observable));
   }
 
   // true iff fully executed
-  private boolean applyRulesToRoot(TypeCheckingContext typeCheckingContext, SNode rootNode, Cancellable c) {
+  private boolean applyRulesToRoot(TypeCheckingContext typeCheckingContext, SNode rootNode, Cancellable c, TypecheckingObservable observable) {
     doInvalidate();
     try {
       Queue<SNode> frontier = new LinkedList<>();
@@ -304,7 +306,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
         if (!TypeSystemUtil.shouldApplyTypeSystemRules(sNode)) {
           continue;
         }
-        applyNonTypesystemRulesToNode(sNode, typeCheckingContext);
+        applyNonTypesystemRulesToNode(sNode, typeCheckingContext, observable);
         frontier.addAll(IterableUtil.asCollection(sNode.getChildren()));
       }
       //all error reporters must be simple reporters, no error expansion needed
@@ -314,7 +316,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     return true;
   }
 
-  private void applyNonTypesystemRulesToNode(@NotNull final SNode node, final TypeCheckingContext typeCheckingContext) {
+  private void applyNonTypesystemRulesToNode(@NotNull final SNode node, final TypeCheckingContext typeCheckingContext, TypecheckingObservable observable) {
     assert typeCheckingContext.isNonTypesystemComputation() || RuntimeFlags.getTestMode().isInsideTestEnvironment();
     getTypechecking().runApplyRulesTo(node, () -> {
 
@@ -335,7 +337,9 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
           if (myCheckedNodes.contains(nodeAndRule)) continue;
           nodesReadListener.clear();
           NodeReadEventsCaster.setNodesReadListener(nodesReadListener);
-          TypeChecker.getInstance().addTypesReadListener(typesReadListener);
+          if (observable != null) {
+            observable.addTypeAccessListener(typesReadListener);
+          }
           myRuleAndNodeBeingChecked = new Pair<>(node, rule.o1);
         }
         try {
@@ -343,7 +347,9 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
         } finally {
           myRuleAndNodeBeingChecked = null;
           if (incrementalMode) {
-            TypeChecker.getInstance().removeTypesReadListener(typesReadListener);
+            if (observable != null) {
+              observable.removeTypeAccessListener(typesReadListener);
+            }
             NodeReadEventsCaster.removeNodesReadListener();
           }
         }
@@ -370,7 +376,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     return incrementalMode; // alright, alright
   }
 
-  private static class MyTypesReadListener implements TypesReadListener {
+  private static class MyTypesReadListener implements TypesReadListener, TypeAccessListener {
     private Set<SNode> myAccessedNodes = new THashSet<>(1);
     private boolean myIsSetAccessReport = false;
 
@@ -384,6 +390,11 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
         new Throwable().printStackTrace();
       }
       myAccessedNodes.add(term);
+    }
+
+    @Override
+    public void typeAccessed(SNode expression) {
+      myAccessedNodes.add(expression);
     }
 
     public Set<SNode> getAccessedNodes() {

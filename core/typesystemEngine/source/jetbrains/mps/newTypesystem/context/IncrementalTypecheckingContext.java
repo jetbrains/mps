@@ -89,7 +89,6 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   public SNode getTypeOf(SNode node, TypeChecker typeChecker) {
     if (node == null) return null;
     synchronized (TYPECHECKING_LOCK) {
-      TypeChecker.getInstance().fireNodeTypeAccessed(node);
       return  getTypeOf_normalMode(node);
     }
   }

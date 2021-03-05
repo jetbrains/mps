@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.typesystem.inference;
+package jetbrains.mps.typechecking;
 
 import org.jetbrains.mps.openapi.model.SNode;
 
-@Deprecated(forRemoval = true)
-public interface TypesReadListener {
-  void nodeTypeAccessed(SNode term);
+/**
+ * @author Fedor Isakov
+ */
+public interface TypeAccessListener {
+
+  void typeAccessed(SNode expression);
+
 }

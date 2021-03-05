@@ -98,7 +98,7 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
         try {
           messagesChanged = true;
           context.setNonTypesystemComputationMode(NonTypesystemComputationMode.ON_THE_FLY);
-          if (typesComponent.applyNonTypesystemRulesToRoot(context, cancellable)) {
+          if (typesComponent.applyNonTypesystemRulesToRoot(context, cancellable, typecheckingQueries.getObservable()) ) {
             typesComponent.setCheckedNonTypesystem();
           }
         } catch (Throwable t) {

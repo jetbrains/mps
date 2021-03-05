@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typesystem;
 
+import gnu.trove.THashSet;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
@@ -24,6 +25,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.TargetTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
+import jetbrains.mps.typechecking.TypeAccessListener;
+import jetbrains.mps.typechecking.TypeInvalidationListener;
+import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.backend.TypecheckingProvider;
@@ -35,8 +39,11 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -195,6 +202,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   private static class IncrementalLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
     private final IncrementalTypecheckingContext myTypecheckingContext;
+    private final Observable myObservable = new Observable();
 
     public IncrementalLegacyTypecheckingQueries(Flags flags, IncrementalTypecheckingContext typecheckingContext) {
       super(flags);
@@ -205,6 +213,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     public boolean isIncremental() {
       return true;
     }
+    
     @Override
     public TypeCheckingContext getTypeCheckingContext() {
       return myTypecheckingContext;
@@ -220,6 +229,19 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       });
     }
 
+    @Nullable
+    @Override
+    public SNode getTypeOf(SNode expression) {
+      myObservable.dispatchTypeAccessed(expression);
+      return super.getTypeOf(expression);
+    }
+
+    @Nullable
+    @Override
+    public TypecheckingObservable getObservable() {
+      return myObservable;
+    }
+
     protected void disposeTypeCheckingContext() {
       myTypecheckingContext.dispose();
     }
@@ -232,6 +254,38 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     @Override
     protected void run(Consumer<? super TypeCheckingContext> fun) {
       fun.accept(myTypecheckingContext);
+    }
+
+    private static class Observable implements TypecheckingObservable {
+
+      private Set<TypeAccessListener> myTypeAccessListeners = new THashSet<>();
+
+      @Override
+      public void addTypeAccessListener(TypeAccessListener listener) {
+        myTypeAccessListeners.add(listener);
+      }
+
+      @Override
+      public void removeTypeAccessListener(TypeAccessListener listener) {
+        myTypeAccessListeners.remove(listener);
+      }
+
+      @Override
+      public void addTypeInvalidationListener(TypeInvalidationListener listener) {
+        throw new UnsupportedOperationException();
+      }
+
+      @Override
+      public void removeTypeInvalidationListener(TypeInvalidationListener listener) {
+        throw new UnsupportedOperationException();
+      }
+
+      private void dispatchTypeAccessed(SNode expression) {
+        ArrayList<TypeAccessListener> listeners = new ArrayList<>(myTypeAccessListeners);
+        for (TypeAccessListener listener : listeners) {
+          listener.typeAccessed(expression);
+        }
+      }
     }
 
   }

@@ -148,4 +148,12 @@ public interface TypecheckingQueries {
    */
   boolean isCacheUpToDate(SNode root);
 
+  /**
+   * Returns the object to be used for managing listeners that are notified during
+   * typechecking.
+   * This method is optional, if listeners are not supported, null is returned.
+   */
+  @Nullable
+  default TypecheckingObservable getObservable() { return null; }
+
 }

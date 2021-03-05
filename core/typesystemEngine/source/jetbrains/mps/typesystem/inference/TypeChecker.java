@@ -265,6 +265,7 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
     }
   }
 
+  @Deprecated(forRemoval = true)
   public void fireNodeTypeAccessed(SNode term) {
     TypesReadListener typesReadListener = myTypesReadListener.get();
     if (typesReadListener != null) {
