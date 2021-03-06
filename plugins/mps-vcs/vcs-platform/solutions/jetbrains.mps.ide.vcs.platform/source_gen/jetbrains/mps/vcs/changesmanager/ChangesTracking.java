@@ -310,7 +310,7 @@ public final class ChangesTracking {
       return true;
     }
     FileStatus status = getStatusOfMetaDescriptor();
-    return status != FileStatus.IGNORED && status != FileStatus.UNKNOWN;
+    return status != FileStatus.IGNORED && status != FileStatus.UNKNOWN && status != FileStatus.DELETED && status != FileStatus.DELETED_FROM_FS;
   }
 
   private FileStatus getStatusOfMetaDescriptor() {
