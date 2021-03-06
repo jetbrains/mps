@@ -16,21 +16,17 @@
 package jetbrains.mps.newTypesystem.context;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.errors.QuickFixProvider;
-import jetbrains.mps.errors.SimpleErrorReporter;
-import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
+import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.util.Consumer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +34,7 @@ import java.util.Map;
 public class IncrementalTypecheckingContext extends ReportingTypecheckingContext<State, IncrementalTypechecking> {
   private static Logger LOG = LogManager.getLogger(IncrementalTypecheckingContext.class);
   private final ClassLoaderManager myClassManager;
+  private Consumer<SNode> myTypeInvalidatedNotifier = null;
 
   private volatile NonTypesystemComputationMode myNonTypesystemComputationMode = NonTypesystemComputationMode.OFF;
 //  private boolean myIsInferenceMode = false;
@@ -50,9 +47,13 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
     myClassManager = clManager;
   }
 
+  public void setTypeInvalidateNotifier(Consumer<SNode> notifier) {
+    this.myTypeInvalidatedNotifier = notifier;
+  }
+
   @Override
   protected IncrementalTypechecking createTypechecking() {
-    return new IncrementalTypechecking(getNode(), getState(), getTypeChecker(), myClassManager);
+    return new IncrementalTypechecking(getNode(), getState(), getTypeChecker(), myClassManager, myTypeInvalidatedNotifier);
   }
 
   @Override

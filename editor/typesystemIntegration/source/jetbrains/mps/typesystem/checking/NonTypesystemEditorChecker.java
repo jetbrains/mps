@@ -25,6 +25,7 @@ import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.checking.UpdateResult.Completed;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typesystem.LegacyTypecheckingProvider;
@@ -95,10 +96,15 @@ public class NonTypesystemEditorChecker extends AbstractTypesystemEditorChecker 
       if (!(wasCheckedOnce && typesComponent.isCheckedNonTypesystem())) {
         // first, the types have to be updated, as later non-typesystem rules will rely on them
         typecheckingQueries.checkRecursively(rootNode, nodeReportItem -> {/*NOP*/});
+        TypecheckingObservable observable = typecheckingQueries.getObservable();
+        if (observable != null) {
+          observable.addTypeInvalidationListener(typesComponent.getTypeRecalculatedListener());
+        }
+
         try {
           messagesChanged = true;
           context.setNonTypesystemComputationMode(NonTypesystemComputationMode.ON_THE_FLY);
-          if (typesComponent.applyNonTypesystemRulesToRoot(context, cancellable, typecheckingQueries.getObservable()) ) {
+          if (typesComponent.applyNonTypesystemRulesToRoot(context, cancellable, observable) ) {
             typesComponent.setCheckedNonTypesystem();
           }
         } catch (Throwable t) {

@@ -37,6 +37,7 @@ import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.event.SModelEventVisitorAdapter;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
+import jetbrains.mps.typechecking.TypeInvalidationListener;
 import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -52,6 +53,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.lang.ref.Reference;
@@ -100,11 +102,17 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   private final TypeChecker myTypeChecker;
   private final ClassLoaderManager myClassManager;
+  private final Consumer<SNode> myTypeInvalidationNotifier;
 
-  public IncrementalTypechecking(SNode node, State state, TypeChecker typeChecker, ClassLoaderManager clManager) {
+  public IncrementalTypechecking(SNode node,
+                                 State state,
+                                 TypeChecker typeChecker,
+                                 ClassLoaderManager clManager,
+                                 Consumer<SNode> typeInvalidationNotifier) {
     super(node, state);
     myTypeChecker = typeChecker;
     myClassManager = clManager;
+    myTypeInvalidationNotifier = typeInvalidationNotifier;
     myNonTypeSystemComponent = new NonTypeSystemComponent(typeChecker, state, this);
     init();
   }
@@ -174,7 +182,6 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
       myModelListenerManager.dispose();
       myModelListenerManager = null;
     }
-    myTypeChecker.removeTypeRecalculatedListener(myTypeRecalculatedListener);
     if (myNonTypeSystemComponent != null) {
       myNonTypeSystemComponent = null;
     }
@@ -311,6 +318,12 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     getModelListenerManager().updateGCedNodes();
   }
 
+  public void notifyTypeInvalidated(SNode node) {
+    if (myTypeInvalidationNotifier != null) {
+      myTypeInvalidationNotifier.accept(node);
+    }
+  }
+
   private class MyModelListener extends SModelAdapter {
     @Override
     public void eventFired(SModelEvent event) {
@@ -412,13 +425,18 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     }
   }
 
-  private class MyTypeRecalculatedListener implements TypeRecalculatedListener {
+  private class MyTypeRecalculatedListener implements TypeRecalculatedListener, TypeInvalidationListener {
     MyTypeRecalculatedListener() {
     }
 
     @Override
     public void typeWillBeRecalculatedForTerm(SNode term) {
       myNonTypeSystemComponent.typeWillBeRecalculatedForTerm(term);
+    }
+
+    @Override
+    public void typeInvalidated(SNode expression) {
+      myNonTypeSystemComponent.typeWillBeRecalculatedForTerm(expression);
     }
   }
 

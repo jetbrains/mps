@@ -376,20 +376,12 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     return incrementalMode; // alright, alright
   }
 
-  private static class MyTypesReadListener implements TypesReadListener, TypeAccessListener {
+  private static class MyTypesReadListener implements TypeAccessListener {
     private Set<SNode> myAccessedNodes = new THashSet<>(1);
     private boolean myIsSetAccessReport = false;
 
     public void setAccessReport(boolean accessReport) {
       myIsSetAccessReport = accessReport;
-    }
-
-    @Override
-    public void nodeTypeAccessed(SNode term) {
-      if (myIsSetAccessReport) {
-        new Throwable().printStackTrace();
-      }
-      myAccessedNodes.add(term);
     }
 
     @Override

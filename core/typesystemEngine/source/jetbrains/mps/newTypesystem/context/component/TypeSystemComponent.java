@@ -101,7 +101,7 @@ import java.util.*;
   protected void invalidateNodeTypeSystem(SNode node, boolean typeWillBeRecalculated) {
     super.invalidateNodeTypeSystem(node, typeWillBeRecalculated);
     if (typeWillBeRecalculated) {
-      TypeChecker.getInstance().fireTypeWillBeRecalculatedForTerm(node);
+      getTypechecking().notifyTypeInvalidated(node);
     }
     myNodesToRules.remove(node);
   }
@@ -188,7 +188,6 @@ import java.util.*;
   @Override
   protected void performActionsAfterChecking() {
     getTypechecking().updateGCedNodes();
-    TypeChecker.getInstance().addTypeRecalculatedListener(getTypechecking().getTypeRecalculatedListener());//method checks if already exists
   }
 
   @Override

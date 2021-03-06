@@ -42,7 +42,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -68,8 +67,10 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   @Override
   public LegacyTypecheckingQueries createQueries(@NotNull Flags flags) {
     if (flags.getRoot() != null && flags.isIncremental()) {
-      return new IncrementalLegacyTypecheckingQueries(flags,
-                    new IncrementalTypecheckingContext(flags.getRoot(), TypeChecker.getInstance(), myClassLoaderManager));
+      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), TypeChecker.getInstance(), myClassLoaderManager);
+      IncrementalLegacyTypecheckingQueries queries = new IncrementalLegacyTypecheckingQueries(flags, typecheckingContext);
+      typecheckingContext.setTypeInvalidateNotifier((node) -> queries.myObservable.dispatchTypeInvalidated(node));
+      return queries;
 
     } else if (flags.isGenerator()) {
       return new GeneratorLegacyTypecheckingSession(flags);
@@ -259,6 +260,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     private static class Observable implements TypecheckingObservable {
 
       private Set<TypeAccessListener> myTypeAccessListeners = new THashSet<>();
+      private Set<TypeInvalidationListener> myTypeInvalidationListeners = new THashSet<>();
 
       @Override
       public void addTypeAccessListener(TypeAccessListener listener) {
@@ -272,18 +274,25 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
       @Override
       public void addTypeInvalidationListener(TypeInvalidationListener listener) {
-        throw new UnsupportedOperationException();
+        myTypeInvalidationListeners.add(listener);
       }
 
       @Override
       public void removeTypeInvalidationListener(TypeInvalidationListener listener) {
-        throw new UnsupportedOperationException();
+        myTypeInvalidationListeners.remove(listener);
       }
 
       private void dispatchTypeAccessed(SNode expression) {
         ArrayList<TypeAccessListener> listeners = new ArrayList<>(myTypeAccessListeners);
         for (TypeAccessListener listener : listeners) {
           listener.typeAccessed(expression);
+        }
+      }
+
+      private void dispatchTypeInvalidated(SNode expression) {
+        ArrayList<TypeInvalidationListener> listeners = new ArrayList<>(myTypeInvalidationListeners);
+        for (TypeInvalidationListener listener : listeners) {
+          listener.typeInvalidated(expression);
         }
       }
     }
