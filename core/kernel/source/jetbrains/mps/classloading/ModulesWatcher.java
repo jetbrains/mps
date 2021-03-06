@@ -189,7 +189,7 @@ public class ModulesWatcher {
                                            "it has a direct dependency on another invalid module ''{1}''", module, depRef));
           }
         }
-        Collection<SModuleReference> dependencies = getDependencies(Collections.singleton(module));
+        Collection<SModuleReference> dependencies = new LinkedHashSet<>(getDependencies(Collections.singleton(module)));
         dependencies.removeAll(directDependencies); // I've already shown these
         for (var depRef : dependencies) {
           if (rootInvalid.contains(depRef)) {
