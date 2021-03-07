@@ -40,15 +40,17 @@ import com.intellij.openapi.project.ProjectManagerListener;
 public class CurrentDifferenceRegistry {
   private final Map<SModelReference, CurrentDifference> myCurrentDifferences = MapSequence.fromMap(new HashMap<SModelReference, CurrentDifference>());
   private final SRepositoryContentAdapter myModelRepositoryListener = new MyRepositoryListener();
-  private final SimpleCommandQueue myCommandQueue = new SimpleCommandQueue("ChangesManager command queue");
+  private final SimpleCommandQueue myCommandQueue;
   private final MyEventsCollector myEventsCollector;
-  private final CurrentDifferenceBroadcaster myGlobalBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
+  private final CurrentDifferenceBroadcaster myGlobalBroadcaster;
   private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
   private final MPSProject myMpsProject;
 
   public CurrentDifferenceRegistry(@NotNull Project project) {
     myMpsProject = ProjectHelper.fromIdeaProject(project);
     myEventsCollector = new MyEventsCollector(myMpsProject.getRepository());
+    myCommandQueue = new SimpleCommandQueue("ChangesManager command queue", project);
+    myGlobalBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
   }
 
   private void projectOpened() {

@@ -15,8 +15,8 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import org.apache.log4j.Level;
+import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import jetbrains.mps.persistence.MultiStreamDataSourceBase;
@@ -67,6 +67,9 @@ import java.io.OutputStream;
     final ComponentHost mpsPlatform = ProjectHelper.fromIdeaProject(myProject).getPlatform();
     RedirectingDataSource source = new RedirectingDataSource((MultiStreamDataSource) ds, myProject);
     if (source.getSubStreams().findAny().isEmpty()) {
+      if (LOG.isEnabledFor(Level.ERROR)) {
+        LOG.error("empty substreams", new IllegalStateException());
+      }
       return null;
     }
     return loadModel(mpsPlatform, source, guessFactory(model));

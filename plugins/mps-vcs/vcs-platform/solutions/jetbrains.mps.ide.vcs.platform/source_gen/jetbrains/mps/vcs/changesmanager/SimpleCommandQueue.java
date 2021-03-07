@@ -5,20 +5,25 @@ package jetbrains.mps.vcs.changesmanager;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import com.intellij.openapi.project.Project;
 import java.util.LinkedList;
 import org.jetbrains.annotations.NotNull;
 import org.apache.log4j.Level;
+import com.intellij.openapi.vcs.changes.ChangeListManagerImpl;
+import com.intellij.openapi.vcs.changes.ChangeListManager;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3722815385094205361", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public final class SimpleCommandQueue {
   private static final Logger LOG = LogManager.getLogger(SimpleCommandQueue.class);
   private final Thread myThread;
+  private final Project myProject;
   private boolean myDisposed = false;
   private boolean myHadExceptions = false;
   private final LinkedList<QueueElem> myQueue = new LinkedList<QueueElem>();
 
-  public SimpleCommandQueue(@NotNull String threadName) {
+  public SimpleCommandQueue(@NotNull String threadName, Project project) {
     myThread = new MyExecutorThread(threadName);
+    myProject = project;
   }
 
   /*package*/ void startThread() {
@@ -53,9 +58,11 @@ public final class SimpleCommandQueue {
     myDisposed = true;
     myThread.interrupt();
   }
+
   public void assertIsCommandThread() {
     assert Thread.currentThread() == myThread;
   }
+
   public void assertSoftlyIsCommandThread() {
     if (Thread.currentThread() != myThread) {
       if (LOG.isEnabledFor(Level.ERROR)) {
@@ -63,17 +70,21 @@ public final class SimpleCommandQueue {
       }
     }
   }
+
   public void setHadExceptions(boolean value) {
     myHadExceptions = value;
   }
+
   public boolean hadExceptions() {
     return myHadExceptions;
   }
+
   public boolean isEmpty() {
     synchronized (myQueue) {
       return myQueue.isEmpty();
     }
   }
+
   private class MyExecutorThread extends Thread {
     public MyExecutorThread(@NotNull String name) {
       super(name);
@@ -96,7 +107,8 @@ public final class SimpleCommandQueue {
           task = myQueue.poll().getTask();
         }
         try {
-          task.run();
+          ChangeListManagerImpl clm = (ChangeListManagerImpl) ChangeListManager.getInstance(myProject);
+          clm.executeUnderDataLock(task);
         } catch (Throwable e) {
           if (e instanceof InterruptedException || e.getCause() instanceof InterruptedException) {
             continue;
@@ -113,13 +125,16 @@ public final class SimpleCommandQueue {
   /*package*/ static class QueueElem {
     private final Runnable myTask;
     private final Object myKey;
-    public QueueElem(Runnable task) {
+
+    public QueueElem(@NotNull Runnable task) {
       this(task, null);
     }
-    public QueueElem(Runnable task, Object key) {
+
+    public QueueElem(@NotNull Runnable task, Object key) {
       myTask = task;
       myKey = key;
     }
+
     public Runnable getTask() {
       return myTask;
     }
@@ -132,6 +147,7 @@ public final class SimpleCommandQueue {
         return super.equals(o);
       }
     }
+
     @Override
     public int hashCode() {
       if (myKey != null) {

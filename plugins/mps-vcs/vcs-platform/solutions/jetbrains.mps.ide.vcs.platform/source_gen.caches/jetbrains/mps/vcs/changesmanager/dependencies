@@ -331,6 +331,9 @@
     <classNode dependClassName="jetbrains.mps.smodel.event.SModelEvent" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.SimpleCommandQueue">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManager" />
+    <classNode dependClassName="com.intellij.openapi.vcs.changes.ChangeListManagerImpl" />
     <classNode dependClassName="java.lang.AssertionError" />
     <classNode dependClassName="java.lang.InterruptedException" />
     <classNode dependClassName="java.lang.Object" />
