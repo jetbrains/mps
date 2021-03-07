@@ -379,10 +379,48 @@ public class CellLayout_Indent extends AbstractCellLayout {
         if (!isIndentCollection(child)) {
           layout(child);
         } else {
-          layoutCollection((EditorCell_Collection) child);
+          // Collection can be skipped
+          if (!child.wasRelayoutRequested() && isCollectionStandalone((EditorCell_Collection) child)) {
+            // No need to recursively call from there
 
-          // Restore ours (that may have been changed in case of split)
-          restoreCollectionIndent(collection);
+            // Compute correct indent applied to first leaf before moving collection
+            EditorCell_Collection parent = (EditorCell_Collection) child;
+            computeCollectionIndent(parent, currentIndent());
+            while (isIndentCollection(parent.firstCell())) {
+              computeCollectionIndent((EditorCell_Collection) parent.firstCell(), currentIndent());
+              parent = (EditorCell_Collection) parent.firstCell();
+            }
+
+            // Take first cell indent into account
+            if (parent.firstCell().getStyle().get(StyleAttributes.INDENT_LAYOUT_INDENT)) {
+              myCurrentIndent += myIndentSize;
+            }
+
+            newLine(false);
+
+            // If child not at the right position, request relayout from lowest parent (so intermediate collections are also marked)
+            if (child.getX() != myX + currentIndent()) {
+              parent.requestRelayout();
+            } else {
+              child.moveTo(child.getX(), myCell.getY() + myHeight);
+              myHeight += child.getHeight();
+            }
+
+            // Restore collection indent after the changes
+            restoreCollectionIndent(collection);
+          } else {
+            // All other cases, mark to relayout (to enable next condition, and be considered in updatePositions)
+            child.requestRelayout();
+          }
+
+          // Two cases: relayout was initially requested, or moving the cell triggered it
+          if (child.wasRelayoutRequested()) {
+            // Recursive call
+            layoutCollection((EditorCell_Collection) child);
+
+            // Restore collection indent
+            restoreCollectionIndent(collection);
+          }
         }
       }
     }
@@ -408,7 +446,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
     private void updatePositions(EditorCell_Collection collection) {
       for (EditorCell child : collection) {
-        if (isIndentCollection(child)) {
+        if (child.wasRelayoutRequested() && isIndentCollection(child)) {
           updatePositions((EditorCell_Collection) child);
         }
       }
@@ -479,7 +517,6 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
     private void indent() {
       myLineWidth += myOverflow ? myCurrentIndentAfterWrap : myCurrentIndent;
-
     }
 
     private void newLine(boolean overflow) {
@@ -626,17 +663,12 @@ public class CellLayout_Indent extends AbstractCellLayout {
     /**
      * Find the first leaf of the given collection that is not an indent layout collection
      */
-    private EditorCell getFirstIndentLeaf(EditorCell_Collection collection) {
-      if (!isIndentCollection(collection)) {
-        return collection;
+    private EditorCell getFirstIndentLeaf(EditorCell cell) {
+      if (!isIndentCollection(cell)) {
+        return cell;
       }
 
-      EditorCell firstChild = collection.firstCell();
-      if (firstChild instanceof EditorCell_Collection) {
-        return getFirstIndentLeaf((EditorCell_Collection) firstChild);
-      }
-
-      return firstChild;
+      return getFirstIndentLeaf(((EditorCell_Collection) cell).firstCell());
     }
 
     private void splitLineAt(EditorCell splitAt) {
@@ -742,6 +774,30 @@ public class CellLayout_Indent extends AbstractCellLayout {
       }
     }
 
+    private boolean isCollectionStandalone(final EditorCell_Collection collection) {
+      // Use of myLineWidth == 0 so empty collections / cells are ignored (but still in myLineContent)
+      boolean firstCellFirstOfLine = (!myOverflow && myLineWidth == 0) || isOnNewLine(myCell, getFirstIndentLeaf(collection));
+
+      if (!firstCellFirstOfLine) {
+        return false;
+      } else if (isLastCellNewLineAfter(collection)) {
+        // First cell is first of its line, and last cell last
+        return true;
+      } else {
+        // Need to check the next cell after the collection
+        final EditorCell nextIndentLeaf = getFirstIndentLeaf(collection.getNextSibling());
+        return nextIndentLeaf == null || isOnNewLine(myCell, nextIndentLeaf);
+      }
+    }
+
+    private boolean isLastCellNewLineAfter(EditorCell_Collection collection) {
+      final EditorCell lastCell = collection.lastCell();
+      if (isIndentCollection(lastCell)) {
+        return isLastCellNewLineAfter((EditorCell_Collection) lastCell);
+      } else {
+        return isNewLineAfter(myCell, lastCell);
+      }
+    }
   }
 
 
