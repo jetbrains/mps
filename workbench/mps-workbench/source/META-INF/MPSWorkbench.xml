@@ -32,6 +32,7 @@
   </application-components>
 
   <applicationListeners>
+    <listener class="jetbrains.mps.intellij.integration.LafFixer$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.repository.FSNotificationsCleaner" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.ide.blame.IntelliJReporterReplacer" topic="com.intellij.ide.AppLifecycleListener"/>
   </applicationListeners>
