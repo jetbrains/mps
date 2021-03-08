@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,20 +33,21 @@ import org.jetbrains.annotations.Nullable;
 public class MessageSender {
   private final IMessageHandler myHandler;
   private final Logger myTraceHandler;
-  private final Object mySender;
+  private final String mySender;
 
   private final Level myLevel; // only this kind and higher
 
   /**
    * @param endUserHandler handler to accept end-user tailored message of level info and higher, but not lower than the {@code level} specified.
    * @param lowLevelHandler receives all messages (i.e. from trace to error), with respect to specified {@code level}.
-   * @param sender designation of a message source, could be {@code null}. Its {@link Object#toString()} value matters.
+   * @param sender designation of a message source, could be {@code null}. Its {@link Object#toString()} value matters, although {@code Class} values are
+   *               treated in a special way (class name serves as a designator).
    * @param level minimum level of a message we'd like to see in our handlers.
    */
   MessageSender(@NotNull IMessageHandler endUserHandler, @NotNull Logger lowLevelHandler, Object sender, Level level) {
     myHandler = endUserHandler;
     myTraceHandler = lowLevelHandler;
-    mySender = sender == null ? "" : sender;
+    mySender = senderPresentation(sender);
     myLevel = level;
   }
 
@@ -57,7 +58,14 @@ public class MessageSender {
     myHandler = anotherSender.myHandler;
     myTraceHandler = anotherSender.myTraceHandler;
     myLevel = anotherSender.myLevel;
-    mySender = sender == null ? "" : sender;
+    mySender = senderPresentation(sender);
+  }
+
+  private static String senderPresentation(Object sender) {
+    if (sender == null) {
+      return "";
+    }
+    return sender instanceof Class ? ((Class<?>) sender).getSimpleName() : sender.toString();
   }
 
   public void error(@NotNull String msg) {
@@ -66,28 +74,28 @@ public class MessageSender {
 
   public void error(@NotNull String msg, @Nullable Throwable ex) {
     if (isLevelEnabled(Level.ERROR)) {
-      myHandler.handle(Message.createMessage(MessageKind.ERROR, mySender.toString(), msg, ex));
+      myHandler.handle(Message.createMessage(MessageKind.ERROR, mySender, msg, ex));
       Log4jUtil.error(myTraceHandler, msg, ex, null);
     }
   }
 
   public void error(@NotNull String msg, @Nullable Object hintObject) {
     if (isLevelEnabled(Level.ERROR)) {
-      myHandler.handle(Message.createMessage(MessageKind.ERROR, mySender.toString(), msg, hintObject));
+      myHandler.handle(Message.createMessage(MessageKind.ERROR, mySender, msg, hintObject));
       Log4jUtil.error(myTraceHandler, msg, null, hintObject);
     }
   }
 
   public void warn(@NotNull String msg, @Nullable Object hintObject) {
     if (isLevelEnabled(Level.WARN)) {
-      myHandler.handle(Message.createMessage(MessageKind.WARNING, mySender.toString(), msg, hintObject));
+      myHandler.handle(Message.createMessage(MessageKind.WARNING, mySender, msg, hintObject));
       Log4jUtil.warning(myTraceHandler, msg, null, hintObject);
     }
   }
 
   public void info(@NotNull String msg) {
     if (isLevelEnabled(Level.INFO)) {
-      myHandler.handle(Message.createMessage(MessageKind.INFORMATION, mySender.toString(), msg));
+      myHandler.handle(Message.createMessage(MessageKind.INFORMATION, mySender, msg));
       Log4jUtil.info(myTraceHandler, msg, null, null);
     }
   }
