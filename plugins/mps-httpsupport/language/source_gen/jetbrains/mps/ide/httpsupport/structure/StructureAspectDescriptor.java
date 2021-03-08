@@ -24,6 +24,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptDefaultValueFunction = createDescriptorForDefaultValueFunction();
   /*package*/ final ConceptDescriptor myConceptDeserializeFunction = createDescriptorForDeserializeFunction();
   /*package*/ final ConceptDescriptor myConceptHandleRequestFunction = createDescriptorForHandleRequestFunction();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod = createDescriptorForHttpMethod();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Connect = createDescriptorForHttpMethod_Connect();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Delete = createDescriptorForHttpMethod_Delete();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Get = createDescriptorForHttpMethod_Get();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Head = createDescriptorForHttpMethod_Head();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Options = createDescriptorForHttpMethod_Options();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Patch = createDescriptorForHttpMethod_Patch();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Post = createDescriptorForHttpMethod_Post();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Put = createDescriptorForHttpMethod_Put();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_Trace = createDescriptorForHttpMethod_Trace();
   /*package*/ final ConceptDescriptor myConceptHttpRequestOperation = createDescriptorForHttpRequestOperation();
   /*package*/ final ConceptDescriptor myConceptHttpRequestParameter = createDescriptorForHttpRequestParameter();
   /*package*/ final ConceptDescriptor myConceptIDEAPlatformPortProvider = createDescriptorForIDEAPlatformPortProvider();
@@ -65,7 +75,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptValueToSerializeParameter);
+    return Arrays.asList(myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpMethod, myConceptHttpMethod_Connect, myConceptHttpMethod_Delete, myConceptHttpMethod_Get, myConceptHttpMethod_Head, myConceptHttpMethod_Options, myConceptHttpMethod_Patch, myConceptHttpMethod_Post, myConceptHttpMethod_Put, myConceptHttpMethod_Trace, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptValueToSerializeParameter);
   }
 
   @Override
@@ -82,6 +92,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDeserializeFunction;
       case LanguageConceptSwitch.HandleRequestFunction:
         return myConceptHandleRequestFunction;
+      case LanguageConceptSwitch.HttpMethod:
+        return myConceptHttpMethod;
+      case LanguageConceptSwitch.HttpMethod_Connect:
+        return myConceptHttpMethod_Connect;
+      case LanguageConceptSwitch.HttpMethod_Delete:
+        return myConceptHttpMethod_Delete;
+      case LanguageConceptSwitch.HttpMethod_Get:
+        return myConceptHttpMethod_Get;
+      case LanguageConceptSwitch.HttpMethod_Head:
+        return myConceptHttpMethod_Head;
+      case LanguageConceptSwitch.HttpMethod_Options:
+        return myConceptHttpMethod_Options;
+      case LanguageConceptSwitch.HttpMethod_Patch:
+        return myConceptHttpMethod_Patch;
+      case LanguageConceptSwitch.HttpMethod_Post:
+        return myConceptHttpMethod_Post;
+      case LanguageConceptSwitch.HttpMethod_Put:
+        return myConceptHttpMethod_Put;
+      case LanguageConceptSwitch.HttpMethod_Trace:
+        return myConceptHttpMethod_Trace;
       case LanguageConceptSwitch.HttpRequestOperation:
         return myConceptHttpRequestOperation;
       case LanguageConceptSwitch.HttpRequestParameter:
@@ -190,6 +220,94 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("handle");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.class_(false, true, false);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950156");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Connect() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Connect", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece8a1bL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950363");
+    b.version(2);
+    b.alias("CONNECT");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Delete() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Delete", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece89edL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950317");
+    b.version(2);
+    b.alias("DELETE");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Get() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Get", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece897aL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950202");
+    b.version(2);
+    b.alias("GET");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Head() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Head", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece8991L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950225");
+    b.version(2);
+    b.alias("HEAD");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Options() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Options", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece8963L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950179");
+    b.version(2);
+    b.alias("OPTIONS");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Patch() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Patch", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece89d6L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950294");
+    b.version(2);
+    b.alias("PATCH");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Post() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Post", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece89a8L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950248");
+    b.version(2);
+    b.alias("POST");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Put() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Put", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece89bfL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950271");
+    b.version(2);
+    b.alias("PUT");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_Trace() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_Trace", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece8a04L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950340");
+    b.version(2);
+    b.alias("TRACE");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHttpRequestOperation() {
@@ -349,6 +467,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("queryPrefix", 0x53d29f104fa64ef9L).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x53d29f104fa64ed7L).optional(false).ordered(true).multiple(false).origin("6040064942661848825").done();
     b.aggregate("queryParameters", 0x205f4376c585d782L).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c585b439L).optional(true).ordered(true).multiple(true).origin("2332657309400291202").done();
+    b.aggregate("handledMethods", 0x30dc5ccbfece8930L).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL).optional(true).ordered(false).multiple(true).origin("3520791039919950128").done();
     b.aggregate("canHandleFunction", 0x5354a94149f3cfcaL).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5354a94149f37316L).optional(true).ordered(true).multiple(false).origin("6004610301070397386").done();
     b.aggregate("handleFunction", 0x4d5ac72154f835efL).target(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f64136L).optional(false).ordered(true).multiple(false).origin("5573986434797811183").done();
     b.alias("Request Handler");

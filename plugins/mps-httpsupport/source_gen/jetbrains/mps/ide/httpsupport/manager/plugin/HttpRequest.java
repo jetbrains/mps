@@ -53,6 +53,10 @@ public class HttpRequest {
     return referrerHost;
   }
 
+  public String getMethod() {
+    return request.method().name();
+  }
+
   public void sendResponse(HttpResponseStatus status, String contentType, ByteBuf buffer) {
     FullHttpResponse response = Responses.response(contentType, buffer);
     response.setStatus(status);
