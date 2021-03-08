@@ -37922,9 +37922,6 @@
     <node concept="26Ea6D" id="3ue78b0PEyn" role="2hID6k">
       <property role="26Ea6C" value="-Dide.mac.message.dialogs.as.sheets=false" />
     </node>
-    <node concept="26Ea6D" id="41$40Av8yAw" role="2hID6k">
-      <property role="26Ea6C" value="-Dintellij.config.imported.in.current.session=true" />
-    </node>
     <node concept="26Ea6D" id="4z969tcIApt" role="2hID6k">
       <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
     </node>
@@ -38046,9 +38043,6 @@
     </node>
     <node concept="26Ea6D" id="3ue78b0PHL9" role="26FZ21">
       <property role="26Ea6C" value="-Dide.mac.message.dialogs.as.sheets=false" />
-    </node>
-    <node concept="26Ea6D" id="41$40Av8yAF" role="26FZ21">
-      <property role="26Ea6C" value="-Dintellij.config.imported.in.current.session=true" />
     </node>
     <node concept="26Ea6D" id="4z969tcIApT" role="26FZ21">
       <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />

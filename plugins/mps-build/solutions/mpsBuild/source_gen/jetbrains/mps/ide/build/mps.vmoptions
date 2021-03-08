@@ -21,7 +21,6 @@
 -Dfile.encoding=UTF-8
 -Dapple.awt.graphics.UseQuartz=true
 -Dide.mac.message.dialogs.as.sheets=false
--Dintellij.config.imported.in.current.session=true
 -Didea.invalidate.caches.invalidates.vfs=true
 -Dperformance.watcher.freeze.report=false
 -Didea.log.config.file=log.xml
