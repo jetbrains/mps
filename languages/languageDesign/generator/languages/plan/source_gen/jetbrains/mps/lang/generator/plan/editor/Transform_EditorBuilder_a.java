@@ -9,6 +9,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -71,9 +73,19 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createCollection_1());
-    editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createCollection_2());
+    if (nodeCondition_5ya0vk_a2a()) {
+      editorCell.addEditorCell(createConstant_1());
+    }
+    if (nodeCondition_5ya0vk_a3a()) {
+      editorCell.addEditorCell(createCollection_2());
+    }
     return editorCell;
+  }
+  private boolean nodeCondition_5ya0vk_a2a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.languages$AUhz)).isNotEmpty();
+  }
+  private boolean nodeCondition_5ya0vk_a3a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.languages$AUhz)).isNotEmpty();
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "transform");
@@ -277,8 +289,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink entries$T03u = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x100024c0a63c5ff6L, "entries");
     /*package*/ static final SContainmentLink languages$AUhz = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x28dd6d5a7549fa8dL, "languages");
+    /*package*/ static final SContainmentLink entries$T03u = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x19443180a2071802L, 0x100024c0a63c5ff6L, "entries");
   }
 
   private static final class CONCEPTS {

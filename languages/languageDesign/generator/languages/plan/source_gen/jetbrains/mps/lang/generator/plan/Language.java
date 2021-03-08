@@ -68,5 +68,6 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.lang.smodel", "7866978e-a0f0-4cc7-81bc-4d213d9375e1", EditorAspectDescriptor.class);
   }
 }
