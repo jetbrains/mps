@@ -4,10 +4,9 @@ package jetbrains.mps.lang.structure.generator_new.baseLanguage;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
-import jetbrains.mps.generator.template.CreateRootRuleContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
@@ -53,6 +52,7 @@ import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.presentation.SmartAliasHelper;
 import java.util.Objects;
+import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.List;
 import java.util.Map;
@@ -64,8 +64,8 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.query.MapRootRuleCondition;
 import jetbrains.mps.generator.template.MapRootRuleContext;
-import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
+import jetbrains.mps.generator.impl.query.MapConfigurationCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
@@ -86,17 +86,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class QueriesGenerated extends QueryProviderBase {
   public QueriesGenerated() {
     super(1);
-  }
-  public static boolean createRootRule_Condition_1_0(final CreateRootRuleContext _context) {
-    // see MPS-24613
-    return SModuleOperations.isAspect(_context.getOriginalInputModel(), "structure");
-  }
-  public static boolean createRootRule_Condition_1_1(final CreateRootRuleContext _context) {
-    // see MPS-24613
-    return SModuleOperations.isAspect(_context.getOriginalInputModel(), "structure");
-  }
-  public static boolean createRootRule_Condition_1_2(final CreateRootRuleContext _context) {
-    return SModuleOperations.isAspect(_context.getOriginalInputModel(), "structure");
   }
   public static boolean rule_Condition_1_0(final BaseMappingRuleContext _context) {
     return SNodeOperations.getParent(_context.getNode()) == null;
@@ -785,6 +774,10 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
+  public static boolean mc_Condition_1(final TemplateQueryContext _context) {
+    // see MPS-24613
+    return SModuleOperations.isAspect(_context.getOriginalInputModel(), "structure") && ListSequence.fromList(SModelOperations.roots(_context.getOriginalInputModel(), null)).isNotEmpty();
+  }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
     List<SNode> nodes = SModelOperations.nodes(_context.getInputModel(), CONCEPTS.AbstractConceptDeclaration$KA);
     Iterable<String> conceptNames = ListSequence.fromList(nodes).select(new ISelector<SNode, String>() {
@@ -972,38 +965,6 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
-  {
-    int i = 0;
-    crcMethods.put("5088050568745383101", new CRC(i++));
-    crcMethods.put("2913371883554406284", new CRC(i++));
-    crcMethods.put("8071309295074026633", new CRC(i++));
-  }
-  @Override
-  @NotNull
-  public CreateRootCondition getCreateRootRuleCondition(@NotNull QueryKey identity) {
-    CreateRootCondition query = identity.forTemplateNode(crcMethods);
-    return (query != null ? query : super.getCreateRootRuleCondition(identity));
-  }
-  private static class CRC implements CreateRootCondition {
-    private final int methodKey;
-    public CRC(int methodKey) {
-      this.methodKey = methodKey;
-    }
-    @Override
-    public boolean check(@NotNull CreateRootRuleContext ctx) throws GenerationFailureException {
-      switch (methodKey) {
-        case 0:
-          return QueriesGenerated.createRootRule_Condition_1_0(ctx);
-        case 1:
-          return QueriesGenerated.createRootRule_Condition_1_1(ctx);
-        case 2:
-          return QueriesGenerated.createRootRule_Condition_1_2(ctx);
-        default:
-          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
-      }
-    }
-  }
   private final Map<String, ScriptCodeBlock> mscbMethods = new HashMap<String, ScriptCodeBlock>();
   {
     int i = 0;
@@ -1032,6 +993,32 @@ public class QueriesGenerated extends QueryProviderBase {
           return;
         default:
           throw new GenerationFailureException(String.format("There's no code block with method index %d ", methodKey));
+      }
+    }
+  }
+  private final Map<String, MapConfigurationCondition> mccMethods = new HashMap<String, MapConfigurationCondition>();
+  {
+    int i = 0;
+    mccMethods.put("3157361072876778597", new MCC(i++));
+  }
+  @Override
+  @NotNull
+  public MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity) {
+    MapConfigurationCondition query = identity.forTemplateNode(mccMethods);
+    return (query != null ? query : super.getMapConfigurationCondition(identity));
+  }
+  private static class MCC implements MapConfigurationCondition {
+    private final int methodKey;
+    public MCC(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Override
+    public boolean check(TemplateQueryContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.mc_Condition_1(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for map configuration %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
   }
