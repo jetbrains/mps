@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -221,16 +221,16 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     @Override
     @Nullable
     public Object getData(@NonNls String dataId) {
-      if (MPSCommonDataKeys.FILE_EDITOR.getName().equals(dataId)) {
+      if (MPSCommonDataKeys.FILE_EDITOR.is(dataId)) {
         return myFileEditor;
       }
-      if (PlatformDataKeys.VIRTUAL_FILE.getName().equals(dataId) && myFileEditor != null) {
-        return DataManager.getInstance().getDataContext(myFileEditor.getComponent()).getData(dataId);
+      if (PlatformDataKeys.VIRTUAL_FILE.is(dataId) && myFileEditor != null) {
+        return myFileEditor.getFile();
       }
       if (PlatformDataKeys.HELP_ID.is(dataId)) {
         return "ideaInterface.editor.inspector";
       }
-      if (dataId.equals(PlatformDataKeys.PROJECT.getName())) {
+      if (PlatformDataKeys.PROJECT.is(dataId)) {
         return getProject();
       }
       return super.getData(dataId);
