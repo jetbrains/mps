@@ -581,20 +581,14 @@
       <concept id="1178894719932" name="jetbrains.mps.baseLanguage.collections.structure.DistinctOperation" flags="nn" index="1VAtEI" />
     </language>
   </registry>
-  <node concept="bUwia" id="fWcmtVs">
-    <property role="TrG5h" value="MAPPING_main" />
-    <node concept="1puMqW" id="5nI6GiLenht" role="1puA0r">
-      <ref role="1puQsG" node="5nI6GiLenhv" resolve="prep_ReplaceSmartAliasRoleWithGenuine" />
-    </node>
+  <node concept="bUwia" id="2JhcMFotRh_">
+    <property role="TrG5h" value="MAPPING_descriptors" />
     <node concept="aNPBN" id="7uY_Ab8wQIu" role="aQYdv">
       <ref role="aOQi4" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     </node>
     <node concept="aNPBN" id="7uY_Ab8wQIt" role="aQYdv">
       <ref role="aOQi4" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
     </node>
-  </node>
-  <node concept="bUwia" id="2JhcMFotRh_">
-    <property role="TrG5h" value="MAPPING_descriptors" />
     <node concept="3lhOvk" id="744pC72CwQ1" role="3lj3bC">
       <ref role="30HIoZ" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
       <ref role="3lhOvi" node="3_pL3o4g_lP" resolve="EnumerationDescriptor_Old" />
@@ -644,6 +638,9 @@
     </node>
     <node concept="1puMqW" id="2xIo4FpRK79" role="1puA0r">
       <ref role="1puQsG" node="7NTi8jMcg37" resolve="SetLanguageIdsInConceptsAndDatatypes" />
+    </node>
+    <node concept="1puMqW" id="3atORa6SClB" role="1puA0r">
+      <ref role="1puQsG" node="5nI6GiLenhv" resolve="prep_ReplaceSmartAliasRoleWithGenuine" />
     </node>
     <node concept="CY16f" id="LU8F6GiZhb" role="CYSdJ">
       <ref role="CY16a" to="tpce:1ob16QTis9A" resolve="EnumMigrationInfo" />
