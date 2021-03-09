@@ -863,9 +863,6 @@
       <property role="20kJfa" value="warning" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
-    <node concept="PrWs8" id="h$IwQTA" role="PzmwI">
-      <ref role="PrY4T" to="tpee:h$IvvRh" resolve="Closureoid" />
-    </node>
     <node concept="PrWs8" id="7Wx8nDGaUiU" role="PzmwI">
       <ref role="PrY4T" to="tpee:7M5lxl52eA0" resolve="IControlFlowInterrupter" />
     </node>
