@@ -17,6 +17,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.util.ui.update.Update;
@@ -31,7 +32,6 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.annotations.Nullable;
@@ -80,23 +80,25 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private final CurrentRevision myLocalRevision;
   private final List<List<RevisionNodeChange>> myVcsChangesGroups = ListSequence.fromList(new ArrayList<List<RevisionNodeChange>>());
   private AtomicReference<List<LineAnnotation>> myLineAnnotationsRef = new AtomicReference<List<LineAnnotation>>(ListSequence.fromList(new ArrayList<LineAnnotation>()));
+  private List<VcsFileRevision> myAllRevisions;
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
 
 
-  public EditorAnnotation(EditorComponent editorComponent, RootAnnotation rootAnnotation, VirtualFile file, AbstractVcs vcs, Project project) {
+  /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, Project project, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions) {
     myEditorComponent = editorComponent;
-    myRootAnnotation = rootAnnotation;
     myFile = file;
     myVcs = vcs;
     myProject = project;
     myLocalRevision = createLocalRevision(file);
-    myUpdateQueue = new MergingUpdateQueue(getClass().getSimpleName(), 300, true, null, null, null, false);
-    AnnotationOptions.getInstance().addUpdateListener(this);
+    myRootAnnotation = rootAnnotation;
+    myAllRevisions = revisions;
     myRootAnnotation.addUpdateListener(new RootAnnotation.RootAnnotationUpdateListener() {
       public void revisionProcessed(List<RevisionNodeChange> changes) {
         processVcsChanges(changes);
       }
     });
+    myUpdateQueue = new MergingUpdateQueue(getClass().getSimpleName(), 300, true, null, null, null, false);
+    AnnotationOptions.getInstance().addUpdateListener(this);
   }
 
   private static CurrentRevision createLocalRevision(VirtualFile file) {
@@ -259,7 +261,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     final List<List<RevisionNodeChange>> changesGroups = ListSequence.fromList(new ArrayList<List<RevisionNodeChange>>());
     synchronized (myVcsChangesGroups) {
       ListSequence.fromList(myVcsChangesGroups).clear();
-      ListSequence.fromList(myRootAnnotation.getAllRevisions()).visitAll(new IVisitor<VcsFileRevision>() {
+      ListSequence.fromList(myAllRevisions).visitAll(new IVisitor<VcsFileRevision>() {
         public void visit(VcsFileRevision revision) {
           List<RevisionNodeChange> changes = myRootAnnotation.getChangesForRevision(revision);
           if (ListSequence.fromList(changes).isNotEmpty()) {
@@ -303,22 +305,22 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private CellAnnotation createCellAnnotation(EditorCell cell, RevisionNodeChange change) {
 
     CellAnnotation oldAnnotation = MapSequence.fromMap(myCellAnnotations).get(cell);
-    if (oldAnnotation != null && !(oldAnnotation.isEarlierThanRevision(change.getRevision())) && oldAnnotation.getRevision() != change.getRevision()) {
+    if (oldAnnotation != null && !(oldAnnotation.isEarlierThanRevision(change.getRevisionGraphNode().getRevision())) && oldAnnotation.getRevisionsGraphNode() != change.getRevisionGraphNode()) {
       return null;
     }
 
     List<RevisionNodeChange> changes = ListSequence.fromList(new ArrayList<RevisionNodeChange>());
-    if (oldAnnotation != null && oldAnnotation.getRevision() == change.getRevision()) {
+    if (oldAnnotation != null && oldAnnotation.getRevisionsGraphNode() == change.getRevisionGraphNode()) {
       ListSequence.fromList(changes).addSequence(ListSequence.fromList(oldAnnotation.getChanges()));
     }
     ListSequence.fromList(changes).addElement(change);
-    CellAnnotation newAnnotation = new CellAnnotation(myProject, cell, change.getRevision(), change.getPrevRevision(), changes);
+    CellAnnotation newAnnotation = new CellAnnotation(myProject, cell, change.getRevisionGraphNode(), changes);
     MapSequence.fromMap(myCellAnnotations).put(cell, newAnnotation);
     return newAnnotation;
   }
 
-  private void updateMessages(Set<CellAnnotation> cells, final List<AnnotatedCellMessage> oldMessages, final List<AnnotatedCellMessage> newMessages) {
-    SetSequence.fromSet(cells).visitAll(new IVisitor<CellAnnotation>() {
+  private void updateMessages(Set<CellAnnotation> cellAnnotations, final List<AnnotatedCellMessage> oldMessages, final List<AnnotatedCellMessage> newMessages) {
+    SetSequence.fromSet(cellAnnotations).visitAll(new IVisitor<CellAnnotation>() {
       public void visit(CellAnnotation it) {
         updateMessages(it, it.getCell(), oldMessages, newMessages);
       }
@@ -376,7 +378,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       }
     });
     myLineAnnotationsRef.set(lineAnnotations);
-    check_coav66_a3a16(myLineAnnotationsUpdateListener);
+    check_coav66_a3a26(myLineAnnotationsUpdateListener);
   }
 
   @NotNull
@@ -432,7 +434,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     }
     myEditorComponent.getHighlightManager().mark(Sequence.fromIterable(MapSequence.fromMap(myEditorMessages).values()).where(new IWhereFilter<AnnotatedCellMessage>() {
       public boolean accept(AnnotatedCellMessage it) {
-        return it.getRevision() == revision;
+        return it.getRevisionsGraphNode().getRevision() == revision;
       }
     }).toListSequence());
     myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages();
@@ -452,7 +454,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   public List<VcsFileRevision> getAllRevisions() {
-    return myRootAnnotation.getAllRevisions();
+    return myAllRevisions;
   }
 
   public boolean isRevisionHighlighted(VcsFileRevision revision) {
@@ -596,7 +598,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private Color calcCellColor(CellAnnotation cellAnnotation) {
     Color color;
     if (AnnotationOptions.getInstance().isEditorHighlighted()) {
-      color = getRevisionColor(cellAnnotation.getRevision());
+      color = getRevisionColor(cellAnnotation.getRevisionsGraphNode().getRevision());
     } else {
       color = ChangeColors.getInstance().getDiffColor(cellAnnotation.getChangeType());
     }
@@ -610,10 +612,18 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ShowAllAffectedGenericAction.showSubmittedFiles(myProject, revision.getRevisionNumber(), myFile, myVcs.getKeyInstanceMethod());
   }
 
-  public ShowDiffFromAnnotationAction createDiffAction(VcsFileRevision revision, VcsFileRevision prevRevision) {
-    return new ShowDiffFromAnnotationAction(revision, prevRevision, myEditorComponent.getEditedNode(), myProject, myFile.getExtension());
+  public ShowDiffFromAnnotationAction createDiffAction(VcsFileRevision revision, @NotNull List<VcsFileRevision> parentRevisions) {
+    final Wrappers._T<String> rootName = new Wrappers._T<String>();
+    final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
+    getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        rootId.value = getRootId();
+        rootName.value = myEditorComponent.getEditedNode().getName();
+      }
+    });
+    return new ShowDiffFromAnnotationAction(revision, parentRevisions, myProject, rootName.value, rootId.value, myFile.getExtension());
   }
-  private static void check_coav66_a3a16(LineAnnotationsUpdateListener checkedDotOperand) {
+  private static void check_coav66_a3a26(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.lineAnnotationsUpdated();
     }

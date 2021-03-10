@@ -60,7 +60,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   private Runnable myCloseActionListener;
 
 
-  public AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
+  /*package*/ AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
     super(leftEditorHighlighter);
     myEditorAnnotation = editorAnnotation;
     myEditorAnnotation.setLineAnnotationsUpdateListener(new EditorAnnotation.LineAnnotationsUpdateListener() {
@@ -333,7 +333,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     });
     ListSequence.fromList(actions).addElement(Separator.getInstance());
     if (isVcsRevision) {
-      ListSequence.fromList(actions).addElement(myEditorAnnotation.createDiffAction(revision, la.getPrevRevision()));
+      ListSequence.fromList(actions).addElement(myEditorAnnotation.createDiffAction(revision, la.getParentRevisions()));
     }
     ListSequence.fromList(actions).addElement(myViewActionGroup);
     if (isVcsRevision) {

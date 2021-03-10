@@ -4,8 +4,7 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
-import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.vcs.history.CommitsGraphNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
@@ -23,9 +22,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 /*package*/ class RevisionNodeChange {
 
   @NotNull
-  private final VcsFileRevision myRevision;
-  @Nullable
-  private final VcsFileRevision myPrevRevision;
+  private final CommitsGraphNode myRevisionGraphNode;
 
   @NotNull
   private final SNodeId myNodeId;
@@ -36,9 +33,8 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
   private final String myMessage;
 
 
-  public RevisionNodeChange(@NotNull ModelChange change, @NotNull MessageTarget messageTarget, @NotNull SNodeId nodeId, @NotNull VcsFileRevision revision, @Nullable VcsFileRevision prevRevision) {
-    myRevision = revision;
-    myPrevRevision = prevRevision;
+  /*package*/ RevisionNodeChange(@NotNull ModelChange change, @NotNull MessageTarget messageTarget, @NotNull SNodeId nodeId, @NotNull CommitsGraphNode revision) {
+    myRevisionGraphNode = revision;
     myNodeId = nodeId;
     myMessageTarget = messageTarget;
     myChangeType = change.getType();
@@ -56,13 +52,8 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
   }
 
   @NotNull
-  public VcsFileRevision getRevision() {
-    return myRevision;
-  }
-
-  @Nullable
-  public VcsFileRevision getPrevRevision() {
-    return myPrevRevision;
+  public CommitsGraphNode getRevisionGraphNode() {
+    return myRevisionGraphNode;
   }
 
   public String getMessage() {
@@ -75,7 +66,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
   }
 
   @NotNull
-  public static List<RevisionNodeChange> createRevisionNodeChanges(@NotNull final ModelChange change, final SModel model, @NotNull final VcsFileRevision revision, final VcsFileRevision prevRevision) {
+  /*package*/ static List<RevisionNodeChange> createRevisionNodeChanges(@NotNull final ModelChange change, final SModel model, @NotNull final CommitsGraphNode revisiongrGraphNode) {
     if (!(change instanceof StructureChange)) {
       return ListSequence.fromList(new LinkedList<RevisionNodeChange>());
     }
@@ -85,7 +76,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
       }
     }).select(new ISelector<Tuples._2<SNodeId, MessageTarget>, RevisionNodeChange>() {
       public RevisionNodeChange select(Tuples._2<SNodeId, MessageTarget> it) {
-        return new RevisionNodeChange(change, it._1(), it._0(), revision, prevRevision);
+        return new RevisionNodeChange(change, it._1(), it._0(), revisiongrGraphNode);
       }
     }).toListSequence();
   }

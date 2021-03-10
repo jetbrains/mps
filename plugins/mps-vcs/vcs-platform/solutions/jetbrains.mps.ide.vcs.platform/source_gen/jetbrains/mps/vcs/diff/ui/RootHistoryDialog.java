@@ -10,6 +10,7 @@ import com.intellij.diff.DiffRequestPanel;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
+import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.ArrayList;
@@ -39,7 +40,6 @@ import com.intellij.openapi.vcs.changes.issueLinks.TableLinkMouseListener;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.diff.DiffManager;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.ui.JBSplitter;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -51,6 +51,7 @@ import com.intellij.openapi.vcs.VcsActions;
 import com.intellij.ui.PopupHandler;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.util.BooleanGetter;
 import java.util.Collection;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
 import com.intellij.util.ui.update.Update;
@@ -58,9 +59,9 @@ import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.diff.contents.DiffContent;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import com.intellij.diff.requests.LoadingDiffRequest;
 import com.intellij.diff.requests.MessageDiffRequest;
 import javax.swing.JComponent;
@@ -99,6 +100,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   private static final String DIFF_SPLITTER_PROPORTION_KEY = "file.history.selection.diff.splitter.proportion";
   private static final String COMMENTS_SPLITTER_PROPORTION_KEY = "file.history.selection.comments.splitter.proportion";
 
+  @NotNull
   private final List<VcsFileRevision> myRevisions = new ArrayList<VcsFileRevision>();
   private final CurrentRevision myLocalRevision;
 
@@ -196,6 +198,11 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     setComponent(mySplitter);
     setPreferredFocusedComponent(myList);
     closeOnEsc();
+    setOnCloseHandler(new BooleanGetter() {
+      public boolean get() {
+        return myRevisionsExtractor.stop();
+      }
+    });
   }
 
   public void show(Collection<SNodeId> selection) {
@@ -209,7 +216,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
 
   private RevisionsExtractor createHistoryExtractor() {
     if (myCompareModels) {
-      return new RootModelHistoryExtractor(myMPSProject, myRevisions, myRoot, myActualFile.getExtension(), getUpdateListener());
+      return new RootModelHistoryExtractor(myMPSProject, myRevisions, myRoot, myActualFile, getUpdateListener());
     } else {
       return new RootFileHistoryExtractor(myRevisions, myRoot, getUpdateListener());
     }
@@ -241,7 +248,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     }
   }
 
-  /*package*/ void updateRevisionList() {
+  private void updateRevisionList() {
     try {
       if (myIsDuringUpdate) {
         return;
@@ -277,18 +284,25 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       return;
     }
     List<VcsFileRevision> selection = myList.getSelectedObjects();
-    VcsFileRevision newRevision = ListSequence.fromList(selection).first();
-    VcsFileRevision oldRevision = myRevisionsExtractor.getPreviousRevision(ListSequence.fromList(selection).last());
-
-    DiffContent content1 = createDiffContent(oldRevision);
-    DiffContent content2 = createDiffContent(newRevision);
-    String title1 = (oldRevision == null ? null : oldRevision.getRevisionNumber().asString());
-    String title2 = (newRevision == null ? null : newRevision.getRevisionNumber().asString());
-    if (content1 != null && content2 != null) {
-      SimpleDiffRequest rq = new SimpleDiffRequest(null, content1, content2, title1, title2);
+    VcsFileRevision revision = ListSequence.fromList(selection).first();
+    List<VcsFileRevision> parents = myRevisionsExtractor.getRevisionParents(revision);
+    VcsFileRevision oldRevision1 = (ListSequence.fromList(parents).count() > 0 ? ListSequence.fromList(parents).getElement(0) : null);
+    List<DiffContent> contents = ListSequence.fromList(new ArrayList<DiffContent>());
+    List<String> titles = ListSequence.fromList(new ArrayList<String>());
+    ListSequence.fromList(contents).addElement(createDiffContent(oldRevision1));
+    ListSequence.fromList(titles).addElement(createTitle(oldRevision1));
+    ListSequence.fromList(contents).addElement(createDiffContent(revision));
+    ListSequence.fromList(titles).addElement(createTitle(revision));
+    if (ListSequence.fromList(parents).count() == 2) {
+      VcsFileRevision oldRevision2 = ListSequence.fromList(parents).getElement(1);
+      ListSequence.fromList(contents).addElement(createDiffContent(oldRevision2));
+      ListSequence.fromList(titles).addElement(createTitle(oldRevision2));
+    }
+    if (ListSequence.fromList(contents).count() == ListSequence.fromList(contents).where(new NotNullWhereFilter<DiffContent>()).count()) {
+      SimpleDiffRequest rq = new SimpleDiffRequest(null, contents, titles);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
       ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
-      myDiffPanel.setRequest(rq, MultiTuple.<VcsFileRevision,VcsFileRevision>from(oldRevision, newRevision));
+      myDiffPanel.setRequest(rq, titles);
       return;
     }
     if (myRevisionsExtractor.isLoading()) {
@@ -356,7 +370,12 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   @Nullable
-  private DiffContent createDiffContent(VcsFileRevision revision) {
+  private String createTitle(@Nullable VcsFileRevision revision) {
+    return (revision == null ? null : revision.getRevisionNumber().asString());
+  }
+
+  @Nullable
+  private DiffContent createDiffContent(@Nullable VcsFileRevision revision) {
     if (revision == null) {
       return new EmptyContent();
     }

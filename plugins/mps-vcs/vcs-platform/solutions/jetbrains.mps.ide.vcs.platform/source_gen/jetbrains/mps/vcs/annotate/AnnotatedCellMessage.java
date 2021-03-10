@@ -13,20 +13,21 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
+import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
-public class AnnotatedCellMessage extends EditorMessageWithTarget {
+/*package*/ final class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   private final EditorCell myCell;
   private final CellAnnotation myCellAnnotation;
   private Color myColor;
 
-  public AnnotatedCellMessage(CellAnnotation cellAnnotation, EditorCell cell, Color color, EditorMessageOwner owner) {
+
+  /*package*/ AnnotatedCellMessage(CellAnnotation cellAnnotation, EditorCell cell, Color color, EditorMessageOwner owner) {
     super(cell.getSNode(), MessageStatus.OK, new NodeMessageTarget(), color, "", owner);
     myCellAnnotation = cellAnnotation;
     myCell = cell;
@@ -70,12 +71,8 @@ public class AnnotatedCellMessage extends EditorMessageWithTarget {
     return myCell == cell;
   }
 
-  public VcsFileRevision getRevision() {
-    return myCellAnnotation.getRevision();
-  }
-
-  public VcsFileRevision getPrevRevision() {
-    return myCellAnnotation.getPrevRevision();
+  public CommitsGraphNode getRevisionsGraphNode() {
+    return myCellAnnotation.getRevisionsGraphNode();
   }
 
   @Override

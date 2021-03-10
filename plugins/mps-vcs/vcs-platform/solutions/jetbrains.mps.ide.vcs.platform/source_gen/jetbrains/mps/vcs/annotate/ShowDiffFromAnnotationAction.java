@@ -4,21 +4,21 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.actionSystem.AnAction;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
-import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.openapi.project.Project;
 import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.ide.project.ProjectHelper;
-import com.intellij.diff.contents.DiffContent;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.diff.DiffManager;
-import org.jetbrains.annotations.Nullable;
+import com.intellij.diff.contents.DiffContent;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import com.intellij.diff.contents.EmptyContent;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
@@ -26,40 +26,32 @@ import jetbrains.mps.vfs.tracking.ModelDiffContent;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5841940560826277241", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class ShowDiffFromAnnotationAction extends AnAction {
-  private final VcsFileRevision myPrevRevision;
+
+  @NotNull
   private final VcsFileRevision myRevision;
-  private final SNode myRoot;
-  private final Project myProject;
+  @NotNull
+  private final List<VcsFileRevision> myParentRevisions;
   private final String myFileExtension;
+  private final SNodeId myRootId;
+  private final String myRootName;
+  private final Project myProject;
 
 
-  public ShowDiffFromAnnotationAction(VcsFileRevision revision, VcsFileRevision prevRevision, SNode root, Project project, String fileExtension) {
+  public ShowDiffFromAnnotationAction(@NotNull VcsFileRevision revision, @NotNull List<VcsFileRevision> parentRevisions, Project project, String rootName, SNodeId rootId, String fileExtension) {
     super(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON));
-    myPrevRevision = prevRevision;
+    myParentRevisions = parentRevisions;
     myRevision = revision;
-    myRoot = root;
     myProject = project;
+    myRootId = rootId;
+    myRootName = rootName;
     myFileExtension = fileExtension;
   }
 
   @Override
   public void actionPerformed(AnActionEvent event) {
-    String oldTitle = (myPrevRevision == null ? "" : myPrevRevision.getRevisionNumber().asString());
-    String newTitle = (myRevision == null ? "" : myRevision.getRevisionNumber().asString());
 
-    final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
-    final Wrappers._T<String> rootName = new Wrappers._T<String>();
-    ProjectHelper.fromIdeaProject(myProject).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        rootId.value = myRoot.getNodeId();
-        rootName.value = myRoot.getName();
-      }
-    });
-
-    DiffContent oldContent = createDiffContent(myPrevRevision);
-    DiffContent newContent = createDiffContent(myRevision);
-    final SimpleDiffRequest rq = new SimpleDiffRequest(rootName.value, oldContent, newContent, oldTitle, newTitle);
-    ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, rootId.value);
+    final SimpleDiffRequest rq = new SimpleDiffRequest(myRootName, createContents(), createTitles());
+    ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRootId);
     ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
@@ -68,21 +60,47 @@ import jetbrains.mps.vfs.tracking.ModelDiffContent;
     });
   }
 
-
-
-  @Nullable
-  private DiffContent createDiffContent(VcsFileRevision revision) {
-    if (revision == null) {
-      return new EmptyContent();
-    }
-    SModel loaded;
-    try {
-      loaded = VCSPersistenceUtil.loadModel(revision.loadContent(), myFileExtension);
-    } catch (Exception ex) {
-      return null;
-    }
-    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion
-    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded));
+  private static String createTitle(@NotNull VcsFileRevision revision) {
+    return revision.getRevisionNumber().asString();
   }
 
+  private List<DiffContent> createContents() {
+    List<DiffContent> contents = ListSequence.fromList(new ArrayList<DiffContent>());
+    if (ListSequence.fromList(myParentRevisions).isNotEmpty()) {
+      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParentRevisions).getElement(0)));
+    } else {
+      ListSequence.fromList(contents).addElement(new EmptyContent());
+    }
+    ListSequence.fromList(contents).addElement(createDiffContent(myRevision));
+    if (ListSequence.fromList(myParentRevisions).count() == 2) {
+      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParentRevisions).getElement(1)));
+    }
+    return contents;
+  }
+
+  private List<String> createTitles() {
+    List<String> titles = ListSequence.fromList(new ArrayList<String>());
+    if (ListSequence.fromList(myParentRevisions).isNotEmpty()) {
+      ListSequence.fromList(titles).addElement(createTitle(ListSequence.fromList(myParentRevisions).getElement(0)));
+    } else {
+      ListSequence.fromList(titles).addElement("");
+    }
+    ListSequence.fromList(titles).addElement(createTitle(myRevision));
+    if (ListSequence.fromList(myParentRevisions).count() == 2) {
+      ListSequence.fromList(titles).addElement(createTitle(ListSequence.fromList(myParentRevisions).getElement(1)));
+    }
+    return titles;
+  }
+
+  @NotNull
+  private DiffContent createDiffContent(@NotNull VcsFileRevision revision) {
+    SModel model;
+    try {
+      model = VCSPersistenceUtil.loadModel(revision.loadContent(), myFileExtension);
+    } catch (Exception ex) {
+      return new EmptyContent();
+    }
+    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion
+    return ((model == null || !(model.isLoaded())) ? new EmptyContent() : new ModelDiffContent(model));
+  }
 }

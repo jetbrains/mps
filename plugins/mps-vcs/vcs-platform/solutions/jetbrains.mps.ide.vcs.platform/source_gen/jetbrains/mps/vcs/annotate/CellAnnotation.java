@@ -5,10 +5,11 @@ package jetbrains.mps.vcs.annotate;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
+import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -33,18 +34,16 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 public final class CellAnnotation {
   private final EditorCell myCell;
   @NotNull
-  private final VcsFileRevision myRevision;
-  private final VcsFileRevision myPrevRevision;
+  private final CommitsGraphNode myRevisionsGraphNode;
   private final List<RevisionNodeChange> myChanges;
   private final ChangeType myChangeType;
   private final Project myProject;
 
 
-  public CellAnnotation(Project project, EditorCell cell, @NotNull VcsFileRevision revision, VcsFileRevision prevRevision, List<RevisionNodeChange> changes) {
+  /*package*/ CellAnnotation(Project project, EditorCell cell, @NotNull CommitsGraphNode revisionsGraphNode, List<RevisionNodeChange> changes) {
     myProject = project;
     myCell = cell;
-    myRevision = revision;
-    myPrevRevision = prevRevision;
+    myRevisionsGraphNode = revisionsGraphNode;
     myChanges = changes;
     myChangeType = getChangesType(changes);
   }
@@ -54,12 +53,8 @@ public final class CellAnnotation {
   }
 
   @NotNull
-  public VcsFileRevision getRevision() {
-    return myRevision;
-  }
-
-  public VcsFileRevision getPrevRevision() {
-    return myPrevRevision;
+  public CommitsGraphNode getRevisionsGraphNode() {
+    return myRevisionsGraphNode;
   }
 
   @NotNull
@@ -72,7 +67,7 @@ public final class CellAnnotation {
   }
 
   public boolean isEarlierThanRevision(@NotNull VcsFileRevision revision) {
-    return revision != myRevision && revision.getRevisionDate().compareTo(myRevision.getRevisionDate()) > 0;
+    return revision != myRevisionsGraphNode.getRevision() && revision.getRevisionDate().compareTo(myRevisionsGraphNode.getRevision().getRevisionDate()) > 0;
   }
 
   public String getChangesDescription() {
@@ -84,13 +79,13 @@ public final class CellAnnotation {
   }
 
   public String getRevisionDescription() {
-    if (getRevision() instanceof CurrentRevision) {
+    VcsFileRevision revision = myRevisionsGraphNode.getRevision();
+    if (revision instanceof CurrentRevision) {
       return null;
     }
 
     String tooltipText = null;
-    VcsFileRevision revision = getRevision();
-    if (getRevision() instanceof GitFileRevision) {
+    if (revision instanceof GitFileRevision) {
       GitFileRevision gitRevision = (GitFileRevision) revision;
       Date date = (Boolean.TRUE.equals(ApplicationManager.getApplication().getService(VcsLogApplicationSettings.class).get(CommonUiProperties.PREFER_COMMIT_DATE)) ? gitRevision.getRevisionDate() : gitRevision.getAuthorDate());
 

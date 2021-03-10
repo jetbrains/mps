@@ -4,62 +4,61 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.vcs.history.CommitsGraphNode;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6338414166361132708", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ final class LineAnnotation {
 
   @NotNull
-  private final VcsFileRevision myRevision;
-  private final VcsFileRevision myPrevRevision;
+  private final CommitsGraphNode myRevisionsGraphNode;
   private final String myDescription;
   private final int myStart;
   private final int myEnd;
 
-  /*package*/ LineAnnotation(@NotNull AnnotatedCellMessage message) {
-    this(message.getRevision(), message.getPrevRevision(), message.getRevisionDescription(), message.getCell().getY(), message.getCell().getBottom());
+  public LineAnnotation(@NotNull AnnotatedCellMessage message) {
+    this(message.getRevisionsGraphNode(), message.getRevisionDescription(), message.getCell().getY(), message.getCell().getBottom());
   }
 
-  private LineAnnotation(@NotNull VcsFileRevision revision, VcsFileRevision prevRevision, String description, int start, int end) {
-    myRevision = revision;
-    myPrevRevision = prevRevision;
+  private LineAnnotation(@NotNull CommitsGraphNode revisionsGraphNode, String description, int start, int end) {
+    myRevisionsGraphNode = revisionsGraphNode;
     myDescription = description;
     myStart = start;
     myEnd = end;
   }
 
-  /*package*/ int getStart() {
+  public int getStart() {
     return myStart;
   }
 
-  /*package*/ int getEnd() {
+  public int getEnd() {
     return myEnd;
   }
 
-  /*package*/ boolean intersectsWith(LineAnnotation lineAnnotation) {
+  public boolean intersectsWith(LineAnnotation lineAnnotation) {
     return myStart < lineAnnotation.getEnd() && lineAnnotation.getStart() < myEnd;
   }
 
-  /*package*/ LineAnnotation union(LineAnnotation lineAnnotation) {
-    if (myStart == lineAnnotation.getStart() && myEnd == lineAnnotation.getEnd() && myRevision == lineAnnotation.getRevision()) {
+  public LineAnnotation union(LineAnnotation lineAnnotation) {
+    if (myStart == lineAnnotation.getStart() && myEnd == lineAnnotation.getEnd() && myRevisionsGraphNode == lineAnnotation.getRevisionsGraphNode()) {
       return this;
     }
     int start = Math.min(myStart, lineAnnotation.getStart());
     int end = Math.max(myEnd, lineAnnotation.getEnd());
-    VcsFileRevision revision;
-    VcsFileRevision parentRevision;
+    CommitsGraphNode revisionsGraphNode;
     String description;
-    int comp = lineAnnotation.getRevision().getRevisionDate().compareTo(myRevision.getRevisionDate());
+    int comp = lineAnnotation.getRevision().getRevisionDate().compareTo(getRevision().getRevisionDate());
     if (comp > 0) {
-      revision = lineAnnotation.getRevision();
-      parentRevision = lineAnnotation.getPrevRevision();
+      revisionsGraphNode = lineAnnotation.getRevisionsGraphNode();
       description = lineAnnotation.getDescription();
     } else {
-      revision = myRevision;
-      parentRevision = myPrevRevision;
+      revisionsGraphNode = myRevisionsGraphNode;
       description = myDescription;
     }
-    return new LineAnnotation(revision, parentRevision, description, start, end);
+    return new LineAnnotation(revisionsGraphNode, description, start, end);
   }
 
   /*package*/ String getDescription() {
@@ -68,10 +67,20 @@ import com.intellij.openapi.vcs.history.VcsFileRevision;
 
   @NotNull
   /*package*/ VcsFileRevision getRevision() {
-    return myRevision;
+    return myRevisionsGraphNode.getRevision();
   }
 
-  /*package*/ VcsFileRevision getPrevRevision() {
-    return myPrevRevision;
+  @NotNull
+  /*package*/ CommitsGraphNode getRevisionsGraphNode() {
+    return myRevisionsGraphNode;
+  }
+
+  @NotNull
+  /*package*/ List<VcsFileRevision> getParentRevisions() {
+    return ListSequence.fromList(myRevisionsGraphNode.getParents()).select(new ISelector<CommitsGraphNode, VcsFileRevision>() {
+      public VcsFileRevision select(CommitsGraphNode it) {
+        return it.getRevision();
+      }
+    }).toListSequence();
   }
 }

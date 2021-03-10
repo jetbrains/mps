@@ -9,7 +9,9 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.ArrayList;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+import java.util.Collections;
+import java.util.Arrays;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -28,6 +30,8 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
   private final Runnable myOnUpdate;
   private final int myTotalRevisions;
   private int myProcessedRevisions;
+  private boolean myIsStopped;
+
 
   /*package*/ RootFileHistoryExtractor(List<VcsFileRevision> initialRevisions, SNodeId root, Runnable onUpdate) {
     myInitialRevisions = initialRevisions;
@@ -37,10 +41,13 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
   }
 
   @Override
-  @Nullable
-  public VcsFileRevision getPreviousRevision(VcsFileRevision revision) {
+  @NotNull
+  public List<VcsFileRevision> getRevisionParents(VcsFileRevision revision) {
     int index = myInitialRevisions.indexOf(revision);
-    return (index + 1 < myInitialRevisions.size() ? myInitialRevisions.get(index + 1) : null);
+    if (index + 1 >= myInitialRevisions.size()) {
+      return Collections.emptyList();
+    }
+    return Arrays.asList(myInitialRevisions.get(index + 1));
   }
 
   @Override
@@ -66,6 +73,12 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
   }
 
   @Override
+  public boolean stop() {
+    myIsStopped = true;
+    return true;
+  }
+
+  @Override
   public void run() {
     myLoading = true;
     try {
@@ -75,6 +88,9 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
       ContentRange prevContentRange = null;
       // I assume first revision to be CurrentRevision with actual model/file content and myRoot node present
       for (VcsFileRevision rev : myInitialRevisions) {
+        if (myIsStopped) {
+          break;
+        }
         myProcessedRevisions++;
         try {
           byte[] revContent = rev.loadContent();

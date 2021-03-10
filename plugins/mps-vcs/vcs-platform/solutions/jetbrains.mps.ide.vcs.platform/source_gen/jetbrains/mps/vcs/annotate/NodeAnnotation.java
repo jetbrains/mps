@@ -4,24 +4,108 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Set;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/491056490995750645", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class NodeAnnotation {
 
-  private final Set<RevisionNodeChange> myRevisionNodeChanges = SetSequence.fromSet(new HashSet<RevisionNodeChange>());
-  private final Set<String> myAnnotatedProperties = SetSequence.fromSet(new HashSet<String>());
-  private final Set<String> myAnnotatedReferences = SetSequence.fromSet(new HashSet<String>());
-  private final Set<SContainmentLink> myAnnotatedDeletedNodes = SetSequence.fromSet(new HashSet<SContainmentLink>());
+  private final Set<RevisionNodeChange> myRevisionNodeChanges;
+  private final Set<String> myAnnotatedProperties;
+  private final Set<String> myAnnotatedReferences;
+  private final Set<SContainmentLink> myAnnotatedDeletedNodes;
 
+  /*package*/ NodeAnnotation(Set<RevisionNodeChange> revisionNodeChanges, Set<String> annotatedProperties, Set<String> annotatedReferences, Set<SContainmentLink> annotatedDeletedNodes) {
+    myRevisionNodeChanges = revisionNodeChanges;
+    myAnnotatedProperties = annotatedProperties;
+    myAnnotatedReferences = annotatedReferences;
+    myAnnotatedDeletedNodes = annotatedDeletedNodes;
+  }
+
+  /*package*/ NodeAnnotation(RevisionNodeChange change) {
+    myRevisionNodeChanges = SetSequence.fromSet(new HashSet<RevisionNodeChange>());
+    myAnnotatedProperties = SetSequence.fromSet(new HashSet<String>());
+    myAnnotatedReferences = SetSequence.fromSet(new HashSet<String>());
+    myAnnotatedDeletedNodes = SetSequence.fromSet(new HashSet<SContainmentLink>());
+    SetSequence.fromSet(myRevisionNodeChanges).addElement(change);
+    MessageTarget target = change.getMessageTarget();
+    if (target instanceof PropertyMessageTarget) {
+      SetSequence.fromSet(myAnnotatedProperties).addElement(((PropertyMessageTarget) target).getRole());
+    }
+    if (target instanceof ReferenceMessageTarget) {
+      SetSequence.fromSet(myAnnotatedReferences).addElement(((ReferenceMessageTarget) target).getRole());
+    }
+    if (target instanceof DeletedNodeMessageTarget) {
+      SetSequence.fromSet(myAnnotatedDeletedNodes).addElement(((DeletedNodeMessageTarget) target).getLink());
+    }
+  }
+
+  public NodeAnnotation withChange(RevisionNodeChange change) {
+    if (SetSequence.fromSet(myRevisionNodeChanges).any(new IWhereFilter<RevisionNodeChange>() {
+      public boolean accept(RevisionNodeChange it) {
+        return it.getMessageTarget() instanceof NodeMessageTarget;
+      }
+    })) {
+      return this;
+    }
+
+    MessageTarget target = change.getMessageTarget();
+    if (target instanceof PropertyMessageTarget) {
+      if (SetSequence.fromSet(myAnnotatedProperties).contains(((PropertyMessageTarget) target).getRole())) {
+        return this;
+      }
+      return new NodeAnnotation(createNewSetOfChanges(change), createNewSetOfProperties(target), SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedReferences), SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), myAnnotatedDeletedNodes));
+    }
+    if (target instanceof ReferenceMessageTarget) {
+      if (SetSequence.fromSet(myAnnotatedReferences).contains(((ReferenceMessageTarget) target).getRole())) {
+        return this;
+      }
+      return new NodeAnnotation(createNewSetOfChanges(change), SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedProperties), createNewSetOfReferences(target), SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), myAnnotatedDeletedNodes));
+    }
+    if (target instanceof DeletedNodeMessageTarget) {
+      if (SetSequence.fromSet(myAnnotatedDeletedNodes).contains(((DeletedNodeMessageTarget) target).getLink())) {
+        return this;
+      }
+      Set<SContainmentLink> annotatedDeletedNodes = SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), myAnnotatedDeletedNodes);
+      SetSequence.fromSet(annotatedDeletedNodes).addElement(((DeletedNodeMessageTarget) target).getLink());
+      return new NodeAnnotation(createNewSetOfChanges(change), SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedProperties), SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedReferences), annotatedDeletedNodes);
+    }
+    if (target instanceof NodeMessageTarget) {
+      return new NodeAnnotation(createNewSetOfChanges(change), SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedProperties), SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedReferences), SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), myAnnotatedDeletedNodes));
+    }
+    return this;
+  }
+
+  private Set<RevisionNodeChange> createNewSetOfChanges(RevisionNodeChange revisionNodeChange) {
+    Set<RevisionNodeChange> changes = SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), myRevisionNodeChanges);
+    SetSequence.fromSet(changes).addElement(revisionNodeChange);
+    return changes;
+  }
+
+  private Set<String> createNewSetOfProperties(MessageTarget target) {
+    Set<String> annotatedProperties = SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedProperties);
+    SetSequence.fromSet(annotatedProperties).addElement(((PropertyMessageTarget) target).getRole());
+    return annotatedProperties;
+  }
+
+  private Set<String> createNewSetOfReferences(MessageTarget target) {
+    Set<String> annotatedReferences = SetSequence.fromSetWithValues(new HashSet<String>(), myAnnotatedReferences);
+    SetSequence.fromSet(annotatedReferences).addElement(((ReferenceMessageTarget) target).getRole());
+    return annotatedReferences;
+  }
+
+  private Set<SContainmentLink> createNewSetDeletedNodes(MessageTarget target) {
+    Set<SContainmentLink> annotatedDeletedNodes = SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), myAnnotatedDeletedNodes);
+    SetSequence.fromSet(annotatedDeletedNodes).addElement(((DeletedNodeMessageTarget) target).getLink());
+    return annotatedDeletedNodes;
+  }
 
   public boolean hasChanges() {
     return SetSequence.fromSet(myRevisionNodeChanges).isNotEmpty();
@@ -29,49 +113,5 @@ import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 
   public Set<RevisionNodeChange> getRevisionNodeChanges() {
     return myRevisionNodeChanges;
-  }
-
-  public void addNodeChange(RevisionNodeChange revisionNodeChange) {
-    if (SetSequence.fromSet(myRevisionNodeChanges).any(new IWhereFilter<RevisionNodeChange>() {
-      public boolean accept(RevisionNodeChange it) {
-        return it.getMessageTarget() instanceof NodeMessageTarget;
-      }
-    })) {
-      return;
-    }
-    MessageTarget target = revisionNodeChange.getMessageTarget();
-    if (target instanceof PropertyMessageTarget) {
-      addPropertyChange(((PropertyMessageTarget) target), revisionNodeChange);
-    } else if (target instanceof ReferenceMessageTarget) {
-      addReferenceChange(((ReferenceMessageTarget) target), revisionNodeChange);
-    } else if (target instanceof DeletedNodeMessageTarget) {
-      addDeletedNodeChange(((DeletedNodeMessageTarget) target), revisionNodeChange);
-    } else if (target instanceof NodeMessageTarget) {
-      SetSequence.fromSet(myRevisionNodeChanges).addElement(revisionNodeChange);
-    }
-  }
-
-  private void addPropertyChange(PropertyMessageTarget target, RevisionNodeChange revisionMessageTarget) {
-    if (!(SetSequence.fromSet(myAnnotatedProperties).contains(target.getRole()))) {
-      SetSequence.fromSet(myRevisionNodeChanges).addElement(revisionMessageTarget);
-      SetSequence.fromSet(myAnnotatedProperties).addElement(target.getRole());
-      return;
-    }
-  }
-
-  private void addReferenceChange(ReferenceMessageTarget target, RevisionNodeChange revisionMessageTarget) {
-    if (!(SetSequence.fromSet(myAnnotatedReferences).contains(target.getRole()))) {
-      SetSequence.fromSet(myRevisionNodeChanges).addElement(revisionMessageTarget);
-      SetSequence.fromSet(myAnnotatedReferences).addElement(target.getRole());
-      return;
-    }
-  }
-
-  private void addDeletedNodeChange(DeletedNodeMessageTarget target, RevisionNodeChange revisionMessageTarget) {
-    if (!(SetSequence.fromSet(myAnnotatedDeletedNodes).contains(target.getLink()))) {
-      SetSequence.fromSet(myRevisionNodeChanges).addElement(revisionMessageTarget);
-      SetSequence.fromSet(myAnnotatedDeletedNodes).addElement(target.getLink());
-      return;
-    }
   }
 }
