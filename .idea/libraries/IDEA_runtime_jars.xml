@@ -13,7 +13,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jackson-module-kotlin-2.12.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/caffeine-2.8.8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/json.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/ap-validation-0.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ap-validation-0.0.5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
