@@ -279,7 +279,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     for (S s : topoOrder) {
       Collection<SModuleReference> directlyExtendedGenerators = s.directlyExtendedGenerators();
       for (StepEntry se : mySteps) {
-        se.registerIfIntersects(directlyExtendedGenerators, s.generator);
+        if (!se.registerIfIntersects(directlyExtendedGenerators, s.generator)) {
+          break;
+        }
       }
     }
     ArrayList<Step> steps = new ArrayList<>(mySteps.size());
@@ -363,8 +365,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
      * I'd like to put somewhere, grab it if you like".
      * @param directExtendedGenerators generators directly extended by {@code extCandidate}, just an handy, calculated-once set.
      * @param extCandidate generator
+     * @return {@code false} to indicate no further offering of the candidate is necessary
      */
-    void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate);
+    boolean registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate);
 
     /**
      * @param steps ordered collection to receive new plan step(s) according to this entry.
@@ -393,18 +396,19 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     }
 
     @Override
-    public void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
+    public boolean registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
       if (myIsSealed) {
-        return;
+        return true;
       }
       if (myExtensions.contains(extCandidate)) {
         // already seen that one
-        return;
+        return true;
       }
 
       if (Stream.concat(myGenerators.stream(), myExtensions.stream()).map(TemplateModule::getModuleReference).anyMatch(directExtendedGenerators::contains)) {
         myExtensions.add(extCandidate);
       }
+      return true; // that's the original logic, don't restrict other steps from consuming the generator
     }
 
     @Override
@@ -441,14 +445,16 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     }
 
     @Override
-    public void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
+    public boolean registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
       // don't expect myGenerators to ever contain extCandidate already, I assume extCandidate values are unique, and we don't add anything
       // but these values into myGenerators
       assert !myGenerators.contains(extCandidate); // just sanity check
       //
       if (myConditions.stream().anyMatch(c -> c.test(extCandidate))) {
         myGenerators.add(extCandidate);
+        return false; // greedy
       }
+      return true;
     }
 
     @Override
@@ -459,11 +465,22 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         //       (perhaps, can use ordinal to distinguish the step, or introduce an optional name for a step?)
         return;
       }
-      Stream<TemplateModule> generators = myGenerators.stream();
+      if (myConditions.size() == 1 && myGenerators.size() > 1) {
+        // FIXME have to be controlled with an option, either for the whole step or per-language?
+        // XXX now just a hack to get distinct step for each involved generator/language
+        //     when there's only 1 entry per step but many matching generators (assume language with Extend/TargetTo).
+        for (TemplateModule tm : myGenerators) {
+          ArrayList<TemplateMappingConfiguration> tmc = new ArrayList<>();
+          tm.getModels().stream().map(TemplateModel::getConfigurations).forEach(tmc::addAll);
+          steps.add(new Transform(tmc));
+        }
+      } else {
+        Stream<TemplateModule> generators = myGenerators.stream();
 
-      ArrayList<TemplateMappingConfiguration> tmc = new ArrayList<>();
-      generators.flatMap(tm -> tm.getModels().stream()).map(TemplateModel::getConfigurations).forEach(tmc::addAll);
-      steps.add(new Transform(tmc));
+        ArrayList<TemplateMappingConfiguration> tmc = new ArrayList<>();
+        generators.flatMap(tm -> tm.getModels().stream()).map(TemplateModel::getConfigurations).forEach(tmc::addAll);
+        steps.add(new Transform(tmc));
+      }
     }
   }
 
@@ -484,8 +501,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
 
     @Override
-    public void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
+    public boolean registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
       // no-op
+      return true;
     }
 
     @Override
@@ -512,8 +530,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     }
 
     @Override
-    public void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
+    public boolean registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
       // no-op
+      return true;
     }
 
     @Override
@@ -536,8 +555,13 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     }
 
     @Override
-    public void registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
-      mySteps.forEach(s -> s.registerIfIntersects(directExtendedGenerators, extCandidate));
+    public boolean registerIfIntersects(Collection<SModuleReference> directExtendedGenerators, TemplateModule extCandidate) {
+      for (StepEntry s : mySteps) {
+        if (!s.registerIfIntersects(directExtendedGenerators, extCandidate)) {
+          return false;
+        }
+      }
+      return true;
     }
 
     @Override

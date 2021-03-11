@@ -425,22 +425,30 @@ public class CheckpointModelTest implements EnvironmentAware {
       }
     });
     Assert.assertNotNull(plan[0]);
-    Assert.assertEquals(2, plan[0].getSteps().size());
+    Assert.assertEquals(4, plan[0].getSteps().size());
     myErrors.checkThat(plan[0].getSteps().get(0), CoreMatchers.instanceOf(Transform.class));
     myErrors.checkThat(plan[0].getSteps().get(1), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[0].getSteps().get(2), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[0].getSteps().get(3), CoreMatchers.instanceOf(Transform.class));
     //
     Transform t1 = (Transform) plan[0].getSteps().get(0);
-    Transform t2 = (Transform) plan[0].getSteps().get(1);
-    myErrors.checkThat(t1.getTransformations().size(), CoreMatchers.equalTo(8)); // 2 from closures, 1 MC in blInternal, 5 in collections
+    Transform t2 = (Transform) plan[0].getSteps().get(3);
+    Transform t1x = (Transform) plan[0].getSteps().get(1);
+    Transform t1y = (Transform) plan[0].getSteps().get(2);
+    myErrors.checkThat(t1.getTransformations().size() + t1x.getTransformations().size() + t1y.getTransformations().size(), CoreMatchers.equalTo(8)); // 2 from closures, 1 MC in blInternal, 5 in collections
     myErrors.checkThat(t2.getTransformations().size(), CoreMatchers.equalTo(6)); // 6 from BL
     //
     Assert.assertNotNull(plan[1]);
-    Assert.assertEquals(2, plan[1].getSteps().size());
+    Assert.assertEquals(4, plan[1].getSteps().size());
     myErrors.checkThat(plan[1].getSteps().get(0), CoreMatchers.instanceOf(Transform.class));
     myErrors.checkThat(plan[1].getSteps().get(1), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[1].getSteps().get(2), CoreMatchers.instanceOf(Transform.class));
+    myErrors.checkThat(plan[1].getSteps().get(3), CoreMatchers.instanceOf(Transform.class));
     t1 = (Transform) plan[1].getSteps().get(0);
-    t2 = (Transform) plan[1].getSteps().get(1);
-    myErrors.checkThat(t1.getTransformations().size(), CoreMatchers.equalTo(8)); // 2 from closures, 1 MC in blInternal, 5 in collections
+    t2 = (Transform) plan[1].getSteps().get(3);
+    t1x = (Transform) plan[1].getSteps().get(1);
+    t1y = (Transform) plan[1].getSteps().get(2);
+    myErrors.checkThat(t1.getTransformations().size() + t1x.getTransformations().size() + t1y.getTransformations().size(), CoreMatchers.equalTo(8)); // 2 from closures, 1 MC in blInternal, 5 in collections
     myErrors.checkThat(t2.getTransformations().size(), CoreMatchers.equalTo(6)); // 6 from BL
   }
 
