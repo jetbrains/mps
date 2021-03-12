@@ -6194,7 +6194,7 @@
           <node concept="398BVA" id="ROdlokvOU8" role="17Grwy">
             <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
             <node concept="2Ry0Ak" id="ROdlokvOU9" role="iGT6I">
-              <property role="2Ry0Am" value="asm-all-9.0.jar" />
+              <property role="2Ry0Am" value="asm-all-9.1.jar" />
             </node>
           </node>
         </node>
@@ -25561,7 +25561,7 @@
       <node concept="13uQ2_" id="4Xk_ETUiPTn" role="39821P">
         <node concept="3_J27D" id="4Xk_ETUiPTp" role="13uQ07">
           <node concept="3Mxwew" id="4Xk_ETUiPU7" role="3MwsjC">
-            <property role="3MwjfP" value="asm-all-9.0.jar" />
+            <property role="3MwjfP" value="asm-all-9.1.jar" />
           </node>
         </node>
       </node>

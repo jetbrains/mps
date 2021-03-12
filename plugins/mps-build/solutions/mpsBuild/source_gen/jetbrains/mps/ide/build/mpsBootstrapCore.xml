@@ -16533,7 +16533,7 @@
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
-        <fileset file="${artifacts.IDEA}/lib/asm-all-9.0.jar" />
+        <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
         <path refid="path.java.library.javac2" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -16576,7 +16576,7 @@
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
-        <fileset file="${artifacts.IDEA}/lib/asm-all-9.0.jar" />
+        <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
         <path refid="path.java.library.javac2" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
@@ -17353,7 +17353,7 @@
         <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
-        <fileset file="${artifacts.IDEA}/lib/asm-all-9.0.jar" />
+        <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
