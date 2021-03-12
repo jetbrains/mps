@@ -7,6 +7,7 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -44,7 +45,7 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public FindReferencesToNonReferenceable_Action() {
-    super("Find References to non-referenceable concepts", "", ICON);
+    super("Find References to non-referable concepts", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -55,7 +56,7 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     // todo: temporary disabled, see MPS-18470
-    return false;
+    return RuntimeFlags.isInternalMode();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
