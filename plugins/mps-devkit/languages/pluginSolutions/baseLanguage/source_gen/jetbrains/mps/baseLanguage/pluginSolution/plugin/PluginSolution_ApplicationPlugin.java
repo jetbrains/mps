@@ -10,6 +10,7 @@ import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
 public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.baseLanguage.pluginSolution");
@@ -52,5 +53,9 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new Default_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
     return res;
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new CheckExtensions_AppPluginPart());
   }
 }
