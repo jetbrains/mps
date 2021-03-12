@@ -14,11 +14,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
-import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.test.behavior.ITestAnnotationsContainer__BehaviorDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescriptor {
@@ -44,9 +43,6 @@ public class AbstractTestNodeAnnotation_Constraints extends BaseConstraintsDescr
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SModel model = SNodeOperations.getModel(parentNode);
     if (TemporaryModels.isTemporary(model)) {
-      return true;
-    }
-    if (model instanceof SModelInternal && ((SModelInternal) model).getLanguageImportVersion(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test")) <= 4) {
       return true;
     }
     return (boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$Db), parentNode);

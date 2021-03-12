@@ -649,6 +649,8 @@ public class SModel implements SModelData, UpdateModeSupport {
   }
 
   public int getLanguageImportVersion(SLanguage lang) {
+    // FIXME if lang comes to the model by means of devkit, this method spits a message for each attempt to find out language version.
+    //       Either stop using this method, or fix it to respect devkit
     Integer res = myLanguagesIds.get(lang);
     if (res == null) {
       LOG.error(
