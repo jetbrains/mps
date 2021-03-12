@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodePointer;
@@ -42,13 +41,14 @@ public class AttributedNodePart_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     SNode ctgd = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ConceptTextGenDeclaration$vd, false, false);
-    return (ctgd == null) || Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(ctgd, LINKS.conceptDeclaration$$0ms), ((boolean) false))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"));
+    return (ctgd == null) || (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(ctgd, LINKS.conceptDeclaration$$0ms), CONCEPTS.NodeAttribute$x2);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)", "1227128029536563721");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AttributedNodePart$8o = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x7c096989aaf957c1L, "jetbrains.mps.lang.textGen.structure.AttributedNodePart");
     /*package*/ static final SConcept ConceptTextGenDeclaration$vd = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, "jetbrains.mps.lang.textGen.structure.ConceptTextGenDeclaration");
+    /*package*/ static final SConcept NodeAttribute$x2 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute");
   }
 
   private static final class LINKS {

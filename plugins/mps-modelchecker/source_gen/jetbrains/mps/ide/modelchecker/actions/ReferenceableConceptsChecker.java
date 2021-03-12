@@ -77,7 +77,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
           }
         }
         if (SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$gH) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(concept, CONCEPTS.ConceptDeclaration$gH), PROPS.staticScope$PjQk), 0x4b014033eedc8becL)) {
-          if (((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("isSubconceptOf", CONCEPTS.AbstractConceptDeclaration$KA, "73yVtVlWOga"), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468")))) {
+          if (((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("isSubconceptOf", CONCEPTS.AbstractConceptDeclaration$KA, "4UTtJHK9fEJ"), CONCEPTS.INamedConcept$Kd))) {
             ListSequence.fromList(results).addElement(NodeReportItemBase.warn("INamedConcept inheritors are usually reference targets, change scope from none", SNodeOperations.getPointer(concept), itemKind2));
           }
         }
@@ -151,6 +151,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept ReferenceMacro$30 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
     /*package*/ static final SInterfaceConcept ScopeFacade$Mm = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2ea65c0b397bd5beL, "jetbrains.mps.lang.core.structure.ScopeFacade");
   }

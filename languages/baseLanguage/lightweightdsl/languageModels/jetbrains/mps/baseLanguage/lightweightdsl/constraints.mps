@@ -170,9 +170,6 @@
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
         <property id="1238684351431" name="asCast" index="1BlNFB" />
       </concept>
@@ -298,10 +295,10 @@
                                   <ref role="cht4Q" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
                                 </node>
                               </node>
-                              <node concept="2qgKlT" id="5Vvmn_QkLYJ" role="2OqNvi">
-                                <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-                                <node concept="3B5_sB" id="5Vvmn_QkLYK" role="37wK5m">
-                                  <ref role="3B5MYn" to="tpee:fz12cDA" resolve="ClassConcept" />
+                              <node concept="2qgKlT" id="4UTtJHKhOOO" role="2OqNvi">
+                                <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+                                <node concept="35c_gC" id="4UTtJHKhOW3" role="37wK5m">
+                                  <ref role="35c_gD" to="tpee:fz12cDA" resolve="ClassConcept" />
                                 </node>
                               </node>
                             </node>
@@ -408,9 +405,9 @@
                               </node>
                             </node>
                             <node concept="2qgKlT" id="5Vvmn_QkLZ8" role="2OqNvi">
-                              <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-                              <node concept="3B5_sB" id="5Vvmn_QkLZ9" role="37wK5m">
-                                <ref role="3B5MYn" to="tpee:h9ngReX" resolve="ClassifierMember" />
+                              <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+                              <node concept="35c_gC" id="4UTtJHKhNRn" role="37wK5m">
+                                <ref role="35c_gD" to="tpee:h9ngReX" resolve="ClassifierMember" />
                               </node>
                             </node>
                           </node>

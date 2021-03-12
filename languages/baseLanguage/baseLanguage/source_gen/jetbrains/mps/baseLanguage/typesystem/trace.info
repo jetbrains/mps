@@ -11151,13 +11151,14 @@
       <node id="1228301715997" at="54,0,55,0" concept="16" trace="expression$hE$" />
       <node id="1228301715997" at="55,0,56,0" concept="16" trace="concept$OMgE" />
       <node id="1228301715997" at="59,0,60,0" concept="16" trace="SNodeType$hR" />
-      <node id="1228301715997" at="60,0,61,0" concept="16" trace="Antiquotation$UQ" />
+      <node id="1228301715997" at="60,0,61,0" concept="16" trace="Classifier$Ix" />
+      <node id="1228301715997" at="61,0,62,0" concept="16" trace="Antiquotation$UQ" />
       <node id="1228301715997" at="25,0,27,0" concept="3" trace="check_AntiquotationContents_NonTypesystemRule#()V" />
       <node id="1228301715997" at="43,0,46,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1228301715997" at="46,0,49,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1228301715997" at="49,0,52,0" concept="11" trace="overrides#()Z" />
       <node id="1228302388410" at="33,321,38,11" concept="1" />
-      <node id="1228301999219" at="30,333,39,9" concept="1" />
+      <node id="1228301999219" at="30,235,39,9" concept="1" />
       <node id="1228301887638" at="29,76,40,7" concept="10" />
       <node id="1228301831808" at="28,135,41,5" concept="10" />
       <node id="1228301715997" at="27,0,43,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
@@ -11178,7 +11179,7 @@
         <var name="_reporter_2309309498" id="1228301999219" />
         <var name="errorTarget" id="1228301999219" />
       </scope>
-      <scope id="1228301887639" at="30,333,39,9" />
+      <scope id="1228301887639" at="30,235,39,9" />
       <scope id="1228301831809" at="29,76,40,7" />
       <scope id="1228301715998" at="27,126,41,5">
         <var name="contentsType" id="1228301828607" />
@@ -11189,8 +11190,8 @@
         <var name="typeCheckingContext" id="1228301715997" />
       </scope>
       <unit id="1228301715997" at="53,0,57,0" name="jetbrains.mps.baseLanguage.typesystem.check_AntiquotationContents_NonTypesystemRule$LINKS" />
-      <unit id="1228301715997" at="58,0,62,0" name="jetbrains.mps.baseLanguage.typesystem.check_AntiquotationContents_NonTypesystemRule$CONCEPTS" />
-      <unit id="1228301715997" at="24,0,63,0" name="jetbrains.mps.baseLanguage.typesystem.check_AntiquotationContents_NonTypesystemRule" />
+      <unit id="1228301715997" at="58,0,63,0" name="jetbrains.mps.baseLanguage.typesystem.check_AntiquotationContents_NonTypesystemRule$CONCEPTS" />
+      <unit id="1228301715997" at="24,0,64,0" name="jetbrains.mps.baseLanguage.typesystem.check_AntiquotationContents_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1228302110245">

@@ -14960,7 +14960,7 @@
       <node id="1203550171326" at="135,95,136,152" concept="7" />
       <node id="9116031298980704357" at="136,152,137,87" concept="7" />
       <node id="9116031298980708103" at="139,11,140,127" concept="7" />
-      <node id="9116031298980713684" at="141,53,142,313" concept="8" />
+      <node id="9116031298980713684" at="141,53,142,229" concept="8" />
       <node id="9116031298980708103" at="143,18,144,13" concept="0" />
       <node id="1230335757451" at="146,9,147,53" concept="7" />
       <node id="2435139594393832244" at="149,105,150,70" concept="9" />
@@ -15004,18 +15004,19 @@
       <node id="1741258697587099253" at="237,0,238,0" concept="11" trace="SModelType$Ke" />
       <node id="1741258697587099253" at="238,0,239,0" concept="11" trace="SEnumerationMemberType$td" />
       <node id="1741258697587099253" at="239,0,240,0" concept="11" trace="SNodeOperation$pA" />
-      <node id="1741258697587099253" at="240,0,241,0" concept="11" trace="AsSConcept$qr" />
-      <node id="1741258697587099253" at="241,0,242,0" concept="11" trace="Link_SetTargetPointerOperation$6D" />
-      <node id="1741258697587099253" at="242,0,243,0" concept="11" trace="Link_SetNewChildOperation$J_" />
-      <node id="1741258697587099253" at="243,0,244,0" concept="11" trace="Node_DetachOperation$AU" />
-      <node id="1741258697587099253" at="244,0,245,0" concept="11" trace="SPropertyAccess$d9" />
-      <node id="1741258697587099253" at="245,0,246,0" concept="11" trace="Node_IsNotNullOperation$t5" />
-      <node id="1741258697587099253" at="246,0,247,0" concept="11" trace="Node_IsNullOperation$A7" />
-      <node id="1741258697587099253" at="250,0,251,0" concept="11" trace="operand$w6IR" />
-      <node id="1741258697587099253" at="251,0,252,0" concept="11" trace="operation$gs9E" />
-      <node id="1741258697587099253" at="252,0,253,0" concept="11" trace="concept$OMgE" />
-      <node id="1741258697587099253" at="253,0,254,0" concept="11" trace="property$UiOu" />
-      <node id="1741258697587099253" at="254,0,255,0" concept="11" trace="dataType$5j5Y" />
+      <node id="1741258697587099253" at="240,0,241,0" concept="11" trace="AbstractConceptDeclaration$KA" />
+      <node id="1741258697587099253" at="241,0,242,0" concept="11" trace="AsSConcept$qr" />
+      <node id="1741258697587099253" at="242,0,243,0" concept="11" trace="Link_SetTargetPointerOperation$6D" />
+      <node id="1741258697587099253" at="243,0,244,0" concept="11" trace="Link_SetNewChildOperation$J_" />
+      <node id="1741258697587099253" at="244,0,245,0" concept="11" trace="Node_DetachOperation$AU" />
+      <node id="1741258697587099253" at="245,0,246,0" concept="11" trace="SPropertyAccess$d9" />
+      <node id="1741258697587099253" at="246,0,247,0" concept="11" trace="Node_IsNotNullOperation$t5" />
+      <node id="1741258697587099253" at="247,0,248,0" concept="11" trace="Node_IsNullOperation$A7" />
+      <node id="1741258697587099253" at="251,0,252,0" concept="11" trace="operand$w6IR" />
+      <node id="1741258697587099253" at="252,0,253,0" concept="11" trace="operation$gs9E" />
+      <node id="1741258697587099253" at="253,0,254,0" concept="11" trace="concept$OMgE" />
+      <node id="1741258697587099253" at="254,0,255,0" concept="11" trace="property$UiOu" />
+      <node id="1741258697587099253" at="255,0,256,0" concept="11" trace="dataType$5j5Y" />
       <node id="1741258697587099296" at="80,137,83,13" concept="5" />
       <node id="1741258697587099318" at="85,25,88,11" concept="5" />
       <node id="1741258697587099331" at="88,11,91,11" concept="5" />
@@ -15076,7 +15077,7 @@
       <scope id="1741258697587099404" at="118,17,119,52" />
       <scope id="1741258697587099404" at="124,84,125,113" />
       <scope id="3619044166075814136" at="130,57,131,52" />
-      <scope id="9116031298980708105" at="141,53,142,313" />
+      <scope id="9116031298980708105" at="141,53,142,229" />
       <scope id="2435139594393814741" at="151,128,152,27" />
       <scope id="1230335888801" at="156,123,157,27" />
       <scope id="1230335916185" at="159,118,160,27" />
@@ -15163,12 +15164,12 @@
         <var name="concept" id="3619044166075814136" />
       </scope>
       <unit id="3619044166075814136" at="129,122,133,9" name="jetbrains.mps.lang.smodel.editor.snodeOperation$SMP_Group_o4406x_a$SMP_Subconcepts_o4406x_a0$1" />
-      <unit id="1741258697587099253" at="249,0,256,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation$LINKS" />
-      <unit id="1741258697587099253" at="231,0,248,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation$CONCEPTS" />
+      <unit id="1741258697587099253" at="250,0,257,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation$LINKS" />
+      <unit id="1741258697587099253" at="231,0,249,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation$CONCEPTS" />
       <unit id="1741258697587099254" at="67,25,105,7" name="jetbrains.mps.lang.smodel.editor.snodeOperation$SMP_Group_o4406x_a$1" />
       <unit id="3619044166075814136" at="127,0,229,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation$SMP_Group_o4406x_a$SMP_Subconcepts_o4406x_a0" />
       <unit id="1741258697587099404" at="62,0,230,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation$SMP_Group_o4406x_a" />
-      <unit id="1741258697587099253" at="40,0,257,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation" />
+      <unit id="1741258697587099253" at="40,0,258,0" name="jetbrains.mps.lang.smodel.editor.snodeOperation" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/1741258697587099444">

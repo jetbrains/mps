@@ -131,7 +131,7 @@ public final class HelpCommand__BehaviorDescriptor extends BaseBHDescriptor {
       }
       console.addText("Constructions available in console:\n\n");
       console.addText(output.toString());
-    } else if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$GtcO), LINKS.command$b3Jl), SNodeOperations.getNode("r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)", "473081947981012231"))) {
+    } else if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$GtcO), LINKS.command$b3Jl), CONCEPTS.HelpProvider$l)) {
       String helpPage;
       try {
         SAbstractConcept chp = (SAbstractConcept) SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.target$GtcO), LINKS.command$b3Jl));

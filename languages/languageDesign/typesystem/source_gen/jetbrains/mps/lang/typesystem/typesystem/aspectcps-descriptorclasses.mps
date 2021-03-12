@@ -275,9 +275,6 @@
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="6407023681583036853" name="jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier" flags="ng" index="3CFYIy">
         <reference id="6407023681583036854" name="attributeConcept" index="3CFYIx" />
       </concept>
@@ -20757,11 +20754,11 @@
               <uo k="s:originTrace" v="n:2401040147804331886" />
             </node>
             <node concept="2qgKlT" id="1Bv" role="2OqNvi">
-              <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
+              <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
               <uo k="s:originTrace" v="n:2401040147804333725" />
-              <node concept="3B5_sB" id="1Bw" role="37wK5m">
-                <ref role="3B5MYn" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
-                <uo k="s:originTrace" v="n:20719707187524924" />
+              <node concept="35c_gC" id="1Bw" role="37wK5m">
+                <ref role="35c_gD" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+                <uo k="s:originTrace" v="n:5672696027944388487" />
               </node>
             </node>
           </node>

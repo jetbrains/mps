@@ -18,9 +18,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Collection;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -60,14 +61,21 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
             List<SNode> result = new ArrayList<SNode>();
 
             SModule sourceModule = SNodeOperations.getModel(_context.getContextNode()).getModule();
-            Collection<Language> langs = new GlobalModuleDependenciesManager(sourceModule).getUsedLanguages();
-            for (Language language : langs) {
-              SModel sm = SModuleOperations.getAspect(language, "structure");
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(it, SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1081773326031")) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT));
-                }
-              }));
+            SRepository repo = sourceModule.getRepository();
+            Collection<SLanguage> langs = sourceModule.getUsedLanguages();
+            for (SLanguage language : langs) {
+              if (language.getSourceModuleReference() == null) {
+                continue;
+              }
+              SModule langModule = language.getSourceModuleReference().resolve(repo);
+              if (langModule instanceof Language) {
+                SModel sm = SModuleOperations.getAspect(langModule, "structure");
+                ListSequence.fromList(result).addSequence(ListSequence.fromList(SModelOperations.roots(sm, CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
+                  public boolean accept(SNode it) {
+                    return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(it, CONCEPTS.BinaryOperation$W1) && !(SPropertyOperations.getBoolean(it, PROPS.abstract$ibpT));
+                  }
+                }));
+              }
             }
             return ListScope.forResolvableElements(result);
           }
@@ -83,6 +91,7 @@ public class BinaryOperationReference_Constraints extends BaseConstraintsDescrip
   private static final class CONCEPTS {
     /*package*/ static final SConcept BinaryOperationReference$wm = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x2764eda929d23eb4L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.BinaryOperationReference");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {

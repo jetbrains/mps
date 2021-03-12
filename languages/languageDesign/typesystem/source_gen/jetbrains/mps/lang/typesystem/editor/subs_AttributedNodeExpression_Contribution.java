@@ -53,7 +53,7 @@ public class subs_AttributedNodeExpression_Contribution extends SubstituteMenuBa
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode absRule = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.AbstractRule$o9, false, false);
-      return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$Ro4C)), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"));
+      return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$Ro4C)), CONCEPTS.NodeAttribute$x2);
     }
     @NotNull
     @Override
@@ -88,6 +88,7 @@ public class subs_AttributedNodeExpression_Contribution extends SubstituteMenuBa
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractRule$o9 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, "jetbrains.mps.lang.typesystem.structure.AbstractRule");
+    /*package*/ static final SConcept NodeAttribute$x2 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute");
     /*package*/ static final SConcept AttributedNodeExpression$fW = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2152354b0d500086L, "jetbrains.mps.lang.typesystem.structure.AttributedNodeExpression");
   }
 

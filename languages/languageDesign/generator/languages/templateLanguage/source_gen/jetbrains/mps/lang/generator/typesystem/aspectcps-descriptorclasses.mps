@@ -366,9 +366,6 @@
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="6407023681583040688" name="jetbrains.mps.lang.smodel.structure.AllAttributeQualifier" flags="ng" index="3CFTEB" />
       <concept id="6407023681583036853" name="jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier" flags="ng" index="3CFYIy">
         <reference id="6407023681583036854" name="attributeConcept" index="3CFYIx" />
@@ -6158,11 +6155,11 @@
               </node>
             </node>
             <node concept="2qgKlT" id="tV" role="2OqNvi">
-              <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
+              <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
               <uo k="s:originTrace" v="n:3200220852405706389" />
-              <node concept="3B5_sB" id="tY" role="37wK5m">
-                <ref role="3B5MYn" to="tpck:4uZwTti3_$T" resolve="Attribute" />
-                <uo k="s:originTrace" v="n:3200220852405706707" />
+              <node concept="35c_gC" id="tY" role="37wK5m">
+                <ref role="35c_gD" to="tpck:4uZwTti3_$T" resolve="Attribute" />
+                <uo k="s:originTrace" v="n:5672696027943853273" />
               </node>
             </node>
           </node>
@@ -6958,7 +6955,7 @@
                           <uo k="s:originTrace" v="n:7473026166162321628" />
                         </node>
                         <node concept="Xl_RD" id="xI" role="37wK5m">
-                          <property role="Xl_RC" value="Rule shall specify Attribute subconcept" />
+                          <property role="Xl_RC" value="Rule shall specify Attribute sub-concept" />
                           <uo k="s:originTrace" v="n:7473026166162321786" />
                         </node>
                         <node concept="Xl_RD" id="xJ" role="37wK5m">
@@ -6998,11 +6995,11 @@
                 </node>
               </node>
               <node concept="2qgKlT" id="xP" role="2OqNvi">
-                <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
+                <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
                 <uo k="s:originTrace" v="n:3200220852405708154" />
-                <node concept="3B5_sB" id="xS" role="37wK5m">
-                  <ref role="3B5MYn" to="tpck:4uZwTti3_$T" resolve="Attribute" />
-                  <uo k="s:originTrace" v="n:3200220852405708177" />
+                <node concept="35c_gC" id="xS" role="37wK5m">
+                  <ref role="35c_gD" to="tpck:4uZwTti3_$T" resolve="Attribute" />
+                  <uo k="s:originTrace" v="n:5672696027943853913" />
                 </node>
               </node>
             </node>
@@ -10227,11 +10224,11 @@
               </node>
             </node>
             <node concept="2qgKlT" id="Lc" role="2OqNvi">
-              <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
+              <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
               <uo k="s:originTrace" v="n:3200220852405711252" />
-              <node concept="3B5_sB" id="Lf" role="37wK5m">
-                <ref role="3B5MYn" to="tpck:4uZwTti3_$T" resolve="Attribute" />
-                <uo k="s:originTrace" v="n:3200220852405711570" />
+              <node concept="35c_gC" id="Lf" role="37wK5m">
+                <ref role="35c_gD" to="tpck:4uZwTti3_$T" resolve="Attribute" />
+                <uo k="s:originTrace" v="n:5672696027943856670" />
               </node>
             </node>
           </node>

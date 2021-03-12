@@ -15,8 +15,8 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
-import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Set;
@@ -47,7 +47,7 @@ public final class ConceptDeclaration__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static List<SNode> getImmediateSuperconcepts_idhMuxyK2(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    if (!(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__).equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))))) {
+    if (!(SNodeOperations.is(__thisNode__, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")))) {
       ListSequence.fromList(result).addElement((SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg) == null ? SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626") : SLinkOperations.getTarget(__thisNode__, LINKS.extends$_Isg)));
     }
     for (SNode interfaceConceptReference : SLinkOperations.getChildren(__thisNode__, LINKS.implements$u_P2)) {

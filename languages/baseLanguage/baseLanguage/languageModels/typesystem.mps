@@ -837,9 +837,6 @@
       <concept id="942336824646299470" name="jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation" flags="ng" index="1AR3kn">
         <child id="942336824646299471" name="linkTarget" index="1AR3km" />
       </concept>
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="1144195091934" name="jetbrains.mps.lang.smodel.structure.Node_IsRoleOperation" flags="nn" index="1BlSNk">
         <reference id="1144195362400" name="conceptOfParent" index="1BmUXE" />
         <reference id="1144195396777" name="linkInParent" index="1Bn3mz" />
@@ -20325,9 +20322,9 @@
                 </node>
               </node>
               <node concept="2qgKlT" id="73yVtVm3olX" role="2OqNvi">
-                <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-                <node concept="3B5_sB" id="27AGqGE_F$G" role="37wK5m">
-                  <ref role="3B5MYn" to="tpee:g7pOWCK" resolve="Classifier" />
+                <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+                <node concept="35c_gC" id="4UTtJHKcvac" role="37wK5m">
+                  <ref role="35c_gD" to="tpee:g7pOWCK" resolve="Classifier" />
                 </node>
               </node>
             </node>

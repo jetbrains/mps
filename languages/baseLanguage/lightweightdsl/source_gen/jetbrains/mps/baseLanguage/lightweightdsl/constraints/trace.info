@@ -28,7 +28,7 @@
       <node id="2141245758542223245" at="64,61,65,22" concept="5" />
       <node id="2141245758542223246" at="71,44,72,20" concept="5" />
       <node id="2141245758542223246" at="79,63,80,57" concept="5" />
-      <node id="6836281137582776258" at="86,53,87,307" concept="5" />
+      <node id="6836281137582776258" at="86,53,87,215" concept="5" />
       <node id="2141245758542223245" at="93,6,94,131" concept="4" />
       <node id="2141245758542223246" at="94,131,95,42" concept="1" />
       <node id="2141245758542223245" at="95,42,96,22" concept="5" />
@@ -36,8 +36,9 @@
       <node id="2141245758542223245" at="101,0,102,0" concept="7" trace="CustomMemberDescriptor$8z" />
       <node id="2141245758542223245" at="102,0,103,0" concept="7" trace="INamedConcept$Kd" />
       <node id="2141245758542223245" at="103,0,104,0" concept="7" trace="AbstractConceptDeclaration$KA" />
-      <node id="2141245758542223245" at="107,0,108,0" concept="7" trace="name$MnvL" />
-      <node id="2141245758542223245" at="111,0,112,0" concept="7" trace="cncpt$IpcN" />
+      <node id="2141245758542223245" at="104,0,105,0" concept="7" trace="ClassifierMember$At" />
+      <node id="2141245758542223245" at="108,0,109,0" concept="7" trace="name$MnvL" />
+      <node id="2141245758542223245" at="112,0,113,0" concept="7" trace="cncpt$IpcN" />
       <node id="4323017570220213805" at="58,0,60,0" concept="8" trace="staticSetPropertyValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="2141245758542223245" at="34,0,37,0" concept="0" trace="CustomMemberDescriptor_Constraints#()V" />
       <node id="4323017570220213805" at="39,0,42,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
@@ -64,7 +65,7 @@
       <scope id="4323017570220213805" at="55,68,56,82" />
       <scope id="2141245758542223246" at="71,44,72,20" />
       <scope id="2141245758542223246" at="79,63,80,57" />
-      <scope id="6836281137582776257" at="86,53,87,307" />
+      <scope id="6836281137582776257" at="86,53,87,215" />
       <scope id="4323017570220213805" at="58,0,60,0">
         <var name="node" id="4323017570220213805" />
         <var name="propertyValue" id="4323017570220213805" />
@@ -102,14 +103,14 @@
         <var name="references" id="2141245758542223245" />
       </scope>
       <scope id="2141245758542223245" at="67,0,98,0" />
-      <unit id="2141245758542223245" at="106,0,109,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$PROPS" />
-      <unit id="2141245758542223245" at="110,0,113,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$LINKS" />
+      <unit id="2141245758542223245" at="107,0,110,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$PROPS" />
+      <unit id="2141245758542223245" at="111,0,114,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$LINKS" />
       <unit id="6836281137582776247" at="84,23,89,13" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$1$1$1" />
-      <unit id="2141245758542223245" at="100,0,105,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$CONCEPTS" />
+      <unit id="2141245758542223245" at="100,0,106,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$CONCEPTS" />
       <unit id="2141245758542223246" at="77,19,91,9" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$1$1" />
       <unit id="4323017570220213805" at="38,0,61,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$Name_Property" />
       <unit id="2141245758542223246" at="69,48,93,5" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints$1" />
-      <unit id="2141245758542223245" at="33,0,114,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints" />
+      <unit id="2141245758542223245" at="33,0,115,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.CustomMemberDescriptor_Constraints" />
     </file>
   </root>
   <root nodeRef="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:686da497-9d31-49eb-a30e-63814e3d3c62(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.constraints)/3751132065236921451">
@@ -261,7 +262,7 @@
       <node id="2641476927090843316" at="58,44,59,20" concept="5" />
       <node id="2641476927090843316" at="66,63,67,57" concept="5" />
       <node id="6836281137582776225" at="74,100,75,31" concept="5" />
-      <node id="6836281137582776232" at="76,17,77,311" concept="5" />
+      <node id="6836281137582776232" at="76,17,77,215" concept="5" />
       <node id="4800340801163247737" at="83,6,84,131" concept="4" />
       <node id="2641476927090843316" at="84,131,85,42" concept="1" />
       <node id="4800340801163247737" at="85,42,86,22" concept="5" />
@@ -269,7 +270,8 @@
       <node id="4800340801163247737" at="89,0,90,0" concept="7" trace="breakingNode_664l29_a0a0a0a0a1a0a0a0d" />
       <node id="4800340801163247737" at="92,0,93,0" concept="7" trace="DSLDescriptor$zD" />
       <node id="4800340801163247737" at="93,0,94,0" concept="7" trace="AbstractConceptDeclaration$KA" />
-      <node id="4800340801163247737" at="97,0,98,0" concept="7" trace="preferredConcept$1q4V" />
+      <node id="4800340801163247737" at="94,0,95,0" concept="7" trace="ClassConcept$bK" />
+      <node id="4800340801163247737" at="98,0,99,0" concept="7" trace="preferredConcept$1q4V" />
       <node id="4800340801163247737" at="32,0,35,0" concept="0" trace="DSLDescriptor_Constraints#()V" />
       <node id="6836281137582776223" at="73,53,76,17" concept="2" />
       <node id="4800340801163247737" at="42,0,46,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -300,7 +302,7 @@
       </scope>
       <scope id="2641476927090843316" at="57,0,61,0" />
       <scope id="2641476927090843316" at="65,0,69,0" />
-      <scope id="6836281137582776222" at="73,53,77,311" />
+      <scope id="6836281137582776222" at="73,53,77,215" />
       <scope id="6836281137582776217" at="72,0,79,0">
         <var name="node" id="6836281137582776220" />
       </scope>
@@ -322,14 +324,14 @@
         <var name="references" id="4800340801163247737" />
       </scope>
       <scope id="4800340801163247737" at="54,0,88,0" />
-      <unit id="4800340801163247737" at="96,0,99,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$LINKS" />
-      <unit id="4800340801163247737" at="91,0,95,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$CONCEPTS" />
+      <unit id="4800340801163247737" at="97,0,100,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$LINKS" />
+      <unit id="4800340801163247737" at="91,0,96,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$CONCEPTS" />
       <unit id="6836281137582776212" at="71,23,79,13" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$2$1$1" />
       <unit id="4800340801163247737" at="41,19,50,9" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$1$1" />
       <unit id="4800340801163247737" at="38,15,52,5" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$1" />
       <unit id="2641476927090843316" at="64,19,81,9" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$2$1" />
       <unit id="2641476927090843316" at="56,48,83,5" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints$2" />
-      <unit id="4800340801163247737" at="31,0,100,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints" />
+      <unit id="4800340801163247737" at="31,0,101,0" name="jetbrains.mps.baseLanguage.lightweightdsl.constraints.DSLDescriptor_Constraints" />
     </file>
   </root>
   <root nodeRef="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:686da497-9d31-49eb-a30e-63814e3d3c62(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.constraints)/6305381134221395776">

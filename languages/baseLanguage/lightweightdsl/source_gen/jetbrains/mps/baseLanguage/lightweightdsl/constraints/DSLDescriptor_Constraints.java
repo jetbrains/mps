@@ -74,7 +74,7 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
                 if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA))) {
                   return false;
                 }
-                return !(((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198"))));
+                return !(((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), CONCEPTS.ClassConcept$bK)));
               }
             };
           }
@@ -91,6 +91,7 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
   private static final class CONCEPTS {
     /*package*/ static final SConcept DSLDescriptor$zD = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
     /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {

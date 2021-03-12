@@ -20556,7 +20556,7 @@
       <node id="1741258697587166873" at="44,9,45,44" concept="8" />
       <node id="1741258697587166873" at="46,15,47,50" concept="2" />
       <node id="1741258697587166879" at="54,68,55,120" concept="7" />
-      <node id="1741258697587166887" at="55,120,56,377" concept="8" />
+      <node id="1741258697587166887" at="55,120,56,279" concept="8" />
       <node id="1741258697587166876" at="60,89,61,51" concept="2" />
       <node id="1741258697587166876" at="61,51,62,225" concept="2" />
       <node id="1741258697587166876" at="63,11,64,42" concept="8" />
@@ -20566,8 +20566,9 @@
       <node id="1741258697587166923" at="79,15,80,46" concept="8" />
       <node id="1741258697587166923" at="81,21,82,56" concept="2" />
       <node id="1741258697587166873" at="90,0,91,0" concept="11" trace="AbstractRule$o9" />
-      <node id="1741258697587166873" at="91,0,92,0" concept="11" trace="AttributedNodeExpression$fW" />
-      <node id="1741258697587166873" at="95,0,96,0" concept="11" trace="applicableNode$Ro4C" />
+      <node id="1741258697587166873" at="91,0,92,0" concept="11" trace="NodeAttribute$x2" />
+      <node id="1741258697587166873" at="92,0,93,0" concept="11" trace="AttributedNodeExpression$fW" />
+      <node id="1741258697587166873" at="96,0,97,0" concept="11" trace="applicableNode$Ro4C" />
       <node id="1741258697587166873" at="28,0,31,0" concept="1" trace="subs_AttributedNodeExpression_Contribution#()V" />
       <node id="1741258697587166873" at="43,270,48,5" concept="14" />
       <node id="1741258697587166876" at="53,0,58,0" concept="6" trace="isApplicable#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Z" />
@@ -20586,7 +20587,7 @@
       <scope id="1741258697587166876" at="65,17,66,52" />
       <scope id="1741258697587166923" at="79,15,80,46" />
       <scope id="1741258697587166923" at="81,21,82,56" />
-      <scope id="1741258697587166878" at="54,68,56,377">
+      <scope id="1741258697587166878" at="54,68,56,279">
         <var name="absRule" id="1741258697587166880" />
       </scope>
       <scope id="1741258697587166873" at="28,0,31,0" />
@@ -20613,11 +20614,11 @@
       </scope>
       <scope id="1741258697587166876" at="71,84,85,48" />
       <scope id="1741258697587166876" at="70,0,87,0" />
-      <unit id="1741258697587166873" at="94,0,97,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution$LINKS" />
-      <unit id="1741258697587166873" at="89,0,93,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution$CONCEPTS" />
+      <unit id="1741258697587166873" at="95,0,98,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution$LINKS" />
+      <unit id="1741258697587166873" at="89,0,94,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution$CONCEPTS" />
       <unit id="1741258697587166923" at="72,136,85,7" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution$SMP_Group_xeoaio_a$1" />
       <unit id="1741258697587166876" at="52,0,88,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution$SMP_Group_xeoaio_a" />
-      <unit id="1741258697587166873" at="27,0,98,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution" />
+      <unit id="1741258697587166873" at="27,0,99,0" name="jetbrains.mps.lang.typesystem.editor.subs_AttributedNodeExpression_Contribution" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/1741258697587166927">

@@ -32,7 +32,7 @@ public class typeof_AttributedNodeExpression_InferenceRule extends AbstractInfer
     SNode absRule = SNodeOperations.getNodeAncestor(ane, CONCEPTS.AbstractRule$o9, false, false);
     SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$Ro4C));
 
-    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(applicableConcept, SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"))) {
+    if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(applicableConcept, CONCEPTS.NodeAttribute$x2)) {
       List<SNode> attributedConcepts = SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(SNodeOperations.cast(applicableConcept, CONCEPTS.ConceptDeclaration$gH)), LINKS.attributed$sGW5);
 
       if (ListSequence.fromList(attributedConcepts).count() == 1) {
@@ -97,6 +97,7 @@ public class typeof_AttributedNodeExpression_InferenceRule extends AbstractInfer
     /*package*/ static final SConcept AbstractRule$o9 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, "jetbrains.mps.lang.typesystem.structure.AbstractRule");
     /*package*/ static final SConcept AttributeInfo$hg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, "jetbrains.mps.lang.structure.structure.AttributeInfo");
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept NodeAttribute$x2 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L, "jetbrains.mps.lang.core.structure.NodeAttribute");
     /*package*/ static final SConcept AttributedNodeExpression$fW = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2152354b0d500086L, "jetbrains.mps.lang.typesystem.structure.AttributedNodeExpression");
   }
 

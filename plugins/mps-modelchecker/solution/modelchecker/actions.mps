@@ -409,6 +409,9 @@
         <child id="1180031783297" name="conceptArgument" index="2Zo12j" />
       </concept>
       <concept id="1205861725686" name="jetbrains.mps.lang.smodel.structure.Node_IsAttributeOperation" flags="nn" index="32XrjI" />
+      <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
+        <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
+      </concept>
       <concept id="1678062499342629858" name="jetbrains.mps.lang.smodel.structure.ModuleRefExpression" flags="ng" index="37shsh">
         <child id="1678062499342629861" name="moduleId" index="37shsm" />
       </concept>
@@ -418,9 +421,6 @@
       </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="6407023681583036855" name="jetbrains.mps.lang.smodel.structure.LinkAttributeQualifier" flags="ng" index="3CFYIw">
         <reference id="6407023681583036856" name="attributeConcept" index="3CFYIJ" />
         <child id="6407023681583038098" name="linkQualifier" index="3CFYM5" />
@@ -4056,9 +4056,9 @@
                           <ref role="2Gs0qQ" node="1_LT7K4r5ra" resolve="concept" />
                         </node>
                         <node concept="2qgKlT" id="73yVtVlZsPt" role="2OqNvi">
-                          <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-                          <node concept="3B5_sB" id="6yjtkx6WOMx" role="37wK5m">
-                            <ref role="3B5MYn" to="tpck:h0TrEE$" resolve="INamedConcept" />
+                          <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+                          <node concept="35c_gC" id="4UTtJHKl$36" role="37wK5m">
+                            <ref role="35c_gD" to="tpck:h0TrEE$" resolve="INamedConcept" />
                           </node>
                         </node>
                       </node>

@@ -27,7 +27,7 @@ public class check_AntiquotationContents_NonTypesystemRule extends AbstractNonTy
   public void applyRule(final SNode antiquotation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode contentsType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(antiquotation, LINKS.expression$hE$));
     if (SNodeOperations.isInstanceOf(contentsType, CONCEPTS.SNodeType$hR)) {
-      if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(SNodeOperations.cast(contentsType, CONCEPTS.SNodeType$hR), LINKS.concept$OMgE), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1107461130800"))) {
+      if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(SNodeOperations.cast(contentsType, CONCEPTS.SNodeType$hR), LINKS.concept$OMgE), CONCEPTS.Classifier$Ix)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(antiquotation, LINKS.expression$hE$), "Substitution of a classifier here is probably an error", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1228301999219", null, errorTarget);
@@ -57,6 +57,7 @@ public class check_AntiquotationContents_NonTypesystemRule extends AbstractNonTy
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept Antiquotation$UQ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation");
   }
 }

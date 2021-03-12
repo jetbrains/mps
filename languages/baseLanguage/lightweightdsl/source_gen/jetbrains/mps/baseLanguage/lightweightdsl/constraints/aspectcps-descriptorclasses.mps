@@ -234,9 +234,6 @@
         <child id="5944356402132808753" name="case" index="1_3QMm" />
         <child id="5944356402132808752" name="expression" index="1_3QMn" />
       </concept>
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
         <property id="1238684351431" name="asCast" index="1BlNFB" />
       </concept>
@@ -1108,11 +1105,11 @@
                                                       </node>
                                                     </node>
                                                     <node concept="2qgKlT" id="42" role="2OqNvi">
-                                                      <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
+                                                      <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
                                                       <uo k="s:originTrace" v="n:6836281137582776264" />
-                                                      <node concept="3B5_sB" id="45" role="37wK5m">
-                                                        <ref role="3B5MYn" to="tpee:h9ngReX" resolve="ClassifierMember" />
-                                                        <uo k="s:originTrace" v="n:6836281137582776265" />
+                                                      <node concept="35c_gC" id="45" role="37wK5m">
+                                                        <ref role="35c_gD" to="tpee:h9ngReX" resolve="ClassifierMember" />
+                                                        <uo k="s:originTrace" v="n:5672696027942436311" />
                                                       </node>
                                                     </node>
                                                   </node>
@@ -1804,11 +1801,11 @@
                                                         </node>
                                                       </node>
                                                       <node concept="2qgKlT" id="6V" role="2OqNvi">
-                                                        <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-                                                        <uo k="s:originTrace" v="n:6836281137582776239" />
-                                                        <node concept="3B5_sB" id="6Y" role="37wK5m">
-                                                          <ref role="3B5MYn" to="tpee:fz12cDA" resolve="ClassConcept" />
-                                                          <uo k="s:originTrace" v="n:6836281137582776240" />
+                                                        <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+                                                        <uo k="s:originTrace" v="n:5672696027942440244" />
+                                                        <node concept="35c_gC" id="6Y" role="37wK5m">
+                                                          <ref role="35c_gD" to="tpee:fz12cDA" resolve="ClassConcept" />
+                                                          <uo k="s:originTrace" v="n:5672696027942440707" />
                                                         </node>
                                                       </node>
                                                     </node>

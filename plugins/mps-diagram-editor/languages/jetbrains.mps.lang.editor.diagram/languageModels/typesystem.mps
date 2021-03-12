@@ -604,7 +604,7 @@
                     </node>
                     <node concept="3cpWs3" id="18ftwC4dWPg" role="3uHU7B">
                       <node concept="Xl_RD" id="18ftwC4dWoR" role="3uHU7B">
-                        <property role="Xl_RC" value="Only subconcept of containment link target contept (" />
+                        <property role="Xl_RC" value="Only sub-concept of containment link target concept (" />
                       </node>
                       <node concept="2OqwBi" id="18ftwC4dX1N" role="3uHU7w">
                         <node concept="37vLTw" id="18ftwC4dWRK" role="2Oq$k0">

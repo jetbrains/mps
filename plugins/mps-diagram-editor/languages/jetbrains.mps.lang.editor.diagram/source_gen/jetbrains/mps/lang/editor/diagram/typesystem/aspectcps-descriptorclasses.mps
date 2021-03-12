@@ -2144,7 +2144,7 @@
                                 <node concept="3cpWs3" id="aA" role="3uHU7B">
                                   <uo k="s:originTrace" v="n:1301388602725879120" />
                                   <node concept="Xl_RD" id="aB" role="3uHU7B">
-                                    <property role="Xl_RC" value="Only subconcept of containment link target contept (" />
+                                    <property role="Xl_RC" value="Only sub-concept of containment link target concept (" />
                                     <uo k="s:originTrace" v="n:1301388602725877303" />
                                   </node>
                                   <node concept="2OqwBi" id="aC" role="3uHU7w">

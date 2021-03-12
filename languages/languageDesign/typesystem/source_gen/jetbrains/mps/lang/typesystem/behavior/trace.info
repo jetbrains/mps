@@ -4830,7 +4830,7 @@
       <node id="6261424444345979642" at="43,104,44,211" concept="8" />
       <node id="6261424444345979650" at="44,211,45,81" concept="3" />
       <node id="6261424444345979667" at="45,81,46,89" concept="3" />
-      <node id="7307171874933701183" at="48,89,49,315" concept="9" />
+      <node id="7307171874933701183" at="48,89,49,217" concept="9" />
       <node id="8952337903384830487" at="56,114,57,21" concept="3" />
       <node id="8952337903384830487" at="61,114,62,49" concept="8" />
       <node id="8952337903384830487" at="63,26,64,56" concept="13" />
@@ -4846,6 +4846,7 @@
       <node id="8952337903384830487" at="99,40,100,19" concept="9" />
       <node id="8952337903384830487" at="104,0,105,0" concept="10" trace="applicableNode$Ro4C" />
       <node id="8952337903384830487" at="105,0,106,0" concept="10" trace="concept$zIbV" />
+      <node id="8952337903384830487" at="109,0,110,0" concept="10" trace="NodeAttribute$x2" />
       <node id="8952337903384830487" at="37,0,39,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8952337903384830487" at="52,0,54,0" concept="2" trace="AbstractRule__BehaviorDescriptor#()V" />
       <node id="8952337903384830487" at="40,0,43,0" concept="11" trace="getBaseConcept_id2hxg_BDjKM8#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -4863,7 +4864,7 @@
       <scope id="8952337903384830487" at="37,63,37,63" />
       <scope id="8952337903384830487" at="52,50,52,50" />
       <scope id="8952337903384866979" at="40,86,41,161" />
-      <scope id="7307171874933700675" at="48,89,49,315" />
+      <scope id="7307171874933700675" at="48,89,49,217" />
       <scope id="8952337903384830487" at="56,114,57,21" />
       <scope id="8952337903384830487" at="63,26,64,56" />
       <scope id="8952337903384830487" at="67,13,68,64" />
@@ -4914,8 +4915,9 @@
         <var name="node" id="8952337903384830487" />
         <var name="parameters" id="8952337903384830487" />
       </scope>
+      <unit id="8952337903384830487" at="108,0,111,0" name="jetbrains.mps.lang.typesystem.behavior.AbstractRule__BehaviorDescriptor$CONCEPTS" />
       <unit id="8952337903384830487" at="103,0,107,0" name="jetbrains.mps.lang.typesystem.behavior.AbstractRule__BehaviorDescriptor$LINKS" />
-      <unit id="8952337903384830487" at="28,0,108,0" name="jetbrains.mps.lang.typesystem.behavior.AbstractRule__BehaviorDescriptor" />
+      <unit id="8952337903384830487" at="28,0,112,0" name="jetbrains.mps.lang.typesystem.behavior.AbstractRule__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ad(jetbrains.mps.lang.typesystem.behavior)/919572754501605640">

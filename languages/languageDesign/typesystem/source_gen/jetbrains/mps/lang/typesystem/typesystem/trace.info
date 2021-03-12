@@ -3142,7 +3142,7 @@
       <node id="2401040147804097678" at="31,116,32,97" concept="7" />
       <node id="2401040147804331208" at="32,97,33,175" concept="7" />
       <node id="2401040147804334171" at="33,175,34,0" concept="9" />
-      <node id="2401040147804337658" at="35,247,36,234" concept="7" />
+      <node id="2401040147804337658" at="35,149,36,234" concept="7" />
       <node id="2401040147804334149" at="36,234,37,0" concept="9" />
       <node id="2401040147804309721" at="39,9,40,49" concept="7" />
       <node id="2401040147804309721" at="40,49,41,210" concept="7" />
@@ -3177,10 +3177,11 @@
       <node id="2401040147804308811" at="97,0,98,0" concept="10" trace="AbstractRule$o9" />
       <node id="2401040147804308811" at="98,0,99,0" concept="10" trace="AttributeInfo$hg" />
       <node id="2401040147804308811" at="99,0,100,0" concept="10" trace="ConceptDeclaration$gH" />
-      <node id="2401040147804308811" at="100,0,101,0" concept="10" trace="AttributedNodeExpression$fW" />
-      <node id="2401040147804308811" at="104,0,105,0" concept="10" trace="applicableNode$Ro4C" />
-      <node id="2401040147804308811" at="105,0,106,0" concept="10" trace="attributed$sGW5" />
-      <node id="2401040147804308811" at="106,0,107,0" concept="10" trace="concept$sRY2" />
+      <node id="2401040147804308811" at="100,0,101,0" concept="10" trace="NodeAttribute$x2" />
+      <node id="2401040147804308811" at="101,0,102,0" concept="10" trace="AttributedNodeExpression$fW" />
+      <node id="2401040147804308811" at="105,0,106,0" concept="10" trace="applicableNode$Ro4C" />
+      <node id="2401040147804308811" at="106,0,107,0" concept="10" trace="attributed$sGW5" />
+      <node id="2401040147804308811" at="107,0,108,0" concept="10" trace="concept$sRY2" />
       <node id="2401040147804308811" at="29,0,31,0" concept="2" trace="typeof_AttributedNodeExpression_InferenceRule#()V" />
       <node id="2401040147804378197" at="45,51,48,9" concept="4" />
       <node id="2401040147804308811" at="59,0,62,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -3252,7 +3253,7 @@
       <scope id="2401040147804376347" at="82,0,95,0">
         <var name="parameter_1" id="2401040147804376347" />
       </scope>
-      <scope id="2401040147804331819" at="35,247,56,0">
+      <scope id="2401040147804331819" at="35,149,56,0">
         <var name="attributedConcepts" id="2401040147804337659" />
       </scope>
       <scope id="2401040147804308812" at="31,116,57,5">
@@ -3264,9 +3265,9 @@
         <var name="status" id="2401040147804308811" />
         <var name="typeCheckingContext" id="2401040147804308811" />
       </scope>
-      <unit id="2401040147804308811" at="103,0,108,0" name="jetbrains.mps.lang.typesystem.typesystem.typeof_AttributedNodeExpression_InferenceRule$LINKS" />
-      <unit id="2401040147804308811" at="96,0,102,0" name="jetbrains.mps.lang.typesystem.typesystem.typeof_AttributedNodeExpression_InferenceRule$CONCEPTS" />
-      <unit id="2401040147804308811" at="28,0,109,0" name="jetbrains.mps.lang.typesystem.typesystem.typeof_AttributedNodeExpression_InferenceRule" />
+      <unit id="2401040147804308811" at="104,0,109,0" name="jetbrains.mps.lang.typesystem.typesystem.typeof_AttributedNodeExpression_InferenceRule$LINKS" />
+      <unit id="2401040147804308811" at="96,0,103,0" name="jetbrains.mps.lang.typesystem.typesystem.typeof_AttributedNodeExpression_InferenceRule$CONCEPTS" />
+      <unit id="2401040147804308811" at="28,0,110,0" name="jetbrains.mps.lang.typesystem.typesystem.typeof_AttributedNodeExpression_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)/2401040147804768886">

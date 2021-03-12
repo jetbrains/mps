@@ -139,7 +139,7 @@ public class snodeOperation extends SubstituteMenuBase {
           {
             SNode coercedNode_o4406x_a0c0a0a = TypecheckingFacade.getFromContext().coerceType(leftType, CONCEPTS.SNodeType$hR);
             if (coercedNode_o4406x_a0c0a0a != null) {
-              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(coercedNode_o4406x_a0c0a0a, LINKS.concept$OMgE), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1169125787135"));
+              return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SLinkOperations.getTarget(coercedNode_o4406x_a0c0a0a, LINKS.concept$OMgE), CONCEPTS.AbstractConceptDeclaration$KA);
             } else {
             }
           }
@@ -237,6 +237,7 @@ public class snodeOperation extends SubstituteMenuBase {
     /*package*/ static final SConcept SModelType$Ke = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a2d94c0cdL, "jetbrains.mps.lang.smodel.structure.SModelType");
     /*package*/ static final SConcept SEnumerationMemberType$td = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, "jetbrains.mps.lang.smodel.structure.SEnumerationMemberType");
     /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
     /*package*/ static final SConcept AsSConcept$qr = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
     /*package*/ static final SConcept Link_SetTargetPointerOperation$6D = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, "jetbrains.mps.lang.smodel.structure.Link_SetTargetPointerOperation");
     /*package*/ static final SConcept Link_SetNewChildOperation$J_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");

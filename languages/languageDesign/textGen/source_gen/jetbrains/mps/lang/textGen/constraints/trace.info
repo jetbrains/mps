@@ -471,49 +471,50 @@
   </root>
   <root nodeRef="r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)/782616555020524024">
     <file name="AttributedNodePart_Constraints.java">
-      <node id="782616555020524024" at="24,43,25,42" concept="13" />
-      <node id="782616555020524024" at="32,127,33,128" concept="8" />
-      <node id="782616555020524024" at="33,128,34,0" concept="10" />
-      <node id="782616555020524024" at="35,55,36,71" concept="3" />
-      <node id="782616555020524024" at="37,9,38,0" concept="10" />
-      <node id="782616555020524024" at="38,0,39,22" concept="9" />
-      <node id="1227128029536563723" at="43,128,44,114" concept="8" />
-      <node id="1227128029536563731" at="44,114,45,357" concept="9" />
-      <node id="782616555020524024" at="47,0,48,0" concept="11" trace="canBeChildBreakingPoint" />
-      <node id="782616555020524024" at="50,0,51,0" concept="11" trace="AttributedNodePart$8o" />
-      <node id="782616555020524024" at="51,0,52,0" concept="11" trace="ConceptTextGenDeclaration$vd" />
+      <node id="782616555020524024" at="23,43,24,42" concept="13" />
+      <node id="782616555020524024" at="31,127,32,128" concept="8" />
+      <node id="782616555020524024" at="32,128,33,0" concept="10" />
+      <node id="782616555020524024" at="34,55,35,71" concept="3" />
+      <node id="782616555020524024" at="36,9,37,0" concept="10" />
+      <node id="782616555020524024" at="37,0,38,22" concept="9" />
+      <node id="1227128029536563723" at="42,128,43,114" concept="8" />
+      <node id="1227128029536563731" at="43,114,44,213" concept="9" />
+      <node id="782616555020524024" at="46,0,47,0" concept="11" trace="canBeChildBreakingPoint" />
+      <node id="782616555020524024" at="49,0,50,0" concept="11" trace="AttributedNodePart$8o" />
+      <node id="782616555020524024" at="50,0,51,0" concept="11" trace="ConceptTextGenDeclaration$vd" />
+      <node id="782616555020524024" at="51,0,52,0" concept="11" trace="NodeAttribute$x2" />
       <node id="782616555020524024" at="55,0,56,0" concept="11" trace="conceptDeclaration$$0ms" />
-      <node id="782616555020524024" at="24,0,27,0" concept="2" trace="AttributedNodePart_Constraints#()V" />
-      <node id="782616555020524024" at="34,0,37,9" concept="6" />
-      <node id="782616555020524024" at="43,0,47,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="782616555020524024" at="31,0,41,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="782616555020524024" at="29,103,41,6" concept="9" />
-      <node id="782616555020524024" at="28,0,43,0" concept="7" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="782616555020524024" at="24,43,25,42" />
-      <scope id="782616555020524024" at="35,55,36,71" />
-      <scope id="1227128029536563722" at="43,128,45,357">
+      <node id="782616555020524024" at="23,0,26,0" concept="2" trace="AttributedNodePart_Constraints#()V" />
+      <node id="782616555020524024" at="33,0,36,9" concept="6" />
+      <node id="782616555020524024" at="42,0,46,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="782616555020524024" at="30,0,40,0" concept="7" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="782616555020524024" at="28,103,40,6" concept="9" />
+      <node id="782616555020524024" at="27,0,42,0" concept="7" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="782616555020524024" at="23,43,24,42" />
+      <scope id="782616555020524024" at="34,55,35,71" />
+      <scope id="1227128029536563722" at="42,128,44,213">
         <var name="ctgd" id="1227128029536563724" />
       </scope>
-      <scope id="782616555020524024" at="24,0,27,0" />
-      <scope id="782616555020524024" at="43,0,47,0">
+      <scope id="782616555020524024" at="23,0,26,0" />
+      <scope id="782616555020524024" at="42,0,46,0">
         <var name="childConcept" id="782616555020524024" />
         <var name="link" id="782616555020524024" />
         <var name="node" id="782616555020524024" />
         <var name="parentNode" id="782616555020524024" />
       </scope>
-      <scope id="782616555020524024" at="32,127,39,22">
+      <scope id="782616555020524024" at="31,127,38,22">
         <var name="result" id="782616555020524024" />
       </scope>
-      <scope id="782616555020524024" at="31,0,41,0">
+      <scope id="782616555020524024" at="30,0,40,0">
         <var name="checkingNodeContext" id="782616555020524024" />
         <var name="context" id="782616555020524024" />
       </scope>
-      <scope id="782616555020524024" at="29,103,41,6" />
-      <scope id="782616555020524024" at="28,0,43,0" />
+      <scope id="782616555020524024" at="28,103,40,6" />
+      <scope id="782616555020524024" at="27,0,42,0" />
       <unit id="782616555020524024" at="54,0,57,0" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints$LINKS" />
-      <unit id="782616555020524024" at="49,0,53,0" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints$CONCEPTS" />
-      <unit id="782616555020524024" at="30,15,41,5" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints$1" />
-      <unit id="782616555020524024" at="23,0,58,0" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints" />
+      <unit id="782616555020524024" at="48,0,53,0" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints$CONCEPTS" />
+      <unit id="782616555020524024" at="29,15,40,5" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints$1" />
+      <unit id="782616555020524024" at="22,0,58,0" name="jetbrains.mps.lang.textGen.constraints.AttributedNodePart_Constraints" />
     </file>
   </root>
   <root nodeRef="r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)/998325320688548830">

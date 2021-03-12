@@ -7,7 +7,6 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
-    <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -359,6 +358,9 @@
       </concept>
       <concept id="1171500988903" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation" flags="nn" index="32TBzR" />
       <concept id="1205861725686" name="jetbrains.mps.lang.smodel.structure.Node_IsAttributeOperation" flags="nn" index="32XrjI" />
+      <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
+        <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
+      </concept>
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
       <concept id="1154546920561" name="jetbrains.mps.lang.smodel.structure.OperationParm_ConceptList" flags="ng" index="3gmYPX">
         <child id="1154546920563" name="concept" index="3gmYPZ" />
@@ -379,9 +381,6 @@
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="6407023681583040688" name="jetbrains.mps.lang.smodel.structure.AllAttributeQualifier" flags="ng" index="3CFTEB" />
       <concept id="6407023681583036853" name="jetbrains.mps.lang.smodel.structure.NodeAttributeQualifier" flags="ng" index="3CFYIy">
         <reference id="6407023681583036854" name="attributeConcept" index="3CFYIx" />
@@ -4068,9 +4067,9 @@
             </node>
           </node>
           <node concept="2qgKlT" id="2LDtYzAs9Ul" role="2OqNvi">
-            <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-            <node concept="3B5_sB" id="2LDtYzAs9Zj" role="37wK5m">
-              <ref role="3B5MYn" to="tpck:4uZwTti3_$T" resolve="Attribute" />
+            <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+            <node concept="35c_gC" id="4UTtJHKndNp" role="37wK5m">
+              <ref role="35c_gD" to="tpck:4uZwTti3_$T" resolve="Attribute" />
             </node>
           </node>
         </node>
@@ -4510,9 +4509,9 @@
             </node>
           </node>
           <node concept="2qgKlT" id="2LDtYzAsb6k" role="2OqNvi">
-            <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-            <node concept="3B5_sB" id="2LDtYzAsbbi" role="37wK5m">
-              <ref role="3B5MYn" to="tpck:4uZwTti3_$T" resolve="Attribute" />
+            <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+            <node concept="35c_gC" id="4UTtJHKneCu" role="37wK5m">
+              <ref role="35c_gD" to="tpck:4uZwTti3_$T" resolve="Attribute" />
             </node>
           </node>
         </node>
@@ -5752,7 +5751,7 @@
         <node concept="3clFbS" id="6uPxrhfjuPP" role="3clFbx">
           <node concept="2MkqsV" id="6uPxrhfjv3d" role="3cqZAp">
             <node concept="Xl_RD" id="6uPxrhfjv5U" role="2MkJ7o">
-              <property role="Xl_RC" value="Rule shall specify Attribute subconcept" />
+              <property role="Xl_RC" value="Rule shall specify Attribute sub-concept" />
             </node>
             <node concept="2OE7Q9" id="6uPxrhfjv3K" role="1urrC5">
               <ref role="2OEe5H" to="tpf8:6uPxrhfjpgY" resolve="applicableConcept" />
@@ -5773,9 +5772,9 @@
               </node>
             </node>
             <node concept="2qgKlT" id="2LDtYzAsalU" role="2OqNvi">
-              <ref role="37wK5l" to="tpcn:73yVtVlWOga" resolve="isSubconceptOf" />
-              <node concept="3B5_sB" id="2LDtYzAsamh" role="37wK5m">
-                <ref role="3B5MYn" to="tpck:4uZwTti3_$T" resolve="Attribute" />
+              <ref role="37wK5l" to="tpcn:4UTtJHK9fEJ" resolve="isSubconceptOf" />
+              <node concept="35c_gC" id="4UTtJHKndXp" role="37wK5m">
+                <ref role="35c_gD" to="tpck:4uZwTti3_$T" resolve="Attribute" />
               </node>
             </node>
           </node>
