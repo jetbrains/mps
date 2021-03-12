@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.search.LinkDeclarationLookup;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +32,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
 
 /**
@@ -52,14 +52,13 @@ public abstract class ReferenceDescriptor {
   abstract public Scope getScope();
 
   /**
-   * @deprecated this class shall not expose its implementation detail, otherwise there's no point in its presence.
-   * refactor the single use and remove this method, it's our internal api.
-   * Perhaps, we need a distinct validator object?
+   * @return optional pointer to a scope declaration function
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.5)
-  public ReferenceScopeProvider getScopeProvider() {
+  public SNodeReference getScopeDeclarationHint() {
+    // hides implementation detail ReferenceScopeProvider#getSearchScopeValidatorNode(). Templates of lang.constraints
+    // generate ReferenceScopeProvider implementation, hand-written code access ReferenceDescriptor 'facade', not impl classes.
+    // XXX Perhaps, we need a distinct validator object?
     return null;
   }
 
@@ -147,8 +146,8 @@ public abstract class ReferenceDescriptor {
 
     @Override
     @Nullable
-    public ReferenceScopeProvider getScopeProvider() {
-      return myScopeProvider;
+    public SNodeReference getScopeDeclarationHint() {
+      return myScopeProvider == null ? null : myScopeProvider.getSearchScopeValidatorNode();
     }
 
     @Nullable

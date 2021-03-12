@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
-import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -91,11 +90,7 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
       if (refScope instanceof ErrorScope) {
         errorsCollector.addError(new LanguageErrorItem.ReferenceItem((ErrorScope) refScope, ref));
       } else if (!(refScope.contains(target))) {
-        ReferenceScopeProvider scopeProvider = refDescriptor.getScopeProvider();
-        SNodeReference debugInfo = null;
-        if (scopeProvider != null) {
-          debugInfo = scopeProvider.getSearchScopeValidatorNode();
-        }
+        SNodeReference debugInfo = refDescriptor.getScopeDeclarationHint();
         RefOutOfScopeProblem problem = new RefOutOfScopeProblem(ref.getLink(), null);
         RefOutOfScopeContext context = new RefOutOfScopeContext(ref);
         FeedbackAspectRegistry registry = getFeedbackAspectRegistry();
