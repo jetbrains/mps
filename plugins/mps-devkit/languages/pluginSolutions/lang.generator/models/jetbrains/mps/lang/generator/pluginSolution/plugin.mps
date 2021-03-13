@@ -8,7 +8,7 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
@@ -343,7 +343,7 @@
       </concept>
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
         <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
@@ -357,7 +357,7 @@
         <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
       <concept id="1176109685393" name="jetbrains.mps.lang.smodel.structure.Model_RootsIncludingImportedOperation" flags="nn" index="3lApI0">
-        <reference id="1176109685394" name="concept" index="3lApI3" />
+        <child id="6750920497477143611" name="conceptArgument" index="3MHPDn" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -547,7 +547,9 @@
                               <ref role="3cqZAo" node="6ZfRhOxZ7EF" resolve="it" />
                             </node>
                             <node concept="2RRcyG" id="6ZfRhOxZbin" role="2OqNvi">
-                              <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                              <node concept="chp4Y" id="5QK5AMJp7zY" role="3MHsoP">
+                                <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -585,7 +587,9 @@
                       <node concept="I4A8Y" id="hR1H4re" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="hR1H5st" role="2OqNvi">
-                      <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                      <node concept="chp4Y" id="5QK5AMJp7zZ" role="3MHsoP">
+                        <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -2151,7 +2155,9 @@
                 <node concept="I4A8Y" id="nMe5u0Dxkp" role="2OqNvi" />
               </node>
               <node concept="3lApI0" id="nMe5u0Dxkq" role="2OqNvi">
-                <ref role="3lApI3" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                <node concept="chp4Y" id="5QK5AMJp7$5" role="3MHPDn">
+                  <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                </node>
               </node>
             </node>
           </node>
@@ -2243,7 +2249,9 @@
                     <node concept="I4A8Y" id="nMe5u0Dxl0" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="nMe5u0Dxl1" role="2OqNvi">
-                    <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                    <node concept="chp4Y" id="5QK5AMJp7$0" role="3MHsoP">
+                      <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -2710,7 +2718,9 @@
                 <node concept="I4A8Y" id="hQVTjis" role="2OqNvi" />
               </node>
               <node concept="2RRcyG" id="hQVTjit" role="2OqNvi">
-                <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                <node concept="chp4Y" id="5QK5AMJp7$1" role="3MHsoP">
+                  <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                </node>
               </node>
             </node>
           </node>
@@ -3028,7 +3038,9 @@
                 <node concept="I4A8Y" id="hQVZ5Mx" role="2OqNvi" />
               </node>
               <node concept="2RRcyG" id="hQVZ5My" role="2OqNvi">
-                <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                <node concept="chp4Y" id="5QK5AMJp7$2" role="3MHsoP">
+                  <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                </node>
               </node>
             </node>
           </node>
@@ -3153,7 +3165,9 @@
                 <node concept="I4A8Y" id="hQW5h$n" role="2OqNvi" />
               </node>
               <node concept="2RRcyG" id="hQW5h$o" role="2OqNvi">
-                <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                <node concept="chp4Y" id="5QK5AMJp7$3" role="3MHsoP">
+                  <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                </node>
               </node>
             </node>
           </node>
@@ -3503,7 +3517,9 @@
                 <node concept="I4A8Y" id="hQW5hAa" role="2OqNvi" />
               </node>
               <node concept="2RRcyG" id="hQW5hAb" role="2OqNvi">
-                <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                <node concept="chp4Y" id="5QK5AMJp7$4" role="3MHsoP">
+                  <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                </node>
               </node>
             </node>
           </node>

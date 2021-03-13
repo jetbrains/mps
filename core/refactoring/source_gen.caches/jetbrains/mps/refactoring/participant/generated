@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="r7qxpitr5f9tjq3eygkqes6xqr22pc">
+<product version="3" modelHash="1569w4q3pg23c06f49ughw1u9p6jaxo">
   <files names="MoveModelRefactoringParticipant.java:MoveNodeRefactoringParticipant.java:NodeCopyTracker.java:RecursiveParticipant.java:RefactoringParticipant.java:RefactoringParticipantBase.java:RefactoringProcessor.java:RefactoringSession.java:RefactoringSessionImpl.java:RefactoringUI.java:RenameNodeRefactoringParticipant.java" />
 </product>
 

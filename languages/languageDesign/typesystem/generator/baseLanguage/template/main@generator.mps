@@ -505,7 +505,7 @@
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
@@ -5434,7 +5434,9 @@
                         <node concept="1r8y6K" id="i2Ekmml" role="2OqNvi" />
                       </node>
                       <node concept="2RRcyG" id="i2Ekmmm" role="2OqNvi">
-                        <ref role="2RRcyH" to="tpd4:h5YbPVU" resolve="InferenceRule" />
+                        <node concept="chp4Y" id="5QK5AMJp7xE" role="3MHsoP">
+                          <ref role="cht4Q" to="tpd4:h5YbPVU" resolve="InferenceRule" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -5507,7 +5509,9 @@
                   <node concept="2OqwBi" id="7oBOqcpgRjA" role="3clFbG">
                     <node concept="2OqwBi" id="i2EkiOG" role="2Oq$k0">
                       <node concept="2RRcyG" id="i2EkiOK" role="2OqNvi">
-                        <ref role="2RRcyH" to="tpd4:hp8kY3U" resolve="NonTypesystemRule" />
+                        <node concept="chp4Y" id="5QK5AMJp7xF" role="3MHsoP">
+                          <ref role="cht4Q" to="tpd4:hp8kY3U" resolve="NonTypesystemRule" />
+                        </node>
                       </node>
                       <node concept="2OqwBi" id="i2EkiOH" role="2Oq$k0">
                         <node concept="1iwH7S" id="i2EkiOI" role="2Oq$k0" />
@@ -5611,7 +5615,9 @@
                         <node concept="1iwH7S" id="i2Eka7i" role="2Oq$k0" />
                       </node>
                       <node concept="2RRcyG" id="i2Eka7k" role="2OqNvi">
-                        <ref role="2RRcyH" to="tpd4:h6sgANa" resolve="SubtypingRule" />
+                        <node concept="chp4Y" id="5QK5AMJp7xG" role="3MHsoP">
+                          <ref role="cht4Q" to="tpd4:h6sgANa" resolve="SubtypingRule" />
+                        </node>
                       </node>
                     </node>
                     <node concept="2S7cBI" id="7oBOqcpgRk1" role="2OqNvi">
@@ -5711,7 +5717,9 @@
                         <node concept="1iwH7S" id="5zzawu2Ky0L" role="2Oq$k0" />
                       </node>
                       <node concept="2RRcyG" id="5zzawu2Ky0M" role="2OqNvi">
-                        <ref role="2RRcyH" to="tpd4:5zzawu2JakE" resolve="SubstituteTypeRule" />
+                        <node concept="chp4Y" id="5QK5AMJp7xH" role="3MHsoP">
+                          <ref role="cht4Q" to="tpd4:5zzawu2JakE" resolve="SubstituteTypeRule" />
+                        </node>
                       </node>
                     </node>
                     <node concept="2S7cBI" id="5zzawu2Ky0N" role="2OqNvi">
@@ -5834,7 +5842,9 @@
                         <node concept="1r8y6K" id="i2EkqMi" role="2OqNvi" />
                       </node>
                       <node concept="2RRcyG" id="i2EkqMj" role="2OqNvi">
-                        <ref role="2RRcyH" to="tpd4:hjaFuhR" resolve="ComparisonRule" />
+                        <node concept="chp4Y" id="5QK5AMJp7xI" role="3MHsoP">
+                          <ref role="cht4Q" to="tpd4:hjaFuhR" resolve="ComparisonRule" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -5907,7 +5917,9 @@
                   <node concept="2OqwBi" id="7oBOqcpgRkC" role="3clFbG">
                     <node concept="2OqwBi" id="i2EkeBp" role="2Oq$k0">
                       <node concept="2RRcyG" id="i2EkeBt" role="2OqNvi">
-                        <ref role="2RRcyH" to="tpd4:hv5pCJM" resolve="InequationReplacementRule" />
+                        <node concept="chp4Y" id="5QK5AMJp7xJ" role="3MHsoP">
+                          <ref role="cht4Q" to="tpd4:hv5pCJM" resolve="InequationReplacementRule" />
+                        </node>
                       </node>
                       <node concept="2OqwBi" id="i2EkeBq" role="2Oq$k0">
                         <node concept="1r8y6K" id="i2EkeBs" role="2OqNvi" />

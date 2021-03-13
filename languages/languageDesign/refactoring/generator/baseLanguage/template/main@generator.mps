@@ -8,7 +8,7 @@
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring" version="-1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
   </languages>
@@ -365,7 +365,7 @@
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
@@ -2864,7 +2864,9 @@
                                   <node concept="1r8y6K" id="2MPsJ5SqHSJ" role="2OqNvi" />
                                 </node>
                                 <node concept="2RRcyG" id="2MPsJ5SqIWY" role="2OqNvi">
-                                  <ref role="2RRcyH" to="tp1h:5YKiRiBue95" resolve="Refactoring" />
+                                  <node concept="chp4Y" id="5QK5AMJp7wN" role="3MHsoP">
+                                    <ref role="cht4Q" to="tp1h:5YKiRiBue95" resolve="Refactoring" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="liA8E" id="2MPsJ5SqXU4" role="2OqNvi">
@@ -2927,7 +2929,9 @@
                       <node concept="1r8y6K" id="2MPsJ5Sr2FM" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="2MPsJ5Sr2FN" role="2OqNvi">
-                      <ref role="2RRcyH" to="tp1h:5YKiRiBue95" resolve="Refactoring" />
+                      <node concept="chp4Y" id="5QK5AMJp7wO" role="3MHsoP">
+                        <ref role="cht4Q" to="tp1h:5YKiRiBue95" resolve="Refactoring" />
+                      </node>
                     </node>
                   </node>
                 </node>

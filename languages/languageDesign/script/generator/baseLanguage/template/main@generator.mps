@@ -364,7 +364,7 @@
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
@@ -6750,7 +6750,9 @@
                                   <node concept="1r8y6K" id="qXQceEtXz2" role="2OqNvi" />
                                 </node>
                                 <node concept="2RRcyG" id="qXQceEtXz3" role="2OqNvi">
-                                  <ref role="2RRcyH" to="tp33:h8_UgsH" resolve="MigrationScript" />
+                                  <node concept="chp4Y" id="5QK5AMJp7wR" role="3MHsoP">
+                                    <ref role="cht4Q" to="tp33:h8_UgsH" resolve="MigrationScript" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="liA8E" id="qXQceEu4iw" role="2OqNvi">
@@ -6813,7 +6815,9 @@
                       <node concept="1r8y6K" id="qXQceEtWpn" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="qXQceEtWDY" role="2OqNvi">
-                      <ref role="2RRcyH" to="tp33:h8_UgsH" resolve="MigrationScript" />
+                      <node concept="chp4Y" id="5QK5AMJp7wS" role="3MHsoP">
+                        <ref role="cht4Q" to="tp33:h8_UgsH" resolve="MigrationScript" />
+                      </node>
                     </node>
                   </node>
                 </node>

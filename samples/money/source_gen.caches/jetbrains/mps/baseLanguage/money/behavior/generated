@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-77t7womagxd43rl6g9h2s12893l0me5">
+<product version="3" modelHash="-dsyy89vm90ncx64nzdvr83j9f1z2e1n">
   <files names="BehaviorAspectDescriptor.java:MoneyCreator__BehaviorDescriptor.java:MoneyGetCurrencyMethodCall__BehaviorDescriptor.java:MoneyLiteral__BehaviorDescriptor.java:MoneyType__BehaviorDescriptor.java" />
 </product>
 

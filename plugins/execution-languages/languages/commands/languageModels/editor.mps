@@ -286,6 +286,9 @@
       <concept id="1204851882688" name="jetbrains.mps.lang.smodel.structure.LinkRefQualifier" flags="ng" index="26LbJo">
         <reference id="1204851882689" name="link" index="26LbJp" />
       </concept>
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
@@ -299,7 +302,7 @@
         <child id="5168775467716640653" name="linkQualifier" index="1aIX9E" />
       </concept>
       <concept id="1182511038748" name="jetbrains.mps.lang.smodel.structure.Model_NodesIncludingImportedOperation" flags="nn" index="1j9C0f">
-        <reference id="1182511038750" name="concept" index="1j9C0d" />
+        <child id="6750920497477143623" name="conceptArgument" index="3MHPCF" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
@@ -1508,7 +1511,9 @@
             <node concept="2OqwBi" id="1wEcoXjJh$_" role="3clFbG">
               <node concept="1rpKSd" id="1wEcoXjJh$C" role="2Oq$k0" />
               <node concept="1j9C0f" id="1wEcoXjJh$B" role="2OqNvi">
-                <ref role="1j9C0d" to="rzqf:JzCdmU6yJC" resolve="CommandDeclaration" />
+                <node concept="chp4Y" id="5QK5AMJp7y9" role="3MHPCF">
+                  <ref role="cht4Q" to="rzqf:JzCdmU6yJC" resolve="CommandDeclaration" />
+                </node>
               </node>
             </node>
           </node>
@@ -1611,7 +1616,9 @@
             <node concept="2OqwBi" id="1wEcoXjJhB3" role="3clFbG">
               <node concept="1rpKSd" id="1wEcoXjJhB6" role="2Oq$k0" />
               <node concept="1j9C0f" id="1wEcoXjJhB5" role="2OqNvi">
-                <ref role="1j9C0d" to="rzqf:5keEkmeCguG" resolve="ExecuteCommandPart" />
+                <node concept="chp4Y" id="5QK5AMJp7ya" role="3MHPCF">
+                  <ref role="cht4Q" to="rzqf:5keEkmeCguG" resolve="ExecuteCommandPart" />
+                </node>
               </node>
             </node>
           </node>

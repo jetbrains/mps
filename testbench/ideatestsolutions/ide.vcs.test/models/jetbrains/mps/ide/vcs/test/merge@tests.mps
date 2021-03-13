@@ -10,7 +10,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
@@ -454,7 +454,7 @@
       </concept>
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="3648723375513868532" name="jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation" flags="ng" index="Vyspw" />
       <concept id="1143512015885" name="jetbrains.mps.lang.smodel.structure.Node_GetNextSiblingOperation" flags="nn" index="YCak7" />
@@ -5355,7 +5355,9 @@
                 <ref role="3cqZAo" node="5I4lmHcBVbF" resolve="model" />
               </node>
               <node concept="2RRcyG" id="5I4lmHcBZpC" role="2OqNvi">
-                <ref role="2RRcyH" to="tpee:fz12cDA" resolve="ClassConcept" />
+                <node concept="chp4Y" id="5QK5AMJp7$n" role="3MHsoP">
+                  <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                </node>
               </node>
             </node>
             <node concept="1uHKPH" id="5I4lmHcBZpD" role="2OqNvi" />
@@ -5874,7 +5876,9 @@
                   <ref role="3cqZAo" node="6pjhMZUTqoG" resolve="myTestModel" />
                 </node>
                 <node concept="2RRcyG" id="6pjhMZUUl8Z" role="2OqNvi">
-                  <ref role="2RRcyH" to="tpee:fz12cDA" resolve="ClassConcept" />
+                  <node concept="chp4Y" id="5QK5AMJp7$o" role="3MHsoP">
+                    <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                  </node>
                 </node>
               </node>
               <node concept="1uHKPH" id="6pjhMZUUFMv" role="2OqNvi" />

@@ -156,9 +156,12 @@
       <concept id="4705942098322467729" name="jetbrains.mps.lang.smodel.structure.EnumMemberReference" flags="ng" index="21nZrQ">
         <reference id="4705942098322467736" name="decl" index="21nZrZ" />
       </concept>
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
@@ -241,7 +244,9 @@
                   <node concept="1r8y6K" id="6w9IlZTQqNj" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="6w9IlZTQrl5" role="2OqNvi">
-                  <ref role="2RRcyH" to="tpm0:hp5_jEN" resolve="InputRoot" />
+                  <node concept="chp4Y" id="5QK5AMJp7vo" role="3MHsoP">
+                    <ref role="cht4Q" to="tpm0:hp5_jEN" resolve="InputRoot" />
+                  </node>
                 </node>
               </node>
               <node concept="3zZkjj" id="6w9IlZTQBNm" role="2OqNvi">

@@ -10,7 +10,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
@@ -618,7 +618,7 @@
       </concept>
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
@@ -6807,7 +6807,9 @@
                 <ref role="3cqZAo" node="7dWkQhiRH0p" resolve="editorModel" />
               </node>
               <node concept="2RRcyG" id="7dWkQhiRH0y" role="2OqNvi">
-                <ref role="2RRcyH" to="tpc2:fA4kQeF" resolve="ConceptEditorDeclaration" />
+                <node concept="chp4Y" id="5QK5AMJp7zV" role="3MHsoP">
+                  <ref role="cht4Q" to="tpc2:fA4kQeF" resolve="ConceptEditorDeclaration" />
+                </node>
               </node>
             </node>
             <node concept="1z4cxt" id="7dWkQhiRH0z" role="2OqNvi">
@@ -11688,7 +11690,9 @@
                                   <ref role="3cqZAo" node="6ZfRhOy0goV" resolve="gm" />
                                 </node>
                                 <node concept="2RRcyG" id="6ZfRhOy10gv" role="2OqNvi">
-                                  <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                                  <node concept="chp4Y" id="5QK5AMJp7zW" role="3MHsoP">
+                                    <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                                  </node>
                                 </node>
                               </node>
                             </node>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="78n9z745p6oid6xck0xg17c9f3pxglo">
+<product version="3" modelHash="1144x5sflzv6gjk33w5v5ficr5vnxbq">
   <files names="DefaultRefactoringUI.java:ExtensionDescriptor.java:MoveNodesAction.java:MoveNodesActionBase.java:MoveNodesActionHelper.java:MoveNodesUtil.java:RenameRefactoringBody.java:SelectOptionsDialog.java" />
 </product>
 

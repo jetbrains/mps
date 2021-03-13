@@ -351,7 +351,7 @@
       <concept id="7504436213544206332" name="jetbrains.mps.lang.smodel.structure.Node_ContainingLinkOperation" flags="nn" index="2NL2c5" />
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1180031783296" name="jetbrains.mps.lang.smodel.structure.Concept_IsSubConceptOfOperation" flags="nn" index="2Zo12i">
@@ -796,7 +796,9 @@
                               <ref role="3cqZAo" node="2Bx95kmy1Ik" resolve="editorModel" />
                             </node>
                             <node concept="2RRcyG" id="2MdW64Irte9" role="2OqNvi">
-                              <ref role="2RRcyH" to="tpc2:3fw9B$5YUrX" resolve="SubstituteMenu_Named" />
+                              <node concept="chp4Y" id="5QK5AMJp7ur" role="3MHsoP">
+                                <ref role="cht4Q" to="tpc2:3fw9B$5YUrX" resolve="SubstituteMenu_Named" />
+                              </node>
                             </node>
                           </node>
                           <node concept="1z4cxt" id="2MdW64Irtea" role="2OqNvi">
@@ -1482,7 +1484,9 @@
                   <ref role="3cqZAo" node="2Bx95kmzRU_" resolve="editorModel" />
                 </node>
                 <node concept="2RRcyG" id="2Bx95kmzRUo" role="2OqNvi">
-                  <ref role="2RRcyH" to="tpc2:2RDMjbOTqI4" resolve="SubstituteMenu_Default" />
+                  <node concept="chp4Y" id="5QK5AMJp7us" role="3MHsoP">
+                    <ref role="cht4Q" to="tpc2:2RDMjbOTqI4" resolve="SubstituteMenu_Default" />
+                  </node>
                 </node>
               </node>
               <node concept="3zZkjj" id="2Bx95kmzRUp" role="2OqNvi">
@@ -5329,7 +5333,9 @@
                       <ref role="3cqZAo" node="3D1tQXbYJQ$" resolve="constraintsAspect" />
                     </node>
                     <node concept="2RRcyG" id="3D1tQXbYJQN" role="2OqNvi">
-                      <ref role="2RRcyH" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                      <node concept="chp4Y" id="5QK5AMJp7ut" role="3MHsoP">
+                        <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                      </node>
                     </node>
                   </node>
                   <node concept="1z4cxt" id="3D1tQXbYJQO" role="2OqNvi">

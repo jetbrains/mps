@@ -8,7 +8,7 @@
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
   </languages>
@@ -343,6 +343,9 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
@@ -350,7 +353,7 @@
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
@@ -3618,7 +3621,9 @@
                                     <node concept="1r8y6K" id="aS$zHozYZT" role="2OqNvi" />
                                   </node>
                                   <node concept="2RRcyG" id="5FFmclY2q31" role="2OqNvi">
-                                    <ref role="2RRcyH" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                                    <node concept="chp4Y" id="5QK5AMJp7uc" role="3MHsoP">
+                                      <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="3zZkjj" id="5FFmclY2q32" role="2OqNvi">
@@ -3701,7 +3706,9 @@
                           <node concept="1r8y6K" id="1rgpeH9xlt5" role="2OqNvi" />
                         </node>
                         <node concept="2RRcyG" id="5FFmclY2lMP" role="2OqNvi">
-                          <ref role="2RRcyH" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                          <node concept="chp4Y" id="5QK5AMJp7ud" role="3MHsoP">
+                            <ref role="cht4Q" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
+                          </node>
                         </node>
                       </node>
                       <node concept="13MTOL" id="1rgpeH9xrr$" role="2OqNvi">

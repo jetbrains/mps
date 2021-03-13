@@ -8,7 +8,7 @@
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -141,7 +141,7 @@
       </concept>
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -216,7 +216,9 @@
             <node concept="2OqwBi" id="58t8pDAovbo" role="2Oq$k0">
               <node concept="1Q6Npb" id="58t8pDAovbp" role="2Oq$k0" />
               <node concept="2RRcyG" id="58t8pDAovbq" role="2OqNvi">
-                <ref role="2RRcyH" to="uhxm:6LlKjXrMe7G" resolve="RunConfigurationExecutor" />
+                <node concept="chp4Y" id="5QK5AMJp7yv" role="3MHsoP">
+                  <ref role="cht4Q" to="uhxm:6LlKjXrMe7G" resolve="RunConfigurationExecutor" />
+                </node>
               </node>
             </node>
             <node concept="3zZkjj" id="58t8pDAovbL" role="2OqNvi">

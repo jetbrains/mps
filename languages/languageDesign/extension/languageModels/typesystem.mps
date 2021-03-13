@@ -241,7 +241,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
@@ -596,7 +596,9 @@
             <node concept="I4A8Y" id="aRphP9VEUt" role="2OqNvi" />
           </node>
           <node concept="2RRcyG" id="aRphP9VF5$" role="2OqNvi">
-            <ref role="2RRcyH" to="v54s:aRphP9VDPM" resolve="IRootWithUniqueName" />
+            <node concept="chp4Y" id="5QK5AMJp7uZ" role="3MHsoP">
+              <ref role="cht4Q" to="v54s:aRphP9VDPM" resolve="IRootWithUniqueName" />
+            </node>
           </node>
         </node>
       </node>

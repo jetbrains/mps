@@ -159,7 +159,7 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
@@ -238,7 +238,9 @@
                   <node concept="1r8y6K" id="6saosjUTNy9" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="6saosjUTNKK" role="2OqNvi">
-                  <ref role="2RRcyH" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+                  <node concept="chp4Y" id="5QK5AMJp7zA" role="3MHsoP">
+                    <ref role="cht4Q" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+                  </node>
                 </node>
               </node>
               <node concept="3GX2aA" id="6saosjUTRoY" role="2OqNvi" />
@@ -266,7 +268,9 @@
                   <node concept="1r8y6K" id="6saosjUTROg" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="6saosjUTS59" role="2OqNvi">
-                  <ref role="2RRcyH" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+                  <node concept="chp4Y" id="5QK5AMJp7zB" role="3MHsoP">
+                    <ref role="cht4Q" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -671,7 +675,9 @@
                       <node concept="1r8y6K" id="6saosjUU5dS" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="6saosjUU5uL" role="2OqNvi">
-                      <ref role="2RRcyH" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+                      <node concept="chp4Y" id="5QK5AMJp7zC" role="3MHsoP">
+                        <ref role="cht4Q" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3zZkjj" id="6saosjUU9ue" role="2OqNvi">

@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -356,7 +356,7 @@
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
@@ -4990,7 +4990,9 @@
               <ref role="3cqZAo" node="51NkKCgB3zS" resolve="structureModel" />
             </node>
             <node concept="2RRcyG" id="7pTo6H6mmus" role="2OqNvi">
-              <ref role="2RRcyH" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+              <node concept="chp4Y" id="5QK5AMJp7Ok" role="3MHsoP">
+                <ref role="cht4Q" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+              </node>
             </node>
           </node>
           <node concept="3cpWsn" id="51NkKCgB3$b" role="1Duv9x">
@@ -10407,7 +10409,9 @@
                           <ref role="3cqZAo" node="4wG2MBHGRPj" resolve="it" />
                         </node>
                         <node concept="2RRcyG" id="4wG2MBHGRP6" role="2OqNvi">
-                          <ref role="2RRcyH" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                          <node concept="chp4Y" id="5QK5AMJp7Ol" role="3MHsoP">
+                            <ref role="cht4Q" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                          </node>
                         </node>
                       </node>
                     </node>

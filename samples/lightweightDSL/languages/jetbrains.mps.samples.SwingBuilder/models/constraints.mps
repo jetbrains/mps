@@ -44,9 +44,12 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -79,7 +82,9 @@
                     <node concept="I4A8Y" id="5Vvmn_Ql3w3" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="5Vvmn_Ql3vW" role="2OqNvi">
-                    <ref role="2RRcyH" to="yo60:OfqpBCexLx" resolve="Filter" />
+                    <node concept="chp4Y" id="5QK5AMJp7z2" role="3MHsoP">
+                      <ref role="cht4Q" to="yo60:OfqpBCexLx" resolve="Filter" />
+                    </node>
                   </node>
                 </node>
                 <node concept="4Tj9Z" id="5Vvmn_Ql3vX" role="2OqNvi">
@@ -89,7 +94,9 @@
                       <node concept="I4A8Y" id="5Vvmn_Ql3w6" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="5Vvmn_Ql3w0" role="2OqNvi">
-                      <ref role="2RRcyH" to="yo60:OfqpBCexQl" resolve="Map" />
+                      <node concept="chp4Y" id="5QK5AMJp7z3" role="3MHsoP">
+                        <ref role="cht4Q" to="yo60:OfqpBCexQl" resolve="Map" />
+                      </node>
                     </node>
                   </node>
                 </node>

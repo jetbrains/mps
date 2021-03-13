@@ -7,7 +7,7 @@
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -344,7 +344,7 @@
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
@@ -7375,7 +7375,9 @@
         <node concept="3clFbF" id="2agGplWKALu" role="3cqZAp">
           <node concept="2OqwBi" id="2agGplWKALv" role="3clFbG">
             <node concept="2RRcyG" id="2agGplWKALw" role="2OqNvi">
-              <ref role="2RRcyH" to="tpf8:gcjVnq8" resolve="TemplateSwitch" />
+              <node concept="chp4Y" id="5QK5AMJp7ve" role="3MHsoP">
+                <ref role="cht4Q" to="tpf8:gcjVnq8" resolve="TemplateSwitch" />
+              </node>
             </node>
             <node concept="2OqwBi" id="2agGplWKALx" role="2Oq$k0">
               <node concept="2Sf5sV" id="2agGplWKALy" role="2Oq$k0" />

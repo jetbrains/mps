@@ -270,7 +270,7 @@
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
@@ -403,7 +403,9 @@
                   <node concept="1r8y6K" id="3XMJ89QYM0l" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="3XMJ89QYMjr" role="2OqNvi">
-                  <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
+                  <node concept="chp4Y" id="5QK5AMJp7ug" role="3MHsoP">
+                    <ref role="cht4Q" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
+                  </node>
                 </node>
               </node>
               <node concept="3GX2aA" id="3XMJ89QYQtm" role="2OqNvi" />
@@ -500,7 +502,9 @@
                         <node concept="1r8y6K" id="1rgpeH9xlt5" role="2OqNvi" />
                       </node>
                       <node concept="2RRcyG" id="5FFmclY2lMP" role="2OqNvi">
-                        <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
+                        <node concept="chp4Y" id="5QK5AMJp7uh" role="3MHsoP">
+                          <ref role="cht4Q" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -1007,7 +1011,9 @@
                                 <ref role="3cqZAo" node="3XMJ89QYE2y" resolve="model" />
                               </node>
                               <node concept="2RRcyG" id="3XMJ89QYFQH" role="2OqNvi">
-                                <ref role="2RRcyH" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
+                                <node concept="chp4Y" id="5QK5AMJp7ui" role="3MHsoP">
+                                  <ref role="cht4Q" to="mqj2:1BFxp3HFZzq" resolve="RulesConstraintsRoot" />
+                                </node>
                               </node>
                             </node>
                             <node concept="3GX2aA" id="3XMJ89QYKn8" role="2OqNvi" />

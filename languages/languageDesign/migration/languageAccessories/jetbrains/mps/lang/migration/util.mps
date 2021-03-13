@@ -216,7 +216,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
@@ -704,7 +704,9 @@
                       <node concept="I4A8Y" id="Czdt9t5N6X" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="Czdt9t5O4I" role="2OqNvi">
-                      <ref role="2RRcyH" to="53vh:4uVwhQyFcjm" resolve="IMigrationUnit" />
+                      <node concept="chp4Y" id="5QK5AMJp7vK" role="3MHsoP">
+                        <ref role="cht4Q" to="53vh:4uVwhQyFcjm" resolve="IMigrationUnit" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3zZkjj" id="Czdt9t61em" role="2OqNvi">
@@ -890,7 +892,9 @@
                 <ref role="3cqZAo" node="3WpkgLwxAbl" resolve="migModel" />
               </node>
               <node concept="2RRcyG" id="2wHIaxpsIeX" role="2OqNvi">
-                <ref role="2RRcyH" to="53vh:4uVwhQyFcjm" resolve="IMigrationUnit" />
+                <node concept="chp4Y" id="5QK5AMJp7vL" role="3MHsoP">
+                  <ref role="cht4Q" to="53vh:4uVwhQyFcjm" resolve="IMigrationUnit" />
+                </node>
               </node>
             </node>
           </node>

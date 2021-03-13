@@ -5,7 +5,7 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
@@ -426,7 +426,7 @@
         <reference id="6677504323281689839" name="conceptDeclaraton" index="3bZ5Sy" />
       </concept>
       <concept id="1182511038748" name="jetbrains.mps.lang.smodel.structure.Model_NodesIncludingImportedOperation" flags="nn" index="1j9C0f">
-        <reference id="1182511038750" name="concept" index="1j9C0d" />
+        <child id="6750920497477143623" name="conceptArgument" index="3MHPCF" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -5832,7 +5832,9 @@
                   <node concept="I4A8Y" id="1wEcoXjJ65T" role="2OqNvi" />
                 </node>
                 <node concept="1j9C0f" id="1wEcoXjJ65U" role="2OqNvi">
-                  <ref role="1j9C0d" to="tpfo:h5STpZg" resolve="PredefinedSymbolClassDeclaration" />
+                  <node concept="chp4Y" id="5QK5AMJp7xU" role="3MHPCF">
+                    <ref role="cht4Q" to="tpfo:h5STpZg" resolve="PredefinedSymbolClassDeclaration" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -5988,7 +5990,9 @@
                   <node concept="I4A8Y" id="1wEcoXjJ67b" role="2OqNvi" />
                 </node>
                 <node concept="1j9C0f" id="1wEcoXjJ67c" role="2OqNvi">
-                  <ref role="1j9C0d" to="tpfo:h5OD$ld" resolve="RegexpDeclaration" />
+                  <node concept="chp4Y" id="5QK5AMJp7xV" role="3MHPCF">
+                    <ref role="cht4Q" to="tpfo:h5OD$ld" resolve="RegexpDeclaration" />
+                  </node>
                 </node>
               </node>
             </node>

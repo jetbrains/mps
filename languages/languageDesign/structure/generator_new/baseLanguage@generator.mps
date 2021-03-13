@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
@@ -475,7 +475,7 @@
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
@@ -1171,7 +1171,9 @@
                     <node concept="1r8y6K" id="1ZmaNfj8Rrx" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="7q4qlnqbrl5" role="2OqNvi">
-                    <ref role="2RRcyH" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
+                    <node concept="chp4Y" id="5QK5AMJp7xn" role="3MHsoP">
+                      <ref role="cht4Q" to="tpce:VFd4X$DyB_" resolve="IEnumeration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2S7cBI" id="1ZmaNfj8Rr$" role="2OqNvi">
@@ -1214,7 +1216,9 @@
                     <node concept="1r8y6K" id="744pC72LaCw" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="7q4qlnqcmfo" role="2OqNvi">
-                    <ref role="2RRcyH" to="tpce:fKAz7CR" resolve="ConstrainedDataTypeDeclaration" />
+                    <node concept="chp4Y" id="5QK5AMJp7xo" role="3MHsoP">
+                      <ref role="cht4Q" to="tpce:fKAz7CR" resolve="ConstrainedDataTypeDeclaration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2S7cBI" id="744pC72LaCz" role="2OqNvi">
@@ -4919,7 +4923,9 @@
                 <node concept="2OqwBi" id="7NTi8jMcgas" role="2Oq$k0">
                   <node concept="1Q6Npb" id="7NTi8jMcg4Z" role="2Oq$k0" />
                   <node concept="2RRcyG" id="7NTi8jMcgg3" role="2OqNvi">
-                    <ref role="2RRcyH" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                    <node concept="chp4Y" id="5QK5AMJp7xp" role="3MHsoP">
+                      <ref role="cht4Q" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2es0OD" id="7NTi8jMcmGu" role="2OqNvi">
@@ -4974,7 +4980,9 @@
                 <node concept="2OqwBi" id="6Kv_6E73Zo4" role="2Oq$k0">
                   <node concept="1Q6Npb" id="6Kv_6E73Zo5" role="2Oq$k0" />
                   <node concept="2RRcyG" id="6Kv_6E73Zo6" role="2OqNvi">
-                    <ref role="2RRcyH" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
+                    <node concept="chp4Y" id="5QK5AMJp7xq" role="3MHsoP">
+                      <ref role="cht4Q" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2es0OD" id="6Kv_6E73Zo7" role="2OqNvi">

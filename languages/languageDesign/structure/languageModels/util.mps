@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
@@ -208,7 +208,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
@@ -307,7 +307,9 @@
                 <ref role="3cqZAo" node="5OIo7_R8hOq" resolve="m" />
               </node>
               <node concept="2RRcyG" id="5OIo7_R8n8X" role="2OqNvi">
-                <ref role="2RRcyH" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                <node concept="chp4Y" id="5QK5AMJp7x6" role="3MHsoP">
+                  <ref role="cht4Q" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                </node>
               </node>
             </node>
             <node concept="2HwmR7" id="5OIo7_R8$TN" role="2OqNvi">
@@ -413,7 +415,9 @@
                 <ref role="3cqZAo" node="6Kv_6E71hD0" resolve="m" />
               </node>
               <node concept="2RRcyG" id="6Kv_6E71hCG" role="2OqNvi">
-                <ref role="2RRcyH" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
+                <node concept="chp4Y" id="5QK5AMJp7x7" role="3MHsoP">
+                  <ref role="cht4Q" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
+                </node>
               </node>
             </node>
             <node concept="2HwmR7" id="6Kv_6E71hCH" role="2OqNvi">

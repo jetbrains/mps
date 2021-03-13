@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-b25j4cysrk3x35bw91hws3gr3bkrqir">
+<product version="3" modelHash="-5y8y29mavlw3pmggfim03wxsa8v1ii0">
   <files names="AnnotateBackgroundableTask.java:AnnotatedCellMessage.java:AnnotationAspectSubcolumn.java:AnnotationColumn.java:AnnotationOptions.java:AuthorAspectSubcolumn.java:CellAnnotation.java:CommitNumberSubcolumn.java:DateAspectSubcolumn.java:EditorAnnotation.java:GitShowCommitInLogAction.java:HighlightRevisionSubcolumn.java:LineAnnotation.java:NodeAnnotation.java:RevisionAspectSubcolumn.java:RevisionNodeChange.java:RootAnnotation.java:ShowAffectedFilesAction.java:ShowDiffFromAnnotationAction.java:ViewActionGroup.java" />
 </product>
 

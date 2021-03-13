@@ -4,7 +4,7 @@
   <languages>
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
@@ -466,7 +466,7 @@
       </concept>
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1966870290088668520" name="jetbrains.mps.lang.smodel.structure.Enum_MembersOperation" flags="ng" index="2ViDtN" />
       <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
@@ -5269,7 +5269,9 @@
                         <node concept="2OqwBi" id="1jOVTpt3iRE" role="2Oq$k0">
                           <node concept="1rpKSd" id="1jOVTpt3iRF" role="2Oq$k0" />
                           <node concept="2RRcyG" id="1jOVTpt3iRG" role="2OqNvi">
-                            <ref role="2RRcyH" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                            <node concept="chp4Y" id="5QK5AMJp7ww" role="3MHsoP">
+                              <ref role="cht4Q" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3zZkjj" id="1jOVTpt3iRH" role="2OqNvi">
@@ -5810,7 +5812,9 @@
                         <node concept="2OqwBi" id="YPCycQy_rC" role="2Oq$k0">
                           <node concept="1rpKSd" id="YPCycQy_rD" role="2Oq$k0" />
                           <node concept="2RRcyG" id="YPCycQy_rE" role="2OqNvi">
-                            <ref role="2RRcyH" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                            <node concept="chp4Y" id="5QK5AMJp7wx" role="3MHsoP">
+                              <ref role="cht4Q" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3zZkjj" id="YPCycQy_rF" role="2OqNvi">
@@ -6123,7 +6127,9 @@
                   <node concept="2OqwBi" id="1jOVTpt84f4" role="2Oq$k0">
                     <node concept="1rpKSd" id="1jOVTpt84f5" role="2Oq$k0" />
                     <node concept="2RRcyG" id="1jOVTpt84f6" role="2OqNvi">
-                      <ref role="2RRcyH" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7wy" role="3MHsoP">
+                        <ref role="cht4Q" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="1z4cxt" id="1jOVTpt84f7" role="2OqNvi">
@@ -6501,7 +6507,9 @@
                   <node concept="2OqwBi" id="5xcTfn_HXaw" role="2Oq$k0">
                     <node concept="1rpKSd" id="5xcTfn_HXax" role="2Oq$k0" />
                     <node concept="2RRcyG" id="5xcTfn_HXay" role="2OqNvi">
-                      <ref role="2RRcyH" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7wz" role="3MHsoP">
+                        <ref role="cht4Q" to="tp4k:1mJS7WEAV1P" resolve="KeymapChangesDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="2HwmR7" id="5xcTfn_HXaz" role="2OqNvi">

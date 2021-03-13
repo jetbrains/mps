@@ -279,7 +279,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
@@ -414,7 +414,9 @@
                   <node concept="1r8y6K" id="7GQ_Vdx4lB2" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="7GQ_Vdx4lUl" role="2OqNvi">
-                  <ref role="2RRcyH" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
+                  <node concept="chp4Y" id="5QK5AMJp7v9" role="3MHsoP">
+                    <ref role="cht4Q" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
+                  </node>
                 </node>
               </node>
               <node concept="3GX2aA" id="7GQ_Vdx4qMf" role="2OqNvi" />
@@ -1051,7 +1053,9 @@
                           <node concept="1r8y6K" id="4lnto0oJGd3" role="2OqNvi" />
                         </node>
                         <node concept="2RRcyG" id="4lnto0oJGtO" role="2OqNvi">
-                          <ref role="2RRcyH" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
+                          <node concept="chp4Y" id="5QK5AMJp7va" role="3MHsoP">
+                            <ref role="cht4Q" to="wff5:6kKc3mjFxo7" resolve="FeedbackPerConceptRoot" />
+                          </node>
                         </node>
                       </node>
                     </node>

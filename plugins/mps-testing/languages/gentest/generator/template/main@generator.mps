@@ -207,7 +207,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
@@ -426,7 +426,9 @@
                     <node concept="1st3f0" id="6sSwiyirI1B" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="BMoFi_zNjn" role="2OqNvi">
-                    <ref role="2RRcyH" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                    <node concept="chp4Y" id="5QK5AMJp7yD" role="3MHsoP">
+                      <ref role="cht4Q" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                    </node>
                   </node>
                 </node>
                 <node concept="8ftyA" id="BMoFi_zQsM" role="2OqNvi">
@@ -670,7 +672,9 @@
                     <node concept="1st3f0" id="6sSwiyirLoE" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="BMoFi__esY" role="2OqNvi">
-                    <ref role="2RRcyH" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                    <node concept="chp4Y" id="5QK5AMJp7yE" role="3MHsoP">
+                      <ref role="cht4Q" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3GX2aA" id="BMoFi__k0Z" role="2OqNvi" />

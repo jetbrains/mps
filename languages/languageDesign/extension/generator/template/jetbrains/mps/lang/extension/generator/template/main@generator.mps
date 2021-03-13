@@ -224,7 +224,7 @@
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
@@ -300,7 +300,9 @@
                       <node concept="1r8y6K" id="3vRuGRS5fe" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="3vRuGRS5ff" role="2OqNvi">
-                      <ref role="2RRcyH" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7v1" role="3MHsoP">
+                        <ref role="cht4Q" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3GX2aA" id="3vRuGRS5fg" role="2OqNvi" />
@@ -312,7 +314,9 @@
                       <node concept="1r8y6K" id="3vRuGRS5fr" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="3vRuGRS5fs" role="2OqNvi">
-                      <ref role="2RRcyH" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7v2" role="3MHsoP">
+                        <ref role="cht4Q" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3GX2aA" id="3vRuGRS5ft" role="2OqNvi" />
@@ -562,7 +566,9 @@
                           <node concept="1r8y6K" id="3vRuGRRZHx" role="2OqNvi" />
                         </node>
                         <node concept="2RRcyG" id="3vRuGRRZHF" role="2OqNvi">
-                          <ref role="2RRcyH" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                          <node concept="chp4Y" id="5QK5AMJp7v3" role="3MHsoP">
+                            <ref role="cht4Q" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                          </node>
                         </node>
                       </node>
                       <node concept="2S7cBI" id="2NZXpXjOdbA" role="2OqNvi">
@@ -610,7 +616,9 @@
                     <node concept="1r8y6K" id="21KXiZCHsGB" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="21KXiZCHsGC" role="2OqNvi">
-                    <ref role="2RRcyH" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                    <node concept="chp4Y" id="5QK5AMJp7v4" role="3MHsoP">
+                      <ref role="cht4Q" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3GX2aA" id="21KXiZCHsGD" role="2OqNvi" />
@@ -640,7 +648,9 @@
                       <node concept="1r8y6K" id="3vRuGRRZIu" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="3vRuGRRZIv" role="2OqNvi">
-                      <ref role="2RRcyH" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7v5" role="3MHsoP">
+                        <ref role="cht4Q" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3GX2aA" id="3vRuGRRZIw" role="2OqNvi" />
@@ -706,7 +716,9 @@
                           <node concept="1r8y6K" id="6QpPHkStfeI" role="2OqNvi" />
                         </node>
                         <node concept="2RRcyG" id="6QpPHkStfeJ" role="2OqNvi">
-                          <ref role="2RRcyH" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                          <node concept="chp4Y" id="5QK5AMJp7v6" role="3MHsoP">
+                            <ref role="cht4Q" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                          </node>
                         </node>
                       </node>
                       <node concept="2S7cBI" id="2NZXpXjOdcK" role="2OqNvi">
@@ -871,7 +883,9 @@
                     <node concept="1r8y6K" id="21KXiZCHwyx" role="2OqNvi" />
                   </node>
                   <node concept="2RRcyG" id="21KXiZCHwyy" role="2OqNvi">
-                    <ref role="2RRcyH" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                    <node concept="chp4Y" id="5QK5AMJp7v7" role="3MHsoP">
+                      <ref role="cht4Q" to="v54s:3f064wGFUBm" resolve="ExtensionPointDeclaration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3GX2aA" id="21KXiZCHwyz" role="2OqNvi" />
@@ -920,7 +934,9 @@
                       <node concept="1r8y6K" id="21KXiZCI73h" role="2OqNvi" />
                     </node>
                     <node concept="2RRcyG" id="21KXiZCI73i" role="2OqNvi">
-                      <ref role="2RRcyH" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7v8" role="3MHsoP">
+                        <ref role="cht4Q" to="v54s:3f064wGFUBk" resolve="ExtensionDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3GX2aA" id="21KXiZCI73j" role="2OqNvi" />

@@ -202,6 +202,9 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
+        <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
+      </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2644386474302386080" name="jetbrains.mps.lang.smodel.structure.PropertyIdRefExpression" flags="nn" index="355D3s">
         <reference id="2644386474302386081" name="conceptDeclaration" index="355D3t" />
@@ -211,7 +214,7 @@
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
       <concept id="1182511038748" name="jetbrains.mps.lang.smodel.structure.Model_NodesIncludingImportedOperation" flags="nn" index="1j9C0f">
-        <reference id="1182511038750" name="concept" index="1j9C0d" />
+        <child id="6750920497477143623" name="conceptArgument" index="3MHPCF" />
       </concept>
       <concept id="6870613620390542976" name="jetbrains.mps.lang.smodel.structure.ConceptAliasOperation" flags="ng" index="3n3YKJ" />
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
@@ -959,7 +962,9 @@
             <node concept="2OqwBi" id="1wEcoXjJlD2" role="3clFbG">
               <node concept="1rpKSd" id="1wEcoXjJlD5" role="2Oq$k0" />
               <node concept="1j9C0f" id="1wEcoXjJlD4" role="2OqNvi">
-                <ref role="1j9C0d" to="1oap:7Mb2akaesr0" resolve="OldIconDeclaration" />
+                <node concept="chp4Y" id="5QK5AMJp7wP" role="3MHPCF">
+                  <ref role="cht4Q" to="1oap:7Mb2akaesr0" resolve="OldIconDeclaration" />
+                </node>
               </node>
             </node>
           </node>

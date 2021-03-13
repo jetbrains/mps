@@ -10,7 +10,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
   </languages>
@@ -481,7 +481,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7" />
       <concept id="1139184414036" name="jetbrains.mps.lang.smodel.structure.LinkList_AddNewChildOperation" flags="nn" index="WFELt">
@@ -4173,7 +4173,9 @@
                         <ref role="3cqZAo" node="6ysF3v1j_$8" resolve="loadedModel" />
                       </node>
                       <node concept="2RRcyG" id="6ysF3v1j_$N" role="2OqNvi">
-                        <ref role="2RRcyH" to="eynw:1nVd0kvs_CG" resolve="ConsoleRoot" />
+                        <node concept="chp4Y" id="5QK5AMJp7zR" role="3MHsoP">
+                          <ref role="cht4Q" to="eynw:1nVd0kvs_CG" resolve="ConsoleRoot" />
+                        </node>
                       </node>
                     </node>
                     <node concept="1v1jN8" id="6ysF3v1j_$O" role="2OqNvi" />
@@ -4194,7 +4196,9 @@
                             <node concept="2OqwBi" id="6ysF3v1j__0" role="2Oq$k0">
                               <node concept="2OqwBi" id="6ysF3v1j__1" role="2Oq$k0">
                                 <node concept="2RRcyG" id="6ysF3v1j__2" role="2OqNvi">
-                                  <ref role="2RRcyH" to="eynw:1nVd0kvs_CG" resolve="ConsoleRoot" />
+                                  <node concept="chp4Y" id="5QK5AMJp7zS" role="3MHsoP">
+                                    <ref role="cht4Q" to="eynw:1nVd0kvs_CG" resolve="ConsoleRoot" />
+                                  </node>
                                 </node>
                                 <node concept="37vLTw" id="p_BowyKWn0" role="2Oq$k0">
                                   <ref role="3cqZAo" node="6ysF3v1j_$8" resolve="loadedModel" />
@@ -8334,7 +8338,9 @@
                         <ref role="3cqZAo" node="1cuLJ89zKwh" resolve="loadedModel" />
                       </node>
                       <node concept="2RRcyG" id="1cuLJ89zKwW" role="2OqNvi">
-                        <ref role="2RRcyH" to="eynw:1cuLJ89vZtv" resolve="OutputConsoleRoot" />
+                        <node concept="chp4Y" id="5QK5AMJp7zT" role="3MHsoP">
+                          <ref role="cht4Q" to="eynw:1cuLJ89vZtv" resolve="OutputConsoleRoot" />
+                        </node>
                       </node>
                     </node>
                     <node concept="1v1jN8" id="1cuLJ89zKwX" role="2OqNvi" />
@@ -8362,7 +8368,9 @@
                           <node concept="2OqwBi" id="1cuLJ89zKx9" role="2Oq$k0">
                             <node concept="2OqwBi" id="1cuLJ89zKxa" role="2Oq$k0">
                               <node concept="2RRcyG" id="1cuLJ89zKxb" role="2OqNvi">
-                                <ref role="2RRcyH" to="eynw:1cuLJ89vZtv" resolve="OutputConsoleRoot" />
+                                <node concept="chp4Y" id="5QK5AMJp7zU" role="3MHsoP">
+                                  <ref role="cht4Q" to="eynw:1cuLJ89vZtv" resolve="OutputConsoleRoot" />
+                                </node>
                               </node>
                               <node concept="37vLTw" id="1cuLJ89zKxc" role="2Oq$k0">
                                 <ref role="3cqZAo" node="1cuLJ89zKwh" resolve="loadedModel" />

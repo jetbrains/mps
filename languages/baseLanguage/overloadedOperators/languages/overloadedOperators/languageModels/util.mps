@@ -141,13 +141,13 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
       <concept id="1176109685393" name="jetbrains.mps.lang.smodel.structure.Model_RootsIncludingImportedOperation" flags="nn" index="3lApI0">
-        <reference id="1176109685394" name="concept" index="3lApI3" />
+        <child id="6750920497477143611" name="conceptArgument" index="3MHPDn" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -247,7 +247,9 @@
             <node concept="2OqwBi" id="6oKb3MdZyLn" role="33vP2m">
               <node concept="2OqwBi" id="6oKb3MdZyLo" role="2Oq$k0">
                 <node concept="2RRcyG" id="6oKb3MdZyLp" role="2OqNvi">
-                  <ref role="2RRcyH" to="vgj4:6oKb3MdXML9" resolve="ContainerImport" />
+                  <node concept="chp4Y" id="5QK5AMJp7tK" role="3MHsoP">
+                    <ref role="cht4Q" to="vgj4:6oKb3MdXML9" resolve="ContainerImport" />
+                  </node>
                 </node>
                 <node concept="37vLTw" id="6oKb3MdZyLq" role="2Oq$k0">
                   <ref role="3cqZAo" node="6oKb3MdYOPT" resolve="myModel" />
@@ -271,7 +273,9 @@
                     <ref role="3cqZAo" node="6oKb3MdYOPT" resolve="myModel" />
                   </node>
                   <node concept="3lApI0" id="6oKb3MdZzKG" role="2OqNvi">
-                    <ref role="3lApI3" to="vgj4:qQXsgj0h87" resolve="OverloadedOperatorContainer" />
+                    <node concept="chp4Y" id="5QK5AMJp7tM" role="3MHPDn">
+                      <ref role="cht4Q" to="vgj4:qQXsgj0h87" resolve="OverloadedOperatorContainer" />
+                    </node>
                   </node>
                 </node>
               </node>

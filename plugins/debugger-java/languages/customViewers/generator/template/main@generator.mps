@@ -341,7 +341,7 @@
       <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC" />
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
@@ -1652,7 +1652,9 @@
           <node concept="2OqwBi" id="4zaiQxyIG07" role="2GsD0m">
             <node concept="1Q6Npb" id="4zaiQxyIG06" role="2Oq$k0" />
             <node concept="2RRcyG" id="4zaiQxyIG8O" role="2OqNvi">
-              <ref role="2RRcyH" to="tpee:fz12cDA" resolve="ClassConcept" />
+              <node concept="chp4Y" id="5QK5AMJp7y0" role="3MHsoP">
+                <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+              </node>
             </node>
           </node>
           <node concept="3clFbS" id="4zaiQxyIG05" role="2LFqv$">
@@ -2165,7 +2167,9 @@
           <node concept="2OqwBi" id="3ZlTsCJtLN5" role="2GsD0m">
             <node concept="1Q6Npb" id="3ZlTsCJtLMZ" role="2Oq$k0" />
             <node concept="2RRcyG" id="3ZlTsCJtLN9" role="2OqNvi">
-              <ref role="2RRcyH" to="kisg:_Ke0sqeZD0" resolve="HighLevelCustomViewer" />
+              <node concept="chp4Y" id="5QK5AMJp7y1" role="3MHsoP">
+                <ref role="cht4Q" to="kisg:_Ke0sqeZD0" resolve="HighLevelCustomViewer" />
+              </node>
             </node>
           </node>
           <node concept="3clFbS" id="3ZlTsCJtLMY" role="2LFqv$">
@@ -2344,7 +2348,9 @@
                           <node concept="1r8y6K" id="4XR52aBa25p" role="2OqNvi" />
                         </node>
                         <node concept="2RRcyG" id="4XR52aBa25q" role="2OqNvi">
-                          <ref role="2RRcyH" to="kisg:_Ke0sqeZD0" resolve="HighLevelCustomViewer" />
+                          <node concept="chp4Y" id="5QK5AMJp7y2" role="3MHsoP">
+                            <ref role="cht4Q" to="kisg:_Ke0sqeZD0" resolve="HighLevelCustomViewer" />
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -2470,7 +2476,9 @@
                   <node concept="1r8y6K" id="C8hbBbvCAJ" role="2OqNvi" />
                 </node>
                 <node concept="2RRcyG" id="C8hbBbvCAK" role="2OqNvi">
-                  <ref role="2RRcyH" to="kisg:_Ke0sqeZD0" resolve="HighLevelCustomViewer" />
+                  <node concept="chp4Y" id="5QK5AMJp7y3" role="3MHsoP">
+                    <ref role="cht4Q" to="kisg:_Ke0sqeZD0" resolve="HighLevelCustomViewer" />
+                  </node>
                 </node>
               </node>
               <node concept="3GX2aA" id="C8hbBbvCAL" role="2OqNvi" />

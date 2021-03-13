@@ -349,7 +349,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
         <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
@@ -3555,7 +3555,9 @@
               <ref role="3cqZAo" node="2UidVq779sy" resolve="strucutureModel" />
             </node>
             <node concept="2RRcyG" id="63Egu2isZFp" role="2OqNvi">
-              <ref role="2RRcyH" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
+              <node concept="chp4Y" id="5QK5AMJp7x1" role="3MHsoP">
+                <ref role="cht4Q" to="tpce:fKAxPRU" resolve="DataTypeDeclaration" />
+              </node>
             </node>
           </node>
           <node concept="3clFbS" id="63Egu2isXec" role="2LFqv$">
@@ -3803,7 +3805,9 @@
               <ref role="3cqZAo" node="2UidVq779sy" resolve="strucutureModel" />
             </node>
             <node concept="2RRcyG" id="2UidVq77cSL" role="2OqNvi">
-              <ref role="2RRcyH" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
+              <node concept="chp4Y" id="5QK5AMJp7x2" role="3MHsoP">
+                <ref role="cht4Q" to="tpce:fKAxPRV" resolve="EnumerationDataTypeDeclaration_Old" />
+              </node>
             </node>
           </node>
         </node>

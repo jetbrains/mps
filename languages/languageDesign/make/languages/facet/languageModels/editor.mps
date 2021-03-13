@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
@@ -437,7 +437,7 @@
         <child id="5168775467716640653" name="linkQualifier" index="1aIX9E" />
       </concept>
       <concept id="1182511038748" name="jetbrains.mps.lang.smodel.structure.Model_NodesIncludingImportedOperation" flags="nn" index="1j9C0f">
-        <reference id="1182511038750" name="concept" index="1j9C0d" />
+        <child id="6750920497477143623" name="conceptArgument" index="3MHPCF" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
@@ -2473,7 +2473,9 @@
             <node concept="2OqwBi" id="1wEcoXjJiEk" role="3clFbG">
               <node concept="1rpKSd" id="1wEcoXjJiEn" role="2Oq$k0" />
               <node concept="1j9C0f" id="1wEcoXjJiEm" role="2OqNvi">
-                <ref role="1j9C0d" to="vvvw:5$iCEGsO$Kj" resolve="FacetDeclaration" />
+                <node concept="chp4Y" id="5QK5AMJp7vB" role="3MHPCF">
+                  <ref role="cht4Q" to="vvvw:5$iCEGsO$Kj" resolve="FacetDeclaration" />
+                </node>
               </node>
             </node>
           </node>
@@ -2585,7 +2587,9 @@
                   <node concept="2OqwBi" id="1wEcoXjJiK9" role="2Oq$k0">
                     <node concept="1rpKSd" id="1wEcoXjJiKF" role="2Oq$k0" />
                     <node concept="1j9C0f" id="1wEcoXjJiKb" role="2OqNvi">
-                      <ref role="1j9C0d" to="vvvw:5$iCEGsO$KX" resolve="TargetDeclaration" />
+                      <node concept="chp4Y" id="5QK5AMJp7vC" role="3MHPCF">
+                        <ref role="cht4Q" to="vvvw:5$iCEGsO$KX" resolve="TargetDeclaration" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3zZkjj" id="1wEcoXjJiKc" role="2OqNvi">

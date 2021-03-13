@@ -142,7 +142,7 @@
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
       <concept id="1182511038748" name="jetbrains.mps.lang.smodel.structure.Model_NodesIncludingImportedOperation" flags="nn" index="1j9C0f">
-        <reference id="1182511038750" name="concept" index="1j9C0d" />
+        <child id="6750920497477143623" name="conceptArgument" index="3MHPCF" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -418,7 +418,9 @@
                   <node concept="I4A8Y" id="5Vvmn_Qki4B" role="2OqNvi" />
                 </node>
                 <node concept="1j9C0f" id="5Vvmn_Qki4C" role="2OqNvi">
-                  <ref role="1j9C0d" to="tpee:g7pOWCK" resolve="Classifier" />
+                  <node concept="chp4Y" id="5QK5AMJp7tn" role="3MHPCF">
+                    <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -483,7 +485,9 @@
                     <node concept="I4A8Y" id="5Vvmn_Qkiba" role="2OqNvi" />
                   </node>
                   <node concept="1j9C0f" id="5Vvmn_Qkibb" role="2OqNvi">
-                    <ref role="1j9C0d" to="tpee:f$Wx3kv" resolve="StaticFieldDeclaration" />
+                    <node concept="chp4Y" id="5QK5AMJp7to" role="3MHPCF">
+                      <ref role="cht4Q" to="tpee:f$Wx3kv" resolve="StaticFieldDeclaration" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3zZkjj" id="5Vvmn_Qkibc" role="2OqNvi">

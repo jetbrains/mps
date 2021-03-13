@@ -17,7 +17,7 @@
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
@@ -842,7 +842,7 @@
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
@@ -11188,7 +11188,9 @@
                                   <ref role="3cqZAo" node="6Feqspol7Aa" resolve="m" />
                                 </node>
                                 <node concept="2RRcyG" id="6Feqspol7Ai" role="2OqNvi">
-                                  <ref role="2RRcyH" to="tpck:gw2VY9q" resolve="BaseConcept" />
+                                  <node concept="chp4Y" id="5QK5AMJp7Og" role="3MHsoP">
+                                    <ref role="cht4Q" to="tpck:gw2VY9q" resolve="BaseConcept" />
+                                  </node>
                                 </node>
                               </node>
                             </node>
@@ -19610,7 +19612,9 @@
                           <node concept="1DcWWT" id="5oCb60sdSf5" role="3cqZAp">
                             <node concept="2OqwBi" id="5oCb60sdSfk" role="1DdaDG">
                               <node concept="2RRcyG" id="5oCb60sdSfq" role="2OqNvi">
-                                <ref role="2RRcyH" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                                <node concept="chp4Y" id="5QK5AMJp7Oh" role="3MHsoP">
+                                  <ref role="cht4Q" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+                                </node>
                               </node>
                               <node concept="37vLTw" id="3GM_nagTyxb" role="2Oq$k0">
                                 <ref role="3cqZAo" node="5oCb60sdS8Z" resolve="model" />

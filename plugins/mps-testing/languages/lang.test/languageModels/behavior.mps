@@ -7,7 +7,7 @@
     <use id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -335,7 +335,7 @@
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
-        <reference id="1171315804605" name="concept" index="2RRcyH" />
+        <child id="6750920497477046361" name="conceptArgument" index="3MHsoP" />
       </concept>
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
@@ -2194,7 +2194,9 @@
                 <ref role="3cqZAo" node="ThWTaQhG7Z" resolve="model" />
               </node>
               <node concept="2RRcyG" id="ThWTaQhG86" role="2OqNvi">
-                <ref role="2RRcyH" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                <node concept="chp4Y" id="5QK5AMJp7yF" role="3MHsoP">
+                  <ref role="cht4Q" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                </node>
               </node>
             </node>
           </node>
@@ -2262,7 +2264,9 @@
                 <ref role="3cqZAo" node="4qWC2JVrDYH" resolve="model" />
               </node>
               <node concept="2RRcyG" id="4qWC2JVrDZ3" role="2OqNvi">
-                <ref role="2RRcyH" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                <node concept="chp4Y" id="5QK5AMJp7yG" role="3MHsoP">
+                  <ref role="cht4Q" to="tp5g:4qWC2JVrBca" resolve="TestInfo" />
+                </node>
               </node>
             </node>
           </node>
