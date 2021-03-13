@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,13 @@ package jetbrains.mps.nodeEditor.cellMenu;
 import jetbrains.mps.actions.runtime.impl.ActionsUtil;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
@@ -97,7 +97,7 @@ public class SubstitutionTrial {
     final SNode rootCopy = CopyUtil.copy(Collections.singletonList(substParent.getContainingRoot()), mapping).get(0);
     typecheckingModel.addRootNode(rootCopy);
 
-    SNode target = SModelUtil_new.instantiateConceptDeclaration(SNodeUtil.concept_BaseConcept, null, null, true);
+    SNode target = SModelOperations.createNewNode(null, null, SNodeUtil.concept_BaseConcept);
 
     // install target at the location indicated by nodeLocation
     SNode substParentCopy = mapping.get(substParent);
@@ -139,7 +139,7 @@ public class SubstitutionTrial {
     if (parentCopy == null) {
       return null;
     }
-    SNode target = SModelUtil_new.instantiateConceptDeclaration(SNodeUtil.concept_BaseConcept, null, null, true);
+    SNode target = SModelOperations.createNewNode(null, null, SNodeUtil.concept_BaseConcept);
     replaceWithAnother(typedAncestorCopy, target);
 
     return new SubstitutionTrial(rootCopy, parentCopy, target, mapping);
@@ -205,7 +205,7 @@ public class SubstitutionTrial {
     @Override
     public boolean acceptType(SNode substType) {
       SNode substTypeCopy = CopyUtil.copy(substType, myMapping, true);
-      SNode typeAnn = SModelUtil_new.instantiateConceptDeclaration(SNodeUtil.concept_TypeAnnotated, null, null, true);
+      SNode typeAnn = SModelOperations.createNewNode(null, null, SNodeUtil.concept_TypeAnnotated);
       typeAnn.addChild(SNodeUtil.link_TypeAnnotated_annotation, substTypeCopy);
       SNode replacement = replaceWithAnother(myTarget, typeAnn);
       ErrorTracker errorTracker = createErrorTracker(myTypecheckingRoot, replacement);

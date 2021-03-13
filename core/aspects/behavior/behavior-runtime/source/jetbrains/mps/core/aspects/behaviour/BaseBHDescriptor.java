@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.core.aspects.behaviour.api.SAbstractType;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SParameter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
@@ -213,7 +214,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     if (!Objects.equals(constructor.getConcept(), getConcept())) {
       throw new IllegalArgumentException("Concept of the passed constructor and the concept of the descriptor must coincide");
     }
-    SNode node = SModelUtil_new.instantiateConceptDeclaration(myConcept, model, null, false);
+    SNode node = SModelOperations.createNewNode(model, null, myConcept);
     new ConstructionHandler(myAncestorCache, myConcept).initNode(node, constructor, getParametersArray(Collections.emptyList(), parameters));
     return node;
   }

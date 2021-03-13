@@ -27,13 +27,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 
 public class SModelUtil_new {
-  /**
-   * @deprecated use of this method is discouraged as it exposes {@code SNode} implementation class. There's {@code SModelOperations.createNewNode()} to use from generated code
-   */
-  @Deprecated
-  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(SNode conceptDeclaration, SModel model, boolean fullNodeStructure) {
-    return instantiateConceptDeclaration(MetaAdapterByDeclaration.getConcept(conceptDeclaration), model, null, fullNodeStructure);
-  }
 
   /**
    * @deprecated use of this method is discouraged as it exposes {@code SNode} implementation class. There's {@code SModelOperations.createNewNode()} to use from generated code
