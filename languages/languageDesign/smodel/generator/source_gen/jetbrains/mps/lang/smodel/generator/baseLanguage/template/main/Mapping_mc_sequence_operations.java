@@ -37,7 +37,7 @@ public class Mapping_mc_sequence_operations extends MapConfigBase implements Tem
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
-    return QueriesGenerated.mc_Condition_61(new TemplateQueryContext(getMappingNode(), generator));
+    return QueriesGenerated.mc_Condition_60(new TemplateQueryContext(getMappingNode(), generator));
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -49,7 +49,7 @@ public class Mapping_mc_sequence_operations extends MapConfigBase implements Tem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_61_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_60_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -61,7 +61,7 @@ public class Mapping_mc_sequence_operations extends MapConfigBase implements Tem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_61_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jil9eh_b0a0c0d0c0c4));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_60_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jil9eh_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jil9eh_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/3902354333654524123", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -71,7 +71,7 @@ public class Mapping_mc_sequence_operations extends MapConfigBase implements Tem
         {
           Collection<SNode> tlist4 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_61_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jil9eh_b0a0a0a1a4a2a2e));
+            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_60_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jil9eh_b0a0a0a1a4a2a2e));
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {

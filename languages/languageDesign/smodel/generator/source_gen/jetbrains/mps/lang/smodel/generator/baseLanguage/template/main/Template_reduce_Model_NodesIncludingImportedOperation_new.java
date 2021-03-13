@@ -45,7 +45,7 @@ public class Template_reduce_Model_NodesIncludingImportedOperation_new extends T
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_44_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_eqijg3_b0a0c0d0c0g));
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_43_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_eqijg3_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_eqijg3_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/5443371287119273267", context1);
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
@@ -54,10 +54,10 @@ public class Template_reduce_Model_NodesIncludingImportedOperation_new extends T
       }
       {
         Collection<SNode> tlist4 = Collections.emptyList();
-        if (QueriesGenerated.ifMacro_Condition_44_0(new IfMacroContext(context1, ifMacroRef_eqijg3_b0a0b0e0c0g))) {
+        if (QueriesGenerated.ifMacro_Condition_43_0(new IfMacroContext(context1, ifMacroRef_eqijg3_b0a0b0e0c0g))) {
           Collection<SNode> tlist5 = null;
           {
-            final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_44_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_eqijg3_b0a0a0a1a1a4a2a6));
+            final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_43_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_eqijg3_b0a0a0a1a1a4a2a6));
             if (switchInput5 == null) {
               tlist5 = Collections.emptyList();
             } else {

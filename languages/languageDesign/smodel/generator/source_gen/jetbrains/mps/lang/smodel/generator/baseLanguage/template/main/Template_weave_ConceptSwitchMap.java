@@ -46,7 +46,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
       tnode1.setProperty(myProperties[0], "true");
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_98_3(new PropertyMacroContext(context, "index", propertyMacro_d69nxd_c0a2a1a3a6)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_97_3(new PropertyMacroContext(context, "index", propertyMacro_d69nxd_c0a2a1a3a6)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -82,7 +82,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                   TemplateContext context5 = context3.subContext();
                   {
                     final List<SNode> tlist8 = new ArrayList<SNode>();
-                    final Iterable<SNode> loopList8 = QueriesGenerated.sourceNodesQuery_98_0(new SourceSubstituteMacroNodesContext(context5, loopMacroRef_d69nxd_b0a0a1a2a1a2a1a1a1a4a3a6));
+                    final Iterable<SNode> loopList8 = QueriesGenerated.sourceNodesQuery_97_0(new SourceSubstituteMacroNodesContext(context5, loopMacroRef_d69nxd_b0a0a1a2a1a2a1a1a1a4a3a6));
                     for (SNode itnode8 : loopList8) {
                       if (itnode8 == null) {
                         continue;
@@ -90,7 +90,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                       TemplateContext context6 = context5.subContext(itnode8);
                       Collection<SNode> tlist9 = null;
                       TemplateContext context7 = context6;
-                      context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_98_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
+                      context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_97_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
                       final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
                       {
                         environment.associate(tnode10, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~MetaIdFactory.conceptId(long,long,long)");
@@ -98,19 +98,19 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                         TemplateContext context8 = context7.subContext();
                         {
                           final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
-                          SNodeAccessUtil.setPropertyValue(tnode11, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_0(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a3a6a2a2a1a2a1a1a1a4a3a6)));
+                          SNodeAccessUtil.setPropertyValue(tnode11, myProperties[2], QueriesGenerated.propertyMacro_GetValue_97_0(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a3a6a2a2a1a2a1a1a1a4a3a6)));
                           tnode10.addChild(myAggregationLinks[3], tnode11);
                           // TODO validate child
                         }
                         {
                           final SNode tnode12 = environment.createOutputNode(myConcepts[7]);
-                          SNodeAccessUtil.setPropertyValue(tnode12, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_1(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a4a6a2a2a1a2a1a1a1a4a3a6)));
+                          SNodeAccessUtil.setPropertyValue(tnode12, myProperties[2], QueriesGenerated.propertyMacro_GetValue_97_1(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a4a6a2a2a1a2a1a1a1a4a3a6)));
                           tnode10.addChild(myAggregationLinks[3], tnode12);
                           // TODO validate child
                         }
                         {
                           final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
-                          SNodeAccessUtil.setPropertyValue(tnode13, myProperties[2], QueriesGenerated.propertyMacro_GetValue_98_2(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a5a6a2a2a1a2a1a1a1a4a3a6)));
+                          SNodeAccessUtil.setPropertyValue(tnode13, myProperties[2], QueriesGenerated.propertyMacro_GetValue_97_2(new PropertyMacroContext(context8, "0L", propertyMacro_d69nxd_c0a2a0a1a5a6a2a2a1a2a1a1a1a4a3a6)));
                           tnode10.addChild(myAggregationLinks[3], tnode13);
                           // TODO validate child
                         }

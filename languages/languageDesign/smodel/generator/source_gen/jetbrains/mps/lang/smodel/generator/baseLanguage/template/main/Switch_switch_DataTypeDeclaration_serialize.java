@@ -56,13 +56,13 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_136_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_135_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_136_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_6q87l7_b0a0d0c6));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_135_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_6q87l7_b0a0d0c6));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_6q87l7_b0a0d0c6, "tpl/r:00000000-0000-4000-0000-011c89590303/8822815258147332185", context);
       return tlist1;
     }
@@ -73,7 +73,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_136_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_135_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -92,7 +92,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist4 = null;
-              final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_136_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_6q87l7_b0a0c0b0b0c0c0c7));
+              final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_135_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_6q87l7_b0a0c0b0b0c0c0c7));
               tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_6q87l7_b0a0c0b0b0c0c0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/8822815258147349888", context2);
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[1], child5);
@@ -115,7 +115,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_136_2(new SourceSubstituteMacroNodeContext(context, copySrcMacro_6q87l7_b0a0d0b8));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_135_2(new SourceSubstituteMacroNodeContext(context, copySrcMacro_6q87l7_b0a0d0b8));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_6q87l7_b0a0d0b8, "tpl/r:00000000-0000-4000-0000-011c89590303/8822815258147411392", context);
       return tlist1;
     }
@@ -134,7 +134,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_136_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_6q87l7_b0a0c0d0c0b9));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_135_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_6q87l7_b0a0c0d0c0b9));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_6q87l7_b0a0c0d0c0b9, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377345086779", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[3], child3);
@@ -154,7 +154,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_136_4(new SourceSubstituteMacroNodeContext(context, switchMacroRef_6q87l7_b0a0a0a2a1k));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_135_4(new SourceSubstituteMacroNodeContext(context, switchMacroRef_6q87l7_b0a0a0a2a1k));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {

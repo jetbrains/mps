@@ -62,7 +62,7 @@ public class Switch_switch_toSAbstractConcept extends TemplateSwitchBase impleme
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_69_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_594pev_b0a0c0d0c0b6));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_68_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_594pev_b0a0c0d0c0b6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_594pev_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/6677504323281106683", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -81,7 +81,7 @@ public class Switch_switch_toSAbstractConcept extends TemplateSwitchBase impleme
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_69_1(new SourceSubstituteMacroNodeContext(context, callMacro_594pev_b0a0a2a1h));
+      SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_68_1(new SourceSubstituteMacroNodeContext(context, callMacro_594pev_b0a0a2a1h));
       TemplateContext context1 = context;
       context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {

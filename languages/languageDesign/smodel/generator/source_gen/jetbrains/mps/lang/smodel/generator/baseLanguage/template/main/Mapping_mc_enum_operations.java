@@ -46,7 +46,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
-    return QueriesGenerated.mc_Condition_48(new TemplateQueryContext(getMappingNode(), generator));
+    return QueriesGenerated.mc_Condition_47(new TemplateQueryContext(getMappingNode(), generator));
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -61,12 +61,12 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_48_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_3ivvp5_b0a0a0a2a1e));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_47_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_3ivvp5_b0a0a0a2a1e));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("enumDecl", ((SNode) QueriesGenerated.templateArgumentQuery_48_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553677178")))));
+          switchContext1 = switchContext1.withVariable("enumDecl", ((SNode) QueriesGenerated.templateArgumentQuery_47_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553677178")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode_3ivvp5_a0a0d0a1a2a1e, switchContext1);
           if (tlist1 == null) {
@@ -84,19 +84,19 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_48_1(new SourceSubstituteMacroNodeContext(context, switchMacroRef_3ivvp5_b0a0a0a2a2f));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_47_1(new SourceSubstituteMacroNodeContext(context, switchMacroRef_3ivvp5_b0a0a0a2a2f));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_48_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553712769")))));
+          switchContext1 = switchContext1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_47_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553712769")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode_3ivvp5_a0a0d0a1a2a2f, switchContext1);
           if (tlist1 == null) {
@@ -114,19 +114,19 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_48_2(new SourceSubstituteMacroNodeContext(context, switchMacroRef_3ivvp5_b0a0a0a2a2g));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_47_2(new SourceSubstituteMacroNodeContext(context, switchMacroRef_3ivvp5_b0a0a0a2a2g));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_48_2(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252945872")))));
+          switchContext1 = switchContext1.withVariable("operand", ((SNode) QueriesGenerated.templateArgumentQuery_47_2(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252945872")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode_3ivvp5_a0a0d0a1a2a2g, switchContext1);
           if (tlist1 == null) {
@@ -155,13 +155,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_2(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c8));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_47_3(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c8));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/651058060500594933", context);
       return tlist1;
     }
@@ -172,13 +172,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_3(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_3(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_4(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c9));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_47_4(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c9));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c9, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630351861", context);
       return tlist1;
     }
@@ -189,13 +189,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_4(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_4(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_5(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c01));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_47_5(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c01));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c01, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630434285", context);
       return tlist1;
     }
@@ -206,7 +206,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_5(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_5(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -216,17 +216,17 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           final List<SNode> tlist2 = new ArrayList<SNode>();
-          final SNode sourceNode2 = QueriesGenerated.sourceNodeQuery_48_7(new SourceSubstituteMacroNodeContext(context1, mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2l));
+          final SNode sourceNode2 = QueriesGenerated.sourceNodeQuery_47_7(new SourceSubstituteMacroNodeContext(context1, mapsrcMacroRef_3ivvp5_b0a0a1a1a2a2l));
           TemplateContext context2 = context1.subContext("EnumSwitchExpression_LVD", sourceNode2);
           if (sourceNode2 != null) {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
             {
               environment.nodeCopied(context2, tnode3, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209592708");
-              SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_48_0(new PropertyMacroContext(context2, "x", propertyMacro_3ivvp5_c0a2a1a1a3a1a2a2l)));
+              SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_47_0(new PropertyMacroContext(context2, "x", propertyMacro_3ivvp5_c0a2a1a1a3a1a2a2l)));
               TemplateContext context3 = context2.subContext();
               {
                 Collection<SNode> tlist4 = null;
-                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_48_6(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11));
+                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_47_6(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11));
                 tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_3ivvp5_b0a0c0d0b0d0b0c0c11, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209592703", context3);
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(myAggregationLinks[0], child5);
@@ -244,7 +244,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
       }
       Collection<SNode> tlist7 = null;
-      final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_48_8(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0f0c11));
+      final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_47_8(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0f0c11));
       tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_3ivvp5_b0a0f0c11, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209613169", context);
       Collection<SNode> tlist8 = TemplateUtil.asList(tnode1, tlist7);
       return tlist8;
@@ -256,13 +256,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_48_6(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_47_6(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_48_9(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c21));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_47_9(new SourceSubstituteMacroNodeContext(context, copySrcMacro_3ivvp5_b0a0d0c21));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_3ivvp5_b0a0d0c21, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993630520035", context);
       return tlist1;
     }
@@ -287,7 +287,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 TemplateContext context3 = context2.subContext();
                 {
                   Collection<SNode> tlist4 = null;
-                  final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_48_0(new SourceSubstituteMacroNodesContext(context3, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1n));
+                  final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_47_0(new SourceSubstituteMacroNodesContext(context3, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1n));
                   tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro_3ivvp5_b0a0a1a1a1a1a1a1a2a1n, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993632160152", context3);
                   for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                     tnode3.addChild(myAggregationLinks[2], child5);
@@ -296,7 +296,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist6 = Collections.emptyList();
-                  if (QueriesGenerated.ifMacro_Condition_48_0(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0c0b0b0b0b0c0b31))) {
+                  if (QueriesGenerated.ifMacro_Condition_47_0(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0c0b0b0b0b0c0b31))) {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
                     {
                       TemplateContext context4 = context3.subContext();
@@ -306,7 +306,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                           TemplateContext context5 = context4.subContext();
                           {
                             Collection<SNode> tlist9 = null;
-                            final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_48_10(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b31));
+                            final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_47_10(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b31));
                             tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993633258441", context5);
                             for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
                               tnode8.addChild(myAggregationLinks[3], child10);
@@ -315,7 +315,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                           }
                           {
                             Collection<SNode> tlist11 = null;
-                            final SNode copySrcInput11 = QueriesGenerated.sourceNodeQuery_48_11(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b31));
+                            final SNode copySrcInput11 = QueriesGenerated.sourceNodeQuery_47_11(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b31));
                             tlist11 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput11), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/2453008993633284915", context5);
                             for (SNode child12 : TemplateUtil.asNotNull(tlist11)) {
                               tnode8.addChild(myAggregationLinks[4], child12);
@@ -336,7 +336,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist14 = Collections.emptyList();
-                  if (QueriesGenerated.ifMacro_Condition_48_1(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0d0b0b0b0b0c0b31))) {
+                  if (QueriesGenerated.ifMacro_Condition_47_1(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0d0b0b0b0b0c0b31))) {
                     final SNode tnode15 = environment.createOutputNode(myConcepts[5]);
                     {
                       TemplateContext context6 = context3.subContext();
@@ -349,7 +349,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                             environment.resolve(new RefResolver(tnode17, myAssociationLinks[0], context7, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209816857"), "x") {
                               @Override
                               public Object resolve() {
-                                return QueriesGenerated.referenceMacro_GetReferent_48_0(createQueryContext());
+                                return QueriesGenerated.referenceMacro_GetReferent_47_0(createQueryContext());
                               }
                             });
                             tnode16.addChild(myAggregationLinks[3], tnode17);
@@ -357,7 +357,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                           }
                           {
                             Collection<SNode> tlist18 = null;
-                            final SNode copySrcInput18 = QueriesGenerated.sourceNodeQuery_48_12(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b31));
+                            final SNode copySrcInput18 = QueriesGenerated.sourceNodeQuery_47_12(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b31));
                             tlist18 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput18), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209809657", context7);
                             for (SNode child19 : TemplateUtil.asNotNull(tlist18)) {
                               tnode16.addChild(myAggregationLinks[4], child19);
@@ -378,7 +378,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist21 = Collections.emptyList();
-                  if (QueriesGenerated.ifMacro_Condition_48_2(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0e0b0b0b0b0c0b31))) {
+                  if (QueriesGenerated.ifMacro_Condition_47_2(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0e0b0b0b0b0c0b31))) {
                     final SNode tnode22 = environment.createOutputNode(myConcepts[8]);
                     tlist21 = TemplateUtil.singletonList(tnode22);
                   }
@@ -389,13 +389,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                 }
                 {
                   Collection<SNode> tlist24 = Collections.emptyList();
-                  if (QueriesGenerated.ifMacro_Condition_48_3(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0f0b0b0b0b0c0b31))) {
+                  if (QueriesGenerated.ifMacro_Condition_47_3(new IfMacroContext(context3, ifMacroRef_3ivvp5_b0a0b0f0b0b0b0b0c0b31))) {
                     final SNode tnode25 = environment.createOutputNode(myConcepts[9]);
                     {
                       TemplateContext context8 = context3.subContext();
                       {
                         Collection<SNode> tlist26 = null;
-                        final SNode copySrcInput26 = QueriesGenerated.sourceNodeQuery_48_13(new SourceSubstituteMacroNodeContext(context8, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b31));
+                        final SNode copySrcInput26 = QueriesGenerated.sourceNodeQuery_47_13(new SourceSubstituteMacroNodeContext(context8, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b31));
                         tlist26 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput26), copySrcMacro_3ivvp5_b0a0c0b0b0b0f0b0b0b0b0c0b31, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948207418472", context8);
                         for (SNode child27 : TemplateUtil.asNotNull(tlist26)) {
                           tnode25.addChild(myAggregationLinks[6], child27);
@@ -434,13 +434,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_48_4(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0b0c0b41))) {
+          if (QueriesGenerated.ifMacro_Condition_47_4(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0b0c0b41))) {
             final SNode tnode3 = environment.createOutputNode(myConcepts[5]);
             {
               TemplateContext context2 = context1.subContext();
               {
                 Collection<SNode> tlist4 = null;
-                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_48_14(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b41));
+                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_47_14(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b41));
                 tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/651058060500903646", context2);
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(myAggregationLinks[5], child5);
@@ -457,7 +457,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist7 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_48_5(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0c0c0b41))) {
+          if (QueriesGenerated.ifMacro_Condition_47_5(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0c0c0b41))) {
             final SNode tnode8 = environment.createOutputNode(myConcepts[5]);
             {
               TemplateContext context3 = context1.subContext();
@@ -467,7 +467,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   TemplateContext context4 = context3.subContext();
                   {
                     Collection<SNode> tlist10 = null;
-                    final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_48_15(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b41));
+                    final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_47_15(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b41));
                     tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro_3ivvp5_b0a0c0b0b0b0b0b0c0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952010", context4);
                     for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
                       tnode9.addChild(myAggregationLinks[3], child11);
@@ -476,7 +476,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   }
                   {
                     Collection<SNode> tlist12 = null;
-                    final SNode copySrcInput12 = QueriesGenerated.sourceNodeQuery_48_16(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b41));
+                    final SNode copySrcInput12 = QueriesGenerated.sourceNodeQuery_47_16(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b41));
                     tlist12 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput12), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0c0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952026", context4);
                     for (SNode child13 : TemplateUtil.asNotNull(tlist12)) {
                       tnode9.addChild(myAggregationLinks[4], child13);
@@ -497,7 +497,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist15 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_48_6(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0d0c0b41))) {
+          if (QueriesGenerated.ifMacro_Condition_47_6(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0d0c0b41))) {
             final SNode tnode16 = environment.createOutputNode(myConcepts[5]);
             {
               TemplateContext context5 = context1.subContext();
@@ -510,7 +510,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                     environment.resolve(new RefResolver(tnode18, myAssociationLinks[0], context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4981982948209952057"), "x") {
                       @Override
                       public Object resolve() {
-                        return QueriesGenerated.referenceMacro_GetReferent_48_1(createQueryContext());
+                        return QueriesGenerated.referenceMacro_GetReferent_47_1(createQueryContext());
                       }
                     });
                     tnode17.addChild(myAggregationLinks[3], tnode18);
@@ -518,7 +518,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
                   }
                   {
                     Collection<SNode> tlist19 = null;
-                    final SNode copySrcInput19 = QueriesGenerated.sourceNodeQuery_48_17(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b41));
+                    final SNode copySrcInput19 = QueriesGenerated.sourceNodeQuery_47_17(new SourceSubstituteMacroNodeContext(context6, copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b41));
                     tlist19 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput19), copySrcMacro_3ivvp5_b0a0c0c0b0b0b0b0d0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948209952073", context6);
                     for (SNode child20 : TemplateUtil.asNotNull(tlist19)) {
                       tnode17.addChild(myAggregationLinks[4], child20);
@@ -539,7 +539,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist22 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_48_7(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0e0c0b41))) {
+          if (QueriesGenerated.ifMacro_Condition_47_7(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0e0c0b41))) {
             final SNode tnode23 = environment.createOutputNode(myConcepts[8]);
             tlist22 = TemplateUtil.singletonList(tnode23);
           }
@@ -550,13 +550,13 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
         }
         {
           Collection<SNode> tlist25 = Collections.emptyList();
-          if (QueriesGenerated.ifMacro_Condition_48_8(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0f0c0b41))) {
+          if (QueriesGenerated.ifMacro_Condition_47_8(new IfMacroContext(context1, ifMacroRef_3ivvp5_b0a0b0f0c0b41))) {
             final SNode tnode26 = environment.createOutputNode(myConcepts[9]);
             {
               TemplateContext context7 = context1.subContext();
               {
                 Collection<SNode> tlist27 = null;
-                final SNode copySrcInput27 = QueriesGenerated.sourceNodeQuery_48_18(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b41));
+                final SNode copySrcInput27 = QueriesGenerated.sourceNodeQuery_47_18(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b41));
                 tlist27 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput27), copySrcMacro_3ivvp5_b0a0c0b0b0b0f0c0b41, "tpl/r:00000000-0000-4000-0000-011c89590303/4981982948207669650", context7);
                 for (SNode child28 : TemplateUtil.asNotNull(tlist27)) {
                   tnode26.addChild(myAggregationLinks[6], child28);

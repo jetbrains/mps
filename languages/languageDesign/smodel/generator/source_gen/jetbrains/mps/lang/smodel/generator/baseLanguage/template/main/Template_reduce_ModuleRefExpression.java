@@ -38,7 +38,7 @@ public class Template_reduce_ModuleRefExpression extends TemplateDeclarationBase
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     {
-      final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_89_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_vqpu91_b0a0a0a2a6));
+      final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_88_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_vqpu91_b0a0a0a2a6));
       if (switchInput1 == null) {
         environment.nullInputSwitch(templateSwitchNode_vqpu91_a0a0c0a1a2a6);
         tlist1 = Collections.emptyList();

@@ -39,7 +39,7 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_115_0(new IfMacroContext(context, ifMacroRef_um8mvo_b0a0c0g))) {
+    if (QueriesGenerated.ifMacro_Condition_114_0(new IfMacroContext(context, ifMacroRef_um8mvo_b0a0c0g))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel.generator.smodelAdapter(MPS.Core/)", "~SNodeOperations.asSConcept(org.jetbrains.mps.openapi.model.SNode)");
@@ -47,7 +47,7 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist3 = null;
-          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_115_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_um8mvo_b0a0c0d0b0c0g));
+          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_114_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_um8mvo_b0a0c0d0b0c0g));
           tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_um8mvo_b0a0c0d0b0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892231738", context1);
           for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
             tnode2.addChild(myAggregationLinks[0], child4);
@@ -58,7 +58,7 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
       Collection<SNode> tlist5 = null;
-      final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_115_1(new SourceSubstituteMacroNodeContext(context, copySrcMacro_um8mvo_b0a0c0a2a6));
+      final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_114_1(new SourceSubstituteMacroNodeContext(context, copySrcMacro_um8mvo_b0a0c0a2a6));
       tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_um8mvo_b0a0c0a2a6, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892231756", context);
       tlist1 = tlist5;
     }

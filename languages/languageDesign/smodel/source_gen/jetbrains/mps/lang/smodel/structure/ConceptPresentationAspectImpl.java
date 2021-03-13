@@ -891,8 +891,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_Model_NodesIncludingImportedOperation;
       case LanguageConceptSwitch.Model_NodesOperation:
         if (props_Model_NodesOperation == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b8590897L);
-          cpb.deprecateAssociation(0x110b8590898L, "concept");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("nodes");
           props_Model_NodesOperation = cpb.create();
         }

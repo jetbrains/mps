@@ -43,25 +43,25 @@ public class Template_reduce_EnumerationDeclaration_SEnumeration extends Templat
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_144_0(new PropertyMacroContext(context1, "0l", propertyMacro_sj3nza_c0a2a0a1a3a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_143_0(new PropertyMacroContext(context1, "0l", propertyMacro_sj3nza_c0a2a0a1a3a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode2);
         // TODO validate child
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_144_1(new PropertyMacroContext(context1, "0l", propertyMacro_sj3nza_c0a2a0a1a4a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_143_1(new PropertyMacroContext(context1, "0l", propertyMacro_sj3nza_c0a2a0a1a4a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode3);
         // TODO validate child
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_144_2(new PropertyMacroContext(context1, "0l", propertyMacro_sj3nza_c0a2a0a1a5a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_143_2(new PropertyMacroContext(context1, "0l", propertyMacro_sj3nza_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode4);
         // TODO validate child
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_144_3(new PropertyMacroContext(context1, "fqName", propertyMacro_sj3nza_c0a2a0a1a6a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_143_3(new PropertyMacroContext(context1, "fqName", propertyMacro_sj3nza_c0a2a0a1a6a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode5);
         // TODO validate child
       }

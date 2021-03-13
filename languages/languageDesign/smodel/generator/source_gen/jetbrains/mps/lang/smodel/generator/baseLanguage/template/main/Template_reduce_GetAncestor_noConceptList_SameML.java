@@ -46,7 +46,7 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_53_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_tbyes_b0a0c0d0c0g));
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_52_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_tbyes_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_tbyes_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1627366655853340208", context1);
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
@@ -63,13 +63,13 @@ public class Template_reduce_GetAncestor_noConceptList_SameML extends TemplateDe
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_53_0(new PropertyMacroContext(context1, null, propertyMacro_tbyes_c0a2a0a1a5a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_52_0(new PropertyMacroContext(context1, null, propertyMacro_tbyes_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child
       }
       {
         final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_53_1(new PropertyMacroContext(context1, null, propertyMacro_tbyes_c0a2a0a1a6a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode7, myProperties[0], QueriesGenerated.propertyMacro_GetValue_52_1(new PropertyMacroContext(context1, null, propertyMacro_tbyes_c0a2a0a1a6a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode7);
         // TODO validate child
       }

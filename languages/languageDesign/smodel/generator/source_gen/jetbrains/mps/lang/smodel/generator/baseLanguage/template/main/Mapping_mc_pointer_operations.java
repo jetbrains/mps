@@ -44,19 +44,19 @@ public class Mapping_mc_pointer_operations extends MapConfigBase implements Temp
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_128_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_127_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       {
-        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_128_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_bhg3pv_b0a0a0a2a2d));
+        final SNode switchInput1 = QueriesGenerated.sourceNodeQuery_127_0(new SourceSubstituteMacroNodeContext(context, switchMacroRef_bhg3pv_b0a0a0a2a2d));
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
           TemplateContext switchContext1 = context;
-          switchContext1 = switchContext1.withVariable("pointer", ((SNode) QueriesGenerated.templateArgumentQuery_128_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485823567")))));
+          switchContext1 = switchContext1.withVariable("pointer", ((SNode) QueriesGenerated.templateArgumentQuery_127_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4065387505485823567")))));
           switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode_bhg3pv_a0a0d0a1a2a2d, switchContext1);
           if (tlist1 == null) {
@@ -74,7 +74,7 @@ public class Mapping_mc_pointer_operations extends MapConfigBase implements Temp
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_128_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_127_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -86,7 +86,7 @@ public class Mapping_mc_pointer_operations extends MapConfigBase implements Temp
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_128_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_bhg3pv_b0a0c0d0c0c4));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_127_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_bhg3pv_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_bhg3pv_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/465010144943864814", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);

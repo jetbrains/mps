@@ -64,7 +64,7 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_47_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_thr6xb_b0a0c0d0c0b6));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_46_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_thr6xb_b0a0c0d0c0b6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_thr6xb_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/1206660454911", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -83,7 +83,7 @@ public class Switch_switch_toConceptNameStringExpr extends TemplateSwitchBase im
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[1]);
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_47_0(new PropertyMacroContext(context, "concept name", propertyMacro_thr6xb_c0a2a0a2a1h)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_46_0(new PropertyMacroContext(context, "concept name", propertyMacro_thr6xb_c0a2a0a2a1h)));
       return TemplateUtil.singletonList(tnode1);
     }
   }

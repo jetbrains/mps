@@ -37,7 +37,7 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
-    return QueriesGenerated.mc_Condition_59(new TemplateQueryContext(getMappingNode(), generator));
+    return QueriesGenerated.mc_Condition_58(new TemplateQueryContext(getMappingNode(), generator));
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -49,13 +49,13 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_59_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_58_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_59_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_ihzv2u_b0a0d0c4));
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_58_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_ihzv2u_b0a0d0c4));
       tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_ihzv2u_b0a0d0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/5850694276437457243", context);
       return tlist1;
     }
@@ -66,13 +66,13 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_59_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_58_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = Collections.emptyList();
-      if (QueriesGenerated.ifMacro_Condition_59_0(new IfMacroContext(context, ifMacroRef_ihzv2u_b0a0c0c5))) {
+      if (QueriesGenerated.ifMacro_Condition_58_0(new IfMacroContext(context, ifMacroRef_ihzv2u_b0a0c0c5))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         {
           TemplateContext context1 = context.subContext();
@@ -82,7 +82,7 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
               TemplateContext context2 = context1.subContext();
               {
                 Collection<SNode> tlist4 = null;
-                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_59_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5));
+                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_58_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5));
                 tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/5616724231236702708", context2);
                 for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                   tnode3.addChild(myAggregationLinks[0], child5);

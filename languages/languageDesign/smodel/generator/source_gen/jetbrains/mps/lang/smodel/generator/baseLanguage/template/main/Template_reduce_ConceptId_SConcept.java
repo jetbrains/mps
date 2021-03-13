@@ -48,7 +48,7 @@ public class Template_reduce_ConceptId_SConcept extends TemplateDeclarationBase 
       {
         Collection<SNode> tlist2 = null;
         {
-          final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_94_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_r2ji7m_b0a0a0a1a3a2a6));
+          final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_93_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_r2ji7m_b0a0a0a1a3a2a6));
           if (switchInput2 == null) {
             environment.nullInputSwitch(templateSwitchNode_r2ji7m_a0a0c0a1a1a3a2a6);
             tlist2 = Collections.emptyList();
@@ -69,13 +69,13 @@ public class Template_reduce_ConceptId_SConcept extends TemplateDeclarationBase 
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_94_0(new PropertyMacroContext(context1, "0L", propertyMacro_r2ji7m_c0a2a0a1a4a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_93_0(new PropertyMacroContext(context1, "0L", propertyMacro_r2ji7m_c0a2a0a1a4a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode5);
         // TODO validate child
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
-        SNodeAccessUtil.setPropertyValue(tnode6, myProperties[1], QueriesGenerated.propertyMacro_GetValue_94_1(new PropertyMacroContext(context1, "", propertyMacro_r2ji7m_c0a2a0a1a5a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode6, myProperties[1], QueriesGenerated.propertyMacro_GetValue_93_1(new PropertyMacroContext(context1, "", propertyMacro_r2ji7m_c0a2a0a1a5a2a6)));
         tnode1.addChild(myAggregationLinks[0], tnode6);
         // TODO validate child
       }

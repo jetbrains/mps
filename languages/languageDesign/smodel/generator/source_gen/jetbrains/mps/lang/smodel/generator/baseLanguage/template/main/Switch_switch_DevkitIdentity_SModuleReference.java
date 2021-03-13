@@ -76,7 +76,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
             TemplateContext context2 = context1.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_127_0(new PropertyMacroContext(context2, "", propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h)));
+              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_126_0(new PropertyMacroContext(context2, "", propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h)));
               tnode3.addChild(myAggregationLinks[1], tnode4);
               // TODO validate child
             }

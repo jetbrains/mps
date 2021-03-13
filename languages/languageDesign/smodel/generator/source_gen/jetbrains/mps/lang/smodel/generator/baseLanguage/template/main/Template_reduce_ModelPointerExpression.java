@@ -53,7 +53,7 @@ public class Template_reduce_ModelPointerExpression extends TemplateDeclarationB
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_123_0(new PropertyMacroContext(context2, "", propertyMacro_fe9un4_c0a2a0a1a2a1a2a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_122_0(new PropertyMacroContext(context2, "", propertyMacro_fe9un4_c0a2a0a1a2a1a2a2a6)));
             tnode3.addChild(myAggregationLinks[1], tnode4);
             // TODO validate child
           }

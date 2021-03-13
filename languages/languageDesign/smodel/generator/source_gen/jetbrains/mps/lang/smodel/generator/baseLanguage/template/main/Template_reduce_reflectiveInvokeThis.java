@@ -50,7 +50,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_108_0(new SourceSubstituteMacroNodeContext(context1, callMacro_f0s0cy_b0a0a1a3a2a6));
+        SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_107_0(new SourceSubstituteMacroNodeContext(context1, callMacro_f0s0cy_b0a0a1a3a2a6));
         TemplateContext context2 = context1;
         context2 = context2.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
@@ -68,7 +68,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
         environment.resolve(new RefResolver(tnode4, myAssociationLinks[2], context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892251396"), "BaseConcept") {
           @Override
           public Object resolve() {
-            return QueriesGenerated.referenceMacro_GetReferent_108_0(createQueryContext());
+            return QueriesGenerated.referenceMacro_GetReferent_107_0(createQueryContext());
           }
         });
         tnode1.addChild(myAggregationLinks[0], tnode4);
@@ -82,18 +82,18 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
           TemplateContext context3 = context1.subContext();
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
-            SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_108_0(new PropertyMacroContext(context3, "foo", propertyMacro_f0s0cy_c0a2a0a1a3a1a5a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_107_0(new PropertyMacroContext(context3, "foo", propertyMacro_f0s0cy_c0a2a0a1a3a1a5a2a6)));
             tnode5.addChild(myAggregationLinks[0], tnode6);
             // TODO validate child
           }
           {
             Collection<SNode> tlist7 = Collections.emptyList();
-            if (QueriesGenerated.ifMacro_Condition_108_0(new IfMacroContext(context3, ifMacroRef_f0s0cy_b0a0b0e0b0f0c0g))) {
+            if (QueriesGenerated.ifMacro_Condition_107_0(new IfMacroContext(context3, ifMacroRef_f0s0cy_b0a0b0e0b0f0c0g))) {
               final SNode tnode8 = environment.createOutputNode(myConcepts[1]);
               environment.resolve(new RefResolver(tnode8, myAssociationLinks[2], context3, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236464"), "BaseConcept") {
                 @Override
                 public Object resolve() {
-                  return QueriesGenerated.referenceMacro_GetReferent_108_1(createQueryContext());
+                  return QueriesGenerated.referenceMacro_GetReferent_107_1(createQueryContext());
                 }
               });
               tlist7 = TemplateUtil.singletonList(tnode8);
@@ -108,7 +108,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
           }
           {
             final SNode tnode11 = environment.createOutputNode(myConcepts[2]);
-            SNodeAccessUtil.setPropertyValue(tnode11, myProperties[0], QueriesGenerated.propertyMacro_GetValue_108_1(new PropertyMacroContext(context3, "1234567890", propertyMacro_f0s0cy_c0a2a0a1a5a1a5a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode11, myProperties[0], QueriesGenerated.propertyMacro_GetValue_107_1(new PropertyMacroContext(context3, "1234567890", propertyMacro_f0s0cy_c0a2a0a1a5a1a5a2a6)));
             tnode5.addChild(myAggregationLinks[0], tnode11);
             // TODO validate child
           }
@@ -119,7 +119,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
       {
         Collection<SNode> tlist12 = null;
         TemplateContext context4 = context1;
-        context4 = context4.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_108_0(new TemplateArgumentContext(context4, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236517")))));
+        context4 = context4.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_107_0(new TemplateArgumentContext(context4, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236517")))));
         tlist12 = environment.callSite(new Template_reduce_Parameters(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236516")).apply(context4);
         for (SNode child13 : TemplateUtil.asNotNull(tlist12)) {
           tnode1.addChild(myAggregationLinks[0], child13);

@@ -779,15 +779,6 @@
       <property role="IQ2ns" value="1758937410080001570" />
       <ref role="20lvS9" node="hzMxujR" resolve="IRefConceptArg" />
     </node>
-    <node concept="1TJgyj" id="h2Smgyo" role="1TKVEi">
-      <property role="20kJfa" value="concept" />
-      <property role="IQ2ns" value="1171323947160" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-      <node concept="asaX9" id="1xD045m1Wye" role="lGtFl">
-        <property role="YLPcu" value="3.3" />
-        <property role="YLQ7P" value="use conceptArgument" />
-      </node>
-    </node>
   </node>
   <node concept="1TIwiD" id="h2Xjw1B">
     <property role="R5$K7" value="false" />

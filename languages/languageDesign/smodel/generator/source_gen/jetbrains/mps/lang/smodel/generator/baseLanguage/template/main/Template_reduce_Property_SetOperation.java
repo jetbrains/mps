@@ -44,13 +44,13 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
       environment.resolve(new RefResolver(tnode1, myAssociationLinks[1], context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5162844862476901056"), "set") {
         @Override
         public Object resolve() {
-          return QueriesGenerated.referenceMacro_GetReferent_134_0(createQueryContext());
+          return QueriesGenerated.referenceMacro_GetReferent_133_0(createQueryContext());
         }
       });
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_134_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jdfal9_b0a0c0d0c0g));
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_133_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jdfal9_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jdfal9_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3253136186226269311", context1);
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);
@@ -59,7 +59,7 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
       }
       {
         Collection<SNode> tlist4 = null;
-        SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_134_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jdfal9_b0a0a1a4a2a6));
+        SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_133_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jdfal9_b0a0a1a4a2a6));
         TemplateContext context2 = context1;
         context2 = context2.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
@@ -74,7 +74,7 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
       }
       {
         Collection<SNode> tlist6 = null;
-        final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_134_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jdfal9_b0a0c0f0c0g));
+        final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_133_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jdfal9_b0a0c0f0c0g));
         tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_jdfal9_b0a0c0f0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3253136186226269343", context1);
         for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
           tnode1.addChild(myAggregationLinks[0], child7);

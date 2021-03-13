@@ -91,7 +91,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_0(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1h));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_0(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1h));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -129,7 +129,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_1(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1i));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_1(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1i));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -145,7 +145,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist5 = null;
               {
-                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_145_2(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1i));
+                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_144_2(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1i));
                 if (switchInput5 == null) {
                   tlist5 = Collections.emptyList();
                 } else {
@@ -188,7 +188,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_3(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1j));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_3(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1j));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -204,7 +204,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist5 = null;
               {
-                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_145_4(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1j));
+                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_144_4(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1j));
                 if (switchInput5 == null) {
                   tlist5 = Collections.emptyList();
                 } else {
@@ -247,7 +247,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_5(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1k));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_5(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1k));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -263,7 +263,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist5 = null;
               {
-                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_145_6(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1k));
+                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_144_6(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1k));
                 if (switchInput5 == null) {
                   tlist5 = Collections.emptyList();
                 } else {

@@ -36,35 +36,35 @@ public class Template_reduce_EnumDeclaration_indentityValueSequence extends Temp
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_119_0(new PropertyMacroContext(context, "1L", propertyMacro_snxsfp_c0a2a0a2a6)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_118_0(new PropertyMacroContext(context, "1L", propertyMacro_snxsfp_c0a2a0a2a6)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_119_1(new PropertyMacroContext(context, "2L", propertyMacro_snxsfp_c0a2a0a2a7)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_118_1(new PropertyMacroContext(context, "2L", propertyMacro_snxsfp_c0a2a0a2a7)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[1]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_119_2(new PropertyMacroContext(context, "language", propertyMacro_snxsfp_c0a2a0a2a8)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_118_2(new PropertyMacroContext(context, "language", propertyMacro_snxsfp_c0a2a0a2a8)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
   protected FragmentResult applyPart3(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_119_3(new PropertyMacroContext(context, "3L", propertyMacro_snxsfp_c0a2a0a2a9)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_118_3(new PropertyMacroContext(context, "3L", propertyMacro_snxsfp_c0a2a0a2a9)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
   protected FragmentResult applyPart4(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[1]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_119_4(new PropertyMacroContext(context, "enum", propertyMacro_snxsfp_c0a2a0a2a01)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_118_4(new PropertyMacroContext(context, "enum", propertyMacro_snxsfp_c0a2a0a2a01)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }

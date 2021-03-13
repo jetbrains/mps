@@ -44,7 +44,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_46_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_45_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -56,7 +56,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_46_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0d0c0c3));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_45_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0d0c0c3));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_b1hjv9_b0a0c0d0c0c3, "tpl/r:00000000-0000-4000-0000-011c89590303/5834820604013333945", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -65,7 +65,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
         }
         {
           Collection<SNode> tlist4 = null;
-          SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_46_1(new SourceSubstituteMacroNodeContext(context1, callMacro_b1hjv9_b0a0a1a4a2a2d));
+          SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_45_1(new SourceSubstituteMacroNodeContext(context1, callMacro_b1hjv9_b0a0a1a4a2a2d));
           TemplateContext context2 = context1;
           context2 = context2.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
@@ -80,7 +80,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
         }
         {
           Collection<SNode> tlist6 = null;
-          final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_46_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0f0c0c3));
+          final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_45_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0f0c0c3));
           tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_b1hjv9_b0a0c0f0c0c3, "tpl/r:00000000-0000-4000-0000-011c89590303/5834820604013334004", context1);
           for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
             tnode1.addChild(myAggregationLinks[0], child7);
@@ -97,7 +97,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_46_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_45_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -109,7 +109,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_46_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0d0c0c4));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_45_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_b1hjv9_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/8389748773580306850", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -119,7 +119,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
         {
           Collection<SNode> tlist4 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_46_4(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_b1hjv9_b0a0a0a1a4a2a2e));
+            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_45_4(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_b1hjv9_b0a0a0a1a4a2a2e));
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
@@ -140,7 +140,7 @@ public class Mapping_mc_assignmentStatement extends MapConfigBase implements Tem
         }
         {
           Collection<SNode> tlist7 = null;
-          final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_46_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0f0c0c4));
+          final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_45_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_b1hjv9_b0a0c0f0c0c4));
           tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_b1hjv9_b0a0c0f0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/8389748773580306872", context1);
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(myAggregationLinks[0], child8);

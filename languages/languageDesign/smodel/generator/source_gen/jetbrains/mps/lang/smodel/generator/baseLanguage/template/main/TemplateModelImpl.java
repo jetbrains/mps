@@ -108,11 +108,8 @@ public class TemplateModelImpl extends TemplateModelBase {
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171323120109"))) {
       return new Template_reduce_Model_RootsOperation_new();
     }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171324405763"))) {
-      return new Template_reduce_Model_NodesOperation_old();
-    }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171324442827"))) {
-      return new Template_reduce_Model_NodesOperation_new();
+      return new Template_reduce_Model_NodesOperation();
     }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171415812313"))) {
       return new Template_reduce_GetAncestor_noConceptList();

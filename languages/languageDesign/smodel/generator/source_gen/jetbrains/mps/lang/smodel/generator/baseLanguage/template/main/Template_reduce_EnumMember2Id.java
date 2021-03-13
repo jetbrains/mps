@@ -36,7 +36,7 @@ public class Template_reduce_EnumMember2Id extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_140_0(new PropertyMacroContext(context, "0L", propertyMacro_9r6wmn_c0a2a0a2a6)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_139_0(new PropertyMacroContext(context, "0L", propertyMacro_9r6wmn_c0a2a0a2a6)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }

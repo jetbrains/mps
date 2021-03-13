@@ -64,7 +64,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_118_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b6));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_8rqa92_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/2733396919552976108", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -81,7 +81,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_118_0(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -93,7 +93,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_118_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0c7));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0c7));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_8rqa92_b0a0c0d0c0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/2733396919552979427", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -110,7 +110,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_118_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_1(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -128,7 +128,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_118_2(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_8rqa92_b0a0c0d0b0d0c0c8));
+              final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_117_2(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_8rqa92_b0a0c0d0b0d0c0c8));
               tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_8rqa92_b0a0c0d0b0d0c0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/2733396919552980112", context2);
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[0], child4);
@@ -149,7 +149,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_118_2(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_117_2(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -167,7 +167,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_118_3(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_8rqa92_b0a0c0d0b0d0c0c9));
+              final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_117_3(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_8rqa92_b0a0c0d0b0d0c0c9));
               tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_8rqa92_b0a0c0d0b0d0c0c9, "tpl/r:00000000-0000-4000-0000-011c89590303/2733396919552981089", context2);
               for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
                 tnode2.addChild(myAggregationLinks[0], child4);
@@ -196,7 +196,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_118_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b01));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b01));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_8rqa92_b0a0c0d0c0b01, "tpl/r:00000000-0000-4000-0000-011c89590303/3689841190252939273", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -221,7 +221,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_118_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b11));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b11));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_8rqa92_b0a0c0d0c0b11, "tpl/r:00000000-0000-4000-0000-011c89590303/3689841190252940910", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -246,7 +246,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_118_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b21));
+          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_117_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_8rqa92_b0a0c0d0c0b21));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_8rqa92_b0a0c0d0c0b21, "tpl/r:00000000-0000-4000-0000-011c89590303/6202631021711034670", context1);
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(myAggregationLinks[0], child3);
@@ -255,7 +255,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         }
         {
           Collection<SNode> tlist4 = null;
-          SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_118_7(new SourceSubstituteMacroNodeContext(context1, callMacro_8rqa92_b0a0a1a4a2a1m));
+          SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_117_7(new SourceSubstituteMacroNodeContext(context1, callMacro_8rqa92_b0a0a1a4a2a1m));
           TemplateContext context2 = context1;
           context2 = context2.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
