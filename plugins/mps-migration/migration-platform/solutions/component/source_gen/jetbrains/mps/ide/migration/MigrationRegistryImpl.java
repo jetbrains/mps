@@ -116,7 +116,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
     }
 
     mv.update(module);
-    (as_ufn3ol_a0a0h0m(module, AbstractModule.class)).save();
+    ((AbstractModule) module).save();
   }
 
   public ProjectMigration nextProjectStep(ProjectMigrationProgress migrationProgress, MigrationOptions options, boolean cleanup) {
@@ -133,7 +133,12 @@ public class MigrationRegistryImpl implements MigrationRegistry {
   }
 
   private ProjectMigration next(final ProjectMigrationProgress migrationProgress, final boolean cleanup) {
-    List<ProjectMigration> mig = ProjectMigrationsRegistry.getInstance().getMigrations();
+    // FIXME this is stupid code. Before migration, we check which project migrations to apply, but then
+    //      silently assume here that all available project migrations to get executed. As a quick workaround, pass project
+    //      to make sure migration pre-condition and this method deal with the same set of migrations, although
+    //      the proper fix is to collect migrations once, and use that set (e.g. in session) rather than consult PMR each time.
+    //      (and keep set of executed migrations inside migrationProgress, see map in consider())
+    List<ProjectMigration> mig = ProjectMigrationsRegistry.getInstance().getMigrations(myMpsProject);
     // important thing is that we only consider PMs of the required cleanup state only not to add odd PMs to considered
     return ListSequence.fromList(mig).where(new IWhereFilter<ProjectMigration>() {
       public boolean accept(ProjectMigration it) {
@@ -326,9 +331,6 @@ public class MigrationRegistryImpl implements MigrationRegistry {
     return result;
   }
 
-  private static <T> T as_ufn3ol_a0a0h0m(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
   private static <T> T as_ufn3ol_a0a0a3a0a0a0a1a91(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
