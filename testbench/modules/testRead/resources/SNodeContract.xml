@@ -140,6 +140,9 @@
    <string>public abstract void org.jetbrains.mps.openapi.model.SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)</string>
   </void>
   <void method="add">
+   <string>public abstract void org.jetbrains.mps.openapi.model.SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNodeReference)</string>
+  </void>
+  <void method="add">
    <string>public abstract void org.jetbrains.mps.openapi.model.SNode.dropReference(org.jetbrains.mps.openapi.language.SReferenceLink)</string>
   </void>
  </object>
