@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -160,8 +160,8 @@ public class NodeMatcherTest {
     final SNode actualChild = newNode(ourConcept1);
     actualNode.addChild(ourC1Child1, actualChild);
     // doesn't matter where the reference point, but can't use SNode as ImmatureReferences.getInstance == null deep in SReferenceBase
-    actualNode.setReference(ourC1Ref, SReference.create(ourC1Ref, actualNode, targetModel, targetNode.getNodeId()));
-    actualChild.setReference(ourC1Ref, SReference.create(ourC1Ref, actualChild, targetModel, targetNode.getNodeId()));
+    actualNode.setReference(ourC1Ref, targetNodeRef); // XXX comment above about ImmatureReferences instance is no longer valid, perhaps
+    actualChild.setReference(ourC1Ref, targetNodeRef); // shall use just targetNode?
 
     final boolean matched = top.match(patternNode, actualNode);
     myErrors.checkThat("Shall match", matched, Matchers.equalTo(true));

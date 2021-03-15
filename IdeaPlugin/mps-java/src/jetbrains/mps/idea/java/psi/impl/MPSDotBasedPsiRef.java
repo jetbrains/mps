@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.psi.PsiManager;
 import com.intellij.psi.PsiReference;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.SNodeId.Foreign;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -70,8 +71,7 @@ public class MPSDotBasedPsiRef extends MPSPsiJavaRef {
             }
             SNodeId newTargetId = new Foreign(newTargetIdString);
 
-            SReference newRef = StaticReference.create(role, source, sref.getTargetSModelReference(), newTargetId);
-            source.setReference(role, newRef);
+            source.setReference(role, new SNodePointer(sref.getTargetSModelReference(), newTargetId));
 
           } else if (sref instanceof DynamicReference) {
             ((DynamicReference) sref).setResolveInfo(newName);

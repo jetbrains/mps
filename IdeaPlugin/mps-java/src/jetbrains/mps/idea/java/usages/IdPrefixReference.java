@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -120,7 +119,7 @@ public class IdPrefixReference implements PsiReference {
     SNode source = ((MPSPsiNode) myParent).getSNodeReference().resolve(ProjectHelper.getProjectRepository(myParent.getProject()));
     String oldId = source.getReference(myAssociationLink).getTargetNodeId().toString();
 
-    // replacing all proper occurences
+    // replacing all proper occurrences
     String what = oldNode.getNodeId().toString();
     what = what.startsWith(Foreign.ID_PREFIX) ? what.substring(1) : what;
     String replacement = newNode.getNodeId().toString();
@@ -128,7 +127,7 @@ public class IdPrefixReference implements PsiReference {
 
     String newId = carefullyReplace(oldId, what, replacement);
 
-    source.setReference(myAssociationLink, StaticReference.create(myAssociationLink, source, newNode.getSModelReference(), new Foreign(newId)));
+    source.setReference(myAssociationLink, new SNodePointer(newNode.getSModelReference(), new Foreign(newId)));
 
     // add model import if needed
     if (!oldNode.getModelReference().equals(newNode.getSModelReference())) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRef;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.SNodeId.Foreign;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -84,10 +85,7 @@ public class MPSPsiMethodRef extends MPSPsiJavaRef {
             SNode source = sref.getSourceNode();
             SModelReference modelRef = sref.getTargetSModelReference();
 
-            SReference newRef = StaticReference.create(role, source, modelRef, newTargetId);
-
-//            ((StaticReference) sref).setTargetNodeId(newTargetId);
-            source.setReference(role, newRef);
+            source.setReference(role, new SNodePointer(modelRef, newTargetId));
 
           } else if (sref instanceof DynamicReference) {
             ((DynamicReference) sref).setResolveInfo(newName);

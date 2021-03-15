@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,8 +80,8 @@ public final class CopyUtil {
       for (SReference ref : n.getReferences()) {
         SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
         if (targetNode != null) {
-          SNode newTarget = (nodeMap.containsKey(targetNode) ? nodeMap.get(targetNode) : targetNode);
-          copy.setReference(ref.getLink(), jetbrains.mps.smodel.SReference.create(ref.getLink(), copy, newTarget));
+          SNode newTarget = nodeMap.getOrDefault(targetNode, targetNode);
+          copy.setReferenceTarget(ref.getLink(), newTarget);
         } else {
           String resolveInfo = (ref instanceof jetbrains.mps.smodel.SReference ? ((jetbrains.mps.smodel.SReference) ref).getResolveInfo() : null);
           copy.setReference(ref.getLink(), jetbrains.mps.smodel.SReference.create(ref.getLink(), copy, ref.getTargetNodeReference(), resolveInfo));
@@ -234,10 +234,8 @@ public final class CopyUtil {
             output.setOrigin(dynRef.getOrigin());
             outputNode.setReference(output.getLink(), output);
           }
-        } else if (mapping.containsKey(inputTargetNode)) {
-          outputNode.setReference(ref.getLink(), jetbrains.mps.smodel.SReference.create(ref.getLink(), outputNode, mapping.get(inputTargetNode)));
         } else {
-          outputNode.setReference(ref.getLink(), jetbrains.mps.smodel.SReference.create(ref.getLink(), outputNode, inputTargetNode));
+          outputNode.setReferenceTarget(ref.getLink(), mapping.getOrDefault(inputTargetNode, inputTargetNode));
         }
       }
     }

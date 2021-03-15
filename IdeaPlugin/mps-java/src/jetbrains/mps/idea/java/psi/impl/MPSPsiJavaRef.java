@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.idea.core.psi.impl.MPSPsiRef;
 import jetbrains.mps.idea.java.refactoring.MoveRenameBatch;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -87,8 +86,7 @@ public abstract class MPSPsiJavaRef extends MPSPsiRef {
           SNode sourceNode = source.resolve(getProjectRepository());
           SNodePointer oldNode = new SNodePointer(getModelReference(), getNodeId());
           SNodePointer newNode = JavaForeignIdBuilder.computeNodePtr(element).toSNodeReference();
-          SReference newRef = StaticReference.create(getRole(), sourceNode, newNode.getModelReference(), newNode.getNodeId());
-          sourceNode.setReference(getRole(), newRef);
+          sourceNode.setReference(getRole(), newNode);
 
           // add model import if needed
           if (!oldNode.getModelReference().equals(newNode.getModelReference())) {
