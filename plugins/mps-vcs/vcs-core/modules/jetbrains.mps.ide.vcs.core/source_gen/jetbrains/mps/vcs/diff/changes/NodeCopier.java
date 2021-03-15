@@ -174,8 +174,17 @@ public class NodeCopier {
 
   @Nullable
   public SNode getNode(SModel model, SNodeId nodeId) {
-    SNodeId oldOrRenamedId = (MapSequence.fromMap(myRenamedNodes).containsKey(nodeId) ? MapSequence.fromMap(myRenamedNodes).get(nodeId) : nodeId);
-    SNodeId newId = (MapSequence.fromMap(myIdReplacementCache).containsKey(oldOrRenamedId) ? MapSequence.fromMap(myIdReplacementCache).get(oldOrRenamedId) : oldOrRenamedId);
-    return (newId == null ? null : model.getNode(newId));
+    // In case the node ID does not have a corresponding NodeIdChange which has been already applied,
+    // we don't have to check myIdReplacementCache. This is an old behaviour which existed before 
+    // introducing new changes of {@link NodeIdChange} type.
+    if (!(MapSequence.fromMap(myRenamedNodes).containsKey(nodeId))) {
+      return (nodeId == null ? null : model.getNode(nodeId));
+    }
+
+    SNodeId renamedId = MapSequence.fromMap(myRenamedNodes).get(nodeId);
+    // It can happen that a NodeIdChange has new ID which is already present in the model.
+    //  In this case the renamed node will have a new generated ID and thus we have to check myIdReplacementCache.
+    SNodeId renamedOrGeneratedId = (MapSequence.fromMap(myIdReplacementCache).containsKey(renamedId) ? MapSequence.fromMap(myIdReplacementCache).get(renamedId) : renamedId);
+    return model.getNode(renamedOrGeneratedId);
   }
 }
