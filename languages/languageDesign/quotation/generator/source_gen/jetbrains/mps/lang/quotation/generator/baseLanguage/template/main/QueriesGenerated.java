@@ -45,9 +45,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -110,9 +109,6 @@ public class QueriesGenerated {
     return NameUtil.escapeString(value);
   }
   public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.targetModel$C$SJ);
-  }
-  public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.targetNodeId$mmM_);
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
@@ -188,37 +184,34 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_0_10(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
-  }
-  public static Object referenceMacro_GetReferent_0_11(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$hE$), "parametersFromExpressionsQ");
   }
-  public static Object referenceMacro_GetReferent_0_12(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_11(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getParent(_context.getNode()), "nodeVariableQ");
   }
-  public static Object referenceMacro_GetReferent_0_13(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_12(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("var:quotedNode")), "nodeVariableQ");
   }
-  public static Object referenceMacro_GetReferent_0_14(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_13(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "nodeVariableQ");
   }
-  public static Object referenceMacro_GetReferent_0_15(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_14(final ReferenceMacroContext _context) {
     SNode antiquotation = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(_context.getNode()), CONCEPTS.Antiquotation$UQ)).first();
     if (antiquotation == null) {
       return null;
     }
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(antiquotation, LINKS.expression$hE$), "parametersFromExpressionsQ");
   }
-  public static Object referenceMacro_GetReferent_0_16(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_15(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "nodeVariableQ");
   }
-  public static Object referenceMacro_GetReferent_0_17(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_16(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getParent(_context.getNode()), "nodeVariableQ");
   }
-  public static Object referenceMacro_GetReferent_0_18(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_17(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "nodeVariableQ");
   }
-  public static Object referenceMacro_GetReferent_0_19(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_18(final ReferenceMacroContext _context) {
     SNode antiquotation = null;
     for (SNode child : SNodeOperations.getChildren(_context.getNode())) {
       if (SNodeOperations.isInstanceOf(child, CONCEPTS.ListAntiquotation$XK)) {
@@ -231,7 +224,7 @@ public class QueriesGenerated {
     }
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(antiquotation, LINKS.expression$hE$), "parametersFromExpressionsQ");
   }
-  public static Object referenceMacro_GetReferent_0_20(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_0_19(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getParent(_context.getNode()), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
@@ -411,12 +404,14 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$sg8$);
   }
   public static SNode sourceNodeQuery_0_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$sg8$);
-  }
-  public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
     SNode id = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ReferenceLinkId$JG);
     ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(id, LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
     return id;
+  }
+  public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
+    SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$Hh);
+    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(cid, _context.getNode().getContainmentLink());
+    return cid;
   }
   public static SNode sourceNodeQuery_0_8(final SourceSubstituteMacroNodeContext _context) {
     SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$Hh);
@@ -424,11 +419,6 @@ public class QueriesGenerated {
     return cid;
   }
   public static SNode sourceNodeQuery_0_9(final SourceSubstituteMacroNodeContext _context) {
-    SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$Hh);
-    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(cid, _context.getNode().getContainmentLink());
-    return cid;
-  }
-  public static SNode sourceNodeQuery_0_10(final SourceSubstituteMacroNodeContext _context) {
     SNode cid = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.ContainmentLinkId$Hh);
     ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(cid, _context.getNode().getContainmentLink());
     return cid;
@@ -573,6 +563,7 @@ public class QueriesGenerated {
     if (originalNode == null) {
       originalNode = _context.getNode();
     }
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
     SNode originalAncestor = SNodeOperations.getNodeAncestor(originalNode, CONCEPTS.Quotation$Vl, false, false);
     for (SReference ref : Sequence.fromIterable(originalNode.getReferences())) {
       if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref.getLink()).get(_context.getNode()) != null)) {
@@ -606,16 +597,15 @@ public class QueriesGenerated {
         continue;
       }
       SNode referenceNode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_ReferenceDescriptor$3E);
-      //  try to make reference up-to-date, not like it was recorded in the model file (e.g. may have outdated name)
-      // This is merely to replace smodel.SModelReference.update() call which used to be here, I'm not 100% confident there's any reason to update references this way
-      SModel targetModel = ref.getTargetSModelReference().resolve(repo);
-      final PersistenceFacade pf = PersistenceFacade.getInstance();
-      SPropertyOperations.assign(referenceNode, PROPS.targetModel$C$SJ, pf.asString((targetModel == null ? ref.getTargetSModelReference() : targetModel.getReference())));
+      // Here used to be code that tried to make reference up-to-date, not like it was recorded in the model file (e.g. may have outdated name)
+      //    It was a replacement for smodel.SModelReference.update() call which used to be here.
+      //    I see no reason to update references this way, and finally I'm brave enough to do that
       SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$sg8$, null);
       ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(rid, ref.getLink());
       if (targetNode != null) {
-        SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$mmM_, targetNode.getNodeId().toString());
+        SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$mmM_, pf.asString(targetNode.getReference()));
       }
+      // otherwise keep targetNodeId blank, just to restore broken reference in the quotation node
       ListSequence.fromList(result).addElement(referenceNode);
     }
     return result;
@@ -817,7 +807,6 @@ public class QueriesGenerated {
   private static final class PROPS {
     /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
     /*package*/ static final SProperty propertyValue$g5RD = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, 0x746e600f0bda67f9L, "propertyValue");
-    /*package*/ static final SProperty targetModel$C$SJ = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a480044dL, "targetModel");
     /*package*/ static final SProperty targetNodeId$mmM_ = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x24cfe382a47f973dL, 0x24cfe382a47f973fL, "targetNodeId");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty stringValueMigrated$2KQs = MetaAdapterFactory.getProperty(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x384b195d1ed21709L, 0x1e2950a3c41b89ecL, "stringValueMigrated");
