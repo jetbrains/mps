@@ -29,7 +29,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
@@ -149,23 +150,17 @@ public final class CopyPasteUtil {
       SNode newSourceNode = sourceNodesToNewNodes.get(oldSourceNode);
       SNode oldTargetNode = sourceReference.getTargetNode();
       SNode newTargetNode = sourceNodesToNewNodes.get(oldTargetNode);
-      SReference newReference;
       if (newTargetNode != null) {
-        newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, newTargetNode);
+        newSourceNode.setReferenceTarget(sourceReference.getLink(), newTargetNode);
       } else {
         if (oldTargetNode != null) {
-          // model can be null in case it's generation process and the target node was removed due to in-place transformation
-          //  see MPS-24188, this may be fixed when MPS-23902 is fixed
-          SModel model = oldTargetNode.getModel();
-          newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, (model == null ? null : model.getReference()), oldTargetNode.getNodeId());
+          // XXX oldTargetNode.model can be null in case it comes from generation process, see MPS-24188; this may be fixed when MPS-23902 is fixed
+          newSourceNode.setReference(sourceReference.getLink(), oldTargetNode.getReference());
         } else
-        if (((jetbrains.mps.smodel.SReference) sourceReference).getResolveInfo() != null) {
-          newReference = new StaticReference(sourceReference.getLink(), newSourceNode, null, null, ((jetbrains.mps.smodel.SReference) sourceReference).getResolveInfo());
-        } else {
-          continue;
+        if (SLinkOperations.getResolveInfo(sourceReference) != null) {
+          newSourceNode.setReference(sourceReference.getLink(), ResolveInfo.of(SLinkOperations.getResolveInfo(sourceReference)));
         }
       }
-      newSourceNode.setReference(newReference.getLink(), newReference);
     }
   }
   private static Set<SReference> processReferencesOut(Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
@@ -176,35 +171,30 @@ public final class CopyPasteUtil {
       // XXX sourceReference.getTargetNodeReference would suffice, with a bit of refactoring
       SNode oldTargetNode = sourceReference.getTargetNode();
       SNode newTargetNode = sourceNodesToNewNodes.get(oldTargetNode);
-      SReference newReference;
       if (newTargetNode != null) {
-        newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, newTargetNode);
+        newSourceNode.setReferenceTarget(sourceReference.getLink(), newTargetNode);
       } else {
         // XXX special hack for BL, oh, really?
         if ((SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.ClassifierType$bL)) && oldTargetNode != null) {
-          newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, oldTargetNode);
+          newSourceNode.setReferenceTarget(sourceReference.getLink(), oldTargetNode);
         } else {
-          // XXX the code below is quite suspicious and deserves a refactoring. It seems the point here is to keep resolveInfo of original link, otherwise
-          // SReference.create(newSource, oldTarget) would suffice. Is it our true intention, and is it the smart way to do? If it's common scenario,
-          // why don't we expose it as a distinct #create factory method?
-          String resolveInfo = (oldTargetNode == null ? ((jetbrains.mps.smodel.SReference) sourceReference).getResolveInfo() : oldTargetNode.getName());
-          if (resolveInfo != null) {
-            if (oldTargetNode != null) {
-              newReference = new StaticReference(sourceReference.getLink(), newSourceNode, oldTargetNode.getReference().getModelReference(), oldTargetNode.getNodeId(), resolveInfo);
-            } else {
-              newReference = new StaticReference(sourceReference.getLink(), newSourceNode, null, null, resolveInfo);
-            }
-            referencesRequireResolve.add(newReference);
+          // here used to be suspicious code intended (guess) to keep resolveInfo of original link by all means.
+          // I decided to remove it as there's similar logic in StaticReference (that takes node.getName as RI).
+          // If this doesn't work, perhaps, need another ResolveInfo.of method to take SNodePointer hint in addition to String
+          if (oldTargetNode != null) {
+            newSourceNode.setReferenceTarget(sourceReference.getLink(), oldTargetNode);
           } else {
-            if (oldTargetNode != null) {
-              newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, oldTargetNode);
+            String resolveInfo = SLinkOperations.getResolveInfo(sourceReference);
+            if (resolveInfo != null) {
+              newSourceNode.setReference(sourceReference.getLink(), ResolveInfo.of(resolveInfo));
             } else {
               continue;
             }
           }
+          // XXX this odd set deserves attention, too
+          referencesRequireResolve.add(newSourceNode.getReference(sourceReference.getLink()));
         }
       }
-      newSourceNode.setReference(newReference.getLink(), newReference);
     }
     return referencesRequireResolve;
   }

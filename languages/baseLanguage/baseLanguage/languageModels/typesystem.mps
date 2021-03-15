@@ -45047,37 +45047,18 @@
           </node>
         </node>
         <node concept="3clFbH" id="5t1QwMgT_br" role="3cqZAp" />
-        <node concept="3cpWs8" id="5t1QwMgT_ki" role="3cqZAp">
-          <node concept="3cpWsn" id="5t1QwMgT_kj" role="3cpWs9">
-            <property role="TrG5h" value="staticRef" />
-            <node concept="3uibUv" id="5t1QwMgT_kk" role="1tU5fm">
-              <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
-            </node>
-            <node concept="2YIFZM" id="4pio3Un9$QQ" role="33vP2m">
-              <ref role="1Pybhc" to="w1kc:~StaticReference" resolve="StaticReference" />
-              <ref role="37wK5l" to="w1kc:~SReference.create(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
-              <node concept="QwW4i" id="4pio3Un9$QR" role="37wK5m">
-                <ref role="QwW4h" node="5t1QwMgLHCz" resolve="role" />
-              </node>
-              <node concept="Q6c8r" id="4pio3Un9$QS" role="37wK5m" />
-              <node concept="37vLTw" id="4pio3Un9$QT" role="37wK5m">
-                <ref role="3cqZAo" node="5t1QwMgT$a6" resolve="target" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="5t1QwMgT_HS" role="3cqZAp">
           <node concept="2OqwBi" id="5t1QwMgTA4J" role="3clFbG">
             <node concept="2JrnkZ" id="5t1QwMgT_Z3" role="2Oq$k0">
               <node concept="Q6c8r" id="5t1QwMgT_HQ" role="2JrQYb" />
             </node>
             <node concept="liA8E" id="5t1QwMgTAOp" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference)" resolve="setReference" />
+              <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
               <node concept="QwW4i" id="5t1QwMgTAP4" role="37wK5m">
                 <ref role="QwW4h" node="5t1QwMgLHCz" resolve="role" />
               </node>
-              <node concept="37vLTw" id="5t1QwMgTAVT" role="37wK5m">
-                <ref role="3cqZAo" node="5t1QwMgT_kj" resolve="staticRef" />
+              <node concept="37vLTw" id="34Z$vX71gXg" role="37wK5m">
+                <ref role="3cqZAo" node="5t1QwMgT$a6" resolve="target" />
               </node>
             </node>
           </node>

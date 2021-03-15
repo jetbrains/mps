@@ -7,7 +7,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
@@ -25,8 +24,7 @@ public class makeReferenceStatic_QuickFix extends QuickFix_Runtime {
       return;
     }
 
-    SReference staticRef = StaticReference.create(((SReferenceLink) makeReferenceStatic_QuickFix.this.getField("role")[0]), node, target);
-    node.setReference(((SReferenceLink) makeReferenceStatic_QuickFix.this.getField("role")[0]), staticRef);
+    node.setReferenceTarget(((SReferenceLink) makeReferenceStatic_QuickFix.this.getField("role")[0]), target);
 
     // add model import
     new ModelImports(SNodeOperations.getModel(node)).addModelImport(target.getModel().getReference());

@@ -87,7 +87,7 @@ public class MoveNodePart {
     });
   }
   public void updateUsage(SReference usage, SNodeReference newReference) {
-    usage.getSourceNode().setReference(usage.getLink(), jetbrains.mps.smodel.SReference.create(usage.getLink(), usage.getSourceNode(), newReference.getModelReference(), newReference.getNodeId()));
+    usage.getSourceNode().setReference(usage.getLink(), newReference);
   }
   public SNodeReference getFrom() {
     return myFrom;

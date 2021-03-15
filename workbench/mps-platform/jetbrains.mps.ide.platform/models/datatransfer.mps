@@ -215,11 +215,6 @@
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
-      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
-        <child id="1163668914799" name="condition" index="3K4Cdx" />
-        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
-        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
-      </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
@@ -1532,14 +1527,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="5tGs5KqKiDI" role="3cqZAp">
-              <node concept="3cpWsn" id="5tGs5KqKiDJ" role="3cpWs9">
-                <property role="TrG5h" value="newReference" />
-                <node concept="3uibUv" id="5tGs5KqKiDK" role="1tU5fm">
-                  <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbJ" id="5tGs5KqKiDL" role="3cqZAp">
               <node concept="3y3z36" id="5tGs5KqKiDM" role="3clFbw">
                 <node concept="37vLTw" id="3GM_nagTxCe" role="3uHU7B">
@@ -1558,63 +1545,39 @@
                     </node>
                     <node concept="3clFbJ" id="5tGs5KqKiDV" role="9aQIa">
                       <node concept="3y3z36" id="5tGs5KqKiDW" role="3clFbw">
-                        <node concept="2OqwBi" id="5tGs5KqKiDX" role="3uHU7B">
-                          <node concept="1eOMI4" id="hVurbzUwhG" role="2Oq$k0">
-                            <node concept="10QFUN" id="hVurbzUwhH" role="1eOMHV">
-                              <node concept="3uibUv" id="hVurbzUwhI" role="10QFUM">
-                                <ref role="3uigEE" to="w1kc:~SReference" resolve="SReference" />
-                              </node>
-                              <node concept="37vLTw" id="3GM_nagT$zG" role="10QFUP">
-                                <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="5tGs5KqKiDZ" role="2OqNvi">
-                            <ref role="37wK5l" to="w1kc:~SReference.getResolveInfo()" resolve="getResolveInfo" />
+                        <node concept="2YIFZM" id="34Z$vX70Ntb" role="3uHU7B">
+                          <ref role="37wK5l" to="i8bi:5IkW5anFcxF" resolve="getResolveInfo" />
+                          <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
+                          <node concept="37vLTw" id="34Z$vX70OQe" role="37wK5m">
+                            <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
                           </node>
                         </node>
                         <node concept="10Nm6u" id="5tGs5KqKiE0" role="3uHU7w" />
                       </node>
-                      <node concept="9aQIb" id="5tGs5KqKiE1" role="9aQIa">
-                        <node concept="3clFbS" id="5tGs5KqKiE2" role="9aQI4">
-                          <node concept="3N13vt" id="5tGs5KqKiE3" role="3cqZAp" />
-                        </node>
-                      </node>
                       <node concept="3clFbS" id="5tGs5KqKiE4" role="3clFbx">
-                        <node concept="3clFbF" id="5tGs5KqKiE5" role="3cqZAp">
-                          <node concept="37vLTI" id="5tGs5KqKiE6" role="3clFbG">
-                            <node concept="37vLTw" id="3GM_nagT$a6" role="37vLTJ">
-                              <ref role="3cqZAo" node="5tGs5KqKiDJ" resolve="newReference" />
+                        <node concept="3clFbF" id="34Z$vX6YhOe" role="3cqZAp">
+                          <node concept="2OqwBi" id="34Z$vX6YjHj" role="3clFbG">
+                            <node concept="37vLTw" id="34Z$vX6YhOc" role="2Oq$k0">
+                              <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
                             </node>
-                            <node concept="2ShNRf" id="5tGs5KqKiE8" role="37vLTx">
-                              <node concept="1pGfFk" id="5tGs5KqKiE9" role="2ShVmc">
-                                <ref role="37wK5l" to="w1kc:~StaticReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,org.jetbrains.mps.openapi.model.SNodeId,java.lang.String)" resolve="StaticReference" />
-                                <node concept="2OqwBi" id="5tGs5KqKiEa" role="37wK5m">
-                                  <node concept="37vLTw" id="3GM_nagTvRG" role="2Oq$k0">
+                            <node concept="liA8E" id="34Z$vX6Yl9M" role="2OqNvi">
+                              <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
+                              <node concept="2OqwBi" id="5tGs5KqKiEa" role="37wK5m">
+                                <node concept="37vLTw" id="3GM_nagTvRG" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
+                                </node>
+                                <node concept="liA8E" id="5tGs5KqKiEc" role="2OqNvi">
+                                  <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
+                                </node>
+                              </node>
+                              <node concept="2YIFZM" id="34Z$vX6YxNX" role="37wK5m">
+                                <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                                <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                                <node concept="2YIFZM" id="34Z$vX70Qv6" role="37wK5m">
+                                  <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
+                                  <ref role="37wK5l" to="i8bi:5IkW5anFcxF" resolve="getResolveInfo" />
+                                  <node concept="37vLTw" id="34Z$vX70Qv7" role="37wK5m">
                                     <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
-                                  </node>
-                                  <node concept="liA8E" id="5tGs5KqKiEc" role="2OqNvi">
-                                    <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                                  </node>
-                                </node>
-                                <node concept="37vLTw" id="3GM_nagT$SY" role="37wK5m">
-                                  <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
-                                </node>
-                                <node concept="10Nm6u" id="5tGs5KqKiEe" role="37wK5m" />
-                                <node concept="10Nm6u" id="5tGs5KqKiEf" role="37wK5m" />
-                                <node concept="2OqwBi" id="5tGs5KqKiEg" role="37wK5m">
-                                  <node concept="1eOMI4" id="hVurbzUwhu" role="2Oq$k0">
-                                    <node concept="10QFUN" id="hVurbzUwhv" role="1eOMHV">
-                                      <node concept="3uibUv" id="hVurbzUwhw" role="10QFUM">
-                                        <ref role="3uigEE" to="w1kc:~SReference" resolve="SReference" />
-                                      </node>
-                                      <node concept="37vLTw" id="3GM_nagTzy7" role="10QFUP">
-                                        <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="liA8E" id="5tGs5KqKiEi" role="2OqNvi">
-                                    <ref role="37wK5l" to="w1kc:~SReference.getResolveInfo()" resolve="getResolveInfo" />
                                   </node>
                                 </node>
                               </node>
@@ -1626,8 +1589,11 @@
                     <node concept="3clFbS" id="5tGs5KqKiEj" role="3clFbx">
                       <node concept="3SKdUt" id="6Rwprm4tBJq" role="3cqZAp">
                         <node concept="1PaTwC" id="ATZLwXoqQj" role="1aUNEU">
-                          <node concept="3oM_SD" id="ATZLwXoqQk" role="1PaTwD">
-                            <property role="3oM_SC" value="model" />
+                          <node concept="3oM_SD" id="34Z$vX6Ycvq" role="1PaTwD">
+                            <property role="3oM_SC" value="XXX" />
+                          </node>
+                          <node concept="3oM_SD" id="34Z$vX6YcvQ" role="1PaTwD">
+                            <property role="3oM_SC" value="oldTargetNode.model" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoqQl" role="1PaTwD">
                             <property role="3oM_SC" value="can" />
@@ -1645,56 +1611,25 @@
                             <property role="3oM_SC" value="case" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoqQq" role="1PaTwD">
-                            <property role="3oM_SC" value="it's" />
+                            <property role="3oM_SC" value="it" />
+                          </node>
+                          <node concept="3oM_SD" id="34Z$vX6Yc$T" role="1PaTwD">
+                            <property role="3oM_SC" value="comes" />
+                          </node>
+                          <node concept="3oM_SD" id="34Z$vX6Yc_f" role="1PaTwD">
+                            <property role="3oM_SC" value="from" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoqQr" role="1PaTwD">
                             <property role="3oM_SC" value="generation" />
                           </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQs" role="1PaTwD">
-                            <property role="3oM_SC" value="process" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQt" role="1PaTwD">
-                            <property role="3oM_SC" value="and" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQu" role="1PaTwD">
-                            <property role="3oM_SC" value="the" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQv" role="1PaTwD">
-                            <property role="3oM_SC" value="target" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQw" role="1PaTwD">
-                            <property role="3oM_SC" value="node" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQx" role="1PaTwD">
-                            <property role="3oM_SC" value="was" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQy" role="1PaTwD">
-                            <property role="3oM_SC" value="removed" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQz" role="1PaTwD">
-                            <property role="3oM_SC" value="due" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQ$" role="1PaTwD">
-                            <property role="3oM_SC" value="to" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQ_" role="1PaTwD">
-                            <property role="3oM_SC" value="in-place" />
-                          </node>
-                          <node concept="3oM_SD" id="ATZLwXoqQA" role="1PaTwD">
-                            <property role="3oM_SC" value="transformation" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3SKdUt" id="6Rwprm4tBSX" role="3cqZAp">
-                        <node concept="1PaTwC" id="ATZLwXoqQB" role="1aUNEU">
-                          <node concept="3oM_SD" id="ATZLwXoqQC" role="1PaTwD">
-                            <property role="3oM_SC" value="" />
+                          <node concept="3oM_SD" id="34Z$vX6Yeo7" role="1PaTwD">
+                            <property role="3oM_SC" value="process," />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoqQD" role="1PaTwD">
                             <property role="3oM_SC" value="see" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoqQE" role="1PaTwD">
-                            <property role="3oM_SC" value="MPS-24188," />
+                            <property role="3oM_SC" value="MPS-24188;" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoqQF" role="1PaTwD">
                             <property role="3oM_SC" value="this" />
@@ -1722,27 +1657,13 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3cpWs8" id="6Rwprm4tAP9" role="3cqZAp">
-                        <node concept="3cpWsn" id="6Rwprm4tAPa" role="3cpWs9">
-                          <property role="TrG5h" value="model" />
-                          <node concept="3uibUv" id="6Rwprm4tAP4" role="1tU5fm">
-                            <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+                      <node concept="3clFbF" id="34Z$vX6XZRF" role="3cqZAp">
+                        <node concept="2OqwBi" id="34Z$vX6Y1He" role="3clFbG">
+                          <node concept="37vLTw" id="34Z$vX6XZRD" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
                           </node>
-                          <node concept="2OqwBi" id="6Rwprm4tAPb" role="33vP2m">
-                            <node concept="37vLTw" id="6Rwprm4tAPc" role="2Oq$k0">
-                              <ref role="3cqZAo" node="5tGs5KqKiDy" resolve="oldTargetNode" />
-                            </node>
-                            <node concept="liA8E" id="6Rwprm4tAPd" role="2OqNvi">
-                              <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbF" id="5tGs5KqKiEk" role="3cqZAp">
-                        <node concept="37vLTI" id="5tGs5KqKiEl" role="3clFbG">
-                          <node concept="2YIFZM" id="7opur9x71dZ" role="37vLTx">
-                            <ref role="37wK5l" to="w1kc:~SReference.create(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,org.jetbrains.mps.openapi.model.SNodeId)" resolve="create" />
-                            <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
+                          <node concept="liA8E" id="34Z$vX6Y3bR" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setReference" />
                             <node concept="2OqwBi" id="7opur9x71e0" role="37wK5m">
                               <node concept="37vLTw" id="7opur9x71e1" role="2Oq$k0">
                                 <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
@@ -1751,37 +1672,14 @@
                                 <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
                               </node>
                             </node>
-                            <node concept="37vLTw" id="7opur9x71e3" role="37wK5m">
-                              <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
-                            </node>
-                            <node concept="3K4zz7" id="6Rwprm4tBpM" role="37wK5m">
-                              <node concept="10Nm6u" id="6Rwprm4tBuc" role="3K4E3e" />
-                              <node concept="3clFbC" id="6Rwprm4tBbw" role="3K4Cdx">
-                                <node concept="10Nm6u" id="6Rwprm4tBiV" role="3uHU7w" />
-                                <node concept="37vLTw" id="6Rwprm4tB4g" role="3uHU7B">
-                                  <ref role="3cqZAo" node="6Rwprm4tAPa" resolve="model" />
-                                </node>
-                              </node>
-                              <node concept="2OqwBi" id="7opur9x71e4" role="3K4GZi">
-                                <node concept="liA8E" id="7opur9x71e5" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-                                </node>
-                                <node concept="37vLTw" id="6Rwprm4tAPe" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="6Rwprm4tAPa" resolve="model" />
-                                </node>
-                              </node>
-                            </node>
                             <node concept="2OqwBi" id="7opur9x71e9" role="37wK5m">
-                              <node concept="liA8E" id="7opur9x71ea" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                              <node concept="liA8E" id="34Z$vX6XV8B" role="2OqNvi">
+                                <ref role="37wK5l" to="mhbf:~SNode.getReference()" resolve="getReference" />
                               </node>
                               <node concept="37vLTw" id="7opur9x71eb" role="2Oq$k0">
                                 <ref role="3cqZAo" node="5tGs5KqKiDy" resolve="oldTargetNode" />
                               </node>
                             </node>
-                          </node>
-                          <node concept="37vLTw" id="3GM_nagTyDd" role="37vLTJ">
-                            <ref role="3cqZAo" node="5tGs5KqKiDJ" resolve="newReference" />
                           </node>
                         </node>
                       </node>
@@ -1790,14 +1688,13 @@
                 </node>
               </node>
               <node concept="3clFbS" id="5tGs5KqKiE$" role="3clFbx">
-                <node concept="3clFbF" id="5tGs5KqKiE_" role="3cqZAp">
-                  <node concept="37vLTI" id="5tGs5KqKiEA" role="3clFbG">
-                    <node concept="37vLTw" id="3GM_nagTr4d" role="37vLTJ">
-                      <ref role="3cqZAo" node="5tGs5KqKiDJ" resolve="newReference" />
+                <node concept="3clFbF" id="34Z$vX6YGC8" role="3cqZAp">
+                  <node concept="2OqwBi" id="34Z$vX6YIsW" role="3clFbG">
+                    <node concept="37vLTw" id="34Z$vX6YGC6" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
                     </node>
-                    <node concept="2YIFZM" id="5tGs5KqKiEC" role="37vLTx">
-                      <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
-                      <ref role="37wK5l" to="w1kc:~SReference.create(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
+                    <node concept="liA8E" id="34Z$vX6YK1J" role="2OqNvi">
+                      <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                       <node concept="2OqwBi" id="5tGs5KqKiED" role="37wK5m">
                         <node concept="37vLTw" id="3GM_nagTBWw" role="2Oq$k0">
                           <ref role="3cqZAo" node="5tGs5KqKiDh" resolve="sourceReference" />
@@ -1806,34 +1703,10 @@
                           <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
                         </node>
                       </node>
-                      <node concept="37vLTw" id="3GM_nagTyq8" role="37wK5m">
-                        <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
-                      </node>
-                      <node concept="37vLTw" id="3GM_nagTsIy" role="37wK5m">
+                      <node concept="37vLTw" id="34Z$vX6YQg_" role="37wK5m">
                         <ref role="3cqZAo" node="5tGs5KqKiDC" resolve="newTargetNode" />
                       </node>
                     </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="5tGs5KqKiEI" role="3cqZAp">
-              <node concept="2OqwBi" id="2Z5EMGU0xG$" role="3clFbG">
-                <node concept="37vLTw" id="3GM_nagTyLa" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5tGs5KqKiDr" resolve="newSourceNode" />
-                </node>
-                <node concept="liA8E" id="2Z5EMGU0xGA" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference)" resolve="setReference" />
-                  <node concept="2OqwBi" id="2Z5EMGU0xGB" role="37wK5m">
-                    <node concept="37vLTw" id="3GM_nagTBWx" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5tGs5KqKiDJ" resolve="newReference" />
-                    </node>
-                    <node concept="liA8E" id="2Z5EMGU0xGD" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagTBKE" role="37wK5m">
-                    <ref role="3cqZAo" node="5tGs5KqKiDJ" resolve="newReference" />
                   </node>
                 </node>
               </node>
@@ -2002,14 +1875,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="5tGs5KqKiFw" role="3cqZAp">
-              <node concept="3cpWsn" id="5tGs5KqKiFx" role="3cpWs9">
-                <property role="TrG5h" value="newReference" />
-                <node concept="3uibUv" id="5tGs5KqKiFy" role="1tU5fm">
-                  <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbJ" id="5tGs5KqKiFz" role="3cqZAp">
               <node concept="3y3z36" id="5tGs5KqKiF$" role="3clFbw">
                 <node concept="37vLTw" id="3GM_nagTzrR" role="3uHU7B">
@@ -2078,11 +1943,15 @@
                       </node>
                     </node>
                     <node concept="3clFbS" id="5tGs5KqKiGB" role="3clFbx">
-                      <node concept="3clFbF" id="5tGs5KqKiGC" role="3cqZAp">
-                        <node concept="37vLTI" id="5tGs5KqKiGD" role="3clFbG">
-                          <node concept="2YIFZM" id="7opur9x7nOL" role="37vLTx">
-                            <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
-                            <ref role="37wK5l" to="w1kc:~SReference.create(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
+                      <node concept="3clFbF" id="34Z$vX6Zm7u" role="3cqZAp">
+                        <node concept="2OqwBi" id="34Z$vX6ZnFR" role="3clFbG">
+                          <node concept="2JrnkZ" id="34Z$vX6ZoK4" role="2Oq$k0">
+                            <node concept="37vLTw" id="34Z$vX6Zm7s" role="2JrQYb">
+                              <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="34Z$vX6Zqk2" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                             <node concept="2OqwBi" id="7opur9x7nOM" role="37wK5m">
                               <node concept="37vLTw" id="7opur9x7nON" role="2Oq$k0">
                                 <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
@@ -2091,15 +1960,9 @@
                                 <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
                               </node>
                             </node>
-                            <node concept="37vLTw" id="7opur9x7nOP" role="37wK5m">
-                              <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
-                            </node>
-                            <node concept="37vLTw" id="7opur9x7nOQ" role="37wK5m">
+                            <node concept="37vLTw" id="34Z$vX6Zvu_" role="37wK5m">
                               <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
                             </node>
-                          </node>
-                          <node concept="37vLTw" id="3GM_nagTBom" role="37vLTJ">
-                            <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
                           </node>
                         </node>
                       </node>
@@ -2109,55 +1972,28 @@
                         <node concept="3SKdUt" id="QKorwlwYYp" role="3cqZAp">
                           <node concept="1PaTwC" id="ATZLwXoqR5" role="1aUNEU">
                             <node concept="3oM_SD" id="ATZLwXoqR6" role="1PaTwD">
-                              <property role="3oM_SC" value="XXX" />
+                              <property role="3oM_SC" value="here" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqR7" role="1PaTwD">
-                              <property role="3oM_SC" value="the" />
+                            <node concept="3oM_SD" id="34Z$vX70q1o" role="1PaTwD">
+                              <property role="3oM_SC" value="used" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqR8" role="1PaTwD">
-                              <property role="3oM_SC" value="code" />
+                            <node concept="3oM_SD" id="34Z$vX70q1U" role="1PaTwD">
+                              <property role="3oM_SC" value="to" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqR9" role="1PaTwD">
-                              <property role="3oM_SC" value="below" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRa" role="1PaTwD">
-                              <property role="3oM_SC" value="is" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRb" role="1PaTwD">
-                              <property role="3oM_SC" value="quite" />
+                            <node concept="3oM_SD" id="34Z$vX70q2l" role="1PaTwD">
+                              <property role="3oM_SC" value="be" />
                             </node>
                             <node concept="3oM_SD" id="ATZLwXoqRc" role="1PaTwD">
                               <property role="3oM_SC" value="suspicious" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRd" role="1PaTwD">
-                              <property role="3oM_SC" value="and" />
+                            <node concept="3oM_SD" id="34Z$vX70q3W" role="1PaTwD">
+                              <property role="3oM_SC" value="code" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRe" role="1PaTwD">
-                              <property role="3oM_SC" value="deserves" />
+                            <node concept="3oM_SD" id="34Z$vX70q4R" role="1PaTwD">
+                              <property role="3oM_SC" value="intended" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRf" role="1PaTwD">
-                              <property role="3oM_SC" value="a" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRg" role="1PaTwD">
-                              <property role="3oM_SC" value="refactoring." />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRh" role="1PaTwD">
-                              <property role="3oM_SC" value="It" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRi" role="1PaTwD">
-                              <property role="3oM_SC" value="seems" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRj" role="1PaTwD">
-                              <property role="3oM_SC" value="the" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRk" role="1PaTwD">
-                              <property role="3oM_SC" value="point" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRl" role="1PaTwD">
-                              <property role="3oM_SC" value="here" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRm" role="1PaTwD">
-                              <property role="3oM_SC" value="is" />
+                            <node concept="3oM_SD" id="34Z$vX70q62" role="1PaTwD">
+                              <property role="3oM_SC" value="(guess)" />
                             </node>
                             <node concept="3oM_SD" id="ATZLwXoqRn" role="1PaTwD">
                               <property role="3oM_SC" value="to" />
@@ -2174,306 +2010,267 @@
                             <node concept="3oM_SD" id="ATZLwXoqRr" role="1PaTwD">
                               <property role="3oM_SC" value="original" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRs" role="1PaTwD">
-                              <property role="3oM_SC" value="link," />
+                            <node concept="3oM_SD" id="34Z$vX70q6U" role="1PaTwD">
+                              <property role="3oM_SC" value="link" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRt" role="1PaTwD">
-                              <property role="3oM_SC" value="otherwise" />
+                            <node concept="3oM_SD" id="34Z$vX70qaY" role="1PaTwD">
+                              <property role="3oM_SC" value="by" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70qbm" role="1PaTwD">
+                              <property role="3oM_SC" value="all" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70qbB" role="1PaTwD">
+                              <property role="3oM_SC" value="means." />
                             </node>
                           </node>
                         </node>
                         <node concept="3SKdUt" id="QKorwlwZsl" role="3cqZAp">
                           <node concept="1PaTwC" id="ATZLwXoqRu" role="1aUNEU">
-                            <node concept="3oM_SD" id="ATZLwXoqRv" role="1PaTwD">
-                              <property role="3oM_SC" value="SReference.create(newSource," />
+                            <node concept="3oM_SD" id="34Z$vX70qe5" role="1PaTwD">
+                              <property role="3oM_SC" value="I" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRw" role="1PaTwD">
-                              <property role="3oM_SC" value="oldTarget)" />
+                            <node concept="3oM_SD" id="34Z$vX70qej" role="1PaTwD">
+                              <property role="3oM_SC" value="decided" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRx" role="1PaTwD">
-                              <property role="3oM_SC" value="would" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRy" role="1PaTwD">
-                              <property role="3oM_SC" value="suffice." />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRz" role="1PaTwD">
-                              <property role="3oM_SC" value="Is" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqR$" role="1PaTwD">
-                              <property role="3oM_SC" value="it" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqR_" role="1PaTwD">
-                              <property role="3oM_SC" value="our" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRA" role="1PaTwD">
-                              <property role="3oM_SC" value="true" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRB" role="1PaTwD">
-                              <property role="3oM_SC" value="intention," />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRC" role="1PaTwD">
-                              <property role="3oM_SC" value="and" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRD" role="1PaTwD">
-                              <property role="3oM_SC" value="is" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRE" role="1PaTwD">
-                              <property role="3oM_SC" value="it" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRF" role="1PaTwD">
-                              <property role="3oM_SC" value="the" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRG" role="1PaTwD">
-                              <property role="3oM_SC" value="smart" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRH" role="1PaTwD">
-                              <property role="3oM_SC" value="way" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRI" role="1PaTwD">
+                            <node concept="3oM_SD" id="34Z$vX70qey" role="1PaTwD">
                               <property role="3oM_SC" value="to" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRJ" role="1PaTwD">
-                              <property role="3oM_SC" value="do?" />
+                            <node concept="3oM_SD" id="34Z$vX70qeM" role="1PaTwD">
+                              <property role="3oM_SC" value="remove" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRK" role="1PaTwD">
-                              <property role="3oM_SC" value="If" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRL" role="1PaTwD">
-                              <property role="3oM_SC" value="it's" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRM" role="1PaTwD">
-                              <property role="3oM_SC" value="common" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRN" role="1PaTwD">
-                              <property role="3oM_SC" value="scenario," />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3SKdUt" id="QKorwlwZUl" role="3cqZAp">
-                          <node concept="1PaTwC" id="ATZLwXoqRO" role="1aUNEU">
-                            <node concept="3oM_SD" id="ATZLwXoqRP" role="1PaTwD">
-                              <property role="3oM_SC" value="why" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRQ" role="1PaTwD">
-                              <property role="3oM_SC" value="don't" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRR" role="1PaTwD">
-                              <property role="3oM_SC" value="we" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRS" role="1PaTwD">
-                              <property role="3oM_SC" value="expose" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRT" role="1PaTwD">
+                            <node concept="3oM_SD" id="34Z$vX70qfb" role="1PaTwD">
                               <property role="3oM_SC" value="it" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRU" role="1PaTwD">
+                            <node concept="3oM_SD" id="34Z$vX70qft" role="1PaTwD">
                               <property role="3oM_SC" value="as" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRV" role="1PaTwD">
-                              <property role="3oM_SC" value="a" />
+                            <node concept="3oM_SD" id="34Z$vX70qfK" role="1PaTwD">
+                              <property role="3oM_SC" value="there's" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRW" role="1PaTwD">
-                              <property role="3oM_SC" value="distinct" />
+                            <node concept="3oM_SD" id="34Z$vX70qg4" role="1PaTwD">
+                              <property role="3oM_SC" value="similar" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRX" role="1PaTwD">
-                              <property role="3oM_SC" value="#create" />
+                            <node concept="3oM_SD" id="34Z$vX70qgL" role="1PaTwD">
+                              <property role="3oM_SC" value="logic" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRY" role="1PaTwD">
-                              <property role="3oM_SC" value="factory" />
+                            <node concept="3oM_SD" id="34Z$vX70qhf" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqRZ" role="1PaTwD">
-                              <property role="3oM_SC" value="method?" />
+                            <node concept="3oM_SD" id="34Z$vX70qhu" role="1PaTwD">
+                              <property role="3oM_SC" value="StaticReference" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70qiA" role="1PaTwD">
+                              <property role="3oM_SC" value="(that" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70qjW" role="1PaTwD">
+                              <property role="3oM_SC" value="takes" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70qke" role="1PaTwD">
+                              <property role="3oM_SC" value="node.getName" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70qkL" role="1PaTwD">
+                              <property role="3oM_SC" value="as" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70ql5" role="1PaTwD">
+                              <property role="3oM_SC" value="RI)." />
                             </node>
                           </node>
                         </node>
-                        <node concept="3cpWs8" id="5tGs5KqKiFN" role="3cqZAp">
-                          <node concept="3cpWsn" id="5tGs5KqKiFO" role="3cpWs9">
-                            <property role="TrG5h" value="resolveInfo" />
-                            <node concept="3uibUv" id="5tGs5KqKiFP" role="1tU5fm">
-                              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                        <node concept="3SKdUt" id="34Z$vX70qm9" role="3cqZAp">
+                          <node concept="1PaTwC" id="34Z$vX70qlN" role="1aUNEU">
+                            <node concept="3oM_SD" id="34Z$vX70rUg" role="1PaTwD">
+                              <property role="3oM_SC" value="If" />
                             </node>
-                            <node concept="3K4zz7" id="5tGs5KqKiFQ" role="33vP2m">
-                              <node concept="3clFbC" id="5tGs5KqKiFR" role="3K4Cdx">
-                                <node concept="37vLTw" id="3GM_nagTuK5" role="3uHU7B">
-                                  <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
+                            <node concept="3oM_SD" id="34Z$vX70rUu" role="1PaTwD">
+                              <property role="3oM_SC" value="this" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rUH" role="1PaTwD">
+                              <property role="3oM_SC" value="doesn't" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rV5" role="1PaTwD">
+                              <property role="3oM_SC" value="work," />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rVm" role="1PaTwD">
+                              <property role="3oM_SC" value="perhaps," />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rVP" role="1PaTwD">
+                              <property role="3oM_SC" value="need" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rVW" role="1PaTwD">
+                              <property role="3oM_SC" value="another" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rWs" role="1PaTwD">
+                              <property role="3oM_SC" value="ResolveInfo.of" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rWX" role="1PaTwD">
+                              <property role="3oM_SC" value="method" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rXf" role="1PaTwD">
+                              <property role="3oM_SC" value="to" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rXy" role="1PaTwD">
+                              <property role="3oM_SC" value="take" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rXQ" role="1PaTwD">
+                              <property role="3oM_SC" value="SNodePointer" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rYz" role="1PaTwD">
+                              <property role="3oM_SC" value="hint" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rZ1" role="1PaTwD">
+                              <property role="3oM_SC" value="in" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rZo" role="1PaTwD">
+                              <property role="3oM_SC" value="addition" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70rZS" role="1PaTwD">
+                              <property role="3oM_SC" value="to" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70s09" role="1PaTwD">
+                              <property role="3oM_SC" value="String" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbJ" id="5tGs5KqKiG4" role="3cqZAp">
+                          <node concept="3y3z36" id="5tGs5KqKiG5" role="3clFbw">
+                            <node concept="37vLTw" id="3GM_nagTyNL" role="3uHU7B">
+                              <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
+                            </node>
+                            <node concept="10Nm6u" id="5tGs5KqKiG7" role="3uHU7w" />
+                          </node>
+                          <node concept="3clFbS" id="5tGs5KqKiGb" role="3clFbx">
+                            <node concept="3clFbF" id="34Z$vX6Z52t" role="3cqZAp">
+                              <node concept="2OqwBi" id="34Z$vX6Z6DC" role="3clFbG">
+                                <node concept="2JrnkZ" id="34Z$vX6Z7gg" role="2Oq$k0">
+                                  <node concept="37vLTw" id="34Z$vX6Z52r" role="2JrQYb">
+                                    <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
+                                  </node>
                                 </node>
-                                <node concept="10Nm6u" id="5tGs5KqKiFT" role="3uHU7w" />
-                              </node>
-                              <node concept="2OqwBi" id="5tGs5KqKiFU" role="3K4E3e">
-                                <node concept="1eOMI4" id="hVurbzUv2x" role="2Oq$k0">
-                                  <node concept="10QFUN" id="hVurbzUv2y" role="1eOMHV">
-                                    <node concept="3uibUv" id="hVurbzUv2z" role="10QFUM">
-                                      <ref role="3uigEE" to="w1kc:~SReference" resolve="SReference" />
+                                <node concept="liA8E" id="34Z$vX6Zc10" role="2OqNvi">
+                                  <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
+                                  <node concept="2OqwBi" id="7opur9x7ofw" role="37wK5m">
+                                    <node concept="37vLTw" id="7opur9x7ofx" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
                                     </node>
-                                    <node concept="37vLTw" id="3GM_nagTuSc" role="10QFUP">
+                                    <node concept="liA8E" id="7opur9x7ofy" role="2OqNvi">
+                                      <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
+                                    </node>
+                                  </node>
+                                  <node concept="37vLTw" id="34Z$vX6ZglG" role="37wK5m">
+                                    <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="9aQIb" id="34Z$vX70t$4" role="9aQIa">
+                            <node concept="3clFbS" id="34Z$vX70t$5" role="9aQI4">
+                              <node concept="3cpWs8" id="5tGs5KqKiFN" role="3cqZAp">
+                                <node concept="3cpWsn" id="5tGs5KqKiFO" role="3cpWs9">
+                                  <property role="TrG5h" value="resolveInfo" />
+                                  <node concept="3uibUv" id="5tGs5KqKiFP" role="1tU5fm">
+                                    <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                                  </node>
+                                  <node concept="2YIFZM" id="34Z$vX70DUL" role="33vP2m">
+                                    <ref role="37wK5l" to="i8bi:5IkW5anFcxF" resolve="getResolveInfo" />
+                                    <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
+                                    <node concept="37vLTw" id="34Z$vX70FvJ" role="37wK5m">
                                       <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="liA8E" id="5tGs5KqKiFW" role="2OqNvi">
-                                  <ref role="37wK5l" to="w1kc:~SReference.getResolveInfo()" resolve="getResolveInfo" />
-                                </node>
                               </node>
-                              <node concept="2OqwBi" id="5tGs5KqKiFX" role="3K4GZi">
-                                <node concept="37vLTw" id="3GM_nagTtrB" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
+                              <node concept="3clFbJ" id="5tGs5KqKiG0" role="3cqZAp">
+                                <node concept="3y3z36" id="5tGs5KqKiG1" role="3clFbw">
+                                  <node concept="37vLTw" id="3GM_nagTwbN" role="3uHU7B">
+                                    <ref role="3cqZAo" node="5tGs5KqKiFO" resolve="resolveInfo" />
+                                  </node>
+                                  <node concept="10Nm6u" id="5tGs5KqKiG3" role="3uHU7w" />
                                 </node>
-                                <node concept="liA8E" id="5tGs5KqKiFZ" role="2OqNvi">
-                                  <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+                                <node concept="3clFbS" id="5tGs5KqKiGl" role="3clFbx">
+                                  <node concept="3clFbF" id="34Z$vX6ZX9v" role="3cqZAp">
+                                    <node concept="2OqwBi" id="34Z$vX6ZYHb" role="3clFbG">
+                                      <node concept="liA8E" id="34Z$vX700bY" role="2OqNvi">
+                                        <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
+                                        <node concept="2OqwBi" id="3oboXA4F4qK" role="37wK5m">
+                                          <node concept="37vLTw" id="3GM_nagTsO7" role="2Oq$k0">
+                                            <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
+                                          </node>
+                                          <node concept="liA8E" id="3oboXA4F4qM" role="2OqNvi">
+                                            <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
+                                          </node>
+                                        </node>
+                                        <node concept="2YIFZM" id="34Z$vX706Ry" role="37wK5m">
+                                          <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                                          <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                                          <node concept="37vLTw" id="34Z$vX708qo" role="37wK5m">
+                                            <ref role="3cqZAo" node="5tGs5KqKiFO" resolve="resolveInfo" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                      <node concept="2JrnkZ" id="34Z$vX6ZYHg" role="2Oq$k0">
+                                        <node concept="37vLTw" id="34Z$vX6ZX9t" role="2JrQYb">
+                                          <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="9aQIb" id="QKorwlx1Xu" role="9aQIa">
+                                  <node concept="3clFbS" id="QKorwlx1Xv" role="9aQI4">
+                                    <node concept="3N13vt" id="34Z$vX712oG" role="3cqZAp" />
+                                  </node>
                                 </node>
                               </node>
                             </node>
                           </node>
                         </node>
-                        <node concept="3clFbJ" id="5tGs5KqKiG0" role="3cqZAp">
-                          <node concept="3y3z36" id="5tGs5KqKiG1" role="3clFbw">
-                            <node concept="37vLTw" id="3GM_nagTwbN" role="3uHU7B">
-                              <ref role="3cqZAo" node="5tGs5KqKiFO" resolve="resolveInfo" />
+                        <node concept="3SKdUt" id="34Z$vX70k$X" role="3cqZAp">
+                          <node concept="1PaTwC" id="34Z$vX70k$Y" role="1aUNEU">
+                            <node concept="3oM_SD" id="34Z$vX70lVJ" role="1PaTwD">
+                              <property role="3oM_SC" value="XXX" />
                             </node>
-                            <node concept="10Nm6u" id="5tGs5KqKiG3" role="3uHU7w" />
-                          </node>
-                          <node concept="3clFbS" id="5tGs5KqKiGl" role="3clFbx">
-                            <node concept="3clFbJ" id="3oboXA4F4q_" role="3cqZAp">
-                              <node concept="3y3z36" id="3oboXA4F4r2" role="3clFbw">
-                                <node concept="37vLTw" id="3GM_nagTB1m" role="3uHU7B">
-                                  <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
-                                </node>
-                                <node concept="10Nm6u" id="3oboXA4F4r5" role="3uHU7w" />
-                              </node>
-                              <node concept="3clFbS" id="3oboXA4F4qA" role="3clFbx">
-                                <node concept="3clFbF" id="5tGs5KqKiGm" role="3cqZAp">
-                                  <node concept="37vLTI" id="5tGs5KqKiGn" role="3clFbG">
-                                    <node concept="37vLTw" id="3GM_nagTzSf" role="37vLTJ">
-                                      <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
-                                    </node>
-                                    <node concept="2ShNRf" id="5tGs5KqKiGp" role="37vLTx">
-                                      <node concept="1pGfFk" id="5tGs5KqKiGq" role="2ShVmc">
-                                        <ref role="37wK5l" to="w1kc:~StaticReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,org.jetbrains.mps.openapi.model.SNodeId,java.lang.String)" resolve="StaticReference" />
-                                        <node concept="2OqwBi" id="5tGs5KqKiGr" role="37wK5m">
-                                          <node concept="37vLTw" id="3GM_nagTsbM" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
-                                          </node>
-                                          <node concept="liA8E" id="5tGs5KqKiGt" role="2OqNvi">
-                                            <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                                          </node>
-                                        </node>
-                                        <node concept="37vLTw" id="3GM_nagTwSO" role="37wK5m">
-                                          <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
-                                        </node>
-                                        <node concept="2OqwBi" id="2n9zn0CqNhU" role="37wK5m">
-                                          <node concept="liA8E" id="2n9zn0CqNhV" role="2OqNvi">
-                                            <ref role="37wK5l" to="mhbf:~SNodeReference.getModelReference()" resolve="getModelReference" />
-                                          </node>
-                                          <node concept="2OqwBi" id="2n9zn0CqNhW" role="2Oq$k0">
-                                            <node concept="37vLTw" id="3GM_nagT$hm" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
-                                            </node>
-                                            <node concept="liA8E" id="QKorwlx0vs" role="2OqNvi">
-                                              <ref role="37wK5l" to="mhbf:~SNode.getReference()" resolve="getReference" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                        <node concept="2OqwBi" id="3_erWscHIGJ" role="37wK5m">
-                                          <node concept="liA8E" id="24cAaiUz$o1" role="2OqNvi">
-                                            <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
-                                          </node>
-                                          <node concept="37vLTw" id="3GM_nagTvqj" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
-                                          </node>
-                                        </node>
-                                        <node concept="37vLTw" id="3GM_nagTt64" role="37wK5m">
-                                          <ref role="3cqZAo" node="5tGs5KqKiFO" resolve="resolveInfo" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="9aQIb" id="3oboXA4F4qD" role="9aQIa">
-                                <node concept="3clFbS" id="3oboXA4F4qE" role="9aQI4">
-                                  <node concept="3clFbF" id="3oboXA4F4qF" role="3cqZAp">
-                                    <node concept="37vLTI" id="3oboXA4F4qG" role="3clFbG">
-                                      <node concept="37vLTw" id="3GM_nagTsl7" role="37vLTJ">
-                                        <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
-                                      </node>
-                                      <node concept="2ShNRf" id="3oboXA4F4qI" role="37vLTx">
-                                        <node concept="1pGfFk" id="3oboXA4F4qJ" role="2ShVmc">
-                                          <ref role="37wK5l" to="w1kc:~StaticReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,org.jetbrains.mps.openapi.model.SNodeId,java.lang.String)" resolve="StaticReference" />
-                                          <node concept="2OqwBi" id="3oboXA4F4qK" role="37wK5m">
-                                            <node concept="37vLTw" id="3GM_nagTsO7" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
-                                            </node>
-                                            <node concept="liA8E" id="3oboXA4F4qM" role="2OqNvi">
-                                              <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                                            </node>
-                                          </node>
-                                          <node concept="37vLTw" id="3GM_nagTC0V" role="37wK5m">
-                                            <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
-                                          </node>
-                                          <node concept="10Nm6u" id="3oboXA4F4qY" role="37wK5m" />
-                                          <node concept="10Nm6u" id="3oboXA4F4r0" role="37wK5m" />
-                                          <node concept="37vLTw" id="3GM_nagTyn6" role="37wK5m">
-                                            <ref role="3cqZAo" node="5tGs5KqKiFO" resolve="resolveInfo" />
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
+                            <node concept="3oM_SD" id="34Z$vX70lVL" role="1PaTwD">
+                              <property role="3oM_SC" value="this" />
                             </node>
-                            <node concept="3clFbF" id="5tGs5KqKiGy" role="3cqZAp">
-                              <node concept="2OqwBi" id="5tGs5KqKiGz" role="3clFbG">
-                                <node concept="37vLTw" id="2BHiRxgmtNe" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5tGs5KqKi_i" resolve="referencesRequireResolve" />
-                                </node>
-                                <node concept="liA8E" id="5tGs5KqKiG_" role="2OqNvi">
-                                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
-                                  <node concept="37vLTw" id="3GM_nagT_CX" role="37wK5m">
-                                    <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
-                                  </node>
-                                </node>
-                              </node>
+                            <node concept="3oM_SD" id="34Z$vX70lX1" role="1PaTwD">
+                              <property role="3oM_SC" value="odd" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70lX5" role="1PaTwD">
+                              <property role="3oM_SC" value="set" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70lXa" role="1PaTwD">
+                              <property role="3oM_SC" value="deserves" />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70lY9" role="1PaTwD">
+                              <property role="3oM_SC" value="attention," />
+                            </node>
+                            <node concept="3oM_SD" id="34Z$vX70lZa" role="1PaTwD">
+                              <property role="3oM_SC" value="too" />
                             </node>
                           </node>
-                          <node concept="9aQIb" id="QKorwlx1Xu" role="9aQIa">
-                            <node concept="3clFbS" id="QKorwlx1Xv" role="9aQI4">
-                              <node concept="3clFbJ" id="5tGs5KqKiG4" role="3cqZAp">
-                                <node concept="3y3z36" id="5tGs5KqKiG5" role="3clFbw">
-                                  <node concept="37vLTw" id="3GM_nagTyNL" role="3uHU7B">
-                                    <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
+                        </node>
+                        <node concept="3clFbF" id="5tGs5KqKiGy" role="3cqZAp">
+                          <node concept="2OqwBi" id="5tGs5KqKiGz" role="3clFbG">
+                            <node concept="37vLTw" id="2BHiRxgmtNe" role="2Oq$k0">
+                              <ref role="3cqZAo" node="5tGs5KqKi_i" resolve="referencesRequireResolve" />
+                            </node>
+                            <node concept="liA8E" id="5tGs5KqKiG_" role="2OqNvi">
+                              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                              <node concept="2OqwBi" id="34Z$vX70bXj" role="37wK5m">
+                                <node concept="2JrnkZ" id="34Z$vX70cBh" role="2Oq$k0">
+                                  <node concept="37vLTw" id="34Z$vX70ak0" role="2JrQYb">
+                                    <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
                                   </node>
-                                  <node concept="10Nm6u" id="5tGs5KqKiG7" role="3uHU7w" />
                                 </node>
-                                <node concept="9aQIb" id="5tGs5KqKiG8" role="9aQIa">
-                                  <node concept="3clFbS" id="5tGs5KqKiG9" role="9aQI4">
-                                    <node concept="3N13vt" id="5tGs5KqKiGa" role="3cqZAp" />
-                                  </node>
-                                </node>
-                                <node concept="3clFbS" id="5tGs5KqKiGb" role="3clFbx">
-                                  <node concept="3clFbF" id="5tGs5KqKiGc" role="3cqZAp">
-                                    <node concept="37vLTI" id="5tGs5KqKiGd" role="3clFbG">
-                                      <node concept="2YIFZM" id="7opur9x7ofv" role="37vLTx">
-                                        <ref role="37wK5l" to="w1kc:~SReference.create(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
-                                        <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
-                                        <node concept="2OqwBi" id="7opur9x7ofw" role="37wK5m">
-                                          <node concept="37vLTw" id="7opur9x7ofx" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
-                                          </node>
-                                          <node concept="liA8E" id="7opur9x7ofy" role="2OqNvi">
-                                            <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                                          </node>
-                                        </node>
-                                        <node concept="37vLTw" id="7opur9x7ofz" role="37wK5m">
-                                          <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
-                                        </node>
-                                        <node concept="37vLTw" id="7opur9x7of$" role="37wK5m">
-                                          <ref role="3cqZAo" node="5tGs5KqKiFk" resolve="oldTargetNode" />
-                                        </node>
-                                      </node>
-                                      <node concept="37vLTw" id="3GM_nagT_9F" role="37vLTJ">
-                                        <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
-                                      </node>
+                                <node concept="liA8E" id="34Z$vX70ekP" role="2OqNvi">
+                                  <ref role="37wK5l" to="mhbf:~SNode.getReference(org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="getReference" />
+                                  <node concept="2OqwBi" id="34Z$vX70gaY" role="37wK5m">
+                                    <node concept="37vLTw" id="34Z$vX70gaZ" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
+                                    </node>
+                                    <node concept="liA8E" id="34Z$vX70gb0" role="2OqNvi">
+                                      <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
                                     </node>
                                   </node>
                                 </node>
@@ -2487,11 +2284,15 @@
                 </node>
               </node>
               <node concept="3clFbS" id="5tGs5KqKiGL" role="3clFbx">
-                <node concept="3clFbF" id="5tGs5KqKiGM" role="3cqZAp">
-                  <node concept="37vLTI" id="5tGs5KqKiGN" role="3clFbG">
-                    <node concept="2YIFZM" id="7opur9x7nER" role="37vLTx">
-                      <ref role="1Pybhc" to="w1kc:~SReference" resolve="SReference" />
-                      <ref role="37wK5l" to="w1kc:~SReference.create(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="create" />
+                <node concept="3clFbF" id="34Z$vX6ZzZv" role="3cqZAp">
+                  <node concept="2OqwBi" id="34Z$vX6ZCdP" role="3clFbG">
+                    <node concept="2JrnkZ" id="34Z$vX6ZDNz" role="2Oq$k0">
+                      <node concept="37vLTw" id="34Z$vX6ZzZt" role="2JrQYb">
+                        <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="34Z$vX6ZFcG" role="2OqNvi">
+                      <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                       <node concept="2OqwBi" id="7opur9x7nES" role="37wK5m">
                         <node concept="37vLTw" id="7opur9x7nET" role="2Oq$k0">
                           <ref role="3cqZAo" node="5tGs5KqKiF3" resolve="sourceReference" />
@@ -2500,39 +2301,10 @@
                           <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
                         </node>
                       </node>
-                      <node concept="37vLTw" id="7opur9x7nEV" role="37wK5m">
-                        <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
-                      </node>
-                      <node concept="37vLTw" id="7opur9x7nEW" role="37wK5m">
+                      <node concept="37vLTw" id="34Z$vX6ZQ$m" role="37wK5m">
                         <ref role="3cqZAo" node="5tGs5KqKiFq" resolve="newTargetNode" />
                       </node>
                     </node>
-                    <node concept="37vLTw" id="3GM_nagTAOa" role="37vLTJ">
-                      <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="5tGs5KqKiGV" role="3cqZAp">
-              <node concept="2OqwBi" id="2Z5EMGU0xMB" role="3clFbG">
-                <node concept="2JrnkZ" id="2Z5EMGU0xMC" role="2Oq$k0">
-                  <node concept="37vLTw" id="3GM_nagTzF3" role="2JrQYb">
-                    <ref role="3cqZAo" node="5tGs5KqKiFd" resolve="newSourceNode" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="2Z5EMGU0xME" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SReference)" resolve="setReference" />
-                  <node concept="2OqwBi" id="2Z5EMGU0xMF" role="37wK5m">
-                    <node concept="37vLTw" id="3GM_nagTwrP" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
-                    </node>
-                    <node concept="liA8E" id="2Z5EMGU0xMH" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SReference.getLink()" resolve="getLink" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagTv4P" role="37wK5m">
-                    <ref role="3cqZAo" node="5tGs5KqKiFx" resolve="newReference" />
                   </node>
                 </node>
               </node>
