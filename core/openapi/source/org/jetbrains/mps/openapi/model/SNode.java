@@ -238,6 +238,19 @@ public interface SNode {
    */
   void setReference(@NotNull SReferenceLink role, ResolveInfo resolveInfo);
 
+
+  /**
+   * Establish a 'static', 'mature' reference. Pretty much what {@link #setReferenceTarget(SReferenceLink, SNode)} does, just without the need
+   * to obtain {@code SNode} instance first.
+   * <p>
+   * Intentionally doesn't support {@code null} target argument, use {@link #dropReference(SReferenceLink)} explicitly.
+   * </p>
+   * @since 2021.1
+   * @param role meta-object that identifies association relation.
+   * @param target identity of reference target
+   */
+  void setReference(@NotNull SReferenceLink role, @NotNull SNodeReference target);
+
   /**
    * Null means the reference has not been set or was set to null. It's impossible to the distinguish the two cases.
    */

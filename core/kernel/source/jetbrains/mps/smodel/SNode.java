@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -701,6 +701,29 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   public void setReference(@NotNull SReferenceLink role, ResolveInfo resolveInfo) {
     String ri = resolveInfo instanceof ResolveInfo.S ? ((ResolveInfo.S) resolveInfo).getValue() : null;
     setReference(role, DynamicReference.createDynamicReference(role, this, null, ri));
+  }
+
+  @Override
+  public void setReference(@NotNull SReferenceLink role, @NotNull SNodeReference target) {
+    assertCanChange();
+
+    SReference toDelete = null;
+    if (myReferences != null) {
+      for (SReference reference : myReferences) {
+        if (reference.getLink().equals(role)) {
+          toDelete = reference;
+          break;
+        }
+      }
+    }
+
+    if (toDelete != null) {
+      removeReferenceInternal(toDelete);
+    }
+    SReference newValue = SReference.create(role, this, target, null);
+    addReferenceInternal(newValue);
+
+    myOwner.fireReferenceChange(this, role, toDelete, newValue);
   }
 
   @Override
