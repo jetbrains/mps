@@ -31,11 +31,9 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="slm6" ref="90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="mg3u" ref="r:0799ed23-f21a-4dba-ac61-5b80d66bec13(jetbrains.mps.lang.behavior.plugin)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
     <import index="twe9" ref="r:28e6d713-c3c3-493e-8d97-e9a2c49f28ce(jetbrains.mps.lang.structure.util)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="xx25" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure.types(MPS.Core/)" />
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
@@ -6622,11 +6620,9 @@
                   <node concept="2EMmih" id="LU8F6FULuT" role="lGtFl">
                     <property role="2qtEX9" value="kind" />
                     <property role="P4ACc" value="c72da2b9-7cce-4447-8389-f407dc1158b7/3355805929432017219/3355805929432017222" />
-                    <node concept="1rXfSq" id="LU8F6FULuU" role="2c44t1">
-                      <ref role="37wK5l" node="LU8F6FUFPT" resolve="serializeReplacementKind" />
-                      <node concept="37vLTw" id="LU8F6FULuV" role="37wK5m">
-                        <ref role="3cqZAo" node="LU8F6FULwT" resolve="replacementKind" />
-                      </node>
+                    <property role="3qcH_f" value="true" />
+                    <node concept="37vLTw" id="LU8F6FULuV" role="2c44t1">
+                      <ref role="3cqZAo" node="LU8F6FULwT" resolve="replacementKind" />
                     </node>
                   </node>
                   <node concept="2c44tb" id="LU8F6FULuW" role="lGtFl">
@@ -7046,11 +7042,9 @@
                 <node concept="2EMmih" id="LU8F6FUezg" role="lGtFl">
                   <property role="2qtEX9" value="kind" />
                   <property role="P4ACc" value="c72da2b9-7cce-4447-8389-f407dc1158b7/3355805929432017219/3355805929432017222" />
-                  <node concept="1rXfSq" id="LU8F6FUezh" role="2c44t1">
-                    <ref role="37wK5l" node="LU8F6FUFPT" resolve="serializeReplacementKind" />
-                    <node concept="37vLTw" id="LU8F6FUezi" role="37wK5m">
-                      <ref role="3cqZAo" node="LU8F6FUezw" resolve="replacementKind" />
-                    </node>
+                  <property role="3qcH_f" value="true" />
+                  <node concept="37vLTw" id="3C_dEr8Wpc" role="2c44t1">
+                    <ref role="3cqZAo" node="LU8F6FUezw" resolve="replacementKind" />
                   </node>
                 </node>
                 <node concept="2c44tb" id="LU8F6FUezj" role="lGtFl">
@@ -7104,67 +7098,6 @@
       </node>
       <node concept="3Tm6S6" id="LU8F6FUezl" role="1B3o_S" />
     </node>
-    <node concept="2tJIrI" id="2UidVq71RrD" role="jymVt" />
-    <node concept="2YIFZL" id="LU8F6FUFPT" role="jymVt">
-      <property role="TrG5h" value="serializeReplacementKind" />
-      <node concept="3clFbS" id="LU8F6FUFPV" role="3clF47">
-        <node concept="3SKdUt" id="LU8F6FUFPW" role="3cqZAp">
-          <node concept="1PaTwC" id="QobsgS3Ewd" role="1aUNEU">
-            <node concept="3oM_SD" id="QobsgS3Ewe" role="1PaTwD">
-              <property role="3oM_SC" value="TODO" />
-            </node>
-            <node concept="3oM_SD" id="QobsgS3Ewf" role="1PaTwD">
-              <property role="3oM_SC" value="support" />
-            </node>
-            <node concept="3oM_SD" id="QobsgS3Ewg" role="1PaTwD">
-              <property role="3oM_SC" value="new" />
-            </node>
-            <node concept="3oM_SD" id="QobsgS3Ewh" role="1PaTwD">
-              <property role="3oM_SC" value="enums" />
-            </node>
-            <node concept="3oM_SD" id="QobsgS3Ewi" role="1PaTwD">
-              <property role="3oM_SC" value="in" />
-            </node>
-            <node concept="3oM_SD" id="QobsgS3Ewj" role="1PaTwD">
-              <property role="3oM_SC" value="quotations" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="LU8F6FUFPY" role="3cqZAp">
-          <node concept="3cpWsn" id="LU8F6FUFPZ" role="3cpWs9">
-            <property role="TrG5h" value="enumeration" />
-            <node concept="3uibUv" id="LU8F6FUFQ0" role="1tU5fm">
-              <ref role="3uigEE" to="c17a:~SEnumeration" resolve="SEnumeration" />
-            </node>
-            <node concept="1XH99k" id="LU8F6FUFQ1" role="33vP2m">
-              <ref role="1XH99l" to="tpce:2UidVq6Wu$P" resolve="EnumCustomMethodReplacementKind" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="LU8F6FUFQ2" role="3cqZAp">
-          <node concept="2OqwBi" id="LU8F6FUFQ3" role="3clFbG">
-            <node concept="37vLTw" id="LU8F6FUFQ4" role="2Oq$k0">
-              <ref role="3cqZAo" node="LU8F6FUFPZ" resolve="enumeration" />
-            </node>
-            <node concept="liA8E" id="LU8F6FUFQ5" role="2OqNvi">
-              <ref role="37wK5l" to="c17a:~SDataType.toString(java.lang.Object):java.lang.String" resolve="toString" />
-              <node concept="37vLTw" id="LU8F6FUFQ6" role="37wK5m">
-                <ref role="3cqZAo" node="LU8F6FUFQ9" resolve="replacementKind" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="17QB3L" id="LU8F6FUFQ8" role="3clF45" />
-      <node concept="37vLTG" id="LU8F6FUFQ9" role="3clF46">
-        <property role="TrG5h" value="replacementKind" />
-        <node concept="2ZThk1" id="LU8F6FUFQa" role="1tU5fm">
-          <ref role="2ZWj4r" to="tpce:2UidVq6Wu$P" resolve="EnumCustomMethodReplacementKind" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="LU8F6FUFQ7" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="2UidVq7cOVn" role="jymVt" />
   </node>
   <node concept="3SyAh_" id="5CkWgdpyhAg">
     <property role="qMTe8" value="8" />

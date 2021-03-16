@@ -41,7 +41,6 @@ import org.jetbrains.mps.openapi.language.SType;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.ArrayList;
 import java.util.Iterator;
-import org.jetbrains.mps.openapi.language.SEnumeration;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -382,7 +381,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
 
     SNode nullCheckStatement = null;
     List<SNode> switchCases = ListSequence.fromList(new ArrayList<SNode>(ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$wmsL)).count()));
-    SNode method = _quotation_createNode_3t318f_a0d0lb(type, argName, enumm, name, serializeReplacementKind(replacementKind), enumm);
+    SNode method = _quotation_createNode_3t318f_a0d0lb(type, argName, enumm, name, replacementKind, enumm);
 
     {
       Iterator<SNode> literal_it = ListSequence.fromList(literals).iterator();
@@ -420,15 +419,8 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
       }
     }
 
-    return _quotation_createNode_3t318f_a4a93(enumm, switchCases, name, type, serializeReplacementKind(replacementKind), enumm);
+    return _quotation_createNode_3t318f_a4a93(enumm, switchCases, name, type, replacementKind, enumm);
   }
-
-  private static String serializeReplacementKind(SEnumerationLiteral replacementKind) {
-    // TODO support new enums in quotations
-    SEnumeration enumeration = MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e935L, "jetbrains.mps.lang.structure.structure.EnumCustomMethodReplacementKind");
-    return enumeration.toString(replacementKind);
-  }
-
   private static SNode createStringLiteral_3t318f_a0b0a0a0a1a7a21(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$xu);
     n0.setProperty(PROPS.value$w7MM, p0);
@@ -502,7 +494,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     SNodeAccessUtil.setReferenceTarget(quotedNode_11, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, 0x120bff1303bL, "enum"), (SNode) parameter_3);
     quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), quotedNode_11);
     quotedNode_12 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0x2e9237b686f1e943L, "EnumCustomMethodReplacementInfo")).getResult();
-    SNodeAccessUtil.setProperty(quotedNode_12, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e946L, "kind"), (String) parameter_5);
+    SNodeAccessUtil.setPropertyValue(quotedNode_12, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e946L, "kind"), (SEnumerationLiteral) parameter_5);
     SNodeAccessUtil.setReferenceTarget(quotedNode_12, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e948L, "enum"), (SNode) parameter_6);
     quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), quotedNode_12);
     return quotedNode_7;
@@ -666,7 +658,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
       quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType"), SNodeOperations.copyIfNecessary(quotedNode_11));
     }
     quotedNode_12 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 0x2e9237b686f1e943L, "EnumCustomMethodReplacementInfo")).getResult();
-    SNodeAccessUtil.setProperty(quotedNode_12, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e946L, "kind"), (String) parameter_5);
+    SNodeAccessUtil.setPropertyValue(quotedNode_12, MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e946L, "kind"), (SEnumerationLiteral) parameter_5);
     SNodeAccessUtil.setReferenceTarget(quotedNode_12, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e9237b686f1e943L, 0x2e9237b686f1e948L, "enum"), (SNode) parameter_6);
     quotedNode_7.addChild(MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute"), quotedNode_12);
     quotedNode_17.setReferenceTarget(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), quotedNode_8);
