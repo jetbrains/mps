@@ -327,19 +327,13 @@ public class QueriesGenerated {
     });
   }
   public static boolean ifMacro_Condition_0_6(final IfMacroContext _context) {
-    return SNodeOperations.getParent(_context.getNode()) != SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$Vl, false, false);
-  }
-  public static boolean ifMacro_Condition_0_7(final IfMacroContext _context) {
     return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ);
       }
     });
   }
-  public static boolean ifMacro_Condition_0_8(final IfMacroContext _context) {
-    return SNodeOperations.getParent(_context.getNode()) != SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$Vl, false, false);
-  }
-  public static boolean ifMacro_Condition_0_9(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_0_7(final IfMacroContext _context) {
     return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK);
