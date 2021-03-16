@@ -47,6 +47,8 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.smodel.SNodePointer;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -580,7 +582,7 @@ public class QueriesGenerated {
           // 1) source node is not under quotation, the case for regular nodes wrapped into quotation
           // (e.g. pattern test lang wraps a regular nodeToMatch into quotation)
           // I can't come up with a solution, here's a hack: assume if roots match, then
-          // this is reference to quotaion internals
+          // this is reference to quotation internals
           innerQuotationRef = SNodeOperations.getContainingRoot(targetNode) == SNodeOperations.getContainingRoot(originalNode);
         } else {
           // 2) source node is under quotation, target node is external to the quotation then
@@ -602,9 +604,7 @@ public class QueriesGenerated {
       //    I see no reason to update references this way, and finally I'm brave enough to do that
       SNode rid = SLinkOperations.setNewChild(referenceNode, LINKS.linkId$sg8$, null);
       ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(rid, ref.getLink());
-      if (targetNode != null) {
-        SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$mmM_, pf.asString(targetNode.getReference()));
-      }
+      SPropertyOperations.assign(referenceNode, PROPS.targetNodeId$mmM_, pf.asString((targetNode != null ? targetNode.getReference() : new SNodePointer((SModelReference) null, null))));
       // otherwise keep targetNodeId blank, just to restore broken reference in the quotation node
       ListSequence.fromList(result).addElement(referenceNode);
     }
