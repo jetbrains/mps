@@ -23,7 +23,7 @@ public class typeOf_Model_RootsOperation_InferenceRule extends AbstractInference
   public typeOf_Model_RootsOperation_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // copied from model.notes typeOf
+    // inspired by model.nodes typeOf
     if (SLinkOperations.getTarget(node, LINKS.concept$eK4w) != null) {
       {
         SNode _nodeToCheck_1029348928467 = node;
