@@ -17,8 +17,10 @@ package jetbrains.mps.nodeEditor.inspector;
 
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.fileEditor.FileEditor;
+import com.intellij.util.ui.EDT;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.nodeEditor.InspectorEditorContext;
@@ -26,7 +28,9 @@ import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -34,6 +38,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 public class InspectorEditorComponent extends EditorComponent {
+  private static final Logger LOG = Logger.wrap(LogManager.getLogger(InspectorEditorComponent.class));
 
   private SNode myContainingRoot;
 
@@ -77,11 +82,46 @@ public class InspectorEditorComponent extends EditorComponent {
     return this;
   }
 
+  @Override
+  public TypecheckingSession getTypecheckingSession() {
+    EditorComponent mainEditorComponent = getMainEditorComponent();
+    if (mainEditorComponent != null) {
+      // in case a typechecking session has been requested without the main component
+      releaseTypecheckingSession();
+      return mainEditorComponent.getTypecheckingSession();
+    }
+    return super.getTypecheckingSession();
+  }
+
+  @Override
+  protected void requestTypecheckingSession() {
+    if (getMainEditorComponent() != null) {
+      // in case a typechecking session has been requested without the main component
+      releaseTypecheckingSession();
+      return;
+    }
+    super.requestTypecheckingSession();
+  }
+
+  private EditorComponent getMainEditorComponent() {
+    if (!EDT.isCurrentThreadEdt()) {
+      // guard for tests that may cause this method to be invoked from other threads
+      return null;
+    }
+    FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(DataManager.getInstance().getDataContext((this)));
+    if (fileEditor instanceof MPSFileNodeEditor) {
+      Object mainComponent = ((MPSFileNodeEditor) fileEditor).getNodeEditor().getCurrentEditorComponent();
+      if (mainComponent instanceof  EditorComponent) {
+        return ((EditorComponent) mainComponent);
+      } else{
+        LOG.error("expected node editor to be EditorComponent but got " + mainComponent);
+      }
+    }
+    return null;
+  }
+
   protected boolean updateContainingRoot(SNode node) {
     final SNode newroot = node == null ? null : node.getContainingRoot();
-    if (myContainingRoot == newroot) {
-      return false;
-    }
     myContainingRoot = newroot;
     return true;
   }
