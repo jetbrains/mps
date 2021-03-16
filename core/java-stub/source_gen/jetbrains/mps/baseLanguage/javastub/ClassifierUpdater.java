@@ -543,13 +543,13 @@ public class ClassifierUpdater {
       return null;
     }
     if (value instanceof Integer) {
-      return _quotation_createNode_ol94f8_a0a1a54(Integer.parseInt(value.toString()));
+      return _quotation_createNode_ol94f8_a0a1a54(((Integer) value).intValue());
     }
     if (value instanceof Byte) {
-      return _quotation_createNode_ol94f8_a0a2a54(Integer.parseInt(value.toString()));
+      return _quotation_createNode_ol94f8_a0a2a54(((Byte) value).intValue());
     }
     if (value instanceof Short) {
-      return _quotation_createNode_ol94f8_a0a3a54(Integer.parseInt(value.toString()));
+      return _quotation_createNode_ol94f8_a0a3a54(((Short) value).intValue());
     }
     if (value instanceof Boolean) {
       return _quotation_createNode_ol94f8_a0a4a54(Boolean.parseBoolean(value.toString()));
@@ -570,7 +570,7 @@ public class ClassifierUpdater {
       return _quotation_createNode_ol94f8_a0a9a54(value.toString());
     }
     if (value instanceof ASMAnnotation) {
-      return _quotation_createNode_ol94f8_a0a01a54(createAnnotation((ASMAnnotation) value));
+      return createAnnotation((ASMAnnotation) value);
     }
     if (value instanceof ASMPrimitiveType) {
       return _quotation_createNode_ol94f8_a0a11a54(SNodeOperations.cast(getTypeByASMType((ASMPrimitiveType) value, null, null), CONCEPTS.PrimitiveType$sR));
@@ -1010,14 +1010,6 @@ public class ClassifierUpdater {
     SNode quotedNode_2 = null;
     quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral")).getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), (String) parameter_1);
-    return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_ol94f8_a0a01a54(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = (SNode) parameter_1;
-    if (quotedNode_2 != null) {
-    }
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_ol94f8_a0a11a54(Object parameter_1) {

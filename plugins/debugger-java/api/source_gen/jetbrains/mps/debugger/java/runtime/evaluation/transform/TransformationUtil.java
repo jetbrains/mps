@@ -219,8 +219,7 @@ public class TransformationUtil {
     return _quotation_createNode_crriw5_a3a32();
   }
   public static SNode getPrimitiveType() {
-    SNode primitive = SLinkOperations.getTarget(_quotation_createNode_crriw5_a0a0a42(), LINKS.descriptor$M2vT);
-    return _quotation_createNode_crriw5_a1a42(primitive);
+    return SLinkOperations.getTarget(_quotation_createNode_crriw5_a0a0y(), LINKS.descriptor$M2vT);
   }
   public static String getJniSignature(SNode methodDeclaration) {
     return getJniSignature(ListSequence.fromList(SLinkOperations.getChildren(methodDeclaration, LINKS.parameter$5xBj)).select(new ISelector<SNode, SNode>() {
@@ -306,7 +305,7 @@ public class TransformationUtil {
     return stringLiteral;
   }
   public static void replaceTypeWithArrayProxyType(SNode variableDeclaration) {
-    SLinkOperations.setTarget(variableDeclaration, LINKS.type$a1UY, _quotation_createNode_crriw5_a0a0a92(TransformationUtil.getValueProxyTypeFromType(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY))));
+    SLinkOperations.setTarget(variableDeclaration, LINKS.type$a1UY, TransformationUtil.getValueProxyTypeFromType(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY)));
   }
   public static void replaceExpressionWithProxy(SNode expression) {
     SNodeOperations.replaceWithAnother(expression, _quotation_createNode_crriw5_a0a0a03(expression, getValueProxyTypeFromType(TypecheckingFacade.getFromContext().getTypeOf(expression))));
@@ -347,7 +346,7 @@ public class TransformationUtil {
     }
     // next two lines add type parameters in a specific magical way so the test would pass
     ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(foreachStatement, LINKS.iterable$mImK), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.typeArgument$jaIN)).addElement(SNodeOperations.copyNode(valueProxyType));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY, _quotation_createNode_crriw5_a0a4a53(valueProxyType));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(foreachStatement, LINKS.variable$JNH6), LINKS.type$a1UY, valueProxyType);
   }
   public static SNode getVariableDeclaration(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableReference$TC)) {
@@ -1201,20 +1200,12 @@ public class TransformationUtil {
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), facade.createNodeReference("r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)/4727801710070560812"));
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_crriw5_a0a0a42() {
+  private static SNode _quotation_createNode_crriw5_a0a0y() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef")).getResult();
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), facade.createNodeReference("r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683941620"));
     return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_crriw5_a1a42(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = (SNode) parameter_1;
-    if (quotedNode_2 != null) {
-    }
-    return quotedNode_2;
   }
   private static SNode _quotation_createNode_crriw5_b0a4a72() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -1269,14 +1260,6 @@ public class TransformationUtil {
     SNode quotedNode_1 = null;
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType")).getResult();
     return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_crriw5_a0a0a92(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = (SNode) parameter_1;
-    if (quotedNode_2 != null) {
-    }
-    return quotedNode_2;
   }
   private static SNode _quotation_createNode_crriw5_a0a0a03(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -1547,14 +1530,6 @@ public class TransformationUtil {
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), facade.createNodeReference("r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)/4727801710070563570"));
     return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_crriw5_a0a4a53(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = (SNode) parameter_1;
-    if (quotedNode_2 != null) {
-    }
-    return quotedNode_2;
   }
 
   private static final class LINKS {
