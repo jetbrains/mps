@@ -27230,7 +27230,7 @@
               </node>
             </node>
             <node concept="3ygNvl" id="AwiPu7jIu4" role="39821P">
-              <ref role="3ygNvj" node="3t7sqKTd$eL" resolve="jbrsdk" />
+              <ref role="3ygNvj" node="31DSnetlghA" resolve="jbr" />
             </node>
           </node>
           <node concept="3_J27D" id="AwiPu7jHU6" role="Nbhlr">
@@ -43478,6 +43478,51 @@
       <node concept="3_J27D" id="AwiPu7jFRQ" role="Nbhlr">
         <node concept="3Mxwew" id="AwiPu7jFS0" role="3MwsjC">
           <property role="3MwjfP" value="openJDK" />
+        </node>
+      </node>
+      <node concept="1tmT9g" id="31DSnetlgg6" role="39821P">
+        <property role="AB_bT" value="gzip" />
+        <node concept="3_J27D" id="31DSnetlgg7" role="Nbhlr">
+          <node concept="3Mxwew" id="31DSnetlgg8" role="3MwsjC">
+            <property role="3MwjfP" value="jbr-osx-x64.tar.gz" />
+          </node>
+        </node>
+        <node concept="398223" id="31DSnetlgh5" role="39821P">
+          <node concept="3_J27D" id="31DSnetlgh6" role="Nbhlr">
+            <node concept="3Mxwew" id="31DSnetlgh9" role="3MwsjC">
+              <property role="3MwjfP" value="jbr" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1tmT9g" id="31DSnetlgjv" role="39821P">
+        <property role="AB_bT" value="gzip" />
+        <node concept="3_J27D" id="31DSnetlgjw" role="Nbhlr">
+          <node concept="3Mxwew" id="31DSnetlgjx" role="3MwsjC">
+            <property role="3MwjfP" value="jbr-osx-aarch64.tar.gz" />
+          </node>
+        </node>
+        <node concept="398223" id="31DSnetlgjy" role="39821P">
+          <node concept="3_J27D" id="31DSnetlgjz" role="Nbhlr">
+            <node concept="3Mxwew" id="31DSnetlgj$" role="3MwsjC">
+              <property role="3MwjfP" value="jbr" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1tmT9g" id="31DSnetlgh_" role="39821P">
+        <property role="AB_bT" value="gzip" />
+        <node concept="398223" id="31DSnetlghA" role="39821P">
+          <node concept="3_J27D" id="31DSnetlghB" role="Nbhlr">
+            <node concept="3Mxwew" id="31DSnetlghC" role="3MwsjC">
+              <property role="3MwjfP" value="jbr" />
+            </node>
+          </node>
+        </node>
+        <node concept="3_J27D" id="31DSnetlghD" role="Nbhlr">
+          <node concept="3Mxwew" id="31DSnetlghE" role="3MwsjC">
+            <property role="3MwjfP" value="jbr-windows-x64.tar.gz" />
+          </node>
         </node>
       </node>
     </node>

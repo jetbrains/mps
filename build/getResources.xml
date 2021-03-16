@@ -25,12 +25,12 @@
     <ivy:retrieve file="ivyOpenjdk8Mac.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
-  <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbsdk_windows_x64.tar.gz">
+  <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbr_windows_x64.tar.gz">
     <ivy:resolve file="ivyOpenjdkWin.xml"/>
     <ivy:retrieve file="ivyOpenjdkWin.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
-  <target name="getOpenjdkMac" depends="install-ivy" description="--> Retreive openJDK/jbsdk_ocx_x64.tar.gz">
+  <target name="getOpenjdkMac" depends="install-ivy" description="--> Retreive openJDK/jbr_ocx_x64.tar.gz">
     <ivy:resolve file="ivyOpenjdkMac.xml"/>
     <ivy:retrieve file="ivyOpenjdkMac.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>

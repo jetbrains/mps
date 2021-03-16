@@ -270,7 +270,7 @@
       <zipfileset file="${basedir}/bin/win/WinProcessListHelper.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/win/append.bat" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset dir="${basedir}/plugins/laf-win10" prefix="MPS ${mpsBootstrapCore.version}/plugins/laf-win10" />
-      <zipfileset dir="${build.tmp}/deps/jbrsdk-windows-x64.tar.gz1/jbrsdk" prefix="MPS ${mpsBootstrapCore.version}/jbr" />
+      <zipfileset dir="${build.tmp}/deps/jbr-windows-x64.tar.gz1/jbr" prefix="MPS ${mpsBootstrapCore.version}/jbr" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip_f755" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip" />
     </zip>
@@ -397,8 +397,8 @@
   </target>
   
   <target name="fetchDependencies">
-    <mkdir dir="${build.tmp}/deps/jbrsdk-windows-x64.tar.gz1" />
-    <untar src="${artifacts.resources}/openJDK/jbrsdk-windows-x64.tar.gz" dest="${build.tmp}/deps/jbrsdk-windows-x64.tar.gz1" compression="gzip" />
+    <mkdir dir="${build.tmp}/deps/jbr-windows-x64.tar.gz1" />
+    <untar src="${artifacts.resources}/openJDK/jbr-windows-x64.tar.gz" dest="${build.tmp}/deps/jbr-windows-x64.tar.gz1" compression="gzip" />
   </target>
   
   <target name="build" depends="assemble" />
