@@ -69,7 +69,7 @@ public final class TestMethodNodeKey implements TestNodeKey {
 
   @Override
   public String toString() {
-    return "TestMethodKey[" + myTestCaseFqName + "." + myTestMethodName + "]";
+    return "TestMethodNodeKey[" + myTestCaseFqName + "." + myTestMethodName + "]";
   }
 
   @NotNull

@@ -165,7 +165,11 @@ import java.util.Map;
       assert isRoot(n1) && isRoot(n2) : String.format("Root node is supposed to be a 'brother' of another root node only. n1=%s; n2=%s",
                                                       n1.getPresentation(),
                                                       n2.getPresentation());
-      return n1.getPresentation().compareTo(n2.getPresentation());
+      int res = n1.getPresentation().compareTo(n2.getPresentation());
+      if (res != 0) {
+        return res;
+      }
+      return n1.getReference().toString().compareTo(n2.getReference().toString());
     }
 
 

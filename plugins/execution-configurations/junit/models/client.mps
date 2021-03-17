@@ -9137,26 +9137,6 @@
           </node>
         </node>
       </node>
-      <node concept="2LYoGR" id="6Q7Z5lsERIR" role="3rFUVC">
-        <property role="TrG5h" value="javaRunParameters" />
-        <property role="2LYoGQ" value="true" />
-        <node concept="yHkIc" id="6Q7Z5lsERPV" role="1tU5fm">
-          <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-        </node>
-      </node>
-      <node concept="2LYoGR" id="6Q7Z5lsERQB" role="3rFUVC">
-        <property role="TrG5h" value="junitParameters" />
-        <property role="2LYoGQ" value="true" />
-        <node concept="yHkIc" id="6Q7Z5lsERYk" role="1tU5fm">
-          <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
-        </node>
-      </node>
-      <node concept="2LYoGR" id="6Q7Z5lsERZc" role="3rFUVC">
-        <property role="TrG5h" value="userPlugins" />
-        <node concept="3uibUv" id="6Q7Z5lsES6V" role="1tU5fm">
-          <ref role="3uigEE" node="6Q7Z5lsDI9f" resolve="UserProvidedPluginsConfiguration" />
-        </node>
-      </node>
       <node concept="9aQIb" id="3P4ieJEGDz3" role="3rFUVF">
         <node concept="3clFbS" id="3P4ieJEGDz4" role="9aQI4">
           <node concept="3cpWs8" id="58KCQIw6_FH" role="3cqZAp">
@@ -9166,11 +9146,11 @@
                 <ref role="3uigEE" to="go48:14R2qyOCsUf" resolve="JavaRunParameters" />
               </node>
               <node concept="2OqwBi" id="58KCQIw6_FJ" role="33vP2m">
-                <node concept="2LYoG9" id="6Q7Z5lsESi5" role="2Oq$k0">
-                  <ref role="2LYoGb" node="6Q7Z5lsERIR" resolve="javaRunParameters" />
-                </node>
                 <node concept="yHkDZ" id="58KCQIw6_FN" role="2OqNvi">
                   <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
+                </node>
+                <node concept="2LYoG9" id="6Q7Z5lsESi5" role="2Oq$k0">
+                  <ref role="2LYoGb" node="6Q7Z5lsERIR" resolve="javaRunParameters" />
                 </node>
               </node>
             </node>
@@ -9375,6 +9355,26 @@
               </node>
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="2LYoGR" id="6Q7Z5lsERIR" role="3rFUVC">
+        <property role="TrG5h" value="javaRunParameters" />
+        <property role="2LYoGQ" value="true" />
+        <node concept="yHkIc" id="6Q7Z5lsERPV" role="1tU5fm">
+          <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
+        </node>
+      </node>
+      <node concept="2LYoGR" id="6Q7Z5lsERQB" role="3rFUVC">
+        <property role="TrG5h" value="junitParameters" />
+        <property role="2LYoGQ" value="true" />
+        <node concept="yHkIc" id="6Q7Z5lsERYk" role="1tU5fm">
+          <ref role="yHkHG" to="tty3:5gyVhZ1bm9a" resolve="JUnitSettings" />
+        </node>
+      </node>
+      <node concept="2LYoGR" id="6Q7Z5lsERZc" role="3rFUVC">
+        <property role="TrG5h" value="userPlugins" />
+        <node concept="3uibUv" id="6Q7Z5lsES6V" role="1tU5fm">
+          <ref role="3uigEE" node="6Q7Z5lsDI9f" resolve="UserProvidedPluginsConfiguration" />
         </node>
       </node>
     </node>
@@ -9735,12 +9735,6 @@
     </node>
     <node concept="2LYoGM" id="B6nJXVrR8e" role="2LYoGV">
       <property role="TrG5h" value="getUpdatedVMParameters" />
-      <node concept="37vLTG" id="6Q7Z5lsEyYd" role="3clF46">
-        <property role="TrG5h" value="settings" />
-        <node concept="3uibUv" id="6Q7Z5lsEyYe" role="1tU5fm">
-          <ref role="3uigEE" node="58KCQIwclZz" resolve="TestsWithParametersAndConfiguration" />
-        </node>
-      </node>
       <node concept="3Tm6S6" id="B6nJXVrR8f" role="1B3o_S" />
       <node concept="3clFbS" id="B6nJXVrR8i" role="3clF47">
         <node concept="3cpWs8" id="6Q7Z5lsEy4U" role="3cqZAp">
@@ -9797,11 +9791,11 @@
             <node concept="17QB3L" id="B6nJXVsmDA" role="1tU5fm" />
             <node concept="2OqwBi" id="B6nJXVsmDE" role="33vP2m">
               <node concept="2OqwBi" id="B6nJXVsmDF" role="2Oq$k0">
-                <node concept="37vLTw" id="6Q7Z5lsEyeP" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6Q7Z5lsEy4X" resolve="javaRunParameters" />
-                </node>
                 <node concept="yHkDZ" id="B6nJXVsmDL" role="2OqNvi">
                   <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
+                </node>
+                <node concept="37vLTw" id="6Q7Z5lsEyeP" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6Q7Z5lsEy4X" resolve="javaRunParameters" />
                 </node>
               </node>
               <node concept="2sxana" id="B6nJXVsmDM" role="2OqNvi">
@@ -9837,11 +9831,11 @@
               <node concept="2OqwBi" id="B6nJXVsoQc" role="3uHU7B">
                 <node concept="2OqwBi" id="B6nJXVsoQd" role="2Oq$k0">
                   <node concept="2OqwBi" id="B6nJXVsoQe" role="2Oq$k0">
-                    <node concept="37vLTw" id="6Q7Z5lsEyp0" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6Q7Z5lsEy57" resolve="tests2run" />
-                    </node>
                     <node concept="liA8E" id="B6nJXVsoQg" role="2OqNvi">
                       <ref role="37wK5l" node="46IpDBc0N_1" resolve="getParameters" />
+                    </node>
+                    <node concept="37vLTw" id="6Q7Z5lsEyp0" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6Q7Z5lsEy57" resolve="tests2run" />
                     </node>
                   </node>
                   <node concept="liA8E" id="B6nJXVsoQh" role="2OqNvi">
@@ -9865,11 +9859,11 @@
             <property role="TrG5h" value="settingsPath" />
             <node concept="17QB3L" id="B6nJXVsCYm" role="1tU5fm" />
             <node concept="2OqwBi" id="B6nJXVsCYt" role="33vP2m">
-              <node concept="37vLTw" id="6Q7Z5lsEyRl" role="2Oq$k0">
-                <ref role="3cqZAo" node="6Q7Z5lsEy52" resolve="junitParameters" />
-              </node>
               <node concept="2XshWL" id="B6nJXVsCYz" role="2OqNvi">
                 <ref role="2WH_rO" to="tty3:5dbgjInbZ3$" resolve="getSettingsLocation" />
+              </node>
+              <node concept="37vLTw" id="6Q7Z5lsEyRl" role="2Oq$k0">
+                <ref role="3cqZAo" node="6Q7Z5lsEy52" resolve="junitParameters" />
               </node>
             </node>
           </node>
@@ -10011,6 +10005,12 @@
         </node>
       </node>
       <node concept="17QB3L" id="B6nJXVrZ1J" role="3clF45" />
+      <node concept="37vLTG" id="6Q7Z5lsEyYd" role="3clF46">
+        <property role="TrG5h" value="settings" />
+        <node concept="3uibUv" id="6Q7Z5lsEyYe" role="1tU5fm">
+          <ref role="3uigEE" node="58KCQIwclZz" resolve="TestsWithParametersAndConfiguration" />
+        </node>
+      </node>
     </node>
     <node concept="2LYoGM" id="B6nJXVtJgE" role="2LYoGV">
       <property role="TrG5h" value="createPropString" />
@@ -13127,14 +13127,89 @@
         </node>
         <node concept="3clFbJ" id="4FBFA_GGjVm" role="3cqZAp">
           <node concept="3clFbS" id="4FBFA_GGjVo" role="3clFbx">
-            <node concept="1gVbGN" id="4FBFA_GGku3" role="3cqZAp">
-              <node concept="3clFbT" id="4FBFA_GGkvr" role="1gVkn0" />
-              <node concept="3cpWs3" id="4FBFA_GGldh" role="1gVpfI">
-                <node concept="37vLTw" id="4FBFA_GGleG" role="3uHU7w">
-                  <ref role="3cqZAo" node="2Zbjobgva5T" resolve="rawKey" />
+            <node concept="3clFbJ" id="wRbeAfw$vL" role="3cqZAp">
+              <node concept="3clFbS" id="wRbeAfw$vN" role="3clFbx">
+                <node concept="3cpWs8" id="wRbeAfwKzS" role="3cqZAp">
+                  <node concept="3cpWsn" id="wRbeAfwKzT" role="3cpWs9">
+                    <property role="TrG5h" value="testCaseKey" />
+                    <node concept="3uibUv" id="wRbeAfwKzx" role="1tU5fm">
+                      <ref role="3uigEE" to="tpnd:2ZbjobgpQWn" resolve="TestCaseStringKey" />
+                    </node>
+                    <node concept="2OqwBi" id="wRbeAfwKzU" role="33vP2m">
+                      <node concept="1eOMI4" id="wRbeAfwKzV" role="2Oq$k0">
+                        <node concept="10QFUN" id="wRbeAfwKzW" role="1eOMHV">
+                          <node concept="3uibUv" id="wRbeAfwKzX" role="10QFUM">
+                            <ref role="3uigEE" to="tpnd:1XbiPVzvbJi" resolve="TestMethodStringKey" />
+                          </node>
+                          <node concept="37vLTw" id="wRbeAfwKzY" role="10QFUP">
+                            <ref role="3cqZAo" node="2Zbjobgva5T" resolve="rawKey" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="wRbeAfwKzZ" role="2OqNvi">
+                        <ref role="37wK5l" to="tpnd:wRbeAfwB2J" resolve="getTestCaseKey" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
-                <node concept="Xl_RD" id="4FBFA_GGkRx" role="3uHU7B">
-                  <property role="Xl_RC" value="Could not convert the key " />
+                <node concept="RRSsy" id="wRbeAfwJga" role="3cqZAp">
+                  <property role="RRSoG" value="gZ5fksE/warn" />
+                  <node concept="3cpWs3" id="wRbeAfwJAC" role="RRSoy">
+                    <node concept="Xl_RD" id="wRbeAfwJgc" role="3uHU7B">
+                      <property role="Xl_RC" value="probably initialization error: falling back to " />
+                    </node>
+                    <node concept="37vLTw" id="wRbeAfwK$0" role="3uHU7w">
+                      <ref role="3cqZAo" node="wRbeAfwKzT" resolve="testCaseKey" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs6" id="wRbeAfwKph" role="3cqZAp">
+                  <node concept="1rXfSq" id="wRbeAfwKqI" role="3cqZAk">
+                    <ref role="37wK5l" node="2ZbjobgvaaI" resolve="convert" />
+                    <node concept="37vLTw" id="wRbeAfwK_v" role="37wK5m">
+                      <ref role="3cqZAo" node="wRbeAfwKzT" resolve="testCaseKey" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1Wc70l" id="wRbeAfw_FL" role="3clFbw">
+                <node concept="2ZW3vV" id="wRbeAfw_lg" role="3uHU7B">
+                  <node concept="3uibUv" id="wRbeAfw_lB" role="2ZW6by">
+                    <ref role="3uigEE" to="tpnd:1XbiPVzvbJi" resolve="TestMethodStringKey" />
+                  </node>
+                  <node concept="37vLTw" id="wRbeAfw$Kz" role="2ZW6bz">
+                    <ref role="3cqZAo" node="2Zbjobgva5T" resolve="rawKey" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="wRbeAfwILy" role="3uHU7w">
+                  <node concept="1eOMI4" id="wRbeAfwIHi" role="2Oq$k0">
+                    <node concept="10QFUN" id="wRbeAfwATE" role="1eOMHV">
+                      <node concept="3uibUv" id="wRbeAfwAU1" role="10QFUM">
+                        <ref role="3uigEE" to="tpnd:1XbiPVzvbJi" resolve="TestMethodStringKey" />
+                      </node>
+                      <node concept="37vLTw" id="wRbeAfwAQe" role="10QFUP">
+                        <ref role="3cqZAo" node="2Zbjobgva5T" resolve="rawKey" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="wRbeAfwJb9" role="2OqNvi">
+                    <ref role="37wK5l" to="tpnd:wRbeAfwHEm" resolve="isWithInitializationProblem" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="YS8fn" id="wRbeAfwKBI" role="3cqZAp">
+              <node concept="2ShNRf" id="wRbeAfwKDx" role="YScLw">
+                <node concept="1pGfFk" id="wRbeAfxabI" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
+                  <node concept="3cpWs3" id="4FBFA_GGldh" role="37wK5m">
+                    <node concept="37vLTw" id="4FBFA_GGleG" role="3uHU7w">
+                      <ref role="3cqZAo" node="2Zbjobgva5T" resolve="rawKey" />
+                    </node>
+                    <node concept="Xl_RD" id="4FBFA_GGkRx" role="3uHU7B">
+                      <property role="Xl_RC" value="Could not convert the key " />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -13618,9 +13693,6 @@
               <ref role="3uigEE" to="guwi:~File" resolve="File" />
             </node>
             <node concept="2OqwBi" id="$24$8RJan" role="33vP2m">
-              <node concept="liA8E" id="6Q7Z5lsE16G" role="2OqNvi">
-                <ref role="37wK5l" node="6Q7Z5lsDIX1" resolve="getPluginPath" />
-              </node>
               <node concept="2OqwBi" id="6Q7Z5lsE04W" role="2Oq$k0">
                 <node concept="37vLTw" id="6Q7Z5lsE04X" role="2Oq$k0">
                   <ref role="3cqZAo" node="$24$8RH6E" resolve="mySettings" />
@@ -13628,6 +13700,9 @@
                 <node concept="2OwXpG" id="6Q7Z5lsE04Y" role="2OqNvi">
                   <ref role="2Oxat5" node="6Q7Z5lsDXwe" resolve="myUserPlugins" />
                 </node>
+              </node>
+              <node concept="liA8E" id="6Q7Z5lsE16G" role="2OqNvi">
+                <ref role="37wK5l" node="6Q7Z5lsDIX1" resolve="getPluginPath" />
               </node>
             </node>
           </node>
@@ -13641,9 +13716,6 @@
               </node>
             </node>
             <node concept="2OqwBi" id="$24$8RJay" role="33vP2m">
-              <node concept="liA8E" id="6Q7Z5lsE2Tl" role="2OqNvi">
-                <ref role="37wK5l" node="6Q7Z5lsDVOa" resolve="getPluginsToDeploy" />
-              </node>
               <node concept="2OqwBi" id="6Q7Z5lsE1HZ" role="2Oq$k0">
                 <node concept="37vLTw" id="6Q7Z5lsE1I0" role="2Oq$k0">
                   <ref role="3cqZAo" node="$24$8RH6E" resolve="mySettings" />
@@ -13651,6 +13723,9 @@
                 <node concept="2OwXpG" id="6Q7Z5lsE1I1" role="2OqNvi">
                   <ref role="2Oxat5" node="6Q7Z5lsDXwe" resolve="myUserPlugins" />
                 </node>
+              </node>
+              <node concept="liA8E" id="6Q7Z5lsE2Tl" role="2OqNvi">
+                <ref role="37wK5l" node="6Q7Z5lsDVOa" resolve="getPluginsToDeploy" />
               </node>
             </node>
           </node>
@@ -14053,11 +14128,11 @@
       </node>
       <node concept="37vLTG" id="58KCQIwdUG$" role="3clF46">
         <property role="TrG5h" value="javaRun" />
-        <node concept="yHkIc" id="6Q7Z5lsEBCy" role="1tU5fm">
-          <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-        </node>
         <node concept="2AHcQZ" id="58KCQIwdUJz" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+        <node concept="yHkIc" id="6Q7Z5lsEBCy" role="1tU5fm">
+          <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
         </node>
       </node>
       <node concept="37vLTG" id="6Q7Z5lsEA_B" role="3clF46">

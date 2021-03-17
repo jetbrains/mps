@@ -20,6 +20,7 @@ public final class TestMethodStringKey implements TestRawKey {
   }
 
   @Override
+  @NotNull
   public String getTestCaseFqName() {
     return myTestCaseFqName;
   }
@@ -31,6 +32,15 @@ public final class TestMethodStringKey implements TestRawKey {
   @Override
   public String getQualifiedName() {
     return myTestCaseFqName + "." + myTestMethodFqName;
+  }
+
+  public boolean isWithInitializationProblem() {
+    return myTestMethodFqName.equals("initializationError");
+  }
+
+  @NotNull
+  public TestCaseStringKey getTestCaseKey() {
+    return new TestCaseStringKey(myTestCaseFqName);
   }
 
   @Override
@@ -48,7 +58,7 @@ public final class TestMethodStringKey implements TestRawKey {
 
   @Override
   public String toString() {
-    return "TestMethodKey[" + myTestCaseFqName + "." + myTestMethodFqName + "]";
+    return "TestMethodStringKey[" + myTestCaseFqName + "." + myTestMethodFqName + "]";
   }
 
   @NotNull

@@ -41,12 +41,15 @@ import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.roots.ToolbarPanel;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootEntryContainer.ContentEntryEditorListener;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -398,7 +401,13 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
       contentRoot = VirtualFileUtils.toIFile(chosen);
       assert contentRoot != null; // : #toIFile method contract
-      ((FileBasedModelRoot) entry.getModelRoot()).setContentRoot(contentRoot.getPath());
+      FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
+      modelRoot.setContentDirectory(contentRoot);
+      if (modelRoot instanceof JavaClassStubsModelRoot) {
+        // adding by default allows to prevent the misunderstandings like in MPS-33058
+        modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(".", modelRoot.getContentDirectory()));
+      }
+
       return true;
     }
 

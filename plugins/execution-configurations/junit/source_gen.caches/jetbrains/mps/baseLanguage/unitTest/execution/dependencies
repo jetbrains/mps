@@ -71,6 +71,7 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseStringKey" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestType" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.annotations.Immutable" />
@@ -80,7 +81,6 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.StringBuilder" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey" />

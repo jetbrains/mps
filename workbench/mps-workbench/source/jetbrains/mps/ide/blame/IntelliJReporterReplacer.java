@@ -18,16 +18,21 @@ package jetbrains.mps.ide.blame;
 import com.intellij.ExtensionPoints;
 import com.intellij.diagnostic.ITNReporter;
 import com.intellij.ide.AppLifecycleListener;
+import com.intellij.ide.plugins.PluginManagerCore;
+import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.mps.annotations.Internal;
 
 /**
  * Used to disable IntelliJ ErrorReportSubmitter and use only MPS one
  */
+@SuppressWarnings("UnstableApiUsage")
 @Internal
 class IntelliJReporterReplacer implements AppLifecycleListener {
 
   @Override
   public void appStarted() {
-    ExtensionPoints.ERROR_HANDLER_EP.getPoint().unregisterExtension(ITNReporter.class);
+    ExtensionPoints.ERROR_HANDLER_EP.getPoint().unregisterExtensions(
+        (className, adapter) -> !(className.equals(ITNReporter.class.getCanonicalName()) &&
+                                  adapter.getPluginDescriptor().getPluginId() == PluginId.getId(PluginManagerCore.CORE_PLUGIN_ID)), false);
   }
 }

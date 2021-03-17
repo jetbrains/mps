@@ -24,10 +24,7 @@ public final class TestNodeEvent {
 
   @Override
   public String toString() {
-    StringBuilder builder = new StringBuilder();
-    builder.append(myTestNodeKey);
-    builder.append(myRawEvent.toString());
-    return builder.toString();
+    return myTestNodeKey.toString() + myRawEvent;
   }
 
   public String getTestCaseFqName() {
@@ -69,7 +66,7 @@ public final class TestNodeEvent {
 
   @Override
   public boolean equals(Object o) {
-    if (o == null || !(o instanceof TestNodeEvent)) {
+    if (!(o instanceof TestNodeEvent)) {
       return false;
     }
     TestNodeEvent event = (TestNodeEvent) o;
