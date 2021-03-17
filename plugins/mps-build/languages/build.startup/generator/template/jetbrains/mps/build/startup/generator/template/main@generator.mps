@@ -1068,16 +1068,16 @@
           </node>
           <node concept="2pNNFK" id="7d8Y7G7OUe0" role="3o6s8t">
             <property role="2pNNFO" value="array" />
+            <node concept="2pNNFK" id="7d8Y7G7OUGg" role="3o6s8t">
+              <property role="2pNNFO" value="string" />
+              <node concept="3o6iSG" id="7d8Y7G7OUGk" role="3o6s8t">
+                <property role="3o6i5n" value="arm64" />
+              </node>
+            </node>
             <node concept="2pNNFK" id="7d8Y7G7OUGc" role="3o6s8t">
               <property role="2pNNFO" value="string" />
               <node concept="3o6iSG" id="7d8Y7G7OUGe" role="3o6s8t">
                 <property role="3o6i5n" value="x86_64" />
-              </node>
-            </node>
-            <node concept="2pNNFK" id="7d8Y7G7OUGg" role="3o6s8t">
-              <property role="2pNNFO" value="string" />
-              <node concept="3o6iSG" id="7d8Y7G7OUGk" role="3o6s8t">
-                <property role="3o6i5n" value="i386" />
               </node>
             </node>
           </node>
@@ -1557,18 +1557,6 @@
                 </node>
               </node>
               <node concept="3o6iSG" id="1KJW3X3W5FY" role="3o6s8t" />
-              <node concept="2pNNFK" id="7d8Y7G7P4fl" role="3o6s8t">
-                <property role="2pNNFO" value="key" />
-                <node concept="3o6iSG" id="7d8Y7G7P4fz" role="3o6s8t">
-                  <property role="3o6i5n" value="idea.java.redist" />
-                </node>
-              </node>
-              <node concept="2pNNFK" id="7d8Y7G7P4fP" role="3o6s8t">
-                <property role="2pNNFO" value="string" />
-                <node concept="3o6iSG" id="7d8Y7G7P4g5" role="3o6s8t">
-                  <property role="3o6i5n" value="NoJavaDistribution" />
-                </node>
-              </node>
               <node concept="2pNNFK" id="7d8Y7G7P4gp" role="3o6s8t">
                 <property role="2pNNFO" value="key" />
                 <node concept="3o6iSG" id="7d8Y7G7P4gF" role="3o6s8t">

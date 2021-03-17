@@ -1,6 +1,6 @@
 #!/bin/bash
 # usage: mps-sign buildcode keychain password workdir codesignstring
-#   input: buildcode.zip, [buildcode-jdk.tar.gz], [buildcode-Info.plist]; output: signed buildcode.sit
+#   input: buildcode.zip, [buildcode-jdk.tar.gz]; output: signed buildcode.sit
 export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 export COPYFILE_DISABLE=true
 export CODESIGN_STRING=$5
@@ -18,10 +18,6 @@ BUILD_NAME=$(ls ${WORKDIR}/${EXPLODED}/)
 JB_CERT="Developer ID Application: JetBrains"
 BUNDLE_ID="com.jetbrains.mps"
 
-if [ -f ${WORKDIR}/$1-Info.plist ]; then
-  echo "Modifying Info.plist"
-  cp ${WORKDIR}/$1-Info.plist ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents/Info.plist
-fi
 if [ -f ${WORKDIR}/$1-jdk.tar.gz ]; then
   echo "Copying JDK: ${WORKDIR}/$1-jdk.tar.gz to ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents/jbr"
   cd ${WORKDIR}/${EXPLODED}/"$BUILD_NAME"/Contents
