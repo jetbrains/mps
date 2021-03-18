@@ -84,28 +84,21 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
                 Collection<SNode> tlist4 = null;
                 final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_58_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5));
                 tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/5616724231236702708", context2);
-                for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-                  tnode3.addChild(myAggregationLinks[0], child5);
-                }
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[0], tlist4);
               }
               {
-                Collection<SNode> tlist6 = null;
-                tlist6 = environment.callSite(new Template_reduce_ConceptMethodCallReflective(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6417869169768657677")).apply(context2);
-                for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
-                  tnode3.addChild(myAggregationLinks[1], child7);
-                }
-                // TODO validate child
+                Collection<SNode> tlist5 = null;
+                tlist5 = environment.callSite(new Template_reduce_ConceptMethodCallReflective(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6417869169768657677")).apply(context2);
+                environment.aggregate(tnode3, myAggregationLinks[1], tlist5);
               }
             }
-            tnode2.addChild(myAggregationLinks[2], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[2], tnode3);
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
       } else {
-        Collection<SNode> tlist8 = environment.callSite(new Template_reduce_ConceptMethodCallReflective(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702767")).apply(context);
-        tlist1 = tlist8;
+        Collection<SNode> tlist6 = environment.callSite(new Template_reduce_ConceptMethodCallReflective(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702767")).apply(context);
+        tlist1 = tlist6;
       }
       return tlist1;
     }

@@ -88,10 +88,7 @@ public class Mapping_mc_pointer_operations extends MapConfigBase implements Temp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_127_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_bhg3pv_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_bhg3pv_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/465010144943864814", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);

@@ -62,18 +62,15 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
             {
               final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
               environment.associate(tnode3, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.behavior.api/)", "~BehaviorAspectDescriptor");
-              tnode2.addChild(myAggregationLinks[0], tnode3);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
             }
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
               environment.resolveInTemplateLater(tnode4, myAssociationLinks[1], templateNode_q5kmqu_c0a0a1a2a1a1a2a2f, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4565427742314373491", "aspectClass", context2);
-              tnode2.addChild(myAggregationLinks[1], tnode4);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tnode4);
             }
           }
-          tnode1.addChild(myAggregationLinks[2], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[2], tnode2);
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
@@ -90,8 +87,7 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
                     {
                       final SNode tnode8 = environment.createOutputNode(myConcepts[3]);
                       environment.resolveInTemplateLater(tnode8, myAssociationLinks[1], templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2f, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4565427742314373491", "aspectClass", context5);
-                      tnode7.addChild(myAggregationLinks[3], tnode8);
-                      // TODO validate child
+                      environment.aggregate(tnode7, myAggregationLinks[3], tnode8);
                     }
                     {
                       final SNode tnode9 = environment.createOutputNode(myConcepts[7]);
@@ -110,28 +106,22 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
                                   return QueriesGenerated.referenceMacro_GetReferent_10_0(createQueryContext());
                                 }
                               });
-                              tnode10.addChild(myAggregationLinks[4], tnode11);
-                              // TODO validate child
+                              environment.aggregate(tnode10, myAggregationLinks[4], tnode11);
                             }
                           }
-                          tnode9.addChild(myAggregationLinks[5], tnode10);
-                          // TODO validate child
+                          environment.aggregate(tnode9, myAggregationLinks[5], tnode10);
                         }
                       }
-                      tnode7.addChild(myAggregationLinks[6], tnode9);
-                      // TODO validate child
+                      environment.aggregate(tnode7, myAggregationLinks[6], tnode9);
                     }
                   }
-                  tnode6.addChild(myAggregationLinks[7], tnode7);
-                  // TODO validate child
+                  environment.aggregate(tnode6, myAggregationLinks[7], tnode7);
                 }
               }
-              tnode5.addChild(myAggregationLinks[8], tnode6);
-              // TODO validate child
+              environment.aggregate(tnode5, myAggregationLinks[8], tnode6);
             }
           }
-          tnode1.addChild(myAggregationLinks[9], tnode5);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[9], tnode5);
         }
       }
       return TemplateUtil.singletonList(tnode1);

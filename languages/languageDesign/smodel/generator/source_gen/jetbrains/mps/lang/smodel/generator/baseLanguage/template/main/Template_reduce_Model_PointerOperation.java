@@ -45,10 +45,7 @@ public class Template_reduce_Model_PointerOperation extends TemplateDeclarationB
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_131_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_fanyga_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_fanyga_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3506770386464481071", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

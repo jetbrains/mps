@@ -75,15 +75,11 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
               }
             }
           }
-          for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child4);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-          tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child
+          final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -118,15 +114,11 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
               }
             }
           }
-          for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child4);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-          tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child
+          final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
       return TemplateUtil.singletonList(tnode1);

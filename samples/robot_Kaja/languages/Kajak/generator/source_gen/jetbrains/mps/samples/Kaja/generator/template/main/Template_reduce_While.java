@@ -42,27 +42,20 @@ public class Template_reduce_While extends TemplateDeclarationBase {
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_8_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ypk27y_b0a0c0b0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_ypk27y_b0a0c0b0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039667479", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
-        final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+        final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         {
           TemplateContext context2 = context1.subContext();
           {
-            Collection<SNode> tlist5 = null;
-            final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_8_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ypk27y_b0a0c0b0b0c0c0g));
-            tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_ypk27y_b0a0c0b0b0c0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039939763", context2);
-            for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
-              tnode4.addChild(myAggregationLinks[1], child6);
-            }
-            // TODO validate child
+            Collection<SNode> tlist4 = null;
+            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_8_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ypk27y_b0a0c0b0b0c0c0g));
+            tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_ypk27y_b0a0c0b0b0c0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039939763", context2);
+            environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
           }
         }
-        tnode1.addChild(myAggregationLinks[2], tnode4);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tnode3);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

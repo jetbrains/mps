@@ -46,10 +46,7 @@ public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase 
         Collection<SNode> tlist2 = null;
         final Iterable<SNode> copyListInput2 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro_5ou570_b0a0a1a4a2a5));
         tlist2 = environment.copyNodes(copyListInput2, copySrcListMacro_5ou570_b0a0a1a4a2a5, "tpl/r:00000000-0000-4000-0000-011c895905f6/1195170418623", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

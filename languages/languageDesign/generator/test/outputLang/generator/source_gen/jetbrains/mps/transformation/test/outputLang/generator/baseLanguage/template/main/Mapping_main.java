@@ -77,10 +77,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = context1.getInput();
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_ief6mt_b0a0c0c0c0b7, "tpl/r:00000000-0000-4000-0000-011c89590606/1209604251671", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -128,10 +125,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = context1.getInput();
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_ief6mt_b0a0c0c0c0b9, "tpl/r:00000000-0000-4000-0000-011c89590606/1209662301918", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -167,18 +161,15 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             TemplateContext context2 = context1.subContext();
             {
               final SNode tnode3 = environment.createOutputNode(myConcepts[5]);
-              tnode2.addChild(myAggregationLinks[1], tnode3);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tnode3);
             }
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
               tnode4.setProperty(myProperties[1], "0");
-              tnode2.addChild(myAggregationLinks[2], tnode4);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[2], tnode4);
             }
           }
-          tnode1.addChild(myAggregationLinks[3], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[3], tnode2);
         }
       }
       final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
@@ -191,8 +182,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             TemplateContext context4 = context3.subContext();
             {
               final SNode tnode7 = environment.createOutputNode(myConcepts[5]);
-              tnode6.addChild(myAggregationLinks[1], tnode7);
-              // TODO validate child
+              environment.aggregate(tnode6, myAggregationLinks[1], tnode7);
             }
             {
               final SNode tnode8 = environment.createOutputNode(myConcepts[6]);
@@ -201,22 +191,18 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                 {
                   final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
                   environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode_ief6mt_c0a0a1a1a1a3a1a1a4a1l, "tpl/r:00000000-0000-4000-0000-011c89590606/6010543442198681234", "i", context5);
-                  tnode8.addChild(myAggregationLinks[4], tnode9);
-                  // TODO validate child
+                  environment.aggregate(tnode8, myAggregationLinks[4], tnode9);
                 }
                 {
                   final SNode tnode10 = environment.createOutputNode(myConcepts[2]);
                   tnode10.setProperty(myProperties[1], "2");
-                  tnode8.addChild(myAggregationLinks[5], tnode10);
-                  // TODO validate child
+                  environment.aggregate(tnode8, myAggregationLinks[5], tnode10);
                 }
               }
-              tnode6.addChild(myAggregationLinks[2], tnode8);
-              // TODO validate child
+              environment.aggregate(tnode6, myAggregationLinks[2], tnode8);
             }
           }
-          tnode5.addChild(myAggregationLinks[3], tnode6);
-          // TODO validate child
+          environment.aggregate(tnode5, myAggregationLinks[3], tnode6);
         }
       }
       Collection<SNode> tlist11 = TemplateUtil.asList(tnode1, tnode5);
@@ -272,39 +258,29 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                       Collection<SNode> tlist5 = null;
                       final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_0_0(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_ief6mt_b0a0c0b0b0b0b0b0b0b0f0b31));
                       tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_ief6mt_b0a0c0b0b0b0b0b0b0b0f0b31, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288283512", context4);
-                      for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
-                        tnode4.addChild(myAggregationLinks[6], child6);
-                      }
-                      // TODO validate child
+                      environment.aggregate(tnode4, myAggregationLinks[6], tlist5);
                     }
                   }
-                  tnode3.addChild(myAggregationLinks[5], tnode4);
-                  // TODO validate child
+                  environment.aggregate(tnode3, myAggregationLinks[5], tnode4);
                 }
                 {
-                  final SNode tnode7 = environment.createOutputNode(myConcepts[7]);
+                  final SNode tnode6 = environment.createOutputNode(myConcepts[7]);
                   {
                     TemplateContext context5 = context3.subContext();
                     {
-                      Collection<SNode> tlist8 = null;
-                      final SNode copySrcInput8 = QueriesGenerated.sourceNodeQuery_0_1(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_ief6mt_b0a0c0b0b0c0b0b0b0b0f0b31));
-                      tlist8 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput8), copySrcMacro_ief6mt_b0a0c0b0b0c0b0b0b0b0f0b31, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288283495", context5);
-                      for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
-                        tnode7.addChild(myAggregationLinks[6], child9);
-                      }
-                      // TODO validate child
+                      Collection<SNode> tlist7 = null;
+                      final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_0_1(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_ief6mt_b0a0c0b0b0c0b0b0b0b0f0b31));
+                      tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_ief6mt_b0a0c0b0b0c0b0b0b0b0f0b31, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288283495", context5);
+                      environment.aggregate(tnode6, myAggregationLinks[6], tlist7);
                     }
                   }
-                  tnode3.addChild(myAggregationLinks[4], tnode7);
-                  // TODO validate child
+                  environment.aggregate(tnode3, myAggregationLinks[4], tnode6);
                 }
               }
-              tnode2.addChild(myAggregationLinks[7], tnode3);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[7], tnode3);
             }
           }
-          tnode1.addChild(myAggregationLinks[6], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[6], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -329,19 +305,13 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_0_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ief6mt_b0a0c0b0f0b41));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_ief6mt_b0a0c0b0f0b41, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288387817", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[5], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[5], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
-          final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_0_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ief6mt_b0a0c0c0f0b41));
-          tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_ief6mt_b0a0c0c0f0b41, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288387816", context1);
-          for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[4], child5);
-          }
-          // TODO validate child
+          Collection<SNode> tlist3 = null;
+          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_0_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ief6mt_b0a0c0c0f0b41));
+          tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_ief6mt_b0a0c0c0f0b41, "tpl/r:00000000-0000-4000-0000-011c89590606/2681305894288387816", context1);
+          environment.aggregate(tnode1, myAggregationLinks[4], tlist3);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -390,8 +360,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             {
               final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
               tnode3.setProperty(myProperties[1], "22");
-              tnode2.addChild(myAggregationLinks[4], tnode3);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[4], tnode3);
             }
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[12]);
@@ -400,22 +369,18 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
                 {
                   final SNode tnode5 = environment.createOutputNode(myConcepts[13]);
                   SNodeAccessUtil.setPropertyValue(tnode5, myProperties[3], QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context3, "", propertyMacro_ief6mt_c0a2a0a1a1a1a2a1a1a5a1q)));
-                  tnode4.addChild(myAggregationLinks[8], tnode5);
-                  // TODO validate child
+                  environment.aggregate(tnode4, myAggregationLinks[8], tnode5);
                 }
                 {
                   final SNode tnode6 = environment.createOutputNode(myConcepts[14]);
                   environment.associate(tnode6, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.length()");
-                  tnode4.addChild(myAggregationLinks[9], tnode6);
-                  // TODO validate child
+                  environment.aggregate(tnode4, myAggregationLinks[9], tnode6);
                 }
               }
-              tnode2.addChild(myAggregationLinks[5], tnode4);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[5], tnode4);
             }
           }
-          tnode1.addChild(myAggregationLinks[7], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[7], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -460,22 +425,17 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             {
               final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
               tnode3.setProperty(myProperties[1], "12");
-              tnode2.addChild(myAggregationLinks[4], tnode3);
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[4], tnode3);
             }
             {
               Collection<SNode> tlist4 = null;
               TemplateContext context3 = context2;
               context3 = context3.withVariable("node", ((SNode) context3.getPatternVariable("patternVar_ref")));
               tlist4 = environment.callSite(new Template_process42(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "6509983489805214623")).apply(context3);
-              for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-                tnode2.addChild(myAggregationLinks[5], child5);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[5], tlist4);
             }
           }
-          tnode1.addChild(myAggregationLinks[7], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[7], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);

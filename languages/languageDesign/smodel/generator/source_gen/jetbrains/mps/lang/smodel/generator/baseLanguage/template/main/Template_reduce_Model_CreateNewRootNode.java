@@ -46,34 +46,25 @@ public class Template_reduce_Model_CreateNewRootNode extends TemplateDeclaration
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_20_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_vvu7kv_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_vvu7kv_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3470264887695907505", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
+      }
+      {
+        Collection<SNode> tlist3 = null;
+        final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_20_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_vvu7kv_b0a0c0e0c0g));
+        tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_vvu7kv_b0a0c0e0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3470264887695907513", context1);
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
       }
       {
         Collection<SNode> tlist4 = null;
-        final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_20_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_vvu7kv_b0a0c0e0c0g));
-        tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_vvu7kv_b0a0c0e0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3470264887695907513", context1);
-        for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-          tnode1.addChild(myAggregationLinks[0], child5);
-        }
-        // TODO validate child
-      }
-      {
-        Collection<SNode> tlist6 = null;
-        SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_20_2(new SourceSubstituteMacroNodeContext(context1, callMacro_vvu7kv_b0a0a1a5a2a6));
+        SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_20_2(new SourceSubstituteMacroNodeContext(context1, callMacro_vvu7kv_b0a0a1a5a2a6));
         TemplateContext context2 = context1;
-        context2 = context2.subContext(null, callInputNode6);
-        if (callInputNode6 != null) {
-          tlist6 = environment.callSite(new Template_reduce_ConceptDeclaration2SConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3470264887695907522")).apply(context2);
+        context2 = context2.subContext(null, callInputNode4);
+        if (callInputNode4 != null) {
+          tlist4 = environment.callSite(new Template_reduce_ConceptDeclaration2SConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3470264887695907522")).apply(context2);
         } else {
-          tlist6 = Collections.emptyList();
+          tlist4 = Collections.emptyList();
         }
-        for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
-          tnode1.addChild(myAggregationLinks[0], child7);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist4);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

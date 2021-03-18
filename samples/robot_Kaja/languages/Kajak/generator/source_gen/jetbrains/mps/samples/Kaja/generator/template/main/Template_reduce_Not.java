@@ -42,10 +42,7 @@ public class Template_reduce_Not extends TemplateDeclarationBase {
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_6_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_mriqof_b0a0c0b0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_mriqof_b0a0c0b0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039654090", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

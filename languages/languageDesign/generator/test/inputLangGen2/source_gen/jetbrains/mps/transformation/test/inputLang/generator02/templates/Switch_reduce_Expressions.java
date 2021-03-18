@@ -81,18 +81,14 @@ public class Switch_reduce_Expressions extends TemplateSwitchBase implements Tem
                 });
                 tlist4.add(tnode5);
               }
-              for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-                tnode3.addChild(myAggregationLinks[0], child6);
-              }
-              // TODO validate child
+              environment.aggregate(tnode3, myAggregationLinks[0], tlist4);
             }
           }
-          tnode2.addChild(myAggregationLinks[1], tnode3);
-          // TODO validate child
+          environment.aggregate(tnode2, myAggregationLinks[1], tnode3);
         }
       }
-      Collection<SNode> tlist7 = TemplateUtil.asList(tlist1, tnode2);
-      return tlist7;
+      Collection<SNode> tlist6 = TemplateUtil.asList(tlist1, tnode2);
+      return tlist6;
     }
   }
   /*package*/ final class ReductionRule1 extends ReductionRuleBase {

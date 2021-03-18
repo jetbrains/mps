@@ -53,18 +53,15 @@ public class Template_reduce_NodeIdentity_SNodeReference extends TemplateDeclara
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
             SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_124_0(new PropertyMacroContext(context3, "modelUID", propertyMacro_6cbgkw_c0a2a0a1a2a1a1a5a6)));
-            tnode3.addChild(myAggregationLinks[0], tnode4);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[0], tnode4);
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
             SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_124_1(new PropertyMacroContext(context3, "nodeID", propertyMacro_6cbgkw_c0a2a0a1a3a1a1a5a6)));
-            tnode3.addChild(myAggregationLinks[0], tnode5);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[0], tnode5);
           }
         }
-        tnode2.addChild(myAggregationLinks[1], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode2, myAggregationLinks[1], tnode3);
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

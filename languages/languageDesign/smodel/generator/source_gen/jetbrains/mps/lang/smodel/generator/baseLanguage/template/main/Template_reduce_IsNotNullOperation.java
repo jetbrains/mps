@@ -44,21 +44,16 @@ public class Template_reduce_IsNotNullOperation extends TemplateDeclarationBase 
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            tnode2.addChild(myAggregationLinks[0], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
           }
           {
             Collection<SNode> tlist4 = null;
             final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_31_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_r8mg05_b0a0c0c0b0b0c0g));
             tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_r8mg05_b0a0c0c0b0b0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1172008609677", context2);
-            for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-              tnode2.addChild(myAggregationLinks[1], child5);
-            }
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
           }
         }
-        tnode1.addChild(myAggregationLinks[2], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tnode2);
       }
     }
     FragmentResult rv = nodeFragment(3, tnode1);

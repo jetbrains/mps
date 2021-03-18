@@ -13,7 +13,6 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -42,15 +41,11 @@ public class Template_notNullCheck extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         Collection<SNode> tlist3 = environment.callSiteNode(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832334063"), context1);
-        for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-          tnode1.addChild(myAggregationLinks[1], child4);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[1], tlist3);
       }
     }
     FragmentResult rv = nodeFragment(2, tnode1);

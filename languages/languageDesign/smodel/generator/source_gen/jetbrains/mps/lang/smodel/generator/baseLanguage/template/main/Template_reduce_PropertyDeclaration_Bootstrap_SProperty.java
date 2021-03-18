@@ -44,32 +44,27 @@ public class Template_reduce_PropertyDeclaration_Bootstrap_SProperty extends Tem
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_72_0(new PropertyMacroContext(context1, "0l", propertyMacro_gue0w4_c0a2a0a1a3a2a6)));
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_72_1(new PropertyMacroContext(context1, "0l", propertyMacro_gue0w4_c0a2a0a1a4a2a6)));
-        tnode1.addChild(myAggregationLinks[0], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode3);
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_72_2(new PropertyMacroContext(context1, "0l", propertyMacro_gue0w4_c0a2a0a1a5a2a6)));
-        tnode1.addChild(myAggregationLinks[0], tnode4);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
         SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_72_3(new PropertyMacroContext(context1, "0l", propertyMacro_gue0w4_c0a2a0a1a6a2a6)));
-        tnode1.addChild(myAggregationLinks[0], tnode5);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode5);
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
         SNodeAccessUtil.setPropertyValue(tnode6, myProperties[1], QueriesGenerated.propertyMacro_GetValue_72_4(new PropertyMacroContext(context1, "name", propertyMacro_gue0w4_c0a2a0a1a7a2a6)));
-        tnode1.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode6);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

@@ -15,8 +15,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -49,30 +49,23 @@ public class Template_reduce_LocalBehaviorMethodCallWithCast extends TemplateDec
             {
               Collection<SNode> tlist4 = null;
               tlist4 = environment.callSite(new Template_reduce_LocalBehaviorMethodCall(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037154337")).apply(context2);
-              for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-                tnode3.addChild(myAggregationLinks[0], child5);
-              }
-              // TODO validate child
+              environment.aggregate(tnode3, myAggregationLinks[0], tlist4);
             }
             {
-              Collection<SNode> tlist6 = null;
-              final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_6pcqdy_b0a0c0c0b0b0b0c0g));
-              tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_6pcqdy_b0a0c0c0b0b0b0c0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4598718932037174208", context2);
-              for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
-                tnode3.addChild(myAggregationLinks[1], child7);
-              }
-              // TODO validate child
+              Collection<SNode> tlist5 = null;
+              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_6pcqdy_b0a0c0c0b0b0b0c0g));
+              tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_6pcqdy_b0a0c0c0b0b0b0c0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/4598718932037174208", context2);
+              environment.aggregate(tnode3, myAggregationLinks[1], tlist5);
             }
           }
-          tnode2.addChild(myAggregationLinks[2], tnode3);
-          // TODO validate child
+          environment.aggregate(tnode2, myAggregationLinks[2], tnode3);
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist8 = null;
-      tlist8 = environment.callSite(new Template_reduce_LocalBehaviorMethodCall(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037205949")).apply(context);
-      tlist1 = tlist8;
+      Collection<SNode> tlist6 = null;
+      tlist6 = environment.callSite(new Template_reduce_LocalBehaviorMethodCall(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037205949")).apply(context);
+      tlist1 = tlist6;
     }
     FragmentResult rv = listFragment(3, tlist1);
     return rv;

@@ -75,10 +75,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_50_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b5));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b5, "tpl/r:00000000-0000-4000-0000-011c89590303/6253932327129588405", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -100,10 +97,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_50_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/6253932327129609774", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -125,10 +119,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_50_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b7));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b7, "tpl/r:00000000-0000-4000-0000-011c89590303/2926695023085834537", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -150,10 +141,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_50_4(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b8));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b8, "tpl/r:00000000-0000-4000-0000-011c89590303/6253932327129609790", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -175,10 +163,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_50_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b9));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b9, "tpl/r:00000000-0000-4000-0000-011c89590303/2071115835942461384", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -200,10 +185,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_50_6(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_yrbd5d_b0a0c0d0c0b01));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_yrbd5d_b0a0c0d0c0b01, "tpl/r:00000000-0000-4000-0000-011c89590303/6079722741456957843", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);

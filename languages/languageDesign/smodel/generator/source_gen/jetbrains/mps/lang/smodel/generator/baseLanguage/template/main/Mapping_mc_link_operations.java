@@ -54,25 +54,19 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0b3));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0b3, "tpl/r:00000000-0000-4000-0000-011c89590303/1205438232670", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
-          SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a4a2a1d));
+          Collection<SNode> tlist3 = null;
+          SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a4a2a1d));
           TemplateContext context2 = context1;
-          context2 = context2.subContext(null, callInputNode4);
-          if (callInputNode4 != null) {
-            tlist4 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281")).apply(context2);
+          context2 = context2.subContext(null, callInputNode3);
+          if (callInputNode3 != null) {
+            tlist3 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281")).apply(context2);
           } else {
-            tlist4 = Collections.emptyList();
+            tlist3 = Collections.emptyList();
           }
-          for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child5);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -98,53 +92,44 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_2(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000387772", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
+          Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_2_3(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2e));
-            if (switchInput4 == null) {
-              tlist4 = Collections.emptyList();
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_3(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2e));
+            if (switchInput3 == null) {
+              tlist3 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4 = context1;
-              switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2e, switchContext4);
-              if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                tlist4 = TemplateUtil.singletonList(tnode5);
+              TemplateContext switchContext3 = context1;
+              switchContext3 = switchContext3.subContext(null, switchInput3);
+              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2e, switchContext3);
+              if (tlist3 == null) {
+                final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+                tlist3 = TemplateUtil.singletonList(tnode4);
               }
             }
           }
-          for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child6);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
         {
-          Collection<SNode> tlist7 = Collections.emptyList();
+          Collection<SNode> tlist5 = Collections.emptyList();
           if (QueriesGenerated.ifMacro_Condition_2_0(new IfMacroContext(context1, ifMacroRef_jzpaek_b0a0b0f0c0c4))) {
-            Collection<SNode> tlist8 = null;
-            SNode callInputNode8 = QueriesGenerated.sourceNodeQuery_2_4(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a1a5a2a2e));
+            Collection<SNode> tlist6 = null;
+            SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_2_4(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a1a5a2a2e));
             TemplateContext context2 = context1;
-            context2 = context2.subContext(null, callInputNode8);
-            if (callInputNode8 != null) {
-              tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145282")).apply(context2);
+            context2 = context2.subContext(null, callInputNode6);
+            if (callInputNode6 != null) {
+              tlist6 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145282")).apply(context2);
             } else {
-              tlist8 = Collections.emptyList();
+              tlist6 = Collections.emptyList();
             }
-            tlist7 = tlist8;
+            tlist5 = tlist6;
           } else {
-            final SNode tnode9 = environment.createOutputNode(myConcepts[1]);
-            tlist7 = TemplateUtil.singletonList(tnode9);
+            final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
+            tlist5 = TemplateUtil.singletonList(tnode7);
           }
-          for (SNode child10 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(myAggregationLinks[0], child10);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist5);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -170,40 +155,31 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_5(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c5));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991648", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
+          Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_2_6(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2f));
-            if (switchInput4 == null) {
-              tlist4 = Collections.emptyList();
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_6(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2f));
+            if (switchInput3 == null) {
+              tlist3 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4 = context1;
-              switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2f, switchContext4);
-              if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                tlist4 = TemplateUtil.singletonList(tnode5);
+              TemplateContext switchContext3 = context1;
+              switchContext3 = switchContext3.subContext(null, switchInput3);
+              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2f, switchContext3);
+              if (tlist3 == null) {
+                final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+                tlist3 = TemplateUtil.singletonList(tnode4);
               }
             }
           }
-          for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child6);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
         {
-          Collection<SNode> tlist7 = null;
-          final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_2_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0f0c0c5));
-          tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_jzpaek_b0a0c0f0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991666", context1);
-          for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(myAggregationLinks[0], child8);
-          }
-          // TODO validate child
+          Collection<SNode> tlist5 = null;
+          final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_2_7(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0f0c0c5));
+          tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_jzpaek_b0a0c0f0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/6246743999000991666", context1);
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist5);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -225,52 +201,43 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_8(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0b6));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0b6, "tpl/r:00000000-0000-4000-0000-011c89590303/3719571763733973059", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
+          Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_2_9(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a1g));
-            if (switchInput4 == null) {
-              tlist4 = Collections.emptyList();
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_9(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a1g));
+            if (switchInput3 == null) {
+              tlist3 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4 = context1;
-              switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a1g, switchContext4);
-              if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                tlist4 = TemplateUtil.singletonList(tnode5);
+              TemplateContext switchContext3 = context1;
+              switchContext3 = switchContext3.subContext(null, switchInput3);
+              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a1g, switchContext3);
+              if (tlist3 == null) {
+                final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+                tlist3 = TemplateUtil.singletonList(tnode4);
               }
             }
           }
-          for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child6);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
         {
-          Collection<SNode> tlist7 = null;
+          Collection<SNode> tlist5 = null;
           {
-            final SNode switchInput7 = QueriesGenerated.sourceNodeQuery_2_10(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a5a2a1g));
-            if (switchInput7 == null) {
-              tlist7 = Collections.emptyList();
+            final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_2_10(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a5a2a1g));
+            if (switchInput5 == null) {
+              tlist5 = Collections.emptyList();
             } else {
-              TemplateContext switchContext7 = context1;
-              switchContext7 = switchContext7.subContext(null, switchInput7);
-              tlist7 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a5a2a1g, switchContext7);
-              if (tlist7 == null) {
-                final SNode tnode8 = environment.createOutputNode(myConcepts[1]);
-                tlist7 = TemplateUtil.singletonList(tnode8);
+              TemplateContext switchContext5 = context1;
+              switchContext5 = switchContext5.subContext(null, switchInput5);
+              tlist5 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a5a2a1g, switchContext5);
+              if (tlist5 == null) {
+                final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
+                tlist5 = TemplateUtil.singletonList(tnode6);
               }
             }
           }
-          for (SNode child9 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(myAggregationLinks[0], child9);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist5);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -296,31 +263,25 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_11(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c7));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532830808", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
+          Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_2_12(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2h));
-            if (switchInput4 == null) {
-              tlist4 = Collections.emptyList();
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_12(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2h));
+            if (switchInput3 == null) {
+              tlist3 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4 = context1;
-              switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2h, switchContext4);
-              if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                tlist4 = TemplateUtil.singletonList(tnode5);
+              TemplateContext switchContext3 = context1;
+              switchContext3 = switchContext3.subContext(null, switchInput3);
+              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2h, switchContext3);
+              if (tlist3 == null) {
+                final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+                tlist3 = TemplateUtil.singletonList(tnode4);
               }
             }
           }
-          for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child6);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -346,46 +307,37 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_2_13(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jzpaek_b0a0c0d0c0c8));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jzpaek_b0a0c0d0c0c8, "tpl/r:00000000-0000-4000-0000-011c89590303/9051222292532842598", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
+          Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_2_14(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2i));
-            if (switchInput4 == null) {
-              tlist4 = Collections.emptyList();
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_2_14(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jzpaek_b0a0a0a1a4a2a2i));
+            if (switchInput3 == null) {
+              tlist3 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4 = context1;
-              switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2i, switchContext4);
-              if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                tlist4 = TemplateUtil.singletonList(tnode5);
+              TemplateContext switchContext3 = context1;
+              switchContext3 = switchContext3.subContext(null, switchInput3);
+              tlist3 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2i, switchContext3);
+              if (tlist3 == null) {
+                final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+                tlist3 = TemplateUtil.singletonList(tnode4);
               }
             }
           }
-          for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child6);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
         {
-          Collection<SNode> tlist7 = null;
-          SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_2_15(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a5a2a2i));
+          Collection<SNode> tlist5 = null;
+          SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_2_15(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a5a2a2i));
           TemplateContext context2 = context1;
-          context2 = context2.subContext(null, callInputNode7);
-          if (callInputNode7 != null) {
-            tlist7 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779")).apply(context2);
+          context2 = context2.subContext(null, callInputNode5);
+          if (callInputNode5 != null) {
+            tlist5 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779")).apply(context2);
           } else {
-            tlist7 = Collections.emptyList();
+            tlist5 = Collections.emptyList();
           }
-          for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
-            tnode1.addChild(myAggregationLinks[0], child8);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist5);
         }
       }
       return TemplateUtil.singletonList(tnode1);

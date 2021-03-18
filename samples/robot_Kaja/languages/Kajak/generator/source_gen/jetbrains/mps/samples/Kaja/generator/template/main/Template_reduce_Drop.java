@@ -52,12 +52,10 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                   {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
                     environment.associate(tnode5, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "6405700485436169962");
-                    tnode4.addChild(myAggregationLinks[0], tnode5);
-                    // TODO validate child
+                    environment.aggregate(tnode4, myAggregationLinks[0], tnode5);
                   }
                 }
-                tnode3.addChild(myAggregationLinks[1], tnode4);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[1], tnode4);
               }
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -70,12 +68,10 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                       {
                         final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
                         environment.associate(tnode8, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570096");
-                        tnode7.addChild(myAggregationLinks[2], tnode8);
-                        // TODO validate child
+                        environment.aggregate(tnode7, myAggregationLinks[2], tnode8);
                       }
                     }
-                    tnode6.addChild(myAggregationLinks[3], tnode7);
-                    // TODO validate child
+                    environment.aggregate(tnode6, myAggregationLinks[3], tnode7);
                   }
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[5]);
@@ -84,16 +80,13 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                       {
                         final SNode tnode10 = environment.createOutputNode(myConcepts[4]);
                         environment.associate(tnode10, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
-                        tnode9.addChild(myAggregationLinks[2], tnode10);
-                        // TODO validate child
+                        environment.aggregate(tnode9, myAggregationLinks[2], tnode10);
                       }
                     }
-                    tnode6.addChild(myAggregationLinks[3], tnode9);
-                    // TODO validate child
+                    environment.aggregate(tnode6, myAggregationLinks[3], tnode9);
                   }
                 }
-                tnode3.addChild(myAggregationLinks[4], tnode6);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[4], tnode6);
               }
               {
                 final SNode tnode11 = environment.createOutputNode(myConcepts[0]);
@@ -115,32 +108,25 @@ public class Template_reduce_Drop extends TemplateDeclarationBase {
                               {
                                 final SNode tnode15 = environment.createOutputNode(myConcepts[6]);
                                 tnode15.setProperty(myProperties[0], "Cannot drop. The cell is already full.");
-                                tnode14.addChild(myAggregationLinks[5], tnode15);
-                                // TODO validate child
+                                environment.aggregate(tnode14, myAggregationLinks[5], tnode15);
                               }
                             }
-                            tnode13.addChild(myAggregationLinks[2], tnode14);
-                            // TODO validate child
+                            environment.aggregate(tnode13, myAggregationLinks[2], tnode14);
                           }
                         }
-                        tnode12.addChild(myAggregationLinks[3], tnode13);
-                        // TODO validate child
+                        environment.aggregate(tnode12, myAggregationLinks[3], tnode13);
                       }
                     }
-                    tnode11.addChild(myAggregationLinks[6], tnode12);
-                    // TODO validate child
+                    environment.aggregate(tnode11, myAggregationLinks[6], tnode12);
                   }
                 }
-                tnode3.addChild(myAggregationLinks[7], tnode11);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[7], tnode11);
               }
             }
-            tnode2.addChild(myAggregationLinks[3], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[3], tnode3);
           }
         }
-        tnode1.addChild(myAggregationLinks[6], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[6], tnode2);
       }
     }
     FragmentResult rv = nodeFragment(3, tnode1);

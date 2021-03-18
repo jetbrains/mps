@@ -46,25 +46,19 @@ public class Template_reduce_Property_RemoveOperation extends TemplateDeclaratio
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_134_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ot2ygm_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_ot2ygm_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1189519421088887428", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
-        Collection<SNode> tlist4 = null;
-        SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_134_1(new SourceSubstituteMacroNodeContext(context1, callMacro_ot2ygm_b0a0a1a4a2a6));
+        Collection<SNode> tlist3 = null;
+        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_134_1(new SourceSubstituteMacroNodeContext(context1, callMacro_ot2ygm_b0a0a1a4a2a6));
         TemplateContext context2 = context1;
-        context2 = context2.subContext(null, callInputNode4);
-        if (callInputNode4 != null) {
-          tlist4 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088887439")).apply(context2);
+        context2 = context2.subContext(null, callInputNode3);
+        if (callInputNode3 != null) {
+          tlist3 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088887439")).apply(context2);
         } else {
-          tlist4 = Collections.emptyList();
+          tlist3 = Collections.emptyList();
         }
-        for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-          tnode1.addChild(myAggregationLinks[0], child5);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

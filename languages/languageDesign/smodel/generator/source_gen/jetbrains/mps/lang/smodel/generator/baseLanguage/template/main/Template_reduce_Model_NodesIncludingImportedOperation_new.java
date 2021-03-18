@@ -47,38 +47,32 @@ public class Template_reduce_Model_NodesIncludingImportedOperation_new extends T
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_43_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_eqijg3_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_eqijg3_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/5443371287119273267", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
-        Collection<SNode> tlist4 = Collections.emptyList();
+        Collection<SNode> tlist3 = Collections.emptyList();
         if (QueriesGenerated.ifMacro_Condition_43_0(new IfMacroContext(context1, ifMacroRef_eqijg3_b0a0b0e0c0g))) {
-          Collection<SNode> tlist5 = null;
+          Collection<SNode> tlist4 = null;
           {
-            final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_43_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_eqijg3_b0a0a0a1a1a4a2a6));
-            if (switchInput5 == null) {
-              tlist5 = Collections.emptyList();
+            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_43_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_eqijg3_b0a0a0a1a1a4a2a6));
+            if (switchInput4 == null) {
+              tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext5 = context1;
-              switchContext5 = switchContext5.subContext(null, switchInput5);
-              tlist5 = environment.trySwitch(templateSwitchNode_eqijg3_a0a0c0a1a1a1a4a2a6, switchContext5);
-              if (tlist5 == null) {
-                final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
-                tlist5 = TemplateUtil.singletonList(tnode6);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
+              tlist4 = environment.trySwitch(templateSwitchNode_eqijg3_a0a0c0a1a1a1a4a2a6, switchContext4);
+              if (tlist4 == null) {
+                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
+                tlist4 = TemplateUtil.singletonList(tnode5);
               }
             }
           }
-          tlist4 = tlist5;
+          tlist3 = tlist4;
         } else {
-          final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
-          tlist4 = TemplateUtil.singletonList(tnode7);
+          final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
+          tlist3 = TemplateUtil.singletonList(tnode6);
         }
-        for (SNode child8 : TemplateUtil.asNotNull(tlist4)) {
-          tnode1.addChild(myAggregationLinks[0], child8);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

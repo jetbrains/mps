@@ -45,10 +45,7 @@ public class Template_reduce_GetSConceptOperation extends TemplateDeclarationBas
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_69_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_9j70qg_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_9j70qg_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/7453996997717799520", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

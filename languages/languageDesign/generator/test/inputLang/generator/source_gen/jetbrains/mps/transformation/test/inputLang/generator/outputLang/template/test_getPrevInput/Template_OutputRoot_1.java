@@ -71,8 +71,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
             {
               final SNode tnode6 = environment.createOutputNode(myConcepts[0]);
               SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context4, "_root_level_was_", propertyMacro_wvaolp_c0a2a0a1a2a4a4a4a3a4)));
-              tnode5.addChild(myAggregationLinks[0], tnode6);
-              // TODO validate child
+              environment.aggregate(tnode5, myAggregationLinks[0], tnode6);
             }
             {
               Collection<SNode> tlist7 = Collections.emptyList();
@@ -81,16 +80,12 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
                 SNodeAccessUtil.setPropertyValue(tnode8, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context4, "_level_1_was_", propertyMacro_wvaolp_c0a2a0a1a1a3a4a4a4a3a4)));
                 tlist7 = TemplateUtil.singletonList(tnode8);
               }
-              for (SNode child9 : TemplateUtil.asNotNull(tlist7)) {
-                tnode5.addChild(myAggregationLinks[0], child9);
-              }
-              // TODO validate child
+              environment.aggregate(tnode5, myAggregationLinks[0], tlist7);
             }
             {
-              final SNode tnode10 = environment.createOutputNode(myConcepts[0]);
-              SNodeAccessUtil.setPropertyValue(tnode10, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context4, "_level_2_was_", propertyMacro_wvaolp_c0a2a0a1a4a4a4a4a3a4)));
-              tnode5.addChild(myAggregationLinks[0], tnode10);
-              // TODO validate child
+              final SNode tnode9 = environment.createOutputNode(myConcepts[0]);
+              SNodeAccessUtil.setPropertyValue(tnode9, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context4, "_level_2_was_", propertyMacro_wvaolp_c0a2a0a1a4a4a4a4a3a4)));
+              environment.aggregate(tnode5, myAggregationLinks[0], tnode9);
             }
           }
           tlist4.add(tnode5);
@@ -107,8 +102,8 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
       }
       tlist1.addAll(tlist2);
       environment.registerLabel(itnode1, tlist2, "LEVEL 1");
-      for (SNode mapSrcOutput11 : tlist2) {
-        environment.postProcess(new MapSrcProcessor(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1233603475877"), mapSrcOutput11, context1) {
+      for (SNode mapSrcOutput10 : tlist2) {
+        environment.postProcess(new MapSrcProcessor(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1233603475877"), mapSrcOutput10, context1) {
           @Override
           public void postProcess(@NotNull SNode node) throws GenerationFailureException {
             QueriesGenerated.mapSrcMacro_post_1_0(new MapSrcMacroPostProcContext(getTemplateContext(), node, getTemplateNode()));
@@ -130,10 +125,7 @@ public class Template_OutputRoot_1 extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = applyNode0(context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[1], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[1], tlist2);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

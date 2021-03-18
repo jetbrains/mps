@@ -14,7 +14,6 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -42,8 +41,7 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode2.setProperty(myProperties[0], "true");
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -53,14 +51,10 @@ public class Template_reduce_ConceptCaseBody_Hack1 extends TemplateDeclarationBa
             Collection<SNode> tlist4 = null;
             final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_104_0(new SourceSubstituteMacroNodesContext(context2, copySrcListMacro_rlzbfv_b0a0a1a1a1a2a2a6));
             tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro_rlzbfv_b0a0a1a1a1a2a2a6, "tpl/r:00000000-0000-4000-0000-011c89590303/7723526804946053432", context2);
-            for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-              tnode3.addChild(myAggregationLinks[1], child5);
-            }
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
           }
         }
-        tnode1.addChild(myAggregationLinks[2], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tnode3);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

@@ -18,9 +18,9 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
 import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.generator.impl.GeneratorUtil;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -75,25 +75,18 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
           }
         } finally {
         }
-        for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child4);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
-        Collection<SNode> tlist5 = null;
-        final Iterable<SNode> copyListInput5 = QueriesGenerated.sourceNodesQuery_1_1(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro_38z9ys_b0a0a1a5a2a5));
-        tlist5 = environment.copyNodes(copyListInput5, copySrcListMacro_38z9ys_b0a0a1a5a2a5, "tpl/r:00000000-0000-4000-0000-011c895905f9/1206460235939", context1);
-        for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
-          tnode1.addChild(myAggregationLinks[0], child6);
-        }
-        // TODO validate child
+        Collection<SNode> tlist4 = null;
+        final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_1_1(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro_38z9ys_b0a0a1a5a2a5));
+        tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro_38z9ys_b0a0a1a5a2a5, "tpl/r:00000000-0000-4000-0000-011c895905f9/1206460235939", context1);
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist4);
       }
       {
-        final SNode tnode7 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode7, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "foobar", propertyMacro_38z9ys_c0a2a0a1a6a2a5)));
-        tnode1.addChild(myAggregationLinks[0], tnode7);
-        // TODO validate child
+        final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
+        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[2], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "foobar", propertyMacro_38z9ys_c0a2a0a1a6a2a5)));
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode5);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

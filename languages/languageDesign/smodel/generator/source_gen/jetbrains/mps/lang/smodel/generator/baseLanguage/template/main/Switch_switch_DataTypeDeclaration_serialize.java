@@ -83,8 +83,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -94,14 +93,10 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
               Collection<SNode> tlist4 = null;
               final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_135_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_6q87l7_b0a0c0b0b0c0c0c7));
               tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_6q87l7_b0a0c0b0b0c0c0c7, "tpl/r:00000000-0000-4000-0000-011c89590303/8822815258147349888", context2);
-              for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-                tnode3.addChild(myAggregationLinks[1], child5);
-              }
-              // TODO validate child
+              environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
             }
           }
-          tnode1.addChild(myAggregationLinks[2], tnode3);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[2], tnode3);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -136,10 +131,7 @@ public class Switch_switch_DataTypeDeclaration_serialize extends TemplateSwitchB
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_135_3(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_6q87l7_b0a0c0d0c0b9));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_6q87l7_b0a0c0d0c0b9, "tpl/r:00000000-0000-4000-0000-011c89590303/6373819377345086779", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[3], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[3], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);

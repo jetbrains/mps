@@ -92,16 +92,13 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
                       }
                     });
                   }
-                  for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
-                    tnode5.addChild(myAggregationLinks[0], child7);
-                  }
-                  // TODO validate child
+                  environment.aggregate(tnode5, myAggregationLinks[0], tlist6);
                 }
                 {
-                  final List<SNode> tlist8 = new ArrayList<SNode>();
+                  final List<SNode> tlist7 = new ArrayList<SNode>();
                   {
                     SNode placeholder = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x157a9668bf58417bL, 0x893e53d86388dc56L, "jetbrains.mps.transformation.test.outputLang"), 0x1164564a526L, "OutputNode"));
-                    tlist8.add(placeholder);
+                    tlist7.add(placeholder);
                     environment.postProcess(new MapSrcProcessor(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338676108"), placeholder, context5) {
                       @NotNull
                       @Override
@@ -111,16 +108,13 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
 
                     });
                   }
-                  for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
-                    tnode5.addChild(myAggregationLinks[0], child9);
-                  }
-                  // TODO validate child
+                  environment.aggregate(tnode5, myAggregationLinks[0], tlist7);
                 }
                 {
-                  final List<SNode> tlist10 = new ArrayList<SNode>();
+                  final List<SNode> tlist8 = new ArrayList<SNode>();
                   {
                     SNode placeholder = environment.createOutputNode(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x157a9668bf58417bL, 0x893e53d86388dc56L, "jetbrains.mps.transformation.test.outputLang"), 0x1164564a526L, "OutputNode"));
-                    tlist10.add(placeholder);
+                    tlist8.add(placeholder);
                     environment.postProcess(new MapSrcProcessor(new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338727992"), placeholder, context5) {
                       @NotNull
                       @Override
@@ -134,10 +128,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
                       }
                     });
                   }
-                  for (SNode child11 : TemplateUtil.asNotNull(tlist10)) {
-                    tnode5.addChild(myAggregationLinks[0], child11);
-                  }
-                  // TODO validate child
+                  environment.aggregate(tnode5, myAggregationLinks[0], tlist8);
                 }
               }
               tlist4.add(tnode5);
@@ -148,10 +139,7 @@ public class Template_OutputRoot_2 extends TemplateDeclarationBase {
           environment.registerLabel(itnode2, tlist3, "LEVEL 1");
           tlist2.addAll(tlist3);
         }
-        for (SNode child12 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[1], child12);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[1], tlist2);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

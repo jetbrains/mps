@@ -41,8 +41,7 @@ public class Template_outputRoot extends TemplateDeclarationBase {
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode2.setProperty(myProperties[2], "this is OutputNode_forDontApplyReductionTwice_test actually");
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

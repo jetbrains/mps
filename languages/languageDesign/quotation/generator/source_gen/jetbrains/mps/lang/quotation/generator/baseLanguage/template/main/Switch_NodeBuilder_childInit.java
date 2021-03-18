@@ -77,8 +77,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
               return QueriesGenerated.referenceMacro_GetReferent_6_0(createQueryContext());
             }
           });
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -88,14 +87,12 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
               return QueriesGenerated.referenceMacro_GetReferent_6_1(createQueryContext());
             }
           });
-          tnode1.addChild(myAggregationLinks[0], tnode3);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode3);
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
           SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_6_0(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2g)));
-          tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -120,27 +117,22 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_6_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_83ulml_b0a0c0c0c0c7));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_83ulml_b0a0c0c0c0c7, "tpl/r:00000000-0000-4000-0000-011c8959034c/8642609567144984832", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-          environment.resolve(new RefResolver(tnode4, myAssociationLinks[2], context1, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984841"), "BaseConcept") {
+          final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
+          environment.resolve(new RefResolver(tnode3, myAssociationLinks[2], context1, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984841"), "BaseConcept") {
             @Override
             public Object resolve() {
               return QueriesGenerated.referenceMacro_GetReferent_6_2(createQueryContext());
             }
           });
-          tnode1.addChild(myAggregationLinks[0], tnode4);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode3);
         }
         {
-          final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
-          SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_6_1(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2h)));
-          tnode1.addChild(myAggregationLinks[0], tnode5);
-          // TODO validate child
+          final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
+          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_6_1(new PropertyMacroContext(context1, "true", propertyMacro_83ulml_c0a2a0a1a4a2a2h)));
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -167,10 +159,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
           } else {
             tlist2 = Collections.emptyList();
           }
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
       return TemplateUtil.singletonList(tnode1);

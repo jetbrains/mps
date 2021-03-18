@@ -45,8 +45,7 @@ public class Template_process42 extends TemplateDeclarationBase {
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         tnode2.setProperty(myProperties[0], "58");
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -59,22 +58,18 @@ public class Template_process42 extends TemplateDeclarationBase {
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[4]);
                 SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_4_0(new PropertyMacroContext(context3, null, propertyMacro_ye8a90_c0a2a0a1a1a1a1a1a2a2a7)));
-                tnode4.addChild(myAggregationLinks[1], tnode5);
-                // TODO validate child
+                environment.aggregate(tnode4, myAggregationLinks[1], tnode5);
               }
               {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[5]);
                 environment.associate(tnode6, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.length()");
-                tnode4.addChild(myAggregationLinks[2], tnode6);
-                // TODO validate child
+                environment.aggregate(tnode4, myAggregationLinks[2], tnode6);
               }
             }
-            tnode3.addChild(myAggregationLinks[3], tnode4);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[3], tnode4);
           }
         }
-        tnode1.addChild(myAggregationLinks[4], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[4], tnode3);
       }
     }
     FragmentResult rv = nodeFragment(5, tnode1);

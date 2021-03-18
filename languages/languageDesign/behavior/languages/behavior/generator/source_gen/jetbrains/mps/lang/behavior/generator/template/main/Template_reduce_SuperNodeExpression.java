@@ -51,14 +51,12 @@ public class Template_reduce_SuperNodeExpression extends TemplateDeclarationBase
               return QueriesGenerated.referenceMacro_GetReferent_1_0(createQueryContext());
             }
           });
-          tnode2.addChild(myAggregationLinks[0], tnode3);
-          // TODO validate child
+          environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
           environment.associate(tnode4, myAssociationLinks[1], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept.getDeclarationNode()");
-          tnode2.addChild(myAggregationLinks[1], tnode4);
-          // TODO validate child
+          environment.aggregate(tnode2, myAggregationLinks[1], tnode4);
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);

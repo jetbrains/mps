@@ -41,13 +41,11 @@ public class Template_weave_Statement extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-        tnode1.addChild(myAggregationLinks[1], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[1], tnode3);
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
@@ -64,20 +62,16 @@ public class Template_weave_Statement extends TemplateDeclarationBase {
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[6]);
                     tnode7.setProperty(myProperties[1], "a");
-                    tnode6.addChild(myAggregationLinks[2], tnode7);
-                    // TODO validate child
+                    environment.aggregate(tnode6, myAggregationLinks[2], tnode7);
                   }
                 }
-                tnode5.addChild(myAggregationLinks[3], tnode6);
-                // TODO validate child
+                environment.aggregate(tnode5, myAggregationLinks[3], tnode6);
               }
             }
-            tnode4.addChild(myAggregationLinks[4], tnode5);
-            // TODO validate child
+            environment.aggregate(tnode4, myAggregationLinks[4], tnode5);
           }
         }
-        tnode1.addChild(myAggregationLinks[5], tnode4);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[5], tnode4);
       }
     }
     FragmentResult rv = nodeFragment(6, tnode1);

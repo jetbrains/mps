@@ -44,10 +44,7 @@ public class Template_MyOutputRoot1 extends TemplateDeclarationBase {
         Collection<SNode> tlist2 = null;
         final Iterable<SNode> copyListInput2 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro_930b4u_b0a0a1a4a2a5));
         tlist2 = environment.copyNodes(copyListInput2, copySrcListMacro_930b4u_b0a0a1a4a2a5, "tpl/r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37/7496726876599914771", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

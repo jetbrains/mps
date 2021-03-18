@@ -57,10 +57,7 @@ public class Template_reduce_Looking extends TemplateDeclarationBase {
             }
           }
         }
-        for (SNode child4 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child4);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

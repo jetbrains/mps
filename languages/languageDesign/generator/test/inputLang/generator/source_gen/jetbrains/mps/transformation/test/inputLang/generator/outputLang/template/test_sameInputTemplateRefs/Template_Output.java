@@ -51,23 +51,17 @@ public class Template_Output extends TemplateDeclarationBase {
                 Collection<SNode> tlist4 = null;
                 final Iterable<SNode> copyListInput4 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context3, copySrcListMacro_8lyipf_b0a0a1a1a1a1a1a3a2a5));
                 tlist4 = environment.copyNodes(copyListInput4, copySrcListMacro_8lyipf_b0a0a1a1a1a1a1a3a2a5, "tpl/r:3974355c-942b-4134-9ce5-040d47bdb681/5110551451990236472", context3);
-                for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-                  tnode3.addChild(myAggregationLinks[0], child5);
-                }
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[0], tlist4);
               }
             }
-            tnode2.addChild(myAggregationLinks[1], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[1], tnode3);
           }
         }
-        tnode1.addChild(myAggregationLinks[2], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tnode2);
       }
       {
-        final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
-        tnode1.addChild(myAggregationLinks[3], tnode6);
-        // TODO validate child
+        final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
+        environment.aggregate(tnode1, myAggregationLinks[3], tnode5);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

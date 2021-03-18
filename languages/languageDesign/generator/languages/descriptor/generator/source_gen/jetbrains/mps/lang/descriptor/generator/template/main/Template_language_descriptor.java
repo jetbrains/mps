@@ -46,10 +46,7 @@ public class Template_language_descriptor extends TemplateDeclarationBase {
         if (insertInput2 != null) {
           tlist2 = Collections.singletonList(environment.insertNode(insertInput2, insertMacro_xu4w5k_b0a0a1a3a2a5, context1));
         }
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

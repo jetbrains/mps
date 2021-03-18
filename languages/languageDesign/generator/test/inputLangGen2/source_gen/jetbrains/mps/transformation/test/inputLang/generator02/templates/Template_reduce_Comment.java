@@ -45,24 +45,20 @@ public class Template_reduce_Comment extends TemplateDeclarationBase {
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
             tnode3.setProperty(myProperties[0], "comment");
-            tnode2.addChild(myAggregationLinks[0], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
           }
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
             tnode4.setProperty(myProperties[0], "for");
-            tnode2.addChild(myAggregationLinks[0], tnode4);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[0], tnode4);
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
             SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context2, "m", propertyMacro_476f6d_c0a2a0a1a3a1a1a2a6)));
-            tnode2.addChild(myAggregationLinks[0], tnode5);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[0], tnode5);
           }
         }
-        tnode1.addChild(myAggregationLinks[1], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[1], tnode2);
       }
     }
     FragmentResult rv = nodeFragment(2, tnode1);

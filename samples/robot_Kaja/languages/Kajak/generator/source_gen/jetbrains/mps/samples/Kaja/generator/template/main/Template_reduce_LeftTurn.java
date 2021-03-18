@@ -55,12 +55,10 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase {
                       {
                         final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
                         environment.associate(tnode6, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039569996");
-                        tnode5.addChild(myAggregationLinks[0], tnode6);
-                        // TODO validate child
+                        environment.aggregate(tnode5, myAggregationLinks[0], tnode6);
                       }
                     }
-                    tnode4.addChild(myAggregationLinks[1], tnode5);
-                    // TODO validate child
+                    environment.aggregate(tnode4, myAggregationLinks[1], tnode5);
                   }
                   {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -69,16 +67,13 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase {
                       {
                         final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
                         environment.associate(tnode8, myAssociationLinks[0], "r:f5e9b11f-5073-4786-8ed1-a9e42307c3f8(JavaKaja.runtime)", "3308300503039570144");
-                        tnode7.addChild(myAggregationLinks[0], tnode8);
-                        // TODO validate child
+                        environment.aggregate(tnode7, myAggregationLinks[0], tnode8);
                       }
                     }
-                    tnode4.addChild(myAggregationLinks[1], tnode7);
-                    // TODO validate child
+                    environment.aggregate(tnode4, myAggregationLinks[1], tnode7);
                   }
                 }
-                tnode3.addChild(myAggregationLinks[2], tnode4);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[2], tnode4);
               }
               {
                 final SNode tnode9 = environment.createOutputNode(myConcepts[5]);
@@ -86,20 +81,16 @@ public class Template_reduce_LeftTurn extends TemplateDeclarationBase {
                   TemplateContext context7 = context3.subContext();
                   {
                     final SNode tnode10 = environment.createOutputNode(myConcepts[1]);
-                    tnode9.addChild(myAggregationLinks[3], tnode10);
-                    // TODO validate child
+                    environment.aggregate(tnode9, myAggregationLinks[3], tnode10);
                   }
                 }
-                tnode3.addChild(myAggregationLinks[4], tnode9);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[4], tnode9);
               }
             }
-            tnode2.addChild(myAggregationLinks[1], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[1], tnode3);
           }
         }
-        tnode1.addChild(myAggregationLinks[5], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[5], tnode2);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

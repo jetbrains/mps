@@ -13,7 +13,6 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collection;
-import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -42,8 +41,7 @@ public class Template_reduce_ModuleReferenceExpression extends TemplateDeclarati
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade");
         environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade.getInstance()");
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -53,14 +51,10 @@ public class Template_reduce_ModuleReferenceExpression extends TemplateDeclarati
           {
             Collection<SNode> tlist4 = null;
             tlist4 = environment.callSite(new Template_reduce_ModuleReferenceFromString(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5802093636975103769")).apply(context2);
-            for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-              tnode3.addChild(myAggregationLinks[1], child5);
-            }
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
           }
         }
-        tnode1.addChild(myAggregationLinks[2], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tnode3);
       }
     }
     FragmentResult rv = nodeFragment(3, tnode1);

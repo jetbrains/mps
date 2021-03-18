@@ -66,8 +66,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           environment.associate(tnode2, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)", "~PersistenceFacade");
           environment.associate(tnode2, myAssociationLinks[1], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)", "~PersistenceFacade.getInstance()");
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -77,12 +76,10 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
               SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_126_0(new PropertyMacroContext(context2, "", propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h)));
-              tnode3.addChild(myAggregationLinks[1], tnode4);
-              // TODO validate child
+              environment.aggregate(tnode3, myAggregationLinks[1], tnode4);
             }
           }
-          tnode1.addChild(myAggregationLinks[2], tnode3);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[2], tnode3);
         }
       }
       return TemplateUtil.singletonList(tnode1);

@@ -48,24 +48,17 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
         Collection<SNode> tlist2 = null;
         final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_35_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_mxkg5_b0a0c0d0c0g));
         tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_mxkg5_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1173123173265", context1);
-        for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[0], child3);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
-        Collection<SNode> tlist4 = null;
-        tlist4 = environment.callSite(new Template_reduce_OperationParamConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653966788")).apply(context1);
-        for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
-          tnode1.addChild(myAggregationLinks[0], child5);
-        }
-        // TODO validate child
+        Collection<SNode> tlist3 = null;
+        tlist3 = environment.callSite(new Template_reduce_OperationParamConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653966788")).apply(context1);
+        environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
       }
       {
-        final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
-        SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_35_0(new PropertyMacroContext(context1, null, propertyMacro_mxkg5_c0a2a0a1a5a2a6)));
-        tnode1.addChild(myAggregationLinks[0], tnode6);
-        // TODO validate child
+        final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+        SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_35_0(new PropertyMacroContext(context1, null, propertyMacro_mxkg5_c0a2a0a1a5a2a6)));
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

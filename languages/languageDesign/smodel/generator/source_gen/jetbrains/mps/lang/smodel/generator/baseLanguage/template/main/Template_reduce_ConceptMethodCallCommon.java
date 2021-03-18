@@ -46,24 +46,18 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
           Collection<SNode> tlist3 = null;
           final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_84_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_2swv9b_b0a0c0b0b0c0g));
           tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_2swv9b_b0a0c0b0b0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/4598718932037613732", context1);
-          for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-            tnode2.addChild(myAggregationLinks[0], child4);
-          }
-          // TODO validate child
+          environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
         }
         {
-          Collection<SNode> tlist5 = null;
-          tlist5 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145331")).apply(context1);
-          for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
-            tnode2.addChild(myAggregationLinks[1], child6);
-          }
-          // TODO validate child
+          Collection<SNode> tlist4 = null;
+          tlist4 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145331")).apply(context1);
+          environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist7 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346204521957")).apply(context);
-      tlist1 = tlist7;
+      Collection<SNode> tlist5 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346204521957")).apply(context);
+      tlist1 = tlist5;
     }
     FragmentResult rv = listFragment(2, tlist1);
     return rv;

@@ -44,8 +44,7 @@ public class Template_map_outputNode extends TemplateDeclarationBase {
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         tnode3.setProperty(myProperties[2], "this is 'special child' in root template");
-        tnode2.addChild(myAggregationLinks[0], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

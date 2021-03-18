@@ -59,93 +59,72 @@ public class Template_string_switch_template extends TemplateDeclarationBase {
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
               SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context3, "42", propertyMacro_a36rdq_c0a2a0a1a1a3a2a1a2a6)));
-              tnode3.addChild(myAggregationLinks[0], tnode4);
-              // TODO validate child
+              environment.aggregate(tnode3, myAggregationLinks[0], tnode4);
             }
             {
               Collection<SNode> tlist5 = null;
               final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_a36rdq_b0a0c0c0d0c0b0c0g));
               tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_a36rdq_b0a0c0c0d0c0b0c0g, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/400642802550422229", context3);
-              for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
-                tnode3.addChild(myAggregationLinks[1], child6);
-              }
-              // TODO validate child
+              environment.aggregate(tnode3, myAggregationLinks[1], tlist5);
             }
           }
           tlist2.add(tnode3);
         }
-        for (SNode child7 : TemplateUtil.asNotNull(tlist2)) {
-          tnode1.addChild(myAggregationLinks[2], child7);
-        }
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tlist2);
       }
       {
-        Collection<SNode> tlist8 = null;
-        final SNode copySrcInput8 = QueriesGenerated.sourceNodeQuery_1_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_a36rdq_b0a0c0c0c0g));
-        tlist8 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput8), copySrcMacro_a36rdq_b0a0c0c0c0g, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/400642802550422246", context1);
-        for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
-          tnode1.addChild(myAggregationLinks[3], child9);
-        }
-        // TODO validate child
+        Collection<SNode> tlist6 = null;
+        final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_1_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_a36rdq_b0a0c0c0c0g));
+        tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_a36rdq_b0a0c0c0c0g, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/400642802550422246", context1);
+        environment.aggregate(tnode1, myAggregationLinks[3], tlist6);
       }
       {
-        final SNode tnode10 = environment.createOutputNode(myConcepts[3]);
+        final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
         {
-          environment.associate(tnode10, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Arrays.binarySearch(java.lang.Object[],java.lang.Object)");
-          environment.associate(tnode10, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Arrays");
+          environment.associate(tnode7, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Arrays.binarySearch(java.lang.Object[],java.lang.Object)");
+          environment.associate(tnode7, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Arrays");
           TemplateContext context4 = context1.subContext();
           {
-            final SNode tnode11 = environment.createOutputNode(myConcepts[4]);
+            final SNode tnode8 = environment.createOutputNode(myConcepts[4]);
             {
-              tnode11.setProperty(myProperties[1], "true");
-              tnode11.setProperty(myProperties[2], "stringSwitchCases");
+              tnode8.setProperty(myProperties[1], "true");
+              tnode8.setProperty(myProperties[2], "stringSwitchCases");
               TemplateContext context5 = context4.subContext();
               {
-                final SNode tnode12 = environment.createOutputNode(myConcepts[5]);
+                final SNode tnode9 = environment.createOutputNode(myConcepts[5]);
                 {
                   TemplateContext context6 = context5.subContext();
                   {
-                    final SNode tnode13 = environment.createOutputNode(myConcepts[6]);
+                    final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
                     {
                       TemplateContext context7 = context6.subContext();
                       {
-                        final SNode tnode14 = environment.createOutputNode(myConcepts[7]);
-                        tnode13.addChild(myAggregationLinks[4], tnode14);
-                        // TODO validate child
+                        final SNode tnode11 = environment.createOutputNode(myConcepts[7]);
+                        environment.aggregate(tnode10, myAggregationLinks[4], tnode11);
                       }
                       {
-                        Collection<SNode> tlist15 = null;
-                        final Iterable<SNode> copyListInput15 = QueriesGenerated.sourceNodesQuery_1_1(new SourceSubstituteMacroNodesContext(context7, copySrcListMacro_a36rdq_b0a0a1a2a1a1a1a3a1a3a1a3a2a6));
-                        tlist15 = environment.copyNodes(copyListInput15, copySrcListMacro_a36rdq_b0a0a1a2a1a1a1a3a1a3a1a3a2a6, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/3708576844065083863", context7);
-                        for (SNode child16 : TemplateUtil.asNotNull(tlist15)) {
-                          tnode13.addChild(myAggregationLinks[5], child16);
-                        }
-                        // TODO validate child
+                        Collection<SNode> tlist12 = null;
+                        final Iterable<SNode> copyListInput12 = QueriesGenerated.sourceNodesQuery_1_1(new SourceSubstituteMacroNodesContext(context7, copySrcListMacro_a36rdq_b0a0a1a2a1a1a1a3a1a3a1a3a2a6));
+                        tlist12 = environment.copyNodes(copyListInput12, copySrcListMacro_a36rdq_b0a0a1a2a1a1a1a3a1a3a1a3a2a6, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/3708576844065083863", context7);
+                        environment.aggregate(tnode10, myAggregationLinks[5], tlist12);
                       }
                     }
-                    tnode12.addChild(myAggregationLinks[6], tnode13);
-                    // TODO validate child
+                    environment.aggregate(tnode9, myAggregationLinks[6], tnode10);
                   }
                 }
-                tnode11.addChild(myAggregationLinks[7], tnode12);
-                // TODO validate child
+                environment.aggregate(tnode8, myAggregationLinks[7], tnode9);
               }
             }
-            tnode10.addChild(myAggregationLinks[8], tnode11);
-            // TODO validate child
+            environment.aggregate(tnode7, myAggregationLinks[8], tnode8);
           }
           {
-            Collection<SNode> tlist17 = null;
-            final SNode copySrcInput17 = QueriesGenerated.sourceNodeQuery_1_2(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_a36rdq_b0a0c0e0b0d0c0g));
-            tlist17 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput17), copySrcMacro_a36rdq_b0a0c0e0b0d0c0g, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/3708576844065051183", context4);
-            for (SNode child18 : TemplateUtil.asNotNull(tlist17)) {
-              tnode10.addChild(myAggregationLinks[8], child18);
-            }
-            // TODO validate child
+            Collection<SNode> tlist13 = null;
+            final SNode copySrcInput13 = QueriesGenerated.sourceNodeQuery_1_2(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_a36rdq_b0a0c0e0b0d0c0g));
+            tlist13 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput13), copySrcMacro_a36rdq_b0a0c0e0b0d0c0g, "tpl/r:23911370-3645-4974-be70-79d5cfba7db1/3708576844065051183", context4);
+            environment.aggregate(tnode7, myAggregationLinks[8], tlist13);
           }
         }
-        tnode1.addChild(myAggregationLinks[9], tnode10);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[9], tnode7);
       }
     }
     FragmentResult rv = nodeFragment(10, tnode1);

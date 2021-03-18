@@ -57,22 +57,18 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
               {
                 final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
                 environment.associate(tnode4, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object");
-                tnode3.addChild(myAggregationLinks[0], tnode4);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[0], tnode4);
               }
               {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
                 environment.associate(tnode5, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Class");
-                tnode3.addChild(myAggregationLinks[1], tnode5);
-                // TODO validate child
+                environment.aggregate(tnode3, myAggregationLinks[1], tnode5);
               }
             }
-            tnode2.addChild(myAggregationLinks[2], tnode3);
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[2], tnode3);
           }
         }
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode6 = environment.createOutputNode(myConcepts[3]);
@@ -83,14 +79,10 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
             Collection<SNode> tlist7 = null;
             final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_5_3(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_ef4au6_b0a0c0c0b0c0c0f));
             tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_ef4au6_b0a0c0c0b0c0c0f, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/517651233894475606", context4);
-            for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
-              tnode6.addChild(myAggregationLinks[3], child8);
-            }
-            // TODO validate child
+            environment.aggregate(tnode6, myAggregationLinks[3], tlist7);
           }
         }
-        tnode1.addChild(myAggregationLinks[1], tnode6);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[1], tnode6);
       }
     }
     return TemplateUtil.singletonList(tnode1);

@@ -41,8 +41,7 @@ public class Template_out_class extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -51,26 +50,20 @@ public class Template_out_class extends TemplateDeclarationBase {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            tnode3.addChild(myAggregationLinks[1], tnode4);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[1], tnode4);
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-            tnode3.addChild(myAggregationLinks[0], tnode5);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[0], tnode5);
           }
           {
             Collection<SNode> tlist6 = null;
             final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_lrc73l_b0a0c0e0b0e0c0f));
             tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_lrc73l_b0a0c0e0b0e0c0f, "tpl/r:00000000-0000-4000-0000-011c895905f8/1209150155199", context2);
-            for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
-              tnode3.addChild(myAggregationLinks[2], child7);
-            }
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[2], tlist6);
           }
         }
-        tnode1.addChild(myAggregationLinks[3], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[3], tnode3);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

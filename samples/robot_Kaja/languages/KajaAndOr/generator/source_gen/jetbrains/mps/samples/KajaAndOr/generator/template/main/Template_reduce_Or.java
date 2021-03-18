@@ -46,23 +46,16 @@ public class Template_reduce_Or extends TemplateDeclarationBase {
             Collection<SNode> tlist3 = null;
             final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_osjz7v_b0a0c0b0b0b0c0g));
             tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_osjz7v_b0a0c0b0b0b0c0g, "tpl/r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e/1904811872814344196", context2);
-            for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-              tnode2.addChild(myAggregationLinks[0], child4);
-            }
-            // TODO validate child
+            environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
           }
           {
-            Collection<SNode> tlist5 = null;
-            final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_osjz7v_b0a0c0c0b0b0c0g));
-            tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_osjz7v_b0a0c0c0b0b0c0g, "tpl/r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e/1904811872814344172", context2);
-            for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
-              tnode2.addChild(myAggregationLinks[1], child6);
-            }
-            // TODO validate child
+            Collection<SNode> tlist4 = null;
+            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_osjz7v_b0a0c0c0b0b0c0g));
+            tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_osjz7v_b0a0c0c0b0b0c0g, "tpl/r:68ff4d81-c742-4f6c-8cc1-cdf3e94f2c2e/1904811872814344172", context2);
+            environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
           }
         }
-        tnode1.addChild(myAggregationLinks[2], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[2], tnode2);
       }
     }
     FragmentResult rv = nodeFragment(3, tnode1);

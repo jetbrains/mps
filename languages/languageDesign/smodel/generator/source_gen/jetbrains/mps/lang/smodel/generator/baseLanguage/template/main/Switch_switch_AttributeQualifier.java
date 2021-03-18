@@ -48,8 +48,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
         environment.associate(tnode2, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030573");
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
     }
     return TemplateUtil.singletonList(tnode1);
@@ -67,8 +66,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
           environment.associate(tnode2, myAssociationLinks[0], "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "6407023681583030573");
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -99,14 +97,10 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               } else {
                 tlist3 = Collections.emptyList();
               }
-              for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-                tnode2.addChild(myAggregationLinks[1], child4);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist3);
             }
           }
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -137,35 +131,28 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               } else {
                 tlist3 = Collections.emptyList();
               }
-              for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-                tnode2.addChild(myAggregationLinks[1], child4);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist3);
             }
             {
-              Collection<SNode> tlist5 = null;
+              Collection<SNode> tlist4 = null;
               {
-                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_144_2(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1i));
-                if (switchInput5 == null) {
-                  tlist5 = Collections.emptyList();
+                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_144_2(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1i));
+                if (switchInput4 == null) {
+                  tlist4 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext5 = context2;
-                  switchContext5 = switchContext5.subContext(null, switchInput5);
-                  tlist5 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1i, switchContext5);
-                  if (tlist5 == null) {
-                    final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
-                    tlist5 = TemplateUtil.singletonList(tnode6);
+                  TemplateContext switchContext4 = context2;
+                  switchContext4 = switchContext4.subContext(null, switchInput4);
+                  tlist4 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1i, switchContext4);
+                  if (tlist4 == null) {
+                    final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
+                    tlist4 = TemplateUtil.singletonList(tnode5);
                   }
                 }
               }
-              for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
-                tnode2.addChild(myAggregationLinks[1], child7);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
             }
           }
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -196,35 +183,28 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               } else {
                 tlist3 = Collections.emptyList();
               }
-              for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-                tnode2.addChild(myAggregationLinks[1], child4);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist3);
             }
             {
-              Collection<SNode> tlist5 = null;
+              Collection<SNode> tlist4 = null;
               {
-                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_144_4(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1j));
-                if (switchInput5 == null) {
-                  tlist5 = Collections.emptyList();
+                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_144_4(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1j));
+                if (switchInput4 == null) {
+                  tlist4 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext5 = context2;
-                  switchContext5 = switchContext5.subContext(null, switchInput5);
-                  tlist5 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1j, switchContext5);
-                  if (tlist5 == null) {
-                    final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
-                    tlist5 = TemplateUtil.singletonList(tnode6);
+                  TemplateContext switchContext4 = context2;
+                  switchContext4 = switchContext4.subContext(null, switchInput4);
+                  tlist4 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1j, switchContext4);
+                  if (tlist4 == null) {
+                    final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
+                    tlist4 = TemplateUtil.singletonList(tnode5);
                   }
                 }
               }
-              for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
-                tnode2.addChild(myAggregationLinks[1], child7);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
             }
           }
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -255,35 +235,28 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
               } else {
                 tlist3 = Collections.emptyList();
               }
-              for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-                tnode2.addChild(myAggregationLinks[1], child4);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist3);
             }
             {
-              Collection<SNode> tlist5 = null;
+              Collection<SNode> tlist4 = null;
               {
-                final SNode switchInput5 = QueriesGenerated.sourceNodeQuery_144_6(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1k));
-                if (switchInput5 == null) {
-                  tlist5 = Collections.emptyList();
+                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_144_6(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1k));
+                if (switchInput4 == null) {
+                  tlist4 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext5 = context2;
-                  switchContext5 = switchContext5.subContext(null, switchInput5);
-                  tlist5 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1k, switchContext5);
-                  if (tlist5 == null) {
-                    final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
-                    tlist5 = TemplateUtil.singletonList(tnode6);
+                  TemplateContext switchContext4 = context2;
+                  switchContext4 = switchContext4.subContext(null, switchInput4);
+                  tlist4 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1k, switchContext4);
+                  if (tlist4 == null) {
+                    final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
+                    tlist4 = TemplateUtil.singletonList(tnode5);
                   }
                 }
               }
-              for (SNode child7 : TemplateUtil.asNotNull(tlist5)) {
-                tnode2.addChild(myAggregationLinks[1], child7);
-              }
-              // TODO validate child
+              environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
             }
           }
-          tnode1.addChild(myAggregationLinks[0], tnode2);
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);

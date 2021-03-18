@@ -46,13 +46,11 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
       TemplateContext context2 = context1.subContext();
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-        tnode2.addChild(myAggregationLinks[0], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-        tnode2.addChild(myAggregationLinks[1], tnode4);
-        // TODO validate child
+        environment.aggregate(tnode2, myAggregationLinks[1], tnode4);
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
@@ -62,14 +60,10 @@ public class Template_reduce_RoutineDefinition extends TemplateDeclarationBase {
             Collection<SNode> tlist6 = null;
             final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_15_0(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_9qqvr5_b0a0c0b0b0e0e0g));
             tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_9qqvr5_b0a0c0b0b0e0e0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039907017", context3);
-            for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
-              tnode5.addChild(myAggregationLinks[2], child7);
-            }
-            // TODO validate child
+            environment.aggregate(tnode5, myAggregationLinks[2], tlist6);
           }
         }
-        tnode2.addChild(myAggregationLinks[3], tnode5);
-        // TODO validate child
+        environment.aggregate(tnode2, myAggregationLinks[3], tnode5);
       }
     }
     tlist1 = TemplateUtil.singletonList(tnode2);

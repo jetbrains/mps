@@ -41,8 +41,7 @@ public class Template_map_RootConcept extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
@@ -50,22 +49,18 @@ public class Template_map_RootConcept extends TemplateDeclarationBase {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-            tnode3.addChild(myAggregationLinks[1], tnode4);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[1], tnode4);
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-            tnode3.addChild(myAggregationLinks[0], tnode5);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[0], tnode5);
           }
           {
             final SNode tnode6 = environment.createOutputNode(myConcepts[4]);
-            tnode3.addChild(myAggregationLinks[2], tnode6);
-            // TODO validate child
+            environment.aggregate(tnode3, myAggregationLinks[2], tnode6);
           }
         }
-        tnode1.addChild(myAggregationLinks[3], tnode3);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[3], tnode3);
       }
     }
     sink.add(null, TemplateUtil.singletonList(tnode1));

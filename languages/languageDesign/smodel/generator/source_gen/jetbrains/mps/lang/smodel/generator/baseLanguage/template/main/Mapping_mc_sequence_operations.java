@@ -63,31 +63,25 @@ public class Mapping_mc_sequence_operations extends MapConfigBase implements Tem
           Collection<SNode> tlist2 = null;
           final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_60_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_jil9eh_b0a0c0d0c0c4));
           tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_jil9eh_b0a0c0d0c0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/3902354333654524123", context1);
-          for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
-            tnode1.addChild(myAggregationLinks[0], child3);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
         {
-          Collection<SNode> tlist4 = null;
+          Collection<SNode> tlist3 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_60_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jil9eh_b0a0a0a1a4a2a2e));
-            if (switchInput4 == null) {
-              tlist4 = Collections.emptyList();
+            final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_60_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_jil9eh_b0a0a0a1a4a2a2e));
+            if (switchInput3 == null) {
+              tlist3 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4 = context1;
-              switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_jil9eh_a0a0c0a1a1a4a2a2e, switchContext4);
-              if (tlist4 == null) {
-                final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
-                tlist4 = TemplateUtil.singletonList(tnode5);
+              TemplateContext switchContext3 = context1;
+              switchContext3 = switchContext3.subContext(null, switchInput3);
+              tlist3 = environment.trySwitch(templateSwitchNode_jil9eh_a0a0c0a1a1a4a2a2e, switchContext3);
+              if (tlist3 == null) {
+                final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
+                tlist3 = TemplateUtil.singletonList(tnode4);
               }
             }
           }
-          for (SNode child6 : TemplateUtil.asNotNull(tlist4)) {
-            tnode1.addChild(myAggregationLinks[0], child6);
-          }
-          // TODO validate child
+          environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
       }
       return TemplateUtil.singletonList(tnode1);

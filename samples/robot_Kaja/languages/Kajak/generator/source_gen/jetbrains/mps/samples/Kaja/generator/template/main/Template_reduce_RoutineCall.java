@@ -45,8 +45,7 @@ public class Template_reduce_RoutineCall extends TemplateDeclarationBase {
             return QueriesGenerated.referenceMacro_GetReferent_16_0(createQueryContext());
           }
         });
-        tnode1.addChild(myAggregationLinks[0], tnode2);
-        // TODO validate child
+        environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
       }
     }
     FragmentResult rv = nodeFragment(1, tnode1);

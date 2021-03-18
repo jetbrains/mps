@@ -49,18 +49,15 @@ public class Template_NodeOrConceptCommon extends TemplateDeclarationBase {
           Collection<SNode> tlist3 = null;
           final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_114_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_um8mvo_b0a0c0d0b0c0g));
           tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_um8mvo_b0a0c0d0b0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892231738", context1);
-          for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
-            tnode2.addChild(myAggregationLinks[0], child4);
-          }
-          // TODO validate child
+          environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
         }
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist5 = null;
-      final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_114_1(new SourceSubstituteMacroNodeContext(context, copySrcMacro_um8mvo_b0a0c0a2a6));
-      tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_um8mvo_b0a0c0a2a6, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892231756", context);
-      tlist1 = tlist5;
+      Collection<SNode> tlist4 = null;
+      final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_114_1(new SourceSubstituteMacroNodeContext(context, copySrcMacro_um8mvo_b0a0c0a2a6));
+      tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_um8mvo_b0a0c0a2a6, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892231756", context);
+      tlist1 = tlist4;
     }
     FragmentResult rv = listFragment(1, tlist1);
     return rv;
