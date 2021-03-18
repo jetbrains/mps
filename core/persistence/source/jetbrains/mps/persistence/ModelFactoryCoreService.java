@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,9 +39,9 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
   public ModelFactoryCoreService(@NotNull ModelFactoryService modelFactoryRegistry) {
     myModelFactoryRegistry = modelFactoryRegistry;
     myCoreFactories = new ModelFactory[]{
-        new jetbrains.mps.persistence.FilePerRootModelFactory(),
-        new jetbrains.mps.persistence.BinaryModelFactory(),
         new jetbrains.mps.persistence.DefaultModelPersistence(),
+        new jetbrains.mps.persistence.BinaryModelFactory(),
+        new jetbrains.mps.persistence.FilePerRootModelFactory(),
     };
   }
 
