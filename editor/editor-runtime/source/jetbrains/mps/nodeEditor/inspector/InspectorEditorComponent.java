@@ -41,6 +41,7 @@ public class InspectorEditorComponent extends EditorComponent {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(InspectorEditorComponent.class));
 
   private SNode myContainingRoot;
+  private TypecheckingSession myMainTypecheckingSession;
 
   public InspectorEditorComponent(@NotNull SRepository p) {
     this(p, EditorConfigurationBuilder.buildDefault());
@@ -84,23 +85,29 @@ public class InspectorEditorComponent extends EditorComponent {
 
   @Override
   public TypecheckingSession getTypecheckingSession() {
-    EditorComponent mainEditorComponent = getMainEditorComponent();
-    if (mainEditorComponent != null) {
-      // in case a typechecking session has been requested without the main component
-      releaseTypecheckingSession();
-      return mainEditorComponent.getTypecheckingSession();
+    if (myMainTypecheckingSession != null) {
+      return myMainTypecheckingSession;
     }
     return super.getTypecheckingSession();
   }
 
   @Override
   protected void requestTypecheckingSession() {
-    if (getMainEditorComponent() != null) {
-      // in case a typechecking session has been requested without the main component
+    EditorComponent mainEditorComponent = getMainEditorComponent();
+    if (mainEditorComponent != null) {
+      // in case a typechecking session has been requested before without the main component
       releaseTypecheckingSession();
-      return;
+      myMainTypecheckingSession = mainEditorComponent.getTypecheckingSession();
+      
+    } else {
+      super.requestTypecheckingSession();
     }
-    super.requestTypecheckingSession();
+  }
+
+  @Override
+  protected void releaseTypecheckingSession() {
+    this.myMainTypecheckingSession = null;
+    super.releaseTypecheckingSession();
   }
 
   private EditorComponent getMainEditorComponent() {
