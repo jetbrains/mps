@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,10 +36,12 @@ public abstract class TemplateDeclarationBase implements TemplateDeclaration {
   protected final SContainmentLink[] myAggregationLinks;
 
   protected TemplateDeclarationBase() {
-    myConcepts = initConcepts();
-    myProperties = initProperties();
-    myAssociationLinks = initAssociationLinks();
-    myAggregationLinks = initAggregationLinks();
+    // cons only for TemplateDeclarationInterpreted use,
+    // generated templates shall pass MOC instance
+    myConcepts = null;
+    myProperties = null;
+    myAssociationLinks = null;
+    myAggregationLinks = null;
   }
 
   protected TemplateDeclarationBase(MetaObjectContainer metaObjectContainer) {
@@ -110,21 +112,5 @@ public abstract class TemplateDeclarationBase implements TemplateDeclaration {
       }
     }
     return new FR1(myAggregationLinks[aggregationIndex], result);
-  }
-
-  protected SConcept[] initConcepts() {
-    return null;
-  }
-
-  protected SProperty[] initProperties() {
-    return null;
-  }
-
-  protected SReferenceLink[] initAssociationLinks() {
-    return null;
-  }
-
-  protected SContainmentLink[] initAggregationLinks() {
-    return null;
   }
 }
