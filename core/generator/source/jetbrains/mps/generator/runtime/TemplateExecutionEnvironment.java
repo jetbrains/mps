@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -148,22 +149,6 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException;
 
   /**
-   * Retrieve reusable runtime instance that represents TemplateDeclaration. Clients may keep an instance for subsequent reuse during the
-   * same transformation session.
-   * This is low-level mechanism for sophisticated use, generated templates (unless they keep instances obtained this way) shall resort to other methods to
-   * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)}.
-   * @deprecated not bad per se, just no need to expose, shall become private
-   * @param templateDeclaration identifies template to load
-   * @param callSite identifies location where invocation happens
-   * @return never {@code null}, non necessarily exact generated class, might be a decorator that traces uses or reports errors.
-   * @since 2018.3
-   */
-  @NotNull
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  TemplateDeclaration findTemplate(@NotNull TemplateDeclarationKey templateDeclaration, @NotNull SNodeReference callSite);
-
-  /**
    * Intended for use from generated code when invoking compiled templates from the same model/module (those we can instantiate directly)
    * @param templateDeclaration instance of template to invoke, generally compiled as part of the same template model
    * @param callSite identifies location where invocation happens
@@ -186,7 +171,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   TemplateCallSite callSite(@NotNull TemplateDeclarationKey templateIdentityKey, @NotNull SNodeReference callSite);
 
   /**
-   * Intended for use from generated templates to obtain key for {@link #findTemplate(TemplateDeclarationKey, SNodeReference)}
+   * Intended for use from generated templates to obtain key for {@link #callSite(TemplateDeclarationKey, SNodeReference)}
    * FIXME PROVISIONAL CODE, PLEASE CONSIDER ANOTHER APPROACH
    *  see method impl for details
    * @since 2018.3
@@ -215,6 +200,26 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * @param targetNodeId not null
    */
   void associate(SNode outputNode, SReferenceLink role, String targetModelRef, String targetNodeId);
+
+  /**
+   * Replacement for direct {@code node.addChild()} call to facilitate additional operations
+   * template processing environment may want to impose for added children
+   * @since 2021.1
+   * @param outputNode parent, not null
+   * @param role aggregation, not null
+   * @param child child to add to the role into the parent, not null
+   */
+  void aggregate(SNode outputNode, SContainmentLink role, SNode child);
+
+  /**
+   * Replacement for direct {@code node.addChild()} call, much like
+   * {@link #aggregate(SNode, SContainmentLink, SNode)}, just for a sequence of children from the same role
+   * @since 2021.1
+   * @param outputNode parent, not null
+   * @param role aggregation, not null
+   * @param children list of child nodes to add to the role into the parent, may be null
+   */
+  void aggregate(SNode outputNode, SContainmentLink role, @Nullable Iterable<SNode> children);
 
   /**
    * Support for references between template nodes

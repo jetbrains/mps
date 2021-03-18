@@ -51,6 +51,7 @@ import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -263,9 +264,17 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     return null;
   }
 
+  /**
+   * Retrieve reusable runtime instance that represents TemplateDeclaration. Clients may keep an instance for subsequent reuse during the
+   * same transformation session.
+   * This is low-level mechanism for sophisticated use, generated templates (unless they keep instances obtained this way) shall resort to other methods to
+   * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)}.
+   * @param templateDeclaration identifies template to load
+   * @param callSite identifies location where invocation happens
+   * @return never {@code null}, non necessarily exact generated class, might be a decorator that traces uses or reports errors.
+   */
   @NotNull
-  @Override
-  public TemplateDeclaration findTemplate(@NotNull TemplateDeclarationKey templateDeclaration, @NotNull SNodeReference callSite) {
+  private TemplateDeclaration findTemplate(@NotNull TemplateDeclarationKey templateDeclaration, @NotNull SNodeReference callSite) {
     class BadTemplateDeclaration implements TemplateDeclaration {
       private final String myMessage;
       private boolean myErrorReported = false;
@@ -413,6 +422,26 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   public void associate(SNode outputNode, SReferenceLink role, String targetModelRef, String targetNodeId) {
     final PersistenceFacade pf = PersistenceFacade.getInstance();
     outputNode.setReference(role, new SNodePointer(pf.createModelReference(targetModelRef), pf.createNodeId(targetNodeId)));
+  }
+
+  @Override
+  public void aggregate(SNode outputNode, SContainmentLink role, SNode child) {
+    outputNode.addChild(role, child);
+    // XXX next comment derived from reduce_TemplateNode, where it has been for years.
+    //     I assume it's about ChildAdopter use
+    // FIXME validate child
+  }
+
+  @Override
+  public void aggregate(SNode outputNode, SContainmentLink role, @Nullable Iterable<SNode> children) {
+    // JFTR, Generated templates used to rely on TemplateUtils.asNotNull()
+    if (children == null) {
+      return;
+    }
+    for(SNode child : children) {
+      outputNode.addChild(role, child);
+    }
+    // FIXME validate child
   }
 
   @Override
