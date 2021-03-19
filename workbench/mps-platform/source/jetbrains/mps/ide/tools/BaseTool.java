@@ -23,9 +23,11 @@ import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.wm.impl.ToolWindowManagerImpl;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.util.ui.update.UiNotifyConnector;
@@ -256,6 +258,7 @@ public abstract class BaseTool {
       }
     }
 
+
     //if we create a new project, tool windows are created for it automatically
     ToolWindow toolWindow = myWindowManager.getToolWindow(myId);
     if (toolWindow == null) {
@@ -342,20 +345,20 @@ public abstract class BaseTool {
         }
       }
     }
-
+    
+    if (myProject.isDisposed()) {
+      return;
+    }
     ToolWindow toolWindow = getToolWindow();
     if (toolWindow != null) {
-      ContentManager contentManager = toolWindow.getContentManager();
-      if (contentManager != null && !contentManager.isDisposed()) {
-        contentManager.removeAllContents(true);
-      }
-    }
-
-    if (!myProject.isDisposed()) {
-      //dirty hack until this is rewritten to a newer API.
-      //this means it happens not during project close. When project is closing, tool windows are unregistered automatically, this call causes an exception
-      //see https://youtrack.jetbrains.com/issue/IDEA-233220
+      String lastActiveToolWindowId = myWindowManager.getLastActiveToolWindowId();
       myWindowManager.unregisterToolWindow(myId);
+      ContentManager contentManager = toolWindow.getContentManager();
+      Disposer.dispose(contentManager);
+      // overcoming the IJ bug :
+      ToolWindow activeToolWindow = myWindowManager.getToolWindow(lastActiveToolWindowId);
+      activeToolWindow.hide();
+      activeToolWindow.show();
     }
     myIsRegistered = false;
   }
