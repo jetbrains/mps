@@ -20,6 +20,8 @@ import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GenerationTracerUtil;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
+import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
+import jetbrains.mps.generator.impl.RoleValidation.Status;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo_Macro;
@@ -426,10 +428,14 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
 
   @Override
   public void aggregate(SNode outputNode, SContainmentLink role, SNode child) {
+    RoleValidator validator = generator.getChildRoleValidator(outputNode, role);
+    Status status = validator.validate(child);
+    if (status != null) {
+      generator.getLogger().warning(null, status.getMessage("apply template"), status.describe(
+          GeneratorUtil.describe(outputNode, "parent")
+      ));
+    }
     outputNode.addChild(role, child);
-    // XXX next comment derived from reduce_TemplateNode, where it has been for years.
-    //     I assume it's about ChildAdopter use
-    // FIXME validate child
   }
 
   @Override
@@ -438,10 +444,18 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     if (children == null) {
       return;
     }
+    // RoleValidator code - pretty much what TemplateProcessor#applyTemplate does, except for extra
+    //   messages in case validation does not succeed.
+    RoleValidator validator = generator.getChildRoleValidator(outputNode, role);
     for(SNode child : children) {
+      Status status = validator.validate(child);
+      if (status != null) {
+        generator.getLogger().warning(null, status.getMessage("apply template"), status.describe(
+            GeneratorUtil.describe(outputNode, "parent")
+        ));
+      }
       outputNode.addChild(role, child);
     }
-    // FIXME validate child
   }
 
   @Override
