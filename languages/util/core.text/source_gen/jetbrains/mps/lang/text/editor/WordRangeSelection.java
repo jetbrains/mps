@@ -99,9 +99,6 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     }
   }
   public WordRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, boolean growingForward) {
-    this(editorComponent, firstNode, lastNode, growingForward, null);
-  }
-  public WordRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, boolean growingForward, String emptyCellId) {
     super(editorComponent);
     // swap first and last letter if needed
     Iterable<? extends SNode> words = WordRangeSelection.getChildIterable(SNodeOperations.as(SNodeOperations.getParent(firstNode), CONCEPTS.Line$yC));
@@ -310,11 +307,13 @@ public class WordRangeSelection extends AbstractMultipleSelection {
           SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), true);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), myGrowingForward));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
           }
         } else {
           SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), true);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), nextSelectableChild, true));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
           }
         }
       }
@@ -329,11 +328,13 @@ public class WordRangeSelection extends AbstractMultipleSelection {
           SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), false);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), nextSelectableChild, myGrowingForward));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
           }
         } else {
           SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), false);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), false));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
           }
         }
       }
@@ -350,14 +351,17 @@ public class WordRangeSelection extends AbstractMultipleSelection {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myLastNode, myLastNode, false));
           } else {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nodeBelowFirst, myLastNode, false));
+            editorContext.getEditorComponent().scrollToNode(nodeBelowFirst);
           }
         } else {
           SNode nodeBelowLast = WordRangeSelection.findNodeBelow(getLastCell());
           if (nodeBelowLast == null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(myLastParentNode)).last(), true));
+            nodeBelowLast = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(myLastParentNode)).last();
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, nodeBelowLast, true));
           } else {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, nodeBelowLast, true));
           }
+          editorContext.getEditorComponent().scrollToNode(nodeBelowLast);
         }
       }
     });
@@ -373,14 +377,18 @@ public class WordRangeSelection extends AbstractMultipleSelection {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, myFirstNode, true));
           } else {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, nodeAboveLast, true));
+            editorContext.getEditorComponent().scrollToNode(nodeAboveLast);
           }
         } else {
           SNode nodeAboveFirst = WordRangeSelection.findNodeAbove(getFirstCell());
           if (nodeAboveFirst == null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(myFirstParentNode)).first(), myLastNode, false));
+            nodeAboveFirst = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(myFirstParentNode)).first();
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nodeAboveFirst, myLastNode, false));
           } else {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nodeAboveFirst, myLastNode, false));
           }
+          editorContext.getEditorComponent().scrollToNode(nodeAboveFirst);
+
         }
       }
     });
@@ -405,6 +413,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       public void doExecute() {
         SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(myFirstNode, false), CONCEPTS.TextElement$WN)).last();
         selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), f, myLastNode, false));
+        editorContext.getEditorComponent().scrollToNode(f);
+
       }
     });
   }
@@ -415,6 +425,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       public void doExecute() {
         SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(myLastNode, false), CONCEPTS.TextElement$WN)).last();
         selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, l, true));
+        editorContext.getEditorComponent().scrollToNode(l);
+
       }
     });
   }
@@ -427,11 +439,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
           SNode nextSelectableChild = WordRangeSelection.getNextSelectableNode(myLastNode, false);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), nextSelectableChild, myGrowingForward));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
+
           }
         } else {
           SNode prev = WordRangeSelection.getNextSelectableNode(myFirstNode, false);
           if (prev != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), prev, myLastNode, false));
+            editorContext.getEditorComponent().scrollToNode(prev);
           }
         }
       }
@@ -446,14 +461,16 @@ public class WordRangeSelection extends AbstractMultipleSelection {
           SNode nextSelectableChild = WordRangeSelection.getNextSelectableNode(myFirstNode, true);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, myLastNode, myGrowingForward));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
+
           }
         } else {
           SNode nextSelectableChild = WordRangeSelection.getNextSelectableNode(myLastNode, true);
           if (nextSelectableChild != null) {
             selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, nextSelectableChild, true));
+            editorContext.getEditorComponent().scrollToNode(nextSelectableChild);
           }
         }
-
       }
     });
   }
@@ -493,7 +510,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private static SNode findWordOnNonEmptyLine(SNode foundLine, boolean above) {
-    return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(SNodeOperations.ofConcept(((above ? SNodeOperations.getPrevSiblings(foundLine, false) : SNodeOperations.getNextSiblings(foundLine, false))), CONCEPTS.Line$yC)).findFirst(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(SNodeOperations.ofConcept(((above ? ListSequence.fromList(SNodeOperations.getPrevSiblings(foundLine, false)).reversedList() : SNodeOperations.getNextSiblings(foundLine, false))), CONCEPTS.Line$yC)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(it)).isNotEmpty();
       }
