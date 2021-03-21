@@ -86,20 +86,19 @@ public class ChangeSetImpl implements ModelChangeSet {
     return myOppositeChangeSet;
   }
   public void clearOppositeChangeSet() {
-    myOppositeChangeSet = null;
+    myOppositeChangeSet.clear();
   }
   public void buildOppositeChangeSet() {
     if (myOppositeChangeSet == null) {
       myOppositeChangeSet = new ChangeSetImpl(myNewModel, myOldModel);
       myOppositeChangeSet.myOppositeChangeSet = this;
-
-      ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select(new ISelector<ModelChange, ModelChange>() {
-        public ModelChange select(ModelChange c) {
-          return c.getOppositeChange();
-        }
-      }));
-      myOppositeChangeSet.fillRootToChange();
     }
+    ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select(new ISelector<ModelChange, ModelChange>() {
+      public ModelChange select(ModelChange c) {
+        return c.getOppositeChange();
+      }
+    }));
+    myOppositeChangeSet.fillRootToChange();
   }
   public void add(@NotNull ModelChange change) {
     ListSequence.fromList(myModelChanges).addElement(change);

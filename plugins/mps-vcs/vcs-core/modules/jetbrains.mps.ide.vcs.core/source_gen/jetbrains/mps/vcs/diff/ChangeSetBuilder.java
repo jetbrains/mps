@@ -398,7 +398,7 @@ public class ChangeSetBuilder {
     }
 
     buildForMetadata();
-
+    commit();
     if (withOpposite) {
       myChangeSet.buildOppositeChangeSet();
     }
@@ -435,14 +435,12 @@ public class ChangeSetBuilder {
   public static ModelChangeSet buildChangeSetWithMovedNodes(SModel oldModel, SModel newModel) {
     ChangeSetBuilder builder = new ChangeSetBuilder(oldModel, newModel, true);
     builder.build(false);
-    builder.commit();
     return builder.myChangeSet;
   }
 
   public static ModelChangeSet buildChangeSet(SModel oldModel, SModel newModel, boolean withOpposite, boolean trackMovedNodes) {
     ChangeSetBuilder builder = new ChangeSetBuilder(oldModel, newModel, trackMovedNodes);
     builder.build(withOpposite);
-    builder.commit();
     return builder.myChangeSet;
   }
 
@@ -466,10 +464,10 @@ public class ChangeSetBuilder {
     SNode newNode = newModel.getNode(rootId);
     if ((oldNode != null) || (newNode != null)) {
       builder.buildChangeSetForNode(oldNode, newNode);
+      builder.commit();
       if (withOpposite) {
         builder.myChangeSet.buildOppositeChangeSet();
       }
-      builder.commit();
     }
     return builder.myChangeSet;
   }
@@ -481,7 +479,6 @@ public class ChangeSetBuilder {
     impl.clearOppositeChangeSet();
     ChangeSetBuilder builder = new ChangeSetBuilder(impl, trackMovedNodes);
     builder.build(true);
-    builder.commit();
   }
 
   public static void rebuildChangeSet(ChangeSet changeSet) {
