@@ -15,7 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.generator.helper.GeneratorFragmentLookup;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -76,7 +76,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
         });
         hasGenerator.value = ListSequence.fromList(conceptsToMove).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode node) {
-            return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findGeneratorFragments_id5zMz2aJEI4B.invoke(node)).isNotEmpty();
+            return ListSequence.fromList(new GeneratorFragmentLookup(node).collect()).isNotEmpty();
           }
         });
         Iterable<SModule> modules = project.getProjectModules();

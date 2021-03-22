@@ -144,6 +144,7 @@
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="dp1x" ref="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)" />
     <import index="cttk" ref="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)" />
+    <import index="75ov" ref="r:cdd4fc54-626c-4040-b1f7-5bc8bfd2ee53(jetbrains.mps.lang.generator.helper)" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
@@ -715,10 +716,6 @@
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
-      <concept id="1226511727824" name="jetbrains.mps.baseLanguage.collections.structure.SetType" flags="in" index="2hMVRd">
-        <child id="1226511765987" name="elementType" index="2hN53Y" />
-      </concept>
-      <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
       <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
         <child id="1151688676805" name="elementType" index="_ZDj9" />
       </concept>
@@ -11218,40 +11215,17 @@
     </node>
     <node concept="1bb2R6" id="2erTeUVF2ed" role="2E2Xay">
       <node concept="3clFbS" id="2erTeUVF2ee" role="2VODD2">
-        <node concept="3cpWs8" id="2erTeUVF2ef" role="3cqZAp">
-          <node concept="3cpWsn" id="2erTeUVF2eg" role="3cpWs9">
-            <property role="TrG5h" value="nodes" />
-            <node concept="2hMVRd" id="2erTeUVF2eh" role="1tU5fm">
-              <node concept="3Tqbb2" id="2erTeUVF2ei" role="2hN53Y" />
-            </node>
-            <node concept="2ShNRf" id="2erTeUVF2ej" role="33vP2m">
-              <node concept="2i4dXS" id="2erTeUVF2ek" role="2ShVmc">
-                <node concept="3Tqbb2" id="2erTeUVF2el" role="HW$YZ" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2erTeUVF2em" role="3cqZAp">
-          <node concept="2OqwBi" id="2erTeUVF2en" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTx_Z" role="2Oq$k0">
-              <ref role="3cqZAo" node="2erTeUVF2eg" resolve="nodes" />
-            </node>
-            <node concept="X8dFx" id="HQjE4XgE3y" role="2OqNvi">
-              <node concept="2OqwBi" id="HQjE4XgE3v" role="25WWJ7">
-                <node concept="1beSmn" id="HQjE4XgE3w" role="2Oq$k0" />
-                <node concept="2qgKlT" id="HQjE4XgE3x" role="2OqNvi">
-                  <ref role="37wK5l" to="tpcn:5zMz2aJEI4B" resolve="findGeneratorFragments" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="2erTeUVF2et" role="3cqZAp">
-          <node concept="2OqwBi" id="2erTeUVF2eu" role="3cqZAk">
-            <node concept="37vLTw" id="3GM_nagTuPd" role="2Oq$k0">
-              <ref role="3cqZAo" node="2erTeUVF2eg" resolve="nodes" />
+          <node concept="2OqwBi" id="HQjE4XgE3v" role="3cqZAk">
+            <node concept="2ShNRf" id="7BS8DFNXYft" role="2Oq$k0">
+              <node concept="1pGfFk" id="7BS8DFNYszv" role="2ShVmc">
+                <ref role="37wK5l" to="75ov:7BS8DFNNAQY" resolve="GeneratorFragmentLookup" />
+                <node concept="1beSmn" id="7BS8DFNYsQU" role="37wK5m" />
+              </node>
             </node>
-            <node concept="ANE8D" id="2erTeUVF2ew" role="2OqNvi" />
+            <node concept="liA8E" id="7BS8DFNYtJQ" role="2OqNvi">
+              <ref role="37wK5l" to="75ov:7BS8DFNNBfS" resolve="collect" />
+            </node>
           </node>
         </node>
       </node>
@@ -12444,10 +12418,15 @@
                   <property role="TrG5h" value="genFragment" />
                   <node concept="3Tqbb2" id="2erTeUVF2fI" role="1tU5fm" />
                 </node>
-                <node concept="2OqwBi" id="2erTeUVF2fJ" role="1DdaDG">
-                  <node concept="1beSmn" id="2erTeUVF2fK" role="2Oq$k0" />
-                  <node concept="2qgKlT" id="2erTeUVF2fL" role="2OqNvi">
-                    <ref role="37wK5l" to="tpcn:5zMz2aJEI4B" resolve="findGeneratorFragments" />
+                <node concept="2OqwBi" id="7BS8DFNYvOZ" role="1DdaDG">
+                  <node concept="2ShNRf" id="7BS8DFNYvP0" role="2Oq$k0">
+                    <node concept="1pGfFk" id="7BS8DFNYvP1" role="2ShVmc">
+                      <ref role="37wK5l" to="75ov:7BS8DFNNAQY" resolve="GeneratorFragmentLookup" />
+                      <node concept="1beSmn" id="7BS8DFNYvP2" role="37wK5m" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="7BS8DFNYvP3" role="2OqNvi">
+                    <ref role="37wK5l" to="75ov:7BS8DFNNBfS" resolve="collect" />
                   </node>
                 </node>
               </node>

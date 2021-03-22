@@ -10,14 +10,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
-import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.lang.generator.helper.GeneratorFragmentLookup;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -40,6 +36,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.ide.actions.MappingDialog;
 import jetbrains.mps.kernel.language.ConceptAspectsHelper;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -74,9 +72,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     return ICON;
   }
   public List<SNode> getNodes(SNode node) {
-    Set<SNode> nodes = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(nodes).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findGeneratorFragments", CONCEPTS.AbstractConceptDeclaration$KA, "5zMz2aJEI4B")))));
-    return SetSequence.fromSet(nodes).toListSequence();
+    return new GeneratorFragmentLookup(node).collect();
   }
   public boolean isSingle() {
     return false;
@@ -89,7 +85,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     boolean isInterface = SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$CG);
     if (rootable || isInterface) {
       boolean isNeedRootTemplate = true;
-      for (SNode genFragment : ((List<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findGeneratorFragments", CONCEPTS.AbstractConceptDeclaration$KA, "5zMz2aJEI4B")))) {
+      for (SNode genFragment : new GeneratorFragmentLookup(node).collect()) {
         if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(genFragment) != null)) {
           isNeedRootTemplate = false;
           break;

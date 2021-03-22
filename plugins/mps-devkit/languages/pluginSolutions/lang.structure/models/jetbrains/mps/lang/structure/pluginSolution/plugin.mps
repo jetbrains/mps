@@ -77,6 +77,7 @@
     <import index="qqrq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.components(MPS.IDEA/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
+    <import index="75ov" ref="r:cdd4fc54-626c-4040-b1f7-5bc8bfd2ee53(jetbrains.mps.lang.generator.helper)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="90d" ref="r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)" implicit="true" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
@@ -2964,11 +2965,16 @@
                           <node concept="3clFbF" id="6gEjUfB$nmq" role="3cqZAp">
                             <node concept="2OqwBi" id="6gEjUfB$nmr" role="3clFbG">
                               <node concept="2OqwBi" id="6gEjUfB$nms" role="2Oq$k0">
-                                <node concept="37vLTw" id="6gEjUfB$nmt" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="6gEjUfB$nmw" resolve="node" />
+                                <node concept="2ShNRf" id="7BS8DFNVLac" role="2Oq$k0">
+                                  <node concept="1pGfFk" id="7BS8DFNWccJ" role="2ShVmc">
+                                    <ref role="37wK5l" to="75ov:7BS8DFNNAQY" resolve="GeneratorFragmentLookup" />
+                                    <node concept="37vLTw" id="7BS8DFNWdqe" role="37wK5m">
+                                      <ref role="3cqZAo" node="6gEjUfB$nmw" resolve="node" />
+                                    </node>
+                                  </node>
                                 </node>
-                                <node concept="2qgKlT" id="6gEjUfB$nmu" role="2OqNvi">
-                                  <ref role="37wK5l" to="tpcn:5zMz2aJEI4B" resolve="findGeneratorFragments" />
+                                <node concept="liA8E" id="7BS8DFNWeMv" role="2OqNvi">
+                                  <ref role="37wK5l" to="75ov:7BS8DFNNBfS" resolve="collect" />
                                 </node>
                               </node>
                               <node concept="3GX2aA" id="6gEjUfB$nmv" role="2OqNvi" />

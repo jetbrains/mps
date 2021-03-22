@@ -20610,11 +20610,6 @@
             <ref role="3bR37D" node="7Kfy9QB6L4X" resolve="jetbrains.mps.lang.editor" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2a9bszgruAf" role="3bR37C">
-          <node concept="3bR9La" id="2a9bszgruAe" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L6C" resolve="jetbrains.mps.lang.generator" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="2a9bszgruAE" role="3bR37C">
           <node concept="1Busua" id="2a9bszgruAD" role="1SiIV1">
             <ref role="1Busuk" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
@@ -38963,6 +38958,11 @@
         <node concept="1SiIV0" id="5e7X3XCP2J9" role="3bR37C">
           <node concept="3bR9La" id="5e7X3XCP2Ja" role="1SiIV1">
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="7BS8DFO30FF" role="3bR37C">
+          <node concept="3bR9La" id="7BS8DFO30FG" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L6C" resolve="jetbrains.mps.lang.generator" />
           </node>
         </node>
       </node>
