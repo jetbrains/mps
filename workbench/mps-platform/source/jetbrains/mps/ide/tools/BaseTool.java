@@ -355,10 +355,12 @@ public abstract class BaseTool {
       myWindowManager.unregisterToolWindow(myId);
       ContentManager contentManager = toolWindow.getContentManager();
       Disposer.dispose(contentManager);
-      // overcoming the IJ bug :
+      // overcoming the IJ bug IDEA-264792
       ToolWindow activeToolWindow = myWindowManager.getToolWindow(lastActiveToolWindowId);
-      activeToolWindow.hide();
-      activeToolWindow.show();
+      if (activeToolWindow != null) {
+        activeToolWindow.hide();
+        activeToolWindow.show();
+      }
     }
     myIsRegistered = false;
   }
