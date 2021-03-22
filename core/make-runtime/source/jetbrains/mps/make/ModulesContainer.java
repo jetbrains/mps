@@ -16,6 +16,7 @@
 package jetbrains.mps.make;
 
 import jetbrains.mps.make.dependencies.graph.IVertex;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 import jetbrains.mps.project.facets.JavaModuleFacet;
@@ -122,6 +123,12 @@ final class ModulesContainer {
     void dependencyOf(Collection<JavaModule> dependencyOf) {
       myDependencyOf = dependencyOf;
     }
+
+    public Collection<String> getAllSourcePaths() {
+      // TODO distinguish primary output and additional source locations
+      //      primary output is what java compiler shall use to put extra sources (e.g. from Annotations)
+      return SModuleOperations.getAllSourcePaths(myModule);
+    }
   }
 
   public ModulesContainer(Collection<? extends SModule> modules) {
@@ -137,11 +144,15 @@ final class ModulesContainer {
   void fillDependencies(Dependencies dependencies) {
     HashMap<SModule, ModuleSources> moduleSources = new HashMap<>();
     for(JavaModule jm : myModules.values()) {
-      // FIXME ModuleSources.collectOutputFilesInfo in cons walks .class files and asks isFileUpToDate()
-      //       based on JavaFile from dependent modules, if relevant ModuleSources present in moduleSources map
-      //       However, if it's not, there's mind-bogging Dependencies.getJavaFileLastModified logic
-      jm.set(new ModuleSources(jm.myModule, moduleSources, dependencies));
+      final ModuleSources ms = new ModuleSources(jm);
+      moduleSources.put(jm.myModule, ms);
+      jm.set(ms);
     }
+    // FIXME ModuleSources.collectOutputFilesInfo asks isFileUpToDate() from JavaFile from dependent modules,
+    //       if relevant ModuleSources present in moduleSources map. However, if it's no mapping,
+    //       there's mind-bogging Dependencies.getJavaFileLastModified logic I'd like to avoid
+    myModules.values().stream().map(JavaModule::getSources).forEach(ms -> ms.collectOutputFilesInfo(moduleSources, dependencies));
+
     // FIXME if Dependencies would list module dependencies directly, we won't need GMDM then
     Map<JavaModule, Set<JavaModule>> backDependencies = new HashMap<>();
 
