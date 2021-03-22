@@ -68,6 +68,16 @@ public class structure_StyleSheet {
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
     new EnumMigratedStyleClass(editorContext, node).apply(style, editorCell);
   }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Comment(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new CommentStyleClass(editorContext, node).apply(style, editorCell);
+  }
 
   public static class AnnotationNodeStyleClass extends AbstractStyleClass {
     public AnnotationNodeStyleClass(EditorContext editorContext, SNode node) {
@@ -136,6 +146,18 @@ public class structure_StyleSheet {
     private boolean _StyleParameter_QueryFunction_170rll_a0e() {
       return SNodeOperations.isInstanceOf(SNodeOperations.getParent(getNode()), CONCEPTS.EnumMigrationInfo$S$);
     }
+  }
+  public static class CommentStyleClass extends AbstractStyleClass {
+    public CommentStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      style.set(StyleAttributes.EDITABLE, false);
+      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.lightGray));
+    }
+
   }
 
   private static final class CONCEPTS {

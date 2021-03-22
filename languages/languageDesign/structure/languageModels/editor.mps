@@ -25,7 +25,6 @@
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="3ahc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.cells(MPS.Editor/)" />
     <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
-    <import index="ap4t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="ryx4" ref="r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)" />
     <import index="tpc2" ref="r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)" />
@@ -33,7 +32,7 @@
     <import index="tpcg" ref="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)" />
     <import index="5b0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.presentation(MPS.Core/)" />
     <import index="g51k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.cells(MPS.Editor/)" />
-    <import index="tpfj" ref="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)" implicit="true" />
+    <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" implicit="true" />
   </imports>
@@ -897,8 +896,8 @@
               </node>
             </node>
           </node>
-          <node concept="1wgc9g" id="LU8F6Gqyz2" role="3XvnJa">
-            <ref role="1wgcnl" to="tpfj:6t_vhrzKdF" resolve="Comment" />
+          <node concept="1wgc9g" id="7BS8DFNL8ap" role="3XvnJa">
+            <ref role="1wgcnl" node="6t_vhrzKdF" resolve="Comment" />
           </node>
         </node>
         <node concept="Vb9p2" id="hEUNR1P" role="3F10Kt">
@@ -3162,8 +3161,8 @@
                   <node concept="22lmx$" id="7NTi8jMaUrQ" role="3clFbG">
                     <node concept="1eOMI4" id="7NTi8jMaZ2Y" role="3uHU7w">
                       <node concept="2ZW3vV" id="7NTi8jMaZ2Z" role="1eOMHV">
-                        <node concept="3uibUv" id="7NTi8jMaZgn" role="2ZW6by">
-                          <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+                        <node concept="3uibUv" id="7BS8DFNL7Bw" role="2ZW6by">
+                          <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
                         </node>
                         <node concept="2OqwBi" id="7NTi8jMaZ31" role="2ZW6bz">
                           <node concept="2JrnkZ" id="7NTi8jMaZ32" role="2Oq$k0">
@@ -3569,6 +3568,15 @@
         <node concept="1wgc9g" id="LU8F6GzBAz" role="3XvnJa">
           <ref role="1wgcnl" node="LU8F6GyzzW" resolve="GrayOut" />
         </node>
+      </node>
+    </node>
+    <node concept="14StLt" id="6t_vhrzKdF" role="V601i">
+      <property role="TrG5h" value="Comment" />
+      <node concept="VPxyj" id="6t_vhrzKe$" role="3F10Kt">
+        <property role="VOm3f" value="false" />
+      </node>
+      <node concept="VechU" id="7BS8DFNL7Wl" role="3F10Kt">
+        <property role="Vb096" value="fLJRk5A/lightGray" />
       </node>
     </node>
   </node>
@@ -5207,8 +5215,8 @@
               </node>
             </node>
             <node concept="2ZW3vV" id="40tMyUvm87w" role="3uHU7B">
-              <node concept="3uibUv" id="40tMyUvm8ex" role="2ZW6by">
-                <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+              <node concept="3uibUv" id="7BS8DFNL6_j" role="2ZW6by">
+                <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
               </node>
               <node concept="37vLTw" id="40tMyUvm8rA" role="2ZW6bz">
                 <ref role="3cqZAo" node="40tMyUvm8rv" resolve="module" />
@@ -6239,7 +6247,7 @@
         </node>
         <node concept="3F1sOY" id="LU8F6FNR_9" role="3EZMnx">
           <ref role="1NtTu8" to="tpce:5CkWgdpgBAs" resolve="oldEnum" />
-          <ref role="1k5W1q" to="tpfj:6t_vhrzKdF" resolve="Comment" />
+          <ref role="1k5W1q" node="6t_vhrzKdF" resolve="Comment" />
           <node concept="xShMh" id="LU8F6G2CUI" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
