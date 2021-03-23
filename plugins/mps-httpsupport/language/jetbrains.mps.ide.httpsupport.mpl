@@ -102,6 +102,20 @@
             </external-mapping>
           </lesser-priority-mapping>
         </mapping-priority-rule>
+        <mapping-priority-rule kind="strictly_before">
+          <greater-priority-mapping>
+            <generator generatorUID="69433612-0c08-4d65-8f7c-839ae8b13b0d(jetbrains.mps.ide.httpsupport#4517832885627178591)" />
+            <external-mapping>
+              <mapping-node modelUID="r:54a5f1cc-4056-4ebe-b91a-271cac338c49(jetbrains.mps.ide.httpsupport.generator.template.main@generator)" nodeID="2345521174008440735" />
+            </external-mapping>
+          </greater-priority-mapping>
+          <lesser-priority-mapping>
+            <generator generatorUID="69433612-0c08-4d65-8f7c-839ae8b13b0d(jetbrains.mps.ide.httpsupport#4517832885627178591)" />
+            <external-mapping>
+              <mapping-node modelUID="r:54a5f1cc-4056-4ebe-b91a-271cac338c49(jetbrains.mps.ide.httpsupport.generator.template.main@generator)" nodeID="5573986434797587359" />
+            </external-mapping>
+          </lesser-priority-mapping>
+        </mapping-priority-rule>
       </mapping-priorities>
     </generator>
   </generators>

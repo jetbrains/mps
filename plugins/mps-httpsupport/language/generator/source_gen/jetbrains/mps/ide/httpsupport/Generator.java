@@ -36,18 +36,20 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[6];
+    SLanguage[] rv = new SLanguage[8];
     rv[0] = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    rv[1] = MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections");
-    rv[2] = MetaAdapterFactory.getLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
-    rv[3] = MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal");
-    rv[4] = MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
-    rv[5] = MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension");
+    rv[1] = MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures");
+    rv[2] = MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections");
+    rv[3] = MetaAdapterFactory.getLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
+    rv[4] = MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal");
+    rv[5] = MetaAdapterFactory.getLanguage(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, "jetbrains.mps.ide.httpsupport");
+    rv[6] = MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    rv[7] = MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension");
     return Arrays.asList(rv);
   }
 
   @Override
   public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createStrictlyAfterRule(TemplateUtil.createRefExternal("69433612-0c08-4d65-8f7c-839ae8b13b0d(jetbrains.mps.ide.httpsupport#4517832885627178591)", TemplateUtil.createRefNormal("r:54a5f1cc-4056-4ebe-b91a-271cac338c49(jetbrains.mps.ide.httpsupport.generator.template.main@generator)", "4622937352056028158", "main_request")), TemplateUtil.createRefExternal("1d6e05d7-9de9-40a7-9dad-7b8444280942(jetbrains.mps.lang.plugin#1203080439937)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c89590369(jetbrains.mps.lang.plugin.generator.baseLanguage.template.main@generator)", "1204478979997", "Actions"))));
+    return TemplateUtil.asCollection(TemplateUtil.createStrictlyAfterRule(TemplateUtil.createRefExternal("69433612-0c08-4d65-8f7c-839ae8b13b0d(jetbrains.mps.ide.httpsupport#4517832885627178591)", TemplateUtil.createRefNormal("r:54a5f1cc-4056-4ebe-b91a-271cac338c49(jetbrains.mps.ide.httpsupport.generator.template.main@generator)", "4622937352056028158", "main_request")), TemplateUtil.createRefExternal("1d6e05d7-9de9-40a7-9dad-7b8444280942(jetbrains.mps.lang.plugin#1203080439937)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c89590369(jetbrains.mps.lang.plugin.generator.baseLanguage.template.main@generator)", "1204478979997", "Actions"))), TemplateUtil.createStrictlyBeforeRule(TemplateUtil.createRefExternal("69433612-0c08-4d65-8f7c-839ae8b13b0d(jetbrains.mps.ide.httpsupport#4517832885627178591)", TemplateUtil.createRefNormal("r:54a5f1cc-4056-4ebe-b91a-271cac338c49(jetbrains.mps.ide.httpsupport.generator.template.main@generator)", "2345521174008440735", "mappingRessourceHandler")), TemplateUtil.createRefExternal("69433612-0c08-4d65-8f7c-839ae8b13b0d(jetbrains.mps.ide.httpsupport#4517832885627178591)", TemplateUtil.createRefNormal("r:54a5f1cc-4056-4ebe-b91a-271cac338c49(jetbrains.mps.ide.httpsupport.generator.template.main@generator)", "5573986434797587359", "main"))));
   }
 }

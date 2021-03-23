@@ -10,6 +10,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_CanHandleRequestFunction;
+  private ConceptPresentation props_ContentTypeFunction;
   private ConceptPresentation props_DefaultParameterConverter;
   private ConceptPresentation props_DefaultValueFunction;
   private ConceptPresentation props_DeserializeFunction;
@@ -45,6 +46,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_RequestType;
   private ConceptPresentation props_RequestURLBuilderExpression;
   private ConceptPresentation props_ResponseSendOperation;
+  private ConceptPresentation props_RessourceHandler;
   private ConceptPresentation props_SerializeFunction;
   private ConceptPresentation props_SerializedValueParameter;
   private ConceptPresentation props_ValueToSerializeParameter;
@@ -62,6 +64,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CanHandleRequestFunction = cpb.create();
         }
         return props_CanHandleRequestFunction;
+      case LanguageConceptSwitch.ContentTypeFunction:
+        if (props_ContentTypeFunction == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Content Type for request");
+          cpb.rawPresentation("contentType");
+          props_ContentTypeFunction = cpb.create();
+        }
+        return props_ContentTypeFunction;
       case LanguageConceptSwitch.DefaultParameterConverter:
         if (props_DefaultParameterConverter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -315,6 +325,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ResponseSendOperation = cpb.create();
         }
         return props_ResponseSendOperation;
+      case LanguageConceptSwitch.RessourceHandler:
+        if (props_RessourceHandler == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_RessourceHandler = cpb.create();
+        }
+        return props_RessourceHandler;
       case LanguageConceptSwitch.SerializeFunction:
         if (props_SerializeFunction == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

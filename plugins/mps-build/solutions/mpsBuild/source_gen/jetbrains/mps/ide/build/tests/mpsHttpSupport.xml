@@ -92,6 +92,7 @@
     <jar destfile="${build.layout}/jetbrains.mps.ide.httpsupport.tests.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests" />
       <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/static" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.httpsupport.tests.jar" />
     </jar>
@@ -100,6 +101,12 @@
     </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.ide.httpsupport.tests-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/static">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
@@ -317,11 +324,13 @@
   <target name="module-tests" depends="assemble, test.http-support" />
   
   <target name="java.compile.jetbrains.mps.ide.httpsupport.tests" depends="fetchDependencies">
+    <mkdir dir="${basedir}/testbench/testsolutions/httpsupport.test/static" />
     <mkdir dir="${basedir}/testbench/testsolutions/httpsupport.test/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
+        <path location="${basedir}/testbench/testsolutions/httpsupport.test/static" />
         <path location="${basedir}/testbench/testsolutions/httpsupport.test/source_gen" />
         <pathelement path="${basedir}/testbench/testsolutions/httpsupport.test/test_gen/" />
       </src>
@@ -382,6 +391,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.tests">
+      <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/static" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${basedir}/testbench/testsolutions/httpsupport.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>

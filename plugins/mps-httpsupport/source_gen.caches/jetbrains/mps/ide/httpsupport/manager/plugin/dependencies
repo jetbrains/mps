@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.ide.httpsupport.manager.plugin.ContentTypeHelper">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest">
     <classNode dependClassName="com.intellij.openapi.util.text.StringUtil" />
     <classNode dependClassName="com.intellij.util.ExceptionUtil" />

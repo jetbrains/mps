@@ -533,5 +533,56 @@
     <property role="34LRSv" value="ANY HTTP METHOD" />
     <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
   </node>
+  <node concept="1TIwiD" id="22cXLi_RCSd">
+    <property role="TrG5h" value="RessourceHandler" />
+    <property role="19KtqR" value="true" />
+    <property role="EcuMT" value="2345521174007418381" />
+    <property role="3GE5qa" value="handler" />
+    <property role="34LRSv" value="Ressource Handler" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="22cXLi_RCSe" role="1TKVEi">
+      <property role="IQ2ns" value="2345521174007418382" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="queryPrefix" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <ref role="20lvS9" node="5fiBL1fD$Vn" resolve="QueryPath" />
+    </node>
+    <node concept="1TJgyj" id="22cXLi_RCSh" role="1TKVEi">
+      <property role="IQ2ns" value="2345521174007418385" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="canHandleFunction" />
+      <ref role="20lvS9" node="5dkEk59WRcm" resolve="CanHandleRequestFunction" />
+    </node>
+    <node concept="1TJgyj" id="3ePCpEKupLz" role="1TKVEi">
+      <property role="IQ2ns" value="3726061952476748899" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="contentTypeFunction" />
+      <ref role="20lvS9" node="3ePCpEKuplE" resolve="ContentTypeFunction" />
+    </node>
+    <node concept="1TJgyj" id="22cXLi_RCSi" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="handleFunction" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="2345521174007418386" />
+      <ref role="20lvS9" node="4PqLM5kX$4Q" resolve="HandleRequestFunction" />
+    </node>
+    <node concept="PrWs8" id="22cXLi_RCSj" role="PzmwI">
+      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
+    </node>
+    <node concept="PrWs8" id="22cXLi_RCSk" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="PrWs8" id="22cXLi_RCSl" role="PzmwI">
+      <ref role="PrY4T" to="v54s:aRphP9VDPM" resolve="IRootWithUniqueName" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3ePCpEKuplE">
+    <property role="EcuMT" value="3726061952476747114" />
+    <property role="TrG5h" value="ContentTypeFunction" />
+    <property role="34LRSv" value="contentType" />
+    <property role="3GE5qa" value="handler" />
+    <property role="R4oN_" value="Content Type for request" />
+    <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+  </node>
 </model>
 

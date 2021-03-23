@@ -15,6 +15,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myNode_getURLOperation__BehaviorDescriptor = new Node_getURLOperation__BehaviorDescriptor();
   private final BHDescriptor myQueryParameterReference__BehaviorDescriptor = new QueryParameterReference__BehaviorDescriptor();
   private final BHDescriptor myDefaultValueFunction__BehaviorDescriptor = new DefaultValueFunction__BehaviorDescriptor();
+  private final BHDescriptor myContentTypeFunction__BehaviorDescriptor = new ContentTypeFunction__BehaviorDescriptor();
   private final BHDescriptor mySerializeFunction__BehaviorDescriptor = new SerializeFunction__BehaviorDescriptor();
   private final BHDescriptor mySerializedValueParameter__BehaviorDescriptor = new SerializedValueParameter__BehaviorDescriptor();
   private final BHDescriptor myValueToSerializeParameter__BehaviorDescriptor = new ValueToSerializeParameter__BehaviorDescriptor();
@@ -42,44 +43,46 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 0:
         return myCanHandleRequestFunction__BehaviorDescriptor;
       case 1:
-        return myDefaultParameterConverter__BehaviorDescriptor;
+        return myContentTypeFunction__BehaviorDescriptor;
       case 2:
-        return myDefaultValueFunction__BehaviorDescriptor;
+        return myDefaultParameterConverter__BehaviorDescriptor;
       case 3:
-        return myDeserializeFunction__BehaviorDescriptor;
+        return myDefaultValueFunction__BehaviorDescriptor;
       case 4:
-        return myHandleRequestFunction__BehaviorDescriptor;
+        return myDeserializeFunction__BehaviorDescriptor;
       case 5:
-        return myIDEAPlatformPortProvider__BehaviorDescriptor;
+        return myHandleRequestFunction__BehaviorDescriptor;
       case 6:
-        return myIParameterConverter__BehaviorDescriptor;
+        return myIDEAPlatformPortProvider__BehaviorDescriptor;
       case 7:
-        return myMPSIntegrationPortProvider__BehaviorDescriptor;
+        return myIParameterConverter__BehaviorDescriptor;
       case 8:
-        return myMPSInternalPortProvider__BehaviorDescriptor;
+        return myMPSIntegrationPortProvider__BehaviorDescriptor;
       case 9:
-        return myNode_getURLOperation__BehaviorDescriptor;
+        return myMPSInternalPortProvider__BehaviorDescriptor;
       case 10:
-        return myParameterConverterReference__BehaviorDescriptor;
+        return myNode_getURLOperation__BehaviorDescriptor;
       case 11:
-        return myPort__BehaviorDescriptor;
+        return myParameterConverterReference__BehaviorDescriptor;
       case 12:
-        return myPortProvider__BehaviorDescriptor;
+        return myPort__BehaviorDescriptor;
       case 13:
-        return myQueryParameterReference__BehaviorDescriptor;
+        return myPortProvider__BehaviorDescriptor;
       case 14:
-        return myRequestHandler__BehaviorDescriptor;
+        return myQueryParameterReference__BehaviorDescriptor;
       case 15:
-        return myRequestURLBuilderExpression__BehaviorDescriptor;
+        return myRequestHandler__BehaviorDescriptor;
       case 16:
-        return mySerializeFunction__BehaviorDescriptor;
+        return myRequestURLBuilderExpression__BehaviorDescriptor;
       case 17:
-        return mySerializedValueParameter__BehaviorDescriptor;
+        return mySerializeFunction__BehaviorDescriptor;
       case 18:
+        return mySerializedValueParameter__BehaviorDescriptor;
+      case 19:
         return myValueToSerializeParameter__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5354a94149f37316L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdcb2eL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x2d9d5d4572ccaf5cL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe83a1b05L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f64136L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980630L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb3f3L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b71399ad9bL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d72d05b47f59025L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x1962d3cabd393132L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980586L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe838a4f9L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe838c5e4L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8393f24L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x5354a94149f37316L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x33b5a19ab079956aL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdcb2eL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x2d9d5d4572ccaf5cL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe83a1b05L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f64136L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980630L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb3f3L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b71399ad9bL), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d72d05b47f59025L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x1962d3cabd393132L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x46f064803fbdb465L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b7139c32c2L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x6f2759b713980586L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x205f4376c5884e95L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f4d780L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4027f9073ff5ce93L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe838a4f9L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe838c5e4L), MetaIdFactory.conceptId(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8393f24L)).seal();
 }
