@@ -36,6 +36,22 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Line based layout with handling of overflow / line wrap, new lines and indent.
+ *
+ * Interact with several styles specific to this layout:
+ * - {@link StyleAttributes#INDENT_LAYOUT_INDENT}           add indent to the current cell or collection, indent will be applied on normal new lines
+ * - {@link StyleAttributes#INDENT_LAYOUT_NEW_LINE}         end the line after this cell
+ * - {@link StyleAttributes#INDENT_LAYOUT_ON_NEW_LINE}      put the cell on a new line
+ * - {@link StyleAttributes#INDENT_LAYOUT_NO_WRAP}          wrapping cannot occur on this cell
+ * - {@link StyleAttributes#INDENT_LAYOUT_CHILDREN_NEWLINE} (on collection) children will have new line after them
+ * - {@link StyleAttributes#INDENT_LAYOUT_INDENT_ANCHOR}    (on collection) normal new lines will be indented with the first cell of the collection (wrapped ones
+ * will have additional indents)
+ * - {@link StyleAttributes#INDENT_LAYOUT_WRAP_ANCHOR}      (on collection) wrapped new lines will be indented with the first cell of the collection
+ *
+ * Anchors and indent are kept recursively, so for a given first cell of a line, the indent depends only on the indent or first cell's position of ancestor
+ * collections.
+ */
 public class CellLayout_Indent extends AbstractCellLayout {
   static boolean isOnNewLine(EditorCell root, EditorCell cell) {
     for (EditorCell current = cell; current != root; current = current.getParent()) {
@@ -131,11 +147,16 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
   @Override
   public void doLayout(EditorCell_Collection editorCells) {
-    if (editorCells.getParent() != null && editorCells.getParent().getCellLayout() instanceof CellLayout_Indent) {
-      return;
+    // Empty collection -> width, height = 0
+    if (editorCells.isEmpty()) {
+      // This is necessary because of the updatePositions() method that would compute the w/h incorrectly
+      editorCells.setWidth(0);
+      editorCells.setHeight(0);
+      editorCells.setAscent(0);
+      editorCells.setDescent(0);
+    } else if (editorCells.getParent() == null || !(editorCells.getParent().getCellLayout() instanceof CellLayout_Indent)) {
+      new CellLayouter(editorCells, getMaxWidth(editorCells), getIndentSize()).layout();
     }
-
-    new CellLayouter(editorCells, getMaxWidth(editorCells), getIndentSize()).layout();
   }
 
   private int getMaxWidth(EditorCell_Collection editorCells) {
@@ -272,16 +293,6 @@ public class CellLayout_Indent extends AbstractCellLayout {
       myCell = cell;
       myX = myCell.getX();
 
-      myHeight = 0;
-
-      myLineWidth = 0;
-      myLineAscent = 0;
-      myLineDescent = 0;
-      myTopInset = 0;
-      myBottomInset = 0;
-      myOverflow = false;
-      myCurrentIndent = 0;
-
       myMaxWidth = maxWidth;
       myIndentSize = indentSize;
 
@@ -414,10 +425,9 @@ public class CellLayout_Indent extends AbstractCellLayout {
         y1 = Math.max(y1, child.getY() + child.getHeight());
       }
 
-      // Ensure x/y are as prescribed by parent layout
+      // Ensure x is as prescribed by parent layout (in case no cell has left x set to myX because of indent)
       if (collection == myCell) {
         x0 = myX;
-        y0 = myCell.getY();
       }
 
       collection.setX(x0);
