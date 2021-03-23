@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.vcs.mergehints.plugin" uuid="f3e1e6f1-1de5-4ca2-a0b2-25f6530686ef" moduleVersion="0" compileInMPS="false">
+<solution name="jetbrains.mps.vcs.mergehints.plugin" uuid="f3e1e6f1-1de5-4ca2-a0b2-25f6530686ef" moduleVersion="0" compileInMPS="true">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">
@@ -7,9 +7,8 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="ideaPlugin" pluginId="jetbrains.mps.vcs" />
     <facet type="java">
-      <classes generated="true" />
+      <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
   <sourcePath />

@@ -85,6 +85,11 @@
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
 
+    <!--
+      FIXME has to point to /languages as it's in build layout in mpsVcs but that would lead to module discovery errors when running from sources
+          Note, as long as we've got "/" here, optional LL in langDesignOptional.xml doesn't make sense, module(s) under languages-devkit
+          would get discovered anyway.
+    -->
     <mps.LanguageLibrary dir="/"/>
 
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>

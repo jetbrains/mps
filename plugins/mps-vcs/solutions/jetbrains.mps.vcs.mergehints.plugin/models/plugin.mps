@@ -30,12 +30,6 @@
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
-      <concept id="5023285075122009364" name="jetbrains.mps.lang.plugin.structure.IdeaInitializerDescriptor" flags="ng" index="9BnSX">
-        <property id="5023285075122009368" name="descripttion" index="9BnSL" />
-        <property id="5023285075122009371" name="vendor" index="9BnSM" />
-        <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
-        <property id="5023285075122009366" name="id" index="9BnSZ" />
-      </concept>
       <concept id="2450897840534683979" name="jetbrains.mps.lang.plugin.structure.EditorTabReference" flags="nn" index="2vPdvi">
         <reference id="2450897840534683980" name="editorTab" index="2vPdvl" />
       </concept>
@@ -913,12 +907,5 @@
     </node>
   </node>
   <node concept="2DaZZR" id="4qACXZlXpjD" />
-  <node concept="9BnSX" id="4qACXZlXBAH">
-    <property role="9BnSZ" value="ignored" />
-    <property role="TrG5h" value="ignored" />
-    <property role="9BnSL" value="ignored" />
-    <property role="9BnSM" value="ignored" />
-    <property role="9BnSP" value="ignored" />
-  </node>
 </model>
 

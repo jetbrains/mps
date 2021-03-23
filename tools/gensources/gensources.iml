@@ -757,6 +757,10 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/generator/classes_gen" />
     </content>
+    <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions/jetbrains.mps.vcs.mergehints.plugin/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions/jetbrains.mps.vcs.mergehints.plugin/classes_gen" />
+    </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/vcs-platform/languages">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/vcs-platform/languages/modelmetadata/classes_gen" />
