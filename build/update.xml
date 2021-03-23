@@ -360,9 +360,9 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2020" minorVersoin="3">
-      <build number="203.7717.1329" version="2020.3.2">
-        <message>JetBrains MPS 2020.3.2 is now available.</message>
-        <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2021.1+Download+EAP+Page" download="true"/>
+      <build number="203.7717.1351" version="2020.3.3">
+        <message>JetBrains MPS 2020.3.3 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
     <channel id="MPS211EAP" name="MPS 2021.1" status="eap"
@@ -371,7 +371,7 @@
              majorVersion="2021" minorVersoin="1">
       <build number="211.6085.475" version="2021.1 EAP2">
         <message>JetBrains MPS 2021.1 EAP2 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+        <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2021.1+Download+EAP+Page" download="true"/>
       </build>
     </channel>
   </product>
