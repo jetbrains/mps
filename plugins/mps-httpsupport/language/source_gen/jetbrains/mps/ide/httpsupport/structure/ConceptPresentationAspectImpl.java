@@ -15,6 +15,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DeserializeFunction;
   private ConceptPresentation props_HandleRequestFunction;
   private ConceptPresentation props_HttpMethod;
+  private ConceptPresentation props_HttpMethod_ANY;
   private ConceptPresentation props_HttpMethod_Connect;
   private ConceptPresentation props_HttpMethod_Delete;
   private ConceptPresentation props_HttpMethod_Get;
@@ -97,6 +98,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HttpMethod = cpb.create();
         }
         return props_HttpMethod;
+      case LanguageConceptSwitch.HttpMethod_ANY:
+        if (props_HttpMethod_ANY == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ANY HTTP METHOD");
+          props_HttpMethod_ANY = cpb.create();
+        }
+        return props_HttpMethod_ANY;
       case LanguageConceptSwitch.HttpMethod_Connect:
         if (props_HttpMethod_Connect == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

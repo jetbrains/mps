@@ -526,5 +526,12 @@
     <property role="34LRSv" value="CONNECT" />
     <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
   </node>
+  <node concept="1TIwiD" id="30pFmTipvz0">
+    <property role="EcuMT" value="3465992077578729664" />
+    <property role="3GE5qa" value="handler.method" />
+    <property role="TrG5h" value="HttpMethod_ANY" />
+    <property role="34LRSv" value="ANY HTTP METHOD" />
+    <ref role="1TJDcQ" node="33sncJYNC_c" resolve="HttpMethod" />
+  </node>
 </model>
 

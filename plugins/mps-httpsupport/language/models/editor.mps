@@ -127,6 +127,7 @@
         <child id="1073389446424" name="childCellModel" index="3EZMnx" />
       </concept>
       <concept id="1073389577006" name="jetbrains.mps.lang.editor.structure.CellModel_Constant" flags="sn" stub="3610246225209162225" index="3F0ifn">
+        <property id="1082639509531" name="nullText" index="ilYzB" />
         <property id="1073389577007" name="text" index="3F0ifm" />
       </concept>
       <concept id="1073389658414" name="jetbrains.mps.lang.editor.structure.CellModel_Property" flags="sg" stub="730538219796134133" index="3F0A7n" />
@@ -287,9 +288,9 @@
         </node>
         <node concept="l2Vlx" id="33sncJYNCT8" role="2czzBx" />
         <node concept="3F0ifn" id="33sncJYNCTN" role="2czzBI">
-          <property role="3F0ifm" value="ALL" />
-          <node concept="VechU" id="33sncJYP3dU" role="3F10Kt">
-            <property role="Vb096" value="fLJRk5_/gray" />
+          <property role="ilYzB" value="GET" />
+          <node concept="VPxyj" id="30pFmTiqV5Q" role="3F10Kt">
+            <property role="VOm3f" value="true" />
           </node>
         </node>
         <node concept="tppnM" id="33sncJYPeJ$" role="sWeuL">
@@ -1004,6 +1005,17 @@
         <property role="1xolSY" value="&lt;no method&gt;" />
       </node>
       <node concept="PMmxH" id="33sncJYNCDh" role="1QoVPY">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+        <ref role="1k5W1q" to="tpch:24YP6ZDyde4" resolve="Keyword" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="30pFmTiqf9k">
+    <property role="3GE5qa" value="handler.method" />
+    <ref role="1XX52x" to="ndib:30pFmTipvz0" resolve="HttpMethod_ANY" />
+    <node concept="3EZMnI" id="30pFmTiqffC" role="2wV5jI">
+      <node concept="2iRfu4" id="30pFmTiqffD" role="2iSdaV" />
+      <node concept="PMmxH" id="30pFmTiqf9w" role="3EZMnx">
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" to="tpch:24YP6ZDyde4" resolve="Keyword" />
       </node>

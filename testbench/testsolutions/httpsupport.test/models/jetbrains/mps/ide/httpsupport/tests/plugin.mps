@@ -103,6 +103,7 @@
         <child id="5573986434797811183" name="handleFunction" index="pCJbe" />
         <child id="6004610301070397386" name="canHandleFunction" index="qDQqb" />
         <child id="6040064942661848825" name="queryPrefix" index="std7D" />
+        <child id="3520791039919950128" name="handledMethods" index="3e4HnV" unordered="true" />
         <child id="2332657309400291202" name="queryParameters" index="3_QDjO" />
       </concept>
       <concept id="6004610301070373654" name="jetbrains.mps.ide.httpsupport.structure.CanHandleRequestFunction" flags="ig" index="qDXDn" />
@@ -112,6 +113,8 @@
       <concept id="6040064942661848792" name="jetbrains.mps.ide.httpsupport.structure.QuerySegment" flags="ng" index="std78">
         <property id="6040064942662280271" name="segment" index="svBHv" />
       </concept>
+      <concept id="3520791039919950248" name="jetbrains.mps.ide.httpsupport.structure.HttpMethod_Post" flags="ng" index="3e4Hlz" />
+      <concept id="3520791039919950202" name="jetbrains.mps.ide.httpsupport.structure.HttpMethod_Get" flags="ng" index="3e4HmL" />
       <concept id="4403308017441446661" name="jetbrains.mps.ide.httpsupport.structure.DeserializeFunction" flags="ig" index="3l8qDa" />
       <concept id="4403308017441390372" name="jetbrains.mps.ide.httpsupport.structure.ValueToSerializeParameter" flags="ng" index="3l8CTF" />
       <concept id="4403308017441350905" name="jetbrains.mps.ide.httpsupport.structure.SerializeFunction" flags="ig" index="3l8LmQ" />
@@ -123,6 +126,7 @@
         <child id="3286885855910474336" name="defaultValueFunction" index="1vkuW_" />
       </concept>
       <concept id="3286885855910473564" name="jetbrains.mps.ide.httpsupport.structure.DefaultValueFunction" flags="ig" index="1vkv8p" />
+      <concept id="3465992077578729664" name="jetbrains.mps.ide.httpsupport.structure.HttpMethod_ANY" flags="ng" index="1yv5mI" />
       <concept id="2332657309400452757" name="jetbrains.mps.ide.httpsupport.structure.QueryParameterReference" flags="ng" index="3_PKRz">
         <reference id="2332657309400452758" name="queryParameter" index="3_PKRw" />
       </concept>
@@ -530,6 +534,88 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="pFx2x" id="30pFmTiplmR">
+    <property role="TrG5h" value="RH_POST_only" />
+    <node concept="std77" id="30pFmTiplmS" role="std7D">
+      <node concept="std78" id="30pFmTiplmT" role="std7y">
+        <property role="svBHv" value="handlerTest" />
+      </node>
+      <node concept="std78" id="30pFmTiplmU" role="std7y">
+        <property role="svBHv" value="simplePost" />
+      </node>
+    </node>
+    <node concept="pF8on" id="30pFmTiplmV" role="pCJbe">
+      <node concept="3clFbS" id="30pFmTiplmW" role="2VODD2">
+        <node concept="3clFbF" id="30pFmTiplmX" role="3cqZAp">
+          <node concept="2OqwBi" id="30pFmTiplmY" role="3clFbG">
+            <node concept="pFkrN" id="30pFmTiplmZ" role="2Oq$k0" />
+            <node concept="1W9Qq2" id="30pFmTipln0" role="2OqNvi">
+              <property role="1W9R_Y" value="text/plain" />
+              <node concept="Xl_RD" id="30pFmTipln1" role="1W9R_W">
+                <property role="Xl_RC" value="handled" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3e4Hlz" id="30pFmTiplo8" role="3e4HnV" />
+  </node>
+  <node concept="pFx2x" id="30pFmTipqYx">
+    <property role="TrG5h" value="RH_POSTorGET" />
+    <node concept="std77" id="30pFmTipqYy" role="std7D">
+      <node concept="std78" id="30pFmTipqYz" role="std7y">
+        <property role="svBHv" value="handlerTest" />
+      </node>
+      <node concept="std78" id="30pFmTipqY$" role="std7y">
+        <property role="svBHv" value="simplePostGet" />
+      </node>
+    </node>
+    <node concept="pF8on" id="30pFmTipqY_" role="pCJbe">
+      <node concept="3clFbS" id="30pFmTipqYA" role="2VODD2">
+        <node concept="3clFbF" id="30pFmTipqYB" role="3cqZAp">
+          <node concept="2OqwBi" id="30pFmTipqYC" role="3clFbG">
+            <node concept="pFkrN" id="30pFmTipqYD" role="2Oq$k0" />
+            <node concept="1W9Qq2" id="30pFmTipqYE" role="2OqNvi">
+              <property role="1W9R_Y" value="text/plain" />
+              <node concept="Xl_RD" id="30pFmTipqYF" role="1W9R_W">
+                <property role="Xl_RC" value="handled" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3e4Hlz" id="30pFmTipqZm" role="3e4HnV" />
+    <node concept="3e4HmL" id="30pFmTipqZU" role="3e4HnV" />
+  </node>
+  <node concept="pFx2x" id="30pFmTir4r6">
+    <property role="TrG5h" value="RH_AnyMethod" />
+    <node concept="std77" id="30pFmTir4r7" role="std7D">
+      <node concept="std78" id="30pFmTir4r8" role="std7y">
+        <property role="svBHv" value="handlerTest" />
+      </node>
+      <node concept="std78" id="30pFmTir4r9" role="std7y">
+        <property role="svBHv" value="anyMethod" />
+      </node>
+    </node>
+    <node concept="pF8on" id="30pFmTir4ra" role="pCJbe">
+      <node concept="3clFbS" id="30pFmTir4rb" role="2VODD2">
+        <node concept="3clFbF" id="30pFmTir4rc" role="3cqZAp">
+          <node concept="2OqwBi" id="30pFmTir4rd" role="3clFbG">
+            <node concept="pFkrN" id="30pFmTir4re" role="2Oq$k0" />
+            <node concept="1W9Qq2" id="30pFmTir4rf" role="2OqNvi">
+              <property role="1W9R_Y" value="text/plain" />
+              <node concept="Xl_RD" id="30pFmTir4rg" role="1W9R_W">
+                <property role="Xl_RC" value="handled" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1yv5mI" id="30pFmTir4t6" role="3e4HnV" />
   </node>
 </model>
 

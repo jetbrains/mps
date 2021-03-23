@@ -11,13 +11,13 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 
-public class RH_simple_RequestHandler extends HttpRequestHandlerBase {
+public class RH_POST_only_RequestHandler extends HttpRequestHandlerBase {
 
-  private static final List<String> QUERY_PREFIX = ListSequence.fromListAndArray(new ArrayList<String>(), "handlerTest", "simple");
+  private static final List<String> QUERY_PREFIX = ListSequence.fromListAndArray(new ArrayList<String>(), "handlerTest", "simplePost");
 
   private final boolean myCorrectRequest;
 
-  public RH_simple_RequestHandler(HttpRequest request) {
+  public RH_POST_only_RequestHandler(HttpRequest request) {
     super(request);
     boolean correctRequest = true;
     myCorrectRequest = correctRequest;
@@ -36,7 +36,7 @@ public class RH_simple_RequestHandler extends HttpRequestHandlerBase {
       return false;
     }
     switch (request.getMethod()) {
-      case "GET":
+      case "POST":
         break;
       default:
         return false;

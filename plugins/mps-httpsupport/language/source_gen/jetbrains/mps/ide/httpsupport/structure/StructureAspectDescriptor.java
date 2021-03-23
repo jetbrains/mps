@@ -25,6 +25,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptDeserializeFunction = createDescriptorForDeserializeFunction();
   /*package*/ final ConceptDescriptor myConceptHandleRequestFunction = createDescriptorForHandleRequestFunction();
   /*package*/ final ConceptDescriptor myConceptHttpMethod = createDescriptorForHttpMethod();
+  /*package*/ final ConceptDescriptor myConceptHttpMethod_ANY = createDescriptorForHttpMethod_ANY();
   /*package*/ final ConceptDescriptor myConceptHttpMethod_Connect = createDescriptorForHttpMethod_Connect();
   /*package*/ final ConceptDescriptor myConceptHttpMethod_Delete = createDescriptorForHttpMethod_Delete();
   /*package*/ final ConceptDescriptor myConceptHttpMethod_Get = createDescriptorForHttpMethod_Get();
@@ -75,7 +76,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpMethod, myConceptHttpMethod_Connect, myConceptHttpMethod_Delete, myConceptHttpMethod_Get, myConceptHttpMethod_Head, myConceptHttpMethod_Options, myConceptHttpMethod_Patch, myConceptHttpMethod_Post, myConceptHttpMethod_Put, myConceptHttpMethod_Trace, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptValueToSerializeParameter);
+    return Arrays.asList(myConceptCanHandleRequestFunction, myConceptDefaultParameterConverter, myConceptDefaultValueFunction, myConceptDeserializeFunction, myConceptHandleRequestFunction, myConceptHttpMethod, myConceptHttpMethod_ANY, myConceptHttpMethod_Connect, myConceptHttpMethod_Delete, myConceptHttpMethod_Get, myConceptHttpMethod_Head, myConceptHttpMethod_Options, myConceptHttpMethod_Patch, myConceptHttpMethod_Post, myConceptHttpMethod_Put, myConceptHttpMethod_Trace, myConceptHttpRequestOperation, myConceptHttpRequestParameter, myConceptIDEAPlatformPortProvider, myConceptIParameterConverter, myConceptMPSIntegrationPortProvider, myConceptMPSInternalPortProvider, myConceptNode_getURLOperation, myConceptParameterConverterDeclaration, myConceptParameterConverterReference, myConceptParameterInitializer, myConceptPort, myConceptPortProvider, myConceptQueryParameter, myConceptQueryParameterReference, myConceptQueryPath, myConceptQuerySegment, myConceptRequestHandler, myConceptRequestType, myConceptRequestURLBuilderExpression, myConceptResponseSendOperation, myConceptSerializeFunction, myConceptSerializedValueParameter, myConceptValueToSerializeParameter);
   }
 
   @Override
@@ -94,6 +95,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptHandleRequestFunction;
       case LanguageConceptSwitch.HttpMethod:
         return myConceptHttpMethod;
+      case LanguageConceptSwitch.HttpMethod_ANY:
+        return myConceptHttpMethod_ANY;
       case LanguageConceptSwitch.HttpMethod_Connect:
         return myConceptHttpMethod_Connect;
       case LanguageConceptSwitch.HttpMethod_Delete:
@@ -227,6 +230,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3520791039919950156");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHttpMethod_ANY() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.httpsupport", "HttpMethod_ANY", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3019ad6e5265f8c0L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.ide.httpsupport.structure.HttpMethod", 0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x30dc5ccbfece894cL);
+    b.origin("r:3c30b5c5-2f86-4daf-bab8-b406cfefcb4f(jetbrains.mps.ide.httpsupport.structure)/3465992077578729664");
+    b.version(2);
+    b.alias("ANY HTTP METHOD");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHttpMethod_Connect() {
