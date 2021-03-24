@@ -22,14 +22,17 @@ import com.intellij.compiler.notNullVerification.NotNullVerifyingInstrumenter;
 import jetbrains.mps.compiler.ClassFile;
 import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.reloading.SDKDiscovery;
+import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.org.objectweb.asm.ClassReader;
 import org.jetbrains.org.objectweb.asm.ClassWriter;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -48,8 +51,7 @@ import java.util.Set;
  * Created by apyshkin on 5/26/16.
  */
 public class ClassFileWriter {
-  private final static String OUTPUT_DIR_CANNOT_BE_CREATED = "Can't create %s directory";
-  private final static String MODULE_FOR_CLASS_NOT_FOUND = "It cannot be calculated in which module's output path the class file for %s must be placed";
+  private final static String MODULE_FOR_CLASS_NOT_FOUND = "Cannot calculate in which module's output path the class file for %s must be placed";
   private final static String OUTPUT_DIR_IS_NOT_WRITEABLE = "Can't write to %s";
   private final static String OUTPUT_CANNOT_BE_DELETED = "Can't delete %s";
 
@@ -148,48 +150,32 @@ public class ClassFileWriter {
   private void writeClassFile(ClassFile classFile, File output) {
     FileOutputStream os = null;
     try {
-      os = new FileOutputStream(output);
       byte[] classContent = instrumentNotNull(classFile.getBytes());
-      os.write(classContent);
-    } catch (IOException e) {
-      mySender.error(String.format(OUTPUT_DIR_IS_NOT_WRITEABLE, output.getAbsolutePath()));
-    } finally {
-      if (os != null) {
-        try {
-          os.close();
-        } catch (IOException e) {
-          mySender.error("IOException: ", e);
-        }
+      if (classContent != null) {
+        os = new FileOutputStream(output);
+        os.write(classContent);
       }
+    } catch (FileNotFoundException e) {
+      mySender.error(String.format(OUTPUT_DIR_IS_NOT_WRITEABLE, output.getAbsolutePath()));
+    } catch (Throwable th) {
+      mySender.error(th.getMessage() == null ? th.getClass().getName() : th.getMessage(), th);
+    } finally {
+      FileUtil.closeFileSafe(os);
     }
   }
 
   /**
-   * cuts the name up to the $ sign
+   * @return {@code null} to indicate no content changed
    */
-  @NotNull
-  private static String getContainerClassName(String fqName) {
-    String containerClassName = fqName;
-    if (containerClassName.contains("$")) {
-      int index = containerClassName.indexOf('$');
-      containerClassName = containerClassName.substring(0, index);
-    }
-    return containerClassName;
-  }
-
-  // FIXME
-  @NotNull
+  @Nullable
   private byte[] instrumentNotNull(@NotNull byte[] classContent) {
-    FailSafeClassReader reader = new FailSafeClassReader(classContent, 0, classContent.length);
+    ClassReader reader = new FailSafeClassReader(classContent, 0, classContent.length);
     ClassWriter writer = new InstrumenterClassWriter(reader, ClassWriter.COMPUTE_FRAMES, myFinder);
     // To understand why last parameter was added - see commits 250331a & 490d4e6 in IDEA Community
-    try {
-      NotNullVerifyingInstrumenter.processClassFile(reader, writer, new String[]{NotNull.class.getName()});
-    } catch (Throwable t) {
-      t.printStackTrace();
+    if (NotNullVerifyingInstrumenter.processClassFile(reader, writer, new String[]{NotNull.class.getName()})) {
+      return writer.toByteArray();
     }
-    return writer.toByteArray();
-//    return classContent;
+    return null;
   }
 
   @NotNull
