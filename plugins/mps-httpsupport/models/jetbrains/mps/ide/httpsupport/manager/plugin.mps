@@ -665,20 +665,9 @@
         </node>
       </node>
       <node concept="3clFbS" id="3xqp3A6tBLd" role="3clF47">
-        <node concept="3clFbF" id="3xqp3A6tBSk" role="3cqZAp">
-          <node concept="3clFbC" id="3xqp3A6tC_j" role="3clFbG">
-            <node concept="10M0yZ" id="3xqp3A6tCJ_" role="3uHU7w">
-              <ref role="3cqZAo" to="9xw8:~HttpMethod.GET" resolve="GET" />
-              <ref role="1PxDUh" to="9xw8:~HttpMethod" resolve="HttpMethod" />
-            </node>
-            <node concept="2OqwBi" id="3xqp3A6tC6C" role="3uHU7B">
-              <node concept="37vLTw" id="3xqp3A6tBSj" role="2Oq$k0">
-                <ref role="3cqZAo" node="3xqp3A6tBLa" resolve="request" />
-              </node>
-              <node concept="liA8E" id="3xqp3A6tCn3" role="2OqNvi">
-                <ref role="37wK5l" to="9xw8:~HttpRequest.method()" resolve="method" />
-              </node>
-            </node>
+        <node concept="3clFbF" id="3hs8DKKQjS7" role="3cqZAp">
+          <node concept="3clFbT" id="3hs8DKKQjS6" role="3clFbG">
+            <property role="3clFbU" value="true" />
           </node>
         </node>
       </node>
@@ -1258,6 +1247,29 @@
       </node>
       <node concept="3Tm1VV" id="6GArDv5InM6" role="1B3o_S" />
       <node concept="17QB3L" id="6GArDv5InWd" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="33sncJYNufz" role="jymVt" />
+    <node concept="3clFb_" id="33sncJYNxJM" role="jymVt">
+      <property role="TrG5h" value="getMethod" />
+      <node concept="3clFbS" id="33sncJYNxJP" role="3clF47">
+        <node concept="3cpWs6" id="33sncJYNyGP" role="3cqZAp">
+          <node concept="2OqwBi" id="33sncJYNBzU" role="3cqZAk">
+            <node concept="2OqwBi" id="33sncJYNzID" role="2Oq$k0">
+              <node concept="37vLTw" id="33sncJYNyI3" role="2Oq$k0">
+                <ref role="3cqZAo" node="6GArDv5I22B" resolve="request" />
+              </node>
+              <node concept="liA8E" id="33sncJYN$zk" role="2OqNvi">
+                <ref role="37wK5l" to="9xw8:~HttpRequest.method()" resolve="method" />
+              </node>
+            </node>
+            <node concept="liA8E" id="33sncJYNBWn" role="2OqNvi">
+              <ref role="37wK5l" to="9xw8:~HttpMethod.name()" resolve="name" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="33sncJYNwM1" role="1B3o_S" />
+      <node concept="17QB3L" id="33sncJYNAxF" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="5FAyHK_BVR6" role="jymVt" />
     <node concept="3clFb_" id="5FAyHK_BXzF" role="jymVt">

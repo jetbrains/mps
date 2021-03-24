@@ -40,6 +40,22 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     new TestBody(this).test_testRHSimple();
   }
   @Test
+  public void test_testRHPost() throws Throwable {
+    new TestBody(this).test_testRHPost();
+  }
+  @Test
+  public void test_testRHPostWithGet() throws Throwable {
+    new TestBody(this).test_testRHPostWithGet();
+  }
+  @Test
+  public void test_testRHPostOrGet() throws Throwable {
+    new TestBody(this).test_testRHPostOrGet();
+  }
+  @Test
+  public void test_testRHAnyMethod() throws Throwable {
+    new TestBody(this).test_testRHAnyMethod();
+  }
+  @Test
   public void test_testRHNoRequiredParams() throws Throwable {
     new TestBody(this).test_testRHNoRequiredParams();
   }
@@ -87,6 +103,24 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       String url = this.buildRequest("/handlerTest/simple");
       this.testRequestResponse(url, 200, "handled");
     }
+    public void test_testRHPost() throws Exception {
+      String url = this.buildRequest("/handlerTest/simplePost");
+      this.testRequestResponse(url, "POST", 200, "handled");
+    }
+    public void test_testRHPostWithGet() throws Exception {
+      String url = this.buildRequest("/handlerTest/simplePost");
+      this.testRequestResponse(url, "GET", 404, null);
+    }
+    public void test_testRHPostOrGet() throws Exception {
+      String url = this.buildRequest("/handlerTest/simplePostGet");
+      this.testRequestResponse(url, "POST", 200, "handled");
+      this.testRequestResponse(url, "GET", 200, "handled");
+    }
+    public void test_testRHAnyMethod() throws Exception {
+      String url = this.buildRequest("/handlerTest/anyMethod");
+      this.testRequestResponse(url, "POST", 200, "handled");
+      this.testRequestResponse(url, "GET", 200, "handled");
+    }
     public void test_testRHNoRequiredParams() throws Exception {
       String url = this.buildRequest("/handlerTest/requiredParams");
       this.testRequestResponse(url, 404, null);
@@ -111,12 +145,12 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     }
     public void test_testURlBuilder1() throws Exception {
       String test = "testString";
-      String url = buildRequest_17tcaj_a0a1a9r(test);
+      String url = buildRequest_17tcaj_a0a1a31v(test);
       this.testRequestResponse(url, 200, test);
     }
     public void test_testURlBuilder2() throws Exception {
       String test = "testString";
-      String url = buildRequest_17tcaj_a0a1a01r(test);
+      String url = buildRequest_17tcaj_a0a1a41v(test);
       this.testRequestResponse(url, 200, test + " serialized deserialized");
     }
     public void test_testRHConflicts() throws Exception {
@@ -130,9 +164,13 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
 
 
     public void testRequestResponse(String requestUrl, int exectedRetCode, String expectedResponse) {
+      this.testRequestResponse(requestUrl, "GET", exectedRetCode, expectedResponse);
+    }
+    public void testRequestResponse(String requestUrl, String method, int exectedRetCode, String expectedResponse) {
       try {
         URL obj = new URL(requestUrl);
-        HttpURLConnection con = as_17tcaj_a0a1a0a41r(obj.openConnection(), HttpURLConnection.class);
+        HttpURLConnection con = as_17tcaj_a0a1a0a91v(obj.openConnection(), HttpURLConnection.class);
+        con.setRequestMethod(method);
         con.connect();
 
         Assert.assertEquals(exectedRetCode, con.getResponseCode());
@@ -155,21 +193,21 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
     public String buildRequest(String path) {
       return "http://localhost:" + BuiltInServerManager.getInstance().getPort() + path;
     }
-    private static String buildRequest_17tcaj_a0a1a9r(String param) {
+    private static String buildRequest_17tcaj_a0a1a31v(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack1");
 
       encoder.addParam("param", param);
 
       return encoder.toString();
     }
-    private static String buildRequest_17tcaj_a0a1a01r(String param) {
+    private static String buildRequest_17tcaj_a0a1a41v(String param) {
       QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:" + BuiltInServerManager.getInstance().getPort() + "/handlerTest/turnBack2");
 
       encoder.addParam("param", testConverter_Converter.serialize(param));
 
       return encoder.toString();
     }
-    private static <T> T as_17tcaj_a0a1a0a41r(Object o, Class<T> type) {
+    private static <T> T as_17tcaj_a0a1a0a91v(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);
     }
   }

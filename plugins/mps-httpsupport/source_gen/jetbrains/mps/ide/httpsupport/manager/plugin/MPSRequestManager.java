@@ -15,7 +15,6 @@ import com.intellij.util.io.NettyKt;
 import java.net.URI;
 import java.net.URISyntaxException;
 import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.HttpMethod;
 import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.channel.ChannelHandlerContext;
 import java.io.IOException;
@@ -60,7 +59,7 @@ public class MPSRequestManager extends HttpRequestHandler {
 
   @Override
   public boolean isSupported(@NotNull FullHttpRequest request) {
-    return request.method() == HttpMethod.GET;
+    return true;
   }
 
   @Override
