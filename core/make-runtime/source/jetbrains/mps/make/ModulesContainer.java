@@ -78,6 +78,16 @@ final class ModulesContainer {
       return classesGen == null ? null : new File(classesGen.getPath());
     }
 
+    // unlike getClassesOut, this one could be null
+    // see #getAllSourcePaths() for extra consideration
+    @Nullable
+    public File getSourceOut() {
+      final IFile outputRoot = myModule.getFacet(JavaModuleFacet.class).getOutputRoot();
+      // XXX no idea how to get proper File object from IFile
+      return outputRoot == null ? null : new File(outputRoot.getPath());
+    }
+
+
     // transition access for refactoring purposes, shall hide this impl detail
     public ModuleSources getSources() {
       return myModuleSources;
@@ -127,6 +137,7 @@ final class ModulesContainer {
     public Collection<String> getAllSourcePaths() {
       // TODO distinguish primary output and additional source locations
       //      primary output is what java compiler shall use to put extra sources (e.g. from Annotations)
+      //      Now we use #getSourceOut as primary source path and assume this method includes it
       return SModuleOperations.getAllSourcePaths(myModule);
     }
   }

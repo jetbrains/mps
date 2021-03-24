@@ -25,6 +25,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * module sources analysis before compilation.
@@ -32,19 +33,17 @@ import java.util.stream.Collectors;
  * Created by apyshkin on 5/25/16.
  */
 class ModuleAnalyzer {
-  @NotNull private final ModulesContainer myModulesContainer;
 
-  public ModuleAnalyzer(@NotNull ModulesContainer modulesContainer) {
-    myModulesContainer = modulesContainer;
+  public ModuleAnalyzer() {
   }
 
-  public ModuleAnalyzerResult analyze() {
+  public ModuleAnalyzerResult analyze(Stream<JavaModule> javaModules) {
     boolean hasJavaToCompile = false;
     boolean hasResourcesToUpdate = false;
     Set<SModule> modulesWithRemovals = new HashSet<>();
     Set<File> filesToDelete = new HashSet<>();
 
-    for (ModuleSources sources : myModulesContainer.getDirtyModules().map(JavaModule::getSources).collect(Collectors.toList())) {
+    for (ModuleSources sources : javaModules.map(JavaModule::getSources).collect(Collectors.toList())) {
       hasResourcesToUpdate |= !sources.isResourcesUpToDate();
       hasJavaToCompile |= !sources.isJavaUpToDate();
       Collection<File> filesToDelete0 = sources.getFilesToDelete();
