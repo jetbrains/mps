@@ -212,10 +212,11 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
       LOG.error("Typesystem dependency not tracked. ");
       return;
     }
-
-    Set<SNode> hashSet = new THashSet<>(1);
-    hashSet.add(node);
-    getTypecheckingComponent().addDependentNodesTypeSystem(current, hashSet);
+    if (node != null) {
+      Set<SNode> hashSet = new THashSet<>(1);
+      hashSet.add(node);
+      getTypecheckingComponent().addDependentNodesTypeSystem(current, hashSet);
+    }
   }
 
   @Override
