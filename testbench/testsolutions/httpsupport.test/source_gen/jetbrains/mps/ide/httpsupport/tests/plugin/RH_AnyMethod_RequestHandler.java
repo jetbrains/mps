@@ -11,13 +11,13 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 
-public class RH_simple_RequestHandler extends HttpRequestHandlerBase {
+public class RH_AnyMethod_RequestHandler extends HttpRequestHandlerBase {
 
-  private static final List<String> QUERY_PREFIX = ListSequence.fromListAndArray(new ArrayList<String>(), "handlerTest", "simple");
+  private static final List<String> QUERY_PREFIX = ListSequence.fromListAndArray(new ArrayList<String>(), "handlerTest", "anyMethod");
 
   private final boolean myCorrectRequest;
 
-  public RH_simple_RequestHandler(HttpRequest request) {
+  public RH_AnyMethod_RequestHandler(HttpRequest request) {
     super(request);
     boolean correctRequest = true;
     myCorrectRequest = correctRequest;
@@ -36,7 +36,23 @@ public class RH_simple_RequestHandler extends HttpRequestHandlerBase {
       return false;
     }
     switch (request.getMethod()) {
+      case "CONNECT":
+        break;
+      case "DELETE":
+        break;
       case "GET":
+        break;
+      case "HEAD":
+        break;
+      case "OPTIONS":
+        break;
+      case "PATCH":
+        break;
+      case "POST":
+        break;
+      case "PUT":
+        break;
+      case "TRACE":
         break;
       default:
         return false;
