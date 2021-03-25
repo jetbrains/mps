@@ -39925,7 +39925,7 @@
             </node>
           </node>
           <node concept="3qWCbU" id="6xsKswgwdti" role="3LXTna">
-            <property role="3qWCbO" value="icons/**" />
+            <property role="3qWCbO" value="icons/**, startup.properties" />
           </node>
         </node>
       </node>

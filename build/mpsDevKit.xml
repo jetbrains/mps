@@ -183,7 +183,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-devkit/languages/jetbrains.mps.ide.devkit.editor.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.devkit.editor" />
-      <fileset dir="${mps_home}/plugins/mps-devkit/editor" includes="icons/**" />
+      <fileset dir="${mps_home}/plugins/mps-devkit/editor" includes="icons/**, startup.properties" />
       <fileset dir="${mps_home}/plugins/mps-devkit/editor/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.devkit.editor.jar" />
     </jar>
