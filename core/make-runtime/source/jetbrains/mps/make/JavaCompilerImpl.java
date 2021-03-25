@@ -174,10 +174,11 @@ final class JavaCompilerImpl {
       reportModulesWithRemovalsAreNotChanged(analysisResult.modulesWithRemovals, changedModules, tracer.getSender());
       tracer.pop();
       return new MPSCompilationResult(total.errors, total.warnings, false, changedModules);
-    } catch (IOException ex) {
+    } catch (Exception ex) {
       if (tempDir != null) {
         FileUtil.delete(tempDir);
       }
+      tracer.getSender().error("Compilation aborted", ex);
       return new MPSCompilationResult(1, 0, true, Collections.emptySet());
     } finally {
       myFileManagerListener.withoutReporter();
