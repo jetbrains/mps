@@ -38,9 +38,11 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
+import javax.tools.JavaCompiler;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -152,6 +154,11 @@ public final class ModuleMaker {
       tracer.pop(1);
 
       return compileCycles(compilerOptions, schedule, tracer.subTracer(5, SubProgressKind.REPLACING), modulesContainer);
+    } catch (Exception ex) {
+      // XXX I see no reason to propagate exception up, we can fail compilation process gracefully;
+      String m = String.format("Unexpected exception '%s', compilation aborted!", ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage());
+      tracer.getSender().error(m, ex);
+      return new MPSCompilationResult(1, 0, true, Collections.emptySet());
     } finally {
       tracer.done();
       tracer.printReport();
@@ -164,10 +171,7 @@ public final class ModuleMaker {
     tracer.start("Cycles", cyclesToCompile.size());
     JavaCompilerImpl jc = null;
     try {
-      if (!RuntimeFlags.useEclipseJavaCompiler()) {
-        jc = new JavaCompilerImpl(new File(System.getProperty("java.home")), compilerOptions == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_COMPILER_OPTIONS : compilerOptions);
-      } else {
-      }
+      jc = decideOnActualCompiler(compilerOptions, tracer.getSender());
       int cycleNumber = 0;
       for (Set<JavaModule> modulesInCycle : cyclesToCompile) {
         if (tracer.isMonitorCanceled()) {
@@ -179,7 +183,7 @@ public final class ModuleMaker {
         cycleTracer.start(getCycleString(cycleNumber, modulesInCycle), 1);
         ModulesContainer modulesContainer = allModules.restricted(modulesInCycle);
         final MPSCompilationResult cycleCompilationResult;
-        if (RuntimeFlags.useEclipseJavaCompiler()) {
+        if (jc == null) {
           InternalJavaCompiler internalJavaCompiler = new InternalJavaCompiler(modulesContainer, compilerOptions);
           cycleCompilationResult = internalJavaCompiler.compile(cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
         } else {
@@ -208,6 +212,29 @@ public final class ModuleMaker {
       }
     }
     return String.format(CYCLE_FORMAT_MSG, cycleNumber, firstModule);
+  }
+
+  /**
+   * @return null means use legacy one
+   */
+  @Nullable
+  private JavaCompilerImpl decideOnActualCompiler(@Nullable JavaCompilerOptions compilerOptions, MessageSender sender) throws IllegalStateException {
+    if (RuntimeFlags.useLegacyJavaCompiler()) {
+      return null;
+    }
+    JavaCompiler jcImpl;
+    if (RuntimeFlags.useEclipseJavaCompiler()) {
+      try {
+        jcImpl = JavaCompilerImpl.eclipseCompiler();
+      } catch (Exception ex) {
+        sender.warn("ECJ requested, but no appropriate javax.tools.JavaCompiler implementation found", null);
+        jcImpl = JavaCompilerImpl.defaultCompiler();
+      }
+    } else {
+      jcImpl = JavaCompilerImpl.defaultCompiler();
+    }
+    final JavaCompilerOptions co = compilerOptions == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_COMPILER_OPTIONS : compilerOptions;
+    return new JavaCompilerImpl(new File(System.getProperty("java.home")), co, jcImpl);
   }
 
   @NotNull

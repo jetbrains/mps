@@ -42,6 +42,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.ServiceLoader;
+import java.util.ServiceLoader.Provider;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -83,9 +85,10 @@ final class JavaCompilerImpl {
    */
   static JavaCompiler eclipseCompiler() throws IllegalStateException {
     // FIXME need to figure out proper way to use EclipseCompiler implementation of javax.tools.JavaCompiler interface
-    //   meanwhile, could resort to approach org.jetbrains.jps.javac.JavacMain uses, see
+    //   meanwhile, resort to approach org.jetbrains.jps.javac.JavacMain uses, see
     //   org.jetbrains.jps.builders.impl.java.EclipseCompilerTool#findCompiler() (by class name)
-    throw new IllegalStateException("NOT SUPPORTED");
+    final Stream<Provider<JavaCompiler>> jcs = ServiceLoader.load(JavaCompiler.class).stream();
+    return jcs.filter(jc -> "EclipseCompiler".equals(jc.type().getSimpleName())).map(Provider::get).findFirst().orElseThrow(() -> new IllegalStateException("No ECJ found"));
   }
 
   public JavaCompilerImpl(@NotNull File javaHome, @NotNull JavaCompilerOptions compilerOptions, @NotNull JavaCompiler javac) {

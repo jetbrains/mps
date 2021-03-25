@@ -32,6 +32,7 @@ public final class RuntimeFlags {
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
+  private static Boolean ourLegacyJavaCompiler = null;
 
   private RuntimeFlags() {
   }
@@ -107,8 +108,10 @@ public final class RuntimeFlags {
   /**
    * For a long time, MPS relied on ECJ to compile generated classes. In 2021.1, support
    * for {@link javax.tools.JavaCompiler} API has been added, and it's default compilation option now.
-   * You can still resort to ECJ, if necessary, by {@code "mps.compiler.java=ecj"} system property
-   * @return true to resort to ECJ compilation
+   * One can either use system-default java compiler (the one of `javac` command-line tool) or
+   * use ECJ through the same API. Note, if ECJ is not installed, MPS falls back to default compiler.
+   * Set {@code "mps.compiler.java=ecj"} system property to ask MPS to use Eclipse Java Compiler.
+   * @return true to use ECJ for compilation
    */
   public static boolean useEclipseJavaCompiler() {
     if (ourEclipseJavaCompiler == null) {
@@ -116,4 +119,18 @@ public final class RuntimeFlags {
     }
     return ourEclipseJavaCompiler;
   }
+
+  /**
+   * With use of {@link javax.tools.JavaCompiler} API in MPS 2021.1, MPS can use any compiler available
+   * through the API. However, if you need to do compilation the way it was prior to 2021.1,
+   * you can still resort to legacy, ECJ-backed mechanism, iby {@code "mps.compiler.java=ecjlegacy"} system property
+   * @return true to resort to ECJ compilation by means of direct use of ECJ classes
+   */
+  public static boolean useLegacyJavaCompiler() {
+    if (ourLegacyJavaCompiler == null) {
+      ourLegacyJavaCompiler = "ecjlegacy".equalsIgnoreCase(System.getProperty("mps.compiler.java"));
+    }
+    return ourLegacyJavaCompiler;
+  }
+
 }
