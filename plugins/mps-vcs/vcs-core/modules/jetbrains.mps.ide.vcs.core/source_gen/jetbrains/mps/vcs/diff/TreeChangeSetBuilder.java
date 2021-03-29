@@ -364,37 +364,45 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
     List<ModifiedNodesGroup> oldGroups = collectNodeGroupsInInterval(oldDiffIds, beforeId, false);
     List<ModifiedNodesGroup> newGroups = collectNodeGroupsInInterval(newDiffIds, beforeId, true);
 
-    while (ListSequence.fromList(oldGroups).isNotEmpty()) {
-      ModifiedNodesGroup oldGroup = ListSequence.fromList(oldGroups).first();
-      ListSequence.fromList(oldGroups).removeElement(oldGroup);
-      if (oldGroup.isMove()) {
-        SetSequence.fromSet(myOldMovedGroups).addElement(oldGroup);
-        continue;
+    ListSequence.fromList(oldGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return it.isMove();
       }
-      ModifiedNodesGroup newPresenceGroup = null;
-      while (ListSequence.fromList(newGroups).isNotEmpty()) {
-        ModifiedNodesGroup newGroup = ListSequence.fromList(newGroups).first();
-        ListSequence.fromList(newGroups).removeElement(newGroup);
-        if (newGroup.isMove()) {
-          SetSequence.fromSet(myNewMovedGroups).addElement(newGroup);
-          continue;
-        }
-        newPresenceGroup = newGroup;
+    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
+      public void visit(ModifiedNodesGroup it) {
+        SetSequence.fromSet(myOldMovedGroups).addElement(it);
       }
-      if (newPresenceGroup == null) {
-        newPresenceGroup = new ModifiedNodesGroup(getModel(true), beforeId, newParentId, link, ChangeType.ADD);
+    });
+    ListSequence.fromList(newGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return it.isMove();
       }
-      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(oldGroup, newPresenceGroup)));
+    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
+      public void visit(ModifiedNodesGroup it) {
+        SetSequence.fromSet(myNewMovedGroups).addElement(it);
+      }
+    });
+
+    oldGroups = ListSequence.fromList(oldGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return !(it.isMove());
+      }
+    }).toListSequence();
+    newGroups = ListSequence.fromList(newGroups).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return !(it.isMove());
+      }
+    }).toListSequence();
+
+    int minSize = Math.min(ListSequence.fromList(oldGroups).count(), ListSequence.fromList(newGroups).count());
+    for (int i = 0; i < minSize; i++) {
+      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(ListSequence.fromList(oldGroups).getElement(i), ListSequence.fromList(newGroups).getElement(i))));
     }
-    while (ListSequence.fromList(newGroups).isNotEmpty()) {
-      ModifiedNodesGroup newGroup = ListSequence.fromList(newGroups).first();
-      ListSequence.fromList(newGroups).removeElement(newGroup);
-      if (newGroup.isMove()) {
-        SetSequence.fromSet(myNewMovedGroups).addElement(newGroup);
-        continue;
-      }
-      ModifiedNodesGroup oldPresenceGroup = new ModifiedNodesGroup(getModel(false), beforeId, oldParentId, link, ChangeType.DELETE);
-      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(oldPresenceGroup, newGroup)));
+    for (int i = minSize; i < ListSequence.fromList(oldGroups).count(); i++) {
+      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(ListSequence.fromList(oldGroups).getElement(i), new ModifiedNodesGroup(getModel(true), beforeId, newParentId, link, ChangeType.ADD))));
+    }
+    for (int i = minSize; i < ListSequence.fromList(newGroups).count(); i++) {
+      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(new ModifiedNodesGroup(getModel(false), beforeId, oldParentId, link, ChangeType.DELETE), ListSequence.fromList(newGroups).getElement(i))));
     }
     return result;
   }
