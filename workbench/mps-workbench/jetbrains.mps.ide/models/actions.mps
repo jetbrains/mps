@@ -47948,7 +47948,7 @@
         <node concept="3clFbF" id="457w8RR3R1B" role="3cqZAp">
           <node concept="3cpWs3" id="ZfFelTAFy4" role="3clFbG">
             <node concept="Xl_RD" id="ZfFelTAFy5" role="3uHU7w">
-              <property role="Xl_RC" value=".clone" />
+              <property role="Xl_RC" value="_clone" />
             </node>
             <node concept="2OqwBi" id="ZfFelTAFy6" role="3uHU7B">
               <node concept="liA8E" id="ZfFelTAFy8" role="2OqNvi">
