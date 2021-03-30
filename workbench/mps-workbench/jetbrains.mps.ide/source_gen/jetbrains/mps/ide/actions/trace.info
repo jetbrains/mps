@@ -13322,52 +13322,51 @@
       <node id="7081154005685053261" at="99,63,100,46" concept="12" />
       <node id="7081154005685053268" at="101,38,102,129" concept="14" />
       <node id="7081154005685053293" at="102,129,103,46" concept="12" />
-      <node id="7081154005685053302" at="104,29,105,55" concept="6" />
-      <node id="7081154005685053313" at="106,7,107,38" concept="13" />
-      <node id="7081154005685053319" at="108,5,109,21" concept="13" />
-      <node id="7081154005685157742" at="113,49,114,43" concept="13" />
-      <node id="7081154005685128843" at="116,48,117,33" concept="12" />
-      <node id="7081154005685128865" at="118,10,119,36" concept="6" />
-      <node id="7081154005685128860" at="120,51,121,45" concept="13" />
-      <node id="7081154005685128871" at="124,5,125,35" concept="13" />
-      <node id="4448668666026128544" at="128,97,129,165" concept="13" />
-      <node id="7110462768343134145" at="132,36,133,56" concept="13" />
-      <node id="7081154005681685766" at="136,36,137,61" concept="13" />
-      <node id="7081154005681685766" at="138,5,139,16" concept="13" />
+      <node id="5939446539666653090" at="104,29,105,65" concept="13" />
+      <node id="7081154005685053319" at="107,5,108,21" concept="13" />
+      <node id="7081154005685157742" at="112,49,113,43" concept="13" />
+      <node id="7081154005685128843" at="115,48,116,33" concept="12" />
+      <node id="7081154005685128865" at="117,10,118,36" concept="6" />
+      <node id="7081154005685128860" at="119,51,120,45" concept="13" />
+      <node id="7081154005685128871" at="123,5,124,35" concept="13" />
+      <node id="4448668666026128544" at="127,97,128,165" concept="13" />
+      <node id="7110462768343134145" at="131,36,132,56" concept="13" />
+      <node id="7081154005681685766" at="135,36,136,61" concept="13" />
+      <node id="7081154005681685766" at="137,5,138,16" concept="13" />
       <node id="7081154005685000568" at="39,0,42,0" concept="3" trace="NewModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/module/SModule;Ljavax/swing/tree/TreeNode;)V" />
       <node id="5644396015855883518" at="42,0,45,0" concept="3" trace="NewModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/module/SModule;Ljavax/swing/tree/TreeNode;Ljava/lang/String;)V" />
       <node id="7081154005684649600" at="92,0,95,0" concept="17" trace="getDefaultSettingsFactory#(Lorg/jetbrains/mps/openapi/module/SModule;Ljavax/swing/tree/TreeNode;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
       <node id="5644396015856011235" at="95,0,98,0" concept="17" trace="getDefaultSettingsFactory#(Ljava/lang/String;Ljavax/swing/tree/TreeNode;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
       <node id="7081154005685053300" at="103,46,106,7" concept="10" />
-      <node id="7081154005685150850" at="112,90,115,5" concept="10" />
-      <node id="7081154005685128855" at="119,36,122,9" concept="10" />
-      <node id="4448668666026123188" at="128,0,131,0" concept="17" trace="getSettingsFactoryForSubmodel#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
-      <node id="7110462768343134149" at="132,0,135,0" concept="17" trace="getTitle#()Ljava/lang/String;" />
-      <node id="7081154005681685766" at="135,89,138,5" concept="10" />
+      <node id="7081154005685150850" at="111,90,114,5" concept="10" />
+      <node id="7081154005685128855" at="118,36,121,9" concept="10" />
+      <node id="4448668666026123188" at="127,0,130,0" concept="17" trace="getSettingsFactoryForSubmodel#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
+      <node id="7110462768343134149" at="131,0,134,0" concept="17" trace="getTitle#()Ljava/lang/String;" />
+      <node id="7081154005681685766" at="134,89,137,5" concept="10" />
       <node id="4703869683033622532" at="52,0,56,0" concept="11" trace="selectModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
       <node id="7081154005685564317" at="73,0,77,0" concept="11" trace="run#()V" />
       <node id="4703869683026560035" at="46,0,51,0" concept="3" trace="NewModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/module/SModule;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
       <node id="7081154005684346545" at="86,0,91,0" concept="11" trace="showSettingsForCreatedModel#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="4703869683031332355" at="57,0,63,0" concept="11" trace="showDialog#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SModel;" />
       <node id="7081154005685564313" at="71,103,77,7" concept="6" />
-      <node id="7081154005685216980" at="117,33,123,31" concept="5" />
-      <node id="7081154005681685766" at="135,0,141,0" concept="17" trace="check_e2o8ll_a2a11#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
-      <node id="7081154005685053266" at="100,46,108,5" concept="10" />
-      <node id="7081154005685204938" at="115,5,124,5" concept="10" />
+      <node id="7081154005685216980" at="116,33,122,31" concept="5" />
+      <node id="7081154005681685766" at="134,0,140,0" concept="17" trace="check_e2o8ll_a2a11#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
+      <node id="7081154005685053266" at="100,46,107,5" concept="10" />
+      <node id="7081154005685204938" at="114,5,123,5" concept="10" />
       <node id="7081154005684512225" at="69,0,79,0" concept="11" trace="onModelCreated#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="7081154005684766586" at="99,0,111,0" concept="17" trace="getDefaultNamespaceFor#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;" />
-      <node id="7081154005685069748" at="112,0,127,0" concept="17" trace="getDefaultStereotypeProvider#(Ljavax/swing/tree/TreeNode;)Ljetbrains/mps/ide/ui/tree/module/StereotypeProvider;" />
+      <node id="7081154005684766586" at="99,0,110,0" concept="17" trace="getDefaultNamespaceFor#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/String;" />
+      <node id="7081154005685069748" at="111,0,126,0" concept="17" trace="getDefaultStereotypeProvider#(Ljavax/swing/tree/TreeNode;)Ljetbrains/mps/ide/ui/tree/module/StereotypeProvider;" />
       <scope id="7081154005685000572" at="39,88,40,71" />
       <scope id="5644396015855883527" at="42,106,43,74" />
       <scope id="4703869683033622539" at="53,42,54,20" />
       <scope id="7081154005684649603" at="92,109,93,79" />
       <scope id="5644396015856011236" at="95,111,96,109" />
-      <scope id="7081154005685053301" at="104,29,105,55" />
-      <scope id="7081154005685150852" at="113,49,114,43" />
-      <scope id="7081154005685128859" at="120,51,121,45" />
-      <scope id="4448668666026123191" at="128,97,129,165" />
-      <scope id="7110462768343134144" at="132,36,133,56" />
-      <scope id="7081154005681685766" at="136,36,137,61" />
+      <scope id="7081154005685053301" at="104,29,105,65" />
+      <scope id="7081154005685150852" at="112,49,113,43" />
+      <scope id="7081154005685128859" at="119,51,120,45" />
+      <scope id="4448668666026123191" at="127,97,128,165" />
+      <scope id="7110462768343134144" at="131,36,132,56" />
+      <scope id="7081154005681685766" at="135,36,136,61" />
       <scope id="7081154005685564318" at="73,25,75,44" />
       <scope id="7081154005685000568" at="39,0,42,0">
         <var name="module" id="7081154005685002614" />
@@ -13396,14 +13395,14 @@
         <var name="namespace" id="5644396015856011245" />
         <var name="treeNode" id="5644396015856011247" />
       </scope>
-      <scope id="4448668666026123188" at="128,0,131,0">
+      <scope id="4448668666026123188" at="127,0,130,0">
         <var name="supermodel" id="4448668666026127401" />
       </scope>
-      <scope id="7110462768343134149" at="132,0,135,0" />
+      <scope id="7110462768343134149" at="131,0,134,0" />
       <scope id="4703869683033622532" at="52,0,56,0" />
       <scope id="7081154005685564317" at="73,0,77,0" />
-      <scope id="7081154005685216982" at="118,10,122,9" />
-      <scope id="7081154005681685766" at="135,89,139,16" />
+      <scope id="7081154005685216982" at="117,10,121,9" />
+      <scope id="7081154005681685766" at="134,89,138,16" />
       <scope id="4703869683026560035" at="46,0,51,0">
         <var name="dialogSettingsFactory" id="4703869683026560042" />
         <var name="module" id="4703869683026560040" />
@@ -13412,34 +13411,34 @@
       <scope id="7081154005684346545" at="86,0,91,0">
         <var name="model" id="7081154005684346540" />
       </scope>
+      <scope id="7081154005685053267" at="101,38,106,7">
+        <var name="sharpIndex" id="7081154005685053294" />
+      </scope>
       <scope id="4703869683031332355" at="57,0,63,0">
         <var name="module" id="4703869683031332356" />
       </scope>
-      <scope id="7081154005685053267" at="101,38,107,38">
-        <var name="sharpIndex" id="7081154005685053294" />
-      </scope>
-      <scope id="7081154005681685766" at="135,0,141,0">
+      <scope id="7081154005681685766" at="134,0,140,0">
         <var name="checkedDotOperand" id="7081154005681685766" />
       </scope>
       <scope id="7081154005684512228" at="70,53,77,7" />
-      <scope id="7081154005685204940" at="116,48,123,31">
+      <scope id="7081154005685204940" at="115,48,122,31">
         <var name="parent" id="7081154005685128844" />
+      </scope>
+      <scope id="7081154005684766589" at="99,63,108,21">
+        <var name="namespace" id="7081154005685053262" />
       </scope>
       <scope id="7081154005684512225" at="69,0,79,0">
         <var name="model" id="7081154005684518710" />
       </scope>
-      <scope id="7081154005684766589" at="99,63,109,21">
-        <var name="namespace" id="7081154005685053262" />
-      </scope>
-      <scope id="7081154005684766586" at="99,0,111,0">
+      <scope id="7081154005684766586" at="99,0,110,0">
         <var name="module" id="7081154005684800006" />
       </scope>
-      <scope id="7081154005685069751" at="112,90,125,35" />
-      <scope id="7081154005685069748" at="112,0,127,0">
+      <scope id="7081154005685069751" at="111,90,124,35" />
+      <scope id="7081154005685069748" at="111,0,126,0">
         <var name="treeNode" id="7081154005685075016" />
       </scope>
       <unit id="7081154005685564317" at="72,56,77,5" name="jetbrains.mps.ide.actions.NewModelActionExecutor$1" />
-      <unit id="7081154005681548338" at="33,0,142,0" name="jetbrains.mps.ide.actions.NewModelActionExecutor" />
+      <unit id="7081154005681548338" at="33,0,141,0" name="jetbrains.mps.ide.actions.NewModelActionExecutor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7081154005685488008">

@@ -102,9 +102,8 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
       // in fact, we could check any module name for # char. Though, at the moment one may encounter # in generator modules only.
       int sharpIndex = namespace.indexOf('#');
       if (sharpIndex != -1) {
-        namespace = namespace.substring(0, sharpIndex);
+        return namespace.substring(0, sharpIndex) + ".generator";
       }
-      return namespace + ".generator";
     }
     return namespace;
   }
