@@ -7,6 +7,10 @@ import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogSettings;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
 import javax.swing.tree.TreeNode;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import java.util.Set;
+import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
@@ -14,11 +18,11 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
 import com.intellij.openapi.options.ex.SingleConfigurableEditor;
-import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.ide.IdeBundle;
+import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
@@ -39,8 +43,15 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   public NewModelActionExecutor(MPSProject project, SModule module, TreeNode treeNode) {
     this(project, module, getDefaultSettingsFactory(module, treeNode));
   }
-  public NewModelActionExecutor(MPSProject project, SModule module, TreeNode treeNode, String namespace) {
-    this(project, module, getDefaultSettingsFactory(namespace, treeNode));
+  public NewModelActionExecutor(MPSProject project, final SModule module, TreeNode treeNode, String namespace) {
+    super(project);
+    myModule = module;
+    String mn = suggestNewModelName(new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Set<String>>() {
+      public Set<String> compute() {
+        return existingModelNames(module);
+      }
+    }), namespace);
+    myDialogSettingsFactory = NewModelDialogDefaultSettings.getFactory(mn, getDefaultStereotypeProvider(treeNode));
   }
 
   public NewModelActionExecutor(MPSProject project, SModule module, NewModelDialogSettings.Factory dialogSettingsFactory) {
@@ -130,6 +141,37 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
 
   private static String getTitle() {
     return IdeBundle.message("actions.model.new.title");
+  }
+
+  private static Set<String> existingModelNames(SModule where) {
+    HashSet<String> existingModels = new HashSet<String>();
+    for (SModel m : where.getModels()) {
+      existingModels.add(m.getName().getLongName());
+    }
+    return existingModels;
+  }
+
+  private static String suggestNewModelName(Set<String> inUse, String namespace) {
+    // would like to try a..z prefix, then aa..az, ba..bz and so on
+    final int SEQ_LEN = 26;
+    StringBuilder sb = new StringBuilder(namespace);
+    sb.append('.');
+    final int nsLen = sb.length();
+    String candidate;
+    int c = 0;
+    do {
+      int x = c++;
+      do {
+        int xx = x % SEQ_LEN;
+        sb.insert(nsLen, (char) ('a' + xx));
+        x /= SEQ_LEN;
+        x--;
+      } while (x >= 0);
+      sb.append("_model");
+      candidate = sb.toString();
+      sb.setLength(nsLen);
+    } while (inUse.contains(candidate));
+    return candidate;
   }
   private static EditableSModel check_e2o8ll_a2a11(ModelCreateHelper checkedDotOperand) {
     if (null != checkedDotOperand) {
