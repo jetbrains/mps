@@ -301,8 +301,12 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     SetSequence.fromSet(concepts).addElement(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
     return concepts;
   }
-  /*package*/ static void collectSuperConcepts_id2A8AB0rB3NH(@NotNull SAbstractConcept __thisConcept__, SNode concept, Set<SNode> result) {
-    List<SNode> seq = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept);
+  /*package*/ static void collectSuperConcepts_id2A8AB0rB3NH(@NotNull SAbstractConcept __thisConcept__, SNode concept, final Set<SNode> result) {
+    List<SNode> seq = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(concept)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return !(SetSequence.fromSet(result).contains(it));
+      }
+    }).toListSequence();
     SetSequence.fromSet(result).addSequence(ListSequence.fromList(seq));
     for (SNode superConcept : ListSequence.fromList(seq)) {
       AbstractConceptDeclaration__BehaviorDescriptor.collectSuperConcepts_id2A8AB0rB3NH.invoke(__thisConcept__, superConcept, result);
