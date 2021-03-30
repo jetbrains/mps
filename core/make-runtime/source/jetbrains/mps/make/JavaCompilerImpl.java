@@ -118,6 +118,7 @@ final class JavaCompilerImpl {
       //   although once/if we get rid of dirty check, we likely need to analyze all modules here
       ModuleAnalyzerResult analysisResult = new ModuleAnalyzer().analyze(modules.getDirtyModules());
       if (!analysisResult.hasJavaToCompile && !analysisResult.hasResourcesToUpdate) {
+        tracer.pop(1);
         return MPSCompilationResult.nothingToDoCompilationResult();
       }
       analysisResult.filesToDelete.forEach(FileUtil::delete); // removing all stale files
