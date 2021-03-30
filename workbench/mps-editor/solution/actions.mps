@@ -6830,6 +6830,10 @@
       <node concept="10WQ6h" id="1xsN4xJX8VN" role="ftvYc">
         <property role="TrG5h" value="structure" />
       </node>
+      <node concept="2a7GMi" id="2Zv3X6XYK2d" role="ftvYc" />
+      <node concept="10WQ6h" id="6hBJ1S4$w8a" role="ftvYc">
+        <property role="TrG5h" value="annotatedCell" />
+      </node>
       <node concept="2a7GMi" id="1xsN4xJX8VO" role="ftvYc" />
       <node concept="10WQ6h" id="4h0_rmDoo08" role="ftvYc">
         <property role="TrG5h" value="copy" />

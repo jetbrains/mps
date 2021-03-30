@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -15,7 +16,6 @@ import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -24,8 +24,6 @@ import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
-import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4551090891612013049", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
@@ -43,7 +41,7 @@ public class Annotate_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(final AnActionEvent event, final Map<String, Object> _params) {
-    if (Annotate_Action.this.findAnnotationColumn(event) != null) {
+    if (VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT)) != null) {
       return true;
     }
     final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
@@ -107,7 +105,7 @@ public class Annotate_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    AnnotationColumn annotationColumn = Annotate_Action.this.findAnnotationColumn(event);
+    AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
     if (annotationColumn != null) {
       annotationColumn.close();
       return;
@@ -123,14 +121,6 @@ public class Annotate_Action extends BaseAction {
     BackgroundableActionLock actionLock = Annotate_Action.this.getAnnotateRootLock(event);
     actionLock.lock();
     ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS, actionLock));
-  }
-  /*package*/ AnnotationColumn findAnnotationColumn(final AnActionEvent event) {
-    for (AbstractLeftColumn column : ListSequence.fromList(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getLeftEditorHighlighter().getLeftColumns())) {
-      if (column instanceof AnnotationColumn) {
-        return ((AnnotationColumn) column);
-      }
-    }
-    return null;
   }
   /*package*/ BackgroundableActionLock getAnnotateRootLock(final AnActionEvent event) {
     return BackgroundableActionLock.getLock(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), VcsBackgroundableActions.ANNOTATE, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName());

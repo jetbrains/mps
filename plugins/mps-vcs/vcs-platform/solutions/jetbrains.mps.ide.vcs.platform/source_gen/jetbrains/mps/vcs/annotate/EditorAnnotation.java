@@ -54,6 +54,9 @@ import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction;
+import com.intellij.diff.requests.SimpleDiffRequest;
+import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
+import com.intellij.diff.DiffManager;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1507597541852241756", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.UpdateListener {
@@ -366,6 +369,17 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     return myLineAnnotationsRef.get();
   }
 
+  public CellAnnotation getCellAnnotation(EditorCell cell) {
+    EditorCell annotatedCell = cell;
+    while (annotatedCell != null) {
+      CellAnnotation cellAnnotation = MapSequence.fromMap(myCellAnnotations).get(annotatedCell);
+      if (cellAnnotation != null) {
+        return cellAnnotation;
+      }
+      annotatedCell = annotatedCell.getParent();
+    }
+    return null;
+  }
 
   private List<EditorCell> getCells(final RevisionNodeChange revisionNodeChange) {
     final List<EditorCell> cells = ListSequence.fromList(new ArrayList<EditorCell>());
@@ -548,7 +562,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ShowAllAffectedGenericAction.showSubmittedFiles(myProject, revision.getRevisionNumber(), myFile, myVcs.getKeyInstanceMethod());
   }
 
-  public ShowDiffFromAnnotationAction createDiffAction(CommitsGraphNode graphNode) {
+  public void showDiff(CommitsGraphNode node) {
     final Wrappers._T<String> rootName = new Wrappers._T<String>();
     final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
     getModelAccess().runReadAction(new Runnable() {
@@ -557,13 +571,15 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
         rootName.value = myEditorComponent.getEditedNode().getName();
       }
     });
-    @NotNull List<VcsFileRevision> parentRevisions = ListSequence.fromList(graphNode.getParents()).select(new ISelector<CommitsGraphNode, VcsFileRevision>() {
-      public VcsFileRevision select(CommitsGraphNode it) {
-        return it.getRevision();
-      }
-    }).toListSequence();
 
-    return new ShowDiffFromAnnotationAction(graphNode.getRevision(), parentRevisions, myProject, rootName.value, rootId.value, myFile.getExtension());
+    final SimpleDiffRequest rq = new SimpleDiffRequest(rootName.value, node.createContents(myFile.getExtension()), node.createTitles());
+    ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, rootId.value);
+    ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      public void run() {
+        DiffManager.getInstance().showDiff(myProject, rq);
+      }
+    });
   }
   private static void check_coav66_a3a85(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {

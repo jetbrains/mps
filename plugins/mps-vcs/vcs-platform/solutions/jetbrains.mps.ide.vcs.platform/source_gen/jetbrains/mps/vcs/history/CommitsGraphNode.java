@@ -24,6 +24,9 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import com.intellij.openapi.vcs.VcsException;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import com.intellij.diff.contents.DiffContent;
+import com.intellij.diff.contents.EmptyContent;
+import jetbrains.mps.vfs.tracking.ModelDiffContent;
 import com.intellij.openapi.vcs.history.VcsFileRevisionEx;
 import java.util.Date;
 import com.intellij.openapi.project.Project;
@@ -207,6 +210,50 @@ public final class CommitsGraphNode implements Comparable {
 
   /*package*/ boolean isIgnoredByChild(CommitsGraphNode child) {
     return ListSequence.fromList(myIgnoredByChildren).contains(child);
+  }
+
+  public List<DiffContent> createContents(String fileExtension) {
+    List<DiffContent> contents = ListSequence.fromList(new ArrayList<DiffContent>());
+    if (ListSequence.fromList(myParents).isNotEmpty()) {
+      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParents).getElement(0).getRevision(), fileExtension));
+    } else {
+      ListSequence.fromList(contents).addElement(new EmptyContent());
+    }
+    ListSequence.fromList(contents).addElement(createDiffContent(myRevision, fileExtension));
+    if (ListSequence.fromList(myParents).count() == 2) {
+      ListSequence.fromList(contents).addElement(createDiffContent(ListSequence.fromList(myParents).getElement(1).getRevision(), fileExtension));
+    }
+    return contents;
+  }
+
+  public List<String> createTitles() {
+    List<String> titles = ListSequence.fromList(new ArrayList<String>());
+    if (ListSequence.fromList(myParents).isNotEmpty()) {
+      ListSequence.fromList(titles).addElement(createTitle(ListSequence.fromList(myParents).getElement(0).getRevision()));
+    } else {
+      ListSequence.fromList(titles).addElement("");
+    }
+    ListSequence.fromList(titles).addElement(createTitle(myRevision));
+    if (ListSequence.fromList(myParents).count() == 2) {
+      ListSequence.fromList(titles).addElement(createTitle(ListSequence.fromList(myParents).getElement(1).getRevision()));
+    }
+    return titles;
+  }
+
+  private static String createTitle(@NotNull VcsFileRevision revision) {
+    return revision.getRevisionNumber().asString();
+  }
+
+  @NotNull
+  private DiffContent createDiffContent(@NotNull VcsFileRevision revision, String fileExtension) {
+    SModel model;
+    try {
+      model = VCSPersistenceUtil.loadModel(revision.loadContent(), fileExtension);
+    } catch (Exception ex) {
+      return new EmptyContent();
+    }
+    // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion
+    return ((model == null || !(model.isLoaded())) ? new EmptyContent() : new ModelDiffContent(model));
   }
 
   @Override

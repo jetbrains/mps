@@ -38,6 +38,12 @@ import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Separator;
+import com.intellij.idea.ActionsBundle;
+import com.intellij.openapi.actionSystem.IdeActions;
+import com.intellij.icons.AllIcons;
+import org.jetbrains.annotations.NotNull;
+import git4idea.i18n.GitBundle;
+import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.workbench.action.ActionUtils;
@@ -46,7 +52,6 @@ import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
-import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotationColumn extends AbstractLeftColumn {
@@ -335,14 +340,24 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     });
     ListSequence.fromList(actions).addElement(Separator.getInstance());
     if (isVcsRevision) {
-      ListSequence.fromList(actions).addElement(myEditorAnnotation.createDiffAction(graphNode));
+      ListSequence.fromList(actions).addElement(new AnAction(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON), "Show diff", AllIcons.Actions.Diff) {
+        @Override
+        public void actionPerformed(@NotNull AnActionEvent p1) {
+          myEditorAnnotation.showDiff(la.getRevisionsGraphNode());
+        }
+      });
     }
     ListSequence.fromList(actions).addElement(myViewActionGroup);
     if (isVcsRevision) {
       ListSequence.fromList(actions).addElement(createCopyRevisionNumberAction(graphNode.getRevision()));
     }
     if (isVcsRevision && myEditorAnnotation.isGit()) {
-      ListSequence.fromList(actions).addElement(new GitShowCommitInLogAction(graphNode.getRevision(), myEditorAnnotation.getProject()));
+      ListSequence.fromList(actions).addElement(new BaseAction(GitBundle.messagePointer("vcs.history.action.gitlog")) {
+        @Override
+        protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
+          VcsActionsUtil.showCommitInGitLog(graphNode.getRevision(), myEditorAnnotation.getProject());
+        }
+      });
     }
     if (!(isEditorHighlighted())) {
       ListSequence.fromList(actions).addElement(Separator.getInstance());

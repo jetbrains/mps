@@ -78,10 +78,13 @@
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNode" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.AnnotationColumn">
+    <classNode dependClassName="com.intellij.icons.AllIcons" />
+    <classNode dependClassName="com.intellij.idea.ActionsBundle" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionManager" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionPlaces" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnAction" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.IdeActions" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.Separator" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ToggleAction" />
     <classNode dependClassName="com.intellij.openapi.ide.CopyPasteManager" />
@@ -90,6 +93,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
     <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
     <classNode dependClassName="com.intellij.util.ui.TextTransferable" />
+    <classNode dependClassName="git4idea.i18n.GitBundle" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Cursor" />
     <classNode dependClassName="java.awt.Font" />
@@ -127,12 +131,12 @@
     <classNode dependClassName="jetbrains.mps.vcs.annotate.CommitNumberSubcolumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.DateAspectSubcolumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.EditorAnnotation" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.GitShowCommitInLogAction" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.HighlightRevisionSubcolumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.LineAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RevisionAspectSubcolumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.ViewActionGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNode" />
+    <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionUtils" />
     <classNode dependClassName="jetbrains.mps.workbench.action.BaseAction" />
     <classNode dependClassName="jetbrains.mps.workbench.action.BaseGroup" />
@@ -206,6 +210,8 @@
     <classNode extendsClassName="jetbrains.mps.vcs.annotate.AnnotationAspectSubcolumn" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.EditorAnnotation">
+    <classNode dependClassName="com.intellij.diff.DiffManager" />
+    <classNode dependClassName="com.intellij.diff.requests.SimpleDiffRequest" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
     <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
@@ -257,11 +263,11 @@
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RevisionChanges" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RevisionNodeChange" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RootAnnotation" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.ShowDiffFromAnnotationAction" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeColors" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNode" />
+    <classNode dependClassName="jetbrains.mps.vcs.platform.integration.ModelDiffViewer" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
@@ -270,39 +276,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
     <classNode extendsClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
     <classNode extendsClassName="jetbrains.mps.vcs.annotate.AnnotationOptions" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.annotate.GitShowCommitInLogAction">
-    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.progress.PerformInBackgroundOption" />
-    <classNode dependClassName="com.intellij.openapi.progress.ProgressIndicator" />
-    <classNode dependClassName="com.intellij.openapi.progress.ProgressManager" />
-    <classNode dependClassName="com.intellij.openapi.progress.Task" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
-    <classNode dependClassName="com.intellij.util.Consumer" />
-    <classNode dependClassName="com.intellij.vcs.log.Hash" />
-    <classNode dependClassName="com.intellij.vcs.log.impl.HashImpl" />
-    <classNode dependClassName="com.intellij.vcs.log.impl.VcsLogContentUtil" />
-    <classNode dependClassName="com.intellij.vcs.log.ui.MainVcsLogUi" />
-    <classNode dependClassName="com.intellij.vcs.log.ui.VcsLogUiEx" />
-    <classNode dependClassName="git4idea.i18n.GitBundle" />
-    <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.InterruptedException" />
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="java.util.concurrent.CancellationException" />
-    <classNode dependClassName="java.util.concurrent.ExecutionException" />
-    <classNode dependClassName="java.util.concurrent.Future" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="org.apache.log4j.Level" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.HighlightRevisionSubcolumn">
     <classNode dependClassName="java.lang.Override" />
@@ -424,44 +397,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
     <classNode extendsClassName="jetbrains.mps.vcs.history.CommitsGraphNodeConsumer" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.annotate.ShowAffectedFilesAction">
-    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.vcs.VcsKey" />
-    <classNode dependClassName="com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction" />
-    <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
-    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode extendsClassName="com.intellij.openapi.actionSystem.AnAction" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.annotate.ShowDiffFromAnnotationAction">
-    <classNode dependClassName="com.intellij.diff.DiffManager" />
-    <classNode dependClassName="com.intellij.diff.contents.DiffContent" />
-    <classNode dependClassName="com.intellij.diff.contents.EmptyContent" />
-    <classNode dependClassName="com.intellij.diff.requests.SimpleDiffRequest" />
-    <classNode dependClassName="com.intellij.idea.ActionsBundle" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.IdeActions" />
-    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.Runnable" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.vcs.platform.integration.ModelDiffViewer" />
-    <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
-    <classNode dependClassName="jetbrains.mps.vfs.tracking.ModelDiffContent" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
-    <classNode extendsClassName="com.intellij.openapi.actionSystem.AnAction" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.ViewActionGroup">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />

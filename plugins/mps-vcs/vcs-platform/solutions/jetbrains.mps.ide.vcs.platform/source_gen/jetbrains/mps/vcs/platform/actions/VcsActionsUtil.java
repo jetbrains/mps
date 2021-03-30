@@ -67,6 +67,22 @@ import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 import com.intellij.util.Consumer;
 import com.intellij.openapi.vcs.history.VcsHistorySession;
 import jetbrains.mps.vcs.diff.ui.RootHistoryDialog;
+import jetbrains.mps.vcs.annotate.AnnotationColumn;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
+import jetbrains.mps.vcs.annotate.CellAnnotation;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
+import com.intellij.vcs.log.Hash;
+import com.intellij.vcs.log.ui.MainVcsLogUi;
+import com.intellij.vcs.log.ui.VcsLogUiEx;
+import com.intellij.vcs.log.impl.VcsLogContentUtil;
+import java.util.concurrent.Future;
+import git4idea.i18n.GitBundle;
+import com.intellij.openapi.progress.PerformInBackgroundOption;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import com.intellij.vcs.log.impl.HashImpl;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class VcsActionsUtil {
@@ -325,5 +341,73 @@ __switch__:
         }
       }
     });
+  }
+
+  @Nullable
+  /*package*/ static AnnotationColumn getAnnotationColumn(EditorComponent editorComponent) {
+    for (AbstractLeftColumn column : editorComponent.getLeftEditorHighlighter().getLeftColumns()) {
+      if (column instanceof AnnotationColumn) {
+        return as_brpb5o_a0a0a0a0x(column, AnnotationColumn.class);
+      }
+    }
+    return null;
+  }
+
+  @Nullable
+  /*package*/ static CellAnnotation getCellAnnotation(EditorComponent editorComponent, EditorCell cell) {
+    if (cell == null) {
+      return null;
+    }
+    @Nullable AnnotationColumn column = getAnnotationColumn(editorComponent);
+    if (column == null || !(AnnotationColumn.isEditorHighlighted())) {
+      return null;
+    }
+    return column.getEditorAnnotation().getCellAnnotation(cell);
+  }
+
+  public static void showCommitInGitLog(VcsFileRevision myRevision, final Project myProject) {
+    final Hash hash = VcsActionsUtil.tryCreateHash(myRevision.getRevisionNumber().asString());
+    if (hash == null) {
+      return;
+    }
+    Consumer<? super MainVcsLogUi> consumer = new Consumer<VcsLogUiEx>() {
+      @Override
+      public void consume(VcsLogUiEx p1) {
+        VcsActionsUtil.jumpToRevisionUnderProgress(myProject, p1, hash);
+      }
+    };
+    VcsLogContentUtil.runInMainLog(myProject, consumer);
+  }
+
+  private static void jumpToRevisionUnderProgress(@NotNull Project project, @NotNull VcsLogUiEx logUi, @NotNull Hash hash) {
+    final Future<Boolean> future = logUi.getVcsLog().jumpToReference(hash.asString());
+    if (!(future.isDone())) {
+      ProgressManager.getInstance().run(new Task.Backgroundable(project, GitBundle.message("git.log.show.commit.in.log.process", hash.asString()), false, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
+        @Override
+        public void run(@NotNull ProgressIndicator p1) {
+          try {
+            future.get();
+          } catch (CancellationException | InterruptedException ignored) {
+          } catch (ExecutionException e) {
+            if (LOG.isEnabledFor(Level.ERROR)) {
+              LOG.error("", e);
+            }
+          }
+        }
+      });
+    }
+  }
+
+  @Nullable
+  private static Hash tryCreateHash(String revision) {
+    try {
+      return HashImpl.build(revision);
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  private static <T> T as_brpb5o_a0a0a0a0x(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }
