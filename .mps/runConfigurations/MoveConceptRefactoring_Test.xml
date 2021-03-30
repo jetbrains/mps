@@ -28,7 +28,7 @@
             <option name="programParameters" value="" />
             <option name="useAlternativeJre" value="false" />
             <option name="vmOptions" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5061" />
-            <option name="workingDirectory" value="C:\work\mps" />
+            <option name="workingDirectory" value="$PROJECT_DIR$" />
           </JavaRunParameters>
         </option>
       </MyState>
