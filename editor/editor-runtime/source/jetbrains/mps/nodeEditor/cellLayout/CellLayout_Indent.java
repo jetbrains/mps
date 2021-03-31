@@ -53,6 +53,8 @@ import java.util.Set;
  * collections.
  */
 public class CellLayout_Indent extends AbstractCellLayout {
+  private final static boolean fallbackToNonIncremental = System.getProperty("mps.indent_layout.disable_incremental") != null;
+
   static boolean isOnNewLine(EditorCell root, EditorCell cell) {
     for (EditorCell current = cell; current != root; current = current.getParent()) {
       if (current.getStyle().get(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE)) {
@@ -378,6 +380,11 @@ public class CellLayout_Indent extends AbstractCellLayout {
       for (EditorCell child : collection) {
         if (!isIndentCollection(child)) {
           layout(child);
+        } else if (fallbackToNonIncremental) {
+          layoutCollection((EditorCell_Collection) child);
+
+          // Restore ours (that may have been changed in case of split)
+          restoreCollectionIndent(collection);
         } else {
           // Collection can be skipped
           if (!child.wasRelayoutRequested() && isCollectionStandalone((EditorCell_Collection) child)) {
@@ -446,7 +453,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
     private void updatePositions(EditorCell_Collection collection) {
       for (EditorCell child : collection) {
-        if (child.wasRelayoutRequested() && isIndentCollection(child)) {
+        if ((child.wasRelayoutRequested() || fallbackToNonIncremental) && isIndentCollection(child)) {
           updatePositions((EditorCell_Collection) child);
         }
       }
