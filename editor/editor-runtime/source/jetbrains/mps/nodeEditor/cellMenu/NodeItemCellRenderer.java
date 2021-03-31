@@ -188,7 +188,7 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
   }
 
   private Font getFont(int style) {
-    Font font = mySubstituteChooser.getEditorComponent().getEditorComponentSettings().getDefaultFont();
+    Font font = mySubstituteChooser.getFont();
     try {
       font = font.deriveFont(style);
     } catch (Throwable t) {

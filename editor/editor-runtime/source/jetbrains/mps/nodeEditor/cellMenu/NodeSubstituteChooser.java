@@ -42,6 +42,7 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Window;
 import java.awt.event.ComponentAdapter;
@@ -579,6 +580,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
   private void doSubstituteSelection() {
     final String pattern = getPatternEditor().getPattern();
     final SubstituteAction action = mySubstituteActions.get(getSelectionIndex());
+    getPatternEditor().commit();
     setVisible(false);
     myEditorComponent.getEditorContext().getRepository().getModelAccess().executeCommand(new EditorCommand(myEditorComponent) {
       @Override
@@ -613,4 +615,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
     return null;
   }
 
+  public Font getFont() {
+    return myPatternEditor.getFont();
+  }
 }

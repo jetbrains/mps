@@ -2792,8 +2792,8 @@
           <node concept="LIFWc" id="2bhdjkqbfbh" role="lGtFl">
             <property role="ZRATv" value="true" />
             <property role="OXtK3" value="true" />
-            <property role="p6zMq" value="0" />
-            <property role="p6zMs" value="0" />
+            <property role="p6zMq" value="5" />
+            <property role="p6zMs" value="5" />
             <property role="LIFWd" value="empty_concept" />
           </node>
         </node>
@@ -2865,8 +2865,8 @@
           <node concept="LIFWc" id="2bhdjkqbkbb" role="lGtFl">
             <property role="ZRATv" value="true" />
             <property role="OXtK3" value="true" />
-            <property role="p6zMq" value="0" />
-            <property role="p6zMs" value="0" />
+            <property role="p6zMq" value="5" />
+            <property role="p6zMs" value="5" />
             <property role="LIFWd" value="empty_concept" />
           </node>
         </node>

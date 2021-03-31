@@ -721,10 +721,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   @Override
   public NodeSubstitutePatternEditor createSubstitutePatternEditor() {
-    NodeSubstitutePatternEditor pattern = new NodeSubstitutePatternEditor(getEditor().getEditorComponentSettings());
-    pattern.setText(getText());
-    pattern.setCaretPosition(getCaretPosition());
-    return pattern;
+    return new NodeSubstitutePatternEditor(getEditor().getEditorComponentSettings(), this);
   }
 
   public void selectWordOrAll() {
