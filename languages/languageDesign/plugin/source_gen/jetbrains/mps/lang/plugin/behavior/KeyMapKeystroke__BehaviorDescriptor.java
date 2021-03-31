@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,10 +23,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class KeyMapKeystroke__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
 
-  public static final SMethod<String> getKeyStroke_idhEwIlzu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKeyStroke").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIlzu").build();
-  public static final SMethod<Boolean> hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemoveOrReplaceAllModifiers").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qYinf8$bKU").build();
-  public static final SMethod<Boolean> hasRemove_id4qYinf8$eal = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qYinf8$eal").build();
-  public static final SMethod<Boolean> hasReplaceAll_id4qYinf8$enm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4qYinf8$enm").build();
+  public static final SMethod<String> getKeyStroke_idhEwIlzu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKeyStroke").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIlzu").build();
+  public static final SMethod<Boolean> hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemoveOrReplaceAllModifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4qYinf8$bKU").build();
+  public static final SMethod<Boolean> hasRemove_id4qYinf8$eal = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasRemove").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4qYinf8$eal").build();
+  public static final SMethod<Boolean> hasReplaceAll_id4qYinf8$enm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasReplaceAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4qYinf8$enm").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getKeyStroke_idhEwIlzu, hasRemoveOrReplaceAllModifiers_id4qYinf8$bKU, hasRemove_id4qYinf8$eal, hasReplaceAll_id4qYinf8$enm);
 

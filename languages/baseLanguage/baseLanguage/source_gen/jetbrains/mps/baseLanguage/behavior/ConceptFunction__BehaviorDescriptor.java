@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -32,22 +31,22 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
 
-  public static final SMethod<Boolean> usesParameterObjectFor_idhEwIGRw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObjectFor").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRw").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIGRD").build();
-  public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7orZYjMoFMH").build();
-  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5op8ooRkkc7").build();
-  public static final SMethod<Boolean> isImplementation_id19gBtYEvixA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isImplementation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("19gBtYEvixA").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhBNC").build();
-  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhZ_m").build();
-  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xELmDxyi2v").build();
-  public static final SMethod<Boolean> isReturnOnly_id3fUxpI1uWGM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReturnOnly").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3fUxpI1uWGM").build();
-  public static final SMethod<String> getName_idhGVcmek = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGVcmek").build();
-  public static final SMethod<String> getHeader_id2v69eKc6GlE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHeader").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2v69eKc6GlE").build();
-  public static final SMethod<String> getHeaderForAliasedEditor_id2v69eKc6I0x = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHeaderForAliasedEditor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2v69eKc6I0x").build();
-  /*package*/ static final SMethod<String> appendHeader_id2v69eKc6I52 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("appendHeader").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("2v69eKc6I52").build(SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> usesParameterObject_id1653mnvAgq0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgq0").build();
-  public static final SMethod<Boolean> showName_id1653mnvAgry = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showName").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgry").build();
+  public static final SMethod<Boolean> usesParameterObjectFor_idhEwIGRw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObjectFor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIGRw").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getExpectedReturnType_idhEwIGRD = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIGRD").build();
+  public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7orZYjMoFMH").build();
+  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5op8ooRkkc7").build();
+  public static final SMethod<Boolean> isImplementation_id19gBtYEvixA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isImplementation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("19gBtYEvixA").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhBNC").build();
+  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhZ_m").build();
+  public static final SMethod<List<SConcept>> getParameterConcepts_id2xELmDxyi2v = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getParameterConcepts").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2xELmDxyi2v").build();
+  public static final SMethod<Boolean> isReturnOnly_id3fUxpI1uWGM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReturnOnly").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3fUxpI1uWGM").build();
+  public static final SMethod<String> getName_idhGVcmek = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGVcmek").build();
+  public static final SMethod<String> getHeader_id2v69eKc6GlE = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHeader").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2v69eKc6GlE").build();
+  public static final SMethod<String> getHeaderForAliasedEditor_id2v69eKc6I0x = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHeaderForAliasedEditor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2v69eKc6I0x").build();
+  /*package*/ static final SMethod<String> appendHeader_id2v69eKc6I52 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("appendHeader").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("2v69eKc6I52").build(SMethodBuilder.createJavaParameter(StringBuilder.class, ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> usesParameterObject_id1653mnvAgq0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesParameterObject").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgq0").build();
+  public static final SMethod<Boolean> showName_id1653mnvAgry = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showName").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgry").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(usesParameterObjectFor_idhEwIGRw, getExpectedReturnType_idhEwIGRD, supportsCheckedExceptions_id7orZYjMoFMH, getThrowableTypes_id5op8ooRkkc7, isImplementation_id19gBtYEvixA, getExpectedRetType_idi2fhBNC, getBody_idi2fhZ_m, getParameterConcepts_id2xELmDxyi2v, isReturnOnly_id3fUxpI1uWGM, getName_idhGVcmek, getHeader_id2v69eKc6GlE, getHeaderForAliasedEditor_id2v69eKc6I0x, appendHeader_id2v69eKc6I52, getScope_id52_Geb4QDV$, usesParameterObject_id1653mnvAgq0, showName_id1653mnvAgry);
 
@@ -98,11 +97,11 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
     if ((boolean) ConceptFunction__BehaviorDescriptor.showName_id1653mnvAgry.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)))) {
       result.append(ConceptFunction__BehaviorDescriptor.getName_idhGVcmek.invoke(__thisNode__));
     }
-    return ((String) ConceptFunction__BehaviorDescriptor.appendHeader_id2v69eKc6I52.invoke(__thisNode__, result));
+    return ((String) ConceptFunction__BehaviorDescriptor.appendHeader_id2v69eKc6I52.invokeSpecial(__thisNode__, result));
   }
   /*package*/ static String getHeaderForAliasedEditor_id2v69eKc6I0x(@NotNull SNode __thisNode__) {
     StringBuilder result = new StringBuilder();
-    return ConceptFunction__BehaviorDescriptor.appendHeader_id2v69eKc6I52.invoke(__thisNode__, result);
+    return ConceptFunction__BehaviorDescriptor.appendHeader_id2v69eKc6I52.invokeSpecial(__thisNode__, result);
   }
   /*package*/ static String appendHeader_id2v69eKc6I52(@NotNull SNode __thisNode__, StringBuilder result) {
     result.append("(");

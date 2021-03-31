@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -27,14 +26,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, "jetbrains.mps.lang.modelapi.structure.ModelName");
 
-  public static final SMethod<SNode> create_id_GDk1qZ6bz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ6bz").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<SNode> create_id_GDk1qZdiH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZdiH").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SModelName.class, ""));
-  public static final SMethod<String> getNamespace_id_GDk1qYZiR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNamespace").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qYZiR").build();
-  public static final SMethod<String> getStereotype_id_GDk1qZ1fV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStereotype").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ1fV").build();
-  public static final SMethod<String> getLongName_id_GDk1qZ1tf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLongName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ1tf").build();
-  public static final SMethod<String> getSimpleName_id_GDk1qZ1ND = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ1ND").build();
-  public static final SMethod<SModelName> getNameObject_id2bm9xT0zK3P = new SMethodBuilder<SModelName>(new SJavaCompoundTypeImpl(SModelName.class)).name("getNameObject").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2bm9xT0zK3P").build();
-  public static final SMethod<Void> updateValue_id2bm9xT0zPoJ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("updateValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2bm9xT0zPoJ").build(SMethodBuilder.createJavaParameter(SModelName.class, ""));
+  public static final SMethod<SNode> create_id_GDk1qZ6bz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("_GDk1qZ6bz").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> create_id_GDk1qZdiH = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("_GDk1qZdiH").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(SModelName.class, ""));
+  public static final SMethod<String> getNamespace_id_GDk1qYZiR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNamespace").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("_GDk1qYZiR").build();
+  public static final SMethod<String> getStereotype_id_GDk1qZ1fV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStereotype").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("_GDk1qZ1fV").build();
+  public static final SMethod<String> getLongName_id_GDk1qZ1tf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLongName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("_GDk1qZ1tf").build();
+  public static final SMethod<String> getSimpleName_id_GDk1qZ1ND = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("_GDk1qZ1ND").build();
+  public static final SMethod<SModelName> getNameObject_id2bm9xT0zK3P = new SMethodBuilder<SModelName>(new SJavaCompoundTypeImpl(SModelName.class)).name("getNameObject").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2bm9xT0zK3P").build();
+  public static final SMethod<Void> updateValue_id2bm9xT0zPoJ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("updateValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2bm9xT0zPoJ").build(SMethodBuilder.createJavaParameter(SModelName.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ6bz, create_id_GDk1qZdiH, getNamespace_id_GDk1qYZiR, getStereotype_id_GDk1qZ1fV, getLongName_id_GDk1qZ1tf, getSimpleName_id_GDk1qZ1ND, getNameObject_id2bm9xT0zK3P, updateValue_id2bm9xT0zPoJ);
 

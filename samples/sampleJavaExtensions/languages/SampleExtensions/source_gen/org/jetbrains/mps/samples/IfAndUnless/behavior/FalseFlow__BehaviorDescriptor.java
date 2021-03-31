@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class FalseFlow__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x67b828fd8fbc4496L, 0xb7f78b64ac097c62L, 0xd403d58ad45dd24L, "org.jetbrains.mps.samples.IfAndUnless.structure.FalseFlow");
 
-  public static final SMethod<String> getTitle_id1653mnvAgr8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTitle").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgr8").build();
+  public static final SMethod<String> getTitle_id1653mnvAgr8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTitle").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgr8").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTitle_id1653mnvAgr8);
 

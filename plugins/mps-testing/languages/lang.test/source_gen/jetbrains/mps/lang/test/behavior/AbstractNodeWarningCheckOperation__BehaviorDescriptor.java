@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -31,10 +30,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbbf1ec9L, "jetbrains.mps.lang.test.structure.AbstractNodeWarningCheckOperation");
 
-  public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
-  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
-  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("2wBFdLy8qmt").build();
-  /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tuHA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMsgText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3q9wAW4tuHA").build();
+  public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7scb9XJdmH2").build();
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
+  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).id("2wBFdLy8qmt").build();
+  /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tuHA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMsgText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3q9wAW4tuHA").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getReferencedRuleNode_id2wBFdLy8qmt, getExpectedMsgText_id3q9wAW4tuHA);
 
@@ -52,7 +51,7 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
   }
   /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository, @Nullable ComponentHost host) {
     SNode annotatedNode = INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__);
-    CheckExpectedMessageRunnable action = (IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__) == null ? new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(annotatedNode, MessageStatus.WARNING, AbstractNodeWarningCheckOperation__BehaviorDescriptor.getExpectedMsgText_id3q9wAW4tuHA.invoke(__thisNode__), ruleRepository, host) : new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(annotatedNode, MessageStatus.WARNING, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), AbstractNodeWarningCheckOperation__BehaviorDescriptor.getExpectedMsgText_id3q9wAW4tuHA.invoke(__thisNode__), ruleRepository, host));
+    CheckExpectedMessageRunnable action = (IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__) == null ? new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(annotatedNode, MessageStatus.WARNING, AbstractNodeWarningCheckOperation__BehaviorDescriptor.getExpectedMsgText_id3q9wAW4tuHA.invokeSpecial(__thisNode__), ruleRepository, host) : new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(annotatedNode, MessageStatus.WARNING, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), AbstractNodeWarningCheckOperation__BehaviorDescriptor.getExpectedMsgText_id3q9wAW4tuHA.invokeSpecial(__thisNode__), ruleRepository, host));
     return action;
   }
   /*package*/ static SNode getReferencedRuleNode_id2wBFdLy8qmt(@NotNull SNode __thisNode__) {

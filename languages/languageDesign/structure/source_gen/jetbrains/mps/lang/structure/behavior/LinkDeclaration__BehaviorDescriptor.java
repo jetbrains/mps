@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SAbstractLink;
 import java.util.List;
@@ -33,13 +32,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LinkDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
 
-  public static final SMethod<SNode> getGenuineLink_idhEwIf_V = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getGenuineLink").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIf_V").build();
-  public static final SMethod<String> getGenuineRole_idhEwIfAe = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGenuineRole").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIfAe").build();
-  public static final SMethod<Boolean> isSingular_idhEwIfAt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingular").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIfAt").build();
-  public static final SMethod<Boolean> isAtLeastOneCardinality_id2VYdUfnkjmB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAtLeastOneCardinality").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2VYdUfnkjmB").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<SNode> getConceptDeclaration_id7jb4LXpbWaP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptDeclaration").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXpbWaP").build();
-  public static final SMethod<Boolean> is_id4MKjpUYniHA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4MKjpUYniHA").build(SMethodBuilder.createJavaParameter(SAbstractLink.class, ""));
+  public static final SMethod<SNode> getGenuineLink_idhEwIf_V = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getGenuineLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIf_V").build();
+  public static final SMethod<String> getGenuineRole_idhEwIfAe = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGenuineRole").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIfAe").build();
+  public static final SMethod<Boolean> isSingular_idhEwIfAt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingular").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIfAt").build();
+  public static final SMethod<Boolean> isAtLeastOneCardinality_id2VYdUfnkjmB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAtLeastOneCardinality").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2VYdUfnkjmB").build();
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<SNode> getConceptDeclaration_id7jb4LXpbWaP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7jb4LXpbWaP").build();
+  public static final SMethod<Boolean> is_id4MKjpUYniHA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MKjpUYniHA").build(SMethodBuilder.createJavaParameter(SAbstractLink.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGenuineLink_idhEwIf_V, getGenuineRole_idhEwIfAe, isSingular_idhEwIfAt, isAtLeastOneCardinality_id2VYdUfnkjmB, getPresentation_idhEwIMiw, getConceptDeclaration_id7jb4LXpbWaP, is_id4MKjpUYniHA);
 

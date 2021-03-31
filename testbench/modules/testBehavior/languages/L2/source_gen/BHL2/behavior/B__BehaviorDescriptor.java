@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,8 +21,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class B__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd9c7536e76b5498fL, 0x80640955dd8aebcbL, 0x6ab2e61d35e46065L, "BHL2.structure.B");
 
-  public static final SMethod<Object> foo_id6EMTxOPT5LT = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6EMTxOPT5LT").build();
-  public static final SMethod<Object> foo2_id4hDSxB1Zrx8 = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo2").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4hDSxB1Zrx8").build();
+  public static final SMethod<Object> foo_id6EMTxOPT5LT = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6EMTxOPT5LT").build();
+  public static final SMethod<Object> foo2_id4hDSxB1Zrx8 = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("foo2").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4hDSxB1Zrx8").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id6EMTxOPT5LT, foo2_id4hDSxB1Zrx8);
 

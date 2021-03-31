@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -24,11 +23,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class StyleClassItem__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b191dc6L, "jetbrains.mps.lang.editor.structure.StyleClassItem");
 
-  public static final SMethod<Boolean> isApplicableToCell_idhEUcU7K = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCell").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEUcU7K").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isApplicableToCellConcept_id2u3gVK1lsco = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCellConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2u3gVK1lsco").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isApplicableForLayout_iditlittOTie = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableForLayout").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("itlittOTie").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isApplicableInLayout_iditlittOTkB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableInLayout").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("itlittOTkB").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getStyleContainer_id6VCLXpKS8DC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleContainer").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6VCLXpKS8DC").build();
+  public static final SMethod<Boolean> isApplicableToCell_idhEUcU7K = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEUcU7K").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isApplicableToCellConcept_id2u3gVK1lsco = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCellConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2u3gVK1lsco").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isApplicableForLayout_iditlittOTie = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableForLayout").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("itlittOTie").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isApplicableInLayout_iditlittOTkB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableInLayout").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("itlittOTkB").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getStyleContainer_id6VCLXpKS8DC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleContainer").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6VCLXpKS8DC").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isApplicableToCell_idhEUcU7K, isApplicableToCellConcept_id2u3gVK1lsco, isApplicableForLayout_iditlittOTie, isApplicableInLayout_iditlittOTkB, getStyleContainer_id6VCLXpKS8DC);
 

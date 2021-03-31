@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.components.ComponentHost;
@@ -29,9 +28,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x770c2c9f6f1bbfcaL, "jetbrains.mps.lang.test.structure.NodeTypeSystemWarningCheckOperation");
 
-  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
-  /*package*/ static final SMethod<String> getExpectedMessageText_id3q9wAW4tyBj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMessageText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3q9wAW4tyBj").build();
-  public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
+  /*package*/ static final SMethod<String> getExpectedMessageText_id3q9wAW4tyBj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMessageText").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3q9wAW4tyBj").build();
+  public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7scb9XJdmH2").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getExpectedMessageText_id3q9wAW4tyBj, getDefaultName_id7scb9XJdmH2);
 
@@ -39,7 +38,7 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
   }
 
   /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository, @Nullable ComponentHost host) {
-    return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, NodeTypeSystemWarningCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tyBj.invoke(__thisNode__), ruleRepository, host);
+    return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, NodeTypeSystemWarningCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tyBj.invokeSpecial(__thisNode__), ruleRepository, host);
   }
   /*package*/ static String getExpectedMessageText_id3q9wAW4tyBj(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$6o6s), PROPS.text$ppyZ);

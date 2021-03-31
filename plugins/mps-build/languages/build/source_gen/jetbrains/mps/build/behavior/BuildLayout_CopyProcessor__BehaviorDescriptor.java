@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Map;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -32,11 +31,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildLayout_CopyProcessor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x127671bd5d12a2c2L, "jetbrains.mps.build.structure.BuildLayout_CopyProcessor");
 
-  public static final SMethod<String> getTaskName_id19QsrPtc4wK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTaskName").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("19QsrPtc4wK").build();
-  public static final SMethod<Map<String, String>> getTaskArguments_id6R_3WZ31H2E = new SMethodBuilder<Map<String, String>>(new SJavaCompoundTypeImpl(Map.class)).name("getTaskArguments").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6R_3WZ31H2E").build();
-  public static final SMethod<String> getTempFolder_id19QsrPvjYS$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTempFolder").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("19QsrPvjYS$").build(SMethodBuilder.createJavaParameter(TemplateQueryContext.class, ""));
-  /*package*/ static final SMethod<String> representativeName_id19QsrPvAva7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representativeName").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("19QsrPvAva7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<String> filesetName_id19QsrPvClqt = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("filesetName").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("19QsrPvClqt").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getTaskName_id19QsrPtc4wK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTaskName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("19QsrPtc4wK").build();
+  public static final SMethod<Map<String, String>> getTaskArguments_id6R_3WZ31H2E = new SMethodBuilder<Map<String, String>>(new SJavaCompoundTypeImpl(Map.class)).name("getTaskArguments").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6R_3WZ31H2E").build();
+  public static final SMethod<String> getTempFolder_id19QsrPvjYS$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTempFolder").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("19QsrPvjYS$").build(SMethodBuilder.createJavaParameter(TemplateQueryContext.class, ""));
+  /*package*/ static final SMethod<String> representativeName_id19QsrPvAva7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representativeName").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).id("19QsrPvAva7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<String> filesetName_id19QsrPvClqt = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("filesetName").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).id("19QsrPvClqt").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTaskName_id19QsrPtc4wK, getTaskArguments_id6R_3WZ31H2E, getTempFolder_id19QsrPvjYS$, representativeName_id19QsrPvAva7, filesetName_id19QsrPvClqt);
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -25,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildVariableMacroInitValue__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd1e1aaL, "jetbrains.mps.build.structure.BuildVariableMacroInitValue");
 
-  public static final SMethod<String> getMacroName_idd_WKSiPASu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMacroName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("d_WKSiPASu").build();
+  public static final SMethod<String> getMacroName_idd_WKSiPASu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getMacroName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("d_WKSiPASu").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroName_idd_WKSiPASu);
 

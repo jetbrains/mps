@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class HighLevelCustomViewer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
 
-  public static final SMethod<SNode> getValueTypeCopy_id2q5hg4fWIQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValueTypeCopy").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2q5hg4fWIQ").build();
-  public static final SMethod<String> getClassName_id6$g4PBN66FS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6$g4PBN66FS").build();
-  public static final SMethod<String> getClassFqName_id6$g4PBN67n2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassFqName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6$g4PBN67n2").build();
+  public static final SMethod<SNode> getValueTypeCopy_id2q5hg4fWIQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getValueTypeCopy").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2q5hg4fWIQ").build();
+  public static final SMethod<String> getClassName_id6$g4PBN66FS = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6$g4PBN66FS").build();
+  public static final SMethod<String> getClassFqName_id6$g4PBN67n2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6$g4PBN67n2").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValueTypeCopy_id2q5hg4fWIQ, getClassName_id6$g4PBN66FS, getClassFqName_id6$g4PBN67n2);
 

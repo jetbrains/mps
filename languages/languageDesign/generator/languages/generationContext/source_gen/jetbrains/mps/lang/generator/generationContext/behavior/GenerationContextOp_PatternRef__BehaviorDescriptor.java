@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class GenerationContextOp_PatternRef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40edb6a16L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_PatternRef");
 
-  public static final SMethod<SNode> getTarget_id1xCtdgeTQHC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTarget").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1xCtdgeTQHC").build();
-  public static final SMethod<Void> setTarget_id1xCtdgeUoP5 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setTarget").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1xCtdgeUoP5").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTarget_id1xCtdgeTQHC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTarget").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1xCtdgeTQHC").build();
+  public static final SMethod<Void> setTarget_id1xCtdgeUoP5 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setTarget").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1xCtdgeUoP5").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTarget_id1xCtdgeTQHC, setTarget_id1xCtdgeUoP5);
 

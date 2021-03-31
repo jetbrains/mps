@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -29,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral");
 
-  public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJgm_").build();
-  /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("convertAmountAdvanced").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("x3u75dl$Hd").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> getVariableExpectedName_idhEwJgm_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVariableExpectedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJgm_").build();
+  /*package*/ static final SMethod<String> convertAmountAdvanced_idx3u75dl$Hd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("convertAmountAdvanced").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("x3u75dl$Hd").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, convertAmountAdvanced_idx3u75dl$Hd);
 
@@ -38,7 +37,7 @@ public final class MoneyLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
-    String text = MoneyLiteral__BehaviorDescriptor.convertAmountAdvanced_idx3u75dl$Hd.invoke(__thisNode__, ((int) SPropertyOperations.getInteger(__thisNode__, PROPS.amount$FBiW)));
+    String text = MoneyLiteral__BehaviorDescriptor.convertAmountAdvanced_idx3u75dl$Hd.invokeSpecial(__thisNode__, ((int) SPropertyOperations.getInteger(__thisNode__, PROPS.amount$FBiW)));
     text += NameUtil.pluralize(NameUtil.capitalize(NameUtil.decapitalize(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.unit$Yo4p), PROPS.name$MnvL))));
     return text;
   }

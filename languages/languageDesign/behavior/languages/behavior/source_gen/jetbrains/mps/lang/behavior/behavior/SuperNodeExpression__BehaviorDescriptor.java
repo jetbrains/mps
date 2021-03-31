@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
 
-  /*package*/ static final SMethod<SNode> getEnclosingMethod_id4MNYYw$1vF5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingMethod").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("4MNYYw$1vF5").build();
-  public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSpecifiedSuperConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2k7p7sTvKkb").build();
-  public static final SMethod<Boolean> isEnclosingMethodStatic_id4xnLoJyFYX5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnclosingMethodStatic").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4xnLoJyFYX5").build();
+  /*package*/ static final SMethod<SNode> getEnclosingMethod_id4MNYYw$1vF5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEnclosingMethod").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("4MNYYw$1vF5").build();
+  public static final SMethod<SNode> getSpecifiedSuperConcept_id2k7p7sTvKkb = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSpecifiedSuperConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2k7p7sTvKkb").build();
+  public static final SMethod<Boolean> isEnclosingMethodStatic_id4xnLoJyFYX5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnclosingMethodStatic").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4xnLoJyFYX5").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEnclosingMethod_id4MNYYw$1vF5, getSpecifiedSuperConcept_id2k7p7sTvKkb, isEnclosingMethodStatic_id4xnLoJyFYX5);
 
@@ -44,7 +43,7 @@ public final class SuperNodeExpression__BehaviorDescriptor extends BaseBHDescrip
     return SLinkOperations.getTarget(__thisNode__, LINKS.superConcept$8P5p);
   }
   /*package*/ static boolean isEnclosingMethodStatic_id4xnLoJyFYX5(@NotNull SNode __thisNode__) {
-    SNode method = SuperNodeExpression__BehaviorDescriptor.getEnclosingMethod_id4MNYYw$1vF5.invoke(__thisNode__);
+    SNode method = SuperNodeExpression__BehaviorDescriptor.getEnclosingMethod_id4MNYYw$1vF5.invokeSpecial(__thisNode__);
     return method != null && SPropertyOperations.getBoolean(method, PROPS.isStatic$JhJe);
   }
 

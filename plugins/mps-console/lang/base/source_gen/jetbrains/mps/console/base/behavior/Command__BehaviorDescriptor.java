@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.console.tool.ConsoleContext;
 import jetbrains.mps.console.tool.ConsoleStream;
@@ -23,8 +22,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class Command__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x5f1fb64db424879fL, "jetbrains.mps.console.base.structure.Command");
 
-  public static final SMethod<Void> execute_id5WvH$QO9bva = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("execute").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5WvH$QO9bva").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""));
-  public static final SMethod<String> getKind_id64VftqEenf4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKind").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEenf4").build();
+  public static final SMethod<Void> execute_id5WvH$QO9bva = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("execute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5WvH$QO9bva").build(SMethodBuilder.createJavaParameter(ConsoleContext.class, ""), SMethodBuilder.createJavaParameter(ConsoleStream.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""), SMethodBuilder.createJavaParameter(Runnable.class, ""));
+  public static final SMethod<String> getKind_id64VftqEenf4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKind").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("64VftqEenf4").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(execute_id5WvH$QO9bva, getKind_id64VftqEenf4);
 

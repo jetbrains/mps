@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.smodel.Language;
 import java.util.List;
@@ -23,9 +22,9 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class LanguageIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L, "jetbrains.mps.lang.smodel.structure.LanguageIdentity");
 
-  public static final SMethod<SLanguage> getLanguage_id34EJa6aIcyj = new SMethodBuilder<SLanguage>(new SJavaCompoundTypeImpl(SLanguage.class)).name("getLanguage").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("34EJa6aIcyj").build();
-  public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("34EJa6aIcyw").build(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
-  public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCKW4J").build(SMethodBuilder.createJavaParameter(Language.class, ""));
+  public static final SMethod<SLanguage> getLanguage_id34EJa6aIcyj = new SMethodBuilder<SLanguage>(new SJavaCompoundTypeImpl(SLanguage.class)).name("getLanguage").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("34EJa6aIcyj").build();
+  public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("34EJa6aIcyw").build(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
+  public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5e7X3XCKW4J").build(SMethodBuilder.createJavaParameter(Language.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
 

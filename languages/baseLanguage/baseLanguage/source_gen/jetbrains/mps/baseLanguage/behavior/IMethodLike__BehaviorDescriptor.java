@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -30,14 +29,14 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
 
-  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhBNC").build();
-  public static final SMethod<SNode> getLastStatement_idi2fhS7A = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLastStatement").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhS7A").build();
-  /*package*/ static final SMethod<SNode> getLastStatement_id271$s5ipHtv = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLastStatement").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("271$s5ipHtv").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i2fhZ_m").build();
-  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5op8ooRkkc7").build();
-  public static final SMethod<Boolean> implicitThrows_id4kX30tnJ9kz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("implicitThrows").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4kX30tnJ9kz").build();
-  public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7orZYjMoFMH").build();
-  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2WmWrdnSpX7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getExpectedRetType_idi2fhBNC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpectedRetType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhBNC").build();
+  public static final SMethod<SNode> getLastStatement_idi2fhS7A = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLastStatement").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhS7A").build();
+  /*package*/ static final SMethod<SNode> getLastStatement_id271$s5ipHtv = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLastStatement").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("271$s5ipHtv").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getBody_idi2fhZ_m = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBody").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i2fhZ_m").build();
+  public static final SMethod<List<SNode>> getThrowableTypes_id5op8ooRkkc7 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getThrowableTypes").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5op8ooRkkc7").build();
+  public static final SMethod<Boolean> implicitThrows_id4kX30tnJ9kz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("implicitThrows").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4kX30tnJ9kz").build();
+  public static final SMethod<Boolean> supportsCheckedExceptions_id7orZYjMoFMH = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("supportsCheckedExceptions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7orZYjMoFMH").build();
+  public static final SMethod<Boolean> suppress_id2WmWrdnSpX7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("suppress").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2WmWrdnSpX7").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExpectedRetType_idi2fhBNC, getLastStatement_idi2fhS7A, getLastStatement_id271$s5ipHtv, getBody_idi2fhZ_m, getThrowableTypes_id5op8ooRkkc7, implicitThrows_id4kX30tnJ9kz, supportsCheckedExceptions_id7orZYjMoFMH, suppress_id2WmWrdnSpX7);
 
@@ -45,7 +44,7 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getLastStatement_idi2fhS7A(@NotNull SNode __thisNode__) {
-    return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invoke(__thisNode__, IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(__thisNode__));
+    return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invokeSpecial(__thisNode__, IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(__thisNode__));
   }
   /*package*/ static SNode getLastStatement_id271$s5ipHtv(@NotNull SNode __thisNode__, SNode statementList) {
     List<SNode> statements = new ArrayList<SNode>();
@@ -59,7 +58,7 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
       if (ListSequence.fromList(SLinkOperations.getChildren(innerStatementList, LINKS.statement$53DE)).isEmpty()) {
         return lastStatement;
       } else {
-        return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invoke(__thisNode__, innerStatementList);
+        return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invokeSpecial(__thisNode__, innerStatementList);
       }
     }
     return lastStatement;

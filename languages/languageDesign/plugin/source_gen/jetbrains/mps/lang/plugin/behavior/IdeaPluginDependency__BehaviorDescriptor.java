@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IdeaPluginDependency__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x516313f5e8537eecL, "jetbrains.mps.lang.plugin.structure.IdeaPluginDependency");
 
-  public static final SMethod<String> getPluginId_id55z4ZnCkRVV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPluginId").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("55z4ZnCkRVV").build();
+  public static final SMethod<String> getPluginId_id55z4ZnCkRVV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPluginId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("55z4ZnCkRVV").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPluginId_id55z4ZnCkRVV);
 

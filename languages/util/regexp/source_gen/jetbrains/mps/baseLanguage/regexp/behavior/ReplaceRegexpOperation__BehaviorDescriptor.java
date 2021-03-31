@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ReplaceRegexpOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation");
 
-  public static final SMethod<String> getReplacementString_id3iI_KKp9qzv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getReplacementString").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3iI_KKp9qzv").build();
+  public static final SMethod<String> getReplacementString_id3iI_KKp9qzv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getReplacementString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3iI_KKp9qzv").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReplacementString_id3iI_KKp9qzv);
 

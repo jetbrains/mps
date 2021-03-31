@@ -10,7 +10,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.project.Project;
 import java.util.Arrays;
@@ -33,8 +32,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class TestModuleManifest__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9f846aef4e4a4a84L, 0x828e7e83fe2697f2L, 0x2dc6844997876882L, "jetbrains.mps.build.mps.testManifest.structure.TestModuleManifest");
 
-  public static final SMethod<List<Tuples._3<String, String, String>>> languagesToInclude_id2R6x4AnylYu = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("languagesToInclude").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2R6x4AnylYu").build(SMethodBuilder.createJavaParameter(Project.class, ""));
-  public static final SMethod<List<Tuples._3<String, String, String>>> testModulesToInclude_id7vU6U5026IG = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("testModulesToInclude").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7vU6U5026IG").build(SMethodBuilder.createJavaParameter(Project.class, ""));
+  public static final SMethod<List<Tuples._3<String, String, String>>> languagesToInclude_id2R6x4AnylYu = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("languagesToInclude").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2R6x4AnylYu").build(SMethodBuilder.createJavaParameter(Project.class, ""));
+  public static final SMethod<List<Tuples._3<String, String, String>>> testModulesToInclude_id7vU6U5026IG = new SMethodBuilder<List<Tuples._3<String, String, String>>>(new SJavaCompoundTypeImpl((Class<List<Tuples._3<String, String, String>>>) ((Class) Object.class))).name("testModulesToInclude").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7vU6U5026IG").build(SMethodBuilder.createJavaParameter(Project.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(languagesToInclude_id2R6x4AnylYu, testModulesToInclude_id7vU6U5026IG);
 

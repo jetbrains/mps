@@ -10,7 +10,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.checkedName.PropertyReference;
 import java.util.Arrays;
@@ -24,10 +23,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ICheckedNamePolicy__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f38L, "jetbrains.mps.lang.checkedName.structure.ICheckedNamePolicy");
 
-  public static final SMethod<List<SNode>> getDescendantsToCheck_id4cWf37B8oXl = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDescendantsToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXl").build();
-  public static final SMethod<SNode> getDescendantToCheck_id4cWf37B8oXJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescendantToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXJ").build();
-  public static final SMethod<List<? extends PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<List<? extends PropertyReference>>(new SJavaCompoundTypeImpl((Class<List<? extends PropertyReference>>) ((Class) Object.class))).name("getPropertiesToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oXP").build();
-  public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4cWf37B8oYh").build();
+  public static final SMethod<List<SNode>> getDescendantsToCheck_id4cWf37B8oXl = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDescendantsToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4cWf37B8oXl").build();
+  public static final SMethod<SNode> getDescendantToCheck_id4cWf37B8oXJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescendantToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4cWf37B8oXJ").build();
+  public static final SMethod<List<? extends PropertyReference>> getPropertiesToCheck_id4cWf37B8oXP = new SMethodBuilder<List<? extends PropertyReference>>(new SJavaCompoundTypeImpl((Class<List<? extends PropertyReference>>) ((Class) Object.class))).name("getPropertiesToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4cWf37B8oXP").build();
+  public static final SMethod<PropertyReference> getPropertyToCheck_id4cWf37B8oYh = new SMethodBuilder<PropertyReference>(new SJavaCompoundTypeImpl((Class<PropertyReference>) ((Class) Object.class))).name("getPropertyToCheck").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4cWf37B8oYh").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescendantsToCheck_id4cWf37B8oXl, getDescendantToCheck_id4cWf37B8oXJ, getPropertiesToCheck_id4cWf37B8oXP, getPropertyToCheck_id4cWf37B8oYh);
 

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,12 +21,12 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class HelpProvider__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x690b986730edd07L, "jetbrains.mps.lang.smodel.query.structure.HelpProvider");
 
-  public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("qgIopNa9Hb").build();
-  public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEen2L").build();
-  public static final SMethod<String> getKind_id64VftqEenf4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKind").modifiers(SModifiersImpl.create(13, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEenf4").build();
-  public static final SMethod<String> getGroup_id60B$833p9Uj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGroup").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60B$833p9Uj").build();
-  public static final SMethod<String> getShortDisplayString_id64VftqEenfn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortDisplayString").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("64VftqEenfn").build();
-  public static final SMethod<String> getDisplayString_id5YxQmqOFZEf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDisplayString").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5YxQmqOFZEf").build();
+  public static final SMethod<String> getShortHelp_idqgIopNa9Hb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortHelp").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("qgIopNa9Hb").build();
+  public static final SMethod<String> getHelpPage_id64VftqEen2L = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getHelpPage").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("64VftqEen2L").build();
+  public static final SMethod<String> getKind_id64VftqEenf4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getKind").modifiers(13, AccessPrivileges.PUBLIC).concept(CONCEPT).id("64VftqEenf4").build();
+  public static final SMethod<String> getGroup_id60B$833p9Uj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGroup").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("60B$833p9Uj").build();
+  public static final SMethod<String> getShortDisplayString_id64VftqEenfn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getShortDisplayString").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("64VftqEenfn").build();
+  public static final SMethod<String> getDisplayString_id5YxQmqOFZEf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDisplayString").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5YxQmqOFZEf").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getShortHelp_idqgIopNa9Hb, getHelpPage_id64VftqEen2L, getKind_id64VftqEenf4, getGroup_id60B$833p9Uj, getShortDisplayString_id64VftqEenfn, getDisplayString_id5YxQmqOFZEf);
 

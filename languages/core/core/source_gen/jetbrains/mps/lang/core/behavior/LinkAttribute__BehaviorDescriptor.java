@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class LinkAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
 
-  public static final SMethod<SReferenceLink> getLink_id1avfQ4BEFo6 = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getLink").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1avfQ4BEFo6").build();
-  public static final SMethod<Void> setLink_id6Gg5KlvuxxF = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLink").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6Gg5KlvuxxF").build(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
-  public static final SMethod<String> getNameForReporting_id5gACAVBuLQd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5gACAVBuLQd").build();
+  public static final SMethod<SReferenceLink> getLink_id1avfQ4BEFo6 = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1avfQ4BEFo6").build();
+  public static final SMethod<Void> setLink_id6Gg5KlvuxxF = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLink").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6Gg5KlvuxxF").build(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
+  public static final SMethod<String> getNameForReporting_id5gACAVBuLQd = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForReporting").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5gACAVBuLQd").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id1avfQ4BEFo6, setLink_id6Gg5KlvuxxF, getNameForReporting_id5gACAVBuLQd);
 

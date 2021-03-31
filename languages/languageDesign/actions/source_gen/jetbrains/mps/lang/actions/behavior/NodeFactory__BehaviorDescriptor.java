@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeFactory__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, "jetbrains.mps.lang.actions.structure.NodeFactory");
 
-  public static final SMethod<String> getQueryMethodName_idhKujcRH = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getQueryMethodName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKujcRH").build();
+  public static final SMethod<String> getQueryMethodName_idhKujcRH = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getQueryMethodName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKujcRH").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getQueryMethodName_idhKujcRH);
 

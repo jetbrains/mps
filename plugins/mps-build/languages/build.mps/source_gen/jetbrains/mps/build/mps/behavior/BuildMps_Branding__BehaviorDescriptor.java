@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.MacroHelper;
 import java.util.List;
@@ -27,11 +26,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, "jetbrains.mps.build.mps.structure.BuildMps_Branding");
 
-  public static final SMethod<String> getVersionMajor_id3AMbuf0qvyc = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionMajor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3AMbuf0qvyc").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<String> getVersionMinor_id3AMbuf0qHKA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionMinor").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3AMbuf0qHKA").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<String> getVersionBugfixNr_id3AMbuf3$r6x = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionBugfixNr").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3AMbuf3$r6x").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<String> getVersionEap_id3AMbuf0qQ5F = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionEap").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3AMbuf0qQ5F").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
-  public static final SMethod<Boolean> isNewVersionFormat_id3AMbuf0qvWw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNewVersionFormat").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3AMbuf0qvWw").build();
+  public static final SMethod<String> getVersionMajor_id3AMbuf0qvyc = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionMajor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3AMbuf0qvyc").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<String> getVersionMinor_id3AMbuf0qHKA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionMinor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3AMbuf0qHKA").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<String> getVersionBugfixNr_id3AMbuf3$r6x = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionBugfixNr").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3AMbuf3$r6x").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<String> getVersionEap_id3AMbuf0qQ5F = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getVersionEap").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3AMbuf0qQ5F").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
+  public static final SMethod<Boolean> isNewVersionFormat_id3AMbuf0qvWw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNewVersionFormat").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3AMbuf0qvWw").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVersionMajor_id3AMbuf0qvyc, getVersionMinor_id3AMbuf0qHKA, getVersionBugfixNr_id3AMbuf3$r6x, getVersionEap_id3AMbuf0qQ5F, isNewVersionFormat_id3AMbuf0qvWw);
 

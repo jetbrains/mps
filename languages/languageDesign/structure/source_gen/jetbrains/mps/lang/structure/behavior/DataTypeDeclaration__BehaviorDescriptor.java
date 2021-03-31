@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,18 +25,18 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class DataTypeDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
 
-  public static final SMethod<SNode> toBaseLanguageType_idhEwI9ym = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("toBaseLanguageType").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwI9ym").build();
-  public static final SMethod<Boolean> isSimple_idhKtF$7L = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimple").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtF$7L").build();
-  public static final SMethod<Boolean> isEnum_idhKtFDel = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnum").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtFDel").build();
-  public static final SMethod<Boolean> isSimpleString_idhKtFG6a = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleString").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtFG6a").build();
-  public static final SMethod<Boolean> isSimpleInteger_idhKtGkcn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleInteger").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGkcn").build();
-  public static final SMethod<Boolean> isSimpleBoolean_idhKtGpIQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleBoolean").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGpIQ").build();
-  public static final SMethod<Boolean> isEnumOfString_idhKtGw8K = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnumOfString").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGw8K").build();
-  public static final SMethod<Boolean> isEnumOfInteger_idhKtGCmu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnumOfInteger").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGCmu").build();
-  public static final SMethod<Boolean> isEnumOfBoolean_idhKtGHoM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnumOfBoolean").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGHoM").build();
-  public static final SMethod<Boolean> isSimpleStringOrEnumOfString_idhKtGPCt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleStringOrEnumOfString").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGPCt").build();
-  public static final SMethod<Boolean> isSimpleIntegerOrEnumOfInteger_idhKtGTZR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleIntegerOrEnumOfInteger").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGTZR").build();
-  public static final SMethod<Boolean> isSimpleBooleanOrEnumOfBoolean_idhKtGY3g = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleBooleanOrEnumOfBoolean").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hKtGY3g").build();
+  public static final SMethod<SNode> toBaseLanguageType_idhEwI9ym = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("toBaseLanguageType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwI9ym").build();
+  public static final SMethod<Boolean> isSimple_idhKtF$7L = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimple").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtF$7L").build();
+  public static final SMethod<Boolean> isEnum_idhKtFDel = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnum").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtFDel").build();
+  public static final SMethod<Boolean> isSimpleString_idhKtFG6a = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtFG6a").build();
+  public static final SMethod<Boolean> isSimpleInteger_idhKtGkcn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGkcn").build();
+  public static final SMethod<Boolean> isSimpleBoolean_idhKtGpIQ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGpIQ").build();
+  public static final SMethod<Boolean> isEnumOfString_idhKtGw8K = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnumOfString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGw8K").build();
+  public static final SMethod<Boolean> isEnumOfInteger_idhKtGCmu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnumOfInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGCmu").build();
+  public static final SMethod<Boolean> isEnumOfBoolean_idhKtGHoM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEnumOfBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGHoM").build();
+  public static final SMethod<Boolean> isSimpleStringOrEnumOfString_idhKtGPCt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleStringOrEnumOfString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGPCt").build();
+  public static final SMethod<Boolean> isSimpleIntegerOrEnumOfInteger_idhKtGTZR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleIntegerOrEnumOfInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGTZR").build();
+  public static final SMethod<Boolean> isSimpleBooleanOrEnumOfBoolean_idhKtGY3g = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSimpleBooleanOrEnumOfBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKtGY3g").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toBaseLanguageType_idhEwI9ym, isSimple_idhKtF$7L, isEnum_idhKtFDel, isSimpleString_idhKtFG6a, isSimpleInteger_idhKtGkcn, isSimpleBoolean_idhKtGpIQ, isEnumOfString_idhKtGw8K, isEnumOfInteger_idhKtGCmu, isEnumOfBoolean_idhKtGHoM, isSimpleStringOrEnumOfString_idhKtGPCt, isSimpleIntegerOrEnumOfInteger_idhKtGTZR, isSimpleBooleanOrEnumOfBoolean_idhKtGY3g);
 

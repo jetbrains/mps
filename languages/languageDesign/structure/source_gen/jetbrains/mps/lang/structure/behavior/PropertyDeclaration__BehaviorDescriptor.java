@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -29,11 +28,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
 
-  public static final SMethod<Boolean> isPrimitiveString_idhT22swA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveString").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hT22swA").build();
-  public static final SMethod<Boolean> isPrimitiveInteger_idhT23WS5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveInteger").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hT23WS5").build();
-  public static final SMethod<Boolean> isPrimitiveBoolean_idhT23T2l = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveBoolean").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hT23T2l").build();
-  public static final SMethod<SNode> getConceptDeclaration_id2OF3rgRewqT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptDeclaration").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2OF3rgRewqT").build();
-  public static final SMethod<Boolean> is_id4MKjpUYnih4 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4MKjpUYnih4").build(SMethodBuilder.createJavaParameter(SProperty.class, ""));
+  public static final SMethod<Boolean> isPrimitiveString_idhT22swA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveString").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hT22swA").build();
+  public static final SMethod<Boolean> isPrimitiveInteger_idhT23WS5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveInteger").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hT23WS5").build();
+  public static final SMethod<Boolean> isPrimitiveBoolean_idhT23T2l = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPrimitiveBoolean").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hT23T2l").build();
+  public static final SMethod<SNode> getConceptDeclaration_id2OF3rgRewqT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConceptDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2OF3rgRewqT").build();
+  public static final SMethod<Boolean> is_id4MKjpUYnih4 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("is").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MKjpUYnih4").build(SMethodBuilder.createJavaParameter(SProperty.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isPrimitiveString_idhT22swA, isPrimitiveInteger_idhT23WS5, isPrimitiveBoolean_idhT23T2l, getConceptDeclaration_id2OF3rgRewqT, is_id4MKjpUYnih4);
 

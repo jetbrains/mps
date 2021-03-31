@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -29,11 +28,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class BuildLayout_JarManifest__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f2eL, "jetbrains.mps.build.structure.BuildLayout_JarManifest");
 
-  public static final SMethod<String> getOutputPath_WithMacro_id5V$ev8kKIxP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5V$ev8kKIxP").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<Boolean> isInJar_id5V$ev8kKReX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInJar").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5V$ev8kKReX").build();
-  public static final SMethod<Iterable<SNode>> getSections_id7ro1Zzt_n6o = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getSections").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ro1Zzt_n6o").build();
-  public static final SMethod<Iterable<SNode>> getAttributes_id7ro1Zzt_na1 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAttributes").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ro1Zzt_na1").build();
-  public static final SMethod<String> defaultManifestName_id7N6lJotVTmG = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("defaultManifestName").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7N6lJotVTmG").build();
+  public static final SMethod<String> getOutputPath_WithMacro_id5V$ev8kKIxP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOutputPath_WithMacro").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5V$ev8kKIxP").build(SMethodBuilder.createJavaParameter(Context.class, ""));
+  public static final SMethod<Boolean> isInJar_id5V$ev8kKReX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInJar").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5V$ev8kKReX").build();
+  public static final SMethod<Iterable<SNode>> getSections_id7ro1Zzt_n6o = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getSections").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ro1Zzt_n6o").build();
+  public static final SMethod<Iterable<SNode>> getAttributes_id7ro1Zzt_na1 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAttributes").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ro1Zzt_na1").build();
+  public static final SMethod<String> defaultManifestName_id7N6lJotVTmG = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("defaultManifestName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7N6lJotVTmG").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOutputPath_WithMacro_id5V$ev8kKIxP, isInJar_id5V$ev8kKReX, getSections_id7ro1Zzt_n6o, getAttributes_id7ro1Zzt_na1, defaultManifestName_id7N6lJotVTmG);
 

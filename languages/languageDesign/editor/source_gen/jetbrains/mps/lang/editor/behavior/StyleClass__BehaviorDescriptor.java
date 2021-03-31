@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -36,13 +35,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, "jetbrains.mps.lang.editor.structure.StyleClass");
 
-  public static final SMethod<Boolean> hasCycles_id6rIuTvxpF4l = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasCycles").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6rIuTvxpF4l").build();
-  public static final SMethod<Integer> getPriority_id1F_pHBEuveg = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1F_pHBEuveg").build();
-  public static final SMethod<Boolean> hasApplyCycles_id2airAaTkVMd = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplyCycles").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2airAaTkVMd").build();
-  public static final SMethod<String> getApplyMethodName_idVHPC7elo9t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApplyMethodName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("VHPC7elo9t").build();
-  public static final SMethod<String> getStyleClassName_idVHPC7elo9B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("VHPC7elo9B").build();
-  public static final SMethod<String> getStyleClassFQName_id1OmL7qeocft = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassFQName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1OmL7qeocft").build();
-  public static final SMethod<SNode> getStyleSheet_idVHPC7elo9L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleSheet").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("VHPC7elo9L").build();
+  public static final SMethod<Boolean> hasCycles_id6rIuTvxpF4l = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasCycles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6rIuTvxpF4l").build();
+  public static final SMethod<Integer> getPriority_id1F_pHBEuveg = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1F_pHBEuveg").build();
+  public static final SMethod<Boolean> hasApplyCycles_id2airAaTkVMd = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasApplyCycles").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2airAaTkVMd").build();
+  public static final SMethod<String> getApplyMethodName_idVHPC7elo9t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getApplyMethodName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("VHPC7elo9t").build();
+  public static final SMethod<String> getStyleClassName_idVHPC7elo9B = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("VHPC7elo9B").build();
+  public static final SMethod<String> getStyleClassFQName_id1OmL7qeocft = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStyleClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1OmL7qeocft").build();
+  public static final SMethod<SNode> getStyleSheet_idVHPC7elo9L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getStyleSheet").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("VHPC7elo9L").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasCycles_id6rIuTvxpF4l, getPriority_id1F_pHBEuveg, hasApplyCycles_id2airAaTkVMd, getApplyMethodName_idVHPC7elo9t, getStyleClassName_idVHPC7elo9B, getStyleClassFQName_id1OmL7qeocft, getStyleSheet_idVHPC7elo9L);
 

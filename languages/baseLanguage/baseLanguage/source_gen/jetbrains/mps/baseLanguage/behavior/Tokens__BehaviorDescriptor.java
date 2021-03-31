@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Tokens__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, "jetbrains.mps.baseLanguage.structure.Tokens");
 
-  public static final SMethod<String> firstToken_id17WpDCYRWCz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("firstToken").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("17WpDCYRWCz").build();
-  public static final SMethod<String> lastToken_id17WpDCYLyrY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("lastToken").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("17WpDCYLyrY").build();
-  public static final SMethod<String> withoutLastToken_id5ll4uk6512$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("withoutLastToken").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ll4uk6512$").build();
+  public static final SMethod<String> firstToken_id17WpDCYRWCz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("firstToken").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("17WpDCYRWCz").build();
+  public static final SMethod<String> lastToken_id17WpDCYLyrY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("lastToken").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("17WpDCYLyrY").build();
+  public static final SMethod<String> withoutLastToken_id5ll4uk6512$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("withoutLastToken").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5ll4uk6512$").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(firstToken_id17WpDCYRWCz, lastToken_id17WpDCYLyrY, withoutLastToken_id5ll4uk6512$);
 

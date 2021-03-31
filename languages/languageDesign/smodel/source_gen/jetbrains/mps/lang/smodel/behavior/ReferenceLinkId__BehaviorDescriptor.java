@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -33,10 +32,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
 
-  public static final SMethod<SReferenceLink> getReference_id7jb4LXp9a7o = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a7o").build();
-  public static final SMethod<Void> setReference_id5e7X3XCLvlR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCLvlR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> setReference_id7jb4LXp9a6q = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a6q").build(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
-  public static final SMethod<Long> getIdValue_id7jb4LXp9a7d = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a7d").build();
+  public static final SMethod<SReferenceLink> getReference_id7jb4LXp9a7o = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7jb4LXp9a7o").build();
+  public static final SMethod<Void> setReference_id5e7X3XCLvlR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5e7X3XCLvlR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> setReference_id7jb4LXp9a6q = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7jb4LXp9a6q").build(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
+  public static final SMethod<Long> getIdValue_id7jb4LXp9a7d = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7jb4LXp9a7d").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o, setReference_id5e7X3XCLvlR, setReference_id7jb4LXp9a6q, getIdValue_id7jb4LXp9a7d);
 

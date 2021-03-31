@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,10 +20,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IdeaInitializerDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L, "jetbrains.mps.lang.plugin.structure.IdeaInitializerDescriptor");
 
-  public static final SMethod<String> getGeneratedFileName_id3uUnGg98wJc = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedFileName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3uUnGg98wJc").build();
-  public static final SMethod<String> getGeneratedFileShortName_id3uUnGg98M$X = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedFileShortName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3uUnGg98M$X").build();
-  public static final SMethod<String> getGeneratesFileExtension_id3uUnGg98M_4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratesFileExtension").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3uUnGg98M_4").build();
-  public static final SMethod<String> getLibrariesResourceName_id6Ug_cEzkAtK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLibrariesResourceName").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6Ug_cEzkAtK").build();
+  public static final SMethod<String> getGeneratedFileName_id3uUnGg98wJc = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedFileName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3uUnGg98wJc").build();
+  public static final SMethod<String> getGeneratedFileShortName_id3uUnGg98M$X = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedFileShortName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3uUnGg98M$X").build();
+  public static final SMethod<String> getGeneratesFileExtension_id3uUnGg98M_4 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratesFileExtension").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3uUnGg98M_4").build();
+  public static final SMethod<String> getLibrariesResourceName_id6Ug_cEzkAtK = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLibrariesResourceName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6Ug_cEzkAtK").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedFileName_id3uUnGg98wJc, getGeneratedFileShortName_id3uUnGg98M$X, getGeneratesFileExtension_id3uUnGg98M_4, getLibrariesResourceName_id6Ug_cEzkAtK);
 

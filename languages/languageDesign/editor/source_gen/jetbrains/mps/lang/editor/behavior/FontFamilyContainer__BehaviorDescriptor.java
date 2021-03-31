@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class FontFamilyContainer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, "jetbrains.mps.lang.editor.structure.FontFamilyContainer");
 
-  public static final SMethod<String> getFontFamily_idSLohPpeqbF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFontFamily").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("SLohPpeqbF").build();
+  public static final SMethod<String> getFontFamily_idSLohPpeqbF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFontFamily").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("SLohPpeqbF").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFontFamily_idSLohPpeqbF);
 

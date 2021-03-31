@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,8 +21,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class C__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x4dcf589c68321a72L, "BHL7.structure.C");
 
-  public static final SMethod<Integer> argTypeResolve_id1hQsMcvxKQo = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("argTypeResolve").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1hQsMcvxKQo").build(SMethodBuilder.createJavaParameter(Integer.class, ""));
-  public static final SMethod<Integer> argTypeResolve_id1hQsMcvxKXP = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("argTypeResolve").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1hQsMcvxKXP").build(SMethodBuilder.createJavaParameter(Object.class, ""));
+  public static final SMethod<Integer> argTypeResolve_id1hQsMcvxKQo = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("argTypeResolve").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1hQsMcvxKQo").build(SMethodBuilder.createJavaParameter(Integer.class, ""));
+  public static final SMethod<Integer> argTypeResolve_id1hQsMcvxKXP = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("argTypeResolve").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1hQsMcvxKXP").build(SMethodBuilder.createJavaParameter(Object.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(argTypeResolve_id1hQsMcvxKQo, argTypeResolve_id1hQsMcvxKXP);
 

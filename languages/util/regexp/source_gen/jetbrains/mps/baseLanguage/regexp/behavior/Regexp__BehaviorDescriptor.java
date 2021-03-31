@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,15 +26,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
 
-  public static final SMethod<SNode> getTopLevelRegexp_idhNm6Oh5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTopLevelRegexp").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hNm6Oh5").build();
-  public static final SMethod<String> toString_idhEwIUjb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIUjb").build();
-  public static final SMethod<String> getString_idhMuDF1A = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getString").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hMuDF1A").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<String> par_idhMuIPHY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("par").modifiers(SModifiersImpl.create(0, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("hMuIPHY").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<Boolean> checkStringForUnicode_idhMRXRyL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("checkStringForUnicode").modifiers(SModifiersImpl.create(0, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("hMRXRyL").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<String> quote_idhMRXVXe = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("quote").modifiers(SModifiersImpl.create(0, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("hMRXVXe").build(SMethodBuilder.createJavaParameter(Character.TYPE, ""));
-  public static final SMethod<String> escape_id1b8uQvZ_lG7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("escape").modifiers(SModifiersImpl.create(0, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("1b8uQvZ_lG7").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<Boolean> needParentheses_id1b8uQvZynii = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needParentheses").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1b8uQvZynii").build();
-  public static final SMethod<Boolean> isValid_id48bMILtL4il = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("48bMILtL4il").build();
+  public static final SMethod<SNode> getTopLevelRegexp_idhNm6Oh5 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTopLevelRegexp").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hNm6Oh5").build();
+  public static final SMethod<String> toString_idhEwIUjb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIUjb").build();
+  public static final SMethod<String> getString_idhMuDF1A = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hMuDF1A").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<String> par_idhMuIPHY = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("par").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).id("hMuIPHY").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> checkStringForUnicode_idhMRXRyL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("checkStringForUnicode").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).id("hMRXRyL").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> quote_idhMRXVXe = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("quote").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).id("hMRXVXe").build(SMethodBuilder.createJavaParameter(Character.TYPE, ""));
+  public static final SMethod<String> escape_id1b8uQvZ_lG7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("escape").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).id("1b8uQvZ_lG7").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> needParentheses_id1b8uQvZynii = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needParentheses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1b8uQvZynii").build();
+  public static final SMethod<Boolean> isValid_id48bMILtL4il = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isValid").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("48bMILtL4il").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTopLevelRegexp_idhNm6Oh5, toString_idhEwIUjb, getString_idhMuDF1A, par_idhMuIPHY, checkStringForUnicode_idhMRXRyL, quote_idhMRXVXe, escape_id1b8uQvZ_lG7, needParentheses_id1b8uQvZynii, isValid_id48bMILtL4il);
 

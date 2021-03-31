@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class RunConfigurationProducer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
 
-  public static final SMethod<String> getDisplayedName_id3MnZbusxbtz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDisplayedName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3MnZbusxbtz").build();
-  public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4JBsSb").build();
-  public static final SMethod<String> getBaseName_id3MnZbusxcPI = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBaseName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("3MnZbusxcPI").build();
+  public static final SMethod<String> getDisplayedName_id3MnZbusxbtz = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDisplayedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3MnZbusxbtz").build();
+  public static final SMethod<String> getSuffix_idO$iR4JBsSb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4JBsSb").build();
+  public static final SMethod<String> getBaseName_id3MnZbusxcPI = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getBaseName").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).id("3MnZbusxcPI").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDisplayedName_id3MnZbusxbtz, getSuffix_idO$iR4JBsSb, getBaseName_id3MnZbusxcPI);
 

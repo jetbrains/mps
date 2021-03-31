@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
 
-  public static final SMethod<Void> getVisibleIndices_idhZx_LLY = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getVisibleIndices").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hZx_LLY").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getEmptyIndexList_idi0Okz4g = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getEmptyIndexList").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i0Okz4g").build();
-  public static final SMethod<String> getOpName_id1653mnvAgoA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpName").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgoA").build();
+  public static final SMethod<Void> getVisibleIndices_idhZx_LLY = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getVisibleIndices").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hZx_LLY").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<List<SNode>> getEmptyIndexList_idi0Okz4g = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getEmptyIndexList").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0Okz4g").build();
+  public static final SMethod<String> getOpName_id1653mnvAgoA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpName").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgoA").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVisibleIndices_idhZx_LLY, getEmptyIndexList_idi0Okz4g, getOpName_id1653mnvAgoA);
 

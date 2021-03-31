@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -31,10 +30,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class PropertyId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId");
 
-  public static final SMethod<SProperty> getProperty_id5ZE7FBYYOoO = new SMethodBuilder<SProperty>(new SJavaCompoundTypeImpl(SProperty.class)).name("getProperty").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBYYOoO").build();
-  public static final SMethod<Void> setProperty_id5e7X3XCIM6B = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCIM6B").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> setProperty_id5ZE7FBYZ2jW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBYZ2jW").build(SMethodBuilder.createJavaParameter(SProperty.class, ""));
-  public static final SMethod<Long> getIdValue_id5ZE7FBZ0xVG = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBZ0xVG").build();
+  public static final SMethod<SProperty> getProperty_id5ZE7FBYYOoO = new SMethodBuilder<SProperty>(new SJavaCompoundTypeImpl(SProperty.class)).name("getProperty").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5ZE7FBYYOoO").build();
+  public static final SMethod<Void> setProperty_id5e7X3XCIM6B = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5e7X3XCIM6B").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> setProperty_id5ZE7FBYZ2jW = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setProperty").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5ZE7FBYZ2jW").build(SMethodBuilder.createJavaParameter(SProperty.class, ""));
+  public static final SMethod<Long> getIdValue_id5ZE7FBZ0xVG = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5ZE7FBZ0xVG").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProperty_id5ZE7FBYYOoO, setProperty_id5e7X3XCIM6B, setProperty_id5ZE7FBYZ2jW, getIdValue_id5ZE7FBZ0xVG);
 

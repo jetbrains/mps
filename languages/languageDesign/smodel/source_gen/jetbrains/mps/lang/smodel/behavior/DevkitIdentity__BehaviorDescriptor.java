@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -22,8 +21,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class DevkitIdentity__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3f4dbeL, "jetbrains.mps.lang.smodel.structure.DevkitIdentity");
 
-  public static final SMethod<SModuleReference> getModuleReference_id78qQRpbgix2 = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("getModuleReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("78qQRpbgix2").build();
-  public static final SMethod<Void> setModuleReference_id78qQRpbgix9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setModuleReference").modifiers(SModifiersImpl.create(12, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("78qQRpbgix9").build(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
+  public static final SMethod<SModuleReference> getModuleReference_id78qQRpbgix2 = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("getModuleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("78qQRpbgix2").build();
+  public static final SMethod<Void> setModuleReference_id78qQRpbgix9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setModuleReference").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("78qQRpbgix9").build(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModuleReference_id78qQRpbgix2, setModuleReference_id78qQRpbgix9);
 

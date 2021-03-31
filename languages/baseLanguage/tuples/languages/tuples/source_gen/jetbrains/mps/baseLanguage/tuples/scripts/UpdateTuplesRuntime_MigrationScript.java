@@ -143,7 +143,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
           if (!(SPropertyOperations.getString(ti, PROPS.name$MnvL).matches("_[0-9]+"))) {
             continue;
           }
-          int tiIndex = Integer.parseUnsignedInt(SPropertyOperations.getString(ti, PROPS.name$MnvL), 1, SPropertyOperations.getString(ti, PROPS.name$MnvL).length(), 10);
+          int tiIndex = Integer.parseUnsignedInt(SPropertyOperations.getString(ti, PROPS.name$MnvL).substring(1), 10);
           assert tupleIfaces[tiIndex] == null;
           tupleIfaces[tiIndex] = ti;
         }

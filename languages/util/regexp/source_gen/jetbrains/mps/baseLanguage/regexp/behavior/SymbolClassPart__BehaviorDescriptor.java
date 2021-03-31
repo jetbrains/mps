@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -23,8 +22,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class SymbolClassPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791aa602L, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassPart");
 
-  public static final SMethod<String> validateChar_id75Jea4IFjf5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("validateChar").modifiers(SModifiersImpl.create(0, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("75Jea4IFjf5").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<String> escapeChar_id75Jea4IEVWQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("escapeChar").modifiers(SModifiersImpl.create(2, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("75Jea4IEVWQ").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> validateChar_id75Jea4IFjf5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("validateChar").modifiers(0, AccessPrivileges.PROTECTED).concept(CONCEPT).id("75Jea4IFjf5").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> escapeChar_id75Jea4IEVWQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("escapeChar").modifiers(2, AccessPrivileges.PROTECTED).concept(CONCEPT).id("75Jea4IEVWQ").build(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(validateChar_id75Jea4IFjf5, escapeChar_id75Jea4IEVWQ);
 

@@ -10,7 +10,6 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import java.util.List;
@@ -27,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class BuildSource_JavaExternalJarRef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, "jetbrains.mps.build.structure.BuildSource_JavaExternalJarRef");
 
-  public static final SMethod<Tuples._2<SNode, Boolean>> getDependencyTarget_id4RsV8qJGJqY = new SMethodBuilder<Tuples._2<SNode, Boolean>>(new SJavaCompoundTypeImpl((Class<Tuples._2<SNode, Boolean>>) ((Class) Object.class))).name("getDependencyTarget").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4RsV8qJGJqY").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
+  public static final SMethod<Tuples._2<SNode, Boolean>> getDependencyTarget_id4RsV8qJGJqY = new SMethodBuilder<Tuples._2<SNode, Boolean>>(new SJavaCompoundTypeImpl((Class<Tuples._2<SNode, Boolean>>) ((Class) Object.class))).name("getDependencyTarget").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4RsV8qJGJqY").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDependencyTarget_id4RsV8qJGJqY);
 

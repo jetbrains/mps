@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -23,10 +22,10 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class CompletionCustomizationContextSpecificator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e806541c9392c22L, "jetbrains.mps.lang.editor.structure.CompletionCustomizationContextSpecificator");
 
-  public static final SMethod<SNode> getConcept_id7U0pk79eiL7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7U0pk79eiL7").build();
-  public static final SMethod<Boolean> isCreating_id7U0pk79eiW7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCreating").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7U0pk79eiW7").build();
-  public static final SMethod<Boolean> isModifying_id7U0pk79eiXG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isModifying").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7U0pk79eiXG").build();
-  public static final SMethod<List<SConcept>> getAdditionalParameters_idETPn3v9Kre = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalParameters").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("ETPn3v9Kre").build();
+  public static final SMethod<SNode> getConcept_id7U0pk79eiL7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7U0pk79eiL7").build();
+  public static final SMethod<Boolean> isCreating_id7U0pk79eiW7 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCreating").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7U0pk79eiW7").build();
+  public static final SMethod<Boolean> isModifying_id7U0pk79eiXG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isModifying").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7U0pk79eiXG").build();
+  public static final SMethod<List<SConcept>> getAdditionalParameters_idETPn3v9Kre = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("ETPn3v9Kre").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id7U0pk79eiL7, isCreating_id7U0pk79eiW7, isModifying_id7U0pk79eiXG, getAdditionalParameters_idETPn3v9Kre);
 

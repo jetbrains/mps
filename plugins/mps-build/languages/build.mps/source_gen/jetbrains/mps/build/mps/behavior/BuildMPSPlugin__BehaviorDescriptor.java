@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.build.util.RequiredDependenciesBuilder;
@@ -44,14 +43,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin");
 
-  public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("13YBgBBRSOA").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
-  public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3fifI_xCJOQ").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getImportedLibraries_id3zFnP6MwWdL = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportedLibraries").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zFnP6MwWdL").build();
-  public static final SMethod<SNode> getMpsLibrary_id3zFnP6MM9ge = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMpsLibrary").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3zFnP6MM9ge").build();
-  /*package*/ static final SMethod<Void> fetchGenerationDeps_id3WZD5LHqDLU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchGenerationDeps").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqDLU").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
-  /*package*/ static final SMethod<Void> addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addPluginsRequiredForGenerationToDepBuilder").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("5VKiljnaBi").build(SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
-  /*package*/ static final SMethod<Boolean> areLocatedInTheSameRoot_id5eGY5T7x8$N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("areLocatedInTheSameRoot").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("5eGY5T7x8$N").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("13YBgBBRSOA").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
+  public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3fifI_xCJOQ").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Iterable<SNode>> getImportedLibraries_id3zFnP6MwWdL = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportedLibraries").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3zFnP6MwWdL").build();
+  public static final SMethod<SNode> getMpsLibrary_id3zFnP6MM9ge = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMpsLibrary").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3zFnP6MM9ge").build();
+  /*package*/ static final SMethod<Void> fetchGenerationDeps_id3WZD5LHqDLU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchGenerationDeps").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3WZD5LHqDLU").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
+  /*package*/ static final SMethod<Void> addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addPluginsRequiredForGenerationToDepBuilder").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("5VKiljnaBi").build(SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""), SMethodBuilder.createJavaParameter((Class<Iterable<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""));
+  /*package*/ static final SMethod<Boolean> areLocatedInTheSameRoot_id5eGY5T7x8$N = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("areLocatedInTheSameRoot").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).id("5eGY5T7x8$N").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLayoutScope_id13YBgBBRSOA, fetchDependencies_id57YmpYyL8F1, getProjectStructureScope_id3fifI_xCJOQ, getImportedLibraries_id3zFnP6MwWdL, getMpsLibrary_id3zFnP6MM9ge, fetchGenerationDeps_id3WZD5LHqDLU, addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi, areLocatedInTheSameRoot_id5eGY5T7x8$N);
 
@@ -69,7 +68,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     SNode project = artifacts.getProject();
 
     // fetch generation deps
-    BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invoke(__thisNode__, artifacts, builder);
+    BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invokeSpecial(__thisNode__, artifacts, builder);
 
     // fetch stuff for ant task classpath
     SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(project, "ant-mps"), CONCEPTS.BuildSource_JavaModule$NC);
@@ -143,7 +142,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
         builder.add(artifact);
       }
     }
-    BuildMPSPlugin__BehaviorDescriptor.addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi.invoke(__thisNode__, builder, allModules, artifacts);
+    BuildMPSPlugin__BehaviorDescriptor.addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi.invokeSpecial(__thisNode__, builder, allModules, artifacts);
   }
   /*package*/ static void addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi(@NotNull SNode __thisNode__, RequiredDependenciesBuilder builder, Iterable<SNode> allRequiredModules, VisibleArtifacts artifacts) {
     ModulePlugins plugins = new ModulePlugins(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -27,10 +26,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class DirectNodeReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a58303771L, "jetbrains.mps.lang.migration.structure.DirectNodeReference");
 
-  public static final SMethod<Boolean> isSameTarget_id6szrkDoc2JJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSameTarget").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6szrkDoc2JJ").build(SMethodBuilder.createJavaParameter(SReference.class, ""));
-  public static final SMethod<SNodeReference> getNodeReference_id4uVwhQyQbdz = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("getNodeReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyQbdz").build();
-  public static final SMethod<SNode> tryToFindNode_id6szrkDoc2K7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryToFindNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6szrkDoc2K7").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<Boolean> isSameTarget_id6szrkDoc2JJ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSameTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6szrkDoc2JJ").build(SMethodBuilder.createJavaParameter(SReference.class, ""));
+  public static final SMethod<SNodeReference> getNodeReference_id4uVwhQyQbdz = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("getNodeReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4uVwhQyQbdz").build();
+  public static final SMethod<SNode> tryToFindNode_id6szrkDoc2K7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryToFindNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6szrkDoc2K7").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSameTarget_id6szrkDoc2JJ, getNodeReference_id4uVwhQyQbdz, tryToFindNode_id6szrkDoc2K7, getPresentation_idhEwIMiw);
 

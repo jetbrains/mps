@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -28,11 +27,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xf2f8c94a6f2a8faL, "jetbrains.mps.lang.text.structure.BulletLine");
 
-  public static final SMethod<Boolean> canBeTurnedToBullet_idWJz9iAWPfE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("WJz9iAWPfE").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<Boolean> startsWithBulletSpace_idWJz9iAWPgX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithBulletSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("WJz9iAWPgX").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6rMl").build();
-  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canBeTurnedToBullet_idWJz9iAWPfE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToBullet").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("WJz9iAWPfE").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Boolean> startsWithBulletSpace_idWJz9iAWPgX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithBulletSpace").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).id("WJz9iAWPgX").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7q4Ywce6rMl").build();
+  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, startsWithBulletSpace_idWJz9iAWPgX, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
 
@@ -41,7 +40,7 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static boolean canBeTurnedToBullet_idWJz9iAWPfE(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(l)), CONCEPTS.Line$yC)) {
-      return ((boolean) BulletLine__BehaviorDescriptor.startsWithBulletSpace_idWJz9iAWPgX.invoke(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.BulletLine$ef) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.BulletLine$ef) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) BulletLine__BehaviorDescriptor.startsWithBulletSpace_idWJz9iAWPgX.invoke(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
+      return ((boolean) BulletLine__BehaviorDescriptor.startsWithBulletSpace_idWJz9iAWPgX.invokeSpecial(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.BulletLine$ef) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.BulletLine$ef) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) BulletLine__BehaviorDescriptor.startsWithBulletSpace_idWJz9iAWPgX.invokeSpecial(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
     }
     return false;
   }

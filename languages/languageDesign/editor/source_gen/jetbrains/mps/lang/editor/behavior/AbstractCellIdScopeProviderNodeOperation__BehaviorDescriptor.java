@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -35,10 +34,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7c9cb4f2b6a895f9L, "jetbrains.mps.lang.editor.structure.AbstractCellIdScopeProviderNodeOperation");
 
-  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<Scope> getPropertyDeclarationScope_id3K0abI6bsqm = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getPropertyDeclarationScope").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3K0abI6bsqm").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Scope> getEditorCellIdScope_id3K0abI6bXeJ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getEditorCellIdScope").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3K0abI6bXeJ").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgrs").build();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Scope> getPropertyDeclarationScope_id3K0abI6bsqm = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getPropertyDeclarationScope").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3K0abI6bsqm").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Scope> getEditorCellIdScope_id3K0abI6bXeJ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getEditorCellIdScope").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3K0abI6bXeJ").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> applicableToNode_id1653mnvAgrs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("applicableToNode").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgrs").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getPropertyDeclarationScope_id3K0abI6bsqm, getEditorCellIdScope_id3K0abI6bXeJ, applicableToNode_id1653mnvAgrs);
 
@@ -51,7 +50,7 @@ public final class AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor 
         SNode coercedNode_ziie1_a0a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(__thisNode__)), CONCEPTS.SNodeType$hR);
         if (coercedNode_ziie1_a0a0a != null) {
           if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.PropertyDeclaration$1S)) {
-            return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getPropertyDeclarationScope_id3K0abI6bsqm.invoke(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$OMgE));
+            return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getPropertyDeclarationScope_id3K0abI6bsqm.invokeSpecial(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$OMgE));
           }
           if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.EditorCellId$Xt)) {
             return AbstractCellIdScopeProviderNodeOperation__BehaviorDescriptor.getEditorCellIdScope_id3K0abI6bXeJ.invoke(__thisNode__, SLinkOperations.getTarget(coercedNode_ziie1_a0a0a, LINKS.concept$OMgE));

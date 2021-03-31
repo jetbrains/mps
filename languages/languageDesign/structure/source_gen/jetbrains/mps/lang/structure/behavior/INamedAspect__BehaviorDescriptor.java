@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class INamedAspect__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L, "jetbrains.mps.lang.structure.structure.INamedAspect");
 
-  public static final SMethod<String> getValidClassName_id6TyNL3imBq_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getValidClassName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6TyNL3imBq_").build();
+  public static final SMethod<String> getValidClassName_id6TyNL3imBq_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getValidClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6TyNL3imBq_").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValidClassName_id6TyNL3imBq_);
 

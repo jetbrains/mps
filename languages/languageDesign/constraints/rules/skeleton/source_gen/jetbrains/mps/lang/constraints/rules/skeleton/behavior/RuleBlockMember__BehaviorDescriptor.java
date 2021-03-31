@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -28,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember");
 
-  public static final SMethod<SNode> getBlock_id1BFxp3HHhy9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBlock").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1BFxp3HHhy9").build();
-  public static final SMethod<SNode> getRuleKind_id1BFxp3HHhyj = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getRuleKind").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1BFxp3HHhyj").build();
-  public static final SMethod<SNode> getHighestMember_id2mL_UKGkn8G = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighestMember").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2mL_UKGkn8G").build();
+  public static final SMethod<SNode> getBlock_id1BFxp3HHhy9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBlock").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1BFxp3HHhy9").build();
+  public static final SMethod<SNode> getRuleKind_id1BFxp3HHhyj = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getRuleKind").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1BFxp3HHhyj").build();
+  public static final SMethod<SNode> getHighestMember_id2mL_UKGkn8G = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighestMember").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2mL_UKGkn8G").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBlock_id1BFxp3HHhy9, getRuleKind_id1BFxp3HHhyj, getHighestMember_id2mL_UKGkn8G);
 

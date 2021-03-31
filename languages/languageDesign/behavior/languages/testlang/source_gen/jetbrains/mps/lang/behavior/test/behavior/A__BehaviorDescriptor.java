@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -21,12 +20,12 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class A__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b2aL, "jetbrains.mps.lang.behavior.test.structure.A");
 
-  public static final SMethod<String> nonVirtualMethod_id46FlynTbAz8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("nonVirtualMethod").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46FlynTbAz8").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> virtualMethod_id46FlynTbAzL = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("virtualMethod").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46FlynTbAzL").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> finalVirtualMethod_id46FlynTbB7_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("finalVirtualMethod").modifiers(SModifiersImpl.create(10, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46FlynTbB7_").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> staticMethod_id46FlynTbAAs = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("staticMethod").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46FlynTbAAs").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<String> staticVirtualMethod_id46FlynTbAGG = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("staticVirtualMethod").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46FlynTbAGG").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
-  public static final SMethod<Void> doInvokeAll_id46FlynTbBkw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doInvokeAll").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("46FlynTbBkw").build();
+  public static final SMethod<String> nonVirtualMethod_id46FlynTbAz8 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("nonVirtualMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46FlynTbAz8").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> virtualMethod_id46FlynTbAzL = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("virtualMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46FlynTbAzL").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> finalVirtualMethod_id46FlynTbB7_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("finalVirtualMethod").modifiers(10, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46FlynTbB7_").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> staticMethod_id46FlynTbAAs = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("staticMethod").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46FlynTbAAs").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> staticVirtualMethod_id46FlynTbAGG = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("staticVirtualMethod").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46FlynTbAGG").build(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<Void> doInvokeAll_id46FlynTbBkw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("doInvokeAll").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46FlynTbBkw").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(nonVirtualMethod_id46FlynTbAz8, virtualMethod_id46FlynTbAzL, finalVirtualMethod_id46FlynTbB7_, staticMethod_id46FlynTbAAs, staticVirtualMethod_id46FlynTbAGG, doInvokeAll_id46FlynTbBkw);
 

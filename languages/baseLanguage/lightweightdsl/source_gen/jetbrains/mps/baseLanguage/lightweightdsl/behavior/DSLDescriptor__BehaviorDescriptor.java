@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
@@ -35,11 +34,11 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
 
-  public static final SMethod<SNode> getPreferredConcept_id1_lSsE3TA5X = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPreferredConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1_lSsE3TA5X").build();
-  public static final SMethod<Void> initializeInstance_id2VRROcY8CaS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeInstance").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2VRROcY8CaS").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
-  public static final SMethod<String> getGeneratedClassName_id2VRROcY7Vt6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2VRROcY7Vt6").build();
-  public static final SMethod<String> getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedQueriesQualifiedClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3UdX2XvIeC6").build();
-  public static final SMethod<Iterable<SNode>> getClassLikeMembers_id2iCqkkxuhoj = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getClassLikeMembers").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iCqkkxuhoj").build();
+  public static final SMethod<SNode> getPreferredConcept_id1_lSsE3TA5X = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPreferredConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1_lSsE3TA5X").build();
+  public static final SMethod<Void> initializeInstance_id2VRROcY8CaS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeInstance").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2VRROcY8CaS").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<String> getGeneratedClassName_id2VRROcY7Vt6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2VRROcY7Vt6").build();
+  public static final SMethod<String> getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedQueriesQualifiedClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3UdX2XvIeC6").build();
+  public static final SMethod<Iterable<SNode>> getClassLikeMembers_id2iCqkkxuhoj = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getClassLikeMembers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iCqkkxuhoj").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPreferredConcept_id1_lSsE3TA5X, initializeInstance_id2VRROcY8CaS, getGeneratedClassName_id2VRROcY7Vt6, getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6, getClassLikeMembers_id2iCqkkxuhoj);
 

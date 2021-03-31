@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -31,15 +30,15 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class PersistentPropertyDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910119L, "jetbrains.mps.execution.settings.structure.PersistentPropertyDeclaration");
 
-  public static final SMethod<Boolean> isTemplate_idO$iR4J$g8G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTemplate").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g8G").build();
-  public static final SMethod<String> getAccessorName_idO$iR4J$g8R = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAccessorName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g8R").build();
-  public static final SMethod<Boolean> isInitializable_idhEwJfMK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInitializable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwJfMK").build();
-  public static final SMethod<String> getTypeFqName_idO$iR4J$g9n = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeFqName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g9n").build();
-  public static final SMethod<String> getTypeEditorFqName_idO$iR4J$g9_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeEditorFqName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g9_").build();
-  /*package*/ static final SMethod<SNode> getTemplate_idO$iR4J$gak = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplate").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("O$iR4J$gak").build();
-  public static final SMethod<String> addMyPrefix_id5uxO0H8rOhC = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("addMyPrefix").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5uxO0H8rOhC").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  /*package*/ static final SMethod<String> removeMyPrefixInternal_idO$iR4J$g9N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("removeMyPrefixInternal").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("O$iR4J$g9N").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<String> removeMyPrefix_idO$iR4J$g8k = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("removeMyPrefix").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("O$iR4J$g8k").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<Boolean> isTemplate_idO$iR4J$g8G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTemplate").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4J$g8G").build();
+  public static final SMethod<String> getAccessorName_idO$iR4J$g8R = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAccessorName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4J$g8R").build();
+  public static final SMethod<Boolean> isInitializable_idhEwJfMK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInitializable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJfMK").build();
+  public static final SMethod<String> getTypeFqName_idO$iR4J$g9n = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4J$g9n").build();
+  public static final SMethod<String> getTypeEditorFqName_idO$iR4J$g9_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTypeEditorFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4J$g9_").build();
+  /*package*/ static final SMethod<SNode> getTemplate_idO$iR4J$gak = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplate").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("O$iR4J$gak").build();
+  public static final SMethod<String> addMyPrefix_id5uxO0H8rOhC = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("addMyPrefix").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5uxO0H8rOhC").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  /*package*/ static final SMethod<String> removeMyPrefixInternal_idO$iR4J$g9N = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("removeMyPrefixInternal").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).id("O$iR4J$g9N").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> removeMyPrefix_idO$iR4J$g8k = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("removeMyPrefix").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("O$iR4J$g8k").build(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isTemplate_idO$iR4J$g8G, getAccessorName_idO$iR4J$g8R, isInitializable_idhEwJfMK, getTypeFqName_idO$iR4J$g9n, getTypeEditorFqName_idO$iR4J$g9_, getTemplate_idO$iR4J$gak, addMyPrefix_id5uxO0H8rOhC, removeMyPrefixInternal_idO$iR4J$g9N, removeMyPrefix_idO$iR4J$g8k);
 
@@ -57,11 +56,11 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
     return true;
   }
   /*package*/ static String getTypeFqName_idO$iR4J$g9n(@NotNull SNode __thisNode__) {
-    SNode template = PersistentPropertyDeclaration__BehaviorDescriptor.getTemplate_idO$iR4J$gak.invoke(__thisNode__);
+    SNode template = PersistentPropertyDeclaration__BehaviorDescriptor.getTemplate_idO$iR4J$gak.invokeSpecial(__thisNode__);
     return (String) IGeneratedToClass__BehaviorDescriptor.getFullName_idO$iR4JBsSv.invoke(template);
   }
   /*package*/ static String getTypeEditorFqName_idO$iR4J$g9_(@NotNull SNode __thisNode__) {
-    SNode template = PersistentPropertyDeclaration__BehaviorDescriptor.getTemplate_idO$iR4J$gak.invoke(__thisNode__);
+    SNode template = PersistentPropertyDeclaration__BehaviorDescriptor.getTemplate_idO$iR4J$gak.invokeSpecial(__thisNode__);
     return (String) PersistentConfiguration__BehaviorDescriptor.getFullEditorName_idO$iR4J$g2V.invoke(template);
   }
   /*package*/ static SNode getTemplate_idO$iR4J$gak(@NotNull SNode __thisNode__) {

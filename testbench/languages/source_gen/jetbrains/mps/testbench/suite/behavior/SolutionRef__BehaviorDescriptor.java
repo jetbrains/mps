@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -26,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class SolutionRef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef");
 
-  public static final SMethod<SModuleReference> moduleReference_id173Z5qAOun8 = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("moduleReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("173Z5qAOun8").build();
-  public static final SMethod<String> presentation_id173Z5qAPmZ2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("presentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("173Z5qAPmZ2").build();
+  public static final SMethod<SModuleReference> moduleReference_id173Z5qAOun8 = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("moduleReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("173Z5qAOun8").build();
+  public static final SMethod<String> presentation_id173Z5qAPmZ2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("presentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("173Z5qAPmZ2").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(moduleReference_id173Z5qAOun8, presentation_id173Z5qAPmZ2);
 

@@ -1348,29 +1348,21 @@
                   <node concept="10Oyi0" id="10yF3M7_G19" role="1tU5fm" />
                   <node concept="2YIFZM" id="10yF3M7_GBZ" role="33vP2m">
                     <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                    <ref role="37wK5l" to="wyt6:~Integer.parseUnsignedInt(java.lang.CharSequence,int,int,int)" resolve="parseUnsignedInt" />
-                    <node concept="2OqwBi" id="10yF3M7_GC0" role="37wK5m">
-                      <node concept="2GrUjf" id="10yF3M7_GC1" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="10yF3M7_uuj" resolve="ti" />
-                      </node>
-                      <node concept="3TrcHB" id="10yF3M7_GC2" role="2OqNvi">
-                        <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                      </node>
-                    </node>
-                    <node concept="3cmrfG" id="10yF3M7_GC3" role="37wK5m">
-                      <property role="3cmrfH" value="1" />
-                    </node>
-                    <node concept="2OqwBi" id="10yF3M7_GC4" role="37wK5m">
-                      <node concept="2OqwBi" id="10yF3M7_GC5" role="2Oq$k0">
-                        <node concept="2GrUjf" id="10yF3M7_GC6" role="2Oq$k0">
+                    <ref role="37wK5l" to="wyt6:~Integer.parseUnsignedInt(java.lang.String,int)" resolve="parseUnsignedInt" />
+                    <node concept="2OqwBi" id="6$jl8GRjN2c" role="37wK5m">
+                      <node concept="2OqwBi" id="10yF3M7_GC0" role="2Oq$k0">
+                        <node concept="2GrUjf" id="10yF3M7_GC1" role="2Oq$k0">
                           <ref role="2Gs0qQ" node="10yF3M7_uuj" resolve="ti" />
                         </node>
-                        <node concept="3TrcHB" id="10yF3M7_GC7" role="2OqNvi">
+                        <node concept="3TrcHB" id="10yF3M7_GC2" role="2OqNvi">
                           <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                         </node>
                       </node>
-                      <node concept="liA8E" id="10yF3M7_GC8" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
+                      <node concept="liA8E" id="6$jl8GRjPle" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.substring(int)" resolve="substring" />
+                        <node concept="3cmrfG" id="6$jl8GRjQ_M" role="37wK5m">
+                          <property role="3cmrfH" value="1" />
+                        </node>
                       </node>
                     </node>
                     <node concept="3cmrfG" id="10yF3M7_GC9" role="37wK5m">

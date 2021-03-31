@@ -10,7 +10,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -26,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
 
-  public static final SMethod<List<SNode>> getPossibleClassifiers_idhGcjiYt = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getPossibleClassifiers").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGcjiYt").build();
-  public static final SMethod<SNode> getContextClassifierMember_id5DIwcw5fPui = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextClassifierMember").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5DIwcw5fPui").build();
+  public static final SMethod<List<SNode>> getPossibleClassifiers_idhGcjiYt = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getPossibleClassifiers").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGcjiYt").build();
+  public static final SMethod<SNode> getContextClassifierMember_id5DIwcw5fPui = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getContextClassifierMember").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5DIwcw5fPui").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPossibleClassifiers_idhGcjiYt, getContextClassifierMember_id5DIwcw5fPui);
 

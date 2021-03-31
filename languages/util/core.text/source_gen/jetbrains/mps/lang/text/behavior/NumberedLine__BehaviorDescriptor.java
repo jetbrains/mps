@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -29,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
 
-  public static final SMethod<Integer> calculatePosition_id60UJ0IsnRf8 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0IsnRf8").build();
-  public static final SMethod<Boolean> canBeTurnedToNumberedLine_id60UJ0Iso0yR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToNumberedLine").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("60UJ0Iso0yR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id60UJ0IsnXdF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("60UJ0IsnXdF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4Ywce6rMl").build();
-  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Integer> calculatePosition_id60UJ0IsnRf8 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("calculatePosition").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("60UJ0IsnRf8").build();
+  public static final SMethod<Boolean> canBeTurnedToNumberedLine_id60UJ0Iso0yR = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToNumberedLine").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("60UJ0Iso0yR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Boolean> startsWithNumberSpace_id60UJ0IsnXdF = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithNumberSpace").modifiers(1, AccessPrivileges.PRIVATE).concept(CONCEPT).id("60UJ0IsnXdF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7q4Ywce6rMl").build();
+  public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculatePosition_id60UJ0IsnRf8, canBeTurnedToNumberedLine_id60UJ0Iso0yR, startsWithNumberSpace_id60UJ0IsnXdF, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
 
@@ -65,7 +64,7 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean canBeTurnedToNumberedLine_id60UJ0Iso0yR(@NotNull SAbstractConcept __thisConcept__, SNode l) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(l)), CONCEPTS.Line$yC)) {
-      return ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invoke(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.NumberedLine$k0) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invoke(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
+      return ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invokeSpecial(__thisConcept__, l)) && (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(l), CONCEPTS.NumberedLine$k0) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(l), CONCEPTS.NumberedLine$k0) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getNextSibling(l))), CONCEPTS.Line$yC) && ((boolean) NumberedLine__BehaviorDescriptor.startsWithNumberSpace_id60UJ0IsnXdF.invokeSpecial(__thisConcept__, SNodeOperations.as(SNodeOperations.getNextSibling(l), CONCEPTS.Line$yC))));
     }
     return false;
   }

@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -24,9 +23,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IIncompleteParen__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xede3fe8510255edL, "jetbrains.mps.baseLanguage.structure.IIncompleteParen");
 
-  public static final SMethod<Void> increaseCount_idVufYxgmE1y = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("increaseCount").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("VufYxgmE1y").build();
-  public static final SMethod<Void> decreaseCount_idVufYxgmFtR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("decreaseCount").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("VufYxgmFtR").build();
-  public static final SMethod<Boolean> isSingleParen_idVufYxgmHsD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingleParen").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("VufYxgmHsD").build();
+  public static final SMethod<Void> increaseCount_idVufYxgmE1y = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("increaseCount").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("VufYxgmE1y").build();
+  public static final SMethod<Void> decreaseCount_idVufYxgmFtR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("decreaseCount").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("VufYxgmFtR").build();
+  public static final SMethod<Boolean> isSingleParen_idVufYxgmHsD = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSingleParen").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("VufYxgmHsD").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(increaseCount_idVufYxgmE1y, decreaseCount_idVufYxgmFtR, isSingleParen_idVufYxgmHsD);
 

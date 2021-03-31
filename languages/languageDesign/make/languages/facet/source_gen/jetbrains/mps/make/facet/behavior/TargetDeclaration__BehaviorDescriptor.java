@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -27,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class TargetDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
 
-  public static final SMethod<SNode> facetDeclaration_id6O0kUTrtki6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("facetDeclaration").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6O0kUTrtki6").build();
-  public static final SMethod<String> getTargetFqName_idLXloLaM9s9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTargetFqName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("LXloLaM9s9").build();
-  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3ZSHU3pg$b_").build();
+  public static final SMethod<SNode> facetDeclaration_id6O0kUTrtki6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("facetDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6O0kUTrtki6").build();
+  public static final SMethod<String> getTargetFqName_idLXloLaM9s9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTargetFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("LXloLaM9s9").build();
+  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3ZSHU3pg$b_").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(facetDeclaration_id6O0kUTrtki6, getTargetFqName_idLXloLaM9s9, classifierName_id3ZSHU3pg$b_);
 

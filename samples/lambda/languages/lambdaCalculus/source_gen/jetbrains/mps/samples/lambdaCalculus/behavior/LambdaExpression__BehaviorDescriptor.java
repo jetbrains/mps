@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -29,10 +28,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L, "jetbrains.mps.samples.lambdaCalculus.structure.LambdaExpression");
 
-  public static final SMethod<SNode> getOuterApplication_id18EhrW3IG0h = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOuterApplication").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("18EhrW3IG0h").build();
-  public static final SMethod<Boolean> hasParameterRefs_id6qD99pUaonP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasParameterRefs").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6qD99pUaonP").build();
-  public static final SMethod<Boolean> isInFull_id6nQdzuslK0D = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInFull").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6nQdzuslK0D").build();
-  public static final SMethod<List<SNode>> getOuterVariables_id4zrttnsimEk = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOuterVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4zrttnsimEk").build();
+  public static final SMethod<SNode> getOuterApplication_id18EhrW3IG0h = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOuterApplication").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("18EhrW3IG0h").build();
+  public static final SMethod<Boolean> hasParameterRefs_id6qD99pUaonP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasParameterRefs").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6qD99pUaonP").build();
+  public static final SMethod<Boolean> isInFull_id6nQdzuslK0D = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInFull").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6nQdzuslK0D").build();
+  public static final SMethod<List<SNode>> getOuterVariables_id4zrttnsimEk = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getOuterVariables").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4zrttnsimEk").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOuterApplication_id18EhrW3IG0h, hasParameterRefs_id6qD99pUaonP, isInFull_id6nQdzuslK0D, getOuterVariables_id4zrttnsimEk);
 

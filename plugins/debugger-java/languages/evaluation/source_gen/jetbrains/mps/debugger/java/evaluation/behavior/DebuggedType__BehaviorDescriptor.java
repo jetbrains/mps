@@ -9,7 +9,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
-import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
@@ -25,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class DebuggedType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
 
-  public static final SMethod<SNode> getHighClassifierType_id3WhGjgvCHCA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighClassifierType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3WhGjgvCHCA").build();
-  public static final SMethod<SNode> getLowClassifierType_id3WhGjgvCHDA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLowClassifierType").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3WhGjgvCHDA").build();
+  public static final SMethod<SNode> getHighClassifierType_id3WhGjgvCHCA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3WhGjgvCHCA").build();
+  public static final SMethod<SNode> getLowClassifierType_id3WhGjgvCHDA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLowClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3WhGjgvCHDA").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getHighClassifierType_id3WhGjgvCHCA, getLowClassifierType_id3WhGjgvCHDA);
 
