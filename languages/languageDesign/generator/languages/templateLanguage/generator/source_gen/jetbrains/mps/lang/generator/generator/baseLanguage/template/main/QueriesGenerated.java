@@ -249,7 +249,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return "loopList" + ((int[]) _context.getVariable("varindex"))[0];
   }
   public static Object propertyMacro_GetValue_9_2(final PropertyMacroContext _context) {
-    return "loopIndex_" + SPropertyOperations.getString(_context.getNode(), PROPS.counterVarName$YOXn) + "_" + ((int[]) _context.getVariable("varindex"))[0];
+    StringBuilder sb = new StringBuilder("loopIndex_");
+    if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.counterVarName$YOXn))) {
+      sb.append(SPropertyOperations.getString(_context.getNode(), PROPS.counterVarName$YOXn));
+      sb.append('_');
+    }
+    return sb.append(((int[]) _context.getVariable("varindex"))[0]).toString();
   }
   public static Object propertyMacro_GetValue_9_3(final PropertyMacroContext _context) {
     return "itnode" + ((int[]) _context.getVariable("varindex"))[0];
