@@ -15,14 +15,20 @@
  */
 package jetbrains.mps.ide.make;
 
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.project.DumbModeTask;
+import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
+import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
@@ -47,7 +53,7 @@ import java.util.Collection;
 /**
  * Compiles all project modules at startup
  */
-public final class StartupModuleMakerImpl extends StartupModuleMaker implements StartupActivity {
+public final class StartupModuleMakerImpl extends StartupModuleMaker implements StartupActivity.Background {
   private static final Logger LOG = LogManager.getLogger(StartupModuleMakerImpl.class);
 
   private MPSProject myMPSProject;
@@ -72,28 +78,47 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
     final ProjectLibraryManager plm = project.getComponent(ProjectLibraryManager.class);
     myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);
     myComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-    ProgressManager.getInstance().run(new Task.Modal(project, "Building", false) {
+    DumbService.getInstance(project).queueTask(new DumbModeTask(this) {
       @Override
-      public void run(@NotNull ProgressIndicator indicator) {
+      public void performInDumbMode(@NotNull ProgressIndicator indicator) {
         doBuild(new ProgressMonitorAdapter(indicator));
       }
     });
+    // For unknown reason, next code doesn't show any progress dialog, regardless of whether this actitivy
+    // starts in EDT or in background thread. For now, DumbService.queueTask was the only mechanism I found
+    // that reports progress. FTR, DS.runReadActionInSmartMode doesn't work as of this writing (waitForSmartMode never completes).
+    // When this activity is not DumbAware, we get here at EDT, run() gives ProgressWindow, doBuild runs in a pooled thread,
+    // but updates of ProgressWindow do not get executed in EDT until build is over (EDT tries to grab some Future deep down
+    // here from run(). I believe this is the defect in ProgressManager.
+//    ProgressManager.getInstance().run(new Task.Modal(project, "Building", false) {
+//      @Override
+//      public void run(@NotNull ProgressIndicator indicator) {
+//        doBuild(new ProgressMonitorAdapter(indicator));
+//      }
+//    });
   }
 
   private void doBuild(ProgressMonitor monitor) {
     LOG.info("Building modules on startup");
-    // XXX why do we collect project modules in a separate read action (don't share the next write), anyone?
-    final Collection<SModule> modules = new ModelAccessHelper(myMPSProject.getRepository()).runReadAction(this::getModules);
     myMPSProject.getModelAccess().runWriteAction(() -> {
+      // XXX used to collect project modules in a separate read action with no apparent reason
+      final Collection<SModule> modules = getModules();
       final ModuleMaker maker = new ModuleMaker();
-      myReloadManager.computeNoReload(() -> {
+      final MPSCompilationResult compileResult = myReloadManager.computeNoReload(() -> {
         monitor.start("", 4);
         JavaCompilerOptions compilerOptions = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject);
         MPSCompilationResult result = maker.make(modules, monitor.subTask(3, SubProgressKind.REPLACING), compilerOptions);
+        // XXX why not result.isOk && isCompiledAnything to trigger reload?
         myComponents.getClassLoaderManager().reloadModules(modules, monitor.subTask(1, SubProgressKind.REPLACING));
         monitor.done();
-        return result; // of no use, in fact.
+        return result;
       });
+      if (!compileResult.isOk()) {
+        final Notification n = new Notification(StartupModuleMaker.class.getName(), MPSIcons.Small.Error, NotificationType.ERROR);
+        n.setTitle(String.format("Project compilation on startup failed, %d errors and %d warnings", compileResult.getErrorsCount(), compileResult.getWarningsCount()));
+        n.setImportant(true);
+        Notifications.Bus.notify(n, myMPSProject.getProject());
+      }
     });
     LOG.info("Building on startup is finished");
   }
