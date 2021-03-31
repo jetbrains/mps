@@ -14,9 +14,9 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateVarContext;
+import jetbrains.mps.generator.impl.reference.RefResolver;
 import java.util.Collections;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import java.util.List;
 import java.util.ArrayList;
@@ -55,7 +55,12 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
       {
         final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
         {
-          environment.associate(tnode3, myAssociationLinks[0], "d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour.api(jetbrains.mps.lang.behavior.api/)", "~SMethod.invoke(org.jetbrains.mps.openapi.model.SNode,java.lang.Object...)");
+          environment.resolve(new RefResolver(tnode3, myAssociationLinks[0], context2, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7571488355441286360"), "invoke") {
+            @Override
+            public Object resolve() {
+              return QueriesGenerated.referenceMacro_GetReferent_4_3(createQueryContext());
+            }
+          });
           TemplateContext context3 = context2.subContext();
           {
             Collection<SNode> tlist4 = Collections.emptyList();
@@ -108,14 +113,14 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
           {
             final List<SNode> tlist11 = new ArrayList<SNode>();
             final Iterable<SNode> loopList11 = QueriesGenerated.sourceNodesQuery_4_0(new SourceSubstituteMacroNodesContext(context3, loopMacroRef_p4fqpg_b0a0a1a3a1a1a5a6));
-            int loopIndex__11 = 0;
+            int loopIndex_11 = 0;
             for (SNode itnode11 : loopList11) {
               if (itnode11 == null) {
                 continue;
               }
               TemplateContext context5 = context3.subContext(itnode11);
-              context5 = context5.withVariable("loop:index", loopIndex__11);
-              loopIndex__11++;
+              context5 = context5.withVariable("loop:index", loopIndex_11);
+              loopIndex_11++;
               Collection<SNode> tlist12 = Collections.emptyList();
               if (QueriesGenerated.ifMacro_Condition_4_2(new IfMacroContext(context5, ifMacroRef_p4fqpg_b0a0f0d0d0b0b0f0g))) {
                 Collection<SNode> tlist13 = null;

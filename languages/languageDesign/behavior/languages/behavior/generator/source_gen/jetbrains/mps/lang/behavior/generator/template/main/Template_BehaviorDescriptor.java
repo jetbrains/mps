@@ -896,14 +896,14 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                   {
                     final List<SNode> tlist133 = new ArrayList<SNode>();
                     final Iterable<SNode> loopList133 = QueriesGenerated.sourceNodesQuery_6_7(new SourceSubstituteMacroNodesContext(context62, loopMacroRef_sy2aw3_b0a0a1a1a1a3a1a11a1a02a2a5));
-                    int loopIndex__133 = 0;
+                    int loopIndex_133 = 0;
                     for (SNode itnode133 : loopList133) {
                       if (itnode133 == null) {
                         continue;
                       }
                       TemplateContext context63 = context62.subContext(itnode133);
-                      context63 = context63.withVariable("loop:index", loopIndex__133);
-                      loopIndex__133++;
+                      context63 = context63.withVariable("loop:index", loopIndex_133);
+                      loopIndex_133++;
                       Collection<SNode> tlist134 = Collections.emptyList();
                       if (QueriesGenerated.ifMacro_Condition_6_4(new IfMacroContext(context63, ifMacroRef_sy2aw3_b0a0f0d0b0b0d0b0l0b0u0c0f))) {
                         final SNode tnode135 = environment.createOutputNode(myConcepts[39]);
@@ -1275,14 +1275,14 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                   {
                     final List<SNode> tlist194 = new ArrayList<SNode>();
                     final Iterable<SNode> loopList194 = QueriesGenerated.sourceNodesQuery_6_8(new SourceSubstituteMacroNodesContext(context93, loopMacroRef_sy2aw3_b0a0a1a1a1a3a1a11a1a22a2a5));
-                    int loopIndex__194 = 0;
+                    int loopIndex_194 = 0;
                     for (SNode itnode194 : loopList194) {
                       if (itnode194 == null) {
                         continue;
                       }
                       TemplateContext context94 = context93.subContext(itnode194);
-                      context94 = context94.withVariable("loop:index", loopIndex__194);
-                      loopIndex__194++;
+                      context94 = context94.withVariable("loop:index", loopIndex_194);
+                      loopIndex_194++;
                       Collection<SNode> tlist195 = Collections.emptyList();
                       if (QueriesGenerated.ifMacro_Condition_6_7(new IfMacroContext(context94, ifMacroRef_sy2aw3_b0a0f0d0b0b0d0b0l0b0w0c0f))) {
                         final SNode tnode196 = environment.createOutputNode(myConcepts[39]);

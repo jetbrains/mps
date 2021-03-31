@@ -70,14 +70,14 @@ public class Template_reduce_MethodInvocation extends TemplateDeclarationBase {
       {
         final List<SNode> tlist5 = new ArrayList<SNode>();
         final Iterable<SNode> loopList5 = QueriesGenerated.sourceNodesQuery_8_0(new SourceSubstituteMacroNodesContext(context1, loopMacroRef_xgjiki_b0a0a1a3a2a6));
-        int loopIndex__5 = 0;
+        int loopIndex_5 = 0;
         for (SNode itnode5 : loopList5) {
           if (itnode5 == null) {
             continue;
           }
           TemplateContext context2 = context1.subContext(itnode5);
-          context2 = context2.withVariable("loop:index", loopIndex__5);
-          loopIndex__5++;
+          context2 = context2.withVariable("loop:index", loopIndex_5);
+          loopIndex_5++;
           Collection<SNode> tlist6 = Collections.emptyList();
           if (QueriesGenerated.ifMacro_Condition_8_1(new IfMacroContext(context2, ifMacroRef_xgjiki_b0a0f0d0d0c0g))) {
             final SNode tnode7 = environment.createOutputNode(myConcepts[2]);
