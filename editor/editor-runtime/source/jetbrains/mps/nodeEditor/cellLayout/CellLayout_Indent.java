@@ -54,6 +54,15 @@ import java.util.Set;
  */
 public class CellLayout_Indent extends AbstractCellLayout {
   private final static boolean fallbackToNonIncremental = System.getProperty("mps.indent_layout.disable_incremental") != null;
+  private int myIndentAfterWrap = -1;
+
+  public int getIndentAfterWrap() {
+    return myIndentAfterWrap;
+  }
+
+  public void setIndentAfterWrap(int indentAfterWrap) {
+    this.myIndentAfterWrap = indentAfterWrap;
+  }
 
   static boolean isOnNewLine(EditorCell root, EditorCell cell) {
     for (EditorCell current = cell; current != root; current = current.getParent()) {
@@ -367,6 +376,14 @@ public class CellLayout_Indent extends AbstractCellLayout {
 
       // Save it
       myIndents.put(collection, new Pair<>(myCurrentIndent, myCurrentIndentAfterWrap));
+
+      if (!fallbackToNonIncremental) {
+        getIndentLayout(collection).setIndentAfterWrap(myCurrentIndentAfterWrap);
+      }
+    }
+
+    private CellLayout_Indent getIndentLayout(EditorCell_Collection collection) {
+      return ((CellLayout_Indent) collection.getCellLayout());
     }
 
     /**
@@ -387,7 +404,8 @@ public class CellLayout_Indent extends AbstractCellLayout {
           restoreCollectionIndent(collection);
         } else {
           // Collection can be skipped
-          if (!child.wasRelayoutRequested() && isCollectionStandalone((EditorCell_Collection) child)) {
+          if (!child.wasRelayoutRequested() && isCollectionStandalone((EditorCell_Collection) child) &&
+              getIndentLayout((EditorCell_Collection) child).getIndentAfterWrap() == myCurrentIndentAfterWrap) {
             // No need to recursively call from there
 
             // Compute correct indent applied to first leaf before moving collection
@@ -406,7 +424,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
             newLine(false);
 
             // If child not at the right position, request relayout from lowest parent (so intermediate collections are also marked)
-            if (child.getX() != myX + currentIndent()) {
+            if (parent.firstCell().getX() != myX + currentIndent()) {
               parent.requestRelayout();
             } else {
               child.moveTo(child.getX(), myCell.getY() + myHeight);
