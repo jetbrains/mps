@@ -482,7 +482,7 @@ public class TextLine {
     int selectionStartX = shiftX + getPaddingLeft() + getSelectionStartX();
     int selectionEndX = shiftX + getPaddingLeft() + getSelectionEndX();
     int endLineX = shiftX + getPaddingLeft() + getTextEndX();
-    int baselineY = shiftY + myHeight - myDescent - getPaddingBottom() - getPaddingTop();
+    int baselineY = shiftY + myHeight - myDescent - getPaddingBottom();
     int centerLineY = shiftY + (myHeight - getPaddingBottom() + getPaddingTop()) / 2;
 
     if (getStartTextSelectionPosition() > 0) {
@@ -545,12 +545,12 @@ public class TextLine {
       x--;
     }
     g.setColor(EditorSettings.getInstance().getCaretColor());
-    g.fillRect(x, shiftY, 2, myTextHeight);
+    g.fillRect(x, shiftY + getPaddingTop(), 2, myTextHeight);
   }
 
   public void repaintCaret(Component component, int shiftX, int shiftY) {
     int x = getCaretX(shiftX);
-    component.repaint(x - 1, shiftY - 1, x + 2, myTextHeight + 2);
+    component.repaint(x - 1, shiftY + getPaddingTop() - 1, x + 2, myTextHeight + 2);
   }
 
   public int getCaretX(int shiftX) {

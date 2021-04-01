@@ -40,7 +40,7 @@ public class SelectedCellAreaPainter extends BackgroundWithFoldingLinePainter {
   public void updateSelection() {
     EditorCell deepestCell = getLeftHighlighter().getEditorComponent().getDeepestSelectedCell();
     if (deepestCell instanceof EditorCell_Label) {
-      myY = deepestCell.getY();
+      myY = deepestCell.getY() + deepestCell.getTopInset();
       myHeight = deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset();
     } else {
       myY = -1;

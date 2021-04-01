@@ -738,13 +738,13 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
 
   @Override
   public void setBaseline(int y) {
-    int relBaseline = getAscent();
+    int relBaseline = getAscent() + getTopInset();
     moveTo(myX, y - relBaseline);
   }
 
   @Override
   public int getBaseline() {
-    return myY + getAscent();
+    return myY + getAscent() + getTopInset();
   }
 
   @Override
@@ -765,10 +765,10 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
   @Override
   public void paintSelection(Graphics g, Color c, boolean drawBorder, ParentSettings parentSettings) {
     g.setColor(c);
-    g.fillRect(getX(), getY() /*+ getTopInset()*/, getWidth(), getHeight() - getTopInset() - getBottomInset());
+    g.fillRect(getX(), getY() + getTopInset(), getWidth(), getHeight() - getTopInset() - getBottomInset());
     if (getEditor().hasFocus() && drawBorder) {
       g.setColor(c.darker());
-      g.drawRect(getX(), getY(), getWidth(), getHeight());
+      g.drawRect(getX(), getY() + getTopInset(), getWidth(), getHeight());
     }
   }
 

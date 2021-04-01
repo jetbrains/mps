@@ -45,12 +45,12 @@ public class SelectedLinePainter extends AbstractAdditionalPainter<Object> {
     if (deepestCell instanceof EditorCell_Label && ((EditorCell) deepestCell).isInClipRegion(g)) {
       EditorCell_Label label = (EditorCell_Label) deepestCell;
       g.setColor(EditorSettings.getInstance().getCaretRowColor());
-      g.fillRect(0, deepestCell.getY(), editorComponent.getWidth(),
+      g.fillRect(0, deepestCell.getY() + label.getTopInset(), editorComponent.getWidth(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
 
       g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(EditorColors.IDENTIFIER_UNDER_CARET_ATTRIBUTES).getBackgroundColor());
       g.fillRect(deepestCell.getX() + label.getLeftInset(),
-                 deepestCell.getY(),
+                 deepestCell.getY() + label.getTopInset(),
                  deepestCell.getWidth() - label.getLeftInset() - label.getRightInset(),
                  deepestCell.getHeight() - deepestCell.getTopInset() - deepestCell.getBottomInset());
     }
