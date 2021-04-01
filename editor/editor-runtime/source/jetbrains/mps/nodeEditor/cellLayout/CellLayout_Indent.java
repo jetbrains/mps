@@ -810,7 +810,14 @@ public class CellLayout_Indent extends AbstractCellLayout {
         return true;
       } else {
         // Need to check the next cell after the collection
-        final EditorCell nextIndentLeaf = getFirstIndentLeaf(collection.getNextSibling());
+        EditorCell_Collection parent = collection;
+        EditorCell nextSibling = null;
+        while (nextSibling == null && parent != null) {
+          nextSibling = parent.getNextSibling();
+          parent = parent.getParent();
+        }
+
+        final EditorCell nextIndentLeaf = getFirstIndentLeaf(nextSibling);
         return nextIndentLeaf == null || isOnNewLine(myCell, nextIndentLeaf);
       }
     }
