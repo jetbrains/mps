@@ -71,10 +71,5 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
     }
   }
 
-  @Override
-  protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
-    myDelegate.sessionReleased(session);
-  }
-  
 }
 

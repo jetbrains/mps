@@ -139,7 +139,5 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   protected final TypecheckingProvider<? extends TypecheckingQueries> selectProvider(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     return myTypecheckingBackend.selectProvider(src, trg, trgConcept);
   }
-
-  protected abstract void sessionReleased(@NotNull TypecheckingSessionImpl session);
-
+  
 }

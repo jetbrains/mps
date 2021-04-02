@@ -16,6 +16,7 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -38,21 +39,7 @@ public class DefaultTypecheckingController extends TypecheckingController {
 
   @Override
   public void dispose() {
-    if (myDefaultSession != null) {
-      myDefaultSession.release();
-      myDefaultSession = null;
-    }
-  }
-
-  @Override
-  protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
-    if (session == myDefaultSession) {
-      session.dispose();
-      this.myDefaultSession = null;
-
-    } else {
-      throw new IllegalArgumentException("Unknown session: " + session);
-    }
+    disposeSession();
   }
 
   @NotNull
@@ -60,7 +47,7 @@ public class DefaultTypecheckingController extends TypecheckingController {
   protected Handle requestSession(@NotNull Flags flags) {
     if (myDefaultSession == null) {
       this.myDefaultSession = new TypecheckingSessionImpl(this, flags);
-      return myDefaultSession.new InternalHandle();
+      return new SessionHandle();
 
     } else {
       throw new IllegalStateException("Multiple sessions not supported");
@@ -75,6 +62,33 @@ public class DefaultTypecheckingController extends TypecheckingController {
       this.myDefaultSession = new TypecheckingSessionImpl(this, myDefaultFlags);
     }
     return myDefaultSession.getQueries(src, trg, trgConcept);
+  }
+
+  private void disposeSession() {
+    if (myDefaultSession != null) {
+      myDefaultSession.dispose();
+      myDefaultSession = null;
+    }
+  }
+
+  private class SessionHandle implements Handle {
+    @Override
+    public TypecheckingSession session() {
+      if (myDefaultSession == null || myDefaultSession.isDisposed()) {
+        throw new IllegalStateException("session already disposed");
+      }
+      return myDefaultSession;
+    }
+
+    @Override
+    public void release() {
+      disposeSession();
+    }
+
+    @Override
+    public void invalidateAndRelease() {
+      throw new IllegalStateException("invalidate session is not supported");
+    }
   }
 
 }

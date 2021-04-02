@@ -34,6 +34,8 @@ import java.util.Map.Entry;
  */
 public class TypecheckingSessionImpl implements TypecheckingSession {
 
+  private boolean myDisposed;
+
   private int myUsages = 0;
 
   private final TypecheckingController myController;
@@ -72,15 +74,16 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
     return getQueries(myController.selectProvider(node, null, null));
   }
 
-  protected void release() {
-    myController.sessionReleased(this);
-  }
-
   protected void dispose () {
     for (Entry<TypecheckingProvider, TypecheckingQueries> entry : myQueries.entrySet()) {
       entry.getKey().disposeQueries(entry.getValue());
     }
     myQueries.clear();
+    myDisposed = true;
+  }
+
+  protected boolean isDisposed() {
+    return myDisposed;
   }
 
   @NotNull
@@ -113,20 +116,5 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
       super(copyFrom);
     }
   }
-
-  protected class InternalHandle implements Handle  {
-
-    @Override
-    public TypecheckingSessionImpl session() {
-      return TypecheckingSessionImpl.this;
-    }
-
-    @Override
-    public void release() {
-      TypecheckingSessionImpl.this.release();
-    }
-
-  }
-
 
 }

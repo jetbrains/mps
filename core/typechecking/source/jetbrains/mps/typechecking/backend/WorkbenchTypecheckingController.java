@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,9 +36,9 @@ import java.util.Map;
  */
 public class WorkbenchTypecheckingController extends DefaultTypecheckingController {
 
-  private static Logger LOG = Logger.getLogger(WorkbenchTypecheckingController.class);
+  private static final Logger LOG = Logger.getLogger(WorkbenchTypecheckingController.class);
 
-  private Map<SNodeHandle, TypecheckingSessionImpl> myRootSessions = new HashMap<>();
+  private final Map<SNodeHandle, TypecheckingSessionImpl> myRootSessions = new HashMap<>();
 
   public WorkbenchTypecheckingController(TypecheckingBackend typecheckingBackend) {
     super(typecheckingBackend, TypecheckingSession.Flags.basic());
@@ -56,28 +57,10 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
   public Handle requestSession(@NotNull Flags flags) {
     if (flags.getRoot() != null && flags.isIncremental()) {
       // the editor has requested a session for the opened root
-      TypecheckingSessionImpl session = myRootSessions.computeIfAbsent(new SNodeHandle(flags.getRoot()), (key) -> new TypecheckingSessionImpl(this, flags));
-      session.incUsages();
-      return session.new InternalHandle();
+      return new SessionHandle(flags);
 
     } else {
       return super.requestSession(flags);
-    }
-  }
-
-  @Override
-  protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
-    if (session.flags().getRoot() != null && session.flags().isIncremental()) {
-      SNodeHandle key = new SNodeHandle(session.flags().getRoot());
-      TypecheckingSessionImpl knownSession = myRootSessions.get(key);
-      if (session != knownSession) {
-        LOG.error("Uknown session: " + session, new IllegalArgumentException());
-
-      } else if (session.decUsages() <= 0) {
-        myRootSessions.remove(key).dispose();
-      }
-    } else {
-      super.sessionReleased(session);
     }
   }
 
@@ -95,6 +78,73 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
 
     } else {
       return super.getQueries(src, trg, trgConcept);
+    }
+  }
+
+  private synchronized TypecheckingSessionImpl getOrCreateSession(Flags flags) {
+    return myRootSessions.computeIfAbsent(new SNodeHandle(flags.getRoot()),
+                                          (key) -> new TypecheckingSessionImpl(this, flags));
+  }
+
+  private synchronized void releaseSession(@NotNull TypecheckingSessionImpl session, boolean forceDispose) {
+    SNodeHandle key = new SNodeHandle(session.flags().getRoot());
+    TypecheckingSessionImpl knownSession = myRootSessions.get(key);
+    if (session != knownSession) {
+      LOG.error("Uknown session: " + session, new IllegalArgumentException());
+    } else if (forceDispose || session.decUsages() <= 0) {
+      myRootSessions.remove(key).dispose();
+    }
+  }
+
+  private class SessionHandle implements Handle {
+
+    private WeakReference<TypecheckingSessionImpl> mySession = null;
+    private final Flags myFlags;
+    private boolean myReleased;
+
+    public SessionHandle(Flags flags) {
+      myFlags = flags;
+    }
+
+    @Override
+    public synchronized TypecheckingSession session() {
+      if (myReleased) {
+        throw new IllegalStateException("handle already released");
+      }
+      TypecheckingSessionImpl session = mySession != null ? mySession.get() : null;
+      if (session == null || session.isDisposed()) {
+        this.mySession = new WeakReference<>(getOrCreateSession(myFlags));
+        mySession.get().incUsages();
+      }
+      return mySession.get();
+    }
+
+    @Override
+    public synchronized void release() {
+      if (!myReleased) {
+        if (mySession != null) {
+          TypecheckingSessionImpl session = mySession.get();
+          if (session != null && !session.isDisposed()) {
+            releaseSession(session, false);
+          }
+        }
+        mySession = null;
+        myReleased = true;
+      }
+    }
+
+    @Override
+    public synchronized void invalidateAndRelease() {
+      if (!myReleased) {
+        if (mySession != null) {
+          TypecheckingSessionImpl session = mySession.get();
+          if (session != null && !session.isDisposed()) {
+            releaseSession(session, true);
+          }
+        }
+        mySession = null;
+        myReleased = true;
+      }
     }
   }
 

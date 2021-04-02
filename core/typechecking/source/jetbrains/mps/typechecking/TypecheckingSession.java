@@ -35,13 +35,29 @@ public interface TypecheckingSession {
   TypecheckingQueries getQueries(@NotNull SNode node);
 
   /**
-   * Provides possibility to release session.
+   * Instances of this class must never be shared with other clients.
+   * Provides possibility to invalidate and release session.
    */
   interface Handle {
 
+    /**
+     * Returns a transient session instance.
+     * Subsequent calls may return a new instance, if invalidated.
+     */
     TypecheckingSession session();
 
+    /**
+     * Signal that the session is no longer used.
+     * Further attempts to access session through this handle will fail.
+     */
     void release();
+
+    /**
+     * Invalidate and release the session.
+     * If there are other users, they will receive new instance on accessing the session.
+     * Further attempts to access session through this handle will fail.
+     */
+    void invalidateAndRelease();
   }
 
   /**
