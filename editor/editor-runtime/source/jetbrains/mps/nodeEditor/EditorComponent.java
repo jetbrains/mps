@@ -135,6 +135,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.CancellableReadAction;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import jetbrains.mps.typesystem.inference.DefaultTypecheckingContextOwner;
 import jetbrains.mps.typesystem.inference.ITypeContextOwner;
@@ -1123,7 +1124,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
       final boolean needNewTypecheckingSession = updateContainingRoot(node);
       if (needNewTypecheckingSession) {
-        releaseTypecheckingSession();
+        releaseTypecheckingSession(false);
       }
 
       myNode = node;
@@ -1154,15 +1155,24 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   protected void requestTypecheckingSession() {
     if (myNode != null) {
-      myTypecheckingSessionHandle = TypecheckingFacade
-                                        .getFromContext()
-                                        .requestNewSession(TypecheckingSession.Flags.forRoot(getNodeForTypechecking()).incremental());
+      SNode nodeForTypechecking = getNodeForTypechecking();
+      if (nodeForTypechecking != null) {
+        Flags flags = Flags.forRoot(nodeForTypechecking).incremental();
+        myTypecheckingSessionHandle = TypecheckingFacade
+                                          .getFromContext()
+                                          .requestNewSession(flags);
+      }
     }
   }
 
-  protected void releaseTypecheckingSession() {
+  protected void releaseTypecheckingSession(boolean invalidate) {
     if (myTypecheckingSessionHandle != null) {
-      myTypecheckingSessionHandle.release();
+      if (invalidate) {
+        myTypecheckingSessionHandle.invalidateAndRelease();
+        
+      } else {
+        myTypecheckingSessionHandle.release();
+      }
       myTypecheckingSessionHandle = null;
     }
   }
@@ -1479,7 +1489,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       myMessageBusConnection.disconnect();
     }
 
-    releaseTypecheckingSession();
+    releaseTypecheckingSession(false);
 
     myHighlightManager.dispose();
 
@@ -2357,6 +2367,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return this;
   }
 
+  /**
+   * The returned session is supposed to be used directly for running a typechecking command,
+   * it is not supposed to be cached.
+   * @return
+   */
   public TypecheckingSession getTypecheckingSession() {
     return myTypecheckingSessionHandle != null ? myTypecheckingSessionHandle.session() : null;
   }
@@ -2834,7 +2849,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   public void rebuildAfterReloadModel() {
-    releaseTypecheckingSession();
+    releaseTypecheckingSession(true);
     if (myNodePointer != null) {
       myNode = myNodePointer.resolve(getRepository());
       myEditorContext = createEditorContext(myNode == null ? null : myNode.getModel(), myRepository);

@@ -40,9 +40,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 public class InspectorEditorComponent extends EditorComponent {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(InspectorEditorComponent.class));
 
-  private SNode myContainingRoot;
-  private TypecheckingSession myMainTypecheckingSession;
-
   public InspectorEditorComponent(@NotNull SRepository p) {
     this(p, EditorConfigurationBuilder.buildDefault());
   }
@@ -51,7 +48,6 @@ public class InspectorEditorComponent extends EditorComponent {
     super(repository, configuration);
     myNode = null;
     myNodePointer = null;
-    myContainingRoot = null;
     myRootCell = createEmptyCell();
   }
 
@@ -83,53 +79,7 @@ public class InspectorEditorComponent extends EditorComponent {
     return this;
   }
 
-  @Override
-  public TypecheckingSession getTypecheckingSession() {
-    if (myMainTypecheckingSession != null) {
-      return myMainTypecheckingSession;
-    }
-    return super.getTypecheckingSession();
-  }
-
-  @Override
-  protected void requestTypecheckingSession() {
-    EditorComponent mainEditorComponent = getMainEditorComponent();
-    if (mainEditorComponent != null) {
-      // in case a typechecking session has been requested before without the main component
-      releaseTypecheckingSession();
-      myMainTypecheckingSession = mainEditorComponent.getTypecheckingSession();
-      
-    } else {
-      super.requestTypecheckingSession();
-    }
-  }
-
-  @Override
-  protected void releaseTypecheckingSession() {
-    this.myMainTypecheckingSession = null;
-    super.releaseTypecheckingSession();
-  }
-
-  private EditorComponent getMainEditorComponent() {
-    if (!EDT.isCurrentThreadEdt()) {
-      // guard for tests that may cause this method to be invoked from other threads
-      return null;
-    }
-    FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(DataManager.getInstance().getDataContext((this)));
-    if (fileEditor instanceof MPSFileNodeEditor) {
-      Object mainComponent = ((MPSFileNodeEditor) fileEditor).getNodeEditor().getCurrentEditorComponent();
-      if (mainComponent instanceof  EditorComponent) {
-        return ((EditorComponent) mainComponent);
-      } else{
-        LOG.error("expected node editor to be EditorComponent but got " + mainComponent);
-      }
-    }
-    return null;
-  }
-
   protected boolean updateContainingRoot(SNode node) {
-    final SNode newroot = node == null ? null : node.getContainingRoot();
-    myContainingRoot = newroot;
     return true;
   }
 
@@ -139,7 +89,6 @@ public class InspectorEditorComponent extends EditorComponent {
     if (editedNode == null) {
       return null;
     }
-    // assuming the parameter is always a descendant of the current containing root, but may have been detached from the model
-    return editedNode.getModel() != null ? editedNode.getContainingRoot() : myContainingRoot;
+    return editedNode.getModel() != null ? editedNode.getContainingRoot() : null;
   }
 }
