@@ -88,7 +88,7 @@
       <property role="20kJfa" value="icon" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4763274727405873310" />
-      <ref role="20lvS9" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
+      <ref role="20lvS9" to="1oap:2p1v3tOa9VI" resolve="Icon" />
     </node>
     <node concept="1TJgyj" id="25jQf71X8Fy" role="1TKVEi">
       <property role="20kJfa" value="configurationKind" />
@@ -123,7 +123,7 @@
       <property role="20kJfa" value="icon" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="7966814097310618131" />
-      <ref role="20lvS9" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
+      <ref role="20lvS9" to="1oap:2p1v3tOa9VI" resolve="Icon" />
     </node>
     <node concept="PrWs8" id="25jQf71XihD" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />

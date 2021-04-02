@@ -110,7 +110,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="icon" />
       <property role="IQ2ns" value="3433054418425083029" />
-      <ref role="20lvS9" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
+      <ref role="20lvS9" to="1oap:2p1v3tOa9VI" resolve="Icon" />
     </node>
     <node concept="1TJgyj" id="46nPloes0RV" role="1TKVEi">
       <property role="IQ2ns" value="4726480899534753275" />

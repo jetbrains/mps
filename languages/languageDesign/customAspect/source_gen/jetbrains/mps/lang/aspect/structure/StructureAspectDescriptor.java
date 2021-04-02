@@ -149,7 +149,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("mainLanguages", 0x54be5be5620c1b77L).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L).optional(false).ordered(true).multiple(true).origin("6106419185511570295").done();
     b.aggregate("additionalLanguages", 0x54be5be5620c1b7dL).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c318L).optional(true).ordered(true).multiple(true).origin("6106419185511570301").done();
     b.aggregate("devkit", 0x721adb764b494af2L).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3f4dbeL).optional(true).ordered(true).multiple(false).origin("8222125370833980146").done();
-    b.aggregate("icon", 0x2fa4a8cdf0cff495L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL).optional(true).ordered(true).multiple(false).origin("3433054418425083029").done();
+    b.aggregate("icon", 0x2fa4a8cdf0cff495L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("3433054418425083029").done();
     b.aggregate("helpUrl", 0x4197d5560e700dfbL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L).optional(true).ordered(true).multiple(false).origin("4726480899534753275").done();
     b.aggregate("order", 0x2085244dcb121e81L).target(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78145L).optional(true).ordered(true).multiple(false).origin("2343319097654255233").done();
     return b.create();

@@ -434,7 +434,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:f3383ae6-205a-4e7c-8dd9-c29966e29e49(jetbrains.mps.execution.configurations.structure)/2401501559171345993");
     b.version(2);
     b.associate("configurationKind", 0x2153d8f1c1f48ae2L).target(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e4aL).optional(false).origin("2401501559171353314").done();
-    b.aggregate("icon", 0x421a8d20ae9f689eL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL).optional(false).ordered(true).multiple(false).origin("4763274727405873310").done();
+    b.aggregate("icon", 0x421a8d20ae9f689eL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(false).ordered(true).multiple(false).origin("4763274727405873310").done();
     b.alias("run configuration");
     return b.create();
   }
@@ -469,7 +469,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("displayName", 0x73ca83ced1d489aaL).type(PrimitiveTypeId.STRING).origin("8343626183964133802").done();
     b.property("description", 0x73ca83ced1d489acL).type(PrimitiveTypeId.STRING).origin("8343626183964133804").done();
-    b.aggregate("icon", 0x6e8fcf3625c61213L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL).optional(false).ordered(true).multiple(false).origin("7966814097310618131").done();
+    b.aggregate("icon", 0x6e8fcf3625c61213L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(false).ordered(true).multiple(false).origin("7966814097310618131").done();
     b.alias("run configuration kind");
     return b.create();
   }
