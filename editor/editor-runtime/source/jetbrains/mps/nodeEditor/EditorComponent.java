@@ -226,7 +226,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider, TooltipComponent,
@@ -245,7 +244,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
-  protected AtomicReference<Handle> myTypecheckingSessionHandle = new AtomicReference<>();
+  protected volatile Handle myTypecheckingSessionHandle;
   @Nullable
   private MessageBusConnection myMessageBusConnection;
 
@@ -1087,7 +1086,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return false;
   }
 
-  public void editNode(final SNode node) {
+  public synchronized void editNode(final SNode node) {
     if (isDisposed()) {
       return;
     }
@@ -1136,20 +1135,21 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     });
   }
 
-  protected void requestTypecheckingSession() {
+  protected synchronized void requestTypecheckingSession() {
     if (myNode != null) {
       SNode nodeForTypechecking = getNodeForTypechecking();
       if (nodeForTypechecking != null) {
         Flags flags = Flags.forRoot(nodeForTypechecking).incremental();
-        myTypecheckingSessionHandle.set(TypecheckingFacade
+        myTypecheckingSessionHandle = TypecheckingFacade
                                           .getFromContext()
-                                          .requestNewSession(flags));
+                                          .requestNewSession(flags);
       }
     }
   }
 
-  protected void releaseTypecheckingSession(boolean invalidate) {
-    Handle handle = myTypecheckingSessionHandle.getAndSet(null);
+  protected synchronized void releaseTypecheckingSession(boolean invalidate) {
+    Handle handle = myTypecheckingSessionHandle;
+    myTypecheckingSessionHandle = null;
     if (handle != null) {
       if (invalidate) {
         handle.invalidateAndRelease();
@@ -2345,8 +2345,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
    * it is not supposed to be cached.
    * @return
    */
-  public TypecheckingSession getTypecheckingSession() {
-    Handle handle = myTypecheckingSessionHandle.get();
+  public synchronized TypecheckingSession getTypecheckingSession() {
+    Handle handle = myTypecheckingSessionHandle;
     return handle != null ? handle.session() : null;
   }
 
