@@ -226,6 +226,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider, TooltipComponent,
@@ -244,7 +245,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
-  protected volatile Handle myTypecheckingSessionHandle;
+  protected AtomicReference<Handle> myTypecheckingSessionHandle = new AtomicReference<>();
   @Nullable
   private MessageBusConnection myMessageBusConnection;
 
@@ -1140,16 +1141,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       SNode nodeForTypechecking = getNodeForTypechecking();
       if (nodeForTypechecking != null) {
         Flags flags = Flags.forRoot(nodeForTypechecking).incremental();
-        myTypecheckingSessionHandle = TypecheckingFacade
+        myTypecheckingSessionHandle.set(TypecheckingFacade
                                           .getFromContext()
-                                          .requestNewSession(flags);
+                                          .requestNewSession(flags));
       }
     }
   }
 
   protected void releaseTypecheckingSession(boolean invalidate) {
-    Handle handle = myTypecheckingSessionHandle;
-    myTypecheckingSessionHandle = null;
+    Handle handle = myTypecheckingSessionHandle.getAndSet(null);
     if (handle != null) {
       if (invalidate) {
         handle.invalidateAndRelease();
@@ -2346,7 +2346,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
    * @return
    */
   public TypecheckingSession getTypecheckingSession() {
-    return myTypecheckingSessionHandle != null ? myTypecheckingSessionHandle.session() : null;
+    Handle handle = myTypecheckingSessionHandle.get();
+    return handle != null ? handle.session() : null;
   }
 
   /**
