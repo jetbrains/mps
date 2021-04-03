@@ -244,7 +244,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
-  protected Handle myTypecheckingSessionHandle;
+  protected volatile Handle myTypecheckingSessionHandle;
   @Nullable
   private MessageBusConnection myMessageBusConnection;
 
@@ -1148,14 +1148,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   protected void releaseTypecheckingSession(boolean invalidate) {
-    if (myTypecheckingSessionHandle != null) {
+    Handle handle = myTypecheckingSessionHandle;
+    myTypecheckingSessionHandle = null;
+    if (handle != null) {
       if (invalidate) {
-        myTypecheckingSessionHandle.invalidateAndRelease();
-        
+        handle.invalidateAndRelease();
+
       } else {
-        myTypecheckingSessionHandle.release();
+        handle.release();
       }
-      myTypecheckingSessionHandle = null;
     }
   }
 
