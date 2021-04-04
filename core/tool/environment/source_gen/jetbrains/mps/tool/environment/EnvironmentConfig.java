@@ -36,6 +36,7 @@ public class EnvironmentConfig {
    */
   private boolean myCreatePluginClassLoaders = true;
   private boolean myTestModeOn = false;
+  private boolean myLoadAllBundledPlugins = false;
 
   private EnvironmentConfig() {
   }
@@ -132,8 +133,16 @@ public class EnvironmentConfig {
     return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").addDistributedPlugin("mps-migration", "jetbrains.mps.ide.migration.workbench").addDistributedPlugin("mps-project-migrations", "jetbrains.mps.ide.mpsmigration");
   }
 
+  public EnvironmentConfig withBundledPlugins() {
+    this.myLoadAllBundledPlugins = true;
+    return this;
+  }
+
   private EnvironmentConfig addDistributedPlugin(String folder, String id) {
     // for internal use only, accepts a folder in /plugins
+    if (myLoadAllBundledPlugins) {
+      return this;
+    }
     File preinstalledPluginFolder = new File(PathManager.getPreInstalledPluginsPath());
     return addPlugin(new File(preinstalledPluginFolder, folder).getAbsolutePath(), id);
   }
@@ -159,9 +168,8 @@ public class EnvironmentConfig {
    * 
    * @return EnvironmentConfig with no specified plugins. At the time of writing it meant that the platform will load all the plugins. Note that one needs to provide a proper class path.
    */
-  public static EnvironmentConfig defaultConfigNoPluginsSpecified() {
-    EnvironmentConfig defaultConf = defaultConfig();
-    return defaultConf;
+  public static EnvironmentConfig defaultConfigWithBundledPlugins() {
+    return emptyConfig().withDefaultSamples().withBootstrapLibraries().withWorkbenchPath().withBundledPlugins();
   }
 
   /**

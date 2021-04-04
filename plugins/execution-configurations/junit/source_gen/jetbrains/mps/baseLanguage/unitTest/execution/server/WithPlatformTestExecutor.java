@@ -55,7 +55,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
   /*package*/ static IdeaEnvironment startIdea(ScriptData startupArguments) {
 
     // XXX would be great to have this code as part of init() method, but it's too much of refactoring now. Shall drop init/dispose of TestExecutor.
-    EnvironmentConfig cfg = EnvironmentConfig.defaultConfigNoPluginsSpecified();
+    EnvironmentConfig cfg = EnvironmentConfig.defaultConfigWithBundledPlugins();
     // Same code is in MpsWorker, we'd better share it
     // FIXME Though technically dependency to MpsWorker (j.m.tool.builder) is possible here, I don't want it yet as I plan to split Ant/JUnit stuff from environment-related stuff there.
     Logger.getRootLogger().setLevel(startupArguments.getLogLevel());

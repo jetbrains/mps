@@ -9,11 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.util.PlatformUtils;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.annotation.Hack;
+import org.apache.log4j.Level;
 import java.util.StringJoiner;
 import java.io.File;
-import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.tool.common.PluginData;
-import jetbrains.mps.util.FileUtil;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.application.ApplicationManager;
@@ -36,6 +35,7 @@ import com.intellij.openapi.vfs.impl.jar.JarFileSystemImpl;
 import com.intellij.openapi.application.impl.LaterInvocator;
 import jetbrains.mps.library.LibraryInitializer;
 import java.util.Collections;
+import jetbrains.mps.util.FileUtil;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import jetbrains.mps.util.Reference;
 import java.util.concurrent.TimeUnit;
@@ -47,7 +47,6 @@ import jetbrains.mps.core.platform.Platform;
 import com.intellij.ide.startup.StartupManagerEx;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.ExecutionException;
-import org.apache.log4j.Level;
 
 /**
  * TODO: fix dispose methods
@@ -94,59 +93,26 @@ public final class IdeaEnvironment extends EnvironmentBase {
    */
   @Hack
   private void addRequiredPlugins(EnvironmentConfig config) {
-    // [MM]: looks like a hack, should we regenerate it to a regular plugin specification?
-    // Probably, with plugin-set-ref to ensure the same plugin set is used
-    // typically, this property is set by generated ant scripts before running tests
-    // otherwise, we set it from config
-    if (isNotEmptyString(System.getProperty(PLUGIN_PATH))) {
-      return;
-    }
     setPluginPathProperty();
     setPluginIdsPropertyFromConfig(config);
   }
 
   @Hack
   private void setPluginPathProperty() {
-    // [MM]: why do we set ids from config, while path is not config-related?
-    StringJoiner pluginPathResult = new StringJoiner(File.pathSeparator);
-    if (myConfig.isTestMode()) {
-      // it is comfortable for us to mimic the behavior in the non-test mode when we load by default all the plugins
-      // from the app_dir/plugins folder.
-      // In order to avoid duplication plugin problem (we have IDEA loading plugins from cp, from plugin.path property,
-      // from preinstalled plugins folder (non-test-mode only)
-      // and from user settings plugins folder) we use filtering below which makes it totally 4 places to look after.
-      File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
-      if (pluginDir.exists()) {
-        for (File pluginFolder : pluginDir.listFiles()) {
-          // Ignore 'Git4Idea' & 'SVN4Idea' plugins
-          // They load from classpath in:
-          // PluginManagerCore#computePlatformPluginUrlAndCollectPluginUrls
-          if (pluginFolder.getName().equals("git4idea") || pluginFolder.getName().equals("svn4idea")) {
-            continue;
-          }
-          pluginPathResult.add(pluginFolder.getPath());
-        }
+    if (System.getProperty(PLUGIN_PATH) != null) {
+      if (LOG.isEnabledFor(Level.WARN)) {
+        LOG.warn("The environment config plugin location settings are overridden by the system property " + System.getProperty(PLUGIN_PATH));
       }
+      return;
     }
+    StringJoiner pluginPathResult = new StringJoiner(File.pathSeparator);
     for (PluginData pd : myConfig.getPlugins()) {
-      if (!(isPluginAlreadyLoadedByIDEA(pd))) {
-        pluginPathResult.add(pd.path);
-      }
+      pluginPathResult.add(pd.path);
     }
     // IMPORTANT! "plugin.path" doesn't tell plugin's classpath, it points to location where to read plugin.xml from
     // I.e. for unit test mode, complete plugin's classpath has to be in global CP already,
-    // PluginManagerCore.loadDescriptorsFromClassPath.
+    // PluginManagerCore.loadDescriptorsFromClassPath
     System.setProperty(PLUGIN_PATH, pluginPathResult.toString());
-  }
-
-  /**
-   * Boolean method to filter out the plugins IDEA will load on its own.
-   * We want to put the plugin into the plugin.path property only if it does not reside in the user settings plugins
-   * folder which IDEA loads by default, or in the preinstalled plugins folder (which we enabled a few lines above).
-   * The reason for the filtering is that IDEA throw error if one plugin is found in more than one way.
-   */
-  private boolean isPluginAlreadyLoadedByIDEA(PluginData pd) {
-    return FileUtil.isAncestor(PathManager.getPreInstalledPluginsPath(), pd.path) || FileUtil.isAncestor(PathManager.getPluginsPath(), pd.path);
   }
 
   /**
@@ -157,6 +123,12 @@ public final class IdeaEnvironment extends EnvironmentBase {
    */
   @Hack
   private void setPluginIdsPropertyFromConfig(EnvironmentConfig config) {
+    if (System.getProperty(IDEA_LOAD_PLUGINS_ID) != null) {
+      if (LOG.isEnabledFor(Level.WARN)) {
+        LOG.warn("The environment config plugin settings settings are overridden by the system property " + System.getProperty(IDEA_LOAD_PLUGINS_ID));
+      }
+      return;
+    }
     StringJoiner result = new StringJoiner(",");
     Set<PluginData> plugins = config.getPlugins();
     if (SetSequence.fromSet(plugins).isEmpty()) {
@@ -408,8 +380,5 @@ public final class IdeaEnvironment extends EnvironmentBase {
     public ProjectDirectoryDoesNotExistException(String projectPath) {
       super("Cannot find the project at '" + projectPath + "'");
     }
-  }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
   }
 }
