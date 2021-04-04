@@ -16,16 +16,17 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import com.intellij.openapi.vcs.VcsException;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.InvalidSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.IMapping;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Comparator;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -38,36 +39,33 @@ public final class RootCommitsGraphTraverser {
   private final VirtualFile myFile;
   private final SNodeId myRootId;
   private final boolean myTolerateReadModelFailure = true;
-  @NotNull
-  private final CommitsGraph myCommitsGraph;
   private boolean myIsStopped = false;
   private AnnotateModelReadException myException;
+  @NotNull
+  private final CommitsGraphNode myStartNode;
 
 
-  public RootCommitsGraphTraverser(@NotNull CommitsGraph commitsGraph, SNodeId rootId, VirtualFile file, CommitsGraphNodeConsumer revisionConsumer) {
+  public RootCommitsGraphTraverser(@NotNull CommitsGraphNode startNode, SNodeId rootId, VirtualFile file, CommitsGraphNodeConsumer commitConsumer) {
     myRootId = rootId;
     myFile = file;
-    myCommitConsumer = revisionConsumer;
-    myCommitsGraph = commitsGraph;
+    myCommitConsumer = commitConsumer;
+    myStartNode = startNode;
   }
 
+
   public void run() {
-    CommitsGraphNode headNode = myCommitsGraph.getHeadNode();
-    if (headNode == null) {
-      return;
-    }
     try {
-      headNode.loadModel(null, myFile.getExtension());
+      myStartNode.loadModel(null, myFile.getExtension());
     } catch (IOException e) {
-      myException = new AnnotateModelReadException(headNode.getRevision(), e.getMessage());
+      myException = new AnnotateModelReadException(myStartNode.getRevision(), e.getMessage());
     } catch (VcsException e) {
-      myException = new AnnotateModelReadException(headNode.getRevision(), e.getMessage());
+      myException = new AnnotateModelReadException(myStartNode.getRevision(), e.getMessage());
     }
-    if (!(headNode.isModelLoaded())) {
+    if (!(myStartNode.isModelLoaded())) {
       return;
     }
 
-    DequeSequence.fromDequeNew(myBranches).pushElement(headNode);
+    DequeSequence.fromDequeNew(myBranches).pushElement(myStartNode);
 
     while (hasNotIgnoredBranch()) {
       CommitsGraphNode node = getNextNode();
@@ -87,11 +85,6 @@ public final class RootCommitsGraphTraverser {
         pushParentNode(node, parent);
       }
     }
-    CollectionSequence.fromCollection(myCommitsGraph.getNodes()).visitAll(new IVisitor<CommitsGraphNode>() {
-      public void visit(CommitsGraphNode it) {
-        it.unloadModel();
-      }
-    });
   }
 
   public AnnotateModelReadException getException() {
@@ -156,14 +149,30 @@ public final class RootCommitsGraphTraverser {
   }
 
   private CommitsGraphNode getNextNode() {
+    if (DequeSequence.fromDequeNew(myBranches).isEmpty()) {
+      // This can happen if we annotate some arbitrary revision rather than the head revision.
+      MapSequence.fromMap(myForkCommits).visitAll(new IVisitor<IMapping<CommitsGraphNode, Set<CommitsGraphNode>>>() {
+        public void visit(IMapping<CommitsGraphNode, Set<CommitsGraphNode>> it) {
+          CommitsGraphNode forkCommit = it.key();
+          Set<CommitsGraphNode> processedChildren = it.value();
+          if (SetSequence.fromSet(processedChildren).all(new IWhereFilter<CommitsGraphNode>() {
+            public boolean accept(CommitsGraphNode processedChild) {
+              return processedChild.isIgnored();
+            }
+          })) {
+            forkCommit.setIgnored();
+          }
+          DequeSequence.fromDequeNew(myBranches).pushElement(forkCommit);
+        }
+      });
+      MapSequence.fromMap(myForkCommits).clear();
+    }
     CommitsGraphNode node = DequeSequence.fromDequeNew(myBranches).sort(new Comparator<CommitsGraphNode>() {
       public int compare(CommitsGraphNode a, CommitsGraphNode b) {
         return a.compareTo(b);
       }
     }, false).first();
-    if (node != null) {
-      DequeSequence.fromDequeNew(myBranches).removeElement(node);
-    }
+    DequeSequence.fromDequeNew(myBranches).removeElement(node);
     return node;
   }
 

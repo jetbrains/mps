@@ -83,6 +83,7 @@ import com.intellij.openapi.progress.PerformInBackgroundOption;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import com.intellij.vcs.log.impl.HashImpl;
+import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class VcsActionsUtil {
@@ -407,6 +408,9 @@ __switch__:
     }
   }
 
+  public static BackgroundableActionLock getAnnotateRootLock(Project project, String taskName) {
+    return BackgroundableActionLock.getLock(project, VcsBackgroundableActions.ANNOTATE, taskName);
+  }
   private static <T> T as_brpb5o_a0a0a0a0x(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }

@@ -18,15 +18,14 @@ import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.history.CommitsGraph;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
-import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
-import java.util.Arrays;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
@@ -42,7 +41,6 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   private final MPSProject myProject;
   private final VirtualFile myFile;
   private final Map<VcsFileRevision, CommitsGraphNode> myRevisionToNodeMap = MapSequence.fromMap(new HashMap<VcsFileRevision, CommitsGraphNode>());
-  private boolean myLocalChangesProcessed;
   @NotNull
   private final CommitsGraph myCommitsGraph;
   private final RootCommitsGraphTraverser myRootCommitsGraphTraverser;
@@ -56,7 +54,8 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     myOnUpdate = onUpdate;
     myTotalRevisions = revisions.size();
     myCommitsGraph = new CommitsGraph(project.getProject(), file, revisions.subList(1, revisions.size()));
-    myRootCommitsGraphTraverser = new RootCommitsGraphTraverser(myCommitsGraph, myRootId, myFile, this);
+    myCommitsGraph.addLocalRevisionNode(new CommitsGraphNode(myLocalRevision, loadLocalModel()));
+    myRootCommitsGraphTraverser = new RootCommitsGraphTraverser(myCommitsGraph.getHeadNode(), myRootId, myFile, this);
   }
 
   @Override
@@ -85,13 +84,6 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   @NotNull
   public List<VcsFileRevision> getRevisionParents(VcsFileRevision revision) {
     synchronized (myRevisionToNodeMap) {
-      if (revision == myLocalRevision) {
-        @Nullable CommitsGraphNode headNode = myCommitsGraph.getHeadNode();
-        if (headNode == null) {
-          return Collections.emptyList();
-        }
-        return Arrays.asList(headNode.getRevision());
-      }
       CommitsGraphNode node = MapSequence.fromMap(myRevisionToNodeMap).get(revision);
       if (node == null) {
         return Collections.emptyList();
@@ -120,15 +112,6 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     return true;
   }
 
-  private void addLocalChangesToHistory(@NotNull CommitsGraphNode headNode) {
-    if (!(headNode.isModelLoaded())) {
-      return;
-    }
-    if (modelsHaveChanges(headNode.getLoadedModel(), loadLocalModel())) {
-      myFilteredRevisions.add(myLocalRevision);
-    }
-  }
-
   private SModel loadLocalModel() {
     return VCSPersistenceUtil.loadModel(myLocalRevision.loadContent(), myFile.getExtension());
   }
@@ -137,15 +120,6 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   public void commitProcessingFinished(CommitsGraphNode node) {
     myProcessedRevisions++;
     myOnUpdate.run();
-  }
-
-  @Override
-  public void commitProcessingStarted(CommitsGraphNode node) {
-    CommitsGraphNodeConsumer.super.commitProcessingStarted(node);
-    if (!(myLocalChangesProcessed)) {
-      addLocalChangesToHistory(myCommitsGraph.getHeadNode());
-      myLocalChangesProcessed = true;
-    }
   }
 
   @Override

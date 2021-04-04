@@ -36,6 +36,7 @@ import jetbrains.mps.workbench.ActionPlace;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
@@ -55,7 +56,7 @@ public abstract class BaseAction extends AnAction {
   private Set<ActionPlace> myPlaces = null;
 
   public BaseAction() {
-    this(null, null, null);
+    this((String) null, (String) null, (Icon) null);
   }
 
   public BaseAction(String text) {
@@ -69,6 +70,11 @@ public abstract class BaseAction extends AnAction {
 
   public BaseAction(Supplier<@ActionText String> dynamicText) {
     super(dynamicText);
+    setEnabledInModalContext(true);
+  }
+
+  public BaseAction(@NotNull Supplier<@ActionText String> dynamicText, @NotNull Supplier<@ActionText String> dynamicDescription, @Nullable Icon icon) {
+    super(dynamicText, dynamicDescription, icon);
     setEnabledInModalContext(true);
   }
 
@@ -194,7 +200,8 @@ public abstract class BaseAction extends AnAction {
       } catch (RuntimeException ex) {
         final Logger log = LogManager.getLogger(getClass());
         if (log.isEnabledFor(Level.ERROR)) {
-          log.error(String.format("User's action execute method failed. Action: %s. Class: %s", event.getPresentation().getText(), BaseAction.this.getClass().getName()), ex);
+          log.error(String.format("User's action execute method failed. Action: %s. Class: %s", event.getPresentation().getText(),
+                                  BaseAction.this.getClass().getName()), ex);
         }
       }
     });

@@ -120,7 +120,7 @@ public class Annotate_Action extends BaseAction {
     String taskName = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName();
     BackgroundableActionLock actionLock = Annotate_Action.this.getAnnotateRootLock(event);
     actionLock.lock();
-    ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS, actionLock));
+    ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS, actionLock, null));
   }
   /*package*/ BackgroundableActionLock getAnnotateRootLock(final AnActionEvent event) {
     return BackgroundableActionLock.getLock(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), VcsBackgroundableActions.ANNOTATE, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName());

@@ -7,7 +7,7 @@ import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import java.util.Map;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,6 +46,7 @@ import jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
@@ -57,6 +58,15 @@ import com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
 import com.intellij.diff.DiffManager;
+import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
+import jetbrains.mps.ide.editor.NodeEditor;
+import jetbrains.mps.openapi.navigation.NavigationSupport;
+import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
+import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
+import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
+import java.io.IOException;
+import com.intellij.openapi.vcs.VcsException;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1507597541852241756", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.UpdateListener {
@@ -65,7 +75,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private final RootAnnotation myRootAnnotation;
   private final VirtualFile myFile;
   private final AbstractVcs myVcs;
-  private final Project myProject;
+  private final MPSProject myMpsProject;
   private final Map<EditorCell, CellAnnotation> myCellAnnotations = new ConcurrentHashMap<EditorCell, CellAnnotation>();
   private final Map<EditorCell, AnnotatedCellMessage> myEditorMessages = new ConcurrentHashMap<EditorCell, AnnotatedCellMessage>();
   private final MergingUpdateQueue myUpdateQueue;
@@ -75,11 +85,11 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
 
 
-  /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, Project project, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions) {
+  /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, MPSProject mpsProject, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions) {
     myEditorComponent = editorComponent;
     myFile = file;
     myVcs = vcs;
-    myProject = project;
+    myMpsProject = mpsProject;
     myRootAnnotation = rootAnnotation;
     myAllRevisions = revisions;
     myRootAnnotation.addUpdateListener(new RootAnnotation.RootAnnotationUpdateListener() {
@@ -174,7 +184,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     });
   }
 
-  private SNodeId getRootId() {
+  public SNodeId getRootId() {
     return myEditorComponent.getEditedNode().getNodeId();
   }
 
@@ -339,7 +349,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     if (oldMessage != null) {
       ListSequence.fromList(oldMessages).addElement(oldMessage);
     }
-    AnnotatedCellMessage cellMessage = new AnnotatedCellMessage(myProject, commitsGraphNode, changes, cell, color, this);
+    AnnotatedCellMessage cellMessage = new AnnotatedCellMessage(myMpsProject.getProject(), commitsGraphNode, changes, cell, color, this);
     MapSequence.fromMap(myEditorMessages).put(cell, cellMessage);
     ListSequence.fromList(newMessages).addElement(cellMessage);
   }
@@ -412,7 +422,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   public Project getProject() {
-    return myProject;
+    return myMpsProject.getProject();
   }
 
   public void dispose() {
@@ -544,7 +554,6 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     return changeType.value;
   }
 
-
   private Color calcCellColor(CommitsGraphNode commitsGraphNode, Set<RevisionNodeChange> changes) {
     if (commitsGraphNode.isLocalRevision()) {
       return myEditorComponent.getBackground();
@@ -559,7 +568,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   public void showPathsAffectedByRevision(VcsFileRevision revision) {
-    ShowAllAffectedGenericAction.showSubmittedFiles(myProject, revision.getRevisionNumber(), myFile, myVcs.getKeyInstanceMethod());
+    ShowAllAffectedGenericAction.showSubmittedFiles(myMpsProject.getProject(), revision.getRevisionNumber(), myFile, myVcs.getKeyInstanceMethod());
   }
 
   public void showDiff(CommitsGraphNode node) {
@@ -577,9 +586,58 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
-        DiffManager.getInstance().showDiff(myProject, rq);
+        DiffManager.getInstance().showDiff(myMpsProject.getProject(), rq);
       }
     });
+  }
+
+  public void annotateRevision(final VcsFileRevision revision) {
+    final SModel commitModel = loadRevisionModel(revision);
+    if (commitModel == null) {
+      return;
+    }
+    final SNode root = commitModel.getNode(getRootId());
+    if (root == null) {
+      return;
+    }
+
+    final String shortCommit = revision.getRevisionNumber().asString().substring(0, 8);
+    final String taskName = root.getName() + "(" + shortCommit + ")";
+    getModelAccess().runWriteAction(new Runnable() {
+      public void run() {
+        DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, false);
+      }
+    });
+
+    getModelAccess().runReadInEDT(new Runnable() {
+      public void run() {
+        NodeEditor newEditor = ((NodeEditor) NavigationSupport.getInstance().openNode(myMpsProject, root, true, false));
+        if (newEditor != null) {
+          EditorComponent newEditorComponent = newEditor.getCurrentEditorComponent();
+          if (newEditorComponent != null) {
+            BackgroundableActionLock actionLock = VcsActionsUtil.getAnnotateRootLock(myMpsProject.getProject(), taskName);
+            actionLock.lock();
+            ProgressManager.getInstance().run(new AnnotateBackgroundableTask(myMpsProject, taskName, newEditorComponent, myFile, myVcs, actionLock, revision));
+          }
+        }
+      }
+    });
+  }
+
+  @Nullable
+  private SModel loadRevisionModel(VcsFileRevision revision) {
+    SModel commitModel;
+    try {
+      commitModel = VCSPersistenceUtil.loadModel(revision.loadContent(), myFile.getExtension());
+    } catch (IOException ex) {
+      return null;
+    } catch (VcsException ex) {
+      return null;
+    }
+    if (commitModel == null || !(commitModel.isLoaded())) {
+      return null;
+    }
+    return commitModel;
   }
   private static void check_coav66_a3a85(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {

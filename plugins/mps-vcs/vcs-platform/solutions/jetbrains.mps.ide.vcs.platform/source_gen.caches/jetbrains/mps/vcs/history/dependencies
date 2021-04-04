@@ -113,6 +113,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.DequeSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -120,7 +121,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.smodel.DefaultSModelDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.InvalidSModel" />
-    <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraph" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNode" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNodeConsumer" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

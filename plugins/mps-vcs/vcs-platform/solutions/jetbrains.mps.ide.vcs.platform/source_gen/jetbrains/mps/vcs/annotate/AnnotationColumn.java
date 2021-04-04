@@ -35,23 +35,24 @@ import java.awt.event.MouseEvent;
 import java.awt.Cursor;
 import javax.swing.JPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
-import jetbrains.mps.workbench.action.BaseAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Separator;
-import com.intellij.idea.ActionsBundle;
-import com.intellij.openapi.actionSystem.IdeActions;
-import com.intellij.icons.AllIcons;
-import org.jetbrains.annotations.NotNull;
-import git4idea.i18n.GitBundle;
-import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.workbench.action.ActionUtils;
+import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.vcs.VcsBundle;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.idea.ActionsBundle;
+import com.intellij.openapi.actionSystem.IdeActions;
+import com.intellij.icons.AllIcons;
+import git4idea.i18n.GitBundle;
+import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
+import java.util.function.Supplier;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotationColumn extends AbstractLeftColumn {
@@ -64,6 +65,12 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   private boolean myIsClosed;
   private ViewActionGroup myViewActionGroup;
   private Runnable myCloseActionListener;
+
+  private final String ANNOTATE_REVISION_TEXT_KEY = "action.annotate.revision.text";
+  private final String ANNOTATE_REVISION_DESC_KEY = "action.annotate.selected.revision.in.new.tab.description";
+  private final String ANNOTATE_PREVIOUS_REVISION_TEXT_KEY = "action.annotate.previous.revision.text";
+  private final String ANNOTATE_PREVIOUS_REVISION_DESC_KEY = "action.annotate.successor.selected.revision.in.new.tab.description";
+  private final String SHOW_IN_GIT_LOG_TEXT_KEY = "vcs.history.action.gitlog";
 
 
   /*package*/ AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
@@ -296,12 +303,12 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     if (isEditorHighlighted() || !(isColumnHoverHighlightRevision())) {
       return;
     }
-    CommitsGraphNode graphNode = check_5mnya_a0b0zb(getLineAnnotation(event.getY()), this);
-    if (check_5mnya_a0c0zb(graphNode) == myRevisionUnderMouse) {
+    CommitsGraphNode graphNode = check_5mnya_a0b0fc(getLineAnnotation(event.getY()), this);
+    if (check_5mnya_a0c0fc(graphNode) == myRevisionUnderMouse) {
       return;
     }
     myEditorAnnotation.highlightCellsForRevision(graphNode);
-    myRevisionUnderMouse = check_5mnya_a0e0zb(graphNode);
+    myRevisionUnderMouse = check_5mnya_a0e0fc(graphNode);
   }
 
   @Override
@@ -315,7 +322,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       return;
     }
     myIsClosed = true;
-    check_5mnya_a2a55(myCloseActionListener);
+    check_5mnya_a2a16(myCloseActionListener);
     if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
     }
@@ -330,34 +337,21 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
     final LineAnnotation la = getLineAnnotation(event.getY());
-    final CommitsGraphNode graphNode = check_5mnya_a0c0hc(la);
+    final CommitsGraphNode graphNode = check_5mnya_a0c0nc(la);
     boolean isVcsRevision = graphNode != null && !(graphNode.isLocalRevision());
-    ListSequence.fromList(actions).addElement(new BaseAction("Close Annotations") {
-      @Override
-      protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
-        close();
-      }
-    });
+    ListSequence.fromList(actions).addElement(createCloseAnnotateAction());
     ListSequence.fromList(actions).addElement(Separator.getInstance());
     if (isVcsRevision) {
-      ListSequence.fromList(actions).addElement(new AnAction(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON), "Show diff", AllIcons.Actions.Diff) {
-        @Override
-        public void actionPerformed(@NotNull AnActionEvent p1) {
-          myEditorAnnotation.showDiff(la.getRevisionsGraphNode());
-        }
-      });
+      ListSequence.fromList(actions).addElement(createShowDiffAction(graphNode));
     }
     ListSequence.fromList(actions).addElement(myViewActionGroup);
     if (isVcsRevision) {
       ListSequence.fromList(actions).addElement(createCopyRevisionNumberAction(graphNode.getRevision()));
-    }
-    if (isVcsRevision && myEditorAnnotation.isGit()) {
-      ListSequence.fromList(actions).addElement(new BaseAction(GitBundle.messagePointer("vcs.history.action.gitlog")) {
-        @Override
-        protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
-          VcsActionsUtil.showCommitInGitLog(graphNode.getRevision(), myEditorAnnotation.getProject());
-        }
-      });
+      if (myEditorAnnotation.isGit()) {
+        ListSequence.fromList(actions).addElement(createShowInGitLogAction(graphNode));
+      }
+      ListSequence.fromList(actions).addElement(createAnnotateRevisionAction(graphNode));
+      ListSequence.fromList(actions).addElement(createAnnotatePreviousRevisionAction(graphNode));
     }
     if (!(isEditorHighlighted())) {
       ListSequence.fromList(actions).addElement(Separator.getInstance());
@@ -443,6 +437,80 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     };
   }
 
+  private AnAction createCloseAnnotateAction() {
+    return new BaseAction("Close Annotations") {
+      @Override
+      protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
+        close();
+      }
+    };
+  }
+
+  private AnAction createShowDiffAction(final CommitsGraphNode commitsGraphNode) {
+    return new AnAction(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON), "Show diff", AllIcons.Actions.Diff) {
+      @Override
+      public void actionPerformed(@NotNull AnActionEvent p1) {
+        myEditorAnnotation.showDiff(commitsGraphNode);
+      }
+    };
+  }
+
+  private AnAction createShowInGitLogAction(final CommitsGraphNode commitsGraphNode) {
+    return new BaseAction(GitBundle.messagePointer(SHOW_IN_GIT_LOG_TEXT_KEY)) {
+      @Override
+      protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
+        VcsActionsUtil.showCommitInGitLog(commitsGraphNode.getRevision(), myEditorAnnotation.getProject());
+      }
+    };
+  }
+
+  private AnAction createAnnotateRevisionAction(final CommitsGraphNode commitsGraphNode) {
+    return new BaseAction(VcsBundle.messagePointer(ANNOTATE_REVISION_TEXT_KEY), VcsBundle.messagePointer(ANNOTATE_REVISION_DESC_KEY), AllIcons.Actions.Annotate) {
+      @Override
+      protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
+        myEditorAnnotation.annotateRevision(commitsGraphNode.getRevision());
+      }
+    };
+  }
+
+  private AnAction createAnnotatePreviousRevisionAction(CommitsGraphNode commitsGraphNode) {
+    Supplier<String> text = VcsBundle.messagePointer(ANNOTATE_PREVIOUS_REVISION_TEXT_KEY);
+    Supplier<String> description = VcsBundle.messagePointer(ANNOTATE_PREVIOUS_REVISION_DESC_KEY);
+
+    final List<CommitsGraphNode> parents = commitsGraphNode.getParents();
+
+    if (ListSequence.fromList(parents).count() == 2) {
+      BaseGroup selectCommitGroup = new BaseGroup(text, "", AllIcons.Actions.Annotate, true);
+      selectCommitGroup.add(new BaseAction(ListSequence.fromList(parents).getElement(0).getRevision().getRevisionNumber().asString(), "", null) {
+        @Override
+        protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
+          myEditorAnnotation.annotateRevision(ListSequence.fromList(parents).getElement(0).getRevision());
+        }
+      });
+      selectCommitGroup.add(new BaseAction(ListSequence.fromList(parents).getElement(1).getRevision().getRevisionNumber().asString(), "", null) {
+        @Override
+        protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
+          myEditorAnnotation.annotateRevision(ListSequence.fromList(parents).getElement(1).getRevision());
+        }
+      });
+      return selectCommitGroup;
+    } else {
+      return new BaseAction(text, description, AllIcons.Actions.Annotate) {
+        @Override
+        protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
+          if (ListSequence.fromList(parents).isNotEmpty()) {
+            myEditorAnnotation.annotateRevision(ListSequence.fromList(parents).getElement(0).getRevision());
+          }
+        }
+        @Override
+        protected void doUpdate(AnActionEvent e, Map<String, Object> params) {
+          super.doUpdate(e, params);
+          e.getPresentation().setEnabled(ListSequence.fromList(parents).isNotEmpty());
+        }
+      };
+    }
+  }
+
   private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
     @Override
     public void editorComponentCreated(@NotNull EditorComponent ec) {
@@ -454,31 +522,31 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-  private static CommitsGraphNode check_5mnya_a0b0zb(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
+  private static CommitsGraphNode check_5mnya_a0b0fc(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }
     return null;
   }
-  private static VcsFileRevision check_5mnya_a0c0zb(CommitsGraphNode checkedDotOperand) {
+  private static VcsFileRevision check_5mnya_a0c0fc(CommitsGraphNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevision();
     }
     return null;
   }
-  private static VcsFileRevision check_5mnya_a0e0zb(CommitsGraphNode checkedDotOperand) {
+  private static VcsFileRevision check_5mnya_a0e0fc(CommitsGraphNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevision();
     }
     return null;
   }
-  private static void check_5mnya_a2a55(Runnable checkedDotOperand) {
+  private static void check_5mnya_a2a16(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }
 
   }
-  private static CommitsGraphNode check_5mnya_a0c0hc(LineAnnotation checkedDotOperand) {
+  private static CommitsGraphNode check_5mnya_a0c0nc(LineAnnotation checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }

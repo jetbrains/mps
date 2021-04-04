@@ -18,10 +18,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.mps.openapi.model.SModel;
+import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.vcs.history.CurrentRevision;
-import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -29,7 +32,6 @@ import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
@@ -40,7 +42,6 @@ import java.util.HashSet;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -69,7 +70,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     myProject = project;
   }
 
-  /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel) throws RootCommitsGraphTraverser.AnnotateModelReadException {
+  /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel, final VcsRevisionNumber revisionNumber) throws RootCommitsGraphTraverser.AnnotateModelReadException {
     CommitsGraph commitsGraph = new CommitsGraph(myProject, myFile, revisions);
     CurrentRevision currentRevision = new CurrentRevision(myFile, new VcsRevisionNumber() {
       @Override
@@ -82,9 +83,20 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
         return "Local Changes";
       }
     });
-    myLocalCommitsGraphNode = new CommitsGraphNode(currentRevision, currentModel);
-    commitsGraph.addLocalRevisionNode(myLocalCommitsGraphNode);
-    myRevisionsGraphTraverser = new RootCommitsGraphTraverser(commitsGraph, myRootId, myFile, this);
+    if (currentModel != null) {
+      myLocalCommitsGraphNode = new CommitsGraphNode(currentRevision, currentModel);
+      commitsGraph.addLocalRevisionNode(myLocalCommitsGraphNode);
+    }
+    CommitsGraphNode startNode = (revisionNumber == null ? commitsGraph.getHeadNode() : CollectionSequence.fromCollection(commitsGraph.getNodes()).where(new IWhereFilter<CommitsGraphNode>() {
+      public boolean accept(CommitsGraphNode it) {
+        return Objects.equals(it.getRevision().getRevisionNumber(), revisionNumber);
+      }
+    }).first());
+    if (startNode == null) {
+      return;
+    }
+
+    myRevisionsGraphTraverser = new RootCommitsGraphTraverser(startNode, myRootId, myFile, this);
     myRevisionsGraphTraverser.run();
     if (myRevisionsGraphTraverser.getException() != null) {
       throw myRevisionsGraphTraverser.getException();

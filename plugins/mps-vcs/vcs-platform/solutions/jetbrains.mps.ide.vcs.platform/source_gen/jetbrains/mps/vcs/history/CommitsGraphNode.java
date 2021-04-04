@@ -344,7 +344,6 @@ public final class CommitsGraphNode implements Comparable {
     }
     return tooltipText;
   }
-
   private static void check_9s317u_a0a1a65(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.unload();
