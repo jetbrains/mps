@@ -35,14 +35,28 @@ public class EnvironmentConfig {
    * fixme implement with MpsEnv
    */
   private boolean myCreatePluginClassLoaders = true;
+  /**
+   * Whether we are going to load all preinstalled plugins, 
+   *  bundled plugins, plugins in cp, plugins in plugin.path system property,
+   * By default set to false because we are unable to run without errors in our tests when all of the plugins are on.
+   * Probably that should change.
+   */
+  private boolean myLoadAllPluginsNoRestrictions = false;
   private boolean myTestModeOn = false;
   private boolean myLoadAllBundledPlugins = false;
 
   private EnvironmentConfig() {
   }
 
+  public boolean areLoadingPluginsNoRestrictions() {
+    return myLoadAllPluginsNoRestrictions;
+  }
+
   @NotNull
   public Set<PluginData> getPlugins() {
+    if (myLoadAllPluginsNoRestrictions) {
+      throw new IllegalArgumentException("Does not make much sense when the flag 'myLoadAllPluginsNoRestrictions' is set");
+    }
     return SetSequence.fromSet(myPlugins).asUnmodifiable();
   }
 
@@ -125,7 +139,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withDebuggerPlugin() {
-    return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java");
+    return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("execution-api", "jetbrains.mps.execution.api");
   }
 
   public EnvironmentConfig withMigrationPlugin() {

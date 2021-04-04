@@ -735,6 +735,34 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="4UQyhJFi2v7" role="jymVt">
+      <property role="TrG5h" value="myLoadAllPluginsNoRestrictions" />
+      <node concept="3Tm6S6" id="4UQyhJFi1$Y" role="1B3o_S" />
+      <node concept="10P_77" id="4UQyhJFi2r6" role="1tU5fm" />
+      <node concept="3clFbT" id="4UQyhJFi3$m" role="33vP2m" />
+      <node concept="z59LJ" id="4UQyhJFie83" role="lGtFl">
+        <node concept="TZ5HA" id="4UQyhJFie84" role="TZ5H$">
+          <node concept="1dT_AC" id="4UQyhJFie85" role="1dT_Ay">
+            <property role="1dT_AB" value="Whether we are going to load all preinstalled plugins, " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4UQyhJFijI9" role="TZ5H$">
+          <node concept="1dT_AC" id="4UQyhJFijIa" role="1dT_Ay">
+            <property role="1dT_AB" value=" bundled plugins, plugins in cp, plugins in plugin.path system property," />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4UQyhJFigyW" role="TZ5H$">
+          <node concept="1dT_AC" id="4UQyhJFigyX" role="1dT_Ay">
+            <property role="1dT_AB" value="By default set to false because we are unable to run without errors in our tests when all of the plugins are on." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4UQyhJFihjh" role="TZ5H$">
+          <node concept="1dT_AC" id="4UQyhJFihji" role="1dT_Ay">
+            <property role="1dT_AB" value="Probably that should change." />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="312cEg" id="28TMbOSF0ab" role="jymVt">
       <property role="TrG5h" value="myTestModeOn" />
       <node concept="3Tm6S6" id="28TMbOSEYQA" role="1B3o_S" />
@@ -753,6 +781,19 @@
       <node concept="3cqZAl" id="3YQ3dO9lydb" role="3clF45" />
       <node concept="3clFbS" id="3YQ3dO9lydd" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="4UQyhJFi5kG" role="jymVt" />
+    <node concept="3clFb_" id="4UQyhJFic1B" role="jymVt">
+      <property role="TrG5h" value="areLoadingPluginsNoRestrictions" />
+      <node concept="3clFbS" id="4UQyhJFic1E" role="3clF47">
+        <node concept="3cpWs6" id="4UQyhJFid7H" role="3cqZAp">
+          <node concept="37vLTw" id="4UQyhJFid8V" role="3cqZAk">
+            <ref role="3cqZAo" node="4UQyhJFi2v7" resolve="myLoadAllPluginsNoRestrictions" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4UQyhJFi6I8" role="1B3o_S" />
+      <node concept="10P_77" id="4UQyhJFi7$B" role="3clF45" />
+    </node>
     <node concept="2tJIrI" id="3eUNqOk73fg" role="jymVt" />
     <node concept="3clFb_" id="5UWB9tjYeB" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -765,6 +806,23 @@
         </node>
       </node>
       <node concept="3clFbS" id="5UWB9tjYeE" role="3clF47">
+        <node concept="3clFbJ" id="4UQyhJFi9Vt" role="3cqZAp">
+          <node concept="3clFbS" id="4UQyhJFi9Vv" role="3clFbx">
+            <node concept="YS8fn" id="4UQyhJFib06" role="3cqZAp">
+              <node concept="2ShNRf" id="4UQyhJFib11" role="YScLw">
+                <node concept="1pGfFk" id="4UQyhJFibBU" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
+                  <node concept="Xl_RD" id="4UQyhJFibEN" role="37wK5m">
+                    <property role="Xl_RC" value="Does not make much sense when the flag 'myLoadAllPluginsNoRestrictions' is set" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="4UQyhJFiaUm" role="3clFbw">
+            <ref role="3cqZAo" node="4UQyhJFi2v7" resolve="myLoadAllPluginsNoRestrictions" />
+          </node>
+        </node>
         <node concept="3cpWs6" id="MVJ1IE7WZh" role="3cqZAp">
           <node concept="2OqwBi" id="MVJ1IE7WZi" role="3cqZAk">
             <node concept="26Dbio" id="MVJ1IE7WZj" role="2OqNvi" />
@@ -1305,23 +1363,34 @@
       <property role="TrG5h" value="withDebuggerPlugin" />
       <node concept="3clFbS" id="1CvX25dz6g3" role="3clF47">
         <node concept="3cpWs6" id="1CvX25dz6g4" role="3cqZAp">
-          <node concept="2OqwBi" id="1CvX25dznAc" role="3cqZAk">
-            <node concept="1rXfSq" id="1CvX25dz6g5" role="2Oq$k0">
+          <node concept="2OqwBi" id="5g8XZ9ose7e" role="3cqZAk">
+            <node concept="liA8E" id="5g8XZ9osfHx" role="2OqNvi">
               <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="1CvX25dz6g6" role="37wK5m">
-                <property role="Xl_RC" value="debugger-api" />
+              <node concept="Xl_RD" id="5g8XZ9osgFv" role="37wK5m">
+                <property role="Xl_RC" value="execution-api" />
               </node>
-              <node concept="Xl_RD" id="1CvX25dz6g7" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.debugger.api" />
+              <node concept="Xl_RD" id="5g8XZ9oslNj" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.execution.api" />
               </node>
             </node>
-            <node concept="liA8E" id="1CvX25dzoTL" role="2OqNvi">
-              <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="1CvX25dzpVL" role="37wK5m">
-                <property role="Xl_RC" value="debugger-java" />
+            <node concept="2OqwBi" id="1CvX25dznAc" role="2Oq$k0">
+              <node concept="1rXfSq" id="1CvX25dz6g5" role="2Oq$k0">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="1CvX25dz6g6" role="37wK5m">
+                  <property role="Xl_RC" value="debugger-api" />
+                </node>
+                <node concept="Xl_RD" id="1CvX25dz6g7" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.debugger.api" />
+                </node>
               </node>
-              <node concept="Xl_RD" id="1CvX25dzs8j" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.debugger.java" />
+              <node concept="liA8E" id="1CvX25dzoTL" role="2OqNvi">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="1CvX25dzpVL" role="37wK5m">
+                  <property role="Xl_RC" value="debugger-java" />
+                </node>
+                <node concept="Xl_RD" id="1CvX25dzs8j" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.debugger.java" />
+                </node>
               </node>
             </node>
           </node>
@@ -5291,16 +5360,6 @@
           </node>
         </node>
         <node concept="3clFbJ" id="2519QBqd1nR" role="3cqZAp">
-          <node concept="3fqX7Q" id="2519QBqd1nS" role="3clFbw">
-            <node concept="2OqwBi" id="2519QBqd3hC" role="3fr31v">
-              <node concept="37vLTw" id="2519QBqd3hB" role="2Oq$k0">
-                <ref role="3cqZAo" node="2519QBqd1nM" resolve="configFile" />
-              </node>
-              <node concept="liA8E" id="2519QBqd3hD" role="2OqNvi">
-                <ref role="37wK5l" to="eoo2:~Path.isAbsolute()" resolve="isAbsolute" />
-              </node>
-            </node>
-          </node>
           <node concept="3clFbS" id="2519QBqd1nV" role="3clFbx">
             <node concept="3clFbF" id="2519QBqd1nW" role="3cqZAp">
               <node concept="37vLTI" id="2519QBqd1nX" role="3clFbG">
@@ -5356,6 +5415,16 @@
                 <node concept="3oM_SD" id="2519QBqd1rD" role="1PaTwD">
                   <property role="3oM_SC" value="be" />
                 </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="2519QBqd1nS" role="3clFbw">
+            <node concept="2OqwBi" id="2519QBqd3hC" role="3fr31v">
+              <node concept="37vLTw" id="2519QBqd3hB" role="2Oq$k0">
+                <ref role="3cqZAo" node="2519QBqd1nM" resolve="configFile" />
+              </node>
+              <node concept="liA8E" id="2519QBqd3hD" role="2OqNvi">
+                <ref role="37wK5l" to="eoo2:~Path.isAbsolute()" resolve="isAbsolute" />
               </node>
             </node>
           </node>
