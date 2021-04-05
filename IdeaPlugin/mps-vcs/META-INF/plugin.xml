@@ -54,6 +54,8 @@
 
     <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
                         serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
+    <applicationService serviceImplementation="jetbrains.mps.vcs.diff.ui.common.ChangeColors"/>
+    <applicationService serviceImplementation="jetbrains.mps.vcs.annotate.AnnotationOptions"/>
 
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory"/>
