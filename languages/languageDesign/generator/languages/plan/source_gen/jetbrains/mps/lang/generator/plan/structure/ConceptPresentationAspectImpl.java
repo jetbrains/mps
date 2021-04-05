@@ -14,10 +14,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CheckpointDeclaration;
   private ConceptPresentation props_CheckpointSpecification;
   private ConceptPresentation props_CheckpointSynchronization;
+  private ConceptPresentation props_ConceptListSelector;
   private ConceptPresentation props_DeclaredCheckpointSpec;
   private ConceptPresentation props_DocumentationLine;
   private ConceptPresentation props_DocumentationStep;
   private ConceptPresentation props_Fork;
+  private ConceptPresentation props_ForkSelector;
   private ConceptPresentation props_InPlaceCheckpointRefSpec;
   private ConceptPresentation props_InPlaceCheckpointSpec;
   private ConceptPresentation props_IncludePlan;
@@ -70,6 +72,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CheckpointSynchronization = cpb.create();
         }
         return props_CheckpointSynchronization;
+      case LanguageConceptSwitch.ConceptListSelector:
+        if (props_ConceptListSelector == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ConceptListSelector");
+          props_ConceptListSelector = cpb.create();
+        }
+        return props_ConceptListSelector;
       case LanguageConceptSwitch.DeclaredCheckpointSpec:
         if (props_DeclaredCheckpointSpec == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -100,6 +109,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Fork = cpb.create();
         }
         return props_Fork;
+      case LanguageConceptSwitch.ForkSelector:
+        if (props_ForkSelector == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ForkSelector = cpb.create();
+        }
+        return props_ForkSelector;
       case LanguageConceptSwitch.InPlaceCheckpointRefSpec:
         if (props_InPlaceCheckpointRefSpec == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

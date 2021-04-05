@@ -31,6 +31,7 @@
       <concept id="1164052439493" name="jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup_MatchingText" flags="in" index="6VE3a" />
       <concept id="1164052588708" name="jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup_DescriptionText" flags="in" index="6WeAF" />
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
+        <property id="1140524450557" name="separatorText" index="2czwfO" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
@@ -414,8 +415,36 @@
         </node>
       </node>
     </node>
-    <node concept="3F0ifn" id="7c$ruAHXutj" role="6VMZX">
-      <property role="3F0ifm" value="Apply generators of specified languages" />
+    <node concept="3EZMnI" id="1UCZ1x2IeiF" role="6VMZX">
+      <node concept="2iRkQZ" id="1UCZ1x2IeiG" role="2iSdaV" />
+      <node concept="3F0ifn" id="7c$ruAHXutj" role="3EZMnx">
+        <property role="3F0ifm" value="Apply generators of specified languages" />
+      </node>
+      <node concept="3F0ifn" id="1UCZ1x2IeK9" role="3EZMnx" />
+      <node concept="3EZMnI" id="1UCZ1x2IeKg" role="3EZMnx">
+        <node concept="2iRfu4" id="1UCZ1x2IeKh" role="2iSdaV" />
+        <node concept="3F0ifn" id="1UCZ1x2IeKc" role="3EZMnx">
+          <property role="3F0ifm" value="distinct step for each generator:" />
+        </node>
+        <node concept="3F0A7n" id="1UCZ1x2IeKr" role="3EZMnx">
+          <ref role="1NtTu8" to="bjdw:1UCZ1x2IcLE" resolve="individualStepPerGenerator" />
+        </node>
+        <node concept="pkWqt" id="1UCZ1x2IoAC" role="pqm2j">
+          <node concept="3clFbS" id="1UCZ1x2IoAD" role="2VODD2">
+            <node concept="3clFbF" id="1UCZ1x2IoDH" role="3cqZAp">
+              <node concept="2OqwBi" id="1UCZ1x2IqFh" role="3clFbG">
+                <node concept="2OqwBi" id="1UCZ1x2IoN$" role="2Oq$k0">
+                  <node concept="pncrf" id="1UCZ1x2IoDG" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="1UCZ1x2Ip2y" role="2OqNvi">
+                    <ref role="3TtcxE" to="bjdw:1009c2Af5ZQ" resolve="entries" />
+                  </node>
+                </node>
+                <node concept="3GX2aA" id="1UCZ1x2IsFO" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="24kQdi" id="7c$ruAHXqhR">
@@ -937,6 +966,12 @@
         </node>
       </node>
     </node>
+    <node concept="3EZMnI" id="1UCZ1x2IYEI" role="6VMZX">
+      <node concept="2iRkQZ" id="1UCZ1x2IYEJ" role="2iSdaV" />
+      <node concept="3F1sOY" id="1UCZ1x2IYE2" role="3EZMnx">
+        <ref role="1NtTu8" to="bjdw:1UCZ1x2IYvJ" resolve="filter" />
+      </node>
+    </node>
   </node>
   <node concept="24kQdi" id="1009c2Af4xh">
     <ref role="1XX52x" to="bjdw:1009c2Af4wf" resolve="LanguageEntry" />
@@ -953,6 +988,20 @@
       </node>
       <node concept="3F0A7n" id="1009c2Af5ZK" role="3EZMnx">
         <ref role="1NtTu8" to="bjdw:1009c2Af5ZI" resolve="kind" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1UCZ1x2IYwh">
+    <ref role="1XX52x" to="bjdw:1UCZ1x2IYvM" resolve="ConceptListSelector" />
+    <node concept="3EZMnI" id="1UCZ1x2IYwj" role="2wV5jI">
+      <node concept="2iRfu4" id="1UCZ1x2IYwk" role="2iSdaV" />
+      <node concept="3F0ifn" id="1UCZ1x2IYw$" role="3EZMnx">
+        <property role="3F0ifm" value="concepts:" />
+      </node>
+      <node concept="3F2HdR" id="1UCZ1x2IYws" role="3EZMnx">
+        <property role="2czwfO" value="," />
+        <ref role="1NtTu8" to="bjdw:1UCZ1x2IYvP" resolve="concepts" />
+        <node concept="2iRfu4" id="1UCZ1x2IYwu" role="2czzBx" />
       </node>
     </node>
   </node>

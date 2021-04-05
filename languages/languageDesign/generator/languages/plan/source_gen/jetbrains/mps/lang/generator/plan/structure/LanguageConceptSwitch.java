@@ -14,18 +14,20 @@ public final class LanguageConceptSwitch {
   public static final int CheckpointDeclaration = 2;
   public static final int CheckpointSpecification = 3;
   public static final int CheckpointSynchronization = 4;
-  public static final int DeclaredCheckpointSpec = 5;
-  public static final int DocumentationLine = 6;
-  public static final int DocumentationStep = 7;
-  public static final int Fork = 8;
-  public static final int InPlaceCheckpointRefSpec = 9;
-  public static final int InPlaceCheckpointSpec = 10;
-  public static final int IncludePlan = 11;
-  public static final int LanguageEntry = 12;
-  public static final int Plan = 13;
-  public static final int Step = 14;
-  public static final int TextDocLine = 15;
-  public static final int Transform = 16;
+  public static final int ConceptListSelector = 5;
+  public static final int DeclaredCheckpointSpec = 6;
+  public static final int DocumentationLine = 7;
+  public static final int DocumentationStep = 8;
+  public static final int Fork = 9;
+  public static final int ForkSelector = 10;
+  public static final int InPlaceCheckpointRefSpec = 11;
+  public static final int InPlaceCheckpointSpec = 12;
+  public static final int IncludePlan = 13;
+  public static final int LanguageEntry = 14;
+  public static final int Plan = 15;
+  public static final int Step = 16;
+  public static final int TextDocLine = 17;
+  public static final int Transform = 18;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L);
@@ -34,10 +36,12 @@ public final class LanguageConceptSwitch {
     builder.put(0x56d679ca1f4b53ceL, CheckpointDeclaration);
     builder.put(0x340cd07aed7ca164L, CheckpointSpecification);
     builder.put(0xc11e5088a794d07L, CheckpointSynchronization);
+    builder.put(0x1ea8fc1842bbe7f2L, ConceptListSelector);
     builder.put(0x340cd07aed7cb2fdL, DeclaredCheckpointSpec);
     builder.put(0xc6a8aea78a50f67L, DocumentationLine);
     builder.put(0xc6a8aea78a4805dL, DocumentationStep);
     builder.put(0x2bf683196b12a3cbL, Fork);
+    builder.put(0x1ea8fc1842bbe7eeL, ForkSelector);
     builder.put(0x340cd07aed7cb32cL, InPlaceCheckpointRefSpec);
     builder.put(0x340cd07aed7ca161L, InPlaceCheckpointSpec);
     builder.put(0x336c2500000e1b2fL, IncludePlan);

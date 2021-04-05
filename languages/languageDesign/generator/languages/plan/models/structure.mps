@@ -108,6 +108,11 @@
     <property role="R4oN_" value="Collection of languages to reduce (iow, generators to apply)" />
     <property role="EcuMT" value="1820634577908471810" />
     <ref role="1TJDcQ" node="1_4co2y1LvW" resolve="Step" />
+    <node concept="1TJgyi" id="1UCZ1x2IcLE" role="1TKVEl">
+      <property role="IQ2nx" value="2209292798354050154" />
+      <property role="TrG5h" value="individualStepPerGenerator" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1TJgyj" id="2ztrlDPivEd" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="languages" />
@@ -277,6 +282,12 @@
     <property role="R4oN_" value="fork a new transformation branch with specified plan" />
     <property role="34LRSv" value="fork" />
     <ref role="1TJDcQ" node="1_4co2y1LvW" resolve="Step" />
+    <node concept="1TJgyj" id="1UCZ1x2IYvJ" role="1TKVEi">
+      <property role="IQ2ns" value="2209292798354253807" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="filter" />
+      <ref role="20lvS9" node="1UCZ1x2IYvI" resolve="ForkSelector" />
+    </node>
     <node concept="1TJgyj" id="2JQwL_F4Efc" role="1TKVEi">
       <property role="IQ2ns" value="3167863533095527372" />
       <property role="20kJfa" value="plan" />
@@ -319,6 +330,25 @@
     <node concept="25R33" id="1009c2Af4wn" role="25R1y">
       <property role="3tVfz5" value="1152961914448136215" />
       <property role="TrG5h" value="Extend" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1UCZ1x2IYvI">
+    <property role="EcuMT" value="2209292798354253806" />
+    <property role="TrG5h" value="ForkSelector" />
+  </node>
+  <node concept="1TIwiD" id="1UCZ1x2IYvM">
+    <property role="EcuMT" value="2209292798354253810" />
+    <property role="TrG5h" value="ConceptListSelector" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1UCZ1x2IYvP" role="1TKVEi">
+      <property role="IQ2ns" value="2209292798354253813" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="concepts" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" to="tp25:gNgn60t" resolve="ConceptReference" />
+    </node>
+    <node concept="PrWs8" id="1UCZ1x2IYvN" role="PzmwI">
+      <ref role="PrY4T" node="1UCZ1x2IYvI" resolve="ForkSelector" />
     </node>
   </node>
 </model>
