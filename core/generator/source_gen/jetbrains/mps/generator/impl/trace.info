@@ -799,7 +799,7 @@
       <node id="4825730691511510849" at="70,58,71,63" concept="11" />
       <node id="4825730691511718221" at="72,94,73,151" concept="5" />
       <node id="4825730691511391217" at="74,11,75,70" concept="5" />
-      <node id="2567377358529334486" at="76,16,77,91" concept="11" />
+      <node id="2567377358529334486" at="76,16,77,175" concept="11" />
       <node id="2567377358529401563" at="78,94,79,206" concept="5" />
       <node id="2567377358529779756" at="81,91,82,223" concept="5" />
       <node id="2567377358529977841" at="83,11,84,33" concept="5" />
@@ -834,39 +834,40 @@
       <node id="2567377358530573360" at="144,106,145,58" concept="13" />
       <node id="2567377358530659689" at="146,5,147,52" concept="13" />
       <node id="2214485068936293220" at="151,0,152,0" concept="16" trace="name$MnvL" />
-      <node id="2214485068936293220" at="152,0,153,0" concept="16" trace="withExtended$Vq9q" />
-      <node id="2214485068936293220" at="153,0,154,0" concept="16" trace="withPriorityRules$G6xp" />
-      <node id="2214485068936293220" at="154,0,155,0" concept="16" trace="kind$xL6K" />
-      <node id="2214485068936293220" at="158,0,159,0" concept="16" trace="Checkpoint$ZV" />
-      <node id="2214485068936293220" at="159,0,160,0" concept="16" trace="Transform$a_" />
-      <node id="2214485068936293220" at="160,0,161,0" concept="16" trace="LanguageIdentity$cN" />
-      <node id="2214485068936293220" at="161,0,162,0" concept="16" trace="ApplyGenerators$PQ" />
-      <node id="2214485068936293220" at="162,0,163,0" concept="16" trace="ModuleIdentity$U1" />
-      <node id="2214485068936293220" at="163,0,164,0" concept="16" trace="GeneratorModulePointer$49" />
-      <node id="2214485068936293220" at="164,0,165,0" concept="16" trace="CheckpointSynchronization$DV" />
-      <node id="2214485068936293220" at="165,0,166,0" concept="16" trace="CheckpointDeclaration$4L" />
-      <node id="2214485068936293220" at="166,0,167,0" concept="16" trace="IncludePlan$sw" />
-      <node id="2214485068936293220" at="167,0,168,0" concept="16" trace="Fork$9c" />
-      <node id="2214485068936293220" at="168,0,169,0" concept="16" trace="InPlaceCheckpointSpec$pM" />
-      <node id="2214485068936293220" at="169,0,170,0" concept="16" trace="DeclaredCheckpointSpec$HD" />
-      <node id="2214485068936293220" at="170,0,171,0" concept="16" trace="Plan$X1" />
-      <node id="2214485068936293220" at="171,0,172,0" concept="16" trace="InPlaceCheckpointRefSpec$H6" />
-      <node id="2214485068936293220" at="175,0,176,0" concept="16" trace="cpSpec$v7$t" />
-      <node id="2214485068936293220" at="176,0,177,0" concept="16" trace="languages$AUhz" />
-      <node id="2214485068936293220" at="177,0,178,0" concept="16" trace="entries$T03u" />
-      <node id="2214485068936293220" at="178,0,179,0" concept="16" trace="language$pqOb" />
-      <node id="2214485068936293220" at="179,0,180,0" concept="16" trace="module$u1do" />
-      <node id="2214485068936293220" at="180,0,181,0" concept="16" trace="generator$bWty" />
-      <node id="2214485068936293220" at="181,0,182,0" concept="16" trace="checkpoint$18uq" />
-      <node id="2214485068936293220" at="182,0,183,0" concept="16" trace="plan$8HNy" />
-      <node id="2214485068936293220" at="183,0,184,0" concept="16" trace="plan$IYKb" />
-      <node id="2214485068936293220" at="184,0,185,0" concept="16" trace="steps$Xwbb" />
-      <node id="2214485068936293220" at="185,0,186,0" concept="16" trace="cpDecl$4hsH" />
-      <node id="2214485068936293220" at="186,0,187,0" concept="16" trace="checkpoint$4Q6y" />
+      <node id="2214485068936293220" at="152,0,153,0" concept="16" trace="individualStepPerGenerator$EG46" />
+      <node id="2214485068936293220" at="153,0,154,0" concept="16" trace="withExtended$Vq9q" />
+      <node id="2214485068936293220" at="154,0,155,0" concept="16" trace="withPriorityRules$G6xp" />
+      <node id="2214485068936293220" at="155,0,156,0" concept="16" trace="kind$xL6K" />
+      <node id="2214485068936293220" at="159,0,160,0" concept="16" trace="Checkpoint$ZV" />
+      <node id="2214485068936293220" at="160,0,161,0" concept="16" trace="Transform$a_" />
+      <node id="2214485068936293220" at="161,0,162,0" concept="16" trace="LanguageIdentity$cN" />
+      <node id="2214485068936293220" at="162,0,163,0" concept="16" trace="ApplyGenerators$PQ" />
+      <node id="2214485068936293220" at="163,0,164,0" concept="16" trace="ModuleIdentity$U1" />
+      <node id="2214485068936293220" at="164,0,165,0" concept="16" trace="GeneratorModulePointer$49" />
+      <node id="2214485068936293220" at="165,0,166,0" concept="16" trace="CheckpointSynchronization$DV" />
+      <node id="2214485068936293220" at="166,0,167,0" concept="16" trace="CheckpointDeclaration$4L" />
+      <node id="2214485068936293220" at="167,0,168,0" concept="16" trace="IncludePlan$sw" />
+      <node id="2214485068936293220" at="168,0,169,0" concept="16" trace="Fork$9c" />
+      <node id="2214485068936293220" at="169,0,170,0" concept="16" trace="InPlaceCheckpointSpec$pM" />
+      <node id="2214485068936293220" at="170,0,171,0" concept="16" trace="DeclaredCheckpointSpec$HD" />
+      <node id="2214485068936293220" at="171,0,172,0" concept="16" trace="Plan$X1" />
+      <node id="2214485068936293220" at="172,0,173,0" concept="16" trace="InPlaceCheckpointRefSpec$H6" />
+      <node id="2214485068936293220" at="176,0,177,0" concept="16" trace="cpSpec$v7$t" />
+      <node id="2214485068936293220" at="177,0,178,0" concept="16" trace="languages$AUhz" />
+      <node id="2214485068936293220" at="178,0,179,0" concept="16" trace="entries$T03u" />
+      <node id="2214485068936293220" at="179,0,180,0" concept="16" trace="language$pqOb" />
+      <node id="2214485068936293220" at="180,0,181,0" concept="16" trace="module$u1do" />
+      <node id="2214485068936293220" at="181,0,182,0" concept="16" trace="generator$bWty" />
+      <node id="2214485068936293220" at="182,0,183,0" concept="16" trace="checkpoint$18uq" />
+      <node id="2214485068936293220" at="183,0,184,0" concept="16" trace="plan$8HNy" />
+      <node id="2214485068936293220" at="184,0,185,0" concept="16" trace="plan$IYKb" />
+      <node id="2214485068936293220" at="185,0,186,0" concept="16" trace="steps$Xwbb" />
+      <node id="2214485068936293220" at="186,0,187,0" concept="16" trace="cpDecl$4hsH" />
+      <node id="2214485068936293220" at="187,0,188,0" concept="16" trace="checkpoint$4Q6y" />
       <node id="2154235185944510917" at="99,14,101,9" concept="1" />
       <node id="2214485068936937487" at="45,0,48,0" concept="10" trace="getPlanIdentity#()Ljetbrains/mps/generator/plan/PlanIdentity;" />
       <node id="4825730691511465679" at="71,63,74,11" concept="8" />
-      <node id="2214485068936361163" at="77,91,80,11" concept="8" />
+      <node id="2214485068936361163" at="77,175,80,11" concept="8" />
       <node id="2567377358529649755" at="80,11,83,11" concept="8" />
       <node id="2214485068936361260" at="90,226,93,11" concept="9" />
       <node id="2433297057224014952" at="121,55,124,5" concept="9" />
@@ -914,7 +915,7 @@
       <scope id="4825730691511465679" at="71,63,74,11">
         <var name="lid" id="4825730691511465689" />
       </scope>
-      <scope id="2214485068936361163" at="77,91,80,11">
+      <scope id="2214485068936361163" at="77,175,80,11">
         <var name="lid" id="2214485068936361191" />
       </scope>
       <scope id="2567377358529649755" at="80,11,83,11">
@@ -968,10 +969,10 @@
       <scope id="2214485068936358241" at="54,0,120,0">
         <var name="planBuilder" id="2214485068936358373" />
       </scope>
-      <unit id="2214485068936293220" at="150,0,156,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$PROPS" />
-      <unit id="2214485068936293220" at="174,0,188,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$LINKS" />
-      <unit id="2214485068936293220" at="157,0,173,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$CONCEPTS" />
-      <unit id="2214485068936293220" at="35,0,189,0" name="jetbrains.mps.generator.impl.GenPlanTranslator" />
+      <unit id="2214485068936293220" at="150,0,157,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$PROPS" />
+      <unit id="2214485068936293220" at="175,0,189,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$LINKS" />
+      <unit id="2214485068936293220" at="158,0,174,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$CONCEPTS" />
+      <unit id="2214485068936293220" at="35,0,190,0" name="jetbrains.mps.generator.impl.GenPlanTranslator" />
     </file>
   </root>
   <root nodeRef="r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/3864140621130068067">

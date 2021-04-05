@@ -53,7 +53,7 @@ public class RigidPlanBuilder implements GenerationPlanBuilder {
   }
 
   @Override
-  public TransformStepBuilder transform() {
+  public TransformStepBuilder transform(boolean ignored) {
     return new TransformStepBuilder() {
       @Override
       public TransformStepBuilder include(@NotNull SLanguage language, BuilderOption option) {

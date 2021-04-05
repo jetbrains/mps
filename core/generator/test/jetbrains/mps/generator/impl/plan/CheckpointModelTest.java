@@ -414,13 +414,13 @@ public class CheckpointModelTest implements EnvironmentAware {
         engagedGenerators.add(((TemplateModule) languageRegistry.getGenerator(blInternalGenerator)));
         // first plan checks languages that extend one from another step
         RegularPlanBuilder planBuilder1 = new RegularPlanBuilder(languageRegistry, engagedGenerators);
-        planBuilder1.transform().include(LANGUAGE_BL, BuilderOption.Extend).complete();
-        planBuilder1.transform().include(LANGUAGE_BL, BuilderOption.None).complete();
+        planBuilder1.transform(true).include(LANGUAGE_BL, BuilderOption.Extend).complete();
+        planBuilder1.transform(true).include(LANGUAGE_BL, BuilderOption.None).complete();
         plan[0] = planBuilder1.wrapUp(pi1);
         // pretty much the same, just use 'target language'
         RegularPlanBuilder planBuilder2 = new RegularPlanBuilder(languageRegistry, engagedGenerators);
-        planBuilder2.transform().include(LANGUAGE_BL, BuilderOption.TargetTo).complete();
-        planBuilder2.transform().include(LANGUAGE_BL, BuilderOption.None).complete();
+        planBuilder2.transform(true).include(LANGUAGE_BL, BuilderOption.TargetTo).complete();
+        planBuilder2.transform(true).include(LANGUAGE_BL, BuilderOption.None).complete();
         plan[1] = planBuilder2.wrapUp(pi2);
       }
     });

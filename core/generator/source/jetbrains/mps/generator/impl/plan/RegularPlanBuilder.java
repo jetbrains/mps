@@ -114,7 +114,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
   }
 
   @Override
-  public TransformStepBuilder transform() {
+  public TransformStepBuilder transform(final boolean individualStepsPerGenerator) {
     class TSB implements TransformStepBuilder {
       private final List<Predicate<? super TemplateModule>> subSteps = new ArrayList<>(4);
       @Override
@@ -135,7 +135,7 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
       @Override
       public void complete() {
-        mySteps.add(new TransformEntry2(subSteps));
+        mySteps.add(new TransformEntry2(individualStepsPerGenerator, subSteps));
       }
 
       private Predicate<TemplateModule> ofLanguage(final SLanguage l) {
@@ -433,9 +433,11 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
   private static class TransformEntry2 implements StepEntry {
     private final ArrayList<TemplateModule> myGenerators = new ArrayList<>(4);
+    private final boolean myIndividualStepsPerGenerator;
     private final List<Predicate<? super TemplateModule>> myConditions;
 
-    TransformEntry2(List<Predicate<? super TemplateModule>> conditions) {
+    TransformEntry2(boolean individualStepsPerGenerator, List<Predicate<? super TemplateModule>> conditions) {
+      myIndividualStepsPerGenerator = individualStepsPerGenerator;
       myConditions = conditions;
     }
 
@@ -465,10 +467,10 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         //       (perhaps, can use ordinal to distinguish the step, or introduce an optional name for a step?)
         return;
       }
-      if (myConditions.size() == 1 && myGenerators.size() > 1) {
-        // FIXME have to be controlled with an option, either for the whole step or per-language?
-        // XXX now just a hack to get distinct step for each involved generator/language
-        //     when there's only 1 entry per step but many matching generators (assume language with Extend/TargetTo).
+      if (myIndividualStepsPerGenerator) {
+        // FIXME need to arrange individual steps according to output/target languages
+        //       e.g. if there are two languages, B and C, that `TargetTo` language A, and also have
+        //       a dependency between them (like B TargetTo C), we'd better place step with B in front of step with C then.
         for (TemplateModule tm : myGenerators) {
           ArrayList<TemplateMappingConfiguration> tmc = new ArrayList<>();
           tm.getModels().stream().map(TemplateModel::getConfigurations).forEach(tmc::addAll);
@@ -476,7 +478,6 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
         }
       } else {
         Stream<TemplateModule> generators = myGenerators.stream();
-
         ArrayList<TemplateMappingConfiguration> tmc = new ArrayList<>();
         generators.flatMap(tm -> tm.getModels().stream()).map(TemplateModel::getConfigurations).forEach(tmc::addAll);
         steps.add(new Transform(tmc));

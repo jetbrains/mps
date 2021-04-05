@@ -57,7 +57,7 @@ public interface GenerationPlanBuilder {
   /**
    * Apply generators of languages specified to reduce their concepts.
    * Only explicitly mentioned languages are consulted for generators.
-   * To include extended languages, or languages that generate into a specified one, use {@link #transform()}.
+   * To include extended languages, or languages that generate into a specified one, use {@link #transform(boolean)}.
    * @param languages languages to reduce
    */
   void transformLanguage(@NotNull SLanguage ... languages);
@@ -65,10 +65,11 @@ public interface GenerationPlanBuilder {
   /**
    * Get a builder to fill transformation step with languages and generators.
    * Once over, complete the step with {@link TransformStepBuilder#complete()}
+   * @param individualStepsPerGenerator {@code true} to put each included generator into a distinct transformation step, {@code false} to keep all of them together
    * @return builder to populate transformation step
    * @since 2021.1
    */
-  TransformStepBuilder transform();
+  TransformStepBuilder transform(boolean individualStepsPerGenerator);
 
   /**
    * Specified generators and those extending them AND visible from scope applied as a single transformation step.
