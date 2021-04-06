@@ -16,6 +16,7 @@
         <child id="1820634577908471815" name="steps" index="2VgMA7" />
       </concept>
       <concept id="1820634577908471810" name="jetbrains.mps.lang.generator.plan.structure.Transform" flags="ng" index="2VgMA2">
+        <property id="2209292798354050154" name="individualStepPerGenerator" index="1s431M" />
         <child id="1152961914448142326" name="entries" index="2Qf7GQ" />
       </concept>
       <concept id="2959971211779300533" name="jetbrains.mps.lang.generator.plan.structure.TextDocLine" flags="ng" index="16rNan">
@@ -53,6 +54,7 @@
       </node>
     </node>
     <node concept="2VgMA2" id="6Hh8ipmr2hM" role="2VgMA7">
+      <property role="1s431M" value="true" />
       <node concept="2Qf6Nf" id="6Hh8ipmr2hP" role="2Qf7GQ">
         <property role="2Qf7GI" value="1009c2Af4wk/TargetAt" />
         <node concept="2V$Bhx" id="6Hh8ipmrPvQ" role="2Qf6Ng">
@@ -62,6 +64,7 @@
       </node>
     </node>
     <node concept="2VgMA2" id="6Hh8ipmr2i7" role="2VgMA7">
+      <property role="1s431M" value="true" />
       <node concept="2Qf6Nf" id="6Hh8ipmrPwW" role="2Qf7GQ">
         <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
         <node concept="2V$Bhx" id="6Hh8ipmrPwX" role="2Qf6Ng">
@@ -77,6 +80,7 @@
       </node>
     </node>
     <node concept="2VgMA2" id="6Hh8ipmrPw6" role="2VgMA7">
+      <property role="1s431M" value="true" />
       <node concept="2Qf6Nf" id="6Hh8ipmrPwf" role="2Qf7GQ">
         <property role="2Qf7GI" value="1009c2Af4wk/TargetAt" />
         <node concept="2V$Bhx" id="6Hh8ipmrPw$" role="2Qf6Ng">
@@ -86,6 +90,7 @@
       </node>
     </node>
     <node concept="2VgMA2" id="6Hh8ipmrPwC" role="2VgMA7">
+      <property role="1s431M" value="true" />
       <node concept="2Qf6Nf" id="6Hh8ipmrPwu" role="2Qf7GQ">
         <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
         <node concept="2V$Bhx" id="6Hh8ipmrPwA" role="2Qf6Ng">
@@ -100,7 +105,24 @@
         </node>
       </node>
     </node>
+    <node concept="2VgMA2" id="3dV7E8ucKnv" role="2VgMA7">
+      <property role="1s431M" value="true" />
+      <node concept="2Qf6Nf" id="3dV7E8ucKo7" role="2Qf7GQ">
+        <property role="2Qf7GI" value="1009c2Af4wk/TargetAt" />
+        <node concept="2V$Bhx" id="3dV7E8ucKod" role="2Qf6Ng">
+          <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+        </node>
+      </node>
+      <node concept="2Qf6Nf" id="3dV7E8ucKo1" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="3dV7E8ucKo5" role="2Qf6Ng">
+          <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+          <property role="2V$B1Q" value="jetbrains.mps.lang.smodel" />
+        </node>
+      </node>
+    </node>
     <node concept="2VgMA2" id="6Hh8ipmrPxk" role="2VgMA7">
+      <property role="1s431M" value="true" />
       <node concept="2Qf6Nf" id="6Hh8ipmrPxB" role="2Qf7GQ">
         <property role="2Qf7GI" value="1009c2Af4wk/TargetAt" />
         <node concept="2V$Bhx" id="6Hh8ipmrPxF" role="2Qf6Ng">
@@ -116,6 +138,7 @@
       </node>
     </node>
     <node concept="2VgMA2" id="6Hh8ipmrPya" role="2VgMA7">
+      <property role="1s431M" value="true" />
       <node concept="2Qf6Nf" id="6Hh8ipmrPxH" role="2Qf7GQ">
         <property role="2Qf7GI" value="1009c2Af4wn/Extend" />
         <node concept="2V$Bhx" id="6Hh8ipmrPxI" role="2Qf6Ng">

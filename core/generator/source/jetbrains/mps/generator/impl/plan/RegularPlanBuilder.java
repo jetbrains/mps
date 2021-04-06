@@ -49,8 +49,10 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -116,30 +118,39 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
   @Override
   public TransformStepBuilder transform(final boolean individualStepsPerGenerator) {
     class TSB implements TransformStepBuilder {
-      private final List<Predicate<? super TemplateModule>> subSteps = new ArrayList<>(4);
+      private final List<Predicate<? super TemplateModule>> subSteps1 = new ArrayList<>(4);
+      private final List<Supplier<TemplateModule>> subSteps2 = new ArrayList<>(4);
       @Override
       public TransformStepBuilder include(@NotNull SLanguage language, BuilderOption option) {
         if (BuilderOption.Extend.presentIn(option)) {
           final Set<SLanguage> extending = new SLanguageHierarchy(myLanguageRegistry, Collections.singleton(language)).getExtending();
           extending.remove(language);
           // all generators of extending are subject to be consumed by this step in case they show up in actual model
-          subSteps.add(ofLanguage(extending));
+          subSteps1.add(ofLanguage(extending));
         } else if (BuilderOption.TargetTo.presentIn(option)) {
           // consume all where TemplateModule.getTargetLanguage()
-          subSteps.add(ofTarget(language));
+          subSteps1.add(ofTarget(language));
         } else {
-          subSteps.add(ofLanguage(language));
+          subSteps2.add(ofLanguage(myLanguageRegistry, language));
         }
         return this;
       }
 
       @Override
       public void complete() {
-        mySteps.add(new TransformEntry2(individualStepsPerGenerator, subSteps));
+        mySteps.add(new TransformEntry2(individualStepsPerGenerator, subSteps1, subSteps2));
       }
 
-      private Predicate<TemplateModule> ofLanguage(final SLanguage l) {
-        return tm -> l.equals(tm.getSourceLanguage().getIdentity());
+      private Supplier<TemplateModule> ofLanguage(final LanguageRegistry languageRegistry, final SLanguage l) {
+        // XXX just takes the first one, although might be better to get a compound Supplier that gives all generators
+        // of the language?
+        return () -> {
+          final LanguageRuntime lr = languageRegistry.getLanguage(l);
+          if (lr == null) {
+            return null;
+          }
+          return (TemplateModule) lr.getGenerators().stream().filter(gr -> gr instanceof TemplateModule).findFirst().orElse(null);
+        };
       }
 
       private Predicate<TemplateModule> ofLanguage(final Collection<SLanguage> ll) {
@@ -435,15 +446,17 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     private final ArrayList<TemplateModule> myGenerators = new ArrayList<>(4);
     private final boolean myIndividualStepsPerGenerator;
     private final List<Predicate<? super TemplateModule>> myConditions;
+    private final List<Supplier<TemplateModule>> myInvolvedGenerators;
 
-    TransformEntry2(boolean individualStepsPerGenerator, List<Predicate<? super TemplateModule>> conditions) {
+    TransformEntry2(boolean individualStepsPerGenerator, List<Predicate<? super TemplateModule>> conditions, List<Supplier<TemplateModule>> involvedGenerators) {
       myIndividualStepsPerGenerator = individualStepsPerGenerator;
       myConditions = conditions;
+      myInvolvedGenerators = involvedGenerators;
     }
 
     @Override
     public void reportInvolvedGenerators(Collection<TemplateModule> result) {
-      // no-op, this step doesn't involve any specific generator directly
+      myInvolvedGenerators.stream().map(Supplier::get).filter(Objects::nonNull).forEach(result::add);
     }
 
     @Override
@@ -461,6 +474,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
 
     @Override
     public void createStep(List<Step> steps) {
+      // FIXME explicitly mentioned generators are added as last, usually it's  `lang TargetTo` followed by `lang Transform`
+      //      anyway, though would be great to keep order as indended by GP designer
+      myInvolvedGenerators.stream().map(Supplier::get).filter(Objects::nonNull).forEach(myGenerators::add);
       if (myGenerators.isEmpty()) {
         // FIXME need feedback so that user can find out there's nothing in the step.
         //       either provide it here or add a dedicated step that indicates none matched the step
