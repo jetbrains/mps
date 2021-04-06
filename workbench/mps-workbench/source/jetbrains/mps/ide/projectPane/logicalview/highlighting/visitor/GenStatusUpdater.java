@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ public class GenStatusUpdater extends TreeUpdateVisitor implements TreeMessageOw
   }
 
   /*local*/ static Stream<GenStatusTreeMessage> childrenMessages(MPSTreeNode node) {
-    return node.getChildren().stream().flatMap(c -> c.findMessages(GenStatusTreeMessage.class).stream());
+    return node.getChildrenSnapshot().flatMap(c -> c.findMessages(GenStatusTreeMessage.class).stream());
   }
 
   private ProjectModuleTreeNode getContainingModuleNode(TreeNode node) {

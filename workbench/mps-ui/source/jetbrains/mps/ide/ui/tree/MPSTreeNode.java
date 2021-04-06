@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 
 import javax.swing.Icon;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -31,6 +32,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,6 +43,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Stream;
 
 /**
  * @author Kostik
@@ -80,6 +83,28 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
 
   public List<? extends MPSTreeNode> getChildren() {
     return children == null ? Collections.emptyList() : ((List) children);
+  }
+
+  /**
+   * Unlike {@link #getChildren()}, doesn't give access to underlying collection of children
+   * but rather takes a copy to avoid potential concurrent modification exception when walking children
+   * from non-EDT thread. This method is intended for some MPS intimate implementation peculiarities,
+   * and in general shall not be of use outside of MPS.
+   * <p>
+   *   AVOID USING THIS METHOD UNLESS YOU UNDERSTAND THE CONSEQUENCES.
+   *   The method creates a copy of a child list, which is unnecessary in most scenarios.
+   * </p>
+   * @return unmodifiable copy of a child collection through {@link Stream} API.
+   */
+  @Internal
+  public Stream<MPSTreeNode> getChildrenSnapshot() {
+    if (children == null) {
+      return Stream.empty();
+    } else {
+      @SuppressWarnings("SuspiciousToArrayCall")
+      final MPSTreeNode[] snapshot = children.toArray(new MPSTreeNode[0]);
+      return Arrays.stream(snapshot);
+    }
   }
 
   public MPSTree getTree() {
