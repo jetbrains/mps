@@ -91,7 +91,7 @@ public class DataFlowUtil {
           nodeToSelect = SLinkOperations.getTarget(SNodeOperations.cast(nodeToSelect, CONCEPTS.LocalVariableDeclarationStatement$4w), LINKS.localVariableDeclaration$RpjM);
         }
         SNode m = SNodeOperations.getNodeAncestor(nodeToSelect, CONCEPTS.BaseMethodDeclaration$kD, true, false);
-        if ((m != null)) {
+        if ((m != null) && !(SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.StatementList$m_))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(m, "Missing return statement", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7854334384276069765", null, errorTarget);
