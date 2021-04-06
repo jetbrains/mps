@@ -2217,7 +2217,7 @@
                       <ref role="37wK5l" to="wyt6:~Exception.&lt;init&gt;()" resolve="Exception" />
                       <node concept="3Tm1VV" id="hFY8rzN" role="1B3o_S" />
                       <node concept="3clFb_" id="hFY8rzO" role="jymVt">
-                        <property role="TrG5h" value="method" />
+                        <property role="TrG5h" value="method1" />
                         <node concept="3clFbS" id="3rohxPV7ITH" role="3clF47">
                           <node concept="7CXmI" id="3rohxPV7ITK" role="lGtFl">
                             <node concept="1TM$A" id="60kNCHgXYi1" role="7EUXB">
@@ -2230,6 +2230,45 @@
                         <node concept="10Oyi0" id="hFY8rzP" role="3clF45" />
                         <node concept="3Tm1VV" id="hFY8rzQ" role="1B3o_S" />
                       </node>
+                      <node concept="3clFb_" id="6O0cS8EsjLz" role="jymVt">
+                        <property role="TrG5h" value="method2" />
+                        <node concept="3clFbS" id="6O0cS8EsjLA" role="3clF47">
+                          <node concept="3clFbF" id="6O0cS8Esk5x" role="3cqZAp">
+                            <node concept="2OqwBi" id="6O0cS8Esk5u" role="3clFbG">
+                              <node concept="10M0yZ" id="6O0cS8Esk5v" role="2Oq$k0">
+                                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                                <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                              </node>
+                              <node concept="liA8E" id="6O0cS8Esk5w" role="2OqNvi">
+                                <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
+                              </node>
+                              <node concept="7CXmI" id="6O0cS8EskaT" role="lGtFl">
+                                <node concept="2DdRWr" id="6O0cS8EskkC" role="7EUXB">
+                                  <node concept="MGsTx" id="6O0cS8EskkD" role="MJxsd">
+                                    <ref role="39XzEq" to="tpeh:6O0cS8DYTYB" />
+                                  </node>
+                                  <node concept="1DMPye" id="6O0cS8EskkE" role="1DMPz9">
+                                    <property role="1DMPyf" value="Error: (instance of IntegerType) is expected to be returned from the method" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3Tm1VV" id="6O0cS8EsjDw" role="1B3o_S" />
+                        <node concept="10Oyi0" id="6O0cS8EsjLd" role="3clF45" />
+                        <node concept="7CXmI" id="6O0cS8Esktn" role="lGtFl">
+                          <node concept="1TM$A" id="6O0cS8EskB6" role="7EUXB">
+                            <node concept="2PYRI3" id="6O0cS8EskB7" role="3lydEf">
+                              <ref role="39XzEq" to="tpeh:6O0cS8DUlQ5" />
+                            </node>
+                            <node concept="1DMPye" id="6O0cS8EskB8" role="1DMPz9">
+                              <property role="1DMPyf" value="Error: Missing return statement" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2tJIrI" id="6O0cS8EsiV9" role="jymVt" />
                     </node>
                   </node>
                 </node>
