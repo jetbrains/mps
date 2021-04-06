@@ -1192,6 +1192,8 @@ public final class ModuleChecker {
 
     /*package*/ BuildModuleFacade addSourcesToCurrentModelRoot(final SNode p, boolean makeThisPathTheOnlyOne) {
       SNode mroot = myCurrentModelRoot;
+      // we may get here both when there's already location with dir == p, and we need to keep the instance to preserve selectors
+      // and also when there's an invalid location (e.g. due to copy-paste of another module), seem MPS-32138 
       final Wrappers._T<SNode> loc = new Wrappers._T<SNode>(ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.dir$e6r$)).equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p));
@@ -1200,20 +1202,21 @@ public final class ModuleChecker {
       if (loc.value == null) {
         loc.value = SLinkOperations.addNewChild(mroot, LINKS.location$UU44, null);
         SLinkOperations.setTarget(loc.value, LINKS.dir$e6r$, p);
-      } else {
-        // FIXME this is provisional code to ensure transition from single ModuleModelRoot with 2+ locations to
-        //      distinct ModuleModelRoot for each location. After some grace period, say, a year, can drop this code path altogether
-        if (makeThisPathTheOnlyOne) {
-          ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return it != loc.value;
-            }
-          }).toListSequence().visitAll(new IVisitor<SNode>() {
-            public void visit(SNode it) {
-              SNodeOperations.deleteNode(it);
-            }
-          });
-        }
+      }
+      // Used to be provisional code to ensure transition from single ModuleModelRoot with 2+ locations to
+      // distinct ModuleModelRoot for each location. However, need to respect MPS-32138 scenario and delete
+      // any unknown location in `extracted` root. Perhaps, shall pass root.extracted value as makeThisPathThrOnlyOne value
+      // instead of constant 'true'?
+      if (makeThisPathTheOnlyOne) {
+        ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$UU44)).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return it != loc.value;
+          }
+        }).toListSequence().visitAll(new IVisitor<SNode>() {
+          public void visit(SNode it) {
+            SNodeOperations.deleteNode(it);
+          }
+        });
       }
       // Note, we don't update selectors (unless completely missing), expect that user could change pattern for an 'extracted' root (that's exactly scenario of MPS-30707)
       if (ListSequence.fromList(SLinkOperations.getChildren(loc.value, LINKS.selectors$hp_C)).isNotEmpty()) {
