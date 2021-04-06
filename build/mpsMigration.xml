@@ -271,6 +271,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.mpsmigration" />
+      <fileset dir="${mps_home}/plugins/mps-project-migrations/solution" includes="startup.properties" />
       <fileset dir="${mps_home}/plugins/mps-project-migrations/solution/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.mpsmigration.jar" />
     </jar>

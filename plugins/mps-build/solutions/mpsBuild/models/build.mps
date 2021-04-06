@@ -46433,6 +46433,25 @@
           </node>
         </node>
       </node>
+      <node concept="3rtmxn" id="3E2OUIB$Ip1" role="3bR31x">
+        <node concept="3LXTmp" id="3E2OUIB$Ip2" role="3rtmxm">
+          <node concept="398BVA" id="3E2OUIB$Ip3" role="3LXTmr">
+            <ref role="398BVh" node="77ZqjhZbMDY" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="3E2OUIB$Ip4" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="3E2OUIB$Ip5" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-project-migrations" />
+                <node concept="2Ry0Ak" id="3E2OUIB$Ip6" role="2Ry0An">
+                  <property role="2Ry0Am" value="solution" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3qWCbU" id="3E2OUIB$Ip8" role="3LXTna">
+            <property role="3qWCbO" value="startup.properties" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="398rNT" id="77ZqjhZbMDX" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
