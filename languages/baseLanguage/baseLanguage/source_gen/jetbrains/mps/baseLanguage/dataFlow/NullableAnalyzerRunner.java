@@ -66,7 +66,8 @@ public class NullableAnalyzerRunner extends CustomAnalyzerRunner<Map<SNode, Null
       Instruction instruction = state.getInstruction();
       NullableState nullableState = NullableState.UNKNOWN;
       if (instruction instanceof GeneratedInstruction) {
-        SNode node = (SNode) (((GeneratedInstruction) instruction).getParameter());
+        Object parameter = ((GeneratedInstruction) instruction).getParameter();
+        SNode node = (parameter instanceof SNode ? (SNode) parameter : null);
         if (instruction instanceof notNullInstruction) {
           nullableState = NullableState.NOTNULL;
         }
