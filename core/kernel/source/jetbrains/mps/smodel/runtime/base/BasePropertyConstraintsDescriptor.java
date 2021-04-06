@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,17 @@ package jetbrains.mps.smodel.runtime.base;
 
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.adapter.ids.SPropertyId;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
-import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter.SEnumLiteralAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
-import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDispatchable;
-import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
-import org.jetbrains.mps.openapi.language.SEnumeration;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -45,25 +39,6 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
   private final PropertyConstraintsDescriptor getterDescriptor;
   private final PropertyConstraintsDescriptor setterDescriptor;
   private final PropertyConstraintsDescriptor validatorDescriptor;
-
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public BasePropertyConstraintsDescriptor(SPropertyId property, ConstraintsDescriptor container) {
-    this(MetaAdapterFactory.getProperty(property, getNameDeprecated(property, container)), container);
-  }
-
-  private static String getNameDeprecated(SPropertyId property, ConstraintsDescriptor container) {
-    String name = "<UnknownPropName_BasePropertyConstraintsDescriptor>";
-    ConceptDescriptor cd = ((SAbstractConceptAdapter) container.getConcept()).getConceptDescriptor();
-    if (cd == null) {
-      return name;
-    }
-    PropertyDescriptor prop = cd.getPropertyDescriptor(property);
-    if (prop == null) {
-      return name;
-    }
-    return prop.getName();
-  }
 
   public BasePropertyConstraintsDescriptor(SProperty property, ConstraintsDescriptor container) {
     this.myProperty = property;

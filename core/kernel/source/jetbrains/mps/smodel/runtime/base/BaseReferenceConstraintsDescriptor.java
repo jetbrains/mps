@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,12 @@
 package jetbrains.mps.smodel.runtime.base;
 
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
-import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDispatchable;
-import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -38,28 +33,6 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
 
   private final ReferenceConstraintsDescriptor scopeProviderDescriptor;
   private final ReferenceConstraintsDescriptor onReferenceSetHandlerDescriptor;
-
-  /**
-   * @deprecated MPS 2019.1 generates code that references this cons (ConstraintsClass), remove once 2019.2 is out
-   */
-  @Deprecated
-  @ToRemove(version = 3.4)
-  public BaseReferenceConstraintsDescriptor(SReferenceLinkId referenceLink, ConstraintsDescriptor container) {
-    this(MetaAdapterFactory.getReferenceLink(referenceLink, getNameDeprecated(referenceLink, container)), container);
-  }
-
-  private static String getNameDeprecated(SReferenceLinkId referenceLink, ConstraintsDescriptor container) {
-    String name = "<UnknownRefName_BaseReferenceConstraintsDescriptor>";
-    ConceptDescriptor cd = ((SAbstractConceptAdapter) container.getConcept()).getConceptDescriptor();
-    if (cd == null) {
-      return name;
-    }
-    ReferenceDescriptor ref = cd.getRefDescriptor(referenceLink);
-    if (ref == null) {
-      return name;
-    }
-    return ref.getName();
-  }
 
   public BaseReferenceConstraintsDescriptor(SReferenceLink referenceLink, ConstraintsDescriptor container) {
     this.myReferenceLink = referenceLink;
