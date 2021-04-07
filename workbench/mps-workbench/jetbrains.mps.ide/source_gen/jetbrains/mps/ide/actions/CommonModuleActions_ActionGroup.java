@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/401659284115173011", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class CommonModuleActions_ActionGroup extends GeneratedActionGroup {
@@ -31,92 +28,32 @@ public class CommonModuleActions_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_make);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_make);
     CommonModuleActions_ActionGroup.this.addSeparator();
     CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyModuleName_Action");
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_check);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_check);
     CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModuleImports_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_analyze);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_analyze);
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_refactoring);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_refactoring);
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_favorites);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_favorites);
     CommonModuleActions_ActionGroup.this.addSeparator();
     CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.DeleteModules_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_delete);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_delete);
     CommonModuleActions_ActionGroup.this.addSeparator();
     CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetVirtualFolder_Action");
     CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveVirtualFolder_Action");
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_scripts);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_scripts);
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_compileJava);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_compileJava);
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_mpsvcs);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_idealocalhistory);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_ideavcs);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_mpsvcs);
+    addNamedAnchor(LABEL_ID_idealocalhistory);
+    addNamedAnchor(LABEL_ID_ideavcs);
     CommonModuleActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_run);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      CommonModuleActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_run);
   }
 }

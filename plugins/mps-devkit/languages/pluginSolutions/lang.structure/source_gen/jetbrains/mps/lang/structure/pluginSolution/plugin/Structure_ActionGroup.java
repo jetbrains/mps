@@ -5,9 +5,6 @@ package jetbrains.mps.lang.structure.pluginSolution.plugin;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 public class Structure_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.lang.structure.pluginSolution.plugin.Structure_ActionGroup";
@@ -17,11 +14,6 @@ public class Structure_ActionGroup extends GeneratedActionGroup {
     super("Structure", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    {
-      LabelledAnchor action = new LabelledAnchor(Structure_ActionGroup.LABEL_ID_showHelp);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.lang.structure.pluginSolution"));
-      Structure_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_showHelp);
   }
 }

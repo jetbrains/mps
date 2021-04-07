@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7064627997011532872", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class DebugTool_ActionGroup extends GeneratedActionGroup {
@@ -23,22 +20,12 @@ public class DebugTool_ActionGroup extends GeneratedActionGroup {
     DebugTool_ActionGroup.this.addSeparator();
     DebugTool_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.Resume_Action");
     DebugTool_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.Pause_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugTool_ActionGroup.LABEL_ID_StopAction);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.debugger.api.runtime"));
-      DebugTool_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_StopAction);
     DebugTool_ActionGroup.this.addSeparator();
     DebugTool_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action");
     DebugTool_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.ExportThreads_Action");
     DebugTool_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.ViewBreakpoints_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugTool_ActionGroup.LABEL_ID_MuteAction);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.debugger.api.runtime"));
-      DebugTool_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_MuteAction);
     DebugTool_ActionGroup.this.addSeparator();
   }
 }

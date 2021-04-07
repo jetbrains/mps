@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885428165775", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class TouchBarDefault_shift_ActionGroup extends GeneratedActionGroup {
@@ -23,27 +20,12 @@ public class TouchBarDefault_shift_ActionGroup extends GeneratedActionGroup {
     setPopup(false);
     TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModel_Action");
     TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModule_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(TouchBarDefault_shift_ActionGroup.LABEL_ID_rename);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      TouchBarDefault_shift_ActionGroup.this.addAction(action);
-    }
-    {
-      LabelledAnchor action = new LabelledAnchor(TouchBarDefault_shift_ActionGroup.LABEL_ID_refactoring);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      TouchBarDefault_shift_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_rename);
+    addNamedAnchor(LABEL_ID_refactoring);
     TouchBarDefault_shift_ActionGroup.this.addSeparator();
     TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneRoot_Action");
     TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModel_Action");
     TouchBarDefault_shift_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModule_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(TouchBarDefault_shift_ActionGroup.LABEL_ID_move);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      TouchBarDefault_shift_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_move);
   }
 }

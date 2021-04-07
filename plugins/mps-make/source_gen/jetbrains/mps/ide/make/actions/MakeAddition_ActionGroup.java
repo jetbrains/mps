@@ -5,9 +5,6 @@ package jetbrains.mps.ide.make.actions;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 public class MakeAddition_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.make.actions.MakeAddition_ActionGroup";
@@ -22,12 +19,7 @@ public class MakeAddition_ActionGroup extends GeneratedActionGroup {
     MakeAddition_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.BuildAllLanguageDescriptors_Action");
     MakeAddition_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.BuildAllGenerators_Action");
     MakeAddition_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.BuildAllGeneratableGenerators_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(MakeAddition_ActionGroup.LABEL_ID_aspects);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide.make"));
-      MakeAddition_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_aspects);
     MakeAddition_ActionGroup.this.addSeparator();
   }
 }

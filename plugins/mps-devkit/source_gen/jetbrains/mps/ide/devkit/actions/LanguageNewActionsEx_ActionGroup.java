@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/1366781238034273705", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class LanguageNewActionsEx_ActionGroup extends GeneratedActionGroup {
@@ -19,12 +16,7 @@ public class LanguageNewActionsEx_ActionGroup extends GeneratedActionGroup {
     super("LanguageNewActionsEx", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    {
-      LabelledAnchor action = new LabelledAnchor(LanguageNewActionsEx_ActionGroup.LABEL_ID_accessory);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide.mpsdevkit"));
-      LanguageNewActionsEx_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_accessory);
     LanguageNewActionsEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.NewRuntimeModule_Action");
   }
 }

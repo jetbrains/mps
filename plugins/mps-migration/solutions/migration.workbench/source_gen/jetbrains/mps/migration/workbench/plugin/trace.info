@@ -740,42 +740,34 @@
       <unit id="2830027776418020679" at="9,0,21,0" name="jetbrains.mps.migration.workbench.plugin.MigrationsMenuLegacyCode_ActionGroup" />
     </file>
     <file name="MigrationsMenu_ActionGroup.java">
-      <node id="6423044698579322251" at="14,0,15,0" concept="15" trace="ID" />
-      <node id="5424895382000009536" at="15,0,16,0" concept="15" trace="LABEL_ID_migrations" />
-      <node id="6423044698579322251" at="17,72,18,40" concept="17" />
-      <node id="6423044698579322251" at="18,40,19,25" concept="5" />
-      <node id="6423044698579322251" at="19,25,20,20" concept="5" />
-      <node id="6423044698581746931" at="20,20,21,119" concept="5" />
-      <node id="6423044698579343513" at="21,119,22,115" concept="5" />
-      <node id="5424895382000009536" at="23,5,24,97" concept="11" />
-      <node id="5424895382000009536" at="24,97,25,64" concept="11" />
-      <node id="5424895382000009536" at="25,64,26,106" concept="5" />
-      <node id="5424895382000009536" at="26,106,27,56" concept="5" />
-      <node id="2830027776418020679" at="29,5,30,104" concept="11" />
-      <node id="2830027776418020679" at="30,104,31,64" concept="11" />
-      <node id="2830027776418020679" at="31,64,32,64" concept="11" />
-      <node id="2830027776418020679" at="33,30,34,114" concept="5" />
-      <node id="2830027776418020679" at="34,114,35,30" concept="5" />
-      <node id="2830027776418020679" at="36,7,37,59" concept="5" />
-      <node id="2830027776418020679" at="32,64,36,7" concept="9" />
-      <node id="5424895382000009536" at="22,115,28,5" concept="1" />
-      <node id="2830027776418020679" at="28,5,38,5" concept="1" />
-      <node id="6423044698579322251" at="17,0,40,0" concept="3" trace="MigrationsMenu_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="2830027776418020679" at="33,30,35,30" />
-      <scope id="5424895382000009536" at="23,5,27,56">
-        <var name="action" id="5424895382000009536" />
-        <var name="manager" id="5424895382000009536" />
-      </scope>
-      <scope id="2830027776418020679" at="29,5,37,59">
+      <node id="6423044698579322251" at="13,0,14,0" concept="15" trace="ID" />
+      <node id="5424895382000009536" at="14,0,15,0" concept="15" trace="LABEL_ID_migrations" />
+      <node id="6423044698579322251" at="16,72,17,40" concept="17" />
+      <node id="6423044698579322251" at="17,40,18,25" concept="5" />
+      <node id="6423044698579322251" at="18,25,19,20" concept="5" />
+      <node id="6423044698581746931" at="19,20,20,119" concept="5" />
+      <node id="6423044698579343513" at="20,119,21,115" concept="5" />
+      <node id="5424895382000009536" at="21,115,22,40" concept="5" />
+      <node id="2830027776418020679" at="23,5,24,104" concept="11" />
+      <node id="2830027776418020679" at="24,104,25,64" concept="11" />
+      <node id="2830027776418020679" at="25,64,26,64" concept="11" />
+      <node id="2830027776418020679" at="27,30,28,114" concept="5" />
+      <node id="2830027776418020679" at="28,114,29,30" concept="5" />
+      <node id="2830027776418020679" at="30,7,31,59" concept="5" />
+      <node id="2830027776418020679" at="26,64,30,7" concept="9" />
+      <node id="2830027776418020679" at="22,40,32,5" concept="1" />
+      <node id="6423044698579322251" at="16,0,34,0" concept="3" trace="MigrationsMenu_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="2830027776418020679" at="27,30,29,30" />
+      <scope id="2830027776418020679" at="23,5,31,59">
         <var name="manager" id="2830027776418020679" />
         <var name="newAction" id="2830027776418020679" />
         <var name="oldAction" id="2830027776418020679" />
       </scope>
-      <scope id="6423044698579322251" at="17,72,38,5" />
-      <scope id="6423044698579322251" at="17,0,40,0">
+      <scope id="6423044698579322251" at="16,72,32,5" />
+      <scope id="6423044698579322251" at="16,0,34,0">
         <var name="plugin" id="6423044698579322251" />
       </scope>
-      <unit id="6423044698579322251" at="13,0,41,0" name="jetbrains.mps.migration.workbench.plugin.MigrationsMenu_ActionGroup" />
+      <unit id="6423044698579322251" at="12,0,35,0" name="jetbrains.mps.migration.workbench.plugin.MigrationsMenu_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
       <node id="2830027776418020679" at="31,55,32,61" concept="5" />
@@ -1050,38 +1042,22 @@
   </root>
   <root nodeRef="r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/6423044698581746948">
     <file name="Migrations_ActionGroup.java">
-      <node id="6423044698581746948" at="13,0,14,0" concept="15" trace="ID" />
-      <node id="9063035184844218919" at="14,0,15,0" concept="15" trace="LABEL_ID_projectMigrations" />
-      <node id="9063035184844218927" at="15,0,16,0" concept="15" trace="LABEL_ID_languageMigrations" />
-      <node id="6423044698581746948" at="17,68,18,36" concept="17" />
-      <node id="6423044698581746948" at="18,36,19,25" concept="5" />
-      <node id="6423044698581746948" at="19,25,20,31" concept="5" />
-      <node id="6423044698581746948" at="20,31,21,19" concept="5" />
-      <node id="9063035184844218909" at="21,19,22,121" concept="5" />
-      <node id="9063035184844218919" at="23,5,24,100" concept="11" />
-      <node id="9063035184844218919" at="24,100,25,64" concept="11" />
-      <node id="9063035184844218919" at="25,64,26,106" concept="5" />
-      <node id="9063035184844218919" at="26,106,27,52" concept="5" />
-      <node id="9063035184844218927" at="29,5,30,101" concept="11" />
-      <node id="9063035184844218927" at="30,101,31,64" concept="11" />
-      <node id="9063035184844218927" at="31,64,32,106" concept="5" />
-      <node id="9063035184844218927" at="32,106,33,52" concept="5" />
-      <node id="9063035184844218919" at="22,121,28,5" concept="1" />
-      <node id="9063035184844218927" at="28,5,34,5" concept="1" />
-      <node id="6423044698581746948" at="17,0,36,0" concept="3" trace="Migrations_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="9063035184844218919" at="23,5,27,52">
-        <var name="action" id="9063035184844218919" />
-        <var name="manager" id="9063035184844218919" />
-      </scope>
-      <scope id="9063035184844218927" at="29,5,33,52">
-        <var name="action" id="9063035184844218927" />
-        <var name="manager" id="9063035184844218927" />
-      </scope>
-      <scope id="6423044698581746948" at="17,68,34,5" />
-      <scope id="6423044698581746948" at="17,0,36,0">
+      <node id="6423044698581746948" at="10,0,11,0" concept="15" trace="ID" />
+      <node id="9063035184844218919" at="11,0,12,0" concept="15" trace="LABEL_ID_projectMigrations" />
+      <node id="9063035184844218927" at="12,0,13,0" concept="15" trace="LABEL_ID_languageMigrations" />
+      <node id="6423044698581746948" at="14,68,15,36" concept="17" />
+      <node id="6423044698581746948" at="15,36,16,25" concept="5" />
+      <node id="6423044698581746948" at="16,25,17,31" concept="5" />
+      <node id="6423044698581746948" at="17,31,18,19" concept="5" />
+      <node id="9063035184844218909" at="18,19,19,121" concept="5" />
+      <node id="9063035184844218919" at="19,121,20,47" concept="5" />
+      <node id="9063035184844218927" at="20,47,21,48" concept="5" />
+      <node id="6423044698581746948" at="14,0,23,0" concept="3" trace="Migrations_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="6423044698581746948" at="14,68,21,48" />
+      <scope id="6423044698581746948" at="14,0,23,0">
         <var name="plugin" id="6423044698581746948" />
       </scope>
-      <unit id="6423044698581746948" at="12,0,37,0" name="jetbrains.mps.migration.workbench.plugin.Migrations_ActionGroup" />
+      <unit id="6423044698581746948" at="9,0,24,0" name="jetbrains.mps.migration.workbench.plugin.Migrations_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
       <node id="6423044698581746948" at="33,51,34,47" concept="5" />

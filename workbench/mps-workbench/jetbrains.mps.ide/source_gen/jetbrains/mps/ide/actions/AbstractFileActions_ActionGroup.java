@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.ide.projectPane.fileSystem.actions.FileDeleteActionFixed;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1217254654927", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -23,34 +20,14 @@ public class AbstractFileActions_ActionGroup extends GeneratedActionGroup {
     super("AbstractFileActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    {
-      LabelledAnchor action = new LabelledAnchor(AbstractFileActions_ActionGroup.LABEL_ID_new);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      AbstractFileActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_new);
     AbstractFileActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(AbstractFileActions_ActionGroup.LABEL_ID_ideaActions);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      AbstractFileActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_ideaActions);
     AbstractFileActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameFileOrDirectory_Action");
     AbstractFileActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.MoveFileOrDirectory_Action");
     AbstractFileActions_ActionGroup.this.addParameterizedAction(new FileDelete_Action(new FileDeleteActionFixed()), new FileDeleteActionFixed());
     AbstractFileActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(AbstractFileActions_ActionGroup.LABEL_ID_idealocalhistory);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      AbstractFileActions_ActionGroup.this.addAction(action);
-    }
-    {
-      LabelledAnchor action = new LabelledAnchor(AbstractFileActions_ActionGroup.LABEL_ID_vcs);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      AbstractFileActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_idealocalhistory);
+    addNamedAnchor(LABEL_ID_vcs);
   }
 }

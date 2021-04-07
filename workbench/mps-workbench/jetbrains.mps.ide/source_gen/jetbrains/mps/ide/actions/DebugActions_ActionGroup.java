@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1951613054411714136", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class DebugActions_ActionGroup extends GeneratedActionGroup {
@@ -23,38 +20,13 @@ public class DebugActions_ActionGroup extends GeneratedActionGroup {
     super("Language Debug", ID, plugin);
     setIsInternal(false);
     setPopup(true);
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugActions_ActionGroup.LABEL_ID_types);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      DebugActions_ActionGroup.this.addAction(action);
-    }
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugActions_ActionGroup.LABEL_ID_trace);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      DebugActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_types);
+    addNamedAnchor(LABEL_ID_trace);
     DebugActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugActions_ActionGroup.LABEL_ID_dataFlow);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      DebugActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_dataFlow);
     DebugActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugActions_ActionGroup.LABEL_ID_editor);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      DebugActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_editor);
     DebugActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugActions_ActionGroup.LABEL_ID_generator);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      DebugActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_generator);
   }
 }

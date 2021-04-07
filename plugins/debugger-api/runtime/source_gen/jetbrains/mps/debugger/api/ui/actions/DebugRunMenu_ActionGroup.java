@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/7064627997011532858", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class DebugRunMenu_ActionGroup extends GeneratedActionGroup {
@@ -20,12 +17,7 @@ public class DebugRunMenu_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     DebugRunMenu_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(DebugRunMenu_ActionGroup.LABEL_ID_steps);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.debugger.api.runtime"));
-      DebugRunMenu_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_steps);
     DebugRunMenu_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.Resume_Action");
     DebugRunMenu_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.Pause_Action");
     DebugRunMenu_ActionGroup.this.addAction("jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action");

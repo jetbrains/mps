@@ -5,10 +5,9 @@ package jetbrains.mps.migration.workbench.plugin;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.extensions.PluginId;
 
 public class MigrationsMenu_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.migration.workbench.plugin.MigrationsMenu_ActionGroup";
@@ -20,12 +19,7 @@ public class MigrationsMenu_ActionGroup extends GeneratedActionGroup {
     setPopup(false);
     MigrationsMenu_ActionGroup.this.addAction("jetbrains.mps.migration.workbench.plugin.RunMigrationAssistant_Action");
     MigrationsMenu_ActionGroup.this.addAction("jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(MigrationsMenu_ActionGroup.LABEL_ID_migrations);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.migration.workbench"));
-      MigrationsMenu_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_migrations);
     {
       GeneratedActionGroup newAction = new MigrationsMenuLegacyCode_ActionGroup(getApplicationPlugin());
       ActionManagerEx manager = ActionManagerEx.getInstanceEx();

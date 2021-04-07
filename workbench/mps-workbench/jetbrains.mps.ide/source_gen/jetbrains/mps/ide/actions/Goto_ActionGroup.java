@@ -7,9 +7,6 @@ import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.ide.actions.GotoActionAction;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 import com.intellij.ide.actions.GotoFileAction;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991237264", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -23,22 +20,12 @@ public class Goto_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     Goto_ActionGroup.this.addParameterizedAction(new GoToAction_Action(new GotoActionAction()), new GotoActionAction());
-    {
-      LabelledAnchor action = new LabelledAnchor(Goto_ActionGroup.LABEL_ID_gotoVCS);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      Goto_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_gotoVCS);
     Goto_ActionGroup.this.addSeparator();
     Goto_ActionGroup.this.addParameterizedAction(new GoToFile_Action(new GotoFileAction()), new GotoFileAction());
     Goto_ActionGroup.this.addParameterizedAction(new GoToRootNode_Action(""), "");
     Goto_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(Goto_ActionGroup.LABEL_ID_gotoConceptAspects);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      Goto_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_gotoConceptAspects);
     Goto_ActionGroup.this.addSeparator();
     Goto_ActionGroup.this.addAction("jetbrains.mps.ide.actions.GoToModel_Action");
     Goto_ActionGroup.this.addAction("jetbrains.mps.ide.actions.GoToModule_Action");

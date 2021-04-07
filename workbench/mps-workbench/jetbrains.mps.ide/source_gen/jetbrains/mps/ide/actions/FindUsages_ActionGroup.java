@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1587195459761469116", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class FindUsages_ActionGroup extends GeneratedActionGroup {
@@ -22,11 +19,6 @@ public class FindUsages_ActionGroup extends GeneratedActionGroup {
     FindUsages_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FastFindNodeUsages_Action");
     FindUsages_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindSpecificNodeUsages_Action");
     FindUsages_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindConceptInstances_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(FindUsages_ActionGroup.LABEL_ID_find_instances);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      FindUsages_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_find_instances);
   }
 }

@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8033185057371911844", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class AnalyzeModule_ActionGroup extends GeneratedActionGroup {
@@ -19,12 +16,7 @@ public class AnalyzeModule_ActionGroup extends GeneratedActionGroup {
     super("Analyze", ID, plugin);
     setIsInternal(false);
     setPopup(true);
-    {
-      LabelledAnchor action = new LabelledAnchor(AnalyzeModule_ActionGroup.LABEL_ID_analyze);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      AnalyzeModule_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_analyze);
     AnalyzeModule_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
     AnalyzeModule_ActionGroup.this.addAction("jetbrains.mps.ide.actions.AnalyzeModuleDependencies_Action");
   }

@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991238062", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Tools_ActionGroup extends GeneratedActionGroup {
@@ -21,27 +18,12 @@ public class Tools_ActionGroup extends GeneratedActionGroup {
     super("Tools", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    {
-      LabelledAnchor action = new LabelledAnchor(Tools_ActionGroup.LABEL_ID_migration);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      Tools_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_migration);
     Tools_ActionGroup.this.addSeparator();
     Tools_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowBookmarks_Action");
     Tools_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowTodoViewer_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(Tools_ActionGroup.LABEL_ID_customTools);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      Tools_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_customTools);
     Tools_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(Tools_ActionGroup.LABEL_ID_devkitTools);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      Tools_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_devkitTools);
   }
 }

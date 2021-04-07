@@ -6,9 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1366781238034273687", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class LanguageNewActions_ActionGroup extends GeneratedActionGroup {
@@ -21,26 +18,11 @@ public class LanguageNewActions_ActionGroup extends GeneratedActionGroup {
     super("New", ID, plugin);
     setIsInternal(false);
     setPopup(true);
-    {
-      LabelledAnchor action = new LabelledAnchor(LanguageNewActions_ActionGroup.LABEL_ID_newSubModule);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      LanguageNewActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_newSubModule);
     LanguageNewActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(LanguageNewActions_ActionGroup.LABEL_ID_newAspect);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      LanguageNewActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_newAspect);
     LanguageNewActions_ActionGroup.this.addSeparator();
     LanguageNewActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.NewModel_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(LanguageNewActions_ActionGroup.LABEL_ID_newModel);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      LanguageNewActions_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_newModel);
   }
 }

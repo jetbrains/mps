@@ -5,9 +5,6 @@ package jetbrains.mps.migration.workbench.plugin;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 public class Migrations_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.migration.workbench.plugin.Migrations_ActionGroup";
@@ -20,17 +17,7 @@ public class Migrations_ActionGroup extends GeneratedActionGroup {
     setMnemonic("m".charAt(0));
     setPopup(true);
     Migrations_ActionGroup.this.addAction("jetbrains.mps.migration.workbench.plugin.ExecuteRerunnableMigrations_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(Migrations_ActionGroup.LABEL_ID_projectMigrations);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.migration.workbench"));
-      Migrations_ActionGroup.this.addAction(action);
-    }
-    {
-      LabelledAnchor action = new LabelledAnchor(Migrations_ActionGroup.LABEL_ID_languageMigrations);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.migration.workbench"));
-      Migrations_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_projectMigrations);
+    addNamedAnchor(LABEL_ID_languageMigrations);
   }
 }

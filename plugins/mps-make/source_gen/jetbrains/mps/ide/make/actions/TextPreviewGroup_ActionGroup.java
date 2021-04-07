@@ -5,9 +5,6 @@ package jetbrains.mps.ide.make.actions;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.plugins.actions.LabelledAnchor;
-import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
-import com.intellij.openapi.extensions.PluginId;
 
 public class TextPreviewGroup_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.make.actions.TextPreviewGroup_ActionGroup";
@@ -18,11 +15,6 @@ public class TextPreviewGroup_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     TextPreviewGroup_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.TextPreviewModel_Action");
-    {
-      LabelledAnchor action = new LabelledAnchor(TextPreviewGroup_ActionGroup.LABEL_ID_other);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide.make"));
-      TextPreviewGroup_ActionGroup.this.addAction(action);
-    }
+    addNamedAnchor(LABEL_ID_other);
   }
 }
