@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.platform.renameProject.RenameProjectAction;
 
@@ -12,7 +12,7 @@ import com.intellij.platform.renameProject.RenameProjectAction;
 public class ProjectActionsRenameProjectContainer_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.ProjectActionsRenameProjectContainer_ActionGroup";
 
-  public ProjectActionsRenameProjectContainer_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ProjectActionsRenameProjectContainer_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("RenameProjectContainer", ID, plugin);
     setIsInternal(false);
     setPopup(false);

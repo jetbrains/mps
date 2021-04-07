@@ -4,14 +4,14 @@ package jetbrains.mps.debugger.java.runtime.ui.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/9133858534420786537", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class WatchesToolbarActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.debugger.java.runtime.ui.actions.WatchesToolbarActions_ActionGroup";
 
-  public WatchesToolbarActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public WatchesToolbarActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("WatchesToolbarActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);

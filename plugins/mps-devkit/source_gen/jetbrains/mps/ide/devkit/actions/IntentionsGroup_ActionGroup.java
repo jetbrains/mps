@@ -4,14 +4,14 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2165106376654390214", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class IntentionsGroup_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.devkit.actions.IntentionsGroup_ActionGroup";
 
-  public IntentionsGroup_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public IntentionsGroup_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("IntentionsGroup", ID, plugin);
     setIsInternal(false);
     setPopup(false);

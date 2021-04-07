@@ -11,23 +11,23 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.resolve.ResolverComponent;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/965654005418338549", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class GoByReference_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.GoByReference_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public GoByReference_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public GoByReference_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Go by Reference", ID, plugin);
     setIsInternal(false);
     setPopup(true);
@@ -51,7 +51,7 @@ public class GoByReference_ActionGroup extends GeneratedActionGroup {
       SNode targetNode = ref.getTargetNode();
       if (targetNode != null) {
         String text = "[" + ref.getLink() + "] -> " + ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
-        GoByReference_ActionGroup.this.addParameterizedAction(new EditGivenNode_Action(targetNode.getReference(), text), PluginId.getId("jetbrains.mps.ide"), targetNode.getReference(), text);
+        GoByReference_ActionGroup.this.addParameterizedAction(new EditGivenNode_Action(targetNode.getReference(), text), targetNode.getReference(), text);
         continue;
       }
 
@@ -78,7 +78,7 @@ public class GoByReference_ActionGroup extends GeneratedActionGroup {
             return;
           }
 
-          GoByReference_ActionGroup.this.addParameterizedAction(new EditGivenNode_Action(newTarget.getReference(), text), PluginId.getId("jetbrains.mps.ide"), newTarget.getReference(), text);
+          GoByReference_ActionGroup.this.addParameterizedAction(new EditGivenNode_Action(newTarget.getReference(), text), newTarget.getReference(), text);
         }
       });
 

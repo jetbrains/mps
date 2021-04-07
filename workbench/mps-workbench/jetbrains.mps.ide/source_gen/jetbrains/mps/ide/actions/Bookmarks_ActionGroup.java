@@ -4,15 +4,14 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234013859987", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Bookmarks_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.Bookmarks_ActionGroup";
 
-  public Bookmarks_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public Bookmarks_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Bookmarks", ID, plugin);
     setIsInternal(false);
     setPopup(true);
@@ -21,11 +20,11 @@ public class Bookmarks_ActionGroup extends GeneratedActionGroup {
     Bookmarks_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveAllBookmarks_Action");
     Bookmarks_ActionGroup.this.addSeparator();
     for (int i = 0; i < 10; i++) {
-      Bookmarks_ActionGroup.this.addParameterizedAction(new GoToBookmark_Action(i), PluginId.getId("jetbrains.mps.ide"), i);
+      Bookmarks_ActionGroup.this.addParameterizedAction(new GoToBookmark_Action(i), i);
     }
     Bookmarks_ActionGroup.this.addSeparator();
     for (int i = 0; i < 10; i++) {
-      Bookmarks_ActionGroup.this.addParameterizedAction(new SetBookmark_Action(i), PluginId.getId("jetbrains.mps.ide"), i);
+      Bookmarks_ActionGroup.this.addParameterizedAction(new SetBookmark_Action(i), i);
     }
   }
 }

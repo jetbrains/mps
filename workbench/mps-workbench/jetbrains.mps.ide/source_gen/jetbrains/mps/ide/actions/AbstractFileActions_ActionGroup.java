@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -19,7 +19,7 @@ public class AbstractFileActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_idealocalhistory = ID + "idealocalhistory";
   public static final String LABEL_ID_vcs = ID + "vcs";
 
-  public AbstractFileActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public AbstractFileActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("AbstractFileActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
@@ -38,7 +38,7 @@ public class AbstractFileActions_ActionGroup extends GeneratedActionGroup {
     }
     AbstractFileActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameFileOrDirectory_Action");
     AbstractFileActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.MoveFileOrDirectory_Action");
-    AbstractFileActions_ActionGroup.this.addParameterizedAction(new FileDelete_Action(new FileDeleteActionFixed()), PluginId.getId("jetbrains.mps.ide"), new FileDeleteActionFixed());
+    AbstractFileActions_ActionGroup.this.addParameterizedAction(new FileDelete_Action(new FileDeleteActionFixed()), new FileDeleteActionFixed());
     AbstractFileActions_ActionGroup.this.addSeparator();
     {
       LabelledAnchor action = new LabelledAnchor(AbstractFileActions_ActionGroup.LABEL_ID_idealocalhistory);

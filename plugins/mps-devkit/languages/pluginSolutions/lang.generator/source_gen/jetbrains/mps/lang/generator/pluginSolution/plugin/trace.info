@@ -1001,7 +1001,7 @@
     </file>
     <file name="ShowAsIntentions_Generator_ActionGroup.java">
       <node id="428466863025296807" at="10,0,11,0" concept="15" trace="ID" />
-      <node id="428466863025296807" at="12,85,13,52" concept="17" />
+      <node id="428466863025296807" at="12,84,13,52" concept="17" />
       <node id="428466863025296807" at="13,52,14,25" concept="6" />
       <node id="428466863025296807" at="14,25,15,20" concept="6" />
       <node id="428466863025296810" at="15,20,16,138" concept="6" />
@@ -1009,7 +1009,7 @@
       <node id="1699587386715307058" at="17,137,18,138" concept="6" />
       <node id="1223820185685921635" at="18,138,19,138" concept="6" />
       <node id="428466863025296807" at="12,0,21,0" concept="3" trace="ShowAsIntentions_Generator_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="428466863025296807" at="12,85,19,138" />
+      <scope id="428466863025296807" at="12,84,19,138" />
       <scope id="428466863025296807" at="12,0,21,0">
         <var name="plugin" id="428466863025296807" />
       </scope>

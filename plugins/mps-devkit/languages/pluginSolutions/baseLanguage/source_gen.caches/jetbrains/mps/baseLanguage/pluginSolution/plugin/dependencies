@@ -3,7 +3,7 @@
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.AnalyzersActions_ActionGroup">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.AskDialog">
@@ -883,7 +883,7 @@
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.RefactoringAdditions_ActionGroup">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameImplementingMethodsParticipant">
@@ -1089,7 +1089,7 @@
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.TouchBarDefault_shift_ActionGroup">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.VariableDuplicatesProcessor">

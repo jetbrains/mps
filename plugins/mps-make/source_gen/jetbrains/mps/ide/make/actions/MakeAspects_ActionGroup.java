@@ -10,20 +10,20 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Collection;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import com.intellij.openapi.extensions.PluginId;
+import org.jetbrains.annotations.Nullable;
 
 public class MakeAspects_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.make.actions.MakeAspects_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public MakeAspects_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public MakeAspects_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Rebuild Aspect Models", ID, plugin);
     setIsInternal(false);
     setPopup(true);
@@ -33,7 +33,7 @@ public class MakeAspects_ActionGroup extends GeneratedActionGroup {
     // do not change this to build() because aspect set can change dynamically
     Collection<LanguageAspectDescriptor> aspects = LanguageAspectSupport.collectAspects();
     for (LanguageAspectDescriptor aspect : CollectionSequence.fromCollection(aspects)) {
-      MakeAspects_ActionGroup.this.addParameterizedAction(new BuildAspect_Action(aspect), PluginId.getId("jetbrains.mps.ide.make"), aspect);
+      MakeAspects_ActionGroup.this.addParameterizedAction(new BuildAspect_Action(aspect), aspect);
     }
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);

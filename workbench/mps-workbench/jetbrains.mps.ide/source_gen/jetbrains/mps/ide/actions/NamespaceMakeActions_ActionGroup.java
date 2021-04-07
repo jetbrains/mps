@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -15,7 +15,7 @@ public class NamespaceMakeActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NamespaceMakeActions_ActionGroup";
   public static final String LABEL_ID_make = ID + "make";
 
-  public NamespaceMakeActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public NamespaceMakeActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("NamespaceMakeActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);

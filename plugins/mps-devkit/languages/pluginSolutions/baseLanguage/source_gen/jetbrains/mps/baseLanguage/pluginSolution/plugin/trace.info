@@ -398,7 +398,7 @@
     </file>
     <file name="RefactoringAdditions_ActionGroup.java">
       <node id="225095413451945663" at="10,0,11,0" concept="16" trace="ID" />
-      <node id="225095413451945663" at="12,79,13,46" concept="18" />
+      <node id="225095413451945663" at="12,78,13,46" concept="18" />
       <node id="225095413451945663" at="13,46,14,25" concept="6" />
       <node id="225095413451945663" at="14,25,15,20" concept="6" />
       <node id="2370003301093268" at="15,20,16,125" concept="6" />
@@ -414,7 +414,7 @@
       <node id="2370003301093278" at="25,124,26,126" concept="6" />
       <node id="2738433904382604335" at="26,126,27,135" concept="6" />
       <node id="225095413451945663" at="12,0,29,0" concept="4" trace="RefactoringAdditions_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="225095413451945663" at="12,79,27,135" />
+      <scope id="225095413451945663" at="12,78,27,135" />
       <scope id="225095413451945663" at="12,0,29,0">
         <var name="plugin" id="225095413451945663" />
       </scope>
@@ -2006,13 +2006,13 @@
     </file>
     <file name="TouchBarDefault_shift_ActionGroup.java">
       <node id="3201523885428168342" at="10,0,11,0" concept="16" trace="ID" />
-      <node id="3201523885428168342" at="12,80,13,47" concept="18" />
+      <node id="3201523885428168342" at="12,79,13,47" concept="18" />
       <node id="3201523885428168342" at="13,47,14,25" concept="6" />
       <node id="3201523885428168342" at="14,25,15,20" concept="6" />
       <node id="3201523885428178361" at="15,20,16,125" concept="6" />
       <node id="3201523885428178366" at="16,125,17,127" concept="6" />
       <node id="3201523885428168342" at="12,0,19,0" concept="4" trace="TouchBarDefault_shift_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="3201523885428168342" at="12,80,17,127" />
+      <scope id="3201523885428168342" at="12,79,17,127" />
       <scope id="3201523885428168342" at="12,0,19,0">
         <var name="plugin" id="3201523885428168342" />
       </scope>
@@ -4043,12 +4043,12 @@
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/6573807532044005513">
     <file name="AnalyzersActions_ActionGroup.java">
       <node id="6573807532044005513" at="10,0,11,0" concept="16" trace="ID" />
-      <node id="6573807532044005513" at="12,75,13,42" concept="18" />
+      <node id="6573807532044005513" at="12,74,13,42" concept="18" />
       <node id="6573807532044005513" at="13,42,14,25" concept="6" />
       <node id="6573807532044005513" at="14,25,15,20" concept="6" />
       <node id="6573807532044005516" at="15,20,16,119" concept="6" />
       <node id="6573807532044005513" at="12,0,18,0" concept="4" trace="AnalyzersActions_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="6573807532044005513" at="12,75,16,119" />
+      <scope id="6573807532044005513" at="12,74,16,119" />
       <scope id="6573807532044005513" at="12,0,18,0">
         <var name="plugin" id="6573807532044005513" />
       </scope>

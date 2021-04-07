@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -27,7 +27,7 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_scripts = ID + "scripts";
   public static final String LABEL_ID_showHelp = ID + "showHelp";
 
-  public ModelActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ModelActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("ModelActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
@@ -86,8 +86,8 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModelImports_Action");
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImports_Action");
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action");
-    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), PluginId.getId("jetbrains.mps.ide"), false);
-    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), PluginId.getId("jetbrains.mps.ide"), true);
+    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), false);
+    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), true);
     ModelActions_ActionGroup.this.addSeparator();
     {
       LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_run);

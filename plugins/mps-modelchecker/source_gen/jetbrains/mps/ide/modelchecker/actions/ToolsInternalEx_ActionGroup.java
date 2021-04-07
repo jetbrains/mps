@@ -4,14 +4,14 @@ package jetbrains.mps.ide.modelchecker.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/5361317699454626937", model = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)")
 public class ToolsInternalEx_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.modelchecker.actions.ToolsInternalEx_ActionGroup";
 
-  public ToolsInternalEx_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ToolsInternalEx_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("ToolsInternalEx", ID, plugin);
     setIsInternal(true);
     setPopup(false);

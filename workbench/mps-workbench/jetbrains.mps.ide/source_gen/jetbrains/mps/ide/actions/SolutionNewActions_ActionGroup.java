@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -15,7 +15,7 @@ public class SolutionNewActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.SolutionNewActions_ActionGroup";
   public static final String LABEL_ID_newModel = ID + "newModel";
 
-  public SolutionNewActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public SolutionNewActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("New", ID, plugin);
     setIsInternal(false);
     setPopup(true);

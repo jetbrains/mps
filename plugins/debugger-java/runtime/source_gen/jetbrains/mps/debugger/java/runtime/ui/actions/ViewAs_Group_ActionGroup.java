@@ -11,7 +11,7 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.debug.api.programState.IValue;
@@ -24,14 +24,14 @@ import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ICollectionSequence;
 import jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl;
-import com.intellij.openapi.extensions.PluginId;
+import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)/4225554808929802673", model = "r:a3396333-01e8-4d8f-ac7d-92203e663cdb(jetbrains.mps.debugger.java.runtime.ui.actions)")
 public class ViewAs_Group_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.debugger.java.runtime.ui.actions.ViewAs_Group_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public ViewAs_Group_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ViewAs_Group_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("View As", ID, plugin);
     setIsInternal(false);
     setPopup(true);
@@ -63,7 +63,7 @@ public class ViewAs_Group_ActionGroup extends GeneratedActionGroup {
       return;
     }
     for (ValueWrapperFactory factory : SetSequence.fromSet(factories)) {
-      ViewAs_Group_ActionGroup.this.addParameterizedAction(new ViewAs_Action(factory), PluginId.getId("jetbrains.mps.debugger.java.runtime"), factory);
+      ViewAs_Group_ActionGroup.this.addParameterizedAction(new ViewAs_Action(factory), factory);
     }
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);

@@ -4,20 +4,19 @@ package jetbrains.mps.vcs.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
-import com.intellij.openapi.extensions.PluginId;
 
 @GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/1156564534683228178", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class MakeFromChangesView_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.vcs.plugin.MakeFromChangesView_ActionGroup";
 
-  public MakeFromChangesView_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public MakeFromChangesView_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("MakeFromChangesView", ID, plugin);
     setIsInternal(false);
     setPopup(false);
     MakeFromChangesView_ActionGroup.this.addSeparator();
-    MakeFromChangesView_ActionGroup.this.addParameterizedAction(new MakeOrRebuildModelsFromChangeList_Action(false), PluginId.getId("jetbrains.mps.ide.vcs"), false);
-    MakeFromChangesView_ActionGroup.this.addParameterizedAction(new MakeOrRebuildModelsFromChangeList_Action(true), PluginId.getId("jetbrains.mps.ide.vcs"), true);
+    MakeFromChangesView_ActionGroup.this.addParameterizedAction(new MakeOrRebuildModelsFromChangeList_Action(false), false);
+    MakeFromChangesView_ActionGroup.this.addParameterizedAction(new MakeOrRebuildModelsFromChangeList_Action(true), true);
   }
 }

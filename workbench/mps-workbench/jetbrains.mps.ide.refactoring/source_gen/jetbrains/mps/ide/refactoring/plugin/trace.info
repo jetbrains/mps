@@ -24,7 +24,7 @@
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/1222173496701">
     <file name="ModelRefactoring_ActionGroup.java">
       <node id="1222173496701" at="10,0,11,0" concept="12" trace="ID" />
-      <node id="1222173496701" at="12,75,13,37" concept="14" />
+      <node id="1222173496701" at="12,74,13,37" concept="14" />
       <node id="1222173496701" at="13,37,14,30" concept="3" />
       <node id="1222173496701" at="14,30,15,25" concept="3" />
       <node id="1222173496701" at="15,25,16,19" concept="3" />
@@ -35,7 +35,7 @@
       <node id="1222173496701" at="12,0,20,0" concept="2" trace="ModelRefactoring_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
       <scope id="1222173496701" at="21,44,22,16" />
       <scope id="1222173496701" at="20,0,24,0" />
-      <scope id="1222173496701" at="12,75,18,105" />
+      <scope id="1222173496701" at="12,74,18,105" />
       <scope id="1222173496701" at="12,0,20,0">
         <var name="plugin" id="1222173496701" />
       </scope>
@@ -225,12 +225,12 @@
     </file>
     <file name="TouchBarDefault_shift_rename_ActionGroup.java">
       <node id="3201523885428164994" at="10,0,11,0" concept="12" trace="ID" />
-      <node id="3201523885428164994" at="12,87,13,54" concept="14" />
+      <node id="3201523885428164994" at="12,86,13,54" concept="14" />
       <node id="3201523885428164994" at="13,54,14,25" concept="3" />
       <node id="3201523885428164994" at="14,25,15,20" concept="3" />
       <node id="3201523885428164999" at="15,20,16,118" concept="3" />
       <node id="3201523885428164994" at="12,0,18,0" concept="2" trace="TouchBarDefault_shift_rename_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="3201523885428164994" at="12,87,16,118" />
+      <scope id="3201523885428164994" at="12,86,16,118" />
       <scope id="3201523885428164994" at="12,0,18,0">
         <var name="plugin" id="3201523885428164994" />
       </scope>
@@ -244,13 +244,13 @@
     </file>
     <file name="TouchBarDefault_shift_move_ActionGroup.java">
       <node id="3201523885428189419" at="10,0,11,0" concept="12" trace="ID" />
-      <node id="3201523885428189419" at="12,85,13,52" concept="14" />
+      <node id="3201523885428189419" at="12,84,13,52" concept="14" />
       <node id="3201523885428189419" at="13,52,14,25" concept="3" />
       <node id="3201523885428189419" at="14,25,15,20" concept="3" />
       <node id="3201523885428189426" at="15,20,16,115" concept="3" />
       <node id="3201523885428189431" at="16,115,17,115" concept="3" />
       <node id="3201523885428189419" at="12,0,19,0" concept="2" trace="TouchBarDefault_shift_move_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="3201523885428189419" at="12,85,17,115" />
+      <scope id="3201523885428189419" at="12,84,17,115" />
       <scope id="3201523885428189419" at="12,0,19,0">
         <var name="plugin" id="3201523885428189419" />
       </scope>
@@ -682,13 +682,13 @@
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/8784230320738943351">
     <file name="CoreNodeRefactorings_ActionGroup.java">
       <node id="8784230320738943351" at="10,0,11,0" concept="12" trace="ID" />
-      <node id="8784230320738943351" at="12,79,13,46" concept="14" />
+      <node id="8784230320738943351" at="12,78,13,46" concept="14" />
       <node id="8784230320738943351" at="13,46,14,25" concept="3" />
       <node id="8784230320738943351" at="14,25,15,20" concept="3" />
       <node id="8784230320738943429" at="15,20,16,110" concept="3" />
       <node id="5300313260161721910" at="16,110,17,109" concept="3" />
       <node id="8784230320738943351" at="12,0,19,0" concept="2" trace="CoreNodeRefactorings_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="8784230320738943351" at="12,79,17,109" />
+      <scope id="8784230320738943351" at="12,78,17,109" />
       <scope id="8784230320738943351" at="12,0,19,0">
         <var name="plugin" id="8784230320738943351" />
       </scope>

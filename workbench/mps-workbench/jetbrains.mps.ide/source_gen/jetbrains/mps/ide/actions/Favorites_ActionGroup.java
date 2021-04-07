@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.ActionManager;
 
@@ -12,7 +12,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 public class Favorites_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.Favorites_ActionGroup";
 
-  public Favorites_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public Favorites_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Favorites", ID, plugin);
     setIsInternal(false);
     setPopup(false);

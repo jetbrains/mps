@@ -4,14 +4,14 @@ package jetbrains.mps.debugger.api.ui.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/9154600507441896288", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class DebugStepsMenu_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.debugger.api.ui.actions.DebugStepsMenu_ActionGroup";
 
-  public DebugStepsMenu_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public DebugStepsMenu_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("DebugStepsMenu", ID, plugin);
     setIsInternal(false);
     setPopup(false);

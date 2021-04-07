@@ -1747,7 +1747,7 @@
     <file name="Structure_ActionGroup.java">
       <node id="5487985028841902889" at="13,0,14,0" concept="13" trace="ID" />
       <node id="5487985028841902891" at="14,0,15,0" concept="13" trace="LABEL_ID_showHelp" />
-      <node id="5487985028841902889" at="16,68,17,35" concept="15" />
+      <node id="5487985028841902889" at="16,67,17,35" concept="15" />
       <node id="5487985028841902889" at="17,35,18,25" concept="4" />
       <node id="5487985028841902889" at="18,25,19,20" concept="4" />
       <node id="5487985028841902891" at="20,5,21,90" concept="9" />
@@ -1760,7 +1760,7 @@
         <var name="action" id="5487985028841902891" />
         <var name="manager" id="5487985028841902891" />
       </scope>
-      <scope id="5487985028841902889" at="16,68,25,5" />
+      <scope id="5487985028841902889" at="16,67,25,5" />
       <scope id="5487985028841902889" at="16,0,27,0">
         <var name="plugin" id="5487985028841902889" />
       </scope>
@@ -1953,7 +1953,7 @@
     </file>
     <file name="ShowHelp_ActionGroup.java">
       <node id="5487985028841902996" at="10,0,11,0" concept="13" trace="ID" />
-      <node id="5487985028841902996" at="12,67,13,34" concept="15" />
+      <node id="5487985028841902996" at="12,66,13,34" concept="15" />
       <node id="5487985028841902996" at="13,34,14,25" concept="4" />
       <node id="5487985028841902996" at="14,25,15,20" concept="4" />
       <node id="5487985028841902998" at="15,20,16,117" concept="4" />
@@ -1961,7 +1961,7 @@
       <node id="5487985028841903000" at="17,117,18,117" concept="4" />
       <node id="5487985028841903001" at="18,117,19,119" concept="4" />
       <node id="5487985028841902996" at="12,0,21,0" concept="3" trace="ShowHelp_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="5487985028841902996" at="12,67,19,119" />
+      <scope id="5487985028841902996" at="12,66,19,119" />
       <scope id="5487985028841902996" at="12,0,21,0">
         <var name="plugin" id="5487985028841902996" />
       </scope>
@@ -2718,14 +2718,14 @@
     </file>
     <file name="ShowAsIntentions_LangStructure_ActionGroup.java">
       <node id="6573717177324304140" at="10,0,11,0" concept="13" trace="ID" />
-      <node id="6573717177324304140" at="12,89,13,56" concept="15" />
+      <node id="6573717177324304140" at="12,88,13,56" concept="15" />
       <node id="6573717177324304140" at="13,56,14,25" concept="4" />
       <node id="6573717177324304140" at="14,25,15,20" concept="4" />
       <node id="6573717177324304153" at="15,20,16,146" concept="4" />
       <node id="669686131487249152" at="16,146,17,150" concept="4" />
       <node id="669686131483980339" at="17,150,18,158" concept="4" />
       <node id="6573717177324304140" at="12,0,20,0" concept="3" trace="ShowAsIntentions_LangStructure_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="6573717177324304140" at="12,89,18,158" />
+      <scope id="6573717177324304140" at="12,88,18,158" />
       <scope id="6573717177324304140" at="12,0,20,0">
         <var name="plugin" id="6573717177324304140" />
       </scope>

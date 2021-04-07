@@ -178,14 +178,14 @@
     </file>
     <file name="FindByConditionGroup_ActionGroup.java">
       <node id="3355341743769583532" at="10,0,11,0" concept="9" trace="ID" />
-      <node id="3355341743769583532" at="12,79,13,46" concept="11" />
+      <node id="3355341743769583532" at="12,78,13,46" concept="11" />
       <node id="3355341743769583532" at="13,46,14,25" concept="2" />
       <node id="3355341743769583532" at="14,25,15,20" concept="2" />
       <node id="6257086414747762798" at="15,20,16,57" concept="2" />
       <node id="3355341743769583537" at="16,57,17,124" concept="2" />
       <node id="3362819150777322640" at="17,124,18,126" concept="2" />
       <node id="3355341743769583532" at="12,0,20,0" concept="1" trace="FindByConditionGroup_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="3355341743769583532" at="12,79,18,126" />
+      <scope id="3355341743769583532" at="12,78,18,126" />
       <scope id="3355341743769583532" at="12,0,20,0">
         <var name="plugin" id="3355341743769583532" />
       </scope>
@@ -532,12 +532,12 @@
     </file>
     <file name="TextPreviewGroup_Console_ActionGroup.java">
       <node id="6359836120039452651" at="10,0,11,0" concept="9" trace="ID" />
-      <node id="6359836120039452651" at="12,83,13,50" concept="11" />
+      <node id="6359836120039452651" at="12,82,13,50" concept="11" />
       <node id="6359836120039452651" at="13,50,14,25" concept="2" />
       <node id="6359836120039452651" at="14,25,15,20" concept="2" />
       <node id="6359836120039513149" at="15,20,16,122" concept="2" />
       <node id="6359836120039452651" at="12,0,18,0" concept="1" trace="TextPreviewGroup_Console_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="6359836120039452651" at="12,83,16,122" />
+      <scope id="6359836120039452651" at="12,82,16,122" />
       <scope id="6359836120039452651" at="12,0,18,0">
         <var name="plugin" id="6359836120039452651" />
       </scope>

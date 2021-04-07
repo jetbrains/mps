@@ -4,14 +4,14 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3996994949102148663", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Analyze_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.Analyze_ActionGroup";
 
-  public Analyze_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public Analyze_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Analyze", ID, plugin);
     setIsInternal(false);
     setPopup(false);

@@ -4,7 +4,7 @@ package jetbrains.mps.debugger.api.ui.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -15,7 +15,7 @@ public class DebugRunMenu_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.debugger.api.ui.actions.DebugRunMenu_ActionGroup";
   public static final String LABEL_ID_steps = ID + "steps";
 
-  public DebugRunMenu_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public DebugRunMenu_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("DebugRunMenu", ID, plugin);
     setIsInternal(false);
     setPopup(false);

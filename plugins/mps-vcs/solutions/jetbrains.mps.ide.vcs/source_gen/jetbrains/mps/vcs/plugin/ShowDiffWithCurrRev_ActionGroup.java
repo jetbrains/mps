@@ -4,14 +4,14 @@ package jetbrains.mps.vcs.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/7545884443035919872", model = "r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)")
 public class ShowDiffWithCurrRev_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.vcs.plugin.ShowDiffWithCurrRev_ActionGroup";
 
-  public ShowDiffWithCurrRev_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ShowDiffWithCurrRev_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("ShowDiffWithCurrRev", ID, plugin);
     setIsInternal(false);
     setPopup(false);

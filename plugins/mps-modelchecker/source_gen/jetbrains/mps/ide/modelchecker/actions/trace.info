@@ -26,12 +26,12 @@
   <root nodeRef="r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/1453248744423276126">
     <file name="CheckProject_ActionGroup.java">
       <node id="1453248744423276126" at="12,0,13,0" concept="13" trace="ID" />
-      <node id="1453248744423276126" at="14,71,15,38" concept="15" />
+      <node id="1453248744423276126" at="14,70,15,38" concept="15" />
       <node id="1453248744423276126" at="15,38,16,25" concept="4" />
       <node id="1453248744423276126" at="16,25,17,20" concept="4" />
       <node id="1453248744423276128" at="17,20,18,106" concept="4" />
       <node id="1453248744423276126" at="14,0,20,0" concept="2" trace="CheckProject_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="1453248744423276126" at="14,71,18,106" />
+      <scope id="1453248744423276126" at="14,70,18,106" />
       <scope id="1453248744423276126" at="14,0,20,0">
         <var name="plugin" id="1453248744423276126" />
       </scope>
@@ -45,12 +45,12 @@
   <root nodeRef="r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/1453248744423276130">
     <file name="CheckModule_ActionGroup.java">
       <node id="1453248744423276130" at="12,0,13,0" concept="13" trace="ID" />
-      <node id="1453248744423276130" at="14,70,15,37" concept="15" />
+      <node id="1453248744423276130" at="14,69,15,37" concept="15" />
       <node id="1453248744423276130" at="15,37,16,25" concept="4" />
       <node id="1453248744423276130" at="16,25,17,20" concept="4" />
       <node id="1453248744423276132" at="17,20,18,104" concept="4" />
       <node id="1453248744423276130" at="14,0,20,0" concept="2" trace="CheckModule_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="1453248744423276130" at="14,70,18,104" />
+      <scope id="1453248744423276130" at="14,69,18,104" />
       <scope id="1453248744423276130" at="14,0,20,0">
         <var name="plugin" id="1453248744423276130" />
       </scope>
@@ -65,12 +65,12 @@
   <root nodeRef="r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/1453248744423276145">
     <file name="CheckModel_ActionGroup.java">
       <node id="1453248744423276145" at="12,0,13,0" concept="13" trace="ID" />
-      <node id="1453248744423276145" at="14,69,15,36" concept="15" />
+      <node id="1453248744423276145" at="14,68,15,36" concept="15" />
       <node id="1453248744423276145" at="15,36,16,25" concept="4" />
       <node id="1453248744423276145" at="16,25,17,20" concept="4" />
       <node id="1453248744423276147" at="17,20,18,102" concept="4" />
       <node id="1453248744423276145" at="14,0,20,0" concept="2" trace="CheckModel_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="1453248744423276145" at="14,69,18,102" />
+      <scope id="1453248744423276145" at="14,68,18,102" />
       <scope id="1453248744423276145" at="14,0,20,0">
         <var name="plugin" id="1453248744423276145" />
       </scope>
@@ -377,12 +377,12 @@
   <root nodeRef="r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/1526939793344460684">
     <file name="CheckNamespace_ActionGroup.java">
       <node id="1526939793344460684" at="12,0,13,0" concept="13" trace="ID" />
-      <node id="1526939793344460684" at="14,73,15,40" concept="15" />
+      <node id="1526939793344460684" at="14,72,15,40" concept="15" />
       <node id="1526939793344460684" at="15,40,16,25" concept="4" />
       <node id="1526939793344460684" at="16,25,17,20" concept="4" />
       <node id="1526939793344460689" at="17,20,18,110" concept="4" />
       <node id="1526939793344460684" at="14,0,20,0" concept="2" trace="CheckNamespace_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="1526939793344460684" at="14,73,18,110" />
+      <scope id="1526939793344460684" at="14,72,18,110" />
       <scope id="1526939793344460684" at="14,0,20,0">
         <var name="plugin" id="1526939793344460684" />
       </scope>
@@ -1042,14 +1042,14 @@
     </file>
     <file name="ToolsInternalEx_ActionGroup.java">
       <node id="5361317699454626937" at="12,0,13,0" concept="13" trace="ID" />
-      <node id="5361317699454626937" at="14,74,15,41" concept="15" />
+      <node id="5361317699454626937" at="14,73,15,41" concept="15" />
       <node id="5361317699454626937" at="15,41,16,24" concept="4" />
       <node id="5361317699454626937" at="16,24,17,20" concept="4" />
       <node id="603051750760797676" at="17,20,18,124" concept="4" />
       <node id="7224745844707401201" at="18,124,19,124" concept="4" />
       <node id="1833497744619757838" at="19,124,20,129" concept="4" />
       <node id="5361317699454626937" at="14,0,22,0" concept="2" trace="ToolsInternalEx_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="5361317699454626937" at="14,74,20,129" />
+      <scope id="5361317699454626937" at="14,73,20,129" />
       <scope id="5361317699454626937" at="14,0,22,0">
         <var name="plugin" id="5361317699454626937" />
       </scope>

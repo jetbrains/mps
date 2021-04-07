@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -17,7 +17,7 @@ public class TouchBarDefault_shift_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_refactoring = ID + "refactoring";
   public static final String LABEL_ID_move = ID + "move";
 
-  public TouchBarDefault_shift_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public TouchBarDefault_shift_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("TouchBarDefault_shift", ID, plugin);
     setIsInternal(false);
     setPopup(false);

@@ -4,14 +4,14 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/1683977858888863192", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class GeneratorActions_Delete_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.devkit.actions.GeneratorActions_Delete_ActionGroup";
 
-  public GeneratorActions_Delete_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public GeneratorActions_Delete_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("GeneratorActions_Delete", ID, plugin);
     setIsInternal(false);
     setPopup(false);

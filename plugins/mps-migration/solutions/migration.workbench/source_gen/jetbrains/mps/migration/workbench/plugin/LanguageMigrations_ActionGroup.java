@@ -10,7 +10,7 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
@@ -28,12 +28,13 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import org.jetbrains.annotations.Nullable;
 
 public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.migration.workbench.plugin.LanguageMigrations_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public LanguageMigrations_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public LanguageMigrations_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Language Migrations", ID, plugin);
     setIsInternal(false);
     setMnemonic("l".charAt(0));

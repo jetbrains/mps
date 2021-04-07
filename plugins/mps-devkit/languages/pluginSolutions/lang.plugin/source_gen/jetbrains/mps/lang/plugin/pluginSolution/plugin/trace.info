@@ -108,12 +108,12 @@
     </file>
     <file name="RefactoringAdditions_ActionGroup.java">
       <node id="5487985028841901766" at="10,0,11,0" concept="10" trace="ID" />
-      <node id="5487985028841901766" at="12,79,13,46" concept="12" />
+      <node id="5487985028841901766" at="12,78,13,46" concept="12" />
       <node id="5487985028841901766" at="13,46,14,25" concept="2" />
       <node id="5487985028841901766" at="14,25,15,20" concept="2" />
       <node id="5487985028841901768" at="15,20,16,128" concept="2" />
       <node id="5487985028841901766" at="12,0,18,0" concept="1" trace="RefactoringAdditions_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="5487985028841901766" at="12,79,16,128" />
+      <scope id="5487985028841901766" at="12,78,16,128" />
       <scope id="5487985028841901766" at="12,0,18,0">
         <var name="plugin" id="5487985028841901766" />
       </scope>
@@ -241,12 +241,12 @@
     </file>
     <file name="ProjectPaneProjectAddition_ActionGroup.java">
       <node id="8722937377469659543" at="10,0,11,0" concept="10" trace="ID" />
-      <node id="8722937377469659543" at="12,85,13,52" concept="12" />
+      <node id="8722937377469659543" at="12,84,13,52" concept="12" />
       <node id="8722937377469659543" at="13,52,14,25" concept="2" />
       <node id="8722937377469659543" at="14,25,15,20" concept="2" />
       <node id="8722937377469659546" at="15,20,16,139" concept="2" />
       <node id="8722937377469659543" at="12,0,18,0" concept="1" trace="ProjectPaneProjectAddition_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="8722937377469659543" at="12,85,16,139" />
+      <scope id="8722937377469659543" at="12,84,16,139" />
       <scope id="8722937377469659543" at="12,0,18,0">
         <var name="plugin" id="8722937377469659543" />
       </scope>

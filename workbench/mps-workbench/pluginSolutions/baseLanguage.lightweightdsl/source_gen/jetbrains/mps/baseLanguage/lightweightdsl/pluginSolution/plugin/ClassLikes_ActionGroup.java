@@ -10,7 +10,7 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -28,7 +28,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import com.intellij.openapi.extensions.PluginId;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -38,7 +38,7 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin.ClassLikes_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public ClassLikes_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ClassLikes_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("ClassLikes", ID, plugin);
     setIsInternal(false);
     setPopup(false);
@@ -69,7 +69,7 @@ public class ClassLikes_ActionGroup extends GeneratedActionGroup {
     });
 
     for (SNode descr : Sequence.fromIterable(descrs)) {
-      ClassLikes_ActionGroup.this.addParameterizedAction(new NewClassLike_Action(descr), PluginId.getId("jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution"), descr);
+      ClassLikes_ActionGroup.this.addParameterizedAction(new NewClassLike_Action(descr), descr);
     }
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);

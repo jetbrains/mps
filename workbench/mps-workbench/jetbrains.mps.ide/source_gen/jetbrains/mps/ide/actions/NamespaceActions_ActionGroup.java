@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -16,7 +16,7 @@ public class NamespaceActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_namespaceInternal = ID + "namespaceInternal";
   public static final String LABEL_ID_check = ID + "check";
 
-  public NamespaceActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public NamespaceActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("NamespaceActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);

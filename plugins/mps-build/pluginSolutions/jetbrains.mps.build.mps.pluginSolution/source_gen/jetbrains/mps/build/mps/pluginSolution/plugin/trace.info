@@ -231,12 +231,12 @@
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/6937807405124297516">
     <file name="IntentionsEx_ActionGroup.java">
       <node id="6937807405124297516" at="10,0,11,0" concept="14" trace="ID" />
-      <node id="6937807405124297516" at="12,71,13,38" concept="16" />
+      <node id="6937807405124297516" at="12,70,13,38" concept="16" />
       <node id="6937807405124297516" at="13,38,14,25" concept="4" />
       <node id="6937807405124297516" at="14,25,15,20" concept="4" />
       <node id="6937807405124297519" at="15,20,16,127" concept="4" />
       <node id="6937807405124297516" at="12,0,18,0" concept="2" trace="IntentionsEx_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="6937807405124297516" at="12,71,16,127" />
+      <scope id="6937807405124297516" at="12,70,16,127" />
       <scope id="6937807405124297516" at="12,0,18,0">
         <var name="plugin" id="6937807405124297516" />
       </scope>
@@ -4959,12 +4959,12 @@
     </file>
     <file name="ProjectPaneProjectAddition_ActionGroup.java">
       <node id="8722937377469659543" at="10,0,11,0" concept="14" trace="ID" />
-      <node id="8722937377469659543" at="12,85,13,52" concept="16" />
+      <node id="8722937377469659543" at="12,84,13,52" concept="16" />
       <node id="8722937377469659543" at="13,52,14,25" concept="4" />
       <node id="8722937377469659543" at="14,25,15,20" concept="4" />
       <node id="8722937377469659546" at="15,20,16,144" concept="4" />
       <node id="8722937377469659543" at="12,0,18,0" concept="2" trace="ProjectPaneProjectAddition_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="8722937377469659543" at="12,85,16,144" />
+      <scope id="8722937377469659543" at="12,84,16,144" />
       <scope id="8722937377469659543" at="12,0,18,0">
         <var name="plugin" id="8722937377469659543" />
       </scope>

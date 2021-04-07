@@ -4,7 +4,7 @@ package jetbrains.mps.debugger.api.ui.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -16,7 +16,7 @@ public class DebugTool_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_StopAction = ID + "StopAction";
   public static final String LABEL_ID_MuteAction = ID + "MuteAction";
 
-  public DebugTool_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public DebugTool_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("DebugTool", ID, plugin);
     setIsInternal(false);
     setPopup(false);

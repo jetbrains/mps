@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -20,7 +20,7 @@ public class LanguageActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_find_javastub_usages = ID + "find_javastub_usages";
   public static final String LABEL_ID_ex = ID + "ex";
 
-  public LanguageActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public LanguageActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("LanguageActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);

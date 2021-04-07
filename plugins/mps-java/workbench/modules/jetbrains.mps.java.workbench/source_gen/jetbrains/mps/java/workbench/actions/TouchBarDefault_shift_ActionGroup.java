@@ -4,14 +4,14 @@ package jetbrains.mps.java.workbench.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/3201523885428184061", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
 public class TouchBarDefault_shift_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.java.workbench.actions.TouchBarDefault_shift_ActionGroup";
 
-  public TouchBarDefault_shift_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public TouchBarDefault_shift_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("TouchBarDefault_shift", ID, plugin);
     setIsInternal(false);
     setPopup(false);

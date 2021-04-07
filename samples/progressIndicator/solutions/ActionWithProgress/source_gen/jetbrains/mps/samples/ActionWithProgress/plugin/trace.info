@@ -470,13 +470,13 @@
     </file>
     <file name="ProgressActionsGroup_ActionGroup.java">
       <node id="7628537775846372132" at="10,0,11,0" concept="10" trace="ID" />
-      <node id="7628537775846372132" at="12,79,13,46" concept="11" />
+      <node id="7628537775846372132" at="12,78,13,46" concept="11" />
       <node id="7628537775846372132" at="13,46,14,25" concept="2" />
       <node id="7628537775846372132" at="14,25,15,20" concept="2" />
       <node id="7628537775846372137" at="15,20,16,130" concept="2" />
       <node id="3764589745560987449" at="16,130,17,139" concept="2" />
       <node id="7628537775846372132" at="12,0,19,0" concept="1" trace="ProgressActionsGroup_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="7628537775846372132" at="12,79,17,139" />
+      <scope id="7628537775846372132" at="12,78,17,139" />
       <scope id="7628537775846372132" at="12,0,19,0">
         <var name="plugin" id="7628537775846372132" />
       </scope>

@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -19,7 +19,7 @@ public class DebugActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_editor = ID + "editor";
   public static final String LABEL_ID_generator = ID + "generator";
 
-  public DebugActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public DebugActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Language Debug", ID, plugin);
     setIsInternal(false);
     setPopup(true);

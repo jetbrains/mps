@@ -10,7 +10,7 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.List;
@@ -22,13 +22,13 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.extensions.PluginId;
+import org.jetbrains.annotations.Nullable;
 
 public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.lang.script.pluginSolution.plugin.ScriptsForSelection_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public ScriptsForSelection_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public ScriptsForSelection_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Scripts", ID, plugin);
     setIsInternal(false);
     setPopup(true);
@@ -53,7 +53,7 @@ public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
     for (AnAction a : catGroup.getChildren(null)) {
       ScriptsForSelection_ActionGroup.this.add(a);
     }
-    ScriptsForSelection_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(true), PluginId.getId("jetbrains.mps.lang.script.pluginSolution"), true);
+    ScriptsForSelection_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(true), true);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }

@@ -4,14 +4,14 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/6252705307027051861", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class FindLanguageUsages_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.devkit.actions.FindLanguageUsages_ActionGroup";
 
-  public FindLanguageUsages_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public FindLanguageUsages_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("FindLanguageUsages", ID, plugin);
     setIsInternal(false);
     setPopup(false);

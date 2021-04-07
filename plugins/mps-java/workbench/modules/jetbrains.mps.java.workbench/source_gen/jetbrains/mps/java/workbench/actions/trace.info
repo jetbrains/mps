@@ -18,12 +18,12 @@
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/3201523885428184061">
     <file name="TouchBarDefault_shift_ActionGroup.java">
       <node id="3201523885428184061" at="12,0,13,0" concept="12" trace="ID" />
-      <node id="3201523885428184061" at="14,80,15,47" concept="14" />
+      <node id="3201523885428184061" at="14,79,15,47" concept="14" />
       <node id="3201523885428184061" at="15,47,16,25" concept="3" />
       <node id="3201523885428184061" at="16,25,17,20" concept="3" />
       <node id="3201523885428184068" at="17,20,18,122" concept="3" />
       <node id="3201523885428184061" at="14,0,20,0" concept="1" trace="TouchBarDefault_shift_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="3201523885428184061" at="14,80,18,122" />
+      <scope id="3201523885428184061" at="14,79,18,122" />
       <scope id="3201523885428184061" at="14,0,20,0">
         <var name="plugin" id="3201523885428184061" />
       </scope>

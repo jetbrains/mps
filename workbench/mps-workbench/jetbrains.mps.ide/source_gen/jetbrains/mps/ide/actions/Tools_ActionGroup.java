@@ -4,7 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.plugins.actions.GeneratedActionGroup;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.plugins.actions.LabelledAnchor;
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx;
@@ -17,7 +17,7 @@ public class Tools_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_customTools = ID + "customTools";
   public static final String LABEL_ID_devkitTools = ID + "devkitTools";
 
-  public Tools_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public Tools_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Tools", ID, plugin);
     setIsInternal(false);
     setPopup(false);

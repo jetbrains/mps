@@ -10,7 +10,7 @@ import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -22,13 +22,13 @@ import java.util.List;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import com.intellij.openapi.extensions.PluginId;
+import org.jetbrains.annotations.Nullable;
 
 public class GoToTypeErrorGroup_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.lang.typesystem.devkit.pluginSolution.plugin.GoToTypeErrorGroup_ActionGroup";
   private final Set<Pair<ActionPlace, Condition<BaseAction>>> myPlaces = SetSequence.fromSet(new HashSet<Pair<ActionPlace, Condition<BaseAction>>>());
 
-  public GoToTypeErrorGroup_ActionGroup(@Nullable ApplicationPlugin plugin) {
+  public GoToTypeErrorGroup_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Go to Rule Which Caused Error", ID, plugin);
     setIsAlwaysVisible(false);
     setIsInternal(false);
@@ -58,11 +58,11 @@ public class GoToTypeErrorGroup_ActionGroup extends GeneratedActionGroup {
     }
     for (RuleIdFlavouredItem.TypesystemRuleId id : ListSequence.fromList(navigationData).take(ListSequence.fromList(navigationData).count() - 1)) {
       if (id.getSourceNode() != null) {
-        GoToTypeErrorGroup_ActionGroup.this.addParameterizedAction(new GoToTypeErrorRule_InGroup_Action(id.getSourceNode(), false), PluginId.getId("jetbrains.mps.lang.typesystem.devkit.pluginSolution"), id.getSourceNode(), false);
+        GoToTypeErrorGroup_ActionGroup.this.addParameterizedAction(new GoToTypeErrorRule_InGroup_Action(id.getSourceNode(), false), id.getSourceNode(), false);
       }
     }
     if (ListSequence.fromList(navigationData).last().getSourceNode() != null) {
-      GoToTypeErrorGroup_ActionGroup.this.addParameterizedAction(new GoToTypeErrorRule_InGroup_Action(ListSequence.fromList(navigationData).last().getSourceNode(), true), PluginId.getId("jetbrains.mps.lang.typesystem.devkit.pluginSolution"), ListSequence.fromList(navigationData).last().getSourceNode(), true);
+      GoToTypeErrorGroup_ActionGroup.this.addParameterizedAction(new GoToTypeErrorRule_InGroup_Action(ListSequence.fromList(navigationData).last().getSourceNode(), true), ListSequence.fromList(navigationData).last().getSourceNode(), true);
     }
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
