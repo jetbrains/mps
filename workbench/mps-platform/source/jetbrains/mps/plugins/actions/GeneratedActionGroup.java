@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,31 +17,24 @@ package jetbrains.mps.plugins.actions;
 
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.BaseGroup;
-import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class GeneratedActionGroup extends BaseGroup {
-  @Nullable private final ApplicationPlugin myApplicationPlugin;
+  private final ApplicationPlugin myApplicationPlugin;
 
-  @ToRemove(version = 192)
-  @Deprecated
-  protected GeneratedActionGroup(String text, String id) {
-    this(text, id, null);
-  }
 
   /**
    * AP: I am not so sure about this keymap interaction here at all
    * Probably I would rather rewrite it when we will move tool&prefs initialization out of EDT
    */
-  protected GeneratedActionGroup(String text, String id, @Nullable ApplicationPlugin applicationPlugin) {
+  protected GeneratedActionGroup(String text, String id, @NotNull ApplicationPlugin applicationPlugin) {
     super(text, id);
     myApplicationPlugin = applicationPlugin;
   }
@@ -50,8 +43,18 @@ public abstract class GeneratedActionGroup extends BaseGroup {
     addActionSafe(ActionManager.getInstance().getAction(id));
   }
 
-  protected final void addParameterizedAction(BaseAction action, PluginId id, Object... params) {
-    if (!isStrict()){
+  @Deprecated
+  @ToRemove(version = 2021.1)
+  protected final void addParameterizedAction(BaseAction action, PluginId unused, Object... params) {
+    // keep for couple of releases once 21.1 is out, code generated with 2020.3 invoked this method
+    addParameterizedAction(action, params);
+  }
+
+  /**
+   * @since 2021.1
+   */
+  protected final void addParameterizedAction(BaseAction action, Object... params) {
+      if (!isStrict()){
       addActionSafe(action);
       return;
     }
@@ -64,23 +67,12 @@ public abstract class GeneratedActionGroup extends BaseGroup {
     }
 
     addActionSafe(action);
-    if (myApplicationPlugin == null) {
-      // NOTE: creates an initialization cycle for {@code ApplicationPluginManager}, to remove in 193
-      legacyAddParameterisedAction(action, id, params);
-    } else {
-      myApplicationPlugin.addParameterizedAction(action, params);
-    }
+    myApplicationPlugin.addParameterizedAction(action, params);
   }
 
-  // @NotNull
-  @Nullable
+  @NotNull
   public final ApplicationPlugin getApplicationPlugin() {
     return myApplicationPlugin;
-  }
-
-  private void legacyAddParameterisedAction(BaseAction action, PluginId id, Object[] params) {
-    ApplicationPlugin actionsRegistry = ApplicationManager.getApplication().getComponent(ApplicationPluginHolder.class).getPluginById(id);
-    actionsRegistry.addParameterizedAction(action, params);
   }
 
   /**

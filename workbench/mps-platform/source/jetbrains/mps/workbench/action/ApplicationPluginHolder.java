@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,17 @@
 package jetbrains.mps.workbench.action;
 
 import com.intellij.openapi.extensions.PluginId;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
 
 /**
  * a lot of tricky implicit contracts for the order of loading is connected with this interface
+ * @deprecated remove once 2021.1 is out, was in use inside our implementation prior to 2021.1, clients shall not depend on this one directly
  */
 @Internal
+@Deprecated
+@ToRemove(version = 2021.1)
 public interface ApplicationPluginHolder {
   ApplicationPlugin getPluginById(@NotNull PluginId id);
 }
