@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,12 +51,11 @@ import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -99,7 +98,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
   @Nullable
   private ModuleDescriptor myModuleDescriptor;
-  private final Project myProject;
+  private final MPSProject myProject;
   private final Collection<ModelRootDescriptor> myInitialModelRoots;
   private final ModelRootEntryPersistence myRootEntryPersistence;
   private final List<ModelRootEntryContainer> myModelRootEntries = new ArrayList<>();
@@ -111,7 +110,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
   private JBPanel myMainPanel;
   private IFile myDefaultFolder;
 
-  public ModelRootContentEntriesEditor(@NotNull ModuleDescriptor moduleDescriptor, @NotNull Project p) {
+  public ModelRootContentEntriesEditor(@NotNull ModuleDescriptor moduleDescriptor, @NotNull MPSProject p) {
     this(moduleDescriptor.getModelRootDescriptors(), moduleDescriptor.getNamespace(), p);
     myModuleDescriptor = moduleDescriptor;
   }
@@ -121,7 +120,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
    *   This is done for the sake of bugfix simplicity, otherwise {@code apply()} calls from outside has to be modified to take actual collection and feed it
    *   into appropriate consumer (whether it's ModuleDescriptor or MPSConfigurationBean)
    */
-  public ModelRootContentEntriesEditor(@NotNull Collection<ModelRootDescriptor> modelRoots, String moduleName, @NotNull Project p) {
+  public ModelRootContentEntriesEditor(@NotNull Collection<ModelRootDescriptor> modelRoots, String moduleName, @NotNull MPSProject p) {
     myInitialModelRoots = modelRoots;
     myProject = p;
     // XXX I'm puzzled with mix of ModelRoot and ModelRootDescriptor in ModelRootEntryPersistence, shall stick to one
@@ -377,7 +376,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
       IFile contentRoot = getInitialPath();
       VirtualFile chosen = null;
-      while (chosen == null) {
+      do {
         VirtualFile contentRootVFile = VirtualFileUtils.getProjectVirtualFile(contentRoot);
         VirtualFile[] files = FileChooser.chooseFiles(fileChooserDescriptor, null, null, contentRootVFile);
         if (files.length == 0) {
@@ -396,11 +395,15 @@ public class ModelRootContentEntriesEditor implements Disposable {
               break;
             }
           }
+          if (chosen != null && !myProject.getFileSystem().canConvert(chosen)) {
+            final String m = "Can use local filesystem location only. Actual FS is %s";
+            Messages.showWarningDialog(myMainPanel, String.format(m, chosen.getFileSystem().getProtocol()), "Bad model root location");
+            chosen = null;
+          }
         }
-      }
+      } while (chosen == null);
 
-      contentRoot = VirtualFileUtils.toIFile(chosen);
-      assert contentRoot != null; // : #toIFile method contract
+      contentRoot = myProject.getFileSystem().fromVirtualFile(chosen);
       FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
       modelRoot.setContentDirectory(contentRoot);
       if (modelRoot instanceof JavaClassStubsModelRoot) {
@@ -432,7 +435,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
       return sourceDir != null ? sourceDir : am.getDescriptorFile().getParent();
     }
 
-    return FileSystemExtPoint.getFS().getFile(PathManager.getUserDir());
+    return myProject.getFileSystem().getFile(PathManager.getUserDir());
   }
 
   private final class MyContentEntryEditorListener implements ContentEntryEditorListener {

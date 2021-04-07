@@ -346,7 +346,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myModuleDependenciesTab.init(); // init to avoid myModuleDependenciesTab.getTabComponent() == null
         return myModuleDependenciesTab.getTabComponent();
       } else {
-        myEntriesEditor = new ModelRootContentEntriesEditor(myModuleDescriptor, myMPSProject);
+        myEntriesEditor = new ModelRootContentEntriesEditor(myModuleDescriptor, (MPSProject) myMPSProject);
         Disposer.register(getDisposable(), myEntriesEditor);
         return myEntriesEditor.getComponent();
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.facet.ui;
 
 import com.intellij.facet.ui.FacetEditorContext;
@@ -32,6 +31,7 @@ import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
 import jetbrains.mps.idea.core.ui.SModuleConfigurationTab;
 import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry.ModelRootEntryListener;
@@ -75,12 +75,13 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
       myContentEntriesEditor = null;
     }
     myModelRootsByReference = data.getModelRootDescriptors();
-    myContentEntriesEditor = new ModelRootContentEntriesEditor(myModelRootsByReference, myContext.getModule().getName(), ProjectHelper.fromIdeaProject(myContext.getProject()));
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myContext.getProject());
+    myContentEntriesEditor = new ModelRootContentEntriesEditor(myModelRootsByReference, myContext.getModule().getName(), mpsProject);
     Disposer.register(myParentDisposable, myContentEntriesEditor);
     VirtualFile defaultFolder = myContext.getModule().getModuleFile() != null
       ? myContext.getModule().getModuleFile().getParent()
       : myContext.getProject().getBaseDir();
-    myContentEntriesEditor.setDefaultFolder(VirtualFileUtils.toIFile(defaultFolder));
+    myContentEntriesEditor.setDefaultFolder(mpsProject.getFileSystem().fromVirtualFile(defaultFolder));
     myRootPanel.removeAll();
     myRootPanel.add(myContentEntriesEditor.getComponent(), BorderLayout.CENTER);
 
