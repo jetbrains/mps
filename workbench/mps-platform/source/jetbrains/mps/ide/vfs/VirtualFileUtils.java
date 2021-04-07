@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -65,6 +66,11 @@ public final class VirtualFileUtils {
     }
   }
 
+  /**
+   * @deprecated please use {@link IdeaFileSystem#asVirtualFile(IFile)} instead.
+   *             To get FS associated with the project, use {@link MPSProject#getFileSystem()}.
+   */
+  @Deprecated
   @Nullable
   public static VirtualFile getProjectVirtualFile(@NotNull IFile file) {
     if (file instanceof IdeaFile) {

@@ -16,23 +16,20 @@
 
 package jetbrains.mps.workbench;
 
-import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+// XXX perhaps, have to introduce similar helper for SModule?
 public final class FileSystemModelHelper {
-  private static final Logger LOG = LogManager.getLogger(FileSystemModelHelper.class);
   private final SModel myModel;
 
   public FileSystemModelHelper(@NotNull SModel model) {
@@ -48,33 +45,5 @@ public final class FileSystemModelHelper {
       result.addAll(fsDataSource.getAffectedFiles());
     }
     return result;
-  }
-
-  @NotNull
-  public Collection<VirtualFile> getVirtualFiles() {
-    List<VirtualFile> vFiles = new ArrayList<>();
-
-    Collection<IFile> modelPaths = getFiles();
-    for (IFile path : modelPaths) {
-      VirtualFile virtualFile = VirtualFileUtils.getOrCreateVirtualFile(path);
-      if (virtualFile != null) {
-        vFiles.add(virtualFile);
-      }
-    }
-
-    return vFiles;
-  }
-
-  @Nullable
-  public VirtualFile getVirtualFile() {
-    Collection<VirtualFile> files = getVirtualFiles();
-    if (files.isEmpty()) {
-      return null;
-    } else if (files.size() > 1) {
-      LOG.warn("Models with multiple files in the data source are not supported; DataSource :" + myModel.getSource());
-      return null;
-    }
-
-    return files.iterator().next();
   }
 }

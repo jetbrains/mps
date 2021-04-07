@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,7 @@ import jetbrains.mps.ide.ui.tree.module.TransientModelsTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
@@ -83,7 +84,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane {
   private VirtualFileManagerListener myRefreshListener = new RefreshListener();
@@ -465,13 +468,13 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   @Nullable
   private VirtualFile[] getSelectedFiles() {
-    List<VirtualFile> selectedFilesList = new LinkedList<>();
+    List<IFile> selectedFilesList = new LinkedList<>();
 
     // add selected model files
     List<SModel> descriptors = getSelectedModels();
     if (descriptors != null) {
       for (SModel descriptor : descriptors) {
-        selectedFilesList.addAll(new FileSystemModelHelper(descriptor).getVirtualFiles());
+        selectedFilesList.addAll(new FileSystemModelHelper(descriptor).getFiles());
       }
     }
 
@@ -485,17 +488,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
         AbstractModule module = (AbstractModule) m;
         IFile home = module.getModuleSourceDir();
         if (home != null) {
-          VirtualFile vfile = VirtualFileUtils.getProjectVirtualFile(home);
-          if (vfile != null) {
-            selectedFilesList.add(vfile);
-          }
+          selectedFilesList.add(home);
         }
         IFile ifile = module.getDescriptorFile();
         if (ifile != null) {
-          VirtualFile vfile = VirtualFileUtils.getProjectVirtualFile(ifile);
-          if (vfile != null) {
-            selectedFilesList.add(vfile);
-          }
+          selectedFilesList.add(ifile);
         }
       }
     }
@@ -504,7 +501,8 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return null;
     }
 
-    return selectedFilesList.toArray(new VirtualFile[0]);
+    final IdeaFileSystem fs = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
+    return selectedFilesList.stream().map(fs::asVirtualFile).filter(Objects::nonNull).toArray(VirtualFile[]::new);
   }
 
   /*package*/

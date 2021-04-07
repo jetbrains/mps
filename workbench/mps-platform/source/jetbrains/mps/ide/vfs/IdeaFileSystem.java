@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
-import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
@@ -30,7 +29,6 @@ import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -74,6 +72,21 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
 
   public boolean canConvert(@NotNull VirtualFile virtualFile) {
     return virtualFile.getFileSystem() instanceof LocalFileSystem || virtualFile.getFileSystem() instanceof JarFileSystem;
+  }
+
+  /**
+   * Proper alternative to {@link VirtualFileUtils#getProjectVirtualFile(IFile)}, get back from MPS's {@code IFile} to IDEA's {@code VirtualFile}
+   * @param file MPS file abstraction
+   * @return IDEA's VirtualFile, if supplied IFile is tracked under project's file system.
+   * @since 2021.1
+   */
+  @Nullable
+  public VirtualFile asVirtualFile(@NotNull IFile file) {
+    if (file instanceof IdeaFile) {
+      return ((IdeaFile) file).getVirtualFile();
+    } else {
+      return null;
+    }
   }
 
   @Override

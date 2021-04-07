@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import jetbrains.mps.FilteredGlobalScope;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.FileSystemModelHelper;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
@@ -41,6 +41,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 
+import java.util.Collection;
 import java.util.Map;
 
 public class GoToModelPlatformAction extends BaseAction implements DumbAware {
@@ -53,8 +54,8 @@ public class GoToModelPlatformAction extends BaseAction implements DumbAware {
     //PsiDocumentManager.getInstance(project).commitAllDocuments();
 
     SearchScope localScope = project.getScope();
-    SearchScope globalScope = new FilteredGlobalScope();
     SRepository repo = project.getRepository();
+    SearchScope globalScope = new FilteredGlobalScope(repo);
     ChooseByNameData<SModelReference> gotoData = new ChooseByNameData<>(new ModelsPresentation(repo));
     gotoData.derivePrompts("model").setScope(new ModelScopeIterable(localScope, repo), new ModelScopeIterable(globalScope, repo));
 
@@ -68,15 +69,20 @@ public class GoToModelPlatformAction extends BaseAction implements DumbAware {
           return;
         }
 
-        VirtualFile modelFile = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+        Collection<IFile> modelFiles = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
           final SModel model = ((SModelReference) element).resolve(project.getRepository());
 
           if (model == null) {
             return null;
           }
-          return new FileSystemModelHelper(model).getVirtualFile();
+          return new FileSystemModelHelper(model).getFiles();
         });
 
+        if (modelFiles.isEmpty()) {
+          return;
+        }
+
+        final VirtualFile modelFile = project.getFileSystem().asVirtualFile(modelFiles.iterator().next());
         if (modelFile == null) {
           return;
         }
