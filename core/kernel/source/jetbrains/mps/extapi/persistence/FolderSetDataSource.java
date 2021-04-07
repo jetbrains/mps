@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
-import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.path.Path;
@@ -68,10 +67,7 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
 
       myPaths.put(path.getPath(), listener);
       if (!(myListeners.isEmpty())) {
-        FileSystem fs = path.getFileSystem();
-        if (fs instanceof CachingFileSystem) {
-          ((CachingFileSystem) fs).addListener(listener);
-        }
+        listener.attach();
       }
     } finally {
       myLock.writeLock().unlock();
@@ -102,10 +98,10 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
 
   @Override
   public void refresh() {
-    FileSystem fs = getFS();
-    if (fs instanceof CachingFileSystem) {
-      Set<CachingFile> collect = getFiles().stream().filter(file -> file instanceof CachingFile).map(file -> (CachingFile) file).collect(Collectors.toSet());
-      ((CachingFileSystem) fs).refresh(new DefaultCachingContext(true, false), collect);
+    Set<CachingFile> collect = getFiles().stream().filter(file -> file instanceof CachingFile).map(file -> (CachingFile) file).collect(Collectors.toSet());
+    for (CachingFileSystem fs : collect.stream().map(CachingFile::getFileSystem).collect(Collectors.toSet())) {
+      final DefaultCachingContext cc = new DefaultCachingContext(true, false);
+      fs.refresh(cc, collect.stream().filter(f -> f.getFileSystem() == fs).collect(Collectors.toList()));
     }
   }
 
@@ -139,14 +135,6 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
                      .reduce(true, (a, b) -> (a && b));
   }
 
-  private FileSystem getFS() {
-    List<IFile> toRefresh = new ArrayList<>(getFiles());
-    if (toRefresh.isEmpty()) {
-      return FileSystemExtPoint.getFS();
-    }
-    return toRefresh.get(0).getFileSystem();
-  }
-
   @NotNull
   @Override
   public String getLocation() {
@@ -158,12 +146,7 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
     myLock.writeLock().lock();
     try {
       if (myListeners.isEmpty()) {
-        for (PathListener pathListener : myPaths.values()) {
-          FileSystem fs = getFS();
-          if (fs instanceof CachingFileSystem) {
-            ((CachingFileSystem) fs).addListener(pathListener);
-          }
-        }
+        myPaths.values().forEach(PathListener::attach);
       }
       myListeners.add(listener);
     } finally {
@@ -177,12 +160,7 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
     try {
       myListeners.remove(listener);
       if (myListeners.isEmpty()) {
-        for (PathListener pathListener : myPaths.values()) {
-          FileSystem fs = getFS();
-          if (fs instanceof CachingFileSystem) {
-            ((CachingFileSystem) fs).removeListener(pathListener);
-          }
-        }
+        myPaths.values().forEach(PathListener::detach);
       }
     } finally {
       myLock.writeLock().unlock();
@@ -256,6 +234,21 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
     private PathListener(@NotNull IFile path, FileEventProcessor delegate) {
       myFile = path;
       myDelegate = delegate;
+    }
+
+    // register itself as listener for associated file, if possible
+    /*package*/ void attach() {
+      final FileSystem fs = myFile.getFileSystem();
+      if (fs instanceof CachingFileSystem) {
+        ((CachingFileSystem) fs).addListener(this);
+      }
+    }
+
+    /*package*/ void detach() {
+      final FileSystem fs = myFile.getFileSystem();
+      if (fs instanceof CachingFileSystem) {
+        ((CachingFileSystem) fs).removeListener(this);
+      }
     }
 
     @NotNull
