@@ -16,7 +16,7 @@
       <root url="jar://$PROJECT_DIR$/lib/swingx-core-1.6.2-2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xstream.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-reflect-1.4.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-reflect-1.4.32.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-stdlib-jdk8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-jdk8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-test.jar!/" />
