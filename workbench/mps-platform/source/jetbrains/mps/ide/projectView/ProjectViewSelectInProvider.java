@@ -17,7 +17,6 @@ package jetbrains.mps.ide.projectView;
 
 import com.intellij.ide.FileEditorProvider;
 import com.intellij.ide.SelectInContext;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -34,8 +33,12 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
 
+/**
+ * IDEA service to get contributed from MPS-IDEA plugin to tweak EditorComponent.getData() response
+ * No idea why it's done that way, and what's the task this class serves ("fix alt-f1 in MPS" doesn't help to understand)
+ */
 //todo throw away when there's per-node persistence or include into MPSCore.xml when migrated to Idea ProjectView
-public class ProjectViewSelectInProvider implements ApplicationComponent {
+public class ProjectViewSelectInProvider {
 
   @Nullable
   public SelectInContext getContext(@Nullable jetbrains.mps.project.Project p, @Nullable final SNodeReference nodeRef) {
@@ -60,22 +63,6 @@ public class ProjectViewSelectInProvider implements ApplicationComponent {
     }
     final VirtualFile vf = ((MPSProject) p).getFileSystem().asVirtualFile(modelFile);
     return vf == null ? null : new VirtualFileSelectInContext(ProjectHelper.toIdeaProject(p), vf);
-  }
-
-  @Override
-  public void initComponent() {
-
-  }
-
-  @Override
-  public void disposeComponent() {
-
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return getClass().getSimpleName();
   }
 
   private static class VirtualFileSelectInContext implements SelectInContext {

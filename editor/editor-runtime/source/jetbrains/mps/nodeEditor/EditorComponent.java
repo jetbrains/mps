@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -908,18 +908,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @Override
   public SNode getEditedNode() {
     return myNode;
-  }
-
-  /**
-   * From now on only NodeEditorComponent has virtual file.
-   * This method will be removed in the next release.
-   *
-   * @deprecated since MPS 3.4
-   */
-  @Deprecated
-  @Nullable
-  public MPSNodeVirtualFile getVirtualFile() {
-    return null;
   }
 
   @Override
@@ -2711,9 +2699,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return new MyPasteProvider();
     }
 
-    if (dataId.equals(SelectInContext.DATA_KEY.getName())) {
+    if (SelectInContext.DATA_KEY.is(dataId)) {
       ProjectViewSelectInProvider selectInHelper =
-          ApplicationManager.getApplication() == null ? null : ApplicationManager.getApplication().getComponent(ProjectViewSelectInProvider.class);
+          ApplicationManager.getApplication() == null ? null : ApplicationManager.getApplication().getService(ProjectViewSelectInProvider.class);
       if (selectInHelper == null) {
         return null;
       }

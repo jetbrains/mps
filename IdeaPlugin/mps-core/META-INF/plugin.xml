@@ -41,9 +41,6 @@
       <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.projectView.ProjectViewSelectInProvider</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.idea.core.project.stubs.MPSGlobalLibImporter</implementation-class>
     </component>
     <component>
@@ -192,6 +189,7 @@
     <fileEditorProvider implementation="jetbrains.mps.idea.core.editor.ModelFileToRootDispatchingEditorProvider"/>
     <gotoClassContributor implementation="jetbrains.mps.idea.core.navigation.MPSIdeaGotoClassContributor"/>
     <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+    <applicationService serviceImplementation="jetbrains.mps.ide.projectView.ProjectViewSelectInProvider"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
