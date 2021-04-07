@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.vfs.FileSystems;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
@@ -111,7 +111,7 @@ import java.util.regex.Matcher;
       String descriptorPath = modulePath.getPath();
       try {
         // fixme Michael Muhin
-        IFile descriptorFile = FileSystems.getDefault().getFile(descriptorPath);
+        IFile descriptorFile = FileSystem.getInstance().getFile(descriptorPath);
         if (descriptorFile.exists()) {
           // there could be more than 1 module collected from a single file
           modulesMiner.collectModules(descriptorFile);
