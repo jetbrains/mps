@@ -20,8 +20,6 @@ import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressIndicator;
-import com.intellij.openapi.progress.ProgressManager;
-import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.DumbModeTask;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
@@ -31,14 +29,12 @@ import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectLibraryManager;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.PathManager;
 import org.apache.log4j.LogManager;
@@ -57,7 +53,6 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
   private static final Logger LOG = LogManager.getLogger(StartupModuleMakerImpl.class);
 
   private MPSProject myMPSProject;
-  private ReloadManagerComponent myReloadManager;
   private MPSCoreComponents myComponents;
 
   public StartupModuleMakerImpl() {
@@ -76,7 +71,6 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
     // ProjectLibraryManager used to be cons parameter
     @SuppressWarnings("unused")
     final ProjectLibraryManager plm = project.getComponent(ProjectLibraryManager.class);
-    myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);
     myComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
     DumbService.getInstance(project).queueTask(new DumbModeTask(this) {
       @Override
@@ -104,7 +98,8 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
       // XXX used to collect project modules in a separate read action with no apparent reason
       final Collection<SModule> modules = getModules();
       final ModuleMaker maker = new ModuleMaker();
-      final MPSCompilationResult compileResult = myReloadManager.computeNoReload(() -> {
+      final ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
+      final MPSCompilationResult compileResult = reloadManager.computeNoReload(() -> {
         monitor.start("", 4);
         JavaCompilerOptions compilerOptions = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject);
         MPSCompilationResult result = maker.make(modules, monitor.subTask(3, SubProgressKind.REPLACING), compilerOptions);
