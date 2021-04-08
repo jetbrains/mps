@@ -456,7 +456,9 @@
     <classNode extendsClassName="jetbrains.mps.errors.QuickFix_Runtime" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil">
+    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.RuntimeException" />
+    <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.ILocalDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.ILocalReference__BehaviorDescriptor" />
@@ -472,6 +474,7 @@
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlow" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataflowBuilderException" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />

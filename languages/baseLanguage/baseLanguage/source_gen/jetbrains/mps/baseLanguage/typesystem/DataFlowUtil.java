@@ -17,6 +17,8 @@ import jetbrains.mps.lang.dataFlow.DataflowBuilderException;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import java.util.HashSet;
 import jetbrains.mps.baseLanguage.behavior.ILocalDeclaration__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ILocalReference__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -113,7 +115,7 @@ public class DataFlowUtil {
 
   @CheckingMethod
   private static void checkUnreachable(final TypeCheckingContext typeCheckingContext, Program program) {
-    Set<SNode> unreachable = DataFlow.getUnreachableNodes(program);
+    Set<SNode> unreachable = DataFlowUtil.getUnreachableNodes(program);
     for (SNode n : unreachable) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -122,6 +124,31 @@ public class DataFlowUtil {
       return;
     }
   }
+  public static Set<SNode> getUnreachableNodes(Program program) {
+    Set<Instruction> unreachable = program.getUnreachableInstructions();
+    Set<SNode> unreachableNodes = new HashSet<SNode>();
+    for (Instruction i : unreachable) {
+      if (!(DataFlowUtil.mayBeUnreachable(i)) && i.getSource() != null) {
+        SNode unreachableNode = (SNode) i.getSource();
+        if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.Statement$P6)) {
+          unreachableNodes.add((SNode) i.getSource());
+        } else {
+          if (SNodeOperations.isInstanceOf(unreachableNode, CONCEPTS.StatementList$m_)) {
+            if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(unreachableNode), CONCEPTS.Statement$P6))) {
+              unreachableNodes.add((SNode) i.getSource());
+            }
+          } else {
+            unreachableNodes.add(SNodeOperations.getNodeAncestor(unreachableNode, CONCEPTS.Statement$P6, true, false));
+          }
+        }
+      }
+    }
+    return unreachableNodes;
+  }
+  private static boolean mayBeUnreachable(Instruction instruction) {
+    return Boolean.TRUE.equals(instruction.getUserObject(DataFlow.MAY_BE_UNREACHABLE));
+  }
+
 
   @CheckingMethod
   private static void checkUninitializedReads(final TypeCheckingContext typeCheckingContext, Program program) {

@@ -21,6 +21,7 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.typesystem.DataFlowUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -66,7 +67,7 @@ public final class UnwrapUnnecessaryElse_Intention extends AbstractIntentionDesc
         SNode next = SNodeFactoryOperations.addNewChild(clonedStatements, LINKS.statement$53DE, CONCEPTS.LocalVariableDeclarationStatement$4w);
 
         Program program = DataFlow.buildProgram(clonedStatements);
-        Set<SNode> unreachable = DataFlow.getUnreachableNodes(program);
+        Set<SNode> unreachable = DataFlowUtil.getUnreachableNodes(program);
         return SetSequence.fromSet(unreachable).contains(next);
       }
     });
