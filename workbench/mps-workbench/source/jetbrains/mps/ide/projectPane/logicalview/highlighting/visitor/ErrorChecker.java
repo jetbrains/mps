@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -68,8 +69,8 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
 
       private void deriveFromChildren(MPSTreeNode node) {
         boolean derivedErrors = false, derivedWarnings = false;
-        for (MPSTreeNode c : node.getChildren()) {
-          final Collection<TreeErrorMessage> childMessages = c.findMessages(TreeErrorMessage.class);
+        for (Iterator<MPSTreeNode> it = node.getChildrenSnapshot().iterator(); it.hasNext(); ) {
+          final Collection<TreeErrorMessage> childMessages = it.next().findMessages(TreeErrorMessage.class);
           if (childMessages.stream().anyMatch(TreeErrorMessage::isError)) {
             derivedErrors = true;
             // no need to check other children, nothing gonna override error severity
