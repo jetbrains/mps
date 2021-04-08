@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:00000000-0000-4000-0000-011c89590329(jetbrains.mps.baseLanguage.collections.dataFlow)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <devkit ref="00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)" />
   </languages>
@@ -628,6 +629,27 @@
                 <ref role="3Tt5mk" to="tp2q:i0I$8bA" resolve="copyFrom" />
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4Nou97eN5hd" role="3cqZAp">
+          <node concept="3clFbS" id="4Nou97eN5hf" role="3clFbx">
+            <node concept="3AgYrR" id="4Nou97eN7dn" role="3cqZAp">
+              <node concept="2OqwBi" id="4Nou97eN7lS" role="3Ah4Yx">
+                <node concept="3__QtB" id="4Nou97eN7dK" role="2Oq$k0" />
+                <node concept="3TrEf2" id="4Nou97eN7yD" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tp2q:1mIpGV0nbbE" resolve="initSize" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4Nou97eN6Wt" role="3clFbw">
+            <node concept="2OqwBi" id="4Nou97eN6zv" role="2Oq$k0">
+              <node concept="3__QtB" id="4Nou97eN6pA" role="2Oq$k0" />
+              <node concept="3TrEf2" id="4Nou97eN6KF" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp2q:1mIpGV0nbbE" resolve="initSize" />
+              </node>
+            </node>
+            <node concept="3x8VRR" id="4Nou97eN79o" role="2OqNvi" />
           </node>
         </node>
       </node>

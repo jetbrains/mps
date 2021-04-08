@@ -361,22 +361,26 @@
     <file name="AbstractContainerCreator_DataFlow.java">
       <node id="1237723938019" at="14,100,15,54" concept="0" />
       <node id="1238663491832" at="17,85,18,110" concept="0" />
-      <node id="1237723936042" at="23,0,24,0" concept="4" trace="initValue$Wx_W" />
-      <node id="1237723936042" at="24,0,25,0" concept="4" trace="copyFrom$DKAJ" />
+      <node id="5537308309487121239" at="20,87,21,110" concept="0" />
+      <node id="1237723936042" at="26,0,27,0" concept="4" trace="initValue$Wx_W" />
+      <node id="1237723936042" at="27,0,28,0" concept="4" trace="copyFrom$DKAJ" />
+      <node id="1237723936042" at="28,0,29,0" concept="4" trace="initSize$VCLN" />
       <node id="1237723938012" at="13,60,16,5" concept="1" />
       <node id="1238663477804" at="16,5,19,5" concept="2" />
-      <node id="1237723936042" at="13,0,21,0" concept="3" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <node id="5537308309487113293" at="19,5,22,5" concept="2" />
+      <node id="1237723936042" at="13,0,24,0" concept="3" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1237723938018" at="14,100,15,54" />
       <scope id="1238663477805" at="17,85,18,110" />
+      <scope id="5537308309487113295" at="20,87,21,110" />
       <scope id="1237723938012" at="13,60,16,5">
         <var name="expression" id="1237723938016" />
       </scope>
-      <scope id="1237723936044" at="13,60,19,5" />
-      <scope id="1237723936042" at="13,0,21,0">
+      <scope id="1237723936044" at="13,60,22,5" />
+      <scope id="1237723936042" at="13,0,24,0">
         <var name="_context" id="1237723936042" />
       </scope>
-      <unit id="1237723936042" at="22,0,26,0" name="jetbrains.mps.baseLanguage.collections.dataFlow.AbstractContainerCreator_DataFlow$LINKS" />
-      <unit id="1237723936042" at="12,0,27,0" name="jetbrains.mps.baseLanguage.collections.dataFlow.AbstractContainerCreator_DataFlow" />
+      <unit id="1237723936042" at="25,0,30,0" name="jetbrains.mps.baseLanguage.collections.dataFlow.AbstractContainerCreator_DataFlow$LINKS" />
+      <unit id="1237723936042" at="12,0,31,0" name="jetbrains.mps.baseLanguage.collections.dataFlow.AbstractContainerCreator_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590329(jetbrains.mps.baseLanguage.collections.dataFlow)/1240251544236">
