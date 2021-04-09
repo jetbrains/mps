@@ -1412,6 +1412,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.collections", "InternalSequenceOperation", 0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL);
     b.class_(false, true, false);
     b.super_("jetbrains.mps.baseLanguage.collections.structure.SequenceOperation", 0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c26c9a2d9L);
+    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xbd2eeacd393ecc9L);
     b.origin("r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)/1204796164442");
     b.version(2);
     b.aggregate("closure", 0x11883748452L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1204796294226").done();
