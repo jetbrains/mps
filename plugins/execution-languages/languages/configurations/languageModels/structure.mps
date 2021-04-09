@@ -21,7 +21,9 @@
       </concept>
     </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -86,9 +88,11 @@
     <node concept="1TJgyj" id="48qzi2IBQyu" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="icon" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="4763274727405873310" />
       <ref role="20lvS9" to="1oap:2p1v3tOa9VI" resolve="Icon" />
+      <node concept="asaX9" id="5UN0iAwOl3A" role="lGtFl">
+        <property role="YLPcu" value="2020.1" />
+      </node>
     </node>
     <node concept="1TJgyj" id="25jQf71X8Fy" role="1TKVEi">
       <property role="20kJfa" value="configurationKind" />

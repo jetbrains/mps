@@ -240,9 +240,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_Project_Parameter;
       case LanguageConceptSwitch.RunConfiguration:
         if (props_RunConfiguration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L);
+          cpb.deprecateAggregation(0x421a8d20ae9f689eL, "icon");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a62b0nb);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a62b0nb);
           props_RunConfiguration = cpb.create();
         }
         return props_RunConfiguration;
