@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,16 @@ import org.jetbrains.annotations.Nullable;
 public class LibDescriptor implements RepositoryPathDescriptor {
   private final IFile myPath;
   @Nullable private final ClassLoader myPluginClassLoader;
+  private final boolean myManagedVisibility;
 
   public LibDescriptor(@NotNull IFile file, @Nullable ClassLoader pluginDescriptor) {
+    this(file, pluginDescriptor, false);
+  }
+
+  public LibDescriptor(@NotNull IFile file, @Nullable ClassLoader pluginDescriptor, boolean hidden) {
     myPath = file;
     myPluginClassLoader = pluginDescriptor;
+    myManagedVisibility = hidden;
   }
 
   public LibDescriptor(@NotNull IFile file) {
@@ -36,6 +42,11 @@ public class LibDescriptor implements RepositoryPathDescriptor {
   @Override
   public IFile getPath() {
     return myPath;
+  }
+
+  // modules with managed visibility are subject to control of VisibleModuleMask
+  public boolean isVisibilityManaged() {
+    return myManagedVisibility;
   }
 
   /**

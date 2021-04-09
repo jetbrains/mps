@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -126,9 +126,10 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
       final Set<SLibrary> currentLibs = new HashSet<>();
       List<LibraryContributor> contributors = myContributors;
       for (LibraryContributor contributor : contributors) {
+        // XXX FWIW, it's only BootstrapLibraryContributor that tells hiddenLanguages==true
         boolean hidden = contributor.hiddenLanguages();
         for (LibDescriptor pathDescriptor : contributor.getPaths()) {
-          SLibrary lib = new SLibrary(myRepository, pathDescriptor, myModuleDescriptorIO, hidden);
+          SLibrary lib = new SLibrary(myRepository, pathDescriptor, myModuleDescriptorIO, hidden || pathDescriptor.isVisibilityManaged());
           currentLibs.add(lib);
         }
       }
