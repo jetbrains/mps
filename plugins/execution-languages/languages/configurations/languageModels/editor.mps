@@ -374,9 +374,6 @@
           <property role="VOm3f" value="false" />
         </node>
       </node>
-      <node concept="3F1sOY" id="48qzi2IBQ$L" role="3EZMnx">
-        <ref role="1NtTu8" to="uhxm:48qzi2IBQyu" resolve="icon" />
-      </node>
       <node concept="3F0ifn" id="cqRc3G8w2v" role="3EZMnx">
         <node concept="VPM3Z" id="cqRc3G8w2w" role="3F10Kt">
           <property role="VOm3f" value="false" />
