@@ -10091,37 +10091,45 @@
       <node id="963887337804010668" at="219,72,220,365" concept="12" />
       <node id="963887337804010669" at="221,15,222,184" concept="12" />
       <node id="963887337804010669" at="222,184,223,77" concept="6" />
-      <node id="1225278681706" at="227,13,228,72" concept="12" />
-      <node id="1225278681706" at="228,72,229,231" concept="12" />
-      <node id="1829647324192782278" at="230,15,231,185" concept="12" />
-      <node id="1829647324192782278" at="231,185,232,77" concept="6" />
-      <node id="1223642399956" at="242,137,243,81" concept="12" />
-      <node id="1472904739618419302" at="245,54,246,17" concept="4" />
-      <node id="8937659523942275424" at="250,11,251,70" concept="12" />
-      <node id="8937659523942275424" at="251,70,252,231" concept="12" />
-      <node id="6067900799350600164" at="259,53,260,56" concept="13" />
-      <node id="1223640197349" at="264,0,265,0" concept="16" trace="SetAccessor$jF" />
-      <node id="1223640197349" at="265,0,266,0" concept="16" trace="TryFinallyStatement$oi" />
-      <node id="1223640197349" at="266,0,267,0" concept="16" trace="StatementList$m_" />
-      <node id="1223640197349" at="267,0,268,0" concept="16" trace="Statement$P6" />
-      <node id="1223640197349" at="268,0,269,0" concept="16" trace="LocalVariableDeclarationStatement$4w" />
-      <node id="1223640197349" at="269,0,270,0" concept="16" trace="BaseMethodDeclaration$kD" />
-      <node id="1223640197349" at="270,0,271,0" concept="16" trace="ILocalReference$Us" />
-      <node id="1223640197349" at="271,0,272,0" concept="16" trace="BaseAssignmentExpression$PA" />
-      <node id="1223640197349" at="272,0,273,0" concept="16" trace="IControlFlowInterrupter$Ra" />
-      <node id="1223640197349" at="273,0,274,0" concept="16" trace="VariableReference$TC" />
-      <node id="1223640197349" at="274,0,275,0" concept="16" trace="LocalVariableDeclaration$41" />
-      <node id="1223640197349" at="275,0,276,0" concept="16" trace="ParameterDeclaration$RG" />
-      <node id="1223640197349" at="276,0,277,0" concept="16" trace="IVariableAssignment$mo" />
-      <node id="1223640197349" at="277,0,278,0" concept="16" trace="IVariableDeclaration$Zo" />
-      <node id="1223640197349" at="278,0,279,0" concept="16" trace="CatchClause$Ig" />
-      <node id="1223640197349" at="279,0,280,0" concept="16" trace="Quotation$Vl" />
-      <node id="1223640197349" at="283,0,284,0" concept="16" trace="statement$53DE" />
-      <node id="1223640197349" at="284,0,285,0" concept="16" trace="localVariableDeclaration$RpjM" />
-      <node id="1223640197349" at="285,0,286,0" concept="16" trace="lValue$splI" />
-      <node id="1223640197349" at="286,0,287,0" concept="16" trace="variableDeclaration$N1XG" />
-      <node id="1223640197349" at="287,0,288,0" concept="16" trace="initializer$2twD" />
-      <node id="1223640197349" at="291,0,292,0" concept="16" trace="name$MnvL" />
+      <node id="5885571348732287789" at="227,13,228,72" concept="12" />
+      <node id="5885571348732287789" at="228,72,229,237" concept="12" />
+      <node id="5885571348732287793" at="230,15,231,185" concept="12" />
+      <node id="5885571348732287793" at="231,185,232,77" concept="6" />
+      <node id="5885571348733373087" at="236,13,237,72" concept="12" />
+      <node id="5885571348733373087" at="237,72,238,235" concept="12" />
+      <node id="5885571348733373091" at="239,15,240,185" concept="12" />
+      <node id="5885571348733373091" at="240,185,241,77" concept="6" />
+      <node id="1225278681706" at="245,13,246,72" concept="12" />
+      <node id="1225278681706" at="246,72,247,232" concept="12" />
+      <node id="1829647324192782278" at="248,15,249,185" concept="12" />
+      <node id="1829647324192782278" at="249,185,250,77" concept="6" />
+      <node id="1223642399956" at="260,137,261,81" concept="12" />
+      <node id="1472904739618419302" at="263,54,264,17" concept="4" />
+      <node id="8937659523942275424" at="268,11,269,70" concept="12" />
+      <node id="8937659523942275424" at="269,70,270,231" concept="12" />
+      <node id="6067900799350600164" at="277,53,278,56" concept="13" />
+      <node id="1223640197349" at="282,0,283,0" concept="16" trace="SetAccessor$jF" />
+      <node id="1223640197349" at="283,0,284,0" concept="16" trace="TryFinallyStatement$oi" />
+      <node id="1223640197349" at="284,0,285,0" concept="16" trace="StatementList$m_" />
+      <node id="1223640197349" at="285,0,286,0" concept="16" trace="Statement$P6" />
+      <node id="1223640197349" at="286,0,287,0" concept="16" trace="LocalVariableDeclarationStatement$4w" />
+      <node id="1223640197349" at="287,0,288,0" concept="16" trace="BaseMethodDeclaration$kD" />
+      <node id="1223640197349" at="288,0,289,0" concept="16" trace="ILocalReference$Us" />
+      <node id="1223640197349" at="289,0,290,0" concept="16" trace="BaseAssignmentExpression$PA" />
+      <node id="1223640197349" at="290,0,291,0" concept="16" trace="IControlFlowInterrupter$Ra" />
+      <node id="1223640197349" at="291,0,292,0" concept="16" trace="VariableReference$TC" />
+      <node id="1223640197349" at="292,0,293,0" concept="16" trace="LocalVariableDeclaration$41" />
+      <node id="1223640197349" at="293,0,294,0" concept="16" trace="ParameterDeclaration$RG" />
+      <node id="1223640197349" at="294,0,295,0" concept="16" trace="IVariableAssignment$mo" />
+      <node id="1223640197349" at="295,0,296,0" concept="16" trace="IVariableDeclaration$Zo" />
+      <node id="1223640197349" at="296,0,297,0" concept="16" trace="CatchClause$Ig" />
+      <node id="1223640197349" at="297,0,298,0" concept="16" trace="Quotation$Vl" />
+      <node id="1223640197349" at="301,0,302,0" concept="16" trace="statement$53DE" />
+      <node id="1223640197349" at="302,0,303,0" concept="16" trace="localVariableDeclaration$RpjM" />
+      <node id="1223640197349" at="303,0,304,0" concept="16" trace="lValue$splI" />
+      <node id="1223640197349" at="304,0,305,0" concept="16" trace="variableDeclaration$N1XG" />
+      <node id="1223640197349" at="305,0,306,0" concept="16" trace="initializer$2twD" />
+      <node id="1223640197349" at="309,0,310,0" concept="16" trace="name$MnvL" />
       <node id="1223640197351" at="40,0,42,0" concept="3" trace="DataFlowUtil#()V" />
       <node id="1223640343616" at="86,14,88,9" concept="1" />
       <node id="4282822416100098745" at="140,16,142,11" concept="1" />
@@ -10136,8 +10144,8 @@
       <node id="1239367892226" at="160,7,163,7" concept="10" />
       <node id="1934412383769688142" at="211,91,214,13" concept="10" />
       <node id="963887337804010590" at="214,13,217,13" concept="10" />
-      <node id="1472904739618419286" at="244,140,247,7" concept="10" />
-      <node id="6067900799350600135" at="259,0,262,0" concept="17" trace="tooComplex#(Ljetbrains/mps/lang/dataFlow/framework/Program;)Z" />
+      <node id="1472904739618419286" at="262,140,265,7" concept="10" />
+      <node id="6067900799350600135" at="277,0,280,0" concept="17" trace="tooComplex#(Ljetbrains/mps/lang/dataFlow/framework/Program;)Z" />
       <node id="8249991444799099355" at="42,0,46,0" concept="17" trace="checkDataFlow#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6067900799350600197" at="58,32,62,9" concept="1" />
       <node id="7854334384276069765" at="96,102,100,11" concept="1" />
@@ -10148,47 +10156,51 @@
       <node id="7567158975344997933" at="189,244,193,17" concept="1" />
       <node id="1225278748067" at="201,115,205,11" concept="1" />
       <node id="963887337804010669" at="220,365,224,15" concept="1" />
-      <node id="1829647324192782278" at="229,231,233,15" concept="1" />
-      <node id="8937659523942275424" at="249,272,253,11" concept="1" />
+      <node id="5885571348732287793" at="229,237,233,15" concept="1" />
+      <node id="5885571348733373091" at="238,235,242,15" concept="1" />
+      <node id="1829647324192782278" at="247,232,251,15" concept="1" />
+      <node id="8937659523942275424" at="267,272,271,11" concept="1" />
       <node id="1223640343596" at="83,107,88,9" concept="10" />
       <node id="7854334384276189192" at="101,14,106,9" concept="1" />
       <node id="1529050434900907651" at="165,117,171,9" concept="10" />
       <node id="1225278748065" at="200,96,206,9" concept="10" />
-      <node id="8937659523942275396" at="248,186,254,9" concept="10" />
+      <node id="8937659523942275396" at="266,186,272,9" concept="10" />
       <node id="6067900799350600172" at="57,61,64,7" concept="10" />
       <node id="1223640538232" at="118,71,125,5" concept="9" />
       <node id="4282822416100098740" at="135,16,142,11" concept="10" />
       <node id="4282822416100098738" at="135,14,143,9" concept="1" />
       <node id="7567158975344997930" at="186,251,194,15" concept="1" />
       <node id="963887337804010668" at="217,13,225,13" concept="1" />
-      <node id="1225278681706" at="226,18,234,13" concept="1" />
-      <node id="8937659523942275375" at="247,7,255,7" concept="10" />
+      <node id="5885571348732287789" at="226,97,234,13" concept="1" />
+      <node id="5885571348733373087" at="235,92,243,13" concept="1" />
+      <node id="1225278681706" at="244,18,252,13" concept="1" />
+      <node id="8937659523942275375" at="265,7,273,7" concept="10" />
       <node id="3652446454730672468" at="163,7,172,7" concept="10" />
-      <node id="963887337804010666" at="226,16,235,11" concept="1" />
+      <node id="963887337804010666" at="244,16,253,11" concept="1" />
       <node id="7567158975344997872" at="185,179,195,13" concept="10" />
       <node id="7854334384274950464" at="95,112,106,9" concept="10" />
       <node id="1223640503736" at="116,0,127,0" concept="17" trace="checkUnreachable#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
       <node id="4282822416100098733" at="132,54,143,9" concept="10" />
       <node id="1223642282214" at="184,193,196,11" concept="10" />
-      <node id="8937659523942256701" at="243,81,256,5" concept="9" />
+      <node id="8937659523942256701" at="261,81,274,5" concept="9" />
       <node id="4282822416100098714" at="130,39,144,7" concept="10" />
       <node id="7567158975344997793" at="182,33,197,9" concept="10" />
       <node id="4282822416100098709" at="129,55,145,5" concept="9" />
-      <node id="1223642397405" at="241,0,258,0" concept="17" trace="checkUnusedVariables#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
+      <node id="1223642397405" at="259,0,276,0" concept="17" trace="checkUnusedVariables#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
       <node id="1223640624803" at="155,76,173,5" concept="9" />
       <node id="8249991444799099454" at="55,5,74,5" concept="21" />
       <node id="1223642282207" at="179,43,198,7" concept="10" />
       <node id="4282822416100098688" at="127,0,148,0" concept="17" trace="getUnreachableNodes#(Ljetbrains/mps/lang/dataFlow/framework/Program;)Ljava/util/Set;" />
       <node id="1223640603748" at="153,0,175,0" concept="17" trace="checkUninitializedReads#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
-      <node id="1934412383769688116" at="209,115,235,11" concept="10" />
       <node id="1223640343583" at="80,50,107,7" concept="10" />
-      <node id="1225278681704" at="208,96,236,9" concept="10" />
       <node id="1223640221746" at="47,0,76,0" concept="17" trace="checkDataFlow#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Lorg/jetbrains/mps/openapi/model/SNode;Z)V" />
       <node id="1223640343581" at="79,70,108,5" concept="9" />
       <node id="1223640283876" at="77,0,110,0" concept="17" trace="checkReturns#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
-      <node id="1225278748058" at="198,7,237,7" concept="10" />
-      <node id="1223642282205" at="178,74,238,5" concept="9" />
-      <node id="1223642182744" at="176,0,240,0" concept="17" trace="checkUnusedAssignments#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
+      <node id="1934412383769688116" at="209,115,253,11" concept="10" />
+      <node id="1225278681704" at="208,96,254,9" concept="10" />
+      <node id="1225278748058" at="198,7,255,7" concept="10" />
+      <node id="1223642282205" at="178,74,256,5" concept="9" />
+      <node id="1223642182744" at="176,0,258,0" concept="17" trace="checkUnusedAssignments#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/dataFlow/framework/Program;)V" />
       <scope id="1223640197354" at="40,25,40,25" />
       <scope id="8249991444799099358" at="43,104,44,61" />
       <scope id="8249991444799099449" at="49,32,50,13" />
@@ -10208,8 +10220,8 @@
       <scope id="1239367892227" at="161,258,162,187" />
       <scope id="1934412383769688143" at="212,130,213,23" />
       <scope id="963887337804010591" at="215,82,216,23" />
-      <scope id="1472904739618419287" at="245,54,246,17" />
-      <scope id="6067900799350600138" at="259,53,260,56" />
+      <scope id="1472904739618419287" at="263,54,264,17" />
+      <scope id="6067900799350600138" at="277,53,278,56" />
       <scope id="1223640197351" at="40,0,42,0" />
       <scope id="6067900799350600197" at="59,9,61,307">
         <var name="_reporter_2309309498" id="6067900799350600197" />
@@ -10244,10 +10256,16 @@
       <scope id="963887337804010669" at="221,15,223,77">
         <var name="intentionProvider" id="963887337804010669" />
       </scope>
-      <scope id="1829647324192782278" at="230,15,232,77">
+      <scope id="5885571348732287793" at="230,15,232,77">
+        <var name="intentionProvider" id="5885571348732287793" />
+      </scope>
+      <scope id="5885571348733373091" at="239,15,241,77">
+        <var name="intentionProvider" id="5885571348733373091" />
+      </scope>
+      <scope id="1829647324192782278" at="248,15,250,77">
         <var name="intentionProvider" id="1829647324192782278" />
       </scope>
-      <scope id="8937659523942275424" at="250,11,252,231">
+      <scope id="8937659523942275424" at="268,11,270,231">
         <var name="_reporter_2309309498" id="8937659523942275424" />
         <var name="errorTarget" id="8937659523942275424" />
       </scope>
@@ -10255,7 +10273,7 @@
       <scope id="4282822416100098663" at="148,0,151,0">
         <var name="instruction" id="4282822416100098666" />
       </scope>
-      <scope id="6067900799350600135" at="259,0,262,0">
+      <scope id="6067900799350600135" at="277,0,280,0">
         <var name="program" id="6067900799350600140" />
       </scope>
       <scope id="8249991444799099355" at="42,0,46,0">
@@ -10270,7 +10288,7 @@
       </scope>
       <scope id="1529050434900907652" at="166,325,170,11" />
       <scope id="1225278748066" at="201,115,205,11" />
-      <scope id="8937659523942275397" at="249,272,253,11" />
+      <scope id="8937659523942275397" at="267,272,271,11" />
       <scope id="6067900799350600173" at="58,32,63,15" />
       <scope id="1223640538233" at="119,33,124,13" />
       <scope id="7567158975344997930" at="187,15,193,17">
@@ -10281,11 +10299,19 @@
         <var name="_reporter_2309309498" id="963887337804010668" />
         <var name="errorTarget" id="963887337804010668" />
       </scope>
-      <scope id="1225278681706" at="227,13,233,15">
+      <scope id="5885571348732287789" at="227,13,233,15">
+        <var name="_reporter_2309309498" id="5885571348732287789" />
+        <var name="errorTarget" id="5885571348732287789" />
+      </scope>
+      <scope id="5885571348733373087" at="236,13,242,15">
+        <var name="_reporter_2309309498" id="5885571348733373087" />
+        <var name="errorTarget" id="5885571348733373087" />
+      </scope>
+      <scope id="1225278681706" at="245,13,251,15">
         <var name="_reporter_2309309498" id="1225278681706" />
         <var name="errorTarget" id="1225278681706" />
       </scope>
-      <scope id="8937659523942275376" at="248,186,254,9" />
+      <scope id="8937659523942275376" at="266,186,272,9" />
       <scope id="1223640538232" at="118,71,125,5">
         <var name="n" id="1223640538238" />
       </scope>
@@ -10300,22 +10326,24 @@
         <var name="unreachable" id="1223640538227" />
       </scope>
       <scope id="7567158975344997873" at="186,251,194,15" />
-      <scope id="963887337804010667" at="226,18,234,13" />
+      <scope id="5885571348732246451" at="226,97,234,13" />
+      <scope id="5885571348733358036" at="235,92,243,13" />
+      <scope id="963887337804010667" at="244,18,252,13" />
       <scope id="1223642282215" at="185,179,195,13" />
       <scope id="1223640503736" at="116,0,127,0">
         <var name="program" id="8101676149486022469" />
         <var name="typeCheckingContext" id="1223640503736" />
       </scope>
-      <scope id="8937659523942256702" at="244,140,255,7" />
+      <scope id="8937659523942256702" at="262,140,273,7" />
       <scope id="4282822416100098724" at="131,73,143,9">
         <var name="unreachableNode" id="4282822416100098726" />
       </scope>
       <scope id="7567158975344997794" at="183,132,196,11" />
-      <scope id="8937659523942256701" at="243,81,256,5">
+      <scope id="8937659523942256701" at="261,81,274,5">
         <var name="var" id="8937659523942256705" />
       </scope>
       <scope id="4282822416100098713" at="130,39,144,7" />
-      <scope id="1223642397408" at="242,137,256,5">
+      <scope id="1223642397408" at="260,137,274,5">
         <var name="usedVariables" id="1223642399957" />
       </scope>
       <scope id="8249991444799099455" at="56,9,71,7">
@@ -10334,7 +10362,7 @@
         <var name="assignment" id="1223642282210" />
         <var name="declaration" id="7567158975344997827" />
       </scope>
-      <scope id="1223642397405" at="241,0,258,0">
+      <scope id="1223642397405" at="259,0,276,0">
         <var name="program" id="8101676149486022512" />
         <var name="statementList" id="1223642429044" />
         <var name="typeCheckingContext" id="1223642397405" />
@@ -10364,7 +10392,6 @@
       <scope id="1223640221749" at="48,126,74,5">
         <var name="m" id="8526811989160158821" />
       </scope>
-      <scope id="1225278681705" at="209,115,235,11" />
       <scope id="1223640343582" at="80,50,107,7" />
       <scope id="1223640221746" at="47,0,76,0">
         <var name="checkReturns" id="8249991444799099507" />
@@ -10374,9 +10401,6 @@
       <scope id="1223640343581" at="79,70,108,5">
         <var name="expectedReturn" id="1223640343643" />
       </scope>
-      <scope id="7292875354317743159" at="207,88,236,9">
-        <var name="variableAssignment" id="1225278681700" />
-      </scope>
       <scope id="1223640283879" at="78,99,108,5">
         <var name="expectedReturns" id="1223640343576" />
       </scope>
@@ -10384,21 +10408,25 @@
         <var name="program" id="8101676149486022478" />
         <var name="typeCheckingContext" id="1223640283876" />
       </scope>
-      <scope id="1223642282206" at="179,43,237,7" />
-      <scope id="1223642282205" at="178,74,238,5">
+      <scope id="1225278681705" at="209,115,253,11" />
+      <scope id="7292875354317743159" at="207,88,254,9">
+        <var name="variableAssignment" id="1225278681700" />
+      </scope>
+      <scope id="1223642282206" at="179,43,255,7" />
+      <scope id="1223642282205" at="178,74,256,5">
         <var name="write" id="1223642282313" />
       </scope>
-      <scope id="1223642182747" at="177,110,238,5">
+      <scope id="1223642182747" at="177,110,256,5">
         <var name="unusedAssignments" id="1223642282194" />
       </scope>
-      <scope id="1223642182744" at="176,0,240,0">
+      <scope id="1223642182744" at="176,0,258,0">
         <var name="program" id="8249991444799094866" />
         <var name="typeCheckingContext" id="1223642182744" />
       </scope>
-      <unit id="1223640197349" at="290,0,293,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil$PROPS" />
-      <unit id="1223640197349" at="282,0,289,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil$LINKS" />
-      <unit id="1223640197349" at="263,0,281,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil$CONCEPTS" />
-      <unit id="1223640197349" at="38,0,294,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil" />
+      <unit id="1223640197349" at="308,0,311,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil$PROPS" />
+      <unit id="1223640197349" at="300,0,307,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil$LINKS" />
+      <unit id="1223640197349" at="281,0,299,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil$CONCEPTS" />
+      <unit id="1223640197349" at="38,0,312,0" name="jetbrains.mps.baseLanguage.typesystem.DataFlowUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1224574932971">

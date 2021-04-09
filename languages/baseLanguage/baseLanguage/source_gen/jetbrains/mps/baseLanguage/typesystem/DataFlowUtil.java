@@ -223,10 +223,28 @@ public class DataFlowUtil {
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
               }
             }
+          } else if (SNodeOperations.isInstanceOf(write, CONCEPTS.BaseAssignmentExpression$PA)) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885571348732287789", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "5885571348732287793", false);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
+          } else if (SNodeOperations.isInstanceOf(write, CONCEPTS.IVariableAssignment$mo)) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5885571348733373087", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "5885571348733373091", false);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
           } else {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278681706", null, errorTarget);
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(write, "Unused declaration", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1225278681706", null, errorTarget);
               {
                 BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedAssignment_QuickFix", "1829647324192782278", false);
                 _reporter_2309309498.addIntentionProvider(intentionProvider);
