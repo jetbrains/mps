@@ -24,6 +24,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.ITypeApplicable__BehaviorDescriptor;
 import jetbrains.mps.errors.BaseQuickFixProvider;
+import jetbrains.mps.baseLanguage.behavior.IInferredType__BehaviorDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -139,20 +140,45 @@ public class TypeVariableMatchUtil {
             final SNode A = argt_var;
             typeCheckingContext.whenConcrete(A, new Runnable() {
               public void run() {
-                {
-                  SNode _nodeToCheck_1029348928467 = staticMethodCall;
-                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510825", 0, null);
+                final SNode expanded = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs);
+                if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(A), CONCEPTS.IInferredType$Qo)) {
+                  // Infer type directly
                   {
-                    BaseQuickFixProvider intentionProvider = null;
-                    intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "5977092449933510826", false);
-                    intentionProvider.putArgument("desiredType", _type);
-                    intentionProvider.putArgument("expression", actualArgument);
-                    _info_12389875345.addIntentionProvider(intentionProvider);
+                    SNode _nodeToCheck_1029348928467 = staticMethodCall;
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391927722643", 0, null);
+                    {
+                      BaseQuickFixProvider intentionProvider = null;
+                      intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391927777624", false);
+                      intentionProvider.putArgument("desiredType", _type);
+                      intentionProvider.putArgument("expression", actualArgument);
+                      _info_12389875345.addIntentionProvider(intentionProvider);
+                    }
+                    typeCheckingContext.createGreaterThanInequality((SNode) IInferredType__BehaviorDescriptor.getTypeToInfer_id6WTbe$Jz7ah.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.cast(typeCheckingContext.getExpandedNode(A), CONCEPTS.IInferredType$Qo))), expanded), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
                   }
-                  typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(_type, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
+                } else {
+                  // Otherwise do regular type checking with concrete type
+                  {
+                    final SNode concreteDeep = typeCheckingContext.getExpandedNode(A);
+                    typeCheckingContext.whenConcrete(concreteDeep, new Runnable() {
+                      public void run() {
+                        {
+                          SNode _nodeToCheck_1029348928467 = staticMethodCall;
+                          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510825", 0, null);
+                          {
+                            BaseQuickFixProvider intentionProvider = null;
+                            intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "5977092449933510826", false);
+                            intentionProvider.putArgument("desiredType", _type);
+                            intentionProvider.putArgument("expression", actualArgument);
+                            _info_12389875345.addIntentionProvider(intentionProvider);
+                          }
+                          typeCheckingContext.createGreaterThanInequality((SNode) expanded, (SNode) typeCheckingContext.getExpandedNode(concreteDeep), false, true, _info_12389875345);
+                        }
+                      }
+                    }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391927728375", false, false);
+                  }
                 }
               }
-            }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510823", false, false);
+            }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449933510823", true, false);
           }
         } else {
           if (!(typeCheckingContext.isSingleTypeComputation())) {
@@ -194,5 +220,6 @@ public class TypeVariableMatchUtil {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SInterfaceConcept IInferredType$Qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
   }
 }

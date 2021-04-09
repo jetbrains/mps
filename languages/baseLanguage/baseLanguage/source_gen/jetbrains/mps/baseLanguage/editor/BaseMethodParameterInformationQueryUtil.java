@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.IMethodCall__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
@@ -29,7 +29,7 @@ public class BaseMethodParameterInformationQueryUtil {
     List<SNode> methodsToShow = new ArrayList<SNode>();
     SNode method = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw);
     SNode targetContainer = SNodeOperations.cast(SNodeOperations.getParent(method), CONCEPTS.IMemberContainer$yM);
-    Iterable<SNode> members = IMethodCall__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(methodCall, SPropertyOperations.getString(method, PROPS.name$MnvL));
+    Iterable<SNode> members = IFixableMethodReference__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(methodCall, SPropertyOperations.getString(method, PROPS.name$MnvL));
     if (Sequence.fromIterable(members).isEmpty()) {
       members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(targetContainer);
     }

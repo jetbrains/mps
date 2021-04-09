@@ -6,40 +6,51 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MethodParameterMatcher {
-  private final List<SNode> myMethodParams;
+  private final List<SNode> myMethodParamTypes;
   private final List<SNode> myCallParamTypes;
 
-  public MethodParameterMatcher(List<SNode> methodParameters, List<SNode> callParams) {
-    myMethodParams = methodParameters;
+  public MethodParameterMatcher(List<SNode> methodTypes, List<SNode> callTypes) {
+    myMethodParamTypes = methodTypes;
+    myCallParamTypes = callTypes;
+  }
+
+  public static MethodParameterMatcher fromParameterAndExpressions(List<SNode> methodParameters, List<SNode> callParams) {
+    List<SNode> methodTypes = ListSequence.fromList(methodParameters).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return SLinkOperations.getTarget(it, LINKS.type$a1UY);
+      }
+    }).toListSequence();
 
     // Get type to set to future new parameters
-    myCallParamTypes = ListSequence.fromList(callParams).select(new ISelector<SNode, SNode>() {
+    List<SNode> callTypes = ListSequence.fromList(callParams).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        SNode argType = (it != null && !(SNodeOperations.getConcept(it).isAbstract()) ? TypecheckingFacade.getFromContext().getTypeOf(it) : createClassifierType_7zrs51_a0a0a0a0a0d0d());
+        SNode argType = (it != null && !(SNodeOperations.getConcept(it).isAbstract()) ? TypecheckingFacade.getFromContext().getTypeOf(it) : createClassifierType_7zrs51_a0a0a0a0a0d0f());
 
         if (SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$4a)) {
-          argType = createClassifierType_7zrs51_a0a0c0a0a0a3a3();
+          argType = createClassifierType_7zrs51_a0a0c0a0a0a3a5();
         }
 
         return argType;
       }
     }).toListSequence();
+
+    return new MethodParameterMatcher(methodTypes, callTypes);
   }
 
   /**
@@ -54,11 +65,11 @@ public class MethodParameterMatcher {
    */
   public Tuples._2<Integer[], Integer[]> findAppropriateMatching() {
     // List compatible call values for each method parameter
-    Integer[][] compatiblesValues = ListSequence.fromList(myMethodParams).select(new ISelector<SNode, Integer[]>() {
+    Integer[][] compatiblesValues = ListSequence.fromList(myMethodParamTypes).select(new ISelector<SNode, Integer[]>() {
       public Integer[] select(SNode param) {
         List<Integer> typesIndexes = ListSequence.fromList(new ArrayList<Integer>());
         for (int i = 0; i < ListSequence.fromList(myCallParamTypes).count(); i++) {
-          if (TypecheckingFacade.getFromContext().isSubtype(ListSequence.fromList(myCallParamTypes).getElement(i), SLinkOperations.getTarget(param, LINKS.type$a1UY))) {
+          if (TypecheckingFacade.getFromContext().isSubtype(ListSequence.fromList(myCallParamTypes).getElement(i), param)) {
             ListSequence.fromList(typesIndexes).addElement(i);
           }
         }
@@ -68,14 +79,14 @@ public class MethodParameterMatcher {
 
 
     // Mappings from original method parameters to call parameters
-    Integer[] methodParamMappedTo = ListSequence.fromList(myMethodParams).select(new ISelector<SNode, Integer>() {
+    Integer[] methodParamMappedTo = ListSequence.fromList(myMethodParamTypes).select(new ISelector<SNode, Integer>() {
       public Integer select(SNode it) {
-        return as_7zrs51_a0a0a0a0a0a0f0f(-1, Integer.class);
+        return as_7zrs51_a0a0a0a0a0a0f0h(-1, Integer.class);
       }
     }).toGenericArray(Integer.class);
     Integer[] callParamMappedFrom = ListSequence.fromList(myCallParamTypes).select(new ISelector<SNode, Integer>() {
       public Integer select(SNode it) {
-        return as_7zrs51_a0a0a0a0a0a0g0f(-1, Integer.class);
+        return as_7zrs51_a0a0a0a0a0a0g0h(-1, Integer.class);
       }
     }).toGenericArray(Integer.class);
 
@@ -226,32 +237,32 @@ public class MethodParameterMatcher {
     return this.myCallParamTypes;
   }
 
-  private static SNode createClassifierType_7zrs51_a0a0a0a0a0d0d() {
+  private static SNode createClassifierType_7zrs51_a0a0a0a0a0d0f() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
     n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     return n0.getResult();
   }
-  private static SNode createClassifierType_7zrs51_a0a0c0a0a0a3a3() {
+  private static SNode createClassifierType_7zrs51_a0a0c0a0a0a3a5() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
     n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     return n0.getResult();
   }
-  private static <T> T as_7zrs51_a0a0a0a0a0a0f0f(Object o, Class<T> type) {
+  private static <T> T as_7zrs51_a0a0a0a0a0a0f0h(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_7zrs51_a0a0a0a0a0a0g0f(Object o, Class<T> type) {
+  private static <T> T as_7zrs51_a0a0a0a0a0a0g0h(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
-    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

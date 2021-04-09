@@ -103,7 +103,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
           return tmp;
         }
       }).toListSequence();
-      newType = _quotation_createNode_4w0o2k_a0c0a71a1(classifier, typeParam);
+      newType = _quotation_createNode_4w0o2k_a0c0a71a1(typeParam, classifier);
       IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(newType, subs);
     }
 
@@ -201,8 +201,8 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
     SNode quotedNode_4 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_3 = nb.getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
-    for (SNode child : (List<SNode>) parameter_2) {
+    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_2);
+    for (SNode child : (List<SNode>) parameter_1) {
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
     }
     return quotedNode_3;

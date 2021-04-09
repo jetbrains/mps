@@ -24,6 +24,7 @@ import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.ITypeApplicable__BehaviorDescriptor;
 import jetbrains.mps.errors.BaseQuickFixProvider;
+import jetbrains.mps.baseLanguage.behavior.IInferredType__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -162,20 +163,49 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
                       if (rawInstanceType) {
                         gtype = IGenericType__BehaviorDescriptor.eraseGenerics_id4qyz6djw13y.invoke(SNodeOperations.cast(gtype, CONCEPTS.IGenericType$13));
                       }
-                      {
-                        SNode _nodeToCheck_1029348928467 = mcallop;
-                        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4660288602099522921", 0, null);
+
+                      gtype = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(gtype, CONCEPTS.IGenericType$13), subs);
+
+                      if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(A), CONCEPTS.IInferredType$Qo)) {
+                        // Infer type directly
                         {
-                          BaseQuickFixProvider intentionProvider = null;
-                          intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "7196467959883407981", false);
-                          intentionProvider.putArgument("desiredType", _type);
-                          intentionProvider.putArgument("expression", actualArgument);
-                          _info_12389875345.addIntentionProvider(intentionProvider);
+                          SNode _nodeToCheck_1029348928467 = mcallop;
+                          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391927774132", 0, null);
+                          {
+                            BaseQuickFixProvider intentionProvider = null;
+                            intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "8014486391927774133", false);
+                            intentionProvider.putArgument("desiredType", _type);
+                            intentionProvider.putArgument("expression", actualArgument);
+                            _info_12389875345.addIntentionProvider(intentionProvider);
+                          }
+                          typeCheckingContext.createGreaterThanInequality((SNode) IInferredType__BehaviorDescriptor.getTypeToInfer_id6WTbe$Jz7ah.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.cast(typeCheckingContext.getExpandedNode(A), CONCEPTS.IInferredType$Qo))), gtype), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
                         }
-                        typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(gtype, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.getExpandedNode(A), false, true, _info_12389875345);
+
+                      } else {
+                        // Otherwise do regular type checking with concrete type
+                        final SNode finalType = gtype;
+                        {
+                          final SNode concreteArg = typeCheckingContext.getExpandedNode(A);
+                          typeCheckingContext.whenConcrete(concreteArg, new Runnable() {
+                            public void run() {
+                              {
+                                SNode _nodeToCheck_1029348928467 = mcallop;
+                                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4660288602099522921", 0, null);
+                                {
+                                  BaseQuickFixProvider intentionProvider = null;
+                                  intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "7196467959883407981", false);
+                                  intentionProvider.putArgument("desiredType", _type);
+                                  intentionProvider.putArgument("expression", actualArgument);
+                                  _info_12389875345.addIntentionProvider(intentionProvider);
+                                }
+                                typeCheckingContext.createGreaterThanInequality((SNode) finalType, (SNode) typeCheckingContext.getExpandedNode(concreteArg), false, true, _info_12389875345);
+                              }
+                            }
+                          }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391927770748", false, false);
+                        }
                       }
                     }
-                  }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3058438378413428023", false, false);
+                  }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3058438378413428023", true, false);
                 }
               } else {
                 if (!(typeCheckingContext.isSingleTypeComputation())) {
@@ -240,6 +270,7 @@ public class typeof_InstanceMethodCallOperation_InferenceRule extends AbstractIn
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SInterfaceConcept IInferredType$Qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
     /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 }

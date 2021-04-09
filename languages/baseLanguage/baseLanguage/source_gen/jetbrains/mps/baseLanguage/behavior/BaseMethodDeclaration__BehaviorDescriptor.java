@@ -36,6 +36,8 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.typesystem.RulesFunctions_BaseLanguage;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -81,8 +83,9 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Void> markDeprecated_id6Va_BJexupi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6Va_BJexupi").build();
   public static final SMethod<Void> unmarkDeprecated_id6Va_BJex$aE = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("unmarkDeprecated").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6Va_BJex$aE").build();
   public static final SMethod<Void> markLoadedNodeAsDeprecated_id5H8W9_EDFVg = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markLoadedNodeAsDeprecated").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5H8W9_EDFVg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> canProvideInferenceContext_idJiVENj$Z0y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canProvideInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JiVENj$Z0y").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getExpectedRetType_idi2fhBNC, isImplementation_id19gBtYEvixA, getBody_idi2fhZ_m, getChildrenToDisplayIntention_id3vsDNFqJVhw, isReturnsVoid_idhX_$1pM, getParametersPresentation_idhEwIAYw, getPresentation_idhEwIMiw, getBaseMethod_id4mmymf_0z7l, getNearestOverriddenMethod_id4DuBHEkPTzU, getMethodToImplement_id3RE744JWbF, hasSameParameters_idJuSt8W4$Q2, hasSameSignature_idhEwIB0z, getErasureSignature_id2t8d$bukubq, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, isAnAbstractMethod_id28P2dHxCoRl, getTypeAnnotation_idhXbqSv6, jniSignature_id7F81Cd2CcPY, getThrowableTypes_id5op8ooRkkc7, hasAnnotation_id4LgT5De$Kd_, hasAnnotation_id3WDGf12DPy8, getTraceableProperty_id4pl5GY7LKmH, getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getTypeApplicationParameters_id7bu6bIyR2DR, getInferrableTypeVars_id5W9RYt5baxk, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_EDFVg);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getExpectedRetType_idi2fhBNC, isImplementation_id19gBtYEvixA, getBody_idi2fhZ_m, getChildrenToDisplayIntention_id3vsDNFqJVhw, isReturnsVoid_idhX_$1pM, getParametersPresentation_idhEwIAYw, getPresentation_idhEwIMiw, getBaseMethod_id4mmymf_0z7l, getNearestOverriddenMethod_id4DuBHEkPTzU, getMethodToImplement_id3RE744JWbF, hasSameParameters_idJuSt8W4$Q2, hasSameSignature_idhEwIB0z, getErasureSignature_id2t8d$bukubq, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, isAnAbstractMethod_id28P2dHxCoRl, getTypeAnnotation_idhXbqSv6, jniSignature_id7F81Cd2CcPY, getThrowableTypes_id5op8ooRkkc7, hasAnnotation_id4LgT5De$Kd_, hasAnnotation_id3WDGf12DPy8, getTraceableProperty_id4pl5GY7LKmH, getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getTypeApplicationParameters_id7bu6bIyR2DR, getInferrableTypeVars_id5W9RYt5baxk, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_EDFVg, canProvideInferenceContext_idJiVENj$Z0y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -351,6 +354,16 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_EDFVg(@NotNull SAbstractConcept __thisConcept__, SNode node) {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(node, DeprecationUtil.createDocComment(CONCEPTS.MethodDocComment$HI));
   }
+  /*package*/ static boolean canProvideInferenceContext_idJiVENj$Z0y(@NotNull SNode __thisNode__, SNode forChild) {
+    final List<SNode> ancestors = SNodeOperations.getNodeAncestors(forChild, null, true);
+
+    // Expression contained in return expression or in last statement
+    return Sequence.fromIterable(RulesFunctions_BaseLanguage.collectReturnStatements(__thisNode__)).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return ListSequence.fromList(ancestors).contains(it);
+      }
+    }) || ListSequence.fromList(ancestors).contains(IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(__thisNode__));
+  }
 
   /*package*/ BaseMethodDeclaration__BehaviorDescriptor() {
   }
@@ -433,6 +446,8 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
       case 31:
         unmarkDeprecated_id6Va_BJex$aE(node);
         return null;
+      case 33:
+        return (T) ((Boolean) canProvideInferenceContext_idJiVENj$Z0y(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

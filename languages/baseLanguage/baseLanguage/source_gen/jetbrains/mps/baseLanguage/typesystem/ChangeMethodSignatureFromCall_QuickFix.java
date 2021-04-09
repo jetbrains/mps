@@ -36,7 +36,7 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       arityParam = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
     }
 
-    final MethodParameterMatcher matcher = new MethodParameterMatcher(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
+    final MethodParameterMatcher matcher = MethodParameterMatcher.fromParameterAndExpressions(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
     final List<SNode> callTypes = matcher.getCallParamTypes();
     final Integer[] callToDeclParam = matcher.findAppropriateMatching()._1();
 

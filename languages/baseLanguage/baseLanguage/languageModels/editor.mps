@@ -62420,6 +62420,7 @@
   <node concept="22mcaB" id="1wEcoXjIJ$T">
     <ref role="aqKnT" to="tpee:4ctkEngA$UD" resolve="UndefinedType" />
     <node concept="22hDWj" id="xzgvwPPp0P" role="22hAXT" />
+    <node concept="2VfDsV" id="Q$FjPquYH$" role="3ft7WO" />
   </node>
   <node concept="22mcaB" id="1wEcoXjIJ$S">
     <ref role="aqKnT" to="tpee:2EfScFvECFM" resolve="LocalInstanceMethodCall" />
@@ -70267,6 +70268,11 @@
     </node>
     <node concept="22hDWj" id="6$k2MUxhWq7" role="22hAXT" />
   </node>
+  <node concept="22mcaB" id="Q$FjPquYI0">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="aqKnT" to="tpee:72DAwHBizyl" resolve="AlternativeType" />
+    <node concept="22hDWj" id="Q$FjPquYI1" role="22hAXT" />
+  </node>
   <node concept="24kQdi" id="6vzydrFubLo">
     <property role="3GE5qa" value="ext.string.expression" />
     <ref role="1XX52x" to="tpee:6vzydrFu8hP" resolve="FormatOperation" />
@@ -70292,6 +70298,36 @@
         <ref role="1k5W1q" node="hFCSUmN" resolve="RightParen" />
       </node>
     </node>
+  </node>
+  <node concept="24kQdi" id="1k0fX3gGRsH">
+    <property role="3GE5qa" value="unresolved" />
+    <ref role="1XX52x" to="tpee:1k0fX3gGQR8" resolve="UnknownInstanceMethodCall" />
+    <node concept="3EZMnI" id="1k0fX3gGRtO" role="2wV5jI">
+      <node concept="3F1sOY" id="1k0fX3gGRyz" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:1k0fX3gGRs5" resolve="operand" />
+      </node>
+      <node concept="3F0ifn" id="1k0fX3gGRtQ" role="3EZMnx">
+        <property role="3F0ifm" value="." />
+      </node>
+      <node concept="2iRfu4" id="1k0fX3gGRtR" role="2iSdaV" />
+      <node concept="3F0A7n" id="1k0fX3gGRtS" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:4evp0c3qHbO" resolve="callee" />
+        <node concept="Vb9p2" id="1k0fX3gGRtT" role="3F10Kt">
+          <property role="Vbekb" value="ITALIC" />
+        </node>
+        <node concept="VechU" id="1k0fX3gGRtU" role="3F10Kt">
+          <property role="Vb096" value="red" />
+        </node>
+      </node>
+      <node concept="PMmxH" id="1k0fX3gGRtV" role="3EZMnx">
+        <ref role="PMmxG" node="h5njIub" resolve="IMethodCall_actualArguments" />
+      </node>
+    </node>
+  </node>
+  <node concept="22mcaB" id="1k0fX3gGSbQ">
+    <property role="3GE5qa" value="unresolved" />
+    <ref role="aqKnT" to="tpee:1k0fX3gGQR8" resolve="UnknownInstanceMethodCall" />
+    <node concept="22hDWj" id="1k0fX3gGScm" role="22hAXT" />
   </node>
 </model>
 

@@ -49,7 +49,7 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
     return _quotation_createNode_teq92u_a3a0(typeVarRefs, concept);
   }
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
-    SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
+    SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
     if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$cxMr) == null)) {
       return Collections.emptyMap();
     }

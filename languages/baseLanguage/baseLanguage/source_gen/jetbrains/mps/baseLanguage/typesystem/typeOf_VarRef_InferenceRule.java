@@ -74,7 +74,7 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
     }
 
     // main code
-    SNode variableDeclaration = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG);
+    final SNode variableDeclaration = SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG);
     {
       SNode matchedNode_lcu2lp_e0 = SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY);
       {
@@ -92,9 +92,34 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
             typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923238086", true), (SNode) _quotation_createNode_fse81k_a1a0c0a0a0c0b0e0b(SLinkOperations.getTarget(matchedNode_lcu2lp_e0, LINKS.componentType$ypmi)), _info_12389875345);
           }
         } else {
-          SNode _nodeToCheck_1029348928467 = varRef;
-          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923304964", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(variableDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923304969", false), (SNode) typeCheckingContext.typeOf(varRef, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923304966", true), _info_12389875345);
+          boolean matches_lcu2lp_b4a = false;
+          {
+            SNode matchingNode_lcu2lp_b4a = SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY);
+            if (matchingNode_lcu2lp_b4a != null) {
+              matches_lcu2lp_b4a = matchingNode_lcu2lp_b4a.getConcept().isSubConceptOf(CONCEPTS.UndefinedType$uv);
+            }
+          }
+          if (matches_lcu2lp_b4a) {
+            // Undefined type: we need it concrete to handle variable arity type
+            {
+              final SNode declType = typeCheckingContext.typeOf(variableDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1779934743744336271", false);
+              typeCheckingContext.whenConcrete(declType, new Runnable() {
+                public void run() {
+                  SNode concrete = (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(declType), CONCEPTS.VariableArityType$KF) ? _quotation_createNode_fse81k_a0a0a0a0b0a1a1a0a2a0c0b0e0b(SLinkOperations.getTarget(SNodeOperations.cast(typeCheckingContext.getExpandedNode(declType), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi)) : typeCheckingContext.getExpandedNode(declType));
+
+                  {
+                    SNode _nodeToCheck_1029348928467 = varRef;
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1779934743744342352", 0, null);
+                    typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1779934743744342768", true), (SNode) concrete, _info_12389875345);
+                  }
+                }
+              }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1779934743744336203", false, false);
+            }
+          } else {
+            SNode _nodeToCheck_1029348928467 = varRef;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923304964", 0, null);
+            typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(variableDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923304969", false), (SNode) typeCheckingContext.typeOf(varRef, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219923304966", true), _info_12389875345);
+          }
         }
       }
     }
@@ -126,6 +151,17 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
     }
     return quotedNode_2;
   }
+  private static SNode _quotation_createNode_fse81k_a0a0a0a0b0a1a1a0a2a0c0b0e0b(Object parameter_1) {
+    SNode quotedNode_2 = null;
+    SNode quotedNode_3 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"));
+    quotedNode_2 = nb.getResult();
+    quotedNode_3 = (SNode) parameter_1;
+    if (quotedNode_3 != null) {
+      quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType"), SNodeOperations.copyIfNecessary(quotedNode_3));
+    }
+    return quotedNode_2;
+  }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
@@ -138,6 +174,7 @@ public class typeOf_VarRef_InferenceRule extends AbstractInferenceRule_Runtime i
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
     /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept UndefinedType$uv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

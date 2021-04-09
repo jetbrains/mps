@@ -5,9 +5,7 @@ package jetbrains.mps.baseLanguage.typesystem;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 
 public class MethodCallsFixer_Quickfix_QuickFix extends QuickFix_Runtime {
   public MethodCallsFixer_Quickfix_QuickFix() {
@@ -17,10 +15,6 @@ public class MethodCallsFixer_Quickfix_QuickFix extends QuickFix_Runtime {
     return "Resolve method call";
   }
   public void execute(SNode node) {
-    SLinkOperations.setTarget(((SNode) MethodCallsFixer_Quickfix_QuickFix.this.getField("methodCall")[0]), LINKS.baseMethodDeclaration$pyYw, ((SNode) MethodCallsFixer_Quickfix_QuickFix.this.getField("properTarget")[0]));
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    IFixableMethodReference__BehaviorDescriptor.setMethodDeclaration_id5DBbMQ3xovP.invoke(((SNode) MethodCallsFixer_Quickfix_QuickFix.this.getField("methodRef")[0]), ((SNode) MethodCallsFixer_Quickfix_QuickFix.this.getField("properTarget")[0]));
   }
 }

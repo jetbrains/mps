@@ -8,8 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -17,26 +17,40 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeOf_CastExpression_InferenceRule() {
   }
   public void applyRule(final SNode castExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(castExpression, LINKS.type$XD7M) != null)) {
-      SNode castType = SLinkOperations.getTarget(castExpression, LINKS.type$XD7M);
+      final SNode castType = SLinkOperations.getTarget(castExpression, LINKS.type$XD7M);
+      final SNode rawCastType = (SNodeOperations.isInstanceOf(castType, CONCEPTS.ClassifierType$bL) ? _quotation_createNode_sr53ct_a0a1a0a1(SLinkOperations.getTarget(SNodeOperations.cast(castType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)) : castType);
       {
         SNode _nodeToCheck_1029348928467 = castExpression;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981485155", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1223981485160", true), (SNode) castType, _info_12389875345);
       }
 
-      if (SNodeOperations.isInstanceOf(castType, CONCEPTS.ClassifierType$bL)) {
-        castType = _quotation_createNode_sr53ct_a0a0d0a0b(SLinkOperations.getTarget(SNodeOperations.cast(castType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr));
-      }
       {
-        SNode _nodeToCheck_1029348928467 = castExpression;
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1178271928127", 0, null);
-        typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1178271928128", true), (SNode) castType, false, _info_12389875345);
+        final SNode exprType = typeCheckingContext.typeOf(SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391942994088", true);
+        typeCheckingContext.whenConcrete(exprType, new Runnable() {
+          public void run() {
+            if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(exprType), CONCEPTS.IInferredType$Qo)) {
+              {
+                SNode _nodeToCheck_1029348928467 = castExpression;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247481719", 0, null);
+                typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) castType, false, true, _info_12389875345);
+              }
+            } else {
+              {
+                SNode _nodeToCheck_1029348928467 = castExpression;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6469607165247478858", 0, null);
+                typeCheckingContext.createComparableEquation((SNode) typeCheckingContext.getExpandedNode(exprType), (SNode) rawCastType, false, _info_12389875345);
+              }
+            }
+          }
+        }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8014486391942993672", true, false);
       }
     }
   }
@@ -49,7 +63,7 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_sr53ct_a0a0d0a0b(Object parameter_1) {
+  private static SNode _quotation_createNode_sr53ct_a0a1a0a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_2 = nb.getResult();
@@ -65,6 +79,7 @@ public class typeOf_CastExpression_InferenceRule extends AbstractInferenceRule_R
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SInterfaceConcept IInferredType$Qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
     /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 }

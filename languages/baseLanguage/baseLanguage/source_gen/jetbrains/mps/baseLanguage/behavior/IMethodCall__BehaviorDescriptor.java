@@ -11,9 +11,9 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Map;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -22,9 +22,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.scopes.MethodResolveUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -43,14 +40,14 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> deriveType_idhEwIVPz = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("deriveType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIVPz").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<SNode> getConcreteType_id6WzWPTX2xhN = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getConcreteType").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("6WzWPTX2xhN").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getTypeAnnotation_idhXbqSv6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeAnnotation").modifiers(8, AccessPrivileges.PACKAGE).concept(CONCEPT).id("hXbqSv6").build();
-  public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6WzWPTX2vuB").build();
-  public static final SMethod<Map<SNode, SNode>> getTypesByTypeVars_idJfLh5LDMrj = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl(Map.class)).name("getTypesByTypeVars").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JfLh5LDMrj").build();
-  public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("50EF2fWdwEN").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4cxv$9$kw67").build();
-  public static final SMethod<Boolean> useScopesForMethodDeclarationFixer_id3EWPnx1lHq = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useScopesForMethodDeclarationFixer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3EWPnx1lHq").build();
   public static final SMethod<Tuples._2<SNode, Boolean>> resolveMethod_id28$D10lLyGj = new SMethodBuilder<Tuples._2<SNode, Boolean>>(new SJavaCompoundTypeImpl((Class<Tuples._2<SNode, Boolean>>) ((Class) Object.class))).name("resolveMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("28$D10lLyGj").build();
+  public static final SMethod<List<SNode>> getActualArguments_id5DBbMQ33xDf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getActualArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5DBbMQ33xDf").build();
+  public static final SMethod<SNode> getMethodDeclaration_id5DBbMQ3xohB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5DBbMQ3xohB").build();
+  public static final SMethod<Void> setMethodDeclaration_id5DBbMQ3xovP = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setMethodDeclaration").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5DBbMQ3xovP").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SReference> getMethodDeclarationReference_id5DBbMQ3ynbU = new SMethodBuilder<SReference>(new SJavaCompoundTypeImpl((Class<SReference>) ((Class) Object.class))).name("getMethodDeclarationReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5DBbMQ3ynbU").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, getInstanceType_id6WzWPTX2vuB, getTypesByTypeVars_idJfLh5LDMrj, getAvailableMethodDeclarations_id50EF2fWdwEN, isInTypeInferenceContext_id4cxv$9$kw67, useScopesForMethodDeclarationFixer_id3EWPnx1lHq, resolveMethod_id28$D10lLyGj);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getActualArguments_idhJyuD6_, deriveType_idhEwIVPz, getConcreteType_id6WzWPTX2xhN, getTypeAnnotation_idhXbqSv6, isInTypeInferenceContext_id4cxv$9$kw67, resolveMethod_id28$D10lLyGj, getActualArguments_id5DBbMQ33xDf, getMethodDeclaration_id5DBbMQ3xohB, setMethodDeclaration_id5DBbMQ3xovP, getMethodDeclarationReference_id5DBbMQ3ynbU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -70,7 +67,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       if (i < ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count()) {
         SNode parameterDeclaration = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).getElement(i);
         SNode rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(parameterDeclaration, LINKS.type$a1UY));
-        SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
+        SNode instanceType = IFixableMethodReference__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
         if ((instanceType == null)) {
           return rawType;
         }
@@ -115,37 +112,26 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getTypeAnnotation_idhXbqSv6(@NotNull SNode __thisNode__) {
     return TypeAnnotable__BehaviorDescriptor.getTypeAnnotation_idhXbqSv6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw));
   }
-  /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    return null;
-  }
-  /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
-    SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
-    HashMap<SNode, SNode> result = new HashMap<SNode, SNode>();
-    if ((instanceType == null)) {
-      return result;
-    }
-    Iterator<SNode> typeParms = ListSequence.fromList(SLinkOperations.getChildren(instanceType, LINKS.parameter$oqG$)).iterator();
-    Iterator<SNode> typeVars = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(instanceType, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).iterator();
-    while (typeParms.hasNext() && typeVars.hasNext()) {
-      result.put(typeVars.next(), typeParms.next());
-    }
-    return result;
-  }
-  /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    return new ArrayList<SNode>();
-  }
   /*package*/ static boolean isInTypeInferenceContext_id4cxv$9$kw67(@NotNull SNode __thisNode__) {
     SNode methodAnc = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$L7, false, false);
     return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReturnStatement$lt), LINKS.expression$eJ92) == __thisNode__ || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExpressionStatement$O8));
-  }
-  /*package*/ static boolean useScopesForMethodDeclarationFixer_id3EWPnx1lHq(@NotNull SNode __thisNode__) {
-    // todo: use something better here. check usages of getAvailableMethodDeclarations in charisma etc
-    return false;
   }
   @Deprecated
   /*package*/ static Tuples._2<SNode, Boolean> resolveMethod_id28$D10lLyGj(@NotNull SNode __thisNode__) {
     // todo: this method can be deleted as soon as MethodCallsFixer will be removed
     return MethodResolveUtil.resolveMethod(__thisNode__);
+  }
+  /*package*/ static List<SNode> getActualArguments_id5DBbMQ33xDf(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx);
+  }
+  /*package*/ static SNode getMethodDeclaration_id5DBbMQ3xohB(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
+  }
+  /*package*/ static void setMethodDeclaration_id5DBbMQ3xovP(@NotNull SNode __thisNode__, SNode baseMethodDeclaration) {
+    SLinkOperations.setTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw, baseMethodDeclaration);
+  }
+  /*package*/ static SReference getMethodDeclarationReference_id5DBbMQ3ynbU(@NotNull SNode __thisNode__) {
+    return SNodeOperations.getReference(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
   }
 
   /*package*/ IMethodCall__BehaviorDescriptor() {
@@ -172,17 +158,18 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       case 3:
         return (T) ((SNode) getTypeAnnotation_idhXbqSv6(node));
       case 4:
-        return (T) ((SNode) getInstanceType_id6WzWPTX2vuB(node));
-      case 5:
-        return (T) ((Map<SNode, SNode>) getTypesByTypeVars_idJfLh5LDMrj(node));
-      case 6:
-        return (T) ((Iterable<SNode>) getAvailableMethodDeclarations_id50EF2fWdwEN(node, (String) parameters[0]));
-      case 7:
         return (T) ((Boolean) isInTypeInferenceContext_id4cxv$9$kw67(node));
-      case 8:
-        return (T) ((Boolean) useScopesForMethodDeclarationFixer_id3EWPnx1lHq(node));
-      case 9:
+      case 5:
         return (T) ((Tuples._2<SNode, Boolean>) resolveMethod_id28$D10lLyGj(node));
+      case 6:
+        return (T) ((List<SNode>) getActualArguments_id5DBbMQ33xDf(node));
+      case 7:
+        return (T) ((SNode) getMethodDeclaration_id5DBbMQ3xohB(node));
+      case 8:
+        setMethodDeclaration_id5DBbMQ3xovP(node, (SNode) parameters[0]);
+        return null;
+      case 9:
+        return (T) ((SReference) getMethodDeclarationReference_id5DBbMQ3ynbU(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -244,8 +231,6 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
     /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
     /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
     /*package*/ static final SContainmentLink expression$eJ92 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");

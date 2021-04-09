@@ -93,7 +93,7 @@ public class VisibleClassConstructorsScope extends Scope {
     while (typeParms.hasNext() && typeVars.hasNext()) {
       typeByTypeVar.put(typeVars.next(), typeParms.next());
     }
-    return MethodResolveUtil.chooseByParameterType(constructors, actualArguments, typeByTypeVar);
+    return MethodResolveUtil.chooseByParameterType(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), constructors, actualArguments, typeByTypeVar);
   }
 
   private static final class CONCEPTS {

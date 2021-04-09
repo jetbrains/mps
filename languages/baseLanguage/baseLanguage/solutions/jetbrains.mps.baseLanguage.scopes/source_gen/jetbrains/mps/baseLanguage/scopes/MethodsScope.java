@@ -15,14 +15,13 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MethodsScope extends Scope {
   private final Map<SNode, SNode> typeBindings;
@@ -81,17 +80,17 @@ public class MethodsScope extends Scope {
     if (methods.size() == 1) {
       return ListSequence.fromList(methods).first();
     }
-    if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IMethodCall$M9))) {
+    if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IFixableMethodReference$z6))) {
       return null;
     }
-    List<SNode> actualArguments = SLinkOperations.getChildren((SNodeOperations.cast(contextNode, CONCEPTS.IMethodCall$M9)), LINKS.actualArgument$pzdx);
+    List<SNode> actualArguments = IFixableMethodReference__BehaviorDescriptor.getActualArguments_id5DBbMQ33xDf.invoke((SNodeOperations.cast(contextNode, CONCEPTS.IFixableMethodReference$z6)));
 
     methods = MethodResolveUtil.selectByParmCount(methods, actualArguments);
     if (methods.size() == 1) {
       return ListSequence.fromList(methods).first();
     }
 
-    Pair<SNode, Boolean> resolveByTypes = MethodResolveUtil.chooseByParameterTypeReportNoGoodMethodNode(null, methods, actualArguments, typeBindings);
+    Pair<SNode, Boolean> resolveByTypes = MethodResolveUtil.chooseByParameterTypeReportNoGoodMethodNode(SNodeOperations.cast(contextNode, CONCEPTS.IFixableMethodReference$z6), null, methods, actualArguments, typeBindings);
 
     if (resolveByTypes.o2) {
       return resolveByTypes.o1;
@@ -110,11 +109,7 @@ public class MethodsScope extends Scope {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IFixableMethodReference$z6 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a672f2d82ff2834L, "jetbrains.mps.baseLanguage.structure.IFixableMethodReference");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }
