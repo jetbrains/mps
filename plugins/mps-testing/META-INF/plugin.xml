@@ -27,7 +27,7 @@
   <depends>com.intellij.modules.lang</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/languages"/>
+    <mps.LanguageLibrary dir="/languages" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 </idea-plugin>

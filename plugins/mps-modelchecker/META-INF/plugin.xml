@@ -39,7 +39,7 @@
     <mps.ModelValidator implementation="jetbrains.mps.ide.modelchecker.ModelValidatorAdapter"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerSettings" />
     <applicationConfigurable groupId="tools" groupWeight="160" instance="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerPreferencesPage" id="preferences.modelCheckerSettings"/>
-    <mps.LanguageLibrary dir=""/>
+    <mps.LanguageLibrary dir="" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <mps.PluginComponentContributor application="jetbrains.mps.ide.modelchecker.actions.Modelchecker_ApplicationPlugin" />
     <registryKey key="mps.check.model.genplan" defaultValue="true" description="Check languages used in a model against associated generation plan, if any" restartRequired="false"/>

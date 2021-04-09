@@ -75,7 +75,7 @@
     <programRunner id="defaultDebugRunner" implementation="jetbrains.mps.debugger.api.runner.MPSDebugRunner"
                    order="last"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <mps.LanguageLibrary dir=""/>
+    <mps.LanguageLibrary dir="" hide="true"/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.api.ui.actions.Runtime_ApplicationPlugin" />
   </extensions>
 

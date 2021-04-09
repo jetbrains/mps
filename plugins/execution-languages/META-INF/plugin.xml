@@ -19,7 +19,7 @@
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="languages/"/>
+    <mps.LanguageLibrary dir="languages/" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <programRunner id="defaultRunRunner"
                    implementation="jetbrains.mps.execution.impl.configurations.runners.MPSProgramRunner"/>

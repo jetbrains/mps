@@ -90,7 +90,7 @@
           Note, as long as we've got "/" here, optional LL in langDesignOptional.xml doesn't make sense, module(s) under languages-devkit
           would get discovered anyway.
     -->
-    <mps.LanguageLibrary dir="/"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
 
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>
     <mps.TabColorProvider implementation="jetbrains.mps.vcs.changesmanager.roots.NodeTabColorProvider"/>

@@ -12,7 +12,7 @@
   <idea-version since-build="211.1" until-build="212.1"/>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/solution"/>
+    <mps.LanguageLibrary dir="/solution" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"></errorHandler>
   </extensions>
 </idea-plugin>

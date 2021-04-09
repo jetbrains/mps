@@ -26,8 +26,8 @@
   <depends optional="true" config-file="pluginSolutions.xml">jetbrains.mps.execution.configurations</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/languages"/>
-    <mps.LanguageLibrary dir="/solutions"/>
+    <mps.LanguageLibrary dir="/languages" hide="true"/>
+    <mps.LanguageLibrary dir="/solutions" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 </idea-plugin>

@@ -41,7 +41,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <!--runtime-->
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <mps.LanguageLibrary dir="/"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.customViewers.plugin.plugin.Plugin_ApplicationPlugin" />
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_ApplicationPlugin" />
   </extensions>

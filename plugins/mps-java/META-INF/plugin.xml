@@ -31,7 +31,7 @@
   </application-components>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir=""/>
+    <mps.LanguageLibrary dir="" hide="true"/>
     <mps.VisibleModuleMask mask="Ant"/>
     <mps.VisibleModuleMask mask="DiffUtils"/>
     <mps.VisibleModuleMask mask="Hamcrest"/>
