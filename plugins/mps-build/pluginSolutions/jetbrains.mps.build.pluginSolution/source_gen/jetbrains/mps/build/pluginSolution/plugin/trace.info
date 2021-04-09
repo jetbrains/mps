@@ -17,8 +17,11 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <root>
+    <file name="IconContainer.java">
+      <unit at="7,0,10,0" name="jetbrains.mps.build.pluginSolution.plugin.IconContainer" />
+    </file>
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <unit at="19,0,71,0" name="jetbrains.mps.build.pluginSolution.plugin.RunConfigurationsInitializer_AppPluginPart" />
+      <unit at="18,0,70,0" name="jetbrains.mps.build.pluginSolution.plugin.RunConfigurationsInitializer_AppPluginPart" />
     </file>
   </root>
   <root nodeRef="r:baa8d683-513d-4695-bd7b-2c1c3e940d01(jetbrains.mps.build.pluginSolution.plugin)/3767587139140991018">
@@ -141,22 +144,22 @@
       <unit id="3767587139140991018" at="26,0,119,0" name="jetbrains.mps.build.pluginSolution.plugin.BuildScript_Producer" />
     </file>
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="3767587139140991018" at="40,47,41,107" concept="8" />
-      <node id="3767587139140991018" at="41,107,42,160" concept="3" />
-      <node id="3767587139140991018" at="43,101,44,61" concept="3" />
-      <node id="3767587139140991018" at="45,9,46,14" concept="1" />
-      <node id="3767587139140991018" at="42,160,45,9" concept="5" />
-      <node id="3767587139140991018" at="39,79,47,7" concept="6" />
-      <node id="3767587139140991018" at="38,178,48,5" concept="5" />
-      <scope id="3767587139140991018" at="43,101,44,61" />
-      <scope id="3767587139140991018" at="42,160,45,9">
+      <node id="3767587139140991018" at="39,47,40,107" concept="8" />
+      <node id="3767587139140991018" at="40,107,41,160" concept="3" />
+      <node id="3767587139140991018" at="42,101,43,61" concept="3" />
+      <node id="3767587139140991018" at="44,9,45,14" concept="1" />
+      <node id="3767587139140991018" at="41,160,44,9" concept="5" />
+      <node id="3767587139140991018" at="38,79,46,7" concept="6" />
+      <node id="3767587139140991018" at="37,178,47,5" concept="5" />
+      <scope id="3767587139140991018" at="42,101,43,61" />
+      <scope id="3767587139140991018" at="41,160,44,9">
         <var name="producer" id="3767587139140991018" />
       </scope>
-      <scope id="3767587139140991018" at="40,47,46,14">
+      <scope id="3767587139140991018" at="39,47,45,14">
         <var name="configurationProducers" id="3767587139140991018" />
       </scope>
-      <scope id="3767587139140991018" at="39,79,47,7" />
-      <scope id="3767587139140991018" at="38,178,48,5">
+      <scope id="3767587139140991018" at="38,79,46,7" />
+      <scope id="3767587139140991018" at="37,178,47,5">
         <var name="ext" id="3767587139140991018" />
       </scope>
     </file>
@@ -402,16 +405,16 @@
       <unit id="4468328282078607076" at="17,0,55,0" name="jetbrains.mps.build.pluginSolution.plugin.BuildScript_Configuration_Editor" />
     </file>
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="4468328282078607076" at="29,153,30,90" concept="3" />
+      <node id="4468328282078607076" at="28,143,29,90" concept="3" />
     </file>
   </root>
   <root nodeRef="r:baa8d683-513d-4695-bd7b-2c1c3e940d01(jetbrains.mps.build.pluginSolution.plugin)/4468328282078639071">
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="4468328282078639071" at="28,5,29,153" concept="8" />
-      <node id="4468328282078639071" at="30,90,31,98" concept="3" />
-      <node id="4468328282078639071" at="31,98,32,74" concept="3" />
-      <node id="4468328282078639071" at="27,152,33,5" concept="0" />
-      <scope id="4468328282078639071" at="28,5,32,74">
+      <node id="4468328282078639071" at="27,5,28,143" concept="8" />
+      <node id="4468328282078639071" at="29,90,30,98" concept="3" />
+      <node id="4468328282078639071" at="30,98,31,74" concept="3" />
+      <node id="4468328282078639071" at="26,152,32,5" concept="0" />
+      <scope id="4468328282078639071" at="27,5,31,74">
         <var name="runConfigurationKind" id="4468328282078639071" />
       </scope>
     </file>

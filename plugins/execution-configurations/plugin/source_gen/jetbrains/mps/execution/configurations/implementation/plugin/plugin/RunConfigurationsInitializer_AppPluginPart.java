@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import com.intellij.openapi.extensions.ExtensionPoint;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.openapi.extensions.Extensions;
-import com.intellij.icons.AllIcons;
-import jetbrains.mps.icons.MPSIcons;
 import java.util.Iterator;
 
 public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPluginPart {
@@ -27,26 +25,26 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
     // register kinds
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Java Application", AllIcons.RunConfigurations.Application, "Java Application", "Java Application");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Java Application", IconContainer.ICON_b0a0a0c0d, "Java Application", "Java Application");
       runConfigurationKind.addFactoryFor("Java", Java_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("JUnit Tests", AllIcons.RunConfigurations.Junit, "JUnit Tests", "JUnit Tests");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("JUnit Tests", IconContainer.ICON_b0a0a0d0d, "JUnit Tests", "JUnit Tests");
       runConfigurationKind.addFactoryFor("JUnit Tests", JUnitTests_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("MPS", MPSIcons.MPS16x16, "MPS", "MPS");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("MPS", IconContainer.ICON_b0a0a0e0d, "MPS", "MPS");
       runConfigurationKind.addFactoryFor("MPS Instance", MPSInstance_Configuration.class);
       runConfigurationKind.addFactoryFor("Deploy Plugins", DeployPlugins_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);
     }
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Remote", AllIcons.RunConfigurations.Remote, "Remote", "Remote");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Remote", IconContainer.ICON_b0a0a0f0d, "Remote", "Remote");
       runConfigurationKind.addFactoryFor("Remote", Remote_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);

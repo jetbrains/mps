@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import com.intellij.openapi.extensions.ExtensionPoint;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.openapi.extensions.Extensions;
-import com.intellij.icons.AllIcons;
 import java.util.Iterator;
 
 public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPluginPart {
@@ -26,7 +25,7 @@ public class RunConfigurationsInitializer_AppPluginPart extends ApplicationPlugi
     // register kinds
     ExtensionPoint<ConfigurationType> configurationExtensionPoint = Extensions.getRootArea().getExtensionPoint(ConfigurationType.CONFIGURATION_TYPE_EP);
     {
-      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Demo", AllIcons.RunConfigurations.Application, "Demo", "Demo");
+      ConfigTypeEnvoy runConfigurationKind = new ConfigTypeEnvoy("Demo", IconContainer.ICON_b0a0a0c0d, "Demo", "Demo");
       runConfigurationKind.addFactoryFor("Demo Application", DemoApplication_Configuration.class);
       RunConfigurationsInitializer_AppPluginPart.this.myRegisteredKinds.add(runConfigurationKind);
       configurationExtensionPoint.registerExtension(runConfigurationKind);

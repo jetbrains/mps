@@ -132,6 +132,9 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
+  <dependency className="jetbrains.mps.build.pluginSolution.plugin.IconContainer">
+    <classNode dependClassName="javax.swing.Icon" />
+  </dependency>
   <dependency className="jetbrains.mps.build.pluginSolution.plugin.PluginSolution_ApplicationPlugin">
     <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
     <classNode dependClassName="java.lang.Override" />
@@ -144,7 +147,6 @@
   <dependency className="jetbrains.mps.build.pluginSolution.plugin.RunConfigurationsInitializer_AppPluginPart">
     <classNode dependClassName="com.intellij.execution.configurations.ConfigurationType" />
     <classNode dependClassName="com.intellij.execution.junit.RuntimeConfigurationProducer" />
-    <classNode dependClassName="com.intellij.icons.AllIcons" />
     <classNode dependClassName="com.intellij.openapi.extensions.ExtensionPoint" />
     <classNode dependClassName="com.intellij.openapi.extensions.Extensions" />
     <classNode dependClassName="java.lang.Override" />
@@ -155,6 +157,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.build.pluginSolution.plugin.BuildScript_Configuration" />
     <classNode dependClassName="jetbrains.mps.build.pluginSolution.plugin.BuildScript_Producer" />
+    <classNode dependClassName="jetbrains.mps.build.pluginSolution.plugin.IconContainer" />
     <classNode dependClassName="jetbrains.mps.execution.api.configurations.ConfigTypeEnvoy" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ApplicationPluginPart" />

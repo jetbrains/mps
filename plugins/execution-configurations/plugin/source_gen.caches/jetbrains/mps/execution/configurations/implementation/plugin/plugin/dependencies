@@ -332,6 +332,11 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.execution.process.BaseOSProcessHandler" />
   </dependency>
+  <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.IconContainer">
+    <classNode dependClassName="com.intellij.icons.AllIcons" />
+    <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="jetbrains.mps.icons.MPSIcons" />
+  </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitInProcessRunStarter">
     <classNode dependClassName="com.intellij.execution.ExecutionException" />
     <classNode dependClassName="com.intellij.execution.process.ProcessHandler" />
@@ -1016,7 +1021,6 @@
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunConfigurationsInitializer_AppPluginPart">
     <classNode dependClassName="com.intellij.execution.configurations.ConfigurationType" />
     <classNode dependClassName="com.intellij.execution.junit.RuntimeConfigurationProducer" />
-    <classNode dependClassName="com.intellij.icons.AllIcons" />
     <classNode dependClassName="com.intellij.openapi.extensions.ExtensionPoint" />
     <classNode dependClassName="com.intellij.openapi.extensions.Extensions" />
     <classNode dependClassName="java.lang.Override" />
@@ -1027,13 +1031,13 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.execution.api.configurations.ConfigTypeEnvoy" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPlugins_Configuration" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.IconContainer" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Producer" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.Java_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.Java_Producer" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.MPSInstance_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.Remote_Configuration" />
-    <classNode dependClassName="jetbrains.mps.icons.MPSIcons" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ApplicationPluginPart" />
   </dependency>

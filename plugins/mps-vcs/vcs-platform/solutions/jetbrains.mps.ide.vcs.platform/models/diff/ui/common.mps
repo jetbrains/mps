@@ -31124,11 +31124,11 @@
                     </node>
                     <node concept="3K4zz7" id="3p5ZvGALP3g" role="33vP2m">
                       <node concept="37vLTw" id="3p5ZvGALPk0" role="3K4E3e">
-                        <ref role="3cqZAo" node="717zF4SjAt5" />
+                        <ref role="3cqZAo" node="717zF4SjAt5" resolve="SHADOW_1" />
                       </node>
                       <node concept="10Nm6u" id="3p5ZvGALPHB" role="3K4GZi" />
                       <node concept="37vLTw" id="3p5ZvGALNrE" role="3K4Cdx">
-                        <ref role="3cqZAo" node="3p5ZvGALGvQ" />
+                        <ref role="3cqZAo" node="3p5ZvGALGvQ" resolve="drawInLeftArea" />
                       </node>
                     </node>
                   </node>
@@ -31141,11 +31141,11 @@
                     </node>
                     <node concept="3K4zz7" id="3p5ZvGALPIY" role="33vP2m">
                       <node concept="37vLTw" id="3p5ZvGALQBt" role="3K4E3e">
-                        <ref role="3cqZAo" node="6GIMOf7Jm67" />
+                        <ref role="3cqZAo" node="6GIMOf7Jm67" resolve="SHADOW_2" />
                       </node>
                       <node concept="10Nm6u" id="3p5ZvGALPIZ" role="3K4GZi" />
                       <node concept="37vLTw" id="3p5ZvGALPJ0" role="3K4Cdx">
-                        <ref role="3cqZAo" node="3p5ZvGALGvQ" />
+                        <ref role="3cqZAo" node="3p5ZvGALGvQ" resolve="drawInLeftArea" />
                       </node>
                     </node>
                   </node>
@@ -31155,28 +31155,28 @@
                     <ref role="1Pybhc" to="px75:~BackgroundWithFoldingLinePainter" resolve="BackgroundWithFoldingLinePainter" />
                     <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
                     <node concept="37vLTw" id="6lKULjmyPBH" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxDUq" />
+                      <ref role="3cqZAo" node="6lKULjmxDUq" resolve="g" />
                     </node>
                     <node concept="1rXfSq" id="6lKULjmyPBK" role="37wK5m">
-                      <ref role="37wK5l" node="6GIMOf7MdzR" />
+                      <ref role="37wK5l" node="6GIMOf7MdzR" resolve="getEndY" />
                     </node>
                     <node concept="3cmrfG" id="6lKULjmyPBL" role="37wK5m">
                       <property role="3cmrfH" value="1" />
                     </node>
                     <node concept="37vLTw" id="6lKULjmyPBM" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxl3h" />
+                      <ref role="3cqZAo" node="6lKULjmxl3h" resolve="lineX" />
                     </node>
                     <node concept="37vLTw" id="2khTCMUrnlx" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxp8D" />
+                      <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
                     </node>
                     <node concept="37vLTw" id="3p5ZvGALR2V" role="37wK5m">
-                      <ref role="3cqZAo" node="3p5ZvGALNr_" />
+                      <ref role="3cqZAo" node="3p5ZvGALNr_" resolve="shadow1" />
                     </node>
                     <node concept="37vLTw" id="6lKULjmyQ$1" role="37wK5m">
-                      <ref role="3cqZAo" node="717zF4SjAt5" />
+                      <ref role="3cqZAo" node="717zF4SjAt5" resolve="SHADOW_1" />
                     </node>
                     <node concept="37vLTw" id="6lKULjmyPBQ" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxgrV" />
+                      <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
                     </node>
                   </node>
                 </node>
@@ -31185,39 +31185,39 @@
                     <ref role="1Pybhc" to="px75:~BackgroundWithFoldingLinePainter" resolve="BackgroundWithFoldingLinePainter" />
                     <ref role="37wK5l" to="px75:~BackgroundWithFoldingLinePainter.fillTwoAreasSeparatedByDottedLine(java.awt.Graphics,int,int,int,int,java.awt.Color,java.awt.Color,java.awt.Color)" resolve="fillTwoAreasSeparatedByDottedLine" />
                     <node concept="37vLTw" id="6lKULjmyQSj" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxDUq" />
+                      <ref role="3cqZAo" node="6lKULjmxDUq" resolve="g" />
                     </node>
                     <node concept="3cpWs3" id="6lKULjmySU8" role="37wK5m">
                       <node concept="3cmrfG" id="6lKULjmyT1r" role="3uHU7w">
                         <property role="3cmrfH" value="1" />
                       </node>
                       <node concept="1rXfSq" id="6lKULjmyQSk" role="3uHU7B">
-                        <ref role="37wK5l" node="6GIMOf7MdzR" />
+                        <ref role="37wK5l" node="6GIMOf7MdzR" resolve="getEndY" />
                       </node>
                     </node>
                     <node concept="3cmrfG" id="6lKULjmyQSl" role="37wK5m">
                       <property role="3cmrfH" value="1" />
                     </node>
                     <node concept="37vLTw" id="2khTCMUrrOM" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxl3h" />
+                      <ref role="3cqZAo" node="6lKULjmxl3h" resolve="lineX" />
                     </node>
                     <node concept="37vLTw" id="2khTCMUrsfw" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxp8D" />
+                      <ref role="3cqZAo" node="6lKULjmxp8D" resolve="lineWidth" />
                     </node>
                     <node concept="37vLTw" id="3p5ZvGALRuO" role="37wK5m">
-                      <ref role="3cqZAo" node="3p5ZvGALPIW" />
+                      <ref role="3cqZAo" node="3p5ZvGALPIW" resolve="shadow2" />
                     </node>
                     <node concept="37vLTw" id="6lKULjmyRKP" role="37wK5m">
-                      <ref role="3cqZAo" node="6GIMOf7Jm67" />
+                      <ref role="3cqZAo" node="6GIMOf7Jm67" resolve="SHADOW_2" />
                     </node>
                     <node concept="37vLTw" id="6lKULjmyQSo" role="37wK5m">
-                      <ref role="3cqZAo" node="6lKULjmxgrV" />
+                      <ref role="3cqZAo" node="6lKULjmxgrV" resolve="lineColor" />
                     </node>
                   </node>
                 </node>
               </node>
               <node concept="1rXfSq" id="6lKULjmyPkG" role="3clFbw">
-                <ref role="37wK5l" node="4alR0c18W5t" />
+                <ref role="37wK5l" node="4alR0c18W5t" resolve="hasShadow" />
               </node>
             </node>
           </node>
