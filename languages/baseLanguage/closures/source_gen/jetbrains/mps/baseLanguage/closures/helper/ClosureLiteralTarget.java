@@ -8,6 +8,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.ArrayList;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
 import jetbrains.mps.util.JavaNameUtil;
@@ -15,15 +21,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -41,7 +43,57 @@ public class ClosureLiteralTarget {
     matchTypeParameters(literal, targetIfaceErase, SLinkOperations.getChildren(targetIface, LINKS.parameter$oqG$));
     Values.LITERAL.set(genContext, targetIfaceErase, literal);
     Values.LITERAL_TARGET.set(genContext, literal, targetIfaceErase);
+
+    if (Values.LITERAL_RETURN_DEPEDENCY.isSet(genContext, literal)) {
+      List<SNode> dependants = (List<SNode>) Values.LITERAL_RETURN_DEPEDENCY.get(genContext, literal);
+      final SNode type = resolveIfaceReturnType(targetIface);
+
+      ListSequence.fromList(dependants).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          FunctionTypeUtil.prepAdaptations(genContext, type, it);
+        }
+      });
+      ListSequence.fromList(dependants).clear();
+    }
   }
+
+  /**
+   * Handle dependency of the given rexpr on the return type of the given closure literal. The target type of the expression
+   * will be computed if/once the target type of the dependency is resolved.
+   * 
+   * @param parentToDependOn closure whose return type is required
+   * @param rexpr expresion to apply to return type of the closure on
+   */
+  public void setReturnDependency(SNode parentToDependOn, SNode rexpr) {
+    if (Values.LITERAL_TARGET.isSet(genContext, parentToDependOn)) {
+      // Closure target type already resolved: call prep adaptations
+      SNode targetType = (SNode) Values.LITERAL_TARGET.get(genContext, parentToDependOn);
+      SNode type = resolveIfaceReturnType(targetType);
+      FunctionTypeUtil.prepAdaptations(genContext, type, rexpr);
+    } else {
+      // Otherwise save dependency for later: see setTarget()
+      List<SNode> dependencies;
+
+      if (!(Values.LITERAL_RETURN_DEPEDENCY.isSet(genContext, parentToDependOn))) {
+        dependencies = new ArrayList<SNode>();
+        Values.LITERAL_RETURN_DEPEDENCY.set(genContext, parentToDependOn, dependencies);
+      } else {
+        dependencies = (List<SNode>) Values.LITERAL_RETURN_DEPEDENCY.get(genContext, parentToDependOn);
+      }
+
+      ListSequence.fromList(dependencies).addElement(rexpr);
+    }
+  }
+
+  private SNode resolveIfaceReturnType(SNode targetType) {
+    Iterable<SNode> imds = Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(targetType, LINKS.classifier$cxMr));
+    if (Sequence.fromIterable(imds).isNotEmpty()) {
+      return FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(Sequence.fromIterable(imds).first(), LINKS.returnType$5xoi), targetType)));
+    }
+
+    return null;
+  }
+
   private void matchTypeParameters(SNode literal, SNode targetIfaceErase, List<SNode> reifiedTargetIfaceTypeParams) {
     SNode meth = getFunctionMethod(literal, targetIfaceErase);
     SNode funType = SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(literal), CONCEPTS.FunctionType$9U);

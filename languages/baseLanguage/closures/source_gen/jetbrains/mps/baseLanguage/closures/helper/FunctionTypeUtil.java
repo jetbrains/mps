@@ -150,6 +150,18 @@ with_meet:
     }
     return nodeWithMeetDescendants;
   }
+  public static void prepClosureReturnAdaptations(TemplateQueryContext genContext, SNode ldep, SNode rexpr) {
+    if (Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE) {
+      //  TEMP HACK: proceed only if the "right" expression is a ClosureLiteral, balk otherwise
+      //  This may cause unexpected results, so please disable in case of difficulties generating some code
+      if (!(SNodeOperations.isInstanceOf(rexpr, CONCEPTS.ClosureLiteral$rp))) {
+        return;
+      }
+    }
+
+    // Will call prepAdaptations with the return type of the closure once ready
+    new ClosureLiteralTarget(genContext).setReturnDependency(ldep, rexpr);
+  }
   public static void prepAdaptations(TemplateQueryContext genContext, SNode ltype, SNode rexpr) {
     SNode lCType = (SNodeOperations.isInstanceOf(ltype, CONCEPTS.ClassifierType$bL) ? SNodeOperations.cast(ltype, CONCEPTS.ClassifierType$bL) : null);
     SNode lFType = (SNodeOperations.isInstanceOf(ltype, CONCEPTS.FunctionType$9U) ? SNodeOperations.cast(ltype, CONCEPTS.FunctionType$9U) : null);
