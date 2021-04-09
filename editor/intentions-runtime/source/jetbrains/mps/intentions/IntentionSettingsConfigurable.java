@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,9 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
-import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.StringUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -39,10 +38,14 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class IntentionSettingsConfigurable implements Configurable, Composite {
 
@@ -82,15 +85,16 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
   }
 
   private void initCheckBoxes() {
-    Map<LanguageRuntime, Collection<IntentionFactory>> allIntentionFactories = IntentionsManager.getInstance().getAllIntentionFactories();
-    List<LanguageRuntime> runtimes = new ArrayList<>(allIntentionFactories.keySet());
-    runtimes.sort((LanguageRuntime l1, LanguageRuntime l2) -> StringUtil.compare(l1.getNamespace(), l2.getNamespace()));
-    for (LanguageRuntime runtime : runtimes) {
-      List<IntentionDescriptor> intentions = new ArrayList<>(allIntentionFactories.get(runtime));
-      intentions.sort(
-          (IntentionDescriptor i1, IntentionDescriptor i2) -> StringUtil.compare(i1.getPresentation().toLowerCase(), i2.getPresentation().toLowerCase()));
+    Map<SLanguage, Collection<IntentionFactory>> allIntentionFactories = IntentionsManager.getInstance().getAllIntentionFactories();
+    final Stream<SLanguage> sortedLanguages = allIntentionFactories.keySet().stream().sorted(Comparator.comparing(SLanguage::getQualifiedName));
+    final Function<IntentionDescriptor, String> getPresentation = IntentionDescriptor::getPresentation;
+    final Comparator<IntentionDescriptor> idc = Comparator.comparing(getPresentation.andThen(String::toLowerCase));
+    for (Iterator<SLanguage> it = sortedLanguages.iterator(); it.hasNext(); ) {
+      SLanguage lang = it.next();
+      List<IntentionDescriptor> intentions = new ArrayList<>(allIntentionFactories.get(lang));
+      intentions.sort(idc);
       for (IntentionDescriptor descriptor : intentions) {
-        LanguageTreeNode langTreeNode = myLanguageTreeNodes.computeIfAbsent(runtime.getNamespace(), k -> new LanguageTreeNode(runtime.getNamespace()));
+        LanguageTreeNode langTreeNode = myLanguageTreeNodes.computeIfAbsent(lang.getQualifiedName(), LanguageTreeNode::new);
         langTreeNode.add(new IntentionTreeNode(descriptor));
       }
     }
@@ -131,6 +135,7 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
 
   @Override
   public void disposeUIResources() {
+    myLanguageTreeNodes.clear();
     myTree = null;
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,15 +77,12 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
   }
 
   public static IntentionsManager getInstance() {
-    return ApplicationManager.getApplication().getComponent(IntentionsManager.class);
+    return ApplicationManager.getApplication().getService(IntentionsManager.class);
   }
 
   private MyState myState = new MyState();
 
-  private final LanguageRegistry myLanguageRegistry;
-
-  public IntentionsManager(MPSCoreComponents coreComponents) {
-    myLanguageRegistry = coreComponents.getPlatform().findComponent(LanguageRegistry.class);
+  public IntentionsManager() {
   }
 
   public synchronized Kind getHighestAvailableBaseIntentionType(final SNode node, final EditorContext editorContext) {
@@ -265,21 +262,18 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
   //-------------node info by intention-----------------
 
   /**
-   * Returning combined sorted list of all {@link IntentionFactory} available in the current repository.
-   * This list will be first sorted by the language FQ name and then sorted by presentation of each intention,
-   * so result can be easily displayed in UI components.
+   * Returning combined list of all {@link IntentionFactory} available in the current repository.
+   * This list is intended for intention presentation in UI components.
    *
-   * @deprecated shall not expose LanguageRuntime, which is (a) implementation, (b) reloadable class not suited for map keys
    * @return combined sorted list of all available {@link IntentionFactory}
    */
-  @Deprecated
   @NotNull
-  public synchronized Map<LanguageRuntime, Collection<IntentionFactory>> getAllIntentionFactories() {
-    Map<LanguageRuntime, Collection<IntentionFactory>> result = new HashMap<>();
+  public synchronized Map<SLanguage, Collection<IntentionFactory>> getAllIntentionFactories() {
+    Map<SLanguage, Collection<IntentionFactory>> result = new HashMap<>();
 
-    myLanguageRegistry.withAvailableLanguages(lr -> {
+    final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    languageRegistry.withAvailableLanguages(lr -> {
       List<IntentionFactory> languageIntentions = new ArrayList<>();
-      result.put(lr, languageIntentions);
 
       IntentionAspectDescriptor intentionAspect = lr.getAspect(IntentionAspectDescriptor.class);
       if (intentionAspect != null) {
@@ -289,6 +283,9 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
       final ScriptAspectDescriptor scriptAspect = lr.getAspect(ScriptAspectDescriptor.class);
       if (scriptAspect != null) {
         languageIntentions.addAll(new MigrationRefactoringIntentions(lr, scriptAspect).getIntentions());
+      }
+      if (!languageIntentions.isEmpty()) {
+        result.put(lr.getIdentity(), languageIntentions);
       }
     });
     return result;
@@ -304,8 +301,8 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
            && visitQuickFixes(node, visitor, filter, isAncestor, editorContext);
   }
 
-  private boolean visitIntentionsImpl(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext editorContext) {
-    LanguageRegistry languageRegistry = myLanguageRegistry;
+  private static boolean visitIntentionsImpl(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext editorContext) {
+    final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
     // respect intentions from imported languages only
     ArrayList<IntentionAspectDescriptor> activeIntentionAspects = new ArrayList<>();
     // respect migration scripts from imported languages only
@@ -366,7 +363,7 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
     return true;
   }
 
-  private boolean visitQuickFixes(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext context) {
+  private static boolean visitQuickFixes(SNode node, IntentionsVisitor visitor, Filter filter, boolean isAncestor, EditorContext context) {
     List<ReportItem> messages = new ArrayList<>();
     for (SimpleEditorMessage simpleEditorMessage : ((EditorComponent) context.getEditorComponent()).getHighlightManager().getMessagesFor(node)) {
       if (simpleEditorMessage instanceof HighlighterMessage) {

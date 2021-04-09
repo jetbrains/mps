@@ -31,10 +31,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.intentions.IntentionsManager</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.editor.resolver.EditorResolverComponent</implementation-class>
     </component>
 
@@ -90,6 +86,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceImplementation="jetbrains.mps.nodeEditor.EditorSettings"/>
+    <applicationService serviceImplementation="jetbrains.mps.intentions.IntentionsManager"/>
 
     <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
 
