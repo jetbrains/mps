@@ -17,7 +17,6 @@ package jetbrains.mps.vfs;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
@@ -64,8 +63,9 @@ public class VfsTest implements EnvironmentAware {
     FileSystem oldFS = FileSystemExtPoint.getFS();
     try {
       // XXX what's the reason to initialize IdeaFileSystem app component this way?
-      final MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-      FileSystemExtPoint.setFS(new IdeaFileSystem(mpsCore, null, null, null));
+      //     Isn't it already part of initialized Environment?
+      //     And it does setFS in constructor, why explicit here?
+      FileSystemExtPoint.setFS(new IdeaFileSystem(null, null, null));
       final Throwable[] ex = new Throwable[1];
       ApplicationManager.getApplication().invokeAndWait(new Runnable() {
         @Override

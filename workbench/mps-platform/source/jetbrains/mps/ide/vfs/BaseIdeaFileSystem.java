@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,19 +23,16 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import com.intellij.openapi.vfs.newvfs.RefreshQueue;
 import com.intellij.util.ThrowableRunnable;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.platform.watching.FileSystemListenersContainer;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileListener;
-import jetbrains.mps.vfs.refresh.FileListenerAdapter;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
@@ -45,8 +42,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSystem, Disposable {
   private static final Logger LOG = LogManager.getLogger(IdeaFileSystem.class);
@@ -55,18 +50,18 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
   private FileSystemListenersContainer myListenersContainer;
   private final String myIdeaProtocol;
 
-  protected BaseIdeaFileSystem(MPSCoreComponents mpsCore) {
-    myCoreComponents = mpsCore;
+  protected BaseIdeaFileSystem() {
+    myCoreComponents = MPSCoreComponents.getInstance();
     myListenersContainer = FileSystemListenersContainer.getInstance();
     myIdeaProtocol = null;
   }
 
-  public BaseIdeaFileSystem(@NotNull MPSCoreComponents mpsCore, @NotNull String ideaProtocolIdentity) {
+  public BaseIdeaFileSystem(@NotNull String ideaProtocolIdentity) {
     // XXX would be nice to get VirtualFileManager instance as well (see #getUnderlyingFS()), but the parameter list gets too long
     //     Perhaps, if this class and subclasses stop being app component, we could have a single one that takes
     //     MPSCoreComponent, FileSystemListenersContainer and VirtualFileManager, and registers appropriate protocol
     //     implementations (jar, local, jrt and idea) as needed. Is there any value in distinct app components per protocol?
-    myCoreComponents = mpsCore;
+    myCoreComponents = MPSCoreComponents.getInstance();
     myListenersContainer = FileSystemListenersContainer.getInstance();
     myIdeaProtocol = ideaProtocolIdentity;
     vfsManager().registerFS(getProtocol(), this);

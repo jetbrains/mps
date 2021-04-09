@@ -15,11 +15,10 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.vfs.VFSManager;
 
 public class JarIdeaFileSystem extends BaseIdeaFileSystem {
-  public JarIdeaFileSystem(MPSCoreComponents mpsCore) {
-    super(mpsCore, VFSManager.JAR_FS);
+  public JarIdeaFileSystem() {
+    super(VFSManager.JAR_FS);
   }
 }

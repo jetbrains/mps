@@ -15,11 +15,10 @@
  */
 package jetbrains.mps.ide.vfs;
 
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.vfs.VFSManager;
 
 public class LocalIdeaFileSystem extends BaseIdeaFileSystem {
-  public LocalIdeaFileSystem(MPSCoreComponents mpsCore) {
-    super(mpsCore, VFSManager.FILE_FS);
+  public LocalIdeaFileSystem() {
+    super(VFSManager.FILE_FS);
   }
 }

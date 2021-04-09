@@ -20,7 +20,6 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.SafeWriteRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
@@ -38,8 +37,8 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
   private FileSystem myOldFileSystem;
 
   //all FSes should be registered before this one starts working
-  public IdeaFileSystem(MPSCoreComponents mpsCore, JarIdeaFileSystem fs1, LocalIdeaFileSystem fs2, JrtIdeaFileSystem fs3) {
-    super(mpsCore);
+  public IdeaFileSystem(JarIdeaFileSystem fs1, LocalIdeaFileSystem fs2, JrtIdeaFileSystem fs3) {
+    super();
     myOldFileSystem = FileSystemExtPoint.getFS();
     FileSystemExtPoint.setFS(this);
   }
