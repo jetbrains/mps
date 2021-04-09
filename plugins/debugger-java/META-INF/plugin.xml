@@ -28,9 +28,6 @@
     <!--api-->
     <!--runtime-->
     <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.JavaNodePositionProvider</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent</implementation-class>
     </component>
     <component>
@@ -47,5 +44,12 @@
     <mps.LanguageLibrary dir="/"/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.customViewers.plugin.plugin.Plugin_ApplicationPlugin" />
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_ApplicationPlugin" />
+  </extensions>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <!-- JavaNodePositionProvider comes with higher priority for NodePositionProvider key -->
+    <debugger.PositionProvider key="jetbrains.mps.debug.api.source.NodePositionProvider"
+                               weight="200"
+                               class="jetbrains.mps.debugger.java.runtime.JavaNodePositionProvider"/>
   </extensions>
 </idea-plugin>

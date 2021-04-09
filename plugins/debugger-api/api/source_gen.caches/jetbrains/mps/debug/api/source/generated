@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-890579k98uamwtanvnbuixif7t5nrjd">
-  <files names="IPositionProvider.java:NodePositionProvider.java:NodeSourcePosition.java:PositionProvider.java:SourcePosition.java:TextPositionProvider.java:TextSourcePosition.java" />
+<product version="3" modelHash="21zxy0bbpon7bam65zvvxvepzvtgj3w">
+  <files names="IPositionProvider.java:NodePositionProvider.java:NodeSourcePosition.java:PositionProvider.java:PositionProviderBean.java:SourcePosition.java:TextPositionProvider.java:TextSourcePosition.java" />
 </product>
 

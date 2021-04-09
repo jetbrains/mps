@@ -4,9 +4,6 @@ package jetbrains.mps.debugger.java.runtime;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.source.NodePositionProvider;
-import com.intellij.openapi.components.ProjectComponent;
-import jetbrains.mps.debug.api.source.PositionProvider;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.NotNull;
@@ -16,16 +13,11 @@ import java.util.Iterator;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
-import jetbrains.mps.debug.api.source.NodeSourcePosition;
-import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 
 @GeneratedClass(node = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)/7048882195103614171", model = "r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)")
-public class JavaNodePositionProvider extends NodePositionProvider implements ProjectComponent {
-  private final PositionProvider myProvider;
-  public JavaNodePositionProvider(PositionProvider provider, MPSProject mpsProject) {
-    super(mpsProject);
-    myProvider = provider;
+public class JavaNodePositionProvider extends NodePositionProvider {
+  public JavaNodePositionProvider() {
   }
 
   @Nullable
@@ -41,27 +33,7 @@ public class JavaNodePositionProvider extends NodePositionProvider implements Pr
   }
 
   @Override
-  public void projectOpened() {
-  }
-  @Override
-  public void projectClosed() {
-  }
-  @Override
-  public void initComponent() {
-    myProvider.addProvider(this, NodeSourcePosition.class.getName());
-  }
-  @Override
-  public void disposeComponent() {
-    myProvider.removeProvider(this);
-  }
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Java Node Position Provider";
-  }
-  @Override
   public boolean accepts(AbstractDebugSession session) {
-    return super.accepts(session) && session instanceof DebugSession;
+    return session instanceof DebugSession && super.accepts(session);
   }
 }

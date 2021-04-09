@@ -34,9 +34,6 @@
       <implementation-class>jetbrains.mps.debug.api.DebugSessionManagerComponent</implementation-class>
     </component>
 
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.source.PositionProvider</implementation-class>
-    </component>
     <!--runtime-->
     <component>
       <implementation-class>jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent</implementation-class>
@@ -67,11 +64,24 @@
     </group>
   </actions>
 
+  <extensionPoints>
+    <extensionPoint qualifiedName="jetbrains.mps.debugger.PositionProvider" beanClass="jetbrains.mps.debug.api.source.PositionProviderBean" dynamic="true">
+      <with attribute="class" implements="jetbrains.mps.debug.api.source.IPositionProvider"/>
+    </extensionPoint>
+  </extensionPoints>
+
   <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceImplementation="jetbrains.mps.debug.api.source.PositionProvider" />
     <programRunner id="defaultDebugRunner" implementation="jetbrains.mps.debugger.api.runner.MPSDebugRunner"
                    order="last"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <mps.LanguageLibrary dir=""/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.api.ui.actions.Runtime_ApplicationPlugin" />
   </extensions>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <debugger.PositionProvider key="jetbrains.mps.debug.api.source.NodePositionProvider" class="jetbrains.mps.debug.api.source.NodePositionProvider"/>
+    <debugger.PositionProvider key="jetbrains.mps.debug.api.source.TextPositionProvider" class="jetbrains.mps.debug.api.source.TextPositionProvider"/>
+  </extensions>
+
 </idea-plugin>
