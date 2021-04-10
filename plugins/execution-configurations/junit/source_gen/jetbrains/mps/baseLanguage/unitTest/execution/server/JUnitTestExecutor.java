@@ -7,6 +7,7 @@ import org.apache.log4j.LogManager;
 import org.junit.runner.notification.RunListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import java.io.PrintStream;
 import org.junit.runner.Request;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
@@ -26,9 +27,13 @@ public class JUnitTestExecutor implements TestExecutor {
   private final TestsContributor myTestContributor;
   private int myFailureCount = -1;
   private Throwable myException;
+  private final CommandOutputStream myOutStream;
+  private final CommandOutputStream myErrStream;
 
   public JUnitTestExecutor(@NotNull TestsContributor testContributor) {
     myTestContributor = testContributor;
+    myOutStream = new CommandOutputStream(System.out);
+    myErrStream = new CommandOutputStream(System.err);
   }
 
   @Nullable
@@ -41,10 +46,14 @@ public class JUnitTestExecutor implements TestExecutor {
     if (LOG.isDebugEnabled()) {
       LOG.debug("Initializing " + getClass().getSimpleName());
     }
+    System.setOut(new PrintStream(myOutStream));
+    System.setErr(new PrintStream(myErrStream));
   }
 
   @Override
   public void dispose() {
+    System.setOut(myOutStream.getOldStream());
+    System.setErr(myErrStream.getOldStream());
     if (LOG.isDebugEnabled()) {
       LOG.debug("Disposing " + getClass().getSimpleName());
     }
@@ -132,9 +141,6 @@ public class JUnitTestExecutor implements TestExecutor {
 
   @NotNull
   protected RunListener createListener(Iterable<Request> requests) {
-    // In fact, wrap of System.out makes little sense here. One of the CommandOutputStream ideas is to track
-    // output and ensure there's \n in front of a synch token. However, any output to System.out here would go
-    // unnoticed. For the COS to work as expected, a belly dance of DefaultTestExecutor is needed (when a COS is System.out)
-    return new DefaultRunListener(new CommandOutputStream(System.out));
+    return new DefaultRunListener(myOutStream);
   }
 }
