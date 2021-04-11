@@ -4455,8 +4455,8 @@
                   <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
                 </node>
               </node>
-              <node concept="liA8E" id="4RwqHDAaI2U" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+              <node concept="liA8E" id="5$et51nwjNi" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SNode.getPresentation()" resolve="getPresentation" />
               </node>
             </node>
           </node>
@@ -5276,8 +5276,8 @@
                         <node concept="37vLTw" id="DuTZ70Qhlc" role="2Oq$k0">
                           <ref role="3cqZAo" node="gkhJ4LtHv5" resolve="containingRoot" />
                         </node>
-                        <node concept="liA8E" id="DuTZ70Qhld" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+                        <node concept="liA8E" id="p_BtsPWL6i" role="2OqNvi">
+                          <ref role="37wK5l" to="mhbf:~SNode.getPresentation()" resolve="getPresentation" />
                         </node>
                       </node>
                     </node>
@@ -5545,8 +5545,8 @@
                           <node concept="37vLTw" id="DuTZ70UVOy" role="2Oq$k0">
                             <ref role="3cqZAo" node="5RSgT5FiYXO" resolve="containingRoot" />
                           </node>
-                          <node concept="liA8E" id="DuTZ70UVOz" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+                          <node concept="liA8E" id="p_BtsPXa1g" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SNode.getPresentation()" resolve="getPresentation" />
                           </node>
                         </node>
                       </node>

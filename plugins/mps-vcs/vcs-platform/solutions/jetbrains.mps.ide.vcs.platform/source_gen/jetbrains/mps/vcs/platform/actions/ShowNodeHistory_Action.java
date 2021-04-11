@@ -83,7 +83,7 @@ public class ShowNodeHistory_Action extends BaseAction {
         SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
         String nodeName = event.getData(MPSCommonDataKeys.NODE).getPresentation();
         nodeId.value = event.getData(MPSCommonDataKeys.NODE).getNodeId();
-        dialogTitle.value = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName() + "/" + containingRoot.getName();
+        dialogTitle.value = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName() + "/" + containingRoot.getPresentation();
         if (!(nodeId.value.equals(containingRoot.getNodeId()))) {
           dialogTitle.value = dialogTitle.value + "/" + nodeName;
         }

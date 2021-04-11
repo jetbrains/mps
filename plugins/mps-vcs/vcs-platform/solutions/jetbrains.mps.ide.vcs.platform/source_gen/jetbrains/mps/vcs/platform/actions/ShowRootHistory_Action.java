@@ -75,7 +75,7 @@ public class ShowRootHistory_Action extends BaseAction {
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
       public void run() {
         SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
-        String rootName = containingRoot.getName();
+        String rootName = containingRoot.getPresentation();
         rootId.value = containingRoot.getNodeId();
         dialogTitle.value = modelName.getLongName() + '/' + rootName;
       }
