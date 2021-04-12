@@ -4,6 +4,7 @@ package jetbrains.mps.vcs.annotate;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.Set;
@@ -15,7 +16,6 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -29,20 +29,23 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ final class AnnotatedCellMessage extends EditorMessageWithTarget {
 
+  @NotNull
   private final EditorCell myCell;
   private final CommitsGraphNode myCommitsGraphNode;
   private Set<RevisionNodeChange> myChanges;
   private Color myColor;
   private final Project myProject;
+  private boolean myShowCommitInfo;
 
 
-  /*package*/ AnnotatedCellMessage(Project project, CommitsGraphNode commitsGraphNode, Iterable<RevisionNodeChange> changes, EditorCell cell, Color color, EditorMessageOwner owner) {
+  /*package*/ AnnotatedCellMessage(Project project, CommitsGraphNode commitsGraphNode, Iterable<RevisionNodeChange> changes, @NotNull EditorCell cell, Color color, boolean showCommitInfo, EditorMessageOwner owner) {
     super(cell.getSNode(), MessageStatus.OK, new NodeMessageTarget(), color, "", owner);
     myProject = project;
     myCommitsGraphNode = commitsGraphNode;
     myChanges = Collections.unmodifiableSet(SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), changes));
     myCell = cell;
     myColor = color;
+    myShowCommitInfo = showCommitInfo;
   }
 
   @NotNull
@@ -53,6 +56,9 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 
   @Override
   public String getMessage() {
+    if (!(myShowCommitInfo)) {
+      return "";
+    }
     return IterableUtils.join(SetSequence.fromSet(myChanges).select(new ISelector<RevisionNodeChange, String>() {
       public String select(RevisionNodeChange it) {
         return it.getMessage();
@@ -64,6 +70,7 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
     return myCommitsGraphNode.getRevisionDescription(myProject);
   }
 
+  @NotNull
   public EditorCell getCell() {
     return myCell;
   }
@@ -75,6 +82,10 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
   @Override
   public Color getColor() {
     return myColor;
+  }
+
+  public void showCommitInfo(boolean show) {
+    myShowCommitInfo = show;
   }
 
   public Set<RevisionNodeChange> getChanges() {

@@ -14,6 +14,6 @@ import jetbrains.mps.vcs.history.CommitsGraphNode;
 
   @Override
   public String getText(CommitsGraphNode graphNode) {
-    return (myEditorAnnotation.isRevisionHighlighted(graphNode) ? "*" : "");
+    return (myEditorAnnotation.isLatestCommit(graphNode) ? "*" : "");
   }
 }

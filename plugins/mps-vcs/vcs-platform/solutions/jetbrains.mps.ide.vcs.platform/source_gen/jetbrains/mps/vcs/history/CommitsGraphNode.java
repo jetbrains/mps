@@ -318,7 +318,7 @@ public final class CommitsGraphNode implements Comparable {
 
   public String getRevisionDescription(Project project) {
     if (isLocalRevision()) {
-      return null;
+      return "Local Changes";
     }
 
     String tooltipText = null;

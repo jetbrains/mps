@@ -7,6 +7,7 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
+import java.util.Objects;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.vcsUtil.VcsUtil;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -17,9 +18,13 @@ import com.intellij.openapi.vcs.actions.ShortNameType;
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/839470717526615907", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AnnotationOptions {
 
-  private static final String HIGHLIGHT_EDITOR_KEY = "annotations.highlight.editor.mode";
-  private static final String COLUMN_HOVER_SHOW_TOOLTIP_KEY = "annotations.column.hover.show.tooltip";
-  private static final String COLUMN_HOVER_HIGHLIGHT_REVISION_KEY = "annotations.column.hover.highlight.revision";
+  private static final String HIGHLIGHT_CELLS_MODE_KEY = "annotations.highlight.cells.mode";
+  private static final String HIGHLIGHT_ALL_CELLS_KEY = "annotations.highlight.all.cells";
+  private static final String HIGHLIGHT_COMMIT_CELLS_KEY = "annotations.highlight.commit.cells";
+  private static final String HIGHLIGHT_NONE_CELLS_KEY = "annotations.highlight.none.cells";
+  private static final String SHOW_TOOLTIP_KEY = "annotations.show.tooltip";
+  private static final boolean SHOW_TOOLTIP_DEFAULT = false;
+  private static final String HIGHLIGHT_CELLS_DEFAULT = HIGHLIGHT_NONE_CELLS_KEY;
 
 
   private AnnotationOptions() {
@@ -31,29 +36,39 @@ public class AnnotationOptions {
     return ApplicationManager.getApplication().getService(AnnotationOptions.class);
   }
 
-  public boolean isEditorHighlighted() {
-    return PropertiesComponent.getInstance().getBoolean(HIGHLIGHT_EDITOR_KEY);
+  public boolean areAllCellsHighlighted() {
+    return Objects.equals(PropertiesComponent.getInstance().getValue(HIGHLIGHT_CELLS_MODE_KEY, HIGHLIGHT_CELLS_DEFAULT), HIGHLIGHT_ALL_CELLS_KEY);
   }
 
-  public void setIsHighlightEditor(boolean value) {
-    PropertiesComponent.getInstance().setValue(HIGHLIGHT_EDITOR_KEY, value);
+  public void highlightAllCells() {
+    PropertiesComponent.getInstance().setValue(HIGHLIGHT_CELLS_MODE_KEY, HIGHLIGHT_ALL_CELLS_KEY, HIGHLIGHT_CELLS_DEFAULT);
     repaintEditors();
   }
 
-  public boolean isColumnHoverShowTooltip() {
-    return PropertiesComponent.getInstance().getBoolean(COLUMN_HOVER_SHOW_TOOLTIP_KEY);
+  public boolean areTooltipsShown() {
+    return PropertiesComponent.getInstance().getBoolean(SHOW_TOOLTIP_KEY, SHOW_TOOLTIP_DEFAULT);
   }
 
-  public void setIsColumnHoverShowTooltip(boolean value) {
-    PropertiesComponent.getInstance().setValue(COLUMN_HOVER_SHOW_TOOLTIP_KEY, value);
+  public void showTooltips(boolean value) {
+    PropertiesComponent.getInstance().setValue(SHOW_TOOLTIP_KEY, value, SHOW_TOOLTIP_DEFAULT);
   }
 
-  public boolean isColumnHoverHighlightRevision() {
-    return PropertiesComponent.getInstance().getBoolean(COLUMN_HOVER_HIGHLIGHT_REVISION_KEY);
+  public boolean areCommitCellsHighlighted() {
+    return Objects.equals(PropertiesComponent.getInstance().getValue(HIGHLIGHT_CELLS_MODE_KEY, HIGHLIGHT_CELLS_DEFAULT), HIGHLIGHT_COMMIT_CELLS_KEY);
   }
 
-  public void setIsColumnHoverHighlightRevision(boolean value) {
-    PropertiesComponent.getInstance().setValue(COLUMN_HOVER_HIGHLIGHT_REVISION_KEY, value);
+  public void highlightCommitCells() {
+    PropertiesComponent.getInstance().setValue(HIGHLIGHT_CELLS_MODE_KEY, HIGHLIGHT_COMMIT_CELLS_KEY, HIGHLIGHT_CELLS_DEFAULT);
+    repaintEditors();
+  }
+
+  public boolean areCellsNotHighlighted() {
+    return Objects.equals(PropertiesComponent.getInstance().getValue(HIGHLIGHT_CELLS_MODE_KEY, HIGHLIGHT_CELLS_DEFAULT), HIGHLIGHT_NONE_CELLS_KEY);
+  }
+
+  public void doNotHighlightCells() {
+    PropertiesComponent.getInstance().setValue(HIGHLIGHT_CELLS_MODE_KEY, HIGHLIGHT_NONE_CELLS_KEY, HIGHLIGHT_CELLS_DEFAULT);
+    repaintEditors();
   }
 
   public void setAspectAvailability(String aspectId, boolean showByDefault) {

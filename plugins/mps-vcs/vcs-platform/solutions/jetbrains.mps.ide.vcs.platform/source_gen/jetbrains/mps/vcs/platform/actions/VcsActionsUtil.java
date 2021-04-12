@@ -360,10 +360,7 @@ __switch__:
       return null;
     }
     @Nullable AnnotationColumn column = getAnnotationColumn(editorComponent);
-    if (column == null || !(AnnotationColumn.isEditorHighlighted())) {
-      return null;
-    }
-    return column.getEditorAnnotation().getCellAnnotation(cell);
+    return (column == null ? null : column.getEditorAnnotation().getCellAnnotation(cell));
   }
 
   public static void showCommitInGitLog(VcsFileRevision myRevision, final Project myProject) {

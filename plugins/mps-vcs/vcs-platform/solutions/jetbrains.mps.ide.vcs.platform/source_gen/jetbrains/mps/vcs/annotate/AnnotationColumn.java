@@ -8,7 +8,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
@@ -39,6 +38,7 @@ import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import jetbrains.mps.workbench.action.ActionUtils;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -61,7 +61,6 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   private final List<AnnotationAspectSubcolumn> myAspectSubcolumns = ListSequence.fromList(new ArrayList<AnnotationAspectSubcolumn>());
   private final MessageBusConnection myMessageBusConnection;
   private int mySubcolumnInterval;
-  private VcsFileRevision myRevisionUnderMouse;
   private boolean myIsClosed;
   private ViewActionGroup myViewActionGroup;
   private Runnable myCloseActionListener;
@@ -163,7 +162,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     }
     graphics.setColor(StyleRegistry.getInstance().getColor("ANNOTATIONS_COLOR"));
     Font font = EditorSettings.getInstance().getDefaultEditorFont();
-    if (myEditorAnnotation.isRevisionHighlighted(graphNode)) {
+    if (myEditorAnnotation.isLatestCommit(graphNode)) {
       graphics.setFont(FontRegistry.getInstance().getFont(font.getName(), font.getStyle() | Font.BOLD, font.getSize()));
     } else {
       graphics.setFont(font);
@@ -239,7 +238,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public String getTooltipText(MouseEvent event) {
-    if (!(isEditorHighlighted()) && !(isColumnHoverShowTooltip())) {
+    if (!(areTooltipsShown())) {
       return null;
     }
     LineAnnotation la = getLineAnnotation(event.getY());
@@ -280,35 +279,17 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   @Override
   public void mouseExited() {
     super.mouseExited();
-    if (!(isEditorHighlighted())) {
-      myEditorAnnotation.unhighlightCells();
-    }
-    myRevisionUnderMouse = null;
+    myEditorAnnotation.setCommitUnderMouse(null);
   }
 
-  private static boolean isColumnHoverShowTooltip() {
-    return AnnotationOptions.getInstance().isColumnHoverShowTooltip();
-  }
-
-  private static boolean isColumnHoverHighlightRevision() {
-    return AnnotationOptions.getInstance().isColumnHoverHighlightRevision();
-  }
-
-  public static boolean isEditorHighlighted() {
-    return AnnotationOptions.getInstance().isEditorHighlighted();
+  private static boolean areTooltipsShown() {
+    return AnnotationOptions.getInstance().areTooltipsShown();
   }
 
   @Override
   public void mouseMoved(MouseEvent event) {
-    if (isEditorHighlighted() || !(isColumnHoverHighlightRevision())) {
-      return;
-    }
-    CommitsGraphNode graphNode = check_5mnya_a0b0fc(getLineAnnotation(event.getY()), this);
-    if (check_5mnya_a0c0fc(graphNode) == myRevisionUnderMouse) {
-      return;
-    }
-    myEditorAnnotation.highlightCellsForRevision(graphNode);
-    myRevisionUnderMouse = check_5mnya_a0e0fc(graphNode);
+    CommitsGraphNode graphNode = check_5mnya_a0a0ac(getLineAnnotation(event.getY()), this);
+    myEditorAnnotation.setCommitUnderMouse(graphNode);
   }
 
   @Override
@@ -322,7 +303,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       return;
     }
     myIsClosed = true;
-    check_5mnya_a2a16(myCloseActionListener);
+    check_5mnya_a2a65(myCloseActionListener);
     if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
     }
@@ -337,7 +318,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
     final LineAnnotation la = getLineAnnotation(event.getY());
-    final CommitsGraphNode graphNode = check_5mnya_a0c0nc(la);
+    final CommitsGraphNode graphNode = check_5mnya_a0c0ic(la);
     boolean isVcsRevision = graphNode != null && !(graphNode.isLocalRevision());
     ListSequence.fromList(actions).addElement(createCloseAnnotateAction());
     ListSequence.fromList(actions).addElement(Separator.getInstance());
@@ -353,12 +334,9 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       ListSequence.fromList(actions).addElement(createAnnotateRevisionAction(graphNode));
       ListSequence.fromList(actions).addElement(createAnnotatePreviousRevisionAction(graphNode));
     }
-    if (!(isEditorHighlighted())) {
-      ListSequence.fromList(actions).addElement(Separator.getInstance());
-      ListSequence.fromList(actions).addElement(createColumnMouseHoverOptionsGroup());
-    }
     ListSequence.fromList(actions).addElement(Separator.getInstance());
-    ListSequence.fromList(actions).addElement(createHighlightEditorAction());
+    ListSequence.fromList(actions).addElement(createAnnotatedCellsHighlightingGroup());
+    ListSequence.fromList(actions).addElement(createShowTooltipsAction());
     return ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, ActionUtils.groupFromActions(ListSequence.fromList(actions).toGenericArray(AnAction.class))).getComponent();
   }
 
@@ -372,67 +350,73 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     };
   }
 
-  private void checkColumnHoverOptions() {
-    boolean columnHoverShowTooltip = AnnotationOptions.getInstance().isColumnHoverShowTooltip();
-    boolean columnHoverHighlightRevision = AnnotationOptions.getInstance().isColumnHoverHighlightRevision();
-    if (columnHoverShowTooltip == columnHoverHighlightRevision) {
-      AnnotationOptions.getInstance().setIsColumnHoverShowTooltip(true);
-      AnnotationOptions.getInstance().setIsColumnHoverHighlightRevision(false);
-    }
-  }
-
-  private AnAction createColumnMouseHoverOptionsGroup() {
-    checkColumnHoverOptions();
-    BaseGroup mouseOverGroup = new BaseGroup("Mouse hover options");
+  private AnAction createAnnotatedCellsHighlightingGroup() {
+    BaseGroup mouseOverGroup = new BaseGroup("Annotated Cells Highlighting");
     mouseOverGroup.setPopup(true);
-    mouseOverGroup.add(createColumnHoverShowTooltipAction());
-    mouseOverGroup.add(createColumnHoverHighlightRevision());
+    mouseOverGroup.add(createHighlightAllCellsAction());
+    mouseOverGroup.add(createHighlightCommitCellsAction());
+    mouseOverGroup.add(createDoNotHighlightCellsAction());
     return mouseOverGroup;
   }
 
-  private AnAction createHighlightEditorAction() {
-    return new ToggleAction("Annotate cells") {
+  private AnAction createShowTooltipsAction() {
+    return new ToggleAction("Show Tooltips With Commit Info") {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p0) {
-        return AnnotationOptions.getInstance().isEditorHighlighted();
+        return AnnotationOptions.getInstance().areTooltipsShown();
       }
       @Override
-      public void setSelected(@NotNull AnActionEvent p0, boolean annotate) {
-        AnnotationOptions.getInstance().setIsHighlightEditor(annotate);
+      public void setSelected(@NotNull AnActionEvent p0, boolean show) {
+        AnnotationOptions.getInstance().showTooltips(show);
+        myEditorAnnotation.showTooltips(show);
       }
     };
   }
 
-  private AnAction createColumnHoverShowTooltipAction() {
-    return new ToggleAction("Show revision info") {
+  private AnAction createHighlightAllCellsAction() {
+    return new ToggleAction("Highlight All Annotated Cells") {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p0) {
-        return AnnotationOptions.getInstance().isColumnHoverShowTooltip();
+        return AnnotationOptions.getInstance().areAllCellsHighlighted();
       }
       @Override
       public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
         if (!(p1)) {
           return;
         }
-        AnnotationOptions.getInstance().setIsColumnHoverShowTooltip(true);
-        AnnotationOptions.getInstance().setIsColumnHoverHighlightRevision(false);
+        AnnotationOptions.getInstance().highlightAllCells();
       }
     };
   }
 
-  private AnAction createColumnHoverHighlightRevision() {
-    return new ToggleAction("Highlight cells for a revision") {
+  private AnAction createHighlightCommitCellsAction() {
+    return new ToggleAction("Highlight Cells for a Commit") {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p0) {
-        return isColumnHoverHighlightRevision();
+        return AnnotationOptions.getInstance().areCommitCellsHighlighted();
       }
       @Override
       public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
         if (!(p1)) {
           return;
         }
-        AnnotationOptions.getInstance().setIsColumnHoverShowTooltip(false);
-        AnnotationOptions.getInstance().setIsColumnHoverHighlightRevision(true);
+        AnnotationOptions.getInstance().highlightCommitCells();
+      }
+    };
+  }
+
+  private AnAction createDoNotHighlightCellsAction() {
+    return new ToggleAction("Do Not Highlight Cells") {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p0) {
+        return AnnotationOptions.getInstance().areCellsNotHighlighted();
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+        if (!(p1)) {
+          return;
+        }
+        AnnotationOptions.getInstance().doNotHighlightCells();
       }
     };
   }
@@ -522,31 +506,19 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-  private static CommitsGraphNode check_5mnya_a0b0fc(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
+  private static CommitsGraphNode check_5mnya_a0a0ac(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }
     return null;
   }
-  private static VcsFileRevision check_5mnya_a0c0fc(CommitsGraphNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getRevision();
-    }
-    return null;
-  }
-  private static VcsFileRevision check_5mnya_a0e0fc(CommitsGraphNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getRevision();
-    }
-    return null;
-  }
-  private static void check_5mnya_a2a16(Runnable checkedDotOperand) {
+  private static void check_5mnya_a2a65(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }
 
   }
-  private static CommitsGraphNode check_5mnya_a0c0nc(LineAnnotation checkedDotOperand) {
+  private static CommitsGraphNode check_5mnya_a0c0ic(LineAnnotation checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }

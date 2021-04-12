@@ -153,6 +153,7 @@
     <classNode dependClassName="com.intellij.vcsUtil.VcsUtil" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashSet" />
+    <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
