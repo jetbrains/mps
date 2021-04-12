@@ -33,6 +33,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.util.Collections;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
@@ -195,6 +196,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     SModel prevModel = parentNode.getLoadedModel();
     SModel model = graphNode.getLoadedModel();
     if (prevModel == model) {
+      graphNode.setIdChanges(Sequence.fromIterable(Collections.<ModelChange>emptyList()));
       return;
     }
     List<ModelChange> modelChanges = calcChangeSet(prevModel, model, false).getModelChanges();

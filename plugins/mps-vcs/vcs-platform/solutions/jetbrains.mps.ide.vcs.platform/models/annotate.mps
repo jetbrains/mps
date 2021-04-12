@@ -446,6 +446,9 @@
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
       <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
+      <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb">
+        <child id="1224414456414" name="elementType" index="kMuH3" />
+      </concept>
       <concept id="1237467461002" name="jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation" flags="nn" index="uNJiE" />
       <concept id="1237467705688" name="jetbrains.mps.baseLanguage.collections.structure.IteratorType" flags="in" index="uOF1S">
         <child id="1237467730343" name="elementType" index="uOL27" />
@@ -7644,6 +7647,23 @@
         </node>
         <node concept="3clFbJ" id="5PRn7fOI3dI" role="3cqZAp">
           <node concept="3clFbS" id="5PRn7fOI3dK" role="3clFbx">
+            <node concept="3clFbF" id="3ULi9lOiFzb" role="3cqZAp">
+              <node concept="2OqwBi" id="3ULi9lOiFzc" role="3clFbG">
+                <node concept="37vLTw" id="3ULi9lOiFzd" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7gLwWYzlj9Q" resolve="graphNode" />
+                </node>
+                <node concept="liA8E" id="3ULi9lOiFze" role="2OqNvi">
+                  <ref role="37wK5l" to="5p6x:7fUbjDMfpcO" resolve="setIdChanges" />
+                  <node concept="2ShNRf" id="3ULi9lOiUWv" role="37wK5m">
+                    <node concept="kMnCb" id="3ULi9lOjzjw" role="2ShVmc">
+                      <node concept="3uibUv" id="3ULi9lOjAoz" role="kMuH3">
+                        <ref role="3uigEE" to="btf5:7Dh0CRFZxgO" resolve="ModelChange" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs6" id="5PRn7fOIhnt" role="3cqZAp" />
           </node>
           <node concept="3clFbC" id="5PRn7fOIagY" role="3clFbw">

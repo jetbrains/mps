@@ -63,6 +63,7 @@ public final class CommitsGraphNode implements Comparable {
 
   public CommitsGraphNode(@NotNull VcsFileRevision revision) {
     myRevision = revision;
+    myNodeWithLoadedModel = this;
   }
 
   public CommitsGraphNode(@NotNull CurrentRevision revision, SModel localModel) {
@@ -92,7 +93,7 @@ public final class CommitsGraphNode implements Comparable {
   public void setIdChanges(Iterable<ModelChange> modelChanges) {
     SetSequence.fromSet(myChildren).visitAll(new IVisitor<CommitsGraphNode>() {
       public void visit(CommitsGraphNode child) {
-        MapSequence.fromMap(child.getChangedIds()).visitAll(new IVisitor<IMapping<SNodeId, Set<SNodeId>>>() {
+        MapSequence.fromMap(child.getNodeWithLoadedModel().getChangedIds()).visitAll(new IVisitor<IMapping<SNodeId, Set<SNodeId>>>() {
           public void visit(IMapping<SNodeId, Set<SNodeId>> it) {
             addChangedIds(it.key(), it.value());
           }

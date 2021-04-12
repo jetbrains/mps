@@ -510,6 +510,14 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="56alAfWtvy4" role="3cqZAp">
+          <node concept="37vLTI" id="56alAfWtvy5" role="3clFbG">
+            <node concept="Xjq3P" id="56alAfWtvy6" role="37vLTx" />
+            <node concept="37vLTw" id="56alAfWtvy7" role="37vLTJ">
+              <ref role="3cqZAo" node="4UjHG8gvLWz" resolve="myNodeWithLoadedModel" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="37vLTG" id="6wgNI6tBNF_" role="3clF46">
         <property role="TrG5h" value="revision" />
@@ -727,11 +735,16 @@
                   <node concept="3clFbF" id="12fIa2Z4iQo" role="3cqZAp">
                     <node concept="2OqwBi" id="12fIa2Z4LXO" role="3clFbG">
                       <node concept="2OqwBi" id="12fIa2Z4of6" role="2Oq$k0">
-                        <node concept="37vLTw" id="12fIa2Z4iQn" role="2Oq$k0">
-                          <ref role="3cqZAo" node="12fIa2Z44ik" resolve="child" />
-                        </node>
-                        <node concept="liA8E" id="12fIa2Z4EDt" role="2OqNvi">
+                        <node concept="liA8E" id="6bRJO4uxmQp" role="2OqNvi">
                           <ref role="37wK5l" node="3Z75HrBK6cR" resolve="getChangedIds" />
+                        </node>
+                        <node concept="2OqwBi" id="6bRJO4uxbN5" role="2Oq$k0">
+                          <node concept="liA8E" id="6bRJO4uxh1Q" role="2OqNvi">
+                            <ref role="37wK5l" node="4UjHG8gvSsf" resolve="getNodeWithLoadedModel" />
+                          </node>
+                          <node concept="37vLTw" id="12fIa2Z4iQn" role="2Oq$k0">
+                            <ref role="3cqZAo" node="12fIa2Z44ik" resolve="child" />
+                          </node>
                         </node>
                       </node>
                       <node concept="2es0OD" id="12fIa2Z4VmY" role="2OqNvi">
