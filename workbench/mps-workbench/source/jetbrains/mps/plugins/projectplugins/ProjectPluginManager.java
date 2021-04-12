@@ -65,6 +65,10 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
   private final Project myProject;
   private final jetbrains.mps.project.Project myMpsProject;
 
+  public static ProjectPluginManager getInstance(Project ideaProject) {
+    return ideaProject.getComponent(ProjectPluginManager.class);
+  }
+
   public ProjectPluginManager(@NotNull Project project, PluginLoaderRegistry pluginLoaderRegistry) {
     super(pluginLoaderRegistry);
     myProject = project;
