@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,20 @@ package jetbrains.mps.persistence;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.extensions.AbstractExtensionPointBean;
+import com.intellij.openapi.components.ComponentManager;
 import com.intellij.openapi.extensions.ExtensionPointName;
+import com.intellij.openapi.extensions.PluginAware;
+import com.intellij.openapi.extensions.PluginDescriptor;
+import com.intellij.openapi.extensions.RequiredElement;
+import com.intellij.serviceContainer.LazyExtensionInstance;
 import com.intellij.util.xmlb.annotations.Attribute;
+import com.intellij.util.xmlb.annotations.Transient;
+import jetbrains.mps.components.HostAware;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.ide.MPSCoreComponents;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 
@@ -43,20 +50,20 @@ public final class ModelFactoryRegister implements ApplicationComponent {
 
   private final ModelFactoryService myModelFactoryRegistry;
 
-  public ModelFactoryRegister(MPSCoreComponents mpsCoreComponents) {
-    myModelFactoryRegistry = mpsCoreComponents.getPlatform().findComponent(ModelFactoryService.class);
+  public ModelFactoryRegister() {
+    myModelFactoryRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(ModelFactoryService.class);
   }
 
   @Override
   public void initComponent() {
     for (ModelFactoryProvider provider : ModelFactoryProvider.EP_MODEL_FACTORY.getExtensions()) {
       try {
-        ModelFactory modelFactory = provider.instantiate(provider.getImplementationClass(), ApplicationManager.getApplication().getPicoContainer());
+        ModelFactory modelFactory = provider.getModelFactory();
         myRegisteredFactories.add(modelFactory);
         register(modelFactory);
-      } catch (ClassNotFoundException e) {
+      } catch (Exception e) {
         String m = String.format("Failed to load %s in the plugin %s",
-                                 provider.getImplementationClass(),
+                                 provider.getImplementationClassName(),
                                  provider.getPluginDescriptor().getPluginId());
         LogManager.getLogger(ModelFactoryRegister.class).error(m, e);
       }
@@ -85,14 +92,42 @@ public final class ModelFactoryRegister implements ApplicationComponent {
     return "ModelFactoryRegister";
   }
 
-  public static class ModelFactoryProvider extends AbstractExtensionPointBean {
+  public static class ModelFactoryProvider extends LazyExtensionInstance<ModelFactory> implements PluginAware {
     public static final ExtensionPointName<ModelFactoryProvider> EP_MODEL_FACTORY = ExtensionPointName.create("com.intellij.mps.ModelFactoryProvider");
 
     @Attribute(value = "implementationClass")
+    @RequiredElement
     public String myImplementationClass;
 
-    public String getImplementationClass() {
+    private PluginDescriptor myPluginDescriptor;
+
+
+    public ModelFactory getModelFactory() {
+      return getInstance(ApplicationManager.getApplication(), myPluginDescriptor);
+    }
+
+    @Transient
+    public PluginDescriptor getPluginDescriptor() {
+      return myPluginDescriptor;
+    }
+
+    @Override
+    public final void setPluginDescriptor(@NotNull PluginDescriptor pluginDescriptor) {
+      myPluginDescriptor = pluginDescriptor;
+    }
+
+    @Override
+    protected @Nullable String getImplementationClassName() {
       return myImplementationClass;
+    }
+
+    @Override
+    public @NotNull ModelFactory createInstance(@NotNull ComponentManager componentManager, @NotNull PluginDescriptor pluginDescriptor) {
+      final ModelFactory mf = super.createInstance(componentManager, pluginDescriptor);
+      if (mf instanceof HostAware) {
+        ((HostAware) mf).withHost(MPSCoreComponents.getInstance().getPlatform());
+      }
+      return mf;
     }
   }
 }
