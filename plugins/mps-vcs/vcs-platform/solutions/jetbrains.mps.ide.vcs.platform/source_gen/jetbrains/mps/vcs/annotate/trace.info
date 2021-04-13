@@ -1677,103 +1677,103 @@
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592">
     <file name="AnnotatedCellMessage.java">
-      <node id="425806007327791994" at="34,0,35,0" concept="4" trace="myCommitsGraphNode" />
-      <node id="5753960778215795389" at="35,0,36,0" concept="4" trace="myChanges" />
-      <node id="3787225388622006343" at="36,0,37,0" concept="4" trace="myColor" />
-      <node id="5753960778216273212" at="37,0,38,0" concept="4" trace="myProject" />
-      <node id="2165104125719251647" at="38,0,39,0" concept="4" trace="myShowCommitInfo" />
-      <node id="4551186261159213319" at="41,215,42,88" concept="16" />
-      <node id="5753960778216278434" at="42,88,43,24" concept="3" />
-      <node id="4464728821026995111" at="43,24,44,42" concept="3" />
-      <node id="5753960778216399697" at="44,42,45,119" concept="3" />
-      <node id="4551186261159242232" at="45,119,46,18" concept="3" />
-      <node id="3787225388622009055" at="46,18,47,20" concept="3" />
-      <node id="2165104125720712829" at="47,20,48,38" concept="3" />
-      <node id="5733182111133393987" at="53,51,54,42" concept="11" />
-      <node id="2165104125719278008" at="59,30,60,16" concept="11" />
-      <node id="5753960778216240168" at="63,51,64,31" concept="11" />
-      <node id="1129989545349346909" at="69,42,70,64" concept="11" />
-      <node id="5981968725193699059" at="74,31,75,18" concept="11" />
-      <node id="3787225388622014076" at="78,38,79,27" concept="11" />
-      <node id="3787225388622025420" at="83,27,84,19" concept="11" />
-      <node id="2165104125719255573" at="87,44,88,28" concept="3" />
-      <node id="3787225388623057147" at="91,47,92,21" concept="11" />
-      <node id="4551186261159228097" at="96,70,97,26" concept="11" />
-      <node id="425806007327861015" at="100,49,101,30" concept="11" />
-      <node id="4551186261159269896" at="105,83,106,54" concept="9" />
-      <node id="4551186261159269903" at="106,54,107,27" concept="3" />
-      <node id="4551186261159269908" at="107,27,108,64" concept="3" />
-      <node id="1239786966420449810" at="112,33,113,16" concept="11" />
-      <node id="5382926441303243230" at="117,28,118,13" concept="11" />
-      <node id="3108151080545529172" at="122,54,123,131" concept="11" />
-      <node id="4551186261159230564" at="32,0,34,0" concept="4" trace="myCell" />
-      <node id="2165104125719270076" at="58,30,61,5" concept="7" />
-      <node id="5753960778216240166" at="63,0,66,0" concept="8" trace="select#(Ljetbrains/mps/vcs/annotate/RevisionNodeChange;)Ljava/lang/String;" />
-      <node id="1129989545349303271" at="69,0,72,0" concept="8" trace="getRevisionDescription#()Ljava/lang/String;" />
-      <node id="3787225388621997923" at="78,0,81,0" concept="8" trace="setColor#(Ljava/awt/Color;)Ljava/awt/Color;" />
-      <node id="2165104125719236548" at="87,0,90,0" concept="8" trace="showCommitInfo#(Z)V" />
-      <node id="3787225388623054043" at="91,0,94,0" concept="8" trace="getChanges#()Ljava/util/Set;" />
-      <node id="425806007327858286" at="100,0,103,0" concept="8" trace="getCommitsGraphNode#()Ljetbrains/mps/vcs/history/CommitsGraphNode;" />
-      <node id="5981968725193696894" at="73,0,77,0" concept="8" trace="getCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="3787225388622025412" at="82,0,86,0" concept="8" trace="getColor#()Ljava/awt/Color;" />
-      <node id="4551186261159228084" at="95,0,99,0" concept="8" trace="acceptCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/nodeEditor/EditorComponent;)Z" />
-      <node id="1239786966420449802" at="111,0,115,0" concept="8" trace="isBackground#()Z" />
-      <node id="5382926441303243222" at="116,0,120,0" concept="8" trace="getPriority#()I" />
-      <node id="3108151080545529162" at="121,0,125,0" concept="8" trace="sameAs#(Ljetbrains/mps/openapi/editor/message/SimpleEditorMessage;)Z" />
-      <node id="5733182111133197392" at="51,0,56,0" concept="8" trace="getFormattingOptions#()Ljetbrains/mps/openapi/editor/message/FormattingOptions;" />
-      <node id="1129989545348428803" at="61,5,66,104" concept="11" />
-      <node id="4551186261159248251" at="104,0,110,0" concept="8" trace="paint#(Ljava/awt/Graphics;Ljetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="4551186261159212232" at="41,0,50,0" concept="1" trace="AnnotatedCellMessage#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/vcs/history/CommitsGraphNode;Ljava/lang/Iterable;Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljava/awt/Color;ZLjetbrains/mps/openapi/editor/message/EditorMessageOwner;)V" />
-      <node id="1129989545348349683" at="57,0,68,0" concept="8" trace="getMessage#()Ljava/lang/String;" />
-      <scope id="5733182111133197402" at="53,51,54,42" />
-      <scope id="2165104125719270078" at="59,30,60,16" />
-      <scope id="5753960778216240167" at="63,51,64,31" />
-      <scope id="1129989545349303274" at="69,42,70,64" />
-      <scope id="5981968725193696897" at="74,31,75,18" />
-      <scope id="3787225388621997926" at="78,38,79,27" />
-      <scope id="3787225388622025417" at="83,27,84,19" />
-      <scope id="2165104125719236551" at="87,44,88,28" />
-      <scope id="3787225388623054046" at="91,47,92,21" />
-      <scope id="4551186261159228092" at="96,70,97,26" />
-      <scope id="425806007327858289" at="100,49,101,30" />
-      <scope id="1239786966420449807" at="112,33,113,16" />
-      <scope id="5382926441303243227" at="117,28,118,13" />
-      <scope id="3108151080545529168" at="122,54,123,131" />
-      <scope id="5753960778216240166" at="63,0,66,0">
+      <node id="425806007327791994" at="35,0,36,0" concept="4" trace="myCommitsGraphNode" />
+      <node id="5753960778215795389" at="36,0,37,0" concept="4" trace="myChanges" />
+      <node id="3787225388622006343" at="37,0,38,0" concept="4" trace="myColor" />
+      <node id="5753960778216273212" at="38,0,39,0" concept="4" trace="myProject" />
+      <node id="2165104125719251647" at="39,0,40,0" concept="4" trace="myShowCommitInfo" />
+      <node id="4551186261159213319" at="42,215,43,88" concept="16" />
+      <node id="5753960778216278434" at="43,88,44,24" concept="3" />
+      <node id="4464728821026995111" at="44,24,45,42" concept="3" />
+      <node id="5753960778216399697" at="45,42,46,119" concept="3" />
+      <node id="4551186261159242232" at="46,119,47,18" concept="3" />
+      <node id="3787225388622009055" at="47,18,48,20" concept="3" />
+      <node id="2165104125720712829" at="48,20,49,38" concept="3" />
+      <node id="5733182111133393987" at="54,51,55,42" concept="11" />
+      <node id="2165104125719278008" at="60,30,61,16" concept="11" />
+      <node id="5753960778216240168" at="64,51,65,31" concept="11" />
+      <node id="1129989545349346909" at="70,42,71,64" concept="11" />
+      <node id="5981968725193699059" at="75,31,76,18" concept="11" />
+      <node id="3787225388622014076" at="79,38,80,27" concept="11" />
+      <node id="3787225388622025420" at="84,27,85,19" concept="11" />
+      <node id="2165104125719255573" at="88,44,89,28" concept="3" />
+      <node id="3787225388623057147" at="92,47,93,21" concept="11" />
+      <node id="4551186261159228097" at="97,70,98,26" concept="11" />
+      <node id="425806007327861015" at="101,49,102,30" concept="11" />
+      <node id="4551186261159269896" at="106,83,107,54" concept="9" />
+      <node id="4551186261159269903" at="107,54,108,27" concept="3" />
+      <node id="4551186261159269908" at="108,27,109,64" concept="3" />
+      <node id="1239786966420449810" at="113,33,114,16" concept="11" />
+      <node id="5382926441303243230" at="118,28,119,13" concept="11" />
+      <node id="3108151080545529172" at="123,54,124,131" concept="11" />
+      <node id="4551186261159230564" at="33,0,35,0" concept="4" trace="myCell" />
+      <node id="2165104125719270076" at="59,30,62,5" concept="7" />
+      <node id="5753960778216240166" at="64,0,67,0" concept="8" trace="select#(Ljetbrains/mps/vcs/annotate/RevisionNodeChange;)Ljava/lang/String;" />
+      <node id="1129989545349303271" at="70,0,73,0" concept="8" trace="getRevisionDescription#()Ljava/lang/String;" />
+      <node id="3787225388621997923" at="79,0,82,0" concept="8" trace="setColor#(Ljava/awt/Color;)Ljava/awt/Color;" />
+      <node id="2165104125719236548" at="88,0,91,0" concept="8" trace="showCommitInfo#(Z)V" />
+      <node id="3787225388623054043" at="92,0,95,0" concept="8" trace="getChanges#()Ljava/util/Set;" />
+      <node id="425806007327858286" at="101,0,104,0" concept="8" trace="getCommitsGraphNode#()Ljetbrains/mps/vcs/history/CommitsGraphNode;" />
+      <node id="5981968725193696894" at="74,0,78,0" concept="8" trace="getCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="3787225388622025412" at="83,0,87,0" concept="8" trace="getColor#()Ljava/awt/Color;" />
+      <node id="4551186261159228084" at="96,0,100,0" concept="8" trace="acceptCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljetbrains/mps/nodeEditor/EditorComponent;)Z" />
+      <node id="1239786966420449802" at="112,0,116,0" concept="8" trace="isBackground#()Z" />
+      <node id="5382926441303243222" at="117,0,121,0" concept="8" trace="getPriority#()I" />
+      <node id="3108151080545529162" at="122,0,126,0" concept="8" trace="sameAs#(Ljetbrains/mps/openapi/editor/message/SimpleEditorMessage;)Z" />
+      <node id="5733182111133197392" at="52,0,57,0" concept="8" trace="getFormattingOptions#()Ljetbrains/mps/openapi/editor/message/FormattingOptions;" />
+      <node id="1129989545348428803" at="62,5,67,121" concept="11" />
+      <node id="4551186261159248251" at="105,0,111,0" concept="8" trace="paint#(Ljava/awt/Graphics;Ljetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="4551186261159212232" at="42,0,51,0" concept="1" trace="AnnotatedCellMessage#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/vcs/history/CommitsGraphNode;Ljava/lang/Iterable;Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljava/awt/Color;ZLjetbrains/mps/openapi/editor/message/EditorMessageOwner;)V" />
+      <node id="1129989545348349683" at="58,0,69,0" concept="8" trace="getMessage#()Ljava/lang/String;" />
+      <scope id="5733182111133197402" at="54,51,55,42" />
+      <scope id="2165104125719270078" at="60,30,61,16" />
+      <scope id="5753960778216240167" at="64,51,65,31" />
+      <scope id="1129989545349303274" at="70,42,71,64" />
+      <scope id="5981968725193696897" at="75,31,76,18" />
+      <scope id="3787225388621997926" at="79,38,80,27" />
+      <scope id="3787225388622025417" at="84,27,85,19" />
+      <scope id="2165104125719236551" at="88,44,89,28" />
+      <scope id="3787225388623054046" at="92,47,93,21" />
+      <scope id="4551186261159228092" at="97,70,98,26" />
+      <scope id="425806007327858289" at="101,49,102,30" />
+      <scope id="1239786966420449807" at="113,33,114,16" />
+      <scope id="5382926441303243227" at="118,28,119,13" />
+      <scope id="3108151080545529168" at="123,54,124,131" />
+      <scope id="5753960778216240166" at="64,0,67,0">
         <var name="it" id="5753960778216240166" />
       </scope>
-      <scope id="1129989545349303271" at="69,0,72,0" />
-      <scope id="3787225388621997923" at="78,0,81,0">
+      <scope id="1129989545349303271" at="70,0,73,0" />
+      <scope id="3787225388621997923" at="79,0,82,0">
         <var name="color" id="3787225388621999948" />
       </scope>
-      <scope id="2165104125719236548" at="87,0,90,0">
+      <scope id="2165104125719236548" at="88,0,91,0">
         <var name="show" id="2165104125719240229" />
       </scope>
-      <scope id="3787225388623054043" at="91,0,94,0" />
-      <scope id="425806007327858286" at="100,0,103,0" />
-      <scope id="4551186261159248262" at="105,83,108,64">
+      <scope id="3787225388623054043" at="92,0,95,0" />
+      <scope id="425806007327858286" at="101,0,104,0" />
+      <scope id="4551186261159248262" at="106,83,109,64">
         <var name="bounds" id="4551186261159269897" />
       </scope>
-      <scope id="5981968725193696894" at="73,0,77,0" />
-      <scope id="3787225388622025412" at="82,0,86,0" />
-      <scope id="4551186261159228084" at="95,0,99,0">
+      <scope id="5981968725193696894" at="74,0,78,0" />
+      <scope id="3787225388622025412" at="83,0,87,0" />
+      <scope id="4551186261159228084" at="96,0,100,0">
         <var name="cell" id="4551186261159228088" />
         <var name="editor" id="4551186261159228090" />
       </scope>
-      <scope id="1239786966420449802" at="111,0,115,0" />
-      <scope id="5382926441303243222" at="116,0,120,0" />
-      <scope id="3108151080545529162" at="121,0,125,0">
+      <scope id="1239786966420449802" at="112,0,116,0" />
+      <scope id="5382926441303243222" at="117,0,121,0" />
+      <scope id="3108151080545529162" at="122,0,126,0">
         <var name="message" id="3108151080545529166" />
       </scope>
-      <scope id="5733182111133197392" at="51,0,56,0" />
-      <scope id="4551186261159248251" at="104,0,110,0">
+      <scope id="5733182111133197392" at="52,0,57,0" />
+      <scope id="4551186261159248251" at="105,0,111,0">
         <var name="cell" id="4551186261159248259" />
         <var name="editorComponent" id="4551186261159248257" />
         <var name="g" id="4551186261159248255" />
       </scope>
-      <scope id="4551186261159212416" at="41,215,48,38" />
-      <scope id="1129989545348349688" at="58,30,66,104" />
-      <scope id="4551186261159212232" at="41,0,50,0">
+      <scope id="4551186261159212416" at="42,215,49,38" />
+      <scope id="1129989545348349688" at="59,30,67,121" />
+      <scope id="4551186261159212232" at="42,0,51,0">
         <var name="cell" id="4551186261159240589" />
         <var name="changes" id="5753960778216394814" />
         <var name="color" id="4551186261159212243" />
@@ -1782,9 +1782,9 @@
         <var name="project" id="5753960778216243223" />
         <var name="showCommitInfo" id="2165104125720707486" />
       </scope>
-      <scope id="1129989545348349683" at="57,0,68,0" />
-      <unit id="5753960778216240166" at="62,72,66,5" name="jetbrains.mps.vcs.annotate.AnnotatedCellMessage$1" />
-      <unit id="4551186261159211592" at="29,0,126,0" name="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
+      <scope id="1129989545348349683" at="58,0,69,0" />
+      <unit id="5753960778216240166" at="63,100,67,5" name="jetbrains.mps.vcs.annotate.AnnotatedCellMessage$1" />
+      <unit id="4551186261159211592" at="30,0,127,0" name="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     </file>
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5555299221747429994">

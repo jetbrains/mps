@@ -17,6 +17,7 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
+import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.util.ui.UIUtil;
@@ -59,11 +60,11 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
     if (!(myShowCommitInfo)) {
       return "";
     }
-    return IterableUtils.join(SetSequence.fromSet(myChanges).select(new ISelector<RevisionNodeChange, String>() {
+    return EditorMessage.formatMessage(IterableUtils.join(SetSequence.fromSet(myChanges).select(new ISelector<RevisionNodeChange, String>() {
       public String select(RevisionNodeChange it) {
         return it.getMessage();
       }
-    }), "\n") + "\n" + UIUtil.BORDER_LINE + "\n" + myCommitsGraphNode.getRevisionDescription(myProject);
+    }), "\n"), FormattingOptions.PLAIN_TEXT) + UIUtil.BORDER_LINE + myCommitsGraphNode.getRevisionDescription(myProject);
   }
 
   public String getRevisionDescription() {
