@@ -2233,8 +2233,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         additionalPainter.paint(g, this);
       }
     }
-
-    g.dispose();
   }
 
   Dimension getPreferredComponentSize() {
