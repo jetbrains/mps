@@ -34,8 +34,8 @@ public class SetReferenceChange extends NodeChange {
   private final SNodeId myTargetNodeId;
   private final String myResolveInfo;
   private final boolean myResolveInfoOnly;
-  private String myDescription;
-
+  private final String myDescription;
+  private final String myShortDescription;
 
   public SetReferenceChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo) {
     this(changeSet, sourceNodeId, sourceNodeId, role, targetModelReference, targetNodeId, resolveInfo, false);
@@ -51,7 +51,8 @@ public class SetReferenceChange extends NodeChange {
     // check if only resolve info for static reference changed - then it cannot conflict with other changes
     myResolveInfoOnly = resolveInfoOnly;
 
-    myDescription = createDescription();
+    myDescription = createDescription(true);
+    myShortDescription = createDescription(false);
   }
 
   @NotNull
@@ -128,7 +129,7 @@ public class SetReferenceChange extends NodeChange {
     return String.format("Set reference in role %s for node %s to %s [resolveInfo=%s]", myRole, getAffectedNodeId(false), targetString, myResolveInfo);
   }
 
-  private String createDescription() {
+  private String createDescription(boolean verbose) {
     // TODO consider dynamic references
     SReference oldRef = check_mgdhcs_a0b0ib(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myRole, this);
     SReference newRef = check_mgdhcs_a0c0ib(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myRole, this);
@@ -162,14 +163,22 @@ public class SetReferenceChange extends NodeChange {
     }
     if (formatRef == null) {
       return toString();
-    } else {
+    }
+    if (verbose) {
       return String.format("Changed %s reference %s from\n  %s\n  to\n  %s", myRole, what, formatRef.invoke(oldRef), formatRef.invoke(newRef));
     }
+    return String.format("Changed %s reference %s", myRole, what);
   }
+
 
   @Override
   public String getDescription() {
     return myDescription;
+  }
+
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
   }
 
   @NotNull
@@ -178,12 +187,12 @@ public class SetReferenceChange extends NodeChange {
     SNode node = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     assert node != null;
     SReference ref = node.getReference(getRoleLink());
-    SModelReference targetModel = check_mgdhcs_a0d0mb(ref);
+    SModelReference targetModel = check_mgdhcs_a0d0pb(ref);
     if (Objects.equals(SModelOperations.getPointer(getChangeSet().getOldModel()), targetModel)) {
       // This is internal reference
       targetModel = null;
     }
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a83(ref), check_mgdhcs_g0a5a83(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a14(ref), check_mgdhcs_g0a5a14(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
   }
 
   @Override
@@ -202,19 +211,19 @@ public class SetReferenceChange extends NodeChange {
     }
     return null;
   }
-  private static SModelReference check_mgdhcs_a0d0mb(SReference checkedDotOperand) {
+  private static SModelReference check_mgdhcs_a0d0pb(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static SNodeId check_mgdhcs_f0a5a83(SReference checkedDotOperand) {
+  private static SNodeId check_mgdhcs_f0a5a14(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static String check_mgdhcs_g0a5a83(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_mgdhcs_g0a5a14(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }

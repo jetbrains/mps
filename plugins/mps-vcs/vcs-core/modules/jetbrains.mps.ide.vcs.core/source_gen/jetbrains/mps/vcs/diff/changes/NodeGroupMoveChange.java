@@ -16,7 +16,8 @@ public class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
 
   private final SContainmentLink myOldLink;
   private final SContainmentLink myNewLink;
-  private String myDescription;
+  private final String myDescription;
+  private final String myShortDescription;
 
   public NodeGroupMoveChange(ChangeSet changeSet, ModifiedNodesGroup oldGroup, ModifiedNodesGroup newGroup, SContainmentLink oldLink, SContainmentLink newLink) {
     super(changeSet, oldGroup, newGroup);
@@ -34,7 +35,8 @@ public class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
         return Objects.equals(it.getLink(), myNewLink);
       }
     });
-    myDescription = createDescription();
+    myDescription = createDescription(true);
+    myShortDescription = createDescription(false);
   }
 
   public boolean isUnordered() {
@@ -49,9 +51,8 @@ public class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
     return myDescription;
   }
 
-  private String createDescription() {
+  private String createDescription(boolean verbose) {
     String ids = null;
-    boolean verbose = true;
     if (verbose) {
       ids = getMultiLineIdsString(false);
     }
@@ -67,6 +68,11 @@ public class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
   @Override
   public String getDescription() {
     return myDescription;
+  }
+
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
   }
 
   @NotNull

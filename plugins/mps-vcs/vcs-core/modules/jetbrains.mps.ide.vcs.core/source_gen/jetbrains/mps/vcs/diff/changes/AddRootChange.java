@@ -55,6 +55,11 @@ public class AddRootChange extends StructureChange {
   }
 
   @Override
+  public String getShortDescription() {
+    return "Added root";
+  }
+
+  @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return ListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getRootId(), ((MessageTarget) new NodeMessageTarget())));
   }

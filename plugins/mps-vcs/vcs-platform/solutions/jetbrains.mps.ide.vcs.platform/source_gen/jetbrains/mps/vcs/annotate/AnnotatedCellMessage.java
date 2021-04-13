@@ -17,10 +17,11 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
-import jetbrains.mps.nodeEditor.EditorMessage;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.nodeEditor.EditorMessage;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -60,11 +61,22 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
     if (!(myShowCommitInfo)) {
       return "";
     }
-    return EditorMessage.formatMessage(IterableUtils.join(SetSequence.fromSet(myChanges).select(new ISelector<RevisionNodeChange, String>() {
+    List<String> formattedMessages = SetSequence.fromSet(myChanges).select(new ISelector<RevisionNodeChange, String>() {
       public String select(RevisionNodeChange it) {
-        return it.getMessage();
+        return EditorMessage.formatMessage(it.getMessage(), FormattingOptions.PLAIN_TEXT);
       }
-    }), "\n"), FormattingOptions.PLAIN_TEXT) + UIUtil.BORDER_LINE + myCommitsGraphNode.getRevisionDescription(myProject);
+    }).toListSequence();
+    final StringBuilder sb = new StringBuilder();
+    if (ListSequence.fromList(formattedMessages).isNotEmpty()) {
+      ListSequence.fromList(formattedMessages).visitAll(new IVisitor<String>() {
+        public void visit(String it) {
+          sb.append("<b>").append(it).append("</b>").append("<br>");
+        }
+      });
+      sb.append("<br>");
+    }
+    sb.append(myCommitsGraphNode.getRevisionDescription(myProject));
+    return sb.toString();
   }
 
   public String getRevisionDescription() {

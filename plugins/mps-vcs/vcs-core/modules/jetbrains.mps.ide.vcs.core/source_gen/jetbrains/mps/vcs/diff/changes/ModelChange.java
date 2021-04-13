@@ -71,6 +71,10 @@ public abstract class ModelChange {
 
   public abstract String getDescription();
 
+  public String getShortDescription() {
+    return getDescription();
+  }
+
   public static void rollbackChanges(Iterable<ModelChange> changes) {
     assert Sequence.fromIterable(changes).isNotEmpty();
     final SModel model = Sequence.fromIterable(changes).first().getChangeSet().getNewModel();

@@ -50,7 +50,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 
   /*package*/ RevisionNodeChange(@NotNull final CommitsGraphNode graphNode, @NotNull final StructureChange modelChange, @NotNull final Set<SNodeId> movedNodesIds) {
 
-    myMessage = modelChange.getDescription();
+    myMessage = modelChange.getShortDescription();
     myChangeType = modelChange.getType();
     myRevisionGraphNode = graphNode;
     List<Tuples._2<SNodeId, MessageTarget>> targetIds = modelChange.createMessageTargetsWithIds(true);

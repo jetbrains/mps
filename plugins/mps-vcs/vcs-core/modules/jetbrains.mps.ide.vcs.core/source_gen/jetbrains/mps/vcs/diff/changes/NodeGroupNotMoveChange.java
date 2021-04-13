@@ -17,9 +17,9 @@ import org.jetbrains.annotations.NotNull;
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2189615052095804047", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
 
-  private String myDescription;
-  private String myShortDescription;
-  private String myInternalDescription;
+  private final String myDescription;
+  private final String myShortDescription;
+  private final String myInternalDescription;
 
 
   public NodeGroupNotMoveChange(ChangeSet changeSet, ModifiedNodesGroup oldGroup, ModifiedNodesGroup newGroup) {
@@ -62,7 +62,12 @@ public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
 
   @Override
   public String getDescription() {
-    return getDescription(true);
+    return myDescription;
+  }
+
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
   }
 
   private String getRemovedDescription(boolean verbose) {

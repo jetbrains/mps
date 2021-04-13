@@ -20,12 +20,14 @@ import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetPropertyChange extends NodeChange {
   private SProperty myProperty;
   private String myNewValue;
-  private String myDescription;
+  private final String myDescription;
+  private final String myShortDescription;
 
   public SetPropertyChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SProperty property, String newValue) {
     this(changeSet, nodeId, nodeId, property, newValue);
@@ -35,7 +37,8 @@ public class SetPropertyChange extends NodeChange {
     super(changeSet, nodeId, oppositeNodeId);
     myProperty = property;
     myNewValue = newValue;
-    myDescription = createDescription();
+    myDescription = createDescription(true);
+    myShortDescription = createDescription(false);
   }
 
   @NotNull
@@ -79,28 +82,51 @@ public class SetPropertyChange extends NodeChange {
   public String toString() {
     return String.format("Set property %s to %s in node %s", myProperty, myNewValue, getAffectedNodeId(false));
   }
-  private String createDescription() {
-    String oldValue = check_2yh8ir_a0a0q(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myProperty, this);
-    String newValue = check_2yh8ir_a0b0q(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myProperty, this);
-    return myDescription = String.format("Changed %s of #%s from '%s' to '%s'", myProperty, getAffectedNodeId(false), oldValue, newValue);
+  private String createDescription(boolean verbose) {
+    if (verbose) {
+      String oldValue = check_2yh8ir_a0a0a0r(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myProperty, this);
+      String newValue = check_2yh8ir_a0b0a0r(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myProperty, this);
+      return String.format("Changed %s of #%s from '%s' to '%s'", myProperty, getAffectedNodeId(false), oldValue, newValue);
+    } else {
+      String conceptName = check_2yh8ir_a0a0a0a71(check_2yh8ir_a0a0a0a0r(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), this), this);
+      return String.format("Changed %s's %s", conceptName, myProperty);
+    }
   }
   @Override
   public String getDescription() {
     return myDescription;
   }
+
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
+  }
+
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new PropertyMessageTarget(getProperty()))));
   }
-  private static String check_2yh8ir_a0a0q(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
+  private static String check_2yh8ir_a0a0a0r(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getProperty(myProperty);
     }
     return null;
   }
-  private static String check_2yh8ir_a0b0q(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
+  private static String check_2yh8ir_a0b0a0r(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getProperty(myProperty);
+    }
+    return null;
+  }
+  private static String check_2yh8ir_a0a0a0a71(SConcept checkedDotOperand, SetPropertyChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getName();
+    }
+    return null;
+  }
+  private static SConcept check_2yh8ir_a0a0a0a0r(SNode checkedDotOperand, SetPropertyChange checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getConcept();
     }
     return null;
   }

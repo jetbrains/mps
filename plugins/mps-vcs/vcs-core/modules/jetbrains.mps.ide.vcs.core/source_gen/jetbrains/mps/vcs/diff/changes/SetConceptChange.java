@@ -36,7 +36,7 @@ public class SetConceptChange extends NodeChange {
 
   private SConcept myOldConcept;
   private SConcept myNewConcept;
-  private String myDescription;
+  private final String myDescription;
 
 
   public SetConceptChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SConcept newValue) {
@@ -122,6 +122,11 @@ public class SetConceptChange extends NodeChange {
 
   private String createDescription() {
     return String.format("Changed concept of #%s from\n'%s'\nto\n'%s'", getAffectedNodeId(false), getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getConcept(), getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getConcept());
+  }
+
+  @Override
+  public String getShortDescription() {
+    return "Changed concept";
   }
 
   @Override

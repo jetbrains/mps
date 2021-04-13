@@ -1013,12 +1013,17 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return null;
     }
     StringBuilder result = new StringBuilder();
-    for (var it = messages.listIterator(messages.size()); it.hasPrevious();) {
+    SimpleEditorMessage prevMessage = null;
+    for (var it = messages.listIterator(messages.size()); it.hasPrevious(); ) {
       SimpleEditorMessage message = it.previous();
       String formattedMessage = message.getFormattedMessage();
       if (!formattedMessage.isBlank()) {
+        if (prevMessage != null && prevMessage.getClass() != message.getClass()) {
+          result.append(UIUtil.BORDER_LINE).append(UIUtil.BR);
+        }
         result.append(formattedMessage);
         result.append("<br/>");
+        prevMessage = message;
       }
     }
     return result.toString();
@@ -1043,7 +1048,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   private List<HighlighterMessage> getHighlighterMessagesFor(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
     return getEditorMessagesFor(cell).stream().filter(message -> message instanceof HighlighterMessage).map(message -> (HighlighterMessage) message).collect(
-            Collectors.toList());
+        Collectors.toList());
   }
 
   private HighlighterMessage getHighlighterMessageFor(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
@@ -2329,6 +2334,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   /**
    * The returned session is supposed to be used directly for running a typechecking command,
    * it is not supposed to be cached.
+   *
    * @return
    */
   public synchronized TypecheckingSession getTypecheckingSession() {
