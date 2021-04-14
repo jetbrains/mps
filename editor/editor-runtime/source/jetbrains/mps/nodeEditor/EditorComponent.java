@@ -497,10 +497,21 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         if (areMouseEventsBlocked()) {
           return;
         }
+        processMousePressed(e);
+        maybeShowPopup(e);
+      }
+
+      @Override
+      public void mouseReleased(MouseEvent e) {
+        if (areMouseEventsBlocked()) {
+          return;
+        }
+        maybeShowPopup(e);
+      }
+
+      private void maybeShowPopup(MouseEvent e) {
         if (e.isPopupTrigger()) {
           processPopupMenu(e);
-        } else {
-          processMousePressed(e);
         }
       }
 
@@ -520,17 +531,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
             repaintExternalComponent();
           }
         }
-      }
-
-      @Override
-      public void mouseReleased(MouseEvent e) {
-        if (areMouseEventsBlocked()) {
-          return;
-        }
-        if (e.isPopupTrigger()) {
-          processPopupMenu(e);
-        }
-        super.mouseReleased(e);
       }
     });
 
