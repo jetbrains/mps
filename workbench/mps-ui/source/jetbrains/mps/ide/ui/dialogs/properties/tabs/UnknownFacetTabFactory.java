@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.tabs;
 
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.UnknownFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
@@ -26,8 +28,8 @@ import org.jetbrains.mps.openapi.ui.persistence.TabFactory;
 public class UnknownFacetTabFactory implements TabFactory<UnknownFacet> {
   private final MPSProject myProject;
 
-  public UnknownFacetTabFactory(MPSProject mpsProject) {
-    myProject = mpsProject;
+  public UnknownFacetTabFactory(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   @Override

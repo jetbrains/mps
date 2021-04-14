@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import com.intellij.openapi.wm.WindowManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -62,6 +62,22 @@ public class ProjectHelper {
       return p.getComponent(MPSProject.class);
     }
     return null;
+  }
+
+  /**
+   * Use in scenarios, where no doubt about MPSProject presence is tolerated.
+   * E.g. to address IDEA's crusade to get rid of dependency injection in components and
+   * extensions, we can no longer pass MPSProject instead of IDEA's Project into our own
+   * extensions. For these scenarios, prefer this method so that MPS-dependent extensions
+   * don't even start with improper assumptions.
+   */
+  @NotNull
+  public static MPSProject fromIdeaProjectOrFail(@NotNull com.intellij.openapi.project.Project p) {
+    final MPSProject mpsProject = p.getComponent(MPSProject.class);
+    if (mpsProject == null) {
+      throw new IllegalArgumentException(String.format("Project '%s' got no MPS counterpart", p));
+    }
+    return mpsProject;
   }
 
   /**

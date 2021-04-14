@@ -39,10 +39,7 @@ public class TabsMPSEditorFactory extends NodeEditorFactoryBase {
   private final MPSProject myProject;
 
   public TabsMPSEditorFactory(Project ideaProject) {
-    myProject = ProjectHelper.fromIdeaProject(ideaProject);
-    if (myProject == null) {
-      throw new IllegalArgumentException("Project got no MPS counterpart");
-    }
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   private boolean isUseTabs() {
