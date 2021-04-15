@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.ide.persistence;
 
-import com.intellij.openapi.extensions.AbstractExtensionPointBean;
-import com.intellij.openapi.util.LazyInstance;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.extensions.ExtensionPointName;
+import com.intellij.openapi.extensions.PluginAware;
+import com.intellij.openapi.extensions.PluginDescriptor;
 import com.intellij.util.KeyedLazyInstance;
 import com.intellij.util.xmlb.annotations.Attribute;
 import org.jetbrains.annotations.NotNull;
@@ -24,11 +26,21 @@ import org.jetbrains.annotations.NotNull;
 /**
  * evgeny, 10/24/12
  */
-public class ModelRootSettingsEP extends AbstractExtensionPointBean implements KeyedLazyInstance<ModelRootSettingsEditorProvider> {
+public class ModelRootSettingsEP implements KeyedLazyInstance<ModelRootSettingsEditorProvider>, PluginAware {
+  public static final ExtensionPointName<ModelRootSettingsEP> NAME = ExtensionPointName.create("com.intellij.mps.modelRootSettings");
+
   @Attribute("rootType")
   public String rootType;
   @Attribute("className")
   public String className;
+
+
+  private PluginDescriptor myPluginDescriptor;
+
+  @Override
+  public final void setPluginDescriptor(@NotNull PluginDescriptor pluginDescriptor) {
+    myPluginDescriptor = pluginDescriptor;
+  }
 
 
   @Override
@@ -36,16 +48,11 @@ public class ModelRootSettingsEP extends AbstractExtensionPointBean implements K
     return rootType;
   }
 
-  private final LazyInstance<ModelRootSettingsEditorProvider> myProvider = new LazyInstance<ModelRootSettingsEditorProvider>() {
-    @Override
-    protected Class<ModelRootSettingsEditorProvider> getInstanceClass() throws ClassNotFoundException {
-      return findClass(className);
-    }
-  };
-
   @NotNull
   @Override
   public ModelRootSettingsEditorProvider getInstance() {
-    return myProvider.getValue();
+    // copied from c.i.serviceContainer.LazyExtensionInstance#createInstance
+    // Don't see a reason to check for HostAware, it's editor and likely have access to UI and MPSCoreComponents
+    return ApplicationManager.getApplication().instantiateClass(className, myPluginDescriptor);
   }
 }

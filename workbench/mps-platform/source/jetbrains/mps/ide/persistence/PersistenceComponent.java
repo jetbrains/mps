@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,14 +16,15 @@
 package jetbrains.mps.ide.persistence;
 
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.util.KeyedExtensionCollector;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
  * XXX likely shall get merged into ModelFactoryRegister, no reason for a distinct
@@ -31,31 +32,26 @@ import java.util.List;
 public class PersistenceComponent implements ApplicationComponent {
   private static final Logger LOG = LogManager.getLogger(PersistenceComponent.class);
 
-  private final static KeyedExtensionCollector<ModelRootSettingsEditorProvider, String> oursCollector =
-    new KeyedExtensionCollector<ModelRootSettingsEditorProvider, String>("com.intellij.mps.modelRootSettings") {
-      @NotNull
-      @Override
-      protected String keyToString(@NotNull String key) {
-        return key;
-      }
-    };
 
-  private final MPSCoreComponents myCore;
-
-  public PersistenceComponent(MPSCoreComponents components) {
-    myCore = components;
+  public PersistenceComponent() {
   }
 
-  public static ModelRootSettingsEditor getModelRootSettingsEditor(String type) {
-    List<ModelRootSettingsEditorProvider> providers = oursCollector.forKey(type);
-    if (providers.isEmpty()) return null;
+  @Nullable
+  public static ModelRootSettingsEditor getModelRootSettingsEditor(@NotNull String type) {
+    // FIXME In 9fc0581d, ModelRootChooser that was the client of this method, has been deleted.
+    //       Since then, no idea if this method (and root settings editors) were in use.
+    final List<ModelRootSettingsEP> providers = ModelRootSettingsEP.NAME.getExtensionList().stream().filter(i -> type.equals(i.getKey())).collect(Collectors.toList());
+    if (providers.isEmpty()) {
+      return null;
+    }
     LOG.assertLog(providers.size() == 1, "Assertion failed.");
-    return providers.get(0).createEditor();
+    return providers.get(0).getInstance().createEditor();
   }
 
   @Override
   public void initComponent() {
-    PersistenceRegistry registry = myCore.getPlatform().findComponent(PersistenceRegistry.class);
+    final MPSCoreComponents mpsCore = MPSCoreComponents.getInstance();
+    PersistenceRegistry registry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
 
     ModelRootFactoryEP[] extensions = ModelRootFactoryEP.EP_NAME.getExtensions();
     for (ModelRootFactoryEP extension : extensions) {
