@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptArgumentExpression extends MigrationScriptBase {
-  private final String description = "model.roots and others with concept expression";
+  private final String description = "Pound expression to specify concept in node access operations like model.roots (MPS-32743)";
   public String getCaption() {
     return description;
   }

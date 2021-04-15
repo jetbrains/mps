@@ -14819,7 +14819,7 @@
     </node>
     <node concept="3tYpXE" id="5QK5AMJ54wa" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="model.roots and others with concept expression" />
+      <property role="3tYpXF" value="Pound expression to specify concept in node access operations like model.roots (MPS-32743)" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="5QK5AMJ54wc" role="1B3o_S" />
       <node concept="17QB3L" id="5QK5AMJ54wd" role="1tU5fm" />
