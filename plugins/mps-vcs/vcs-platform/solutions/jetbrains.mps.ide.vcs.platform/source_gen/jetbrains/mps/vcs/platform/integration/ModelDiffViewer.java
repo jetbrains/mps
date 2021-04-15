@@ -56,12 +56,13 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     List<DiffContent> contents = request.getContents();
     FileType type = (contents.get(0).getContentType() != null ? contents.get(0).getContentType() : contents.get(1).getContentType());
     SNodeId rootId;
+    final boolean showTree;
     if (MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(type) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(type)) {
       Tuples._2<SModel, SNodeId> oldModel1 = getModelAndRoot(mpsProject, contents.get(0), type);
       Tuples._2<SModel, SNodeId> newModel = getModelAndRoot(mpsProject, contents.get(1), type);
       Tuples._2<SModel, SNodeId> oldModel2 = (contents.size() == 3 ? getModelAndRoot(mpsProject, contents.get(2), type) : null);
       rootId = (newModel._1() != null ? newModel._1() : oldModel1._1());
-      final boolean showTree = DIFF_SHOW_TREE.get(request, false);
+      showTree = DIFF_SHOW_TREE.get(request, false);
       myViewer = new ModelDifferenceViewer(mpsProject, showTree);
       myViewer.prepareModels(oldModel1._0(), (oldModel2 == null ? null : oldModel2._0()), newModel._0(), (showTree ? null : rootId), true);
     } else {
@@ -70,12 +71,13 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       SModel oldModel2 = (contents.size() == 3 ? ModelDiffViewer.getModel(mpsProject, contents.get(2), type) : null);
       //  show one root only if requested
       rootId = request.getUserData(DIFF_SHOW_ROOTID);
-      final boolean showTree = DIFF_SHOW_TREE.get(request, true);
+      showTree = DIFF_SHOW_TREE.get(request, true);
       myViewer = new ModelDifferenceViewer(mpsProject, showTree);
       myViewer.prepareModels(oldModel1, oldModel2, newModel, (showTree ? null : rootId), false);
     }
     myViewer.setContentTitles(request.getContentTitles());
-    if (rootId != null) {
+    if (!(showTree) || rootId != null) {
+      // if we don't show tree then we should show something anyway
       // beware, rootId == null is treated as 'show model metadata changes', regardless of whether there are such changes 
       myViewer.setCurrentRoot(rootId);
     }
