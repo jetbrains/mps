@@ -15,8 +15,8 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNode" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -37,8 +37,8 @@
     <classNode dependClassName="jetbrains.mps.ide.editor.MPSEditorDataKeys" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -107,7 +107,7 @@
     <classNode dependClassName="jetbrains.mps.ide.editor.MPSEditorDataKeys" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -128,8 +128,8 @@
     <classNode dependClassName="jetbrains.mps.ide.editor.MPSEditorDataKeys" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -268,8 +268,8 @@
     <classNode dependClassName="jetbrains.mps.ide.editor.MPSEditorDataKeys" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -290,8 +290,8 @@
     <classNode dependClassName="jetbrains.mps.ide.editor.MPSEditorDataKeys" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.actions.VcsActionsUtil" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -437,8 +437,8 @@
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil" />
     <classNode dependClassName="jetbrains.mps.util.Reference" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotatedCellMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootHistoryDialog" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.Bounds" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.integration.ModelDiffViewer" />

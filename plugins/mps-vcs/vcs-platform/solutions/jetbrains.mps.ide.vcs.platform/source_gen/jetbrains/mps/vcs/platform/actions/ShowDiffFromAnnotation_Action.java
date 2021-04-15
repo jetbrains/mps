@@ -15,7 +15,7 @@ import com.intellij.openapi.actionSystem.IdeActions;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.vcs.annotate.CellAnnotation;
+import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +35,7 @@ public class ShowDiffFromAnnotation_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON));
-    setEnabledState(event.getPresentation(), ShowDiffFromAnnotation_Action.this.getCellAnnotation(event) != null);
+    setEnabledState(event.getPresentation(), ShowDiffFromAnnotation_Action.this.getCellMessage(event) != null);
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -61,15 +61,15 @@ public class ShowDiffFromAnnotation_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CellAnnotation cellAnnotation = ShowDiffFromAnnotation_Action.this.getCellAnnotation(event);
+    AnnotatedCellMessage cellMessage = ShowDiffFromAnnotation_Action.this.getCellMessage(event);
     AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (annotationColumn == null || cellAnnotation == null) {
+    if (annotationColumn == null || cellMessage == null) {
       return;
     }
-    annotationColumn.getEditorAnnotation().showDiff(cellAnnotation.getCommitsGraphNode());
+    annotationColumn.getEditorAnnotation().showDiff(cellMessage.getCommitsGraphNode());
   }
   @Nullable
-  private CellAnnotation getCellAnnotation(final AnActionEvent event) {
-    return VcsActionsUtil.getCellAnnotation(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
+  private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {
+    return VcsActionsUtil.getMessageForCell(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
   }
 }

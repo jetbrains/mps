@@ -390,16 +390,8 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     return myLineAnnotationsRef.get();
   }
 
-  public CellAnnotation getCellAnnotation(EditorCell cell) {
-    EditorCell annotatedCell = cell;
-    while (annotatedCell != null) {
-      CellAnnotation cellAnnotation = MapSequence.fromMap(myCellAnnotations).get(annotatedCell);
-      if (cellAnnotation != null) {
-        return cellAnnotation;
-      }
-      annotatedCell = annotatedCell.getParent();
-    }
-    return null;
+  public AnnotatedCellMessage getMessageForCell(EditorCell cell) {
+    return MapSequence.fromMap(myEditorMessages).get(cell);
   }
 
   private List<EditorCell> getCells(final RevisionNodeChange revisionNodeChange) {

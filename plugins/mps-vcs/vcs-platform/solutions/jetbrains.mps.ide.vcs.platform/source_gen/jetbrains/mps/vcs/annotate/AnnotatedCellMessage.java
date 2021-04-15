@@ -29,7 +29,7 @@ import jetbrains.mps.nodeEditor.cells.GeometryUtil;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
-/*package*/ final class AnnotatedCellMessage extends EditorMessageWithTarget {
+public final class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   @NotNull
   private final EditorCell myCell;

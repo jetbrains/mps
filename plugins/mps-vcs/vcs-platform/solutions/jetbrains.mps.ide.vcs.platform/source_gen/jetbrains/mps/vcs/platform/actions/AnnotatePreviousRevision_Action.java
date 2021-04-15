@@ -10,7 +10,7 @@ import jetbrains.mps.ide.editor.EditorActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.vcs.annotate.CellAnnotation;
+import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import com.intellij.openapi.vcs.VcsBundle;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -35,12 +35,12 @@ public class AnnotatePreviousRevision_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    CellAnnotation cellAnnotation = AnnotatePreviousRevision_Action.this.getCellAnnotation(event);
+    AnnotatedCellMessage cellMessage = AnnotatePreviousRevision_Action.this.getCellMessage(event);
     event.getPresentation().setText(VcsBundle.messagePointer("action.annotate.previous.revision.text"));
     event.getPresentation().setDescription(VcsBundle.messagePointer("action.annotate.successor.selected.revision.in.new.tab.description"));
-    setEnabledState(event.getPresentation(), cellAnnotation != null);
-    if (cellAnnotation != null) {
-      event.getPresentation().setEnabled(ListSequence.fromList(cellAnnotation.getCommitsGraphNode().getParents()).isNotEmpty());
+    setEnabledState(event.getPresentation(), cellMessage != null);
+    if (cellMessage != null) {
+      event.getPresentation().setEnabled(ListSequence.fromList(cellMessage.getCommitsGraphNode().getParents()).isNotEmpty());
     }
   }
   @Override
@@ -67,19 +67,19 @@ public class AnnotatePreviousRevision_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CellAnnotation cellAnnotation = AnnotatePreviousRevision_Action.this.getCellAnnotation(event);
+    AnnotatedCellMessage cellMessage = AnnotatePreviousRevision_Action.this.getCellMessage(event);
     AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-    if (annotationColumn == null || cellAnnotation == null) {
+    if (annotationColumn == null || cellMessage == null) {
       return;
     }
-    CommitsGraphNode commitsGraphNode = cellAnnotation.getCommitsGraphNode();
+    CommitsGraphNode commitsGraphNode = cellMessage.getCommitsGraphNode();
     if (ListSequence.fromList(commitsGraphNode.getParents()).isEmpty()) {
       return;
     }
     annotationColumn.getEditorAnnotation().annotateRevision(ListSequence.fromList(commitsGraphNode.getParents()).first().getRevision());
   }
   @Nullable
-  private CellAnnotation getCellAnnotation(final AnActionEvent event) {
-    return VcsActionsUtil.getCellAnnotation(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
+  private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {
+    return VcsActionsUtil.getMessageForCell(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
   }
 }

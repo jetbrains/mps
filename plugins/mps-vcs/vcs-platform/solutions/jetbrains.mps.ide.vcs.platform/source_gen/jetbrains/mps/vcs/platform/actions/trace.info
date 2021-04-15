@@ -28,7 +28,7 @@
       <node id="2260553905836919251" at="28,35,29,52" concept="5" />
       <node id="2260553905836919251" at="32,32,33,16" concept="11" />
       <node id="3017124590693266456" at="36,89,37,93" concept="5" />
-      <node id="3017124590693202091" at="37,93,38,110" concept="5" />
+      <node id="3017124590693202091" at="37,93,38,107" concept="5" />
       <node id="2260553905836919251" at="42,53,43,19" concept="11" />
       <node id="7221334107607697083" at="45,5,46,90" concept="10" />
       <node id="7221334107607697083" at="47,67,48,31" concept="5" />
@@ -37,17 +37,17 @@
       <node id="7221334107607698500" at="56,22,57,21" concept="11" />
       <node id="2260553905836919251" at="59,5,60,16" concept="11" />
       <node id="4877388015273586896" at="63,96,64,92" concept="10" />
-      <node id="4877388015273617053" at="65,33,66,13" concept="11" />
-      <node id="5257229007677114946" at="67,5,68,112" concept="10" />
-      <node id="5257229007677114956" at="68,112,69,105" concept="5" />
-      <node id="4877388015273949632" at="72,71,73,141" concept="11" />
+      <node id="4877388015273617053" at="65,30,66,13" concept="11" />
+      <node id="5257229007677114946" at="67,5,68,109" concept="10" />
+      <node id="5257229007677114956" at="68,109,69,105" concept="5" />
+      <node id="4877388015273949632" at="72,74,73,141" concept="11" />
       <node id="2260553905836919251" at="41,95,44,5" concept="8" />
       <node id="7221334107607697083" at="46,90,49,7" concept="8" />
       <node id="7221334107607697084" at="49,7,52,7" concept="8" />
       <node id="7221334107607698500" at="55,66,58,7" concept="8" />
       <node id="4877388015273613905" at="64,92,67,5" concept="8" />
       <node id="2260553905836919251" at="31,0,35,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="4877388015273590002" at="71,0,75,0" concept="9" trace="getCellAnnotation#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="4877388015273590002" at="71,0,75,0" concept="9" trace="getCellMessage#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="2260553905836919251" at="26,0,31,0" concept="3" trace="CopyRevisionNumber_Action#()V" />
       <node id="2260553905836919251" at="35,0,40,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="7221334107607698499" at="53,5,59,5" concept="1" />
@@ -59,9 +59,9 @@
       <scope id="7221334107607697083" at="47,67,48,31" />
       <scope id="7221334107607697084" at="50,36,51,21" />
       <scope id="7221334107607698500" at="56,22,57,21" />
-      <scope id="4877388015273613907" at="65,33,66,13" />
-      <scope id="4877388015273590004" at="72,71,73,141" />
-      <scope id="3017124590693200974" at="36,89,38,110" />
+      <scope id="4877388015273613907" at="65,30,66,13" />
+      <scope id="4877388015273590004" at="72,74,73,141" />
+      <scope id="3017124590693200974" at="36,89,38,107" />
       <scope id="2260553905836919251" at="26,38,29,52" />
       <scope id="2260553905836919251" at="31,0,35,0" />
       <scope id="7221334107607698499" at="54,5,58,7">
@@ -76,7 +76,7 @@
         <var name="event" id="2260553905836919251" />
       </scope>
       <scope id="2260553905836919251" at="63,96,69,105">
-        <var name="cellAnnotation" id="4877388015273586897" />
+        <var name="cellMessage" id="4877388015273586897" />
         <var name="revisionAsString" id="5257229007677114947" />
       </scope>
       <scope id="7221334107607697083" at="45,5,52,7">
@@ -102,7 +102,7 @@
       <node id="275536438154355298" at="28,35,29,52" concept="5" />
       <node id="275536438154355298" at="32,32,33,16" concept="11" />
       <node id="3045014152846384039" at="36,89,37,98" concept="5" />
-      <node id="3045014152846384047" at="37,98,38,114" concept="5" />
+      <node id="3045014152846384047" at="37,98,38,111" concept="5" />
       <node id="275536438154355298" at="42,53,43,19" concept="11" />
       <node id="275536438154452654" at="45,5,46,90" concept="10" />
       <node id="275536438154452654" at="47,67,48,31" concept="5" />
@@ -112,16 +112,16 @@
       <node id="275536438154355298" at="59,5,60,16" concept="11" />
       <node id="358536419352322689" at="63,96,64,96" concept="10" />
       <node id="358536419352322695" at="64,96,65,126" concept="10" />
-      <node id="358536419352322704" at="66,61,67,13" concept="11" />
-      <node id="358536419352322712" at="68,5,69,90" concept="5" />
-      <node id="275536438154449613" at="72,71,73,141" concept="11" />
+      <node id="358536419352322704" at="66,58,67,13" concept="11" />
+      <node id="358536419352322712" at="68,5,69,87" concept="5" />
+      <node id="275536438154449613" at="72,74,73,141" concept="11" />
       <node id="275536438154355298" at="41,95,44,5" concept="8" />
       <node id="275536438154452654" at="46,90,49,7" concept="8" />
       <node id="275536438154452655" at="49,7,52,7" concept="8" />
       <node id="275536438154452657" at="55,66,58,7" concept="8" />
       <node id="358536419352322702" at="65,126,68,5" concept="8" />
       <node id="275536438154355298" at="31,0,35,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="275536438154449610" at="71,0,75,0" concept="9" trace="getCellAnnotation#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="275536438154449610" at="71,0,75,0" concept="9" trace="getCellMessage#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="275536438154355298" at="26,0,31,0" concept="3" trace="ShowDiffFromAnnotation_Action#()V" />
       <node id="275536438154355298" at="35,0,40,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="275536438154452656" at="53,5,59,5" concept="1" />
@@ -133,9 +133,9 @@
       <scope id="275536438154452654" at="47,67,48,31" />
       <scope id="275536438154452655" at="50,36,51,21" />
       <scope id="275536438154452657" at="56,22,57,21" />
-      <scope id="358536419352322703" at="66,61,67,13" />
-      <scope id="275536438154449612" at="72,71,73,141" />
-      <scope id="3045014152846383147" at="36,89,38,114" />
+      <scope id="358536419352322703" at="66,58,67,13" />
+      <scope id="275536438154449612" at="72,74,73,141" />
+      <scope id="3045014152846383147" at="36,89,38,111" />
       <scope id="275536438154355298" at="26,42,29,52" />
       <scope id="275536438154355298" at="31,0,35,0" />
       <scope id="275536438154452656" at="54,5,58,7">
@@ -149,9 +149,9 @@
         <var name="_params" id="275536438154355298" />
         <var name="event" id="275536438154355298" />
       </scope>
-      <scope id="275536438154355298" at="63,96,69,90">
+      <scope id="275536438154355298" at="63,96,69,87">
         <var name="annotationColumn" id="358536419352322696" />
-        <var name="cellAnnotation" id="358536419352322690" />
+        <var name="cellMessage" id="358536419352322690" />
       </scope>
       <scope id="275536438154452654" at="45,5,52,7">
         <var name="editorComponent" id="275536438154452654" />
@@ -178,8 +178,8 @@
       <node id="8686198280956341298" at="37,89,38,98" concept="10" />
       <node id="3305931329367903009" at="38,98,39,104" concept="5" />
       <node id="3305931329367903017" at="39,104,40,139" concept="5" />
-      <node id="3282354958926656555" at="40,139,41,69" concept="5" />
-      <node id="499558175659182281" at="42,33,43,128" concept="5" />
+      <node id="3282354958926656555" at="40,139,41,66" concept="5" />
+      <node id="499558175659182281" at="42,30,43,125" concept="5" />
       <node id="3282354958926656247" at="48,53,49,19" concept="11" />
       <node id="3282354958926656248" at="51,5,52,90" concept="10" />
       <node id="3282354958926656248" at="53,67,54,31" concept="5" />
@@ -189,20 +189,20 @@
       <node id="3282354958926656247" at="65,5,66,16" concept="11" />
       <node id="3282354958926656273" at="69,96,70,98" concept="10" />
       <node id="3282354958926656279" at="70,98,71,126" concept="10" />
-      <node id="3282354958926656288" at="72,61,73,13" concept="11" />
-      <node id="3282354958926656308" at="74,5,75,77" concept="10" />
+      <node id="3282354958926656288" at="72,58,73,13" concept="11" />
+      <node id="3282354958926656308" at="74,5,75,74" concept="10" />
       <node id="7889174376581681474" at="76,73,77,13" concept="11" />
       <node id="9097805028181257138" at="78,5,79,136" concept="5" />
-      <node id="3282354958926656261" at="82,71,83,141" concept="11" />
-      <node id="499558175659191226" at="41,69,44,5" concept="8" />
+      <node id="3282354958926656261" at="82,74,83,141" concept="11" />
+      <node id="499558175659191226" at="41,66,44,5" concept="8" />
       <node id="3282354958926656247" at="47,95,50,5" concept="8" />
       <node id="3282354958926656248" at="52,90,55,7" concept="8" />
       <node id="3282354958926656249" at="55,7,58,7" concept="8" />
       <node id="3282354958926656251" at="61,66,64,7" concept="8" />
       <node id="3282354958926656286" at="71,126,74,5" concept="8" />
-      <node id="7889174376581670479" at="75,77,78,5" concept="8" />
+      <node id="7889174376581670479" at="75,74,78,5" concept="8" />
       <node id="3282354958926656247" at="32,0,36,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="3282354958926656258" at="81,0,85,0" concept="9" trace="getCellAnnotation#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="3282354958926656258" at="81,0,85,0" concept="9" trace="getCellMessage#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="3282354958926656247" at="27,0,32,0" concept="3" trace="AnnotatePreviousRevision_Action#()V" />
       <node id="3282354958926656250" at="59,5,65,5" concept="1" />
       <node id="3282354958926656248" at="50,5,59,5" concept="1" />
@@ -210,14 +210,14 @@
       <node id="3282354958926656247" at="68,0,81,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="3282354958926656247" at="46,0,68,0" concept="9" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="3282354958926656247" at="33,32,34,16" />
-      <scope id="499558175659191228" at="42,33,43,128" />
+      <scope id="499558175659191228" at="42,30,43,125" />
       <scope id="3282354958926656247" at="48,53,49,19" />
       <scope id="3282354958926656248" at="53,67,54,31" />
       <scope id="3282354958926656249" at="56,36,57,21" />
       <scope id="3282354958926656251" at="62,22,63,21" />
-      <scope id="3282354958926656287" at="72,61,73,13" />
+      <scope id="3282354958926656287" at="72,58,73,13" />
       <scope id="7889174376581670481" at="76,73,77,13" />
-      <scope id="3282354958926656260" at="82,71,83,141" />
+      <scope id="3282354958926656260" at="82,74,83,141" />
       <scope id="3282354958926656247" at="27,44,30,57" />
       <scope id="3282354958926656247" at="32,0,36,0" />
       <scope id="3282354958926656250" at="60,5,64,7">
@@ -228,7 +228,7 @@
       </scope>
       <scope id="3282354958926656247" at="27,0,32,0" />
       <scope id="3282354958926656547" at="37,89,44,5">
-        <var name="cellAnnotation" id="8686198280956341299" />
+        <var name="cellMessage" id="8686198280956341299" />
       </scope>
       <scope id="3282354958926656248" at="51,5,58,7">
         <var name="editorComponent" id="3282354958926656248" />
@@ -239,7 +239,7 @@
       </scope>
       <scope id="3282354958926656247" at="69,96,79,136">
         <var name="annotationColumn" id="3282354958926656280" />
-        <var name="cellAnnotation" id="3282354958926656274" />
+        <var name="cellMessage" id="3282354958926656274" />
         <var name="commitsGraphNode" id="3282354958926656309" />
       </scope>
       <scope id="3282354958926656247" at="68,0,81,0">
@@ -475,10 +475,10 @@
       <node id="4521758580854473013" at="62,22,63,21" concept="11" />
       <node id="4521758580853870668" at="65,5,66,16" concept="11" />
       <node id="4521758580854004758" at="69,96,70,92" concept="10" />
-      <node id="4521758580854004766" at="71,33,72,13" concept="11" />
-      <node id="167281980936719196" at="73,5,74,129" concept="5" />
-      <node id="4521758580853898594" at="77,71,78,141" concept="11" />
-      <node id="3045014152846243200" at="81,74,82,19" concept="11" />
+      <node id="4521758580854004766" at="71,30,72,13" concept="11" />
+      <node id="167281980936719196" at="73,5,74,126" concept="5" />
+      <node id="4521758580853898594" at="77,74,78,141" concept="11" />
+      <node id="3045014152846243200" at="81,71,82,19" concept="11" />
       <node id="3045014152846243207" at="83,5,84,126" concept="10" />
       <node id="3045014152846243216" at="85,35,86,19" concept="11" />
       <node id="3045014152846243221" at="87,5,88,58" concept="11" />
@@ -491,7 +491,7 @@
       <node id="3045014152846243198" at="80,63,83,5" concept="8" />
       <node id="3045014152846243214" at="84,126,87,5" concept="8" />
       <node id="4521758580853870668" at="31,0,35,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="4521758580853898591" at="76,0,80,0" concept="9" trace="getCellAnnotation#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="4521758580853898591" at="76,0,80,0" concept="9" trace="getCellMessage#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="4521758580853870668" at="26,0,31,0" concept="3" trace="GitShowCommitInLog_Action#()V" />
       <node id="4521758580853870668" at="35,0,40,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="4521758580853932978" at="53,5,59,5" concept="1" />
@@ -506,9 +506,9 @@
       <scope id="4521758580853930746" at="50,36,51,21" />
       <scope id="4521758580853932979" at="56,22,57,21" />
       <scope id="4521758580854473013" at="62,22,63,21" />
-      <scope id="4521758580854004765" at="71,33,72,13" />
-      <scope id="4521758580853898593" at="77,71,78,141" />
-      <scope id="3045014152846243199" at="81,74,82,19" />
+      <scope id="4521758580854004765" at="71,30,72,13" />
+      <scope id="4521758580853898593" at="77,74,78,141" />
+      <scope id="3045014152846243199" at="81,71,82,19" />
       <scope id="3045014152846243215" at="85,35,86,19" />
       <scope id="3045014152846186674" at="36,89,38,97" />
       <scope id="4521758580853870668" at="26,38,29,52" />
@@ -527,8 +527,8 @@
         <var name="_params" id="4521758580853870668" />
         <var name="event" id="4521758580853870668" />
       </scope>
-      <scope id="4521758580853870668" at="69,96,74,129">
-        <var name="cellAnnotation" id="4521758580854004759" />
+      <scope id="4521758580853870668" at="69,96,74,126">
+        <var name="cellMessage" id="4521758580854004759" />
       </scope>
       <scope id="4521758580853930745" at="45,5,52,7">
         <var name="editorComponent" id="4521758580853930745" />
@@ -695,7 +695,7 @@
       <node id="4577809193689859353" at="26,35,27,52" concept="5" />
       <node id="4577809193689859353" at="30,32,31,16" concept="11" />
       <node id="3045014152846275498" at="34,89,35,63" concept="5" />
-      <node id="3045014152846275506" at="35,63,36,109" concept="5" />
+      <node id="3045014152846275506" at="35,63,36,106" concept="5" />
       <node id="4577809193689859353" at="40,53,41,19" concept="11" />
       <node id="4577809193689876083" at="43,5,44,90" concept="10" />
       <node id="4577809193689876083" at="45,67,46,31" concept="5" />
@@ -705,16 +705,16 @@
       <node id="4577809193689859353" at="57,5,58,16" concept="11" />
       <node id="4577809193689946651" at="61,96,62,91" concept="10" />
       <node id="4577809193690143264" at="62,91,63,126" concept="10" />
-      <node id="4577809193689946659" at="64,61,65,13" concept="11" />
-      <node id="4577809193690147123" at="66,5,67,123" concept="5" />
-      <node id="4577809193689872448" at="70,71,71,141" concept="11" />
+      <node id="4577809193689946659" at="64,58,65,13" concept="11" />
+      <node id="4577809193690147123" at="66,5,67,120" concept="5" />
+      <node id="4577809193689872448" at="70,74,71,141" concept="11" />
       <node id="4577809193689859353" at="39,95,42,5" concept="8" />
       <node id="4577809193689876083" at="44,90,47,7" concept="8" />
       <node id="4577809193689876084" at="47,7,50,7" concept="8" />
       <node id="4577809193689876086" at="53,66,56,7" concept="8" />
       <node id="4577809193689946657" at="63,126,66,5" concept="8" />
       <node id="4577809193689859353" at="29,0,33,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="4577809193689872445" at="69,0,73,0" concept="9" trace="getCellAnnotation#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="4577809193689872445" at="69,0,73,0" concept="9" trace="getCellMessage#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="4577809193689859353" at="24,0,29,0" concept="3" trace="ShowAffectedFiles_Action#()V" />
       <node id="4577809193689859353" at="33,0,38,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="4577809193689876085" at="51,5,57,5" concept="1" />
@@ -726,9 +726,9 @@
       <scope id="4577809193689876083" at="45,67,46,31" />
       <scope id="4577809193689876084" at="48,36,49,21" />
       <scope id="4577809193689876086" at="54,22,55,21" />
-      <scope id="4577809193689946658" at="64,61,65,13" />
-      <scope id="4577809193689872447" at="70,71,71,141" />
-      <scope id="3045014152846274569" at="34,89,36,109" />
+      <scope id="4577809193689946658" at="64,58,65,13" />
+      <scope id="4577809193689872447" at="70,74,71,141" />
+      <scope id="3045014152846274569" at="34,89,36,106" />
       <scope id="4577809193689859353" at="24,37,27,52" />
       <scope id="4577809193689859353" at="29,0,33,0" />
       <scope id="4577809193689876085" at="52,5,56,7">
@@ -742,9 +742,9 @@
         <var name="_params" id="4577809193689859353" />
         <var name="event" id="4577809193689859353" />
       </scope>
-      <scope id="4577809193689859353" at="61,96,67,123">
+      <scope id="4577809193689859353" at="61,96,67,120">
         <var name="annotationColumn" id="4577809193690143265" />
-        <var name="cellAnnotation" id="4577809193689946652" />
+        <var name="cellMessage" id="4577809193689946652" />
       </scope>
       <scope id="4577809193689876083" at="43,5,50,7">
         <var name="editorComponent" id="4577809193689876083" />
@@ -968,7 +968,7 @@
       <node id="7889174376581657295" at="31,32,32,16" concept="11" />
       <node id="7889174376581657363" at="35,89,36,95" concept="5" />
       <node id="9097805028181139597" at="36,95,37,129" concept="5" />
-      <node id="7889174376581657370" at="37,129,38,108" concept="5" />
+      <node id="7889174376581657370" at="37,129,38,105" concept="5" />
       <node id="7889174376581657295" at="42,53,43,19" concept="11" />
       <node id="7889174376581657296" at="45,5,46,90" concept="10" />
       <node id="7889174376581657296" at="47,67,48,31" concept="5" />
@@ -978,16 +978,16 @@
       <node id="7889174376581657295" at="59,5,60,16" concept="11" />
       <node id="7889174376581657317" at="63,96,64,90" concept="10" />
       <node id="7889174376581657323" at="64,90,65,126" concept="10" />
-      <node id="7889174376581657332" at="66,61,67,13" concept="11" />
-      <node id="9097805028181055449" at="68,5,69,112" concept="5" />
-      <node id="7889174376581657305" at="72,71,73,141" concept="11" />
+      <node id="7889174376581657332" at="66,58,67,13" concept="11" />
+      <node id="9097805028181055449" at="68,5,69,109" concept="5" />
+      <node id="7889174376581657305" at="72,74,73,141" concept="11" />
       <node id="7889174376581657295" at="41,95,44,5" concept="8" />
       <node id="7889174376581657296" at="46,90,49,7" concept="8" />
       <node id="7889174376581657297" at="49,7,52,7" concept="8" />
       <node id="7889174376581657299" at="55,66,58,7" concept="8" />
       <node id="7889174376581657330" at="65,126,68,5" concept="8" />
       <node id="7889174376581657295" at="30,0,34,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="7889174376581657302" at="71,0,75,0" concept="9" trace="getCellAnnotation#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="7889174376581657302" at="71,0,75,0" concept="9" trace="getCellMessage#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="7889174376581657295" at="25,0,30,0" concept="3" trace="AnnotateRevision_Action#()V" />
       <node id="7889174376581657295" at="34,0,40,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="7889174376581657298" at="53,5,59,5" concept="1" />
@@ -999,10 +999,10 @@
       <scope id="7889174376581657296" at="47,67,48,31" />
       <scope id="7889174376581657297" at="50,36,51,21" />
       <scope id="7889174376581657299" at="56,22,57,21" />
-      <scope id="7889174376581657331" at="66,61,67,13" />
-      <scope id="7889174376581657304" at="72,71,73,141" />
+      <scope id="7889174376581657331" at="66,58,67,13" />
+      <scope id="7889174376581657304" at="72,74,73,141" />
       <scope id="7889174376581657295" at="25,36,28,57" />
-      <scope id="7889174376581657362" at="35,89,38,108" />
+      <scope id="7889174376581657362" at="35,89,38,105" />
       <scope id="7889174376581657295" at="30,0,34,0" />
       <scope id="7889174376581657298" at="54,5,58,7">
         <var name="p" id="7889174376581657298" />
@@ -1015,9 +1015,9 @@
         <var name="_params" id="7889174376581657295" />
         <var name="event" id="7889174376581657295" />
       </scope>
-      <scope id="7889174376581657295" at="63,96,69,112">
+      <scope id="7889174376581657295" at="63,96,69,109">
         <var name="annotationColumn" id="7889174376581657324" />
-        <var name="cellAnnotation" id="7889174376581657318" />
+        <var name="cellMessage" id="7889174376581657318" />
       </scope>
       <scope id="7889174376581657296" at="45,5,52,7">
         <var name="editorComponent" id="7889174376581657296" />
@@ -1483,7 +1483,7 @@
       <node id="747289613698729794" at="319,5,322,5" concept="8" />
       <node id="747289613698336399" at="329,0,332,0" concept="9" trace="run#()V" />
       <node id="4877388015273701950" at="349,99,352,7" concept="8" />
-      <node id="4877388015273701976" at="358,105,361,5" concept="8" />
+      <node id="4877388015273701976" at="358,111,361,5" concept="8" />
       <node id="167281980935256515" at="367,94,370,5" concept="8" />
       <node id="167281980935241382" at="389,42,392,13" concept="8" />
       <node id="6084882184456407324" at="408,0,411,0" concept="15" trace="getAnnotateRootLock#(Lcom/intellij/openapi/project/Project;Ljava/lang/String;)Lcom/intellij/openapi/vcs/impl/BackgroundableActionLock;" />
@@ -1508,7 +1508,7 @@
       <node id="8230098746512809306" at="288,0,295,0" concept="15" trace="getUnversionedFilesForModules#(Lcom/intellij/openapi/project/Project;Ljava/util/List;)Ljava/util/List;" />
       <node id="747289613698336531" at="337,0,344,0" concept="9" trace="consume#(Lcom/intellij/openapi/vcs/history/VcsHistorySession;)V" />
       <node id="9025816855038779262" at="155,38,163,11" concept="19" />
-      <node id="4877388015273925925" at="357,0,365,0" concept="15" trace="getCellAnnotation#(Ljetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/vcs/annotate/CellAnnotation;" />
+      <node id="4877388015273925925" at="357,0,365,0" concept="15" trace="getMessageForCell#(Ljetbrains/mps/nodeEditor/EditorComponent;Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/vcs/annotate/AnnotatedCellMessage;" />
       <node id="167281980935241370" at="385,56,393,11" concept="19" />
       <node id="7649848904695276962" at="399,0,407,0" concept="15" trace="tryCreateHash#(Ljava/lang/String;)Lcom/intellij/vcs/log/Hash;" />
       <node id="747289613698336525" at="335,52,344,7" concept="5" />
@@ -1637,7 +1637,7 @@
       <scope id="4877388015273701948" at="348,92,353,5">
         <var name="column" id="4877388015273701959" />
       </scope>
-      <scope id="4877388015273701975" at="358,105,363,90">
+      <scope id="4877388015273701975" at="358,111,363,90">
         <var name="column" id="4877388015273701985" />
       </scope>
       <scope id="7649848904695276964" at="400,54,405,5" />

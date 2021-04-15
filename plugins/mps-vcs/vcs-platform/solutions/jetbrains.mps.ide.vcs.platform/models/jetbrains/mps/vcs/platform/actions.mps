@@ -3076,7 +3076,7 @@
     </node>
     <node concept="2tJIrI" id="4eJXCVM90be" role="jymVt" />
     <node concept="2YIFZL" id="4eJXCVM9_O_" role="jymVt">
-      <property role="TrG5h" value="getCellAnnotation" />
+      <property role="TrG5h" value="getMessageForCell" />
       <node concept="2AHcQZ" id="4eJXCVM9l4U" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
@@ -3130,7 +3130,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4eJXCVM8J9P" role="2OqNvi">
-                <ref role="37wK5l" to="bvbc:4eJXCVM711U" resolve="getCellAnnotation" />
+                <ref role="37wK5l" to="bvbc:4eJXCVM711U" resolve="getMessageForCell" />
                 <node concept="37vLTw" id="4eJXCVM9t8c" role="37wK5m">
                   <ref role="3cqZAo" node="4eJXCVM94ZQ" resolve="cell" />
                 </node>
@@ -3151,8 +3151,8 @@
           <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
         </node>
       </node>
-      <node concept="3uibUv" id="4eJXCVM8J9m" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <node concept="3uibUv" id="etXRtFkKo1" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
     </node>
     <node concept="2tJIrI" id="9ijxdaXN7Q" role="jymVt" />
@@ -5694,14 +5694,14 @@
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
     <property role="1WHSii" value="Copy revision number" />
     <node concept="2XrIbr" id="4eJXCVM8jNM" role="32lrUH">
-      <property role="TrG5h" value="getCellAnnotation" />
-      <node concept="3uibUv" id="4eJXCVM8kIA" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="etXRtFlMkP" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
       <node concept="3clFbS" id="4eJXCVM8jNO" role="3clF47">
         <node concept="3clFbF" id="4eJXCVM9FB0" role="3cqZAp">
           <node concept="2YIFZM" id="4_oGy7zOnP_" role="3clFbG">
-            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getCellAnnotation" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
             <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
             <node concept="2OqwBi" id="4_oGy7zOnPA" role="37wK5m">
               <node concept="2WthIp" id="4_oGy7zOnPB" role="2Oq$k0" />
@@ -5737,14 +5737,14 @@
       <node concept="3clFbS" id="1Xv6sND20Bl" role="2VODD2">
         <node concept="3cpWs8" id="4eJXCVM8j3g" role="3cqZAp">
           <node concept="3cpWsn" id="4eJXCVM8j3h" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="4eJXCVM8j3i" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlMzm" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="4eJXCVM9HnI" role="33vP2m">
               <node concept="2WthIp" id="4eJXCVM9HnL" role="2Oq$k0" />
               <node concept="2XshWL" id="4_oGy7zOniC" role="2OqNvi">
-                <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -5756,7 +5756,7 @@
           <node concept="3clFbC" id="4eJXCVM8qbC" role="3clFbw">
             <node concept="10Nm6u" id="4eJXCVM8qgX" role="3uHU7w" />
             <node concept="37vLTw" id="4_oGy7zOnk0" role="3uHU7B">
-              <ref role="3cqZAo" node="4eJXCVM8j3h" resolve="cellAnnotation" />
+              <ref role="3cqZAo" node="4eJXCVM8j3h" resolve="cellMessage" />
             </node>
           </node>
         </node>
@@ -5776,10 +5776,10 @@
                   </node>
                   <node concept="2OqwBi" id="4eJXCVM8qzG" role="2Oq$k0">
                     <node concept="37vLTw" id="4_oGy7zOnnL" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4eJXCVM8j3h" resolve="cellAnnotation" />
+                      <ref role="3cqZAo" node="4eJXCVM8j3h" resolve="cellMessage" />
                     </node>
                     <node concept="liA8E" id="4eJXCVM8qLQ" role="2OqNvi">
-                      <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                      <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
                     </node>
                   </node>
                 </node>
@@ -5850,7 +5850,7 @@
               <node concept="2OqwBi" id="2BuYHhJnkpi" role="3uHU7B">
                 <node concept="2WthIp" id="2BuYHhJnkac" role="2Oq$k0" />
                 <node concept="2XshWL" id="2BuYHhJnkGi" role="2OqNvi">
-                  <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellAnnotation" />
+                  <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellMessage" />
                 </node>
               </node>
             </node>
@@ -5887,15 +5887,15 @@
       <node concept="1oajcY" id="3V0wRzjTW4P" role="1oa70y" />
     </node>
     <node concept="2XrIbr" id="3V0wRzjRJPv" role="32lrUH">
-      <property role="TrG5h" value="getCellAnnotation" />
-      <node concept="3uibUv" id="3V0wRzjRJPw" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="etXRtFlQlf" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
       <node concept="3clFbS" id="3V0wRzjRJPx" role="3clF47">
         <node concept="3clFbF" id="3V0wRzjRJPy" role="3cqZAp">
           <node concept="2YIFZM" id="3V0wRzjRJPz" role="3clFbG">
             <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
-            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getCellAnnotation" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
             <node concept="2OqwBi" id="3V0wRzjRJP$" role="37wK5m">
               <node concept="2WthIp" id="3V0wRzjRJP_" role="2Oq$k0" />
               <node concept="1DTwFV" id="4_oGy7zOr5G" role="2OqNvi">
@@ -5930,7 +5930,7 @@
             <node concept="2OqwBi" id="2D243O$rZm3" role="3uHU7B">
               <node concept="2WthIp" id="2D243O$rZm4" role="2Oq$k0" />
               <node concept="2XshWL" id="2D243O$rZm5" role="2OqNvi">
-                <ref role="2WH_rO" node="3V0wRzjRJPv" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="3V0wRzjRJPv" resolve="getCellMessage" />
               </node>
             </node>
             <node concept="10Nm6u" id="2D243O$rZm6" role="3uHU7w" />
@@ -5988,14 +5988,14 @@
       <node concept="3clFbS" id="3V0wRzjRD1e" role="2VODD2">
         <node concept="3cpWs8" id="3V0wRzjS9Km" role="3cqZAp">
           <node concept="3cpWsn" id="3V0wRzjS9Kn" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="3V0wRzjS9Ko" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlQBr" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="3V0wRzjS9Kp" role="33vP2m">
               <node concept="2WthIp" id="3V0wRzjS9Kq" role="2Oq$k0" />
               <node concept="2XshWL" id="4_oGy7zOpM_" role="2OqNvi">
-                <ref role="2WH_rO" node="3V0wRzjRJPv" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="3V0wRzjRJPv" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -6007,7 +6007,7 @@
           <node concept="3clFbC" id="3V0wRzjS9Kv" role="3clFbw">
             <node concept="10Nm6u" id="3V0wRzjS9Kw" role="3uHU7w" />
             <node concept="37vLTw" id="4_oGy7zOpOH" role="3uHU7B">
-              <ref role="3cqZAo" node="3V0wRzjS9Kn" resolve="cellAnnotation" />
+              <ref role="3cqZAo" node="3V0wRzjS9Kn" resolve="cellMessage" />
             </node>
           </node>
         </node>
@@ -6018,10 +6018,10 @@
             <node concept="2OqwBi" id="9ijxdb3DeM" role="37wK5m">
               <node concept="2OqwBi" id="9ijxdb3DeN" role="2Oq$k0">
                 <node concept="37vLTw" id="4_oGy7zOqei" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3V0wRzjS9Kn" resolve="cellAnnotation" />
+                  <ref role="3cqZAo" node="3V0wRzjS9Kn" resolve="cellMessage" />
                 </node>
                 <node concept="liA8E" id="9ijxdb3DeP" role="2OqNvi">
-                  <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                  <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
                 </node>
               </node>
               <node concept="liA8E" id="9ijxdb3DeQ" role="2OqNvi">
@@ -6097,15 +6097,15 @@
       <node concept="1oajcY" id="3Y7DjknpKpQ" role="1oa70y" />
     </node>
     <node concept="2XrIbr" id="3Y7DjknpJwX" role="32lrUH">
-      <property role="TrG5h" value="getCellAnnotation" />
-      <node concept="3uibUv" id="3Y7DjknpJwY" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="etXRtFlRrP" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
       <node concept="3clFbS" id="3Y7DjknpJwZ" role="3clF47">
         <node concept="3clFbF" id="3Y7DjknpJx0" role="3cqZAp">
           <node concept="2YIFZM" id="3Y7DjknpJx1" role="3clFbG">
             <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
-            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getCellAnnotation" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
             <node concept="2OqwBi" id="3Y7DjknpJx2" role="37wK5m">
               <node concept="2WthIp" id="3Y7DjknpJx3" role="2Oq$k0" />
               <node concept="1DTwFV" id="4_oGy7zOsXP" role="2OqNvi">
@@ -6130,14 +6130,14 @@
       <node concept="3clFbS" id="3Y7DjknpGkr" role="2VODD2">
         <node concept="3cpWs8" id="3Y7Djknq1Cr" role="3cqZAp">
           <node concept="3cpWsn" id="3Y7Djknq1Cs" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="3Y7Djknq1Ct" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlRGi" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="3Y7Djknq1Cu" role="33vP2m">
               <node concept="2WthIp" id="3Y7Djknq1Cv" role="2Oq$k0" />
               <node concept="2XshWL" id="4_oGy7zOs6G" role="2OqNvi">
-                <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -6174,7 +6174,7 @@
             <node concept="3clFbC" id="3Y7Djknq1C$" role="3uHU7w">
               <node concept="10Nm6u" id="3Y7Djknq1C_" role="3uHU7w" />
               <node concept="37vLTw" id="4_oGy7zOsis" role="3uHU7B">
-                <ref role="3cqZAo" node="3Y7Djknq1Cs" resolve="cellAnnotation" />
+                <ref role="3cqZAo" node="3Y7Djknq1Cs" resolve="cellMessage" />
               </node>
             </node>
           </node>
@@ -6197,10 +6197,10 @@
                 </node>
                 <node concept="2OqwBi" id="3Y7DjknqTHH" role="2Oq$k0">
                   <node concept="37vLTw" id="4_oGy7zOsoJ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3Y7Djknq1Cs" resolve="cellAnnotation" />
+                    <ref role="3cqZAo" node="3Y7Djknq1Cs" resolve="cellMessage" />
                   </node>
                   <node concept="liA8E" id="3Y7DjknqTHJ" role="2OqNvi">
-                    <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                    <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
                   </node>
                 </node>
               </node>
@@ -6241,7 +6241,7 @@
               <node concept="2OqwBi" id="2D243O$s7eT" role="3uHU7B">
                 <node concept="2WthIp" id="2D243O$s7eU" role="2Oq$k0" />
                 <node concept="2XshWL" id="2D243O$s7eV" role="2OqNvi">
-                  <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellAnnotation" />
+                  <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellMessage" />
                 </node>
               </node>
             </node>
@@ -6272,15 +6272,15 @@
       <node concept="1oajcY" id="fiTISYRPUL" role="1oa70y" />
     </node>
     <node concept="2XrIbr" id="fiTISYRPba" role="32lrUH">
-      <property role="TrG5h" value="getCellAnnotation" />
-      <node concept="3uibUv" id="fiTISYRPbb" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="etXRtFlSk8" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
       <node concept="3clFbS" id="fiTISYRPbc" role="3clF47">
         <node concept="3clFbF" id="fiTISYRPbd" role="3cqZAp">
           <node concept="2YIFZM" id="fiTISYRPbe" role="3clFbG">
             <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
-            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getCellAnnotation" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
             <node concept="2OqwBi" id="fiTISYRPbf" role="37wK5m">
               <node concept="2WthIp" id="fiTISYRPbg" role="2Oq$k0" />
               <node concept="1DTwFV" id="4_oGy7zOv8i" role="2OqNvi">
@@ -6305,14 +6305,14 @@
       <node concept="3clFbS" id="fiTISYRu9$" role="2VODD2">
         <node concept="3cpWs8" id="jTLJ_ayia1" role="3cqZAp">
           <node concept="3cpWsn" id="jTLJ_ayia2" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="jTLJ_ayia3" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlSzW" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="jTLJ_ayia4" role="33vP2m">
               <node concept="2WthIp" id="jTLJ_ayia5" role="2Oq$k0" />
               <node concept="2XshWL" id="4_oGy7zOuil" role="2OqNvi">
-                <ref role="2WH_rO" node="fiTISYRPba" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="fiTISYRPba" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -6349,7 +6349,7 @@
             <node concept="3clFbC" id="jTLJ_ayial" role="3uHU7w">
               <node concept="10Nm6u" id="jTLJ_ayiam" role="3uHU7w" />
               <node concept="37vLTw" id="4_oGy7zOupS" role="3uHU7B">
-                <ref role="3cqZAo" node="jTLJ_ayia2" resolve="cellAnnotation" />
+                <ref role="3cqZAo" node="jTLJ_ayia2" resolve="cellMessage" />
               </node>
             </node>
           </node>
@@ -6368,10 +6368,10 @@
               <ref role="37wK5l" to="bvbc:jTLJ_ak$$y" resolve="showDiff" />
               <node concept="2OqwBi" id="jTLJ_ayiav" role="37wK5m">
                 <node concept="37vLTw" id="4_oGy7zOuxo" role="2Oq$k0">
-                  <ref role="3cqZAo" node="jTLJ_ayia2" resolve="cellAnnotation" />
+                  <ref role="3cqZAo" node="jTLJ_ayia2" resolve="cellMessage" />
                 </node>
                 <node concept="liA8E" id="jTLJ_ayiax" role="2OqNvi">
-                  <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                  <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
                 </node>
               </node>
             </node>
@@ -6416,7 +6416,7 @@
               <node concept="2OqwBi" id="2D243O$sxIQ" role="3uHU7B">
                 <node concept="2WthIp" id="2D243O$sxIR" role="2Oq$k0" />
                 <node concept="2XshWL" id="2D243O$sxIS" role="2OqNvi">
-                  <ref role="2WH_rO" node="fiTISYRPba" resolve="getCellAnnotation" />
+                  <ref role="2WH_rO" node="fiTISYRPba" resolve="getCellMessage" />
                 </node>
               </node>
             </node>
@@ -6477,14 +6477,14 @@
       <node concept="1oajcY" id="2Qdh779$bbV" role="1oa70y" />
     </node>
     <node concept="2XrIbr" id="2Qdh779$bc2" role="32lrUH">
-      <property role="TrG5h" value="getCellAnnotation" />
-      <node concept="3uibUv" id="2Qdh779$bc3" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="etXRtFlOlS" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
       <node concept="3clFbS" id="2Qdh779$bc4" role="3clF47">
         <node concept="3clFbF" id="2Qdh779$bc5" role="3cqZAp">
           <node concept="2YIFZM" id="414Ozk3WMx" role="3clFbG">
-            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getCellAnnotation" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
             <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
             <node concept="2OqwBi" id="414Ozk3WMy" role="37wK5m">
               <node concept="2WthIp" id="414Ozk3WMz" role="2Oq$k0" />
@@ -6510,14 +6510,14 @@
       <node concept="3clFbS" id="2Qdh779$bcg" role="2VODD2">
         <node concept="3cpWs8" id="2Qdh779$bch" role="3cqZAp">
           <node concept="3cpWsn" id="2Qdh779$bci" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="2Qdh779$bcj" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlOIt" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="2Qdh779$bck" role="33vP2m">
               <node concept="2WthIp" id="2Qdh779$bcl" role="2Oq$k0" />
               <node concept="2XshWL" id="414Ozk3Xkd" role="2OqNvi">
-                <ref role="2WH_rO" node="2Qdh779$bc2" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="2Qdh779$bc2" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -6554,7 +6554,7 @@
             <node concept="3clFbC" id="2Qdh779$bc_" role="3uHU7w">
               <node concept="10Nm6u" id="2Qdh779$bcA" role="3uHU7w" />
               <node concept="37vLTw" id="414Ozk3XNL" role="3uHU7B">
-                <ref role="3cqZAo" node="2Qdh779$bci" resolve="cellAnnotation" />
+                <ref role="3cqZAo" node="2Qdh779$bci" resolve="cellMessage" />
               </node>
             </node>
           </node>
@@ -6567,10 +6567,10 @@
             </node>
             <node concept="2OqwBi" id="2Qdh779$bcR" role="33vP2m">
               <node concept="37vLTw" id="414Ozk3Y5i" role="2Oq$k0">
-                <ref role="3cqZAo" node="2Qdh779$bci" resolve="cellAnnotation" />
+                <ref role="3cqZAo" node="2Qdh779$bci" resolve="cellMessage" />
               </node>
               <node concept="liA8E" id="2Qdh779$bcT" role="2OqNvi">
-                <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
               </node>
             </node>
           </node>
@@ -6628,14 +6628,14 @@
       <node concept="3clFbS" id="2Qdh779$bgz" role="2VODD2">
         <node concept="3cpWs8" id="7yb$P2D0IKM" role="3cqZAp">
           <node concept="3cpWsn" id="7yb$P2D0IKN" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="7yb$P2D0IKO" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlP9A" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="7yb$P2D0IKP" role="33vP2m">
               <node concept="2WthIp" id="7yb$P2D0IKQ" role="2Oq$k0" />
               <node concept="2XshWL" id="7yb$P2D0IKR" role="2OqNvi">
-                <ref role="2WH_rO" node="2Qdh779$bc2" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="2Qdh779$bc2" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -6691,7 +6691,7 @@
             </node>
             <node concept="3y3z36" id="6J0tOMlKCV0" role="37wK5m">
               <node concept="37vLTw" id="6J0tOMlKCU1" role="3uHU7B">
-                <ref role="3cqZAo" node="7yb$P2D0IKN" resolve="cellAnnotation" />
+                <ref role="3cqZAo" node="7yb$P2D0IKN" resolve="cellMessage" />
               </node>
               <node concept="10Nm6u" id="6J0tOMlKCU0" role="3uHU7w" />
             </node>
@@ -6716,10 +6716,10 @@
                       </node>
                       <node concept="2OqwBi" id="rIMoekNJa3" role="2Oq$k0">
                         <node concept="37vLTw" id="rIMoekNJa4" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7yb$P2D0IKN" resolve="cellAnnotation" />
+                          <ref role="3cqZAo" node="7yb$P2D0IKN" resolve="cellMessage" />
                         </node>
                         <node concept="liA8E" id="rIMoekNJa5" role="2OqNvi">
-                          <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                          <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
                         </node>
                       </node>
                     </node>
@@ -6731,7 +6731,7 @@
           </node>
           <node concept="3y3z36" id="6J0tOMlKCMr" role="3clFbw">
             <node concept="37vLTw" id="6J0tOMlKCJ8" role="3uHU7B">
-              <ref role="3cqZAo" node="7yb$P2D0IKN" resolve="cellAnnotation" />
+              <ref role="3cqZAo" node="7yb$P2D0IKN" resolve="cellMessage" />
             </node>
             <node concept="10Nm6u" id="6J0tOMlKCJ7" role="3uHU7w" />
           </node>
@@ -6762,14 +6762,14 @@
       <node concept="1oajcY" id="6PVY$JZgRbj" role="1oa70y" />
     </node>
     <node concept="2XrIbr" id="6PVY$JZgRbm" role="32lrUH">
-      <property role="TrG5h" value="getCellAnnotation" />
-      <node concept="3uibUv" id="6PVY$JZgRbn" role="3clF45">
-        <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="etXRtFlNhh" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
       </node>
       <node concept="3clFbS" id="6PVY$JZgRbo" role="3clF47">
         <node concept="3clFbF" id="6PVY$JZgRbp" role="3cqZAp">
           <node concept="2YIFZM" id="6PVY$JZgRbq" role="3clFbG">
-            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getCellAnnotation" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
             <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
             <node concept="2OqwBi" id="6PVY$JZgRbr" role="37wK5m">
               <node concept="2WthIp" id="6PVY$JZgRbs" role="2Oq$k0" />
@@ -6795,14 +6795,14 @@
       <node concept="3clFbS" id="6PVY$JZgRb$" role="2VODD2">
         <node concept="3cpWs8" id="6PVY$JZgRb_" role="3cqZAp">
           <node concept="3cpWsn" id="6PVY$JZgRbA" role="3cpWs9">
-            <property role="TrG5h" value="cellAnnotation" />
-            <node concept="3uibUv" id="6PVY$JZgRbB" role="1tU5fm">
-              <ref role="3uigEE" to="bvbc:5vQ$xCoOPkB" resolve="CellAnnotation" />
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="etXRtFlNxI" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
             </node>
             <node concept="2OqwBi" id="6PVY$JZgRbC" role="33vP2m">
               <node concept="2WthIp" id="6PVY$JZgRbD" role="2Oq$k0" />
               <node concept="2XshWL" id="6PVY$JZgRbE" role="2OqNvi">
-                <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellAnnotation" />
+                <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellMessage" />
               </node>
             </node>
           </node>
@@ -6839,7 +6839,7 @@
             <node concept="3clFbC" id="6PVY$JZgRbT" role="3uHU7w">
               <node concept="10Nm6u" id="6PVY$JZgRbU" role="3uHU7w" />
               <node concept="37vLTw" id="6PVY$JZgRbV" role="3uHU7B">
-                <ref role="3cqZAo" node="6PVY$JZgRbA" resolve="cellAnnotation" />
+                <ref role="3cqZAo" node="6PVY$JZgRbA" resolve="cellMessage" />
               </node>
             </node>
           </node>
@@ -6859,10 +6859,10 @@
               <node concept="2OqwBi" id="7T1TnycvFvn" role="37wK5m">
                 <node concept="2OqwBi" id="7T1TnycvFhz" role="2Oq$k0">
                   <node concept="37vLTw" id="7T1TnycvFh$" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6PVY$JZgRbA" resolve="cellAnnotation" />
+                    <ref role="3cqZAo" node="6PVY$JZgRbA" resolve="cellMessage" />
                   </node>
                   <node concept="liA8E" id="7T1TnycvFh_" role="2OqNvi">
-                    <ref role="37wK5l" to="bvbc:5vQ$xCoRbzV" resolve="getCommitsGraphNode" />
+                    <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
                   </node>
                 </node>
                 <node concept="liA8E" id="7T1TnycvFPE" role="2OqNvi">
@@ -6930,7 +6930,7 @@
               <node concept="2OqwBi" id="6PVY$JZgRcx" role="3uHU7B">
                 <node concept="2WthIp" id="6PVY$JZgRcy" role="2Oq$k0" />
                 <node concept="2XshWL" id="6PVY$JZgRcz" role="2OqNvi">
-                  <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellAnnotation" />
+                  <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellMessage" />
                 </node>
               </node>
             </node>

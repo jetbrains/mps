@@ -70,7 +70,7 @@ import jetbrains.mps.vcs.diff.ui.RootHistoryDialog;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
-import jetbrains.mps.vcs.annotate.CellAnnotation;
+import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.vcs.log.Hash;
@@ -355,12 +355,12 @@ __switch__:
   }
 
   @Nullable
-  /*package*/ static CellAnnotation getCellAnnotation(EditorComponent editorComponent, EditorCell cell) {
+  /*package*/ static AnnotatedCellMessage getMessageForCell(EditorComponent editorComponent, EditorCell cell) {
     if (cell == null) {
       return null;
     }
     @Nullable AnnotationColumn column = getAnnotationColumn(editorComponent);
-    return (column == null ? null : column.getEditorAnnotation().getCellAnnotation(cell));
+    return (column == null ? null : column.getEditorAnnotation().getMessageForCell(cell));
   }
 
   public static void showCommitInGitLog(VcsFileRevision myRevision, final Project myProject) {

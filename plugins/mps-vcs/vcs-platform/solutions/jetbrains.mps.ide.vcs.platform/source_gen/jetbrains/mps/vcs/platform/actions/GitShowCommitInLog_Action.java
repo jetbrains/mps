@@ -15,7 +15,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.vcs.annotate.CellAnnotation;
+import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 
@@ -67,18 +67,18 @@ public class GitShowCommitInLog_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CellAnnotation cellAnnotation = GitShowCommitInLog_Action.this.getCellAnnotation(event);
-    if (cellAnnotation == null) {
+    AnnotatedCellMessage cellMessage = GitShowCommitInLog_Action.this.getCellMessage(event);
+    if (cellMessage == null) {
       return;
     }
-    VcsActionsUtil.showCommitInGitLog(cellAnnotation.getCommitsGraphNode().getRevision(), event.getData(CommonDataKeys.PROJECT));
+    VcsActionsUtil.showCommitInGitLog(cellMessage.getCommitsGraphNode().getRevision(), event.getData(CommonDataKeys.PROJECT));
   }
   @Nullable
-  private CellAnnotation getCellAnnotation(final AnActionEvent event) {
-    return VcsActionsUtil.getCellAnnotation(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
+  private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {
+    return VcsActionsUtil.getMessageForCell(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_CELL));
   }
   /*package*/ boolean isApplicable(final AnActionEvent event) {
-    if (GitShowCommitInLog_Action.this.getCellAnnotation(event) == null) {
+    if (GitShowCommitInLog_Action.this.getCellMessage(event) == null) {
       return false;
     }
     AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
