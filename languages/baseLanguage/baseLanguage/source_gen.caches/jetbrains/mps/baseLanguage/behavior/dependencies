@@ -1941,6 +1941,7 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.NextProgramPoint" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />
@@ -6458,6 +6459,7 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.NextProgramPoint" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />

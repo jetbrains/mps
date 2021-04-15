@@ -17,12 +17,28 @@ public class DoWhileStatement_DataFlow extends DataFlowBuilder {
         _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$UPf8));
       }
     });
-
-    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-      public void run() {
-        _context.getBuilder().emitIfJump(_context.getBuilder().before(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206463830028");
+    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$UPf8));
+    if (conditionConstant != null) {
+      if (conditionConstant.booleanValue()) {
+        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
+          public void run() {
+            _context.getBuilder().emitJump(_context.getBuilder().before(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5218334018279032469");
+          }
+        });
+      } else {
+        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
+          public void run() {
+            _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834465956247");
+          }
+        });
       }
-    });
+    } else {
+      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
+        public void run() {
+          _context.getBuilder().emitIfJump(_context.getBuilder().before(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/4652712389472652063");
+        }
+      });
+    }
   }
 
   private static final class LINKS {

@@ -323,7 +323,9 @@
     <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.dataFlow.DoWhileStatement_DataFlow">
+    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -985,15 +987,13 @@
     <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.dataFlow.WhileStatement_DataFlow">
+    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
   </dependency>
