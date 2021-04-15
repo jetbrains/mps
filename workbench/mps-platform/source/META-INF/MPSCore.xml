@@ -111,8 +111,6 @@
                     beanClass="jetbrains.mps.VisibleModuleMask"/>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootFactory"
                     beanClass="jetbrains.mps.ide.persistence.ModelRootFactoryEP"/>
-    <extensionPoint qualifiedName="com.intellij.mps.modelRootSettings"
-                    beanClass="jetbrains.mps.ide.persistence.ModelRootSettingsEP"/>
     <extensionPoint qualifiedName="com.intellij.mps.ModelFactoryProvider"
                     beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.DataSourceFactoryRuleProvider"

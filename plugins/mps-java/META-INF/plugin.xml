@@ -45,7 +45,6 @@
     <mps.VisibleModuleMask mask="jetbrains\.mps\.baseLanguage.*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.general-purpose"/>
     <mps.modelRootFactory rootType="java_source_stubs" className="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRootFactory"/>
-    <mps.modelRootSettings rootType="java_source_stubs" className="jetbrains.mps.java.platform.sourceStubsUI.JavaSourceStubModelRootSettingsProvider"/>
     <mps.modelRootEntry rootType="java_source_stubs" title="Java &amp;Sources" className="jetbrains.mps.java.workbench.extensions.JavaSourceStubsModelRootEntryFactory"/>
   </extensions>
 </idea-plugin>

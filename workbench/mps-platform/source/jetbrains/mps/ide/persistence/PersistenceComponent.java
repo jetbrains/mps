@@ -21,10 +21,6 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /*
  * XXX likely shall get merged into ModelFactoryRegister, no reason for a distinct
@@ -34,18 +30,6 @@ public class PersistenceComponent implements ApplicationComponent {
 
 
   public PersistenceComponent() {
-  }
-
-  @Nullable
-  public static ModelRootSettingsEditor getModelRootSettingsEditor(@NotNull String type) {
-    // FIXME In 9fc0581d, ModelRootChooser that was the client of this method, has been deleted.
-    //       Since then, no idea if this method (and root settings editors) were in use.
-    final List<ModelRootSettingsEP> providers = ModelRootSettingsEP.NAME.getExtensionList().stream().filter(i -> type.equals(i.getKey())).collect(Collectors.toList());
-    if (providers.isEmpty()) {
-      return null;
-    }
-    LOG.assertLog(providers.size() == 1, "Assertion failed.");
-    return providers.get(0).getInstance().createEditor();
   }
 
   @Override
