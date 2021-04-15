@@ -4,11 +4,9 @@ package jetbrains.mps.vcs.diff.ui;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
-import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
@@ -17,14 +15,9 @@ import com.intellij.ui.JBSplitter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.diff.tools.util.side.TwosideContentPanel;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.vcs.changesmanager.CurrentDifference;
-import jetbrains.mps.vcs.changesmanager.CurrentDifferenceListener;
-import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.AnAction;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 import com.intellij.ide.util.PropertiesComponent;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
@@ -33,20 +26,12 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/5939348756325699563", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class TwoSideRootDifferencePane extends RootDifferencePaneBase {
 
-  private final ModelChangeSet myChangeSet;
-  private final ModelChangeSet myMetadataChangeSet;
-  private final CurrentDifferenceRegistry myDiffRegistry;
-  private final MyDifferenceListener myDifferenceListener = new MyDifferenceListener();
-  private final MyDifferenceListener myMetadataDifferenceListener = new MyDifferenceListener();
+  private ModelChangeSet myChangeSet;
 
 
-  /*package*/ TwoSideRootDifferencePane(MPSProject project, ModelChangeSet changeSet, ModelChangeSet metaDataChangeSet, SNodeId rootId, String rootName, List<SModel> models, List<String> titles, boolean isEditable, boolean isMetaDataView) {
-    super(project, rootId, rootName, isMetaDataView, models, titles, Arrays.asList(changeSet), isEditable);
+  /*package*/ TwoSideRootDifferencePane(MPSProject project, ModelChangeSet changeSet, SNodeId rootId, String rootName, List<String> titles, boolean isEditable) {
+    super(project, rootId, rootName, titles, Arrays.asList(changeSet), isEditable);
     myChangeSet = changeSet;
-    myMetadataChangeSet = metaDataChangeSet;
-    myDiffRegistry = CurrentDifferenceRegistry.getInstance(project.getProject());
-    addDifferenceListener(false);
-    addDifferenceListener(true);
   }
 
   @Override
@@ -56,7 +41,11 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
   }
 
   private ModelChangeSet getChangeSet() {
-    return (isMetaDataView() ? myMetadataChangeSet : myChangeSet);
+    return myChangeSet;
+  }
+
+  /*package*/ void setChangeSet(ModelChangeSet changeSet) {
+    myChangeSet = changeSet;
   }
 
   @Override
@@ -84,55 +73,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
   public void setEditorTitles(String[] titles) {
     getOldEditor().setTitle(titles[0]);
     getNewEditor().setTitle(titles[1]);
-  }
-
-  private void addDifferenceListener(boolean isMetaDataView) {
-    final ModelChangeSet changeSet = (isMetaDataView ? myMetadataChangeSet : myChangeSet);
-    final MyDifferenceListener listener = (isMetaDataView ? myMetadataDifferenceListener : myDifferenceListener);
-
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (changeSet.getOldModel() instanceof EditableSModel) {
-          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel());
-          currentDifference.addDifferenceListener(listener);
-        }
-        if (changeSet.getNewModel() instanceof EditableSModel) {
-          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel());
-          currentDifference.addDifferenceListener(listener);
-        }
-      }
-    });
-  }
-
-  private void removeDifferenceListener(boolean isMetaDataView) {
-    final CurrentDifferenceListener differenceListener = (isMetaDataView ? myMetadataDifferenceListener : myDifferenceListener);
-    final ModelChangeSet changeSet = (isMetaDataView ? myMetadataChangeSet : myChangeSet);
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (changeSet.getOldModel() instanceof EditableSModel) {
-          myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel()).removeDifferenceListener(differenceListener);
-        }
-        if (changeSet.getNewModel() instanceof EditableSModel) {
-          myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel()).removeDifferenceListener(differenceListener);
-        }
-      }
-    });
-  }
-
-  private class MyDifferenceListener extends CurrentDifferenceAdapter {
-
-    @Override
-    public void changeUpdateFinished() {
-      rehighlightInReadAction(true);
-    }
-    @Override
-    public void changesAdded(@NotNull List<ModelChange> changes) {
-      rehighlightInReadAction(true);
-    }
-    @Override
-    public void changesRemoved(@NotNull List<ModelChange> changes) {
-      rehighlightInReadAction(true);
-    }
   }
 
   @Override
@@ -215,11 +155,5 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
     getOldEditor().highlightChanges(getChangeSet().getOldModel(), changes, true, getConflictChecker());
     getNewEditor().highlightChanges(getChangeSet().getNewModel(), changes, false, getConflictChecker());
     invalidateLayouts();
-  }
-
-  public void dispose() {
-    removeDifferenceListener(true);
-    removeDifferenceListener(false);
-    super.dispose();
   }
 }

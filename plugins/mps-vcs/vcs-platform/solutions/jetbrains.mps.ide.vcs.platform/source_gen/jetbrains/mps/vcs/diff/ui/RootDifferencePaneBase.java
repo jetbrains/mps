@@ -14,10 +14,12 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ChangeSet;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelOperations;
+import java.util.Arrays;
+import java.util.Collections;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import com.intellij.ui.JBSplitter;
@@ -54,7 +56,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
-public abstract class RootDifferencePaneBase implements IHighlighter, RootDifferencePane, PropertyChangeListener {
+public abstract class RootDifferencePaneBase implements RootDifferencePane, PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePaneBase.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePaneBase.class.getName() + "InspectorSplitterPosition";
   private static final String PARAM_ENABLE_EDITORS_SCROLL_SYNC = RootDifferencePaneBase.class.getName() + "_EnableSync";
@@ -78,15 +80,14 @@ public abstract class RootDifferencePaneBase implements IHighlighter, RootDiffer
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
   protected boolean myDisposed = false;
-  private boolean myIsMetaDataView;
 
 
-  public RootDifferencePaneBase(MPSProject project, SNodeId rootId, String rootName, boolean isMetaDataView, List<SModel> models, List<String> titles, List<ChangeSet> changeSets, boolean isEditable) {
+  public RootDifferencePaneBase(MPSProject project, SNodeId rootId, String rootName, List<String> titles, List<ChangeSet> changeSets, boolean isEditable) {
     myRootId = rootId;
     myMpsProject = project;
+    List<SModel> models = getModels(changeSets);
     assert ListSequence.fromList(models).count() == ListSequence.fromList(titles).count();
     assert ListSequence.fromList(models).count() > 1;
-    myIsMetaDataView = isMetaDataView;
     myDiffEditorsGroup = createEditorsGroup(models, titles);
     myPanel = createPanel();
     myMainChangeGroupLayouts = createChangeGroupLayouts(changeSets, false);
@@ -99,6 +100,18 @@ public abstract class RootDifferencePaneBase implements IHighlighter, RootDiffer
     myTraverser = new NextPreviousTraverser(myMainChangeGroupLayouts, ListSequence.fromList(getEditors()).getElement(1).getMainEditor());
     mySettingsAction = new DiffEditorSettingsAction(this);
     myActionGroup = createActionGroup(isEditable, rootName);
+  }
+
+  private static List<SModel> getModels(List<ChangeSet> changeSets) {
+    if (ListSequence.fromList(changeSets).count() == 1) {
+      return Arrays.asList(ListSequence.fromList(changeSets).first().getOldModel(), ListSequence.fromList(changeSets).first().getNewModel());
+    }
+    if (ListSequence.fromList(changeSets).count() == 2) {
+      ChangeSet myChangeSet = ListSequence.fromList(changeSets).getElement(0);
+      ChangeSet repoChangeSet = ListSequence.fromList(changeSets).getElement(1);
+      return Arrays.asList(myChangeSet.getOldModel(), myChangeSet.getNewModel(), repoChangeSet.getOldModel());
+    }
+    return Collections.emptyList();
   }
 
   @Override
@@ -124,7 +137,6 @@ public abstract class RootDifferencePaneBase implements IHighlighter, RootDiffer
   protected DiffSplitter.Painter createDividerPainter(DiffEditor leftEditor, DiffEditor rightEditor) {
     return new MyDividerPainter(leftEditor, rightEditor);
   }
-
 
   protected abstract JPanel createPanel();
 
@@ -239,9 +251,8 @@ public abstract class RootDifferencePaneBase implements IHighlighter, RootDiffer
   public abstract void editRootId(SNodeId rootId);
 
   @Override
-  public void setRootId(SNodeId rootId, boolean isMetaDataView) {
+  public void setRootId(SNodeId rootId) {
     myRootId = rootId;
-    setMetaDataView(isMetaDataView);
     updateLayouts();
     editRootId(rootId);
     rehighlight(true);
@@ -413,10 +424,6 @@ public abstract class RootDifferencePaneBase implements IHighlighter, RootDiffer
     });
   }
 
-  protected boolean isMetaDataView() {
-    return myIsMetaDataView;
-  }
-
   private DiffEditorsGroup createEditorsGroup(List<SModel> models, List<String> titles) {
     DiffEditorsGroup group = new DiffEditorsGroup(myIsEditorsSyncEnabled);
     boolean rightToLeft = true;
@@ -452,10 +459,6 @@ public abstract class RootDifferencePaneBase implements IHighlighter, RootDiffer
 
   protected List<DiffEditor> getEditors() {
     return myDiffEditorsGroup.getEditors();
-  }
-
-  protected void setMetaDataView(boolean isMetaDataView) {
-    myIsMetaDataView = isMetaDataView;
   }
 
   protected void updateLayouts() {

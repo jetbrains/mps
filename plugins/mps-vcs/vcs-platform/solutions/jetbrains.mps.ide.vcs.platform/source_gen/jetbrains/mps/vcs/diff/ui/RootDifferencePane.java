@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import org.jetbrains.mps.openapi.model.SNodeId;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8548584436416293798", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
-public interface RootDifferencePane {
+public interface RootDifferencePane extends IHighlighter {
   void dispose();
   void setEditorTitles(String[] titles);
   void registerShortcuts(JComponent component);
@@ -19,5 +19,5 @@ public interface RootDifferencePane {
   void navigateInitial(@Nullable Bounds firstChange);
   ActionGroup getActions();
   JPanel getPanel();
-  void setRootId(SNodeId nodeId, boolean isMetadataView);
+  void setRootId(SNodeId nodeId);
 }

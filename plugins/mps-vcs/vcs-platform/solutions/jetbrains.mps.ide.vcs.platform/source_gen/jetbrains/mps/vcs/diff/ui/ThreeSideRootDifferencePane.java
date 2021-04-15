@@ -7,7 +7,6 @@ import jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
@@ -27,16 +26,14 @@ import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/1614774294889322589", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
-public final class ThreeSideRootDifferencePane extends RootDifferencePaneBase {
+/*package*/ final class ThreeSideRootDifferencePane extends RootDifferencePaneBase {
 
-  private final MergeConflictsBuilder myConflictsBuilder;
-  private final MergeConflictsBuilder myMetaDataConflictsBuilder;
+  private MergeConflictsBuilder myConflictsBuilder;
 
 
-  public ThreeSideRootDifferencePane(MPSProject mpsProject, MergeConflictsBuilder mergeConflictsBuilder, MergeConflictsBuilder metaDataMergeConflictsBuilder, SNodeId rootId, String rootName, List<SModel> models, List<String> titles, boolean isMetaDataView) {
-    super(mpsProject, rootId, rootName, isMetaDataView, models, titles, getChangeSets(mergeConflictsBuilder), false);
+  /*package*/ ThreeSideRootDifferencePane(MPSProject mpsProject, MergeConflictsBuilder mergeConflictsBuilder, SNodeId rootId, String rootName, List<String> titles) {
+    super(mpsProject, rootId, rootName, titles, getChangeSets(mergeConflictsBuilder), false);
     myConflictsBuilder = mergeConflictsBuilder;
-    myMetaDataConflictsBuilder = metaDataMergeConflictsBuilder;
   }
 
   private static List<ChangeSet> getChangeSets(MergeConflictsBuilder conflictsBuilder) {
@@ -55,7 +52,11 @@ public final class ThreeSideRootDifferencePane extends RootDifferencePaneBase {
   }
 
   private MergeConflictsBuilder getConflictsBuilder() {
-    return (isMetaDataView() ? myMetaDataConflictsBuilder : myConflictsBuilder);
+    return myConflictsBuilder;
+  }
+
+  /*package*/ void setConflictsBuilder(MergeConflictsBuilder conflictsBuilder) {
+    myConflictsBuilder = conflictsBuilder;
   }
 
   @Override
