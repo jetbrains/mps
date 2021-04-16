@@ -2642,8 +2642,8 @@
       <node id="4477106456906133459" at="43,75,44,66" concept="3" />
       <node id="8245314650934533632" at="47,88,48,79" concept="3" />
       <node id="8245314650934533563" at="51,88,52,79" concept="3" />
-      <node id="8245314650934576457" at="55,72,56,63" concept="3" />
-      <node id="8245314650934580399" at="59,72,60,63" concept="3" />
+      <node id="8245314650934576457" at="55,95,56,86" concept="3" />
+      <node id="8245314650934580399" at="59,95,60,86" concept="3" />
       <node id="4477106456906157513" at="63,75,64,66" concept="3" />
       <node id="8245314650934554098" at="67,94,68,85" concept="3" />
       <node id="4477106456913936588" at="71,94,72,85" concept="3" />
@@ -2692,12 +2692,12 @@
       <node id="8245314650934533563" at="217,90,218,65" concept="6" />
       <node id="8245314650934533563" at="218,65,219,63" concept="6" />
       <node id="8245314650934533563" at="219,63,220,308" concept="3" />
-      <node id="8245314650934576457" at="222,74,223,65" concept="6" />
+      <node id="8245314650934576457" at="222,97,223,65" concept="6" />
       <node id="8245314650934576457" at="223,65,224,63" concept="6" />
-      <node id="8245314650934576457" at="224,63,225,177" concept="3" />
-      <node id="8245314650934580399" at="227,74,228,65" concept="6" />
+      <node id="8245314650934576457" at="224,63,225,308" concept="3" />
+      <node id="8245314650934580399" at="227,97,228,65" concept="6" />
       <node id="8245314650934580399" at="228,65,229,63" concept="6" />
-      <node id="8245314650934580399" at="229,63,230,177" concept="3" />
+      <node id="8245314650934580399" at="229,63,230,308" concept="3" />
       <node id="4477106456906157513" at="232,77,233,65" concept="6" />
       <node id="4477106456906157513" at="233,65,234,63" concept="6" />
       <node id="4477106456906157513" at="234,63,235,177" concept="3" />
@@ -2730,7 +2730,7 @@
       <node id="8626468694778663594" at="279,63,280,308" concept="3" />
       <node id="2857825852308723301" at="282,79,283,65" concept="6" />
       <node id="2857825852308723301" at="283,65,284,63" concept="6" />
-      <node id="2857825852308723301" at="284,63,285,5200" concept="3" />
+      <node id="2857825852308723301" at="284,63,285,5462" concept="3" />
       <node id="4477106456910957951" at="287,96,288,65" concept="6" />
       <node id="4477106456910957951" at="288,65,289,63" concept="6" />
       <node id="4477106456910957951" at="289,63,290,308" concept="3" />
@@ -2803,8 +2803,8 @@
       <node id="4477106456906133459" at="42,0,46,0" concept="5" trace="test_NodeWarningCheck4477106456906133459#()V" />
       <node id="8245314650934533632" at="46,0,50,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8245314650934533632#()V" />
       <node id="8245314650934533563" at="50,0,54,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8245314650934533563#()V" />
-      <node id="8245314650934576457" at="54,0,58,0" concept="5" trace="test_NodenullCheck8245314650934576457#()V" />
-      <node id="8245314650934580399" at="58,0,62,0" concept="5" trace="test_NodenullCheck8245314650934580399#()V" />
+      <node id="8245314650934576457" at="54,0,58,0" concept="5" trace="test_NodeTheTernaryOperatorConditionCheck8245314650934576457#()V" />
+      <node id="8245314650934580399" at="58,0,62,0" concept="5" trace="test_NodeTheTernaryOperatorConditionCheck8245314650934580399#()V" />
       <node id="4477106456906157513" at="62,0,66,0" concept="5" trace="test_NodeWarningCheck4477106456906157513#()V" />
       <node id="8245314650934554098" at="66,0,70,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8245314650934554098#()V" />
       <node id="4477106456913936588" at="70,0,74,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck4477106456913936588#()V" />
@@ -2842,8 +2842,8 @@
       <node id="4477106456906133459" at="207,0,212,0" concept="5" trace="test_NodeWarningCheck4477106456906133459#()V" />
       <node id="8245314650934533632" at="212,0,217,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8245314650934533632#()V" />
       <node id="8245314650934533563" at="217,0,222,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8245314650934533563#()V" />
-      <node id="8245314650934576457" at="222,0,227,0" concept="5" trace="test_NodenullCheck8245314650934576457#()V" />
-      <node id="8245314650934580399" at="227,0,232,0" concept="5" trace="test_NodenullCheck8245314650934580399#()V" />
+      <node id="8245314650934576457" at="222,0,227,0" concept="5" trace="test_NodeTheTernaryOperatorConditionCheck8245314650934576457#()V" />
+      <node id="8245314650934580399" at="227,0,232,0" concept="5" trace="test_NodeTheTernaryOperatorConditionCheck8245314650934580399#()V" />
       <node id="4477106456906157513" at="232,0,237,0" concept="5" trace="test_NodeWarningCheck4477106456906157513#()V" />
       <node id="8245314650934554098" at="237,0,242,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8245314650934554098#()V" />
       <node id="4477106456913936588" at="242,0,247,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck4477106456913936588#()V" />
@@ -2882,8 +2882,8 @@
       <scope id="4477106456906133459" at="43,75,44,66" />
       <scope id="8245314650934533632" at="47,88,48,79" />
       <scope id="8245314650934533563" at="51,88,52,79" />
-      <scope id="8245314650934576457" at="55,72,56,63" />
-      <scope id="8245314650934580399" at="59,72,60,63" />
+      <scope id="8245314650934576457" at="55,95,56,86" />
+      <scope id="8245314650934580399" at="59,95,60,86" />
       <scope id="4477106456906157513" at="63,75,64,66" />
       <scope id="8245314650934554098" at="67,94,68,85" />
       <scope id="4477106456913936588" at="71,94,72,85" />
@@ -2941,11 +2941,11 @@
         <var name="nodeToCheck" id="8245314650934533563" />
         <var name="operation" id="8245314650934533563" />
       </scope>
-      <scope id="8245314650934576457" at="222,74,225,177">
+      <scope id="8245314650934576457" at="222,97,225,308">
         <var name="nodeToCheck" id="8245314650934576457" />
         <var name="operation" id="8245314650934576457" />
       </scope>
-      <scope id="8245314650934580399" at="227,74,230,177">
+      <scope id="8245314650934580399" at="227,97,230,308">
         <var name="nodeToCheck" id="8245314650934580399" />
         <var name="operation" id="8245314650934580399" />
       </scope>
@@ -2989,7 +2989,7 @@
         <var name="nodeToCheck" id="8626468694778663594" />
         <var name="operation" id="8626468694778663594" />
       </scope>
-      <scope id="2857825852308723301" at="282,79,285,5200">
+      <scope id="2857825852308723301" at="282,79,285,5462">
         <var name="nodeToCheck" id="2857825852308723301" />
         <var name="operation" id="2857825852308723301" />
       </scope>
