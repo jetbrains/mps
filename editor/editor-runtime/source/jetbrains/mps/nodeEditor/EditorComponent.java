@@ -108,7 +108,6 @@ import jetbrains.mps.nodeEditor.selection.SelectionManagerImpl;
 import jetbrains.mps.nodeEditor.sidetransform.EditorCell_STHint;
 import jetbrains.mps.nodeEditor.ui.InputMethodRequestsImpl;
 import jetbrains.mps.nodeEditor.updater.UpdaterImpl;
-import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.ActionHandler;
 import jetbrains.mps.openapi.editor.DeletionApprover;
 import jetbrains.mps.openapi.editor.EditorComponentSettings;
@@ -137,12 +136,6 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
-import jetbrains.mps.typesystem.inference.DefaultTypecheckingContextOwner;
-import jetbrains.mps.typesystem.inference.ITypeContextOwner;
-import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
-import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
-import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.Pair;
@@ -1032,17 +1025,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   private List<EditorMessageWithTarget> getEditorMessagesFor(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
     jetbrains.mps.openapi.editor.cells.EditorCell parent = cell;
+    List<EditorMessageWithTarget> messages = new ArrayList<>();
     while (parent != null) {
-      if (cell.getBottom() < parent.getBottom() && parent.getSNode() != cell.getSNode()) {
-        return Collections.emptyList();
-      }
-      List<EditorMessageWithTarget> messages = CellMessagesUtil.getMessages(parent, EditorMessageWithTarget.class);
-      if (!messages.isEmpty()) {
+      if (cell.getBaseline() != parent.getBaseline()) {
         return messages;
       }
+      messages.addAll(CellMessagesUtil.getMessages(parent, EditorMessageWithTarget.class));
       parent = parent.getParent();
     }
-    return Collections.emptyList();
+    return messages;
   }
 
   @NotNull
