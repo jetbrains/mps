@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,11 +36,11 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -48,6 +48,7 @@ import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public class ProjectPaneTreeHighlighter {
   private final GenStatusUpdater myGenStatusVisitor;
@@ -185,8 +186,11 @@ public class ProjectPaneTreeHighlighter {
     // no need to run numerous ModelReadRunnable to facilitate UI responsiveness, use CancellableReadAction
     // Perhaps, now we don't need our own executor with custom re-schedule policy any more, and can utilize IDEA's JobScheduler?
     myExecutor.execute(() -> {
-      final ArrayDeque<Collection<? extends MPSTreeNode>> childrenQueue = new ArrayDeque<>();
-      childrenQueue.add(nodes);
+      final ArrayDeque<Stream<? extends MPSTreeNode>> childrenQueue = new ArrayDeque<>();
+      // I assume Collection here is never direct instance of TreeNode.getChildren(), but rather a crafted collection
+      // one can iterate without fear for ConcurrentModificationException. If it's not the case, and we still get CME,
+      // then we'd need to make a copy here (VisitTreeWithRead already uses snapshots to walk nested tree elements)
+      childrenQueue.add(nodes.stream());
       final int maxAttemptsWhenReadFails = 10;
       int attemptCount = 0;
       final LinkedHashSet<TreeElement> parentsOfUpdated;
@@ -208,7 +212,8 @@ public class ProjectPaneTreeHighlighter {
         }
         if (++attemptCount < maxAttemptsWhenReadFails) {
           try {
-            Thread.sleep(attemptCount * 100);
+            //noinspection BusyWait
+            Thread.sleep(attemptCount * 100L);
           } catch (InterruptedException e) {
             // ignore
           }
@@ -227,6 +232,7 @@ public class ProjectPaneTreeHighlighter {
       }
       // assume we walk tree top to bottom, and parents in the set are in respective order; walk in reversed order
       // to update bottom elements first
+      //noinspection ToArrayCallWithZeroLengthArrayArgument
       final TreeElement[] parents2update = parentsOfUpdated.toArray(new TreeElement[parentsOfUpdated.size()]);
       for (int i = parents2update.length - 1; i >=0; i--) {
         parents2update[i].accept(parentVisitor);
@@ -254,13 +260,13 @@ public class ProjectPaneTreeHighlighter {
   // cancellable model read that visits tree nodes;
   // optionally, walks tree hierarchically, top to bottom, visits parent node and then its children
   private static class VisitTreeWithRead extends CancellableReadAction {
-    private final Deque<Collection<? extends MPSTreeNode>> myQueue;
+    private final Deque<Stream<? extends MPSTreeNode>> myQueue;
     private final TreeNodeVisitor myVisitor;
     private final boolean myWithChildren;
     private final Consumer<TreeElement> myParentOfUpdated;
     private boolean myQueueChanged = false;
 
-    VisitTreeWithRead(/*modified by reference*/ Deque<Collection<? extends MPSTreeNode>> queue, TreeNodeVisitor visitor, boolean withChildren, Consumer<TreeElement> parentOfUpdated) {
+    VisitTreeWithRead(/*modified by reference*/ Deque<Stream<? extends MPSTreeNode>> queue, TreeNodeVisitor visitor, boolean withChildren, Consumer<TreeElement> parentOfUpdated) {
       myQueue = queue;
       myVisitor = visitor;
       myWithChildren = withChildren;
@@ -271,8 +277,9 @@ public class ProjectPaneTreeHighlighter {
     protected void execute() {
       HashSet<TreeElement> parents2visit = new HashSet<>();
       while (!myQueue.isEmpty()) {
-        final Collection<? extends MPSTreeNode> next = myQueue.peekFirst();
-        for (MPSTreeNode treeNode : next) {
+        final Stream<? extends MPSTreeNode> next = myQueue.peekFirst();
+        for (Iterator<? extends MPSTreeNode> it = next.iterator(); it.hasNext(); ) {
+          final MPSTreeNode treeNode = it.next();
           if (treeNode.getTree() == null) {
             continue;
           }
@@ -289,8 +296,8 @@ public class ProjectPaneTreeHighlighter {
             ((TreeElement) treeNode).accept(myVisitor);
           }
           if (myWithChildren && treeNode.getChildCount() > 0) {
-            // get a copy of the list, just in case it's modified while TreeElement.accept process one of siblings
-            myQueue.add(new ArrayList<>(treeNode.getChildren()));
+            // get a snapshot of the list, just in case it's modified while TreeElement.accept process one of siblings
+            myQueue.add(treeNode.getChildrenSnapshot());
             myQueueChanged = true;
           }
         }
