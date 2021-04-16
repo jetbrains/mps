@@ -6,29 +6,27 @@ import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ForStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    // todo hack
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.variable$JNH6));
     for (SNode additionalVar : SLinkOperations.getChildren(_context.getNode(), LINKS.additionalVar$xxfz)) {
       _context.getBuilder().build((SNode) additionalVar);
     }
     _context.getBuilder().emitLabel("start");
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$wARE), CONCEPTS.BooleanConstant$n4)) {
-      SNode constant = SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$wARE), CONCEPTS.BooleanConstant$n4);
-      if (!(SPropertyOperations.getBoolean(constant, PROPS.value$5y_M))) {
-        _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3337377470784677523");
-      }
-    } else if ((SLinkOperations.getTarget(_context.getNode(), LINKS.condition$wARE) != null)) {
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.condition$wARE) != null)) {
       _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$wARE));
-      _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3337377470784677540");
+
+      Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$wARE));
+      if (conditionConstant != null) {
+        if (!(conditionConstant.booleanValue())) {
+          _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834486369104");
+        }
+      } else {
+        _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834486442064");
+      }
     }
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$c1sm));
     for (final SNode iteration : SLinkOperations.getChildren(_context.getNode(), LINKS.iteration$nuP3)) {
@@ -51,13 +49,5 @@ public class ForStatement_DataFlow extends DataFlowBuilder {
     /*package*/ static final SContainmentLink condition$wARE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
     /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
     /*package*/ static final SContainmentLink iteration$nuP3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a6981b2c5L, "iteration");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

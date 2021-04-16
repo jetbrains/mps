@@ -23,7 +23,7 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
   public check_Expression_NonTypesystemRule() {
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SNodeOperations.hasRole(expr, LINKS.condition$5R17) || SNodeOperations.hasRole(expr, LINKS.condition$k0T9) || SNodeOperations.hasRole(expr, LINKS.condition$KEkM) || SNodeOperations.hasRole(expr, LINKS.condition$UPf8)) && !((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(expr))))) {
+    if ((SNodeOperations.hasRole(expr, LINKS.condition$5R17) || SNodeOperations.hasRole(expr, LINKS.condition$k0T9) || SNodeOperations.hasRole(expr, LINKS.condition$KEkM) || SNodeOperations.hasRole(expr, LINKS.condition$UPf8) || SNodeOperations.hasRole(expr, LINKS.condition$wARE)) && !((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(expr))))) {
       Boolean conditionConstant = ConditionUtil.getConditionConstant(expr);
       if (conditionConstant != null) {
         {
@@ -49,6 +49,7 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink condition$wARE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0x10a69819132L, "condition");
     /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
     /*package*/ static final SContainmentLink condition$k0T9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
     /*package*/ static final SContainmentLink condition$KEkM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");

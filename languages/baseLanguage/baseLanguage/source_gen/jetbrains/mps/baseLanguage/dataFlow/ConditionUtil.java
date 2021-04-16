@@ -22,6 +22,9 @@ public class ConditionUtil {
    * Does not call isCompileTimeConstantValue()
    */
   public static Boolean getConditionConstant(SNode expr) {
+    if (expr == null || SNodeOperations.getModel(expr) == null) {
+      return null;
+    }
     Object compileTimeConstantValue = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(expr, SNodeOperations.getModel(expr).getModule());
     if ((compileTimeConstantValue instanceof Boolean)) {
       return (Boolean) compileTimeConstantValue;
