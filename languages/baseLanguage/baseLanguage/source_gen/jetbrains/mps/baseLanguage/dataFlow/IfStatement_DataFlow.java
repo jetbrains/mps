@@ -22,9 +22,9 @@ public class IfStatement_DataFlow extends DataFlowBuilder {
             _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/874246949135087343");
           }
         });
-        return;
       } else {
         _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/874246949135089592");
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$5Rg8));
       }
     } else {
       _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1894172621088425982");

@@ -12606,6 +12606,733 @@
       <unit id="7970711249077196600" at="23,0,89,0" name="jetbrains.mps.baseLanguage.test.PrivateField_Test" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/8011059391272483772">
+    <file name="DoWhileCondition_Test.java">
+      <node id="8011059391272483772" at="27,34,28,25" concept="9" />
+      <node id="8011059391273137899" at="32,88,33,79" concept="3" />
+      <node id="8011059391272508723" at="36,88,37,79" concept="3" />
+      <node id="8011059391272522506" at="40,94,41,85" concept="3" />
+      <node id="8011059391272522509" at="44,88,45,79" concept="3" />
+      <node id="8011059391272507836" at="48,88,49,79" concept="3" />
+      <node id="8011059391272527811" at="52,94,53,85" concept="3" />
+      <node id="8011059391272527814" at="56,88,57,79" concept="3" />
+      <node id="8011059391272543857" at="60,94,61,85" concept="3" />
+      <node id="8011059391272542861" at="64,94,65,85" concept="3" />
+      <node id="8011059391272483772" at="70,52,71,19" concept="9" />
+      <node id="8011059391273137899" at="74,90,75,65" concept="6" />
+      <node id="8011059391273137899" at="75,65,76,63" concept="6" />
+      <node id="8011059391273137899" at="76,63,77,330" concept="3" />
+      <node id="8011059391272508723" at="79,90,80,65" concept="6" />
+      <node id="8011059391272508723" at="80,65,81,63" concept="6" />
+      <node id="8011059391272508723" at="81,63,82,330" concept="3" />
+      <node id="8011059391272522506" at="84,96,85,65" concept="6" />
+      <node id="8011059391272522506" at="85,65,86,63" concept="6" />
+      <node id="8011059391272522506" at="86,63,87,371" concept="3" />
+      <node id="8011059391272522509" at="89,90,90,65" concept="6" />
+      <node id="8011059391272522509" at="90,65,91,63" concept="6" />
+      <node id="8011059391272522509" at="91,63,92,345" concept="3" />
+      <node id="8011059391272507836" at="94,90,95,65" concept="6" />
+      <node id="8011059391272507836" at="95,65,96,63" concept="6" />
+      <node id="8011059391272507836" at="96,63,97,330" concept="3" />
+      <node id="8011059391272527811" at="99,96,100,65" concept="6" />
+      <node id="8011059391272527811" at="100,65,101,63" concept="6" />
+      <node id="8011059391272527811" at="101,63,102,371" concept="3" />
+      <node id="8011059391272527814" at="104,90,105,65" concept="6" />
+      <node id="8011059391272527814" at="105,65,106,63" concept="6" />
+      <node id="8011059391272527814" at="106,63,107,346" concept="3" />
+      <node id="8011059391272543857" at="109,96,110,65" concept="6" />
+      <node id="8011059391272543857" at="110,65,111,63" concept="6" />
+      <node id="8011059391272543857" at="111,63,112,402" concept="3" />
+      <node id="8011059391272542861" at="114,96,115,65" concept="6" />
+      <node id="8011059391272542861" at="115,65,116,63" concept="6" />
+      <node id="8011059391272542861" at="116,63,117,408" concept="3" />
+      <node id="8011059391272483772" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="8011059391272483772" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="8011059391272483772" at="27,0,30,0" concept="2" trace="DoWhileCondition_Test#()V" />
+      <node id="8011059391272483772" at="70,0,73,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8011059391273137899" at="31,0,35,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273137899#()V" />
+      <node id="8011059391272508723" at="35,0,39,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272508723#()V" />
+      <node id="8011059391272522506" at="39,0,43,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272522506#()V" />
+      <node id="8011059391272522509" at="43,0,47,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272522509#()V" />
+      <node id="8011059391272507836" at="47,0,51,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272507836#()V" />
+      <node id="8011059391272527811" at="51,0,55,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272527811#()V" />
+      <node id="8011059391272527814" at="55,0,59,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272527814#()V" />
+      <node id="8011059391272543857" at="59,0,63,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272543857#()V" />
+      <node id="8011059391272542861" at="63,0,67,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272542861#()V" />
+      <node id="8011059391273137899" at="74,0,79,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273137899#()V" />
+      <node id="8011059391272508723" at="79,0,84,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272508723#()V" />
+      <node id="8011059391272522506" at="84,0,89,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272522506#()V" />
+      <node id="8011059391272522509" at="89,0,94,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272522509#()V" />
+      <node id="8011059391272507836" at="94,0,99,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272507836#()V" />
+      <node id="8011059391272527811" at="99,0,104,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272527811#()V" />
+      <node id="8011059391272527814" at="104,0,109,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272527814#()V" />
+      <node id="8011059391272543857" at="109,0,114,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272543857#()V" />
+      <node id="8011059391272542861" at="114,0,119,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272542861#()V" />
+      <scope id="8011059391272483772" at="27,34,28,25" />
+      <scope id="8011059391273137899" at="32,88,33,79" />
+      <scope id="8011059391272508723" at="36,88,37,79" />
+      <scope id="8011059391272522506" at="40,94,41,85" />
+      <scope id="8011059391272522509" at="44,88,45,79" />
+      <scope id="8011059391272507836" at="48,88,49,79" />
+      <scope id="8011059391272527811" at="52,94,53,85" />
+      <scope id="8011059391272527814" at="56,88,57,79" />
+      <scope id="8011059391272543857" at="60,94,61,85" />
+      <scope id="8011059391272542861" at="64,94,65,85" />
+      <scope id="8011059391272483772" at="70,52,71,19" />
+      <scope id="8011059391272483772" at="27,0,30,0" />
+      <scope id="8011059391272483772" at="70,0,73,0">
+        <var name="owner" id="8011059391272483772" />
+      </scope>
+      <scope id="8011059391273137899" at="74,90,77,330">
+        <var name="nodeToCheck" id="8011059391273137899" />
+        <var name="operation" id="8011059391273137899" />
+      </scope>
+      <scope id="8011059391272508723" at="79,90,82,330">
+        <var name="nodeToCheck" id="8011059391272508723" />
+        <var name="operation" id="8011059391272508723" />
+      </scope>
+      <scope id="8011059391272522506" at="84,96,87,371">
+        <var name="nodeToCheck" id="8011059391272522506" />
+        <var name="operation" id="8011059391272522506" />
+      </scope>
+      <scope id="8011059391272522509" at="89,90,92,345">
+        <var name="nodeToCheck" id="8011059391272522509" />
+        <var name="operation" id="8011059391272522509" />
+      </scope>
+      <scope id="8011059391272507836" at="94,90,97,330">
+        <var name="nodeToCheck" id="8011059391272507836" />
+        <var name="operation" id="8011059391272507836" />
+      </scope>
+      <scope id="8011059391272527811" at="99,96,102,371">
+        <var name="nodeToCheck" id="8011059391272527811" />
+        <var name="operation" id="8011059391272527811" />
+      </scope>
+      <scope id="8011059391272527814" at="104,90,107,346">
+        <var name="nodeToCheck" id="8011059391272527814" />
+        <var name="operation" id="8011059391272527814" />
+      </scope>
+      <scope id="8011059391272543857" at="109,96,112,402">
+        <var name="nodeToCheck" id="8011059391272543857" />
+        <var name="operation" id="8011059391272543857" />
+      </scope>
+      <scope id="8011059391272542861" at="114,96,117,408">
+        <var name="nodeToCheck" id="8011059391272542861" />
+        <var name="operation" id="8011059391272542861" />
+      </scope>
+      <scope id="8011059391273137899" at="31,0,35,0" />
+      <scope id="8011059391272508723" at="35,0,39,0" />
+      <scope id="8011059391272522506" at="39,0,43,0" />
+      <scope id="8011059391272522509" at="43,0,47,0" />
+      <scope id="8011059391272507836" at="47,0,51,0" />
+      <scope id="8011059391272527811" at="51,0,55,0" />
+      <scope id="8011059391272527814" at="55,0,59,0" />
+      <scope id="8011059391272543857" at="59,0,63,0" />
+      <scope id="8011059391272542861" at="63,0,67,0" />
+      <scope id="8011059391273137899" at="74,0,79,0" />
+      <scope id="8011059391272508723" at="79,0,84,0" />
+      <scope id="8011059391272522506" at="84,0,89,0" />
+      <scope id="8011059391272522509" at="89,0,94,0" />
+      <scope id="8011059391272507836" at="94,0,99,0" />
+      <scope id="8011059391272527811" at="99,0,104,0" />
+      <scope id="8011059391272527814" at="104,0,109,0" />
+      <scope id="8011059391272543857" at="109,0,114,0" />
+      <scope id="8011059391272542861" at="114,0,119,0" />
+      <unit id="8011059391272483772" at="68,0,121,0" name="jetbrains.mps.baseLanguage.test.DoWhileCondition_Test$TestBody" />
+      <unit id="8011059391272483772" at="20,0,122,0" name="jetbrains.mps.baseLanguage.test.DoWhileCondition_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/8011059391272834192">
+    <file name="WhileCondition_Test.java">
+      <node id="8011059391272834192" at="27,32,28,25" concept="9" />
+      <node id="8011059391272834211" at="32,88,33,79" concept="3" />
+      <node id="8011059391272834233" at="36,88,37,79" concept="3" />
+      <node id="8011059391272842694" at="40,94,41,85" concept="3" />
+      <node id="8011059391272842697" at="44,88,45,79" concept="3" />
+      <node id="8011059391272834273" at="48,88,49,79" concept="3" />
+      <node id="8011059391272846923" at="52,88,53,79" concept="3" />
+      <node id="8011059391272843819" at="56,94,57,85" concept="3" />
+      <node id="8011059391272843822" at="60,88,61,79" concept="3" />
+      <node id="8011059391272847984" at="64,94,65,85" concept="3" />
+      <node id="8011059391272847988" at="68,94,69,85" concept="3" />
+      <node id="8011059391272834192" at="74,52,75,19" concept="9" />
+      <node id="8011059391272834211" at="78,90,79,65" concept="6" />
+      <node id="8011059391272834211" at="79,65,80,63" concept="6" />
+      <node id="8011059391272834211" at="80,63,81,330" concept="3" />
+      <node id="8011059391272834233" at="83,90,84,65" concept="6" />
+      <node id="8011059391272834233" at="84,65,85,63" concept="6" />
+      <node id="8011059391272834233" at="85,63,86,330" concept="3" />
+      <node id="8011059391272842694" at="88,96,89,65" concept="6" />
+      <node id="8011059391272842694" at="89,65,90,63" concept="6" />
+      <node id="8011059391272842694" at="90,63,91,371" concept="3" />
+      <node id="8011059391272842697" at="93,90,94,65" concept="6" />
+      <node id="8011059391272842697" at="94,65,95,63" concept="6" />
+      <node id="8011059391272842697" at="95,63,96,345" concept="3" />
+      <node id="8011059391272834273" at="98,90,99,65" concept="6" />
+      <node id="8011059391272834273" at="99,65,100,63" concept="6" />
+      <node id="8011059391272834273" at="100,63,101,330" concept="3" />
+      <node id="8011059391272846923" at="103,90,104,65" concept="6" />
+      <node id="8011059391272846923" at="104,65,105,63" concept="6" />
+      <node id="8011059391272846923" at="105,63,106,330" concept="3" />
+      <node id="8011059391272843819" at="108,96,109,65" concept="6" />
+      <node id="8011059391272843819" at="109,65,110,63" concept="6" />
+      <node id="8011059391272843819" at="110,63,111,371" concept="3" />
+      <node id="8011059391272843822" at="113,90,114,65" concept="6" />
+      <node id="8011059391272843822" at="114,65,115,63" concept="6" />
+      <node id="8011059391272843822" at="115,63,116,346" concept="3" />
+      <node id="8011059391272847984" at="118,96,119,65" concept="6" />
+      <node id="8011059391272847984" at="119,65,120,63" concept="6" />
+      <node id="8011059391272847984" at="120,63,121,402" concept="3" />
+      <node id="8011059391272847988" at="123,96,124,65" concept="6" />
+      <node id="8011059391272847988" at="124,65,125,63" concept="6" />
+      <node id="8011059391272847988" at="125,63,126,408" concept="3" />
+      <node id="8011059391272834192" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="8011059391272834192" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="8011059391272834192" at="27,0,30,0" concept="2" trace="WhileCondition_Test#()V" />
+      <node id="8011059391272834192" at="74,0,77,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8011059391272834211" at="31,0,35,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272834211#()V" />
+      <node id="8011059391272834233" at="35,0,39,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272834233#()V" />
+      <node id="8011059391272842694" at="39,0,43,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272842694#()V" />
+      <node id="8011059391272842697" at="43,0,47,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272842697#()V" />
+      <node id="8011059391272834273" at="47,0,51,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272834273#()V" />
+      <node id="8011059391272846923" at="51,0,55,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272846923#()V" />
+      <node id="8011059391272843819" at="55,0,59,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272843819#()V" />
+      <node id="8011059391272843822" at="59,0,63,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272843822#()V" />
+      <node id="8011059391272847984" at="63,0,67,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272847984#()V" />
+      <node id="8011059391272847988" at="67,0,71,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272847988#()V" />
+      <node id="8011059391272834211" at="78,0,83,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272834211#()V" />
+      <node id="8011059391272834233" at="83,0,88,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272834233#()V" />
+      <node id="8011059391272842694" at="88,0,93,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272842694#()V" />
+      <node id="8011059391272842697" at="93,0,98,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272842697#()V" />
+      <node id="8011059391272834273" at="98,0,103,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272834273#()V" />
+      <node id="8011059391272846923" at="103,0,108,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272846923#()V" />
+      <node id="8011059391272843819" at="108,0,113,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272843819#()V" />
+      <node id="8011059391272843822" at="113,0,118,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272843822#()V" />
+      <node id="8011059391272847984" at="118,0,123,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272847984#()V" />
+      <node id="8011059391272847988" at="123,0,128,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272847988#()V" />
+      <scope id="8011059391272834192" at="27,32,28,25" />
+      <scope id="8011059391272834211" at="32,88,33,79" />
+      <scope id="8011059391272834233" at="36,88,37,79" />
+      <scope id="8011059391272842694" at="40,94,41,85" />
+      <scope id="8011059391272842697" at="44,88,45,79" />
+      <scope id="8011059391272834273" at="48,88,49,79" />
+      <scope id="8011059391272846923" at="52,88,53,79" />
+      <scope id="8011059391272843819" at="56,94,57,85" />
+      <scope id="8011059391272843822" at="60,88,61,79" />
+      <scope id="8011059391272847984" at="64,94,65,85" />
+      <scope id="8011059391272847988" at="68,94,69,85" />
+      <scope id="8011059391272834192" at="74,52,75,19" />
+      <scope id="8011059391272834192" at="27,0,30,0" />
+      <scope id="8011059391272834192" at="74,0,77,0">
+        <var name="owner" id="8011059391272834192" />
+      </scope>
+      <scope id="8011059391272834211" at="78,90,81,330">
+        <var name="nodeToCheck" id="8011059391272834211" />
+        <var name="operation" id="8011059391272834211" />
+      </scope>
+      <scope id="8011059391272834233" at="83,90,86,330">
+        <var name="nodeToCheck" id="8011059391272834233" />
+        <var name="operation" id="8011059391272834233" />
+      </scope>
+      <scope id="8011059391272842694" at="88,96,91,371">
+        <var name="nodeToCheck" id="8011059391272842694" />
+        <var name="operation" id="8011059391272842694" />
+      </scope>
+      <scope id="8011059391272842697" at="93,90,96,345">
+        <var name="nodeToCheck" id="8011059391272842697" />
+        <var name="operation" id="8011059391272842697" />
+      </scope>
+      <scope id="8011059391272834273" at="98,90,101,330">
+        <var name="nodeToCheck" id="8011059391272834273" />
+        <var name="operation" id="8011059391272834273" />
+      </scope>
+      <scope id="8011059391272846923" at="103,90,106,330">
+        <var name="nodeToCheck" id="8011059391272846923" />
+        <var name="operation" id="8011059391272846923" />
+      </scope>
+      <scope id="8011059391272843819" at="108,96,111,371">
+        <var name="nodeToCheck" id="8011059391272843819" />
+        <var name="operation" id="8011059391272843819" />
+      </scope>
+      <scope id="8011059391272843822" at="113,90,116,346">
+        <var name="nodeToCheck" id="8011059391272843822" />
+        <var name="operation" id="8011059391272843822" />
+      </scope>
+      <scope id="8011059391272847984" at="118,96,121,402">
+        <var name="nodeToCheck" id="8011059391272847984" />
+        <var name="operation" id="8011059391272847984" />
+      </scope>
+      <scope id="8011059391272847988" at="123,96,126,408">
+        <var name="nodeToCheck" id="8011059391272847988" />
+        <var name="operation" id="8011059391272847988" />
+      </scope>
+      <scope id="8011059391272834211" at="31,0,35,0" />
+      <scope id="8011059391272834233" at="35,0,39,0" />
+      <scope id="8011059391272842694" at="39,0,43,0" />
+      <scope id="8011059391272842697" at="43,0,47,0" />
+      <scope id="8011059391272834273" at="47,0,51,0" />
+      <scope id="8011059391272846923" at="51,0,55,0" />
+      <scope id="8011059391272843819" at="55,0,59,0" />
+      <scope id="8011059391272843822" at="59,0,63,0" />
+      <scope id="8011059391272847984" at="63,0,67,0" />
+      <scope id="8011059391272847988" at="67,0,71,0" />
+      <scope id="8011059391272834211" at="78,0,83,0" />
+      <scope id="8011059391272834233" at="83,0,88,0" />
+      <scope id="8011059391272842694" at="88,0,93,0" />
+      <scope id="8011059391272842697" at="93,0,98,0" />
+      <scope id="8011059391272834273" at="98,0,103,0" />
+      <scope id="8011059391272846923" at="103,0,108,0" />
+      <scope id="8011059391272843819" at="108,0,113,0" />
+      <scope id="8011059391272843822" at="113,0,118,0" />
+      <scope id="8011059391272847984" at="118,0,123,0" />
+      <scope id="8011059391272847988" at="123,0,128,0" />
+      <unit id="8011059391272834192" at="72,0,130,0" name="jetbrains.mps.baseLanguage.test.WhileCondition_Test$TestBody" />
+      <unit id="8011059391272834192" at="20,0,131,0" name="jetbrains.mps.baseLanguage.test.WhileCondition_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/8011059391272851434">
+    <file name="ForStatementCondition_Test.java">
+      <node id="8011059391272851434" at="27,39,28,25" concept="9" />
+      <node id="8011059391272851449" at="32,88,33,79" concept="3" />
+      <node id="8011059391272851471" at="36,88,37,79" concept="3" />
+      <node id="8011059391272851500" at="40,94,41,85" concept="3" />
+      <node id="8011059391272851503" at="44,88,45,79" concept="3" />
+      <node id="8011059391272851511" at="48,88,49,79" concept="3" />
+      <node id="8011059391272851532" at="52,88,53,79" concept="3" />
+      <node id="8011059391272851539" at="56,94,57,85" concept="3" />
+      <node id="8011059391272851542" at="60,88,61,79" concept="3" />
+      <node id="8011059391272851580" at="64,94,65,85" concept="3" />
+      <node id="8011059391272851584" at="68,94,69,85" concept="3" />
+      <node id="8011059391272851434" at="74,52,75,19" concept="9" />
+      <node id="8011059391272851449" at="78,90,79,65" concept="6" />
+      <node id="8011059391272851449" at="79,65,80,63" concept="6" />
+      <node id="8011059391272851449" at="80,63,81,330" concept="3" />
+      <node id="8011059391272851471" at="83,90,84,65" concept="6" />
+      <node id="8011059391272851471" at="84,65,85,63" concept="6" />
+      <node id="8011059391272851471" at="85,63,86,330" concept="3" />
+      <node id="8011059391272851500" at="88,96,89,65" concept="6" />
+      <node id="8011059391272851500" at="89,65,90,63" concept="6" />
+      <node id="8011059391272851500" at="90,63,91,371" concept="3" />
+      <node id="8011059391272851503" at="93,90,94,65" concept="6" />
+      <node id="8011059391272851503" at="94,65,95,63" concept="6" />
+      <node id="8011059391272851503" at="95,63,96,345" concept="3" />
+      <node id="8011059391272851511" at="98,90,99,65" concept="6" />
+      <node id="8011059391272851511" at="99,65,100,63" concept="6" />
+      <node id="8011059391272851511" at="100,63,101,330" concept="3" />
+      <node id="8011059391272851532" at="103,90,104,65" concept="6" />
+      <node id="8011059391272851532" at="104,65,105,63" concept="6" />
+      <node id="8011059391272851532" at="105,63,106,330" concept="3" />
+      <node id="8011059391272851539" at="108,96,109,65" concept="6" />
+      <node id="8011059391272851539" at="109,65,110,63" concept="6" />
+      <node id="8011059391272851539" at="110,63,111,371" concept="3" />
+      <node id="8011059391272851542" at="113,90,114,65" concept="6" />
+      <node id="8011059391272851542" at="114,65,115,63" concept="6" />
+      <node id="8011059391272851542" at="115,63,116,346" concept="3" />
+      <node id="8011059391272851580" at="118,96,119,65" concept="6" />
+      <node id="8011059391272851580" at="119,65,120,63" concept="6" />
+      <node id="8011059391272851580" at="120,63,121,402" concept="3" />
+      <node id="8011059391272851584" at="123,96,124,65" concept="6" />
+      <node id="8011059391272851584" at="124,65,125,63" concept="6" />
+      <node id="8011059391272851584" at="125,63,126,408" concept="3" />
+      <node id="8011059391272851434" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="8011059391272851434" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="8011059391272851434" at="27,0,30,0" concept="2" trace="ForStatementCondition_Test#()V" />
+      <node id="8011059391272851434" at="74,0,77,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8011059391272851449" at="31,0,35,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851449#()V" />
+      <node id="8011059391272851471" at="35,0,39,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851471#()V" />
+      <node id="8011059391272851500" at="39,0,43,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851500#()V" />
+      <node id="8011059391272851503" at="43,0,47,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272851503#()V" />
+      <node id="8011059391272851511" at="47,0,51,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851511#()V" />
+      <node id="8011059391272851532" at="51,0,55,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851532#()V" />
+      <node id="8011059391272851539" at="55,0,59,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851539#()V" />
+      <node id="8011059391272851542" at="59,0,63,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272851542#()V" />
+      <node id="8011059391272851580" at="63,0,67,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851580#()V" />
+      <node id="8011059391272851584" at="67,0,71,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851584#()V" />
+      <node id="8011059391272851449" at="78,0,83,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851449#()V" />
+      <node id="8011059391272851471" at="83,0,88,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851471#()V" />
+      <node id="8011059391272851500" at="88,0,93,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851500#()V" />
+      <node id="8011059391272851503" at="93,0,98,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272851503#()V" />
+      <node id="8011059391272851511" at="98,0,103,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851511#()V" />
+      <node id="8011059391272851532" at="103,0,108,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272851532#()V" />
+      <node id="8011059391272851539" at="108,0,113,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851539#()V" />
+      <node id="8011059391272851542" at="113,0,118,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272851542#()V" />
+      <node id="8011059391272851580" at="118,0,123,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851580#()V" />
+      <node id="8011059391272851584" at="123,0,128,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272851584#()V" />
+      <scope id="8011059391272851434" at="27,39,28,25" />
+      <scope id="8011059391272851449" at="32,88,33,79" />
+      <scope id="8011059391272851471" at="36,88,37,79" />
+      <scope id="8011059391272851500" at="40,94,41,85" />
+      <scope id="8011059391272851503" at="44,88,45,79" />
+      <scope id="8011059391272851511" at="48,88,49,79" />
+      <scope id="8011059391272851532" at="52,88,53,79" />
+      <scope id="8011059391272851539" at="56,94,57,85" />
+      <scope id="8011059391272851542" at="60,88,61,79" />
+      <scope id="8011059391272851580" at="64,94,65,85" />
+      <scope id="8011059391272851584" at="68,94,69,85" />
+      <scope id="8011059391272851434" at="74,52,75,19" />
+      <scope id="8011059391272851434" at="27,0,30,0" />
+      <scope id="8011059391272851434" at="74,0,77,0">
+        <var name="owner" id="8011059391272851434" />
+      </scope>
+      <scope id="8011059391272851449" at="78,90,81,330">
+        <var name="nodeToCheck" id="8011059391272851449" />
+        <var name="operation" id="8011059391272851449" />
+      </scope>
+      <scope id="8011059391272851471" at="83,90,86,330">
+        <var name="nodeToCheck" id="8011059391272851471" />
+        <var name="operation" id="8011059391272851471" />
+      </scope>
+      <scope id="8011059391272851500" at="88,96,91,371">
+        <var name="nodeToCheck" id="8011059391272851500" />
+        <var name="operation" id="8011059391272851500" />
+      </scope>
+      <scope id="8011059391272851503" at="93,90,96,345">
+        <var name="nodeToCheck" id="8011059391272851503" />
+        <var name="operation" id="8011059391272851503" />
+      </scope>
+      <scope id="8011059391272851511" at="98,90,101,330">
+        <var name="nodeToCheck" id="8011059391272851511" />
+        <var name="operation" id="8011059391272851511" />
+      </scope>
+      <scope id="8011059391272851532" at="103,90,106,330">
+        <var name="nodeToCheck" id="8011059391272851532" />
+        <var name="operation" id="8011059391272851532" />
+      </scope>
+      <scope id="8011059391272851539" at="108,96,111,371">
+        <var name="nodeToCheck" id="8011059391272851539" />
+        <var name="operation" id="8011059391272851539" />
+      </scope>
+      <scope id="8011059391272851542" at="113,90,116,346">
+        <var name="nodeToCheck" id="8011059391272851542" />
+        <var name="operation" id="8011059391272851542" />
+      </scope>
+      <scope id="8011059391272851580" at="118,96,121,402">
+        <var name="nodeToCheck" id="8011059391272851580" />
+        <var name="operation" id="8011059391272851580" />
+      </scope>
+      <scope id="8011059391272851584" at="123,96,126,408">
+        <var name="nodeToCheck" id="8011059391272851584" />
+        <var name="operation" id="8011059391272851584" />
+      </scope>
+      <scope id="8011059391272851449" at="31,0,35,0" />
+      <scope id="8011059391272851471" at="35,0,39,0" />
+      <scope id="8011059391272851500" at="39,0,43,0" />
+      <scope id="8011059391272851503" at="43,0,47,0" />
+      <scope id="8011059391272851511" at="47,0,51,0" />
+      <scope id="8011059391272851532" at="51,0,55,0" />
+      <scope id="8011059391272851539" at="55,0,59,0" />
+      <scope id="8011059391272851542" at="59,0,63,0" />
+      <scope id="8011059391272851580" at="63,0,67,0" />
+      <scope id="8011059391272851584" at="67,0,71,0" />
+      <scope id="8011059391272851449" at="78,0,83,0" />
+      <scope id="8011059391272851471" at="83,0,88,0" />
+      <scope id="8011059391272851500" at="88,0,93,0" />
+      <scope id="8011059391272851503" at="93,0,98,0" />
+      <scope id="8011059391272851511" at="98,0,103,0" />
+      <scope id="8011059391272851532" at="103,0,108,0" />
+      <scope id="8011059391272851539" at="108,0,113,0" />
+      <scope id="8011059391272851542" at="113,0,118,0" />
+      <scope id="8011059391272851580" at="118,0,123,0" />
+      <scope id="8011059391272851584" at="123,0,128,0" />
+      <unit id="8011059391272851434" at="72,0,130,0" name="jetbrains.mps.baseLanguage.test.ForStatementCondition_Test$TestBody" />
+      <unit id="8011059391272851434" at="20,0,131,0" name="jetbrains.mps.baseLanguage.test.ForStatementCondition_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/8011059391272887093">
+    <file name="ElseIfCondition_Test.java">
+      <node id="8011059391272887093" at="27,33,28,25" concept="9" />
+      <node id="8011059391274365233" at="32,88,33,79" concept="3" />
+      <node id="8011059391273361546" at="36,88,37,79" concept="3" />
+      <node id="8011059391272914222" at="40,94,41,85" concept="3" />
+      <node id="8011059391272914225" at="44,88,45,79" concept="3" />
+      <node id="8011059391274169126" at="48,88,49,79" concept="3" />
+      <node id="8011059391273406612" at="52,88,53,79" concept="3" />
+      <node id="8011059391272887198" at="56,94,57,85" concept="3" />
+      <node id="8011059391272887201" at="60,88,61,79" concept="3" />
+      <node id="8011059391272887239" at="64,94,65,85" concept="3" />
+      <node id="8011059391272887243" at="68,94,69,85" concept="3" />
+      <node id="8011059391272887093" at="74,52,75,19" concept="9" />
+      <node id="8011059391274365233" at="78,90,79,65" concept="6" />
+      <node id="8011059391274365233" at="79,65,80,63" concept="6" />
+      <node id="8011059391274365233" at="80,63,81,330" concept="3" />
+      <node id="8011059391273361546" at="83,90,84,65" concept="6" />
+      <node id="8011059391273361546" at="84,65,85,63" concept="6" />
+      <node id="8011059391273361546" at="85,63,86,330" concept="3" />
+      <node id="8011059391272914222" at="88,96,89,65" concept="6" />
+      <node id="8011059391272914222" at="89,65,90,63" concept="6" />
+      <node id="8011059391272914222" at="90,63,91,371" concept="3" />
+      <node id="8011059391272914225" at="93,90,94,65" concept="6" />
+      <node id="8011059391272914225" at="94,65,95,63" concept="6" />
+      <node id="8011059391272914225" at="95,63,96,345" concept="3" />
+      <node id="8011059391274169126" at="98,90,99,65" concept="6" />
+      <node id="8011059391274169126" at="99,65,100,63" concept="6" />
+      <node id="8011059391274169126" at="100,63,101,330" concept="3" />
+      <node id="8011059391273406612" at="103,90,104,65" concept="6" />
+      <node id="8011059391273406612" at="104,65,105,63" concept="6" />
+      <node id="8011059391273406612" at="105,63,106,330" concept="3" />
+      <node id="8011059391272887198" at="108,96,109,65" concept="6" />
+      <node id="8011059391272887198" at="109,65,110,63" concept="6" />
+      <node id="8011059391272887198" at="110,63,111,371" concept="3" />
+      <node id="8011059391272887201" at="113,90,114,65" concept="6" />
+      <node id="8011059391272887201" at="114,65,115,63" concept="6" />
+      <node id="8011059391272887201" at="115,63,116,346" concept="3" />
+      <node id="8011059391272887239" at="118,96,119,65" concept="6" />
+      <node id="8011059391272887239" at="119,65,120,63" concept="6" />
+      <node id="8011059391272887239" at="120,63,121,402" concept="3" />
+      <node id="8011059391272887243" at="123,96,124,65" concept="6" />
+      <node id="8011059391272887243" at="124,65,125,63" concept="6" />
+      <node id="8011059391272887243" at="125,63,126,408" concept="3" />
+      <node id="8011059391272887093" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="8011059391272887093" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="8011059391272887093" at="27,0,30,0" concept="2" trace="ElseIfCondition_Test#()V" />
+      <node id="8011059391272887093" at="74,0,77,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8011059391274365233" at="31,0,35,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391274365233#()V" />
+      <node id="8011059391273361546" at="35,0,39,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273361546#()V" />
+      <node id="8011059391272914222" at="39,0,43,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272914222#()V" />
+      <node id="8011059391272914225" at="43,0,47,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272914225#()V" />
+      <node id="8011059391274169126" at="47,0,51,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391274169126#()V" />
+      <node id="8011059391273406612" at="51,0,55,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273406612#()V" />
+      <node id="8011059391272887198" at="55,0,59,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272887198#()V" />
+      <node id="8011059391272887201" at="59,0,63,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272887201#()V" />
+      <node id="8011059391272887239" at="63,0,67,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272887239#()V" />
+      <node id="8011059391272887243" at="67,0,71,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272887243#()V" />
+      <node id="8011059391274365233" at="78,0,83,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391274365233#()V" />
+      <node id="8011059391273361546" at="83,0,88,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273361546#()V" />
+      <node id="8011059391272914222" at="88,0,93,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272914222#()V" />
+      <node id="8011059391272914225" at="93,0,98,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272914225#()V" />
+      <node id="8011059391274169126" at="98,0,103,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391274169126#()V" />
+      <node id="8011059391273406612" at="103,0,108,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273406612#()V" />
+      <node id="8011059391272887198" at="108,0,113,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272887198#()V" />
+      <node id="8011059391272887201" at="113,0,118,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272887201#()V" />
+      <node id="8011059391272887239" at="118,0,123,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272887239#()V" />
+      <node id="8011059391272887243" at="123,0,128,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272887243#()V" />
+      <scope id="8011059391272887093" at="27,33,28,25" />
+      <scope id="8011059391274365233" at="32,88,33,79" />
+      <scope id="8011059391273361546" at="36,88,37,79" />
+      <scope id="8011059391272914222" at="40,94,41,85" />
+      <scope id="8011059391272914225" at="44,88,45,79" />
+      <scope id="8011059391274169126" at="48,88,49,79" />
+      <scope id="8011059391273406612" at="52,88,53,79" />
+      <scope id="8011059391272887198" at="56,94,57,85" />
+      <scope id="8011059391272887201" at="60,88,61,79" />
+      <scope id="8011059391272887239" at="64,94,65,85" />
+      <scope id="8011059391272887243" at="68,94,69,85" />
+      <scope id="8011059391272887093" at="74,52,75,19" />
+      <scope id="8011059391272887093" at="27,0,30,0" />
+      <scope id="8011059391272887093" at="74,0,77,0">
+        <var name="owner" id="8011059391272887093" />
+      </scope>
+      <scope id="8011059391274365233" at="78,90,81,330">
+        <var name="nodeToCheck" id="8011059391274365233" />
+        <var name="operation" id="8011059391274365233" />
+      </scope>
+      <scope id="8011059391273361546" at="83,90,86,330">
+        <var name="nodeToCheck" id="8011059391273361546" />
+        <var name="operation" id="8011059391273361546" />
+      </scope>
+      <scope id="8011059391272914222" at="88,96,91,371">
+        <var name="nodeToCheck" id="8011059391272914222" />
+        <var name="operation" id="8011059391272914222" />
+      </scope>
+      <scope id="8011059391272914225" at="93,90,96,345">
+        <var name="nodeToCheck" id="8011059391272914225" />
+        <var name="operation" id="8011059391272914225" />
+      </scope>
+      <scope id="8011059391274169126" at="98,90,101,330">
+        <var name="nodeToCheck" id="8011059391274169126" />
+        <var name="operation" id="8011059391274169126" />
+      </scope>
+      <scope id="8011059391273406612" at="103,90,106,330">
+        <var name="nodeToCheck" id="8011059391273406612" />
+        <var name="operation" id="8011059391273406612" />
+      </scope>
+      <scope id="8011059391272887198" at="108,96,111,371">
+        <var name="nodeToCheck" id="8011059391272887198" />
+        <var name="operation" id="8011059391272887198" />
+      </scope>
+      <scope id="8011059391272887201" at="113,90,116,346">
+        <var name="nodeToCheck" id="8011059391272887201" />
+        <var name="operation" id="8011059391272887201" />
+      </scope>
+      <scope id="8011059391272887239" at="118,96,121,402">
+        <var name="nodeToCheck" id="8011059391272887239" />
+        <var name="operation" id="8011059391272887239" />
+      </scope>
+      <scope id="8011059391272887243" at="123,96,126,408">
+        <var name="nodeToCheck" id="8011059391272887243" />
+        <var name="operation" id="8011059391272887243" />
+      </scope>
+      <scope id="8011059391274365233" at="31,0,35,0" />
+      <scope id="8011059391273361546" at="35,0,39,0" />
+      <scope id="8011059391272914222" at="39,0,43,0" />
+      <scope id="8011059391272914225" at="43,0,47,0" />
+      <scope id="8011059391274169126" at="47,0,51,0" />
+      <scope id="8011059391273406612" at="51,0,55,0" />
+      <scope id="8011059391272887198" at="55,0,59,0" />
+      <scope id="8011059391272887201" at="59,0,63,0" />
+      <scope id="8011059391272887239" at="63,0,67,0" />
+      <scope id="8011059391272887243" at="67,0,71,0" />
+      <scope id="8011059391274365233" at="78,0,83,0" />
+      <scope id="8011059391273361546" at="83,0,88,0" />
+      <scope id="8011059391272914222" at="88,0,93,0" />
+      <scope id="8011059391272914225" at="93,0,98,0" />
+      <scope id="8011059391274169126" at="98,0,103,0" />
+      <scope id="8011059391273406612" at="103,0,108,0" />
+      <scope id="8011059391272887198" at="108,0,113,0" />
+      <scope id="8011059391272887201" at="113,0,118,0" />
+      <scope id="8011059391272887239" at="118,0,123,0" />
+      <scope id="8011059391272887243" at="123,0,128,0" />
+      <unit id="8011059391272887093" at="72,0,130,0" name="jetbrains.mps.baseLanguage.test.ElseIfCondition_Test$TestBody" />
+      <unit id="8011059391272887093" at="20,0,131,0" name="jetbrains.mps.baseLanguage.test.ElseIfCondition_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/8011059391272929028">
+    <file name="IfCondition_Test.java">
+      <node id="8011059391272929028" at="27,29,28,25" concept="9" />
+      <node id="8011059391272929059" at="32,88,33,79" concept="3" />
+      <node id="8011059391273776861" at="36,88,37,79" concept="3" />
+      <node id="8011059391273776864" at="40,83,41,74" concept="3" />
+      <node id="8011059391272929116" at="44,94,45,85" concept="3" />
+      <node id="8011059391272929119" at="48,88,49,79" concept="3" />
+      <node id="8011059391274479358" at="52,88,53,79" concept="3" />
+      <node id="8011059391272929173" at="56,94,57,85" concept="3" />
+      <node id="8011059391272929176" at="60,88,61,79" concept="3" />
+      <node id="8011059391272929225" at="64,94,65,85" concept="3" />
+      <node id="8011059391272929229" at="68,94,69,85" concept="3" />
+      <node id="8011059391272929028" at="74,52,75,19" concept="9" />
+      <node id="8011059391272929059" at="78,90,79,65" concept="6" />
+      <node id="8011059391272929059" at="79,65,80,63" concept="6" />
+      <node id="8011059391272929059" at="80,63,81,330" concept="3" />
+      <node id="8011059391273776861" at="83,90,84,65" concept="6" />
+      <node id="8011059391273776861" at="84,65,85,63" concept="6" />
+      <node id="8011059391273776861" at="85,63,86,330" concept="3" />
+      <node id="8011059391273776864" at="88,85,89,65" concept="6" />
+      <node id="8011059391273776864" at="89,65,90,63" concept="6" />
+      <node id="8011059391273776864" at="90,63,91,333" concept="3" />
+      <node id="8011059391272929116" at="93,96,94,65" concept="6" />
+      <node id="8011059391272929116" at="94,65,95,63" concept="6" />
+      <node id="8011059391272929116" at="95,63,96,371" concept="3" />
+      <node id="8011059391272929119" at="98,90,99,65" concept="6" />
+      <node id="8011059391272929119" at="99,65,100,63" concept="6" />
+      <node id="8011059391272929119" at="100,63,101,345" concept="3" />
+      <node id="8011059391274479358" at="103,90,104,65" concept="6" />
+      <node id="8011059391274479358" at="104,65,105,63" concept="6" />
+      <node id="8011059391274479358" at="105,63,106,330" concept="3" />
+      <node id="8011059391272929173" at="108,96,109,65" concept="6" />
+      <node id="8011059391272929173" at="109,65,110,63" concept="6" />
+      <node id="8011059391272929173" at="110,63,111,371" concept="3" />
+      <node id="8011059391272929176" at="113,90,114,65" concept="6" />
+      <node id="8011059391272929176" at="114,65,115,63" concept="6" />
+      <node id="8011059391272929176" at="115,63,116,346" concept="3" />
+      <node id="8011059391272929225" at="118,96,119,65" concept="6" />
+      <node id="8011059391272929225" at="119,65,120,63" concept="6" />
+      <node id="8011059391272929225" at="120,63,121,402" concept="3" />
+      <node id="8011059391272929229" at="123,96,124,65" concept="6" />
+      <node id="8011059391272929229" at="124,65,125,63" concept="6" />
+      <node id="8011059391272929229" at="125,63,126,408" concept="3" />
+      <node id="8011059391272929028" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="8011059391272929028" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="8011059391272929028" at="27,0,30,0" concept="2" trace="IfCondition_Test#()V" />
+      <node id="8011059391272929028" at="74,0,77,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8011059391272929059" at="31,0,35,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272929059#()V" />
+      <node id="8011059391273776861" at="35,0,39,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273776861#()V" />
+      <node id="8011059391273776864" at="39,0,43,0" concept="5" trace="test_NodeUnreachableCodeCheck8011059391273776864#()V" />
+      <node id="8011059391272929116" at="43,0,47,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929116#()V" />
+      <node id="8011059391272929119" at="47,0,51,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272929119#()V" />
+      <node id="8011059391274479358" at="51,0,55,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391274479358#()V" />
+      <node id="8011059391272929173" at="55,0,59,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929173#()V" />
+      <node id="8011059391272929176" at="59,0,63,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272929176#()V" />
+      <node id="8011059391272929225" at="63,0,67,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929225#()V" />
+      <node id="8011059391272929229" at="67,0,71,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929229#()V" />
+      <node id="8011059391272929059" at="78,0,83,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391272929059#()V" />
+      <node id="8011059391273776861" at="83,0,88,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391273776861#()V" />
+      <node id="8011059391273776864" at="88,0,93,0" concept="5" trace="test_NodeUnreachableCodeCheck8011059391273776864#()V" />
+      <node id="8011059391272929116" at="93,0,98,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929116#()V" />
+      <node id="8011059391272929119" at="98,0,103,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272929119#()V" />
+      <node id="8011059391274479358" at="103,0,108,0" concept="5" trace="test_NodeUnreachableNodeErrorCheck8011059391274479358#()V" />
+      <node id="8011059391272929173" at="108,0,113,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929173#()V" />
+      <node id="8011059391272929176" at="113,0,118,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck8011059391272929176#()V" />
+      <node id="8011059391272929225" at="118,0,123,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929225#()V" />
+      <node id="8011059391272929229" at="123,0,128,0" concept="5" trace="test_NodeTheBinaryLogicalExpressionCheck8011059391272929229#()V" />
+      <scope id="8011059391272929028" at="27,29,28,25" />
+      <scope id="8011059391272929059" at="32,88,33,79" />
+      <scope id="8011059391273776861" at="36,88,37,79" />
+      <scope id="8011059391273776864" at="40,83,41,74" />
+      <scope id="8011059391272929116" at="44,94,45,85" />
+      <scope id="8011059391272929119" at="48,88,49,79" />
+      <scope id="8011059391274479358" at="52,88,53,79" />
+      <scope id="8011059391272929173" at="56,94,57,85" />
+      <scope id="8011059391272929176" at="60,88,61,79" />
+      <scope id="8011059391272929225" at="64,94,65,85" />
+      <scope id="8011059391272929229" at="68,94,69,85" />
+      <scope id="8011059391272929028" at="74,52,75,19" />
+      <scope id="8011059391272929028" at="27,0,30,0" />
+      <scope id="8011059391272929028" at="74,0,77,0">
+        <var name="owner" id="8011059391272929028" />
+      </scope>
+      <scope id="8011059391272929059" at="78,90,81,330">
+        <var name="nodeToCheck" id="8011059391272929059" />
+        <var name="operation" id="8011059391272929059" />
+      </scope>
+      <scope id="8011059391273776861" at="83,90,86,330">
+        <var name="nodeToCheck" id="8011059391273776861" />
+        <var name="operation" id="8011059391273776861" />
+      </scope>
+      <scope id="8011059391273776864" at="88,85,91,333">
+        <var name="nodeToCheck" id="8011059391273776864" />
+        <var name="operation" id="8011059391273776864" />
+      </scope>
+      <scope id="8011059391272929116" at="93,96,96,371">
+        <var name="nodeToCheck" id="8011059391272929116" />
+        <var name="operation" id="8011059391272929116" />
+      </scope>
+      <scope id="8011059391272929119" at="98,90,101,345">
+        <var name="nodeToCheck" id="8011059391272929119" />
+        <var name="operation" id="8011059391272929119" />
+      </scope>
+      <scope id="8011059391274479358" at="103,90,106,330">
+        <var name="nodeToCheck" id="8011059391274479358" />
+        <var name="operation" id="8011059391274479358" />
+      </scope>
+      <scope id="8011059391272929173" at="108,96,111,371">
+        <var name="nodeToCheck" id="8011059391272929173" />
+        <var name="operation" id="8011059391272929173" />
+      </scope>
+      <scope id="8011059391272929176" at="113,90,116,346">
+        <var name="nodeToCheck" id="8011059391272929176" />
+        <var name="operation" id="8011059391272929176" />
+      </scope>
+      <scope id="8011059391272929225" at="118,96,121,402">
+        <var name="nodeToCheck" id="8011059391272929225" />
+        <var name="operation" id="8011059391272929225" />
+      </scope>
+      <scope id="8011059391272929229" at="123,96,126,408">
+        <var name="nodeToCheck" id="8011059391272929229" />
+        <var name="operation" id="8011059391272929229" />
+      </scope>
+      <scope id="8011059391272929059" at="31,0,35,0" />
+      <scope id="8011059391273776861" at="35,0,39,0" />
+      <scope id="8011059391273776864" at="39,0,43,0" />
+      <scope id="8011059391272929116" at="43,0,47,0" />
+      <scope id="8011059391272929119" at="47,0,51,0" />
+      <scope id="8011059391274479358" at="51,0,55,0" />
+      <scope id="8011059391272929173" at="55,0,59,0" />
+      <scope id="8011059391272929176" at="59,0,63,0" />
+      <scope id="8011059391272929225" at="63,0,67,0" />
+      <scope id="8011059391272929229" at="67,0,71,0" />
+      <scope id="8011059391272929059" at="78,0,83,0" />
+      <scope id="8011059391273776861" at="83,0,88,0" />
+      <scope id="8011059391273776864" at="88,0,93,0" />
+      <scope id="8011059391272929116" at="93,0,98,0" />
+      <scope id="8011059391272929119" at="98,0,103,0" />
+      <scope id="8011059391274479358" at="103,0,108,0" />
+      <scope id="8011059391272929173" at="108,0,113,0" />
+      <scope id="8011059391272929176" at="113,0,118,0" />
+      <scope id="8011059391272929225" at="118,0,123,0" />
+      <scope id="8011059391272929229" at="123,0,128,0" />
+      <unit id="8011059391272929028" at="72,0,130,0" name="jetbrains.mps.baseLanguage.test.IfCondition_Test$TestBody" />
+      <unit id="8011059391272929028" at="20,0,131,0" name="jetbrains.mps.baseLanguage.test.IfCondition_Test" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/818296778600371163">
     <file name="UnwrappedTernaryOperator_Test.java">
       <node id="818296778600371163" at="30,42,31,25" concept="9" />

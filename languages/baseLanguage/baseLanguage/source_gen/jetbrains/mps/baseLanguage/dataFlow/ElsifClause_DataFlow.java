@@ -22,9 +22,9 @@ public class ElsifClause_DataFlow extends DataFlowBuilder {
             _context.getBuilder().emitJump(_context.getBuilder().after(ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834485903342");
           }
         });
-        return;
       } else {
         _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834485900352");
+        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$neQf));
       }
     } else {
       _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206536669330");
