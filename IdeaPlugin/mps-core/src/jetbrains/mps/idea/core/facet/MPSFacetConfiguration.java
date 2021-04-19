@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,15 +49,15 @@ import java.util.ArrayList;
  *
  * SolutionIdea is a regular {@link jetbrains.mps.project.Solution}, we shall expect MPS code to treat it like a regular solution and to e.g.
  * {@link jetbrains.mps.project.AbstractModule#setModuleDescriptor(ModuleDescriptor) setModuleDescriptor} for it. Therefore, we use solution's MD, if any,
- * as a source of 'actual' state, except for attributes that are not part of MD and therefore kept in myActualState cfg bean.
+ * as a source of 'actual' state, except for attributes that are not part of MD and therefore kept in myState cfg bean.
  */
 public class MPSFacetConfiguration implements FacetConfiguration, PersistentStateComponent<State> {
   private static final String FILE_SEPARATOR = "/";
   @NonNls
   private static final String SOURCE_GEN = "src_gen";
   // the one reflected in SolutionDescriptor the moment it has been created, we shall consult this object for facet options not available from SD
-  private MPSConfigurationBean myActualState;
-  private MPSConfigurationBean myMostRecentStateLoaded;
+  private MPSConfigurationBean myState;
+  private boolean myDefaultState = true;
   private MPSFacet myMpsFacet;
 
   /**
@@ -67,62 +67,59 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
   @NotNull
   public MPSConfigurationBean getBean() {
     // obtain a copy of settings, suited for modification
-    final MPSConfigurationBean cfgBean = myActualState == null ? myMostRecentStateLoaded : myActualState;
     if (myMpsFacet.wasInitialized()) {
       // copy of facet-specific properties along with actual data from SD
-      final State stateCopy = cfgBean.toState(myMpsFacet.getSolution().getModuleDescriptor());
-      return new MPSConfigurationBean(stateCopy);
-    } else {
-      // just a plain copy
-      return new MPSConfigurationBean(cfgBean);
+      final State stateCopy = myState.toState(myMpsFacet.getSolution().getModuleDescriptor());
+      myState = new MPSConfigurationBean(stateCopy);
     }
+    return new MPSConfigurationBean(myState);
   }
 
   // it's Solution that owns SD
   // this method expects facet has been set with #setFacet() already
   /*package*/ SolutionDescriptor createSolutionDescriptor() {
     assert myMpsFacet != null;
-    final SolutionDescriptor rv;
-    if (myMostRecentStateLoaded != null) {
-      rv = myMostRecentStateLoaded.newSolutionDescriptor();
-      myActualState = myMostRecentStateLoaded;
-      myMostRecentStateLoaded = null;
-    } else {
-      rv = myActualState.newSolutionDescriptor();
-    }
-    return rv;
+    return myState.newSolutionDescriptor();
   }
 
   // sort of counterpart to loadState(State) for UI/editing purposes (unlike the one with 'State', which is for IDEA persistence)
   /*package*/ void loadState(@NotNull MPSConfigurationBean newBean) {
-    myMostRecentStateLoaded = new MPSConfigurationBean(newBean);
+    myState = new MPSConfigurationBean(newBean);
   }
 
+  /**
+   * Note that this method will be called right after {@link MPSFacetConfiguration#loadState(MPSConfigurationBean.State)}
+   *  without call of {@link MPSFacetConfiguration#createSolutionDescriptor()} in between
+   *  if {@link MPSFacetConfiguration#myMpsFacet} was not set yet
+   *
+   * @return default state from {@link MPSFacetConfiguration#noStateLoaded()}
+   * or persisted state loaded in {@link MPSFacetConfiguration#loadState(MPSConfigurationBean.State)}
+   * or state loaded from {@link SolutionDescriptor} of {@link jetbrains.mps.project.Solution} initialized by {@link MPSFacetConfiguration#myMpsFacet}
+   */
   @Override
   public State getState() {
-    // either noStateLoaded gave us defaults in myActualState, or we've got loaded state (though perhaps not yet
-    // propagated to myActualState (e.g. getState() comes right after loadState() without createSolutionDescriptor() in between)
-    // if, however, both myActualState and myMostRecentStateLoaded are not null, we resort to myActualState to throw away external changes loaded recently
-    final MPSConfigurationBean cfgBean = myActualState == null ? myMostRecentStateLoaded : myActualState;
-    assert cfgBean != null;
+    assert myState != null;
     if (myMpsFacet.wasInitialized()) {
       final SolutionDescriptor actualModuleDescriptor = myMpsFacet.getSolution().getModuleDescriptor();
-      return cfgBean.toState(actualModuleDescriptor);
-    } else {
-      return cfgBean.toState();
+      myState = new MPSConfigurationBean(myState.toState(actualModuleDescriptor));
     }
+    return myState.toState();
   }
 
   @Override
   public void loadState(@NotNull State state) {
     // well, I can keep State instance right away, it's just bit more complicated in getState then, when I'd need to incorporate SD values into State
     // At the moment, it's MPSConfigurationBean that knows how to do that, that's why I keep Bean instance rather than State here.
-    myMostRecentStateLoaded = new MPSConfigurationBean(state);
+    myState = new MPSConfigurationBean(state);
+    myDefaultState = false;
+    if (getFacet() != null && getFacet().wasInitialized()) {
+      getFacet().setConfiguration(myState);
+    }
   }
 
   @Override
   public void noStateLoaded() {
-    myActualState = new MPSConfigurationBean(new State());
+    myState = new MPSConfigurationBean(new State());
   }
 
   @Override
@@ -132,18 +129,14 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
   }
 
   /*package*/ void setFacet(MPSFacet mpsFacet) {
+    assert myState != null; // noStateLoaded is supposed to init the one
     myMpsFacet = mpsFacet;
-    if (myMostRecentStateLoaded == null) {
-      assert myActualState != null; // noStateLoaded is supposed to init the one
+    if (myDefaultState) { // true if MPSFacetConfiguration#loadState(MPSConfigurationBean.State) was not called
       setConfigurationDefaults();
     }
   }
-
   /**
    * <b>DO NOT USE<b/><br/>
-   * Only used from {@link MPSFrameworkSupportProvider#setupConfiguration}.<br/><br/>
-   * On project creation with MPS facet {@link MPSFacetConfiguration#setConfigurationDefaults()} method does not create any model root because at this point module content entries are not initialized.<br/>
-   * Originally {@link MPSFrameworkSupportProvider#setupConfiguration} called {@link MPSFacet#setConfiguration(MPSConfigurationBean)}. This method sets {@link MPSFacetConfiguration#myMostRecentStateLoaded}, but on component save {@link MPSFacetConfiguration#getState()} ignores it and {@link MPSFacetConfiguration#myActualState} without propper model roots is used.
    *
    * @param configurationBean to use instead of active one
    */
@@ -152,28 +145,28 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
   @Deprecated
   @ScheduledForRemoval(inVersion = "2021.1")
   /*package*/ void setConfigurationBean(MPSConfigurationBean configurationBean) {
-    myActualState = configurationBean;
+    myState = configurationBean;
   }
 
   private void setConfigurationDefaults() {
-    if (!myActualState.isModuleIdSet()) {
+    if (!myState.isModuleIdSet()) {
       // FIXME why do we rely on SolutionIdea to set namespace but set id here? Can we do both in a single place, PLEASE?
-      myActualState.setIdByModuleName(myMpsFacet.getModule().getName());
-      myActualState.setDoesNotRequireZeroVersions();
+      myState.setIdByModuleName(myMpsFacet.getModule().getName());
+      myState.setDoesNotRequireZeroVersions();
     }
-    if (myActualState.isUseTransientOutputFolder()) {
-      myActualState.setUseModuleSourceFolder(false);
-    } else if (myActualState.isUseModuleSourceFolder()) {
-      myActualState.setUseTransientOutputFolder(false);
+    if (myState.isUseTransientOutputFolder()) {
+      myState.setUseModuleSourceFolder(false);
+    } else if (myState.isUseModuleSourceFolder()) {
+      myState.setUseTransientOutputFolder(false);
     }
-    if (myActualState.getGeneratorOutputPath() == null) {
+    if (myState.getGeneratorOutputPath() == null) {
       String moduleDirPath = PathUtil.getParentPath(myMpsFacet.getModule().getModuleFilePath());
-      myActualState.setGeneratorOutputPath(moduleDirPath + FILE_SEPARATOR + SOURCE_GEN);
-      myActualState.setUseTransientOutputFolder(false);
-      myActualState.setUseModuleSourceFolder(false);
+      myState.setGeneratorOutputPath(moduleDirPath + FILE_SEPARATOR + SOURCE_GEN);
+      myState.setUseTransientOutputFolder(false);
+      myState.setUseModuleSourceFolder(false);
     }
 
-    if (myActualState.getModelRootDescriptors().isEmpty()) {
+    if (myState.getModelRootDescriptors().isEmpty()) {
       final IdeaFileSystem ideaFS = myMpsFacet.getProject().getFileSystem();
       final ContentEntry[] contentEntries = ModuleRootManager.getInstance(myMpsFacet.getModule()).getContentEntries();
       ArrayList<ModelRootDescriptor> modelRootDescriptors = new ArrayList<>(contentEntries.length);
@@ -194,7 +187,7 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
         modelRootDescriptors.add(DefaultModelRoot.createDescriptor(contentRoot, sourceRoots.toArray(new IFile[0])));
       }
 
-      myActualState.setModelRootDescriptors(modelRootDescriptors);
+      myState.setModelRootDescriptors(modelRootDescriptors);
     }
   }
 
