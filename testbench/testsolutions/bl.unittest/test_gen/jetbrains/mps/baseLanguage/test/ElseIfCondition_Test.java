@@ -29,12 +29,8 @@ public class ElseIfCondition_Test extends BaseTransformationTest {
   }
 
   @Test
-  public void test_NodeUnreachableNodeErrorCheck8011059391274365233() throws Throwable {
-    new TestBody(this).test_NodeUnreachableNodeErrorCheck8011059391274365233();
-  }
-  @Test
-  public void test_NodeUnreachableNodeErrorCheck8011059391273361546() throws Throwable {
-    new TestBody(this).test_NodeUnreachableNodeErrorCheck8011059391273361546();
+  public void test_NodeUnreachableCodeCheck8011059391324003520() throws Throwable {
+    new TestBody(this).test_NodeUnreachableCodeCheck8011059391324003520();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck8011059391272914222() throws Throwable {
@@ -45,12 +41,8 @@ public class ElseIfCondition_Test extends BaseTransformationTest {
     new TestBody(this).test_NodeTheConditionIsAlwaysCheck8011059391272914225();
   }
   @Test
-  public void test_NodeUnreachableNodeErrorCheck8011059391274169126() throws Throwable {
-    new TestBody(this).test_NodeUnreachableNodeErrorCheck8011059391274169126();
-  }
-  @Test
-  public void test_NodeUnreachableNodeErrorCheck8011059391273406612() throws Throwable {
-    new TestBody(this).test_NodeUnreachableNodeErrorCheck8011059391273406612();
+  public void test_NodeUnreachableCodeCheck8011059391325000458() throws Throwable {
+    new TestBody(this).test_NodeUnreachableCodeCheck8011059391325000458();
   }
   @Test
   public void test_NodeTheBinaryLogicalExpressionCheck8011059391272887198() throws Throwable {
@@ -75,15 +67,10 @@ public class ElseIfCondition_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnreachableNodeErrorCheck8011059391274365233() throws Exception {
-      SNode nodeToCheck = getRealNodeById("8011059391272887103");
-      SNode operation = getRealNodeById("8011059391274365233");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeUnreachableNodeErrorCheck8011059391273361546() throws Exception {
-      SNode nodeToCheck = getRealNodeById("8011059391272905825");
-      SNode operation = getRealNodeById("8011059391273361546");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    public void test_NodeUnreachableCodeCheck8011059391324003520() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8011059391323082664");
+      SNode operation = getRealNodeById("8011059391324003520");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8011059391323084643"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272914222() throws Exception {
       SNode nodeToCheck = getRealNodeById("8011059391272910989");
@@ -95,15 +82,10 @@ public class ElseIfCondition_Test extends BaseTransformationTest {
       SNode operation = getRealNodeById("8011059391272914225");
       new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
-    public void test_NodeUnreachableNodeErrorCheck8011059391274169126() throws Exception {
-      SNode nodeToCheck = getRealNodeById("8011059391273963945");
-      SNode operation = getRealNodeById("8011059391274169126");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeUnreachableNodeErrorCheck8011059391273406612() throws Exception {
-      SNode nodeToCheck = getRealNodeById("8011059391272917223");
-      SNode operation = getRealNodeById("8011059391273406612");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    public void test_NodeUnreachableCodeCheck8011059391325000458() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8011059391324996883");
+      SNode operation = getRealNodeById("8011059391325000458");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8011059391323084643"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272887198() throws Exception {
       SNode nodeToCheck = getRealNodeById("8011059391272887194");

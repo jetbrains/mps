@@ -80,10 +80,6 @@ public class UnreachableStatements_Test extends BaseTransformationTest {
     new TestBody(this).test_ErrorMessagesCheck8768955936813180900();
   }
   @Test
-  public void test_NodeUnreachableNodeErrorCheck8768955936813195443() throws Throwable {
-    new TestBody(this).test_NodeUnreachableNodeErrorCheck8768955936813195443();
-  }
-  @Test
   public void test_ErrorMessagesCheck8768955936813186030() throws Throwable {
     new TestBody(this).test_ErrorMessagesCheck8768955936813186030();
   }
@@ -178,15 +174,10 @@ public class UnreachableStatements_Test extends BaseTransformationTest {
       SNode operation = getRealNodeById("8768955936813180900");
       new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
     }
-    public void test_NodeUnreachableNodeErrorCheck8768955936813195443() throws Exception {
-      SNode nodeToCheck = getRealNodeById("8768955936813168573");
-      SNode operation = getRealNodeById("8768955936813195443");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
     public void test_ErrorMessagesCheck8768955936813186030() throws Exception {
       SNode nodeToCheck = getRealNodeById("8768955936813168547");
       SNode operation = getRealNodeById("8768955936813186030");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8768955936813168573"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
     }
     public void test_NodeUnreachableCodeCheck2557916264120793751() throws Exception {
       SNode nodeToCheck = getRealNodeById("8768955936813182999");

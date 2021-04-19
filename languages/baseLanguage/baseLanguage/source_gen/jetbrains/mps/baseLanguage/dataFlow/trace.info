@@ -26,37 +26,40 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206454554507">
     <file name="IfStatement_DataFlow.java">
       <node id="1206454560120" at="14,60,15,109" concept="4" />
-      <node id="1894172621088425982" at="15,109,16,198" concept="4" />
-      <node id="1206454592091" at="16,198,17,106" concept="4" />
-      <node id="1217868921099" at="20,27,21,183" concept="4" />
-      <node id="1217867419051" at="24,5,25,49" concept="4" />
-      <node id="1217863442978" at="26,99,27,50" concept="4" />
-      <node id="1206454676454" at="29,95,30,118" concept="4" />
-      <node id="1206454554507" at="35,0,36,0" concept="13" trace="condition$5R17" />
-      <node id="1206454554507" at="36,0,37,0" concept="13" trace="ifTrue$5Rg8" />
-      <node id="1206454554507" at="37,0,38,0" concept="13" trace="ifFalseStatement$psZK" />
-      <node id="1206454554507" at="38,0,39,0" concept="13" trace="elsifClauses$EVJW" />
-      <node id="1217868916800" at="20,0,23,0" concept="8" trace="run#()V" />
-      <node id="1217863442976" at="25,49,28,5" concept="6" />
-      <node id="1206454760986" at="28,5,31,5" concept="7" />
-      <node id="1217868916800" at="18,291,23,9" concept="4" />
-      <node id="1217867461508" at="17,106,24,5" concept="7" />
-      <node id="1206454554507" at="14,0,33,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="1217868916800" at="20,27,21,183" />
-      <scope id="1217863442977" at="26,99,27,50" />
-      <scope id="1206454760987" at="29,95,30,118" />
-      <scope id="1217868916800" at="20,0,23,0" />
-      <scope id="1217863442976" at="25,49,28,5">
+      <node id="5218334018278948942" at="15,109,16,136" concept="9" />
+      <node id="1894172621088425982" at="16,136,17,198" concept="4" />
+      <node id="1206454592091" at="17,198,18,106" concept="4" />
+      <node id="1217868921099" at="21,27,22,183" concept="4" />
+      <node id="1217867419051" at="25,5,26,49" concept="4" />
+      <node id="1217863442978" at="27,99,28,50" concept="4" />
+      <node id="1206454676454" at="30,95,31,118" concept="4" />
+      <node id="1206454554507" at="36,0,37,0" concept="13" trace="condition$5R17" />
+      <node id="1206454554507" at="37,0,38,0" concept="13" trace="ifTrue$5Rg8" />
+      <node id="1206454554507" at="38,0,39,0" concept="13" trace="ifFalseStatement$psZK" />
+      <node id="1206454554507" at="39,0,40,0" concept="13" trace="elsifClauses$EVJW" />
+      <node id="1217868916800" at="21,0,24,0" concept="8" trace="run#()V" />
+      <node id="1217863442976" at="26,49,29,5" concept="6" />
+      <node id="1206454760986" at="29,5,32,5" concept="7" />
+      <node id="1217868916800" at="19,291,24,9" concept="4" />
+      <node id="1217867461508" at="18,106,25,5" concept="7" />
+      <node id="1206454554507" at="14,0,34,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1217868916800" at="21,27,22,183" />
+      <scope id="1217863442977" at="27,99,28,50" />
+      <scope id="1206454760987" at="30,95,31,118" />
+      <scope id="1217868916800" at="21,0,24,0" />
+      <scope id="1217863442976" at="26,49,29,5">
         <var name="elseIf" id="1217863442983" />
       </scope>
-      <scope id="1217867461509" at="18,291,23,9" />
-      <scope id="1206454554509" at="14,60,31,5" />
-      <scope id="1206454554507" at="14,0,33,0">
+      <scope id="1217867461509" at="19,291,24,9" />
+      <scope id="1206454554509" at="14,60,32,5">
+        <var name="conditionConstant" id="5218334018278948943" />
+      </scope>
+      <scope id="1206454554507" at="14,0,34,0">
         <var name="_context" id="1206454554507" />
       </scope>
-      <unit id="1217868916800" at="19,53,23,7" name="jetbrains.mps.baseLanguage.dataFlow.IfStatement_DataFlow$1" />
-      <unit id="1206454554507" at="34,0,40,0" name="jetbrains.mps.baseLanguage.dataFlow.IfStatement_DataFlow$LINKS" />
-      <unit id="1206454554507" at="13,0,41,0" name="jetbrains.mps.baseLanguage.dataFlow.IfStatement_DataFlow" />
+      <unit id="1217868916800" at="20,53,24,7" name="jetbrains.mps.baseLanguage.dataFlow.IfStatement_DataFlow$1" />
+      <unit id="1206454554507" at="35,0,41,0" name="jetbrains.mps.baseLanguage.dataFlow.IfStatement_DataFlow$LINKS" />
+      <unit id="1206454554507" at="13,0,42,0" name="jetbrains.mps.baseLanguage.dataFlow.IfStatement_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206455216234">
@@ -1896,41 +1899,43 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5218334018278921421">
     <file name="ConditionUtil.java">
-      <node id="3026370834483863582" at="10,62,11,32" concept="11" />
-      <node id="5218334018278921837" at="11,32,12,122" concept="9" />
-      <node id="5218334018278921845" at="12,122,13,197" concept="9" />
-      <node id="5218334018278925319" at="14,117,15,48" concept="10" />
-      <node id="5218334018278926073" at="16,12,17,18" concept="10" />
-      <node id="3026370834486441220" at="25,65,26,18" concept="10" />
-      <node id="4652712389471554179" at="27,5,28,164" concept="9" />
-      <node id="4652712389471554196" at="29,56,30,48" concept="10" />
-      <node id="4652712389471554202" at="31,12,32,18" concept="10" />
-      <node id="5218334018278925713" at="16,10,18,5" concept="1" />
-      <node id="4652712389471554200" at="31,10,33,5" concept="1" />
-      <node id="3026370834486436804" at="24,58,27,5" concept="7" />
-      <node id="5218334018278924210" at="13,197,18,5" concept="7" />
-      <node id="4652712389471554194" at="28,164,33,5" concept="7" />
-      <node id="5218334018278939036" at="10,0,20,0" concept="14" trace="computeConditionConstant#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
-      <node id="4652712389471554171" at="24,0,35,0" concept="14" trace="getConditionConstant#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
-      <scope id="5218334018278924212" at="14,117,15,48" />
-      <scope id="5218334018278925714" at="16,12,17,18" />
-      <scope id="3026370834486436806" at="25,65,26,18" />
-      <scope id="4652712389471554195" at="29,56,30,48" />
-      <scope id="4652712389471554201" at="31,12,32,18" />
-      <scope id="5218334018278921814" at="10,62,18,5">
+      <node id="3026370834483863582" at="12,62,13,32" concept="11" />
+      <node id="5218334018278921837" at="13,32,14,122" concept="9" />
+      <node id="5218334018278921845" at="14,122,15,197" concept="9" />
+      <node id="5218334018278925319" at="16,117,17,48" concept="10" />
+      <node id="5218334018278926073" at="18,12,19,18" concept="10" />
+      <node id="3026370834486441220" at="27,130,28,18" concept="10" />
+      <node id="4652712389471554179" at="29,5,30,164" concept="9" />
+      <node id="4652712389471554196" at="31,56,32,48" concept="10" />
+      <node id="4652712389471554202" at="33,12,34,18" concept="10" />
+      <node id="5218334018278921421" at="39,0,40,0" concept="13" trace="Expression$mB" />
+      <node id="5218334018278925713" at="18,10,20,5" concept="1" />
+      <node id="4652712389471554200" at="33,10,35,5" concept="1" />
+      <node id="3026370834486436804" at="26,58,29,5" concept="7" />
+      <node id="5218334018278924210" at="15,197,20,5" concept="7" />
+      <node id="4652712389471554194" at="30,164,35,5" concept="7" />
+      <node id="5218334018278939036" at="12,0,22,0" concept="14" trace="computeConditionConstant#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
+      <node id="4652712389471554171" at="26,0,37,0" concept="14" trace="getConditionConstant#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
+      <scope id="5218334018278924212" at="16,117,17,48" />
+      <scope id="5218334018278925714" at="18,12,19,18" />
+      <scope id="3026370834486436806" at="27,130,28,18" />
+      <scope id="4652712389471554195" at="31,56,32,48" />
+      <scope id="4652712389471554201" at="33,12,34,18" />
+      <scope id="5218334018278921814" at="12,62,20,5">
         <var name="compileTimeConstantValue" id="5218334018278921846" />
         <var name="isCompileTimeConstant" id="5218334018278921838" />
       </scope>
-      <scope id="4652712389471554172" at="24,58,33,5">
+      <scope id="4652712389471554172" at="26,58,35,5">
         <var name="compileTimeConstantValue" id="4652712389471554180" />
       </scope>
-      <scope id="5218334018278939036" at="10,0,20,0">
+      <scope id="5218334018278939036" at="12,0,22,0">
         <var name="expr" id="5218334018278922343" />
       </scope>
-      <scope id="4652712389471554171" at="24,0,35,0">
+      <scope id="4652712389471554171" at="26,0,37,0">
         <var name="expr" id="4652712389471554214" />
       </scope>
-      <unit id="5218334018278921421" at="9,0,36,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
+      <unit id="5218334018278921421" at="38,0,41,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil$CONCEPTS" />
+      <unit id="5218334018278921421" at="11,0,42,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5351203823917419908">

@@ -5,6 +5,8 @@ package jetbrains.mps.baseLanguage.dataFlow;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConditionUtil {
   public static Boolean computeConditionConstant(SNode expr) {
@@ -22,7 +24,7 @@ public class ConditionUtil {
    * Does not call isCompileTimeConstantValue()
    */
   public static Boolean getConditionConstant(SNode expr) {
-    if (expr == null || SNodeOperations.getModel(expr) == null) {
+    if (expr == null || SNodeOperations.getModel(expr) == null || !(SNodeOperations.isInstanceOf(expr, CONCEPTS.Expression$mB))) {
       return null;
     }
     Object compileTimeConstantValue = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(expr, SNodeOperations.getModel(expr).getModule());
@@ -31,5 +33,9 @@ public class ConditionUtil {
     } else {
       return null;
     }
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

@@ -7,9 +7,8 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -19,13 +18,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_IfStatementBooleanConstantInCondition_NonTypesystemRule() {
   }
   public void applyRule(final SNode ifStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17), CONCEPTS.BooleanConstant$n4) && !(SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17), CONCEPTS.BooleanConstant$n4), PROPS.value$5y_M))) {
+    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17));
+    if (conditionConstant != null && conditionConstant.booleanValue() == false) {
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           {
@@ -47,17 +46,12 @@ public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule exten
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
     /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
     /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }
