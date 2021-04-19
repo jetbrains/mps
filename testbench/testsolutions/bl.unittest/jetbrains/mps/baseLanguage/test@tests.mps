@@ -32800,20 +32800,15 @@
           <node concept="MpOyq" id="6WH019FmHoi" role="3cqZAp">
             <node concept="3clFbS" id="6WH019FmHoj" role="2LFqv$">
               <node concept="3cpWs6" id="6WH019FmHr1" role="3cqZAp" />
-              <node concept="3clFbF" id="6WH019FnBH3" role="3cqZAp">
-                <node concept="2OqwBi" id="6WH019FnBH0" role="3clFbG">
-                  <node concept="10M0yZ" id="6WH019FnBH1" role="2Oq$k0">
-                    <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
-                    <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
-                  </node>
-                  <node concept="liA8E" id="6WH019FnBH2" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
-                  </node>
-                </node>
-              </node>
             </node>
-            <node concept="3clFbT" id="6WH019FmHou" role="MpTkK">
-              <property role="3clFbU" value="true" />
+            <node concept="3eOVzh" id="6WH019I5KUq" role="MpTkK">
+              <node concept="2YIFZM" id="6WH019I5LjO" role="3uHU7w">
+                <ref role="37wK5l" to="wyt6:~System.currentTimeMillis()" resolve="currentTimeMillis" />
+                <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+              </node>
+              <node concept="3cmrfG" id="6WH019I5Jnr" role="3uHU7B">
+                <property role="3cmrfH" value="1" />
+              </node>
             </node>
           </node>
           <node concept="3clFbF" id="6WH019FmHyV" role="3cqZAp">

@@ -13,29 +13,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class IfStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$5R17));
-    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$5R17));
-    if (conditionConstant != null) {
-      if (conditionConstant.booleanValue()) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$5Rg8));
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/874246949135087343");
-          }
-        });
-      } else {
-        _context.getBuilder().emitJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/874246949135089592");
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$5Rg8));
-      }
-    } else {
-      _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1894172621088425982");
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$5Rg8));
-      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) || SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW) != null && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW)).isNotEmpty()) {
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217868921099");
-          }
-        });
-      }
+    _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "endOfTrue"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1894172621088425982");
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.ifTrue$5Rg8));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) || SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW) != null && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW)).isNotEmpty()) {
+      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
+        public void run() {
+          _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217868921099");
+        }
+      });
     }
     _context.getBuilder().emitLabel("endOfTrue");
     for (SNode elseIf : SLinkOperations.getChildren(_context.getNode(), LINKS.elsifClauses$EVJW)) {

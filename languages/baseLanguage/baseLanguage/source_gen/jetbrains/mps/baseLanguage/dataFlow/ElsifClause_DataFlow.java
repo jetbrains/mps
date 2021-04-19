@@ -13,28 +13,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class ElsifClause_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$k0T9));
-    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$k0T9));
-    if (conditionConstant != null) {
-      if (conditionConstant.booleanValue()) {
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$neQf));
-        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-          public void run() {
-            _context.getBuilder().emitJump(_context.getBuilder().after(ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834485903342");
-          }
-        });
-      } else {
-        _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3026370834485900352");
-        _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$neQf));
+    _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206536669330");
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$neQf));
+    _context.getBuilder().emitMayBeUnreachable(new Runnable() {
+      public void run() {
+        _context.getBuilder().emitJump(_context.getBuilder().after(ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217865542485");
       }
-    } else {
-      _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206536669330");
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$neQf));
-      _context.getBuilder().emitMayBeUnreachable(new Runnable() {
-        public void run() {
-          _context.getBuilder().emitJump(_context.getBuilder().after(ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(_context.getNode())), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217865542485");
-        }
-      });
-    }
+    });
   }
 
   private static final class LINKS {
