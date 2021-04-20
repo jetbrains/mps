@@ -949,29 +949,34 @@
     <file name="SwitchStatement_DataFlow.java">
       <node id="1207558674001" at="13,60,14,110" concept="4" />
       <node id="1207558714582" at="15,95,16,174" concept="4" />
-      <node id="1207558718604" at="17,5,18,232" concept="4" />
-      <node id="1207558740566" at="19,95,20,54" concept="4" />
-      <node id="1207558749370" at="21,5,22,112" concept="4" />
-      <node id="1207558671026" at="26,0,27,0" concept="13" trace="expression$CjpY" />
-      <node id="1207558671026" at="27,0,28,0" concept="13" trace="case$8PWE" />
-      <node id="1207558671026" at="28,0,29,0" concept="13" trace="defaultBlock$QOu8" />
+      <node id="1207558718604" at="18,91,19,234" concept="4" />
+      <node id="4056233746971386157" at="20,12,21,187" concept="4" />
+      <node id="1207558740566" at="23,95,24,54" concept="4" />
+      <node id="1207558749370" at="25,5,26,112" concept="4" />
+      <node id="1207558671026" at="30,0,31,0" concept="13" trace="expression$CjpY" />
+      <node id="1207558671026" at="31,0,32,0" concept="13" trace="case$8PWE" />
+      <node id="1207558671026" at="32,0,33,0" concept="13" trace="defaultBlock$QOu8" />
+      <node id="4056233746971386094" at="20,10,22,5" concept="1" />
       <node id="1207558684696" at="14,110,17,5" concept="6" />
-      <node id="1207558728441" at="18,232,21,5" concept="6" />
-      <node id="1207558671026" at="13,0,24,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <node id="1207558728441" at="22,5,25,5" concept="6" />
+      <node id="4056233746956052018" at="17,5,22,5" concept="7" />
+      <node id="1207558671026" at="13,0,28,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207558684697" at="15,95,16,174" />
-      <scope id="1207558728442" at="19,95,20,54" />
+      <scope id="4056233746956052020" at="18,91,19,234" />
+      <scope id="4056233746971386095" at="20,12,21,187" />
+      <scope id="1207558728442" at="23,95,24,54" />
       <scope id="1207558684696" at="14,110,17,5">
         <var name="switchCase" id="1207558684700" />
       </scope>
-      <scope id="1207558728441" at="18,232,21,5">
+      <scope id="1207558728441" at="22,5,25,5">
         <var name="switchCase" id="1207558728445" />
       </scope>
-      <scope id="1207558671028" at="13,60,22,112" />
-      <scope id="1207558671026" at="13,0,24,0">
+      <scope id="1207558671028" at="13,60,26,112" />
+      <scope id="1207558671026" at="13,0,28,0">
         <var name="_context" id="1207558671026" />
       </scope>
-      <unit id="1207558671026" at="25,0,30,0" name="jetbrains.mps.baseLanguage.dataFlow.SwitchStatement_DataFlow$LINKS" />
-      <unit id="1207558671026" at="12,0,31,0" name="jetbrains.mps.baseLanguage.dataFlow.SwitchStatement_DataFlow" />
+      <unit id="1207558671026" at="29,0,34,0" name="jetbrains.mps.baseLanguage.dataFlow.SwitchStatement_DataFlow$LINKS" />
+      <unit id="1207558671026" at="12,0,35,0" name="jetbrains.mps.baseLanguage.dataFlow.SwitchStatement_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207559189249">
