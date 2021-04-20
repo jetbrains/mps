@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.plugins.BasePluginManager;
 import jetbrains.mps.plugins.PluginContributor;
 import jetbrains.mps.plugins.PluginLoaderRegistry;
-import jetbrains.mps.workbench.action.ApplicationPlugin;
-import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
@@ -37,7 +35,7 @@ import java.util.List;
  * Is a {@link BasePluginManager} which is responsible for loading application plugins {@link BaseApplicationPlugin};
  * Triggered from the superclass (#afterPluginsCreated)
  */
-public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements BaseComponent, ApplicationPluginHolder {
+public class ApplicationPluginManager extends BasePluginManager<BaseApplicationPlugin> implements BaseComponent {
   private static final Logger LOG = LogManager.getLogger(ApplicationPluginManager.class);
 
   private final Platform myPlatform;
@@ -54,11 +52,6 @@ public class ApplicationPluginManager extends BasePluginManager<BaseApplicationP
       }
     }
     return null;
-  }
-
-  @Override
-  public ApplicationPlugin getPluginById(PluginId id) {
-    return getPlugin(id);
   }
 
   @Override

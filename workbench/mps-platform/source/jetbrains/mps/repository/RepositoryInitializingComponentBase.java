@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -48,12 +47,10 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
    * Thus we aren't supposed to use idea fs here (according to the idea fs recommendations) and we are using io-based fs.
    *
    * @param coreComponents           -- we want to load bootstrap libraries after we have all core components instatiated
-   * @param registryManager          -- please see {@code ApplicationPluginManager#initComponent()}. fixme get rid of this dep
    * @param ideaPluginFacetComponent -- we want to load plugin library contributor after we have chosen the right idea plugin facet
    */
   @SuppressWarnings("UnusedParameters")
   public RepositoryInitializingComponentBase(MPSCoreComponents coreComponents,
-                                             ApplicationPluginHolder registryManager,
                                              IdeaPluginFacetComponent ideaPluginFacetComponent,
                                              IdeaFileSystem fs
   ) {

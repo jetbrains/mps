@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,13 @@ package jetbrains.mps.repository;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.contributor.PluginLibraryContributor;
-import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 
 public final class RepositoryInPluginInitializer extends RepositoryInitializingComponentBase {
-  @SuppressWarnings("UnusedParameters")
   public RepositoryInPluginInitializer(MPSCoreComponents coreComponents,
-                                       ApplicationPluginHolder registryManager,
                                        IdeaPluginFacetComponent ideaPluginFacetComponent,
                                        IdeaFileSystem fs
   ) {
-    super(coreComponents, registryManager, ideaPluginFacetComponent, fs);
+    super(coreComponents, ideaPluginFacetComponent, fs);
     addContributor(new PluginLibraryContributor(getFS()));
   }
 }

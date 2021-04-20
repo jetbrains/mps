@@ -33,7 +33,6 @@
       <implementation-class>jetbrains.mps.ide.navigation.NavigationSupportImpl</implementation-class>
     </component>
     <component>
-      <interface-class>jetbrains.mps.workbench.action.ApplicationPluginHolder</interface-class>
       <implementation-class>jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager</implementation-class>
     </component>
     <component>
