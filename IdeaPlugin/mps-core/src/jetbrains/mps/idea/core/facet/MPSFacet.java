@@ -16,13 +16,16 @@
 
 package jetbrains.mps.idea.core.facet;
 
+import com.intellij.ProjectTopics;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetType;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
-import jetbrains.mps.extapi.module.SRepositoryExt;
+import com.intellij.openapi.project.ModuleListener;
+import com.intellij.openapi.project.Project;
+import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
@@ -50,6 +53,15 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     super(facetType, module, name, configuration, underlyingFacet);
     myMpsProject = ProjectHelper.fromIdeaProject(module.getProject());
     configuration.setFacet(this);
+    MessageBusConnection busConnection = module.getProject().getMessageBus().connect(this);
+    busConnection.subscribe(ProjectTopics.MODULES, new ModuleListener() {
+      @Override
+      public void moduleAdded(@NotNull Project project, @NotNull Module module) {
+        if (!wasInitialized()) {
+          initFacet();
+        }
+      }
+    });
   }
 
   @Override
@@ -95,7 +107,7 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     repository.getModelAccess().runWriteAction(() -> {
       LOG.info(MPSBundle.message("facet.module.unloaded", mySolution.getModuleName()));
       if (!myMpsProject.isDisposed() && myMpsProject.getProjectModules().contains(mySolution)) {
-        ((SRepositoryExt) repository).unregisterModule(mySolution, myMpsProject);
+        myMpsProject.removeModule(mySolution);
       }
       mySolution = null;
     });

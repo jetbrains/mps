@@ -34,10 +34,7 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.annotations.ApiStatus.Internal;
-import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -134,18 +131,6 @@ public class MPSFacetConfiguration implements FacetConfiguration, PersistentStat
     if (myDefaultState) { // true if MPSFacetConfiguration#loadState(MPSConfigurationBean.State) was not called
       setConfigurationDefaults();
     }
-  }
-  /**
-   * <b>DO NOT USE<b/><br/>
-   *
-   * @param configurationBean to use instead of active one
-   */
-  @Hack
-  @Internal
-  @Deprecated
-  @ScheduledForRemoval(inVersion = "2021.1")
-  /*package*/ void setConfigurationBean(MPSConfigurationBean configurationBean) {
-    myState = configurationBean;
   }
 
   private void setConfigurationDefaults() {
