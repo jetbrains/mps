@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.annotations.Singleton;
 
@@ -28,8 +27,6 @@ import java.io.FilenameFilter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Responsible for different predefined paths in the distribution layout
@@ -181,35 +178,12 @@ public final class PathManager {
   }
 
   public static Collection<String> getBootstrapPaths() {
-    Collection<String> paths = getBootstrapPathsFromLibFolder();
+    Collection<String> paths = new ArrayList<>(4);
     if (new File(getCorePath()).exists()) {
       paths.add(getCorePath());
     }
     if (new File(getEditorPath()).exists()) {
       paths.add(getEditorPath());
-    }
-    return Collections.unmodifiableCollection(paths);
-  }
-
-  /**
-   * @deprecated with no mps modules deployed in lib/*.jar, no reason to look them up there
-   * see https://youtrack.jetbrains.com/issue/MPS-29960
-   */
-  @ToRemove(version = 2019.2)
-  @Deprecated
-  @NotNull
-  private static Collection<String> getBootstrapPathsFromLibFolder() {
-    List<String> paths = new ArrayList<>();
-    File libDir = new File(getLibPath());
-    if (libDir.exists() && libDir.isDirectory()) {
-      // This is to facilitate loading of mps modules from lib/ folder in case there's any distribution out there that depends on this logic.
-      final boolean legacyJars = Boolean.getBoolean("mps.lib.modules.present") || new File(libDir, "mps-modules-present.flag").exists();
-      if (!legacyJars) {
-        return paths;
-      }
-      for (File jar : libDir.listFiles(JAR_FILE_FILTER)) {
-        paths.add(jar.getAbsolutePath());
-      }
     }
     return paths;
   }
