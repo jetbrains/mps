@@ -264,10 +264,21 @@ public class DataFlowUtil {
         continue;
       }
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), CONCEPTS.CatchClause$Ig)) && SNodeOperations.getNodeAncestor(var, CONCEPTS.Quotation$Vl, false, false) == null) {
-        if ((!(SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41)) || SLinkOperations.getTarget(SNodeOperations.cast(var, CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD) == null) && !(SetSequence.fromSet(usedVariables).contains(var))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424", null, errorTarget);
+        if (!(SetSequence.fromSet(usedVariables).contains(var))) {
+          if (!(SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41))) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8937659523942275424", null, errorTarget);
+            }
+          } else if (SLinkOperations.getTarget(SNodeOperations.cast(var, CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD) == null) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "Unused variable", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedLocalVariable_QuickFix", "4056233746948450889", false);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
           }
         }
       }
