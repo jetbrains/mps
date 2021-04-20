@@ -108,7 +108,7 @@ public class ProjectMPSDependenciesTest implements EnvironmentAware {
     final ModulesWatcher modulesWatcher = getModulesWatcher();
     final SRepository repository = getRepository();
     repository.getModelAccess().runWriteAction(() -> {
-      Map<SModuleReference, String> invalidModules2Problems = modulesWatcher.findInvalidModulesProblems();
+      Map<SModuleReference, String> invalidModules2Problems = modulesWatcher.findAndPrintInvalidModulesProblems();
 
       for (SModuleReference mRef : invalidModules2Problems.keySet()) {
         final String msg = String.format("Invalid dependencies (%s) for module %s: %s", levelIndicator, mRef.getModuleName(), invalidModules2Problems.get(mRef));
