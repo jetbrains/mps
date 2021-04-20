@@ -3176,5 +3176,21 @@
     <property role="EcuMT" value="8432949284911505116" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
+  <node concept="1TIwiD" id="1YRcO3NA_w5">
+    <property role="EcuMT" value="2285351689971718149" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="AggregationLinkType" />
+    <property role="34LRSv" value="aggregation" />
+    <property role="R4oN_" value="SContainmentLink projection" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="1YRcO3NA_wL">
+    <property role="EcuMT" value="2285351689971718193" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="AssociationLinkType" />
+    <property role="R4oN_" value="SReferenceLink projection" />
+    <property role="34LRSv" value="association" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
 </model>
 

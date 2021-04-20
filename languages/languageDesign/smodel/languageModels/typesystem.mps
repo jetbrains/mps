@@ -425,6 +425,7 @@
         <reference id="1144195362400" name="conceptOfParent" index="1BmUXE" />
         <reference id="1144195396777" name="linkInParent" index="1Bn3mz" />
       </concept>
+      <concept id="2285351689971718149" name="jetbrains.mps.lang.smodel.structure.AggregationLinkType" flags="ig" index="3GbmH5" />
       <concept id="1172326502327" name="jetbrains.mps.lang.smodel.structure.Concept_IsExactlyOperation" flags="nn" index="3O6GUB">
         <child id="1206733650006" name="conceptArgument" index="3QVz_e" />
       </concept>
@@ -13999,18 +14000,16 @@
     <property role="3GE5qa" value="operation.node" />
     <node concept="3clFbS" id="6w_7fBrSm6x" role="18ibNy">
       <node concept="1Z5TYs" id="6w_7fBrSm6y" role="3cqZAp">
-        <node concept="mw_s8" id="6w_7fBrSm6z" role="1ZfhKB">
-          <node concept="2c44tf" id="6w_7fBrSmC3" role="mwGJk">
-            <node concept="3uibUv" id="6w_7fBrSmEr" role="2c44tc">
-              <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
-            </node>
-          </node>
-        </node>
         <node concept="mw_s8" id="6w_7fBrSm6A" role="1ZfhK$">
           <node concept="1Z2H0r" id="6w_7fBrSm6B" role="mwGJk">
             <node concept="1YBJjd" id="6w_7fBrSm6C" role="1Z2MuG">
               <ref role="1YBMHb" node="6w_7fBrSm6D" resolve="op" />
             </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="1YRcO3NDnGb" role="1ZfhKB">
+          <node concept="2c44tf" id="1YRcO3NDnG7" role="mwGJk">
+            <node concept="3GbmH5" id="1YRcO3NDnHG" role="2c44tc" />
           </node>
         </node>
       </node>
@@ -16327,6 +16326,52 @@
     <node concept="1YaCAy" id="7k7QF7C2e4K" role="1YuTPh">
       <property role="TrG5h" value="node_HasPreviousSiblingOperation" />
       <ref role="1YaFvo" to="tp25:7k7QF7C2dVs" resolve="Node_HasPrevSiblingOperation" />
+    </node>
+  </node>
+  <node concept="2sgARr" id="1YRcO3NAIwi">
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="AggregationLinkTypeSuper" />
+    <node concept="3clFbS" id="1YRcO3NAIwj" role="2sgrp5">
+      <node concept="3cpWs6" id="1YRcO3NAJ8B" role="3cqZAp">
+        <node concept="2pJPEk" id="1YRcO3NAJ98" role="3cqZAk">
+          <node concept="2pJPED" id="1YRcO3NAJ9t" role="2pJPEn">
+            <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
+            <node concept="2pIpSj" id="1YRcO3NAJ9J" role="2pJxcM">
+              <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
+              <node concept="36bGnv" id="1YRcO3NAJa5" role="28nt2d">
+                <ref role="36bGnp" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1YRcO3NAIwl" role="1YuTPh">
+      <property role="TrG5h" value="t" />
+      <ref role="1YaFvo" to="tp25:1YRcO3NA_w5" resolve="AggregationLinkType" />
+    </node>
+  </node>
+  <node concept="2sgARr" id="1YRcO3NAJaS">
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="AssociationLinkTypeSuper" />
+    <node concept="3clFbS" id="1YRcO3NAJaT" role="2sgrp5">
+      <node concept="3cpWs6" id="1YRcO3NAJbM" role="3cqZAp">
+        <node concept="2pJPEk" id="1YRcO3NAJbN" role="3cqZAk">
+          <node concept="2pJPED" id="1YRcO3NAJbO" role="2pJPEn">
+            <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
+            <node concept="2pIpSj" id="1YRcO3NAJbP" role="2pJxcM">
+              <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
+              <node concept="36bGnv" id="1YRcO3NAJcd" role="28nt2d">
+                <ref role="36bGnp" to="c17a:~SReferenceLink" resolve="SReferenceLink" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1YRcO3NAJaV" role="1YuTPh">
+      <property role="TrG5h" value="t" />
+      <ref role="1YaFvo" to="tp25:1YRcO3NA_wL" resolve="AssociationLinkType" />
     </node>
   </node>
 </model>

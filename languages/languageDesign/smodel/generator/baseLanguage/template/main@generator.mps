@@ -775,6 +775,22 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="1YRcO3NAMfd" role="3acgRq">
+      <ref role="30HIoZ" to="tp25:1YRcO3NA_wL" resolve="AssociationLinkType" />
+      <node concept="gft3U" id="1YRcO3NANSw" role="1lVwrX">
+        <node concept="3uibUv" id="1YRcO3NAQaA" role="gfFT$">
+          <ref role="3uigEE" to="c17a:~SReferenceLink" resolve="SReferenceLink" />
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="1YRcO3NAQdF" role="3acgRq">
+      <ref role="30HIoZ" to="tp25:1YRcO3NA_w5" resolve="AggregationLinkType" />
+      <node concept="gft3U" id="1YRcO3NAUMY" role="1lVwrX">
+        <node concept="3uibUv" id="1YRcO3NAUPG" role="gfFT$">
+          <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
+        </node>
+      </node>
+    </node>
     <node concept="3aamgX" id="i1Bn1if" role="3acgRq">
       <ref role="30HIoZ" to="tp25:g_PxgQB" resolve="SNodeTypeCastExpression" />
       <node concept="gft3U" id="i1Bn1ig" role="1lVwrX">

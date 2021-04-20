@@ -14,10 +14,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AbstractPointerResolveOperation;
   private ConceptPresentation props_AbstractTypeCastExpression;
   private ConceptPresentation props_AggregationIdentity;
+  private ConceptPresentation props_AggregationLinkType;
   private ConceptPresentation props_AllAttributeQualifier;
   private ConceptPresentation props_AsNodeOperation;
   private ConceptPresentation props_AsSConcept;
   private ConceptPresentation props_AssociationIdentity;
+  private ConceptPresentation props_AssociationLinkType;
   private ConceptPresentation props_AttributeAccess;
   private ConceptPresentation props_AttributeQualifier;
   private ConceptPresentation props_BootstrapAwareMetaObject;
@@ -252,6 +254,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AggregationIdentity = cpb.create();
         }
         return props_AggregationIdentity;
+      case LanguageConceptSwitch.AggregationLinkType:
+        if (props_AggregationLinkType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("SContainmentLink projection");
+          cpb.rawPresentation("aggregation");
+          props_AggregationLinkType = cpb.create();
+        }
+        return props_AggregationLinkType;
       case LanguageConceptSwitch.AllAttributeQualifier:
         if (props_AllAttributeQualifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -280,6 +290,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AssociationIdentity = cpb.create();
         }
         return props_AssociationIdentity;
+      case LanguageConceptSwitch.AssociationLinkType:
+        if (props_AssociationLinkType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("SReferenceLink projection");
+          cpb.rawPresentation("association");
+          props_AssociationLinkType = cpb.create();
+        }
+        return props_AssociationLinkType;
       case LanguageConceptSwitch.AttributeAccess:
         if (props_AttributeAccess == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -11133,5 +11133,27 @@
       <ref role="PMmxG" node="1lUJQtrPk1t" resolve="AliasComponent" />
     </node>
   </node>
+  <node concept="24kQdi" id="1YRcO3NA_ww">
+    <property role="3GE5qa" value="type" />
+    <ref role="1XX52x" to="tp25:1YRcO3NA_w5" resolve="AggregationLinkType" />
+    <node concept="3F0ifn" id="1YRcO3NA_wy" role="2wV5jI">
+      <property role="3F0ifm" value="aggregation" />
+      <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+      <node concept="3$7jql" id="1YRcO3NA_wJ" role="3F10Kt">
+        <property role="3$6WeP" value="0.0" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1YRcO3NA_VE">
+    <property role="3GE5qa" value="type" />
+    <ref role="1XX52x" to="tp25:1YRcO3NA_wL" resolve="AssociationLinkType" />
+    <node concept="3F0ifn" id="1YRcO3NA_VG" role="2wV5jI">
+      <property role="3F0ifm" value="association" />
+      <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+      <node concept="3$7jql" id="1YRcO3NA_VJ" role="3F10Kt">
+        <property role="3$6WeP" value="0.0" />
+      </node>
+    </node>
+  </node>
 </model>
 

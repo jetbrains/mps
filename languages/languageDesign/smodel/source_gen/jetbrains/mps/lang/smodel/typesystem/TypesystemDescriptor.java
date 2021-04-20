@@ -615,6 +615,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      SubtypingRule_Runtime subtypingRule = new AggregationLinkTypeSuper_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new AssociationLinkTypeSuper_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
       SubtypingRule_Runtime subtypingRule = new supertypesOf_ClassifierTypeSConceptNode_SConceptType_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }
