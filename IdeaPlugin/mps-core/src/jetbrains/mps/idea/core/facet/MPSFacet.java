@@ -80,7 +80,6 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
       myMpsProject.addModule(mySolution = solution);
 
       new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository()).update(mySolution);
-      mySolution.save();
 
       LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleName()));
       IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginManager.getPluginByClassName(MPSFacet.class.getName()));
