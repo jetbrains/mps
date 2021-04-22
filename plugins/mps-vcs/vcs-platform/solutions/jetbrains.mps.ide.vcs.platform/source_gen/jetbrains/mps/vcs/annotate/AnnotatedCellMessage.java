@@ -23,9 +23,11 @@ import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.nodeEditor.DefaultEditorMessage;
+import jetbrains.mps.openapi.editor.cells.CellMessagesUtil;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import jetbrains.mps.nodeEditor.cells.GeometryUtil;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
@@ -84,16 +86,21 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
     return sb.toString();
   }
 
-  public String getRevisionDescription() {
+  /*package*/ String getRevisionDescription() {
     return myCommitsGraphNode.getRevisionDescription(myProject);
   }
 
   @NotNull
-  public EditorCell getCell() {
+  /*package*/ EditorCell getCell() {
     return myCell;
   }
 
-  public Color setColor(Color color) {
+  @Override
+  public EditorCell getCell(EditorComponent editor) {
+    return myCell;
+  }
+
+  /*package*/ Color setColor(Color color) {
     return myColor = color;
   }
 
@@ -102,17 +109,36 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
     return myColor;
   }
 
-  public void showCommitInfo(boolean show) {
+  /*package*/ void showCommitInfo(boolean show) {
     myShowCommitInfo = show;
   }
 
-  public Set<RevisionNodeChange> getChanges() {
+  /*package*/ Set<RevisionNodeChange> getChanges() {
     return myChanges;
   }
 
   @Override
   public boolean acceptCell(EditorCell cell, EditorComponent editor) {
+    if (cellHasOtherBackgroundMessages(cell)) {
+      return false;
+    }
     return myCell == cell;
+  }
+
+  private static boolean cellHasOtherBackgroundMessages(EditorCell cell) {
+    EditorCell parent = cell;
+    while (parent != null) {
+      List<DefaultEditorMessage> messages = CellMessagesUtil.getMessages(parent, DefaultEditorMessage.class);
+      if (ListSequence.fromList(messages).where(new IWhereFilter<DefaultEditorMessage>() {
+        public boolean accept(DefaultEditorMessage it) {
+          return it.isBackground() && !((it instanceof AnnotatedCellMessage || (it instanceof ChangeEditorMessage && !(((ChangeEditorMessage) it).showInEditor()))));
+        }
+      }).isNotEmpty()) {
+        return true;
+      }
+      parent = parent.getParent();
+    }
+    return false;
   }
 
   public CommitsGraphNode getCommitsGraphNode() {
@@ -121,9 +147,13 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   @Override
   public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
-    Rectangle bounds = GeometryUtil.getBounds(myCell);
-    g.setColor(getColor());
-    g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+    if (cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
+      if (!(myCommitsGraphNode.isLocalRevision())) {
+        ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(g, myColor, false);
+      }
+    } else {
+      super.paint(g, editorComponent, cell);
+    }
   }
 
   @Override
@@ -133,7 +163,7 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   @Override
   public int getPriority() {
-    return 1;
+    return -1;
   }
 
   @Override
