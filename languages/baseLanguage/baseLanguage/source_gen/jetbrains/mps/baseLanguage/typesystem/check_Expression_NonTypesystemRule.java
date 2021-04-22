@@ -9,10 +9,17 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.dataFlow.ConditionUtil;
-import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
+import jetbrains.mps.lang.dataFlow.framework.Program;
+import jetbrains.mps.lang.dataFlow.DataFlow;
+import java.util.List;
+import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,6 +33,26 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
     if ((SNodeOperations.hasRole(expr, LINKS.condition$5R17) || SNodeOperations.hasRole(expr, LINKS.condition$k0T9) || SNodeOperations.hasRole(expr, LINKS.condition$KEkM) || SNodeOperations.hasRole(expr, LINKS.condition$UPf8) || SNodeOperations.hasRole(expr, LINKS.condition$wARE))) {
       Boolean conditionConstant = ConditionUtil.getConditionConstant(expr);
       if (conditionConstant != null) {
+        if ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.WhileStatement$Ay) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.DoWhileStatement$9p) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.ForStatement$qV))) {
+          boolean isInfiniteLoop = true;
+          Program program = DataFlow.buildProgram(SNodeOperations.cast(SNodeOperations.getParent(expr), CONCEPTS.AbstractLoopStatement$Xv));
+          List<Instruction> instructions = program.getInstructions();
+          int endInstructionIndex = instructions.size() - 1;
+
+          for (Instruction instruction : instructions) {
+            if ((instruction instanceof JumpInstruction && ((JumpInstruction) instruction).getJumpTo() == endInstructionIndex) || (instruction instanceof IfJumpInstruction && ((IfJumpInstruction) instruction).getJumpTo() == endInstructionIndex) || instruction instanceof RetInstruction) {
+              isInfiniteLoop = false;
+              break;
+            }
+          }
+          if (isInfiniteLoop) {
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SNodeOperations.getParent(expr), "Infinite loop", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867", null, errorTarget);
+            }
+          }
+        }
+
         if (!((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(expr))))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
@@ -59,8 +86,10 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept AbstractLoopStatement$Xv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
     /*package*/ static final SConcept WhileStatement$Ay = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, "jetbrains.mps.baseLanguage.structure.WhileStatement");
     /*package*/ static final SConcept DoWhileStatement$9p = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, "jetbrains.mps.baseLanguage.structure.DoWhileStatement");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
