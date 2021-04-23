@@ -59,7 +59,6 @@
     <classNode dependClassName="jetbrains.mps.extapi.persistence.ModelRootBase" />
     <classNode dependClassName="jetbrains.mps.ide.newModuleDialogs.DescriptorCopyOrganizer" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
-    <classNode dependClassName="jetbrains.mps.library.ModulesMiner" />
     <classNode dependClassName="jetbrains.mps.persistence.MementoImpl" />
     <classNode dependClassName="jetbrains.mps.project.AbstractModule" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
