@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -209,6 +209,15 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
       // Perhaps, this could be approached in another way, by using getOwnedGenerators (see below) and not reporting GD for a LD read from
       // source along with language's DD (ModulesMiner#loadDeploymentDescriptor). I like this approach more as it would keep knowledge
       // about deployment inside MM, however, I'm quite sure that would ruin some code that relies on Language's knowledge about its generators.
+      return;
+    }
+    if (getRepository() == null) {
+      // detached module, can not do anything about registration/un-registration
+      // FIXME perhaps, whole reloadAfterDescriptorChange has to be guarded and get executed for attached modules only, including facet reload
+      //       However, it's too much of a change right before the release, shall try in master, instead.
+      //       Besides, CopyModuleHelper approach with model roots copied for instantiated modules is dubious, why can't
+      //       we copy model root descriptors instead, and have it done prior to module instantiation? In this case,
+      //       we build whole descriptor first, instantiate and register with project, no chances to get here w/o detached module instance.
       return;
     }
     // Fair implementation shall deal with getOwnedGenerators() only, however, at the moment, Generator module needs its source Language module
