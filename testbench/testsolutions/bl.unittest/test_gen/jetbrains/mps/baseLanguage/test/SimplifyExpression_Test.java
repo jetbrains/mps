@@ -215,6 +215,138 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
   public void test_ErrorMessagesCheck4477106456910414383() throws Throwable {
     new TestBody(this).test_ErrorMessagesCheck4477106456910414383();
   }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824910951465() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824910951465();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824910995374() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824910995374();
+  }
+  @Test
+  public void test_NodeTheBinaryLogicalExpressionCheck8933433824910995377() throws Throwable {
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8933433824910995377();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824911524754() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824911524754();
+  }
+  @Test
+  public void test_NodeUnreachableNodeErrorCheck8933433824911278707() throws Throwable {
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck8933433824911278707();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911329695() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911329695();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911244176() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911244176();
+  }
+  @Test
+  public void test_NodeInfiniteLoopCheck8933433824911244180() throws Throwable {
+    new TestBody(this).test_NodeInfiniteLoopCheck8933433824911244180();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824911524121() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824911524121();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911010229() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911010229();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911010541() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911010541();
+  }
+  @Test
+  public void test_NodeTheBinaryLogicalExpressionCheck8933433824911010544() throws Throwable {
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8933433824911010544();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824911524012() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824911524012();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911313249() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911313249();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911279041() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911279041();
+  }
+  @Test
+  public void test_NodeInfiniteLoopCheck8933433824911279045() throws Throwable {
+    new TestBody(this).test_NodeInfiniteLoopCheck8933433824911279045();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824911422122() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824911422122();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck8933433824911381318() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck8933433824911381318();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911364458() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911364458();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck8933433824911399096() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck8933433824911399096();
+  }
+  @Test
+  public void test_NodeTheBinaryLogicalExpressionCheck8933433824911420168() throws Throwable {
+    new TestBody(this).test_NodeTheBinaryLogicalExpressionCheck8933433824911420168();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911420171() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911420171();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824911421489() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824911421489();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck8933433824911468944() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck8933433824911468944();
+  }
+  @Test
+  public void test_NodeUnreachableNodeErrorCheck8933433824911330408() throws Throwable {
+    new TestBody(this).test_NodeUnreachableNodeErrorCheck8933433824911330408();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911452242() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911452242();
+  }
+  @Test
+  public void test_NodeUnusedVariableWarningCheck8933433824911485571() throws Throwable {
+    new TestBody(this).test_NodeUnusedVariableWarningCheck8933433824911485571();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824911506647() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824911506647();
+  }
+  @Test
+  public void test_NodeInfiniteLoopCheck8933433824911523353() throws Throwable {
+    new TestBody(this).test_NodeInfiniteLoopCheck8933433824911523353();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824911422220() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824911422220();
+  }
+  @Test
+  public void test_NodeUnreachableCodeCheck8933433824914728267() throws Throwable {
+    new TestBody(this).test_NodeUnreachableCodeCheck8933433824914728267();
+  }
+  @Test
+  public void test_NodeTheConditionIsAlwaysCheck8933433824914711244() throws Throwable {
+    new TestBody(this).test_NodeTheConditionIsAlwaysCheck8933433824914711244();
+  }
+  @Test
+  public void test_ErrorMessagesCheck8933433824914728445() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8933433824914728445();
+  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -451,6 +583,171 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       SNode nodeToCheck = getRealNodeById("4477106456910351315");
       SNode operation = getRealNodeById("4477106456910414383");
       new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456910425567"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456910420970"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534031039831"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456910420969"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456911667195"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456910411887"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456910972764"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534031039831"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456910972763"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4477106456911687811"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281476789"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281476797"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281476802"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281476812"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281476820"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281476825"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691276097631"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691276097650"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("875204272651629110"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281975565"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281975571"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281975576"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281975579"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("875204272651628941"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281975590"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691281975595"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2403546691278265072"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("875204272651625420"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824910951465() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824910935907");
+      SNode operation = getRealNodeById("8933433824910951465");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824910995374() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824910979920");
+      SNode operation = getRealNodeById("8933433824910995374");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheBinaryLogicalExpressionCheck8933433824910995377() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824910979920");
+      SNode operation = getRealNodeById("8933433824910995377");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression true||true can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824911524754() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824910893555");
+      SNode operation = getRealNodeById("8933433824911524754");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824910935907"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824910979920"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824910979920"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression true||true can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeUnreachableNodeErrorCheck8933433824911278707() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911244159");
+      SNode operation = getRealNodeById("8933433824911278707");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911329695() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911244167");
+      SNode operation = getRealNodeById("8933433824911329695");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911244176() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911244172");
+      SNode operation = getRealNodeById("8933433824911244176");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeInfiniteLoopCheck8933433824911244180() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911244170");
+      SNode operation = getRealNodeById("8933433824911244180");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867"), "Warning: Infinite loop", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824911524121() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911244125");
+      SNode operation = getRealNodeById("8933433824911524121");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911244159"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911244167"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911244172"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911244170"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867"), "Warning: Infinite loop", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911010229() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911010225");
+      SNode operation = getRealNodeById("8933433824911010229");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911010541() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911010537");
+      SNode operation = getRealNodeById("8933433824911010541");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheBinaryLogicalExpressionCheck8933433824911010544() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911010537");
+      SNode operation = getRealNodeById("8933433824911010544");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression true||true can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824911524012() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911001633");
+      SNode operation = getRealNodeById("8933433824911524012");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911010225"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911010537"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911010537"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression true||true can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911313249() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911279032");
+      SNode operation = getRealNodeById("8933433824911313249");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911279041() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911279037");
+      SNode operation = getRealNodeById("8933433824911279041");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeInfiniteLoopCheck8933433824911279045() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911279035");
+      SNode operation = getRealNodeById("8933433824911279045");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867"), "Warning: Infinite loop", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824911422122() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911278994");
+      SNode operation = getRealNodeById("8933433824911422122");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911279032"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911279037"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911279035"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867"), "Warning: Infinite loop", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeUnusedVariableWarningCheck8933433824911381318() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911341548");
+      SNode operation = getRealNodeById("8933433824911381318");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911364458() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911348096");
+      SNode operation = getRealNodeById("8933433824911364458");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeUnusedVariableWarningCheck8933433824911399096() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911381913");
+      SNode operation = getRealNodeById("8933433824911399096");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheBinaryLogicalExpressionCheck8933433824911420168() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911400901");
+      SNode operation = getRealNodeById("8933433824911420168");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression true||true can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911420171() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911400901");
+      SNode operation = getRealNodeById("8933433824911420171");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824911421489() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911330364");
+      SNode operation = getRealNodeById("8933433824911421489");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911341548"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911348096"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911381913"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911400901"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression true||true can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911400901"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeUnusedVariableWarningCheck8933433824911468944() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911422351");
+      SNode operation = getRealNodeById("8933433824911468944");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeUnreachableNodeErrorCheck8933433824911330408() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911330403");
+      SNode operation = getRealNodeById("8933433824911330408");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911452242() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911435538");
+      SNode operation = getRealNodeById("8933433824911452242");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeUnusedVariableWarningCheck8933433824911485571() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911469004");
+      SNode operation = getRealNodeById("8933433824911485571");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824911506647() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911490753");
+      SNode operation = getRealNodeById("8933433824911506647");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeInfiniteLoopCheck8933433824911523353() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911469003");
+      SNode operation = getRealNodeById("8933433824911523353");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867"), "Warning: Infinite loop", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824911422220() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824911330397");
+      SNode operation = getRealNodeById("8933433824911422220");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911422351"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911330403"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831870510169"), "Error: Unreachable node ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911435538"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911469004"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4056233746948448436"), "Warning: Unused variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911490753"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824911469003"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4143744209477142867"), "Warning: Infinite loop", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    }
+    public void test_NodeUnreachableCodeCheck8933433824914728267() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824912667486");
+      SNode operation = getRealNodeById("8933433824914728267");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeTheConditionIsAlwaysCheck8933433824914711244() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824912666839");
+      SNode operation = getRealNodeById("8933433824914711244");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_ErrorMessagesCheck8933433824914728445() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8933433824912639329");
+      SNode operation = getRealNodeById("8933433824914728445");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824912667486"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8933433824912666839"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
 
   }
