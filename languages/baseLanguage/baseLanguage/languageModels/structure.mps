@@ -4825,5 +4825,20 @@
       <ref role="PrY4T" node="hxndl_i" resolve="IMethodCall" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6vzydrFu8hP">
+    <property role="EcuMT" value="7485977462274819189" />
+    <property role="3GE5qa" value="ext.string.expression" />
+    <property role="TrG5h" value="FormatOperation" />
+    <property role="34LRSv" value="format" />
+    <property role="R4oN_" value="Format string using printf semantics" />
+    <ref role="1TJDcQ" node="hP7R8Qx" resolve="BaseStringOperation" />
+    <node concept="1TJgyj" id="6vzydrFu8pg" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="arguments" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <property role="IQ2ns" value="7485977462274819664" />
+      <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
 </model>
 

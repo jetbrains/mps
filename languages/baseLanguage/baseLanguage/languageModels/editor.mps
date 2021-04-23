@@ -70490,5 +70490,31 @@
     </node>
     <node concept="22hDWj" id="6$k2MUxhWq7" role="22hAXT" />
   </node>
+  <node concept="24kQdi" id="6vzydrFubLo">
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="1XX52x" to="tpee:6vzydrFu8hP" resolve="FormatOperation" />
+    <node concept="3EZMnI" id="6vzydrFubLs" role="2wV5jI">
+      <node concept="2iRfu4" id="6vzydrFubLt" role="2iSdaV" />
+      <node concept="PMmxH" id="6vzydrFubLq" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+        <ref role="1k5W1q" node="hFITtyA" resolve="CompactKeyWord" />
+        <node concept="VPxyj" id="6vzydrFusSk" role="3F10Kt" />
+      </node>
+      <node concept="3F0ifn" id="6vzydrFubL_" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" node="hY9fg1G" resolve="LeftParenAfterName" />
+      </node>
+      <node concept="3F2HdR" id="6vzydrFubLS" role="3EZMnx">
+        <property role="2czwfO" value="," />
+        <property role="1cu_pB" value="gtguBGO/firstEditableCell" />
+        <ref role="1NtTu8" to="tpee:6vzydrFu8pg" resolve="arguments" />
+        <node concept="2iRfu4" id="6vzydrFubLU" role="2czzBx" />
+      </node>
+      <node concept="3F0ifn" id="6vzydrFubLM" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" node="hFCSUmN" resolve="RightParen" />
+      </node>
+    </node>
+  </node>
 </model>
 
