@@ -58,8 +58,8 @@ public final class CopyModuleHelper {
     ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName, myCopyLocation).copyDescriptor();
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
-      copyModelsAndFacets(copy);
       addModuleToProject(copy);
+      copyModelsAndFacets(copy);
       adjustReferences(copy);
     } catch (CopyNotSupportedException e) {
       return recover(e, copy);
