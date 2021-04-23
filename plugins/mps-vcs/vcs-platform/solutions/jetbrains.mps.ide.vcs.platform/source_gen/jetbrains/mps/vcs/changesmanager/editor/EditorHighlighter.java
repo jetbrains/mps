@@ -12,6 +12,7 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.vcs.changesmanager.CurrentDifference;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
@@ -29,6 +30,11 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
+import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.IMapping;
+import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.nodeEditor.NodeHighlightManager;
@@ -44,8 +50,13 @@ public class EditorHighlighter implements EditorMessageOwner {
   private MyCurrentDifferenceListener myListener;
   private final Object myDisposedLock = new Object();
   private boolean myDisposed = false;
+  private final SNodeChangeListener myNodeChangeListener;
+
   public EditorHighlighter(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
+
+    myNodeChangeListener = createNodeChangeListener();
+    check_urq9my_a3a9(editorComponent.getEditorContext().getModel(), myNodeChangeListener);
 
     CurrentDifferenceRegistry.getInstance(project).getCommandQueue().runTask(new Runnable() {
       public void run() {
@@ -107,6 +118,7 @@ public class EditorHighlighter implements EditorMessageOwner {
       }
     });
   }
+
   private List<ChangeEditorMessage> createMessages(final ModelChange change) {
     final Wrappers._T<List<ChangeEditorMessage>> messages = new Wrappers._T<List<ChangeEditorMessage>>(null);
     if (!(change instanceof AddRootChange)) {
@@ -133,6 +145,7 @@ public class EditorHighlighter implements EditorMessageOwner {
     }
     return messages.value;
   }
+
   private List<ChangeEditorMessage> removeMessages(ModelChange change) {
     synchronized (myChangesMessages) {
       List<ChangeEditorMessage> messages = MapSequence.fromMap(myChangesMessages).get(change);
@@ -147,14 +160,46 @@ public class EditorHighlighter implements EditorMessageOwner {
       return messages;
     }
   }
+
   /*package*/ List<ChangeEditorMessage> getMessages(ModelChange change) {
     synchronized (myChangesMessages) {
       return MapSequence.fromMap(myChangesMessages).get(change);
     }
   }
+
+  private SNodeChangeListener createNodeChangeListener() {
+    return new SNodeChangeListenerAdapter() {
+      @Override
+      public void nodeRemoved(@NotNull final SNodeRemoveEvent p1) {
+        synchronized (myChangesMessages) {
+          final List<ChangeEditorMessage> removedNodeMessages = MapSequence.fromMap(myChangesMessages).translate(new ITranslator2<IMapping<ModelChange, List<ChangeEditorMessage>>, ChangeEditorMessage>() {
+            public Iterable<ChangeEditorMessage> translate(IMapping<ModelChange, List<ChangeEditorMessage>> it) {
+              return it.value();
+            }
+          }).where(new IWhereFilter<ChangeEditorMessage>() {
+            public boolean accept(ChangeEditorMessage it) {
+              return Objects.equals(it.getNode(), p1.getChild());
+            }
+          }).toListSequence();
+          ListSequence.fromList(removedNodeMessages).visitAll(new IVisitor<ChangeEditorMessage>() {
+            public void visit(ChangeEditorMessage message) {
+              getHighlightManager().unmark(message);
+            }
+          });
+          Sequence.fromIterable(MapSequence.fromMap(myChangesMessages).values()).visitAll(new IVisitor<List<ChangeEditorMessage>>() {
+            public void visit(List<ChangeEditorMessage> messages) {
+              ListSequence.fromList(messages).removeSequence(ListSequence.fromList(removedNodeMessages));
+            }
+          });
+        }
+      }
+    };
+  }
+
   public void dispose() {
     synchronized (myDisposedLock) {
       myDisposed = true;
+      check_urq9my_a1a0a91(myEditorComponent.getEditorContext().getModel(), myNodeChangeListener);
       try {
         synchronized (myChangesMessages) {
           SetSequence.fromSet(MapSequence.fromMap(myChangesMessages).keySet()).toListSequence().visitAll(new IVisitor<ModelChange>() {
@@ -176,19 +221,24 @@ public class EditorHighlighter implements EditorMessageOwner {
       }
     }
   }
+
   @Nullable
   /*package*/ ChangeSet getChangeSet() {
-    return check_urq9my_a0a21(myCurrentDifference);
+    return check_urq9my_a0a12(myCurrentDifference);
   }
+
   /*package*/ ChangeStripsPainter getStripsPainter() {
     return myStripsPainter;
   }
+
   /*package*/ EditorComponent getEditorComponent() {
     return myEditorComponent;
   }
+
   /*package*/ NodeHighlightManager getHighlightManager() {
     return myEditorComponent.getHighlightManager();
   }
+
   /*package*/ LeftEditorHighlighter getLeftEditorHighlighter() {
     return myEditorComponent.getLeftEditorHighlighter();
   }
@@ -227,20 +277,32 @@ public class EditorHighlighter implements EditorMessageOwner {
         for (ChangeEditorMessage addedMessage : ListSequence.fromList(myAddedMessages)) {
           nodeHighlightManager.mark(addedMessage);
         }
-        check_urq9my_a3a1a9s(myStripsPainter);
+        check_urq9my_a3a1a9fb(myStripsPainter);
         nodeHighlightManager.repaintAndRebuildEditorMessages();
         ListSequence.fromList(myAddedMessages).clear();
         ListSequence.fromList(myRemovedMessages).clear();
       }
     }
   }
-  private static ChangeSet check_urq9my_a0a21(CurrentDifference checkedDotOperand) {
+  private static void check_urq9my_a3a9(SModel checkedDotOperand, SNodeChangeListener myNodeChangeListener) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.addChangeListener(myNodeChangeListener);
+    }
+
+  }
+  private static void check_urq9my_a1a0a91(SModel checkedDotOperand, SNodeChangeListener myNodeChangeListener) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.removeChangeListener(myNodeChangeListener);
+    }
+
+  }
+  private static ChangeSet check_urq9my_a0a12(CurrentDifference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getChangeSet();
     }
     return null;
   }
-  private static void check_urq9my_a3a1a9s(ChangeStripsPainter checkedDotOperand) {
+  private static void check_urq9my_a3a1a9fb(ChangeStripsPainter checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.relayout();
     }
