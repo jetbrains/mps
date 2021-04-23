@@ -39,7 +39,6 @@
     <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
     <module reference="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" version="0" />
     <module reference="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
     <module reference="3fc14276-ff75-4463-b4c4-05d9bc114fcd(jetbrains.mps.samples.customAspect.documentation.pluginSolution)" version="0" />
     <module reference="dd209277-71c0-4f07-bfb3-3a07a1dce2ee(jetbrains.mps.samples.customAspect.documentation.runtime)" version="0" />
   </dependencyVersions>

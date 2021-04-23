@@ -37,7 +37,6 @@
     <module reference="f4221d3d-7652-4403-b74b-cf2957188acb(jetbrains.mps.build.mps.runner.test.test1)" version="0" />
     <module reference="07566df8-279c-48af-b73c-c8a1a451c7b2(jetbrains.mps.build.mps.runner.test.test5)" version="0" />
     <module reference="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
   </dependencyVersions>
 </solution>
 

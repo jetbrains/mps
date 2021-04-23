@@ -32,7 +32,6 @@
     <module reference="cad2e8db-5f5f-4f27-9421-1daa5ada30ca(TestRulesConstraints)" version="0" />
     <module reference="fc39d726-4089-464a-8fc1-5f71edfdf03b(constraints.rules.test)" version="0" />
     <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
   </dependencyVersions>
 </solution>
 
