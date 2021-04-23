@@ -1048,7 +1048,7 @@
   <node concept="25R3W" id="3Ftr4R6BFyl">
     <property role="TrG5h" value="LinkMetaclass" />
     <property role="3F6X1D" value="1084199179703" />
-    <ref role="1H5jkz" node="3Ftr4R6BFyn" resolve="reference" />
+    <ref role="1H5jkz" node="3Ftr4R6BFyn" resolve="association" />
     <node concept="2JgGob" id="3Ftr4R6BFym" role="lGtFl">
       <property role="3scbB" value="5CkWgdpp3eY/string_name" />
       <property role="3sfsH" value="5CkWgdpp0p1/by_name" />
@@ -1069,7 +1069,7 @@
       </node>
     </node>
     <node concept="25R33" id="3Ftr4R6BFyn" role="25R1y">
-      <property role="TrG5h" value="reference" />
+      <property role="TrG5h" value="association" />
       <property role="3tVfz5" value="1084199179704" />
       <ref role="2wpffI" node="fLJjDmS" />
     </node>

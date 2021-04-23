@@ -6154,7 +6154,7 @@
     </node>
     <node concept="312cEg" id="tX" role="jymVt">
       <property role="3TUv4t" value="true" />
-      <property role="TrG5h" value="myMember_reference_0" />
+      <property role="TrG5h" value="myMember_association_0" />
       <uo k="s:originTrace" v="n:4241665505353447573" />
       <node concept="3Tm6S6" id="um" role="1B3o_S">
         <uo k="s:originTrace" v="n:4241665505353447573" />
@@ -6169,11 +6169,11 @@
           <ref role="37wK5l" to="ze1i:~EnumerationDescriptor$MemberDescriptor.&lt;init&gt;(java.lang.String,java.lang.String,long,java.lang.String,java.lang.String,java.lang.String)" resolve="EnumerationDescriptor.MemberDescriptor" />
           <uo k="s:originTrace" v="n:4241665505353447573" />
           <node concept="Xl_RD" id="uq" role="37wK5m">
-            <property role="Xl_RC" value="reference" />
+            <property role="Xl_RC" value="association" />
             <uo k="s:originTrace" v="n:4241665505353447573" />
           </node>
           <node concept="Xl_RD" id="ur" role="37wK5m">
-            <property role="Xl_RC" value="reference" />
+            <property role="Xl_RC" value="association" />
             <uo k="s:originTrace" v="n:4241665505353447573" />
           </node>
           <node concept="1adDum" id="us" role="37wK5m">
@@ -6310,7 +6310,7 @@
             <uo k="s:originTrace" v="n:4241665505353447573" />
           </node>
           <node concept="37vLTw" id="uS" role="37wK5m">
-            <ref role="3cqZAo" node="tX" resolve="myMember_reference_0" />
+            <ref role="3cqZAo" node="tX" resolve="myMember_association_0" />
             <uo k="s:originTrace" v="n:4241665505353447573" />
           </node>
           <node concept="37vLTw" id="uT" role="37wK5m">
@@ -6342,7 +6342,7 @@
         <node concept="3clFbF" id="uZ" role="3cqZAp">
           <uo k="s:originTrace" v="n:4241665505353447573" />
           <node concept="37vLTw" id="v0" role="3clFbG">
-            <ref role="3cqZAo" node="tX" resolve="myMember_reference_0" />
+            <ref role="3cqZAo" node="tX" resolve="myMember_association_0" />
             <uo k="s:originTrace" v="n:4241665505353447573" />
           </node>
         </node>
@@ -6450,7 +6450,7 @@
           <node concept="3KbdKl" id="vr" role="3KbHQx">
             <uo k="s:originTrace" v="n:4241665505353447573" />
             <node concept="Xl_RD" id="vt" role="3Kbmr1">
-              <property role="Xl_RC" value="reference" />
+              <property role="Xl_RC" value="association" />
               <uo k="s:originTrace" v="n:4241665505353447573" />
             </node>
             <node concept="3clFbS" id="vu" role="3Kbo56">
@@ -6458,7 +6458,7 @@
               <node concept="3cpWs6" id="vv" role="3cqZAp">
                 <uo k="s:originTrace" v="n:4241665505353447573" />
                 <node concept="37vLTw" id="vw" role="3cqZAk">
-                  <ref role="3cqZAo" node="tX" resolve="myMember_reference_0" />
+                  <ref role="3cqZAo" node="tX" resolve="myMember_association_0" />
                   <uo k="s:originTrace" v="n:4241665505353447573" />
                 </node>
               </node>
@@ -8590,243 +8590,243 @@
         </node>
       </node>
       <node concept="39e2AG" id="Ct" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp3f6" resolve="boolean" />
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFyn" resolve="association" />
         <node concept="385nmt" id="Da" role="385vvn">
-          <property role="385vuF" value="boolean" />
+          <property role="385vuF" value="association" />
           <node concept="3u3nmq" id="Dc" role="385v07">
-            <property role="3u3nmv" value="6491077959634662342" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Db" role="39e2AY">
-          <ref role="39e2AS" node="$L" resolve="myMember_boolean_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="Cu" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp0p5" resolve="by_custom_methods" />
-        <node concept="385nmt" id="Dd" role="385vvn">
-          <property role="385vuF" value="by_custom_methods" />
-          <node concept="3u3nmq" id="Df" role="385v07">
-            <property role="3u3nmv" value="6491077959634650693" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="De" role="39e2AY">
-          <ref role="39e2AS" node="w6" resolve="myMember_by_custom_methods_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="Cv" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp3fo" resolve="by_custom_methods" />
-        <node concept="385nmt" id="Dg" role="385vvn">
-          <property role="385vuF" value="by_custom_methods" />
-          <node concept="3u3nmq" id="Di" role="385v07">
-            <property role="3u3nmv" value="6491077959634662360" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dh" role="39e2AY">
-          <ref role="39e2AS" node="$O" resolve="myMember_by_custom_methods_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="Cw" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp0p1" resolve="by_name" />
-        <node concept="385nmt" id="Dj" role="385vvn">
-          <property role="385vuF" value="by_name" />
-          <node concept="3u3nmq" id="Dl" role="385v07">
-            <property role="3u3nmv" value="6491077959634650689" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dk" role="39e2AY">
-          <ref role="39e2AS" node="w4" resolve="myMember_by_name_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="Cx" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp0p2" resolve="by_presentation" />
-        <node concept="385nmt" id="Dm" role="385vvn">
-          <property role="385vuF" value="by_presentation" />
-          <node concept="3u3nmq" id="Do" role="385v07">
-            <property role="3u3nmv" value="6491077959634650690" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dn" role="39e2AY">
-          <ref role="39e2AS" node="w5" resolve="myMember_by_presentation_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="Cy" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFyt" resolve="custom" />
-        <node concept="385nmt" id="Dp" role="385vvn">
-          <property role="385vuF" value="custom" />
-          <node concept="3u3nmq" id="Dr" role="385v07">
-            <property role="3u3nmv" value="4241665505353447581" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dq" role="39e2AY">
-          <ref role="39e2AS" node="pd" resolve="myMember_custom_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="Cz" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFys" resolve="derive_from_internal_value" />
-        <node concept="385nmt" id="Ds" role="385vvn">
-          <property role="385vuF" value="derive_from_internal_value" />
-          <node concept="3u3nmq" id="Du" role="385v07">
-            <property role="3u3nmv" value="4241665505353447580" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dt" role="39e2AY">
-          <ref role="39e2AS" node="pc" resolve="myMember_derive_from_internal_value_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="C$" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFyr" resolve="derive_from_presentation" />
-        <node concept="385nmt" id="Dv" role="385vvn">
-          <property role="385vuF" value="derive_from_presentation" />
-          <node concept="3u3nmq" id="Dx" role="385v07">
-            <property role="3u3nmv" value="4241665505353447579" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dw" role="39e2AY">
-          <ref role="39e2AS" node="pb" resolve="myMember_derive_from_presentation_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="C_" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFyy" resolve="forbidden" />
-        <node concept="385nmt" id="Dy" role="385vvn">
-          <property role="385vuF" value="forbidden" />
-          <node concept="3u3nmq" id="D$" role="385v07">
-            <property role="3u3nmv" value="4241665505353447586" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="Dz" role="39e2AY">
-          <ref role="39e2AS" node="rA" resolve="myMember_forbidden_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CA" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFzz" resolve="forbidden" />
-        <node concept="385nmt" id="D_" role="385vvn">
-          <property role="385vuF" value="forbidden" />
-          <node concept="3u3nmq" id="DB" role="385v07">
-            <property role="3u3nmv" value="4241665505353447651" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DA" role="39e2AY">
-          <ref role="39e2AS" node="ki" resolve="myMember_forbidden_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CB" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BF$y" resolve="global" />
-        <node concept="385nmt" id="DC" role="385vvn">
-          <property role="385vuF" value="global" />
-          <node concept="3u3nmq" id="DE" role="385v07">
-            <property role="3u3nmv" value="4241665505353447714" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DD" role="39e2AY">
-          <ref role="39e2AS" node="ym" resolve="myMember_global_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CC" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp3fb" resolve="int_ordinal" />
-        <node concept="385nmt" id="DF" role="385vvn">
-          <property role="385vuF" value="int_ordinal" />
-          <node concept="3u3nmq" id="DH" role="385v07">
-            <property role="3u3nmv" value="6491077959634662347" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DG" role="39e2AY">
-          <ref role="39e2AS" node="$M" resolve="myMember_int_ordinal_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CD" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:5CkWgdpp3fh" resolve="int_ordinal_plus_one" />
-        <node concept="385nmt" id="DI" role="385vvn">
-          <property role="385vuF" value="int_ordinal_plus_one" />
-          <node concept="3u3nmq" id="DK" role="385v07">
-            <property role="3u3nmv" value="6491077959634662353" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DJ" role="39e2AY">
-          <ref role="39e2AS" node="$N" resolve="myMember_int_ordinal_plus_one_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CE" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFyx" resolve="local" />
-        <node concept="385nmt" id="DL" role="385vvn">
-          <property role="385vuF" value="local" />
-          <node concept="3u3nmq" id="DN" role="385v07">
-            <property role="3u3nmv" value="4241665505353447585" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DM" role="39e2AY">
-          <ref role="39e2AS" node="r_" resolve="myMember_local_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CF" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFzy" resolve="local" />
-        <node concept="385nmt" id="DO" role="385vvn">
-          <property role="385vuF" value="local" />
-          <node concept="3u3nmq" id="DQ" role="385v07">
-            <property role="3u3nmv" value="4241665505353447650" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DP" role="39e2AY">
-          <ref role="39e2AS" node="kh" resolve="myMember_local_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CG" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:2UidVq6Wu$U" resolve="memberToName" />
-        <node concept="385nmt" id="DR" role="385vvn">
-          <property role="385vuF" value="memberToName" />
-          <node concept="3u3nmq" id="DT" role="385v07">
-            <property role="3u3nmv" value="3355805929432017210" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DS" role="39e2AY">
-          <ref role="39e2AS" node="mF" resolve="myMember_memberToName_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CH" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:2UidVq6Wu$Q" resolve="memberToValue" />
-        <node concept="385nmt" id="DU" role="385vvn">
-          <property role="385vuF" value="memberToValue" />
-          <node concept="3u3nmq" id="DW" role="385v07">
-            <property role="3u3nmv" value="3355805929432017206" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DV" role="39e2AY">
-          <ref role="39e2AS" node="mD" resolve="myMember_memberToValue_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CI" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:2UidVq6Wu$Y" resolve="nameToMember" />
-        <node concept="385nmt" id="DX" role="385vvn">
-          <property role="385vuF" value="nameToMember" />
-          <node concept="3u3nmq" id="DZ" role="385v07">
-            <property role="3u3nmv" value="3355805929432017214" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="DY" role="39e2AY">
-          <ref role="39e2AS" node="mG" resolve="myMember_nameToMember_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CJ" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BF$$" resolve="none" />
-        <node concept="385nmt" id="E0" role="385vvn">
-          <property role="385vuF" value="none" />
-          <node concept="3u3nmq" id="E2" role="385v07">
-            <property role="3u3nmv" value="4241665505353447716" />
-          </node>
-        </node>
-        <node concept="39e2AT" id="E1" role="39e2AY">
-          <ref role="39e2AS" node="yo" resolve="myMember_none_0" />
-        </node>
-      </node>
-      <node concept="39e2AG" id="CK" role="39e3Y0">
-        <ref role="39e2AK" to="tpce:3Ftr4R6BFyn" resolve="reference" />
-        <node concept="385nmt" id="E3" role="385vvn">
-          <property role="385vuF" value="reference" />
-          <node concept="3u3nmq" id="E5" role="385v07">
             <property role="3u3nmv" value="4241665505353447575" />
           </node>
         </node>
+        <node concept="39e2AT" id="Db" role="39e2AY">
+          <ref role="39e2AS" node="tX" resolve="myMember_association_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Cu" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp3f6" resolve="boolean" />
+        <node concept="385nmt" id="Dd" role="385vvn">
+          <property role="385vuF" value="boolean" />
+          <node concept="3u3nmq" id="Df" role="385v07">
+            <property role="3u3nmv" value="6491077959634662342" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="De" role="39e2AY">
+          <ref role="39e2AS" node="$L" resolve="myMember_boolean_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Cv" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp0p5" resolve="by_custom_methods" />
+        <node concept="385nmt" id="Dg" role="385vvn">
+          <property role="385vuF" value="by_custom_methods" />
+          <node concept="3u3nmq" id="Di" role="385v07">
+            <property role="3u3nmv" value="6491077959634650693" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dh" role="39e2AY">
+          <ref role="39e2AS" node="w6" resolve="myMember_by_custom_methods_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Cw" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp3fo" resolve="by_custom_methods" />
+        <node concept="385nmt" id="Dj" role="385vvn">
+          <property role="385vuF" value="by_custom_methods" />
+          <node concept="3u3nmq" id="Dl" role="385v07">
+            <property role="3u3nmv" value="6491077959634662360" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dk" role="39e2AY">
+          <ref role="39e2AS" node="$O" resolve="myMember_by_custom_methods_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Cx" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp0p1" resolve="by_name" />
+        <node concept="385nmt" id="Dm" role="385vvn">
+          <property role="385vuF" value="by_name" />
+          <node concept="3u3nmq" id="Do" role="385v07">
+            <property role="3u3nmv" value="6491077959634650689" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dn" role="39e2AY">
+          <ref role="39e2AS" node="w4" resolve="myMember_by_name_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Cy" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp0p2" resolve="by_presentation" />
+        <node concept="385nmt" id="Dp" role="385vvn">
+          <property role="385vuF" value="by_presentation" />
+          <node concept="3u3nmq" id="Dr" role="385v07">
+            <property role="3u3nmv" value="6491077959634650690" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dq" role="39e2AY">
+          <ref role="39e2AS" node="w5" resolve="myMember_by_presentation_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="Cz" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFyt" resolve="custom" />
+        <node concept="385nmt" id="Ds" role="385vvn">
+          <property role="385vuF" value="custom" />
+          <node concept="3u3nmq" id="Du" role="385v07">
+            <property role="3u3nmv" value="4241665505353447581" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dt" role="39e2AY">
+          <ref role="39e2AS" node="pd" resolve="myMember_custom_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="C$" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFys" resolve="derive_from_internal_value" />
+        <node concept="385nmt" id="Dv" role="385vvn">
+          <property role="385vuF" value="derive_from_internal_value" />
+          <node concept="3u3nmq" id="Dx" role="385v07">
+            <property role="3u3nmv" value="4241665505353447580" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dw" role="39e2AY">
+          <ref role="39e2AS" node="pc" resolve="myMember_derive_from_internal_value_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="C_" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFyr" resolve="derive_from_presentation" />
+        <node concept="385nmt" id="Dy" role="385vvn">
+          <property role="385vuF" value="derive_from_presentation" />
+          <node concept="3u3nmq" id="D$" role="385v07">
+            <property role="3u3nmv" value="4241665505353447579" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="Dz" role="39e2AY">
+          <ref role="39e2AS" node="pb" resolve="myMember_derive_from_presentation_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CA" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFyy" resolve="forbidden" />
+        <node concept="385nmt" id="D_" role="385vvn">
+          <property role="385vuF" value="forbidden" />
+          <node concept="3u3nmq" id="DB" role="385v07">
+            <property role="3u3nmv" value="4241665505353447586" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DA" role="39e2AY">
+          <ref role="39e2AS" node="rA" resolve="myMember_forbidden_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CB" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFzz" resolve="forbidden" />
+        <node concept="385nmt" id="DC" role="385vvn">
+          <property role="385vuF" value="forbidden" />
+          <node concept="3u3nmq" id="DE" role="385v07">
+            <property role="3u3nmv" value="4241665505353447651" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DD" role="39e2AY">
+          <ref role="39e2AS" node="ki" resolve="myMember_forbidden_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CC" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BF$y" resolve="global" />
+        <node concept="385nmt" id="DF" role="385vvn">
+          <property role="385vuF" value="global" />
+          <node concept="3u3nmq" id="DH" role="385v07">
+            <property role="3u3nmv" value="4241665505353447714" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DG" role="39e2AY">
+          <ref role="39e2AS" node="ym" resolve="myMember_global_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CD" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp3fb" resolve="int_ordinal" />
+        <node concept="385nmt" id="DI" role="385vvn">
+          <property role="385vuF" value="int_ordinal" />
+          <node concept="3u3nmq" id="DK" role="385v07">
+            <property role="3u3nmv" value="6491077959634662347" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DJ" role="39e2AY">
+          <ref role="39e2AS" node="$M" resolve="myMember_int_ordinal_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CE" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:5CkWgdpp3fh" resolve="int_ordinal_plus_one" />
+        <node concept="385nmt" id="DL" role="385vvn">
+          <property role="385vuF" value="int_ordinal_plus_one" />
+          <node concept="3u3nmq" id="DN" role="385v07">
+            <property role="3u3nmv" value="6491077959634662353" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DM" role="39e2AY">
+          <ref role="39e2AS" node="$N" resolve="myMember_int_ordinal_plus_one_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CF" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFyx" resolve="local" />
+        <node concept="385nmt" id="DO" role="385vvn">
+          <property role="385vuF" value="local" />
+          <node concept="3u3nmq" id="DQ" role="385v07">
+            <property role="3u3nmv" value="4241665505353447585" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DP" role="39e2AY">
+          <ref role="39e2AS" node="r_" resolve="myMember_local_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CG" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BFzy" resolve="local" />
+        <node concept="385nmt" id="DR" role="385vvn">
+          <property role="385vuF" value="local" />
+          <node concept="3u3nmq" id="DT" role="385v07">
+            <property role="3u3nmv" value="4241665505353447650" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DS" role="39e2AY">
+          <ref role="39e2AS" node="kh" resolve="myMember_local_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CH" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:2UidVq6Wu$U" resolve="memberToName" />
+        <node concept="385nmt" id="DU" role="385vvn">
+          <property role="385vuF" value="memberToName" />
+          <node concept="3u3nmq" id="DW" role="385v07">
+            <property role="3u3nmv" value="3355805929432017210" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DV" role="39e2AY">
+          <ref role="39e2AS" node="mF" resolve="myMember_memberToName_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CI" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:2UidVq6Wu$Q" resolve="memberToValue" />
+        <node concept="385nmt" id="DX" role="385vvn">
+          <property role="385vuF" value="memberToValue" />
+          <node concept="3u3nmq" id="DZ" role="385v07">
+            <property role="3u3nmv" value="3355805929432017206" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="DY" role="39e2AY">
+          <ref role="39e2AS" node="mD" resolve="myMember_memberToValue_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CJ" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:2UidVq6Wu$Y" resolve="nameToMember" />
+        <node concept="385nmt" id="E0" role="385vvn">
+          <property role="385vuF" value="nameToMember" />
+          <node concept="3u3nmq" id="E2" role="385v07">
+            <property role="3u3nmv" value="3355805929432017214" />
+          </node>
+        </node>
+        <node concept="39e2AT" id="E1" role="39e2AY">
+          <ref role="39e2AS" node="mG" resolve="myMember_nameToMember_0" />
+        </node>
+      </node>
+      <node concept="39e2AG" id="CK" role="39e3Y0">
+        <ref role="39e2AK" to="tpce:3Ftr4R6BF$$" resolve="none" />
+        <node concept="385nmt" id="E3" role="385vvn">
+          <property role="385vuF" value="none" />
+          <node concept="3u3nmq" id="E5" role="385v07">
+            <property role="3u3nmv" value="4241665505353447716" />
+          </node>
+        </node>
         <node concept="39e2AT" id="E4" role="39e2AY">
-          <ref role="39e2AS" node="tX" resolve="myMember_reference_0" />
+          <ref role="39e2AS" node="yo" resolve="myMember_none_0" />
         </node>
       </node>
       <node concept="39e2AG" id="CL" role="39e3Y0">

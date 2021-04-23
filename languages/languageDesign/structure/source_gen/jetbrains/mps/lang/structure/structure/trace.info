@@ -1029,14 +1029,14 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447573">
     <file name="EnumerationDescriptor_LinkMetaclass.java">
       <node id="4241665505353447573" at="15,48,16,210" concept="9" />
-      <node id="4241665505353447575" at="19,0,20,0" concept="2" trace="myMember_reference_0" />
+      <node id="4241665505353447575" at="19,0,20,0" concept="2" trace="myMember_association_0" />
       <node id="4241665505353447576" at="20,0,21,0" concept="2" trace="myMember_aggregation_0" />
       <node id="4241665505353447573" at="22,0,23,0" concept="2" trace="myIndex" />
       <node id="4241665505353447573" at="23,0,24,0" concept="2" trace="myMembers" />
-      <node id="4241665505353447573" at="27,62,28,32" concept="6" />
+      <node id="4241665505353447573" at="27,62,28,34" concept="6" />
       <node id="4241665505353447573" at="33,68,34,21" concept="6" />
       <node id="4241665505353447573" at="40,29,41,18" concept="6" />
-      <node id="4241665505353447575" at="44,23,45,36" concept="6" />
+      <node id="4241665505353447575" at="44,25,45,38" concept="6" />
       <node id="4241665505353447576" at="46,25,47,38" concept="6" />
       <node id="4241665505353447573" at="48,5,49,16" concept="6" />
       <node id="4241665505353447573" at="54,73,55,39" concept="5" />
@@ -1051,10 +1051,10 @@
       <node id="4241665505353447573" at="52,0,61,0" concept="4" trace="getMember#(J)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
       <node id="4241665505353447573" at="37,0,51,0" concept="4" trace="getMember#(Ljava/lang/String;)Ljetbrains/mps/smodel/runtime/EnumerationDescriptor/MemberDescriptor;" />
       <scope id="4241665505353447573" at="15,48,16,210" />
-      <scope id="4241665505353447573" at="27,62,28,32" />
+      <scope id="4241665505353447573" at="27,62,28,34" />
       <scope id="4241665505353447573" at="33,68,34,21" />
       <scope id="4241665505353447573" at="40,29,41,18" />
-      <scope id="4241665505353447575" at="44,23,45,36" />
+      <scope id="4241665505353447575" at="44,25,45,38" />
       <scope id="4241665505353447576" at="46,25,47,38" />
       <scope id="4241665505353447573" at="56,22,57,18" />
       <scope id="4241665505353447573" at="15,0,18,0" />
