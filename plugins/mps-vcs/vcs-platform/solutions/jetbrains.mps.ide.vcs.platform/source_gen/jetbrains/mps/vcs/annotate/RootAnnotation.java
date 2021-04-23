@@ -214,6 +214,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     if (myLocalCommitsGraphNode == null || ListSequence.fromList(myLocalCommitsGraphNode.getParents()).isEmpty() || !(ListSequence.fromList(myLocalCommitsGraphNode.getParents()).first().isModelLoaded())) {
       return;
     }
+    MapSequence.fromMap(myAnnotation).removeKey(myLocalCommitsGraphNode);
     processSimpleCommit(myLocalCommitsGraphNode);
   }
 

@@ -446,6 +446,9 @@
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
       <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
+      <concept id="1207233427108" name="jetbrains.mps.baseLanguage.collections.structure.MapRemoveOperation" flags="nn" index="kI3uX">
+        <child id="1207233489861" name="key" index="kIiFs" />
+      </concept>
       <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb">
         <child id="1224414456414" name="elementType" index="kMuH3" />
       </concept>
@@ -8106,6 +8109,18 @@
                 <node concept="37vLTw" id="2lCM9nv58ru" role="3uHU7B">
                   <ref role="3cqZAo" node="ypNelyP1dT" resolve="myLocalCommitsGraphNode" />
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3esO8V0ruZX" role="3cqZAp">
+          <node concept="2OqwBi" id="3esO8V0ryJk" role="3clFbG">
+            <node concept="37vLTw" id="3esO8V0ruZV" role="2Oq$k0">
+              <ref role="3cqZAo" node="3mP1wh_ymHQ" resolve="myAnnotation" />
+            </node>
+            <node concept="kI3uX" id="3esO8V0rAQc" role="2OqNvi">
+              <node concept="37vLTw" id="3esO8V0rEnv" role="kIiFs">
+                <ref role="3cqZAo" node="ypNelyP1dT" resolve="myLocalCommitsGraphNode" />
               </node>
             </node>
           </node>
