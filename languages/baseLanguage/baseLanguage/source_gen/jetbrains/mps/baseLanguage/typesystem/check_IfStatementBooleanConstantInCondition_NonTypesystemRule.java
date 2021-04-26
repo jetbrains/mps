@@ -37,9 +37,20 @@ public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule exten
         });
       }
       if (conditionConstant.booleanValue() == true && (SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK) != null)) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4) ? SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4), LINKS.statements$q65M) : SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK)), "Unreachable code", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8933433824912684710", null, errorTarget);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)) {
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4), LINKS.statements$q65M), LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              {
+                final MessageTarget errorTarget = new NodeMessageTarget();
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "Unreachable code", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8933433824923911191", null, errorTarget);
+              }
+            }
+          });
+        } else {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), "Unreachable code", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8933433824912684710", null, errorTarget);
+          }
         }
       }
     }
