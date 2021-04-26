@@ -44,7 +44,6 @@
     <module reference="e2309f95-1261-44f8-a001-ea5c9cf826d7(jetbrains.mps.build.mps.testModules)" version="0" />
     <module reference="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" version="0" />
     <module reference="422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
     <module reference="9ebe73c6-437b-4a56-95a7-1d7eec081f24(mps.test.findusages)" version="0" />
     <module reference="64b24ebe-97a2-466e-83d8-bd3afefcbb41(refactoring.test)" version="0" />
     <module reference="f4227833-0d14-4ab5-8560-70880fd9d5ef(testSubstituteType)" version="0" />

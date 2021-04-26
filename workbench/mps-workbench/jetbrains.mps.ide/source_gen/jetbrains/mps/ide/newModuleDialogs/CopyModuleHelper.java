@@ -17,7 +17,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.util.ReferenceUpdater;
 import java.util.List;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -59,8 +58,8 @@ public final class CopyModuleHelper {
     ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName, myCopyLocation).copyDescriptor();
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
-      copyModelsAndFacets(copy);
       addModuleToProject(copy);
+      copyModelsAndFacets(copy);
       adjustReferences(copy);
     } catch (CopyNotSupportedException e) {
       return recover(e, copy);
@@ -116,7 +115,7 @@ public final class CopyModuleHelper {
    */
   private AbstractModule createModule(IFile resultFile, ModuleDescriptor copyDescriptor) {
     ModuleRepositoryFacade facade = new ModuleRepositoryFacade(myProject);
-    SModule result = facade.instantiateModule(new ModulesMiner.ModuleHandle(resultFile, copyDescriptor), myProject);
+    SModule result = facade.instantiate(copyDescriptor, resultFile);
     return (AbstractModule) result;
   }
 

@@ -93,6 +93,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
       }
     }
 
+    mv.resetVersions();
     for (SModule module : Sequence.fromIterable(modules)) {
       if (mv.needsUpdate(module)) {
         return true;
@@ -104,6 +105,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
 
   public void doUpdateImportVersions(SModule module) {
     ModuleDependencyVersions mv = new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository());
+    mv.resetVersions();
     if (!(mv.dependenciesPresent(module))) {
       return;
     }

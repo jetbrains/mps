@@ -42,7 +42,6 @@
     <module reference="cd870c6a-f4a0-42f2-8e83-195b00a97615(jetbrains.mps.baseLanguage.testRefs)" version="0" />
     <module reference="a6995f2b-ce96-4f75-b6a7-9377400f4773(jetbrains.mps.baseLanguage.testRefs.testLang.runtime)" version="0" />
     <module reference="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" version="0" />
-    <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
   </dependencyVersions>
 </solution>
 

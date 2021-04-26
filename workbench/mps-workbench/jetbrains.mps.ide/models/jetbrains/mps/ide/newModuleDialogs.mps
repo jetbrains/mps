@@ -4220,18 +4220,18 @@
         </node>
         <node concept="3J1_TO" id="6CFNGGphPfh" role="3cqZAp">
           <node concept="3clFbS" id="6CFNGGphPeO" role="1zxBo7">
-            <node concept="3clFbF" id="5_O5XWaAqEo" role="3cqZAp">
-              <node concept="1rXfSq" id="5_O5XWaAqEn" role="3clFbG">
-                <ref role="37wK5l" node="5_O5XWaAqEg" resolve="copyModelsAndFacets" />
-                <node concept="37vLTw" id="5_O5XWaAqEm" role="37wK5m">
-                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="6niszax9BVH" role="3cqZAp">
               <node concept="1rXfSq" id="6niszax9BVF" role="3clFbG">
                 <ref role="37wK5l" node="6niszax9AKI" resolve="addModuleToProject" />
                 <node concept="37vLTw" id="7l6b$KxtHDv" role="37wK5m">
+                  <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5_O5XWaAqEo" role="3cqZAp">
+              <node concept="1rXfSq" id="5_O5XWaAqEn" role="3clFbG">
+                <ref role="37wK5l" node="5_O5XWaAqEg" resolve="copyModelsAndFacets" />
+                <node concept="37vLTw" id="5_O5XWaAqEm" role="37wK5m">
                   <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
                 </node>
               </node>
@@ -4692,20 +4692,12 @@
                 <ref role="3cqZAo" node="6CFNGGpiOOl" resolve="facade" />
               </node>
               <node concept="liA8E" id="6CFNGGpj0zw" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~ModuleRepositoryFacade.instantiateModule(jetbrains.mps.library.ModulesMiner$ModuleHandle,jetbrains.mps.smodel.MPSModuleOwner)" resolve="instantiateModule" />
-                <node concept="2ShNRf" id="6CFNGGpj0zx" role="37wK5m">
-                  <node concept="1pGfFk" id="6CFNGGpj0zy" role="2ShVmc">
-                    <ref role="37wK5l" to="32g5:~ModulesMiner$ModuleHandle.&lt;init&gt;(jetbrains.mps.vfs.IFile,jetbrains.mps.project.structure.modules.ModuleDescriptor)" resolve="ModulesMiner.ModuleHandle" />
-                    <node concept="37vLTw" id="6CFNGGpj0zz" role="37wK5m">
-                      <ref role="3cqZAo" node="6CFNGGpiMKb" resolve="resultFile" />
-                    </node>
-                    <node concept="37vLTw" id="6CFNGGpj0z$" role="37wK5m">
-                      <ref role="3cqZAo" node="6CFNGGpiMKd" resolve="copyDescriptor" />
-                    </node>
-                  </node>
+                <ref role="37wK5l" to="w1kc:~ModuleRepositoryFacade.instantiate(jetbrains.mps.project.structure.modules.ModuleDescriptor,jetbrains.mps.vfs.IFile)" resolve="instantiate" />
+                <node concept="37vLTw" id="6CFNGGpj0z$" role="37wK5m">
+                  <ref role="3cqZAo" node="6CFNGGpiMKd" resolve="copyDescriptor" />
                 </node>
-                <node concept="37vLTw" id="7l6b$KxtL3m" role="37wK5m">
-                  <ref role="3cqZAo" node="7l6b$KxttR$" resolve="myProject" />
+                <node concept="37vLTw" id="3dEAHUZYdL$" role="37wK5m">
+                  <ref role="3cqZAo" node="6CFNGGpiMKb" resolve="resultFile" />
                 </node>
               </node>
             </node>
