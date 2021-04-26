@@ -16,16 +16,16 @@ public class EnumerationDescriptor_LinkMetaclass extends EnumerationDescriptorBa
     super(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "LinkMetaclass", "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447573", PrimitiveTypeId.STRING);
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_association_0 = new EnumerationDescriptor.MemberDescriptor("association", "association", 0xfc6f4e95b8L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447575", "reference", "reference");
+  private final EnumerationDescriptor.MemberDescriptor myMember_reference_0 = new EnumerationDescriptor.MemberDescriptor("reference", "association", 0xfc6f4e95b8L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447575", "reference", "reference");
   private final EnumerationDescriptor.MemberDescriptor myMember_aggregation_0 = new EnumerationDescriptor.MemberDescriptor("aggregation", "aggregation", 0xfc6f4e95b9L, "r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4241665505353447576", "aggregation", "aggregation");
 
   private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, 0xfc6f4e95b8L, 0xfc6f4e95b9L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_association_0, myMember_aggregation_0);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_reference_0, myMember_aggregation_0);
 
   @Nullable
   @Override
   public EnumerationDescriptor.MemberDescriptor getDefault() {
-    return myMember_association_0;
+    return myMember_reference_0;
   }
 
   @NotNull
@@ -41,8 +41,8 @@ public class EnumerationDescriptor_LinkMetaclass extends EnumerationDescriptorBa
       return null;
     }
     switch (memberName) {
-      case "association":
-        return myMember_association_0;
+      case "reference":
+        return myMember_reference_0;
       case "aggregation":
         return myMember_aggregation_0;
     }
