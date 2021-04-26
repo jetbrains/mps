@@ -18,10 +18,10 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.ReadInstruction;
+import java.util.List;
 import jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import java.util.Map;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -105,17 +105,25 @@ public class NullableUtil {
       boolean isNull = NullableState.NULL.equals(state);
       boolean isNotNull = NullableState.NOTNULL.equals(state);
       if (getOtherThanNull(SNodeOperations.cast(parent, CONCEPTS.BinaryOperation$W1)) != null) {
-        if (SNodeOperations.getNodeAncestor(source, CONCEPTS.IfStatement$Q4, false, false) != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(source, null, false)).contains(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(source, CONCEPTS.IfStatement$Q4, false, false), LINKS.condition$5R17))) {
+        final SNode ifAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.IfStatement$Q4, false, false);
+        final List<SNode> currentAncestors = SNodeOperations.getNodeAncestors(source, null, false);
+        if (ifAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(ifAncestor, LINKS.condition$5R17))) {
           inCondition = true;
-        }
-        if (SNodeOperations.getNodeAncestor(source, CONCEPTS.WhileStatement$Ay, false, false) != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(source, null, false)).contains(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(source, CONCEPTS.WhileStatement$Ay, false, false), LINKS.condition$KEkM))) {
-          inCondition = true;
-        }
-        if (SNodeOperations.getNodeAncestor(source, CONCEPTS.DoWhileStatement$9p, false, false) != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(source, null, false)).contains(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(source, CONCEPTS.DoWhileStatement$9p, false, false), LINKS.condition$UPf8))) {
-          inCondition = true;
-        }
-        if (SNodeOperations.getNodeAncestor(source, CONCEPTS.ForStatement$qV, false, false) != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(source, null, false)).contains(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(source, CONCEPTS.ForStatement$qV, false, false), LINKS.condition$wARE))) {
-          inCondition = true;
+        } else {
+          final SNode whileAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.WhileStatement$Ay, false, false);
+          if (whileAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(whileAncestor, LINKS.condition$KEkM))) {
+            inCondition = true;
+          } else {
+            final SNode doWhileAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.DoWhileStatement$9p, false, false);
+            if (doWhileAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(doWhileAncestor, LINKS.condition$UPf8))) {
+              inCondition = true;
+            } else {
+              final SNode forAncestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.ForStatement$qV, false, false);
+              if (forAncestor != null && ListSequence.fromList(currentAncestors).contains(SLinkOperations.getTarget(forAncestor, LINKS.condition$wARE))) {
+                inCondition = true;
+              }
+            }
+          }
         }
         if (inCondition) {
           if (equals && isNotNull || !(equals) && isNull) {
