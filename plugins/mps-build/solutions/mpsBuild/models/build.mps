@@ -43559,45 +43559,6 @@
     <property role="3GE5qa" value="ide" />
     <property role="TrG5h" value="resources" />
     <node concept="398223" id="AwiPu7jFRO" role="39821P">
-      <node concept="1tmT9g" id="1NXhbnOpTEb" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="3_J27D" id="1NXhbnOpTEd" role="Nbhlr">
-          <node concept="3Mxwew" id="1NXhbnOpTEk" role="3MwsjC">
-            <property role="3MwjfP" value="jbsdk_osx_x64.tar.gz" />
-          </node>
-        </node>
-      </node>
-      <node concept="1tmT9g" id="1NXhbnOpTEu" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="3_J27D" id="1NXhbnOpTEw" role="Nbhlr">
-          <node concept="3Mxwew" id="1NXhbnOpTEE" role="3MwsjC">
-            <property role="3MwjfP" value="jbsdk_windows_x64.tar.gz" />
-          </node>
-        </node>
-      </node>
-      <node concept="1tmT9g" id="5aru7HX9JUi" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="3_J27D" id="5aru7HX9JUj" role="Nbhlr">
-          <node concept="3Mxwew" id="5aru7HX9JUk" role="3MwsjC">
-            <property role="3MwjfP" value="jbrsdk-osx-x64.tar.gz" />
-          </node>
-        </node>
-      </node>
-      <node concept="1tmT9g" id="5aru7HX9JU6" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="398223" id="3t7sqKTd$eL" role="39821P">
-          <node concept="3_J27D" id="3t7sqKTd$eM" role="Nbhlr">
-            <node concept="3Mxwew" id="3t7sqKTd$eP" role="3MwsjC">
-              <property role="3MwjfP" value="jbrsdk" />
-            </node>
-          </node>
-        </node>
-        <node concept="3_J27D" id="5aru7HX9JU7" role="Nbhlr">
-          <node concept="3Mxwew" id="5aru7HX9JU8" role="3MwsjC">
-            <property role="3MwjfP" value="jbrsdk-windows-x64.tar.gz" />
-          </node>
-        </node>
-      </node>
       <node concept="3_J27D" id="AwiPu7jFRQ" role="Nbhlr">
         <node concept="3Mxwew" id="AwiPu7jFS0" role="3MwsjC">
           <property role="3MwjfP" value="openJDK" />

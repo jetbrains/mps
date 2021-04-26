@@ -3,8 +3,9 @@
 
   <property name="ivy.jar.dir" value="${basedir}/ivy" />
   <property name="get.dir" location="${resources}"/>
+  <loadproperties srcfile="version.properties" description="Load versions of dependencies"/>
 
-  <target name="getall" depends="getOpenjdk8Mac, getOpenjdk8Win, getOpenjdkMac, getOpenjdkWin"/>
+  <target name="getall" depends="getOpenjdkMac, getOpenjdkWin"/>
 
   <target name="install-ivy">
     <property name="mps.ivy.home" value="${user.home}" description="Property used to set custom path on TeamCity"/>
@@ -13,16 +14,6 @@
     </path>
     <typedef resource="org/apache/ivy/ant/antlib.xml"
              uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
-  </target>
-
-  <target name="getOpenjdk8Win" depends="install-ivy" description="--> Retreive openJDK/jbsdk_windows_x64.tar.gz">
-    <ivy:resolve file="ivyOpenjdk8Win.xml"/>
-    <ivy:retrieve file="ivyOpenjdk8Win.xml" pattern="${get.dir}/[artifact].[ext]"/>
-  </target>
-
-  <target name="getOpenjdk8Mac" depends="install-ivy" description="--> Retreive openJDK/jbsdk_ocx_x64.tar.gz">
-    <ivy:resolve file="ivyOpenjdk8Mac.xml"/>
-    <ivy:retrieve file="ivyOpenjdk8Mac.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
   <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbr_windows_x64.tar.gz">
