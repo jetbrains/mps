@@ -380,7 +380,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   @NotNull
   private final EditorComponentFocusTracker myFocusTracker = new EditorComponentFocusTracker(this);
-  private EditorComponentSettingsImpl myEditorComponentSettings;
+  private final EditorComponentSettingsImpl myEditorComponentSettings;
 
   public EditorComponent(@NotNull SRepository repository) {
     this(repository, EditorConfigurationBuilder.buildDefault());
@@ -1074,6 +1074,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (isDisposed()) {
       return;
     }
+    myEditorComponentSettings.reset();
     clearModelDisposedTrace();
     myMessageHandler.clear();
 

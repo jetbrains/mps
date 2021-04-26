@@ -67,4 +67,7 @@ public class EditorComponentSettingsImpl implements EditorComponentSettings {
     if (myUIScale < 0.4) myUIScale = 0.4;
   }
 
+  void reset() {
+    myUIScale = 1.0;
+  }
 }
