@@ -25,8 +25,6 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -242,29 +240,9 @@ public final class ModifiedNodesGroup {
     for (SNode copiedNode : ListSequence.fromList(copiedNodes)) {
       insertNodeBeforeAnchor(parent, copiedNode, beforeAnchor);
     }
-    Set<SNodeId> nodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SModelOperations.nodes(model, null)).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode it) {
-        return it.getNodeId();
-      }
-    }));
-    for (SNode copiedNode : ListSequence.fromList(copiedNodes)) {
-      fixReferences(copiedNode, model, nodeIds);
-    }
+    StructureChange.fixInnerModelReferences(copiedNodes, SModelOperations.getPointer(myModel), model);
 
     setIsApplied(model);
-  }
-
-  private void fixReferences(SNode copiedNode, final SModel model, final Set<SNodeId> nodeIds) {
-    // set references that are not in the model back to old model
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(copiedNode, null, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode node) {
-        for (SReference reference : SNodeOperations.getReferences(node)) {
-          if (reference instanceof StaticReference && SModelOperations.getPointer(myModel).equals(reference.getTargetSModelReference()) && SetSequence.fromSet(nodeIds).contains(reference.getTargetNodeId())) {
-            ((StaticReference) reference).setTargetSModelReference(SModelOperations.getPointer(model));
-          }
-        }
-      }
-    });
   }
 
   private void deleteDependantNodes(SNode insertedNode, final NodeCopier nodeCopier, final Set<SNodeId> dependantIds) {
@@ -317,7 +295,7 @@ public final class ModifiedNodesGroup {
       }
     }).visitAll(new IVisitor<SNodeId>() {
       public void visit(SNodeId id) {
-        check_1a4m4r_a0a0a0a0uc(model.getNode(id));
+        check_1a4m4r_a0a0a0a0sc(model.getNode(id));
       }
     });
   }
@@ -353,7 +331,7 @@ public final class ModifiedNodesGroup {
     }
     return null;
   }
-  private static void check_1a4m4r_a0a0a0a0uc(SNode checkedDotOperand) {
+  private static void check_1a4m4r_a0a0a0a0sc(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.delete();
     }
