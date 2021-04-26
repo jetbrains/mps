@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.module.DefaultNamespaceTreeBuilder;
 import jetbrains.mps.ide.ui.tree.module.ModuleTreeNodeComparator;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
@@ -45,7 +44,7 @@ public class ProjectTreeNode extends AbstractFileTreeNode {
       }
       IFile moduleDir = ((AbstractModule) m).getModuleSourceDir();
       if (moduleDir != null && moduleDir.exists()) {
-        VirtualFile vfInProject = VirtualFileUtils.getProjectVirtualFile(moduleDir);
+        VirtualFile vfInProject = project.getFileSystem().asVirtualFile(moduleDir);
         if (vfInProject != null) {
           moduleNodes.add(new ModuleTreeNode(project, (AbstractModule) m, vfInProject));
         } else {

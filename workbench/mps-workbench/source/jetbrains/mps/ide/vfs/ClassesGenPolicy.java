@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -39,7 +39,7 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
   @Override
   @NotNull
   protected Set<VirtualFile> getAllExcludeRoots() {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
     if (mpsProject == null) {
       return Collections.emptySet();
     }
@@ -57,14 +57,16 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
           continue;
         }
 
-        VirtualFile classesGenVF = VirtualFileUtils.getProjectVirtualFile(classesGen);
+        VirtualFile classesGenVF = mpsProject.getFileSystem().asVirtualFile(classesGen);
         if (classesGenVF != null) {
           roots.add(classesGenVF);
         }
 
         if (classesGen.getParent() != null) {
+          // FIXME quite stupid code. Guess, the idea here is to exclide 'classes/' in case when there are
+          //       both classes_gen/ and classes/.
           IFile classesDir = classesGen.getParent().findChild(AbstractModule.CLASSES);
-          VirtualFile classesVF = VirtualFileUtils.getProjectVirtualFile(classesDir);
+          VirtualFile classesVF = mpsProject.getFileSystem().asVirtualFile(classesDir);
           if (classesVF != null) {
             roots.add(classesVF);
           }

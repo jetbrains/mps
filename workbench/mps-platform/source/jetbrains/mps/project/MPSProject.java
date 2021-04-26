@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
@@ -164,8 +163,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
     // original fix was for MPS-14247, refactored now to use IDEA services and to update VCS explicitly
     ArrayList<VirtualFile> ideaFiles = new ArrayList<>();
     for (IFile f : files) {
-      //FIXME need smth like myProjectFileSystem.toVirtualFile(IFile):VF
-      final VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(f);
+      final VirtualFile vf = myProjectFileSystem.asVirtualFile(f);
       if (vf == null) {
         continue;
       }
