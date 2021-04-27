@@ -12810,9 +12810,15 @@
   <node concept="LiM7Y" id="w2zBgrTfoG">
     <property role="3GE5qa" value="quickfix" />
     <property role="TrG5h" value="QuickFix_UnusedVariable" />
-    <node concept="1qefOq" id="w2zBgrTfpd" role="25YQCW">
-      <node concept="9aQIb" id="w2zBgrTfpp" role="1qenE9">
-        <node concept="3clFbS" id="w2zBgrTfpq" role="9aQI4">
+    <node concept="3clFbS" id="w2zBgrWuJF" role="LjaKd">
+      <node concept="1MTqDA" id="6GxgRLojhm0" role="3cqZAp" />
+    </node>
+    <node concept="1qefOq" id="3xaCLCtd2mK" role="25YQCW">
+      <node concept="2YIFZL" id="3xaCLCtd2mG" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="3cqZAl" id="3xaCLCtd2mH" role="3clF45" />
+        <node concept="3Tm1VV" id="3xaCLCtd2mI" role="1B3o_S" />
+        <node concept="3clFbS" id="3xaCLCtd2mJ" role="3clF47">
           <node concept="3clFbF" id="w2zBgrTg1E" role="3cqZAp">
             <node concept="2OqwBi" id="w2zBgrTg1B" role="3clFbG">
               <node concept="10M0yZ" id="w2zBgrTg1C" role="2Oq$k0">
@@ -12846,18 +12852,21 @@
         </node>
       </node>
     </node>
-    <node concept="1qefOq" id="w2zBgrTgnf" role="25YQFr">
-      <node concept="9aQIb" id="w2zBgrTgng" role="1qenE9">
-        <node concept="3clFbS" id="w2zBgrTgnh" role="9aQI4">
-          <node concept="3clFbF" id="w2zBgrTgni" role="3cqZAp">
-            <node concept="2OqwBi" id="w2zBgrTgnj" role="3clFbG">
-              <node concept="10M0yZ" id="w2zBgrTgnk" role="2Oq$k0">
-                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+    <node concept="1qefOq" id="3xaCLCtgm5F" role="25YQFr">
+      <node concept="2YIFZL" id="3xaCLCtgm5G" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="3cqZAl" id="3xaCLCtgm5H" role="3clF45" />
+        <node concept="3Tm1VV" id="3xaCLCtgm5I" role="1B3o_S" />
+        <node concept="3clFbS" id="3xaCLCtgm5J" role="3clF47">
+          <node concept="3clFbF" id="3xaCLCtgm5K" role="3cqZAp">
+            <node concept="2OqwBi" id="3xaCLCtgm5L" role="3clFbG">
+              <node concept="10M0yZ" id="3xaCLCtgm5M" role="2Oq$k0">
                 <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
               </node>
-              <node concept="liA8E" id="w2zBgrTgnl" role="2OqNvi">
+              <node concept="liA8E" id="3xaCLCtgm5N" role="2OqNvi">
                 <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
-                <node concept="Xl_RD" id="w2zBgrTgnm" role="37wK5m">
+                <node concept="Xl_RD" id="3xaCLCtgm5O" role="37wK5m">
                   <property role="Xl_RC" value="ok" />
                 </node>
               </node>
@@ -12865,9 +12874,6 @@
           </node>
         </node>
       </node>
-    </node>
-    <node concept="3clFbS" id="w2zBgrWuJF" role="LjaKd">
-      <node concept="1MTqDA" id="6GxgRLojhm0" role="3cqZAp" />
     </node>
   </node>
   <node concept="LiM7Y" id="6Y7keYNGVAF">
