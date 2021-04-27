@@ -307,61 +307,56 @@
   <root nodeRef="r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/2893936025727763809">
     <file name="OutputConsoleTab.java">
       <node id="2893936025728880228" at="28,109,29,44" concept="17" />
-      <node id="1377757278866704400" at="34,25,35,53" concept="11" />
-      <node id="1377757278866704424" at="35,53,36,223" concept="6" />
-      <node id="1377757278866704432" at="37,137,38,239" concept="6" />
-      <node id="1377757278866704451" at="39,16,40,210" concept="6" />
-      <node id="1377757278866704463" at="41,9,42,249" concept="6" />
-      <node id="4348825380613039222" at="42,249,43,246" concept="6" />
-      <node id="4348825380613039230" at="43,246,44,168" concept="6" />
-      <node id="1377757278866704471" at="44,168,45,75" concept="6" />
-      <node id="3976301908734219041" at="50,60,51,33" concept="6" />
-      <node id="7908305341670729473" at="51,33,52,33" concept="6" />
-      <node id="649933975388310428" at="52,33,53,87" concept="6" />
-      <node id="7458928938653665549" at="57,54,58,48" concept="6" />
-      <node id="2893936025727763809" at="63,0,64,0" concept="15" trace="history$LSLq" />
-      <node id="2893936025727763809" at="64,0,65,0" concept="15" trace="commandHolder$LTfs" />
-      <node id="2893936025727763809" at="65,0,66,0" concept="15" trace="cursor$hQXw" />
-      <node id="2893936025727763809" at="66,0,67,0" concept="15" trace="target$kCjp" />
-      <node id="2893936025727763809" at="70,0,71,0" concept="15" trace="OutputConsoleRoot$kd" />
-      <node id="1377757278866704449" at="39,14,41,9" concept="1" />
+      <node id="1377757278866704400" at="32,45,33,49" concept="11" />
+      <node id="1377757278866704424" at="33,49,34,219" concept="6" />
+      <node id="1377757278866704432" at="35,133,36,235" concept="6" />
+      <node id="1377757278866704451" at="37,12,38,206" concept="6" />
+      <node id="1377757278866704463" at="39,5,40,245" concept="6" />
+      <node id="4348825380613039222" at="40,245,41,242" concept="6" />
+      <node id="4348825380613039230" at="41,242,42,164" concept="6" />
+      <node id="1377757278866704471" at="42,164,43,71" concept="6" />
+      <node id="3976301908734219041" at="46,60,47,33" concept="6" />
+      <node id="7908305341670729473" at="47,33,48,33" concept="6" />
+      <node id="649933975388310428" at="48,33,49,87" concept="6" />
+      <node id="7458928938653665549" at="53,54,54,48" concept="6" />
+      <node id="2893936025727763809" at="59,0,60,0" concept="15" trace="history$LSLq" />
+      <node id="2893936025727763809" at="60,0,61,0" concept="15" trace="commandHolder$LTfs" />
+      <node id="2893936025727763809" at="61,0,62,0" concept="15" trace="cursor$hQXw" />
+      <node id="2893936025727763809" at="62,0,63,0" concept="15" trace="target$kCjp" />
+      <node id="2893936025727763809" at="66,0,67,0" concept="15" trace="OutputConsoleRoot$kd" />
+      <node id="1377757278866704449" at="37,10,39,5" concept="1" />
       <node id="2893936025728872568" at="28,0,31,0" concept="3" trace="OutputConsoleTab#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/console/tool/ConsoleTool;Ljava/lang/String;Lorg/jdom/Element;)V" />
-      <node id="7458928938653635131" at="57,0,60,0" concept="10" trace="actionPerformed#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
-      <node id="1377757278866704430" at="36,223,41,9" concept="9" />
-      <node id="2893936025727885086" at="50,0,55,0" concept="10" trace="registerActions#(Lcom/intellij/openapi/actionSystem/DefaultActionGroup;)V" />
-      <node id="1377757278866704398" at="34,0,47,0" concept="10" trace="run#()V" />
-      <node id="1377757278866704397" at="32,51,47,7" concept="6" />
-      <node id="1377757278866704395" at="32,0,49,0" concept="10" trace="loadHistory#(Lorg/jdom/Element;)V" />
+      <node id="7458928938653635131" at="53,0,56,0" concept="10" trace="actionPerformed#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
+      <node id="1377757278866704430" at="34,219,39,5" concept="9" />
+      <node id="2893936025727885086" at="46,0,51,0" concept="10" trace="registerActions#(Lcom/intellij/openapi/actionSystem/DefaultActionGroup;)V" />
+      <node id="1377757278866704395" at="32,0,45,0" concept="10" trace="loadHistory#(Lorg/jdom/Element;)V" />
       <scope id="2893936025728872570" at="28,109,29,44" />
-      <scope id="1377757278866704431" at="37,137,38,239" />
-      <scope id="1377757278866704450" at="39,16,40,210" />
-      <scope id="7458928938653635140" at="57,54,58,48" />
+      <scope id="1377757278866704431" at="35,133,36,235" />
+      <scope id="1377757278866704450" at="37,12,38,206" />
+      <scope id="7458928938653635140" at="53,54,54,48" />
       <scope id="2893936025728872568" at="28,0,31,0">
         <var name="history" id="2893936025728872587" />
         <var name="mpsProject" id="8162894946401371035" />
         <var name="title" id="2893936025728872585" />
         <var name="tool" id="2893936025728872583" />
       </scope>
-      <scope id="2893936025727885090" at="50,60,53,87" />
-      <scope id="7458928938653635131" at="57,0,60,0">
+      <scope id="2893936025727885090" at="46,60,49,87" />
+      <scope id="7458928938653635131" at="53,0,56,0">
         <var name="event" id="7458928938653635134" />
       </scope>
-      <scope id="2893936025727885086" at="50,0,55,0">
+      <scope id="2893936025727885086" at="46,0,51,0">
         <var name="group" id="3976301908734191700" />
       </scope>
-      <scope id="1377757278866704399" at="34,25,45,75">
+      <scope id="1377757278866704396" at="32,45,43,71">
         <var name="loadedModel" id="1377757278866704401" />
       </scope>
-      <scope id="1377757278866704398" at="34,0,47,0" />
-      <scope id="1377757278866704396" at="32,51,47,7" />
-      <scope id="1377757278866704395" at="32,0,49,0">
+      <scope id="1377757278866704395" at="32,0,45,0">
         <var name="state" id="1377757278866704478" />
       </scope>
-      <unit id="2893936025727763809" at="69,0,72,0" name="jetbrains.mps.console.tool.OutputConsoleTab$CONCEPTS" />
-      <unit id="7458928938653635120" at="56,0,61,0" name="jetbrains.mps.console.tool.OutputConsoleTab$CloseAction" />
-      <unit id="2893936025727763809" at="62,0,68,0" name="jetbrains.mps.console.tool.OutputConsoleTab$LINKS" />
-      <unit id="1377757278866704398" at="33,69,47,5" name="jetbrains.mps.console.tool.OutputConsoleTab$1" />
-      <unit id="2893936025727763809" at="25,0,73,0" name="jetbrains.mps.console.tool.OutputConsoleTab" />
+      <unit id="2893936025727763809" at="65,0,68,0" name="jetbrains.mps.console.tool.OutputConsoleTab$CONCEPTS" />
+      <unit id="7458928938653635120" at="52,0,57,0" name="jetbrains.mps.console.tool.OutputConsoleTab$CloseAction" />
+      <unit id="2893936025727763809" at="58,0,64,0" name="jetbrains.mps.console.tool.OutputConsoleTab$LINKS" />
+      <unit id="2893936025727763809" at="25,0,69,0" name="jetbrains.mps.console.tool.OutputConsoleTab" />
     </file>
   </root>
   <root nodeRef="r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/351968380915666545">
@@ -1474,33 +1469,34 @@
       <node id="7538089231777683414" at="178,29,179,247" concept="6" />
       <node id="4348825380613575255" at="179,247,180,72" concept="6" />
       <node id="7538089231777683426" at="181,5,182,21" concept="6" />
-      <node id="7538089231777683719" at="187,25,188,53" concept="11" />
-      <node id="2108296889951533880" at="188,53,189,133" concept="11" />
-      <node id="2108296889951697204" at="191,39,192,43" concept="6" />
-      <node id="7538089231777683736" at="194,11,195,217" concept="6" />
-      <node id="7538089231777683751" at="196,131,197,239" concept="6" />
-      <node id="7538089231777683770" at="198,16,199,230" concept="6" />
-      <node id="7538089231777683782" at="200,9,201,249" concept="6" />
-      <node id="4348825380612968632" at="201,249,202,246" concept="6" />
-      <node id="4348825380612997544" at="202,246,203,168" concept="6" />
-      <node id="7538089231777683790" at="203,168,204,75" concept="6" />
-      <node id="3362819150778499207" at="209,44,210,28" concept="6" />
-      <node id="773462683490873669" at="210,28,211,120" concept="6" />
-      <node id="2353285998750723142" at="216,42,217,37" concept="12" />
-      <node id="2353285998750729158" at="218,5,219,16" concept="12" />
-      <node id="7538089231777628716" at="223,0,224,0" concept="15" trace="cursor$hQXw" />
-      <node id="7538089231777628716" at="224,0,225,0" concept="15" trace="target$kCjp" />
-      <node id="7538089231777628716" at="225,0,226,0" concept="15" trace="commandHolder$LTfs" />
-      <node id="7538089231777628716" at="226,0,227,0" concept="15" trace="history$LSLq" />
-      <node id="7538089231777628716" at="227,0,228,0" concept="15" trace="item$DxJ4" />
-      <node id="7538089231777628716" at="228,0,229,0" concept="15" trace="command$RGil" />
-      <node id="7538089231777628716" at="229,0,230,0" concept="15" trace="hiddenCommand$i8Sk" />
-      <node id="7538089231777628716" at="230,0,231,0" concept="15" trace="modifiedCommand$XFWK" />
-      <node id="7538089231777628716" at="234,0,235,0" concept="15" trace="CommandHolder$K4" />
-      <node id="7538089231777628716" at="235,0,236,0" concept="15" trace="HistoryItem$vj" />
-      <node id="7538089231777628716" at="236,0,237,0" concept="15" trace="ConsoleRoot$IN" />
+      <node id="5262397150315921955" at="185,55,186,56" concept="13" />
+      <node id="7538089231777683719" at="186,56,187,49" concept="11" />
+      <node id="2108296889951533880" at="187,49,188,129" concept="11" />
+      <node id="2108296889951697204" at="190,35,191,39" concept="6" />
+      <node id="7538089231777683736" at="193,7,194,213" concept="6" />
+      <node id="7538089231777683751" at="195,127,196,235" concept="6" />
+      <node id="7538089231777683770" at="197,12,198,226" concept="6" />
+      <node id="7538089231777683782" at="199,5,200,245" concept="6" />
+      <node id="4348825380612968632" at="200,245,201,242" concept="6" />
+      <node id="4348825380612997544" at="201,242,202,164" concept="6" />
+      <node id="7538089231777683790" at="202,164,203,71" concept="6" />
+      <node id="3362819150778499207" at="206,44,207,28" concept="6" />
+      <node id="773462683490873669" at="207,28,208,120" concept="6" />
+      <node id="2353285998750723142" at="213,42,214,37" concept="12" />
+      <node id="2353285998750729158" at="215,5,216,16" concept="12" />
+      <node id="7538089231777628716" at="220,0,221,0" concept="15" trace="cursor$hQXw" />
+      <node id="7538089231777628716" at="221,0,222,0" concept="15" trace="target$kCjp" />
+      <node id="7538089231777628716" at="222,0,223,0" concept="15" trace="commandHolder$LTfs" />
+      <node id="7538089231777628716" at="223,0,224,0" concept="15" trace="history$LSLq" />
+      <node id="7538089231777628716" at="224,0,225,0" concept="15" trace="item$DxJ4" />
+      <node id="7538089231777628716" at="225,0,226,0" concept="15" trace="command$RGil" />
+      <node id="7538089231777628716" at="226,0,227,0" concept="15" trace="hiddenCommand$i8Sk" />
+      <node id="7538089231777628716" at="227,0,228,0" concept="15" trace="modifiedCommand$XFWK" />
+      <node id="7538089231777628716" at="231,0,232,0" concept="15" trace="CommandHolder$K4" />
+      <node id="7538089231777628716" at="232,0,233,0" concept="15" trace="HistoryItem$vj" />
+      <node id="7538089231777628716" at="233,0,234,0" concept="15" trace="ConsoleRoot$IN" />
       <node id="4348825380613242235" at="51,10,53,5" concept="1" />
-      <node id="7538089231777683768" at="198,14,200,9" concept="1" />
+      <node id="7538089231777683768" at="197,10,199,5" concept="1" />
       <node id="5758176878587650421" at="40,54,43,5" concept="9" />
       <node id="5758176878587052645" at="43,5,46,5" concept="9" />
       <node id="7538089231786666719" at="57,0,60,0" concept="3" trace="DialogConsoleTab#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/console/tool/ConsoleTool;Ljava/lang/String;Lorg/jdom/Element;)V" />
@@ -1514,20 +1510,20 @@
       <node id="7538089231777683254" at="142,49,145,7" concept="9" />
       <node id="7538089231777683293" at="151,5,154,5" concept="9" />
       <node id="7538089231777683340" at="161,29,164,5" concept="9" />
-      <node id="2108296889951697202" at="191,0,194,0" concept="10" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2353285998750717816" at="215,44,218,5" concept="9" />
+      <node id="2108296889951697202" at="190,0,193,0" concept="10" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2353285998750717816" at="212,44,215,5" concept="9" />
       <node id="7538089231777682772" at="94,0,98,0" concept="10" trace="scrollToBottom#()V" />
       <node id="7538089231777683408" at="177,10,181,5" concept="1" />
-      <node id="773462683490695298" at="209,0,213,0" concept="10" trace="insertCommand#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="773462683490695298" at="206,0,210,0" concept="10" trace="insertCommand#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4348825380613216293" at="48,36,53,5" concept="9" />
       <node id="7538089231777682856" at="102,0,107,0" concept="10" trace="run#()V" />
-      <node id="2108296889951568459" at="189,133,194,11" concept="6" />
-      <node id="7538089231777683742" at="195,217,200,9" concept="9" />
+      <node id="2108296889951568459" at="188,129,193,7" concept="6" />
+      <node id="7538089231777683742" at="194,213,199,5" concept="9" />
       <node id="5758176878586820766" at="48,0,55,0" concept="10" trace="getCommandCursor#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7538089231777682449" at="61,0,68,0" concept="10" trace="registerActions#(Lcom/intellij/openapi/actionSystem/DefaultActionGroup;)V" />
       <node id="7538089231777682573" at="69,0,76,0" concept="10" trace="lastCmd#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7538089231777682855" at="100,67,107,7" concept="6" />
-      <node id="2353285998750905190" at="214,0,221,0" concept="10" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
+      <node id="2353285998750905190" at="211,0,218,0" concept="10" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
       <node id="5758176878586764128" at="40,0,48,0" concept="10" trace="setCommandCursor#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7538089231777682609" at="77,0,85,0" concept="10" trace="getPrevCmd#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7538089231777682641" at="85,0,93,0" concept="10" trace="getNextCmd#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1536,11 +1532,9 @@
       <node id="2893936025730174784" at="110,5,119,7" concept="6" />
       <node id="7538089231777683247" at="141,10,151,5" concept="1" />
       <node id="7538089231777683230" at="137,20,151,5" concept="9" />
-      <node id="6243883726569188381" at="187,0,206,0" concept="10" trace="run#()V" />
-      <node id="6243883726569188379" at="185,61,206,7" concept="6" />
+      <node id="7538089231777683717" at="185,0,205,0" concept="10" trace="loadHistory#(Lorg/jdom/Element;)V" />
       <node id="69343502268757723" at="99,0,121,0" concept="10" trace="executeCurrentCommand#()V" />
       <node id="7908305341669526925" at="161,0,184,0" concept="10" trace="nextCommand#()V" />
-      <node id="7538089231777683717" at="185,0,208,0" concept="10" trace="loadHistory#(Lorg/jdom/Element;)V" />
       <node id="7908305341669602005" at="131,0,160,0" concept="10" trace="previousCommand#()V" />
       <scope id="5758176878587650423" at="41,32,42,166" />
       <scope id="5758176878587052647" at="44,32,45,120" />
@@ -1557,14 +1551,14 @@
       <scope id="7538089231777683255" at="143,32,144,15" />
       <scope id="7538089231777683294" at="152,30,153,13" />
       <scope id="7538089231777683341" at="162,39,163,13" />
-      <scope id="2108296889951697203" at="191,39,192,43" />
-      <scope id="7538089231777683743" at="196,131,197,239" />
-      <scope id="7538089231777683769" at="198,16,199,230" />
-      <scope id="2353285998750717819" at="216,42,217,37" />
+      <scope id="2108296889951697203" at="190,35,191,39" />
+      <scope id="7538089231777683743" at="195,127,196,235" />
+      <scope id="7538089231777683769" at="197,12,198,226" />
+      <scope id="2353285998750717819" at="213,42,214,37" />
       <scope id="7538089231777682773" at="94,35,96,27" />
       <scope id="7538089231777683231" at="138,37,140,153" />
       <scope id="7538089231777683387" at="174,33,176,283" />
-      <scope id="773462683490695301" at="209,44,211,120" />
+      <scope id="773462683490695301" at="206,44,208,120" />
       <scope id="7538089231786666719" at="57,0,60,0">
         <var name="history" id="7538089231786843084" />
         <var name="project" id="8162894946401237539" />
@@ -1575,14 +1569,14 @@
       <scope id="2893936025731773577" at="112,0,115,0" />
       <scope id="2893936025731806889" at="116,0,119,0" />
       <scope id="7538089231777683409" at="177,12,180,72" />
-      <scope id="2108296889951697202" at="191,0,194,0">
+      <scope id="2108296889951697202" at="190,0,193,0">
         <var name="it" id="2108296889951697202" />
       </scope>
       <scope id="7538089231777682772" at="94,0,98,0" />
-      <scope id="773462683490695298" at="209,0,213,0">
+      <scope id="773462683490695298" at="206,0,210,0">
         <var name="command" id="773462683490707647" />
       </scope>
-      <scope id="2353285998750905199" at="215,44,219,16" />
+      <scope id="2353285998750905199" at="212,44,216,16" />
       <scope id="5758176878586820769" at="48,36,53,5" />
       <scope id="7538089231777682454" at="61,60,66,121" />
       <scope id="7538089231777682576" at="69,27,74,64">
@@ -1604,7 +1598,7 @@
         <var name="group" id="3976301908734530154" />
       </scope>
       <scope id="7538089231777682573" at="69,0,76,0" />
-      <scope id="2353285998750905190" at="214,0,221,0">
+      <scope id="2353285998750905190" at="211,0,218,0">
         <var name="id" id="2353285998750905194" />
       </scope>
       <scope id="5758176878586764128" at="40,0,48,0">
@@ -1621,25 +1615,23 @@
         <var name="myCursorCommand" id="7538089231777683261" />
         <var name="myCursorNew" id="7538089231777683267" />
       </scope>
-      <scope id="6243883726569188383" at="187,25,204,75">
+      <scope id="7538089231777683718" at="185,55,203,71">
         <var name="loadedModel" id="7538089231777683720" />
         <var name="roots" id="2108296889951533886" />
       </scope>
-      <scope id="6243883726569188381" at="187,0,206,0" />
       <scope id="69343502268757726" at="99,39,119,7">
         <var name="emptyCommand" id="2499817903117367029" />
+      </scope>
+      <scope id="7538089231777683717" at="185,0,205,0">
+        <var name="state" id="7538089231781708064" />
       </scope>
       <scope id="7908305341669526929" at="161,29,182,21">
         <var name="myCursorCommand" id="7538089231777683353" />
         <var name="myCursorNew" id="7538089231777683359" />
         <var name="newCursor" id="7538089231777683347" />
       </scope>
-      <scope id="7538089231777683718" at="185,61,206,7" />
       <scope id="69343502268757723" at="99,0,121,0" />
       <scope id="7908305341669526925" at="161,0,184,0" />
-      <scope id="7538089231777683717" at="185,0,208,0">
-        <var name="state" id="7538089231781708064" />
-      </scope>
       <scope id="7908305341669602008" at="131,33,158,21">
         <var name="lastCmd" id="7538089231777683217" />
         <var name="newCursor" id="7538089231777683228" />
@@ -1647,12 +1639,11 @@
       <scope id="7908305341669602005" at="131,0,160,0" />
       <unit id="2893936025731773577" at="111,22,115,5" name="jetbrains.mps.console.tool.DialogConsoleTab$2" />
       <unit id="2893936025731806889" at="115,11,119,5" name="jetbrains.mps.console.tool.DialogConsoleTab$3" />
-      <unit id="2108296889951697202" at="190,50,194,9" name="jetbrains.mps.console.tool.DialogConsoleTab$4$1" />
-      <unit id="7538089231777628716" at="233,0,238,0" name="jetbrains.mps.console.tool.DialogConsoleTab$CONCEPTS" />
+      <unit id="2108296889951697202" at="189,46,193,5" name="jetbrains.mps.console.tool.DialogConsoleTab$4" />
+      <unit id="7538089231777628716" at="230,0,235,0" name="jetbrains.mps.console.tool.DialogConsoleTab$CONCEPTS" />
       <unit id="7538089231777682856" at="101,69,107,5" name="jetbrains.mps.console.tool.DialogConsoleTab$1" />
-      <unit id="7538089231777628716" at="222,0,232,0" name="jetbrains.mps.console.tool.DialogConsoleTab$LINKS" />
-      <unit id="6243883726569188381" at="186,69,206,5" name="jetbrains.mps.console.tool.DialogConsoleTab$4" />
-      <unit id="7538089231777628716" at="37,0,239,0" name="jetbrains.mps.console.tool.DialogConsoleTab" />
+      <unit id="7538089231777628716" at="219,0,229,0" name="jetbrains.mps.console.tool.DialogConsoleTab$LINKS" />
+      <unit id="7538089231777628716" at="37,0,236,0" name="jetbrains.mps.console.tool.DialogConsoleTab" />
     </file>
   </root>
   <root nodeRef="r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/8501841415479214219">
