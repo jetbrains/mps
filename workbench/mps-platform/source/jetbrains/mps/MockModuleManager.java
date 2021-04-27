@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps;
 
-import com.intellij.mock.MockModule;
-import com.intellij.openapi.module.EmptyModuleManager;
 import com.intellij.openapi.module.ModifiableModuleModel;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleDescription;
@@ -28,6 +26,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.util.graph.Graph;
 import jetbrains.mps.ide.project.ProjectHelper;
 import org.jdom.JDOMException;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,9 +38,10 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Copy of {@link EmptyModuleManager} with small addition.
- *
+ * @deprecated not used
  */
+@ScheduledForRemoval(inVersion = "2021.1")
+@Deprecated(since = "2020.3.4", forRemoval = true)
 final class MockModuleManager extends ModuleManager {
   private final Project myProject;
 
@@ -90,7 +90,7 @@ final class MockModuleManager extends ModuleManager {
       return new Module[0];
     }
     askedOnProjectOpening = true;
-    return new Module[]{new MockModule(myProject, myProject)};
+    return new Module[0];
   }
 
   @Nullable

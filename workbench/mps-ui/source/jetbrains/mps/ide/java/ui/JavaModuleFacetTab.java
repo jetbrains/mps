@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 package jetbrains.mps.ide.java.ui;
 
 import com.intellij.icons.AllIcons;
-import com.intellij.mock.MockVirtualFile;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.ui.ColoredTableCellRenderer;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SimpleTextAttributes;
@@ -435,18 +435,15 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       if (fileByPath != null) {
         result.add(fileByPath);
       } else {
-        result.add(new MockVirtualFile(path) {
-          @Override
-          public boolean exists() {
-            return false;
-          }
-
+        LightVirtualFile missingFile = new LightVirtualFile(path) {
           @NotNull
           @Override
           public String getPath() {
             return getName();
           }
-        });
+        };
+        missingFile.setValid(false);
+        result.add(missingFile);
       }
     }
     return result;
