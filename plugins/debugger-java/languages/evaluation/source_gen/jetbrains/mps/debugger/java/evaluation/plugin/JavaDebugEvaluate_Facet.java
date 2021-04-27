@@ -23,12 +23,7 @@ import jetbrains.mps.smodel.resources.GResource;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.generator.TransientModelsModule;
-import org.jetbrains.mps.openapi.model.SModelName;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelId;
 import jetbrains.mps.lang.core.plugin.Generate_Facet.Target_configure;
-import jetbrains.mps.generator.impl.CloneUtil;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.Properties;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -36,7 +31,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder;
-import jetbrains.mps.generator.GenerationStatus;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.lang.core.plugin.TextGenOutcomeResource;
@@ -108,25 +102,16 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
           switch (0) {
             case 0:
 
-              for (final GResource res : Sequence.fromIterable(input)) {
+              for (GResource res : Sequence.fromIterable(input)) {
                 final SModel outcomeModel = res.status().getOutputModel();
                 // The code below was copied from TransformingGenerationHandler
                 final Wrappers._T<SNode> evaluator = new Wrappers._T<SNode>();
                 if (outcomeModel != null) {
-                  // XXX would be better to create new module rather than expect output model to belong to transient module, but not sure if
-                  //     there's any hidden assumption regarding Evaluator location (dependencies, module name, etc.)
-                  final TransientModelsModule module = (TransientModelsModule) outcomeModel.getModule();
-                  SModelName newModelName = res.model().getName().withStereotype("evaluate");
-                  final SModel newModel = module.createTransientModel(PersistenceFacade.getInstance().createModelReference(module.getModuleReference(), SModelId.generate(), newModelName.getValue()));
                   Target_configure.vars(pa.global()).transientModelsProvider().getRepository().getModelAccess().runWriteAction(new Runnable() {
                     public void run() {
-                      // evaluator node belongs to a model already in the repository, and AttachedNodeOwner allows to change attached nodes
-                      // from within a command only. Here we are in a thread different from EDT, and have no chance to execute a command.
-                      // Nor do I want to relax ANO's requirement for the command now (I failed to figure out a reason for it).
-                      // That's why we make a copy of generator output model here, modify the copy, publish it and expose as a final outcome.
-                      CloneUtil cu = new CloneUtil(outcomeModel, newModel);
-                      cu.cloneModelWithImports();
-                      evaluator.value = SModelOperations.getRootByName(newModel, Properties.EVALUATOR_NAME);
+                      // evaluator node belongs to a model already in the repository. 
+                      // Now, AttachedNodeOwner doesn't object if we modify a model inside write (used to demand isInsideCommand())
+                      evaluator.value = SModelOperations.getRootByName(outcomeModel, Properties.EVALUATOR_NAME);
                       if (evaluator.value != null) {
                         try {
                           assert SNodeOperations.getModel(evaluator.value) != null;
@@ -136,12 +121,6 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                             }
                           });
                           TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
-                          // TextGen would use model's repository to obtain read lock, and if model is not registered, there'd be no lock
-                          // which is fine for the transient model itself, but once there's reference outside of the model, e.g. to a java stub elsewhere,
-                          // there would be a lock violation exception
-                          module.addModelToKeep(newModel.getReference(), true);
-                          Target_configure.vars(pa.global()).transientModelsProvider().publishAll();
-                          res.status(new GenerationStatus(res.status().getInputModel(), newModel, null, res.status().isError()));
                         } catch (Throwable ex) {
                           monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(ex)));
                         }

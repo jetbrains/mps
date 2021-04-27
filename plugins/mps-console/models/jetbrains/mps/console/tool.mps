@@ -5204,73 +5204,6 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="5Mv7D6G$eaY" role="3cqZAp">
-          <node concept="1PaTwC" id="5Mv7D6G$eaZ" role="1aUNEU">
-            <node concept="3oM_SD" id="5Mv7D6G$gEu" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pbA" role="1PaTwD">
-              <property role="3oM_SC" value="it's" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pbD" role="1PaTwD">
-              <property role="3oM_SC" value="not" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pbH" role="1PaTwD">
-              <property role="3oM_SC" value="nice" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pbM" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pbS" role="1PaTwD">
-              <property role="3oM_SC" value="see" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pbZ" role="1PaTwD">
-              <property role="3oM_SC" value="undoable" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pc7" role="1PaTwD">
-              <property role="3oM_SC" value="command" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$pcg" role="1PaTwD">
-              <property role="3oM_SC" value="just" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$SsZ" role="1PaTwD">
-              <property role="3oM_SC" value="right" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$Sti" role="1PaTwD">
-              <property role="3oM_SC" value="after" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G$StQ" role="1PaTwD">
-              <property role="3oM_SC" value="MPS" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_byC" role="1PaTwD">
-              <property role="3oM_SC" value="startup." />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_n8r" role="1PaTwD">
-              <property role="3oM_SC" value="Get" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_n8M" role="1PaTwD">
-              <property role="3oM_SC" value="rid" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_n9i" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_n9z" role="1PaTwD">
-              <property role="3oM_SC" value="command" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_n9X" role="1PaTwD">
-              <property role="3oM_SC" value="requirement" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_naC" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_naW" role="1PaTwD">
-              <property role="3oM_SC" value="modify" />
-            </node>
-            <node concept="3oM_SD" id="5Mv7D6G_nbx" role="1PaTwD">
-              <property role="3oM_SC" value="models" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="7rPvVR7GXlB" role="3cqZAp">
           <node concept="2OqwBi" id="7rPvVR7GYNY" role="3clFbG">
             <node concept="2OqwBi" id="7rPvVR7GY1M" role="2Oq$k0">
@@ -5282,67 +5215,45 @@
               </node>
             </node>
             <node concept="liA8E" id="7rPvVR7GZkk" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.executeCommand(java.lang.Runnable)" resolve="executeCommand" />
-              <node concept="2ShNRf" id="5Mv7D6GyasI" role="37wK5m">
-                <node concept="YeOm9" id="5Mv7D6GyV2f" role="2ShVmc">
-                  <node concept="1Y3b0j" id="5Mv7D6GyV2i" role="YeSDq">
-                    <property role="2bfB8j" value="true" />
-                    <ref role="1Y3XeK" to="1p3:5Mv7D6Gsx4V" resolve="NamedCommand" />
-                    <ref role="37wK5l" to="1p3:5Mv7D6GsxcY" resolve="NamedCommand" />
-                    <node concept="3clFb_" id="3HKMMVyxb_3" role="jymVt">
-                      <property role="1EzhhJ" value="false" />
-                      <property role="TrG5h" value="run" />
-                      <property role="DiZV1" value="false" />
-                      <property role="od$2w" value="false" />
-                      <node concept="3Tm1VV" id="3HKMMVyxb_4" role="1B3o_S" />
-                      <node concept="3cqZAl" id="3HKMMVyxb_6" role="3clF45" />
-                      <node concept="3clFbS" id="3HKMMVyxb_7" role="3clF47">
-                        <node concept="3clFbF" id="4gO8GruMRYZ" role="3cqZAp">
-                          <node concept="1rXfSq" id="4gO8GruMRYY" role="3clFbG">
-                            <ref role="37wK5l" node="4gO8GruM32p" resolve="createConsoleModel" />
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="6ysF3v1j_eU" role="3cqZAp">
-                          <node concept="1rXfSq" id="6ysF3v1j_eV" role="3clFbG">
-                            <ref role="37wK5l" node="6ysF3v1j_9k" resolve="addBuiltInImports" />
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="3qMqvlK4hPr" role="3cqZAp">
-                          <node concept="1rXfSq" id="3qMqvlK4hPq" role="3clFbG">
-                            <ref role="37wK5l" node="4gO8GruR6JJ" resolve="loadHistory" />
-                            <node concept="37vLTw" id="3qMqvlK4$c3" role="37wK5m">
-                              <ref role="3cqZAo" node="3qMqvlK4mKa" resolve="history" />
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="4gO8GruXOLR" role="3cqZAp">
-                          <node concept="1rXfSq" id="4gO8GruXOLQ" role="3clFbG">
-                            <ref role="37wK5l" node="4gO8GruXgql" resolve="createEditor" />
-                          </node>
-                        </node>
-                        <node concept="3clFbF" id="6ysF3v1j_eO" role="3cqZAp">
-                          <node concept="37vLTI" id="6ysF3v1j_eP" role="3clFbG">
-                            <node concept="2ShNRf" id="6ysF3v1j_eQ" role="37vLTx">
-                              <node concept="1pGfFk" id="6ysF3v1j_eR" role="2ShVmc">
-                                <ref role="37wK5l" node="2Y6GhaXyEhE" resolve="ConsoleFileEditor" />
-                                <node concept="37vLTw" id="6ysF3v1j_eS" role="37wK5m">
-                                  <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="37vLTw" id="6ysF3v1j_eT" role="37vLTJ">
-                              <ref role="3cqZAo" node="4gO8GruCdfo" resolve="myFileEditor" />
-                            </node>
+              <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
+              <node concept="1bVj0M" id="7cR3tGiI6jx" role="37wK5m">
+                <node concept="3clFbS" id="7cR3tGiI6jy" role="1bW5cS">
+                  <node concept="3clFbF" id="4gO8GruMRYZ" role="3cqZAp">
+                    <node concept="1rXfSq" id="4gO8GruMRYY" role="3clFbG">
+                      <ref role="37wK5l" node="4gO8GruM32p" resolve="createConsoleModel" />
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="6ysF3v1j_eU" role="3cqZAp">
+                    <node concept="1rXfSq" id="6ysF3v1j_eV" role="3clFbG">
+                      <ref role="37wK5l" node="6ysF3v1j_9k" resolve="addBuiltInImports" />
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="3qMqvlK4hPr" role="3cqZAp">
+                    <node concept="1rXfSq" id="3qMqvlK4hPq" role="3clFbG">
+                      <ref role="37wK5l" node="4gO8GruR6JJ" resolve="loadHistory" />
+                      <node concept="37vLTw" id="3qMqvlK4$c3" role="37wK5m">
+                        <ref role="3cqZAo" node="3qMqvlK4mKa" resolve="history" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="4gO8GruXOLR" role="3cqZAp">
+                    <node concept="1rXfSq" id="4gO8GruXOLQ" role="3clFbG">
+                      <ref role="37wK5l" node="4gO8GruXgql" resolve="createEditor" />
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="6ysF3v1j_eO" role="3cqZAp">
+                    <node concept="37vLTI" id="6ysF3v1j_eP" role="3clFbG">
+                      <node concept="2ShNRf" id="6ysF3v1j_eQ" role="37vLTx">
+                        <node concept="1pGfFk" id="6ysF3v1j_eR" role="2ShVmc">
+                          <ref role="37wK5l" node="2Y6GhaXyEhE" resolve="ConsoleFileEditor" />
+                          <node concept="37vLTw" id="6ysF3v1j_eS" role="37wK5m">
+                            <ref role="3cqZAo" node="6ysF3v1j_8_" resolve="myEditor" />
                           </node>
                         </node>
                       </node>
-                    </node>
-                    <node concept="3Tm1VV" id="5Mv7D6GyV2j" role="1B3o_S" />
-                    <node concept="Xl_RD" id="5Mv7D6GyJ7z" role="37wK5m">
-                      <property role="Xl_RC" value="Console initialization" />
-                    </node>
-                    <node concept="3clFbT" id="5Mv7D6G$xvB" role="37wK5m">
-                      <property role="3clFbU" value="true" />
+                      <node concept="37vLTw" id="6ysF3v1j_eT" role="37vLTJ">
+                        <ref role="3cqZAo" node="4gO8GruCdfo" resolve="myFileEditor" />
+                      </node>
                     </node>
                   </node>
                 </node>

@@ -28,7 +28,6 @@ import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import org.apache.log4j.Level;
-import jetbrains.mps.smodel.undo.NamedCommand;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -203,8 +202,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       // non-undoable actions should not affect project files
       throw new IllegalStateException();
     }
-    // FIXME it's not nice to see undoable command just right after MPS startup. Get rid of command requirement to modify models
-    getProject().getModelAccess().executeCommand(new NamedCommand("Console initialization", true) {
+    getProject().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         createConsoleModel();
         addBuiltInImports();
@@ -225,7 +223,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     Disposer.register(this, myFileEditor);
 
     myHighlighter = myProject.getProject().getComponent(Highlighter.class);
-    check_6q36mf_a51a43(myHighlighter, myEditor);
+    check_6q36mf_a41a43(myHighlighter, myEditor);
   }
 
   public void dispose() {
@@ -540,7 +538,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodTrimmedId.create("execute", null, "5WvH$QO9bva"), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
   }
 
-  private static void check_6q36mf_a51a43(Highlighter checkedDotOperand, UIEditorComponent myEditor) {
+  private static void check_6q36mf_a41a43(Highlighter checkedDotOperand, UIEditorComponent myEditor) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addAdditionalEditorComponent(myEditor);
     }

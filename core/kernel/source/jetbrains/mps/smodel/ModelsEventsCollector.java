@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -275,8 +275,10 @@ public abstract class ModelsEventsCollector {
       checkNotDisposed();
 
       if (event != null) {
-        if (!myIsInCommand && !(event instanceof SModelFileChangedEvent)) {
-          throw new IllegalStateException("Event outside of a command");
+        if (!myIsInCommand) {
+          // just ignore, now we can get here inside a write (no longer requirement to modify model inside a command)
+          // and I assume intention of this ModelsEventsCollector was to figure out changes during command only
+          return;
         }
         synchronized (myEventsLock) {
           myEvents.add(event);
