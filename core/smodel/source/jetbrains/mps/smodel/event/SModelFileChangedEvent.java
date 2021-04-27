@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,21 @@
  */
 package jetbrains.mps.smodel.event;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
+/**
+ * @deprecated MPS no longer sends out this event (respective methods in {@link SModelListener}, {@code beforeModelFileChanged()} and {@code modelFileChanged()}
+ *             Please remove uses of this class; we are going to drop it once 2021.1 is out
+ *             Note, don't forget to drop [vfs] dependency once this class gone.
+ */
 // XXX this is the only reason [smodel] depends on [vfs]
 @Immutable
+@Deprecated(forRemoval = true, since = "2021.1")
+@ToRemove(version = 2021.1)
 public class SModelFileChangedEvent extends SModelEvent {
   private final IFile myOldFile;
   private final IFile myNewFile;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -92,7 +93,12 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
 
   // Not SModel-specific listener notifications
 
-  protected void fireBeforeModelFileChanged(SModelFileChangedEvent event) {
+  /**
+   * @deprecated see SModelFileChangedEvent for details
+   */
+  @Deprecated(forRemoval = true, since = "2021.1")
+  @ToRemove(version = 2021.1)
+  protected final void fireBeforeModelFileChanged(SModelFileChangedEvent event) {
     for (SModelListener sModelListener : getModelListeners()) {
       try {
         sModelListener.beforeModelFileChanged(event);
@@ -102,7 +108,12 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
     }
   }
 
-  protected void fireModelFileChanged(SModelFileChangedEvent event) {
+  /**
+   * @deprecated see SModelFileChangedEvent for details
+   */
+  @Deprecated(forRemoval = true, since = "2021.1")
+  @ToRemove(version = 2021.1)
+  protected final void fireModelFileChanged(SModelFileChangedEvent event) {
     for (SModelListener sModelListener : getModelListeners()) {
       try {
         sModelListener.modelFileChanged(event);

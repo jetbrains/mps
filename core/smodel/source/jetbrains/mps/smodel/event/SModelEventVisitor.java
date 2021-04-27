@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 package jetbrains.mps.smodel.event;
+
+import jetbrains.mps.util.annotation.ToRemove;
 
 public interface SModelEventVisitor {
   void visitRootEvent(SModelRootEvent event);
@@ -34,5 +36,10 @@ public interface SModelEventVisitor {
 
   void visitDevKitEvent(SModelDevKitEvent event);
 
-  void visitModelFileEvent(SModelFileChangedEvent event);
+  /**
+   * @deprecated see SModelFileChangedEvent for details
+   */
+  @Deprecated(forRemoval = true, since = "2021.1")
+  @ToRemove(version = 2021.1)
+  default void visitModelFileEvent(SModelFileChangedEvent event) {}
 }
