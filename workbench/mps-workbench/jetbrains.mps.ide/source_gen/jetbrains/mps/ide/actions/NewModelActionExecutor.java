@@ -7,11 +7,14 @@ import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogSettings;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
 import javax.swing.tree.TreeNode;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import java.util.Set;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
 import com.intellij.openapi.application.ApplicationManager;
@@ -19,7 +22,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
 import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.ide.IdeBundle;
 import java.util.HashSet;
@@ -43,7 +45,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   public NewModelActionExecutor(MPSProject project, SModule module, TreeNode treeNode) {
     this(project, module, getDefaultSettingsFactory(module, treeNode));
   }
-  public NewModelActionExecutor(MPSProject project, final SModule module, TreeNode treeNode, String namespace) {
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull final SModule module, @Nullable TreeNode treeNode, @NotNull String namespace) {
     super(project);
     myModule = module;
     String mn = suggestNewModelName(new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Set<String>>() {
@@ -52,6 +54,17 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
       }
     }), namespace);
     myDialogSettingsFactory = NewModelDialogDefaultSettings.getFactory(mn, getDefaultStereotypeProvider(treeNode));
+  }
+
+  public NewModelActionExecutor(@NotNull MPSProject project, @NotNull final SModule module, @NotNull SModel contextModel) {
+    super(project);
+    myModule = module;
+    String mn = suggestNewModelName(new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Set<String>>() {
+      public Set<String> compute() {
+        return existingModelNames(module);
+      }
+    }), contextModel.getName().getLongName());
+    myDialogSettingsFactory = NewModelDialogDefaultSettings.getFactory(mn, StereotypeProvider.create(contextModel.getName().getStereotype(), true));
   }
 
   public NewModelActionExecutor(MPSProject project, SModule module, NewModelDialogSettings.Factory dialogSettingsFactory) {
@@ -69,7 +82,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   protected final SModel showDialog(SModule module) {
     NewModelDialog dialog = new NewModelDialog(myProject, (AbstractModule) module, NewModelActionExecutor.getTitle(), myDialogSettingsFactory);
     dialog.show();
-    return check_e2o8ll_a2a11(dialog.getResultHelper());
+    return check_e2o8ll_a2a31(dialog.getResultHelper());
   }
 
   /**
@@ -173,7 +186,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
     } while (inUse.contains(candidate));
     return candidate;
   }
-  private static EditableSModel check_e2o8ll_a2a11(ModelCreateHelper checkedDotOperand) {
+  private static EditableSModel check_e2o8ll_a2a31(ModelCreateHelper checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.createModelHandleExceptions();
     }
