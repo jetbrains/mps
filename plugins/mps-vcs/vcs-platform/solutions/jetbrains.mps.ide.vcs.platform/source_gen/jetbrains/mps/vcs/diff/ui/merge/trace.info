@@ -179,8 +179,9 @@
       <node id="2657001694096389239" at="359,51,360,53" concept="3" />
       <node id="2657001694096389243" at="360,53,361,57" concept="3" />
       <node id="2657001694096389279" at="364,109,365,78" concept="3" />
-      <node id="4664177994952686618" at="369,90,370,296" concept="8" />
-      <node id="4664177994952686628" at="370,296,371,49" concept="3" />
+      <node id="4664177994952686618" at="368,90,369,296" concept="8" />
+      <node id="2317126885840386294" at="369,296,370,60" concept="3" />
+      <node id="4664177994952686628" at="370,60,371,49" concept="3" />
       <node id="4664177994952686631" at="371,49,372,67" concept="3" />
       <node id="5778592416296185061" at="372,67,373,99" concept="3" />
       <node id="7719610553705455001" at="379,37,380,62" concept="3" />
@@ -277,12 +278,12 @@
       <node id="1838926202779382330" at="486,36,491,9" concept="3" />
       <node id="2939482334819824374" at="127,0,133,0" concept="7" trace="run#()V" />
       <node id="5447925405588757118" at="247,0,253,0" concept="7" trace="paintDividerPart#(Ljava/awt/Graphics;Ljavax/swing/JComponent;Z)V" />
-      <node id="4664177994952686612" at="369,0,375,0" concept="7" trace="linkEditors#(Lcom/intellij/diff/tools/util/side/ThreesideContentPanel;ZZ)V" />
       <node id="7719610553705454991" at="376,127,382,6" concept="9" />
       <node id="2657001694096389402" at="389,5,395,5" concept="6" />
       <node id="8136967807529648901" at="478,0,484,0" concept="7" trace="commandFinished#()V" />
       <node id="3312434123649923000" at="239,0,246,0" concept="7" trace="paint#(Ljava/awt/Graphics;Ljavax/swing/JComponent;)V" />
       <node id="2657001694096389110" at="316,0,323,5" concept="6" />
+      <node id="4664177994952686612" at="368,0,375,0" concept="7" trace="linkEditors#(Lcom/intellij/diff/tools/util/side/ThreesideContentPanel;ZZ)V" />
       <node id="2657001694096389425" at="399,0,406,0" concept="7" trace="addEditor#(ILorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;" />
       <node id="2939482334820409647" at="419,7,426,9" concept="3" />
       <node id="8136967807529650254" at="456,0,463,0" concept="7" trace="doInvalidate#()V" />
@@ -424,9 +425,6 @@
       <scope id="1973725742812934966" at="264,0,268,0">
         <var name="component" id="1973725742812960046" />
       </scope>
-      <scope id="4664177994952686613" at="369,90,373,99">
-        <var name="layout" id="4664177994952686619" />
-      </scope>
       <scope id="7719610553705454997" at="378,0,382,0" />
       <scope id="2657001694096389403" at="390,51,394,7">
         <var name="replacement" id="2657001694096389405" />
@@ -439,6 +437,9 @@
       <scope id="2657001694096389111" at="317,49,322,7">
         <var name="nodeId" id="2657001694096389119" />
         <var name="resultModel" id="2657001694096389113" />
+      </scope>
+      <scope id="4664177994952686613" at="368,90,373,99">
+        <var name="layout" id="4664177994952686619" />
       </scope>
       <scope id="2657001694096389432" at="399,57,404,18">
         <var name="result" id="2657001694096389452" />
@@ -456,11 +457,6 @@
         <var name="inspector" id="1985883451377177877" />
       </scope>
       <scope id="2657001694096389192" at="342,70,348,7" />
-      <scope id="4664177994952686612" at="369,0,375,0">
-        <var name="inspector" id="4664177994952686698" />
-        <var name="mine" id="5778592416296142322" />
-        <var name="panel" id="2548742453557521758" />
-      </scope>
       <scope id="7719610553705384958" at="376,127,382,6" />
       <scope id="8136967807529648901" at="478,0,484,0" />
       <scope id="3312434123649923000" at="239,0,246,0">
@@ -469,6 +465,11 @@
       </scope>
       <scope id="2657001694096388937" at="277,41,284,39" />
       <scope id="2657001694096389002" at="287,74,294,22" />
+      <scope id="4664177994952686612" at="368,0,375,0">
+        <var name="inspector" id="4664177994952686698" />
+        <var name="mine" id="5778592416296142322" />
+        <var name="panel" id="2548742453557521758" />
+      </scope>
       <scope id="2657001694096389425" at="399,0,406,0">
         <var name="index" id="2657001694096389428" />
         <var name="model" id="2657001694096389430" />
