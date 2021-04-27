@@ -35,7 +35,7 @@ import java.io.IOException;
 
 public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
 
-  private NewLanguageSettings myLanguageSettings = new NewLanguageSettings();
+  private final NewLanguageSettings myLanguageSettings = new NewLanguageSettings();
 
   public DefaultLanguageProjectTemplate() {
     myLanguageSettings.setListener(this::fireSettingsChanged);

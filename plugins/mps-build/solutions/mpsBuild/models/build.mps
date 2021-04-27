@@ -2040,11 +2040,7 @@
     <node concept="2kB4xC" id="3AMbuf1a7On" role="1l3spd">
       <property role="TrG5h" value="version.eap" />
       <node concept="aVJcg" id="3AMbuf1a7Oo" role="aVJcv">
-        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq">
-          <node concept="3Mxwew" id="7$wxZZv4WHD" role="3MwsjC">
-            <property role="3MwjfP" value=" EAP" />
-          </node>
-        </node>
+        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq" />
       </node>
     </node>
     <node concept="2kB4xC" id="5HVSRHdVf2d" role="1l3spd">
@@ -27825,7 +27821,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="7wYCejDaP6T" role="3MwsjC">
-            <property role="3MwjfP" value="MPS211EAP" />
+            <property role="3MwjfP" value="MPS211" />
           </node>
         </node>
       </node>
@@ -27922,11 +27918,7 @@
             <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
           </node>
         </node>
-        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11">
-          <node concept="3Mxwey" id="7wYCejDaZCV" role="3MwsjC">
-            <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
-          </node>
-        </node>
+        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11" />
       </node>
       <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
         <property role="2pNNFO" value="youtrack" />
@@ -43567,45 +43559,6 @@
     <property role="3GE5qa" value="ide" />
     <property role="TrG5h" value="resources" />
     <node concept="398223" id="AwiPu7jFRO" role="39821P">
-      <node concept="1tmT9g" id="1NXhbnOpTEb" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="3_J27D" id="1NXhbnOpTEd" role="Nbhlr">
-          <node concept="3Mxwew" id="1NXhbnOpTEk" role="3MwsjC">
-            <property role="3MwjfP" value="jbsdk_osx_x64.tar.gz" />
-          </node>
-        </node>
-      </node>
-      <node concept="1tmT9g" id="1NXhbnOpTEu" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="3_J27D" id="1NXhbnOpTEw" role="Nbhlr">
-          <node concept="3Mxwew" id="1NXhbnOpTEE" role="3MwsjC">
-            <property role="3MwjfP" value="jbsdk_windows_x64.tar.gz" />
-          </node>
-        </node>
-      </node>
-      <node concept="1tmT9g" id="5aru7HX9JUi" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="3_J27D" id="5aru7HX9JUj" role="Nbhlr">
-          <node concept="3Mxwew" id="5aru7HX9JUk" role="3MwsjC">
-            <property role="3MwjfP" value="jbrsdk-osx-x64.tar.gz" />
-          </node>
-        </node>
-      </node>
-      <node concept="1tmT9g" id="5aru7HX9JU6" role="39821P">
-        <property role="AB_bT" value="gzip" />
-        <node concept="398223" id="3t7sqKTd$eL" role="39821P">
-          <node concept="3_J27D" id="3t7sqKTd$eM" role="Nbhlr">
-            <node concept="3Mxwew" id="3t7sqKTd$eP" role="3MwsjC">
-              <property role="3MwjfP" value="jbrsdk" />
-            </node>
-          </node>
-        </node>
-        <node concept="3_J27D" id="5aru7HX9JU7" role="Nbhlr">
-          <node concept="3Mxwew" id="5aru7HX9JU8" role="3MwsjC">
-            <property role="3MwjfP" value="jbrsdk-windows-x64.tar.gz" />
-          </node>
-        </node>
-      </node>
       <node concept="3_J27D" id="AwiPu7jFRQ" role="Nbhlr">
         <node concept="3Mxwew" id="AwiPu7jFS0" role="3MwsjC">
           <property role="3MwjfP" value="openJDK" />

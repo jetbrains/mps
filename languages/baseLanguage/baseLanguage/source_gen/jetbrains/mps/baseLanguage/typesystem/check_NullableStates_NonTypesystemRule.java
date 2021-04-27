@@ -98,7 +98,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
       }
 
 
-      // Find Nullable assignements to NotNull variables
+      // Find Nullable assignments to NotNull variables
       if (instruction instanceof WriteInstruction) {
         checkingResult = NullableUtil.checkNullableAssignment(((WriteInstruction) instruction), result);
         if (checkingResult != null) {

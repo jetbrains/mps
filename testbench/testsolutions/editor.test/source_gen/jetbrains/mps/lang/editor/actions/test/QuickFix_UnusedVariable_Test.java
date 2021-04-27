@@ -32,7 +32,7 @@ public class QuickFix_UnusedVariable_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("577180331592185433", "577180331592189392");
+      initEditorComponent("4056233746954986924", "4056233746955854188");
       applyQuickFix(null);
     }
   }

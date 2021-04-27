@@ -220,7 +220,7 @@ public class ModuleUpdater {
   private boolean comesWithInvalidIdeaPluginFacet(ReloadableModule module) {
     var facet = module.getFacet(IdeaPluginModuleFacet.class);
     if (facet != null && !facet.isValid()) {
-      SearchError error = new SearchError("The plugin facet " + facet.getPluginId() + " is invalid");
+      SearchError error = SearchError.of("The module " + module.getModuleReference() + " comes with invalid idea plugins facet " + facet.getPluginId());
       myModulesWithAbsentDeps.put(module, Collections.singletonList(error));
       return true;
     }
@@ -352,7 +352,7 @@ public class ModuleUpdater {
   static class SearchError {
     private final String myMsg;
 
-    SearchError(String msg) {
+    private SearchError(String msg) {
       myMsg = msg;
     }
 

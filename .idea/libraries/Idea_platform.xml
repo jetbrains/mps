@@ -46,7 +46,7 @@
       <root url="jar://$PROJECT_DIR$/lib/lz4-java-1.7.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.12.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-databind.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.40.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.42.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jing-20030619.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jshell-frontend.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xmlbeans-2.6.0.jar!/" />
