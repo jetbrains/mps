@@ -109,6 +109,8 @@
       <root url="jar://$PROJECT_DIR$/lib/testFramework.core.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/testFramework.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/tests_bootstrap.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dom-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dom-openapi.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
