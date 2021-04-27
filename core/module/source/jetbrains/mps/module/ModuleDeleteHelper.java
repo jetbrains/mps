@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -122,12 +123,12 @@ public final class ModuleDeleteHelper {
      * the language (delete from Language descriptor). Otherwise Generator will reappear after Language reload.
      */
     for (Generator g : unascribedGenerators) {
-      final boolean ownedBySomeLanguageModule = unregisterGeneratorFromLanguage(g);
+      final GeneratorDescriptor generatorDescriptor = g.getModuleDescriptor();
       if (deleteFiles) {
-        if (ownedBySomeLanguageModule) {
-          collectModelsAndArtifactsToDelete(g);
-        } else {
+        if (generatorDescriptor.isStandaloneModule()) {
           collectModuleFilesToDelete(g);
+        } else {
+          collectModelsAndArtifactsToDelete(g);
         }
       }
       if (projectModulesNoNestedGenerators.contains(g)) {
@@ -135,6 +136,7 @@ public final class ModuleDeleteHelper {
       } else {
         facade.unregisterModule(g);
       }
+      unregisterGeneratorFromLanguage(generatorDescriptor);
     }
 
     // owned generators are not "project modules", just report them to SRepository
@@ -158,29 +160,28 @@ public final class ModuleDeleteHelper {
   }
 
   /**
-   *
-   * @param module generator, which is not among owned of any other language we are going to delete
-   * @return {@code true} if generator module has been owned by a language module
+   * If generator shares descriptor file with its language, update the descriptor.
+   * Otherwise, we just drop the whole file
+   * @param gd generator, which is not among owned of any other language we are going to delete
    */
-  private boolean unregisterGeneratorFromLanguage(Generator module) {
-    // TODO: remove after Generator will be moved it's own descriptor file
+  private void unregisterGeneratorFromLanguage(GeneratorDescriptor gd) {
     // Second parameter prevent exceptions after Generator extraction from Language
-    final SModule sourceModule = module.sourceLanguage().getSourceModuleReference().resolve(myProject.getRepository());
+    final SModule sourceModule = gd.getSourceLanguage().resolve(myProject.getRepository());
     if (sourceModule instanceof Language && !sourceModule.isReadOnly()) {
       final Language sourceLanguage = (Language) sourceModule;
       LanguageDescriptor languageDescriptor = sourceLanguage.getModuleDescriptor();
-      if (languageDescriptor.getGenerators().contains(module.getModuleDescriptor())) {
-        languageDescriptor.getGenerators().remove(module.getModuleDescriptor());
+      if (languageDescriptor.getGenerators().contains(gd)) {
+        languageDescriptor.getGenerators().remove(gd);
         sourceLanguage.setModuleDescriptor(languageDescriptor);
         sourceLanguage.save();
-        return true;
       }
       // fall-through
     }
-    return false;
   }
 
   // doesn't touch module descriptor and module's home dir, just models and generated artifacts
+  // IMPORTANT: module shall not be detached/disposed when we collect its files, otherwise there'd be
+  //     no facets nor models
   private void collectModelsAndArtifactsToDelete(SModule module) {
     final ArrayList<GenerationTargetFacet> gtf = new ArrayList<>(4);
     for (SModuleFacet f : module.getFacets()) {
