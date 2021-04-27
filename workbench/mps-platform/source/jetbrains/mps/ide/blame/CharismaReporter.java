@@ -23,6 +23,7 @@ import com.intellij.openapi.diagnostic.ErrorReportSubmitter;
 import com.intellij.openapi.diagnostic.IdeaLoggingEvent;
 import com.intellij.openapi.diagnostic.SubmittedReportInfo;
 import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus;
+import com.intellij.openapi.extensions.InternalIgnoreDependencyViolation;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.Consumer;
@@ -37,6 +38,7 @@ import java.awt.Component;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+@InternalIgnoreDependencyViolation
 public class CharismaReporter extends ErrorReportSubmitter {
 
   @NotNull

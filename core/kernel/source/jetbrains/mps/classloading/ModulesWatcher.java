@@ -49,22 +49,22 @@ import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.VALID;
 /**
  * This class watches all the reloadable modules, which satisfy #myWatchableCondition in the repository and dependencies between them.
  * It aims to store a status for each tracked module
+ *
  * @see jetbrains.mps.classloading.ModulesWatcher.ClassLoadingStatus
  * and to return all compile depedencies of module within repository
  * @see #getDependencies(Iterable)
  * Also it keeps a dependency graph to be able to calculate back dependencies for any module
  * @see #getBackDependencies(Iterable)
- *
+ * <p>
  * Note: due to the lazy implementation of module unloading, there is a possible situation,
  * when there are some disposed modules in ModulesWatcher.
  * We may be asked about their dependencies etc. Therefore <code>ModulesWatcher</code> tracks references to modules not modules themselves.
  * The add/remove/update module methods are triggered from above. This class updates its state accordingly.
- *
+ * <p>
  * A lazy mechanism is used here: when the state is 'dirty', refresh happens at any request.
  * @see #recountStatus()
- *
+ * <p>
  * Notice, that read action is required on every update.
- *
  * @see {@code ClassLoaderManager#myLoadableCondition}
  * @see {@code ClassLoaderManager#myWatchableCondition}
  */
@@ -115,44 +115,52 @@ public class ModulesWatcher {
   }
 
   public void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
-    if (modules.isEmpty()) return;
+    if (modules.isEmpty()) {
+      return;
+    }
     myModuleUpdater.updateModules(modules);
     update();
   }
 
   public void addModules(@NotNull Collection<? extends ReloadableModule> modules) {
-    if (modules.isEmpty()) return;
+    if (modules.isEmpty()) {
+      return;
+    }
     myModuleUpdater.addModules(modules);
     update();
   }
 
   public void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
-    if (mRefs.isEmpty()) return;
+    if (mRefs.isEmpty()) {
+      return;
+    }
     myModuleUpdater.removeModules(mRefs);
     update();
   }
 
   /**
    * recounting the status map
+   *
    * @see #isChanged()
    */
   private void recountStatus() {
     LOG.debug("Recount status map for modules");
     myModuleUpdater.refreshGraph();
-    refillStatusMap(findInvalidModules());
+    refillStatusMap();
     LOG.debug("Finished recounting");
   }
 
   /**
    * costly because of backDeps request
    */
-  private void refillStatusMap(Collection<? extends SModuleReference> invalidModules) {
+  private void refillStatusMap() {
     synchronized (myStatusMapLock) {
+      var invalidModules = findInvalidModules(false);
       myStatusMap.clear();
       for (SModuleReference mRef : getAllModules()) {
         myStatusMap.put(mRef, VALID);
       }
-      Collection<? extends SModuleReference> allInvalidModules = getBackDependencies(invalidModules);
+      var allInvalidModules = getBackDependencies(invalidModules.keySet());
       for (SModuleReference mRef : allInvalidModules) {
         myStatusMap.put(mRef, SIMPLY_INVALID);
       }
@@ -161,10 +169,10 @@ public class ModulesWatcher {
                                        invalidModules.size(),
                                        getAllModules().size());
         LOG.warn(message);
-        print(invalidModules, LOG::warn);
+        printMap(invalidModules, LOG::warn);
       }
 
-      traceInvalidDeps(invalidModules, allInvalidModules);
+      traceInvalidDeps(invalidModules.keySet(), allInvalidModules);
       LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading" + (allInvalidModules.isEmpty() ? "."
                                                                                                                                       : ":"));
       if (!allInvalidModules.isEmpty()) {
@@ -201,9 +209,15 @@ public class ModulesWatcher {
     }
   }
 
-  private void print(Collection<? extends SModuleReference> modules, Consumer<String> print) {
-    for (SModuleReference ref : modules) {
-      print.accept(ref.toString());
+  private void printMap(Map<SModuleReference, String> mref2msg, Consumer<String> print) {
+    for (var val : mref2msg.values()) {
+      print.accept(val);
+    }
+  }
+
+  private void print(Collection<SModuleReference> refs, Consumer<String> print) {
+    for (var entry : refs) {
+      print.accept(entry.toString());
     }
   }
 
@@ -222,17 +236,13 @@ public class ModulesWatcher {
     return myRefStorage.resolveRef(ref);
   }
 
-  private Collection<SModuleReference> findInvalidModules() {
-    return findInvalidModules0(false).keySet();
-  }
-
   @TestOnly
-  Map<SModuleReference, String> findInvalidModulesProblems() {
-    return findInvalidModules0(true);
+  Map<SModuleReference, String> findAndPrintInvalidModulesProblems() {
+    return findInvalidModules(true);
   }
 
   @NotNull
-  private Map<SModuleReference, String> findInvalidModules0(boolean errorLevel) {
+  private Map<SModuleReference, String> findInvalidModules(boolean printErrors) {
     myRepository.getModelAccess().checkReadAccess();
 
     Map<ReloadableModule, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getModulesWithAbsentDeps();
@@ -244,7 +254,9 @@ public class ModulesWatcher {
         if (msg == null) {
           continue;
         }
-        if (errorLevel) LOG.error(msg); else LOG.debug(msg);
+        if (printErrors) {
+          LOG.error(msg);
+        }
         mRefToProblem.put(mRef, msg);
       }
     }
@@ -265,7 +277,6 @@ public class ModulesWatcher {
     ReloadableModule module = (ReloadableModule) mRef.resolve(myRepository);
     assert module != null;
 
-    // FIXME does not work for now, enable in the 3.4
     if (modulesWithAbsentDeps.containsKey(module)) {
       List<SearchError> errors = modulesWithAbsentDeps.get(module);
       return String.format("%s has got an absent dependency problem and therefore was marked invalid for class loading: %s", module, errors.get(0).getMsg());
@@ -324,7 +335,9 @@ public class ModulesWatcher {
     final Collection<ReloadableModule> modules = new LinkedHashSet<>();
     for (SModuleReference mRef : refs) {
       ReloadableModule module = resolveRef(mRef);
-      if (module != null)  modules.add(module);
+      if (module != null) {
+        modules.add(module);
+      }
     }
     return modules;
   }
@@ -346,7 +359,9 @@ public class ModulesWatcher {
 
   public Collection<? extends ReloadableModule> getResolvedBackDependencies(Iterable<? extends ReloadableModule> modules) {
     Collection<SModuleReference> refs = new LinkedHashSet<>();
-    for (ReloadableModule module : modules) refs.add(module.getModuleReference());
+    for (ReloadableModule module : modules) {
+      refs.add(module.getModuleReference());
+    }
     return resolveRefs(getBackDependencies(refs));
   }
 
