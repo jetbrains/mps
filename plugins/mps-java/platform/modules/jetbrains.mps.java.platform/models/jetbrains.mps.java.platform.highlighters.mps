@@ -2450,22 +2450,12 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="22lmx$" id="7k6J8c3tisR" role="3clFbw">
-                          <node concept="2ZW3vV" id="7k6J8c3tisV" role="3uHU7B">
-                            <node concept="2GrUjf" id="7k6J8c3tisX" role="2ZW6bz">
-                              <ref role="2Gs0qQ" node="7k6J8c3tisN" resolve="event" />
-                            </node>
-                            <node concept="3uibUv" id="7k6J8c3tisW" role="2ZW6by">
-                              <ref role="3uigEE" to="j9co:~SModelRootEvent" resolve="SModelRootEvent" />
-                            </node>
+                        <node concept="2ZW3vV" id="7k6J8c3tisV" role="3clFbw">
+                          <node concept="2GrUjf" id="7k6J8c3tisX" role="2ZW6bz">
+                            <ref role="2Gs0qQ" node="7k6J8c3tisN" resolve="event" />
                           </node>
-                          <node concept="2ZW3vV" id="7k6J8c3tisS" role="3uHU7w">
-                            <node concept="2GrUjf" id="7k6J8c3tisU" role="2ZW6bz">
-                              <ref role="2Gs0qQ" node="7k6J8c3tisN" resolve="event" />
-                            </node>
-                            <node concept="3uibUv" id="7k6J8c3tisT" role="2ZW6by">
-                              <ref role="3uigEE" to="j9co:~SModelFileChangedEvent" resolve="SModelFileChangedEvent" />
-                            </node>
+                          <node concept="3uibUv" id="7k6J8c3tisW" role="2ZW6by">
+                            <ref role="3uigEE" to="j9co:~SModelRootEvent" resolve="SModelRootEvent" />
                           </node>
                         </node>
                       </node>

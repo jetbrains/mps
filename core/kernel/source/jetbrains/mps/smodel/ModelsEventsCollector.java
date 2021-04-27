@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
 import jetbrains.mps.smodel.event.SModelListener;
@@ -211,16 +210,6 @@ public abstract class ModelsEventsCollector {
 
     @Override
     public void modelRenamed(SModelRenamedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void beforeModelFileChanged(SModelFileChangedEvent event) {
-      listenerInvoked(event);
-    }
-
-    @Override
-    public void modelFileChanged(SModelFileChangedEvent event) {
       listenerInvoked(event);
     }
 

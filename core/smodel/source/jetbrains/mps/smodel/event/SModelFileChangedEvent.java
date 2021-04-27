@@ -50,7 +50,7 @@ public class SModelFileChangedEvent extends SModelEvent {
 
   @Override
   public void accept(SModelEventVisitor visitor) {
-    visitor.visitModelFileEvent(this);
+
   }
 
   @Override

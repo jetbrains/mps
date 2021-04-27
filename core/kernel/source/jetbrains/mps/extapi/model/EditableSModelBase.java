@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,7 @@ import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +43,6 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.BiFunction;
 
 /**
  * Editable model (generally) backed up by file. Implicitly bound to files due to
@@ -329,21 +326,11 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
         if (!(getSource() instanceof FileDataSource)) {
           throw new UnsupportedOperationException("cannot change model file on non-file data source");
         }
-        // FIXME it's odd to send out model file changed event from the model, and it's legacy with no uses (I didn't find any neither in ext nor in mbeddr)
-        //       there are legacy listener implementations in mbeddr and 4 references to ModelFileChangedEvent, but no special handling.
-        // FIXME shall just drop these
-        IFile oldFile = ((FileDataSource) getSource()).getFile();
-        fireBeforeModelFileChanged(new SModelFileChangedEvent(this, oldFile, null));
 
         ModelRoot root = getModelRoot();
         if (root instanceof DefaultModelRoot) { // todo only default model root? this code does not belong here but model root
           ((DefaultModelRoot) root).rename(((FileDataSource) getSource()), newModelName);
           updateTimestamp();
-        }
-        // XXX see above, just drop it
-        final IFile newFile = ((FileDataSource) getSource()).getFile();
-        if (!oldFile.getPath().equals(newFile.getPath())) {
-          fireModelFileChanged(new SModelFileChangedEvent(this, oldFile, newFile));
         }
       }
     } catch (DataSourceFactoryNotFoundException | NoSourceRootsInModelRootException | SourceRootDoesNotExistException e) {

@@ -37,7 +37,6 @@ import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.event.SModelRootEvent;
-import jetbrains.mps.smodel.event.SModelFileChangedEvent;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -233,7 +232,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     return new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         for (SModelEvent event : ListSequence.fromList(events)) {
-          if (event instanceof SModelRootEvent || event instanceof SModelFileChangedEvent) {
+          if (event instanceof SModelRootEvent) {
             return true;
           }
           if (event instanceof SModelChildEvent) {

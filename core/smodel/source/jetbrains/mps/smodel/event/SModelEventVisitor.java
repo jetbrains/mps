@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.smodel.event;
 
-import jetbrains.mps.util.annotation.ToRemove;
-
 public interface SModelEventVisitor {
   void visitRootEvent(SModelRootEvent event);
 
@@ -35,11 +33,4 @@ public interface SModelEventVisitor {
   void visitLanguageEvent(SModelLanguageEvent event);
 
   void visitDevKitEvent(SModelDevKitEvent event);
-
-  /**
-   * @deprecated see SModelFileChangedEvent for details
-   */
-  @Deprecated(forRemoval = true, since = "2021.1")
-  @ToRemove(version = 2021.1)
-  default void visitModelFileEvent(SModelFileChangedEvent event) {}
 }

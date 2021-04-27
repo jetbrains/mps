@@ -58,18 +58,6 @@ public interface SModelListener {
 
   void modelRenamed(SModelRenamedEvent event);
 
-  /**
-   * @deprecated MPS will cease to send out this event, use {@link org.jetbrains.mps.openapi.persistence.DataSourceListener} instead
-   */
-  @Deprecated
-  default void beforeModelFileChanged(SModelFileChangedEvent event) {}
-
-  /**
-   * @deprecated MPS will cease to send out this event, use {@link org.jetbrains.mps.openapi.persistence.DataSourceListener} instead
-   */
-  @Deprecated
-  default void modelFileChanged(SModelFileChangedEvent event) {}
-
   void propertyChanged(SModelPropertyEvent event);
 
   void childAdded(SModelChildEvent event);
