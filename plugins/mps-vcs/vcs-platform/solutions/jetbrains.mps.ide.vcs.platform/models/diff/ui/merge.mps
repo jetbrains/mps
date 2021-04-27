@@ -414,6 +414,10 @@
       <concept id="9042586985346099736" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable" flags="ng" index="1_o_bG" />
       <concept id="1240824834947" name="jetbrains.mps.baseLanguage.collections.structure.ValueAccessOperation" flags="nn" index="3AV6Ez" />
       <concept id="1240825616499" name="jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation" flags="nn" index="3AY5_j" />
+      <concept id="1197932370469" name="jetbrains.mps.baseLanguage.collections.structure.MapElement" flags="nn" index="3EllGN">
+        <child id="1197932505799" name="map" index="3ElQJh" />
+        <child id="1197932525128" name="key" index="3ElVtu" />
+      </concept>
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
       <concept id="8293956702609956630" name="jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariableReference" flags="nn" index="3M$PaV">
         <reference id="8293956702609966325" name="variable" index="3M$S_o" />
@@ -5253,7 +5257,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="73GkhK4_SfM" role="jymVt" />
     <node concept="2tJIrI" id="50LFMYN53SG" role="jymVt" />
     <node concept="3clFb_" id="42UviMImjKk" role="jymVt">
       <property role="TrG5h" value="linkEditors" />
@@ -5326,6 +5329,21 @@
             </node>
             <node concept="3uibUv" id="2duWW7ShtFS" role="1tU5fm">
               <ref role="3uigEE" to="hdhb:5zpsdFy5n9A" resolve="DiffChangeGroupLayout" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="20C5E121vzQ" role="3cqZAp">
+          <node concept="37vLTI" id="20C5E121xkU" role="3clFbG">
+            <node concept="37vLTw" id="20C5E121yhl" role="37vLTx">
+              <ref role="3cqZAo" node="50LFMYN6gnM" resolve="mine" />
+            </node>
+            <node concept="3EllGN" id="20C5E121wrP" role="37vLTJ">
+              <node concept="37vLTw" id="20C5E121x4b" role="3ElVtu">
+                <ref role="3cqZAo" node="42UviMImjKr" resolve="layout" />
+              </node>
+              <node concept="37vLTw" id="20C5E121vzO" role="3ElQJh">
+                <ref role="3cqZAo" node="2jv$fqwev7M" resolve="myDiffLayoutPart" />
+              </node>
             </node>
           </node>
         </node>
