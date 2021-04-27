@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,14 +35,12 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.workbench.findusages.MPSModelsIndexer;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
@@ -56,7 +54,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.regex.Matcher;
@@ -83,16 +80,38 @@ public class PropertyValueIndex extends FileBasedIndexExtension<WordIndexEntry, 
     return Pattern.compile("\\s+");
   }
 
-  public static PropertyValueProcessor processor(final String text, final Consumer<SNode> sink, MPSProject mpsProject) {
+  // Function to split a (user-supplied) value into distinct words; removed duplicates, short irrelevant words,
+  // in future, perhaps, may filter out ignored values; translates words to some common denominator (lowercase)
+  // so that output of the function could be compared directly.
+  // XXX perhaps, Function [String -> Stream<String>] instead?
+  public static Function<String, Set<String>> splitToWord() {
+    return (text -> {
+      final String[] words = getWordSplitPattern().split(text, 0);
+      final THashSet<String> rv = new THashSet<>();
+      for (String w : words) {
+        // XXX Limit comes from WordIndexEntry.forEachHash(). Wold be great to keep all this knowledge in a single place
+        if (w.length() < 2) {
+          continue;
+        }
+        // intentionally lowercase individual words to keep as much elements as possible as original subsequences (assuming
+        // capital letters are less common case that lowercase)
+        rv.add(w.toLowerCase());
+      }
+      return rv;
+    });
+  };
+
+  // Function to split a (user-supplied) value into distinct word hashes
+  public static Function<String, Set<WordIndexEntry>> splitToIndexEntry() {
     // FIXME what if there are 'ignored' words in the text? Does it prevent us from using index (there's would be respective WordIndexEntry
     //       in the key set, while index doesn't keep hash values for 'ignored' words.
-    return new PropertyValueProcessor(mpsProject, sink, () -> {
+    return (text -> {
       final THashSet<WordIndexEntry> map = new THashSet<>();
       IntConsumer cc = (int h) -> map.add(new WordIndexEntry(h));
       new WordSplit(getWordSplitPattern()).processWords(text, cc);
       return map;
     });
-  }
+  };
 
   public PropertyValueIndex() {
     // copied from MPSModelsIndexer
