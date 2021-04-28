@@ -623,17 +623,17 @@
       <node id="5146190354805667443" at="102,27,103,70" concept="3" />
       <node id="5146190354805586021" at="103,70,104,39" concept="0" />
       <node id="2657001694103488151" at="106,25,107,90" concept="3" />
-      <node id="2657001694103488167" at="107,90,108,58" concept="3" />
-      <node id="7191706270037018950" at="112,25,113,99" concept="3" />
-      <node id="7191706270037024779" at="113,99,114,97" concept="3" />
-      <node id="7191706270037042942" at="114,97,115,105" concept="3" />
-      <node id="2657001694103488225" at="115,105,116,103" concept="3" />
+      <node id="7191706270037018950" at="111,25,112,99" concept="3" />
+      <node id="7191706270037024779" at="112,99,113,97" concept="3" />
+      <node id="7191706270037042942" at="113,97,114,105" concept="3" />
+      <node id="2657001694103488225" at="114,105,115,103" concept="3" />
+      <node id="2657001694103488167" at="115,103,116,58" concept="3" />
       <node id="2657001694103488183" at="121,27,122,121" concept="8" />
       <node id="2657001694103488188" at="122,121,123,119" concept="8" />
       <node id="2657001694103488193" at="123,119,124,127" concept="8" />
       <node id="2657001694103488201" at="124,127,125,112" concept="3" />
-      <node id="2657001694103488214" at="125,112,126,76" concept="3" />
-      <node id="7191706270037264617" at="126,76,127,98" concept="3" />
+      <node id="7191706270037264617" at="125,112,126,98" concept="3" />
+      <node id="2657001694103488214" at="126,98,127,76" concept="3" />
       <node id="2657001694105745928" at="130,5,131,0" concept="11" />
       <node id="2657001694103488244" at="131,0,132,48" concept="3" />
       <node id="2657001694103488300" at="132,48,133,0" concept="11" />
@@ -797,6 +797,7 @@
       <node id="4548765916405715152" at="487,16,489,11" concept="1" />
       <node id="2657001694103489472" at="509,16,511,11" concept="1" />
       <node id="6422529625564687731" at="76,0,79,0" concept="7" trace="save#(Ljetbrains/mps/vcs/diff/ui/merge/MergeModelsPanel;Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="3587066204655429069" at="106,0,109,0" concept="7" trace="run#()V" />
       <node id="5085852630256101560" at="140,0,143,0" concept="7" trace="getToolbarActions#()Ljava/util/List;" />
       <node id="6422529625565013101" at="144,0,147,0" concept="7" trace="setSaver#(Ljetbrains/mps/vcs/diff/ui/merge/ISaveMergedModel;)V" />
       <node id="8964527901281689571" at="148,0,151,0" concept="7" trace="saveModel#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
@@ -832,7 +833,6 @@
       <node id="2657001694103489325" at="473,0,476,0" concept="7" trace="accept#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Z" />
       <node id="2657001694103489422" at="493,0,496,0" concept="7" trace="accept#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Z" />
       <node id="2657001694103489442" at="501,0,504,0" concept="7" trace="accept#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Z" />
-      <node id="3587066204655429069" at="106,0,110,0" concept="7" trace="run#()V" />
       <node id="7151716548969771199" at="178,0,182,0" concept="7" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
       <node id="5085852630257368787" at="201,5,205,5" concept="6" />
       <node id="859771510723425123" at="216,0,220,0" concept="7" trace="compute#()Ljetbrains/mps/vcs/diff/merge/MergeTemporaryModel;" />
@@ -849,6 +849,7 @@
       <node id="7410029408365676038" at="530,0,534,0" concept="7" trace="onUnselect#()V" />
       <node id="4521068800870288511" at="534,0,538,0" concept="7" trace="onSelectRoot#(Lorg/jetbrains/mps/openapi/model/SNodeId;)V" />
       <node id="6422529625564577596" at="75,0,80,0" concept="4" trace="mySaver" />
+      <node id="3587066204655429067" at="104,39,109,7" concept="3" />
       <node id="5085852630257368736" at="186,0,191,114" concept="8" />
       <node id="5085852630258700517" at="195,60,200,9" concept="3" />
       <node id="7014740539622880498" at="208,0,213,0" concept="7" trace="dispose#()V" />
@@ -865,12 +866,11 @@
       <node id="2657001694103489318" at="471,0,476,17" concept="8" />
       <node id="2657001694103489379" at="484,38,489,11" concept="6" />
       <node id="2657001694103489435" at="499,0,504,21" concept="8" />
-      <node id="3587066204655429067" at="104,39,110,7" concept="3" />
-      <node id="7191706270036945715" at="112,0,118,0" concept="7" trace="run#()V" />
       <node id="7674946636510506917" at="214,46,220,7" concept="8" />
       <node id="2657001694103488535" at="230,25,236,9" concept="6" />
       <node id="2034046503373008811" at="398,5,404,7" concept="3" />
       <node id="2657001694103489172" at="432,10,438,5" concept="1" />
+      <node id="7191706270036945715" at="111,0,118,0" concept="7" trace="run#()V" />
       <node id="5085852630257368765" at="194,5,201,5" concept="6" />
       <node id="2657001694103488745" at="303,0,310,0" concept="7" trace="getApplicableChangesInNonConflictingRoots#()Ljava/lang/Iterable;" />
       <node id="2657001694103488774" at="314,0,321,0" concept="7" trace="mergeNonConflictingRoots#()V" />
@@ -878,8 +878,8 @@
       <node id="2657001694103489108" at="416,0,423,0" concept="7" trace="resetState#()V" />
       <node id="2657001694103489409" at="491,50,498,11" concept="6" />
       <node id="2657001694103489452" at="504,21,511,11" concept="6" />
-      <node id="7191706270036945713" at="110,7,118,7" concept="3" />
       <node id="2932289587890964711" at="121,0,129,0" concept="7" trace="run#()V" />
+      <node id="7191706270036945713" at="109,7,118,7" concept="3" />
       <node id="2657001694103488815" at="324,47,333,20" concept="9" />
       <node id="2034046503373009126" at="348,39,357,7" concept="3" />
       <node id="2932289587890964710" at="119,82,129,9" concept="3" />
@@ -913,6 +913,7 @@
       <node id="2657001694103488094" at="94,0,139,0" concept="2" trace="MergeModelsPanel#(Lcom/intellij/openapi/project/Project;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;Lcom/intellij/diff/merge/TextMergeRequest;Z)V" />
       <node id="2657001694103489265" at="463,0,517,0" concept="7" trace="updateRootCustomPresentation#(Ljetbrains/mps/vcs/diff/ui/common/DiffModelTree/RootTreeNode;)V" />
       <scope id="6422529625564687733" at="76,70,77,19" />
+      <scope id="3587066204655429071" at="106,25,107,90" />
       <scope id="5085852630256101563" at="140,45,141,28" />
       <scope id="6422529625565013104" at="144,48,145,20" />
       <scope id="8964527901281689574" at="148,51,149,43" />
@@ -971,7 +972,6 @@
       <scope id="2657001694103489522" at="526,45,527,18" />
       <scope id="7410029408365676042" at="531,33,532,25" />
       <scope id="4521068800870288518" at="535,59,536,32" />
-      <scope id="3587066204655429071" at="106,25,108,58" />
       <scope id="5085852630257368788" at="202,49,204,18" />
       <scope id="859771510723425124" at="216,44,218,84" />
       <scope id="2657001694103488692" at="294,56,296,30" />
@@ -983,6 +983,7 @@
         <var name="dialog" id="6422529625564687731" />
         <var name="resultModel" id="6422529625564687731" />
       </scope>
+      <scope id="3587066204655429069" at="106,0,109,0" />
       <scope id="5085852630256101560" at="140,0,143,0" />
       <scope id="6422529625565013101" at="144,0,147,0">
         <var name="saver" id="6422529625565044974" />
@@ -1051,8 +1052,6 @@
       <scope id="2657001694103489442" at="501,0,504,0">
         <var name="ch" id="2657001694103489442" />
       </scope>
-      <scope id="3587066204655429069" at="106,0,110,0" />
-      <scope id="7191706270036945717" at="112,25,116,103" />
       <scope id="7151716548969771199" at="178,0,182,0" />
       <scope id="859771510723425123" at="216,0,220,0" />
       <scope id="2657001694103488539" at="231,45,235,70" />
@@ -1075,6 +1074,7 @@
       <scope id="4521068800870288511" at="534,0,538,0">
         <var name="rootId" id="4521068800870288515" />
       </scope>
+      <scope id="7191706270036945717" at="111,25,116,58" />
       <scope id="5085852630257368766" at="195,60,200,9" />
       <scope id="7014740539622880498" at="208,0,213,0" />
       <scope id="2657001694103488749" at="303,76,308,7" />
@@ -1089,8 +1089,7 @@
         <var name="repo" id="977901024118872355" />
       </scope>
       <scope id="2657001694103489378" at="484,38,489,11" />
-      <scope id="7191706270036945715" at="112,0,118,0" />
-      <scope id="2932289587890964712" at="121,27,127,98">
+      <scope id="2932289587890964712" at="121,27,127,76">
         <var name="baseMetaModel" id="2657001694103488184" />
         <var name="mineMetaModel" id="2657001694103488189" />
         <var name="repoMetaModel" id="2657001694103488194" />
@@ -1098,6 +1097,7 @@
       <scope id="2657001694103489145" at="425,34,431,7">
         <var name="text" id="2657001694103489147" />
       </scope>
+      <scope id="7191706270036945715" at="111,0,118,0" />
       <scope id="2657001694103488745" at="303,0,310,0" />
       <scope id="2657001694103488774" at="314,0,321,0" />
       <scope id="2034046503373009130" at="350,0,357,0" />
@@ -1189,6 +1189,7 @@
         <var name="rootTreeNode" id="2657001694103489268" />
       </scope>
       <unit id="6422529625564687731" at="75,41,79,3" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$1" />
+      <unit id="3587066204655429069" at="105,59,109,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$2" />
       <unit id="5085852630257368744" at="187,156,191,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$5" />
       <unit id="5085852630258703397" at="196,62,200,7" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$6" />
       <unit id="2657001694103488753" at="304,103,308,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$10" />
@@ -1204,10 +1205,9 @@
       <unit id="2657001694103489325" at="472,69,476,7" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$MergeModelsTree$2" />
       <unit id="2657001694103489422" at="492,53,496,11" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$MergeModelsTree$3" />
       <unit id="2657001694103489442" at="500,72,504,11" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$MergeModelsTree$4" />
-      <unit id="3587066204655429069" at="105,59,110,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$2" />
       <unit id="859771510723425123" at="215,86,220,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$7" />
       <unit id="2034046503373008815" at="399,60,404,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$20" />
-      <unit id="7191706270036945715" at="111,60,118,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$3" />
+      <unit id="7191706270036945715" at="110,60,118,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$3" />
       <unit id="2034046503373009130" at="349,60,357,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$14" />
       <unit id="2932289587890964711" at="120,62,129,7" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$4" />
       <unit id="2657001694103488526" at="229,60,242,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel$8" />
