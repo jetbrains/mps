@@ -6584,8 +6584,8 @@
               <node concept="37vLTw" id="6PVY$JZgUxZ" role="2Oq$k0">
                 <ref role="3cqZAo" node="2Qdh779$bcP" resolve="commitsGraphNode" />
               </node>
-              <node concept="liA8E" id="6PVY$JZgV16" role="2OqNvi">
-                <ref role="37wK5l" to="5p6x:6wgNI6tCb4n" resolve="getParents" />
+              <node concept="liA8E" id="1MsUFH6ajFs" role="2OqNvi">
+                <ref role="37wK5l" to="5p6x:1MsUFH695KS" resolve="getParentsWithRoot" />
               </node>
             </node>
             <node concept="1v1jN8" id="6PVY$JZgWVb" role="2OqNvi" />
@@ -6609,8 +6609,8 @@
                     <node concept="37vLTw" id="7T1TnycwsGI" role="2Oq$k0">
                       <ref role="3cqZAo" node="2Qdh779$bcP" resolve="commitsGraphNode" />
                     </node>
-                    <node concept="liA8E" id="7T1TnycwsGJ" role="2OqNvi">
-                      <ref role="37wK5l" to="5p6x:6wgNI6tCb4n" resolve="getParents" />
+                    <node concept="liA8E" id="1MsUFH6ao66" role="2OqNvi">
+                      <ref role="37wK5l" to="5p6x:1MsUFH695KS" resolve="getParentsWithRoot" />
                     </node>
                   </node>
                   <node concept="1uHKPH" id="7T1TnycwsGK" role="2OqNvi" />
@@ -6711,8 +6711,8 @@
                   <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
                   <node concept="2OqwBi" id="rIMoekNHZf" role="37wK5m">
                     <node concept="2OqwBi" id="rIMoekNHZg" role="2Oq$k0">
-                      <node concept="liA8E" id="rIMoekNHZi" role="2OqNvi">
-                        <ref role="37wK5l" to="5p6x:6wgNI6tCb4n" resolve="getParents" />
+                      <node concept="liA8E" id="1MsUFH6aizX" role="2OqNvi">
+                        <ref role="37wK5l" to="5p6x:1MsUFH695KS" resolve="getParentsWithRoot" />
                       </node>
                       <node concept="2OqwBi" id="rIMoekNJa3" role="2Oq$k0">
                         <node concept="37vLTw" id="rIMoekNJa4" role="2Oq$k0">

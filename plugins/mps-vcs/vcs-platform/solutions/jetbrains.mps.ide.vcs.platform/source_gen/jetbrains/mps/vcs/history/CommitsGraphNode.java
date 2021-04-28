@@ -22,6 +22,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import git4idea.GitRevisionNumber;
@@ -132,6 +133,14 @@ public final class CommitsGraphNode implements Comparable {
     return myParents;
   }
 
+  public List<CommitsGraphNode> getParentsWithRoot() {
+    return ListSequence.fromList(myParents).where(new IWhereFilter<CommitsGraphNode>() {
+      public boolean accept(CommitsGraphNode it) {
+        return !(it.isIgnored());
+      }
+    }).toListSequence();
+  }
+
   public Collection<CommitsGraphNode> getChildren() {
     return myChildren;
   }
@@ -167,7 +176,7 @@ public final class CommitsGraphNode implements Comparable {
   public String toString() {
     VcsRevisionNumber rn = myRevision.getRevisionNumber();
     if (rn instanceof GitRevisionNumber) {
-      GitRevisionNumber grn = as_9s317u_a0a0a1a04(rn, GitRevisionNumber.class);
+      GitRevisionNumber grn = as_9s317u_a0a0a1a24(rn, GitRevisionNumber.class);
       return grn.getShortRev() + "/" + myRevision.getCommitMessage();
     }
     return rn.asString();
@@ -221,7 +230,7 @@ public final class CommitsGraphNode implements Comparable {
       return;
     }
     if (myModelCanBeUnloaded) {
-      check_9s317u_a0a1a65(myLoadedModel);
+      check_9s317u_a0a1a85(myLoadedModel);
     }
     myLoadedModel = null;
     myModel = null;
@@ -343,13 +352,13 @@ public final class CommitsGraphNode implements Comparable {
     }
     return tooltipText;
   }
-  private static void check_9s317u_a0a1a65(SModel checkedDotOperand) {
+  private static void check_9s317u_a0a1a85(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.unload();
     }
 
   }
-  private static <T> T as_9s317u_a0a0a1a04(Object o, Class<T> type) {
+  private static <T> T as_9s317u_a0a0a1a24(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

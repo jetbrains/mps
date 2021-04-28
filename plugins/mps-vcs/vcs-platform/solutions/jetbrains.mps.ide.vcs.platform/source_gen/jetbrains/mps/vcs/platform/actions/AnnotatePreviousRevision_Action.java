@@ -40,7 +40,7 @@ public class AnnotatePreviousRevision_Action extends BaseAction {
     event.getPresentation().setDescription(VcsBundle.messagePointer("action.annotate.successor.selected.revision.in.new.tab.description"));
     setEnabledState(event.getPresentation(), cellMessage != null);
     if (cellMessage != null) {
-      event.getPresentation().setEnabled(ListSequence.fromList(cellMessage.getCommitsGraphNode().getParents()).isNotEmpty());
+      event.getPresentation().setEnabled(ListSequence.fromList(cellMessage.getCommitsGraphNode().getParentsWithRoot()).isNotEmpty());
     }
   }
   @Override
@@ -73,10 +73,10 @@ public class AnnotatePreviousRevision_Action extends BaseAction {
       return;
     }
     CommitsGraphNode commitsGraphNode = cellMessage.getCommitsGraphNode();
-    if (ListSequence.fromList(commitsGraphNode.getParents()).isEmpty()) {
+    if (ListSequence.fromList(commitsGraphNode.getParentsWithRoot()).isEmpty()) {
       return;
     }
-    annotationColumn.getEditorAnnotation().annotateRevision(ListSequence.fromList(commitsGraphNode.getParents()).first().getRevision());
+    annotationColumn.getEditorAnnotation().annotateRevision(ListSequence.fromList(commitsGraphNode.getParentsWithRoot()).first().getRevision());
   }
   @Nullable
   private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {

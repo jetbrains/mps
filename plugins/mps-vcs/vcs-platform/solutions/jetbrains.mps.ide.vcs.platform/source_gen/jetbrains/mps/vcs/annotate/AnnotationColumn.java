@@ -461,7 +461,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     Supplier<String> text = VcsBundle.messagePointer(ANNOTATE_PREVIOUS_REVISION_TEXT_KEY);
     Supplier<String> description = VcsBundle.messagePointer(ANNOTATE_PREVIOUS_REVISION_DESC_KEY);
 
-    final List<CommitsGraphNode> parents = commitsGraphNode.getParents();
+    final List<CommitsGraphNode> parents = commitsGraphNode.getParentsWithRoot();
 
     if (ListSequence.fromList(parents).count() == 2) {
       BaseGroup selectCommitGroup = new BaseGroup(text, "", AllIcons.Actions.Annotate, true);

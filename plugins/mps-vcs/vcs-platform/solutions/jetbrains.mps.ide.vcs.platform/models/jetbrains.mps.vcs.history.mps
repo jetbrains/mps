@@ -1084,6 +1084,50 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="1MsUFH68Opi" role="jymVt" />
+    <node concept="3clFb_" id="1MsUFH695KS" role="jymVt">
+      <property role="TrG5h" value="getParentsWithRoot" />
+      <node concept="3clFbS" id="1MsUFH695KV" role="3clF47">
+        <node concept="3clFbF" id="1MsUFH69bTo" role="3cqZAp">
+          <node concept="2OqwBi" id="1MsUFH69H$c" role="3clFbG">
+            <node concept="2OqwBi" id="1MsUFH69fQA" role="2Oq$k0">
+              <node concept="37vLTw" id="1MsUFH69bTn" role="2Oq$k0">
+                <ref role="3cqZAo" node="6wgNI6tBQPk" resolve="myParents" />
+              </node>
+              <node concept="3zZkjj" id="1MsUFH69lIG" role="2OqNvi">
+                <node concept="1bVj0M" id="1MsUFH69lII" role="23t8la">
+                  <node concept="3clFbS" id="1MsUFH69lIJ" role="1bW5cS">
+                    <node concept="3clFbF" id="1MsUFH69rXN" role="3cqZAp">
+                      <node concept="3fqX7Q" id="1MsUFH69Ubf" role="3clFbG">
+                        <node concept="2OqwBi" id="1MsUFH69Ubh" role="3fr31v">
+                          <node concept="37vLTw" id="1MsUFH69Ubi" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1MsUFH69lIK" resolve="it" />
+                          </node>
+                          <node concept="liA8E" id="1MsUFH69Ubj" role="2OqNvi">
+                            <ref role="37wK5l" node="41u046V3p4t" resolve="isIgnored" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="Rh6nW" id="1MsUFH69lIK" role="1bW2Oz">
+                    <property role="TrG5h" value="it" />
+                    <node concept="2jxLKc" id="1MsUFH69lIL" role="1tU5fm" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="ANE8D" id="1MsUFH69N_b" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="1MsUFH690fQ" role="1B3o_S" />
+      <node concept="_YKpA" id="1MsUFH694K4" role="3clF45">
+        <node concept="3uibUv" id="1MsUFH695df" role="_ZDj9">
+          <ref role="3uigEE" node="6wgNI6tBJvh" resolve="CommitsGraphNode" />
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="6wgNI6tCt36" role="jymVt" />
     <node concept="3clFb_" id="6wgNI6tCv6T" role="jymVt">
       <property role="TrG5h" value="getChildren" />
