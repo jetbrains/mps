@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.lang.dataFlow.framework;
 
+import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.lang.dataFlow.framework.instructions.*;
 import jetbrains.mps.logging.Logger;
 import org.apache.log4j.LogManager;
@@ -105,6 +106,7 @@ public abstract class StructuralProgramBuilder<N> {
       myLabels.put((N) getProgram().getCurrent(), new HashMap<>());
     }
     myLabels.get(getProgram().getCurrent()).put(label, getProgram().size());
+    emitLabelNop(label);
   }
 
   protected void updateLabelsOnInsert(final int position) {
@@ -142,6 +144,13 @@ public abstract class StructuralProgramBuilder<N> {
 
   public void emitNop() {
     getProgram().add(emitNopCommon(null));
+  }
+
+  public void emitLabelNop(String label) {
+    LabelNopInstruction instruction = new LabelNopInstruction(label);
+    onInstructionEmitted(instruction);
+    instruction.putUserObject(DataFlow.MAY_BE_UNREACHABLE, true);
+    getProgram().add(instruction);
   }
 
   public void emitNop(String ruleNodeReference) {
