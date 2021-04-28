@@ -105,7 +105,6 @@ public class MergeModelsPanel extends JPanel {
     myProjectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         myMergeSession = MergeSession.createMergeSession(baseModel, mineModel, repoModel);
-        myInitialState = myMergeSession.getCurrentState();
       }
     });
     myProjectRepository.getModelAccess().runWriteAction(new Runnable() {
@@ -114,6 +113,7 @@ public class MergeModelsPanel extends JPanel {
         DiffModelUtil.renameModelAndRegister(myMergeSession.getMyModel(), "mine", fixReferences);
         DiffModelUtil.renameModelAndRegister(myMergeSession.getRepositoryModel(), "repo", fixReferences);
         DiffModelUtil.renameModelAndRegister(myMergeSession.getResultModel(), "result", fixReferences);
+        myInitialState = myMergeSession.getCurrentState();
       }
     });
     if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
@@ -123,8 +123,8 @@ public class MergeModelsPanel extends JPanel {
           SModel mineMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getMyModel(), "metadata_mine", false);
           SModel repoMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getRepositoryModel(), "metadata_repo", false);
           myMetadataMergeSession = MergeSession.createMergeSession(baseMetaModel, mineMetaModel, repoMetaModel);
-          myMetadataInitialState = myMetadataMergeSession.getCurrentState();
           DiffModelUtil.renameModelAndRegister(myMetadataMergeSession.getResultModel(), "result");
+          myMetadataInitialState = myMetadataMergeSession.getCurrentState();
         }
       });
     }

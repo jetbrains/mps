@@ -7,7 +7,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
@@ -6701,21 +6701,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="2jv$fqwD$qB" role="3cqZAp">
-                <node concept="37vLTI" id="2jv$fqwD$qC" role="3clFbG">
-                  <node concept="2OqwBi" id="2jv$fqwD$qD" role="37vLTx">
-                    <node concept="37vLTw" id="2BHiRxeuXib" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-                    </node>
-                    <node concept="liA8E" id="2jv$fqwD$qF" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxeukvE" role="37vLTJ">
-                    <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
-                  </node>
-                </node>
-              </node>
             </node>
           </node>
           <node concept="37vLTw" id="4tEWdMGIngW" role="ukAjM">
@@ -6802,6 +6787,21 @@
                   </node>
                   <node concept="37vLTw" id="5u75OIaAys8" role="37wK5m">
                     <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2jv$fqwD$qB" role="3cqZAp">
+                <node concept="37vLTI" id="2jv$fqwD$qC" role="3clFbG">
+                  <node concept="2OqwBi" id="2jv$fqwD$qD" role="37vLTx">
+                    <node concept="37vLTw" id="2BHiRxeuXib" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                    </node>
+                    <node concept="liA8E" id="2jv$fqwD$qF" role="2OqNvi">
+                      <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="2BHiRxeukvE" role="37vLTJ">
+                    <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
                   </node>
                 </node>
               </node>
@@ -6919,21 +6919,6 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbF" id="2jv$fqwD$rm" role="3cqZAp">
-                    <node concept="37vLTI" id="2jv$fqwD$rn" role="3clFbG">
-                      <node concept="37vLTw" id="2jv$fqwD$ro" role="37vLTJ">
-                        <ref role="3cqZAo" node="2jv$fqwD$oS" resolve="myMetadataInitialState" />
-                      </node>
-                      <node concept="2OqwBi" id="2jv$fqwD$rp" role="37vLTx">
-                        <node concept="37vLTw" id="2jv$fqwD$rq" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
-                        </node>
-                        <node concept="liA8E" id="2jv$fqwD$rr" role="2OqNvi">
-                          <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
                   <node concept="3clFbF" id="6fe4FZixkzD" role="3cqZAp">
                     <node concept="2YIFZM" id="2v$NtEHqDHw" role="3clFbG">
                       <ref role="37wK5l" to="hdhb:2v$NtEHjiFm" resolve="renameModelAndRegister" />
@@ -6948,6 +6933,21 @@
                       </node>
                       <node concept="Xl_RD" id="2v$NtEHqDH$" role="37wK5m">
                         <property role="Xl_RC" value="result" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="2jv$fqwD$rm" role="3cqZAp">
+                    <node concept="37vLTI" id="2jv$fqwD$rn" role="3clFbG">
+                      <node concept="37vLTw" id="2jv$fqwD$ro" role="37vLTJ">
+                        <ref role="3cqZAo" node="2jv$fqwD$oS" resolve="myMetadataInitialState" />
+                      </node>
+                      <node concept="2OqwBi" id="2jv$fqwD$rp" role="37vLTx">
+                        <node concept="37vLTw" id="2jv$fqwD$rq" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
+                        </node>
+                        <node concept="liA8E" id="2jv$fqwD$rr" role="2OqNvi">
+                          <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                        </node>
                       </node>
                     </node>
                   </node>
