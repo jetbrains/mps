@@ -15,6 +15,7 @@ import jetbrains.mps.lang.dataFlow.MPSProgramBuilder;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.LabelNopInstruction;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -77,7 +78,7 @@ public class InlineMethodModel {
       if (instruction instanceof RetInstruction) {
         Instruction next = program.get(instruction.getIndex() + 1);
         while (!(next.equals(program.getEnd()))) {
-          if (!(next instanceof JumpInstruction)) {
+          if (!(next instanceof JumpInstruction) && !(next instanceof LabelNopInstruction)) {
             return true;
           }
           Set<Instruction> succ = next.succ();
