@@ -1553,6 +1553,8 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.typesystem.typeof_EnumSwitchExpression_InferenceRule">
     <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicInteger" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.EnumSwitchExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />

@@ -26,6 +26,7 @@
     <import index="tp2g" ref="r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="bok1" ref="r:7e967a7c-8f21-4c1f-a331-9afa31a24388(jetbrains.mps.lang.smodel.util)" />
+    <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" implicit="true" />
   </imports>
@@ -148,6 +149,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -15723,6 +15725,98 @@
       <node concept="3clFbH" id="28aPEVwg9SI" role="3cqZAp" />
       <node concept="3clFbJ" id="28aPEVwg8ZR" role="3cqZAp">
         <node concept="3clFbS" id="28aPEVwg8ZT" role="3clFbx">
+          <node concept="3SKdUt" id="nSboObO$2R" role="3cqZAp">
+            <node concept="1PaTwC" id="nSboObO$2S" role="1aUNEU">
+              <node concept="3oM_SD" id="nSboObO$5q" role="1PaTwD">
+                <property role="3oM_SC" value="Number" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5s" role="1PaTwD">
+                <property role="3oM_SC" value="of" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5v" role="1PaTwD">
+                <property role="3oM_SC" value="cases" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5z" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5C" role="1PaTwD">
+                <property role="3oM_SC" value="evaluate" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5I" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5P" role="1PaTwD">
+                <property role="3oM_SC" value="void" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$5X" role="1PaTwD">
+                <property role="3oM_SC" value="before" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$66" role="1PaTwD">
+                <property role="3oM_SC" value="inferring" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$6g" role="1PaTwD">
+                <property role="3oM_SC" value="void" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$6r" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$6B" role="1PaTwD">
+                <property role="3oM_SC" value="the" />
+              </node>
+              <node concept="3oM_SD" id="nSboObO$6O" role="1PaTwD">
+                <property role="3oM_SC" value="switch" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="nSboObNIH4" role="3cqZAp">
+            <node concept="3cpWsn" id="nSboObNIH5" role="3cpWs9">
+              <property role="TrG5h" value="nonVoidInferred" />
+              <property role="3TUv4t" value="true" />
+              <node concept="3uibUv" id="nSboObNIH6" role="1tU5fm">
+                <ref role="3uigEE" to="i5cy:~AtomicInteger" resolve="AtomicInteger" />
+              </node>
+              <node concept="2ShNRf" id="nSboObNIIz" role="33vP2m">
+                <node concept="1pGfFk" id="nSboObNJsj" role="2ShVmc">
+                  <ref role="37wK5l" to="i5cy:~AtomicInteger.&lt;init&gt;(int)" resolve="AtomicInteger" />
+                  <node concept="3cpWs3" id="nSboObNyQ2" role="37wK5m">
+                    <node concept="2OqwBi" id="nSboObNuAL" role="3uHU7B">
+                      <node concept="2OqwBi" id="nSboObNsvc" role="2Oq$k0">
+                        <node concept="1YBJjd" id="nSboObNsvd" role="2Oq$k0">
+                          <ref role="1YBMHb" node="28aPEVvk5S1" resolve="enumSwitchExpression" />
+                        </node>
+                        <node concept="3Tsc0h" id="nSboObNsve" role="2OqNvi">
+                          <ref role="3TtcxE" to="tp25:28aPEVv7XeR" resolve="cases" />
+                        </node>
+                      </node>
+                      <node concept="34oBXx" id="nSboObNwp9" role="2OqNvi" />
+                    </node>
+                    <node concept="1eOMI4" id="nSboObNAGL" role="3uHU7w">
+                      <node concept="3K4zz7" id="nSboObN_7N" role="1eOMHV">
+                        <node concept="3cmrfG" id="nSboObN_sc" role="3K4E3e">
+                          <property role="3cmrfH" value="1" />
+                        </node>
+                        <node concept="3cmrfG" id="nSboObN_wW" role="3K4GZi">
+                          <property role="3cmrfH" value="0" />
+                        </node>
+                        <node concept="2OqwBi" id="nSboObN$p6" role="3K4Cdx">
+                          <node concept="2OqwBi" id="nSboObNzR_" role="2Oq$k0">
+                            <node concept="1YBJjd" id="nSboObNzu0" role="2Oq$k0">
+                              <ref role="1YBMHb" node="28aPEVvk5S1" resolve="enumSwitchExpression" />
+                            </node>
+                            <node concept="3TrEf2" id="nSboObN$9v" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tp25:28aPEVvzpHe" resolve="otherwiseBody" />
+                            </node>
+                          </node>
+                          <node concept="3x8VRR" id="nSboObN$AI" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="nSboObNRpJ" role="3cqZAp" />
           <node concept="2Gpval" id="28aPEVvxeqS" role="3cqZAp">
             <node concept="2GrKxI" id="28aPEVvxeqU" role="2Gsz3X">
               <property role="TrG5h" value="caseBody" />
@@ -15770,6 +15864,37 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3eNFk2" id="nSboObNLV5" role="3eNLev">
+                      <node concept="3clFbS" id="nSboObNLV6" role="3eOfB_">
+                        <node concept="1ZoDhX" id="nSboObNPV$" role="3cqZAp">
+                          <node concept="mw_s8" id="nSboObNPV_" role="1ZfhK$">
+                            <node concept="1Z2H0r" id="nSboObNPVA" role="mwGJk">
+                              <node concept="1YBJjd" id="nSboObNPVB" role="1Z2MuG">
+                                <ref role="1YBMHb" node="28aPEVvk5S1" resolve="enumSwitchExpression" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="mw_s8" id="nSboObNPVC" role="1ZfhKB">
+                            <node concept="2c44tf" id="nSboObNPVD" role="mwGJk">
+                              <node concept="3cqZAl" id="nSboObNPVE" role="2c44tc" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbC" id="nSboObNNbJ" role="3eO9$A">
+                        <node concept="3cmrfG" id="nSboObNNNM" role="3uHU7w">
+                          <property role="3cmrfH" value="0" />
+                        </node>
+                        <node concept="2OqwBi" id="nSboObNLV8" role="3uHU7B">
+                          <node concept="37vLTw" id="nSboObNLV9" role="2Oq$k0">
+                            <ref role="3cqZAo" node="nSboObNIH5" resolve="nonVoidInferred" />
+                          </node>
+                          <node concept="liA8E" id="nSboObNLVa" role="2OqNvi">
+                            <ref role="37wK5l" to="i5cy:~AtomicInteger.decrementAndGet()" resolve="decrementAndGet" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
                 <node concept="1Z2H0r" id="28aPEVvxjnE" role="nvjzm">
@@ -15810,6 +15935,37 @@
                     </node>
                     <node concept="2c44tf" id="1cQoRIOFpMO" role="3JuZjQ">
                       <node concept="3cqZAl" id="1cQoRIOFpMP" role="2c44tc" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3eNFk2" id="nSboObNPUH" role="3eNLev">
+                  <node concept="3clFbS" id="nSboObNPUJ" role="3eOfB_">
+                    <node concept="1ZoDhX" id="nSboObNQL0" role="3cqZAp">
+                      <node concept="mw_s8" id="nSboObNQL1" role="1ZfhK$">
+                        <node concept="1Z2H0r" id="nSboObNQL2" role="mwGJk">
+                          <node concept="1YBJjd" id="nSboObNQL3" role="1Z2MuG">
+                            <ref role="1YBMHb" node="28aPEVvk5S1" resolve="enumSwitchExpression" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="mw_s8" id="nSboObNQL4" role="1ZfhKB">
+                        <node concept="2c44tf" id="nSboObNQL5" role="mwGJk">
+                          <node concept="3cqZAl" id="nSboObNQL6" role="2c44tc" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbC" id="nSboObNQLE" role="3eO9$A">
+                    <node concept="3cmrfG" id="nSboObNQLF" role="3uHU7w">
+                      <property role="3cmrfH" value="0" />
+                    </node>
+                    <node concept="2OqwBi" id="nSboObNQLG" role="3uHU7B">
+                      <node concept="37vLTw" id="nSboObNQLH" role="2Oq$k0">
+                        <ref role="3cqZAo" node="nSboObNIH5" resolve="nonVoidInferred" />
+                      </node>
+                      <node concept="liA8E" id="nSboObNQLI" role="2OqNvi">
+                        <ref role="37wK5l" to="i5cy:~AtomicInteger.decrementAndGet()" resolve="decrementAndGet" />
+                      </node>
                     </node>
                   </node>
                 </node>

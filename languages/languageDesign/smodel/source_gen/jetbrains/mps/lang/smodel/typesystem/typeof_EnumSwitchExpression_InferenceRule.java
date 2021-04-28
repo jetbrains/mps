@@ -10,6 +10,8 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.behavior.EnumSwitchExpression__BehaviorDescriptor;
+import java.util.concurrent.atomic.AtomicInteger;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -29,16 +31,25 @@ public class typeof_EnumSwitchExpression_InferenceRule extends AbstractInference
     }
 
     if ((boolean) EnumSwitchExpression__BehaviorDescriptor.evaluatesValue_id28aPEVwg1gU.invoke(enumSwitchExpression)) {
+      // Number of cases to evaluate to void before inferring void to the switch
+      final AtomicInteger nonVoidInferred = new AtomicInteger(ListSequence.fromList(SLinkOperations.getChildren(enumSwitchExpression, LINKS.cases$m7UV)).count() + (((SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$l_3i) != null) ? 1 : 0)));
+
       for (SNode caseBody : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(enumSwitchExpression, LINKS.cases$m7UV), LINKS.body$1GuR))) {
         {
           final SNode caseBodyType = typeCheckingContext.typeOf(caseBody, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619359210", true);
           typeCheckingContext.whenConcrete(caseBodyType, new Runnable() {
             public void run() {
-              if (!(TypecheckingFacade.getFromContext().isStrongSubtype(typeCheckingContext.getExpandedNode(caseBodyType), _quotation_createNode_ihb29k_b0a0a0a0a1a0b0a0a0c0b()))) {
+              if (!(TypecheckingFacade.getFromContext().isStrongSubtype(typeCheckingContext.getExpandedNode(caseBodyType), _quotation_createNode_ihb29k_b0a0a0a0a1a0b0a0d0c0b()))) {
                 {
                   SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
                   EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619360074", 0, null);
                   typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619360077", true), (SNode) typeCheckingContext.getExpandedNode(caseBodyType), false, true, _info_12389875345);
+                }
+              } else if (nonVoidInferred.decrementAndGet() == 0) {
+                {
+                  SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "430143848225660644", 0, null);
+                  typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "430143848225660646", true), (SNode) _quotation_createNode_ihb29k_a1a0c0a0a0a0a0b0a1a0a3a2a1(), false, true, _info_12389875345);
                 }
               }
             }
@@ -49,11 +60,17 @@ public class typeof_EnumSwitchExpression_InferenceRule extends AbstractInference
         final SNode otherwiseBodyType = typeCheckingContext.typeOf(SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$l_3i), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406148", true);
         typeCheckingContext.whenConcrete(otherwiseBodyType, new Runnable() {
           public void run() {
-            if (!(TypecheckingFacade.getFromContext().isStrongSubtype(typeCheckingContext.getExpandedNode(otherwiseBodyType), _quotation_createNode_ihb29k_b0a0a0a0a1a0b0b0c0b()))) {
+            if (!(TypecheckingFacade.getFromContext().isStrongSubtype(typeCheckingContext.getExpandedNode(otherwiseBodyType), _quotation_createNode_ihb29k_b0a0a0a0a1a0b0e0c0b()))) {
               {
                 SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406139", 0, null);
                 typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406141", true), (SNode) typeCheckingContext.getExpandedNode(otherwiseBodyType), false, true, _info_12389875345);
+              }
+            } else if (nonVoidInferred.decrementAndGet() == 0) {
+              {
+                SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "430143848225664064", 0, null);
+                typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "430143848225664066", true), (SNode) _quotation_createNode_ihb29k_a1a0c0a0a0a0a0b0a1a4a2a1(), false, true, _info_12389875345);
               }
             }
           }
@@ -77,13 +94,25 @@ public class typeof_EnumSwitchExpression_InferenceRule extends AbstractInference
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ihb29k_b0a0a0a0a1a0b0a0a0c0b() {
+  private static SNode _quotation_createNode_ihb29k_b0a0a0a0a1a0b0a0d0c0b() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_ihb29k_b0a0a0a0a1a0b0b0c0b() {
+  private static SNode _quotation_createNode_ihb29k_a1a0c0a0a0a0a0b0a1a0a3a2a1() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
+    quotedNode_1 = nb.getResult();
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_ihb29k_b0a0a0a0a1a0b0e0c0b() {
+    SNode quotedNode_1 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
+    quotedNode_1 = nb.getResult();
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_ihb29k_a1a0c0a0a0a0a0b0a1a4a2a1() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();
@@ -93,8 +122,8 @@ public class typeof_EnumSwitchExpression_InferenceRule extends AbstractInference
   private static final class LINKS {
     /*package*/ static final SContainmentLink enumExpression$EpsP = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf1d75e0L, "enumExpression");
     /*package*/ static final SContainmentLink cases$m7UV = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf1fd3b7L, "cases");
-    /*package*/ static final SContainmentLink body$1GuR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
     /*package*/ static final SContainmentLink otherwiseBody$l_3i = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
+    /*package*/ static final SContainmentLink body$1GuR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
   }
 
   private static final class CONCEPTS {
