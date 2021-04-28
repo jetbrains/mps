@@ -13218,6 +13218,9 @@
                         <node concept="3_I8Xc" id="2OJWaFGOVp_" role="39821P">
                           <ref role="3_I8Xa" to="ffeo:1aRUp2KiMC$" resolve="license" />
                         </node>
+                        <node concept="3_I8Xc" id="5HYJdC4PuLS" role="39821P">
+                          <ref role="3_I8Xa" to="ffeo:5HYJdC4wsjv" resolve="LICENSE.txt" />
+                        </node>
                         <node concept="398223" id="3cxBkkDa4_B" role="39821P">
                           <node concept="3_J27D" id="3cxBkkDa4_C" role="Nbhlr">
                             <node concept="3Mxwew" id="3cxBkkDa4_D" role="3MwsjC">

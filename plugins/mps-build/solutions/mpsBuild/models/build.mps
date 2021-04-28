@@ -28239,6 +28239,9 @@
           <ref role="3ygNvj" node="1aRUp2KiMC$" resolve="license" />
         </node>
       </node>
+      <node concept="3_I8Xc" id="5HYJdC4wszr" role="39821P">
+        <ref role="3_I8Xa" node="5HYJdC4wsjv" />
+      </node>
       <node concept="398223" id="3IKDaVZn4nh" role="39821P">
         <node concept="3_I8Xc" id="6qT2v0r302E" role="39821P">
           <ref role="3_I8Xa" node="6b4RkXS7XdG" resolve="mps-build" />
@@ -40060,6 +40063,13 @@
             <node concept="2Ry0Ak" id="1aRUp2KiMCE" role="iGT6I">
               <property role="2Ry0Am" value="license" />
             </node>
+          </node>
+        </node>
+      </node>
+      <node concept="28jJK3" id="5HYJdC4wsjv" role="39821P">
+        <node concept="55IIr" id="5HYJdC4wsjx" role="28jJRO">
+          <node concept="2Ry0Ak" id="5HYJdC4wslw" role="iGT6I">
+            <property role="2Ry0Am" value="LICENSE.txt" />
           </node>
         </node>
       </node>
