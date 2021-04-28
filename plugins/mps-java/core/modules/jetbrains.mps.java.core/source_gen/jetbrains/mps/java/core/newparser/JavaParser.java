@@ -32,6 +32,8 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.jetbrains.annotations.Nullable;
+import java.util.Set;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
@@ -150,7 +152,7 @@ public class JavaParser {
         throw new IllegalArgumentException("Parsing other than class and statements is not supported yet ");
     }
 
-    return new JavaParseResult(resultNodes, resultPackageName, problemDescription(util.recordedParsingInformation));
+    return new JavaParseResult(resultNodes, converter.getAdditionalLanguages(), resultPackageName, problemDescription(util.recordedParsingInformation));
   }
   public void attachComments(char[] source, ASTConverter converter, RecordedParsingInformation parseInfo) {
 
@@ -312,6 +314,7 @@ public class JavaParser {
     private List<SNode> nodes;
     private String pakage;
     private String errorMsg;
+    private Set<SLanguage> languages;
     public JavaParseResult(List<SNode> ns, String error) {
       nodes = ns;
       errorMsg = error;
@@ -320,9 +323,17 @@ public class JavaParser {
       this(ns, error);
       pakage = pkg;
     }
+    public JavaParseResult(List<SNode> ns, Set<SLanguage> langs, String pkg, String error) {
+      this(ns, pkg, error);
+      languages = langs;
+    }
+
     @NotNull
     public List<SNode> getNodes() {
       return nodes;
+    }
+    public Set<SLanguage> getLanguages() {
+      return languages;
     }
     public String getPackage() {
       return pakage;

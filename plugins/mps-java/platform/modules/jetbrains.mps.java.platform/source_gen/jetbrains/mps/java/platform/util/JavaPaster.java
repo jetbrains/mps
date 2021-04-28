@@ -22,6 +22,9 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.ModelImports;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -89,7 +92,8 @@ public class JavaPaster {
       if (FeatureKind.CLASS_CONTENT.equals(featureKind)) {
         context = SNodeOperations.getNodeAncestor(anchor, CONCEPTS.Classifier$Ix, true, false);
       }
-      List<SNode> nodes = parser.parse(javaCode, featureKind, context, true).getNodes();
+      JavaParser.JavaParseResult parseResult = parser.parse(javaCode, featureKind, context, true);
+      List<SNode> nodes = parseResult.getNodes();
 
       if (ListSequence.fromList(nodes).isEmpty()) {
         // Avoid AWT event inside write action (action calls this code from command)
@@ -133,6 +137,14 @@ public class JavaPaster {
           }
           break;
         default:
+      }
+
+      // import used languages
+      if (parseResult.getLanguages() != null) {
+        ModelImports imports = new ModelImports(model);
+        for (SLanguage lang : SetSequence.fromSet(parseResult.getLanguages())) {
+          imports.addUsedLanguage(lang);
+        }
       }
 
       // trying to resolve names when nodes are already in a model

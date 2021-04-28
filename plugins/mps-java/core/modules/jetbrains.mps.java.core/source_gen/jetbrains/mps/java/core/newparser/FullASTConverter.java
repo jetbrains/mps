@@ -50,13 +50,31 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.eclipse.jdt.internal.compiler.ast.Argument;
+import org.eclipse.jdt.internal.compiler.ast.ArrayAllocationExpression;
+import org.eclipse.jdt.internal.compiler.ast.ArrayInitializer;
+import org.eclipse.jdt.internal.compiler.ast.ArrayReference;
+import org.eclipse.jdt.internal.compiler.ast.Assignment;
+import org.eclipse.jdt.internal.compiler.ast.BinaryExpression;
+import org.eclipse.jdt.internal.compiler.ast.CastExpression;
+import org.eclipse.jdt.internal.compiler.ast.ClassLiteralAccess;
+import org.eclipse.jdt.internal.compiler.ast.ConditionalExpression;
+import org.eclipse.jdt.internal.compiler.ast.FieldReference;
+import org.eclipse.jdt.internal.compiler.ast.InstanceOfExpression;
+import org.eclipse.jdt.internal.compiler.ast.LambdaExpression;
+import org.eclipse.jdt.internal.compiler.ast.Literal;
+import org.eclipse.jdt.internal.compiler.ast.MessageSend;
+import org.eclipse.jdt.internal.compiler.ast.QualifiedNameReference;
+import org.eclipse.jdt.internal.compiler.ast.ReferenceExpression;
+import org.eclipse.jdt.internal.compiler.ast.SingleNameReference;
+import org.eclipse.jdt.internal.compiler.ast.ThisReference;
+import org.eclipse.jdt.internal.compiler.ast.UnaryExpression;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.eclipse.jdt.internal.compiler.ast.SingleTypeReference;
+import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.eclipse.jdt.internal.compiler.ast.TypeReference;
-import org.eclipse.jdt.internal.compiler.ast.SingleNameReference;
-import org.eclipse.jdt.internal.compiler.ast.SingleTypeReference;
-import org.eclipse.jdt.internal.compiler.ast.QualifiedNameReference;
 import org.eclipse.jdt.internal.compiler.ast.QualifiedTypeReference;
 import jetbrains.mps.references.Reference;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -350,10 +368,6 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     SNode unkCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7e4a5cff51167b74L, "jetbrains.mps.baseLanguage.structure.UnknownConsCall"));
     addCallArgs(unkCall, x.arguments);
     SPropertyOperations.assign(unkCall, PROPS.isSuper$7ZQO, x.isSuperAccess());
-    if (1 == 1) {
-      return unkCall;
-    }
-
     return unkCall;
   }
   /*package*/ SNode convertStatement(ForeachStatement x) throws JavaParseException {
@@ -550,6 +564,90 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     LOG.error("Local type declarations are not supported");
     return null;
   }
+
+  @Override
+  public SNode convertExpression(Expression x) throws JavaParseException {
+    if (x instanceof AllocationExpression) {
+      return convertExpression((AllocationExpression) x);
+    } else if (x instanceof ArrayAllocationExpression) {
+      return convertExpression((ArrayAllocationExpression) x);
+    } else if (x instanceof ArrayInitializer) {
+      return convertExpression((ArrayInitializer) x);
+    } else if (x instanceof ArrayReference) {
+      return convertExpression((ArrayReference) x);
+    } else if (x instanceof Assignment) {
+      return convertExpression((Assignment) x);
+    } else if (x instanceof BinaryExpression) {
+      return convertExpression((BinaryExpression) x);
+    } else if (x instanceof CastExpression) {
+      return convertExpression((CastExpression) x);
+    } else if (x instanceof ClassLiteralAccess) {
+      return convertExpression((ClassLiteralAccess) x);
+    } else if (x instanceof ConditionalExpression) {
+      return convertExpression((ConditionalExpression) x);
+    } else if (x instanceof FieldReference) {
+      return convertExpression((FieldReference) x);
+    } else if (x instanceof InstanceOfExpression) {
+      return convertExpression((InstanceOfExpression) x);
+    } else if (x instanceof LambdaExpression) {
+      return convertExpression((LambdaExpression) x);
+    } else if (x instanceof Literal) {
+      return convertExpression((Literal) x);
+    } else if (x instanceof MessageSend) {
+      return convertExpression((MessageSend) x);
+    } else if (x instanceof QualifiedNameReference) {
+      return convertExpression((QualifiedNameReference) x);
+    } else if (x instanceof ReferenceExpression) {
+      return convertExpression((ReferenceExpression) x);
+    } else if (x instanceof SingleNameReference) {
+      return convertExpression((SingleNameReference) x);
+    } else if (x instanceof ThisReference) {
+      return convertExpression((ThisReference) x);
+    } else if (x instanceof UnaryExpression) {
+      return convertExpression((UnaryExpression) x);
+    } else {
+      if (x != null) {
+        LOG.error("Unknown expression type: " + x.getClass().getName());
+      }
+      return null;
+    }
+
+  }
+
+  /*package*/ SNode convertExpression(LambdaExpression x) throws JavaParseException {
+    SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral"));
+
+    if (x.arguments != null) {
+      for (Argument arg : x.arguments) {
+        SNode par = convertParameter(arg, this);
+        if ((SLinkOperations.getTarget(par, LINKS.type$a1UY) == null)) {
+          SLinkOperations.setTarget(par, LINKS.type$a1UY, createClosureVarType_f46ocm_a0a0b0a0c0sb());
+        }
+        ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.parameter$b4Y3)).addElement(par);
+      }
+    }
+
+    SetSequence.fromSet(getAdditionalLanguages()).addElement(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"));
+
+    SNode convertStatement = convertStatement(x.body);
+    SLinkOperations.setTarget(result, LINKS.body$Ujx2, createStatementList_f46ocm_a0h0sb(convertStatement));
+    return result;
+  }
+
+
+  @Override
+  public SNode convertTypeRef(SingleTypeReference typRef) {
+    if (typRef == null) {
+      return null;
+    }
+    String unqualTyp = new String(typRef.token);
+
+    if (Objects.equals(unqualTyp, "var")) {
+      return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x7ccb67138733b500L, "jetbrains.mps.baseLanguage.closures.structure.ClosureVarType"));
+    }
+    return super.convertTypeRef(typRef);
+  }
+
   private SNode findConstructor(SNode claz, Expression[] args) {
     SNode result;
     Iterable<SNode> conss = ((Iterable<SNode>) BHReflection.invoke0(claz, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")));
@@ -832,6 +930,17 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"), quotedNode_4);
     return quotedNode_3;
   }
+  private static SNode createClosureVarType_f46ocm_a0a0b0a0c0sb() {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClosureVarType$CP);
+    return n0.getResult();
+  }
+  private static SNode createStatementList_f46ocm_a0h0sb(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StatementList$m_);
+    {
+      SNodeBuilder n1 = n0.forChild(LINKS.statement$53DE).initNode(p0, CONCEPTS.Statement$P6, false);
+    }
+    return n0.getResult();
+  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
@@ -875,6 +984,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     /*package*/ static final SContainmentLink finallyClause$KUl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
     /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
     /*package*/ static final SContainmentLink condition$KEkM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL, 0xfaa4bf0f30L, "condition");
+    /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
@@ -894,5 +1005,8 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     /*package*/ static final SConcept AlternativeType$B$ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, "jetbrains.mps.baseLanguage.structure.AlternativeType");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SConcept ClosureVarType$CP = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x7ccb67138733b500L, "jetbrains.mps.baseLanguage.closures.structure.ClosureVarType");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

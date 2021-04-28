@@ -48,6 +48,10 @@ public class RoundTrip_Test extends BaseTransformationTest {
   public void test_VarargMethods() throws Throwable {
     new TestBody(this).test_VarargMethods();
   }
+  @Test
+  public void test_MethodReferences() throws Throwable {
+    new TestBody(this).test_MethodReferences();
+  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -62,6 +66,7 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
       String genCode = JavaToMpsUtils.generateCode(getNodeById("4795297196607508732"));
       new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("4795297196607508732"));
     }
@@ -72,6 +77,7 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
       String genCode = JavaToMpsUtils.generateCode(getNodeById("4795297196607508741"));
       new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("4795297196607508741"));
     }
@@ -82,6 +88,7 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
       String genCode = JavaToMpsUtils.generateCode(getNodeById("8083368042256391114"));
       new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("8083368042256391114"));
     }
@@ -92,6 +99,7 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
       String genCode = JavaToMpsUtils.generateCode(getNodeById("7030568040400121707"));
       new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, getNodeById("7030568040400121707"));
     }
@@ -102,6 +110,7 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
       String genCode = JavaToMpsUtils.generateCode(getNodeById("1369191534307040156"));
       new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getNodeById("1369191534307040156"), false);
     }
@@ -112,8 +121,20 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
       String genCode = JavaToMpsUtils.generateCode(getNodeById("1369191534311251786"));
       new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getNodeById("1369191534311251786"), false);
+    }
+    public void test_MethodReferences() throws Exception {
+      addNodeById("4795297196607456975");
+      addNodeById("4795297196607508738");
+      addNodeById("8083368042256391113");
+      addNodeById("7030568040400121706");
+      addNodeById("1369191534307039900");
+      addNodeById("1369191534311251473");
+      addNodeById("5418740741038055163");
+      String genCode = JavaToMpsUtils.generateCode(getNodeById("5418740741038056300"));
+      new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, getNodeById("5418740741038056300"), false);
     }
 
   }

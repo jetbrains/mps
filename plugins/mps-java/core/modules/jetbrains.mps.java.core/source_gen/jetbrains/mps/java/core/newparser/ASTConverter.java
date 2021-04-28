@@ -9,6 +9,10 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Set;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
 import org.eclipse.jdt.internal.compiler.ast.ASTNode;
 import org.eclipse.jdt.internal.compiler.ast.TypeDeclaration;
 import jetbrains.mps.smodel.LazySNode;
@@ -34,9 +38,6 @@ import org.eclipse.jdt.internal.compiler.ast.AnnotationMethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.ConstructorDeclaration;
 import java.util.ArrayList;
 import org.eclipse.jdt.internal.compiler.ast.TypeParameter;
-import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
 import org.eclipse.jdt.internal.compiler.ast.Annotation;
 import org.eclipse.jdt.internal.compiler.ast.SingleTypeReference;
 import org.eclipse.jdt.internal.compiler.ast.QualifiedTypeReference;
@@ -80,6 +81,7 @@ public class ASTConverter {
   private static final Logger LOG = LogManager.getLogger(ASTConverter.class);
   private boolean myOnlyStubs = false;
   private Map<Integer, SNode> myJavadocs = MapSequence.fromMap(new HashMap<Integer, SNode>());
+  protected Set<SLanguage> usedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
 
   public ASTConverter(boolean onlyStubs) {
     myOnlyStubs = onlyStubs;
@@ -89,6 +91,10 @@ public class ASTConverter {
     myOnlyStubs = base.myOnlyStubs;
     // FIXME do it more carefully (State?)
     myJavadocs = base.myJavadocs;
+  }
+
+  public Set<SLanguage> getAdditionalLanguages() {
+    return usedLanguages;
   }
 
   public SNode convertRoot(ASTNode node) throws JavaParseException {
@@ -164,7 +170,7 @@ public class ASTConverter {
           SNode nested = childConverter.convertTypeDecl(innerTyp);
           if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Interface$db)) {
             // container type is interface: it means member type must public static
-            SLinkOperations.setTarget(nested, LINKS.visibility$Yyua, createPublicVisibility_rbndtb_a0a1a1a0a2a61a01());
+            SLinkOperations.setTarget(nested, LINKS.visibility$Yyua, createPublicVisibility_rbndtb_a0a1a1a0a2a61a31());
             // no need to explicitly set static, as isStatic() handles this for interfaces
           }
           SLinkOperations.getChildren(cls, LINKS.member$L_2d).add(nested);
@@ -383,7 +389,7 @@ public class ASTConverter {
         if (method.isDefaultMethod()) {
           SLinkOperations.addNewChild(SNodeOperations.cast(result, CONCEPTS.InstanceMethodDeclaration$39), LINKS.modifiers$F5MM, CONCEPTS.DefaultModifier$rO);
         }
-        SLinkOperations.setTarget(SNodeOperations.cast(result, CONCEPTS.InstanceMethodDeclaration$39), LINKS.visibility$Yyua, _quotation_createNode_rbndtb_a0b0c0g0u());
+        SLinkOperations.setTarget(SNodeOperations.cast(result, CONCEPTS.InstanceMethodDeclaration$39), LINKS.visibility$Yyua, _quotation_createNode_rbndtb_a0b0c0g0x());
       }
 
       if (method instanceof AnnotationMethodDeclaration) {
@@ -397,7 +403,7 @@ public class ASTConverter {
     } else if (method instanceof ConstructorDeclaration) {
 
       result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
-      SLinkOperations.setTarget(result, LINKS.returnType$5xoi, _quotation_createNode_rbndtb_a0c0a6a02());
+      SLinkOperations.setTarget(result, LINKS.returnType$5xoi, _quotation_createNode_rbndtb_a0c0a6a32());
 
       convertMethodGuts(method, clsStringId, result);
 
@@ -527,9 +533,9 @@ public class ASTConverter {
 
     if (!(x instanceof ConstructorDeclaration)) {
       SPropertyOperations.assign(result, PROPS.name$MnvL, new String(x.selector));
-      check_rbndtb_a1a5a23(idBuilder, result);
+      check_rbndtb_a1a5a53(idBuilder, result);
     }
-    check_rbndtb_a6a23(idBuilder);
+    check_rbndtb_a6a53(idBuilder);
 
     {
       final SNode imd = result;
@@ -544,22 +550,18 @@ public class ASTConverter {
 
     if (x.arguments != null) {
       for (Argument arg : x.arguments) {
-        SNode par = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
-        convertAnnotations(arg.annotations, par);
-        SPropertyOperations.assign(par, PROPS.name$MnvL, new String(arg.name));
-        SLinkOperations.setTarget(par, LINKS.type$a1UY, childConverter.convertTypeReference(arg.type));
-        SPropertyOperations.assign(par, PROPS.isFinal$gvTP, flagSet(arg.modifiers, ClassFileConstants.AccFinal));
+        SNode par = convertParameter(arg, childConverter);
         ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.parameter$5xBj)).addElement(par);
 
-        check_rbndtb_a7a0a21a23(idBuilder, arg, this);
-        check_rbndtb_a8a0a21a23(idBuilder);
+        check_rbndtb_a3a0a21a53(idBuilder, arg, this);
+        check_rbndtb_a4a0a21a53(idBuilder);
       }
       // delete the last comma
       if (x.arguments.length > 0) {
-        check_rbndtb_a0a2a21a23(idBuilder, idBuilder);
+        check_rbndtb_a0a2a21a53(idBuilder, idBuilder);
       }
     }
-    check_rbndtb_a31a23(idBuilder);
+    check_rbndtb_a31a53(idBuilder);
 
     if (x.thrownExceptions != null) {
       for (TypeReference exc : x.thrownExceptions) {
@@ -569,7 +571,7 @@ public class ASTConverter {
 
     if (myOnlyStubs) {
       // make a different stub statement list 'source code' ?
-      SLinkOperations.setTarget(result, LINKS.body$5xQk, _quotation_createNode_rbndtb_a0b0r0gb());
+      SLinkOperations.setTarget(result, LINKS.body$5xQk, _quotation_createNode_rbndtb_a0b0r0jb());
 
     } else {
       SLinkOperations.setTarget(result, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
@@ -631,12 +633,22 @@ public class ASTConverter {
 
 
   public SNode convertVisibility(int astModifiers) {
-    return (flagSet(astModifiers, ClassFileConstants.AccPublic) ? _quotation_createNode_rbndtb_a0a0rb() : (flagSet(astModifiers, ClassFileConstants.AccProtected) ? _quotation_createNode_rbndtb_a0a0a34() : (flagSet(astModifiers, ClassFileConstants.AccPrivate) ? _quotation_createNode_rbndtb_a0a0a0rb() : null)));
+    return (flagSet(astModifiers, ClassFileConstants.AccPublic) ? _quotation_createNode_rbndtb_a0a0ub() : (flagSet(astModifiers, ClassFileConstants.AccProtected) ? _quotation_createNode_rbndtb_a0a0a64() : (flagSet(astModifiers, ClassFileConstants.AccPrivate) ? _quotation_createNode_rbndtb_a0a0a0ub() : null)));
   }
 
   public SNode convertTypeReference(TypeReference typRef) {
     SNode result = convertTypeRef(typRef);
     return result;
+  }
+
+  protected SNode convertParameter(Argument arg, ASTConverter childConverter) throws JavaParseException {
+    SNode par = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
+    convertAnnotations(arg.annotations, par);
+    SPropertyOperations.assign(par, PROPS.name$MnvL, new String(arg.name));
+    SLinkOperations.setTarget(par, LINKS.type$a1UY, childConverter.convertTypeReference(arg.type));
+    SPropertyOperations.assign(par, PROPS.isFinal$gvTP, flagSet(arg.modifiers, ClassFileConstants.AccFinal));
+
+    return par;
   }
 
   public SNode convertTypeRef(TypeReference typRef) {
@@ -711,23 +723,23 @@ public class ASTConverter {
 
   public SNode tryConvertPrimitiveType(String typ) {
     if ("void".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a0a55();
+      return _quotation_createNode_rbndtb_a0a0a06();
     } else if ("int".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a0a0dc();
+      return _quotation_createNode_rbndtb_a0a0a0ic();
     } else if ("long".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a1a0dc();
+      return _quotation_createNode_rbndtb_a0a1a0ic();
     } else if ("short".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a2a0dc();
+      return _quotation_createNode_rbndtb_a0a2a0ic();
     } else if ("byte".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a3a0dc();
+      return _quotation_createNode_rbndtb_a0a3a0ic();
     } else if ("float".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a4a0dc();
+      return _quotation_createNode_rbndtb_a0a4a0ic();
     } else if ("double".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a5a0dc();
+      return _quotation_createNode_rbndtb_a0a5a0ic();
     } else if ("boolean".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a6a0dc();
+      return _quotation_createNode_rbndtb_a0a6a0ic();
     } else if ("char".equals(typ)) {
-      return _quotation_createNode_rbndtb_a0a7a0dc();
+      return _quotation_createNode_rbndtb_a0a7a0ic();
     }
     return null;
   }
@@ -737,15 +749,15 @@ public class ASTConverter {
 
     switch (typRef.kind) {
       case Wildcard.UNBOUND:
-        return _quotation_createNode_rbndtb_a0a0c0fc();
+        return _quotation_createNode_rbndtb_a0a0c0kc();
 
       case Wildcard.EXTENDS:
         SNode upperBound = convertTypeReference(typRef.bound);
-        return _quotation_createNode_rbndtb_a1a1c0fc(upperBound);
+        return _quotation_createNode_rbndtb_a1a1c0kc(upperBound);
 
       case Wildcard.SUPER:
         SNode lowerBound = convertTypeReference(typRef.bound);
-        return _quotation_createNode_rbndtb_a1a2c0fc(lowerBound);
+        return _quotation_createNode_rbndtb_a1a2c0kc(lowerBound);
 
       default:
         LOG.error("Unknown wildcard kind");
@@ -784,7 +796,7 @@ public class ASTConverter {
     int until = (vararg ? dimensions - 1 : dimensions);
 
     for (int i = 0; i < until; i++) {
-      arrType = _quotation_createNode_rbndtb_a0a0e0jc(arrType);
+      arrType = _quotation_createNode_rbndtb_a0a0e0oc(arrType);
     }
 
     if (vararg) {
@@ -887,7 +899,7 @@ public class ASTConverter {
 
   public SNode convertExpression(Expression x) throws JavaParseException {
     // FIXME do expressions in annotations properly
-    return _quotation_createNode_rbndtb_a1a97();
+    return _quotation_createNode_rbndtb_a1a48();
   }
 
 
@@ -1095,149 +1107,149 @@ public class ASTConverter {
       return myState;
     }
   }
-  private static SNode createPublicVisibility_rbndtb_a0a1a1a0a2a61a01() {
+  private static SNode createPublicVisibility_rbndtb_a0a1a1a0a2a61a31() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$R0);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_rbndtb_a0b0c0g0u() {
+  private static SNode _quotation_createNode_rbndtb_a0b0c0g0x() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0c0a6a02() {
+  private static SNode _quotation_createNode_rbndtb_a0c0a6a32() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static StringBuilder check_rbndtb_a1a5a23(StringBuilder checkedDotOperand, SNode result) {
+  private static StringBuilder check_rbndtb_a1a5a53(StringBuilder checkedDotOperand, SNode result) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.append("." + new String(SPropertyOperations.getString(result, PROPS.name$MnvL)));
     }
     return null;
   }
-  private static StringBuilder check_rbndtb_a6a23(StringBuilder checkedDotOperand) {
+  private static StringBuilder check_rbndtb_a6a53(StringBuilder checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.append("(");
     }
     return null;
   }
-  private static StringBuilder check_rbndtb_a7a0a21a23(StringBuilder checkedDotOperand, Argument arg, ASTConverter checkedDotThisExpression) {
+  private static StringBuilder check_rbndtb_a3a0a21a53(StringBuilder checkedDotOperand, Argument arg, ASTConverter checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.append(checkedDotThisExpression.typeReferenceId(arg.type));
     }
     return null;
   }
-  private static StringBuilder check_rbndtb_a8a0a21a23(StringBuilder checkedDotOperand) {
+  private static StringBuilder check_rbndtb_a4a0a21a53(StringBuilder checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.append(",");
     }
     return null;
   }
-  private static StringBuilder check_rbndtb_a0a2a21a23(StringBuilder checkedDotOperand, StringBuilder idBuilder) {
+  private static StringBuilder check_rbndtb_a0a2a21a53(StringBuilder checkedDotOperand, StringBuilder idBuilder) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.deleteCharAt(check_rbndtb_a0a0a0c0m0gb(idBuilder) - 1);
+      return checkedDotOperand.deleteCharAt(check_rbndtb_a0a0a0c0m0jb(idBuilder) - 1);
     }
     return null;
   }
-  private static int check_rbndtb_a0a0a0c0m0gb(StringBuilder checkedDotOperand) {
+  private static int check_rbndtb_a0a0a0c0m0jb(StringBuilder checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.length();
     }
     return 0;
   }
-  private static StringBuilder check_rbndtb_a31a23(StringBuilder checkedDotOperand) {
+  private static StringBuilder check_rbndtb_a31a53(StringBuilder checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.append(")");
     }
     return null;
   }
-  private static SNode _quotation_createNode_rbndtb_a0b0r0gb() {
+  private static SNode _quotation_createNode_rbndtb_a0b0r0jb() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x4975dc2bdcfa0c49L, "StubStatementList"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0rb() {
+  private static SNode _quotation_createNode_rbndtb_a0a0ub() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0a34() {
+  private static SNode _quotation_createNode_rbndtb_a0a0a64() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af958b686L, "ProtectedVisibility"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0a0rb() {
+  private static SNode _quotation_createNode_rbndtb_a0a0a0ub() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9586f0cL, "PrivateVisibility"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0a55() {
+  private static SNode _quotation_createNode_rbndtb_a0a0a06() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a0a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a1a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a1a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7f3L, "LongType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a2a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a2a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cc380dL, "ShortType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a3a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a3a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d5b617L, "ByteType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a4a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a4a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d327fdL, "FloatType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a5a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a5a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d451a6L, "DoubleType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a6a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a6a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d6513eL, "BooleanType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a7a0dc() {
+  private static SNode _quotation_createNode_rbndtb_a0a7a0ic() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d4f826L, "CharType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0c0fc() {
+  private static SNode _quotation_createNode_rbndtb_a0a0c0kc() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae5f4a3L, "WildCardType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_rbndtb_a1a1c0fc(Object parameter_1) {
+  private static SNode _quotation_createNode_rbndtb_a1a1c0kc(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110daeaa84aL, "UpperBoundType"));
@@ -1248,7 +1260,7 @@ public class ASTConverter {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_rbndtb_a1a2c0fc(Object parameter_1) {
+  private static SNode _quotation_createNode_rbndtb_a1a2c0kc(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x110dae9d53dL, "LowerBoundType"));
@@ -1259,7 +1271,7 @@ public class ASTConverter {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_rbndtb_a0a0e0jc(Object parameter_1) {
+  private static SNode _quotation_createNode_rbndtb_a0a0e0oc(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"));
@@ -1270,7 +1282,7 @@ public class ASTConverter {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_rbndtb_a1a97() {
+  private static SNode _quotation_createNode_rbndtb_a1a48() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
     quotedNode_1 = nb.getResult();

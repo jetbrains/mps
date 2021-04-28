@@ -37,6 +37,14 @@ public class JavaToMps_Test extends BaseTransformationTest {
     new TestBody(this).test_ClassWInnerInterace();
   }
   @Test
+  public void test_Closures() throws Throwable {
+    new TestBody(this).test_Closures();
+  }
+  @Test
+  public void test_MethodReferences() throws Throwable {
+    new TestBody(this).test_MethodReferences();
+  }
+  @Test
   public void test_Imports1() throws Throwable {
     new TestBody(this).test_Imports1();
   }
@@ -87,6 +95,18 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("8083368042256419833");
       new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("classwiface"), getNodeById("1218582063869484741"));
     }
+    public void test_Closures() throws Exception {
+      addNodeById("4795297196607520929");
+      addNodeById("1218582063869484737");
+      addNodeById("8083368042256419833");
+      new JavaToMpsUtils(myProject.getRepository()).checkSourceModel(this.testsLocation().findChild("singleFiles").findChild("closures"), PersistenceFacade.getInstance().createModelReference("r:aa5e5df5-dc8b-4b06-b9b3-81790bb26e37(jetbrains.mps.ide.java.testMaterial.singleFiles.closures)"));
+    }
+    public void test_MethodReferences() throws Exception {
+      addNodeById("4795297196607520929");
+      addNodeById("1218582063869484737");
+      addNodeById("8083368042256419833");
+      new JavaToMpsUtils(myProject.getRepository()).checkSourceModel(this.testsLocation().findChild("singleFiles").findChild("methodReferences"), PersistenceFacade.getInstance().createModelReference("r:b9cc3a18-b6c5-40c7-9689-af719585206d(jetbrains.mps.ide.java.testMaterial.singleFiles.methodReferences)"));
+    }
     public void test_Imports1() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
@@ -126,7 +146,7 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new JavaToMpsUtils(myProject.getRepository()).checkSourceModel(this.testsLocation().findChild("singleFiles").findChild("statements"), PersistenceFacade.getInstance().createModelReference("r:2527791c-6ce6-4422-9215-ce9af0862613(jetbrains.mps.ide.java.testMaterial.singleFiles)"));
+      new JavaToMpsUtils(myProject.getRepository()).checkSourceModel(this.testsLocation().findChild("singleFiles").findChild("statements"), PersistenceFacade.getInstance().createModelReference("r:1d6daef0-9a77-4f83-b44e-a678d8e94b51(jetbrains.mps.ide.java.testMaterial.singleFiles.statements)"));
     }
     public void test_ByteCodeVsSourceStubs() throws Exception {
       addNodeById("4795297196607520929");

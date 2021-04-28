@@ -133,6 +133,8 @@ public class DirParser {
 
           if (mdl != null) {
             ((SModelInternal) mdl).addLanguage(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
+            ((SModelInternal) mdl).addLanguage(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"));
+            ((SModelInternal) mdl).addLanguage(MetaAdapterFactory.getLanguage(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, "jetbrains.mps.baseLanguage.methodReferences"));
             for (SNode r : ListSequence.fromList(roots)) {
               SModelOperations.addRootNode(mdl, r);
             }

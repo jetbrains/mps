@@ -5,6 +5,7 @@ package jetbrains.mps.java.core.newparser;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Map;
+import java.util.List;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -16,11 +17,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.HashMap;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -41,6 +42,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class YetUnknownResolver {
   private final Iterable<SNode> myInitialNodes;
   private Map<SNode, SNode> myResolutionMap;
+  private List<SNode> myNodesToResolve;
   private Set<SModelReference> myRefTargetOfResolved;
   private int myIterationCount = 0;
   private SModel myModel;
@@ -102,8 +104,8 @@ public class YetUnknownResolver {
    * @return {@code true} when there are IYetUnresolved with substitutions
    */
   public boolean collectYetUnresolved(ProgressMonitor progress) {
-    assert myIterationCount == 0 || myResolutionMap != null;
-    collectYetUnresolved((myResolutionMap == null ? myInitialNodes : MapSequence.fromMap(myResolutionMap).values()), progress);
+    assert myIterationCount == 0 || (myResolutionMap != null && myNodesToResolve != null);
+    collectYetUnresolved((myNodesToResolve == null ? myInitialNodes : myNodesToResolve), progress);
     myIterationCount++;
     return !(MapSequence.fromMap(myResolutionMap).isEmpty());
   }
@@ -111,22 +113,31 @@ public class YetUnknownResolver {
   private void collectYetUnresolved(Iterable<SNode> roots, ProgressMonitor progress) {
     progress.start("Ambiguous concepts...", Sequence.fromIterable(roots).count());
     myResolutionMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    myNodesToResolve = ListSequence.fromList(new ArrayList<SNode>());
+
     for (SNode node : Sequence.fromIterable(roots)) {
       progress.step((SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd) ? ("node: " + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL)) : ""));
-      List<SNode> unknowns = SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$h4, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4});
-      for (SNode unk : ListSequence.fromList(unknowns)) {
-        final SNode unkNode = unk;
-        final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
-        if (subst == null) {
-          continue;
-        }
-
-        SNode theRightNode = subst.invoke();
-        MapSequence.fromMap(myResolutionMap).put(unkNode, theRightNode);
+      for (SNode unk : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IYetUnresolved$h4, true, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4}))) {
+        ListSequence.fromList(myNodesToResolve).addElement(collectYetUnresolved(unk));
       }
       progress.advance(1);
     }
     progress.done();
+  }
+
+  private SNode collectYetUnresolved(SNode unk) {
+    final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
+    if (subst == null) {
+      // Try to solve strict descendants if any (and still report this node to be solved later)
+      for (SNode it : ListSequence.fromList(SNodeOperations.getNodeDescendants(unk, CONCEPTS.IYetUnresolved$h4, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4}))) {
+        collectYetUnresolved(it);
+      }
+      return unk;
+    } else {
+      SNode theRightNode = subst.invoke();
+      MapSequence.fromMap(myResolutionMap).put(unk, theRightNode);
+      return theRightNode;
+    }
   }
 
   public void replaceYetUnresolved(final ProgressMonitor progress) {
