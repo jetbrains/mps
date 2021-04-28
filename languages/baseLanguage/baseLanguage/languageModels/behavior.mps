@@ -3343,9 +3343,8 @@
     <ref role="13h7C2" to="tpee:gLzXffN" resolve="Closure" />
     <node concept="13i0hz" id="hNVujlz" role="13h7CS">
       <property role="TrG5h" value="getVariablesReferencedInClosure" />
-      <node concept="2I9FWS" id="hNVujl$" role="3clF45">
-        <ref role="2I9WkF" to="tpee:fz3uBXI" resolve="VariableDeclaration" />
-      </node>
+      <property role="13i0it" value="true" />
+      <node concept="2I9FWS" id="hNVujl$" role="3clF45" />
       <node concept="3clFbS" id="hNVujl_" role="3clF47">
         <node concept="3cpWs8" id="hNVujlA" role="3cqZAp">
           <node concept="3cpWsn" id="hNVujlB" role="3cpWs9">
