@@ -34,12 +34,10 @@ public class typeof_RemoveWhereOperation_InferenceRule extends AbstractInference
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5380162141339074462", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) IApplicableToNothing__BehaviorDescriptor.expectedOperandType_id5xvLnyYzY1Q.invoke(rwo, typeCheckingContext.getRepresentative(PARAM_TYPE_typevar_3055999550620863371)), (SNode) typeCheckingContext.getRepresentative(OPERAND_TYPE_typevar_3055999550620867612), false, true, _info_12389875345);
     }
-    if (!(typeCheckingContext.isSingleTypeComputation())) {
-      {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(rwo, LINKS.closure$Rjuo);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3055999550620863384", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3055999550620863386", true), (SNode) _quotation_createNode_w1as5g_a1a0c0a0e0b(typeCheckingContext.getRepresentative(PARAM_TYPE_typevar_3055999550620863371)), true, true, _info_12389875345);
-      }
+    {
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(rwo, LINKS.closure$Rjuo);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3055999550620863384", 0, null);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "3055999550620863386", true), (SNode) _quotation_createNode_w1as5g_a1a0c0e0b(typeCheckingContext.getRepresentative(PARAM_TYPE_typevar_3055999550620863371)), false, true, _info_12389875345);
     }
     {
       SNode _nodeToCheck_1029348928467 = rwo;
@@ -56,7 +54,7 @@ public class typeof_RemoveWhereOperation_InferenceRule extends AbstractInference
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_w1as5g_a1a0c0a0e0b(Object parameter_1) {
+  private static SNode _quotation_createNode_w1as5g_a1a0c0e0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

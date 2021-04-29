@@ -32,12 +32,10 @@ public class typeof_FindFirstOperation_InferenceRule extends AbstractInferenceRu
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727913024", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727909229", true), (SNode) typeCheckingContext.getRepresentative(elementType_typevar_1225727823542), _info_12389875345);
     }
-    if (!(typeCheckingContext.isSingleTypeComputation())) {
-      {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$Rjuo);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727952016", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727925390", true), (SNode) _quotation_createNode_sw83vu_a1a0c0a0d0b(typeCheckingContext.getRepresentative(elementType_typevar_1225727823542)), true, true, _info_12389875345);
-      }
+    {
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$Rjuo);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727952016", 0, null);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225727925390", true), (SNode) _quotation_createNode_sw83vu_a1a0c0d0b(typeCheckingContext.getRepresentative(elementType_typevar_1225727823542)), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -60,7 +58,7 @@ public class typeof_FindFirstOperation_InferenceRule extends AbstractInferenceRu
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_sw83vu_a1a0c0a0d0b(Object parameter_1) {
+  private static SNode _quotation_createNode_sw83vu_a1a0c0d0b(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

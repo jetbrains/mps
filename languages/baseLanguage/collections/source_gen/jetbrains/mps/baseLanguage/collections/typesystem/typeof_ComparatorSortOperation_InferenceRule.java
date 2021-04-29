@@ -28,12 +28,10 @@ public class typeof_ComparatorSortOperation_InferenceRule extends AbstractInfere
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_8czehp_a0a0c0b0b(typeCheckingContext.getRepresentative(paramType_typevar_1209728259188)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1225885254827", true), false, true, _info_12389875345);
     }
     final SNode resType_typevar_1209728259189 = typeCheckingContext.createNewRuntimeTypesVariable();
-    if (!(typeCheckingContext.isSingleTypeComputation())) {
-      {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cso, LINKS.closure$Rjuo);
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259190", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259192", true), (SNode) _quotation_createNode_8czehp_a1a0c0a0d0b(typeCheckingContext.getRepresentative(paramType_typevar_1209728259188), typeCheckingContext.getRepresentative(paramType_typevar_1209728259188)), true, true, _info_12389875345);
-      }
+    {
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(cso, LINKS.closure$Rjuo);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259190", 0, null);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1209728259192", true), (SNode) _quotation_createNode_8czehp_a1a0c0d0b(typeCheckingContext.getRepresentative(paramType_typevar_1209728259188), typeCheckingContext.getRepresentative(paramType_typevar_1209728259188)), false, true, _info_12389875345);
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
@@ -68,7 +66,7 @@ public class typeof_ComparatorSortOperation_InferenceRule extends AbstractInfere
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_8czehp_a1a0c0a0d0b(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_8czehp_a1a0c0d0b(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
