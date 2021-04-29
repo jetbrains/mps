@@ -174,7 +174,7 @@ public interface RefactoringParticipant<InitialDataObject, FinalDataObject, Init
     }
     protected List<List<Change<I, F>>> initChanges(final SRepository repository, final List<Option> selectedOptions, final SearchScope searchScope, final ProgressMonitor progressMonitor) {
       return mapNotNull(myInitialStates, new _FunctionTypes._return_P1_E0<List<List<Change<I, F>>>, List<I>>() {
-        public List<List<Change<I, F>>> invoke(List<I> initialStates) {
+        public List<List<Change<I, F>>> invoke(@NonNls List<I> initialStates) {
           return (ListSequence.fromList(initialStates).isEmpty() ? Collections.<List<Change<I, F>>>emptyList() : myParticipant.getChanges(initialStates, repository, selectedOptions, searchScope, progressMonitor));
         }
       });

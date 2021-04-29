@@ -3379,6 +3379,9 @@
           <node concept="L2wRC" id="50x4S0pFbiv" role="39821P">
             <ref role="L2wRA" node="7iiyGQ7dLQL" resolve="jetbrains.mps.baseLanguage.jdk8" />
           </node>
+          <node concept="L2wRC" id="6ipr$qSgvUE" role="39821P">
+            <ref role="L2wRA" node="tTgt0xwhLZ" resolve="jetbrains.mps.baseLanguage.methodReferences" />
+          </node>
           <node concept="L2wRC" id="2d0qgmCdfZf" role="39821P">
             <ref role="L2wRA" node="7Kfy9QB6L2l" resolve="jetbrains.mps.baseLanguage.logging" />
           </node>
@@ -48919,6 +48922,16 @@
       <node concept="1SiIV0" id="2KujyEVOe3k" role="3bR37C">
         <node concept="3bR9La" id="2KujyEVOe3l" role="1SiIV1">
           <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4o7QKr6xhMk" role="3bR37C">
+        <node concept="3bR9La" id="4o7QKr6xhMl" role="1SiIV1">
+          <ref role="3bR37D" node="tTgt0xwhLZ" resolve="jetbrains.mps.baseLanguage.methodReferences" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4o7QKr6xhMm" role="3bR37C">
+        <node concept="3bR9La" id="4o7QKr6xhMn" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6KZG" resolve="jetbrains.mps.baseLanguage.closures" />
         </node>
       </node>
     </node>

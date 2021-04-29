@@ -3920,7 +3920,7 @@
                 </node>
                 <node concept="tyxLq" id="6vzydrFAx8S" role="2OqNvi">
                   <node concept="21nZrQ" id="6vzydrFAymV" role="tz02z">
-                    <ref role="21nZrZ" to="tpce:3Ftr4R6BFyn" resolve="association" />
+                    <ref role="21nZrZ" to="tpce:3Ftr4R6BFyn" resolve="reference" />
                   </node>
                 </node>
               </node>

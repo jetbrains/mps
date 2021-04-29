@@ -553,6 +553,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/JavaCompilationXmlConflict.test/JavaCompilationXmlConflict.test.msd" folder="tests.testJavaCompilationXmlConflict" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/actions.test/jetbrains.mps.lang.actions.test.msd" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/bl.closures.unittest/jetbrains.mps.baseLanguage.closures.unittest.msd" folder="core.baseLanguage.closures" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/jetbrains.mps.baseLanguage.methodReferences.test/jetbrains.mps.baseLanguage.methodReferences.test.msd" folder="core.baseLanguage.javaFeatures.jdk11" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/bl.doubleDispatch.test/jetbrains.mps.baseLanguage.doubleDispatch.test.msd" folder="core.baseLanguage.doubleDispatch" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/bl.internal.test/jetbrains.mps.baseLanguageInternal.test.msd" folder="core.baseLanguage.tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/bl.internalCollections.test/internalCollections.test.msd" folder="core.baseLanguage.collections" />

@@ -12,6 +12,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import org.jetbrains.annotations.NonNls;
 
 @GeneratedClass(node = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/1171652495569015565", model = "r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)")
 public interface RecursiveParticipant<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> extends RefactoringParticipant<InitialDataObject, FinalDataObject, InitialPoint, FinalPoint> {
@@ -39,7 +40,7 @@ public interface RecursiveParticipant<InitialDataObject, FinalDataObject, Initia
           throw new IllegalStateException("infinite recursion detected");
         } else {
           return mapNotNull(getInitialStates(), new _FunctionTypes._return_P1_E0<List<List<RefactoringParticipant.Change<I, F>>>, List<I>>() {
-            public List<List<RefactoringParticipant.Change<I, F>>> invoke(List<I> initialStates) {
+            public List<List<RefactoringParticipant.Change<I, F>>> invoke(@NonNls List<I> initialStates) {
               return ((RecursiveParticipant<I, F, IP, FP>) getParticipant()).getChanges(initialStates, repository, selectedOptions, searchScope, progressMonitor, Sequence.fromIterable(myParents).concat(Sequence.fromIterable(Sequence.<RefactoringParticipant.ParticipantApplied>singleton(RecursiveParticipantApplied.this))));
             }
           });

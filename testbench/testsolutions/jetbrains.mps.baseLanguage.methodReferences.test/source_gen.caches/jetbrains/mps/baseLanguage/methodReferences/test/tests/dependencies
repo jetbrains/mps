@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.baseLanguage.methodReferences.test.tests.BoundsTypes_Test">
+    <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Number" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.math.BigInteger" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.methodReferences.test.tests.MethodReferences_Test">
+    <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicInteger" />
+    <classNode dependClassName="java.util.function.Consumer" />
+    <classNode dependClassName="java.util.stream.Stream" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.methodReferences.test.tests.VariableArity_Test">
+    <classNode dependClassName="java.lang.Double" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.Thread" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
+</dependenciesRoot>
+
