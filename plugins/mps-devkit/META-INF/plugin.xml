@@ -47,7 +47,7 @@
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.aspect\..*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.templates"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.editor\.runtime"/>
-    <mps.VisibleModuleMask mask="jetbrains\.mps\.execution\.api"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.execution\."/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.findUsages.*"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.generator"/>
     <mps.VisibleModuleMask mask="jetbrains\.mps\.ide.*"/>
