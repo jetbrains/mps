@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -197,6 +198,7 @@ public class NodeGroupChange extends StructureChange {
     for (SNode newNode : ListSequence.fromList(nodesToAdd)) {
       parent.insertChildBefore(link, newNode, beforAnchor);
     }
+    StructureChange.fixInnerModelReferences(nodesToAdd, SModelOperations.getPointer(getChangeSet().getNewModel()), model);
   }
 
   @NotNull
