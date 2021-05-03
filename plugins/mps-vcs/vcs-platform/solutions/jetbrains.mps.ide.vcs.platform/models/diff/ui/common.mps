@@ -20597,9 +20597,7 @@
                 </node>
                 <node concept="10Nm6u" id="26fDspGSWvL" role="37wK5m" />
                 <node concept="10Nm6u" id="26fDspGSW$8" role="37wK5m" />
-                <node concept="3clFbT" id="26fDspGT00p" role="37wK5m">
-                  <property role="3clFbU" value="true" />
-                </node>
+                <node concept="3clFbT" id="26fDspGT00p" role="37wK5m" />
               </node>
             </node>
             <node concept="37vLTw" id="26fDspGSDWm" role="37vLTJ">
