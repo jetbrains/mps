@@ -67,6 +67,8 @@
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
+    <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -9786,9 +9788,139 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5pCI92Zro0t" role="jymVt" />
+    <node concept="2YIFZL" id="6D4TY6jwdYE" role="jymVt">
+      <property role="TrG5h" value="create" />
+      <node concept="37vLTG" id="6D4TY6jwfQO" role="3clF46">
+        <property role="TrG5h" value="ec" />
+        <node concept="3uibUv" id="6D4TY6jwfQP" role="1tU5fm">
+          <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
+        </node>
+        <node concept="2AHcQZ" id="6D4TY6jwfQQ" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6D4TY6jwfQR" role="3clF46">
+        <property role="TrG5h" value="repository" />
+        <node concept="3uibUv" id="6D4TY6jwfQS" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+        </node>
+        <node concept="2AHcQZ" id="6D4TY6jwfQT" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6D4TY6jwdYH" role="3clF47">
+        <node concept="3cpWs8" id="6D4TY6jwgo8" role="3cqZAp">
+          <node concept="3cpWsn" id="6D4TY6jwgo9" role="3cpWs9">
+            <property role="TrG5h" value="dumbService" />
+            <node concept="3uibUv" id="6D4TY6jwgoa" role="1tU5fm">
+              <ref role="3uigEE" to="4nm9:~DumbService" resolve="DumbService" />
+            </node>
+            <node concept="1rXfSq" id="6D4TY6jwgBD" role="33vP2m">
+              <ref role="37wK5l" node="6D4TY6jw8vk" resolve="getDumbService" />
+              <node concept="37vLTw" id="6D4TY6jwgLh" role="37wK5m">
+                <ref role="3cqZAo" node="6D4TY6jwfQR" resolve="repository" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6D4TY6jwgT2" role="3cqZAp">
+          <node concept="3clFbS" id="6D4TY6jwgT4" role="3clFbx">
+            <node concept="3cpWs6" id="6D4TY6jwhsd" role="3cqZAp">
+              <node concept="10Nm6u" id="6D4TY6jwh$e" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3clFbC" id="6D4TY6jwhdQ" role="3clFbw">
+            <node concept="10Nm6u" id="6D4TY6jwhmp" role="3uHU7w" />
+            <node concept="37vLTw" id="6D4TY6jwh2E" role="3uHU7B">
+              <ref role="3cqZAo" node="6D4TY6jwgo9" resolve="dumbService" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="516stgz5kLn" role="3cqZAp">
+          <node concept="3cpWsn" id="516stgz5kLo" role="3cpWs9">
+            <property role="TrG5h" value="attributes" />
+            <node concept="3uibUv" id="516stgz5kLp" role="1tU5fm">
+              <ref role="3uigEE" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+            </node>
+            <node concept="2YIFZM" id="516stgz5l1f" role="33vP2m">
+              <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
+              <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+              <node concept="Xl_RD" id="516stgz5l7I" role="37wK5m">
+                <property role="Xl_RC" value="IDENTIFIER_UNDER_CARET_ATTRIBUTES" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="516stgz5lv7" role="3cqZAp">
+          <node concept="3cpWsn" id="516stgz5lv8" role="3cpWs9">
+            <property role="TrG5h" value="textAttributes" />
+            <node concept="3uibUv" id="516stgz5lv9" role="1tU5fm">
+              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
+            </node>
+            <node concept="2OqwBi" id="516stgz5nwY" role="33vP2m">
+              <node concept="2OqwBi" id="516stgz5lU2" role="2Oq$k0">
+                <node concept="2YIFZM" id="516stgz5lMQ" role="2Oq$k0">
+                  <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
+                </node>
+                <node concept="liA8E" id="516stgz5m57" role="2OqNvi">
+                  <ref role="37wK5l" to="drih:~EditorColorsManager.getGlobalScheme()" resolve="getGlobalScheme" />
+                </node>
+              </node>
+              <node concept="liA8E" id="516stgz5nRr" role="2OqNvi">
+                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                <node concept="37vLTw" id="516stgz5o2S" role="37wK5m">
+                  <ref role="3cqZAo" node="516stgz5kLo" resolve="attributes" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="516stgz5omJ" role="3cqZAp">
+          <node concept="3cpWsn" id="516stgz5omK" role="3cpWs9">
+            <property role="TrG5h" value="color" />
+            <node concept="3uibUv" id="516stgz5omL" role="1tU5fm">
+              <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+            </node>
+            <node concept="2OqwBi" id="516stgz5oRE" role="33vP2m">
+              <node concept="37vLTw" id="516stgz5oDK" role="2Oq$k0">
+                <ref role="3cqZAo" node="516stgz5lv8" resolve="textAttributes" />
+              </node>
+              <node concept="liA8E" id="516stgz5pac" role="2OqNvi">
+                <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6D4TY6jwhGz" role="3cqZAp">
+          <node concept="2ShNRf" id="6D4TY6jwhOY" role="3cqZAk">
+            <node concept="1pGfFk" id="6D4TY6jwTJD" role="2ShVmc">
+              <ref role="37wK5l" node="Qnt6MoXq48" resolve="HighlightUsagesSupport" />
+              <node concept="37vLTw" id="6D4TY6jwTPU" role="37wK5m">
+                <ref role="3cqZAo" node="6D4TY6jwfQO" resolve="ec" />
+              </node>
+              <node concept="37vLTw" id="6D4TY6jwU0c" role="37wK5m">
+                <ref role="3cqZAo" node="6D4TY6jwfQR" resolve="repository" />
+              </node>
+              <node concept="37vLTw" id="516stgz5pia" role="37wK5m">
+                <ref role="3cqZAo" node="516stgz5omK" resolve="color" />
+              </node>
+              <node concept="37vLTw" id="6D4TY6jwUpX" role="37wK5m">
+                <ref role="3cqZAo" node="6D4TY6jwgo9" resolve="dumbService" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6D4TY6jwc3i" role="1B3o_S" />
+      <node concept="3uibUv" id="6D4TY6jwdIS" role="3clF45">
+        <ref role="3uigEE" node="4kev0f6DOx0" resolve="HighlightUsagesSupport" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6D4TY6jwbe2" role="jymVt" />
     <node concept="3clFbW" id="Qnt6MoXq48" role="jymVt">
       <node concept="3cqZAl" id="Qnt6MoXq49" role="3clF45" />
-      <node concept="3Tm1VV" id="Qnt6MoXq4a" role="1B3o_S" />
+      <node concept="3Tm6S6" id="6D4TY6jwUsE" role="1B3o_S" />
       <node concept="3clFbS" id="Qnt6MoXq4c" role="3clF47">
         <node concept="3clFbF" id="Qnt6MoXq4g" role="3cqZAp">
           <node concept="37vLTI" id="Qnt6MoXq4i" role="3clFbG">
@@ -9822,11 +9954,11 @@
         </node>
         <node concept="3clFbF" id="5pCI92ZrqQb" role="3cqZAp">
           <node concept="37vLTI" id="5pCI92ZrrcU" role="3clFbG">
-            <node concept="1rXfSq" id="5pCI92ZrrGb" role="37vLTx">
-              <ref role="37wK5l" node="5pCI92ZqQeN" resolve="getDumbService" />
-            </node>
             <node concept="37vLTw" id="5pCI92ZrqQ9" role="37vLTJ">
               <ref role="3cqZAo" node="5pCI92ZrpFm" resolve="myDumbService" />
+            </node>
+            <node concept="37vLTw" id="6D4TY6jwWif" role="37vLTx">
+              <ref role="3cqZAo" node="6D4TY6jwfZN" resolve="dumbService" />
             </node>
           </node>
         </node>
@@ -9853,6 +9985,15 @@
         <property role="TrG5h" value="color" />
         <node concept="3uibUv" id="5KVavYenaC" role="1tU5fm">
           <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6D4TY6jwfZN" role="3clF46">
+        <property role="TrG5h" value="dumbService" />
+        <node concept="3uibUv" id="6D4TY6jwgel" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~DumbService" resolve="DumbService" />
+        </node>
+        <node concept="2AHcQZ" id="6D4TY6jwUCD" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
     </node>
@@ -10557,8 +10698,11 @@
       </node>
     </node>
     <node concept="2tJIrI" id="Qnt6Mp0T1j" role="jymVt" />
-    <node concept="3clFb_" id="5pCI92ZqQeN" role="jymVt">
+    <node concept="2YIFZL" id="6D4TY6jw8vk" role="jymVt">
       <property role="TrG5h" value="getDumbService" />
+      <node concept="2AHcQZ" id="2KgqwSdFsRb" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
       <node concept="3clFbS" id="5pCI92ZqQeQ" role="3clF47">
         <node concept="3cpWs8" id="5pCI92ZqTvw" role="3cqZAp">
           <node concept="3cpWsn" id="5pCI92ZqTvx" role="3cpWs9">
@@ -10569,8 +10713,8 @@
             <node concept="2YIFZM" id="5pCI92ZqTvy" role="33vP2m">
               <ref role="37wK5l" to="alof:~ProjectHelper.getProject(org.jetbrains.mps.openapi.module.SRepository)" resolve="getProject" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-              <node concept="37vLTw" id="5pCI92ZqTvz" role="37wK5m">
-                <ref role="3cqZAo" node="6$lwX$8YO$5" resolve="myRepository" />
+              <node concept="37vLTw" id="6D4TY6jw6HT" role="37wK5m">
+                <ref role="3cqZAo" node="6D4TY6jvTB_" resolve="repository" />
               </node>
             </node>
           </node>
@@ -10626,13 +10770,16 @@
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="5pCI92ZqPdG" role="1B3o_S" />
+      <node concept="37vLTG" id="6D4TY6jvTB_" role="3clF46">
+        <property role="TrG5h" value="repository" />
+        <node concept="3uibUv" id="6D4TY6jw6ms" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+        </node>
+      </node>
       <node concept="3uibUv" id="5pCI92ZqQcb" role="3clF45">
         <ref role="3uigEE" to="4nm9:~DumbService" resolve="DumbService" />
       </node>
-      <node concept="2AHcQZ" id="2KgqwSdFsRb" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
+      <node concept="3Tm6S6" id="5pCI92ZqPdG" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5pCI92ZqODr" role="jymVt" />
     <node concept="3clFb_" id="Qnt6Mp0U_B" role="jymVt">

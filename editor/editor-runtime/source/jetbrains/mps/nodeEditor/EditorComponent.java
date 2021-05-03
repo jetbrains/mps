@@ -1889,13 +1889,15 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   private void refreshHighlighter() {
+    if (ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      return;
+    }
     if (EditorSettings.getInstance().isHighlightNodeUnderCursor()) {
       if (myHighlightUsagesSupport == null) {
-        TextAttributesKey attributes = TextAttributesKey.createTextAttributesKey("IDENTIFIER_UNDER_CARET_ATTRIBUTES");
-        TextAttributes textAttributes = EditorColorsManager.getInstance().getGlobalScheme().getAttributes(attributes);
-        Color color = textAttributes.getErrorStripeColor();
-        myHighlightUsagesSupport = new HighlightUsagesSupport(this, myRepository, color);
-        myHighlightUsagesSupport.selectionChanged(mySelectionManager.getSelection(), 0);
+        myHighlightUsagesSupport = HighlightUsagesSupport.create(this, myRepository);
+        if (myHighlightUsagesSupport != null) {
+          myHighlightUsagesSupport.selectionChanged(mySelectionManager.getSelection(), 0);
+        }
       }
     } else {
       if (myHighlightUsagesSupport != null) {

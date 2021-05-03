@@ -128,6 +128,9 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.EditorComponent" />
   </dependency>
   <dependency className="jetbrains.mps.editor.runtime.HighlightUsagesSupport">
+    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
+    <classNode dependClassName="com.intellij.openapi.editor.colors.TextAttributesKey" />
+    <classNode dependClassName="com.intellij.openapi.editor.markup.TextAttributes" />
     <classNode dependClassName="com.intellij.openapi.project.DumbService" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.util.ConcurrencyUtil" />
