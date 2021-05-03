@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@ import com.intellij.openapi.progress.util.ReadTask;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.workbench.index.PropertyValueIndex;
+import jetbrains.mps.workbench.index.PropertyValueProcessor;
+import jetbrains.mps.workbench.index.WordIndexEntry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -32,7 +34,10 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author Artem Tikhomirov
@@ -62,8 +67,9 @@ import java.util.function.Consumer;
   /*package*/ void performLookup(ProgressMonitor pm) {
     pm.start("", 5);
     myDialogCallback.reset();
-    final FindInNodeSink sink = new FindInNodeSink(myText, myDialogCallback);
-    PropertyValueIndex.processor(myText, sink, myProject).run(pm.subTask(4, SubProgressKind.REPLACING));
+    final FindInNodeSink sink = new FindInNodeSink(myText, PropertyValueIndex.splitToWord(), myDialogCallback);
+    final Supplier<Set<WordIndexEntry>> indexEntrySupplier = () -> PropertyValueIndex.splitToIndexEntry().apply(myText);
+    new PropertyValueProcessor(myProject, sink, indexEntrySupplier).run(pm.subTask(4, SubProgressKind.REPLACING));
     if (!isCancelState()) {
       lookupChangedModels(sink, pm.subTask(1, SubProgressKind.REPLACING));
     }
@@ -126,10 +132,14 @@ import java.util.function.Consumer;
 
   private static final class FindInNodeSink implements Consumer<SNode> {
     private final String myLookupValue;
+    private final Set<String> myLookupWords;
     private final MatchHandler myMatchHandler;
+    private final Function<String, Set<String>> myWordSplit;
 
-    public FindInNodeSink(String text, MatchHandler matchHandler) {
-      myLookupValue = text.toLowerCase();
+    public FindInNodeSink(String text, Function<String, Set<String>> wordSplit, MatchHandler matchHandler) {
+      myLookupValue = text.toLowerCase(); // XXX would be great to keep this outside, as a 'case sensitive' option
+      myLookupWords = wordSplit.apply(myLookupValue);
+      myWordSplit = wordSplit;
       myMatchHandler = matchHandler;
     }
 
@@ -137,7 +147,16 @@ import java.util.function.Consumer;
     public void accept(SNode n) {
       for (SProperty p : n.getProperties()) {
         final String v = n.getProperty(p);
-        if (v != null && v.toLowerCase().contains(myLookupValue)) {
+        if (v == null) {
+          continue;
+        }
+        final String lcv = v.toLowerCase();
+        // Account for multi-word lookup. see if there any intersection in lookup words and words in the property, report as match if any.
+        // note, here we rely on PropertyValueProcessor logic that supplies SNode where all trigrams of lookup text have been found
+        // and don't care to use allMatch(), although it's a reasonable alternative.
+        // Note, despite the fact myLookupWords.size() could be 1, we may not see lcv.contains as there could be
+        // whitespaces in lookup value ("PropertyValue".contains("PropertyValue ") == false)
+        if (lcv.contains(myLookupValue) || myWordSplit.apply(lcv).stream().anyMatch(myLookupWords::contains)) {
           myMatchHandler.handleMatch(n, p, v);
         }
       }

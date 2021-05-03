@@ -8,8 +8,6 @@ import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.ByteArrayInputSource;
 import org.jetbrains.mps.openapi.persistence.ContentOption;
-import org.jetbrains.mps.openapi.persistence.ModelLoadException;
-import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.project.MPSExtentions;
@@ -20,13 +18,13 @@ import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.SModelHeader;
 import org.xml.sax.InputSource;
 import java.io.ByteArrayInputStream;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.InvalidSModel;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
@@ -45,21 +43,21 @@ public class VCSPersistenceUtil {
     // returns null if an error occurred, as its predecessor in PersistenceUtil.
     // [MM] not sure this is correct, just left it unchanged
 
-    SModel oldModel = loadFromOldMPSPersistence(content);
-    if (oldModel != null) {
-      return oldModel;
-    }
-
-    ModelFactory factory = PersistenceFacade.getInstance().getModelFactory(extension);
-    if (factory == null) {
-      return null;
-    }
     try {
+      SModel oldModel = loadFromOldMPSPersistence(content);
+      if (oldModel != null) {
+        return oldModel;
+      }
+
+      ModelFactory factory = PersistenceFacade.getInstance().getModelFactory(extension);
+      if (factory == null) {
+        return null;
+      }
       SModel model = factory.load(new ByteArrayInputSource(content), ContentOption.CONTENT_ONLY);
       model.load();
       return model;
-    } catch (ModelLoadException ex) {
-    } catch (UnsupportedDataSourceException ex) {
+    } catch (Exception ex) {
+      // ignore any exception, we're ok here with no result in this case
     }
     return null;
   }
@@ -138,26 +136,17 @@ public class VCSPersistenceUtil {
     return model.isLoaded() && !((model.getProblems().iterator().hasNext()));
   }
 
-  private static SModel loadFromOldMPSPersistence(final byte[] content) {
-    SModelHeader header;
-    try {
-      header = VCSPersistenceSupport.loadDescriptor(new InputSource(new ByteArrayInputStream(content)));
-    } catch (IOException e) {
+  @Nullable
+  private static SModel loadFromOldMPSPersistence(final byte[] content) throws ModelReadException, IOException {
+    SModelHeader header = VCSPersistenceSupport.loadDescriptor(new InputSource(new ByteArrayInputStream(content)));
+    final ModelLoadResult readModel = VCSPersistenceSupport.readModel(header, new ByteArrayInputSource(content), ModelLoadingState.FULLY_LOADED);
+
+    jetbrains.mps.smodel.SModel model = readModel.getModel();
+    if (model instanceof InvalidSModel) {
       return null;
     }
 
-    try {
-      final ModelLoadResult readModel = VCSPersistenceSupport.readModel(header, new ByteArrayInputSource(content), ModelLoadingState.FULLY_LOADED);
-
-      jetbrains.mps.smodel.SModel model = readModel.getModel();
-      if (model instanceof InvalidSModel) {
-        return null;
-      }
-
-      return new MyModel(model, header);
-    } catch (ModelReadException e) {
-      return null;
-    }
+    return new MyModel(model, header);
   }
   private static class MyModel extends TrivialModelDescriptor implements PersistenceVersionAware, ModelWithAttributes {
     private final SModelHeader myHeader;

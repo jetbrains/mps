@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,11 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
   @Override
   protected void setStepInternal(String description) {
     if (description != null && description.startsWith("__")) {
-      description = null;
+      // there's no clear contract on ProgressIndicator.setText2(); I assume it could get invoked from any thread.
+      // However, there's code in IDEA's InlineProgressIndicator.updateProgressNow() that calls getText2() twice, and
+      // expects its value not to change between the calls. To prevent NPE due to this assumption (see MPS-33332),
+      // use empty string, not null here.
+      description = "";
     }
     final String oldText = myIndicator.getText2();
     if (!Objects.equals(description, oldText)) {

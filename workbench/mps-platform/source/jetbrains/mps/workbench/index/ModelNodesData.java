@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,17 @@
 package jetbrains.mps.workbench.index;
 
 import gnu.trove.THashSet;
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.function.Consumer;
 
 /**
  * @author Artem Tikhomirov
  * @since 2019.2
  */
+@Immutable
 public final class ModelNodesData {
   private final THashSet<SNodeId> myElements;
 
