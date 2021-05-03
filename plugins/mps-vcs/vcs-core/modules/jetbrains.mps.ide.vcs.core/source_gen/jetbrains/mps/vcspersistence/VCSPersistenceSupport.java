@@ -37,11 +37,6 @@ import java.io.ByteArrayInputStream;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.JDOMException;
 import jetbrains.mps.smodel.DefaultSModel;
-import java.util.Map;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.smodel.persistence.def.DefaultMetadataPersistence;
 import org.xml.sax.helpers.DefaultHandler;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import javax.xml.parsers.ParserConfigurationException;
@@ -181,7 +176,12 @@ public class VCSPersistenceSupport {
     }
   }
 
+  /**
+   * 
+   * @deprecated will be removed once 2021.1 is out
+   */
   @Nullable
+  @Deprecated(forRemoval = true)
   public static List<LineContent> getLineToContentMap(String content) throws ModelReadException {
     try {
       SModelHeader header;
@@ -247,17 +247,6 @@ public class VCSPersistenceSupport {
     }
   }
 
-  @Nullable
-  private static Map<String, String> loadMetadata(IFile modelFile) {
-    String modelPath = modelFile.getPath();
-    String versionPath = modelPath.substring(0, modelPath.length() - MPSExtentions.DOT_MODEL.length()) + ".metadata";
-    IFile metadataFile = FileSystem.getInstance().getFile(versionPath);
-    if (!(metadataFile.exists())) {
-      return null;
-    }
-    return DefaultMetadataPersistence.load(metadataFile);
-  }
-
   private static void parseAndHandleExceptions(InputSource source, DefaultHandler handler, String what) throws IOException {
     try {
       JDOMUtil.createSAXParser().parse(source, handler);
@@ -266,7 +255,7 @@ public class VCSPersistenceSupport {
     } catch (ParserConfigurationException e) {
       LOG.error(e.toString(), e);
       throw new IOException(String.format("Couldn't read %s: %s", what, e.getMessage()), e);
-    } catch (SAXException e) {
+    } catch (SAXException | AssertionError e) {
       throw new IOException(String.format("Couldn't read %s: %s", what, e.getMessage()), e);
     }
   }
