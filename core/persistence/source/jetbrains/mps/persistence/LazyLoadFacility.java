@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
@@ -61,17 +62,14 @@ public abstract class LazyLoadFacility {
     return mySource;
   }
 
+  // hash value representing actual model content (i.e. no cached values)
+  @Nullable
   public String getModelHash() {
     // FIXME refactor DataSource to answer hash()/digest() queries itself (and move this code back to generatable model impl)
     // AP: I suppose DataSource is a far too generic object to contain the #hash method.
     // Furthermore, #hash neighbouring with the DataSourceListener mechanism is rather questionable.
-    String modelHash = ModelDigestHelper.getInstance().getModelHash((StreamDataSource) getSource());
-    if (modelHash != null) {
-      return modelHash;
-    }
-
-    // AP why the flag, what do we gain?
     return ModelDigestUtil.hash((StreamDataSource) getSource(), myPersistenceIsTextBased);
+    // XXX As for performance, I observed 14-37034 micro seconds range for model hash calculation
   }
 
   @NotNull

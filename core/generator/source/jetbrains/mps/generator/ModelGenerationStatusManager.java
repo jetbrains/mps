@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,8 +18,10 @@ package jetbrains.mps.generator;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
+import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
+import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -30,12 +32,16 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ModelGenerationStatusManager implements CoreComponent {
@@ -46,6 +52,8 @@ public class ModelGenerationStatusManager implements CoreComponent {
   // XXX with multiple projects and independent project repositories, would need distnct GDC per repository
   //     to avoid stale cache information, like in https://youtrack.jetbrains.com/issue/MPS-26346
   private final GenerationDependenciesCache myModelHashCache;
+
+  private final ModelDigestHelper myDigestHelper;
 
   private final SRepositoryContentAdapter myModelReloadListener = new SRepositoryContentAdapter() {
     @Override
@@ -108,6 +116,11 @@ public class ModelGenerationStatusManager implements CoreComponent {
     //         or a workspace-wide mechanism that dispatches smth like SModelListener#modelStreamsChanged() event, I have no idea yet.
     myRepositoryRegistry = repositoryRegistry;
     myModelHashCache = depsCache;
+    // FIXME has to access one through ComponentHost, but at the moment
+    // MGSM lives under MPSGenerator CP umbrella, which has access to MPSCore but not MPSPersistence
+    // where MDH resides. Need to fix Platform init code to pass combined CH for downstream components
+    // (unless I want to move MGSM into different module - is it truly specific to generator?)
+    myDigestHelper = ModelDigestHelper.getInstance();
   }
 
   @Override
@@ -120,14 +133,44 @@ public class ModelGenerationStatusManager implements CoreComponent {
     myRepositoryRegistry.removeGlobalListener(myModelReloadListener);
   }
 
-  /*package*/ String currentHash(SModel md) {
-    if (md instanceof EditableSModel && ((EditableSModel)md).isChanged()) {
-      return null;
+  @Nullable
+  private String currentHash(GeneratableSModel md) {
+    String currentHash = null;
+    if (md.getSource() instanceof StreamDataSource) {
+      // XXX would be great to clarify contract, what does null return value mean for getModelHash
+      // for now I assume it's "no idea what's the value".
+      currentHash = myDigestHelper.getModelHash((StreamDataSource) md.getSource());
+      // FTR, I'm not sure having MDH here is the best choice. Indeed, much better than
+      // to keep in inside SModel implementation (LazyLoadFacility), still it's not clear
+      // whether optimization of IDEA index for hash value is worth it, and if yes, if
+      // GenStatusUpdater, the only(?) getModelHash()-intense client, could be more suited
+      // for index check.
+    } else if (md.getSource() instanceof MultiStreamDataSource) {
+      // from FilePerRootModelFactory.
+      // FIXME Here we consult ModelDigestHelper, though eventually shall
+      //       refactor it to answer generation hash for model right away, without distinct streams/files.
+      //       Besides, it's more effective to ask index for few files at once, rather than do it one by one.
+      final MultiStreamDataSource source = (MultiStreamDataSource) md.getSource();
+      currentHash = source.getSubStreams()
+                   .map(streamDataSource -> {
+                     String streamHash = null;
+                     String streamName = streamDataSource.getStreamName();
+                     if (source instanceof FolderDataSource) {
+                       IFile file = ((FolderDataSource) source).getFile(streamName); // fixme
+                       streamHash = file == null ? null
+                                                 : myDigestHelper.getGenerationHash(file);
+                     }
+                     if (streamHash == null) {
+                       streamHash = ModelDigestUtil.hash(streamDataSource, true);
+                     }
+                     return streamHash;
+                   }).filter(Objects::nonNull)
+                   .map(hash -> new BigInteger(hash, Character.MAX_RADIX))
+                   .reduce(BigInteger.ZERO, BigInteger::xor)
+                   .toString(Character.MAX_RADIX);
+
     }
-    if (md instanceof GeneratableSModel) {
-      return ((GeneratableSModel) md).getModelHash();
-    }
-    return null;
+    return currentHash == null ? md.getModelHash() : currentHash;
   }
 
   public boolean generationRequired(SModel md) {
@@ -142,14 +185,15 @@ public class ModelGenerationStatusManager implements CoreComponent {
       return true;
     }
 
-    String currentHash = sm.getModelHash();
+    // null indicates unlikely scenario we can not tell actual value,
+    // rather treat as 'generation required'
+    String currentHash = currentHash(sm);
     if (currentHash == null) {
       return true;
     }
 
     String generatedHash = getLastKnownHash(sm);
     return !currentHash.equals(generatedHash);
-
   }
 
   // @param sm != null

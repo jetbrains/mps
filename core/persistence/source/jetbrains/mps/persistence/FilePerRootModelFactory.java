@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.persistence;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.project.MPSExtentions;
@@ -31,7 +30,6 @@ import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -176,30 +174,6 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
                          PreinstalledDataSourceTypes.MODEL_ROOT);
   }
 
-  /*package*/ static String getModelHash(@NotNull MultiStreamDataSource source) {
-    return source.getSubStreams()
-                 .map(streamDataSource -> {
-                   String streamHash = null;
-                   String streamName = streamDataSource.getStreamName();
-                   if (source instanceof FolderDataSource) {
-                     IFile file = ((FolderDataSource) source).getFile(streamName); // fixme
-                     streamHash = file == null ? null
-                                               : ModelDigestHelper.getInstance().getGenerationHash(file);
-                   }
-                   if (streamHash == null) {
-                     try (InputStreamReader r = new InputStreamReader(source.getStreamByNameOrFail(streamName).openInputStream())) {
-                       streamHash = ModelDigestUtil.hashText(r);
-                     } catch (IOException ex) {
-                       // ignore, that's what DefaultModelPersistence.getDigestMap used to do
-                     }
-                   }
-                   return streamHash;
-                 }).filter(Objects::nonNull)
-                 .map(hash -> new BigInteger(hash, Character.MAX_RADIX))
-                 .reduce(BigInteger.ZERO, BigInteger::xor)
-                 .toString(Character.MAX_RADIX);
-  }
-
   @Override
   public void index(@NotNull InputStream input, @NotNull Callback callback) throws IOException {
     ModelPersistence.index(input, callback);
@@ -296,9 +270,10 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
     @Override
     public String getModelHash() {
-      // XXX unlike super.getModelHash(), doesn't consult DigestProvider, is it ok?
-      //     What's performance gain in using IDEA indexing for model hashes?
-      return FilePerRootModelFactory.getModelHash(getSource0());
+      return getSource0().getSubStreams().map(streamDataSource -> ModelDigestUtil.hash(streamDataSource, true)).filter(Objects::nonNull)
+                         .map(hash -> new BigInteger(hash, Character.MAX_RADIX))
+                         .reduce(BigInteger.ZERO, BigInteger::xor)
+                         .toString(Character.MAX_RADIX);
     }
 
     @NotNull
