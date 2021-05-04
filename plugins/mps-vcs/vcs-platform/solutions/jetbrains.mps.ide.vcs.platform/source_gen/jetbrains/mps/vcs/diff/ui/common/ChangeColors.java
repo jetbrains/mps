@@ -25,6 +25,7 @@ public class ChangeColors {
   private final Map<ChangeType, Color> myTreeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
   private final Map<ChangeType, Color> myGutterColors = new EnumMap<ChangeType, Color>(ChangeType.class);
   private final Map<ChangeType, Color> myErrorStripeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
+  private final Color MOVE_COLOR = new Color(255, 255, 224);
 
 
   private ChangeColors() {
@@ -73,7 +74,7 @@ public class ChangeColors {
 
     MapSequence.fromMap(myDiffColors).put(ChangeType.CONFLICTED, StyleRegistry.getInstance().getStyle("DIFF_CONFLICT").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
 
-    MapSequence.fromMap(myDiffColors).put(ChangeType.MOVE, new Color(255, 255, 224));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.MOVE, MOVE_COLOR);
 
     MapSequence.fromMap(myGutterColors).put(ChangeType.ADD, scheme.getColor(EditorColors.ADDED_LINES_COLOR));
 
@@ -81,11 +82,13 @@ public class ChangeColors {
 
     MapSequence.fromMap(myGutterColors).put(ChangeType.CHANGE, scheme.getColor(EditorColors.MODIFIED_LINES_COLOR));
 
-    MapSequence.fromMap(myGutterColors).put(ChangeType.MOVE, new Color(255, 255, 224));
+    MapSequence.fromMap(myGutterColors).put(ChangeType.MOVE, MOVE_COLOR);
 
     MapSequence.fromMap(myErrorStripeColors).put(ChangeType.ADD, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_INSERTED")).getErrorStripeColor());
     MapSequence.fromMap(myErrorStripeColors).put(ChangeType.DELETE, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_DELETED")).getErrorStripeColor());
     MapSequence.fromMap(myErrorStripeColors).put(ChangeType.CHANGE, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_MODIFIED")).getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.CONFLICTED, scheme.getAttributes(TextAttributesKey.createTextAttributesKey("DIFF_CONFLICT")).getErrorStripeColor());
+    MapSequence.fromMap(myErrorStripeColors).put(ChangeType.MOVE, MOVE_COLOR);
 
   }
 }
