@@ -7539,7 +7539,7 @@
                                     <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                                     <uo k="s:originTrace" v="n:4888628500252448666" />
                                     <node concept="Xl_RD" id="$$" role="37wK5m">
-                                      <property role="Xl_RC" value="Template Fragments shall use same same containment link" />
+                                      <property role="Xl_RC" value="Template Fragments shall use same containment link" />
                                       <uo k="s:originTrace" v="n:4888628500252448667" />
                                     </node>
                                   </node>
@@ -11732,7 +11732,7 @@
                                     <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                                     <uo k="s:originTrace" v="n:4888628500252455580" />
                                     <node concept="Xl_RD" id="Sz" role="37wK5m">
-                                      <property role="Xl_RC" value="Template Fragments shall use same same containment link" />
+                                      <property role="Xl_RC" value="Template Fragments shall use same containment link" />
                                       <uo k="s:originTrace" v="n:4888628500252455581" />
                                     </node>
                                   </node>

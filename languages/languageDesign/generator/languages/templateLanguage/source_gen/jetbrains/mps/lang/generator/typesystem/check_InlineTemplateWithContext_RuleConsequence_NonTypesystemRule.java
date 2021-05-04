@@ -43,7 +43,7 @@ public class check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule e
         if (!(Objects.equals(commonAggregationLink, fragmentParent.getContainmentLink()))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, String.format("Template Fragments shall use same same containment link"), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4888628500252448664", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, String.format("Template Fragments shall use same containment link"), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "4888628500252448664", null, errorTarget);
           }
         }
       }

@@ -3880,7 +3880,7 @@
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                         <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                         <node concept="Xl_RD" id="4fnTrxcpvat" role="37wK5m">
-                          <property role="Xl_RC" value="Template Fragments shall use same same containment link" />
+                          <property role="Xl_RC" value="Template Fragments shall use same containment link" />
                         </node>
                       </node>
                       <node concept="37vLTw" id="4fnTrxcpvar" role="1urrMF">
@@ -6265,7 +6265,7 @@
                         <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                         <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                         <node concept="Xl_RD" id="4fnTrxcptur" role="37wK5m">
-                          <property role="Xl_RC" value="Template Fragments shall use same same containment link" />
+                          <property role="Xl_RC" value="Template Fragments shall use same containment link" />
                         </node>
                       </node>
                       <node concept="37vLTw" id="4fnTrxcptup" role="1urrMF">
