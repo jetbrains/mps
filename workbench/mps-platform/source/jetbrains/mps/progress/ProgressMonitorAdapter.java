@@ -42,7 +42,11 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
   @Override
   protected void setTitleInternal(String name) {
     if (name != null && name.startsWith("__")) {
-      name = null;
+      name = "";
+    }
+    if (name == null) {
+      // see #setStepInternal(String), below, for the reason.
+      name = "";
     }
     final String oldText = myIndicator.getText();
     if (!Objects.equals(name, oldText)) {
@@ -53,6 +57,9 @@ public class ProgressMonitorAdapter extends ProgressMonitorBase {
   @Override
   protected void setStepInternal(String description) {
     if (description != null && description.startsWith("__")) {
+      description = "";
+    }
+    if (description == null) {
       // there's no clear contract on ProgressIndicator.setText2(); I assume it could get invoked from any thread.
       // However, there's code in IDEA's InlineProgressIndicator.updateProgressNow() that calls getText2() twice, and
       // expects its value not to change between the calls. To prevent NPE due to this assumption (see MPS-33332),
