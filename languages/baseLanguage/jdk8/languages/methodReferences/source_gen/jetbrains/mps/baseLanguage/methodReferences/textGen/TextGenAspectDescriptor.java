@@ -21,6 +21,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     switch (myIndex.index(concept)) {
       case LanguageConceptSwitch.MethodReference:
         return new MethodReference_TextGen();
+      case LanguageConceptSwitch.MethodReferenceSuperExpression:
+        return new MethodReferenceSuperExpression_TextGen();
       case LanguageConceptSwitch.MethodReferenceTypeTargetExpression:
         return new MethodReferenceTypeTargetExpression_TextGen();
     }

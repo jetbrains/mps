@@ -16,7 +16,9 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIMethodReference = createDescriptorForIMethodReference();
+  /*package*/ final ConceptDescriptor myConceptIMethodReferenceTarget = createDescriptorForIMethodReferenceTarget();
   /*package*/ final ConceptDescriptor myConceptMethodReference = createDescriptorForMethodReference();
+  /*package*/ final ConceptDescriptor myConceptMethodReferenceSuperExpression = createDescriptorForMethodReferenceSuperExpression();
   /*package*/ final ConceptDescriptor myConceptMethodReferenceType = createDescriptorForMethodReferenceType();
   /*package*/ final ConceptDescriptor myConceptMethodReferenceTypeTargetExpression = createDescriptorForMethodReferenceTypeTargetExpression();
   /*package*/ final ConceptDescriptor myConceptUnknownMethodReference = createDescriptorForUnknownMethodReference();
@@ -35,7 +37,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptIMethodReference, myConceptMethodReference, myConceptMethodReferenceType, myConceptMethodReferenceTypeTargetExpression, myConceptUnknownMethodReference);
+    return Arrays.asList(myConceptIMethodReference, myConceptIMethodReferenceTarget, myConceptMethodReference, myConceptMethodReferenceSuperExpression, myConceptMethodReferenceType, myConceptMethodReferenceTypeTargetExpression, myConceptUnknownMethodReference);
   }
 
   @Override
@@ -44,8 +46,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.IMethodReference:
         return myConceptIMethodReference;
+      case LanguageConceptSwitch.IMethodReferenceTarget:
+        return myConceptIMethodReferenceTarget;
       case LanguageConceptSwitch.MethodReference:
         return myConceptMethodReference;
+      case LanguageConceptSwitch.MethodReferenceSuperExpression:
+        return myConceptMethodReferenceSuperExpression;
       case LanguageConceptSwitch.MethodReferenceType:
         return myConceptMethodReferenceType;
       case LanguageConceptSwitch.MethodReferenceTypeTargetExpression:
@@ -73,6 +79,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("target", 0xd5ab3252daa1c07L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("962278442658307079").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForIMethodReferenceTarget() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.methodReferences", "IMethodReferenceTarget", 0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba3aeeab6L);
+    b.interface_();
+    b.origin("r:fb901294-dad1-4c59-9c99-640743319fff(jetbrains.mps.baseLanguage.methodReferences.structure)/3427250980011305654");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForMethodReference() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.methodReferences", "MethodReference", 0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL);
     b.class_(false, false, false);
@@ -80,8 +93,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x59c8a97078e469d6L);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72de18bba2dc2a73L);
     b.parent(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x30ab9441ca549e7bL);
+    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2f900a9ba2b698c3L);
     b.origin("r:fb901294-dad1-4c59-9c99-640743319fff(jetbrains.mps.baseLanguage.methodReferences.structure)/237887375562511215");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForMethodReferenceSuperExpression() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.methodReferences", "MethodReferenceSuperExpression", 0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba38b01a9L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    b.parent(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba3aeeab6L);
+    b.origin("r:fb901294-dad1-4c59-9c99-640743319fff(jetbrains.mps.baseLanguage.methodReferences.structure)/3427250980008952233");
+    b.version(2);
+    b.alias("super");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMethodReferenceType() {
@@ -100,6 +124,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.methodReferences", "MethodReferenceTypeTargetExpression", 0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    b.parent(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba3aeeab6L);
     b.origin("r:fb901294-dad1-4c59-9c99-640743319fff(jetbrains.mps.baseLanguage.methodReferences.structure)/7915009415671748557");
     b.version(2);
     b.aggregate("type", 0x6dd7c320c6fca4b8L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("7915009415671751864").done();

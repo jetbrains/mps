@@ -166,6 +166,7 @@
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271221393" name="jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression" flags="nn" index="17QLQc" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
+      <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -9526,18 +9527,49 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3clFbS" id="KgjTrC1yRz" role="3clF47">
+        <node concept="3cpWs8" id="6WG3yjaCg3b" role="3cqZAp">
+          <node concept="3cpWsn" id="6WG3yjaCg3c" role="3cpWs9">
+            <property role="TrG5h" value="methodName" />
+            <node concept="17QB3L" id="6WG3yjaC2Oi" role="1tU5fm" />
+            <node concept="2YIFZM" id="6WG3yjaCg3d" role="33vP2m">
+              <ref role="37wK5l" node="6S5AcYEKxYm" resolve="getMethodName" />
+              <ref role="1Pybhc" node="2Jvt1sWfvHp" resolve="MethodResolveUtil" />
+              <node concept="37vLTw" id="6WG3yjaCg3e" role="37wK5m">
+                <ref role="3cqZAo" node="KgjTrC1ySb" resolve="methodCall" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6WG3yjaClGw" role="3cqZAp">
+          <node concept="3clFbS" id="6WG3yjaClGy" role="3clFbx">
+            <node concept="3cpWs6" id="6WG3yjaCyNJ" role="3cqZAp">
+              <node concept="1Ls8ON" id="6WG3yjaCAYm" role="3cqZAk">
+                <node concept="10QFUN" id="6WG3yjaUXP6" role="1Lso8e">
+                  <node concept="3Tqbb2" id="6WG3yjaV013" role="10QFUM">
+                    <ref role="ehGHo" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+                  </node>
+                  <node concept="10Nm6u" id="6WG3yjaCF9l" role="10QFUP" />
+                </node>
+                <node concept="3clFbT" id="6WG3yjaCHuj" role="1Lso8e" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="6WG3yjaCqcN" role="3clFbw">
+            <node concept="37vLTw" id="6WG3yjaCnLS" role="2Oq$k0">
+              <ref role="3cqZAo" node="6WG3yjaCg3c" resolve="methodName" />
+            </node>
+            <node concept="17RlXB" id="6WG3yjaCwIw" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="6WG3yjaCj9x" role="3cqZAp" />
         <node concept="3cpWs6" id="KgjTrC1Ln5" role="3cqZAp">
           <node concept="1rXfSq" id="KgjTrC1ORB" role="3cqZAk">
             <ref role="37wK5l" node="6mBdlj31AFU" resolve="resolveMethod" />
             <node concept="37vLTw" id="KgjTrC1RxQ" role="37wK5m">
               <ref role="3cqZAo" node="KgjTrC1ySb" resolve="methodCall" />
             </node>
-            <node concept="2YIFZM" id="6S5AcYEKB2F" role="37wK5m">
-              <ref role="37wK5l" node="6S5AcYEKxYm" resolve="getMethodName" />
-              <ref role="1Pybhc" node="2Jvt1sWfvHp" resolve="MethodResolveUtil" />
-              <node concept="37vLTw" id="KgjTrC2fuG" role="37wK5m">
-                <ref role="3cqZAo" node="KgjTrC1ySb" resolve="methodCall" />
-              </node>
+            <node concept="37vLTw" id="6WG3yjaCg3f" role="37wK5m">
+              <ref role="3cqZAo" node="6WG3yjaCg3c" resolve="methodName" />
             </node>
           </node>
         </node>

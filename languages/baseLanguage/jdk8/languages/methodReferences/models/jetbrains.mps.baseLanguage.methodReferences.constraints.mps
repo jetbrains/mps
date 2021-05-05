@@ -90,6 +90,11 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
     </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
+    </language>
   </registry>
   <node concept="1M2fIO" id="4Ly_4Z2Xb$q">
     <ref role="1M2myG" to="506t:dd9kV4X1dJ" resolve="MethodReference" />
@@ -146,15 +151,16 @@
       </node>
     </node>
   </node>
-  <node concept="1M2fIO" id="6RnKM36Z9xn">
-    <ref role="1M2myG" to="506t:6RnKM36Z9vd" resolve="MethodReferenceTypeTargetExpression" />
-    <node concept="9S07l" id="6RnKM36Z9$u" role="9Vyp8">
-      <node concept="3clFbS" id="6RnKM36Z9$v" role="2VODD2">
-        <node concept="3clFbF" id="6RnKM36Z9ID" role="3cqZAp">
-          <node concept="2OqwBi" id="6RnKM36Z9Ux" role="3clFbG">
-            <node concept="nLn13" id="6RnKM36Z9IC" role="2Oq$k0" />
-            <node concept="1mIQ4w" id="6RnKM36Za4X" role="2OqNvi">
-              <node concept="chp4Y" id="6RnKM36Zabh" role="cj9EA">
+  <node concept="1M2fIO" id="2Yg2DIzFIET">
+    <property role="3GE5qa" value="target" />
+    <ref role="1M2myG" to="506t:2Yg2DIzFIEQ" resolve="IMethodReferenceTarget" />
+    <node concept="9S07l" id="2Yg2DIzFIEU" role="9Vyp8">
+      <node concept="3clFbS" id="2Yg2DIzFIEV" role="2VODD2">
+        <node concept="3clFbF" id="2Yg2DIzFIIP" role="3cqZAp">
+          <node concept="2OqwBi" id="2Yg2DIzFIRp" role="3clFbG">
+            <node concept="nLn13" id="2Yg2DIzFIIO" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="2Yg2DIzFJ1q" role="2OqNvi">
+              <node concept="chp4Y" id="2Yg2DIzFJ7j" role="cj9EA">
                 <ref role="cht4Q" to="506t:dd9kV4X1dJ" resolve="MethodReference" />
               </node>
             </node>

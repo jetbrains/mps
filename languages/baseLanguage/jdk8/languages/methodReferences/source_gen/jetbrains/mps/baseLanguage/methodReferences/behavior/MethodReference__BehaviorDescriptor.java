@@ -43,8 +43,9 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<List<SNode>> getActualArguments_id5DBbMQ33xDf = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTargetMethodActualArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5DBbMQ33xDf").build();
   public static final SMethod<SNode> getInstanceType_id6WzWPTX2vuB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInstanceType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6WzWPTX2vuB").build();
   public static final SMethod<List<SNode>> getTypeApplicationParameters_id7bu6bIyR2DR = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeApplicationParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7bu6bIyR2DR").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<String> getNameForConstructor_id2Yg2DIzb3El = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNameForConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2Yg2DIzb3El").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isConstructor_id5DBbMQ1v9ur, isOperandTypeFirstParameter_id4aYRP41Um04, getReferencedMethodActualArguments_id4GHzns1UXdE, getReferencedMethodReturnType_id4GHzns1W2n$, getInferredTargetType_id6WTbe$J9sKc, getActualArguments_id5DBbMQ33xDf, getInstanceType_id6WzWPTX2vuB, getTypeApplicationParameters_id7bu6bIyR2DR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isConstructor_id5DBbMQ1v9ur, isOperandTypeFirstParameter_id4aYRP41Um04, getReferencedMethodActualArguments_id4GHzns1UXdE, getReferencedMethodReturnType_id4GHzns1W2n$, getInferredTargetType_id6WTbe$J9sKc, getActualArguments_id5DBbMQ33xDf, getInstanceType_id6WzWPTX2vuB, getTypeApplicationParameters_id7bu6bIyR2DR, getNameForConstructor_id2Yg2DIzb3El);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -124,6 +125,9 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
 
     return result;
   }
+  /*package*/ static String getNameForConstructor_id2Yg2DIzb3El(@NotNull SNode __thisNode__, SNode constructor) {
+    return "new";
+  }
 
   /*package*/ MethodReference__BehaviorDescriptor() {
   }
@@ -156,6 +160,8 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
         return (T) ((SNode) getInstanceType_id6WzWPTX2vuB(node));
       case 7:
         return (T) ((List<SNode>) getTypeApplicationParameters_id7bu6bIyR2DR(node, ((int) (Integer) parameters[0])));
+      case 8:
+        return (T) ((String) getNameForConstructor_id2Yg2DIzb3El(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

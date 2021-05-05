@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.methodReferences.behavior.IMethodReferenceTarget__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -15,7 +16,7 @@ import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MethodReference_Actions_Backspace {
 
@@ -30,10 +31,16 @@ public class MethodReference_Actions_Backspace {
       public void execute_internal(EditorContext editorContext, SNode node) {
         if ((SLinkOperations.getTarget(node, LINKS.method$8Sfb) != null)) {
           SLinkOperations.setTarget(node, LINKS.method$8Sfb, null);
-        } else if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.target$Woec), CONCEPTS.MethodReferenceTypeTargetExpression$a3))) {
+        } else if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.target$Woec), CONCEPTS.IMethodReferenceTarget$LB))) {
           SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.target$Woec));
         } else {
-          SNodeOperations.deleteNode(node);
+          // Replace with a substitute if possible
+          SNode substituteNode = IMethodReferenceTarget__BehaviorDescriptor.getSubstituteNode_id2Yg2DIzFJuK.invoke(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.target$Woec), CONCEPTS.IMethodReferenceTarget$LB));
+          if (substituteNode != null) {
+            SNodeOperations.replaceWithAnother(node, substituteNode);
+          } else {
+            SNodeOperations.deleteNode(node);
+          }
         }
       }
 
@@ -87,6 +94,6 @@ public class MethodReference_Actions_Backspace {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MethodReferenceTypeTargetExpression$a3 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression");
+    /*package*/ static final SInterfaceConcept IMethodReferenceTarget$LB = MetaAdapterFactory.getInterfaceConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba3aeeab6L, "jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReferenceTarget");
   }
 }

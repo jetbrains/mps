@@ -32,9 +32,10 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -45,6 +46,7 @@ public class MethodReference_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_srfaef_a(), CONCEPTS.MethodReference$G8));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_srfaef_b(), CONCEPTS.MethodReference$G8));
     return result;
   }
 
@@ -165,17 +167,6 @@ public class MethodReference_SubstituteMenu extends SubstituteMenuBase {
         public String getMatchingText(@NotNull String pattern) {
           return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(myParameterObject, _context.getCurrentTargetNode()) + "::";
         }
-        @Override
-        public boolean canExecute(@NotNull String pattern) {
-          return canExecute_internal(pattern, false);
-        }
-        @Override
-        public boolean canExecuteStrictly(@NotNull String pattern) {
-          return canExecute_internal(pattern, true);
-        }
-        public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-          return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.MethodReference$G8, true, false) == null);
-        }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
@@ -184,6 +175,66 @@ public class MethodReference_SubstituteMenu extends SubstituteMenuBase {
       }
     }
 
+  }
+  private class SMP_Action_srfaef_b extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      String description;
+      try {
+        description = "Substitute item: " + item.getMatchingText("");
+      } catch (Throwable t) {
+        Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+        return null;
+      }
+
+      _context.getEditorMenuTrace().pushTraceInfo();
+      try {
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:4cdf4bee-5b50-4ccb-8bec-50fada7c094a(jetbrains.mps.baseLanguage.methodReferences.editor)", "3427250980008988304")));
+        item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+      } finally {
+        _context.getEditorMenuTrace().popTraceInfo();
+      }
+
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      private EditorMenuTraceInfo myTraceInfo;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.MethodReference$G8, context);
+        _context = context;
+      }
+
+      private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+        myTraceInfo = traceInfo;
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.MethodReference$G8, _context.getCurrentTargetNode());
+        SLinkOperations.setTarget(result, LINKS.target$Woec, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba38b01a9L, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceSuperExpression")));
+        return result;
+      }
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myTraceInfo;
+      }
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "super::";
+      }
+      @Nullable
+      @Override
+      public String getDescriptionText(@NotNull String pattern) {
+        return "super method ref";
+      }
+    }
   }
   private static SNode createMethodReferenceTypeTargetExpression_srfaef_a0a1a0a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MethodReferenceTypeTargetExpression$a3);

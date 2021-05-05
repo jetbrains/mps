@@ -42,6 +42,14 @@
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Test" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.methodReferences.test.tests.SuperReference_Test">
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.function.Consumer" />
+    <classNode dependClassName="org.junit.Assert" />
+    <classNode dependClassName="org.junit.Test" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.methodReferences.test.tests.VariableArity_Test">
     <classNode dependClassName="java.lang.Double" />
     <classNode dependClassName="java.lang.Exception" />

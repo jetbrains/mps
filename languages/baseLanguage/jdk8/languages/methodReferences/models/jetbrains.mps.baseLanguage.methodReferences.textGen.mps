@@ -68,6 +68,11 @@
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
     </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
+    </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -158,6 +163,7 @@
     </node>
   </node>
   <node concept="WtQ9Q" id="2c8ypONmE2x">
+    <property role="3GE5qa" value="target" />
     <ref role="WuzLi" to="506t:6RnKM36Z9vd" resolve="MethodReferenceTypeTargetExpression" />
     <node concept="11bSqf" id="2c8ypONmE2y" role="11c4hB">
       <node concept="3clFbS" id="2c8ypONmE2z" role="2VODD2">
@@ -169,6 +175,19 @@
                 <ref role="3Tt5mk" to="506t:6RnKM36ZaiS" resolve="type" />
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="WtQ9Q" id="2Yg2DIzFfm5">
+    <property role="3GE5qa" value="target" />
+    <ref role="WuzLi" to="506t:2Yg2DIzyK6D" resolve="MethodReferenceSuperExpression" />
+    <node concept="11bSqf" id="2Yg2DIzFfm6" role="11c4hB">
+      <node concept="3clFbS" id="2Yg2DIzFfm7" role="2VODD2">
+        <node concept="lc7rE" id="2Yg2DIzFfmo" role="3cqZAp">
+          <node concept="la8eA" id="2Yg2DIzFfmG" role="lcghm">
+            <property role="lacIc" value="super" />
           </node>
         </node>
       </node>

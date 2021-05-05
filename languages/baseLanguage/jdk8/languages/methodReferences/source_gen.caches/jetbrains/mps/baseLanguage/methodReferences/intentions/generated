@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ehvz6mjl4kuzzhrpgjw3xel7or61gov">
+<product version="3" modelHash="-1awl7by26liheq3ppo4rsa6bxs8zaeu">
   <files names="ClosureToMethodRefHelper.java:ConvertToClosure_Intention.java:ConvertToMethodReference_Intention.java:IntentionsDescriptor.java" />
 </product>
 

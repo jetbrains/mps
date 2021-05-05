@@ -22,6 +22,7 @@ import jetbrains.mps.baseLanguage.methodReferences.behavior.IMethodReference__Be
 import jetbrains.mps.baseLanguage.typesystem.MethodParameterMatcher;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -167,6 +168,10 @@ public class MethodReferenceToClosureUtil {
         methodCall = createInstanceMethodCallOperation_a9mvw_a0k0a1a9a01(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$39));
         expression = createDotExpression_a9mvw_a0l0a1a9a01(SNodeOperations.cast(methodCall, CONCEPTS.InstanceMethodCallOperation$uu));
       }
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(methodRef, LINKS.target$Woec), CONCEPTS.MethodReferenceSuperExpression$q0)) {
+      // Super call
+      methodCall = _quotation_createNode_a9mvw_a0b0a9a01(method);
+      expression = SNodeOperations.cast(methodCall, CONCEPTS.SuperMethodCall$pW);
     } else {
       // Instance call -> just the usual method signature
       methodCall = createInstanceMethodCallOperation_a9mvw_a0b0a9a01(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$39));
@@ -309,6 +314,13 @@ public class MethodReferenceToClosureUtil {
     n0.forChild(LINKS.operation$gs9E).initNode(p0, CONCEPTS.IOperation$ga, true);
     return n0.getResult();
   }
+  private static SNode _quotation_createNode_a9mvw_a0b0a9a01(Object parameter_1) {
+    SNode quotedNode_2 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf9d78b55aaL, "SuperMethodCall"));
+    quotedNode_2 = nb.getResult();
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), (SNode) parameter_1);
+    return quotedNode_2;
+  }
   private static SNode createInstanceMethodCallOperation_a9mvw_a0b0a9a01(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodCallOperation$uu);
     n0.setReferenceTarget(LINKS.baseMethodDeclaration$pyYw, p0);
@@ -366,6 +378,8 @@ public class MethodReferenceToClosureUtil {
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
     /*package*/ static final SConcept MethodReferenceTypeTargetExpression$a3 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression");
+    /*package*/ static final SConcept SuperMethodCall$pW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL, "jetbrains.mps.baseLanguage.structure.SuperMethodCall");
+    /*package*/ static final SConcept MethodReferenceSuperExpression$q0 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba38b01a9L, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceSuperExpression");
     /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");

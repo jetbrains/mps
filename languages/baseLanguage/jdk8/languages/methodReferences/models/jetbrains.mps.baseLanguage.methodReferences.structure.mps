@@ -14,6 +14,7 @@
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
+        <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
@@ -40,6 +41,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -58,11 +62,15 @@
     <node concept="PrWs8" id="32F_47alc2O" role="PzmwI">
       <ref role="PrY4T" node="32F_47al9TV" resolve="IMethodReference" />
     </node>
+    <node concept="PrWs8" id="2Yg2DIyLV3P" role="PzmwI">
+      <ref role="PrY4T" to="tpee:2Yg2DIyHDz3" resolve="ICustomConstructorReference" />
+    </node>
   </node>
   <node concept="1TIwiD" id="6RnKM36Z9vd">
     <property role="EcuMT" value="7915009415671748557" />
     <property role="TrG5h" value="MethodReferenceTypeTargetExpression" />
     <property role="R4oN_" value="type target for a method reference" />
+    <property role="3GE5qa" value="target" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="1TJgyj" id="6RnKM36ZaiS" role="1TKVEi">
       <property role="IQ2ns" value="7915009415671751864" />
@@ -70,6 +78,9 @@
       <property role="20kJfa" value="type" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
+    </node>
+    <node concept="PrWs8" id="2Yg2DIzFJDd" role="PzmwI">
+      <ref role="PrY4T" node="2Yg2DIzFIEQ" resolve="IMethodReferenceTarget" />
     </node>
   </node>
   <node concept="1TIwiD" id="6WTbe$J7jOM">
@@ -138,6 +149,22 @@
     <node concept="PrWs8" id="32F_47alihD" role="PrDN$">
       <ref role="PrY4T" to="tpee:5DBbMQ2ZMwO" resolve="IFixableMethodReference" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="2Yg2DIzyK6D">
+    <property role="EcuMT" value="3427250980008952233" />
+    <property role="TrG5h" value="MethodReferenceSuperExpression" />
+    <property role="34LRSv" value="super" />
+    <property role="3GE5qa" value="target" />
+    <property role="R4oN_" value="super expression" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="PrWs8" id="2Yg2DIzFJDf" role="PzmwI">
+      <ref role="PrY4T" node="2Yg2DIzFIEQ" resolve="IMethodReferenceTarget" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="2Yg2DIzFIEQ">
+    <property role="EcuMT" value="3427250980011305654" />
+    <property role="3GE5qa" value="target" />
+    <property role="TrG5h" value="IMethodReferenceTarget" />
   </node>
 </model>
 

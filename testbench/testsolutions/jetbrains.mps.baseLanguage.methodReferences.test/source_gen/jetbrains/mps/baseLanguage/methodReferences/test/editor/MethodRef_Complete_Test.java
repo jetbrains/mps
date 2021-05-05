@@ -9,8 +9,6 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 
 @MPSLaunch
 public class MethodRef_Complete_Test extends BaseTransformationTest {
@@ -36,8 +34,6 @@ public class MethodRef_Complete_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("2448987392437284628", "2448987392437284680");
       typeString("Helper::");
-      invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       typeString("ap");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
 

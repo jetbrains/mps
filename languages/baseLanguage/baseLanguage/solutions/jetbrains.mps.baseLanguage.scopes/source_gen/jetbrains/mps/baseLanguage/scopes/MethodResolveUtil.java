@@ -273,7 +273,12 @@ with_next_t:
   }
 
   public static Tuples._2<SNode, Boolean> resolveMethod(SNode methodCall) {
-    return resolveMethod(methodCall, MethodResolveUtil.getMethodName(methodCall));
+    String methodName = MethodResolveUtil.getMethodName(methodCall);
+    if ((methodName == null || methodName.length() == 0)) {
+      return MultiTuple.<SNode,Boolean>from((SNode) null, false);
+    }
+
+    return resolveMethod(methodCall, methodName);
   }
 
   public static Tuples._2<SNode, Boolean> resolveMethod(SNode methodCall, String name) {

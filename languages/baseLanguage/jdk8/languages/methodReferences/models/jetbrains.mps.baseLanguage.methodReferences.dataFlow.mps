@@ -37,6 +37,11 @@
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
     </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
+    </language>
   </registry>
   <node concept="3_zdsH" id="27WzgVxELmy">
     <ref role="3_znuS" to="506t:dd9kV4X1dJ" resolve="MethodReference" />
@@ -54,6 +59,7 @@
     </node>
   </node>
   <node concept="3_zdsH" id="4o7QKr7lxN_">
+    <property role="3GE5qa" value="target" />
     <ref role="3_znuS" to="506t:6RnKM36Z9vd" resolve="MethodReferenceTypeTargetExpression" />
     <node concept="3__wT9" id="4o7QKr7lxNA" role="3_A6iZ">
       <node concept="3clFbS" id="4o7QKr7lxNB" role="2VODD2">

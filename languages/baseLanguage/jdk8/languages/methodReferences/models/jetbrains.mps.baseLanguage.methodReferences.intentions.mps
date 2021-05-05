@@ -225,6 +225,9 @@
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
+      <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
+        <child id="1180636770616" name="createdType" index="3zrR0E" />
+      </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
       <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
         <reference id="1139867957129" name="concept" index="1_rbq0" />
@@ -556,6 +559,34 @@
               <node concept="1mIQ4w" id="1M51tTa$jdg" role="2OqNvi">
                 <node concept="chp4Y" id="1M51tTa$jdh" role="cj9EA">
                   <ref role="cht4Q" to="tpee:hwliAcM" resolve="InstanceMethodCallOperation" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3eNFk2" id="1wkRb8dcEpy" role="3eNLev">
+            <node concept="2OqwBi" id="1wkRb8dcFw6" role="3eO9$A">
+              <node concept="37vLTw" id="1wkRb8dcFjW" role="2Oq$k0">
+                <ref role="3cqZAo" node="1M51tTa$jcg" resolve="methodCall" />
+              </node>
+              <node concept="1mIQ4w" id="1wkRb8dcFHV" role="2OqNvi">
+                <node concept="chp4Y" id="1wkRb8dcFIx" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:fBnyPmE" resolve="SuperMethodCall" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1wkRb8dcEp$" role="3eOfB_">
+              <node concept="3clFbF" id="1wkRb8dcFMv" role="3cqZAp">
+                <node concept="37vLTI" id="1wkRb8dcFTV" role="3clFbG">
+                  <node concept="2ShNRf" id="1wkRb8dcFWb" role="37vLTx">
+                    <node concept="3zrR0B" id="1wkRb8dcFUs" role="2ShVmc">
+                      <node concept="3Tqbb2" id="1wkRb8dcFUt" role="3zrR0E">
+                        <ref role="ehGHo" to="506t:2Yg2DIzyK6D" resolve="MethodReferenceSuperExpression" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="1wkRb8dcFMu" role="37vLTJ">
+                    <ref role="3cqZAo" node="1M51tTa$wBY" resolve="target" />
+                  </node>
                 </node>
               </node>
             </node>

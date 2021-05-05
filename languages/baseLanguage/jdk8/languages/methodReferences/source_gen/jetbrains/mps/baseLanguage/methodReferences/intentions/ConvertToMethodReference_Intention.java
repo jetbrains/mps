@@ -16,11 +16,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
@@ -70,6 +71,8 @@ public final class ConvertToMethodReference_Intention extends AbstractIntentionD
       if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$pzdx)).count() + 1 == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$b4Y3)).count() && SNodeOperations.isInstanceOf(methodCall, CONCEPTS.InstanceMethodCallOperation$uu)) {
         // No need to coerce here as the method ref will coerce later on
         target = createMethodReferenceTypeTargetExpression_m6i3ny_a0b0f0a(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(target), CONCEPTS.Type$bu));
+      } else if (SNodeOperations.isInstanceOf(methodCall, CONCEPTS.SuperMethodCall$pW)) {
+        target = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x2f900a9ba38b01a9L, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceSuperExpression"));
       }
 
       if ((target == null)) {
@@ -111,6 +114,7 @@ public final class ConvertToMethodReference_Intention extends AbstractIntentionD
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept SuperMethodCall$pW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL, "jetbrains.mps.baseLanguage.structure.SuperMethodCall");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept MethodReference$G8 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference");
     /*package*/ static final SConcept MethodReferenceTypeTargetExpression$a3 = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression");

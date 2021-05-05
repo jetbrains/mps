@@ -3690,6 +3690,9 @@
     <node concept="PrWs8" id="4VKhzNI4KT" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
+    <node concept="PrWs8" id="6WG3yjb44Rr" role="PzmwI">
+      <ref role="PrY4T" to="tpck:69Qfsw3InJo" resolve="ISmartReferent" />
+    </node>
   </node>
   <node concept="1TIwiD" id="h3xboLX">
     <property role="R4oN_" value="reference to local static field declaration" />
@@ -4909,6 +4912,11 @@
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="2Yg2DIyHDz3">
+    <property role="EcuMT" value="3427250979995031747" />
+    <property role="3GE5qa" value="classifiers.members" />
+    <property role="TrG5h" value="ICustomConstructorReference" />
   </node>
 </model>
 

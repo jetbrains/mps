@@ -10,7 +10,9 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_IMethodReference;
+  private ConceptPresentation props_IMethodReferenceTarget;
   private ConceptPresentation props_MethodReference;
+  private ConceptPresentation props_MethodReferenceSuperExpression;
   private ConceptPresentation props_MethodReferenceType;
   private ConceptPresentation props_MethodReferenceTypeTargetExpression;
   private ConceptPresentation props_UnknownMethodReference;
@@ -26,6 +28,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IMethodReference = cpb.create();
         }
         return props_IMethodReference;
+      case LanguageConceptSwitch.IMethodReferenceTarget:
+        if (props_IMethodReferenceTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IMethodReferenceTarget = cpb.create();
+        }
+        return props_IMethodReferenceTarget;
       case LanguageConceptSwitch.MethodReference:
         if (props_MethodReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -33,6 +41,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_MethodReference = cpb.create();
         }
         return props_MethodReference;
+      case LanguageConceptSwitch.MethodReferenceSuperExpression:
+        if (props_MethodReferenceSuperExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("super expression");
+          cpb.rawPresentation("super");
+          props_MethodReferenceSuperExpression = cpb.create();
+        }
+        return props_MethodReferenceSuperExpression;
       case LanguageConceptSwitch.MethodReferenceType:
         if (props_MethodReferenceType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

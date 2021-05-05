@@ -13,9 +13,6 @@
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="1228934484974" name="jetbrains.mps.lang.test.structure.PressKeyStatement" flags="nn" index="yd1bK">
-        <child id="1228934507814" name="keyStrokes" index="yd6KS" />
-      </concept>
       <concept id="7011073693661765739" name="jetbrains.mps.lang.test.structure.InvokeActionStatement" flags="nn" index="2HxZob">
         <child id="1101347953350127927" name="actionReference" index="3iKnsn" />
       </concept>
@@ -42,11 +39,6 @@
       </concept>
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
         <child id="1216989461394" name="nodeToCheck" index="1qenE9" />
-      </concept>
-    </language>
-    <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
-      <concept id="1207318242772" name="jetbrains.mps.lang.plugin.structure.KeyMapKeystroke" flags="ng" index="pLAjd">
-        <property id="1207318242774" name="keycode" index="pLAjf" />
       </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -289,16 +281,6 @@
     <node concept="3clFbS" id="27WzgVxCBN2" role="LjaKd">
       <node concept="2TK7Tu" id="27WzgVxCBN1" role="3cqZAp">
         <property role="2TTd_B" value="Helper::" />
-      </node>
-      <node concept="2HxZob" id="27WzgVxCBN$" role="3cqZAp">
-        <node concept="1iFQzN" id="27WzgVxCBW2" role="3iKnsn">
-          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
-        </node>
-      </node>
-      <node concept="yd1bK" id="27WzgVxCG6t" role="3cqZAp">
-        <node concept="pLAjd" id="27WzgVxCG6v" role="yd6KS">
-          <property role="pLAjf" value="VK_ENTER" />
-        </node>
       </node>
       <node concept="2TK7Tu" id="27WzgVxCBXk" role="3cqZAp">
         <property role="2TTd_B" value="ap" />

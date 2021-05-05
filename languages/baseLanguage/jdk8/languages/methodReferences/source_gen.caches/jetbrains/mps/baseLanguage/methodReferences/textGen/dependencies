@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.baseLanguage.methodReferences.textGen.MethodReferenceSuperExpression_TextGen">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
+    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
+    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.methodReferences.textGen.MethodReferenceTypeTargetExpression_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -29,6 +35,7 @@
   <dependency className="jetbrains.mps.baseLanguage.methodReferences.textGen.TextGenAspectDescriptor">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.methodReferences.structure.LanguageConceptSwitch" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.methodReferences.textGen.MethodReferenceSuperExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.methodReferences.textGen.MethodReferenceTypeTargetExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.methodReferences.textGen.MethodReference_TextGen" />
     <classNode dependClassName="jetbrains.mps.text.rt.TextGenDescriptor" />
