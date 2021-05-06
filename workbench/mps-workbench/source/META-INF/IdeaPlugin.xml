@@ -223,6 +223,11 @@
     <projectService serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector" preload="notHeadless"/>
 
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.caches.IndexableRootCalculator"/>
+
+    <sdkType implementation="com.intellij.openapi.projectRoots.impl.JavaSdkImpl"/>
+    <applicationService serviceInterface="com.intellij.openapi.projectRoots.DefaultJdkConfigurator"
+                        serviceImplementation="com.intellij.openapi.projectRoots.impl.DefaultJdkConfiguratorImpl"/>
+    <orderRootType implementation="com.intellij.openapi.roots.JavadocOrderRootType"/>
   </extensions>
 
   <actions>
