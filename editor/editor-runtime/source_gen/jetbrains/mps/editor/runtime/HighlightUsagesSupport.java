@@ -13,6 +13,9 @@ import com.intellij.openapi.project.DumbService;
 import java.util.concurrent.ScheduledFuture;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.util.concurrent.TimeUnit;
@@ -44,11 +47,22 @@ public class HighlightUsagesSupport {
   private long defaultUpdateDelayMillis = 500;
   private ScheduledFuture<?> highlightTask;
 
-  public HighlightUsagesSupport(@NotNull EditorComponent ec, @Nullable SRepository repository, Color color) {
+  public static HighlightUsagesSupport create(@NotNull EditorComponent ec, @Nullable SRepository repository) {
+    DumbService dumbService = getDumbService(repository);
+    if (dumbService == null) {
+      return null;
+    }
+    TextAttributesKey attributes = TextAttributesKey.createTextAttributesKey("IDENTIFIER_UNDER_CARET_ATTRIBUTES");
+    TextAttributes textAttributes = EditorColorsManager.getInstance().getGlobalScheme().getAttributes(attributes);
+    Color color = textAttributes.getErrorStripeColor();
+    return new HighlightUsagesSupport(ec, repository, color, dumbService);
+  }
+
+  private HighlightUsagesSupport(@NotNull EditorComponent ec, @Nullable SRepository repository, Color color, @NotNull DumbService dumbService) {
     myEC = ec;
     myHighlightColor = color;
     myRepository = repository;
-    myDumbService = getDumbService();
+    myDumbService = dumbService;
   }
 
   public void selectionChanged(@Nullable Selection newSelection) {
@@ -134,8 +148,8 @@ public class HighlightUsagesSupport {
   }
 
   @Nullable
-  private DumbService getDumbService() {
-    Project mpsProject = ProjectHelper.getProject(myRepository);
+  private static DumbService getDumbService(SRepository repository) {
+    Project mpsProject = ProjectHelper.getProject(repository);
     if (mpsProject == null) {
       return null;
     }
