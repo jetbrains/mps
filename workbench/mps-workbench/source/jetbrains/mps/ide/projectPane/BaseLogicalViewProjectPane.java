@@ -221,7 +221,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     }
 
     //not found
-    return null;
+    return super.getData(dataId);
   }
 
   public boolean isDisposed() {
