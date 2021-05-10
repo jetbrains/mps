@@ -291,13 +291,13 @@ public class DeprecatedUtil {
     if (SNodeOperations.isInstanceOf(n, CONCEPTS.HasAnnotation$Dg)) {
       SNode toRemoveAnnotation = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.HasAnnotation$Dg), LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)", "~ToRemove"));
+          return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove"));
         }
       }).first();
       if ((toRemoveAnnotation != null)) {
         SNode value = ListSequence.fromList(SLinkOperations.getChildren(toRemoveAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)", "~ToRemove.version()"));
+            return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)", "~ToRemove.version()"));
           }
         }).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {

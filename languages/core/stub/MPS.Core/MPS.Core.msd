@@ -5,7 +5,6 @@
     <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
       <sourceRoot location="mps-core.jar" />
       <sourceRoot location="mps-logging.jar" />
-      <sourceRoot location="mps-annotations.jar" />
       <sourceRoot location="mps-messaging.jar" />
       <sourceRoot location="mps-boot-util.jar" />
       <sourceRoot location="mps-project-check.jar" />
@@ -32,7 +31,6 @@
   <stubModelEntries>
     <stubModelEntry path="${mps_home}/lib/mps-core.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-logging.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-annotations.jar" /> <!-- exposed through Annotation.msd now, but kept just in case there's compile dep. FIXME add re-export module dep to Annotation here -->
     <stubModelEntry path="${mps_home}/lib/mps-messaging.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-boot-util.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-project-check.jar" />

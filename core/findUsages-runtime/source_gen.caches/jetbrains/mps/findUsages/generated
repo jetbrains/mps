@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-22cdbxdlcqq8qsb4t191l9ti5bdzovz">
+<product version="3" modelHash="-5um2gafagdydcjthsp997hhjit3co37">
   <files names="CompositeFinder.java:FindUsagesManager.java:FindUsagesUtil.java:InstanceLookup.java:InstancesSearchType.java:ModelImportLookup.java:ModelUsagesSearchType.java:NodeUsageLookup.java:SearchType.java:UsagesList.java:UsagesSearchType.java" />
 </product>
 

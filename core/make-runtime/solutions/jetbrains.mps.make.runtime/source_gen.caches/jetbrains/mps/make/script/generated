@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7j04k755imhlkyrcrytawjpxof6dfn5">
+<product version="3" modelHash="-33aeex0hvt3nde7nbs9hub08y9xiedz">
   <files names="IConfig.java:IConfigMonitor.java:IFeedback.java:IJob.java:IJobMonitor.java:IOption.java:IProgress.java:IPropertiesPool.java:IQuery.java:IResult.java:IScript.java:IScriptController.java:PropertyPoolInitializer.java:ScriptBuilder.java" />
 </product>
 
