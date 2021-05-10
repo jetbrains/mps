@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,10 +27,10 @@ import org.jetbrains.mps.openapi.model.SModelListener;
 import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleListenerBase;
+import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryAttachListener;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 
 /**
  * Contribute descriptor models to modules of a given repository.
@@ -64,12 +64,12 @@ public class DescriptorModelComponent implements CoreComponent {
     myListener.disposeProviders();
   }
 
-  private static class ModuleTracker extends SRepositoryListenerBase implements SRepositoryAttachListener {
+  private static class ModuleTracker implements SRepositoryListener, SRepositoryAttachListener {
     private final DescriptorModelProvider[] myProviders;
-    private MultiMap<SModule, DescriptorModelProvider> myModule2DescriptorProviders = new MultiMap<>();
+    private final MultiMap<SModule, DescriptorModelProvider> myModule2DescriptorProviders = new MultiMap<>();
 
     // listener is attached to modules of interest only
-    private final SModuleListenerBase myModuleListener = new SModuleListenerBase() {
+    private final SModuleListener myModuleListener = new SModuleListener() {
       @Override
       public void modelAdded(SModule module, SModel model) {
         if (SModelStereotype.isDescriptorModel(model)) {
@@ -143,6 +143,11 @@ public class DescriptorModelComponent implements CoreComponent {
           mp.refreshModule(module);
           rv = true;
         }
+      }
+      if (!rv && myModule2DescriptorProviders.get(module) != null) {
+        // no applicable providers but the mapping module -> provider is there, likely a change
+        // that affected 'applicable' status; rather forget about the module
+        myModule2DescriptorProviders.get(module).forEach(mp -> mp.forgetModule(module));
       }
       return rv;
     }
