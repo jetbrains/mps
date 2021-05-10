@@ -19,8 +19,11 @@ import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.errors.item.QuickFixBase;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
+import jetbrains.mps.nodeEditor.selection.AbstractMultipleSelection;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.selection.Selection;
+import jetbrains.mps.openapi.editor.selection.SingularSelection;
 
 public class QuickFixRuntimeEditorWrapper {
 
@@ -35,11 +38,13 @@ public class QuickFixRuntimeEditorWrapper {
   }
 
   public void execute(EditorContext editorContext, boolean saveSelection) {
+    EditorCell selectedCell = null;
     if (saveSelection) {
-      EditorCell selectedCell = editorContext.getSelectedCell();
-      if (selectedCell == null) {
-        return;
-      }
+      selectedCell = editorContext.getSelectedCell();
+    }
+
+    if (saveSelection && selectedCell != null) {
+      // FIXME support also multi-selection (why isn't there a standard way to save/restore selection?)
       int caretX = selectedCell.getCaretX();
       int caretY = selectedCell.getBaseline();
 
@@ -66,6 +71,7 @@ public class QuickFixRuntimeEditorWrapper {
       }
     } else {
       execute(editorContext);
+      editorContext.flushEvents();
     }
   }
 
