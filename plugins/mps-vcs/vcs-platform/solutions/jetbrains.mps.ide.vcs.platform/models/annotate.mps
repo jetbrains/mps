@@ -11571,7 +11571,9 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="1SbZFGELg0n" role="1B3o_S" />
       <node concept="10P_77" id="1SbZFGELibw" role="1tU5fm" />
-      <node concept="3clFbT" id="1SbZFGELjGF" role="33vP2m" />
+      <node concept="3clFbT" id="1SbZFGELjGF" role="33vP2m">
+        <property role="3clFbU" value="true" />
+      </node>
     </node>
     <node concept="Wx3nA" id="1hOqTPbQ$iy" role="jymVt">
       <property role="TrG5h" value="HIGHLIGHT_CELLS_DEFAULT" />
