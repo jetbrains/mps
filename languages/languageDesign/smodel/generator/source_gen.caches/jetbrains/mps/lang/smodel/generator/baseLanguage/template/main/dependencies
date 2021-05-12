@@ -563,6 +563,7 @@
     <classNode dependClassName="jetbrains.mps.lang.behavior.behavior.ConceptMethodDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.generator.template.util.Constants" />
     <classNode dependClassName="jetbrains.mps.lang.behavior.generator.template.util.MethodNameHelper" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.modelapi.behavior.ModuleIdentity__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.modelapi.behavior.NodeIdentity__BehaviorDescriptor" />
