@@ -48,6 +48,7 @@ import com.intellij.ide.ui.LafManager;
 public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private static final Logger LOG = LogManager.getLogger(TreeHighlighter.class);
 
+  private final Object myTreeMessagesMapLock = new Object();
   private final Map<FileStatus, TreeMessage> myTreeMessages = new HashMap<FileStatus, TreeMessage>();
   private final CurrentDifferenceRegistry myRegistry;
 
@@ -413,12 +414,14 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       // just like when initialized
       return null;
     }
-    return myTreeMessages.computeIfAbsent(fileStatus, new Function<FileStatus, TreeMessage>() {
-      @Override
-      public TreeMessage apply(FileStatus status) {
-        return new TreeMessage(status.getColor(), null, TreeHighlighter.this);
-      }
-    });
+    synchronized (myTreeMessagesMapLock) {
+      return myTreeMessages.computeIfAbsent(fileStatus, new Function<FileStatus, TreeMessage>() {
+        @Override
+        public TreeMessage apply(FileStatus status) {
+          return new TreeMessage(status.getColor(), null, TreeHighlighter.this);
+        }
+      });
+    }
   }
 
   @Nullable
@@ -601,6 +604,8 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   }
   @Override
   public void lookAndFeelChanged(@NotNull LafManager manager) {
-    myTreeMessages.clear();
+    synchronized (myTreeMessagesMapLock) {
+      myTreeMessages.clear();
+    }
   }
 }

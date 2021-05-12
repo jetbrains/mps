@@ -23,7 +23,7 @@ public class AnnotationOptions {
   private static final String HIGHLIGHT_COMMIT_CELLS_KEY = "annotations.highlight.commit.cells";
   private static final String HIGHLIGHT_NONE_CELLS_KEY = "annotations.highlight.none.cells";
   private static final String SHOW_TOOLTIP_KEY = "annotations.show.tooltip";
-  private static final boolean SHOW_TOOLTIP_DEFAULT = false;
+  private static final boolean SHOW_TOOLTIP_DEFAULT = true;
   private static final String HIGHLIGHT_CELLS_DEFAULT = HIGHLIGHT_NONE_CELLS_KEY;
 
 

@@ -982,7 +982,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       if (selection != null) {
         HighlighterMessage message = getHighlighterMessageFor(selection);
         if (message != null) {
-          info = message.getFormattedMessage();
+          info = message.getMessage();
         }
       }
 

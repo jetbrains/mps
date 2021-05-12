@@ -4370,6 +4370,19 @@
       <node concept="3Tm6S6" id="4uLJMq1loNu" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="4uLJMq1lB1P" role="jymVt" />
+    <node concept="312cEg" id="2gAvkHUdsT8" role="jymVt">
+      <property role="TrG5h" value="myTreeMessagesMapLock" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2gAvkHUdju0" role="1B3o_S" />
+      <node concept="3uibUv" id="2gAvkHUdrVv" role="1tU5fm">
+        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+      </node>
+      <node concept="2ShNRf" id="2gAvkHUdyDI" role="33vP2m">
+        <node concept="1pGfFk" id="2gAvkHUdItP" role="2ShVmc">
+          <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+        </node>
+      </node>
+    </node>
     <node concept="312cEg" id="4uLJMq1loNv" role="jymVt">
       <property role="TrG5h" value="myTreeMessages" />
       <property role="3TUv4t" value="true" />
@@ -7688,63 +7701,70 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="4uLJMq1qG7E" role="3cqZAp">
-          <node concept="2OqwBi" id="4uLJMq1qOuP" role="3cqZAk">
-            <node concept="37vLTw" id="4uLJMq1qOuO" role="2Oq$k0">
-              <ref role="3cqZAo" node="4uLJMq1loNv" resolve="myTreeMessages" />
-            </node>
-            <node concept="liA8E" id="4uLJMq1qOuQ" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.computeIfAbsent(java.lang.Object,java.util.function.Function)" resolve="computeIfAbsent" />
-              <node concept="37vLTw" id="4uLJMq1qOuR" role="37wK5m">
-                <ref role="3cqZAo" node="4uLJMq1lp12" resolve="fileStatus" />
-              </node>
-              <node concept="2ShNRf" id="4uLJMq1qOuS" role="37wK5m">
-                <node concept="YeOm9" id="4uLJMq1qOuT" role="2ShVmc">
-                  <node concept="1Y3b0j" id="4uLJMq1qOuU" role="YeSDq">
-                    <ref role="1Y3XeK" to="82uw:~Function" resolve="Function" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3clFb_" id="4uLJMq1qOuV" role="jymVt">
-                      <property role="TrG5h" value="apply" />
-                      <node concept="2AHcQZ" id="4uLJMq1qOuW" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                      </node>
-                      <node concept="37vLTG" id="4uLJMq1qOuX" role="3clF46">
-                        <property role="TrG5h" value="status" />
-                        <node concept="3uibUv" id="4uLJMq1qOuY" role="1tU5fm">
-                          <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="4uLJMq1qOuZ" role="3clF47">
-                        <node concept="3cpWs6" id="4uLJMq1qOv0" role="3cqZAp">
-                          <node concept="2ShNRf" id="4uLJMq1qOv1" role="3cqZAk">
-                            <node concept="1pGfFk" id="4uLJMq1qOv2" role="2ShVmc">
-                              <ref role="37wK5l" to="7e8u:~TreeMessage.&lt;init&gt;(java.awt.Color,java.lang.String,jetbrains.mps.ide.ui.tree.TreeMessageOwner)" resolve="TreeMessage" />
-                              <node concept="2OqwBi" id="4uLJMq1qWE7" role="37wK5m">
-                                <node concept="37vLTw" id="4uLJMq1qWE6" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="4uLJMq1qOuX" resolve="status" />
+        <node concept="1HWtB8" id="2gAvkHUdTr6" role="3cqZAp">
+          <node concept="37vLTw" id="2gAvkHUe0nX" role="1HWFw0">
+            <ref role="3cqZAo" node="2gAvkHUdsT8" resolve="myTreeMessagesMapLock" />
+          </node>
+          <node concept="3clFbS" id="2gAvkHUdTra" role="1HWHxc">
+            <node concept="3cpWs6" id="4uLJMq1qG7E" role="3cqZAp">
+              <node concept="2OqwBi" id="4uLJMq1qOuP" role="3cqZAk">
+                <node concept="37vLTw" id="4uLJMq1qOuO" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4uLJMq1loNv" resolve="myTreeMessages" />
+                </node>
+                <node concept="liA8E" id="4uLJMq1qOuQ" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Map.computeIfAbsent(java.lang.Object,java.util.function.Function)" resolve="computeIfAbsent" />
+                  <node concept="37vLTw" id="4uLJMq1qOuR" role="37wK5m">
+                    <ref role="3cqZAo" node="4uLJMq1lp12" resolve="fileStatus" />
+                  </node>
+                  <node concept="2ShNRf" id="4uLJMq1qOuS" role="37wK5m">
+                    <node concept="YeOm9" id="4uLJMq1qOuT" role="2ShVmc">
+                      <node concept="1Y3b0j" id="4uLJMq1qOuU" role="YeSDq">
+                        <ref role="1Y3XeK" to="82uw:~Function" resolve="Function" />
+                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                        <node concept="3clFb_" id="4uLJMq1qOuV" role="jymVt">
+                          <property role="TrG5h" value="apply" />
+                          <node concept="2AHcQZ" id="4uLJMq1qOuW" role="2AJF6D">
+                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                          </node>
+                          <node concept="37vLTG" id="4uLJMq1qOuX" role="3clF46">
+                            <property role="TrG5h" value="status" />
+                            <node concept="3uibUv" id="4uLJMq1qOuY" role="1tU5fm">
+                              <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
+                            </node>
+                          </node>
+                          <node concept="3clFbS" id="4uLJMq1qOuZ" role="3clF47">
+                            <node concept="3cpWs6" id="4uLJMq1qOv0" role="3cqZAp">
+                              <node concept="2ShNRf" id="4uLJMq1qOv1" role="3cqZAk">
+                                <node concept="1pGfFk" id="4uLJMq1qOv2" role="2ShVmc">
+                                  <ref role="37wK5l" to="7e8u:~TreeMessage.&lt;init&gt;(java.awt.Color,java.lang.String,jetbrains.mps.ide.ui.tree.TreeMessageOwner)" resolve="TreeMessage" />
+                                  <node concept="2OqwBi" id="4uLJMq1qWE7" role="37wK5m">
+                                    <node concept="37vLTw" id="4uLJMq1qWE6" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="4uLJMq1qOuX" resolve="status" />
+                                    </node>
+                                    <node concept="liA8E" id="4uLJMq1qWE8" role="2OqNvi">
+                                      <ref role="37wK5l" to="jlcu:~FileStatus.getColor()" resolve="getColor" />
+                                    </node>
+                                  </node>
+                                  <node concept="10Nm6u" id="4uLJMq1qOv4" role="37wK5m" />
+                                  <node concept="Xjq3P" id="4uLJMq1qOv5" role="37wK5m">
+                                    <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
+                                  </node>
                                 </node>
-                                <node concept="liA8E" id="4uLJMq1qWE8" role="2OqNvi">
-                                  <ref role="37wK5l" to="jlcu:~FileStatus.getColor()" resolve="getColor" />
-                                </node>
-                              </node>
-                              <node concept="10Nm6u" id="4uLJMq1qOv4" role="37wK5m" />
-                              <node concept="Xjq3P" id="4uLJMq1qOv5" role="37wK5m">
-                                <ref role="1HBi2w" node="7YINie3rdNP" resolve="TreeHighlighter" />
                               </node>
                             </node>
                           </node>
+                          <node concept="3Tm1VV" id="4uLJMq1qOv6" role="1B3o_S" />
+                          <node concept="3uibUv" id="4uLJMq1qOv7" role="3clF45">
+                            <ref role="3uigEE" to="7e8u:~TreeMessage" resolve="TreeMessage" />
+                          </node>
+                        </node>
+                        <node concept="3uibUv" id="4uLJMq1qOv8" role="2Ghqu4">
+                          <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
+                        </node>
+                        <node concept="3uibUv" id="4uLJMq1qOv9" role="2Ghqu4">
+                          <ref role="3uigEE" to="7e8u:~TreeMessage" resolve="TreeMessage" />
                         </node>
                       </node>
-                      <node concept="3Tm1VV" id="4uLJMq1qOv6" role="1B3o_S" />
-                      <node concept="3uibUv" id="4uLJMq1qOv7" role="3clF45">
-                        <ref role="3uigEE" to="7e8u:~TreeMessage" resolve="TreeMessage" />
-                      </node>
-                    </node>
-                    <node concept="3uibUv" id="4uLJMq1qOv8" role="2Ghqu4">
-                      <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
-                    </node>
-                    <node concept="3uibUv" id="4uLJMq1qOv9" role="2Ghqu4">
-                      <ref role="3uigEE" to="7e8u:~TreeMessage" resolve="TreeMessage" />
                     </node>
                   </node>
                 </node>
@@ -9498,13 +9518,20 @@
         </node>
       </node>
       <node concept="3clFbS" id="4uLJMq1lp8U" role="3clF47">
-        <node concept="3clFbF" id="4uLJMq1lp8V" role="3cqZAp">
-          <node concept="2OqwBi" id="4uLJMq1lQGy" role="3clFbG">
-            <node concept="37vLTw" id="4uLJMq1lQGx" role="2Oq$k0">
-              <ref role="3cqZAo" node="4uLJMq1loNv" resolve="myTreeMessages" />
-            </node>
-            <node concept="liA8E" id="4uLJMq1lQGz" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.clear()" resolve="clear" />
+        <node concept="1HWtB8" id="2gAvkHUelin" role="3cqZAp">
+          <node concept="37vLTw" id="2gAvkHUepM2" role="1HWFw0">
+            <ref role="3cqZAo" node="2gAvkHUdsT8" resolve="myTreeMessagesMapLock" />
+          </node>
+          <node concept="3clFbS" id="2gAvkHUelir" role="1HWHxc">
+            <node concept="3clFbF" id="4uLJMq1lp8V" role="3cqZAp">
+              <node concept="2OqwBi" id="4uLJMq1lQGy" role="3clFbG">
+                <node concept="37vLTw" id="4uLJMq1lQGx" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4uLJMq1loNv" resolve="myTreeMessages" />
+                </node>
+                <node concept="liA8E" id="4uLJMq1lQGz" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Map.clear()" resolve="clear" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

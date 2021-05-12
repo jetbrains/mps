@@ -209,6 +209,9 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
           return null;
         }
         ITestNodeWrapper testWrapper = (ITestNodeWrapper) currentNode.getUserObject();
+        if (testWrapper == null) {
+          return null;
+        }
         // XXX it's unclear whether we shall assume model read lock here, or obtain it ourselves
         // I didn't get the lock here as it's stupid to ask for SNode not inside a lock already.
         return testWrapper.getNodePointer().resolve(myProject.getRepository());

@@ -3192,10 +3192,11 @@
       <node id="8321286824326263027" at="206,40,207,67" concept="10" />
       <node id="8321286824326263035" at="208,34,209,22" concept="11" />
       <node id="8113473988835127781" at="210,9,211,86" concept="10" />
-      <node id="8113473988835253543" at="211,86,212,96" concept="12" />
-      <node id="8113473988835265517" at="212,96,213,96" concept="12" />
-      <node id="8113473988835166398" at="213,96,214,79" concept="11" />
-      <node id="8321286824326263052" at="215,7,216,18" concept="11" />
+      <node id="1813202875956498148" at="212,34,213,22" concept="11" />
+      <node id="8113473988835253543" at="214,9,215,96" concept="12" />
+      <node id="8113473988835265517" at="215,96,216,96" concept="12" />
+      <node id="8113473988835166398" at="216,96,217,79" concept="11" />
+      <node id="8321286824326263052" at="218,7,219,18" concept="11" />
       <node id="5045411965802406001" at="115,0,118,0" concept="9" trace="setMinimumWidthOfTheProgressToZero#(Ljetbrains/mps/baseLanguage/unitTest/execution/tool/TestProgressLine;)V" />
       <node id="8321286824326262675" at="162,0,165,0" concept="9" trace="addCloseListener#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <node id="8321286824326262691" at="166,38,169,5" concept="7" />
@@ -3203,6 +3204,7 @@
       <node id="8321286824326263005" at="196,0,199,0" concept="3" trace="MyTreePanel#(Ljava/awt/LayoutManager;)V" />
       <node id="8113473988835034637" at="202,50,205,7" concept="8" />
       <node id="8321286824326263033" at="207,67,210,9" concept="8" />
+      <node id="1813202875956448894" at="211,86,214,9" concept="8" />
       <node id="8321286824326262917" at="176,48,180,7" concept="19" />
       <node id="8321286824326262687" at="166,0,171,0" concept="9" trace="invokeCloseListeners#()V" />
       <node id="8661792098256031846" at="119,0,125,0" concept="9" trace="addNotify#()V" />
@@ -3213,8 +3215,8 @@
       <node id="8321286824326262557" at="134,0,142,0" concept="9" trace="createTreePanel#(Ljavax/swing/JComponent;Ljavax/swing/JComponent;)Ljavax/swing/JPanel;" />
       <node id="8321286824326262932" at="182,0,190,7" concept="5" />
       <node id="8321286824326262660" at="151,0,161,0" concept="9" trace="dispose#()V" />
-      <node id="8113473988835098407" at="205,7,215,7" concept="8" />
-      <node id="8321286824326263013" at="200,0,218,0" concept="9" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
+      <node id="8113473988835098407" at="205,7,218,7" concept="8" />
+      <node id="8321286824326263013" at="200,0,221,0" concept="9" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
       <node id="8321286824326262893" at="172,0,194,0" concept="9" trace="initSplitterProportion#(Lcom/intellij/openapi/ui/Splitter;FLjava/lang/String;)V" />
       <node id="8321286824326262355" at="65,0,114,0" concept="3" trace="UnitTestViewComponent#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/configurations/RunConfiguration;Lcom/intellij/execution/Executor;Lcom/intellij/execution/ui/ConsoleView;Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestRunState;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <scope id="8321286824326262927" at="179,46,179,46" />
@@ -3229,6 +3231,7 @@
       <scope id="8321286824326263008" at="196,47,197,21" />
       <scope id="8113473988835034639" at="203,47,204,25" />
       <scope id="8321286824326263034" at="208,34,209,22" />
+      <scope id="1813202875956448896" at="212,34,213,22" />
       <scope id="5045411965802406001" at="115,0,118,0">
         <var name="myProgressLineComponent" id="5045411965802405818" />
       </scope>
@@ -3274,19 +3277,19 @@
         <var name="toolbar" id="8321286824326262558" />
         <var name="tree" id="8321286824326262560" />
       </scope>
-      <scope id="8113473988835098409" at="206,40,214,79">
+      <scope id="8321286824326262660" at="151,0,161,0" />
+      <scope id="8113473988835098409" at="206,40,217,79">
         <var name="currentNode" id="8321286824326263028" />
         <var name="testWrapper" id="8113473988835127782" />
       </scope>
-      <scope id="8321286824326262660" at="151,0,161,0" />
-      <scope id="8321286824326263020" at="202,50,216,18" />
-      <scope id="8321286824326263013" at="200,0,218,0">
-        <var name="dataId" id="8321286824326263016" />
-      </scope>
+      <scope id="8321286824326263020" at="202,50,219,18" />
       <scope id="8321286824326262895" at="172,105,192,39">
         <var name="propertiesComponent" id="8321286824326262897" />
         <var name="proportion" id="8321286824326262912" />
         <var name="value" id="8321286824326262901" />
+      </scope>
+      <scope id="8321286824326263013" at="200,0,221,0">
+        <var name="dataId" id="8321286824326263016" />
       </scope>
       <scope id="8321286824326262893" at="172,0,194,0">
         <var name="defaultProportion" id="8321286824326262977" />
@@ -3312,8 +3315,8 @@
         <var name="testRunState" id="8321286824326262516" />
       </scope>
       <unit id="8321286824326262938" at="183,43,190,5" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent$1" />
-      <unit id="8321286824326263001" at="195,0,219,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent$MyTreePanel" />
-      <unit id="8321286824326262313" at="51,0,220,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent" />
+      <unit id="8321286824326263001" at="195,0,222,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent$MyTreePanel" />
+      <unit id="8321286824326262313" at="51,0,223,0" name="jetbrains.mps.baseLanguage.unitTest.execution.tool.UnitTestViewComponent" />
     </file>
   </root>
 </debug-info>
