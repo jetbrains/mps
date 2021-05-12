@@ -153,7 +153,8 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
   -->
 
   <root>
-    <priority value="ALL"/>
+    <!-- Change to ALL or appropriate level for debug with CONSOLE-DEBUG/CONSOLE-TRACE appenders -->
+    <priority value="INFO"/>
 
     <!-- IDE related -->
     <appender-ref ref="DIALOG"/>
