@@ -119,6 +119,8 @@
 
     <group id="GoToCodeGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 
+    <action id="TypeHierarchy" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+
     <!-- Code -->
     <!--    <group id="CodeMenu" popup="true">-->
     <action id="Generate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
