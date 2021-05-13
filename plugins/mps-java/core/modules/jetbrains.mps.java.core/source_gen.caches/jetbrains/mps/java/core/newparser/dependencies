@@ -375,6 +375,7 @@
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.ASTNode" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration" />
+    <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.EmptyStatement" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.ImportReference" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.Statement" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.impl.CompilerOptions" />

@@ -18,6 +18,7 @@ import org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.Statement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.eclipse.jdt.internal.compiler.ast.EmptyStatement;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.eclipse.jdt.internal.core.util.RecordedParsingInformation;
@@ -124,22 +125,27 @@ public class JavaParser {
 
         Statement[] stmts = absMethod.statements;
 
+        SNode stmtList = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
         if (stmts != null && stmts.length > 0) {
           // TODO construct typeResolver from parent node context
-          SNode stmtList = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
           ((FullASTConverter) converter).convertStatementsInto(absMethod, stmtList);
-          attachComments(source, converter, util.recordedParsingInformation);
-          resultNodes = ListSequence.fromList(new ArrayList<SNode>());
-          // stmtList may have new statements (comments) by now, after attachComments
-          for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, LINKS.statement$53DE))) {
-            SNodeOperations.deleteNode(stmt);
-            ListSequence.fromList(resultNodes).addElement(stmt);
+
+        } else {
+          if (util.recordedParsingInformation.commentPositions != null && util.recordedParsingInformation.commentPositions.length > 0) {
+            // Insert a dummy empty line in order for the comments to be able to be added to the model
+            absMethod.statements = new Statement[1];
+            absMethod.statements[0] = new EmptyStatement(source.length, source.length);
+            ((FullASTConverter) converter).convertStatementsInto(absMethod, stmtList);
           }
-
         }
-
+        attachComments(source, converter, util.recordedParsingInformation);
+        resultNodes = ListSequence.fromList(new ArrayList<SNode>());
+        // stmtList may have new statements (comments) by now, after attachComments
+        for (SNode stmt : ListSequence.fromList(SLinkOperations.getChildren(stmtList, LINKS.statement$53DE))) {
+          SNodeOperations.deleteNode(stmt);
+          ListSequence.fromList(resultNodes).addElement(stmt);
+        }
         break;
-
       default:
         throw new IllegalArgumentException("Parsing other than class and statements is not supported yet ");
     }
