@@ -71,13 +71,13 @@ public class PlainTabsComponent extends BaseTabsComponent {
           return;
         }
 
-        getProject().getModelAccess().runReadAction(() -> onTabIndexChange());
+        getProject().getModelAccess().runReadAction(() -> onTabIndexChange(true));
       }
     });
   }
 
 
-  private synchronized void onTabIndexChange() {
+  private synchronized void onTabIndexChange(boolean userAction) {
     if (isDisposed()) {
       return;
     }
@@ -95,7 +95,13 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
     if (np != null) {
       myLastEmptyTab = null;
-      editNode(np);
+      if (userAction) {
+        executeNavigation(() -> {
+          editNode(np);
+        });
+      } else {
+        editNode(np);
+      }
     } else {
       myLastEmptyTab = tab.getTab();
       enterCreateMode(myLastEmptyTab);
@@ -246,7 +252,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
     if (selectionRestored) {
       //this is needed as Idea component sends no events if we've just removed all tabs and added one new and then are trying to select it
       //see http://youtrack.jetbrains.com/issue/MPS-17943
-      onTabIndexChange();
+      onTabIndexChange(false);
     }
   }
 

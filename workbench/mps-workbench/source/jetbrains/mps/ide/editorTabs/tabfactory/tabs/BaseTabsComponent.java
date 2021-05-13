@@ -15,8 +15,10 @@
  */
 package jetbrains.mps.ide.editorTabs.tabfactory.tabs;
 
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.extensions.Extensions;
+import com.intellij.openapi.fileEditor.ex.IdeDocumentHistory;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.editorTabs.TabColorProvider;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
@@ -112,6 +114,15 @@ public abstract class BaseTabsComponent implements TabsComponent {
   public void editNode(SNodeReference node) {
     myLastNode = node;
     myCallback.changeNode(node);
+  }
+
+  protected void executeNavigation(Runnable navigation) {
+    getProject().getModelAccess().executeCommandInEDT(() -> {
+      IdeDocumentHistory documentHistory = ServiceManager.getService(myProject, IdeDocumentHistory.class);
+      documentHistory.includeCurrentCommandAsNavigation();
+      documentHistory.setCurrentCommandHasMoves();
+      navigation.run();
+    });
   }
 
   protected final SNodeReference getEditedNode() {
