@@ -106,7 +106,7 @@ public class ButtonTabsComponent extends BaseTabsComponent {
 
     myRealTabs.clear();
 
-    final NodeChangeCallback callback = this::editNode;
+    final NodeChangeCallback callback = newNode -> executeNavigation(() -> editNode(newNode));
     TabEditorLayout newContent = updateDocumentsAndNodes();
     for (RelationDescriptor tabDescriptor : myPossibleTabs) {
       if (newContent.covers(tabDescriptor)) {
