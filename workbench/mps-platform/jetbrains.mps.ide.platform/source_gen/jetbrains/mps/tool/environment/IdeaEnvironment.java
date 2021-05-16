@@ -61,7 +61,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   private Object myIdeaApplication;
 
   static {
-    // ij itself does not initialize log4j
+    // initialize before ij
     EnvironmentBase.initializeLog4j();
   }
 
@@ -77,6 +77,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
     addRequiredPlugins(myConfig);
     createIdeaApplication();
+    // fixme IJ must allow to use our own logging initialization
+    EnvironmentBase.initializeLog4j();
 
     MPSCoreComponents coreComponents = getMPSCoreComponents();
     super.init(coreComponents.getPlatform());

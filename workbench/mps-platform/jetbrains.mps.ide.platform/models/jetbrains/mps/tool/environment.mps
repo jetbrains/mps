@@ -357,23 +357,14 @@
       <node concept="3clFbS" id="2VDNdDcdQaY" role="1Pe0a2">
         <node concept="3SKdUt" id="3i9yw2Vwg5F" role="3cqZAp">
           <node concept="1PaTwC" id="3i9yw2Vwg5G" role="1aUNEU">
-            <node concept="3oM_SD" id="3i9yw2Vwg5T" role="1PaTwD">
-              <property role="3oM_SC" value="ij" />
-            </node>
-            <node concept="3oM_SD" id="3i9yw2Vwg5V" role="1PaTwD">
-              <property role="3oM_SC" value="itself" />
-            </node>
-            <node concept="3oM_SD" id="3i9yw2Vwg5Y" role="1PaTwD">
-              <property role="3oM_SC" value="does" />
-            </node>
-            <node concept="3oM_SD" id="7UGTSzad4b$" role="1PaTwD">
-              <property role="3oM_SC" value="not" />
-            </node>
-            <node concept="3oM_SD" id="7UGTSzad4bE" role="1PaTwD">
+            <node concept="3oM_SD" id="61n5glKfsnG" role="1PaTwD">
               <property role="3oM_SC" value="initialize" />
             </node>
-            <node concept="3oM_SD" id="3i9yw2Vwg62" role="1PaTwD">
-              <property role="3oM_SC" value="log4j" />
+            <node concept="3oM_SD" id="61n5glKfsnP" role="1PaTwD">
+              <property role="3oM_SC" value="before" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKfsnS" role="1PaTwD">
+              <property role="3oM_SC" value="ij" />
             </node>
           </node>
         </node>
@@ -439,6 +430,46 @@
         <node concept="3clFbF" id="6z7xhWkusht" role="3cqZAp">
           <node concept="1rXfSq" id="6z7xhWkushs" role="3clFbG">
             <ref role="37wK5l" node="6z7xhWku8L1" resolve="createIdeaApplication" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="61n5glKfyo1" role="3cqZAp">
+          <node concept="1PaTwC" id="61n5glKfyo2" role="1aUNEU">
+            <node concept="3oM_SD" id="61n5glKf_$J" role="1PaTwD">
+              <property role="3oM_SC" value="fixme" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_Kr" role="1PaTwD">
+              <property role="3oM_SC" value="IJ" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_Ku" role="1PaTwD">
+              <property role="3oM_SC" value="must" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_Ky" role="1PaTwD">
+              <property role="3oM_SC" value="allow" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_KB" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_Ls" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_Lz" role="1PaTwD">
+              <property role="3oM_SC" value="our" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_LF" role="1PaTwD">
+              <property role="3oM_SC" value="own" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_M9" role="1PaTwD">
+              <property role="3oM_SC" value="logging" />
+            </node>
+            <node concept="3oM_SD" id="61n5glKf_Mj" role="1PaTwD">
+              <property role="3oM_SC" value="initialization" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="61n5glKft6J" role="3cqZAp">
+          <node concept="2YIFZM" id="61n5glKft6K" role="3clFbG">
+            <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
+            <ref role="37wK5l" to="79ha:2VDNdDcdNbx" resolve="initializeLog4j" />
           </node>
         </node>
         <node concept="3clFbH" id="2KZwJXNrjan" role="3cqZAp" />
