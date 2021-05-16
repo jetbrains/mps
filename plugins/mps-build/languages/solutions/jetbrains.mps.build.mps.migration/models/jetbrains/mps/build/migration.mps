@@ -69,6 +69,9 @@
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
       </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
+      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
@@ -773,6 +776,10 @@
                                   <node concept="3VsKOn" id="75eqTYkqkcD" role="37wK5m">
                                     <ref role="3VsUkX" to="z1c3:~Project" resolve="Project" />
                                   </node>
+                                  <node concept="10M0yZ" id="61n5glKoygh" role="37wK5m">
+                                    <ref role="3cqZAo" to="wyt6:~Boolean.TYPE" resolve="TYPE" />
+                                    <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+                                  </node>
                                 </node>
                               </node>
                             </node>
@@ -787,6 +794,14 @@
                                 <node concept="10Nm6u" id="1oo0A63IOPy" role="37wK5m" />
                                 <node concept="37vLTw" id="75eqTYkqlcg" role="37wK5m">
                                   <ref role="3cqZAo" node="60oBoEfqOa" resolve="project" />
+                                </node>
+                                <node concept="2OqwBi" id="61n5glKoAiF" role="37wK5m">
+                                  <node concept="37vLTw" id="61n5glKo$Ge" role="2Oq$k0">
+                                    <ref role="3cqZAo" to="jo3e:KL8Aqlj5lG" resolve="myWhatToDo" />
+                                  </node>
+                                  <node concept="liA8E" id="61n5glKoB$N" role="2OqNvi">
+                                    <ref role="37wK5l" to="asz6:61n5glKng$c" resolve="getHaltOnPrecheckFailure" />
+                                  </node>
                                 </node>
                               </node>
                             </node>
@@ -834,16 +849,43 @@
                               </node>
                             </node>
                           </node>
+                          <node concept="3SKdUt" id="61n5glKoa_U" role="3cqZAp">
+                            <node concept="1PaTwC" id="61n5glKoa_V" role="1aUNEU">
+                              <node concept="3oM_SD" id="61n5glKochU" role="1PaTwD">
+                                <property role="3oM_SC" value="fixme" />
+                              </node>
+                              <node concept="3oM_SD" id="61n5glKoril" role="1PaTwD">
+                                <property role="3oM_SC" value="we" />
+                              </node>
+                              <node concept="3oM_SD" id="61n5glKohQG" role="1PaTwD">
+                                <property role="3oM_SC" value="should" />
+                              </node>
+                              <node concept="3oM_SD" id="61n5glKoiT2" role="1PaTwD">
+                                <property role="3oM_SC" value="close" />
+                              </node>
+                              <node concept="3oM_SD" id="61n5glKokzI" role="1PaTwD">
+                                <property role="3oM_SC" value="via" />
+                              </node>
+                              <node concept="3oM_SD" id="61n5glKolxK" role="1PaTwD">
+                                <property role="3oM_SC" value="environment" />
+                              </node>
+                            </node>
+                          </node>
                           <node concept="3clFbF" id="58MnPCMVxNS" role="3cqZAp">
-                            <node concept="2YIFZM" id="58MnPCMVyuQ" role="3clFbG">
-                              <ref role="1Pybhc" to="btn2:~ProjectUtil" resolve="ProjectUtil" />
-                              <ref role="37wK5l" to="btn2:~ProjectUtil.closeAndDispose(com.intellij.openapi.project.Project)" resolve="closeAndDispose" />
-                              <node concept="AH0OO" id="58MnPCMV_jM" role="37wK5m">
-                                <node concept="3cmrfG" id="58MnPCMV_r$" role="AHEQo">
-                                  <property role="3cmrfH" value="0" />
-                                </node>
-                                <node concept="37vLTw" id="58MnPCMV_bX" role="AHHXb">
-                                  <ref role="3cqZAo" node="58MnPCMVwfK" resolve="projects" />
+                            <node concept="2OqwBi" id="61n5glKo5JM" role="3clFbG">
+                              <node concept="2YIFZM" id="61n5glKo217" role="2Oq$k0">
+                                <ref role="37wK5l" to="4nm9:~ProjectManager.getInstance()" resolve="getInstance" />
+                                <ref role="1Pybhc" to="4nm9:~ProjectManager" resolve="ProjectManager" />
+                              </node>
+                              <node concept="liA8E" id="61n5glKo6Zi" role="2OqNvi">
+                                <ref role="37wK5l" to="4nm9:~ProjectManager.closeAndDispose(com.intellij.openapi.project.Project)" resolve="closeAndDispose" />
+                                <node concept="AH0OO" id="61n5glKo218" role="37wK5m">
+                                  <node concept="3cmrfG" id="61n5glKo219" role="AHEQo">
+                                    <property role="3cmrfH" value="0" />
+                                  </node>
+                                  <node concept="37vLTw" id="61n5glKo21a" role="AHHXb">
+                                    <ref role="3cqZAo" node="58MnPCMVwfK" resolve="projects" />
+                                  </node>
                                 </node>
                               </node>
                             </node>

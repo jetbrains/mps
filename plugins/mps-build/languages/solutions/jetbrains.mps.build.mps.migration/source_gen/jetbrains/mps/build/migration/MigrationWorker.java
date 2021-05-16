@@ -21,7 +21,6 @@ import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import java.lang.reflect.Method;
 import com.intellij.openapi.project.ProjectManager;
-import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ModalityState;
 
 public class MigrationWorker extends WorkerBase {
@@ -77,11 +76,12 @@ public class MigrationWorker extends WorkerBase {
             // XXX instead of explicit IDEA's PluginManager, we could use CL of "j.m.migration.component" MPS module to load desired class
             // MPS would resort to proper plugin CL to perform the task.
             Class<?> euClass = PluginManagerCore.getPlugin(PluginId.getId(MIGRATION_PLUGIN)).getPluginClassLoader().loadClass(TASK_EXEC_CLASS);
-            Method method = euClass.getMethod("migrate", Project.class);
-            method.invoke(null, project);
+            Method method = euClass.getMethod("migrate", Project.class, Boolean.TYPE);
+            method.invoke(null, project, myWhatToDo.getHaltOnPrecheckFailure());
             com.intellij.openapi.project.Project[] projects = ProjectManager.getInstance().getOpenProjects();
             assert projects.length == 1 : "more than one project opened: " + projects.length;
-            ProjectUtil.closeAndDispose(projects[0]);
+            // fixme we should close via environment
+            ProjectManager.getInstance().closeAndDispose(projects[0]);
           } catch (Exception e) {
             throw new RuntimeException("Exception during migration", e);
           }
