@@ -6984,7 +6984,7 @@
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myWereRun" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="2ShNRf" id="2LHmEReYbBL" role="33vP2m">
         <node concept="Tc6Ow" id="V9q2W$IZF0" role="2ShVmc">
           <node concept="3uibUv" id="V9q2W$J04h" role="HW$YZ">
@@ -7138,16 +7138,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="3c6oXHAqX2e" role="3cqZAp">
-              <node concept="2OqwBi" id="3c6oXHAqX2f" role="3clFbG">
-                <node concept="37vLTw" id="1zaRC58yy5i" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6dkZ8D0H4WB" resolve="myMonitor" />
-                </node>
-                <node concept="liA8E" id="3c6oXHAqX2h" role="2OqNvi">
-                  <ref role="37wK5l" to="mk90:~ProgressMonitorBase.done()" resolve="done" />
-                </node>
-              </node>
-            </node>
           </node>
           <node concept="3uVAMA" id="5cfG2XjCa09" role="1zxBo5">
             <node concept="XOnhg" id="5cfG2XjCa0a" role="1zc67B">
@@ -7172,6 +7162,16 @@
           </node>
           <node concept="1wplmZ" id="xvs04dHVKN" role="1zxBo6">
             <node concept="3clFbS" id="2hEy8HRq13m" role="1wplMD">
+              <node concept="3clFbF" id="3c6oXHAqX2e" role="3cqZAp">
+                <node concept="2OqwBi" id="3c6oXHAqX2f" role="3clFbG">
+                  <node concept="37vLTw" id="1zaRC58yy5i" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6dkZ8D0H4WB" resolve="myMonitor" />
+                  </node>
+                  <node concept="liA8E" id="3c6oXHAqX2h" role="2OqNvi">
+                    <ref role="37wK5l" to="mk90:~ProgressMonitorBase.done()" resolve="done" />
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="78xBDbK6Q3J" role="3cqZAp">
                 <node concept="2OqwBi" id="78xBDbK6Q3K" role="3clFbG">
                   <node concept="2YIFZM" id="78xBDbK6Q3L" role="2Oq$k0">

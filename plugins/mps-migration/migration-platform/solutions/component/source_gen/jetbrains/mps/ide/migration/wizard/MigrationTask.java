@@ -62,7 +62,7 @@ public class MigrationTask {
   private MigrationSession mySession;
   private volatile boolean myIsComplete = false;
   private LocalHistoryAction myCurrentChange = null;
-  private List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
+  private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
 
   private ProgressMonitorAdapter myMonitor;
 
@@ -80,10 +80,10 @@ public class MigrationTask {
       myIsComplete = true;
       myMonitor.step("Done!");
       myMonitor.advance(0);
-      myMonitor.done();
     } catch (MigrationError me) {
       error(me);
     } finally {
+      myMonitor.done();
       PersistenceRegistry.getInstance().enableFastFindUsages();
     }
   }
