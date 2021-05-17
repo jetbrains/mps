@@ -346,14 +346,14 @@ public class TabbedEditor extends BaseNodeEditor {
   @Override
   public EditorState saveState() {
     saveCurrentState();
-    return state;
+    return state.copy();
   }
 
   @Override
   public void loadState(@NotNull final EditorState newState) {
     myProject.getModelAccess().runReadAction(() -> {
       if (newState instanceof TabbedEditorState) {
-        state = (TabbedEditorState) newState;
+        state = ((TabbedEditorState) newState).copy();
         SNodeReference nodePointer = state.getNode();
         SNode node = nodePointer == null ? null : nodePointer.resolve(myProject.getRepository());
         if (node != null) {
@@ -374,6 +374,13 @@ public class TabbedEditor extends BaseNodeEditor {
 
     private SNodeReference myCurrentNode;
     private final Map<SNodeReference, EditorState> myStates = new HashMap<>();
+
+    private TabbedEditorState copy() {
+      TabbedEditorState copy = new TabbedEditorState();
+      copy.myCurrentNode = myCurrentNode;
+      copy.myStates.putAll(myStates);
+      return copy;
+    }
 
     private void saveState(@Nullable SNodeReference ref, EditorState editorState) {
       myCurrentNode = ref;
