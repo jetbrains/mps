@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.baseLanguage.extensionMethods.typesystem.RulesFunctions_Extension">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.extensionMethods.behavior.ExtensionMethodDeclaration__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.typesystem.RulesFunctions_BaseLanguage" />
-    <classNode dependClassName="jetbrains.mps.lang.typesystem.dependencies.InferenceMethod" />
-    <classNode dependClassName="jetbrains.mps.typesystem.inference.EquationInfo" />
-    <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.extensionMethods.typesystem.TypesystemDescriptor">
     <classNode dependClassName="jetbrains.mps.baseLanguage.extensionMethods.typesystem.typeof_ExtensionMethodCall_InferenceRule" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.extensionMethods.typesystem.typeof_ExtensionThis_InferenceRule" />
