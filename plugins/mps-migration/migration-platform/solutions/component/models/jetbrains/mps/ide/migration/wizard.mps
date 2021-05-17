@@ -52,6 +52,7 @@
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="ll2t" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.configurationStore(MPS.IDEA/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
+    <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" implicit="true" />
   </imports>
   <registry>
@@ -4606,117 +4607,129 @@
     <node concept="3clFb_" id="61n5glKgCIJ" role="jymVt">
       <property role="TrG5h" value="logProblems" />
       <node concept="37vLTG" id="61n5glKgCIK" role="3clF46">
-        <property role="TrG5h" value="log4jLogger" />
-        <node concept="3uibUv" id="61n5glKgDv9" role="1tU5fm">
-          <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <property role="TrG5h" value="handler" />
+        <node concept="3uibUv" id="7kOTsA1$JUB" role="1tU5fm">
+          <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
         </node>
         <node concept="2AHcQZ" id="61n5glKgHc9" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
       <node concept="3clFbS" id="61n5glKgCIM" role="3clF47">
-        <node concept="3clFbJ" id="61n5glKgIc7" role="3cqZAp">
-          <node concept="2OqwBi" id="61n5glKgIc8" role="3clFbw">
-            <node concept="37vLTw" id="61n5glKgIc9" role="2Oq$k0">
-              <ref role="3cqZAo" node="61n5glKgCIK" resolve="log4jLogger" />
+        <node concept="3clFbF" id="61n5glKgIcd" role="3cqZAp">
+          <node concept="2OqwBi" id="61n5glKgIce" role="3clFbG">
+            <node concept="37vLTw" id="61n5glKgIcf" role="2Oq$k0">
+              <ref role="3cqZAo" node="61n5glKgCIK" resolve="handler" />
             </node>
-            <node concept="liA8E" id="61n5glKgIca" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.isEnabledFor(org.apache.log4j.Priority)" resolve="isEnabledFor" />
-              <node concept="10M0yZ" id="61n5glKgIcb" role="37wK5m">
-                <ref role="3cqZAo" to="q7tw:~Level.ERROR" resolve="ERROR" />
-                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
+            <node concept="liA8E" id="61n5glKgIcg" role="2OqNvi">
+              <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage)" resolve="handle" />
+              <node concept="2YIFZM" id="7kOTsA1$RnC" role="37wK5m">
+                <ref role="37wK5l" to="et5u:~Message.createMessage(jetbrains.mps.messages.MessageKind,java.lang.String,java.lang.String)" resolve="createMessage" />
+                <ref role="1Pybhc" to="et5u:~Message" resolve="Message" />
+                <node concept="Rm8GO" id="7kOTsA1$RnD" role="37wK5m">
+                  <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
+                  <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
+                </node>
+                <node concept="2OqwBi" id="7kOTsA1$UYJ" role="37wK5m">
+                  <node concept="Xjq3P" id="7kOTsA1$RnE" role="2Oq$k0" />
+                  <node concept="liA8E" id="7kOTsA1$VzX" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Throwable.toString()" resolve="toString" />
+                  </node>
+                </node>
+                <node concept="3cpWs3" id="7kOTsA1$RnF" role="37wK5m">
+                  <node concept="Xjq3P" id="7kOTsA1$RnG" role="3uHU7w" />
+                  <node concept="Xl_RD" id="7kOTsA1$RnH" role="3uHU7B">
+                    <property role="Xl_RC" value="Listing all the problems of " />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="61n5glKgIcc" role="3clFbx">
-            <node concept="3clFbF" id="61n5glKgIcd" role="3cqZAp">
-              <node concept="2OqwBi" id="61n5glKgIce" role="3clFbG">
-                <node concept="37vLTw" id="61n5glKgIcf" role="2Oq$k0">
-                  <ref role="3cqZAo" node="61n5glKgCIK" resolve="log4jLogger" />
+        </node>
+        <node concept="1DcWWT" id="61n5glKgCIN" role="3cqZAp">
+          <node concept="3cpWsn" id="61n5glKgCJc" role="1Duv9x">
+            <property role="TrG5h" value="p" />
+            <node concept="3uibUv" id="61n5glKgEIr" role="1tU5fm">
+              <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="61n5glKgCIP" role="2LFqv$">
+            <node concept="3cpWs8" id="61n5glKgCIR" role="3cqZAp">
+              <node concept="3cpWsn" id="61n5glKgCIQ" role="3cpWs9">
+                <property role="TrG5h" value="problemMsg" />
+                <node concept="17QB3L" id="61n5glKgH$N" role="1tU5fm" />
+                <node concept="3cpWs3" id="61n5glKgCIT" role="33vP2m">
+                  <node concept="3cpWs3" id="61n5glKgCIU" role="3uHU7B">
+                    <node concept="3cpWs3" id="61n5glKgCIV" role="3uHU7B">
+                      <node concept="2OqwBi" id="61n5glKgCZ3" role="3uHU7B">
+                        <node concept="37vLTw" id="61n5glKgCZ2" role="2Oq$k0">
+                          <ref role="3cqZAo" node="61n5glKgCJc" resolve="p" />
+                        </node>
+                        <node concept="liA8E" id="61n5glKgCZ4" role="2OqNvi">
+                          <ref role="37wK5l" to="d6hs:~ReportItem.getMessage()" resolve="getMessage" />
+                        </node>
+                      </node>
+                      <node concept="Xl_RD" id="61n5glKgCIX" role="3uHU7w">
+                        <property role="Xl_RC" value=" (reason object: " />
+                      </node>
+                    </node>
+                    <node concept="2OqwBi" id="61n5glKgCTV" role="3uHU7w">
+                      <node concept="10M0yZ" id="61n5glKgCTU" role="2Oq$k0">
+                        <ref role="1PxDUh" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
+                        <ref role="3cqZAo" to="d6hs:~IssueKindReportItem.PATH_OBJECT" resolve="PATH_OBJECT" />
+                      </node>
+                      <node concept="liA8E" id="61n5glKgCTW" role="2OqNvi">
+                        <ref role="37wK5l" to="d6hs:~ReportItemBase$SimpleReportItemFlavour.get(jetbrains.mps.errors.item.FlavouredItem)" resolve="get" />
+                        <node concept="37vLTw" id="61n5glKgCTX" role="37wK5m">
+                          <ref role="3cqZAo" node="61n5glKgCJc" resolve="p" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="61n5glKgCJ0" role="3uHU7w">
+                    <property role="Xl_RC" value=")" />
+                  </node>
                 </node>
-                <node concept="liA8E" id="61n5glKgIcg" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
-                  <node concept="3cpWs3" id="61n5glKgLIH" role="37wK5m">
-                    <node concept="Xjq3P" id="61n5glKgLNn" role="3uHU7w" />
-                    <node concept="Xl_RD" id="61n5glKgKcA" role="3uHU7B">
-                      <property role="Xl_RC" value="Listing all the problems of " />
+              </node>
+            </node>
+            <node concept="3clFbF" id="61n5glKgCJ6" role="3cqZAp">
+              <node concept="2OqwBi" id="61n5glKgCYm" role="3clFbG">
+                <node concept="37vLTw" id="61n5glKgCYl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="61n5glKgCIK" resolve="handler" />
+                </node>
+                <node concept="liA8E" id="61n5glKgCYn" role="2OqNvi">
+                  <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage)" resolve="handle" />
+                  <node concept="2YIFZM" id="7kOTsA1$Wu9" role="37wK5m">
+                    <ref role="37wK5l" to="et5u:~Message.createMessage(jetbrains.mps.messages.MessageKind,java.lang.String,java.lang.String)" resolve="createMessage" />
+                    <ref role="1Pybhc" to="et5u:~Message" resolve="Message" />
+                    <node concept="Rm8GO" id="7kOTsA1$Xd4" role="37wK5m">
+                      <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
+                      <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
+                    </node>
+                    <node concept="2OqwBi" id="7kOTsA1$Y64" role="37wK5m">
+                      <node concept="Xjq3P" id="7kOTsA1$XEP" role="2Oq$k0" />
+                      <node concept="liA8E" id="7kOTsA1$YJW" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~Throwable.toString()" resolve="toString" />
+                      </node>
+                    </node>
+                    <node concept="3cpWs3" id="61n5glKgCYo" role="37wK5m">
+                      <node concept="Xl_RD" id="61n5glKgCYp" role="3uHU7B">
+                        <property role="Xl_RC" value="- " />
+                      </node>
+                      <node concept="37vLTw" id="61n5glKgCYq" role="3uHU7w">
+                        <ref role="3cqZAo" node="61n5glKgCIQ" resolve="problemMsg" />
+                      </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="1DcWWT" id="61n5glKgCIN" role="3cqZAp">
-              <node concept="3cpWsn" id="61n5glKgCJc" role="1Duv9x">
-                <property role="TrG5h" value="p" />
-                <node concept="3uibUv" id="61n5glKgEIr" role="1tU5fm">
-                  <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="61n5glKgCIP" role="2LFqv$">
-                <node concept="3cpWs8" id="61n5glKgCIR" role="3cqZAp">
-                  <node concept="3cpWsn" id="61n5glKgCIQ" role="3cpWs9">
-                    <property role="TrG5h" value="problemMsg" />
-                    <node concept="17QB3L" id="61n5glKgH$N" role="1tU5fm" />
-                    <node concept="3cpWs3" id="61n5glKgCIT" role="33vP2m">
-                      <node concept="3cpWs3" id="61n5glKgCIU" role="3uHU7B">
-                        <node concept="3cpWs3" id="61n5glKgCIV" role="3uHU7B">
-                          <node concept="2OqwBi" id="61n5glKgCZ3" role="3uHU7B">
-                            <node concept="37vLTw" id="61n5glKgCZ2" role="2Oq$k0">
-                              <ref role="3cqZAo" node="61n5glKgCJc" resolve="p" />
-                            </node>
-                            <node concept="liA8E" id="61n5glKgCZ4" role="2OqNvi">
-                              <ref role="37wK5l" to="d6hs:~ReportItem.getMessage()" resolve="getMessage" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="61n5glKgCIX" role="3uHU7w">
-                            <property role="Xl_RC" value=" (reason object: " />
-                          </node>
-                        </node>
-                        <node concept="2OqwBi" id="61n5glKgCTV" role="3uHU7w">
-                          <node concept="10M0yZ" id="61n5glKgCTU" role="2Oq$k0">
-                            <ref role="1PxDUh" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
-                            <ref role="3cqZAo" to="d6hs:~IssueKindReportItem.PATH_OBJECT" resolve="PATH_OBJECT" />
-                          </node>
-                          <node concept="liA8E" id="61n5glKgCTW" role="2OqNvi">
-                            <ref role="37wK5l" to="d6hs:~ReportItemBase$SimpleReportItemFlavour.get(jetbrains.mps.errors.item.FlavouredItem)" resolve="get" />
-                            <node concept="37vLTw" id="61n5glKgCTX" role="37wK5m">
-                              <ref role="3cqZAo" node="61n5glKgCJc" resolve="p" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="61n5glKgCJ0" role="3uHU7w">
-                        <property role="Xl_RC" value=")" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbF" id="61n5glKgCJ6" role="3cqZAp">
-                  <node concept="2OqwBi" id="61n5glKgCYm" role="3clFbG">
-                    <node concept="37vLTw" id="61n5glKgCYl" role="2Oq$k0">
-                      <ref role="3cqZAo" node="61n5glKgCIK" resolve="log4jLogger" />
-                    </node>
-                    <node concept="liA8E" id="61n5glKgCYn" role="2OqNvi">
-                      <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
-                      <node concept="3cpWs3" id="61n5glKgCYo" role="37wK5m">
-                        <node concept="Xl_RD" id="61n5glKgCYp" role="3uHU7B">
-                          <property role="Xl_RC" value="- " />
-                        </node>
-                        <node concept="37vLTw" id="61n5glKgCYq" role="3uHU7w">
-                          <ref role="3cqZAo" node="61n5glKgCIQ" resolve="problemMsg" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="1rXfSq" id="61n5glKgCJg" role="1DdaDG">
-                <ref role="37wK5l" node="2htE_P_MrCw" resolve="getProblems" />
-                <node concept="2ShNRf" id="61n5glKgCZC" role="37wK5m">
-                  <node concept="1pGfFk" id="61n5glKgCZE" role="2ShVmc">
-                    <ref role="37wK5l" to="xygl:~EmptyProgressIndicator.&lt;init&gt;()" resolve="EmptyProgressIndicator" />
-                  </node>
-                </node>
+          </node>
+          <node concept="1rXfSq" id="61n5glKgCJg" role="1DdaDG">
+            <ref role="37wK5l" node="2htE_P_MrCw" resolve="getProblems" />
+            <node concept="2ShNRf" id="61n5glKgCZC" role="37wK5m">
+              <node concept="1pGfFk" id="61n5glKgCZE" role="2ShVmc">
+                <ref role="37wK5l" to="xygl:~EmptyProgressIndicator.&lt;init&gt;()" resolve="EmptyProgressIndicator" />
               </node>
             </node>
           </node>
@@ -7865,6 +7878,21 @@
                                     <node concept="3Tm1VV" id="61n5glKjkR_" role="1B3o_S" />
                                     <node concept="3cqZAl" id="61n5glKjkRB" role="3clF45" />
                                     <node concept="3clFbS" id="61n5glKjkRC" role="3clF47">
+                                      <node concept="3cpWs8" id="7kOTsA1_tcn" role="3cqZAp">
+                                        <node concept="3cpWsn" id="7kOTsA1_tco" role="3cpWs9">
+                                          <property role="TrG5h" value="logger" />
+                                          <node concept="3uibUv" id="7kOTsA1_qin" role="1tU5fm">
+                                            <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+                                          </node>
+                                          <node concept="2YIFZM" id="7kOTsA1_tcp" role="33vP2m">
+                                            <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+                                            <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+                                            <node concept="3VsKOn" id="7kOTsA1_tcq" role="37wK5m">
+                                              <ref role="3VsUkX" node="PobQbOdOMD" resolve="MigrationTask" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
                                       <node concept="3clFbF" id="61n5glKjohf" role="3cqZAp">
                                         <node concept="2OqwBi" id="61n5glKjqYh" role="3clFbG">
                                           <node concept="37vLTw" id="61n5glKjohe" role="2Oq$k0">
@@ -7872,11 +7900,12 @@
                                           </node>
                                           <node concept="liA8E" id="61n5glKjuW9" role="2OqNvi">
                                             <ref role="37wK5l" node="61n5glKgCIJ" resolve="logProblems" />
-                                            <node concept="2YIFZM" id="61n5glKj_5d" role="37wK5m">
-                                              <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-                                              <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                                              <node concept="3VsKOn" id="61n5glKjCgI" role="37wK5m">
-                                                <ref role="3VsUkX" node="PobQbOdOMD" resolve="MigrationTask" />
+                                            <node concept="2ShNRf" id="7kOTsA1_wlN" role="37wK5m">
+                                              <node concept="1pGfFk" id="7kOTsA1_Z7w" role="2ShVmc">
+                                                <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
+                                                <node concept="37vLTw" id="7kOTsA1A2ti" role="37wK5m">
+                                                  <ref role="3cqZAo" node="7kOTsA1_tco" resolve="logger" />
+                                                </node>
                                               </node>
                                             </node>
                                           </node>

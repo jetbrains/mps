@@ -6,8 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.annotations.NotNull;
-import org.apache.log4j.Logger;
-import org.apache.log4j.Level;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876315875804", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
@@ -31,13 +32,11 @@ public abstract class MigrationError extends Exception {
    */
   public abstract Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator);
 
-  public void logProblems(@NotNull Logger log4jLogger) {
-    if (log4jLogger.isEnabledFor(Level.ERROR)) {
-      log4jLogger.error("Listing all the problems of " + this);
-      for (IssueKindReportItem p : getProblems(new EmptyProgressIndicator())) {
-        String problemMsg = p.getMessage() + " (reason object: " + IssueKindReportItem.PATH_OBJECT.get(p) + ")";
-        log4jLogger.error("- " + problemMsg);
-      }
+  public void logProblems(@NotNull IMessageHandler handler) {
+    handler.handle(Message.createMessage(MessageKind.ERROR, this.toString(), "Listing all the problems of " + this));
+    for (IssueKindReportItem p : getProblems(new EmptyProgressIndicator())) {
+      String problemMsg = p.getMessage() + " (reason object: " + IssueKindReportItem.PATH_OBJECT.get(p) + ")";
+      handler.handle(Message.createMessage(MessageKind.ERROR, this.toString(), "- " + problemMsg));
     }
   }
 }

@@ -17,6 +17,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.apache.log4j.Level;
+import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.project.Project;
 import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -65,7 +66,7 @@ public class MigrationTask {
   private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
   private final boolean myHaltOnFailedPrecheck;
 
-  private ProgressMonitorAdapter myMonitor;
+  private final ProgressMonitorAdapter myMonitor;
 
   public MigrationTask(MigrationSession session, ProgressMonitorAdapter monitor) {
     this(session, monitor, true);
@@ -149,7 +150,8 @@ public class MigrationTask {
           mySession.getProject().getModelAccess().runReadAction(new Runnable() {
             @Override
             public void run() {
-              preCheckError.logProblems(LogManager.getLogger(MigrationTask.class));
+              Logger logger = LogManager.getLogger(MigrationTask.class);
+              preCheckError.logProblems(new LogHandler(logger));
             }
           });
         }

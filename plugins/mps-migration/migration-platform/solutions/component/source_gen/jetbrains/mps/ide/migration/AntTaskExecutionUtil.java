@@ -15,6 +15,7 @@ import jetbrains.mps.ide.migration.wizard.MigrationTask;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
 import org.apache.log4j.Level;
+import jetbrains.mps.messages.LogHandler;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -57,7 +58,8 @@ public class AntTaskExecutionUtil {
         }
         project.getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            error.logProblems(LogManager.getLogger(AntTaskExecutionUtil.class));
+            Logger logger = LogManager.getLogger(AntTaskExecutionUtil.class);
+            error.logProblems(new LogHandler(logger));
           }
         });
 
