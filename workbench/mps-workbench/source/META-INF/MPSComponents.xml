@@ -138,6 +138,7 @@
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
     <applicationService serviceInterface="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"
                         serviceImplementation="jetbrains.mps.ide.vfs.WatchingFileSystemListenersContainer" />
+    <notificationGroup id="jetbrains.mps.ide.make.StartupModuleMaker" displayType="STICKY_BALLOON" key="smm.group.name" bundle="jetbrains.mps.ide.make.Messages"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
