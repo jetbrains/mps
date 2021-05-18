@@ -15,7 +15,6 @@ Useful links
 - [Issue tracker](http://www.jetbrains.net/tracker/issues/MPS)
 - [Forum](https://mps-support.jetbrains.com/hc/en-us/community/topics)
 
-
 Building MPS from sources
 -------------------------
 Download IntelliJ IDEA from the JetBrains website. Community edition will work just fine.
