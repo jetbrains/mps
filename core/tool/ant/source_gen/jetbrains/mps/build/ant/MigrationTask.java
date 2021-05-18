@@ -33,6 +33,10 @@ public class MigrationTask extends MpsLoadTask {
     myWhatToDo.addProjectFile(new File(project));
   }
 
+  public void setHaltOnPrecheckFailure(boolean haltOnPrecheckFailure) {
+    myWhatToDo.setHaltOnPrecheckFailure(haltOnPrecheckFailure);
+  }
+
   @Override
   public void execute() throws BuildException {
     // this line is here until we generate migration task and the list of needed modules for it

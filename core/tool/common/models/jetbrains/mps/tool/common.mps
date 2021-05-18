@@ -18,10 +18,10 @@
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
     <import index="se19" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom.output(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="ddon" ref="r:58ba176b-8a52-400c-bf27-725996471cb9(jetbrains.mps.core.tool.environment.common)" />
     <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
+    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -393,6 +393,15 @@
         <property role="Xl_RC" value="bootstrap" />
       </node>
     </node>
+    <node concept="Wx3nA" id="3O0qRXvaY65" role="jymVt">
+      <property role="TrG5h" value="ATTRIBUTE_HALT_ON_PRECHECK_FAILURE" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3O0qRXvaY66" role="1B3o_S" />
+      <node concept="17QB3L" id="3O0qRXvaY67" role="1tU5fm" />
+      <node concept="Xl_RD" id="3O0qRXvaY68" role="33vP2m">
+        <property role="Xl_RC" value="haltOnPrecheckFailure" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="6aGZllYRuru" role="jymVt" />
     <node concept="312cEg" id="6aGZllYSCBv" role="jymVt">
       <property role="34CwA1" value="false" />
@@ -525,12 +534,21 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="6aGZllYRZeU" role="jymVt" />
+    <node concept="312cEg" id="61n5glKmD6h" role="jymVt">
+      <property role="TrG5h" value="myHaltOnPrecheckFailure" />
+      <node concept="3Tm6S6" id="61n5glKnzEb" role="1B3o_S" />
+      <node concept="10P_77" id="61n5glKmCRt" role="1tU5fm" />
+      <node concept="3clFbT" id="61n5glKmKa5" role="33vP2m">
+        <property role="3clFbU" value="true" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="61n5glKmrIb" role="jymVt" />
     <node concept="3clFbW" id="KL8Aql8epN" role="jymVt">
       <node concept="3Tm1VV" id="KL8Aql8epO" role="1B3o_S" />
       <node concept="3cqZAl" id="KL8Aql8epP" role="3clF45" />
       <node concept="3clFbS" id="KL8Aql8epQ" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3h" role="jymVt" />
     <node concept="3clFb_" id="6aGZllYSILI" role="jymVt">
       <property role="TrG5h" value="getRepoDescriptor" />
       <node concept="3uibUv" id="6aGZllYSILJ" role="3clF45">
@@ -550,6 +568,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3i" role="jymVt" />
     <node concept="3clFb_" id="6aGZllYSILO" role="jymVt">
       <property role="TrG5h" value="setRepoDescriptor" />
       <node concept="3cqZAl" id="6aGZllYSILP" role="3clF45" />
@@ -641,6 +660,41 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="61n5glKlYiJ" role="jymVt" />
+    <node concept="3clFb_" id="61n5glKmdm5" role="jymVt">
+      <property role="TrG5h" value="setHaltOnPrecheckFailure" />
+      <node concept="3clFbS" id="61n5glKmdm8" role="3clF47">
+        <node concept="3clFbF" id="61n5glKmKq5" role="3cqZAp">
+          <node concept="37vLTI" id="61n5glKmRDG" role="3clFbG">
+            <node concept="37vLTw" id="61n5glKmW5v" role="37vLTx">
+              <ref role="3cqZAo" node="61n5glKmkDU" resolve="value" />
+            </node>
+            <node concept="37vLTw" id="61n5glKmKq4" role="37vLTJ">
+              <ref role="3cqZAo" node="61n5glKmD6h" resolve="myHaltOnPrecheckFailure" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="61n5glKm76_" role="1B3o_S" />
+      <node concept="3cqZAl" id="61n5glKmd8x" role="3clF45" />
+      <node concept="37vLTG" id="61n5glKmkDU" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="61n5glKmkDT" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="61n5glKn2Nz" role="jymVt" />
+    <node concept="3clFb_" id="61n5glKng$c" role="jymVt">
+      <property role="TrG5h" value="getHaltOnPrecheckFailure" />
+      <node concept="3clFbS" id="61n5glKng$f" role="3clF47">
+        <node concept="3cpWs6" id="61n5glKnnDd" role="3cqZAp">
+          <node concept="37vLTw" id="61n5glKns_A" role="3cqZAk">
+            <ref role="3cqZAo" node="61n5glKmD6h" resolve="myHaltOnPrecheckFailure" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="61n5glKn90o" role="1B3o_S" />
+      <node concept="10P_77" id="61n5glKnglo" role="3clF45" />
+    </node>
     <node concept="2tJIrI" id="5reM9ACXLHD" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eqg" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -706,6 +760,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3j" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8esa" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getModels" />
@@ -729,6 +784,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3k" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8esi" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateModels" />
@@ -810,6 +866,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3l" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8esu" role="jymVt">
       <property role="TrG5h" value="getExcludedFromDiffFiles" />
       <node concept="3uibUv" id="KL8Aql8esv" role="3clF45">
@@ -831,6 +888,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3m" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8esA" role="jymVt">
       <property role="TrG5h" value="updateExcludedFromDiffFiles" />
       <node concept="37vLTG" id="KL8Aql8esB" role="3clF46">
@@ -925,6 +983,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3n" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8esM" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getModules" />
@@ -948,6 +1007,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3o" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8esU" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateModules" />
@@ -1004,6 +1064,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3p" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8etg" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateMPSProjectFiles" />
@@ -1056,6 +1117,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3q" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8et$" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateFailOnError" />
@@ -1111,6 +1173,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3r" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8etR" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateProperties" />
@@ -1147,6 +1210,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3s" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eBe" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="putProperty" />
@@ -1182,6 +1246,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3t" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eBs" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getProperty" />
@@ -1253,6 +1318,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3u" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eus" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getLibraries" />
@@ -1282,6 +1348,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3v" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eu_" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateLibraries" />
@@ -1356,6 +1423,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3w" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8evk" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getMacro" />
@@ -1383,6 +1451,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3x" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8evt" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="updateMacro" />
@@ -1448,6 +1517,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3y" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5tFQj" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getPlugins" />
@@ -1506,6 +1576,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3z" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8evO" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getLogLevel" />
@@ -1562,6 +1633,7 @@
         <node concept="10P_77" id="58KrZDES$sX" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3$" role="jymVt" />
     <node concept="3clFb_" id="3GGnItM8KQd" role="jymVt">
       <property role="TrG5h" value="getChunks" />
       <node concept="3Tm1VV" id="3GGnItM8KQf" role="1B3o_S" />
@@ -1587,6 +1659,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3_" role="jymVt" />
     <node concept="3clFb_" id="3GGnItM8Nc4" role="jymVt">
       <property role="TrG5h" value="updateChunks" />
       <node concept="37vLTG" id="3GGnItM8Ncc" role="3clF46">
@@ -1645,6 +1718,7 @@
         <node concept="17QB3L" id="3GGnItM95Z1" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3A" role="jymVt" />
     <node concept="3clFb_" id="3GGnItM95Zu" role="jymVt">
       <property role="TrG5h" value="getLibraryJars" />
       <node concept="3Tm1VV" id="3GGnItM95Zw" role="1B3o_S" />
@@ -1669,6 +1743,7 @@
         <node concept="17QB3L" id="3GGnItM95ZQ" role="11_B2D" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3B" role="jymVt" />
     <node concept="3clFb_" id="5reM9ACYuH5" role="jymVt">
       <property role="TrG5h" value="updateLibraryJars" />
       <node concept="3cqZAl" id="5reM9ACYuH7" role="3clF45" />
@@ -1715,11 +1790,26 @@
             <node concept="3uibUv" id="KL8Aql8eyj" role="1tU5fm">
               <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
             </node>
-            <node concept="2ShNRf" id="KL8Aql8eyk" role="33vP2m">
-              <node concept="1pGfFk" id="KL8Aql8eyl" role="2ShVmc">
-                <ref role="37wK5l" to="mmaq:~Element.&lt;init&gt;(java.lang.String)" resolve="Element" />
-                <node concept="37vLTw" id="2BHiRxeosop" role="37wK5m">
-                  <ref role="3cqZAo" node="KL8Aql8enQ" resolve="ELEMENT_TODO" />
+            <node concept="2OqwBi" id="3O0qRXvbKKI" role="33vP2m">
+              <node concept="2ShNRf" id="KL8Aql8eyk" role="2Oq$k0">
+                <node concept="1pGfFk" id="KL8Aql8eyl" role="2ShVmc">
+                  <ref role="37wK5l" to="mmaq:~Element.&lt;init&gt;(java.lang.String)" resolve="Element" />
+                  <node concept="37vLTw" id="2BHiRxeosop" role="37wK5m">
+                    <ref role="3cqZAo" node="KL8Aql8enQ" resolve="ELEMENT_TODO" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="3O0qRXvbQC2" role="2OqNvi">
+                <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                <node concept="37vLTw" id="3O0qRXvbXsy" role="37wK5m">
+                  <ref role="3cqZAo" node="3O0qRXvaY65" resolve="ATTRIBUTE_HALT_ON_PRECHECK_FAILURE" />
+                </node>
+                <node concept="2YIFZM" id="3O0qRXvcITr" role="37wK5m">
+                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                  <ref role="37wK5l" to="wyt6:~String.valueOf(boolean)" resolve="valueOf" />
+                  <node concept="37vLTw" id="3O0qRXvcPPS" role="37wK5m">
+                    <ref role="3cqZAo" node="61n5glKmD6h" resolve="myHaltOnPrecheckFailure" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -2046,6 +2136,28 @@
       <node concept="3cqZAl" id="KL8Aql8e$b" role="3clF45" />
       <node concept="3Tm6S6" id="1288c6Ec7fW" role="1B3o_S" />
       <node concept="3clFbS" id="KL8Aql8e$d" role="3clF47">
+        <node concept="3clFbF" id="3O0qRXvdu$I" role="3cqZAp">
+          <node concept="37vLTI" id="3O0qRXvdyDb" role="3clFbG">
+            <node concept="37vLTw" id="3O0qRXvdu$F" role="37vLTJ">
+              <ref role="3cqZAo" node="61n5glKmD6h" resolve="myHaltOnPrecheckFailure" />
+            </node>
+            <node concept="2YIFZM" id="3O0qRXveZix" role="37vLTx">
+              <ref role="37wK5l" to="wyt6:~Boolean.valueOf(java.lang.String)" resolve="valueOf" />
+              <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+              <node concept="2OqwBi" id="3O0qRXvdarh" role="37wK5m">
+                <node concept="37vLTw" id="3O0qRXvfbIJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="KL8Aql8eA9" resolve="elem" />
+                </node>
+                <node concept="liA8E" id="3O0qRXvdarj" role="2OqNvi">
+                  <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
+                  <node concept="37vLTw" id="3O0qRXvf5vu" role="37wK5m">
+                    <ref role="3cqZAo" node="3O0qRXvaY65" resolve="ATTRIBUTE_HALT_ON_PRECHECK_FAILURE" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="1DcWWT" id="KL8Aql8e$e" role="3cqZAp">
           <node concept="3clFbS" id="KL8Aql8e$f" role="2LFqv$">
             <node concept="3cpWs8" id="KL8Aql8e$m" role="3cqZAp">
@@ -2388,6 +2500,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3O0qRXvbc3C" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eAb" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="dumpToTmpFile" />

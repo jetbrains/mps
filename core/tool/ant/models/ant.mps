@@ -9625,6 +9625,34 @@
       <node concept="3Tm1VV" id="75eqTYkrAbI" role="1B3o_S" />
       <node concept="3cqZAl" id="75eqTYkrAbJ" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="61n5glKlwLN" role="jymVt" />
+    <node concept="3clFb_" id="61n5glKlv5M" role="jymVt">
+      <property role="TrG5h" value="setHaltOnPrecheckFailure" />
+      <property role="DiZV1" value="false" />
+      <property role="od$2w" value="false" />
+      <node concept="37vLTG" id="61n5glKlv5N" role="3clF46">
+        <property role="TrG5h" value="haltOnPrecheckFailure" />
+        <property role="3TUv4t" value="false" />
+        <node concept="10P_77" id="61n5glKlG6Z" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="61n5glKlv5P" role="3clF47">
+        <node concept="3clFbF" id="61n5glKlv5Q" role="3cqZAp">
+          <node concept="2OqwBi" id="61n5glKlv5R" role="3clFbG">
+            <node concept="37vLTw" id="61n5glKlv5S" role="2Oq$k0">
+              <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="61n5glKlv5T" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:61n5glKmdm5" resolve="setHaltOnPrecheckFailure" />
+              <node concept="37vLTw" id="61n5glKnNCm" role="37wK5m">
+                <ref role="3cqZAo" node="61n5glKlv5N" resolve="haltOnPrecheckFailure" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="61n5glKlv5X" role="1B3o_S" />
+      <node concept="3cqZAl" id="61n5glKlv5Y" role="3clF45" />
+    </node>
     <node concept="2tJIrI" id="60oBoEdxLi" role="jymVt" />
     <node concept="3clFb_" id="7zEA_IIJ2No" role="jymVt">
       <property role="1EzhhJ" value="false" />

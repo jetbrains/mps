@@ -16,6 +16,8 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.apache.log4j.Level;
+import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.project.Project;
 import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -27,7 +29,6 @@ import javax.swing.JComponent;
 import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ApplicationManager;
-import org.apache.log4j.Level;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
@@ -62,15 +63,21 @@ public class MigrationTask {
   private MigrationSession mySession;
   private volatile boolean myIsComplete = false;
   private LocalHistoryAction myCurrentChange = null;
-  private List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
+  private final List<ScriptApplied> myWereRun = ListSequence.fromList(new ArrayList<ScriptApplied>());
+  private final boolean myHaltOnFailedPrecheck;
 
-  private ProgressMonitorAdapter myMonitor;
+  private final ProgressMonitorAdapter myMonitor;
 
   public MigrationTask(MigrationSession session, ProgressMonitorAdapter monitor) {
+    this(session, monitor, true);
+  }
+
+  public MigrationTask(MigrationSession session, ProgressMonitorAdapter monitor, boolean haltOnFailedPrecheck) {
     mySession = session;
     myMonitor = monitor;
     mySession.setCurrentStage(0);
     myMonitor.start("Migrating...", 100);
+    myHaltOnFailedPrecheck = haltOnFailedPrecheck;
   }
 
   public void run() {
@@ -80,10 +87,10 @@ public class MigrationTask {
       myIsComplete = true;
       myMonitor.step("Done!");
       myMonitor.advance(0);
-      myMonitor.done();
     } catch (MigrationError me) {
       error(me);
     } finally {
+      myMonitor.done();
       PersistenceRegistry.getInstance().enableFastFindUsages();
     }
   }
@@ -133,7 +140,21 @@ public class MigrationTask {
       // null - no error, true - must stop, false - can ignore
       boolean errors = checkModels(myMonitor.subTask(10));
       if (errors) {
-        throw new PreCheckError(mySession, errors);
+        final PreCheckError preCheckError = new PreCheckError(mySession, errors);
+        if (myHaltOnFailedPrecheck) {
+          throw preCheckError;
+        } else {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("Migration pre-check has failed, ignoring...");
+          }
+          mySession.getProject().getModelAccess().runReadAction(new Runnable() {
+            @Override
+            public void run() {
+              Logger logger = LogManager.getLogger(MigrationTask.class);
+              preCheckError.logProblems(new LogHandler(logger));
+            }
+          });
+        }
       }
     }
 
@@ -186,7 +207,7 @@ public class MigrationTask {
 
     // todo pass ModalityState to constructor/via session?
     // in tests, we have EmptyProgressIndicator and use NON_MODAL
-    JComponent modalityComponent = check_ajmasp_a0e0bb(as_ajmasp_a0a0e0cb(myMonitor.getIndicator(), InlineProgressIndicator.class));
+    JComponent modalityComponent = check_ajmasp_a0e0eb(as_ajmasp_a0a0e0fb(myMonitor.getIndicator(), InlineProgressIndicator.class));
     ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
@@ -319,7 +340,7 @@ public class MigrationTask {
     runLocalHistoryRecord(caption, new Runnable() {
       public void run() {
         try {
-          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0nb(as_ajmasp_a0a0a0a0a0a1a5a04(myMonitor.getIndicator(), InlineProgressIndicator.class));
+          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0qb(as_ajmasp_a0a0a0a0a0a1a5a34(myMonitor.getIndicator(), InlineProgressIndicator.class));
           ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
           for (final SModule module : ListSequence.fromList(allModules.value)) {
@@ -355,7 +376,7 @@ public class MigrationTask {
     runLocalHistoryRecord(caption, new Runnable() {
       public void run() {
         try {
-          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0pb(as_ajmasp_a0a0a0a0a0a1a5a24(myMonitor.getIndicator(), InlineProgressIndicator.class));
+          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0sb(as_ajmasp_a0a0a0a0a0a1a5a54(myMonitor.getIndicator(), InlineProgressIndicator.class));
           ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
           for (final SModule module : ListSequence.fromList(allModules.value)) {
@@ -508,31 +529,31 @@ public class MigrationTask {
     });
     return res.value;
   }
-  private static JComponent check_ajmasp_a0e0bb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0e0eb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
     return null;
   }
-  private static JComponent check_ajmasp_a0a0a0b0f0nb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0a0a0b0f0qb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
     return null;
   }
-  private static JComponent check_ajmasp_a0a0a0b0f0pb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0a0a0b0f0sb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
     return null;
   }
-  private static <T> T as_ajmasp_a0a0e0cb(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0e0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a04(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a34(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a24(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a54(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -564,7 +564,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     ApplicationManager.getApplication().invokeAndWait(new Runnable() {
       public void run() {
         try {
-          AntTaskExecutionUtil.migrate(project);
+          AntTaskExecutionUtil.migrate(project, true);
         } catch (Exception e) {
           throw new RuntimeException("Exception during migration", e);
         }

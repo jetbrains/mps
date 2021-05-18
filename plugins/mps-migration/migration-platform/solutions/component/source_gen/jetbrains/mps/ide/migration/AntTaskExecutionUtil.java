@@ -12,10 +12,10 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
 import java.util.Properties;
 import jetbrains.mps.ide.migration.wizard.MigrationTask;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
 import org.apache.log4j.Level;
-import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.messages.LogHandler;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class AntTaskExecutionUtil {
   /**
    * Do not change this method's signature. It is used from MigrationWorker
    */
-  public static void migrate(final Project project) throws Exception {
+  public static void migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
     MigrationRegistry m = ProjectHelper.toIdeaProject(project).getService(MigrationRegistry.class);
 
     MigrationSession session = new MyMigrationSession(project, m);
@@ -47,20 +47,19 @@ public class AntTaskExecutionUtil {
     final Properties properties = new Properties();
     properties.setProperty(ERR_CODE_KEY, "0");
 
-    MigrationTask task = new MigrationTask(session, progress) {
+    MigrationTask task = new MigrationTask(session, progress, haltOnPrecheckFailure) {
       @Override
-      protected void error(final MigrationError error) {
+      protected void error(@NotNull final MigrationError error) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("Migration pre-check failed, stopping...");
+        }
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error(error.getMessage());
         }
         project.getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
-            for (IssueKindReportItem p : Sequence.fromIterable(error.getProblems(new EmptyProgressIndicator()))) {
-              String problemMsg = p.getMessage() + " (reason object: " + IssueKindReportItem.PATH_OBJECT.get(p) + ")";
-              if (LOG.isEnabledFor(Level.ERROR)) {
-                LOG.error("- " + problemMsg);
-              }
-            }
+            Logger logger = LogManager.getLogger(AntTaskExecutionUtil.class);
+            error.logProblems(new LogHandler(logger));
           }
         });
 
