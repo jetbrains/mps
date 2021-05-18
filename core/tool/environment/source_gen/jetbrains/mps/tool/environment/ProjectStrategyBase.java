@@ -13,7 +13,11 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.messages.MessageCollector;
+import java.util.ArrayList;
+import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.make.ModuleMaker;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.Set;
@@ -55,7 +59,17 @@ public abstract class ProjectStrategyBase implements ProjectStrategy {
     }
     return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<MPSCompilationResult>() {
       public MPSCompilationResult compute() {
-        return new ModuleMaker().make(IterableUtil.asCollection(project.getRepository().getModules()), new EmptyProgressMonitor());
+        MessageCollector mc = new MessageCollector(new ArrayList<IMessage>());
+        ModuleMaker mm = new ModuleMaker(mc.restrict(MessageKind.ERROR));
+        MPSCompilationResult rv = mm.make(IterableUtil.asCollection(project.getRepository().getModules()), new EmptyProgressMonitor());
+        if (!(rv.isOk())) {
+          // regardless of what's in the log (and whether it's turned on at all(, I care to see errors
+          // Perhaps, not sysout but part of ISE from makeOnFirstTimeOpened(), shall decide once need arises.
+          for (IMessage m : mc.result()) {
+            System.out.println(m.getText());
+          }
+        }
+        return rv;
       }
     });
   }
