@@ -224,12 +224,12 @@ final class ModulesContainer {
 
   public Collection<String> getCompileClasspath() {
     // utilize dependencies collected during fillDependencies()
-    HashSet<SModule> ccModules = new HashSet<>();
+    HashSet<SModule> ccModules = new LinkedHashSet<>();
     for (JavaModule jm : myModules.values()) {
       ccModules.add(jm.myModule);
       ccModules.addAll(jm.myDependsFrom);
     }
-    Set<String> result = new HashSet<>();
+    Set<String> result = new LinkedHashSet<>();
     for (SModule m : ccModules) {
       final JavaModuleFacet jmf = m.getFacet(JavaModuleFacet.class);
       if (jmf == null) {
