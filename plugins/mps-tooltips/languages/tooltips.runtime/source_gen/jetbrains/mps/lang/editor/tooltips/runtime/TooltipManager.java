@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import com.intellij.ide.TooltipEvent;
 import com.intellij.openapi.ui.popup.Balloon;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.ArrayList;
 import java.awt.Point;
@@ -104,7 +105,11 @@ public class TooltipManager {
     if (!(anchorsAreMarked) && !(event.isControlDown())) {
       return;
     }
-    List<String> hints = TooltipUtils.getHintsForNode(myEditorComponent, myEditorComponent.getRootCell().getSNode());
+    SNode node = myEditorComponent.getRootCell().getSNode();
+    if (node == null) {
+      return;
+    }
+    List<String> hints = TooltipUtils.getHintsForNode(myEditorComponent, node);
     if (!(hints.contains(RADAR_HINT))) {
       return;
     }
