@@ -2272,85 +2272,85 @@
       <unit id="6868777471677432036" at="29,0,122,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner" />
     </file>
     <file name="notNullInstruction.java">
-      <node id="6868777471677432048" at="9,0,10,0" concept="5" trace="myexpression" />
-      <node id="6868777471677432047" at="10,0,11,0" concept="5" trace="myPresentation" />
-      <node id="6868777471677432047" at="11,47,12,43" concept="9" />
-      <node id="6868777471677432047" at="12,43,13,25" concept="4" />
-      <node id="6868777471677432048" at="13,25,14,30" concept="4" />
-      <node id="6868777471677432048" at="14,30,15,44" concept="4" />
-      <node id="6868777471677432048" at="15,44,16,29" concept="4" />
-      <node id="6868777471677432048" at="16,29,17,32" concept="4" />
-      <node id="6868777471677432047" at="17,32,18,35" concept="4" />
-      <node id="6868777471677432047" at="21,39,22,26" concept="10" />
-      <node id="6868777471677432048" at="24,32,25,24" concept="10" />
-      <node id="6868777471677432048" at="24,0,27,0" concept="8" trace="getexpression#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6868777471677432047" at="20,0,24,0" concept="8" trace="commandPresentation#()Ljava/lang/String;" />
-      <node id="6868777471677432047" at="11,0,20,0" concept="2" trace="notNullInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="6868777471677432047" at="21,39,22,26" />
-      <scope id="6868777471677432048" at="24,32,25,24" />
-      <scope id="6868777471677432048" at="24,0,27,0" />
-      <scope id="6868777471677432047" at="20,0,24,0" />
-      <scope id="6868777471677432047" at="11,47,18,35">
+      <node id="6868777471677432048" at="10,0,11,0" concept="5" trace="myexpression" />
+      <node id="6868777471677432047" at="11,0,12,0" concept="5" trace="myPresentation" />
+      <node id="6868777471677432047" at="12,47,13,43" concept="9" />
+      <node id="6868777471677432047" at="13,43,14,25" concept="4" />
+      <node id="6868777471677432048" at="14,25,15,30" concept="4" />
+      <node id="6868777471677432048" at="15,30,16,44" concept="4" />
+      <node id="6868777471677432048" at="16,44,17,29" concept="4" />
+      <node id="6868777471677432048" at="17,29,18,59" concept="4" />
+      <node id="6868777471677432047" at="18,59,19,35" concept="4" />
+      <node id="6868777471677432047" at="22,39,23,26" concept="10" />
+      <node id="6868777471677432048" at="25,32,26,24" concept="10" />
+      <node id="6868777471677432048" at="25,0,28,0" concept="8" trace="getexpression#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6868777471677432047" at="21,0,25,0" concept="8" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="6868777471677432047" at="12,0,21,0" concept="2" trace="notNullInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6868777471677432047" at="22,39,23,26" />
+      <scope id="6868777471677432048" at="25,32,26,24" />
+      <scope id="6868777471677432048" at="25,0,28,0" />
+      <scope id="6868777471677432047" at="21,0,25,0" />
+      <scope id="6868777471677432047" at="12,47,19,35">
         <var name="sb" id="6868777471677432047" />
       </scope>
-      <scope id="6868777471677432047" at="11,0,20,0">
+      <scope id="6868777471677432047" at="12,0,21,0">
         <var name="expression" id="6868777471677432048" />
       </scope>
-      <unit id="6868777471677432047" at="8,0,28,0" name="jetbrains.mps.baseLanguage.dataFlow.notNullInstruction" />
+      <unit id="6868777471677432047" at="9,0,29,0" name="jetbrains.mps.baseLanguage.dataFlow.notNullInstruction" />
     </file>
     <file name="nullInstruction.java">
-      <node id="6868777471677432054" at="9,0,10,0" concept="5" trace="myexpression" />
-      <node id="6868777471677432053" at="10,0,11,0" concept="5" trace="myPresentation" />
-      <node id="6868777471677432053" at="11,44,12,43" concept="9" />
-      <node id="6868777471677432053" at="12,43,13,22" concept="4" />
-      <node id="6868777471677432054" at="13,22,14,30" concept="4" />
-      <node id="6868777471677432054" at="14,30,15,44" concept="4" />
-      <node id="6868777471677432054" at="15,44,16,29" concept="4" />
-      <node id="6868777471677432054" at="16,29,17,32" concept="4" />
-      <node id="6868777471677432053" at="17,32,18,35" concept="4" />
-      <node id="6868777471677432053" at="21,39,22,26" concept="10" />
-      <node id="6868777471677432054" at="24,32,25,24" concept="10" />
-      <node id="6868777471677432054" at="24,0,27,0" concept="8" trace="getexpression#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6868777471677432053" at="20,0,24,0" concept="8" trace="commandPresentation#()Ljava/lang/String;" />
-      <node id="6868777471677432053" at="11,0,20,0" concept="2" trace="nullInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="6868777471677432053" at="21,39,22,26" />
-      <scope id="6868777471677432054" at="24,32,25,24" />
-      <scope id="6868777471677432054" at="24,0,27,0" />
-      <scope id="6868777471677432053" at="20,0,24,0" />
-      <scope id="6868777471677432053" at="11,44,18,35">
+      <node id="6868777471677432054" at="10,0,11,0" concept="5" trace="myexpression" />
+      <node id="6868777471677432053" at="11,0,12,0" concept="5" trace="myPresentation" />
+      <node id="6868777471677432053" at="12,44,13,43" concept="9" />
+      <node id="6868777471677432053" at="13,43,14,22" concept="4" />
+      <node id="6868777471677432054" at="14,22,15,30" concept="4" />
+      <node id="6868777471677432054" at="15,30,16,44" concept="4" />
+      <node id="6868777471677432054" at="16,44,17,29" concept="4" />
+      <node id="6868777471677432054" at="17,29,18,59" concept="4" />
+      <node id="6868777471677432053" at="18,59,19,35" concept="4" />
+      <node id="6868777471677432053" at="22,39,23,26" concept="10" />
+      <node id="6868777471677432054" at="25,32,26,24" concept="10" />
+      <node id="6868777471677432054" at="25,0,28,0" concept="8" trace="getexpression#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6868777471677432053" at="21,0,25,0" concept="8" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="6868777471677432053" at="12,0,21,0" concept="2" trace="nullInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6868777471677432053" at="22,39,23,26" />
+      <scope id="6868777471677432054" at="25,32,26,24" />
+      <scope id="6868777471677432054" at="25,0,28,0" />
+      <scope id="6868777471677432053" at="21,0,25,0" />
+      <scope id="6868777471677432053" at="12,44,19,35">
         <var name="sb" id="6868777471677432053" />
       </scope>
-      <scope id="6868777471677432053" at="11,0,20,0">
+      <scope id="6868777471677432053" at="12,0,21,0">
         <var name="expression" id="6868777471677432054" />
       </scope>
-      <unit id="6868777471677432053" at="8,0,28,0" name="jetbrains.mps.baseLanguage.dataFlow.nullInstruction" />
+      <unit id="6868777471677432053" at="9,0,29,0" name="jetbrains.mps.baseLanguage.dataFlow.nullInstruction" />
     </file>
     <file name="nullableInstruction.java">
-      <node id="6868777471677432051" at="9,0,10,0" concept="5" trace="myexpression" />
-      <node id="6868777471677432050" at="10,0,11,0" concept="5" trace="myPresentation" />
-      <node id="6868777471677432050" at="11,48,12,43" concept="9" />
-      <node id="6868777471677432050" at="12,43,13,26" concept="4" />
-      <node id="6868777471677432051" at="13,26,14,30" concept="4" />
-      <node id="6868777471677432051" at="14,30,15,44" concept="4" />
-      <node id="6868777471677432051" at="15,44,16,29" concept="4" />
-      <node id="6868777471677432051" at="16,29,17,32" concept="4" />
-      <node id="6868777471677432050" at="17,32,18,35" concept="4" />
-      <node id="6868777471677432050" at="21,39,22,26" concept="10" />
-      <node id="6868777471677432051" at="24,32,25,24" concept="10" />
-      <node id="6868777471677432051" at="24,0,27,0" concept="8" trace="getexpression#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6868777471677432050" at="20,0,24,0" concept="8" trace="commandPresentation#()Ljava/lang/String;" />
-      <node id="6868777471677432050" at="11,0,20,0" concept="2" trace="nullableInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="6868777471677432050" at="21,39,22,26" />
-      <scope id="6868777471677432051" at="24,32,25,24" />
-      <scope id="6868777471677432051" at="24,0,27,0" />
-      <scope id="6868777471677432050" at="20,0,24,0" />
-      <scope id="6868777471677432050" at="11,48,18,35">
+      <node id="6868777471677432051" at="10,0,11,0" concept="5" trace="myexpression" />
+      <node id="6868777471677432050" at="11,0,12,0" concept="5" trace="myPresentation" />
+      <node id="6868777471677432050" at="12,48,13,43" concept="9" />
+      <node id="6868777471677432050" at="13,43,14,26" concept="4" />
+      <node id="6868777471677432051" at="14,26,15,30" concept="4" />
+      <node id="6868777471677432051" at="15,30,16,44" concept="4" />
+      <node id="6868777471677432051" at="16,44,17,29" concept="4" />
+      <node id="6868777471677432051" at="17,29,18,59" concept="4" />
+      <node id="6868777471677432050" at="18,59,19,35" concept="4" />
+      <node id="6868777471677432050" at="22,39,23,26" concept="10" />
+      <node id="6868777471677432051" at="25,32,26,24" concept="10" />
+      <node id="6868777471677432051" at="25,0,28,0" concept="8" trace="getexpression#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6868777471677432050" at="21,0,25,0" concept="8" trace="commandPresentation#()Ljava/lang/String;" />
+      <node id="6868777471677432050" at="12,0,21,0" concept="2" trace="nullableInstruction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6868777471677432050" at="22,39,23,26" />
+      <scope id="6868777471677432051" at="25,32,26,24" />
+      <scope id="6868777471677432051" at="25,0,28,0" />
+      <scope id="6868777471677432050" at="21,0,25,0" />
+      <scope id="6868777471677432050" at="12,48,19,35">
         <var name="sb" id="6868777471677432050" />
       </scope>
-      <scope id="6868777471677432050" at="11,0,20,0">
+      <scope id="6868777471677432050" at="12,0,21,0">
         <var name="expression" id="6868777471677432051" />
       </scope>
-      <unit id="6868777471677432050" at="8,0,28,0" name="jetbrains.mps.baseLanguage.dataFlow.nullableInstruction" />
+      <unit id="6868777471677432050" at="9,0,29,0" name="jetbrains.mps.baseLanguage.dataFlow.nullableInstruction" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/6868777471677432282">

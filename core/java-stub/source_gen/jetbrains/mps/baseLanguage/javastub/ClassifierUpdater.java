@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMFormalTypeParameter;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
 import org.apache.log4j.Level;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMMethod;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -175,7 +176,7 @@ public class ClassifierUpdater {
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("ClassifierType was expected, but received: " + typeByASMType + " when parsing the " + myClassifier);
+              LOG.warn("ClassifierType was expected, but received: " + SNodeUtil.getPresentation(typeByASMType) + " when parsing the " + myClassifier);
             }
           }
 
@@ -204,7 +205,7 @@ public class ClassifierUpdater {
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform 
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("ClassifierType was expected, but received: " + typeByASMType);
+              LOG.warn("ClassifierType was expected, but received: " + SNodeUtil.getPresentation(typeByASMType));
             }
           }
         }

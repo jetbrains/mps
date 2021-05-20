@@ -19,6 +19,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -216,7 +217,7 @@ public class TransformationUtil {
     } else if ((type == null)) {
       return _quotation_createNode_crriw5_a0a3b0x();
     }
-    LOG.warning("Could not deduce type" + type);
+    LOG.warning("Could not deduce type" + SNodeUtil.getPresentation(type));
     return _quotation_createNode_crriw5_a3a32();
   }
   public static SNode getPrimitiveType() {

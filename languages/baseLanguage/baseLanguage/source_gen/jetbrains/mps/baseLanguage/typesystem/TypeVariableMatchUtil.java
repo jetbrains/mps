@@ -14,6 +14,7 @@ import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.behavior.IMethodCall__BehaviorDescriptor;
@@ -43,7 +44,7 @@ public class TypeVariableMatchUtil {
         if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(decl, LINKS.bound$aZCB), typeArg, substitutions))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArg, "The type " + typeArg + " is not a valid substitute for the bounded parameter " + decl, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449931173580", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArg, "The type " + SNodeUtil.getPresentation(typeArg) + " is not a valid substitute for the bounded parameter " + decl, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5977092449931173580", null, errorTarget);
           }
         }
       }

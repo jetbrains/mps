@@ -23,6 +23,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
@@ -283,7 +284,7 @@ public class QueriesGenerated extends QueryProviderBase {
         return null;
       }
     }
-    return "" + Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(ct, LINKS.classifier$cxMr))).first();
+    return "" + SNodeUtil.getPresentation(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(ct, LINKS.classifier$cxMr))).first());
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     SNode literal = _context.getNode();

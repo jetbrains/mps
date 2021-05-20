@@ -5,6 +5,7 @@ package jetbrains.mps.lang.text.editor;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -33,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       lineContainer = SNodeOperations.getParent(lineContainer);
     }
     if (lineContainer == null) {
-      throw new IllegalStateException("The line " + currentLine + " cannot be split. It is not a member of any node collection.");
+      throw new IllegalStateException("The line " + SNodeUtil.getPresentation(currentLine) + " cannot be split. It is not a member of any node collection.");
     }
     return lineContainer;
   }

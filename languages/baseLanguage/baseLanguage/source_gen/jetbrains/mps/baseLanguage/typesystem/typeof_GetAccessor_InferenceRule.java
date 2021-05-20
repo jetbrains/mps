@@ -15,6 +15,7 @@ import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -47,7 +48,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
         if (!(typeCheckingContext.isSingleTypeComputation())) {
           {
             SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582367", 0, null);
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + SNodeUtil.getPresentation(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582367", 0, null);
             typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) expectedRetType, true, true, _info_12389875345);
           }
         }
@@ -60,7 +61,7 @@ public class typeof_GetAccessor_InferenceRule extends AbstractInferenceRule_Runt
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
           SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582406", 0, null);
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeUtil.getPresentation(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933582406", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) expectedRetType, true, true, _info_12389875345);
         }
       }

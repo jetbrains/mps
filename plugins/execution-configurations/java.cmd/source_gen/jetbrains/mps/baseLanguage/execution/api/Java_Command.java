@@ -29,6 +29,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.apache.log4j.Level;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.TraceInfo;
 import jetbrains.mps.textgen.trace.UnitPositionInfo;
@@ -197,7 +198,7 @@ public class Java_Command {
     }
     if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$2Q_X))) {
       if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("The hosting module's " + module + " classes are not managed by MPS");
+        LOG.error("The hosting module's " + SNodeUtil.getPresentation(module) + " classes are not managed by MPS");
       }
     }
     DebugInfo debugInfo = new TraceInfo().getDebugInfo(model);
@@ -210,7 +211,7 @@ public class Java_Command {
       List<UnitPositionInfo> unitsForNode = debugInfo.getUnitsForNode(node);
       if (unitsForNode.isEmpty()) {
         if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("No unitName found for " + node + " in trace.info. Check that model is generated.");
+          LOG.error("No unitName found for " + SNodeUtil.getPresentation(node) + " in trace.info. Check that model is generated.");
         }
         return null;
       } else if (unitsForNode.size() == 1) {

@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -48,7 +49,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     } else if (SNodeOperations.isInstanceOf(toWrap, CONCEPTS.InterfaceConceptDeclaration$CG)) {
       return new InterfaceConceptWrap(SNodeOperations.cast(toWrap, CONCEPTS.InterfaceConceptDeclaration$CG));
     }
-    throw new IllegalArgumentException("Impossible to wrap the " + toWrap);
+    throw new IllegalArgumentException("Impossible to wrap the " + SNodeUtil.getPresentation(toWrap));
   }
 
   @Override

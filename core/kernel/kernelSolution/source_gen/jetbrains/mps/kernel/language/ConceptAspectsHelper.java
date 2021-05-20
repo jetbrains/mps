@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.kernel.model.SModelUtil;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -37,7 +38,7 @@ public class ConceptAspectsHelper {
   public static <T extends SNode> T attachNewConceptAspect(LanguageAspect aspect, SNode conceptNode, T aspectNode) {
     // [MM] this LanguageAspect usage is reviewed 
     Language language = SModelUtil.getDeclaringLanguage(conceptNode);
-    assert language != null : "Language shouldn't be null for " + conceptNode;
+    assert language != null : "Language shouldn't be null for " + SNodeUtil.getPresentation(conceptNode);
 
     SModel md = aspect.get(language);
     if (md == null) {

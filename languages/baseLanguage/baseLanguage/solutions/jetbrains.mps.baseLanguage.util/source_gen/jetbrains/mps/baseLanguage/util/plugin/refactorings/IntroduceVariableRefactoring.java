@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -47,7 +48,7 @@ public abstract class IntroduceVariableRefactoring {
     findDuplicates();
     SNode expressionType = this.getExpressionType(node);
     if (!(SNodeOperations.isInstanceOf(expressionType, CONCEPTS.Type$bu))) {
-      return "Couldn't compute type of expression: " + expressionType;
+      return "Couldn't compute type of expression: " + SNodeUtil.getPresentation(expressionType);
     } else
     if (this.isVoidType(expressionType)) {
       return "Expression has no type";
@@ -84,7 +85,7 @@ public abstract class IntroduceVariableRefactoring {
     this.myContainer = findContainer(var);
     SNode expressionType = ((SLinkOperations.getTarget(var, LINKS.type$a1UY) != null ? SLinkOperations.getTarget(var, LINKS.type$a1UY) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"))));
     if (!(SNodeOperations.isInstanceOf(expressionType, CONCEPTS.Type$bu))) {
-      return "Couldn't compute type of expression: " + expressionType;
+      return "Couldn't compute type of expression: " + SNodeUtil.getPresentation(expressionType);
     } else
     if (this.isVoidType(expressionType)) {
       return "Expression has no type";

@@ -10,6 +10,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,13 +36,13 @@ public class MpsScopesUtil {
       SNode method = SNodeOperations.cast(classifierMember, CONCEPTS.BaseMethodDeclaration$kD);
       return classifierPrefix + SPropertyOperations.getString(method, PROPS.name$MnvL) + "<" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).count() + ">" + "(" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() + ")";
     }
-    return "No signature for " + classifierMember;
+    return "No signature for " + SNodeUtil.getPresentation(classifierMember);
   }
   public static List<String> getMembersSignatures(SNode classifier) {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     for (SNode member : ((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getMembers", CONCEPTS.IClassifierType$B1, "6r77ob2V1Fr")))) {
       if (!(SNodeOperations.isInstanceOf(member, CONCEPTS.ClassifierMember$At))) {
-        ListSequence.fromList(result).addElement("Not ClassifierMember member: " + member);
+        ListSequence.fromList(result).addElement("Not ClassifierMember member: " + SNodeUtil.getPresentation(member));
       } else {
         ListSequence.fromList(result).addElement(((((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(member, CONCEPTS.ClassifierMember$At), CONCEPTS.ClassifierMember$At, SMethodTrimmedId.create("isStatic", null, "7MS72Gc8avw"))) ? "static " : "")) + getSignature(member, classifier));
       }

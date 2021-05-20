@@ -4,6 +4,7 @@ package jetbrains.mps.baseLanguage.dataFlow;
 
 import jetbrains.mps.analyzers.runtime.framework.GeneratedInstruction;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeUtil;
 
 public class nullInstruction extends GeneratedInstruction {
   private SNode myexpression;
@@ -14,7 +15,7 @@ public class nullInstruction extends GeneratedInstruction {
     myexpression = expression;
     putUserObject("expression", expression);
     addParameter(expression);
-    sb.append(" " + expression);
+    sb.append(" " + SNodeUtil.getPresentation(expression));
     myPresentation = sb.toString();
   }
   @Override

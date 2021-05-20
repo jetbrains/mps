@@ -20,6 +20,7 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -85,7 +86,7 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
             if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$aZCB), typeArgument_var, substitutions))) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + typeArgument_var + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4853049144095798837", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + SNodeUtil.getPresentation(typeArgument_var) + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4853049144095798837", null, errorTarget);
               }
             }
           }

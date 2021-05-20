@@ -13,6 +13,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildMacro__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -76,7 +77,7 @@ public final class MacroHelper {
       context.reportProblem("macro is defined outside of the project", macro);
       return;
     }
-    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$MnvL) : macroProject + "." + SPropertyOperations.getString(macro, PROPS.name$MnvL)), usedNames);
+    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$MnvL) : SNodeUtil.getPresentation(macroProject) + "." + SPropertyOperations.getString(macro, PROPS.name$MnvL)), usedNames);
     macroToName.put(macro, name);
     availableMacros.add(macro);
     if (importName != null) {

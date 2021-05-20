@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -47,7 +48,7 @@ public class check_UnusedPackageProtectedMethod_NonTypesystemRule extends Abstra
             }))) {
               {
                 final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_toq0jf_a0a0, "Package protected method " + matchedNode_toq0jf_a0a0 + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_toq0jf_a0a0, "Package protected method " + SNodeUtil.getPresentation(matchedNode_toq0jf_a0a0) + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7938578788781949884", null, errorTarget);
                 {
                   BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedMethod_QuickFix", "7938578788781949885", false);
                   _reporter_2309309498.addIntentionProvider(intentionProvider);

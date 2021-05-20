@@ -30,6 +30,7 @@ import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -1316,7 +1317,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
+          description += ". Parameter object: " + SNodeUtil.getPresentation(myParameterObject);
         } catch (Throwable t) {
           Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
           return null;
@@ -1366,7 +1367,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
           if (myParameterObject instanceof SNode) {
             return NodePresentationUtil.descriptionText((SNode) myParameterObject);
           }
-          return "" + myParameterObject;
+          return "" + SNodeUtil.getPresentation(myParameterObject);
         }
         @Nullable
         @Override

@@ -22,6 +22,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.apache.log4j.Level;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
@@ -109,7 +110,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     CalcClassifiersInRootsStatistic_Action.this.message(Level.INFO, "Members average time: " + membersOverallTime.value * 0.001 / rootsCount.value, null, _params);
   }
   /*package*/ long analyzeClassifiersInRoot(final SNode node, final Map<String, Object> _params) {
-    String nodeName = node + "@" + SModelOperations.getModelName(SNodeOperations.getModel(node));
+    String nodeName = SNodeUtil.getPresentation(node) + "@" + SModelOperations.getModelName(SNodeOperations.getModel(node));
 
     StringBuilder sb = new StringBuilder();
 

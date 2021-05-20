@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -76,7 +77,7 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
             if (!(typeCheckingContext.isSingleTypeComputation())) {
               {
                 SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363921400", 0, null);
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + SNodeUtil.getPresentation(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363921400", 0, null);
                 {
                   BaseQuickFixProvider intentionProvider = null;
                   intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181956696", false);
@@ -99,7 +100,7 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
             if (!(typeCheckingContext.isSingleTypeComputation())) {
               {
                 SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(returnStatement, LINKS.expression$eJ92);
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + _quotation_createNode_ifzhbs_a0b0a0b0a0b0a0a0a0b0a9a1() + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121578173", 0, null);
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "" + SNodeUtil.getPresentation(_quotation_createNode_ifzhbs_a0b0a0b0a0b0a0a0a0b0a9a1()) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121578173", 0, null);
                 {
                   BaseQuickFixProvider intentionProvider = null;
                   intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181947820", false);
@@ -132,7 +133,7 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
           if (!(typeCheckingContext.isSingleTypeComputation())) {
             {
               SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, expectedRetType + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363855090", 0, null);
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeUtil.getPresentation(expectedRetType) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1185363855090", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
                 intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181940867", false);
@@ -155,7 +156,7 @@ public class typeOf_BaseMethodDeclaration_InferenceRule extends AbstractInferenc
           if (!(typeCheckingContext.isSingleTypeComputation())) {
             {
               SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M);
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, _quotation_createNode_ifzhbs_a1a0a1a0a1a0b0c0l0b() + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121706943", 0, null);
+              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, SNodeUtil.getPresentation(_quotation_createNode_ifzhbs_a1a0a1a0a1a0b0c0l0b()) + " is expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2388917569121706943", 0, null);
               {
                 BaseQuickFixProvider intentionProvider = null;
                 intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddCast_QuickFix", "2388917569181947759", false);

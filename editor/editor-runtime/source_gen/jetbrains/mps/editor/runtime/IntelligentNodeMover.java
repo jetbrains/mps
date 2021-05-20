@@ -18,6 +18,7 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -82,7 +83,7 @@ public class IntelligentNodeMover {
         Iterable<SNode> intersection = ListSequence.fromList(SNodeOperations.getNodeAncestors(placeToMove.myParent, null, false)).intersect(CollectionSequence.fromCollection(myNodesToMove));
         if (Sequence.fromIterable(intersection).isNotEmpty()) {
           SNode first = Sequence.fromIterable(intersection).first();
-          LOG.error("Possible creation of cyclic tree. Node [\"" + first + "\"; concept: " + SNodeOperations.getConcept(first) + "; id: " + first.getNodeId() + "] is supposed to be moved inside itself. Moving was cancelled");
+          LOG.error("Possible creation of cyclic tree. Node [\"" + SNodeUtil.getPresentation(first) + "\"; concept: " + SNodeOperations.getConcept(first) + "; id: " + first.getNodeId() + "] is supposed to be moved inside itself. Moving was cancelled");
           return false;
         }
         doMove(placeToMove);

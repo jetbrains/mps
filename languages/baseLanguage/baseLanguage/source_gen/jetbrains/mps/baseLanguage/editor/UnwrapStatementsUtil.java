@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.baseLanguage.behavior.IContainsStatementList__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -43,7 +44,7 @@ public class UnwrapStatementsUtil {
 
   public static void unwrapIContainsStatementList(SNode oldContainer) {
     if (!(SNodeOperations.isInstanceOf(oldContainer, CONCEPTS.Statement$P6))) {
-      throw new IllegalArgumentException("The supplied statement container " + oldContainer + " is not a Statement.");
+      throw new IllegalArgumentException("The supplied statement container " + SNodeUtil.getPresentation(oldContainer) + " is not a Statement.");
     }
     unwrapStatementListInContainer(SNodeOperations.cast(oldContainer, CONCEPTS.Statement$P6), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(oldContainer));
   }

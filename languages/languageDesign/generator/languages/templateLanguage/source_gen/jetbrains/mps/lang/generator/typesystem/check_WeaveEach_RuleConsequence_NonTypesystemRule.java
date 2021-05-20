@@ -13,6 +13,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,7 +41,7 @@ public class check_WeaveEach_RuleConsequence_NonTypesystemRule extends AbstractN
       if (!(MetaAdapterByDeclaration.getConcept(nodeConcept).isSubConceptOf(MetaAdapterByDeclaration.getConcept(templateApplicableConcept)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(weaveEach, "template is not applicable to " + NT, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "546192990993046908", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(weaveEach, "template is not applicable to " + SNodeUtil.getPresentation(NT), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "546192990993046908", null, errorTarget);
         }
       }
     }

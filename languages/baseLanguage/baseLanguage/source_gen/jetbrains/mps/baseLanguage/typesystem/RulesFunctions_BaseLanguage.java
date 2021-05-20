@@ -40,6 +40,7 @@ import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.framework.AnalysisResult;
 import jetbrains.mps.baseLanguage.dataFlow.NullableState;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
@@ -776,7 +777,7 @@ __switch__:
         if (NullableState.canBeNull(result.get(instructions.get(instructions.size() - 1)).get(variable))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(expression, "Expression " + expression + " might evaluate to null but is returned from method declared @NotNull", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7249436257879820231", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(expression, "Expression " + SNodeUtil.getPresentation(expression) + " might evaluate to null but is returned from method declared @NotNull", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7249436257879820231", null, errorTarget);
           }
         }
       }

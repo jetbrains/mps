@@ -17,6 +17,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.errors.BaseQuickFixProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,7 +59,7 @@ public class check_UnusedPrivateMethods_NonTypesystemRule extends AbstractNonTyp
                 }))) {
                   {
                     final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
-                    IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_sl9v9q_a0a0, "Private method " + matchedNode_sl9v9q_a0a0 + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677", null, errorTarget);
+                    IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(matchedNode_sl9v9q_a0a0, "Private method " + SNodeUtil.getPresentation(matchedNode_sl9v9q_a0a0) + " is never used", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8101436443850399677", null, errorTarget);
                     {
                       BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RemoveUnusedMethod_QuickFix", "6640766779605353649", false);
                       _reporter_2309309498.addIntentionProvider(intentionProvider);

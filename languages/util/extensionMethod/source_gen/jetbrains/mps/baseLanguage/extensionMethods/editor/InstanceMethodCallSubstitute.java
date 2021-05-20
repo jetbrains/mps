@@ -24,6 +24,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -121,7 +122,7 @@ public class InstanceMethodCallSubstitute extends SubstituteMenuBase {
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
+            description += ". Parameter object: " + SNodeUtil.getPresentation(myParameterObject);
           } catch (Throwable t) {
             Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
             return null;
@@ -173,7 +174,7 @@ public class InstanceMethodCallSubstitute extends SubstituteMenuBase {
             if (myParameterObject instanceof SNode) {
               return NodePresentationUtil.visibleMatchingText((SNode) myParameterObject, null);
             }
-            return "" + myParameterObject;
+            return "" + SNodeUtil.getPresentation(myParameterObject);
           }
           @Nullable
           @Override
@@ -181,7 +182,7 @@ public class InstanceMethodCallSubstitute extends SubstituteMenuBase {
             if (myParameterObject instanceof SNode) {
               return NodePresentationUtil.descriptionText((SNode) myParameterObject);
             }
-            return "" + myParameterObject;
+            return "" + SNodeUtil.getPresentation(myParameterObject);
           }
           @Nullable
           @Override

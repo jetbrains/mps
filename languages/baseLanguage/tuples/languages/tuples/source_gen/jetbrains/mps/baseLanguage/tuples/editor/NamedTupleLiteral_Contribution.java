@@ -20,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -104,7 +105,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
+          description += ". Parameter object: " + SNodeUtil.getPresentation(myParameterObject);
         } catch (Throwable t) {
           Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
           return null;
@@ -161,7 +162,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
           if (myParameterObject instanceof SNode) {
             return NodePresentationUtil.descriptionText((SNode) myParameterObject);
           }
-          return "" + myParameterObject;
+          return "" + SNodeUtil.getPresentation(myParameterObject);
         }
         @Nullable
         @Override

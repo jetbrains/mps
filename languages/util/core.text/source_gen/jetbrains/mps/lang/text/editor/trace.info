@@ -4037,67 +4037,67 @@
   </root>
   <root nodeRef="r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)/6681408443910511317">
     <file name="TextStrategy.java">
-      <node id="6681408443910511439" at="16,0,17,0" concept="5" trace="myEditorContext" />
-      <node id="6681408443910511446" at="18,57,19,36" concept="4" />
-      <node id="6681408443910511459" at="22,0,23,0" concept="8" trace="execute#()V" />
-      <node id="1211637016817800681" at="30,60,31,38" concept="9" />
-      <node id="8356039341261832165" at="32,103,33,63" concept="4" />
-      <node id="8356039341261848406" at="35,32,36,130" concept="18" />
-      <node id="1211637016816249513" at="37,5,38,25" concept="10" />
-      <node id="6139978591965111015" at="48,72,49,65" concept="10" />
-      <node id="6139978591965112930" at="50,5,51,0" concept="12" />
-      <node id="6139978591965076729" at="53,39,54,69" concept="10" />
-      <node id="1211637016816813053" at="56,7,57,53" concept="0" />
-      <node id="1211637016816828748" at="57,53,58,48" concept="10" />
-      <node id="8356039341261976560" at="68,81,69,58" concept="9" />
-      <node id="8356039341261983517" at="69,58,70,65" concept="4" />
-      <node id="8356039341262029439" at="70,65,71,53" concept="9" />
-      <node id="8356039341261970946" at="71,53,72,63" concept="4" />
-      <node id="6681408443910511317" at="77,0,78,0" concept="13" trace="Line$yC" />
-      <node id="6681408443910511443" at="18,0,21,0" concept="3" trace="TextStrategy#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <node id="8356039341261826365" at="31,38,34,5" concept="20" />
-      <node id="8356039341261842773" at="34,5,37,5" concept="7" />
-      <node id="6139978591965108589" at="47,64,50,5" concept="7" />
-      <node id="6139978591965075724" at="53,0,56,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="1211637016816821642" at="51,0,56,7" concept="9" />
-      <node id="1211637016817992710" at="68,0,74,0" concept="14" trace="createNewLineContainer#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1211637016817991439" at="30,0,40,0" concept="14" trace="findLineContainer#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="1211637016817798093" at="47,0,60,0" concept="14" trace="findLineInContainer#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="6681408443910511445" at="18,57,19,36" />
-      <scope id="6681408443910511459" at="22,0,23,0" />
-      <scope id="8356039341261826367" at="32,103,33,63" />
-      <scope id="8356039341261842775" at="35,32,36,130" />
-      <scope id="6139978591965108591" at="48,72,49,65" />
-      <scope id="6139978591965075725" at="53,39,54,69" />
-      <scope id="6681408443910511443" at="18,0,21,0">
+      <node id="6681408443910511439" at="17,0,18,0" concept="5" trace="myEditorContext" />
+      <node id="6681408443910511446" at="19,57,20,36" concept="4" />
+      <node id="6681408443910511459" at="23,0,24,0" concept="8" trace="execute#()V" />
+      <node id="1211637016817800681" at="31,60,32,38" concept="9" />
+      <node id="8356039341261832165" at="33,103,34,63" concept="4" />
+      <node id="8356039341261848406" at="36,32,37,157" concept="18" />
+      <node id="1211637016816249513" at="38,5,39,25" concept="10" />
+      <node id="6139978591965111015" at="49,72,50,65" concept="10" />
+      <node id="6139978591965112930" at="51,5,52,0" concept="12" />
+      <node id="6139978591965076729" at="54,39,55,69" concept="10" />
+      <node id="1211637016816813053" at="57,7,58,53" concept="0" />
+      <node id="1211637016816828748" at="58,53,59,48" concept="10" />
+      <node id="8356039341261976560" at="69,81,70,58" concept="9" />
+      <node id="8356039341261983517" at="70,58,71,65" concept="4" />
+      <node id="8356039341262029439" at="71,65,72,53" concept="9" />
+      <node id="8356039341261970946" at="72,53,73,63" concept="4" />
+      <node id="6681408443910511317" at="78,0,79,0" concept="13" trace="Line$yC" />
+      <node id="6681408443910511443" at="19,0,22,0" concept="3" trace="TextStrategy#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="8356039341261826365" at="32,38,35,5" concept="20" />
+      <node id="8356039341261842773" at="35,5,38,5" concept="7" />
+      <node id="6139978591965108589" at="48,64,51,5" concept="7" />
+      <node id="6139978591965075724" at="54,0,57,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1211637016816821642" at="52,0,57,7" concept="9" />
+      <node id="1211637016817992710" at="69,0,75,0" concept="14" trace="createNewLineContainer#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1211637016817991439" at="31,0,41,0" concept="14" trace="findLineContainer#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1211637016817798093" at="48,0,61,0" concept="14" trace="findLineInContainer#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="6681408443910511445" at="19,57,20,36" />
+      <scope id="6681408443910511459" at="23,0,24,0" />
+      <scope id="8356039341261826367" at="33,103,34,63" />
+      <scope id="8356039341261842775" at="36,32,37,157" />
+      <scope id="6139978591965108591" at="49,72,50,65" />
+      <scope id="6139978591965075725" at="54,39,55,69" />
+      <scope id="6681408443910511443" at="19,0,22,0">
         <var name="editorContext" id="6681408443910511454" />
       </scope>
-      <scope id="6139978591965075724" at="53,0,56,0">
+      <scope id="6139978591965075724" at="54,0,57,0">
         <var name="it" id="6139978591965075724" />
       </scope>
-      <scope id="1211637016816268836" at="68,81,72,63">
+      <scope id="1211637016816268836" at="69,81,73,63">
         <var name="clone" id="8356039341261976561" />
         <var name="lineToReplace" id="8356039341262029440" />
       </scope>
-      <scope id="1211637016817992710" at="68,0,74,0">
+      <scope id="1211637016817992710" at="69,0,75,0">
         <var name="lineContainer" id="1211637016816272236" />
         <var name="newLine" id="1211637016816272442" />
       </scope>
-      <scope id="1211637016816246213" at="30,60,38,25">
+      <scope id="1211637016816246213" at="31,60,39,25">
         <var name="lineContainer" id="1211637016817800682" />
       </scope>
-      <scope id="1211637016817991439" at="30,0,40,0">
+      <scope id="1211637016817991439" at="31,0,41,0">
         <var name="currentLine" id="1211637016817802124" />
       </scope>
-      <scope id="1211637016816813019" at="47,64,58,48">
+      <scope id="1211637016816813019" at="48,64,59,48">
         <var name="lines" id="1211637016816821643" />
       </scope>
-      <scope id="1211637016817798093" at="47,0,60,0">
+      <scope id="1211637016817798093" at="48,0,61,0">
         <var name="lineContainer" id="1211637016816813070" />
       </scope>
-      <unit id="6681408443910511317" at="76,0,79,0" name="jetbrains.mps.lang.text.editor.TextStrategy$CONCEPTS" />
-      <unit id="6139978591965075724" at="52,162,56,5" name="jetbrains.mps.lang.text.editor.TextStrategy$1" />
-      <unit id="6681408443910511317" at="15,0,80,0" name="jetbrains.mps.lang.text.editor.TextStrategy" />
+      <unit id="6681408443910511317" at="77,0,80,0" name="jetbrains.mps.lang.text.editor.TextStrategy$CONCEPTS" />
+      <unit id="6139978591965075724" at="53,162,57,5" name="jetbrains.mps.lang.text.editor.TextStrategy$1" />
+      <unit id="6681408443910511317" at="16,0,81,0" name="jetbrains.mps.lang.text.editor.TextStrategy" />
     </file>
   </root>
   <root nodeRef="r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)/6681408443912300061">

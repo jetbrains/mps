@@ -18,6 +18,7 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -54,7 +55,7 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(target.value) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(target.value))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$BsHW), "No enclosing instance of type " + SNodeOperations.getParent(target.value) + " is accessible", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$BsHW), "No enclosing instance of type " + SNodeUtil.getPresentation(SNodeOperations.getParent(target.value)) + " is accessible", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "966837649713150029", null, errorTarget);
       }
     }
   }

@@ -241,67 +241,67 @@
   </root>
   <root nodeRef="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/6192102952330246943">
     <file name="MpsScopesUtil.java">
-      <node id="6192102952330317342" at="25,79,26,241" concept="7" />
-      <node id="852907523808703510" at="27,94,28,156" concept="8" />
-      <node id="852907523808703475" at="29,5,30,0" concept="10" />
-      <node id="6192102952330317337" at="31,90,32,152" concept="8" />
-      <node id="6192102952330318613" at="34,92,35,95" concept="7" />
-      <node id="6192102952330318523" at="35,95,36,307" concept="8" />
-      <node id="6192102952330318586" at="37,5,38,50" concept="8" />
-      <node id="6192102952330253471" at="40,69,41,73" concept="7" />
-      <node id="6192102952330293867" at="43,82,44,91" concept="2" />
-      <node id="6192102952330285182" at="45,14,46,297" concept="2" />
-      <node id="6192102952330253484" at="48,5,49,18" concept="8" />
-      <node id="6192102952330246943" at="53,0,54,0" concept="11" trace="Classifier$Ix" />
-      <node id="6192102952330246943" at="54,0,55,0" concept="11" trace="INamedConcept$Kd" />
-      <node id="6192102952330246943" at="55,0,56,0" concept="11" trace="EnumConstantDeclaration$MW" />
-      <node id="6192102952330246943" at="56,0,57,0" concept="11" trace="VariableDeclaration$Y0" />
-      <node id="6192102952330246943" at="57,0,58,0" concept="11" trace="BaseMethodDeclaration$kD" />
-      <node id="6192102952330246943" at="58,0,59,0" concept="11" trace="IClassifier$MF" />
-      <node id="6192102952330246943" at="59,0,60,0" concept="11" trace="IClassifierType$B1" />
-      <node id="6192102952330246943" at="60,0,61,0" concept="11" trace="ClassifierMember$At" />
-      <node id="6192102952330246943" at="64,0,65,0" concept="11" trace="name$MnvL" />
-      <node id="6192102952330246943" at="68,0,69,0" concept="11" trace="typeVariableDeclaration$Lipp" />
-      <node id="6192102952330246943" at="69,0,70,0" concept="11" trace="parameter$5xBj" />
-      <node id="6192102952330246945" at="23,0,25,0" concept="1" trace="MpsScopesUtil#()V" />
-      <node id="6192102952330293959" at="45,12,47,7" concept="0" />
-      <node id="852907523808703476" at="26,241,29,5" concept="5" />
-      <node id="6192102952330317305" at="30,0,33,5" concept="5" />
-      <node id="6192102952330317574" at="33,5,37,5" concept="5" />
-      <node id="6192102952330293831" at="42,309,47,7" concept="5" />
-      <node id="6192102952330285145" at="41,73,48,5" concept="4" />
-      <node id="6192102952330253451" at="40,0,51,0" concept="12" trace="getMembersSignatures#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
-      <node id="6192102952330293695" at="25,0,40,0" concept="12" trace="getSignature#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <scope id="6192102952330246948" at="23,26,23,26" />
-      <scope id="852907523808703477" at="27,94,28,156" />
-      <scope id="6192102952330317307" at="31,90,32,152" />
-      <scope id="6192102952330293832" at="43,82,44,91" />
-      <scope id="6192102952330293960" at="45,14,46,297" />
-      <scope id="6192102952330246945" at="23,0,25,0" />
-      <scope id="6192102952330317575" at="34,92,36,307">
+      <node id="6192102952330317342" at="26,79,27,241" concept="7" />
+      <node id="852907523808703510" at="28,94,29,156" concept="8" />
+      <node id="852907523808703475" at="30,5,31,0" concept="10" />
+      <node id="6192102952330317337" at="32,90,33,152" concept="8" />
+      <node id="6192102952330318613" at="35,92,36,95" concept="7" />
+      <node id="6192102952330318523" at="36,95,37,307" concept="8" />
+      <node id="6192102952330318586" at="38,5,39,77" concept="8" />
+      <node id="6192102952330253471" at="41,69,42,73" concept="7" />
+      <node id="6192102952330293867" at="44,82,45,118" concept="2" />
+      <node id="6192102952330285182" at="46,14,47,297" concept="2" />
+      <node id="6192102952330253484" at="49,5,50,18" concept="8" />
+      <node id="6192102952330246943" at="54,0,55,0" concept="11" trace="Classifier$Ix" />
+      <node id="6192102952330246943" at="55,0,56,0" concept="11" trace="INamedConcept$Kd" />
+      <node id="6192102952330246943" at="56,0,57,0" concept="11" trace="EnumConstantDeclaration$MW" />
+      <node id="6192102952330246943" at="57,0,58,0" concept="11" trace="VariableDeclaration$Y0" />
+      <node id="6192102952330246943" at="58,0,59,0" concept="11" trace="BaseMethodDeclaration$kD" />
+      <node id="6192102952330246943" at="59,0,60,0" concept="11" trace="IClassifier$MF" />
+      <node id="6192102952330246943" at="60,0,61,0" concept="11" trace="IClassifierType$B1" />
+      <node id="6192102952330246943" at="61,0,62,0" concept="11" trace="ClassifierMember$At" />
+      <node id="6192102952330246943" at="65,0,66,0" concept="11" trace="name$MnvL" />
+      <node id="6192102952330246943" at="69,0,70,0" concept="11" trace="typeVariableDeclaration$Lipp" />
+      <node id="6192102952330246943" at="70,0,71,0" concept="11" trace="parameter$5xBj" />
+      <node id="6192102952330246945" at="24,0,26,0" concept="1" trace="MpsScopesUtil#()V" />
+      <node id="6192102952330293959" at="46,12,48,7" concept="0" />
+      <node id="852907523808703476" at="27,241,30,5" concept="5" />
+      <node id="6192102952330317305" at="31,0,34,5" concept="5" />
+      <node id="6192102952330317574" at="34,5,38,5" concept="5" />
+      <node id="6192102952330293831" at="43,309,48,7" concept="5" />
+      <node id="6192102952330285145" at="42,73,49,5" concept="4" />
+      <node id="6192102952330253451" at="41,0,52,0" concept="12" trace="getMembersSignatures#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
+      <node id="6192102952330293695" at="26,0,41,0" concept="12" trace="getSignature#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="6192102952330246948" at="24,26,24,26" />
+      <scope id="852907523808703477" at="28,94,29,156" />
+      <scope id="6192102952330317307" at="32,90,33,152" />
+      <scope id="6192102952330293832" at="44,82,45,118" />
+      <scope id="6192102952330293960" at="46,14,47,297" />
+      <scope id="6192102952330246945" at="24,0,26,0" />
+      <scope id="6192102952330317575" at="35,92,37,307">
         <var name="method" id="6192102952330318614" />
       </scope>
-      <scope id="6192102952330285146" at="42,309,47,7" />
-      <scope id="6192102952330285145" at="41,73,48,5">
+      <scope id="6192102952330285146" at="43,309,48,7" />
+      <scope id="6192102952330285145" at="42,73,49,5">
         <var name="member" id="6192102952330285148" />
       </scope>
-      <scope id="6192102952330253454" at="40,69,49,18">
+      <scope id="6192102952330253454" at="41,69,50,18">
         <var name="result" id="6192102952330253472" />
       </scope>
-      <scope id="6192102952330253451" at="40,0,51,0">
+      <scope id="6192102952330253451" at="41,0,52,0">
         <var name="classifier" id="6192102952330253469" />
       </scope>
-      <scope id="6192102952330293698" at="25,79,38,50">
+      <scope id="6192102952330293698" at="26,79,39,77">
         <var name="classifierPrefix" id="6192102952330317343" />
       </scope>
-      <scope id="6192102952330293695" at="25,0,40,0">
+      <scope id="6192102952330293695" at="26,0,41,0">
         <var name="classifier" id="6192102952330293702" />
         <var name="classifierMember" id="6192102952330293700" />
       </scope>
-      <unit id="6192102952330246943" at="63,0,66,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil$PROPS" />
-      <unit id="6192102952330246943" at="67,0,71,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil$LINKS" />
-      <unit id="6192102952330246943" at="52,0,62,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil$CONCEPTS" />
-      <unit id="6192102952330246943" at="21,0,72,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil" />
+      <unit id="6192102952330246943" at="64,0,67,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil$PROPS" />
+      <unit id="6192102952330246943" at="68,0,72,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil$LINKS" />
+      <unit id="6192102952330246943" at="53,0,63,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil$CONCEPTS" />
+      <unit id="6192102952330246943" at="22,0,73,0" name="jetbrains.mps.baseLanguage.search.MpsScopesUtil" />
     </file>
   </root>
   <root nodeRef="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/8442551749397137296">

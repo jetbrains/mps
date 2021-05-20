@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -49,7 +50,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     myModel = SNodeOperations.getModel(node);
     // I know the exact way to reproduce a bug: 
     // write an assertion with a comment 'this can't happen' 
-    assert myModel != null : "This can't happen. " + node;
+    assert myModel != null : "This can't happen. " + SNodeUtil.getPresentation(node);
     myWhatToEvaluate = node;
   }
   @Override

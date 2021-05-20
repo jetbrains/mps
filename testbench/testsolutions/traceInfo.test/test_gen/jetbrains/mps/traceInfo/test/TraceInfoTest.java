@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
@@ -131,7 +132,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
+          Assert.assertTrue("Node " + SNodeUtil.getPresentation(node) + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
         }
       }
     });
@@ -149,7 +150,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
+          Assert.assertTrue("Node " + SNodeUtil.getPresentation(node) + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
         }
       }
     });

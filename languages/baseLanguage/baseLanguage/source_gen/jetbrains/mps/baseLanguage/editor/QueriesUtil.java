@@ -12,6 +12,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -71,7 +72,7 @@ public class QueriesUtil {
       SLinkOperations.setTarget(newNode, LINKS.enumClass$PMF6, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk));
       return newNode;
     }
-    throw new RuntimeException("Bad parameter object " + parameterObject);
+    throw new RuntimeException("Bad parameter object " + SNodeUtil.getPresentation(parameterObject));
   }
   public static SNode fillStaticMethodCall(SNode newNode, SNode parameterObject, SNode classifier, SNode oldNode) {
     SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ));

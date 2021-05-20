@@ -23,6 +23,7 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.debug.api.Debuggers;
 import jetbrains.mps.debug.api.DebuggerNotPresentException;
 import org.apache.log4j.Level;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -64,7 +65,7 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
             return Debuggers.getInstance().getDebuggerByNameSafe("Java").createBreakpoint(debuggableNode, "JAVA_LINE_BREAKPOINT", project);
           } catch (DebuggerNotPresentException e) {
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Exception while creating breakpoint for node" + debuggableNode, e);
+              LOG.warn("Exception while creating breakpoint for node" + SNodeUtil.getPresentation(debuggableNode), e);
             }
             return null;
           }
@@ -94,7 +95,7 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
             return Debuggers.getInstance().getDebuggerByNameSafe("Java").createBreakpoint(debuggableNode, "JAVA_FIELD_BREAKPOINT", project);
           } catch (DebuggerNotPresentException e) {
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Exception while creating breakpoint for node" + debuggableNode, e);
+              LOG.warn("Exception while creating breakpoint for node" + SNodeUtil.getPresentation(debuggableNode), e);
             }
             return null;
           }

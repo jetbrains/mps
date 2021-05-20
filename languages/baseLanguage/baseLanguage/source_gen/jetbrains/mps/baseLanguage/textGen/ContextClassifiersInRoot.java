@@ -10,6 +10,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.apache.log4j.Level;
+import jetbrains.mps.smodel.SNodeUtil;
 import java.util.Collections;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.HashMap;
@@ -48,7 +49,7 @@ public class ContextClassifiersInRoot {
     }
     if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Classifier$Ix)) {
       if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn("contextNode is classifier in getContextClassifiers: " + contextNode);
+        LOG.warn("contextNode is classifier in getContextClassifiers: " + SNodeUtil.getPresentation(contextNode));
       }
       return Collections.emptyMap();
     }
@@ -83,7 +84,7 @@ public class ContextClassifiersInRoot {
           processNestedClassifiers = !((LINKS.superclass$Mp9$.equals(sourceChildRole) || LINKS.implementedInterface$rujG.equals(sourceChildRole)));
         } else {
           if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Illegal classifier node in bl textgen: " + current);
+            LOG.warn("Illegal classifier node in bl textgen: " + SNodeUtil.getPresentation(current));
           }
         }
 

@@ -7,6 +7,7 @@ import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescri
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.smodel.SNodeUtil;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -48,7 +49,7 @@ public class FunctionTypeUtil {
       SNode meth = FunctionTypeUtil.getFunctionMethod(functionTypeOrClassifier);
       return ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(meth, LINKS.returnType$5xoi), SNodeOperations.cast(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL));
     } else {
-      throw new IllegalArgumentException("Invalid argument: " + functionTypeOrClassifier);
+      throw new IllegalArgumentException("Invalid argument: " + SNodeUtil.getPresentation(functionTypeOrClassifier));
     }
   }
   public static List<SNode> getParameterTypes(SNode functionTypeOrClassifier) {
@@ -65,7 +66,7 @@ public class FunctionTypeUtil {
       }
       return res;
     } else {
-      throw new IllegalArgumentException("Invalid argument: " + functionTypeOrClassifier);
+      throw new IllegalArgumentException("Invalid argument: " + SNodeUtil.getPresentation(functionTypeOrClassifier));
     }
   }
   public static List<SNode> normalizeThrowsTypes(List<SNode> ttypes) {

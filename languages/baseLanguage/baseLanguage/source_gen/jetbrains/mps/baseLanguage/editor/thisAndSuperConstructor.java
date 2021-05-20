@@ -20,6 +20,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
@@ -117,7 +118,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
+            description += ". Parameter object: " + SNodeUtil.getPresentation(myParameterObject);
           } catch (Throwable t) {
             Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
             return null;
@@ -228,7 +229,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
+            description += ". Parameter object: " + SNodeUtil.getPresentation(myParameterObject);
           } catch (Throwable t) {
             Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
             return null;

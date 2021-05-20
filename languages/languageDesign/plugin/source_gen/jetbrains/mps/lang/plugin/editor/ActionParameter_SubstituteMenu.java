@@ -27,6 +27,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.lang.plugin.behavior.ActionDataParameterDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
@@ -153,7 +154,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return "" + myParameterObject._0();
+          return "" + SNodeUtil.getPresentation(myParameterObject._0());
         }
         @Nullable
         @Override
@@ -199,7 +200,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
+          description += ". Parameter object: " + SNodeUtil.getPresentation(myParameterObject);
         } catch (Throwable t) {
           Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
           return null;
@@ -253,7 +254,7 @@ public class ActionParameter_SubstituteMenu extends SubstituteMenuBase {
           if (myParameterObject instanceof SNode) {
             return NodePresentationUtil.visibleMatchingText((SNode) myParameterObject, null);
           }
-          return "" + myParameterObject;
+          return "" + SNodeUtil.getPresentation(myParameterObject);
         }
         @Nullable
         @Override

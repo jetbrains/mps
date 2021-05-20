@@ -17,6 +17,7 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -128,13 +129,13 @@ public class CheckingUtil {
       // the process of retrieving compile-time constants is flaky ATM 
       // e.g. StaticFieldReference pointing to a stub model may fail 
       if (LOG.isTraceEnabled()) {
-        LOG.trace("Using a default compile time constant for " + expr + ".");
+        LOG.trace("Using a default compile time constant for " + SNodeUtil.getPresentation(expr) + ".");
       }
       return false;
     } catch (UnsupportedOperationException e) {
       // Some expressions may not implement the compile-time constant retrieval method 
       if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn("Unable to obtain a compile time constant for " + expr + ". Resorting to default.");
+        LOG.warn("Unable to obtain a compile time constant for " + SNodeUtil.getPresentation(expr) + ". Resorting to default.");
       }
       return false;
     }

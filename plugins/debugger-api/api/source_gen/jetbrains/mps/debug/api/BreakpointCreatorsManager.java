@@ -19,6 +19,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.apache.log4j.Level;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import jetbrains.mps.textgen.trace.TraceInfo;
 import com.intellij.openapi.application.ApplicationManager;
@@ -60,7 +61,7 @@ public class BreakpointCreatorsManager implements ApplicationComponent {
         _FunctionTypes._return_P2_E0<? extends ILocationBreakpoint, ? super SNode, ? super Project> function = creator._1();
         if (function == null) {
           if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Could not create breakpoint for node " + node);
+            LOG.warn("Could not create breakpoint for node " + SNodeUtil.getPresentation(node));
           }
           return null;
         }

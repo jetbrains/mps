@@ -20,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -62,13 +63,13 @@ public class NodeDataFlowCheckerUtil {
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableInitialized$j1)) {
           Set<Object> vars = (Set<Object>) initialized.get(instruction);
           SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$j1), LINKS.var$irrI);
-          Assert.assertTrue("variable <" + var + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
+          Assert.assertTrue("variable <" + SNodeUtil.getPresentation(var) + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
         }
 
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableAlive$rJ)) {
           Set<Object> vars = (Set<Object>) live.get(instruction);
           SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$j1), LINKS.var$irrI);
-          Assert.assertTrue("variable <" + var + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
+          Assert.assertTrue("variable <" + SNodeUtil.getPresentation(var) + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
         }
       }
     }

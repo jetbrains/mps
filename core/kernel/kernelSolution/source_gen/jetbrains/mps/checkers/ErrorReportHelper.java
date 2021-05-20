@@ -20,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.smodel.SNodeUtil;
 import java.util.Map;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -76,7 +77,7 @@ public class ErrorReportHelper {
           res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
         } catch (Throwable t) {
           if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("Exception while invoking #suppress() on node " + node, t);
+            LOG.error("Exception while invoking #suppress() on node " + SNodeUtil.getPresentation(node), t);
           }
         }
         return res;

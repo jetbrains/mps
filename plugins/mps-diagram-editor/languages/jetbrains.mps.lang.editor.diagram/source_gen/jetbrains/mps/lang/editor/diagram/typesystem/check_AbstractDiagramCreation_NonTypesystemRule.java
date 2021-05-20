@@ -14,6 +14,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,7 +35,7 @@ public class check_AbstractDiagramCreation_NonTypesystemRule extends AbstractNon
       if (SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$c2aJ) != null && SLinkOperations.getTarget(containmentLink, LINKS.target$m40F) != null && !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(abstractDiagramCreation, LINKS.concept$c2aJ), SLinkOperations.getTarget(containmentLink, LINKS.target$m40F)))) {
         {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$c2aJ);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SLinkOperations.getTarget(containmentLink, LINKS.target$m40F) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractDiagramCreation, "Only subconcept of containment link target contept (" + SNodeUtil.getPresentation(SLinkOperations.getTarget(containmentLink, LINKS.target$m40F)) + ") can be used here.", "r:40b64a44-89c9-404d-9824-6c98cb8ca353(jetbrains.mps.lang.editor.diagram.typesystem)", "1301388602725875172", null, errorTarget);
         }
       }
     }

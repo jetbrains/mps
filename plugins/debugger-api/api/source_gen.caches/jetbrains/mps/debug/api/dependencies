@@ -90,6 +90,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodeUtil" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.TraceInfo" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.TraceablePositionInfo" />
     <classNode dependClassName="org.apache.log4j.Level" />

@@ -37,6 +37,7 @@ import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.scope.EmptyScope;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.baseLanguage.scopes.MemberScopes;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
@@ -230,7 +231,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
 
       if ((superClass == null)) {
         if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("Superclass classifier is null for not java.lang.Object classifier in " + __thisNode__);
+          LOG.warn("Superclass classifier is null for not java.lang.Object classifier in " + SNodeUtil.getPresentation(__thisNode__));
         }
         return new EmptyScope();
       }

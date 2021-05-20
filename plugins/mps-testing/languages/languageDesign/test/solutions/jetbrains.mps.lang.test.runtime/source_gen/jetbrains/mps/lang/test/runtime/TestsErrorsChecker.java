@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
@@ -97,7 +98,7 @@ public final class TestsErrorsChecker {
     }
 
     if (LOG.isDebugEnabled()) {
-      LOG.debug("Collecting errors in the root " + myRoot);
+      LOG.debug("Collecting errors in the root " + SNodeUtil.getPresentation(myRoot));
     }
     final Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
     Consumer<NodeReportItem> errorCollector = new Consumer<NodeReportItem>() {

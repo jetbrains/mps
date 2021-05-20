@@ -30,6 +30,7 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -174,7 +175,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return myParameterObject + ".";
+            return SNodeUtil.getPresentation(myParameterObject) + ".";
           }
 
           @Override
