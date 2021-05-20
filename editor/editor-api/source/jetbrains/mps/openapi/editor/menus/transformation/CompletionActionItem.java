@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.openapi.editor.menus.transformation;
 
+import jetbrains.mps.openapi.editor.menus.IconResourceProvider;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstitutionAcceptable;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public interface CompletionActionItem extends ActionItem {
+public interface CompletionActionItem extends ActionItem, IconResourceProvider {
   /**
    * Returns the text that corresponds to this action. Usually this method would return a fixed string, such as a concept alias (e.g. {@code for} for an action
    * that inserts a ForLoop). Sometimes, however, it may be useful to base the matching text on the pattern. For example, in case of an action that inserts

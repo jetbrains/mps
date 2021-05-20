@@ -24,6 +24,7 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.openapi.editor.menus.IconResourceProvider;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
@@ -199,8 +200,8 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
 
   private Icon getIcon(SubstituteAction action, String pattern) {
     Icon icon = null;
-    if (action instanceof CompletionActionItemAsSubstituteAction) {
-      icon = GlobalIconManager.getInstance().getIconForResource(((CompletionActionItemAsSubstituteAction) action).getIcon(pattern));
+    if (action instanceof IconResourceProvider) {
+      icon = GlobalIconManager.getInstance().getIconForResource(((IconResourceProvider) action).getIcon(pattern));
     }
     if (icon != null) {
       return icon;
