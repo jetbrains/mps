@@ -547,7 +547,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     while (SNodeOperations.getParent(child) != __thisNode__ && child != null) {
       child = SNodeOperations.getParent(child);
     }
-    final boolean isStaticContext = !((child == null)) && ((SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierMember$At) && (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(child, CONCEPTS.ClassifierMember$At))) || (SNodeOperations.isInstanceOf(child, CONCEPTS.Classifier$Ix) && (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(child, CONCEPTS.Classifier$Ix))) || SNodeOperations.isInstanceOf(child, CONCEPTS.StaticInitializer$Ev));
+    final boolean isStaticContext = !((child == null)) && ((SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierMember$At) && (boolean) ClassifierMember__BehaviorDescriptor.isStaticClassifierMember_id7MS72Gc8avw.invoke(SNodeOperations.cast(child, CONCEPTS.ClassifierMember$At))) || (SNodeOperations.isInstanceOf(child, CONCEPTS.Classifier$Ix) && (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(child, CONCEPTS.Classifier$Ix))) || SNodeOperations.isInstanceOf(child, CONCEPTS.StaticInitializer$Ev));
 
     // todo: remove this logic from Classifier
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
