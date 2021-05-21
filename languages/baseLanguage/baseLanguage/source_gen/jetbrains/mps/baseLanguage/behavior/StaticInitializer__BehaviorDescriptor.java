@@ -26,10 +26,9 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
 
   public static final SMethod<List<IconResource>> getIconMarks_id6TtJ6IUkhQJ = new SMethodBuilder<List<IconResource>>(new SJavaCompoundTypeImpl((Class<List<IconResource>>) ((Class) Object.class))).name("getIconMarks").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6TtJ6IUkhQJ").build();
   public static final SMethod<Boolean> isVisible_id5laDzmpBPv8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisible").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5laDzmpBPv8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isStatic_id6r77ob2USS8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2USS8").build();
-  public static final SMethod<Boolean> isStatic_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7MS72Gc8avw").build();
+  public static final SMethod<Boolean> isStaticClassifierMember_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStaticClassifierMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7MS72Gc8avw").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isVisible_id5laDzmpBPv8, isStatic_id6r77ob2USS8, isStatic_id7MS72Gc8avw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isVisible_id5laDzmpBPv8, isStaticClassifierMember_id7MS72Gc8avw);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -42,10 +41,7 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
   /*package*/ static boolean isVisible_id5laDzmpBPv8(@NotNull SNode __thisNode__, SNode contextClassifierType, SNode contextNode) {
     return false;
   }
-  /*package*/ static boolean isStatic_id6r77ob2USS8(@NotNull SNode __thisNode__) {
-    return true;
-  }
-  /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
+  /*package*/ static boolean isStaticClassifierMember_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
     return true;
   }
 
@@ -69,9 +65,7 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
       case 1:
         return (T) ((Boolean) isVisible_id5laDzmpBPv8(node, (SNode) parameters[0], (SNode) parameters[1]));
       case 2:
-        return (T) ((Boolean) isStatic_id6r77ob2USS8(node));
-      case 3:
-        return (T) ((Boolean) isStatic_id7MS72Gc8avw(node));
+        return (T) ((Boolean) isStaticClassifierMember_id7MS72Gc8avw(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

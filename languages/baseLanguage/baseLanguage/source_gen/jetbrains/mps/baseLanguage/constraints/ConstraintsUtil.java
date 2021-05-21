@@ -18,7 +18,7 @@ public class ConstraintsUtil {
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.ClassifierMember$At, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(it));
+        return !((boolean) ClassifierMember__BehaviorDescriptor.isStaticClassifierMember_id7MS72Gc8avw.invoke(it));
       }
     }).isNotEmpty();
   }

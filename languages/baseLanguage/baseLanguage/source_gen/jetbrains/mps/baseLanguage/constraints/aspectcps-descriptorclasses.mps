@@ -12107,7 +12107,7 @@
                             <uo k="s:originTrace" v="n:3021153905151724816" />
                           </node>
                           <node concept="2qgKlT" id="Nn" role="2OqNvi">
-                            <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+                            <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                             <uo k="s:originTrace" v="n:8986964027630473448" />
                           </node>
                         </node>
@@ -28094,7 +28094,7 @@
                                                 <uo k="s:originTrace" v="n:6836281137582643144" />
                                               </node>
                                               <node concept="2qgKlT" id="1Rc" role="2OqNvi">
-                                                <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+                                                <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                                                 <uo k="s:originTrace" v="n:6836281137582643145" />
                                               </node>
                                             </node>

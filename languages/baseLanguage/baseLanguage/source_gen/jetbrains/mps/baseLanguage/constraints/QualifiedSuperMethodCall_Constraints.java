@@ -60,7 +60,7 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
             for (SNode clazz : ancestors) {
               if (!(SNodeOperations.isInstanceOf(clazz, CONCEPTS.AnonymousClass$Bt))) {
                 ListSequence.fromList(result).addElement(clazz);
-                if ((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(clazz)) {
+                if ((boolean) ClassifierMember__BehaviorDescriptor.isStaticClassifierMember_id7MS72Gc8avw.invoke(clazz)) {
                   break;
                 }
               }
