@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link jetbrains.mps.smodel.persistence.def.v9.IdInfoReadHelper} counterpart for binary persistence.
+ * {@code jetbrains.mps.smodel.persistence.def.v9.IdInfoReadHelper} counterpart for binary persistence.
  * FIXME consider refactoring to remove duplicating code (e.g. #isInterface or #isRequestedInterfaceOnly)
  * @author Artem Tikhomirov
  */
@@ -47,7 +48,9 @@ class ReadHelper {
   private final MetaModelInfoProvider myMetaInfoProvider;
   private boolean myInterfaceOnly;
   private ConceptInfo myActualConcept;
+  private SAbstractConcept myConceptMO;
   // TODO with indices being just a persistence position, shall use arrays instead
+  // FIXME has to be SAbstractConcept, see idInfoReadHelper for more info!
   private final TIntObjectHashMap<SConcept> myConcepts = new TIntObjectHashMap<>();
   private final TIntObjectHashMap<SProperty> myProperties = new TIntObjectHashMap<>();
   private final TIntObjectHashMap<SReferenceLink> myAssociations = new TIntObjectHashMap<>();
@@ -76,7 +79,9 @@ class ReadHelper {
     myActualConcept = myMetaInfo.registerConcept(concept, name);
     myActualConcept.setImplementationKind(scope, kind);
     myActualConcept.setIntIndex(index);
-    myConcepts.put(index, MetaAdapterFactory.getConcept(concept, name));
+    final SConcept ccc = MetaAdapterFactory.getConcept(concept, name);
+    myConceptMO = ccc;
+    myConcepts.put(index, ccc);
     myMetaInfoProvider.setConceptName(concept, name);
     myActualConcept.setStubCounterpart(stub);
     myMetaInfoProvider.setStubConcept(concept, stub);
@@ -84,19 +89,19 @@ class ReadHelper {
 
   public void property(SPropertyId property, String name, int index) {
     myActualConcept.addProperty(property, name).setIntIndex(index);
-    myProperties.put(index, MetaAdapterFactory.getProperty(property, name));
+    myProperties.put(index, MetaAdapterFactory.getProperty(myConceptMO, property.getIdValue(), name));
     myMetaInfoProvider.setPropertyName(property, name);
   }
 
   public void association(SReferenceLinkId link, String name, int index) {
     myActualConcept.addLink(link, name).setIntIndex(index);
-    myAssociations.put(index, MetaAdapterFactory.getReferenceLink(link, name));
+    myAssociations.put(index, MetaAdapterFactory.getReferenceLink(myConceptMO, link.getIdValue(), name));
     myMetaInfoProvider.setAssociationName(link, name);
   }
 
   public void aggregation(SContainmentLinkId link, String name, boolean unordered, int index) {
     myActualConcept.addLink(link, name, unordered).setIntIndex(index);
-    myAggregations.put(index, MetaAdapterFactory.getContainmentLink(link, name));
+    myAggregations.put(index, MetaAdapterFactory.getContainmentLink(myConceptMO, link.getIdValue(), name));
     myMetaInfoProvider.setAggregationName(link, name);
   }
 
