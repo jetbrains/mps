@@ -76,7 +76,8 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       Assert.assertFalse(defaultIfaceConcept.equals(CONCEPTS.INamedConcept$Kd));
       Assert.assertFalse(SConceptOperations.isExactly(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));
 
-      Assert.assertFalse(CONCEPTS.INamedConcept$Kd.isSubConceptOf(defaultIfaceConcept));
+      // was assert false; see MPS-33398
+      Assert.assertTrue(CONCEPTS.INamedConcept$Kd.isSubConceptOf(defaultIfaceConcept));
 
       Assert.assertTrue(defaultIfaceConcept instanceof SConcept);
       Assert.assertTrue(((SConcept) defaultIfaceConcept).getSuperConcept().equals(CONCEPTS.BaseConcept$gP));

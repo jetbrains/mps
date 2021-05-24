@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,8 +31,8 @@ import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
-import jetbrains.mps.smodel.runtime.NamedElementDescriptor;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
+import jetbrains.mps.smodel.runtime.NamedElementDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -67,8 +67,7 @@ import java.util.Collections;
  * needs to use the method {@link #isValid()}. (!)
  * <p/>
  * Currently a lot of "hacks" introduced to fix some common cases (e.g. not valid concept still is a subconcept of the BaseConcept).
- * Also there is an editor issue when an instance of abstract concept (interface concept) might be created.
- * (E.g. the method {@link #isSubConceptOf(SAbstractConcept)} works not as expected for such concepts)
+ * Also one have to keep in mind an editor issue when an instance of abstract concept (interface concept) might be created.
  */
 public abstract class SAbstractConceptAdapter extends SNamedElementAdapter implements SAbstractConcept, ConceptMetaInfoConverter {
   public static final String ID_DELIM = ":";
@@ -190,13 +189,6 @@ public abstract class SAbstractConceptAdapter extends SNamedElementAdapter imple
     if (anotherDescriptor == null) {
       return false;
     }
-    if (anotherDescriptor.isInterfaceConcept() && anotherConcept instanceof SConceptAdapter) {
-      // anotherDescriptor is in fact an interface concept
-      // however is created as a SConceptAdapter, not a SInterfaceConceptAdapter (!)
-      // currently the editor has to perform hacky operations as this
-      return false;
-    }
-
     return isSubConceptOfSpecial(descriptor, anotherDescriptor, anotherConcept);
   }
 
