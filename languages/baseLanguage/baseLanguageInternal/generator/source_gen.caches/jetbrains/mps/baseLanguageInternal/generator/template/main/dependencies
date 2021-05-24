@@ -10,6 +10,7 @@
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguageInternal.generator.template.util.ClassContainer" />
     <classNode dependClassName="jetbrains.mps.baseLanguageInternal.generator.template.util.ContextUtil" />
