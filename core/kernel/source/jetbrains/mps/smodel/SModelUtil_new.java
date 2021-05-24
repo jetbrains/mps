@@ -15,50 +15,9 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeId;
 
 public class SModelUtil_new {
-
-  /**
-   * @deprecated use of this method is discouraged as it exposes {@code SNode} implementation class. There's {@code SModelOperations.createNewNode()} to use from generated code
-   */
-  @Deprecated
-  public static jetbrains.mps.smodel.SNode instantiateConceptDeclaration(@NotNull SAbstractConcept concept, @Nullable SModel model, SNodeId nodeId,
-      boolean fullNodeStructure) {
-    SConcept concreteConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
-
-    jetbrains.mps.smodel.SNode newNode =
-        nodeId == null ? new jetbrains.mps.smodel.SNode(concreteConcept) : new jetbrains.mps.smodel.SNode(concreteConcept, nodeId);
-    // create the node structure
-    if (fullNodeStructure) {
-      createNodeStructure(newNode);
-    }
-    return newNode;
-  }
-
-  private static void createNodeStructure(SNode newNode) {
-    for (SContainmentLink linkDeclaration : newNode.getConcept().getContainmentLinks()) {
-      if (linkDeclaration.isOptional()) {
-        continue;
-      }
-
-      SAbstractConcept target = linkDeclaration.getTargetConcept();
-      if (!newNode.getChildren(linkDeclaration).iterator().hasNext()) {
-        SNode childNode = new jetbrains.mps.smodel.SNode(ModelConstraints.getDefaultConcreteConcept(target));
-        createNodeStructure(childNode);
-        newNode.addChild(linkDeclaration, childNode);
-      }
-    }
-  }
 
   public static String getAlias(SNode conceptDeclaration) {
     return SNodeUtil.getConceptAlias(conceptDeclaration);
