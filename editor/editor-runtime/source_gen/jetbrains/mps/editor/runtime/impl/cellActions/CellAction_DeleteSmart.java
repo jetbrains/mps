@@ -9,14 +9,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
-import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 @GeneratedClass(node = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)/2298389068003808761", model = "r:b9f36c08-4a75-4513-9277-a390d3426e0f(jetbrains.mps.editor.runtime.impl.cellActions)")
@@ -33,6 +31,7 @@ public class CellAction_DeleteSmart extends AbstractCellAction {
   private SContainmentLink myLink;
 
   private SAbstractConcept myLinkTargetConcept;
+
   public CellAction_DeleteSmart(@NotNull SNode source, @NotNull SContainmentLink link, @NotNull SNode target) {
     this(source, link, target, null);
   }
@@ -40,16 +39,22 @@ public class CellAction_DeleteSmart extends AbstractCellAction {
     mySource = source;
     myLink = link;
     myTarget = target;
-    if (specificTargetConcept != null) {
-      myLinkTargetConcept = MetaAdapterByDeclaration.asInstanceConcept(specificTargetConcept);
-    } else {
-      myLinkTargetConcept = MetaAdapterByDeclaration.asInstanceConcept(myLink.getTargetConcept());
-    }
+    myLinkTargetConcept = specificTargetConcept;
     myCanBeNull = link.isOptional();
     if (myCanBeNull) {
       return;
     }
-    myEnabled = !(link.isMultiple()) && !(Objects.equals(SNodeOperations.getConcept(myTarget), myLinkTargetConcept));
+    // I don't like the fact we check against asInstanceConcept(), which helps to avoid delete of a placeholder node just to get it replaced
+    // by identical placeholder. There's some editor behavior bound to this logic (not to delete placeholder,
+    // e.g. DelOnInterfaceChild1DeleteParent test, when deleting a mandatory child deletes its parent 
+    // (the one with two mandatory children).
+    // However, as creation of a child involves more complicated logic than just asInstanceConcept()
+    // (e.g. ModelConstraints may supply different default concept), the proper way to get targetConcept2check is to create a 
+    // new placeholder node and take its concept (to avoid logic duplication here). However, this seems too much
+    // for the constructor, perhaps, could do this in canExecute if the need emerges (seems that I really need to
+    // prevent replacement of one placeholder by another, unless I want to alter editor logic).
+    SAbstractConcept targetConcept2check = SNodeOperations.asInstanceConcept((specificTargetConcept == null ? myLink.getTargetConcept() : specificTargetConcept));
+    myEnabled = !(link.isMultiple()) && !(Objects.equals(SNodeOperations.getConcept(myTarget), targetConcept2check));
   }
 
   @Override
@@ -67,8 +72,7 @@ public class CellAction_DeleteSmart extends AbstractCellAction {
     }
     SNodeOperations.deleteNode(myTarget);
     if (!(myCanBeNull)) {
-      SNode defaultTarget = SModelUtil_new.instantiateConceptDeclaration(myLinkTargetConcept, SNodeOperations.getModel(mySource), null, true);
-      SLinkOperations.setTarget(mySource, myLink, defaultTarget);
+      SLinkOperations.setNewChild(mySource, myLink, myLinkTargetConcept);
     }
   }
 }
