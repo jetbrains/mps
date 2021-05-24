@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.util.IterableUtil;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import java.util.Set;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -82,17 +81,13 @@ public class SModelUtil {
     return result;
   }
   public static List<SAbstractConcept> getDirectSuperConcepts(SAbstractConcept concept) {
+    // FIXME seems that can replace uses of this deprecated utility class with not yet deprecated SConceptOperations
     List<SAbstractConcept> result = new ArrayList<SAbstractConcept>();
-    if (concept instanceof SConcept) {
-      SConcept superConcept = ((SConcept) concept).getSuperConcept();
-      if (superConcept != null) {
-        result.add(superConcept);
-      }
-      result.addAll(IterableUtil.asCollection(((SConcept) concept).getSuperInterfaces()));
+    SConcept superConcept = concept.getSuperConcept();
+    if (superConcept != null) {
+      result.add(superConcept);
     }
-    if (concept instanceof SInterfaceConcept) {
-      result.addAll(IterableUtil.asCollection(((SInterfaceConcept) concept).getSuperInterfaces()));
-    }
+    result.addAll(IterableUtil.asCollection(concept.getSuperInterfaces()));
     return result;
   }
   public static List<SAbstractConcept> getConceptAndAllSuperConcepts(SAbstractConcept concept) {

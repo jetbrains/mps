@@ -21,6 +21,11 @@ public final class InterfaceConceptWrap extends AbstractConceptWrap implements A
     myPeer = peer;
   }
 
+  @Override
+  public boolean isAbstract() {
+    return true;
+  }
+
   @NotNull
   @Override
   public List<AbstractConceptLike.InterfaceConceptLike> getSuperInterfaces() {

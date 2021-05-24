@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,26 +19,13 @@ import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike.InterfaceCon
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 /**
  * @author apyshkin
  */
 /*package*/ final class _SInterfaceConcept extends _SAbstractConcept implements InterfaceConceptLike {
-  private final SInterfaceConcept myPeer;
 
   public _SInterfaceConcept(@NotNull SInterfaceConcept peer) {
     super(peer);
-    myPeer = peer;
   }
 
-  @NotNull
-  @Override
-  public List<InterfaceConceptLike> getSuperInterfaces() {
-    return StreamSupport.stream(myPeer.getSuperInterfaces().spliterator(), false)
-                       .map(_SInterfaceConcept::new)
-                       .collect(Collectors.toList());
-  }
 }

@@ -17,11 +17,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -51,22 +49,24 @@ public final class IApplicableToNothing__BehaviorDescriptor extends BaseBHDescri
     // [MM] I suppose what's meant here is concept.hierarchy.subconcepts(IApplicableToNothing).selectMany(it->it.getApplicableTypes())
     // [MM] this differs much from the current code: getAT() is only called for direct super-interfaces
     SAbstractConcept tt = __thisConcept__;
-    Iterable<SInterfaceConcept> supers;
-    if (tt instanceof SConcept) {
-      supers = ((SConcept) tt).getSuperInterfaces();
-    } else {
+    final Iterable<SInterfaceConcept> supers = tt.getSuperInterfaces();
+
+    if (tt instanceof SInterfaceConcept) {
+      // this is some crooked logic to handle case when we get InterfaceConceptDeclaration here explicitly
+      // which I believe happens in 1 out of 3 existing calls (namely, the one in constraints). Otherwise, we
+      // get node.concept as an argument, which always gives SConcept. We know this is IApplicableToNothing (sub)concept,
+      // although don't care to check it it's !isExactly(IATN), see hasApplicableTypes, for whatever reason.
+      // In my struggle to unite SConcept and SInterfaceConcept, I'd need a mechanism to find out whether 
+      // concept<> this represents an ICD or a proper CD if I care this code to survive.
       SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(__thisConcept__)));
-      supers = ((SInterfaceConcept) ((SAbstractConcept) tt)).getSuperInterfaces();
     }
+    // can not do ofType() first and simplify hasApplicableTypes by removing isSubConceptOf check
+    // as ofType() doesn't really check anything but instananceOf SAbstractConcept, I use it here just to simplify cast.
     Sequence.fromIterable(supers).where(new IWhereFilter<SInterfaceConcept>() {
       public boolean accept(SInterfaceConcept it) {
         return ((boolean) IApplicableToNothing__BehaviorDescriptor.hasApplicableTypes_id1QUKo_K_4f7.invoke(__thisConcept__, it));
       }
-    }).select(new ISelector<SInterfaceConcept, SAbstractConcept>() {
-      public SAbstractConcept select(SInterfaceConcept it) {
-        return (SAbstractConcept) ((SAbstractConcept) it);
-      }
-    }).visitAll(new IVisitor<SAbstractConcept>() {
+    }).ofType(SAbstractConcept.class).visitAll(new IVisitor<SAbstractConcept>() {
       public void visit(SAbstractConcept it) {
         SetSequence.fromSet(result).addSequence(ListSequence.fromList(IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invoke(SNodeOperations.asSConcept(it))));
       }

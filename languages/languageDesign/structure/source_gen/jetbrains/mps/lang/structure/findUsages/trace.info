@@ -645,32 +645,36 @@
       <node id="1279830762534979609" at="17,0,18,0" concept="6" trace="myPeer" />
       <node id="1279830762534979617" at="19,52,20,16" concept="16" />
       <node id="1279830762534979619" at="20,16,21,18" concept="5" />
-      <node id="1279830762534994339" at="26,78,27,118" concept="10" />
-      <node id="1279830762534992875" at="27,118,28,90" concept="10" />
-      <node id="1279830762534998701" at="30,85,31,109" concept="5" />
-      <node id="1279830762534986479" at="33,5,34,18" concept="11" />
-      <node id="1279830762534979608" at="38,0,39,0" concept="14" trace="extends$nawU" />
-      <node id="1279830762534979608" at="39,0,40,0" concept="14" trace="intfc$zM4e" />
-      <node id="7517397268749712324" at="29,76,32,7" concept="8" />
+      <node id="4420070239643760142" at="25,31,26,16" concept="11" />
+      <node id="1279830762534994339" at="31,78,32,118" concept="10" />
+      <node id="1279830762534992875" at="32,118,33,90" concept="10" />
+      <node id="1279830762534998701" at="35,85,36,109" concept="5" />
+      <node id="1279830762534986479" at="38,5,39,18" concept="11" />
+      <node id="1279830762534979608" at="43,0,44,0" concept="14" trace="extends$nawU" />
+      <node id="1279830762534979608" at="44,0,45,0" concept="14" trace="intfc$zM4e" />
+      <node id="7517397268749712324" at="34,76,37,7" concept="8" />
       <node id="1279830762534979613" at="19,0,23,0" concept="2" trace="InterfaceConceptWrap#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1279830762534998015" at="28,90,33,5" concept="7" />
-      <node id="1279830762534979663" at="24,0,36,0" concept="9" trace="getSuperInterfaces#()Ljava/util/List;" />
-      <scope id="7517397268749712326" at="30,85,31,109" />
+      <node id="4420070239643760131" at="24,0,28,0" concept="9" trace="isAbstract#()Z" />
+      <node id="1279830762534998015" at="33,90,38,5" concept="7" />
+      <node id="1279830762534979663" at="29,0,41,0" concept="9" trace="getSuperInterfaces#()Ljava/util/List;" />
+      <scope id="4420070239643760137" at="25,31,26,16" />
+      <scope id="7517397268749712326" at="35,85,36,109" />
       <scope id="1279830762534979616" at="19,52,21,18" />
-      <scope id="1279830762534998021" at="29,76,32,7" />
+      <scope id="1279830762534998021" at="34,76,37,7" />
       <scope id="1279830762534979613" at="19,0,23,0">
         <var name="peer" id="1279830762534979623" />
       </scope>
-      <scope id="1279830762534998015" at="28,90,33,5">
+      <scope id="4420070239643760131" at="24,0,28,0" />
+      <scope id="1279830762534998015" at="33,90,38,5">
         <var name="superInterfaceRef" id="1279830762534998017" />
       </scope>
-      <scope id="1279830762534979668" at="26,78,34,18">
+      <scope id="1279830762534979668" at="31,78,39,18">
         <var name="result" id="1279830762534994345" />
         <var name="superInterfaces" id="1279830762534992876" />
       </scope>
-      <scope id="1279830762534979663" at="24,0,36,0" />
-      <unit id="1279830762534979608" at="37,0,41,0" name="jetbrains.mps.lang.structure.findUsages.InterfaceConceptWrap$LINKS" />
-      <unit id="1279830762534979608" at="16,0,42,0" name="jetbrains.mps.lang.structure.findUsages.InterfaceConceptWrap" />
+      <scope id="1279830762534979663" at="29,0,41,0" />
+      <unit id="1279830762534979608" at="42,0,46,0" name="jetbrains.mps.lang.structure.findUsages.InterfaceConceptWrap$LINKS" />
+      <unit id="1279830762534979608" at="16,0,47,0" name="jetbrains.mps.lang.structure.findUsages.InterfaceConceptWrap" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)/2707675432437255202">
@@ -968,55 +972,59 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)/7252137123778553237">
     <file name="AbstractConceptWrap.java">
-      <node id="7252137123778553515" at="15,0,16,0" concept="6" trace="myPeer" />
-      <node id="7252137123778553734" at="17,45,18,18" concept="5" />
-      <node id="7252137123778555666" at="21,26,22,18" concept="11" />
-      <node id="7252137123778556730" at="27,27,28,66" concept="11" />
-      <node id="7889865066412782337" at="32,25,33,29" concept="11" />
-      <node id="7889865066412788097" at="38,48,39,64" concept="11" />
-      <node id="7889865066412823591" at="40,5,41,17" concept="11" />
-      <node id="1279830762535670218" at="46,79,47,91" concept="11" />
-      <node id="1279830762535674345" at="48,95,49,109" concept="11" />
-      <node id="7252137123778578175" at="50,5,51,75" concept="17" />
-      <node id="5611832130673621212" at="55,28,56,61" concept="11" />
-      <node id="7252137123778553237" at="60,0,61,0" concept="14" trace="name$MnvL" />
-      <node id="7252137123778553237" at="64,0,65,0" concept="14" trace="ConceptDeclaration$gH" />
-      <node id="7252137123778553237" at="65,0,66,0" concept="14" trace="InterfaceConceptDeclaration$CG" />
-      <node id="7252137123778553647" at="17,0,20,0" concept="2" trace="AbstractConceptWrap#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="7252137123778555475" at="21,0,24,0" concept="9" trace="getPeer#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7889865066412785590" at="37,40,40,5" concept="8" />
-      <node id="7889865066412782330" at="31,0,35,0" concept="9" trace="hashCode#()I" />
-      <node id="5611832130673621208" at="54,0,58,0" concept="9" trace="toString#()Ljava/lang/String;" />
-      <node id="7252137123778556447" at="25,0,30,0" concept="9" trace="getName#()Ljava/lang/String;" />
-      <node id="7252137123778566398" at="45,56,50,5" concept="8" />
-      <node id="7889865066412782338" at="36,0,43,0" concept="9" trace="equals#(Ljava/lang/Object;)Z" />
-      <node id="7252137123778560195" at="44,0,53,0" concept="15" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/structure/findUsages/AbstractConceptWrap;" />
-      <scope id="7252137123778553650" at="17,45,18,18" />
-      <scope id="7252137123778555478" at="21,26,22,18" />
-      <scope id="7252137123778556450" at="27,27,28,66" />
-      <scope id="7889865066412782334" at="32,25,33,29" />
-      <scope id="7889865066412785592" at="38,48,39,64" />
-      <scope id="7252137123778566400" at="46,79,47,91" />
-      <scope id="7252137123778575350" at="48,95,49,109" />
-      <scope id="5611832130673621211" at="55,28,56,61" />
-      <scope id="7252137123778553647" at="17,0,20,0">
+      <node id="7252137123778553515" at="17,0,18,0" concept="6" trace="myPeer" />
+      <node id="7252137123778553734" at="19,45,20,18" concept="5" />
+      <node id="7252137123778555666" at="23,26,24,18" concept="11" />
+      <node id="7252137123778556730" at="29,27,30,66" concept="11" />
+      <node id="4420070239643738179" at="35,60,36,16" concept="11" />
+      <node id="7889865066412782337" at="40,25,41,29" concept="11" />
+      <node id="7889865066412788097" at="46,48,47,64" concept="11" />
+      <node id="7889865066412823591" at="48,5,49,17" concept="11" />
+      <node id="1279830762535670218" at="54,79,55,91" concept="11" />
+      <node id="1279830762535674345" at="56,95,57,109" concept="11" />
+      <node id="7252137123778578175" at="58,5,59,141" concept="17" />
+      <node id="5611832130673621212" at="63,28,64,72" concept="11" />
+      <node id="7252137123778553237" at="68,0,69,0" concept="14" trace="name$MnvL" />
+      <node id="7252137123778553237" at="72,0,73,0" concept="14" trace="ConceptDeclaration$gH" />
+      <node id="7252137123778553237" at="73,0,74,0" concept="14" trace="InterfaceConceptDeclaration$CG" />
+      <node id="7252137123778553647" at="19,0,22,0" concept="2" trace="AbstractConceptWrap#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7252137123778555475" at="23,0,26,0" concept="9" trace="getPeer#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7889865066412785590" at="45,40,48,5" concept="8" />
+      <node id="7889865066412782330" at="39,0,43,0" concept="9" trace="hashCode#()I" />
+      <node id="5611832130673621208" at="62,0,66,0" concept="9" trace="toString#()Ljava/lang/String;" />
+      <node id="7252137123778556447" at="27,0,32,0" concept="9" trace="getName#()Ljava/lang/String;" />
+      <node id="4420070239643738171" at="33,0,38,0" concept="9" trace="getSuperConcept#()Ljetbrains/mps/core/aspects/behaviour/api/AbstractConceptLike/ConceptLike;" />
+      <node id="7252137123778566398" at="53,56,58,5" concept="8" />
+      <node id="7889865066412782338" at="44,0,51,0" concept="9" trace="equals#(Ljava/lang/Object;)Z" />
+      <node id="7252137123778560195" at="52,0,61,0" concept="15" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/structure/findUsages/AbstractConceptWrap;" />
+      <scope id="7252137123778553650" at="19,45,20,18" />
+      <scope id="7252137123778555478" at="23,26,24,18" />
+      <scope id="7252137123778556450" at="29,27,30,66" />
+      <scope id="4420070239643738176" at="35,60,36,16" />
+      <scope id="7889865066412782334" at="40,25,41,29" />
+      <scope id="7889865066412785592" at="46,48,47,64" />
+      <scope id="7252137123778566400" at="54,79,55,91" />
+      <scope id="7252137123778575350" at="56,95,57,109" />
+      <scope id="5611832130673621211" at="63,28,64,72" />
+      <scope id="7252137123778553647" at="19,0,22,0">
         <var name="peer" id="7252137123778553681" />
       </scope>
-      <scope id="7252137123778555475" at="21,0,24,0" />
-      <scope id="7889865066412782330" at="31,0,35,0" />
-      <scope id="7889865066412782344" at="37,40,41,17" />
-      <scope id="5611832130673621208" at="54,0,58,0" />
-      <scope id="7252137123778556447" at="25,0,30,0" />
-      <scope id="7252137123778560198" at="45,56,51,75" />
-      <scope id="7889865066412782338" at="36,0,43,0">
+      <scope id="7252137123778555475" at="23,0,26,0" />
+      <scope id="7889865066412782330" at="39,0,43,0" />
+      <scope id="7889865066412782344" at="45,40,49,17" />
+      <scope id="5611832130673621208" at="62,0,66,0" />
+      <scope id="7252137123778556447" at="27,0,32,0" />
+      <scope id="4420070239643738171" at="33,0,38,0" />
+      <scope id="7252137123778560198" at="53,56,59,141" />
+      <scope id="7889865066412782338" at="44,0,51,0">
         <var name="object" id="7889865066412782342" />
       </scope>
-      <scope id="7252137123778560195" at="44,0,53,0">
+      <scope id="7252137123778560195" at="52,0,61,0">
         <var name="toWrap" id="7252137123778560626" />
       </scope>
-      <unit id="7252137123778553237" at="59,0,62,0" name="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap$PROPS" />
-      <unit id="7252137123778553237" at="63,0,67,0" name="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap$CONCEPTS" />
-      <unit id="7252137123778553237" at="14,0,68,0" name="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap" />
+      <unit id="7252137123778553237" at="67,0,70,0" name="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap$PROPS" />
+      <unit id="7252137123778553237" at="71,0,75,0" name="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap$CONCEPTS" />
+      <unit id="7252137123778553237" at="16,0,76,0" name="jetbrains.mps.lang.structure.findUsages.AbstractConceptWrap" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)/7252137123778583443">

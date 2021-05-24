@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,32 +32,34 @@ public interface AbstractConceptLike {
 
   @NotNull List<InterfaceConceptLike> getSuperInterfaces();
 
+  boolean isAbstract();
+
+  /**
+   * @return null iff it is a root (e.g. BaseConcept or interface concept)
+   */
+  @Nullable ConceptLike getSuperConcept();
+
+  // FIXME <C extends ACL> doesn't make sense here, we can not cast superinterfaces to anything but AbstractConceptLike.
   @NotNull default <C extends AbstractConceptLike> List<C> getImmediateParents() {
-    return getSuperInterfaces().stream()
-                               .map(it -> (C) it)
-                               .collect(Collectors.toList());
+    final List<C> res = getSuperInterfaces().stream()
+                                            .map(it -> (C) it)
+                                            .collect(Collectors.toCollection(ArrayList::new));
+    ConceptLike superConcept = getSuperConcept();
+    if (superConcept != null) {
+      res.add((C) superConcept);
+    }
+    return res;
   }
 
+  /**
+   * @deprecated no need to use, everything is in AbstractConceptLike
+   */
   interface InterfaceConceptLike extends AbstractConceptLike {
   }
 
+  /**
+   * @deprecated no need to use, everything is in AbstractConceptLike
+   */
   interface ConceptLike extends AbstractConceptLike {
-    @NotNull
-    @Override
-    default <C extends AbstractConceptLike> List<C> getImmediateParents() {
-      List<C> res = AbstractConceptLike.super.getImmediateParents();
-      ConceptLike superConcept = getSuperConcept();
-      if (superConcept != null) {
-        res.add((C) superConcept);
-      }
-      return res;
-    }
-
-    boolean isAbstract();
-
-    /**
-     * @return null iff it is a root
-     */
-    @Nullable ConceptLike getSuperConcept();
   }
 }

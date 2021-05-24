@@ -27,6 +27,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="lgib" ref="r:3d049421-2cf2-4818-944e-c4d825789632(jetbrains.mps.lang.core.findUsages)" />
     <import index="manl" ref="d936855b-48da-4812-a8a0-2bfddd633ac5/java:jetbrains.mps.core.aspects.behaviour(jetbrains.mps.lang.behavior.api/)" />
+    <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
@@ -258,6 +259,7 @@
       <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
+      <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -1832,6 +1834,25 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3PnfBr$foob" role="jymVt" />
+    <node concept="3clFb_" id="3PnfBr$fq0V" role="jymVt">
+      <property role="TrG5h" value="getSuperConcept" />
+      <node concept="3Tm1VV" id="3PnfBr$fq0W" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3PnfBr$fq0Y" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="3uibUv" id="3PnfBr$fq0Z" role="3clF45">
+        <ref role="3uigEE" to="9r19:~AbstractConceptLike$ConceptLike" resolve="AbstractConceptLike.ConceptLike" />
+      </node>
+      <node concept="3clFbS" id="3PnfBr$fq10" role="3clF47">
+        <node concept="3clFbF" id="3PnfBr$fq13" role="3cqZAp">
+          <node concept="10Nm6u" id="3PnfBr$fq12" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3PnfBr$fq11" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="6PYrBB1j2pp" role="jymVt" />
     <node concept="3clFb_" id="6PYrBB1j3bU" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -1987,11 +2008,16 @@
             <node concept="1pGfFk" id="6i$L4D_fG_F" role="2ShVmc">
               <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
               <node concept="3cpWs3" id="6i$L4D_fH6O" role="37wK5m">
-                <node concept="37vLTw" id="6i$L4D_fH7f" role="3uHU7w">
-                  <ref role="3cqZAo" node="6i$L4D_fC9M" resolve="toWrap" />
-                </node>
                 <node concept="Xl_RD" id="6i$L4D_fGCR" role="3uHU7B">
                   <property role="Xl_RC" value="Impossible to wrap the " />
+                </node>
+                <node concept="2OqwBi" id="3PnfBr$fqxm" role="3uHU7w">
+                  <node concept="37vLTw" id="6i$L4D_fH7f" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6i$L4D_fC9M" resolve="toWrap" />
+                  </node>
+                  <node concept="2qgKlT" id="3PnfBr$fqxn" role="2OqNvi">
+                    <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -2027,16 +2053,15 @@
               <property role="Xl_RC" value="}" />
             </node>
             <node concept="3cpWs3" id="4RxeTsfVbzl" role="3uHU7B">
-              <node concept="37vLTw" id="4RxeTsfVbzh" role="3uHU7w">
-                <ref role="3cqZAo" node="6i$L4D_fAqF" resolve="myPeer" />
+              <node concept="2YIFZM" id="3PnfBr$ftLb" role="3uHU7w">
+                <ref role="37wK5l" to="wyt6:~String.valueOf(java.lang.Object)" resolve="valueOf" />
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <node concept="37vLTw" id="3PnfBr$ftYu" role="37wK5m">
+                  <ref role="3cqZAo" node="6i$L4D_fAqF" resolve="myPeer" />
+                </node>
               </node>
-              <node concept="3cpWs3" id="4RxeTsfVbzj" role="3uHU7B">
-                <node concept="Xl_RD" id="4RxeTsfVbzk" role="3uHU7B">
-                  <property role="Xl_RC" value="AbstractConceptWrap{" />
-                </node>
-                <node concept="Xl_RD" id="4RxeTsfVbzi" role="3uHU7w">
-                  <property role="Xl_RC" value="myPeer=" />
-                </node>
+              <node concept="Xl_RD" id="4RxeTsfVbzk" role="3uHU7B">
+                <property role="Xl_RC" value="AbstractConceptWrap{myPeer=" />
               </node>
             </node>
           </node>
@@ -2090,6 +2115,22 @@
         <node concept="2AHcQZ" id="6xjafMJkjIs" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3PnfBr$fvc2" role="jymVt" />
+    <node concept="3clFb_" id="3PnfBr$fvo3" role="jymVt">
+      <property role="TrG5h" value="isAbstract" />
+      <node concept="3Tm1VV" id="3PnfBr$fvo5" role="1B3o_S" />
+      <node concept="10P_77" id="3PnfBr$fvo7" role="3clF45" />
+      <node concept="3clFbS" id="3PnfBr$fvo9" role="3clF47">
+        <node concept="3clFbF" id="3PnfBr$fvoe" role="3cqZAp">
+          <node concept="3clFbT" id="3PnfBr$fvEO" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3PnfBr$fvoa" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="172ROKPwXxY" role="jymVt" />

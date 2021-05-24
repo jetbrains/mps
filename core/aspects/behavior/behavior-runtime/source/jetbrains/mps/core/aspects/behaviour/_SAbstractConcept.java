@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,14 @@ package jetbrains.mps.core.aspects.behaviour;
 
 import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Wrappers for the SConcept hierarchy
@@ -43,6 +48,26 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   @Override
   public String getName() {
     return myPeer.getName();
+  }
+
+  @NotNull
+  @Override
+  public List<InterfaceConceptLike> getSuperInterfaces() {
+    return StreamSupport.stream(myPeer.getSuperInterfaces().spliterator(), false)
+                        .map(_SInterfaceConcept::new)
+                        .collect(Collectors.toList());
+  }
+
+  @Override
+  public boolean isAbstract() {
+    return myPeer.isAbstract();
+  }
+
+  @Nullable
+  @Override
+  public ConceptLike getSuperConcept() {
+    SConcept superConcept = myPeer.getSuperConcept();
+    return superConcept == null ? null : new _SConcept(superConcept);
   }
 
   @NotNull

@@ -6,7 +6,9 @@ import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -26,6 +28,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @NotNull
   public String getName() {
     return SPropertyOperations.getString(myPeer, PROPS.name$MnvL);
+  }
+
+  @Nullable
+  @Override
+  public AbstractConceptLike.ConceptLike getSuperConcept() {
+    return null;
   }
 
   @Override
@@ -48,12 +56,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     } else if (SNodeOperations.isInstanceOf(toWrap, CONCEPTS.InterfaceConceptDeclaration$CG)) {
       return new InterfaceConceptWrap(SNodeOperations.cast(toWrap, CONCEPTS.InterfaceConceptDeclaration$CG));
     }
-    throw new IllegalArgumentException("Impossible to wrap the " + toWrap);
+    throw new IllegalArgumentException("Impossible to wrap the " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(toWrap));
   }
 
   @Override
   public String toString() {
-    return "AbstractConceptWrap{" + "myPeer=" + myPeer + "}";
+    return "AbstractConceptWrap{myPeer=" + String.valueOf(myPeer) + "}";
   }
 
   private static final class PROPS {
