@@ -7,8 +7,8 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.core.xml.constraints.XmlNameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.core.xml.constraints.XmlNameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -24,7 +24,7 @@ public class check_XmlProcessingInstruction_NonTypesystemRule extends AbstractNo
   public check_XmlProcessingInstruction_NonTypesystemRule() {
   }
   public void applyRule(final SNode xmlProcessingInstruction, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(XmlNameUtil.isPITarget(SPropertyOperations.getString(xmlProcessingInstruction, PROPS.target$RFUv)))) {
+    if (isNotEmptyString(SPropertyOperations.getString(xmlProcessingInstruction, PROPS.target$RFUv)) && !(XmlNameUtil.isPITarget(SPropertyOperations.getString(xmlProcessingInstruction, PROPS.target$RFUv)))) {
       if (SNodeOperations.getIndexInParent(xmlProcessingInstruction) == 0 && Objects.equals(SPropertyOperations.getString(xmlProcessingInstruction, PROPS.target$RFUv), "xml")) {
         {
           final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.target$RFUv);
@@ -50,6 +50,9 @@ public class check_XmlProcessingInstruction_NonTypesystemRule extends AbstractNo
   }
   public boolean overrides() {
     return false;
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
