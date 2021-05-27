@@ -15,6 +15,7 @@ import jetbrains.mps.generator.ModelGenerationStatusManager;
 import org.apache.log4j.Level;
 import java.util.HashSet;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent;
 import java.util.ArrayDeque;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -49,6 +50,12 @@ public final class ModelCacheReloader implements BulkFileListener {
 
     HashSet<VirtualFile> files2invalidate = new HashSet<VirtualFile>();
     for (VFileEvent e : events) {
+      if (e instanceof VFilePropertyChangeEvent && !(VirtualFile.PROP_NAME.equals(((VFilePropertyChangeEvent) e).getPropertyName()))) {
+        // do not react to any property change event we can not handle anyway
+        // we've seen VfsEvent[property(CHILDREN_CASE_SENSITIVITY) for /Applications:UNKNOWN->INSENSITIVE]
+        // on Welcome screen (even without any project open). There's no reason to walk FS in this case.
+        continue;
+      }
       VirtualFile vf = e.getFile();
       // replacement for !ArchiveFileSystem check 
       if (vf == null || !(vf.isInLocalFileSystem())) {
