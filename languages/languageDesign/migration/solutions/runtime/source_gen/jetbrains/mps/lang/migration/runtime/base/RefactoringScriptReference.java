@@ -6,9 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.project.AbstractModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.Language;
@@ -41,16 +41,12 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
   private static final Logger LOG = LogManager.getLogger(RefactoringScriptReference.class);
   private final SModuleReference myModule;
   private final int fromVersion;
-  private final SRepository myRepositoryToResolve;
+  private final int myModuleActualVersion;
+
   public RefactoringScriptReference(SModule module, int fromVersion) {
     this.myModule = module.getModuleReference();
     this.fromVersion = fromVersion;
-    this.myRepositoryToResolve = module.getRepository();
-  }
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public SModule getModule() {
-    return myModule.resolve(myRepositoryToResolve);
+    this.myModuleActualVersion = ((AbstractModule) module).getModuleVersion();
   }
   public SModule getModule(SRepository repository) {
     return myModule.resolve(repository);
@@ -60,6 +56,10 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
   }
   public int getFromVersion() {
     return fromVersion;
+  }
+  public int getModuleActualVersion() {
+    // XXX no idea if this has to be part of equals/hashCode; was not prior to extraction of this logic.
+    return myModuleActualVersion;
   }
   @Override
   public boolean equals(Object o) {

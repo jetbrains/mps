@@ -2280,74 +2280,68 @@
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/7201972523303742950">
     <file name="ScriptApplied.java">
-      <node id="7201972523303744386" at="22,53,23,43" concept="6" />
-      <node id="7201972523303744396" at="23,43,24,28" concept="6" />
-      <node id="5375498624333984406" at="24,28,25,51" concept="6" />
-      <node id="7201972523303745858" at="30,30,31,44" concept="13" />
-      <node id="5375498624334247158" at="34,48,35,20" concept="13" />
-      <node id="5375498624334253935" at="39,51,40,49" concept="12" />
-      <node id="5375498624334260509" at="41,25,42,99" concept="20" />
-      <node id="5375498624334257751" at="43,5,44,18" concept="13" />
-      <node id="7201972523303746927" at="47,33,48,23" concept="13" />
-      <node id="8914091101145823913" at="53,20,54,18" concept="13" />
-      <node id="8914091101145823919" at="56,55,57,19" concept="13" />
-      <node id="8914091101145823932" at="58,5,59,0" concept="15" />
-      <node id="8914091101145823933" at="59,0,60,43" concept="12" />
-      <node id="8914091101145823951" at="61,44,62,19" concept="13" />
-      <node id="8914091101145823970" at="64,50,65,19" concept="13" />
-      <node id="8914091101145823987" at="66,5,67,0" concept="15" />
-      <node id="8914091101145823988" at="67,0,68,16" concept="13" />
-      <node id="8914091101145843078" at="72,25,73,61" concept="13" />
-      <node id="201922306411067568" at="77,28,78,66" concept="13" />
-      <node id="7201972523303743922" at="15,0,17,0" concept="7" trace="myModule" />
-      <node id="7201972523303744321" at="17,0,19,0" concept="7" trace="myScriptRef" />
-      <node id="5375498624333981768" at="19,0,21,0" concept="7" trace="myRepositoryToResolve" />
-      <node id="5375498624334247156" at="34,0,37,0" concept="11" trace="getModuleReference#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-      <node id="5375498624334258714" at="40,49,43,5" concept="10" />
-      <node id="7201972523303743230" at="47,0,50,0" concept="11" trace="getScriptReference#()null" />
-      <node id="8914091101145823911" at="52,35,55,5" concept="10" />
-      <node id="8914091101145823917" at="55,5,58,5" concept="10" />
-      <node id="8914091101145823949" at="60,43,63,5" concept="10" />
-      <node id="8914091101145823968" at="63,5,66,5" concept="10" />
-      <node id="8914091101145823990" at="71,0,75,0" concept="11" trace="hashCode#()I" />
-      <node id="201922306411066122" at="76,0,80,0" concept="11" trace="toString#()Ljava/lang/String;" />
-      <node id="7201972523303744378" at="22,0,27,0" concept="3" trace="ScriptApplied#(Lorg/jetbrains/mps/openapi/module/SModule;null)V" />
-      <node id="7201972523303743226" at="28,0,33,0" concept="11" trace="getModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <node id="5375498624333963767" at="38,0,46,0" concept="11" trace="getModule#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <node id="8914091101145823907" at="51,0,70,0" concept="11" trace="equals#(Ljava/lang/Object;)Z" />
-      <scope id="7201972523303743227" at="30,30,31,44" />
-      <scope id="5375498624334247157" at="34,48,35,20" />
-      <scope id="5375498624334258716" at="41,25,42,99" />
-      <scope id="7201972523303743231" at="47,33,48,23" />
-      <scope id="8914091101145823912" at="53,20,54,18" />
-      <scope id="8914091101145823918" at="56,55,57,19" />
-      <scope id="8914091101145823950" at="61,44,62,19" />
-      <scope id="8914091101145823969" at="64,50,65,19" />
-      <scope id="8914091101145823993" at="72,25,73,61" />
-      <scope id="201922306411066126" at="77,28,78,66" />
-      <scope id="7201972523303744382" at="22,53,25,51" />
-      <scope id="5375498624334247156" at="34,0,37,0" />
-      <scope id="7201972523303743230" at="47,0,50,0" />
-      <scope id="8914091101145823990" at="71,0,75,0" />
-      <scope id="201922306411066122" at="76,0,80,0" />
-      <scope id="7201972523303744378" at="22,0,27,0">
+      <node id="7201972523303744386" at="19,53,20,43" concept="6" />
+      <node id="7201972523303744396" at="20,43,21,28" concept="6" />
+      <node id="5375498624334247158" at="24,48,25,20" concept="13" />
+      <node id="5375498624334253935" at="29,51,30,49" concept="12" />
+      <node id="5375498624334260509" at="31,25,32,99" concept="20" />
+      <node id="5375498624334257751" at="33,5,34,18" concept="13" />
+      <node id="7201972523303746927" at="37,33,38,23" concept="13" />
+      <node id="8914091101145823913" at="43,20,44,18" concept="13" />
+      <node id="8914091101145823919" at="46,55,47,19" concept="13" />
+      <node id="8914091101145823932" at="48,5,49,0" concept="15" />
+      <node id="8914091101145823933" at="49,0,50,43" concept="12" />
+      <node id="8914091101145823951" at="51,44,52,19" concept="13" />
+      <node id="8914091101145823970" at="54,50,55,19" concept="13" />
+      <node id="8914091101145823987" at="56,5,57,0" concept="15" />
+      <node id="8914091101145823988" at="57,0,58,16" concept="13" />
+      <node id="8914091101145843078" at="62,25,63,61" concept="13" />
+      <node id="201922306411067568" at="67,28,68,66" concept="13" />
+      <node id="7201972523303743922" at="14,0,16,0" concept="7" trace="myModule" />
+      <node id="7201972523303744321" at="16,0,18,0" concept="7" trace="myScriptRef" />
+      <node id="5375498624334247156" at="24,0,27,0" concept="11" trace="getModuleReference#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="5375498624334258714" at="30,49,33,5" concept="10" />
+      <node id="7201972523303743230" at="37,0,40,0" concept="11" trace="getScriptReference#()null" />
+      <node id="8914091101145823911" at="42,35,45,5" concept="10" />
+      <node id="8914091101145823917" at="45,5,48,5" concept="10" />
+      <node id="8914091101145823949" at="50,43,53,5" concept="10" />
+      <node id="8914091101145823968" at="53,5,56,5" concept="10" />
+      <node id="7201972523303744378" at="19,0,23,0" concept="3" trace="ScriptApplied#(Lorg/jetbrains/mps/openapi/module/SModule;null)V" />
+      <node id="8914091101145823990" at="61,0,65,0" concept="11" trace="hashCode#()I" />
+      <node id="201922306411066122" at="66,0,70,0" concept="11" trace="toString#()Ljava/lang/String;" />
+      <node id="5375498624333963767" at="28,0,36,0" concept="11" trace="getModule#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="8914091101145823907" at="41,0,60,0" concept="11" trace="equals#(Ljava/lang/Object;)Z" />
+      <scope id="5375498624334247157" at="24,48,25,20" />
+      <scope id="5375498624334258716" at="31,25,32,99" />
+      <scope id="7201972523303743231" at="37,33,38,23" />
+      <scope id="8914091101145823912" at="43,20,44,18" />
+      <scope id="8914091101145823918" at="46,55,47,19" />
+      <scope id="8914091101145823950" at="51,44,52,19" />
+      <scope id="8914091101145823969" at="54,50,55,19" />
+      <scope id="8914091101145823993" at="62,25,63,61" />
+      <scope id="201922306411066126" at="67,28,68,66" />
+      <scope id="7201972523303744382" at="19,53,21,28" />
+      <scope id="5375498624334247156" at="24,0,27,0" />
+      <scope id="7201972523303743230" at="37,0,40,0" />
+      <scope id="7201972523303744378" at="19,0,23,0">
         <var name="module" id="7201972523303744385" />
         <var name="scriptRef" id="7201972523303744395" />
       </scope>
-      <scope id="7201972523303743226" at="28,0,33,0" />
-      <scope id="5375498624333963768" at="39,51,44,18">
+      <scope id="8914091101145823990" at="61,0,65,0" />
+      <scope id="201922306411066122" at="66,0,70,0" />
+      <scope id="5375498624333963768" at="29,51,34,18">
         <var name="result" id="5375498624334253936" />
       </scope>
-      <scope id="5375498624333963767" at="38,0,46,0">
+      <scope id="5375498624333963767" at="28,0,36,0">
         <var name="toResolve" id="5375498624334238517" />
       </scope>
-      <scope id="8914091101145823910" at="52,35,68,16">
+      <scope id="8914091101145823910" at="42,35,58,16">
         <var name="that" id="8914091101145823934" />
       </scope>
-      <scope id="8914091101145823907" at="51,0,70,0">
+      <scope id="8914091101145823907" at="41,0,60,0">
         <var name="o" id="8914091101145823939" />
       </scope>
-      <unit id="7201972523303742950" at="13,0,81,0" name="jetbrains.mps.ide.migration.ScriptApplied" />
+      <unit id="7201972523303742950" at="12,0,71,0" name="jetbrains.mps.ide.migration.ScriptApplied" />
     </file>
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/7675258827864610460">

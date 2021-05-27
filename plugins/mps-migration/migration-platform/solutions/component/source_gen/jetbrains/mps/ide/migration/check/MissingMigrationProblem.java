@@ -4,19 +4,17 @@ package jetbrains.mps.ide.migration.check;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.errors.item.ModuleReportItem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)/2620437876317548374", model = "r:5c426f30-a9c9-463b-90a5-2fae21a10696(jetbrains.mps.ide.migration.check)")
-public abstract class MissingMigrationProblem extends Problem<SModule> implements ModuleReportItem {
+public abstract class MissingMigrationProblem extends Problem<SModuleReference> implements ModuleReportItem {
 
-  public MissingMigrationProblem(SModule migrationProvider) {
+  public MissingMigrationProblem(SModuleReference migrationProvider) {
     super(migrationProvider);
   }
 
@@ -25,17 +23,13 @@ public abstract class MissingMigrationProblem extends Problem<SModule> implement
     private int myUsedVersion;
 
     public MissingMigrationScriptProblem(MigrationScriptReference migration, int usedVersion) {
-      super(migration.getLanguage().getSourceModule());
+      super(migration.getLanguage().getSourceModuleReference());
       myScriptReference = migration;
+      myUsedVersion = usedVersion;
     }
     public String getMessage() {
-      final Wrappers._T<String> msg = new Wrappers._T<String>();
-      getReason().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          msg.value = "The language " + myScriptReference.getLanguage().getQualifiedName() + " does not provide migration from version " + myScriptReference.getFromVersion() + ". " + "Some modules use this language with version " + myUsedVersion + " while current version is " + myScriptReference.getLanguage().getLanguageVersion() + ".";
-        }
-      });
-      return msg.value;
+      SLanguage l = myScriptReference.getLanguage();
+      return String.format("The language %s  does not provide migration from version %d. Some modules use this language with version %d  while current version is %d.", l.getQualifiedName(), myScriptReference.getFromVersion(), myUsedVersion, l.getLanguageVersion());
     }
   }
 
@@ -44,18 +38,12 @@ public abstract class MissingMigrationProblem extends Problem<SModule> implement
     private int myUsedVersion;
 
     public MissingRefactoringLogProblem(RefactoringScriptReference migration, int usedVersion) {
-      super(migration.getModule());
+      super(migration.getModuleReference());
       myScriptReference = migration;
       myUsedVersion = usedVersion;
     }
     public String getMessage() {
-      final Wrappers._T<String> msg = new Wrappers._T<String>();
-      getReason().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          msg.value = "The module " + myScriptReference.getModuleReference().getModuleName() + " does not provide refactoring log for version " + myScriptReference.getFromVersion() + ". " + "Some modules use this module with version " + myUsedVersion + " while current version is " + ((AbstractModule) getReason()).getModuleVersion() + ".";
-        }
-      });
-      return msg.value;
+      return String.format("The module %s does not provide refactoring log for version %d. Some modules use this module with version %d while current version is %d.", myScriptReference.getModuleReference().getModuleName(), myScriptReference.getFromVersion(), myUsedVersion, myScriptReference.getModuleActualVersion());
     }
   }
 
@@ -67,6 +55,6 @@ public abstract class MissingMigrationProblem extends Problem<SModule> implement
   @NotNull
   @Override
   public SModuleReference getModule() {
-    return getReason().getModuleReference();
+    return getReason();
   }
 }

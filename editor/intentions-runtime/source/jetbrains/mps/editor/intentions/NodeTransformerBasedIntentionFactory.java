@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,17 +35,6 @@ import java.util.stream.Collectors;
 public class NodeTransformerBasedIntentionFactory implements IntentionFactory {
   private final NodeTransformerFactory myFactory;
   private final Kind myKind;
-
-  /**
-   * @deprecated use {@link #NodeTransformerBasedIntentionFactory(NodeTransformerFactory, NodeTransformer.Kind)} instead.
-   *             Code generated with 2017.3 may use this constructor, remove once 2018.1 is out
-   *
-   */
-  @ToRemove(version = 2018.1)
-  public NodeTransformerBasedIntentionFactory(NodeTransformerFactory factory) {
-    myFactory = factory;
-    myKind = Kind.NORMAL;
-  }
 
   public NodeTransformerBasedIntentionFactory(NodeTransformerFactory factory, NodeTransformer.Kind kind) {
     myFactory = factory;

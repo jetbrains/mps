@@ -67,7 +67,6 @@
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
     <import index="cttk" ref="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
@@ -214,9 +213,6 @@
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -8346,19 +8342,6 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
-    <node concept="312cEg" id="4EpASiE1Mx8" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myRepositoryToResolve" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm6S6" id="4EpASiE1Mx9" role="1B3o_S" />
-      <node concept="3uibUv" id="4EpASiE1MN0" role="1tU5fm">
-        <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-      </node>
-      <node concept="2AHcQZ" id="4EpASiE1Mxb" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="6fMyXCHDbds" role="jymVt" />
     <node concept="3clFbW" id="6fMyXCHDbdU" role="jymVt">
       <node concept="3cqZAl" id="6fMyXCHDbdV" role="3clF45" />
@@ -8389,21 +8372,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4EpASiE1Nam" role="3cqZAp">
-          <node concept="37vLTI" id="4EpASiE1NlT" role="3clFbG">
-            <node concept="2OqwBi" id="4EpASiE1NG8" role="37vLTx">
-              <node concept="37vLTw" id="4EpASiE1N$J" role="2Oq$k0">
-                <ref role="3cqZAo" node="6fMyXCHDbe1" resolve="module" />
-              </node>
-              <node concept="liA8E" id="4EpASiE1NO5" role="2OqNvi">
-                <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="4EpASiE1Nak" role="37vLTJ">
-              <ref role="3cqZAo" node="4EpASiE1Mx8" resolve="myRepositoryToResolve" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="6fMyXCHDbe1" role="3clF46">
         <property role="TrG5h" value="module" />
@@ -8419,38 +8387,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="6fMyXCHDblT" role="jymVt" />
-    <node concept="3clFb_" id="6fMyXCHDaVU" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="2aFKle" value="false" />
-      <property role="TrG5h" value="getModule" />
-      <node concept="3clFbS" id="6fMyXCHDaVV" role="3clF47">
-        <node concept="3clFbF" id="6fMyXCHDb_2" role="3cqZAp">
-          <node concept="1rXfSq" id="4EpASiE2Me1" role="3clFbG">
-            <ref role="37wK5l" node="4EpASiE1I7R" resolve="getModule" />
-            <node concept="37vLTw" id="4EpASiE2MnP" role="37wK5m">
-              <ref role="3cqZAo" node="4EpASiE1Mx8" resolve="myRepositoryToResolve" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="6fMyXCHDaVW" role="1B3o_S" />
-      <node concept="3uibUv" id="6fMyXCHDaVX" role="3clF45">
-        <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-      </node>
-      <node concept="2AHcQZ" id="4EpASiE1KPI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="4EpASiE1L_a" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="4EpASiE1Mp8" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="4EpASiE1MvX" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4EpASiE1IDJ" role="jymVt" />
     <node concept="3clFb_" id="4EpASiE2NjO" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
