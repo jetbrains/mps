@@ -40,8 +40,8 @@ public class WildCardsInAnonymousClassCreators_Test extends BaseTransformationTe
     new TestBody(this).test_NodeSupertypeMayNotSpecifyCheck6923385624928216045();
   }
   @Test
-  public void test_NodeTheMethodsReturnTypeIsCheck5450156852673963011() throws Throwable {
-    new TestBody(this).test_NodeTheMethodsReturnTypeIsCheck5450156852673963011();
+  public void test_NodeTheMethodReturnTypeIsCheck2001990232424546555() throws Throwable {
+    new TestBody(this).test_NodeTheMethodReturnTypeIsCheck2001990232424546555();
   }
   @Test
   public void test_ErrorMessagesCheck8187342170694475514() throws Throwable {
@@ -68,15 +68,15 @@ public class WildCardsInAnonymousClassCreators_Test extends BaseTransformationTe
       SNode operation = getRealNodeById("6923385624928216045");
       new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
-    public void test_NodeTheMethodsReturnTypeIsCheck5450156852673963011() throws Exception {
+    public void test_NodeTheMethodReturnTypeIsCheck2001990232424546555() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170694477581");
-      SNode operation = getRealNodeById("5450156852673963011");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      SNode operation = getRealNodeById("2001990232424546555");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6115392061221562427"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
     public void test_ErrorMessagesCheck8187342170694475514() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170694475499");
       SNode operation = getRealNodeById("8187342170694475514");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3951985765451228371"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8187342170694477581"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3951985765451228371"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8187342170686443221"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8187342170694477581"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6115392061221562427"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
     public void test_ErrorMessagesCheck8187342170694479318() throws Exception {
       SNode nodeToCheck = getRealNodeById("8187342170694479303");

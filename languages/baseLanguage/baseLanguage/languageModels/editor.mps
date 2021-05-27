@@ -10047,7 +10047,7 @@
             <ref role="1NtTu8" to="tpee:huGhqqj" resolve="typeParameter" />
             <node concept="l2Vlx" id="i0veWBA" role="2czzBx" />
             <node concept="3F0ifn" id="cEFfhIq5LP" role="2czzBI">
-              <ref role="1ERwB7" node="cEFfhIfWh9" resolve="IInferrableTypeParameter_DisableInference" />
+              <ref role="1ERwB7" node="cEFfhIfWh9" resolve="IGenericClassCreator_DisableInference" />
               <node concept="VPxyj" id="cEFfhIq5LR" role="3F10Kt">
                 <property role="VOm3f" value="true" />
               </node>
@@ -14856,7 +14856,7 @@
           <ref role="1NtTu8" to="tpee:hDpMfZw" resolve="typeParameter" />
           <node concept="l2Vlx" id="i0NJYCw" role="2czzBx" />
           <node concept="3F0ifn" id="1k0fX3iNZcC" role="2czzBI">
-            <ref role="1ERwB7" node="cEFfhIfWh9" resolve="IInferrableTypeParameter_DisableInference" />
+            <ref role="1ERwB7" node="cEFfhIfWh9" resolve="IGenericClassCreator_DisableInference" />
             <node concept="VPxyj" id="cEFfhIeyKJ" role="3F10Kt">
               <property role="VOm3f" value="true" />
             </node>
@@ -21843,7 +21843,7 @@
           <ref role="1NtTu8" to="tpee:2s$p4KaNfQN" resolve="typeParameter" />
           <node concept="l2Vlx" id="2s$p4KaO3Fh" role="2czzBx" />
           <node concept="3F0ifn" id="2s3iUbfnOnZ" role="2czzBI">
-            <ref role="1ERwB7" node="cEFfhIfWh9" resolve="IInferrableTypeParameter_DisableInference" />
+            <ref role="1ERwB7" node="cEFfhIfWh9" resolve="IGenericClassCreator_DisableInference" />
           </node>
         </node>
         <node concept="3F0ifn" id="2s$p4KaO3Fi" role="3EZMnx">
@@ -36733,7 +36733,7 @@
                 <node concept="3fqX7Q" id="1wEcoXjIEa9" role="3uHU7B">
                   <node concept="2OqwBi" id="1wEcoXjIEaa" role="3fr31v">
                     <node concept="2qgKlT" id="1wEcoXjIEab" role="2OqNvi">
-                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                     </node>
                     <node concept="7Obwk" id="1wEcoXjIEae" role="2Oq$k0" />
                   </node>
@@ -45511,7 +45511,7 @@
                 <node concept="3fqX7Q" id="1wEcoXjIEcI" role="3uHU7B">
                   <node concept="2OqwBi" id="1wEcoXjIEcJ" role="3fr31v">
                     <node concept="2qgKlT" id="1wEcoXjIEcK" role="2OqNvi">
-                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                     </node>
                     <node concept="7Obwk" id="1wEcoXjIEcN" role="2Oq$k0" />
                   </node>
@@ -54394,7 +54394,7 @@
                 <node concept="3fqX7Q" id="1wEcoXjIFhc" role="3uHU7B">
                   <node concept="2OqwBi" id="1wEcoXjIFhd" role="3fr31v">
                     <node concept="2qgKlT" id="1wEcoXjIFhe" role="2OqNvi">
-                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                     </node>
                     <node concept="7Obwk" id="1wEcoXjIFhh" role="2Oq$k0" />
                   </node>
@@ -56733,7 +56733,7 @@
                 <node concept="3fqX7Q" id="1wEcoXjIFi1" role="3uHU7B">
                   <node concept="2OqwBi" id="1wEcoXjIFi2" role="3fr31v">
                     <node concept="2qgKlT" id="1wEcoXjIFi3" role="2OqNvi">
-                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+                      <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStaticClassifierMember" />
                     </node>
                     <node concept="7Obwk" id="1wEcoXjIFi6" role="2Oq$k0" />
                   </node>
@@ -69720,9 +69720,9 @@
     <node concept="22hDWj" id="1k0fX3gGScm" role="22hAXT" />
   </node>
   <node concept="1h_SRR" id="cEFfhIfWh9">
-    <property role="TrG5h" value="IInferrableTypeParameter_DisableInference" />
+    <property role="TrG5h" value="IGenericClassCreator_DisableInference" />
     <property role="3GE5qa" value="classifiers" />
-    <ref role="1h_SK9" to="tpee:1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+    <ref role="1h_SK9" to="tpee:1k0fX3j6IJx" resolve="IGenericClassCreator" />
     <node concept="1hA7zw" id="cEFfhIfWhe" role="1h_SK8">
       <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="cEFfhIfWhf" role="1hA7z_">

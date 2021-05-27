@@ -2109,21 +2109,22 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/228184896957125096">
     <file name="DefaultInferrableConstructor.java">
-      <node id="228184896957125112" at="16,91,17,76" concept="4" />
+      <node id="228184896957125112" at="16,102,17,76" concept="4" />
       <node id="228184896957127669" at="18,7,19,44" concept="9" />
-      <node id="228184896957127999" at="20,93,21,146" concept="4" />
+      <node id="228184896957127999" at="20,89,21,146" concept="4" />
       <node id="228184896957125096" at="28,0,29,0" concept="13" trace="inferTypeParams$bgj_" />
-      <node id="228184896957125096" at="32,0,33,0" concept="13" trace="IInferrableTypeParameter$bl" />
+      <node id="228184896957125096" at="32,0,33,0" concept="13" trace="IGenericClassCreator$bl" />
       <node id="228184896957127669" at="19,44,22,9" concept="7" />
       <node id="228184896957127669" at="17,76,23,7" concept="1" />
-      <node id="228184896957125097" at="16,0,25,0" concept="8" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="228184896957127673" at="20,93,21,146" />
+      <node id="228184896957125097" at="16,0,25,0" concept="8" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ILorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="228184896957127673" at="20,89,21,146" />
       <scope id="228184896957127669" at="18,7,22,9">
         <var name="inferrable" id="228184896957127669" />
       </scope>
-      <scope id="228184896957125097" at="16,91,23,7" />
+      <scope id="228184896957125097" at="16,102,23,7" />
       <scope id="228184896957125097" at="16,0,25,0">
         <var name="enclosingNode" id="228184896957125097" />
+        <var name="index" id="228184896957125097" />
         <var name="model" id="228184896957125097" />
         <var name="newNode" id="228184896957125097" />
         <var name="sampleNode" id="228184896957125097" />

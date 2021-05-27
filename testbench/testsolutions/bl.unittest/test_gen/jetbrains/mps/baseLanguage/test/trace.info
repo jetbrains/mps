@@ -13926,7 +13926,7 @@
       <node id="8187342170694467176" at="30,51,31,25" concept="9" />
       <node id="8187342170694474094" at="35,77,36,68" concept="3" />
       <node id="6923385624928216045" at="39,90,40,81" concept="3" />
-      <node id="5450156852673963011" at="43,90,44,81" concept="3" />
+      <node id="2001990232424546555" at="43,89,44,80" concept="3" />
       <node id="8187342170694475514" at="47,77,48,68" concept="3" />
       <node id="8187342170694479318" at="51,77,52,68" concept="3" />
       <node id="8187342170694467176" at="57,52,58,19" concept="9" />
@@ -13936,9 +13936,9 @@
       <node id="6923385624928216045" at="66,92,67,65" concept="6" />
       <node id="6923385624928216045" at="67,65,68,63" concept="6" />
       <node id="6923385624928216045" at="68,63,69,306" concept="3" />
-      <node id="5450156852673963011" at="71,92,72,65" concept="6" />
-      <node id="5450156852673963011" at="72,65,73,63" concept="6" />
-      <node id="5450156852673963011" at="73,63,74,306" concept="3" />
+      <node id="2001990232424546555" at="71,91,72,65" concept="6" />
+      <node id="2001990232424546555" at="72,65,73,63" concept="6" />
+      <node id="2001990232424546555" at="73,63,74,306" concept="3" />
       <node id="8187342170694475514" at="76,79,77,65" concept="6" />
       <node id="8187342170694475514" at="77,65,78,63" concept="6" />
       <node id="8187342170694475514" at="78,63,79,860" concept="3" />
@@ -13951,18 +13951,18 @@
       <node id="8187342170694467176" at="57,0,60,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8187342170694474094" at="34,0,38,0" concept="5" trace="test_ErrorMessagesCheck8187342170694474094#()V" />
       <node id="6923385624928216045" at="38,0,42,0" concept="5" trace="test_NodeSupertypeMayNotSpecifyCheck6923385624928216045#()V" />
-      <node id="5450156852673963011" at="42,0,46,0" concept="5" trace="test_NodeTheMethodsReturnTypeIsCheck5450156852673963011#()V" />
+      <node id="2001990232424546555" at="42,0,46,0" concept="5" trace="test_NodeTheMethodReturnTypeIsCheck2001990232424546555#()V" />
       <node id="8187342170694475514" at="46,0,50,0" concept="5" trace="test_ErrorMessagesCheck8187342170694475514#()V" />
       <node id="8187342170694479318" at="50,0,54,0" concept="5" trace="test_ErrorMessagesCheck8187342170694479318#()V" />
       <node id="8187342170694474094" at="61,0,66,0" concept="5" trace="test_ErrorMessagesCheck8187342170694474094#()V" />
       <node id="6923385624928216045" at="66,0,71,0" concept="5" trace="test_NodeSupertypeMayNotSpecifyCheck6923385624928216045#()V" />
-      <node id="5450156852673963011" at="71,0,76,0" concept="5" trace="test_NodeTheMethodsReturnTypeIsCheck5450156852673963011#()V" />
+      <node id="2001990232424546555" at="71,0,76,0" concept="5" trace="test_NodeTheMethodReturnTypeIsCheck2001990232424546555#()V" />
       <node id="8187342170694475514" at="76,0,81,0" concept="5" trace="test_ErrorMessagesCheck8187342170694475514#()V" />
       <node id="8187342170694479318" at="81,0,86,0" concept="5" trace="test_ErrorMessagesCheck8187342170694479318#()V" />
       <scope id="8187342170694467176" at="30,51,31,25" />
       <scope id="8187342170694474094" at="35,77,36,68" />
       <scope id="6923385624928216045" at="39,90,40,81" />
-      <scope id="5450156852673963011" at="43,90,44,81" />
+      <scope id="2001990232424546555" at="43,89,44,80" />
       <scope id="8187342170694475514" at="47,77,48,68" />
       <scope id="8187342170694479318" at="51,77,52,68" />
       <scope id="8187342170694467176" at="57,52,58,19" />
@@ -13978,9 +13978,9 @@
         <var name="nodeToCheck" id="6923385624928216045" />
         <var name="operation" id="6923385624928216045" />
       </scope>
-      <scope id="5450156852673963011" at="71,92,74,306">
-        <var name="nodeToCheck" id="5450156852673963011" />
-        <var name="operation" id="5450156852673963011" />
+      <scope id="2001990232424546555" at="71,91,74,306">
+        <var name="nodeToCheck" id="2001990232424546555" />
+        <var name="operation" id="2001990232424546555" />
       </scope>
       <scope id="8187342170694475514" at="76,79,79,860">
         <var name="nodeToCheck" id="8187342170694475514" />
@@ -13992,12 +13992,12 @@
       </scope>
       <scope id="8187342170694474094" at="34,0,38,0" />
       <scope id="6923385624928216045" at="38,0,42,0" />
-      <scope id="5450156852673963011" at="42,0,46,0" />
+      <scope id="2001990232424546555" at="42,0,46,0" />
       <scope id="8187342170694475514" at="46,0,50,0" />
       <scope id="8187342170694479318" at="50,0,54,0" />
       <scope id="8187342170694474094" at="61,0,66,0" />
       <scope id="6923385624928216045" at="66,0,71,0" />
-      <scope id="5450156852673963011" at="71,0,76,0" />
+      <scope id="2001990232424546555" at="71,0,76,0" />
       <scope id="8187342170694475514" at="76,0,81,0" />
       <scope id="8187342170694479318" at="81,0,86,0" />
       <unit id="8187342170694467176" at="55,0,88,0" name="jetbrains.mps.baseLanguage.test.WildCardsInAnonymousClassCreators_Test$TestBody" />

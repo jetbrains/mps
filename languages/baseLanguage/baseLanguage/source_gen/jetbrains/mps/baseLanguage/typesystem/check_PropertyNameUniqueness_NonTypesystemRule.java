@@ -7,9 +7,9 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -33,7 +32,9 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
   public check_PropertyNameUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode property, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> visibleMembers = Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getVisibleMembers_id5laDzmpBPtZ.invoke(check_5f44vd_a0a0a0b(SNodeOperations.getNodeAncestor(property, CONCEPTS.Classifier$Ix, false, false)), property)).where(new IWhereFilter<SNode>() {
+    SNode propertyClassifier = SNodeOperations.getNodeAncestor(property, CONCEPTS.Classifier$Ix, false, false);
+
+    Iterable<SNode> visibleMembers = Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(propertyClassifier)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(Objects.equals(it, property));
       }
@@ -87,12 +88,6 @@ public class check_PropertyNameUniqueness_NonTypesystemRule extends AbstractNonT
   }
   public boolean overrides() {
     return false;
-  }
-  private static SNode check_5f44vd_a0a0a0b(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(checkedDotOperand);
-    }
-    return null;
   }
 
   private static final class CONCEPTS {

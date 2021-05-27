@@ -13,11 +13,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class DefaultInferrableConstructor {
   public static class NodeFactory_228184896957125097 implements NodeFactory {
-    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       SPropertyOperations.assign(newNode, PROPS.inferTypeParams$bgj_, true);
       {
         final SNode inferrable = sampleNode;
-        if (SNodeOperations.isInstanceOf(inferrable, CONCEPTS.IInferrableTypeParameter$bl)) {
+        if (SNodeOperations.isInstanceOf(inferrable, CONCEPTS.IGenericClassCreator$bl)) {
           SPropertyOperations.assign(newNode, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(inferrable, PROPS.inferTypeParams$bgj_));
         }
       }
@@ -29,6 +29,6 @@ public class DefaultInferrableConstructor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IInferrableTypeParameter$bl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, "jetbrains.mps.baseLanguage.structure.IInferrableTypeParameter");
+    /*package*/ static final SInterfaceConcept IGenericClassCreator$bl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, "jetbrains.mps.baseLanguage.structure.IGenericClassCreator");
   }
 }

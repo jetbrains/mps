@@ -15061,7 +15061,7 @@
     <property role="3GE5qa" value="classifiers" />
     <property role="TrG5h" value="DefaultInferrableConstructor" />
     <node concept="37WvkG" id="cEFfhIfh7D" role="37WGs$">
-      <ref role="37XkoT" to="tpee:1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+      <ref role="37XkoT" to="tpee:1k0fX3j6IJx" resolve="IGenericClassCreator" />
       <node concept="37Y9Zx" id="cEFfhIfh7E" role="37ZfLb">
         <node concept="3clFbS" id="cEFfhIfh7F" role="2VODD2">
           <node concept="3clFbF" id="cEFfhIfh7S" role="3cqZAp">
@@ -15078,7 +15078,7 @@
             </node>
           </node>
           <node concept="Jncv_" id="cEFfhIfhJP" role="3cqZAp">
-            <ref role="JncvD" to="tpee:1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+            <ref role="JncvD" to="tpee:1k0fX3j6IJx" resolve="IGenericClassCreator" />
             <node concept="1r4N5L" id="cEFfhIfhKJ" role="JncvB" />
             <node concept="3clFbS" id="cEFfhIfhJT" role="Jncv$">
               <node concept="3clFbF" id="cEFfhIfhOZ" role="3cqZAp">

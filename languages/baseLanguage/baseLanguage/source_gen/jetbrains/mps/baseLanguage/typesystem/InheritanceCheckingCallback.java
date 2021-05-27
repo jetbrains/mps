@@ -4,17 +4,16 @@ package jetbrains.mps.baseLanguage.typesystem;
 
 import jetbrains.mps.baseLanguage.behavior.ClassifierTraversalCallback;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import java.util.Set;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.ArrayList;
@@ -28,15 +27,18 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.behavior.Property__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.scopes.GenericTypesUtil;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 /**
@@ -48,7 +50,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
     /**
      * first filled with abstract methods and then gradually replaced by the actual implementations
      */
-    public final Map<Signature, SNode> mySignature2TopMostImpl = MapSequence.fromMap(new HashMap<Signature, SNode>());
+    public final Map<Signature, InstanceMethod> mySignature2TopMostImpl = MapSequence.fromMap(new HashMap<Signature, InstanceMethod>());
 
     /*package*/ SignatureRecord() {
     }
@@ -57,7 +59,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       MapSequence.fromMap(mySignature2TopMostImpl).putAll(record.mySignature2TopMostImpl);
     }
 
-    public SNode getTopMostImplementation(@NotNull Signature signature) {
+    public InstanceMethod getTopMostImplementation(@NotNull Signature signature) {
       return MapSequence.fromMap(mySignature2TopMostImpl).get(signature);
     }
 
@@ -93,15 +95,15 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   }
 
   @Nullable
-  public SNode firstAbstractMethodWithoutImplementation() {
+  public InstanceMethod firstAbstractMethodWithoutImplementation() {
     SignatureRecord record = MapSequence.fromMap(myClassifier2Signatures).get(myClassifier);
     if (record == null) {
       return null;
     }
-    @NotNull Map<Signature, SNode> mySignature2TopMostImpl = record.mySignature2TopMostImpl;
-    IMapping<Signature, SNode> firstAbstract = MapSequence.fromMap(mySignature2TopMostImpl).where(new IWhereFilter<IMapping<Signature, SNode>>() {
-      public boolean accept(IMapping<Signature, SNode> it) {
-        return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it.value());
+    @NotNull Map<Signature, InstanceMethod> mySignature2TopMostImpl = record.mySignature2TopMostImpl;
+    IMapping<Signature, InstanceMethod> firstAbstract = MapSequence.fromMap(mySignature2TopMostImpl).where(new IWhereFilter<IMapping<Signature, InstanceMethod>>() {
+      public boolean accept(IMapping<Signature, InstanceMethod> it) {
+        return it.value().isAbstractMethod();
       }
     }).first();
     return (firstAbstract == null ? null : firstAbstract.value());
@@ -181,12 +183,13 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
 
   private void mergeOwnSignatures(SNode current) {
     SignatureRecord record = MapSequence.fromMap(myClassifier2Signatures).get(current);
-    for (SNode clMethod : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(current))) {
-      if (trackMethod(clMethod)) {
-        Signature signature = createSignature(clMethod);
-        SNode oldImpl = (record != null ? record.getTopMostImplementation(signature) : null);
-        if (oldImpl == null || !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(clMethod))) {
-          updateSignatureForClassifier(current, signature, clMethod);
+    for (SNode clMethod : Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(current), CONCEPTS.IInheritableFeature$4))) {
+      for (InstanceMethod method : createSignatures(clMethod)) {
+        if (trackMember(method)) {
+          InstanceMethod oldImpl = (record != null ? record.getTopMostImplementation(method.getSignature()) : null);
+          if (oldImpl == null || !(method.isAbstractMethod())) {
+            updateSignatureForClassifier(current, method);
+          }
         }
       }
     }
@@ -201,35 +204,37 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
         return;
       }
       for (Signature superSignature : SetSequence.fromSet(MapSequence.fromMap(superRecord.mySignature2TopMostImpl).keySet())) {
-        final SNode currentImplLocation = (MapSequence.fromMap(myClassifier2Signatures).get(currentClassifier) == null ? null : MapSequence.fromMap(myClassifier2Signatures).get(currentClassifier).getTopMostImplementation(superSignature));
-        final SNode superImplLocation = superRecord.getTopMostImplementation(superSignature);
-        SNode dominatingMethod = chooseDominatingMethodOrReportError(currentImplLocation, superImplLocation);
+        final InstanceMethod currentImplLocation = (MapSequence.fromMap(myClassifier2Signatures).get(currentClassifier) == null ? null : MapSequence.fromMap(myClassifier2Signatures).get(currentClassifier).getTopMostImplementation(superSignature));
+        final InstanceMethod superImplLocation = superRecord.getTopMostImplementation(superSignature);
+        InstanceMethod dominatingMethod = chooseDominatingMethodOrReportError(currentImplLocation, superImplLocation);
         if (dominatingMethod != null) {
-          updateSignatureForClassifier(currentClassifier, superSignature, dominatingMethod);
+          updateSignatureForClassifier(currentClassifier, dominatingMethod);
         }
       }
     }
   }
 
-  private SNode chooseDominatingMethodOrReportError(final SNode baseMethod1, final SNode baseMethod2) {
+  private InstanceMethod chooseDominatingMethodOrReportError(final InstanceMethod baseMethod1, final InstanceMethod baseMethod2) {
     if (baseMethod1 == null) {
       // no record of such method in the current classifier whatsoever => copy
       return baseMethod2;
     } else if (baseMethod1 == baseMethod2) {
       // same impl record => nothing to do
-    } else if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(baseMethod2)) {
+    } else if (baseMethod2.isAbstractMethod()) {
       // nop
-    } else if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(baseMethod1)) {
+    } else if (baseMethod1.isAbstractMethod()) {
       // replace abstract with impl
       return baseMethod2;
-    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod2), CONCEPTS.ClassConcept$bK)) {
+    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod2.getOrigin()), CONCEPTS.ClassConcept$bK)) {
       // classes implementations are better than default implementations in interfaces => rewrite
       return baseMethod2;
-    } else if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod1), CONCEPTS.ClassConcept$bK))) {
-      if (isDescendant(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.Classifier$Ix), SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.Classifier$Ix))) {
+    } else if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseMethod1.getOrigin()), CONCEPTS.ClassConcept$bK))) {
+      SNode parent1 = SNodeOperations.cast(SNodeOperations.getParent(baseMethod1.getOrigin()), CONCEPTS.Classifier$Ix);
+      SNode parent2 = SNodeOperations.cast(SNodeOperations.getParent(baseMethod2.getOrigin()), CONCEPTS.Classifier$Ix);
+      if (isDescendant(parent1, parent2)) {
         return baseMethod1;
       }
-      if (isDescendant(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.Classifier$Ix), SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.Classifier$Ix))) {
+      if (isDescendant(parent2, parent1)) {
         return baseMethod2;
       }
       // two interface implementations came from unrelated supers => error
@@ -238,14 +243,14 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
     return baseMethod1;
   }
 
-  private void reportUnrelatedDefaults(final SNode baseMethod1, final SNode baseMethod2) {
+  private void reportUnrelatedDefaults(final InstanceMethod baseMethod1, final InstanceMethod baseMethod2) {
     ErrorReportingItem item = new ErrorReportingItem() {
       @CheckingMethod
       @Override
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "The classifier '" + SPropertyOperations.getString(myClassifier, PROPS.name$MnvL) + "' inherits unrelated defaults for '" + SPropertyOperations.getString(baseMethod1, PROPS.name$MnvL) + "' from types '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + "' and '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408159407", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "The classifier '" + SPropertyOperations.getString(myClassifier, PROPS.name$MnvL) + "' inherits unrelated defaults for '" + baseMethod1.getSignature().getName() + "' from types '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod1.getOrigin()), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + "' and '" + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod2.getOrigin()), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408159407", null, errorTarget);
         }
       }
     };
@@ -263,19 +268,50 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
    * 
    * @return old value
    */
-  private SNode updateSignatureForClassifier(SNode classifier, Signature signature, SNode method) {
+  private InstanceMethod updateSignatureForClassifier(SNode classifier, InstanceMethod method) {
     if (MapSequence.fromMap(myClassifier2Signatures).get(classifier) == null) {
       MapSequence.fromMap(myClassifier2Signatures).put(classifier, new SignatureRecord());
     }
-    SNode oldMethod = MapSequence.fromMap(MapSequence.fromMap(myClassifier2Signatures).get(classifier).mySignature2TopMostImpl).get(signature);
+    InstanceMethod oldMethod = MapSequence.fromMap(MapSequence.fromMap(myClassifier2Signatures).get(classifier).mySignature2TopMostImpl).get(method.getSignature());
     if (oldMethod != method) {
-      MapSequence.fromMap(MapSequence.fromMap(myClassifier2Signatures).get(classifier).mySignature2TopMostImpl).put(signature, method);
+      MapSequence.fromMap(MapSequence.fromMap(myClassifier2Signatures).get(classifier).mySignature2TopMostImpl).put(method.getSignature(), method);
     }
     return oldMethod;
   }
 
-  private Signature createSignature(SNode method) {
-    return Signature.create(SPropertyOperations.getString(method, PROPS.name$MnvL), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count(), createParamErasedSignature(method));
+  private InstanceMethod[] createSignatures(SNode instance) {
+    {
+      final SNode method = instance;
+      if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$39)) {
+        Signature signature = Signature.create(SPropertyOperations.getString(method, PROPS.name$MnvL), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count(), createParamErasedSignature(method));
+
+        InstanceMethod[] methods = new InstanceMethod[1];
+
+        methods[0] = new InstanceMethod(instance, SLinkOperations.getTarget(instance, LINKS.visibility$Yyua), SPropertyOperations.getBoolean(method, PROPS.isFinal$eVPk), (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method), SLinkOperations.getTarget(method, LINKS.returnType$5xoi), SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp), signature);
+        return methods;
+      }
+    }
+
+    {
+      final SNode property = instance;
+      if (SNodeOperations.isInstanceOf(property, CONCEPTS.Property$iK)) {
+        InstanceMethod[] methods = new InstanceMethod[((boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(property) ? 2 : 1)];
+
+        Signature getter = Signature.create(Property__BehaviorDescriptor.getGetterMethodName_idhEwIJ02.invoke(property), 0, "");
+        methods[0] = new InstanceMethod(property, SLinkOperations.getTarget(property, LINKS.visibility$Yyua), false, false, SLinkOperations.getTarget(property, LINKS.type$56v0), null, getter);
+
+        if ((boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(property)) {
+          SNode type = GenericTypesUtil.getTypeWithResolvedTypeVars(SLinkOperations.getTarget(property, LINKS.type$56v0), myTypeByTypeVar);
+          Signature setter = Signature.create(Property__BehaviorDescriptor.getSetterMethodName_idhEwIJ0b.invoke(property), 1, (type != null ? Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(type) : ""));
+
+          methods[1] = new InstanceMethod(property, Property__BehaviorDescriptor.getSetterVisibility_idhEwIJ0k.invoke(property), false, false, SLinkOperations.getTarget(property, LINKS.type$56v0), null, setter);
+        }
+
+        return methods;
+      }
+    }
+
+    return new InstanceMethod[0];
   }
 
   private String createParamErasedSignature(SNode method) {
@@ -295,42 +331,24 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
     return result.toString();
   }
 
-  /**
-   * 
-   * @return top most implementing method for the method signature (might return the method itself)
-   */
-  @Nullable
-  public SNode getTopMostImplementation(SNode method) {
-    Signature signature = createSignature(method);
-    return MapSequence.fromMap(myClassifier2Signatures).get(myClassifier).getTopMostImplementation(signature);
-  }
 
-  /**
-   * 
-   * @return top most super method for the method signature (cannot return the method itself)
-   */
-  @Nullable
-  public SNode getTopMostSuperMethod(SNode method) {
-    Signature signature = createSignature(method);
-    return myClassifierRecordNoOwnMethods.getTopMostImplementation(signature);
-  }
+
 
   /**
    * 
    * @return all base methods (including abstract) in the hierarchy does not include the methods from the myClassifier
    */
-  public List<SNode> getBaseMethods(SNode method) {
-    final Signature signature = createSignature(method);
+  public List<InstanceMethod> getBaseMethods(final InstanceMethod method) {
     return MapSequence.fromMap(myClassifier2Signatures).where(new IWhereFilter<IMapping<SNode, SignatureRecord>>() {
       public boolean accept(IMapping<SNode, SignatureRecord> it) {
         return it.key() != myClassifier;
       }
-    }).select(new ISelector<IMapping<SNode, SignatureRecord>, SNode>() {
-      public SNode select(IMapping<SNode, SignatureRecord> it) {
-        return it.value().getTopMostImplementation(signature);
+    }).select(new ISelector<IMapping<SNode, SignatureRecord>, InstanceMethod>() {
+      public InstanceMethod select(IMapping<SNode, SignatureRecord> it) {
+        return it.value().getTopMostImplementation(method.getSignature());
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
+    }).where(new IWhereFilter<InstanceMethod>() {
+      public boolean accept(InstanceMethod it) {
         return it != null;
       }
     }).distinct().toListSequence();
@@ -339,17 +357,21 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   /**
    * methods which have some base methods
    */
-  public List<SNode> getMyOverridingMethods() {
+  public List<InstanceMethod> getMyOverridingMethods() {
     final SignatureRecord myRecord = MapSequence.fromMap(myClassifier2Signatures).get(myClassifier);
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(myClassifier)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return trackMethod(it) && myRecord.getTopMostImplementation(createSignature(it)) != null;
+    return Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(myClassifier), CONCEPTS.IInheritableFeature$4)).translate(new ITranslator2<SNode, InstanceMethod>() {
+      public Iterable<InstanceMethod> translate(SNode it) {
+        return Sequence.fromArray(createSignatures(it));
+      }
+    }).where(new IWhereFilter<InstanceMethod>() {
+      public boolean accept(InstanceMethod it) {
+        return trackMember(it) && myRecord.getTopMostImplementation(it.getSignature()) != null;
       }
     }).toListSequence();
   }
 
-  private boolean trackMethod(SNode clMethod) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(clMethod, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
+  private boolean trackMember(InstanceMethod clMethod) {
+    return !(SNodeOperations.isInstanceOf(clMethod.getVisibility(), CONCEPTS.PrivateVisibility$l0));
   }
 
   @Override
@@ -366,18 +388,25 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
   private static final class LINKS {
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink type$56v0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b752a0b9L, "type");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IInheritableFeature$4 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x27034ba2d2503846L, "jetbrains.mps.baseLanguage.structure.IInheritableFeature");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Property$iK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, "jetbrains.mps.baseLanguage.structure.Property");
     /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

@@ -519,6 +519,9 @@
     <node concept="PrWs8" id="4VKhzNI6z5" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
+    <node concept="PrWs8" id="2s3iUbik5ga" role="PzmwI">
+      <ref role="PrY4T" node="2s3iUbik3x6" resolve="IInheritableFeature" />
+    </node>
     <node concept="1QGGSu" id="4Q8sAA5iJS4" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/method.png" />
     </node>
@@ -2045,7 +2048,7 @@
       <property role="1iqoE4" value="${module}/icons/anonymousClass.png" />
     </node>
     <node concept="PrWs8" id="5pbfqym6m_T" role="PzmwI">
-      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IGenericClassCreator" />
     </node>
   </node>
   <node concept="1TIwiD" id="h3qTviz">
@@ -2445,6 +2448,9 @@
     <node concept="PrWs8" id="4VKhzNI8DY" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
+    <node concept="PrWs8" id="2s3iUbi$5Pg" role="PzmwI">
+      <ref role="PrY4T" node="2s3iUbik3x6" resolve="IInheritableFeature" />
+    </node>
   </node>
   <node concept="1TIwiD" id="huRnNr8">
     <property role="R5$K7" value="true" />
@@ -2753,7 +2759,7 @@
       <ref role="PrY4T" node="hxndl_i" resolve="IMethodCall" />
     </node>
     <node concept="PrWs8" id="1k0fX3j6IRq" role="PzmwI">
-      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IGenericClassCreator" />
     </node>
   </node>
   <node concept="1TIwiD" id="hFuNrjK">
@@ -4246,7 +4252,7 @@
       <ref role="20lvS9" node="g7pOWCK" resolve="Classifier" />
     </node>
     <node concept="PrWs8" id="1k0fX3j6QV0" role="PzmwI">
-      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IGenericClassCreator" />
     </node>
   </node>
   <node concept="1TIwiD" id="1$K1wuo3Jf">
@@ -4846,6 +4852,14 @@
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
     </node>
   </node>
+  <node concept="PlHQZ" id="2s3iUbik3x6">
+    <property role="EcuMT" value="2811173755094579270" />
+    <property role="3GE5qa" value="classifiers.members" />
+    <property role="TrG5h" value="IInheritableFeature" />
+    <node concept="PrWs8" id="2s3iUbi$SYm" role="PrDN$">
+      <ref role="PrY4T" node="h9B3isZ" resolve="IVisible" />
+    </node>
+  </node>
   <node concept="1TIwiD" id="5vlcUuJ5uOU">
     <property role="R4oN_" value="single-line comment" />
     <property role="TrG5h" value="SingleLineComment" />
@@ -4943,7 +4957,7 @@
   <node concept="PlHQZ" id="1k0fX3j6IJx">
     <property role="EcuMT" value="1513279640923991009" />
     <property role="3GE5qa" value="classifiers" />
-    <property role="TrG5h" value="IInferrableTypeParameter" />
+    <property role="TrG5h" value="IGenericClassCreator" />
     <node concept="1TJgyi" id="1k0fX3i3oGt" role="1TKVEl">
       <property role="IQ2nx" value="1513279640906337053" />
       <property role="TrG5h" value="inferTypeParams" />

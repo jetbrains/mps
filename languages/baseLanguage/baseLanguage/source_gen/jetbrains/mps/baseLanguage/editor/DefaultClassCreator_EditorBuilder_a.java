@@ -291,7 +291,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_27y5p7_a1b0");
-      IInferrableTypeParameter_DisableInference.setCellActions(editorCell, myNode, getEditorContext());
+      IGenericClassCreator_DisableInference.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setDefaultText("");
       return editorCell;
     }

@@ -1540,7 +1540,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQuery" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQueryRestricted" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IInferrableTypeParameter_DisableInference" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IGenericClassCreator_DisableInference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.PresentationProviders" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
@@ -4079,7 +4079,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.BaseAngleBracketStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQuery" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IInferrableTypeParameter_DisableInference" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IGenericClassCreator_DisableInference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.PresentationProviders" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
@@ -5594,7 +5594,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightParenStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseMethodParameterInformationQuery" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IInferrableTypeParameter_DisableInference" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IGenericClassCreator_DisableInference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.PresentationProviders" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.CellUtil" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.FocusPolicy" />
@@ -9376,7 +9376,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.editor.IInferrableTypeParameter_DisableInference">
+  <dependency className="jetbrains.mps.baseLanguage.editor.IGenericClassCreator_DisableInference">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />

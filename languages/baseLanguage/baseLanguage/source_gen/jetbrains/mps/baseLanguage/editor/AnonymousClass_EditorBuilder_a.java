@@ -335,7 +335,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
-      IInferrableTypeParameter_DisableInference.setCellActions(editorCell, myNode, getEditorContext());
+      IGenericClassCreator_DisableInference.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setDefaultText("");
       return editorCell;
     }
