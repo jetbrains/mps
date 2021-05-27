@@ -615,7 +615,7 @@ public class NodeSubstituteChooser implements KeyboardHandler {
     return null;
   }
 
-  public Font getFont() {
+  Font getFont() {
     return myPatternEditor.getFont();
   }
 }
