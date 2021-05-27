@@ -53,6 +53,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
         <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
@@ -263,6 +266,7 @@
           <node concept="3cpWs6" id="7GTlfWVJcO_" role="3cqZAp">
             <node concept="2ShNRf" id="7GTlfWVJp3b" role="3cqZAk">
               <node concept="1pGfFk" id="7GTlfWVJp44" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="37wK5l" node="7GTlfWVJcOl" resolve="Closures.ItemContainer" />
                 <node concept="37vLTw" id="7GTlfWVJp45" role="37wK5m">
                   <ref role="3cqZAo" node="7GTlfWVJcOy" resolve="content" />
@@ -458,6 +462,7 @@
           <node concept="3cpWs6" id="7GTlfWVJcPJ" role="3cqZAp">
             <node concept="2ShNRf" id="7GTlfWVJp2Y" role="3cqZAk">
               <node concept="HV5vD" id="7GTlfWVJp30" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="HV5vE" node="7GTlfWVJcPr" resolve="Closures.List" />
               </node>
             </node>
@@ -716,6 +721,7 @@
                           </node>
                           <node concept="2ShNRf" id="7GTlfWVJKlI" role="37wK5m">
                             <node concept="HV5vD" id="7GTlfWVJKlJ" role="2ShVmc">
+                              <property role="373rjd" value="true" />
                               <ref role="HV5vE" node="7GTlfWVJcPr" resolve="Closures.List" />
                               <node concept="3uibUv" id="7GTlfWVJKlK" role="HU9BZ">
                                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
@@ -1213,6 +1219,7 @@
                           </node>
                           <node concept="2ShNRf" id="7GTlfWVJOi2" role="37wK5m">
                             <node concept="HV5vD" id="7GTlfWVJOi3" role="2ShVmc">
+                              <property role="373rjd" value="true" />
                               <ref role="HV5vE" node="7GTlfWVJcPr" resolve="Closures.List" />
                               <node concept="3uibUv" id="7GTlfWVJOi4" role="HU9BZ">
                                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
@@ -1732,6 +1739,7 @@
                           </node>
                           <node concept="2ShNRf" id="7GTlfWVJB3o" role="37wK5m">
                             <node concept="HV5vD" id="7GTlfWVJB3p" role="2ShVmc">
+                              <property role="373rjd" value="true" />
                               <ref role="HV5vE" node="7GTlfWVJcPr" resolve="Closures.List" />
                               <node concept="3uibUv" id="7GTlfWVJB3q" role="HU9BZ">
                                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />

@@ -16,6 +16,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
+import java.util.Map;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -32,6 +33,11 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.apache.log4j.Level;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import java.util.Iterator;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.function.Supplier;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -60,8 +66,13 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> populateMembers_id6r77ob2USUV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2USUV").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isStatic_id6r77ob2USS8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2USS8").build();
+  public static final SMethod<SNode> getTargetClassifier_id1k0fX3j6Qov = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1k0fX3j6Qov").build();
+  public static final SMethod<List<SNode>> getTypeParameter_id1HUOkcfjoPx = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1HUOkcfjoPx").build();
+  public static final SMethod<Map<SNode, SNode>> getInferredTypeByTypeVar_id4H6sh0LDcte = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl((Class<Map<SNode, SNode>>) ((Class) Object.class))).name("getInferredTypeByTypeVar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H6sh0LDcte").build();
+  public static final SMethod<Iterable<SNode>> getConcreteTypeParameter_id4H6sh0LUNF7 = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConcreteTypeParameter").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H6sh0LUNF7").build();
+  public static final SMethod<SNode> getThisType_id2RtWPFZ12w7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getThisType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2RtWPFZ12w7").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getExtendedClassifierTypes_id1UeCwxlWKny, getJavaName_id2_jKYQ0K_an, getSuperclass_idi3H_lLu, getAvailableMethodDeclarations_id50EF2fWdwEN, getIndexInContainingClass_id3BacVlMg8ub, isDescendant_checkLoops_id6dL7A1DpKoA, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id6xEo7wt3U0_, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, isStatic_id6r77ob2USS8);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getExtendedClassifierTypes_id1UeCwxlWKny, getJavaName_id2_jKYQ0K_an, getSuperclass_idi3H_lLu, getAvailableMethodDeclarations_id50EF2fWdwEN, getIndexInContainingClass_id3BacVlMg8ub, isDescendant_checkLoops_id6dL7A1DpKoA, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id6xEo7wt3U0_, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, isStatic_id6r77ob2USS8, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx, getInferredTypeByTypeVar_id4H6sh0LDcte, getConcreteTypeParameter_id4H6sh0LUNF7, getThisType_id2RtWPFZ12w7);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$aWW8, true);
@@ -177,6 +188,63 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isStatic_id6r77ob2USS8(@NotNull SNode __thisNode__) {
     return false;
   }
+  /*package*/ static SNode getTargetClassifier_id1k0fX3j6Qov(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$q_Y$);
+  }
+  /*package*/ static List<SNode> getTypeParameter_id1HUOkcfjoPx(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$F9H8);
+  }
+  /*package*/ static Map<SNode, SNode> getInferredTypeByTypeVar_id4H6sh0LDcte(@NotNull SNode __thisNode__) {
+    Map<SNode, SNode> inferredTypeByTypeVar = Classifier__BehaviorDescriptor.getInferredTypeByTypeVar_id4H6sh0LDcte.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$Bt);
+
+    {
+      final SNode clType = TypecheckingFacade.getFromContext().getTypeOf(__thisNode__);
+      if (SNodeOperations.isInstanceOf(clType, CONCEPTS.ClassifierType$bL)) {
+        // Add typevars that were inferred to type
+        {
+          Iterator<SNode> typevar_it = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$q_Y$), LINKS.typeVariableDeclaration$Lipp)).iterator();
+          Iterator<SNode> typeval_it = ListSequence.fromList(SLinkOperations.getChildren(clType, LINKS.parameter$oqG$)).iterator();
+          SNode typevar_var;
+          SNode typeval_var;
+          while (typevar_it.hasNext() && typeval_it.hasNext()) {
+            typevar_var = typevar_it.next();
+            typeval_var = typeval_it.next();
+            MapSequence.fromMap(inferredTypeByTypeVar).put(typevar_var, typeval_var);
+          }
+        }
+      }
+    }
+
+    return inferredTypeByTypeVar;
+  }
+  /*package*/ static Iterable<SNode> getConcreteTypeParameter_id4H6sh0LUNF7(@NotNull final SNode __thisNode__) {
+    if (((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(__thisNode__))) {
+      SNode type = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
+        public SNode get() {
+          return TypecheckingFacade.getFromContext().getTypeOf(__thisNode__);
+        }
+      });
+      {
+        final SNode clType = type;
+        if (SNodeOperations.isInstanceOf(clType, CONCEPTS.ClassifierType$bL)) {
+          return SLinkOperations.getChildren(clType, LINKS.parameter$oqG$);
+        }
+      }
+    }
+
+    return SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$F9H8);
+  }
+  /*package*/ static SNode getThisType_id2RtWPFZ12w7(@NotNull SNode __thisNode__) {
+    SNode thisType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$Bt);
+    if (((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(__thisNode__))) {
+      ListSequence.fromList(SLinkOperations.getChildren(thisType, LINKS.parameter$oqG$)).addSequence(Sequence.fromIterable(AnonymousClass__BehaviorDescriptor.getConcreteTypeParameter_id4H6sh0LUNF7.invoke(__thisNode__)).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          return SNodeOperations.copyNode(it);
+        }
+      }));
+    }
+    return thisType;
+  }
 
   /*package*/ AnonymousClass__BehaviorDescriptor() {
   }
@@ -220,6 +288,16 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
         return null;
       case 12:
         return (T) ((Boolean) isStatic_id6r77ob2USS8(node));
+      case 13:
+        return (T) ((SNode) getTargetClassifier_id1k0fX3j6Qov(node));
+      case 14:
+        return (T) ((List<SNode>) getTypeParameter_id1HUOkcfjoPx(node));
+      case 15:
+        return (T) ((Map<SNode, SNode>) getInferredTypeByTypeVar_id4H6sh0LDcte(node));
+      case 16:
+        return (T) ((Iterable<SNode>) getConcreteTypeParameter_id4H6sh0LUNF7(node));
+      case 17:
+        return (T) ((SNode) getThisType_id2RtWPFZ12w7(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -273,11 +351,14 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SInterfaceConcept IClassifierMember$Na = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb113eL, "jetbrains.mps.baseLanguage.structure.IClassifierMember");
     /*package*/ static final SInterfaceConcept IClassifierType$B1 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL, "jetbrains.mps.baseLanguage.structure.IClassifierType");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink typeParameter$F9H8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 }

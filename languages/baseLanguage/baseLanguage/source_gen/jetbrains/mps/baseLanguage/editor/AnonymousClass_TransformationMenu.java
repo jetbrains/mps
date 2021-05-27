@@ -27,6 +27,7 @@ import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -40,6 +41,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class AnonymousClass_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -130,6 +132,7 @@ public class AnonymousClass_TransformationMenu extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode type = SNodeFactoryOperations.createNewNode(CONCEPTS.Type$bu, null);
+          SPropertyOperations.assign(_context.getNode(), PROPS.inferTypeParams$bgj_, true);
           ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$F9H8)).addElement(type);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), type, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -161,5 +164,9 @@ public class AnonymousClass_TransformationMenu extends TransformationMenuBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty inferTypeParams$bgj_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, 0x15003fd0d20d8b1dL, "inferTypeParams");
   }
 }

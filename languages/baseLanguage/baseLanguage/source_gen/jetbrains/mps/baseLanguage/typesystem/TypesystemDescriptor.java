@@ -1419,6 +1419,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInequationReplacementRules.add(eliminationRule);
     }
     {
+      InequationReplacementRule_Runtime eliminationRule = new InferredClassifierType_subtypeOf_ClassifierType_InequationReplacementRule();
+      this.myInequationReplacementRules.add(eliminationRule);
+    }
+    {
       InequationReplacementRule_Runtime eliminationRule = new LowerBoundType_subtypeOf_bound_InequationReplacementRule();
       this.myInequationReplacementRules.add(eliminationRule);
     }
@@ -1463,7 +1467,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).contains(variable);
         }
         public SNode convert(SNode contextNode, String role, SNode variable, boolean isAggregation) {
-          return _quotation_createNode_3ist9o_a0a1a0a0a0tn0a();
+          return _quotation_createNode_3ist9o_a0a1a0a0a0un0a();
         }
       };
       this.myVariableConverters.add(converter);
@@ -1496,7 +1500,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       OverloadedOpsProvider_OneTypeSpecified provider = new OverloadedOpsProvider_OneTypeSpecified() {
         {
-          this.myOperandType = _quotation_createNode_3ist9o_a0a0a0a0a0a0a563a0();
+          this.myOperandType = _quotation_createNode_3ist9o_a0a0a0a0a0a0a663a0();
           this.myOperationConcept = CONCEPTS.PlusExpression$k0;
           this.myTypeIsExact = false;
           this.myIsStrong = false;
@@ -1504,7 +1508,7 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
           this.myRuleNodeId = "1533154877881631948";
         }
         public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
-          return _quotation_createNode_3ist9o_a0a1a0a0a0a0bo0a();
+          return _quotation_createNode_3ist9o_a0a1a0a0a0a0co0a();
         }
         @Override
         public void reportConflict(IRuleConflictWarningProducer producer) {
@@ -1774,20 +1778,20 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       return quotedNode_1;
     }
   }
-  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0tn0a() {
+  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0un0a() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Object");
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_3ist9o_a0a0a0a0a0a0a563a0() {
+  private static SNode _quotation_createNode_3ist9o_a0a0a0a0a0a0a663a0() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
     quotedNode_1 = nb.getResult();
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0a0bo0a() {
+  private static SNode _quotation_createNode_3ist9o_a0a1a0a0a0a0co0a() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
     quotedNode_1 = nb.getResult();

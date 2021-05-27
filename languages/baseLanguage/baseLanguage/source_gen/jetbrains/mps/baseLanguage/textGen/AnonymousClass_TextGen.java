@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.apache.log4j.Level;
+import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -44,20 +45,12 @@ public class AnonymousClass_TextGen extends TextGenDescriptorBase {
       BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.classifier$q_Y$), ctx);
     }
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$F9H8)).isNotEmpty()) {
-      tgs.append("<");
-      {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$F9H8);
-        final SNode lastItem = Sequence.fromIterable(collection).last();
-        for (SNode item : collection) {
-          tgs.appendNode(item);
-          if (item != lastItem) {
-            tgs.append(", ");
-          }
-        }
-      }
-      tgs.append(">");
+    if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(ctx.getPrimaryInput())) {
+      tgs.append("<>");
+    } else {
+      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$F9H8), ctx);
     }
+
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameter$yBil)).isNotEmpty()) {
       tgs.append("(");
       {

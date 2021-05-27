@@ -15057,5 +15057,57 @@
       </node>
     </node>
   </node>
+  <node concept="37WguZ" id="cEFfhIfh7C">
+    <property role="3GE5qa" value="classifiers" />
+    <property role="TrG5h" value="DefaultInferrableConstructor" />
+    <node concept="37WvkG" id="cEFfhIfh7D" role="37WGs$">
+      <ref role="37XkoT" to="tpee:1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+      <node concept="37Y9Zx" id="cEFfhIfh7E" role="37ZfLb">
+        <node concept="3clFbS" id="cEFfhIfh7F" role="2VODD2">
+          <node concept="3clFbF" id="cEFfhIfh7S" role="3cqZAp">
+            <node concept="37vLTI" id="cEFfhIfhG_" role="3clFbG">
+              <node concept="3clFbT" id="cEFfhIfhGZ" role="37vLTx">
+                <property role="3clFbU" value="true" />
+              </node>
+              <node concept="2OqwBi" id="cEFfhIfhfE" role="37vLTJ">
+                <node concept="1r4Lsj" id="cEFfhIfh7R" role="2Oq$k0" />
+                <node concept="3TrcHB" id="cEFfhIfhnX" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpee:1k0fX3i3oGt" resolve="inferTypeParams" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="Jncv_" id="cEFfhIfhJP" role="3cqZAp">
+            <ref role="JncvD" to="tpee:1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+            <node concept="1r4N5L" id="cEFfhIfhKJ" role="JncvB" />
+            <node concept="3clFbS" id="cEFfhIfhJT" role="Jncv$">
+              <node concept="3clFbF" id="cEFfhIfhOZ" role="3cqZAp">
+                <node concept="37vLTI" id="cEFfhIfhP1" role="3clFbG">
+                  <node concept="2OqwBi" id="cEFfhIfiiW" role="37vLTx">
+                    <node concept="Jnkvi" id="cEFfhIfi8X" role="2Oq$k0">
+                      <ref role="1M0zk5" node="cEFfhIfhJV" resolve="inferrable" />
+                    </node>
+                    <node concept="3TrcHB" id="cEFfhIfiwa" role="2OqNvi">
+                      <ref role="3TsBF5" to="tpee:1k0fX3i3oGt" resolve="inferTypeParams" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="cEFfhIfhP3" role="37vLTJ">
+                    <node concept="1r4Lsj" id="cEFfhIfhP4" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="cEFfhIfhP5" role="2OqNvi">
+                      <ref role="3TsBF5" to="tpee:1k0fX3i3oGt" resolve="inferTypeParams" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="JncvC" id="cEFfhIfhJV" role="JncvA">
+              <property role="TrG5h" value="inferrable" />
+              <node concept="2jxLKc" id="cEFfhIfhJW" role="1tU5fm" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

@@ -118,7 +118,7 @@ public class ResolveUtil {
       if (SNodeOperations.isInstanceOf(classConcept, CONCEPTS.AnonymousClass$Bt)) {
         superclass = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
         SLinkOperations.setTarget(superclass, LINKS.classifier$cxMr, SLinkOperations.getTarget(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$));
-        for (SNode type : SLinkOperations.getChildren(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$Bt), LINKS.typeParameter$F9H8)) {
+        for (SNode type : AnonymousClass__BehaviorDescriptor.getConcreteTypeParameter_id4H6sh0LUNF7.invoke(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$Bt))) {
           ListSequence.fromList(SLinkOperations.getChildren(superclass, LINKS.parameter$oqG$)).addElement(SNodeOperations.copyNode(type));
         }
       } else {
@@ -238,7 +238,6 @@ public class ResolveUtil {
     /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
     /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink typeParameter$F9H8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
     /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");

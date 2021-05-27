@@ -20,14 +20,15 @@ import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ITypeApplicable__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -37,6 +38,9 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
   public typeof_AnonymousClass_InferenceRule() {
   }
   public void applyRule(final SNode anonymousClass, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    // Since this rule override IInferredExpression, append dependencies there
+    InferenceDependencyHelper.addInferenceDependencies(typeCheckingContext, anonymousClass);
+
     SNode cdecl = SLinkOperations.getTarget(anonymousClass, LINKS.baseMethodDeclaration$pyYw);
     if (cdecl == null) {
       return;
@@ -54,7 +58,7 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
     }
 
     for (SNode parameter : SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)) {
-      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(parameter, SLinkOperations.getTarget(_quotation_createNode_fj2vg7_a1a0a0a0h0b(), LINKS.descriptor$M2vT))))) {
+      if (!(!(TypecheckingFacade.getFromContext().isStrongSubtype(parameter, SLinkOperations.getTarget(_quotation_createNode_fj2vg7_a1a0a0a0k0b(), LINKS.descriptor$M2vT))))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parameter, "primitive type not allowed", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2925336694746296785", null, errorTarget);
       }
@@ -74,7 +78,26 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
         return tmp;
       }
     }).toListSequence();
-    SNode newType = _quotation_createNode_fj2vg7_a0m0b(anonymousClass, typeParam);
+
+    SNode newType;
+
+    if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(anonymousClass)) {
+      ListSequence.fromList(typeParam).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(anonymousClass, LINKS.classifier$q_Y$), LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          // Create typevar and save it into subs (so the collection of subs does not set object instead)
+          final SNode typeval_typevar_6218131504797454943 = typeCheckingContext.createNewRuntimeTypesVariable();
+          MapSequence.fromMap(subs).put(it, typeCheckingContext.getRepresentative(typeval_typevar_6218131504797454943));
+          return typeCheckingContext.getRepresentative(typeval_typevar_6218131504797454943);
+        }
+      }));
+
+      newType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x31acf7c12169ea33L, "jetbrains.mps.baseLanguage.structure.InferredClassifierType"));
+    } else {
+      newType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
+    }
+
+    SLinkOperations.setTarget(newType, LINKS.classifier$cxMr, anonymousClass);
+    ListSequence.fromList(SLinkOperations.getChildren(newType, LINKS.parameter$oqG$)).addSequence(ListSequence.fromList((List<SNode>) typeParam));
     IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(newType, subs);
 
     List<SNode> argl = SLinkOperations.getChildren(anonymousClass, LINKS.actualArgument$pzdx);
@@ -125,23 +148,12 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_fj2vg7_a1a0a0a0h0b() {
+  private static SNode _quotation_createNode_fj2vg7_a1a0a0a0k0b() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, "jetbrains.mps.baseLanguage.blTypes"), 0x10de9cbf8e8L, "PrimitiveTypeRef"));
     quotedNode_1 = nb.getResult();
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor"), "r:00000000-0000-4000-0000-011c895902de(jetbrains.mps.baseLanguage.blTypes.primitiveDescriptors)/1196683941620");
     return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_fj2vg7_a0m0b(Object parameter_1, Object parameter_2) {
-    SNode quotedNode_3 = null;
-    SNode quotedNode_4 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
-    quotedNode_3 = nb.getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
-    for (SNode child : (List<SNode>) parameter_2) {
-      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), SNodeOperations.copyIfNecessary(child));
-    }
-    return quotedNode_3;
   }
 
   private static final class LINKS {
@@ -150,6 +162,8 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
     /*package*/ static final SContainmentLink typeParameter$F9H8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x117ac45a693L, "typeParameter");
     /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
     /*package*/ static final SReferenceLink descriptor$M2vT = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 

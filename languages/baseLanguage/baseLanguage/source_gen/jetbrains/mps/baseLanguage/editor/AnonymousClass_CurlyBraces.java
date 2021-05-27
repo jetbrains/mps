@@ -10,6 +10,7 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -22,6 +23,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class AnonymousClass_CurlyBraces {
 
@@ -39,6 +41,7 @@ public class AnonymousClass_CurlyBraces {
           if ((SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw) != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.Classifier$Ix, false)).contains(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$))) {
             final SNode classCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.ClassCreator$ZG);
             SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw));
+            SPropertyOperations.assign(classCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(node, PROPS.inferTypeParams$bgj_));
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
                 ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.typeParameter$uYiw)).addElement(it);
@@ -53,6 +56,7 @@ public class AnonymousClass_CurlyBraces {
           } else {
             final SNode defaultClassCreator = SNodeFactoryOperations.replaceWithNewChild(parent, CONCEPTS.DefaultClassCreator$TC);
             SLinkOperations.setTarget(defaultClassCreator, LINKS.classifier$9NRM, SLinkOperations.getTarget(node, LINKS.classifier$q_Y$));
+            SPropertyOperations.assign(defaultClassCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(node, PROPS.inferTypeParams$bgj_));
             ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameter$F9H8)).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
                 ListSequence.fromList(SLinkOperations.getChildren(defaultClassCreator, LINKS.typeParameter$KPP3)).addElement(it);
@@ -132,5 +136,9 @@ public class AnonymousClass_CurlyBraces {
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SReferenceLink classifier$9NRM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
     /*package*/ static final SContainmentLink typeParameter$KPP3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty inferTypeParams$bgj_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, 0x15003fd0d20d8b1dL, "inferTypeParams");
   }
 }

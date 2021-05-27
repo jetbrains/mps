@@ -8,6 +8,7 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -20,10 +21,13 @@ public class DefaultClassCreator_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.NestedNewExpression$zV)) {
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.classifier$9NRM), PROPS.name$MnvL));
-      BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$KPP3), ctx);
-      tgs.append("()");
     } else {
       BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.classifier$9NRM), ctx);
+    }
+
+    if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(ctx.getPrimaryInput())) {
+      tgs.append("<>()");
+    } else {
       BaseLanguageTextGen.typeParameters(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeParameter$KPP3), ctx);
       tgs.append("()");
     }

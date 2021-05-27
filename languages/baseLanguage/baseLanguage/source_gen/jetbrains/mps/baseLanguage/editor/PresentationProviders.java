@@ -81,6 +81,13 @@ public class PresentationProviders {
       return SPropertyOperations.getString(targetNode, PROPS.name$MnvL) + "()";
     }
   };
+  public static final IReferentPresentationProvider PRESENTATION_yxirav_a0a0a = new IReferentPresentationProvider() {
+    @NotNull
+    @Override
+    public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
+      return (String) Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(targetNode, sourceNode);
+    }
+  };
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");

@@ -2518,6 +2518,51 @@
       <unit id="2654404125187242906" at="23,0,107,0" name="jetbrains.mps.baseLanguage.test.ClassifierNameUniqueness_Test" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/2668602783496030019">
+    <file name="DiamondOperator_Test.java">
+      <node id="2668602783496030019" at="27,33,28,25" concept="9" />
+      <node id="2668602783496187514" at="32,72,33,63" concept="3" />
+      <node id="2668602783496250965" at="36,78,37,69" concept="3" />
+      <node id="2668602783496030019" at="42,52,43,19" concept="9" />
+      <node id="2668602783496187514" at="46,74,47,65" concept="6" />
+      <node id="2668602783496187514" at="47,65,48,63" concept="6" />
+      <node id="2668602783496187514" at="48,63,49,41" concept="3" />
+      <node id="2668602783496187514" at="49,41,50,106" concept="3" />
+      <node id="2668602783496250965" at="52,80,53,65" concept="6" />
+      <node id="2668602783496250965" at="53,65,54,63" concept="6" />
+      <node id="2668602783496250965" at="54,63,55,190" concept="3" />
+      <node id="2668602783496030019" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="2668602783496030019" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="2668602783496030019" at="27,0,30,0" concept="2" trace="DiamondOperator_Test#()V" />
+      <node id="2668602783496030019" at="42,0,45,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2668602783496187514" at="31,0,35,0" concept="5" trace="test_NodeTypeCheck2668602783496187514#()V" />
+      <node id="2668602783496250965" at="35,0,39,0" concept="5" trace="test_NodeTypeSystemCheck2668602783496250965#()V" />
+      <node id="2668602783496250965" at="52,0,57,0" concept="5" trace="test_NodeTypeSystemCheck2668602783496250965#()V" />
+      <node id="2668602783496187514" at="46,0,52,0" concept="5" trace="test_NodeTypeCheck2668602783496187514#()V" />
+      <scope id="2668602783496030019" at="27,33,28,25" />
+      <scope id="2668602783496187514" at="32,72,33,63" />
+      <scope id="2668602783496250965" at="36,78,37,69" />
+      <scope id="2668602783496030019" at="42,52,43,19" />
+      <scope id="2668602783496030019" at="27,0,30,0" />
+      <scope id="2668602783496030019" at="42,0,45,0">
+        <var name="owner" id="2668602783496030019" />
+      </scope>
+      <scope id="2668602783496250965" at="52,80,55,190">
+        <var name="nodeToCheck" id="2668602783496250965" />
+        <var name="operation" id="2668602783496250965" />
+      </scope>
+      <scope id="2668602783496187514" at="31,0,35,0" />
+      <scope id="2668602783496250965" at="35,0,39,0" />
+      <scope id="2668602783496187514" at="46,74,50,106">
+        <var name="nodeToCheck" id="2668602783496187514" />
+        <var name="operation" id="2668602783496187514" />
+      </scope>
+      <scope id="2668602783496250965" at="52,0,57,0" />
+      <scope id="2668602783496187514" at="46,0,52,0" />
+      <unit id="2668602783496030019" at="40,0,59,0" name="jetbrains.mps.baseLanguage.test.DiamondOperator_Test$TestBody" />
+      <unit id="2668602783496030019" at="20,0,60,0" name="jetbrains.mps.baseLanguage.test.DiamondOperator_Test" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/2702384151996661689">
     <file name="SimpleUnreachable_Test.java">
       <node id="2702384151996661689" at="28,35,29,25" concept="9" />

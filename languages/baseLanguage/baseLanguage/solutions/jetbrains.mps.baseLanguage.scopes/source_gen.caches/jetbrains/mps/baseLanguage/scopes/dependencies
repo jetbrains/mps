@@ -67,7 +67,6 @@
   <dependency className="jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.LinkedHashSet" />

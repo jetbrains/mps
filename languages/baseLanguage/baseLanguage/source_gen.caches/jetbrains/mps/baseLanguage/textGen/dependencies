@@ -114,6 +114,7 @@
   <dependency className="jetbrains.mps.baseLanguage.textGen.AnonymousClass_TextGen">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseClassConceptTextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -438,6 +439,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.ClassCreator_TextGen">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
@@ -591,6 +593,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.DefaultClassCreator_TextGen">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />

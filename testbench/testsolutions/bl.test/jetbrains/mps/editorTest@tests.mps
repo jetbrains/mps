@@ -325,6 +325,9 @@
       </concept>
       <concept id="1068431790189" name="jetbrains.mps.baseLanguage.structure.Type" flags="in" index="33vP2l" />
       <concept id="1068431790191" name="jetbrains.mps.baseLanguage.structure.Expression" flags="nn" index="33vP2n" />
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IInferrableTypeParameter" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
         <child id="1214996921760" name="bound" index="3ztrMU" />
         <child id="1215091156086" name="auxBounds" index="3D4UlG" />
@@ -890,6 +893,7 @@
             <node concept="2ShNRf" id="2XSN2$V7zAB" role="3clFbG">
               <node concept="YeOm9" id="2XSN2$V7zAC" role="2ShVmc">
                 <node concept="1Y3b0j" id="2XSN2$V7zAD" role="YeSDq">
+                  <property role="373rjd" value="true" />
                   <ref role="37wK5l" to="33ny:~AbstractList.&lt;init&gt;()" resolve="AbstractList" />
                   <ref role="1Y3XeK" to="33ny:~AbstractList" resolve="AbstractList" />
                   <node concept="3clFb_" id="2XSN2$V7zAE" role="jymVt">
@@ -5290,14 +5294,15 @@
           <node concept="3clFbF" id="1CyoCb$wgyq" role="3cqZAp">
             <node concept="2ShNRf" id="1CyoCb$wgyr" role="3clFbG">
               <node concept="1pGfFk" id="1CyoCb$wgys" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
-                <node concept="33vP2l" id="1CyoCb$wgyu" role="1pMfVU">
-                  <node concept="LIFWc" id="2f0oMWTcFn6" role="lGtFl">
-                    <property role="p6zMs" value="0" />
-                    <property role="LIFWd" value="Error_a1nfgp_a0" />
-                    <property role="p6zMq" value="0" />
+                <node concept="33vP2l" id="7zYXC2CVB2Q" role="1pMfVU">
+                  <node concept="LIFWc" id="7zYXC2CVBhC" role="lGtFl">
                     <property role="ZRATv" value="true" />
                     <property role="OXtK3" value="true" />
+                    <property role="p6zMq" value="0" />
+                    <property role="p6zMs" value="0" />
+                    <property role="LIFWd" value="Error_a1nfgp_a0" />
                   </node>
                 </node>
               </node>
@@ -76708,6 +76713,7 @@
                 <node concept="YeOm9" id="6u_Rdby1V1X" role="2ShVmc">
                   <node concept="1Y3b0j" id="6u_Rdby1V20" role="YeSDq">
                     <property role="2bfB8j" value="true" />
+                    <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" node="6u_Rdby1SVc" resolve="GAGAGA.CCC" />
                     <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="6u_Rdby1V21" role="1B3o_S" />
@@ -76812,6 +76818,7 @@
                 <node concept="YeOm9" id="4nB19mALgSm" role="2ShVmc">
                   <node concept="1Y3b0j" id="4nB19mALgSp" role="YeSDq">
                     <property role="2bfB8j" value="true" />
+                    <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" node="4nB19mAH9tb" resolve="GAGAGA.IntA" />
                     <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="4nB19mALgSq" role="1B3o_S" />
@@ -76953,6 +76960,7 @@
                 <node concept="YeOm9" id="3RWh2jO9fdN" role="2ShVmc">
                   <node concept="1Y3b0j" id="3RWh2jO9fdO" role="YeSDq">
                     <property role="2bfB8j" value="true" />
+                    <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" node="3RWh2jO9fdB" resolve="GAGAGA.CCC" />
                     <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="3RWh2jO9fdP" role="1B3o_S" />

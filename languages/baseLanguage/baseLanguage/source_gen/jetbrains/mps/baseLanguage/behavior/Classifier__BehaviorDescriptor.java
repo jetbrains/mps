@@ -15,6 +15,7 @@ import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
+import java.util.Map;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,7 +26,6 @@ import jetbrains.mps.baseLanguage.scopes.MemberScopes;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
@@ -55,6 +55,7 @@ import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.scope.FilteringByNameScope;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.baseLanguage.scopes.ClassifierSignature;
+import java.util.HashMap;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -121,8 +122,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getPresentation_id69Qfsw3IoJg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("69Qfsw3IoJg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> addMember_id32Td0IabBk_ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("32Td0IabBk_").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SAbstractConcept>>) ((Class) Object.class), ""));
+  public static final SMethod<Map<SNode, SNode>> getInferredTypeByTypeVar_id4H6sh0LDcte = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl((Class<Map<SNode, SNode>>) ((Class) Object.class))).name("getInferredTypeByTypeVar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H6sh0LDcte").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, getVisibleMembers_id70J2WaK$Uj3, traverseClassifierHierarchy_id3rj45ZUtGbP, dfs_id3rj45ZVCYEm, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getFqName_idhEwIO9y, getMembers_idhEwJjl2, getMembers_id1UeCwxlVpJs, getExtendedClassifierTypes_id1UeCwxlWKny, getAllSuperClassifiers_id59G_UM6ah0X, getAllExtendedClassifiers_id2xreLMO8jma, getAllExtendedClassifiers_id2xreLMO8jm_, getPresentation_idhEwIMiw, hasStaticMemebers_idhFq8xqE, getNestedName_id7q4lzBFjvIX, getAncestorNonAnnymousClassifier_id5mpyJtmQBek, banParent_id4o2ZZuMGUFv, getClassifierPathToContext_id2qKFNTWiPl1, getClassifierPathDistinctFromContext_id2qKFNTWlEOm, buildClassifierPath_id2qKFNTWoqtI, getNestedNameInContext_id7q4lzBFjvF8, isStatic_id6r77ob2USS8, isInner_idsWroEc0xXl, checkLoops_id3sXyOQUqKq0, isDescendant_id6dL7A1DpKo1, isDescendant_checkLoops_id6dL7A1DpKoA, isSame_id4dzXPK1BpyE, checkLoops_id3sXyOQUqKq5, canInstantiateIn_id610WLfjPjne, getOwnMethods_id1DPgsAlM_WC, getSideIcon_id6TtJ6IUjtJX, getThisType_id2RtWPFZ12w7, getWithResolvedTypevars_id2RtWPFZ0VAJ, getResolvedVar_id2RtWPFZ12Bt, getResolvedMethodVar_idIqmIRMsvlW, getScope_id52_Geb4QDV$, getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, members_id1hodSy8nQmC, nestedClassifiers_id4_LVZ3pBjGQ, staticFields_id4_LVZ3pBr7M, staticMethods_id7fFTwQrQPHW, methods_id4_LVZ3pBKCn, canBeInterfaceMember_id2zJQqQIUx2B, getNonStaticContextClassifiers_id5S7J9l$QYtM, getContextClassifier_id5mDmeD1aaq0, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, addMember_id32Td0IabBk_);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, getVisibleMembers_id70J2WaK$Uj3, traverseClassifierHierarchy_id3rj45ZUtGbP, dfs_id3rj45ZVCYEm, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getFqName_idhEwIO9y, getMembers_idhEwJjl2, getMembers_id1UeCwxlVpJs, getExtendedClassifierTypes_id1UeCwxlWKny, getAllSuperClassifiers_id59G_UM6ah0X, getAllExtendedClassifiers_id2xreLMO8jma, getAllExtendedClassifiers_id2xreLMO8jm_, getPresentation_idhEwIMiw, hasStaticMemebers_idhFq8xqE, getNestedName_id7q4lzBFjvIX, getAncestorNonAnnymousClassifier_id5mpyJtmQBek, banParent_id4o2ZZuMGUFv, getClassifierPathToContext_id2qKFNTWiPl1, getClassifierPathDistinctFromContext_id2qKFNTWlEOm, buildClassifierPath_id2qKFNTWoqtI, getNestedNameInContext_id7q4lzBFjvF8, isStatic_id6r77ob2USS8, isInner_idsWroEc0xXl, checkLoops_id3sXyOQUqKq0, isDescendant_id6dL7A1DpKo1, isDescendant_checkLoops_id6dL7A1DpKoA, isSame_id4dzXPK1BpyE, checkLoops_id3sXyOQUqKq5, canInstantiateIn_id610WLfjPjne, getOwnMethods_id1DPgsAlM_WC, getSideIcon_id6TtJ6IUjtJX, getThisType_id2RtWPFZ12w7, getWithResolvedTypevars_id2RtWPFZ0VAJ, getResolvedVar_id2RtWPFZ12Bt, getResolvedMethodVar_idIqmIRMsvlW, getScope_id52_Geb4QDV$, getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, members_id1hodSy8nQmC, nestedClassifiers_id4_LVZ3pBjGQ, staticFields_id4_LVZ3pBr7M, staticMethods_id7fFTwQrQPHW, methods_id4_LVZ3pBKCn, canBeInterfaceMember_id2zJQqQIUx2B, getNonStaticContextClassifiers_id5S7J9l$QYtM, getContextClassifier_id5mDmeD1aaq0, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, addMember_id32Td0IabBk_, getInferredTypeByTypeVar_id4H6sh0LDcte);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
@@ -752,6 +754,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d)).addElement(member);
   }
+  /*package*/ static Map<SNode, SNode> getInferredTypeByTypeVar_id4H6sh0LDcte(@NotNull SNode __thisNode__) {
+    return MapSequence.fromMap(new HashMap<SNode, SNode>());
+  }
 
   /*package*/ Classifier__BehaviorDescriptor() {
   }
@@ -868,6 +873,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       case 51:
         addMember_id32Td0IabBk_(node, (SNode) parameters[0], (List<SAbstractConcept>) parameters[1]);
         return null;
+      case 52:
+        return (T) ((Map<SNode, SNode>) getInferredTypeByTypeVar_id4H6sh0LDcte(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

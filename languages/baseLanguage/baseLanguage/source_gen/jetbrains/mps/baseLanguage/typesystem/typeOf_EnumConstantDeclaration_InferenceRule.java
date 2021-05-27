@@ -8,8 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,12 +21,7 @@ public class typeOf_EnumConstantDeclaration_InferenceRule extends AbstractInfere
       return;
     }
 
-    SNode thisType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(enumClass);
-    {
-      SNode _nodeToCheck_1029348928467 = enumConstantDeclaration;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241009438604", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241009438608", true), (SNode) thisType, _info_12389875345);
-    }
+    ClassifierTypingUtil.inferThisType(typeCheckingContext, enumClass, typeCheckingContext.typeOf(enumConstantDeclaration, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7414139370951871387", true));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.EnumConstantDeclaration$MW;

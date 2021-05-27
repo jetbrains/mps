@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,11 +25,7 @@ public class typeOf_thisExpr_InferenceRule extends AbstractInferenceRule_Runtime
     } else {
       classifier = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), thisExpr);
     }
-    {
-      SNode _nodeToCheck_1029348928467 = thisExpr;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5338502249698244514", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5338502249698244511", true), (SNode) Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier), _info_12389875345);
-    }
+    ClassifierTypingUtil.inferThisType(typeCheckingContext, classifier, typeCheckingContext.typeOf(thisExpr, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5370363695052898340", true));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.ThisExpression$$o;

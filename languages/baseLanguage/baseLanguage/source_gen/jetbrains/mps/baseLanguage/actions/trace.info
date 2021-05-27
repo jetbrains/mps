@@ -19,7 +19,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="ActionAspectDescriptorImpl.java">
-      <unit at="16,0,112,0" name="jetbrains.mps.baseLanguage.actions.ActionAspectDescriptorImpl" />
+      <unit at="16,0,114,0" name="jetbrains.mps.baseLanguage.actions.ActionAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/1158793282643">
@@ -2105,6 +2105,33 @@
       <unit id="1497252193457135462" at="48,0,51,0" name="jetbrains.mps.baseLanguage.actions.copyPasteExtendingWithDefaultModifier_PastePostProcessor_0$PROPS" />
       <unit id="1497252193457135462" at="37,0,43,0" name="jetbrains.mps.baseLanguage.actions.copyPasteExtendingWithDefaultModifier_PastePostProcessor_0$CONCEPTS" />
       <unit id="1497252193457135462" at="16,0,52,0" name="jetbrains.mps.baseLanguage.actions.copyPasteExtendingWithDefaultModifier_PastePostProcessor_0" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/228184896957125096">
+    <file name="DefaultInferrableConstructor.java">
+      <node id="228184896957125112" at="16,91,17,76" concept="4" />
+      <node id="228184896957127669" at="18,7,19,44" concept="9" />
+      <node id="228184896957127999" at="20,93,21,146" concept="4" />
+      <node id="228184896957125096" at="28,0,29,0" concept="13" trace="inferTypeParams$bgj_" />
+      <node id="228184896957125096" at="32,0,33,0" concept="13" trace="IInferrableTypeParameter$bl" />
+      <node id="228184896957127669" at="19,44,22,9" concept="7" />
+      <node id="228184896957127669" at="17,76,23,7" concept="1" />
+      <node id="228184896957125097" at="16,0,25,0" concept="8" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <scope id="228184896957127673" at="20,93,21,146" />
+      <scope id="228184896957127669" at="18,7,22,9">
+        <var name="inferrable" id="228184896957127669" />
+      </scope>
+      <scope id="228184896957125097" at="16,91,23,7" />
+      <scope id="228184896957125097" at="16,0,25,0">
+        <var name="enclosingNode" id="228184896957125097" />
+        <var name="model" id="228184896957125097" />
+        <var name="newNode" id="228184896957125097" />
+        <var name="sampleNode" id="228184896957125097" />
+      </scope>
+      <unit id="228184896957125096" at="27,0,30,0" name="jetbrains.mps.baseLanguage.actions.DefaultInferrableConstructor$PROPS" />
+      <unit id="228184896957125096" at="31,0,34,0" name="jetbrains.mps.baseLanguage.actions.DefaultInferrableConstructor$CONCEPTS" />
+      <unit id="228184896957125097" at="15,0,26,0" name="jetbrains.mps.baseLanguage.actions.DefaultInferrableConstructor$NodeFactory_228184896957125097" />
+      <unit id="228184896957125096" at="14,0,35,0" name="jetbrains.mps.baseLanguage.actions.DefaultInferrableConstructor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/3207672282897614588">

@@ -18,17 +18,22 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
 
   public static final SMethod<Iterable<SNode>> retrieveInstantiationPoints_id5qAZxlfYCBV = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("retrieveInstantiationPoints").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5qAZxlfYCBV").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTargetClassifier_id1k0fX3j6Qov = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1k0fX3j6Qov").build();
+  public static final SMethod<List<SNode>> getTypeParameter_id1HUOkcfjoPx = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1HUOkcfjoPx").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveInstantiationPoints_id5qAZxlfYCBV);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveInstantiationPoints_id5qAZxlfYCBV, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -39,6 +44,12 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
         return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$Ta1X)) && DefaultConstructorUtils.hasDefaultConstructor(it);
       }
     });
+  }
+  /*package*/ static SNode getTargetClassifier_id1k0fX3j6Qov(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$9NRM);
+  }
+  /*package*/ static List<SNode> getTypeParameter_id1HUOkcfjoPx(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$KPP3);
   }
 
   /*package*/ DefaultClassCreator__BehaviorDescriptor() {
@@ -56,6 +67,10 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((SNode) getTargetClassifier_id1k0fX3j6Qov(node));
+      case 2:
+        return (T) ((List<SNode>) getTypeParameter_id1HUOkcfjoPx(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -89,5 +104,10 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
 
   private static final class PROPS {
     /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink classifier$9NRM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0ac833a6L, "classifier");
+    /*package*/ static final SContainmentLink typeParameter$KPP3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
   }
 }

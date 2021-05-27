@@ -12,6 +12,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_PastePostProcessor_1" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.BL_node_factories" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.CatchClause_factories" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.actions.DefaultInferrableConstructor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.FieldConversions" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.PasteOverridingForDefaultMethodsAsWell_PasteWrapper_0" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.actions.SingleLineComment_factories" />
@@ -161,6 +162,16 @@
     <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.NodeFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.actions.DefaultInferrableConstructor">
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.NodeFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>

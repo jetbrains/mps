@@ -14,13 +14,12 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.HashSet;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -71,7 +70,7 @@ public class ClassifierScopeUtils {
     /*package*/ final Map<SNode, SNode> typeByTypeVariable;
     /*package*/ final boolean isCyclic;
     /*package*/ ClassifierAndSuperClassifiersData(SNode topClassifier) {
-      typeByTypeVariable = MapSequence.fromMap(new HashMap<SNode, SNode>());
+      typeByTypeVariable = Classifier__BehaviorDescriptor.getInferredTypeByTypeVar_id4H6sh0LDcte.invoke(topClassifier);
       classifiers = SetSequence.fromSet(new LinkedHashSet<SNode>());
       isCyclic = collectImplementedAndExtended(topClassifier, SetSequence.fromSet(new HashSet<SNode>()), null);
     }

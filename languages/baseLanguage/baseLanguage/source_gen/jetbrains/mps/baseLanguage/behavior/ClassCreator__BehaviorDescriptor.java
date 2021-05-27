@@ -47,8 +47,10 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("50EF2fWdwEN").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<Boolean> isInTypeInferenceContext_id4cxv$9$kw67 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInTypeInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4cxv$9$kw67").build();
   public static final SMethod<Iterable<SNode>> retrieveInstantiationPoints_id5qAZxlfY81X = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("retrieveInstantiationPoints").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5qAZxlfY81X").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTargetClassifier_id1k0fX3j6Qov = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1k0fX3j6Qov").build();
+  public static final SMethod<List<SNode>> getTypeParameter_id1HUOkcfjoPx = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTypeParameter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1HUOkcfjoPx").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInstanceType_id6WzWPTX2vuB, getAvailableMethodDeclarations_id50EF2fWdwEN, isInTypeInferenceContext_id4cxv$9$kw67, retrieveInstantiationPoints_id5qAZxlfY81X);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInstanceType_id6WzWPTX2vuB, getAvailableMethodDeclarations_id50EF2fWdwEN, isInTypeInferenceContext_id4cxv$9$kw67, retrieveInstantiationPoints_id5qAZxlfY81X, getTargetClassifier_id1k0fX3j6Qov, getTypeParameter_id1HUOkcfjoPx);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -109,6 +111,12 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
       }
     });
   }
+  /*package*/ static SNode getTargetClassifier_id1k0fX3j6Qov(@NotNull SNode __thisNode__) {
+    return SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), CONCEPTS.ClassConcept$bK, false, false);
+  }
+  /*package*/ static List<SNode> getTypeParameter_id1HUOkcfjoPx(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$uYiw);
+  }
 
   /*package*/ ClassCreator__BehaviorDescriptor() {
   }
@@ -131,6 +139,10 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Iterable<SNode>) getAvailableMethodDeclarations_id50EF2fWdwEN(node, (String) parameters[0]));
       case 2:
         return (T) ((Boolean) isInTypeInferenceContext_id4cxv$9$kw67(node));
+      case 4:
+        return (T) ((SNode) getTargetClassifier_id1k0fX3j6Qov(node));
+      case 5:
+        return (T) ((List<SNode>) getTypeParameter_id1HUOkcfjoPx(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -43,6 +43,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
         <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
@@ -286,6 +289,7 @@
           <node concept="2OqwBi" id="7GTlfWVJgpB" role="3clFbG">
             <node concept="2ShNRf" id="7GTlfWVJc_N" role="2Oq$k0">
               <node concept="HV5vD" id="7GTlfWVJc_P" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="HV5vE" node="7GTlfWVJcio" resolve="MethodReferences.List" />
                 <node concept="3uibUv" id="7GTlfWVJc_Q" role="HU9BZ">
                   <ref role="3uigEE" to="wyt6:~String" resolve="String" />
@@ -739,6 +743,7 @@
           <node concept="3cpWs6" id="7GTlfWVJci8" role="3cqZAp">
             <node concept="2ShNRf" id="7GTlfWVJc$P" role="3cqZAk">
               <node concept="1pGfFk" id="7GTlfWVJc_I" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="37wK5l" node="7GTlfWVJchS" resolve="MethodReferences.ItemContainer" />
                 <node concept="37vLTw" id="7GTlfWVJc_J" role="37wK5m">
                   <ref role="3cqZAo" node="7GTlfWVJci5" resolve="content" />
@@ -833,6 +838,7 @@
           <node concept="3cpWs6" id="7GTlfWVJciG" role="3cqZAp">
             <node concept="2ShNRf" id="7GTlfWVJc$g" role="3cqZAk">
               <node concept="HV5vD" id="7GTlfWVJc$i" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="HV5vE" node="7GTlfWVJcio" resolve="MethodReferences.List" />
               </node>
             </node>

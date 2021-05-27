@@ -7,12 +7,6 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.baseLanguage.behavior.IInferredExpression__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.baseLanguage.behavior.IInferenceContextProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -21,18 +15,7 @@ public class typeof_IInferredExpression_InferenceRule extends AbstractInferenceR
   public typeof_IInferredExpression_InferenceRule() {
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    // Trigger typeof on ancestor inference context provider (so it get computed even in isolated mode)
-    if ((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(expr)) {
-      Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNodeAncestors(expr, null, false), CONCEPTS.IInferenceContextProvider$A6)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (boolean) IInferenceContextProvider__BehaviorDescriptor.canProvideInferenceContext_idJiVENj$Z0y.invoke(it, expr);
-        }
-      }).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          typeCheckingContext.typeOf(it, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1984904195975225290", true);
-        }
-      });
-    }
+    InferenceDependencyHelper.addInferenceDependencies(typeCheckingContext, expr);
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.IInferredExpression$UL;
@@ -45,7 +28,6 @@ public class typeof_IInferredExpression_InferenceRule extends AbstractInferenceR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IInferenceContextProvider$A6 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xbd2eeacd393ecc9L, "jetbrains.mps.baseLanguage.structure.IInferenceContextProvider");
     /*package*/ static final SInterfaceConcept IInferredExpression$UL = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x59c8a97078e469d6L, "jetbrains.mps.baseLanguage.structure.IInferredExpression");
   }
 }

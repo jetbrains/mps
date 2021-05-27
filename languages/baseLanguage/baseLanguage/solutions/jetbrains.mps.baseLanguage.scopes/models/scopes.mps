@@ -916,14 +916,12 @@
         <node concept="3clFbS" id="5o2t_EckfrN" role="3clF47">
           <node concept="3clFbF" id="5o2t_EckfrU" role="3cqZAp">
             <node concept="37vLTI" id="5o2t_EckfrV" role="3clFbG">
-              <node concept="2ShNRf" id="5o2t_EckfrZ" role="37vLTx">
-                <node concept="3rGOSV" id="5o2t_Eckfs0" role="2ShVmc">
-                  <node concept="3Tqbb2" id="5o2t_Eckfs2" role="3rHtpV">
-                    <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
-                  </node>
-                  <node concept="3Tqbb2" id="5o2t_Eckfs1" role="3rHrn6">
-                    <ref role="ehGHo" to="tpee:g96euPO" resolve="TypeVariableDeclaration" />
-                  </node>
+              <node concept="2OqwBi" id="4H6sh0LEGw1" role="37vLTx">
+                <node concept="37vLTw" id="4H6sh0LEFq0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5o2t_EckfrL" resolve="topClassifier" />
+                </node>
+                <node concept="2qgKlT" id="4H6sh0LEHEZ" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:4H6sh0LDcte" resolve="getInferredTypeByTypeVar" />
                 </node>
               </node>
               <node concept="37vLTw" id="2BHiRxeuq4G" role="37vLTJ">

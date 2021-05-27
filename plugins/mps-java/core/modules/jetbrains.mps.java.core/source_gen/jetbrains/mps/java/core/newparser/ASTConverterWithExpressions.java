@@ -91,6 +91,9 @@ public class ASTConverterWithExpressions extends ASTConverter {
       ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$pzdx)).addElement(convertExpressionWrap(arg));
     }
   }
+  public boolean hasDiamondOperator(TypeReference typeRef) {
+    return typeRef instanceof ParameterizedSingleTypeReference || typeRef instanceof ParameterizedQualifiedTypeReference;
+  }
   public TypeReference[] typeArguments(TypeReference typeRef) {
     if (typeRef instanceof ParameterizedSingleTypeReference) {
       return ((ParameterizedSingleTypeReference) typeRef).typeArguments;
@@ -561,6 +564,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
       addTypeArgs(typeArguments(x.type), SLinkOperations.getChildren(unkNew, LINKS.typeParameter$1Hey));
       addTypeArgs(x.typeArguments, SLinkOperations.getChildren(unkNew, LINKS.typeArgument$jaIN));
       SPropertyOperations.assign(unkNew, PROPS.className$t4Gj, typeName(x.type));
+      SPropertyOperations.assign(unkNew, PROPS.inferTypeParameters$WMQL, ListSequence.fromList(SLinkOperations.getChildren(unkNew, LINKS.typeArgument$jaIN)).isEmpty() && hasDiamondOperator(x.type));
 
       return unkNew;
     }
@@ -674,6 +678,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
       addReference(x.type, cls, LINKS.classifier$q_Y$);
       addCallArgs(cls, x.arguments);
       addTypeArgs(typeArguments(x.type), SLinkOperations.getChildren(cls, LINKS.typeParameter$F9H8));
+      SPropertyOperations.assign(cls, PROPS.inferTypeParams$bgj_, ListSequence.fromList(SLinkOperations.getChildren(cls, LINKS.typeParameter$F9H8)).isEmpty() && hasDiamondOperator(x.type));
     } else {
       // TODO what is enclosing instance? handle it
       if (x.enclosingInstance() == null) {
@@ -697,7 +702,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"));
       } else {
         // import token as string constant even if it was an error in literal
-        return _quotation_createNode_do26wr_a1a0c0sb(NameUtil.escapeString(new String(((Literal) x).source())));
+        return _quotation_createNode_do26wr_a1a0c0tb(NameUtil.escapeString(new String(((Literal) x).source())));
       }
     }
 
@@ -773,7 +778,7 @@ public class ASTConverterWithExpressions extends ASTConverter {
     }
   }
 
-  private static SNode _quotation_createNode_do26wr_a1a0c0sb(Object parameter_1) {
+  private static SNode _quotation_createNode_do26wr_a1a0c0tb(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral"));
     quotedNode_2 = nb.getResult();
@@ -840,6 +845,8 @@ public class ASTConverterWithExpressions extends ASTConverter {
     /*package*/ static final SProperty tokens$J1uk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
     /*package*/ static final SProperty callee$uWRA = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc7b5L, 0x439f6403036ad2f4L, "callee");
     /*package*/ static final SProperty className$t4Gj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x2dda7700ec3bb537L, "className");
+    /*package*/ static final SProperty inferTypeParameters$WMQL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x15003fd0d313329bL, "inferTypeParameters");
+    /*package*/ static final SProperty inferTypeParams$bgj_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, 0x15003fd0d20d8b1dL, "inferTypeParams");
     /*package*/ static final SProperty targetResolved$e43v = MetaAdapterFactory.getProperty(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x4b3463a3c4af5feeL, 0xd5ab3252dcc77f8L, "targetResolved");
     /*package*/ static final SProperty methodName$oxdi = MetaAdapterFactory.getProperty(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x4b3463a3c4af5feeL, 0x4b3463a3c4af6583L, "methodName");
   }

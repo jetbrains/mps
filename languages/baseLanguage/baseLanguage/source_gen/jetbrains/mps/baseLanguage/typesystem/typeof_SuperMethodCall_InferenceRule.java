@@ -40,115 +40,124 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
       return;
     }
 
-    SNode contextClassifier = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), methodCall);
+    final SNode contextClassifier = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), methodCall);
     if (contextClassifier == null) {
       return;
     }
 
-    SNode thisType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(contextClassifier);
-
-    final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
-    // check the inference context
-    if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(methodCall))) {
-      List<SNode> inferrableTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(mdecl, LINKS.returnType$5xoi), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.getParent(it) == mdecl;
-        }
-      }).toListSequence();
-      List<SNode> boundTypeVars = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.parameter$5xBj)).translate(new ITranslator2<SNode, SNode>() {
-        public Iterable<SNode> translate(SNode p) {
-          return SNodeOperations.getNodeDescendants(p, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{});
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I);
-        }
-      }).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.getParent(it) == mdecl;
-        }
-      }).toListSequence();
-      for (SNode tvd : ListSequence.fromList(inferrableTypeVars).subtract(ListSequence.fromList(boundTypeVars))) {
-        // assume all unbound type vars outside an inference context are Object
-        MapSequence.fromMap(subs).put(tvd, _quotation_createNode_okooqp_a0b0c0k0b());
-      }
-    }
-    if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$jaIN)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
-      for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp))) {
-        if (!(MapSequence.fromMap(subs).containsKey(tvd))) {
-          final SNode T_typevar_4837286298389139314 = typeCheckingContext.createNewRuntimeTypesVariable();
-          MapSequence.fromMap(subs).put(tvd, typeCheckingContext.getRepresentative(T_typevar_4837286298389139314));
-        }
-      }
-    } else {
-      {
-        Iterator<SNode> tvd_it = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp)).iterator();
-        Iterator<SNode> targ_it = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$jaIN)).iterator();
-        SNode tvd_var;
-        SNode targ_var;
-        while (tvd_it.hasNext() && targ_it.hasNext()) {
-          tvd_var = tvd_it.next();
-          targ_var = targ_it.next();
-          MapSequence.fromMap(subs).put(tvd_var, targ_var);
-          if (SNodeOperations.isInstanceOf(targ_var, CONCEPTS.IGenericType$13)) {
-            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(targ_var, CONCEPTS.IGenericType$13), subs);
-          }
-        }
-      }
-    }
-
-    if (SNodeOperations.isInstanceOf(thisType, CONCEPTS.IGenericType$13)) {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(thisType, CONCEPTS.IGenericType$13), subs);
-    }
-
-    List<SNode> argl = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$pzdx);
-    List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(mdecl, ((int) ListSequence.fromList(argl).count()));
-    for (SNode type : ListSequence.fromList(typel)) {
-      if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$13)) {
-        IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, CONCEPTS.IGenericType$13), subs);
-      }
-    }
-
-    SNode retType = SLinkOperations.getTarget(mdecl, LINKS.returnType$5xoi);
-    if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$13)) {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
-      retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
-    }
-    {
-      SNode _nodeToCheck_1029348928467 = methodCall;
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139430", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) retType, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139432", true), false, true, _info_12389875345);
-    }
+    final SNode contextType_typevar_5370363695052890394 = typeCheckingContext.createNewRuntimeTypesVariable();
+    ClassifierTypingUtil.inferThisType(typeCheckingContext, contextClassifier, typeCheckingContext.getRepresentative(contextType_typevar_5370363695052890394));
 
     {
-      Iterator<SNode> type_it = ListSequence.fromList(typel).iterator();
-      Iterator<SNode> arg_it = ListSequence.fromList(argl).iterator();
-      SNode type_var;
-      SNode arg_var;
-      while (type_it.hasNext() && arg_it.hasNext()) {
-        type_var = type_it.next();
-        arg_var = arg_it.next();
-        if (SNodeOperations.isInstanceOf(type_var, CONCEPTS.IGenericType$13)) {
-          {
-            SNode _nodeToCheck_1029348928467 = arg_var;
-            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139447", 0, null);
-            typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(type_var, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139449", true), false, true, _info_12389875345);
+      final SNode thisType = typeCheckingContext.getRepresentative(contextType_typevar_5370363695052890394);
+      typeCheckingContext.whenConcrete(thisType, new Runnable() {
+        public void run() {
+          final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
+          // check the inference context
+          if (!((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke(methodCall))) {
+            List<SNode> inferrableTypeVars = ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(mdecl, LINKS.returnType$5xoi), CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
+              public SNode select(SNode it) {
+                return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I);
+              }
+            }).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return SNodeOperations.getParent(it) == mdecl;
+              }
+            }).toListSequence();
+            List<SNode> boundTypeVars = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.parameter$5xBj)).translate(new ITranslator2<SNode, SNode>() {
+              public Iterable<SNode> translate(SNode p) {
+                return SNodeOperations.getNodeDescendants(p, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{});
+              }
+            }).select(new ISelector<SNode, SNode>() {
+              public SNode select(SNode it) {
+                return SLinkOperations.getTarget(it, LINKS.typeVariableDeclaration$Lz1I);
+              }
+            }).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return SNodeOperations.getParent(it) == mdecl;
+              }
+            }).toListSequence();
+            for (SNode tvd : ListSequence.fromList(inferrableTypeVars).subtract(ListSequence.fromList(boundTypeVars))) {
+              // assume all unbound type vars outside an inference context are Object
+              MapSequence.fromMap(subs).put(tvd, _quotation_createNode_okooqp_a0b0c0c0a0a1a0b0j0b());
+            }
           }
-        } else {
-          if (!(typeCheckingContext.isSingleTypeComputation())) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$jaIN)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
+            for (SNode tvd : ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp))) {
+              if (!(MapSequence.fromMap(subs).containsKey(tvd))) {
+                final SNode T_typevar_4837286298389139314 = typeCheckingContext.createNewRuntimeTypesVariable();
+                MapSequence.fromMap(subs).put(tvd, typeCheckingContext.getRepresentative(T_typevar_4837286298389139314));
+              }
+            }
+          } else {
             {
-              SNode _nodeToCheck_1029348928467 = arg_var;
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139463", 0, null);
-              typeCheckingContext.createGreaterThanInequality((SNode) type_var, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139465", true), true, true, _info_12389875345);
+              Iterator<SNode> tvd_it = ListSequence.fromList(SLinkOperations.getChildren(mdecl, LINKS.typeVariableDeclaration$Lipp)).iterator();
+              Iterator<SNode> targ_it = ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$jaIN)).iterator();
+              SNode tvd_var;
+              SNode targ_var;
+              while (tvd_it.hasNext() && targ_it.hasNext()) {
+                tvd_var = tvd_it.next();
+                targ_var = targ_it.next();
+                MapSequence.fromMap(subs).put(tvd_var, targ_var);
+                if (SNodeOperations.isInstanceOf(targ_var, CONCEPTS.IGenericType$13)) {
+                  IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(targ_var, CONCEPTS.IGenericType$13), subs);
+                }
+              }
+            }
+          }
+
+          if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(thisType), CONCEPTS.IGenericType$13)) {
+            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(typeCheckingContext.getExpandedNode(thisType), CONCEPTS.IGenericType$13), subs);
+          }
+
+          List<SNode> argl = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$pzdx);
+          List<SNode> typel = ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(mdecl, ((int) ListSequence.fromList(argl).count()));
+          for (SNode type : ListSequence.fromList(typel)) {
+            if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$13)) {
+              IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(type, CONCEPTS.IGenericType$13), subs);
+            }
+          }
+
+          SNode retType = SLinkOperations.getTarget(mdecl, LINKS.returnType$5xoi);
+          if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$13)) {
+            IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
+            retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
+          }
+          {
+            SNode _nodeToCheck_1029348928467 = methodCall;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139430", 0, null);
+            typeCheckingContext.createLessThanInequality((SNode) retType, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139432", true), false, true, _info_12389875345);
+          }
+
+          {
+            Iterator<SNode> type_it = ListSequence.fromList(typel).iterator();
+            Iterator<SNode> arg_it = ListSequence.fromList(argl).iterator();
+            SNode type_var;
+            SNode arg_var;
+            while (type_it.hasNext() && arg_it.hasNext()) {
+              type_var = type_it.next();
+              arg_var = arg_it.next();
+              if (SNodeOperations.isInstanceOf(type_var, CONCEPTS.IGenericType$13)) {
+                {
+                  SNode _nodeToCheck_1029348928467 = arg_var;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139447", 0, null);
+                  typeCheckingContext.createGreaterThanInequality((SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(type_var, CONCEPTS.IGenericType$13), subs), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139449", true), false, true, _info_12389875345);
+                }
+              } else {
+                if (!(typeCheckingContext.isSingleTypeComputation())) {
+                  {
+                    SNode _nodeToCheck_1029348928467 = arg_var;
+                    EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139463", 0, null);
+                    typeCheckingContext.createGreaterThanInequality((SNode) type_var, (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4837286298389139465", true), true, true, _info_12389875345);
+                  }
+                }
+              }
             }
           }
         }
-      }
+      }, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5952636190523421188", false, false);
     }
+
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SuperMethodCall$pW;
@@ -159,7 +168,7 @@ public class typeof_SuperMethodCall_InferenceRule extends AbstractInferenceRule_
   public boolean overrides() {
     return true;
   }
-  private static SNode _quotation_createNode_okooqp_a0b0c0k0b() {
+  private static SNode _quotation_createNode_okooqp_a0b0c0c0a0a1a0b0j0b() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();

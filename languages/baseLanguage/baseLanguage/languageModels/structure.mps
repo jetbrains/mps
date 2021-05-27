@@ -2044,6 +2044,9 @@
     <node concept="1QGGSu" id="4Q8sAA5iJRX" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/anonymousClass.png" />
     </node>
+    <node concept="PrWs8" id="5pbfqym6m_T" role="PzmwI">
+      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
+    </node>
   </node>
   <node concept="1TIwiD" id="h3qTviz">
     <property role="R4oN_" value="wildcard type" />
@@ -2369,7 +2372,7 @@
       <property role="IQ2ns" value="1197027833540" />
       <ref role="20lvS9" node="hqOqG0K" resolve="IOperation" />
     </node>
-    <node concept="PrWs8" id="5$MPuaWt32Y" role="PzmwI">
+    <node concept="PrWs8" id="4H6sh0NwaBm" role="PzmwI">
       <ref role="PrY4T" node="JiVENj$YN9" resolve="IInferenceContextProvider" />
     </node>
   </node>
@@ -2748,6 +2751,9 @@
     </node>
     <node concept="PrWs8" id="hDpXTsX" role="PzmwI">
       <ref role="PrY4T" node="hxndl_i" resolve="IMethodCall" />
+    </node>
+    <node concept="PrWs8" id="1k0fX3j6IRq" role="PzmwI">
+      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
     </node>
   </node>
   <node concept="1TIwiD" id="hFuNrjK">
@@ -4074,6 +4080,11 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
     </node>
+    <node concept="1TJgyi" id="1k0fX3j4Nar" role="1TKVEl">
+      <property role="IQ2nx" value="1513279640923484827" />
+      <property role="TrG5h" value="inferTypeParameters" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7mpdUmncBAR">
     <property role="R5$K7" value="true" />
@@ -4233,6 +4244,9 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="2820489544401957798" />
       <ref role="20lvS9" node="g7pOWCK" resolve="Classifier" />
+    </node>
+    <node concept="PrWs8" id="1k0fX3j6QV0" role="PzmwI">
+      <ref role="PrY4T" node="1k0fX3j6IJx" resolve="IInferrableTypeParameter" />
     </node>
   </node>
   <node concept="1TIwiD" id="1$K1wuo3Jf">
@@ -4911,6 +4925,35 @@
       <property role="20kJfa" value="operand" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="36GXW4xquCN">
+    <property role="EcuMT" value="3579508212714039859" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="InferredClassifierType" />
+    <property role="R4oN_" value="classifier type whose type parameters are inferred" />
+    <ref role="1TJDcQ" node="g7uibYu" resolve="ClassifierType" />
+    <node concept="PrWs8" id="36GXW4xquE$" role="PzmwI">
+      <ref role="PrY4T" node="hzdmp1d" resolve="IInternalType" />
+    </node>
+    <node concept="PrWs8" id="36GXW4xqDjH" role="PzmwI">
+      <ref role="PrY4T" node="6WTbe$Jz777" resolve="IInferredType" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1k0fX3j6IJx">
+    <property role="EcuMT" value="1513279640923991009" />
+    <property role="3GE5qa" value="classifiers" />
+    <property role="TrG5h" value="IInferrableTypeParameter" />
+    <node concept="1TJgyi" id="1k0fX3i3oGt" role="1TKVEl">
+      <property role="IQ2nx" value="1513279640906337053" />
+      <property role="TrG5h" value="inferTypeParams" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="PrWs8" id="1k0fX3j6IKR" role="PrDN$">
+      <ref role="PrY4T" node="5B8En1ST6Bm" resolve="IInferredExpression" />
+    </node>
+    <node concept="t5JxF" id="cEFfhIeBET" role="lGtFl">
+      <property role="t5JxN" value="expression containing type parameter on which we can apply diamond operator" />
     </node>
   </node>
   <node concept="PlHQZ" id="2Yg2DIyHDz3">

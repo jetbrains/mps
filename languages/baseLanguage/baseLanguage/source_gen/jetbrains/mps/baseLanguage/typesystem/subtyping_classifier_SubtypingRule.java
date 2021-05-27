@@ -52,6 +52,7 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     }
     for (SNode supertype : supertypes) {
       SNode supertypeCopy = SNodeOperations.cast(SNodeOperations.copyNode(supertype), CONCEPTS.ClassifierType$bL);
+      boolean skip = false;
       for (SNode typeParam : SLinkOperations.getChildren(supertypeCopy, LINKS.parameter$oqG$)) {
         List<SNode> descendants = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeParam, CONCEPTS.TypeVariableReference$WL, true, new SAbstractConcept[]{})).toListSequence();
         for (SNode typeVar : descendants) {
@@ -63,12 +64,17 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
             // substitute the typevar ref with the existing type from the original CT
             SNodeOperations.replaceWithAnother(typeVar, SNodeOperations.copyNode(ListSequence.fromList(SLinkOperations.getChildren(clt, LINKS.parameter$oqG$)).getElement(i)));
           } else {
-            // this is a (partially) raw class
-            typeParam.delete();
+            // this is a (partially) raw class, it is no use to add it
+            skip = true;
+            break;
           }
         }
       }
-      ListSequence.fromList(result).addElement(supertypeCopy);
+
+      // Skip supertypes that rely on our parameters
+      if (!(skip)) {
+        ListSequence.fromList(result).addElement(supertypeCopy);
+      }
     }
     ListSequence.fromList(supertypes).addElement(clt);
     for (SNode supertype : supertypes) {

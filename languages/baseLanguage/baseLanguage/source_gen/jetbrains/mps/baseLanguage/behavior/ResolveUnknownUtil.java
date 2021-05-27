@@ -145,6 +145,7 @@ public final class ResolveUnknownUtil {
           SLinkOperations.setTarget(defaultConsCreator, LINKS.classifier$9NRM, typ);
           reattachTypeParameter(x, SLinkOperations.getChildren(defaultConsCreator, LINKS.typeParameter$KPP3));
 
+          SPropertyOperations.assign(defaultConsCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(x, PROPS.inferTypeParameters$WMQL));
           creator = defaultConsCreator;
 
         } else {
@@ -155,6 +156,7 @@ public final class ResolveUnknownUtil {
           reattachTypeArguments(x, classCreator);
           reattachTypeParameter(x, SLinkOperations.getChildren(classCreator, LINKS.typeParameter$uYiw));
 
+          SPropertyOperations.assign(classCreator, PROPS.inferTypeParams$bgj_, SPropertyOperations.getBoolean(x, PROPS.inferTypeParameters$WMQL));
           SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$pyYw, ctor);
           creator = classCreator;
         }
@@ -479,6 +481,8 @@ public final class ResolveUnknownUtil {
     /*package*/ static final SProperty isSuper$7ZQO = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7e4a5cff51167b74L, 0x7e4a5cff51167ce2L, "isSuper");
     /*package*/ static final SProperty callee$edGa = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc5d6L, 0x245faa02186fc5f0L, "callee");
     /*package*/ static final SProperty className$t4Gj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x2dda7700ec3bb537L, "className");
+    /*package*/ static final SProperty inferTypeParams$bgj_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, 0x15003fd0d20d8b1dL, "inferTypeParams");
+    /*package*/ static final SProperty inferTypeParameters$WMQL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2dda7700ec3ae154L, 0x15003fd0d313329bL, "inferTypeParameters");
     /*package*/ static final SProperty callee$uWRA = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x245faa02186fc7b5L, 0x439f6403036ad2f4L, "callee");
     /*package*/ static final SProperty tokens$J1uk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
