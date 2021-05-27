@@ -21,6 +21,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorComponentSettingsImpl;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
+import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.openapi.editor.EditorComponentSettings;
@@ -223,7 +224,7 @@ public class NodeSubstitutePatternEditor {
     }
   }
 
-  public Font getFont() {
+  Font getFont() {
     return myTextLineOperations.getFont();
   }
 
@@ -269,7 +270,8 @@ public class NodeSubstitutePatternEditor {
 
     @Override
     public Font getFont() {
-      return myCell.getFont();
+      Font cellFont = myCell.getFont();
+      return FontRegistry.getInstance().getFont(cellFont.getFamily(), 0, cellFont.getSize());
     }
 
     @Override
