@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class SharedSessionTypecheckingController extends TypecheckingController {
 
   private TypecheckingSessionImpl mySharedSession;
-  private final TypecheckingController myDelegate;
+  private TypecheckingController myDelegate;
 
   /**
    * Delegate controller is the bottom-most controller from the controller stack of TypecheckingFacade for this thread.
@@ -47,10 +47,14 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
   @Override
   public void dispose() {
     if (mySharedSession != null) {
-      mySharedSession.decUsages();
+      // we can dispose the borrowed session if it has been orphaned
+      if (mySharedSession.decUsages() <= 0) {
+        mySharedSession.disposeIfOrphaned();
+      }
       this.mySharedSession = null;
     }
     // not disposing the delegate: TypecheckingFacade is responsible for it
+    this.myDelegate = null;
   }
 
   @NotNull

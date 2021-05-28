@@ -86,13 +86,21 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
                                           (key) -> new TypecheckingSessionImpl(this, flags));
   }
 
-  private synchronized void releaseSession(@NotNull TypecheckingSessionImpl session, boolean forceDispose) {
+  private synchronized void releaseSession(@NotNull TypecheckingSessionImpl session, boolean forceRemoval) {
     SNodeHandle key = new SNodeHandle(session.flags().getRoot());
-    TypecheckingSessionImpl knownSession = myRootSessions.get(key);
-    if (session != knownSession) {
-      LOG.error("Uknown session: " + session, new IllegalArgumentException());
-    } else if (forceDispose || session.decUsages() <= 0) {
-      myRootSessions.remove(key).dispose();
+    if (!session.isDisposed() && !session.isOrphaned()) {
+      if (session != myRootSessions.get(key)) {
+        LOG.error("Unknown session: " + session, new IllegalArgumentException());
+
+      } else if (session.decUsages() <= 0) {
+        myRootSessions.remove(key);
+        session.dispose();
+
+      } else if (forceRemoval) {
+        // the session may still be in use
+        myRootSessions.remove(key);
+        session.disown();
+      }
     }
   }
 

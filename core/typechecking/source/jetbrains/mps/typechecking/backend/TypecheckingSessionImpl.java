@@ -18,7 +18,6 @@ package jetbrains.mps.typechecking.backend;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -34,12 +33,14 @@ import java.util.Map.Entry;
  */
 public class TypecheckingSessionImpl implements TypecheckingSession {
 
-  private boolean myDisposed;
+  private boolean myDisposed = false;
+  
+  private boolean myOrphaned = false;
 
   private int myUsages = 0;
 
   private final TypecheckingController myController;
-  
+
   private final InternalFlags myFlags;
 
   private Map<TypecheckingProvider, TypecheckingQueries> myQueries = new HashMap<>();
@@ -74,6 +75,16 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
     return getQueries(myController.selectProvider(node, null, null));
   }
 
+  protected void disown() {
+    this.myOrphaned = true;
+  }
+
+  protected void disposeIfOrphaned() {
+    if (myOrphaned) {
+      dispose();
+    }
+  }
+
   protected void dispose () {
     for (Entry<TypecheckingProvider, TypecheckingQueries> entry : myQueries.entrySet()) {
       entry.getKey().disposeQueries(entry.getValue());
@@ -84,6 +95,10 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
 
   protected boolean isDisposed() {
     return myDisposed;
+  }
+
+  protected boolean isOrphaned() {
+    return myOrphaned;
   }
 
   @NotNull
@@ -107,9 +122,8 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
   
   @Override
   public String toString() {
-    return String.format("Session{%s, usages=%d}", flags(), getUsages());
+    return String.format("Session{%s, usages=%d, disposed=%b, orphaned=%b}", myFlags, myUsages, myDisposed, myOrphaned);
   }
-
 
   private static class InternalFlags extends Flags {
     private InternalFlags(Flags copyFrom) {
