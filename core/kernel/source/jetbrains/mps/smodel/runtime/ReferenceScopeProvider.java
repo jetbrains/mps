@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,9 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.scope.Scope;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public interface ReferenceScopeProvider {
@@ -29,5 +32,14 @@ public interface ReferenceScopeProvider {
    *
    * @return pointer to corresponding ConceptFunction node or null
    */
+  @Nullable
   SNodeReference getSearchScopeValidatorNode();
+
+  /**
+   * @return default implementation that provides scope from node's hierarchy aka "inherited".
+   * @since 2021.2
+   */
+  static ReferenceScopeProvider fromHierarchy(@NotNull final SAbstractConcept concept, @Nullable final SNodeReference declarationNode) {
+    return new HierarchyScopeProvider(concept, declarationNode);
+  }
 }

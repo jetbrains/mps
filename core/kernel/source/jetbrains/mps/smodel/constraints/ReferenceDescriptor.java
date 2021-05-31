@@ -133,6 +133,7 @@ public abstract class ReferenceDescriptor {
         if (myScopeProvider != null) {
           Scope searchScope = myScopeProvider.createScope(context);
           if (searchScope != null) {
+            // XXX shall I account for EmptyScope? No reason to filter it further.
             return new FilteringByConceptScope(searchScope, myLinkTarget);
           }
         }
