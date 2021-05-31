@@ -17,7 +17,7 @@
     <file name="FailingPropertyConstraintsProblem_Constraints.java">
       <node id="24399255755617833" at="27,58,28,57" concept="7" />
       <node id="24399255755617834" at="35,44,36,20" concept="5" />
-      <node id="24399255755617834" at="43,63,44,57" concept="5" />
+      <node id="24399255755617834" at="43,63,44,161" concept="5" />
       <node id="1938781798615313045" at="48,54,49,98" concept="4" />
       <node id="1938781798615280312" at="49,98,50,248" concept="4" />
       <node id="4921974786975542206" at="51,38,52,148" concept="4" />
@@ -27,11 +27,10 @@
       <node id="24399255755617833" at="61,6,62,131" concept="4" />
       <node id="24399255755617834" at="62,131,63,42" concept="1" />
       <node id="24399255755617833" at="63,42,64,22" concept="5" />
-      <node id="24399255755617833" at="66,0,67,0" concept="6" trace="breakingNode_nfg5l8_a0a0a0a0a1a0a0a0c" />
-      <node id="24399255755617833" at="69,0,70,0" concept="6" trace="FailingPropertyConstraintsProblem$It" />
-      <node id="24399255755617833" at="70,0,71,0" concept="6" trace="FeedbackPerConceptRoot$Vm" />
-      <node id="24399255755617833" at="74,0,75,0" concept="6" trace="property$vk7" />
-      <node id="24399255755617833" at="75,0,76,0" concept="6" trace="concept$NMNv" />
+      <node id="24399255755617833" at="68,0,69,0" concept="6" trace="FailingPropertyConstraintsProblem$It" />
+      <node id="24399255755617833" at="69,0,70,0" concept="6" trace="FeedbackPerConceptRoot$Vm" />
+      <node id="24399255755617833" at="73,0,74,0" concept="6" trace="property$vk7" />
+      <node id="24399255755617833" at="74,0,75,0" concept="6" trace="concept$NMNv" />
       <node id="24399255755617833" at="27,0,30,0" concept="0" trace="FailingPropertyConstraintsProblem_Constraints#()V" />
       <node id="24399255755617834" at="34,0,38,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="24399255755617834" at="42,0,46,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -44,7 +43,7 @@
       <node id="24399255755617833" at="31,0,66,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="24399255755617833" at="27,58,28,57" />
       <scope id="24399255755617834" at="35,44,36,20" />
-      <scope id="24399255755617834" at="43,63,44,57" />
+      <scope id="24399255755617834" at="43,63,44,161" />
       <scope id="24399255755617833" at="27,0,30,0" />
       <scope id="4921974786975536446" at="51,38,54,29">
         <var name="propDeclarations" id="4921974786975542207" />
@@ -67,11 +66,11 @@
         <var name="references" id="24399255755617833" />
       </scope>
       <scope id="24399255755617833" at="31,0,66,0" />
-      <unit id="24399255755617833" at="68,0,72,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints$CONCEPTS" />
-      <unit id="24399255755617833" at="73,0,77,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints$LINKS" />
+      <unit id="24399255755617833" at="67,0,71,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints$CONCEPTS" />
+      <unit id="24399255755617833" at="72,0,76,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints$LINKS" />
       <unit id="24399255755617834" at="41,19,59,9" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints$1$1" />
       <unit id="24399255755617834" at="33,48,61,5" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints$1" />
-      <unit id="24399255755617833" at="26,0,78,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints" />
+      <unit id="24399255755617833" at="26,0,77,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.constraints.FailingPropertyConstraintsProblem_Constraints" />
     </file>
   </root>
 </debug-info>

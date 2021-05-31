@@ -23,14 +23,13 @@
     <file name="MatchVariableReference_Constraints.java">
       <node id="1213104858749" at="24,47,25,46" concept="12" />
       <node id="1213104858750" at="32,44,33,20" concept="8" />
-      <node id="1213104858750" at="40,63,41,57" concept="8" />
+      <node id="1213104858750" at="40,63,41,148" concept="8" />
       <node id="6836281137582820193" at="44,80,45,213" concept="8" />
       <node id="1213104858749" at="49,6,50,131" concept="7" />
       <node id="1213104858750" at="50,131,51,42" concept="3" />
       <node id="1213104858749" at="51,42,52,22" concept="8" />
-      <node id="1213104858749" at="54,0,55,0" concept="10" trace="breakingNode_8gk9io_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104858749" at="57,0,58,0" concept="10" trace="MatchVariableReference$eW" />
-      <node id="1213104858749" at="61,0,62,0" concept="10" trace="match$hTnv" />
+      <node id="1213104858749" at="56,0,57,0" concept="10" trace="MatchVariableReference$eW" />
+      <node id="1213104858749" at="60,0,61,0" concept="10" trace="match$hTnv" />
       <node id="1213104858749" at="24,0,27,0" concept="2" trace="MatchVariableReference_Constraints#()V" />
       <node id="1213104858750" at="31,0,35,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104858750" at="39,0,43,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -41,7 +40,7 @@
       <node id="1213104858749" at="28,0,54,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="1213104858749" at="24,47,25,46" />
       <scope id="1213104858750" at="32,44,33,20" />
-      <scope id="1213104858750" at="40,63,41,57" />
+      <scope id="1213104858750" at="40,63,41,148" />
       <scope id="1213104858750" at="44,80,45,213" />
       <scope id="1213104858749" at="24,0,27,0" />
       <scope id="1213104858750" at="31,0,35,0" />
@@ -56,18 +55,18 @@
         <var name="references" id="1213104858749" />
       </scope>
       <scope id="1213104858749" at="28,0,54,0" />
-      <unit id="1213104858749" at="56,0,59,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints$CONCEPTS" />
-      <unit id="1213104858749" at="60,0,63,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints$LINKS" />
+      <unit id="1213104858749" at="55,0,58,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints$CONCEPTS" />
+      <unit id="1213104858749" at="59,0,62,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints$LINKS" />
       <unit id="1213104858750" at="38,19,47,9" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints$1$1" />
       <unit id="1213104858750" at="30,48,49,5" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints$1" />
-      <unit id="1213104858749" at="23,0,64,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints" />
+      <unit id="1213104858749" at="23,0,63,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/1213104860358">
     <file name="MatchVariableReferenceRegexp_Constraints.java">
       <node id="1213104860358" at="29,53,30,52" concept="12" />
       <node id="1213104860359" at="37,44,38,20" concept="8" />
-      <node id="1213104860359" at="45,63,46,57" concept="8" />
+      <node id="1213104860359" at="45,63,46,148" concept="8" />
       <node id="6836281137582820378" at="49,80,50,57" concept="7" />
       <node id="6836281137582820384" at="50,57,51,151" concept="7" />
       <node id="6836281137582820402" at="52,144,53,51" concept="3" />
@@ -77,11 +76,10 @@
       <node id="1213104860358" at="63,6,64,131" concept="7" />
       <node id="1213104860359" at="64,131,65,42" concept="3" />
       <node id="1213104860358" at="65,42,66,22" concept="8" />
-      <node id="1213104860358" at="68,0,69,0" concept="10" trace="breakingNode_15u81x_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104860358" at="71,0,72,0" concept="10" trace="MatchVariableReferenceRegexp$AQ" />
-      <node id="1213104860358" at="72,0,73,0" concept="10" trace="Regexp$aA" />
-      <node id="1213104860358" at="73,0,74,0" concept="10" trace="MatchParensRegexp$Ea" />
-      <node id="1213104860358" at="77,0,78,0" concept="10" trace="match$ysZO" />
+      <node id="1213104860358" at="70,0,71,0" concept="10" trace="MatchVariableReferenceRegexp$AQ" />
+      <node id="1213104860358" at="71,0,72,0" concept="10" trace="Regexp$aA" />
+      <node id="1213104860358" at="72,0,73,0" concept="10" trace="MatchParensRegexp$Ea" />
+      <node id="1213104860358" at="76,0,77,0" concept="10" trace="match$ysZO" />
       <node id="1213104860358" at="29,0,32,0" concept="2" trace="MatchVariableReferenceRegexp_Constraints#()V" />
       <node id="6836281137582820388" at="51,151,54,13" concept="13" />
       <node id="6836281137582820418" at="55,182,58,13" concept="5" />
@@ -94,7 +92,7 @@
       <node id="1213104860358" at="33,0,68,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="1213104860358" at="29,53,30,52" />
       <scope id="1213104860359" at="37,44,38,20" />
-      <scope id="1213104860359" at="45,63,46,57" />
+      <scope id="1213104860359" at="45,63,46,148" />
       <scope id="6836281137582820401" at="52,144,53,51" />
       <scope id="6836281137582820423" at="56,83,57,114" />
       <scope id="1213104860358" at="29,0,32,0" />
@@ -114,11 +112,11 @@
         <var name="references" id="1213104860358" />
       </scope>
       <scope id="1213104860358" at="33,0,68,0" />
-      <unit id="1213104860358" at="76,0,79,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints$LINKS" />
-      <unit id="1213104860358" at="70,0,75,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints$CONCEPTS" />
+      <unit id="1213104860358" at="75,0,78,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints$LINKS" />
+      <unit id="1213104860358" at="69,0,74,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints$CONCEPTS" />
       <unit id="1213104860359" at="43,19,61,9" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints$1$1" />
       <unit id="1213104860359" at="35,48,63,5" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints$1" />
-      <unit id="1213104860358" at="28,0,80,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints" />
+      <unit id="1213104860358" at="28,0,79,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceRegexp_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/1231768529435">
@@ -287,7 +285,7 @@
     <file name="MatchVariableReferenceReplacement_Constraints.java">
       <node id="3796137614137558190" at="30,58,31,57" concept="12" />
       <node id="3796137614137558193" at="38,44,39,20" concept="8" />
-      <node id="3796137614137558193" at="46,63,47,57" concept="8" />
+      <node id="3796137614137558193" at="46,63,47,148" concept="8" />
       <node id="6836281137582820459" at="50,80,51,57" concept="7" />
       <node id="6836281137582820465" at="51,57,52,132" concept="7" />
       <node id="6836281137582820476" at="53,32,54,128" concept="3" />
@@ -295,11 +293,10 @@
       <node id="3796137614137558190" at="60,6,61,131" concept="7" />
       <node id="3796137614137558193" at="61,131,62,42" concept="3" />
       <node id="3796137614137558190" at="62,42,63,22" concept="8" />
-      <node id="3796137614137558190" at="65,0,66,0" concept="10" trace="breakingNode_v9mr27_a0a0a0a0a1a0a0a0c" />
-      <node id="3796137614137558190" at="68,0,69,0" concept="10" trace="MatchVariableReferenceReplacement$dc" />
-      <node id="3796137614137558190" at="69,0,70,0" concept="10" trace="ReplaceRegexpOperation$UY" />
-      <node id="3796137614137558190" at="73,0,74,0" concept="10" trace="match$L62R" />
-      <node id="3796137614137558190" at="74,0,75,0" concept="10" trace="search$N70I" />
+      <node id="3796137614137558190" at="67,0,68,0" concept="10" trace="MatchVariableReferenceReplacement$dc" />
+      <node id="3796137614137558190" at="68,0,69,0" concept="10" trace="ReplaceRegexpOperation$UY" />
+      <node id="3796137614137558190" at="72,0,73,0" concept="10" trace="match$L62R" />
+      <node id="3796137614137558190" at="73,0,74,0" concept="10" trace="search$N70I" />
       <node id="3796137614137558190" at="30,0,33,0" concept="2" trace="MatchVariableReferenceReplacement_Constraints#()V" />
       <node id="6836281137582820474" at="52,132,55,13" concept="5" />
       <node id="3796137614137558193" at="37,0,41,0" concept="6" trace="hasOwnScopeProvider#()Z" />
@@ -311,7 +308,7 @@
       <node id="3796137614137558190" at="34,0,65,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="3796137614137558190" at="30,58,31,57" />
       <scope id="3796137614137558193" at="38,44,39,20" />
-      <scope id="3796137614137558193" at="46,63,47,57" />
+      <scope id="3796137614137558193" at="46,63,47,148" />
       <scope id="6836281137582820475" at="53,32,54,128" />
       <scope id="3796137614137558190" at="30,0,33,0" />
       <scope id="3796137614137558193" at="37,0,41,0" />
@@ -330,11 +327,11 @@
         <var name="references" id="3796137614137558190" />
       </scope>
       <scope id="3796137614137558190" at="34,0,65,0" />
-      <unit id="3796137614137558190" at="67,0,71,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints$CONCEPTS" />
-      <unit id="3796137614137558190" at="72,0,76,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints$LINKS" />
+      <unit id="3796137614137558190" at="66,0,70,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints$CONCEPTS" />
+      <unit id="3796137614137558190" at="71,0,75,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints$LINKS" />
       <unit id="3796137614137558193" at="44,19,58,9" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints$1$1" />
       <unit id="3796137614137558193" at="36,48,60,5" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints$1" />
-      <unit id="3796137614137558190" at="29,0,77,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints" />
+      <unit id="3796137614137558190" at="29,0,76,0" name="jetbrains.mps.baseLanguage.regexp.constraints.MatchVariableReferenceReplacement_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)/3796137614137565252">

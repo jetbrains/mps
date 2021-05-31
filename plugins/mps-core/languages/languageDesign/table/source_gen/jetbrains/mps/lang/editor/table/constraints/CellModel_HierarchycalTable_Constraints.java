@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
@@ -22,7 +23,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -44,7 +44,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_6tiwsq_a0a0a0a0a1a0a0a0c;
+            return new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582841572");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -68,7 +68,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_6tiwsq_a0a0a0a0a1a0a0b0c;
+            return new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582842133");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -92,7 +92,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_6tiwsq_a0a0a0a0a1a0a0c0c;
+            return new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582842406");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -114,9 +114,6 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
     references.put(d2.getReference(), d2);
     return references;
   }
-  private static final SNodePointer breakingNode_6tiwsq_a0a0a0a0a1a0a0a0c = new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582841572");
-  private static final SNodePointer breakingNode_6tiwsq_a0a0a0a0a1a0a0b0c = new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582842133");
-  private static final SNodePointer breakingNode_6tiwsq_a0a0a0a0a1a0a0c0c = new SNodePointer("r:a310da22-eca6-4f58-b266-8f97a737583f(jetbrains.mps.lang.editor.table.constraints)", "6836281137582842406");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept CellModel_HierarchycalTable$aJ = MetaAdapterFactory.getConcept(0x272d3b44cc8481eL, 0x9e2f07793fbfcb41L, 0x1f44bcab4ea21b62L, "jetbrains.mps.lang.editor.table.structure.CellModel_HierarchycalTable");

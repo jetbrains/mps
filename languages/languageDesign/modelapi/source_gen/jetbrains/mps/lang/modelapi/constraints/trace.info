@@ -267,16 +267,15 @@
     <file name="NamedNodeReference_Constraints.java">
       <node id="7256306938026172554" at="25,43,26,42" concept="11" />
       <node id="7256306938026172579" at="33,44,34,20" concept="7" />
-      <node id="7256306938026172579" at="41,63,42,57" concept="7" />
+      <node id="7256306938026172579" at="41,63,42,142" concept="7" />
       <node id="7256306938026173145" at="45,80,46,152" concept="6" />
       <node id="7256306938026185076" at="47,87,48,177" concept="7" />
       <node id="7256306938026188440" at="49,20,50,116" concept="7" />
       <node id="7256306938026172554" at="55,6,56,131" concept="6" />
       <node id="7256306938026172579" at="56,131,57,42" concept="2" />
       <node id="7256306938026172554" at="57,42,58,22" concept="7" />
-      <node id="7256306938026172554" at="60,0,61,0" concept="9" trace="breakingNode_37947n_a0a0a0a0a1a0a0a0c" />
-      <node id="7256306938026172554" at="63,0,64,0" concept="9" trace="NamedNodeReference$ab" />
-      <node id="7256306938026172554" at="67,0,68,0" concept="9" trace="target$fou_" />
+      <node id="7256306938026172554" at="62,0,63,0" concept="9" trace="NamedNodeReference$ab" />
+      <node id="7256306938026172554" at="66,0,67,0" concept="9" trace="target$fou_" />
       <node id="7256306938026187779" at="49,18,51,13" concept="0" />
       <node id="7256306938026172554" at="25,0,28,0" concept="1" trace="NamedNodeReference_Constraints#()V" />
       <node id="7256306938026172579" at="32,0,36,0" concept="5" trace="hasOwnScopeProvider#()Z" />
@@ -289,7 +288,7 @@
       <node id="7256306938026172554" at="29,0,60,0" concept="5" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="7256306938026172554" at="25,43,26,42" />
       <scope id="7256306938026172579" at="33,44,34,20" />
-      <scope id="7256306938026172579" at="41,63,42,57" />
+      <scope id="7256306938026172579" at="41,63,42,142" />
       <scope id="7256306938026181799" at="47,87,48,177" />
       <scope id="7256306938026187780" at="49,20,50,116" />
       <scope id="7256306938026172554" at="25,0,28,0" />
@@ -308,11 +307,11 @@
         <var name="references" id="7256306938026172554" />
       </scope>
       <scope id="7256306938026172554" at="29,0,60,0" />
-      <unit id="7256306938026172554" at="62,0,65,0" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints$CONCEPTS" />
-      <unit id="7256306938026172554" at="66,0,69,0" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints$LINKS" />
+      <unit id="7256306938026172554" at="61,0,64,0" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints$CONCEPTS" />
+      <unit id="7256306938026172554" at="65,0,68,0" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints$LINKS" />
       <unit id="7256306938026172579" at="39,19,53,9" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints$1$1" />
       <unit id="7256306938026172579" at="31,48,55,5" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints$1" />
-      <unit id="7256306938026172554" at="24,0,70,0" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints" />
+      <unit id="7256306938026172554" at="24,0,69,0" name="jetbrains.mps.lang.modelapi.constraints.NamedNodeReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:1a4a897f-9f8b-4a0a-812b-895506d5a1ab(jetbrains.mps.lang.modelapi.constraints)/9051222292532458376">

@@ -26,7 +26,7 @@
     <file name="TestNodeReference_Constraints.java">
       <node id="1213104844716" at="29,42,30,41" concept="10" />
       <node id="1213104844717" at="37,44,38,20" concept="6" />
-      <node id="1213104844717" at="45,63,46,57" concept="6" />
+      <node id="1213104844717" at="45,63,46,138" concept="6" />
       <node id="6836281137582846022" at="50,121,51,77" concept="6" />
       <node id="6836281137582846033" at="52,13,53,194" concept="5" />
       <node id="6836281137582846043" at="53,194,54,56" concept="5" />
@@ -35,13 +35,12 @@
       <node id="1213104844716" at="64,6,65,131" concept="5" />
       <node id="1213104844717" at="65,131,66,42" concept="1" />
       <node id="1213104844716" at="66,42,67,22" concept="6" />
-      <node id="1213104844716" at="69,0,70,0" concept="8" trace="breakingNode_i5q66v_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104844716" at="72,0,73,0" concept="8" trace="TestNodeReference$hm" />
-      <node id="1213104844716" at="73,0,74,0" concept="8" trace="TestNode$zF" />
-      <node id="1213104844716" at="74,0,75,0" concept="8" trace="NodesTestCase$nd" />
-      <node id="1213104844716" at="75,0,76,0" concept="8" trace="EditorTestCase$DN" />
-      <node id="1213104844716" at="76,0,77,0" concept="8" trace="TestNodeAnnotation$27" />
-      <node id="1213104844716" at="80,0,81,0" concept="8" trace="declaration$hXIv" />
+      <node id="1213104844716" at="71,0,72,0" concept="8" trace="TestNodeReference$hm" />
+      <node id="1213104844716" at="72,0,73,0" concept="8" trace="TestNode$zF" />
+      <node id="1213104844716" at="73,0,74,0" concept="8" trace="NodesTestCase$nd" />
+      <node id="1213104844716" at="74,0,75,0" concept="8" trace="EditorTestCase$DN" />
+      <node id="1213104844716" at="75,0,76,0" concept="8" trace="TestNodeAnnotation$27" />
+      <node id="1213104844716" at="79,0,80,0" concept="8" trace="declaration$hXIv" />
       <node id="1213104844716" at="29,0,32,0" concept="0" trace="TestNodeReference_Constraints#()V" />
       <node id="6836281137582846020" at="49,80,52,13" concept="3" />
       <node id="6836281137582846054" at="55,31,58,15" concept="2" />
@@ -55,7 +54,7 @@
       <node id="1213104844716" at="33,0,69,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="1213104844716" at="29,42,30,41" />
       <scope id="1213104844717" at="37,44,38,20" />
-      <scope id="1213104844717" at="45,63,46,57" />
+      <scope id="1213104844717" at="45,63,46,138" />
       <scope id="6836281137582846021" at="50,121,51,77" />
       <scope id="6836281137582846062" at="56,162,57,63" />
       <scope id="1213104844716" at="29,0,32,0" />
@@ -79,11 +78,11 @@
         <var name="references" id="1213104844716" />
       </scope>
       <scope id="1213104844716" at="33,0,69,0" />
-      <unit id="1213104844716" at="79,0,82,0" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints$LINKS" />
-      <unit id="1213104844716" at="71,0,78,0" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints$CONCEPTS" />
+      <unit id="1213104844716" at="78,0,81,0" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints$LINKS" />
+      <unit id="1213104844716" at="70,0,77,0" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints$CONCEPTS" />
       <unit id="1213104844717" at="43,19,62,9" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints$1$1" />
       <unit id="1213104844717" at="35,48,64,5" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints$1" />
-      <unit id="1213104844716" at="28,0,83,0" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints" />
+      <unit id="1213104844716" at="28,0,82,0" name="jetbrains.mps.lang.test.constraints.TestNodeReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)/3143335925186804909">
@@ -138,7 +137,7 @@
     <file name="ScopesExpectedNode_Constraints.java">
       <node id="3798371591902558756" at="28,43,29,42" concept="10" />
       <node id="3798371591902558759" at="36,44,37,20" concept="6" />
-      <node id="3798371591902558759" at="44,63,45,57" concept="6" />
+      <node id="3798371591902558759" at="44,63,45,138" concept="6" />
       <node id="6836281137582846322" at="48,80,49,167" concept="5" />
       <node id="6836281137582846237" at="50,89,51,26" concept="6" />
       <node id="6836281137582846244" at="52,13,53,91" concept="5" />
@@ -151,10 +150,9 @@
       <node id="4091667478583475432" at="67,5,68,16" concept="6" />
       <node id="4091667478583473652" at="71,36,72,41" concept="6" />
       <node id="4091667478583473652" at="73,5,74,16" concept="6" />
-      <node id="3798371591902558756" at="76,0,77,0" concept="8" trace="breakingNode_1jj8js_a0a0a0a0a1a0a0a0c" />
-      <node id="3798371591902558756" at="79,0,80,0" concept="8" trace="ScopesExpectedNode$ol" />
-      <node id="3798371591902558756" at="80,0,81,0" concept="8" trace="ScopesTest$TD" />
-      <node id="3798371591902558756" at="84,0,85,0" concept="8" trace="ref$RHE6" />
+      <node id="3798371591902558756" at="78,0,79,0" concept="8" trace="ScopesExpectedNode$ol" />
+      <node id="3798371591902558756" at="79,0,80,0" concept="8" trace="ScopesTest$TD" />
+      <node id="3798371591902558756" at="83,0,84,0" concept="8" trace="ref$RHE6" />
       <node id="3798371591902558756" at="28,0,31,0" concept="0" trace="ScopesExpectedNode_Constraints#()V" />
       <node id="6836281137582846235" at="49,167,52,13" concept="3" />
       <node id="4091667478583475432" at="64,103,67,5" concept="3" />
@@ -170,7 +168,7 @@
       <node id="3798371591902558756" at="32,0,64,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="3798371591902558756" at="28,43,29,42" />
       <scope id="3798371591902558759" at="36,44,37,20" />
-      <scope id="3798371591902558759" at="44,63,45,57" />
+      <scope id="3798371591902558759" at="44,63,45,138" />
       <scope id="6836281137582846236" at="50,89,51,26" />
       <scope id="4091667478583475432" at="65,36,66,50" />
       <scope id="4091667478583473652" at="71,36,72,41" />
@@ -200,18 +198,18 @@
         <var name="references" id="3798371591902558756" />
       </scope>
       <scope id="3798371591902558756" at="32,0,64,0" />
-      <unit id="3798371591902558756" at="83,0,86,0" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints$LINKS" />
-      <unit id="3798371591902558756" at="78,0,82,0" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints$CONCEPTS" />
+      <unit id="3798371591902558756" at="82,0,85,0" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints$LINKS" />
+      <unit id="3798371591902558756" at="77,0,81,0" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints$CONCEPTS" />
       <unit id="3798371591902558759" at="42,19,57,9" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints$1$1" />
       <unit id="3798371591902558759" at="34,48,59,5" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints$1" />
-      <unit id="3798371591902558756" at="27,0,87,0" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints" />
+      <unit id="3798371591902558756" at="27,0,86,0" name="jetbrains.mps.lang.test.constraints.ScopesExpectedNode_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)/5449224527592362452">
     <file name="ScopesTest_Constraints.java">
       <node id="5449224527592362452" at="30,35,31,34" concept="10" />
       <node id="5449224527592362453" at="38,44,39,20" concept="6" />
-      <node id="5449224527592362453" at="46,63,47,57" concept="6" />
+      <node id="5449224527592362453" at="46,63,47,138" concept="6" />
       <node id="6836281137582846180" at="53,84,54,59" concept="5" />
       <node id="6836281137582846189" at="55,199,56,100" concept="1" />
       <node id="6836281137582846203" at="57,17,58,29" concept="6" />
@@ -221,9 +219,8 @@
       <node id="5449224527592362452" at="75,6,76,131" concept="5" />
       <node id="5449224527592362453" at="76,131,77,42" concept="1" />
       <node id="5449224527592362452" at="77,42,78,22" concept="6" />
-      <node id="5449224527592362452" at="80,0,81,0" concept="8" trace="breakingNode_jzm89w_a0a0a0a0a1a0a0a0c" />
-      <node id="5449224527592362452" at="83,0,84,0" concept="8" trace="ScopesTest$TD" />
-      <node id="5449224527592362452" at="87,0,88,0" concept="8" trace="checkingReference$LcK9" />
+      <node id="5449224527592362452" at="82,0,83,0" concept="8" trace="ScopesTest$TD" />
+      <node id="5449224527592362452" at="86,0,87,0" concept="8" trace="checkingReference$LcK9" />
       <node id="5449224527592362452" at="30,0,33,0" concept="0" trace="ScopesTest_Constraints#()V" />
       <node id="6836281137582846186" at="54,59,57,17" concept="2" />
       <node id="5449224527592362453" at="37,0,41,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -239,7 +236,7 @@
       <node id="5449224527592362452" at="34,0,80,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="5449224527592362452" at="30,35,31,34" />
       <scope id="5449224527592362453" at="38,44,39,20" />
-      <scope id="5449224527592362453" at="46,63,47,57" />
+      <scope id="5449224527592362453" at="46,63,47,138" />
       <scope id="6836281137582846188" at="55,199,56,100" />
       <scope id="6836281137582846215" at="62,80,63,28" />
       <scope id="6836281137582846228" at="67,86,68,28" />
@@ -274,12 +271,12 @@
         <var name="references" id="5449224527592362452" />
       </scope>
       <scope id="5449224527592362452" at="34,0,80,0" />
-      <unit id="5449224527592362452" at="82,0,85,0" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$CONCEPTS" />
-      <unit id="5449224527592362452" at="86,0,89,0" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$LINKS" />
+      <unit id="5449224527592362452" at="81,0,84,0" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$CONCEPTS" />
+      <unit id="5449224527592362452" at="85,0,88,0" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$LINKS" />
       <unit id="6836281137582846170" at="51,23,70,13" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$1$1$1" />
       <unit id="5449224527592362453" at="44,19,73,9" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$1$1" />
       <unit id="5449224527592362453" at="36,48,75,5" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints$1" />
-      <unit id="5449224527592362452" at="29,0,90,0" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints" />
+      <unit id="5449224527592362452" at="29,0,89,0" name="jetbrains.mps.lang.test.constraints.ScopesTest_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)/5476670926298711517">

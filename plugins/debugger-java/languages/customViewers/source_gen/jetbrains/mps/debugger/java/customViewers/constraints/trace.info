@@ -146,18 +146,17 @@
     <file name="HighLevelWatchableCreator_Constraints.java">
       <node id="43370322128310819" at="31,50,32,49" concept="10" />
       <node id="43370322128310820" at="39,44,40,20" concept="6" />
-      <node id="43370322128310820" at="47,63,48,57" concept="6" />
+      <node id="43370322128310820" at="47,63,48,156" concept="6" />
       <node id="6836281137582821037" at="51,80,52,56" concept="5" />
       <node id="6836281137582821045" at="53,152,54,141" concept="1" />
       <node id="6836281137582821057" at="55,13,56,59" concept="6" />
       <node id="43370322128310819" at="60,6,61,131" concept="5" />
       <node id="43370322128310820" at="61,131,62,42" concept="1" />
       <node id="43370322128310819" at="62,42,63,22" concept="6" />
-      <node id="43370322128310819" at="65,0,66,0" concept="8" trace="breakingNode_fcwqku_a0a0a0a0a1a0a0a0c" />
-      <node id="43370322128310819" at="68,0,69,0" concept="8" trace="HighLevelWatchableCreator$q0" />
-      <node id="43370322128310819" at="69,0,70,0" concept="8" trace="CustomWatchablesContainer$ZN" />
-      <node id="43370322128310819" at="73,0,74,0" concept="8" trace="watchable$JIZk" />
-      <node id="43370322128310819" at="74,0,75,0" concept="8" trace="watchable$e05W" />
+      <node id="43370322128310819" at="67,0,68,0" concept="8" trace="HighLevelWatchableCreator$q0" />
+      <node id="43370322128310819" at="68,0,69,0" concept="8" trace="CustomWatchablesContainer$ZN" />
+      <node id="43370322128310819" at="72,0,73,0" concept="8" trace="watchable$JIZk" />
+      <node id="43370322128310819" at="73,0,74,0" concept="8" trace="watchable$e05W" />
       <node id="43370322128310819" at="31,0,34,0" concept="0" trace="HighLevelWatchableCreator_Constraints#()V" />
       <node id="6836281137582821043" at="52,56,55,13" concept="2" />
       <node id="43370322128310820" at="38,0,42,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -169,7 +168,7 @@
       <node id="43370322128310819" at="35,0,65,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="43370322128310819" at="31,50,32,49" />
       <scope id="43370322128310820" at="39,44,40,20" />
-      <scope id="43370322128310820" at="47,63,48,57" />
+      <scope id="43370322128310820" at="47,63,48,156" />
       <scope id="6836281137582821044" at="53,152,54,141" />
       <scope id="43370322128310819" at="31,0,34,0" />
       <scope id="6836281137582821043" at="52,56,55,13">
@@ -190,11 +189,11 @@
         <var name="references" id="43370322128310819" />
       </scope>
       <scope id="43370322128310819" at="35,0,65,0" />
-      <unit id="43370322128310819" at="67,0,71,0" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints$CONCEPTS" />
-      <unit id="43370322128310819" at="72,0,76,0" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints$LINKS" />
+      <unit id="43370322128310819" at="66,0,70,0" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints$CONCEPTS" />
+      <unit id="43370322128310819" at="71,0,75,0" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints$LINKS" />
       <unit id="43370322128310820" at="45,19,58,9" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints$1$1" />
       <unit id="43370322128310820" at="37,48,60,5" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints$1" />
-      <unit id="43370322128310819" at="30,0,77,0" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints" />
+      <unit id="43370322128310819" at="30,0,76,0" name="jetbrains.mps.debugger.java.customViewers.constraints.HighLevelWatchableCreator_Constraints" />
     </file>
   </root>
 </debug-info>

@@ -22,7 +22,7 @@
     <file name="BeanPropertyBuilder_Constraints.java">
       <node id="2679357232283750109" at="38,44,39,42" concept="12" />
       <node id="2679357232283750110" at="46,44,47,20" concept="8" />
-      <node id="2679357232283750110" at="54,63,55,57" concept="8" />
+      <node id="2679357232283750110" at="54,63,55,150" concept="8" />
       <node id="6836281137582809917" at="58,80,59,167" concept="7" />
       <node id="6836281137582809821" at="59,167,60,166" concept="7" />
       <node id="6836281137582809828" at="60,166,61,196" concept="7" />
@@ -33,13 +33,12 @@
       <node id="2679357232283750109" at="75,6,76,131" concept="7" />
       <node id="2679357232283750110" at="76,131,77,42" concept="2" />
       <node id="2679357232283750109" at="77,42,78,22" concept="8" />
-      <node id="2679357232283750109" at="80,0,81,0" concept="10" trace="breakingNode_uhv5x2_a0a0a0a0a1a0a0a0c" />
-      <node id="2679357232283750109" at="83,0,84,0" concept="10" trace="BeanPropertyBuilder$$" />
-      <node id="2679357232283750109" at="84,0,85,0" concept="10" trace="Builder$Cf" />
-      <node id="2679357232283750109" at="85,0,86,0" concept="10" trace="ClassifierType$bL" />
-      <node id="2679357232283750109" at="89,0,90,0" concept="10" trace="setter$dxsb" />
-      <node id="2679357232283750109" at="90,0,91,0" concept="10" trace="parameter$5xBj" />
-      <node id="2679357232283750109" at="94,0,95,0" concept="10" trace="name$MnvL" />
+      <node id="2679357232283750109" at="82,0,83,0" concept="10" trace="BeanPropertyBuilder$$" />
+      <node id="2679357232283750109" at="83,0,84,0" concept="10" trace="Builder$Cf" />
+      <node id="2679357232283750109" at="84,0,85,0" concept="10" trace="ClassifierType$bL" />
+      <node id="2679357232283750109" at="88,0,89,0" concept="10" trace="setter$dxsb" />
+      <node id="2679357232283750109" at="89,0,90,0" concept="10" trace="parameter$5xBj" />
+      <node id="2679357232283750109" at="93,0,94,0" concept="10" trace="name$MnvL" />
       <node id="2679357232283750109" at="38,0,41,0" concept="1" trace="BeanPropertyBuilder_Constraints#()V" />
       <node id="6836281137582809836" at="61,196,64,13" concept="5" />
       <node id="6836281137582809853" at="66,96,69,15" concept="5" />
@@ -53,7 +52,7 @@
       <node id="2679357232283750109" at="42,0,80,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="2679357232283750109" at="38,44,39,42" />
       <scope id="2679357232283750110" at="46,44,47,20" />
-      <scope id="2679357232283750110" at="54,63,55,57" />
+      <scope id="2679357232283750110" at="54,63,55,150" />
       <scope id="6836281137582809837" at="62,41,63,108" />
       <scope id="6836281137582809854" at="67,318,68,66" />
       <scope id="2679357232283750109" at="38,0,41,0" />
@@ -79,12 +78,12 @@
         <var name="references" id="2679357232283750109" />
       </scope>
       <scope id="2679357232283750109" at="42,0,80,0" />
-      <unit id="2679357232283750109" at="93,0,96,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$PROPS" />
-      <unit id="2679357232283750109" at="88,0,92,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$LINKS" />
-      <unit id="2679357232283750109" at="82,0,87,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$CONCEPTS" />
+      <unit id="2679357232283750109" at="92,0,95,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$PROPS" />
+      <unit id="2679357232283750109" at="87,0,91,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$LINKS" />
+      <unit id="2679357232283750109" at="81,0,86,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$CONCEPTS" />
       <unit id="2679357232283750110" at="52,19,73,9" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$1$1" />
       <unit id="2679357232283750110" at="44,48,75,5" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints$1" />
-      <unit id="2679357232283750109" at="37,0,97,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints" />
+      <unit id="2679357232283750109" at="37,0,96,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints" />
     </file>
   </root>
   <root nodeRef="r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)/5389689214216557334">
@@ -155,7 +154,7 @@
     <file name="SimpleBuilderPropertyBuilder_Constraints.java">
       <node id="5389689214217448670" at="32,53,33,52" concept="12" />
       <node id="5389689214217448671" at="40,44,41,20" concept="8" />
-      <node id="5389689214217448671" at="48,63,49,57" concept="8" />
+      <node id="5389689214217448671" at="48,63,49,150" concept="8" />
       <node id="6836281137582809520" at="52,80,53,56" concept="7" />
       <node id="6836281137582809526" at="53,56,54,326" concept="7" />
       <node id="6836281137582809537" at="55,170,56,134" concept="2" />
@@ -165,19 +164,18 @@
       <node id="5389689214217448670" at="70,6,71,131" concept="7" />
       <node id="5389689214217448671" at="71,131,72,42" concept="2" />
       <node id="5389689214217448670" at="72,42,73,22" concept="8" />
-      <node id="5389689214217448670" at="75,0,76,0" concept="10" trace="breakingNode_60c3dm_a0a0a0a0a1a0a0a0c" />
-      <node id="5389689214217448670" at="78,0,79,0" concept="10" trace="SimpleBuilderPropertyBuilder$NO" />
-      <node id="5389689214217448670" at="79,0,80,0" concept="10" trace="Builder$Cf" />
-      <node id="5389689214217448670" at="80,0,81,0" concept="10" trace="SimpleBuilder$AQ" />
-      <node id="5389689214217448670" at="81,0,82,0" concept="10" trace="SimpleBuilderExtensionDeclaration$9P" />
-      <node id="5389689214217448670" at="82,0,83,0" concept="10" trace="SimpleBuilders$h0" />
-      <node id="5389689214217448670" at="86,0,87,0" concept="10" trace="declaration$5Vjc" />
-      <node id="5389689214217448670" at="87,0,88,0" concept="10" trace="property$Mqdy" />
-      <node id="5389689214217448670" at="88,0,89,0" concept="10" trace="property$s6jG" />
-      <node id="5389689214217448670" at="89,0,90,0" concept="10" trace="extended$s6yH" />
-      <node id="5389689214217448670" at="90,0,91,0" concept="10" trace="builder$NDTc" />
-      <node id="5389689214217448670" at="91,0,92,0" concept="10" trace="declaration$kO_b" />
-      <node id="5389689214217448670" at="92,0,93,0" concept="10" trace="extends$szG$" />
+      <node id="5389689214217448670" at="77,0,78,0" concept="10" trace="SimpleBuilderPropertyBuilder$NO" />
+      <node id="5389689214217448670" at="78,0,79,0" concept="10" trace="Builder$Cf" />
+      <node id="5389689214217448670" at="79,0,80,0" concept="10" trace="SimpleBuilder$AQ" />
+      <node id="5389689214217448670" at="80,0,81,0" concept="10" trace="SimpleBuilderExtensionDeclaration$9P" />
+      <node id="5389689214217448670" at="81,0,82,0" concept="10" trace="SimpleBuilders$h0" />
+      <node id="5389689214217448670" at="85,0,86,0" concept="10" trace="declaration$5Vjc" />
+      <node id="5389689214217448670" at="86,0,87,0" concept="10" trace="property$Mqdy" />
+      <node id="5389689214217448670" at="87,0,88,0" concept="10" trace="property$s6jG" />
+      <node id="5389689214217448670" at="88,0,89,0" concept="10" trace="extended$s6yH" />
+      <node id="5389689214217448670" at="89,0,90,0" concept="10" trace="builder$NDTc" />
+      <node id="5389689214217448670" at="90,0,91,0" concept="10" trace="declaration$kO_b" />
+      <node id="5389689214217448670" at="91,0,92,0" concept="10" trace="extends$szG$" />
       <node id="5389689214217448670" at="32,0,35,0" concept="1" trace="SimpleBuilderPropertyBuilder_Constraints#()V" />
       <node id="6836281137582809559" at="59,110,62,19" concept="5" />
       <node id="5389689214217448671" at="39,0,43,0" concept="6" trace="hasOwnScopeProvider#()Z" />
@@ -192,7 +190,7 @@
       <node id="5389689214217448670" at="36,0,75,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="5389689214217448670" at="32,53,33,52" />
       <scope id="5389689214217448671" at="40,44,41,20" />
-      <scope id="5389689214217448671" at="48,63,49,57" />
+      <scope id="5389689214217448671" at="48,63,49,150" />
       <scope id="6836281137582809560" at="60,87,61,144" />
       <scope id="5389689214217448670" at="32,0,35,0" />
       <scope id="5389689214217448671" at="39,0,43,0" />
@@ -225,27 +223,26 @@
         <var name="references" id="5389689214217448670" />
       </scope>
       <scope id="5389689214217448670" at="36,0,75,0" />
-      <unit id="5389689214217448670" at="77,0,84,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints$CONCEPTS" />
-      <unit id="5389689214217448670" at="85,0,94,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints$LINKS" />
+      <unit id="5389689214217448670" at="76,0,83,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints$CONCEPTS" />
+      <unit id="5389689214217448670" at="84,0,93,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints$LINKS" />
       <unit id="5389689214217448671" at="46,19,68,9" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints$1$1" />
       <unit id="5389689214217448671" at="38,48,70,5" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints$1" />
-      <unit id="5389689214217448670" at="31,0,95,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints" />
+      <unit id="5389689214217448670" at="31,0,94,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints" />
     </file>
   </root>
   <root nodeRef="r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)/5425713840853785836">
     <file name="SimpleBuilderParameterReference_Constraints.java">
       <node id="5425713840853785836" at="27,56,28,55" concept="12" />
       <node id="5425713840853785837" at="35,44,36,20" concept="8" />
-      <node id="5425713840853785837" at="43,63,44,57" concept="8" />
+      <node id="5425713840853785837" at="43,63,44,150" concept="8" />
       <node id="6836281137582809694" at="47,80,48,309" concept="8" />
       <node id="5425713840853785836" at="52,6,53,131" concept="7" />
       <node id="5425713840853785837" at="53,131,54,42" concept="2" />
       <node id="5425713840853785836" at="54,42,55,22" concept="8" />
-      <node id="5425713840853785836" at="57,0,58,0" concept="10" trace="breakingNode_seakpt_a0a0a0a0a1a0a0a0c" />
-      <node id="5425713840853785836" at="60,0,61,0" concept="10" trace="SimpleBuilderParameterReference$6D" />
-      <node id="5425713840853785836" at="61,0,62,0" concept="10" trace="BaseSimpleBuilderDeclaration$h" />
-      <node id="5425713840853785836" at="65,0,66,0" concept="10" trace="parameter$k4uF" />
-      <node id="5425713840853785836" at="66,0,67,0" concept="10" trace="parameter$APBU" />
+      <node id="5425713840853785836" at="59,0,60,0" concept="10" trace="SimpleBuilderParameterReference$6D" />
+      <node id="5425713840853785836" at="60,0,61,0" concept="10" trace="BaseSimpleBuilderDeclaration$h" />
+      <node id="5425713840853785836" at="64,0,65,0" concept="10" trace="parameter$k4uF" />
+      <node id="5425713840853785836" at="65,0,66,0" concept="10" trace="parameter$APBU" />
       <node id="5425713840853785836" at="27,0,30,0" concept="1" trace="SimpleBuilderParameterReference_Constraints#()V" />
       <node id="5425713840853785837" at="34,0,38,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="5425713840853785837" at="42,0,46,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -256,7 +253,7 @@
       <node id="5425713840853785836" at="31,0,57,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="5425713840853785836" at="27,56,28,55" />
       <scope id="5425713840853785837" at="35,44,36,20" />
-      <scope id="5425713840853785837" at="43,63,44,57" />
+      <scope id="5425713840853785837" at="43,63,44,150" />
       <scope id="5425713840853785837" at="47,80,48,309" />
       <scope id="5425713840853785836" at="27,0,30,0" />
       <scope id="5425713840853785837" at="34,0,38,0" />
@@ -271,18 +268,18 @@
         <var name="references" id="5425713840853785836" />
       </scope>
       <scope id="5425713840853785836" at="31,0,57,0" />
-      <unit id="5425713840853785836" at="59,0,63,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints$CONCEPTS" />
-      <unit id="5425713840853785836" at="64,0,68,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints$LINKS" />
+      <unit id="5425713840853785836" at="58,0,62,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints$CONCEPTS" />
+      <unit id="5425713840853785836" at="63,0,67,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints$LINKS" />
       <unit id="5425713840853785837" at="41,19,50,9" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints$1$1" />
       <unit id="5425713840853785837" at="33,48,52,5" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints$1" />
-      <unit id="5425713840853785836" at="26,0,69,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints" />
+      <unit id="5425713840853785836" at="26,0,68,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)/6211769134875412271">
     <file name="SimpleBuilderDeclaration_Constraints.java">
       <node id="6211769134875412271" at="31,49,32,48" concept="12" />
       <node id="6211769134875412272" at="39,44,40,20" concept="8" />
-      <node id="6211769134875412272" at="47,63,48,57" concept="8" />
+      <node id="6211769134875412272" at="47,63,48,150" concept="8" />
       <node id="6836281137582809459" at="51,80,52,56" concept="7" />
       <node id="6836281137582809465" at="52,56,53,130" concept="7" />
       <node id="6836281137582809480" at="56,94,57,124" concept="2" />
@@ -290,11 +287,10 @@
       <node id="6211769134875412271" at="65,6,66,131" concept="7" />
       <node id="6211769134875412272" at="66,131,67,42" concept="2" />
       <node id="6211769134875412271" at="67,42,68,22" concept="8" />
-      <node id="6211769134875412271" at="70,0,71,0" concept="10" trace="breakingNode_idnwk4_a0a0a0a0a1a0a0a0c" />
-      <node id="6211769134875412271" at="73,0,74,0" concept="10" trace="SimpleBuilderDeclaration$fz" />
-      <node id="6211769134875412271" at="74,0,75,0" concept="10" trace="SimpleBuilders$h0" />
-      <node id="6211769134875412271" at="78,0,79,0" concept="10" trace="extends$szG$" />
-      <node id="6211769134875412271" at="79,0,80,0" concept="10" trace="builder$NDTc" />
+      <node id="6211769134875412271" at="72,0,73,0" concept="10" trace="SimpleBuilderDeclaration$fz" />
+      <node id="6211769134875412271" at="73,0,74,0" concept="10" trace="SimpleBuilders$h0" />
+      <node id="6211769134875412271" at="77,0,78,0" concept="10" trace="extends$szG$" />
+      <node id="6211769134875412271" at="78,0,79,0" concept="10" trace="builder$NDTc" />
       <node id="6211769134875412271" at="31,0,34,0" concept="1" trace="SimpleBuilderDeclaration_Constraints#()V" />
       <node id="6836281137582809478" at="55,91,58,17" concept="5" />
       <node id="6211769134875412272" at="38,0,42,0" concept="6" trace="hasOwnScopeProvider#()Z" />
@@ -308,7 +304,7 @@
       <node id="6211769134875412271" at="35,0,70,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="6211769134875412271" at="31,49,32,48" />
       <scope id="6211769134875412272" at="39,44,40,20" />
-      <scope id="6211769134875412272" at="47,63,48,57" />
+      <scope id="6211769134875412272" at="47,63,48,150" />
       <scope id="6836281137582809479" at="56,94,57,124" />
       <scope id="6211769134875412271" at="31,0,34,0" />
       <scope id="6836281137582809477" at="55,91,58,17" />
@@ -335,11 +331,11 @@
         <var name="references" id="6211769134875412271" />
       </scope>
       <scope id="6211769134875412271" at="35,0,70,0" />
-      <unit id="6211769134875412271" at="72,0,76,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints$CONCEPTS" />
-      <unit id="6211769134875412271" at="77,0,81,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints$LINKS" />
+      <unit id="6211769134875412271" at="71,0,75,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints$CONCEPTS" />
+      <unit id="6211769134875412271" at="76,0,80,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints$LINKS" />
       <unit id="6211769134875412272" at="45,19,63,9" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints$1$1" />
       <unit id="6211769134875412272" at="37,48,65,5" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints$1" />
-      <unit id="6211769134875412271" at="30,0,82,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints" />
+      <unit id="6211769134875412271" at="30,0,81,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints" />
     </file>
   </root>
   <root nodeRef="r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)/6254726786820421046">
@@ -357,14 +353,13 @@
     <file name="BeanBuilder_Constraints.java">
       <node id="6666322667909634552" at="23,36,24,35" concept="12" />
       <node id="6666322667909634553" at="31,44,32,20" concept="8" />
-      <node id="6666322667909634553" at="39,63,40,57" concept="8" />
+      <node id="6666322667909634553" at="39,63,40,150" concept="8" />
       <node id="6836281137582809688" at="43,80,44,80" concept="8" />
       <node id="6666322667909634552" at="48,6,49,131" concept="7" />
       <node id="6666322667909634553" at="49,131,50,42" concept="2" />
       <node id="6666322667909634552" at="50,42,51,22" concept="8" />
-      <node id="6666322667909634552" at="53,0,54,0" concept="10" trace="breakingNode_w6lght_a0a0a0a0a1a0a0a0c" />
-      <node id="6666322667909634552" at="56,0,57,0" concept="10" trace="BeanBuilder$s8" />
-      <node id="6666322667909634552" at="60,0,61,0" concept="10" trace="baseMethodDeclaration$pyYw" />
+      <node id="6666322667909634552" at="55,0,56,0" concept="10" trace="BeanBuilder$s8" />
+      <node id="6666322667909634552" at="59,0,60,0" concept="10" trace="baseMethodDeclaration$pyYw" />
       <node id="6666322667909634552" at="23,0,26,0" concept="1" trace="BeanBuilder_Constraints#()V" />
       <node id="6666322667909634553" at="30,0,34,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="6666322667909634553" at="38,0,42,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -375,7 +370,7 @@
       <node id="6666322667909634552" at="27,0,53,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="6666322667909634552" at="23,36,24,35" />
       <scope id="6666322667909634553" at="31,44,32,20" />
-      <scope id="6666322667909634553" at="39,63,40,57" />
+      <scope id="6666322667909634553" at="39,63,40,150" />
       <scope id="6666322667909634553" at="43,80,44,80" />
       <scope id="6666322667909634552" at="23,0,26,0" />
       <scope id="6666322667909634553" at="30,0,34,0" />
@@ -390,11 +385,11 @@
         <var name="references" id="6666322667909634552" />
       </scope>
       <scope id="6666322667909634552" at="27,0,53,0" />
-      <unit id="6666322667909634552" at="55,0,58,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints$CONCEPTS" />
-      <unit id="6666322667909634552" at="59,0,62,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints$LINKS" />
+      <unit id="6666322667909634552" at="54,0,57,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints$CONCEPTS" />
+      <unit id="6666322667909634552" at="58,0,61,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints$LINKS" />
       <unit id="6666322667909634553" at="37,19,46,9" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints$1$1" />
       <unit id="6666322667909634553" at="29,48,48,5" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints$1" />
-      <unit id="6666322667909634552" at="22,0,63,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints" />
+      <unit id="6666322667909634552" at="22,0,62,0" name="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints" />
     </file>
   </root>
   <root nodeRef="r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)/7288041816792309049">
@@ -485,7 +480,7 @@
     <file name="SimpleBuilder_Constraints.java">
       <node id="7288041816793179319" at="34,38,35,37" concept="12" />
       <node id="7288041816793179320" at="42,44,43,20" concept="8" />
-      <node id="7288041816793179320" at="50,63,51,57" concept="8" />
+      <node id="7288041816793179320" at="50,63,51,150" concept="8" />
       <node id="6836281137582809236" at="54,80,55,167" concept="7" />
       <node id="6836281137582809033" at="55,167,56,40" concept="7" />
       <node id="6836281137582809039" at="57,378,58,316" concept="2" />
@@ -500,18 +495,17 @@
       <node id="7288041816793179319" at="79,6,80,131" concept="7" />
       <node id="7288041816793179320" at="80,131,81,42" concept="2" />
       <node id="7288041816793179319" at="81,42,82,22" concept="8" />
-      <node id="7288041816793179319" at="84,0,85,0" concept="10" trace="breakingNode_r83cww_a0a0a0a0a1a0a0a0c" />
-      <node id="7288041816793179319" at="87,0,88,0" concept="10" trace="SimpleBuilder$AQ" />
-      <node id="7288041816793179319" at="88,0,89,0" concept="10" trace="Builder$Cf" />
-      <node id="7288041816793179319" at="89,0,90,0" concept="10" trace="StatementList$m_" />
-      <node id="7288041816793179319" at="90,0,91,0" concept="10" trace="Statement$P6" />
-      <node id="7288041816793179319" at="91,0,92,0" concept="10" trace="BuilderCreator$DG" />
-      <node id="7288041816793179319" at="92,0,93,0" concept="10" trace="GenericNewExpression$Fh" />
-      <node id="7288041816793179319" at="93,0,94,0" concept="10" trace="AsBuilderStatement$lm" />
-      <node id="7288041816793179319" at="94,0,95,0" concept="10" trace="SimpleBuilderDeclaration$fz" />
-      <node id="7288041816793179319" at="95,0,96,0" concept="10" trace="SimpleBuilders$h0" />
-      <node id="7288041816793179319" at="99,0,100,0" concept="10" trace="declaration$kO_b" />
-      <node id="7288041816793179319" at="100,0,101,0" concept="10" trace="builder$NDTc" />
+      <node id="7288041816793179319" at="86,0,87,0" concept="10" trace="SimpleBuilder$AQ" />
+      <node id="7288041816793179319" at="87,0,88,0" concept="10" trace="Builder$Cf" />
+      <node id="7288041816793179319" at="88,0,89,0" concept="10" trace="StatementList$m_" />
+      <node id="7288041816793179319" at="89,0,90,0" concept="10" trace="Statement$P6" />
+      <node id="7288041816793179319" at="90,0,91,0" concept="10" trace="BuilderCreator$DG" />
+      <node id="7288041816793179319" at="91,0,92,0" concept="10" trace="GenericNewExpression$Fh" />
+      <node id="7288041816793179319" at="92,0,93,0" concept="10" trace="AsBuilderStatement$lm" />
+      <node id="7288041816793179319" at="93,0,94,0" concept="10" trace="SimpleBuilderDeclaration$fz" />
+      <node id="7288041816793179319" at="94,0,95,0" concept="10" trace="SimpleBuilders$h0" />
+      <node id="7288041816793179319" at="98,0,99,0" concept="10" trace="declaration$kO_b" />
+      <node id="7288041816793179319" at="99,0,100,0" concept="10" trace="builder$NDTc" />
       <node id="6836281137582809148" at="73,18,75,13" concept="0" />
       <node id="7288041816793179319" at="34,0,37,0" concept="1" trace="SimpleBuilder_Constraints#()V" />
       <node id="6836281137582809037" at="56,40,59,13" concept="5" />
@@ -527,7 +521,7 @@
       <node id="7288041816793179319" at="38,0,84,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="7288041816793179319" at="34,38,35,37" />
       <scope id="7288041816793179320" at="42,44,43,20" />
-      <scope id="7288041816793179320" at="50,63,51,57" />
+      <scope id="7288041816793179320" at="50,63,51,150" />
       <scope id="6836281137582809038" at="57,378,58,316" />
       <scope id="6836281137582809076" at="60,90,61,247" />
       <scope id="6836281137582809120" at="67,245,68,124" />
@@ -556,11 +550,11 @@
         <var name="references" id="7288041816793179319" />
       </scope>
       <scope id="7288041816793179319" at="38,0,84,0" />
-      <unit id="7288041816793179319" at="98,0,102,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints$LINKS" />
-      <unit id="7288041816793179319" at="86,0,97,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints$CONCEPTS" />
+      <unit id="7288041816793179319" at="97,0,101,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints$LINKS" />
+      <unit id="7288041816793179319" at="85,0,96,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints$CONCEPTS" />
       <unit id="7288041816793179320" at="48,19,77,9" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints$1$1" />
       <unit id="7288041816793179320" at="40,48,79,5" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints$1" />
-      <unit id="7288041816793179319" at="33,0,103,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints" />
+      <unit id="7288041816793179319" at="33,0,102,0" name="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints" />
     </file>
   </root>
 </debug-info>

@@ -108,7 +108,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_fhl8yz_a0a0a0a0a1a0a0a0g;
+            return new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787751306");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -141,7 +141,6 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
     references.put(d1.getReference(), d1);
     return references;
   }
-  private static final SNodePointer breakingNode_fhl8yz_a0a0a0a0a1a0a0a0g = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787751306");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TestSubstituteParentPropertyAndReference$Xs = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteParentPropertyAndReference");

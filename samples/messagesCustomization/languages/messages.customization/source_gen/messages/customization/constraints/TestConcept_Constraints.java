@@ -76,7 +76,7 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_72100m_a0a0a0a0a1a0a0a0e;
+            return new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -91,7 +91,6 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_72100m_a0a0a0a0a1a0a0a0e = new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TestConcept$cw = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");

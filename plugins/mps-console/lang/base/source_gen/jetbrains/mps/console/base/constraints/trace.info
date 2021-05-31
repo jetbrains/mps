@@ -82,19 +82,18 @@
     <file name="HelpConceptReference_Constraints.java">
       <node id="6928665434433926636" at="31,45,32,44" concept="10" />
       <node id="6928665434433926724" at="39,44,40,20" concept="6" />
-      <node id="6928665434433926724" at="47,63,48,57" concept="6" />
+      <node id="6928665434433926724" at="47,63,48,141" concept="6" />
       <node id="6836281137582820661" at="53,50,54,192" concept="6" />
       <node id="6836281137582820678" at="58,53,59,360" concept="6" />
       <node id="6836281137582820692" at="59,360,60,0" concept="7" />
       <node id="6928665434433926636" at="66,6,67,131" concept="5" />
       <node id="6928665434433926724" at="67,131,68,42" concept="2" />
       <node id="6928665434433926636" at="68,42,69,22" concept="6" />
-      <node id="6928665434433926636" at="71,0,72,0" concept="8" trace="breakingNode_asp0i5_a0a0a0a0a1a0a0a0c" />
-      <node id="6928665434433926636" at="74,0,75,0" concept="8" trace="HelpConceptReference$Y8" />
-      <node id="6928665434433926636" at="75,0,76,0" concept="8" trace="DeprecatedNodeAnnotation$zV" />
-      <node id="6928665434433926636" at="76,0,77,0" concept="8" trace="ConceptDeclaration$gH" />
-      <node id="6928665434433926636" at="80,0,81,0" concept="8" trace="command$b3Jl" />
-      <node id="6928665434433926636" at="84,0,85,0" concept="8" trace="abstract$ibpT" />
+      <node id="6928665434433926636" at="73,0,74,0" concept="8" trace="HelpConceptReference$Y8" />
+      <node id="6928665434433926636" at="74,0,75,0" concept="8" trace="DeprecatedNodeAnnotation$zV" />
+      <node id="6928665434433926636" at="75,0,76,0" concept="8" trace="ConceptDeclaration$gH" />
+      <node id="6928665434433926636" at="79,0,80,0" concept="8" trace="command$b3Jl" />
+      <node id="6928665434433926636" at="83,0,84,0" concept="8" trace="abstract$ibpT" />
       <node id="6928665434433926636" at="31,0,34,0" concept="1" trace="HelpConceptReference_Constraints#()V" />
       <node id="6836281137582820655" at="53,0,56,0" concept="4" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="6928665434433926724" at="38,0,42,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -108,7 +107,7 @@
       <node id="6928665434433926636" at="35,0,71,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="6928665434433926636" at="31,45,32,44" />
       <scope id="6928665434433926724" at="39,44,40,20" />
-      <scope id="6928665434433926724" at="47,63,48,57" />
+      <scope id="6928665434433926724" at="47,63,48,141" />
       <scope id="6836281137582820660" at="53,50,54,192" />
       <scope id="6836281137582820677" at="58,53,60,0" />
       <scope id="6928665434433926636" at="31,0,34,0" />
@@ -131,14 +130,14 @@
         <var name="references" id="6928665434433926636" />
       </scope>
       <scope id="6928665434433926636" at="35,0,71,0" />
-      <unit id="6928665434433926636" at="79,0,82,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$LINKS" />
-      <unit id="6928665434433926636" at="83,0,86,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$PROPS" />
+      <unit id="6928665434433926636" at="78,0,81,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$LINKS" />
+      <unit id="6928665434433926636" at="82,0,85,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$PROPS" />
       <unit id="6836281137582820653" at="52,42,56,13" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$1$1$1$1" />
-      <unit id="6928665434433926636" at="73,0,78,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$CONCEPTS" />
+      <unit id="6928665434433926636" at="72,0,77,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$CONCEPTS" />
       <unit id="6836281137582820649" at="52,23,62,13" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$1$1$1" />
       <unit id="6928665434433926724" at="45,19,64,9" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$1$1" />
       <unit id="6928665434433926724" at="37,48,66,5" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints$1" />
-      <unit id="6928665434433926636" at="30,0,87,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints" />
+      <unit id="6928665434433926636" at="30,0,86,0" name="jetbrains.mps.console.base.constraints.HelpConceptReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)/7820875636624865058">

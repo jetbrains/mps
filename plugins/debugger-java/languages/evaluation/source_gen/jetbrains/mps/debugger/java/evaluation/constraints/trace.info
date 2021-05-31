@@ -68,7 +68,7 @@
       <node id="6036237525966325224" at="51,9,52,0" concept="6" />
       <node id="6036237525966325224" at="52,0,53,22" concept="5" />
       <node id="6036237525966325248" at="61,44,62,20" concept="5" />
-      <node id="6036237525966325248" at="69,63,70,57" concept="5" />
+      <node id="6036237525966325248" at="69,63,70,153" concept="5" />
       <node id="6836281137582821178" at="73,80,74,180" concept="4" />
       <node id="6836281137582821188" at="74,180,75,219" concept="4" />
       <node id="6836281137582821198" at="75,219,76,94" concept="4" />
@@ -81,14 +81,13 @@
       <node id="6036237525966325224" at="90,42,91,22" concept="5" />
       <node id="1227128029536564881" at="93,128,94,531" concept="5" />
       <node id="6036237525966325224" at="96,0,97,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="6036237525966325224" at="97,0,98,0" concept="7" trace="breakingNode_cyzmhi_a0a0a0a0a1a0a0a0d" />
-      <node id="6036237525966325224" at="100,0,101,0" concept="7" trace="EvaluatorsSuperMethodCall$PI" />
-      <node id="6036237525966325224" at="101,0,102,0" concept="7" trace="EvaluatorConcept$pu" />
-      <node id="6036237525966325224" at="102,0,103,0" concept="7" trace="ClassConcept$bK" />
-      <node id="6036237525966325224" at="106,0,107,0" concept="7" trace="baseMethodDeclaration$pyYw" />
-      <node id="6036237525966325224" at="107,0,108,0" concept="7" trace="thisNode$GzOU" />
-      <node id="6036237525966325224" at="108,0,109,0" concept="7" trace="debuggedType$boAT" />
-      <node id="6036237525966325224" at="109,0,110,0" concept="7" trace="classifier$cxMr" />
+      <node id="6036237525966325224" at="99,0,100,0" concept="7" trace="EvaluatorsSuperMethodCall$PI" />
+      <node id="6036237525966325224" at="100,0,101,0" concept="7" trace="EvaluatorConcept$pu" />
+      <node id="6036237525966325224" at="101,0,102,0" concept="7" trace="ClassConcept$bK" />
+      <node id="6036237525966325224" at="105,0,106,0" concept="7" trace="baseMethodDeclaration$pyYw" />
+      <node id="6036237525966325224" at="106,0,107,0" concept="7" trace="thisNode$GzOU" />
+      <node id="6036237525966325224" at="107,0,108,0" concept="7" trace="debuggedType$boAT" />
+      <node id="6036237525966325224" at="108,0,109,0" concept="7" trace="classifier$cxMr" />
       <node id="6036237525966325224" at="38,0,41,0" concept="0" trace="EvaluatorsSuperMethodCall_Constraints#()V" />
       <node id="6036237525966325224" at="48,0,51,9" concept="2" />
       <node id="6836281137582821216" at="79,0,82,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -107,7 +106,7 @@
       <scope id="6036237525966325224" at="38,50,39,49" />
       <scope id="6036237525966325224" at="49,55,50,71" />
       <scope id="6036237525966325248" at="61,44,62,20" />
-      <scope id="6036237525966325248" at="69,63,70,57" />
+      <scope id="6036237525966325248" at="69,63,70,153" />
       <scope id="6836281137582821217" at="79,47,80,211" />
       <scope id="1227128029536564880" at="93,128,94,531" />
       <scope id="6036237525966325224" at="38,0,41,0" />
@@ -148,32 +147,31 @@
       </scope>
       <scope id="6036237525966325224" at="57,0,93,0" />
       <unit id="6836281137582821216" at="78,210,82,13" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$2$1$1" />
-      <unit id="6036237525966325224" at="99,0,104,0" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$CONCEPTS" />
-      <unit id="6036237525966325224" at="105,0,111,0" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$LINKS" />
+      <unit id="6036237525966325224" at="98,0,103,0" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$CONCEPTS" />
+      <unit id="6036237525966325224" at="104,0,110,0" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$LINKS" />
       <unit id="6036237525966325224" at="44,15,55,5" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$1" />
       <unit id="6036237525966325248" at="67,19,86,9" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$2$1" />
       <unit id="6036237525966325248" at="59,48,88,5" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints$2" />
-      <unit id="6036237525966325224" at="37,0,112,0" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints" />
+      <unit id="6036237525966325224" at="37,0,111,0" name="jetbrains.mps.debugger.java.evaluation.constraints.EvaluatorsSuperMethodCall_Constraints" />
     </file>
   </root>
   <root nodeRef="r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)/6146091894852365519">
     <file name="LowLevelVariableReference_Constraints.java">
       <node id="6146091894852365519" at="31,50,32,49" concept="9" />
       <node id="6146091894852365520" at="39,44,40,20" concept="5" />
-      <node id="6146091894852365520" at="47,63,48,57" concept="5" />
+      <node id="6146091894852365520" at="47,63,48,153" concept="5" />
       <node id="6836281137582821251" at="51,80,52,133" concept="4" />
       <node id="6836281137582821261" at="53,86,54,115" concept="5" />
       <node id="6836281137582821551" at="57,47,58,86" concept="5" />
       <node id="6146091894852365519" at="64,6,65,131" concept="4" />
       <node id="6146091894852365520" at="65,131,66,42" concept="1" />
       <node id="6146091894852365519" at="66,42,67,22" concept="5" />
-      <node id="6146091894852365519" at="69,0,70,0" concept="7" trace="breakingNode_8w715n_a0a0a0a0a1a0a0a0c" />
-      <node id="6146091894852365519" at="72,0,73,0" concept="7" trace="LowLevelVariableReference$GJ" />
-      <node id="6146091894852365519" at="73,0,74,0" concept="7" trace="EvaluatorConcept$pu" />
-      <node id="6146091894852365519" at="77,0,78,0" concept="7" trace="baseVariableDeclaration$v20M" />
-      <node id="6146091894852365519" at="78,0,79,0" concept="7" trace="variables$I5Ku" />
-      <node id="6146091894852365519" at="82,0,83,0" concept="7" trace="isShowContext$I6Gy" />
-      <node id="6146091894852365519" at="83,0,84,0" concept="7" trace="isOutOfScope$49K_" />
+      <node id="6146091894852365519" at="71,0,72,0" concept="7" trace="LowLevelVariableReference$GJ" />
+      <node id="6146091894852365519" at="72,0,73,0" concept="7" trace="EvaluatorConcept$pu" />
+      <node id="6146091894852365519" at="76,0,77,0" concept="7" trace="baseVariableDeclaration$v20M" />
+      <node id="6146091894852365519" at="77,0,78,0" concept="7" trace="variables$I5Ku" />
+      <node id="6146091894852365519" at="81,0,82,0" concept="7" trace="isShowContext$I6Gy" />
+      <node id="6146091894852365519" at="82,0,83,0" concept="7" trace="isOutOfScope$49K_" />
       <node id="6146091894852365519" at="31,0,34,0" concept="0" trace="LowLevelVariableReference_Constraints#()V" />
       <node id="6836281137582821259" at="52,133,55,13" concept="2" />
       <node id="6836281137582821549" at="57,0,60,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -187,7 +185,7 @@
       <node id="6146091894852365519" at="35,0,69,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="6146091894852365519" at="31,50,32,49" />
       <scope id="6146091894852365520" at="39,44,40,20" />
-      <scope id="6146091894852365520" at="47,63,48,57" />
+      <scope id="6146091894852365520" at="47,63,48,153" />
       <scope id="6836281137582821260" at="53,86,54,115" />
       <scope id="6836281137582821550" at="57,47,58,86" />
       <scope id="6146091894852365519" at="31,0,34,0" />
@@ -210,12 +208,12 @@
       </scope>
       <scope id="6146091894852365519" at="35,0,69,0" />
       <unit id="6836281137582821549" at="56,145,60,13" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$1$1$1" />
-      <unit id="6146091894852365519" at="71,0,75,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$CONCEPTS" />
-      <unit id="6146091894852365519" at="76,0,80,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$LINKS" />
-      <unit id="6146091894852365519" at="81,0,85,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$PROPS" />
+      <unit id="6146091894852365519" at="70,0,74,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$CONCEPTS" />
+      <unit id="6146091894852365519" at="75,0,79,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$LINKS" />
+      <unit id="6146091894852365519" at="80,0,84,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$PROPS" />
       <unit id="6146091894852365520" at="45,19,62,9" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$1$1" />
       <unit id="6146091894852365520" at="37,48,64,5" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints$1" />
-      <unit id="6146091894852365519" at="30,0,86,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints" />
+      <unit id="6146091894852365519" at="30,0,85,0" name="jetbrains.mps.debugger.java.evaluation.constraints.LowLevelVariableReference_Constraints" />
     </file>
   </root>
 </debug-info>

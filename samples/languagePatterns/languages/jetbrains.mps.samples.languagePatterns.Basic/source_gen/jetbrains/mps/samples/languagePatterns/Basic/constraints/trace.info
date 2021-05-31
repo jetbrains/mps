@@ -19,7 +19,7 @@
     <file name="Performance_Constraints.java">
       <node id="3803436373353551295" at="28,36,29,35" concept="9" />
       <node id="3803436373353624330" at="36,44,37,20" concept="5" />
-      <node id="3803436373353624330" at="44,63,45,57" concept="5" />
+      <node id="3803436373353624330" at="44,63,45,159" concept="5" />
       <node id="6836281137582847669" at="48,80,49,0" concept="6" />
       <node id="6836281137582847670" at="49,0,50,132" concept="4" />
       <node id="6836281137582847679" at="50,132,51,0" concept="6" />
@@ -29,11 +29,10 @@
       <node id="3803436373353551295" at="58,6,59,131" concept="4" />
       <node id="3803436373353624330" at="59,131,60,42" concept="1" />
       <node id="3803436373353551295" at="60,42,61,22" concept="5" />
-      <node id="3803436373353551295" at="63,0,64,0" concept="7" trace="breakingNode_lq51rn_a0a0a0a0a1a0a0a0c" />
-      <node id="3803436373353551295" at="66,0,67,0" concept="7" trace="Performance$QQ" />
-      <node id="3803436373353551295" at="67,0,68,0" concept="7" trace="Concert$hS" />
-      <node id="3803436373353551295" at="71,0,72,0" concept="7" trace="singer$ApO$" />
-      <node id="3803436373353551295" at="72,0,73,0" concept="7" trace="performers$yMK7" />
+      <node id="3803436373353551295" at="65,0,66,0" concept="7" trace="Performance$QQ" />
+      <node id="3803436373353551295" at="66,0,67,0" concept="7" trace="Concert$hS" />
+      <node id="3803436373353551295" at="70,0,71,0" concept="7" trace="singer$ApO$" />
+      <node id="3803436373353551295" at="71,0,72,0" concept="7" trace="performers$yMK7" />
       <node id="3803436373353551295" at="28,0,31,0" concept="0" trace="Performance_Constraints#()V" />
       <node id="3803436373353624330" at="35,0,39,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3803436373353624330" at="43,0,47,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -44,7 +43,7 @@
       <node id="3803436373353551295" at="32,0,63,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="3803436373353551295" at="28,36,29,35" />
       <scope id="3803436373353624330" at="36,44,37,20" />
-      <scope id="3803436373353624330" at="44,63,45,57" />
+      <scope id="3803436373353624330" at="44,63,45,159" />
       <scope id="3803436373353551295" at="28,0,31,0" />
       <scope id="3803436373353624330" at="35,0,39,0" />
       <scope id="3803436373353624330" at="43,0,47,0" />
@@ -62,11 +61,11 @@
         <var name="references" id="3803436373353551295" />
       </scope>
       <scope id="3803436373353551295" at="32,0,63,0" />
-      <unit id="3803436373353551295" at="65,0,69,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints$CONCEPTS" />
-      <unit id="3803436373353551295" at="70,0,74,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints$LINKS" />
+      <unit id="3803436373353551295" at="64,0,68,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints$CONCEPTS" />
+      <unit id="3803436373353551295" at="69,0,73,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints$LINKS" />
       <unit id="3803436373353624330" at="42,19,56,9" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints$1$1" />
       <unit id="3803436373353624330" at="34,48,58,5" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints$1" />
-      <unit id="3803436373353551295" at="27,0,75,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints" />
+      <unit id="3803436373353551295" at="27,0,74,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Performance_Constraints" />
     </file>
   </root>
   <root nodeRef="r:7e1c7518-df7a-4f22-84b2-a5e68261264a(jetbrains.mps.samples.languagePatterns.Basic.constraints)/3803436373353551319">
@@ -127,7 +126,7 @@
     <file name="Participant_Constraints.java">
       <node id="3803436373354067654" at="33,36,34,35" concept="9" />
       <node id="3803436373354067655" at="41,44,42,20" concept="5" />
-      <node id="3803436373354067655" at="49,63,50,57" concept="5" />
+      <node id="3803436373354067655" at="49,63,50,159" concept="5" />
       <node id="6836281137582847572" at="53,80,54,128" concept="4" />
       <node id="6836281137582847580" at="54,128,55,143" concept="4" />
       <node id="6836281137582847598" at="55,143,56,0" concept="6" />
@@ -142,13 +141,12 @@
       <node id="3803436373354067654" at="83,6,84,131" concept="4" />
       <node id="3803436373354067655" at="84,131,85,42" concept="1" />
       <node id="3803436373354067654" at="85,42,86,22" concept="5" />
-      <node id="3803436373354067654" at="88,0,89,0" concept="7" trace="breakingNode_wflc39_a0a0a0a0a1a0a0a0c" />
-      <node id="3803436373354067654" at="91,0,92,0" concept="7" trace="Participant$Y_" />
-      <node id="3803436373354067654" at="92,0,93,0" concept="7" trace="Concert$hS" />
-      <node id="3803436373354067654" at="93,0,94,0" concept="7" trace="CombinedPerformance$gr" />
-      <node id="3803436373354067654" at="97,0,98,0" concept="7" trace="singer$rtG4" />
-      <node id="3803436373354067654" at="98,0,99,0" concept="7" trace="performers$yMK7" />
-      <node id="3803436373354067654" at="99,0,100,0" concept="7" trace="participants$y5XW" />
+      <node id="3803436373354067654" at="90,0,91,0" concept="7" trace="Participant$Y_" />
+      <node id="3803436373354067654" at="91,0,92,0" concept="7" trace="Concert$hS" />
+      <node id="3803436373354067654" at="92,0,93,0" concept="7" trace="CombinedPerformance$gr" />
+      <node id="3803436373354067654" at="96,0,97,0" concept="7" trace="singer$rtG4" />
+      <node id="3803436373354067654" at="97,0,98,0" concept="7" trace="performers$yMK7" />
+      <node id="3803436373354067654" at="98,0,99,0" concept="7" trace="participants$y5XW" />
       <node id="3803436373354067654" at="33,0,36,0" concept="0" trace="Participant_Constraints#()V" />
       <node id="6836281137582847616" at="60,0,63,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6836281137582847625" at="64,0,67,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -166,7 +164,7 @@
       <node id="3803436373354067654" at="37,0,88,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="3803436373354067654" at="33,36,34,35" />
       <scope id="3803436373354067655" at="41,44,42,20" />
-      <scope id="3803436373354067655" at="49,63,50,57" />
+      <scope id="3803436373354067655" at="49,63,50,159" />
       <scope id="6836281137582847617" at="60,47,61,74" />
       <scope id="6836281137582847626" at="64,54,65,81" />
       <scope id="6836281137582847648" at="72,68,73,74" />
@@ -206,12 +204,12 @@
       <unit id="6836281137582847616" at="59,168,63,13" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$1$1$1" />
       <unit id="6836281137582847625" at="63,26,67,13" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$1$1$2" />
       <unit id="6836281137582847647" at="71,87,75,17" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$1$1$3$1" />
-      <unit id="3803436373354067654" at="90,0,95,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$CONCEPTS" />
-      <unit id="3803436373354067654" at="96,0,101,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$LINKS" />
+      <unit id="3803436373354067654" at="89,0,94,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$CONCEPTS" />
+      <unit id="3803436373354067654" at="95,0,100,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$LINKS" />
       <unit id="6836281137582847641" at="69,85,77,13" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$1$1$3" />
       <unit id="3803436373354067655" at="47,19,81,9" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$1$1" />
       <unit id="3803436373354067655" at="39,48,83,5" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints$1" />
-      <unit id="3803436373354067654" at="32,0,102,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints" />
+      <unit id="3803436373354067654" at="32,0,101,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.Participant_Constraints" />
     </file>
   </root>
   <root nodeRef="r:7e1c7518-df7a-4f22-84b2-a5e68261264a(jetbrains.mps.samples.languagePatterns.Basic.constraints)/5235060235298371706">
@@ -263,17 +261,16 @@
     <file name="ComponentUsage_Constraints.java">
       <node id="5681697064999370163" at="31,39,32,38" concept="9" />
       <node id="5681697064999370164" at="39,44,40,20" concept="5" />
-      <node id="5681697064999370164" at="47,63,48,57" concept="5" />
+      <node id="5681697064999370164" at="47,63,48,159" concept="5" />
       <node id="6836281137582847714" at="55,50,56,75" concept="5" />
       <node id="6836281137582847723" at="59,50,60,104" concept="5" />
       <node id="8965727632786214214" at="66,50,67,144" concept="5" />
       <node id="5681697064999370163" at="73,6,74,131" concept="4" />
       <node id="5681697064999370164" at="74,131,75,42" concept="1" />
       <node id="5681697064999370163" at="75,42,76,22" concept="5" />
-      <node id="5681697064999370163" at="78,0,79,0" concept="7" trace="breakingNode_4swebx_a0a0a0a0a1a0a0a0c" />
-      <node id="5681697064999370163" at="81,0,82,0" concept="7" trace="ComponentUsage$p$" />
-      <node id="5681697064999370163" at="82,0,83,0" concept="7" trace="Component$Tx" />
-      <node id="5681697064999370163" at="86,0,87,0" concept="7" trace="usedComponent$uCxb" />
+      <node id="5681697064999370163" at="80,0,81,0" concept="7" trace="ComponentUsage$p$" />
+      <node id="5681697064999370163" at="81,0,82,0" concept="7" trace="Component$Tx" />
+      <node id="5681697064999370163" at="85,0,86,0" concept="7" trace="usedComponent$uCxb" />
       <node id="5681697064999370163" at="31,0,34,0" concept="0" trace="ComponentUsage_Constraints#()V" />
       <node id="6836281137582847712" at="55,0,58,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6836281137582847721" at="59,0,62,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -291,7 +288,7 @@
       <node id="5681697064999370163" at="35,0,78,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="5681697064999370163" at="31,39,32,38" />
       <scope id="5681697064999370164" at="39,44,40,20" />
-      <scope id="5681697064999370164" at="47,63,48,57" />
+      <scope id="5681697064999370164" at="47,63,48,159" />
       <scope id="6836281137582847713" at="55,50,56,75" />
       <scope id="6836281137582847722" at="59,50,60,104" />
       <scope id="8965727632786212822" at="66,50,67,144" />
@@ -324,15 +321,15 @@
         <var name="references" id="5681697064999370163" />
       </scope>
       <scope id="5681697064999370163" at="35,0,78,0" />
-      <unit id="5681697064999370163" at="85,0,88,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$LINKS" />
+      <unit id="5681697064999370163" at="84,0,87,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$LINKS" />
       <unit id="6836281137582847712" at="54,160,58,17" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$1$1$1$1" />
       <unit id="6836281137582847721" at="58,27,62,17" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$1$1$1$2" />
       <unit id="8965727632786212800" at="65,23,69,13" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$1$1$2" />
-      <unit id="5681697064999370163" at="80,0,84,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$CONCEPTS" />
+      <unit id="5681697064999370163" at="79,0,83,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$CONCEPTS" />
       <unit id="6836281137582847702" at="52,179,64,13" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$1$1$1" />
       <unit id="5681697064999370164" at="45,19,71,9" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$1$1" />
       <unit id="5681697064999370164" at="37,48,73,5" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints$1" />
-      <unit id="5681697064999370163" at="30,0,89,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints" />
+      <unit id="5681697064999370163" at="30,0,88,0" name="jetbrains.mps.samples.languagePatterns.Basic.constraints.ComponentUsage_Constraints" />
     </file>
   </root>
 </debug-info>

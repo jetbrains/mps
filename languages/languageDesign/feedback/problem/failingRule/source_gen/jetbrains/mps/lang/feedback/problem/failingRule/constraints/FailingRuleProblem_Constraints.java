@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,7 +28,6 @@ import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -64,7 +64,7 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_9cv73f_a0a0a0a0a1a0a0a0d;
+            return new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "1938781798615217722");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -99,7 +99,6 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
     return !(SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), CONCEPTS.FeedbackPerConceptRoot$Vm)) || SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "7614984822540739031");
-  private static final SNodePointer breakingNode_9cv73f_a0a0a0a0a1a0a0a0d = new SNodePointer("r:a3bec607-7151-4d0d-93f7-37e8de283287(jetbrains.mps.lang.feedback.problem.failingRule.constraints)", "1938781798615217722");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept FailingRuleProblem$j3 = MetaAdapterFactory.getConcept(0xdb2a46c2ebec4b6cL, 0xb6c2f9b55b9b6f8aL, 0x573ae5b8b8cd0cf7L, "jetbrains.mps.lang.feedback.problem.failingRule.structure.FailingRuleProblem");

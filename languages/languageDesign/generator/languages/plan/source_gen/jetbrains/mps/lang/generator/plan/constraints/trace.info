@@ -20,7 +20,7 @@
     <file name="InPlaceCheckpointRefSpec_Constraints.java">
       <node id="3750601816081741647" at="28,49,29,48" concept="10" />
       <node id="3750601816081741684" at="36,44,37,20" concept="5" />
-      <node id="3750601816081741684" at="44,63,45,57" concept="5" />
+      <node id="3750601816081741684" at="44,63,45,148" concept="5" />
       <node id="3750601816081805810" at="48,80,49,75" concept="6" />
       <node id="1867266178246267399" at="52,53,53,125" concept="6" />
       <node id="1867266178246268097" at="53,125,54,132" concept="6" />
@@ -28,12 +28,11 @@
       <node id="3750601816081741647" at="61,6,62,131" concept="4" />
       <node id="3750601816081741684" at="62,131,63,42" concept="1" />
       <node id="3750601816081741647" at="63,42,64,22" concept="5" />
-      <node id="3750601816081741647" at="66,0,67,0" concept="8" trace="breakingNode_we7ldp_a0a0a0a0a1a0a0a0c" />
-      <node id="3750601816081741647" at="69,0,70,0" concept="8" trace="InPlaceCheckpointRefSpec$H6" />
-      <node id="3750601816081741647" at="70,0,71,0" concept="8" trace="Checkpoint$ZV" />
-      <node id="3750601816081741647" at="71,0,72,0" concept="8" trace="InPlaceCheckpointSpec$pM" />
-      <node id="3750601816081741647" at="75,0,76,0" concept="8" trace="checkpoint$4Q6y" />
-      <node id="3750601816081741647" at="76,0,77,0" concept="8" trace="cpSpec$v7$t" />
+      <node id="3750601816081741647" at="68,0,69,0" concept="8" trace="InPlaceCheckpointRefSpec$H6" />
+      <node id="3750601816081741647" at="69,0,70,0" concept="8" trace="Checkpoint$ZV" />
+      <node id="3750601816081741647" at="70,0,71,0" concept="8" trace="InPlaceCheckpointSpec$pM" />
+      <node id="3750601816081741647" at="74,0,75,0" concept="8" trace="checkpoint$4Q6y" />
+      <node id="3750601816081741647" at="75,0,76,0" concept="8" trace="cpSpec$v7$t" />
       <node id="3750601816081741647" at="28,0,31,0" concept="0" trace="InPlaceCheckpointRefSpec_Constraints#()V" />
       <node id="3750601816081741684" at="35,0,39,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3750601816081741684" at="43,0,47,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -46,7 +45,7 @@
       <node id="3750601816081741647" at="32,0,66,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="3750601816081741647" at="28,49,29,48" />
       <scope id="3750601816081741684" at="36,44,37,20" />
-      <scope id="3750601816081741684" at="44,63,45,57" />
+      <scope id="3750601816081741684" at="44,63,45,148" />
       <scope id="3750601816081741647" at="28,0,31,0" />
       <scope id="3750601816081792284" at="52,53,55,223" />
       <scope id="3750601816081741684" at="35,0,39,0" />
@@ -65,12 +64,12 @@
         <var name="references" id="3750601816081741647" />
       </scope>
       <scope id="3750601816081741647" at="32,0,66,0" />
-      <unit id="3750601816081741647" at="74,0,78,0" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$LINKS" />
-      <unit id="3750601816081741647" at="68,0,73,0" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$CONCEPTS" />
+      <unit id="3750601816081741647" at="73,0,77,0" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$LINKS" />
+      <unit id="3750601816081741647" at="67,0,72,0" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$CONCEPTS" />
       <unit id="3750601816081790651" at="50,23,57,13" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$1$1$1" />
       <unit id="3750601816081741684" at="42,19,59,9" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$1$1" />
       <unit id="3750601816081741684" at="34,48,61,5" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints$1" />
-      <unit id="3750601816081741647" at="27,0,79,0" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints" />
+      <unit id="3750601816081741647" at="27,0,78,0" name="jetbrains.mps.lang.generator.plan.constraints.InPlaceCheckpointRefSpec_Constraints" />
     </file>
   </root>
   <root nodeRef="r:e831e054-7bbb-4c7b-aebf-31582c0dfa61(jetbrains.mps.lang.generator.plan.constraints)/3750601816087335519">

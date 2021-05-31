@@ -16,16 +16,15 @@
     <file name="ElementReference_Constraints.java">
       <node id="941086956890759281" at="26,41,27,40" concept="6" />
       <node id="941086956890759282" at="34,44,35,20" concept="4" />
-      <node id="941086956890759282" at="42,63,43,57" concept="4" />
+      <node id="941086956890759282" at="42,63,43,149" concept="4" />
       <node id="6836281137582847991" at="46,80,47,289" concept="4" />
       <node id="941086956890759281" at="51,6,52,131" concept="3" />
       <node id="941086956890759282" at="52,131,53,42" concept="1" />
       <node id="941086956890759281" at="53,42,54,22" concept="4" />
-      <node id="941086956890759281" at="56,0,57,0" concept="5" trace="breakingNode_4bmjf7_a0a0a0a0a1a0a0a0c" />
-      <node id="941086956890759281" at="59,0,60,0" concept="5" trace="ElementReference$XB" />
-      <node id="941086956890759281" at="60,0,61,0" concept="5" trace="Filter$pE" />
-      <node id="941086956890759281" at="61,0,62,0" concept="5" trace="Map$hZ" />
-      <node id="941086956890759281" at="65,0,66,0" concept="5" trace="element$rQ9F" />
+      <node id="941086956890759281" at="58,0,59,0" concept="5" trace="ElementReference$XB" />
+      <node id="941086956890759281" at="59,0,60,0" concept="5" trace="Filter$pE" />
+      <node id="941086956890759281" at="60,0,61,0" concept="5" trace="Map$hZ" />
+      <node id="941086956890759281" at="64,0,65,0" concept="5" trace="element$rQ9F" />
       <node id="941086956890759281" at="26,0,29,0" concept="0" trace="ElementReference_Constraints#()V" />
       <node id="941086956890759282" at="33,0,37,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="941086956890759282" at="41,0,45,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -36,7 +35,7 @@
       <node id="941086956890759281" at="30,0,56,0" concept="2" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="941086956890759281" at="26,41,27,40" />
       <scope id="941086956890759282" at="34,44,35,20" />
-      <scope id="941086956890759282" at="42,63,43,57" />
+      <scope id="941086956890759282" at="42,63,43,149" />
       <scope id="941086956890759282" at="46,80,47,289" />
       <scope id="941086956890759281" at="26,0,29,0" />
       <scope id="941086956890759282" at="33,0,37,0" />
@@ -51,11 +50,11 @@
         <var name="references" id="941086956890759281" />
       </scope>
       <scope id="941086956890759281" at="30,0,56,0" />
-      <unit id="941086956890759281" at="64,0,67,0" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints$LINKS" />
-      <unit id="941086956890759281" at="58,0,63,0" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints$CONCEPTS" />
+      <unit id="941086956890759281" at="63,0,66,0" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints$LINKS" />
+      <unit id="941086956890759281" at="57,0,62,0" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints$CONCEPTS" />
       <unit id="941086956890759282" at="40,19,49,9" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints$1$1" />
       <unit id="941086956890759282" at="32,48,51,5" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints$1" />
-      <unit id="941086956890759281" at="25,0,68,0" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints" />
+      <unit id="941086956890759281" at="25,0,67,0" name="jetbrains.mps.samples.SwingBuilder.constraints.ElementReference_Constraints" />
     </file>
   </root>
 </debug-info>

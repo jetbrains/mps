@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -30,7 +31,6 @@ import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -67,7 +67,7 @@ public class EvaluatorsSuperMethodCall_Constraints extends BaseConstraintsDescri
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_cyzmhi_a0a0a0a0a1a0a0a0d;
+            return new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "6836281137582821176");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -94,7 +94,6 @@ public class EvaluatorsSuperMethodCall_Constraints extends BaseConstraintsDescri
     return (SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.EvaluatorConcept$pu, false, false), LINKS.thisNode$GzOU) != null) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(DebuggedType__BehaviorDescriptor.getHighClassifierType_id3WhGjgvCHCA.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.EvaluatorConcept$pu, false, false), LINKS.thisNode$GzOU), LINKS.debuggedType$boAT)), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "1227128029536564879");
-  private static final SNodePointer breakingNode_cyzmhi_a0a0a0a0a1a0a0a0d = new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "6836281137582821176");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EvaluatorsSuperMethodCall$PI = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b1ae1feL, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorsSuperMethodCall");

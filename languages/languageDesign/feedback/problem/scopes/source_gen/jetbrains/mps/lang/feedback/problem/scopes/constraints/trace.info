@@ -17,7 +17,7 @@
     <file name="RefOutOfScopeProblem_Constraints.java">
       <node id="1592627013225801575" at="27,45,28,44" concept="7" />
       <node id="24399255755617834" at="35,44,36,20" concept="5" />
-      <node id="24399255755617834" at="43,63,44,57" concept="5" />
+      <node id="24399255755617834" at="43,63,44,155" concept="5" />
       <node id="1938781798615313045" at="48,54,49,98" concept="4" />
       <node id="1938781798615280312" at="49,98,50,248" concept="4" />
       <node id="2559059706674894650" at="51,38,52,153" concept="4" />
@@ -27,11 +27,10 @@
       <node id="1592627013225801575" at="61,6,62,131" concept="4" />
       <node id="24399255755617834" at="62,131,63,42" concept="1" />
       <node id="1592627013225801575" at="63,42,64,22" concept="5" />
-      <node id="1592627013225801575" at="66,0,67,0" concept="6" trace="breakingNode_cqx8be_a0a0a0a0a1a0a0a0c" />
-      <node id="1592627013225801575" at="69,0,70,0" concept="6" trace="RefOutOfScopeProblem$nG" />
-      <node id="1592627013225801575" at="70,0,71,0" concept="6" trace="FeedbackPerConceptRoot$Vm" />
-      <node id="1592627013225801575" at="74,0,75,0" concept="6" trace="ref$OhM3" />
-      <node id="1592627013225801575" at="75,0,76,0" concept="6" trace="concept$NMNv" />
+      <node id="1592627013225801575" at="68,0,69,0" concept="6" trace="RefOutOfScopeProblem$nG" />
+      <node id="1592627013225801575" at="69,0,70,0" concept="6" trace="FeedbackPerConceptRoot$Vm" />
+      <node id="1592627013225801575" at="73,0,74,0" concept="6" trace="ref$OhM3" />
+      <node id="1592627013225801575" at="74,0,75,0" concept="6" trace="concept$NMNv" />
       <node id="1592627013225801575" at="27,0,30,0" concept="0" trace="RefOutOfScopeProblem_Constraints#()V" />
       <node id="24399255755617834" at="34,0,38,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="24399255755617834" at="42,0,46,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -44,7 +43,7 @@
       <node id="1592627013225801575" at="31,0,66,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="1592627013225801575" at="27,45,28,44" />
       <scope id="24399255755617834" at="35,44,36,20" />
-      <scope id="24399255755617834" at="43,63,44,57" />
+      <scope id="24399255755617834" at="43,63,44,155" />
       <scope id="1592627013225801575" at="27,0,30,0" />
       <scope id="4921974786975536446" at="51,38,54,29">
         <var name="linkDeclarations" id="2559059706674894653" />
@@ -67,11 +66,11 @@
         <var name="references" id="1592627013225801575" />
       </scope>
       <scope id="1592627013225801575" at="31,0,66,0" />
-      <unit id="1592627013225801575" at="68,0,72,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints$CONCEPTS" />
-      <unit id="1592627013225801575" at="73,0,77,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints$LINKS" />
+      <unit id="1592627013225801575" at="67,0,71,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints$CONCEPTS" />
+      <unit id="1592627013225801575" at="72,0,76,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints$LINKS" />
       <unit id="24399255755617834" at="41,19,59,9" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints$1$1" />
       <unit id="24399255755617834" at="33,48,61,5" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints$1" />
-      <unit id="1592627013225801575" at="26,0,78,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints" />
+      <unit id="1592627013225801575" at="26,0,77,0" name="jetbrains.mps.lang.feedback.problem.scopes.constraints.RefOutOfScopeProblem_Constraints" />
     </file>
   </root>
 </debug-info>

@@ -24,7 +24,7 @@
       <node id="5582028874769074512" at="48,9,49,0" concept="6" />
       <node id="5582028874769074512" at="49,0,50,22" concept="5" />
       <node id="5582028874769074513" at="58,44,59,20" concept="5" />
-      <node id="5582028874769074513" at="66,63,67,57" concept="5" />
+      <node id="5582028874769074513" at="66,63,67,148" concept="5" />
       <node id="6836281137582820886" at="70,80,71,167" concept="4" />
       <node id="6836281137582820806" at="74,49,75,102" concept="5" />
       <node id="6836281137582820816" at="78,47,79,94" concept="5" />
@@ -34,12 +34,11 @@
       <node id="5582028874769074512" at="89,42,90,22" concept="5" />
       <node id="1227128029536564689" at="92,128,93,86" concept="5" />
       <node id="5582028874769074512" at="95,0,96,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="5582028874769074512" at="96,0,97,0" concept="7" trace="breakingNode_tpbdkp_a0a0a0a0a1a0a0a0d" />
-      <node id="5582028874769074512" at="99,0,100,0" concept="7" trace="ActionCallDeclaredParameter$sK" />
-      <node id="5582028874769074512" at="100,0,101,0" concept="7" trace="CallActionExpression$DP" />
-      <node id="5582028874769074512" at="101,0,102,0" concept="7" trace="ActionDataParameterDeclaration$Tg" />
-      <node id="5582028874769074512" at="105,0,106,0" concept="7" trace="declaration$M7iM" />
-      <node id="5582028874769074512" at="106,0,107,0" concept="7" trace="action$MdPi" />
+      <node id="5582028874769074512" at="98,0,99,0" concept="7" trace="ActionCallDeclaredParameter$sK" />
+      <node id="5582028874769074512" at="99,0,100,0" concept="7" trace="CallActionExpression$DP" />
+      <node id="5582028874769074512" at="100,0,101,0" concept="7" trace="ActionDataParameterDeclaration$Tg" />
+      <node id="5582028874769074512" at="104,0,105,0" concept="7" trace="declaration$M7iM" />
+      <node id="5582028874769074512" at="105,0,106,0" concept="7" trace="action$MdPi" />
       <node id="5582028874769074512" at="35,0,38,0" concept="0" trace="ActionCallDeclaredParameter_Constraints#()V" />
       <node id="5582028874769074512" at="45,0,48,9" concept="2" />
       <node id="6836281137582820804" at="74,0,77,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -60,7 +59,7 @@
       <scope id="5582028874769074512" at="35,52,36,51" />
       <scope id="5582028874769074512" at="46,55,47,71" />
       <scope id="5582028874769074513" at="58,44,59,20" />
-      <scope id="5582028874769074513" at="66,63,67,57" />
+      <scope id="5582028874769074513" at="66,63,67,148" />
       <scope id="6836281137582820805" at="74,49,75,102" />
       <scope id="6836281137582820815" at="78,47,79,94" />
       <scope id="1227128029536564688" at="92,128,93,86" />
@@ -104,27 +103,26 @@
       <scope id="5582028874769074512" at="54,0,92,0" />
       <unit id="6836281137582820804" at="73,222,77,15" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$2$1$1" />
       <unit id="6836281137582820814" at="77,28,81,15" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$2$1$2" />
-      <unit id="5582028874769074512" at="104,0,108,0" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$LINKS" />
-      <unit id="5582028874769074512" at="98,0,103,0" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$CONCEPTS" />
+      <unit id="5582028874769074512" at="103,0,107,0" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$LINKS" />
+      <unit id="5582028874769074512" at="97,0,102,0" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$CONCEPTS" />
       <unit id="5582028874769074512" at="41,15,52,5" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$1" />
       <unit id="5582028874769074513" at="64,19,85,9" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$2$1" />
       <unit id="5582028874769074513" at="56,48,87,5" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints$2" />
-      <unit id="5582028874769074512" at="34,0,109,0" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints" />
+      <unit id="5582028874769074512" at="34,0,108,0" name="jetbrains.mps.console.ideCommands.constraints.ActionCallDeclaredParameter_Constraints" />
     </file>
   </root>
   <root nodeRef="r:64807243-49b2-422a-a08f-a5df76bf508d(jetbrains.mps.console.ideCommands.constraints)/5932042262275697744">
     <file name="OfAspectOperation_old_Constraints.java">
       <node id="5932042262275697744" at="29,46,30,45" concept="9" />
       <node id="8994852683961284387" at="37,44,38,20" concept="5" />
-      <node id="8994852683961284387" at="45,63,46,57" concept="5" />
+      <node id="8994852683961284387" at="45,63,46,148" concept="5" />
       <node id="6836281137582820755" at="49,80,50,133" concept="4" />
       <node id="6836281137582820775" at="52,48,53,65" concept="5" />
       <node id="5932042262275697744" at="59,6,60,131" concept="4" />
       <node id="8994852683961284387" at="60,131,61,42" concept="1" />
       <node id="5932042262275697744" at="61,42,62,22" concept="5" />
-      <node id="5932042262275697744" at="64,0,65,0" concept="7" trace="breakingNode_z5oxnf_a0a0a0a0a1a0a0a0c" />
-      <node id="5932042262275697744" at="67,0,68,0" concept="7" trace="OfAspectOperation_old$Xe" />
-      <node id="5932042262275697744" at="71,0,72,0" concept="7" trace="requestedAspect_old$K8wG" />
+      <node id="5932042262275697744" at="66,0,67,0" concept="7" trace="OfAspectOperation_old$Xe" />
+      <node id="5932042262275697744" at="70,0,71,0" concept="7" trace="requestedAspect_old$K8wG" />
       <node id="5932042262275697744" at="29,0,32,0" concept="0" trace="OfAspectOperation_old_Constraints#()V" />
       <node id="6836281137582820773" at="52,0,55,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SModel;" />
       <node id="8994852683961284387" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -137,7 +135,7 @@
       <node id="5932042262275697744" at="33,0,64,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="5932042262275697744" at="29,46,30,45" />
       <scope id="8994852683961284387" at="37,44,38,20" />
-      <scope id="8994852683961284387" at="45,63,46,57" />
+      <scope id="8994852683961284387" at="45,63,46,148" />
       <scope id="6836281137582820774" at="52,48,53,65" />
       <scope id="5932042262275697744" at="29,0,32,0" />
       <scope id="6836281137582820773" at="52,0,55,0">
@@ -158,12 +156,12 @@
         <var name="references" id="5932042262275697744" />
       </scope>
       <scope id="5932042262275697744" at="33,0,64,0" />
-      <unit id="5932042262275697744" at="66,0,69,0" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$CONCEPTS" />
-      <unit id="5932042262275697744" at="70,0,73,0" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$LINKS" />
+      <unit id="5932042262275697744" at="65,0,68,0" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$CONCEPTS" />
+      <unit id="5932042262275697744" at="69,0,72,0" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$LINKS" />
       <unit id="6836281137582820773" at="51,77,55,13" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$1$1$1" />
       <unit id="8994852683961284387" at="43,19,57,9" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$1$1" />
       <unit id="8994852683961284387" at="35,48,59,5" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints$1" />
-      <unit id="5932042262275697744" at="28,0,74,0" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints" />
+      <unit id="5932042262275697744" at="28,0,73,0" name="jetbrains.mps.console.ideCommands.constraints.OfAspectOperation_old_Constraints" />
     </file>
   </root>
   <root nodeRef="r:64807243-49b2-422a-a08f-a5df76bf508d(jetbrains.mps.console.ideCommands.constraints)/7820875636625781792">

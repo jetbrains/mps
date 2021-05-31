@@ -17,7 +17,7 @@
     <file name="VariableReference_Constraints.java">
       <node id="4022026349915821207" at="30,42,31,41" concept="7" />
       <node id="7125334522320417171" at="38,44,39,20" concept="5" />
-      <node id="7125334522320417171" at="46,63,47,57" concept="5" />
+      <node id="7125334522320417171" at="46,63,47,151" concept="5" />
       <node id="6836281137582847357" at="50,80,51,125" concept="4" />
       <node id="6836281137582847366" at="51,125,52,56" concept="4" />
       <node id="6836281137582847374" at="53,38,54,154" concept="1" />
@@ -25,10 +25,9 @@
       <node id="4022026349915821207" at="60,6,61,131" concept="4" />
       <node id="7125334522320417171" at="61,131,62,42" concept="1" />
       <node id="4022026349915821207" at="62,42,63,22" concept="5" />
-      <node id="4022026349915821207" at="65,0,66,0" concept="6" trace="breakingNode_3k454j_a0a0a0a0a1a0a0a0c" />
-      <node id="4022026349915821207" at="68,0,69,0" concept="6" trace="VariableReference$FA" />
-      <node id="4022026349915821207" at="69,0,70,0" concept="6" trace="VariableOwner$q4" />
-      <node id="4022026349915821207" at="73,0,74,0" concept="6" trace="variable$1fXu" />
+      <node id="4022026349915821207" at="67,0,68,0" concept="6" trace="VariableReference$FA" />
+      <node id="4022026349915821207" at="68,0,69,0" concept="6" trace="VariableOwner$q4" />
+      <node id="4022026349915821207" at="72,0,73,0" concept="6" trace="variable$1fXu" />
       <node id="4022026349915821207" at="30,0,33,0" concept="0" trace="VariableReference_Constraints#()V" />
       <node id="6836281137582847372" at="52,56,55,13" concept="2" />
       <node id="7125334522320417171" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -40,7 +39,7 @@
       <node id="4022026349915821207" at="34,0,65,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="4022026349915821207" at="30,42,31,41" />
       <scope id="7125334522320417171" at="38,44,39,20" />
-      <scope id="7125334522320417171" at="46,63,47,57" />
+      <scope id="7125334522320417171" at="46,63,47,151" />
       <scope id="6836281137582847373" at="53,38,54,154" />
       <scope id="4022026349915821207" at="30,0,33,0" />
       <scope id="6836281137582847372" at="52,56,55,13">
@@ -62,11 +61,11 @@
         <var name="references" id="4022026349915821207" />
       </scope>
       <scope id="4022026349915821207" at="34,0,65,0" />
-      <unit id="4022026349915821207" at="72,0,75,0" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints$LINKS" />
-      <unit id="4022026349915821207" at="67,0,71,0" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints$CONCEPTS" />
+      <unit id="4022026349915821207" at="71,0,74,0" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints$LINKS" />
+      <unit id="4022026349915821207" at="66,0,70,0" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints$CONCEPTS" />
       <unit id="7125334522320417171" at="44,19,58,9" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints$1$1" />
       <unit id="7125334522320417171" at="36,48,60,5" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints$1" />
-      <unit id="4022026349915821207" at="29,0,76,0" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints" />
+      <unit id="4022026349915821207" at="29,0,75,0" name="jetbrains.mps.samples.lambdaCalculus.constraints.VariableReference_Constraints" />
     </file>
   </root>
 </debug-info>

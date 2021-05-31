@@ -23,12 +23,12 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.ListScope;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.Language;
@@ -84,7 +84,7 @@ public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescripto
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_pwu0qc_a0a0a0a0a1a0a0a0e;
+            return new SNodePointer("r:99749b65-b7fc-4566-b6a7-ca55328bd881(jetbrains.mps.lang.feedback.skeleton.constraints)", "6836281137582781546");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -105,7 +105,6 @@ public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescripto
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_pwu0qc_a0a0a0a0a1a0a0a0e = new SNodePointer("r:99749b65-b7fc-4566-b6a7-ca55328bd881(jetbrains.mps.lang.feedback.skeleton.constraints)", "6836281137582781546");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept FeedbackPerConceptRoot$Vm = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");

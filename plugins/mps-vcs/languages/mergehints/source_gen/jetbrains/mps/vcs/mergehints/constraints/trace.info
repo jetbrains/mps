@@ -19,7 +19,7 @@
     <file name="ConceptVCSDescriptor_Constraints.java">
       <node id="1611756961204470243" at="29,45,30,44" concept="9" />
       <node id="1611756961204470244" at="37,44,38,20" concept="5" />
-      <node id="1611756961204470244" at="45,63,46,57" concept="5" />
+      <node id="1611756961204470244" at="45,63,46,143" concept="5" />
       <node id="6836281137582781554" at="50,108,51,38" concept="5" />
       <node id="6836281137582781557" at="52,13,53,0" concept="6" />
       <node id="6836281137582781558" at="53,0,54,155" concept="4" />
@@ -31,10 +31,9 @@
       <node id="1611756961204470243" at="65,42,66,22" concept="5" />
       <node id="6836281137582781560" at="69,36,70,61" concept="5" />
       <node id="6836281137582781560" at="71,5,72,16" concept="5" />
-      <node id="1611756961204470243" at="74,0,75,0" concept="7" trace="breakingNode_mx0wvm_a0a0a0a0a1a0a0a0c" />
-      <node id="1611756961204470243" at="77,0,78,0" concept="7" trace="ConceptVCSDescriptor$rz" />
-      <node id="1611756961204470243" at="78,0,79,0" concept="7" trace="AbstractConceptDeclaration$KA" />
-      <node id="1611756961204470243" at="82,0,83,0" concept="7" trace="cncpt$ubC$" />
+      <node id="1611756961204470243" at="76,0,77,0" concept="7" trace="ConceptVCSDescriptor$rz" />
+      <node id="1611756961204470243" at="77,0,78,0" concept="7" trace="AbstractConceptDeclaration$KA" />
+      <node id="1611756961204470243" at="81,0,82,0" concept="7" trace="cncpt$ubC$" />
       <node id="1611756961204470243" at="29,0,32,0" concept="0" trace="ConceptVCSDescriptor_Constraints#()V" />
       <node id="6836281137582781548" at="49,80,52,13" concept="2" />
       <node id="6836281137582781566" at="54,155,57,13" concept="2" />
@@ -49,7 +48,7 @@
       <node id="1611756961204470243" at="33,0,68,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="1611756961204470243" at="29,45,30,44" />
       <scope id="1611756961204470244" at="37,44,38,20" />
-      <scope id="1611756961204470244" at="45,63,46,57" />
+      <scope id="1611756961204470244" at="45,63,46,143" />
       <scope id="6836281137582781553" at="50,108,51,38" />
       <scope id="6836281137582781567" at="55,36,56,38" />
       <scope id="6836281137582781560" at="69,36,70,61" />
@@ -73,29 +72,28 @@
         <var name="references" id="1611756961204470243" />
       </scope>
       <scope id="1611756961204470243" at="33,0,68,0" />
-      <unit id="1611756961204470243" at="81,0,84,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$LINKS" />
-      <unit id="1611756961204470243" at="76,0,80,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$CONCEPTS" />
+      <unit id="1611756961204470243" at="80,0,83,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$LINKS" />
+      <unit id="1611756961204470243" at="75,0,79,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$CONCEPTS" />
       <unit id="1611756961204470244" at="43,19,61,9" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$1$1" />
       <unit id="1611756961204470244" at="35,48,63,5" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints$1" />
-      <unit id="1611756961204470243" at="28,0,85,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints" />
+      <unit id="1611756961204470243" at="28,0,84,0" name="jetbrains.mps.vcs.mergehints.constraints.ConceptVCSDescriptor_Constraints" />
     </file>
   </root>
   <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660187986727">
     <file name="PropertyVCSDescriptor_Constraints.java">
       <node id="4382682660187986727" at="29,46,30,45" concept="9" />
       <node id="4382682660187986731" at="37,44,38,20" concept="5" />
-      <node id="4382682660187986731" at="45,63,46,57" concept="5" />
+      <node id="4382682660187986731" at="45,63,46,143" concept="5" />
       <node id="4382682660187991295" at="49,80,50,177" concept="4" />
       <node id="4382682660187999820" at="53,69,54,105" concept="5" />
       <node id="4382682660187986727" at="60,6,61,131" concept="4" />
       <node id="4382682660187986731" at="61,131,62,42" concept="1" />
       <node id="4382682660187986727" at="62,42,63,22" concept="5" />
-      <node id="4382682660187986727" at="65,0,66,0" concept="7" trace="breakingNode_gg5s6j_a0a0a0a0a1a0a0a0c" />
-      <node id="4382682660187986727" at="68,0,69,0" concept="7" trace="PropertyVCSDescriptor$sJ" />
-      <node id="4382682660187986727" at="69,0,70,0" concept="7" trace="ConceptVCSDescriptor$rz" />
-      <node id="4382682660187986727" at="73,0,74,0" concept="7" trace="prop$j8WS" />
-      <node id="4382682660187986727" at="74,0,75,0" concept="7" trace="cncpt$ubC$" />
-      <node id="4382682660187986727" at="75,0,76,0" concept="7" trace="propertyDeclaration$YUgg" />
+      <node id="4382682660187986727" at="67,0,68,0" concept="7" trace="PropertyVCSDescriptor$sJ" />
+      <node id="4382682660187986727" at="68,0,69,0" concept="7" trace="ConceptVCSDescriptor$rz" />
+      <node id="4382682660187986727" at="72,0,73,0" concept="7" trace="prop$j8WS" />
+      <node id="4382682660187986727" at="73,0,74,0" concept="7" trace="cncpt$ubC$" />
+      <node id="4382682660187986727" at="74,0,75,0" concept="7" trace="propertyDeclaration$YUgg" />
       <node id="4382682660187986727" at="29,0,32,0" concept="0" trace="PropertyVCSDescriptor_Constraints#()V" />
       <node id="4382682660187986731" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="4382682660187986731" at="44,0,48,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -108,7 +106,7 @@
       <node id="4382682660187986727" at="33,0,65,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="4382682660187986727" at="29,46,30,45" />
       <scope id="4382682660187986731" at="37,44,38,20" />
-      <scope id="4382682660187986731" at="45,63,46,57" />
+      <scope id="4382682660187986731" at="45,63,46,143" />
       <scope id="4382682660187999074" at="53,69,54,105" />
       <scope id="4382682660187986727" at="29,0,32,0" />
       <scope id="4382682660187986731" at="36,0,40,0" />
@@ -129,30 +127,29 @@
         <var name="references" id="4382682660187986727" />
       </scope>
       <scope id="4382682660187986727" at="33,0,65,0" />
-      <unit id="4382682660187986727" at="67,0,71,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$CONCEPTS" />
+      <unit id="4382682660187986727" at="66,0,70,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$CONCEPTS" />
       <unit id="4382682660187999050" at="51,23,56,13" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$1$1$1" />
-      <unit id="4382682660187986727" at="72,0,77,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$LINKS" />
+      <unit id="4382682660187986727" at="71,0,76,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$LINKS" />
       <unit id="4382682660187986731" at="43,19,58,9" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$1$1" />
       <unit id="4382682660187986731" at="35,48,60,5" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints$1" />
-      <unit id="4382682660187986727" at="28,0,78,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints" />
+      <unit id="4382682660187986727" at="28,0,77,0" name="jetbrains.mps.vcs.mergehints.constraints.PropertyVCSDescriptor_Constraints" />
     </file>
   </root>
   <root nodeRef="r:db2ce397-cf4f-423c-9613-b88195c6529a(jetbrains.mps.vcs.mergehints.constraints)/4382682660188133838">
     <file name="LinkVCSDescriptor_Constraints.java">
       <node id="4382682660188133838" at="29,42,30,41" concept="9" />
       <node id="4382682660188133842" at="37,44,38,20" concept="5" />
-      <node id="4382682660188133842" at="45,63,46,57" concept="5" />
+      <node id="4382682660188133842" at="45,63,46,143" concept="5" />
       <node id="4382682660188134037" at="49,80,50,177" concept="4" />
       <node id="4382682660188134060" at="53,69,54,105" concept="5" />
       <node id="4382682660188133838" at="60,6,61,131" concept="4" />
       <node id="4382682660188133842" at="61,131,62,42" concept="1" />
       <node id="4382682660188133838" at="62,42,63,22" concept="5" />
-      <node id="4382682660188133838" at="65,0,66,0" concept="7" trace="breakingNode_6jzkq1_a0a0a0a0a1a0a0a0c" />
-      <node id="4382682660188133838" at="68,0,69,0" concept="7" trace="LinkVCSDescriptor$hA" />
-      <node id="4382682660188133838" at="69,0,70,0" concept="7" trace="ConceptVCSDescriptor$rz" />
-      <node id="4382682660188133838" at="73,0,74,0" concept="7" trace="lnk$j8LJ" />
-      <node id="4382682660188133838" at="74,0,75,0" concept="7" trace="cncpt$ubC$" />
-      <node id="4382682660188133838" at="75,0,76,0" concept="7" trace="linkDeclaration$YU1f" />
+      <node id="4382682660188133838" at="67,0,68,0" concept="7" trace="LinkVCSDescriptor$hA" />
+      <node id="4382682660188133838" at="68,0,69,0" concept="7" trace="ConceptVCSDescriptor$rz" />
+      <node id="4382682660188133838" at="72,0,73,0" concept="7" trace="lnk$j8LJ" />
+      <node id="4382682660188133838" at="73,0,74,0" concept="7" trace="cncpt$ubC$" />
+      <node id="4382682660188133838" at="74,0,75,0" concept="7" trace="linkDeclaration$YU1f" />
       <node id="4382682660188133838" at="29,0,32,0" concept="0" trace="LinkVCSDescriptor_Constraints#()V" />
       <node id="4382682660188133842" at="36,0,40,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="4382682660188133842" at="44,0,48,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -165,7 +162,7 @@
       <node id="4382682660188133838" at="33,0,65,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="4382682660188133838" at="29,42,30,41" />
       <scope id="4382682660188133842" at="37,44,38,20" />
-      <scope id="4382682660188133842" at="45,63,46,57" />
+      <scope id="4382682660188133842" at="45,63,46,143" />
       <scope id="4382682660188134059" at="53,69,54,105" />
       <scope id="4382682660188133838" at="29,0,32,0" />
       <scope id="4382682660188133842" at="36,0,40,0" />
@@ -186,12 +183,12 @@
         <var name="references" id="4382682660188133838" />
       </scope>
       <scope id="4382682660188133838" at="33,0,65,0" />
-      <unit id="4382682660188133838" at="67,0,71,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$CONCEPTS" />
+      <unit id="4382682660188133838" at="66,0,70,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$CONCEPTS" />
       <unit id="4382682660188134050" at="51,23,56,13" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$1$1$1" />
-      <unit id="4382682660188133838" at="72,0,77,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$LINKS" />
+      <unit id="4382682660188133838" at="71,0,76,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$LINKS" />
       <unit id="4382682660188133842" at="43,19,58,9" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$1$1" />
       <unit id="4382682660188133842" at="35,48,60,5" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints$1" />
-      <unit id="4382682660188133838" at="28,0,78,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints" />
+      <unit id="4382682660188133838" at="28,0,77,0" name="jetbrains.mps.vcs.mergehints.constraints.LinkVCSDescriptor_Constraints" />
     </file>
   </root>
 </debug-info>
