@@ -4,20 +4,80 @@ package jetbrains.mps.editor.runtime;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfoFilterDecorator;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SModel;
 
+/**
+ * Facility to resolve a (broken) reference in an editor by applying substitute action
+ */
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/5447047924421797846", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class ReferenceResolveInEditor {
   private final EditorComponent myEditorComponent;
+  private EditorCell myLastCell;
 
   public ReferenceResolveInEditor(@NotNull EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
+  }
+
+  public boolean substitute(@NotNull SReference referenceToSubstitute) {
+    return substitute(referenceToSubstitute.getSourceNode(), referenceToSubstitute.getLink());
+  }
+
+  public boolean substitute(@Nullable SNode sourceNode, @Nullable SReferenceLink referenceToSubstitute) {
+    myLastCell = null;
+    if (sourceNode == null || referenceToSubstitute == null) {
+      return false;
+    }
+    EditorCell cell = myEditorComponent.findNodeCellWithRole(sourceNode, referenceToSubstitute);
+    if (cell == null) {
+      return false;
+    }
+    final String resolveInfo = resolveInfo(sourceNode, referenceToSubstitute);
+    if (resolveInfo == null) {
+      return false;
+    }
+    return substitute(cell, resolveInfo);
+  }
+
+  private static String resolveInfo(SNode sourceNode, SReferenceLink refLink) {
+    // based on ReferenceResolverUtil.getResolveInfo() code.
+    SReference ref = (SReference) sourceNode.getReference(refLink);
+    String ri = SLinkOperations.getResolveInfo(ref);
+    if (ri != null) {
+      return ri;
+    }
+    // No idea why we resort to scopes if our goal is to fix broken reference
+    SModule module = check_m4k4rt_a0f0j(SNodeOperations.getModel(sourceNode));
+    SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
+    if (target != null && module != null) {
+      Scope scope = ModelConstraints.getScope(ref);
+      ri = scope.getReferenceText(sourceNode, target);
+    }
+    return ri;
+
+  }
+
+  /**
+   * Last cell we've executed 'substitute' action for, {@code null} if no substitute action was invoked.
+   */
+  @Nullable
+  public EditorCell lastSubstitutedCell() {
+    return myLastCell;
   }
 
   public boolean substitute(@NotNull EditorCell editorCell, String pattern) {
@@ -32,20 +92,7 @@ public class ReferenceResolveInEditor {
       return false;
     }
     applicableSubstituteAction.substitute(editorContext, pattern);
-    return true;
-  }
-
-  public static boolean substituteCell(EditorCell editorCell, String pattern, EditorContext editorContext) {
-    SubstituteInfo substituteInfo = editorCell.getSubstituteInfo();
-    if (substituteInfo == null) {
-      return false;
-    }
-    substituteInfo = NodeSubstituteInfoFilterDecorator.createSubstituteInfoWithPatternMatchingFilter(substituteInfo, editorContext.getRepository());
-    final SubstituteAction applicableSubstituteAction = ReferenceResolveInEditor.getApplicableSubstituteAction(substituteInfo, pattern);
-    if (applicableSubstituteAction == null) {
-      return false;
-    }
-    applicableSubstituteAction.substitute(editorContext, pattern);
+    myLastCell = editorCell;
     return true;
   }
 
@@ -61,5 +108,11 @@ public class ReferenceResolveInEditor {
       }
     }
     return (result != null && result.canSubstituteStrictly(resolveInfo) ? result : null);
+  }
+  private static SModule check_m4k4rt_a0f0j(SModel checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModule();
+    }
+    return null;
   }
 }

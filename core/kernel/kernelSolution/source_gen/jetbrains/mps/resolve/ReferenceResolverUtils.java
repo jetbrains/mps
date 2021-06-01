@@ -17,6 +17,10 @@ import jetbrains.mps.smodel.constraints.ModelConstraints;
 
 @GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/5447047924422371423", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ReferenceResolverUtils {
+  /**
+   * In fact, just a check if there are no unknown model imports
+   * so that if a reference is broken, we know for sure it's not due to missing model
+   */
   public static boolean canExecuteImmediately(SModel model, SRepository repository) {
     if (repository == null) {
       return false;
@@ -28,6 +32,11 @@ public class ReferenceResolverUtils {
     }
     return true;
   }
+  /**
+   * 
+   * @deprecated Use of SRefenence (has source node info) along with distinct sourceNode is confusing
+   */
+  @Deprecated(forRemoval = true, since = "2021.2")
   public static String getResolveInfo(SReference reference, SNode sourceNode) {
     String result = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
     if (result != null) {

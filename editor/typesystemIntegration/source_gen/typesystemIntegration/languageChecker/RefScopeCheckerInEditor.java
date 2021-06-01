@@ -33,8 +33,6 @@ import java.awt.Component;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.resolve.ReferenceResolverUtils;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 
 @GeneratedClass(node = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)/2855655749838535756", model = "r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)")
@@ -158,22 +156,11 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
     }
     @Override
     public void execute(EditorContext editorContext) {
+      // XXX this is basically what ResolverComponent.resolve() does, except for EditorComponent re-use
       if (ResolverComponent.getInstance().resolveScopesOnly(myReference, editorContext.getRepository())) {
         return;
       }
-      SNode sourceNode = myReference.getSourceNode();
-      if (sourceNode == null) {
-        return;
-      }
-      final String resolveInfo = ReferenceResolverUtils.getResolveInfo(myReference, sourceNode);
-      if (resolveInfo == null) {
-        return;
-      }
-      EditorCell cellWithRole = editorContext.getEditorComponent().findNodeCellWithRole(sourceNode, myReference.getLink());
-      if (cellWithRole == null) {
-        return;
-      }
-      new ReferenceResolveInEditor(editorContext.getEditorComponent()).substitute(cellWithRole, resolveInfo);
+      new ReferenceResolveInEditor(editorContext.getEditorComponent()).substitute(myReference);
     }
   }
 }

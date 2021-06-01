@@ -41,9 +41,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -209,7 +214,12 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC" />
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
@@ -1298,6 +1308,18 @@
       </node>
       <node concept="10P_77" id="4InNjD1Em$T" role="3clF45" />
       <node concept="3Tm1VV" id="4InNjD1Eny2" role="1B3o_S" />
+      <node concept="P$JXv" id="4UZLrJIegWn" role="lGtFl">
+        <node concept="TZ5HA" id="4UZLrJIegWo" role="TZ5H$">
+          <node concept="1dT_AC" id="4UZLrJIegWp" role="1dT_Ay">
+            <property role="1dT_AB" value="In fact, just a check if there are no unknown model imports" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4UZLrJIeh3W" role="TZ5H$">
+          <node concept="1dT_AC" id="4UZLrJIeh3X" role="1dT_Ay">
+            <property role="1dT_AB" value="so that if a reference is broken, we know for sure it's not due to missing model" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2YIFZL" id="4InNjD1Gkh4" role="jymVt">
       <property role="TrG5h" value="getResolveInfo" />
@@ -1446,6 +1468,30 @@
       </node>
       <node concept="17QB3L" id="4iZD$dOeqvk" role="3clF45" />
       <node concept="3Tm1VV" id="4InNjD1Gk8m" role="1B3o_S" />
+      <node concept="P$JXv" id="4UZLrJIetsL" role="lGtFl">
+        <node concept="TZ5HI" id="4UZLrJIetsM" role="3nqlJM">
+          <node concept="TZ5HA" id="4UZLrJIetsN" role="3HnX3l">
+            <node concept="1dT_AC" id="4UZLrJIetAd" role="1dT_Ay">
+              <property role="1dT_AB" value="Use of SRefenence (has source node info) along with distinct sourceNode is confusing" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="4UZLrJIetsO" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="4UZLrJIetyQ" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="4UZLrJIetzJ" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="4UZLrJIetzY" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="4UZLrJIet_m" role="2B70Vg">
+            <property role="Xl_RC" value="2021.2" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="4InNjD1Imxw" role="1B3o_S" />
   </node>

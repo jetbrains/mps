@@ -87,9 +87,7 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.checking.EditorContextQuickfix" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.project.ModelImporter" />
-    <classNode dependClassName="jetbrains.mps.resolve.ReferenceResolverUtils" />
     <classNode dependClassName="jetbrains.mps.resolve.ResolverComponent" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelInternal" />
     <classNode dependClassName="jetbrains.mps.smodel.constraints.ModelConstraints" />

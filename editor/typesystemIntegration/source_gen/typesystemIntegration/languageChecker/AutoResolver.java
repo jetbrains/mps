@@ -44,7 +44,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 import jetbrains.mps.resolve.ResolverComponent;
-import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.project.dependency.VisibilityUtil;
@@ -52,6 +51,7 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.typesystem.checking.TypesEditorChecker;
@@ -161,30 +161,20 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
             for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
               boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorContext.getRepository());
 
+              final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
               if (resolvedByScope) {
                 doRecheckEditor = true;
-              }
-
-              SNode sourceNode = brokenRef.getSourceNode();
-              if (sourceNode == null) {
-                continue;
-              }
-              jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole = editorComponent.findNodeCellWithRole(sourceNode, brokenRef.getLink());
-              if (!(resolvedByScope)) {
-                if (cellWithRole == null) {
-                  continue;
-                }
-                String resolveInfo = ReferenceResolverUtils.getResolveInfo(brokenRef, sourceNode);
-                if (resolveInfo == null) {
-                  continue;
-                }
-
-                if (refResolve.substitute(cellWithRole, resolveInfo)) {
+                cellWithRole = editorComponent.findNodeCellWithRole(brokenRef.getSourceNode(), brokenRef.getLink());
+              } else {
+                if (refResolve.substitute(brokenRef)) {
                   doRecheckEditor = true;
                 }
+                cellWithRole = refResolve.lastSubstitutedCell();
               }
-              // excluding reference cell which was substituted from the set of error cells
-              SetSequence.fromSet(errorCells).removeElement(cellWithRole);
+              if (cellWithRole != null) {
+                // excluding reference cell which was substituted from the set of error cells
+                SetSequence.fromSet(errorCells).removeElement(cellWithRole);
+              }
             }
 
             // Trying to substitute all other error cells by using substitute actions.
