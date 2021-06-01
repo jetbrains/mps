@@ -19,6 +19,7 @@
     <classNode dependClassName="jetbrains.mps.checkers.ICheckingPostprocessor" />
     <classNode dependClassName="jetbrains.mps.checkers.LanguageErrorsComponent" />
     <classNode dependClassName="jetbrains.mps.checkers.ModuleImportQuickFix" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils" />
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.TargetModuleNotImportedReportItem" />
@@ -62,21 +63,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.Consumer" />
     <classNode dependClassName="typesystemIntegration.languageChecker.AutoResolver.BadReferences" />
-    <classNode dependClassName="typesystemIntegration.languageChecker.EditorBasedReferenceResolverUtils" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.checking.BaseEventProcessingEditorChecker" />
-  </dependency>
-  <dependency className="typesystemIntegration.languageChecker.EditorBasedReferenceResolverUtils">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfoFilterDecorator" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorComponent" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteAction" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteInfo" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="typesystemIntegration.languageChecker.RefScopeCheckerInEditor">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
@@ -91,6 +78,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.components.ComponentHost" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils" />
     <classNode dependClassName="jetbrains.mps.errors.item.EditorQuickFix" />
     <classNode dependClassName="jetbrains.mps.errors.item.FlavouredItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeFeatureFlavouredItem" />
@@ -115,7 +103,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
-    <classNode dependClassName="typesystemIntegration.languageChecker.EditorBasedReferenceResolverUtils" />
     <classNode extendsClassName="jetbrains.mps.checkers.RefScopeChecker" />
   </dependency>
 </dependenciesRoot>

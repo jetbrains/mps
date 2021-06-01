@@ -12,7 +12,6 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="wexy" ref="r:74808b88-3d1c-4dc8-8642-164154f3f3a7(typesystemIntegration.languageChecker)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
@@ -375,9 +374,9 @@
               </node>
             </node>
             <node concept="3cpWs6" id="4InNjD1HHCg" role="3cqZAp">
-              <node concept="2YIFZM" id="4eh1_gMtJZj" role="3cqZAk">
-                <ref role="37wK5l" to="wexy:77jjuPIbobs" resolve="substituteCell" />
-                <ref role="1Pybhc" to="wexy:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
+              <node concept="2YIFZM" id="42tY9bPt$mC" role="3cqZAk">
+                <ref role="37wK5l" to="7a0s:77jjuPIbobs" resolve="substituteCell" />
+                <ref role="1Pybhc" to="7a0s:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
                 <node concept="37vLTw" id="4eh1_gMtKha" role="37wK5m">
                   <ref role="3cqZAo" node="4eh1_gMtIm8" resolve="cellWithRole" />
                 </node>

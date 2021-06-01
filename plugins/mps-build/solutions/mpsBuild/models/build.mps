@@ -7140,6 +7140,11 @@
             <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
           </node>
         </node>
+        <node concept="1SiIV0" id="7CvGqh5zq_u" role="3bR37C">
+          <node concept="3bR9La" id="7CvGqh5zrfD" role="1SiIV1">
+            <ref role="3bR37D" node="3MI1gu0QouH" resolve="jetbrains.mps.editor.runtime" />
+          </node>
+        </node>
         <node concept="398BVA" id="11P3qAhFbty" role="3LF7KH">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
           <node concept="2Ry0Ak" id="11P3qAhFbtz" role="iGT6I">

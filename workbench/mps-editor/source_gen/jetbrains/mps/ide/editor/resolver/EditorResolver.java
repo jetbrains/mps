@@ -13,7 +13,7 @@ import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import typesystemIntegration.languageChecker.EditorBasedReferenceResolverUtils;
+import jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils;
 
 @GeneratedClass(node = "r:e83eb82a-b3b8-4003-84af-b40cb742ea94(jetbrains.mps.ide.editor.resolver)/1802459475176571473", model = "r:e83eb82a-b3b8-4003-84af-b40cb742ea94(jetbrains.mps.ide.editor.resolver)")
 public class EditorResolver implements IResolver {

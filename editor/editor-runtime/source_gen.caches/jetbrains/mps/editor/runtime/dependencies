@@ -18,6 +18,16 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultEditorMessage" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.EditorMessageIconRenderer" />
   </dependency>
+  <dependency className="jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfoFilterDecorator" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.SubstituteInfo" />
+  </dependency>
   <dependency className="jetbrains.mps.editor.runtime.EditorCell_Empty">
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.awt.event.KeyEvent" />

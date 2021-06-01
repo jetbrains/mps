@@ -44,6 +44,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.resolve.ReferenceResolverUtils;
+import jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.project.dependency.VisibilityUtil;
