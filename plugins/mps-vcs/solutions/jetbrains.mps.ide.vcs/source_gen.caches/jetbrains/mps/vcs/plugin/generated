@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="ey31tqwqhvzbb4g8qtdlfrzidtedzff">
+<product version="3" modelHash="7nveg44yexjm5u22jj0oh2k4kjgqc30">
   <files names="AddModuleToVcs_Action.java:CompareTransientModels_Action.java:Default_KeymapChanges.java:IgnoreModuleInVcs_Action.java:MakeFromChangesView_ActionGroup.java:MakeOrRebuildModelsFromChangeList_Action.java:ModuleVcsActions_ActionGroup.java:ReRunMergeFromBackup_Action.java:ShowDiffWithCurrRev_ActionGroup.java:ShowDifferencesWithModelOnDisk_Action.java:ShowDiffererenceWithCurrentRevision_Action.java:ShowNodeDifference_Action.java:TestMergeAction_Action.java:VCSModelActions_ActionGroup.java:Vcs_ApplicationPlugin.java:plugin.xml" />
 </product>
 
