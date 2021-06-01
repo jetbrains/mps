@@ -1401,6 +1401,28 @@
                                       </node>
                                     </node>
                                   </node>
+                                  <node concept="3clFbH" id="7Eb$$nH_0za" role="3cqZAp" />
+                                  <node concept="3cpWs8" id="7Eb$$nH_lqF" role="3cqZAp">
+                                    <node concept="3cpWsn" id="7Eb$$nH_lqG" role="3cpWs9">
+                                      <property role="TrG5h" value="refResolve" />
+                                      <node concept="3uibUv" id="7Eb$$nH_k2N" role="1tU5fm">
+                                        <ref role="3uigEE" to="7a0s:4InNjD1Gavm" resolve="ReferenceResolveInEditor" />
+                                      </node>
+                                      <node concept="2ShNRf" id="7Eb$$nH_lqH" role="33vP2m">
+                                        <node concept="1pGfFk" id="7Eb$$nH_lqI" role="2ShVmc">
+                                          <ref role="37wK5l" to="7a0s:7Eb$$nH$_gR" resolve="ReferenceResolveInEditor" />
+                                          <node concept="2OqwBi" id="7Eb$$nHAlih" role="37wK5m">
+                                            <node concept="37vLTw" id="7Eb$$nHAhJS" role="2Oq$k0">
+                                              <ref role="3cqZAo" node="77jjuPIalUF" resolve="editorContext" />
+                                            </node>
+                                            <node concept="liA8E" id="7Eb$$nHApdf" role="2OqNvi">
+                                              <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
                                   <node concept="3clFbH" id="52L_vEWBa1a" role="3cqZAp" />
                                   <node concept="3SKdUt" id="5za6mIwpIV" role="3cqZAp">
                                     <node concept="1PaTwC" id="ATZLwXoa9F" role="1aUNEU">
@@ -1685,17 +1707,18 @@
                                                 </node>
                                               </node>
                                             </node>
-                                            <node concept="2YIFZM" id="42tY9bPt$mD" role="3clFbw">
-                                              <ref role="37wK5l" to="7a0s:77jjuPIbobs" resolve="substituteCell" />
-                                              <ref role="1Pybhc" to="7a0s:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
-                                              <node concept="37vLTw" id="77jjuPIclBz" role="37wK5m">
-                                                <ref role="3cqZAo" node="77jjuPI7klx" resolve="cellWithRole" />
+                                            <node concept="2OqwBi" id="7Eb$$nH_SUW" role="3clFbw">
+                                              <node concept="37vLTw" id="7Eb$$nH_PJV" role="2Oq$k0">
+                                                <ref role="3cqZAo" node="7Eb$$nH_lqG" resolve="refResolve" />
                                               </node>
-                                              <node concept="37vLTw" id="77jjuPIclF2" role="37wK5m">
-                                                <ref role="3cqZAo" node="77jjuPI7CJ9" resolve="resolveInfo" />
-                                              </node>
-                                              <node concept="37vLTw" id="77jjuPIcmbl" role="37wK5m">
-                                                <ref role="3cqZAo" node="77jjuPIalUF" resolve="editorContext" />
+                                              <node concept="liA8E" id="7Eb$$nHA4ji" role="2OqNvi">
+                                                <ref role="37wK5l" to="7a0s:7Eb$$nH$BqS" resolve="substitute" />
+                                                <node concept="37vLTw" id="77jjuPIclBz" role="37wK5m">
+                                                  <ref role="3cqZAo" node="77jjuPI7klx" resolve="cellWithRole" />
+                                                </node>
+                                                <node concept="37vLTw" id="77jjuPIclF2" role="37wK5m">
+                                                  <ref role="3cqZAo" node="77jjuPI7CJ9" resolve="resolveInfo" />
+                                                </node>
                                               </node>
                                             </node>
                                           </node>
@@ -1876,17 +1899,18 @@
                                             </node>
                                           </node>
                                         </node>
-                                        <node concept="2YIFZM" id="42tY9bPt$mE" role="3clFbw">
-                                          <ref role="37wK5l" to="7a0s:77jjuPIbobs" resolve="substituteCell" />
-                                          <ref role="1Pybhc" to="7a0s:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
-                                          <node concept="37vLTw" id="77jjuPIcpY2" role="37wK5m">
-                                            <ref role="3cqZAo" node="6DlBjfYx08M" resolve="labelErrorCell" />
+                                        <node concept="2OqwBi" id="7Eb$$nHAzEt" role="3clFbw">
+                                          <node concept="37vLTw" id="7Eb$$nHAxuK" role="2Oq$k0">
+                                            <ref role="3cqZAo" node="7Eb$$nH_lqG" resolve="refResolve" />
                                           </node>
-                                          <node concept="37vLTw" id="77jjuPIcq19" role="37wK5m">
-                                            <ref role="3cqZAo" node="6DlBjfYx6nC" resolve="errorText" />
-                                          </node>
-                                          <node concept="37vLTw" id="77jjuPIcq51" role="37wK5m">
-                                            <ref role="3cqZAo" node="77jjuPIalUF" resolve="editorContext" />
+                                          <node concept="liA8E" id="7Eb$$nHAAXV" role="2OqNvi">
+                                            <ref role="37wK5l" to="7a0s:7Eb$$nH$BqS" resolve="substitute" />
+                                            <node concept="37vLTw" id="77jjuPIcpY2" role="37wK5m">
+                                              <ref role="3cqZAo" node="6DlBjfYx08M" resolve="labelErrorCell" />
+                                            </node>
+                                            <node concept="37vLTw" id="77jjuPIcq19" role="37wK5m">
+                                              <ref role="3cqZAo" node="6DlBjfYx6nC" resolve="errorText" />
+                                            </node>
                                           </node>
                                         </node>
                                       </node>
@@ -3633,7 +3657,7 @@
                 <property role="3oM_SC" value="be" />
               </node>
               <node concept="3oM_SD" id="ATZLwXoaaY" role="1PaTwD">
-                <property role="3oM_SC" value="exucuted" />
+                <property role="3oM_SC" value="executed" />
               </node>
               <node concept="3oM_SD" id="ATZLwXoaaZ" role="1PaTwD">
                 <property role="3oM_SC" value="only" />
@@ -3828,18 +3852,29 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="4InNjD1HNfx" role="3cqZAp">
-            <node concept="2YIFZM" id="42tY9bPt$mF" role="3clFbG">
-              <ref role="37wK5l" to="7a0s:77jjuPIbobs" resolve="substituteCell" />
-              <ref role="1Pybhc" to="7a0s:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
-              <node concept="37vLTw" id="4eh1_gMu0m2" role="37wK5m">
-                <ref role="3cqZAo" node="4eh1_gMtY8L" resolve="cellWithRole" />
+          <node concept="3clFbF" id="7Eb$$nHAKQq" role="3cqZAp">
+            <node concept="2OqwBi" id="7Eb$$nHASRw" role="3clFbG">
+              <node concept="2ShNRf" id="7Eb$$nHAKQm" role="2Oq$k0">
+                <node concept="1pGfFk" id="7Eb$$nHAN0L" role="2ShVmc">
+                  <ref role="37wK5l" to="7a0s:7Eb$$nH$_gR" resolve="ReferenceResolveInEditor" />
+                  <node concept="2OqwBi" id="7Eb$$nHAPY3" role="37wK5m">
+                    <node concept="37vLTw" id="7Eb$$nHAOAU" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1$3BPv3W07T" resolve="editorContext" />
+                    </node>
+                    <node concept="liA8E" id="7Eb$$nHAR_0" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                    </node>
+                  </node>
+                </node>
               </node>
-              <node concept="37vLTw" id="4eh1_gMtZwx" role="37wK5m">
-                <ref role="3cqZAo" node="1$3BPv3VZvH" resolve="resolveInfo" />
-              </node>
-              <node concept="37vLTw" id="4eh1_gMu0_J" role="37wK5m">
-                <ref role="3cqZAo" node="1$3BPv3W07T" resolve="editorContext" />
+              <node concept="liA8E" id="7Eb$$nHAUce" role="2OqNvi">
+                <ref role="37wK5l" to="7a0s:7Eb$$nH$BqS" resolve="substitute" />
+                <node concept="37vLTw" id="4eh1_gMu0m2" role="37wK5m">
+                  <ref role="3cqZAo" node="4eh1_gMtY8L" resolve="cellWithRole" />
+                </node>
+                <node concept="37vLTw" id="4eh1_gMtZwx" role="37wK5m">
+                  <ref role="3cqZAo" node="1$3BPv3VZvH" resolve="resolveInfo" />
+                </node>
               </node>
             </node>
           </node>

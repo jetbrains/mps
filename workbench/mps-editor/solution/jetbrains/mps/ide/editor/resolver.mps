@@ -374,21 +374,22 @@
               </node>
             </node>
             <node concept="3cpWs6" id="4InNjD1HHCg" role="3cqZAp">
-              <node concept="2YIFZM" id="42tY9bPt$mC" role="3cqZAk">
-                <ref role="37wK5l" to="7a0s:77jjuPIbobs" resolve="substituteCell" />
-                <ref role="1Pybhc" to="7a0s:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
-                <node concept="37vLTw" id="4eh1_gMtKha" role="37wK5m">
-                  <ref role="3cqZAo" node="4eh1_gMtIm8" resolve="cellWithRole" />
-                </node>
-                <node concept="37vLTw" id="4eh1_gMtJZm" role="37wK5m">
-                  <ref role="3cqZAo" node="1$3BPv3VZvH" resolve="resolveInfo" />
-                </node>
-                <node concept="2OqwBi" id="4eh1_gMtLxA" role="37wK5m">
-                  <node concept="37vLTw" id="4eh1_gMtKLk" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
+              <node concept="2OqwBi" id="7Eb$$nH$SEy" role="3cqZAk">
+                <node concept="2ShNRf" id="7Eb$$nH$Dgw" role="2Oq$k0">
+                  <node concept="1pGfFk" id="7Eb$$nH$S5G" role="2ShVmc">
+                    <ref role="37wK5l" to="7a0s:7Eb$$nH$_gR" resolve="ReferenceResolveInEditor" />
+                    <node concept="37vLTw" id="7Eb$$nH$Sj8" role="37wK5m">
+                      <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
+                    </node>
                   </node>
-                  <node concept="liA8E" id="4eh1_gMtMAu" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
+                </node>
+                <node concept="liA8E" id="7Eb$$nH$T3X" role="2OqNvi">
+                  <ref role="37wK5l" to="7a0s:7Eb$$nH$BqS" resolve="substitute" />
+                  <node concept="37vLTw" id="7Eb$$nH$U6o" role="37wK5m">
+                    <ref role="3cqZAo" node="4eh1_gMtIm8" resolve="cellWithRole" />
+                  </node>
+                  <node concept="37vLTw" id="7Eb$$nH$ULx" role="37wK5m">
+                    <ref role="3cqZAo" node="1$3BPv3VZvH" resolve="resolveInfo" />
                   </node>
                 </node>
               </node>

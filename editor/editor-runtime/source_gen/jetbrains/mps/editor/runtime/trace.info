@@ -295,51 +295,80 @@
     </file>
   </root>
   <root nodeRef="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/5447047924421797846">
-    <file name="EditorBasedReferenceResolverUtils.java">
-      <node id="8201985028522911949" at="15,108,16,67" concept="10" />
-      <node id="8201985028522915764" at="17,33,18,19" concept="11" />
-      <node id="492314440885220963" at="19,5,20,148" concept="5" />
-      <node id="8201985028522911961" at="20,148,21,145" concept="10" />
-      <node id="8201985028522924139" at="22,45,23,19" concept="11" />
-      <node id="8201985028522911973" at="24,5,25,66" concept="5" />
-      <node id="8201985028522924241" at="25,66,26,16" concept="11" />
-      <node id="5447047924422106481" at="29,116,30,35" concept="10" />
-      <node id="5291886463459989068" at="30,35,31,39" concept="5" />
-      <node id="5447047924422106504" at="34,29,35,22" concept="11" />
-      <node id="5447047924422106506" at="36,9,37,28" concept="5" />
-      <node id="5447047924422106510" at="39,5,40,89" concept="11" />
-      <node id="8201985028522911955" at="16,67,19,5" concept="8" />
-      <node id="8201985028522911967" at="21,145,24,5" concept="8" />
-      <node id="5447047924422106499" at="33,50,36,9" concept="8" />
-      <node id="5447047924422106493" at="32,118,38,7" concept="8" />
-      <node id="5447047924422106485" at="31,39,39,5" concept="7" />
-      <node id="8201985028522869468" at="15,0,28,0" concept="15" trace="substituteCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljava/lang/String;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="5447047924422108209" at="29,0,42,0" concept="15" trace="getApplicableSubstituteAction#(Ljetbrains/mps/openapi/editor/cells/SubstituteInfo;Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/SubstituteAction;" />
-      <scope id="8201985028522911956" at="17,33,18,19" />
-      <scope id="8201985028522911968" at="22,45,23,19" />
-      <scope id="5447047924422106503" at="34,29,35,22" />
-      <scope id="5447047924422106498" at="33,50,37,28" />
-      <scope id="5447047924422106492" at="32,118,38,7" />
-      <scope id="5447047924422106485" at="31,39,39,5">
+    <file name="ReferenceResolveInEditor.java">
+      <node id="8830312323426185002" at="17,0,18,0" concept="6" trace="myEditorComponent" />
+      <node id="8830312323426185006" at="19,77,20,40" concept="5" />
+      <node id="8830312323426187450" at="23,77,24,67" concept="10" />
+      <node id="8830312323426187458" at="25,33,26,19" concept="11" />
+      <node id="8830312323426191006" at="27,5,28,71" concept="10" />
+      <node id="8830312323426188148" at="28,71,29,148" concept="5" />
+      <node id="8830312323426191306" at="29,148,30,136" concept="10" />
+      <node id="8830312323426191314" at="31,45,32,19" concept="11" />
+      <node id="8830312323426191319" at="33,5,34,66" concept="5" />
+      <node id="8830312323426191325" at="34,66,35,16" concept="11" />
+      <node id="8201985028522911949" at="38,108,39,67" concept="10" />
+      <node id="8201985028522915764" at="40,33,41,19" concept="11" />
+      <node id="492314440885220963" at="42,5,43,148" concept="5" />
+      <node id="8201985028522911961" at="43,148,44,136" concept="10" />
+      <node id="8201985028522924139" at="45,45,46,19" concept="11" />
+      <node id="8201985028522911973" at="47,5,48,66" concept="5" />
+      <node id="8201985028522924241" at="48,66,49,16" concept="11" />
+      <node id="5447047924422106481" at="52,116,53,35" concept="10" />
+      <node id="5291886463459989068" at="53,35,54,39" concept="5" />
+      <node id="5447047924422106504" at="57,29,58,22" concept="11" />
+      <node id="5447047924422106506" at="59,9,60,28" concept="5" />
+      <node id="5447047924422106510" at="62,5,63,89" concept="11" />
+      <node id="8830312323426178103" at="19,0,22,0" concept="3" trace="ReferenceResolveInEditor#(Ljetbrains/mps/openapi/editor/EditorComponent;)V" />
+      <node id="8830312323426187456" at="24,67,27,5" concept="8" />
+      <node id="8830312323426191312" at="30,136,33,5" concept="8" />
+      <node id="8201985028522911955" at="39,67,42,5" concept="8" />
+      <node id="8201985028522911967" at="44,136,47,5" concept="8" />
+      <node id="5447047924422106499" at="56,50,59,9" concept="8" />
+      <node id="5447047924422106493" at="55,118,61,7" concept="8" />
+      <node id="5447047924422106485" at="54,39,62,5" concept="7" />
+      <node id="8201985028522869468" at="38,0,51,0" concept="15" trace="substituteCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljava/lang/String;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="5447047924422108209" at="52,0,65,0" concept="15" trace="getApplicableSubstituteAction#(Ljetbrains/mps/openapi/editor/cells/SubstituteInfo;Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/SubstituteAction;" />
+      <node id="8830312323426186936" at="23,0,37,0" concept="9" trace="substitute#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljava/lang/String;)Z" />
+      <scope id="8830312323426178107" at="19,77,20,40" />
+      <scope id="8830312323426187457" at="25,33,26,19" />
+      <scope id="8830312323426191313" at="31,45,32,19" />
+      <scope id="8201985028522911956" at="40,33,41,19" />
+      <scope id="8201985028522911968" at="45,45,46,19" />
+      <scope id="5447047924422106503" at="57,29,58,22" />
+      <scope id="8830312323426178103" at="19,0,22,0">
+        <var name="editorComponent" id="8830312323426184921" />
+      </scope>
+      <scope id="5447047924422106498" at="56,50,60,28" />
+      <scope id="5447047924422106492" at="55,118,61,7" />
+      <scope id="5447047924422106485" at="54,39,62,5">
         <var name="nextAction" id="5447047924422106486" />
       </scope>
-      <scope id="8201985028522869471" at="15,108,26,16">
+      <scope id="8201985028522869471" at="38,108,49,16">
         <var name="applicableSubstituteAction" id="8201985028522911962" />
         <var name="substituteInfo" id="8201985028522911950" />
       </scope>
-      <scope id="5447047924422106480" at="29,116,40,89">
+      <scope id="5447047924422106480" at="52,116,63,89">
         <var name="result" id="5447047924422106482" />
       </scope>
-      <scope id="8201985028522869468" at="15,0,28,0">
+      <scope id="8830312323426186939" at="23,77,35,16">
+        <var name="applicableSubstituteAction" id="8830312323426191307" />
+        <var name="editorContext" id="8830312323426191007" />
+        <var name="substituteInfo" id="8830312323426187451" />
+      </scope>
+      <scope id="8201985028522869468" at="38,0,51,0">
         <var name="editorCell" id="8201985028522895109" />
         <var name="editorContext" id="8201985028522926927" />
         <var name="pattern" id="8201985028522895141" />
       </scope>
-      <scope id="5447047924422108209" at="29,0,42,0">
+      <scope id="5447047924422108209" at="52,0,65,0">
         <var name="resolveInfo" id="5447047924422106477" />
         <var name="substituteInfo" id="5447047924422106475" />
       </scope>
-      <unit id="5447047924421797846" at="13,0,43,0" name="jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils" />
+      <scope id="8830312323426186936" at="23,0,37,0">
+        <var name="editorCell" id="8830312323426187208" />
+        <var name="pattern" id="8830312323426187210" />
+      </scope>
+      <unit id="5447047924421797846" at="15,0,66,0" name="jetbrains.mps.editor.runtime.ReferenceResolveInEditor" />
     </file>
   </root>
   <root nodeRef="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7390982340086719450">

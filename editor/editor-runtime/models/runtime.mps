@@ -10880,8 +10880,188 @@
     <node concept="3Tm1VV" id="4kev0f6DOx1" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="4InNjD1Gavm">
-    <property role="TrG5h" value="EditorBasedReferenceResolverUtils" />
+    <property role="TrG5h" value="ReferenceResolveInEditor" />
     <property role="3GE5qa" value="resolve references" />
+    <node concept="312cEg" id="7Eb$$nH$AWE" role="jymVt">
+      <property role="TrG5h" value="myEditorComponent" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="7Eb$$nH$AWF" role="1B3o_S" />
+      <node concept="3uibUv" id="7Eb$$nH$AWH" role="1tU5fm">
+        <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7Eb$$nH$B0V" role="jymVt" />
+    <node concept="3clFbW" id="7Eb$$nH$_gR" role="jymVt">
+      <node concept="3cqZAl" id="7Eb$$nH$_gT" role="3clF45" />
+      <node concept="3Tm1VV" id="7Eb$$nH$_gU" role="1B3o_S" />
+      <node concept="3clFbS" id="7Eb$$nH$_gV" role="3clF47">
+        <node concept="3clFbF" id="7Eb$$nH$AWI" role="3cqZAp">
+          <node concept="37vLTI" id="7Eb$$nH$AWK" role="3clFbG">
+            <node concept="37vLTw" id="7Eb$$nH$AWN" role="37vLTJ">
+              <ref role="3cqZAo" node="7Eb$$nH$AWE" resolve="myEditorComponent" />
+            </node>
+            <node concept="37vLTw" id="7Eb$$nH$AWO" role="37vLTx">
+              <ref role="3cqZAo" node="7Eb$$nH$AVp" resolve="editorComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="7Eb$$nH$AVp" role="3clF46">
+        <property role="TrG5h" value="editorComponent" />
+        <node concept="3uibUv" id="7Eb$$nH$AVo" role="1tU5fm">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
+        </node>
+        <node concept="2AHcQZ" id="7Eb$$nH$Ba4" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7Eb$$nH$Bc1" role="jymVt" />
+    <node concept="3clFb_" id="7Eb$$nH$BqS" role="jymVt">
+      <property role="TrG5h" value="substitute" />
+      <node concept="37vLTG" id="7Eb$$nH$Bv8" role="3clF46">
+        <property role="TrG5h" value="editorCell" />
+        <node concept="3uibUv" id="7Eb$$nH$Bv9" role="1tU5fm">
+          <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
+        </node>
+        <node concept="2AHcQZ" id="7Eb$$nH$BwY" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="7Eb$$nH$Bva" role="3clF46">
+        <property role="TrG5h" value="pattern" />
+        <node concept="17QB3L" id="7Eb$$nH$Bvb" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="7Eb$$nH$BqV" role="3clF47">
+        <node concept="3cpWs8" id="7Eb$$nH$ByU" role="3cqZAp">
+          <node concept="3cpWsn" id="7Eb$$nH$ByV" role="3cpWs9">
+            <property role="TrG5h" value="substituteInfo" />
+            <node concept="3uibUv" id="7Eb$$nH$ByW" role="1tU5fm">
+              <ref role="3uigEE" to="f4zo:~SubstituteInfo" resolve="SubstituteInfo" />
+            </node>
+            <node concept="2OqwBi" id="7Eb$$nH$ByX" role="33vP2m">
+              <node concept="37vLTw" id="7Eb$$nH$ByY" role="2Oq$k0">
+                <ref role="3cqZAo" node="7Eb$$nH$Bv8" resolve="editorCell" />
+              </node>
+              <node concept="liA8E" id="7Eb$$nH$ByZ" role="2OqNvi">
+                <ref role="37wK5l" to="f4zo:~EditorCell.getSubstituteInfo()" resolve="getSubstituteInfo" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7Eb$$nH$Bz0" role="3cqZAp">
+          <node concept="3clFbS" id="7Eb$$nH$Bz1" role="3clFbx">
+            <node concept="3cpWs6" id="7Eb$$nH$Bz2" role="3cqZAp">
+              <node concept="3clFbT" id="7Eb$$nH$Bz3" role="3cqZAk">
+                <property role="3clFbU" value="false" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="7Eb$$nH$Bz4" role="3clFbw">
+            <node concept="10Nm6u" id="7Eb$$nH$Bz5" role="3uHU7w" />
+            <node concept="37vLTw" id="7Eb$$nH$Bz6" role="3uHU7B">
+              <ref role="3cqZAo" node="7Eb$$nH$ByV" resolve="substituteInfo" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7Eb$$nH$Cqu" role="3cqZAp">
+          <node concept="3cpWsn" id="7Eb$$nH$Cqv" role="3cpWs9">
+            <property role="TrG5h" value="editorContext" />
+            <node concept="3uibUv" id="7Eb$$nH$Coq" role="1tU5fm">
+              <ref role="3uigEE" to="cj4x:~EditorContext" resolve="EditorContext" />
+            </node>
+            <node concept="2OqwBi" id="7Eb$$nH$Cqw" role="33vP2m">
+              <node concept="37vLTw" id="7Eb$$nH$Cqx" role="2Oq$k0">
+                <ref role="3cqZAo" node="7Eb$$nH$AWE" resolve="myEditorComponent" />
+              </node>
+              <node concept="liA8E" id="7Eb$$nH$Cqy" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorComponent.getEditorContext()" resolve="getEditorContext" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7Eb$$nH$BHO" role="3cqZAp">
+          <node concept="37vLTI" id="7Eb$$nH$BHP" role="3clFbG">
+            <node concept="2YIFZM" id="7Eb$$nH$BHQ" role="37vLTx">
+              <ref role="1Pybhc" to="6lvu:~NodeSubstituteInfoFilterDecorator" resolve="NodeSubstituteInfoFilterDecorator" />
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteInfoFilterDecorator.createSubstituteInfoWithPatternMatchingFilter(jetbrains.mps.openapi.editor.cells.SubstituteInfo,org.jetbrains.mps.openapi.module.SRepository)" resolve="createSubstituteInfoWithPatternMatchingFilter" />
+              <node concept="37vLTw" id="7Eb$$nH$BHR" role="37wK5m">
+                <ref role="3cqZAo" node="7Eb$$nH$ByV" resolve="substituteInfo" />
+              </node>
+              <node concept="2OqwBi" id="7Eb$$nH$BHS" role="37wK5m">
+                <node concept="37vLTw" id="7Eb$$nH$Cqz" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7Eb$$nH$Cqv" resolve="editorContext" />
+                </node>
+                <node concept="liA8E" id="7Eb$$nH$BHU" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorContext.getRepository()" resolve="getRepository" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="7Eb$$nH$BHV" role="37vLTJ">
+              <ref role="3cqZAo" node="7Eb$$nH$ByV" resolve="substituteInfo" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7Eb$$nH$Cva" role="3cqZAp">
+          <node concept="3cpWsn" id="7Eb$$nH$Cvb" role="3cpWs9">
+            <property role="TrG5h" value="applicableSubstituteAction" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="7Eb$$nH$Cvc" role="1tU5fm">
+              <ref role="3uigEE" to="f4zo:~SubstituteAction" resolve="SubstituteAction" />
+            </node>
+            <node concept="2YIFZM" id="7Eb$$nH$Cvd" role="33vP2m">
+              <ref role="1Pybhc" node="4InNjD1Gavm" resolve="ReferenceResolveInEditor" />
+              <ref role="37wK5l" node="4InNjD1HmgL" resolve="getApplicableSubstituteAction" />
+              <node concept="37vLTw" id="7Eb$$nH$Cve" role="37wK5m">
+                <ref role="3cqZAo" node="7Eb$$nH$ByV" resolve="substituteInfo" />
+              </node>
+              <node concept="37vLTw" id="7Eb$$nH$Cvf" role="37wK5m">
+                <ref role="3cqZAo" node="7Eb$$nH$Bva" resolve="pattern" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7Eb$$nH$Cvg" role="3cqZAp">
+          <node concept="3clFbS" id="7Eb$$nH$Cvh" role="3clFbx">
+            <node concept="3cpWs6" id="7Eb$$nH$Cvi" role="3cqZAp">
+              <node concept="3clFbT" id="7Eb$$nH$Cvj" role="3cqZAk">
+                <property role="3clFbU" value="false" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="7Eb$$nH$Cvk" role="3clFbw">
+            <node concept="37vLTw" id="7Eb$$nH$Cvl" role="3uHU7B">
+              <ref role="3cqZAo" node="7Eb$$nH$Cvb" resolve="applicableSubstituteAction" />
+            </node>
+            <node concept="10Nm6u" id="7Eb$$nH$Cvm" role="3uHU7w" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="7Eb$$nH$Cvn" role="3cqZAp">
+          <node concept="2OqwBi" id="7Eb$$nH$Cvo" role="3clFbG">
+            <node concept="37vLTw" id="7Eb$$nH$Cvp" role="2Oq$k0">
+              <ref role="3cqZAo" node="7Eb$$nH$Cvb" resolve="applicableSubstituteAction" />
+            </node>
+            <node concept="liA8E" id="7Eb$$nH$Cvq" role="2OqNvi">
+              <ref role="37wK5l" to="f4zo:~SubstituteAction.substitute(jetbrains.mps.openapi.editor.EditorContext,java.lang.String)" resolve="substitute" />
+              <node concept="37vLTw" id="7Eb$$nH$Cvr" role="37wK5m">
+                <ref role="3cqZAo" node="7Eb$$nH$Cqv" resolve="editorContext" />
+              </node>
+              <node concept="37vLTw" id="7Eb$$nH$Cvs" role="37wK5m">
+                <ref role="3cqZAo" node="7Eb$$nH$Bva" resolve="pattern" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7Eb$$nH$Cvt" role="3cqZAp">
+          <node concept="3clFbT" id="7Eb$$nH$Cvu" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7Eb$$nH$Bk$" role="1B3o_S" />
+      <node concept="10P_77" id="7Eb$$nH$Bqt" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="7Eb$$nH$B4f" role="jymVt" />
     <node concept="2YIFZL" id="77jjuPIbobs" role="jymVt">
       <property role="TrG5h" value="substituteCell" />
       <property role="od$2w" value="false" />
@@ -10948,7 +11128,7 @@
               <ref role="3uigEE" to="f4zo:~SubstituteAction" resolve="SubstituteAction" />
             </node>
             <node concept="2YIFZM" id="77jjuPIbyzs" role="33vP2m">
-              <ref role="1Pybhc" node="4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />
+              <ref role="1Pybhc" node="4InNjD1Gavm" resolve="ReferenceResolveInEditor" />
               <ref role="37wK5l" node="4InNjD1HmgL" resolve="getApplicableSubstituteAction" />
               <node concept="37vLTw" id="77jjuPIbyzt" role="37wK5m">
                 <ref role="3cqZAo" node="77jjuPIbyze" resolve="substituteInfo" />

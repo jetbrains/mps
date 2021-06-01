@@ -19,7 +19,7 @@
     <classNode dependClassName="jetbrains.mps.checkers.ICheckingPostprocessor" />
     <classNode dependClassName="jetbrains.mps.checkers.LanguageErrorsComponent" />
     <classNode dependClassName="jetbrains.mps.checkers.ModuleImportQuickFix" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.ReferenceResolveInEditor" />
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.TargetModuleNotImportedReportItem" />
@@ -78,7 +78,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.components.ComponentHost" />
-    <classNode dependClassName="jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.ReferenceResolveInEditor" />
     <classNode dependClassName="jetbrains.mps.errors.item.EditorQuickFix" />
     <classNode dependClassName="jetbrains.mps.errors.item.FlavouredItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeFeatureFlavouredItem" />

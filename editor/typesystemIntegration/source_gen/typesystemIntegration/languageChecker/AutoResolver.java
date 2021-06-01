@@ -42,9 +42,9 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.openapi.editor.EditorComponentState;
+import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.resolve.ReferenceResolverUtils;
-import jetbrains.mps.editor.runtime.EditorBasedReferenceResolverUtils;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.project.dependency.VisibilityUtil;
@@ -153,6 +153,8 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
             }
             EditorComponentState state = editorContext.getEditorComponentState();
 
+            ReferenceResolveInEditor refResolve = new ReferenceResolveInEditor(editorContext.getEditorComponent());
+
             // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
             boolean doRecheckEditor = false;
             // Trying to resolve all broken references using scope and then using substitute actions.
@@ -177,7 +179,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
                   continue;
                 }
 
-                if (EditorBasedReferenceResolverUtils.substituteCell(cellWithRole, resolveInfo, editorContext)) {
+                if (refResolve.substitute(cellWithRole, resolveInfo)) {
                   doRecheckEditor = true;
                 }
               }
@@ -196,7 +198,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
                 continue;
               }
 
-              if (EditorBasedReferenceResolverUtils.substituteCell(labelErrorCell, errorText, editorContext)) {
+              if (refResolve.substitute(labelErrorCell, errorText)) {
                 doRecheckEditor = true;
               }
             }
