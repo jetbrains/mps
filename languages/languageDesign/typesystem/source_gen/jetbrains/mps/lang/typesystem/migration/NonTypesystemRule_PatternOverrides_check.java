@@ -61,7 +61,7 @@ public class NonTypesystemRule_PatternOverrides_check extends MigrationScriptBas
       return result;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 2);
   }
 

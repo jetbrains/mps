@@ -54,7 +54,7 @@ public class UseDevkit extends MigrationScriptBase {
     mi.deleteDevKit(PersistenceFacade.getInstance().createModuleReference("2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)"));
     mi.addDevKit(structAspectDevkit);
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"), 3);
   }
 

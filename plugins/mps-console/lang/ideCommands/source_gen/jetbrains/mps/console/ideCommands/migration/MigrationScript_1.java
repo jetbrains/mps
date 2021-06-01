@@ -167,7 +167,7 @@ __switch__:
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, "jetbrains.mps.console.ideCommands"), 1);
   }
   public static boolean isMovedConcept(SAbstractConcept c) {

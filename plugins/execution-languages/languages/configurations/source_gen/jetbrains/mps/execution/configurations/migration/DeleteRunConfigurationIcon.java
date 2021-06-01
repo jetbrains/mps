@@ -46,7 +46,7 @@ public class DeleteRunConfigurationIcon extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x22e72e4c0f6946ceL, 0x84036750153aa615L, "jetbrains.mps.execution.configurations"), 1);
   }
 

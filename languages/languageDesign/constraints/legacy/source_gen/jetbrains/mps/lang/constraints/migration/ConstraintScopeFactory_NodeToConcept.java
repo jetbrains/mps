@@ -62,7 +62,7 @@ public class ConstraintScopeFactory_NodeToConcept extends MigrationScriptBase {
     }
     return problems;
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, "jetbrains.mps.lang.constraints"), 1);
   }
 

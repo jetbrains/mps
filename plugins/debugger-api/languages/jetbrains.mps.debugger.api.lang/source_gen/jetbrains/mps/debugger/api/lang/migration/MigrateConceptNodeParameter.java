@@ -53,7 +53,7 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
       }
     });
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, "jetbrains.mps.debugger.api.lang"), 0);
   }
 

@@ -86,7 +86,7 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
       }));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"), 0);
   }
 

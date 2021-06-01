@@ -111,7 +111,7 @@ public class EditorTestCase_TestNode extends MigrationScriptBase {
       }));
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 3);
   }
 

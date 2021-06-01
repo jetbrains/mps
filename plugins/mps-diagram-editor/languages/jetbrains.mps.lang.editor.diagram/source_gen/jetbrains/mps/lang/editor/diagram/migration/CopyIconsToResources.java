@@ -104,7 +104,7 @@ public class CopyIconsToResources extends MigrationScriptBase {
     }
     return result;
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, "jetbrains.mps.lang.editor.diagram"), 0);
   }
 

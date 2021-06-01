@@ -45,7 +45,7 @@ public class InPlaceCheckpointDeclarations extends MigrationScriptBase {
       }
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, "jetbrains.mps.lang.generator.plan"), 0);
   }
 

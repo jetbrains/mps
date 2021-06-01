@@ -47,7 +47,7 @@ public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBa
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, "jetbrains.mps.lang.script"), 0);
   }
 

@@ -285,7 +285,7 @@ public class MigrateTryStatement extends MigrationScriptBase {
       return problems;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 10);
   }
   public static final long ALTERNATIVE_TYPE_ID_GEN = 7192883672011481891L;

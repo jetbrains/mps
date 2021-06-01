@@ -175,7 +175,7 @@ public class MoveDocTagsIntoTagsChildCollection extends MigrationScriptBase {
       return result;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"), 1);
   }
 

@@ -37,7 +37,7 @@
       <node id="209204644145733814" at="74,45,75,212" concept="8" />
       <node id="209204644145733814" at="78,45,79,62" concept="8" />
       <node id="209204644145733814" at="82,45,83,112" concept="8" />
-      <node id="209204644145733812" at="90,51,91,149" concept="8" />
+      <node id="209204644145733812" at="90,50,91,149" concept="8" />
       <node id="209204644145733812" at="93,60,94,17" concept="8" />
       <node id="209204644145733812" at="98,0,99,0" concept="10" trace="INamedConcept$Kd" />
       <node id="209204644145733812" at="99,0,100,0" concept="10" trace="ExtensionPointDeclaration$sb" />
@@ -51,7 +51,7 @@
       <node id="209204644145733814" at="74,0,77,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="209204644145733814" at="78,0,81,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="209204644145733814" at="82,0,85,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/migration/runtime/base/Problem;" />
-      <node id="209204644145733812" at="90,0,93,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="209204644145733812" at="90,0,93,0" concept="6" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="209204644145733812" at="93,0,96,0" concept="11" trace="isMovedConcept#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
       <node id="209204644145733812" at="33,0,37,0" concept="6" trace="isRerunnable#()Z" />
       <node id="209204644145733812" at="37,0,41,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -74,7 +74,7 @@
       <scope id="209204644145733814" at="74,45,75,212" />
       <scope id="209204644145733814" at="78,45,79,62" />
       <scope id="209204644145733814" at="82,45,83,112" />
-      <scope id="209204644145733812" at="90,51,91,149" />
+      <scope id="209204644145733812" at="90,50,91,149" />
       <scope id="209204644145733812" at="93,60,94,17" />
       <scope id="209204644145733812" at="37,41,39,16" />
       <scope id="209204644145733812" at="30,0,33,0" />
@@ -284,7 +284,7 @@
       <node id="6948371848611574974" at="338,41,339,201" concept="8" />
       <node id="7363351619057222606" at="344,39,345,71" concept="7" />
       <node id="7363351619057217940" at="345,71,346,24" concept="8" />
-      <node id="4174378934472392928" at="350,51,351,149" concept="8" />
+      <node id="4174378934472392928" at="350,50,351,149" concept="8" />
       <node id="4174378934472469744" at="353,61,354,30" concept="7" />
       <node id="4174378934472469744" at="354,30,355,248" concept="7" />
       <node id="4174378934472469744" at="355,248,356,34" concept="2" />
@@ -533,7 +533,7 @@
       <node id="6948371848611572992" at="328,0,331,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6948371848611573932" at="333,0,336,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6948371848611574972" at="338,0,341,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="4174378934472392928" at="350,0,353,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="4174378934472392928" at="350,0,353,0" concept="6" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="4174378934472473176" at="389,39,392,5" concept="5" />
       <node id="4174378934472477262" at="436,35,439,5" concept="4" />
       <node id="4174378934472478055" at="460,35,463,5" concept="4" />
@@ -643,7 +643,7 @@
       <scope id="6948371848611572993" at="328,41,329,201" />
       <scope id="6948371848611573933" at="333,41,334,201" />
       <scope id="6948371848611574973" at="338,41,339,201" />
-      <scope id="4174378934472392928" at="350,51,351,149" />
+      <scope id="4174378934472392928" at="350,50,351,149" />
       <scope id="4174378934472473176" at="390,31,391,206" />
       <scope id="4174378934472477262" at="437,51,438,192" />
       <scope id="4174378934472478055" at="461,51,462,192" />

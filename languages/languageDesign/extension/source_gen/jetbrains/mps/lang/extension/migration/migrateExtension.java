@@ -347,7 +347,7 @@ public class migrateExtension extends MigrationScriptBase {
       }
     });
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension"), 0);
   }
   private static SNode _quotation_createNode_2kk9yi_a0a0c() {

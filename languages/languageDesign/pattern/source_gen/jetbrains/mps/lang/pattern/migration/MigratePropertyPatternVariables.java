@@ -79,7 +79,7 @@ public class MigratePropertyPatternVariables extends MigrationScriptBase {
       return res;
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, "jetbrains.mps.lang.pattern"), 1);
   }
 

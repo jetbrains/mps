@@ -70,7 +70,7 @@
       <node id="6807933448473136908" at="144,52,145,36" concept="7" />
       <node id="6807933448473136908" at="149,41,150,248" concept="7" />
       <node id="6807933448473136908" at="153,39,154,68" concept="7" />
-      <node id="1986963296984229191" at="159,51,160,124" concept="7" />
+      <node id="1986963296984229191" at="159,50,160,124" concept="7" />
       <node id="1986963296984229191" at="166,0,167,0" concept="10" trace="OldComponentRef$jA" />
       <node id="1986963296984229191" at="167,0,168,0" concept="10" trace="MigrationDataAnnotation$Ct" />
       <node id="1986963296984229191" at="171,0,172,0" concept="10" trace="target$f69e" />
@@ -90,7 +90,7 @@
       <node id="6807933448473136908" at="144,0,147,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="6807933448473136908" at="149,0,152,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6807933448473136908" at="153,0,156,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="1986963296984229191" at="159,0,162,0" concept="5" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="1986963296984229191" at="159,0,162,0" concept="5" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="1986963296984229191" at="48,0,52,0" concept="5" trace="isRerunnable#()Z" />
       <node id="1986963296984229191" at="52,0,56,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6807933448471958634" at="57,50,62,7" concept="6" />
@@ -122,7 +122,7 @@
       <scope id="6807933448473136908" at="144,52,145,36" />
       <scope id="6807933448473136908" at="149,41,150,248" />
       <scope id="6807933448473136908" at="153,39,154,68" />
-      <scope id="1986963296984229191" at="159,51,160,124" />
+      <scope id="1986963296984229191" at="159,50,160,124" />
       <scope id="1986963296984229191" at="52,41,54,16" />
       <scope id="1986963296984229191" at="45,0,48,0" />
       <scope id="6807933448471958642" at="59,0,62,0">

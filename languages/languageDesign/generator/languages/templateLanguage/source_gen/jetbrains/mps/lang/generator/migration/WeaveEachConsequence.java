@@ -25,7 +25,7 @@ public class WeaveEachConsequence extends MigrationScriptBase {
     // NO-OP, WeaveEach_RuleConsequence.template reference gone
 
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), 0);
   }
 

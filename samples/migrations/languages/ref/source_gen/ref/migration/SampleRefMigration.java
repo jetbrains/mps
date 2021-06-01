@@ -156,7 +156,7 @@ public class SampleRefMigration extends MigrationScriptBase {
       }).toListSequence();
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xd3d2b6e3a4b343d5L, 0xbb29420d39fa86abL, "ref"), 1);
   }
 

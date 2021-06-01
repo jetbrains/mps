@@ -89,7 +89,7 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 9);
   }
 

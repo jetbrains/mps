@@ -25,14 +25,14 @@
       <node id="2433297057223871794" at="41,110,42,57" concept="4" />
       <node id="3750601816081921048" at="42,57,43,47" concept="0" />
       <node id="3750601816081902244" at="43,47,44,148" concept="0" />
-      <node id="3750601816081858308" at="48,51,49,154" concept="5" />
+      <node id="3750601816081858308" at="48,50,49,154" concept="5" />
       <node id="3750601816081858308" at="53,0,54,0" concept="7" trace="name$MnvL" />
       <node id="3750601816081858308" at="57,0,58,0" concept="7" trace="cpSpec$v7$t" />
       <node id="3750601816081858308" at="61,0,62,0" concept="7" trace="InPlaceCheckpointSpec$pM" />
       <node id="3750601816081858308" at="62,0,63,0" concept="7" trace="Checkpoint$ZV" />
       <node id="3750601816081858308" at="23,0,26,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="3750601816081892520" at="37,0,40,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3750601816081858308" at="48,0,51,0" concept="3" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="3750601816081858308" at="48,0,51,0" concept="3" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="3750601816081858308" at="26,0,30,0" concept="3" trace="isRerunnable#()Z" />
       <node id="3750601816081858308" at="30,0,34,0" concept="3" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3750601816081867205" at="35,63,45,7" concept="2" />
@@ -41,7 +41,7 @@
       <scope id="3750601816081858308" at="23,30,24,23" />
       <scope id="3750601816081858308" at="27,33,28,16" />
       <scope id="3750601816081892521" at="37,41,38,76" />
-      <scope id="3750601816081858308" at="48,51,49,154" />
+      <scope id="3750601816081858308" at="48,50,49,154" />
       <scope id="3750601816081858308" at="30,41,32,16" />
       <scope id="3750601816081858308" at="23,0,26,0" />
       <scope id="3750601816081892520" at="37,0,40,0">

@@ -24,7 +24,7 @@ public class ReplaceIncludeWithCall extends MigrationScriptBase {
   public void doExecute(final SModule m) {
     // NO-OP, IncludeMacro gone, migration kept just to satisfy MigrationDescriptor template, which fails generation in case there's hole in migration numbering
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), 1);
   }
 

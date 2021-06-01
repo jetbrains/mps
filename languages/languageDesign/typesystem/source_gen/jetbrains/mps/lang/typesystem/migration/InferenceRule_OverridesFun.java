@@ -84,7 +84,7 @@ public class InferenceRule_OverridesFun extends MigrationScriptBase {
       });
     }
   }
-  public MigrationScriptReference getDescriptor() {
+  public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem"), 3);
   }
   public static boolean isMovedConcept(SAbstractConcept c) {
