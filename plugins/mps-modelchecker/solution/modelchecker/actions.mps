@@ -522,7 +522,7 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="Model Checker" />
     <property role="9BnSO" value="211.1" />
-    <property role="9BnSK" value="2021.1" />
+    <property role="9BnSK" value="2021.1.1" />
   </node>
   <node concept="tC5Ba" id="1gEYwydCrTu">
     <property role="TrG5h" value="CheckProject" />
