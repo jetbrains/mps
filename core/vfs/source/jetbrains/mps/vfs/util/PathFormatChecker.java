@@ -48,7 +48,9 @@ public final class PathFormatChecker {
 
   public PathFormatChecker absolute() {
     if (!(new File(myPath).isAbsolute())) {
-      throw new PathFormatException("Path should be absolute: " + myPath, myPath);
+      throw new PathFormatException(String.format("Path should be absolute: %s, os %s",
+                                                  myPath,
+                                                  System.getProperty("os.name")), myPath);
     }
     return this;
   }
