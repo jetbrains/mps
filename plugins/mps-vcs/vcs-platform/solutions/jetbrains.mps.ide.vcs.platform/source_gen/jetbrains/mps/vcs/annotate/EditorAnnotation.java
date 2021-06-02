@@ -598,7 +598,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     final String taskName = root.getPresentation() + "(" + shortCommit + ")";
     getModelAccess().runWriteAction(new Runnable() {
       public void run() {
-        DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, false);
+        DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true);
       }
     });
 
