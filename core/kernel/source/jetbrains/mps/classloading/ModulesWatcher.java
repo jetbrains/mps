@@ -279,7 +279,7 @@ public class ModulesWatcher {
 
     if (modulesWithAbsentDeps.containsKey(module)) {
       List<SearchError> errors = modulesWithAbsentDeps.get(module);
-      return String.format("%s has got an absent dependency problem and therefore was marked invalid for class loading: %s", module, errors.get(0).getMsg());
+      return String.format("%s has got an absent dependency and therefore was marked invalid for class loading: %s", module, errors.get(0).getMsg());
     }
     for (SDependency dep : module.getDeclaredDependencies()) {
       if (dep.getScope() == SDependencyScope.DESIGN || dep.getScope() == SDependencyScope.GENERATES_INTO) {
