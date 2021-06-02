@@ -7,6 +7,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Arrays;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -28,6 +32,7 @@ public abstract class Scope {
    * @return list of nodes in the scope
    */
   public abstract Iterable<SNode> getAvailableElements(@Nullable String prefix);
+
   /**
    * Returns <tt>true</tt> if this scope contains the specified element.
    * 
@@ -39,6 +44,7 @@ public abstract class Scope {
   public boolean contains(SNode node) {
     return Sequence.fromIterable(getAvailableElements(null)).contains(node);
   }
+
   /**
    * Resolves element by reference text.
    * 
@@ -50,6 +56,7 @@ public abstract class Scope {
    */
   @Nullable
   public abstract SNode resolve(SNode contextNode, @NotNull String refText);
+
   /**
    * Creates textual reference for scope element. If element has no textual representation
    * for the reference, returns null.
@@ -62,6 +69,35 @@ public abstract class Scope {
    */
   @Nullable
   public abstract String getReferenceText(SNode contextNode, @NotNull SNode node);
+
+  /**
+   * the scope depends on a number of nodes, and sometimes its logic can be more involved than just the nodes within the scope.
+   * [suppose we have dynamic scope which depends on the attributes of the node]
+   * This method is a way to provide MPS checking engine with this information.
+   * fixme use node references
+   * 
+   * @return optional nodes which must be included as the dependencies of this scope
+   */
+  @NotNull
+  public Collection<SNode> getAdditionalDependencies() {
+    return Collections.<SNode>emptyList();
+  }
+
+  public Scope withAdditionalDependencies(final Collection<SNode> deps) {
+    return new CompositeScope(this) {
+      @Override
+      public Collection<SNode> getAdditionalDependencies() {
+        Collection<SNode> res = new HashSet<SNode>(super.getAdditionalDependencies());
+        res.addAll(deps);
+        return res;
+      }
+    };
+  }
+
+  public Scope withAdditionalDependencies(SNode... nodes) {
+    return withAdditionalDependencies(Arrays.asList(nodes));
+  }
+
   /**
    * Get scope for existing node.
    */
@@ -72,7 +108,7 @@ public abstract class Scope {
       if (SNodeOperations.isInstanceOf(curr, CONCEPTS.ScopeProvider$aq)) {
         Scope scope = ((Scope) BHReflection.invoke0(SNodeOperations.cast(curr, CONCEPTS.ScopeProvider$aq), CONCEPTS.ScopeProvider$aq, SMethodTrimmedId.create("getScope", null, "52_Geb4QDV$"), kind, prev));
         if (scope != null) {
-          return scope;
+          return scope.withAdditionalDependencies(Collections.singleton(curr));
         }
       }
       prev = curr;
@@ -87,7 +123,7 @@ public abstract class Scope {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ScopeProvider$aq)) {
       Scope scope = ((Scope) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ScopeProvider$aq), CONCEPTS.ScopeProvider$aq, SMethodTrimmedId.create("getScope", null, "52_Geb4QFgX"), kind, link, ((int) index)));
       if (scope != null) {
-        return scope;
+        return scope.withAdditionalDependencies(Collections.singleton(node));
       }
     }
     return getScope(parent(node), node, kind);

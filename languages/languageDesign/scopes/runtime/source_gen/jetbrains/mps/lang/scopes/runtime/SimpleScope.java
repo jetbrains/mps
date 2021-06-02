@@ -5,21 +5,30 @@ package jetbrains.mps.lang.scopes.runtime;
 import jetbrains.mps.scope.Scope;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
+import java.util.Collection;
 
 public abstract class SimpleScope extends Scope {
   private final List<SNode> nodes;
-  public SimpleScope(Iterable<SNode> nodes) {
-    this.nodes = ListSequence.fromList(new ArrayList<SNode>());
+  private final Set<SNode> deps;
 
+  public SimpleScope(Iterable<SNode> nodes) {
+    this(nodes, SetSequence.fromSet(new HashSet<SNode>()));
+  }
+
+  public SimpleScope(Iterable<SNode> nodes, Set<SNode> deps) {
+    this.nodes = ListSequence.fromList(new ArrayList<SNode>());
     // Checking nodes var for null first because null value can be easily passed here as a result of the combination of
-    // smodel language calls & bahaviour method calls on top of it like:
+    // smodel language calls & behaviour method calls on top of it like:
     //     sNodeType.concept.getPropertyDeclarations()
-    // in this case, if conept (reference inside sNodeType) is null (not specified yet) then the result of
+    // in this case, if concept (reference inside sNodeType) is null (not specified yet) then the result of
     // .getPropertyDeclarations() method call will be null despite null-safety inside any of smodel/collection
     // languages returning empty collections in similar cases.
     if (nodes != null) {
@@ -29,14 +38,22 @@ public abstract class SimpleScope extends Scope {
         }
       }
     }
+    this.deps = deps;
   }
+
   public SimpleScope(SNode node) {
+    this(node, SetSequence.fromSet(new HashSet<SNode>()));
+  }
+
+  public SimpleScope(SNode node, Set<SNode> deps) {
     if ((node != null)) {
       nodes = Collections.singletonList(node);
     } else {
       nodes = Collections.emptyList();
     }
+    this.deps = deps;
   }
+
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     if (prefix == null) {
@@ -55,6 +72,7 @@ public abstract class SimpleScope extends Scope {
     }
     return result;
   }
+
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
@@ -72,11 +90,18 @@ public abstract class SimpleScope extends Scope {
     }
     return result;
   }
+
   @Nullable
   public abstract String getReferenceText(@NotNull SNode target);
+
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode target) {
     return getReferenceText(target);
+  }
+
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    return deps;
   }
 }

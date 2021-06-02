@@ -8,6 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class ScopeProviderContext {
   private ScopeProviderContext() {
   }
+
   public <T> T process(_FunctionTypes._return_P1_E0<? extends T, ? super SNode> ifChild, _FunctionTypes._return_P2_E0<? extends T, ? super String, ? super Integer> ifRolePlusIndex) {
     if (this instanceof ChildContext) {
       return ifChild.invoke(((ChildContext) this).child);
@@ -15,9 +16,11 @@ public class ScopeProviderContext {
       return ifRolePlusIndex.invoke(((RolePlusIndexContext) this).role, ((RolePlusIndexContext) this).index);
     }
   }
+
   public static ScopeProviderContext childContext(SNode child) {
     return new ChildContext(child);
   }
+
   public static ScopeProviderContext rolePlusIndexContext(String role, int index) {
     return new RolePlusIndexContext(role, index);
   }

@@ -87,6 +87,9 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
       errorsCollector.addDependency(target);
       ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(ref);
       Scope refScope = refDescriptor.getScope();
+      for (SNode n : refScope.getAdditionalDependencies()) {
+        errorsCollector.addDependency(n);
+      }
       if (refScope instanceof ErrorScope) {
         errorsCollector.addError(new LanguageErrorItem.ReferenceItem((ErrorScope) refScope, ref));
       } else if (!(refScope.contains(target))) {

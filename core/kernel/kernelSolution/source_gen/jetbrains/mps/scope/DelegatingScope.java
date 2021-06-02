@@ -6,30 +6,42 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
+import java.util.Collection;
 
 @GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/5452980714151229091", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public class DelegatingScope extends Scope {
-  protected Scope wrapped;
+  protected Scope myWrapped;
+
   public DelegatingScope(@NotNull Scope wrapped) {
-    this.wrapped = wrapped;
+    myWrapped = wrapped;
   }
+
   protected DelegatingScope() {
     // setup wrapped field later, before using the scope!
   }
+
   @Override
   public SNode resolve(SNode contextNode, String refText) {
-    return wrapped.resolve(contextNode, refText);
+    return myWrapped.resolve(contextNode, refText);
   }
+
   @Override
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
-    return wrapped.getAvailableElements(prefix);
+    return myWrapped.getAvailableElements(prefix);
   }
+
   @Override
   public String getReferenceText(SNode contextNode, SNode node) {
-    return wrapped.getReferenceText(contextNode, node);
+    return myWrapped.getReferenceText(contextNode, node);
   }
+
   @Override
   public boolean contains(SNode node) {
-    return wrapped.contains(node);
+    return myWrapped.contains(node);
+  }
+
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    return myWrapped.getAdditionalDependencies();
   }
 }

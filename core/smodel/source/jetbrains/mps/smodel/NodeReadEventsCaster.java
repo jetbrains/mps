@@ -20,6 +20,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 public class NodeReadEventsCaster {
@@ -98,7 +100,7 @@ public class NodeReadEventsCaster {
   }
 
   static class ListenersContainer {
-    private Stack<INodesReadListener> myListenersStack = new Stack<>();
+    private final Deque<INodesReadListener> myListenersStack = new ArrayDeque<>();
     private boolean myEventsBlocked;
 
     public void addListener(INodesReadListener listener) {

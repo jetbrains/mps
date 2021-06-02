@@ -97,7 +97,7 @@ public class ClassifiersScope extends FilteringScope {
     //  
     if ((contextClassifier == null)) {
       // no class outside, just use simple old logic
-      return ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) wrapped);
+      return ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) myWrapped);
     }
     SNode resolved = ClassifierResolveUtils.resolve(refText, contextClassifier, myIncludeAncestors);
 
@@ -105,7 +105,7 @@ public class ClassifiersScope extends FilteringScope {
       return resolved;
     }
     // try to use old logic
-    return ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) wrapped);
+    return ClassifierResolveUtils.resolveNonSpecialSyntax(refText, contextModel, (ModelPlusImportedScope) myWrapped);
   }
 
   @Override

@@ -5,14 +5,19 @@ package jetbrains.mps.lang.scopes.runtime;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.scope.EmptyScope;
+import org.jetbrains.annotations.NotNull;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.model.SNode;
 
 public class LazyScope extends DelegatingScope {
   private final _FunctionTypes._return_P0_E0<? extends Scope> scopePromise;
   private Scope scope;
   private boolean isCalculated = false;
+
   public LazyScope(_FunctionTypes._return_P0_E0<? extends Scope> scopePromise) {
     this.scopePromise = scopePromise;
   }
+
   @Override
   protected Scope getScope() {
     if (!(isCalculated)) {
@@ -25,4 +30,11 @@ public class LazyScope extends DelegatingScope {
     }
     return scope;
   }
+
+  @Override
+  @NotNull
+  public Collection<SNode> getAdditionalDependencies() {
+    return getScope().getAdditionalDependencies();
+  }
+
 }

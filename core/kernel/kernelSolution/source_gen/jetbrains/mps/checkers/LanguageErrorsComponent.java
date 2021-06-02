@@ -20,6 +20,8 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import java.util.Queue;
+import java.util.LinkedList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Cancellable;
 import java.util.Map;
@@ -73,14 +75,14 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     public boolean myApproved;
   }
 
-  private MultiMap<SNode, ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, ApprovableError>();
-  private MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
-  private ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
+  private final MultiMap<SNode, ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, ApprovableError>();
+  private final MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
+  private final ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
   private Set<SNode> myInvalidNodes = new HashSet<SNode>();
-  private Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
-  private MyModelChangeListener myChangeListener = new MyModelChangeListener();
-  private MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
-  private Set<SModel> myListenedModels = new HashSet<SModel>();
+  private final Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
+  private final MyModelChangeListener myChangeListener = new MyModelChangeListener();
+  private final MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
+  private final Set<SModel> myListenedModels = new HashSet<SModel>();
   private boolean myFullCheckCompleted = false;
   private SNode myCurrentNode = null;
   private SModel myModel;
@@ -178,14 +180,20 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     // removing dependency node from any mappings together with all checked nodes
     // depending on this dependency node
     // Note, have to collect checked nodes for all dependencies first, and clearSecond only once all dependencies are processed
-    Set<SNode> checkedNodes = SetSequence.fromSet(new HashSet<SNode>());
-    for (SNode dep : dependencies) {
-      // here, we query by dependency, utilizing the fact the map is in fact bi-directional, the moment we recorded checked node->its dependency, we've also recorded dependency->checked node
-      SetSequence.fromSet(checkedNodes).addSequence(SetSequence.fromSet(myDependenciesToNodesAndViceVersa.getByFirst(dep)));
+    Queue<SNode> queue = new LinkedList<SNode>(dependencies);
+    Set<SNode> checkedNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), dependencies);
+    while (!(queue.isEmpty())) {
+      SNode dep = queue.poll();
+      Set<SNode> byFirst = myDependenciesToNodesAndViceVersa.getByFirst(dep);
+      for (SNode next : SetSequence.fromSet(byFirst)) {
+        if (!(SetSequence.fromSet(checkedNodes).contains(next))) {
+          queue.add(next);
+        }
+      }
       // changed properties and references record the node to myDependenciesToInvalidate only, but these could be changes of a checked node itself
       // perhaps, we shall do it right away in the respective processEvent(). Besides, not clear whether I shall match source nodes against 
       // myDependenciesToNodesAndViceVersa.getBySecond set to filter out events from 'checked' nodes
-      SetSequence.fromSet(checkedNodes).addElement(dep);
+      SetSequence.fromSet(checkedNodes).addSequence(SetSequence.fromSet(byFirst));
     }
     for (SNode node : checkedNodes) {
       // avoid searching for _already_removed_ node later in check()
@@ -198,7 +206,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   }
 
   /**
-   * 
    * 
    * @return whether state has changed after the check
    */

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -62,17 +63,20 @@ public class HidingByNameScope extends Scope {
     }));
     return result;
   }
+
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
     // todo: recheck this code
     return (SetSequence.fromSet(names).contains(refText) ? scope.resolve(contextNode, refText) : parentScope.resolve(contextNode, refText));
   }
+
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
     return node.getName();
   }
+
   @Override
   public boolean contains(SNode node) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) || !(SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(kindConcept)))) {
@@ -85,6 +89,13 @@ public class HidingByNameScope extends Scope {
       return false;
     }
     return parentScope.contains(node);
+  }
+
+
+  @NotNull
+  @Override
+  public Collection<SNode> getAdditionalDependencies() {
+    return scope.getAdditionalDependencies();
   }
 
   private static final class CONCEPTS {

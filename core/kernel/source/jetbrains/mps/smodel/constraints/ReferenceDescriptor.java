@@ -145,6 +145,7 @@ public abstract class ReferenceDescriptor {
       }
     }
 
+    @Nullable
     @Override
     public SNodeReference getScopeRuleNodeReference() {
       if (myScopeProvider == null) {

@@ -22,7 +22,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/5455284157994035575", model = "r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)")
 public abstract class ListScope extends Scope {
-  private Iterable<SNode> elements;
+  private final Iterable<SNode> elements;
+
   public ListScope(Iterable<SNode> elements) {
     if (elements == null) {
       this.elements = Sequence.fromIterable(Collections.<SNode>emptyList());
