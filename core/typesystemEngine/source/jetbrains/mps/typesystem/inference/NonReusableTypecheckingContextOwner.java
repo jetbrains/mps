@@ -22,7 +22,7 @@ import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 /**
  * @deprecated use {@link jetbrains.mps.typechecking.TypecheckingFacade} for launching typechecking actions.
 */
-@Deprecated
+@Deprecated(forRemoval = true)
 public class NonReusableTypecheckingContextOwner implements ITypeContextOwner {
   @Override
   public TypeCheckingContext createTypecheckingContext(SNode sNode, TypeContextManager typeContextManager) {

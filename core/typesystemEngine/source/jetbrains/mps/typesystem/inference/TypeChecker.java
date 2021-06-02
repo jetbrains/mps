@@ -25,6 +25,7 @@ import jetbrains.mps.newTypesystem.context.HoleTypecheckingContext;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
@@ -219,7 +220,7 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   @Deprecated(forRemoval = true)
   public SNode getTypeOf(final SNode node) {
     if (node == null || node.getModel() == null) return null;
-    return TypeContextManager.getInstance().getTypeOf(node);
+    return TypecheckingFacade.getFromContext().getTypeOf(node);
   }
 
 }
