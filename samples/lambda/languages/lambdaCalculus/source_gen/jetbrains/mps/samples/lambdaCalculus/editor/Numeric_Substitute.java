@@ -86,7 +86,7 @@ public class Numeric_Substitute extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NumericConstant$$s, null);
-        SPropertyOperations.assign(result, PROPS.value$pIfp, Integer.parseInt(pattern));
+        SPropertyOperations.assign(result, PROPS.value$pIfp, (pattern.length() > 0 ? Integer.parseInt(pattern) : 0));
         return result;
       }
 
