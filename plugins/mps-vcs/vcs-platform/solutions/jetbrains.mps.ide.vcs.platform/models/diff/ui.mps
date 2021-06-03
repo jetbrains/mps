@@ -79,6 +79,8 @@
     <import index="ok99" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.diff(MPS.IDEA/)" />
     <import index="xo69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.util(MPS.IDEA/)" />
     <import index="5p6x" ref="r:2897a5d4-aed7-4a4e-ac07-fbc830f9ed9b(jetbrains.mps.vcs.history)" />
+    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
+    <import index="cyi7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.ui(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -203,6 +205,7 @@
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
+        <child id="1164879685961" name="throwsItem" index="Sfmx6" />
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
@@ -17588,7 +17591,7 @@
             <node concept="1bVj0M" id="3szaEXSAcN9" role="37wK5m">
               <node concept="3clFbS" id="3szaEXSAcNa" role="1bW5cS">
                 <node concept="3clFbF" id="PUMJsq1uJS" role="3cqZAp">
-                  <node concept="2OqwBi" id="PUMJsq1zv6" role="3clFbG">
+                  <node concept="2EnYce" id="76sdlB8tLXe" role="3clFbG">
                     <node concept="37vLTw" id="PUMJsq1uJR" role="2Oq$k0">
                       <ref role="3cqZAo" node="gkhJ4LmDB6" resolve="myRevisionsExtractor" />
                     </node>
@@ -17734,13 +17737,38 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="DuTZ70T1yP" role="3cqZAp">
-          <node concept="37vLTI" id="DuTZ70T2pS" role="3clFbG">
-            <node concept="1rXfSq" id="DuTZ70T3yt" role="37vLTx">
-              <ref role="37wK5l" node="DuTZ70RXUn" resolve="createHistoryExtractor" />
+        <node concept="3J1_TO" id="50Es8_Sgswl" role="3cqZAp">
+          <node concept="3clFbS" id="50Es8_Sgswm" role="1zxBo7">
+            <node concept="3clFbF" id="DuTZ70T1yP" role="3cqZAp">
+              <node concept="37vLTI" id="DuTZ70T2pS" role="3clFbG">
+                <node concept="1rXfSq" id="DuTZ70T3yt" role="37vLTx">
+                  <ref role="37wK5l" node="DuTZ70RXUn" resolve="createHistoryExtractor" />
+                </node>
+                <node concept="37vLTw" id="DuTZ70T1yN" role="37vLTJ">
+                  <ref role="3cqZAo" node="gkhJ4LmDB6" resolve="myRevisionsExtractor" />
+                </node>
+              </node>
             </node>
-            <node concept="37vLTw" id="DuTZ70T1yN" role="37vLTJ">
-              <ref role="3cqZAo" node="gkhJ4LmDB6" resolve="myRevisionsExtractor" />
+          </node>
+          <node concept="3uVAMA" id="50Es8_Sgswo" role="1zxBo5">
+            <node concept="3clFbS" id="50Es8_Sgswp" role="1zc67A">
+              <node concept="3clFbF" id="50Es8_Sg$CH" role="3cqZAp">
+                <node concept="1rXfSq" id="50Es8_Sg$CG" role="3clFbG">
+                  <ref role="37wK5l" node="50Es8_SdTk_" resolve="showWarning" />
+                  <node concept="Xl_RD" id="4Fz4D9NSH2X" role="37wK5m">
+                    <property role="Xl_RC" value="Root history is not available until indices are built" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="50Es8_SgI4l" role="3cqZAp" />
+            </node>
+            <node concept="XOnhg" id="50Es8_Sgswq" role="1zc67B">
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="50Es8_Sgswr" role="1tU5fm">
+                <node concept="3uibUv" id="50Es8_Sgswn" role="nSUat">
+                  <ref role="3uigEE" to="5p6x:2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -17775,6 +17803,63 @@
             <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="50Es8_SdCET" role="jymVt" />
+    <node concept="3clFb_" id="50Es8_SdTk_" role="jymVt">
+      <property role="TrG5h" value="showWarning" />
+      <node concept="3clFbS" id="50Es8_SdTkC" role="3clF47">
+        <node concept="3clFbF" id="55zwzn2BgTm" role="3cqZAp">
+          <node concept="2OqwBi" id="55zwzn2BgTn" role="3clFbG">
+            <node concept="2YIFZM" id="55zwzn2BgTo" role="2Oq$k0">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+            <node concept="liA8E" id="55zwzn2BgTp" role="2OqNvi">
+              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+              <node concept="1bVj0M" id="55zwzn2BgTq" role="37wK5m">
+                <node concept="3clFbS" id="55zwzn2BgTr" role="1bW5cS">
+                  <node concept="3clFbF" id="55zwzn2BgTs" role="3cqZAp">
+                    <node concept="2OqwBi" id="55zwzn2BgTt" role="3clFbG">
+                      <node concept="liA8E" id="55zwzn2BgTu" role="2OqNvi">
+                        <ref role="37wK5l" to="jkny:~ToolWindowManager.notifyByBalloon(java.lang.String,com.intellij.openapi.ui.MessageType,java.lang.String)" resolve="notifyByBalloon" />
+                        <node concept="10M0yZ" id="55zwzn2BgTv" role="37wK5m">
+                          <ref role="3cqZAo" to="cyi7:~ChangesViewContentManager.TOOLWINDOW_ID" resolve="TOOLWINDOW_ID" />
+                          <ref role="1PxDUh" to="cyi7:~ChangesViewContentManager" resolve="ChangesViewContentManager" />
+                        </node>
+                        <node concept="10M0yZ" id="55zwzn2BgTw" role="37wK5m">
+                          <ref role="3cqZAo" to="jkm4:~MessageType.WARNING" resolve="WARNING" />
+                          <ref role="1PxDUh" to="jkm4:~MessageType" resolve="MessageType" />
+                        </node>
+                        <node concept="37vLTw" id="4Fz4D9NSWaY" role="37wK5m">
+                          <ref role="3cqZAo" node="4Fz4D9NSytH" resolve="warning" />
+                        </node>
+                      </node>
+                      <node concept="2YIFZM" id="55zwzn2BgTy" role="2Oq$k0">
+                        <ref role="37wK5l" to="jkny:~ToolWindowManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                        <ref role="1Pybhc" to="jkny:~ToolWindowManager" resolve="ToolWindowManager" />
+                        <node concept="2OqwBi" id="55zwzn2BgTz" role="37wK5m">
+                          <node concept="liA8E" id="55zwzn2BgT$" role="2OqNvi">
+                            <ref role="37wK5l" to="jlcu:~AbstractVcs.getProject()" resolve="getProject" />
+                          </node>
+                          <node concept="37vLTw" id="55zwzn2E0Vh" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3bEtkqd6gDd" resolve="myActiveVcs" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="50Es8_SdN5W" role="1B3o_S" />
+      <node concept="3cqZAl" id="50Es8_SdQOk" role="3clF45" />
+      <node concept="37vLTG" id="4Fz4D9NSytH" role="3clF46">
+        <property role="TrG5h" value="warning" />
+        <node concept="17QB3L" id="4Fz4D9NSytG" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="DuTZ70RB7P" role="jymVt" />
@@ -17834,6 +17919,9 @@
       <node concept="3Tm6S6" id="DuTZ70RNyT" role="1B3o_S" />
       <node concept="3uibUv" id="DuTZ70S7DX" role="3clF45">
         <ref role="3uigEE" node="4arIk_lVwRO" resolve="RevisionsExtractor" />
+      </node>
+      <node concept="3uibUv" id="50Es8_SgknL" role="Sfmx6">
+        <ref role="3uigEE" to="5p6x:2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
       </node>
     </node>
     <node concept="2tJIrI" id="4arIk_lSPJk" role="jymVt" />
@@ -23049,6 +23137,9 @@
             </node>
           </node>
         </node>
+      </node>
+      <node concept="3uibUv" id="50Es8_Sg7I1" role="Sfmx6">
+        <ref role="3uigEE" to="5p6x:2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
       </node>
     </node>
     <node concept="2tJIrI" id="4arIk_lPWEQ" role="jymVt" />

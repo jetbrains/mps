@@ -41,7 +41,7 @@ public final class CommitsGraph {
   @NotNull
   private final Collection<CommitsGraphNode> myNodes;
 
-  public CommitsGraph(@NotNull Project project, @NotNull VirtualFile file, @NotNull List<VcsFileRevision> revisions) {
+  public CommitsGraph(@NotNull Project project, @NotNull VirtualFile file, @NotNull List<VcsFileRevision> revisions) throws BuildException {
     myNodes = buildGraph(project, file, revisions);
   }
 
@@ -64,6 +64,17 @@ public final class CommitsGraph {
     return myNodes;
   }
 
+  public static class BuildException extends Exception {
+
+    private BuildException() {
+    }
+
+    @Override
+    public String getMessage() {
+      return "Could not build the commits graph";
+    }
+  }
+
   private static VirtualFile getRootFile(Project project, VirtualFile file) {
     FilePath filePath = VcsUtil.getFilePath(file);
     return VcsLogUtil.getActualRoot(project, filePath);
@@ -72,11 +83,11 @@ public final class CommitsGraph {
   @Nullable
   private static VcsLogData getDataManager(Project project) {
     VcsLogManager logManager = VcsProjectLog.getInstance(project).getLogManager();
-    return check_2ne4bd_a1a31(logManager);
+    return check_2ne4bd_a1a51(logManager);
   }
 
   @NotNull
-  private static Collection<CommitsGraphNode> buildGraph(Project project, VirtualFile file, Collection<VcsFileRevision> revisions) {
+  private static Collection<CommitsGraphNode> buildGraph(Project project, VirtualFile file, Collection<VcsFileRevision> revisions) throws BuildException {
 
     if (CollectionSequence.fromCollection(revisions).isEmpty()) {
       return Collections.emptyList();
@@ -106,20 +117,18 @@ public final class CommitsGraph {
 
     Set<Integer> commitIndices = SetSequence.fromSetWithValues(new HashSet<Integer>(), MapSequence.fromMap(commitIndexToNodeMap).keySet());
 
-    final VisibleGraph<Integer> visibleGraphNormal = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Normal, null, commitIndices);
-    final VisibleGraph<Integer> visibleGraphBek = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Bek, null, commitIndices);
+    VisibleGraph<Integer> visibleGraphNormal = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Normal, null, commitIndices);
+    VisibleGraph<Integer> visibleGraphBek = dataManager.getDataPack().getPermanentGraph().createVisibleGraph(PermanentGraph.SortType.Bek, null, commitIndices);
 
-    MapSequence.fromMap(commitIndexToNodeMap).visitAll(new IVisitor<IMapping<Integer, CommitsGraphNode>>() {
-      public void visit(IMapping<Integer, CommitsGraphNode> it) {
-        final CommitsGraphNode revisionNode = it.value();
-        int commitIndex = it.key();
-        ListSequence.fromList(getParents(visibleGraphNormal, commitIndex, commitIndexToNodeMap)).concat(ListSequence.fromList(getParents(visibleGraphBek, commitIndex, commitIndexToNodeMap))).distinct().visitAll(new IVisitor<CommitsGraphNode>() {
-          public void visit(CommitsGraphNode parent) {
-            revisionNode.addParent(parent);
-          }
-        });
-      }
-    });
+    for (IMapping<Integer, CommitsGraphNode> it : MapSequence.fromMap(commitIndexToNodeMap)) {
+      final CommitsGraphNode revisionNode = it.value();
+      int commitIndex = it.key();
+      ListSequence.fromList(getParents(visibleGraphNormal, commitIndex, commitIndexToNodeMap)).concat(ListSequence.fromList(getParents(visibleGraphBek, commitIndex, commitIndexToNodeMap))).distinct().visitAll(new IVisitor<CommitsGraphNode>() {
+        public void visit(CommitsGraphNode parent) {
+          revisionNode.addParent(parent);
+        }
+      });
+    }
 
     CollectionSequence.fromCollection(nodes).where(new IWhereFilter<CommitsGraphNode>() {
       public boolean accept(CommitsGraphNode it) {
@@ -133,8 +142,11 @@ public final class CommitsGraph {
     return (graphIsCorrect(nodes) ? nodes : buildLinearGraph(revisions));
   }
 
-  private static List<CommitsGraphNode> getParents(final VisibleGraph<Integer> graph, int commitIndex, final Map<Integer, CommitsGraphNode> commitIndexToNodeMap) {
-    int row = graph.getVisibleRowIndex(commitIndex);
+  private static List<CommitsGraphNode> getParents(final VisibleGraph<Integer> graph, int commitIndex, final Map<Integer, CommitsGraphNode> commitIndexToNodeMap) throws BuildException {
+    Integer row = graph.getVisibleRowIndex(commitIndex);
+    if (row == null) {
+      throw new BuildException();
+    }
     List<Integer> childRows = graph.getRowInfo(row).getAdjacentRows(true);
     return ListSequence.fromList(childRows).select(new ISelector<Integer, CommitsGraphNode>() {
       public CommitsGraphNode select(Integer row) {
@@ -193,7 +205,7 @@ public final class CommitsGraph {
     }
     return nodes;
   }
-  private static VcsLogData check_2ne4bd_a1a31(VcsLogManager checkedDotOperand) {
+  private static VcsLogData check_2ne4bd_a1a51(VcsLogManager checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getDataManager();
     }

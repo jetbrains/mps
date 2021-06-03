@@ -53,7 +53,12 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.util.BooleanGetter;
 import java.util.Collection;
+import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.util.ui.update.Update;
 import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
@@ -200,7 +205,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     closeOnEsc();
     setOnCloseHandler(new BooleanGetter() {
       public boolean get() {
-        return myRevisionsExtractor.stop();
+        return check_s4rg5p_a0a0a84a72(myRevisionsExtractor);
       }
     });
   }
@@ -208,13 +213,26 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   public void show(Collection<SNodeId> selection) {
     // for the moment, I support single node scenario. Moreover, root node, as DiffModelViewer (along with ChangeSet) is incapable to show changes for anything but root
     myRoot = selection.iterator().next();
-    myRevisionsExtractor = createHistoryExtractor();
+    try {
+      myRevisionsExtractor = createHistoryExtractor();
+    } catch (CommitsGraph.BuildException e) {
+      showWarning("Root history is not available until indices are built");
+      return;
+    }
     BackgroundTaskUtil.executeOnPooledThread(this, myRevisionsExtractor);
     updateRevisionList();
     show();
   }
 
-  private RevisionsExtractor createHistoryExtractor() {
+  private void showWarning(final String warning) {
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      public void run() {
+        ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning);
+      }
+    });
+  }
+
+  private RevisionsExtractor createHistoryExtractor() throws CommitsGraph.BuildException {
     if (myCompareModels) {
       return new RootModelHistoryExtractor(myMPSProject, myRevisions, myRoot, myActualFile, getUpdateListener());
     } else {
@@ -393,5 +411,11 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   public void dispose() {
     Disposer.dispose(myDiffPanel);
     super.dispose();
+  }
+  private static boolean check_s4rg5p_a0a0a84a72(RevisionsExtractor checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.stop();
+    }
+    return false;
   }
 }

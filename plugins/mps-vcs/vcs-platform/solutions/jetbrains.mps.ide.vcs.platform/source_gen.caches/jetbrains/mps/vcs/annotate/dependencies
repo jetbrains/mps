@@ -15,6 +15,9 @@
     <classNode dependClassName="com.intellij.openapi.wm.ToolWindowManager" />
     <classNode dependClassName="com.intellij.vcsUtil.VcsUtil" />
     <classNode dependClassName="git4idea.log.GitCommitTooltipLinkHandler" />
+    <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
@@ -28,6 +31,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.annotate.EditorAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RevisionChanges" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RootAnnotation" />
+    <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraph" />
     <classNode dependClassName="jetbrains.mps.vcs.history.RootCommitsGraphTraverser" />
     <classNode dependClassName="org.jetbrains.annotations.Nls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

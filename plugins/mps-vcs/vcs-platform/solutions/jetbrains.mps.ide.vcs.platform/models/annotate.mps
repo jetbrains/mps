@@ -78,7 +78,6 @@
     <import index="iho" ref="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)" />
     <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
     <import index="k3nr" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)" />
-    <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
   <registry>
@@ -7113,7 +7112,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="ppWmVbpCMS" role="Sfmx6">
-        <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+        <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
       </node>
       <node concept="37vLTG" id="6STmDFFcjAI" role="3clF46">
         <property role="TrG5h" value="currentModel" />
@@ -7124,6 +7123,9 @@
         <node concept="3uibUv" id="4sA_pTWFMYV" role="1tU5fm">
           <ref role="3uigEE" to="yah0:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
         </node>
+      </node>
+      <node concept="3uibUv" id="2dNLIDd3ZoG" role="Sfmx6">
+        <ref role="3uigEE" to="5p6x:2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
       </node>
     </node>
     <node concept="2tJIrI" id="3VCRAWhtqyE" role="jymVt" />
@@ -9181,10 +9183,10 @@
       <node concept="10P_77" id="24xC_Bf3CB_" role="1tU5fm" />
     </node>
     <node concept="312cEg" id="ppWmVbr$TQ" role="jymVt">
-      <property role="TrG5h" value="myAnnotateException" />
+      <property role="TrG5h" value="myException" />
       <node concept="3Tm6S6" id="ppWmVbrzbM" role="1B3o_S" />
-      <node concept="3uibUv" id="ppWmVbr$Lg" role="1tU5fm">
-        <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+      <node concept="3uibUv" id="2dNLIDd5pC0" role="1tU5fm">
+        <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
       </node>
     </node>
     <node concept="312cEg" id="5hLQ1IgAsZn" role="jymVt">
@@ -9833,8 +9835,8 @@
             <node concept="XOnhg" id="5uC3ja$bYBK" role="1zc67B">
               <property role="TrG5h" value="e" />
               <node concept="nSUau" id="5uC3ja$bYBL" role="1tU5fm">
-                <node concept="3uibUv" id="ppWmVbpzGt" role="nSUat">
-                  <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+                <node concept="3uibUv" id="4Fz4D9NMk8D" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
                 </node>
               </node>
             </node>
@@ -9845,7 +9847,7 @@
                     <ref role="3cqZAo" node="5uC3ja$bYBK" resolve="e" />
                   </node>
                   <node concept="37vLTw" id="ppWmVbrAig" role="37vLTJ">
-                    <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myAnnotateException" />
+                    <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myException" />
                   </node>
                 </node>
               </node>
@@ -9888,116 +9890,185 @@
     </node>
     <node concept="2tJIrI" id="5uC3ja$bJT0" role="jymVt" />
     <node concept="3clFb_" id="5uC3ja$bNdn" role="jymVt">
-      <property role="TrG5h" value="showWarning" />
+      <property role="TrG5h" value="handleException" />
       <node concept="3clFbS" id="5uC3ja$bNdq" role="3clF47">
-        <node concept="3cpWs8" id="tU0$taZ9G1" role="3cqZAp">
-          <node concept="3cpWsn" id="tU0$taZ9G2" role="3cpWs9">
-            <property role="TrG5h" value="number" />
-            <node concept="3uibUv" id="tU0$taZ9G3" role="1tU5fm">
-              <ref role="3uigEE" to="yah0:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
-            </node>
-            <node concept="2OqwBi" id="tU0$taZaBS" role="33vP2m">
-              <node concept="2OqwBi" id="tU0$taZaoC" role="2Oq$k0">
-                <node concept="37vLTw" id="tU0$taZaaY" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5uC3ja$bP12" resolve="e" />
-                </node>
-                <node concept="liA8E" id="tU0$taZard" role="2OqNvi">
-                  <ref role="37wK5l" to="5p6x:ppWmVbnc6k" resolve="getRevision" />
-                </node>
-              </node>
-              <node concept="liA8E" id="tU0$taZaQO" role="2OqNvi">
-                <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="55zwzn2BgSN" role="3cqZAp">
           <node concept="3cpWsn" id="55zwzn2BgSO" role="3cpWs9">
             <property role="TrG5h" value="warning" />
-            <property role="3TUv4t" value="true" />
             <node concept="17QB3L" id="55zwzn2BgSP" role="1tU5fm" />
-            <node concept="3cpWs3" id="7Kf$fJTtv9S" role="33vP2m">
-              <node concept="3cpWs3" id="ppWmVbpLrJ" role="3uHU7B">
-                <node concept="Xl_RD" id="ppWmVbpLU_" role="3uHU7w">
-                  <property role="Xl_RC" value=":\n" />
-                </node>
-                <node concept="3cpWs3" id="ppWmVbpGBT" role="3uHU7B">
-                  <node concept="3cpWs3" id="3dSM_t8KGi0" role="3uHU7B">
-                    <node concept="3cpWs3" id="3dSM_t8KVPa" role="3uHU7B">
-                      <node concept="Xl_RD" id="3dSM_t8KWoD" role="3uHU7w">
-                        <property role="Xl_RC" value=" annotation not complete.\n" />
-                      </node>
-                      <node concept="37vLTw" id="3dSM_t8KV19" role="3uHU7B">
-                        <ref role="3cqZAo" node="2oUJhLUd_8s" resolve="myRootName" />
-                      </node>
-                    </node>
-                    <node concept="Xl_RD" id="7Kf$fJTtwyD" role="3uHU7w">
-                      <property role="Xl_RC" value="Couldn't read root's model for commit " />
-                    </node>
-                  </node>
-                  <node concept="2YIFZM" id="tU0$taZ8BN" role="3uHU7w">
-                    <ref role="37wK5l" to="ewdr:~GitCommitTooltipLinkHandler.createLink(java.lang.String,com.intellij.openapi.vcs.history.VcsRevisionNumber)" resolve="createLink" />
-                    <ref role="1Pybhc" to="ewdr:~GitCommitTooltipLinkHandler" resolve="GitCommitTooltipLinkHandler" />
-                    <node concept="2OqwBi" id="tU0$taZbUA" role="37wK5m">
-                      <node concept="37vLTw" id="tU0$taZbex" role="2Oq$k0">
-                        <ref role="3cqZAo" node="tU0$taZ9G2" resolve="number" />
-                      </node>
-                      <node concept="liA8E" id="tU0$taZcnp" role="2OqNvi">
-                        <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="tU0$taZcWE" role="37wK5m">
-                      <ref role="3cqZAo" node="tU0$taZ9G2" resolve="number" />
-                    </node>
-                  </node>
-                </node>
+            <node concept="3cpWs3" id="3dSM_t8KVPa" role="33vP2m">
+              <node concept="Xl_RD" id="3dSM_t8KWoD" role="3uHU7w">
+                <property role="Xl_RC" value=" annotation not complete\n" />
               </node>
-              <node concept="2OqwBi" id="ppWmVbpKwa" role="3uHU7w">
-                <node concept="37vLTw" id="ppWmVbpKae" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5uC3ja$bP12" resolve="e" />
-                </node>
-                <node concept="liA8E" id="tU0$taY85S" role="2OqNvi">
-                  <ref role="37wK5l" to="5p6x:ppWmVbndjH" resolve="getText" />
-                </node>
+              <node concept="37vLTw" id="3dSM_t8KV19" role="3uHU7B">
+                <ref role="3cqZAo" node="2oUJhLUd_8s" resolve="myRootName" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="tU0$taZ3bT" role="3cqZAp" />
-        <node concept="3clFbF" id="55zwzn2BgTm" role="3cqZAp">
-          <node concept="2OqwBi" id="55zwzn2BgTn" role="3clFbG">
-            <node concept="2YIFZM" id="55zwzn2BgTo" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+        <node concept="3clFbJ" id="2dNLIDd60B8" role="3cqZAp">
+          <node concept="3clFbS" id="2dNLIDd60Ba" role="3clFbx">
+            <node concept="3cpWs8" id="2dNLIDd6oB7" role="3cqZAp">
+              <node concept="3cpWsn" id="2dNLIDd6oB8" role="3cpWs9">
+                <property role="TrG5h" value="e" />
+                <node concept="3uibUv" id="2dNLIDd6oB9" role="1tU5fm">
+                  <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
+                </node>
+                <node concept="0kSF2" id="2dNLIDd6tDC" role="33vP2m">
+                  <node concept="3uibUv" id="2dNLIDd6tDF" role="0kSFW">
+                    <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
+                  </node>
+                  <node concept="37vLTw" id="2dNLIDd6rDx" role="0kSFX">
+                    <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myException" />
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="liA8E" id="55zwzn2BgTp" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
-              <node concept="1bVj0M" id="55zwzn2BgTq" role="37wK5m">
-                <node concept="3clFbS" id="55zwzn2BgTr" role="1bW5cS">
-                  <node concept="3clFbF" id="55zwzn2BgTs" role="3cqZAp">
-                    <node concept="2OqwBi" id="55zwzn2BgTt" role="3clFbG">
-                      <node concept="liA8E" id="55zwzn2BgTu" role="2OqNvi">
-                        <ref role="37wK5l" to="jkny:~ToolWindowManager.notifyByBalloon(java.lang.String,com.intellij.openapi.ui.MessageType,java.lang.String)" resolve="notifyByBalloon" />
-                        <node concept="10M0yZ" id="55zwzn2BgTv" role="37wK5m">
-                          <ref role="1PxDUh" to="cyi7:~ChangesViewContentManager" resolve="ChangesViewContentManager" />
-                          <ref role="3cqZAo" to="cyi7:~ChangesViewContentManager.TOOLWINDOW_ID" resolve="TOOLWINDOW_ID" />
+            <node concept="3cpWs8" id="tU0$taZ9G1" role="3cqZAp">
+              <node concept="3cpWsn" id="tU0$taZ9G2" role="3cpWs9">
+                <property role="TrG5h" value="number" />
+                <node concept="3uibUv" id="tU0$taZ9G3" role="1tU5fm">
+                  <ref role="3uigEE" to="yah0:~VcsRevisionNumber" resolve="VcsRevisionNumber" />
+                </node>
+                <node concept="2OqwBi" id="tU0$taZaBS" role="33vP2m">
+                  <node concept="2OqwBi" id="tU0$taZaoC" role="2Oq$k0">
+                    <node concept="37vLTw" id="2dNLIDd6vuP" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2dNLIDd6oB8" resolve="e" />
+                    </node>
+                    <node concept="liA8E" id="tU0$taZard" role="2OqNvi">
+                      <ref role="37wK5l" to="5p6x:ppWmVbnc6k" resolve="getRevision" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="tU0$taZaQO" role="2OqNvi">
+                    <ref role="37wK5l" to="yah0:~VcsRevisionDescription.getRevisionNumber()" resolve="getRevisionNumber" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2dNLIDd6a0l" role="3cqZAp">
+              <node concept="d57v9" id="2dNLIDd6VSH" role="3clFbG">
+                <node concept="37vLTw" id="2dNLIDd6VT0" role="37vLTJ">
+                  <ref role="3cqZAo" node="55zwzn2BgSO" resolve="warning" />
+                </node>
+                <node concept="3cpWs3" id="7Kf$fJTtv9S" role="37vLTx">
+                  <node concept="3cpWs3" id="ppWmVbpLrJ" role="3uHU7B">
+                    <node concept="Xl_RD" id="ppWmVbpLU_" role="3uHU7w">
+                      <property role="Xl_RC" value=":\n" />
+                    </node>
+                    <node concept="3cpWs3" id="ppWmVbpGBT" role="3uHU7B">
+                      <node concept="Xl_RD" id="7Kf$fJTtwyD" role="3uHU7B">
+                        <property role="Xl_RC" value="Couldn't read root's model for commit " />
+                      </node>
+                      <node concept="2YIFZM" id="tU0$taZ8BN" role="3uHU7w">
+                        <ref role="1Pybhc" to="ewdr:~GitCommitTooltipLinkHandler" resolve="GitCommitTooltipLinkHandler" />
+                        <ref role="37wK5l" to="ewdr:~GitCommitTooltipLinkHandler.createLink(java.lang.String,com.intellij.openapi.vcs.history.VcsRevisionNumber)" resolve="createLink" />
+                        <node concept="2OqwBi" id="tU0$taZbUA" role="37wK5m">
+                          <node concept="37vLTw" id="tU0$taZbex" role="2Oq$k0">
+                            <ref role="3cqZAo" node="tU0$taZ9G2" resolve="number" />
+                          </node>
+                          <node concept="liA8E" id="tU0$taZcnp" role="2OqNvi">
+                            <ref role="37wK5l" to="yah0:~VcsRevisionNumber.asString()" resolve="asString" />
+                          </node>
                         </node>
-                        <node concept="10M0yZ" id="55zwzn2BgTw" role="37wK5m">
+                        <node concept="37vLTw" id="tU0$taZcWE" role="37wK5m">
+                          <ref role="3cqZAo" node="tU0$taZ9G2" resolve="number" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="ppWmVbpKwa" role="3uHU7w">
+                    <node concept="37vLTw" id="ppWmVbpKae" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2dNLIDd6oB8" resolve="e" />
+                    </node>
+                    <node concept="liA8E" id="tU0$taY85S" role="2OqNvi">
+                      <ref role="37wK5l" to="5p6x:ppWmVbndjH" resolve="getText" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="2dNLIDd64Fu" role="3clFbw">
+            <node concept="3uibUv" id="2dNLIDd66s0" role="2ZW6by">
+              <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
+            </node>
+            <node concept="37vLTw" id="2dNLIDd62D8" role="2ZW6bz">
+              <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myException" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2dNLIDd6IDd" role="3cqZAp">
+          <node concept="3clFbS" id="2dNLIDd6IDf" role="3clFbx">
+            <node concept="3clFbF" id="2dNLIDd6Q4f" role="3cqZAp">
+              <node concept="d57v9" id="2dNLIDd6ZNH" role="3clFbG">
+                <node concept="37vLTw" id="2dNLIDd6ZNK" role="37vLTJ">
+                  <ref role="3cqZAo" node="55zwzn2BgSO" resolve="warning" />
+                </node>
+                <node concept="Xl_RD" id="2dNLIDd7125" role="37vLTx">
+                  <property role="Xl_RC" value="Annotation is not available until indices are built" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="2dNLIDd6MVK" role="3clFbw">
+            <node concept="3uibUv" id="2dNLIDd6OHU" role="2ZW6by">
+              <ref role="3uigEE" to="5p6x:2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
+            </node>
+            <node concept="37vLTw" id="2dNLIDd6KP8" role="2ZW6bz">
+              <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myException" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4Fz4D9NUcdM" role="3cqZAp">
+          <node concept="1rXfSq" id="4Fz4D9NUcdK" role="3clFbG">
+            <ref role="37wK5l" node="4Fz4D9NU78J" resolve="showWarning" />
+            <node concept="37vLTw" id="4Fz4D9NUeir" role="37wK5m">
+              <ref role="3cqZAo" node="55zwzn2BgSO" resolve="warning" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="5uC3ja$bLFG" role="1B3o_S" />
+      <node concept="3cqZAl" id="5uC3ja$bN5_" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="4Fz4D9NU3jd" role="jymVt" />
+    <node concept="3clFb_" id="4Fz4D9NU78J" role="jymVt">
+      <property role="TrG5h" value="showWarning" />
+      <node concept="3clFbS" id="4Fz4D9NU78M" role="3clF47">
+        <node concept="3clFbF" id="4Fz4D9NU9gb" role="3cqZAp">
+          <node concept="2OqwBi" id="4Fz4D9NU9gc" role="3clFbG">
+            <node concept="2YIFZM" id="4Fz4D9NU9gd" role="2Oq$k0">
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+            </node>
+            <node concept="liA8E" id="4Fz4D9NU9ge" role="2OqNvi">
+              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+              <node concept="1bVj0M" id="4Fz4D9NU9gf" role="37wK5m">
+                <node concept="3clFbS" id="4Fz4D9NU9gg" role="1bW5cS">
+                  <node concept="3clFbF" id="4Fz4D9NU9gh" role="3cqZAp">
+                    <node concept="2OqwBi" id="4Fz4D9NU9gi" role="3clFbG">
+                      <node concept="liA8E" id="4Fz4D9NU9gj" role="2OqNvi">
+                        <ref role="37wK5l" to="jkny:~ToolWindowManager.notifyByBalloon(java.lang.String,com.intellij.openapi.ui.MessageType,java.lang.String)" resolve="notifyByBalloon" />
+                        <node concept="10M0yZ" id="4Fz4D9NU9gk" role="37wK5m">
+                          <ref role="3cqZAo" to="cyi7:~ChangesViewContentManager.TOOLWINDOW_ID" resolve="TOOLWINDOW_ID" />
+                          <ref role="1PxDUh" to="cyi7:~ChangesViewContentManager" resolve="ChangesViewContentManager" />
+                        </node>
+                        <node concept="10M0yZ" id="4Fz4D9NU9gl" role="37wK5m">
                           <ref role="3cqZAo" to="jkm4:~MessageType.WARNING" resolve="WARNING" />
                           <ref role="1PxDUh" to="jkm4:~MessageType" resolve="MessageType" />
                         </node>
-                        <node concept="37vLTw" id="55zwzn2BgTx" role="37wK5m">
-                          <ref role="3cqZAo" node="55zwzn2BgSO" resolve="warning" />
+                        <node concept="37vLTw" id="4Fz4D9NU9gm" role="37wK5m">
+                          <ref role="3cqZAo" node="4Fz4D9NU8gI" resolve="warning" />
                         </node>
                       </node>
-                      <node concept="2YIFZM" id="55zwzn2BgTy" role="2Oq$k0">
+                      <node concept="2YIFZM" id="4Fz4D9NU9gn" role="2Oq$k0">
                         <ref role="1Pybhc" to="jkny:~ToolWindowManager" resolve="ToolWindowManager" />
                         <ref role="37wK5l" to="jkny:~ToolWindowManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-                        <node concept="2OqwBi" id="55zwzn2BgTz" role="37wK5m">
-                          <node concept="liA8E" id="55zwzn2BgT$" role="2OqNvi">
+                        <node concept="2OqwBi" id="4Fz4D9NU9go" role="37wK5m">
+                          <node concept="liA8E" id="4Fz4D9NU9gp" role="2OqNvi">
                             <ref role="37wK5l" to="jlcu:~AbstractVcs.getProject()" resolve="getProject" />
                           </node>
-                          <node concept="37vLTw" id="55zwzn2E0Vh" role="2Oq$k0">
+                          <node concept="37vLTw" id="4Fz4D9NU9gq" role="2Oq$k0">
                             <ref role="3cqZAo" node="55zwzn2DFX5" resolve="myActiveVcs" />
                           </node>
                         </node>
@@ -10010,13 +10081,11 @@
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="5uC3ja$bLFG" role="1B3o_S" />
-      <node concept="3cqZAl" id="5uC3ja$bN5_" role="3clF45" />
-      <node concept="37vLTG" id="5uC3ja$bP12" role="3clF46">
-        <property role="TrG5h" value="e" />
-        <node concept="3uibUv" id="ppWmVbpFw6" role="1tU5fm">
-          <ref role="3uigEE" to="5p6x:ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
-        </node>
+      <node concept="3Tm6S6" id="4Fz4D9NU5uN" role="1B3o_S" />
+      <node concept="3cqZAl" id="4Fz4D9NU6Kb" role="3clF45" />
+      <node concept="37vLTG" id="4Fz4D9NU8gI" role="3clF46">
+        <property role="TrG5h" value="warning" />
+        <node concept="17QB3L" id="4Fz4D9NU8gH" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="4IUctdbPuSG" role="jymVt" />
@@ -10096,19 +10165,16 @@
         </node>
         <node concept="3clFbJ" id="ppWmVbrCFH" role="3cqZAp">
           <node concept="3clFbS" id="ppWmVbrCFJ" role="3clFbx">
-            <node concept="3clFbF" id="ppWmVbrFlu" role="3cqZAp">
-              <node concept="1rXfSq" id="ppWmVbrFls" role="3clFbG">
-                <ref role="37wK5l" node="5uC3ja$bNdn" resolve="showWarning" />
-                <node concept="37vLTw" id="ppWmVbrGbD" role="37wK5m">
-                  <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myAnnotateException" />
-                </node>
+            <node concept="3clFbF" id="2dNLIDd5Juj" role="3cqZAp">
+              <node concept="1rXfSq" id="2dNLIDd5Juh" role="3clFbG">
+                <ref role="37wK5l" node="5uC3ja$bNdn" resolve="handleException" />
               </node>
             </node>
           </node>
           <node concept="3y3z36" id="ppWmVbrE19" role="3clFbw">
             <node concept="10Nm6u" id="ppWmVbrEAL" role="3uHU7w" />
             <node concept="37vLTw" id="ppWmVbrDpD" role="3uHU7B">
-              <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myAnnotateException" />
+              <ref role="3cqZAo" node="ppWmVbr$TQ" resolve="myException" />
             </node>
           </node>
         </node>

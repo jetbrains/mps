@@ -38,7 +38,7 @@ public final class RootCommitsGraphTraverser {
   private final SNodeId myRootId;
   private final boolean myTolerateReadModelFailure = true;
   private boolean myIsStopped = false;
-  private AnnotateModelReadException myException;
+  private ModelReadException myException;
   @NotNull
   private final CommitsGraphNode myStartNode;
 
@@ -55,7 +55,7 @@ public final class RootCommitsGraphTraverser {
     try {
       myStartNode.loadModel(null, myFile.getExtension());
     } catch (Throwable e) {
-      myException = new AnnotateModelReadException(myStartNode.getRevision(), e.getMessage());
+      myException = new ModelReadException(myStartNode.getRevision(), e.getMessage());
     }
     if (!(myStartNode.isModelLoaded())) {
       return;
@@ -68,7 +68,7 @@ public final class RootCommitsGraphTraverser {
       if (!(node.isIgnored())) {
         try {
           loadParentsModels(node);
-        } catch (AnnotateModelReadException e) {
+        } catch (ModelReadException e) {
           myException = e;
         }
         processNode(node);
@@ -83,17 +83,17 @@ public final class RootCommitsGraphTraverser {
     }
   }
 
-  public AnnotateModelReadException getException() {
+  public ModelReadException getException() {
     return myException;
   }
 
-  private void loadParentsModels(CommitsGraphNode node) throws AnnotateModelReadException {
+  private void loadParentsModels(CommitsGraphNode node) throws ModelReadException {
     for (CommitsGraphNode parent : node.getParents()) {
       loadParentModel(node, parent);
     }
   }
 
-  private void loadParentModel(@NotNull CommitsGraphNode node, @NotNull CommitsGraphNode parent) throws AnnotateModelReadException {
+  private void loadParentModel(@NotNull CommitsGraphNode node, @NotNull CommitsGraphNode parent) throws ModelReadException {
     if (parent.getLoadedModel() != null) {
       return;
     }
@@ -101,7 +101,7 @@ public final class RootCommitsGraphTraverser {
       parent.loadModel(node, myFile.getExtension());
     } catch (Throwable e) {
       if (!(myTolerateReadModelFailure)) {
-        throw new AnnotateModelReadException(parent.getRevision(), e.getMessage());
+        throw new ModelReadException(parent.getRevision(), e.getMessage());
       }
     }
     if (parent.getLoadedModel().getNode(myRootId) == null) {
@@ -113,19 +113,19 @@ public final class RootCommitsGraphTraverser {
         if (dd.getModelData() instanceof InvalidSModel) {
           InvalidSModel ism = (InvalidSModel) dd.getModelData();
           for (SModel.Problem problem : ism.getProblems()) {
-            throw new AnnotateModelReadException(parent.getRevision(), problem.getText());
+            throw new ModelReadException(parent.getRevision(), problem.getText());
           }
         }
       }
     }
   }
 
-  public static class AnnotateModelReadException extends Exception {
+  public static class ModelReadException extends Exception {
 
     private final VcsFileRevision myRevision;
     private final String myText;
 
-    public AnnotateModelReadException(VcsFileRevision myRevision, String myCause) {
+    public ModelReadException(VcsFileRevision myRevision, String myCause) {
       super();
       this.myRevision = myRevision;
       this.myText = myCause;

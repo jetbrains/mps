@@ -46,7 +46,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
   private final RootCommitsGraphTraverser myRootCommitsGraphTraverser;
 
 
-  /*package*/ RootModelHistoryExtractor(MPSProject project, List<VcsFileRevision> revisions, SNodeId root, VirtualFile file, Runnable onUpdate) {
+  /*package*/ RootModelHistoryExtractor(MPSProject project, List<VcsFileRevision> revisions, SNodeId root, VirtualFile file, Runnable onUpdate) throws CommitsGraph.BuildException {
     myProject = project;
     myLocalRevision = ((CurrentRevision) revisions.get(0));
     myRootId = root;

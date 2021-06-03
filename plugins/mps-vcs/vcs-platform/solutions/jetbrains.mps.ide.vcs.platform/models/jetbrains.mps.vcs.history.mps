@@ -3034,7 +3034,7 @@
     <node concept="312cEg" id="41u046VcRLO" role="jymVt">
       <property role="TrG5h" value="myException" />
       <node concept="3uibUv" id="ppWmVboy8i" role="1tU5fm">
-        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
       </node>
       <node concept="3Tm6S6" id="41u046VcRLQ" role="1B3o_S" />
     </node>
@@ -3160,7 +3160,7 @@
                   </node>
                   <node concept="2ShNRf" id="ppWmVboz4L" role="37vLTx">
                     <node concept="1pGfFk" id="ppWmVbo_wB" role="2ShVmc">
-                      <ref role="37wK5l" node="ppWmVbn9sz" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+                      <ref role="37wK5l" node="ppWmVbn9sz" resolve="RootCommitsGraphTraverser.ModelReadException" />
                       <node concept="2OqwBi" id="ppWmVboA3V" role="37wK5m">
                         <node concept="liA8E" id="ppWmVboAfR" role="2OqNvi">
                           <ref role="37wK5l" node="6wgNI6tC_ug" resolve="getRevision" />
@@ -3264,7 +3264,7 @@
                       <property role="TrG5h" value="e" />
                       <node concept="nSUau" id="7Kf$fJTqGb_" role="1tU5fm">
                         <node concept="3uibUv" id="ppWmVboxVk" role="nSUat">
-                          <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+                          <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
                         </node>
                       </node>
                     </node>
@@ -3355,7 +3355,7 @@
       </node>
       <node concept="3Tm1VV" id="7Kf$fJTqKDB" role="1B3o_S" />
       <node concept="3uibUv" id="tU0$taY1$J" role="3clF45">
-        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
       </node>
     </node>
     <node concept="2tJIrI" id="7Kf$fJTmzVM" role="jymVt" />
@@ -3401,7 +3401,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="ppWmVbotb0" role="Sfmx6">
-        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
       </node>
     </node>
     <node concept="2tJIrI" id="3tdNeKHdbYX" role="jymVt" />
@@ -3455,7 +3455,7 @@
                   <node concept="YS8fn" id="ppWmVbowuD" role="3cqZAp">
                     <node concept="2ShNRf" id="ppWmVbowuE" role="YScLw">
                       <node concept="1pGfFk" id="ppWmVbowuF" role="2ShVmc">
-                        <ref role="37wK5l" node="ppWmVbn9sz" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+                        <ref role="37wK5l" node="ppWmVbn9sz" resolve="RootCommitsGraphTraverser.ModelReadException" />
                         <node concept="2OqwBi" id="ppWmVbowuG" role="37wK5m">
                           <node concept="37vLTw" id="3tdNeKHdB1r" role="2Oq$k0">
                             <ref role="3cqZAo" node="3tdNeKHdtxC" resolve="parent" />
@@ -3579,7 +3579,7 @@
                         <node concept="YS8fn" id="ppWmVbnery" role="3cqZAp">
                           <node concept="2ShNRf" id="ppWmVbne_g" role="YScLw">
                             <node concept="1pGfFk" id="ppWmVbnXWT" role="2ShVmc">
-                              <ref role="37wK5l" node="ppWmVbn9sz" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+                              <ref role="37wK5l" node="ppWmVbn9sz" resolve="RootCommitsGraphTraverser.ModelReadException" />
                               <node concept="2OqwBi" id="ppWmVbnYtW" role="37wK5m">
                                 <node concept="37vLTw" id="3tdNeKHdDaQ" role="2Oq$k0">
                                   <ref role="3cqZAo" node="3tdNeKHdtxC" resolve="parent" />
@@ -3686,12 +3686,12 @@
         </node>
       </node>
       <node concept="3uibUv" id="3tdNeKHd$rG" role="Sfmx6">
-        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.AnnotateModelReadException" />
+        <ref role="3uigEE" node="ppWmVbn2sc" resolve="RootCommitsGraphTraverser.ModelReadException" />
       </node>
     </node>
     <node concept="2tJIrI" id="ppWmVbmRx0" role="jymVt" />
     <node concept="312cEu" id="ppWmVbn2sc" role="jymVt">
-      <property role="TrG5h" value="AnnotateModelReadException" />
+      <property role="TrG5h" value="ModelReadException" />
       <node concept="2tJIrI" id="ppWmVbn5kJ" role="jymVt" />
       <node concept="312cEg" id="ppWmVbn8h4" role="jymVt">
         <property role="TrG5h" value="myRevision" />
@@ -4860,6 +4860,9 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
+      <node concept="3uibUv" id="2dNLIDd3KhS" role="Sfmx6">
+        <ref role="3uigEE" node="2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
+      </node>
     </node>
     <node concept="2tJIrI" id="4aYE7KdduER" role="jymVt" />
     <node concept="3clFb_" id="4aYE7KddEyX" role="jymVt">
@@ -4991,6 +4994,36 @@
         <node concept="3uibUv" id="4aYE7Kdjzm_" role="3O5elw">
           <ref role="3uigEE" node="6wgNI6tBJvh" resolve="CommitsGraphNode" />
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2dNLIDd2okS" role="jymVt" />
+    <node concept="312cEu" id="2dNLIDd2q60" role="jymVt">
+      <property role="TrG5h" value="BuildException" />
+      <node concept="2tJIrI" id="4Fz4D9NL5$K" role="jymVt" />
+      <node concept="3clFbW" id="4Fz4D9NKXWo" role="jymVt">
+        <node concept="3cqZAl" id="4Fz4D9NKXWq" role="3clF45" />
+        <node concept="3Tm6S6" id="4Fz4D9NL16f" role="1B3o_S" />
+        <node concept="3clFbS" id="4Fz4D9NKXWs" role="3clF47" />
+      </node>
+      <node concept="2tJIrI" id="4Fz4D9NL4_e" role="jymVt" />
+      <node concept="3clFb_" id="2dNLIDd2uB1" role="jymVt">
+        <property role="TrG5h" value="getMessage" />
+        <node concept="3Tm1VV" id="2dNLIDd2uB2" role="1B3o_S" />
+        <node concept="17QB3L" id="2dNLIDd2$UV" role="3clF45" />
+        <node concept="3clFbS" id="2dNLIDd2uB6" role="3clF47">
+          <node concept="3cpWs6" id="2dNLIDd49fM" role="3cqZAp">
+            <node concept="Xl_RD" id="2dNLIDd4ayZ" role="3cqZAk">
+              <property role="Xl_RC" value="Could not build the commits graph" />
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="2dNLIDd2uB7" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2dNLIDd2q6G" role="1B3o_S" />
+      <node concept="3uibUv" id="2dNLIDd2q6H" role="1zkMxy">
+        <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
       </node>
     </node>
     <node concept="2tJIrI" id="4aYE7Kdh4Mw" role="jymVt" />
@@ -5313,14 +5346,14 @@
             </node>
             <node concept="2ShNRf" id="5OZff9qfsPd" role="33vP2m">
               <node concept="2i4dXS" id="5OZff9qfsPe" role="2ShVmc">
-                <node concept="3uibUv" id="5OZff9qfsPf" role="HW$YZ">
-                  <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
-                </node>
                 <node concept="2OqwBi" id="5OZff9qfsPg" role="I$8f6">
                   <node concept="37vLTw" id="5OZff9qfsPh" role="2Oq$k0">
                     <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
                   </node>
                   <node concept="3lbrtF" id="5OZff9qfsPi" role="2OqNvi" />
+                </node>
+                <node concept="3uibUv" id="5OZff9qfsPf" role="HW$YZ">
+                  <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
                 </node>
               </node>
             </node>
@@ -5402,102 +5435,95 @@
           </node>
         </node>
         <node concept="3clFbH" id="6ZCt8kQ5W4w" role="3cqZAp" />
-        <node concept="3clFbF" id="5OZff9qfsPz" role="3cqZAp">
-          <node concept="2OqwBi" id="5OZff9qfsP$" role="3clFbG">
-            <node concept="37vLTw" id="5OZff9qfsP_" role="2Oq$k0">
-              <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
-            </node>
-            <node concept="2es0OD" id="5OZff9qfsPA" role="2OqNvi">
-              <node concept="1bVj0M" id="5OZff9qfsPB" role="23t8la">
-                <node concept="3clFbS" id="5OZff9qfsPC" role="1bW5cS">
-                  <node concept="3cpWs8" id="5OZff9qfsPD" role="3cqZAp">
-                    <node concept="3cpWsn" id="5OZff9qfsPE" role="3cpWs9">
-                      <property role="TrG5h" value="revisionNode" />
-                      <node concept="3uibUv" id="5OZff9qfsPF" role="1tU5fm">
-                        <ref role="3uigEE" node="6wgNI6tBJvh" resolve="CommitsGraphNode" />
-                      </node>
-                      <node concept="2OqwBi" id="5OZff9qfsPG" role="33vP2m">
-                        <node concept="37vLTw" id="5OZff9qfsPH" role="2Oq$k0">
-                          <ref role="3cqZAo" node="5OZff9qfsQ$" resolve="it" />
-                        </node>
-                        <node concept="3AV6Ez" id="5OZff9qfsPI" role="2OqNvi" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3cpWs8" id="5OZff9qfsPJ" role="3cqZAp">
-                    <node concept="3cpWsn" id="5OZff9qfsPK" role="3cpWs9">
-                      <property role="TrG5h" value="commitIndex" />
-                      <node concept="10Oyi0" id="5OZff9qfsPL" role="1tU5fm" />
-                      <node concept="2OqwBi" id="5OZff9qfsPM" role="33vP2m">
-                        <node concept="37vLTw" id="5OZff9qfsPN" role="2Oq$k0">
-                          <ref role="3cqZAo" node="5OZff9qfsQ$" resolve="it" />
-                        </node>
-                        <node concept="3AY5_j" id="5OZff9qfsPO" role="2OqNvi" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3clFbF" id="6ZCt8kQ73eg" role="3cqZAp">
-                    <node concept="2OqwBi" id="6ZCt8kQ7pJr" role="3clFbG">
-                      <node concept="2OqwBi" id="6ZCt8kQ7mlA" role="2Oq$k0">
-                        <node concept="2OqwBi" id="6ZCt8kQ79J5" role="2Oq$k0">
-                          <node concept="1rXfSq" id="6ZCt8kQ73ee" role="2Oq$k0">
-                            <ref role="37wK5l" node="6ZCt8kQ6com" resolve="getParents" />
-                            <node concept="37vLTw" id="6ZCt8kQ74FQ" role="37wK5m">
-                              <ref role="3cqZAo" node="5OZff9qfsPl" resolve="visibleGraphNormal" />
-                            </node>
-                            <node concept="37vLTw" id="6ZCt8kQ76vp" role="37wK5m">
-                              <ref role="3cqZAo" node="5OZff9qfsPK" resolve="commitIndex" />
-                            </node>
-                            <node concept="37vLTw" id="6ZCt8kQ78uT" role="37wK5m">
-                              <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
-                            </node>
-                          </node>
-                          <node concept="3QWeyG" id="6ZCt8kQ7b3N" role="2OqNvi">
-                            <node concept="1rXfSq" id="6ZCt8kQ7ftC" role="576Qk">
-                              <ref role="37wK5l" node="6ZCt8kQ6com" resolve="getParents" />
-                              <node concept="37vLTw" id="6ZCt8kQ7h0M" role="37wK5m">
-                                <ref role="3cqZAo" node="6ZCt8kQ5R68" resolve="visibleGraphBek" />
-                              </node>
-                              <node concept="37vLTw" id="6ZCt8kQ7iMT" role="37wK5m">
-                                <ref role="3cqZAo" node="5OZff9qfsPK" resolve="commitIndex" />
-                              </node>
-                              <node concept="37vLTw" id="6ZCt8kQ7lhI" role="37wK5m">
-                                <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="1VAtEI" id="6ZCt8kQ7otj" role="2OqNvi" />
-                      </node>
-                      <node concept="2es0OD" id="6ZCt8kQ7rb1" role="2OqNvi">
-                        <node concept="1bVj0M" id="6ZCt8kQ7rb3" role="23t8la">
-                          <node concept="3clFbS" id="6ZCt8kQ7rb4" role="1bW5cS">
-                            <node concept="3clFbF" id="6ZCt8kQ7scU" role="3cqZAp">
-                              <node concept="2OqwBi" id="6ZCt8kQ7t77" role="3clFbG">
-                                <node concept="37vLTw" id="6ZCt8kQ7scT" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5OZff9qfsPE" resolve="revisionNode" />
-                                </node>
-                                <node concept="liA8E" id="6ZCt8kQ7uGI" role="2OqNvi">
-                                  <ref role="37wK5l" node="6wgNI6tC04f" resolve="addParent" />
-                                  <node concept="37vLTw" id="6ZCt8kQ7vHu" role="37wK5m">
-                                    <ref role="3cqZAo" node="6ZCt8kQ7rb5" resolve="parent" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="Rh6nW" id="6ZCt8kQ7rb5" role="1bW2Oz">
-                            <property role="TrG5h" value="parent" />
-                            <node concept="2jxLKc" id="6ZCt8kQ7rb6" role="1tU5fm" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+        <node concept="2Gpval" id="2dNLIDd3D7j" role="3cqZAp">
+          <node concept="2GrKxI" id="2dNLIDd3D7l" role="2Gsz3X">
+            <property role="TrG5h" value="it" />
+          </node>
+          <node concept="37vLTw" id="2dNLIDd3E8U" role="2GsD0m">
+            <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
+          </node>
+          <node concept="3clFbS" id="2dNLIDd3D7p" role="2LFqv$">
+            <node concept="3cpWs8" id="5OZff9qfsPD" role="3cqZAp">
+              <node concept="3cpWsn" id="5OZff9qfsPE" role="3cpWs9">
+                <property role="TrG5h" value="revisionNode" />
+                <node concept="3uibUv" id="5OZff9qfsPF" role="1tU5fm">
+                  <ref role="3uigEE" node="6wgNI6tBJvh" resolve="CommitsGraphNode" />
                 </node>
-                <node concept="Rh6nW" id="5OZff9qfsQ$" role="1bW2Oz">
-                  <property role="TrG5h" value="it" />
-                  <node concept="2jxLKc" id="5OZff9qfsQ_" role="1tU5fm" />
+                <node concept="2OqwBi" id="5OZff9qfsPG" role="33vP2m">
+                  <node concept="2GrUjf" id="2dNLIDd3IeZ" role="2Oq$k0">
+                    <ref role="2Gs0qQ" node="2dNLIDd3D7l" resolve="it" />
+                  </node>
+                  <node concept="3AV6Ez" id="5OZff9qfsPI" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="5OZff9qfsPJ" role="3cqZAp">
+              <node concept="3cpWsn" id="5OZff9qfsPK" role="3cpWs9">
+                <property role="TrG5h" value="commitIndex" />
+                <node concept="10Oyi0" id="5OZff9qfsPL" role="1tU5fm" />
+                <node concept="2OqwBi" id="5OZff9qfsPM" role="33vP2m">
+                  <node concept="2GrUjf" id="2dNLIDd3Jbr" role="2Oq$k0">
+                    <ref role="2Gs0qQ" node="2dNLIDd3D7l" resolve="it" />
+                  </node>
+                  <node concept="3AY5_j" id="5OZff9qfsPO" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="6ZCt8kQ73eg" role="3cqZAp">
+              <node concept="2OqwBi" id="6ZCt8kQ7pJr" role="3clFbG">
+                <node concept="2OqwBi" id="6ZCt8kQ7mlA" role="2Oq$k0">
+                  <node concept="2OqwBi" id="6ZCt8kQ79J5" role="2Oq$k0">
+                    <node concept="1rXfSq" id="6ZCt8kQ73ee" role="2Oq$k0">
+                      <ref role="37wK5l" node="6ZCt8kQ6com" resolve="getParents" />
+                      <node concept="37vLTw" id="6ZCt8kQ74FQ" role="37wK5m">
+                        <ref role="3cqZAo" node="5OZff9qfsPl" resolve="visibleGraphNormal" />
+                      </node>
+                      <node concept="37vLTw" id="6ZCt8kQ76vp" role="37wK5m">
+                        <ref role="3cqZAo" node="5OZff9qfsPK" resolve="commitIndex" />
+                      </node>
+                      <node concept="37vLTw" id="6ZCt8kQ78uT" role="37wK5m">
+                        <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
+                      </node>
+                    </node>
+                    <node concept="3QWeyG" id="6ZCt8kQ7b3N" role="2OqNvi">
+                      <node concept="1rXfSq" id="6ZCt8kQ7ftC" role="576Qk">
+                        <ref role="37wK5l" node="6ZCt8kQ6com" resolve="getParents" />
+                        <node concept="37vLTw" id="6ZCt8kQ7h0M" role="37wK5m">
+                          <ref role="3cqZAo" node="6ZCt8kQ5R68" resolve="visibleGraphBek" />
+                        </node>
+                        <node concept="37vLTw" id="6ZCt8kQ7iMT" role="37wK5m">
+                          <ref role="3cqZAo" node="5OZff9qfsPK" resolve="commitIndex" />
+                        </node>
+                        <node concept="37vLTw" id="6ZCt8kQ7lhI" role="37wK5m">
+                          <ref role="3cqZAo" node="5OZff9qfsOc" resolve="commitIndexToNodeMap" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="1VAtEI" id="6ZCt8kQ7otj" role="2OqNvi" />
+                </node>
+                <node concept="2es0OD" id="6ZCt8kQ7rb1" role="2OqNvi">
+                  <node concept="1bVj0M" id="6ZCt8kQ7rb3" role="23t8la">
+                    <node concept="3clFbS" id="6ZCt8kQ7rb4" role="1bW5cS">
+                      <node concept="3clFbF" id="6ZCt8kQ7scU" role="3cqZAp">
+                        <node concept="2OqwBi" id="6ZCt8kQ7t77" role="3clFbG">
+                          <node concept="37vLTw" id="6ZCt8kQ7scT" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5OZff9qfsPE" resolve="revisionNode" />
+                          </node>
+                          <node concept="liA8E" id="6ZCt8kQ7uGI" role="2OqNvi">
+                            <ref role="37wK5l" node="6wgNI6tC04f" resolve="addParent" />
+                            <node concept="37vLTw" id="6ZCt8kQ7vHu" role="37wK5m">
+                              <ref role="3cqZAo" node="6ZCt8kQ7rb5" resolve="parent" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="6ZCt8kQ7rb5" role="1bW2Oz">
+                      <property role="TrG5h" value="parent" />
+                      <node concept="2jxLKc" id="6ZCt8kQ7rb6" role="1tU5fm" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -5608,6 +5634,9 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="5OZff9qfsRx" role="1B3o_S" />
+      <node concept="3uibUv" id="2dNLIDd3izI" role="Sfmx6">
+        <ref role="3uigEE" node="2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
+      </node>
     </node>
     <node concept="2tJIrI" id="6ZCt8kQ69nh" role="jymVt" />
     <node concept="2YIFZL" id="6ZCt8kQ6com" role="jymVt">
@@ -5638,7 +5667,6 @@
         <node concept="3cpWs8" id="6ZCt8kQ6gPJ" role="3cqZAp">
           <node concept="3cpWsn" id="6ZCt8kQ6gPK" role="3cpWs9">
             <property role="TrG5h" value="row" />
-            <node concept="10Oyi0" id="6ZCt8kQ6gPL" role="1tU5fm" />
             <node concept="2OqwBi" id="6ZCt8kQ6gPM" role="33vP2m">
               <node concept="37vLTw" id="6ZCt8kQ6hzK" role="2Oq$k0">
                 <ref role="3cqZAo" node="6ZCt8kQ6cXc" resolve="graph" />
@@ -5649,6 +5677,26 @@
                   <ref role="3cqZAo" node="6ZCt8kQ6d_e" resolve="commitIndex" />
                 </node>
               </node>
+            </node>
+            <node concept="3uibUv" id="7mXtwHycp6R" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7mXtwHycrEt" role="3cqZAp">
+          <node concept="3clFbS" id="7mXtwHycrEv" role="3clFbx">
+            <node concept="YS8fn" id="2dNLIDd3niw" role="3cqZAp">
+              <node concept="2ShNRf" id="2dNLIDd3olq" role="YScLw">
+                <node concept="1pGfFk" id="4Fz4D9NKZhx" role="2ShVmc">
+                  <ref role="37wK5l" node="4Fz4D9NKXWo" resolve="CommitsGraph.BuildException" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="7mXtwHycuLt" role="3clFbw">
+            <node concept="10Nm6u" id="7mXtwHycvUP" role="3uHU7w" />
+            <node concept="37vLTw" id="7mXtwHycsCx" role="3uHU7B">
+              <ref role="3cqZAo" node="6ZCt8kQ6gPK" resolve="row" />
             </node>
           </node>
         </node>
@@ -5734,6 +5782,9 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="6ZCt8kQ6cop" role="1B3o_S" />
+      <node concept="3uibUv" id="2dNLIDd3kQi" role="Sfmx6">
+        <ref role="3uigEE" node="2dNLIDd2q60" resolve="CommitsGraph.BuildException" />
+      </node>
     </node>
     <node concept="2tJIrI" id="5OZff9qeFCp" role="jymVt" />
     <node concept="2YIFZL" id="5OZff9qfpuf" role="jymVt">

@@ -72,7 +72,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     myProject = project;
   }
 
-  /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel, final VcsRevisionNumber revisionNumber) throws RootCommitsGraphTraverser.AnnotateModelReadException {
+  /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel, final VcsRevisionNumber revisionNumber) throws RootCommitsGraphTraverser.ModelReadException, CommitsGraph.BuildException {
     CommitsGraph commitsGraph = new CommitsGraph(myProject, myFile, revisions);
     CurrentRevision currentRevision = new CurrentRevision(myFile, new VcsRevisionNumber() {
       @Override

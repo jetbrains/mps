@@ -287,7 +287,9 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.progress.util.BackgroundTaskUtil" />
+    <classNode dependClassName="com.intellij.openapi.ui.MessageType" />
     <classNode dependClassName="com.intellij.openapi.ui.Splitter" />
     <classNode dependClassName="com.intellij.openapi.util.BooleanGetter" />
     <classNode dependClassName="com.intellij.openapi.util.Conditions" />
@@ -299,6 +301,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.issueLinks.IssueLinkHtmlRenderer" />
     <classNode dependClassName="com.intellij.openapi.vcs.changes.issueLinks.TableLinkMouseListener" />
+    <classNode dependClassName="com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.CurrentRevision" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.FileHistoryPanelImpl" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsDependentHistoryComponents" />
@@ -307,6 +310,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsHistorySession" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsRevisionNumber" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
+    <classNode dependClassName="com.intellij.openapi.wm.ToolWindowManager" />
     <classNode dependClassName="com.intellij.ui.BrowserHyperlinkListener" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
     <classNode dependClassName="com.intellij.ui.PopupHandler" />
@@ -351,6 +355,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootFileHistoryExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor" />
+    <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraph" />
     <classNode dependClassName="jetbrains.mps.vcs.platform.integration.ModelDiffViewer" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
     <classNode dependClassName="jetbrains.mps.vfs.tracking.ModelDiffContent" />
