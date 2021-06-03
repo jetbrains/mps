@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
-import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
@@ -57,14 +56,8 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
     myOwnSet = hasOwnSetter();
     myOwnValidate = hasOwnValidator();
 
-    if (!isBootstrapProperty(container.getConcept(), property)) {
-      getterDescriptor = deduceGet();
-      setterDescriptor = deduceSet();
-    } else {
-      getterDescriptor = null;
-      setterDescriptor = null;
-    }
-
+    getterDescriptor = deduceGet();
+    setterDescriptor = deduceSet();
     validatorDescriptor = deduceValidate();
   }
 
@@ -93,14 +86,6 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
 
   private PropertyConstraintsDescriptor deduceValidate() {
     return hasOwnValidator() ? this : getSomethingUsingInheritance(VALIDATOR_INHERITANCE_PARAMETERS);
-  }
-
-  @ToRemove(version = 3.5)
-  private static boolean isBootstrapProperty(SAbstractConcept concept, SProperty property) {
-    if (property.equals(SNodeUtil.property_INamedConcept_name) && concept.equals(SNodeUtil.concept_INamedConcept)) {
-      return true;
-    }
-    return property.getOwner().equals(SNodeUtil.concept_RuntimeTypeVariable);
   }
 
   @Nullable
