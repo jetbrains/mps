@@ -85,7 +85,7 @@ public class Lambda_Substitute extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        String smallPattern = pattern.substring(1);
+        String smallPattern = (pattern.length() > 0 ? pattern.substring(1) : pattern);
         if (smallPattern.endsWith("\"")) {
           smallPattern = smallPattern.substring(0, smallPattern.length() - 1);
         }

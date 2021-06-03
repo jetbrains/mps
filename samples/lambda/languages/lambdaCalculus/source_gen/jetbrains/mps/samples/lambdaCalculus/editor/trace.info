@@ -1220,7 +1220,7 @@
       <node id="1741258697587107129" at="76,50,77,51" concept="12" />
       <node id="1741258697587107129" at="77,51,78,27" concept="1" />
       <node id="1741258697587107129" at="81,64,82,32" concept="1" />
-      <node id="1741258697587107173" at="87,56,88,51" concept="6" />
+      <node id="1741258697587107173" at="87,56,88,86" concept="6" />
       <node id="1741258697587107182" at="89,42,90,78" concept="1" />
       <node id="1741258697587107198" at="91,9,92,94" concept="6" />
       <node id="1741258697587107204" at="92,94,93,75" concept="1" />
@@ -1231,7 +1231,7 @@
       <node id="1741258697587107127" at="113,0,114,0" concept="10" trace="StringConstant$oD" />
       <node id="1741258697587107127" at="117,0,118,0" concept="10" trace="value$n3q$" />
       <node id="1741258697587107129" at="81,0,84,0" concept="5" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
-      <node id="1741258697587107180" at="88,51,91,9" concept="4" />
+      <node id="1741258697587107180" at="88,86,91,9" concept="4" />
       <node id="1741258697587107133" at="103,62,106,9" concept="4" />
       <node id="1741258697587107129" at="76,0,80,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
       <node id="1741258697587107129" at="97,0,101,0" concept="5" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
