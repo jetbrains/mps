@@ -34,11 +34,7 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkDeclaration$X960, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkDeclaration$X960, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -55,9 +51,9 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
             }
             SNode nodetype = (SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$EFG$) != null ? TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$EFG$)) : TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$xn5I)));
             {
-              SNode coercedNode_h95xiq_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$hR);
-              if (coercedNode_h95xiq_d0b0a0a0b0a0a0a2 != null) {
-                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(coercedNode_h95xiq_d0b0a0a0b0a0a0a2, LINKS.concept$OMgE)));
+              SNode coercedNode_h95xiq_d0b0a0a0a0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$hR);
+              if (coercedNode_h95xiq_d0b0a0a0a0a0a0a2 != null) {
+                return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(coercedNode_h95xiq_d0b0a0a0a0a0a0a2, LINKS.concept$OMgE)));
               } else {
                 return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
               }

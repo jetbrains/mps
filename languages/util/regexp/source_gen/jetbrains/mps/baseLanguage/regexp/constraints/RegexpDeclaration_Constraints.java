@@ -21,11 +21,7 @@ public class RegexpDeclaration_Constraints extends BaseConstraintsDescriptor {
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$Yd4v, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.shortDescription$Yd4v, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

@@ -58,11 +58,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$n7$M, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$n7$M, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -78,7 +74,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
               return new EmptyScope();
             }
             final SNode enclosingProperty = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Property$iK, false, false);
-            SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0b0a0a0a3(classifier);
+            SNode classifierType = _quotation_createNode_pyukpt_a0d0b0a0a0a0a0a0a3(classifier);
             // XXX Beware, classifier.getMembers() gives members of that classifier only, unlike classifierType.getMembers() that gives inherited members as well
             return new NamedElementsScope(Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(classifierType), CONCEPTS.Property$iK)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
@@ -102,7 +98,7 @@ public class LocalPropertyReference_Constraints extends BaseConstraintsDescripto
     }
     return true;
   }
-  private static SNode _quotation_createNode_pyukpt_a0d0b0a0a0b0a0a0a3(Object parameter_1) {
+  private static SNode _quotation_createNode_pyukpt_a0d0b0a0a0a0a0a0a3(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_2 = nb.getResult();

@@ -21,11 +21,7 @@ public class Square_Constraints extends BaseConstraintsDescriptor {
 
   public static class Size_Property extends BasePropertyConstraintsDescriptor {
     public Size_Property(ConstraintsDescriptor container) {
-      super(PROPS.size$wB$e, container);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
+      super(PROPS.size$wB$e, container, false, true, false);
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {

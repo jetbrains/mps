@@ -34,11 +34,7 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$YX8k, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$YX8k, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -52,13 +48,13 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
             return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Refactoring$bM)) {
               @Override
               public boolean isExcluded(SNode node) {
-                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$bM), LINKS.target$qEUa), CONCEPTS.NodeTarget$gN));
+                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0a0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$bM), LINKS.target$qEUa), CONCEPTS.NodeTarget$gN));
                 if ((refactoringConcept == null)) {
                   return true;
                 }
 
                 SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$xi, false, false);
-                return !(check_w30ll_a0e0a0a0a0b0a0a0b0a0a0a2(check_w30ll_a0a4a0a0a0a1a0a0a1a0a0a0c(menu), refactoringConcept));
+                return !(check_w30ll_a0e0a0a0a0b0a0a0a0a0a0a2(check_w30ll_a0a4a0a0a0a1a0a0a0a0a0a0c(menu), refactoringConcept));
               }
             };
           }
@@ -69,19 +65,19 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static SNode check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
+  private static SNode check_w30ll_a0a0a0a0a0b0a0a0a0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.concept$wG_L);
     }
     return null;
   }
-  private static boolean check_w30ll_a0e0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand, SNode refactoringConcept) {
+  private static boolean check_w30ll_a0e0a0a0a0b0a0a0a0a0a0a2(SNode checkedDotOperand, SNode refactoringConcept) {
     if (null != checkedDotOperand) {
       return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(checkedDotOperand, refactoringConcept);
     }
     return false;
   }
-  private static SNode check_w30ll_a0a4a0a0a0a1a0a0a1a0a0a0c(SNode checkedDotOperand) {
+  private static SNode check_w30ll_a0a4a0a0a0a1a0a0a0a0a0a0c(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(checkedDotOperand);
     }

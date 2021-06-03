@@ -34,11 +34,7 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
 
   public static class NeedCallSite_Property extends BasePropertyConstraintsDescriptor {
     public NeedCallSite_Property(ConstraintsDescriptor container) {
-      super(PROPS.needCallSite$fSr_, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.needCallSite$fSr_, container, true, true, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -46,10 +42,6 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
         return SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.modifiedSwitch$h3H5), PROPS.needCallSite$fSr_);
       }
       return SPropertyOperations.getBoolean(node, PROPS.needCallSite$fSr_);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
@@ -70,11 +62,7 @@ public class TemplateSwitch_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedSwitch$h3H5, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.modifiedSwitch$h3H5, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

@@ -56,11 +56,7 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   }
   public static class NestedName_Property extends BasePropertyConstraintsDescriptor {
     public NestedName_Property(ConstraintsDescriptor container) {
-      super(PROPS.nestedName$Em3S, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.nestedName$Em3S, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -69,11 +65,7 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   }
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$lW9a, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.resolveInfo$lW9a, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -82,11 +74,7 @@ public class Classifier_Constraints extends BaseConstraintsDescriptor {
   }
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$Yd4v, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.shortDescription$Yd4v, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

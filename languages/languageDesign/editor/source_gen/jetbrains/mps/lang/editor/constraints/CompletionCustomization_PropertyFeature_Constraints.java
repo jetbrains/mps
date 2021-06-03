@@ -30,11 +30,7 @@ public class CompletionCustomization_PropertyFeature_Constraints extends BaseCon
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$gitv, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$gitv, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

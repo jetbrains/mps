@@ -29,11 +29,7 @@ public class CompletionCustomizationContextSpecificator_Concept_Constraints exte
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$q9iq, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$q9iq, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

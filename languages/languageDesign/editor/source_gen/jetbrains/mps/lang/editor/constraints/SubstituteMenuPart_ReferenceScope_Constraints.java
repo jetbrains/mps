@@ -32,11 +32,7 @@ public class SubstituteMenuPart_ReferenceScope_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$BfVo, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.reference$BfVo, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

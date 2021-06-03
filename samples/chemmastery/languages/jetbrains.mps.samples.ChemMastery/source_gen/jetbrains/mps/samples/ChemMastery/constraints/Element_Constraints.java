@@ -21,11 +21,7 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
 
   public static class Details_url_Property extends BasePropertyConstraintsDescriptor {
     public Details_url_Property(ConstraintsDescriptor container) {
-      super(PROPS.details_url$Z4AP, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.details_url$Z4AP, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

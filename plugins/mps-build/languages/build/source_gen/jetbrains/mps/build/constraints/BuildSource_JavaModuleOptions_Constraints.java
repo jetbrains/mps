@@ -21,11 +21,7 @@ public class BuildSource_JavaModuleOptions_Constraints extends BaseConstraintsDe
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.compileOptions$Eyr4, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.compileOptions$Eyr4, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

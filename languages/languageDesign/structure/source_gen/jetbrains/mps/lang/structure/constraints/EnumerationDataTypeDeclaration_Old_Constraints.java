@@ -57,11 +57,7 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
   }
   public static class HasNoDefaultMember_Property extends BasePropertyConstraintsDescriptor {
     public HasNoDefaultMember_Property(ConstraintsDescriptor container) {
-      super(PROPS.hasNoDefaultMember$e7W7, container);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
+      super(PROPS.hasNoDefaultMember$e7W7, container, false, true, false);
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
@@ -82,11 +78,7 @@ public class EnumerationDataTypeDeclaration_Old_Constraints extends BaseConstrai
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.defaultMember$SFBr, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.defaultMember$SFBr, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

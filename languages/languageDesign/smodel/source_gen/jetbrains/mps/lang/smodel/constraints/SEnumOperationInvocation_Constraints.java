@@ -27,11 +27,7 @@ public class SEnumOperationInvocation_Constraints extends BaseConstraintsDescrip
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.enumDeclaration$Ib70, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.enumDeclaration$Ib70, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

@@ -21,11 +21,7 @@ public class BuildMps_ModuleDependencyOnDevKit_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.devkit$Q_pH, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.devkit$Q_pH, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

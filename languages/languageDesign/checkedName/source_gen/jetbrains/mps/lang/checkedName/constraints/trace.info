@@ -63,50 +63,46 @@
   <root nodeRef="r:bfde7c59-4df1-47aa-b96c-63906ea441df(jetbrains.mps.lang.checkedName.constraints)/4844813484172611610">
     <file name="PropertyRefExpression_Constraints.java">
       <node id="4844813484172611610" at="30,46,31,45" concept="9" />
-      <node id="4844813484172611611" at="38,44,39,20" concept="5" />
-      <node id="4844813484172611611" at="46,63,47,145" concept="5" />
-      <node id="6836281137582781248" at="51,197,52,77" concept="5" />
-      <node id="6836281137582781261" at="53,13,54,356" concept="5" />
-      <node id="4844813484172611610" at="58,6,59,131" concept="4" />
-      <node id="4844813484172611611" at="59,131,60,42" concept="1" />
-      <node id="4844813484172611610" at="60,42,61,22" concept="5" />
-      <node id="4844813484172611610" at="65,0,66,0" concept="7" trace="PropertyRefExpression$8m" />
-      <node id="4844813484172611610" at="66,0,67,0" concept="7" trace="SNodeType$hR" />
-      <node id="4844813484172611610" at="70,0,71,0" concept="7" trace="propertyDeclaration$KMe2" />
-      <node id="4844813484172611610" at="71,0,72,0" concept="7" trace="nodeExpr$KLZ1" />
-      <node id="4844813484172611610" at="72,0,73,0" concept="7" trace="concept$OMgE" />
+      <node id="4844813484172611611" at="42,63,43,145" concept="5" />
+      <node id="6836281137582781248" at="47,197,48,77" concept="5" />
+      <node id="6836281137582781261" at="49,13,50,356" concept="5" />
+      <node id="4844813484172611610" at="54,6,55,131" concept="4" />
+      <node id="4844813484172611611" at="55,131,56,42" concept="1" />
+      <node id="4844813484172611610" at="56,42,57,22" concept="5" />
+      <node id="4844813484172611610" at="61,0,62,0" concept="7" trace="PropertyRefExpression$8m" />
+      <node id="4844813484172611610" at="62,0,63,0" concept="7" trace="SNodeType$hR" />
+      <node id="4844813484172611610" at="66,0,67,0" concept="7" trace="propertyDeclaration$KMe2" />
+      <node id="4844813484172611610" at="67,0,68,0" concept="7" trace="nodeExpr$KLZ1" />
+      <node id="4844813484172611610" at="68,0,69,0" concept="7" trace="concept$OMgE" />
       <node id="4844813484172611610" at="30,0,33,0" concept="0" trace="PropertyRefExpression_Constraints#()V" />
-      <node id="6836281137582781246" at="50,80,53,13" concept="2" />
-      <node id="4844813484172611611" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />
-      <node id="4844813484172611611" at="45,0,49,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="4844813484172611611" at="49,0,56,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="4844813484172611611" at="43,56,56,10" concept="5" />
-      <node id="4844813484172611611" at="41,0,58,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="4844813484172611611" at="35,90,58,6" concept="4" />
-      <node id="4844813484172611610" at="34,0,63,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <node id="6836281137582781246" at="46,80,49,13" concept="2" />
+      <node id="4844813484172611611" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="4844813484172611611" at="45,0,52,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="4844813484172611611" at="39,56,52,10" concept="5" />
+      <node id="4844813484172611611" at="37,0,54,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="4844813484172611611" at="35,90,54,6" concept="4" />
+      <node id="4844813484172611610" at="34,0,59,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="4844813484172611610" at="30,46,31,45" />
-      <scope id="4844813484172611611" at="38,44,39,20" />
-      <scope id="4844813484172611611" at="46,63,47,145" />
-      <scope id="6836281137582781247" at="51,197,52,77" />
+      <scope id="4844813484172611611" at="42,63,43,145" />
+      <scope id="6836281137582781247" at="47,197,48,77" />
       <scope id="4844813484172611610" at="30,0,33,0" />
-      <scope id="4844813484172611611" at="37,0,41,0" />
-      <scope id="4844813484172611611" at="45,0,49,0" />
-      <scope id="4844813484172611611" at="50,80,54,356" />
-      <scope id="4844813484172611611" at="49,0,56,0">
+      <scope id="4844813484172611611" at="41,0,45,0" />
+      <scope id="4844813484172611611" at="46,80,50,356" />
+      <scope id="4844813484172611611" at="45,0,52,0">
         <var name="_context" id="4844813484172611611" />
       </scope>
-      <scope id="4844813484172611611" at="43,56,56,10" />
-      <scope id="4844813484172611611" at="41,0,58,0" />
-      <scope id="4844813484172611610" at="35,90,61,22">
+      <scope id="4844813484172611611" at="39,56,52,10" />
+      <scope id="4844813484172611611" at="37,0,54,0" />
+      <scope id="4844813484172611610" at="35,90,57,22">
         <var name="d0" id="4844813484172611611" />
         <var name="references" id="4844813484172611610" />
       </scope>
-      <scope id="4844813484172611610" at="34,0,63,0" />
-      <unit id="4844813484172611610" at="64,0,68,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$CONCEPTS" />
-      <unit id="4844813484172611610" at="69,0,74,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$LINKS" />
-      <unit id="4844813484172611611" at="44,19,56,9" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$1$1" />
-      <unit id="4844813484172611611" at="36,48,58,5" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$1" />
-      <unit id="4844813484172611610" at="29,0,75,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints" />
+      <scope id="4844813484172611610" at="34,0,59,0" />
+      <unit id="4844813484172611610" at="60,0,64,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$CONCEPTS" />
+      <unit id="4844813484172611610" at="65,0,70,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$LINKS" />
+      <unit id="4844813484172611611" at="40,19,52,9" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$1$1" />
+      <unit id="4844813484172611611" at="36,48,54,5" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints$1" />
+      <unit id="4844813484172611610" at="29,0,71,0" name="jetbrains.mps.lang.checkedName.constraints.PropertyRefExpression_Constraints" />
     </file>
   </root>
 </debug-info>

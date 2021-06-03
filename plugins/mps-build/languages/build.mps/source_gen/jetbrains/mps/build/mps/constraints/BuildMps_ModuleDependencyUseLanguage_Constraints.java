@@ -21,11 +21,7 @@ public class BuildMps_ModuleDependencyUseLanguage_Constraints extends BaseConstr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.language$udAS, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.language$udAS, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

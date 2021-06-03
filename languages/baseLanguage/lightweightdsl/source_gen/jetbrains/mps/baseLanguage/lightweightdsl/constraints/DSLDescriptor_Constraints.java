@@ -53,11 +53,7 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.preferredConcept$1q4V, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.preferredConcept$1q4V, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

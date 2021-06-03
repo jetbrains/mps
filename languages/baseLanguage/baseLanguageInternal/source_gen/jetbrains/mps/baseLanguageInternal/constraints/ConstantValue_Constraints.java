@@ -39,11 +39,7 @@ public class ConstantValue_Constraints extends BaseConstraintsDescriptor {
 
   public static class ClassName_Property extends BasePropertyConstraintsDescriptor {
     public ClassName_Property(ConstraintsDescriptor container) {
-      super(PROPS.className$fCMl, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.className$fCMl, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -58,11 +54,7 @@ public class ConstantValue_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.constant$fw$M, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.constant$fw$M, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

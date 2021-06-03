@@ -15,156 +15,140 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c8959042c(jetbrains.mps.samples.secretCompartmentLanguage.constraints)/1213107435705">
     <file name="StateMachine_Constraints.java">
       <node id="1213107435705" at="18,37,19,36" concept="6" />
-      <node id="1213107435706" at="23,59,24,40" concept="6" />
-      <node id="1213107435706" at="27,35,28,18" concept="4" />
-      <node id="1213107435709" at="31,40,32,97" concept="4" />
-      <node id="1213107435705" at="36,84,37,119" concept="3" />
-      <node id="1213107435706" at="37,119,38,61" concept="1" />
-      <node id="1213107435705" at="38,61,39,22" concept="4" />
-      <node id="1213107435705" at="43,0,44,0" concept="5" trace="StateMachine$ra" />
-      <node id="1213107435705" at="47,0,48,0" concept="5" trace="name$MnvL" />
-      <node id="1213107435705" at="48,0,49,0" concept="5" trace="stateMachineName$ztzM" />
+      <node id="1213107435706" at="23,59,24,60" concept="6" />
+      <node id="1213107435709" at="27,40,28,97" concept="4" />
+      <node id="1213107435705" at="32,84,33,119" concept="3" />
+      <node id="1213107435706" at="33,119,34,61" concept="1" />
+      <node id="1213107435705" at="34,61,35,22" concept="4" />
+      <node id="1213107435705" at="39,0,40,0" concept="5" trace="StateMachine$ra" />
+      <node id="1213107435705" at="43,0,44,0" concept="5" trace="name$MnvL" />
+      <node id="1213107435705" at="44,0,45,0" concept="5" trace="stateMachineName$ztzM" />
       <node id="1213107435705" at="18,0,21,0" concept="0" trace="StateMachine_Constraints#()V" />
       <node id="1213107435706" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="1213107435706" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
-      <node id="1213107435706" at="30,0,34,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="1213107435705" at="35,0,41,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="1213107435706" at="26,0,30,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1213107435705" at="31,0,37,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="1213107435705" at="18,37,19,36" />
-      <scope id="1213107435706" at="23,59,24,40" />
-      <scope id="1213107435706" at="27,35,28,18" />
-      <scope id="1213107435708" at="31,40,32,97" />
+      <scope id="1213107435706" at="23,59,24,60" />
+      <scope id="1213107435708" at="27,40,28,97" />
       <scope id="1213107435705" at="18,0,21,0" />
       <scope id="1213107435706" at="23,0,26,0">
         <var name="container" id="1213107435706" />
       </scope>
-      <scope id="1213107435705" at="36,84,39,22">
+      <scope id="1213107435705" at="32,84,35,22">
         <var name="properties" id="1213107435705" />
       </scope>
-      <scope id="1213107435706" at="26,0,30,0" />
-      <scope id="1213107435706" at="30,0,34,0">
+      <scope id="1213107435706" at="26,0,30,0">
         <var name="node" id="1213107435706" />
       </scope>
-      <scope id="1213107435705" at="35,0,41,0" />
-      <unit id="1213107435705" at="42,0,45,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints$CONCEPTS" />
-      <unit id="1213107435705" at="46,0,50,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints$PROPS" />
-      <unit id="1213107435706" at="22,0,35,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints$Name_Property" />
-      <unit id="1213107435705" at="17,0,51,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints" />
+      <scope id="1213107435705" at="31,0,37,0" />
+      <unit id="1213107435705" at="38,0,41,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints$CONCEPTS" />
+      <unit id="1213107435705" at="42,0,46,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints$PROPS" />
+      <unit id="1213107435706" at="22,0,31,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints$Name_Property" />
+      <unit id="1213107435705" at="17,0,47,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachine_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959042c(jetbrains.mps.samples.secretCompartmentLanguage.constraints)/1213107435908">
     <file name="StateMachineTest_Constraints.java">
       <node id="1213107435908" at="18,41,19,40" concept="6" />
-      <node id="1213107435909" at="23,59,24,40" concept="6" />
-      <node id="1213107435909" at="27,35,28,18" concept="4" />
-      <node id="1213107435912" at="31,40,32,117" concept="4" />
-      <node id="1213107435908" at="36,84,37,119" concept="3" />
-      <node id="1213107435909" at="37,119,38,61" concept="1" />
-      <node id="1213107435908" at="38,61,39,22" concept="4" />
-      <node id="1213107435908" at="43,0,44,0" concept="5" trace="StateMachineTest$oe" />
-      <node id="1213107435908" at="47,0,48,0" concept="5" trace="name$MnvL" />
+      <node id="1213107435909" at="23,59,24,60" concept="6" />
+      <node id="1213107435912" at="27,40,28,117" concept="4" />
+      <node id="1213107435908" at="32,84,33,119" concept="3" />
+      <node id="1213107435909" at="33,119,34,61" concept="1" />
+      <node id="1213107435908" at="34,61,35,22" concept="4" />
+      <node id="1213107435908" at="39,0,40,0" concept="5" trace="StateMachineTest$oe" />
+      <node id="1213107435908" at="43,0,44,0" concept="5" trace="name$MnvL" />
       <node id="1213107435908" at="18,0,21,0" concept="0" trace="StateMachineTest_Constraints#()V" />
       <node id="1213107435909" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="1213107435909" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
-      <node id="1213107435909" at="30,0,34,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="1213107435908" at="35,0,41,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="1213107435909" at="26,0,30,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1213107435908" at="31,0,37,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="1213107435908" at="18,41,19,40" />
-      <scope id="1213107435909" at="23,59,24,40" />
-      <scope id="1213107435909" at="27,35,28,18" />
-      <scope id="1213107435911" at="31,40,32,117" />
+      <scope id="1213107435909" at="23,59,24,60" />
+      <scope id="1213107435911" at="27,40,28,117" />
       <scope id="1213107435908" at="18,0,21,0" />
       <scope id="1213107435909" at="23,0,26,0">
         <var name="container" id="1213107435909" />
       </scope>
-      <scope id="1213107435908" at="36,84,39,22">
+      <scope id="1213107435908" at="32,84,35,22">
         <var name="properties" id="1213107435908" />
       </scope>
-      <scope id="1213107435909" at="26,0,30,0" />
-      <scope id="1213107435909" at="30,0,34,0">
+      <scope id="1213107435909" at="26,0,30,0">
         <var name="node" id="1213107435909" />
       </scope>
-      <scope id="1213107435908" at="35,0,41,0" />
-      <unit id="1213107435908" at="42,0,45,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints$CONCEPTS" />
-      <unit id="1213107435908" at="46,0,49,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints$PROPS" />
-      <unit id="1213107435909" at="22,0,35,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints$Name_Property" />
-      <unit id="1213107435908" at="17,0,50,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints" />
+      <scope id="1213107435908" at="31,0,37,0" />
+      <unit id="1213107435908" at="38,0,41,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints$CONCEPTS" />
+      <unit id="1213107435908" at="42,0,45,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints$PROPS" />
+      <unit id="1213107435909" at="22,0,31,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints$Name_Property" />
+      <unit id="1213107435908" at="17,0,46,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.StateMachineTest_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959042c(jetbrains.mps.samples.secretCompartmentLanguage.constraints)/1213107436125">
     <file name="Event_Constraints.java">
       <node id="1213107436125" at="18,30,19,29" concept="6" />
-      <node id="1213107436126" at="23,59,24,40" concept="6" />
-      <node id="1213107436126" at="27,35,28,18" concept="4" />
-      <node id="1213107436129" at="31,40,32,71" concept="4" />
-      <node id="1213107436125" at="36,84,37,119" concept="3" />
-      <node id="1213107436126" at="37,119,38,61" concept="1" />
-      <node id="1213107436125" at="38,61,39,22" concept="4" />
-      <node id="1213107436125" at="43,0,44,0" concept="5" trace="Event$Td" />
-      <node id="1213107436125" at="47,0,48,0" concept="5" trace="name$MnvL" />
-      <node id="1213107436125" at="48,0,49,0" concept="5" trace="eventName$vGj1" />
+      <node id="1213107436126" at="23,59,24,60" concept="6" />
+      <node id="1213107436129" at="27,40,28,71" concept="4" />
+      <node id="1213107436125" at="32,84,33,119" concept="3" />
+      <node id="1213107436126" at="33,119,34,61" concept="1" />
+      <node id="1213107436125" at="34,61,35,22" concept="4" />
+      <node id="1213107436125" at="39,0,40,0" concept="5" trace="Event$Td" />
+      <node id="1213107436125" at="43,0,44,0" concept="5" trace="name$MnvL" />
+      <node id="1213107436125" at="44,0,45,0" concept="5" trace="eventName$vGj1" />
       <node id="1213107436125" at="18,0,21,0" concept="0" trace="Event_Constraints#()V" />
       <node id="1213107436126" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="1213107436126" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
-      <node id="1213107436126" at="30,0,34,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="1213107436125" at="35,0,41,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="1213107436126" at="26,0,30,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1213107436125" at="31,0,37,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="1213107436125" at="18,30,19,29" />
-      <scope id="1213107436126" at="23,59,24,40" />
-      <scope id="1213107436126" at="27,35,28,18" />
-      <scope id="1213107436128" at="31,40,32,71" />
+      <scope id="1213107436126" at="23,59,24,60" />
+      <scope id="1213107436128" at="27,40,28,71" />
       <scope id="1213107436125" at="18,0,21,0" />
       <scope id="1213107436126" at="23,0,26,0">
         <var name="container" id="1213107436126" />
       </scope>
-      <scope id="1213107436125" at="36,84,39,22">
+      <scope id="1213107436125" at="32,84,35,22">
         <var name="properties" id="1213107436125" />
       </scope>
-      <scope id="1213107436126" at="26,0,30,0" />
-      <scope id="1213107436126" at="30,0,34,0">
+      <scope id="1213107436126" at="26,0,30,0">
         <var name="node" id="1213107436126" />
       </scope>
-      <scope id="1213107436125" at="35,0,41,0" />
-      <unit id="1213107436125" at="42,0,45,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints$CONCEPTS" />
-      <unit id="1213107436125" at="46,0,50,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints$PROPS" />
-      <unit id="1213107436126" at="22,0,35,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints$Name_Property" />
-      <unit id="1213107436125" at="17,0,51,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints" />
+      <scope id="1213107436125" at="31,0,37,0" />
+      <unit id="1213107436125" at="38,0,41,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints$CONCEPTS" />
+      <unit id="1213107436125" at="42,0,46,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints$PROPS" />
+      <unit id="1213107436126" at="22,0,31,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints$Name_Property" />
+      <unit id="1213107436125" at="17,0,47,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.Event_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959042c(jetbrains.mps.samples.secretCompartmentLanguage.constraints)/1213107437474">
     <file name="State_Constraints.java">
       <node id="1213107437474" at="18,30,19,29" concept="6" />
-      <node id="1213107437475" at="23,59,24,40" concept="6" />
-      <node id="1213107437475" at="27,35,28,18" concept="4" />
-      <node id="1213107437478" at="31,40,32,71" concept="4" />
-      <node id="1213107437474" at="36,84,37,119" concept="3" />
-      <node id="1213107437475" at="37,119,38,61" concept="1" />
-      <node id="1213107437474" at="38,61,39,22" concept="4" />
-      <node id="1213107437474" at="43,0,44,0" concept="5" trace="State$dM" />
-      <node id="1213107437474" at="47,0,48,0" concept="5" trace="name$MnvL" />
-      <node id="1213107437474" at="48,0,49,0" concept="5" trace="stateName$8sir" />
+      <node id="1213107437475" at="23,59,24,60" concept="6" />
+      <node id="1213107437478" at="27,40,28,71" concept="4" />
+      <node id="1213107437474" at="32,84,33,119" concept="3" />
+      <node id="1213107437475" at="33,119,34,61" concept="1" />
+      <node id="1213107437474" at="34,61,35,22" concept="4" />
+      <node id="1213107437474" at="39,0,40,0" concept="5" trace="State$dM" />
+      <node id="1213107437474" at="43,0,44,0" concept="5" trace="name$MnvL" />
+      <node id="1213107437474" at="44,0,45,0" concept="5" trace="stateName$8sir" />
       <node id="1213107437474" at="18,0,21,0" concept="0" trace="State_Constraints#()V" />
       <node id="1213107437475" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="1213107437475" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
-      <node id="1213107437475" at="30,0,34,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="1213107437474" at="35,0,41,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="1213107437475" at="26,0,30,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="1213107437474" at="31,0,37,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="1213107437474" at="18,30,19,29" />
-      <scope id="1213107437475" at="23,59,24,40" />
-      <scope id="1213107437475" at="27,35,28,18" />
-      <scope id="1213107437477" at="31,40,32,71" />
+      <scope id="1213107437475" at="23,59,24,60" />
+      <scope id="1213107437477" at="27,40,28,71" />
       <scope id="1213107437474" at="18,0,21,0" />
       <scope id="1213107437475" at="23,0,26,0">
         <var name="container" id="1213107437475" />
       </scope>
-      <scope id="1213107437474" at="36,84,39,22">
+      <scope id="1213107437474" at="32,84,35,22">
         <var name="properties" id="1213107437474" />
       </scope>
-      <scope id="1213107437475" at="26,0,30,0" />
-      <scope id="1213107437475" at="30,0,34,0">
+      <scope id="1213107437475" at="26,0,30,0">
         <var name="node" id="1213107437475" />
       </scope>
-      <scope id="1213107437474" at="35,0,41,0" />
-      <unit id="1213107437474" at="42,0,45,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints$CONCEPTS" />
-      <unit id="1213107437474" at="46,0,50,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints$PROPS" />
-      <unit id="1213107437475" at="22,0,35,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints$Name_Property" />
-      <unit id="1213107437474" at="17,0,51,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints" />
+      <scope id="1213107437474" at="31,0,37,0" />
+      <unit id="1213107437474" at="38,0,41,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints$CONCEPTS" />
+      <unit id="1213107437474" at="42,0,46,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints$PROPS" />
+      <unit id="1213107437475" at="22,0,31,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints$Name_Property" />
+      <unit id="1213107437474" at="17,0,47,0" name="jetbrains.mps.samples.secretCompartmentLanguage.constraints.State_Constraints" />
     </file>
   </root>
 </debug-info>

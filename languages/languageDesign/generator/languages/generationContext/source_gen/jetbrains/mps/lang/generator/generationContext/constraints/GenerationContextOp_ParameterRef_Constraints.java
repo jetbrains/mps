@@ -34,11 +34,7 @@ public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraint
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$zzKZ, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$zzKZ, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

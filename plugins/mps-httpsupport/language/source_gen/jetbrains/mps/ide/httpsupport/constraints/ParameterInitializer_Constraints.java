@@ -53,11 +53,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$DxS8, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$DxS8, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -76,7 +72,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
               public boolean isExcluded(final SNode node) {
                 return ListSequence.fromList(SLinkOperations.getChildren(bilder, LINKS.initializer$Xe8)).findFirst(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
-                    return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
+                    return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
                   }
                 }) != null && !((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null));
               }
@@ -92,7 +88,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.RequestURLBuilderExpression$pg);
   }
-  private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0b0a0a0a3(SNode checkedDotOperand, SNode node) {
+  private static boolean check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3(SNode checkedDotOperand, SNode node) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.equals(node);
     }

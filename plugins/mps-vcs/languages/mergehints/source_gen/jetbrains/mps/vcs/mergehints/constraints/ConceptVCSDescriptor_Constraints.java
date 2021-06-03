@@ -32,11 +32,7 @@ public class ConceptVCSDescriptor_Constraints extends BaseConstraintsDescriptor 
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.cncpt$ubC$, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.cncpt$ubC$, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -51,7 +47,7 @@ public class ConceptVCSDescriptor_Constraints extends BaseConstraintsDescriptor 
               return new EmptyScope();
             }
 
-            SModel structure = check_mx0wvm_a0c0b0a0a0b0a0a0a2(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
+            SModel structure = check_mx0wvm_a0c0b0a0a0a0a0a0a2(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
             if (structure == null) {
               return new EmptyScope();
             }
@@ -65,7 +61,7 @@ public class ConceptVCSDescriptor_Constraints extends BaseConstraintsDescriptor 
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static SModel check_mx0wvm_a0c0b0a0a0b0a0a0a2(Language checkedDotOperand) {
+  private static SModel check_mx0wvm_a0c0b0a0a0a0a0a0a2(Language checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getStructureModelDescriptor();
     }

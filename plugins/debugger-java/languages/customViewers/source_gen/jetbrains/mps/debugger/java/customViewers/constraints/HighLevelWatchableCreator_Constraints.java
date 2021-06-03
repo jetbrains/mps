@@ -34,11 +34,7 @@ public class HighLevelWatchableCreator_Constraints extends BaseConstraintsDescri
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.watchable$JIZk, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.watchable$JIZk, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

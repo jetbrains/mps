@@ -21,19 +21,11 @@ public class IResolveInfo_Constraints extends BaseConstraintsDescriptor {
 
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$lW9a, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.resolveInfo$lW9a, container, true, true, false);
     }
     @Override
     public Object getValue(SNode node) {
       return node.getName();
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {

@@ -17,90 +17,80 @@
   <root nodeRef="r:84a4ed3f-fed0-4bb5-977e-0cf55665a49a(jetbrains.mps.samples.KajaSceneConstruction.constraints)/3210697320273648134">
     <file name="AbstractBuilderCommand_Constraints.java">
       <node id="3210697320273648134" at="21,47,22,46" concept="8" />
-      <node id="3210697320273648135" at="26,58,27,39" concept="8" />
-      <node id="3210697320273648135" at="30,38,31,18" concept="5" />
-      <node id="3210697320273648135" at="33,0,34,0" concept="6" trace="validatePropertyBreakingPoint" />
-      <node id="3210697320273648135" at="35,109,36,100" concept="4" />
-      <node id="3210697320273648135" at="37,53,38,75" concept="1" />
-      <node id="3210697320273648135" at="39,7,40,20" concept="5" />
-      <node id="3210697320273648138" at="42,82,43,70" concept="5" />
-      <node id="3210697320273648164" at="47,58,48,39" concept="8" />
-      <node id="3210697320273648164" at="51,38,52,18" concept="5" />
-      <node id="3210697320273648164" at="54,0,55,0" concept="6" trace="validatePropertyBreakingPoint" />
-      <node id="3210697320273648164" at="56,109,57,100" concept="4" />
-      <node id="3210697320273648164" at="58,53,59,75" concept="1" />
-      <node id="3210697320273648164" at="60,7,61,20" concept="5" />
-      <node id="3210697320273648167" at="63,82,64,71" concept="5" />
-      <node id="3210697320273648134" at="68,84,69,119" concept="4" />
-      <node id="3210697320273648135" at="69,119,70,59" concept="1" />
-      <node id="3210697320273648164" at="70,59,71,59" concept="1" />
-      <node id="3210697320273648134" at="71,59,72,22" concept="5" />
-      <node id="3210697320273648134" at="76,0,77,0" concept="6" trace="AbstractBuilderCommand$VJ" />
-      <node id="3210697320273648134" at="80,0,81,0" concept="6" trace="col$N9FQ" />
-      <node id="3210697320273648134" at="81,0,82,0" concept="6" trace="row$N9sP" />
+      <node id="3210697320273648135" at="26,58,27,59" concept="8" />
+      <node id="3210697320273648135" at="30,109,31,100" concept="4" />
+      <node id="3210697320273648135" at="32,53,33,184" concept="1" />
+      <node id="3210697320273648135" at="34,7,35,20" concept="5" />
+      <node id="3210697320273648138" at="37,82,38,70" concept="5" />
+      <node id="3210697320273648164" at="42,58,43,59" concept="8" />
+      <node id="3210697320273648164" at="46,109,47,100" concept="4" />
+      <node id="3210697320273648164" at="48,53,49,184" concept="1" />
+      <node id="3210697320273648164" at="50,7,51,20" concept="5" />
+      <node id="3210697320273648167" at="53,82,54,71" concept="5" />
+      <node id="3210697320273648134" at="58,84,59,119" concept="4" />
+      <node id="3210697320273648135" at="59,119,60,59" concept="1" />
+      <node id="3210697320273648164" at="60,59,61,59" concept="1" />
+      <node id="3210697320273648134" at="61,59,62,22" concept="5" />
+      <node id="3210697320273648134" at="66,0,67,0" concept="6" trace="AbstractBuilderCommand$VJ" />
+      <node id="3210697320273648134" at="70,0,71,0" concept="6" trace="col$N9FQ" />
+      <node id="3210697320273648134" at="71,0,72,0" concept="6" trace="row$N9sP" />
       <node id="3210697320273648134" at="21,0,24,0" concept="0" trace="AbstractBuilderCommand_Constraints#()V" />
       <node id="3210697320273648135" at="26,0,29,0" concept="0" trace="Col_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="3210697320273648135" at="36,100,39,7" concept="2" />
-      <node id="3210697320273648135" at="42,0,45,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
-      <node id="3210697320273648164" at="47,0,50,0" concept="0" trace="Row_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="3210697320273648164" at="57,100,60,7" concept="2" />
-      <node id="3210697320273648164" at="63,0,66,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
-      <node id="3210697320273648135" at="29,0,33,0" concept="3" trace="hasOwnValidator#()Z" />
-      <node id="3210697320273648164" at="50,0,54,0" concept="3" trace="hasOwnValidator#()Z" />
-      <node id="3210697320273648134" at="67,0,74,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
-      <node id="3210697320273648135" at="34,0,42,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-      <node id="3210697320273648164" at="55,0,63,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
+      <node id="3210697320273648135" at="31,100,34,7" concept="2" />
+      <node id="3210697320273648135" at="37,0,40,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
+      <node id="3210697320273648164" at="42,0,45,0" concept="0" trace="Row_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="3210697320273648164" at="47,100,50,7" concept="2" />
+      <node id="3210697320273648164" at="53,0,56,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
+      <node id="3210697320273648134" at="57,0,64,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="3210697320273648135" at="29,0,37,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
+      <node id="3210697320273648164" at="45,0,53,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
       <scope id="3210697320273648134" at="21,47,22,46" />
-      <scope id="3210697320273648135" at="26,58,27,39" />
-      <scope id="3210697320273648135" at="30,38,31,18" />
-      <scope id="3210697320273648135" at="37,53,38,75" />
-      <scope id="3210697320273648137" at="42,82,43,70" />
-      <scope id="3210697320273648164" at="47,58,48,39" />
-      <scope id="3210697320273648164" at="51,38,52,18" />
-      <scope id="3210697320273648164" at="58,53,59,75" />
-      <scope id="3210697320273648166" at="63,82,64,71" />
+      <scope id="3210697320273648135" at="26,58,27,59" />
+      <scope id="3210697320273648135" at="32,53,33,184" />
+      <scope id="3210697320273648137" at="37,82,38,70" />
+      <scope id="3210697320273648164" at="42,58,43,59" />
+      <scope id="3210697320273648164" at="48,53,49,184" />
+      <scope id="3210697320273648166" at="53,82,54,71" />
       <scope id="3210697320273648134" at="21,0,24,0" />
       <scope id="3210697320273648135" at="26,0,29,0">
         <var name="container" id="3210697320273648135" />
       </scope>
-      <scope id="3210697320273648135" at="42,0,45,0">
+      <scope id="3210697320273648135" at="37,0,40,0">
         <var name="node" id="3210697320273648135" />
         <var name="propertyValue" id="3210697320273648135" />
       </scope>
-      <scope id="3210697320273648164" at="47,0,50,0">
+      <scope id="3210697320273648164" at="42,0,45,0">
         <var name="container" id="3210697320273648164" />
       </scope>
-      <scope id="3210697320273648164" at="63,0,66,0">
+      <scope id="3210697320273648164" at="53,0,56,0">
         <var name="node" id="3210697320273648164" />
         <var name="propertyValue" id="3210697320273648164" />
       </scope>
-      <scope id="3210697320273648135" at="29,0,33,0" />
-      <scope id="3210697320273648164" at="50,0,54,0" />
-      <scope id="3210697320273648134" at="68,84,72,22">
+      <scope id="3210697320273648134" at="58,84,62,22">
         <var name="properties" id="3210697320273648134" />
       </scope>
-      <scope id="3210697320273648135" at="35,109,40,20">
+      <scope id="3210697320273648135" at="30,109,35,20">
         <var name="result" id="3210697320273648135" />
       </scope>
-      <scope id="3210697320273648164" at="56,109,61,20">
+      <scope id="3210697320273648164" at="46,109,51,20">
         <var name="result" id="3210697320273648164" />
       </scope>
-      <scope id="3210697320273648134" at="67,0,74,0" />
-      <scope id="3210697320273648135" at="34,0,42,0">
+      <scope id="3210697320273648134" at="57,0,64,0" />
+      <scope id="3210697320273648135" at="29,0,37,0">
         <var name="checkingNodeContext" id="3210697320273648135" />
         <var name="node" id="3210697320273648135" />
         <var name="propertyValue" id="3210697320273648135" />
       </scope>
-      <scope id="3210697320273648164" at="55,0,63,0">
+      <scope id="3210697320273648164" at="45,0,53,0">
         <var name="checkingNodeContext" id="3210697320273648164" />
         <var name="node" id="3210697320273648164" />
         <var name="propertyValue" id="3210697320273648164" />
       </scope>
-      <unit id="3210697320273648134" at="75,0,78,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$CONCEPTS" />
-      <unit id="3210697320273648134" at="79,0,83,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$PROPS" />
-      <unit id="3210697320273648135" at="25,0,46,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$Col_Property" />
-      <unit id="3210697320273648164" at="46,0,67,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$Row_Property" />
-      <unit id="3210697320273648134" at="20,0,84,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints" />
+      <unit id="3210697320273648134" at="65,0,68,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$CONCEPTS" />
+      <unit id="3210697320273648134" at="69,0,73,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$PROPS" />
+      <unit id="3210697320273648135" at="25,0,41,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$Col_Property" />
+      <unit id="3210697320273648164" at="41,0,57,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints$Row_Property" />
+      <unit id="3210697320273648134" at="20,0,74,0" name="jetbrains.mps.samples.KajaSceneConstruction.constraints.AbstractBuilderCommand_Constraints" />
     </file>
   </root>
 </debug-info>

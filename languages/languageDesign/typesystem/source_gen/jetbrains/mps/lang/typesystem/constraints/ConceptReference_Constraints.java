@@ -31,11 +31,7 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$zIbV, this) {
-      @Override
-      public boolean hasOwnOnReferenceSetHandler() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$zIbV, this, true, true) {
       @Override
       public boolean validate(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         return true;
@@ -48,10 +44,6 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
             SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$S3), PROPS.name$MnvL, "typeof_" + SPropertyOperations.getString(newReferentNode, PROPS.name$MnvL));
           }
         }
-      }
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
       }
       @Nullable
       @Override

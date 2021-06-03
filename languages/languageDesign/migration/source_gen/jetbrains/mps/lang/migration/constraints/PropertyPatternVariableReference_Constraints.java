@@ -21,11 +21,7 @@ public class PropertyPatternVariableReference_Constraints extends BaseConstraint
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$4k8d, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$4k8d, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

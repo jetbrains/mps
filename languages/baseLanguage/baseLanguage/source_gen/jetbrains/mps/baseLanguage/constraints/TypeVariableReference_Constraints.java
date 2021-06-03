@@ -21,11 +21,7 @@ public class TypeVariableReference_Constraints extends BaseConstraintsDescriptor
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.typeVariableDeclaration$Lz1I, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.typeVariableDeclaration$Lz1I, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

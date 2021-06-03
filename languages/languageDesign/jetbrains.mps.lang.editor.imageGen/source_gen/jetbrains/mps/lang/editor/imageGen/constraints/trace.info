@@ -15,40 +15,36 @@
   <root nodeRef="r:4e9a9958-f159-4048-9d34-aa57f65be511(jetbrains.mps.lang.editor.imageGen.constraints)/3245637733309668517">
     <file name="ImageGenerator_Constraints.java">
       <node id="3245637733309668517" at="18,39,19,38" concept="6" />
-      <node id="3245637733309668518" at="23,59,24,40" concept="6" />
-      <node id="3245637733309668518" at="27,35,28,18" concept="4" />
-      <node id="3245637733309668597" at="31,40,32,81" concept="4" />
-      <node id="3245637733309668517" at="36,84,37,119" concept="3" />
-      <node id="3245637733309668518" at="37,119,38,61" concept="1" />
-      <node id="3245637733309668517" at="38,61,39,22" concept="4" />
-      <node id="3245637733309668517" at="43,0,44,0" concept="5" trace="ImageGenerator$Ng" />
-      <node id="3245637733309668517" at="47,0,48,0" concept="5" trace="name$MnvL" />
-      <node id="3245637733309668517" at="48,0,49,0" concept="5" trace="fileName$tsQ8" />
+      <node id="3245637733309668518" at="23,59,24,60" concept="6" />
+      <node id="3245637733309668597" at="27,40,28,81" concept="4" />
+      <node id="3245637733309668517" at="32,84,33,119" concept="3" />
+      <node id="3245637733309668518" at="33,119,34,61" concept="1" />
+      <node id="3245637733309668517" at="34,61,35,22" concept="4" />
+      <node id="3245637733309668517" at="39,0,40,0" concept="5" trace="ImageGenerator$Ng" />
+      <node id="3245637733309668517" at="43,0,44,0" concept="5" trace="name$MnvL" />
+      <node id="3245637733309668517" at="44,0,45,0" concept="5" trace="fileName$tsQ8" />
       <node id="3245637733309668517" at="18,0,21,0" concept="0" trace="ImageGenerator_Constraints#()V" />
       <node id="3245637733309668518" at="23,0,26,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="3245637733309668518" at="26,0,30,0" concept="2" trace="hasOwnGetter#()Z" />
-      <node id="3245637733309668518" at="30,0,34,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
-      <node id="3245637733309668517" at="35,0,41,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="3245637733309668518" at="26,0,30,0" concept="2" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
+      <node id="3245637733309668517" at="31,0,37,0" concept="2" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <scope id="3245637733309668517" at="18,39,19,38" />
-      <scope id="3245637733309668518" at="23,59,24,40" />
-      <scope id="3245637733309668518" at="27,35,28,18" />
-      <scope id="3245637733309668522" at="31,40,32,81" />
+      <scope id="3245637733309668518" at="23,59,24,60" />
+      <scope id="3245637733309668522" at="27,40,28,81" />
       <scope id="3245637733309668517" at="18,0,21,0" />
       <scope id="3245637733309668518" at="23,0,26,0">
         <var name="container" id="3245637733309668518" />
       </scope>
-      <scope id="3245637733309668517" at="36,84,39,22">
+      <scope id="3245637733309668517" at="32,84,35,22">
         <var name="properties" id="3245637733309668517" />
       </scope>
-      <scope id="3245637733309668518" at="26,0,30,0" />
-      <scope id="3245637733309668518" at="30,0,34,0">
+      <scope id="3245637733309668518" at="26,0,30,0">
         <var name="node" id="3245637733309668518" />
       </scope>
-      <scope id="3245637733309668517" at="35,0,41,0" />
-      <unit id="3245637733309668517" at="42,0,45,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints$CONCEPTS" />
-      <unit id="3245637733309668517" at="46,0,50,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints$PROPS" />
-      <unit id="3245637733309668518" at="22,0,35,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints$Name_Property" />
-      <unit id="3245637733309668517" at="17,0,51,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints" />
+      <scope id="3245637733309668517" at="31,0,37,0" />
+      <unit id="3245637733309668517" at="38,0,41,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints$CONCEPTS" />
+      <unit id="3245637733309668517" at="42,0,46,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints$PROPS" />
+      <unit id="3245637733309668518" at="22,0,31,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints$Name_Property" />
+      <unit id="3245637733309668517" at="17,0,47,0" name="jetbrains.mps.lang.editor.imageGen.constraints.ImageGenerator_Constraints" />
     </file>
   </root>
 </debug-info>

@@ -21,11 +21,7 @@ public class CellActionMapImport_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.cellActionMap$$ow7, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.cellActionMap$$ow7, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

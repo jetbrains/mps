@@ -31,11 +31,7 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$1hyd, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$1hyd, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

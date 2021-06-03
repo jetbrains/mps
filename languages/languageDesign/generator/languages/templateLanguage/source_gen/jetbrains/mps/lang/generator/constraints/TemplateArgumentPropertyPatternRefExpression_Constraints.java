@@ -34,11 +34,7 @@ public class TemplateArgumentPropertyPatternRefExpression_Constraints extends Ba
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyPattern$CluH, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyPattern$CluH, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

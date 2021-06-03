@@ -21,11 +21,7 @@ public class ExtractStaticInnerClassConcept_Constraints extends BaseConstraintsD
 
   public static class ResolveInfo_Property extends BasePropertyConstraintsDescriptor {
     public ResolveInfo_Property(ConstraintsDescriptor container) {
-      super(PROPS.resolveInfo$lW9a, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.resolveInfo$lW9a, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

@@ -31,11 +31,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$8bs3, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$8bs3, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -47,7 +43,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode orPattern = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.OrPattern$Lk, false, false);
-            return ListScope.forResolvableElements(check_8aolto_a0b0b0a0a0b0a0a0a2(orPattern));
+            return ListScope.forResolvableElements(check_8aolto_a0b0b0a0a0a0a0a0a2(orPattern));
           }
         };
       }
@@ -56,7 +52,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static List<SNode> check_8aolto_a0b0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
+  private static List<SNode> check_8aolto_a0b0b0a0a0a0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getChildren(checkedDotOperand, LINKS.variable$fNCo);
     }

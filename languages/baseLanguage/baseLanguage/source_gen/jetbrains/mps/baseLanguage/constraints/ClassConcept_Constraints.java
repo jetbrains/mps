@@ -66,19 +66,11 @@ public class ClassConcept_Constraints extends BaseConstraintsDescriptor {
   }
   public static class IsStatic_Property extends BasePropertyConstraintsDescriptor {
     public IsStatic_Property(ConstraintsDescriptor container) {
-      super(PROPS.isStatic$3WAz, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.isStatic$3WAz, container, true, true, false);
     }
     @Override
     public Object getValue(SNode node) {
       return !(SPropertyOperations.getBoolean(node, PROPS.nonStatic$aWW8));
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {

@@ -23,11 +23,7 @@ public class DailyPlan_Constraints extends BaseConstraintsDescriptor {
 
   public static class DisplayName_Property extends BasePropertyConstraintsDescriptor {
     public DisplayName_Property(ConstraintsDescriptor container) {
-      super(PROPS.displayName$el_f, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.displayName$el_f, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

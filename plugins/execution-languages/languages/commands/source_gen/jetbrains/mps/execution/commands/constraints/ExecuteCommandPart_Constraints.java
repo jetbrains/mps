@@ -64,17 +64,13 @@ public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$MnvL, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.name$MnvL, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
-      return check_kwfdao_a0a2d(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(node));
+      return check_kwfdao_a0a1d(ExecuteCommandPart__BehaviorDescriptor.getCommandDeclaration_id5keEkmeCqIg.invoke(node));
     }
-    private static String check_kwfdao_a0a2d(SNode checkedDotOperand) {
+    private static String check_kwfdao_a0a1d(SNode checkedDotOperand) {
       if (null != checkedDotOperand) {
         return SPropertyOperations.getString(checkedDotOperand, PROPS.name$MnvL);
       }
@@ -83,11 +79,7 @@ public class ExecuteCommandPart_Constraints extends BaseConstraintsDescriptor {
   }
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$Yd4v, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.shortDescription$Yd4v, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

@@ -38,11 +38,7 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.editorOperationDeclaration$1mIR, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.editorOperationDeclaration$1mIR, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

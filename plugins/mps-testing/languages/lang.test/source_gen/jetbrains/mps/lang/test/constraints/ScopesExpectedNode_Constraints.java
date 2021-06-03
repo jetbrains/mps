@@ -31,11 +31,7 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$RHE6, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.ref$RHE6, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -51,7 +47,7 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
               return null;
             }
             SNode scopesTest = SNodeOperations.cast(enclosingNode, CONCEPTS.ScopesTest$TD);
-            ModelPlusImportedScope modelPlusImportedScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, check_1jj8js_c0a0d0b0a0a0b0a0a0a2(check_1jj8js_a2a0a3a1a0a0a1a0a0a0c(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(scopesTest))));
+            ModelPlusImportedScope modelPlusImportedScope = new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, check_1jj8js_c0a0d0b0a0a0a0a0a0a2(check_1jj8js_a2a0a3a1a0a0a0a0a0a0c(ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(scopesTest))));
             return modelPlusImportedScope;
           }
         };
@@ -61,13 +57,13 @@ public class ScopesExpectedNode_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static SAbstractConcept check_1jj8js_c0a0d0b0a0a0b0a0a0a2(SReferenceLink checkedDotOperand) {
+  private static SAbstractConcept check_1jj8js_c0a0d0b0a0a0a0a0a0a2(SReferenceLink checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetConcept();
     }
     return null;
   }
-  private static SReferenceLink check_1jj8js_a2a0a3a1a0a0a1a0a0a0c(SReference checkedDotOperand) {
+  private static SReferenceLink check_1jj8js_a2a0a3a1a0a0a0a0a0a0c(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLink();
     }

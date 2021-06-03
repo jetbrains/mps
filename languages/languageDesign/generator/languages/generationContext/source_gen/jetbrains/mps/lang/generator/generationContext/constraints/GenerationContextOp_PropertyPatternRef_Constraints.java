@@ -34,11 +34,7 @@ public class GenerationContextOp_PropertyPatternRef_Constraints extends BaseCons
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyPatternVar$pUED, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.propertyPatternVar$pUED, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

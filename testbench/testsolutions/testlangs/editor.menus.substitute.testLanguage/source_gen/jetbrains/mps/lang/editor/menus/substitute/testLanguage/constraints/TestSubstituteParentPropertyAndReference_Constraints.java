@@ -5,10 +5,10 @@ package jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
-import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -39,18 +39,13 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
 
   public static class EnumPropertyWithIsValidConstraints_Property extends BasePropertyConstraintsDescriptor {
     public EnumPropertyWithIsValidConstraints_Property(ConstraintsDescriptor container) {
-      super(PROPS.enumPropertyWithIsValidConstraints$pLr4, container);
+      super(PROPS.enumPropertyWithIsValidConstraints$pLr4, container, false, false, true);
     }
-    @Override
-    public boolean hasOwnValidator() {
-      return true;
-    }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787417549");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castEnummember(propertyValue));
       if (!(result) && checkingNodeContext != null) {
-        checkingNodeContext.setBreakingNode(validatePropertyBreakingPoint);
+        checkingNodeContext.setBreakingNode(new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1588042961787417549"));
       }
       return result;
     }
@@ -60,11 +55,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
   public static class EnumPropertyWithGetter_Property extends BasePropertyConstraintsDescriptor {
     public EnumPropertyWithGetter_Property(ConstraintsDescriptor container) {
-      super(PROPS.enumPropertyWithGetter$R55Z, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.enumPropertyWithGetter$R55Z, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {
@@ -73,11 +64,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
   public static class EnumPropertyWithSetter_Property extends BasePropertyConstraintsDescriptor {
     public EnumPropertyWithSetter_Property(ConstraintsDescriptor container) {
-      super(PROPS.enumPropertyWithSetter$hRy2, container);
-    }
-    @Override
-    public boolean hasOwnSetter() {
-      return true;
+      super(PROPS.enumPropertyWithSetter$hRy2, container, false, true, false);
     }
     @Override
     public void setPropertyValue(SNode node, Object propertyValue) {
@@ -97,11 +84,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithScope$svwo, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithScope$svwo, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -122,11 +105,7 @@ public class TestSubstituteParentPropertyAndReference_Constraints extends BaseCo
         };
       }
     };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithSetHandler$vm2y, this) {
-      @Override
-      public boolean hasOwnOnReferenceSetHandler() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.referenceWithSetHandler$vm2y, this, false, true) {
       @Override
       public boolean validate(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         return true;

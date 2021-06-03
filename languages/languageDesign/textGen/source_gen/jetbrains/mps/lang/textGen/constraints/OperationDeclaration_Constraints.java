@@ -63,11 +63,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   }
   public static class OperationName_Property extends BasePropertyConstraintsDescriptor {
     public OperationName_Property(ConstraintsDescriptor container) {
-      super(PROPS.operationName$gZKC, container);
-    }
-    @Override
-    public boolean hasOwnGetter() {
-      return true;
+      super(PROPS.operationName$gZKC, container, true, false, false);
     }
     @Override
     public Object getValue(SNode node) {

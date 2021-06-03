@@ -31,11 +31,7 @@ public class TransformationMenuPart_ReferenceMenu_Constraints extends BaseConstr
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referenceLink$2kB7, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.referenceLink$2kB7, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {

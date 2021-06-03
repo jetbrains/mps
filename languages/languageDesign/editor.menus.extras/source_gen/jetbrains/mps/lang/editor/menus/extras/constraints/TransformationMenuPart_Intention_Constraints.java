@@ -33,11 +33,7 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.intention$vWWt, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.intention$vWWt, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -57,7 +53,7 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
                 }
 
                 SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$xi, false, false);
-                return !(check_qffvkf_a0e0a0a0a0b0a0a0b0a0a0a2(check_qffvkf_a0a4a0a0a0a1a0a0a1a0a0a0c(menu), intentionConcept));
+                return !(check_qffvkf_a0e0a0a0a0b0a0a0a0a0a0a2(check_qffvkf_a0a4a0a0a0a1a0a0a0a0a0a0c(menu), intentionConcept));
               }
             };
           }
@@ -68,13 +64,13 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static boolean check_qffvkf_a0e0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand, SNode intentionConcept) {
+  private static boolean check_qffvkf_a0e0a0a0a0b0a0a0a0a0a0a2(SNode checkedDotOperand, SNode intentionConcept) {
     if (null != checkedDotOperand) {
       return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(checkedDotOperand, intentionConcept);
     }
     return false;
   }
-  private static SNode check_qffvkf_a0a4a0a0a0a1a0a0a1a0a0a0c(SNode checkedDotOperand) {
+  private static SNode check_qffvkf_a0a4a0a0a0a1a0a0a0a0a0a0c(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(checkedDotOperand);
     }
