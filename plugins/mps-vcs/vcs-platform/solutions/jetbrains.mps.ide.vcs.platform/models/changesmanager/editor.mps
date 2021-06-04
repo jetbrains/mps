@@ -4833,6 +4833,13 @@
         <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
       </node>
     </node>
+    <node concept="312cEg" id="jCAmFld4Ot" role="jymVt">
+      <property role="TrG5h" value="myLayeredPane" />
+      <node concept="3Tm6S6" id="jCAmFld4Or" role="1B3o_S" />
+      <node concept="3uibUv" id="jCAmFld4Os" role="1tU5fm">
+        <ref role="3uigEE" to="dxuu:~JLayeredPane" resolve="JLayeredPane" />
+      </node>
+    </node>
     <node concept="312cEg" id="23PS3yVDzrd" role="jymVt">
       <property role="TrG5h" value="myBaseEditor" />
       <node concept="3uibUv" id="30mmRK2dMee" role="1tU5fm">
@@ -5262,22 +5269,21 @@
       </node>
       <node concept="3cqZAl" id="2twBGhzw_SO" role="3clF45" />
       <node concept="3clFbS" id="2twBGhzw_SP" role="3clF47">
-        <node concept="3cpWs8" id="2a2fc5ZjZxg" role="3cqZAp">
-          <node concept="3cpWsn" id="2a2fc5ZjZxh" role="3cpWs9">
-            <property role="TrG5h" value="layeredPane" />
-            <node concept="3uibUv" id="2a2fc5ZjZxi" role="1tU5fm">
-              <ref role="3uigEE" to="dxuu:~JLayeredPane" resolve="JLayeredPane" />
+        <node concept="3clFbF" id="jCAmFld4OC" role="3cqZAp">
+          <node concept="37vLTI" id="jCAmFld4OD" role="3clFbG">
+            <node concept="37vLTw" id="jCAmFld8mf" role="37vLTJ">
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
-            <node concept="2OqwBi" id="2a2fc5ZjZxj" role="33vP2m">
-              <node concept="2OqwBi" id="2a2fc5ZjZxk" role="2Oq$k0">
-                <node concept="liA8E" id="2a2fc5ZjZxl" role="2OqNvi">
+            <node concept="2OqwBi" id="jCAmFld4OH" role="37vLTx">
+              <node concept="2OqwBi" id="jCAmFld4OI" role="2Oq$k0">
+                <node concept="liA8E" id="jCAmFld4OJ" role="2OqNvi">
                   <ref role="37wK5l" to="dxuu:~JComponent.getRootPane()" resolve="getRootPane" />
                 </node>
-                <node concept="37vLTw" id="2BHiRxeumN$" role="2Oq$k0">
+                <node concept="37vLTw" id="jCAmFld4OK" role="2Oq$k0">
                   <ref role="3cqZAo" node="2twBGhzwQQb" resolve="myEditor" />
                 </node>
               </node>
-              <node concept="liA8E" id="2a2fc5ZjZxn" role="2OqNvi">
+              <node concept="liA8E" id="jCAmFld4OL" role="2OqNvi">
                 <ref role="37wK5l" to="dxuu:~JRootPane.getLayeredPane()" resolve="getLayeredPane" />
               </node>
             </node>
@@ -5299,7 +5305,7 @@
                 <ref role="3cqZAo" node="2twBGhzw_SX" resolve="y" />
               </node>
               <node concept="37vLTw" id="3GM_nagTAZX" role="37wK5m">
-                <ref role="3cqZAo" node="2a2fc5ZjZxh" resolve="layeredPane" />
+                <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
               </node>
             </node>
           </node>
@@ -5315,7 +5321,7 @@
         <node concept="3clFbF" id="2twBGhzwQhH" role="3cqZAp">
           <node concept="2OqwBi" id="2twBGhzwQPN" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTtIp" role="2Oq$k0">
-              <ref role="3cqZAo" node="2a2fc5ZjZxh" resolve="layeredPane" />
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
             <node concept="liA8E" id="2twBGhzwQPR" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
@@ -5382,7 +5388,7 @@
               </node>
               <node concept="2OqwBi" id="2T2NPEcpVj" role="3uHU7w">
                 <node concept="37vLTw" id="3GM_nagTrVr" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2a2fc5ZjZxh" resolve="layeredPane" />
+                  <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
                 </node>
                 <node concept="liA8E" id="2T2NPEcpVl" role="2OqNvi">
                   <ref role="37wK5l" to="dxuu:~JComponent.getWidth()" resolve="getWidth" />
@@ -5457,7 +5463,7 @@
         <node concept="3clFbF" id="6A8PMQURnR_" role="3cqZAp">
           <node concept="2OqwBi" id="6A8PMQURnRA" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTssm" role="2Oq$k0">
-              <ref role="3cqZAo" node="2a2fc5ZjZxh" resolve="layeredPane" />
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
             <node concept="liA8E" id="6A8PMQURnRE" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Container.validate()" resolve="validate" />
@@ -5467,7 +5473,7 @@
         <node concept="3clFbF" id="5N3ntE_MyE1" role="3cqZAp">
           <node concept="2OqwBi" id="5N3ntE_MyE2" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagT_3m" role="2Oq$k0">
-              <ref role="3cqZAo" node="2a2fc5ZjZxh" resolve="layeredPane" />
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
             <node concept="liA8E" id="5N3ntE_MyE4" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.repaint(java.awt.Rectangle)" resolve="repaint" />
@@ -5556,36 +5562,26 @@
       <property role="TrG5h" value="dispose" />
       <node concept="3cqZAl" id="2twBGhzw_Sw" role="3clF45" />
       <node concept="3clFbS" id="2twBGhzw_Sx" role="3clF47">
+        <node concept="3clFbJ" id="jCAmFlduCi" role="3cqZAp">
+          <node concept="3clFbS" id="jCAmFlduCk" role="3clFbx">
+            <node concept="3cpWs6" id="jCAmFldDxm" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="jCAmFld$jT" role="3clFbw">
+            <node concept="10Nm6u" id="jCAmFldBux" role="3uHU7w" />
+            <node concept="37vLTw" id="jCAmFldxuZ" role="3uHU7B">
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2twBGhzw_Td" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyzhK5" role="3clFbG">
             <ref role="37wK5l" node="2twBGhzw_Nq" resolve="removeListeners" />
           </node>
         </node>
-        <node concept="3cpWs8" id="CAEW9VcwFu" role="3cqZAp">
-          <node concept="3cpWsn" id="CAEW9VcwFv" role="3cpWs9">
-            <property role="TrG5h" value="layeredPane" />
-            <node concept="3uibUv" id="CAEW9VcwFw" role="1tU5fm">
-              <ref role="3uigEE" to="dxuu:~JLayeredPane" resolve="JLayeredPane" />
-            </node>
-            <node concept="2OqwBi" id="CAEW9VcwFx" role="33vP2m">
-              <node concept="2OqwBi" id="CAEW9VcwFy" role="2Oq$k0">
-                <node concept="liA8E" id="CAEW9VcwFz" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JComponent.getRootPane()" resolve="getRootPane" />
-                </node>
-                <node concept="37vLTw" id="2BHiRxeuVYs" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2twBGhzwQQb" resolve="myEditor" />
-                </node>
-              </node>
-              <node concept="liA8E" id="CAEW9VcwF_" role="2OqNvi">
-                <ref role="37wK5l" to="dxuu:~JRootPane.getLayeredPane()" resolve="getLayeredPane" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2twBGhzwQPW" role="3cqZAp">
           <node concept="2OqwBi" id="2twBGhzwQQ5" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTvgI" role="2Oq$k0">
-              <ref role="3cqZAo" node="CAEW9VcwFv" resolve="layeredPane" />
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
             <node concept="liA8E" id="2twBGhzwQQ9" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Container.remove(java.awt.Component)" resolve="remove" />
@@ -5595,8 +5591,8 @@
         </node>
         <node concept="3clFbF" id="CAEW9VcwFl" role="3cqZAp">
           <node concept="2OqwBi" id="CAEW9VcwFm" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTxfn" role="2Oq$k0">
-              <ref role="3cqZAo" node="CAEW9VcwFv" resolve="layeredPane" />
+            <node concept="37vLTw" id="jCAmFldeot" role="2Oq$k0">
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
             <node concept="liA8E" id="CAEW9VcwFo" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Container.validate()" resolve="validate" />
@@ -5605,8 +5601,8 @@
         </node>
         <node concept="3clFbF" id="CAEW9VcwFp" role="3cqZAp">
           <node concept="2OqwBi" id="CAEW9VcwFq" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTyXj" role="2Oq$k0">
-              <ref role="3cqZAo" node="CAEW9VcwFv" resolve="layeredPane" />
+            <node concept="37vLTw" id="jCAmFldhc8" role="2Oq$k0">
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
             <node concept="liA8E" id="CAEW9VcwFs" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.repaint(java.awt.Rectangle)" resolve="repaint" />
@@ -5669,6 +5665,14 @@
                   <ref role="3cqZAo" node="23PS3yVDzrd" resolve="myBaseEditor" />
                 </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="jCAmFldNBs" role="3cqZAp">
+          <node concept="37vLTI" id="jCAmFldR7t" role="3clFbG">
+            <node concept="10Nm6u" id="jCAmFldSQ3" role="37vLTx" />
+            <node concept="37vLTw" id="jCAmFldNBq" role="37vLTJ">
+              <ref role="3cqZAo" node="jCAmFld4Ot" resolve="myLayeredPane" />
             </node>
           </node>
         </node>

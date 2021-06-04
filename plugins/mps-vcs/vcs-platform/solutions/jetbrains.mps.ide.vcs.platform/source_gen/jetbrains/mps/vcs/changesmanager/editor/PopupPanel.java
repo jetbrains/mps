@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import javax.swing.JLayeredPane;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import java.awt.BorderLayout;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -14,7 +15,6 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.ui.ColoredSideBorder;
 import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
-import javax.swing.JLayeredPane;
 import javax.swing.SwingUtilities;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -28,6 +28,7 @@ import java.awt.event.FocusEvent;
   private MyMouseListener myMouseListener = new MyMouseListener();
   private MyFocusListener myFocusListener = new MyFocusListener();
   private EditorComponent myEditor;
+  private JLayeredPane myLayeredPane;
   private BaseVersionEditorComponent myBaseEditor;
   private ActionToolbar myToolbar;
   public PopupPanel(ChangeStripsPainter painter, ChangeGroup group) {
@@ -56,21 +57,21 @@ import java.awt.event.FocusEvent;
     return myChangeGroup;
   }
   public void show(int x, int y) {
-    JLayeredPane layeredPane = myEditor.getRootPane().getLayeredPane();
-    setLocation(SwingUtilities.convertPoint(myEditor, x, y, layeredPane));
+    myLayeredPane = myEditor.getRootPane().getLayeredPane();
+    setLocation(SwingUtilities.convertPoint(myEditor, x, y, myLayeredPane));
     setVisible(true);
-    layeredPane.add(this, JLayeredPane.POPUP_LAYER);
+    myLayeredPane.add(this, JLayeredPane.POPUP_LAYER);
 
     myPainter.setGroupHighlighted(myChangeGroup, true);
     myToolbar.updateActionsImmediately();
     setSize(getPreferredSize());
-    int overflow = ((int) getBounds().getMaxX()) - layeredPane.getWidth();
+    int overflow = ((int) getBounds().getMaxX()) - myLayeredPane.getWidth();
     if (overflow > 0) {
       // panel is too wide, need to move it
       setLocation(Math.max(0, getX() - overflow), getY());
     }
-    layeredPane.validate();
-    layeredPane.repaint(getBounds());
+    myLayeredPane.validate();
+    myLayeredPane.repaint(getBounds());
 
     addListeners();
   }
@@ -83,11 +84,13 @@ import java.awt.event.FocusEvent;
     myEditor.removeMouseListener(myMouseListener);
   }
   /*package*/ void dispose() {
+    if (myLayeredPane == null) {
+      return;
+    }
     removeListeners();
-    JLayeredPane layeredPane = myEditor.getRootPane().getLayeredPane();
-    layeredPane.remove(this);
-    layeredPane.validate();
-    layeredPane.repaint(getBounds());
+    myLayeredPane.remove(this);
+    myLayeredPane.validate();
+    myLayeredPane.repaint(getBounds());
 
     myPainter.setGroupHighlighted(myChangeGroup, false);
     myPainter.popupClosed();
@@ -96,6 +99,7 @@ import java.awt.event.FocusEvent;
       myBaseEditor.dispose();
       myBaseEditor = null;
     }
+    myLayeredPane = null;
   }
   private class MyMouseListener extends MouseAdapter {
     public MyMouseListener() {
