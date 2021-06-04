@@ -79,6 +79,7 @@
     <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
     <import index="k3nr" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
+    <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -1370,14 +1371,8 @@
             <node concept="3uibUv" id="32v4JYwarSE" role="1tU5fm">
               <ref role="3uigEE" to="z60i:~Font" resolve="Font" />
             </node>
-            <node concept="2OqwBi" id="32v4JYwasoh" role="33vP2m">
-              <node concept="2YIFZM" id="32v4JYwasoi" role="2Oq$k0">
-                <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
-                <ref role="37wK5l" to="exr9:~EditorSettings.getInstance()" resolve="getInstance" />
-              </node>
-              <node concept="liA8E" id="32v4JYwasoj" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorSettings.getDefaultEditorFont()" resolve="getDefaultEditorFont" />
-              </node>
+            <node concept="1rXfSq" id="5hjrk$$FUFE" role="33vP2m">
+              <ref role="37wK5l" node="5hjrk$$F$eP" resolve="getEditorFont" />
             </node>
           </node>
         </node>
@@ -1924,6 +1919,36 @@
         <node concept="10P_77" id="32VB0xT4_1G" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5hjrk$$FlsT" role="jymVt" />
+    <node concept="3clFb_" id="5hjrk$$F$eP" role="jymVt">
+      <property role="TrG5h" value="getEditorFont" />
+      <node concept="3clFbS" id="5hjrk$$F$eS" role="3clF47">
+        <node concept="3cpWs6" id="5hjrk$$FDuP" role="3cqZAp">
+          <node concept="2OqwBi" id="5hjrk$$FI0x" role="3cqZAk">
+            <node concept="2OqwBi" id="5hjrk$$FI0y" role="2Oq$k0">
+              <node concept="2OqwBi" id="5hjrk$$FI0z" role="2Oq$k0">
+                <node concept="1rXfSq" id="5hjrk$$FI0$" role="2Oq$k0">
+                  <ref role="37wK5l" to="px75:~AbstractLeftColumn.getLeftEditorHighlighter()" resolve="getLeftEditorHighlighter" />
+                </node>
+                <node concept="liA8E" id="5hjrk$$FI0_" role="2OqNvi">
+                  <ref role="37wK5l" to="px75:~LeftEditorHighlighter.getEditorComponent()" resolve="getEditorComponent" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5hjrk$$FI0A" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getEditorComponentSettings()" resolve="getEditorComponentSettings" />
+              </node>
+            </node>
+            <node concept="liA8E" id="5hjrk$$FI0B" role="2OqNvi">
+              <ref role="37wK5l" to="cj4x:~EditorComponentSettings.getDefaultFont()" resolve="getDefaultFont" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="5hjrk$$FueH" role="1B3o_S" />
+      <node concept="3uibUv" id="5hjrk$$Fxkr" role="3clF45">
+        <ref role="3uigEE" to="z60i:~Font" resolve="Font" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="4FpwSCZu0Oe" role="jymVt" />
     <node concept="3clFb_" id="4FpwSCZueck" role="jymVt">
       <property role="TrG5h" value="computeSubcolumnWidths" />
@@ -1941,14 +1966,8 @@
               </node>
               <node concept="liA8E" id="1axvNamiDZ9" role="2OqNvi">
                 <ref role="37wK5l" to="g51k:~FontRegistry.getFontMetrics(java.awt.Font)" resolve="getFontMetrics" />
-                <node concept="2OqwBi" id="32v4JYwa_OJ" role="37wK5m">
-                  <node concept="2YIFZM" id="32v4JYwa_OK" role="2Oq$k0">
-                    <ref role="37wK5l" to="exr9:~EditorSettings.getInstance()" resolve="getInstance" />
-                    <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
-                  </node>
-                  <node concept="liA8E" id="32v4JYwa_OL" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorSettings.getDefaultEditorFont()" resolve="getDefaultEditorFont" />
-                  </node>
+                <node concept="1rXfSq" id="5hjrk$$FQCk" role="37wK5m">
+                  <ref role="37wK5l" node="5hjrk$$F$eP" resolve="getEditorFont" />
                 </node>
               </node>
             </node>

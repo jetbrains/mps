@@ -25,7 +25,6 @@ import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.awt.Color;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import java.awt.Font;
-import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import java.awt.FontMetrics;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -161,7 +160,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       graphics.fillRect(getX(), y, getWidth(), height);
     }
     graphics.setColor(StyleRegistry.getInstance().getColor("ANNOTATIONS_COLOR"));
-    Font font = EditorSettings.getInstance().getDefaultEditorFont();
+    Font font = getEditorFont();
     if (myEditorAnnotation.isLatestCommit(graphNode)) {
       graphics.setFont(FontRegistry.getInstance().getFont(font.getName(), font.getStyle() | Font.BOLD, font.getSize()));
     } else {
@@ -220,8 +219,12 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     computeSubcolumnWidths();
   }
 
+  private Font getEditorFont() {
+    return getLeftEditorHighlighter().getEditorComponent().getEditorComponentSettings().getDefaultFont();
+  }
+
   private void computeSubcolumnWidths() {
-    FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(EditorSettings.getInstance().getDefaultEditorFont());
+    FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(getEditorFont());
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
       aspectSubcolumn.computeWidth(metrics, CollectionSequence.fromCollection(myEditorAnnotation.getLineAnnotations()).select(new ISelector<LineAnnotation, CommitsGraphNode>() {
         public CommitsGraphNode select(LineAnnotation it) {
@@ -288,7 +291,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public void mouseMoved(MouseEvent event) {
-    CommitsGraphNode graphNode = check_5mnya_a0a0ac(getLineAnnotation(event.getY()), this);
+    CommitsGraphNode graphNode = check_5mnya_a0a0cc(getLineAnnotation(event.getY()), this);
     myEditorAnnotation.setCommitUnderMouse(graphNode);
   }
 
@@ -303,7 +306,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       return;
     }
     myIsClosed = true;
-    check_5mnya_a2a65(myCloseActionListener);
+    check_5mnya_a2a85(myCloseActionListener);
     if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
     }
@@ -318,7 +321,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
     final LineAnnotation la = getLineAnnotation(event.getY());
-    final CommitsGraphNode graphNode = check_5mnya_a0c0ic(la);
+    final CommitsGraphNode graphNode = check_5mnya_a0c0kc(la);
     boolean isVcsRevision = graphNode != null && !(graphNode.isLocalRevision());
     ListSequence.fromList(actions).addElement(createCloseAnnotateAction());
     ListSequence.fromList(actions).addElement(Separator.getInstance());
@@ -506,19 +509,19 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-  private static CommitsGraphNode check_5mnya_a0a0ac(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
+  private static CommitsGraphNode check_5mnya_a0a0cc(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }
     return null;
   }
-  private static void check_5mnya_a2a65(Runnable checkedDotOperand) {
+  private static void check_5mnya_a2a85(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }
 
   }
-  private static CommitsGraphNode check_5mnya_a0c0ic(LineAnnotation checkedDotOperand) {
+  private static CommitsGraphNode check_5mnya_a0c0kc(LineAnnotation checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }
