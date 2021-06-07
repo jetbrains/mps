@@ -5,11 +5,9 @@ package jetbrains.mps.typesystem.inference;
 
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
-import jetbrains.mps.lang.typesystem.runtime.performance.RuntimeSupport_Tracer;
-import jetbrains.mps.lang.typesystem.runtime.performance.SubtypingManager_Tracer;
 import jetbrains.mps.newTypesystem.RuntimeSupportNew;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
-import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 import jetbrains.mps.util.Computable;
@@ -21,28 +19,36 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class TypeCheckerHelper {
 
-  private SubtypingManager mySubtypingManager;
-  private SubtypingManager mySubtypingManagerTracer;
-
-  private RuntimeSupport myRuntimeSupport;
-  private RuntimeSupport myRuntimeSupportTracer;
-
   private RulesManager myRulesManager;
-
-  private ThreadLocal<SubtypingCache> mySubtypingCache = new ThreadLocal<>();
-  
   private IPerformanceTracer myPerformanceTracer = null;
 
-  public TypeCheckerHelper(RulesManager rulesManager) {
+  private SubtypingManager mySubtypingManager;
+  private RuntimeSupport myRuntimeSupport;
+  private ThreadLocal<SubtypingCache> mySubtypingCache = new ThreadLocal<>();
+  private TypeSystemReporter myTypeSystemReporter = new TypeSystemReporter();
+
+  public TypeCheckerHelper(RulesManager rulesManager, IPerformanceTracer performanceTracer) {
     myRuntimeSupport = new RuntimeSupportNew(this);
     mySubtypingManager = new SubTypingManagerNew(this);
     myRulesManager = rulesManager;
-    myRuntimeSupportTracer = new RuntimeSupport_Tracer(this);
-    mySubtypingManagerTracer = new SubtypingManager_Tracer(this);
+    myPerformanceTracer = performanceTracer;
+    if (myPerformanceTracer != null) {
+      myTypeSystemReporter.reset();
+    }
+  }
+
+  public void dispose() {
+    if (myPerformanceTracer != null) {
+      myTypeSystemReporter.printReport(10, myPerformanceTracer);
+    }
   }
 
   public RulesManager getRulesManager() {
     return myRulesManager;
+  }
+
+  public TypeSystemReporter getTypeSystemReporter() {
+    return myTypeSystemReporter;
   }
 
   public SubtypingManager getSubtypingManager() {
@@ -54,6 +60,7 @@ public class TypeCheckerHelper {
   }
 
   public SubtypingCache getSubtypingCache() {
+    // FIXME share subtyping cache among generator worker threads?
     final SubtypingCache subtypingCache = mySubtypingCache.get();
     if (subtypingCache != null) return subtypingCache;
 

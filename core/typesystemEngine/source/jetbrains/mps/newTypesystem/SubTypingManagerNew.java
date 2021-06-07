@@ -23,7 +23,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.smodel.ModelDependencyScanner;
-import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -49,11 +48,15 @@ public class SubTypingManagerNew extends SubtypingManager {
 
   @Override
   public boolean isSubtype(SNode subType, SNode superType) {
-    return isSubtype(subType, superType, true);
+    return getTypeCheckerHelper().computeWithTrace(() -> calcIsSubtype(subType, superType, true), "is subtype");
   }
 
   @Override
   public boolean isSubtype(final SNode subType, final SNode superType, final boolean isWeak) {
+    return getTypeCheckerHelper().computeWithTrace(() -> calcIsSubtype(subType, superType, isWeak), "is subtype");
+  }
+
+  private boolean calcIsSubtype(SNode subType, SNode superType, boolean isWeak) {
     if (null == subType || null == superType) return false;
     if (subType == superType) return true;
     if (TypesUtil.isVariable(subType)) return false;
@@ -62,7 +65,7 @@ public class SubTypingManagerNew extends SubtypingManager {
     return LanguageScopeExecutor.execWithMultiLanguageScope(
         collectLanguagesRecursively(subType, superType),
         () -> {
-          SubtypingResolver subtypingResolver = new SubtypingResolver(isWeak);
+          SubtypingResolver subtypingResolver = new SubtypingResolver(isWeak, getTypeCheckerHelper());
           return subtypingResolver.calcIsSubType(subType, superType);
         });
   }
@@ -199,7 +202,7 @@ public class SubTypingManagerNew extends SubtypingManager {
     if (subtype == null) return null;
     long start = System.nanoTime();
     SNode sNode = myCoercionManager.coerceSubTypingNew(subtype, pattern, isWeak, context);
-    TypeSystemReporter.getInstance().reportCoerce(subtype, pattern.getConcept(), System.nanoTime()-start);
+    getTypeCheckerHelper().getTypeSystemReporter().reportCoerce(subtype, pattern.getConcept(), System.nanoTime()-start);
     return sNode;
   }
 }

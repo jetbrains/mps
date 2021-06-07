@@ -33,6 +33,8 @@ import java.util.Set;
 
 public abstract class TypeCheckingContext {
 
+  public abstract TypeCheckerHelper getTypeCheckerHelper();
+
   public abstract SNode getRepresentative(SNode node);
 
   public abstract boolean isIncrementalMode();

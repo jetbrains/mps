@@ -26,7 +26,7 @@ import jetbrains.mps.generator.impl.IGenerationTaskPool.ITaskPoolProvider;
 import jetbrains.mps.generator.impl.IGenerationTaskPool.SimpleGenerationTaskPool;
 import jetbrains.mps.smodel.ModelAccessBase;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typechecking.TypecheckingSession;
+import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
@@ -115,7 +115,11 @@ public class GenerationController implements ITaskPoolProvider {
       : new NullPerformanceTracer();
 
     boolean traceTypes = myOptions.getTracingMode() == GenerationOptions.TRACE_TYPES;
-    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(TypecheckingSession.Flags.generator());
+    Flags flags = Flags.generator();
+    if (traceTypes) {
+      flags = flags.withTracer(ttrace);
+    }
+    Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(flags);
 
     final TransientModelsModule transientModule = myContext.getTransientModelProvider().getModule(task);
     final GenerationTrace genTrace = myOptions.isSaveTransientModels() ? new GenTraceImpl(transientModule) : new GenerationTrace.NoOp();

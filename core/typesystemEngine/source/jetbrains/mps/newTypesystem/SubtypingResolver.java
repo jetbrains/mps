@@ -16,13 +16,12 @@
 package jetbrains.mps.newTypesystem;
 
 import jetbrains.mps.smodel.NodeReadAccessCasterInEditor;
-import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 import jetbrains.mps.typesystemEngine.util.LatticeUtil;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -42,15 +41,20 @@ public class SubtypingResolver {
   private final boolean myWeak;
   final TypeCheckingContext myTypeCheckingContext;
   final Collection<Pair<SNode,SNode>> myMatchingPairs;
+  private final TypeCheckerHelper myTypeCheckerHelper;
 
   public SubtypingResolver(boolean isWeak, TypeCheckingContext typeCheckingContext, /*out*/ Collection<Pair<SNode, SNode>> matchingPairs) {
     this.myWeak = isWeak;
     this.myTypeCheckingContext = typeCheckingContext;
+    this.myTypeCheckerHelper = typeCheckingContext.getTypeCheckerHelper();
     this.myMatchingPairs = matchingPairs;
   }
 
-  public SubtypingResolver(boolean isWeak) {
-    this(isWeak, null, null);
+  public SubtypingResolver(boolean isWeak, TypeCheckerHelper typeCheckerHelper) {
+    this.myWeak = isWeak;
+    this.myTypeCheckingContext = null;
+    this.myMatchingPairs = null;
+    myTypeCheckerHelper = typeCheckerHelper;
   }
 
   public boolean calcIsSubType(final SNode subType, final SNode superType) {
@@ -60,7 +64,7 @@ public class SubtypingResolver {
       boolean result = isSubType(subType, superType);
       return result;
     });
-    TypeSystemReporter.getInstance().reportIsSubType(subType, superType, (System.nanoTime() - start));
+    myTypeCheckerHelper.getTypeSystemReporter().reportIsSubType(subType, superType, (System.nanoTime() - start));
     return aBoolean;
   }
 
@@ -137,7 +141,8 @@ public class SubtypingResolver {
         return true;
       }
       StructuralNodeSet<?> ancestors = new StructuralNodeSet();
-      TypeChecker.getInstance().getSubtypingManager().collectImmediateSuperTypes(cur, isWeak, ancestors, myTypeCheckingContext);
+      // FIXME myTypeCheckingContext can be null here!
+      myTypeCheckerHelper.getSubtypingManager().collectImmediateSuperTypes(cur, isWeak, ancestors, myTypeCheckingContext);
       for (SNode ancestor: ancestors) {
         if (visited.contains(ancestor)) continue;
         visited.addStructurally(ancestor);

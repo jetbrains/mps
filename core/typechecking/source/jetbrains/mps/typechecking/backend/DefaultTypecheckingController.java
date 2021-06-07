@@ -35,9 +35,9 @@ public class DefaultTypecheckingController extends TypecheckingController {
 
   private final Flags myDefaultFlags;
 
-  private TypecheckingSessionImpl myDefaultSession;
+  private TypecheckingSessionImpl myActiveSession;
 
-  private Map<TypecheckingProvider, AuxDataContainer> myDefaultData = new HashMap<>();
+  private Map<TypecheckingProvider, AuxDataContainer> myAuxData = new HashMap<>();
 
   public DefaultTypecheckingController(TypecheckingBackend typecheckingBackend, Flags defaultFlags) {
     super(typecheckingBackend);
@@ -52,8 +52,8 @@ public class DefaultTypecheckingController extends TypecheckingController {
   @NotNull
   @Override
   protected Handle requestSession(@NotNull Flags flags) {
-    if (myDefaultSession == null) {
-      this.myDefaultSession = createSession();
+    if (myActiveSession == null) {
+      this.myActiveSession = createSession(flags);
       return new SessionHandle();
 
     } else {
@@ -65,23 +65,23 @@ public class DefaultTypecheckingController extends TypecheckingController {
   @Override
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     // request new session on demand
-    if (myDefaultSession == null) {
-      this.myDefaultSession = createSession();
+    if (myActiveSession == null) {
+      this.myActiveSession = createSession(myDefaultFlags);
     }
-    return myDefaultSession.getQueries(src, trg, trgConcept);
+    return myActiveSession.getQueries(src, trg, trgConcept);
   }
 
   @Override
   protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
-    if (myDefaultSession != null) {
-      return myDefaultData.computeIfAbsent(provider, (key) -> provider.createDataContainer(myDefaultSession.flags()));
+    if (myActiveSession != null) {
+      return myAuxData.computeIfAbsent(provider, (key) -> provider.createDataContainer(myActiveSession.flags()));
     }
     else return null;
   }
 
   @NotNull
-  private TypecheckingSessionImpl createSession() {
-    return new TypecheckingSessionImpl(this, myDefaultFlags) {
+  private TypecheckingSessionImpl createSession(Flags flags) {
+    return new TypecheckingSessionImpl(this, flags) {
       @Override
       public <C> C getData(Class<? extends C> dataClass) {
         return DefaultTypecheckingController.this.getData(dataClass);
@@ -90,23 +90,23 @@ public class DefaultTypecheckingController extends TypecheckingController {
   }
 
   private void disposeSession() {
-    if (myDefaultSession != null) {
-      myDefaultSession.dispose();
-      myDefaultSession = null;
+    if (myActiveSession != null) {
+      myActiveSession.dispose();
+      myActiveSession = null;
     }
-    for(AuxDataContainer dc: myDefaultData.values()) {
+    for(AuxDataContainer dc: myAuxData.values()) {
       dc.dispose();
     }
-    myDefaultData.clear();
+    myAuxData.clear();
   }
 
   private class SessionHandle implements Handle {
     @Override
     public TypecheckingSession session() {
-      if (myDefaultSession == null || myDefaultSession.isDisposed()) {
+      if (myActiveSession == null || myActiveSession.isDisposed()) {
         throw new IllegalStateException("session already disposed");
       }
-      return myDefaultSession;
+      return myActiveSession;
     }
 
     @Override

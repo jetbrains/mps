@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.typechecking;
 
+import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -72,9 +73,11 @@ public interface TypecheckingSession {
     public static long FLAG_CACHING       = 0x1 << 2;
     public static long FLAG_INCREMENTAL   = 0x1 << 3;
     public static long FLAG_GENERATOR     = 0x1 << 4;
+    public static long FLAG_GENERATOR_WORKER     = 0x1 << 5;
 
     private long myFlags;
     private SNode myRoot;
+    private IPerformanceTracer myTracer;
 
     @NotNull
     public static Flags basic() {
@@ -84,6 +87,11 @@ public interface TypecheckingSession {
     @NotNull
     public static Flags generator() {
       return new Flags(FLAG_GENERATOR);
+    }
+
+    @NotNull
+    public static Flags generatorWorker() {
+      return new Flags(FLAG_GENERATOR | FLAG_GENERATOR_WORKER);
     }
 
     @NotNull
@@ -100,6 +108,11 @@ public interface TypecheckingSession {
     @NotNull
     public Flags incremental() {
       this.myFlags |= FLAG_INCREMENTAL;
+      return this;
+    }
+
+    public Flags withTracer(IPerformanceTracer ttrace) {
+      this.myTracer = ttrace;
       return this;
     }
 
@@ -123,6 +136,18 @@ public interface TypecheckingSession {
       return (myFlags & FLAG_GENERATOR) != 0;
     }
 
+    public boolean isGeneratorMain() {
+      return (myFlags & FLAG_GENERATOR) != 0 && (myFlags & FLAG_GENERATOR_WORKER) == 0 ;
+    }
+
+    public boolean isGeneratorWorker() {
+      return (myFlags & FLAG_GENERATOR_WORKER) != 0;
+    }
+
+    public IPerformanceTracer getTracer() {
+      return myTracer;
+    }
+
     @Override
     public String toString() {
       return "[root=" + myRoot + (myRoot != null ? " (" + myRoot.getReference() + ")" : "") + ", flags=" + myFlags + "]";
@@ -131,6 +156,7 @@ public interface TypecheckingSession {
     protected Flags(Flags copyFrom) {
       this.myRoot = copyFrom.myRoot;
       this.myFlags = copyFrom.myFlags;
+      this.myTracer = copyFrom.myTracer;
     }
 
     private Flags(long flags) {

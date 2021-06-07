@@ -40,6 +40,7 @@ import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
+import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -127,7 +128,9 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   @Override
   public AuxDataContainer createDataContainer(Flags flags) {
-    return new DataContainer();
+    // TODO: is the trace only supported for "main" generator thread? apparently it has always been this way
+    IPerformanceTracer performanceTracer = flags.isGeneratorMain() ? flags.getTracer() : null;
+    return new DataContainer(new TypeCheckerHelper(myRulesManager, performanceTracer));
   }
 
   @Override
@@ -413,8 +416,12 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   private class DataContainer implements AuxDataContainer {
 
-    private TypeCheckerHelper myTypeCheckerHelper = new TypeCheckerHelper(myRulesManager);
-    
+    private TypeCheckerHelper myTypeCheckerHelper;
+
+    public DataContainer(TypeCheckerHelper typeCheckerHelper) {
+      myTypeCheckerHelper = typeCheckerHelper;
+    }
+
     @Override
     public <C> C getInstance(Class<? extends C> dataClass) {
       if (dataClass == TypeCheckerHelper.class) {
@@ -425,6 +432,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
     @Override
     public void dispose() {
+      myTypeCheckerHelper.dispose();
       myDataContainers.remove(this);
     }
   }

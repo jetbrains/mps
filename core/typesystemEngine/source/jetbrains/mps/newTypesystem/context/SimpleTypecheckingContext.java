@@ -137,7 +137,7 @@ public abstract class SimpleTypecheckingContext<
       // XXX this is the way it was; although may build set of languages in use from the node's hierarchy and restrict scope only to those
       result = LanguageScopeExecutor.execWithGlobalScope(computable);
     }
-    TypeSystemReporter.getInstance().reportTypeOf(node, (System.nanoTime() - start));
+    myTypeCheckerHelper.getTypeSystemReporter().reportTypeOf(node, (System.nanoTime() - start));
     return result;
   }
 

@@ -25,22 +25,10 @@ import java.util.Map.Entry;
 
 
 public class TypeSystemReporter {
-  private static TypeSystemReporter instance = null;
   private boolean isEnabled = false;
   private Map<String, Pair<Long, Long>> myGetTypeOfTime = new HashMap<>();
   private Map<String, Pair<Long, Long>> myIsSubTypeTime = new HashMap<>();
   private Map<String, Pair<Long, Long>> myCoerceTime = new HashMap<>();
-
-  private TypeSystemReporter() {
-
-  }
-
-  public static TypeSystemReporter getInstance() {
-    if (instance == null) {
-      instance = new TypeSystemReporter();
-    }
-    return instance;
-  }
 
   public void reset() {
     isEnabled = true;

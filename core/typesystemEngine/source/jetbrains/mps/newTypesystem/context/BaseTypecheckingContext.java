@@ -51,6 +51,11 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
   }
 
   @Override
+  public TypeCheckerHelper getTypeCheckerHelper() {
+    return myTypeCheckerHelper;
+  }
+
+  @Override
   public SNode getRepresentative(SNode node) {
     return getState().getRepresentative(node);
   }
