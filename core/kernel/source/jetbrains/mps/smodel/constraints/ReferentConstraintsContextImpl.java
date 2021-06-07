@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.constraints;
 
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -25,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 public class ReferentConstraintsContextImpl implements ReferenceConstraintsContext {
 
-  @NotNull
   private final SNode myContextNode;
 
   @Nullable
@@ -36,16 +36,24 @@ public class ReferentConstraintsContextImpl implements ReferenceConstraintsConte
   @Nullable
   private final SNode myReferenceNode;
 
-  @NotNull
   private final SAbstractConcept myTargetConcept;
 
+  // TODO caching
+  private final EvaluateScopeContext myScopeEvaluation;
+
   public ReferentConstraintsContextImpl(@NotNull SNode contextNode, @Nullable SContainmentLink containmentLink, int position, @Nullable SNode referenceNode,
-      @NotNull SAbstractConcept targetConcept) {
+                                        @NotNull SAbstractConcept targetConcept) {
+    this(contextNode, containmentLink, position, referenceNode, targetConcept, new EvaluateScopeContext());
+  }
+
+  public ReferentConstraintsContextImpl(@NotNull SNode contextNode, @Nullable SContainmentLink containmentLink, int position, @Nullable SNode referenceNode,
+      @NotNull SAbstractConcept targetConcept, @NotNull EvaluateScopeContext scopeContext) {
     myContextNode = contextNode;
     myContainmentLink = containmentLink;
     myPosition = position;
     myReferenceNode = referenceNode;
     myTargetConcept = targetConcept;
+    myScopeEvaluation = scopeContext;
   }
 
   @Nullable
@@ -85,5 +93,11 @@ public class ReferentConstraintsContextImpl implements ReferenceConstraintsConte
   @Override
   public SAbstractConcept getLinkTargetConcept() {
     return myTargetConcept;
+  }
+
+  @NotNull
+  @Override
+  public EvaluateScopeContext getScopeEvaluationContext() {
+    return myScopeEvaluation;
   }
 }

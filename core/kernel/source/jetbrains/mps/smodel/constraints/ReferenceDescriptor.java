@@ -17,9 +17,9 @@ package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.FilteringByConceptScope;
-import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.search.LinkDeclarationLookup;
@@ -49,7 +49,21 @@ public abstract class ReferenceDescriptor {
 
   // can be ErrorScope
   @NotNull
-  abstract public Scope getScope();
+  public Scope getScope() {
+    return getScope(new EvaluateScopeContext());
+  }
+
+  /**
+   * {@code EvaluateScopeContext} not necessarily support multi-thread operation,
+   * don't share the instance among different threads (i.e. {@code getScope(ESC)} call with same ESC instance)
+   * unless you provide special implementation.
+   * @param evaluateContext helps to evaluate scope instances effectively
+   * @return scope for a reference, could be {@code ErrorScope}
+   */
+  @NotNull
+  public abstract Scope getScope(EvaluateScopeContext evaluateContext);
+  //
+  //     is in place, or there's only 1 thread to access scopes.
 
   /**
    * @return an optional pointer to the scope declaration function
@@ -125,20 +139,21 @@ public abstract class ReferenceDescriptor {
 
     @Override
     @NotNull
-    public Scope getScope() {
+    public Scope getScope(EvaluateScopeContext evaluateContext) {
       final ReferentConstraintsContextImpl context =
-          new ReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myLinkTarget);
+          new ReferentConstraintsContextImpl(myContextNode, myContainmentLink, myPosition, myReferenceNode, myLinkTarget, evaluateContext);
 
       try {
         if (myScopeProvider != null) {
           Scope searchScope = myScopeProvider.createScope(context);
           if (searchScope != null) {
             // XXX shall I account for EmptyScope? No reason to filter it further.
+            // XXX why do we care to filter further, why don't we rely provider did the filtering responsibly?
             return new FilteringByConceptScope(searchScope, myLinkTarget);
           }
         }
         // global search scope
-        return new ModelPlusImportedScope(getModel(), false, myLinkTarget);
+        return context.getScopeEvaluationContext().ofNodesDefault(getModel(), myLinkTarget);
       } catch (Exception t) {
         LOG.error(String.format("Context node %s", myContextNode), t);
         return new ErrorScope("can't create search scope for link `" + myReferenceLink + "' in '" + myNodeConcept.getName() + "'", t);
