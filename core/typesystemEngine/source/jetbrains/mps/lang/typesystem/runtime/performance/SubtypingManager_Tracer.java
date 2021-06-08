@@ -16,6 +16,7 @@
 package jetbrains.mps.lang.typesystem.runtime.performance;
 
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Computable;
@@ -24,17 +25,17 @@ import jetbrains.mps.util.Computable;
  * Cyril.Konopko, 22.04.2010
  */
 public class SubtypingManager_Tracer extends SubTypingManagerNew {
-  public SubtypingManager_Tracer(TypeChecker typeChecker) {
-    super(typeChecker);
+  public SubtypingManager_Tracer(TypeCheckerHelper typeCheckerHelper) {
+    super(typeCheckerHelper);
   }
 
   @Override
   public boolean isSubtype(final SNode subType, final SNode superType) {
-    return myTypeChecker.computeWithTrace(() -> SubtypingManager_Tracer.super.isSubtype(subType, superType), "is subtype");
+    return getTypeCheckerHelper().computeWithTrace(() -> SubtypingManager_Tracer.super.isSubtype(subType, superType), "is subtype");
   }
 
   @Override
   public boolean isSubtype(final SNode subType, final SNode superType, final boolean isWeak) {
-    return myTypeChecker.computeWithTrace(() -> SubtypingManager_Tracer.super.isSubtype(subType, superType, isWeak), "is subtype");
+    return getTypeCheckerHelper().computeWithTrace(() -> SubtypingManager_Tracer.super.isSubtype(subType, superType, isWeak), "is subtype");
   }
 }

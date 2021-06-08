@@ -17,26 +17,27 @@ package jetbrains.mps.newTypesystem;
 
 import jetbrains.mps.lang.pattern.IMatchingPattern;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 
 public class RuntimeSupportNew extends RuntimeSupport {
-  protected TypeChecker myTypeChecker;
+  protected TypeCheckerHelper myTypeCheckerHelper;
 
-  public RuntimeSupportNew(TypeChecker typeChecker) {
-    myTypeChecker = typeChecker;
+  public RuntimeSupportNew(TypeCheckerHelper typeCheckerHelper) {
+    myTypeCheckerHelper = typeCheckerHelper;
   }
 
   @Override
   public SNode coerce_(SNode subtype, IMatchingPattern pattern, boolean isWeak) {
-    SubTypingManagerNew subTyping = (SubTypingManagerNew) myTypeChecker.getSubtypingManager();
+    SubTypingManagerNew subTyping = (SubTypingManagerNew) myTypeCheckerHelper.getSubtypingManager();
     return subTyping.coerceSubTypingNew(subtype, pattern, isWeak, null);
   }
 
   @Override
   public SNode coerce_(SNode subtype, IMatchingPattern pattern) {
-    SubTypingManagerNew subTyping = (SubTypingManagerNew) myTypeChecker.getSubtypingManager();
+    SubTypingManagerNew subTyping = (SubTypingManagerNew) myTypeCheckerHelper.getSubtypingManager();
     return subTyping.coerceSubTypingNew(subtype, pattern, true, null);
   }
 

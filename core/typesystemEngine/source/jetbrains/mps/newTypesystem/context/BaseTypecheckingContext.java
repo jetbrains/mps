@@ -26,7 +26,7 @@ import jetbrains.mps.newTypesystem.operation.TraceMessageOperation;
 import jetbrains.mps.newTypesystem.state.blocks.MultipleWhenConcreteBlock;
 import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,11 +43,11 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
 
   protected SNode myNode;
 
-  protected TypeChecker myTypeChecker;
+  protected TypeCheckerHelper myTypeCheckerHelper;
 
-  public BaseTypecheckingContext(SNode node, TypeChecker typeChecker) {
+  public BaseTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
     myNode = node;
-    myTypeChecker = typeChecker;
+    myTypeCheckerHelper = typeCheckerHelper;
   }
 
   @Override
@@ -140,7 +140,7 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
       IRuleConflictWarningProducer warningProducer) {
     SNode left = getState().expand(leftOperandType);
     SNode right = getState().expand(rightOperandType);
-    return myTypeChecker.getRulesManager().getOperationType(operation, left, right, warningProducer);
+    return myTypeCheckerHelper.getRulesManager().getOperationType(operation, left, right, warningProducer);
   }
 
   @Override

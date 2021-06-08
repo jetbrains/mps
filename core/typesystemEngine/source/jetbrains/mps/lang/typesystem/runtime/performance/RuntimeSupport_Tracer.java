@@ -17,36 +17,36 @@ package jetbrains.mps.lang.typesystem.runtime.performance;
 
 import jetbrains.mps.lang.pattern.IMatchingPattern;
 import jetbrains.mps.newTypesystem.RuntimeSupportNew;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
-import jetbrains.mps.util.Computable;
 
 /**
  * Cyril.Konopko, 22.04.2010
  */
 public class RuntimeSupport_Tracer extends RuntimeSupportNew {
-  public RuntimeSupport_Tracer(TypeChecker typeChecker) {
-    super(typeChecker);
+  public RuntimeSupport_Tracer(TypeCheckerHelper typeCheckerHelper) {
+    super(typeCheckerHelper);
   }
 
   @Override
   public SNode coerce_(final SNode subtype, final IMatchingPattern pattern, final boolean isWeak) {
-    return myTypeChecker.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern, isWeak), "coerce");
+    return myTypeCheckerHelper.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern, isWeak), "coerce");
   }
 
   @Override
   public SNode coerce_(final SNode subtype, final IMatchingPattern pattern) {
-    return myTypeChecker.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern), "coerce");
+    return myTypeCheckerHelper.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern), "coerce");
   }
 
   @Override
   public SNode coerce_(final SNode subtype, final IMatchingPattern pattern, final boolean isWeak, final TypeCheckingContext typeCheckingContext) {
-    return myTypeChecker.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern, isWeak, typeCheckingContext), "coerce");
+    return myTypeCheckerHelper.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern, isWeak, typeCheckingContext), "coerce");
   }
 
   @Override
   public SNode coerce_(final SNode subtype, final IMatchingPattern pattern, final TypeCheckingContext typeCheckingContext) {
-    return myTypeChecker.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern, typeCheckingContext), "coerce");
+    return myTypeCheckerHelper.computeWithTrace(() -> RuntimeSupport_Tracer.super.coerce_(subtype, pattern, typeCheckingContext), "coerce");
   }
 }

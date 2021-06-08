@@ -25,7 +25,7 @@ import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import jetbrains.mps.util.Computable;
@@ -42,9 +42,9 @@ import java.util.Set;
 public class SubTypingManagerNew extends SubtypingManager {
   private final CoercionManager myCoercionManager;
 
-  public SubTypingManagerNew(TypeChecker typeChecker) {
-    super(typeChecker);
-    myCoercionManager = new CoercionManager(typeChecker, this);
+  public SubTypingManagerNew(TypeCheckerHelper typeCheckerHelper) {
+    super(typeCheckerHelper);
+    myCoercionManager = new CoercionManager(typeCheckerHelper, this);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class SubTypingManagerNew extends SubtypingManager {
         collectLanguagesRecursively(subType, superType),
         // two booleans:  affirmative, authoritative
         () -> {
-          for (Pair<InequationReplacementRule_Runtime, IsApplicable2Status> pair : myTypeChecker.getRulesManager().getReplacementRules(subType, superType)) {
+          for (Pair<InequationReplacementRule_Runtime, IsApplicable2Status> pair : getTypeCheckerHelper().getRulesManager().getReplacementRules(subType, superType)) {
             InequationReplacementRule_Runtime rule = pair.o1;
             IsApplicable2Status status = pair.o2;
             boolean affirmative = rule.checkInequation(subType, superType, status, isWeak);
@@ -124,7 +124,7 @@ public class SubTypingManagerNew extends SubtypingManager {
 
     // use global language scope as the context is unknown
     LanguageScopeExecutor.execWithGlobalScope((Computable<Object>) () -> {
-      List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> subtypingRule_runtimes = myTypeChecker.getRulesManager().getSubtypingRules(term, isWeak);
+      List<Pair<SubtypingRule_Runtime, IsApplicableStatus>> subtypingRule_runtimes = getTypeCheckerHelper().getRulesManager().getSubtypingRules(term, isWeak);
       if (subtypingRule_runtimes != null) {
         for (final Pair<SubtypingRule_Runtime, IsApplicableStatus> subtypingRule : subtypingRule_runtimes) {
           List<SNode> superTypes = subtypingRule.o1.getSubOrSuperTypes(term, context, subtypingRule.o2);
@@ -160,13 +160,13 @@ public class SubTypingManagerNew extends SubtypingManager {
     return LanguageScopeExecutor.execWithMultiLanguageScope(
         collectLanguagesRecursively(left, right),
         () -> {
-          List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> comparisonRule_runtimes = myTypeChecker.getRulesManager().getComparisonRules(left, right, isWeak);
+          List<Pair<ComparisonRule_Runtime, IsApplicable2Status>> comparisonRule_runtimes = getTypeCheckerHelper().getRulesManager().getComparisonRules(left, right, isWeak);
           if (comparisonRule_runtimes != null) {
             for (Pair<ComparisonRule_Runtime, IsApplicable2Status> comparisonRule_runtime : comparisonRule_runtimes) {
               if (comparisonRule_runtime.o1.areComparable(left, right, comparisonRule_runtime.o2)) return true;
             }
           }
-          comparisonRule_runtimes = myTypeChecker.getRulesManager().getComparisonRules(right, left, isWeak);
+          comparisonRule_runtimes = getTypeCheckerHelper().getRulesManager().getComparisonRules(right, left, isWeak);
           if (comparisonRule_runtimes != null) {
             for (Pair<ComparisonRule_Runtime, IsApplicable2Status> comparisonRule_runtime : comparisonRule_runtimes) {
               if (comparisonRule_runtime.o1.areComparable(right, left, comparisonRule_runtime.o2)) return true;

@@ -67,7 +67,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   @Override
   public LegacyTypecheckingQueries createQueries(@NotNull Flags flags) {
     if (flags.getRoot() != null && flags.isIncremental()) {
-      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), TypeChecker.getInstance(), myClassLoaderManager);
+      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), TypeChecker.getInstance().getTypeCheckerHelper(), myClassLoaderManager);
       IncrementalLegacyTypecheckingQueries queries = new IncrementalLegacyTypecheckingQueries(flags, typecheckingContext);
       typecheckingContext.setTypeInvalidateNotifier((node) -> queries.myObservable.dispatchTypeInvalidated(node));
       return queries;
@@ -336,7 +336,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
     @NotNull
     protected TargetTypecheckingContext withTypecheckingContext() {
-      return new TargetTypecheckingContext(myFlags.getRoot(), TypeChecker.getInstance());
+      return new TargetTypecheckingContext(myFlags.getRoot(), TypeChecker.getInstance().getTypeCheckerHelper());
     }
 
   }

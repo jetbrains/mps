@@ -19,7 +19,7 @@ import jetbrains.mps.newTypesystem.context.component.SimpleTypecheckingComponent
 import jetbrains.mps.newTypesystem.context.typechecking.BaseTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.typechecking.TypecheckingObservable;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.util.Cancellable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -30,8 +30,8 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class InferenceTypecheckingContext extends SimpleTypecheckingContext<State, BaseTypechecking<State, SimpleTypecheckingComponent<State>>> {
 
-  public InferenceTypecheckingContext(SNode node, TypeChecker typeChecker) {
-    super(node, typeChecker);
+  public InferenceTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
+    super(node, typeCheckerHelper);
   }
 
   @Override

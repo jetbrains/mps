@@ -17,11 +17,8 @@ package jetbrains.mps.typesystem.inference;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
-import jetbrains.mps.lang.typesystem.runtime.performance.RuntimeSupport_Tracer;
-import jetbrains.mps.lang.typesystem.runtime.performance.SubtypingManager_Tracer;
-import jetbrains.mps.newTypesystem.RuntimeSupportNew;
-import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.HoleTypecheckingContext;
+import jetbrains.mps.newTypesystem.context.InferenceTypecheckingContext;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -34,23 +31,21 @@ import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * This class is kept mainly for compatibility with the old legacy code.
+ *
+ * The idea is to move out all non-static, managed stuff to an helper class
+ * and access and control the lifecycle of that helper through TypecheckingFacade. 
+ */
 public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   private static TypeChecker INSTANCE;
 
+  // dependency
   private final LanguageRegistry myLanguageRegistry;
 
-  private IPerformanceTracer myPerformanceTracer = null;
+  // FIXME temprorary solution before switching to TypecheckingFacade
+  private TypeCheckerHelper myTypeCheckerHelper;
 
-  private SubtypingManager mySubtypingManager;
-  private SubtypingManager mySubtypingManagerTracer;
-
-  private RuntimeSupport myRuntimeSupport;
-  private RuntimeSupport myRuntimeSupportTracer;
-
-  private RulesManager myRulesManager;
 
   private SubtypingCache myGenerationSubTypingCache = null;
 
@@ -64,11 +59,8 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
 
   public TypeChecker(LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
-    myRuntimeSupport = new RuntimeSupportNew(this);
-    mySubtypingManager = new SubTypingManagerNew(this);
-    myRulesManager = new RulesManager(this);
-    myRuntimeSupportTracer = new RuntimeSupport_Tracer(this);
-    mySubtypingManagerTracer = new SubtypingManager_Tracer(this);
+    // FIXME get the helper from context TypecheckingFacade
+    myTypeCheckerHelper = new TypeCheckerHelper();
   }
 
   @Override
@@ -89,16 +81,12 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
 
   @Override
   public void afterLanguagesLoaded(Iterable<LanguageRuntime> languages) {
-    myRulesManager.loadLanguages(languages);
+    myTypeCheckerHelper.refreshRules(languages, true);
   }
 
   @Override
   public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
-    myRulesManager.unloadLanguages(languages);
-  }
-
-  /*package*/ LanguageRegistry getLanguageRegistry() {
-    return myLanguageRegistry;
+    myTypeCheckerHelper.refreshRules(languages, false);
   }
 
   public static TypeChecker getInstance() {
@@ -109,45 +97,49 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
     return Thread.currentThread() == myMainGenerationThread;
   }
 
+  // FIXME this is only a temporary solution, the helper is to be accessed via context facade
+  public TypeCheckerHelper getTypeCheckerHelper() {
+    return myTypeCheckerHelper;
+  }
+
   public SubtypingManager getSubtypingManager() {
-    if (isMainGenerationThread()) {
-      return mySubtypingManagerTracer;
-    }
-    return mySubtypingManager;
+//    if (isMainGenerationThread()) {
+//      return mySubtypingManagerTracer;
+//    }
+//    return mySubtypingManager;
+    return myTypeCheckerHelper.getSubtypingManager();
   }
 
   public RuntimeSupport getRuntimeSupport() {
-    if (isMainGenerationThread()) {
-      return myRuntimeSupportTracer;
-    }
-    return myRuntimeSupport;
+//    if (isMainGenerationThread()) {
+//      return myRuntimeSupportTracer;
+//    }
+    return myTypeCheckerHelper.getRuntimeSupport();
   }
 
   public SubtypingCache getSubtypingCache() {
-    if (isGenerationMode()) {
-      SubtypingCache generationSubTypingCache = myGenerationSubTypingCache;
-      if (generationSubTypingCache != null) {
-        return generationSubTypingCache;
-      }
-    }
-    return TypeContextManager.getInstance().getSubtypingCache();
+//    if (isGenerationMode()) {
+//      SubtypingCache generationSubTypingCache = myGenerationSubTypingCache;
+//      if (generationSubTypingCache != null) {
+//        return generationSubTypingCache;
+//      }
+//    }
+    return myTypeCheckerHelper.getSubtypingCache();
   }
 
   public RulesManager getRulesManager() {
-    return myRulesManager;
+    return myTypeCheckerHelper.getRulesManager();
   }
 
-  private SubtypingCache createSubtypingCache() {
-    return new ConcurrentSubtypingCache();
-  }
-
+  @Deprecated(forRemoval = true)
   public void generationStarted(IPerformanceTracer performanceTracer) {
-    myGenerationSubTypingCache = createSubtypingCache();
+    myGenerationSubTypingCache = new ConcurrentSubtypingCache();
     initTracing(performanceTracer);
     myIsGenerationThread.set(Boolean.TRUE);
     myMainGenerationThread = Thread.currentThread();
   }
 
+  @Deprecated(forRemoval = true)
   public void generationFinished() {
     myGenerationSubTypingCache = null;
     disposeTracing();
@@ -155,59 +147,50 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
     myMainGenerationThread = null;
   }
 
+  @Deprecated(forRemoval = false)
   public void generationWorkerStarted() {
     myIsGenerationThread.set(Boolean.TRUE);
   }
 
+  @Deprecated(forRemoval = true)
   public void generationWorkerFinished() {
     myIsGenerationThread.set(Boolean.FALSE);
   }
 
+  @Deprecated(forRemoval = true)
   public boolean isGenerationMode() {
     return myIsGenerationThread.get();
   }
 
   private void initTracing(IPerformanceTracer performanceTracer) {
-    if (performanceTracer != null) {
-      myPerformanceTracer = performanceTracer;
-      TypeSystemReporter.getInstance().reset();
-    }
+//    if (performanceTracer != null) {
+//      myPerformanceTracer = performanceTracer;
+//      TypeSystemReporter.getInstance().reset();
+//    }
   }
 
   private void disposeTracing() {
-    if (myPerformanceTracer != null) {
-      TypeSystemReporter.getInstance().printReport(10, myPerformanceTracer);
-      myPerformanceTracer = null;
-    }
-  }
-
-  public boolean hasPerformanceTracer() {
-    return myPerformanceTracer != null;
+//    if (myPerformanceTracer != null) {
+//      TypeSystemReporter.getInstance().printReport(10, myPerformanceTracer);
+//      myPerformanceTracer = null;
+//    }
   }
 
   public <T> T computeWithTrace(Computable<T> c, String taskName) {
-    if (myPerformanceTracer != null) {
-      try {
-        myPerformanceTracer.push(taskName);
-        return c.compute();
-      } finally {
-        myPerformanceTracer.pop();
-      }
-    } else {
-      return c.compute();
-    }
+    return myTypeCheckerHelper.computeWithTrace(c, taskName);
   }
 
   public InequalitySystem getInequalitiesForHole(SNode hole, boolean holeIsAType) {
-    HoleTypecheckingContext typeCheckingContext = TypeContextManager.getInstance().createHoleTypecheckingContext(hole);
+    HoleTypecheckingContext typeCheckingContext = new HoleTypecheckingContext(hole, myTypeCheckerHelper);
     InequalitySystem inequalitySystem = typeCheckingContext.getTypechecking().computeInequalitiesForHole(hole, holeIsAType);
     typeCheckingContext.dispose();
     return inequalitySystem;
   }
 
+  @Deprecated(forRemoval = true)
   public SNode getInferredTypeOf(final SNode node) {
     if (node == null) return null;
-    TypeCheckingContext typeCheckingContext = TypeContextManager.getInstance().createInferenceTypeCheckingContext(node);
+    TypeCheckingContext typeCheckingContext = new InferenceTypecheckingContext(node, myTypeCheckerHelper);
     SNode type = typeCheckingContext.computeTypeInferenceMode(node);
     typeCheckingContext.dispose();
     return type;

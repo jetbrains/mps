@@ -73,8 +73,8 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
 
   private Pair<SNode, NonTypesystemRule_Runtime> myRuleAndNodeBeingChecked = null;
 
-  public NonTypeSystemComponent(TypeChecker typeChecker, State state, IncrementalTypechecking nodeTypesComponent) {
-    super(typeChecker, state, nodeTypesComponent);
+  public NonTypeSystemComponent(State state, IncrementalTypechecking nodeTypesComponent) {
+    super(state, nodeTypesComponent);
   }
 
   @Override

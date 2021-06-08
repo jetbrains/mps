@@ -17,6 +17,7 @@ package jetbrains.mps.lang.typesystem.runtime;
 
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
@@ -31,10 +32,10 @@ public class OverloadedOperationsManager {
   private RuleSet<IOverloadedOpsTypesProvider> myOperationsToTypeProviders =
       new RuleSet<>();
 
-  private TypeChecker myTypeChecker;
+  private TypeCheckerHelper myTypeCheckerHelper;
 
-  public OverloadedOperationsManager(TypeChecker typeChecker) {
-    myTypeChecker = typeChecker;
+  public OverloadedOperationsManager(TypeCheckerHelper typeCheckerHelper) {
+    myTypeCheckerHelper = typeCheckerHelper;
   }
 
   public void addOverloadedOperationsTypeProvider(IOverloadedOpsTypesProvider provider) {
@@ -55,7 +56,7 @@ public class OverloadedOperationsManager {
     if (operationsTypesProviderSet.isEmpty()) {
       return null;
     }
-    SubtypingManager subtypingManager = myTypeChecker.getSubtypingManager();
+    SubtypingManager subtypingManager = myTypeCheckerHelper.getSubtypingManager();
     List<IOverloadedOpsTypesProvider> filteredProviders = new ArrayList<>();
     for (IOverloadedOpsTypesProvider provider : operationsTypesProviderSet) {
       //first applicable method is from base class, second is custom

@@ -20,7 +20,6 @@ import jetbrains.mps.newTypesystem.context.typechecking.BaseTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.AbstractNodesReadListener;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Pair;
 
 import java.util.Set;
@@ -34,7 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
   private Set<SNode> myCurrentNodesToInvalidate = new THashSet<>();
 
-  protected IncrementalTypecheckingComponent(TypeChecker typeChecker, STATE state, BaseTypechecking component) {
+  protected IncrementalTypecheckingComponent(STATE state, BaseTypechecking component) {
     super(state, component);
   }
 

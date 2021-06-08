@@ -63,8 +63,8 @@ public class RulesManager {
   private Set<LanguageRuntime> myLoadedLanguages = new HashSet<>();
   private Set<LanguageRuntime> myLanguagesToLoad = new HashSet<>();
 
-  public RulesManager(TypeChecker typeChecker) {
-    myOverloadedOperationsManager = new OverloadedOperationsManager(typeChecker);
+  public RulesManager(TypeCheckerHelper typeCheckerHelper) {
+    myOverloadedOperationsManager = new OverloadedOperationsManager(typeCheckerHelper);
   }
 
   public void loadLanguages(Iterable<LanguageRuntime> languages) {

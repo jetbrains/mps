@@ -81,6 +81,7 @@ public class InequalitySystem {
     }
   }
 
+  @Deprecated(forRemoval = true)
   public boolean satisfies(SNode type) {
     SubtypingManager subtypingManager = TypeChecker.getInstance().getSubtypingManager();
 

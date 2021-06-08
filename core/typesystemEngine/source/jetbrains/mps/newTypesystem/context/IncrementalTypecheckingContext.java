@@ -19,8 +19,8 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
-import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.Computable;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -42,8 +42,8 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   private Map<Object, Integer> myRequesting = new HashMap<>();
   private Integer myOldHash = 0;
 
-  public IncrementalTypecheckingContext(SNode node, TypeChecker typeChecker, ClassLoaderManager clManager) {
-    super(node, typeChecker);
+  public IncrementalTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper, ClassLoaderManager clManager) {
+    super(node, typeCheckerHelper);
     myClassManager = clManager;
   }
 
@@ -53,7 +53,7 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
 
   @Override
   protected IncrementalTypechecking createTypechecking() {
-    return new IncrementalTypechecking(getNode(), getState(), getTypeChecker(), myClassManager, myTypeInvalidatedNotifier);
+    return new IncrementalTypechecking(getNode(), getState(), myClassManager, myTypeInvalidatedNotifier);
   }
 
   @Override
@@ -61,12 +61,8 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
     return false;
   }
 
-  public TypeChecker getTypeChecker() {
-    return myTypeChecker;
-  }
-
   public SubTypingManagerNew getSubTyping() {
-    return (SubTypingManagerNew) myTypeChecker.getSubtypingManager();
+    return (SubTypingManagerNew) myTypeCheckerHelper.getSubtypingManager();
   }
 
   @Override

@@ -51,7 +51,7 @@ public class TypecheckingContextTracker {
   }
 
   private TypeCheckingContext initContext() {
-    final TypeCheckingContext context = new TracingTypecheckingContext(myRootNode, TypeChecker.getInstance());
+    final TypeCheckingContext context = new TracingTypecheckingContext(myRootNode, TypeChecker.getInstance().getTypeCheckerHelper());
     context.checkRootInTraceMode(true);
     return context;
   }

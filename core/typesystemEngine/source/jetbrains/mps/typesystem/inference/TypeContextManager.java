@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.typesystem.inference;
 
-import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.newTypesystem.context.CachingTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.HoleTypecheckingContext;
@@ -31,7 +30,11 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+
 /**
+ * All user-accessible APIs in this class are deprecated and marked for removal.
+ * Please switch to TypecheckingFacade.
+ * 
  * @deprecated {@link jetbrains.mps.typechecking.TypecheckingFacade} should be used for executing typechecking actions.
  */
 @Deprecated (forRemoval = true)
@@ -42,8 +45,7 @@ public class TypeContextManager implements CoreComponent {
   private static TypeContextManager INSTANCE;
 
   // dependencies
-  private final TypeChecker myTypeChecker;
-  private final ClassLoaderManager myClassLoaderManager;
+  private final TypeCheckerHelper myTypeCheckerHelper;
 
   //TypeContextManager is a singleton, so we can omit remove() here though the field is not static
   private ThreadLocal<ITypeContextOwner> myTypecheckingContextOwner = new ThreadLocal<ITypeContextOwner>() {
@@ -62,14 +64,13 @@ public class TypeContextManager implements CoreComponent {
   /**
    * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} instead.
    */
-  @Deprecated
+  @Deprecated(forRemoval = true)
   public static TypeContextManager getInstance() {
     return INSTANCE;
   }
 
-  public TypeContextManager(TypeChecker typeChecker, ClassLoaderManager classLoaderManager) {
-    myTypeChecker = typeChecker;
-    myClassLoaderManager = classLoaderManager;
+  public TypeContextManager(TypeCheckerHelper typeCheckerHelper) {
+    myTypeCheckerHelper = typeCheckerHelper;
   }
 
   @Override
@@ -77,7 +78,6 @@ public class TypeContextManager implements CoreComponent {
     if (INSTANCE != null) {
       throw new IllegalStateException("double initialization");
     }
-
     INSTANCE = this;
   }
 
@@ -142,25 +142,29 @@ public class TypeContextManager implements CoreComponent {
     return TypecheckingFacade.getFromContext().computeIsolated(computable::compute);
   }
 
+  /**
+   * NB: always returns an instance of IncrementalTypecheckingContext
+   * @param node
+   * @return
+   */
   @Deprecated(forRemoval = true)
   public TypeCheckingContext createTypeCheckingContext(SNode node) {
-    if (myTypeChecker.isGenerationMode()) {
-      return new TargetTypecheckingContext(node, myTypeChecker);
-    } else {
-      return new IncrementalTypecheckingContext(node, myTypeChecker, myClassLoaderManager);
-    }
+    return new IncrementalTypecheckingContext(node, myTypeCheckerHelper, null);
   }
 
+  @Deprecated(forRemoval = true)
   public HoleTypecheckingContext createHoleTypecheckingContext(SNode node) {
-    return new HoleTypecheckingContext(node, myTypeChecker);
+    return new HoleTypecheckingContext(node, myTypeCheckerHelper);
   }
 
+  @Deprecated(forRemoval = true)
   public TypeCheckingContext createInferenceTypeCheckingContext(SNode node) {
-    return new InferenceTypecheckingContext(node, myTypeChecker);
+    return new InferenceTypecheckingContext(node, myTypeCheckerHelper);
   }
 
+  @Deprecated(forRemoval = true)
   public TypeCheckingContext createTracingTypeCheckingContext(SNode node) {
-    return new TracingTypecheckingContext(node, myTypeChecker);
+    return new TracingTypecheckingContext(node, myTypeCheckerHelper);
   }
 
   @Deprecated(forRemoval = true)
@@ -176,18 +180,6 @@ public class TypeContextManager implements CoreComponent {
   @Deprecated(forRemoval = true)
   public TypeCheckingContext createTypeCheckingContextForResolve(SNode node) {
     SNode root = node.getContainingRoot();
-    return new CachingTypecheckingContext(root, myTypeChecker);
-  }
-
-  /*package*/ SubtypingCache getSubtypingCache() {
-    final SubtypingCache subtypingCache = mySubtypingCache.get();
-    if (subtypingCache != null) return subtypingCache;
-
-    final ITypeContextOwner typeContextOwner = myTypecheckingContextOwner.get();
-    final SubtypingCache newSubtypingCache = typeContextOwner.createSubtypingCache();
-    if (newSubtypingCache != null) {
-      mySubtypingCache.set(newSubtypingCache);
-    }
-    return newSubtypingCache;
+    return new CachingTypecheckingContext(root, myTypeCheckerHelper);
   }
 }

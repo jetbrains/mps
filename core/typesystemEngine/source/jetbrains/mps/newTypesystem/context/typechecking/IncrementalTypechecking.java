@@ -39,7 +39,6 @@ import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 import jetbrains.mps.typechecking.TypeInvalidationListener;
 import jetbrains.mps.typechecking.TypecheckingObservable;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.TypeRecalculatedListener;
 import jetbrains.mps.util.Cancellable;
@@ -100,20 +99,17 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   private ITypeErrorComponent myTypeErrorComponent;
 
-  private final TypeChecker myTypeChecker;
   private final ClassLoaderManager myClassManager;
   private final Consumer<SNode> myTypeInvalidationNotifier;
 
   public IncrementalTypechecking(SNode node,
                                  State state,
-                                 TypeChecker typeChecker,
                                  ClassLoaderManager clManager,
                                  Consumer<SNode> typeInvalidationNotifier) {
     super(node, state);
-    myTypeChecker = typeChecker;
     myClassManager = clManager;
     myTypeInvalidationNotifier = typeInvalidationNotifier;
-    myNonTypeSystemComponent = new NonTypeSystemComponent(typeChecker, state, this);
+    myNonTypeSystemComponent = new NonTypeSystemComponent(state, this);
     init();
   }
 
@@ -126,7 +122,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   @Override
   protected TypeSystemComponent createTypecheckingComponent() {
-    return new TypeSystemComponent(myTypeChecker, getState(), this);
+    return new TypeSystemComponent(getState(), this);
   }
 
   public void clear() {

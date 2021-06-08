@@ -17,7 +17,7 @@ package jetbrains.mps.newTypesystem.context;
 
 import jetbrains.mps.newTypesystem.context.typechecking.TracingTypechecking;
 import jetbrains.mps.newTypesystem.state.TargetState;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
@@ -26,8 +26,8 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class TracingTypecheckingContext extends ReportingTypecheckingContext<TargetState, TracingTypechecking> {
 
-  public TracingTypecheckingContext(SNode node, TypeChecker typeChecker) {
-    super(node, typeChecker);
+  public TracingTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
+    super(node, typeCheckerHelper);
   }
 
   @Override

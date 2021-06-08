@@ -27,10 +27,14 @@ import java.util.Set;
 public abstract class SubtypingManager {
   private static final Logger LOG = LogManager.getLogger(SubtypingManager.class);
 
-  protected final TypeChecker myTypeChecker;
+  private final TypeCheckerHelper myTypeCheckerHelper;
 
-  public SubtypingManager(TypeChecker typeChecker) {
-    myTypeChecker = typeChecker;
+  public SubtypingManager(TypeCheckerHelper typeCheckerHelper) {
+    myTypeCheckerHelper = typeCheckerHelper;
+  }
+
+  protected TypeCheckerHelper getTypeCheckerHelper() {
+    return myTypeCheckerHelper;
   }
 
   public abstract boolean isSubtype(SNode subType, SNode superType);

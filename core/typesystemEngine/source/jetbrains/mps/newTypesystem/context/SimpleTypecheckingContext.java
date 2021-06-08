@@ -28,6 +28,7 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeSubstitution;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.IterableUtil;
@@ -58,8 +59,8 @@ public abstract class SimpleTypecheckingContext<
   private STATE myState;
   private boolean myCurrentlyChecking;
 
-  public SimpleTypecheckingContext(SNode rootNode, TypeChecker typeChecker) {
-    super(rootNode, typeChecker);
+  public SimpleTypecheckingContext(SNode rootNode, TypeCheckerHelper typeCheckerHelper) {
+    super(rootNode, typeCheckerHelper);
     myState = createState();
   }
 

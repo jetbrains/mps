@@ -53,7 +53,7 @@ public class AffectingRulesFinder implements IFinder {
     }
     SNode root = term.getContainingRoot();
 
-    TypeCheckingContext context = new IncrementalTypecheckingContext(root, TypeChecker.getInstance(), null);
+    TypeCheckingContext context = new IncrementalTypecheckingContext(root, TypeChecker.getInstance().getTypeCheckerHelper(), null);
     try {
       context.checkRoot(true);
       IncrementalTypechecking component = context.getBaseNodeTypesComponent();

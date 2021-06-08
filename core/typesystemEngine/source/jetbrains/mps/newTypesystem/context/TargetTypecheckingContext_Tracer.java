@@ -16,13 +16,13 @@
 package jetbrains.mps.newTypesystem.context;
 
 import jetbrains.mps.typesystem.inference.TypeChecker;
-import jetbrains.mps.util.Computable;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class TargetTypecheckingContext_Tracer extends TargetTypecheckingContext {
 
-  public TargetTypecheckingContext_Tracer(SNode rootNode, TypeChecker typeChecker) {
-    super(rootNode, typeChecker);
+  public TargetTypecheckingContext_Tracer(SNode rootNode, TypeCheckerHelper typeCheckerHelper) {
+    super(rootNode, typeCheckerHelper);
   }
 
   @Override
@@ -32,7 +32,7 @@ public class TargetTypecheckingContext_Tracer extends TargetTypecheckingContext 
 
   @Override
   public SNode getTypeOf_generationMode(final SNode node) {
-    return myTypeChecker.computeWithTrace(() -> TargetTypecheckingContext_Tracer.super.getTypeOf_generationMode(node), "type computing");
+    return myTypeCheckerHelper.computeWithTrace(() -> TargetTypecheckingContext_Tracer.super.getTypeOf_generationMode(node), "type computing");
   }
 
 }

@@ -18,6 +18,7 @@ package jetbrains.mps.newTypesystem.context;
 import gnu.trove.THashMap;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -31,8 +32,8 @@ import java.util.Map;
 public class CachingTypecheckingContext extends TargetTypecheckingContext {
   private Map<SNode, SNode> myComputedTypes = new THashMap<>(1);
 
-  public CachingTypecheckingContext(SNode node, TypeChecker typeChecker) {
-    super(node, typeChecker);
+  public CachingTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper) {
+    super(node, typeCheckerHelper);
   }
 
   @Override

@@ -43,8 +43,8 @@ import java.util.*;
   private Map<SNode, Set<Pair<String, String>>> myNodesToRules;
   private Set<SNode> myNodesDependentOnCaches;
 
-  public TypeSystemComponent(TypeChecker typeChecker, State state, IncrementalTypechecking component) {
-    super(typeChecker, state, component);
+  public TypeSystemComponent(State state, IncrementalTypechecking component) {
+    super(state, component);
 
     myNodesToRules = new THashMap<>();
     myNodesDependentOnCaches = new THashSet<>();
