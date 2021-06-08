@@ -8,26 +8,21 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
-import java.util.Set;
+import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ConstraintsUtilConcepts {
   public static Iterable<SNode> getAvailableConcepts(SNode contextNode, final SAbstractConcept metaConcept) {
@@ -40,28 +35,19 @@ public class ConstraintsUtilConcepts {
     }
     SModule contextModule = model.getModule();
 
-    Set<Language> contextLanguages = SetSequence.fromSet(new HashSet<Language>());
-    for (SModule module : CollectionSequence.fromCollection(new GlobalModuleDependenciesManager(contextModule).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE))) {
-      if (module instanceof Language) {
-        SetSequence.fromSet(contextLanguages).addElement((Language) module);
-      }
-    }
+    Iterable<SModule> visibleModules = new VisibleDepsSearchScope(contextModule.getRepository(), contextModule).getModules();
 
-    Iterable<SModel> strucModels = SetSequence.fromSet(contextLanguages).select(new ISelector<Language, SModel>() {
+    Iterable<SModel> strucModels = Sequence.fromIterable(visibleModules).ofType(Language.class).select(new ISelector<Language, SModel>() {
       public SModel select(Language it) {
         return SModuleOperations.getAspect(it, "structure");
       }
     }).where(new NotNullWhereFilter<SModel>());
 
-    return SNodeOperations.ofConcept(Sequence.fromIterable(strucModels).translate(new ITranslator2<SModel, SNode>() {
+    return Sequence.fromIterable(strucModels).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, null);
+        return SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept));
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(metaConcept));
-      }
-    }), CONCEPTS.INamedConcept$Kd);
+    });
   }
 
   public static Iterable<SNode> getAvailableLanguageConcepts(SNode contextNode, final SAbstractConcept metaConcept) {
@@ -84,22 +70,23 @@ public class ConstraintsUtilConcepts {
         }
       }
     }
-    return SNodeOperations.ofConcept(SetSequence.fromSet(visibleLanguages).select(new ISelector<Language, SModel>() {
+    return SetSequence.fromSet(visibleLanguages).select(new ISelector<Language, SModel>() {
       public SModel select(Language it) {
         return SModuleOperations.getAspect(it, "structure");
       }
     }).where(new NotNullWhereFilter<SModel>()).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.roots(it, null);
+        return SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept));
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(metaConcept));
-      }
-    }), CONCEPTS.INamedConcept$Kd);
+    });
   }
 
-  public static Iterable<SNode> getConceptsInSameLanguage(SModel model, final SAbstractConcept metaConcept) {
+  /**
+   * 
+   * @deprecated utility method for MPS purposes, not in use and has to be removed
+   */
+  @Deprecated(forRemoval = true, since = "2021.2")
+  public static Iterable<SNode> getConceptsInSameLanguage(SModel model, SAbstractConcept metaConcept) {
     Language language = as_rcd0dt_a0a0a4(model.getModule(), Language.class);
     if (language == null) {
       return Collections.emptyList();
@@ -110,11 +97,7 @@ public class ConstraintsUtilConcepts {
       return Collections.emptyList();
     }
 
-    return SNodeOperations.ofConcept(ListSequence.fromList(SModelOperations.roots(structureModel, null)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(metaConcept));
-      }
-    }), CONCEPTS.INamedConcept$Kd);
+    return SModelOperations.roots(structureModel, SNodeOperations.asSConcept(metaConcept));
   }
   private static <T> T as_rcd0dt_a0a0a2(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
@@ -124,9 +107,5 @@ public class ConstraintsUtilConcepts {
   }
   private static <T> T as_rcd0dt_a0a0a4(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }
