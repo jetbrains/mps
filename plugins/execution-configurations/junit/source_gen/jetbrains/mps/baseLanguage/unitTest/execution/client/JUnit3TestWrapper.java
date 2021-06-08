@@ -25,7 +25,7 @@ public class JUnit3TestWrapper extends AbstractTestWrapper<SNode> {
   private final List<JUnit3MethodWrapper> myMethods;
 
   public JUnit3TestWrapper(SNode classConcept) {
-    super(classConcept, true, AbstractTestWrapper.needsMPS(classConcept));
+    super(classConcept, false, AbstractTestWrapper.needsMPS(classConcept));
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classConcept);
     myName = SPropertyOperations.getString(classConcept, PROPS.name$MnvL);
     myMethods = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classConcept)), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {

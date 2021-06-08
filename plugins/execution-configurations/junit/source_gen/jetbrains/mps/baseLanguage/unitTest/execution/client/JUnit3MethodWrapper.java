@@ -19,7 +19,7 @@ public class JUnit3MethodWrapper extends AbstractTestWrapper<SNode> {
   private final String myName;
 
   public JUnit3MethodWrapper(@NotNull ITestNodeWrapper testCase, SNode method) {
-    super(method, true, AbstractTestWrapper.isAnnotatedToLaunch(method) || AbstractTestWrapper.needsMPS(SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$bK, false, false)));
+    super(method, false, AbstractTestWrapper.isAnnotatedToLaunch(method) || AbstractTestWrapper.needsMPS(SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$bK, false, false)));
     myTestCase = testCase;
     myName = SPropertyOperations.getString(method, PROPS.name$MnvL);
   }

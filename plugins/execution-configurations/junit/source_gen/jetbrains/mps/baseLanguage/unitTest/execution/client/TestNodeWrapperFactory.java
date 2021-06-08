@@ -86,7 +86,7 @@ public enum TestNodeWrapperFactory {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$bK) && JUnit4TestWrapper.isJUnit4TestCase(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK))) {
-        new JUnit4TestWrapper(node);
+        return new JUnit4TestWrapper(node);
       }
       return null;
     }
