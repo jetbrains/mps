@@ -1,34 +1,20 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
-package jetbrains.mps.typechecking.internal;
+package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
-import jetbrains.mps.typechecking.backend.DefaultTypecheckingController;
-import jetbrains.mps.typechecking.backend.SharedSessionTypecheckingController;
-import jetbrains.mps.typechecking.backend.TypecheckingBackend;
-import jetbrains.mps.typechecking.backend.TypecheckingController;
-import jetbrains.mps.typechecking.backend.TypecheckingSessionImpl;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
-import jetbrains.mps.typechecking.backend.WorkbenchTypecheckingController;
+import jetbrains.mps.typechecking.internal.MPSTypechecking;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
 import java.lang.ref.PhantomReference;
@@ -69,11 +55,11 @@ public class TypecheckingFacadeComponent implements CoreComponent {
           if (SwingUtilities.isEventDispatchThread()) {
             // TODO correctly initialize facade for AWT thread
             return createFacade(new TypecheckingControllerFactory() {
-              public TypecheckingController context() {
+              public TypecheckingController createContextController() {
                 return new WorkbenchTypecheckingController(myTypecheckingBackend);
               }
 
-              public TypecheckingController isolated(Flags flags) {
+              public TypecheckingController createIsolatedController(Flags flags) {
                 if (flags.getRoot() != null && flags.isIncremental()) {
                   return new WorkbenchTypecheckingController(myTypecheckingBackend);
 
@@ -82,7 +68,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 }
               }
 
-              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController) {
+              public TypecheckingController createSharedController(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController) {
                 return new SharedSessionTypecheckingController(myTypecheckingBackend, session, contextController);
               }
             });
@@ -90,15 +76,15 @@ public class TypecheckingFacadeComponent implements CoreComponent {
           } else {
             // TODO correctly initialize facade for threads other than AWT
             return createFacade(new TypecheckingControllerFactory() {
-              public TypecheckingController context() {
+              public TypecheckingController createContextController() {
                 return new DefaultTypecheckingController(myTypecheckingBackend, TypecheckingSession.Flags.basic());
               }
 
-              public TypecheckingController isolated(Flags flags) {
+              public TypecheckingController createIsolatedController(Flags flags) {
                 return new DefaultTypecheckingController(myTypecheckingBackend, flags);
               }
 
-              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController) {
+              public TypecheckingController createSharedController(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController) {
                 return new SharedSessionTypecheckingController(myTypecheckingBackend, session, contextController);
               }
             });
@@ -128,11 +114,11 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
   protected interface TypecheckingControllerFactory {
 
-    TypecheckingController context();
+    TypecheckingController createContextController();
 
-    TypecheckingController isolated(Flags flags);
+    TypecheckingController createIsolatedController(Flags flags);
 
-    TypecheckingController shared(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController);
+    TypecheckingController createSharedController(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController);
 
   }
 
@@ -151,38 +137,62 @@ public class TypecheckingFacadeComponent implements CoreComponent {
       myControllerFactory = controllerFactory;
     }
 
-    private void init() {
-      if (myControllerStack.isEmpty()) {
-        myControllerStack.addFirst(myControllerFactory.context());
-      }
+    @Override
+    public <C> C getData(Class<? extends C> dataClass) {
+      return activeController().getData(dataClass);
     }
 
     @NotNull
     @Override
-    protected TypecheckingController controller() {
+    protected TypecheckingController activeController() {
       init();
       //noinspection ConstantConditions
-      return myControllerStack.peekFirst();
+      return peek();
     }
 
     @Override
     protected void overrideSharedController(@NotNull TypecheckingSessionImpl session) {
       init();
       // provide the initial "context" controller as the delegate
-      myControllerStack.addFirst(myControllerFactory.shared(session, myControllerStack.peekLast()));
+      push(myControllerFactory.createSharedController(session, peekLast()));
     }
 
     @Override
     protected TypecheckingController overrideIsolatedController(Flags flags) {
       init();
-      TypecheckingController controller = myControllerFactory.isolated(flags);
-      myControllerStack.addFirst(controller);
+      TypecheckingController controller = myControllerFactory.createIsolatedController(flags);
+      push(controller);
       return controller;
     }
 
     @Override
     protected void resetOverride() {
-      myControllerStack.removeFirst().dispose();
+      pop().dispose();
+    }
+
+    private void init() {
+      if (myControllerStack.isEmpty()) {
+        TypecheckingController context = myControllerFactory.createContextController();
+        push(context);
+      }
+    }
+
+    private void push(TypecheckingController context) {
+      myControllerStack.addFirst(context);
+    }
+
+    private TypecheckingController pop() {
+      return myControllerStack.removeFirst();
+    }
+
+    @Nullable
+    private TypecheckingController peek() {
+      return myControllerStack.peekFirst();
+    }
+
+    @Nullable
+    private TypecheckingController peekLast() {
+      return myControllerStack.peekLast();
     }
   }
 

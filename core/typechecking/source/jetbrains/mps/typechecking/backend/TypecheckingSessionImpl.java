@@ -56,8 +56,8 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
   }
 
   @Override
-  public <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass) {
-    return getQueries(myController.selectProvider(providerClass));
+  public <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> queriesClass) {
+    return getQueries(myController.selectProvider(queriesClass));
   }
 
   @Override

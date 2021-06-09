@@ -19,12 +19,15 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -39,6 +42,8 @@ import java.util.function.Consumer;
 public abstract class TypecheckingController implements TypecheckingQueries {
 
   private final TypecheckingBackend myTypecheckingBackend;
+
+  private Map<TypecheckingProvider, AuxDataContainer> myData = new HashMap<>();
 
   public TypecheckingController(TypecheckingBackend typecheckingBackend) {
     myTypecheckingBackend = typecheckingBackend;
@@ -129,6 +134,16 @@ public abstract class TypecheckingController implements TypecheckingQueries {
    */
   @NotNull
   protected abstract TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
+
+  @Nullable
+  protected <C> C getData(Class<? extends C> dataClass) {
+    TypecheckingProvider<?> provider = myTypecheckingBackend.lookupAuxDataProvider(dataClass);
+    if (provider != null) {
+      AuxDataContainer dataContainer = myData.computeIfAbsent(provider, (key) -> provider.createDataContainer());
+      return dataContainer.getInstance(dataClass);
+    }
+    else return null;
+  }
 
   @NotNull
   protected  <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends Q> providerClass) {

@@ -56,80 +56,82 @@ public abstract class TypecheckingFacade
     return getContextInstance();
   }
 
+  abstract public <C> C getData(Class<? extends C> dataClass);
+
   @Override
   public SNode getTypeOf(SNode expression) {
     if (expression == null) return null;
-    return controller().getTypeOf(expression);
+    return activeController().getTypeOf(expression);
   }
 
   @Override
   public SNode getInferredType(SNode expression) {
     if (expression == null) return null;
-    return controller().getInferredType(expression);
+    return activeController().getInferredType(expression);
   }
 
   @Override
   public boolean convertsTo(@NotNull SNode typeA, @NotNull SNode typeB) {
-    return controller().convertsTo(typeA, typeB);
+    return activeController().convertsTo(typeA, typeB);
   }
 
   @Override
   public boolean isSubtype(SNode typeA, SNode typeB) {
     if (typeA == null || typeB == null) return false;
-    return controller().isSubtype(typeA, typeB);
+    return activeController().isSubtype(typeA, typeB);
   }
 
   @Override
   public boolean isStrongSubtype(SNode typeA, SNode typeB) {
     if (typeA == null || typeB == null) return false;
-    return controller().isStrongSubtype(typeA, typeB);
+    return activeController().isStrongSubtype(typeA, typeB);
   }
 
   @NotNull
   @Override
   public Collection<SNode> getImmediateSupertypes(@NotNull SNode type) {
-    return controller().getImmediateSupertypes(type);
+    return activeController().getImmediateSupertypes(type);
   }
 
   @Override
   public SNode coerceType(SNode type, @NotNull SConcept typeConcept) {
     if (type == null) return null;
-    return controller().coerceType(type, typeConcept);
+    return activeController().coerceType(type, typeConcept);
   }
 
   @Nullable
   @Override
   public SNode coerceType(SNode type, @NotNull INodeMatchingPattern targetPattern) {
     if (type == null) return null;
-    return controller().coerceType(type, targetPattern);
+    return activeController().coerceType(type, targetPattern);
   }
 
   @Override
   public SNode strongCoerceType(SNode type, @NotNull SConcept typeConcept) {
     if (type == null) return null;
-    return controller().strongCoerceType(type, typeConcept);
+    return activeController().strongCoerceType(type, typeConcept);
   }
 
   @Nullable
   @Override
   public SNode strongCoerceType(SNode type, @NotNull INodeMatchingPattern targetPattern) {
     if (type == null) return null;
-    return controller().strongCoerceType(type, targetPattern);
+    return activeController().strongCoerceType(type, targetPattern);
   }
 
   @Override
   public void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
-    controller().checkRecursively(root, errorsConsumer);
+    activeController().checkRecursively(root, errorsConsumer);
   }
 
   @Override
   public void clearCache(SNode root) {
-    controller().clearCache(root);
+    activeController().clearCache(root);
   }
 
   @Override
   public boolean isCacheUpToDate(SNode root) {
-    return controller().isCacheUpToDate(root);
+    return activeController().isCacheUpToDate(root);
   }
 
   protected static TypecheckingFacade getContextInstance() {

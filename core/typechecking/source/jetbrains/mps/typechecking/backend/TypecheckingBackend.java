@@ -19,6 +19,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -84,6 +85,16 @@ public class TypecheckingBackend implements CoreComponent {
     }
   }
 
+  @Nullable
+  protected <C> TypecheckingProvider<?> lookupAuxDataProvider(Class<? extends C> dataClass) {
+    for (TypecheckingProvider<? extends TypecheckingQueries> provider : myProviders.values()) {
+      if (provider.isSupportedDataClass(dataClass)) {
+        return provider;
+      }
+    }
+    return null;
+  }
+
   /**
    * @throws IllegalStateException if no provider is available.
    */
@@ -96,7 +107,7 @@ public class TypecheckingBackend implements CoreComponent {
       }
     }
 
-    throw new IllegalStateException("No available TypecheckingProvider");
+    throw new IllegalStateException("No matching TypecheckingProvider for "+queryClass);
   }
 
   /**

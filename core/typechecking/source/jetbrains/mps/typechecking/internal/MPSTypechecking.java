@@ -21,8 +21,8 @@ import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend;
+import jetbrains.mps.typechecking.backend.TypecheckingFacadeComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 

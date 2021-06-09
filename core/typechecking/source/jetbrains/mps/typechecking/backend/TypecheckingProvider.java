@@ -26,6 +26,14 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
 
+  interface AuxDataContainer {
+
+    <C> C getInstance(Class<? extends C> dataClass);
+
+    void dispose();
+
+  }
+
   /**
    * This methods are responsible for selecting the appropriate typechecking provided given the specified query parameters:
    * <li> the single {@link SNode} parameter {@code src} corresponds to a query accepting a single source node, never a null value;
@@ -42,5 +50,13 @@ public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
   Class<Queries> getQueriesClass();
 
   void disposeQueries(@NotNull TypecheckingQueries queries);
+
+  default boolean isSupportedDataClass(Class<?> dataClass) {
+    return false;
+  }
+
+  default AuxDataContainer createDataContainer() {
+    return null;
+  }
 
 }

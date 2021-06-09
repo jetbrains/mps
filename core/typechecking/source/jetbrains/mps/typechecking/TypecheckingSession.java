@@ -26,7 +26,7 @@ public interface TypecheckingSession {
 
   Flags flags();
 
-  <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> providerClass);
+  <Q extends TypecheckingQueries> Q getQueries(Class<? extends Q> queriesClass);
 
   TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept);
 
