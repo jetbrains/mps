@@ -19,6 +19,9 @@ import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 
 /**
+ * A bridge interface to provide access to internal features of the
+ * legacy typesystem engine.
+ * 
  * @author Fedor Isakov
  */
 public interface LegacyTypecheckingQueries extends TypecheckingQueries {
@@ -30,5 +33,5 @@ public interface LegacyTypecheckingQueries extends TypecheckingQueries {
    * This method only makes sense for incremental typechecking.
    */
   TypeCheckingContext getTypeCheckingContext();
-
+  
 }

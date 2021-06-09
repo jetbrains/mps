@@ -44,10 +44,7 @@ public class TypeContextManager implements CoreComponent {
 
   private static TypeContextManager INSTANCE;
 
-  // dependencies
-  private final TypeCheckerHelper myTypeCheckerHelper;
-
-  //TypeContextManager is a singleton, so we can omit remove() here though the field is not static
+    //TypeContextManager is a singleton, so we can omit remove() here though the field is not static
   private ThreadLocal<ITypeContextOwner> myTypecheckingContextOwner = new ThreadLocal<ITypeContextOwner>() {
     @Override
     protected ITypeContextOwner initialValue() {
@@ -69,8 +66,7 @@ public class TypeContextManager implements CoreComponent {
     return INSTANCE;
   }
 
-  public TypeContextManager(TypeCheckerHelper typeCheckerHelper) {
-    myTypeCheckerHelper = typeCheckerHelper;
+  public TypeContextManager() {
   }
 
   @Override
@@ -149,22 +145,22 @@ public class TypeContextManager implements CoreComponent {
    */
   @Deprecated(forRemoval = true)
   public TypeCheckingContext createTypeCheckingContext(SNode node) {
-    return new IncrementalTypecheckingContext(node, myTypeCheckerHelper, null);
+    return new IncrementalTypecheckingContext(node, TypeChecker.getInstance().getTypeCheckerHelper(), null);
   }
 
   @Deprecated(forRemoval = true)
   public HoleTypecheckingContext createHoleTypecheckingContext(SNode node) {
-    return new HoleTypecheckingContext(node, myTypeCheckerHelper);
+    return new HoleTypecheckingContext(node, TypeChecker.getInstance().getTypeCheckerHelper());
   }
 
   @Deprecated(forRemoval = true)
   public TypeCheckingContext createInferenceTypeCheckingContext(SNode node) {
-    return new InferenceTypecheckingContext(node, myTypeCheckerHelper);
+    return new InferenceTypecheckingContext(node, TypeChecker.getInstance().getTypeCheckerHelper());
   }
 
   @Deprecated(forRemoval = true)
   public TypeCheckingContext createTracingTypeCheckingContext(SNode node) {
-    return new TracingTypecheckingContext(node, myTypeCheckerHelper);
+    return new TracingTypecheckingContext(node, TypeChecker.getInstance().getTypeCheckerHelper());
   }
 
   @Deprecated(forRemoval = true)
@@ -180,6 +176,6 @@ public class TypeContextManager implements CoreComponent {
   @Deprecated(forRemoval = true)
   public TypeCheckingContext createTypeCheckingContextForResolve(SNode node) {
     SNode root = node.getContainingRoot();
-    return new CachingTypecheckingContext(root, myTypeCheckerHelper);
+    return new CachingTypecheckingContext(root, TypeChecker.getInstance().getTypeCheckerHelper());
   }
 }

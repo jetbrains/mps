@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typesystem.TypeSystemReporter;
+import jetbrains.mps.typesystem.LegacyTypecheckingQueries;
 import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 import jetbrains.mps.util.Computable;
@@ -43,10 +43,6 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   // dependency
   private final LanguageRegistry myLanguageRegistry;
 
-  // FIXME temprorary solution before switching to TypecheckingFacade
-  private TypeCheckerHelper myTypeCheckerHelper;
-
-
   private SubtypingCache myGenerationSubTypingCache = null;
 
   private ThreadLocal<Boolean> myIsGenerationThread = new ThreadLocal<Boolean>() {
@@ -59,8 +55,6 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
 
   public TypeChecker(LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
-    // FIXME get the helper from context TypecheckingFacade
-    myTypeCheckerHelper = new TypeCheckerHelper();
   }
 
   @Override
@@ -81,12 +75,12 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
 
   @Override
   public void afterLanguagesLoaded(Iterable<LanguageRuntime> languages) {
-    myTypeCheckerHelper.refreshRules(languages, true);
+    getTypeCheckerHelper().refreshRules(languages, true);
   }
 
   @Override
   public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
-    myTypeCheckerHelper.refreshRules(languages, false);
+    getTypeCheckerHelper().refreshRules(languages, false);
   }
 
   public static TypeChecker getInstance() {
@@ -97,9 +91,9 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
     return Thread.currentThread() == myMainGenerationThread;
   }
 
-  // FIXME this is only a temporary solution, the helper is to be accessed via context facade
+  // FIXME this is only a temporary solution, the helper is to be selected dynamically
   public TypeCheckerHelper getTypeCheckerHelper() {
-    return myTypeCheckerHelper;
+    return TypecheckingFacade.getFromContext().getData(TypeCheckerHelper.class);
   }
 
   public SubtypingManager getSubtypingManager() {
@@ -107,14 +101,14 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
 //      return mySubtypingManagerTracer;
 //    }
 //    return mySubtypingManager;
-    return myTypeCheckerHelper.getSubtypingManager();
+    return getTypeCheckerHelper().getSubtypingManager();
   }
 
   public RuntimeSupport getRuntimeSupport() {
 //    if (isMainGenerationThread()) {
 //      return myRuntimeSupportTracer;
 //    }
-    return myTypeCheckerHelper.getRuntimeSupport();
+    return getTypeCheckerHelper().getRuntimeSupport();
   }
 
   public SubtypingCache getSubtypingCache() {
@@ -124,11 +118,11 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
 //        return generationSubTypingCache;
 //      }
 //    }
-    return myTypeCheckerHelper.getSubtypingCache();
+    return getTypeCheckerHelper().getSubtypingCache();
   }
 
   public RulesManager getRulesManager() {
-    return myTypeCheckerHelper.getRulesManager();
+    return getTypeCheckerHelper().getRulesManager();
   }
 
   @Deprecated(forRemoval = true)
@@ -177,11 +171,11 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   }
 
   public <T> T computeWithTrace(Computable<T> c, String taskName) {
-    return myTypeCheckerHelper.computeWithTrace(c, taskName);
+    return getTypeCheckerHelper().computeWithTrace(c, taskName);
   }
 
   public InequalitySystem getInequalitiesForHole(SNode hole, boolean holeIsAType) {
-    HoleTypecheckingContext typeCheckingContext = new HoleTypecheckingContext(hole, myTypeCheckerHelper);
+    HoleTypecheckingContext typeCheckingContext = new HoleTypecheckingContext(hole, getTypeCheckerHelper());
     InequalitySystem inequalitySystem = typeCheckingContext.getTypechecking().computeInequalitiesForHole(hole, holeIsAType);
     typeCheckingContext.dispose();
     return inequalitySystem;
@@ -190,7 +184,7 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   @Deprecated(forRemoval = true)
   public SNode getInferredTypeOf(final SNode node) {
     if (node == null) return null;
-    TypeCheckingContext typeCheckingContext = new InferenceTypecheckingContext(node, myTypeCheckerHelper);
+    TypeCheckingContext typeCheckingContext = new InferenceTypecheckingContext(node, getTypeCheckerHelper());
     SNode type = typeCheckingContext.computeTypeInferenceMode(node);
     typeCheckingContext.dispose();
     return type;

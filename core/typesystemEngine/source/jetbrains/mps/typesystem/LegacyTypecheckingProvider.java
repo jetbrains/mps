@@ -32,6 +32,7 @@ import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.backend.TypecheckingProvider;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
 import org.jetbrains.annotations.NotNull;
@@ -54,8 +55,11 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   private final ClassLoaderManager myClassLoaderManager;
 
+  private TypeCheckerHelper myTypeCheckerHelper;
+
   public LegacyTypecheckingProvider(ClassLoaderManager classLoaderManager) {
     myClassLoaderManager = classLoaderManager;
+    myTypeCheckerHelper = new TypeCheckerHelper();
   }
 
   @Override
@@ -67,13 +71,13 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   @Override
   public LegacyTypecheckingQueries createQueries(@NotNull Flags flags) {
     if (flags.getRoot() != null && flags.isIncremental()) {
-      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), TypeChecker.getInstance().getTypeCheckerHelper(), myClassLoaderManager);
+      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), myTypeCheckerHelper, myClassLoaderManager);
       IncrementalLegacyTypecheckingQueries queries = new IncrementalLegacyTypecheckingQueries(flags, typecheckingContext);
       typecheckingContext.setTypeInvalidateNotifier((node) -> queries.myObservable.dispatchTypeInvalidated(node));
       return queries;
 
     } else if (flags.isGenerator()) {
-      return new GeneratorLegacyTypecheckingSession(flags);
+      return new GeneratorLegacyTypecheckingQueries(flags);
 
     } else {
       return new TargetLegacyTypecheckingQueries(flags);
@@ -83,6 +87,16 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   @Override
   public Class<LegacyTypecheckingQueries> getQueriesClass() {
     return LegacyTypecheckingQueries.class;
+  }
+
+  @Override
+  public boolean isSupportedDataClass(Class<?> dataClass) {
+    return TypeCheckerHelper.class == dataClass;
+  }
+
+  @Override
+  public AuxDataContainer createDataContainer() {
+    return new DataContainer();
   }
 
   @Override
@@ -200,7 +214,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   }
 
-  private static class IncrementalLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
+  private class IncrementalLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
     private final IncrementalTypecheckingContext myTypecheckingContext;
     private final Observable myObservable = new Observable();
@@ -257,7 +271,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       fun.accept(myTypecheckingContext);
     }
 
-    private static class Observable implements TypecheckingObservable {
+    private class Observable implements TypecheckingObservable {
 
       private Set<TypeAccessListener> myTypeAccessListeners = new THashSet<>();
       private Set<TypeInvalidationListener> myTypeInvalidationListeners = new THashSet<>();
@@ -299,7 +313,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   }
 
-  private static class TargetLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
+  private class TargetLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
     public TargetLegacyTypecheckingQueries(Flags flags) {
       super(flags);
@@ -336,14 +350,14 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
     @NotNull
     protected TargetTypecheckingContext withTypecheckingContext() {
-      return new TargetTypecheckingContext(myFlags.getRoot(), TypeChecker.getInstance().getTypeCheckerHelper());
+      return new TargetTypecheckingContext(myFlags.getRoot(), myTypeCheckerHelper);
     }
 
   }
 
-  private static class GeneratorLegacyTypecheckingSession extends TargetLegacyTypecheckingQueries {
+  private class GeneratorLegacyTypecheckingQueries extends TargetLegacyTypecheckingQueries {
 
-    public GeneratorLegacyTypecheckingSession(Flags flags) {
+    public GeneratorLegacyTypecheckingQueries(Flags flags) {
       super(flags);
     }
 
@@ -361,6 +375,22 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       return compute((tcc) -> tcc.getTypeOf_generationMode(expression));
     }
 
+  }
+
+  private class DataContainer implements AuxDataContainer {
+
+    @Override
+    public <C> C getInstance(Class<? extends C> dataClass) {
+      if (dataClass == TypeCheckerHelper.class) {
+        return (C) myTypeCheckerHelper;
+      }
+      else return null;
+    }
+
+    @Override
+    public void dispose() {
+
+    }
   }
 
 }
