@@ -26,7 +26,7 @@ public class JUnit4TestWrapper extends AbstractTestWrapper<SNode> {
   private final List<JUnit4MethodWrapper> myMethods;
 
   public JUnit4TestWrapper(SNode clazz) {
-    super(clazz, true, AbstractTestWrapper.needsMPS(clazz));
+    super(clazz, false, AbstractTestWrapper.needsMPS(clazz));
     myQualifiedName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(clazz);
     myName = SPropertyOperations.getString(clazz, PROPS.name$MnvL);
     Iterable<SNode> methodNodes = SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(clazz)), CONCEPTS.InstanceMethodDeclaration$39);

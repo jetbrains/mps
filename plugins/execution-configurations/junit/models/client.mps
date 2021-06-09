@@ -42,7 +42,6 @@
     <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
     <import index="u132" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="fyhk" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)" />
     <import index="83ig" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench(Testbench/)" />
     <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
@@ -61,6 +60,7 @@
     <import index="ddon" ref="r:58ba176b-8a52-400c-bf27-725996471cb9(jetbrains.mps.core.tool.environment.common)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
+    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
   </imports>
   <registry>
@@ -5487,9 +5487,7 @@
           <node concept="37vLTw" id="2BHiRxgm_y$" role="37wK5m">
             <ref role="3cqZAo" node="1KnTQt4OifP" resolve="method" />
           </node>
-          <node concept="3clFbT" id="7pjPheuMS5E" role="37wK5m">
-            <property role="3clFbU" value="true" />
-          </node>
+          <node concept="3clFbT" id="7pjPheuMS5E" role="37wK5m" />
           <node concept="22lmx$" id="4Tkq3_eUOPO" role="37wK5m">
             <node concept="2YIFZM" id="4Tkq3_eUPdM" role="3uHU7B">
               <ref role="1Pybhc" node="56tRMpP_ef9" resolve="AbstractTestWrapper" />
@@ -5753,9 +5751,7 @@
           <node concept="37vLTw" id="2BHiRxglv5K" role="37wK5m">
             <ref role="3cqZAo" node="1KnTQt4Oigw" resolve="classConcept" />
           </node>
-          <node concept="3clFbT" id="40J2CKBmpUj" role="37wK5m">
-            <property role="3clFbU" value="true" />
-          </node>
+          <node concept="3clFbT" id="40J2CKBmpUj" role="37wK5m" />
           <node concept="2YIFZM" id="4Tkq3_eTozw" role="37wK5m">
             <ref role="37wK5l" node="4Tkq3_eQfcS" resolve="needsMPS" />
             <ref role="1Pybhc" node="56tRMpP_ef9" resolve="AbstractTestWrapper" />
@@ -6010,9 +6006,7 @@
           <node concept="37vLTw" id="2BHiRxgm$Fm" role="37wK5m">
             <ref role="3cqZAo" node="1KnTQt4OiiH" resolve="method" />
           </node>
-          <node concept="3clFbT" id="7pjPheuMWiY" role="37wK5m">
-            <property role="3clFbU" value="true" />
-          </node>
+          <node concept="3clFbT" id="7pjPheuMWiY" role="37wK5m" />
           <node concept="22lmx$" id="4Tkq3_eUPZX" role="37wK5m">
             <node concept="2YIFZM" id="4Tkq3_eTGM8" role="3uHU7w">
               <ref role="37wK5l" node="4Tkq3_eQfcS" resolve="needsMPS" />
@@ -6349,9 +6343,7 @@
           <node concept="37vLTw" id="2BHiRxgmvM7" role="37wK5m">
             <ref role="3cqZAo" node="1KnTQt4OijO" resolve="clazz" />
           </node>
-          <node concept="3clFbT" id="40J2CKBmqtE" role="37wK5m">
-            <property role="3clFbU" value="true" />
-          </node>
+          <node concept="3clFbT" id="40J2CKBmqtE" role="37wK5m" />
           <node concept="2YIFZM" id="4Tkq3_eTozv" role="37wK5m">
             <ref role="37wK5l" node="4Tkq3_eQfcS" resolve="needsMPS" />
             <ref role="1Pybhc" node="56tRMpP_ef9" resolve="AbstractTestWrapper" />
@@ -8201,8 +8193,8 @@
         <node concept="3clFbS" id="1KnTQt4OisA" role="3clF47">
           <node concept="3clFbJ" id="7ied1lklfvp" role="3cqZAp">
             <node concept="3clFbS" id="7ied1lklfvr" role="3clFbx">
-              <node concept="3clFbF" id="1KnTQt4OisB" role="3cqZAp">
-                <node concept="2ShNRf" id="1KnTQt4OisC" role="3clFbG">
+              <node concept="3cpWs6" id="5keLjVN61R" role="3cqZAp">
+                <node concept="2ShNRf" id="1KnTQt4OisC" role="3cqZAk">
                   <node concept="1pGfFk" id="1KnTQt4OisD" role="2ShVmc">
                     <ref role="37wK5l" node="1KnTQt4OijI" resolve="JUnit4TestWrapper" />
                     <node concept="37vLTw" id="2BHiRxgm_u4" role="37wK5m">
