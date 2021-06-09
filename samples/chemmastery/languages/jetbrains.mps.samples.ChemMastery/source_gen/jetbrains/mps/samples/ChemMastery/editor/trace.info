@@ -590,32 +590,33 @@
       <node id="7995886393883075699" at="126,59,127,37" concept="2" />
       <node id="3709490473852730409" at="132,142,133,25" concept="9" />
       <node id="3709490473852731015" at="134,16,135,20" concept="9" />
-      <node id="7995886393883081579" at="140,52,141,106" concept="2" />
-      <node id="7995886393885024888" at="141,106,142,92" concept="2" />
-      <node id="7995886393884493522" at="142,92,143,129" concept="2" />
-      <node id="7995886393883075699" at="150,49,151,37" concept="9" />
-      <node id="7995886393883075699" at="154,72,155,157" concept="8" />
-      <node id="7995886393883075699" at="155,157,156,46" concept="8" />
-      <node id="7995886393883075699" at="156,46,157,290" concept="8" />
-      <node id="7995886393883075699" at="158,114,159,56" concept="2" />
-      <node id="3123291046851062707" at="167,0,168,0" concept="12" trace="CompoundComponent$9d" />
-      <node id="3123291046851062707" at="171,0,172,0" concept="12" trace="cardinalityVisible$Vfns" />
-      <node id="3123291046851062707" at="172,0,173,0" concept="12" trace="cardinality$Vf8r" />
+      <node id="7995886393883081579" at="141,142,142,108" concept="2" />
+      <node id="7995886393885024888" at="142,108,143,94" concept="2" />
+      <node id="7995886393884493522" at="143,94,144,131" concept="2" />
+      <node id="7995886393883075699" at="152,49,153,37" concept="9" />
+      <node id="7995886393883075699" at="156,72,157,157" concept="8" />
+      <node id="7995886393883075699" at="157,157,158,46" concept="8" />
+      <node id="7995886393883075699" at="158,46,159,290" concept="8" />
+      <node id="7995886393883075699" at="160,114,161,56" concept="2" />
+      <node id="3123291046851062707" at="169,0,170,0" concept="12" trace="CompoundComponent$9d" />
+      <node id="3123291046851062707" at="173,0,174,0" concept="12" trace="cardinalityVisible$Vfns" />
+      <node id="3123291046851062707" at="174,0,175,0" concept="12" trace="cardinality$Vf8r" />
       <node id="3709490473852730942" at="134,14,136,9" concept="0" />
       <node id="7995886393883075699" at="123,0,126,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
       <node id="7995886393883075699" at="126,0,129,0" concept="7" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
-      <node id="7995886393883075699" at="157,290,160,9" concept="5" />
+      <node id="7995886393883075699" at="159,290,162,9" concept="5" />
       <node id="3123291046851062707" at="48,0,52,0" concept="7" trace="isApplicableToLocation#(Ljava/lang/String;)Z" />
       <node id="3123291046851064893" at="68,156,72,5" concept="6" />
-      <node id="7995886393883075699" at="149,0,153,0" concept="7" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
+      <node id="7995886393883075699" at="151,0,155,0" concept="7" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
       <node id="3123291046851062707" at="57,275,62,5" concept="15" />
       <node id="3123291046851420210" at="81,275,86,7" concept="15" />
       <node id="3709490473852729385" at="131,50,136,9" concept="6" />
+      <node id="1064893639596870214" at="140,52,145,9" concept="6" />
       <node id="7995886393883075699" at="103,25,109,7" concept="15" />
       <node id="7995886393883075699" at="110,51,116,7" concept="15" />
-      <node id="7995886393883075699" at="139,0,145,0" concept="7" trace="execute#(Ljava/lang/String;)V" />
       <node id="3123291046851420210" at="89,0,97,0" concept="7" trace="getMenuLookup#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuLookup;" />
-      <node id="7995886393883075699" at="154,0,162,0" concept="7" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
+      <node id="7995886393883075699" at="139,0,147,0" concept="7" trace="execute#(Ljava/lang/String;)V" />
+      <node id="7995886393883075699" at="156,0,164,0" concept="7" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="7995886393883075699" at="129,0,138,0" concept="7" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="3123291046851062707" at="65,0,75,0" concept="7" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <node id="3123291046851062707" at="53,0,64,0" concept="7" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
@@ -632,8 +633,8 @@
       <scope id="7995886393883075699" at="126,59,127,37" />
       <scope id="3709490473852729387" at="132,142,133,25" />
       <scope id="3709490473852730943" at="134,16,135,20" />
-      <scope id="7995886393883075699" at="150,49,151,37" />
-      <scope id="7995886393883075699" at="158,114,159,56" />
+      <scope id="7995886393883075699" at="152,49,153,37" />
+      <scope id="7995886393883075699" at="160,114,161,56" />
       <scope id="3123291046851064893" at="69,138,71,45" />
       <scope id="7995886393883075699" at="106,29,108,20" />
       <scope id="7995886393883075699" at="111,11,113,71" />
@@ -646,8 +647,8 @@
       <scope id="7995886393883075699" at="126,0,129,0">
         <var name="info" id="7995886393883075699" />
       </scope>
-      <scope id="7995886393883075703" at="140,52,143,129" />
-      <scope id="7995886393883075699" at="157,290,160,9">
+      <scope id="1064893639596870216" at="141,142,144,131" />
+      <scope id="7995886393883075699" at="159,290,162,9">
         <var name="customizer" id="7995886393883075699" />
       </scope>
       <scope id="3123291046851062707" at="48,0,52,0">
@@ -657,15 +658,13 @@
         <var name="editorContext" id="3123291046851420210" />
         <var name="node" id="3123291046851420210" />
       </scope>
-      <scope id="7995886393883075699" at="149,0,153,0" />
+      <scope id="7995886393883075699" at="151,0,155,0" />
       <scope id="7995886393883075701" at="131,50,136,9" />
+      <scope id="7995886393883075703" at="140,52,145,9" />
       <scope id="3123291046851062707" at="67,124,73,18">
         <var name="result" id="3123291046851062707" />
       </scope>
-      <scope id="7995886393883075699" at="139,0,145,0">
-        <var name="pattern" id="7995886393883075699" />
-      </scope>
-      <scope id="7995886393883075699" at="154,72,160,9">
+      <scope id="7995886393883075699" at="156,72,162,9">
         <var name="compositeContext" id="7995886393883075699" />
         <var name="modifyingContext" id="7995886393883075699" />
         <var name="outputConcept" id="7995886393883075699" />
@@ -675,7 +674,10 @@
       <scope id="3123291046851420210" at="89,0,97,0">
         <var name="_context" id="3123291046851420210" />
       </scope>
-      <scope id="7995886393883075699" at="154,0,162,0">
+      <scope id="7995886393883075699" at="139,0,147,0">
+        <var name="pattern" id="7995886393883075699" />
+      </scope>
+      <scope id="7995886393883075699" at="156,0,164,0">
         <var name="pattern" id="7995886393883075699" />
         <var name="style" id="7995886393883075699" />
       </scope>
@@ -698,12 +700,12 @@
       <scope id="7995886393883075699" at="100,0,119,0">
         <var name="context" id="7995886393883075699" />
       </scope>
-      <unit id="3123291046851062707" at="166,0,169,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$CONCEPTS" />
-      <unit id="3123291046851062707" at="170,0,174,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$PROPS" />
+      <unit id="3123291046851062707" at="168,0,171,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$CONCEPTS" />
+      <unit id="3123291046851062707" at="172,0,176,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$PROPS" />
       <unit id="3123291046851420210" at="76,0,99,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$TMP_Include_qoepdk_a0" />
-      <unit id="7995886393883075699" at="120,0,163,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$TMP_Action_qoepdk_b0$Item" />
-      <unit id="7995886393883075699" at="99,0,165,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$TMP_Action_qoepdk_b0" />
-      <unit id="3123291046851062707" at="46,0,175,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu" />
+      <unit id="7995886393883075699" at="120,0,165,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$TMP_Action_qoepdk_b0$Item" />
+      <unit id="7995886393883075699" at="99,0,167,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu$TMP_Action_qoepdk_b0" />
+      <unit id="3123291046851062707" at="46,0,177,0" name="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu" />
     </file>
   </root>
   <root nodeRef="r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)/3123291046851500466">

@@ -138,9 +138,11 @@ public class CompoundComponentWithCardinality_TransformationMenu extends Transfo
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.cardinality$Vf8r, Integer.parseInt(pattern));
-        SPropertyOperations.assign(_context.getNode(), PROPS.cardinalityVisible$Vfns, true);
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.LAST_CELL, -1);
+        if (PatternDetectionUtil.isNumeric(pattern) && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$Vfns))) {
+          SPropertyOperations.assign(_context.getNode(), PROPS.cardinality$Vf8r, Integer.parseInt(pattern));
+          SPropertyOperations.assign(_context.getNode(), PROPS.cardinalityVisible$Vfns, true);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.LAST_CELL, -1);
+        }
       }
 
 
