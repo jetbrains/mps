@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-1felaj0mate7iy4cz3g5p2v75okfbut">
+<product version="3" modelHash="-efebori22oq6p6w83w0pufshmwnvvpo">
   <files names="AntModuleTestSuite.java:AntModuleTestSuite0.java:AuditConstraints.java:AuditTypeSystem.java:BaseCheckModulesTest.java:BaseCheckerTest.java:BaseMpsSuite.java:BaseProjectsTest.java:CheckProjectStructure.java:CheckingTestStatistic.java:MPSAuditConstraints.java:MPSAuditTypesystem.java:MpsTestsSuite.java:TestMakeUtil.java:TestsDeployedTest.java" />
 </product>
 

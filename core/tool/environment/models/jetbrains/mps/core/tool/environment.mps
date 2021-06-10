@@ -5446,6 +5446,47 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbF" id="6JG_W6gJ5F" role="3cqZAp">
+              <node concept="2OqwBi" id="6JG_W6gJ5C" role="3clFbG">
+                <node concept="10M0yZ" id="6JG_W6gJ5D" role="2Oq$k0">
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                </node>
+                <node concept="liA8E" id="6JG_W6gJ5E" role="2OqNvi">
+                  <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                  <node concept="3cpWs3" id="6JG_W6gbSh" role="37wK5m">
+                    <node concept="2OqwBi" id="6JG_W6gcyF" role="3uHU7w">
+                      <node concept="37vLTw" id="6JG_W6gbZS" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2519QBqd1nM" resolve="configFile" />
+                      </node>
+                      <node concept="liA8E" id="6JG_W6gd4x" role="2OqNvi">
+                        <ref role="37wK5l" to="eoo2:~Path.toAbsolutePath()" resolve="toAbsolutePath" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="6JG_W6g9WP" role="3uHU7B">
+                      <property role="Xl_RC" value="Log4j is initialized by MPS from the configuration file " />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="6JG_W6gHZn" role="3cqZAp">
+              <node concept="2OqwBi" id="6JG_W6gHZk" role="3clFbG">
+                <node concept="10M0yZ" id="6JG_W6gHZl" role="2Oq$k0">
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                </node>
+                <node concept="liA8E" id="6JG_W6gHZm" role="2OqNvi">
+                  <ref role="37wK5l" to="guwi:~PrintStream.printf(java.lang.String,java.lang.Object...)" resolve="printf" />
+                  <node concept="Xl_RD" id="6JG_W6gelf" role="37wK5m">
+                    <property role="Xl_RC" value="LOG_DIR macro was evaluated to %s" />
+                  </node>
+                  <node concept="1rXfSq" id="6JG_W6ghR6" role="37wK5m">
+                    <ref role="37wK5l" node="2519QBqd1qy" resolve="getLogPath" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="9aQIb" id="oo$YE0zyWn" role="9aQIa">
             <node concept="3clFbS" id="oo$YE0zyWo" role="9aQI4">
@@ -5490,6 +5531,7 @@
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
+    <node concept="2tJIrI" id="6JG_W6g8u7" role="jymVt" />
     <node concept="2YIFZL" id="2519QBqdbRW" role="jymVt">
       <property role="TrG5h" value="configureFromXmlFile" />
       <node concept="37vLTG" id="2519QBqdbRX" role="3clF46">

@@ -2580,8 +2580,8 @@
         <node concept="3cpWs8" id="5A5jZryZYv3" role="3cqZAp">
           <node concept="3cpWsn" id="5A5jZryZYv4" role="3cpWs9">
             <property role="TrG5h" value="config" />
-            <node concept="2YIFZM" id="63LKn8yNVO0" role="33vP2m">
-              <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+            <node concept="2YIFZM" id="6JG_W6gvML" role="33vP2m">
+              <ref role="37wK5l" to="79ha:2$4oShLawGj" resolve="defaultConfigWithBundledPlugins" />
               <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
             </node>
             <node concept="3uibUv" id="4YCIFw5be8G" role="1tU5fm">
