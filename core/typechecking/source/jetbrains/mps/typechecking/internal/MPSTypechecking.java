@@ -78,7 +78,7 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
 
   @Override
   public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
-    if (TypecheckingFacade.class.equals(componentClass)) {
+    if (TypecheckingFacadeComponent.class.equals(componentClass)) {
       return componentClass.cast(myTypecheckingFacadeComponent);
     }
     if (LanguageScopeFactory.class.equals(componentClass)) {
