@@ -16580,5 +16580,27 @@
       <ref role="1YaFvo" to="tp25:1YRcO3NA_w5" resolve="AggregationLinkType" />
     </node>
   </node>
+  <node concept="2sgARr" id="4smCengQZGX">
+    <property role="2RFo0w" value="true" />
+    <property role="TrG5h" value="supertypesOf_ClassifierType_SReference_SReferenceType" />
+    <property role="3GE5qa" value="type" />
+    <node concept="3clFbS" id="4smCengQZGY" role="2sgrp5">
+      <node concept="3cpWs6" id="4smCengQZGZ" role="3cqZAp">
+        <node concept="2c44tf" id="4smCengQZH0" role="3cqZAk">
+          <node concept="2z4iKi" id="4smCengQZK3" role="2c44tc" />
+        </node>
+      </node>
+    </node>
+    <node concept="1Yb3XT" id="4smCengQZH2" role="1YuTPh">
+      <property role="TrG5h" value="type" />
+      <node concept="2DMOqp" id="4smCengQZH3" role="1YbcFS">
+        <node concept="2c44tf" id="4smCengQZH4" role="HM535">
+          <node concept="3uibUv" id="4smCengQZJn" role="2c44tc">
+            <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
