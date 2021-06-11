@@ -51,6 +51,8 @@ public final class Log4jInitializer {
     }
     if (Files.exists(configFile)) {
       configureFromXmlFile(configFile);
+      System.out.println("Log4j is initialized by MPS from the configuration file " + configFile.toAbsolutePath());
+      System.out.printf("LOG_DIR macro was evaluated to %s", getLogPath());
     } else {
       configureProgrammatically();
     }
@@ -59,6 +61,7 @@ public final class Log4jInitializer {
   private static String getBinPath() {
     return new File(PathManager.getHomePath(), "bin").getAbsolutePath();
   }
+
   private static void configureFromXmlFile(Path xmlFile) throws Exception {
     String text = Files.readString(xmlFile);
     text = replace(text, SYSTEM_MACRO, getSystemPath());

@@ -76,7 +76,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
   }
 
   public Environment initIdeaEnvironment() {
-    EnvironmentConfig config = EnvironmentConfig.defaultConfig();
+    EnvironmentConfig config = EnvironmentConfig.defaultConfigWithBundledPlugins();
     for (String lib : loadLibraries(myDisposable)) {
       config = config.addLib(lib);
     }
