@@ -57,12 +57,11 @@ public interface ReferenceConstraintsContext {
   SNode getReferenceNode();
 
   /**
-   *
-   * @return context model
-   * @deprecated  use {@code context.getContextNode().getModel()} instead
+   * @return context model, just a shorthand for {@code getContextNode().getModel()}
    */
-  @Deprecated
-  SModel getModel();
+  default SModel getModel() {
+    return getContextNode().getModel();
+  }
 
   /**
    * @deprecated equals to {@code getReferenceNode() != null ? getReferenceNode().getParent() : getContextNode()}

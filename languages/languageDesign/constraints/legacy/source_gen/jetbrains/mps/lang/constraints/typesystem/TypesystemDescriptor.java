@@ -5,6 +5,8 @@ package jetbrains.mps.lang.constraints.typesystem;
 import jetbrains.mps.lang.typesystem.runtime.BaseHelginsDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
+import jetbrains.mps.lang.typesystem.runtime.SubtypingRule_Runtime;
+import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
 
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
@@ -45,6 +47,18 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
+      InferenceRule_Runtime inferenceRule = new typeof_ModelScopeEval_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_NodeScopeEval_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_RootScopeEval_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_IOperationContextUsages_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
@@ -55,6 +69,14 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_NodeReferentConstraint_noDuplications_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      SubtypingRule_Runtime subtypingRule = new super_RefScopeCT_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
+      ComparisonRule_Runtime comparisonRule = new equal_ScopeClassifierType_ComparisonRule();
+      this.myComparisonRules.add(comparisonRule);
     }
   }
 }

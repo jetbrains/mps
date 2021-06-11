@@ -50,12 +50,16 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ConstraintsFunctionParameter_propertyValue;
   private ConceptPresentation props_ConstraintsMigration;
   private ConceptPresentation props_InheritedNodeScopeFactory;
+  private ConceptPresentation props_ModelScopeEval;
   private ConceptPresentation props_NodeDefaultSearchScope;
   private ConceptPresentation props_NodePropertyConstraint;
   private ConceptPresentation props_NodeReferentConstraint;
+  private ConceptPresentation props_NodeScopeEval;
   private ConceptPresentation props_NodeScopeFactory;
   private ConceptPresentation props_RefPresentationMigrated;
   private ConceptPresentation props_RefPresentationMigratedProblem;
+  private ConceptPresentation props_RefScopeType;
+  private ConceptPresentation props_RootScopeEval;
 
   @Override
   @Nullable
@@ -67,8 +71,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL);
           cpb.deprecateAggregation(0x341b038f9307e5d8L, "alternativeIcon");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a0b0vb);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a0b0vb);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a0b0zb);
+          cpb.icon(IconContainer.RESOURCE_a0a4a0a0b0zb);
           props_ConceptConstraints = cpb.create();
         }
         return props_ConceptConstraints;
@@ -385,6 +389,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_InheritedNodeScopeFactory = cpb.create();
         }
         return props_InheritedNodeScopeFactory;
+      case LanguageConceptSwitch.ModelScopeEval:
+        if (props_ModelScopeEval == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ModelScopeEval");
+          props_ModelScopeEval = cpb.create();
+        }
+        return props_ModelScopeEval;
       case LanguageConceptSwitch.NodeDefaultSearchScope:
         if (props_NodeDefaultSearchScope == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -406,6 +417,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeReferentConstraint = cpb.create();
         }
         return props_NodeReferentConstraint;
+      case LanguageConceptSwitch.NodeScopeEval:
+        if (props_NodeScopeEval == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x1ababecc09e567ddL, 0x1ababecc09e567deL, "kind", "", "");
+          props_NodeScopeEval = cpb.create();
+        }
+        return props_NodeScopeEval;
       case LanguageConceptSwitch.NodeScopeFactory:
         if (props_NodeScopeFactory == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -426,8 +444,24 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_RefPresentationMigratedProblem = cpb.create();
         }
         return props_RefPresentationMigratedProblem;
+      case LanguageConceptSwitch.RefScopeType:
+        if (props_RefScopeType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("reference scope type");
+          cpb.rawPresentation("scope");
+          props_RefScopeType = cpb.create();
+        }
+        return props_RefScopeType;
+      case LanguageConceptSwitch.RootScopeEval:
+        if (props_RootScopeEval == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("visible roots");
+          cpb.presentationByReference(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x1ababecc09e567daL, 0x1ababecc09e567dbL, "kind", "", "");
+          props_RootScopeEval = cpb.create();
+        }
+        return props_RootScopeEval;
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a3a0a0b0vb = URLFunction_HelpCenterDocUrl.getUrl() + "constraints.html";
+  private static final String HELP_URL_lpa09p_a0a3a0a0b0zb = URLFunction_HelpCenterDocUrl.getUrl() + "constraints.html";
 }

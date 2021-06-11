@@ -1818,5 +1818,91 @@
       <ref role="4PJHt" to="tp1t:4OU1gA0uS0v" resolve="ConstraintFunction_ReferentSearchScope_Scope" />
     </node>
   </node>
+  <node concept="24kQdi" id="1EUJGK9SnwC">
+    <ref role="1XX52x" to="tp1t:1EUJGK9Snwb" resolve="ModelScopeEval" />
+    <node concept="3EZMnI" id="1EUJGK9SnwM" role="2wV5jI">
+      <node concept="3F0ifn" id="1EUJGK9SnwT" role="3EZMnx">
+        <property role="3F0ifm" value="for model" />
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9Snxb" role="3EZMnx">
+        <property role="3F0ifm" value="[" />
+      </node>
+      <node concept="3F1sOY" id="1EUJGK9SnxE" role="3EZMnx">
+        <ref role="1NtTu8" to="tp1t:1EUJGK9Snwc" resolve="factory" />
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9Snxn" role="3EZMnx">
+        <property role="3F0ifm" value="," />
+      </node>
+      <node concept="3F1sOY" id="1EUJGK9SnxM" role="3EZMnx">
+        <ref role="1NtTu8" to="tp1t:1EUJGK9SnwZ" resolve="cacheKey" />
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9Snxh" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+      </node>
+      <node concept="2iRfu4" id="1EUJGK9SnwP" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1EUJGK9SnEY">
+    <ref role="1XX52x" to="tp1t:1EUJGK9SnEz" resolve="RefScopeType" />
+    <node concept="3F0ifn" id="1EUJGK9SnF0" role="2wV5jI">
+      <property role="3F0ifm" value="scope" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1EUJGK9TmvU">
+    <ref role="1XX52x" to="tp1t:1EUJGK9Tmvq" resolve="RootScopeEval" />
+    <node concept="3EZMnI" id="1EUJGK9TmvW" role="2wV5jI">
+      <node concept="3F0ifn" id="1EUJGK9Tmwa" role="3EZMnx">
+        <property role="3F0ifm" value="visible roots" />
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9Tmwn" role="3EZMnx">
+        <property role="3F0ifm" value="[" />
+      </node>
+      <node concept="1iCGBv" id="1EUJGK9Tmx7" role="3EZMnx">
+        <ref role="1NtTu8" to="tp1t:1EUJGK9Tmvr" resolve="kind" />
+        <node concept="1sVBvm" id="1EUJGK9Tmx9" role="1sWHZn">
+          <node concept="3F0A7n" id="1EUJGK9TmNk" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9Tmwx" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+      </node>
+      <node concept="2iRfu4" id="1EUJGK9TmvZ" role="2iSdaV" />
+    </node>
+    <node concept="3F0ifn" id="1EUJGK9Tmwg" role="6VMZX">
+      <property role="3F0ifm" value="roots from the context model and its imports" />
+      <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1EUJGK9TniM">
+    <ref role="1XX52x" to="tp1t:1EUJGK9Tmvt" resolve="NodeScopeEval" />
+    <node concept="3EZMnI" id="1EUJGK9TniO" role="2wV5jI">
+      <node concept="3F0ifn" id="1EUJGK9Tnjm" role="3EZMnx">
+        <property role="3F0ifm" value="visible nodes" />
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9Tnjt" role="3EZMnx">
+        <property role="3F0ifm" value="[" />
+      </node>
+      <node concept="1iCGBv" id="1EUJGK9Tnkx" role="3EZMnx">
+        <ref role="1NtTu8" to="tp1t:1EUJGK9Tmvu" resolve="kind" />
+        <node concept="1sVBvm" id="1EUJGK9Tnkz" role="1sWHZn">
+          <node concept="3F0A7n" id="1EUJGK9TnkL" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="1EUJGK9TnkO" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+      </node>
+      <node concept="2iRfu4" id="1EUJGK9TniR" role="2iSdaV" />
+    </node>
+    <node concept="3F0ifn" id="1EUJGK9Tnj6" role="6VMZX">
+      <property role="3F0ifm" value="nodes from the context model and its imports" />
+      <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
+    </node>
+  </node>
 </model>
 

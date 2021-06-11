@@ -773,5 +773,53 @@
       <ref role="20lvS9" to="tpc2:fIwURLg" resolve="BaseEditorComponent" />
     </node>
   </node>
+  <node concept="1TIwiD" id="1EUJGK9Snwb">
+    <property role="EcuMT" value="1926061574202685451" />
+    <property role="TrG5h" value="ModelScopeEval" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1EUJGK9Snwc" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202685452" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="factory" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyj" id="1EUJGK9SnwZ" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202685503" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="cacheKey" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9SnEz">
+    <property role="EcuMT" value="1926061574202686115" />
+    <property role="TrG5h" value="RefScopeType" />
+    <property role="34LRSv" value="scope" />
+    <property role="R4oN_" value="reference scope type" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9Tmvq">
+    <property role="EcuMT" value="1926061574202943450" />
+    <property role="TrG5h" value="RootScopeEval" />
+    <property role="R4oN_" value="visible roots" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1EUJGK9Tmvr" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202943451" />
+      <property role="20kJfa" value="kind" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1EUJGK9Tmvt">
+    <property role="EcuMT" value="1926061574202943453" />
+    <property role="TrG5h" value="NodeScopeEval" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="1EUJGK9Tmvu" role="1TKVEi">
+      <property role="IQ2ns" value="1926061574202943454" />
+      <property role="20kJfa" value="kind" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+    </node>
+  </node>
 </model>
 

@@ -646,6 +646,217 @@
     <node concept="aNPBN" id="hKbrECo" role="aQYdv">
       <ref role="aOQi4" to="tp1t:hDM2fEI" resolve="ConceptConstraints" />
     </node>
+    <node concept="3aamgX" id="1EUJGK9SvAC" role="3acgRq">
+      <ref role="30HIoZ" to="tp1t:1EUJGK9SnEz" resolve="RefScopeType" />
+      <node concept="gft3U" id="1EUJGK9SvAA" role="1lVwrX">
+        <node concept="3uibUv" id="1EUJGK9SvVz" role="gfFT$">
+          <ref role="3uigEE" to="35tq:~Scope" resolve="Scope" />
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="1EUJGK9TdPl" role="3acgRq">
+      <ref role="30HIoZ" to="tp1t:1EUJGK9Snwb" resolve="ModelScopeEval" />
+      <node concept="1Koe21" id="1EUJGK9TdQu" role="1lVwrX">
+        <node concept="3clFb_" id="1EUJGK9TdQM" role="1Koe22">
+          <property role="TrG5h" value="createScope" />
+          <node concept="37vLTG" id="1EUJGK9TeWx" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="1EUJGK9TeWy" role="1tU5fm">
+              <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="1EUJGK9TdQP" role="3clF47">
+            <node concept="3clFbF" id="1EUJGK9TeX6" role="3cqZAp">
+              <node concept="2OqwBi" id="1EUJGK9Tfcj" role="3clFbG">
+                <node concept="2OqwBi" id="1EUJGK9Tf1$" role="2Oq$k0">
+                  <node concept="37vLTw" id="1EUJGK9TeX5" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1EUJGK9TeWx" resolve="_context" />
+                  </node>
+                  <node concept="liA8E" id="1EUJGK9Tf7v" role="2OqNvi">
+                    <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1EUJGK9TfiX" role="2OqNvi">
+                  <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofModel(org.jetbrains.mps.openapi.model.SModel,java.lang.Object,java.util.function.Function)" resolve="ofModel" />
+                  <node concept="2OqwBi" id="1EUJGK9Tg07" role="37wK5m">
+                    <node concept="37vLTw" id="1EUJGK9TfuP" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1EUJGK9TeWx" resolve="_context" />
+                    </node>
+                    <node concept="liA8E" id="1EUJGK9Tg8s" role="2OqNvi">
+                      <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="1EUJGK9Th17" role="37wK5m">
+                    <property role="Xl_RC" value="" />
+                    <node concept="29HgVG" id="1EUJGK9Thcx" role="lGtFl">
+                      <node concept="3NFfHV" id="1EUJGK9Thcy" role="3NFExx">
+                        <node concept="3clFbS" id="1EUJGK9Thcz" role="2VODD2">
+                          <node concept="3clFbF" id="1EUJGK9ThcD" role="3cqZAp">
+                            <node concept="2OqwBi" id="1EUJGK9Thc$" role="3clFbG">
+                              <node concept="3TrEf2" id="1EUJGK9ThcB" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp1t:1EUJGK9SnwZ" resolve="cacheKey" />
+                              </node>
+                              <node concept="30H73N" id="1EUJGK9ThcC" role="2Oq$k0" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10Nm6u" id="1EUJGK9Th5V" role="37wK5m">
+                    <node concept="29HgVG" id="1EUJGK9Thl8" role="lGtFl">
+                      <node concept="3NFfHV" id="1EUJGK9Thl9" role="3NFExx">
+                        <node concept="3clFbS" id="1EUJGK9Thla" role="2VODD2">
+                          <node concept="3clFbF" id="1EUJGK9Thlg" role="3cqZAp">
+                            <node concept="2OqwBi" id="1EUJGK9Thlb" role="3clFbG">
+                              <node concept="3TrEf2" id="1EUJGK9Thle" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp1t:1EUJGK9Snwc" resolve="factory" />
+                              </node>
+                              <node concept="30H73N" id="1EUJGK9Thlf" role="2Oq$k0" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="raruj" id="1EUJGK9Th9N" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3uibUv" id="1EUJGK9TdR4" role="3clF45">
+            <ref role="3uigEE" to="35tq:~Scope" resolve="Scope" />
+          </node>
+          <node concept="3Tm1VV" id="1EUJGK9TdQR" role="1B3o_S" />
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="1EUJGK9TnHE" role="3acgRq">
+      <ref role="30HIoZ" to="tp1t:1EUJGK9Tmvq" resolve="RootScopeEval" />
+      <node concept="1Koe21" id="1EUJGK9TnJW" role="1lVwrX">
+        <node concept="3clFb_" id="1EUJGK9TnK2" role="1Koe22">
+          <property role="TrG5h" value="createScope" />
+          <node concept="37vLTG" id="1EUJGK9TnK3" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="1EUJGK9TnK4" role="1tU5fm">
+              <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="1EUJGK9TnK5" role="3clF47">
+            <node concept="3clFbF" id="1EUJGK9TnK6" role="3cqZAp">
+              <node concept="2OqwBi" id="1EUJGK9TnK7" role="3clFbG">
+                <node concept="2OqwBi" id="1EUJGK9TnK8" role="2Oq$k0">
+                  <node concept="37vLTw" id="1EUJGK9TnK9" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1EUJGK9TnK3" resolve="_context" />
+                  </node>
+                  <node concept="liA8E" id="1EUJGK9TnKa" role="2OqNvi">
+                    <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1EUJGK9TnKb" role="2OqNvi">
+                  <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofRootsDefault(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ofRootsDefault" />
+                  <node concept="2OqwBi" id="1EUJGK9TnKc" role="37wK5m">
+                    <node concept="37vLTw" id="1EUJGK9TnKd" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1EUJGK9TnK3" resolve="_context" />
+                    </node>
+                    <node concept="liA8E" id="1EUJGK9TnKe" role="2OqNvi">
+                      <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                    </node>
+                  </node>
+                  <node concept="35c_gC" id="1EUJGK9TonK" role="37wK5m">
+                    <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
+                    <node concept="1ZhdrF" id="1EUJGK9Tov_" role="lGtFl">
+                      <property role="2qtEX8" value="conceptDeclaration" />
+                      <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/2644386474300074836/2644386474300074837" />
+                      <node concept="3$xsQk" id="1EUJGK9TovA" role="3$ytzL">
+                        <node concept="3clFbS" id="1EUJGK9TovB" role="2VODD2">
+                          <node concept="3clFbF" id="1EUJGK9Tozf" role="3cqZAp">
+                            <node concept="2OqwBi" id="1EUJGK9ToJ2" role="3clFbG">
+                              <node concept="30H73N" id="1EUJGK9Toze" role="2Oq$k0" />
+                              <node concept="3TrEf2" id="1EUJGK9ToTx" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp1t:1EUJGK9Tmvr" resolve="kind" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="raruj" id="1EUJGK9TnKv" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3uibUv" id="1EUJGK9TnKw" role="3clF45">
+            <ref role="3uigEE" to="35tq:~Scope" resolve="Scope" />
+          </node>
+          <node concept="3Tm1VV" id="1EUJGK9TnKx" role="1B3o_S" />
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="1EUJGK9Tp0d" role="3acgRq">
+      <ref role="30HIoZ" to="tp1t:1EUJGK9Tmvt" resolve="NodeScopeEval" />
+      <node concept="1Koe21" id="1EUJGK9Tp0e" role="1lVwrX">
+        <node concept="3clFb_" id="1EUJGK9Tp0f" role="1Koe22">
+          <property role="TrG5h" value="createScope" />
+          <node concept="37vLTG" id="1EUJGK9Tp0g" role="3clF46">
+            <property role="TrG5h" value="_context" />
+            <node concept="3uibUv" id="1EUJGK9Tp0h" role="1tU5fm">
+              <ref role="3uigEE" to="ze1i:~ReferenceConstraintsContext" resolve="ReferenceConstraintsContext" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="1EUJGK9Tp0i" role="3clF47">
+            <node concept="3clFbF" id="1EUJGK9Tp0j" role="3cqZAp">
+              <node concept="2OqwBi" id="1EUJGK9Tp0k" role="3clFbG">
+                <node concept="2OqwBi" id="1EUJGK9Tp0l" role="2Oq$k0">
+                  <node concept="37vLTw" id="1EUJGK9Tp0m" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1EUJGK9Tp0g" resolve="_context" />
+                  </node>
+                  <node concept="liA8E" id="1EUJGK9Tp0n" role="2OqNvi">
+                    <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getScopeEvaluationContext()" resolve="getScopeEvaluationContext" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1EUJGK9Tp0o" role="2OqNvi">
+                  <ref role="37wK5l" to="ze1i:~EvaluateScopeContext.ofNodesDefault(org.jetbrains.mps.openapi.model.SModel,org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="ofNodesDefault" />
+                  <node concept="2OqwBi" id="1EUJGK9Tp0p" role="37wK5m">
+                    <node concept="37vLTw" id="1EUJGK9Tp0q" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1EUJGK9Tp0g" resolve="_context" />
+                    </node>
+                    <node concept="liA8E" id="1EUJGK9Tp0r" role="2OqNvi">
+                      <ref role="37wK5l" to="ze1i:~ReferenceConstraintsContext.getModel()" resolve="getModel" />
+                    </node>
+                  </node>
+                  <node concept="35c_gC" id="1EUJGK9Tp0s" role="37wK5m">
+                    <ref role="35c_gD" to="tpck:gw2VY9q" resolve="BaseConcept" />
+                    <node concept="1ZhdrF" id="1EUJGK9Tp0t" role="lGtFl">
+                      <property role="2qtEX8" value="conceptDeclaration" />
+                      <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/2644386474300074836/2644386474300074837" />
+                      <node concept="3$xsQk" id="1EUJGK9Tp0u" role="3$ytzL">
+                        <node concept="3clFbS" id="1EUJGK9Tp0v" role="2VODD2">
+                          <node concept="3clFbF" id="1EUJGK9Tp0w" role="3cqZAp">
+                            <node concept="2OqwBi" id="1EUJGK9Tp0x" role="3clFbG">
+                              <node concept="30H73N" id="1EUJGK9Tp0y" role="2Oq$k0" />
+                              <node concept="3TrEf2" id="1EUJGK9Tppa" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tp1t:1EUJGK9Tmvu" resolve="kind" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="raruj" id="1EUJGK9Tp0$" role="lGtFl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3uibUv" id="1EUJGK9Tp0_" role="3clF45">
+            <ref role="3uigEE" to="35tq:~Scope" resolve="Scope" />
+          </node>
+          <node concept="3Tm1VV" id="1EUJGK9Tp0A" role="1B3o_S" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="13MO4I" id="hshgjlV">
     <property role="TrG5h" value="reduce_ConstraintsFunctionParameter_propertyValue" />

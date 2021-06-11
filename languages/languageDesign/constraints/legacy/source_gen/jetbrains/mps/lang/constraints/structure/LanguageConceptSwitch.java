@@ -49,12 +49,16 @@ public final class LanguageConceptSwitch {
   public static final int ConstraintsFunctionParameter_propertyValue = 37;
   public static final int ConstraintsMigration = 38;
   public static final int InheritedNodeScopeFactory = 39;
-  public static final int NodeDefaultSearchScope = 40;
-  public static final int NodePropertyConstraint = 41;
-  public static final int NodeReferentConstraint = 42;
-  public static final int NodeScopeFactory = 43;
-  public static final int RefPresentationMigrated = 44;
-  public static final int RefPresentationMigratedProblem = 45;
+  public static final int ModelScopeEval = 40;
+  public static final int NodeDefaultSearchScope = 41;
+  public static final int NodePropertyConstraint = 42;
+  public static final int NodeReferentConstraint = 43;
+  public static final int NodeScopeEval = 44;
+  public static final int NodeScopeFactory = 45;
+  public static final int RefPresentationMigrated = 46;
+  public static final int RefPresentationMigratedProblem = 47;
+  public static final int RefScopeType = 48;
+  public static final int RootScopeEval = 49;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L);
@@ -98,12 +102,16 @@ public final class LanguageConceptSwitch {
     builder.put(0x10c7c69f5aeL, ConstraintsFunctionParameter_propertyValue);
     builder.put(0x1b2ace141eb6c35bL, ConstraintsMigration);
     builder.put(0x74999a95393c73b2L, InheritedNodeScopeFactory);
+    builder.put(0x1ababecc09e1780bL, ModelScopeEval);
     builder.put(0x10dead47852L, NodeDefaultSearchScope);
     builder.put(0x10b2a5eaa48L, NodePropertyConstraint);
     builder.put(0x10b731752daL, NodeReferentConstraint);
+    builder.put(0x1ababecc09e567ddL, NodeScopeEval);
     builder.put(0x74999a95393c73aaL, NodeScopeFactory);
     builder.put(0x583cd121d513aabeL, RefPresentationMigrated);
     builder.put(0x583cd121d513aac3L, RefPresentationMigratedProblem);
+    builder.put(0x1ababecc09e17aa3L, RefScopeType);
+    builder.put(0x1ababecc09e567daL, RootScopeEval);
     myIndex = builder.seal();
   }
 
