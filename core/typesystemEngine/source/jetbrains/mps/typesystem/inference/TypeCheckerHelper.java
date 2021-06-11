@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.typesystem.inference;
 
+import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
 import jetbrains.mps.lang.typesystem.runtime.performance.RuntimeSupport_Tracer;
 import jetbrains.mps.lang.typesystem.runtime.performance.SubtypingManager_Tracer;
@@ -13,6 +14,7 @@ import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.performance.IPerformanceTracer;
+import org.jetbrains.mps.openapi.model.SNode;
 
 /**
  * @author Fedor Isakov
@@ -28,13 +30,13 @@ public class TypeCheckerHelper {
   private RulesManager myRulesManager;
 
   private ThreadLocal<SubtypingCache> mySubtypingCache = new ThreadLocal<>();
-
+  
   private IPerformanceTracer myPerformanceTracer = null;
 
-  public TypeCheckerHelper() {
+  public TypeCheckerHelper(RulesManager rulesManager) {
     myRuntimeSupport = new RuntimeSupportNew(this);
     mySubtypingManager = new SubTypingManagerNew(this);
-    myRulesManager = new RulesManager(this);
+    myRulesManager = rulesManager;
     myRuntimeSupportTracer = new RuntimeSupport_Tracer(this);
     mySubtypingManagerTracer = new SubtypingManager_Tracer(this);
   }
@@ -60,6 +62,10 @@ public class TypeCheckerHelper {
     return newSubtypingCache;
   }
 
+  public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
+    return myRulesManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, this);
+  }
+
   public <T> T computeWithTrace(Computable<T> c, String taskName) {
     if (myPerformanceTracer != null) {
       try {
@@ -73,11 +79,4 @@ public class TypeCheckerHelper {
     }
   }
 
-  /*package*/ void refreshRules(Iterable<LanguageRuntime> languageRuntimes, boolean loaded) {
-    if (loaded) {
-      myRulesManager.loadLanguages(languageRuntimes);
-    } else {
-      myRulesManager.unloadLanguages(languageRuntimes);
-    }
-  }
 }

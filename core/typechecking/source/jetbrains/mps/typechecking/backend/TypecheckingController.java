@@ -43,7 +43,6 @@ public abstract class TypecheckingController implements TypecheckingQueries {
 
   private final TypecheckingBackend myTypecheckingBackend;
 
-  private Map<TypecheckingProvider, AuxDataContainer> myData = new HashMap<>();
 
   public TypecheckingController(TypecheckingBackend typecheckingBackend) {
     myTypecheckingBackend = typecheckingBackend;
@@ -139,11 +138,13 @@ public abstract class TypecheckingController implements TypecheckingQueries {
   protected <C> C getData(Class<? extends C> dataClass) {
     TypecheckingProvider<?> provider = myTypecheckingBackend.lookupAuxDataProvider(dataClass);
     if (provider != null) {
-      AuxDataContainer dataContainer = myData.computeIfAbsent(provider, (key) -> provider.createDataContainer());
+      AuxDataContainer dataContainer = getDataContainer(provider);
       return dataContainer.getInstance(dataClass);
     }
     else return null;
   }
+
+  protected abstract AuxDataContainer getDataContainer(TypecheckingProvider<?> provider);
 
   @NotNull
   protected  <Q extends TypecheckingQueries> TypecheckingProvider<Q> selectProvider(@NotNull Class<? extends Q> providerClass) {

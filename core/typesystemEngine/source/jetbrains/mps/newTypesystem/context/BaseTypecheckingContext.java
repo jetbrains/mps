@@ -140,7 +140,7 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
       IRuleConflictWarningProducer warningProducer) {
     SNode left = getState().expand(leftOperandType);
     SNode right = getState().expand(rightOperandType);
-    return myTypeCheckerHelper.getRulesManager().getOperationType(operation, left, right, warningProducer);
+    return myTypeCheckerHelper.getOperationType(operation, left, right, warningProducer);
   }
 
   @Override

@@ -63,8 +63,8 @@ public class RulesManager {
   private Set<LanguageRuntime> myLoadedLanguages = new HashSet<>();
   private Set<LanguageRuntime> myLanguagesToLoad = new HashSet<>();
 
-  public RulesManager(TypeCheckerHelper typeCheckerHelper) {
-    myOverloadedOperationsManager = new OverloadedOperationsManager(typeCheckerHelper);
+  public RulesManager() {
+    myOverloadedOperationsManager = new OverloadedOperationsManager();
   }
 
   public void loadLanguages(Iterable<LanguageRuntime> languages) {
@@ -251,13 +251,21 @@ public class RulesManager {
     return result;
   }
 
+  @Deprecated(forRemoval = true)
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
     return getOperationType(operation, leftOperandType, rightOperandType, IRuleConflictWarningProducer.NULL);
   }
 
+  @Deprecated(forRemoval = true)
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
     ensureAllRulesLoaded();
-    return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer);
+    return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, TypeChecker.getInstance()
+                                                                                                                                    .getTypeCheckerHelper());
+  }
+
+  public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer, TypeCheckerHelper typeCheckerHelper) {
+    ensureAllRulesLoaded();
+    return myOverloadedOperationsManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, typeCheckerHelper);
   }
 }
 

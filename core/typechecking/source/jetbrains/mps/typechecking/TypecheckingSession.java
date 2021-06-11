@@ -34,10 +34,12 @@ public interface TypecheckingSession {
 
   TypecheckingQueries getQueries(@NotNull SNode node);
 
-  /**
-   * Instances of this class must never be shared with other clients.
-   * Provides possibility to invalidate and release session.
-   */
+  <C> C getData(Class<? extends C> dataClass);
+
+    /**
+     * Instances of this class must never be shared with other clients.
+     * Provides possibility to invalidate and release session.
+     */
   interface Handle {
 
     /**

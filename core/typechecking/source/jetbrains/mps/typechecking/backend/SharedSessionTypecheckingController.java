@@ -19,7 +19,9 @@ import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -75,5 +77,15 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
     }
   }
 
+  @Nullable
+  @Override
+  protected <C> C getData(Class<? extends C> dataClass) {
+    return mySharedSession.getData(dataClass);
+  }
+
+  @Override
+  protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
+    throw new UnsupportedOperationException(); // must never be called
+  }
 }
 

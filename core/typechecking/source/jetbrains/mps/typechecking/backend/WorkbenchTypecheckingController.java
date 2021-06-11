@@ -19,6 +19,7 @@ import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.Handle;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,16 +41,15 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
 
   private final Map<SNodeHandle, TypecheckingSessionImpl> myRootSessions = new HashMap<>();
 
+  private Map<TypecheckingProvider, AuxDataContainer> mySharedData = new HashMap<>();
+
   public WorkbenchTypecheckingController(TypecheckingBackend typecheckingBackend) {
     super(typecheckingBackend, TypecheckingSession.Flags.basic());
   }
 
   @Override
   public void dispose() {
-    for (TypecheckingSessionImpl session : myRootSessions.values()) {
-      session.dispose();
-    }
-    myRootSessions.clear();
+    disposeAllSessions();
   }
 
   @NotNull
@@ -81,9 +81,34 @@ public class WorkbenchTypecheckingController extends DefaultTypecheckingControll
     }
   }
 
+  @Override
+  protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
+    AuxDataContainer defaultContainer = super.getDataContainer(provider);
+    if (defaultContainer != null) {
+      return defaultContainer;
+    }
+    return mySharedData.computeIfAbsent(provider, (key) -> provider.createDataContainer(Flags.basic()));
+  }
+
+  private void disposeAllSessions() {
+    for (TypecheckingSessionImpl session : myRootSessions.values()) {
+      session.dispose();
+    }
+    myRootSessions.clear();
+    for(AuxDataContainer dc: mySharedData.values()) {
+      dc.dispose();
+    }
+    mySharedData.clear();
+  }
+
   private synchronized TypecheckingSessionImpl getOrCreateSession(Flags flags) {
     return myRootSessions.computeIfAbsent(new SNodeHandle(flags.getRoot()),
-                                          (key) -> new TypecheckingSessionImpl(this, flags));
+                                          (key) -> new TypecheckingSessionImpl(this, flags) {
+                                            @Override
+                                            public <C> C getData(Class<? extends C> dataClass) {
+                                              return WorkbenchTypecheckingController.this.getData(dataClass);
+                                            }
+                                          });
   }
 
   private synchronized void releaseSession(@NotNull TypecheckingSessionImpl session, boolean forceRemoval) {

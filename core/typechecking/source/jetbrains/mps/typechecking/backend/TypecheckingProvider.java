@@ -16,6 +16,7 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -34,6 +35,8 @@ public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
 
   }
 
+  default void dispose() {}
+
   /**
    * This methods are responsible for selecting the appropriate typechecking provided given the specified query parameters:
    * <li> the single {@link SNode} parameter {@code src} corresponds to a query accepting a single source node, never a null value;
@@ -45,7 +48,16 @@ public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
   boolean isRelevant(@NotNull SNode src, SNode trg, SConcept trgConcept);
   
   @NotNull
-  Queries createQueries(@NotNull Flags flags);
+  @Deprecated(forRemoval = true)
+  default Queries createQueries(@NotNull Flags flags) {
+    throw new UnsupportedOperationException();
+  }
+
+  @NotNull
+  default Queries createQueries(@NotNull TypecheckingSession session) {
+    // FIXME only for backward compatibility
+    return createQueries(session.flags());
+  }
 
   Class<Queries> getQueriesClass();
 
@@ -55,7 +67,7 @@ public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
     return false;
   }
 
-  default AuxDataContainer createDataContainer() {
+  default AuxDataContainer createDataContainer(Flags flags) {
     return null;
   }
 

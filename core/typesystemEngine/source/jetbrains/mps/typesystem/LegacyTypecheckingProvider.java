@@ -25,12 +25,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.TargetTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.language.LanguageRegistryListener;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.typechecking.TypeAccessListener;
 import jetbrains.mps.typechecking.TypeInvalidationListener;
 import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typechecking.TypecheckingQueries;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.backend.TypecheckingProvider;
+import jetbrains.mps.typesystem.inference.RulesManager;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -43,6 +48,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -51,15 +57,38 @@ import java.util.function.Function;
  * Implementation of typechecking queries on top of the legacy (default) typechecking provider.
  * @author Fedor Isakov
  */
-public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTypecheckingQueries> {
+public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTypecheckingQueries>, LanguageRegistryListener {
 
+  // dependencies
   private final ClassLoaderManager myClassLoaderManager;
+  private final LanguageRegistry myLanguageRegistry;
 
-  private TypeCheckerHelper myTypeCheckerHelper;
+  // managed stuff
+  private RulesManager myRulesManager;
 
-  public LegacyTypecheckingProvider(ClassLoaderManager classLoaderManager) {
+  private Set<DataContainer> myDataContainers = new HashSet<>();
+
+  public LegacyTypecheckingProvider(ClassLoaderManager classLoaderManager, LanguageRegistry languageRegistry) {
     myClassLoaderManager = classLoaderManager;
-    myTypeCheckerHelper = new TypeCheckerHelper();
+    myLanguageRegistry = languageRegistry;
+    myLanguageRegistry.addRegistryListener(this);
+    myRulesManager = new RulesManager();
+  }
+
+  @Override
+  public void afterLanguagesLoaded(Iterable<LanguageRuntime> languageRuntimes) {
+    myRulesManager.loadLanguages(languageRuntimes);
+  }
+
+  @Override
+  public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languageRuntimes) {
+    myRulesManager.unloadLanguages(languageRuntimes);
+  }
+
+  @Override
+  public void dispose() {
+    myDataContainers.clear();
+    myLanguageRegistry.removeRegistryListener(this);
   }
 
   @Override
@@ -69,18 +98,20 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   @NotNull
   @Override
-  public LegacyTypecheckingQueries createQueries(@NotNull Flags flags) {
+  public LegacyTypecheckingQueries createQueries(@NotNull TypecheckingSession session) {
+    Flags flags = session.flags();
+    TypeCheckerHelper typeCheckerHelper = session.getData(TypeCheckerHelper.class);
     if (flags.getRoot() != null && flags.isIncremental()) {
-      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), myTypeCheckerHelper, myClassLoaderManager);
+      IncrementalTypecheckingContext typecheckingContext = new IncrementalTypecheckingContext(flags.getRoot(), typeCheckerHelper, myClassLoaderManager);
       IncrementalLegacyTypecheckingQueries queries = new IncrementalLegacyTypecheckingQueries(flags, typecheckingContext);
       typecheckingContext.setTypeInvalidateNotifier((node) -> queries.myObservable.dispatchTypeInvalidated(node));
       return queries;
 
     } else if (flags.isGenerator()) {
-      return new GeneratorLegacyTypecheckingQueries(flags);
+      return new GeneratorLegacyTypecheckingQueries(flags, typeCheckerHelper);
 
     } else {
-      return new TargetLegacyTypecheckingQueries(flags);
+      return new TargetLegacyTypecheckingQueries(flags, typeCheckerHelper);
     }
   }
 
@@ -95,7 +126,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   }
 
   @Override
-  public AuxDataContainer createDataContainer() {
+  public AuxDataContainer createDataContainer(Flags flags) {
     return new DataContainer();
   }
 
@@ -315,8 +346,11 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   private class TargetLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
-    public TargetLegacyTypecheckingQueries(Flags flags) {
+    private final TypeCheckerHelper myTypeCheckerHelper;
+
+    public TargetLegacyTypecheckingQueries(Flags flags, TypeCheckerHelper typeCheckerHelper) {
       super(flags);
+      myTypeCheckerHelper = typeCheckerHelper;
     }
 
     @Override
@@ -357,8 +391,8 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   private class GeneratorLegacyTypecheckingQueries extends TargetLegacyTypecheckingQueries {
 
-    public GeneratorLegacyTypecheckingQueries(Flags flags) {
-      super(flags);
+    public GeneratorLegacyTypecheckingQueries(Flags flags, TypeCheckerHelper typeCheckerHelper) {
+      super(flags, typeCheckerHelper);
     }
 
     @Nullable
@@ -379,6 +413,8 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
   private class DataContainer implements AuxDataContainer {
 
+    private TypeCheckerHelper myTypeCheckerHelper = new TypeCheckerHelper(myRulesManager);
+    
     @Override
     public <C> C getInstance(Class<? extends C> dataClass) {
       if (dataClass == TypeCheckerHelper.class) {
@@ -389,7 +425,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
 
     @Override
     public void dispose() {
-
+      myDataContainers.remove(this);
     }
   }
 

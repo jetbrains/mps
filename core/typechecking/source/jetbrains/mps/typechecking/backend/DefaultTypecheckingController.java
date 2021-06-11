@@ -18,9 +18,13 @@ package jetbrains.mps.typechecking.backend;
 import jetbrains.mps.typechecking.TypecheckingQueries;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Handles a single default (basic) session.
@@ -30,7 +34,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class DefaultTypecheckingController extends TypecheckingController {
 
   private final Flags myDefaultFlags;
+
   private TypecheckingSessionImpl myDefaultSession;
+
+  private Map<TypecheckingProvider, AuxDataContainer> myDefaultData = new HashMap<>();
 
   public DefaultTypecheckingController(TypecheckingBackend typecheckingBackend, Flags defaultFlags) {
     super(typecheckingBackend);
@@ -46,7 +53,7 @@ public class DefaultTypecheckingController extends TypecheckingController {
   @Override
   protected Handle requestSession(@NotNull Flags flags) {
     if (myDefaultSession == null) {
-      this.myDefaultSession = new TypecheckingSessionImpl(this, flags);
+      this.myDefaultSession = createSession();
       return new SessionHandle();
 
     } else {
@@ -59,9 +66,27 @@ public class DefaultTypecheckingController extends TypecheckingController {
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
     // request new session on demand
     if (myDefaultSession == null) {
-      this.myDefaultSession = new TypecheckingSessionImpl(this, myDefaultFlags);
+      this.myDefaultSession = createSession();
     }
     return myDefaultSession.getQueries(src, trg, trgConcept);
+  }
+
+  @Override
+  protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
+    if (myDefaultSession != null) {
+      return myDefaultData.computeIfAbsent(provider, (key) -> provider.createDataContainer(myDefaultSession.flags()));
+    }
+    else return null;
+  }
+
+  @NotNull
+  private TypecheckingSessionImpl createSession() {
+    return new TypecheckingSessionImpl(this, myDefaultFlags) {
+      @Override
+      public <C> C getData(Class<? extends C> dataClass) {
+        return DefaultTypecheckingController.this.getData(dataClass);
+      }
+    };
   }
 
   private void disposeSession() {
@@ -69,6 +94,10 @@ public class DefaultTypecheckingController extends TypecheckingController {
       myDefaultSession.dispose();
       myDefaultSession = null;
     }
+    for(AuxDataContainer dc: myDefaultData.values()) {
+      dc.dispose();
+    }
+    myDefaultData.clear();
   }
 
   private class SessionHandle implements Handle {

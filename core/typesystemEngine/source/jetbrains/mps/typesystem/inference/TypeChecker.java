@@ -37,11 +37,8 @@ import org.jetbrains.mps.openapi.model.SNode;
  * The idea is to move out all non-static, managed stuff to an helper class
  * and access and control the lifecycle of that helper through TypecheckingFacade. 
  */
-public class TypeChecker implements CoreComponent, LanguageRegistryListener {
+public class TypeChecker implements CoreComponent {
   private static TypeChecker INSTANCE;
-
-  // dependency
-  private final LanguageRegistry myLanguageRegistry;
 
   private SubtypingCache myGenerationSubTypingCache = null;
 
@@ -53,8 +50,7 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   };
   private Thread myMainGenerationThread;
 
-  public TypeChecker(LanguageRegistry languageRegistry) {
-    myLanguageRegistry = languageRegistry;
+  public TypeChecker() {
   }
 
   @Override
@@ -64,23 +60,11 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
     }
 
     INSTANCE = this;
-    myLanguageRegistry.addRegistryListener(this);
   }
 
   @Override
   public void dispose() {
-    myLanguageRegistry.removeRegistryListener(this);
     INSTANCE = null;
-  }
-
-  @Override
-  public void afterLanguagesLoaded(Iterable<LanguageRuntime> languages) {
-    getTypeCheckerHelper().refreshRules(languages, true);
-  }
-
-  @Override
-  public void beforeLanguagesUnloaded(Iterable<LanguageRuntime> languages) {
-    getTypeCheckerHelper().refreshRules(languages, false);
   }
 
   public static TypeChecker getInstance() {
@@ -92,6 +76,7 @@ public class TypeChecker implements CoreComponent, LanguageRegistryListener {
   }
 
   // FIXME this is only a temporary solution, the helper is to be selected dynamically
+  // FIXME usages of this method must be replaced with direct reference to TypeCheckerHelper
   public TypeCheckerHelper getTypeCheckerHelper() {
     return TypecheckingFacade.getFromContext().getData(TypeCheckerHelper.class);
   }

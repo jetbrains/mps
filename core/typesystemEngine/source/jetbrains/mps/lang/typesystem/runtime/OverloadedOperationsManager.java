@@ -32,10 +32,7 @@ public class OverloadedOperationsManager {
   private RuleSet<IOverloadedOpsTypesProvider> myOperationsToTypeProviders =
       new RuleSet<>();
 
-  private TypeCheckerHelper myTypeCheckerHelper;
-
-  public OverloadedOperationsManager(TypeCheckerHelper typeCheckerHelper) {
-    myTypeCheckerHelper = typeCheckerHelper;
+  public OverloadedOperationsManager() {
   }
 
   public void addOverloadedOperationsTypeProvider(IOverloadedOpsTypesProvider provider) {
@@ -47,16 +44,17 @@ public class OverloadedOperationsManager {
     myOperationsToTypeProviders.addRuleSetItem(providers);
   }
 
+  @Deprecated(forRemoval = true)
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType) {
-    return getOperationType(operation, leftOperandType, rightOperandType, IRuleConflictWarningProducer.NULL);
+    return getOperationType(operation, leftOperandType, rightOperandType, IRuleConflictWarningProducer.NULL, TypeChecker.getInstance().getTypeCheckerHelper());
   }
 
-  public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
+  public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer, TypeCheckerHelper typeCheckerHelper) {
     Set<IOverloadedOpsTypesProvider> operationsTypesProviderSet = myOperationsToTypeProviders.getRules(operation);
     if (operationsTypesProviderSet.isEmpty()) {
       return null;
     }
-    SubtypingManager subtypingManager = myTypeCheckerHelper.getSubtypingManager();
+    SubtypingManager subtypingManager = typeCheckerHelper.getSubtypingManager();
     List<IOverloadedOpsTypesProvider> filteredProviders = new ArrayList<>();
     for (IOverloadedOpsTypesProvider provider : operationsTypesProviderSet) {
       //first applicable method is from base class, second is custom

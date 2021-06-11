@@ -31,7 +31,7 @@ import java.util.Map.Entry;
  * This object corresponds to a session, which may contain several instances of {@link TypecheckingQueries}
  * coming from different providers.
  */
-public class TypecheckingSessionImpl implements TypecheckingSession {
+public abstract class TypecheckingSessionImpl implements TypecheckingSession {
 
   private boolean myDisposed = false;
   
@@ -75,6 +75,9 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
     return getQueries(myController.selectProvider(node, null, null));
   }
 
+  @Override
+  public abstract <C> C getData(Class<? extends C> dataClass);
+
   protected void disown() {
     this.myOrphaned = true;
   }
@@ -104,7 +107,7 @@ public class TypecheckingSessionImpl implements TypecheckingSession {
   @NotNull
   @SuppressWarnings("unchecked")
   protected <Q extends TypecheckingQueries> Q getQueries(TypecheckingProvider<Q> provider) {
-    myQueries.computeIfAbsent(provider, (key) -> provider.createQueries(flags()));
+    myQueries.computeIfAbsent(provider, (key) -> provider.createQueries(this));
     return (Q) myQueries.get(provider);
   }
 
