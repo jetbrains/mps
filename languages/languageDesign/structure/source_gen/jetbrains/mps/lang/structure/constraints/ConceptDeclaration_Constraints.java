@@ -17,13 +17,14 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import java.util.function.Function;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import java.util.HashMap;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,7 +51,11 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.ConceptDeclaration$gH);
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.CD", new Function<SModel, Scope>() {
+              public Scope apply(SModel m) {
+                return (Scope) Scopes.forConcepts(m, CONCEPTS.ConceptDeclaration$gH);
+              }
+            });
           }
         };
       }

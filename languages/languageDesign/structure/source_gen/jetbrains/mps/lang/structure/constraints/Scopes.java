@@ -10,6 +10,8 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.scope.ModelsScope;
@@ -31,6 +33,17 @@ public class Scopes {
   }
   public static Scope forConcepts(SNode contextNode, SAbstractConcept metaConcept) {
     return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableConcepts(contextNode, metaConcept));
+  }
+  public static Scope forConcepts(SModel contextModel, SAbstractConcept metaConcept) {
+    SModule contextModule = contextModel.getModule();
+    if (contextModule == null) {
+      return new EmptyScope();
+    }
+    Iterable<SModule> visibleModules = new VisibleDepsSearchScope(contextModule.getRepository(), contextModule).getModules();
+
+    Scope slc = structureRootsScope(Sequence.fromIterable(visibleModules).ofType(Language.class), metaConcept);
+
+    return new FullyQualifiedNamedElementsScope(SNodeOperations.ofConcept(slc.getAvailableElements(null), CONCEPTS.INamedStructureElement$gD));
   }
   public static Scope forLanguageConcepts(SNode contextNode, SAbstractConcept metaConcept) {
     return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableLanguageConcepts(contextNode, metaConcept));
