@@ -40,16 +40,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 public class TypeChecker implements CoreComponent {
   private static TypeChecker INSTANCE;
 
-  private SubtypingCache myGenerationSubTypingCache = null;
-
-  private ThreadLocal<Boolean> myIsGenerationThread = new ThreadLocal<Boolean>() {
-    @Override
-    protected Boolean initialValue() {
-      return Boolean.FALSE;
-    }
-  };
-  private Thread myMainGenerationThread;
-
   public TypeChecker() {
   }
 
@@ -71,10 +61,6 @@ public class TypeChecker implements CoreComponent {
     return INSTANCE;
   }
 
-  private boolean isMainGenerationThread() {
-    return Thread.currentThread() == myMainGenerationThread;
-  }
-
   // FIXME this is only a temporary solution, the helper is to be selected dynamically
   // FIXME usages of this method must be replaced with direct reference to TypeCheckerHelper
   public TypeCheckerHelper getTypeCheckerHelper() {
@@ -82,27 +68,14 @@ public class TypeChecker implements CoreComponent {
   }
 
   public SubtypingManager getSubtypingManager() {
-//    if (isMainGenerationThread()) {
-//      return mySubtypingManagerTracer;
-//    }
-//    return mySubtypingManager;
     return getTypeCheckerHelper().getSubtypingManager();
   }
 
   public RuntimeSupport getRuntimeSupport() {
-//    if (isMainGenerationThread()) {
-//      return myRuntimeSupportTracer;
-//    }
     return getTypeCheckerHelper().getRuntimeSupport();
   }
 
   public SubtypingCache getSubtypingCache() {
-//    if (isGenerationMode()) {
-//      SubtypingCache generationSubTypingCache = myGenerationSubTypingCache;
-//      if (generationSubTypingCache != null) {
-//        return generationSubTypingCache;
-//      }
-//    }
     return getTypeCheckerHelper().getSubtypingCache();
   }
 
@@ -110,60 +83,13 @@ public class TypeChecker implements CoreComponent {
     return getTypeCheckerHelper().getRulesManager();
   }
 
-  @Deprecated(forRemoval = true)
-  public void generationStarted(IPerformanceTracer performanceTracer) {
-    myGenerationSubTypingCache = new ConcurrentSubtypingCache();
-    initTracing(performanceTracer);
-    myIsGenerationThread.set(Boolean.TRUE);
-    myMainGenerationThread = Thread.currentThread();
-  }
-
-  @Deprecated(forRemoval = true)
-  public void generationFinished() {
-    myGenerationSubTypingCache = null;
-    disposeTracing();
-    myIsGenerationThread.set(Boolean.FALSE);
-    myMainGenerationThread = null;
-  }
-
-  @Deprecated(forRemoval = false)
-  public void generationWorkerStarted() {
-    myIsGenerationThread.set(Boolean.TRUE);
-  }
-
-  @Deprecated(forRemoval = true)
-  public void generationWorkerFinished() {
-    myIsGenerationThread.set(Boolean.FALSE);
-  }
-
-  @Deprecated(forRemoval = true)
-  public boolean isGenerationMode() {
-    return myIsGenerationThread.get();
-  }
-
-  private void initTracing(IPerformanceTracer performanceTracer) {
-//    if (performanceTracer != null) {
-//      myPerformanceTracer = performanceTracer;
-//      TypeSystemReporter.getInstance().reset();
-//    }
-  }
-
-  private void disposeTracing() {
-//    if (myPerformanceTracer != null) {
-//      TypeSystemReporter.getInstance().printReport(10, myPerformanceTracer);
-//      myPerformanceTracer = null;
-//    }
-  }
-
   public <T> T computeWithTrace(Computable<T> c, String taskName) {
     return getTypeCheckerHelper().computeWithTrace(c, taskName);
   }
 
+  @Deprecated(forRemoval = true)
   public InequalitySystem getInequalitiesForHole(SNode hole, boolean holeIsAType) {
-    HoleTypecheckingContext typeCheckingContext = new HoleTypecheckingContext(hole, getTypeCheckerHelper());
-    InequalitySystem inequalitySystem = typeCheckingContext.getTypechecking().computeInequalitiesForHole(hole, holeIsAType);
-    typeCheckingContext.dispose();
-    return inequalitySystem;
+    return getTypeCheckerHelper().getInequalitiesForHole(hole, holeIsAType);
   }
 
   @Deprecated(forRemoval = true)

@@ -190,7 +190,7 @@ import java.util.Set;
 
   protected boolean collectNodesAndRules(SNode node, List<Pair<SNode, List<Pair<InferenceRule_Runtime, IsApplicableStatus>>>> nodesAndRules) {
     for (SNode nodeOrAttr : myTypechecking.nodesToApplyRulesTo(node)) {
-      List<Pair<InferenceRule_Runtime, IsApplicableStatus>> rules = TypeChecker.getInstance().getRulesManager().getInferenceRules(nodeOrAttr);
+      List<Pair<InferenceRule_Runtime, IsApplicableStatus>> rules = getState().getTypeCheckingContext().getTypeCheckerHelper().getRulesManager().getInferenceRules(nodeOrAttr);
       if (rules != null && !rules.isEmpty()) {
         nodesAndRules.add(new Pair<>(nodeOrAttr, rules));
 
@@ -337,7 +337,7 @@ import java.util.Set;
   }
 
   private List<Pair<SubstituteType_Runtime, IsApplicableStatus>> substituteTypeRules(SNode test) {
-    return TypeChecker.getInstance().getRulesManager().getSubstituteTypeRules(test);
+    return getState().getTypeCheckingContext().getTypeCheckerHelper().getRulesManager().getSubstituteTypeRules(test);
   }
 
 }

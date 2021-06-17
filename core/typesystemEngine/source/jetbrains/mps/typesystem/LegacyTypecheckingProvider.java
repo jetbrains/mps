@@ -163,57 +163,57 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     public SNode getInferredType(SNode expression) {
       if (expression == null) return null;
       return compute((tcc) ->
-             TypeChecker.getInstance().getInequalitiesForHole(expression, false).getExpectedType());
+             getTypeCheckerHelper().getInequalitiesForHole(expression, false).getExpectedType());
     }
 
     @Override
     public final boolean convertsTo(@NotNull SNode typeA, @NotNull SNode typeB) {
-      return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, true);
+      return getTypeCheckerHelper().getSubtypingManager().isSubtype(typeA, typeB, true);
     }
 
     @Override
     public final boolean isSubtype(SNode typeA, SNode typeB) {
       if (typeA == null || typeB == null) return false;
-      return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, true);
+      return getTypeCheckerHelper().getSubtypingManager().isSubtype(typeA, typeB, true);
     }
 
     @Override
     public final boolean isStrongSubtype(SNode typeA, SNode typeB) {
       if (typeA == null || typeB == null) return false;
-      return TypeChecker.getInstance().getSubtypingManager().isSubtype(typeA, typeB, false);
+      return getTypeCheckerHelper().getSubtypingManager().isSubtype(typeA, typeB, false);
     }
 
     @NotNull
     @Override
     public final Collection<SNode> getImmediateSupertypes(@NotNull SNode typeA) {
-      StructuralNodeSet<?> sns = TypeChecker.getInstance().getSubtypingManager().collectImmediateSupertypes(typeA); // weak is the default
+      StructuralNodeSet<?> sns = getTypeCheckerHelper().getSubtypingManager().collectImmediateSupertypes(typeA); // weak is the default
       return Collections.unmodifiableCollection(sns);
     }
 
     @Override
     public final SNode coerceType(SNode type, @NotNull SConcept typeConcept) {
       if (type == null) return null;
-      return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, new ConceptMatchingPattern(typeConcept), true);
+      return getTypeCheckerHelper().getRuntimeSupport().coerce_(type, new ConceptMatchingPattern(typeConcept), true);
     }
 
     @Nullable
     @Override
     public final SNode coerceType(SNode type, @NotNull INodeMatchingPattern targetPattern) {
       if (type == null) return null;
-      return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, targetPattern, true);
+      return getTypeCheckerHelper().getRuntimeSupport().coerce_(type, targetPattern, true);
     }
 
     @Override
     public final SNode strongCoerceType(SNode type, @NotNull SConcept typeConcept) {
       if (type == null) return null;
-      return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, new ConceptMatchingPattern(typeConcept), false);
+      return getTypeCheckerHelper().getRuntimeSupport().coerce_(type, new ConceptMatchingPattern(typeConcept), false);
     }
 
     @Nullable
     @Override
     public final SNode strongCoerceType(SNode type, @NotNull INodeMatchingPattern targetPattern) {
       if (type == null) return null;
-      return TypeChecker.getInstance().getRuntimeSupport().coerce_(type, targetPattern, false);
+      return getTypeCheckerHelper().getRuntimeSupport().coerce_(type, targetPattern, false);
     }
 
     @Override
@@ -245,6 +245,8 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     protected abstract <R> R compute(Function<? super TypeCheckingContext, R> fun);
 
     protected abstract void run(Consumer<? super TypeCheckingContext> fun);
+
+    protected abstract TypeCheckerHelper getTypeCheckerHelper();
 
   }
 
@@ -303,6 +305,11 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     @Override
     protected void run(Consumer<? super TypeCheckingContext> fun) {
       fun.accept(myTypecheckingContext);
+    }
+
+    @Override
+    protected TypeCheckerHelper getTypeCheckerHelper() {
+      return myTypecheckingContext.getTypeCheckerHelper();
     }
 
     private class Observable implements TypecheckingObservable {
@@ -390,6 +397,10 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
       return new TargetTypecheckingContext(myFlags.getRoot(), myTypeCheckerHelper);
     }
 
+    @Override
+    protected TypeCheckerHelper getTypeCheckerHelper() {
+      return myTypeCheckerHelper;
+    }
   }
 
   private class GeneratorLegacyTypecheckingQueries extends TargetLegacyTypecheckingQueries {

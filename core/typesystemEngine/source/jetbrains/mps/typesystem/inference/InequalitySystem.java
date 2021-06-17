@@ -172,7 +172,6 @@ public class InequalitySystem {
 
   public SNode getExpectedType() {
     if (isEmpty()) return null;
-    SubTypingManagerNew subtypingManager = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
     List<SNode> superTypes = new LinkedList<>();
     expandAll(myState.getEquations());
     superTypes.addAll(mySuperTypes);

@@ -7,6 +7,7 @@ import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.typesystem.runtime.RuntimeSupport;
 import jetbrains.mps.newTypesystem.RuntimeSupportNew;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
+import jetbrains.mps.newTypesystem.context.HoleTypecheckingContext;
 import jetbrains.mps.typesystem.TypeSystemReporter;
 import jetbrains.mps.typesystem.inference.util.ConcurrentSubtypingCache;
 import jetbrains.mps.typesystem.inference.util.SubtypingCache;
@@ -71,6 +72,13 @@ public class TypeCheckerHelper {
 
   public SNode getOperationType(SNode operation, SNode leftOperandType, SNode rightOperandType, IRuleConflictWarningProducer warningProducer) {
     return myRulesManager.getOperationType(operation, leftOperandType, rightOperandType, warningProducer, this);
+  }
+
+  public InequalitySystem getInequalitiesForHole(SNode hole, boolean holeIsAType) {
+    HoleTypecheckingContext typeCheckingContext = new HoleTypecheckingContext(hole, this);
+    InequalitySystem inequalitySystem = typeCheckingContext.getTypechecking().computeInequalitiesForHole(hole, holeIsAType);
+    typeCheckingContext.dispose();
+    return inequalitySystem;
   }
 
   public <T> T computeWithTrace(Computable<T> c, String taskName) {

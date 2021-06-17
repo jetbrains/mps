@@ -234,7 +234,7 @@ public class Equations {
   }
 
   private SNode convertReferentVariable(SNode sourceNode, String role, SNode variable) {
-    IVariableConverter_Runtime converter = TypeChecker.getInstance().getRulesManager().getVariableConverter(sourceNode, role, variable, false);
+    IVariableConverter_Runtime converter = myState.getTypeCheckingContext().getTypeCheckerHelper().getRulesManager().getVariableConverter(sourceNode, role, variable, false);
     if (converter == null) return variable;
     return converter.convert(sourceNode, role, variable, false);
   }

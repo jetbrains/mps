@@ -28,6 +28,7 @@ import jetbrains.mps.newTypesystem.operation.ProcessReplacementRuleOperation;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.Equations;
 import jetbrains.mps.newTypesystem.state.State;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeChecker;
@@ -82,12 +83,12 @@ public class InequalityBlock extends RelationBlock {
   }
 
   private boolean processReplacementRules(final SNode subType, final SNode superType) {
-    final TypeChecker typeChecker = TypeChecker.getInstance();
+    final TypeCheckerHelper typeCheckerHelper = getState().getTypeCheckingContext().getTypeCheckerHelper();
 
     List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> replacementRules =
       LanguageScopeExecutor.execWithMultiLanguageScope(
           SubTypingManagerNew.collectLanguagesRecursively(subType, superType),
-          () -> typeChecker.getRulesManager().getReplacementRules(subType, superType));
+          () -> typeCheckerHelper.getRulesManager().getReplacementRules(subType, superType));
 
     for (jetbrains.mps.util.Pair<InequationReplacementRule_Runtime, IsApplicable2Status> inequalityReplacementRule : replacementRules) {
       final InequationReplacementRule_Runtime rule = inequalityReplacementRule.o1;
@@ -115,7 +116,7 @@ public class InequalityBlock extends RelationBlock {
     if (processReplacementRules(subType, superType)) {
       return;
     }
-    final SubTypingManagerNew subTyping = (SubTypingManagerNew) TypeChecker.getInstance().getSubtypingManager();
+    final SubTypingManagerNew subTyping = (SubTypingManagerNew) getState().getTypeCheckingContext().getTypeCheckerHelper().getSubtypingManager();
     getState().executeOperation(new CheckSubTypeOperation(subType, superType, () -> {
       if (!calcIsSubtype(subTyping, subType, superType)) {
         getState().getNodeMaps().reportSubTypeError(subType, superType, myEquationInfo, myRelationKind.isWeak());
