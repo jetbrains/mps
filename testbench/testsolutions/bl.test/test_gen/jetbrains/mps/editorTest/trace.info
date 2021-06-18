@@ -18908,8 +18908,8 @@
       <node id="623873569574555951" at="18,42,19,25" concept="11" />
       <node id="623873569574555951" at="23,64,24,36" concept="2" />
       <node id="623873569574555951" at="29,52,30,19" concept="11" />
-      <node id="623873569574555951" at="34,51,35,70" concept="2" />
-      <node id="623873569574555969" at="35,70,36,33" concept="2" />
+      <node id="623873569574555951" at="34,51,35,71" concept="2" />
+      <node id="623873569574555969" at="35,71,36,33" concept="2" />
       <node id="623873569574555951" at="15,0,17,0" concept="9" trace="ourParamCache" />
       <node id="623873569574555951" at="18,0,21,0" concept="1" trace="ChangeMethodTypeToString_Test#()V" />
       <node id="623873569574555951" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -18960,8 +18960,8 @@
       <node id="623873569575451663" at="18,48,19,25" concept="11" />
       <node id="623873569575451663" at="23,70,24,36" concept="2" />
       <node id="623873569575451663" at="29,52,30,19" concept="11" />
-      <node id="623873569575451663" at="34,51,35,70" concept="2" />
-      <node id="623873569575451681" at="35,70,36,33" concept="2" />
+      <node id="623873569575451663" at="34,51,35,71" concept="2" />
+      <node id="623873569575451681" at="35,71,36,33" concept="2" />
       <node id="623873569575451663" at="15,0,17,0" concept="9" trace="ourParamCache" />
       <node id="623873569575451663" at="18,0,21,0" concept="1" trace="ChangeStaticMethodTypeToString_Test#()V" />
       <node id="623873569575451663" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />

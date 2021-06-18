@@ -32,7 +32,7 @@ public class ChangeStaticMethodTypeToString_Test extends BaseTransformationTest 
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("623873569575451665", "623873569575451673");
+      initEditorComponent("623873569575451665", "4377374321063113498");
       typeString("StringAction");
     }
   }
