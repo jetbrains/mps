@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import org.apache.log4j.LogManager;
@@ -40,11 +41,13 @@ import org.jetbrains.mps.openapi.repository.ReadActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt, ReferenceScopeHelper.Source {
   private static final Logger LOG = LogManager.getLogger(MPSModuleRepository.class);
@@ -339,6 +342,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
      * distinct scope instances per thread.
      */
     private ThreadLocal<Map<SReference, Scope>> myCache;
+    private ThreadLocal<EvaluateScopeContext> myContextCache;
 
 
     @Override
@@ -356,13 +360,38 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     }
 
     @Override
+    public EvaluateScopeContext getContext() {
+      if (myContextCache == null) {
+        // see getScope(), above. Unless I fix read notifications (to come at proper thread and in proper order),
+        // have to account for null case here
+        return super.getContext();
+      }
+      return myContextCache.get();
+    }
+
+    @Override
     public void readStarted() {
       myCache = ThreadLocal.withInitial(ConcurrentHashMap::new);
+      myContextCache = ThreadLocal.withInitial(RefScopeCacheContext::new);
     }
 
     @Override
     public void readFinished() {
       myCache = null;
+      myContextCache = null;
+    }
+  }
+
+  private static class RefScopeCacheContext extends EvaluateScopeContext {
+    private final HashMap<Object, Map<SModel, Scope>> myScopeCache = new HashMap<>();
+
+    /*package*/ RefScopeCacheContext() {
+    }
+
+    @Override
+    public Scope ofModel(@NotNull SModel model, @NotNull Object equalityKey, @NotNull Function<SModel, Scope> factory) {
+      final Map<SModel, Scope> modelScopeMap = myScopeCache.computeIfAbsent(equalityKey, k -> new HashMap<>());
+      return modelScopeMap.computeIfAbsent(model, factory);
     }
   }
 }

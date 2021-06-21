@@ -31,8 +31,10 @@ import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.ReferenceScopeHelper;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
+import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -76,17 +78,18 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
       return;
     }
     boolean executeImmediately = ReferenceResolverUtils.canExecuteImmediately(node.getModel(), repository);
+    final EvaluateScopeContext evaluateReferenceScopeContext = detectRefEvalContext(repository);
     for (SReference ref : node.getReferences()) {
       SNode target = ref.getTargetNode();
       if (target == null) {
         continue;
       }
-      // don't check unresolved and broken references, they should already have an error message 
+      // don't check unresolved and broken references, they should already have an error message
       // do we need all these additional dependencies? mb. it's better to use .runCheckingAction() instead?
       // The reason not to use runCheckingAction is memory consumption, see https://youtrack.jetbrains.com/issue/MPS-19776, commit 88c5a52d
       errorsCollector.addDependency(target);
       ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(ref);
-      Scope refScope = refDescriptor.getScope();
+      Scope refScope = refDescriptor.getScope(evaluateReferenceScopeContext);
       for (SNode n : refScope.getAdditionalDependencies()) {
         errorsCollector.addDependency(n);
       }
@@ -120,6 +123,13 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
       return null;
     }
     return myHost.findComponent(FeedbackAspectRegistry.class);
+  }
+
+  private EvaluateScopeContext detectRefEvalContext(SRepository repo) {
+    if (repo instanceof ReferenceScopeHelper.Source) {
+      return ((ReferenceScopeHelper.Source) repo).getReferenceScopeHelper().getContext();
+    }
+    return new EvaluateScopeContext();
   }
 
   protected EditorQuickFix createAddImportQuickfix(SReference reference) {
