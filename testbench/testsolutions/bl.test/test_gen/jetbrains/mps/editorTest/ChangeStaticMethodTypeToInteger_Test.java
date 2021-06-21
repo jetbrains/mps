@@ -11,16 +11,16 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 
 @MPSLaunch
-public class ChangeMethodTypeToString_Test extends BaseTransformationTest {
+public class ChangeStaticMethodTypeToInteger_Test extends BaseTransformationTest {
   @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(ChangeMethodTypeToString_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  public static final TestParametersCache ourParamCache = new TestParametersCache(ChangeStaticMethodTypeToInteger_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
 
-  public ChangeMethodTypeToString_Test() {
+  public ChangeStaticMethodTypeToInteger_Test() {
     super(ourParamCache);
   }
 
   @Test
-  public void test_ChangeMethodTypeToString() throws Throwable {
+  public void test_ChangeStaticMethodTypeToInteger() throws Throwable {
     new TestBody(this).testMethod();
   }
 
@@ -32,8 +32,8 @@ public class ChangeMethodTypeToString_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("623873569574555953", "4377374321063107723");
-      typeString("StringAction");
+      initEditorComponent("623873569575451665", "4377374321063113498");
+      typeString("Integer");
     }
   }
 }

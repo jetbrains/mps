@@ -18904,29 +18904,29 @@
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/623873569574555951">
-    <file name="ChangeMethodTypeToString_Test.java">
-      <node id="623873569574555951" at="18,42,19,25" concept="11" />
-      <node id="623873569574555951" at="23,64,24,36" concept="2" />
+    <file name="ChangeMethodTypeToInteger_Test.java">
+      <node id="623873569574555951" at="18,43,19,25" concept="11" />
+      <node id="623873569574555951" at="23,65,24,36" concept="2" />
       <node id="623873569574555951" at="29,52,30,19" concept="11" />
       <node id="623873569574555951" at="34,51,35,71" concept="2" />
-      <node id="623873569574555969" at="35,71,36,33" concept="2" />
+      <node id="623873569574555969" at="35,71,36,28" concept="2" />
       <node id="623873569574555951" at="15,0,17,0" concept="9" trace="ourParamCache" />
-      <node id="623873569574555951" at="18,0,21,0" concept="1" trace="ChangeMethodTypeToString_Test#()V" />
+      <node id="623873569574555951" at="18,0,21,0" concept="1" trace="ChangeMethodTypeToInteger_Test#()V" />
       <node id="623873569574555951" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="623873569574555951" at="22,0,26,0" concept="5" trace="test_ChangeMethodTypeToString#()V" />
+      <node id="623873569574555951" at="22,0,26,0" concept="5" trace="test_ChangeMethodTypeToInteger#()V" />
       <node id="623873569574555951" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="623873569574555951" at="18,42,19,25" />
-      <scope id="623873569574555951" at="23,64,24,36" />
+      <scope id="623873569574555951" at="18,43,19,25" />
+      <scope id="623873569574555951" at="23,65,24,36" />
       <scope id="623873569574555951" at="29,52,30,19" />
-      <scope id="623873569574555951" at="34,51,36,33" />
+      <scope id="623873569574555951" at="34,51,36,28" />
       <scope id="623873569574555951" at="18,0,21,0" />
       <scope id="623873569574555951" at="29,0,32,0">
         <var name="owner" id="623873569574555951" />
       </scope>
       <scope id="623873569574555951" at="22,0,26,0" />
       <scope id="623873569574555951" at="33,0,38,0" />
-      <unit id="623873569574555951" at="27,0,39,0" name="jetbrains.mps.editorTest.ChangeMethodTypeToString_Test$TestBody" />
-      <unit id="623873569574555951" at="13,0,40,0" name="jetbrains.mps.editorTest.ChangeMethodTypeToString_Test" />
+      <unit id="623873569574555951" at="27,0,39,0" name="jetbrains.mps.editorTest.ChangeMethodTypeToInteger_Test$TestBody" />
+      <unit id="623873569574555951" at="13,0,40,0" name="jetbrains.mps.editorTest.ChangeMethodTypeToInteger_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/623873569575451389">
@@ -18956,29 +18956,29 @@
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/623873569575451663">
-    <file name="ChangeStaticMethodTypeToString_Test.java">
-      <node id="623873569575451663" at="18,48,19,25" concept="11" />
-      <node id="623873569575451663" at="23,70,24,36" concept="2" />
+    <file name="ChangeStaticMethodTypeToInteger_Test.java">
+      <node id="623873569575451663" at="18,49,19,25" concept="11" />
+      <node id="623873569575451663" at="23,71,24,36" concept="2" />
       <node id="623873569575451663" at="29,52,30,19" concept="11" />
       <node id="623873569575451663" at="34,51,35,71" concept="2" />
-      <node id="623873569575451681" at="35,71,36,33" concept="2" />
+      <node id="623873569575451681" at="35,71,36,28" concept="2" />
       <node id="623873569575451663" at="15,0,17,0" concept="9" trace="ourParamCache" />
-      <node id="623873569575451663" at="18,0,21,0" concept="1" trace="ChangeStaticMethodTypeToString_Test#()V" />
+      <node id="623873569575451663" at="18,0,21,0" concept="1" trace="ChangeStaticMethodTypeToInteger_Test#()V" />
       <node id="623873569575451663" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="623873569575451663" at="22,0,26,0" concept="5" trace="test_ChangeStaticMethodTypeToString#()V" />
+      <node id="623873569575451663" at="22,0,26,0" concept="5" trace="test_ChangeStaticMethodTypeToInteger#()V" />
       <node id="623873569575451663" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="623873569575451663" at="18,48,19,25" />
-      <scope id="623873569575451663" at="23,70,24,36" />
+      <scope id="623873569575451663" at="18,49,19,25" />
+      <scope id="623873569575451663" at="23,71,24,36" />
       <scope id="623873569575451663" at="29,52,30,19" />
-      <scope id="623873569575451663" at="34,51,36,33" />
+      <scope id="623873569575451663" at="34,51,36,28" />
       <scope id="623873569575451663" at="18,0,21,0" />
       <scope id="623873569575451663" at="29,0,32,0">
         <var name="owner" id="623873569575451663" />
       </scope>
       <scope id="623873569575451663" at="22,0,26,0" />
       <scope id="623873569575451663" at="33,0,38,0" />
-      <unit id="623873569575451663" at="27,0,39,0" name="jetbrains.mps.editorTest.ChangeStaticMethodTypeToString_Test$TestBody" />
-      <unit id="623873569575451663" at="13,0,40,0" name="jetbrains.mps.editorTest.ChangeStaticMethodTypeToString_Test" />
+      <unit id="623873569575451663" at="27,0,39,0" name="jetbrains.mps.editorTest.ChangeStaticMethodTypeToInteger_Test$TestBody" />
+      <unit id="623873569575451663" at="13,0,40,0" name="jetbrains.mps.editorTest.ChangeStaticMethodTypeToInteger_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/623873569575451980">

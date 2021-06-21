@@ -55,7 +55,6 @@
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
-    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -84326,7 +84325,7 @@
   </node>
   <node concept="LiM7Y" id="yCsrj3fL4J">
     <property role="3GE5qa" value="methodModifiers" />
-    <property role="TrG5h" value="ChangeMethodTypeToString" />
+    <property role="TrG5h" value="ChangeMethodTypeToInteger" />
     <node concept="1qefOq" id="yCsrj3fL4K" role="25YQCW">
       <node concept="312cEu" id="yCsrj3fL4L" role="1qenE9">
         <property role="TrG5h" value="Foo" />
@@ -84349,7 +84348,7 @@
     </node>
     <node concept="3clFbS" id="yCsrj3fL50" role="LjaKd">
       <node concept="2TK7Tu" id="yCsrj3fL51" role="3cqZAp">
-        <property role="2TTd_B" value="StringAction" />
+        <property role="2TTd_B" value="Integer" />
       </node>
     </node>
     <node concept="1qefOq" id="3MZzG2JSxMa" role="25YQFr">
@@ -84359,13 +84358,13 @@
           <property role="TrG5h" value="foo" />
           <node concept="3clFbS" id="3MZzG2JSxMd" role="3clF47" />
           <node concept="3Tm1VV" id="3MZzG2JSxMe" role="1B3o_S" />
-          <node concept="3uibUv" id="3MZzG2JSy$2" role="3clF45">
-            <ref role="3uigEE" to="tprs:1g$rimezc$4" resolve="StringAction" />
-            <node concept="LIFWc" id="3MZzG2JSy$x" role="lGtFl">
+          <node concept="3uibUv" id="3MZzG2JZc5z" role="3clF45">
+            <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+            <node concept="LIFWc" id="3MZzG2JZc62" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
-              <property role="p6zMq" value="12" />
-              <property role="p6zMs" value="12" />
+              <property role="p6zMq" value="7" />
+              <property role="p6zMs" value="7" />
               <property role="LIFWd" value="ReferencePresentation_91bvrs_a0a0" />
             </node>
           </node>
@@ -84436,7 +84435,7 @@
   </node>
   <node concept="LiM7Y" id="yCsrj3jbKf">
     <property role="3GE5qa" value="methodModifiers" />
-    <property role="TrG5h" value="ChangeStaticMethodTypeToString" />
+    <property role="TrG5h" value="ChangeStaticMethodTypeToInteger" />
     <node concept="1qefOq" id="yCsrj3jbKg" role="25YQCW">
       <node concept="312cEu" id="yCsrj3jbKh" role="1qenE9">
         <property role="TrG5h" value="Foo" />
@@ -84459,7 +84458,7 @@
     </node>
     <node concept="3clFbS" id="yCsrj3jbKw" role="LjaKd">
       <node concept="2TK7Tu" id="yCsrj3jbKx" role="3cqZAp">
-        <property role="2TTd_B" value="StringAction" />
+        <property role="2TTd_B" value="Integer" />
       </node>
     </node>
     <node concept="1qefOq" id="3MZzG2JSzcp" role="25YQFr">
@@ -84468,17 +84467,17 @@
         <node concept="2YIFZL" id="3MZzG2JSzcr" role="jymVt">
           <property role="TrG5h" value="foo" />
           <node concept="3clFbS" id="3MZzG2JSzcs" role="3clF47" />
-          <node concept="3uibUv" id="3MZzG2JSzYe" role="3clF45">
-            <ref role="3uigEE" to="tprs:1g$rimezc$4" resolve="StringAction" />
-            <node concept="LIFWc" id="3MZzG2JSzYG" role="lGtFl">
+          <node concept="3Tm1VV" id="3MZzG2JSzcv" role="1B3o_S" />
+          <node concept="3uibUv" id="3MZzG2JZcdF" role="3clF45">
+            <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+            <node concept="LIFWc" id="3MZzG2JZce9" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
-              <property role="p6zMq" value="12" />
-              <property role="p6zMs" value="12" />
+              <property role="p6zMq" value="7" />
+              <property role="p6zMs" value="7" />
               <property role="LIFWd" value="ReferencePresentation_91bvrs_a0a0" />
             </node>
           </node>
-          <node concept="3Tm1VV" id="3MZzG2JSzcv" role="1B3o_S" />
         </node>
         <node concept="3Tm1VV" id="3MZzG2JSzcw" role="1B3o_S" />
       </node>
