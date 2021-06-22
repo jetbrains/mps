@@ -11,6 +11,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Collection;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -52,13 +54,14 @@ public abstract class ListScope extends Scope {
   public Iterable<SNode> getAvailableElements(@Nullable String prefix) {
     List<SNode> result = new ArrayList<SNode>();
     for (SNode n : elements) {
-      String name = getName(n);
-      if (name == null) {
-        continue;
+      if (prefix != null) {
+        String name = getName(n);
+        if (name == null || !(name.startsWith(prefix))) {
+          continue;
+        }
+        // fall-through
       }
-      if (prefix == null || name.startsWith(prefix)) {
-        ListSequence.fromList(result).addElement(n);
-      }
+      ListSequence.fromList(result).addElement(n);
     }
     return result;
   }
@@ -81,6 +84,21 @@ public abstract class ListScope extends Scope {
       }
     }
     return result;
+  }
+
+
+  @Override
+  public boolean contains(SNode node) {
+    // XXX I wonder if LRU cache with capacity say ~5-10% of elements won't help in case of huge lists?
+    if (elements instanceof Collection) {
+      return ((Collection<?>) elements).contains(node);
+    }
+    for (SNode n : elements) {
+      if (n == node || Objects.equals(n, node)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public abstract String getName(SNode child);

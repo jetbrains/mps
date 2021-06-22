@@ -18,10 +18,12 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.build.util.DescendantsScope;
-import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
-import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.scope.ListScope;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
@@ -57,11 +59,14 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, SAbstractConcept kind) {
+  /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$po)) {
-      return DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind);
+      return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
+        public Iterable<SNode> translate(SNode it) {
+          return SNodeOperations.getNodeDescendants(it, SNodeOperations.asSConcept(kind), true, new SAbstractConcept[]{});
+        }
+      }));
     }
-
     return null;
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
@@ -114,13 +119,21 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Scope getProjectStructureScope_id3fifI_xCJOQ(@NotNull SNode __thisNode__, final SAbstractConcept kind) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_IdeaPlugin$po) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc)) {
-      Iterable<DescendantsScope> forAllVisible = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), ((boolean) false))).select(new ISelector<SNode, DescendantsScope>() {
-        public DescendantsScope select(SNode it) {
-          return DescendantsScope.forNamedElements(it, LINKS.parts$mGDj, kind);
+
+      SNode bp = BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__);
+      Iterable<SNode> projects = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(bp, ((boolean) false))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(bp)));
+      // Here I intentionally don't initialize scope with .toList value (unlike BuildMps_ModuleDependencyOnModule) as this scope is unlikely to be re-used
+      // - there's no mechanism to cache 'inherited/hierarchical' scope.
+      Iterable<Scope> perProject = Sequence.fromIterable(projects).select(new ISelector<SNode, ListScope>() {
+        public ListScope select(SNode p) {
+          return ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
+            public Iterable<SNode> translate(SNode it) {
+              return SNodeOperations.getNodeDescendants(it, SNodeOperations.asSConcept(kind), true, new SAbstractConcept[]{});
+            }
+          }));
         }
       });
-      Iterable<DescendantsScope> forThis = Sequence.<DescendantsScope>singleton(DescendantsScope.forNamedElements(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), LINKS.parts$mGDj, kind));
-      return new CompositeScope(Sequence.fromIterable(forAllVisible).concat(Sequence.fromIterable(forThis)).toGenericArray(DescendantsScope.class));
+      return new CompositeScope(Sequence.fromIterable(perProject).toGenericArray(Scope.class));
     }
     return null;
   }

@@ -9,10 +9,28 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
+import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.function.Function;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
+import jetbrains.mps.scope.ListScope;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildMps_ModuleDependencyOnModule_Constraints extends BaseConstraintsDescriptor {
   public BuildMps_ModuleDependencyOnModule_Constraints() {
@@ -25,7 +43,38 @@ public class BuildMps_ModuleDependencyOnModule_Constraints extends BaseConstrain
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
-        return ReferenceScopeProvider.fromHierarchy(CONCEPTS.BuildMps_Module$JW, new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "1224588814561902813"));
+        return new BaseScopeProvider() {
+          @Override
+          public SNodeReference getSearchScopeValidatorNode() {
+            return new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "6005499924254580335");
+          }
+          @Override
+          public Scope createScope(final ReferenceConstraintsContext _context) {
+            // XXX here we used to delegate to inherited/hierarchy scope for BuildMps_Module,
+            //     provided by BuildMPSPlugin.getProjectStructureScope() through BuildProject.getScope
+            // However, that approach turned out to be ineffective from performance perspective
+            // (for each reference we build set of visible projects and their modules), so I re-wrote
+            // logic of aforementioned method right here, using scope evaluation mechanism capable of caching.
+            final SNode bp = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BuildProject$ae, false, false);
+            final String key = SPropertyOperations.getString(bp, PROPS.name$MnvL) + bp.getNodeId();
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), key, new Function<SModel, Scope>() {
+              public Scope apply(SModel m) {
+                Iterable<SNode> projects = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(bp, ((boolean) false))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(bp)));
+                Scope s = ListScope.forNamedElements(Sequence.fromIterable(projects).translate(new ITranslator2<SNode, SNode>() {
+                  public Iterable<SNode> translate(SNode p) {
+                    return ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
+                      public Iterable<SNode> translate(SNode it) {
+                        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_Module$JW, true, new SAbstractConcept[]{});
+                      }
+                    });
+                  }
+                }).toListSequence());
+                // FIXME need to get type equivalency (RefScopeType==ClassifierType<Scope>) fixed.
+                return ((Scope) s);
+              }
+            });
+          }
+        };
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
@@ -35,10 +84,16 @@ public class BuildMps_ModuleDependencyOnModule_Constraints extends BaseConstrain
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnModule$1C = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
     /*package*/ static final SConcept BuildMps_Module$JW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink module$kGi0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }
