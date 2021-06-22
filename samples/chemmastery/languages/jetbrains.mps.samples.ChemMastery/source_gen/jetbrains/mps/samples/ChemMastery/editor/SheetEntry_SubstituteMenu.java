@@ -24,10 +24,9 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -118,7 +117,7 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode doc = SNodeOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.DocumentationEntry$cW);
+        SNode doc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry"));
         SLinkOperations.setTarget(doc, LINKS.text$LyCV, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text")));
         SNode l = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.text$LyCV), LINKS.lines$U$m7, null);
         SNode w = SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
@@ -152,7 +151,6 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SheetEntry$3$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL, "jetbrains.mps.samples.ChemMastery.structure.SheetEntry");
-    /*package*/ static final SConcept DocumentationEntry$cW = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 

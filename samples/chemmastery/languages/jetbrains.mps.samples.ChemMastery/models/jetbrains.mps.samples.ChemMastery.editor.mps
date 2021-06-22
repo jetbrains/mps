@@ -187,7 +187,6 @@
         <reference id="8528336319562672600" name="cellActionMap" index="3yKHlE" />
         <child id="5730897613507031771" name="selector" index="1uG4Zv" />
       </concept>
-      <concept id="5425882385312046132" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_CurrentTargetNode" flags="nn" index="1yR$tW" />
       <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
         <property id="1215007802031" name="value" index="3$6WeP" />
       </concept>
@@ -3466,6 +3465,7 @@
     </node>
   </node>
   <node concept="22mcaB" id="6VR64YFCDDm">
+    <property role="3GE5qa" value="entry" />
     <ref role="aqKnT" to="ngid:6VR64YFBMjq" resolve="SheetEntry" />
     <node concept="22hDWj" id="5AWKDXbuJv7" role="22hAXT" />
     <node concept="2VfDsV" id="6VR64YFCHVQ" role="3ft7WO" />
@@ -3478,10 +3478,11 @@
               <node concept="3Tqbb2" id="6VR64YFW774" role="1tU5fm">
                 <ref role="ehGHo" to="ngid:6VR64YFBMjy" resolve="DocumentationEntry" />
               </node>
-              <node concept="2OqwBi" id="6VR64YFW79q" role="33vP2m">
-                <node concept="1yR$tW" id="6VR64YFW79r" role="2Oq$k0" />
-                <node concept="1_qnLN" id="6VR64YFW79s" role="2OqNvi">
-                  <ref role="1_rbq0" to="ngid:6VR64YFBMjy" resolve="DocumentationEntry" />
+              <node concept="2ShNRf" id="2pS5sek6pVO" role="33vP2m">
+                <node concept="3zrR0B" id="2pS5sek6pVP" role="2ShVmc">
+                  <node concept="3Tqbb2" id="2pS5sek6pVQ" role="3zrR0E">
+                    <ref role="ehGHo" to="ngid:6VR64YFBMjy" resolve="DocumentationEntry" />
+                  </node>
                 </node>
               </node>
             </node>
