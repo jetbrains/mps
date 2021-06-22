@@ -43,6 +43,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -7138,6 +7141,9 @@
                                 <node concept="37vLTw" id="5yrZiOVIj5q" role="37wK5m">
                                   <ref role="3cqZAo" node="5yrZiOVIhf4" resolve="n" />
                                 </node>
+                                <node concept="37vLTw" id="4$yORlOqFG$" role="37wK5m">
+                                  <ref role="3cqZAo" node="3mwbQJWBoSO" resolve="label" />
+                                </node>
                               </node>
                               <node concept="2OqwBi" id="3mwbQJWB_ig" role="37vLTJ">
                                 <node concept="37vLTw" id="3mwbQJWB_hh" role="2Oq$k0">
@@ -7324,6 +7330,9 @@
                       </node>
                       <node concept="37vLTw" id="54q3kj7X4Pa" role="37wK5m">
                         <ref role="3cqZAo" node="54q3kj7X0fE" resolve="cr" />
+                      </node>
+                      <node concept="37vLTw" id="4$yORlOqNnk" role="37wK5m">
+                        <ref role="3cqZAo" node="54q3kj7WXgR" resolve="label" />
                       </node>
                     </node>
                     <node concept="2OqwBi" id="54q3kj7X4th" role="37vLTJ">
@@ -7607,6 +7616,14 @@
                             </node>
                             <node concept="37vLTw" id="3GxFmVJgXol" role="37wK5m">
                               <ref role="3cqZAo" node="3GxFmVJgTeY" resolve="o" />
+                            </node>
+                            <node concept="2OqwBi" id="4$yORlOrh7o" role="37wK5m">
+                              <node concept="2GrUjf" id="4$yORlOrdiB" role="2Oq$k0">
+                                <ref role="2Gs0qQ" node="16Q128M6YFN" resolve="lr" />
+                              </node>
+                              <node concept="2OwXpG" id="4$yORlOrmhz" role="2OqNvi">
+                                <ref role="2Oxat5" to="80j5:~LabelRecordBase.label" resolve="label" />
+                              </node>
                             </node>
                           </node>
                           <node concept="2OqwBi" id="3GxFmVJgpzD" role="37vLTJ">
@@ -8095,6 +8112,35 @@
         </node>
         <node concept="3clFbJ" id="jEuKklyS6C" role="3cqZAp">
           <node concept="3clFbS" id="jEuKklyS6E" role="3clFbx">
+            <node concept="3cpWs8" id="4$yORlOrpSP" role="3cqZAp">
+              <node concept="3cpWsn" id="4$yORlOrpSQ" role="3cpWs9">
+                <property role="TrG5h" value="s" />
+                <node concept="17QB3L" id="4$yORlOrpcP" role="1tU5fm" />
+                <node concept="2OqwBi" id="4$yORlOrCnj" role="33vP2m">
+                  <node concept="Xl_RD" id="4$yORlOrpSR" role="2Oq$k0">
+                    <property role="Xl_RC" value="Didn't find labeled output node in a checkpoint model, original value left. Instance of %s, label %s" />
+                  </node>
+                  <node concept="2cAKMz" id="4$yORlOrHf0" role="2OqNvi">
+                    <node concept="2OqwBi" id="4$yORlOsLKg" role="2cAKU6">
+                      <node concept="2OqwBi" id="4$yORlOsDmQ" role="2Oq$k0">
+                        <node concept="37vLTw" id="4$yORlOs_y$" role="2Oq$k0">
+                          <ref role="3cqZAo" node="MyOt6eC7n7" resolve="n" />
+                        </node>
+                        <node concept="liA8E" id="4$yORlOsHXp" role="2OqNvi">
+                          <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="4$yORlOsOYo" role="2OqNvi">
+                        <ref role="37wK5l" to="c17a:~SAbstractConcept.getName()" resolve="getName" />
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="4$yORlOsyxz" role="2cAKU6">
+                      <ref role="3cqZAo" node="4$yORlOqpiL" resolve="lm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="jEuKklz1SM" role="3cqZAp">
               <node concept="3cpWsn" id="jEuKklz1SN" role="3cpWs9">
                 <property role="TrG5h" value="m" />
@@ -8111,8 +8157,8 @@
                     <node concept="1rXfSq" id="jEuKklz1SR" role="37wK5m">
                       <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                     </node>
-                    <node concept="Xl_RD" id="jEuKklz1SS" role="37wK5m">
-                      <property role="Xl_RC" value="Didn't find labeled output node in a checkpoint model, original value left." />
+                    <node concept="37vLTw" id="4$yORlOrpSS" role="37wK5m">
+                      <ref role="3cqZAo" node="4$yORlOrpSQ" resolve="s" />
                     </node>
                   </node>
                 </node>
@@ -8184,6 +8230,10 @@
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
+      <node concept="37vLTG" id="4$yORlOqpiL" role="3clF46">
+        <property role="TrG5h" value="lm" />
+        <node concept="17QB3L" id="4$yORlOqv0i" role="1tU5fm" />
+      </node>
       <node concept="P$JXv" id="jEuKklyKKd" role="lGtFl">
         <node concept="TZ5HA" id="jEuKklyKKe" role="TZ5H$">
           <node concept="1dT_AC" id="jEuKklyKKf" role="1dT_Ay">
@@ -8212,7 +8262,22 @@
         </node>
         <node concept="TZ5HA" id="jEuKklyL2O" role="TZ5H$">
           <node concept="1dT_AC" id="jEuKklyL2P" role="1dT_Ay">
-            <property role="1dT_AB" value="or that we would mistakenly take a wrong one (i.e. if aforementioned script removes a node registered as an ouput and adds another one with the same id)." />
+            <property role="1dT_AB" value="or that we would mistakenly take a wrong one (i.e. if aforementioned script removes a node registered as an output and adds another one with the same id)." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4$yORlOsY5W" role="TZ5H$">
+          <node concept="1dT_AC" id="4$yORlOsY5X" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4$yORlOsTyk" role="TZ5H$">
+          <node concept="1dT_AC" id="4$yORlOsTyl" role="1dT_Ay">
+            <property role="1dT_AB" value="Note, as MPSSPRT-335 suggests, when a generator that records labeled mappings is part of group of generators that may further transform " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="4$yORlOt2Ax" role="TZ5H$">
+          <node concept="1dT_AC" id="4$yORlOt2Ay" role="1dT_Ay">
+            <property role="1dT_AB" value="output node, we may face errors here." />
           </node>
         </node>
       </node>
