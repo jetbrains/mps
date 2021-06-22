@@ -90,7 +90,6 @@
           <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="cl" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
           <module ref="698a8d22-a104-47a0-ba8d-10e3ec237f13(jetbrains.mps.build.workflow)" kind="cl" />
-          <module ref="cca2431b-e74f-4066-9344-e40022d0908a(jetbrains.mps.build.workflow.preset)" kind="cl" />
           <module ref="479c7a8c-02f9-43b5-9139-d910cb22f298(jetbrains.mps.core.xml)" kind="cl" />
           <module ref="34e84b8f-afa8-4364-abcd-a279fddddbe7(jetbrains.mps.editor.runtime)" kind="cl" />
           <module ref="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="cl" />
@@ -1706,7 +1705,7 @@
     </ant>
   </target>
   
-  <target name="java.compile.jetbrains.mps.build" depends="java.compile.jetbrains.mps.build.workflow, java.compile.jetbrains.mps.build.workflow.preset, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.build" depends="java.compile.jetbrains.mps.build.workflow, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-build/languages/build/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -1743,7 +1742,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.build.workflow" />
-        <pathelement path="${build.tmp}/java/out/jetbrains.mps.build.workflow.preset" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />

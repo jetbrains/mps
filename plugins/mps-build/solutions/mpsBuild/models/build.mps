@@ -30122,11 +30122,6 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="7i60FrlEJyS" role="3bR37C">
-          <node concept="3bR9La" id="7i60FrlEJzk" role="1SiIV1">
-            <ref role="3bR37D" node="1WGJoq9Wd0d" resolve="jetbrains.mps.build.workflow.preset" />
-          </node>
-        </node>
         <node concept="1BupzO" id="7NEWFxexkBN" role="3bR31x">
           <property role="3ZfqAx" value="utilModels" />
           <property role="1Hdu6h" value="true" />
