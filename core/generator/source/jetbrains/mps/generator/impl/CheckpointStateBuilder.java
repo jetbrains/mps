@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,10 @@
  */
 package jetbrains.mps.generator.impl;
 
-import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
-import jetbrains.mps.generator.impl.plan.CheckpointVault;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
-import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.util.SNodePresentationComparator;
@@ -46,13 +44,15 @@ class CheckpointStateBuilder {
   private final ModelTransitions myTransitionTrace;
   private final SModel myTransientModel;
   private final SModel myCheckpointModel;
+  private final IGeneratorLogger myLogger;
   private boolean myCloneDone = false;
 
-  public CheckpointStateBuilder(@NotNull SModel transientModel, @NotNull SModel blankCheckpointModel, @NotNull ModelTransitions transitionTrace) {
+  public CheckpointStateBuilder(@NotNull SModel transientModel, @NotNull SModel blankCheckpointModel, @NotNull ModelTransitions transitionTrace, @NotNull IGeneratorLogger log) {
     myTransientModel = transientModel;
     myCheckpointModel = blankCheckpointModel;
     myTransitionTrace = transitionTrace;
     myMemento = new MappingsMemento();
+    myLogger = log;
   }
 
   public void record(SNode inputNode, String mappingLabel, SNode outputNode) {
@@ -107,9 +107,8 @@ class CheckpointStateBuilder {
    * Optional, for a hypothetical (didn't check/think over too much) scenario when CP comes as the very first step.
    *  @param originalInputModel non-null
    * @param stepLabels non-null
-   * @param messageHandler likely shall relocate to cons arguments
    */
-  /*package*/ void addMappings(SModel originalInputModel, GeneratorMappings stepLabels, IMessageHandler messageHandler) {
+  /*package*/ void addMappings(SModel originalInputModel, GeneratorMappings stepLabels) {
     // FIXME likely, GeneratorMappings shall care about MappingMemento only (pass TransitionTrace there as well).
     //
     // FIXME stepLabels.export is commented out as we restore MappingsMemento for the CPState through persisted state and MappingLabelExtractor, to get
@@ -120,7 +119,7 @@ class CheckpointStateBuilder {
     // reference targets from transient model to that in CP model (see DMB.substitute)
     cloneTransientToCheckpoint();
     new ModelImports(myCheckpointModel).addModelImport(originalInputModel.getReference());
-    DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), messageHandler);
+    DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), myLogger);
     SNode debugMappings = dmb.build(myCheckpointModel, stepLabels);
     myTransitionTrace.saveActiveTransition(myCheckpointModel);
     myCheckpointModel.addRootNode(debugMappings);

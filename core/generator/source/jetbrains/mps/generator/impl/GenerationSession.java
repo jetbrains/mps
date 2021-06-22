@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -306,7 +306,7 @@ class GenerationSession {
         final CrossModelEnvironment xmodelEnv = myControlEnv.getCrossModelEnvironment();
         CheckpointIdentity lastPersistedCheckpoint = transitionTrace.getMostRecentCheckpoint();
         SModel checkpointModel = xmodelEnv.createBlankCheckpointModel(myOriginalInputModel.getReference(), lastPersistedCheckpoint, checkpointIdentity);
-        CheckpointStateBuilder cpBuilder = new CheckpointStateBuilder(currInputModel, checkpointModel, transitionTrace);
+        CheckpointStateBuilder cpBuilder = new CheckpointStateBuilder(currInputModel, checkpointModel, transitionTrace, myLogger);
         // myStepArguments may be null if Checkpoint is the very first step. Not quite sure it's legitimate scenario, though, need to think it over.
         if (myStepArguments != null) {
           // Shall populate state with last generator's MappingLabels. Note, ML could have been added from post-processing scripts. Generator
@@ -348,7 +348,7 @@ class GenerationSession {
             stepLabels.fillFrom(Collections.singletonList(lmCollector));
             lmCollector.clear();
           }
-          cpBuilder.addMappings(myOriginalInputModel, stepLabels, myLogger.getImplementation());
+          cpBuilder.addMappings(myOriginalInputModel, stepLabels);
         }
         CheckpointState cpState = cpBuilder.create(checkpointIdentity);
         xmodelEnv.publishCheckpoint(myOriginalInputModel.getReference(), cpState);

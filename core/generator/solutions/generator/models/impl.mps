@@ -5866,11 +5866,11 @@
       </node>
     </node>
     <node concept="312cEg" id="jEuKklyGQn" role="jymVt">
-      <property role="TrG5h" value="myMessageHandler" />
+      <property role="TrG5h" value="myLogger" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="jEuKklyGQo" role="1B3o_S" />
-      <node concept="3uibUv" id="jEuKklyGQq" role="1tU5fm">
-        <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
+      <node concept="3uibUv" id="j8SIE5Ja1M" role="1tU5fm">
+        <ref role="3uigEE" to="ap4t:~IGeneratorLogger" resolve="IGeneratorLogger" />
       </node>
     </node>
     <node concept="2tJIrI" id="jEuKklzVOx" role="jymVt" />
@@ -5901,10 +5901,10 @@
         <node concept="3clFbF" id="jEuKklyGQr" role="3cqZAp">
           <node concept="37vLTI" id="jEuKklyGQt" role="3clFbG">
             <node concept="37vLTw" id="jEuKklyGQw" role="37vLTJ">
-              <ref role="3cqZAo" node="jEuKklyGQn" resolve="myMessageHandler" />
+              <ref role="3cqZAo" node="jEuKklyGQn" resolve="myLogger" />
             </node>
             <node concept="37vLTw" id="jEuKklyGQx" role="37vLTx">
-              <ref role="3cqZAo" node="jEuKklyBUQ" resolve="messageHandler" />
+              <ref role="3cqZAo" node="jEuKklyBUQ" resolve="logger" />
             </node>
           </node>
         </node>
@@ -5922,9 +5922,9 @@
         </node>
       </node>
       <node concept="37vLTG" id="jEuKklyBUQ" role="3clF46">
-        <property role="TrG5h" value="messageHandler" />
-        <node concept="3uibUv" id="jEuKklyGPD" role="1tU5fm">
-          <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
+        <property role="TrG5h" value="logger" />
+        <node concept="3uibUv" id="j8SIE5J5Sm" role="1tU5fm">
+          <ref role="3uigEE" to="ap4t:~IGeneratorLogger" resolve="IGeneratorLogger" />
         </node>
       </node>
     </node>
@@ -8141,36 +8141,13 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="jEuKklz1SM" role="3cqZAp">
-              <node concept="3cpWsn" id="jEuKklz1SN" role="3cpWs9">
-                <property role="TrG5h" value="m" />
-                <node concept="3uibUv" id="jEuKklz1SL" role="1tU5fm">
-                  <ref role="3uigEE" to="et5u:~Message" resolve="Message" />
+            <node concept="3clFbF" id="jEuKklyVkN" role="3cqZAp">
+              <node concept="2OqwBi" id="jEuKklyVF8" role="3clFbG">
+                <node concept="37vLTw" id="jEuKklyVkL" role="2Oq$k0">
+                  <ref role="3cqZAo" node="jEuKklyGQn" resolve="myLogger" />
                 </node>
-                <node concept="2ShNRf" id="jEuKklz1SO" role="33vP2m">
-                  <node concept="1pGfFk" id="jEuKklz1SP" role="2ShVmc">
-                    <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.Class,java.lang.String)" resolve="Message" />
-                    <node concept="Rm8GO" id="jEuKklz1SQ" role="37wK5m">
-                      <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
-                      <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
-                    </node>
-                    <node concept="1rXfSq" id="jEuKklz1SR" role="37wK5m">
-                      <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
-                    </node>
-                    <node concept="37vLTw" id="4$yORlOrpSS" role="37wK5m">
-                      <ref role="3cqZAo" node="4$yORlOrpSQ" resolve="s" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="jEuKklz3cW" role="3cqZAp">
-              <node concept="2OqwBi" id="jEuKklz3BX" role="3clFbG">
-                <node concept="37vLTw" id="jEuKklz3cU" role="2Oq$k0">
-                  <ref role="3cqZAo" node="jEuKklz1SN" resolve="m" />
-                </node>
-                <node concept="liA8E" id="jEuKklz3UJ" role="2OqNvi">
-                  <ref role="37wK5l" to="et5u:~Message.setHintObject(java.lang.Object)" resolve="setHintObject" />
+                <node concept="liA8E" id="jEuKklyVVm" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~IGeneratorLogger.error(org.jetbrains.mps.openapi.model.SNodeReference,java.lang.String,jetbrains.mps.generator.IGeneratorLogger$ProblemDescription...)" resolve="error" />
                   <node concept="2OqwBi" id="jEuKklz4cv" role="37wK5m">
                     <node concept="37vLTw" id="jEuKklz45F" role="2Oq$k0">
                       <ref role="3cqZAo" node="MyOt6eC7n7" resolve="n" />
@@ -8179,18 +8156,8 @@
                       <ref role="37wK5l" to="mhbf:~SNode.getReference()" resolve="getReference" />
                     </node>
                   </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="jEuKklyVkN" role="3cqZAp">
-              <node concept="2OqwBi" id="jEuKklyVF8" role="3clFbG">
-                <node concept="37vLTw" id="jEuKklyVkL" role="2Oq$k0">
-                  <ref role="3cqZAo" node="jEuKklyGQn" resolve="myMessageHandler" />
-                </node>
-                <node concept="liA8E" id="jEuKklyVVm" role="2OqNvi">
-                  <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage)" resolve="handle" />
-                  <node concept="37vLTw" id="jEuKklz1ST" role="37wK5m">
-                    <ref role="3cqZAo" node="jEuKklz1SN" resolve="m" />
+                  <node concept="37vLTw" id="j8SIE5JSyn" role="37wK5m">
+                    <ref role="3cqZAo" node="4$yORlOrpSQ" resolve="s" />
                   </node>
                 </node>
               </node>

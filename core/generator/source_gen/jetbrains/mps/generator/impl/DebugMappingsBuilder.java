@@ -4,7 +4,7 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.generator.IGeneratorLogger;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -20,8 +20,6 @@ import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import java.util.function.Consumer;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,12 +31,12 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public class DebugMappingsBuilder {
   private final SRepository myRepo;
   private final TransitionTrace myOriginTrace;
-  private final IMessageHandler myMessageHandler;
+  private final IGeneratorLogger myLogger;
 
-  public DebugMappingsBuilder(SRepository repo, TransitionTrace originTrace, IMessageHandler messageHandler) {
+  public DebugMappingsBuilder(SRepository repo, TransitionTrace originTrace, IGeneratorLogger logger) {
     myRepo = repo;
     myOriginTrace = originTrace;
-    myMessageHandler = messageHandler;
+    myLogger = logger;
   }
 
   public SNode build(@NotNull final SModel checkpointModel, GeneratorMappings mappings) {
@@ -160,9 +158,7 @@ public class DebugMappingsBuilder {
     SNode tn = checkpointModel.getNode(n.getNodeId());
     if (tn == null) {
       String s = String.format("Didn't find labeled output node in a checkpoint model, original value left. Instance of %s, label %s", n.getConcept().getName(), lm);
-      Message m = new Message(MessageKind.ERROR, getClass(), s);
-      m.setHintObject(n.getReference());
-      myMessageHandler.handle(m);
+      myLogger.error(n.getReference(), s);
       return n;
     }
     return tn;
