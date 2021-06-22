@@ -98,7 +98,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       case 34:
         return Collections.<ConceptEditor>singletonList(new CharConstant_Editor());
       case 35:
-        return Collections.<ConceptEditor>singletonList(new ClassConcept_Editor());
+        return Arrays.asList(new ConceptEditor[]{new ClassConcept_Editor(), new ClassConcept_VisibleExpressionBoundaries_Editor()});
       case 36:
         return Collections.<ConceptEditor>singletonList(new ClassCreator_Editor());
       case 37:
@@ -144,7 +144,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       case 57:
         return Collections.<ConceptEditor>singletonList(new ElsifClause_Editor());
       case 58:
-        return Collections.<ConceptEditor>singletonList(new EnumClass_Editor());
+        return Arrays.asList(new ConceptEditor[]{new EnumClass_Editor(), new EnumClass_VisibleExpressionBoundaries_Editor()});
       case 59:
         return Collections.<ConceptEditor>singletonList(new EnumConstantDeclaration_Editor());
       case 60:
@@ -206,7 +206,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       case 88:
         return Collections.<ConceptEditor>singletonList(new IntegerConstant_Editor());
       case 89:
-        return Collections.<ConceptEditor>singletonList(new Interface_Editor());
+        return Arrays.asList(new ConceptEditor[]{new Interface_Editor(), new Interface_VisibleExpressionBoundaries_Editor()});
       case 90:
         return Collections.<ConceptEditor>singletonList(new JavaImport_Editor());
       case 91:
