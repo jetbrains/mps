@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -28,9 +26,8 @@ public final class BuildPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getProject_id13YBgBBS7ex = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProject").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("13YBgBBS7ex").build();
   public static final SMethod<Scope> getProjectStructureScope_id3fifI_xCJOQ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getProjectStructureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3fifI_xCJOQ").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<Scope> getLayoutScope_id13YBgBBRSOA = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLayoutScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("13YBgBBRSOA").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
-  public static final SMethod<Iterable<SNode>> getImportedLibraries_id3zFnP6MwWdL = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getImportedLibraries").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3zFnP6MwWdL").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProject_id13YBgBBS7ex, getProjectStructureScope_id3fifI_xCJOQ, getLayoutScope_id13YBgBBRSOA, getImportedLibraries_id3zFnP6MwWdL);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getProject_id13YBgBBS7ex, getProjectStructureScope_id3fifI_xCJOQ, getLayoutScope_id13YBgBBRSOA);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -39,13 +36,14 @@ public final class BuildPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$ae);
   }
   /*package*/ static Scope getProjectStructureScope_id3fifI_xCJOQ(@NotNull SNode __thisNode__, SAbstractConcept kind) {
+    // ScopeProvider per-plugin delegation for BuildProject.parts elements
+    // visible for siblings
     return null;
   }
   /*package*/ static Scope getLayoutScope_id13YBgBBRSOA(@NotNull SNode __thisNode__, SAbstractConcept kind) {
+    // ScopeProvider per-plugin delegation for BuildProject.parts elements
+    // visible for elements under BuildProject.layout
     return null;
-  }
-  /*package*/ static Iterable<SNode> getImportedLibraries_id3zFnP6MwWdL(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(new ArrayList<SNode>());
   }
 
   /*package*/ BuildPlugin__BehaviorDescriptor() {
@@ -69,8 +67,6 @@ public final class BuildPlugin__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Scope) getProjectStructureScope_id3fifI_xCJOQ(node, (SAbstractConcept) parameters[0]));
       case 2:
         return (T) ((Scope) getLayoutScope_id13YBgBBRSOA(node, (SAbstractConcept) parameters[0]));
-      case 3:
-        return (T) ((Iterable<SNode>) getImportedLibraries_id3zFnP6MwWdL(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

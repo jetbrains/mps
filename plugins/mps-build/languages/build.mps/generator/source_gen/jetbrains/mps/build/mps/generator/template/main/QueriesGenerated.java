@@ -38,8 +38,6 @@ import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.build.mps.util.MPSModulesPartitioner;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
-import jetbrains.mps.build.mps.behavior.BuildMPSPlugin__BehaviorDescriptor;
 import java.util.List;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -1035,11 +1033,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal()).isNotEmpty();
   }
   public static boolean ifMacro_Condition_10_9(final IfMacroContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.project$ciHu), LINKS.plugins$AsCR)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Sequence.fromIterable(BuildPlugin__BehaviorDescriptor.getImportedLibraries_id3zFnP6MwWdL.invoke(it)).contains(BuildMPSPlugin__BehaviorDescriptor.getMpsLibrary_id3zFnP6MM9ge.invoke(SNodeOperations.asSConcept(CONCEPTS.BuildMPSPlugin$YW)));
-      }
-    }) != null;
+    // sort of stupid way to find out if project has 'generate' task;
+    // although the previous one, hardcoded check for presence of specific task library node,
+    // was not better.
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.project$ciHu), LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_10_10(final IfMacroContext _context) {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:dependency"))).isNotEmpty();

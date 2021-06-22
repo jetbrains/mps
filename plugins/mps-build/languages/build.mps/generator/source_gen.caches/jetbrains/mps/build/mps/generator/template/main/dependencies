@@ -20,10 +20,8 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMPSPlugin__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMpsLayout_ModuleJars__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMps_AbstractModule__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor" />

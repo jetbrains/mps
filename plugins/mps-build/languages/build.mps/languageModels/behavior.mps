@@ -14,8 +14,6 @@
     <import index="vbkb" ref="r:08f2b659-8469-4592-93bf-a6edb46ec86d(jetbrains.mps.build.behavior)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
-    <import index="8xvf" ref="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)" />
-    <import index="zwni" ref="r:4c16a3e9-db56-4447-9b0d-14adce23db0d(jetbrains.mps.build.mps.accessories)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -229,22 +227,6 @@
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
-    </language>
-    <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
-        <reference id="5455284157994012188" name="link" index="2pIpSl" />
-        <child id="1595412875168045827" name="initValue" index="28nt2d" />
-      </concept>
-      <concept id="5455284157993863837" name="jetbrains.mps.lang.quotation.structure.NodeBuilder" flags="nn" index="2pJPEk">
-        <child id="5455284157993863838" name="quotedNode" index="2pJPEn" />
-      </concept>
-      <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
-        <reference id="5455284157993910961" name="concept" index="2pJxaS" />
-        <child id="5455284157993911099" name="values" index="2pJxcM" />
-      </concept>
-      <concept id="8182547171709614739" name="jetbrains.mps.lang.quotation.structure.NodeBuilderRef" flags="nn" index="36bGnv">
-        <reference id="8182547171709614741" name="target" index="36bGnp" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -8499,66 +8481,6 @@
       <node concept="3uibUv" id="13YBgBBSiJP" role="3clF45">
         <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
       </node>
-    </node>
-    <node concept="13i0hz" id="3zFnP6MyHTc" role="13h7CS">
-      <property role="13i0iv" value="false" />
-      <property role="TrG5h" value="getImportedLibraries" />
-      <property role="13i0it" value="false" />
-      <ref role="13i0hy" to="vbkb:3zFnP6MwWdL" resolve="getImportedLibraries" />
-      <node concept="3Tm1VV" id="3zFnP6MyHTd" role="1B3o_S" />
-      <node concept="A3Dl8" id="3zFnP6MyHTj" role="3clF45">
-        <node concept="3Tqbb2" id="3zFnP6MyHTk" role="A3Ik2">
-          <ref role="ehGHo" to="8xvf:6l_Qx579cUi" resolve="BwfTaskLibrary" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="3zFnP6MyHTl" role="3clF47">
-        <node concept="3clFbF" id="3zFnP6MyJoZ" role="3cqZAp">
-          <node concept="2ShNRf" id="3zFnP6MyJoX" role="3clFbG">
-            <node concept="2HTt$P" id="3zFnP6MyJvR" role="2ShVmc">
-              <node concept="2OqwBi" id="L_Hr3kExIB" role="2HTEbv">
-                <node concept="2qgKlT" id="L_Hr3kExIC" role="2OqNvi">
-                  <ref role="37wK5l" node="3zFnP6MM9ge" resolve="getMpsLibrary" />
-                </node>
-                <node concept="35c_gC" id="7Ift4Hg3grs" role="2Oq$k0">
-                  <ref role="35c_gD" to="kdzh:KbRDZ75DBp" resolve="BuildMPSPlugin" />
-                </node>
-              </node>
-              <node concept="3Tqbb2" id="3zFnP6MyJwp" role="2HTBi0">
-                <ref role="ehGHo" to="8xvf:6l_Qx579cUi" resolve="BwfTaskLibrary" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="3zFnP6MM9ge" role="13h7CS">
-      <property role="2Ki8OM" value="true" />
-      <property role="13i0iv" value="false" />
-      <property role="TrG5h" value="getMpsLibrary" />
-      <node concept="3clFbS" id="3zFnP6MM9gh" role="3clF47">
-        <node concept="3clFbF" id="3zFnP6MM9xt" role="3cqZAp">
-          <node concept="2OqwBi" id="3zFnP6MyApH" role="3clFbG">
-            <node concept="2pJPEk" id="3zFnP6MyD2V" role="2Oq$k0">
-              <node concept="2pJPED" id="3zFnP6MyD2S" role="2pJPEn">
-                <ref role="2pJxaS" to="8xvf:6l_Qx579wkR" resolve="BwfTaskLibraryDependency" />
-                <node concept="2pIpSj" id="3zFnP6MyD2T" role="2pJxcM">
-                  <ref role="2pIpSl" to="8xvf:6l_Qx579wkS" resolve="target" />
-                  <node concept="36bGnv" id="3zFnP6MyLRJ" role="28nt2d">
-                    <ref role="36bGnp" to="zwni:m8_23bzloH" resolve="mps" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3TrEf2" id="3zFnP6MyB_l" role="2OqNvi">
-              <ref role="3Tt5mk" to="8xvf:6l_Qx579wkS" resolve="target" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tqbb2" id="3zFnP6MM9o9" role="3clF45">
-        <ref role="ehGHo" to="8xvf:6l_Qx579cUi" resolve="BwfTaskLibrary" />
-      </node>
-      <node concept="3Tm1VV" id="3zFnP6MM9gf" role="1B3o_S" />
     </node>
     <node concept="13i0hz" id="3WZD5LHqDLU" role="13h7CS">
       <property role="2Ki8OM" value="false" />
