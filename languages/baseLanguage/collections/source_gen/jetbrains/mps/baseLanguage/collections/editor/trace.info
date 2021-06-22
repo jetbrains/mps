@@ -31,7 +31,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.collections.editor.CustomMapCreator_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,425,0" name="jetbrains.mps.baseLanguage.collections.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,428,0" name="jetbrains.mps.baseLanguage.collections.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="ForEachVariableReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.collections.editor.ForEachVariableReference_SubstituteMenu$CONCEPTS" />
@@ -12312,8 +12312,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931189">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931189" at="290,93,291,96" concept="8" />
-      <scope id="1741258697586931189" at="290,93,291,96" />
+      <node id="1741258697586931189" at="293,93,294,96" concept="8" />
+      <scope id="1741258697586931189" at="293,93,294,96" />
     </file>
     <file name="sequenceType_addElementType.java">
       <node id="1741258697586931189" at="43,0,44,0" concept="3" trace="myLocations" />
@@ -12733,14 +12733,14 @@
       <unit id="1741258697586931280" at="29,0,134,0" name="jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_ext_1_RTransform_Menu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931280" at="251,112,252,115" concept="8" />
-      <scope id="1741258697586931280" at="251,112,252,115" />
+      <node id="1741258697586931280" at="254,112,255,115" concept="8" />
+      <scope id="1741258697586931280" at="254,112,255,115" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931282">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931282" at="253,99,254,102" concept="8" />
-      <scope id="1741258697586931282" at="253,99,254,102" />
+      <node id="1741258697586931282" at="256,99,257,102" concept="8" />
+      <scope id="1741258697586931282" at="256,99,257,102" />
     </file>
     <file name="add_initSize_to_container_creator.java">
       <node id="1741258697586931282" at="45,0,46,0" concept="3" trace="myLocations" />
@@ -12891,8 +12891,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931354">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931354" at="255,101,256,104" concept="8" />
-      <scope id="1741258697586931354" at="255,101,256,104" />
+      <node id="1741258697586931354" at="258,101,259,104" concept="8" />
+      <scope id="1741258697586931354" at="258,101,259,104" />
     </file>
     <file name="add_parameters_to_container_creator.java">
       <node id="1741258697586931354" at="45,0,46,0" concept="3" trace="myLocations" />
@@ -13231,8 +13231,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931464">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931464" at="279,97,280,100" concept="8" />
-      <scope id="1741258697586931464" at="279,97,280,100" />
+      <node id="1741258697586931464" at="282,97,283,100" concept="8" />
+      <scope id="1741258697586931464" at="282,97,283,100" />
     </file>
     <file name="add_initSize_to_hashmap_creator.java">
       <node id="1741258697586931464" at="45,0,46,0" concept="3" trace="myLocations" />
@@ -13382,8 +13382,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931525">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931525" at="299,99,300,102" concept="8" />
-      <scope id="1741258697586931525" at="299,99,300,102" />
+      <node id="1741258697586931525" at="302,99,303,102" concept="8" />
+      <scope id="1741258697586931525" at="302,99,303,102" />
     </file>
     <file name="add_comparator_to_treeset_creator.java">
       <node id="1741258697586931525" at="45,0,46,0" concept="3" trace="myLocations" />
@@ -13579,8 +13579,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931603">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931603" at="277,102,278,105" concept="8" />
-      <scope id="1741258697586931603" at="277,102,278,105" />
+      <node id="1741258697586931603" at="280,102,281,105" concept="8" />
+      <scope id="1741258697586931603" at="280,102,281,105" />
     </file>
     <file name="HashMapCreator_add_keyType_valueType.java">
       <node id="1741258697586931603" at="43,0,44,0" concept="3" trace="myLocations" />
@@ -13731,8 +13731,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931663">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931663" at="281,93,282,96" concept="8" />
-      <scope id="1741258697586931663" at="281,93,282,96" />
+      <node id="1741258697586931663" at="284,93,285,96" concept="8" />
+      <scope id="1741258697586931663" at="284,93,285,96" />
     </file>
     <file name="map_creator_add_initializer.java">
       <node id="1741258697586931663" at="43,0,44,0" concept="3" trace="myLocations" />
@@ -14025,8 +14025,8 @@
       <unit id="1741258697586931710" at="42,0,163,0" name="jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931710" at="249,106,250,109" concept="8" />
-      <scope id="1741258697586931710" at="249,106,250,109" />
+      <node id="1741258697586931710" at="252,106,253,109" concept="8" />
+      <scope id="1741258697586931710" at="252,106,253,109" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931850">
@@ -14125,8 +14125,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586931852">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931852" at="393,82,394,81" concept="8" />
-      <scope id="1741258697586931852" at="393,82,394,81" />
+      <node id="1741258697586931852" at="396,82,397,81" concept="8" />
+      <scope id="1741258697586931852" at="396,82,397,81" />
     </file>
     <file name="subs_AllConstant.java">
       <node id="1741258697586931852" at="25,118,26,140" concept="7" />
@@ -14393,8 +14393,8 @@
       <unit id="1741258697586931894" at="30,0,205,0" name="jetbrains.mps.baseLanguage.collections.editor.BLC_substitute" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586931894" at="391,80,392,79" concept="8" />
-      <scope id="1741258697586931894" at="391,80,392,79" />
+      <node id="1741258697586931894" at="394,80,395,79" concept="8" />
+      <scope id="1741258697586931894" at="394,80,395,79" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586932156">
@@ -14714,8 +14714,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586932796">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586932796" at="404,100,405,99" concept="8" />
-      <scope id="1741258697586932796" at="404,100,405,99" />
+      <node id="1741258697586932796" at="407,100,408,99" concept="8" />
+      <scope id="1741258697586932796" at="407,100,408,99" />
     </file>
     <file name="substitute_IOperation_IteratorType.java">
       <node id="1741258697586932796" at="36,118,37,140" concept="7" />
@@ -14946,8 +14946,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586933227">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586933227" at="402,97,403,96" concept="8" />
-      <scope id="1741258697586933227" at="402,97,403,96" />
+      <node id="1741258697586933227" at="405,97,406,96" concept="8" />
+      <scope id="1741258697586933227" at="405,97,406,96" />
     </file>
     <file name="substitute_IOperation_ArrayType.java">
       <node id="1741258697586933227" at="28,118,29,140" concept="7" />
@@ -15071,8 +15071,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697586933283">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697586933283" at="406,99,407,98" concept="8" />
-      <scope id="1741258697586933283" at="406,99,407,98" />
+      <node id="1741258697586933283" at="409,99,410,98" concept="8" />
+      <scope id="1741258697586933283" at="409,99,410,98" />
     </file>
     <file name="substitute_IOperation_MappingType.java">
       <node id="1741258697586933283" at="36,118,37,140" concept="7" />
@@ -15637,8 +15637,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697587177308">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587177308" at="266,85,267,88" concept="8" />
-      <scope id="1741258697587177308" at="266,85,267,88" />
+      <node id="1741258697587177308" at="269,85,270,88" concept="8" />
+      <scope id="1741258697587177308" at="269,85,270,88" />
     </file>
     <file name="downcast_expression.java">
       <node id="1741258697587177308" at="48,0,49,0" concept="3" trace="myLocations" />
@@ -15970,14 +15970,14 @@
       <unit id="1741258697587177380" at="48,0,192,0" name="jetbrains.mps.baseLanguage.collections.editor.BLC_rtansform" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587177380" at="264,79,265,82" concept="8" />
-      <scope id="1741258697587177380" at="264,79,265,82" />
+      <node id="1741258697587177380" at="267,79,268,82" concept="8" />
+      <scope id="1741258697587177380" at="267,79,268,82" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)/1741258697587177458">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587177458" at="268,96,269,99" concept="8" />
-      <scope id="1741258697587177458" at="268,96,269,99" />
+      <node id="1741258697587177458" at="271,96,272,99" concept="8" />
+      <scope id="1741258697587177458" at="271,96,272,99" />
     </file>
     <file name="list_element_access_rtransform.java">
       <node id="1741258697587177458" at="46,0,47,0" concept="3" trace="myLocations" />

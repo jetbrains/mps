@@ -154,22 +154,23 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.test.editor.BeforeAfterEditor".equals(editorComponentId)) {
+      return Collections.singletonList(new BeforeAfterEditor());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.test.editor.BeforeAfterEditor".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new BeforeAfterEditor());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
   }

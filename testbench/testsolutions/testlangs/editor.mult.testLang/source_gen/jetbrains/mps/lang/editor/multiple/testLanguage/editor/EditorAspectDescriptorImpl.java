@@ -43,29 +43,31 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorsTestEditorComponentChild_default".equals(editorComponentId)) {
+      return Arrays.asList(new ConceptEditorComponent[]{new MultipleEditorsTestEditorComponentChild_compact(), new MultipleEditorsTestEditorComponentChild_default(), new MultipleEditorsTestEditorComponentChild_rich()});
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorsTestEditorComponentChild_default".equals(editorComponentId)) {
+      return Collections.singletonList(new MultipleEditorsTestEditorComponentChildSubconcept_EditorComponent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorsTestEditorComponentChild_default".equals(editorComponentId)) {
-            return Arrays.asList(new ConceptEditorComponent[]{new MultipleEditorsTestEditorComponentChild_compact(), new MultipleEditorsTestEditorComponentChild_default(), new MultipleEditorsTestEditorComponentChild_rich()});
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorsTestEditorComponentChild_default".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new MultipleEditorsTestEditorComponentChildSubconcept_EditorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
   }

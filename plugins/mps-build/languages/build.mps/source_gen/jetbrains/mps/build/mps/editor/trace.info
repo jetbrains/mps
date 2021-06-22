@@ -112,7 +112,7 @@
       <unit at="30,0,132,0" name="jetbrains.mps.build.mps.editor.BuildMps_ModuleSolutionRuntime_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,326,0" name="jetbrains.mps.build.mps.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,327,0" name="jetbrains.mps.build.mps.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="GeneratorInternal_BuildMps_Module_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.build.mps.editor.GeneratorInternal_BuildMps_Module_SubstituteMenu$CONCEPTS" />
@@ -1352,8 +1352,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175647">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175647" at="191,68,192,86" concept="8" />
-      <scope id="1741258697587175647" at="191,68,192,86" />
+      <node id="1741258697587175647" at="192,68,193,86" concept="8" />
+      <scope id="1741258697587175647" at="192,68,193,86" />
     </file>
     <file name="add_fromPluginXml.java">
       <node id="1741258697587175647" at="45,0,46,0" concept="3" trace="myLocations" />
@@ -1642,8 +1642,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175685">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175685" at="209,101,210,119" concept="8" />
-      <scope id="1741258697587175685" at="209,101,210,119" />
+      <node id="1741258697587175685" at="210,101,211,119" concept="8" />
+      <scope id="1741258697587175685" at="210,101,211,119" />
     </file>
     <file name="add_reexport_BuildMps_ModuleDependencyOnJavaModule.java">
       <node id="1741258697587175685" at="42,0,43,0" concept="3" trace="myLocations" />
@@ -1786,8 +1786,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175725">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175725" at="218,63,219,81" concept="8" />
-      <scope id="1741258697587175725" at="218,63,219,81" />
+      <node id="1741258697587175725" at="219,63,220,81" concept="8" />
+      <scope id="1741258697587175725" at="219,63,220,81" />
     </file>
     <file name="add_reexport.java">
       <node id="1741258697587175725" at="42,0,43,0" concept="3" trace="myLocations" />
@@ -1930,8 +1930,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175765">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175765" at="200,99,201,117" concept="8" />
-      <scope id="1741258697587175765" at="200,99,201,117" />
+      <node id="1741258697587175765" at="201,99,202,117" concept="8" />
+      <scope id="1741258697587175765" at="201,99,202,117" />
     </file>
     <file name="add_moduleLocationAndFlags_BuildMps_Module_ext_4.java">
       <node id="1741258697587175765" at="42,0,43,0" concept="3" trace="myLocations" />
@@ -2074,8 +2074,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175805">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175805" at="182,107,183,125" concept="8" />
-      <scope id="1741258697587175805" at="182,107,183,125" />
+      <node id="1741258697587175805" at="183,107,184,125" concept="8" />
+      <scope id="1741258697587175805" at="183,107,184,125" />
     </file>
     <file name="add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3.java">
       <node id="1741258697587175805" at="43,0,44,0" concept="3" trace="myLocations" />
@@ -2218,8 +2218,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175846">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175846" at="229,77,230,95" concept="8" />
-      <scope id="1741258697587175846" at="229,77,230,95" />
+      <node id="1741258697587175846" at="230,77,231,95" concept="8" />
+      <scope id="1741258697587175846" at="230,77,231,95" />
     </file>
     <file name="add_moduleLocationAndFlags.java">
       <node id="1741258697587175846" at="46,0,47,0" concept="3" trace="myLocations" />
@@ -2725,8 +2725,8 @@
       <unit id="1741258697587217178" at="29,0,111,0" name="jetbrains.mps.build.mps.editor.BuildMps_Solution_ApplySideTransforms" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587217178" at="227,88,228,106" concept="8" />
-      <scope id="1741258697587217178" at="227,88,228,106" />
+      <node id="1741258697587217178" at="228,88,229,106" concept="8" />
+      <scope id="1741258697587217178" at="228,88,229,106" />
     </file>
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/2172791612907956749">
@@ -9961,8 +9961,8 @@
       <unit id="4747359941571311762" at="27,0,118,0" name="jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginModule_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311762" at="308,91,309,105" concept="8" />
-      <scope id="4747359941571311762" at="308,91,309,105" />
+      <node id="4747359941571311762" at="309,91,310,105" concept="8" />
+      <scope id="4747359941571311762" at="309,91,310,105" />
     </file>
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/4747359941571311764">
@@ -10150,8 +10150,8 @@
       <unit id="4747359941571311813" at="27,0,118,0" name="jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginGroup_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311813" at="299,90,300,104" concept="8" />
-      <scope id="4747359941571311813" at="299,90,300,104" />
+      <node id="4747359941571311813" at="300,90,301,104" concept="8" />
+      <scope id="4747359941571311813" at="300,90,301,104" />
     </file>
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/4747359941571311815">

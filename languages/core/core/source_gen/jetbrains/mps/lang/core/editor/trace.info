@@ -22,8 +22,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/1960260476749651797">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1960260476749651797" at="68,65,69,93" concept="8" />
-      <scope id="1960260476749651797" at="68,65,69,93" />
+      <node id="1960260476749651797" at="62,59,63,63" concept="8" />
+      <scope id="1960260476749651797" at="62,59,63,63" />
     </file>
     <file name="VirtualPackage.java">
       <node id="1960260476749651797" at="15,47,16,35" concept="8" />
@@ -568,8 +568,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/2900100530630621651">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2900100530630621651" at="70,56,71,84" concept="8" />
-      <scope id="2900100530630621651" at="70,56,71,84" />
+      <node id="2900100530630621651" at="64,50,65,54" concept="8" />
+      <scope id="2900100530630621651" at="64,50,65,54" />
     </file>
     <file name="alias.java">
       <node id="2900100530630621651" at="15,47,16,35" concept="8" />
@@ -1032,8 +1032,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/3596842757766811989">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="3596842757766811989" at="64,85,65,113" concept="8" />
-      <scope id="3596842757766811989" at="64,85,65,113" />
+      <node id="3596842757766811989" at="58,79,59,83" concept="8" />
+      <scope id="3596842757766811989" at="58,79,59,83" />
     </file>
     <file name="ImplementationRemovedInStubMessage.java">
       <node id="3596842757766811989" at="15,47,16,35" concept="8" />
@@ -2029,8 +2029,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)/6639471181490591356">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6639471181490591356" at="66,82,67,110" concept="8" />
-      <scope id="6639471181490591356" at="66,82,67,110" />
+      <node id="6639471181490591356" at="60,76,61,80" concept="8" />
+      <scope id="6639471181490591356" at="60,76,61,80" />
     </file>
     <file name="ShortDescriptionEditorComponent.java">
       <node id="6639471181490591356" at="15,47,16,35" concept="8" />

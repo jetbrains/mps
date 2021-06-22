@@ -40,36 +40,36 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.samples.StateChart.editor.StateTransitions".equals(editorComponentId)) {
+      return Collections.singletonList(new StateTransitions());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.samples.StateChart.editor.StateChartContents":
+        return Collections.singletonList(new StateChartContents());
+      case "jetbrains.mps.samples.StateChart.editor.StateStates":
+        return Collections.singletonList(new StateStates());
+      case "jetbrains.mps.samples.StateChart.editor.StateTriggers":
+        return Collections.singletonList(new StateTriggers());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.samples.StateChart.editor.StateTransitions".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new StateTransitions());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.samples.StateChart.editor.StateChartContents":
-              return Collections.<ConceptEditorComponent>singletonList(new StateChartContents());
-            case "jetbrains.mps.samples.StateChart.editor.StateStates":
-              return Collections.<ConceptEditorComponent>singletonList(new StateStates());
-            case "jetbrains.mps.samples.StateChart.editor.StateTriggers":
-              return Collections.<ConceptEditorComponent>singletonList(new StateTriggers());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

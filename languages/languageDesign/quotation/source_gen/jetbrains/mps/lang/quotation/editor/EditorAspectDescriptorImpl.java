@@ -58,27 +58,26 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.quotation.editor.NodeBuilderNode_Component":
+        return Collections.singletonList(new NodeBuilderNode_Component());
+      case "jetbrains.mps.lang.quotation.editor.NodeBuilderNode_Inspector":
+        return Collections.singletonList(new NodeBuilderNode_Inspector());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.quotation.editor.NodeBuilderNode_Component":
-              return Collections.<ConceptEditorComponent>singletonList(new NodeBuilderNode_Component());
-            case "jetbrains.mps.lang.quotation.editor.NodeBuilderNode_Inspector":
-              return Collections.<ConceptEditorComponent>singletonList(new NodeBuilderNode_Inspector());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

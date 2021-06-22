@@ -68,41 +68,42 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.execution.configurations.editor.BeforeTasksComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new BeforeTasksComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.execution.configurations.editor.ComplexCanRunAndDebug":
+        return Collections.singletonList(new ComplexCanRunAndDebug());
+      case "jetbrains.mps.execution.configurations.editor.SimpleCanRunAndDebug":
+        return Collections.singletonList(new SimpleCanRunAndDebug());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.execution.configurations.editor.StartProcessWithTool_Component".equals(editorComponentId)) {
+      return Collections.singletonList(new StartProcessWithTool_Component());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.execution.configurations.editor.BeforeTasksComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new BeforeTasksComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.execution.configurations.editor.ComplexCanRunAndDebug":
-              return Collections.<ConceptEditorComponent>singletonList(new ComplexCanRunAndDebug());
-            case "jetbrains.mps.execution.configurations.editor.SimpleCanRunAndDebug":
-              return Collections.<ConceptEditorComponent>singletonList(new SimpleCanRunAndDebug());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.execution.configurations.editor.StartProcessWithTool_Component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new StartProcessWithTool_Component());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

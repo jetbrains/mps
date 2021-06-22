@@ -36,7 +36,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.execution.configurations.editor.DummyRunConfigurationInitializer_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,153,0" name="jetbrains.mps.execution.configurations.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,154,0" name="jetbrains.mps.execution.configurations.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="RunConfigurationCreator_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.execution.configurations.editor.RunConfigurationCreator_SubstituteMenu$CONCEPTS" />
@@ -3215,8 +3215,8 @@
   </root>
   <root nodeRef="r:7d438dd6-fddd-4f98-b0ae-eed9d2bebdce(jetbrains.mps.execution.configurations.editor)/6226796386650281952">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6226796386650281952" at="88,86,89,99" concept="8" />
-      <scope id="6226796386650281952" at="88,86,89,99" />
+      <node id="6226796386650281952" at="81,80,82,69" concept="8" />
+      <scope id="6226796386650281952" at="81,80,82,69" />
     </file>
     <file name="SimpleCanRunAndDebug.java">
       <node id="6226796386650281952" at="15,47,16,35" concept="8" />
@@ -4033,8 +4033,8 @@
       <unit id="6226796386650282045" at="55,0,374,0" name="jetbrains.mps.execution.configurations.editor.ComplexCanRunAndDebug_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6226796386650282045" at="86,87,87,100" concept="8" />
-      <scope id="6226796386650282045" at="86,87,87,100" />
+      <node id="6226796386650282045" at="79,81,80,70" concept="8" />
+      <scope id="6226796386650282045" at="79,81,80,70" />
     </file>
   </root>
   <root nodeRef="r:7d438dd6-fddd-4f98-b0ae-eed9d2bebdce(jetbrains.mps.execution.configurations.editor)/6550182048787537882">
@@ -6516,8 +6516,8 @@
   </root>
   <root nodeRef="r:7d438dd6-fddd-4f98-b0ae-eed9d2bebdce(jetbrains.mps.execution.configurations.editor)/8762838362356148186">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="8762838362356148186" at="115,94,116,97" concept="8" />
-      <scope id="8762838362356148186" at="115,94,116,97" />
+      <node id="8762838362356148186" at="116,94,117,97" concept="8" />
+      <scope id="8762838362356148186" at="116,94,117,97" />
     </file>
     <file name="togglingEnabledByDefaultProp.java">
       <node id="8762838362356148186" at="39,0,40,0" concept="3" trace="myLocations" />

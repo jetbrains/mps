@@ -786,8 +786,8 @@
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/4310380201428894259">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4310380201428894259" at="49,80,50,95" concept="8" />
-      <scope id="4310380201428894259" at="49,80,50,95" />
+      <node id="4310380201428894259" at="42,74,43,65" concept="8" />
+      <scope id="4310380201428894259" at="42,74,43,65" />
     </file>
     <file name="HintIsApplicable.java">
       <node id="4310380201428894259" at="15,47,16,35" concept="8" />
@@ -911,8 +911,8 @@
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/4607300357955494482">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4607300357955494482" at="51,76,52,91" concept="8" />
-      <scope id="4607300357955494482" at="51,76,52,91" />
+      <node id="4607300357955494482" at="44,70,45,61" concept="8" />
+      <scope id="4607300357955494482" at="44,70,45,61" />
     </file>
     <file name="IsApplicable.java">
       <node id="4607300357955494482" at="15,47,16,35" concept="8" />

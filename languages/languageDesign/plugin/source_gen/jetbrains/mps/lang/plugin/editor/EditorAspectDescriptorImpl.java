@@ -162,41 +162,42 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.plugin.editor.ModificationsEditor".equals(editorComponentId)) {
+      return Collections.singletonList(new ModificationsEditor());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.plugin.editor.ActionParameter_Hint":
+        return Collections.singletonList(new ActionParameter_Hint());
+      case "jetbrains.mps.lang.plugin.editor.ActionParameter_NameCellComponent":
+        return Collections.singletonList(new ActionParameter_NameCellComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.lang.plugin.editor.BaseToolDeclaration_Header".equals(editorComponentId)) {
+      return Collections.singletonList(new BaseToolDeclaration_Header());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.plugin.editor.ModificationsEditor".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ModificationsEditor());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.plugin.editor.ActionParameter_Hint":
-              return Collections.<ConceptEditorComponent>singletonList(new ActionParameter_Hint());
-            case "jetbrains.mps.lang.plugin.editor.ActionParameter_NameCellComponent":
-              return Collections.<ConceptEditorComponent>singletonList(new ActionParameter_NameCellComponent());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.lang.plugin.editor.BaseToolDeclaration_Header".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new BaseToolDeclaration_Header());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

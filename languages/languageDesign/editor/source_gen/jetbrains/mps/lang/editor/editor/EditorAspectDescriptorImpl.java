@@ -398,107 +398,116 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.CellModelCollection_FoldedCellComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new CellModelCollection_FoldedCellComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.CellModelListWithRole_FoldedCellComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new CellModelListWithRole_FoldedCellComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.editor.Common_Component":
+        return Collections.singletonList(new Common_Component());
+      case "jetbrains.mps.lang.editor.editor.Style_Component":
+        return Collections.singletonList(new Style_Component());
+      case "jetbrains.mps.lang.editor.editor._CellKeyMapLnk_Component":
+        return Collections.singletonList(new _CellKeyMapLnk_Component());
+      case "jetbrains.mps.lang.editor.editor._CellModel_Common":
+        return Collections.singletonList(new _CellModel_Common());
+      case "jetbrains.mps.lang.editor.editor._CloseTag":
+        return Collections.singletonList(new _CloseTag());
+      case "jetbrains.mps.lang.editor.editor._FocusPolicy_Applicable":
+        return Collections.singletonList(new _FocusPolicy_Applicable());
+      case "jetbrains.mps.lang.editor.editor._OpenTag":
+        return Collections.singletonList(new _OpenTag());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_3(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.CellStyle_Component".equals(editorComponentId)) {
+      return Collections.singletonList(new CellStyle_Component());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_4(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.IOutputConcept_Component".equals(editorComponentId)) {
+      return Collections.singletonList(new IOutputConcept_Component());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_5(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.ISubstituteMenu_PartsComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new ISubstituteMenu_PartsComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_6(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.TransformationMenu_Sections_Component".equals(editorComponentId)) {
+      return Collections.singletonList(new TransformationMenu_Sections_Component());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_7(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.SubstituteFeatureAlias".equals(editorComponentId)) {
+      return Collections.singletonList(new SubstituteFeatureAlias());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_8(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.SubstituteMenuPartAlias".equals(editorComponentId)) {
+      return Collections.singletonList(new SubstituteMenuPartAlias());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_9(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.TransformationFeatureAlias".equals(editorComponentId)) {
+      return Collections.singletonList(new TransformationFeatureAlias());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_10(String editorComponentId) {
+    if ("jetbrains.mps.lang.editor.editor.TransformationMenuPartAlias".equals(editorComponentId)) {
+      return Collections.singletonList(new TransformationMenuPartAlias());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.CellModelCollection_FoldedCellComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new CellModelCollection_FoldedCellComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.CellModelListWithRole_FoldedCellComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new CellModelListWithRole_FoldedCellComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.editor.Common_Component":
-              return Collections.<ConceptEditorComponent>singletonList(new Common_Component());
-            case "jetbrains.mps.lang.editor.editor.Style_Component":
-              return Collections.<ConceptEditorComponent>singletonList(new Style_Component());
-            case "jetbrains.mps.lang.editor.editor._CellKeyMapLnk_Component":
-              return Collections.<ConceptEditorComponent>singletonList(new _CellKeyMapLnk_Component());
-            case "jetbrains.mps.lang.editor.editor._CellModel_Common":
-              return Collections.<ConceptEditorComponent>singletonList(new _CellModel_Common());
-            case "jetbrains.mps.lang.editor.editor._CloseTag":
-              return Collections.<ConceptEditorComponent>singletonList(new _CloseTag());
-            case "jetbrains.mps.lang.editor.editor._FocusPolicy_Applicable":
-              return Collections.<ConceptEditorComponent>singletonList(new _FocusPolicy_Applicable());
-            case "jetbrains.mps.lang.editor.editor._OpenTag":
-              return Collections.<ConceptEditorComponent>singletonList(new _OpenTag());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       case 3:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.CellStyle_Component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new CellStyle_Component());
-          }
-        }
-        break;
+        return getDeclaredEC_3(editorComponentId);
       case 4:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.IOutputConcept_Component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new IOutputConcept_Component());
-          }
-        }
-        break;
+        return getDeclaredEC_4(editorComponentId);
       case 5:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.ISubstituteMenu_PartsComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ISubstituteMenu_PartsComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_5(editorComponentId);
       case 6:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.TransformationMenu_Sections_Component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new TransformationMenu_Sections_Component());
-          }
-        }
-        break;
+        return getDeclaredEC_6(editorComponentId);
       case 7:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.SubstituteFeatureAlias".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new SubstituteFeatureAlias());
-          }
-        }
-        break;
+        return getDeclaredEC_7(editorComponentId);
       case 8:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.SubstituteMenuPartAlias".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new SubstituteMenuPartAlias());
-          }
-        }
-        break;
+        return getDeclaredEC_8(editorComponentId);
       case 9:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.TransformationFeatureAlias".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new TransformationFeatureAlias());
-          }
-        }
-        break;
+        return getDeclaredEC_9(editorComponentId);
       case 10:
-        if (true) {
-          if ("jetbrains.mps.lang.editor.editor.TransformationMenuPartAlias".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new TransformationMenuPartAlias());
-          }
-        }
-        break;
+        return getDeclaredEC_10(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

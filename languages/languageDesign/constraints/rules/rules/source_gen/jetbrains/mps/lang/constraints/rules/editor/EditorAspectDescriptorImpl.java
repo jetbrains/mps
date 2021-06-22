@@ -31,34 +31,34 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.constraints.rules.editor.ConstraintsDef_isDefined".equals(editorComponentId)) {
+      return Collections.singletonList(new ConstraintsDef_isDefined());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.constraints.rules.editor.HintIsApplicable":
+        return Collections.singletonList(new HintIsApplicable());
+      case "jetbrains.mps.lang.constraints.rules.editor.IsApplicable":
+        return Collections.singletonList(new IsApplicable());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.constraints.rules.editor.ConstraintsDef_isDefined".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ConstraintsDef_isDefined());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.constraints.rules.editor.HintIsApplicable":
-              return Collections.<ConceptEditorComponent>singletonList(new HintIsApplicable());
-            case "jetbrains.mps.lang.constraints.rules.editor.IsApplicable":
-              return Collections.<ConceptEditorComponent>singletonList(new IsApplicable());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

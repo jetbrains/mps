@@ -192,36 +192,39 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_Component".equals(editorComponentId)) {
+      return Collections.singletonList(new AbstractContainerCreator_Component());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.baseLanguage.collections.editor.CustomMapCreator_component".equals(editorComponentId)) {
+      return Collections.singletonList(new CustomMapCreator_component());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.baseLanguage.collections.editor.HashMapCreator_editorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new HashMapCreator_editorComponent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_Component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new AbstractContainerCreator_Component());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.baseLanguage.collections.editor.CustomMapCreator_component".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new CustomMapCreator_component());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.baseLanguage.collections.editor.HashMapCreator_editorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new HashMapCreator_editorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

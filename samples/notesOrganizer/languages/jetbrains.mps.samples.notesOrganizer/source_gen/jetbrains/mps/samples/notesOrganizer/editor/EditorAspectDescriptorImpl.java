@@ -44,29 +44,31 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.samples.notesOrganizer.editor.NoteMetaInformation".equals(editorComponentId)) {
+      return Collections.singletonList(new NoteMetaInformation());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.samples.notesOrganizer.editor.MetaInfo".equals(editorComponentId)) {
+      return Collections.singletonList(new MetaInfo());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.samples.notesOrganizer.editor.NoteMetaInformation".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new NoteMetaInformation());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.samples.notesOrganizer.editor.MetaInfo".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new MetaInfo());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
   }

@@ -52,36 +52,39 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent".equals(editorComponentId)) {
+      return Collections.singletonList(new DocumentationEntryContent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent".equals(editorComponentId)) {
+      return Collections.singletonList(new EquationEntryContent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent".equals(editorComponentId)) {
+      return Collections.singletonList(new SheetEntryContent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new DocumentationEntryContent());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new EquationEntryContent());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new SheetEntryContent());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
   }

@@ -82,7 +82,7 @@
       <unit at="30,0,132,0" name="jetbrains.mps.lang.plugin.editor.ActionType_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,307,0" name="jetbrains.mps.lang.plugin.editor.EditorAspectDescriptorImpl" />
+      <unit at="18,0,308,0" name="jetbrains.mps.lang.plugin.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="EditorTabReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.lang.plugin.editor.EditorTabReference_SubstituteMenu$CONCEPTS" />
@@ -469,8 +469,8 @@
       <unit id="1171743928471335740" at="45,0,135,0" name="jetbrains.mps.lang.plugin.editor.ActionParameter_NameCellComponent_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1171743928471335740" at="182,86,183,112" concept="8" />
-      <scope id="1171743928471335740" at="182,86,183,112" />
+      <node id="1171743928471335740" at="175,80,176,82" concept="8" />
+      <scope id="1171743928471335740" at="175,80,176,82" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590363(jetbrains.mps.lang.plugin.editor)/1171743928471867455">
@@ -681,8 +681,8 @@
       <unit id="1171743928471867455" at="34,0,182,0" name="jetbrains.mps.lang.plugin.editor.ActionParameter_Hint_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1171743928471867455" at="180,73,181,99" concept="8" />
-      <scope id="1171743928471867455" at="180,73,181,99" />
+      <node id="1171743928471867455" at="173,67,174,69" concept="8" />
+      <scope id="1171743928471867455" at="173,67,174,69" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590363(jetbrains.mps.lang.plugin.editor)/1203088085791">

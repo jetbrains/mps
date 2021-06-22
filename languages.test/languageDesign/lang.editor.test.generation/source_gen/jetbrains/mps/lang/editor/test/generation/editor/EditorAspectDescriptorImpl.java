@@ -44,123 +44,116 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.Constant_Default":
+        return Collections.singletonList(new Constant_Default());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Constant_EditorCellModel":
+        return Collections.singletonList(new Constant_EditorCellModel());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Constant_ICellStyle":
+        return Collections.singletonList(new Constant_ICellStyle());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Constant_IStyleContainer":
+        return Collections.singletonList(new Constant_IStyleContainer());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.Error_Default":
+        return Collections.singletonList(new Error_Default());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Error_EditorCellModel":
+        return Collections.singletonList(new Error_EditorCellModel());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Error_ICellStyle":
+        return Collections.singletonList(new Error_ICellStyle());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Error_IStyleContainer":
+        return Collections.singletonList(new Error_IStyleContainer());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_Default":
+        return Collections.singletonList(new ModelAccess_Default());
+      case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_EditorCellModel":
+        return Collections.singletonList(new ModelAccess_EditorCellModel());
+      case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_ICellStyle":
+        return Collections.singletonList(new ModelAccess_ICellStyle());
+      case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_IStyleContainer":
+        return Collections.singletonList(new ModelAccess_IStyleContainer());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_3(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.Property_Default":
+        return Collections.singletonList(new Property_Default());
+      case "jetbrains.mps.lang.editor.test.generation.editor.Property_IStyleContainer":
+        return Collections.singletonList(new Property_IStyleContainer());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_4(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.ReadOnlyModelAccessor_EditorCellModel":
+        return Collections.singletonList(new ReadOnlyModelAccessor_EditorCellModel());
+      case "jetbrains.mps.lang.editor.test.generation.editor.ReadOnlyModelAccessor_ICellStyle":
+        return Collections.singletonList(new ReadOnlyModelAccessor_ICellStyle());
+      case "jetbrains.mps.lang.editor.test.generation.editor.ReadOnlyModelAccessor_IStyleContainer":
+        return Collections.singletonList(new ReadOnlyModelAccessor_IStyleContainer());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_5(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_Default":
+        return Collections.singletonList(new RefNodeList_Default());
+      case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_EditorCellModel":
+        return Collections.singletonList(new RefNodeList_EditorCellModel());
+      case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_ICelllStyle":
+        return Collections.singletonList(new RefNodeList_ICelllStyle());
+      case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_IStyleContainer":
+        return Collections.singletonList(new RefNodeList_IStyleContainer());
+      case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_ListWithRole":
+        return Collections.singletonList(new RefNodeList_ListWithRole());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_6(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_Default":
+        return Collections.singletonList(new TransactionalProperty_Default());
+      case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_EditorCellModel":
+        return Collections.singletonList(new TransactionalProperty_EditorCellModel());
+      case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_ICellStyle":
+        return Collections.singletonList(new TransactionalProperty_ICellStyle());
+      case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_IStyleContainer":
+        return Collections.singletonList(new TransactionalProperty_IStyleContainer());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.Constant_Default":
-              return Collections.<ConceptEditorComponent>singletonList(new Constant_Default());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Constant_EditorCellModel":
-              return Collections.<ConceptEditorComponent>singletonList(new Constant_EditorCellModel());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Constant_ICellStyle":
-              return Collections.<ConceptEditorComponent>singletonList(new Constant_ICellStyle());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Constant_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new Constant_IStyleContainer());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.Error_Default":
-              return Collections.<ConceptEditorComponent>singletonList(new Error_Default());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Error_EditorCellModel":
-              return Collections.<ConceptEditorComponent>singletonList(new Error_EditorCellModel());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Error_ICellStyle":
-              return Collections.<ConceptEditorComponent>singletonList(new Error_ICellStyle());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Error_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new Error_IStyleContainer());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_Default":
-              return Collections.<ConceptEditorComponent>singletonList(new ModelAccess_Default());
-            case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_EditorCellModel":
-              return Collections.<ConceptEditorComponent>singletonList(new ModelAccess_EditorCellModel());
-            case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_ICellStyle":
-              return Collections.<ConceptEditorComponent>singletonList(new ModelAccess_ICellStyle());
-            case "jetbrains.mps.lang.editor.test.generation.editor.ModelAccess_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new ModelAccess_IStyleContainer());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       case 3:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.Property_Default":
-              return Collections.<ConceptEditorComponent>singletonList(new Property_Default());
-            case "jetbrains.mps.lang.editor.test.generation.editor.Property_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new Property_IStyleContainer());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_3(editorComponentId);
       case 4:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.ReadOnlyModelAccessor_EditorCellModel":
-              return Collections.<ConceptEditorComponent>singletonList(new ReadOnlyModelAccessor_EditorCellModel());
-            case "jetbrains.mps.lang.editor.test.generation.editor.ReadOnlyModelAccessor_ICellStyle":
-              return Collections.<ConceptEditorComponent>singletonList(new ReadOnlyModelAccessor_ICellStyle());
-            case "jetbrains.mps.lang.editor.test.generation.editor.ReadOnlyModelAccessor_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new ReadOnlyModelAccessor_IStyleContainer());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_4(editorComponentId);
       case 5:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_Default":
-              return Collections.<ConceptEditorComponent>singletonList(new RefNodeList_Default());
-            case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_EditorCellModel":
-              return Collections.<ConceptEditorComponent>singletonList(new RefNodeList_EditorCellModel());
-            case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_ICelllStyle":
-              return Collections.<ConceptEditorComponent>singletonList(new RefNodeList_ICelllStyle());
-            case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new RefNodeList_IStyleContainer());
-            case "jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_ListWithRole":
-              return Collections.<ConceptEditorComponent>singletonList(new RefNodeList_ListWithRole());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_5(editorComponentId);
       case 6:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_Default":
-              return Collections.<ConceptEditorComponent>singletonList(new TransactionalProperty_Default());
-            case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_EditorCellModel":
-              return Collections.<ConceptEditorComponent>singletonList(new TransactionalProperty_EditorCellModel());
-            case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_ICellStyle":
-              return Collections.<ConceptEditorComponent>singletonList(new TransactionalProperty_ICellStyle());
-            case "jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_IStyleContainer":
-              return Collections.<ConceptEditorComponent>singletonList(new TransactionalProperty_IStyleContainer());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_6(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
   public Collection<ConceptEditorHint> getHints() {
     return myHints;
   }

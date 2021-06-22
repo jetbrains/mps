@@ -146,60 +146,61 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.lang.generator.editor.AbstractMacro_comment_inspector".equals(editorComponentId)) {
+      return Collections.singletonList(new AbstractMacro_comment_inspector());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.generator.editor.BaseMappingRule_premise":
+        return Collections.singletonList(new BaseMappingRule_premise());
+      case "jetbrains.mps.lang.generator.editor.MappingRuleCommonFields":
+        return Collections.singletonList(new MappingRuleCommonFields());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_2(String editorComponentId) {
+    if ("jetbrains.mps.lang.generator.editor.ITemplateCall_actualArguments".equals(editorComponentId)) {
+      return Collections.singletonList(new ITemplateCall_actualArguments());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_3(String editorComponentId) {
+    if ("jetbrains.mps.lang.generator.editor.ExtensionsPlaceholder".equals(editorComponentId)) {
+      return Collections.singletonList(new ExtensionsPlaceholder());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_4(String editorComponentId) {
+    switch (editorComponentId) {
+      case "jetbrains.mps.lang.generator.editor.NodeMacro_label_inspector":
+        return Collections.singletonList(new NodeMacro_label_inspector());
+      case "jetbrains.mps.lang.generator.editor.NodeMacro_postfix":
+        return Collections.singletonList(new NodeMacro_postfix());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.lang.generator.editor.AbstractMacro_comment_inspector".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new AbstractMacro_comment_inspector());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.generator.editor.BaseMappingRule_premise":
-              return Collections.<ConceptEditorComponent>singletonList(new BaseMappingRule_premise());
-            case "jetbrains.mps.lang.generator.editor.MappingRuleCommonFields":
-              return Collections.<ConceptEditorComponent>singletonList(new MappingRuleCommonFields());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       case 2:
-        if (true) {
-          if ("jetbrains.mps.lang.generator.editor.ITemplateCall_actualArguments".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ITemplateCall_actualArguments());
-          }
-        }
-        break;
+        return getDeclaredEC_2(editorComponentId);
       case 3:
-        if (true) {
-          if ("jetbrains.mps.lang.generator.editor.ExtensionsPlaceholder".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ExtensionsPlaceholder());
-          }
-        }
-        break;
+        return getDeclaredEC_3(editorComponentId);
       case 4:
-        if (true) {
-          switch (editorComponentId) {
-            case "jetbrains.mps.lang.generator.editor.NodeMacro_label_inspector":
-              return Collections.<ConceptEditorComponent>singletonList(new NodeMacro_label_inspector());
-            case "jetbrains.mps.lang.generator.editor.NodeMacro_postfix":
-              return Collections.<ConceptEditorComponent>singletonList(new NodeMacro_postfix());
-            default:
-              return Collections.<ConceptEditorComponent>emptyList();
-          }
-        }
-        break;
+        return getDeclaredEC_4(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override

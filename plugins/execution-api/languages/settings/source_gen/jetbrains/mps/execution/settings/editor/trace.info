@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="17,0,116,0" name="jetbrains.mps.execution.settings.editor.EditorAspectDescriptorImpl" />
+      <unit at="17,0,115,0" name="jetbrains.mps.execution.settings.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="EditorOperationCall_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.execution.settings.editor.EditorOperationCall_SubstituteMenu$CONCEPTS" />
@@ -5260,8 +5260,8 @@
   </root>
   <root nodeRef="r:328ff5ee-9330-4068-906e-6e3bb50e6e1d(jetbrains.mps.execution.settings.editor)/946964771156905574">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="946964771156905574" at="78,89,79,108" concept="8" />
-      <scope id="946964771156905574" at="78,89,79,108" />
+      <node id="946964771156905574" at="72,83,73,78" concept="8" />
+      <scope id="946964771156905574" at="72,83,73,78" />
     </file>
     <file name="PersistentPropertiesComponent.java">
       <node id="946964771156905574" at="15,47,16,35" concept="8" />
@@ -5572,8 +5572,8 @@
   </root>
   <root nodeRef="r:328ff5ee-9330-4068-906e-6e3bb50e6e1d(jetbrains.mps.execution.settings.editor)/946964771156905597">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="946964771156905597" at="74,75,75,94" concept="8" />
-      <scope id="946964771156905597" at="74,75,75,94" />
+      <node id="946964771156905597" at="68,69,69,64" concept="8" />
+      <scope id="946964771156905597" at="68,69,69,64" />
     </file>
     <file name="EditorComponent.java">
       <node id="946964771156905597" at="15,47,16,35" concept="8" />
@@ -5750,8 +5750,8 @@
   </root>
   <root nodeRef="r:328ff5ee-9330-4068-906e-6e3bb50e6e1d(jetbrains.mps.execution.settings.editor)/946964771156905611">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="946964771156905611" at="76,86,77,105" concept="8" />
-      <scope id="946964771156905611" at="76,86,77,105" />
+      <node id="946964771156905611" at="70,80,71,75" concept="8" />
+      <scope id="946964771156905611" at="70,80,71,75" />
     </file>
     <file name="PersistentMethodsComponent.java">
       <node id="946964771156905611" at="15,47,16,35" concept="8" />

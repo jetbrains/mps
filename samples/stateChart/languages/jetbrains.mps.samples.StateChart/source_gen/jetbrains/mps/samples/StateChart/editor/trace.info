@@ -1448,8 +1448,8 @@
   </root>
   <root nodeRef="r:f2fc442e-c0f0-467d-ac9f-8f38c8182f6f(jetbrains.mps.samples.StateChart.editor)/6216326891663378496">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6216326891663378496" at="62,73,63,92" concept="8" />
-      <scope id="6216326891663378496" at="62,73,63,92" />
+      <node id="6216326891663378496" at="55,67,56,62" concept="8" />
+      <scope id="6216326891663378496" at="55,67,56,62" />
     </file>
     <file name="StateTriggers.java">
       <node id="6216326891663378496" at="15,47,16,35" concept="8" />
@@ -1730,8 +1730,8 @@
   </root>
   <root nodeRef="r:f2fc442e-c0f0-467d-ac9f-8f38c8182f6f(jetbrains.mps.samples.StateChart.editor)/6216326891663389714">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6216326891663389714" at="60,71,61,90" concept="8" />
-      <scope id="6216326891663389714" at="60,71,61,90" />
+      <node id="6216326891663389714" at="53,65,54,60" concept="8" />
+      <scope id="6216326891663389714" at="53,65,54,60" />
     </file>
     <file name="StateStates.java">
       <node id="6216326891663389714" at="15,47,16,35" concept="8" />
@@ -2470,8 +2470,8 @@
   </root>
   <root nodeRef="r:f2fc442e-c0f0-467d-ac9f-8f38c8182f6f(jetbrains.mps.samples.StateChart.editor)/6813679070099252300">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="6813679070099252300" at="58,78,59,97" concept="8" />
-      <scope id="6813679070099252300" at="58,78,59,97" />
+      <node id="6813679070099252300" at="51,72,52,67" concept="8" />
+      <scope id="6813679070099252300" at="51,72,52,67" />
     </file>
     <file name="StateChartContents.java">
       <node id="6813679070099252300" at="15,47,16,35" concept="8" />

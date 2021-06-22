@@ -62,29 +62,31 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return Collections.<ConceptEditor>emptyList();
   }
-
+  private Collection<ConceptEditorComponent> getDeclaredEC_0(String editorComponentId) {
+    if ("jetbrains.mps.console.base.editor.ClickableEditorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new ClickableEditorComponent());
+    }
+    return Collections.emptyList();
+  }
+  private Collection<ConceptEditorComponent> getDeclaredEC_1(String editorComponentId) {
+    if ("jetbrains.mps.console.base.editor.INodeWithReference_EditorComponent".equals(editorComponentId)) {
+      return Collections.singletonList(new INodeWithReference_EditorComponent());
+    }
+    return Collections.emptyList();
+  }
   @NotNull
   public Collection<ConceptEditorComponent> getDeclaredEditorComponents(SAbstractConcept concept, String editorComponentId) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        if (true) {
-          if ("jetbrains.mps.console.base.editor.ClickableEditorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new ClickableEditorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_0(editorComponentId);
       case 1:
-        if (true) {
-          if ("jetbrains.mps.console.base.editor.INodeWithReference_EditorComponent".equals(editorComponentId)) {
-            return Collections.<ConceptEditorComponent>singletonList(new INodeWithReference_EditorComponent());
-          }
-        }
-        break;
+        return getDeclaredEC_1(editorComponentId);
       default:
     }
-    return Collections.<ConceptEditorComponent>emptyList();
+    return Collections.emptyList();
   }
+
 
   @NotNull
   @Override
