@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,10 @@ package jetbrains.mps.smodel.runtime;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public final class ConceptPresentationBuilder {
@@ -79,18 +77,6 @@ public final class ConceptPresentationBuilder {
 
   public ConceptPresentationBuilder experimental(boolean value) {
     myExperimental = value;
-    return this;
-  }
-
-  /**
-   * @deprecated use {@link #deprecateProperty(long, String)} or {@link #deprecateAggregation(long, String)} instead
-   *             Keep it until 2017.2 is out; code generated with 2017.1 uses this method
-   */
-  @ToRemove(version = 2017.2)
-  @Deprecated
-  public ConceptPresentationBuilder deprecated(SConceptFeature ... f) {
-    initDeprecatedFeaturesList();
-    myDeprecatedFeatures.addAll(Arrays.asList(f));
     return this;
   }
 
