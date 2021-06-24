@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,14 +82,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       myCancellableReads.removeIfCanCancel(r);
       return;
     }
-    ApplicationManager.getApplication().runReadAction(() -> {
-      getReadLock().lock();
-      try {
-        myReadActionDispatcher.dispatch(r);
-      } finally {
-        getReadLock().unlock();
-      }
-    });
+    ApplicationManager.getApplication().runReadAction(new LockRunnable(getReadLock(), myReadActionDispatcher.wrap(r)));
     myCancellableReads.removeIfCanCancel(r);
   }
 

@@ -22,24 +22,29 @@ import org.apache.log4j.Logger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 /**
- * Reentrant action execution, with notification on first and last action.
+ * Thread-safe, but not-reentrant action execution mechanism, with notification dispatch on first and last action.
+ * Maintains inner state to tell different execution phases like event notification and actual action execution.
+ * Not reentrant means one shall not get into {@code dispatch()} when the same thread is {@link #isInsideNotificationDispatch()}
+ * <br/>
  * Use {@link #dispatch(Runnable)} to execute {@link Runnable action} with proper event dispatching.
  * If you need to postpone execution (and event dispatching), you can get appropriate runnable with {@link #wrap(Runnable)}.
- *
- * Implementation doesn't assume single thread {@linkplain #dispatch(Runnable) dispatches}, though is not completely thread-safe.
+ * <br/>
  * {@code onActionStart} is notified prior to first action of a first thread that asked for {@code dispatch} and
  * {@code onActionFinish} is notified after the last {@code dispatch} is over.
- * FIXME However, note that there may be another read started from other thread the moment finish events are dispatched for the other thread.
- * FIXME       Besides, there are chances to get into read action prior to the moment event dispatch is over (thread-1 starts read and fires events, thread-2
- * FIXME       starts meanwhile and runs read.
- *             Now there is only 1 listener that may get affected, still needs to address this defect. Need a synch primitive to ensure notifications are out
- *             the moment any other read gets their chance to run. Barrier, semaphore? Perhaps, split single-threaded impl to keep it simple?
- *
+ * <br/>
+ * Actions executed from threads other than the one dispatching pre/post notifications wait for notifications to complete
+ * and then make their decision whether there's a need for new round of notifications. In other words, two actions started from
+ * two different thread may result in single pair of {@code onActionStart}/{@code onActionFinish} or in two independent pairs of
+ * notifications. Besides, in first case there's no guarantee it would be the same thread to dispatch {@code onActionFinish} as the one
+ * that fired {@code onActionStart}.
  *
  * @param <T> listener to notify
  *
@@ -52,7 +57,16 @@ import java.util.function.Predicate;
   private final Consumer<T> myOnActionStart;
   private final Consumer<T> myOnActionFinish;
   private final T myPrePostListener;
-  private final AtomicInteger myActionLevel = new AtomicInteger(0);
+  // number of "active" clients of this dispatcher. First client to run fires {@code onActionStart},
+  // last client to leave fires {@code onActionFinish}.
+  private final AtomicInteger myActiveThreads = new AtomicInteger(0);
+  // fine-grained phase transition
+  private final AtomicReference<State> myState = new AtomicReference<>(State.READY);
+  // guards myState transitions (iow, notification dispatch phase)
+  // impl note: I could have picked synchronized() approach instead, makes it easier to handle exceptions (i.e. monitor release).
+  //    picked semaphore as I want to have a time limit for lock acquisition, which may come handy e.g. when
+  //    same thread gets into dispatch() more than once
+  private final Semaphore myNotifyGuard = new Semaphore(1);
 
   // all arguments are non-null
   public ActionDispatcher(Consumer<T> onActionStart, Consumer<T> onActionFinish) {
@@ -76,17 +90,9 @@ import java.util.function.Predicate;
    * @param r action to execute
    */
   public void dispatch(Runnable r) {
-    final boolean traceEnabled = LOG.isTraceEnabled();
-    final int actionLevel = myActionLevel.getAndIncrement();
+    InterruptedException interruptedException = null;
     try {
-      if (actionLevel == 0) {
-        // in case listener fails, shall get into final to ensure myActionLevel is correct
-        onActionStarted();
-      }
-      if (traceEnabled) {
-        // I want trace to report actionLevel consistently (for multi-threaded run, myActionLevel.get() gives actual value, not the stable one)
-        LOG.trace(String.format("Action started (level:%d)", actionLevel));
-      }
+      onEnter();
       try {
         r.run();
       } catch (RuntimeException ex) {
@@ -95,13 +101,28 @@ import java.util.function.Predicate;
         logUnexpectedRuntimeException(ex);
         throw ex;
       }
+    } catch (InterruptedException ex) {
+      // XXX not quite nice, but could not come up with a better mechanism to skip onExit() when onEnter() fails
+      //     to grab a lock, and there's no reason for onExit() to attempt to modify inner state (like decrement counter),
+      //     which may lead to further inconsistencies.
+      //     I assume there's no guarantee that attempt to grab a lock onExit() would fail too if it failed for onEnter().
+      interruptedException = ex;
     } finally {
-      if (traceEnabled) {
-        LOG.trace(String.format("Action finished (level:%d)", actionLevel));
+      if (interruptedException == null) {
+        try {
+          onExit();
+        } catch (InterruptedException ex) {
+          // FIXME here we are likely in an invalid state (onEntry succeed, onExit didn't grab myNotifyGuard),
+          //       although no idea how to bring it back to 'normal', seems that it's not possible right here - there
+          //       could be other threads and we can not reset the state right now.
+          //       Perhaps, another State could be introduced, and checked as a first thing in onEntry() under myNotifyGuard,
+          //       where we can try to start all over again with a blank page.
+          interruptedException = ex;
+        }
       }
-      if (myActionLevel.decrementAndGet() == 0) {
-        onActionFinished();
-      }
+    }
+    if (interruptedException != null) {
+      throw new RuntimeException(interruptedException);
     }
   }
 
@@ -122,7 +143,7 @@ import java.util.function.Predicate;
       // don't treat IDEA's control flow exceptions as errors. We can do nothing about IDEA's approach to use RuntimeException implements ControlFlowException
       // but at least shall not log it as an error to avoid perception something's wrong with MPS>
       if (RuntimeFlags.isInternalMode() || LOG.isDebugEnabled()) {
-        final String msg = String.format("Action dispatch cancelled with control flow exception (level:%d)", myActionLevel.get());
+        final String msg = formatMessageDetails("Action dispatch cancelled with control flow exception");
         if (RuntimeFlags.isInternalMode()) {
           LOG.warn(msg, ex);
         } else {
@@ -131,38 +152,101 @@ import java.util.function.Predicate;
       }
       return;
     }
-    // we need this catch not to obscure errors during run with errors from finally block (e.g. if both onActionStarted and onActionFinished fail with
-    // exception, we would observe only the last one from onActionFinished)
-    // FWIW, there's no scenario behind actionLevel printout here, just in case it yields anything interesting.
-    LOG.error(String.format("Action dispatch failed (level:%d)", myActionLevel.get()), ex);
+    // we need this catch not to obscure errors during run with errors from finally block
+    // (e.g. if both onActionStarted and onActionFinished fail with exception, withou this code one would
+    // see only the last one from onActionFinished)
+    LOG.error(formatMessageDetails("Action dispatch failed"), ex);
   }
 
-  private void onActionStarted() {
+  private String formatMessageDetails(String msg) {
+    final String threadName = Thread.currentThread().getName();
+    final State actualState = myState.get();
+    return String.format("%s. Thread %s, state %s, %d active clients.", msg, threadName, actualState, myActiveThreads.get());
+  }
+
+  private void onEnter() throws InterruptedException {
+    if (!myNotifyGuard.tryAcquire(3, TimeUnit.MINUTES)) {
+      throw new InterruptedException(formatMessageDetails("Deadlock prevention. Notify 'start' takes too long"));
+    }
+    final int cnt = myActiveThreads.getAndIncrement();
     try {
-      if (myPrePostListener != null) {
-        myOnActionStart.accept(myPrePostListener);
+      if (cnt == 0) {
+        // in case listener fails, shall get into respective final to ensure myActiveThreads is correct
+        transitState(State.READY, State.NOTIFY_START);
+        if (myPrePostListener != null) {
+          myOnActionStart.accept(myPrePostListener);
+        }
+        myListeners.forEach(myOnActionStart);
+        transitState(State.NOTIFY_START, State.ACTIVE);
       }
-      myListeners.forEach(myOnActionStart);
+    } catch (RuntimeException ex) {
+      // XXX shall I deal with myState here? As long as I don't use compareAndSet, seems that may ignore that.
+      // However, if yes, what would be the right reset state - READY or ACTIVE? What if there's another read in parallel
+      // Thread2, which would getAndIncrement > 0 (once onEnter() completes in Thread1, but didn't get to onExit() from finally) -
+      // Thread2 would not like READY, it assumes it's ACTIVE if it's running. Seems that ACTIVE might be preferable as well
+      // from perspective of finally block, which would try to dispatch onActionFinished events, and would naturally expect
+      // ACTIVE->NOTIFY_FINISH transition.
+      // Perhaps, shall wrap listener dispatch with additional try-finally block that ensures proper transitions? see onExit()
+      logUnexpectedRuntimeException(ex);
+      throw ex;
+    } finally {
+      myNotifyGuard.release();
+    }
+    checkState(State.ACTIVE);
+  }
+
+  private void onExit() throws InterruptedException {
+    if (!myNotifyGuard.tryAcquire(3, TimeUnit.MINUTES)) {
+      throw new InterruptedException(formatMessageDetails("Deadlock prevention. Notify 'finish' takes too long"));
+    }
+    final int cnt = myActiveThreads.decrementAndGet();
+    try {
+      if (cnt == 0) {
+        transitState(State.ACTIVE, State.NOTIFY_FINISH);
+        try {
+          // FIXME guess, would be better to dispatch on reversed list, to resemble an order of start notification
+          //       i.e. just in case there are some interdependencies b/w different listeners.
+          myListeners.forEach(myOnActionFinish);
+          if (myPrePostListener != null) {
+            myOnActionFinish.accept(myPrePostListener);
+          }
+        } finally {
+          transitState(State.NOTIFY_FINISH, State.READY);
+        }
+      }
     } catch (RuntimeException ex) {
       logUnexpectedRuntimeException(ex);
       throw ex;
+    } finally {
+      myNotifyGuard.release();
+    }
+    checkState(cnt == 0 ? State.READY : State.ACTIVE);
+  }
+
+  private void checkState(State expected) {
+    final State actual = myState.get();
+    if (actual != expected) {
+      LOG.info(formatMessageDetails(String.format("Expected %s, actual is %s", expected, actual)), new Throwable());
     }
   }
 
-  private void onActionFinished() {
-    try {
-      myListeners.forEach(myOnActionFinish);
-      if (myPrePostListener != null) {
-        myOnActionFinish.accept(myPrePostListener);
-      }
-    } catch (RuntimeException ex) {
-      logUnexpectedRuntimeException(ex);
-      throw ex;
-    }
+  private void transitState(State expected, State desired) {
+    checkState(expected);
+    // intentionally not compareAndSet(), to deal with potential inconsistencies in case some listener fails with
+    // with an exception. It's quite tricky to restore a reasonable state in the case of exception/throwable, and I
+    // don't want subsequent execution attempts to fail due to broken state.
+    myState.set(desired);
   }
 
+  // not perfect naming, tells whether this dispatcher is in a state where actual client code is executed, not
+  // in idle (ready for any new client) nor in 'technological' phase of notification dispatch
   public boolean isInsideAction() {
-    return myActionLevel.get() > 0;
+    return myState.get() == State.ACTIVE;
+  }
+
+  public boolean isInsideNotificationDispatch() {
+    final State state = myState.get();
+    return state == State.NOTIFY_FINISH || state == State.NOTIFY_START;
   }
 
   /**
@@ -200,5 +284,9 @@ import java.util.function.Predicate;
     ListenersConsistenceException(String msg) {
       super(msg);
     }
+  }
+
+  private enum State {
+    READY, NOTIFY_START, ACTIVE, NOTIFY_FINISH
   }
 }
