@@ -292,6 +292,10 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       // a failed assertion.
       ApplicationManager.getApplication().assertWriteAccessAllowed();
       // just go on with cmd as is
+      if (myCommandActionDispatcher.isInsideNotificationDispatch()) {
+        // ... unless we're inside previous command notification. See MPS-33474 and MPS-33432 for reasons.
+        throw new IllegalModelAccessException("Do not start a new command while start/finish notification for another command is in process");
+      }
     } else {
       final LockRunnable withModelLock = new LockRunnable(getWriteLock(), wrapWithModelWriteDispatch(cmd));
       cmd = myPlatformWriteHelper.withPlatformWrite(withModelLock);

@@ -171,22 +171,19 @@ import java.util.function.Predicate;
     final int cnt = myActiveThreads.getAndIncrement();
     try {
       if (cnt == 0) {
-        // in case listener fails, shall get into respective final to ensure myActiveThreads is correct
-        transitState(State.READY, State.NOTIFY_START);
-        if (myPrePostListener != null) {
-          myOnActionStart.accept(myPrePostListener);
+        try {
+          // in case any listener fails, shall get into respective finally with onExit() to ensure myActiveThreads is correct
+          transitState(State.READY, State.NOTIFY_START);
+          if (myPrePostListener != null) {
+            myOnActionStart.accept(myPrePostListener);
+          }
+          myListeners.forEach(myOnActionStart);
+        } finally {
+          // in any case, treat notification complete, and let other threads, if any, continue with an expected 'ACTIVE' state
+          transitState(State.NOTIFY_START, State.ACTIVE);
         }
-        myListeners.forEach(myOnActionStart);
-        transitState(State.NOTIFY_START, State.ACTIVE);
       }
     } catch (RuntimeException ex) {
-      // XXX shall I deal with myState here? As long as I don't use compareAndSet, seems that may ignore that.
-      // However, if yes, what would be the right reset state - READY or ACTIVE? What if there's another read in parallel
-      // Thread2, which would getAndIncrement > 0 (once onEnter() completes in Thread1, but didn't get to onExit() from finally) -
-      // Thread2 would not like READY, it assumes it's ACTIVE if it's running. Seems that ACTIVE might be preferable as well
-      // from perspective of finally block, which would try to dispatch onActionFinished events, and would naturally expect
-      // ACTIVE->NOTIFY_FINISH transition.
-      // Perhaps, shall wrap listener dispatch with additional try-finally block that ensures proper transitions? see onExit()
       logUnexpectedRuntimeException(ex);
       throw ex;
     } finally {
@@ -286,6 +283,17 @@ import java.util.function.Predicate;
     }
   }
 
+  /**
+   * <ul>
+   * <li>{@code READY} is initial state with no actions being dispatched.
+   * <li>{@code NOTIFY_START} when one of the action dispatches {@code onActionStart} notifications. Others (if any) wait.
+   *                          {@code READY} --> {@code NOTIFY_START} --> {@code ACTIVE}
+   * <li>{@code ACTIVE} one of threads done with {@code onActionStart} dispatch, any thread could go on executing an action.
+   * <li>{@code NOTIFY_FINISH} when there are no more actions, the last one dispatches {@code onActionFinish} notifications.
+   *                           {@code ACTIVE} --> {@code NOTIFY_FINISH} --> {@code READY}
+   *                           If a new action comes during dispatch, it waits for state change and then starts with {@code READY} state.
+   * </ul>
+   */
   private enum State {
     READY, NOTIFY_START, ACTIVE, NOTIFY_FINISH
   }
