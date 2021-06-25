@@ -66148,7 +66148,12 @@
                         <node concept="Xl_RD" id="1wEcoXjIJvf" role="3uHU7w">
                           <property role="Xl_RC" value="[]" />
                         </node>
-                        <node concept="2ZBlsa" id="1wEcoXjIJvk" role="3uHU7B" />
+                        <node concept="2OqwBi" id="2Te61dn6$UB" role="3uHU7B">
+                          <node concept="2ZBlsa" id="1wEcoXjIJvk" role="2Oq$k0" />
+                          <node concept="2qgKlT" id="2Te61dn6_rd" role="2OqNvi">
+                            <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -66162,7 +66167,12 @@
             <node concept="3clFbS" id="1wEcoXjIJvL" role="2VODD2">
               <node concept="3clFbF" id="1wEcoXjIJvM" role="3cqZAp">
                 <node concept="3cpWs3" id="1wEcoXjIJvN" role="3clFbG">
-                  <node concept="2ZBlsa" id="1wEcoXjIJvQ" role="3uHU7w" />
+                  <node concept="2OqwBi" id="2Te61dneb6c" role="3uHU7w">
+                    <node concept="2ZBlsa" id="1wEcoXjIJvQ" role="2Oq$k0" />
+                    <node concept="2qgKlT" id="2Te61dnebol" role="2OqNvi">
+                      <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
+                    </node>
+                  </node>
                   <node concept="Xl_RD" id="1wEcoXjIJvP" role="3uHU7B">
                     <property role="Xl_RC" value="array of " />
                   </node>
@@ -70150,7 +70160,7 @@
       </node>
     </node>
     <node concept="2aJ2om" id="VnA7RS5fZM" role="CpUAK">
-      <ref role="2$4xQ3" to="tpco:VnA7RS5fnE" resolve="archeology" />
+      <ref role="2$4xQ3" to="tpco:VnA7RS5fnE" resolve="include_deprecated_elements" />
     </node>
   </node>
   <node concept="24kQdi" id="3MZzG2JZZLQ">
@@ -70600,7 +70610,7 @@
       </node>
     </node>
     <node concept="2aJ2om" id="VnA7RS5hr7" role="CpUAK">
-      <ref role="2$4xQ3" to="tpco:VnA7RS5fnE" resolve="archeology" />
+      <ref role="2$4xQ3" to="tpco:VnA7RS5fnE" resolve="include_deprecated_elements" />
     </node>
   </node>
   <node concept="24kQdi" id="3MZzG2JZXSI">
@@ -71492,7 +71502,7 @@
       <node concept="l2Vlx" id="3MZzG2JZXYA" role="2iSdaV" />
     </node>
     <node concept="2aJ2om" id="VnA7RS5gIh" role="CpUAK">
-      <ref role="2$4xQ3" to="tpco:VnA7RS5fnE" resolve="archeology" />
+      <ref role="2$4xQ3" to="tpco:VnA7RS5fnE" resolve="include_deprecated_elements" />
     </node>
   </node>
   <node concept="24kQdi" id="5pbfqymgJyT">

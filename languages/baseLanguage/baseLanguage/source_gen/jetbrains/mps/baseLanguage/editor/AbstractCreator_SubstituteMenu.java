@@ -44,6 +44,7 @@ import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
@@ -355,13 +356,13 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
           if (SNodeOperations.isInstanceOf(myParameterObject, CONCEPTS.ClassifierType$bL)) {
             return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SLinkOperations.getTarget(SNodeOperations.cast(myParameterObject, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), _context.getParentNode()) + "[]";
           } else {
-            return myParameterObject + "[]";
+            return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(myParameterObject) + "[]";
           }
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return "array of " + myParameterObject;
+          return "array of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(myParameterObject);
         }
       }
     }
