@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.findusages.view.treeholder.tree;
 
-import jetbrains.mps.smodel.CommandListenerAdapter;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +26,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -149,7 +149,7 @@ public class DataTreeChangesNotifier extends SRepositoryContentAdapter {
     myChangeDispatch.changed(toNotify);
   }
 
-  private static class MyCommandListener extends CommandListenerAdapter {
+  private static class MyCommandListener implements CommandListener {
     private final Set<IChangeListener> myListeners2Notify = new HashSet<>();
 
     public void changed(Collection<IChangeListener> toNotify) {

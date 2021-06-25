@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -284,8 +284,10 @@ final class TestModelFactory {
   /*package*/ static class TestModelAccess extends AbstractModelAccess implements ModelCommandContext.Provider {
     private boolean myCanRead;
     private boolean myCanWrite;
+    // facilitates plain sequential alternative to executeCommand(Runnable)
     private int myCommandCount = 0;
     private final UndoHandler myUndoHandler;
+    private ModelCommandContext myCommandContext;
 
     // commands of this MA don't track undo
     TestModelAccess() {
@@ -312,12 +314,13 @@ final class TestModelFactory {
     }
     void enterCommand() {
       if (myCommandCount++ == 0) {
-        enableWrite();
+        // what myCommandActionDispatcher does for the very first command.
+        onCommandStarted();
       }
     }
     void leaveCommand() {
       if (--myCommandCount == 0) {
-        disableWrite();
+        onCommandFinished();
       }
     }
 
@@ -334,12 +337,14 @@ final class TestModelFactory {
 
     @Override
     public void runReadAction(Runnable r) {
-      r.run();
+      // beware, runReadAction while dispatch() in sending out readStart/Finish notifications
+      // would end up with deadlock/InterruptedException
+      myReadActionDispatcher.dispatch(r);
     }
 
     @Override
     public void runReadInEDT(Runnable r) {
-      r.run();
+      myReadActionDispatcher.dispatch(r);
     }
 
     @Override
@@ -354,16 +359,23 @@ final class TestModelFactory {
 
     @Override
     public void executeCommand(Runnable r) {
-      myCommandCount++;
+      if (isCommandAction()) {
+        r.run();
+        return;
+      }
+      if (canWrite() && myCommandActionDispatcher.isInsideNotificationDispatch()) {
+        // myCommandActionDispatcher.dispatch() doesn't tolerate re-enter while in certain phases.
+        // Well, in fact, it shall fail, trying to get notification lock, it's just too long to wait in tests.
+        // XXX This piece is not nice, as it copies logic of WorkbenchModelAccess, we need this code for
+        // ModelAccessTest.testNoCommandFromPre/PostListener tests.
+        throw new IllegalModelAccessException("");
+      }
       myCommandActionDispatcher.dispatch(r);
-      myCommandCount--;
     }
 
     @Override
     public void executeCommandInEDT(Runnable r) {
-      myCommandCount++;
-      myCommandActionDispatcher.dispatch(r);
-      myCommandCount--;
+      executeCommand(r);
     }
 
     @Override
@@ -373,19 +385,26 @@ final class TestModelFactory {
 
     @Override
     public boolean isCommandAction() {
-      return myCommandCount > 0;
+      return myCommandCount > 0 || myCommandActionDispatcher.isInsideAction();
     }
 
     @Nullable
     @Override
     public ModelCommandContext getCommandContext(SModel model) {
+      return myCommandContext;
+    }
+
+    @Override
+    protected void onCommandStarted() {
+      enableWrite();
       if (myUndoHandler == null) {
-        return null;
+        assert myCommandContext == null;
+        return;
       }
       // At the moment, I don't want UN/IR in tests, therefore use bare MCC impl with
       // UndoHandler only. However, if testing UN/IR is essential, shall consider refactoring
       // of MA.CommandContextProvider code to share it here
-      return new ModelCommandContext() {
+      myCommandContext = new ModelCommandContext() {
         @Override
         public void nodeAttached(SNode node) {
         }
@@ -409,6 +428,12 @@ final class TestModelFactory {
           myUndoHandler.addUndoableAction(action);
         }
       };
+    }
+
+    @Override
+    protected void onCommandFinished() {
+      disableWrite();
+      myCommandContext = null;
     }
   }
 }

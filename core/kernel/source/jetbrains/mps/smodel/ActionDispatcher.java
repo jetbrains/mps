@@ -60,12 +60,14 @@ import java.util.function.Predicate;
   // number of "active" clients of this dispatcher. First client to run fires {@code onActionStart},
   // last client to leave fires {@code onActionFinish}.
   private final AtomicInteger myActiveThreads = new AtomicInteger(0);
-  // fine-grained phase transition
+  // fine-grained phase transition.
   private final AtomicReference<State> myState = new AtomicReference<>(State.READY);
   // guards myState transitions (iow, notification dispatch phase)
   // impl note: I could have picked synchronized() approach instead, makes it easier to handle exceptions (i.e. monitor release).
   //    picked semaphore as I want to have a time limit for lock acquisition, which may come handy e.g. when
-  //    same thread gets into dispatch() more than once
+  //    same thread gets into dispatch() more than once. Besides, synchronized block could be re-entered for the same thread,
+  //    which on one hand may help to avoid deadlocks, on the other, we may not enforce semantics "no action before notification
+  //    dispatch is over" then.
   private final Semaphore myNotifyGuard = new Semaphore(1);
 
   // all arguments are non-null

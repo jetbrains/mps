@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,6 @@ import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.CommandListenerAdapter;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.AbstractComputeRunnable;
 import jetbrains.mps.util.Computable;
@@ -41,6 +40,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -64,7 +64,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   public MPSFileNodeEditor(@NotNull MPSProject project, SRepository repository, @NotNull Computable<MPSNodeVirtualFile> nodeFileComputable) {
     this(project, null);
     // we expect new models (that may come from the file) could show up in the repository only as a command(repository modification) result
-    repository.getModelAccess().addCommandListener(new CommandListenerAdapter() {
+    repository.getModelAccess().addCommandListener(new CommandListener() {
       @Override
       public void commandFinished() {
         MPSNodeVirtualFile mpsNodeVirtualFile = nodeFileComputable.compute();

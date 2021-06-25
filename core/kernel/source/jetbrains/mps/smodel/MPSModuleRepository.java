@@ -348,8 +348,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     @Override
     public Scope getScope(@NotNull SReference reference) {
       if (myCache == null) {
-        // we might be inside proper read but myCache still == null due to threading issue described in ActionDispatcher
-        // FIXME with ActionDispatcher fix, need to make sure this never happens. TESTS!
+        assertReadStarted();
         return super.getScope(reference);
       }
       final Map<SReference, Scope> thisThreadCache = myCache.get();
@@ -363,11 +362,15 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     @Override
     public EvaluateScopeContext getContext() {
       if (myContextCache == null) {
-        // see getScope(), above. Unless I fix read notifications (to come at proper thread and in proper order),
-        // have to account for null case here
+        assertReadStarted();
         return super.getContext();
       }
       return myContextCache.get();
+    }
+
+    private void assertReadStarted() {
+      // see ActionDispatcher history for explanation why ReadActionListener used to be invoked incorrectly.
+      assert false : "ReadActionListener.readStarted didn't get invoked properly. Thread: " + Thread.currentThread().getName();
     }
 
     @Override
