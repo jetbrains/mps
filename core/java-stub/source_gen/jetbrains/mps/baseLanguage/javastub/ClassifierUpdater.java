@@ -560,7 +560,13 @@ public class ClassifierUpdater {
       return _quotation_createNode_ol94f8_a0a6a54(value.toString() + "L");
     }
     if (value instanceof Float) {
-      return _quotation_createNode_ol94f8_a0a7a54(value.toString());
+      final String s;
+      if (Float.isFinite(((Float) value).floatValue())) {
+        s = value.toString() + "f";
+      } else {
+        s = value.toString();
+      }
+      return _quotation_createNode_ol94f8_a2a7a54(s);
     }
     if (value instanceof Double) {
       return _quotation_createNode_ol94f8_a0a8a54(value.toString());
@@ -993,11 +999,11 @@ public class ClassifierUpdater {
     SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value"), (String) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_ol94f8_a0a7a54(Object parameter_1) {
+  private static SNode _quotation_createNode_ol94f8_a2a7a54(Object parameter_1) {
     SNode quotedNode_2 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"));
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant"));
     quotedNode_2 = nb.getResult();
-    SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, 0x103245d193fL, "value"), (String) parameter_1);
+    SNodeAccessUtil.setPropertyValue(quotedNode_2, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value"), (String) parameter_1);
     return quotedNode_2;
   }
   private static SNode _quotation_createNode_ol94f8_a0a8a54(Object parameter_1) {

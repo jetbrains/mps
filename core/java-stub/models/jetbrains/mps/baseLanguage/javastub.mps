@@ -72,6 +72,7 @@
       </concept>
       <concept id="1224500764161" name="jetbrains.mps.baseLanguage.structure.BitwiseAndExpression" flags="nn" index="pVHWs" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
+      <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
@@ -9046,21 +9047,85 @@
             </node>
           </node>
           <node concept="3clFbS" id="2esXIF0VXo2" role="3clFbx">
-            <node concept="3cpWs6" id="4sm8lF4oA3O" role="3cqZAp">
-              <node concept="2c44tf" id="4sm8lF4oA3Q" role="3cqZAk">
-                <node concept="3b6qkQ" id="4sm8lF4oA3S" role="2c44tc">
-                  <node concept="2EMmih" id="4sm8lF4oA3T" role="lGtFl">
-                    <property role="2qtEX9" value="value" />
-                    <property role="3hQQBS" value="FloatingPointConstant" />
-                    <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1111509017652/1113006610751" />
-                    <property role="3qcH_f" value="true" />
-                    <node concept="2OqwBi" id="4sm8lF4oA3W" role="2c44t1">
-                      <node concept="37vLTw" id="2BHiRxgmHUu" role="2Oq$k0">
+            <node concept="3cpWs8" id="27kadWOygTu" role="3cqZAp">
+              <node concept="3cpWsn" id="27kadWOygTx" role="3cpWs9">
+                <property role="TrG5h" value="s" />
+                <property role="3TUv4t" value="true" />
+                <node concept="17QB3L" id="27kadWOygTs" role="1tU5fm" />
+              </node>
+            </node>
+            <node concept="3clFbJ" id="27kadWOzETi" role="3cqZAp">
+              <node concept="3clFbS" id="27kadWOzETk" role="3clFbx">
+                <node concept="3clFbF" id="27kadWO$PFS" role="3cqZAp">
+                  <node concept="37vLTI" id="27kadWO_cWb" role="3clFbG">
+                    <node concept="37vLTw" id="27kadWO$PFQ" role="37vLTJ">
+                      <ref role="3cqZAo" node="27kadWOygTx" resolve="s" />
+                    </node>
+                    <node concept="3cpWs3" id="2HuWGW1fgHz" role="37vLTx">
+                      <node concept="Xl_RD" id="2HuWGW1fstG" role="3uHU7w">
+                        <property role="Xl_RC" value="f" />
+                      </node>
+                      <node concept="2OqwBi" id="2ZUQb_VeMC6" role="3uHU7B">
+                        <node concept="37vLTw" id="2ZUQb_VewWt" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2esXIF0VXmf" resolve="value" />
+                        </node>
+                        <node concept="liA8E" id="2ZUQb_VfaK1" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2YIFZM" id="27kadWOvCFb" role="3clFbw">
+                <ref role="37wK5l" to="wyt6:~Float.isFinite(float)" resolve="isFinite" />
+                <ref role="1Pybhc" to="wyt6:~Float" resolve="Float" />
+                <node concept="2OqwBi" id="27kadWOvCFc" role="37wK5m">
+                  <node concept="1eOMI4" id="27kadWOvCFd" role="2Oq$k0">
+                    <node concept="10QFUN" id="27kadWOvCFe" role="1eOMHV">
+                      <node concept="3uibUv" id="27kadWOvCFf" role="10QFUM">
+                        <ref role="3uigEE" to="wyt6:~Float" resolve="Float" />
+                      </node>
+                      <node concept="37vLTw" id="27kadWOvCFg" role="10QFUP">
                         <ref role="3cqZAo" node="2esXIF0VXmf" resolve="value" />
                       </node>
-                      <node concept="liA8E" id="4sm8lF4oA40" role="2OqNvi">
-                        <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="27kadWOvCFh" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Float.floatValue()" resolve="floatValue" />
+                  </node>
+                </node>
+              </node>
+              <node concept="9aQIb" id="27kadWOB1GD" role="9aQIa">
+                <node concept="3clFbS" id="27kadWOB1GE" role="9aQI4">
+                  <node concept="3clFbF" id="27kadWOBqe_" role="3cqZAp">
+                    <node concept="37vLTI" id="27kadWOBM9u" role="3clFbG">
+                      <node concept="2OqwBi" id="27kadWOCs4C" role="37vLTx">
+                        <node concept="37vLTw" id="27kadWOCbF1" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2esXIF0VXmf" resolve="value" />
+                        </node>
+                        <node concept="liA8E" id="27kadWOCNsC" role="2OqNvi">
+                          <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
+                        </node>
                       </node>
+                      <node concept="37vLTw" id="27kadWOBqe$" role="37vLTJ">
+                        <ref role="3cqZAo" node="27kadWOygTx" resolve="s" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="4sm8lF4oA3O" role="3cqZAp">
+              <node concept="2c44tf" id="2ZUQb_VdqyF" role="3cqZAk">
+                <node concept="2$xPTn" id="2ZUQb_VdLjY" role="2c44tc">
+                  <node concept="2EMmih" id="2ZUQb_VeagR" role="lGtFl">
+                    <property role="3qcH_f" value="true" />
+                    <property role="2qtEX9" value="value" />
+                    <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/5279705229678483897/5279705229678483899" />
+                    <property role="3hQQBS" value="FloatingPointFloatConstant" />
+                    <node concept="37vLTw" id="27kadWOAhfT" role="2c44t1">
+                      <ref role="3cqZAo" node="27kadWOygTx" resolve="s" />
                     </node>
                   </node>
                 </node>
