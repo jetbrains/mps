@@ -81,9 +81,15 @@ public class ReferenceScopeSubstituteMenuItem extends DefaultSubstituteMenuItem 
   @Nullable
   @Override
   public SNode createNode(@NotNull String pattern) {
-    SNode node = super.createNode(pattern);
-    SNodeAccessUtil.setReferenceTarget(node, myReferenceLink, myReferent);
-    return node;
+    SNode currentChild = getCurrentChild();
+    if (currentChild != null && currentChild.getConcept().equals(getOutputConcept())) {
+      SNodeAccessUtil.setReferenceTarget(currentChild, myReferenceLink, myReferent);
+      return currentChild;
+    } else {
+      SNode node = super.createNode(pattern);
+      SNodeAccessUtil.setReferenceTarget(node, myReferenceLink, myReferent);
+      return node;
+    }
   }
 
   @NotNull
