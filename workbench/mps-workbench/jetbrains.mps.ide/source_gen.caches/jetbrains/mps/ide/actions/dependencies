@@ -1278,7 +1278,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
-  <dependency className="jetbrains.mps.ide.actions.ForcedSaveAll_Action">
+  <dependency className="jetbrains.mps.ide.actions.ForceSaveAll_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
@@ -1799,7 +1799,7 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.FixModuleImports_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.FlyingActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.FolderActions_ActionGroup" />
-    <classNode dependClassName="jetbrains.mps.ide.actions.ForcedSaveAll_Action" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.ForceSaveAll_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.GeneratorActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.GeneratorNewActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.GnomeActionsKeymap_KeymapChanges" />

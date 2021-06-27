@@ -14,34 +14,41 @@ public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase 
   private final MigrationChecker myChecker;
   private final MigrationExecutor myExecutor;
 
-  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationRegistry, boolean resave, boolean migrate) {
-    this(mpsProject, migrationRegistry, new MigrationCheckerImpl(mpsProject, migrationRegistry), new MigrationExecutorImpl(mpsProject), resave, migrate);
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationRegistry, boolean forceSave, boolean updateVersions, boolean migrate) {
+    this(mpsProject, migrationRegistry, new MigrationCheckerImpl(mpsProject, migrationRegistry), new MigrationExecutorImpl(mpsProject), forceSave, updateVersions, migrate);
   }
 
-  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationRegistry, MigrationChecker checker, MigrationExecutor executor, boolean resave, boolean migrate) {
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationRegistry, MigrationChecker checker, MigrationExecutor executor, boolean forceSave, boolean updateVersions, boolean migrate) {
     myMpsProject = mpsProject;
     myMigrationRegistry = migrationRegistry;
     myChecker = checker;
     myExecutor = executor;
-    if (resave) {
+    if (forceSave) {
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.FORCE_SAVE);
+    }
+    if (updateVersions) {
       SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
     }
     if (migrate) {
       SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.MIGRATE);
     }
   }
+
   @Override
   public Project getProject() {
     return myMpsProject;
   }
+
   @Override
   public MigrationSetup getMigrationRegistry() {
     return myMigrationRegistry;
   }
+
   @Override
   public MigrationChecker getChecker() {
     return myChecker;
   }
+
   @Override
   public MigrationExecutor getExecutor() {
     return myExecutor;

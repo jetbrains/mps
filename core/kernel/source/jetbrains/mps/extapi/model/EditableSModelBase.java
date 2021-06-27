@@ -24,13 +24,17 @@ import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
+import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
+import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.model.SaveResult;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -253,6 +257,9 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     if (options.forceSave()) {
       setChanged(true);
     }
+    if (options.updateResolveInfoInRefs()) {
+      updateResolveInfoInRefs();
+    }
     if (!isChanged()) {
       return CompletableFuture.completedFuture(SaveResult.NOT_CHANGED);
     }
@@ -270,6 +277,22 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     }
 
     return save0();
+  }
+
+  private void updateResolveInfoInRefs() {
+    for (var node : SNodeUtil.getDescendants(this)) {
+      for (var ref : node.getReferences()) {
+        updateResolveInfo(ref);
+      }
+    }
+  }
+
+  private void updateResolveInfo(org.jetbrains.mps.openapi.model.SReference ref) {
+    SNode target = ref instanceof StaticReference ? ref.getTargetNode() : null;
+    if (target != null) {
+      String newResolveInfo = SNodeOperations.getResolveInfo(target);
+      ((StaticReference) ref).setResolveInfo(newResolveInfo);
+    }
   }
 
   @NotNull

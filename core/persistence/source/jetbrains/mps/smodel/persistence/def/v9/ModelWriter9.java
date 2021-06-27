@@ -61,7 +61,6 @@ public class ModelWriter9 implements IModelWriter {
   private IdInfoRegistry myMetaInfo;
   private ImportsHelper myImportsHelper;
   private final IdEncoder myIdEncoder = new IdEncoder();
-  private boolean myUseActualResolveInfo = true;
 
   public ModelWriter9(@NotNull MetaModelInfoProvider mmiProvider, boolean saveUserObjects) {
     myMetaInfoProvider = mmiProvider;
@@ -70,8 +69,6 @@ public class ModelWriter9 implements IModelWriter {
 
   @Override
   public Document saveModel(SModel sourceModel) {
-    setUseActualResolveInfo(sourceModel);
-
     myMetaInfo = new IdInfoRegistry();
     new IdInfoCollector(myMetaInfo, myMetaInfoProvider).fill(sourceModel.getRootNodes());
     myImportsHelper = new ImportsHelper(sourceModel.getReference());
@@ -91,14 +88,6 @@ public class ModelWriter9 implements IModelWriter {
     }
 
     return new Document(rootElement);
-  }
-
-  private void setUseActualResolveInfo(SModel sourceModel) {
-    // sometimes we serialize detached models (e.g. in tests), no need to enforce actual resolveInfo in that case
-    // In fact, I doubt the need to ensure actual resolve info at all during serialization. If needed, could be explicit step prior to
-    // save or part of MMIP
-    final boolean attachedModel = sourceModel.getModelDescriptor() != null && sourceModel.getModelDescriptor().getRepository() != null;
-    myUseActualResolveInfo = !RuntimeFlags.isMergeDriverMode() && attachedModel;
   }
 
   private void saveModelProperties(SModel sourceModel, Element rootElement) {
@@ -325,8 +314,6 @@ public class ModelWriter9 implements IModelWriter {
 
   @Override
   public Map<String, Document> saveModelAsMultiStream(SModel sourceModel) {
-    setUseActualResolveInfo(sourceModel);
-
     myImportsHelper = new ImportsHelper(sourceModel.getReference()); // saveModelProperties->saveImports fills it
 
     // header
@@ -380,18 +367,10 @@ public class ModelWriter9 implements IModelWriter {
     return result;
   }
 
-  // not-null arg
+  /**
+   * @param ref != null
+   */
   private String genResolveInfo(SReference ref) {
-    if (myUseActualResolveInfo) {
-      SNode target = ref instanceof StaticReference ? ref.getTargetNode() : null;
-      if (target != null) {
-        String resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(target);
-        if (resolveInfo != null) {
-          return resolveInfo;
-        }
-      }
-      // fall-through
-    }
     if (ref instanceof jetbrains.mps.smodel.SReference) {
       return ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
     }

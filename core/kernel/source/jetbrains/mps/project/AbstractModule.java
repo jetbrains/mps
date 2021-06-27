@@ -302,22 +302,22 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   /**
-   * invokes module#save, force saves its models, updates imports for module and containing models
+   * invokes module#save, force-saves its models,
+   * updates imports for module and containing models,
+   * updates resolve-info in references
    */
-  public final void saveRecursively() {
+  public final void forceSaveRecursively() {
     assertCanChange();
-    // save module
     updateExternalReferences();
-    this.save();
+    save();
 
-    // save its models
     for (SModel model : getModels()) {
       if (model instanceof EditableSModel) {
         var eModel = (EditableSModel) model;
         if (eModel.isReadOnly()) {
           continue;
         }
-        eModel.save(SaveOptions.FORCE_SAVE);
+        eModel.save(SaveOptions.FORCE_SAVE_WITH_RESOLVE_INFO);
       }
     }
   }

@@ -28,10 +28,10 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2533953941693774358", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
-public class ForcedSaveAll_Action extends BaseAction {
+public class ForceSaveAll_Action extends BaseAction {
   private static final Icon ICON = null;
 
-  public ForcedSaveAll_Action() {
+  public ForceSaveAll_Action() {
     super("Force Save All", "Updates all models' and modules' files", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
@@ -100,7 +100,7 @@ public class ForcedSaveAll_Action extends BaseAction {
                   if (module == null) {
                     return;
                   }
-                  module.saveRecursively();
+                  module.forceSaveRecursively();
                 }
               });
             }

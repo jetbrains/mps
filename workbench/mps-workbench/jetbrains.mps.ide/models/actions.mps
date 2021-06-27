@@ -37049,7 +37049,7 @@
   </node>
   <node concept="sE7Ow" id="2cEqqWVQVCm">
     <property role="1WHSii" value="Updates all models' and modules' files" />
-    <property role="TrG5h" value="ForcedSaveAll" />
+    <property role="TrG5h" value="ForceSaveAll" />
     <property role="2uzpH1" value="Force Save All" />
     <property role="3GE5qa" value="Menu.FileView.Actions" />
     <property role="1teQrl" value="true" />
@@ -37393,8 +37393,8 @@
                                           <node concept="37vLTw" id="4O8MFM2_mLe" role="2Oq$k0">
                                             <ref role="3cqZAo" node="1$96lMGppah" />
                                           </node>
-                                          <node concept="liA8E" id="4O8MFM2_oeJ" role="2OqNvi">
-                                            <ref role="37wK5l" to="z1c3:~AbstractModule.saveRecursively()" resolve="saveRecursively" />
+                                          <node concept="liA8E" id="4cEc5tJbiHf" role="2OqNvi">
+                                            <ref role="37wK5l" to="z1c3:~AbstractModule.forceSaveRecursively()" resolve="forceSaveRecursively" />
                                           </node>
                                         </node>
                                       </node>

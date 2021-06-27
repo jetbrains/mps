@@ -70,7 +70,6 @@
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.RefactoringScript" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference" />
-    <classNode dependClassName="jetbrains.mps.migration.global.CleanupProjectMigration" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigrationWithOptions" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
@@ -112,6 +111,7 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
@@ -220,7 +220,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.BaseScriptReference" />
-    <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.Problem" />
     <classNode dependClassName="jetbrains.mps.messages.LogHandler" />
     <classNode dependClassName="jetbrains.mps.migration.global.CleanupProjectMigration" />
@@ -231,6 +230,7 @@
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.project.ProjectBase" />
+    <classNode dependClassName="jetbrains.mps.util.IterableUtil" />
     <classNode dependClassName="jetbrains.mps.util.NameUtil" />
     <classNode dependClassName="jetbrains.mps.util.Pair" />
     <classNode dependClassName="org.apache.log4j.Level" />

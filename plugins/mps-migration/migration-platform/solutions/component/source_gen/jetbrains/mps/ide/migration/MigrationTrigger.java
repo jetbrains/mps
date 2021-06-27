@@ -486,10 +486,10 @@ __switch__:
     FINISHED()
   }
 
-  private Tuples._2<MigrationResult, MigrationError> runMigration(boolean update, boolean migrate) {
+  private Tuples._2<MigrationResult, MigrationError> runMigration(boolean updateVersions, boolean migrate) {
     myMigrationRunning = true;
     try {
-      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, new MigrationSetupImpl(myMpsProject), update, migrate);
+      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, myProjectMigrationSetup, true, updateVersions, migrate);
       final MigrationWizard wizard = new MigrationWizard(myProject, session);
       boolean finished = wizard.showAndGet();
       MigrationError errors = session.getError();

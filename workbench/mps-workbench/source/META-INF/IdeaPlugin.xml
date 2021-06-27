@@ -36,7 +36,7 @@
       <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project"/>
       <add-to-group group-id="NewProjectOrModuleGroup"/>
     </group>
-    <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForcedSaveAll_Action">
+    <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForceSaveAll_Action">
       <add-to-group group-id="FileMenu" relative-to-action="SaveAll" anchor="after"/>
     </action>
     <action id="SaveAsNewFormat" class="com.intellij.ide.actions.SaveAsDirectoryBasedFormatAction" text="Save as Directory-Based Format...">

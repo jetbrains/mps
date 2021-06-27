@@ -23,7 +23,6 @@ import jetbrains.mps.ide.migration.MigrationChecker;
 import jetbrains.mps.ide.migration.MigrationCheckerImpl;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.ide.migration.MigrationExecutorImpl;
-import jetbrains.mps.ide.migration.MigrationSessionImpl;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.ide.migration.MigrationSetupImpl;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
@@ -73,17 +72,6 @@ public class MigrationsTest implements EnvironmentAware {
     new TestMakeUtil(myEnv.getPlatform()).make(myProject);
     LocalHistoryImpl.getInstanceImpl().cleanupForNextTest();
 
-    MigrationSession session = new MigrationSessionImpl(myProject, new MigrationSetupImpl(myProject), false, true);
-
-    new MigrationTask(session,new ProgressMonitorAdapter(new EmptyProgressIndicator())).run();
-    List<ChangeSet> changes = LocalHistoryImpl.getInstanceImpl().getFacade().getChangeListInTests().getChangesInTests();
-    int num = changes.size();
-    Assert.assertTrue("Changes: " + num, num >= 6); //additional migrations may appear from lang design languages
-    Assert.assertEquals(MigrationTask.FINISHED, changes.get(0).getLabel());
-    Assert.assertEquals(MigrationTask.STARTED, changes.get(num - 2).getLabel());
-    for (int i = 1; i < num - 2; i++) {
-      Assert.assertTrue(changes.get(i).getName().startsWith(MigrationTask.APPLY));
-    }
     // only for 193
     ClassLoadingBroadCaster.setCheckMemLeaks(true);
   }

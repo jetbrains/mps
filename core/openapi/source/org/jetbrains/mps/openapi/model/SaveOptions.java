@@ -36,6 +36,13 @@ public interface SaveOptions {
   }
 
   /**
+   * @return true if the implementation of EditableSModel needs to rebuild all resolve-info in all references
+   */
+  default boolean updateResolveInfoInRefs() {
+    return false;
+  }
+
+  /**
    * @return true if the implementation does #load -> #setChanged(false) -> #save() sequence of calls
    * if true then the return of #preloadModel is ignored
    */
@@ -72,11 +79,18 @@ public interface SaveOptions {
                                       .resolveConflicts(false)
                                       .build();
 
+  SaveOptions FORCE_SAVE_WITH_RESOLVE_INFO = new SaveOptionsBuilder()
+                                                 .forceSave()
+                                                 .resolveConflicts(true)
+                                                 .updateResolveInfoInRefs()
+                                                 .build();
+
   final class SaveOptionsBuilder {
     private boolean myRefreshDataSourceFlag;
     private boolean myForceFlag;
     private boolean myLoadModelFlag;
     private boolean myResolveConflictsFlag = true;
+    private boolean myUpdateResolveInfo;
 
     public SaveOptionsBuilder() {
     }
@@ -101,6 +115,11 @@ public interface SaveOptions {
       return this;
     }
 
+    public SaveOptionsBuilder updateResolveInfoInRefs() {
+      myUpdateResolveInfo = true;
+      return this;
+    }
+
     @NotNull
     public SaveOptions build() {
       return new SaveOptions() {
@@ -112,6 +131,11 @@ public interface SaveOptions {
         @Override
         public boolean resolveConflicts() {
           return myResolveConflictsFlag;
+        }
+
+        @Override
+        public boolean updateResolveInfoInRefs() {
+          return myUpdateResolveInfo;
         }
 
         @Override

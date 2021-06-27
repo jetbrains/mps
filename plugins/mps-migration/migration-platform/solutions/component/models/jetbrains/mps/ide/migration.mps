@@ -3592,7 +3592,7 @@
     <node concept="3clFb_" id="1548xle07dY" role="jymVt">
       <property role="TrG5h" value="runMigration" />
       <node concept="37vLTG" id="cQNMA1EBBY" role="3clF46">
-        <property role="TrG5h" value="update" />
+        <property role="TrG5h" value="updateVersions" />
         <node concept="10P_77" id="cQNMA1EFSJ" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="cQNMA1EGpA" role="3clF46">
@@ -3625,17 +3625,14 @@
                     <node concept="37vLTw" id="2BADSPNH74x" role="37wK5m">
                       <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
                     </node>
-                    <node concept="2ShNRf" id="64uPopzh1eP" role="37wK5m">
-                      <node concept="1pGfFk" id="64uPopzh6nt" role="2ShVmc">
-                        <property role="373rjd" value="true" />
-                        <ref role="37wK5l" node="10yOEkEz6b" resolve="MigrationSetupImpl" />
-                        <node concept="37vLTw" id="64uPopzhaTw" role="37wK5m">
-                          <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
-                        </node>
-                      </node>
+                    <node concept="37vLTw" id="2BADSPNH74y" role="37wK5m">
+                      <ref role="3cqZAo" node="5SsFeroaaki" resolve="myProjectMigrationSetup" />
+                    </node>
+                    <node concept="3clFbT" id="4cEc5tJfzl7" role="37wK5m">
+                      <property role="3clFbU" value="true" />
                     </node>
                     <node concept="37vLTw" id="2BADSPNH74z" role="37wK5m">
-                      <ref role="3cqZAo" node="cQNMA1EBBY" resolve="update" />
+                      <ref role="3cqZAo" node="cQNMA1EBBY" resolve="updateVersions" />
                     </node>
                     <node concept="37vLTw" id="2BADSPNH74$" role="37wK5m">
                       <ref role="3cqZAo" node="cQNMA1EGpA" resolve="migrate" />
@@ -4404,8 +4401,8 @@
   <node concept="3HP615" id="5SsFeroaabl">
     <property role="TrG5h" value="MigrationSetup" />
     <property role="2bfB8j" value="true" />
-    <node concept="2tJIrI" id="7W$jB0VAAw6" role="jymVt" />
     <node concept="3Tm1VV" id="5SsFeroaabn" role="1B3o_S" />
+    <node concept="2tJIrI" id="7W$jB0VAAw6" role="jymVt" />
     <node concept="3clFb_" id="4biA4YBz_63" role="jymVt">
       <property role="TrG5h" value="isMigrationRequired" />
       <property role="DiZV1" value="false" />
@@ -4783,6 +4780,9 @@
                 </node>
                 <node concept="37vLTw" id="4KYwLYux63F" role="37wK5m">
                   <ref role="3cqZAo" node="4KYwLYuwRlv" resolve="tracingExecutor" />
+                </node>
+                <node concept="3clFbT" id="4ij2fL4$Afn" role="37wK5m">
+                  <property role="3clFbU" value="true" />
                 </node>
                 <node concept="3clFbT" id="4KYwLYux6LT" role="37wK5m">
                   <property role="3clFbU" value="true" />
@@ -13729,10 +13729,10 @@
     <node concept="312cEg" id="53d0N_LkcxJ" role="jymVt">
       <property role="TrG5h" value="myMpsProject" />
       <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="53d0N_LkcxL" role="1B3o_S" />
       <node concept="3uibUv" id="4KYwLYuxlV3" role="1tU5fm">
         <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
       </node>
-      <node concept="3Tm6S6" id="53d0N_LkcxL" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="53d0N_Lkflz" role="jymVt">
       <property role="34CwA1" value="false" />
@@ -13791,7 +13791,10 @@
             </node>
           </node>
           <node concept="37vLTw" id="4KYwLYuvXZL" role="37wK5m">
-            <ref role="3cqZAo" node="cQNMA1EXTL" resolve="resave" />
+            <ref role="3cqZAo" node="cQNMA1EXTL" resolve="forceSave" />
+          </node>
+          <node concept="37vLTw" id="4ij2fL4$oWg" role="37wK5m">
+            <ref role="3cqZAo" node="4cEc5tJf48S" resolve="updateVersions" />
           </node>
           <node concept="37vLTw" id="4KYwLYuvZGY" role="37wK5m">
             <ref role="3cqZAo" node="cQNMA1EYwG" resolve="migrate" />
@@ -13813,8 +13816,12 @@
         </node>
       </node>
       <node concept="37vLTG" id="cQNMA1EXTL" role="3clF46">
-        <property role="TrG5h" value="resave" />
+        <property role="TrG5h" value="forceSave" />
         <node concept="10P_77" id="cQNMA1EXTK" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="4cEc5tJf48S" role="3clF46">
+        <property role="TrG5h" value="updateVersions" />
+        <node concept="10P_77" id="4cEc5tJf4qY" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="cQNMA1EYwG" role="3clF46">
         <property role="TrG5h" value="migrate" />
@@ -13872,7 +13879,27 @@
                   <ref role="3cqZAo" to="o8ag:3ciAo9GnXan" resolve="myRequiredSteps" />
                 </node>
                 <node concept="TSZUe" id="4KYwLYuvD7U" role="2OqNvi">
-                  <node concept="Rm8GO" id="4KYwLYuvD7V" role="25WWJ7">
+                  <node concept="Rm8GO" id="4ij2fL4$nJt" role="25WWJ7">
+                    <ref role="Rm8GQ" to="o8ag:4O8MFM2DhF2" resolve="FORCE_SAVE" />
+                    <ref role="1Px2BO" to="o8ag:cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="4ij2fL4$n6t" role="3clFbw">
+            <ref role="3cqZAo" node="4ij2fL4$ia3" resolve="forceSave" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4ij2fL4$ljL" role="3cqZAp">
+          <node concept="3clFbS" id="4ij2fL4$ljM" role="3clFbx">
+            <node concept="3clFbF" id="4ij2fL4$ljN" role="3cqZAp">
+              <node concept="2OqwBi" id="4ij2fL4$ljO" role="3clFbG">
+                <node concept="37vLTw" id="4ij2fL4$ljP" role="2Oq$k0">
+                  <ref role="3cqZAo" to="o8ag:3ciAo9GnXan" resolve="myRequiredSteps" />
+                </node>
+                <node concept="TSZUe" id="4ij2fL4$ljQ" role="2OqNvi">
+                  <node concept="Rm8GO" id="4ij2fL4$ljR" role="25WWJ7">
                     <ref role="1Px2BO" to="o8ag:cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
                     <ref role="Rm8GQ" to="o8ag:cQNMA1EOlP" resolve="UPDATE_VERSIONS" />
                   </node>
@@ -13880,8 +13907,8 @@
               </node>
             </node>
           </node>
-          <node concept="37vLTw" id="4KYwLYuvD7W" role="3clFbw">
-            <ref role="3cqZAo" node="4KYwLYuvD8b" resolve="resave" />
+          <node concept="37vLTw" id="4ij2fL4$ljS" role="3clFbw">
+            <ref role="3cqZAo" node="4KYwLYuvD8b" resolve="updateVersions" />
           </node>
         </node>
         <node concept="3clFbJ" id="4KYwLYuvD7X" role="3cqZAp">
@@ -13931,8 +13958,12 @@
           <ref role="3uigEE" node="4biA4YBo9Fb" resolve="MigrationExecutor" />
         </node>
       </node>
+      <node concept="37vLTG" id="4ij2fL4$ia3" role="3clF46">
+        <property role="TrG5h" value="forceSave" />
+        <node concept="10P_77" id="4ij2fL4$j66" role="1tU5fm" />
+      </node>
       <node concept="37vLTG" id="4KYwLYuvD8b" role="3clF46">
-        <property role="TrG5h" value="resave" />
+        <property role="TrG5h" value="updateVersions" />
         <node concept="10P_77" id="4KYwLYuvD8c" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="4KYwLYuvD8d" role="3clF46">
@@ -13940,6 +13971,7 @@
         <node concept="10P_77" id="4KYwLYuvD8e" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4ij2fL4yoBo" role="jymVt" />
     <node concept="3clFb_" id="4hH4xQoOw_s" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
@@ -13959,6 +13991,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4ij2fL4yoBp" role="jymVt" />
     <node concept="3clFb_" id="4hH4xQoOw_A" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
@@ -13981,6 +14014,7 @@
     <node concept="3uibUv" id="1548xleaQcc" role="1zkMxy">
       <ref role="3uigEE" to="o8ag:1548xleaCvu" resolve="MigrationSession.MigrationSessionBase" />
     </node>
+    <node concept="2tJIrI" id="4ij2fL4yoBq" role="jymVt" />
     <node concept="3clFb_" id="2wbhCYFUwEM" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
@@ -14000,6 +14034,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4ij2fL4yoBr" role="jymVt" />
     <node concept="3clFb_" id="4biA4YBspYT" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />

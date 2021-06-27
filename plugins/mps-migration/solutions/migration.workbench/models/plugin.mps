@@ -6623,15 +6623,15 @@
           </node>
         </node>
         <node concept="3clFbF" id="3ciAo9GojPk" role="3cqZAp">
-          <node concept="2OqwBi" id="7vYYdQngN0I" role="3clFbG">
-            <node concept="37vLTw" id="7vYYdQngLBe" role="2Oq$k0">
-              <ref role="3cqZAo" to="o8ag:3ciAo9GnXan" resolve="myRequiredSteps" />
-            </node>
+          <node concept="2OqwBi" id="3ciAo9Gokps" role="3clFbG">
             <node concept="TSZUe" id="7vYYdQngOea" role="2OqNvi">
               <node concept="Rm8GO" id="3ciAo9Golu$" role="25WWJ7">
                 <ref role="1Px2BO" to="o8ag:cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
                 <ref role="Rm8GQ" to="o8ag:cQNMA1EOrF" resolve="MIGRATE" />
               </node>
+            </node>
+            <node concept="37vLTw" id="7vYYdQngLBe" role="2Oq$k0">
+              <ref role="3cqZAo" to="o8ag:3ciAo9GnXan" resolve="myRequiredSteps" />
             </node>
           </node>
         </node>
@@ -6674,7 +6674,6 @@
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getMigrationRegistry" />
-      <node concept="3Tmbuc" id="4WgzjbQSESg" role="1B3o_S" />
       <node concept="3uibUv" id="65hwFmZi2T0" role="3clF45">
         <ref role="3uigEE" to="bim2:5SsFeroaabl" resolve="MigrationSetup" />
       </node>
@@ -6691,6 +6690,7 @@
           </node>
         </node>
       </node>
+      <node concept="3Tmbuc" id="4WgzjbQSESg" role="1B3o_S" />
       <node concept="2AHcQZ" id="4WgzjbQL$ad" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>

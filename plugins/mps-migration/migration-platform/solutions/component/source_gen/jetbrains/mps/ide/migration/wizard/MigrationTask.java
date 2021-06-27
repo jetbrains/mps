@@ -40,8 +40,7 @@ import org.jetbrains.mps.openapi.util.Processor;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.project.AbstractModule;
 import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
@@ -49,6 +48,7 @@ import jetbrains.mps.util.NameUtil;
 import java.util.Objects;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/961570622494166185", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationTask {
@@ -93,6 +93,8 @@ public class MigrationTask {
   }
 
   protected void doRun() throws MigrationError {
+
+    boolean save = mySession.requires(MigrationSession.MigrationStepKind.FORCE_SAVE);
     boolean update = mySession.requires(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
     boolean migrate = mySession.requires(MigrationSession.MigrationStepKind.MIGRATE);
 
@@ -100,7 +102,7 @@ public class MigrationTask {
       ProgressMonitor m = myMonitor.subTask(20);
       m.start("Saving project...", 100);
       try {
-        runResave(m.subTask((update ? 80 : 100)));
+        runForceSave(m.subTask((save ? 80 : 100)));
         if (update) {
           // add label to local history if requested
           runVersionsUpdate(m.subTask(20));
@@ -346,15 +348,15 @@ public class MigrationTask {
     });
   }
 
-  private void runResave(final ProgressMonitor m) {
+  private void runForceSave(final ProgressMonitor m) {
     final Wrappers._T<List<SModule>> allModules = new Wrappers._T<List<SModule>>();
     final Project project = mySession.getProject();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        allModules.value = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(project)).toListSequence();
+        allModules.value = IterableUtil.asList(project.getRepository().getModules());
       }
     });
-    String caption = "Re-saving project modules, models...";
+    String caption = "Force-saving project modules, models...";
     m.start(caption, ListSequence.fromList(allModules.value).count() + 10);
     runLocalHistoryRecord(caption, new Runnable() {
       public void run() {
@@ -368,7 +370,7 @@ public class MigrationTask {
               public void run() {
                 project.getRepository().getModelAccess().executeCommand(new Runnable() {
                   public void run() {
-                    ((AbstractModule) module).saveRecursively();
+                    ((AbstractModule) module).forceSaveRecursively();
                   }
                 });
               }

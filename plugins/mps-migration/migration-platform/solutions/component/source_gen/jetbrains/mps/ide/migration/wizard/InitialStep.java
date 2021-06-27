@@ -23,26 +23,25 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.migration.global.ProjectMigration;
-import jetbrains.mps.migration.global.CleanupProjectMigration;
 import java.util.Collection;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
-import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.Component;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.ui.components.JBScrollPane;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
+import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import com.intellij.ide.wizard.AbstractWizardStepEx;
 import com.intellij.ide.wizard.CommitStepException;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -119,122 +118,63 @@ public class InitialStep extends BaseStep {
 
   private JComponent createMigrationsInfo() {
     Project project = mySession.getProject();
-    // root
     final DefaultMutableTreeNode root = new DefaultMutableTreeNode("empty");
 
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
+        Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
 
-        // project migrations
-        final DefaultMutableTreeNode croot = new DefaultMutableTreeNode("Cleanups");
-        croot.add(new MyTreeNode("Re-save project", migrationIcon));
-        if (mySession.requires(MigrationSession.MigrationStepKind.UPDATE_VERSIONS)) {
-          croot.add(new MyTreeNode("Update Versions in Descriptors", migrationIcon));
+        DefaultMutableTreeNode prepareSection = createPrepareSectionNode(migrationIcon);
+        if (prepareSection.children().hasMoreElements()) {
+          root.add(prepareSection);
         }
 
-        final DefaultMutableTreeNode proot = new DefaultMutableTreeNode("Project Migrations");
-        CollectionSequence.fromCollection(mySession.getProjectMigrations()).visitAll(new IVisitor<ProjectMigration>() {
-          public void visit(ProjectMigration it) {
-            DefaultMutableTreeNode node = new MyTreeNode(it.getDescription(), migrationIcon);
-            if (it instanceof CleanupProjectMigration) {
-              croot.add(node);
-            } else {
-              proot.add(node);
-            }
+        if (mySession.requires(MigrationSession.MigrationStepKind.MIGRATE)) {
+          DefaultMutableTreeNode migrateSection = createMigrationSectionNode(migrationIcon);
+          if (migrateSection.children().hasMoreElements()) {
+            root.add(migrateSection);
           }
-        });
-        if (croot.children().hasMoreElements()) {
-          root.add(croot);
-        }
-        if (proot.children().hasMoreElements()) {
-          root.add(proot);
-        }
-
-        Collection<ScriptApplied> migrationsApplied = mySession.getModuleMigrations();
-        Iterable<BaseScriptReference> scripts = CollectionSequence.fromCollection(migrationsApplied).select(new ISelector<ScriptApplied, BaseScriptReference>() {
-          public BaseScriptReference select(ScriptApplied it) {
-            return it.getScriptReference();
-          }
-        }).distinct();
-
-        // language migrations
-        final Map<SLanguage, DefaultMutableTreeNode> l2n = MapSequence.fromMap(new HashMap<SLanguage, DefaultMutableTreeNode>());
-        Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).select(new ISelector<MigrationScriptReference, SLanguage>() {
-          public SLanguage select(MigrationScriptReference it) {
-            return it.getLanguage();
-          }
-        }).distinct().visitAll(new IVisitor<SLanguage>() {
-          public void visit(SLanguage it) {
-            MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), Icons.Language));
-          }
-        });
-        Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).visitAll(new IVisitor<MigrationScriptReference>() {
-          public void visit(MigrationScriptReference it) {
-            MigrationScript ms = it.resolve(mySession.getProject(), false);
-            String caption = (ms != null ? ms.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
-            MapSequence.fromMap(l2n).get(it.getLanguage()).add(new MyTreeNode(caption, migrationIcon));
-          }
-        });
-        int migratedModulesNum = CollectionSequence.fromCollection(migrationsApplied).where(new IWhereFilter<ScriptApplied>() {
-          public boolean accept(ScriptApplied it) {
-            return it.getScriptReference() instanceof MigrationScriptReference;
-          }
-        }).select(new ISelector<ScriptApplied, SModuleReference>() {
-          public SModuleReference select(ScriptApplied it) {
-            return it.getModuleReference();
-          }
-        }).distinct().count();
-        final DefaultMutableTreeNode lroot = new DefaultMutableTreeNode("Language Migrations (" + migratedModulesNum + " modules will be affected)");
-        Sequence.fromIterable(MapSequence.fromMap(l2n).values()).visitAll(new IVisitor<DefaultMutableTreeNode>() {
-          public void visit(DefaultMutableTreeNode it) {
-            lroot.add(it);
-          }
-        });
-        if (lroot.children().hasMoreElements()) {
-          root.add(lroot);
-        }
-
-        // module migrations
-        final Map<SModuleReference, DefaultMutableTreeNode> m2n = MapSequence.fromMap(new HashMap<SModuleReference, DefaultMutableTreeNode>());
-        Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, SModuleReference>() {
-          public SModuleReference select(RefactoringScriptReference it) {
-            return it.getModuleReference();
-          }
-        }).distinct().visitAll(new IVisitor<SModuleReference>() {
-          public void visit(SModuleReference it) {
-            MapSequence.fromMap(m2n).put(it, new DefaultMutableTreeNode(NameUtil.compactNamespace(it.getModuleName())));
-          }
-        });
-        Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).visitAll(new IVisitor<RefactoringScriptReference>() {
-          public void visit(RefactoringScriptReference it) {
-            RefactoringScript rs = it.resolve(mySession.getProject(), false);
-            String caption = (rs != null ? rs.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
-            DefaultMutableTreeNode node = new MyTreeNode(caption, migrationIcon);
-            MapSequence.fromMap(m2n).get(it.getModuleReference()).add(node);
-          }
-        });
-        int migratedModulesNum2 = CollectionSequence.fromCollection(migrationsApplied).where(new IWhereFilter<ScriptApplied>() {
-          public boolean accept(ScriptApplied it) {
-            return it.getScriptReference() instanceof RefactoringScriptReference;
-          }
-        }).select(new ISelector<ScriptApplied, SModuleReference>() {
-          public SModuleReference select(ScriptApplied it) {
-            return it.getModuleReference();
-          }
-        }).distinct().count();
-        final DefaultMutableTreeNode mroot = new DefaultMutableTreeNode("Module Migrations (" + migratedModulesNum2 + " modules will be affected)");
-        Sequence.fromIterable(MapSequence.fromMap(m2n).values()).visitAll(new IVisitor<DefaultMutableTreeNode>() {
-          public void visit(DefaultMutableTreeNode it) {
-            mroot.add(it);
-          }
-        });
-        if (mroot.children().hasMoreElements()) {
-          root.add(mroot);
         }
       }
     });
 
+    return createUIForNodes(root);
+  }
+
+  private DefaultMutableTreeNode createMigrationSectionNode(final Icon migrationIcon) {
+    DefaultMutableTreeNode migrateSection = new DefaultMutableTreeNode(MigrationSession.MigrationStepKind.MIGRATE.getDescription());
+    final DefaultMutableTreeNode projectSubsection = new DefaultMutableTreeNode("Project");
+    CollectionSequence.fromCollection(mySession.getProjectMigrations()).visitAll(new IVisitor<ProjectMigration>() {
+      public void visit(ProjectMigration it) {
+        DefaultMutableTreeNode node = new MyTreeNode(it.getDescription(), migrationIcon);
+        projectSubsection.add(node);
+      }
+    });
+    if (projectSubsection.children().hasMoreElements()) {
+      migrateSection.add(projectSubsection);
+    }
+
+    Collection<ScriptApplied> migrationsApplied = mySession.getModuleMigrations();
+    Iterable<BaseScriptReference> scripts = CollectionSequence.fromCollection(migrationsApplied).select(new ISelector<ScriptApplied, BaseScriptReference>() {
+      public BaseScriptReference select(ScriptApplied it) {
+        return it.getScriptReference();
+      }
+    }).distinct();
+
+    // language migrations
+    DefaultMutableTreeNode lroot = createLangMigrationsSubsectionNode(scripts, migrationIcon, migrationsApplied);
+    if (lroot.children().hasMoreElements()) {
+      migrateSection.add(lroot);
+    }
+    // module migrations
+    DefaultMutableTreeNode mroot = createModuleMigrationsSubsectionNode(scripts, migrationIcon, migrationsApplied);
+    if (mroot.children().hasMoreElements()) {
+      migrateSection.add(mroot);
+    }
+    return migrateSection;
+  }
+
+  private JPanel createUIForNodes(DefaultMutableTreeNode root) {
     JTree tree = new JTree(root);
     tree.setRootVisible(false);
     tree.setCellRenderer(new DefaultTreeCellRenderer() {
@@ -242,7 +182,7 @@ public class InitialStep extends BaseStep {
       public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
         super.getTreeCellRendererComponent(tree, value, selected, expanded, leaf, row, hasFocus);
         if (value instanceof MyTreeNode) {
-          setIcon(as_nznoqw_a0a0a0b0a0a0a0i0l(value, MyTreeNode.class).getIcon());
+          setIcon(as_nznoqw_a0a0a0b0a0a0a0c0p(value, MyTreeNode.class).getIcon());
         } else {
           setIcon((expanded ? IdeIcons.OPENED_FOLDER : IdeIcons.CLOSED_FOLDER));
         }
@@ -260,6 +200,90 @@ public class InitialStep extends BaseStep {
     return panel;
   }
 
+  private DefaultMutableTreeNode createPrepareSectionNode(Icon migrationIcon) {
+    DefaultMutableTreeNode prepareSection = new DefaultMutableTreeNode("Prepare");
+    if (mySession.requires(MigrationSession.MigrationStepKind.FORCE_SAVE)) {
+      prepareSection.add(new MyTreeNode(MigrationSession.MigrationStepKind.FORCE_SAVE.getDescription(), migrationIcon));
+    }
+    if (mySession.requires(MigrationSession.MigrationStepKind.UPDATE_VERSIONS)) {
+      prepareSection.add(new MyTreeNode(MigrationSession.MigrationStepKind.UPDATE_VERSIONS.getDescription(), migrationIcon));
+    }
+    return prepareSection;
+  }
+
+  private DefaultMutableTreeNode createModuleMigrationsSubsectionNode(Iterable<BaseScriptReference> scripts, final Icon migrationIcon, Collection<ScriptApplied> migrationsApplied) {
+    final Map<SModuleReference, DefaultMutableTreeNode> m2n = MapSequence.fromMap(new HashMap<SModuleReference, DefaultMutableTreeNode>());
+    Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, SModuleReference>() {
+      public SModuleReference select(RefactoringScriptReference it) {
+        return it.getModuleReference();
+      }
+    }).distinct().visitAll(new IVisitor<SModuleReference>() {
+      public void visit(SModuleReference it) {
+        MapSequence.fromMap(m2n).put(it, new DefaultMutableTreeNode(NameUtil.compactNamespace(it.getModuleName())));
+      }
+    });
+    Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).visitAll(new IVisitor<RefactoringScriptReference>() {
+      public void visit(RefactoringScriptReference it) {
+        RefactoringScript rs = it.resolve(mySession.getProject(), false);
+        String caption = (rs != null ? rs.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
+        DefaultMutableTreeNode node = new MyTreeNode(caption, migrationIcon);
+        MapSequence.fromMap(m2n).get(it.getModuleReference()).add(node);
+      }
+    });
+    int migratedModulesNum2 = CollectionSequence.fromCollection(migrationsApplied).where(new IWhereFilter<ScriptApplied>() {
+      public boolean accept(ScriptApplied it) {
+        return it.getScriptReference() instanceof RefactoringScriptReference;
+      }
+    }).select(new ISelector<ScriptApplied, SModuleReference>() {
+      public SModuleReference select(ScriptApplied it) {
+        return it.getModuleReference();
+      }
+    }).distinct().count();
+    final DefaultMutableTreeNode mroot = new DefaultMutableTreeNode("Module Migrations (" + migratedModulesNum2 + " modules will be affected)");
+    Sequence.fromIterable(MapSequence.fromMap(m2n).values()).visitAll(new IVisitor<DefaultMutableTreeNode>() {
+      public void visit(DefaultMutableTreeNode it) {
+        mroot.add(it);
+      }
+    });
+    return mroot;
+  }
+
+  private DefaultMutableTreeNode createLangMigrationsSubsectionNode(Iterable<BaseScriptReference> scripts, final Icon migrationIcon, Collection<ScriptApplied> migrationsApplied) {
+    final Map<SLanguage, DefaultMutableTreeNode> l2n = MapSequence.fromMap(new HashMap<SLanguage, DefaultMutableTreeNode>());
+    Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).select(new ISelector<MigrationScriptReference, SLanguage>() {
+      public SLanguage select(MigrationScriptReference it) {
+        return it.getLanguage();
+      }
+    }).distinct().visitAll(new IVisitor<SLanguage>() {
+      public void visit(SLanguage it) {
+        MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), Icons.Language));
+      }
+    });
+    Sequence.fromIterable(scripts).ofType(MigrationScriptReference.class).visitAll(new IVisitor<MigrationScriptReference>() {
+      public void visit(MigrationScriptReference it) {
+        MigrationScript ms = it.resolve(mySession.getProject(), false);
+        String caption = (ms != null ? ms.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
+        MapSequence.fromMap(l2n).get(it.getLanguage()).add(new MyTreeNode(caption, migrationIcon));
+      }
+    });
+    int migratedModulesNum = CollectionSequence.fromCollection(migrationsApplied).where(new IWhereFilter<ScriptApplied>() {
+      public boolean accept(ScriptApplied it) {
+        return it.getScriptReference() instanceof MigrationScriptReference;
+      }
+    }).select(new ISelector<ScriptApplied, SModuleReference>() {
+      public SModuleReference select(ScriptApplied it) {
+        return it.getModuleReference();
+      }
+    }).distinct().count();
+    final DefaultMutableTreeNode lroot = new DefaultMutableTreeNode("Language Migrations (" + migratedModulesNum + " modules will be affected)");
+    Sequence.fromIterable(MapSequence.fromMap(l2n).values()).visitAll(new IVisitor<DefaultMutableTreeNode>() {
+      public void visit(DefaultMutableTreeNode it) {
+        lroot.add(it);
+      }
+    });
+    return lroot;
+  }
+
   @Override
   public Object getNextStepId() {
     return MigrationStep.ID;
@@ -274,6 +298,7 @@ public class InitialStep extends BaseStep {
   public String cancelButtonLabel() {
     return "Postpone";
   }
+
   @Override
   public String nextButtonLabel() {
     return "Migrate";
@@ -301,7 +326,7 @@ public class InitialStep extends BaseStep {
       return myIcon;
     }
   }
-  private static <T> T as_nznoqw_a0a0a0b0a0a0a0i0l(Object o, Class<T> type) {
+  private static <T> T as_nznoqw_a0a0a0b0a0a0a0c0p(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

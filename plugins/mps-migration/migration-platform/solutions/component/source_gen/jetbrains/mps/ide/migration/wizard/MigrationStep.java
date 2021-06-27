@@ -193,6 +193,7 @@ public class MigrationStep extends BaseStep {
       setIndeterminate(false);
       setFraction(0.0);
     }
+
     @Override
     protected void queueProgressUpdate() {
       if (ThreadUtils.isInEDT()) {
@@ -205,10 +206,12 @@ public class MigrationStep extends BaseStep {
         }, ModalityState.stateForComponent(getComponent()));
       }
     }
+
     @Override
     protected void queueRunningUpdate(@NotNull Runnable update) {
       throw new UnsupportedOperationException();
     }
+
     @Override
     protected boolean isFinished() {
       return myTask.isComplete();

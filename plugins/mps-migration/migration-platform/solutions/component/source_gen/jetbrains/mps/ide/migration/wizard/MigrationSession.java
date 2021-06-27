@@ -88,13 +88,16 @@ public interface MigrationSession {
     public MigrationError getError() {
       return myErrors;
     }
+
     public void setError(MigrationError errors) {
       myErrors = errors;
     }
+
     @Override
     public Object getCurrentStage() {
       return myStage;
     }
+
     @Override
     public void setCurrentStage(Object stage) {
       myStage = stage;
@@ -271,7 +274,18 @@ public interface MigrationSession {
   }
 
   enum MigrationStepKind {
-    UPDATE_VERSIONS(),
-    MIGRATE()
+    FORCE_SAVE("Force Save Project"),
+    UPDATE_VERSIONS("Update Dependencies Versions in Descriptors"),
+    MIGRATE("Migrations");
+
+    private final String myDescription;
+
+    MigrationStepKind(String desc) {
+      myDescription = desc;
+    }
+
+    public String getDescription() {
+      return myDescription;
+    }
   }
 }
