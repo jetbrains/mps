@@ -889,6 +889,24 @@
             </node>
             <node concept="3clFbJ" id="5M3sVpvorJx" role="3cqZAp">
               <node concept="3clFbS" id="5M3sVpvorJz" role="3clFbx">
+                <node concept="3cpWs8" id="3Ss8rivPDQy" role="3cqZAp">
+                  <node concept="3cpWsn" id="3Ss8rivPDQw" role="3cpWs9">
+                    <property role="3TUv4t" value="true" />
+                    <property role="TrG5h" value="start" />
+                    <node concept="3cpWsb" id="3Ss8rivPEAx" role="1tU5fm" />
+                    <node concept="2YIFZM" id="3Ss8rivPGGR" role="33vP2m">
+                      <ref role="37wK5l" to="wyt6:~System.nanoTime()" resolve="nanoTime" />
+                      <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs8" id="3Ss8rivPJ$q" role="3cqZAp">
+                  <node concept="3cpWsn" id="3Ss8rivPJ$t" role="3cpWs9">
+                    <property role="TrG5h" value="eventReported" />
+                    <node concept="10P_77" id="3Ss8rivPJ$o" role="1tU5fm" />
+                    <node concept="3clFbT" id="3Ss8rivPLuZ" role="33vP2m" />
+                  </node>
+                </node>
                 <node concept="3cpWs8" id="7i2QPJ2OPUS" role="3cqZAp">
                   <node concept="3cpWsn" id="7i2QPJ2OPUT" role="3cpWs9">
                     <property role="TrG5h" value="dirQueue" />
@@ -1005,6 +1023,59 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3clFbJ" id="3Ss8rivPMQQ" role="3cqZAp">
+                      <node concept="3clFbS" id="3Ss8rivPMQS" role="3clFbx">
+                        <node concept="RRSsy" id="3Ss8rivQ9l0" role="3cqZAp">
+                          <property role="RRSoG" value="gZ5fksE/warn" />
+                          <node concept="3cpWs3" id="3Ss8rivQl$G" role="RRSoy">
+                            <node concept="37vLTw" id="3Ss8rivQl_s" role="3uHU7w">
+                              <ref role="3cqZAo" node="5M3sVpvob_Y" resolve="e" />
+                            </node>
+                            <node concept="Xl_RD" id="3Ss8rivQ9l2" role="3uHU7B">
+                              <property role="Xl_RC" value="UNEXPECTED: processing of VFS event takes too long: " />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="3Ss8rivQ2w9" role="3cqZAp">
+                          <node concept="37vLTI" id="3Ss8rivQ3RB" role="3clFbG">
+                            <node concept="3clFbT" id="3Ss8rivQ56S" role="37vLTx">
+                              <property role="3clFbU" value="true" />
+                            </node>
+                            <node concept="37vLTw" id="3Ss8rivQ2w7" role="37vLTJ">
+                              <ref role="3cqZAo" node="3Ss8rivPJ$t" resolve="eventReported" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="1Wc70l" id="3Ss8rivPRue" role="3clFbw">
+                        <node concept="3eOSWO" id="3Ss8rivQ0a1" role="3uHU7w">
+                          <node concept="3cmrfG" id="3Ss8rivQ0UP" role="3uHU7w">
+                            <property role="3cmrfH" value="1000" />
+                          </node>
+                          <node concept="FJ1c_" id="3Ss8rivPXaq" role="3uHU7B">
+                            <node concept="1eOMI4" id="3Ss8rivPSaF" role="3uHU7B">
+                              <node concept="3cpWsd" id="3Ss8rivPVgt" role="1eOMHV">
+                                <node concept="37vLTw" id="3Ss8rivPWh7" role="3uHU7w">
+                                  <ref role="3cqZAo" node="3Ss8rivPDQw" resolve="start" />
+                                </node>
+                                <node concept="2YIFZM" id="3Ss8rivPTAy" role="3uHU7B">
+                                  <ref role="37wK5l" to="wyt6:~System.nanoTime()" resolve="nanoTime" />
+                                  <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="3cmrfG" id="3Ss8rivPXba" role="3uHU7w">
+                              <property role="3cmrfH" value="1000" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3fqX7Q" id="3Ss8rivPNBg" role="3uHU7B">
+                          <node concept="37vLTw" id="3Ss8rivPOkq" role="3fr31v">
+                            <ref role="3cqZAo" node="3Ss8rivPJ$t" resolve="eventReported" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                   </node>
                   <node concept="3fqX7Q" id="7i2QPJ2OWu$" role="MpTkK">
                     <node concept="2OqwBi" id="7i2QPJ2OWuA" role="3fr31v">
@@ -1015,6 +1086,52 @@
                         <ref role="37wK5l" to="33ny:~ArrayDeque.isEmpty()" resolve="isEmpty" />
                       </node>
                     </node>
+                  </node>
+                </node>
+                <node concept="3clFbH" id="3Ss8rivQsA8" role="3cqZAp" />
+                <node concept="3clFbJ" id="3Ss8rivQtlw" role="3cqZAp">
+                  <node concept="3clFbS" id="3Ss8rivQtly" role="3clFbx">
+                    <node concept="3cpWs8" id="3Ss8rivQLdj" role="3cqZAp">
+                      <node concept="3cpWsn" id="3Ss8rivQLdm" role="3cpWs9">
+                        <property role="TrG5h" value="m" />
+                        <node concept="17QB3L" id="3Ss8rivQLdh" role="1tU5fm" />
+                        <node concept="2YIFZM" id="3Ss8rivQOhQ" role="33vP2m">
+                          <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                          <node concept="Xl_RD" id="3Ss8rivQvgx" role="37wK5m">
+                            <property role="Xl_RC" value="Total time spent processing VFS event %s took %d ms" />
+                          </node>
+                          <node concept="37vLTw" id="3Ss8rivQRxU" role="37wK5m">
+                            <ref role="3cqZAo" node="5M3sVpvob_Y" resolve="e" />
+                          </node>
+                          <node concept="FJ1c_" id="3Ss8rivQWAN" role="37wK5m">
+                            <node concept="3cmrfG" id="3Ss8rivQWBz" role="3uHU7w">
+                              <property role="3cmrfH" value="1000000" />
+                            </node>
+                            <node concept="1eOMI4" id="3Ss8rivQSvz" role="3uHU7B">
+                              <node concept="3cpWsd" id="3Ss8rivQVSP" role="1eOMHV">
+                                <node concept="37vLTw" id="3Ss8rivQVTD" role="3uHU7w">
+                                  <ref role="3cqZAo" node="3Ss8rivPDQw" resolve="start" />
+                                </node>
+                                <node concept="2YIFZM" id="3Ss8rivQUjf" role="3uHU7B">
+                                  <ref role="37wK5l" to="wyt6:~System.nanoTime()" resolve="nanoTime" />
+                                  <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="RRSsy" id="3Ss8rivQvgu" role="3cqZAp">
+                      <property role="RRSoG" value="gZ5fksE/warn" />
+                      <node concept="37vLTw" id="3Ss8rivR0b9" role="RRSoy">
+                        <ref role="3cqZAo" node="3Ss8rivQLdm" resolve="m" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="3Ss8rivQu$h" role="3clFbw">
+                    <ref role="3cqZAo" node="3Ss8rivPJ$t" resolve="eventReported" />
                   </node>
                 </node>
                 <node concept="3clFbH" id="5M3sVpvorJy" role="3cqZAp" />

@@ -62,6 +62,8 @@ public final class ModelCacheReloader implements BulkFileListener {
         continue;
       }
       if (vf.isDirectory()) {
+        final long start = System.nanoTime();
+        boolean eventReported = false;
         ArrayDeque<VirtualFile> dirQueue = new ArrayDeque<VirtualFile>();
         dirQueue.add(vf);
         do {
@@ -73,7 +75,20 @@ public final class ModelCacheReloader implements BulkFileListener {
               files2invalidate.add(f);
             }
           }
+          if (!(eventReported) && (System.nanoTime() - start) / 1000 > 1000) {
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn("UNEXPECTED: processing of VFS event takes too long: " + e);
+            }
+            eventReported = true;
+          }
         } while (!(dirQueue.isEmpty()));
+
+        if (eventReported) {
+          String m = String.format("Total time spent processing VFS event %s took %d ms", e, (System.nanoTime() - start) / 1000000);
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn(m);
+          }
+        }
 
       } else if (isCacheFile(vf)) {
         files2invalidate.add(vf);
