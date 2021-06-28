@@ -48,8 +48,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
-import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -337,6 +337,8 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
+    SNodeId nextNodeId = check_7w1430_a0b0oc(method1.getNextSibling());
+    SNodeId parentId = check_7w1430_a0c0oc(method1.getParent());
     ChangeSet changeSet = createFakeChangeSet();
     ourProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -344,7 +346,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       }
     });
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
-    testDiffCorrectness(realChanges, new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(method1.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), check_7w1430_c0b0b0e0oc(method1.getNextSibling())), new ModifiedNodesGroup(changeSet.getNewModel(), check_7w1430_b0c0b0e0oc(method1.getNextSibling()), check_7w1430_c0c0b0e0oc(method1.getParent()), LINKS.member$L_2d, ChangeType.ADD)));
+    testDiffCorrectness(realChanges, new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(method1.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), nextNodeId), new ModifiedNodesGroup(changeSet.getNewModel(), nextNodeId, parentId, LINKS.member$L_2d, ChangeType.ADD)));
   }
 
   private void removeChildAttribute(boolean trackMovedNodes) {
@@ -411,11 +413,11 @@ public class ChangesCalculationTest extends ChangesTestBase {
   @Test
   public void commentChildTrackMovedNodes() {
 
-    final SNode commentedNode = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    final SNode commentedNode = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(myRootNode, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
-    }).first();
+    });
 
     final Wrappers._T<SNode> commentNode = new Wrappers._T<SNode>();
     ourProject.getModelAccess().runReadAction(new Runnable() {
@@ -428,10 +430,14 @@ public class ChangesCalculationTest extends ChangesTestBase {
     ChangeSet changeSet = createFakeChangeSet();
     SNode uncommentedNode = changeSet.getOldModel().getNode(commentedNode.getNodeId());
     SNodeId uncommentedNodeNextId = check_7w1430_a0j0ed(uncommentedNode.getNextSibling());
-    SNodeId commentedNodeNextId = check_7w1430_a0k0ed(commentedNode.getNextSibling());
-    SNodeId commentNodeNextId = check_7w1430_a0l0ed(commentNode.value.getNextSibling());
+    SNodeId commentNodeNextId = check_7w1430_a0k0ed(commentNode.value.getNextSibling());
 
-    testDiffCorrectness(realChanges, new NodeGroupWrapChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(uncommentedNode.getNodeId(), changeSet.getOldModel(), ChangeType.MOVE, false)), uncommentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(commentedNode.getNodeId(), changeSet.getNewModel(), ChangeType.MOVE, true)), commentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(commentNode.value.getNodeId(), changeSet.getNewModel(), ChangeType.ADD, true)), commentNodeNextId), true));
+    ModifiedNodesGroup unwrappedGroup = new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(uncommentedNode.getNodeId(), changeSet.getOldModel(), ChangeType.MOVE, false)), uncommentedNodeNextId);
+    unwrappedGroup.setIsWrappedMove();
+    ModifiedNodesGroup wrappedGroup = new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(commentedNode.getNodeId(), changeSet.getNewModel(), ChangeType.MOVE, true)), null);
+    wrappedGroup.setIsWrappedMove();
+    WrappingNodesGroup wrappingGroup = new WrappingNodesGroup(changeSet.getNewModel(), new ModifiedNode(commentNode.value.getNodeId(), changeSet.getNewModel(), ChangeType.ADD, true), commentNodeNextId, Arrays.asList(wrappedGroup), Arrays.asList(unwrappedGroup));
+    testDiffCorrectness(realChanges, new NodeGroupWrapChange(changeSet, wrappingGroup, true));
   }
 
   @Test
@@ -463,7 +469,12 @@ public class ChangesCalculationTest extends ChangesTestBase {
     SNodeId uncommentedNodeNextId = check_7w1430_a0l0id(uncommentedNode.value.getNextSibling());
     SNodeId commentNodeNextId = check_7w1430_a0m0id(commentNode.getNextSibling());
 
-    testDiffCorrectness(realChanges, new NodeGroupMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(commentedNode.getNodeId(), changeSet.getOldModel(), ChangeType.MOVE, false)), commentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(uncommentedNode.value.getNodeId(), changeSet.getNewModel(), ChangeType.MOVE, true)), uncommentedNodeNextId), LINKS.commentedNode$MYvG, LINKS.member$L_2d), new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(commentNode.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), commentNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), commentedNodeNextId, check_7w1430_c0c0c0o0id(uncommentedNode.value.getParent()), LINKS.member$L_2d, ChangeType.DELETE)));
+    ModifiedNodesGroup wrappedGroup = new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(commentedNode.getNodeId(), changeSet.getOldModel(), ChangeType.MOVE, false)), commentedNodeNextId);
+    wrappedGroup.setIsWrappedMove();
+    ModifiedNodesGroup unwrappedGroup = new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(uncommentedNode.value.getNodeId(), changeSet.getNewModel(), ChangeType.MOVE, true)), uncommentedNodeNextId);
+    unwrappedGroup.setIsWrappedMove();
+    WrappingNodesGroup wrappingGroup = new WrappingNodesGroup(changeSet.getOldModel(), new ModifiedNode(commentNode.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false), commentNodeNextId, Arrays.asList(wrappedGroup), Arrays.asList(unwrappedGroup));
+    testDiffCorrectness(realChanges, new NodeGroupWrapChange(changeSet, wrappingGroup, false));
   }
 
   @Test
@@ -564,19 +575,13 @@ public class ChangesCalculationTest extends ChangesTestBase {
     nb.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)/~Iterable");
     return quotedNode_1;
   }
-  private static SNodeId check_7w1430_c0b0b0e0oc(SNode checkedDotOperand) {
+  private static SNodeId check_7w1430_a0b0oc(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-  private static SNodeId check_7w1430_b0c0b0e0oc(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getNodeId();
-    }
-    return null;
-  }
-  private static SNodeId check_7w1430_c0c0b0e0oc(SNode checkedDotOperand) {
+  private static SNodeId check_7w1430_a0c0oc(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
@@ -589,12 +594,6 @@ public class ChangesCalculationTest extends ChangesTestBase {
     return null;
   }
   private static SNodeId check_7w1430_a0k0ed(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getNodeId();
-    }
-    return null;
-  }
-  private static SNodeId check_7w1430_a0l0ed(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
@@ -613,12 +612,6 @@ public class ChangesCalculationTest extends ChangesTestBase {
     return null;
   }
   private static SNodeId check_7w1430_a0m0id(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getNodeId();
-    }
-    return null;
-  }
-  private static SNodeId check_7w1430_c0c0c0o0id(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }

@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.merge.SNodeCompare;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/520259247110483854", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
-/*package*/ final class DiffUtil {
+public final class DiffUtil {
 
   private DiffUtil() {
   }
@@ -74,25 +74,25 @@ import jetbrains.mps.vcs.diff.changes.SetConceptChange;
     return true;
   }
 
-  /*package*/ static Iterable<ModelChange> collectPropertyChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode) {
+  /*package*/ static Iterable<NodeChange> collectPropertyChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode) {
     Iterable<SProperty> oldProperties = oldNode.getProperties();
     Iterable<SProperty> newProperties = newNode.getProperties();
-    return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate(new ITranslator2<SProperty, ModelChange>() {
-      public Iterable<ModelChange> translate(SProperty property) {
+    return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate(new ITranslator2<SProperty, NodeChange>() {
+      public Iterable<NodeChange> translate(SProperty property) {
         return collectPropertyChanges(changeSet, oldNode, newNode, property);
       }
     });
   }
 
-  /*package*/ static Iterable<ModelChange> collectPropertyChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode, final SProperty property) {
+  /*package*/ static Iterable<NodeChange> collectPropertyChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode, final SProperty property) {
     if (propertiesAreEqual(oldNode, newNode, property)) {
-      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+      return Sequence.fromIterable(Collections.<NodeChange>emptyList());
     }
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
+    return Sequence.fromClosure(new ISequenceClosure<NodeChange>() {
+      public Iterable<NodeChange> iterable() {
+        return new Iterable<NodeChange>() {
+          public Iterator<NodeChange> iterator() {
+            return new YieldingIterator<NodeChange>() {
               private int __CP__ = 0;
               protected boolean moveToNext() {
 __loop__:
@@ -104,7 +104,7 @@ __switch__:
                       return false;
                     case 2:
                       this.__CP__ = 1;
-                      this.yield(((ModelChange) new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property))));
+                      this.yield(((NodeChange) new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property))));
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -122,21 +122,21 @@ __switch__:
     });
   }
 
-  /*package*/ static Iterable<ModelChange> collectReferenceChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode) {
+  /*package*/ static Iterable<NodeChange> collectReferenceChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
     List<SReference> newReferences = (List<SReference>) newNode.getReferences();
     return ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
       public SReferenceLink select(SReference r) {
         return r.getLink();
       }
-    }).distinct().translate(new ITranslator2<SReferenceLink, ModelChange>() {
-      public Iterable<ModelChange> translate(SReferenceLink it) {
+    }).distinct().translate(new ITranslator2<SReferenceLink, NodeChange>() {
+      public Iterable<NodeChange> translate(SReferenceLink it) {
         return collectReferenceChanges(changeSet, oldNode, newNode, it);
       }
     });
   }
 
-  /*package*/ static Iterable<ModelChange> collectReferenceChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode, final SReferenceLink role) {
+  /*package*/ static Iterable<NodeChange> collectReferenceChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode, final SReferenceLink role) {
 
     final boolean refsAreEqual = DiffUtil.referencesAreEqual(oldNode, newNode, role);
     boolean diffByResolveInfo = DiffUtil.referencesDifferByResolveInfo(oldNode, newNode, role);
@@ -148,11 +148,11 @@ __switch__:
     final SReference newReference = newNode.getReference(role);
     final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a7a51(newReference));
     final SModelReference targetModel = check_z8xa03_a0i0p(newReference);
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
+    return Sequence.fromClosure(new ISequenceClosure<NodeChange>() {
+      public Iterable<NodeChange> iterable() {
+        return new Iterable<NodeChange>() {
+          public Iterator<NodeChange> iterator() {
+            return new YieldingIterator<NodeChange>() {
               private int __CP__ = 0;
               protected boolean moveToNext() {
 __loop__:
@@ -164,7 +164,7 @@ __switch__:
                       return false;
                     case 2:
                       this.__CP__ = 1;
-                      this.yield((ModelChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
+                      this.yield((NodeChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -215,21 +215,21 @@ __switch__:
     return true;
   }
 
-  /*package*/ static List<SNode> getChildrenInRole(SNode parent, SContainmentLink link) {
+  public static List<SNode> getChildrenInRole(SNode parent, SContainmentLink link) {
     return check_z8xa03_a0a32(AttributeOperations.getChildNodesAndAttributes(parent, link));
   }
 
-  /*package*/ static Iterable<ModelChange> collectConceptChanges(final ChangeSet changeSet, final SNode oldNode, SNode newNode) {
+  /*package*/ static Iterable<NodeChange> collectConceptChanges(final ChangeSet changeSet, final SNode oldNode, SNode newNode) {
     final SConcept oldConcept = oldNode.getConcept();
     final SConcept newConcept = newNode.getConcept();
     if (Objects.equals(oldNode.getConcept(), newNode.getConcept())) {
-      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+      return Sequence.fromIterable(Collections.<NodeChange>emptyList());
     } else {
-      return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-        public Iterable<ModelChange> iterable() {
-          return new Iterable<ModelChange>() {
-            public Iterator<ModelChange> iterator() {
-              return new YieldingIterator<ModelChange>() {
+      return Sequence.fromClosure(new ISequenceClosure<NodeChange>() {
+        public Iterable<NodeChange> iterable() {
+          return new Iterable<NodeChange>() {
+            public Iterator<NodeChange> iterator() {
+              return new YieldingIterator<NodeChange>() {
                 private int __CP__ = 0;
                 protected boolean moveToNext() {
 __loop__:
@@ -241,7 +241,7 @@ __switch__:
                         return false;
                       case 2:
                         this.__CP__ = 1;
-                        this.yield((ModelChange) new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
+                        this.yield((NodeChange) new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
                         return true;
                       case 0:
                         this.__CP__ = 2;
@@ -260,8 +260,8 @@ __switch__:
     }
   }
 
-  /*package*/ static Iterable<ModelChange> collectNodeChanges(ChangeSet changeSet, SNode oldNode, SNode newNode) {
-    Iterable<ModelChange> result = Sequence.fromIterable(Collections.<ModelChange>emptyList());
+  /*package*/ static Iterable<NodeChange> collectNodeChanges(ChangeSet changeSet, SNode oldNode, SNode newNode) {
+    Iterable<NodeChange> result = Sequence.fromIterable(Collections.<NodeChange>emptyList());
     result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectConceptChanges(changeSet, oldNode, newNode)));
     result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectPropertyChanges(changeSet, oldNode, newNode)));
     result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectReferenceChanges(changeSet, oldNode, newNode)));

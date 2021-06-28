@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -19,21 +18,36 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2763871596163643452", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeIdChange extends StructureChange {
+public class NodeIdChange extends NodeChange {
   private final SNodeId myOldParentNodeId;
   private final SNodeId myNewParentNodeId;
   private final SContainmentLink myRole;
-  private final SNodeId myOldNodeId;
-  private final SNodeId myNewNodeId;
+  private final IdChangeGroup myOldGroup;
+  private final IdChangeGroup myNewGroup;
 
 
   public NodeIdChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldParentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, @NotNull SNodeId oldNodeId, @NotNull SNodeId newNodeId) {
-    super(changeSet, calcRootId(changeSet, oldParentNodeId));
+    super(changeSet, oldNodeId, newNodeId);
+    myOldGroup = null;
+    myNewGroup = null;
+    // TODO do we really need parent ids at all?
     myOldParentNodeId = oldParentNodeId;
     myNewParentNodeId = newParentNodeId;
-    myOldNodeId = oldNodeId;
-    myNewNodeId = newNodeId;
     myRole = role;
+  }
+
+  public NodeIdChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldParentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, @NotNull IdChangeGroup oldGroup, @NotNull IdChangeGroup newGroup) {
+    super(changeSet, oldGroup.getId(), newGroup.getId());
+    myOldGroup = oldGroup;
+    myNewGroup = newGroup;
+    // TODO do we really need parent ids at all?
+    myOldParentNodeId = oldParentNodeId;
+    myNewParentNodeId = newParentNodeId;
+    myRole = role;
+  }
+
+  public IdChangeGroup getGroup(boolean isNew) {
+    return (isNew ? myNewGroup : myOldGroup);
   }
 
   @NotNull
@@ -48,7 +62,7 @@ public class NodeIdChange extends StructureChange {
 
   @NotNull
   public SNodeId getNodeId(boolean isNewModel) {
-    return (isNewModel ? myNewNodeId : myOldNodeId);
+    return getAffectedNodeId(isNewModel);
   }
 
   public boolean isAbout(SContainmentLink link) {
@@ -59,36 +73,19 @@ public class NodeIdChange extends StructureChange {
     return ((isNewModel ? getChangeSet().getNewModel() : getChangeSet().getOldModel())).getNode(getNodeId(isNewModel));
   }
 
-
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
 
-    SNode node = model.getNode(myOldNodeId);
+    SNode node = model.getNode(getNodeId(false));
     if (node != null) {
-      nodeCopier.replaceNodeId(node, myNewNodeId);
+      nodeCopier.replaceNodeId(node, getNodeId(true));
+      check_kkxqie_a1a2a32(myNewGroup, model);
     }
   }
 
-  @Nullable
-  private static SNodeId calcRootId(ChangeSet changeSet, SNodeId parentNodeId) {
-    SModel oldModel = changeSet.getOldModel();
-    SNode node = oldModel.getNode(parentNodeId);
-    if (node == null) {
-      // I don't fully understand how this can happen
-      return null;
-    }
-    SNode containingRoot = node.getContainingRoot();
-    return containingRoot.getNodeId();
-  }
-
-  @NotNull
-  @Override
-  public ChangeType getType() {
-    return ChangeType.CHANGE;
-  }
   @Override
   public String toString() {
-    return String.format("Replace node with ID #%s by node with ID #%s in role %s of node %s", myOldNodeId, myNewNodeId, myRole, myOldParentNodeId);
+    return String.format("Replace node with ID #%s by node with ID #%s in role %s of node %s", getNodeId(false), getNodeId(true), myRole, myOldParentNodeId);
   }
 
   @Override
@@ -99,7 +96,7 @@ public class NodeIdChange extends StructureChange {
   public String getDescription(boolean verbose) {
     String role = myRole.getName();
     if (verbose) {
-      return String.format("%s ID replaced: new value is #%s", role, myNewNodeId);
+      return String.format("%s ID replaced: new value is #%s", role, getNodeId(true));
     } else {
       return String.format("%s ID replaced", role);
     }
@@ -108,17 +105,26 @@ public class NodeIdChange extends StructureChange {
   @Override
   public boolean isNonConflicting() {
     // it is a question if we should use more complicated solution here
-    return true || super.isNonConflicting();
+    return true;
   }
 
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
-    return new NodeIdChange(getChangeSet().getOppositeChangeSet(), myNewParentNodeId, myOldParentNodeId, myRole, myNewNodeId, myOldNodeId);
+    if (myOldGroup != null) {
+      return new NodeIdChange(getChangeSet().getOppositeChangeSet(), myNewParentNodeId, myOldParentNodeId, myRole, myNewGroup, myOldGroup);
+    }
+    return new NodeIdChange(getChangeSet().getOppositeChangeSet(), myNewParentNodeId, myOldParentNodeId, myRole, getNodeId(true), getNodeId(false));
   }
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
+  }
+  private static void check_kkxqie_a1a2a32(IdChangeGroup checkedDotOperand, SModel model) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.setIsApplied(model);
+    }
+
   }
 }

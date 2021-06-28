@@ -6,28 +6,29 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Collection;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4676109734476338389", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public final class ModifiedNode {
 
   private final boolean myIsNewModel;
-  private SModel myModel;
+  private final SModel myModel;
   @NotNull
-  private SNodeId myNodeId;
-  private List<ModifiedNode> myChildren;
+  private final SNodeId myNodeId;
+  private final Collection<ModifiedNode> myChildren = CollectionSequence.fromCollection(new ArrayList<ModifiedNode>());
   private ModifiedNode myParent;
   private ModifiedNode myOppositeNode;
   private final ChangeType myType;
+  private final SContainmentLink myLink;
 
 
   public ModifiedNode(@NotNull SNodeId nodeId, SModel model, ChangeType type, boolean isNew) {
@@ -35,19 +36,7 @@ public final class ModifiedNode {
     myNodeId = nodeId;
     myType = type;
     myIsNewModel = isNew;
-    myChildren = ListSequence.fromList(new ArrayList<ModifiedNode>());
-  }
-
-  public ModifiedNode makeCopy() {
-    final ModifiedNode copy = new ModifiedNode(myNodeId, myModel, myType, myIsNewModel);
-    ListSequence.fromList(myChildren).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode it) {
-        copy.addChild(it);
-      }
-    });
-    copy.setOppositeNode(myOppositeNode);
-    copy.setParent(myParent);
-    return copy;
+    myLink = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(getNode());
   }
 
   public boolean isMove() {
@@ -66,14 +55,10 @@ public final class ModifiedNode {
     return myIsNewModel;
   }
 
-  public List<ModifiedNode> getChildren() {
-    return myChildren;
-  }
-
   public Set<SNodeId> getAllAffectedNodeIds() {
     final Set<SNodeId> result = SetSequence.fromSet(new HashSet<SNodeId>());
     SetSequence.fromSet(result).addElement(getNodeId());
-    ListSequence.fromList(myChildren).visitAll(new IVisitor<ModifiedNode>() {
+    CollectionSequence.fromCollection(myChildren).visitAll(new IVisitor<ModifiedNode>() {
       public void visit(ModifiedNode it) {
         SetSequence.fromSet(result).addSequence(SetSequence.fromSet(it.getAllAffectedNodeIds()));
       }
@@ -90,15 +75,19 @@ public final class ModifiedNode {
   }
 
   public void addChild(ModifiedNode child) {
-    ListSequence.fromList(myChildren).addElement(child);
+    CollectionSequence.fromCollection(myChildren).addElement(child);
   }
 
   public SNodeId getParentId() {
-    return check_vp7k1x_a0a23(getNode().getParent(), this);
+    return check_vp7k1x_a0a92(getNode().getParent(), this);
   }
 
   public SNode getNode() {
     return myModel.getNode(myNodeId);
+  }
+
+  public SModel getModel() {
+    return myModel;
   }
 
   public SNodeId getNodeId() {
@@ -106,7 +95,7 @@ public final class ModifiedNode {
   }
 
   public SContainmentLink getLink() {
-    return SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(getNode());
+    return myLink;
   }
 
   @NotNull
@@ -120,22 +109,22 @@ public final class ModifiedNode {
     if (isMove()) {
       sb.append("moved ");
     } else if (myType == ChangeType.ADD) {
-      sb.append("added");
+      sb.append("added ");
     } else if (myType == ChangeType.DELETE) {
-      sb.append("deleted");
+      sb.append("deleted ");
     }
-    sb.append(check_vp7k1x_a0a2a24(getLink(), this));
+    sb.append(check_vp7k1x_a0a2a14(getLink(), this));
     sb.append(" #").append(getNodeId());
     sb.append(" of parent #").append(getParentId());
     return sb.toString();
   }
-  private static SNodeId check_vp7k1x_a0a23(SNode checkedDotOperand, ModifiedNode checkedDotThisExpression) {
+  private static SNodeId check_vp7k1x_a0a92(SNode checkedDotOperand, ModifiedNode checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-  private static String check_vp7k1x_a0a2a24(SContainmentLink checkedDotOperand, ModifiedNode checkedDotThisExpression) {
+  private static String check_vp7k1x_a0a2a14(SContainmentLink checkedDotOperand, ModifiedNode checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getName();
     }

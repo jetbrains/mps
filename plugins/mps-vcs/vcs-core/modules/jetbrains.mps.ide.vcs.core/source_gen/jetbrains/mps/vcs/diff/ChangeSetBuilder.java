@@ -117,8 +117,8 @@ public class ChangeSetBuilder {
 
   private void buildChangeSetForNode(@Nullable SNode oldNode, @Nullable SNode newNode) {
     if (myTrackMovedNodes) {
-      TreeChangeSetBuilder builder = new TreeChangeSetBuilder(oldNode, newNode, myChangeSet, myCreateWrapChanges);
-      ListSequence.fromList(myNewChanges).addSequence(ListSequence.fromList(builder.getChanges(false)));
+      MovesAwareChangeSetBuilder builder = new MovesAwareChangeSetBuilder(oldNode, newNode, myChangeSet);
+      ListSequence.fromList(myNewChanges).addSequence(ListSequence.fromList(builder.getChanges(false, myCreateWrapChanges)));
     } else {
       buildForNode(oldNode, newNode);
     }
@@ -461,7 +461,7 @@ public class ChangeSetBuilder {
   public static boolean hasChangesForNodeId(SModel oldModel, SModel newModel, SNodeId nodeId) {
     SNode oldNode = oldModel.getNode(nodeId);
     SNode newNode = newModel.getNode(nodeId);
-    return TreeChangeSetBuilder.hasChanges(oldNode, newNode, new ChangeSetImpl(oldModel, newModel));
+    return MovesAwareChangeSetBuilder.hasChanges(oldNode, newNode, new ChangeSetImpl(oldModel, newModel));
   }
 
   public static ModelChangeSet buildChangeSetForNode(SModel oldModel, SModel newModel, SNodeId rootId, boolean withOpposite) {

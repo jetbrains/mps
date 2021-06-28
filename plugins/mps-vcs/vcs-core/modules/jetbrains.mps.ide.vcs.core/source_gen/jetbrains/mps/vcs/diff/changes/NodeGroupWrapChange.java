@@ -12,58 +12,61 @@ import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.vcs.diff.DiffUtil;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4047500669634631216", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
+public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
-  protected final ModifiedNodesGroup myNewMovedGroup;
-  protected final ModifiedNodesGroup myNewInsertedGroup;
+  @NotNull
+  protected final WrappingNodesGroup myWrappingGroup;
   private boolean myIsWrap;
-  private String myDescription;
-  private String myShortDescription;
-  private String myInternalDescription;
+  private final String myDescription;
+  private final String myShortDescription;
 
 
-  public NodeGroupWrapChange(@NotNull ChangeSet changeSet, ModifiedNodesGroup oldGroup, ModifiedNodesGroup newMovedGroup, ModifiedNodesGroup newInsertedGroup, boolean isWrap) {
-    super(changeSet, oldGroup, createNewGroup(newMovedGroup, newInsertedGroup));
-    myNewMovedGroup = newMovedGroup;
-    myNewInsertedGroup = newInsertedGroup;
+  public NodeGroupWrapChange(@NotNull ChangeSet changeSet, @NotNull WrappingNodesGroup wrappingGroup, boolean isWrap) {
+    super(changeSet, (isWrap ? mergeGroups(changeSet, wrappingGroup.getUnwrappedGroups()) : wrappingGroup), (isWrap ? wrappingGroup : mergeGroups(changeSet, wrappingGroup.getUnwrappedGroups())));
+    myWrappingGroup = wrappingGroup;
     myIsWrap = isWrap;
     myDescription = createDescription(true);
     myShortDescription = createDescription(false);
-    myInternalDescription = createInternalDescription();
-
   }
+
   @Nullable
   @Override
   public MergeStrategy getMergeHint() {
     // get "nonconflicting" attribute in metamodel
-    SNode n = getParent(false);
-    MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink());
+    SNode n = getParentNode(false);
+    MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink(false));
     if (hint != null) {
       return hint;
     }
     return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
   }
 
-  private static ModifiedNodesGroup createNewGroup(ModifiedNodesGroup newMovedGroup, ModifiedNodesGroup newInsertedGroup) {
-    List<ModifiedNode> newChanges = ListSequence.fromList(newInsertedGroup.getModifiedNodes()).concat(ListSequence.fromList(newMovedGroup.getModifiedNodes())).toListSequence();
-    ModifiedNodesGroup newGroup = new ModifiedNodesGroup(newInsertedGroup.getModel(), newChanges, newInsertedGroup.getNextNodeId());
-    newGroup.setNextGroup(newInsertedGroup.getNextGroup());
-    return newGroup;
-  }
+  private static ModifiedNodesGroup mergeGroups(ChangeSet changeSet, List<ModifiedNodesGroup> groups) {
+    final List<ModifiedNode> nodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
+    ListSequence.fromList(groups).visitAll(new IVisitor<ModifiedNodesGroup>() {
+      public void visit(ModifiedNodesGroup it) {
+        ListSequence.fromList(nodes).addSequence(ListSequence.fromList(it.getModifiedNodes()));
+      }
+    });
 
-  public SContainmentLink getLink() {
-    return getLink(false);
+    return new ModifiedNodesGroup((ListSequence.fromList(groups).first().isNew() ? changeSet.getNewModel() : changeSet.getOldModel()), nodes, ListSequence.fromList(groups).last().getNextNodeId());
   }
 
   public boolean isAbout(SContainmentLink link) {
-    return getLink().equals(link);
+    return getLink(false).equals(link);
   }
 
   @Override
@@ -71,8 +74,13 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     return getDescription(true);
   }
 
-  private String getNewIdsAsString() {
-    List<String> allIds = ListSequence.fromList(myNewMovedGroup.getIds()).select(new ISelector<SNodeId, String>() {
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
+  }
+
+  protected String getMultiLineIdsString(boolean isNew) {
+    List<String> allIds = ListSequence.fromList(getIds(isNew)).select(new ISelector<SNodeId, String>() {
       public String select(SNodeId id) {
         return "#" + id;
       }
@@ -95,55 +103,144 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
         }
       }
     }
-    sb.append(" --> #");
-    sb.append(ListSequence.fromList(myNewInsertedGroup.getIds()).first());
     return sb.toString();
   }
 
+  private String getIdsAsString() {
+    return getMultiLineIdsString(false) + " --> " + getMultiLineIdsString(true);
+  }
+
   private String createDescription(boolean verbose) {
-    String role = getLink().getName();
-    int movedSize = ListSequence.fromList(getModifiedNodes(false)).count();
-    String movedItems = (movedSize == 1 ? role : NameUtil.formatNumericalString(movedSize, role));
-    if (verbose) {
-      return String.format("Wrapped %s by new %s: %s", movedItems, role, getNewIdsAsString());
+    String unwrappedRole = myWrappingGroup.getUnwrappedLink().getName();
+    String wrappingRole = myWrappingGroup.getLink().getName();
+    List<ModifiedNodesGroup> wrappedMoves = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return it.isWrappedMove();
+      }
+    }).toListSequence();
+    int movedSize = ListSequence.fromList(wrappedMoves).select(new ISelector<ModifiedNodesGroup, Integer>() {
+      public Integer select(ModifiedNodesGroup it) {
+        return it.getSize();
+      }
+    }).reduceLeft(new ILeftCombinator<Integer, Integer>() {
+      public Integer combine(Integer a, Integer b) {
+        return a + b;
+      }
+    });
+    String wrappedItems = NameUtil.formatNumericalString(movedSize, unwrappedRole);
+    StringBuilder sb = new StringBuilder();
+    if (myIsWrap) {
+      sb.append(String.format("Wrapped %s by new %s", wrappedItems, wrappingRole));
     } else {
-      return String.format("Wrapped %s by new %s", movedItems, role);
+      sb.append(String.format("Unwrapped %s from old %s", wrappedItems, wrappingRole));
     }
+    if (verbose) {
+      sb.append(": ").append(getIdsAsString());
+    }
+    return sb.toString();
   }
 
-  public String getDescription(boolean verbose) {
+  private String getDescription(boolean verbose) {
     return (verbose ? myDescription : myShortDescription);
-  }
-
-  private String nodeRange(boolean isNew) {
-    int size = ListSequence.fromList(getModifiedNodes(isNew)).count();
-    if (size == 1) {
-      return String.format("node #%d", getBegin(isNew));
-    }
-    return String.format("nodes #%d-%d", getBegin(isNew), getEnd(isNew) - 1);
-  }
-
-  public boolean isWrap() {
-    return myIsWrap;
   }
 
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    if (myWrappingGroup.isApplied(model)) {
+      return;
+    }
     if (myIsWrap) {
-      super.apply(model, nodeCopier);
+      wrapNodes(model, nodeCopier);
     } else {
-      getGroup(true).deleteFromModel(model);
-      getGroup(false).insertIntoModel(model, nodeCopier);
+      unwrapNodes(model, nodeCopier);
     }
   }
 
-  private String createInternalDescription() {
-    return String.format("Wrapped %s with node %s in role %s of node %s", nodeRange(false), nodeRange(true), getLink(), getParentId(false));
+  private void wrapNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+
+    List<SNode> nodes = getUnwrappedNodes(model, nodeCopier);
+    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SNodeOperations.deleteNode(it);
+      }
+    });
+    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        it.delete();
+      }
+    });
+
+    myWrappingGroup.insertCopyIntoModel(model, nodeCopier);
+    myWrappingGroup.setIsApplied(model);
+
+    SNode parent = nodeCopier.getNode(model, myWrappingGroup.getWrappedParentId());
+    if (parent == null) {
+      return;
+    }
+    SNodeId beforeAnchorId = null;
+    SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
+    for (SNode node : ListSequence.fromList(nodes)) {
+      parent.insertChildBefore(myWrappingGroup.getWrappedLink(), node, beforeAnchor);
+    }
+  }
+
+  private void unwrapNodes(@NotNull final SModel model, @NotNull NodeCopier nodeCopier) {
+    List<SNode> nodes = getWrappedNodes(model, nodeCopier);
+    ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SNodeOperations.deleteNode(it);
+      }
+    });
+    myWrappingGroup.deleteFromModel(model);
+    myWrappingGroup.setIsApplied(model);
+
+    SNode parent = nodeCopier.getNode(model, myWrappingGroup.getParentId());
+    if (parent == null) {
+      return;
+    }
+    SNodeId beforeAnchorId = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).last().getNextInsertedNodeId(model);
+    SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
+    for (SNode node : ListSequence.fromList(nodes)) {
+      parent.insertChildBefore(myWrappingGroup.getLink(), node, beforeAnchor);
+    }
+    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return it.isWrappedMove();
+      }
+    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
+      public void visit(ModifiedNodesGroup it) {
+        it.setIsApplied(model);
+      }
+    });
+  }
+
+  private List<SNode> getUnwrappedNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    SNode parent = nodeCopier.getNode(model, myWrappingGroup.getUnwrappedParentId());
+    SNodeId firstWrappedMoveId = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).first().getFirstNodeId();
+    SNode firstNode = nodeCopier.getNode(model, firstWrappedMoveId);
+    SNodeId lastWrappedMoveId = ListSequence.fromList(ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).last().getIds()).last();
+    SNode lastNode = nodeCopier.getNode(model, lastWrappedMoveId);
+
+    List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
+    for (SNode node : ListSequence.fromList(DiffUtil.getChildrenInRole(parent, myWrappingGroup.getUnwrappedLink()))) {
+      if (node == firstNode || ListSequence.fromList(result).isNotEmpty()) {
+        ListSequence.fromList(result).addElement(node);
+      }
+      if (node == lastNode) {
+        break;
+      }
+    }
+    return result;
+  }
+
+  private List<SNode> getWrappedNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
+    SNode parent = nodeCopier.getNode(model, myWrappingGroup.getWrappedParentId());
+    return DiffUtil.getChildrenInRole(parent, myWrappingGroup.getWrappedLink());
   }
 
   @Override
   public String toString() {
-    return myInternalDescription;
+    return myDescription;
   }
 
   @NotNull
@@ -155,6 +252,20 @@ public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
-    return new NodeGroupWrapChange(getChangeSet(), getGroup(false).makeCopy(), getGroup(true).makeCopy(), myNewInsertedGroup.makeCopy(), false);
+    return new NodeGroupWrapChange(getChangeSet().getOppositeChangeSet(), myWrappingGroup, !(myIsWrap));
+  }
+
+  @Override
+  @NotNull
+  public List<ModifiedNode> getModifiedNodes(boolean isNew) {
+    return ((isNew == myIsWrap) ? ListSequence.fromList(myWrappingGroup.getModifiedNodes()).concat(ListSequence.fromList(myWrappingGroup.getWrappedGroups()).translate(new ITranslator2<ModifiedNodesGroup, ModifiedNode>() {
+      public Iterable<ModifiedNode> translate(ModifiedNodesGroup it) {
+        return it.getModifiedNodes();
+      }
+    })).toListSequence() : ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).translate(new ITranslator2<ModifiedNodesGroup, ModifiedNode>() {
+      public Iterable<ModifiedNode> translate(ModifiedNodesGroup it) {
+        return it.getModifiedNodes();
+      }
+    }).toListSequence());
   }
 }
