@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,11 +75,11 @@ import java.util.concurrent.atomic.AtomicReference;
 public class IntentionsSupport {
   private static final long INTENTION_SHOW_DELAY = 1000;
 
-  private AbstractAction myShowIntentionsAction;
+  private final AbstractAction myShowIntentionsAction;
   private final Point myLightBulbLocation = new Point();
   private final LightBulbMenu myLightBulb;
 
-  private final AtomicReference<Thread> myShowIntentionsThread = new AtomicReference<>();
+  private final AtomicReference<IntentionsThread> myShowIntentionsThread = new AtomicReference<>();
 
   @NotNull
   private final EditorComponent myEditor;
@@ -156,10 +156,14 @@ public class IntentionsSupport {
   }
 
   private void stopIntentionThread() {
-    Thread thread = myShowIntentionsThread.getAndSet(null);
+    IntentionsThread thread = myShowIntentionsThread.getAndSet(null);
     if (thread != null) {
-      thread.interrupt();
+      thread.requestStop();
     }
+  }
+
+  private void intentionThreadCompleted(IntentionsThread thread) {
+    myShowIntentionsThread.compareAndSet(thread, null);
   }
 
   private void updateIntentionsStatus() {
@@ -167,62 +171,7 @@ public class IntentionsSupport {
 
     hideLightBulb();
 
-    myShowIntentionsThread.set(new Thread("Intentions") {
-      @Override
-      public void run() {
-        try {
-          Thread.sleep(IntentionsSupport.INTENTION_SHOW_DELAY);
-          if (interrupted()) {
-            return;
-          }
-
-          final boolean[] forceReturn = {false};
-          ApplicationManager.getApplication().invokeAndWait(
-              () -> myEditor.getRepository().getModelAccess().runReadAction(
-                  () -> forceReturn[0] = isInconsistentEditor() || ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor)));
-
-          if (forceReturn[0]) {
-            return;
-          }
-
-          final Kind intentionKind = new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
-            // TODO check for ActionsAsIntentions
-            if (myEditor.getTypecheckingSession() == null) return null;
-            
-            return TypecheckingFacade
-                       .getFromContext()
-                       .computeWithSession(myEditor.getTypecheckingSession(),
-                                          (session) ->
-                                             IntentionsManager
-                                                  .getInstance()
-                                                  .getHighestAvailableBaseIntentionType(myEditor.getSelectedNode(), myEditor.getEditorContext())
-            );
-          });
-
-          if (intentionKind == null || interrupted()) {
-            return;
-          }
-
-          getModelAccess().runReadInEDT(() -> {
-            if (isInconsistentEditor() || ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor) || interrupted()) {
-              return;
-            }
-
-            if (myEditor.getSelectedCell() == null) {
-              hideLightBulb();
-            } else {
-              adjustLightBulbLocation();
-              showLightBulbComponent(intentionKind == Kind.NORMAL ? Icons.INTENTION : new IntentionIconProvider(intentionKind).getIcon());
-            }
-          });
-
-        } catch (InterruptedException e) {
-          // Can be interrupted on editor focus lost or dispose
-        } finally {
-          myShowIntentionsThread.compareAndSet(this, null);
-        }
-      }
-    });
+    myShowIntentionsThread.set(new IntentionsThread());
 
     myShowIntentionsThread.get().start();
   }
@@ -410,5 +359,74 @@ public class IntentionsSupport {
 
   private ModelAccess getModelAccess() {
     return myEditor.getRepository().getModelAccess();
+  }
+
+  private class IntentionsThread extends Thread {
+    private volatile boolean myStopRequested;
+
+    public IntentionsThread() {
+      super("Intentions");
+    }
+
+    /*package*/ void requestStop() {
+      myStopRequested = true;
+    }
+
+    @Override
+    public void run() {
+      try {
+        Thread.sleep(IntentionsSupport.INTENTION_SHOW_DELAY);
+        if (myStopRequested) {
+          return;
+        }
+
+        final boolean[] forceReturn = {false};
+        ApplicationManager.getApplication().invokeAndWait(
+            () -> myEditor.getRepository().getModelAccess().runReadAction(
+                () -> forceReturn[0] = isInconsistentEditor() || ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor)));
+
+        if (forceReturn[0]) {
+          return;
+        }
+
+        final Kind intentionKind = new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
+          // TODO check for ActionsAsIntentions
+          if (myEditor.getTypecheckingSession() == null) {
+            return null;
+          }
+
+          return TypecheckingFacade
+                     .getFromContext()
+                     .computeWithSession(myEditor.getTypecheckingSession(),
+                                        (session) ->
+                                           IntentionsManager
+                                                .getInstance()
+                                                .getHighestAvailableBaseIntentionType(myEditor.getSelectedNode(), myEditor.getEditorContext())
+          );
+        });
+
+        if (intentionKind == null || myStopRequested) {
+          return;
+        }
+
+        getModelAccess().runReadInEDT(() -> {
+          if (isInconsistentEditor() || ReadOnlyUtil.isSelectionReadOnlyInEditor(myEditor) || myStopRequested) {
+            return;
+          }
+
+          if (myEditor.getSelectedCell() == null) {
+            hideLightBulb();
+          } else {
+            adjustLightBulbLocation();
+            showLightBulbComponent(intentionKind == Kind.NORMAL ? Icons.INTENTION : new IntentionIconProvider(intentionKind).getIcon());
+          }
+        });
+
+      } catch (InterruptedException e) {
+        // It's ok, we don't care if the thread got interrupted
+      } finally {
+        intentionThreadCompleted(this);
+      }
+    }
   }
 }
