@@ -292,6 +292,7 @@ public final class StaticReference extends SReferenceBase {
       targetNode = commandContext(targetModel).resolveUnregistered(targetNodeId);
     }
     myImmatureTargetNode = targetNode;
+    setResolveInfo(targetNode.getName());
 //    if (myImmatureTargetNode != null) {
 //      ImmatureReferences.getInstance().add(this);
 //    }
