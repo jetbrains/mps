@@ -4,7 +4,6 @@ package jetbrains.mps.ide.migration.wizard;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
-import java.util.Set;
 import java.util.Collection;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -14,6 +13,7 @@ import jetbrains.mps.migration.global.MigrationOptions;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.ide.migration.ProjectMigrationProgress;
@@ -28,7 +28,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 public interface MigrationSession {
   Project getProject();
 
-  Set<MigrationStepKind> getRequiredSteps();
+  boolean requires(MigrationStepKind stepKind);
 
   Collection<ScriptApplied> getModuleMigrations();
   Collection<ProjectMigration> getProjectMigrations();
@@ -57,8 +57,8 @@ public interface MigrationSession {
   abstract class MigrationSessionBase implements MigrationSession {
     private Object myStage = null;
     private MigrationError myErrors = null;
-    private Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationStepKind>());
-    private ProjectMigrationProgress myProjectMigrationProgress = new ProjectMigrationProgress();
+    protected final Set<MigrationStepKind> myRequiredSteps = SetSequence.fromSet(new HashSet<MigrationStepKind>());
+    private final ProjectMigrationProgress myProjectMigrationProgress = new ProjectMigrationProgress();
 
     public MigrationSessionBase() {
     }
@@ -91,8 +91,8 @@ public interface MigrationSession {
     }
 
     @Override
-    public Set<MigrationStepKind> getRequiredSteps() {
-      return myRequiredSteps;
+    public boolean requires(MigrationStepKind stepKind) {
+      return SetSequence.fromSet(myRequiredSteps).contains(stepKind);
     }
 
     @Override

@@ -30,6 +30,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.ide.migration.MigrationExecutor;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
@@ -119,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
   public TestMigrationSession(MPSProject p, MigrationTestConfigDialog.Result settings) {
     mySettings = settings;
     myProject = p;
-    getRequiredSteps().add(MigrationSession.MigrationStepKind.MIGRATE);
+    SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.MIGRATE);
   }
   public Project getProject() {
     return myProject;

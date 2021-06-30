@@ -129,7 +129,7 @@ public class InitialStep extends BaseStep {
         // project migrations
         final DefaultMutableTreeNode croot = new DefaultMutableTreeNode("Cleanups");
         croot.add(new MyTreeNode("Re-save project", migrationIcon));
-        if (mySession.getRequiredSteps().contains(MigrationSession.MigrationStepKind.UPDATE_VERSIONS)) {
+        if (mySession.requires(MigrationSession.MigrationStepKind.UPDATE_VERSIONS)) {
           croot.add(new MyTreeNode("Update Versions in Descriptors", migrationIcon));
         }
 

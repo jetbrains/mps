@@ -96,8 +96,8 @@ public class MigrationTask {
   }
 
   protected void doRun() throws MigrationError {
-    boolean update = mySession.getRequiredSteps().contains(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
-    boolean migrate = mySession.getRequiredSteps().contains(MigrationSession.MigrationStepKind.MIGRATE);
+    boolean update = mySession.requires(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
+    boolean migrate = mySession.requires(MigrationSession.MigrationStepKind.MIGRATE);
 
     if (checkAndIncStage(0)) {
       ProgressMonitor m = myMonitor.subTask(20);

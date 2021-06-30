@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.migration.global.ProjectMigration;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/8164581507603015291", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class AntTaskExecutionUtil {
@@ -113,8 +114,8 @@ public class AntTaskExecutionUtil {
           super.executeProjectMigration(pm);
         }
       };
-      getRequiredSteps().add(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
-      getRequiredSteps().add(MigrationSession.MigrationStepKind.MIGRATE);
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.MIGRATE);
     }
     public Project getProject() {
       return myProject;

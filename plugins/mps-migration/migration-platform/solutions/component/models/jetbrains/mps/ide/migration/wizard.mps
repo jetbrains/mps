@@ -2595,16 +2595,11 @@
                   </node>
                 </node>
                 <node concept="2OqwBi" id="cQNMA1H3Xn" role="3clFbw">
-                  <node concept="2OqwBi" id="cQNMA1GZwH" role="2Oq$k0">
-                    <node concept="37vLTw" id="cQNMA1GXik" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4hH4xQoL42E" resolve="mySession" />
-                    </node>
-                    <node concept="liA8E" id="cQNMA1H1A3" role="2OqNvi">
-                      <ref role="37wK5l" node="cQNMA1EMhh" resolve="getRequiredSteps" />
-                    </node>
+                  <node concept="37vLTw" id="cQNMA1GXik" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4hH4xQoL42E" resolve="mySession" />
                   </node>
                   <node concept="liA8E" id="cQNMA1H6VW" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+                    <ref role="37wK5l" node="7vYYdQnePOP" resolve="requires" />
                     <node concept="Rm8GO" id="cQNMA1HbeG" role="37wK5m">
                       <ref role="1Px2BO" node="cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
                       <ref role="Rm8GQ" node="cQNMA1EOlP" resolve="UPDATE_VERSIONS" />
@@ -4732,16 +4727,17 @@
       </node>
     </node>
     <node concept="2tJIrI" id="cQNMA1ELTC" role="jymVt" />
-    <node concept="3clFb_" id="cQNMA1EMhh" role="jymVt">
-      <property role="TrG5h" value="getRequiredSteps" />
-      <node concept="3uibUv" id="cQNMA1F62O" role="3clF45">
-        <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
-        <node concept="3uibUv" id="cQNMA1FhZa" role="11_B2D">
+    <node concept="3clFb_" id="7vYYdQnePOP" role="jymVt">
+      <property role="TrG5h" value="requires" />
+      <node concept="3clFbS" id="7vYYdQnePOS" role="3clF47" />
+      <node concept="3Tm1VV" id="7vYYdQnePOT" role="1B3o_S" />
+      <node concept="10P_77" id="7vYYdQneP6I" role="3clF45" />
+      <node concept="37vLTG" id="7vYYdQneQxo" role="3clF46">
+        <property role="TrG5h" value="stepKind" />
+        <node concept="3uibUv" id="7vYYdQneQxn" role="1tU5fm">
           <ref role="3uigEE" node="cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
         </node>
       </node>
-      <node concept="3Tm1VV" id="cQNMA1EMhk" role="1B3o_S" />
-      <node concept="3clFbS" id="cQNMA1EMhl" role="3clF47" />
     </node>
     <node concept="2tJIrI" id="48vNO9ivZjV" role="jymVt" />
     <node concept="3clFb_" id="48vNO9iw0lH" role="jymVt">
@@ -4918,7 +4914,8 @@
       </node>
       <node concept="312cEg" id="3ciAo9GnXan" role="jymVt">
         <property role="TrG5h" value="myRequiredSteps" />
-        <node concept="3Tm6S6" id="3ciAo9GnXak" role="1B3o_S" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tmbuc" id="7vYYdQneUu$" role="1B3o_S" />
         <node concept="2hMVRd" id="3ciAo9GnXal" role="1tU5fm">
           <node concept="3uibUv" id="3ciAo9GnXam" role="2hN53Y">
             <ref role="3uigEE" node="cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
@@ -4934,6 +4931,7 @@
       </node>
       <node concept="312cEg" id="1gYPC58WE8S" role="jymVt">
         <property role="TrG5h" value="myProjectMigrationProgress" />
+        <property role="3TUv4t" value="true" />
         <node concept="3Tm6S6" id="1gYPC58WD$E" role="1B3o_S" />
         <node concept="3uibUv" id="1gYPC58WDW3" role="1tU5fm">
           <ref role="3uigEE" to="bim2:1gYPC58W6xr" resolve="ProjectMigrationProgress" />
@@ -5120,24 +5118,31 @@
         </node>
       </node>
       <node concept="2tJIrI" id="48vNO9iu1n$" role="jymVt" />
-      <node concept="3clFb_" id="cQNMA1F9hm" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="getRequiredSteps" />
-        <node concept="3uibUv" id="cQNMA1F9hn" role="3clF45">
-          <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
-          <node concept="3uibUv" id="cQNMA1FhOR" role="11_B2D">
+      <node concept="3clFb_" id="7vYYdQneVY0" role="jymVt">
+        <property role="TrG5h" value="requires" />
+        <node concept="3Tm1VV" id="7vYYdQneVY2" role="1B3o_S" />
+        <node concept="10P_77" id="7vYYdQneVY3" role="3clF45" />
+        <node concept="37vLTG" id="7vYYdQneVY4" role="3clF46">
+          <property role="TrG5h" value="stepKind" />
+          <node concept="3uibUv" id="7vYYdQneVY5" role="1tU5fm">
             <ref role="3uigEE" node="cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
           </node>
         </node>
-        <node concept="3Tm1VV" id="cQNMA1F9hp" role="1B3o_S" />
-        <node concept="3clFbS" id="cQNMA1F9hr" role="3clF47">
-          <node concept="3clFbF" id="cQNMA1Fahh" role="3cqZAp">
-            <node concept="37vLTw" id="3ciAo9Gogg_" role="3clFbG">
-              <ref role="3cqZAo" node="3ciAo9GnXan" resolve="myRequiredSteps" />
+        <node concept="3clFbS" id="7vYYdQneVY6" role="3clF47">
+          <node concept="3clFbF" id="7vYYdQneVY9" role="3cqZAp">
+            <node concept="2OqwBi" id="7vYYdQneYRh" role="3clFbG">
+              <node concept="37vLTw" id="7vYYdQneXEK" role="2Oq$k0">
+                <ref role="3cqZAo" node="3ciAo9GnXan" resolve="myRequiredSteps" />
+              </node>
+              <node concept="3JPx81" id="7vYYdQneZXy" role="2OqNvi">
+                <node concept="37vLTw" id="7vYYdQnf0Un" role="25WWJ7">
+                  <ref role="3cqZAo" node="7vYYdQneVY4" resolve="stepKind" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
-        <node concept="2AHcQZ" id="cQNMA1F9hs" role="2AJF6D">
+        <node concept="2AHcQZ" id="7vYYdQneVY7" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
@@ -7670,16 +7675,11 @@
             <property role="TrG5h" value="update" />
             <node concept="10P_77" id="6c5JlXW7i63" role="1tU5fm" />
             <node concept="2OqwBi" id="6c5JlXW7i66" role="33vP2m">
-              <node concept="2OqwBi" id="6c5JlXW7i67" role="2Oq$k0">
-                <node concept="37vLTw" id="6c5JlXW7i68" role="2Oq$k0">
-                  <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
-                </node>
-                <node concept="liA8E" id="6c5JlXW7i69" role="2OqNvi">
-                  <ref role="37wK5l" node="cQNMA1EMhh" resolve="getRequiredSteps" />
-                </node>
+              <node concept="37vLTw" id="6c5JlXW7i68" role="2Oq$k0">
+                <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
               </node>
               <node concept="liA8E" id="6c5JlXW7i6a" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+                <ref role="37wK5l" node="7vYYdQnePOP" resolve="requires" />
                 <node concept="Rm8GO" id="6c5JlXW7i6b" role="37wK5m">
                   <ref role="1Px2BO" node="cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />
                   <ref role="Rm8GQ" node="cQNMA1EOlP" resolve="UPDATE_VERSIONS" />
@@ -7693,16 +7693,11 @@
             <property role="TrG5h" value="migrate" />
             <node concept="10P_77" id="6c5JlXW7jcs" role="1tU5fm" />
             <node concept="2OqwBi" id="6c5JlXW7jct" role="33vP2m">
-              <node concept="2OqwBi" id="6c5JlXW7jcu" role="2Oq$k0">
-                <node concept="37vLTw" id="6c5JlXW7jcv" role="2Oq$k0">
-                  <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
-                </node>
-                <node concept="liA8E" id="6c5JlXW7jcw" role="2OqNvi">
-                  <ref role="37wK5l" node="cQNMA1EMhh" resolve="getRequiredSteps" />
-                </node>
+              <node concept="37vLTw" id="6c5JlXW7jcv" role="2Oq$k0">
+                <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
               </node>
               <node concept="liA8E" id="6c5JlXW7jcx" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+                <ref role="37wK5l" node="7vYYdQnePOP" resolve="requires" />
                 <node concept="Rm8GO" id="6c5JlXW7kfi" role="37wK5m">
                   <ref role="Rm8GQ" node="cQNMA1EOrF" resolve="MIGRATE" />
                   <ref role="1Px2BO" node="cQNMA1ENsh" resolve="MigrationSession.MigrationStepKind" />

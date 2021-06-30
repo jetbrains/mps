@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.migration.global.MigrationOptions;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1244156871960204835", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
@@ -22,10 +23,10 @@ import jetbrains.mps.project.Project;
     myChecker = new MigrationCheckerImpl(mpsProject, migrationRegistry);
     myExecutor = new MigrationExecutorImpl(mpsProject);
     if (resave) {
-      getRequiredSteps().add(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
     }
     if (migrate) {
-      getRequiredSteps().add(MigrationSession.MigrationStepKind.MIGRATE);
+      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.MIGRATE);
     }
   }
   @Override
