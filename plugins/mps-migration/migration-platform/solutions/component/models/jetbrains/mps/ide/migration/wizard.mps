@@ -6131,29 +6131,16 @@
         </node>
         <node concept="3clFbF" id="2wbhCYFMbdt" role="3cqZAp">
           <node concept="2OqwBi" id="2wbhCYFMbdu" role="3clFbG">
-            <node concept="2ShNRf" id="3UuU2hftIz1" role="2Oq$k0">
-              <node concept="1pGfFk" id="3UuU2hfu35d" role="2ShVmc">
-                <ref role="37wK5l" to="bim2:2wbhCYFF5cu" resolve="MigrationCheckerImpl" />
-                <node concept="2OqwBi" id="3vN4EqLvnZT" role="37wK5m">
-                  <node concept="37vLTw" id="3UuU2hfu3iB" role="2Oq$k0">
-                    <ref role="3cqZAo" node="78xBDbK5gKg" resolve="mySession" />
-                  </node>
-                  <node concept="liA8E" id="3vN4EqLvof8" role="2OqNvi">
-                    <ref role="37wK5l" node="4hH4xQoNqF2" resolve="getProject" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="3UuU2hfu5$X" role="37wK5m">
-                  <node concept="37vLTw" id="3UuU2hfu52U" role="2Oq$k0">
-                    <ref role="3cqZAo" node="78xBDbK5gKg" resolve="mySession" />
-                  </node>
-                  <node concept="liA8E" id="3vN4EqLvoCS" role="2OqNvi">
-                    <ref role="37wK5l" node="4hH4xQoNdET" resolve="getMigrationRegistry" />
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="4vZEdvrnvTZ" role="2Oq$k0">
+              <node concept="37vLTw" id="4vZEdvrnvgr" role="2Oq$k0">
+                <ref role="3cqZAo" node="78xBDbK5gKg" resolve="mySession" />
+              </node>
+              <node concept="liA8E" id="4vZEdvrnwsZ" role="2OqNvi">
+                <ref role="37wK5l" node="xB9FQhiddo" resolve="getChecker" />
               </node>
             </node>
             <node concept="liA8E" id="2wbhCYFMbdz" role="2OqNvi">
-              <ref role="37wK5l" to="bim2:2wbhCYFDLNd" resolve="checkProject" />
+              <ref role="37wK5l" to="bim2:xB9FQhiuXN" resolve="checkProject" />
               <node concept="2ShNRf" id="2wbhCYFMbd$" role="37wK5m">
                 <node concept="1pGfFk" id="2wbhCYFMbd_" role="2ShVmc">
                   <ref role="37wK5l" to="mk8z:~ProgressMonitorAdapter.&lt;init&gt;(com.intellij.openapi.progress.ProgressIndicator)" resolve="ProgressMonitorAdapter" />

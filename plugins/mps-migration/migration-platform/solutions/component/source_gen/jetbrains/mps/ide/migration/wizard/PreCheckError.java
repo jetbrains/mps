@@ -8,7 +8,6 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.ide.migration.MigrationCheckerImpl;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import org.jetbrains.mps.openapi.util.Processor;
 
@@ -31,7 +30,7 @@ public class PreCheckError extends MigrationError {
   public Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator) {
     final List<IssueKindReportItem> res = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
     // todo remove this hacky code after reload elimination and introducing migration annotations
-    new MigrationCheckerImpl(mySession.getProject(), mySession.getMigrationRegistry()).checkProject(new ProgressMonitorAdapter(progressIndicator), new Processor<IssueKindReportItem>() {
+    mySession.getChecker().checkProject(new ProgressMonitorAdapter(progressIndicator), new Processor<IssueKindReportItem>() {
       public boolean process(IssueKindReportItem p) {
         ListSequence.fromList(res).addElement(p);
         return ListSequence.fromList(res).count() < 100;
