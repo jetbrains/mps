@@ -328,37 +328,23 @@ public class MigrationTask {
   }
 
   private void runVersionsUpdate(final ProgressMonitor m) {
-    final Wrappers._T<List<SModule>> allModules = new Wrappers._T<List<SModule>>();
     final Project project = mySession.getProject();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        allModules.value = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(project)).toListSequence();
-      }
-    });
     String caption = "Updating versions...";
-    m.start(caption, ListSequence.fromList(allModules.value).count() + 10);
     runLocalHistoryRecord(caption, new Runnable() {
       public void run() {
-        try {
-          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0qb(as_ajmasp_a0a0a0a0a0a1a5a34(myMonitor.getIndicator(), InlineProgressIndicator.class));
-          ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
+        JComponent modalityComponent = check_ajmasp_a0a0b0c0qb(as_ajmasp_a0a0a0a0a1a2a34(myMonitor.getIndicator(), InlineProgressIndicator.class));
+        ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
-          for (final SModule module : ListSequence.fromList(allModules.value)) {
-            m.advance(1);
-            ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+        ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+          public void run() {
+            project.getRepository().getModelAccess().executeCommand(new Runnable() {
               public void run() {
-                project.getRepository().getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    mySession.getMigrationRegistry().doUpdateImportVersions(module);
-                    ((AbstractModule) module).save();
-                  }
-                });
+                // XXX why there's a command, not just write? Commit 076c27f6adce doesn't help to understand.
+                mySession.updateModuleImports(m);
               }
-            }, modalityState);
+            });
           }
-        } finally {
-          m.done();
-        }
+        }, modalityState);
       }
     });
   }
@@ -533,7 +519,7 @@ public class MigrationTask {
     }
     return null;
   }
-  private static JComponent check_ajmasp_a0a0a0b0f0qb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0a0b0c0qb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
@@ -548,7 +534,7 @@ public class MigrationTask {
   private static <T> T as_ajmasp_a0a0e0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a34(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0a0a1a2a34(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static <T> T as_ajmasp_a0a0a0a0a0a1a5a54(Object o, Class<T> type) {

@@ -8,16 +8,21 @@ import java.util.Set;
 import java.util.Collection;
 import jetbrains.mps.ide.migration.ScriptApplied;
 import jetbrains.mps.migration.global.ProjectMigration;
-import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.ide.migration.MigrationChecker;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.migration.global.MigrationOptions;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.ide.migration.ProjectMigrationProgress;
+import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import java.util.List;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876316714136", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public interface MigrationSession {
@@ -28,8 +33,6 @@ public interface MigrationSession {
   Collection<ScriptApplied> getModuleMigrations();
   Collection<ProjectMigration> getProjectMigrations();
 
-  MigrationRegistry getMigrationRegistry();
-
   MigrationChecker getChecker();
 
   MigrationExecutor getExecutor();
@@ -39,6 +42,8 @@ public interface MigrationSession {
   ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId);
   ProjectMigration nextStepProject();
   ProjectMigration nextStepCleanup();
+
+  void updateModuleImports(ProgressMonitor progress);
 
   Object getCurrentStage();
 
@@ -57,6 +62,8 @@ public interface MigrationSession {
 
     public MigrationSessionBase() {
     }
+
+    protected abstract MigrationRegistry getMigrationRegistry();
 
     @Override
     public Collection<ScriptApplied> getModuleMigrations() {
@@ -101,6 +108,18 @@ public interface MigrationSession {
     @Override
     public ProjectMigration nextStepCleanup() {
       return getMigrationRegistry().nextProjectStep(myProjectMigrationProgress, getOptions(), true);
+    }
+
+
+    @Override
+    public void updateModuleImports(ProgressMonitor progress) {
+      List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(getProject())).toListSequence();
+      progress.start("Updating versions...", ListSequence.fromList(modules).count());
+      for (SModule m : ListSequence.fromList(modules)) {
+        getMigrationRegistry().doUpdateImportVersions(m);
+        progress.advance(1);
+      }
+      progress.done();
     }
   }
 
