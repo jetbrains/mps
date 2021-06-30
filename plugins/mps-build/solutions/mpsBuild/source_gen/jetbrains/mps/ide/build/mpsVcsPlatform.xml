@@ -275,7 +275,9 @@
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
           <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
           <language id="l:dcb5a83a-19a8-44ff-a4cb-fc7d324ecc63:jetbrains.mps.core.xml.sax" />
+          <language id="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+          <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
         </uses>
         <library jar="../lib/vcs-core.jar" />
         <sources jar="jetbrains.mps.ide.vcs.core-src.jar" descriptor="jetbrains.mps.ide.vcs.core.msd" />
