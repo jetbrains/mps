@@ -351,18 +351,18 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2020" minorVersoin="3">
-      <build number="203.7148.1199" version="2020.3.1">
-        <message>JetBrains MPS 2020.3.1 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+      <build number="203.8084.3348" version="2020.3.5">
+        <message>JetBrains MPS 2020.3.5 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
     <channel id="MPS203" name="MPS 2020.3" status="release"
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2020" minorVersoin="3">
-      <build number="203.8084.1447" version="2020.3.4">
-        <message>JetBrains MPS 2020.3.4 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+      <build number="203.8084.3348" version="2020.3.5">
+        <message>JetBrains MPS 2020.3.5 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
     <channel id="MPS211EAP" name="MPS 2021.1" status="eap"
