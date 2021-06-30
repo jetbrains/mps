@@ -5,20 +5,28 @@ package jetbrains.mps.ide.migration.wizard;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
 import java.util.Set;
+import java.util.Collection;
+import jetbrains.mps.ide.migration.ScriptApplied;
+import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.ide.migration.MigrationChecker;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.migration.global.MigrationOptions;
-import jetbrains.mps.ide.migration.ProjectMigrationProgress;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.ide.migration.ProjectMigrationProgress;
+import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876316714136", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public interface MigrationSession {
   Project getProject();
 
   Set<MigrationStepKind> getRequiredSteps();
+
+  Collection<ScriptApplied> getModuleMigrations();
+  Collection<ProjectMigration> getProjectMigrations();
 
   MigrationRegistry getMigrationRegistry();
 
@@ -28,7 +36,9 @@ public interface MigrationSession {
 
   MigrationOptions getOptions();
 
-  ProjectMigrationProgress getMigrationProgress();
+  ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId);
+  ProjectMigration nextStepProject();
+  ProjectMigration nextStepCleanup();
 
   Object getCurrentStage();
 
@@ -47,6 +57,17 @@ public interface MigrationSession {
 
     public MigrationSessionBase() {
     }
+
+    @Override
+    public Collection<ScriptApplied> getModuleMigrations() {
+      // FIXME init once per session
+      return getMigrationRegistry().getModuleMigrations(MigrationModuleUtil.getMigrateableModulesFromProject(getProject()));
+    }
+    @Override
+    public Collection<ProjectMigration> getProjectMigrations() {
+      return getMigrationRegistry().getProjectMigrations();
+    }
+
     public MigrationError getError() {
       return myErrors;
     }
@@ -61,13 +82,25 @@ public interface MigrationSession {
     public void setCurrentStage(Object stage) {
       myStage = stage;
     }
-    @Override
-    public ProjectMigrationProgress getMigrationProgress() {
-      return myProjectMigrationProgress;
-    }
+
     @Override
     public Set<MigrationStepKind> getRequiredSteps() {
       return myRequiredSteps;
+    }
+
+    @Override
+    public ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId) {
+      return getMigrationRegistry().nextModuleStep(preferredId);
+    }
+
+    @Override
+    public ProjectMigration nextStepProject() {
+      return getMigrationRegistry().nextProjectStep(myProjectMigrationProgress, getOptions(), false);
+    }
+
+    @Override
+    public ProjectMigration nextStepCleanup() {
+      return getMigrationRegistry().nextProjectStep(myProjectMigrationProgress, getOptions(), true);
     }
   }
 

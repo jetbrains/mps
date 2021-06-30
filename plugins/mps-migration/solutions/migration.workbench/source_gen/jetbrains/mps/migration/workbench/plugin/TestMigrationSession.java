@@ -33,8 +33,8 @@ import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import java.util.Collection;
 import java.util.Collections;
@@ -129,11 +129,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
   }
   public MigrationOptions getOptions() {
     MigrationOptions res = new MigrationOptions();
-    for (ProjectMigration pm : CollectionSequence.fromCollection(getMigrationRegistry().getProjectMigrations())) {
-      if (pm instanceof ProjectMigrationWithOptions) {
-        for (ProjectMigrationWithOptions.Option o : CollectionSequence.fromCollection(((ProjectMigrationWithOptions) pm).getOptions())) {
-          res.addOption(o);
-        }
+    for (ProjectMigrationWithOptions pm : CollectionSequence.fromCollection(getProjectMigrations()).ofType(ProjectMigrationWithOptions.class)) {
+      for (ProjectMigrationWithOptions.Option o : CollectionSequence.fromCollection(pm.getOptions())) {
+        res.addOption(o);
       }
     }
     return res;

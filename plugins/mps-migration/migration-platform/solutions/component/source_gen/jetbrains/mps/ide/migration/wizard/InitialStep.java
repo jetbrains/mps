@@ -18,7 +18,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.Project;
 import javax.swing.tree.DefaultMutableTreeNode;
-import jetbrains.mps.ide.migration.MigrationRegistry;
 import javax.swing.Icon;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -27,7 +26,6 @@ import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import java.util.Collection;
 import jetbrains.mps.ide.migration.ScriptApplied;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -120,13 +118,12 @@ public class InitialStep extends BaseStep {
   }
 
   private JComponent createMigrationsInfo() {
-    final Project project = mySession.getProject();
+    Project project = mySession.getProject();
     // root
     final DefaultMutableTreeNode root = new DefaultMutableTreeNode("empty");
 
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        MigrationRegistry manager = mySession.getMigrationRegistry();
         final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
 
         // project migrations
@@ -137,7 +134,7 @@ public class InitialStep extends BaseStep {
         }
 
         final DefaultMutableTreeNode proot = new DefaultMutableTreeNode("Project Migrations");
-        CollectionSequence.fromCollection(manager.getProjectMigrations()).visitAll(new IVisitor<ProjectMigration>() {
+        CollectionSequence.fromCollection(mySession.getProjectMigrations()).visitAll(new IVisitor<ProjectMigration>() {
           public void visit(ProjectMigration it) {
             DefaultMutableTreeNode node = new MyTreeNode(it.getDescription(), migrationIcon);
             if (it instanceof CleanupProjectMigration) {
@@ -154,7 +151,7 @@ public class InitialStep extends BaseStep {
           root.add(proot);
         }
 
-        Collection<ScriptApplied> migrationsApplied = manager.getModuleMigrations(MigrationModuleUtil.getMigrateableModulesFromProject(project));
+        Collection<ScriptApplied> migrationsApplied = mySession.getModuleMigrations();
         Iterable<BaseScriptReference> scripts = CollectionSequence.fromCollection(migrationsApplied).select(new ISelector<ScriptApplied, BaseScriptReference>() {
           public BaseScriptReference select(ScriptApplied it) {
             return it.getScriptReference();

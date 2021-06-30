@@ -266,7 +266,7 @@ public class MigrationTask {
         @Override
         public void run() {
           while (true) {
-            final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), true);
+            final ProjectMigration pm = mySession.nextStepCleanup();
             if (pm == null) {
               break;
             }
@@ -428,7 +428,7 @@ public class MigrationTask {
       @Override
       public void run() {
         while (true) {
-          final ProjectMigration pm = mySession.getMigrationRegistry().nextProjectStep(mySession.getMigrationProgress(), mySession.getOptions(), false);
+          final ProjectMigration pm = mySession.nextStepProject();
           if (pm == null) {
             break;
           }
@@ -460,7 +460,7 @@ public class MigrationTask {
       @Override
       public void run() {
         while (true) {
-          final ScriptApplied sa = mySession.getMigrationRegistry().nextModuleStep(preferredId.get());
+          final ScriptApplied sa = mySession.nextStepModule(preferredId.get());
           if (sa == null) {
             break;
           }
@@ -475,7 +475,7 @@ public class MigrationTask {
             }
           }, new _FunctionTypes._return_P0_E0<Boolean>() {
             public Boolean invoke() {
-              ScriptApplied next = mySession.getMigrationRegistry().nextModuleStep(preferredId.get());
+              ScriptApplied next = mySession.nextStepModule(preferredId.get());
               if (next == null) {
                 return false;
               }
@@ -510,9 +510,7 @@ public class MigrationTask {
     final Wrappers._int res = new Wrappers._int();
     mySession.getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        Project p = mySession.getProject();
-        Iterable<SModule> modules = MigrationModuleUtil.getMigrateableModulesFromProject(p);
-        res.value = CollectionSequence.fromCollection(mySession.getMigrationRegistry().getModuleMigrations(modules)).count();
+        res.value = CollectionSequence.fromCollection(mySession.getModuleMigrations()).count();
       }
     });
     return res.value;
@@ -522,7 +520,7 @@ public class MigrationTask {
     final Wrappers._int res = new Wrappers._int();
     mySession.getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        Iterable<ProjectMigration> migrations = mySession.getMigrationRegistry().getProjectMigrations();
+        Iterable<ProjectMigration> migrations = mySession.getProjectMigrations();
         int cleanupSize = Sequence.fromIterable(migrations).ofType(CleanupProjectMigration.class).count();
         res.value = (isCleanup ? cleanupSize : Sequence.fromIterable(migrations).count() - cleanupSize);
       }
