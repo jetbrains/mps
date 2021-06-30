@@ -30,23 +30,23 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.ide.migration.MigrationExecutor;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import java.util.Collection;
-import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.ide.migration.ProjectMigrationProgress;
-import jetbrains.mps.migration.global.CleanupProjectMigration;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
+import java.util.Collections;
+import jetbrains.mps.ide.migration.ProjectMigrationProgress;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -69,7 +69,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
           module.value = repo.getModules().iterator().next();
         }
       });
-      processor.process(new ScriptApplied(module.value, ListSequence.fromList(myManager.getModuleMig()).first().getReference()));
+      processor.process(new ScriptApplied(module.value, ListSequence.fromList(getModuleMig()).first().getReference()));
     }
     public void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor) {
       // todo
@@ -117,6 +117,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     }
   };
 
+  private List<ProjectMigration> myProjectMig;
+  private List<MigrationScript> myModuleMig;
+
   public TestMigrationSession(MPSProject p, MigrationTestConfigDialog.Result settings) {
     mySettings = settings;
     myProject = p;
@@ -127,8 +130,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     return myProject;
   }
   @Override
-  public MigrationRegistry getMigrationRegistry() {
-    return this.myManager;
+  protected MigrationRegistry getMigrationRegistry() {
+    throw new UnsupportedOperationException("all superclass methods requiring MR have to be overridden");
   }
   @Override
   public MigrationOptions getOptions() {
@@ -152,17 +155,137 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     return myExecutor;
   }
 
+  @Override
+  public Collection<ProjectMigration> getProjectMigrations() {
+    return getProjectMig();
+  }
+
+
+  @Override
+  public Collection<ScriptApplied> getModuleMigrations() {
+    // superclass passes all project modules, check in MyMigrationManager.getModuleMigrations(modules)
+    // is no op (all modules passed would belong to project).
+    return getModuleMigrationsApplied();
+  }
+
+  @Override
+  public ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId) {
+    Iterable<ScriptApplied> applied = getModuleMigrationsApplied();
+    final ScriptApplied sa = Sequence.fromIterable(applied).where(new IWhereFilter<ScriptApplied>() {
+      public boolean accept(final ScriptApplied sa) {
+        return ListSequence.fromList(passedM).all(new IWhereFilter<ScriptApplied>() {
+          public boolean accept(ScriptApplied it) {
+            return !(Objects.equals(it.getScriptReference(), sa.getScriptReference())) || !(Objects.equals(it.getModuleReference(), sa.getModuleReference()));
+          }
+        });
+      }
+    }).sort(new ISelector<ScriptApplied, Integer>() {
+      public Integer select(ScriptApplied it) {
+        return ((MigrationScriptReference) it.getScriptReference()).getFromVersion();
+      }
+    }, true).first();
+    return sa;
+  }
+
+  @Override
+  public ProjectMigration nextStepProject() {
+    final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
+      public boolean accept(ProjectMigration it) {
+        return !((it instanceof CleanupProjectMigration));
+      }
+    }).findFirst(new IWhereFilter<ProjectMigration>() {
+      public boolean accept(ProjectMigration it) {
+        return !(ListSequence.fromList(passedP).contains(it));
+      }
+    });
+    if (next == null) {
+      return null;
+    }
+    ListSequence.fromList(passedP).addElement(next);
+    return next;
+  }
+
+  @Override
+  public ProjectMigration nextStepCleanup() {
+    // XXX CleanupProjectMigration doesn't extend ProjectMigration, why, oh why?!
+    final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).ofType(ProjectMigration.class).findFirst(new IWhereFilter<ProjectMigration>() {
+      public boolean accept(ProjectMigration it) {
+        return !(ListSequence.fromList(passedP).contains(it));
+      }
+    });
+    if (next == null) {
+      return null;
+    }
+    ListSequence.fromList(passedP).addElement(next);
+    return next;
+  }
+
+  private List<ScriptApplied> getModuleMigrationsApplied() {
+    final Wrappers._T<List<ScriptApplied>> res = new Wrappers._T<List<ScriptApplied>>();
+    final SRepository repo = myProject.getRepository();
+    repo.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        final List<SModule> modules = Sequence.fromIterable(((Iterable<SModule>) repo.getModules())).take(3).toListSequence();
+        res.value = ListSequence.fromList(TestMigrationSession.this.getModuleMig()).translate(new ITranslator2<MigrationScript, ScriptApplied>() {
+          public Iterable<ScriptApplied> translate(final MigrationScript script) {
+            return ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
+              public boolean accept(SModule it) {
+                int si = ListSequence.fromList(getModuleMig()).indexOf(script);
+                int mi = ListSequence.fromList(modules).indexOf(it);
+                return ListSequence.fromList(mySettings.lMigrations).getElement(si).applyToModules[mi];
+              }
+            }).select(new ISelector<SModule, ScriptApplied>() {
+              public ScriptApplied select(SModule module) {
+                return new ScriptApplied(module, script.getReference());
+              }
+            });
+          }
+        }).toListSequence();
+      }
+    });
+    return res.value;
+  }
+
+  private List<ProjectMigration> getProjectMig() {
+    if (myProjectMig == null) {
+      myProjectMig = createProjectMigs();
+    }
+    return myProjectMig;
+  }
+  private List<MigrationScript> getModuleMig() {
+    if (myModuleMig == null) {
+      myModuleMig = createLanguageMigs();
+    }
+    return myModuleMig;
+  }
+
+  private List<ProjectMigration> createProjectMigs() {
+    return ListSequence.fromList(mySettings.pMigrations).select(new ISelector<MigrationTestConfigDialog.Result.PMigration, ProjectMigration>() {
+      public ProjectMigration select(MigrationTestConfigDialog.Result.PMigration pmig) {
+        if (pmig.isCleanup) {
+          return (ProjectMigration) new MyCleanupProjectMigration("cleanup: " + pmig.id, pmig.hasOptions, pmig.error);
+        } else {
+          return (ProjectMigration) new MyProjectMigration("project: " + pmig.id, pmig.hasOptions, pmig.error);
+        }
+      }
+    }).toListSequence();
+  }
+
+  private List<MigrationScript> createLanguageMigs() {
+    return ListSequence.fromList(mySettings.lMigrations).select(new ISelector<MigrationTestConfigDialog.Result.LMigration, MigrationScript>() {
+      public MigrationScript select(MigrationTestConfigDialog.Result.LMigration lmig) {
+        return (MigrationScript) new MyModuleMigration(lmig.language, lmig.version, lmig.error);
+      }
+    }).toListSequence();
+  }
+
   private class MyMigrationManager implements MigrationRegistry {
-    private List<ProjectMigration> myProjectMig;
-    private List<MigrationScript> myModuleMig;
 
     public MyMigrationManager() {
     }
     public boolean isMigrationRequired() {
+      // XXX seems to be no-op for test scenario, no uses except in NoPendingMigrationTest
       return mySettings.required;
-    }
-    public boolean isMigrationRequired(Iterable<SModule> modules) {
-      return true;
     }
     public boolean importVersionsUpdateRequired(Iterable<SModule> modules) {
       return false;
@@ -186,98 +309,14 @@ import org.jetbrains.mps.openapi.language.SLanguage;
       })) {
         return Collections.<ScriptApplied>emptyList();
       }
-      return (List<ScriptApplied>) ((List) Sequence.fromIterable(getModuleMigrationsApplied()).toListSequence());
+      return getModuleMigrationsApplied();
     }
-    public ProjectMigration nextProjectStep(ProjectMigrationProgress migrationProgress, MigrationOptions options, final boolean cleanup) {
-      final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
-        public boolean accept(ProjectMigration it) {
-          return cleanup == (it instanceof CleanupProjectMigration);
-        }
-      }).findFirst(new IWhereFilter<ProjectMigration>() {
-        public boolean accept(ProjectMigration it) {
-          return !(ListSequence.fromList(passedP).contains(it));
-        }
-      });
-      if (next == null) {
-        return null;
-      }
-      ListSequence.fromList(passedP).addElement(next);
-      return next;
+    public ProjectMigration nextProjectStep(ProjectMigrationProgress migrationProgress, MigrationOptions options, boolean cleanup) {
+      throw new UnsupportedOperationException();
     }
     public ScriptApplied nextModuleStep(@Nullable BaseScriptReference ref) {
-      Iterable<ScriptApplied> applied = getModuleMigrationsApplied();
-      final ScriptApplied sa = Sequence.fromIterable(applied).where(new IWhereFilter<ScriptApplied>() {
-        public boolean accept(final ScriptApplied sa) {
-          return ListSequence.fromList(passedM).all(new IWhereFilter<ScriptApplied>() {
-            public boolean accept(ScriptApplied it) {
-              return !(Objects.equals(it.getScriptReference(), sa.getScriptReference())) || !(Objects.equals(it.getModuleReference(), sa.getModuleReference()));
-            }
-          });
-        }
-      }).sort(new ISelector<ScriptApplied, Integer>() {
-        public Integer select(ScriptApplied it) {
-          return ((MigrationScriptReference) it.getScriptReference()).getFromVersion();
-        }
-      }, true).first();
-      return sa;
+      throw new UnsupportedOperationException();
     }
-    private Iterable<ScriptApplied> getModuleMigrationsApplied() {
-      final Wrappers._T<Iterable<ScriptApplied>> res = new Wrappers._T<Iterable<ScriptApplied>>();
-      final SRepository repo = myProject.getRepository();
-      repo.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          final List<SModule> modules = Sequence.fromIterable(((Iterable<SModule>) repo.getModules())).take(3).toListSequence();
-          res.value = ListSequence.fromList(MyMigrationManager.this.getModuleMig()).translate(new ITranslator2<MigrationScript, ScriptApplied>() {
-            public Iterable<ScriptApplied> translate(final MigrationScript script) {
-              return ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
-                public boolean accept(SModule it) {
-                  int si = ListSequence.fromList(getModuleMig()).indexOf(script);
-                  int mi = ListSequence.fromList(modules).indexOf(it);
-                  return ListSequence.fromList(mySettings.lMigrations).getElement(si).applyToModules[mi];
-                }
-              }).select(new ISelector<SModule, ScriptApplied>() {
-                public ScriptApplied select(SModule module) {
-                  return new ScriptApplied(module, script.getReference());
-                }
-              });
-            }
-          });
-        }
-      });
-      return res.value;
-    }
-    private List<ProjectMigration> getProjectMig() {
-      if (myProjectMig == null) {
-        myProjectMig = createProjectMigs();
-      }
-      return myProjectMig;
-    }
-    private List<MigrationScript> getModuleMig() {
-      if (myModuleMig == null) {
-        myModuleMig = createLanguageMigs();
-      }
-      return myModuleMig;
-    }
-  }
-
-  private List<ProjectMigration> createProjectMigs() {
-    return ListSequence.fromList(mySettings.pMigrations).select(new ISelector<MigrationTestConfigDialog.Result.PMigration, ProjectMigration>() {
-      public ProjectMigration select(MigrationTestConfigDialog.Result.PMigration pmig) {
-        if (pmig.isCleanup) {
-          return (ProjectMigration) new MyCleanupProjectMigration("cleanup: " + pmig.id, pmig.hasOptions, pmig.error);
-        } else {
-          return (ProjectMigration) new MyProjectMigration("project: " + pmig.id, pmig.hasOptions, pmig.error);
-        }
-      }
-    }).toListSequence();
-  }
-
-  private List<MigrationScript> createLanguageMigs() {
-    return ListSequence.fromList(mySettings.lMigrations).select(new ISelector<MigrationTestConfigDialog.Result.LMigration, MigrationScript>() {
-      public MigrationScript select(MigrationTestConfigDialog.Result.LMigration lmig) {
-        return (MigrationScript) new MyModuleMigration(lmig.language, lmig.version, lmig.error);
-      }
-    }).toListSequence();
   }
 
   private class MyModuleMigration extends MigrationScriptBase {
