@@ -22,15 +22,10 @@ import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/3577160840697329341", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationRegistryImpl implements MigrationRegistry {
@@ -129,149 +124,6 @@ public class MigrationRegistryImpl implements MigrationRegistry {
     ((AbstractModule) module).save();
   }
 
-
-  public ScriptApplied nextModuleStep(@Nullable final BaseScriptReference preferredId) {
-    final Wrappers._T<ScriptApplied> result = new Wrappers._T<ScriptApplied>(null);
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (preferredId == null) {
-          result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
-            public boolean accept(ScriptApplied it) {
-              return canBeExecutedImmediately(it);
-            }
-          });
-          return;
-        }
-
-        Iterable<SModule> modules = MigrationModuleUtil.getMigrateableModulesFromProject(myProject);
-        if (preferredId instanceof MigrationScriptReference) {
-          final MigrationScriptReference mid = as_ufn3ol_a0a0a3a0a0a0a1a12(preferredId, MigrationScriptReference.class);
-          SModule byId = Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-            public boolean accept(SModule it) {
-              return SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(it)).contains(mid.getLanguage());
-            }
-          }).where(new IWhereFilter<SModule>() {
-            public boolean accept(SModule it) {
-              int ver = Math.max(0, ((AbstractModule) it).getUsedLanguageVersion(mid.getLanguage()));
-              return ver == mid.getFromVersion();
-            }
-          }).findFirst(new IWhereFilter<SModule>() {
-            public boolean accept(SModule it) {
-              return canBeExecutedImmediately(new ScriptApplied(it, mid));
-            }
-          });
-          if (byId != null) {
-            result.value = new ScriptApplied(byId, mid);
-            return;
-          }
-        } else if (preferredId instanceof RefactoringScriptReference) {
-          final RefactoringScriptReference rid = as_ufn3ol_a0a0a0d0a0a0a0b0v(preferredId, RefactoringScriptReference.class);
-          SModule byId = Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-            public boolean accept(SModule it) {
-              return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(it)).select(new ISelector<SModule, SModuleReference>() {
-                public SModuleReference select(SModule it) {
-                  return it.getModuleReference();
-                }
-              }).contains(rid.getModuleReference());
-            }
-          }).where(new IWhereFilter<SModule>() {
-            public boolean accept(SModule it) {
-              int ver = Math.max(0, ((AbstractModule) it).getDependencyVersion(rid.getModule(it.getRepository())));
-              return ver == rid.getFromVersion();
-            }
-          }).findFirst(new IWhereFilter<SModule>() {
-            public boolean accept(SModule it) {
-              return canBeExecutedImmediately(new ScriptApplied(it, rid));
-            }
-          });
-          if (byId != null) {
-            result.value = new ScriptApplied(byId, rid);
-            return;
-          }
-        } else {
-          // todo get rid of explicit class mention
-          throw new IllegalArgumentException();
-        }
-
-        // no applicable found by id
-        result.value = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
-          public Iterable<ScriptApplied> translate(SModule module) {
-            return getAllSteps(module, true);
-          }
-        }).findFirst(new IWhereFilter<ScriptApplied>() {
-          public boolean accept(ScriptApplied it) {
-            return canBeExecutedImmediately(it);
-          }
-        });
-      }
-    });
-    return result.value;
-  }
-
-
-  private boolean canBeExecutedImmediately(ScriptApplied script) {
-    // todo remove explicit class mention
-
-    AbstractModule moduleToMigrate = (AbstractModule) script.getModule(myProject.getRepository());
-    if (script.getScriptReference() instanceof MigrationScriptReference) {
-      MigrationScriptReference sr = (MigrationScriptReference) script.getScriptReference();
-      int v = Math.max(0, moduleToMigrate.getUsedLanguageVersion(sr.getLanguage(), false));
-      if (v != sr.getFromVersion()) {
-        return false;
-      }
-
-      for (MigrationScriptReference s : Sequence.fromIterable(sr.resolve(myProject, true).executeAfter())) {
-        if (needsToBeApplied(s, moduleToMigrate)) {
-          return false;
-        }
-      }
-
-      for (MigrationScriptReference s : Sequence.fromIterable(sr.resolve(myProject, true).requiresData())) {
-        for (SModule dep : SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(moduleToMigrate))) {
-          if (needsToBeApplied(s, dep)) {
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-    if (script.getScriptReference() instanceof RefactoringScriptReference) {
-      RefactoringScriptReference sr = (RefactoringScriptReference) script.getScriptReference();
-      int v = Math.max(0, moduleToMigrate.getDependencyVersion(sr.getModule(moduleToMigrate.getRepository()), false));
-      if (v != sr.getFromVersion()) {
-        return false;
-      }
-
-      for (RefactoringScriptReference s : Sequence.fromIterable(sr.resolve(myProject, true).getExecuteAfter())) {
-        if (needsToBeApplied(s, moduleToMigrate)) {
-          return false;
-        }
-      }
-      return true;
-    }
-    throw new IllegalArgumentException();
-  }
-
-  private boolean needsToBeApplied(MigrationScriptReference ref, SModule m) {
-    if (!(SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(m)).contains(ref.getLanguage()))) {
-      return false;
-    }
-    int dv = Math.max(0, ((AbstractModule) m).getUsedLanguageVersion(ref.getLanguage(), false));
-    return dv <= ref.getFromVersion();
-  }
-
-  private boolean needsToBeApplied(RefactoringScriptReference ref, SModule m) {
-    if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule it) {
-        return it.getModuleReference();
-      }
-    }).contains(ref.getModuleReference()))) {
-      return false;
-    }
-    int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(m.getRepository()), false));
-    return dv <= ref.getFromVersion();
-  }
-
   private Iterable<ScriptApplied> getAllSteps(SModule module, boolean firstOnly) {
     List<ScriptApplied> result = ListSequence.fromList(new ArrayList<ScriptApplied>());
     for (SLanguage lang : SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(module))) {
@@ -305,10 +157,4 @@ public class MigrationRegistryImpl implements MigrationRegistry {
     return result;
   }
 
-  private static <T> T as_ufn3ol_a0a0a3a0a0a0a1a12(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_ufn3ol_a0a0a0d0a0a0a0b0v(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
 }

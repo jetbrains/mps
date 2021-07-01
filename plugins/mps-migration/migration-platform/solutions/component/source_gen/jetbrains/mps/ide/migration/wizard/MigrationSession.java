@@ -17,6 +17,9 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.ide.migration.MigrationRegistry;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
@@ -26,6 +29,9 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876316714136", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public interface MigrationSession {
@@ -105,8 +111,49 @@ public interface MigrationSession {
     }
 
     @Override
-    public ScriptApplied nextStepModule(@Nullable BaseScriptReference preferredId) {
-      return getMigrationRegistry().nextModuleStep(preferredId);
+    public ScriptApplied nextStepModule(@Nullable final BaseScriptReference preferredId) {
+      if (preferredId != null && false == (preferredId instanceof MigrationScriptReference || preferredId instanceof RefactoringScriptReference)) {
+        // XXX this is the logic I don't completely understand, just keep for future refactoring
+        // todo get rid of explicit class mention
+        throw new IllegalArgumentException();
+      }
+      final Wrappers._T<ScriptApplied> result = new Wrappers._T<ScriptApplied>(null);
+      getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
+        public void run() {
+          if (preferredId == null) {
+            result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
+              public boolean accept(ScriptApplied it) {
+                return canBeExecutedImmediately(it);
+              }
+            });
+          } else {
+            // XXX Here, we rely on proper equals() implementation in MSR and RSR.
+            // getModuleMigrations gives SA for [every module X language migration versions].
+            // First, we collect all SAs for the desired language/module+version, and then check if actual module's 
+            // language/module is == desired one (see canBeExecutedImmediately). 
+            // Once all modules for language/module+version pair denoted by preferredId got 
+            // actual used language/dependency module > mid.getFromVersion(), it's ok to move to the next
+            result.value = CollectionSequence.fromCollection(getModuleMigrations()).where(new IWhereFilter<ScriptApplied>() {
+              public boolean accept(ScriptApplied sa) {
+                return sa.getScriptReference().equals(preferredId);
+              }
+            }).findFirst(new IWhereFilter<ScriptApplied>() {
+              public boolean accept(ScriptApplied sa) {
+                return canBeExecutedImmediately(sa);
+              }
+            });
+            if (result.value == null) {
+              // no applicable found by language/module+version pair, move on to another language/module and version
+              result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
+                public boolean accept(ScriptApplied it) {
+                  return canBeExecutedImmediately(it);
+                }
+              });
+            }
+          }
+        }
+      });
+      return result.value;
     }
 
     @Override
@@ -159,6 +206,70 @@ public interface MigrationSession {
       }
       progress.done();
     }
+
+    private boolean canBeExecutedImmediately(ScriptApplied script) {
+      // todo remove explicit class mention
+
+      AbstractModule moduleToMigrate = (AbstractModule) script.getModule(getProject().getRepository());
+      if (script.getScriptReference() instanceof MigrationScriptReference) {
+        MigrationScriptReference sr = (MigrationScriptReference) script.getScriptReference();
+        int v = Math.max(0, moduleToMigrate.getUsedLanguageVersion(sr.getLanguage(), false));
+        if (v != sr.getFromVersion()) {
+          return false;
+        }
+
+        for (MigrationScriptReference s : Sequence.fromIterable(sr.resolve(getProject(), true).executeAfter())) {
+          if (needsToBeApplied(s, moduleToMigrate)) {
+            return false;
+          }
+        }
+
+        for (MigrationScriptReference s : Sequence.fromIterable(sr.resolve(getProject(), true).requiresData())) {
+          for (SModule dep : SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(moduleToMigrate))) {
+            if (needsToBeApplied(s, dep)) {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+      if (script.getScriptReference() instanceof RefactoringScriptReference) {
+        RefactoringScriptReference sr = (RefactoringScriptReference) script.getScriptReference();
+        int v = Math.max(0, moduleToMigrate.getDependencyVersion(sr.getModule(moduleToMigrate.getRepository()), false));
+        if (v != sr.getFromVersion()) {
+          return false;
+        }
+
+        for (RefactoringScriptReference s : Sequence.fromIterable(sr.resolve(getProject(), true).getExecuteAfter())) {
+          if (needsToBeApplied(s, moduleToMigrate)) {
+            return false;
+          }
+        }
+        return true;
+      }
+      throw new IllegalArgumentException();
+    }
+
+    private boolean needsToBeApplied(MigrationScriptReference ref, SModule m) {
+      if (!(SetSequence.fromSet(MigrationModuleUtil.getUsedLanguages(m)).contains(ref.getLanguage()))) {
+        return false;
+      }
+      int dv = Math.max(0, ((AbstractModule) m).getUsedLanguageVersion(ref.getLanguage(), false));
+      return dv <= ref.getFromVersion();
+    }
+
+    private boolean needsToBeApplied(RefactoringScriptReference ref, SModule m) {
+      if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).select(new ISelector<SModule, SModuleReference>() {
+        public SModuleReference select(SModule it) {
+          return it.getModuleReference();
+        }
+      }).contains(ref.getModuleReference()))) {
+        return false;
+      }
+      int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(m.getRepository()), false));
+      return dv <= ref.getFromVersion();
+    }
+
   }
 
   enum MigrationStepKind {

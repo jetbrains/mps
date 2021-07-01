@@ -6,8 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Collection;
 import jetbrains.mps.migration.global.ProjectMigration;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/6781485246382121685", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public interface MigrationRegistry {
@@ -31,8 +29,6 @@ public interface MigrationRegistry {
    * Likely to fade away, gives access to logic that calculates required migrations for specific modules
    */
   Collection<ScriptApplied> getModuleMigrations(Iterable<SModule> modules);
-
-  ScriptApplied nextModuleStep(@Nullable BaseScriptReference preferredId);
 
   boolean importVersionsUpdateRequired(Iterable<SModule> modules);
   void doUpdateImportVersions(SModule module);
