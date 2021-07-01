@@ -51,7 +51,7 @@ import jetbrains.mps.migration.global.CleanupProjectMigration;
     return res;
   }
 
-  public static PostponedState current(MigrationRegistry mr) {
+  public static PostponedState current(MigrationSetup mr) {
     PostponedState current = new PostponedState();
     current.versionUpdate = mr.importVersionsUpdateRequired();
     current.scripts = mr.getModuleMigrations();

@@ -6676,7 +6676,7 @@
       <property role="TrG5h" value="getMigrationRegistry" />
       <node concept="3Tmbuc" id="4WgzjbQSESg" role="1B3o_S" />
       <node concept="3uibUv" id="65hwFmZi2T0" role="3clF45">
-        <ref role="3uigEE" to="bim2:5SsFeroaabl" resolve="MigrationRegistry" />
+        <ref role="3uigEE" to="bim2:5SsFeroaabl" resolve="MigrationSetup" />
       </node>
       <node concept="3clFbS" id="65hwFmZi2T1" role="3clF47">
         <node concept="YS8fn" id="4WgzjbQTnsO" role="3cqZAp">

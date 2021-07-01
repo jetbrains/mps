@@ -23,13 +23,11 @@ import jetbrains.mps.ide.migration.MigrationChecker;
 import jetbrains.mps.ide.migration.MigrationCheckerImpl;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.ide.migration.MigrationExecutorImpl;
-import jetbrains.mps.ide.migration.MigrationRegistry;
-import jetbrains.mps.ide.migration.MigrationRegistryImpl;
+import jetbrains.mps.ide.migration.MigrationSetup;
+import jetbrains.mps.ide.migration.MigrationSetupImpl;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.ide.migration.wizard.MigrationSession.MigrationSessionBase;
 import jetbrains.mps.ide.migration.wizard.MigrationTask;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
@@ -75,15 +73,16 @@ public class MigrationsTest implements EnvironmentAware {
     LocalHistoryImpl.getInstanceImpl().cleanupForNextTest();
 
     MigrationSession session = new MigrationSessionBase() {
-      private final MigrationRegistry myMigrationRegistry = new MigrationRegistryImpl(myProject);
+      private final MigrationSetup myMigrationSetup = new MigrationSetupImpl(myProject);
+
       @Override
       public Project getProject() {
         return myProject;
       }
 
       @Override
-      protected MigrationRegistry getMigrationRegistry() {
-        return myMigrationRegistry;
+      protected MigrationSetup getMigrationRegistry() {
+        return myMigrationSetup;
       }
 
       @Override

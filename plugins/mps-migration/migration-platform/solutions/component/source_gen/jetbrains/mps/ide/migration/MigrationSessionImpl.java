@@ -11,11 +11,11 @@ import jetbrains.mps.project.Project;
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1244156871960204835", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 /*package*/ class MigrationSessionImpl extends MigrationSession.MigrationSessionBase {
   private final MPSProject myMpsProject;
-  private final MigrationRegistry myMigrationRegistry;
+  private final MigrationSetup myMigrationRegistry;
   private MigrationCheckerImpl myChecker;
   private MigrationExecutorImpl myExecutor;
 
-  public MigrationSessionImpl(MPSProject mpsProject, MigrationRegistry migrationRegistry, boolean resave, boolean migrate) {
+  public MigrationSessionImpl(MPSProject mpsProject, MigrationSetup migrationRegistry, boolean resave, boolean migrate) {
     myMpsProject = mpsProject;
     myMigrationRegistry = migrationRegistry;
     myChecker = new MigrationCheckerImpl(mpsProject, migrationRegistry);
@@ -32,7 +32,7 @@ import jetbrains.mps.project.Project;
     return myMpsProject;
   }
   @Override
-  public MigrationRegistry getMigrationRegistry() {
+  public MigrationSetup getMigrationRegistry() {
     return myMigrationRegistry;
   }
   @Override

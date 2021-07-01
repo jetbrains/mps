@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.ide.migration.MigrationRegistry;
+import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -73,7 +73,7 @@ public interface MigrationSession {
     public MigrationSessionBase() {
     }
 
-    protected abstract MigrationRegistry getMigrationRegistry();
+    protected abstract MigrationSetup getMigrationRegistry();
 
     @Override
     public Collection<ScriptApplied> getModuleMigrations() {

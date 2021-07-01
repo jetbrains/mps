@@ -280,7 +280,7 @@
       <node id="3680172630958133911" at="69,0,70,0" concept="5" trace="myRequiredSteps" />
       <node id="1458839180077471590" at="70,0,71,0" concept="5" trace="myExecutedInSession" />
       <node id="5697208778650833837" at="71,0,72,0" concept="5" trace="myOptions" />
-      <node id="5188050940806720691" at="76,0,77,0" concept="9" trace="getMigrationRegistry#()Ljetbrains/mps/ide/migration/MigrationRegistry;" />
+      <node id="5188050940806720691" at="76,0,77,0" concept="9" trace="getMigrationRegistry#()Ljetbrains/mps/ide/migration/MigrationSetup;" />
       <node id="4764754814540258526" at="79,60,80,36" concept="12" />
       <node id="4764754814540201962" at="80,36,81,58" concept="11" />
       <node id="4764754814540251113" at="84,64,85,59" concept="11" />

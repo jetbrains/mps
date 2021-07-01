@@ -1420,7 +1420,7 @@
       <node id="6231371851043054307" at="122,26,123,18" concept="5" />
       <node id="3680172630958226772" at="123,18,124,96" concept="5" />
       <node id="7012529811902655658" at="127,31,128,21" concept="12" />
-      <node id="5697208778653792052" at="131,54,132,105" concept="18" />
+      <node id="5697208778653792052" at="131,51,132,105" concept="18" />
       <node id="7641221613047050365" at="135,40,136,46" concept="11" />
       <node id="5697208778651111539" at="136,46,137,68" concept="13" />
       <node id="7641221613047089567" at="139,103,140,25" concept="5" />
@@ -1521,7 +1521,7 @@
       <node id="4815078419492157945" at="108,0,112,0" concept="10" trace="executeModuleMigration#(Ljetbrains/mps/ide/migration/ScriptApplied;)V" />
       <node id="4815078419492157968" at="112,0,116,0" concept="10" trace="executeProjectMigration#(Ljetbrains/mps/migration/global/ProjectMigration;)V" />
       <node id="7012529811902443063" at="126,0,130,0" concept="10" trace="getProject#()Ljetbrains/mps/project/Project;" />
-      <node id="7012529811902443069" at="130,0,134,0" concept="10" trace="getMigrationRegistry#()Ljetbrains/mps/ide/migration/MigrationRegistry;" />
+      <node id="7012529811902443069" at="130,0,134,0" concept="10" trace="getMigrationRegistry#()Ljetbrains/mps/ide/migration/MigrationSetup;" />
       <node id="2885477569136868728" at="146,0,150,0" concept="10" trace="getChecker#()Ljetbrains/mps/ide/migration/MigrationChecker;" />
       <node id="4815078419491720299" at="151,0,155,0" concept="10" trace="getExecutor#()Ljetbrains/mps/ide/migration/MigrationExecutor;" />
       <node id="5697208778653428251" at="156,0,160,0" concept="10" trace="getProjectMigrations#()Ljava/util/Collection;" />
@@ -1586,7 +1586,7 @@
       <scope id="153908316647773837" at="92,63,93,69" />
       <scope id="4815078419492250562" at="103,115,104,13" />
       <scope id="7012529811902443067" at="127,31,128,21" />
-      <scope id="7012529811902443073" at="131,54,132,105" />
+      <scope id="7012529811902443073" at="131,51,132,105" />
       <scope id="7641221613047094080" at="139,103,140,25" />
       <scope id="2885477569136868733" at="147,40,148,26" />
       <scope id="4815078419491720304" at="152,42,153,22" />

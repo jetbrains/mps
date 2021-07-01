@@ -38,9 +38,8 @@ public class AntTaskExecutionUtil {
    * Do not change this method's signature. It is used from MigrationWorker
    */
   public static void migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
-    MigrationRegistry m = new MigrationRegistryImpl(project);
 
-    MigrationSession session = new MyMigrationSession(project, m);
+    MigrationSession session = new MyMigrationSession(project, new MigrationSetupImpl(project));
     ProgressMonitorAdapter progress = new ProgressMonitorAdapter(new EmptyProgressIndicator());
 
     final Properties properties = new Properties();
@@ -87,11 +86,11 @@ public class AntTaskExecutionUtil {
 
   private static class MyMigrationSession extends MigrationSession.MigrationSessionBase {
     private final Project myProject;
-    private final MigrationRegistry myMigrationRegistry;
+    private final MigrationSetup myMigrationRegistry;
     private MigrationCheckerImpl myChecker;
     private MigrationExecutorImpl myExecutor;
 
-    public MyMigrationSession(Project project, MigrationRegistry registry) {
+    public MyMigrationSession(Project project, MigrationSetup registry) {
       myProject = project;
       myMigrationRegistry = registry;
       this.myChecker = new MigrationCheckerImpl(myProject, registry);
@@ -117,7 +116,7 @@ public class AntTaskExecutionUtil {
     public Project getProject() {
       return myProject;
     }
-    protected MigrationRegistry getMigrationRegistry() {
+    protected MigrationSetup getMigrationRegistry() {
       return myMigrationRegistry;
     }
     public MigrationChecker getChecker() {

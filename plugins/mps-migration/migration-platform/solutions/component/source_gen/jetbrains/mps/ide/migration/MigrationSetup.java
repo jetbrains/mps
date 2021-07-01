@@ -8,7 +8,7 @@ import jetbrains.mps.migration.global.ProjectMigration;
 import org.jetbrains.mps.openapi.module.SModule;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/6781485246382121685", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
-public interface MigrationRegistry {
+public interface MigrationSetup {
 
   boolean isMigrationRequired();
 
@@ -19,7 +19,7 @@ public interface MigrationRegistry {
   Collection<ProjectMigration> getProjectMigrations();
 
   /**
-   * Pretty much result of {@link jetbrains.mps.ide.migration.MigrationRegistry#getModuleMigrations(Iterable<SModule>) } for a set of modules known to caller
+   * Pretty much result of {@link jetbrains.mps.ide.migration.MigrationSetup#getModuleMigrations(Iterable<SModule>) } for a set of modules known to caller
    * 
    * @return language migrations for a set of modules configured by instance creator
    */
@@ -27,11 +27,14 @@ public interface MigrationRegistry {
 
   /**
    * Likely to fade away, gives access to logic that calculates required migrations for specific modules
+   * 
+   * 
+   * @deprecated single use doesn't justify existence of the method
    */
+  @Deprecated
   Collection<ScriptApplied> getModuleMigrations(Iterable<SModule> modules);
 
   boolean importVersionsUpdateRequired();
 
-  boolean importVersionsUpdateRequired(Iterable<SModule> modules);
   void doUpdateImportVersions(SModule module);
 }

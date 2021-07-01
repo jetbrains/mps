@@ -8,7 +8,6 @@ import java.util.List;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
@@ -28,28 +27,24 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/3577160840697329341", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
-public class MigrationRegistryImpl implements MigrationRegistry {
+public class MigrationSetupImpl implements MigrationSetup {
   private final Project myProject;
   private final List<ProjectMigration> myProjectMigrations = ListSequence.fromList(new ArrayList<ProjectMigration>());
   private final List<ScriptApplied> myModuleMigrations = ListSequence.fromList(new ArrayList<ScriptApplied>());
   private boolean myBrokenDepsOfProjectModules;
   private boolean myNeedImportVersionUpdate;
 
-  public MigrationRegistryImpl(com.intellij.openapi.project.Project ideaProject) {
-    this(ProjectHelper.fromIdeaProject(ideaProject));
-  }
-
   /**
    * Fill with migrations for all project modules
    */
-  public MigrationRegistryImpl(Project mpsProject) {
+  public MigrationSetupImpl(Project mpsProject) {
     this(mpsProject, null);
   }
 
   /**
    * Restrict set of module migrations to specified modules, null means all project modules
    */
-  public MigrationRegistryImpl(final Project mpsProject, @Nullable final Iterable<SModule> modules) {
+  public MigrationSetupImpl(final Project mpsProject, @Nullable final Iterable<SModule> modules) {
     myProject = mpsProject;
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -114,20 +109,17 @@ public class MigrationRegistryImpl implements MigrationRegistry {
     return res.value;
   }
 
+  @Override
   public boolean isMigrationRequired() {
     return ListSequence.fromList(myProjectMigrations).isNotEmpty() || ListSequence.fromList(myModuleMigrations).isNotEmpty();
   }
-
 
   @Override
   public boolean importVersionsUpdateRequired() {
     return !(myBrokenDepsOfProjectModules) && myNeedImportVersionUpdate;
   }
 
-  public boolean importVersionsUpdateRequired(Iterable<SModule> modules) {
-    return false;
-  }
-
+  @Override
   public void doUpdateImportVersions(SModule module) {
     ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
     mv.resetVersions();

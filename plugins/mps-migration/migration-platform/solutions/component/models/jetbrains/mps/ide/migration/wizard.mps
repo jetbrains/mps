@@ -4974,7 +4974,7 @@
         <property role="TrG5h" value="getMigrationRegistry" />
         <property role="1EzhhJ" value="true" />
         <node concept="3uibUv" id="4vZEdvrqBXh" role="3clF45">
-          <ref role="3uigEE" to="bim2:5SsFeroaabl" resolve="MigrationRegistry" />
+          <ref role="3uigEE" to="bim2:5SsFeroaabl" resolve="MigrationSetup" />
         </node>
         <node concept="3Tmbuc" id="4vZEdvrqBpG" role="1B3o_S" />
         <node concept="3clFbS" id="4vZEdvrqAMR" role="3clF47" />

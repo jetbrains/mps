@@ -33,7 +33,7 @@ import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.migration.MigrationRegistry;
+import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -128,7 +128,7 @@ import java.util.Collections;
     return myProject;
   }
   @Override
-  protected MigrationRegistry getMigrationRegistry() {
+  protected MigrationSetup getMigrationRegistry() {
     throw new UnsupportedOperationException("all superclass methods requiring MR have to be overridden");
   }
   @Override
