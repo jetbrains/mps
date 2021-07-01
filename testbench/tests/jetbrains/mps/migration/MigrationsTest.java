@@ -23,6 +23,7 @@ import jetbrains.mps.ide.migration.MigrationChecker;
 import jetbrains.mps.ide.migration.MigrationCheckerImpl;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.ide.migration.MigrationExecutorImpl;
+import jetbrains.mps.ide.migration.MigrationSessionImpl;
 import jetbrains.mps.ide.migration.MigrationSetup;
 import jetbrains.mps.ide.migration.MigrationSetupImpl;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
@@ -72,30 +73,7 @@ public class MigrationsTest implements EnvironmentAware {
     new TestMakeUtil(myEnv.getPlatform()).make(myProject);
     LocalHistoryImpl.getInstanceImpl().cleanupForNextTest();
 
-    MigrationSession session = new MigrationSessionBase() {
-      private final MigrationSetup myMigrationSetup = new MigrationSetupImpl(myProject);
-
-      @Override
-      public Project getProject() {
-        return myProject;
-      }
-
-      @Override
-      protected MigrationSetup getMigrationRegistry() {
-        return myMigrationSetup;
-      }
-
-      @Override
-      public MigrationChecker getChecker() {
-        return new MigrationCheckerImpl(myProject, getMigrationRegistry());
-      }
-
-      @Override
-      public MigrationExecutor getExecutor() {
-        return new MigrationExecutorImpl(myProject);
-      }
-
-    };
+    MigrationSession session = new MigrationSessionImpl(myProject, new MigrationSetupImpl(myProject), false, true);
 
     new MigrationTask(session,new ProgressMonitorAdapter(new EmptyProgressIndicator())).run();
     List<ChangeSet> changes = LocalHistoryImpl.getInstanceImpl().getFacade().getChangeListInTests().getChangesInTests();

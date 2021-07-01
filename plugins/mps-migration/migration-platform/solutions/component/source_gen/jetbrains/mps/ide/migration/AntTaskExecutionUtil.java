@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
@@ -18,8 +19,6 @@ import jetbrains.mps.messages.LogHandler;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import jetbrains.mps.migration.global.ProjectMigration;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/8164581507603015291", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class AntTaskExecutionUtil {
@@ -39,7 +38,25 @@ public class AntTaskExecutionUtil {
    */
   public static void migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
 
-    MigrationSession session = new MyMigrationSession(project, new MigrationSetupImpl(project));
+    MigrationExecutorImpl tracingExecutor = new MigrationExecutorImpl(project) {
+      @Override
+      public void executeModuleMigration(ScriptApplied s) {
+        if (LOG.isTraceEnabled()) {
+          LOG.trace("Apply " + s);
+        }
+        super.executeModuleMigration(s);
+      }
+      @Override
+      public void executeProjectMigration(ProjectMigration pm) {
+        if (LOG.isTraceEnabled()) {
+          LOG.trace("Apply " + pm);
+        }
+        super.executeProjectMigration(pm);
+      }
+    };
+
+    MigrationSetupImpl setup = new MigrationSetupImpl(project);
+    MigrationSession session = new MigrationSessionImpl(project, setup, new MigrationCheckerImpl(project, setup), tracingExecutor, true, true);
     ProgressMonitorAdapter progress = new ProgressMonitorAdapter(new EmptyProgressIndicator());
 
     final Properties properties = new Properties();
@@ -81,50 +98,6 @@ public class AntTaskExecutionUtil {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Exception on saving result file " + OUT_FILE_NAME, e);
       }
-    }
-  }
-
-  private static class MyMigrationSession extends MigrationSession.MigrationSessionBase {
-    private final Project myProject;
-    private final MigrationSetup myMigrationRegistry;
-    private MigrationCheckerImpl myChecker;
-    private MigrationExecutorImpl myExecutor;
-
-    public MyMigrationSession(Project project, MigrationSetup registry) {
-      myProject = project;
-      myMigrationRegistry = registry;
-      this.myChecker = new MigrationCheckerImpl(myProject, registry);
-      this.myExecutor = new MigrationExecutorImpl(myProject) {
-        @Override
-        public void executeModuleMigration(ScriptApplied s) {
-          if (LOG.isTraceEnabled()) {
-            LOG.trace("Apply " + s);
-          }
-          super.executeModuleMigration(s);
-        }
-        @Override
-        public void executeProjectMigration(ProjectMigration pm) {
-          if (LOG.isTraceEnabled()) {
-            LOG.trace("Apply " + pm);
-          }
-          super.executeProjectMigration(pm);
-        }
-      };
-      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
-      SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.MIGRATE);
-    }
-    public Project getProject() {
-      return myProject;
-    }
-    protected MigrationSetup getMigrationRegistry() {
-      return myMigrationRegistry;
-    }
-    public MigrationChecker getChecker() {
-      return myChecker;
-    }
-    @Override
-    public MigrationExecutor getExecutor() {
-      return myExecutor;
     }
   }
 }

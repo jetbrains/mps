@@ -4,22 +4,25 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1244156871960204835", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
-/*package*/ class MigrationSessionImpl extends MigrationSession.MigrationSessionBase {
-  private final MPSProject myMpsProject;
+public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase {
+  private final Project myMpsProject;
   private final MigrationSetup myMigrationRegistry;
-  private MigrationCheckerImpl myChecker;
-  private MigrationExecutorImpl myExecutor;
+  private final MigrationChecker myChecker;
+  private final MigrationExecutor myExecutor;
 
-  public MigrationSessionImpl(MPSProject mpsProject, MigrationSetup migrationRegistry, boolean resave, boolean migrate) {
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationRegistry, boolean resave, boolean migrate) {
+    this(mpsProject, migrationRegistry, new MigrationCheckerImpl(mpsProject, migrationRegistry), new MigrationExecutorImpl(mpsProject), resave, migrate);
+  }
+
+  public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationRegistry, MigrationChecker checker, MigrationExecutor executor, boolean resave, boolean migrate) {
     myMpsProject = mpsProject;
     myMigrationRegistry = migrationRegistry;
-    myChecker = new MigrationCheckerImpl(mpsProject, migrationRegistry);
-    myExecutor = new MigrationExecutorImpl(mpsProject);
+    myChecker = checker;
+    myExecutor = executor;
     if (resave) {
       SetSequence.fromSet(myRequiredSteps).addElement(MigrationSession.MigrationStepKind.UPDATE_VERSIONS);
     }
