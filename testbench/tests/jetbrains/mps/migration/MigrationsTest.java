@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import jetbrains.mps.ide.migration.MigrationCheckerImpl;
 import jetbrains.mps.ide.migration.MigrationExecutor;
 import jetbrains.mps.ide.migration.MigrationExecutorImpl;
 import jetbrains.mps.ide.migration.MigrationRegistry;
+import jetbrains.mps.ide.migration.MigrationRegistryImpl;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.ide.migration.wizard.MigrationSession.MigrationSessionBase;
 import jetbrains.mps.ide.migration.wizard.MigrationTask;
@@ -74,14 +75,15 @@ public class MigrationsTest implements EnvironmentAware {
     LocalHistoryImpl.getInstanceImpl().cleanupForNextTest();
 
     MigrationSession session = new MigrationSessionBase() {
+      private final MigrationRegistry myMigrationRegistry = new MigrationRegistryImpl(myProject);
       @Override
       public Project getProject() {
         return myProject;
       }
 
       @Override
-      public MigrationRegistry getMigrationRegistry() {
-        return ProjectHelper.toIdeaProject(myProject).getService(MigrationRegistry.class);
+      protected MigrationRegistry getMigrationRegistry() {
+        return myMigrationRegistry;
       }
 
       @Override

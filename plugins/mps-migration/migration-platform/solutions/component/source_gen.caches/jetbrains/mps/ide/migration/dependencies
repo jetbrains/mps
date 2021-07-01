@@ -16,11 +16,11 @@
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationExecutor" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationExecutorImpl" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationRegistry" />
+    <classNode dependClassName="jetbrains.mps.ide.migration.MigrationRegistryImpl" />
     <classNode dependClassName="jetbrains.mps.ide.migration.ScriptApplied" />
     <classNode dependClassName="jetbrains.mps.ide.migration.wizard.MigrationError" />
     <classNode dependClassName="jetbrains.mps.ide.migration.wizard.MigrationSession" />
     <classNode dependClassName="jetbrains.mps.ide.migration.wizard.MigrationTask" />
-    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.messages.LogHandler" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
@@ -260,7 +260,7 @@
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigrationsRegistry" />
     <classNode dependClassName="jetbrains.mps.project.AbstractModule" />
-    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.ModuleDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.ModuleDependencyVersions" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
@@ -323,6 +323,7 @@
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationNotificationsSupport" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationProblemHandler" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationRegistry" />
+    <classNode dependClassName="jetbrains.mps.ide.migration.MigrationRegistryImpl" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationSessionImpl" />
     <classNode dependClassName="jetbrains.mps.ide.migration.PostponedState" />
     <classNode dependClassName="jetbrains.mps.ide.migration.ScriptApplied" />

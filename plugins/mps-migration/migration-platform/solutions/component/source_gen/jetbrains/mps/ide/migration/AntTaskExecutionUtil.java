@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
@@ -39,7 +38,7 @@ public class AntTaskExecutionUtil {
    * Do not change this method's signature. It is used from MigrationWorker
    */
   public static void migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
-    MigrationRegistry m = ProjectHelper.toIdeaProject(project).getService(MigrationRegistry.class);
+    MigrationRegistry m = new MigrationRegistryImpl(project);
 
     MigrationSession session = new MyMigrationSession(project, m);
     ProgressMonitorAdapter progress = new ProgressMonitorAdapter(new EmptyProgressIndicator());
@@ -118,7 +117,7 @@ public class AntTaskExecutionUtil {
     public Project getProject() {
       return myProject;
     }
-    public MigrationRegistry getMigrationRegistry() {
+    protected MigrationRegistry getMigrationRegistry() {
       return myMigrationRegistry;
     }
     public MigrationChecker getChecker() {

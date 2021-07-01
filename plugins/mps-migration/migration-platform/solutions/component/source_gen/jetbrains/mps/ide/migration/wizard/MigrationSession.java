@@ -22,11 +22,11 @@ import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.AbstractModule;
@@ -120,12 +120,9 @@ public interface MigrationSession {
       final Wrappers._T<ScriptApplied> result = new Wrappers._T<ScriptApplied>(null);
       getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
+          Iterable<ScriptApplied> seq;
           if (preferredId == null) {
-            result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
-              public boolean accept(ScriptApplied it) {
-                return canBeExecutedImmediately(it);
-              }
-            });
+            seq = getModuleMigrations();
           } else {
             // XXX Here, we rely on proper equals() implementation in MSR and RSR.
             // getModuleMigrations gives SA for [every module X language migration versions].
@@ -133,23 +130,24 @@ public interface MigrationSession {
             // language/module is == desired one (see canBeExecutedImmediately). 
             // Once all modules for language/module+version pair denoted by preferredId got 
             // actual used language/dependency module > mid.getFromVersion(), it's ok to move to the next
-            result.value = CollectionSequence.fromCollection(getModuleMigrations()).where(new IWhereFilter<ScriptApplied>() {
+            seq = CollectionSequence.fromCollection(getModuleMigrations()).where(new IWhereFilter<ScriptApplied>() {
               public boolean accept(ScriptApplied sa) {
                 return sa.getScriptReference().equals(preferredId);
               }
-            }).findFirst(new IWhereFilter<ScriptApplied>() {
+            });
+          }
+          result.value = Sequence.fromIterable(seq).findFirst(new IWhereFilter<ScriptApplied>() {
+            public boolean accept(ScriptApplied sa) {
+              return canBeExecutedImmediately(sa);
+            }
+          });
+          if (result.value == null && preferredId != null) {
+            // no applicable found by language/module+version pair, move on to another language/module and version
+            result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
               public boolean accept(ScriptApplied sa) {
                 return canBeExecutedImmediately(sa);
               }
             });
-            if (result.value == null) {
-              // no applicable found by language/module+version pair, move on to another language/module and version
-              result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
-                public boolean accept(ScriptApplied it) {
-                  return canBeExecutedImmediately(it);
-                }
-              });
-            }
           }
         }
       });

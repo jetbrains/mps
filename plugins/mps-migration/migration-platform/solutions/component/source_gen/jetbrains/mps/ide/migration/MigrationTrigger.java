@@ -129,11 +129,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     // FIXME doesn't need to be a project component. Perhaps, not even a project Service. Shall get activated
     //      by listeners attached by a StartupActivity
     myMpsProject = p;
-    myMigrationRegistry = ideaProject.getService(MigrationRegistry.class);
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myMake = mpsCore.getPlatform().findComponent(MakeServiceComponent.class).get();
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
+    myMigrationRegistry = new MigrationRegistryImpl(p);
     myNotifications = new MigrationNotificationsSupport(ideaProject, p, myLanguageRegistry) {
       @Override
       public void runAssistant() {
