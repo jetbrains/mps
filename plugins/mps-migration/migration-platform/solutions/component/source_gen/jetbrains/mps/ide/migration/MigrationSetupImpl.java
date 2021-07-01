@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.Collection;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -92,21 +91,6 @@ public class MigrationSetupImpl implements MigrationSetup {
   @Override
   public Collection<ScriptApplied> getModuleMigrations() {
     return myModuleMigrations;
-  }
-
-  @Override
-  public Collection<ScriptApplied> getModuleMigrations(final Iterable<SModule> modules) {
-    final Wrappers._T<List<ScriptApplied>> res = new Wrappers._T<List<ScriptApplied>>();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        res.value = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
-          public Iterable<ScriptApplied> translate(SModule module) {
-            return getAllSteps(module);
-          }
-        }).toListSequence();
-      }
-    });
-    return res.value;
   }
 
   @Override

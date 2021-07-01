@@ -19,21 +19,17 @@ public interface MigrationSetup {
   Collection<ProjectMigration> getProjectMigrations();
 
   /**
-   * Pretty much result of {@link jetbrains.mps.ide.migration.MigrationSetup#getModuleMigrations(Iterable<SModule>) } for a set of modules known to caller
+   * 
    * 
    * @return language migrations for a set of modules configured by instance creator
    */
   Collection<ScriptApplied> getModuleMigrations();
 
   /**
-   * Likely to fade away, gives access to logic that calculates required migrations for specific modules
    * 
    * 
-   * @deprecated single use doesn't justify existence of the method
+   * @return true if any of configured modules needs imports update
    */
-  @Deprecated
-  Collection<ScriptApplied> getModuleMigrations(Iterable<SModule> modules);
-
   boolean importVersionsUpdateRequired();
 
   void doUpdateImportVersions(SModule module);

@@ -95,7 +95,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
             return MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(it);
           }
         }).toListSequence();
-        Collection<ScriptApplied> depMigrationsToRun = myManager.getModuleMigrations(depModules);
+        Collection<ScriptApplied> depMigrationsToRun = new MigrationSetupImpl(myProject, depModules).getModuleMigrations();
         Iterable<SModule> notMigratedModules = CollectionSequence.fromCollection(depMigrationsToRun).select(new ISelector<ScriptApplied, SModule>() {
           public SModule select(ScriptApplied it) {
             return it.getModule(myProject.getRepository());
