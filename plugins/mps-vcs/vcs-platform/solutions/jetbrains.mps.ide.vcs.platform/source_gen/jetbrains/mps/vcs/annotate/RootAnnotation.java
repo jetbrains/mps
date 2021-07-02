@@ -28,7 +28,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder;
+import jetbrains.mps.vcs.diff.merge.MovesAwareMergeConflictsBuilder;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -172,9 +172,9 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
       return;
     }
 
-    MergeConflictsBuilder mergeConflictsBuilder = MergeConflictsBuilder.createOppositeConflictsBuilder(changeSet1.getOppositeChangeSet(), changeSet2.getOppositeChangeSet());
+    MovesAwareMergeConflictsBuilder conflictsBuilder = MovesAwareMergeConflictsBuilder.createOppositeConflictsBuilder(changeSet1.getOppositeChangeSet(), changeSet2.getOppositeChangeSet());
 
-    List<ModelChange> changes = SetSequence.fromSet(MapSequence.fromMap(mergeConflictsBuilder.getConflictingChanges()).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(mergeConflictsBuilder.getSymmetricChanges()).keySet())).distinct().where(new IWhereFilter<ModelChange>() {
+    List<ModelChange> changes = SetSequence.fromSet(MapSequence.fromMap(conflictsBuilder.getConflictingChanges()).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(conflictsBuilder.getSymmetricChanges()).keySet())).distinct().where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange it) {
         return changeIsRelevant(it);
       }

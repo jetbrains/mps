@@ -59,7 +59,6 @@ public final class TripleChangeGroupLayout {
   private final MergingUpdateQueue myUpdateQueue;
   private final Object myUpdateIdentity = new Object();
   private final boolean myIsInspector;
-  private boolean myCanDrawBorders;
   private final ChangeGroupInvalidateListener myGroupInvalidateListener;
   private final Map<DiffEditor, AbstractAdditionalPainter> myBackgroundPainters = MapSequence.fromMap(new HashMap<DiffEditor, AbstractAdditionalPainter>());
   private final Map<DiffEditor, AbstractAdditionalPainter> myBordersPainters = MapSequence.fromMap(new HashMap<DiffEditor, AbstractAdditionalPainter>());
@@ -77,17 +76,13 @@ public final class TripleChangeGroupLayout {
     myUpdateQueue = new MergingUpdateQueue("TripleChangeGroupLayout", 100, true, null, null, null, false);
     myGroupInvalidateListener = createLayoutInvalidateListener();
     myUpdaterListener = createUpdaterListener();
-    check_fgmqy5_a6a71(myLeftLayout, myGroupInvalidateListener);
-    check_fgmqy5_a7a71(myRightLayout, myGroupInvalidateListener);
+    check_fgmqy5_a6a61(myLeftLayout, myGroupInvalidateListener);
+    check_fgmqy5_a7a61(myRightLayout, myGroupInvalidateListener);
     ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
       public void visit(DiffEditor it) {
         initEditor(it);
       }
     });
-  }
-
-  public void setCanDrawBorderes(boolean canDrawBorders) {
-    myCanDrawBorders = canDrawBorders;
   }
 
   private void initEditor(DiffEditor diffEditor) {
@@ -105,7 +100,7 @@ public final class TripleChangeGroupLayout {
     MapSequence.fromMap(myMouseListeners).put(diffEditor, mouseListener);
     editorComponent.addMouseListener(mouseListener);
     editorComponent.addMouseMotionListener(mouseListener);
-    check_fgmqy5_a41a12(diffEditor.getScrollPane(myIsInspector), mouseListener);
+    check_fgmqy5_a41a81(diffEditor.getScrollPane(myIsInspector), mouseListener);
     ChangeListener viewportListener = createViewportListener(diffEditor);
     MapSequence.fromMap(myViewportListeners).put(diffEditor, viewportListener);
     editorComponent.getViewport().addChangeListener(viewportListener);
@@ -116,8 +111,8 @@ public final class TripleChangeGroupLayout {
     return new UpdaterListenerAdapter() {
       @Override
       public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
-        check_fgmqy5_a0a0a0a0a32(myLeftLayout);
-        check_fgmqy5_a1a0a0a0a32(myRightLayout);
+        check_fgmqy5_a0a0a0a0a02(myLeftLayout);
+        check_fgmqy5_a1a0a0a0a02(myRightLayout);
       }
     };
   }
@@ -130,7 +125,7 @@ public final class TripleChangeGroupLayout {
     MouseAdapter mouseListener = MapSequence.fromMap(myMouseListeners).get(diffEditor);
     editorComponent.removeMouseListener(mouseListener);
     editorComponent.removeMouseMotionListener(mouseListener);
-    check_fgmqy5_a7a52(diffEditor.getScrollPane(myIsInspector), mouseListener);
+    check_fgmqy5_a7a22(diffEditor.getScrollPane(myIsInspector), mouseListener);
     editorComponent.getViewport().removeChangeListener(MapSequence.fromMap(myViewportListeners).get(diffEditor));
     editorComponent.getUpdater().removeListener(myUpdaterListener);
   }
@@ -336,8 +331,8 @@ public final class TripleChangeGroupLayout {
         disposeEditor(it);
       }
     });
-    check_fgmqy5_a1a93(myLeftLayout, myGroupInvalidateListener);
-    check_fgmqy5_a2a93(myRightLayout, myGroupInvalidateListener);
+    check_fgmqy5_a1a63(myLeftLayout, myGroupInvalidateListener);
+    check_fgmqy5_a2a63(myRightLayout, myGroupInvalidateListener);
     // we should always use Disposer#dispose for Disposable objects instead of direct call
     // of dispose method.
     Disposer.dispose(myUpdateQueue);
@@ -524,7 +519,7 @@ __switch__:
   }
 
   private Pair<List<DiffEditorChangeLayer>, List<DiffEditorChangeLayer>> createLayers(DiffChangeGroupLayout layout) {
-    final boolean drawBorders = myCanDrawBorders && DiffSettingsUtil.getTrackMovedNodesOption();
+    final boolean drawBorders = (layout.isMerge() ? DiffSettingsUtil.getTrackMovedNodesMergeOption() : DiffSettingsUtil.getTrackMovedNodesDiffOption());
     final List<DiffEditorChangeLayer> leftLayers = ListSequence.fromList(new ArrayList<DiffEditorChangeLayer>());
     final List<DiffEditorChangeLayer> rightLayers = ListSequence.fromList(new ArrayList<DiffEditorChangeLayer>());
     ListSequence.fromList(layout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {
@@ -561,9 +556,9 @@ __switch__:
 
   private void paintPolygons(final Graphics2D gg, final int dividerWidth, DiffEditor leftEditor, DiffEditor rightEditor) {
     GraphicsConfig config = GraphicsUtil.setupAAPainting(gg);
-    final Wrappers._int leftOffset = new Wrappers._int(check_fgmqy5_a0b0hc(MapSequence.fromMap(myOffsets).get(leftEditor)));
+    final Wrappers._int leftOffset = new Wrappers._int(check_fgmqy5_a0b0ec(MapSequence.fromMap(myOffsets).get(leftEditor)));
     leftOffset.value += leftEditor.getScrollPanelOffset(myIsInspector);
-    final Wrappers._int rightOffset = new Wrappers._int(check_fgmqy5_a0d0hc(MapSequence.fromMap(myOffsets).get(rightEditor)));
+    final Wrappers._int rightOffset = new Wrappers._int(check_fgmqy5_a0d0ec(MapSequence.fromMap(myOffsets).get(rightEditor)));
     rightOffset.value += rightEditor.getScrollPanelOffset(myIsInspector);
 
     List<DiffEditorChangeLayer> leftLayers = leftEditor.getLayers(myIsInspector);
@@ -681,76 +676,76 @@ __switch__:
         it.repaintAndRebuildEditorMessages();
       }
     });
-    check_fgmqy5_a1a56(myLeftLayout);
-    check_fgmqy5_a2a56(myRightLayout);
+    check_fgmqy5_a1a26(myLeftLayout);
+    check_fgmqy5_a2a26(myRightLayout);
   }
-  private static void check_fgmqy5_a6a71(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
+  private static void check_fgmqy5_a6a61(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addInvalidateListener(myGroupInvalidateListener);
     }
 
   }
-  private static void check_fgmqy5_a7a71(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
+  private static void check_fgmqy5_a7a61(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addInvalidateListener(myGroupInvalidateListener);
     }
 
   }
-  private static void check_fgmqy5_a41a12(JScrollPane checkedDotOperand, MouseAdapter mouseListener) {
+  private static void check_fgmqy5_a41a81(JScrollPane checkedDotOperand, MouseAdapter mouseListener) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addMouseWheelListener(mouseListener);
     }
 
   }
-  private static void check_fgmqy5_a0a0a0a0a32(DiffChangeGroupLayout checkedDotOperand) {
+  private static void check_fgmqy5_a0a0a0a0a02(DiffChangeGroupLayout checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.invalidate();
     }
 
   }
-  private static void check_fgmqy5_a1a0a0a0a32(DiffChangeGroupLayout checkedDotOperand) {
+  private static void check_fgmqy5_a1a0a0a0a02(DiffChangeGroupLayout checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.invalidate();
     }
 
   }
-  private static void check_fgmqy5_a7a52(JScrollPane checkedDotOperand, MouseAdapter mouseListener) {
+  private static void check_fgmqy5_a7a22(JScrollPane checkedDotOperand, MouseAdapter mouseListener) {
     if (null != checkedDotOperand) {
       checkedDotOperand.removeMouseWheelListener(mouseListener);
     }
 
   }
-  private static void check_fgmqy5_a1a93(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
+  private static void check_fgmqy5_a1a63(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
     if (null != checkedDotOperand) {
       checkedDotOperand.removeInvalidateListener(myGroupInvalidateListener);
     }
 
   }
-  private static void check_fgmqy5_a2a93(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
+  private static void check_fgmqy5_a2a63(DiffChangeGroupLayout checkedDotOperand, ChangeGroupInvalidateListener myGroupInvalidateListener) {
     if (null != checkedDotOperand) {
       checkedDotOperand.removeInvalidateListener(myGroupInvalidateListener);
     }
 
   }
-  private static int check_fgmqy5_a0b0hc(AtomicInteger checkedDotOperand) {
+  private static int check_fgmqy5_a0b0ec(AtomicInteger checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.get();
     }
     return 0;
   }
-  private static int check_fgmqy5_a0d0hc(AtomicInteger checkedDotOperand) {
+  private static int check_fgmqy5_a0d0ec(AtomicInteger checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.get();
     }
     return 0;
   }
-  private static void check_fgmqy5_a1a56(DiffChangeGroupLayout checkedDotOperand) {
+  private static void check_fgmqy5_a1a26(DiffChangeGroupLayout checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.repaintSplitter();
     }
 
   }
-  private static void check_fgmqy5_a2a56(DiffChangeGroupLayout checkedDotOperand) {
+  private static void check_fgmqy5_a2a26(DiffChangeGroupLayout checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.repaintSplitter();
     }

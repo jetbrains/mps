@@ -24,12 +24,15 @@ import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
+import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
+import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Arrays;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.persistence.PersistenceVersionAware;
@@ -61,18 +64,26 @@ public final class MergeSession {
   private ChangesInvalidateHandler myChangesInvalidateHandler;
 
   public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository) {
+    return createMergeSession(base, mine, repository, createTemporaryResultModel(base, mine, repository), false);
+  }
+
+  public static MergeTemporaryModel createTemporaryResultModel(SModel base, SModel mine, SModel repository) {
     MergeTemporaryModel result = MergeTemporaryModel.writableCloneOf(base);
     int pv = Math.max(getPersistenceVersion(base), Math.max(getPersistenceVersion(mine), getPersistenceVersion(repository)));
     result.setPersistenceVersion(pv);
-    return new MergeSession(base, mine, repository, result);
+    return result;
   }
 
-  private MergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel result) {
-    MergeConflictsBuilder conflictsBuilder = new MergeConflictsBuilder(base, mine, repository);
-    myMineChangeSet = conflictsBuilder.myMineChangeSet;
-    myRepositoryChangeSet = conflictsBuilder.myRepositoryChangeSet;
-    myConflictingChanges = conflictsBuilder.myConflictingChanges;
-    mySymmetricChanges = conflictsBuilder.mySymmetricChanges;
+  public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel resultModel, boolean isTrackMovedNodes) {
+    return new MergeSession(base, mine, repository, resultModel, isTrackMovedNodes);
+  }
+
+  private MergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel result, boolean isTrackMovedNodes) {
+    ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(result, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
+    myMineChangeSet = conflictsBuilder.getMyChangeSet();
+    myRepositoryChangeSet = conflictsBuilder.getRepositoryChangeSet();
+    myConflictingChanges = conflictsBuilder.getConflictingChanges();
+    mySymmetricChanges = conflictsBuilder.getSymmetricChanges();
     fillRootToChangesMap();
     fillNodeToChangesMap();
     myResultModel = result;
@@ -110,13 +121,26 @@ public final class MergeSession {
       } else if (change instanceof NodeIdChange) {
         nodeId = ((NodeIdChange) change).getNodeId(false);
       }
-      if (nodeId != null) {
-        if (MapSequence.fromMap(myNodeToChanges).get(nodeId) == null) {
-          MapSequence.fromMap(myNodeToChanges).put(nodeId, ListSequence.fromList(new ArrayList<ModelChange>()));
+      addChangeForNode(nodeId, change);
+      if (change instanceof HierarchicalNodeGroupChange) {
+        addChangeForNode(((HierarchicalNodeGroupChange) change).getParentId(false), change);
+        if (change instanceof NodeGroupMoveChange) {
+          addChangeForNode(((NodeGroupMoveChange) change).getParentId(true), change);
         }
-        ListSequence.fromList(MapSequence.fromMap(myNodeToChanges).get(nodeId)).addElement(change);
       }
     }
+  }
+
+  private void addChangeForNode(SNodeId nodeId, ModelChange change) {
+    if (nodeId == null) {
+      return;
+    }
+    List<ModelChange> changes = MapSequence.fromMap(myNodeToChanges).get(nodeId);
+    if (changes == null) {
+      changes = ListSequence.fromList(new ArrayList<ModelChange>());
+      MapSequence.fromMap(myNodeToChanges).put(nodeId, changes);
+    }
+    ListSequence.fromList(changes).addElement(change);
   }
 
   public Iterable<ModelChange> getApplicableChangesForRoot(SNodeId rootId) {
@@ -186,20 +210,35 @@ public final class MergeSession {
   }
 
   private void applyChangesNoRestoreIds(Iterable<ModelChange> changes) {
+    applyHierarchicalChanges(changes);
     Sequence.fromIterable(changes).ofType(NodeGroupChange.class).visitAll(new IVisitor<NodeGroupChange>() {
       public void visit(NodeGroupChange ch) {
         ch.prepare();
       }
     });
-    for (ModelChange c : Sequence.fromIterable(changes).sort((ModelChange a, ModelChange b) -> {
-      // sort out nonconflicting changes to the end of list, so they will be ignored if other connected changes exists
-      boolean aa = a.isNonConflicting();
-      boolean bb = b.isNonConflicting();
-      int result = (aa == bb ? 0 : (aa ? 1 : -1));
-      return result;
-    }, true)) {
+    for (ModelChange c : Sequence.fromIterable(changes).where(new IWhereFilter<ModelChange>() {
+      public boolean accept(ModelChange it) {
+        return !(it instanceof HierarchicalNodeGroupChange);
+      }
+    }).sort((ModelChange a, ModelChange b) -> compareChanges(a, b), true)) {
       applyChange(c);
     }
+  }
+
+  private void applyHierarchicalChanges(Iterable<ModelChange> changes) {
+    new HierarchicalChangesMerger(this).applyHierarchicalChanges(Sequence.fromIterable(changes).ofType(HierarchicalNodeGroupChange.class).select(new ISelector<HierarchicalNodeGroupChange, HierarchicalNodeGroupChange>() {
+      public HierarchicalNodeGroupChange select(HierarchicalNodeGroupChange it) {
+        return (HierarchicalNodeGroupChange) getChangeByMergeStrategy(it);
+      }
+    }).sort((HierarchicalNodeGroupChange a, HierarchicalNodeGroupChange b) -> compareChanges(a, b), true).toListSequence());
+  }
+
+  private static int compareChanges(ModelChange ch1, ModelChange ch2) {
+    // sort out nonconflicting changes to the end of list, so they will be ignored if other connected changes exists
+    boolean aa = ch1.isNonConflicting();
+    boolean bb = ch2.isNonConflicting();
+    int result = (aa == bb ? 0 : (aa ? 1 : -1));
+    return result;
   }
 
   private void excludeChangesNoRestoreIds(Iterable<ModelChange> changes) {
@@ -208,11 +247,7 @@ public final class MergeSession {
     }
   }
 
-  private void applyChange(ModelChange change) {
-    if (SetSequence.fromSet(myResolvedChanges).contains(change)) {
-      return;
-    }
-
+  private ModelChange getChangeByMergeStrategy(ModelChange change) {
     // for nonconflicting change we can execute symmetric if it suits better
     if (change.isNonConflicting()) {
       ModelChange symmChange = ListSequence.fromList(MapSequence.fromMap(mySymmetricChanges).get(change)).subtract(SetSequence.fromSet(myResolvedChanges)).first();
@@ -221,10 +256,18 @@ public final class MergeSession {
         MergeStrategy hint = change.getMergeHint();
         if (hint != null && ((hint == MergeStrategy.OURS) != isMineChange)) {
           // execute more appropriate symmetric change, original change will be excluded
-          change = symmChange;
+          return symmChange;
         }
       }
     }
+    return change;
+  }
+
+  /*package*/ void applyChange(ModelChange change) {
+    if (SetSequence.fromSet(myResolvedChanges).contains(change)) {
+      return;
+    }
+
     List<ModelChange> conflictedChanges = Sequence.fromIterable(getConflictedWith(change)).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange ch) {
         return !((SetSequence.fromSet(myResolvedChanges).contains(ch)));
@@ -243,7 +286,7 @@ public final class MergeSession {
       for (NodeGroupChange ch : ListSequence.fromList(ngcConflictedChanges)) {
         // add new changes only for insertions, we need ChangeSetImpl to manually add one change there
         // original conflicted changes will be resolved
-        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a5a74(ch.getChangeSet(), ChangeSetImpl.class);
+        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a95(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
         NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getOldParentNodeId(), ch.getNewParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
@@ -321,9 +364,49 @@ public final class MergeSession {
     MergeSessionState stateCopy = new MergeSessionState(state);
     myResultModel.setSModelInternal(stateCopy.myResultModel.getSModel());
 
+    restoreHierarchicalChanges();
     SetSequence.fromSet(myResolvedChanges).clear();
     SetSequence.fromSet(myResolvedChanges).addSequence(SetSequence.fromSet(stateCopy.myResolvedChanges));
     myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);
+  }
+
+  private void restoreHierarchicalChanges() {
+    setHierarchicalChangesNotApplied(myMineChangeSet, myResultModel);
+    setHierarchicalChangesNotApplied(myRepositoryChangeSet, myResultModel);
+  }
+
+  private static void setHierarchicalChangesNotApplied(ChangeSet changeSet, final SModel model) {
+    ListSequence.fromList(changeSet.getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
+      public void visit(HierarchicalNodeGroupChange it) {
+        it.getGroup(true).setIsNotApplied(model);
+        it.getGroup(false).setIsNotApplied(model);
+      }
+    });
+  }
+
+  public boolean hasResolvedChanges() {
+    return SetSequence.fromSet(myResolvedChanges).isNotEmpty();
+  }
+
+  /*package*/ Map<ModelChange, List<ModelChange>> getSymmetricChanges() {
+    return mySymmetricChanges;
+  }
+
+  /*package*/ Set<ModelChange> getResolvedChanges() {
+    return myResolvedChanges;
+  }
+
+  /*package*/ NodeCopier getNodeCopier() {
+    return myNodeCopier;
+  }
+
+  /*package*/ void excludeChangeWithConflictedChanges(ModelChange change) {
+    excludeChange(change);
+    Sequence.fromIterable(getConflictedWith(change)).visitAll(new IVisitor<ModelChange>() {
+      public void visit(ModelChange it) {
+        excludeChange(it);
+      }
+    });
   }
 
   public void setChangesInvalidateHandler(ChangesInvalidateHandler changesInvalidateHandler) {
@@ -434,7 +517,7 @@ public final class MergeSession {
       invalidateChanges();
     }
   }
-  private static <T> T as_bow6nj_a0a2a5a5a74(Object o, Class<T> type) {
+  private static <T> T as_bow6nj_a0a2a5a3a95(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

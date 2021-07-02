@@ -10,6 +10,8 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNodeId;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6640456928090727186", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public final class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
@@ -83,5 +85,41 @@ public final class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
   protected ModelChange createOppositeChange() {
     NodeGroupMoveChange oppositeChange = new NodeGroupMoveChange(getChangeSet().getOppositeChangeSet(), getGroup(true), getGroup(false));
     return oppositeChange;
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds, boolean wrapConflictsWithInternalChanges) {
+    if (otherChange instanceof NodeGroupNotMoveChange) {
+      return HierarchicalChangeConflictsUtil.moveConflictsWithNotMove(as_y6g6qn_a0a0a0a32(otherChange, NodeGroupNotMoveChange.class), this, symmetricIds);
+    }
+    if (otherChange instanceof NodeGroupWrapChange) {
+      return HierarchicalChangeConflictsUtil.wrapConflictsWithMove(as_y6g6qn_a0a0a1a32(otherChange, NodeGroupWrapChange.class), this, symmetricIds, wrapConflictsWithInternalChanges);
+    }
+    if (otherChange instanceof NodeGroupMoveChange) {
+      NodeGroupMoveChange other = as_y6g6qn_a0a0a2a32(otherChange, NodeGroupMoveChange.class);
+      return hasIntersectingSourceWith(other) || this.getGroup(true).hasCommonAnchorWith(other.getGroup(true), symmetricIds);
+    }
+    return false;
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds) {
+    if (!(otherChange instanceof NodeGroupMoveChange)) {
+      return false;
+    }
+    NodeGroupMoveChange other = as_y6g6qn_a0a1a52(otherChange, NodeGroupMoveChange.class);
+    return Objects.equals(this.getGroup(false).getIds(), other.getGroup(false).getIds()) && this.getGroup(true).hasCommonAnchorWith(other.getGroup(true), symmetricIds);
+  }
+  private static <T> T as_y6g6qn_a0a0a0a32(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_y6g6qn_a0a0a1a32(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_y6g6qn_a0a0a2a32(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_y6g6qn_a0a1a52(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

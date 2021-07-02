@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -2604,7 +2605,7 @@
       <node concept="TZ5HI" id="6JdHP0O3r1z" role="3nqlJM">
         <node concept="TZ5HA" id="6JdHP0O3r1$" role="3HnX3l">
           <node concept="1dT_AC" id="6JdHP0O3rkw" role="1dT_Ay">
-            <property role="1dT_AB" value="This class was moved to jetbrains.mps.vcs.diff.merge.SNodeCompare as it used in VCS only." />
+            <property role="1dT_AB" value="This class was moved to jetbrains.mps.vcs.diff.DiffUtil as it used in VCS only." />
           </node>
         </node>
       </node>

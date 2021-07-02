@@ -124,7 +124,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
     final List<RevisionNodeChange> changes = ListSequence.fromList(new ArrayList<RevisionNodeChange>());
 
     if (wrapChange.isWrap()) {
-      Collection<SNodeId> wrappingIds = Collections.singletonList(wrapChange.getWrappingGroup().getFirstNodeId());
+      Collection<SNodeId> wrappingIds = Collections.singletonList(wrapChange.getWrappingGroup().getWrappingNodeId());
       ListSequence.fromList(changes).addElement(createNotMoveNodeChange(graphNode, changeType, description, messageTarget, wrappingIds, model, movedNodesIds));
     } else {
       ListSequence.fromList(wrapChange.getWrappingGroup().getWrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {

@@ -9,6 +9,7 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.extapi.model.SModelBase;
+import java.util.Objects;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2241895627641426680", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class ModuleDependencyChange extends DependencyChange {
@@ -61,5 +62,21 @@ public class ModuleDependencyChange extends DependencyChange {
       myAddTask = addTask;
       myDeleteTask = deleteTask;
     }
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof ModuleDependencyChange && Objects.equals(as_mo5hab_a0a0a0a0k(otherChange, ModuleDependencyChange.class).getModuleReference(), this.getModuleReference()) && Objects.equals(as_mo5hab_a0a0a0a01(otherChange, ModuleDependencyChange.class).getDependencyType(), this.getDependencyType());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return this.conflictsWith(otherChange);
+  }
+  private static <T> T as_mo5hab_a0a0a0a01(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mo5hab_a0a0a0a0k(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import java.util.Objects;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2763871596163643452", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class NodeIdChange extends NodeChange {
@@ -136,10 +137,32 @@ public class NodeIdChange extends NodeChange {
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
   }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof NodeIdChange && Objects.equals((as_kkxqie_a0a0a0b0rb(otherChange, NodeIdChange.class)).getNodeId(false), this.getNodeId(false));
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof NodeIdChange && Objects.equals((as_kkxqie_a0a0a0a0a54(otherChange, NodeIdChange.class)).getNodeId(false), this.getNodeId(false)) && Objects.equals((as_kkxqie_a0a0a0a0tb(otherChange, NodeIdChange.class)).getNodeId(true), this.getNodeId(true));
+  }
   private static void check_kkxqie_a1a2a52(IdChangeGroup checkedDotOperand, SModel model) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setIsApplied(model);
     }
 
+  }
+  private static <T> T as_kkxqie_a0a0a0b0rb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_kkxqie_a0a0a0a0tb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_kkxqie_a0a0a0a0a54(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

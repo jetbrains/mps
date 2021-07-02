@@ -195,6 +195,19 @@ public class SetReferenceChange extends NodeChange {
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new ReferenceMessageTarget(getRoleLink()))));
   }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof SetReferenceChange && Objects.equals(this.getAffectedNodeId(), as_mgdhcs_a0b0a0b0tb(otherChange, SetReferenceChange.class).getAffectedNodeId()) && Objects.equals(this.getRole(), as_mgdhcs_a0b0a1a54(otherChange, SetReferenceChange.class).getRole());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof SetReferenceChange && Objects.equals(this.getTargetNodeId(), as_mgdhcs_a0b0a0a0a74(otherChange, SetReferenceChange.class).getTargetNodeId()) && Objects.equals(this.getTargetModelReference(), as_mgdhcs_a0b0a0a0vb(otherChange, SetReferenceChange.class).getTargetModelReference()) && Objects.equals(this.getResolveInfo(), as_mgdhcs_a0b0a0a74(otherChange, SetReferenceChange.class).getResolveInfo());
+  }
   private static SReference check_mgdhcs_a0b0ib(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getReference(myRole);
@@ -230,5 +243,20 @@ public class SetReferenceChange extends NodeChange {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
+  }
+  private static <T> T as_mgdhcs_a0b0a0b0tb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a1a54(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a0a0a74(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a0a0vb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_mgdhcs_a0b0a0a74(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -101,7 +101,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
     }
     ModelChangeSet changeSet = getChangeSet();
     if (rebuildChangeSet && changeSet != null) {
-      ChangeSetBuilder.rebuildChangeSet(changeSet, DiffSettingsUtil.getTrackMovedNodesOption());
+      ChangeSetBuilder.rebuildChangeSet(changeSet, DiffSettingsUtil.getTrackMovedNodesDiffOption());
     }
     ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
       public void visit(DiffEditor it) {

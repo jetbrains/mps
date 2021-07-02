@@ -29,6 +29,7 @@ import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import java.util.Objects;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4133404009533074929", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetConceptChange extends NodeChange {
@@ -136,5 +137,23 @@ public class SetConceptChange extends NodeChange {
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
+  }
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return otherChange instanceof SetConceptChange && Objects.equals(this.getAffectedNodeId(), as_iibrez_a0b0a1a82(otherChange, SetConceptChange.class).getAffectedNodeId());
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof SetConceptChange && Objects.equals(this.getNewValue(), as_iibrez_a0b0a0a03(otherChange, SetConceptChange.class).getNewValue());
+  }
+  private static <T> T as_iibrez_a0b0a1a82(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_iibrez_a0b0a0a03(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

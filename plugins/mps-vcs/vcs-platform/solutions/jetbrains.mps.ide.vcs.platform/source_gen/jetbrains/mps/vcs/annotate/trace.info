@@ -2209,8 +2209,8 @@
       <node id="5463497128132285236" at="122,0,123,96" concept="9" />
       <node id="5463497128132285242" at="123,96,124,104" concept="9" />
       <node id="1502675565114171436" at="124,104,125,0" concept="13" />
-      <node id="5463497128136950625" at="126,30,127,114" concept="9" />
-      <node id="5463497128132285257" at="127,114,128,159" concept="3" />
+      <node id="5463497128136950625" at="126,30,127,117" concept="9" />
+      <node id="5463497128132285257" at="127,117,128,159" concept="3" />
       <node id="3754933618051588801" at="131,54,132,36" concept="11" />
       <node id="3754933618051561438" at="135,50,136,145" concept="3" />
       <node id="5463497128132566383" at="139,5,140,19" concept="11" />
@@ -2482,8 +2482,8 @@
       <node id="2507670376729874113" at="170,30,171,48" concept="3" />
       <node id="2507670376729874117" at="171,48,172,13" concept="11" />
       <node id="2971769857912437167" at="173,5,174,0" concept="13" />
-      <node id="2971769857912440359" at="174,0,175,173" concept="9" />
-      <node id="2499660672232230278" at="175,173,176,0" concept="13" />
+      <node id="2971769857912440359" at="174,0,175,188" concept="9" />
+      <node id="2499660672232230278" at="175,188,176,0" concept="13" />
       <node id="2499660672232298456" at="178,45,179,36" concept="11" />
       <node id="2499660672232325867" at="182,49,183,38" concept="11" />
       <node id="2499660672232280771" at="185,24,186,0" concept="13" />
@@ -2740,7 +2740,7 @@
         <var name="changes" id="2499660672232235906" />
         <var name="changes1" id="5662070101151658568" />
         <var name="changes2" id="5662070101151666699" />
-        <var name="mergeConflictsBuilder" id="2971769857912440360" />
+        <var name="conflictsBuilder" id="2971769857912440360" />
         <var name="parent1" id="2971769857913100079" />
         <var name="parent2" id="2971769857913138921" />
       </scope>
@@ -2749,7 +2749,7 @@
       </scope>
       <unit id="6338414166357611604" at="123,0,126,0" name="jetbrains.mps.vcs.annotate.RootAnnotation$RootAnnotationUpdateListener" />
       <unit id="7414815648494875273" at="133,58,137,5" name="jetbrains.mps.vcs.annotate.RootAnnotation$2" />
-      <unit id="2499660672232296402" at="177,253,181,5" name="jetbrains.mps.vcs.annotate.RootAnnotation$3" />
+      <unit id="2499660672232296402" at="177,243,181,5" name="jetbrains.mps.vcs.annotate.RootAnnotation$3" />
       <unit id="2499660672232323727" at="181,18,185,5" name="jetbrains.mps.vcs.annotate.RootAnnotation$4" />
       <unit id="1759523241426349695" at="219,82,223,5" name="jetbrains.mps.vcs.annotate.RootAnnotation$5" />
       <unit id="6734953420845142136" at="227,144,231,5" name="jetbrains.mps.vcs.annotate.RootAnnotation$6" />

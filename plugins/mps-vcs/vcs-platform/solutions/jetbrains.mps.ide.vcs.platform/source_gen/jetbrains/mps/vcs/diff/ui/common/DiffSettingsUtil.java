@@ -13,8 +13,10 @@ public final class DiffSettingsUtil {
   public static final String HIDE_UNORDERED_MOVES = "vcs.hide.unordered.moves";
   public static final String USE_SHORT_CHANGE_DESCRIPTIONS = "vcs.diff.use.short.change.descriptions";
 
-  public static final String TRACK_MOVED_NODES = "vcs.diff.track.moved.nodes";
-  public static final boolean TRACK_MOVED_VALUES_DEFAULT = false;
+  public static final String TRACK_MOVED_NODES_IN_DIFF = "vcs.diff.track.moved.nodes";
+  public static final String TRACK_MOVED_NODES_IN_MERGE = "vcs.merge.track.moved.nodes";
+  public static final boolean TRACK_MOVED_NODES_DIFF_DEFAULT = false;
+  public static final boolean TRACK_MOVED_NODES_MERGE_DEFAULT = false;
 
 
   private DiffSettingsUtil() {
@@ -52,11 +54,20 @@ public final class DiffSettingsUtil {
     PropertiesComponent.getInstance().setValue(USE_SHORT_CHANGE_DESCRIPTIONS, enable);
   }
 
-  public static boolean getTrackMovedNodesOption() {
-    return PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, TRACK_MOVED_VALUES_DEFAULT);
+  public static boolean getTrackMovedNodesDiffOption() {
+    return PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES_IN_DIFF, TRACK_MOVED_NODES_DIFF_DEFAULT);
   }
 
-  public static void setTrackMovedNodesOption(boolean enable) {
-    PropertiesComponent.getInstance().setValue(TRACK_MOVED_NODES, enable);
+  public static void setTrackMovedNodesDiffOption(boolean enable) {
+    PropertiesComponent.getInstance().setValue(TRACK_MOVED_NODES_IN_DIFF, enable);
   }
+
+  public static boolean getTrackMovedNodesMergeOption() {
+    return PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES_IN_MERGE, TRACK_MOVED_NODES_MERGE_DEFAULT);
+  }
+
+  public static void setTrackMovedNodesMergeOption(boolean enable) {
+    PropertiesComponent.getInstance().setValue(TRACK_MOVED_NODES_IN_MERGE, enable);
+  }
+
 }

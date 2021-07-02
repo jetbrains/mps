@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
+import java.util.Objects;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4077301296567957497", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class StructureChange extends ModelChange {
@@ -59,4 +60,8 @@ public abstract class StructureChange extends ModelChange {
     });
   }
 
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return otherChange instanceof DeleteRootChange && Objects.equals(this.getRootId(), otherChange.getRootId());
+  }
 }

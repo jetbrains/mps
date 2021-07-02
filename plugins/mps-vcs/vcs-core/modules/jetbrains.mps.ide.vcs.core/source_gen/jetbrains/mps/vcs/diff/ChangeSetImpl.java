@@ -92,6 +92,8 @@ public class ChangeSetImpl implements ModelChangeSet {
     if (myOppositeChangeSet == null) {
       myOppositeChangeSet = new ChangeSetImpl(myNewModel, myOldModel);
       myOppositeChangeSet.myOppositeChangeSet = this;
+    } else {
+      myOppositeChangeSet.clear();
     }
     ListSequence.fromList(myOppositeChangeSet.myModelChanges).addSequence(ListSequence.fromList(myModelChanges).select(new ISelector<ModelChange, ModelChange>() {
       public ModelChange select(ModelChange c) {

@@ -5,28 +5,28 @@ package jetbrains.mps.vcs.diff.changes;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.vcs.util.MergeStrategy;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.util.NameUtil;
-import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import java.util.Map;
+import org.jetbrains.annotations.Nullable;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -41,34 +41,32 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
 
   public NodeGroupWrapChange(@NotNull ChangeSet changeSet, @NotNull WrappingNodesGroup wrappingGroup, boolean isWrap) {
-    super(changeSet, (isWrap ? mergeGroups(changeSet, wrappingGroup.getUnwrappedGroups()) : wrappingGroup), (isWrap ? wrappingGroup : mergeGroups(changeSet, wrappingGroup.getUnwrappedGroups())));
+    super(changeSet, createGroup(changeSet, wrappingGroup, isWrap, false), createGroup(changeSet, wrappingGroup, isWrap, true));
     myWrappingGroup = wrappingGroup;
     myIsWrap = isWrap;
     myDescription = createDescription(true);
     myShortDescription = createDescription(false);
   }
 
-  @Nullable
-  @Override
-  public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel
-    SNode n = getParentNode(false);
-    MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink(false));
-    if (hint != null) {
-      return hint;
-    }
-    return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
-  }
 
-  private static ModifiedNodesGroup mergeGroups(ChangeSet changeSet, List<ModifiedNodesGroup> groups) {
+  @NotNull
+  private static ModifiedNodesGroup createGroup(@NotNull ChangeSet changeSet, @NotNull WrappingNodesGroup wrappingGroup, boolean isWrap, boolean isNew) {
+
+    if (isNew == isWrap) {
+      return wrappingGroup;
+    }
+
+    List<ModifiedNodesGroup> unwrappedGroups = wrappingGroup.getUnwrappedGroups();
+    assert ListSequence.fromList(unwrappedGroups).isNotEmpty();
     final List<ModifiedNode> nodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
-    ListSequence.fromList(groups).visitAll(new IVisitor<ModifiedNodesGroup>() {
+    ListSequence.fromList(unwrappedGroups).visitAll(new IVisitor<ModifiedNodesGroup>() {
       public void visit(ModifiedNodesGroup it) {
         ListSequence.fromList(nodes).addSequence(ListSequence.fromList(it.getModifiedNodes()));
       }
     });
-
-    return new ModifiedNodesGroup((ListSequence.fromList(groups).first().isNew() ? changeSet.getNewModel() : changeSet.getOldModel()), nodes, ListSequence.fromList(groups).last().getNextNodeId());
+    SModel model = (isNew ? changeSet.getNewModel() : changeSet.getOldModel());
+    SNodeId nextNodeId = ListSequence.fromList(unwrappedGroups).last().getNextNodeId();
+    return new ModifiedNodesGroup(model, nodes, nextNodeId);
   }
 
   public boolean isAbout(SContainmentLink link) {
@@ -334,6 +332,106 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
         return MultiTuple.<SNodeId,MessageTarget>from(it.getNodeId(), ((MessageTarget) new NodeMessageTarget()));
       }
     }).toListSequence();
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds, boolean wrapConflictsWithInternalChanges) {
+    if (otherChange instanceof NodeGroupNotMoveChange) {
+      return HierarchicalChangeConflictsUtil.wrapConflictsWithNotMove(this, as_zav4l7_a1a0a0a25(otherChange, NodeGroupNotMoveChange.class), symmetricIds, wrapConflictsWithInternalChanges);
+    }
+
+    if (otherChange instanceof NodeGroupMoveChange) {
+      return HierarchicalChangeConflictsUtil.wrapConflictsWithMove(this, as_zav4l7_a1a0a2a25(otherChange, NodeGroupMoveChange.class), symmetricIds, wrapConflictsWithInternalChanges);
+    }
+
+    if (otherChange instanceof NodeGroupWrapChange) {
+      NodeGroupWrapChange other = as_zav4l7_a0a0a4a25(otherChange, NodeGroupWrapChange.class);
+      if (isWrap() && HierarchicalChangeConflictsUtil.wrappingGroupConflictsWithGroup(myWrappingGroup, true, other.getGroup(false), wrapConflictsWithInternalChanges)) {
+        return true;
+      }
+      if (!(isWrap()) && hasIntersectingSourceWith(other)) {
+        return true;
+      }
+      return this.containsDeletedNode(other.getParentId(false)) || other.containsDeletedNode(this.getParentId(false));
+    }
+
+    return false;
+  }
+
+  /*package*/ boolean containsDeletedNode(@Nullable SNodeId nodeId) {
+    if (nodeId == null || isWrap()) {
+      return false;
+    }
+    SNode oldNode = getChangeSet().getOldModel().getNode(nodeId);
+    while (oldNode != null) {
+      if (Objects.equals(oldNode.getNodeId(), getWrappingGroup().getWrappedParentId())) {
+        return false;
+      }
+      if (Objects.equals(oldNode.getNodeId(), getWrappingGroup().getWrappingNodeId())) {
+        return true;
+      }
+      oldNode = SNodeOperations.getParent(oldNode);
+    }
+    return false;
+  }
+
+
+  @Override
+  public boolean isSymmetricWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds) {
+
+    if (!(otherChange instanceof NodeGroupWrapChange)) {
+      return false;
+    }
+
+    NodeGroupWrapChange other = as_zav4l7_a0a3a75(otherChange, NodeGroupWrapChange.class);
+    if (myIsWrap != other.isWrap()) {
+      return false;
+    }
+    SNodeId myId = myWrappingGroup.getWrappingNodeId();
+    SNodeId otherId = other.getWrappingGroup().getWrappingNodeId();
+    if (myIsWrap) {
+      SNode child = this.getChangeSet().getNewModel().getNode(myId);
+      SNode otherChild = other.getChangeSet().getNewModel().getNode(otherId);
+      if (!(DiffUtil.nodeEquals(child, otherChild, myWrappingGroup.getDependantGroupNodeIds(), other.myWrappingGroup.getDependantGroupNodeIds()))) {
+        return false;
+      }
+    } else {
+      if (!(Objects.equals(myId, otherId))) {
+        return false;
+      }
+    }
+    return Objects.equals(getWrappedIds(), other.getWrappedIds());
+  }
+
+  public boolean groupIsInternal(ModifiedNodesGroup group) {
+    return HierarchicalChangeConflictsUtil.modifiedGroupIsInternalInWrap(myWrappingGroup, myIsWrap, group);
+  }
+
+  private List<SNodeId> getWrappedIds() {
+    final List<SNodeId> wrappedIds = ListSequence.fromList(new ArrayList<SNodeId>());
+    ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return it.isWrappedMove();
+      }
+    }).visitAll(new IVisitor<ModifiedNodesGroup>() {
+      public void visit(ModifiedNodesGroup it) {
+        ListSequence.fromList(wrappedIds).addSequence(ListSequence.fromList(it.getIds()));
+      }
+    });
+    return wrappedIds;
+  }
+
+  private static <T> T as_zav4l7_a1a0a0a25(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_zav4l7_a1a0a2a25(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_zav4l7_a0a0a4a25(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_zav4l7_a0a3a75(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

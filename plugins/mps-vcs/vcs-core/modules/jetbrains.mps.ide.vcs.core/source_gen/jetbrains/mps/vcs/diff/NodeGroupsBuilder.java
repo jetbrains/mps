@@ -539,7 +539,14 @@ __switch__:
     SNodeId parentId = getOppositeGroupParentId(notMoveGroup);
     SContainmentLink link = getOppositeGroupLink(notMoveGroup);
     SNodeId nextNodeId = getOppositeGroupNextNodeId(notMoveGroup);
-    return new ModifiedNodesGroup(getModel(isNew), nextNodeId, parentId, link, (isNew ? ChangeType.ADD : ChangeType.DELETE));
+    ModifiedNodesGroup emptyGroup = new ModifiedNodesGroup(getModel(isNew), nextNodeId, parentId, link, (isNew ? ChangeType.ADD : ChangeType.DELETE));
+    if (notMoveGroup.getWrappingGroup() != null) {
+      emptyGroup.setOppositeWrappingGroup(notMoveGroup.getWrappingGroup());
+    }
+    if (notMoveGroup.getOppositeWrappingGroup() != null) {
+      emptyGroup.setWrappingGroup(notMoveGroup.getOppositeWrappingGroup());
+    }
+    return emptyGroup;
   }
 
   /*package*/ List<ModifiedNodesGroup> getNotMoveGroupsWithSamePosition(final ModifiedNodesGroup notMoveGroup) {
@@ -564,7 +571,7 @@ __switch__:
         return ((IdChangeGroup) nextGroup).getOppositeGroup().getId();
       }
       if (nextGroup instanceof WrappingNodesGroup) {
-        return ListSequence.fromList(((WrappingNodesGroup) nextGroup).getUnwrappedGroups()).first().getFirstNodeId();
+        return ((WrappingNodesGroup) nextGroup).getFirstUnwrappedGroup().getFirstNodeId();
       }
       WrappingNodesGroup oppositeWrappingGroup = nextGroup.getOppositeWrappingGroup();
       if (oppositeWrappingGroup != null && ListSequence.fromList(oppositeWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
@@ -591,7 +598,7 @@ __switch__:
     if (notMoveGroup.getWrappingGroup() != null && notMoveGroup.getNextNodeId() == null) {
       // this is the last wrapped group since it does not have next group.
       // we should take last unwrapped group as an opposite group.
-      ModifiedNodesGroup lastUnwrappedGroup = check_ceu2he_a0c0d0tc(check_ceu2he_a0a2a3a17(notMoveGroup.getWrappingGroup()));
+      ModifiedNodesGroup lastUnwrappedGroup = check_ceu2he_a0c0d0tc(notMoveGroup.getWrappingGroup());
       return check_ceu2he_a3a3a17(lastUnwrappedGroup);
     }
     return getRenamedNodeId(notMoveGroup.getNextNodeId(), notMoveGroup.isNew());
@@ -641,15 +648,9 @@ __switch__:
     }
 
   }
-  private static ModifiedNodesGroup check_ceu2he_a0c0d0tc(List<ModifiedNodesGroup> checkedDotOperand) {
+  private static ModifiedNodesGroup check_ceu2he_a0c0d0tc(WrappingNodesGroup checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return ListSequence.fromList(checkedDotOperand).last();
-    }
-    return null;
-  }
-  private static List<ModifiedNodesGroup> check_ceu2he_a0a2a3a17(WrappingNodesGroup checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getUnwrappedGroups();
+      return checkedDotOperand.getLastUnwrappedGroup();
     }
     return null;
   }

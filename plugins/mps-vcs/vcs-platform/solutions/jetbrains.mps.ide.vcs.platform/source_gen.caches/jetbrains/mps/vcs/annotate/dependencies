@@ -482,7 +482,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeIdChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.SetReferenceChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.StructureChange" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.merge.MovesAwareMergeConflictsBuilder" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraph" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraphNode" />
     <classNode dependClassName="jetbrains.mps.vcs.history.RootCommitsGraphTraverser" />

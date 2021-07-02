@@ -31,6 +31,7 @@ public abstract class ChangeGroupLayout {
   private boolean myMergeAdjacent;
   protected List<ChangeGroup> myChangeGroups = null;
   private List<ChangeGroupInvalidateListener> myInvalidateListeners = ListSequence.fromList(new ArrayList<ChangeGroupInvalidateListener>());
+  private boolean myIsMerge;
 
 
   protected ChangeGroupLayout(@Nullable ChangeEditorMessage.ConflictChecker conflictChecker, boolean inspector, boolean mergeAdjacent) {
@@ -56,10 +57,18 @@ public abstract class ChangeGroupLayout {
   @Nullable
   protected abstract ChangeSet getChangeSet();
 
+  public void setIsMerge() {
+    myIsMerge = true;
+  }
+
+  public boolean isMerge() {
+    return myIsMerge;
+  }
+
   protected void calculateChangeGroups() {
     final Map<ModelChange, Bounds> left = MapSequence.fromMap(new HashMap<ModelChange, Bounds>());
     final Map<ModelChange, Bounds> right = MapSequence.fromMap(new HashMap<ModelChange, Bounds>());
-    for (ModelChange change : ListSequence.fromList(check_cuq72k_a2a12(getChangeSet(), this))) {
+    for (ModelChange change : ListSequence.fromList(check_cuq72k_a2a62(getChangeSet(), this))) {
       Bounds leftBounds = findBounds(getLeftMessages(change), getLeftComponent());
       Bounds rightBounds = findBounds(getRightMessages(change), getRightComponent());
 
@@ -72,11 +81,11 @@ public abstract class ChangeGroupLayout {
     }
     Set<ModelChange> changes = MapSequence.fromMap(left).keySet();
     DisjointSets<ModelChange> ds = new DisjointSets<ModelChange>(changes);
-    boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesOption();
+    boolean trackMovedNodes = (myIsMerge ? DiffSettingsUtil.getTrackMovedNodesMergeOption() : DiffSettingsUtil.getTrackMovedNodesDiffOption());
     for (ModelChange a : SetSequence.fromSet(changes)) {
       for (ModelChange b : SetSequence.fromSet(changes)) {
 
-        if (((!(areBoundsSeparate(MapSequence.fromMap(left).get(a), MapSequence.fromMap(left).get(b), myMergeAdjacent))) && (!(trackMovedNodes) || MapSequence.fromMap(right).get(a).containsPart(MapSequence.fromMap(right).get(b)))) || (!(areBoundsSeparate(MapSequence.fromMap(right).get(a), MapSequence.fromMap(right).get(b), myMergeAdjacent)) && (!(trackMovedNodes) || MapSequence.fromMap(left).get(a).containsPart(MapSequence.fromMap(left).get(b))))) {
+        if (((!(areBoundsSeparate(MapSequence.fromMap(left).get(a), MapSequence.fromMap(left).get(b), myMergeAdjacent, trackMovedNodes))) && (!(trackMovedNodes) || MapSequence.fromMap(right).get(a).containsPart(MapSequence.fromMap(right).get(b)))) || (!(areBoundsSeparate(MapSequence.fromMap(right).get(a), MapSequence.fromMap(right).get(b), myMergeAdjacent, trackMovedNodes)) && (!(trackMovedNodes) || MapSequence.fromMap(left).get(a).containsPart(MapSequence.fromMap(left).get(b))))) {
           ds.unite(a, b);
         }
       }
@@ -172,15 +181,15 @@ public abstract class ChangeGroupLayout {
       });
     }
     if (bounds == null || bounds.length() <= 0) {
-      int y = check_cuq72k_a0a0c0hb(check_cuq72k_a0a0a2a33(editorComponent));
+      int y = check_cuq72k_a0a0c0mb(check_cuq72k_a0a0a2a83(editorComponent));
       return new Bounds(y, y);
     } else {
       return bounds;
     }
   }
 
-  private static boolean areBoundsSeparate(Bounds a, Bounds b, boolean canBeAdjacent) {
-    if (DiffSettingsUtil.getTrackMovedNodesOption()) {
+  private static boolean areBoundsSeparate(Bounds a, Bounds b, boolean canBeAdjacent, boolean trackMovedNodes) {
+    if (trackMovedNodes) {
       if (a.length() <= 2 && b.length() <= 2) {
         return true;
       }
@@ -191,19 +200,19 @@ public abstract class ChangeGroupLayout {
     int tolerance = (canBeAdjacent ? 0 : 1);
     return (int) a.end() - tolerance < (int) b.start() || (int) b.end() - tolerance < (int) a.start();
   }
-  private static List<ModelChange> check_cuq72k_a2a12(ChangeSet checkedDotOperand, ChangeGroupLayout checkedDotThisExpression) {
+  private static List<ModelChange> check_cuq72k_a2a62(ChangeSet checkedDotOperand, ChangeGroupLayout checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static int check_cuq72k_a0a0c0hb(EditorCell checkedDotOperand) {
+  private static int check_cuq72k_a0a0c0mb(EditorCell checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getY();
     }
     return 0;
   }
-  private static EditorCell check_cuq72k_a0a0a2a33(EditorComponent checkedDotOperand) {
+  private static EditorCell check_cuq72k_a0a0a2a83(EditorComponent checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRootCell();
     }

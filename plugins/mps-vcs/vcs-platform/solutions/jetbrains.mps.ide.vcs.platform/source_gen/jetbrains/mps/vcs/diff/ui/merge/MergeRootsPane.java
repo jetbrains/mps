@@ -39,7 +39,6 @@ import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import org.jetbrains.annotations.NotNull;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
-import java.util.Iterator;
 import java.util.Arrays;
 import com.intellij.diff.util.Side;
 import javax.swing.JComponent;
@@ -50,6 +49,9 @@ import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.function.Supplier;
 import com.intellij.openapi.diff.DiffBundle;
+import jetbrains.mps.workbench.action.BaseGroup;
+import com.intellij.openapi.actionSystem.AnAction;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -101,9 +103,10 @@ public class MergeRootsPane implements PropertyChangeListener {
   private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
   @Nullable
   private final List<DiffEditorTitleCustomizer> myTitleCustomizers;
+  private final TrackMovedNodesModeUpdater myTrackMovedNodesModeUpdater;
 
 
-  public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, List<String> titles, @Nullable List<DiffEditorTitleCustomizer> titleCustomizers) {
+  public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, List<String> titles, @Nullable List<DiffEditorTitleCustomizer> titleCustomizers, TrackMovedNodesModeUpdater trackMovedNodesModeUpdater) {
     myProject = project;
     myMergeSession = mergeSession;
     myRootId = rootId;
@@ -111,6 +114,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     myTitles = titles;
     myTitleCustomizers = titleCustomizers;
     myConflictChecker = (ModelChange ch) -> Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
+    myTrackMovedNodesModeUpdater = trackMovedNodesModeUpdater;
 
     myMineEditor = addEditor(0, myMergeSession.getMyModel());
     myResultEditor = addEditor(1, myMergeSession.getResultModel());
@@ -124,7 +128,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myResultEditor.getMainEditor());
 
-    createActionGroup(rootName);
+    createActionGroup();
 
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
@@ -153,7 +157,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_lifo0_a0a5ob(ProjectHelper.getModelAccess(myProject), this);
+      check_lifo0_a0a5pb(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -166,16 +170,11 @@ public class MergeRootsPane implements PropertyChangeListener {
       return;
     }
     Splitter sourceSplitter = (Splitter) event.getSource();
-    {
-      Iterator<JBSplitter> splitter_it = ListSequence.fromList(mySplitters).iterator();
-      JBSplitter splitter_var;
-      while (splitter_it.hasNext()) {
-        splitter_var = splitter_it.next();
-        if (splitter_var != sourceSplitter) {
-          splitter_var.removePropertyChangeListener(Splitter.PROP_PROPORTION, this);
-          splitter_var.setProportion((float) event.getNewValue());
-          splitter_var.addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
-        }
+    for (JBSplitter splitter : ListSequence.fromList(mySplitters)) {
+      if (splitter != sourceSplitter) {
+        splitter.removePropertyChangeListener(Splitter.PROP_PROPORTION, this);
+        splitter.setProportion((float) event.getNewValue());
+        splitter.addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
       }
     }
   }
@@ -214,7 +213,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     return Arrays.asList(myMineEditor.getTitleComponent(), myResultEditor.getTitleComponent(), myRepositoryEditor.getTitleComponent());
   }
 
-  private void createActionGroup(String rootName) {
+  private void createActionGroup() {
     myActionGroup = new DefaultActionGroup();
     myActionGroup.add(new ApplyNonConflictsForRoot(this));
     myActionGroup.addSeparator();
@@ -224,6 +223,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     myActionGroup.addSeparator();
     myActionGroup.add(new ShowInspectorAction());
     myActionGroup.add(new SyncScrollingAction());
+    myActionGroup.add(new SettingsAction());
   }
 
   private class ShowInspectorAction extends ToggleAction implements DumbAware {
@@ -258,6 +258,57 @@ public class MergeRootsPane implements PropertyChangeListener {
       super.update(e);
       enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
     }
+  }
+
+  private class SettingsAction extends BaseGroup {
+
+    private SettingsAction() {
+      super("Settings", null, IdeIcons.GEAR_PLAIN_ICON);
+      setPopup(true);
+    }
+
+    @Override
+    public AnAction[] getChildren(@Nullable AnActionEvent event) {
+      return new AnAction[]{new UseShortChangeDescriptionsAction(), new TrackMovedNodesAction()};
+    }
+  }
+
+  private class TrackMovedNodesAction extends ToggleAction implements DumbAware {
+
+    private TrackMovedNodesAction() {
+      super("Track Moved Nodes");
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return DiffSettingsUtil.getTrackMovedNodesMergeOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
+      check_lifo0_a0a5fc(myTrackMovedNodesModeUpdater);
+    }
+  }
+
+  private static class UseShortChangeDescriptionsAction extends ToggleAction implements DumbAware {
+
+    private UseShortChangeDescriptionsAction() {
+      super("Use Short Change Descriptions");
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return DiffSettingsUtil.getUseShortDescriptionsOption();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
+      DiffSettingsUtil.setUseShortDescriptionsOption(p2);
+    }
+  }
+
+  public interface TrackMovedNodesModeUpdater {
+    void trackMovedNodesModeChanged();
   }
 
   private class MyDividerPainter implements DiffSplitter.Painter {
@@ -410,6 +461,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   private void linkEditors(ThreesideContentPanel panel, boolean mine, boolean inspector) {
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), getSplitterRepainter(panel, mine), inspector);
+    layout.setIsMerge();
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
     ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, mine));
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
@@ -448,6 +500,20 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   /*package*/ MergeSession getMergeSession() {
     return myMergeSession;
+  }
+
+  /*package*/ void setMergeSession(final MergeSession mergeSession) {
+    myMergeSession = mergeSession;
+    MapSequence.fromMap(myDiffLayoutPart).visitAll(new IVisitor<IMapping<DiffChangeGroupLayout, Boolean>>() {
+      public void visit(IMapping<DiffChangeGroupLayout, Boolean> it) {
+        it.key().setChangeSet((it.value() ? mergeSession.getMyChangeSet() : mergeSession.getRepositoryChangeSet()));
+      }
+    });
+    myResultEditor.editRoot(getRootNodeId(myMergeSession.getResultModel()), myMergeSession.getResultModel());
+    rehighlight();
+
+    myDiffEditorsGroup.synchronizeViewWithOther(myMineEditor, myResultEditor, false);
+    myDiffEditorsGroup.synchronizeViewWithOther(myMineEditor, myResultEditor, true);
   }
 
   public void restoreState() {
@@ -519,9 +585,15 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
     }
   }
-  private static void check_lifo0_a0a5ob(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_lifo0_a0a5pb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(() -> checkedDotThisExpression.doRehighlight());
+    }
+
+  }
+  private static void check_lifo0_a0a5fc(TrackMovedNodesModeUpdater checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.trackMovedNodesModeChanged();
     }
 
   }

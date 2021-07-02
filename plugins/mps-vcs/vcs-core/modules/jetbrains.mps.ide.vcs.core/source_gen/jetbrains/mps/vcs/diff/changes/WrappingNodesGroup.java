@@ -143,6 +143,22 @@ public final class WrappingNodesGroup extends ModifiedNodesGroup {
   }
 
   @NotNull
+  public ModifiedNodesGroup getFirstUnwrappedGroup() {
+    return ListSequence.fromList(myUnwrappedGroups).first();
+  }
+  @NotNull
+  public ModifiedNodesGroup getLastUnwrappedGroup() {
+    return ListSequence.fromList(myUnwrappedGroups).last();
+  }
+
+  @NotNull
+  public SNodeId getWrappingNodeId() {
+    SNodeId wrappingNodeId = getFirstNodeId();
+    assert wrappingNodeId != null;
+    return wrappingNodeId;
+  }
+
+  @NotNull
   public SNodeId getWrappedParentId() {
     return ListSequence.fromList(myWrappedGroups).first().getParentId();
   }

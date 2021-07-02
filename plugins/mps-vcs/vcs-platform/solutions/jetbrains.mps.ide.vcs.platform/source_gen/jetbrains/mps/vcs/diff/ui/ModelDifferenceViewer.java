@@ -107,7 +107,7 @@ public class ModelDifferenceViewer implements DataProvider {
         }
       });
     });
-    final boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesOption();
+    final boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesDiffOption();
     // TODO changesets should be probably built in a separate thread
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       myChangeSets = buildChangeSets(myModels, trackMovedNodes);
@@ -240,7 +240,7 @@ public class ModelDifferenceViewer implements DataProvider {
   /*package*/ void rebuildChangeSets() {
     ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).visitAll(new IVisitor<ModelChangeSet>() {
       public void visit(ModelChangeSet it) {
-        ChangeSetBuilder.rebuildChangeSet(it, DiffSettingsUtil.getTrackMovedNodesOption());
+        ChangeSetBuilder.rebuildChangeSet(it, DiffSettingsUtil.getTrackMovedNodesDiffOption());
       }
     });
     ListSequence.fromList(myMetadataChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).visitAll(new IVisitor<ModelChangeSet>() {

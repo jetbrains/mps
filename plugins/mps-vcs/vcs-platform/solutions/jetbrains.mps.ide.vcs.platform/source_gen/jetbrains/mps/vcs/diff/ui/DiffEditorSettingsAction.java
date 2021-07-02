@@ -98,12 +98,12 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent p1) {
-      return DiffSettingsUtil.getTrackMovedNodesOption();
+      return DiffSettingsUtil.getTrackMovedNodesDiffOption();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
-      DiffSettingsUtil.setTrackMovedNodesOption(p2);
+      DiffSettingsUtil.setTrackMovedNodesDiffOption(p2);
       myHighlighter.rehighlightInReadAction(true);
     }
   }
@@ -122,7 +122,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
     @Override
     public void update(@NotNull AnActionEvent e) {
       super.update(e);
-      e.getPresentation().setEnabled(DiffSettingsUtil.getTrackMovedNodesOption());
+      e.getPresentation().setEnabled(DiffSettingsUtil.getTrackMovedNodesDiffOption());
     }
 
     @Override

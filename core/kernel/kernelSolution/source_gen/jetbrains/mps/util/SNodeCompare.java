@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * 
- * @deprecated This class was moved to jetbrains.mps.vcs.diff.merge.SNodeCompare as it used in VCS only.
+ * @deprecated This class was moved to jetbrains.mps.vcs.diff.DiffUtil as it used in VCS only.
  */
 @Deprecated
 @GeneratedClass(node = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/7295777740694844259", model = "r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)")

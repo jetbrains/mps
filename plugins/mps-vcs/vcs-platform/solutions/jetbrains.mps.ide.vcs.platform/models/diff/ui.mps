@@ -6759,44 +6759,20 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="26bjO7LmtzZ" role="3cqZAp">
-          <node concept="3cpWsn" id="26bjO7Lmt$0" role="3cpWs9">
-            <property role="TrG5h" value="tripleLayout" />
-            <node concept="3uibUv" id="26bjO7Lmt$1" role="1tU5fm">
-              <ref role="3uigEE" to="hdhb:1zZcg$udfju" resolve="TripleChangeGroupLayout" />
-            </node>
-            <node concept="2ShNRf" id="59GNzBifDyD" role="33vP2m">
-              <node concept="1pGfFk" id="59GNzBifDyE" role="2ShVmc">
-                <ref role="37wK5l" to="hdhb:1zZcg$udi_S" resolve="TripleChangeGroupLayout" />
-                <node concept="37vLTw" id="59GNzBifDyF" role="37wK5m">
-                  <ref role="3cqZAo" node="59GNzBifDyd" resolve="leftLayout" />
-                </node>
-                <node concept="37vLTw" id="59GNzBifDyG" role="37wK5m">
-                  <ref role="3cqZAo" node="59GNzBifDyn" resolve="rightLayout" />
-                </node>
-                <node concept="37vLTw" id="59GNzBifDyH" role="37wK5m">
-                  <ref role="3cqZAo" node="59GNzBifDyK" resolve="inspector" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="26bjO7Lnf5L" role="3cqZAp">
-          <node concept="2OqwBi" id="26bjO7Lnin8" role="3clFbG">
-            <node concept="37vLTw" id="26bjO7Lnf5J" role="2Oq$k0">
-              <ref role="3cqZAo" node="26bjO7Lmt$0" resolve="tripleLayout" />
-            </node>
-            <node concept="liA8E" id="26bjO7LnlMk" role="2OqNvi">
-              <ref role="37wK5l" to="hdhb:26bjO7Lit0H" resolve="setCanDrawBorderes" />
-              <node concept="3clFbT" id="26bjO7LnsuA" role="37wK5m">
-                <property role="3clFbU" value="true" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="59GNzBifDyC" role="3cqZAp">
-          <node concept="37vLTw" id="26bjO7Ln1O_" role="3cqZAk">
-            <ref role="3cqZAo" node="26bjO7Lmt$0" resolve="tripleLayout" />
+          <node concept="2ShNRf" id="59GNzBifDyD" role="3cqZAk">
+            <node concept="1pGfFk" id="59GNzBifDyE" role="2ShVmc">
+              <ref role="37wK5l" to="hdhb:1zZcg$udi_S" resolve="TripleChangeGroupLayout" />
+              <node concept="37vLTw" id="59GNzBifDyF" role="37wK5m">
+                <ref role="3cqZAo" node="59GNzBifDyd" resolve="leftLayout" />
+              </node>
+              <node concept="37vLTw" id="59GNzBifDyG" role="37wK5m">
+                <ref role="3cqZAo" node="59GNzBifDyn" resolve="rightLayout" />
+              </node>
+              <node concept="37vLTw" id="59GNzBifDyH" role="37wK5m">
+                <ref role="3cqZAo" node="59GNzBifDyK" resolve="inspector" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -24934,7 +24910,7 @@
       <property role="TrG5h" value="myConflictsBuilder" />
       <node concept="3Tm6S6" id="2jv$fqwev6U" role="1B3o_S" />
       <node concept="3uibUv" id="1pCPaDJpJ5Q" role="1tU5fm">
-        <ref role="3uigEE" to="bmv6:3$YpntjF457" resolve="MergeConflictsBuilder" />
+        <ref role="3uigEE" to="bmv6:5ilXZU3oAfy" resolve="ChangeConflictsBuilder" />
       </node>
     </node>
     <node concept="2tJIrI" id="fteH8PUtPt" role="jymVt" />
@@ -24983,6 +24959,40 @@
           </node>
           <node concept="37vLTw" id="69TGyf3qHIM" role="37wK5m">
             <ref role="3cqZAo" node="69TGyf3qC6u" resolve="metadataChangeSets" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="VHto8seRrK" role="3cqZAp">
+          <node concept="3clFbS" id="VHto8seRrM" role="3clFbx">
+            <node concept="3clFbF" id="1Ff3LGDz4RP" role="3cqZAp">
+              <node concept="37vLTI" id="1Ff3LGDz4RQ" role="3clFbG">
+                <node concept="1rXfSq" id="1Ff3LGDz4RR" role="37vLTx">
+                  <ref role="37wK5l" node="41RbbbWQRt3" resolve="createConflictsBuilder" />
+                  <node concept="1rXfSq" id="1Ff3LGDz8i9" role="37wK5m">
+                    <ref role="37wK5l" node="2dRP7_CGZQa" resolve="getMyChangeSet" />
+                  </node>
+                  <node concept="1rXfSq" id="1Ff3LGDzaN0" role="37wK5m">
+                    <ref role="37wK5l" node="2dRP7_CHJwA" resolve="getRepoChangeSet" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="1Ff3LGDz4RU" role="37vLTJ">
+                  <ref role="3cqZAo" node="2jv$fqwev6T" resolve="myConflictsBuilder" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="VHto8seXwo" role="3clFbw">
+            <node concept="3y3z36" id="VHto8sf1Pt" role="3uHU7w">
+              <node concept="10Nm6u" id="VHto8sf3Y7" role="3uHU7w" />
+              <node concept="1rXfSq" id="VHto8sf1f4" role="3uHU7B">
+                <ref role="37wK5l" node="2dRP7_CHJwA" resolve="getRepoChangeSet" />
+              </node>
+            </node>
+            <node concept="3y3z36" id="VHto8seUxC" role="3uHU7B">
+              <node concept="1rXfSq" id="VHto8seTWM" role="3uHU7B">
+                <ref role="37wK5l" node="2dRP7_CGZQa" resolve="getMyChangeSet" />
+              </node>
+              <node concept="10Nm6u" id="VHto8seWF_" role="3uHU7w" />
+            </node>
           </node>
         </node>
       </node>
@@ -25049,7 +25059,7 @@
                       </node>
                       <node concept="2OqwBi" id="5hZUJbUtieX" role="3ElQJh">
                         <node concept="liA8E" id="5hZUJbUtieZ" role="2OqNvi">
-                          <ref role="37wK5l" to="bmv6:2$XQf3f7auB" resolve="getConflictingChanges" />
+                          <ref role="37wK5l" to="bmv6:5ilXZU3po6T" resolve="getConflictingChanges" />
                         </node>
                         <node concept="37vLTw" id="7cG0KS25ZFJ" role="2Oq$k0">
                           <ref role="3cqZAo" node="2jv$fqwev6T" resolve="myConflictsBuilder" />
@@ -25079,54 +25089,80 @@
       </node>
     </node>
     <node concept="2tJIrI" id="7cG0KS28mqq" role="jymVt" />
-    <node concept="3clFb_" id="6TVqTq6yELk" role="jymVt">
+    <node concept="2YIFZL" id="41RbbbWQRt3" role="jymVt">
       <property role="TrG5h" value="createConflictsBuilder" />
-      <node concept="3clFbS" id="6TVqTq6yELn" role="3clF47">
-        <node concept="3cpWs6" id="7cG0KS20MpE" role="3cqZAp">
-          <node concept="2YIFZM" id="7cG0KS21n1G" role="3cqZAk">
-            <ref role="37wK5l" to="bmv6:2jSm$JeDpaW" resolve="createOppositeConflictsBuilder" />
-            <ref role="1Pybhc" to="bmv6:3$YpntjF457" resolve="MergeConflictsBuilder" />
-            <node concept="2OqwBi" id="7cG0KS21u8d" role="37wK5m">
-              <node concept="37vLTw" id="7cG0KS21s4w" role="2Oq$k0">
-                <ref role="3cqZAo" node="4x8Xw0PA9W4" resolve="myChangeSet" />
+      <node concept="3clFbS" id="41RbbbWQRt5" role="3clF47">
+        <node concept="3cpWs6" id="41RbbbWQRte" role="3cqZAp">
+          <node concept="3K4zz7" id="41RbbbWQRtf" role="3cqZAk">
+            <node concept="2YIFZM" id="41RbbbWQRtg" role="3K4E3e">
+              <ref role="37wK5l" to="bmv6:1WB5d2ED6vq" resolve="createOppositeConflictsBuilder" />
+              <ref role="1Pybhc" to="bmv6:1WB5d2ED6tW" resolve="MovesAwareMergeConflictsBuilder" />
+              <node concept="2OqwBi" id="41RbbbWQRth" role="37wK5m">
+                <node concept="37vLTw" id="41RbbbWQRti" role="2Oq$k0">
+                  <ref role="3cqZAo" node="41RbbbWQRtx" resolve="myChangeSet" />
+                </node>
+                <node concept="liA8E" id="41RbbbWQRtj" role="2OqNvi">
+                  <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+                </node>
               </node>
-              <node concept="liA8E" id="7cG0KS21x8O" role="2OqNvi">
-                <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+              <node concept="2OqwBi" id="41RbbbWQRtk" role="37wK5m">
+                <node concept="37vLTw" id="41RbbbWQRtl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="41RbbbWQRt$" resolve="repoChangeSet" />
+                </node>
+                <node concept="liA8E" id="41RbbbWQRtm" role="2OqNvi">
+                  <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+                </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="7cG0KS21E7K" role="37wK5m">
-              <node concept="37vLTw" id="7cG0KS21AWZ" role="2Oq$k0">
-                <ref role="3cqZAo" node="4x8Xw0PAfmp" resolve="repoChangeSet" />
+            <node concept="2YIFZM" id="47Kt9forJEv" role="3K4Cdx">
+              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+              <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
+            </node>
+            <node concept="2YIFZM" id="41RbbbWQRto" role="3K4GZi">
+              <ref role="37wK5l" to="bmv6:2jSm$JeDpaW" resolve="createOppositeConflictsBuilder" />
+              <ref role="1Pybhc" to="bmv6:3$YpntjF457" resolve="MergeConflictsBuilder" />
+              <node concept="2OqwBi" id="41RbbbWQRtp" role="37wK5m">
+                <node concept="37vLTw" id="41RbbbWQRtq" role="2Oq$k0">
+                  <ref role="3cqZAo" node="41RbbbWQRtx" resolve="myChangeSet" />
+                </node>
+                <node concept="liA8E" id="41RbbbWQRtr" role="2OqNvi">
+                  <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+                </node>
               </node>
-              <node concept="liA8E" id="7cG0KS21Gfg" role="2OqNvi">
-                <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+              <node concept="2OqwBi" id="41RbbbWQRts" role="37wK5m">
+                <node concept="37vLTw" id="41RbbbWQRtt" role="2Oq$k0">
+                  <ref role="3cqZAo" node="41RbbbWQRt$" resolve="repoChangeSet" />
+                </node>
+                <node concept="liA8E" id="41RbbbWQRtu" role="2OqNvi">
+                  <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+                </node>
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="6TVqTq6yzQU" role="1B3o_S" />
-      <node concept="3uibUv" id="6TVqTq6yE3t" role="3clF45">
-        <ref role="3uigEE" to="bmv6:3$YpntjF457" resolve="MergeConflictsBuilder" />
+      <node concept="3uibUv" id="41RbbbWQRtw" role="3clF45">
+        <ref role="3uigEE" to="bmv6:5ilXZU3oAfy" resolve="ChangeConflictsBuilder" />
       </node>
-      <node concept="37vLTG" id="4x8Xw0PA9W4" role="3clF46">
+      <node concept="37vLTG" id="41RbbbWQRtx" role="3clF46">
         <property role="TrG5h" value="myChangeSet" />
-        <node concept="3uibUv" id="4x8Xw0PA9W3" role="1tU5fm">
+        <node concept="3uibUv" id="41RbbbWQRty" role="1tU5fm">
           <ref role="3uigEE" to="bfxj:3kRMfhMv03j" resolve="ChangeSet" />
         </node>
-        <node concept="2AHcQZ" id="4x8Xw0PArpF" role="2AJF6D">
+        <node concept="2AHcQZ" id="41RbbbWQRtz" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="37vLTG" id="4x8Xw0PAfmp" role="3clF46">
+      <node concept="37vLTG" id="41RbbbWQRt$" role="3clF46">
         <property role="TrG5h" value="repoChangeSet" />
-        <node concept="3uibUv" id="4x8Xw0PAhAf" role="1tU5fm">
+        <node concept="3uibUv" id="41RbbbWQRt_" role="1tU5fm">
           <ref role="3uigEE" to="bfxj:3kRMfhMv03j" resolve="ChangeSet" />
         </node>
-        <node concept="2AHcQZ" id="4x8Xw0PAv4M" role="2AJF6D">
+        <node concept="2AHcQZ" id="41RbbbWQRtA" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
+      <node concept="3Tm6S6" id="41RbbbWQRtv" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5a3yE9GTfK3" role="jymVt" />
     <node concept="3clFb_" id="2duWW7Sf6jk" role="jymVt">
@@ -25562,7 +25598,7 @@
                 <node concept="3clFbF" id="4x8Xw0PATPk" role="3cqZAp">
                   <node concept="37vLTI" id="4x8Xw0PAWrZ" role="3clFbG">
                     <node concept="1rXfSq" id="4x8Xw0PAZHe" role="37vLTx">
-                      <ref role="37wK5l" node="6TVqTq6yELk" resolve="createConflictsBuilder" />
+                      <ref role="37wK5l" node="41RbbbWQRt3" resolve="createConflictsBuilder" />
                       <node concept="37vLTw" id="4x8Xw0PB4$P" role="37wK5m">
                         <ref role="3cqZAo" node="4x8Xw0P_2jg" resolve="myChangeSet" />
                       </node>

@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.language.SType;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.vcs.diff.merge.SNodeCompare;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
@@ -34,6 +33,17 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import jetbrains.mps.smodel.runtime.StaticScope;
+import jetbrains.mps.persistence.MetaModelInfoProvider;
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.smodel.DefaultSModel;
+import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/520259247110483854", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 public final class DiffUtil {
@@ -59,7 +69,7 @@ public final class DiffUtil {
     if (!(Objects.equals(SNodeOperations.getConcept(oldNode), SNodeOperations.getConcept(newNode)))) {
       return false;
     }
-    if (!(SNodeCompare.conceptHasStaticScopeNone(SNodeOperations.getConcept(oldNode), model))) {
+    if (!(conceptHasStaticScopeNone(SNodeOperations.getConcept(oldNode), model))) {
       return false;
     }
     return allPropertiesAreEqual(oldNode, newNode) && allReferencesAreEqual(oldNode, newNode);
@@ -268,6 +278,76 @@ __switch__:
     result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectPropertyChanges(changeSet, oldNode, newNode)));
     result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectReferenceChanges(changeSet, oldNode, newNode)));
     return result;
+  }
+
+  private static boolean nodeChildrenEquals(SNode a, SNode b, Iterable<SNodeId> aDoNotCompareIds, Iterable<SNodeId> bDoNotCompareIds) {
+    if (Sequence.fromIterable(aDoNotCompareIds).contains(a.getNodeId()) || Sequence.fromIterable(bDoNotCompareIds).contains(b.getNodeId())) {
+      return true;
+    }
+    Set<SContainmentLink> roles = SetSequence.fromSetWithValues(new HashSet<SContainmentLink>(), jetbrains.mps.util.SNodeOperations.getChildRoles(a, true));
+    SetSequence.fromSet(roles).addSequence(SetSequence.fromSet(jetbrains.mps.util.SNodeOperations.getChildRoles(b, true)));
+    for (SContainmentLink r : SetSequence.fromSet(roles)) {
+      Iterator<? extends SNode> aChildIterator = a.getChildren(r).iterator();
+      Iterator<? extends SNode> bChildIterator = b.getChildren(r).iterator();
+      SNode aChild = getFirstComparableNode(aChildIterator, aDoNotCompareIds);
+      SNode bChild = getFirstComparableNode(bChildIterator, bDoNotCompareIds);
+      while (aChild != null && bChild != null) {
+        if (!(nodeEquals(aChild, bChild, aDoNotCompareIds, bDoNotCompareIds))) {
+          return false;
+        }
+        aChild = getFirstComparableNode(aChildIterator, aDoNotCompareIds);
+        bChild = getFirstComparableNode(bChildIterator, bDoNotCompareIds);
+      }
+      if (aChild != bChild) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private static SNode getFirstComparableNode(Iterator<? extends SNode> childIterator, Iterable<SNodeId> doNotCompareIds) {
+    while (childIterator.hasNext()) {
+      SNode child = childIterator.next();
+      if (!(Sequence.fromIterable(doNotCompareIds).contains(child.getNodeId()))) {
+        return child;
+      }
+    }
+    return null;
+  }
+
+  private static boolean conceptHasStaticScopeNone(SAbstractConcept concept, SModel model) {
+    return concept instanceof SConceptAdapterById && getMetaModelInfoProvider(model).getScope(((SConceptAdapterById) concept).getId()) == StaticScope.NONE;
+  }
+
+  @NotNull
+  private static MetaModelInfoProvider getMetaModelInfoProvider(SModel model) {
+    if (model instanceof SModelBase) {
+      SModelData modelData = ((SModelBase) model).getModelData();
+      if (modelData instanceof DefaultSModel) {
+        MetaModelInfoProvider mmip = ((DefaultSModel) modelData).getSModelHeader().getMetaInfoProvider();
+        if (mmip != null) {
+          return mmip;
+        }
+      }
+    }
+    return new MetaModelInfoProvider.RegularMetaModelInfo();
+  }
+
+  public static boolean nodeEquals(@Nullable SNode a, @Nullable SNode b, Iterable<SNodeId> aDoNotCompareIds, Iterable<SNodeId> bDoNotCompareIds) {
+    if (a == null || b == null) {
+      return a == b;
+    }
+    if (!((Objects.equals(a.getConcept(), b.getConcept())))) {
+      return false;
+    }
+    if (!(conceptHasStaticScopeNone(a.getConcept(), a.getModel())) && !(Objects.equals(a.getNodeId(), b.getNodeId()))) {
+      return false;
+    }
+    return allPropertiesAreEqual(a, b) && allReferencesAreEqual(a, b) && nodeChildrenEquals(a, b, aDoNotCompareIds, bDoNotCompareIds);
+  }
+
+  public static boolean nodeEquals(SNode a, SNode b) {
+    return nodeEquals(a, b, Sequence.fromIterable(Collections.<SNodeId>emptyList()), Sequence.fromIterable(Collections.<SNodeId>emptyList()));
   }
   private static SNodeId check_z8xa03_a0a7a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {

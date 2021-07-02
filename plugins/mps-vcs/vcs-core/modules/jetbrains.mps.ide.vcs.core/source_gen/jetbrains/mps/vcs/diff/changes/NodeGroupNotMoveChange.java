@@ -5,14 +5,19 @@ package jetbrains.mps.vcs.diff.changes;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
-import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.vcs.util.MergeStrategy;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.NameUtil;
+import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Iterator;
+import jetbrains.mps.vcs.diff.DiffUtil;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2189615052095804047", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public final class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
@@ -30,19 +35,6 @@ public final class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
     myShortDescription = createDescription(false);
     myInternalDescription = createInternalDescription();
   }
-
-  @Nullable
-  @Override
-  public MergeStrategy getMergeHint() {
-    // get "nonconflicting" attribute in metamodel
-    SNode n = getParentNode(false);
-    MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink(false));
-    if (hint != null) {
-      return hint;
-    }
-    return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
-  }
-
 
   public boolean isAbout(SContainmentLink link) {
     return getLink(false).equals(link);
@@ -161,5 +153,98 @@ public final class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
   protected ModelChange createOppositeChange() {
     NodeGroupNotMoveChange oppositeChange = new NodeGroupNotMoveChange(getChangeSet().getOppositeChangeSet(), getGroup(true), getGroup(false));
     return oppositeChange;
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds, boolean wrapConflictsWithInternalChanges) {
+    if (otherChange instanceof NodeGroupNotMoveChange) {
+      NodeGroupNotMoveChange other = as_nhvr2j_a0a0a0a63(otherChange, NodeGroupNotMoveChange.class);
+      return hasIntersectingSourceWith(other) || this.containsDeletedNode(other.getParentId(false)) || other.containsDeletedNode(this.getParentId(false));
+    }
+    if (otherChange instanceof NodeGroupMoveChange) {
+      return HierarchicalChangeConflictsUtil.moveConflictsWithNotMove(this, as_nhvr2j_a1a0a1a63(otherChange, NodeGroupMoveChange.class), symmetricIds);
+    }
+
+    if (otherChange instanceof NodeGroupWrapChange) {
+      return HierarchicalChangeConflictsUtil.wrapConflictsWithNotMove(as_nhvr2j_a0a0a3a63(otherChange, NodeGroupWrapChange.class), this, symmetricIds, wrapConflictsWithInternalChanges);
+    }
+    return false;
+  }
+
+  @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    if (otherChange instanceof NodeChange) {
+      return this.containsDeletedNode((as_nhvr2j_a0a0a0a0b0mb(otherChange, NodeChange.class)).getAffectedNodeId(false));
+    }
+    return false;
+  }
+
+  /*package*/ boolean containsDeletedNode(@Nullable SNodeId nodeId) {
+    if (nodeId == null) {
+      return false;
+    }
+    SNode oldNode = getChangeSet().getOldModel().getNode(nodeId);
+    Iterable<SNodeId> deletedNodeIds = getGroup(false).getIds();
+    return nodeIsDescendantOf(oldNode, deletedNodeIds);
+  }
+
+  private static boolean nodeIsDescendantOf(@Nullable SNode node, Iterable<SNodeId> ancestorNodeIds) {
+    if (Sequence.fromIterable(ancestorNodeIds).isEmpty()) {
+      return false;
+    }
+    while (node != null) {
+      if (Sequence.fromIterable(ancestorNodeIds).contains(node.getNodeId())) {
+        return true;
+      }
+      node = SNodeOperations.getParent(node);
+    }
+    return false;
+  }
+
+  @Override
+  public boolean isSymmetricWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds) {
+    if (!(otherChange instanceof NodeGroupNotMoveChange)) {
+      return false;
+    }
+
+    NodeGroupNotMoveChange other = as_nhvr2j_a0a2a44(otherChange, NodeGroupNotMoveChange.class);
+    if (!(Objects.equals(this.getGroup(false).getIds(), other.getGroup(false).getIds())) || ListSequence.fromList(this.getGroup(true).getIds()).count() != ListSequence.fromList(other.getGroup(true).getIds()).count()) {
+      return false;
+    }
+
+    {
+      Iterator<SNodeId> childId_it = ListSequence.fromList(this.getGroup(true).getIds()).iterator();
+      Iterator<SNodeId> otherChildId_it = ListSequence.fromList(other.getGroup(true).getIds()).iterator();
+      SNodeId childId_var;
+      SNodeId otherChildId_var;
+      while (childId_it.hasNext() && otherChildId_it.hasNext()) {
+        childId_var = childId_it.next();
+        otherChildId_var = otherChildId_it.next();
+        SNode child = this.getChangeSet().getNewModel().getNode(childId_var);
+        SNode otherChild = other.getChangeSet().getNewModel().getNode(otherChildId_var);
+        if (!(DiffUtil.nodeEquals(child, otherChild, this.getGroup(true).getDependantGroupNodeIds(), other.getGroup(true).getDependantGroupNodeIds()))) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  private static <T> T as_nhvr2j_a0a0a0a63(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_nhvr2j_a1a0a1a63(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_nhvr2j_a0a0a3a63(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_nhvr2j_a0a0a0a0b0mb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_nhvr2j_a0a2a44(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

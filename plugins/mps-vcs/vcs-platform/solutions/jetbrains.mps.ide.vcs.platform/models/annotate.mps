@@ -7876,13 +7876,13 @@
         <node concept="3clFbH" id="2$XQf3f5nAJ" role="3cqZAp" />
         <node concept="3cpWs8" id="2$XQf3f5ooB" role="3cqZAp">
           <node concept="3cpWsn" id="2$XQf3f5ooC" role="3cpWs9">
-            <property role="TrG5h" value="mergeConflictsBuilder" />
+            <property role="TrG5h" value="conflictsBuilder" />
             <node concept="3uibUv" id="2$XQf3f5ooD" role="1tU5fm">
-              <ref role="3uigEE" to="bmv6:3$YpntjF457" resolve="MergeConflictsBuilder" />
+              <ref role="3uigEE" to="bmv6:1WB5d2ED6tW" resolve="MovesAwareMergeConflictsBuilder" />
             </node>
             <node concept="2YIFZM" id="3ItZD8tLUR1" role="33vP2m">
-              <ref role="37wK5l" to="bmv6:2jSm$JeDpaW" resolve="createOppositeConflictsBuilder" />
-              <ref role="1Pybhc" to="bmv6:3$YpntjF457" resolve="MergeConflictsBuilder" />
+              <ref role="37wK5l" to="bmv6:1WB5d2ED6vq" resolve="createOppositeConflictsBuilder" />
+              <ref role="1Pybhc" to="bmv6:1WB5d2ED6tW" resolve="MovesAwareMergeConflictsBuilder" />
               <node concept="2OqwBi" id="2aK_2cVq_DV" role="37wK5m">
                 <node concept="37vLTw" id="1CxrDA$Tjs5" role="2Oq$k0">
                   <ref role="3cqZAo" node="1CxrDA$T5YW" resolve="changeSet1" />
@@ -7922,7 +7922,7 @@
                             <ref role="3cqZAo" node="2$XQf3f5ooC" resolve="mergeConflictsBuilder" />
                           </node>
                           <node concept="liA8E" id="2aK_2cVqGeL" role="2OqNvi">
-                            <ref role="37wK5l" to="bmv6:2$XQf3f7auB" resolve="getConflictingChanges" />
+                            <ref role="37wK5l" to="bmv6:1WB5d2ED6Nd" resolve="getConflictingChanges" />
                           </node>
                         </node>
                         <node concept="3lbrtF" id="2aK_2cVqHxo" role="2OqNvi" />
@@ -7934,7 +7934,7 @@
                               <ref role="3cqZAo" node="2$XQf3f5ooC" resolve="mergeConflictsBuilder" />
                             </node>
                             <node concept="liA8E" id="2aK_2cVqKsQ" role="2OqNvi">
-                              <ref role="37wK5l" to="bmv6:2$XQf3f7pYf" resolve="getSymmetricChanges" />
+                              <ref role="37wK5l" to="bmv6:1WB5d2ED6Nn" resolve="getSymmetricChanges" />
                             </node>
                           </node>
                           <node concept="3lbrtF" id="2aK_2cVqLwN" role="2OqNvi" />
@@ -11299,8 +11299,8 @@
                         <ref role="37wK5l" to="btf5:6xitIZBxxS" resolve="getWrappingGroup" />
                       </node>
                     </node>
-                    <node concept="liA8E" id="4Jifr3LYkPd" role="2OqNvi">
-                      <ref role="37wK5l" to="btf5:5wWLmYtj8aY" resolve="getFirstNodeId" />
+                    <node concept="liA8E" id="1JV1VsW9JND" role="2OqNvi">
+                      <ref role="37wK5l" to="btf5:1JV1VsW6UA8" resolve="getWrappingNodeId" />
                     </node>
                   </node>
                 </node>

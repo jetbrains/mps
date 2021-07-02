@@ -7127,6 +7127,11 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="AqV75eYyHb" role="jymVt">
+      <property role="TrG5h" value="myIsMerge" />
+      <node concept="3Tm6S6" id="AqV75eYxJh" role="1B3o_S" />
+      <node concept="10P_77" id="AqV75eYyCH" role="1tU5fm" />
+    </node>
     <node concept="2tJIrI" id="4aW1AG8258L" role="jymVt" />
     <node concept="2tJIrI" id="4aW1AG826fX" role="jymVt" />
     <node concept="3clFbW" id="42hl10VHao8" role="jymVt">
@@ -7292,6 +7297,37 @@
       </node>
       <node concept="3clFbS" id="7FLRXY0Gt5O" role="3clF47" />
       <node concept="3Tmbuc" id="7FLRXY0Gt5P" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="AqV75f0MIh" role="jymVt" />
+    <node concept="3clFb_" id="AqV75eY$PD" role="jymVt">
+      <property role="TrG5h" value="setIsMerge" />
+      <node concept="3clFbS" id="AqV75eY$PG" role="3clF47">
+        <node concept="3clFbF" id="AqV75eYA$o" role="3cqZAp">
+          <node concept="37vLTI" id="AqV75eYBqR" role="3clFbG">
+            <node concept="3clFbT" id="AqV75eYCks" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="37vLTw" id="AqV75eYA$n" role="37vLTJ">
+              <ref role="3cqZAo" node="AqV75eYyHb" resolve="myIsMerge" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="AqV75eYzZh" role="1B3o_S" />
+      <node concept="3cqZAl" id="AqV75eY$Lb" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="AqV75eYCOK" role="jymVt" />
+    <node concept="3clFb_" id="AqV75eYEI2" role="jymVt">
+      <property role="TrG5h" value="isMerge" />
+      <node concept="3clFbS" id="AqV75eYEI5" role="3clF47">
+        <node concept="3clFbF" id="AqV75eYGdx" role="3cqZAp">
+          <node concept="37vLTw" id="AqV75eYGdw" role="3clFbG">
+            <ref role="3cqZAo" node="AqV75eYyHb" resolve="myIsMerge" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="AqV75eYDJu" role="1B3o_S" />
+      <node concept="10P_77" id="AqV75eYED$" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="2U2d8lsJHBV" role="jymVt" />
     <node concept="3clFb_" id="42hl10VHaiB" role="jymVt">
@@ -7506,9 +7542,18 @@
           <node concept="3cpWsn" id="5DMVGtgzN7x" role="3cpWs9">
             <property role="TrG5h" value="trackMovedNodes" />
             <node concept="10P_77" id="5DMVGtgzN7s" role="1tU5fm" />
-            <node concept="2YIFZM" id="2G2A2Cc3yer" role="33vP2m">
-              <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
-              <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
+            <node concept="3K4zz7" id="AqV75f12Ga" role="33vP2m">
+              <node concept="2YIFZM" id="AqV75f19bJ" role="3K4E3e">
+                <ref role="37wK5l" node="3dZ7d0z1c1U" resolve="getTrackMovedNodesMergeOption" />
+                <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
+              </node>
+              <node concept="37vLTw" id="AqV75f10gl" role="3K4Cdx">
+                <ref role="3cqZAo" node="AqV75eYyHb" resolve="myIsMerge" />
+              </node>
+              <node concept="2YIFZM" id="2G2A2Cc3yer" role="3K4GZi">
+                <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
+                <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
+              </node>
             </node>
           </node>
         </node>
@@ -7555,6 +7600,9 @@
                               </node>
                               <node concept="37vLTw" id="2BHiRxeukwG" role="37wK5m">
                                 <ref role="3cqZAo" node="6Xy5Ur26A5C" resolve="myMergeAdjacent" />
+                              </node>
+                              <node concept="37vLTw" id="7pPyB$ST8Sw" role="37wK5m">
+                                <ref role="3cqZAo" node="5DMVGtgzN7x" resolve="trackMovedNodes" />
                               </node>
                             </node>
                           </node>
@@ -7614,6 +7662,9 @@
                             </node>
                             <node concept="37vLTw" id="2BHiRxeuMxG" role="37wK5m">
                               <ref role="3cqZAo" node="6Xy5Ur26A5C" resolve="myMergeAdjacent" />
+                            </node>
+                            <node concept="37vLTw" id="7pPyB$STe0K" role="37wK5m">
+                              <ref role="3cqZAo" node="5DMVGtgzN7x" resolve="trackMovedNodes" />
                             </node>
                           </node>
                         </node>
@@ -8486,9 +8537,8 @@
               </node>
             </node>
           </node>
-          <node concept="2YIFZM" id="2G2A2Cc5R6G" role="3clFbw">
-            <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
-            <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
+          <node concept="37vLTw" id="7pPyB$ST3XO" role="3clFbw">
+            <ref role="3cqZAo" node="7pPyB$SSPSD" resolve="trackMovedNodes" />
           </node>
         </node>
         <node concept="3cpWs8" id="13pW_eTpNz6" role="3cqZAp">
@@ -8575,6 +8625,10 @@
       <node concept="37vLTG" id="1AQAlzLJDIw" role="3clF46">
         <property role="TrG5h" value="canBeAdjacent" />
         <node concept="10P_77" id="13pW_eTpNz4" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="7pPyB$SSPSD" role="3clF46">
+        <property role="TrG5h" value="trackMovedNodes" />
+        <node concept="10P_77" id="7pPyB$SST5T" role="1tU5fm" />
       </node>
     </node>
   </node>
@@ -26581,11 +26635,6 @@
       <node concept="3Tm6S6" id="5R_XY2zlXgz" role="1B3o_S" />
       <node concept="10P_77" id="5R_XY2zm3EV" role="1tU5fm" />
     </node>
-    <node concept="312cEg" id="jIWrNkZkc4" role="jymVt">
-      <property role="TrG5h" value="myCanDrawBorders" />
-      <node concept="3Tm6S6" id="jIWrNkZcQO" role="1B3o_S" />
-      <node concept="10P_77" id="jIWrNkZhAo" role="1tU5fm" />
-    </node>
     <node concept="312cEg" id="v7wmxdPqWF" role="jymVt">
       <property role="TrG5h" value="myGroupInvalidateListener" />
       <property role="3TUv4t" value="true" />
@@ -26898,28 +26947,6 @@
     </node>
     <node concept="3Tm1VV" id="1zZcg$udfjv" role="1B3o_S" />
     <node concept="2tJIrI" id="26bjO7LhZXn" role="jymVt" />
-    <node concept="3clFb_" id="26bjO7Lit0H" role="jymVt">
-      <property role="TrG5h" value="setCanDrawBorderes" />
-      <node concept="3clFbS" id="26bjO7Lit0K" role="3clF47">
-        <node concept="3clFbF" id="26bjO7LiGLK" role="3cqZAp">
-          <node concept="37vLTI" id="26bjO7LiN9Z" role="3clFbG">
-            <node concept="37vLTw" id="26bjO7LiUrv" role="37vLTx">
-              <ref role="3cqZAo" node="26bjO7Li$zm" resolve="canDrawBorders" />
-            </node>
-            <node concept="37vLTw" id="26bjO7LiGLJ" role="37vLTJ">
-              <ref role="3cqZAo" node="jIWrNkZkc4" resolve="myCanDrawBorders" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="26bjO7LilYa" role="1B3o_S" />
-      <node concept="3cqZAl" id="26bjO7LiqSb" role="3clF45" />
-      <node concept="37vLTG" id="26bjO7Li$zm" role="3clF46">
-        <property role="TrG5h" value="canDrawBorders" />
-        <node concept="10P_77" id="26bjO7Li$zl" role="1tU5fm" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4CGE8mddCf3" role="jymVt" />
     <node concept="3clFb_" id="4CGE8mddVwA" role="jymVt">
       <property role="TrG5h" value="initEditor" />
       <node concept="3clFbS" id="4CGE8mddVwD" role="3clF47">
@@ -30290,12 +30317,21 @@
           <node concept="3cpWsn" id="7SNKzvnRlwc" role="3cpWs9">
             <property role="TrG5h" value="drawBorders" />
             <node concept="10P_77" id="7SNKzvnRlw7" role="1tU5fm" />
-            <node concept="1Wc70l" id="jIWrNkZteO" role="33vP2m">
-              <node concept="37vLTw" id="jIWrNkZxXE" role="3uHU7B">
-                <ref role="3cqZAo" node="jIWrNkZkc4" resolve="myCanDrawBorders" />
+            <node concept="3K4zz7" id="2z1Pho_F_tu" role="33vP2m">
+              <node concept="2YIFZM" id="2z1Pho_FOi$" role="3K4GZi">
+                <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
+                <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               </node>
-              <node concept="2YIFZM" id="2G2A2Cc8AO6" role="3uHU7w">
-                <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+              <node concept="2OqwBi" id="7pPyB$SSbgw" role="3K4Cdx">
+                <node concept="37vLTw" id="2z1Pho_Fx1T" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6lKULjmDdST" resolve="layout" />
+                </node>
+                <node concept="liA8E" id="7pPyB$SSic_" role="2OqNvi">
+                  <ref role="37wK5l" node="AqV75eYEI2" resolve="isMerge" />
+                </node>
+              </node>
+              <node concept="2YIFZM" id="2z1Pho_FWwt" role="3K4E3e">
+                <ref role="37wK5l" node="3dZ7d0z1c1U" resolve="getTrackMovedNodesMergeOption" />
                 <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               </node>
             </node>
@@ -34397,7 +34433,7 @@
     </node>
     <node concept="2tJIrI" id="2G2A2CbXwow" role="jymVt" />
     <node concept="Wx3nA" id="TuaAfeIafC" role="jymVt">
-      <property role="TrG5h" value="TRACK_MOVED_NODES" />
+      <property role="TrG5h" value="TRACK_MOVED_NODES_IN_DIFF" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="TuaAfeIafD" role="1B3o_S" />
       <node concept="17QB3L" id="TuaAfeIafE" role="1tU5fm" />
@@ -34405,12 +34441,28 @@
         <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
       </node>
     </node>
+    <node concept="Wx3nA" id="3dZ7d0z1bpx" role="jymVt">
+      <property role="TrG5h" value="TRACK_MOVED_NODES_IN_MERGE" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="3dZ7d0z1bpy" role="1B3o_S" />
+      <node concept="17QB3L" id="3dZ7d0z1bpz" role="1tU5fm" />
+      <node concept="Xl_RD" id="3dZ7d0z1bp$" role="33vP2m">
+        <property role="Xl_RC" value="vcs.merge.track.moved.nodes" />
+      </node>
+    </node>
     <node concept="Wx3nA" id="2G2A2CbXvCz" role="jymVt">
-      <property role="TrG5h" value="TRACK_MOVED_VALUES_DEFAULT" />
+      <property role="TrG5h" value="TRACK_MOVED_NODES_DIFF_DEFAULT" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm1VV" id="2G2A2CbXuNM" role="1B3o_S" />
       <node concept="10P_77" id="2G2A2CbXvBM" role="1tU5fm" />
       <node concept="3clFbT" id="2G2A2CbXwnA" role="33vP2m" />
+    </node>
+    <node concept="Wx3nA" id="3dZ7d0z1bGd" role="jymVt">
+      <property role="TrG5h" value="TRACK_MOVED_NODES_MERGE_DEFAULT" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="3dZ7d0z1bGe" role="1B3o_S" />
+      <node concept="10P_77" id="3dZ7d0z1bGf" role="1tU5fm" />
+      <node concept="3clFbT" id="3dZ7d0z1bGg" role="33vP2m" />
     </node>
     <node concept="2tJIrI" id="2G2A2CbWtYA" role="jymVt" />
     <node concept="2tJIrI" id="2G2A2CbWM8d" role="jymVt" />
@@ -34629,7 +34681,7 @@
     </node>
     <node concept="2tJIrI" id="2G2A2CbXpe$" role="jymVt" />
     <node concept="2YIFZL" id="2G2A2CbXqzW" role="jymVt">
-      <property role="TrG5h" value="getTrackMovedNodesOption" />
+      <property role="TrG5h" value="getTrackMovedNodesDiffOption" />
       <node concept="3clFbS" id="2G2A2CbXqzZ" role="3clF47">
         <node concept="3clFbF" id="4Eo9MbHmhsA" role="3cqZAp">
           <node concept="2OqwBi" id="4Eo9MbHmhsB" role="3clFbG">
@@ -34654,7 +34706,7 @@
     </node>
     <node concept="2tJIrI" id="2G2A2CbXrtI" role="jymVt" />
     <node concept="2YIFZL" id="2G2A2CbXsrw" role="jymVt">
-      <property role="TrG5h" value="setTrackMovedNodesOption" />
+      <property role="TrG5h" value="setTrackMovedNodesDiffOption" />
       <node concept="3clFbS" id="2G2A2CbXsrz" role="3clF47">
         <node concept="3clFbF" id="4Eo9MbHmhsR" role="3cqZAp">
           <node concept="2OqwBi" id="4Eo9MbHmhsS" role="3clFbG">
@@ -34682,6 +34734,61 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="2G2A2CbSLhg" role="1B3o_S" />
+    <node concept="2tJIrI" id="3dZ7d0z1bRj" role="jymVt" />
+    <node concept="2YIFZL" id="3dZ7d0z1c1U" role="jymVt">
+      <property role="TrG5h" value="getTrackMovedNodesMergeOption" />
+      <node concept="3clFbS" id="3dZ7d0z1c1V" role="3clF47">
+        <node concept="3clFbF" id="3dZ7d0z1c1W" role="3cqZAp">
+          <node concept="2OqwBi" id="3dZ7d0z1c1X" role="3clFbG">
+            <node concept="liA8E" id="3dZ7d0z1c1Y" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="3dZ7d0z1c24" role="37wK5m">
+                <ref role="3cqZAo" node="3dZ7d0z1bpx" resolve="TRACK_MOVED_NODES_IN_MERGE" />
+              </node>
+              <node concept="37vLTw" id="3dZ7d0z1c28" role="37wK5m">
+                <ref role="3cqZAo" node="3dZ7d0z1bGd" resolve="TRACK_MOVED_NODES_MERGE_DEFAULT" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="3dZ7d0z1c1Z" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3dZ7d0z1c20" role="1B3o_S" />
+      <node concept="10P_77" id="3dZ7d0z1c21" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="3dZ7d0z1c2a" role="jymVt" />
+    <node concept="2YIFZL" id="3dZ7d0z1c2b" role="jymVt">
+      <property role="TrG5h" value="setTrackMovedNodesMergeOption" />
+      <node concept="3clFbS" id="3dZ7d0z1c2c" role="3clF47">
+        <node concept="3clFbF" id="3dZ7d0z1c2d" role="3cqZAp">
+          <node concept="2OqwBi" id="3dZ7d0z1c2e" role="3clFbG">
+            <node concept="2YIFZM" id="3dZ7d0z1c2f" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="3dZ7d0z1c2g" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="3dZ7d0z1c2o" role="37wK5m">
+                <ref role="3cqZAo" node="3dZ7d0z1bpx" resolve="TRACK_MOVED_NODES_IN_MERGE" />
+              </node>
+              <node concept="37vLTw" id="3dZ7d0z1c2h" role="37wK5m">
+                <ref role="3cqZAo" node="3dZ7d0z1c2k" resolve="enable" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3dZ7d0z1c2i" role="1B3o_S" />
+      <node concept="3cqZAl" id="3dZ7d0z1c2j" role="3clF45" />
+      <node concept="37vLTG" id="3dZ7d0z1c2k" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="3dZ7d0z1c2l" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3dZ7d0z1bTP" role="jymVt" />
   </node>
 </model>
 

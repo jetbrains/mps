@@ -30,6 +30,7 @@ import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
+import jetbrains.mps.vcs.diff.DiffUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
@@ -43,7 +44,7 @@ import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.ArrayList;
 
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897264455", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
-public class MergeConflictsBuilder {
+public class MergeConflictsBuilder implements ChangeConflictsBuilder {
   private SModel myBaseModel;
   private SModel myMyModel;
   private SModel myRepositoryModel;
@@ -77,18 +78,22 @@ public class MergeConflictsBuilder {
     collectConflicts();
   }
 
+  @Override
   public Map<ModelChange, List<ModelChange>> getConflictingChanges() {
     return myConflictingChanges;
   }
 
+  @Override
   public Map<ModelChange, List<ModelChange>> getSymmetricChanges() {
     return mySymmetricChanges;
   }
 
+  @Override
   public ChangeSet getMyChangeSet() {
     return myMineChangeSet;
   }
 
+  @Override
   public ChangeSet getRepositoryChangeSet() {
     return myRepositoryChangeSet;
   }
@@ -237,7 +242,7 @@ public class MergeConflictsBuilder {
     for (SNodeId addedRoot : SetSequence.fromSet(MapSequence.fromMap(arranged._0()).keySet()).intersect(SetSequence.fromSet(MapSequence.fromMap(arranged._1()).keySet()))) {
       AddRootChange mine = MapSequence.fromMap(arranged._0()).get(addedRoot);
       AddRootChange repository = MapSequence.fromMap(arranged._1()).get(addedRoot);
-      if (SNodeCompare.nodeEquals(myMyModel.getNode(mine.getRootId()), myRepositoryModel.getNode(repository.getRootId()))) {
+      if (DiffUtil.nodeEquals(myMyModel.getNode(mine.getRootId()), myRepositoryModel.getNode(repository.getRootId()))) {
         addSymmetric(mine, repository);
       } else {
         addPossibleConflict(mine, repository);
@@ -251,7 +256,7 @@ public class MergeConflictsBuilder {
         List<? extends SNode> myChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myMyModel.getNode(mine.getNewParentNodeId())), mine.getRoleLink()));
         List<? extends SNode> repositoryChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(((SNode) myRepositoryModel.getNode(repository.getNewParentNodeId())), repository.getRoleLink()));
         for (int o = 0; o < mine.getResultEnd() - mine.getResultBegin(); o++) {
-          if (!(SNodeCompare.nodeEquals(myChildren.get(mine.getResultBegin() + o), repositoryChildren.get(repository.getResultBegin() + o)))) {
+          if (!(DiffUtil.nodeEquals(myChildren.get(mine.getResultBegin() + o), repositoryChildren.get(repository.getResultBegin() + o)))) {
             return false;
           }
         }

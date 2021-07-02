@@ -67,6 +67,14 @@ public abstract class ModelChange {
     return null;
   }
 
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    return false;
+  }
+
+  public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
+    return false;
+  }
+
   @Override
   public abstract String toString();
 

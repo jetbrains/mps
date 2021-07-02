@@ -4,13 +4,13 @@ package jetbrains.mps.vcs.diff.changes;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.vcs.util.MergeStrategy;
+import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -24,8 +24,12 @@ import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Map;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/8998650098108147555", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class HierarchicalNodeGroupChange extends StructureChange {
@@ -34,12 +38,15 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
   private final ModifiedNodesGroup myOldGroup;
   @NotNull
   private final ModifiedNodesGroup myNewGroup;
+  @Nullable
+  private final MergeStrategy myMergeHint;
 
 
   protected HierarchicalNodeGroupChange(@NotNull ChangeSet changeSet, @NotNull ModifiedNodesGroup oldGroup, @NotNull ModifiedNodesGroup newGroup) {
     super(changeSet, calcRootId(oldGroup, newGroup));
     myOldGroup = oldGroup;
     myNewGroup = newGroup;
+    myMergeHint = createMergeHint();
   }
 
   @Nullable
@@ -68,10 +75,6 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
 
   public SContainmentLink getLink(boolean isNew) {
     return getGroup(isNew).getLink();
-  }
-
-  /*package*/ SNode getParentNode(boolean isNew) {
-    return getGroup(isNew).getParentNode();
   }
 
   private int getEnd(boolean isNew) {
@@ -145,6 +148,9 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
     ListSequence.fromList(getGroup(isNew).getModifiedNodes()).visitAll(new IVisitor<ModifiedNode>() {
       public void visit(ModifiedNode it) {
         SNode child = it.getNode();
+        if (child == null) {
+          return;
+        }
         ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(child.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
         ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode attr) {
@@ -186,4 +192,28 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
     }
     return sb.toString();
   }
+
+  @Nullable
+  @Override
+  public MergeStrategy getMergeHint() {
+    return myMergeHint;
+  }
+
+  private MergeStrategy createMergeHint() {
+    // get "nonconflicting" attribute in metamodel
+    SNode n = getGroup(false).getParentNode();
+    MergeStrategy hint = VCSAspectUtil.getDefaultMergeStrategy(getLink(false));
+    if (hint != null) {
+      return hint;
+    }
+    return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
+  }
+
+  /*package*/ boolean hasIntersectingSourceWith(@NotNull HierarchicalNodeGroupChange otherChange) {
+    return this.getGroup(false).intersectsWith(otherChange.getGroup(false));
+  }
+
+  public abstract boolean conflictsWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds, boolean wrapConflictsWithInternalChanges);
+
+  public abstract boolean isSymmetricWith(@NotNull HierarchicalNodeGroupChange otherChange, Map<SNodeId, SNodeId> symmetricIds);
 }
