@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.intellij.integration;
 
@@ -22,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Avoid creation of .idea/project_name.iml file on project opening
@@ -34,9 +23,9 @@ import java.nio.file.Path;
  * end up in creation of module in {@link com.intellij.platform.PlatformProjectConfigurator#configureProject} saved in .idea/project_name.iml
  */
 class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
-  @Nullable
+  @NotNull
   @Override
-  public Project openProject(@NotNull Path projectFile, @NotNull OpenProjectTask openProjectOptions) {
+  public CompletableFuture<Project> openProject(@NotNull Path projectFile, @NotNull OpenProjectTask openProjectOptions) {
     if (openProjectOptions.getRunConfigurators()) {
       // Blindly assume that this came from ReopenProjectAction
       openProjectOptions = OpenProjectTask.withProjectToClose(openProjectOptions.getProjectToClose(), openProjectOptions.getForceOpenInNewFrame());
