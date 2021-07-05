@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="JDOM">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/jdom.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jaxen-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/util.jar!/org/jdom" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/lib/src/jdom.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
     </SOURCES>
   </library>
 </component>

@@ -9,11 +9,9 @@
       <root url="jar://$PROJECT_DIR$/lib/commons-compress-1.20.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-imaging-1.0-RC-1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/imageio-tiff.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-deps-fastutil-8.5.2-6.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jackson-module-kotlin-2.12.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/caffeine-2.8.8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/json.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/ap-validation-0.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-module-kotlin-2.12.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/caffeine-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ap-validation-0.0.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

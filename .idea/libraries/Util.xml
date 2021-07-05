@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Util">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/util.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
+      <root url="jar://$PROJECT_DIR$/lib/src/platform-sources.zip!/" />
+    </SOURCES>
+  </library>
+</component>
