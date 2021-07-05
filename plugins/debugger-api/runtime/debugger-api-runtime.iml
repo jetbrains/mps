@@ -26,7 +26,6 @@
     <orderEntry type="module" module-name="debugger-api-api" />
     <orderEntry type="module" module-name="execution-api" />
     <orderEntry type="module" module-name="mps-icons" />
-    <orderEntry type="library" name="Log4j" level="project" />
     <orderEntry type="module" module-name="mps-ui" />
   </component>
 </module>

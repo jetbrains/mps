@@ -24,7 +24,6 @@
     <orderEntry type="module" module-name="mps-workbench" />
     <orderEntry type="module" module-name="mps-platform" />
     <orderEntry type="module" module-name="mps-editor" />
-    <orderEntry type="library" name="Log4j" level="project" />
     <orderEntry type="module" module-name="vcs-core" scope="PROVIDED" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="library" name="Annotations" level="project" />

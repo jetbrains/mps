@@ -41,10 +41,8 @@
     <orderEntry type="module" module-name="persistence" scope="TEST" />
     <orderEntry type="module" module-name="mps-vcs" scope="TEST" />
     <orderEntry type="module" module-name="kernel-resources" scope="TEST" />
-    <orderEntry type="library" name="Log4j" level="project" />
     <orderEntry type="library" name="XmlRpc" level="project" />
     <orderEntry type="library" name="JDOM" level="project" />
-    <orderEntry type="library" name="Trove" level="project" />
     <orderEntry type="library" name="JMock" level="project" />
     <orderEntry type="library" name="Ant" level="project" />
     <orderEntry type="library" name="Diff-utils" level="project" />
