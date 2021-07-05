@@ -40,7 +40,7 @@ import git4idea.GitFileRevision;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.vcs.log.impl.VcsLogApplicationSettings;
 import com.intellij.vcs.log.impl.CommonUiProperties;
-import git4idea.annotate.AnnotationTooltipBuilder;
+import com.intellij.openapi.vcs.annotate.AnnotationTooltipBuilder;
 import com.intellij.util.containers.Convertor;
 import git4idea.log.GitCommitTooltipLinkHandler;
 import com.intellij.openapi.vcs.VcsBundle;
