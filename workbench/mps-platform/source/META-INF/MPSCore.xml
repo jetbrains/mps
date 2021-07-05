@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 
-<components>
+<idea-plugin>
   <actions>
     <group id="MPS.MessagesView" popup="false"/>
     <!-- MPS patch: see MPS-24488  TODO: investigate-->
@@ -149,4 +149,4 @@
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.JavaStubNavigationContributor"/>
 
   </extensions>
-</components>
+</idea-plugin>

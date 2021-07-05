@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <actions>
     <action id="jetbrains.mps.vcs.platform.actions.AnnotatePreviousRevision_Action" class="jetbrains.mps.vcs.platform.actions.AnnotatePreviousRevision_Action"></action>
     <action id="jetbrains.mps.vcs.platform.actions.AnnotateRevision_Action" class="jetbrains.mps.vcs.platform.actions.AnnotateRevision_Action"></action>
@@ -53,4 +53,4 @@
       <add-to-group group-id="jetbrains.mps.vcs.platform.actions.AnnotateGroup_ActionGroup" anchor="last" />
     </group>
   </actions>
-</components>
+</idea-plugin>

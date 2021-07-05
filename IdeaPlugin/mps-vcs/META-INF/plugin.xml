@@ -27,7 +27,7 @@
   <depends optional="true">Subversion</depends>
   <depends optional="true" config-file="MPSVcsGit.xml">Git4Idea</depends>
 
-  <xi:include href="MPSVcs.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="MPSVcs.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <extensions defaultExtensionNs="com.intellij">
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>

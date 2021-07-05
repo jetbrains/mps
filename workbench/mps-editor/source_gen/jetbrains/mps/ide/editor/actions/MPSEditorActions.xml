@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <actions>
     <action id="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action" class="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action">
       <keyboard-shortcut first-keystroke="ctrl L" keymap="$default" />
@@ -399,4 +399,4 @@
       <add-to-group group-id="EditorPopup_ActionGrouprefactoring" anchor="last" />
     </group>
   </actions>
-</components>
+</idea-plugin>

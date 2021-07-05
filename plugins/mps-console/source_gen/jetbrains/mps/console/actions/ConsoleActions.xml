@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <actions>
     <action id="jetbrains.mps.console.actions.ConsoleClear_Action" class="jetbrains.mps.console.actions.ConsoleClear_Action">
       <keyboard-shortcut first-keystroke="ctrl BACK_SPACE" keymap="$default" />
@@ -36,4 +36,4 @@
       <add-to-group group-id="EditorPopup_ActionGrouptool" anchor="last" />
     </group>
   </actions>
-</components>
+</idea-plugin>

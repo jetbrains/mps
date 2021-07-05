@@ -1,4 +1,4 @@
-<component xmlns:xi="http://www.w3.org/2001/XInclude">
+<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <actions>
     <group id="MPSToolbarRunGroup">
       <!--for integration purposes-->
@@ -17,4 +17,4 @@
       <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
     </group>
   </actions>
-</component>
+</idea-plugin>

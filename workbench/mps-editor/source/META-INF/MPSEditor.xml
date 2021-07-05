@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<components>
+<idea-plugin>
 
   <applicationListeners>
     <listener class="jetbrains.mps.nodeEditor.EditorSettingsUISettingsListener" topic="com.intellij.ide.ui.UISettingsListener"/>
@@ -98,4 +98,4 @@
 
     <customizableActionGroupProvider implementation="jetbrains.mps.ide.editor.MPSEditorCustomizableActionGroupProvider"/>
   </extensions>
-</components>
+</idea-plugin>

@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
@@ -71,4 +71,4 @@
     <registryKey key="mps.ProjectPane.show.descriptor.generator" defaultValue="false" description="Show @descriptor model in Generator modules" restartRequired="false"/>
     <registryKey key="mps.ProjectPane.show.descriptor.solution" defaultValue="false" description="Show @descriptor model in Solution modules" restartRequired="false"/>
   </extensions>
-</components>
+</idea-plugin>

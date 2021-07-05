@@ -65,13 +65,13 @@
     </component>
   </application-components>
 
-  <xi:include href="../../../workbench/mps-platform/source/META-INF/MPSCore.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="../../../workbench/mps-editor/source/META-INF/MPSEditor.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="../../../workbench/mps-platform/source/META-INF/MPSCore.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="../../../workbench/mps-editor/source/META-INF/MPSEditor.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="../../../workbench/mps-ui/source_gen/jetbrains/mps/ide/platform/actions/PlatformActions.xml"
-              xpointer="xpointer(/components/*)"/>
+              xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="../../../workbench/mps-editor/source_gen/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml"
-              xpointer="xpointer(/components/*)"/>
-  <xi:include href="../../../workbench/mps-ui/source/META-INF/MPSUI.xml" xpointer="xpointer(/components/*)"/>
+              xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="../../../workbench/mps-ui/source/META-INF/MPSUI.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <project-components>
     <component>

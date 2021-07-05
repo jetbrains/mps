@@ -25,7 +25,7 @@
   <depends>jetbrains.mps.core</depends>
   <depends>jetbrains.mps.ide.migration.idea</depends>
 
-  <xi:include href="JavaPlatform.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="JavaPlatform.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <application-components>
     <component>

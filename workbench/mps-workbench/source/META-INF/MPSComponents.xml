@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<components xmlns:xi="http://www.w3.org/2001/XInclude"
+<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://www.w3.org/2001/XInclude
    http://www.w3.org/2001/XInclude.xsd">
 
-  <xi:include href="/META-INF/MPSCore.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="/META-INF/MPSEditor.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="/META-INF/MPSUI.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="/META-INF/MPSWorkbench.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="/META-INF/MPSCore.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/MPSEditor.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/MPSUI.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/MPSWorkbench.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <application-components>
     <component>
@@ -148,4 +148,4 @@
     <listener class="jetbrains.mps.watching.ModelFocusSynchronizer" topic="com.intellij.ide.FrameStateListener"/>
   </applicationListeners>
 
-</components>
+</idea-plugin>

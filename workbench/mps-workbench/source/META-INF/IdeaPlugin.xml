@@ -65,10 +65,11 @@
     <!--End of analog of groups changes from JavaActions.xml-->
   </actions>
 
-  <xi:include href="/META-INF/MPSComponents.xml" xpointer="xpointer(/components/*)"/> <!--only MPS components-->
-  <xi:include href="/idea/MPSActionManager.xml" xpointer="xpointer(/component/*)"/> <!--only MPS actions-->
-  <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml" xpointer="xpointer(/components/*)"/> <!--only MPS actions-->
-  <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/components/*)"/> <!--only MPS editor actions-->
+  <xi:include href="/META-INF/MPSComponents.xml" xpointer="xpointer(/idea-plugin/*)"/> <!--only MPS components-->
+  <xi:include href="/idea/MPSActionManager.xml" xpointer="xpointer(/idea-plugin/*)"/> <!--only MPS actions-->
+  <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml" xpointer="xpointer(/idea-plugin/*)"/> <!--only MPS
+  actions-->
+  <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/idea-plugin/*)"/> <!--only MPS editor actions-->
 
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>

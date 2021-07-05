@@ -14,7 +14,7 @@
   ~ limitations under the License.
   -->
 
-<components>
+<idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
     <mps.facetTabFactory facetType="ideaPlugin" className="jetbrains.mps.ide.project.facets.ui.IdeaPluginModuleFacetTabFactory"/>
     <projectService serviceImplementation="jetbrains.mps.ide.projectPane.TreeNodeSortService"/>
@@ -41,4 +41,4 @@
     <mps.projectPrefsPanel implementation="jetbrains.mps.ide.make.MakeSettingsPanel"/>
   </extensions>
 
-</components>
+</idea-plugin>
