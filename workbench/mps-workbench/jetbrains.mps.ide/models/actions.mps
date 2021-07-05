@@ -13738,13 +13738,13 @@
     <node concept="3Tm1VV" id="cAZ8XCa268" role="1B3o_S" />
   </node>
   <node concept="sE7Ow" id="cAZ8XCabSG">
-    <property role="fJN8o" value="true" />
     <property role="TrG5h" value="HighlightInstances" />
     <property role="72QZ$" value="false" />
     <property role="2uzpH1" value="Highlight Instances" />
     <property role="3GE5qa" value="Menu.MainMenu.SearchActions" />
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="fJN8o" value="true" />
     <node concept="tnohg" id="cAZ8XCabSH" role="tncku">
       <node concept="3clFbS" id="cAZ8XCabSI" role="2VODD2">
         <node concept="3cpWs8" id="cAZ8XCabSJ" role="3cqZAp">
@@ -13958,12 +13958,12 @@
     </node>
   </node>
   <node concept="sE7Ow" id="4NbzjXXK6us">
-    <property role="fJN8o" value="true" />
     <property role="TrG5h" value="HighlightUsages" />
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Highlight Usages" />
     <property role="3GE5qa" value="Menu.MainMenu.SearchActions" />
     <property role="1teQrl" value="true" />
+    <property role="fJN8o" value="true" />
     <node concept="tnohg" id="4NbzjXXK6ut" role="tncku">
       <node concept="3clFbS" id="4NbzjXXK6uu" role="2VODD2">
         <node concept="3clFbF" id="6q3Z_tb_xrg" role="3cqZAp">
@@ -23672,7 +23672,7 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="IDE" />
     <property role="9BnSO" value="203.1" />
-    <property role="9BnSK" value="2020.3.5" />
+    <property role="9BnSK" value="2020.3.6" />
   </node>
   <node concept="sE7Ow" id="1JAxb5h3N20">
     <property role="TrG5h" value="EditGivenNode" />
@@ -40563,6 +40563,10 @@
     <node concept="tT9cl" id="1wNvKTcoknn" role="2f5YQi">
       <ref role="tU$_T" node="5tc$o3kzWsk" resolve="PackageNewActions" />
     </node>
+    <node concept="tT9cl" id="7jff0wjees6" role="2f5YQi">
+      <ref role="tU$_T" node="6A$87NVpRz7" resolve="NodeNewActions" />
+      <ref role="2f8Tey" node="6A$87NVr3H5" resolve="newRoot" />
+    </node>
     <node concept="ftmFs" id="1wNvKTcoalp" role="ftER_">
       <node concept="10WQ6h" id="6iZ8s2UYsKa" role="ftvYc">
         <property role="TrG5h" value="mainRoot" />
@@ -40570,10 +40574,6 @@
       <node concept="10WQ6h" id="1wNvKTcoals" role="ftvYc">
         <property role="TrG5h" value="newRoot" />
       </node>
-    </node>
-    <node concept="tT9cl" id="7jff0wjees6" role="2f5YQi">
-      <ref role="tU$_T" node="6A$87NVpRz7" resolve="NodeNewActions" />
-      <ref role="2f8Tey" node="6A$87NVr3H5" resolve="newRoot" />
     </node>
   </node>
   <node concept="312cEu" id="_dGddVVXqt">
@@ -52099,6 +52099,14 @@
       <ref role="3uigEE" to="jkm4:~InputValidatorEx" resolve="InputValidatorEx" />
     </node>
   </node>
+  <node concept="1ESbSp" id="1UYB6Gi3Hdp">
+    <property role="3GE5qa" value="Integration" />
+    <property role="TrG5h" value="IDEAFindUsages" />
+    <node concept="Xl_RD" id="1UYB6Gi4jBx" role="3mKD$K">
+      <property role="Xl_RC" value="FindUsagesMenuGroup" />
+    </node>
+    <node concept="ftmFs" id="1UYB6Gi4jBJ" role="ftER_" />
+  </node>
   <node concept="tC5Ba" id="1UYB6Gi4jBS">
     <property role="3GE5qa" value="Menu.MainMenu" />
     <property role="TrG5h" value="SearchUsages" />
@@ -52123,14 +52131,6 @@
     <node concept="tT9cl" id="1UYB6Gi4jCw" role="2f5YQi">
       <ref role="tU$_T" node="1UYB6Gi3Hdp" resolve="IDEAFindUsages" />
     </node>
-  </node>
-  <node concept="1ESbSp" id="1UYB6Gi3Hdp">
-    <property role="3GE5qa" value="Integration" />
-    <property role="TrG5h" value="IDEAFindUsages" />
-    <node concept="Xl_RD" id="1UYB6Gi4jBx" role="3mKD$K">
-      <property role="Xl_RC" value="FindUsagesMenuGroup" />
-    </node>
-    <node concept="ftmFs" id="1UYB6Gi4jBJ" role="ftER_" />
   </node>
 </model>
 
