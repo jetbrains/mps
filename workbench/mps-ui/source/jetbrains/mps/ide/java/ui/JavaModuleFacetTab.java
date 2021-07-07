@@ -356,7 +356,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
     public void addAll(Collection<VirtualFile> files) {
       // Filter already added entries
-      files.removeAll(myFiles);
+      files.removeAll(new ArrayList<>(myFiles));
       if (myFiles.addAll(files)) {
         fireTableDataChanged();
       }
