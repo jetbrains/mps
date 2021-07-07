@@ -33,6 +33,7 @@ public class ASMClass {
       reader.accept(myNode, ((needParamNames ? 0 : ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG)) | ClassReader.SKIP_FRAMES);
     } catch (RuntimeException e) {
       // see MPS-17590
+      // MAKE SURE uses of uninitialized fields of this class may not cause NPE!
       return;
     }
     if (myNode.signature != null) {
@@ -144,7 +145,7 @@ public class ASMClass {
     return (myTypeVariables == null ? Collections.<ASMTypeVariable>emptyList() : Collections.unmodifiableList(myTypeVariables));
   }
   public List<ASMType> getGenericInterfaces() {
-    return Collections.unmodifiableList(myGenericInterfaces);
+    return (myGenericInterfaces == null ? Collections.<ASMType>emptyList() : Collections.unmodifiableList(myGenericInterfaces));
   }
   public List<ASMAnnotation> getAnnotations() {
     return (myAnnotations == null ? Collections.<ASMAnnotation>emptyList() : Collections.unmodifiableList(myAnnotations));
