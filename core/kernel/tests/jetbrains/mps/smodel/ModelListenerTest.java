@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -487,14 +487,14 @@ public class ModelListenerTest {
     myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
     // create, with setReference()
     cl1.reset(); cl2.reset();
-    r2c1.setReference(ourRef, jetbrains.mps.smodel.SReference.create(ourRef, r2c1, r3c2));
+    r2c1.setReference(ourRef, r3c2.getReference());
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(1));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(0));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));
     myErrors.checkThat(cl2.myChangedReferences.contains(ourRef.getRoleName()), equalTo(true));
     // change, with setReference
     cl1.reset(); cl2.reset();
-    r1.setReference(ourRef, jetbrains.mps.smodel.SReference.create(ourRef, r1, r3c2));
+    r1.setReference(ourRef, r3c2.getReference());
     myErrors.checkThat(cl1.myAddedRef.size(), equalTo(1));
     myErrors.checkThat(cl1.myRemovedRef.size(), equalTo(1));
     myErrors.checkThat(cl2.myChangedReferences.size(), equalTo(1));

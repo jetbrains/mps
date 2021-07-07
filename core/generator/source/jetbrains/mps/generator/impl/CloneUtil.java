@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,11 +89,19 @@ public class CloneUtil {
     }
     for (SReference reference : inputNode.getReferences()) {
       boolean ext = inputNode.getModel() == null || !inputNode.getModel().getReference().equals(reference.getTargetSModelReference());
-      SModelReference targetModelReference = ext ? reference.getTargetSModelReference() : myOutputModelRef;
-      SReference outRef = myFactory.create(reference, outputNode, targetModelReference);
-      if (outRef != null) {
-        outputNode.setReference(outRef.getLink(), outRef);
+      final SModelReference targetModelReference;
+      if (ext) {
+        targetModelReference = reference.getTargetSModelReference();
+        if (targetModelReference == null) {
+          final SNode sourceNode = reference.getSourceNode();
+          LOG.warning("broken reference '" + reference.getLink().getName() + "' in " + SNodeOperations.getDebugText(sourceNode), sourceNode);
+          continue;
+        }
+      } else {
+        targetModelReference = myOutputModelRef;
       }
+      // FIXME once there's no distinction between creating static and dynamic reference, no need for factory indirection.
+      myFactory.create(reference, outputNode, targetModelReference);
     }
 
     for (SNode child : inputNode.getChildren()) {
@@ -116,7 +124,7 @@ public class CloneUtil {
 
   public interface Factory {
     SNode create(SNode prototype);
-    SReference create(SReference prototype, SNode outputNode, SModelReference targetModelRef);
+    void create(SReference prototype, SNode outputNode, SModelReference targetModelRef);
   }
 
   public static class RegularSModelFactory implements Factory {
@@ -127,28 +135,23 @@ public class CloneUtil {
     }
 
     @Override
-    public SReference create(SReference prototype, SNode outputNode, SModelReference targetModelRef) {
+    public void create(SReference prototype, SNode outputNode, SModelReference targetModelRef) {
       // [model] clone mechanism in smodel.SReference or elsewhere not to perform instanceof
       // Besides, what if there's custom openapi.SReference impl (GenSReference) I'm not aware of? How am I supposed to clone it here?
       if (prototype instanceof StaticReference) {
-        if (targetModelRef == null) {
-          LOG.warning("broken reference '" + prototype.getLink().getName() + "' in " + SNodeOperations.getDebugText(prototype.getSourceNode()), prototype.getSourceNode());
-        } else {
-          StaticReference outputReference = new StaticReference(
-              prototype.getLink(),
-              outputNode,
-              targetModelRef,
-              prototype.getTargetNodeId(),
-              ((StaticReference) prototype).getResolveInfo());
-          return outputReference;
-        }
+        StaticReference outputReference = new StaticReference(
+            prototype.getLink(),
+            outputNode,
+            targetModelRef,
+            prototype.getTargetNodeId(),
+            ((StaticReference) prototype).getResolveInfo());
+        outputNode.setReference(prototype.getLink(), outputReference);
       } else if (prototype instanceof DynamicReference) {
-        return CloneUtil.create(outputNode, targetModelRef, (DynamicReference) prototype);
+        outputNode.setReference(prototype.getLink(), CloneUtil.create(outputNode, targetModelRef, (DynamicReference) prototype));
       } else {
         LOG.error("internal error: can't clone reference '" + prototype.getLink().getName() + "' in " + SNodeOperations.getDebugText(prototype.getSourceNode()), prototype.getSourceNode());
         LOG.error(" -- was reference class : " + prototype.getClass().getName());
       }
-      return null;
     }
   }
 }

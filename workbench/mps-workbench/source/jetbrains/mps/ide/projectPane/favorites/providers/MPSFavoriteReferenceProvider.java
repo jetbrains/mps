@@ -142,6 +142,7 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
       SRepository repository = ProjectHelper.getProjectRepository(project);
       ModelAccessHelper helper = new ModelAccessHelper(repository);
 
+      // FIXME potential NPE, source may not resolve, while factory method expects not null
       SReference reference = helper.runReadAction(() -> jetbrains.mps.smodel.SReference
                                                             .create(link, source.resolve(repository), target.resolve(repository)));
       return new Object[]{reference};

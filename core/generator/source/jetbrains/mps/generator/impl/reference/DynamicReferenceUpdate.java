@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.generator.impl.reference;
 
 import jetbrains.mps.generator.impl.TemplateGenerator;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -52,7 +53,7 @@ public final class DynamicReferenceUpdate {
     final boolean shallWarn = myGenerator.getGeneratorSessionContext().getGenerationOptions().warnDynamicToStaticFailed();
     for (SReference dr : myRefs) {
       final SNode srcNode = dr.getSourceNode();
-      String resolveInfo = dr instanceof jetbrains.mps.smodel.SReference ? ((jetbrains.mps.smodel.SReference) dr).getResolveInfo() : null;
+      String resolveInfo = SLinkOperations.getResolveInfo(dr);
       if (srcNode == null) {
         myGenerator.getLogger().warning(String.format("Attempt to replace dynamic reference '%s' with static counterpart failed: no source node; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getName(), resolveInfo));
         continue;

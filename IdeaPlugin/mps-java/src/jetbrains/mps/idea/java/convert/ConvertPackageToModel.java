@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,6 +61,7 @@ import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -176,11 +177,11 @@ public class ConvertPackageToModel extends AnAction {
           // TODO need to make it more efficient (maintain this data in DirParser)
 
           SModelReference newModelRef = null;
-          String modelName = targetModelRef.getModelName();
-          modelName = modelName.substring(0, modelName.indexOf('@'));
+          final SModelName modelName = targetModelRef.getName().withoutStereotype();
           for (SModel model : parser.getModels()) {
-            if (modelName.equals(model.getModelName())) {
+            if (modelName.equals(model.getName())) {
               newModelRef = model.getReference();
+              break;
             }
           }
 
@@ -209,7 +210,9 @@ public class ConvertPackageToModel extends AnAction {
 
         for (SReference ref : referencesToFix) {
           SNode target = ref.getTargetNode();
-          if (target == null) continue;
+          if (target == null) {
+            continue;
+          }
 
           SNode source = ref.getSourceNode();
 

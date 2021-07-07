@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -271,7 +271,13 @@ public interface SNode {
    * Sets a reference of the given role to a node that is resolved from the SReference.
    * Since SReference can refer to nodes by name and resolve them dynamically, this method may be able to resolve
    * the target node even when working with invalid code.
+   * @deprecated cumbersome api, use explicit {@code #dropReference()} for {@code null} case, or another method that
+   *    doesn't require construction of an object with source/link already specified.
+   *
+   * @implNote
+   *  Not marked for removal as it's open api and unlikely to get removed any time soon (in few years, perhaps). Just don't use it.
    */
+  @Deprecated
   void setReference(@NotNull SReferenceLink role, @Nullable SReference reference);
   // FIXME replace with setReference(SReference) or setReference(SReferenceLink link, SNode source, SNode target).
   // It's stupid to have explicit role along with SReference.getLink() (which not necessarily match)
