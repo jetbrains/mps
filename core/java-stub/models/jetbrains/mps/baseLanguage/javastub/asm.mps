@@ -8460,6 +8460,49 @@
                   </node>
                 </node>
               </node>
+              <node concept="3SKdUt" id="47BR_Ax6VQP" role="3cqZAp">
+                <node concept="1PaTwC" id="47BR_Ax6VQQ" role="1aUNEU">
+                  <node concept="3oM_SD" id="47BR_Ax6VR0" role="1PaTwD">
+                    <property role="3oM_SC" value="MAKE" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70uL" role="1PaTwD">
+                    <property role="3oM_SC" value="SURE" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70v$" role="1PaTwD">
+                    <property role="3oM_SC" value="uses" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70wo" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70wt" role="1PaTwD">
+                    <property role="3oM_SC" value="uninitialized" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70yN" role="1PaTwD">
+                    <property role="3oM_SC" value="fields" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70$q" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70_i" role="1PaTwD">
+                    <property role="3oM_SC" value="this" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70_r" role="1PaTwD">
+                    <property role="3oM_SC" value="class" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70__" role="1PaTwD">
+                    <property role="3oM_SC" value="may" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70_K" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70_W" role="1PaTwD">
+                    <property role="3oM_SC" value="cause" />
+                  </node>
+                  <node concept="3oM_SD" id="47BR_Ax70AT" role="1PaTwD">
+                    <property role="3oM_SC" value="NPE!" />
+                  </node>
+                </node>
+              </node>
               <node concept="3cpWs6" id="4oMZdczNUhq" role="3cqZAp" />
             </node>
           </node>
@@ -9766,11 +9809,26 @@
       </node>
       <node concept="3clFbS" id="6hYzBiUOvAf" role="3clF47">
         <node concept="3cpWs6" id="6hYzBiUOvAg" role="3cqZAp">
-          <node concept="2YIFZM" id="6hYzBiUOvAh" role="3cqZAk">
-            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-            <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List)" resolve="unmodifiableList" />
-            <node concept="37vLTw" id="2BHiRxeu_G5" role="37wK5m">
-              <ref role="3cqZAo" node="6hYzBiUOvvb" resolve="myGenericInterfaces" />
+          <node concept="3K4zz7" id="47BR_Ax60Gu" role="3cqZAk">
+            <node concept="2YIFZM" id="47BR_Ax6b7x" role="3K4E3e">
+              <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+              <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+              <node concept="3uibUv" id="47BR_Ax6KGv" role="3PaCim">
+                <ref role="3uigEE" node="6hYzBiUOvjd" resolve="ASMType" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="47BR_Ax6laj" role="3K4GZi">
+              <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List)" resolve="unmodifiableList" />
+              <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+              <node concept="37vLTw" id="47BR_Ax6pgk" role="37wK5m">
+                <ref role="3cqZAo" node="6hYzBiUOvvb" resolve="myGenericInterfaces" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="47BR_Ax5P44" role="3K4Cdx">
+              <node concept="10Nm6u" id="47BR_Ax5UNm" role="3uHU7w" />
+              <node concept="37vLTw" id="2BHiRxeu_G5" role="3uHU7B">
+                <ref role="3cqZAo" node="6hYzBiUOvvb" resolve="myGenericInterfaces" />
+              </node>
             </node>
           </node>
         </node>
