@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.extapi.model.ResolveInfoExt;
 import jetbrains.mps.logging.Log4jUtil;
 import jetbrains.mps.util.containers.EmptyIterable;
 import org.apache.log4j.LogManager;
@@ -690,6 +691,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     }
     SReference newValue = null;
     if (target != null) {
+      // XXX removeReferenceInternal, above, just re-allocated array in case of a replacement. Do I care to optimize this scenario?
       newValue = SReference.create(role, this, target);
       addReferenceInternal(newValue);
     }
@@ -699,8 +701,15 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
   @Override
   public void setReference(@NotNull SReferenceLink role, ResolveInfo resolveInfo) {
-    String ri = resolveInfo instanceof ResolveInfo.S ? ((ResolveInfo.S) resolveInfo).getValue() : null;
-    setReference(role, DynamicReference.createDynamicReference(role, this, null, ri));
+    if (resolveInfo instanceof ResolveInfoExt) {
+      setReference(role, ((ResolveInfoExt) resolveInfo).create(this, role));
+    } else if (resolveInfo instanceof ResolveInfo.S || resolveInfo == null) {
+      String ri = resolveInfo == null ? null : ((ResolveInfo.S) resolveInfo).getValue();
+      setReference(role, DynamicReference.createDynamicReference(role, this, null, ri));
+    } else if (resolveInfo instanceof ResolveInfo.PS) {
+      ResolveInfo.PS ri = (ResolveInfo.PS) resolveInfo;
+      setReference(role, SReference.create(role, this, ri.getTargetNode(), ri.getValue()));
+    }
   }
 
   @Override

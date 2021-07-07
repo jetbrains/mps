@@ -83,8 +83,7 @@ public final class CopyUtil {
           SNode newTarget = nodeMap.getOrDefault(targetNode, targetNode);
           copy.setReferenceTarget(ref.getLink(), newTarget);
         } else {
-          String resolveInfo = (ref instanceof jetbrains.mps.smodel.SReference ? ((jetbrains.mps.smodel.SReference) ref).getResolveInfo() : null);
-          copy.setReference(ref.getLink(), jetbrains.mps.smodel.SReference.create(ref.getLink(), copy, ref.getTargetNodeReference(), resolveInfo));
+          copy.setReference(ref.getLink(), ref.describeTarget());
         }
       }
     }
@@ -219,21 +218,8 @@ public final class CopyUtil {
       for (SReference ref : inputNode.getReferences()) {
         SNode inputTargetNode = cloneRefs ? null : jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (inputTargetNode == null) { //broken reference or need to clone
-          if (ref instanceof StaticReference) {
-            StaticReference statRef = (StaticReference) ref;
-            SReference reference = new StaticReference(
-                statRef.getLink(),
-                outputNode,
-                statRef.getTargetSModelReference(),
-                statRef.getTargetNodeId(),
-                statRef.getResolveInfo());
-            outputNode.setReference(reference.getLink(), reference);
-          } else if (ref instanceof DynamicReference && cloneRefs) {
-            DynamicReference dynRef = (DynamicReference) ref;
-            DynamicReference output = new DynamicReference(dynRef.getLink(), outputNode, null, dynRef.getResolveInfo());
-            output.setOrigin(dynRef.getOrigin());
-            outputNode.setReference(output.getLink(), output);
-          }
+          outputNode.setReference(ref.getLink(), ref.describeTarget());
+          // XXX here used to be code that didn't copy dynamic references unless cloneRefs, no idea why; removed.
         } else {
           outputNode.setReferenceTarget(ref.getLink(), mapping.getOrDefault(inputTargetNode, inputTargetNode));
         }

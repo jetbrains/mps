@@ -25,8 +25,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.StaticReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext;
 import jetbrains.mps.lang.editor.menus.substitute.SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext;
@@ -118,11 +117,10 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
             SNode dotExpression = SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$yW);
-            SNode smc = SNodeFactoryOperations.createNewNode(CONCEPTS.StaticMethodCall$Fg, null);
+            SNode smc = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.StaticMethodCall$Fg, null);
             SReferenceLink role = LINKS.baseMethodDeclaration$pyYw;
-            SReference sReference = SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu).getReference(role);
-            // XXX why model of source node is considered for target, not sReference.getTargetModelReference?
-            smc.setReference(role, new StaticReference(role, smc, SModelOperations.getPointer(SNodeOperations.getModel(smc)), null, ((jetbrains.mps.smodel.SReference) sReference).getResolveInfo()));
+            SReference sref = SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(dotExpression, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu), LINKS.baseMethodDeclaration$pyYw);
+            smc.setReference(role, ResolveInfo.of(SLinkOperations.getResolveInfo(sref)));
             SNodeOperations.replaceWithAnother(dotExpression, smc);
             return smc;
           }

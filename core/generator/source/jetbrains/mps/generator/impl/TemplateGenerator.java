@@ -59,6 +59,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.SNodeOperations;
@@ -69,6 +70,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -1231,22 +1233,10 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
                 reportBrokenRef(inputNode, inputReference);
                 continue;
               }
-
-              SReference reference = new StaticReference(
-                  inputReference.getLink(),
-                  outputNode,
-                  targetModelReference,
-                  inputReference.getTargetNodeId(),
-                  ((StaticReference) inputReference).getResolveInfo());
-              outputNode.setReference(reference.getLink(), reference);
+              final SNodePointer ptr = new SNodePointer(targetModelReference, inputReference.getTargetNodeId());
+              outputNode.setReference(inputReference.getLink(), ResolveInfo.of(ptr, ((StaticReference) inputReference).getResolveInfo()));
             } else if (inputReference instanceof DynamicReference) {
-              DynamicReference outputReference = new DynamicReference(
-                  inputReference.getLink(),
-                  outputNode,
-                  targetModelReference,
-                  ((DynamicReference) inputReference).getResolveInfo());
-              outputReference.setOrigin(((DynamicReference) inputReference).getOrigin());
-              outputNode.setReference(outputReference.getLink(), outputReference);
+              outputNode.setReference(inputReference.getLink(), inputReference.describeTarget());
             } else {
               String msg = "internal error: can't clone reference '%s' in %s. Reference class: %s";
               getLogger().error(inputNode.getReference(),

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,13 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriority
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -232,14 +234,8 @@ public final class ReferenceUpdater {
         StaticReference reference = (StaticReference) ref;
         SModelReference targetSModelReference = reference.getTargetSModelReference();
         if (myModelReferenceMap.containsKey(targetSModelReference)) {
-          StaticReference newReference = new StaticReference(
-              reference.getLink(),
-              node,
-              myModelReferenceMap.get(targetSModelReference),
-              reference.getTargetNodeId(),
-              reference.getResolveInfo()
-          );
-          node.setReference(newReference.getLink(), newReference);
+          SNodePointer ptr = new SNodePointer(myModelReferenceMap.get(targetSModelReference), reference.getTargetNodeId());
+          node.setReference(reference.getLink(), ResolveInfo.of(ptr, reference.getResolveInfo()));
         }
       }
     });

@@ -66,13 +66,6 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
   }
 
   @Override
-  @Deprecated
-  @ToRemove(version = 3.2)
-  public String getRole() {
-    return myRoleId.getRoleName();
-  }
-
-  @Override
   public SReferenceLink getLink() {
     return myRoleId;
   }

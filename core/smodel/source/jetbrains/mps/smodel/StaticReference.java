@@ -11,6 +11,7 @@ import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -377,6 +378,11 @@ public final class StaticReference extends SReferenceBase {
     return myImmatureTargetNode == null;
   }
 
+  @NotNull
+  @Override
+  public ResolveInfo describeTarget() {
+    return ResolveInfo.of(new SNodePointer(getTargetSModelReference(), getTargetNodeId()), getResolveInfo());
+  }
 
   private ModelCommandContext commandContext(SModel targetModel) {
     // took repo from target model, assume MA is the same as the one for source's repo.

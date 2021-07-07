@@ -29,7 +29,8 @@ import jetbrains.mps.smodel.InterfaceSNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.StaticReference;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.Pair;
 
 @GeneratedClass(node = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)/5480414999147803697", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
@@ -601,8 +602,8 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       SNodeId nodeId = child._2();
       SReferenceLink link = child._0();
       String resolveInfo = child._3();
-      StaticReference ref = new StaticReference(link, result._0(), targetModel, nodeId, resolveInfo);
-      result._0().setReference(link, ref);
+      ResolveInfo ri = ResolveInfo.of(new SNodePointer(targetModel, nodeId), resolveInfo);
+      result._0().setReference(link, ri);
     }
     private void handleChild_5480414999147804300(Object resultObject, Object value) throws SAXException {
       Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;

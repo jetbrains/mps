@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.generator.impl.TemplateGenerator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -111,5 +112,12 @@ public class PostponedReference extends jetbrains.mps.smodel.SReference {
    */
   public void replace() {
     getSourceNode().setReference(getLink(), myReplacementReference);
+  }
+
+  @NotNull
+  @Override
+  public ResolveInfo describeTarget() {
+    // FIXME refactor ReferenceInfo to produce ResolveInfo instead of SReference
+    throw new UnsupportedOperationException();
   }
 }

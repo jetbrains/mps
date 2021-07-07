@@ -19,11 +19,13 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -112,16 +114,6 @@ public class CloneUtil {
     return outputNode;
   }
 
-  public static DynamicReference create(SNode outputNode, SModelReference targetModelRef, DynamicReference prototype) {
-    DynamicReference outputReference = new DynamicReference(
-        prototype.getLink(),
-        outputNode,
-        targetModelRef,
-        prototype.getResolveInfo());
-    outputReference.setOrigin(prototype.getOrigin());
-    return outputReference;
-  }
-
   public interface Factory {
     SNode create(SNode prototype);
     void create(SReference prototype, SNode outputNode, SModelReference targetModelRef);
@@ -139,15 +131,10 @@ public class CloneUtil {
       // [model] clone mechanism in smodel.SReference or elsewhere not to perform instanceof
       // Besides, what if there's custom openapi.SReference impl (GenSReference) I'm not aware of? How am I supposed to clone it here?
       if (prototype instanceof StaticReference) {
-        StaticReference outputReference = new StaticReference(
-            prototype.getLink(),
-            outputNode,
-            targetModelRef,
-            prototype.getTargetNodeId(),
-            ((StaticReference) prototype).getResolveInfo());
-        outputNode.setReference(prototype.getLink(), outputReference);
+        final SNodePointer ptr = new SNodePointer(targetModelRef, prototype.getTargetNodeId());
+        outputNode.setReference(prototype.getLink(), ResolveInfo.of(ptr, ((StaticReference) prototype).getResolveInfo()));
       } else if (prototype instanceof DynamicReference) {
-        outputNode.setReference(prototype.getLink(), CloneUtil.create(outputNode, targetModelRef, (DynamicReference) prototype));
+        outputNode.setReference(prototype.getLink(), prototype.describeTarget());
       } else {
         LOG.error("internal error: can't clone reference '" + prototype.getLink().getName() + "' in " + SNodeOperations.getDebugText(prototype.getSourceNode()), prototype.getSourceNode());
         LOG.error(" -- was reference class : " + prototype.getClass().getName());

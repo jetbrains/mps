@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.extapi.model.ResolveInfoExt;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
@@ -26,9 +27,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
@@ -42,9 +45,6 @@ import java.util.Set;
  *       (a) confusing with openapi counterpart; (b) duplicates {@code SReferenceBase}
  * JFI, there's code that filters node references based on {@code SReferenceBase} e.g. to setTargetSModelReference, shall decide if it's correct with respect
  *      to the aforementioned change in superclass
- *
- * Igor Alshannikov
- * Dec 10, 2007
  */
 public final class DynamicReference extends SReferenceBase {
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(DynamicReference.class));
@@ -208,6 +208,12 @@ public final class DynamicReference extends SReferenceBase {
     }
   }
 
+  @NotNull
+  @Override
+  public ResolveInfo describeTarget() {
+    return new DRI(myOrigin, getResolveInfo());
+  }
+
   @Nullable
   public DynamicReferenceOrigin getOrigin() {
     return myOrigin;
@@ -233,6 +239,23 @@ public final class DynamicReference extends SReferenceBase {
 
     public SNodeReference getInputNode() {
       return inputNode;
+    }
+  }
+
+  private static class DRI implements ResolveInfo, ResolveInfoExt {
+    private final DynamicReferenceOrigin myOrigin;
+    private final String myResolveInfo;
+
+    private DRI(@Nullable DynamicReferenceOrigin origin, String resolveInfo) {
+      myOrigin = origin;
+      myResolveInfo = resolveInfo;
+    }
+
+    @Override
+    public SReference create(@NotNull SNode source, @NotNull SReferenceLink link) {
+      final DynamicReference dr = new DynamicReference(link, source, myResolveInfo);
+      dr.setOrigin(myOrigin);
+      return dr;
     }
   }
 }

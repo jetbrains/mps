@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,10 +25,11 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public interface SReferenceLink extends SAbstractLink {
   /**
+   * @deprecated use {@link SNamedElement#getName()} instead
    * Returns a name of this reference
    * Though in 3.2 the name is still used as id in some cases, it should be treated only as a user-friendly text representation.
    */
-  @Deprecated //use SConceptFeature.getPresentableName
+  @Deprecated
   //ToRemove after 3.3
   String getRoleName();
 

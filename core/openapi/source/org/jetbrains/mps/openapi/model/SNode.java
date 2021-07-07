@@ -227,10 +227,21 @@ public interface SNode {
   void setReferenceTarget(@NotNull SReferenceLink role, @Nullable SNode target);
 
   /**
-   * Establish a 'dynamic' reference, the one with target determined by external scope based on {@code resolveInfo} additional information.
+   * Establish an association with node determined by an abstraction that captures mechanism to resolve a target.
+   * There are association with fixed aka 'static' targets as well as association with 'dynamic' targets that utilize
+   * external scope implementations to determine target node  based on {@code resolveInfo} additional information.
+   * <br/>
+   * This is a low-level mechanism, intended to replace {@link #setReference(SReferenceLink, SReference)} and to hide
+   * specific {@code SReference} implementation differences spread throughout the code. End-user code is supposed to
+   * go through higher-level methods of {@code SLinkOperations} and {@code SNodeAccessUtil}.
+   * Exemplary clients of this methods are persistence, M2M (Generator) and model copy/clone facilities.
+   * <br/>
+   *
    * FIXME dynamic references are generally not persisted, don't use them in models that are serialized using regular MPS persistence
    *
    * At the moment, we support {@code String} auxiliary resolution information, see {@link ResolveInfo#of(String)}
+   *
+   * FIXME null for resolveInfo - does it mean anything specific (broken dynamic reference or dropReference?)
    *
    * @since 2020.2
    * @param role meta-object that identifies association relation.
