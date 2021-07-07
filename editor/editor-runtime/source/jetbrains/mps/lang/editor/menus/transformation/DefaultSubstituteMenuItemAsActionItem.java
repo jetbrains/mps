@@ -64,6 +64,9 @@ public class DefaultSubstituteMenuItemAsActionItem extends SubstituteMenuItemAsA
       SContainmentLink containmentLink = myContext.getLink();
       SNode parentNode = myContext.getParentNode();
       SNode currentChild = myContext.getCurrentTargetNode();
+      if (newChild == currentChild) {
+        return newChild;
+      }
       if (containmentLink == null) {
         LOG.error("Containment link should not be null. " + "Parent node" + parentNode.getPresentation() + " Parent id: " + parentNode.getNodeId());
         return null;
