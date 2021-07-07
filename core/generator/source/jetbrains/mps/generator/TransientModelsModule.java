@@ -297,7 +297,7 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
     private TransientSModelDescriptor(@NotNull SModelReference modelRef) {
       super(modelRef, new NullDataSource());
-      myRefsTracker.attach(this,false);
+      myRefsTracker.attach(this, false);
     }
 
     /*package*/ void setBranchSerial(int v) {

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.impl.plan;
 
+import jetbrains.mps.extapi.model.ResolveInfoUpdater;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.generator.impl.ModelStreamManager;
@@ -218,8 +219,8 @@ public class CheckpointVault {
       final ModelFactory modelFactory = entry.modelFactory();
       InMemoryStreamDataSource ds = new InMemoryStreamDataSource();
       try {
-
-        modelFactory.save(cpState.getCheckpointModel(), ds, CONVERT_USER_OBJECTS ? UserObjectsPersistence.IGNORED : UserObjectsPersistence.REQUIRED);
+        SModel checkpointModel = cpState.getCheckpointModel();
+        modelFactory.save(checkpointModel, ds, CONVERT_USER_OBJECTS ? UserObjectsPersistence.IGNORED : UserObjectsPersistence.REQUIRED);
         handler.saveStream(entry.getFilename(), ds.getContentBytes());
       } catch (Exception ex) {
         // FIXME what can I do here?

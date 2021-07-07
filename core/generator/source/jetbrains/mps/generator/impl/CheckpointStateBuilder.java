@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.generator.impl;
 
+import jetbrains.mps.extapi.model.ResolveInfoUpdater;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.cache.MappingsMemento;
 import jetbrains.mps.generator.impl.plan.CheckpointState;
@@ -139,6 +140,8 @@ class CheckpointStateBuilder {
     // RR would not change list of languages, hence no updateUsedLanguages() call. And we don't care about explicit
     // imports of language's accessory models either.
     new ModelDependencyUpdate(myCheckpointModel).updateImportedModels(null);
+
+    new ResolveInfoUpdater().updateResolveInfoInRefs(myCheckpointModel);
 
     // XXX in fact, both prevCheckpoint and step CPs are already coded inside myCheckpointModel, see CME.createBlankCheckpointModel
     CheckpointIdentity prevCheckpoint = myTransitionTrace.getMostRecentCheckpoint();
