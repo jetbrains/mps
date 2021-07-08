@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.Before;
 import java.io.File;
 import org.junit.After;
-import jetbrains.mps.tool.environment.Log4jInitializer;
 import org.junit.Assert;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.util.MacrosFactory;
@@ -59,11 +58,6 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
   }
 
   private void runAndCheck(String scriptPath, String scriptFilename) {
-    try {
-      Log4jInitializer.init();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
     File scriptFile = new File(scriptPath, scriptFilename);
     File okFile = new File(scriptPath, "ok.log");
 
