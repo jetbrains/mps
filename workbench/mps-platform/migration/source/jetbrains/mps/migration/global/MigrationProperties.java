@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,31 @@
  */
 package jetbrains.mps.migration.global;
 
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public interface MigrationProperties {
+
+  static MigrationProperties getInstance(Project ideaProject) {
+    return ideaProject.getService(MigrationProperties.class);
+  }
+
+  static MigrationProperties getInstance(jetbrains.mps.project.Project mpsProject) {
+    return ProjectHelper.toIdeaProject(mpsProject).getService(MigrationProperties.class);
+  }
+
   void setProperty(@NotNull String key, String value);
 
   @Nullable
   String getProperty(String key);
+
+  // non-mandatory operations, storage implementation may not support these
+  default void addListener(ReloadListener l) {}
+  default void removeListener(ReloadListener l) {}
+
+  interface ReloadListener {
+    void onReload();
+  }
 }

@@ -10,7 +10,7 @@ import com.intellij.openapi.components.AbstractProjectComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.migration.global.ProjectMigrationProperties;
+import jetbrains.mps.migration.global.MigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.make.IMakeService;
@@ -18,7 +18,6 @@ import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.MakeNotification;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.migration.global.MigrationProperties;
 import jetbrains.mps.make.MakeServiceComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -94,7 +93,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final ReloadManager myReloadManager;
   private final LanguageRegistry myLanguageRegistry;
 
-  private final ProjectMigrationProperties myProperties;
+  private final MigrationProperties myProperties;
 
   private final SilentModuleVersionUpdater myVersionUpdater;
   private final MyReloadListener myReloadListener = new MyReloadListener();
@@ -129,7 +128,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     // FIXME doesn't need to be a project component. Perhaps, not even a project Service. Shall get activated
     //      by listeners attached by a StartupActivity
     myMpsProject = p;
-    myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
+    myProperties = MigrationProperties.getInstance(ideaProject);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myMake = mpsCore.getPlatform().findComponent(MakeServiceComponent.class).get();
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
@@ -562,7 +561,7 @@ __switch__:
     }
   }
 
-  private class MyPropertiesListener implements ProjectMigrationProperties.MigrationPropertiesReloadListener {
+  private class MyPropertiesListener implements MigrationProperties.ReloadListener {
     @Override
     public void onReload() {
       checkMigrationNeeded();

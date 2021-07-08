@@ -583,7 +583,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="7lByCvUxQwk" role="1B3o_S" />
       <node concept="3uibUv" id="6bvoCJgbuv3" role="1tU5fm">
-        <ref role="3uigEE" to="bdll:~ProjectMigrationProperties" resolve="ProjectMigrationProperties" />
+        <ref role="3uigEE" to="bdll:~MigrationProperties" resolve="MigrationProperties" />
       </node>
     </node>
     <node concept="3uibUv" id="285c2S_XGDB" role="EKbjA">
@@ -962,20 +962,11 @@
             <node concept="37vLTw" id="35TwGP_JNRS" role="37vLTJ">
               <ref role="3cqZAo" node="7lByCvUxRC$" resolve="myProperties" />
             </node>
-            <node concept="10QFUN" id="35TwGP_JNRT" role="37vLTx">
-              <node concept="2OqwBi" id="35TwGP_JPw1" role="10QFUP">
-                <node concept="37vLTw" id="35TwGP_JPw0" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3gptLqNJbqi" resolve="ideaProject" />
-                </node>
-                <node concept="liA8E" id="35TwGP_JPw2" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="35TwGP_JPw3" role="37wK5m">
-                    <ref role="3VsUkX" to="bdll:~MigrationProperties" resolve="MigrationProperties" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3uibUv" id="35TwGP_JNRX" role="10QFUM">
-                <ref role="3uigEE" to="bdll:~ProjectMigrationProperties" resolve="ProjectMigrationProperties" />
+            <node concept="2YIFZM" id="673TL7dA7Tk" role="37vLTx">
+              <ref role="37wK5l" to="bdll:~MigrationProperties.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="bdll:~MigrationProperties" resolve="MigrationProperties" />
+              <node concept="37vLTw" id="673TL7dA8Ou" role="37wK5m">
+                <ref role="3cqZAo" node="3gptLqNJbqi" resolve="ideaProject" />
               </node>
             </node>
           </node>
@@ -1599,7 +1590,7 @@
               <ref role="3cqZAo" node="7lByCvUxRC$" resolve="myProperties" />
             </node>
             <node concept="liA8E" id="7lByCvUySnc" role="2OqNvi">
-              <ref role="37wK5l" to="bdll:~ProjectMigrationProperties.addListener(jetbrains.mps.migration.global.ProjectMigrationProperties$MigrationPropertiesReloadListener)" resolve="addListener" />
+              <ref role="37wK5l" to="bdll:~MigrationProperties.addListener(jetbrains.mps.migration.global.MigrationProperties$ReloadListener)" resolve="addListener" />
               <node concept="37vLTw" id="7lByCvUySnd" role="37wK5m">
                 <ref role="3cqZAo" node="2Om_nYXquPH" resolve="myPropertiesListener" />
               </node>
@@ -1673,7 +1664,7 @@
               <ref role="3cqZAo" node="7lByCvUxRC$" resolve="myProperties" />
             </node>
             <node concept="liA8E" id="7lByCvUyX5q" role="2OqNvi">
-              <ref role="37wK5l" to="bdll:~ProjectMigrationProperties.removeListener(jetbrains.mps.migration.global.ProjectMigrationProperties$MigrationPropertiesReloadListener)" resolve="removeListener" />
+              <ref role="37wK5l" to="bdll:~MigrationProperties.removeListener(jetbrains.mps.migration.global.MigrationProperties$ReloadListener)" resolve="removeListener" />
               <node concept="37vLTw" id="7lByCvUyX5r" role="37wK5m">
                 <ref role="3cqZAo" node="2Om_nYXquPH" resolve="myPropertiesListener" />
               </node>
@@ -4227,8 +4218,8 @@
       <property role="1sVAO0" value="false" />
       <property role="1EXbeo" value="false" />
       <node concept="3Tm6S6" id="2Om_nYXqla9" role="1B3o_S" />
-      <node concept="3uibUv" id="4EMXKfBHdRN" role="EKbjA">
-        <ref role="3uigEE" to="bdll:~ProjectMigrationProperties$MigrationPropertiesReloadListener" resolve="ProjectMigrationProperties.MigrationPropertiesReloadListener" />
+      <node concept="3uibUv" id="2drPtAzrEJg" role="EKbjA">
+        <ref role="3uigEE" to="bdll:~MigrationProperties$ReloadListener" resolve="ReloadListener" />
       </node>
       <node concept="3clFb_" id="2Om_nYXqlab" role="jymVt">
         <property role="TrG5h" value="onReload" />

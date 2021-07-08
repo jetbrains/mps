@@ -17,6 +17,7 @@ package jetbrains.mps.project;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
@@ -24,6 +25,7 @@ import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
@@ -138,7 +140,13 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
 
   @Override
   public <T> T getComponent(Class<T> clazz) {
-    T rv = getProject().getComponent(clazz);
+    T rv = getProject().getComponent(clazz);;
+    // though would be great to support both components and services, I didn't find a reliable
+    // mechanism to detect whether supplied class is component or a service. Supplied interface may
+    // not be assignable to BaseComponent, only its implementation implements respective component
+    // interface (see EditorExtensionRegistry), and we may end up with getService for a component,
+    // which is not what IDEA tolerates (throws an exception, check
+    // logPluginError call in ComponentManagerImpl.doGetService).
     if (rv == null) {
       return super.getComponent(clazz);
     }

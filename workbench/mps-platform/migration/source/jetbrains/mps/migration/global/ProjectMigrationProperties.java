@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.migration.global;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import org.jdom.Element;
@@ -30,13 +30,16 @@ import java.util.TreeMap;
 
 @State(name = "MigrationProperties", storages = @Storage(value = "migration.xml")
 )
-public class ProjectMigrationProperties implements MigrationProperties, ProjectComponent, PersistentStateComponent<Element> {
+public class ProjectMigrationProperties implements MigrationProperties, PersistentStateComponent<Element>, Disposable {
   private static final String NAME = "key";
   private static final String VALUE = "value";
   private static final String SINGLE_PROP = "entry";
+  private final List<MigrationProperties.ReloadListener> myListeners = new ArrayList<>(4);
   protected Map<String, String> myProperties = new TreeMap<>();
+
   public ProjectMigrationProperties() {
   }
+
   public void setProperty(@NotNull String key, String value) {
     if (value == null) {
       myProperties.remove(key);
@@ -48,16 +51,17 @@ public class ProjectMigrationProperties implements MigrationProperties, ProjectC
   public String getProperty(String key) {
     return myProperties.get(key);
   }
-  public interface MigrationPropertiesReloadListener {
-    void onReload();
-  }
-  private List<ProjectMigrationProperties.MigrationPropertiesReloadListener> myListeners = new ArrayList<>(1);
-  public void addListener(ProjectMigrationProperties.MigrationPropertiesReloadListener l) {
+
+  @Override
+  public void addListener(MigrationProperties.ReloadListener l) {
     myListeners.add(l);
   }
-  public void removeListener(ProjectMigrationProperties.MigrationPropertiesReloadListener l) {
+
+  @Override
+  public void removeListener(MigrationProperties.ReloadListener l) {
     myListeners.remove(l);
   }
+
   @Nullable
   @Override
   public Element getState() {
@@ -76,26 +80,11 @@ public class ProjectMigrationProperties implements MigrationProperties, ProjectC
     for (Element e : state.getChildren(SINGLE_PROP)) {
       myProperties.put(e.getAttributeValue(NAME), e.getAttributeValue(VALUE));
     }
-    for (ProjectMigrationProperties.MigrationPropertiesReloadListener listener : myListeners) {
-      listener.onReload();
-    }
+    myListeners.forEach(ReloadListener::onReload);
   }
+
   @Override
-  public void projectOpened() {
-  }
-  @Override
-  public void projectClosed() {
+  public void dispose() {
     myProperties.clear();
-  }
-  @Override
-  public void initComponent() {
-  }
-  @Override
-  public void disposeComponent() {
-  }
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "ProjectMigrationProperties";
   }
 }

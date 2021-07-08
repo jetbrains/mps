@@ -121,13 +121,13 @@ public class ProjectMigrationsRegistry {
    */
   public void markMigratedToActualVersion(@NotNull Project mpsProject) {
     final int version = getCurrentPlatformBaselineVersion();
-    mpsProject.getComponent(MigrationProperties.class).setProperty(MIGRATION_APPLIED_KEY, Integer.toString(version));
+    getMigrationProperties(mpsProject).setProperty(MIGRATION_APPLIED_KEY, Integer.toString(version));
   }
 
   // FIXME perhaps, shall expose recordActualVersion(Project) to update the property once project
   //       has been successfully migrated?
   private void recordBaselineVersion(Project mpsProject, int version) {
-    mpsProject.getComponent(MigrationProperties.class).setProperty(MIGRATION_BASELINE_KEY, Integer.toString(version));
+    getMigrationProperties(mpsProject).setProperty(MIGRATION_BASELINE_KEY, Integer.toString(version));
   }
 
   private int getCurrentPlatformBaselineVersion() {
@@ -136,7 +136,7 @@ public class ProjectMigrationsRegistry {
 
   private int getProjectBaselineVersion(Project mpsProject, int defaultBaselineVersion) {
     try {
-      final String v = mpsProject.getComponent(MigrationProperties.class).getProperty(MIGRATION_BASELINE_KEY);
+      final String v = getMigrationProperties(mpsProject).getProperty(MIGRATION_BASELINE_KEY);
       return v == null ? defaultBaselineVersion : Integer.parseInt(v);
     } catch (Exception ex) {
       Logger.getLogger(getClass()).warn("Bad project baseline version for migration", ex);
@@ -144,9 +144,13 @@ public class ProjectMigrationsRegistry {
     }
   }
 
+  private static MigrationProperties getMigrationProperties(Project mpsProject) {
+    return MigrationProperties.getInstance(mpsProject);
+  }
+
   private int getAppliedMigrationsVersion(Project mpsProject, int defaultVersion) {
     try {
-      final String v = mpsProject.getComponent(MigrationProperties.class).getProperty(MIGRATION_APPLIED_KEY);
+      final String v = getMigrationProperties(mpsProject).getProperty(MIGRATION_APPLIED_KEY);
       return v == null ? defaultVersion : Integer.parseInt(v);
     } catch (Exception ex) {
       Logger.getLogger(getClass()).info("Bad project version for applied migrations", ex);
