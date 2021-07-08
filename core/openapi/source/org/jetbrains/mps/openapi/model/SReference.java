@@ -85,5 +85,9 @@ public interface SReference {
    * @since 2021.2
    */
   @NotNull
-  ResolveInfo describeTarget();
+  default ResolveInfo describeTarget() {
+    // the only reason to have this implementation here is to deal with SReference subclass in mps-extensions/shadowmodels I don't want to
+    // modify right now. Perhaps, worth keeping couple of releases in case there are other cases out there?
+    throw new UnsupportedOperationException();
+  }
 }
