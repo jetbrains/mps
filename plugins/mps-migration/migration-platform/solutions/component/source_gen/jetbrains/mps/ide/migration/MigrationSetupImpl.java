@@ -4,13 +4,13 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import java.util.List;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.Collection;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.util.IStatus;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -28,6 +29,7 @@ import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/3577160840697329341", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationSetupImpl implements MigrationSetup {
   private final Project myProject;
+  private final ProjectMigrationsRegistry myMigrationRegistry;
   private final List<ProjectMigration> myProjectMigrations = ListSequence.fromList(new ArrayList<ProjectMigration>());
   private final List<ScriptApplied> myModuleMigrations = ListSequence.fromList(new ArrayList<ScriptApplied>());
   private boolean myBrokenDepsOfProjectModules;
@@ -45,10 +47,10 @@ public class MigrationSetupImpl implements MigrationSetup {
    */
   public MigrationSetupImpl(final Project mpsProject, @Nullable final Iterable<SModule> modules) {
     myProject = mpsProject;
+    myMigrationRegistry = ProjectMigrationsRegistry.getInstance();
     myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        ProjectMigrationsRegistry pmr = ProjectMigrationsRegistry.getInstance();
-        List<ProjectMigration> migrations = pmr.getMigrations(myProject);
+        List<ProjectMigration> migrations = myMigrationRegistry.getMigrations(myProject);
         ListSequence.fromList(myProjectMigrations).addSequence(ListSequence.fromList(migrations).where(new IWhereFilter<ProjectMigration>() {
           public boolean accept(ProjectMigration it) {
             return it.shouldBeExecuted(myProject);
@@ -120,6 +122,14 @@ public class MigrationSetupImpl implements MigrationSetup {
 
     mv.update(module);
     ((AbstractModule) module).save();
+  }
+
+  public IStatus checkProjectVersion() {
+    return myMigrationRegistry.checkMigratedToNewerVersion(myProject);
+  }
+
+  public void markMigratedProjectVersion() {
+    myMigrationRegistry.markMigratedToActualVersion(myProject);
   }
 
   private Iterable<ScriptApplied> getAllSteps(SModule module) {

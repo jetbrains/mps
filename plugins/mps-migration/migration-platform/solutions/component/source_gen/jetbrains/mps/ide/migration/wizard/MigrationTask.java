@@ -87,6 +87,7 @@ public class MigrationTask {
     } catch (MigrationError me) {
       error(me);
     } finally {
+      mySession.completed();
       myMonitor.done();
       PersistenceRegistry.getInstance().enableFastFindUsages();
     }

@@ -29,6 +29,7 @@ import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.ide.migration.MigrationSetupImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -62,6 +63,13 @@ public interface MigrationSession {
   MigrationError getError();
 
   void setError(MigrationError errors);
+
+
+  /**
+   * Indicates migration process (as specified by required steps) has been completed.
+   * Doesn't indicate success, there could be an {@link jetbrains.mps.ide.migration.wizard.MigrationSession#getError() error}.
+   */
+  void completed();
 
   abstract class MigrationSessionBase implements MigrationSession {
     private Object myStage = null;
@@ -206,6 +214,14 @@ public interface MigrationSession {
         progress.advance(1);
       }
       progress.done();
+    }
+
+
+    @Override
+    public void completed() {
+      if (getError() == null && requires(MigrationStepKind.MIGRATE)) {
+        ((MigrationSetupImpl) getMigrationRegistry()).markMigratedProjectVersion();
+      }
     }
 
     private boolean canBeExecutedImmediately(ScriptApplied script) {

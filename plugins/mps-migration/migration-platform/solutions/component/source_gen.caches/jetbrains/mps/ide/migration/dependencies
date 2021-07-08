@@ -187,6 +187,7 @@
   </dependency>
   <dependency className="jetbrains.mps.ide.migration.MigrationNotificationsSupport">
     <classNode dependClassName="com.intellij.notification.Notification" />
+    <classNode dependClassName="com.intellij.notification.NotificationGroup" />
     <classNode dependClassName="com.intellij.notification.NotificationGroupManager" />
     <classNode dependClassName="com.intellij.notification.NotificationListener" />
     <classNode dependClassName="com.intellij.notification.NotificationType" />
@@ -196,6 +197,7 @@
     <classNode dependClassName="com.intellij.openapi.ui.popup.Balloon" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.StringBuilder" />
     <classNode dependClassName="java.util.HashSet" />
@@ -270,6 +272,7 @@
     <classNode dependClassName="jetbrains.mps.project.structure.modules.ModuleDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.ModuleDependencyVersions" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
+    <classNode dependClassName="jetbrains.mps.util.IStatus" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
@@ -316,7 +319,6 @@
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationNotificationsSupport" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationProblemHandler" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationSessionImpl" />
-    <classNode dependClassName="jetbrains.mps.ide.migration.MigrationSetup" />
     <classNode dependClassName="jetbrains.mps.ide.migration.MigrationSetupImpl" />
     <classNode dependClassName="jetbrains.mps.ide.migration.PostponedState" />
     <classNode dependClassName="jetbrains.mps.ide.migration.ScriptApplied" />
@@ -352,6 +354,7 @@
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistryListener" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
+    <classNode dependClassName="jetbrains.mps.util.IStatus" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />

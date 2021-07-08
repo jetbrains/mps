@@ -30,6 +30,7 @@ import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.startup.StartupManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Set;
@@ -89,7 +90,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/6781485246382122239", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationTrigger extends AbstractProjectComponent implements IStartupMigrationExecutor {
   private final MPSProject myMpsProject;
-  private final MigrationSetup myProjectMigrationSetup;
+  private final MigrationSetupImpl myProjectMigrationSetup;
   private final ReloadManager myReloadManager;
   private final LanguageRegistry myLanguageRegistry;
 
@@ -189,12 +190,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
             addListeners();
-
-            myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-              public void run() {
-                checkNotDeployedLanguages();
-              }
-            });
+            checkNotDeployedLanguages();
             checkMigrationNeeded();
           }
         });
@@ -234,6 +230,10 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   /*package*/ void checkMigrationNeeded() {
+    IStatus checkProjectVersion = myProjectMigrationSetup.checkProjectVersion();
+    if (checkProjectVersion.isError()) {
+      myNotifications.showProjectVersionError(checkProjectVersion.getMessage());
+    }
     myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         checkMigrationNeededOnModuleChange(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject));
@@ -265,6 +265,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
     if (myMigrationBlock.isMigrationForbidden()) {
       // the "not deployed" languages case
+      // FIXME isMigrationForbidden here implies BlockCause is about non-deployed languages, why, oh, why?!
       myNotifications.showDeployWarn(CollectionSequence.fromCollection(myProjectMigrationSetup.getProjectMigrations()).any(new IWhereFilter<ProjectMigration>() {
         public boolean accept(ProjectMigration it) {
           return it instanceof CleanupProjectMigration;

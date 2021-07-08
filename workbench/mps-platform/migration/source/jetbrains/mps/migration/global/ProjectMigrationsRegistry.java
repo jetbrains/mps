@@ -17,6 +17,8 @@ package jetbrains.mps.migration.global;
 
 import com.intellij.openapi.application.ApplicationInfo;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.util.IStatus;
+import jetbrains.mps.util.Status;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,7 +28,10 @@ import java.util.List;
 
 public class ProjectMigrationsRegistry {
   private static final String MIGRATION_BASELINE_KEY = "project.baseline.version";
+  private static final String MIGRATION_APPLIED_KEY = "project.migrated.version";
   private static ProjectMigrationsRegistry ourInstance = new ProjectMigrationsRegistry();
+  // don't expect to see projects older than those coming from MPS 2018.1; 3 years old seems sufficient enough.
+  private static final int defaultBaselineVersionWhenUnspecified = 181;
 
   public static ProjectMigrationsRegistry getInstance() {
     return ourInstance;
@@ -58,8 +63,6 @@ public class ProjectMigrationsRegistry {
    * @return migrations deemed necessary for the project based on auxiliary knowledge of project version.
    */
   public List<ProjectMigration> getMigrations(@NotNull Project mpsProject) {
-    // don't expect to see projects older than those coming from MPS 2018.1; 3 years old seems sufficient enough.
-    final int defaultBaselineVersionWhenUnspecified = 181;
     final int v = getProjectBaselineVersion(mpsProject, defaultBaselineVersionWhenUnspecified);
     return getMigrations(v);
   }
@@ -87,17 +90,48 @@ public class ProjectMigrationsRegistry {
    * @param mpsProject newly created project
    */
   public void applyMigrationsToNewProject(@NotNull Project mpsProject) {
-    int version = ApplicationInfo.getInstance().getBuild().getBaselineVersion();
+    int version = getCurrentPlatformBaselineVersion();
     recordBaselineVersion(mpsProject, version);
     for (ProjectMigration m : getMigrations(version)) {
       m.applyToCreatedProject(mpsProject);
     }
   }
 
+
+  /**
+   * Tells if migrations for a newer MPS version have been already applied to the project.
+   * @param mpsProject project in question
+   * @return {@code IStatus.isOK} only if there's a record of migration applied for a platform version greater than the actual one
+   */
+  public IStatus checkMigratedToNewerVersion(@NotNull Project mpsProject) {
+    // if there's no recorded version, assume the same as for newly created project
+    final int applied = getAppliedMigrationsVersion(mpsProject, getProjectBaselineVersion(mpsProject, defaultBaselineVersionWhenUnspecified));
+    final int actual = getCurrentPlatformBaselineVersion();
+    // applied == actual case is fine, regular bugfix releases are on the same platform
+    if (actual < applied) {
+      final String m = String.format("Actual platform version %d, project migrated to version %d", actual, applied);
+      return new Status.ERROR(m);
+    } else {
+      return new Status.OK();
+    }
+  }
+
+  /**
+   * Record the fact project has been migrated with actual MPS version
+   */
+  public void markMigratedToActualVersion(@NotNull Project mpsProject) {
+    final int version = getCurrentPlatformBaselineVersion();
+    mpsProject.getComponent(MigrationProperties.class).setProperty(MIGRATION_APPLIED_KEY, Integer.toString(version));
+  }
+
   // FIXME perhaps, shall expose recordActualVersion(Project) to update the property once project
   //       has been successfully migrated?
   private void recordBaselineVersion(Project mpsProject, int version) {
     mpsProject.getComponent(MigrationProperties.class).setProperty(MIGRATION_BASELINE_KEY, Integer.toString(version));
+  }
+
+  private int getCurrentPlatformBaselineVersion() {
+    return ApplicationInfo.getInstance().getBuild().getBaselineVersion();
   }
 
   private int getProjectBaselineVersion(Project mpsProject, int defaultBaselineVersion) {
@@ -107,6 +141,16 @@ public class ProjectMigrationsRegistry {
     } catch (Exception ex) {
       Logger.getLogger(getClass()).warn("Bad project baseline version for migration", ex);
       return defaultBaselineVersion;
+    }
+  }
+
+  private int getAppliedMigrationsVersion(Project mpsProject, int defaultVersion) {
+    try {
+      final String v = mpsProject.getComponent(MigrationProperties.class).getProperty(MIGRATION_APPLIED_KEY);
+      return v == null ? defaultVersion : Integer.parseInt(v);
+    } catch (Exception ex) {
+      Logger.getLogger(getClass()).info("Bad project version for applied migrations", ex);
+      return defaultVersion;
     }
   }
 }

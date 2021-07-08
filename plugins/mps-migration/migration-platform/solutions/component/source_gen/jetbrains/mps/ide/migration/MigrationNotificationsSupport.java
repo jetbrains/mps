@@ -10,18 +10,19 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.event.HyperlinkEvent;
 import com.intellij.notification.Notifications;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -68,7 +69,7 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
     if (myLastNotification != null && !(myLastNotification.isExpired())) {
       return false;
     }
-    myLastNotification = new Notification(NotificationGroupManager.getInstance().getNotificationGroup("Migration").getDisplayId(), "Migration required", "<p>This project requires migration.</p><p><a href=\"" + REF_RUN_MIGRATION + "\">Migrate</a></p>", NotificationType.INFORMATION, new NotificationListener() {
+    myLastNotification = getNofifyGroup().createNotification("Migration required", "<p>This project requires migration.</p><p><a href=\"" + REF_RUN_MIGRATION + "\">Migrate</a></p>", NotificationType.INFORMATION, new NotificationListener() {
       @Override
       public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
         if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
@@ -82,6 +83,22 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
     });
     Notifications.Bus.notify(myLastNotification, myIdeaProject);
     return true;
+  }
+
+  private NotificationGroup getNofifyGroup() {
+    return NotificationGroupManager.getInstance().getNotificationGroup("Migration");
+  }
+
+  public void showProjectVersionError(String extraInfo) {
+    if (myLastNotification != null) {
+      if (myLastNotification.getType() == NotificationType.ERROR) {
+        // there's an error already, don't obscure by another one
+        return;
+      }
+      myLastNotification.expire();
+    }
+    myLastNotification = getNofifyGroup().createNotification("Migrations", "Project has been migrated with a newer MPS version<br/>" + extraInfo, NotificationType.ERROR, null);
+    Notifications.Bus.notify(myLastNotification, myIdeaProject);
   }
 
   public void showDeployWarn(boolean hasCleanups) {
@@ -106,12 +123,17 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
   }
 
   /*package*/ Set<SLanguage> getNotDeployedUsedLanguages() {
-    Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-    final Set<SLanguage> allUsedLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
-      public Iterable<SLanguage> translate(SModule it) {
-        return it.getUsedLanguages();
+    final Set<SLanguage> allUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
+    myMpsProject.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
+        SetSequence.fromSet(allUsedLanguages).addSequence(Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
+          public Iterable<SLanguage> translate(SModule it) {
+            return it.getUsedLanguages();
+          }
+        }));
       }
-    }));
+    });
     // remove deployed languages (i.e. known to LanguageRegistry) from the set
     myLangRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
       public void accept(LanguageRuntime lr) {
