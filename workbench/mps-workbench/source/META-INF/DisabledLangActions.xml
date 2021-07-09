@@ -32,7 +32,7 @@
     <group id="ShowIntentionsGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 
     <action id="TogglePopupHints" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="FindModal" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+
 
     <action id="CodeInspection.OnEditor" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
@@ -298,10 +298,6 @@
     <group id="ProjectViewPopupMenuModifyGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    <group id="ProjectViewPopupMenuModifyGroup">-->
     <group id="MarkFileAs" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--      <group id="MarkFileAs">-->
-    <action id="MarkAsPlainTextAction" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="MarkAsOriginalTypeAction" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--      </group>-->
     <!--    </group>-->
 
     <group id="ProjectViewPopupMenuRunGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
