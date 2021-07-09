@@ -421,6 +421,7 @@
       <concept id="772883491822711658" name="jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature" flags="ng" index="3koIoq">
         <reference id="772883491822711663" name="link" index="3koIov" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="2162403111523059536" name="jetbrains.mps.lang.editor.structure.IdSelector" flags="ng" index="1lyA5W">
         <property id="2162403111529391190" name="cellId" index="1lUG9U" />
       </concept>
@@ -3632,6 +3633,9 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="34QqEe" id="4QxNUjH4Qts" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="1liFee" id="4QHBb2h6vMz" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
@@ -16973,6 +16977,9 @@
         <ref role="1NtTu8" to="tpee:5vlcUuJ5uOY" resolve="text" />
         <ref role="1k5W1q" node="6H7j4iMMsQa" resolve="TODO" />
         <ref role="1ERwB7" node="6XNQz5_R_qe" resolve="HandleInsert" />
+        <node concept="1liFee" id="4QHBb2h6RF2" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
     </node>
   </node>

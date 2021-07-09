@@ -8115,5 +8115,12 @@
     <property role="EcuMT" value="8899501406397518321" />
     <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
   </node>
+  <node concept="1TIwiD" id="2xkx6pX7zvC">
+    <property role="EcuMT" value="2906093235281475560" />
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="TrG5h" value="SpellCheckStyle" />
+    <property role="34LRSv" value="spellcheck" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
+  </node>
 </model>
 

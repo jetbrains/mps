@@ -22403,6 +22403,16 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="2xkx6pX7Ac4" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="tpc2:2xkx6pX7zvC" resolve="SpellCheck" />
+      <node concept="gft3U" id="2xkx6pX7B0j" role="1lVwrX">
+        <node concept="10M0yZ" id="2xkx6pX7H5V" role="gfFT$">
+          <ref role="3cqZAo" to="5ueo:~StyleAttributes.SPELLCHECK" resolve="SPELLCHECK" />
+          <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
+        </node>
+      </node>
+    </node>
     <node concept="3aamgX" id="5hGzT1$6r1r" role="3aUrZf">
       <ref role="30HIoZ" to="tpc2:hFCHQP0" resolve="FirstPositionAllowedStyleClassItem" />
       <node concept="gft3U" id="5hGzT1$6r1s" role="1lVwrX">

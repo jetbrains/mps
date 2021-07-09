@@ -98,6 +98,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.LAST_POSITION_ALLOWED, true);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_8g1p9d_a2b0());
       style.set(StyleAttributes.URL, _StyleParameter_QueryFunction_8g1p9d_a3b0());
+      style.set(StyleAttributes.SPELLCHECK, true);
       editorCell.getStyle().putAll(style);
       Word_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new Word_KeyMap());

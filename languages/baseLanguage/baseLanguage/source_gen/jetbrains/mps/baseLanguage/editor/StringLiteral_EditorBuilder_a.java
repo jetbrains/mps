@@ -83,6 +83,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.SELECTABLE, true);
       style.set(StyleAttributes.EDITABLE, true);
       style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
+      style.set(StyleAttributes.SPELLCHECK, true);
       editorCell.getStyle().putAll(style);
       if (true) {
         editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);

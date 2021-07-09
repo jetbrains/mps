@@ -9816,13 +9816,16 @@
       <node id="2668265993332135371" at="73,107,74,79" concept="2" />
       <node id="2668265993332135371" at="74,79,75,82" concept="2" />
       <node id="2668265993332135371" at="75,82,76,50" concept="2" />
-      <node id="2668265993332135371" at="76,50,77,89" concept="2" />
-      <node id="2668265993332135371" at="77,89,78,262" concept="2" />
-      <node id="2668265993332135371" at="78,262,79,34" concept="2" />
-      <node id="2668265993332135371" at="79,34,80,71" concept="2" />
-      <node id="2668265993332135371" at="80,71,81,22" concept="9" />
-      <node id="8970989240999019150" at="85,0,86,0" concept="12" trace="text$aOLd" />
-      <node id="8970989240999019150" at="89,0,90,0" concept="12" trace="TextCommentLinePart$Eb" />
+      <node id="2668265993332135371" at="76,50,77,34" concept="8" />
+      <node id="5597302194056297291" at="77,34,78,48" concept="2" />
+      <node id="2668265993332135371" at="78,48,79,40" concept="2" />
+      <node id="2668265993332135371" at="79,40,80,89" concept="2" />
+      <node id="2668265993332135371" at="80,89,81,262" concept="2" />
+      <node id="2668265993332135371" at="81,262,82,34" concept="2" />
+      <node id="2668265993332135371" at="82,34,83,71" concept="2" />
+      <node id="2668265993332135371" at="83,71,84,22" concept="9" />
+      <node id="8970989240999019150" at="88,0,89,0" concept="12" trace="text$aOLd" />
+      <node id="8970989240999019150" at="92,0,93,0" concept="12" trace="TextCommentLinePart$Eb" />
       <node id="8970989240999019150" at="28,0,30,0" concept="3" trace="myNode" />
       <node id="8970989240999019150" at="42,0,45,0" concept="7" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="2668265993332135371" at="62,0,65,0" concept="7" trace="getText#()Ljava/lang/String;" />
@@ -9832,7 +9835,7 @@
       <node id="8970989240999019150" at="36,0,41,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2668265993332135371" at="60,44,72,6" concept="8" />
       <node id="8970989240999019150" at="46,0,60,0" concept="7" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2668265993332135371" at="60,0,83,0" concept="7" trace="createModelAccess_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2668265993332135371" at="60,0,86,0" concept="7" trace="createModelAccess_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="8970989240999019150" at="38,26,39,18" />
       <scope id="8970989240999019150" at="42,39,43,32" />
       <scope id="2668265993332135374" at="62,31,63,70" />
@@ -9857,15 +9860,16 @@
         <var name="style" id="8970989240999019150" />
       </scope>
       <scope id="8970989240999019150" at="46,0,60,0" />
-      <scope id="2668265993332135371" at="60,44,81,22">
+      <scope id="2668265993332135371" at="60,44,84,22">
         <var name="editorCell" id="2668265993332135371" />
         <var name="modelAccessor" id="2668265993332135371" />
+        <var name="style" id="2668265993332135371" />
       </scope>
-      <scope id="2668265993332135371" at="60,0,83,0" />
-      <unit id="8970989240999019150" at="84,0,87,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a$PROPS" />
-      <unit id="8970989240999019150" at="88,0,91,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a$CONCEPTS" />
+      <scope id="2668265993332135371" at="60,0,86,0" />
+      <unit id="8970989240999019150" at="87,0,90,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a$PROPS" />
+      <unit id="8970989240999019150" at="91,0,94,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a$CONCEPTS" />
       <unit id="2668265993332135371" at="61,38,72,5" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a$1" />
-      <unit id="8970989240999019150" at="27,0,92,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a" />
+      <unit id="8970989240999019150" at="27,0,95,0" name="jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/8970989240999060766">

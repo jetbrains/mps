@@ -4,7 +4,6 @@ package jetbrains.mps.java.platform.highlighters;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.checking.BaseEditorChecker;
-import org.jetbrains.mps.openapi.language.SConcept;
 import com.intellij.openapi.project.Project;
 import java.util.regex.Pattern;
 import com.intellij.spellchecker.SpellCheckerManager;
@@ -15,33 +14,25 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.util.Cancellable;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodeEditor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import com.intellij.ui.JBColor;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.TextLine;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import jetbrains.mps.ide.editor.checkers.ModelProblemMessage;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/2102711303277483637", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class CommentSpellChecker extends BaseEditorChecker {
-  private final SConcept mySingleLineCmment = CONCEPTS.TextCommentPart$LX;
-  private final SConcept myJavadocComment = CONCEPTS.TextCommentLinePart$Eb;
-  private final SConcept word = CONCEPTS.Word$Dn;
-  private final SConcept myStringLiteral = CONCEPTS.StringLiteral$xu;
-
   private boolean myUpdateNeeded;
   private Boolean myEnabled;
   private final Project myProject;
@@ -77,11 +68,9 @@ public class CommentSpellChecker extends BaseEditorChecker {
     }
     for (SModelEvent e : events) {
       if (e instanceof SModelPropertyEvent) {
-        final SConcept c = ((SModelPropertyEvent) e).getNode().getConcept();
-        if (c.isSubConceptOf(mySingleLineCmment) || c.isSubConceptOf(myJavadocComment) || c.equals(myStringLiteral) || c.isSubConceptOf(word)) {
-          myUpdateNeeded = true;
-          break;
-        }
+        // not quite nice, no idea though what I could possibly do better here
+        myUpdateNeeded = true;
+        break;
       }
     }
   }
@@ -99,25 +88,25 @@ public class CommentSpellChecker extends BaseEditorChecker {
   @NotNull
   @Override
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFix, Cancellable cancellable) {
-    SNode editedNode = component.getEditedNode();
-    List<EditorMessage> messages = new ArrayList<EditorMessage>(4);
-    for (SNode n : SNodeOperations.getNodeDescendants(editedNode, null, true, new SAbstractConcept[]{})) {
+    EditorCell rc = component.getRootCell();
+    List<EditorMessage> messages = new ArrayList<EditorMessage>();
+    for (jetbrains.mps.openapi.editor.cells.EditorCell ec : CellTraversalUtil.iterateTree(rc, rc, true)) {
       if (cancellable.isCancelled()) {
         return UpdateResult.CANCELLED;
       }
-      if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(myJavadocComment))) {
-        SNode p = SNodeOperations.as(n, SNodeOperations.asSConcept(myJavadocComment));
-        spellCheck(SPropertyOperations.getString(p, PROPS.text$aOLd), n, messages);
-      } else if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(mySingleLineCmment))) {
-        SNode p = SNodeOperations.as(n, SNodeOperations.asSConcept(mySingleLineCmment));
-        spellCheck(SPropertyOperations.getString(p, PROPS.text$ag2i), n, messages);
-      } else if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(word))) {
-        SNode w = SNodeOperations.as(n, SNodeOperations.asSConcept(word));
-        spellCheck(SPropertyOperations.getString(w, PROPS.value$zQr_), n, messages);
-      } else if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(myStringLiteral))) {
-        SNode l = SNodeOperations.as(n, SNodeOperations.asSConcept(myStringLiteral));
-        spellCheck(SPropertyOperations.getString(l, PROPS.value$w7MM), n, messages);
+      if (false == ec instanceof EditorCell_Label) {
+        continue;
       }
+      Boolean val = ec.getStyle().get(StyleAttributes.SPELLCHECK);
+      if (val == null || !(val.booleanValue())) {
+        continue;
+      }
+      SNode n = ec.getSNode();
+      if (n == null) {
+        continue;
+      }
+      String text = ((EditorCell_Label) ec).getText();
+      spellCheck(text, n, messages);
     }
     return new UpdateResult.Completed(true, messages);
   }
@@ -248,14 +237,14 @@ public class CommentSpellChecker extends BaseEditorChecker {
 
 
     @Override
-    public boolean acceptCell(EditorCell cell, EditorComponent editor) {
-      return cell instanceof EditorCell_Label && editor.isValid(cell);
+    public boolean acceptCell(jetbrains.mps.openapi.editor.cells.EditorCell cell, EditorComponent editor) {
+      return cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell_Label && editor.isValid(cell);
     }
 
     @Override
-    public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
-      if (cell instanceof EditorCell_Label) {
-        TextLine tl = ((EditorCell_Label) cell).getRenderedTextLine();
+    public void paint(Graphics g, EditorComponent editorComponent, jetbrains.mps.openapi.editor.cells.EditorCell cell) {
+      if (cell instanceof jetbrains.mps.nodeEditor.cells.EditorCell_Label) {
+        TextLine tl = ((jetbrains.mps.nodeEditor.cells.EditorCell_Label) cell).getRenderedTextLine();
         final int y = cell.getY() + cell.getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT;
         EditorFontMetrics fm = tl.getEditorFontMetrics();
         final String renderedText = tl.getText();
@@ -277,19 +266,5 @@ public class CommentSpellChecker extends BaseEditorChecker {
         ModelProblemMessage.drawWaveUnderCell(g, getColor(), cell);
       }
     }
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
-    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
-    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
-    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

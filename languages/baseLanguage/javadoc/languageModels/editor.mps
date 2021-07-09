@@ -166,6 +166,7 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="2162403111523059536" name="jetbrains.mps.lang.editor.structure.IdSelector" flags="ng" index="1lyA5W">
         <property id="2162403111529391190" name="cellId" index="1lUG9U" />
       </concept>
@@ -2173,6 +2174,9 @@
         </node>
         <node concept="A1WHu" id="1wEcoXjJACh" role="3vIgyS">
           <ref role="A1WHt" node="1wEcoXjJAC5" resolve="TextCommentLinePart_ApplySideTransforms" />
+        </node>
+        <node concept="1liFee" id="4QHBb2hfnHb" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
       </node>
       <node concept="l2Vlx" id="62wYidUIMCj" role="2iSdaV" />

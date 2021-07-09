@@ -27615,5 +27615,31 @@
       <node concept="3clFbS" id="7I1om2A$cbc" role="2VODD2" />
     </node>
   </node>
+  <node concept="13h7C7" id="2xkx6pX7zwt">
+    <property role="3GE5qa" value="Stylesheet" />
+    <ref role="13h7C2" to="tpc2:2xkx6pX7zvC" resolve="SpellCheckStyle" />
+    <node concept="13hLZK" id="2xkx6pX7zwu" role="13h7CW">
+      <node concept="3clFbS" id="2xkx6pX7zwv" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="2xkx6pX7zxr" role="13h7CS">
+      <property role="TrG5h" value="getStyleAttribute" />
+      <ref role="13i0hy" node="3a0zHG4tjdX" resolve="getStyleAttribute" />
+      <node concept="3Tm1VV" id="2xkx6pX7zxu" role="1B3o_S" />
+      <node concept="3clFbS" id="2xkx6pX7zxw" role="3clF47">
+        <node concept="3clFbF" id="2xkx6pX7$MM" role="3cqZAp">
+          <node concept="10M0yZ" id="2xkx6pX7$Ng" role="3clFbG">
+            <ref role="3cqZAo" to="5ueo:~StyleAttributes.SPELLCHECK" resolve="SPELLCHECK" />
+            <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="2xkx6pX7zxx" role="3clF45">
+        <ref role="3uigEE" to="hox0:~StyleAttribute" resolve="StyleAttribute" />
+        <node concept="3uibUv" id="2xkx6pX7zxy" role="11_B2D">
+          <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

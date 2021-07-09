@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -231,6 +231,8 @@ public class StyleAttributes {
   public static final StyleAttribute<Integer> MAX_WIDTH = new SimpleStyleAttribute<>("max.width", null, true);
 
   public static final StyleAttribute<String> URL = new SimpleStyleAttribute<>("url", null, true);
+
+  public static final StyleAttribute<Boolean> SPELLCHECK = new SimpleStyleAttribute<>("spellcheck", false, true);
 
   /**
    * Adapter for {@link Color} to support color scheme changes.
