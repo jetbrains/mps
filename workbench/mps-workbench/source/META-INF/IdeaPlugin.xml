@@ -49,19 +49,11 @@
     <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="InspectCodeInCodeMenuGroup"/>
     <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="InspectCodeActionInPopupMenus"/>
 
-    <group id="AnalyzeActions">
-    </group>
-
     <group id="AnalyzeMenu" popup="true">
       <separator/>
       <reference ref="AnalyzeActions"/>
       <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
     </group>
-
-    <!-- Help -->
-    <action id="WhatsNewAction" class="com.intellij.ide.actions.WhatsNewAction">
-      <add-to-group group-id="HelpMenu" anchor="after" relative-to-action="ShowTips"/>
-    </action>
     <!--End of analog of groups changes from JavaActions.xml-->
   </actions>
 
