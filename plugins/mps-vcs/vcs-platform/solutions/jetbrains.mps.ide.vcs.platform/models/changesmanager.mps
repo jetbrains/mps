@@ -14901,8 +14901,12 @@
             <node concept="37vLTw" id="2BHiRxeuna0" role="37vLTJ">
               <ref role="3cqZAo" node="2n7wcdLaAX3" resolve="myProject" />
             </node>
-            <node concept="37vLTw" id="2BHiRxglnmP" role="37vLTx">
-              <ref role="3cqZAo" node="2n7wcdLaAXn" resolve="project" />
+            <node concept="2YIFZM" id="6QMYcoz4Mir" role="37vLTx">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <node concept="37vLTw" id="6QMYcoz4MI6" role="37wK5m">
+                <ref role="3cqZAo" node="2n7wcdLaAXn" resolve="project" />
+              </node>
             </node>
           </node>
         </node>
@@ -14912,13 +14916,8 @@
               <ref role="3cqZAo" node="2n7wcdLaAX6" resolve="myMapping" />
             </node>
             <node concept="2OqwBi" id="4Ty7LDC_b3e" role="37vLTx">
-              <node concept="2OqwBi" id="4Ty7LDC_adW" role="2Oq$k0">
-                <node concept="37vLTw" id="4Ty7LDC_9Bz" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2n7wcdLaAXn" resolve="project" />
-                </node>
-                <node concept="liA8E" id="4Ty7LDC_aM1" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
-                </node>
+              <node concept="37vLTw" id="4Ty7LDC_9Bz" role="2Oq$k0">
+                <ref role="3cqZAo" node="2n7wcdLaAXn" resolve="project" />
               </node>
               <node concept="liA8E" id="4Ty7LDC_bsB" role="2OqNvi">
                 <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
@@ -14932,8 +14931,8 @@
       </node>
       <node concept="37vLTG" id="2n7wcdLaAXn" role="3clF46">
         <property role="TrG5h" value="project" />
-        <node concept="3uibUv" id="3RVEVD6wcDg" role="1tU5fm">
-          <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
+        <node concept="3uibUv" id="6QMYcoz4KMD" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
         <node concept="2AHcQZ" id="2n7wcdLaAXp" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />

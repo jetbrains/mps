@@ -6,6 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.impl.FileStatusProvider;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
@@ -21,9 +23,9 @@ public class NodeFileStatusProvider implements FileStatusProvider {
   private MPSProject myProject;
   private NodeFileStatusMapping myMapping;
 
-  public NodeFileStatusProvider(@NotNull MPSProject project) {
-    myProject = project;
-    myMapping = project.getProject().getComponent(NodeFileStatusMapping.class);
+  public NodeFileStatusProvider(@NotNull Project project) {
+    myProject = ProjectHelper.fromIdeaProject(project);
+    myMapping = project.getComponent(NodeFileStatusMapping.class);
   }
 
   @Override
