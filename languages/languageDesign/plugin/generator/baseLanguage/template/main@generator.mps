@@ -14302,7 +14302,7 @@
     <property role="3GE5qa" value="idea" />
     <node concept="3rIKKV" id="1XGsQcRFa1p" role="2pMbU3">
       <node concept="2pNNFK" id="1XGsQcRFa2p" role="2pNm8H">
-        <property role="2pNNFO" value="components" />
+        <property role="2pNNFO" value="idea-plugin" />
         <node concept="2pNNFK" id="1XGsQcRFa2q" role="3o6s8t">
           <property role="qg3DV" value="true" />
           <property role="2pNNFO" value="actions" />
@@ -14528,7 +14528,7 @@
       <property role="TrG5h" value="actions.xml" />
       <node concept="3rIKKV" id="1XGsQcRFa31" role="2pMbU3">
         <node concept="2pNNFK" id="1XGsQcRFa33" role="2pNm8H">
-          <property role="2pNNFO" value="components" />
+          <property role="2pNNFO" value="idea-plugin" />
           <node concept="2pNNFK" id="1XGsQcRFa34" role="3o6s8t">
             <property role="2pNNFO" value="actions" />
             <node concept="raruj" id="1XGsQcRFa35" role="lGtFl" />

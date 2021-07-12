@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <actions>
     <action id="jetbrains.mps.java.workbench.actions.AnalyzeClasspath_Action" class="jetbrains.mps.java.workbench.actions.AnalyzeClasspath_Action"></action>
     <action id="jetbrains.mps.java.workbench.actions.ChangeMethodSignature_Action" class="jetbrains.mps.java.workbench.actions.ChangeMethodSignature_Action">
@@ -20,4 +20,4 @@
       <reference ref="jetbrains.mps.java.workbench.actions.MigrateSourcesToMPS_Action" />
     </group>
   </actions>
-</components>
+</idea-plugin>

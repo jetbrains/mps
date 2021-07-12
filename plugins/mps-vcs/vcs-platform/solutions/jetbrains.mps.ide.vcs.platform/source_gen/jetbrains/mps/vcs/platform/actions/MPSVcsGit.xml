@@ -1,4 +1,4 @@
-<components>
+<idea-plugin>
   <actions>
     <action id="jetbrains.mps.vcs.platform.actions.ResolveNonconflictingChanges_Action" class="jetbrains.mps.vcs.platform.actions.ResolveNonconflictingChanges_Action"></action>
     <action id="jetbrains.mps.vcs.platform.actions.ShowNodeHistory_Action" class="jetbrains.mps.vcs.platform.actions.ShowNodeHistory_Action"></action>
@@ -10,4 +10,4 @@
       <add-to-group group-id="Git.FileActions" anchor="last" />
     </group>
   </actions>
-</components>
+</idea-plugin>

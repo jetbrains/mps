@@ -910,7 +910,7 @@
   </root>
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/4193578441192301505">
     <file name="JavaPlatformActions.xml">
-      <unit id="4193578441192301505" at="1,0,89,13" name="jetbrains.mps.java.platform.actions.JavaPlatformActions" />
+      <unit id="4193578441192301505" at="1,0,89,14" name="jetbrains.mps.java.platform.actions.JavaPlatformActions" />
     </file>
   </root>
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/4326588611400152009">
