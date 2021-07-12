@@ -46,6 +46,7 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsBundle" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsException" />
+    <classNode dependClassName="com.intellij.openapi.vcs.annotate.AnnotationTooltipBuilder" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.CurrentRevision" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevisionEx" />
@@ -56,7 +57,6 @@
     <classNode dependClassName="com.intellij.vcs.log.impl.VcsLogApplicationSettings" />
     <classNode dependClassName="git4idea.GitFileRevision" />
     <classNode dependClassName="git4idea.GitRevisionNumber" />
-    <classNode dependClassName="git4idea.annotate.AnnotationTooltipBuilder" />
     <classNode dependClassName="git4idea.log.GitCommitTooltipLinkHandler" />
     <classNode dependClassName="java.io.IOException" />
     <classNode dependClassName="java.lang.Boolean" />
