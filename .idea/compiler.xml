@@ -355,6 +355,7 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-make/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-migration/solutions/migration.workbench/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-project-migrations/solution/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-spellcheck/modules/spellcheck/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/solutions/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/source_gen" includeSubdirectories="true" />

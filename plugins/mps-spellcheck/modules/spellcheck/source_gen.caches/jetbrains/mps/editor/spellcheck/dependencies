@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.editor.spellcheck.AddWordToDictionary_Action">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="jetbrains.mps.editor.spellcheck.CommentSpellChecker" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
+  </dependency>
+  <dependency className="jetbrains.mps.editor.spellcheck.CommentSpellChecker">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.spellchecker.SpellCheckerManager" />
+    <classNode dependClassName="com.intellij.ui.JBColor" />
+    <classNode dependClassName="java.awt.Graphics" />
+    <classNode dependClassName="java.lang.Boolean" />
+    <classNode dependClassName="java.lang.Character" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.regex.Pattern" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
+    <classNode dependClassName="jetbrains.mps.ide.editor.checkers.ModelProblemMessage" />
+    <classNode dependClassName="jetbrains.mps.ide.util.ColorAndGraphicsUtil" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.DefaultEditorMessage" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.EditorMessage" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Label" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.TextLine" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.checking.UpdateResult" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellTraversalUtil" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell_Label" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorFontMetrics" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.message.SimpleEditorMessage" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.smodel.event.SModelEvent" />
+    <classNode dependClassName="jetbrains.mps.smodel.event.SModelPropertyEvent" />
+    <classNode dependClassName="jetbrains.mps.util.Cancellable" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.nodeEditor.checking.BaseEditorChecker" />
+  </dependency>
+  <dependency className="jetbrains.mps.editor.spellcheck.SpellCheck_ProjectPluginPart">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.editor.spellcheck.CommentSpellChecker" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.Highlighter" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.checking.EditorChecker" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode extendsClassName="jetbrains.mps.plugins.part.ProjectPluginPart" />
+  </dependency>
+  <dependency className="jetbrains.mps.editor.spellcheck.Spellcheck_ApplicationPlugin">
+    <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
+    <classNode dependClassName="jetbrains.mps.editor.spellcheck.WordsToDictionary_ActionGroup" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin" />
+  </dependency>
+  <dependency className="jetbrains.mps.editor.spellcheck.Spellcheck_ProjectPlugin">
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.editor.spellcheck.SpellCheck_ProjectPluginPart" />
+    <classNode dependClassName="jetbrains.mps.plugins.part.ProjectPluginPart" />
+    <classNode extendsClassName="jetbrains.mps.plugins.projectplugins.BaseProjectPlugin" />
+  </dependency>
+  <dependency className="jetbrains.mps.editor.spellcheck.WordsToDictionary_ActionGroup">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.util.Pair" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.HashSet" />
+    <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.editor.spellcheck.AddWordToDictionary_Action" />
+    <classNode dependClassName="jetbrains.mps.editor.spellcheck.CommentSpellChecker" />
+    <classNode dependClassName="jetbrains.mps.ide.editor.MPSEditorDataKeys" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.message.SimpleEditorMessage" />
+    <classNode dependClassName="jetbrains.mps.workbench.ActionPlace" />
+    <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
+    <classNode dependClassName="jetbrains.mps.workbench.action.BaseAction" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.util.Condition" />
+    <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
+  </dependency>
+</dependenciesRoot>
+

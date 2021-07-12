@@ -717,6 +717,10 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-project-migrations/solution/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-project-migrations/solution/classes_gen" />
     </content>
+    <content url="file://$MODULE_DIR$/../../plugins/mps-spellcheck">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-spellcheck/modules/spellcheck/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-spellcheck/modules/spellcheck/classes_gen" />
+    </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-testing">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-testing/languages/baseLanguage/unitTest/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-testing/languages/baseLanguage/unitTest/solutions/sandbox/source_gen" isTestSource="false" />
@@ -765,7 +769,7 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/languages/mergehints/generator/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions/jetbrains.mps.vcs.mergehints.plugin">
+    <content url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions/jetbrains.mps.vcs.mergehints.plugin/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-vcs/solutions/jetbrains.mps.vcs.mergehints.plugin/classes_gen" />
     </content>

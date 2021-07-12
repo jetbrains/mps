@@ -29,7 +29,6 @@ public final class JavaHighlighters implements ProjectComponent {
     myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new OverrideMethodsChecker(myProject)));
     myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new ToDoHighlighter()));
     myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new MethodCallsFixer(myProject.getRepository())));
-    myHighlighter.addChecker(DequeSequence.fromDequeNew(myCheckers).pushElement(new CommentSpellChecker(myProject.getProject())));
   }
 
   @Override
