@@ -28495,6 +28495,9 @@
         <node concept="3ygNvl" id="1JaUSFUm5YD" role="39821P">
           <ref role="3ygNvj" node="1JaUSFUm4H0" />
         </node>
+        <node concept="3ygNvl" id="3SKb_4JEw5N" role="39821P">
+          <ref role="3ygNvj" node="3SKb_4JtHPj" />
+        </node>
       </node>
       <node concept="3981dG" id="1CY6j2K5DAo" role="39821P">
         <node concept="3_J27D" id="1CY6j2K5DAp" role="Nbhlr">
@@ -28683,6 +28686,9 @@
     </node>
     <node concept="2sgV4H" id="1JaUSFUm5XG" role="1l3spa">
       <ref role="1l3spb" node="1JaUSFUm4ER" resolve="mpsContextActionsTool" />
+    </node>
+    <node concept="2sgV4H" id="3SKb_4JEw6$" role="1l3spa">
+      <ref role="1l3spb" node="3SKb_4JtHPh" resolve="mpsSpellCheckPlugin" />
     </node>
   </node>
   <node concept="1l3spW" id="3IKDaVZoWUr">
@@ -40869,16 +40875,6 @@
           <ref role="3bR37D" node="2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
         </node>
       </node>
-      <node concept="1SiIV0" id="1CHwXApggih" role="3bR37C">
-        <node concept="3bR9La" id="1CHwXApggii" role="1SiIV1">
-          <ref role="3bR37D" node="7Kfy9QB6L1S" resolve="jetbrains.mps.baseLanguage.javadoc" />
-        </node>
-      </node>
-      <node concept="1SiIV0" id="1y80JOMr9A3" role="3bR37C">
-        <node concept="3bR9La" id="1y80JOMr9A4" role="1SiIV1">
-          <ref role="3bR37D" node="3HV74$ebibC" resolve="jetbrains.mps.lang.text" />
-        </node>
-      </node>
       <node concept="1BupzO" id="73GUf$umy9K" role="3bR31x">
         <property role="3ZfqAx" value="models" />
         <property role="1Hdu6h" value="true" />
@@ -45337,11 +45333,6 @@
           <ref role="3bR37D" node="2eDSGe9d1q1" resolve="MPS.Workbench" />
         </node>
       </node>
-      <node concept="1SiIV0" id="2ucthr8W$A4" role="3bR37C">
-        <node concept="3bR9La" id="2ucthr8W$A5" role="1SiIV1">
-          <ref role="3bR37D" node="5xwbQ0eEV3B" resolve="jetbrains.mps.java.platform" />
-        </node>
-      </node>
       <node concept="1SiIV0" id="2ucthr8W$A6" role="3bR37C">
         <node concept="3bR9La" id="2ucthr8W$A7" role="1SiIV1">
           <ref role="3bR37D" node="7KapL9OABnm" resolve="jetbrains.mps.ide.ui" />
@@ -45369,11 +45360,6 @@
       <node concept="1SiIV0" id="2ucthr8WQeL" role="3bR37C">
         <node concept="3bR9La" id="2ucthr8WQeM" role="1SiIV1">
           <ref role="3bR37D" node="2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
-        </node>
-      </node>
-      <node concept="1SiIV0" id="7BHSl5vsJMS" role="3bR37C">
-        <node concept="3bR9La" id="7BHSl5vsJMT" role="1SiIV1">
-          <ref role="3bR37D" node="1TaHNgiIbJ$" resolve="jetbrains.mps.ide.editor" />
         </node>
       </node>
       <node concept="1BupzO" id="73GUf$umv0H" role="3bR31x">
@@ -50940,6 +50926,176 @@
     </node>
     <node concept="2sgV4H" id="xAoHD7ixsB" role="1l3spa">
       <ref role="1l3spb" node="2eDSGe9d1ot" resolve="mpsWorkbench" />
+    </node>
+  </node>
+  <node concept="1l3spW" id="3SKb_4JtHPh">
+    <property role="3GE5qa" value="ide.plugins" />
+    <property role="TrG5h" value="mpsSpellCheckPlugin" />
+    <property role="2DA0ip" value="../../../../" />
+    <property role="turDy" value="mpsSpellCheckPlugin.xml" />
+    <node concept="10PD9b" id="5fSnYiNjTYP" role="10PD9s" />
+    <node concept="1E1JtA" id="3SKb_4JujfJ" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="jetbrains.mps.editor.spellcheck" />
+      <property role="3LESm3" value="8df3c35e-ad4c-4481-b54b-da424bcb0bc0" />
+      <node concept="3rtmxn" id="3SKb_4JEw4x" role="3bR31x">
+        <node concept="3LXTmp" id="3SKb_4JEw4z" role="3rtmxm">
+          <node concept="3LWZYx" id="3SKb_4JEw58" role="3LXTna">
+            <property role="3LWZYw" value="startup.properties" />
+          </node>
+          <node concept="398BVA" id="3SKb_4JEw4N" role="3LXTmr">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="3SKb_4JEw4R" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="3SKb_4JEw4Y" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-spellcheck" />
+                <node concept="2Ry0Ak" id="3SKb_4JEw51" role="2Ry0An">
+                  <property role="2Ry0Am" value="modules" />
+                  <node concept="2Ry0Ak" id="3SKb_4JEw5e" role="2Ry0An">
+                    <property role="2Ry0Am" value="spellcheck" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="398BVA" id="3SKb_4JujfR" role="3LF7KH">
+        <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="3SKb_4JujfX" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="3SKb_4Jujg2" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-spellcheck" />
+            <node concept="2Ry0Ak" id="3SKb_4Jujg7" role="2Ry0An">
+              <property role="2Ry0Am" value="modules" />
+              <node concept="2Ry0Ak" id="3SKb_4Jujgc" role="2Ry0An">
+                <property role="2Ry0Am" value="spellcheck" />
+                <node concept="2Ry0Ak" id="3SKb_4Jujgh" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.editor.spellcheck.msd" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="3SKb_4Jujgj" role="3bR37C">
+        <node concept="3bR9La" id="3SKb_4Jujgk" role="1SiIV1">
+          <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="3SKb_4Jujgl" role="3bR37C">
+        <node concept="3bR9La" id="3SKb_4Jujgm" role="1SiIV1">
+          <ref role="3bR37D" node="1TaHNgiIbJ$" resolve="jetbrains.mps.ide.editor" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="3SKb_4Jujgn" role="3bR37C">
+        <node concept="3bR9La" id="3SKb_4Jujgo" role="1SiIV1">
+          <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="3SKb_4Jujgp" role="3bR37C">
+        <node concept="3bR9La" id="3SKb_4Jujgq" role="1SiIV1">
+          <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
+        </node>
+      </node>
+      <node concept="1BupzO" id="3SKb_4JujgB" role="3bR31x">
+        <property role="3ZfqAx" value="models" />
+        <property role="1Hdu6h" value="true" />
+        <property role="1HemKv" value="true" />
+        <node concept="3LXTmp" id="3SKb_4JujgC" role="1HemKq">
+          <node concept="398BVA" id="3SKb_4Jujgr" role="3LXTmr">
+            <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="3SKb_4Jujgs" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="3SKb_4Jujgt" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-spellcheck" />
+                <node concept="2Ry0Ak" id="3SKb_4Jujgu" role="2Ry0An">
+                  <property role="2Ry0Am" value="modules" />
+                  <node concept="2Ry0Ak" id="3SKb_4Jujgv" role="2Ry0An">
+                    <property role="2Ry0Am" value="spellcheck" />
+                    <node concept="2Ry0Ak" id="3SKb_4Jujgw" role="2Ry0An">
+                      <property role="2Ry0Am" value="models" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3qWCbU" id="3SKb_4JujgD" role="3LXTna">
+            <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="m$_wf" id="3SKb_4Jujh$" role="3989C9">
+      <property role="m$_wk" value="jetbrains.mps.editor.spellcheck" />
+      <node concept="3_J27D" id="3SKb_4JujhA" role="m$_yQ">
+        <node concept="3Mxwew" id="3SKb_4JutRm" role="3MwsjC">
+          <property role="3MwjfP" value="--" />
+        </node>
+      </node>
+      <node concept="3_J27D" id="3SKb_4JujhC" role="m_cZH">
+        <node concept="3Mxwew" id="3SKb_4JutRi" role="3MwsjC">
+          <property role="3MwjfP" value="mps-spellcheck" />
+        </node>
+      </node>
+      <node concept="3_J27D" id="3SKb_4JujhE" role="m$_w8">
+        <node concept="3Mxwew" id="3SKb_4JutRk" role="3MwsjC">
+          <property role="3MwjfP" value="--" />
+        </node>
+      </node>
+      <node concept="m$_yB" id="3SKb_4Jujxa" role="m$_yh">
+        <ref role="m$_yA" node="3SKb_4JujfJ" resolve="jetbrains.mps.editor.spellcheck" />
+      </node>
+      <node concept="398BVA" id="3SKb_4Jujxe" role="I30fb">
+        <ref role="398BVh" node="3SKb_4Jujfy" resolve="mps_home" />
+        <node concept="2Ry0Ak" id="3SKb_4Jujxi" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="3SKb_4Jujxn" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-spellcheck" />
+            <node concept="2Ry0Ak" id="3SKb_4Jujxs" role="2Ry0An">
+              <property role="2Ry0Am" value="META-INF" />
+              <node concept="2Ry0Ak" id="3SKb_4Jujxx" role="2Ry0An">
+                <property role="2Ry0Am" value="plugin.xml" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="m$_yC" id="3SKb_4Jujya" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
+      </node>
+    </node>
+    <node concept="13uUGR" id="3SKb_4JujfB" role="1l3spa">
+      <ref role="13uUGO" node="6eCuTcwOnJO" resolve="IDEA" />
+      <node concept="398BVA" id="3SKb_4JujfC" role="13uUGP">
+        <ref role="398BVh" node="3SKb_4Jujfx" resolve="idea_home" />
+      </node>
+    </node>
+    <node concept="2sgV4H" id="3SKb_4JujfD" role="1l3spa">
+      <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
+    </node>
+    <node concept="2sgV4H" id="3SKb_4Jujy4" role="1l3spa">
+      <ref role="1l3spb" node="2eDSGe9d1ot" resolve="mpsWorkbench" />
+    </node>
+    <node concept="398rNT" id="3SKb_4Jujfx" role="1l3spd">
+      <property role="TrG5h" value="idea_home" />
+    </node>
+    <node concept="398rNT" id="3SKb_4Jujfy" role="1l3spd">
+      <property role="TrG5h" value="mps_home" />
+      <node concept="55IIr" id="3SKb_4Jujfz" role="398pKh" />
+    </node>
+    <node concept="3b7kt6" id="3SKb_4Jujfu" role="10PD9s" />
+    <node concept="55IIr" id="3SKb_4JtHPi" role="auvoZ">
+      <node concept="2Ry0Ak" id="3SKb_4Jujfq" role="iGT6I">
+        <property role="2Ry0Am" value="build" />
+      </node>
+    </node>
+    <node concept="1l3spV" id="3SKb_4JtHPj" role="1l3spN">
+      <node concept="m$_wl" id="3SKb_4JujwY" role="39821P">
+        <ref role="m_rDy" node="3SKb_4Jujh$" />
+        <node concept="pUk6x" id="3SKb_4Jujx4" role="pUk7w" />
+      </node>
     </node>
   </node>
 </model>

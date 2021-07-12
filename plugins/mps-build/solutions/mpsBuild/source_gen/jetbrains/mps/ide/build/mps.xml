@@ -33,6 +33,7 @@
   <property name="artifacts.mpsTooltips" location="${build.dir}/artifacts/mpsTooltips" />
   <property name="artifacts.mpsTesting" location="${build.dir}/artifacts/mpsTesting" />
   <property name="artifacts.mpsContextActionsTool" location="${build.dir}/artifacts/mpsContextActionsTool" />
+  <property name="artifacts.mpsSpellCheckPlugin" location="${build.dir}/artifacts/mpsSpellCheckPlugin" />
   <property file="${artifacts.mpsBuild}/build.properties" prefix="import.mpsBuild" />
   <property name="mpsBootstrapCore.version.major" value="${import.mpsBuild.mpsBootstrapCore.version.major}" />
   <property name="mpsBootstrapCore.version.minor" value="${import.mpsBuild.mpsBootstrapCore.version.minor}" />
@@ -212,6 +213,9 @@
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsContextActionsTool}" />
     </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsSpellCheckPlugin}" />
+    </copy>
     <zip destfile="${build.layout}/samples.zip">
       <zipfileset dir="${basedir}/samples" prefix="MPSSamples">
         <exclude name="**/vcs.xml" />
@@ -280,6 +284,7 @@
     <ant antfile="build/mpsDiagramEditor.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsTooltips.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsContextActionsTool.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsSpellCheckPlugin.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
   <target name="fetchDependencies" />
