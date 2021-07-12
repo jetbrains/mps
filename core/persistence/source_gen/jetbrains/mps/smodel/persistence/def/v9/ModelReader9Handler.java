@@ -602,7 +602,13 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       SNodeId nodeId = child._2();
       SReferenceLink link = child._0();
       String resolveInfo = child._3();
-      ResolveInfo ri = ResolveInfo.of(new SNodePointer(targetModel, nodeId), resolveInfo);
+      final ResolveInfo ri;
+      if (targetModel == null && nodeId == null) {
+        // account for serialized dynamic references
+        ri = ResolveInfo.of(resolveInfo);
+      } else {
+        ri = ResolveInfo.of(new SNodePointer(targetModel, nodeId), resolveInfo);
+      }
       result._0().setReference(link, ri);
     }
     private void handleChild_5480414999147804300(Object resultObject, Object value) throws SAXException {
