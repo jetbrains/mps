@@ -1,22 +1,11 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -44,6 +33,7 @@ import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootEntryContainer.ContentEntryEditorListener;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
@@ -57,6 +47,7 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.workbench.ActionPlace;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -215,7 +206,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
     myEditorsListPanel.setBackground(UIUtil.getListBackground());
     JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myEditorsListPanel);
     scrollPane.setPreferredSize(new Dimension(250, 300));
-    entriesPanel.add(new ToolbarPanel(scrollPane, group), BorderLayout.CENTER);
+    entriesPanel.add(new ToolbarPanel(scrollPane, group, MPSActionPlaces.MODEL_ROOT_SETTINGS), BorderLayout.CENTER);
 
     Splitter splitter = new Splitter(false);
     splitter.setHonorComponentsMinimumSize(true);
