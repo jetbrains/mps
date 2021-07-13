@@ -3,7 +3,6 @@
   <persistence version="9" />
   <languages>
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
-    <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
   </languages>
   <imports />
   <registry>
@@ -22,9 +21,6 @@
       <concept id="5864553086652219116" name="jetbrains.mps.lang.plugin.structure.IdeaPluginDependency" flags="lg" index="2Tc6Op">
         <property id="5864553086652219119" name="pluginId" index="2Tc6Oq" />
       </concept>
-    </language>
-    <language id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone">
-      <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -52,6 +48,5 @@
       <property role="2Tc6Oq" value="jetbrains.mps.execution-api" />
     </node>
   </node>
-  <node concept="2DaZZR" id="6dAEaqvbHa0" />
 </model>
 
