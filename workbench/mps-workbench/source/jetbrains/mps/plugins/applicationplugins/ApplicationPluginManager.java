@@ -40,9 +40,8 @@ public class ApplicationPluginManager extends BasePluginManager<BaseApplicationP
 
   private final Platform myPlatform;
 
-  public ApplicationPluginManager(MPSCoreComponents coreComponents, PluginLoaderRegistry pluginLoaderRegistry) {
-    super(pluginLoaderRegistry);
-    myPlatform = coreComponents.getPlatform();
+  public ApplicationPluginManager() {
+    myPlatform = MPSCoreComponents.getInstance().getPlatform();
   }
 
   public BaseApplicationPlugin getPlugin(PluginId id) {
