@@ -63,7 +63,6 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.tooltips.runtime.Tooltip" />
     <classNode dependClassName="jetbrains.mps.lang.editor.tooltips.runtime.TooltipComponent" />
     <classNode dependClassName="jetbrains.mps.lang.editor.tooltips.runtime.TooltipTimer" />
-    <classNode dependClassName="jetbrains.mps.lang.editor.tooltips.runtime.TooltipUtils" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />

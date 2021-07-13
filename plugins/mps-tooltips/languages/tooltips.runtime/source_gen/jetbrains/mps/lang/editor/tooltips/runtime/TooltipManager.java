@@ -20,8 +20,6 @@ import java.awt.Point;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 
 public class TooltipManager {
-  private static final String RADAR_HINT = "editor.tooltips.radar";
-
   private final EditorComponent myEditorComponent;
   @Nullable
   private Tooltip myActiveTooltip;
@@ -94,7 +92,7 @@ public class TooltipManager {
         };
         myLastIdeTooltip.setPreferredPosition(Balloon.Position.above);
         myLastIdeTooltip.setCalloutShift(myActiveTooltip.getHeight() / 2 + 2);
-        myTimer.mouseMovedIn(myActiveTooltip.getTimingProperties(), event.isControlDown(), isNotEmptyString(check_7mhxd1_a2a0f0b0g0o(as_7mhxd1_a0a0c0a5a1a6a41(myEditorComponent, jetbrains.mps.ide.tooltips.TooltipComponent.class), event)));
+        myTimer.mouseMovedIn(myActiveTooltip.getTimingProperties(), event.isControlDown(), isNotEmptyString(check_7mhxd1_a2a0f0b0g0m(as_7mhxd1_a0a0c0a5a1a6a21(myEditorComponent, jetbrains.mps.ide.tooltips.TooltipComponent.class), event)));
       }
     }
   }
@@ -107,10 +105,6 @@ public class TooltipManager {
     }
     SNode node = myEditorComponent.getRootCell().getSNode();
     if (node == null) {
-      return;
-    }
-    List<String> hints = TooltipUtils.getHintsForNode(myEditorComponent, node);
-    if (!(hints.contains(RADAR_HINT))) {
       return;
     }
 
@@ -177,7 +171,7 @@ public class TooltipManager {
     }
     return null;
   }
-  private static String check_7mhxd1_a2a0f0b0g0o(jetbrains.mps.ide.tooltips.TooltipComponent checkedDotOperand, MouseEvent event) {
+  private static String check_7mhxd1_a2a0f0b0g0m(jetbrains.mps.ide.tooltips.TooltipComponent checkedDotOperand, MouseEvent event) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getMPSTooltipText(event);
     }
@@ -186,7 +180,7 @@ public class TooltipManager {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_7mhxd1_a0a0c0a5a1a6a41(Object o, Class<T> type) {
+  private static <T> T as_7mhxd1_a0a0c0a5a1a6a21(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

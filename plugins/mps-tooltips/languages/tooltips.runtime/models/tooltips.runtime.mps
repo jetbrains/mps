@@ -1785,16 +1785,6 @@
   </node>
   <node concept="312cEu" id="7XU1fOGm9dY">
     <property role="TrG5h" value="TooltipManager" />
-    <node concept="Wx3nA" id="3x2XrnQ80Mr" role="jymVt">
-      <property role="TrG5h" value="RADAR_HINT" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="3x2XrnQ7ZUy" role="1B3o_S" />
-      <node concept="17QB3L" id="3x2XrnQ80Kl" role="1tU5fm" />
-      <node concept="Xl_RD" id="3x2XrnQ81V$" role="33vP2m">
-        <property role="Xl_RC" value="editor.tooltips.radar" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="1LS0LER46js" role="jymVt" />
     <node concept="312cEg" id="7XU1fOGmt3q" role="jymVt">
       <property role="TrG5h" value="myEditorComponent" />
       <property role="3TUv4t" value="true" />
@@ -2497,43 +2487,6 @@
             <node concept="10Nm6u" id="29_$xWIgHlC" role="3uHU7w" />
             <node concept="37vLTw" id="29_$xWIgEiE" role="3uHU7B">
               <ref role="3cqZAo" node="7yZQ0Zb831d" resolve="node" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="5N30BDSG5Tk" role="3cqZAp">
-          <node concept="3cpWsn" id="5N30BDSG5Tl" role="3cpWs9">
-            <property role="TrG5h" value="hints" />
-            <node concept="3uibUv" id="5N30BDSG5Ti" role="1tU5fm">
-              <ref role="3uigEE" to="33ny:~List" resolve="List" />
-              <node concept="17QB3L" id="5N30BDSG5VW" role="11_B2D" />
-            </node>
-            <node concept="2YIFZM" id="1kAVdzj6KUh" role="33vP2m">
-              <ref role="37wK5l" node="5N30BDSEjR3" resolve="getHintsForNode" />
-              <ref role="1Pybhc" node="5N30BDSEh$1" resolve="TooltipUtils" />
-              <node concept="37vLTw" id="5N30BDSG6Dt" role="37wK5m">
-                <ref role="3cqZAo" node="7XU1fOGmt3q" resolve="myEditorComponent" />
-              </node>
-              <node concept="37vLTw" id="7yZQ0Zb831j" role="37wK5m">
-                <ref role="3cqZAo" node="7yZQ0Zb831d" resolve="node" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5N30BDSGoak" role="3cqZAp">
-          <node concept="3clFbS" id="5N30BDSGoam" role="3clFbx">
-            <node concept="3cpWs6" id="5N30BDSGs0H" role="3cqZAp" />
-          </node>
-          <node concept="3fqX7Q" id="5N30BDSGoZc" role="3clFbw">
-            <node concept="2OqwBi" id="5N30BDSGqgx" role="3fr31v">
-              <node concept="37vLTw" id="5N30BDSGpx6" role="2Oq$k0">
-                <ref role="3cqZAo" node="5N30BDSG5Tl" resolve="hints" />
-              </node>
-              <node concept="liA8E" id="5N30BDSGqY5" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.contains(java.lang.Object)" resolve="contains" />
-                <node concept="37vLTw" id="5N30BDSGrFO" role="37wK5m">
-                  <ref role="3cqZAo" node="3x2XrnQ80Mr" resolve="RADAR_HINT" />
-                </node>
-              </node>
             </node>
           </node>
         </node>
