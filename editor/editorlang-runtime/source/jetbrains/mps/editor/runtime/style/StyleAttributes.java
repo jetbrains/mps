@@ -24,6 +24,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.ApiStatus.Internal;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -58,14 +59,16 @@ public class StyleAttributes {
 
   public static StyleAttributes getInstance() {
     if (ourInstance == null) {
+      // FIXME would be great to get LanguageRegistry instance here,
+      // or to utilize the fact
       ourInstance = new StyleAttributes();
     }
     return ourInstance;
   }
 
-  private List<StyleAttribute> ourAttributes = new ArrayList<>();
-  private Set<Integer> ourFreeIndices = new LinkedHashSet<>();
-  private Map<LanguageRuntime, Map<String, StyleAttribute>> ourLanguageAttributes = new HashMap<>();
+  private final List<StyleAttribute> ourAttributes = new ArrayList<>();
+  private final Set<Integer> ourFreeIndices = new LinkedHashSet<>();
+  private final Map<SLanguage, Map<String, StyleAttribute>> ourLanguageAttributes = new HashMap<>();
 
   int getAttributesCount() {
     return ourAttributes.size();
@@ -98,26 +101,38 @@ public class StyleAttributes {
     return a instanceof SimpleStyleAttribute;
   }
 
+  // legacy one, it's better to use SLanguage identity rather than string
   public <T> StyleAttribute<T> getAttribute(String languageName, String attributeName) {
     LanguageRuntime language = LanguageRegistry.getInstance().getLanguage(languageName);
-    if (language == null) {
+    return getAttribute(language, languageName, attributeName);
+  }
+
+  public <T> StyleAttribute<T> getAttribute(SLanguage languageId, String attributeName) {
+    return getAttribute(LanguageRegistry.getInstance().getLanguage(languageId), languageId.getQualifiedName(), attributeName);
+  }
+
+  private <T> StyleAttribute<T> getAttribute(@Nullable LanguageRuntime languageRuntime, String languageName, String attributeName) {
+    if (languageRuntime == null) {
       throw new IllegalArgumentException("language not found: " + languageName);
     }
-    if (!ourLanguageAttributes.containsKey(language)) {
-      ourLanguageAttributes.put(language, new HashMap<>());
+    final SLanguage languageId = languageRuntime.getIdentity();
+    Map<String, StyleAttribute> attributes = ourLanguageAttributes.get(languageId);
+    //noinspection Java8MapApi
+    if (attributes == null) {
+      ourLanguageAttributes.put(languageId, attributes = new HashMap<>());
     }
-    if (ourLanguageAttributes.get(language).containsKey(attributeName)) {
-      return ourLanguageAttributes.get(language).get(attributeName);
+    if (attributes.containsKey(attributeName)) {
+      return attributes.get(attributeName);
     } else {
-      EditorAspectDescriptor editorAspectDescriptor = language.getAspect(EditorAspectDescriptor.class);
+      EditorAspectDescriptor editorAspectDescriptor = languageRuntime.getAspect(EditorAspectDescriptor.class);
       if (!(editorAspectDescriptor instanceof StyleAttributeProvider)) {
-        throw new IllegalArgumentException("language does not contain editor descriptor: " + languageName);
+        throw new IllegalArgumentException("language does not contain editor descriptor: " + languageId.getQualifiedName());
       }
       StyleAttribute attribute = ((StyleAttributeProvider) editorAspectDescriptor).getStyleAttribute(attributeName);
       if (attribute == null) {
-        throw new IllegalArgumentException("language " + languageName + "does not contain style attribute" + attributeName);
+        throw new IllegalArgumentException("language " + languageId.getQualifiedName() + "does not contain style attribute" + attributeName);
       }
-      ourLanguageAttributes.get(language).put(attributeName, attribute);
+      attributes.put(attributeName, attribute);
       attribute.register();
       return attribute;
     }
@@ -127,23 +142,15 @@ public class StyleAttributes {
   // does nothing if no attributes for the language were ever queried.
   // since 2021.2
   public void forgetAttributes(@NotNull SLanguage language) {
-    // FIXME use SLanguage as key instead of LanguageRuntime
-    LanguageRuntime match = null;
-    for (LanguageRuntime lr : ourLanguageAttributes.keySet()) {
-      if (language.equals(lr.getIdentity())) {
-        match = lr;
-        break;
-      }
-    }
-    if (match == null) {
-      return;
-    }
-    final Map<String, StyleAttribute> knownAttributes = ourLanguageAttributes.remove(match);
+    final Map<String, StyleAttribute> knownAttributes = ourLanguageAttributes.remove(language);
     if (knownAttributes != null) {
-      // odd code, has to be != null. This is the way it was in original LanguageRegistryListener impl
       for (StyleAttribute attribute : knownAttributes.values()) {
         // XXX not sure that I need register/unregister in StyleAttribute, when
-        // both these activities happen here, in this class
+        // both these activities happen here, in this class.
+        // Seems all I need is just to solve register() for style attributes declared statically (see static fields
+        // in this class). If this is the only place, perhaps, can write static{} section that would reflectively
+        // register all fields assignable from StyleAttribute. If static{} execution order is tricky,
+        // may register these on first access
         attribute.unregister();
       }
     }
