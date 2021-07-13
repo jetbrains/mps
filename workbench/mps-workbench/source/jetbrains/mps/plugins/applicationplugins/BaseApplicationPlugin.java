@@ -33,6 +33,7 @@ import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -43,11 +44,11 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
   private static final Logger LOG = org.apache.log4j.LogManager.getLogger(BaseApplicationPlugin.class);
 
   private List<ApplicationPluginPart> myCustomParts;
-  private List<BaseGroup> myGroups = new ArrayList<>();
-  private List<BaseKeymapChanges> myKeymapChanges = new ArrayList<>();
-  private Set<Pair<DefaultActionGroup, DefaultActionGroup>> myXmlGroups = new HashSet<>();
+  private final List<BaseGroup> myGroups = new ArrayList<>(4);
+  private List<BaseKeymapChanges> myKeymapChanges;
+  private final Set<Pair<DefaultActionGroup, DefaultActionGroup>> myXmlGroups = new HashSet<>();
 
-  private Map<DefaultActionGroup, DefaultActionGroup> myAdjustedGroups = new HashMap<>();
+  private final Map<DefaultActionGroup, DefaultActionGroup> myAdjustedGroups = new HashMap<>();
   private Platform myPlatform;
 
   //----------plugin id------------
@@ -57,13 +58,25 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
 
   //------actions and groups-------
 
-  public void createGroups() {
-
+  /*package*/ final void createGroups1() {
+    try {
+      createGroups();
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to crate groups of plugin %s", getId()), th);
+    }
   }
 
-  public final void adjustGroups() {
-    adjustInterfaceGroups();
-    adjustRegularGroups();
+  public void createGroups() {
+    // intended for override in subclasses
+  }
+
+  /*package*/ final void adjustGroups() {
+    try {
+      adjustInterfaceGroups();
+      adjustRegularGroups();
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to adjust groups of plugin %s", getId()), th);
+    }
   }
 
   public void adjustInterfaceGroups() {
@@ -144,18 +157,26 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
 
   //----------custom parts----------
 
-  public final void createCustomParts() {
-    List<ApplicationPluginPart> rv = new ArrayList<>();
-    fillCustomParts(rv);
-    for (ApplicationPluginPart part : rv) {
-      try {
-        part.setPlatform(myPlatform);
-        part.init();
-      } catch (Throwable th) {
-        LOG.error(String.format("Failed to initialize part %s of plugin %s", part.getClass(), getId()), th);
+  /*package*/ final void createCustomParts() {
+    try {
+      List<ApplicationPluginPart> rv = new ArrayList<>();
+      fillCustomParts(rv);
+      for (ApplicationPluginPart part : rv) {
+        try {
+          part.setPlatform(myPlatform);
+          part.init();
+        } catch (Throwable th) {
+          LOG.error(String.format("Failed to initialize part %s of plugin %s", part.getClass(), getId()), th);
+        }
       }
+      myCustomParts = rv;
+    } catch (Throwable th) {
+      // some methods of this class, like #createGroups(), are overridden and their error handling happens
+      // in ApplicationPluginManager. Here, we need to maintain inner state (myCustomParts != null) for the
+      // sake of proper #dispose() execution, hence we do error handling here.
+      LOG.error(String.format("Failed to initialize app parts of plugin %s", getId()), th);
+      myCustomParts = Collections.emptyList();
     }
-    myCustomParts = rv;
   }
 
   protected void fillCustomParts(List<ApplicationPluginPart> parts) {
@@ -164,10 +185,15 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
 
   //-------------keymaps------------
 
-  public void createKeymaps() {
-    myKeymapChanges = initKeymaps();
-    for (BaseKeymapChanges change : myKeymapChanges) {
-      change.init();
+  /*package*/ final void createKeymaps() {
+    try {
+      myKeymapChanges = initKeymaps();
+      for (BaseKeymapChanges change : myKeymapChanges) {
+        change.init();
+      }
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to initialize keymaps of plugin %s", getId()), th);
+      myKeymapChanges = Collections.emptyList();
     }
   }
 

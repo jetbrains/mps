@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +42,11 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   private Project myIJProject;
   private MPSProject myMPSProject;
 
-  private final List<BaseTool> myTools = new ArrayList<>();
-  private final EDTAccessor<List<BaseTool>> myInitializedTools = new EDTAccessor<>(new ArrayList<>());
-  private List<ProjectPluginPart> myCustomParts = new ArrayList<>();
-  private List<BaseProjectPrefsComponent> myPrefsComponents = new ArrayList<>();
-  private List<RelationDescriptor> myTabDescriptors = new ArrayList<>();
+  private final List<BaseTool> myTools = new ArrayList<>(4);
+  private final EDTAccessor<List<BaseTool>> myInitializedTools = new EDTAccessor<>(new ArrayList<>(4));
+  private final List<ProjectPluginPart> myCustomParts = new ArrayList<>(4);
+  private final List<BaseProjectPrefsComponent> myPrefsComponents = new ArrayList<>(4);
+  private final List<RelationDescriptor> myTabDescriptors = new ArrayList<>(4);
 
   public Project getProject() {
     return myIJProject;
@@ -67,16 +67,20 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   private void initCustomParts() {
-    List<ProjectPluginPart> rv = new ArrayList<>();
-    fillCustomParts(rv);
-    for (ProjectPluginPart part : rv) {
-      try {
-        part.init(myMPSProject);
-      } catch (Throwable th) {
-        LOG.error(String.format("Failed to initialize part %s of project plugin %s", part.getClass(), getClass()), th);
+    try {
+      List<ProjectPluginPart> rv = new ArrayList<>();
+      fillCustomParts(rv);
+      for (ProjectPluginPart part : rv) {
+        try {
+          part.init(myMPSProject);
+        } catch (Throwable th) {
+          LOG.error(String.format("Failed to initialize part %s of project plugin %s", part.getClass(), getClass()), th);
+        }
       }
+      myCustomParts.addAll(rv);
+    } catch (Throwable th) {
+      LOG.error(String.format("Failed to initialize project parts of plugin %s", getClass()), th);
     }
-    myCustomParts = rv;
   }
 
   protected void fillCustomParts(List<ProjectPluginPart> parts) {
@@ -96,7 +100,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   private void createPrefComponents1() {
     try {
-      myPrefsComponents = createPreferencesComponents(myIJProject);
+      myPrefsComponents.addAll(createPreferencesComponents(myIJProject));
     } catch (Throwable t) {
       LOG.error("Exception on project preference components init:", t);
     }
@@ -112,7 +116,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   protected void initTabbedEditors1(Project project) {
     try {
-      myTabDescriptors = initTabbedEditors(project);
+      myTabDescriptors.addAll(initTabbedEditors(project));
     } catch (Throwable t) {
       LOG.error("Exception on tabbed editors init:", t);
     }
