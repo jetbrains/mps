@@ -189,6 +189,7 @@
     </unzip>
 
     <antcall target="repackage-java-plugin"/>
+    <antcall target="repackage-platform-impl"/>
 
     <!-- Set executable flag to binaries -->
     <chmod file="${basedir}/../bin/mac/fsnotifier" perm="755"/>
@@ -221,6 +222,18 @@
     <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../lib/java-impl.jar"/>
     <copy file="${basedir}/../lib/java-impl.jar" todir="${basedir}/../plugins/java/lib/"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/"/>
+  </target>
+
+  <target name="repackage-platform-impl">
+    <!-- We need this to remove IdeaApplicationInfo.xml and IdeaPlugin.xml from platform-impl.jar.
+    MPS declare its own files -->
+    <unzip src="${basedir}/../lib/platform-impl.jar" dest="${basedir}/../lib/platform-impl/"/>
+    <delete file="${basedir}/../lib/platform-impl/idea/IdeaApplicationInfo.xml"/>
+    <delete file="${basedir}/../lib/platform-impl/META-INF/IdeaPlugin.xml"/>
+    <jar basedir="${basedir}/../lib/platform-impl/" destfile="${basedir}/../lib/platform-impl.patched.jar"/>
+    <copy file="${basedir}/../lib/platform-impl.patched.jar" tofile="${basedir}/../lib/platform-impl.jar" overwrite="true"/>
+    <delete file="${basedir}/../lib/platform-impl.patched.jar"/>
+    <delete dir="${basedir}/../lib/platform-impl/"/>
   </target>
 
   <target name="download-diffutils" depends="check-diffutils,install-ivy" if="${difutill.missing}"
