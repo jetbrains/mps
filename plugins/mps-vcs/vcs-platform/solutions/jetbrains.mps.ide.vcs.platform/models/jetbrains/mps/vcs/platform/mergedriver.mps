@@ -7806,6 +7806,9 @@
       <node concept="2YIFZM" id="3R9KYLtnFc6" role="33vP2m">
         <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
         <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
+        <node concept="Xl_RD" id="VazYWZvLD9" role="37wK5m">
+          <property role="Xl_RC" value="3rd-party.jar" />
+        </node>
         <node concept="Xl_RD" id="4Xk_ETUgCUS" role="37wK5m">
           <property role="Xl_RC" value="asm-all-9.1.jar" />
         </node>

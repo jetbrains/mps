@@ -30,7 +30,7 @@ public abstract class MergeDriverPacker {
   private static final Logger LOG = LogManager.getLogger(MergeDriverPacker.class);
   private static final Iterable<String> mpsLibJars = Arrays.asList("mps-closures.jar", "mps-collections.jar", "mps-tuples.jar", "mps-core.jar", "mps-openapi.jar", "mps-references.jar", "mps-behavior-api.jar", "mps-behavior-runtime.jar", "mps-logging.jar", "mps-annotations.jar", "mps-boot-util.jar", "mps-persistence.jar", "mps-constraints-runtime.jar");
   protected static Iterable<String> mpsAddJars = Arrays.asList("ext" + File.separator + "diffutils-1.2.1.jar");
-  private static final Iterable<String> ideaLibJars = Arrays.asList("asm-all-9.1.jar", "xstream.jar", "guava.jar", "util.jar", "annotations.jar");
+  private static final Iterable<String> ideaLibJars = Arrays.asList("3rd-party.jar", "asm-all-9.1.jar", "xstream.jar", "guava.jar", "util.jar", "annotations.jar");
   private static final String MERGEDRIVER_PATH = "mergedriver";
   private static final String MERGER_RT = "merger-rt.jar";
 

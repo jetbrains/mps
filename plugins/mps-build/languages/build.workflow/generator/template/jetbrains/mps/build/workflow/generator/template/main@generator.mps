@@ -3514,6 +3514,16 @@
                 <node concept="2pNUuL" id="1Mjrj7j4BBo" role="2pNNFR">
                   <property role="2pNUuO" value="name" />
                   <node concept="2pMdtt" id="1Mjrj7j4BBA" role="2pMdts">
+                    <property role="2pMdty" value="3rd-party.jar" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2pNNFK" id="VazYWZPDgr" role="3o6s8t">
+                <property role="qg3DV" value="true" />
+                <property role="2pNNFO" value="include" />
+                <node concept="2pNUuL" id="VazYWZPDgs" role="2pNNFR">
+                  <property role="2pNUuO" value="name" />
+                  <node concept="2pMdtt" id="VazYWZPDgt" role="2pMdts">
                     <property role="2pMdty" value="util.jar" />
                   </node>
                 </node>

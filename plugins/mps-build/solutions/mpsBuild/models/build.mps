@@ -828,6 +828,9 @@
       <node concept="nCB5N" id="6xpZJctrpMd" role="nCB5Z">
         <ref role="nCB5Y" node="6S1jmf0xDGC" resolve="mps-tuples" />
       </node>
+      <node concept="2sjeV3" id="VazYWZjXMG" role="nCB5Z">
+        <ref role="2sjeV2" node="VazYWZjXgQ" resolve="3rd-party" />
+      </node>
       <node concept="2sjeV3" id="1s0vtrx9VCv" role="nCB5Z">
         <ref role="2sjeV2" node="1s0vtrx9SbK" resolve="asm-all" />
       </node>
@@ -1669,6 +1672,9 @@
       <node concept="nCB5N" id="TfcoydlTah" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="TfcoydlQ6W" resolve="idea-platform" />
+      </node>
+      <node concept="2sjeV3" id="VazYWZjYiF" role="nCB5Z">
+        <ref role="2sjeV2" node="VazYWZjXgQ" resolve="3rd-party" />
       </node>
       <node concept="2sjeV3" id="4PRDOPWNZKO" role="nCB5Z">
         <ref role="2sjeV2" node="1s0vtrx9SbK" resolve="asm-all" />
@@ -25639,6 +25645,13 @@
           </node>
         </node>
       </node>
+      <node concept="13uQ2_" id="VazYWZjXdQ" role="39821P">
+        <node concept="3_J27D" id="VazYWZjXdS" role="13uQ07">
+          <node concept="3Mxwew" id="VazYWZjXfQ" role="3MwsjC">
+            <property role="3MwjfP" value="3rd-party.jar" />
+          </node>
+        </node>
+      </node>
       <node concept="13uQ2_" id="5w9VucA$Mg7" role="39821P">
         <node concept="3_J27D" id="5w9VucA$Mg9" role="13uQ07">
           <node concept="3Mxwew" id="4vNfevbfZxr" role="3MwsjC">
@@ -49223,6 +49236,16 @@
         </node>
       </node>
     </node>
+    <node concept="PiPfp" id="VazYWZjXgQ" role="3989C9">
+      <property role="TrG5h" value="3rd-party" />
+      <node concept="25yagZ" id="VazYWZjXgR" role="PiKyV">
+        <node concept="3yqu4x" id="VazYWZjXgS" role="25yagT">
+          <node concept="3yrxFa" id="VazYWZjXrC" role="3yqu4I">
+            <ref role="3yrxFb" node="VazYWZjXdQ" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="PiPfp" id="1s0vtrx9SbK" role="3989C9">
       <property role="TrG5h" value="asm-all" />
       <node concept="25yagZ" id="3fmo8W2LOj1" role="PiKyV">
@@ -50042,6 +50065,9 @@
       </node>
       <node concept="nCB5N" id="6xpZJctuZEn" role="nCB5Z">
         <ref role="nCB5Y" node="6S1jmf0xEsq" resolve="mps-closures" />
+      </node>
+      <node concept="2sjeV3" id="VazYWZjYD8" role="nCB5Z">
+        <ref role="2sjeV2" node="VazYWZjXgQ" resolve="3rd-party" />
       </node>
       <node concept="2sjeV3" id="4PRDOPWO8_D" role="nCB5Z">
         <ref role="2sjeV2" node="1s0vtrx9SbK" resolve="asm-all" />

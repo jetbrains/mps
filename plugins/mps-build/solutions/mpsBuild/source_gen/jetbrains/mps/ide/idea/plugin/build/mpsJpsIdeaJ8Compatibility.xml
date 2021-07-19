@@ -25,6 +25,7 @@
   
   <path id="path.javac2.classpath">
     <fileset dir="${idea_home}/lib">
+      <include name="3rd-party.jar" />
       <include name="util.jar" />
       <include name="asm-all-*.jar" />
       <include name="forms*.jar" />
