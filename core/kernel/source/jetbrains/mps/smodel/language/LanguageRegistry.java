@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@ import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -353,6 +355,22 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
     }
   }
 
+  // pretty much what {@code #withAvailableLanguages(Consumer<LanguageRuntime>) does, except for a designated subset.
+  // could be public, if necessary, although I'd stick to SLanguage parameters then
+  /**/ void withAvailableLanguages(@NotNull Iterable<SLanguageId> languages, @NotNull Consumer<LanguageRuntime> operation) {
+    try {
+      myRuntimeInstanceAccess.readLock().lock();
+      for (SLanguageId lid : languages) {
+        final LanguageRuntime languageRuntime = myLanguagesById.get(lid);
+        if (languageRuntime != null) {
+          operation.accept(languageRuntime);
+        }
+      }
+    } finally {
+      myRuntimeInstanceAccess.readLock().unlock();
+    }
+  }
+
   /**
    * @return snapshot of languages known to the registry at the given moment.
    *         May not reflect actual state (a language might get unloaded), but as long as it's about identity objects, it's not that important to
@@ -501,6 +519,16 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
           }
           myLanguagesById.put(sl, langRuntime);
           loadedRuntimes.add(langRuntime);
+          // perhaps, has to be part of loadedRuntimes cycle, below, but this is the place I've got Language instance,
+          // don't want to bother recording Pairs
+          langRuntime.setLanguageRuntimeModules(language.getRuntimeModulesReferences());
+          ArrayList<SModuleReference> generatesInto = new ArrayList<>(4);
+          for (SDependency dd : language.getDeclaredDependencies()) {
+            if (dd.getScope() == SDependencyScope.GENERATES_INTO) {
+              generatesInto.add(dd.getTargetModule());
+            }
+          }
+          langRuntime.setGeneratesIntoTargets(generatesInto);
         } catch (LinkageError le) {
           processLinkageErrorForLanguage(language, le);
         }

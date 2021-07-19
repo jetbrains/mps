@@ -15,6 +15,7 @@
  */
 package org.jetbrains.mps.openapi.language;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -60,7 +61,9 @@ public interface SLanguage {
    * All the runtime dependencies that a language needs after generation to run the generated code.
    * These will be resolved from the user repository.
    * Empty sequence in case language is invalid/missing.
+   * @deprecated {@code SLanguage} is an identity object, use {@code LanguageRuntime#getRuntimeModules()} instead
    */
+  @Deprecated(forRemoval = true, since = "2021.2")
   Iterable<SModuleReference> getLanguageRuntimes();
 
   /**

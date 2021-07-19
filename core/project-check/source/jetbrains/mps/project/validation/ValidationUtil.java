@@ -329,6 +329,8 @@ public class ValidationUtil {
      * Here we'd like to figure out if there's a model M written in sourceLanguage L, whether it's generated code would receive all runtime modules
      * of languages L's generator would produce.
      */
+    // XXX generator reports its source language RTS as is own declared dependencies (Generator.getDeclaredDependencies())
+    //     can't I use it here?
     compileTimeDeps.addAll(IterableUtil.asCollection(sourceLanguageDeployed.getLanguageRuntimes()));
 
     for (SLanguage lang : usedLanguages) {

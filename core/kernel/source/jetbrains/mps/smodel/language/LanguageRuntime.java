@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.AspectExtensionsAware;
@@ -31,6 +32,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
@@ -38,6 +40,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * Runtime representation of a language, extension point for various language aspects.
@@ -52,6 +55,8 @@ public abstract class LanguageRuntime {
   private final ConcurrentMap<Class<? extends ILanguageAspect>, ILanguageAspect> myAspectDescriptors = new ConcurrentHashMap<>();
   private final List<LanguageRuntime> myExtendingLanguages = new ArrayList<>();
   private final List<LanguageRuntime> myExtendedLanguages = new ArrayList<>();
+  private List<SModuleReference> myRuntimeModules;
+  private List<SLanguageId> myGeneratesIntoTargets;
   private LanguageRegistry myLanguageRegistry;
 
   /**
@@ -293,6 +298,43 @@ public abstract class LanguageRuntime {
   void dispose() {
     myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
   }
+
+  /**
+   * Gives a complete set of what's deemed a 'runtime' dependency for the language.
+   * Includes runtime  modules from extended languages as well as languages denoted as generation target.
+   * Note, this set is *wide*, not all uses of the language would consume all of these runtimes.
+   * Once/if we decide to keep relevant runtimes as part of Make output, there's likely no need to use this method
+   *  as it induces too broad set of dependencies.
+   * @since 2021.2
+   */
+  public Collection<SModuleReference> getRuntimeModules() {
+    assert myRuntimeModules != null;
+    assert myGeneratesIntoTargets != null;
+    LinkedHashSet<SModuleReference> rv = new LinkedHashSet<>(myRuntimeModules);
+    myExtendedLanguages.stream().map(lr -> lr.myRuntimeModules).forEach(rv::addAll);
+    myLanguageRegistry.withAvailableLanguages(myGeneratesIntoTargets, lr -> rv.addAll(getRuntimeModules()));
+    return rv;
+  }
+
+  /**
+   * From time to time, MPS needs runtime modules of a deployed language. Unlike 'extended' dependency, we don't generate
+   * these into LanguageRuntime class yet. Even if we do so, we'd need a compatibility mechanism for old generated
+   * LanguageRuntime classes to answer {@link #getRuntimeModules()} anyway.
+   * For the time being, I decided not to generate respective LR code (don't want to deal with LR versioning nor found
+   * better way to address compatibility with old generated LR classes; besides, hoping for a change in Make process
+   * to write down actual RTs employed for model transformation so that we don't need this explicit set of runtimes.
+   */
+  /*package*/ final void setLanguageRuntimeModules(Collection<SModuleReference> runtimeModules) {
+    // as long as we keep complete set of RTs on demand, there's no need to clear this one in initialize/deinitialize()
+    myRuntimeModules = List.copyOf(runtimeModules);
+  }
+
+  // pretty much the same reasoning as for setLanguageRuntimeModules(). For complete set of language's RTs we need to
+  // account for languages this one targets into, as their runtimes would need to be included, too.
+  /*package*/ final void setGeneratesIntoTargets(Collection<SModuleReference> targetLanguages) {
+    myGeneratesIntoTargets = targetLanguages.stream().map(MetaIdByDeclaration::ref2LangId).collect(Collectors.toList());
+  }
+
 
   @Override
   public String toString() {
