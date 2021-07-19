@@ -23,6 +23,7 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.tempmodel.TempModule;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.Hack;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -33,7 +34,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -76,7 +76,7 @@ class RuntimesOfUsedLanguageCalculator {
   // FIXME why does SLanguage.getLanguageRuntime keeps some sophisticated logic to collect RTs of all extended languages?
   //       Do I care to keep it there? Why not a simple set of what's known for the language itself?
   /*package*/ Collection<SModuleReference> getRuntimesCached(SLanguage usedLang) {
-    final Collection<SModuleReference> rv = myLanguageRuntimesCache.get(usedLang);
+    Collection<SModuleReference> rv = myLanguageRuntimesCache.get(usedLang);
     if (rv != null) {
       return rv;
     }
@@ -86,9 +86,16 @@ class RuntimesOfUsedLanguageCalculator {
     //       dependency with "rt" kind.
     final LanguageRegistry languageRegistry = LanguageRegistry.getInstance();
     languageRegistry.withAvailableLanguages(Stream.of(usedLang), lr -> myLanguageRuntimesCache.put(usedLang, lr.getRuntimeModules()));
-    // if SLanguage is unknown, withAvailableLanguages may never invoke myLanguageRuntimesCache.put()
-    // don't try to evaluate again and again, though.
-    return myLanguageRuntimesCache.computeIfAbsent(usedLang, k -> Collections.emptyList());
+    // if SLanguage is unknown (e.g. bootstrap, language part of a project being built),
+    // withAvailableLanguages may never invoke myLanguageRuntimesCache.put()
+    // don't try to evaluate again and again, though, resort to source module
+    rv = myLanguageRuntimesCache.get(usedLang);
+    if (rv == null) {
+      // FIXME provisional hack. There's no contract about SLanguage.getLanguageRuntime() using source module
+      // to deduce RTs, I just know it's the way.
+      myLanguageRuntimesCache.put(usedLang, rv = IterableUtil.asCollection(usedLang.getLanguageRuntimes()));
+    }
+    return rv;
   }
 
   private interface Strategy {
