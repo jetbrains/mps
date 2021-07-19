@@ -21,6 +21,7 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHan
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.annotation.Hack;
 import org.apache.log4j.LogManager;
@@ -31,13 +32,13 @@ import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
  * Calculates the runtimes of used languages of the given module.
@@ -79,12 +80,15 @@ class RuntimesOfUsedLanguageCalculator {
     if (rv != null) {
       return rv;
     }
-    List<SModuleReference> runtimes = new ArrayList<>(4);
-    myLanguageRuntimesCache.put(usedLang, runtimes);
-    for (SModuleReference runtimeRef : usedLang.getLanguageRuntimes()) {
-      runtimes.add(runtimeRef);
-    }
-    return runtimes;
+    // FIXME need to refactor this class anyway, hence use of deprecated getInstance().
+    //       likely, with LR being responsible for its set of runtime modules, no reason to cache this value.
+    //       Besides, the whole idea of RT dependencies exposed in DD presumes no use of SLanguage, but direct use of
+    //       dependency with "rt" kind.
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance();
+    languageRegistry.withAvailableLanguages(Stream.of(usedLang), lr -> myLanguageRuntimesCache.put(usedLang, lr.getRuntimeModules()));
+    // if SLanguage is unknown, withAvailableLanguages may never invoke myLanguageRuntimesCache.put()
+    // don't try to evaluate again and again, though.
+    return myLanguageRuntimesCache.computeIfAbsent(usedLang, k -> Collections.emptyList());
   }
 
   private interface Strategy {

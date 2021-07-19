@@ -312,7 +312,8 @@ public abstract class LanguageRuntime {
     assert myGeneratesIntoTargets != null;
     LinkedHashSet<SModuleReference> rv = new LinkedHashSet<>(myRuntimeModules);
     myExtendedLanguages.stream().map(lr -> lr.myRuntimeModules).forEach(rv::addAll);
-    myLanguageRegistry.withAvailableLanguages(myGeneratesIntoTargets, lr -> rv.addAll(getRuntimeModules()));
+    // FIXME need to account for possible cycles, L1 generates into L2, L2 generates into L1
+    myLanguageRegistry.withAvailableLanguages(lr -> rv.addAll(lr.getRuntimeModules()), myGeneratesIntoTargets.stream());
     return rv;
   }
 

@@ -38,7 +38,6 @@ import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -54,11 +53,13 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Processor;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class ValidationUtil {
 
@@ -331,19 +332,19 @@ public class ValidationUtil {
      */
     // XXX generator reports its source language RTS as is own declared dependencies (Generator.getDeclaredDependencies())
     //     can't I use it here?
-    compileTimeDeps.addAll(IterableUtil.asCollection(sourceLanguageDeployed.getLanguageRuntimes()));
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(generator.getRepository());
+    languageRegistry.withAvailableLanguages(Stream.of(sourceLanguageDeployed), lr -> compileTimeDeps.addAll(lr.getRuntimeModules()));
 
-    for (SLanguage lang : usedLanguages) {
-      Collection<SModuleReference> langRuntimes = IterableUtil.asCollection(lang.getLanguageRuntimes());
-      if (langRuntimes.isEmpty()) {
-        continue;
+    final ArrayList<String> missingRuntimeOf = new ArrayList<>(4);
+    languageRegistry.withAvailableLanguages(usedLanguages.stream(), lr -> {
+      Collection<SModuleReference> langRuntimes = lr.getRuntimeModules();
+      if (!langRuntimes.isEmpty() && !compileTimeDeps.containsAll(langRuntimes)) {
+        // language we generate into (target) has runtime, check we've got appropriate dependency
+        missingRuntimeOf.add(lr.getNamespace());
       }
-      // language we generate into (target) has runtime, check we've got appropriate dependency
-      if (compileTimeDeps.containsAll(langRuntimes)) {
-        continue;
-      }
-
-      String m = String.format("'%s' must specify the language '%s' as a generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), lang);
+    });
+    for (String ns : missingRuntimeOf) {
+      String m = String.format("'%s' must specify the language '%s' as a generation target to include its runtime modules into compilation", sourceLanguageDeployed.getQualifiedName(), ns);
       if (!processor.process(new ModuleValidationProblem(generator, MessageStatus.WARNING, m))) {
         return false;
       }

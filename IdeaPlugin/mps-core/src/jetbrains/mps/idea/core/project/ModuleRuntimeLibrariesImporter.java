@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.idea.core.project;
 
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModifiableRootModel;
@@ -28,6 +27,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -35,14 +35,16 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * User: shatalin
  * Date: 6/8/12
  */
 public abstract class ModuleRuntimeLibrariesImporter {
-  private static final Logger LOG = Logger.getInstance(ModuleRuntimeLibrariesImporter.class);
 
   private final Project myProject;
   private final ModifiableRootModel myModifiableRootModel;
@@ -121,20 +123,16 @@ public abstract class ModuleRuntimeLibrariesImporter {
 
     @Override
     protected Collection<SModule> collectRuntimeModules(SRepository repository) {
-      Set<SModule> runtimeDependencies = new HashSet<SModule>();
-      for (SLanguage language : myAddedLanguages) {
-        for (SModuleReference runtimeModuleReference : language.getLanguageRuntimes()) {
-          SModule runtimeModule = runtimeModuleReference.resolve(repository);
-          if (runtimeModule != null) {
-            runtimeDependencies.add(runtimeModule);
-          }
-        }
-      }
+      Set<SModuleReference> runtimeDependencies = new HashSet<>();
+      final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(repository);
+      languageRegistry.withAvailableLanguages(myAddedLanguages.stream(), lr -> runtimeDependencies.addAll(lr.getRuntimeModules()));
+
+      final List<SModule> rtDeps = runtimeDependencies.stream().map(mr -> mr.resolve(repository)).filter(Objects::nonNull).collect(Collectors.toList());
       // 1. GMDM.getModules/collectNeighbours return value includes starting set of modules
       // 2. No idea why 'EXECUTE' here, while 'COMPILE' for imported models, below. XXX FWIW, I don't feel EXECUTE is right here.
       // FWIW, I'm aware of Timur's dance with getModules/recursive directlyUsedModules here back
       // in March 2013 (885b9cca48, 4cf17735504), but to me, getModules() does exactly what the code here tried to mimic.
-      return new GlobalModuleDependenciesManager(runtimeDependencies).getModules(Deptype.EXECUTE);
+      return new GlobalModuleDependenciesManager(rtDeps).getModules(Deptype.EXECUTE);
     }
   }
 

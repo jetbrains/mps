@@ -24,8 +24,10 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.ModuleRuntimeContext;
 import jetbrains.mps.util.CollectionUtil;
@@ -58,6 +60,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import static java.lang.String.format;
 
@@ -67,7 +70,7 @@ import static java.lang.String.format;
  *
  * evgeny, 3/11/11
  */
-public class LanguageRegistry implements CoreComponent, DeployListener {
+public final class LanguageRegistry implements CoreComponent, DeployListener {
   private static final Logger LOG = LogManager.getLogger(LanguageRegistry.class);
 
   private static LanguageRegistry INSTANCE;
@@ -355,17 +358,20 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
     }
   }
 
-  // pretty much what {@code #withAvailableLanguages(Consumer<LanguageRuntime>) does, except for a designated subset.
-  // could be public, if necessary, although I'd stick to SLanguage parameters then
-  /**/ void withAvailableLanguages(@NotNull Iterable<SLanguageId> languages, @NotNull Consumer<LanguageRuntime> operation) {
+  /**
+   * Pretty much what {@link #withAvailableLanguages(Consumer<LanguageRuntime>) does, except for a designated subset.
+   * @since 2021.2
+   */
+  public void withAvailableLanguages(@NotNull Stream<SLanguage> languages, @NotNull Consumer<LanguageRuntime> operation) {
+    withAvailableLanguages(operation, languages.map(MetaIdHelper::getLanguage));
+  }
+
+  //
+  // could be public, if necessary
+  /*package*/ void withAvailableLanguages(@NotNull Consumer<LanguageRuntime> operation, @NotNull Stream<SLanguageId> languages) {
     try {
       myRuntimeInstanceAccess.readLock().lock();
-      for (SLanguageId lid : languages) {
-        final LanguageRuntime languageRuntime = myLanguagesById.get(lid);
-        if (languageRuntime != null) {
-          operation.accept(languageRuntime);
-        }
-      }
+      languages.map(myLanguagesById::get).filter(Objects::nonNull).forEach(operation);
     } finally {
       myRuntimeInstanceAccess.readLock().unlock();
     }
