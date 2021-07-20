@@ -1505,7 +1505,7 @@
             </node>
             <node concept="3eOSWO" id="iIJcS6oeTq" role="3clFbw">
               <node concept="3cmrfG" id="iIJcS6ofge" role="3uHU7w">
-                <property role="3cmrfH" value="220" />
+                <property role="3cmrfH" value="20" />
               </node>
               <node concept="2OqwBi" id="iIJcS6o9A_" role="3uHU7B">
                 <node concept="2LYoG9" id="iIJcS6o8oq" role="2Oq$k0">
