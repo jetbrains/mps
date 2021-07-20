@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.project.dependency;
 
+import jetbrains.mps.smodel.LanguageModuleScanner;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -23,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -40,13 +43,17 @@ public class GlobalModuleDependenciesManager {
   final static Logger LOG = LogManager.getLogger(GlobalModuleDependenciesManager.class);
 
   private final Set<SModule> myModules;
-  @NotNull private final ErrorHandler myHandler;
   private final UsedModulesCollector myUsedModulesCollector;
 
   public GlobalModuleDependenciesManager(Collection<? extends SModule> modules, @NotNull ErrorHandler handler) {
     myModules = new HashSet<>(modules);
-    myHandler = handler;
-    myUsedModulesCollector = new UsedModulesCollector(handler);
+    if (modules.isEmpty()) {
+      // XXX with no modules, any operation over the class would be no-op
+      myUsedModulesCollector = null;
+    } else {
+      final SRepository repo = modules.stream().findAny().orElseThrow().getRepository();
+      myUsedModulesCollector = new UsedModulesCollector(new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), handler);
+    }
   }
 
   public GlobalModuleDependenciesManager(Collection<? extends SModule> modules) {

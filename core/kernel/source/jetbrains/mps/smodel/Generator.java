@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -223,6 +223,8 @@ public class Generator extends ReloadableModuleBase {
 
     // generator sees its source language
     rv.add(new SDependencyImpl(mySourceLanguage0.getSourceModuleReference(), repo, SDependencyScope.DEFAULT, false));
+    // mySourceLanguage0.getLanguageRuntimes() gives RTs for deployed languages only, but I don't care. Not sure I need these
+    // RT dependencies here at all.
     for (SModuleReference rt : mySourceLanguage0.getLanguageRuntimes()) {
       rv.add(new SDependencyImpl(rt, repo, SDependencyScope.RUNTIME, false));
     }

@@ -16,7 +16,11 @@
 package jetbrains.mps.project.dependency;
 
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHandler;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.LanguageModuleScanner;
 import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -29,12 +33,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static org.jetbrains.mps.openapi.module.SDependencyScope.DESIGN;
 import static org.jetbrains.mps.openapi.module.SDependencyScope.EXTENDS;
@@ -48,16 +48,16 @@ import static org.jetbrains.mps.openapi.module.SDependencyScope.GENERATES_INTO;
  */
 @Immutable
 public final class UsedModulesCollector {
-  private final Map<SLanguage, Collection<SModuleReference>> myLanguageRuntimesCache;
+  private final LanguageModuleScanner myLanguageRuntimesCache;
   private final ErrorHandler myErrorHandler;
 
-  public UsedModulesCollector() {
-    this(new PostingWarningsErrorHandler());
+  public UsedModulesCollector(SRepository repo) {
+    this(new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), new PostingWarningsErrorHandler());
   }
 
-  public UsedModulesCollector(ErrorHandler errorHandler) {
+  public UsedModulesCollector(LanguageModuleScanner languageModuleScanner, ErrorHandler errorHandler) {
     myErrorHandler = errorHandler;
-    myLanguageRuntimesCache = new HashMap<>();
+    myLanguageRuntimesCache = languageModuleScanner;
   }
 
   private UsedModulesCollector(ErrorHandler errorHandler, UsedModulesCollector copy) {
@@ -88,6 +88,7 @@ public final class UsedModulesCollector {
     return result;
   }
 
+  // doesn't include initial module (well, unless there's a self-dependency. Shall I guard for this case?)
   public void collectModuleDependencies(@NotNull SModule module, boolean includeNonReexport, @NotNull final Collection<SModule> result) {
     // FIXME have to resort to DeploymentDescriptor, if any, much like RuntimesOfUsedLanguageCalculator.DeploymentStrategy does
     for (SDependency dependency : module.getDeclaredDependencies()) {
@@ -117,11 +118,12 @@ public final class UsedModulesCollector {
     // Primary client for these RTs is @descriptor model (MPS-32851). As long as we didn't use @descriptor model for packaged modules, and their dependencies
     // (lacking RTs of engaged) were so far sufficient to compile user modules, I think I'm safe to keep this code to SourceStrategy only.
     // However, there were some reports that mbeddr guys need to duplicate 'engaged' as 'used', and I'd need to clear these first.
+    // XXX this comment relates to code in employedLanguages(), below, as well
     ArrayList<SLanguage> engagedInGenerator = new ArrayList<>();
     for (SModel m : module.getModels()) {
       engagedInGenerator.addAll(new ModelImports(m).getLanguagesEngagedOnGeneration());
     }
-    engagedInGenerator.stream().map(rtCalc::getRuntimesCached).forEach(rtUsed::addAll);
+    engagedInGenerator.forEach(l -> myLanguageRuntimesCache.walkRuntimeModules(l, rtUsed::add));
     //
     for (SModuleReference mr : rtUsed) {
       SModule m = mr.resolve(contextRepo);

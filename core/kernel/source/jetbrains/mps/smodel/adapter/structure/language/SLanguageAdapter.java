@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@ import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayDeque;
@@ -51,13 +53,6 @@ public abstract class SLanguageAdapter implements SLanguage {
 
   @Nullable
   public abstract LanguageRuntime getLanguageDescriptor();
-
-  @Override
-  @Nullable
-  public abstract Language getSourceModule();
-
-  @Override
-  public abstract SModuleReference getSourceModuleReference();
 
   @Override
   public boolean isValid() {
@@ -115,33 +110,12 @@ public abstract class SLanguageAdapter implements SLanguage {
 
   @Override
   public Iterable<SModuleReference> getLanguageRuntimes() {
-    Set<SModuleReference> runtimes = new HashSet<>();
-    Language sourceModule = getSourceModule();
-    if (sourceModule == null) {
-      return Collections.emptyList();
+    LanguageRuntime runtime = getLanguageDescriptor();
+    if (runtime == null) {
+      return Collections.emptySet();
     }
-    // XXX RuntimesOfUsedLanguageCalculator uses this method in its source strategy. I wonder if this logic matches
-    // what we generate during the build into module deployment descriptor (so that source and packaged strategies match).
-    HashSet<Language> processed = new HashSet<>();
-    ArrayDeque<Language> queue = new ArrayDeque<>(sourceModule.getAllExtendedLanguages());
-    while (!queue.isEmpty()) {
-      Language language = queue.removeFirst();
-      if (!processed.add(language)) {
-        continue;
-      }
-      runtimes.addAll(language.getRuntimeModulesReferences());
-      // GeneratesInto doesn't qualify as 'true' language runtime, it's rather generator aspect, however, for the time being,
-      // while we transit from using 'Extends' between languages to 'GenerateInto' to grab runtime modules, keep them together
-      // although GlobalModuleDependenciesManager might be better place to care about this kind of dependency. Anyway,
-      // we likely need to move both true RT and 'GeneratesInto' to LanguageRuntime to get rid of source module use here.
-      for (SDependency dep : language.getDeclaredDependencies()) {
-        if (dep.getScope() == SDependencyScope.GENERATES_INTO && dep.getTarget() instanceof Language) {
-          Language target = (Language) dep.getTarget();
-          queue.addAll(target.getAllExtendedLanguages());
-        }
-      }
-    }
-    return runtimes;
+    // for a single use of the deprecated method (Generator module deps), I don't care about bootstrap scenarios
+    return runtime.getRuntimeModules();
   }
 
   public int getLanguageVersion() {

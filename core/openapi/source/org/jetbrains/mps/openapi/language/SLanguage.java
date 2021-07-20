@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.language;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -75,10 +74,10 @@ public interface SLanguage {
   SModule getSourceModule();
 
   /**
-   * The optional reference to a module containing the sources for the language. This is useful, for example, when showing
+   * Reference to a module containing the sources for the language. This is useful, for example, when showing
    * the definition of a concept for a used language element.
    */
-  //todo try to make @NotNull
+  @NotNull
   SModuleReference getSourceModuleReference();
 
   /**

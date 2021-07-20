@@ -21,9 +21,8 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHan
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.LanguageModuleScanner;
 import jetbrains.mps.smodel.tempmodel.TempModule;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.Hack;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -35,10 +34,9 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 /**
  * Calculates the runtimes of used languages of the given module.
@@ -50,10 +48,10 @@ import java.util.stream.Stream;
 class RuntimesOfUsedLanguageCalculator {
   private static final Logger LOG = LogManager.getLogger(RuntimesOfUsedLanguageCalculator.class);
 
-  private final Map<SLanguage, Collection<SModuleReference>> myLanguageRuntimesCache;
+  private final LanguageModuleScanner myLanguageRuntimesCache;
   private final ErrorHandler myErrorHandler;
 
-  public RuntimesOfUsedLanguageCalculator(Map<SLanguage, Collection<SModuleReference>> languageRuntimesCache, ErrorHandler errorHandler) {
+  /*package*/ RuntimesOfUsedLanguageCalculator(LanguageModuleScanner languageRuntimesCache, ErrorHandler errorHandler) {
     myLanguageRuntimesCache = languageRuntimesCache;
     myErrorHandler = errorHandler;
   }
@@ -69,33 +67,16 @@ class RuntimesOfUsedLanguageCalculator {
    * @return the runtimes of the used languages
    */
   public Set<SModuleReference> invoke(@NotNull SModule module) {
-    Strategy strategy = isPackaged(module) ? new DeploymentStrategy(this::getRuntimesCached) : new SourceStrategy(this::getRuntimesCached);
+    final SourceStrategy strategy1 = new SourceStrategy(this::getRuntimesCached);
+    Strategy strategy = isPackaged(module) ? new DeploymentStrategy(strategy1) : strategy1;
     return strategy.findRuntimes(module);
   }
 
   // FIXME why does SLanguage.getLanguageRuntime keeps some sophisticated logic to collect RTs of all extended languages?
   //       Do I care to keep it there? Why not a simple set of what's known for the language itself?
-  /*package*/ Collection<SModuleReference> getRuntimesCached(SLanguage usedLang) {
-    Collection<SModuleReference> rv = myLanguageRuntimesCache.get(usedLang);
-    if (rv != null) {
-      return rv;
-    }
-    // FIXME need to refactor this class anyway, hence use of deprecated getInstance().
-    //       likely, with LR being responsible for its set of runtime modules, no reason to cache this value.
-    //       Besides, the whole idea of RT dependencies exposed in DD presumes no use of SLanguage, but direct use of
-    //       dependency with "rt" kind.
-    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance();
-    languageRegistry.withAvailableLanguages(Stream.of(usedLang), lr -> myLanguageRuntimesCache.put(usedLang, lr.getRuntimeModules()));
-    // if SLanguage is unknown (e.g. bootstrap, language part of a project being built),
-    // withAvailableLanguages may never invoke myLanguageRuntimesCache.put()
-    // don't try to evaluate again and again, though, resort to source module
-    rv = myLanguageRuntimesCache.get(usedLang);
-    if (rv == null) {
-      // FIXME provisional hack. There's no contract about SLanguage.getLanguageRuntime() using source module
-      // to deduce RTs, I just know it's the way.
-      myLanguageRuntimesCache.put(usedLang, rv = IterableUtil.asCollection(usedLang.getLanguageRuntimes()));
-    }
-    return rv;
+  /*package*/ void getRuntimesCached(SLanguage usedLang, Consumer<SModuleReference> sink) {
+    // LanguageModuleScanner deals with deployed languages as well as source language models to address bootstrap
+    myLanguageRuntimesCache.walkRuntimeModules(usedLang, sink);
   }
 
   private interface Strategy {
@@ -110,10 +91,10 @@ class RuntimesOfUsedLanguageCalculator {
   @Hack
   private class DeploymentStrategy implements Strategy {
 
-    private final Function<SLanguage, Collection<SModuleReference>> myCachedAccess;
+    private final Strategy myFallback;
 
-    public DeploymentStrategy(Function<SLanguage, Collection<SModuleReference>> cachedAccess) {
-      myCachedAccess = cachedAccess;
+    public DeploymentStrategy(Strategy fallback) {
+      myFallback = fallback;
     }
 
     @Override
@@ -122,12 +103,12 @@ class RuntimesOfUsedLanguageCalculator {
       ModuleDescriptor moduleDescriptor = ((AbstractModule) module).getModuleDescriptor();
       if (moduleDescriptor == null) {
         LOG.warn("Module descriptor could not be found for the module " + module + "; falling back to the SourceStrategy.");
-        return new SourceStrategy(myCachedAccess).findRuntimes(module);
+        return myFallback.findRuntimes(module);
       }
       DeploymentDescriptor descriptor = moduleDescriptor.getDeploymentDescriptor();
       if (descriptor == null) {
         LOG.debug("The deployment descriptor could not be found for the module " + module + "; falling back to the SourceStrategy.");
-        return new SourceStrategy(myCachedAccess).findRuntimes(module);
+        return myFallback.findRuntimes(module);
       }
       Collection<Dependency> dependencies = descriptor.getDependencies();
       for (Dependency dependency : dependencies) {
@@ -143,9 +124,9 @@ class RuntimesOfUsedLanguageCalculator {
    * used when we do not have a deployed module; we have to look for the source module of the language to gather its runtimes
    */
   private class SourceStrategy implements Strategy {
-    private final Function<SLanguage, Collection<SModuleReference>> myCachedAccess;
+    private final BiConsumer<SLanguage, Consumer<SModuleReference>> myCachedAccess;
 
-    public SourceStrategy(Function<SLanguage, Collection<SModuleReference>> cachedAccess) {
+    public SourceStrategy(BiConsumer<SLanguage, Consumer<SModuleReference>> cachedAccess) {
       myCachedAccess = cachedAccess;
     }
 
@@ -159,7 +140,7 @@ class RuntimesOfUsedLanguageCalculator {
           }
           continue;
         }
-        result.addAll(myCachedAccess.apply(usedLang));
+        myCachedAccess.accept(usedLang, result::add);
       }
       return result;
     }

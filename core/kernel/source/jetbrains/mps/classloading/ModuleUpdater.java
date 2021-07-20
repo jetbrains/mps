@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
@@ -123,7 +122,7 @@ public class ModuleUpdater {
           myModulesToRemove.size(), myModulesToReload.size()));
       try {
         myChangedFlag = false;
-        UsedModulesCollector usedModulesCollector = new UsedModulesCollector();
+        UsedModulesCollector usedModulesCollector = new UsedModulesCollector(myRepository);
         myDepGraphHolder.checkGraphsCorrectness();
         int wasEdges = myDepGraphHolder.getEdgesCount();
         int wasVertices = myDepGraphHolder.getVerticesCount();
@@ -131,8 +130,14 @@ public class ModuleUpdater {
         myModulesWithAbsentDeps.clear();
         boolean updated = !myModulesToAdd.isEmpty() || !myModulesToRemove.isEmpty();
         updateRemoved(myModulesToRemove);
-        updateAdded(myModulesToAdd, usedModulesCollector);
-        updated |= updateReloaded(myModulesToReload, usedModulesCollector);
+        updateAddedVertices(myModulesToAdd);
+        updateAllEdges(usedModulesCollector);
+        if (!myModulesToReload.isEmpty()) {
+          updated |= updateReloadedVertices(myModulesToReload);
+          // XXX seems that updateReloadedEdges has to be invoked regardless of updateReloadedVertices() result
+          //     if not, could combine with && to avoid second call if first gives false
+          updated |= updateReloadedEdges(myModulesToReload, usedModulesCollector);
+        }
         myModulesToRemove.clear();
         myModulesToAdd.clear();
         myModulesToReload.clear();
@@ -156,23 +161,6 @@ public class ModuleUpdater {
       LOG.debug("Removing module " + mRef);
       myDepGraphHolder.remove(mRef);
     }
-  }
-
-  private void updateAdded(final Set<? extends ReloadableModule> modulesToAdd, UsedModulesCollector usedModulesCollector) {
-    updateAddedVertices(modulesToAdd);
-    updateAllEdges(usedModulesCollector);
-  }
-
-  /**
-   * @return true if actual update happened
-   */
-  private boolean updateReloaded(final Set<? extends ReloadableModule> modulesToReload, UsedModulesCollector usedModulesCollector) {
-    if (modulesToReload.isEmpty()) {
-      return false;
-    }
-    boolean updated = updateReloadedVertices(modulesToReload);
-    updated |= updateReloadedEdges(modulesToReload, usedModulesCollector);
-    return updated;
   }
 
   private void updateAddedVertices(Set<? extends ReloadableModule> modulesToAdd) {

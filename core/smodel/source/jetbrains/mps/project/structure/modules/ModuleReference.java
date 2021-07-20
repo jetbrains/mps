@@ -36,7 +36,11 @@ public final class ModuleReference implements SModuleReference {
   private final String myModuleName;
   private final SModuleId myModuleId;
 
-  public ModuleReference(@Nullable String moduleName, @NotNull SModuleId moduleId) {
+  /**
+   * @param moduleName optional name for the module, serves solely for user needs, not part of equality/identity.
+   * @param moduleId generally, shall not be {@code null}; {@code null} indicates invalid reference
+   */
+  public ModuleReference(@Nullable String moduleName, @Nullable SModuleId moduleId) {
     myModuleName = InternUtil.intern(moduleName);
     myModuleId = moduleId;
   }
@@ -44,7 +48,7 @@ public final class ModuleReference implements SModuleReference {
   @NotNull
   @Override
   public SModuleId getModuleId() {
-    return myModuleId;
+    return myModuleId == null ? ModuleId.invalid() : myModuleId;
   }
 
   @Nullable
@@ -55,12 +59,14 @@ public final class ModuleReference implements SModuleReference {
 
   @Override
   public SModule resolve(@NotNull SRepository repo) {
-    return repo.getModule(getModuleId());
+    return myModuleId == null ? null : repo.getModule(getModuleId());
   }
 
   public int hashCode() {
-    if (myModuleId != null) return myModuleId.hashCode();
-    return myModuleName.hashCode();
+    if (myModuleId != null) {
+      return myModuleId.hashCode();
+    }
+    return Objects.hashCode(myModuleName);
   }
 
   public boolean equals(Object obj) {
@@ -69,14 +75,14 @@ public final class ModuleReference implements SModuleReference {
     }
     SModuleReference p = (SModuleReference) obj;
 
-    return Objects.equals(myModuleId, p.getModuleId());
+    return Objects.equals(getModuleId(), p.getModuleId());
   }
 
   public String toString() {
     if (myModuleId == null) {
       return myModuleName;
     }
-    return myModuleId.toString() + "(" + getModuleName() + ")";
+    return String.format("%s(%s)", myModuleId.toString(), myModuleName == null ? "" : myModuleName);
   }
 
   public static SModuleReference parseReference(@NotNull String text) {
