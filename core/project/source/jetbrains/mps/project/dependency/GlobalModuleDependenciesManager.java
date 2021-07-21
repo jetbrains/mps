@@ -52,7 +52,11 @@ public class GlobalModuleDependenciesManager {
       myUsedModulesCollector = null;
     } else {
       final SRepository repo = modules.stream().findAny().orElseThrow().getRepository();
-      myUsedModulesCollector = new UsedModulesCollector(new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), handler);
+      if (repo == null) {
+        myUsedModulesCollector = new UsedModulesCollector(null, handler);
+      }else {
+        myUsedModulesCollector = new UsedModulesCollector(new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), handler);
+      }
     }
   }
 

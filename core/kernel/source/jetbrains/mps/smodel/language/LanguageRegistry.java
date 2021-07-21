@@ -96,7 +96,6 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
    *
    * @return collection of languages available in the given context
    */
-  @NotNull
   public static LanguageRegistry getInstance(@NotNull SRepository repository) {
     return INSTANCE;
   }

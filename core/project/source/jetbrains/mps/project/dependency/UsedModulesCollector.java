@@ -52,7 +52,7 @@ public final class UsedModulesCollector {
   private final ErrorHandler myErrorHandler;
 
   public UsedModulesCollector(SRepository repo) {
-    this(new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), new PostingWarningsErrorHandler());
+    this(LanguageRegistry.getInstance(repo) == null ? new LanguageModuleScanner(repo) : new LanguageModuleScanner(LanguageRegistry.getInstance(repo), repo), new PostingWarningsErrorHandler());
   }
 
   public UsedModulesCollector(LanguageModuleScanner languageModuleScanner, ErrorHandler errorHandler) {
@@ -109,6 +109,7 @@ public final class UsedModulesCollector {
   }
 
   public void collectRuntimeOfUsedLanguages(@NotNull SModule module, @NotNull final Collection<SModule> result) {
+    assert myLanguageRuntimesCache != null;
     SRepository contextRepo = module.getRepository();
     assert contextRepo != null;
     final RuntimesOfUsedLanguageCalculator rtCalc = new RuntimesOfUsedLanguageCalculator(myLanguageRuntimesCache, myErrorHandler);
@@ -131,6 +132,51 @@ public final class UsedModulesCollector {
         myErrorHandler.runtimeDependencyCannotBeFound(mr);
       } else {
         result.add(m);
+      }
+    }
+  }
+
+  // reports languages reported as used by module, including mentioned directly in module's models as 'engaged'
+  // doesn't include extended languages unless explicitly mentioned along with extending
+  // Note, 'reported' means specified either as 'used' or through devkit. This code doesn't analyze actual language uses in models.
+  /*package*/ Set<SLanguage> employedLanguages(Collection<SModule> modules) {
+    // although there's no real need to keep this code in this class, it's here as it I need
+    // to share logic about engagedOnGeneration languages until I get it fixed properly
+    HashSet<SLanguage> employedLanguages = new HashSet<>();
+    for (SModule module : modules) {
+      employedLanguages.addAll(module.getUsedLanguages());
+      // see comment in collectRuntimeOfUsedLanguages(), above
+      for (SModel model : module.getModels()) {
+        employedLanguages.addAll(new ModelImports(model).getLanguagesEngagedOnGeneration());
+      }
+    }
+    return employedLanguages;
+  }
+
+  /*package*/ void collectRuntimeModules(SRepository deployedModulesRepo, Collection<SLanguage> languages, Collection<SModule> result) {
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(deployedModulesRepo);
+    // FIXME source module not found is not exactly what 'language is not deployed' intends to convey,
+    //       need to get back to error reporting anyway (intend to introduce callback code to use same
+    //       code for AnalyzeModuleDep tool).
+    final Set<SLanguage> all = new SLanguageHierarchy(languageRegistry, languages).getExtendedLangs(myErrorHandler::langSourceModuleCannotBeResolved);
+    HashSet<SModuleReference> seen = new HashSet<>();
+    for (SLanguage l : all) {
+      final SModuleReference smr = l.getSourceModuleReference();
+      final SModule sm = smr == null ? null : smr.resolve(deployedModulesRepo);
+      if (false == sm instanceof Language) {
+        myErrorHandler.langSourceModuleCannotBeResolved(l);
+        continue;
+      }
+      for (SModuleReference rmr : ((Language) sm).getRuntimeModulesReferences()) {
+        if (!seen.add(rmr)) {
+          continue;
+        }
+        final SModule rm = rmr.resolve(deployedModulesRepo);
+        if (rm == null) {
+          myErrorHandler.runtimeDependencyCannotBeFound(l, rmr);
+          continue;
+        }
+        result.add(rm);
       }
     }
   }

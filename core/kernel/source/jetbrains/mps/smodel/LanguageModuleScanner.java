@@ -26,9 +26,16 @@ import java.util.stream.Stream;
  * @author Artem Tikhomirov
  */
 public class LanguageModuleScanner {
+  // null for scenarios when LR has been disposed, LibraryInitializer removes modules but ClassloaderManager still
+  // wants to update its graph
   private final LanguageRegistry myLanguageRegistry;
   private final SRepository mySourceRepo;
   private final Map<SModuleReference, Collection<SModuleReference>> myLang2CompleteRTSet = new HashMap<>();
+
+  public LanguageModuleScanner(@NotNull SRepository sourceRepo) {
+    myLanguageRegistry = null;
+    mySourceRepo = sourceRepo;
+  }
 
   public LanguageModuleScanner(@NotNull LanguageRegistry languageRegistry, @NotNull SRepository sourceRepo) {
     myLanguageRegistry = languageRegistry;
@@ -94,6 +101,9 @@ public class LanguageModuleScanner {
 
 
   private boolean tryDeployedLanguage(SLanguage language, Consumer<SModuleReference> sink) {
+    if (myLanguageRegistry == null) {
+      return false;
+    }
     final boolean[] done = {false};
     myLanguageRegistry.withAvailableLanguages(Stream.of(language), lr -> {
       // VISITOR:deployedLanguageRuntimes()
