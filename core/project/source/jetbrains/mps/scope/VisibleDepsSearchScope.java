@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,8 +74,12 @@ public class VisibleDepsSearchScope extends BaseScope {
 
   public VisibleDepsSearchScope(@Nullable SRepository repository, Collection<? extends SModule> modules, Collection<SLanguage> usedLanguages) {
     myRepository = repository;
-    // XXX not sure who's responsibility is to look at 'used devkits' and take their exported solutions. It depends whether we treat them 'visible' or not.
-    myModules = IterableUtil.asSet(new GlobalModuleDependenciesManager(modules).getModules(Deptype.VISIBLE));
+    if (repository != null) {
+      // XXX not sure who's responsibility is to look at 'used devkits' and take their exported solutions. It depends whether we treat them 'visible' or not.
+      myModules = Set.copyOf(new GlobalModuleDependenciesManager(modules).getModules(Deptype.VISIBLE));
+    } else {
+      myModules = Set.copyOf(modules);
+    }
 
     // accessory models of a language module are part of that module scope
     Set<SModel> accessoryModels = new HashSet<>();
