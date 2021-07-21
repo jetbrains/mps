@@ -118,7 +118,8 @@ public class CompletionHelper {
       if (canceled) {
         return;
       }
-      if (mySubstituteChooserHandler.getEditorCell() == mySubstituteChooserHandler.getEditorComponent().getSelectedCell()) {
+      if (mySubstituteChooserHandler.getEditorCell() == mySubstituteChooserHandler.getEditorComponent().getSelectedCell()
+          && !mySubstituteChooserHandler.getEditorComponent().getNodeSubstituteChooser().isVisible()) {
         mySubstituteChooserHandler.showNodeSubstituteChooser(matchingActions, myCompletionCustomizationManager);
       }
     }
