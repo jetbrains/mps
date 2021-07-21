@@ -1855,7 +1855,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/1886960078078641793");
     b.version(2);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
-    b.alias("superscript");
+    b.alias("super/subscript");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCellLayout_Table() {

@@ -7176,8 +7176,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1886960078078641793" at="54,0,55,0" concept="2" trace="props_CellLayout_Superscript" />
       <node id="1886960078078641793" at="750,51,751,76" concept="5" />
-      <node id="1886960078078641793" at="751,76,752,45" concept="1" />
-      <node id="1886960078078641793" at="752,45,753,54" concept="1" />
+      <node id="1886960078078641793" at="751,76,752,49" concept="1" />
+      <node id="1886960078078641793" at="752,49,753,54" concept="1" />
       <node id="1886960078078641793" at="754,9,755,44" concept="6" />
       <node id="1886960078078641793" at="749,56,754,9" concept="3" />
       <scope id="1886960078078641793" at="750,51,753,54">
@@ -7198,8 +7198,8 @@
       <node id="1886960078078641793" at="1854,121,1855,112" concept="1" />
       <node id="1886960078078641793" at="1855,112,1856,17" concept="1" />
       <node id="1886960078078641793" at="1856,17,1857,49" concept="1" />
-      <node id="1886960078078641793" at="1857,49,1858,27" concept="1" />
-      <node id="1886960078078641793" at="1858,27,1859,22" concept="6" />
+      <node id="1886960078078641793" at="1857,49,1858,31" concept="1" />
+      <node id="1886960078078641793" at="1858,31,1859,22" concept="6" />
       <node id="1886960078078641793" at="1851,0,1861,0" concept="8" trace="createDescriptorForCellLayout_Superscript#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1886960078078641793" at="602,56,603,47" />
       <scope id="1886960078078641793" at="1851,80,1859,22">
