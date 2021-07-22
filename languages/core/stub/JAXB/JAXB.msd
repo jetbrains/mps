@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="JAXB" uuid="72acac8d-4dd3-4bac-a8ea-ee97162c24e8" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
-  <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="jaxb-api-2.3.1.jar" />
-      <sourceRoot location="jaxb-runtime.jar" />
-      <sourceRoot location="javax.activation-1.2.0.jar" />
-    </modelRoot>
-  </models>
+  <models/>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
     <facet type="java">
       <classes generated="true" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/jaxb-api-2.3.1.jar" />
-    <stubModelEntry path="${platform_lib}/jaxb-runtime.jar" />
-    <stubModelEntry path="${platform_lib}/javax.activation-1.2.0.jar" />
-  </stubModelEntries>
+  <stubModelEntries/>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
