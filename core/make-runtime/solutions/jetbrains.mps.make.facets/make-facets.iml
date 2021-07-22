@@ -16,6 +16,6 @@
     <orderEntry type="module" module-name="closures-runtime" />
     <orderEntry type="module" module-name="tuples-runtime" />
     <orderEntry type="module" module-name="generator-engine" />
-    <orderEntry type="library" name="Eclipse-compiler" level="project" />
+    <orderEntry type="library" name="3rd-party" level="project" />
   </component>
 </module>

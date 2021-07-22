@@ -17,7 +17,7 @@
     <orderEntry type="module" module-name="tuples-runtime" exported="" />
     <orderEntry type="module" module-name="closures-runtime" exported="" />
     <orderEntry type="module" module-name="collections-runtime" exported="" />
-    <orderEntry type="library" exported="" name="JDOM" level="project" />
+    <orderEntry type="library" exported="" name="3rd-party" level="project" />
     <orderEntry type="library" name="Util" level="project" />
     <orderEntry type="module" module-name="testbench" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="JMock" level="project" />

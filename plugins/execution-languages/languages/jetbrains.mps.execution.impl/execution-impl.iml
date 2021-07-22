@@ -16,7 +16,7 @@
     <orderEntry type="module" module-name="typesystemEngine" />
     <orderEntry type="module" module-name="make-runtime" />
     <orderEntry type="module" module-name="mps-platform" />
-    <orderEntry type="library" name="JDOM" level="project" />
+    <orderEntry type="library" name="3rd-party" level="project" />
     <orderEntry type="library" name="JUnit4" level="project" />
     <orderEntry type="module" module-name="mps-workbench" />
     <orderEntry type="module" module-name="execution-api" exported="" />

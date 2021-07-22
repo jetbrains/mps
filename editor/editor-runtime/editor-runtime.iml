@@ -23,7 +23,7 @@
     <orderEntry type="module" module-name="make-runtime" />
     <orderEntry type="module" module-name="mps-platform" />
     <orderEntry type="module" module-name="mps-ui" />
-    <orderEntry type="library" name="JDOM" level="project" />
+    <orderEntry type="library" name="3rd-party" level="project" />
     <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="module" module-name="mps-icons" />
