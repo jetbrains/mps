@@ -21,7 +21,6 @@ import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.make.dependencies.graph.Graph;
-import jetbrains.mps.make.dependencies.graph.Graphs;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
@@ -276,7 +275,8 @@ public final class ModuleMaker {
     // based on StronglyConnectedModules
     Graph<JavaModule> graph = new Graph<>();
     toCompile.forEach(graph::add);
-    final List<List<JavaModule>> cycles = Graphs.findStronglyConnectedComponents(graph);
+    // JM uses reversed edges for IVertex.next, hence the need to reverse topological order
+    final List<List<JavaModule>> cycles = graph.sccReverse();
 
     List<Set<JavaModule>> result = new LinkedList<>();
     int i = 0;
@@ -286,8 +286,6 @@ public final class ModuleMaker {
       result.add(new LinkedHashSet<>(cycle));
     }
 
-    // don't see a reason to reverse result as StronglyConnectedModules does -
-    //   JM uses reversed edges compared to original code, I suppose reverse in original code was for that reason
 
     return result;
   }

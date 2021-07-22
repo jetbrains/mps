@@ -15,19 +15,23 @@
  */
 package jetbrains.mps.make.dependencies.graph;
 
-import org.apache.log4j.Logger;
+import jetbrains.mps.util.GraphUtil;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
- * Likely this class represents a graph of V
+ * Graph of V
  * @param <V> -- vertex class
  */
-public class Graph<V extends IVertex> {
+public final class Graph<V extends IVertex> {
   private static final Logger LOG = LogManager.getLogger(Graph.class);
 
   private final Set<V> myVertices = new LinkedHashSet<>();
@@ -55,6 +59,39 @@ public class Graph<V extends IVertex> {
 
   public Set<V> getData() {
     return Collections.unmodifiableSet(myVertices);
+  }
+
+  /**
+   * @return strongly connected components in the graph, topologically ordered
+   * Topological order means that first come components, where IVertex has no 'next' edges to vertexes from other components
+   */
+  public List<List<V>> scc() {
+    return _scc(false);
+  }
+
+  // I don't see any value in impl that reverses return value
+  public List<List<V>> sccReverse() {
+    return _scc(true);
+  }
+
+  private List<List<V>> _scc(boolean reverse) {
+    IVertex[] vertices = myVertices.toArray(new IVertex[myVertices.size()]);
+    int[][] graph = Graphs.graphToIntInt(vertices, false, false);
+    int[][] partitions = GraphUtil.tarjan(graph);
+
+    List<V>[] result = new List[partitions.length];
+    for (int i = 0, x = partitions.length; i < x; i++) {
+      List<V> proots = new ArrayList<>(partitions[i].length);
+      for (int e = 0; e < partitions[i].length; e++) {
+        proots.add((V) vertices[partitions[i][e]]);
+      }
+      if (reverse) {
+        result[x-1-i] = proots;
+      } else {
+        result[i] = proots;
+      }
+    }
+    return Arrays.asList(result);
   }
 
   @Override
