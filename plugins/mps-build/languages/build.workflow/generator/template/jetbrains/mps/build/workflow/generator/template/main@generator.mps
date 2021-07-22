@@ -3528,16 +3528,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="2pNNFK" id="4Xk_ETUivNE" role="3o6s8t">
-                <property role="2pNNFO" value="include" />
-                <property role="qg3DV" value="true" />
-                <node concept="2pNUuL" id="4Xk_ETUivOu" role="2pNNFR">
-                  <property role="2pNUuO" value="name" />
-                  <node concept="2pMdtt" id="4Xk_ETUivOw" role="2pMdts">
-                    <property role="2pMdty" value="asm-all-*.jar" />
-                  </node>
-                </node>
-              </node>
               <node concept="2pNNFK" id="1Mjrj7j4BBw" role="3o6s8t">
                 <property role="qg3DV" value="true" />
                 <property role="2pNNFO" value="include" />

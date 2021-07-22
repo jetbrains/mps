@@ -14,7 +14,6 @@
     <fileset dir="${idea_home}/lib">
       <include name="3rd-party.jar" />
       <include name="util.jar" />
-      <include name="asm-all-*.jar" />
       <include name="forms*.jar" />
     </fileset>
     <fileset dir="${idea_home}/plugins/java/lib">
@@ -44,10 +43,6 @@
   
   <path id="path.java.library.3rd-party">
     <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
-  </path>
-  
-  <path id="path.java.library.asm-all">
-    <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
   </path>
   
   <path id="path.java.library.ecj">
@@ -668,7 +663,6 @@
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.util" />
         <path refid="path.java.library.3rd-party" />
-        <path refid="path.java.library.asm-all" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
       </classpath>

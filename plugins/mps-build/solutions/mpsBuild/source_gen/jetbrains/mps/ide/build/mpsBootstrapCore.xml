@@ -24,7 +24,6 @@
     <fileset dir="${idea_home}/lib">
       <include name="3rd-party.jar" />
       <include name="util.jar" />
-      <include name="asm-all-*.jar" />
       <include name="forms*.jar" />
     </fileset>
     <fileset dir="${idea_home}/plugins/java/lib">
@@ -45,7 +44,7 @@
   </path>
   
   <path id="path.java.library.ecj">
-    <fileset file="${artifacts.IDEA}/lib/ecj-4.16.jar" />
+    <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
     <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" />
   </path>
   
@@ -16691,7 +16690,6 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
-        <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
         <path refid="path.java.library.javac2" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -16733,7 +16731,6 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
-        <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
         <path refid="path.java.library.javac2" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
@@ -17481,7 +17478,6 @@
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
-        <fileset file="${artifacts.IDEA}/lib/asm-all-9.1.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
