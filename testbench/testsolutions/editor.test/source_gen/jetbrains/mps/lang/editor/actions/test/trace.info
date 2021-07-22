@@ -4822,6 +4822,33 @@
       <unit id="8186861414697842782" at="13,0,42,0" name="jetbrains.mps.lang.editor.actions.test.Subst_SingleChild_WithNonEmptyCell_Insert_Test" />
     </file>
   </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/8339904518887497285">
+    <file name="Subst_BlankTail_Test.java">
+      <node id="8339904518887497285" at="18,33,19,25" concept="8" />
+      <node id="8339904518887497285" at="23,55,24,36" concept="1" />
+      <node id="8339904518887497285" at="29,52,30,19" concept="8" />
+      <node id="8339904518887497285" at="34,51,35,72" concept="1" />
+      <node id="8339904518887502280" at="35,72,36,22" concept="1" />
+      <node id="8339904518887502579" at="36,22,37,22" concept="1" />
+      <node id="8339904518887497285" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="8339904518887497285" at="18,0,21,0" concept="0" trace="Subst_BlankTail_Test#()V" />
+      <node id="8339904518887497285" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8339904518887497285" at="22,0,26,0" concept="3" trace="test_Subst_BlankTail#()V" />
+      <node id="8339904518887497285" at="33,0,39,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="8339904518887497285" at="18,33,19,25" />
+      <scope id="8339904518887497285" at="23,55,24,36" />
+      <scope id="8339904518887497285" at="29,52,30,19" />
+      <scope id="8339904518887497285" at="18,0,21,0" />
+      <scope id="8339904518887497285" at="29,0,32,0">
+        <var name="owner" id="8339904518887497285" />
+      </scope>
+      <scope id="8339904518887497285" at="34,51,37,22" />
+      <scope id="8339904518887497285" at="22,0,26,0" />
+      <scope id="8339904518887497285" at="33,0,39,0" />
+      <unit id="8339904518887497285" at="27,0,40,0" name="jetbrains.mps.lang.editor.actions.test.Subst_BlankTail_Test$TestBody" />
+      <unit id="8339904518887497285" at="13,0,41,0" name="jetbrains.mps.lang.editor.actions.test.Subst_BlankTail_Test" />
+    </file>
+  </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/8820932044744413282">
     <file name="DelUsualValidReference_Test.java">
       <node id="8820932044744413282" at="19,40,20,25" concept="8" />

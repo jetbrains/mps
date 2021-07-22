@@ -38,6 +38,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -166,7 +167,7 @@ public class IntelligentInputUtil {
             target = (EditorCell_Label) errorCell;
           }
 
-          if (target != null) {
+          if (target != null && StringUtils.isNotBlank(tail)) {
             target.changeText(tail);
             target.end();
 
