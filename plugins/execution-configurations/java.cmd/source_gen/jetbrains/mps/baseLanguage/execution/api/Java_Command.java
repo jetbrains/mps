@@ -138,7 +138,7 @@ public class Java_Command {
     // with program arguments (and even if we do, e.g. enumerating all test methods from JUnit command, we can still
     // address huge argument list with -f or piping input from file (i.e. runner would need to support arguments other than
     // String[] args in main()))
-    if (ListSequence.fromList(classPath).count() > 220) {
+    if (ListSequence.fromList(classPath).count() > 20) {
       // next is to deal with very long cp
       try {
         JarManifestBuilder jmb = new JarManifestBuilder();
