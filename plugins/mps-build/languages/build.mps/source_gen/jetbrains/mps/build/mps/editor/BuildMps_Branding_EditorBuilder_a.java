@@ -1461,6 +1461,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setFoldedCell(createConstant_35());
     editorCell.addEditorCell(createConstant_25());
     editorCell.addEditorCell(createCollection_13());
+    editorCell.setInitiallyCollapsed(true);
     return editorCell;
   }
   private EditorCell createConstant_25() {

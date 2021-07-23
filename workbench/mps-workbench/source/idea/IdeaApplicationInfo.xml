@@ -8,7 +8,7 @@
   <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009"/>
   <build number="MPS-212.4416.SNAPSHOT" date="__BUILD_DATE__"/>
   <!--<install-over minbuild="" maxbuild="" version=""/>-->
-  <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="397" progressHeight="3"/>
+  <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="396" progressHeight="4"/>
   <about url="/about.png" foreground="FFFFFF" copyrightForeground="FFFFFF"/><!--linkColor="9b5121" logoX="300" logoY="265" logoW="75" logoH="30"-->
   <icon ico="MPS.ico" svg="/mps.svg" svg-small="/mps_16.svg"/>
   <package code="__PACKAGE_CODE__"/>

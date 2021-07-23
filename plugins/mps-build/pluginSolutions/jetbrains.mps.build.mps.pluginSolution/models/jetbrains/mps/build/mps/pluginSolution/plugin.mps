@@ -672,6 +672,10 @@
       </concept>
     </language>
     <language id="d5033cee-f632-44b6-b308-89d4fbde34ff" name="jetbrains.mps.build.startup">
+      <concept id="3885435385580582732" name="jetbrains.mps.build.startup.structure.SimpleVmOptions" flags="ng" index="26Ea6D">
+        <property id="3885435385580582733" name="options" index="26Ea6C" />
+        <property id="5842819808956906658" name="commented" index="2eq24a" />
+      </concept>
       <concept id="3885435385580582153" name="jetbrains.mps.build.startup.structure.ClassPathItem" flags="ng" index="26EafG">
         <property id="3885435385580582154" name="path" index="26EafJ" />
       </concept>
@@ -679,6 +683,8 @@
         <property id="3885435385580582155" name="startupFolder" index="26EafI" />
         <property id="3885435385580631186" name="startupClass" index="26FY9R" />
         <child id="3885435385580582696" name="bootClasspath" index="26Ea7d" />
+        <child id="3885435385580627556" name="vmOptions" index="26FZ21" />
+        <child id="2693344784283221851" name="vmOptions64" index="2hID6k" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
@@ -791,7 +797,6 @@
         <property id="3497141547781541444" name="major" index="2OjLBL" />
         <child id="6845119683729294884" name="progressColor" index="27hGoL" />
         <child id="922958177840117051" name="script" index="2gvbiD" />
-        <child id="6108265972537182997" name="aboutScreen" index="2EqU2s" />
         <child id="6108265972537182996" name="splashScreen" index="2EqU2t" />
         <child id="6108265972537229337" name="buildNumber" index="2EteIg" />
         <child id="6108265972537372847" name="product" index="2EtHGA" />
@@ -801,8 +806,6 @@
         <child id="62678610895108195" name="svg_small" index="1hH5mY" />
         <child id="62678610895108142" name="svg" index="1hH5nN" />
         <child id="772379520210716142" name="welcomeLogo" index="3vi$VU" />
-        <child id="1084163669516664629" name="copyrightForeground" index="3KTKoD" />
-        <child id="1084163669516639223" name="foreground" index="3KTYbF" />
       </concept>
       <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA" />
       <concept id="3189788309731840248" name="jetbrains.mps.build.mps.structure.BuildMps_Language" flags="ng" index="1E1JtD" />
@@ -10312,25 +10315,6 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="3clFbF" id="1q4WFGK3qGL" role="3cqZAp">
-                          <node concept="1rXfSq" id="4hiugqyziCj" role="3clFbG">
-                            <ref role="37wK5l" node="1q4WFGK39U1" resolve="copyIcon" />
-                            <node concept="2OqwBi" id="1q4WFGK3qGN" role="37wK5m">
-                              <node concept="37vLTw" id="3GM_nagTrC7" role="2Oq$k0">
-                                <ref role="3cqZAo" node="1q4WFGK3qG8" resolve="instanceEx" />
-                              </node>
-                              <node concept="liA8E" id="1q4WFGK3qGP" role="2OqNvi">
-                                <ref role="37wK5l" to="f061:~ApplicationInfoEx.getAboutImageUrl()" resolve="getAboutImageUrl" />
-                              </node>
-                            </node>
-                            <node concept="37vLTw" id="3GM_nagT$w3" role="37wK5m">
-                              <ref role="3cqZAo" node="1q4WFGK3qG7" resolve="iconsDir" />
-                            </node>
-                            <node concept="Xl_RD" id="1q4WFGK3qGR" role="37wK5m">
-                              <property role="Xl_RC" value="about.png" />
-                            </node>
-                          </node>
-                        </node>
                         <node concept="3clFbF" id="1q4WFGK3qGS" role="3cqZAp">
                           <node concept="1rXfSq" id="4hiugqyz9$T" role="3clFbG">
                             <ref role="37wK5l" node="1q4WFGK39U1" resolve="copyIcon" />
@@ -12555,22 +12539,6 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="55IIr" id="2OJWaFGOSoo" role="2EqU2s">
-                        <node concept="2Ry0Ak" id="2OJWaFGOSop" role="iGT6I">
-                          <property role="2Ry0Am" value="icons" />
-                          <node concept="2Ry0Ak" id="2OJWaFGOSoq" role="2Ry0An">
-                            <property role="2Ry0Am" value="about.png" />
-                          </node>
-                          <node concept="2EMmih" id="1q4WFGK355F" role="lGtFl">
-                            <property role="2qtEX9" value="head" />
-                            <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/8618885170173601777/8618885170173601779" />
-                            <property role="3qcH_f" value="true" />
-                            <node concept="37vLTw" id="2BHiRxeooKc" role="2c44t1">
-                              <ref role="3cqZAo" node="1q4WFGK33dT" resolve="ICONS" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
                       <node concept="3_J27D" id="2g$3PZTZDBP" role="2gvbiD">
                         <node concept="3Mxwew" id="2g$3PZTZDBQ" role="3MwsjC">
                           <property role="3MwjfP" value="standalone" />
@@ -12592,16 +12560,6 @@
                       </node>
                       <node concept="3_J27D" id="49zeuIC9nKP" role="HFo83">
                         <node concept="3Mxwew" id="49zeuIC9nTh" role="3MwsjC">
-                          <property role="3MwjfP" value="FFFFFF" />
-                        </node>
-                      </node>
-                      <node concept="3_J27D" id="49zeuIBZvOn" role="3KTKoD">
-                        <node concept="3Mxwew" id="49zeuIBZvWc" role="3MwsjC">
-                          <property role="3MwjfP" value="FFFFFF" />
-                        </node>
-                      </node>
-                      <node concept="3_J27D" id="49zeuIBZvFV" role="3KTYbF">
-                        <node concept="3Mxwew" id="49zeuIBZvNK" role="3MwsjC">
                           <property role="3MwjfP" value="FFFFFF" />
                         </node>
                       </node>
@@ -15209,6 +15167,198 @@
               <node concept="26EafH" id="2g$3PZUe23n" role="2c44tc">
                 <property role="26EafI" value="-" />
                 <property role="26FY9R" value="jetbrains.mps.Launcher" />
+                <node concept="26Ea6D" id="5DYAdUAxc_c" role="26FZ21">
+                  <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+                  <property role="2eq24a" value="true" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW_03" role="26FZ21">
+                  <property role="26Ea6C" value="-Xmx950m" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPdc" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvP8M" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvP9n" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW_02" role="26FZ21">
+                  <property role="26Ea6C" value="-ea" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HeaUR" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:CICompilerCount=2" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPa0" role="26FZ21">
+                  <property role="26Ea6C" value="-Dsun.io.useCanonPrefixCache=false" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPaH" role="26FZ21">
+                  <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Heb7o" role="26FZ21">
+                  <property role="26Ea6C" value="-Djdk.http.auth.tunneling.disabledSchemes=" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW_05" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:+HeapDumpOnOutOfMemoryError" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPbu" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Hebg9" role="26FZ21">
+                  <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
+                </node>
+                <node concept="26Ea6D" id="3Fszdtt6Zyc" role="26FZ21">
+                  <property role="26Ea6C" value="-Dkotlinx.coroutines.debug=off" />
+                </node>
+                <node concept="26Ea6D" id="3Fszdtt6Zu5" role="26FZ21">
+                  <property role="26Ea6C" value="-Djdk.module.illegalAccess.silent=true" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HebhM" role="26FZ21">
+                  <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Hebjv" role="26FZ21">
+                  <property role="26Ea6C" value="-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Heblg" role="26FZ21">
+                  <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
+                </node>
+                <node concept="26Ea6D" id="5DYAdUAxzvk" role="26FZ21">
+                  <property role="26Ea6C" value="Additional MPS options:" />
+                  <property role="2eq24a" value="true" />
+                </node>
+                <node concept="26Ea6D" id="BJYGrH08XF" role="26FZ21">
+                  <property role="26Ea6C" value="-client" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW_01" role="26FZ21">
+                  <property role="26Ea6C" value="-Xss1024k" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW_04" role="26FZ21">
+                  <property role="26Ea6C" value="-XX:NewSize=256m" />
+                </node>
+                <node concept="26Ea6D" id="41$40Av8yCc" role="26FZ21">
+                  <property role="26Ea6C" value="-Dfile.encoding=UTF-8" />
+                </node>
+                <node concept="26Ea6D" id="41$40Av8yBW" role="26FZ21">
+                  <property role="26Ea6C" value="-Dapple.awt.graphics.UseQuartz=true" />
+                </node>
+                <node concept="26Ea6D" id="3ue78b0PHL9" role="26FZ21">
+                  <property role="26Ea6C" value="-Dide.mac.message.dialogs.as.sheets=false" />
+                </node>
+                <node concept="26Ea6D" id="4z969tcIApT" role="26FZ21">
+                  <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
+                </node>
+                <node concept="26Ea6D" id="2sJHcZ7KMnC" role="26FZ21">
+                  <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HebMF" role="26FZ21">
+                  <property role="26Ea6C" value="-Didea.log.config.file=log.xml" />
+                </node>
+                <node concept="26Ea6D" id="2i$hHP5eiQ4" role="26FZ21">
+                  <property role="26Ea6C" value="-Didea.indices.psi.dependent.default=false" />
+                </node>
+                <node concept="26Ea6D" id="5DYAdUAsP2e" role="26FZ21">
+                  <property role="26Ea6C" value="-Dsplash=true" />
+                </node>
+                <node concept="26Ea6D" id="BJYGrH08XG" role="26FZ21">
+                  <property role="2eq24a" value="true" />
+                  <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
+                </node>
+                <node concept="26Ea6D" id="5DYAdUAvQkM" role="2hID6k">
+                  <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+                  <property role="2eq24a" value="true" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW$Yp" role="2hID6k">
+                  <property role="26Ea6C" value="-Xmx2048m" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPcJ" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvP8x" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvP94" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW$Y3" role="2hID6k">
+                  <property role="26Ea6C" value="-ea" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HeaJu" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:CICompilerCount=2" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvP9F" role="2hID6k">
+                  <property role="26Ea6C" value="-Dsun.io.useCanonPrefixCache=false" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPam" role="2hID6k">
+                  <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Heb6B" role="2hID6k">
+                  <property role="26Ea6C" value="-Djdk.http.auth.tunneling.disabledSchemes=" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW$Z5" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:+HeapDumpOnOutOfMemoryError" />
+                </node>
+                <node concept="26Ea6D" id="4A8SxGHvPb5" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Hebfm" role="2hID6k">
+                  <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
+                </node>
+                <node concept="26Ea6D" id="3Fszdtt6Zx9" role="2hID6k">
+                  <property role="26Ea6C" value="-Dkotlinx.coroutines.debug=off" />
+                </node>
+                <node concept="26Ea6D" id="3Fszdtt6Zt4" role="2hID6k">
+                  <property role="26Ea6C" value="-Djdk.module.illegalAccess.silent=true" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HebgX" role="2hID6k">
+                  <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HebiC" role="2hID6k">
+                  <property role="26Ea6C" value="-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3Hebkn" role="2hID6k">
+                  <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
+                </node>
+                <node concept="26Ea6D" id="5DYAdUAwud5" role="2hID6k">
+                  <property role="26Ea6C" value="Additional MPS options:" />
+                  <property role="2eq24a" value="true" />
+                </node>
+                <node concept="26Ea6D" id="2lwFGYOW7EY" role="2hID6k">
+                  <property role="26Ea6C" value="-client" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW$V3" role="2hID6k">
+                  <property role="26Ea6C" value="-Xss1024k" />
+                </node>
+                <node concept="26Ea6D" id="7TY3xOwW$YJ" role="2hID6k">
+                  <property role="26Ea6C" value="-XX:NewSize=256m" />
+                </node>
+                <node concept="26Ea6D" id="41$40Av8yBG" role="2hID6k">
+                  <property role="26Ea6C" value="-Dfile.encoding=UTF-8" />
+                </node>
+                <node concept="26Ea6D" id="41$40Av8yBs" role="2hID6k">
+                  <property role="26Ea6C" value="-Dapple.awt.graphics.UseQuartz=true" />
+                </node>
+                <node concept="26Ea6D" id="3ue78b0PEyn" role="2hID6k">
+                  <property role="26Ea6C" value="-Dide.mac.message.dialogs.as.sheets=false" />
+                </node>
+                <node concept="26Ea6D" id="4z969tcIApt" role="2hID6k">
+                  <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
+                </node>
+                <node concept="26Ea6D" id="2sJHcZ7KMn9" role="2hID6k">
+                  <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
+                </node>
+                <node concept="26Ea6D" id="6KekG3HebLK" role="2hID6k">
+                  <property role="26Ea6C" value="-Didea.log.config.file=log.xml" />
+                </node>
+                <node concept="26Ea6D" id="2i$hHP5eiOY" role="2hID6k">
+                  <property role="26Ea6C" value="-Didea.indices.psi.dependent.default=false" />
+                </node>
+                <node concept="26Ea6D" id="5DYAdUAsP19" role="2hID6k">
+                  <property role="26Ea6C" value="-Dsplash=true" />
+                </node>
+                <node concept="26Ea6D" id="2lwFGYOW7EZ" role="2hID6k">
+                  <property role="2eq24a" value="true" />
+                  <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
+                </node>
                 <node concept="26EafG" id="BJYGrH08Xy" role="26Ea7d">
                   <property role="26EafJ" value="lib/branding.jar" />
                 </node>

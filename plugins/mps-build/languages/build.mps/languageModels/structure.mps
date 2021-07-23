@@ -779,7 +779,6 @@
     <node concept="1TJgyj" id="5j4USBYFOGl" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="aboutScreen" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6108265972537182997" />
       <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>

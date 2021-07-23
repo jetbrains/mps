@@ -220,6 +220,7 @@
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <property id="1160590353935" name="usesFolding" index="S$Qs1" />
+        <property id="6240706158490734113" name="collapseByDefault" index="3EXrWe" />
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
         <child id="7723470090030138869" name="foldedCellModel" index="AHCbl" />
         <child id="6240706158490734121" name="collapseByDefaultCondition" index="3EXrW6" />
@@ -2898,6 +2899,7 @@
         </node>
         <node concept="3EZMnI" id="2g$3PZTRBWb" role="3EZMnx">
           <property role="S$Qs1" value="true" />
+          <property role="3EXrWe" value="true" />
           <node concept="l2Vlx" id="2g$3PZTRBWc" role="2iSdaV" />
           <node concept="3F0ifn" id="6Iq8148fjXv" role="3EZMnx">
             <property role="3F0ifm" value="About Popup" />

@@ -25,4 +25,5 @@
 -Dperformance.watcher.freeze.report=false
 -Didea.log.config.file=log.xml
 -Didea.indices.psi.dependent.default=false
+-Dsplash=true
 #-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071
