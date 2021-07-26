@@ -234,6 +234,8 @@ final class ModulesContainer {
       final JavaModuleFacet jmf = m.getFacet(JavaModuleFacet.class);
       if (jmf == null) {
         // it's odd GMDM(COMPILE) gave dependency module that got no JavaModuleFacet
+        // well, no, GMDM is not supposed to check JMF presence. COMPILE is merely an indication what module dependencies to follow,
+        //    with no 'Java compilation' implication.
         continue;
       }
       result.addAll(jmf.getClassPath());

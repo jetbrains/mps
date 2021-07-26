@@ -23,9 +23,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  * Graph of V
@@ -92,6 +96,33 @@ public final class Graph<V extends IVertex> {
       }
     }
     return Arrays.asList(result);
+  }
+
+  public void dfs(Stream<V> from, Predicate<V> visitor) {
+    // assert myVertices.containsAll(from);
+    HashSet<V> seen = new HashSet<>();
+    Predicate<V> notSeen = seen::add;
+    final DFS<V> a = new DFS<V>(notSeen.and(visitor), (x) -> {
+    });
+    from.forEach(a::go);
+
+  }
+
+  private static class DFS<X extends IVertex> {
+    private final Predicate<X> myVisitCondition;
+    private final Consumer<X> myPostVisitor;
+
+    DFS(Predicate<X> visitCondition, Consumer<X> postVisitor) {
+      myVisitCondition = visitCondition;
+      myPostVisitor = postVisitor;
+    }
+
+    void go(X vertex) {
+      if (myVisitCondition.test(vertex)) {
+        vertex.getNexts().forEach(v -> go((X) v));
+        myPostVisitor.accept(vertex);
+      }
+    }
   }
 
   @Override

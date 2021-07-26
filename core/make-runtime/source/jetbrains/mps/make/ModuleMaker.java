@@ -75,6 +75,7 @@ public final class ModuleMaker {
   private final static String CALCULATING_DEPENDENCIES_TO_COMPILE_MSG = "Calculating Modules To Compile";
   private final static String BUILDING_MODULE_CYCLES_MSG = "Building Module Cycles";
   private final static String BUILDING_DIRTY_CLOSURE = "Dirty Modules";
+  private JavaCompilerOptions myCompilerOptions = null;
 
   @NotNull private final CompositeTracer myTracer;
 
@@ -108,6 +109,14 @@ public final class ModuleMaker {
   }
 
   /**
+   * @param options set of compilation options for the subsequent {@code make} calls
+   * @return {@code this} for convenience
+   */
+  public ModuleMaker options(@Nullable JavaCompilerOptions options) {
+    myCompilerOptions = options;
+  }
+
+  /**
    * TODO move or rename the ModuleMaker (the naming is quite disturbing)
    */
   public void clean(final Set<? extends SModule> modules, @NotNull final ProgressMonitor monitor) {
@@ -138,6 +147,7 @@ public final class ModuleMaker {
 
   @NotNull
   public MPSCompilationResult make(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor, @Nullable final JavaCompilerOptions compilerOptions) {
+    options(compilerOptions);
     CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
     tracer.start(String.format(BUILDING_MODULES_MSG, modules.size()), 10);
     try {
@@ -159,7 +169,7 @@ public final class ModuleMaker {
       List<Set<JavaModule>> schedule = getStronglyConnectedComponents(toCompile);
       tracer.pop(1);
 
-      return compileCycles(compilerOptions, schedule, tracer.subTracer(5, SubProgressKind.REPLACING), modulesContainer);
+      return compileCycles(schedule, tracer.subTracer(5, SubProgressKind.REPLACING), modulesContainer);
     } catch (Exception ex) {
       // XXX I see no reason to propagate exception up, we can fail compilation process gracefully;
       String m = String.format("Unexpected exception '%s', compilation aborted!", ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage());
@@ -172,12 +182,12 @@ public final class ModuleMaker {
   }
 
   @NotNull
-  private MPSCompilationResult compileCycles(@Nullable JavaCompilerOptions compilerOptions, List<Set<JavaModule>> cyclesToCompile, @NotNull CompositeTracer tracer, @NotNull ModulesContainer allModules) {
+  private MPSCompilationResult compileCycles(List<Set<JavaModule>> cyclesToCompile, @NotNull CompositeTracer tracer, @NotNull ModulesContainer allModules) {
     List<MPSCompilationResult> cycleCompilationResults = new ArrayList<>();
     tracer.start("Cycles", cyclesToCompile.size());
     JavaCompilerImpl jc = null;
     try {
-      jc = decideOnActualCompiler(compilerOptions, tracer.getSender());
+      jc = decideOnActualCompiler(tracer.getSender());
       int cycleNumber = 0;
       for (Set<JavaModule> modulesInCycle : cyclesToCompile) {
         if (tracer.isMonitorCanceled()) {
@@ -190,7 +200,7 @@ public final class ModuleMaker {
         ModulesContainer modulesContainer = allModules.restricted(modulesInCycle);
         final MPSCompilationResult cycleCompilationResult;
         if (jc == null) {
-          InternalJavaCompiler internalJavaCompiler = new InternalJavaCompiler(modulesContainer, compilerOptions);
+          InternalJavaCompiler internalJavaCompiler = new InternalJavaCompiler(modulesContainer, myCompilerOptions);
           cycleCompilationResult = internalJavaCompiler.compile(cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
         } else {
           cycleCompilationResult = jc.compile(modulesContainer, cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
@@ -224,7 +234,7 @@ public final class ModuleMaker {
    * @return null means use legacy one
    */
   @Nullable
-  private JavaCompilerImpl decideOnActualCompiler(@Nullable JavaCompilerOptions compilerOptions, MessageSender sender) throws IllegalStateException {
+  private JavaCompilerImpl decideOnActualCompiler(MessageSender sender) throws IllegalStateException {
     if (RuntimeFlags.useLegacyJavaCompiler()) {
       return null;
     }
@@ -239,7 +249,7 @@ public final class ModuleMaker {
     } else {
       jcImpl = JavaCompilerImpl.defaultCompiler();
     }
-    final JavaCompilerOptions co = compilerOptions == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_COMPILER_OPTIONS : compilerOptions;
+    final JavaCompilerOptions co = myCompilerOptions == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_COMPILER_OPTIONS : myCompilerOptions;
     return new JavaCompilerImpl(new File(System.getProperty("java.home")), co, jcImpl);
   }
 
