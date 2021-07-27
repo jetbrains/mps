@@ -612,13 +612,7 @@ public final class ModuleMaker {
         tracer.getSender().info(String.format(CYCLE_FORMAT_MSG, cycleNumber, modulesInCycle.stream().map(JavaModule::name).collect(Collectors.toList())));
         cycleTracer.start(getCycleString(cycleNumber, modulesInCycle), 1);
         ModulesContainer modulesContainer = allModules.restricted(modulesInCycle);
-        final MPSCompilationResult cycleCompilationResult;
-        if (jc == null) {
-          InternalJavaCompiler internalJavaCompiler = new InternalJavaCompiler(modulesContainer, myCompilerOptions);
-          cycleCompilationResult = internalJavaCompiler.compile(cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
-        } else {
-          cycleCompilationResult = jc.compile(modulesContainer, cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
-        }
+        final MPSCompilationResult cycleCompilationResult = jc.compile(modulesContainer, cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
         cycleCompilationResults.add(cycleCompilationResult);
         cycleTracer.done(0);
       }
@@ -644,13 +638,10 @@ public final class ModuleMaker {
     return String.format(CYCLE_FORMAT_MSG, cycleNumber, firstModule);
   }
 
-  /**
-   * @return null means use legacy one
-   */
-  @Nullable
+  @NotNull
   private JavaCompilerImpl decideOnActualCompiler(MessageSender sender) throws IllegalStateException {
     if (RuntimeFlags.useLegacyJavaCompiler()) {
-      return null;
+      throw new IllegalStateException("Support for legacy ECJ integration has been dropped");
     }
     JavaCompiler jcImpl;
     if (RuntimeFlags.useEclipseJavaCompiler()) {

@@ -21,7 +21,6 @@ import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
 
 import javax.tools.Diagnostic;
 import javax.tools.Diagnostic.Kind;
@@ -116,7 +115,7 @@ final class JavaCompilerImpl {
       tracer.push(InternalJavaCompiler.PREPARING_TO_COMPILE_MSG);
       // FTR, original code in InternalJavaCompiler analyzed dirty modules only
       //   although once/if we get rid of dirty check, we likely need to analyze all modules here
-      ModuleAnalyzerResult analysisResult = new ModuleAnalyzer().analyze(modules.getDirtyModules());
+      ModuleAnalyzerResult analysisResult = modules.analyze();
       if (!analysisResult.hasJavaToCompile && !analysisResult.hasResourcesToUpdate) {
         tracer.pop(1);
         return MPSCompilationResult.nothingToDoCompilationResult();
@@ -174,10 +173,10 @@ final class JavaCompilerImpl {
         }
       }
       // as long as we can't tell which one was actually changed during compilation, pretend every one we've tried to compile was.
-      final Set<SModule> changedModules = modules.getDirtyModules().map(JavaModule::toModule).collect(Collectors.toSet());
+      final Set<JavaModule> changedModules = modules.getDirtyModules().collect(Collectors.toSet());
       reportModulesWithRemovalsAreNotChanged(analysisResult.modulesWithRemovals, changedModules, tracer.getSender());
       tracer.pop();
-      return new MPSCompilationResult(total.errors, total.warnings, false, changedModules);
+      return new MPSCompilationResult(total.errors, total.warnings, false, changedModules.stream().map(JavaModule::toModule).collect(Collectors.toList()));
     } catch (Exception ex) {
       if (tempDir != null) {
         FileUtil.delete(tempDir);
@@ -341,10 +340,10 @@ final class JavaCompilerImpl {
   }
 
   // FIXME bad name
-  private static void reportModulesWithRemovalsAreNotChanged(Collection<SModule> modulesWithRemovals, Collection<SModule> changedModules, MessageSender ms) {
-    for (SModule module : modulesWithRemovals) {
+  private static void reportModulesWithRemovalsAreNotChanged(Collection<JavaModule> modulesWithRemovals, Collection<JavaModule> changedModules, MessageSender ms) {
+    for (JavaModule module : modulesWithRemovals) {
       if (!changedModules.contains(module)) {
-        ms.warn(String.format(InternalJavaCompiler.MODULE_WITH_REMOVALS_WAS_NOT_CHANGED, module), module.getModuleReference());
+        ms.warn(String.format(InternalJavaCompiler.MODULE_WITH_REMOVALS_WAS_NOT_CHANGED, module.name()), module.moduleReference());
       }
     }
   }

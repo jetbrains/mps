@@ -58,12 +58,6 @@ public final class ModuleSources {
     collectInputFilesInfo();
   }
 
-  @Deprecated
-  public SModule getModule() {
-    // 1 use, can refactor to use JM directly
-    return myModule.toModule();
-  }
-
   public Collection<File> getFilesToDelete() {
     return myFilesToDelete;
   }

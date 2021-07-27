@@ -28,7 +28,7 @@ import java.util.function.Consumer;
 
 /**
  * Memorizes and returns all the results (as classes to be written).
- * Delegates errors (compilation as well as compiler fatal errors) to {@link CompilationErrorsHandler}
+ * Delegates errors (compilation as well as compiler fatal errors) to {@link ErrorSink}
  */
 /*package*/ final class ECJListener extends jetbrains.mps.compiler.CompilationResultAdapter {
   private final ErrorSink myErrorsHandler;

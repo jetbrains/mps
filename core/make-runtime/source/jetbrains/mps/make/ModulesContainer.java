@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.make;
 
+import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
@@ -24,6 +25,7 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.Consumer;
 
 import java.io.File;
@@ -44,6 +46,8 @@ final class ModulesContainer {
 
   /*package*/ static class JavaModule implements IVertex {
     private final SModule myModule;
+    private final SModuleReference myModuleReference;
+
     // not restricted to modules we are going to compile, we need to take classpath from these
     // although true meaning of this field would become clear once the contract of MM.make() becomes clear
     //  - if we crate JM for complete GMDM(COMPILE) closure, we can have JMs here
@@ -58,6 +62,7 @@ final class ModulesContainer {
     JavaModule(SModule module) {
       // inv: module.getFacet(JavaModuleFacet.class) != null
       myModule = module;
+      myModuleReference = module.getModuleReference();
     }
 
     // FIXME no reason to expose, once I deal with ClassFileWriter scenario, drop this one and revisit other public methods
@@ -67,8 +72,13 @@ final class ModulesContainer {
     }
 
     public String name() {
-      return myModule.getModuleName();
+      return myModuleReference.getModuleName();
     }
+
+    public SModuleReference moduleReference() {
+      return myModuleReference;
+    }
+
 
     // TODO revisit, seems that can ensure it's not null, isExcluded() filters out those with null
     @Nullable
@@ -190,23 +200,6 @@ final class ModulesContainer {
     myModules = modules;
   }
 
-  // FIXME the only reason to keep this method is that we go from JavaFile to fqName in Java Compiler and then
-  //       need to go back from fqName to JavaFile if there's an error. In fact, seems that can use JavaFile object
-  //       directly (if I stick to individual JavaFile for compilation as it's now. I consider refactoring
-  //       to feed Java Compiler with source roots instead of individual files)
-  @Nullable
-  public JavaFile getJavaFile(String fqName) {
-    for (JavaModule jm : myModules.values()) {
-      // in fact, there could be more than 1 module even in current restricted cycle with same fqName,
-      // but I do not care - putClassForModule() in InternalJavaCompiler.collectSources() did not, too.
-      final JavaFile javaFile = jm.getSources().getJavaFile(fqName);
-      if (javaFile != null) {
-        return javaFile;
-      }
-    }
-    return null;
-  }
-
   public boolean hasModuleToCompile() {
     return !myModules.isEmpty();
   }
@@ -222,6 +215,9 @@ final class ModulesContainer {
     return myModules.values().stream();
   }
 
+  public ModuleAnalyzerResult analyze() {
+    return new ModuleAnalyzer().analyze(getDirtyModules());
+  }
   public Collection<String> getCompileClasspath() {
     // utilize dependencies collected during fillDependencies()
     HashSet<SModule> ccModules = new LinkedHashSet<>();

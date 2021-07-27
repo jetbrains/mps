@@ -16,6 +16,7 @@
 package jetbrains.mps.compiler;
 
 import jetbrains.mps.make.JavaFile;
+import jetbrains.mps.util.annotation.ToRemove;
 
 import java.util.Collection;
 import java.util.function.Consumer;
@@ -34,9 +35,12 @@ import java.util.function.Consumer;
  * once everything works, we can switch to {@code javax.tools.JavaCompiler} instead of home-grown {@code JavaCompiler}
  * facade
  * </p>
+ * @deprecated we use  {@code javax.tools.JavaCompiler} facade now through {@code jetbrains.mps.make.JavaCompilerImpl} mediator
  * @author Artem Tikhomirov
  * @since 2021.1
  */
+@Deprecated
+@ToRemove(version = 2021.2)
 public interface JavaCompiler {
   void setOptions(JavaCompilerOptions options);
 

@@ -18,7 +18,6 @@ package jetbrains.mps.make;
 import jetbrains.mps.make.ModulesContainer.JavaModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.File;
 import java.util.Collection;
@@ -40,16 +39,17 @@ class ModuleAnalyzer {
   public ModuleAnalyzerResult analyze(Stream<JavaModule> javaModules) {
     boolean hasJavaToCompile = false;
     boolean hasResourcesToUpdate = false;
-    Set<SModule> modulesWithRemovals = new HashSet<>();
+    Set<JavaModule> modulesWithRemovals = new HashSet<>();
     Set<File> filesToDelete = new HashSet<>();
 
-    for (ModuleSources sources : javaModules.map(JavaModule::getSources).collect(Collectors.toList())) {
+    for (JavaModule jm : javaModules.collect(Collectors.toList())) {
+      ModuleSources sources = jm.getSources();
       hasResourcesToUpdate |= !sources.isResourcesUpToDate();
       hasJavaToCompile |= !sources.isJavaUpToDate();
       Collection<File> filesToDelete0 = sources.getFilesToDelete();
       if (!filesToDelete0.isEmpty()) {
         filesToDelete.addAll(filesToDelete0);
-        modulesWithRemovals.add(sources.getModule());
+        modulesWithRemovals.add(jm);
       }
     }
 
@@ -63,13 +63,13 @@ class ModuleAnalyzer {
   final static class ModuleAnalyzerResult {
     public final boolean hasJavaToCompile;
     public final boolean hasResourcesToUpdate;
-    @NotNull public final Set<SModule> modulesWithRemovals;
+    @NotNull public final Set<JavaModule> modulesWithRemovals;
     @NotNull public final Set<File> filesToDelete;
 
     private ModuleAnalyzerResult(
         boolean hasJavaToCompile,
         boolean hasResourcesToUpdate,
-        @NotNull Set<SModule> modulesWithRemovals,
+        @NotNull Set<JavaModule> modulesWithRemovals,
         @NotNull Set<File> filesToDelete) {
       this.hasJavaToCompile = hasJavaToCompile;
       this.hasResourcesToUpdate = hasResourcesToUpdate;
@@ -80,7 +80,7 @@ class ModuleAnalyzer {
     public static ModuleAnalyzerResult build(
         boolean hasJavaToCompile,
         boolean hasResourcesToUpdate,
-        Set<SModule> modulesWithRemovals,
+        Set<JavaModule> modulesWithRemovals,
         Set<File> filesToDelete) {
       return new ModuleAnalyzerResult(hasJavaToCompile, hasResourcesToUpdate, modulesWithRemovals, filesToDelete);
     }
