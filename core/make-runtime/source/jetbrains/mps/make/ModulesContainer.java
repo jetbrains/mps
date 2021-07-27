@@ -41,10 +41,10 @@ import java.util.stream.Stream;
 /**
  * sources saving and other utility methods are here
  */
-final class ModulesContainer {
+final class ModulesContainer implements BaseModuleContainer<ModulesContainer.JavaModule> {
   private final Map<SModule, JavaModule> myModules;
 
-  /*package*/ static class JavaModule implements IVertex {
+  /*package*/ static class JavaModule implements IVertex, BaseModuleContainer.JavaModule {
     private final SModule myModule;
     private final SModuleReference myModuleReference;
 
@@ -67,20 +67,24 @@ final class ModulesContainer {
 
     // FIXME no reason to expose, once I deal with ClassFileWriter scenario, drop this one and revisit other public methods
     //      Ideally, JM has to be just a black box for outer world
+    @Override
     public SModule toModule() {
       return myModule;
     }
 
+    @Override
     public String name() {
       return myModuleReference.getModuleName();
     }
 
+    @Override
     public SModuleReference moduleReference() {
       return myModuleReference;
     }
 
 
     // TODO revisit, seems that can ensure it's not null, isExcluded() filters out those with null
+    @Override
     @Nullable
     public File getClassesOut() {
       final IFile classesGen = myModule.getFacet(JavaModuleFacet.class).getClassesGen();
@@ -90,6 +94,7 @@ final class ModulesContainer {
 
     // unlike getClassesOut, this one could be null
     // see #getAllSourcePaths() for extra consideration
+    @Override
     @Nullable
     public File getSourceOut() {
       final IFile outputRoot = myModule.getFacet(JavaModuleFacet.class).getOutputRoot();
@@ -99,12 +104,8 @@ final class ModulesContainer {
 
 
     // transition access for refactoring purposes, shall hide this impl detail
-    public ModuleSources getSources() {
+    /*package*/ ModuleSources getSources() {
       return myModuleSources;
-    }
-
-    public Collection<JavaFile> getFilesToCompile() {
-      return myModuleSources.getFilesToCompile();
     }
 
     // report this JM and all JMs that depend on this module to the consumer
@@ -144,11 +145,17 @@ final class ModulesContainer {
       myDependencyOf = dependencyOf;
     }
 
+    @Override
     public Collection<String> getAllSourcePaths() {
       // TODO distinguish primary output and additional source locations
       //      primary output is what java compiler shall use to put extra sources (e.g. from Annotations)
       //      Now we use #getSourceOut as primary source path and assume this method includes it
       return SModuleOperations.getAllSourcePaths(myModule);
+    }
+
+    @Override
+    public Iterable<ResourceFile> getResourcesToCopy() {
+      return getSources().getResourcesToCopy();
     }
   }
 
@@ -200,24 +207,23 @@ final class ModulesContainer {
     myModules = modules;
   }
 
-  public boolean hasModuleToCompile() {
-    return !myModules.isEmpty();
-  }
-
   /**
    * @return subset of {@link #getModules()}, only those that are stale.
    */
+  @Override
   public Stream<JavaModule> getDirtyModules() {
-    return myModules.values().stream().filter(JavaModule::isDirty);
+    return getModules().filter(JavaModule::isDirty);
   }
 
-  public Stream<JavaModule> getModules() {
+  private Stream<JavaModule> getModules() {
     return myModules.values().stream();
   }
 
+  @Override
   public ModuleAnalyzerResult analyze() {
     return new ModuleAnalyzer().analyze(getDirtyModules());
   }
+  @Override
   public Collection<String> getCompileClasspath() {
     // utilize dependencies collected during fillDependencies()
     HashSet<SModule> ccModules = new LinkedHashSet<>();

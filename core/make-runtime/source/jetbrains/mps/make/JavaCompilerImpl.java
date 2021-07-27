@@ -16,8 +16,8 @@
 package jetbrains.mps.make;
 
 import jetbrains.mps.compiler.JavaCompilerOptions;
+import jetbrains.mps.make.BaseModuleContainer.JavaModule;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
-import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -53,6 +53,7 @@ import java.util.stream.Stream;
  * @since 2021.1
  */
 final class JavaCompilerImpl {
+  // FIXME take value from JavaCompilerOptions
   private static final int MAX_ERRORS = 20; // do I care to report more?
 
   private final File myJavaHome;
@@ -98,19 +99,19 @@ final class JavaCompilerImpl {
   }
 
   @NotNull
-  public MPSCompilationResult compile(ModulesContainer modules, CompositeTracer tracer) {
+  public MPSCompilationResult compile(BaseModuleContainer<? extends JavaModule> modules, CompositeTracer tracer) {
     myFileManagerListener.withReporter(tracer.getSender());
     File tempDir = null;
     try {
       if (myFileManager == null) {
         myFileManager = myJavaCompiler.getStandardFileManager(myFileManagerListener, null, null);
       }
-      if (!modules.hasModuleToCompile()) {
+      final int count = (int) modules.getDirtyModules().count();
+      if (count == 0) {
         // XXX is it correct that we check all modules, not dirty? Could I get a cycle of 'clean' modules
         //   in between of other cycles with dirty modules?
         return MPSCompilationResult.ZERO_COMPILATION_RESULT;
       }
-      final int count = (int) modules.getDirtyModules().count();
       tracer.start("", 3 + (count > 1 ? count * 3 : count * 2)); // analyze, copyRes, classpath, 2 per module (javac+instrument) +(count) for bulk
       tracer.push(InternalJavaCompiler.PREPARING_TO_COMPILE_MSG);
       // FTR, original code in InternalJavaCompiler analyzed dirty modules only
@@ -124,7 +125,7 @@ final class JavaCompilerImpl {
       tracer.pop(1);
       tracer.push(InternalJavaCompiler.COPYING_RESOURCES_MSG);
       // XXX original InternalJavaCompiler copied resources of all modules, I feel it's not right.
-      copyResources(modules.getDirtyModules());
+      modules.getDirtyModules().forEach(this::copyResources);
       tracer.pop(1);
 
       if (!analysisResult.hasJavaToCompile) {
@@ -144,7 +145,7 @@ final class JavaCompilerImpl {
         tracer.advance(count);
       }
       ErrorRecord total = new ErrorRecord();
-      for (JavaModule jm : modules.getDirtyModules().collect(Collectors.toList())) {
+      for (BaseModuleContainer.JavaModule jm : modules.getDirtyModules().collect(Collectors.toList())) {
         tracer.push(String.format("Compiling %s", jm.name()));
         final Collection<Path> moduleCP;
         if (tempDir != null) {
@@ -173,10 +174,10 @@ final class JavaCompilerImpl {
         }
       }
       // as long as we can't tell which one was actually changed during compilation, pretend every one we've tried to compile was.
-      final Set<JavaModule> changedModules = modules.getDirtyModules().collect(Collectors.toSet());
+      final Set<BaseModuleContainer.JavaModule> changedModules = modules.getDirtyModules().collect(Collectors.toSet());
       reportModulesWithRemovalsAreNotChanged(analysisResult.modulesWithRemovals, changedModules, tracer.getSender());
       tracer.pop();
-      return new MPSCompilationResult(total.errors, total.warnings, false, changedModules.stream().map(JavaModule::toModule).collect(Collectors.toList()));
+      return new MPSCompilationResult(total.errors, total.warnings, false, changedModules.stream().map(BaseModuleContainer.JavaModule::toModule).collect(Collectors.toList()));
     } catch (Exception ex) {
       if (tempDir != null) {
         FileUtil.delete(tempDir);
@@ -190,11 +191,10 @@ final class JavaCompilerImpl {
   }
 
   // neither argument is null. assume classpath configured
-  private void bulkCompileOnlyIntoTempLocation(Stream<JavaModule> modules, File tempDir, MessageSender sender)  throws IOException {
+  private void bulkCompileOnlyIntoTempLocation(Stream<? extends BaseModuleContainer.JavaModule> modules, File tempDir, MessageSender sender) throws IOException {
     configureOutput(null);
     configureTempOutput(tempDir);
-    final List<Path> src = modules.map(JavaModule::getAllSourcePaths).flatMap(Collection::stream).map(Path::of).collect(Collectors.toUnmodifiableList());
-    configureSourcePath(src);
+    configureSourcePath(modules.map(BaseModuleContainer.JavaModule::getAllSourcePaths).flatMap(Collection::stream).<Path>map(Path::of));
     final Iterable<JavaFileObject> cu = cuFromSourcePath();
     DiagnosticListener<JavaFileObject> ignore = diagnostic -> {};
     final CompilationTask task = myJavaCompiler.getTask(null, myFileManager, ignore, javacOptions(true), null, cu);
@@ -204,9 +204,9 @@ final class JavaCompilerImpl {
   }
 
   // assume classpath configured. Compile single MPS module, deal with issues
-  private ErrorRecord doCompile(JavaModule jm, MessageSender sender) throws IOException {
+  private ErrorRecord doCompile(BaseModuleContainer.JavaModule jm, MessageSender sender) throws IOException {
     configureOutput(jm);
-    configureSourcePath(jm.getAllSourcePaths().stream().map(Path::of).collect(Collectors.toUnmodifiableList()));
+    configureSourcePath(jm.getAllSourcePaths().stream().map(Path::of));
     final Iterable<JavaFileObject> cu = cuFromSourcePath();
     DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
     final CompilationTask task = myJavaCompiler.getTask(null, myFileManager, diagnostics, javacOptions(false), null, cu);
@@ -264,22 +264,20 @@ final class JavaCompilerImpl {
     }
   }
 
-  private void copyResources(Stream<JavaModule> modules) {
-    for (JavaModule module : modules.collect(Collectors.toList())) {
-      File classesGen = module.getClassesOut();
-      if (classesGen == null) {
-        continue;
-      }
-      ModuleSources sources = module.getSources();
-      for (ResourceFile toCopy : sources.getResourcesToCopy()) {
-        String fqName = toCopy.getPath();
+  private void copyResources(BaseModuleContainer.JavaModule module) {
+    File classesGen = module.getClassesOut();
+    if (classesGen == null) {
+      return;
+    }
+    for (ResourceFile toCopy : module.getResourcesToCopy()) {
+      String fqName = toCopy.getPath();
 
-        fqName = fqName.substring(0, fqName.length() - toCopy.getFile().getName().length());
-        String path = fqName + toCopy.getFile().getName();
+      fqName = fqName.substring(0, fqName.length() - toCopy.getFile().getName().length());
+      String path = fqName + toCopy.getFile().getName();
 
-        if (toCopy.getFile().exists()) {
-          FileUtil.copyFile(toCopy.getFile(), new File(classesGen, path));
-        }
+      if (toCopy.getFile().exists()) {
+        // FIXME nio.Files.copy(), perhaps?
+        FileUtil.copyFile(toCopy.getFile(), new File(classesGen, path));
       }
     }
   }
@@ -288,11 +286,11 @@ final class JavaCompilerImpl {
     myFileManager.setLocationFromPaths(StandardLocation.CLASS_PATH, classPath);
   }
 
-  private void configureSourcePath(/*not null*/ Collection<Path> sourcePath) throws IOException {
-    myFileManager.setLocationFromPaths(StandardLocation.SOURCE_PATH, sourcePath);
+  private void configureSourcePath(/*not null*/ Stream<Path> sourcePath) throws IOException {
+    myFileManager.setLocationFromPaths(StandardLocation.SOURCE_PATH, sourcePath.collect(Collectors.toUnmodifiableList()));
   }
 
-  private void configureOutput(@Nullable JavaModule jm) throws IOException {
+  private void configureOutput(@Nullable BaseModuleContainer.JavaModule jm) throws IOException {
     if (jm == null) {
       // FIXME null seems to mean 'default', which could be something under user home, which I don't like
       myFileManager.setLocation(StandardLocation.CLASS_OUTPUT, null);
@@ -340,8 +338,8 @@ final class JavaCompilerImpl {
   }
 
   // FIXME bad name
-  private static void reportModulesWithRemovalsAreNotChanged(Collection<JavaModule> modulesWithRemovals, Collection<JavaModule> changedModules, MessageSender ms) {
-    for (JavaModule module : modulesWithRemovals) {
+  private static void reportModulesWithRemovalsAreNotChanged(Collection<BaseModuleContainer.JavaModule> modulesWithRemovals, Collection<BaseModuleContainer.JavaModule> changedModules, MessageSender ms) {
+    for (BaseModuleContainer.JavaModule module : modulesWithRemovals) {
       if (!changedModules.contains(module)) {
         ms.warn(String.format(InternalJavaCompiler.MODULE_WITH_REMOVALS_WAS_NOT_CHANGED, module.name()), module.moduleReference());
       }
