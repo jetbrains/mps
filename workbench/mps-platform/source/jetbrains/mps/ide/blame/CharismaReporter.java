@@ -29,7 +29,6 @@ import com.intellij.util.Consumer;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.blame.dialog.BlameDialog;
 import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
-import jetbrains.mps.ide.blame.perform.Response;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -72,9 +71,6 @@ public class CharismaReporter extends ErrorReportSubmitter {
       return false;
     }
 
-    Response response = blameDialog.getResult();
-    assert response != null : "Response must not be null";
-    assert response.isSuccess() : "Response is not 'cancelled' or 'success'";
     consumer.consume(new SubmittedReportInfo(null, "", SubmissionStatus.NEW_ISSUE));
     return true;
   }

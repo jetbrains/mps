@@ -4,8 +4,6 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -24,13 +22,9 @@ import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
 import java.util.Collection;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import jetbrains.mps.ide.blame.perform.Response;
-import com.intellij.openapi.ui.Messages;
-import org.apache.log4j.Level;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5542140910050886364", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SubmitToTracker_Action extends BaseAction {
-  private static final Logger LOG = LogManager.getLogger(SubmitToTracker_Action.class);
   private static final Icon ICON = null;
 
   public SubmitToTracker_Action() {
@@ -107,18 +101,5 @@ public class SubmitToTracker_Action extends BaseAction {
     dialog.setDescription(description.toString());
     dialog.initDialog();
     dialog.show();
-
-
-    if (!(dialog.isCancelled())) {
-      Response response = dialog.getResult();
-      String message = response.getMessage();
-      if (!(response.isSuccess())) {
-        // It is only make sense to show dialog to user if issue creation failed. 
-        Messages.showErrorDialog(((Project) MapSequence.fromMap(_params).get("project")), message, "Issue Submission Failed");
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("Issue submission failed: " + message, response.getThrowable());
-        }
-      }
-    }
   }
 }

@@ -26,6 +26,9 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.extensions.PluginDescriptor;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task.Modal;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
@@ -44,12 +47,8 @@ import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.IdeBundle;
-import jetbrains.mps.ide.blame.command.Command;
-import jetbrains.mps.ide.blame.command.Poster;
-import jetbrains.mps.ide.blame.perform.Query;
-import jetbrains.mps.ide.blame.perform.Response;
+import jetbrains.mps.ide.blame.api.Reporter;
 import jetbrains.mps.util.annotation.ToRemove;
-import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -89,7 +88,6 @@ public class BlameDialog extends DialogWrapper {
   private JEditorPane myShareDataAgreement;
 
   private boolean myIsCancelled = true;
-  private Response myResult;
   private Project myProject;
 
   private String myTitle = "";
@@ -324,12 +322,6 @@ public class BlameDialog extends DialogWrapper {
     return getClass().getName();
   }
 
-  private Query createQuery() {
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    return CredentialAttributesKt.isFulfilled(credentials) ?
-           new Query(credentials.getUserName(), credentials.getPasswordAsString()) : Query.getAnonymousQuery();
-  }
-
   private String ex2str(Throwable e) {
     if (e == null) {
       return "";
@@ -452,10 +444,6 @@ public class BlameDialog extends DialogWrapper {
     return myIsCancelled;
   }
 
-  public Response getResult() {
-    return myResult;
-  }
-
   @Override
   protected void doOKAction() {
     StringBuilder description = new StringBuilder(myDescriptionField.getText().length()
@@ -492,47 +480,50 @@ public class BlameDialog extends DialogWrapper {
       }
     }
 
-    Poster poster = new Poster(myProject);
-    Query query = createQuery();
-    query.setIssueTitle(myTitleField.getText());
-    query.setDescription(description.toString());
-    query.setFiles(myFilesToAttach.toArray(new File[0]));
-    query.setHidden(myHiddenCheckBox.isSelected());
-    query.setSubsystem(mySubsystem);
-    myResult = poster.send(query);
+    Credentials credentials = ErrorReportConfigurable.getCredentials();
+    final String token = CredentialAttributesKt.isFulfilled(credentials) ? credentials.getPasswordAsString() : null;
+    final String summary = myTitleField.getText();
+    final String descript = description.toString();
+    final boolean hidden = myHiddenCheckBox.isSelected();
+    final String affectedVersion = ApplicationInfo.getInstance().getFullVersion();
+    final String subsystem = mySubsystem;
+    final File[] files = myFilesToAttach.toArray(new File[0]);
 
-    if (!myResult.isSuccess()) {
-      String message = myResult.getMessage();
-      String response = myResult.getResponseString();
-      if (response != null && !response.isEmpty()) {
-        Element responseXml = myResult.getResponseXml();
-        if (responseXml != null && "error".equalsIgnoreCase(responseXml.getName())) {
-          message += ". " + responseXml.getText();
-        } else {
-          message += ". " + response;
+    // result[0] - id of new issue or null if not successful
+    // result[1] - error message if not successful
+    final String[] result = new String[2];
+
+    ProgressManager.getInstance().run(new Modal(myProject, "Connection in progress. Please wait.", false) {
+      @Override
+      public void run(@NotNull ProgressIndicator indicator) {
+        try {
+          Reporter reporter = new Reporter(token);
+          result[0] = reporter.postIssue(summary, descript, affectedVersion, hidden, null, subsystem, files);
+        } catch (Throwable e) {
+          result[0] = null;
+          result[1] = e.toString();
         }
       }
-      final String errorMessage = String.format("Error occurred while sending:%n%n%s", message);
+    });
+
+    if (result[0] == null) {
+      final String errorMessage = String.format("Error occurred while sending:%n%n%s", result[1]);
       Messages.showErrorDialog(BlameDialog.this.getOwner(), errorMessage, "Issue Submission Failed");
       return;
     }
 
-    openIssueInBrowser();
+    openIssueInBrowser(result[0]);
 
     myIsCancelled = false;
     close(DialogWrapper.OK_EXIT_CODE);
   }
 
-  private void openIssueInBrowser() {
-    String id = myResult.getIssueId();
-    if (id != null) {
-      BrowserUtil.browse(Command.ISSUE_BASE_URL + id);
-    }
+  private void openIssueInBrowser(String issueReadableId) {
+      BrowserUtil.browse(Reporter.getIssueUrl(issueReadableId));
   }
 
   @Override
   public void doCancelAction() {
-    myResult = null;
     myIsCancelled = true;
     close(DialogWrapper.CANCEL_EXIT_CODE);
   }

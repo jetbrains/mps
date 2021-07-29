@@ -104,6 +104,7 @@
     <classNode dependClassName="javax.swing.Icon" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.ide.blame.api.Reporter" />
     <classNode dependClassName="jetbrains.mps.ide.blame.dialog.BlameDialog" />
     <classNode dependClassName="jetbrains.mps.ide.blame.dialog.BlameDialogComponent" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />

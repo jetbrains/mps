@@ -60,6 +60,7 @@
     <import index="hr4p" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea(jetbrains.mps.git4idea.stubs/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
+    <import index="ihz5" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.blame.api(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -3125,8 +3126,9 @@
             </node>
             <node concept="liA8E" id="341WClvYTWP" role="2OqNvi">
               <ref role="37wK5l" to="qy69:~BlameDialog.setSubsystem(java.lang.String)" resolve="setSubsystem" />
-              <node concept="Xl_RD" id="341WClvYTWQ" role="37wK5m">
-                <property role="Xl_RC" value="Version Control" />
+              <node concept="10M0yZ" id="6lwQXX7u9C5" role="37wK5m">
+                <ref role="3cqZAo" to="ihz5:~Reporter.SUBSYSTEM_VERSION_CONTROL" resolve="SUBSYSTEM_VERSION_CONTROL" />
+                <ref role="1PxDUh" to="ihz5:~Reporter" resolve="Reporter" />
               </node>
             </node>
           </node>
