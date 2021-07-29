@@ -244,8 +244,15 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
       return Sequence.fromIterable(Collections.<SNodeId>emptyList());
     }
 
-    List<SNodeId> oldIds = getSiblingIds(MapSequence.fromMap(myOldNodes).get(parentId), link);
-    final List<SNodeId> newIds = getSiblingIds(MapSequence.fromMap(myNewNodes).get(parentId), link);
+    SNode oldNode = MapSequence.fromMap(myOldNodes).get(parentId);
+    SNode newNode = MapSequence.fromMap(myNewNodes).get(parentId);
+
+    if (oldNode == null || newNode == null) {
+      return Sequence.fromIterable(Collections.<SNodeId>emptyList());
+    }
+
+    List<SNodeId> oldIds = getSiblingIds(oldNode, link);
+    final List<SNodeId> newIds = getSiblingIds(newNode, link);
     final Iterable<SNodeId> commonIds = ListSequence.fromList(oldIds).intersect(ListSequence.fromList(newIds));
 
     return ListSequence.fromList(new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds).getDifferentIndices()).translate(new ITranslator2<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>, SNodeId>() {
