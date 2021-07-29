@@ -149,6 +149,7 @@
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
+        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -2522,6 +2523,23 @@
               <node concept="30H73N" id="hwtWMiV" role="2Oq$k0" />
               <node concept="2qgKlT" id="7kSSpnBC_EL" role="2OqNvi">
                 <ref role="37wK5l" to="tp4s:hEwIGgA" resolve="getGeneratedName" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3uibUv" id="44vtuGqzxbe" role="EKbjA">
+      <ref role="3uigEE" to="qkt:~UpdateInBackground" resolve="UpdateInBackground" />
+      <node concept="1W57fq" id="44vtuGq$ktQ" role="lGtFl">
+        <node concept="3IZrLx" id="44vtuGq$ktT" role="3IZSJc">
+          <node concept="3clFbS" id="44vtuGq$ktU" role="2VODD2">
+            <node concept="3clFbF" id="44vtuGq$ku0" role="3cqZAp">
+              <node concept="2OqwBi" id="44vtuGq$ktV" role="3clFbG">
+                <node concept="3TrcHB" id="44vtuGq$ktY" role="2OqNvi">
+                  <ref role="3TsBF5" to="tp4k:44vtuGqwbnh" resolve="updateInBackground" />
+                </node>
+                <node concept="30H73N" id="44vtuGq$ktZ" role="2Oq$k0" />
               </node>
             </node>
           </node>

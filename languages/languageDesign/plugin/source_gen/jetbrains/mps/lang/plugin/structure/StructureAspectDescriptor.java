@@ -518,6 +518,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("outsideCommandExecution", 0x11a070b6efeL).type(PrimitiveTypeId.BOOLEAN).origin("1211298967294").done();
     b.property("requiredAccess", 0x6782cab5d94428a3L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L)).origin("7458746815261976739").done();
     b.property("fillActionContext", 0xdd656be50ed306bL).type(PrimitiveTypeId.BOOLEAN).origin("997079742910640235").done();
+    b.property("updateInBackground", 0x411f75eb1a80b5d1L).type(PrimitiveTypeId.BOOLEAN).origin("4692598989365753297").done();
     b.aggregate("updateBlock", 0x1181d58b8d3L).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b8325461L).optional(true).ordered(true).multiple(false).origin("1203083196627").done();
     b.aggregate("icon", 0x7c92abce86abbd8fL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("8976425910813834639").done();
     b.aggregate("executeFunction", 0x1181d5cc406L).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181d5d8548L).optional(false).ordered(true).multiple(false).origin("1203083461638").done();

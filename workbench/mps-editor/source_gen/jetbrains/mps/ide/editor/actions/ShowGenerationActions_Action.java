@@ -4,14 +4,13 @@ package jetbrains.mps.ide.editor.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseAction;
+import com.intellij.openapi.actionSystem.UpdateInBackground;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionGroupUtil;
-import java.util.Objects;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -25,7 +24,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Point;
 
 @GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3207605520775490121", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
-public class ShowGenerationActions_Action extends BaseAction {
+public class ShowGenerationActions_Action extends BaseAction implements UpdateInBackground {
   private static final Icon ICON = null;
 
   public ShowGenerationActions_Action() {
@@ -41,7 +40,7 @@ public class ShowGenerationActions_Action extends BaseAction {
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
     group.update(event);
-    return !(ActionGroupUtil.isGroupEmpty(group, event, Objects.requireNonNullElse(event.getData(PlatformDataKeys.IS_MODAL_CONTEXT), false)));
+    return !(ActionGroupUtil.isGroupEmpty(group, event));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {

@@ -3548,6 +3548,16 @@
             </node>
             <node concept="2iRfu4" id="66ZZ2RilY6x" role="2iSdaV" />
           </node>
+          <node concept="3EZMnI" id="44vtuGqwcPe" role="3EZMnx">
+            <node concept="VPM3Z" id="44vtuGqwcPg" role="3F10Kt" />
+            <node concept="3F0ifn" id="44vtuGqwdyc" role="3EZMnx">
+              <property role="3F0ifm" value="update in background:" />
+            </node>
+            <node concept="3F0A7n" id="44vtuGqwdI4" role="3EZMnx">
+              <ref role="1NtTu8" to="tp4k:44vtuGqwbnh" resolve="updateInBackground" />
+            </node>
+            <node concept="2iRfu4" id="44vtuGqwcPj" role="2iSdaV" />
+          </node>
           <node concept="3F0ifn" id="66ZZ2RilY6y" role="3EZMnx">
             <node concept="VPM3Z" id="66ZZ2RilY6z" role="3F10Kt">
               <property role="VOm3f" value="false" />

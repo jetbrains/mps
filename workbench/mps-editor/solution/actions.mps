@@ -121,6 +121,7 @@
         <property id="1215865999894" name="mnemonic" index="ngHcd" />
         <property id="1205250923097" name="caption" index="2uzpH1" />
         <property id="7458746815261976739" name="requiredAccess" index="2YLI8m" />
+        <property id="4692598989365753297" name="updateInBackground" index="1rBW0U" />
         <property id="997079742910640235" name="fillActionContext" index="1teQrl" />
         <property id="1213273179528" name="description" index="1WHSii" />
         <child id="1203083196627" name="updateBlock" index="tmbBb" />
@@ -7759,6 +7760,7 @@
     <property role="3GE5qa" value="Menu.EditorPopup.Actions.Intentions" />
     <property role="2uzpH1" value="Insert..." />
     <property role="1teQrl" value="true" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="2M3H3BXpUDa" role="tncku">
       <node concept="3clFbS" id="2M3H3BXpUDb" role="2VODD2">
         <node concept="3cpWs8" id="2M3H3BXpUDk" role="3cqZAp">
@@ -8028,26 +8030,11 @@
           <node concept="3fqX7Q" id="2LxECFpGWP3" role="3cqZAk">
             <node concept="2YIFZM" id="2LxECFpGWP5" role="3fr31v">
               <ref role="1Pybhc" to="qkt:~ActionGroupUtil" resolve="ActionGroupUtil" />
-              <ref role="37wK5l" to="qkt:~ActionGroupUtil.isGroupEmpty(com.intellij.openapi.actionSystem.ActionGroup,com.intellij.openapi.actionSystem.AnActionEvent,boolean)" resolve="isGroupEmpty" />
+              <ref role="37wK5l" to="qkt:~ActionGroupUtil.isGroupEmpty(com.intellij.openapi.actionSystem.ActionGroup,com.intellij.openapi.actionSystem.AnActionEvent)" resolve="isGroupEmpty" />
               <node concept="37vLTw" id="2LxECFpGWP6" role="37wK5m">
                 <ref role="3cqZAo" node="2M3H3BXpUEP" resolve="group" />
               </node>
               <node concept="tl45R" id="2LxECFpGWP7" role="37wK5m" />
-              <node concept="2YIFZM" id="3qk_uJ_43rj" role="37wK5m">
-                <ref role="1Pybhc" to="33ny:~Objects" resolve="Objects" />
-                <ref role="37wK5l" to="33ny:~Objects.requireNonNullElse(java.lang.Object,java.lang.Object)" resolve="requireNonNullElse" />
-                <node concept="2OqwBi" id="3qk_uJ_45kg" role="37wK5m">
-                  <node concept="tl45R" id="3qk_uJ_44Pq" role="2Oq$k0" />
-                  <node concept="liA8E" id="3qk_uJ_45Ct" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
-                    <node concept="10M0yZ" id="3qk_uJ_44CV" role="37wK5m">
-                      <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                      <ref role="3cqZAo" to="qkt:~PlatformDataKeys.IS_MODAL_CONTEXT" resolve="IS_MODAL_CONTEXT" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbT" id="3qk_uJ_43rm" role="37wK5m" />
-              </node>
             </node>
           </node>
         </node>
