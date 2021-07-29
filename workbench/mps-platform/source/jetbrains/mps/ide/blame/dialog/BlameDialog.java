@@ -111,15 +111,6 @@ public class BlameDialog extends DialogWrapper {
     myThrowableList.addAll(throwables);
   }
 
-  /**
-   * @deprecated use {@link BlameDialog#addExceptions(java.util.Collection)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public void addEx(Throwable throwable) {
-    addExceptions(Collections.singletonList(throwable));
-  }
-
   public void setIssueTitle(String message) {
     myTitle = message;
   }
@@ -144,11 +135,6 @@ public class BlameDialog extends DialogWrapper {
 
   public void setPluginDescriptor(PluginDescriptor pluginDescriptor) {
     myPluginDescriptor = pluginDescriptor;
-  }
-
-  @Deprecated /*Unused method*/
-  @ToRemove(version = 2017.1)
-  public void setSourceRevision(String sourceRevision) {
   }
 
   @Override
