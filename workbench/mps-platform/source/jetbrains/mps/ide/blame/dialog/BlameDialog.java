@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.ide.blame.dialog;
 
+import com.intellij.credentialStore.CredentialAttributes;
 import com.intellij.credentialStore.CredentialAttributesKt;
-import com.intellij.credentialStore.Credentials;
+import com.intellij.credentialStore.CredentialPromptDialog;
 import com.intellij.diagnostic.DiagnosticBundle;
-import com.intellij.diagnostic.ErrorReportConfigurable;
-import com.intellij.diagnostic.JetBrainsAccountDialogKt;
 import com.intellij.ide.BrowserUtil;
+import com.intellij.ide.passwordSafe.PasswordSafe;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationInfo;
@@ -96,6 +96,7 @@ public class BlameDialog extends DialogWrapper {
   private List<File> myFilesToAttach = new ArrayList<>();
   private String mySubsystem = null;
   private PluginDescriptor myPluginDescriptor;
+  private String myToken = null;
 
   public BlameDialog(Project project, Dialog dialog) {
     super(dialog, true);
@@ -193,7 +194,8 @@ public class BlameDialog extends DialogWrapper {
     myCredentialsLabel = new HyperlinkLabel();
     myCredentialsLabel.addHyperlinkListener(e -> {
       if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-        JetBrainsAccountDialogKt.askJBAccountCredentials(getRootPane(), myProject);
+        CredentialAttributes credentialAttributes = getCredentialAttributes();
+        myToken = CredentialPromptDialog.askPassword(myProject, "Enter Access Token for YouTrack", "Permanent token", credentialAttributes, true);
         updateCredentialsPane();
       }
     });
@@ -242,7 +244,7 @@ public class BlameDialog extends DialogWrapper {
     final String anonymousAgreement =
         String.format(IdeBundle.message("blame.dialog.agreement.anonymous"), font.getFamily());
 
-    myShareDataAgreement.setText(CredentialAttributesKt.isFulfilled(ErrorReportConfigurable.getCredentials()) ? signedInAgreement : anonymousAgreement);
+    myShareDataAgreement.setText(myToken != null ? signedInAgreement : anonymousAgreement);
   }
 
   private GridConstraints getConstraints(int row) {
@@ -260,12 +262,15 @@ public class BlameDialog extends DialogWrapper {
     return myDescriptionField;
   }
 
+  private CredentialAttributes getCredentialAttributes() {
+    return new CredentialAttributes(CredentialAttributesKt.generateServiceName("MPS token for YouTrack", Reporter.YOUTRACK_BASE_URL));
+  }
+
   private void updateCredentialsPane() {
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    if (CredentialAttributesKt.isFulfilled(credentials)) {
-      myCredentialsLabel.setHtmlText(DiagnosticBundle.message("diagnostic.error.report.submit.report.as", credentials.getUserName()));
+    if (myToken != null) {
+      myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.as"));
     } else {
-      myCredentialsLabel.setHtmlText(DiagnosticBundle.message("diagnostic.error.report.submit.error.anonymously"));
+      myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.anonymously"));
     }
     updateDataUsageAgreementText();
   }
@@ -291,6 +296,7 @@ public class BlameDialog extends DialogWrapper {
       myException.setText(builder.toString());
     }
 
+    myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
     updateCredentialsPane();
 
     Dimension size = DimensionService.getInstance().getSize(getDimensionServiceKey());
@@ -466,8 +472,7 @@ public class BlameDialog extends DialogWrapper {
       }
     }
 
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    final String token = CredentialAttributesKt.isFulfilled(credentials) ? credentials.getPasswordAsString() : null;
+    final String token = myToken;
     final String summary = myTitleField.getText();
     final String descript = description.toString();
     final boolean hidden = myHiddenCheckBox.isSelected();
