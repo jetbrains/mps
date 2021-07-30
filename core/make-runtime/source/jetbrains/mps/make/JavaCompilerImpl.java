@@ -46,6 +46,7 @@ import java.util.ServiceLoader.Provider;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Mediator between {@code ModuleMaker} and {@code javax.tools.JavaCompiler}
@@ -245,7 +246,8 @@ final class JavaCompilerImpl implements AutoCloseable {
       }
       if (errorRecord.errors > 0) {
         final Iterable<? extends File> cp = myFileManager.getLocation(StandardLocation.CLASS_PATH);
-        sender.info(String.format(InternalJavaCompiler.MODULES_CLASSPATH_STR, jm.name(), cp));
+        final List<String> cpStrings = StreamSupport.stream(cp.spliterator(), false).map(File::getPath).collect(Collectors.toList());
+        sender.info(String.format(InternalJavaCompiler.MODULES_CLASSPATH_STR, jm.name(), cpStrings));
       }
       return errorRecord;
     }
