@@ -15,17 +15,20 @@
  */
 package jetbrains.mps.ide.blame.dialog;
 
+import com.intellij.credentialStore.CredentialAttributes;
 import com.intellij.credentialStore.CredentialAttributesKt;
-import com.intellij.credentialStore.Credentials;
+import com.intellij.credentialStore.CredentialPromptDialog;
 import com.intellij.diagnostic.DiagnosticBundle;
-import com.intellij.diagnostic.ErrorReportConfigurable;
-import com.intellij.diagnostic.JetBrainsAccountDialogKt;
 import com.intellij.ide.BrowserUtil;
+import com.intellij.ide.passwordSafe.PasswordSafe;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ex.ApplicationInfoEx;
 import com.intellij.openapi.extensions.PluginDescriptor;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task.Modal;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
@@ -44,12 +47,8 @@ import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.IdeBundle;
-import jetbrains.mps.ide.blame.command.Command;
-import jetbrains.mps.ide.blame.command.Poster;
-import jetbrains.mps.ide.blame.perform.Query;
-import jetbrains.mps.ide.blame.perform.Response;
+import jetbrains.mps.ide.blame.api.Reporter;
 import jetbrains.mps.util.annotation.ToRemove;
-import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -89,7 +88,6 @@ public class BlameDialog extends DialogWrapper {
   private JEditorPane myShareDataAgreement;
 
   private boolean myIsCancelled = true;
-  private Response myResult;
   private Project myProject;
 
   private String myTitle = "";
@@ -98,6 +96,7 @@ public class BlameDialog extends DialogWrapper {
   private List<File> myFilesToAttach = new ArrayList<>();
   private String mySubsystem = null;
   private PluginDescriptor myPluginDescriptor;
+  private String myToken = null;
 
   public BlameDialog(Project project, Dialog dialog) {
     super(dialog, true);
@@ -111,15 +110,6 @@ public class BlameDialog extends DialogWrapper {
 
   public void addExceptions(Collection<Throwable> throwables) {
     myThrowableList.addAll(throwables);
-  }
-
-  /**
-   * @deprecated use {@link BlameDialog#addExceptions(java.util.Collection)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public void addEx(Throwable throwable) {
-    addExceptions(Collections.singletonList(throwable));
   }
 
   public void setIssueTitle(String message) {
@@ -146,11 +136,6 @@ public class BlameDialog extends DialogWrapper {
 
   public void setPluginDescriptor(PluginDescriptor pluginDescriptor) {
     myPluginDescriptor = pluginDescriptor;
-  }
-
-  @Deprecated /*Unused method*/
-  @ToRemove(version = 2017.1)
-  public void setSourceRevision(String sourceRevision) {
   }
 
   @Override
@@ -209,7 +194,8 @@ public class BlameDialog extends DialogWrapper {
     myCredentialsLabel = new HyperlinkLabel();
     myCredentialsLabel.addHyperlinkListener(e -> {
       if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-        JetBrainsAccountDialogKt.askJBAccountCredentials(getRootPane(), myProject);
+        CredentialAttributes credentialAttributes = getCredentialAttributes();
+        myToken = CredentialPromptDialog.askPassword(myProject, "Enter Access Token for YouTrack", "Permanent token", credentialAttributes, true);
         updateCredentialsPane();
       }
     });
@@ -258,7 +244,7 @@ public class BlameDialog extends DialogWrapper {
     final String anonymousAgreement =
         String.format(IdeBundle.message("blame.dialog.agreement.anonymous"), font.getFamily());
 
-    myShareDataAgreement.setText(CredentialAttributesKt.isFulfilled(ErrorReportConfigurable.getCredentials()) ? signedInAgreement : anonymousAgreement);
+    myShareDataAgreement.setText(myToken != null ? signedInAgreement : anonymousAgreement);
   }
 
   private GridConstraints getConstraints(int row) {
@@ -276,12 +262,15 @@ public class BlameDialog extends DialogWrapper {
     return myDescriptionField;
   }
 
+  private CredentialAttributes getCredentialAttributes() {
+    return new CredentialAttributes(CredentialAttributesKt.generateServiceName("MPS token for YouTrack", Reporter.YOUTRACK_BASE_URL));
+  }
+
   private void updateCredentialsPane() {
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    if (CredentialAttributesKt.isFulfilled(credentials)) {
-      myCredentialsLabel.setHtmlText(DiagnosticBundle.message("diagnostic.error.report.submit.report.as", credentials.getUserName()));
+    if (myToken != null) {
+      myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.as"));
     } else {
-      myCredentialsLabel.setHtmlText(DiagnosticBundle.message("diagnostic.error.report.submit.error.anonymously"));
+      myCredentialsLabel.setHtmlText(IdeBundle.message("blame.dialog.submit.error.anonymously"));
     }
     updateDataUsageAgreementText();
   }
@@ -307,6 +296,7 @@ public class BlameDialog extends DialogWrapper {
       myException.setText(builder.toString());
     }
 
+    myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
     updateCredentialsPane();
 
     Dimension size = DimensionService.getInstance().getSize(getDimensionServiceKey());
@@ -322,12 +312,6 @@ public class BlameDialog extends DialogWrapper {
   @NotNull
   protected String getDimensionServiceKey() {
     return getClass().getName();
-  }
-
-  private Query createQuery() {
-    Credentials credentials = ErrorReportConfigurable.getCredentials();
-    return CredentialAttributesKt.isFulfilled(credentials) ?
-           new Query(credentials.getUserName(), credentials.getPasswordAsString()) : Query.getAnonymousQuery();
   }
 
   private String ex2str(Throwable e) {
@@ -452,10 +436,6 @@ public class BlameDialog extends DialogWrapper {
     return myIsCancelled;
   }
 
-  public Response getResult() {
-    return myResult;
-  }
-
   @Override
   protected void doOKAction() {
     StringBuilder description = new StringBuilder(myDescriptionField.getText().length()
@@ -492,47 +472,49 @@ public class BlameDialog extends DialogWrapper {
       }
     }
 
-    Poster poster = new Poster(myProject);
-    Query query = createQuery();
-    query.setIssueTitle(myTitleField.getText());
-    query.setDescription(description.toString());
-    query.setFiles(myFilesToAttach.toArray(new File[0]));
-    query.setHidden(myHiddenCheckBox.isSelected());
-    query.setSubsystem(mySubsystem);
-    myResult = poster.send(query);
+    final String token = myToken;
+    final String summary = myTitleField.getText();
+    final String descript = description.toString();
+    final boolean hidden = myHiddenCheckBox.isSelected();
+    final String affectedVersion = ApplicationInfo.getInstance().getFullVersion();
+    final String subsystem = mySubsystem;
+    final File[] files = myFilesToAttach.toArray(new File[0]);
 
-    if (!myResult.isSuccess()) {
-      String message = myResult.getMessage();
-      String response = myResult.getResponseString();
-      if (response != null && !response.isEmpty()) {
-        Element responseXml = myResult.getResponseXml();
-        if (responseXml != null && "error".equalsIgnoreCase(responseXml.getName())) {
-          message += ". " + responseXml.getText();
-        } else {
-          message += ". " + response;
+    // result[0] - id of new issue or null if not successful
+    // result[1] - error message if not successful
+    final String[] result = new String[2];
+
+    ProgressManager.getInstance().run(new Modal(myProject, "Connection in progress. Please wait.", false) {
+      @Override
+      public void run(@NotNull ProgressIndicator indicator) {
+        try {
+          Reporter reporter = new Reporter(token);
+          result[0] = reporter.postIssue(summary, descript, affectedVersion, hidden, null, subsystem, files);
+        } catch (Throwable e) {
+          result[0] = null;
+          result[1] = e.toString();
         }
       }
-      final String errorMessage = String.format("Error occurred while sending:%n%n%s", message);
+    });
+
+    if (result[0] == null) {
+      final String errorMessage = String.format("Error occurred while sending:%n%n%s", result[1]);
       Messages.showErrorDialog(BlameDialog.this.getOwner(), errorMessage, "Issue Submission Failed");
       return;
     }
 
-    openIssueInBrowser();
+    openIssueInBrowser(result[0]);
 
     myIsCancelled = false;
     close(DialogWrapper.OK_EXIT_CODE);
   }
 
-  private void openIssueInBrowser() {
-    String id = myResult.getIssueId();
-    if (id != null) {
-      BrowserUtil.browse(Command.ISSUE_BASE_URL + id);
-    }
+  private void openIssueInBrowser(String issueReadableId) {
+      BrowserUtil.browse(Reporter.getIssueUrl(issueReadableId));
   }
 
   @Override
   public void doCancelAction() {
-    myResult = null;
     myIsCancelled = true;
     close(DialogWrapper.CANCEL_EXIT_CODE);
   }

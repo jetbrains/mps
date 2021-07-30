@@ -14,6 +14,7 @@ import java.awt.Frame;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.blame.dialog.BlameDialog;
 import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
+import jetbrains.mps.ide.blame.api.Reporter;
 import java.util.List;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -72,7 +73,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
     final BlameDialog blameDialog = BlameDialogComponent.getInstance().createDialog(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.FRAME));
     blameDialog.initDialog();
     blameDialog.setIssueHidden(true);
-    blameDialog.setSubsystem("Version Control");
+    blameDialog.setSubsystem(Reporter.SUBSYSTEM_VERSION_CONTROL);
     blameDialog.setIssueTitle("Model merge problem");
     List<File> filesToAttach = ListSequence.fromList(new ArrayList<File>());
     ListSequence.fromList(filesToAttach).addElement(new File(System.getProperty("user.home") + File.separator + ".gitconfig"));

@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.devkit.help;
 
-import jetbrains.mps.ide.blame.command.Command;
+import jetbrains.mps.ide.blame.api.Reporter;
 import jetbrains.mps.workbench.actions.ShowSiteAction;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 
@@ -30,6 +30,6 @@ public class ShowTrackerAction extends ShowSiteAction {
   }
 
   protected String getSiteURL() {
-    return Command.YOUTRACK_BASE_URL + "/issues/MPS";
+    return Reporter.getAllIssuesUrl();
   }
 }
