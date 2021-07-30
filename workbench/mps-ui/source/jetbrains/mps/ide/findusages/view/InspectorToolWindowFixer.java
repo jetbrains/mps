@@ -76,12 +76,6 @@ final class InspectorToolWindowFixer {
   }
 
   private String calcActiveToolWindowId(ToolWindowManagerEx toolWindowManager) {
-    String activeToolWindowId = toolWindowManager.getActiveToolWindowId();
-    if (activeToolWindowId == null) {
-      if (toolWindowManager.isEditorComponentActive()) {
-        activeToolWindowId = toolWindowManager.getLastActiveToolWindowId();
-      }
-    }
-    return activeToolWindowId;
+    return toolWindowManager.getLastActiveToolWindowId();
   }
 }
