@@ -52,7 +52,7 @@ import java.util.stream.Stream;
  * @author Artem Tikhomirov
  * @since 2021.1
  */
-final class JavaCompilerImpl {
+final class JavaCompilerImpl implements AutoCloseable {
   // FIXME take value from JavaCompilerOptions
   private static final int MAX_ERRORS = 20; // do I care to report more?
 
@@ -352,6 +352,11 @@ final class JavaCompilerImpl {
       FileUtil.closeFileSafe(myFileManager);
       myFileManager = null;
     }
+  }
+
+  @Override
+  public void close() {
+    dispose();
   }
 
   private static class FileManagerDiagnostics implements DiagnosticListener<JavaFileObject> {

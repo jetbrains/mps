@@ -599,9 +599,8 @@ public final class ModuleMaker {
   private MPSCompilationResult compileCycles(List<Set<JavaModule>> cyclesToCompile, @NotNull CompositeTracer tracer, @NotNull ModulesContainer allModules) {
     List<MPSCompilationResult> cycleCompilationResults = new ArrayList<>();
     tracer.start("Cycles", cyclesToCompile.size());
-    JavaCompilerImpl jc = null;
-    try {
-      jc = decideOnActualCompiler(tracer.getSender());
+
+    try (JavaCompilerImpl jc = decideOnActualCompiler(tracer.getSender())) {
       int cycleNumber = 0;
       for (Set<JavaModule> modulesInCycle : cyclesToCompile) {
         if (tracer.isMonitorCanceled()) {
@@ -617,9 +616,6 @@ public final class ModuleMaker {
         cycleTracer.done(0);
       }
     } finally {
-      if (jc != null) {
-        jc.dispose();
-      }
       tracer.done();
     }
 
