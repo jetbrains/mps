@@ -679,7 +679,7 @@ public final class ModuleMaker {
           public Collection<String> getCompileClasspath() {
             HashSet<JM> seen = new HashSet<>();
             ArrayDeque<JM> queue = new ArrayDeque<>(cc);
-            HashSet<String> rv = new HashSet<>();
+            HashSet<String> rv = new LinkedHashSet<>();
             do {
               final JM jm = queue.removeFirst();
               if (seen.add(jm)) {
