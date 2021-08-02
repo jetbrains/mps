@@ -25,13 +25,6 @@
   </path>
   
   <target name="assemble" depends="classes, declare-mps-tasks, fetchDependencies">
-    <mkdir dir="${build.layout}/META-INF" />
-    <copy todir="${build.layout}/META-INF">
-      <fileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatform.xml" />
-    </copy>
-    <copy todir="${build.layout}/META-INF">
-      <fileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatformActions.xml" />
-    </copy>
     <mkdir dir="${build.layout}/lib" />
     <copy todir="${build.layout}/lib">
       <fileset dir="${artifacts.mpsJavaPlatformPre}/lib" />

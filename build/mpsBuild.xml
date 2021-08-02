@@ -1495,6 +1495,10 @@
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.tips-models" prefix="module/models" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-build.tips-generator-template" prefix="module/generator/template" />
     </jar>
+    <mkdir dir="${build.layout}/mps-build/lib" />
+    <jar destfile="${build.layout}/mps-build/lib/mps-build.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-build/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   

@@ -64,6 +64,7 @@
     <copy file="${artifacts.mpsJpsIdea}/lib/jps/mps-java-jps-plugin.jar" todir="${build.layout}/mps-idea-java/lib/jps" />
     <jar destfile="${build.layout}/mps-idea-java/lib/mps-java-idea.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-java-idea" />
+      <zipfileset file="${mps_home}/IdeaPlugin/mps-java/META-INF/plugin.xml" prefix="META-INF" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}${line.separator}mpsPluginCommon.plugin.version=${mpsPluginCommon.plugin.version}${line.separator}mpsPluginCommon.date=${mpsPluginCommon.date}${line.separator}mpsPluginCore.plugin.version=${mpsPluginCore.plugin.version}${line.separator}mpsPluginCore.date=${mpsPluginCore.date}</echo>
   </target>

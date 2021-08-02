@@ -57,15 +57,12 @@
   
   <target name="assemble" depends="classes, declare-mps-tasks, fetchDependencies">
     <mkdir dir="${build.layout}/mps-migration" />
-    <mkdir dir="${build.layout}/mps-migration/META-INF" />
-    <copy todir="${build.layout}/mps-migration/META-INF">
-      <fileset file="${mps_home}/IdeaPlugin/mps-migration/META-INF/plugin.xml" />
-    </copy>
-    <copy file="${artifacts.mpsMigrationCore}/migration-platform/META-INF/pluginBase.xml" todir="${build.layout}/mps-migration/META-INF" />
     <mkdir dir="${build.layout}/mps-migration/lib" />
     <copy file="${artifacts.mpsMigrationCore}/migration-platform/lib/migration-platform.jar" todir="${build.layout}/mps-migration/lib" />
     <jar destfile="${build.layout}/mps-migration/lib/mps-migration.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.idea.migration" />
+      <zipfileset file="${mps_home}/IdeaPlugin/mps-migration/META-INF/plugin.xml" prefix="META-INF" />
+      <zipfileset file="${artifacts.mpsMigrationCore}/migration-platform/META-INF/pluginBase.xml" prefix="META-INF" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsIdeaMigration.plugin.version=${plugin.version}${line.separator}mpsIdeaMigration.date=${date}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}${line.separator}mpsPluginCommon.plugin.version=${mpsPluginCommon.plugin.version}${line.separator}mpsPluginCommon.date=${mpsPluginCommon.date}${line.separator}mpsPluginCore.plugin.version=${mpsPluginCore.plugin.version}${line.separator}mpsPluginCore.date=${mpsPluginCore.date}</echo>
   </target>

@@ -2,12 +2,12 @@
 <debug-info version="2">
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/1554190466631410773">
     <file name="mpsPluginTesting.xml">
-      <unit id="1554190466631410773" at="1,0,114,10" name="jetbrains.mps.ide.idea.plugin.build.mpsPluginTesting" />
+      <unit id="1554190466631410773" at="1,0,116,10" name="jetbrains.mps.ide.idea.plugin.build.mpsPluginTesting" />
     </file>
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/2773971779181619526">
     <file name="mpsJavaIdeaPlugin.xml">
-      <unit id="2773971779181619526" at="1,0,166,10" name="jetbrains.mps.ide.idea.plugin.build.mpsJavaIdeaPlugin" />
+      <unit id="2773971779181619526" at="1,0,167,10" name="jetbrains.mps.ide.idea.plugin.build.mpsJavaIdeaPlugin" />
     </file>
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/4609382717257597716">
@@ -22,7 +22,7 @@
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/4762870812623561207">
     <file name="mpsIdeaMigration.xml">
-      <unit id="4762870812623561207" at="1,0,160,10" name="jetbrains.mps.ide.idea.plugin.build.mpsIdeaMigration" />
+      <unit id="4762870812623561207" at="1,0,157,10" name="jetbrains.mps.ide.idea.plugin.build.mpsIdeaMigration" />
     </file>
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/5148601452480491524">
@@ -52,7 +52,7 @@
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/8128914530389845295">
     <file name="mpsIdeaVcs.xml">
-      <unit id="8128914530389845295" at="1,0,174,10" name="jetbrains.mps.ide.idea.plugin.build.mpsIdeaVcs" />
+      <unit id="8128914530389845295" at="1,0,170,10" name="jetbrains.mps.ide.idea.plugin.build.mpsIdeaVcs" />
     </file>
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/8658995123701267517">

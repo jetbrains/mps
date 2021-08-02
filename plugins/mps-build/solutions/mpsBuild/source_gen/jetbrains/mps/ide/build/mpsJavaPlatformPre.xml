@@ -41,16 +41,11 @@
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
   
   <target name="assemble" depends="classes">
-    <mkdir dir="${build.layout}/META-INF" />
-    <copy todir="${build.layout}/META-INF">
-      <fileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatform.xml" />
-    </copy>
-    <copy todir="${build.layout}/META-INF">
-      <fileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatformActions.xml" />
-    </copy>
     <mkdir dir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/java-platform.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-java-platform" />
+      <zipfileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatform.xml" prefix="META-INF" />
+      <zipfileset file="${mps_home}/plugins/mps-java/META-INF/JavaPlatformActions.xml" prefix="META-INF" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>

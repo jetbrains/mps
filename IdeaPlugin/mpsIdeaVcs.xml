@@ -61,13 +61,6 @@
     <copy todir="${build.layout}/mps-vcs/META-INF">
       <fileset file="${mps_home}/IdeaPlugin/mps-vcs/META-INF/plugin.xml" />
     </copy>
-    <mkdir dir="${build.layout}/mps-vcs/META-INF" />
-    <copy todir="${build.layout}/mps-vcs/META-INF">
-      <fileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcs.xml" />
-    </copy>
-    <copy todir="${build.layout}/mps-vcs/META-INF">
-      <fileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcsGit.xml" />
-    </copy>
     <mkdir dir="${build.layout}/mps-vcs/languages" />
     <copy todir="${build.layout}/mps-vcs/languages">
       <fileset dir="${artifacts.mpsVcsPlatform}/languages" />
@@ -79,6 +72,9 @@
     <mkdir dir="${build.layout}/mps-vcs/lib" />
     <jar destfile="${build.layout}/mps-vcs/lib/vcs-idea.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-vcs-idea" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcs.xml" prefix="META-INF" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcsGit.xml" prefix="META-INF" />
+      <zipfileset file="${mps_home}/IdeaPlugin/mps-vcs/META-INF/plugin.xml" prefix="META-INF" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsIdeaVcs.plugin.version=${plugin.version}${line.separator}mpsIdeaVcs.date=${date}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}${line.separator}mpsPluginCommon.plugin.version=${mpsPluginCommon.plugin.version}${line.separator}mpsPluginCommon.date=${mpsPluginCommon.date}${line.separator}mpsPluginCore.plugin.version=${mpsPluginCore.plugin.version}${line.separator}mpsPluginCore.date=${mpsPluginCore.date}</echo>
   </target>
