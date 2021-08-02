@@ -24,7 +24,6 @@ import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
@@ -394,6 +393,33 @@ public final class ModuleMaker {
     }
   }
 
+  private static class PackagePrefix {
+    private final ArrayDeque<CharSequence> myElements = new ArrayDeque<>();
+
+    void push(CharSequence element) {
+      myElements.addLast(element);
+    }
+
+    void pop() {
+      myElements.removeLast();
+    }
+
+    String fqnWithTail(CharSequence tail) {
+      push(tail);
+      String rv = String.join(".", myElements);
+      pop();
+      return rv;
+    }
+
+    String pathWithTail(CharSequence tail) {
+      push(tail);
+      String rv = String.join("/", myElements);
+      pop();
+      return rv;
+    }
+
+  }
+
   private static class JS {
     private final Map<String, JavaFile> myJavaFiles = new HashMap<>();
     private final Map<String, ResourceFile> myResourceFiles = new HashMap<>();
@@ -405,11 +431,10 @@ public final class ModuleMaker {
     void collectSources(Stream<File> srcRoot) {
       // sources() expects existing directory.
       // TODO consider using nio.Files.newDirectoryStream
-      srcRoot.filter(File::isDirectory).forEach(d -> sources(d, new StringBuilder()));
+      srcRoot.filter(File::isDirectory).forEach(d -> sources(d, new PackagePrefix()));
     }
 
-    private void sources(File dir, StringBuilder packPrefix) {
-      final int prefixLen = packPrefix.length();
+    private void sources(File dir, PackagePrefix packPrefix) {
       for (File f : dir.listFiles()) {
         final String childName = f.getName();
         if (isIgnoredFileName(childName)) {
@@ -420,24 +445,22 @@ public final class ModuleMaker {
           continue;
         }
         if (f.isDirectory()) {
-          packPrefix.append(childName);
-          packPrefix.append('.');
+          packPrefix.push(childName);
           sources(f, packPrefix);
-          packPrefix.setLength(prefixLen);
+          packPrefix.pop();
           continue;
         }
         assert f.isFile(); // XXX don't need this assert, leave as comment not to forget continue;
         if (childName.endsWith(MPSExtentions.DOT_JAVAFILE)) {
-          packPrefix.append(childName, 0, childName.length() - MPSExtentions.DOT_JAVAFILE.length());
-          String fqName = packPrefix.toString();
-          packPrefix.setLength(prefixLen);
+          String fqName = packPrefix.fqnWithTail(childName.substring(0, childName.length() - MPSExtentions.DOT_JAVAFILE.length()));
           myJavaFiles.put(fqName, new JavaFile(f, fqName, f.lastModified()));
         } else {
           // treat others as 'resources'
           // childName may contain '.', don't replace it with '/'.
+          // Besides, dir name may contain '.', too, don't replace it either.
           // XXX In fact, do I truly need '/'-separated fq path?
           // XXX why don't I track lastModified for resources?
-          final String fqPath = packPrefix.toString().replace('.', '/') + childName;
+          final String fqPath = packPrefix.pathWithTail(childName);
           myResourceFiles.put(fqPath, new ResourceFile(f, fqPath));
         }
       }
@@ -451,37 +474,35 @@ public final class ModuleMaker {
       if (!classesRoot.exists()) {
         return;
       }
-      classes(classesRoot, new StringBuilder());
+      classes(classesRoot, new PackagePrefix());
     }
 
     // pre: dir.exists()
-    private void classes(File dir, StringBuilder packPrefix) {
-      final int prefixLen = packPrefix.length();
+    private void classes(File dir, PackagePrefix packPrefix) {
       for (File f : dir.listFiles()) {
         final String childName = f.getName();
         if (isIgnoredFileName(childName)) {
           continue;
         }
         if (f.isDirectory()) {
-          packPrefix.append(childName);
-          packPrefix.append('.');
+          packPrefix.push(childName);
           classes(f, packPrefix);
-          packPrefix.setLength(prefixLen);
+          packPrefix.pop();
           continue;
         }
         assert f.isFile(); // XXX don't need this assert, leave as comment not to forget continue;
         if (childName.endsWith(MPSExtentions.DOT_CLASSFILE)) {
-          packPrefix.append(childName, 0, childName.length() - MPSExtentions.DOT_CLASSFILE.length());
-          final int ds = packPrefix.indexOf("$", prefixLen);
+          final String cName = childName.substring(0, childName.length() - MPSExtentions.DOT_CLASSFILE.length());
+          final int ds = cName.indexOf('$');
           final boolean innerClass;
+          final String fqName;
           if (ds > 0) {
-            packPrefix.setLength(ds);
+            fqName = packPrefix.fqnWithTail(cName.substring(0, ds));
             innerClass = true;
           } else {
+            fqName = packPrefix.fqnWithTail(cName);
             innerClass = false;
           }
-          String fqName = packPrefix.toString();
-          packPrefix.setLength(prefixLen);
           final JavaFile javaFile = myJavaFiles.get(fqName);
           if (javaFile == null) {
             myFilesToDelete.add(f);
