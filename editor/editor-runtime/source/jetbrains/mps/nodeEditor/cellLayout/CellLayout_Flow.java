@@ -95,15 +95,11 @@ public class CellLayout_Flow extends AbstractCellLayout {
   }
 
 
-  private int getMaxX() {
-    return EditorSettings.getInstance().getVerticalBoundWidth();
-  }
-
-
   @Override
   public void doLayout(EditorCell_Collection editorCells) {
     if (myBossLayout == null) init();
-    new FlowLayouter(editorCells).doLayout();
+    int rightMargin = editorCells.getEditorComponent().getEditorComponentSettings().getRightMargin();
+    new FlowLayouter(editorCells, rightMargin).doLayout();
   }
 
   private void setMaxDescent(int maxDescent) {
@@ -150,7 +146,7 @@ public class CellLayout_Flow extends AbstractCellLayout {
     private boolean myToSkip;
     private int myMaxX;
 
-    public FlowLayouter(EditorCell_Collection editorCells) {
+    public FlowLayouter(EditorCell_Collection editorCells, int rightMargin) {
       this.myEditorCells = editorCells;
       myX = editorCells.getX() + myWStart;
       myY = editorCells.getY();
@@ -158,7 +154,7 @@ public class CellLayout_Flow extends AbstractCellLayout {
       if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
         myMaxX = editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
       } else {
-        myMaxX = getMaxX();
+        myMaxX = rightMargin;
       }
     }
 

@@ -1870,8 +1870,54 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @Override
   public void rebuildEditorContent() {
     assertInEDT();
+
+    ViewportState wps =  new ViewportState();
     getUpdater().update();
     relayout();
+    wps.restore();
+  }
+
+  private class ViewportState {
+
+    private Dimension viewSize;
+    private Rectangle viewRect;
+    private double xCenter;
+    private double yCenter;
+
+    ViewportState() {
+      if (myScrollPane != null) {
+        JViewport viewport = myScrollPane.getViewport();
+        viewRect = viewport.getViewRect();
+        viewSize = viewport.getViewSize();
+        yCenter = (viewRect.y + viewRect.height / 2.0) / viewSize.height;
+        // center horizontally only if already displaced
+        xCenter = viewRect.x == 0 ? 0 : (viewRect.x + viewRect.width / 2.0) / viewSize.width;
+      }
+    }
+
+    void restore() {
+      if (viewSize != null) {
+        Dimension newSize = getPreferredSize();
+        if (!newSize.equals(viewSize)) {
+          JViewport viewport = myScrollPane.getViewport();
+
+          int newYCenter = (int) (yCenter * newSize.height);
+          int yValue = newYCenter - viewRect.height / 2;
+          if (yValue < 0) yValue = 0;
+
+          int xValue;
+          if (xCenter == 0) {
+            xValue = viewport.getViewPosition().x;
+          } else {
+            int newXCenter = (int) (xCenter * newSize.width);
+            xValue = newXCenter - viewRect.width / 2;
+            if (xValue < 0) xValue = 0;
+          }
+
+          viewport.setViewPosition(new Point(xValue, yValue));
+        }
+      }
+    }
   }
 
   private void refreshHighlighter() {
@@ -2183,7 +2229,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   @Override
   protected void paintComponent(Graphics gg) {
-    EditorSettings setting = EditorSettings.getInstance();
     Graphics2D g = (Graphics2D) gg;
 
     turnOnAliasingIfPossible(g);
@@ -2207,7 +2252,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
     if (myRootCell.isInClipRegion(g)) {
       g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.RIGHT_MARGIN_COLOR));
-      int boundPosition = myRootCell.getX() + setting.getVerticalBoundWidth();
+      int boundPosition = myRootCell.getX() + myEditorComponentSettings.getRightMargin();
       g.drawLine(boundPosition, 0, boundPosition, getHeight());
 
       myRootCell.paint(g);

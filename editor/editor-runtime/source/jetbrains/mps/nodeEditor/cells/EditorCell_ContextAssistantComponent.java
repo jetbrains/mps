@@ -39,10 +39,12 @@ public class EditorCell_ContextAssistantComponent extends EditorCell_ComponentBa
   private final ContextAssistantController myController;
   private final ContextAssistantPanel myPanel;
   private final TriggerRelayoutComponentListener myComponentListener = new TriggerRelayoutComponentListener();
+  private final int myRightMargin;
   private boolean myIsActive;
 
   public EditorCell_ContextAssistantComponent(EditorContext editorContext, SNode node) {
     super(editorContext, node);
+    myRightMargin = editorContext.getEditorComponent().getEditorComponentSettings().getRightMargin();
     myPanel = new ContextAssistantPanel();
     myPanel.setBackground(StyleRegistry.getInstance().getEditorBackground());
     myPanel.setEscapeAction(new RequestFocusInEditorAction(editorContext.getEditorComponent()));
@@ -86,13 +88,13 @@ public class EditorCell_ContextAssistantComponent extends EditorCell_ComponentBa
   @Override
   public void moveTo(int x, int y) {
     super.moveTo(x, y);
-    myPanel.setMaximumWidth(EditorSettings.getInstance().getVerticalBoundWidth() - x);
+    myPanel.setMaximumWidth(myRightMargin - x);
   }
 
   @Override
   public void setX(int x) {
     super.setX(x);
-    myPanel.setMaximumWidth(EditorSettings.getInstance().getVerticalBoundWidth() - x);
+    myPanel.setMaximumWidth(myRightMargin - x);
   }
 
   @Override

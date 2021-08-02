@@ -26,4 +26,8 @@ public interface EditorComponentSettings extends EditorFontMetricsProvider {
   int getFontSize();
 
   int getFontSizeScaled(int fontSize);
+
+  int getRightMargin();
+
+  int getWidth(char c, int count);
 }

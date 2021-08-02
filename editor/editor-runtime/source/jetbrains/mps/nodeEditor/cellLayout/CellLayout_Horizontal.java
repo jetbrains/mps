@@ -130,7 +130,7 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
     if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
       return editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
     }
-    return editorCells.getRootParent().getX() + EditorSettings.getInstance().getVerticalBoundWidth();
+    return editorCells.getRootParent().getX() + editorCells.getEditorComponent().getEditorComponentSettings().getRightMargin();
   }
 
   @Override

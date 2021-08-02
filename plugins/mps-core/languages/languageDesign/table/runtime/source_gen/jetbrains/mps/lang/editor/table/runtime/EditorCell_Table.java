@@ -26,7 +26,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.editor.runtime.EditorCell_Empty;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
-import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Table;
 
 public class EditorCell_Table extends EditorCell_Collection {
@@ -290,7 +289,7 @@ public class EditorCell_Table extends EditorCell_Collection {
     emptyCell.setAction(CellActionType.INSERT_BEFORE, createFirstRowAction);
   }
   private int getAverageColumnWidth(int columnCount) {
-    return EditorSettings.getInstance().getVerticalBoundWidth() / columnCount;
+    return getEditorComponent().getEditorComponentSettings().getRightMargin() / columnCount;
   }
   public static EditorCell_Collection createTable(EditorContext editorContext, SNode node, final TableModel model, String uniquePrefix) {
     // using EditorCell_Collection class as a return value just for compatibility reasons.

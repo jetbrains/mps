@@ -35,6 +35,7 @@ import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.EditorSettings.MyState;
 import jetbrains.mps.nodeEditor.cells.EditorFontMetricsImpl;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
+import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -174,6 +175,10 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     myState.verticalBound = verticalBound;
   }
 
+  /**
+   * @deprecated Use {@link EditorComponentSettings#getRightMargin()} instead
+   */
+  @Deprecated(since = "2021.2")
   public int getVerticalBoundWidth() {
     return getSpacesWidth(getVerticalBound());
   }
@@ -354,6 +359,10 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     return getECM() == null ? DEFAULT_CARET_COLOR : getECM().getGlobalScheme().getColor(EditorColors.CARET_COLOR);
   }
 
+  /**
+   * @deprecated Use {@link EditorComponentSettings#getWidth(char, int)} instead
+   */
+  @Deprecated(since = "2021.2")
   public int getSpacesWidth(int size) {
     return getDefaultEditorFontMetrics().getWidth(' ', size);
   }

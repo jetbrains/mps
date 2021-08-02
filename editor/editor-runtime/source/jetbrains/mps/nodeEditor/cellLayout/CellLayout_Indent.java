@@ -166,7 +166,8 @@ public class CellLayout_Indent extends AbstractCellLayout {
       editorCells.setAscent(0);
       editorCells.setDescent(0);
     } else if (editorCells.getParent() == null || !(editorCells.getParent().getCellLayout() instanceof CellLayout_Indent)) {
-      new CellLayouter(editorCells, getMaxWidth(editorCells), getIndentSize()).layout();
+      int getIndentSize = editorCells.getEditorComponent().getEditorComponentSettings().getWidth(' ', EditorSettings.getInstance().getIndentSize());
+      new CellLayouter(editorCells, getMaxWidth(editorCells), getIndentSize).layout();
     }
   }
 
@@ -174,12 +175,7 @@ public class CellLayout_Indent extends AbstractCellLayout {
     if (editorCells.getStyle().isSpecified(StyleAttributes.MAX_WIDTH)) {
       return editorCells.getX() + editorCells.getStyle().get(StyleAttributes.MAX_WIDTH);
     }
-    return editorCells.getRootParent().getX() + EditorSettings.getInstance().getVerticalBoundWidth();
-  }
-
-  private int getIndentSize() {
-    EditorSettings settings = EditorSettings.getInstance();
-    return settings.getSpacesWidth(settings.getIndentSize());
+    return editorCells.getRootParent().getX() + editorCells.getEditorComponent().getEditorComponentSettings().getRightMargin();
   }
 
   @Override

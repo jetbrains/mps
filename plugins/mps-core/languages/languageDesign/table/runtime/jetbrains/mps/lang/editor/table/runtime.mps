@@ -3319,17 +3319,21 @@
       <node concept="3clFbS" id="2c9ZTAh$Tzf" role="3clF47">
         <node concept="3cpWs6" id="2c9ZTAh$TB5" role="3cqZAp">
           <node concept="FJ1c_" id="2c9ZTAh$TBp" role="3cqZAk">
-            <node concept="2OqwBi" id="2c9ZTAh$T$Y" role="3uHU7B">
-              <node concept="2YIFZM" id="2c9ZTAh$T$Z" role="2Oq$k0">
-                <ref role="37wK5l" to="exr9:~EditorSettings.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="exr9:~EditorSettings" resolve="EditorSettings" />
-              </node>
-              <node concept="liA8E" id="2c9ZTAh$T_0" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorSettings.getVerticalBoundWidth()" resolve="getVerticalBoundWidth" />
-              </node>
-            </node>
             <node concept="37vLTw" id="2BHiRxgmpd3" role="3uHU7w">
               <ref role="3cqZAo" node="2c9ZTAh$T$w" resolve="columnCount" />
+            </node>
+            <node concept="2OqwBi" id="2AU$MjpZJ4v" role="3uHU7B">
+              <node concept="2OqwBi" id="2AU$MjpZBmd" role="2Oq$k0">
+                <node concept="1rXfSq" id="2AU$MjpZ$F1" role="2Oq$k0">
+                  <ref role="37wK5l" to="g51k:~EditorCell_Basic.getEditorComponent()" resolve="getEditorComponent" />
+                </node>
+                <node concept="liA8E" id="2AU$MjpZF_6" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorComponent.getEditorComponentSettings()" resolve="getEditorComponentSettings" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2AU$MjpZMAZ" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorComponentSettings.getRightMargin()" resolve="getRightMargin" />
+              </node>
             </node>
           </node>
         </node>
