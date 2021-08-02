@@ -51,8 +51,7 @@ public final class Log4jInitializer {
     }
     if (Files.exists(configFile)) {
       configureFromXmlFile(configFile);
-      System.out.println("Log4j is initialized by MPS from the configuration file " + configFile.toAbsolutePath());
-      System.out.printf("LOG_DIR macro was evaluated to %s", getLogPath());
+      System.out.printf("Log4j is initialized by MPS from the configuration file %s\nLOG_DIR macro was evaluated to %s\n", configFile.toAbsolutePath(), getLogPath());
     } else {
       configureProgrammatically();
     }
