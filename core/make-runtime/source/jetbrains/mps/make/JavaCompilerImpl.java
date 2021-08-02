@@ -34,6 +34,7 @@ import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
 import java.io.File;
 import java.io.IOException;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -198,7 +199,7 @@ final class JavaCompilerImpl implements AutoCloseable {
     configureSourcePath(modules.map(BaseModuleContainer.JavaModule::getAllSourcePaths).flatMap(Collection::stream).<Path>map(Path::of));
     final Iterable<JavaFileObject> cu = cuFromSourcePath();
     DiagnosticListener<JavaFileObject> ignore = diagnostic -> {};
-    final CompilationTask task = myJavaCompiler.getTask(null, myFileManager, ignore, javacOptions(true), null, cu);
+    final CompilationTask task = myJavaCompiler.getTask(Writer.nullWriter(), myFileManager, ignore, javacOptions(true), null, cu);
     if (!task.call()) {
       sender.error("Failed to compile module cycle, see individual modules for errors");
     }
@@ -210,7 +211,7 @@ final class JavaCompilerImpl implements AutoCloseable {
     configureSourcePath(jm.getAllSourcePaths().stream().map(Path::of));
     final Iterable<JavaFileObject> cu = cuFromSourcePath();
     DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
-    final CompilationTask task = myJavaCompiler.getTask(null, myFileManager, diagnostics, javacOptions(false), null, cu);
+    final CompilationTask task = myJavaCompiler.getTask(Writer.nullWriter(), myFileManager, diagnostics, javacOptions(false), null, cu);
     if (!task.call()) {
       // XXX perhaps, shall sender.trace() all jfm.location values?
       final ErrorRecord errorRecord = new ErrorRecord(MAX_ERRORS);
