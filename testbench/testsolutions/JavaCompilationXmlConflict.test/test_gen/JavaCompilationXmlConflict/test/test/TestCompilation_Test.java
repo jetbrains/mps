@@ -7,17 +7,15 @@ import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import org.junit.Test;
 import jetbrains.mps.project.Project;
 import java.io.File;
-import java.util.List;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.junit.Assume;
-import jetbrains.mps.make.MPSCompilationResult;
-import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.make.ErrorsLoggingHandler;
 import org.apache.log4j.LogManager;
+import java.util.List;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.junit.Assume;
 import java.util.HashSet;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.make.MPSCompilationResult;
 import org.junit.Assert;
 
 @MPSLaunch
@@ -25,17 +23,19 @@ public class TestCompilation_Test extends EnvironmentAwareTestCase {
   private static final String PROJECT_PATH = "testbench/modules/testCompilationJavaXmlConflict/";
   @Test
   public void test_compileSolution() throws Exception {
-    Project project = myEnvironment.openProject(new File(PROJECT_PATH));
-    final List<SModule> projectModules = project.getProjectModules();
-    Assume.assumeFalse(projectModules.isEmpty());
-    MPSCompilationResult result = new ModelComputeRunnable<MPSCompilationResult>(new Computable<MPSCompilationResult>() {
-      public MPSCompilationResult compute() {
-        ModuleMaker maker = new ModuleMaker(new ErrorsLoggingHandler(LogManager.getLogger(TestCompilation_Test.class)));
+    final Project project = myEnvironment.openProject(new File(PROJECT_PATH));
+    final ModuleMaker maker = new ModuleMaker(new ErrorsLoggingHandler(LogManager.getLogger(TestCompilation_Test.class)));
+    project.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        List<SModule> projectModules = project.getProjectModules();
+        Assume.assumeFalse(projectModules.isEmpty());
         maker.clean(new HashSet<SModule>(projectModules), new EmptyProgressMonitor());
-        return maker.make(projectModules, new EmptyProgressMonitor());
+        maker.prepare(projectModules, true, new EmptyProgressMonitor());
       }
-    }).runRead(project.getModelAccess());
-    Assert.assertTrue(result.isOk());
+    });
+
+    MPSCompilationResult result = maker.make(new EmptyProgressMonitor());
     myEnvironment.closeProject(project);
+    Assert.assertTrue(result.isOk());
   }
 }

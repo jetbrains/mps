@@ -3,34 +3,36 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root nodeRef="r:4201854c-2b50-4609-9031-1ebdf87d3bf7(JavaCompilationXmlConflict.test.test@tests)/8449002106978639305">
     <file name="TestCompilation_Test.java">
-      <node id="8449002106978639917" at="25,0,26,0" concept="4" trace="PROJECT_PATH" />
-      <node id="7122818462003117667" at="27,55,28,72" concept="2" />
-      <node id="7122818462003122058" at="28,72,29,69" concept="2" />
-      <node id="7122818462003124751" at="29,69,30,49" concept="0" />
-      <node id="8077162446288430989" at="32,45,33,120" concept="2" />
-      <node id="8077162446288433250" at="33,120,34,86" concept="0" />
-      <node id="1809965251472643127" at="34,86,35,70" concept="3" />
-      <node id="7122818462003176936" at="37,41,38,37" concept="0" />
-      <node id="430932450842854185" at="38,37,39,40" concept="0" />
-      <node id="1809965251472643125" at="32,0,37,0" concept="1" trace="compute#()Ljetbrains/mps/make/MPSCompilationResult;" />
-      <node id="1809965251472643120" at="30,49,37,41" concept="2" />
-      <node id="7122818462003109476" at="26,0,41,0" concept="1" trace="test_compileSolution#()V" />
-      <scope id="1809965251472643126" at="32,45,35,70">
-        <var name="maker" id="8077162446288430990" />
-      </scope>
-      <scope id="1809965251472643125" at="32,0,37,0" />
-      <scope id="7122818462003109479" at="27,55,39,40">
-        <var name="project" id="7122818462003117668" />
+      <node id="8449002106978639917" at="23,0,24,0" concept="4" trace="PROJECT_PATH" />
+      <node id="7122818462003117667" at="25,55,26,78" concept="2" />
+      <node id="8077162446288430989" at="26,78,27,122" concept="2" />
+      <node id="7122818462003122058" at="29,25,30,67" concept="2" />
+      <node id="7122818462003124751" at="30,67,31,53" concept="0" />
+      <node id="8077162446288433250" at="31,53,32,86" concept="0" />
+      <node id="4766190306072335901" at="32,86,33,72" concept="0" />
+      <node id="4766190306072321580" at="35,7,36,0" concept="3" />
+      <node id="1809965251472643120" at="36,0,37,73" concept="2" />
+      <node id="430932450842854185" at="37,73,38,40" concept="0" />
+      <node id="7122818462003176936" at="38,40,39,37" concept="0" />
+      <node id="4766190306072329347" at="29,0,35,0" concept="1" trace="run#()V" />
+      <node id="4766190306072323081" at="27,122,35,7" concept="0" />
+      <node id="7122818462003109476" at="24,0,41,0" concept="1" trace="test_compileSolution#()V" />
+      <scope id="4766190306072329348" at="29,25,33,72">
         <var name="projectModules" id="7122818462003122059" />
+      </scope>
+      <scope id="4766190306072329347" at="29,0,35,0" />
+      <scope id="7122818462003109479" at="25,55,39,37">
+        <var name="maker" id="8077162446288430990" />
+        <var name="project" id="7122818462003117668" />
         <var name="result" id="1809965251472643121" />
       </scope>
-      <scope id="7122818462003109476" at="26,0,41,0" />
-      <unit id="1809965251472643125" at="31,85,37,5" name="JavaCompilationXmlConflict.test.test.TestCompilation_Test$1" />
-      <unit id="8449002106978639305" at="23,0,42,0" name="JavaCompilationXmlConflict.test.test.TestCompilation_Test" />
+      <scope id="7122818462003109476" at="24,0,41,0" />
+      <unit id="4766190306072329347" at="28,47,35,5" name="JavaCompilationXmlConflict.test.test.TestCompilation_Test$1" />
+      <unit id="8449002106978639305" at="21,0,42,0" name="JavaCompilationXmlConflict.test.test.TestCompilation_Test" />
     </file>
   </root>
 </debug-info>
