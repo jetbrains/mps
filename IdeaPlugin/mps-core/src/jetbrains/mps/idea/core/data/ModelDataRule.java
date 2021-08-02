@@ -21,6 +21,8 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.nodefs.MPSModelVirtualFile;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
 import org.jetbrains.annotations.Nullable;
@@ -37,6 +39,12 @@ public class ModelDataRule implements GetDataRule {
     final MPSProject project = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(dataProvider));
     if (project == null) {
       return null;
+    }
+    if (virtualFile instanceof MPSNodeVirtualFile) {
+      return ((MPSNodeVirtualFile)virtualFile).getSNodePointer().getModelReference().resolve(project.getRepository());
+    }
+    if (virtualFile instanceof MPSModelVirtualFile) {
+      return ((MPSModelVirtualFile)virtualFile).getModelReference().resolve(project.getRepository());
     }
     return SModelFileTracker.getInstance(project.getRepository()).findModel(project.getFileSystem().fromVirtualFile(virtualFile));
   }
