@@ -736,11 +736,14 @@ public final class ModuleMaker {
   public MPSCompilationResult make(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor,
                                    @Nullable final JavaCompilerOptions compilerOptions) {
     options(compilerOptions);
-//    final long s = System.nanoTime();
-//    prepare(modules, false, new EmptyProgressMonitor());
-//    final long s1 = System.nanoTime();
-//    make(new EmptyProgressMonitor());
-//    myTracer.getSender().debug(String.format("MAKE2 took %d + %d us\n", (s1-s)/1000, (System.nanoTime()-s1)/1000));
+    if (!RuntimeFlags.useLegacyModuleMaker()) {
+      monitor.start("", 3);
+      //    final long s = System.nanoTime();
+      prepare(modules, false, monitor.subTask(2));
+      //    final long s1 = System.nanoTime();
+      return make(monitor.subTask(1));
+      //    myTracer.getSender().debug(String.format("MAKE2 took %d + %d us\n", (s1-s)/1000, (System.nanoTime()-s1)/1000));
+    }
     CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
     tracer.start(String.format(BUILDING_MODULES_MSG, modules.size()), 10);
     try {
