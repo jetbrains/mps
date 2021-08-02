@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,18 +88,16 @@ public class EclipseJavaCompilerTest implements EnvironmentAware {
    * @return true iff there were no errors during compilation
    */
   private boolean testRecompileClasses(final JavaVersion version) {
-    final Set<SModule> toCompile = new LinkedHashSet<SModule>();
-    toCompile.add(mySolution);
-
-    final Reference<Boolean> resultRef = new Reference<Boolean>();
     final Reference<Throwable> throwableRef = new Reference<Throwable>();
+    ModuleMaker moduleMaker = new ModuleMaker();
+    moduleMaker.requestECJ().options(new JavaCompilerOptions(version));
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         try {
-          ModuleMaker moduleMaker = new ModuleMaker();
+          final Set<SModule> toCompile = new LinkedHashSet<SModule>();
+          toCompile.add(mySolution);
           moduleMaker.clean(toCompile, new EmptyProgressMonitor());
-          MPSCompilationResult result = moduleMaker.make(toCompile, new EmptyProgressMonitor(), new JavaCompilerOptions(version));
-          resultRef.set(result.isOk());
+          moduleMaker.prepare(toCompile, true, new EmptyProgressMonitor());
         } catch (Throwable t) {
           throwableRef.set(t);
         }
@@ -108,6 +106,7 @@ public class EclipseJavaCompilerTest implements EnvironmentAware {
     if (!throwableRef.isNull()) {
       throw new RuntimeException(throwableRef.get());
     }
-    return resultRef.get();
+    MPSCompilationResult result = moduleMaker.make(new EmptyProgressMonitor());
+    return result.isOk();
   }
 }

@@ -87,6 +87,7 @@ public final class ModuleMaker {
   private final static String BUILDING_MODULE_CYCLES_MSG = "Building Module Cycles";
   private final static String BUILDING_DIRTY_CLOSURE = "Dirty Modules";
   private JavaCompilerOptions myCompilerOptions = null;
+  private boolean myExplicitRequestECJ = false;
 
   @NotNull
   private final CompositeTracer myTracer;
@@ -126,6 +127,12 @@ public final class ModuleMaker {
    */
   public ModuleMaker options(@Nullable JavaCompilerOptions options) {
     myCompilerOptions = options;
+    return this;
+  }
+
+  // request use of eclipse compiler
+  public ModuleMaker requestECJ() {
+    myExplicitRequestECJ = true;
     return this;
   }
 
@@ -808,19 +815,23 @@ public final class ModuleMaker {
 
   @NotNull
   private JavaCompilerImpl decideOnActualCompiler(MessageSender sender) throws IllegalStateException {
-    if (RuntimeFlags.useLegacyJavaCompiler()) {
-      throw new IllegalStateException("Support for legacy ECJ integration has been dropped");
-    }
     JavaCompiler jcImpl;
-    if (RuntimeFlags.useEclipseJavaCompiler()) {
-      try {
-        jcImpl = JavaCompilerImpl.eclipseCompiler();
-      } catch (Exception ex) {
-        sender.warn("ECJ requested, but no appropriate javax.tools.JavaCompiler implementation found", null);
+    if (myExplicitRequestECJ) {
+      jcImpl = JavaCompilerImpl.eclipseCompiler();
+    } else {
+      if (RuntimeFlags.useLegacyJavaCompiler()) {
+        throw new IllegalStateException("Support for legacy ECJ integration has been dropped");
+      }
+      if (RuntimeFlags.useEclipseJavaCompiler()) {
+        try {
+          jcImpl = JavaCompilerImpl.eclipseCompiler();
+        } catch (Exception ex) {
+          sender.warn("ECJ requested, but no appropriate javax.tools.JavaCompiler implementation found", null);
+          jcImpl = JavaCompilerImpl.defaultCompiler();
+        }
+      } else {
         jcImpl = JavaCompilerImpl.defaultCompiler();
       }
-    } else {
-      jcImpl = JavaCompilerImpl.defaultCompiler();
     }
     final JavaCompilerOptions co = myCompilerOptions == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_COMPILER_OPTIONS : myCompilerOptions;
     return new JavaCompilerImpl(new File(System.getProperty("java.home")), co, jcImpl);
