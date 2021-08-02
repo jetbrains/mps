@@ -97,19 +97,10 @@
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsBootstrapCore/languages"/>
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsCore/mps-core/languages"/>
     </copy>
-    <copy todir="${base_dir}/IdeaPlugin/mps-java/META-INF">
-      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/META-INF">
-        <include name="**/*.xml"/>
-      </fileset>
-    </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-java/lib">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/lib">
         <include name="**/*.jar"/>
       </fileset>
-    </copy>
-    <copy todir="${base_dir}/IdeaPlugin/mps-vcs/META-INF">
-      <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsIdeaVcs/mps-vcs/META-INF/MPSVcs.xml"/>
-      <file file="${base_dir}/IdeaPlugin/build/artifacts/mpsIdeaVcs/mps-vcs/META-INF/MPSVcsGit.xml"/>
     </copy>
     <mkdir dir="${base_dir}/IdeaPlugin/mps-vcs/languages"/>
     <copy todir="${base_dir}/IdeaPlugin/mps-vcs/languages">
@@ -122,9 +113,6 @@
     <mkdir dir="${base_dir}/IdeaPlugin/mps-migration/lib"/>
     <copy todir="${base_dir}/IdeaPlugin/mps-migration/lib">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsMigrationCore/migration-platform/lib"/>
-    </copy>
-    <copy todir="${base_dir}/IdeaPlugin/mps-migration/META-INF">
-      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsMigrationCore/migration-platform/META-INF"/>
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-testing">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsTesting/mps-testing"/>
@@ -170,8 +158,6 @@
     <delete file="${base_dir}/IdeaPlugin/mps-java/META-INF/JavaPlatform.xml"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-java/META-INF/platform"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-java/lib"/>
-    <delete file="${base_dir}/IdeaPlugin/mps-vcs/META-INF/MPSVcs.xml"/>
-    <delete file="${base_dir}/IdeaPlugin/mps-vcs/META-INF/MPSVcsGit.xml"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-vcs/languages"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-vcs/lib"/>
     <delete includeemptydirs="true">
