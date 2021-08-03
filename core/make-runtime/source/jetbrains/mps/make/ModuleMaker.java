@@ -562,6 +562,8 @@ public final class ModuleMaker {
   // requires model read
   public void prepare(final Collection<? extends SModule> modules, boolean forceCompile, @NotNull final ProgressMonitor monitor) {
     myToCompile = Collections.emptyList();
+    final CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
+    tracer.start(String.format(CALCULATING_DEPENDENCIES_TO_COMPILE_MSG, modules.size()), 10);
     final Predicate<SModule> isExcluded = ModulesContainer::isExcluded;
     MC initial = new MC();
     for (SModule m : modules.stream().filter(isExcluded.negate()).collect(Collectors.toList())) {
@@ -612,27 +614,35 @@ public final class ModuleMaker {
     withDeps.calculateClasspath();
     // some dirty modules got sources while we walked for needsCompile(), some got their dirty state derived
     // or forced (i.e. forceCompile). Make sure all dirty modules (we're going to compile these) get sources initialized:
-    initial.allJavaModules().stream().filter(JM::isDirty).forEach(initial::evaluateSources);
+    final Predicate<JM> isDirty = JM::isDirty;
+    initial.allJavaModules().stream().filter(isDirty).forEach(initial::evaluateSources);
     withDeps.abandonModelRead(); // don't need SModule any longer
     // Build clusters that contain both clean and dirty, and then remove clean from the final cluster:
     //   cycle C -> B -> A -> C; make(A,C) without B, won't notice A and C are in the cycle.
     List<List<JM>> components = new ArrayList<>(withDeps.scc());
-    components.forEach(l -> l.removeIf(JM::isClean));
+    // Important, have to remove !isDirty, rather than isClean(). There could be UNCHECKED modules
+    // coming from dependencies we don't care to compile, i.e. make(A), A -> B, C; B is dirty, we derived
+    // A dirty state from B, and never queried C.
+    // However, (see XXX 2 lines below), C might depend on A (cycle), do I care to re-compile it then, too?
+    components.forEach(l -> l.removeIf(isDirty.negate()));
     components.removeIf(List::isEmpty);
     // XXX shall I remove those JM in components that are not part of 'initial' set?
     //     If I derive 'dirty' for B in the aforementioned example, do I want to exclude it from compile or not - it was not requested
     //     but as long as it's part of the cycle, its recompilation might be necessary
+    //     Another thought: initial MC doesn't contain read-only, source-less modules, which may show up in dependencies
+    //     now I rely on isDirty and !isDirty, would initial.contains() work better?
     for (List<JM> cc : components) {
 //      final MC mc = new MC(cc);
 //      compileCycles(mc);
-      myTracer.getSender().info(String.format("Cycle of %d modules\n", cc.size()));
+      myTracer.getSender().info(String.format("Cycle of %d modules", cc.size()));
       for (JM x : cc) {
-        myTracer.getSender().info(String.format("\t%s\n", x.name()));
-        myTracer.getSender().info(String.format("\t\t%s\n", x.myDependencies.stream().map(JM::name).collect(Collectors.toList())));
-        myTracer.getSender().info(String.format("\t\t%s  JS:%s\n", x.compileState(), x.mySources));
+        myTracer.getSender().info(String.format("\t%s", x.name()));
+        myTracer.getSender().info(String.format("\t\t%s", x.myDependencies.stream().map(JM::name).collect(Collectors.toList())));
+        myTracer.getSender().info(String.format("\t\t%s  JS:%s", x.compileState(), x.mySources));
         myTracer.getSender().info(String.format("\t\t%s\n", x.myClasspath));
       }
     }
+    tracer.done();
     myToCompile = components;
   }
 
