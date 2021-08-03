@@ -66,6 +66,9 @@
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
       <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
+      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
+        <child id="1068581517676" name="expression" index="3cqZAk" />
+      </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -97,6 +100,12 @@
       </concept>
     </language>
     <language id="817e4e70-961e-4a95-98a1-15e9f32231f1" name="jetbrains.mps.ide.httpsupport">
+      <concept id="3726061952476747114" name="jetbrains.mps.ide.httpsupport.structure.ContentTypeFunction" flags="ig" index="23N3jK" />
+      <concept id="2345521174007418381" name="jetbrains.mps.ide.httpsupport.structure.RessourceHandler" flags="ng" index="25kB$p">
+        <child id="3726061952476748899" name="contentTypeFunction" index="23N3RT" />
+        <child id="2345521174007418386" name="handleFunction" index="25kB$6" />
+        <child id="2345521174007418382" name="queryPrefix" index="25kB$q" />
+      </concept>
       <concept id="5573986434797682998" name="jetbrains.mps.ide.httpsupport.structure.HandleRequestFunction" flags="ig" index="pF8on" />
       <concept id="5573986434797765074" name="jetbrains.mps.ide.httpsupport.structure.HttpRequestParameter" flags="ng" index="pFkrN" />
       <concept id="5573986434797590400" name="jetbrains.mps.ide.httpsupport.structure.RequestHandler" flags="ng" index="pFx2x">
@@ -616,6 +625,43 @@
       </node>
     </node>
     <node concept="1yv5mI" id="30pFmTir4t6" role="3e4HnV" />
+  </node>
+  <node concept="25kB$p" id="22cXLi_UZkO">
+    <property role="TrG5h" value="RH_Ressource" />
+    <node concept="std77" id="22cXLi_UZkP" role="25kB$q">
+      <node concept="std78" id="22cXLi_UZpI" role="std7y">
+        <property role="svBHv" value="some" />
+      </node>
+      <node concept="std78" id="22cXLi_UZq0" role="std7y">
+        <property role="svBHv" value="folder" />
+      </node>
+    </node>
+    <node concept="pF8on" id="22cXLi_UZkQ" role="25kB$6">
+      <node concept="3clFbS" id="22cXLi_UZkR" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="25kB$p" id="3ePCpEKvPJG">
+    <property role="TrG5h" value="RH_RessourceWithContentType" />
+    <node concept="std77" id="3ePCpEKvPJH" role="25kB$q">
+      <node concept="std78" id="3ePCpEKvPJI" role="std7y">
+        <property role="svBHv" value="some" />
+      </node>
+      <node concept="std78" id="3ePCpEKvPJJ" role="std7y">
+        <property role="svBHv" value="contentType" />
+      </node>
+    </node>
+    <node concept="pF8on" id="3ePCpEKvPJK" role="25kB$6">
+      <node concept="3clFbS" id="3ePCpEKvPJL" role="2VODD2" />
+    </node>
+    <node concept="23N3jK" id="3ePCpEKvPLU" role="23N3RT">
+      <node concept="3clFbS" id="3ePCpEKvPLV" role="2VODD2">
+        <node concept="3cpWs6" id="3ePCpEKvPQY" role="3cqZAp">
+          <node concept="Xl_RD" id="3ePCpEKvPRI" role="3cqZAk">
+            <property role="Xl_RC" value="some/content" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7mj5qdd6geifon1r6kugsypqztqo3we">
-  <files names="TestDefaultParameterConverter_Test.java:TestQueryPath_Test.java:TestRHBehavior_Test.java" />
+<product version="3" modelHash="-azj2vyh4hmhorn73386g419awizy1s1">
+  <files names="TestDefaultParameterConverter_Test.java:TestQueryPath_Test.java:TestRHBehavior_Test.java:TestRessourceHandlerBehavior_Test.java" />
 </product>
 

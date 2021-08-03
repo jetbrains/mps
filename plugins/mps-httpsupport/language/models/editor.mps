@@ -1021,5 +1021,108 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="22cXLi_S5LM">
+    <property role="3GE5qa" value="handler" />
+    <ref role="1XX52x" to="ndib:22cXLi_RCSd" resolve="RessourceHandler" />
+    <node concept="3EZMnI" id="22cXLi_S5M3" role="2wV5jI">
+      <node concept="l2Vlx" id="22cXLi_S5M4" role="2iSdaV" />
+      <node concept="3F0ifn" id="22cXLi_S5M5" role="3EZMnx">
+        <property role="3F0ifm" value="ressource handler" />
+        <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+      </node>
+      <node concept="3F0A7n" id="22cXLi_S5M6" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S5M7" role="3EZMnx">
+        <property role="3F0ifm" value="{" />
+        <node concept="ljvvj" id="22cXLi_S5M8" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S5Mj" role="3EZMnx">
+        <property role="3F0ifm" value="" />
+        <node concept="ljvvj" id="22cXLi_S5Mk" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S5Ml" role="3EZMnx">
+        <property role="3F0ifm" value="query prefix:" />
+        <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
+        <node concept="lj46D" id="22cXLi_S5Mm" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="22cXLi_S5Mn" role="3EZMnx">
+        <ref role="1NtTu8" to="ndib:22cXLi_RCSe" resolve="queryPrefix" />
+        <node concept="ljvvj" id="22cXLi_S5Mo" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S5M_" role="3EZMnx">
+        <property role="3F0ifm" value="" />
+        <node concept="pVoyu" id="22cXLi_S5MA" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="ljvvj" id="22cXLi_S5MB" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="22cXLi_S5MC" role="3EZMnx">
+        <property role="39s7Ar" value="true" />
+        <property role="1$x2rV" value="handle always" />
+        <ref role="1NtTu8" to="ndib:22cXLi_RCSh" resolve="canHandleFunction" />
+        <node concept="lj46D" id="22cXLi_S5MD" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="ljvvj" id="22cXLi_S5ME" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S5Tw" role="3EZMnx">
+        <property role="3F0ifm" value="" />
+        <node concept="ljvvj" id="22cXLi_S5Tx" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="3ePCpEKupQC" role="3EZMnx">
+        <property role="39s7Ar" value="true" />
+        <property role="1$x2rV" value="guess content type" />
+        <ref role="1NtTu8" to="ndib:3ePCpEKupLz" resolve="contentTypeFunction" />
+        <node concept="lj46D" id="3ePCpEKupQD" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="ljvvj" id="3ePCpEKupQE" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S5MJ" role="3EZMnx">
+        <property role="3F0ifm" value="}" />
+        <node concept="pVoyu" id="22cXLi_S5MK" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+    </node>
+    <node concept="3EZMnI" id="22cXLi_S613" role="6VMZX">
+      <node concept="2iRkQZ" id="22cXLi_S614" role="2iSdaV" />
+      <node concept="3F0ifn" id="22cXLi_S615" role="3EZMnx">
+        <property role="3F0ifm" value="Handles Incoming HTTP Requests for static ressources. Workflow:" />
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S616" role="3EZMnx">
+        <property role="3F0ifm" value="1. Checks that 'folder prefix' is a prefix of query path; " />
+        <node concept="Vb9p2" id="22cXLi_S617" role="3F10Kt" />
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S61a" role="3EZMnx">
+        <property role="3F0ifm" value="2. Invokes canHandle() method and checks that it returns true;" />
+        <node concept="Vb9p2" id="22cXLi_S61b" role="3F10Kt" />
+      </node>
+      <node concept="3F0ifn" id="22cXLi_S61c" role="3EZMnx">
+        <property role="3F0ifm" value="3. If all criteria are satisfied loads the file from the jar or local file system." />
+        <node concept="Vb9p2" id="22cXLi_S61d" role="3F10Kt" />
+      </node>
+      <node concept="VPM3Z" id="22cXLi_S61e" role="3F10Kt">
+        <property role="VOm3f" value="false" />
+      </node>
+    </node>
+  </node>
 </model>
 

@@ -56,6 +56,9 @@ public class HttpRequest {
   public String getMethod() {
     return request.method().name();
   }
+  public Channel getChannel() {
+    return channel;
+  }
 
   public void sendResponse(HttpResponseStatus status, String contentType, ByteBuf buffer) {
     FullHttpResponse response = Responses.response(contentType, buffer);
