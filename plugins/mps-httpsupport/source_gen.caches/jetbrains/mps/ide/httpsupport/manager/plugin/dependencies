@@ -58,9 +58,11 @@
     <classNode extendsClassName="org.jetbrains.io.CustomPortServerManagerBase" />
   </dependency>
   <dependency className="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager">
-    <classNode dependClassName="com.intellij.openapi.util.registry.Registry" />
+    <classNode dependClassName="com.intellij.application.options.RegistryManager" />
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.util.registry.RegistryValue" />
     <classNode dependClassName="com.intellij.openapi.util.registry.RegistryValueListener" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />

@@ -27,7 +27,9 @@
     <import index="fnpx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.notification(MPS.IDEA/)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
     <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
-    <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" implicit="true" />
+    <import index="zrh2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.application.options(MPS.IDEA/)" />
+    <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -186,6 +188,7 @@
       <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
         <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -226,6 +229,21 @@
       </concept>
       <concept id="3175313036448560967" name="jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation" flags="nn" index="SfwO_" />
     </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
+      </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+    </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
         <property id="2034914114981261751" name="severity" index="RRSoG" />
@@ -240,7 +258,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
@@ -1999,11 +2020,16 @@
             <node concept="3uibUv" id="3BwRxVwWbzF" role="1tU5fm">
               <ref role="3uigEE" to="rfhd:~RegistryValue" resolve="RegistryValue" />
             </node>
-            <node concept="2YIFZM" id="3BwRxVwWbAZ" role="33vP2m">
-              <ref role="37wK5l" to="rfhd:~Registry.get(java.lang.String)" resolve="get" />
-              <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
-              <node concept="37vLTw" id="3BwRxVwWjkS" role="37wK5m">
-                <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
+            <node concept="2OqwBi" id="15Pz4SXRxYW" role="33vP2m">
+              <node concept="2YIFZM" id="15Pz4SXRyyQ" role="2Oq$k0">
+                <ref role="37wK5l" to="zrh2:~RegistryManager.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="zrh2:~RegistryManager" resolve="RegistryManager" />
+              </node>
+              <node concept="liA8E" id="15Pz4SXRyIh" role="2OqNvi">
+                <ref role="37wK5l" to="zrh2:~RegistryManager.get(java.lang.String)" resolve="get" />
+                <node concept="37vLTw" id="15Pz4SXRIkU" role="37wK5m">
+                  <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
+                </node>
               </node>
             </node>
           </node>
@@ -2074,12 +2100,17 @@
       <node concept="3Tm1VV" id="3PMO5H7WJ5i" role="1B3o_S" />
       <node concept="10Oyi0" id="3PMO5H7WJ5j" role="3clF45" />
       <node concept="3clFbS" id="3PMO5H7WJ5k" role="3clF47">
-        <node concept="3clFbF" id="3PMO5H7XtZA" role="3cqZAp">
-          <node concept="2YIFZM" id="3BwRxVwWzwS" role="3clFbG">
-            <ref role="37wK5l" to="rfhd:~Registry.intValue(java.lang.String)" resolve="intValue" />
-            <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
-            <node concept="37vLTw" id="3BwRxVwWzyD" role="37wK5m">
-              <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
+        <node concept="3clFbF" id="15Pz4SXRL0e" role="3cqZAp">
+          <node concept="2OqwBi" id="15Pz4SXRJef" role="3clFbG">
+            <node concept="2YIFZM" id="15Pz4SXRISH" role="2Oq$k0">
+              <ref role="1Pybhc" to="zrh2:~RegistryManager" resolve="RegistryManager" />
+              <ref role="37wK5l" to="zrh2:~RegistryManager.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="15Pz4SXRJ_6" role="2OqNvi">
+              <ref role="37wK5l" to="zrh2:~RegistryManager.intValue(java.lang.String)" resolve="intValue" />
+              <node concept="37vLTw" id="15Pz4SXRL0h" role="37wK5m">
+                <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
+              </node>
             </node>
           </node>
         </node>
@@ -2153,33 +2184,94 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3PMO5H7XzuB" role="3clF47">
-        <node concept="3clFbF" id="3PMO5H7Xz_4" role="3cqZAp">
-          <node concept="2OqwBi" id="3PMO5H7X$d$" role="3clFbG">
-            <node concept="2OqwBi" id="3PMO5H7XzDH" role="2Oq$k0">
-              <node concept="37vLTw" id="3PMO5H7Xz_3" role="2Oq$k0">
+        <node concept="3cpWs8" id="15Pz4SXRNDM" role="3cqZAp">
+          <node concept="15s5l7" id="5fth5jB6cf2" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager is not a strong subtype of @ExtensionPointName.T&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1636362938497524944]&quot;;" />
+            <property role="huDt6" value="Error: type jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager is not a strong subtype of @ExtensionPointName.T" />
+          </node>
+          <node concept="3cpWsn" id="15Pz4SXRNDN" role="3cpWs9">
+            <property role="TrG5h" value="ext" />
+            <node concept="3uibUv" id="15Pz4SXRLJd" role="1tU5fm">
+              <ref role="3uigEE" node="3PMO5H7WIrG" resolve="MPSInternalPortManager" />
+            </node>
+            <node concept="2OqwBi" id="15Pz4SXRNDO" role="33vP2m">
+              <node concept="37vLTw" id="15Pz4SXRNDP" role="2Oq$k0">
                 <ref role="3cqZAo" to="e5vs:~CustomPortServerManager.EP_NAME" resolve="EP_NAME" />
               </node>
-              <node concept="liA8E" id="3PMO5H7XzOv" role="2OqNvi">
+              <node concept="liA8E" id="15Pz4SXRNDQ" role="2OqNvi">
                 <ref role="37wK5l" to="9ti4:~ExtensionPointName.findExtension(java.lang.Class)" resolve="findExtension" />
-                <node concept="3VsKOn" id="3PMO5H7X$0_" role="37wK5m">
+                <node concept="3VsKOn" id="15Pz4SXRNDR" role="37wK5m">
                   <ref role="3VsUkX" node="3PMO5H7WIrG" resolve="MPSInternalPortManager" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="3PMO5H7X$sc" role="2OqNvi">
-              <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.isBound()" resolve="isBound" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3PMO5H7Xz_4" role="3cqZAp">
+          <node concept="15s5l7" id="3PMO5H7X$G7" role="lGtFl" />
+          <node concept="1Wc70l" id="15Pz4SXROHD" role="3clFbG">
+            <node concept="3y3z36" id="15Pz4SXROsd" role="3uHU7B">
+              <node concept="37vLTw" id="15Pz4SXROba" role="3uHU7B">
+                <ref role="3cqZAo" node="15Pz4SXRNDN" resolve="ext" />
+              </node>
+              <node concept="10Nm6u" id="15Pz4SXRO_a" role="3uHU7w" />
+            </node>
+            <node concept="2OqwBi" id="3PMO5H7X$d$" role="3uHU7w">
+              <node concept="37vLTw" id="15Pz4SXRNDS" role="2Oq$k0">
+                <ref role="3cqZAo" node="15Pz4SXRNDN" resolve="ext" />
+              </node>
+              <node concept="liA8E" id="3PMO5H7X$sc" role="2OqNvi">
+                <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.isBound()" resolve="isBound" />
+              </node>
             </node>
           </node>
-          <node concept="15s5l7" id="3PMO5H7X$G7" role="lGtFl" />
         </node>
       </node>
       <node concept="3Tm1VV" id="3PMO5H7Xz2m" role="1B3o_S" />
       <node concept="10P_77" id="3PMO5H7XzpG" role="3clF45" />
+      <node concept="P$JXv" id="15Pz4SXRQrL" role="lGtFl">
+        <node concept="TZ5HI" id="15Pz4SXRQrM" role="3nqlJM">
+          <node concept="TZ5HA" id="15Pz4SXRQrN" role="3HnX3l">
+            <node concept="1dT_AC" id="15Pz4SXRQAT" role="1dT_Ay">
+              <property role="1dT_AB" value="no uses in MPS code, why would I keep it?" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="15Pz4SXRQrO" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      </node>
     </node>
     <node concept="2tJIrI" id="3BwRxVwWzDV" role="jymVt" />
     <node concept="2YIFZL" id="3BwRxVwW$fn" role="jymVt">
       <property role="TrG5h" value="getCurrentPort" />
       <node concept="3clFbS" id="3BwRxVwW$fq" role="3clF47">
+        <node concept="3SKdUt" id="1IYR_$nEyTd" role="3cqZAp">
+          <node concept="1PaTwC" id="1IYR_$nEyTe" role="1aUNEU">
+            <node concept="3oM_SD" id="1IYR_$nEz5N" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="1IYR_$nEyUB" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1IYR_$nEz5Y" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1IYR_$nEz62" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1IYR_$nExzk" role="3cqZAp">
+          <node concept="3cpWsn" id="1IYR_$nExzl" role="3cpWs9">
+            <property role="TrG5h" value="defaultValue" />
+            <property role="3TUv4t" value="true" />
+            <node concept="10Oyi0" id="1IYR_$nExub" role="1tU5fm" />
+            <node concept="3cmrfG" id="1IYR_$nExzm" role="33vP2m">
+              <property role="3cmrfH" value="63320" />
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="474XC7yvGli" role="3cqZAp">
           <node concept="1PaTwC" id="474XC7yvGC5" role="1aUNEU">
             <node concept="3oM_SD" id="474XC7yvGlU" role="1PaTwD">
@@ -2361,15 +2453,36 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3BwRxVwW$y0" role="3cqZAp">
-          <node concept="2YIFZM" id="3BwRxVwW$zL" role="3clFbG">
-            <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
-            <ref role="37wK5l" to="rfhd:~Registry.intValue(java.lang.String,int)" resolve="intValue" />
-            <node concept="37vLTw" id="3BwRxVwW_6I" role="37wK5m">
-              <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
+        <node concept="3clFbJ" id="1IYR_$nEvWz" role="3cqZAp">
+          <node concept="3clFbS" id="1IYR_$nEvW_" role="3clFbx">
+            <node concept="3cpWs6" id="1IYR_$nEx4Q" role="3cqZAp">
+              <node concept="37vLTw" id="1IYR_$nExzn" role="3cqZAk">
+                <ref role="3cqZAo" node="1IYR_$nExzl" resolve="i" />
+              </node>
             </node>
-            <node concept="3cmrfG" id="474XC7yvG6H" role="37wK5m">
-              <property role="3cmrfH" value="63320" />
+          </node>
+          <node concept="3clFbC" id="1IYR_$nEwen" role="3clFbw">
+            <node concept="10Nm6u" id="1IYR_$nEwkE" role="3uHU7w" />
+            <node concept="2YIFZM" id="1IYR_$nE$UX" role="3uHU7B">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="15Pz4SXRMbA" role="3cqZAp">
+          <node concept="2OqwBi" id="15Pz4SXRMbC" role="3clFbG">
+            <node concept="2YIFZM" id="1IYR_$nECji" role="2Oq$k0">
+              <ref role="1Pybhc" to="zrh2:~RegistryManager" resolve="RegistryManager" />
+              <ref role="37wK5l" to="zrh2:~RegistryManager.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="15Pz4SXRMbE" role="2OqNvi">
+              <ref role="37wK5l" to="zrh2:~RegistryManager.intValue(java.lang.String,int)" resolve="intValue" />
+              <node concept="37vLTw" id="15Pz4SXRMbG" role="37wK5m">
+                <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
+              </node>
+              <node concept="37vLTw" id="1IYR_$nExzo" role="37wK5m">
+                <ref role="3cqZAo" node="1IYR_$nExzl" resolve="i" />
+              </node>
             </node>
           </node>
         </node>

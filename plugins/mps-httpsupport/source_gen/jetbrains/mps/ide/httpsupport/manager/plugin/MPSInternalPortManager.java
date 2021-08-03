@@ -5,10 +5,11 @@ package jetbrains.mps.ide.httpsupport.manager.plugin;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.io.CustomPortServerManagerBase;
 import com.intellij.openapi.util.registry.RegistryValue;
-import com.intellij.openapi.util.registry.Registry;
+import com.intellij.application.options.RegistryManager;
 import com.intellij.openapi.util.registry.RegistryValueListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.ide.BuiltInServerManager;
+import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/4427830474126321388", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public class MPSInternalPortManager extends CustomPortServerManagerBase {
@@ -16,7 +17,7 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
   private static final String PORT_KEY = "ide.httpsupport.internalPort";
 
   public MPSInternalPortManager() {
-    RegistryValue value = Registry.get(PORT_KEY);
+    RegistryValue value = RegistryManager.getInstance().get(PORT_KEY);
     value.addListener(new RegistryValueListener() {
 
       @Override
@@ -28,7 +29,7 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
 
   @Override
   public int getPort() {
-    return Registry.intValue(PORT_KEY);
+    return RegistryManager.getInstance().intValue(PORT_KEY);
   }
 
   @Override
@@ -42,12 +43,23 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
     return false;
   }
 
+  /**
+   * 
+   * @deprecated no uses in MPS code, why would I keep it?
+   */
+  @Deprecated
   public static boolean isEnabled() {
-    return EP_NAME.findExtension(MPSInternalPortManager.class).isBound();
+    MPSInternalPortManager ext = EP_NAME.findExtension(MPSInternalPortManager.class);
+    return ext != null && ext.isBound();
   }
 
   public static int getCurrentPort() {
+    // FIXME use of the
+    final int defaultValue = 63320;
     // default needed if http-support is loaded as pure modules, not as an idea plugin (i.e. in generate task, w/o IDEA platform). Even in this case, we should support generation of http-support language concepts, that uses MPSInternalPortManager internally. For such cases returning default value == 63220 (Regardless absence of idea plugins, port key can be customized with vm option -Dide.httpsupport.internalPort)
-    return Registry.intValue(PORT_KEY, 63320);
+    if (ApplicationManager.getApplication() == null) {
+      return defaultValue;
+    }
+    return RegistryManager.getInstance().intValue(PORT_KEY, defaultValue);
   }
 }
