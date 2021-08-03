@@ -33,7 +33,7 @@ public final class RuntimeFlags {
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourLegacyJavaCompiler = null;
-  private static Boolean ourLegacyModuleMaker = null; // false by default
+  private static Boolean ourLegacyModuleMaker = Boolean.TRUE; // FIXME shall be false by default
 
   private RuntimeFlags() {
   }
