@@ -3188,7 +3188,7 @@
     <property role="TrG5h" value="CellLayout_Superscript" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="CellLayout" />
-    <property role="34LRSv" value="superscript" />
+    <property role="34LRSv" value="super/subscript" />
     <property role="EcuMT" value="1886960078078641793" />
     <ref role="1TJDcQ" node="g6iR17a" resolve="CellLayout" />
   </node>
