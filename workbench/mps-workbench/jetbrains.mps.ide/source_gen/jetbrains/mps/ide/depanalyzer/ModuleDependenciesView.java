@@ -51,7 +51,7 @@ public class ModuleDependenciesView extends JPanel implements DataProvider {
       }
     }));
 
-    JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true).getComponent();
+    JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true).getComponent();
     add(toolbar, BorderLayout.NORTH);
 
     Splitter splitter = new Splitter();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ public class ClassPathViewerTool extends BaseProjectTool {
 
     ApplicationManager.getApplication().invokeLater(() -> {
       DefaultActionGroup group = ActionUtils.groupFromActions(createCloseAction());
-      JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false).getComponent();
+      JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false).getComponent();
       myComponent.add(toolbar, BorderLayout.WEST);
     });
     myTree.rebuildLater();

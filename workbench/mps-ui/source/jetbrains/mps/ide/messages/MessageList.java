@@ -324,7 +324,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     group.add(new MessagesLimitAction());
     group.add(new ClearAction());
 
-    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false);
+    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
 
     myComponent.setToolbar(myToolbar.getComponent());
     final JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myList, true);

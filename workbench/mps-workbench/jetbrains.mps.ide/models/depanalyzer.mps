@@ -4276,9 +4276,9 @@
                 </node>
                 <node concept="liA8E" id="2zElYzLnYKj" role="2OqNvi">
                   <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                  <node concept="10M0yZ" id="2zElYzLnYKk" role="37wK5m">
+                  <node concept="10M0yZ" id="3pCK9JwjG9S" role="37wK5m">
+                    <ref role="3cqZAo" to="qkt:~ActionPlaces.TOOLBAR" resolve="TOOLBAR" />
                     <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                    <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
                   </node>
                   <node concept="37vLTw" id="3GM_nagTzUH" role="37wK5m">
                     <ref role="3cqZAo" node="2zElYzLnYK9" resolve="group" />

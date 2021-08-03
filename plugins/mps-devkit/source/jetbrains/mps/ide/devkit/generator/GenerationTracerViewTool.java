@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -271,7 +271,7 @@ public class GenerationTracerViewTool extends BaseProjectTool {
       ApplicationManager.getApplication().invokeLater(() -> {
         ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool));
 
-        ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, false);
+        ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
         add(toolbar.getComponent(), BorderLayout.WEST);
       });
     }
