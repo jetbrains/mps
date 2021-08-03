@@ -520,7 +520,7 @@ public final class ModuleMaker {
           }
         } else {
           // treat others as 'resources'
-          final String fqPath = packPrefix.toString().replace('.', '/') + childName;
+          final String fqPath = packPrefix.pathWithTail(childName);
           final ResourceFile rf = myResourceFiles.get(fqPath);
           if (rf == null) {
             myFilesToDelete.add(f);
