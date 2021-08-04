@@ -4233,6 +4233,19 @@
             <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
           </node>
         </node>
+        <node concept="1SiIV0" id="39MFrfLw32H" role="3bR37C">
+          <node concept="1BurEX" id="39MFrfLw3d2" role="1SiIV1">
+            <node concept="398BVA" id="39MFrfLw3nl" role="1BurEY">
+              <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+              <node concept="2Ry0Ak" id="39MFrfLw3Q5" role="iGT6I">
+                <property role="2Ry0Am" value="3rd-party.jar" />
+              </node>
+            </node>
+            <node concept="3yrxFa" id="39MFrfLw4kI" role="2gdwQb">
+              <ref role="3yrxFb" node="VazYWZjXdQ" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="7Kfy9QB6KZM" role="2G$12L">
         <property role="BnDLt" value="true" />
