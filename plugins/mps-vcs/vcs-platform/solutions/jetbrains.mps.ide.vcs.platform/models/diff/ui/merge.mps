@@ -2606,6 +2606,24 @@
         <ref role="3uigEE" to="hdhb:1zZcg$udfju" resolve="TripleChangeGroupLayout" />
       </node>
     </node>
+    <node concept="312cEg" id="4v$0iiIJgCs" role="jymVt">
+      <property role="TrG5h" value="myGutterMessagesRebuilders" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="4v$0iiIJ8uF" role="1B3o_S" />
+      <node concept="2ShNRf" id="4v$0iiIJjD6" role="33vP2m">
+        <node concept="Tc6Ow" id="3dhKa32XW74" role="2ShVmc">
+          <node concept="3uibUv" id="3dhKa32Yas9" role="HW$YZ">
+            <ref role="3uigEE" to="hdhb:D356mG1l9K" resolve="ChangeGroupMessages" />
+          </node>
+        </node>
+      </node>
+      <node concept="_YKpA" id="4v$0iiIO6AG" role="1tU5fm">
+        <node concept="3uibUv" id="4v$0iiIOcR7" role="_ZDj9">
+          <ref role="3uigEE" to="hdhb:D356mG1l9K" resolve="ChangeGroupMessages" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="4v$0iiJ0Npr" role="jymVt" />
     <node concept="2tJIrI" id="fteH8PUtPt" role="jymVt" />
     <node concept="3clFbW" id="2jv$fqwev8m" role="jymVt">
       <node concept="37vLTG" id="2jv$fqwev8n" role="3clF46">
@@ -5347,12 +5365,43 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="42UviMImjK$" role="3cqZAp">
-          <node concept="2YIFZM" id="42UviMImjK_" role="3clFbG">
-            <ref role="37wK5l" to="hdhb:1IK$bZG1GHg" resolve="startMaintaining" />
-            <ref role="1Pybhc" to="hdhb:D356mG1l9K" resolve="ChangeGroupMessages" />
-            <node concept="37vLTw" id="42UviMImjKA" role="37wK5m">
-              <ref role="3cqZAo" node="42UviMImjKr" resolve="layout" />
+        <node concept="3clFbF" id="3dhKa32ZZbF" role="3cqZAp">
+          <node concept="2OqwBi" id="3dhKa32ZZbG" role="3clFbG">
+            <node concept="37vLTw" id="3dhKa32ZZbH" role="2Oq$k0">
+              <ref role="3cqZAo" node="4v$0iiIJgCs" resolve="myGutterMessagesRebuilders" />
+            </node>
+            <node concept="TSZUe" id="3dhKa32ZZbI" role="2OqNvi">
+              <node concept="2ShNRf" id="3dhKa32ZZbJ" role="25WWJ7">
+                <node concept="1pGfFk" id="3dhKa32ZZbK" role="2ShVmc">
+                  <ref role="37wK5l" to="hdhb:D356mG1lCH" resolve="ChangeGroupMessages" />
+                  <node concept="37vLTw" id="3dhKa32ZZbL" role="37wK5m">
+                    <ref role="3cqZAo" node="42UviMImjKr" resolve="layout" />
+                  </node>
+                  <node concept="3clFbT" id="3dhKa32ZZbM" role="37wK5m">
+                    <property role="3clFbU" value="false" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3dhKa32ZZbN" role="3cqZAp">
+          <node concept="2OqwBi" id="3dhKa32ZZbO" role="3clFbG">
+            <node concept="37vLTw" id="3dhKa32ZZbP" role="2Oq$k0">
+              <ref role="3cqZAo" node="4v$0iiIJgCs" resolve="myGutterMessagesRebuilders" />
+            </node>
+            <node concept="TSZUe" id="3dhKa32ZZbQ" role="2OqNvi">
+              <node concept="2ShNRf" id="3dhKa32ZZbR" role="25WWJ7">
+                <node concept="1pGfFk" id="3dhKa32ZZbS" role="2ShVmc">
+                  <ref role="37wK5l" to="hdhb:D356mG1lCH" resolve="ChangeGroupMessages" />
+                  <node concept="37vLTw" id="3dhKa32ZZbT" role="37wK5m">
+                    <ref role="3cqZAo" node="42UviMImjKr" resolve="layout" />
+                  </node>
+                  <node concept="3clFbT" id="3dhKa32ZZbU" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -5767,6 +5816,33 @@
               </node>
               <node concept="37vLTw" id="2BHiRxeuROI" role="3clFbw">
                 <ref role="3cqZAo" node="2jv$fqwev6W" resolve="myDisposed" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="3dhKa32ZBZ6" role="3cqZAp">
+              <node concept="2OqwBi" id="3dhKa32ZBZ7" role="3clFbG">
+                <node concept="37vLTw" id="3dhKa32ZBZ8" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4v$0iiIJgCs" resolve="myGutterMessagesRebuilders" />
+                </node>
+                <node concept="2es0OD" id="3dhKa32ZBZ9" role="2OqNvi">
+                  <node concept="1bVj0M" id="3dhKa32ZBZa" role="23t8la">
+                    <node concept="3clFbS" id="3dhKa32ZBZb" role="1bW5cS">
+                      <node concept="3clFbF" id="3dhKa32ZBZc" role="3cqZAp">
+                        <node concept="2OqwBi" id="3dhKa32ZBZd" role="3clFbG">
+                          <node concept="37vLTw" id="3dhKa32ZBZe" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3dhKa32ZBZg" resolve="it" />
+                          </node>
+                          <node concept="liA8E" id="3dhKa32ZBZf" role="2OqNvi">
+                            <ref role="37wK5l" to="hdhb:76itSV98wSB" resolve="dispose" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="3dhKa32ZBZg" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="3dhKa32ZBZh" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="2zb8TK6wq4J" role="3cqZAp">

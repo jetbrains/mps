@@ -167,6 +167,7 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages">
+    <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="com.intellij.util.ui.update.MergingUpdateQueue" />
     <classNode dependClassName="com.intellij.util.ui.update.Update" />
     <classNode dependClassName="java.awt.Color" />
@@ -608,6 +609,7 @@
     <classNode dependClassName="com.intellij.diff.util.DiffDrawUtil" />
     <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="com.intellij.openapi.ui.GraphicsConfig" />
+    <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="com.intellij.openapi.util.Pair" />
     <classNode dependClassName="com.intellij.util.ui.GraphicsUtil" />
     <classNode dependClassName="com.intellij.util.ui.update.MergingUpdateQueue" />

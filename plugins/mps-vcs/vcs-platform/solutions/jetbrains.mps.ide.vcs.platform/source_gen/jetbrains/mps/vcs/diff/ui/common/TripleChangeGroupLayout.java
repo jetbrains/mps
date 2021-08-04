@@ -26,6 +26,7 @@ import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import com.intellij.util.ui.update.Update;
+import com.intellij.openapi.util.Disposer;
 import java.util.List;
 import java.util.ArrayList;
 import com.intellij.openapi.util.Pair;
@@ -309,6 +310,9 @@ public final class TripleChangeGroupLayout {
     });
     check_fgmqy5_a1a53(myLeftLayout, myGroupInvalidateListener);
     check_fgmqy5_a2a53(myRightLayout, myGroupInvalidateListener);
+    // we should always use Disposer#dispose for Disposable objects instead of direct call
+    // of dispose method.
+    Disposer.dispose(myUpdateQueue);
   }
 
   private synchronized void updateChangeLayers() {

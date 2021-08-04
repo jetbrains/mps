@@ -26,6 +26,7 @@ import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import com.intellij.ui.JBSplitter;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
+import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -54,7 +55,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -95,6 +95,8 @@ public class MergeRootsPane implements PropertyChangeListener {
   private final InvalidationHandler myInvalidationHandler;
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
+  private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
+
 
   public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
     myProject = project;
@@ -152,7 +154,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_lifo0_a0a5lb(ProjectHelper.getModelAccess(myProject), this);
+      check_lifo0_a0a5nb(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -396,7 +398,8 @@ public class MergeRootsPane implements PropertyChangeListener {
   private void linkEditors(ThreesideContentPanel panel, boolean mine, boolean inspector) {
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), getSplitterRepainter(panel, mine), inspector);
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
-    ChangeGroupMessages.startMaintaining(layout);
+    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, false));
+    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, true));
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     MergeButtonsPainter.addTo(this, (mine ? myMineEditor : myRepositoryEditor), layout, inspector);
   }
@@ -445,6 +448,11 @@ public class MergeRootsPane implements PropertyChangeListener {
       if (myDisposed) {
         return;
       }
+      ListSequence.fromList(myGutterMessagesRebuilders).visitAll(new IVisitor<ChangeGroupMessages>() {
+        public void visit(ChangeGroupMessages it) {
+          it.dispose();
+        }
+      });
       myDiffRegistry.getCommandQueue().runTask(new Runnable() {
         public void run() {
           if (myMergeSession.getMyModel() instanceof EditableSModel) {
@@ -506,7 +514,7 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
     }
   }
-  private static void check_lifo0_a0a5lb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_lifo0_a0a5nb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(new Runnable() {
         public void run() {

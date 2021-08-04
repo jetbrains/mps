@@ -15801,13 +15801,12 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1jG3ZCaZk0q" role="3cqZAp">
-          <node concept="2OqwBi" id="1jG3ZCaZk0r" role="3clFbG">
-            <node concept="37vLTw" id="1jG3ZCaZk0s" role="2Oq$k0">
+        <node concept="3clFbF" id="1K6GYhpPrW5" role="3cqZAp">
+          <node concept="2YIFZM" id="1K6GYhpP_D2" role="3clFbG">
+            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
+            <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+            <node concept="37vLTw" id="1K6GYhpPK8p" role="37wK5m">
               <ref role="3cqZAo" node="1jG3ZCannSM" resolve="myUpdateQueue" />
-            </node>
-            <node concept="liA8E" id="1jG3ZCaZk0t" role="2OqNvi">
-              <ref role="37wK5l" to="t335:~MergingUpdateQueue.dispose()" resolve="dispose" />
             </node>
           </node>
         </node>

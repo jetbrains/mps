@@ -20466,6 +20466,14 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="3dhKa32VKNb" role="jymVt">
+      <property role="TrG5h" value="myLayoutListener" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3dhKa32VJEB" role="1B3o_S" />
+      <node concept="3uibUv" id="3dhKa32VKEj" role="1tU5fm">
+        <ref role="3uigEE" node="42hl10VHapG" resolve="ChangeGroupInvalidateListener" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3NDL0tvrAhV" role="jymVt" />
     <node concept="3clFbW" id="D356mG1lCH" role="jymVt">
       <node concept="37vLTG" id="D356mG1lCM" role="3clF46">
@@ -20583,94 +20591,173 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="3dhKa32VMCB" role="3cqZAp">
+          <node concept="37vLTI" id="3dhKa32VNpv" role="3clFbG">
+            <node concept="37vLTw" id="3dhKa32VMC_" role="37vLTJ">
+              <ref role="3cqZAo" node="3dhKa32VKNb" resolve="myLayoutListener" />
+            </node>
+            <node concept="1bVj0M" id="4OqmujRdXkw" role="37vLTx">
+              <node concept="3clFbS" id="4OqmujRdXky" role="1bW5cS">
+                <node concept="3clFbF" id="4OqmujRdYkb" role="3cqZAp">
+                  <node concept="1rXfSq" id="4OqmujRdYka" role="3clFbG">
+                    <ref role="37wK5l" node="3dhKa32Wpe8" resolve="scheduleUpdate" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3dhKa32Wuvk" role="3cqZAp">
+          <node concept="2OqwBi" id="3dhKa32WvCk" role="3clFbG">
+            <node concept="37vLTw" id="3dhKa32Wuvi" role="2Oq$k0">
+              <ref role="3cqZAo" node="D356mG1l9Q" resolve="myLayout" />
+            </node>
+            <node concept="liA8E" id="3dhKa32WwAB" role="2OqNvi">
+              <ref role="37wK5l" node="42hl10VHamL" resolve="addInvalidateListener" />
+              <node concept="37vLTw" id="3dhKa32WxSO" role="37wK5m">
+                <ref role="3cqZAo" node="3dhKa32VKNb" resolve="myLayoutListener" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3cqZAl" id="D356mG1lCI" role="3clF45" />
       <node concept="3Tm1VV" id="76itSV98wSN" role="1B3o_S" />
     </node>
-    <node concept="2tJIrI" id="3NDL0tvpwru" role="jymVt" />
-    <node concept="3clFb_" id="D356mG1o$s" role="jymVt">
-      <property role="TrG5h" value="startMaintaining" />
-      <node concept="3Tm1VV" id="D356mG1o$u" role="1B3o_S" />
-      <node concept="3clFbS" id="D356mG1o$v" role="3clF47">
-        <node concept="3clFbF" id="D356mG1n6S" role="3cqZAp">
-          <node concept="2OqwBi" id="D356mG1n6U" role="3clFbG">
-            <node concept="liA8E" id="D356mG1n6Y" role="2OqNvi">
-              <ref role="37wK5l" node="42hl10VHamL" resolve="addInvalidateListener" />
-              <node concept="1bVj0M" id="542heu5cZOs" role="37wK5m">
-                <node concept="3clFbS" id="542heu5cZOt" role="1bW5cS">
-                  <node concept="3clFbF" id="26fDspGT12m" role="3cqZAp">
-                    <node concept="2OqwBi" id="26fDspGT16A" role="3clFbG">
-                      <node concept="37vLTw" id="26fDspGT12k" role="2Oq$k0">
-                        <ref role="3cqZAo" node="26fDspGS_UN" resolve="myUpdateQueue" />
-                      </node>
-                      <node concept="liA8E" id="26fDspGT1xr" role="2OqNvi">
-                        <ref role="37wK5l" to="t335:~MergingUpdateQueue.queue(com.intellij.util.ui.update.Update)" resolve="queue" />
-                        <node concept="2ShNRf" id="26fDspGT1$s" role="37wK5m">
-                          <node concept="YeOm9" id="26fDspGTjoY" role="2ShVmc">
-                            <node concept="1Y3b0j" id="26fDspGTjp1" role="YeSDq">
-                              <property role="2bfB8j" value="true" />
-                              <ref role="1Y3XeK" to="t335:~Update" resolve="Update" />
-                              <ref role="37wK5l" to="t335:~Update.&lt;init&gt;(java.lang.Object)" resolve="Update" />
-                              <node concept="3Tm1VV" id="26fDspGTjp2" role="1B3o_S" />
-                              <node concept="3clFb_" id="26fDspGTjp7" role="jymVt">
-                                <property role="1EzhhJ" value="false" />
-                                <property role="TrG5h" value="run" />
-                                <property role="DiZV1" value="false" />
-                                <node concept="3Tm1VV" id="26fDspGTjp8" role="1B3o_S" />
-                                <node concept="3cqZAl" id="26fDspGTjpa" role="3clF45" />
-                                <node concept="3clFbS" id="26fDspGTjpb" role="3clF47">
-                                  <node concept="3clFbJ" id="5t9FEkRVawt" role="3cqZAp">
-                                    <node concept="3clFbS" id="5t9FEkRVawv" role="3clFbx">
-                                      <node concept="3clFbF" id="D356mG1n71" role="3cqZAp">
-                                        <node concept="1rXfSq" id="4hiugqyyYnq" role="3clFbG">
-                                          <ref role="37wK5l" node="D356mG1lD4" resolve="rebuildGutterMessages" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="2OqwBi" id="7ndm6HxGg4l" role="3clFbw">
-                                      <node concept="37vLTw" id="7ndm6HxGg4m" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="D356mG1l9Q" resolve="myLayout" />
-                                      </node>
-                                      <node concept="liA8E" id="7ndm6HxGg4n" role="2OqNvi">
-                                        <ref role="37wK5l" node="5t9FEkRUZcu" resolve="isValid" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
+    <node concept="2tJIrI" id="3NDL0tvpwrv" role="jymVt" />
+    <node concept="3clFb_" id="3dhKa32Wpe8" role="jymVt">
+      <property role="TrG5h" value="scheduleUpdate" />
+      <node concept="3cqZAl" id="3dhKa32Wpea" role="3clF45" />
+      <node concept="3Tm1VV" id="3dhKa32Wpeb" role="1B3o_S" />
+      <node concept="3clFbS" id="3dhKa32Wpec" role="3clF47">
+        <node concept="3clFbF" id="26fDspGT12m" role="3cqZAp">
+          <node concept="2OqwBi" id="26fDspGT16A" role="3clFbG">
+            <node concept="37vLTw" id="26fDspGT12k" role="2Oq$k0">
+              <ref role="3cqZAo" node="26fDspGS_UN" resolve="myUpdateQueue" />
+            </node>
+            <node concept="liA8E" id="26fDspGT1xr" role="2OqNvi">
+              <ref role="37wK5l" to="t335:~MergingUpdateQueue.queue(com.intellij.util.ui.update.Update)" resolve="queue" />
+              <node concept="2ShNRf" id="26fDspGT1$s" role="37wK5m">
+                <node concept="YeOm9" id="26fDspGTjoY" role="2ShVmc">
+                  <node concept="1Y3b0j" id="26fDspGTjp1" role="YeSDq">
+                    <property role="2bfB8j" value="true" />
+                    <ref role="1Y3XeK" to="t335:~Update" resolve="Update" />
+                    <ref role="37wK5l" to="t335:~Update.&lt;init&gt;(java.lang.Object)" resolve="Update" />
+                    <node concept="3Tm1VV" id="26fDspGTjp2" role="1B3o_S" />
+                    <node concept="3clFb_" id="26fDspGTjp7" role="jymVt">
+                      <property role="1EzhhJ" value="false" />
+                      <property role="TrG5h" value="run" />
+                      <property role="DiZV1" value="false" />
+                      <node concept="3Tm1VV" id="26fDspGTjp8" role="1B3o_S" />
+                      <node concept="3cqZAl" id="26fDspGTjpa" role="3clF45" />
+                      <node concept="3clFbS" id="26fDspGTjpb" role="3clF47">
+                        <node concept="3clFbJ" id="5t9FEkRVawt" role="3cqZAp">
+                          <node concept="3clFbS" id="5t9FEkRVawv" role="3clFbx">
+                            <node concept="3clFbF" id="D356mG1n71" role="3cqZAp">
+                              <node concept="1rXfSq" id="4hiugqyyYnq" role="3clFbG">
+                                <ref role="37wK5l" node="D356mG1lD4" resolve="rebuildGutterMessages" />
                               </node>
-                              <node concept="37vLTw" id="26fDspGTjxY" role="37wK5m">
-                                <ref role="3cqZAo" node="26fDspGSCEo" resolve="myUpdateIdentity" />
-                              </node>
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="7ndm6HxGg4l" role="3clFbw">
+                            <node concept="37vLTw" id="7ndm6HxGg4m" role="2Oq$k0">
+                              <ref role="3cqZAo" node="D356mG1l9Q" resolve="myLayout" />
+                            </node>
+                            <node concept="liA8E" id="7ndm6HxGg4n" role="2OqNvi">
+                              <ref role="37wK5l" node="5t9FEkRUZcu" resolve="isValid" />
                             </node>
                           </node>
                         </node>
                       </node>
                     </node>
+                    <node concept="37vLTw" id="26fDspGTjxY" role="37wK5m">
+                      <ref role="3cqZAo" node="26fDspGSCEo" resolve="myUpdateIdentity" />
+                    </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="37vLTw" id="2BHiRxeut3p" role="2Oq$k0">
-              <ref role="3cqZAo" node="D356mG1l9Q" resolve="myLayout" />
-            </node>
           </node>
         </node>
       </node>
-      <node concept="3cqZAl" id="D356mG1o$t" role="3clF45" />
     </node>
-    <node concept="2tJIrI" id="3NDL0tvpwrv" role="jymVt" />
     <node concept="3clFb_" id="76itSV98wSB" role="jymVt">
       <property role="TrG5h" value="dispose" />
       <node concept="3Tm1VV" id="76itSV98wSD" role="1B3o_S" />
       <node concept="3cqZAl" id="76itSV98wSC" role="3clF45" />
       <node concept="3clFbS" id="76itSV98wSE" role="3clF47">
-        <node concept="3clFbF" id="26fDspGTjP3" role="3cqZAp">
-          <node concept="2OqwBi" id="26fDspGTjSw" role="3clFbG">
-            <node concept="37vLTw" id="26fDspGTjP1" role="2Oq$k0">
-              <ref role="3cqZAo" node="26fDspGS_UN" resolve="myUpdateQueue" />
+        <node concept="3clFbF" id="3dhKa32VDIK" role="3cqZAp">
+          <node concept="2OqwBi" id="3dhKa32VDIL" role="3clFbG">
+            <node concept="37vLTw" id="3dhKa32VDIM" role="2Oq$k0">
+              <ref role="3cqZAo" node="D356mG1l9Q" resolve="myLayout" />
             </node>
-            <node concept="liA8E" id="26fDspGTkiK" role="2OqNvi">
-              <ref role="37wK5l" to="t335:~MergingUpdateQueue.dispose()" resolve="dispose" />
+            <node concept="liA8E" id="3dhKa32VDIN" role="2OqNvi">
+              <ref role="37wK5l" node="42hl10VHamX" resolve="removeInvalidateListener" />
+              <node concept="37vLTw" id="3dhKa32W$C3" role="37wK5m">
+                <ref role="3cqZAo" node="3dhKa32VKNb" resolve="myLayoutListener" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="230pmTly_Cg" role="3cqZAp">
+          <node concept="1PaTwC" id="230pmTly_Ch" role="1aUNEU">
+            <node concept="3oM_SD" id="230pmTlyAc$" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAcA" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAcD" role="1PaTwD">
+              <property role="3oM_SC" value="always" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAcH" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAcM" role="1PaTwD">
+              <property role="3oM_SC" value="Disposer#dispose" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAcS" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAdg" role="1PaTwD">
+              <property role="3oM_SC" value="Disposable" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAdo" role="1PaTwD">
+              <property role="3oM_SC" value="objects" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAdx" role="1PaTwD">
+              <property role="3oM_SC" value="instead" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAdF" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAef" role="1PaTwD">
+              <property role="3oM_SC" value="direct" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyAer" role="1PaTwD">
+              <property role="3oM_SC" value="call" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="230pmTlyB7Y" role="3cqZAp">
+          <node concept="1PaTwC" id="230pmTlyB7Z" role="1aUNEU">
+            <node concept="3oM_SD" id="230pmTlyBUl" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyBUv" role="1PaTwD">
+              <property role="3oM_SC" value="dispose" />
+            </node>
+            <node concept="3oM_SD" id="230pmTlyBUM" role="1PaTwD">
+              <property role="3oM_SC" value="method." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="230pmTlwEBk" role="3cqZAp">
+          <node concept="2YIFZM" id="230pmTlwFl3" role="3clFbG">
+            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
+            <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+            <node concept="37vLTw" id="230pmTlwG9s" role="37wK5m">
+              <ref role="3cqZAo" node="26fDspGS_UN" resolve="myUpdateQueue" />
             </node>
           </node>
         </node>
@@ -20750,56 +20837,6 @@
       </node>
       <node concept="3Tm6S6" id="312Lf7nzMs1" role="1B3o_S" />
     </node>
-    <node concept="2tJIrI" id="3NDL0tvpwrx" role="jymVt" />
-    <node concept="2YIFZL" id="1IK$bZG1GHg" role="jymVt">
-      <property role="TrG5h" value="startMaintaining" />
-      <node concept="37vLTG" id="1IK$bZG1GHr" role="3clF46">
-        <property role="TrG5h" value="layout" />
-        <node concept="3uibUv" id="1IK$bZG1GHs" role="1tU5fm">
-          <ref role="3uigEE" node="42hl10VHagX" resolve="ChangeGroupLayout" />
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="1IK$bZG1GHi" role="1B3o_S" />
-      <node concept="3clFbS" id="1IK$bZG1GHj" role="3clF47">
-        <node concept="3clFbF" id="76itSV98wSW" role="3cqZAp">
-          <node concept="2OqwBi" id="76itSV98wSX" role="3clFbG">
-            <node concept="2ShNRf" id="76itSV98wSY" role="2Oq$k0">
-              <node concept="1pGfFk" id="76itSV98wSZ" role="2ShVmc">
-                <ref role="37wK5l" node="D356mG1lCH" resolve="ChangeGroupMessages" />
-                <node concept="37vLTw" id="2BHiRxglMGW" role="37wK5m">
-                  <ref role="3cqZAo" node="1IK$bZG1GHr" resolve="layout" />
-                </node>
-                <node concept="3clFbT" id="76itSV98wTd" role="37wK5m">
-                  <property role="3clFbU" value="false" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="76itSV98wT2" role="2OqNvi">
-              <ref role="37wK5l" node="D356mG1o$s" resolve="startMaintaining" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="76itSV98wT6" role="3cqZAp">
-          <node concept="2OqwBi" id="76itSV98wT7" role="3clFbG">
-            <node concept="2ShNRf" id="76itSV98wT8" role="2Oq$k0">
-              <node concept="1pGfFk" id="76itSV98wT9" role="2ShVmc">
-                <ref role="37wK5l" node="D356mG1lCH" resolve="ChangeGroupMessages" />
-                <node concept="37vLTw" id="2BHiRxgm5LK" role="37wK5m">
-                  <ref role="3cqZAo" node="1IK$bZG1GHr" resolve="layout" />
-                </node>
-                <node concept="3clFbT" id="76itSV98wTe" role="37wK5m">
-                  <property role="3clFbU" value="true" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="76itSV98wTc" role="2OqNvi">
-              <ref role="37wK5l" node="D356mG1o$s" resolve="startMaintaining" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3cqZAl" id="1IK$bZG1GHh" role="3clF45" />
-    </node>
     <node concept="2tJIrI" id="3NDL0tvpww2" role="jymVt" />
     <node concept="312cEu" id="D356mG1n4o" role="jymVt">
       <property role="TrG5h" value="MyChangeGroupMessage" />
@@ -20850,8 +20887,8 @@
         <node concept="3clFbS" id="D356mG1n4z" role="3clF47">
           <node concept="3clFbF" id="312Lf7n$aYh" role="3cqZAp">
             <node concept="10M0yZ" id="312Lf7n$aYi" role="3clFbG">
-              <ref role="1PxDUh" node="D356mG1l9K" resolve="ChangeGroupMessages" />
               <ref role="3cqZAo" node="312Lf7nzMs2" resolve="OWNER" />
+              <ref role="1PxDUh" node="D356mG1l9K" resolve="ChangeGroupMessages" />
             </node>
           </node>
         </node>
@@ -26866,6 +26903,68 @@
               <node concept="37vLTw" id="v7wmxdPFYk" role="37wK5m">
                 <ref role="3cqZAo" node="v7wmxdPqWF" resolve="myGroupInvalidateListener" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2viyy7F1h$w" role="3cqZAp">
+          <node concept="1PaTwC" id="2viyy7F1h$x" role="1aUNEU">
+            <node concept="3oM_SD" id="2viyy7F1h$y" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$z" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$$" role="1PaTwD">
+              <property role="3oM_SC" value="always" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$_" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$A" role="1PaTwD">
+              <property role="3oM_SC" value="Disposer#dispose" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$B" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$C" role="1PaTwD">
+              <property role="3oM_SC" value="Disposable" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$D" role="1PaTwD">
+              <property role="3oM_SC" value="objects" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$E" role="1PaTwD">
+              <property role="3oM_SC" value="instead" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$F" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$G" role="1PaTwD">
+              <property role="3oM_SC" value="direct" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$H" role="1PaTwD">
+              <property role="3oM_SC" value="call" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2viyy7F1h$I" role="3cqZAp">
+          <node concept="1PaTwC" id="2viyy7F1h$J" role="1aUNEU">
+            <node concept="3oM_SD" id="2viyy7F1h$K" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$L" role="1PaTwD">
+              <property role="3oM_SC" value="dispose" />
+            </node>
+            <node concept="3oM_SD" id="2viyy7F1h$M" role="1PaTwD">
+              <property role="3oM_SC" value="method." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2viyy7F0RLI" role="3cqZAp">
+          <node concept="2YIFZM" id="2viyy7F0RLJ" role="3clFbG">
+            <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
+            <node concept="37vLTw" id="2viyy7F0RLK" role="37wK5m">
+              <ref role="3cqZAo" node="1zZcg$ufBX8" resolve="myUpdateQueue" />
             </node>
           </node>
         </node>
