@@ -20,6 +20,12 @@
       <!-- For historical reasons, next libraries were exposed through MPS.Core; need to write migration code to update references to proper solutions -->
       <sourceRoot location="util.jar" />
       <sourceRoot location="3rd-party.jar" />
+      <PackageScope>
+        <include prefix="org.eclipse."/> <!-- ecj.jar replacement -->
+        <include prefix="gnu.trove."/> <!-- trove4j.jar -->
+        <include prefix="org.jdom."/> <!-- jdom.jar -->
+        <include prefix="org.apache.log4j."/> <!-- log4j.jar -->
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
