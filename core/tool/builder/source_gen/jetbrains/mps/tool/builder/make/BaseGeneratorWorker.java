@@ -139,7 +139,10 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
       switch (msg.getKind()) {
         case ERROR:
           if (msg.getException() != null) {
-            BaseGeneratorWorker.this.error(WorkerBase.extractStackTrace(msg.getException()).toString());
+            StringBuilder m = new StringBuilder(msg.getText());
+            m.append('\n');
+            m.append(WorkerBase.extractStackTrace(msg.getException()));
+            BaseGeneratorWorker.this.error(m.toString());
           } else {
             BaseGeneratorWorker.this.error(msg.getText());
           }
