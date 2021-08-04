@@ -26,6 +26,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -136,7 +137,7 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return (pattern != null && pattern.length() > 0);
+        return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.StringDescription$Qu)) && (pattern != null && pattern.length() > 0);
       }
       @Nullable
       @Override
