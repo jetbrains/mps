@@ -67,6 +67,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 // FIXME #apply() shall not deal with ModuleDescriptor directly, instead, JavaModuleFacet.save() shall put that there (better yet,
@@ -85,9 +87,11 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private final class LanguageLevelPresentation {
     @Nullable
     public final JavaLanguageLevel myValue;
+
     private LanguageLevelPresentation(@Nullable JavaLanguageLevel value) {
       myValue = value;
     }
+
     @Override
     public String toString() {
       if (myValue == null) {
@@ -96,6 +100,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         return myValue.getFullDescription();
       }
     }
+
     @Override
     public boolean equals(Object o) {
       if (o instanceof LanguageLevelPresentation) {
@@ -105,6 +110,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         return false;
       }
     }
+
     @Override
     public int hashCode() {
       return myValue != null ? myValue.hashCode() : 0;
@@ -356,7 +362,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
     public void addAll(Collection<VirtualFile> files) {
       // Filter already added entries
-      files.removeAll(new ArrayList<>(myFiles));
+      files = new LinkedHashSet<>(files);
+      files.removeAll(myFiles);
       if (myFiles.addAll(files)) {
         fireTableDataChanged();
       }
