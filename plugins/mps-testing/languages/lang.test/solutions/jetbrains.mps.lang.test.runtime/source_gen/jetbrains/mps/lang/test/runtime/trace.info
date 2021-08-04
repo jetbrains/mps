@@ -1204,85 +1204,87 @@
       <node id="4885061311573834031" at="13,0,14,0" concept="7" trace="myNodeToCheck" />
       <node id="4885061311573880079" at="15,46,16,37" concept="6" />
       <node id="9018216227566219907" at="19,90,20,52" concept="11" />
-      <node id="3722181966112606762" at="20,52,21,119" concept="6" />
-      <node id="4885061311574021245" at="26,25,27,43" concept="11" />
-      <node id="4885061311574020629" at="27,43,28,90" concept="6" />
-      <node id="4885061311574047961" at="34,25,35,43" concept="11" />
-      <node id="2912288420887216718" at="35,43,36,32" concept="11" />
-      <node id="2912288420887216726" at="38,69,39,27" concept="6" />
-      <node id="2912288420887216730" at="39,27,40,18" concept="2" />
-      <node id="2912288420887216741" at="42,9,43,140" concept="6" />
-      <node id="8986926743557625755" at="43,140,44,0" concept="14" />
-      <node id="4885061311573965138" at="49,0,50,0" concept="10" trace="computeType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4885061311573885282" at="52,49,53,25" concept="17" />
-      <node id="8986926743557596400" at="56,32,57,74" concept="12" />
-      <node id="4885061311573989068" at="61,49,62,25" concept="17" />
-      <node id="8986926743557608300" at="65,32,66,80" concept="12" />
+      <node id="3291587884410599291" at="20,52,21,102" concept="11" />
+      <node id="3722181966112606762" at="21,102,22,143" concept="6" />
+      <node id="4885061311574021245" at="27,25,28,43" concept="11" />
+      <node id="4885061311574020629" at="28,43,29,90" concept="6" />
+      <node id="4885061311574047961" at="35,25,36,43" concept="11" />
+      <node id="2912288420887216718" at="36,43,37,32" concept="11" />
+      <node id="2912288420887216726" at="39,69,40,27" concept="6" />
+      <node id="2912288420887216730" at="40,27,41,18" concept="2" />
+      <node id="2912288420887216741" at="43,9,44,140" concept="6" />
+      <node id="8986926743557625755" at="44,140,45,0" concept="14" />
+      <node id="4885061311573965138" at="50,0,51,0" concept="10" trace="computeType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4885061311573885282" at="53,49,54,25" concept="17" />
+      <node id="8986926743557596400" at="57,32,58,74" concept="12" />
+      <node id="4885061311573989068" at="62,49,63,25" concept="17" />
+      <node id="8986926743557608300" at="66,32,67,80" concept="12" />
       <node id="4885061311573880071" at="15,0,18,0" concept="3" trace="CheckTypesAction#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="4885061311573885276" at="52,0,55,0" concept="3" trace="CheckComputedType#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="4885061311573989064" at="61,0,64,0" concept="3" trace="CheckExpectedType#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="9018216227566219897" at="19,0,23,0" concept="10" trace="checkNodeWithTypeCheckingAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Runnable;)V" />
-      <node id="8986926743557592617" at="26,0,30,0" concept="10" trace="run#()V" />
-      <node id="2912288420887216724" at="37,50,41,11" concept="9" />
-      <node id="4885061311573972010" at="55,0,59,0" concept="10" trace="computeType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4885061311573989097" at="64,0,68,0" concept="10" trace="computeType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2912288420887621658" at="24,54,30,7" concept="6" />
-      <node id="2912288420887216722" at="36,32,42,9" concept="8" />
-      <node id="4885061311573842384" at="24,0,32,0" concept="10" trace="checkTypeIs#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8986926743557624695" at="34,0,46,0" concept="10" trace="run#()V" />
-      <node id="9018216227566227770" at="32,65,46,7" concept="6" />
-      <node id="4885061311574038271" at="32,0,48,0" concept="10" trace="checkTypeIn#(Ljava/util/Collection;)V" />
+      <node id="4885061311573885276" at="53,0,56,0" concept="3" trace="CheckComputedType#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="4885061311573989064" at="62,0,65,0" concept="3" trace="CheckExpectedType#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8986926743557592617" at="27,0,31,0" concept="10" trace="run#()V" />
+      <node id="2912288420887216724" at="38,50,42,11" concept="9" />
+      <node id="4885061311573972010" at="56,0,60,0" concept="10" trace="computeType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4885061311573989097" at="65,0,69,0" concept="10" trace="computeType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="9018216227566219897" at="19,0,24,0" concept="10" trace="checkNodeWithTypeCheckingAction#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Runnable;)V" />
+      <node id="2912288420887621658" at="25,54,31,7" concept="6" />
+      <node id="2912288420887216722" at="37,32,43,9" concept="8" />
+      <node id="4885061311573842384" at="25,0,33,0" concept="10" trace="checkTypeIs#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8986926743557624695" at="35,0,47,0" concept="10" trace="run#()V" />
+      <node id="9018216227566227770" at="33,65,47,7" concept="6" />
+      <node id="4885061311574038271" at="33,0,49,0" concept="10" trace="checkTypeIn#(Ljava/util/Collection;)V" />
       <scope id="4885061311573880075" at="15,46,16,37" />
-      <scope id="4885061311573965138" at="49,0,50,0" />
-      <scope id="4885061311573885280" at="52,49,53,25" />
-      <scope id="4885061311573972014" at="56,32,57,74" />
-      <scope id="4885061311573989067" at="61,49,62,25" />
-      <scope id="4885061311573989102" at="65,32,66,80" />
-      <scope id="9018216227566219901" at="19,90,21,119">
-        <var name="containingRoot" id="9018216227566219908" />
-      </scope>
-      <scope id="8986926743557592619" at="26,25,28,90">
+      <scope id="4885061311573965138" at="50,0,51,0" />
+      <scope id="4885061311573885280" at="53,49,54,25" />
+      <scope id="4885061311573972014" at="57,32,58,74" />
+      <scope id="4885061311573989067" at="62,49,63,25" />
+      <scope id="4885061311573989102" at="66,32,67,80" />
+      <scope id="8986926743557592619" at="27,25,29,90">
         <var name="computedType" id="4885061311574021246" />
       </scope>
-      <scope id="2912288420887216725" at="38,69,40,18" />
+      <scope id="2912288420887216725" at="39,69,41,18" />
       <scope id="4885061311573880071" at="15,0,18,0">
         <var name="nodeToCheck" id="4885061311573880078" />
       </scope>
-      <scope id="4885061311573885276" at="52,0,55,0">
+      <scope id="9018216227566219901" at="19,90,22,143">
+        <var name="containingRoot" id="9018216227566219908" />
+        <var name="flags" id="3291587884410599292" />
+      </scope>
+      <scope id="4885061311573885276" at="53,0,56,0">
         <var name="nodeToCheck" id="4885061311573885283" />
       </scope>
-      <scope id="4885061311573989064" at="61,0,64,0">
+      <scope id="4885061311573989064" at="62,0,65,0">
         <var name="nodeToCheck" id="4885061311573989076" />
       </scope>
-      <scope id="9018216227566219897" at="19,0,23,0">
+      <scope id="8986926743557592617" at="27,0,31,0" />
+      <scope id="2912288420887216723" at="38,50,42,11" />
+      <scope id="4885061311573972010" at="56,0,60,0" />
+      <scope id="4885061311573989097" at="65,0,69,0" />
+      <scope id="9018216227566219897" at="19,0,24,0">
         <var name="checkingAction" id="9018216227566219923" />
         <var name="node" id="9018216227566219921" />
       </scope>
-      <scope id="8986926743557592617" at="26,0,30,0" />
-      <scope id="2912288420887216723" at="37,50,41,11" />
-      <scope id="4885061311573972010" at="55,0,59,0" />
-      <scope id="4885061311573989097" at="64,0,68,0" />
-      <scope id="4885061311573842388" at="24,54,30,7" />
-      <scope id="2912288420887216722" at="36,32,42,9">
+      <scope id="4885061311573842388" at="25,54,31,7" />
+      <scope id="2912288420887216722" at="37,32,43,9">
         <var name="typeToCompare" id="2912288420887216739" />
       </scope>
-      <scope id="4885061311573842384" at="24,0,32,0">
+      <scope id="4885061311573842384" at="25,0,33,0">
         <var name="typeToCompare" id="4885061311574018830" />
       </scope>
-      <scope id="8986926743557624697" at="34,25,44,0">
+      <scope id="8986926743557624697" at="35,25,45,0">
         <var name="computedType" id="4885061311574047962" />
         <var name="hasType" id="2912288420887216719" />
       </scope>
-      <scope id="8986926743557624695" at="34,0,46,0" />
-      <scope id="4885061311574038276" at="32,65,46,7" />
-      <scope id="4885061311574038271" at="32,0,48,0">
+      <scope id="8986926743557624695" at="35,0,47,0" />
+      <scope id="4885061311574038276" at="33,65,47,7" />
+      <scope id="4885061311574038271" at="33,0,49,0">
         <var name="allowedTypes" id="4885061311574038272" />
       </scope>
-      <unit id="8986926743557592617" at="25,55,30,5" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$1" />
-      <unit id="4885061311573866215" at="51,0,60,0" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$CheckComputedType" />
-      <unit id="4885061311573989063" at="60,0,69,0" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$CheckExpectedType" />
-      <unit id="8986926743557624695" at="33,55,46,5" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$2" />
-      <unit id="4885061311573824591" at="12,0,71,0" name="jetbrains.mps.lang.test.runtime.CheckTypesAction" />
+      <unit id="8986926743557592617" at="26,55,31,5" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$1" />
+      <unit id="4885061311573866215" at="52,0,61,0" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$CheckComputedType" />
+      <unit id="4885061311573989063" at="61,0,70,0" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$CheckExpectedType" />
+      <unit id="8986926743557624695" at="34,55,47,5" name="jetbrains.mps.lang.test.runtime.CheckTypesAction$2" />
+      <unit id="4885061311573824591" at="12,0,72,0" name="jetbrains.mps.lang.test.runtime.CheckTypesAction" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/591841948921320201">

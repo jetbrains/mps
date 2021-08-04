@@ -16030,6 +16030,26 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="2QI4rR5hvtV" role="3cqZAp">
+          <node concept="3cpWsn" id="2QI4rR5hvtW" role="3cpWs9">
+            <property role="TrG5h" value="flags" />
+            <node concept="3uibUv" id="2QI4rR5hvd5" role="1tU5fm">
+              <ref role="3uigEE" to="1ka:~TypecheckingSession$Flags" resolve="TypecheckingSession.Flags" />
+            </node>
+            <node concept="2OqwBi" id="2QI4rR5hw8U" role="33vP2m">
+              <node concept="2YIFZM" id="2QI4rR5hvtX" role="2Oq$k0">
+                <ref role="1Pybhc" to="1ka:~TypecheckingSession$Flags" resolve="TypecheckingSession.Flags" />
+                <ref role="37wK5l" to="1ka:~TypecheckingSession$Flags.forRoot(org.jetbrains.mps.openapi.model.SNode)" resolve="forRoot" />
+                <node concept="37vLTw" id="2QI4rR5hvtY" role="37wK5m">
+                  <ref role="3cqZAo" node="7OB8Y3vJRa4" resolve="containingRoot" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2QI4rR5hwxY" role="2OqNvi">
+                <ref role="37wK5l" to="1ka:~TypecheckingSession$Flags.incremental()" resolve="incremental" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="3eBQcrRwsCE" role="3cqZAp">
           <node concept="2OqwBi" id="3eBQcrRwtQw" role="3clFbG">
             <node concept="2YIFZM" id="3eBQcrRwtoD" role="2Oq$k0">
@@ -16037,12 +16057,22 @@
               <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
             </node>
             <node concept="liA8E" id="3eBQcrRwukP" role="2OqNvi">
-              <ref role="37wK5l" to="1ka:~TypecheckingComputations.runIsolated(jetbrains.mps.typechecking.TypecheckingSession$Flags,java.lang.Runnable)" resolve="runIsolated" />
-              <node concept="2YIFZM" id="3eBQcrRwvgF" role="37wK5m">
-                <ref role="1Pybhc" to="1ka:~TypecheckingSession$Flags" resolve="TypecheckingSession.Flags" />
-                <ref role="37wK5l" to="1ka:~TypecheckingSession$Flags.forRoot(org.jetbrains.mps.openapi.model.SNode)" resolve="forRoot" />
-                <node concept="37vLTw" id="3eBQcrRwvgG" role="37wK5m">
-                  <ref role="3cqZAo" node="7OB8Y3vJRa4" resolve="containingRoot" />
+              <ref role="37wK5l" to="1ka:~TypecheckingComputations.runWithSession(jetbrains.mps.typechecking.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
+              <node concept="2OqwBi" id="2QI4rR5ide6" role="37wK5m">
+                <node concept="2OqwBi" id="2QI4rR5FXrB" role="2Oq$k0">
+                  <node concept="2YIFZM" id="2QI4rR5FXrC" role="2Oq$k0">
+                    <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                    <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
+                  </node>
+                  <node concept="liA8E" id="2QI4rR5FXrD" role="2OqNvi">
+                    <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.requestNewSession(jetbrains.mps.typechecking.TypecheckingSession$Flags)" resolve="requestNewSession" />
+                    <node concept="37vLTw" id="2QI4rR5FXrE" role="37wK5m">
+                      <ref role="3cqZAo" node="2QI4rR5hvtW" resolve="flags" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="2QI4rR5idyJ" role="2OqNvi">
+                  <ref role="37wK5l" to="1ka:~TypecheckingSession$Handle.session()" resolve="session" />
                 </node>
               </node>
               <node concept="37vLTw" id="7MRY$8GdjFL" role="37wK5m">
