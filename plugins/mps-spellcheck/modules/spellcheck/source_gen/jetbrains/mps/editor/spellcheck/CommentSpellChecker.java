@@ -87,7 +87,13 @@ public class CommentSpellChecker extends BaseEditorChecker {
   @NotNull
   @Override
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFix, Cancellable cancellable) {
+    if (component.isDisposed()) {
+      return UpdateResult.CANCELLED;
+    }
     EditorCell rc = component.getRootCell();
+    if (rc == null) {
+      return UpdateResult.CANCELLED;
+    }
     List<EditorMessage> messages = new ArrayList<EditorMessage>();
     for (jetbrains.mps.openapi.editor.cells.EditorCell ec : CellTraversalUtil.iterateTree(rc, rc, true)) {
       if (cancellable.isCancelled()) {

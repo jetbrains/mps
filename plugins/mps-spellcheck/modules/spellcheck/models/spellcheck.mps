@@ -1138,6 +1138,24 @@
         </node>
       </node>
       <node concept="3clFbS" id="1OIlcCD3r$8" role="3clF47">
+        <node concept="3clFbJ" id="4OK2AApyj_T" role="3cqZAp">
+          <node concept="3clFbS" id="4OK2AApyj_V" role="3clFbx">
+            <node concept="3cpWs6" id="4OK2AApyA5$" role="3cqZAp">
+              <node concept="10M0yZ" id="4OK2AApyMA5" role="3cqZAk">
+                <ref role="3cqZAo" to="n70j:~UpdateResult.CANCELLED" resolve="CANCELLED" />
+                <ref role="1PxDUh" to="n70j:~UpdateResult" resolve="UpdateResult" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4OK2AApyrtR" role="3clFbw">
+            <node concept="37vLTw" id="4OK2AApyoNv" role="2Oq$k0">
+              <ref role="3cqZAo" node="1OIlcCD3rzX" resolve="component" />
+            </node>
+            <node concept="liA8E" id="4OK2AApywKD" role="2OqNvi">
+              <ref role="37wK5l" to="exr9:~EditorComponent.isDisposed()" resolve="isDisposed" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="2xkx6pX0NaD" role="3cqZAp">
           <node concept="3cpWsn" id="2xkx6pX0NaE" role="3cpWs9">
             <property role="TrG5h" value="rc" />
@@ -1151,6 +1169,22 @@
               <node concept="liA8E" id="2xkx6pX0NaH" role="2OqNvi">
                 <ref role="37wK5l" to="exr9:~EditorComponent.getRootCell()" resolve="getRootCell" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4OK2AApyTYA" role="3cqZAp">
+          <node concept="3clFbS" id="4OK2AApyTYB" role="3clFbx">
+            <node concept="3cpWs6" id="4OK2AApyTYC" role="3cqZAp">
+              <node concept="10M0yZ" id="4OK2AApyTYD" role="3cqZAk">
+                <ref role="3cqZAo" to="n70j:~UpdateResult.CANCELLED" resolve="CANCELLED" />
+                <ref role="1PxDUh" to="n70j:~UpdateResult" resolve="UpdateResult" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="4OK2AApz7ik" role="3clFbw">
+            <node concept="10Nm6u" id="4OK2AApzbG5" role="3uHU7w" />
+            <node concept="37vLTw" id="4OK2AApz2_k" role="3uHU7B">
+              <ref role="3cqZAo" node="2xkx6pX0NaE" resolve="rc" />
             </node>
           </node>
         </node>
