@@ -7,6 +7,9 @@
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="3rd-party.jar" />
+      <PackageScope>
+        <include prefix="org.jetbrains.org.objectweb.asm." />
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
