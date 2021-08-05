@@ -573,12 +573,12 @@ public final class ChangesTracking {
 
     @Override
     public void visitPropertyEvent(SModelPropertyEvent event) {
-      final SNode node = event.getNode();
+      @NotNull final SNode node = event.getNode();
       if (node.getModel() == null) {
         return;
       }
       final SNodeId nodeId = node.getNodeId();
-      final SProperty property = event.getProperty();
+      @NotNull final SProperty property = event.getProperty();
 
       // get more info for debugging
       assert node.getModel().getNode(nodeId) != null : "cannot find node " + nodeId + " in model " + node.getModel();
@@ -590,9 +590,19 @@ public final class ChangesTracking {
               return ch.isAbout(property);
             }
           });
+          final SNode oldNode = getOldNode(nodeId);
+          if (oldNode == null) {
+            // something unpredictable happened
+            // we can not compare properties of non-existing node.
+            String warning = "Property change event cannot be processed for the deleted node: " + node.getPresentation();
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn(warning);
+            }
+            return;
+          }
           buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
             public void invoke(ChangeSetBuilder b) {
-              b.buildForProperty(getOldNode(nodeId), node, property);
+              b.buildForProperty(oldNode, node, property);
             }
           });
         }
@@ -601,8 +611,13 @@ public final class ChangesTracking {
 
     @Override
     public void visitReferenceEvent(SModelReferenceEvent event) {
-      SReference ref = event.getReference();
+      @NotNull SReference ref = event.getReference();
       final SNode sourceNode = ref.getSourceNode();
+
+      // It seems that SReference#getSourceNode can not return null, but it's not marked with @NotNull.
+      // Therefore, this check here:
+      assert sourceNode != null;
+
       if (sourceNode.getModel() == null) {
         return;
       }
@@ -615,9 +630,19 @@ public final class ChangesTracking {
               return ch.isAbout(role);
             }
           });
+          final SNode oldNode = getOldNode(nodeId);
+          if (oldNode == null) {
+            // something unpredictable happened
+            // we can not compare references of non-existing node.
+            String warning = "Reference change event cannot be processed for the deleted node: " + sourceNode.getPresentation();
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn(warning);
+            }
+            return;
+          }
           buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
             public void invoke(ChangeSetBuilder b) {
-              b.buildForReference(getOldNode(nodeId), sourceNode, role);
+              b.buildForReference(oldNode, sourceNode, role);
             }
           });
         }
