@@ -1939,15 +1939,11 @@
             <node concept="3uibUv" id="1InONUsXYrm" role="1tU5fm">
               <ref role="3uigEE" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
             </node>
-            <node concept="2OqwBi" id="38WJxXowUVn" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeuRQE" role="2Oq$k0">
+            <node concept="2YIFZM" id="4GM5FlLDDpp" role="33vP2m">
+              <ref role="37wK5l" to="lcr:3bmhQqpITOL" resolve="getInstance" />
+              <ref role="1Pybhc" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+              <node concept="37vLTw" id="4GM5FlLDEPf" role="37wK5m">
                 <ref role="3cqZAo" node="3oUomEoMJuI" resolve="myIdeaProject" />
-              </node>
-              <node concept="liA8E" id="38WJxXowUVp" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="38WJxXowUVq" role="37wK5m">
-                  <ref role="3VsUkX" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
-                </node>
               </node>
             </node>
           </node>

@@ -25,7 +25,7 @@ public class NodeFileStatusProvider implements FileStatusProvider {
 
   public NodeFileStatusProvider(@NotNull Project project) {
     myProject = ProjectHelper.fromIdeaProject(project);
-    myMapping = project.getComponent(NodeFileStatusMapping.class);
+    myMapping = NodeFileStatusMapping.getInstance(project);
   }
 
   @Override

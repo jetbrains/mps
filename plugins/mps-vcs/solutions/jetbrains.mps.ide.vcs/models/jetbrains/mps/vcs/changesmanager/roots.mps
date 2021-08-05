@@ -20,6 +20,7 @@
     <import index="b3f7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.plugins.relations(MPS.Platform/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="kip1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.nodefs(MPS.Platform/)" />
+    <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
@@ -56,6 +57,9 @@
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
       <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
         <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
@@ -202,38 +206,38 @@
     <node concept="3uibUv" id="4C2otrAbTNu" role="EKbjA">
       <ref role="3uigEE" to="2lr9:~TabColorProvider" resolve="TabColorProvider" />
     </node>
-    <node concept="312cEg" id="4C2otrAbW4x" role="jymVt">
-      <property role="TrG5h" value="myFileStatusMapping" />
-      <node concept="3Tm6S6" id="4C2otrAbW4y" role="1B3o_S" />
-      <node concept="3uibUv" id="4C2otrAbW4_" role="1tU5fm">
-        <ref role="3uigEE" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+    <node concept="312cEg" id="3bmhQqpJ41T" role="jymVt">
+      <property role="TrG5h" value="myProject" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3bmhQqpJ41U" role="1B3o_S" />
+      <node concept="3uibUv" id="3bmhQqpJ41W" role="1tU5fm">
+        <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3bmhQqpJ4ud" role="jymVt" />
     <node concept="3clFbW" id="4C2otrAbTNq" role="jymVt">
       <node concept="3cqZAl" id="4C2otrAbTNr" role="3clF45" />
       <node concept="3Tm1VV" id="4C2otrAbTNs" role="1B3o_S" />
       <node concept="3clFbS" id="4C2otrAbTNt" role="3clF47">
-        <node concept="3clFbF" id="4C2otrAbW4A" role="3cqZAp">
-          <node concept="37vLTI" id="4C2otrAbW4C" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxglEMH" role="37vLTx">
-              <ref role="3cqZAo" node="4C2otrAbW4u" resolve="mapping" />
+        <node concept="3clFbF" id="3bmhQqpJ41X" role="3cqZAp">
+          <node concept="37vLTI" id="3bmhQqpJ41Z" role="3clFbG">
+            <node concept="37vLTw" id="3bmhQqpJ422" role="37vLTJ">
+              <ref role="3cqZAo" node="3bmhQqpJ41T" resolve="myIdeaProject" />
             </node>
-            <node concept="37vLTw" id="2BHiRxeus9d" role="37vLTJ">
-              <ref role="3cqZAo" node="4C2otrAbW4x" resolve="myFileStatusMapping" />
+            <node concept="37vLTw" id="3bmhQqpJ423" role="37vLTx">
+              <ref role="3cqZAo" node="3bmhQqpIDoJ" resolve="ideaProject" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="4C2otrAbW4u" role="3clF46">
-        <property role="TrG5h" value="mapping" />
-        <node concept="3uibUv" id="4C2otrAbW4v" role="1tU5fm">
-          <ref role="3uigEE" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
-        </node>
-        <node concept="2AHcQZ" id="4C2otrAbW4w" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      <node concept="37vLTG" id="3bmhQqpIDoJ" role="3clF46">
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="3bmhQqpIDoI" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3bmhQqpJ2$y" role="jymVt" />
     <node concept="3clFb_" id="4C2otrAbVud" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getAspectColor" />
@@ -274,13 +278,17 @@
                             <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
                           </node>
                           <node concept="2OqwBi" id="6U5aI53c279" role="33vP2m">
-                            <node concept="37vLTw" id="2BHiRxeu_5W" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4C2otrAbW4x" resolve="myFileStatusMapping" />
-                            </node>
                             <node concept="liA8E" id="6U5aI53c27b" role="2OqNvi">
                               <ref role="37wK5l" to="lcr:2n7wcdLaAWi" resolve="getStatus" />
                               <node concept="37vLTw" id="2BHiRxgm7Cy" role="37wK5m">
                                 <ref role="3cqZAo" node="4C2otrAbWfc" resolve="np" />
+                              </node>
+                            </node>
+                            <node concept="2YIFZM" id="3bmhQqpJ26k" role="2Oq$k0">
+                              <ref role="1Pybhc" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+                              <ref role="37wK5l" to="lcr:3bmhQqpITOL" resolve="getInstance" />
+                              <node concept="37vLTw" id="3bmhQqpJ2tU" role="37wK5m">
+                                <ref role="3cqZAo" node="3bmhQqpJ41T" resolve="myProject" />
                               </node>
                             </node>
                           </node>
@@ -404,13 +412,17 @@
         <node concept="3clFbF" id="4C2otrAbW6F" role="3cqZAp">
           <node concept="2EnYce" id="4C2otrAbW6Q" role="3clFbG">
             <node concept="2OqwBi" id="4C2otrAbW6G" role="2Oq$k0">
-              <node concept="37vLTw" id="2BHiRxeuTyL" role="2Oq$k0">
-                <ref role="3cqZAo" node="4C2otrAbW4x" resolve="myFileStatusMapping" />
-              </node>
               <node concept="liA8E" id="4C2otrAbW6I" role="2OqNvi">
                 <ref role="37wK5l" to="lcr:2n7wcdLaAV2" resolve="getStatus" />
                 <node concept="37vLTw" id="2BHiRxgha0d" role="37wK5m">
                   <ref role="3cqZAo" node="4C2otrAbVun" resolve="node" />
+                </node>
+              </node>
+              <node concept="2YIFZM" id="3bmhQqpJ8Ju" role="2Oq$k0">
+                <ref role="1Pybhc" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+                <ref role="37wK5l" to="lcr:3bmhQqpITOL" resolve="getInstance" />
+                <node concept="37vLTw" id="3bmhQqpJ8Jv" role="37wK5m">
+                  <ref role="3cqZAo" node="3bmhQqpJ41T" resolve="myProject" />
                 </node>
               </node>
             </node>
@@ -437,9 +449,9 @@
     <node concept="2tJIrI" id="qh1hBLbqdJ" role="jymVt" />
     <node concept="3clFbW" id="2n7wcdLayE1" role="jymVt">
       <node concept="37vLTG" id="2n7wcdLayEg" role="3clF46">
-        <property role="TrG5h" value="project" />
+        <property role="TrG5h" value="ideaProject" />
         <node concept="3uibUv" id="5A04Co8KjRQ" role="1tU5fm">
-          <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
       <node concept="3cqZAl" id="2n7wcdLayE2" role="3clF45" />

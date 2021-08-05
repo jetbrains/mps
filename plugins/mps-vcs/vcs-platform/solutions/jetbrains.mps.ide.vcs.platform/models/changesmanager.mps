@@ -54,6 +54,7 @@
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
+    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -13610,9 +13611,39 @@
     </node>
     <node concept="312cEg" id="2n7wcdLaAWx" role="jymVt">
       <property role="TrG5h" value="myRegistry" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="2n7wcdLaAWy" role="1B3o_S" />
       <node concept="3uibUv" id="2n7wcdLaAWz" role="1tU5fm">
         <ref role="3uigEE" node="2JwSLRbyYN6" resolve="CurrentDifferenceRegistry" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3bmhQqpINzN" role="jymVt" />
+    <node concept="2YIFZL" id="3bmhQqpITOL" role="jymVt">
+      <property role="TrG5h" value="getInstance" />
+      <node concept="37vLTG" id="3bmhQqpIWL9" role="3clF46">
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="3bmhQqpIWLa" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="3bmhQqpITOO" role="3clF47">
+        <node concept="3clFbF" id="3bmhQqpIXh5" role="3cqZAp">
+          <node concept="2OqwBi" id="3bmhQqpIXAX" role="3clFbG">
+            <node concept="37vLTw" id="3bmhQqpIXh4" role="2Oq$k0">
+              <ref role="3cqZAo" node="3bmhQqpIWL9" resolve="ideaProject" />
+            </node>
+            <node concept="liA8E" id="3bmhQqpIY0f" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
+              <node concept="3VsKOn" id="3bmhQqpIYrr" role="37wK5m">
+                <ref role="3VsUkX" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3bmhQqpIQBz" role="1B3o_S" />
+      <node concept="3uibUv" id="3bmhQqpITu8" role="3clF45">
+        <ref role="3uigEE" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
       </node>
     </node>
     <node concept="2tJIrI" id="5IHtz9v0k5E" role="jymVt" />
@@ -13622,30 +13653,18 @@
       <node concept="3clFbS" id="2n7wcdLaAWR" role="3clF47">
         <node concept="3clFbF" id="5A04Co8KAb4" role="3cqZAp">
           <node concept="37vLTI" id="5A04Co8KAnx" role="3clFbG">
-            <node concept="37vLTw" id="5A04Co8KCAt" role="37vLTx">
-              <ref role="3cqZAo" node="2n7wcdLaAWY" resolve="project" />
+            <node concept="2YIFZM" id="3bmhQqpHZ_5" role="37vLTx">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <node concept="37vLTw" id="3bmhQqpHZTj" role="37wK5m">
+                <ref role="3cqZAo" node="2n7wcdLaAWY" resolve="ideaProject" />
+              </node>
             </node>
             <node concept="37vLTw" id="5A04Co8KAb2" role="37vLTJ">
               <ref role="3cqZAo" node="5A04Co8KyHu" resolve="myProject" />
             </node>
           </node>
         </node>
-      </node>
-      <node concept="37vLTG" id="2n7wcdLaAWY" role="3clF46">
-        <property role="TrG5h" value="project" />
-        <node concept="3uibUv" id="5A04Co8KohS" role="1tU5fm">
-          <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4Ty7LDC$C5n" role="jymVt" />
-    <node concept="3clFb_" id="2n7wcdLaARa" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="projectOpened" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="2n7wcdLaARb" role="1B3o_S" />
-      <node concept="3cqZAl" id="2n7wcdLaARc" role="3clF45" />
-      <node concept="3clFbS" id="2n7wcdLaARd" role="3clF47">
         <node concept="3clFbF" id="2n7wcdLaAWU" role="3cqZAp">
           <node concept="37vLTI" id="2n7wcdLaAWV" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeuna$" role="37vLTJ">
@@ -13654,13 +13673,8 @@
             <node concept="2YIFZM" id="6C9ueeinKZb" role="37vLTx">
               <ref role="37wK5l" node="2JwSLRbyYP0" resolve="getInstance" />
               <ref role="1Pybhc" node="2JwSLRbyYN6" resolve="CurrentDifferenceRegistry" />
-              <node concept="2OqwBi" id="6C9ueeinPkc" role="37wK5m">
-                <node concept="37vLTw" id="6C9ueeinL4f" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5A04Co8KyHu" resolve="myProject" />
-                </node>
-                <node concept="liA8E" id="6C9ueeinQ1R" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
-                </node>
+              <node concept="37vLTw" id="3bmhQqpItQ4" role="37wK5m">
+                <ref role="3cqZAo" node="2n7wcdLaAWY" resolve="ideaProject" />
               </node>
             </node>
           </node>
@@ -13679,18 +13693,19 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="2n7wcdLaARj" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      <node concept="37vLTG" id="2n7wcdLaAWY" role="3clF46">
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="5A04Co8KohS" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="4Ty7LDC$DbW" role="jymVt" />
-    <node concept="3clFb_" id="2n7wcdLaARk" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="projectClosed" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="2n7wcdLaARl" role="1B3o_S" />
-      <node concept="3cqZAl" id="2n7wcdLaARm" role="3clF45" />
-      <node concept="3clFbS" id="2n7wcdLaARn" role="3clF47">
+    <node concept="2tJIrI" id="4Ty7LDC$C5n" role="jymVt" />
+    <node concept="3clFb_" id="3bmhQqpIgOu" role="jymVt">
+      <property role="TrG5h" value="dispose" />
+      <node concept="3Tm1VV" id="3bmhQqpIgOv" role="1B3o_S" />
+      <node concept="3cqZAl" id="3bmhQqpIgOx" role="3clF45" />
+      <node concept="3clFbS" id="3bmhQqpIgOy" role="3clF47">
         <node concept="3clFbF" id="2n7wcdLaARo" role="3cqZAp">
           <node concept="2OqwBi" id="2n7wcdLaARp" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeuSvs" role="2Oq$k0">
@@ -13705,8 +13720,8 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="2n7wcdLaARt" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      <node concept="2AHcQZ" id="3bmhQqpIgOz" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4Ty7LDC$E1E" role="jymVt" />
@@ -14867,8 +14882,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="qh1hBLaKFe" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ProjectComponent" resolve="ProjectComponent" />
+    <node concept="3uibUv" id="3bmhQqpIbBa" role="EKbjA">
+      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
   </node>
   <node concept="312cEu" id="2n7wcdLaAX2">
@@ -14915,15 +14930,11 @@
             <node concept="37vLTw" id="2BHiRxeukHe" role="37vLTJ">
               <ref role="3cqZAo" node="2n7wcdLaAX6" resolve="myMapping" />
             </node>
-            <node concept="2OqwBi" id="4Ty7LDC_b3e" role="37vLTx">
-              <node concept="37vLTw" id="4Ty7LDC_9Bz" role="2Oq$k0">
+            <node concept="2YIFZM" id="4GM5FlLCCNZ" role="37vLTx">
+              <ref role="37wK5l" node="3bmhQqpITOL" resolve="getInstance" />
+              <ref role="1Pybhc" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+              <node concept="37vLTw" id="4GM5FlLCDb8" role="37wK5m">
                 <ref role="3cqZAo" node="2n7wcdLaAXn" resolve="project" />
-              </node>
-              <node concept="liA8E" id="4Ty7LDC_bsB" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="4Ty7LDC_bD2" role="37wK5m">
-                  <ref role="3VsUkX" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
-                </node>
               </node>
             </node>
           </node>

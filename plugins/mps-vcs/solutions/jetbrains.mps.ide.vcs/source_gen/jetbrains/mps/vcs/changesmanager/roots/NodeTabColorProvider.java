@@ -4,8 +4,7 @@ package jetbrains.mps.vcs.changesmanager.roots;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.editorTabs.TabColorProvider;
-import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import java.awt.Color;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -13,22 +12,26 @@ import java.util.List;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/5332932484372864216", model = "r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)")
 public class NodeTabColorProvider implements TabColorProvider {
-  private NodeFileStatusMapping myFileStatusMapping;
-  public NodeTabColorProvider(@NotNull NodeFileStatusMapping mapping) {
-    myFileStatusMapping = mapping;
+  private final Project myProject;
+
+  public NodeTabColorProvider(Project ideaProject) {
+    myProject = ideaProject;
   }
+
   @Nullable
   @Override
   public Color getAspectColor(Iterable<SNodeReference> nodePointers) {
     final List<FileStatus> statuses = Sequence.fromIterable(nodePointers).select(new ISelector<SNodeReference, FileStatus>() {
       public FileStatus select(SNodeReference np) {
-        FileStatus s = myFileStatusMapping.getStatus(np);
+        FileStatus s = NodeFileStatusMapping.getInstance(myProject).getStatus(np);
         return (s != null ? s : FileStatus.NOT_CHANGED);
       }
     }).toListSequence();
@@ -37,7 +40,7 @@ public class NodeTabColorProvider implements TabColorProvider {
         return s == ListSequence.fromList(statuses).first();
       }
     })) {
-      return check_6tqz68_a0a1a2(ListSequence.fromList(statuses).first());
+      return check_6tqz68_a0a1a4(ListSequence.fromList(statuses).first());
     } else {
       return FileStatus.MODIFIED.getColor();
     }
@@ -45,15 +48,15 @@ public class NodeTabColorProvider implements TabColorProvider {
   @Nullable
   @Override
   public Color getNodeColor(@NotNull SNode node) {
-    return check_6tqz68_a0a3(myFileStatusMapping.getStatus(node));
+    return check_6tqz68_a0a5(NodeFileStatusMapping.getInstance(myProject).getStatus(node));
   }
-  private static Color check_6tqz68_a0a1a2(FileStatus checkedDotOperand) {
+  private static Color check_6tqz68_a0a1a4(FileStatus checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getColor();
     }
     return null;
   }
-  private static Color check_6tqz68_a0a3(FileStatus checkedDotOperand) {
+  private static Color check_6tqz68_a0a5(FileStatus checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getColor();
     }

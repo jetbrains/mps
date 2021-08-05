@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2021 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -48,6 +48,8 @@
 
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory"/>
+
+    <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping"/>
   </extensions>
 
   <applicationListeners>
@@ -60,12 +62,5 @@
               topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
               activeInHeadlessMode="false"/>
   </projectListeners>
-
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping</implementation-class>
-    </component>
-  </project-components>
-
 
 </idea-plugin>

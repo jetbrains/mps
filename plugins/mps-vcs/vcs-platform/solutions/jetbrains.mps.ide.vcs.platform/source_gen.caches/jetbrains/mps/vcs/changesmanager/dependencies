@@ -272,6 +272,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
     <classNode dependClassName="java.lang.Override" />
@@ -283,6 +284,7 @@
     <classNode dependClassName="java.util.concurrent.ConcurrentHashMap" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FileSystemBasedDataSource" />
+    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
@@ -306,7 +308,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
+    <classNode extendsClassName="com.intellij.openapi.Disposable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider">
     <classNode dependClassName="com.intellij.openapi.project.Project" />

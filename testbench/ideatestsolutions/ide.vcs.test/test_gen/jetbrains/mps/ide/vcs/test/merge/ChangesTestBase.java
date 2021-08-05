@@ -195,7 +195,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected void checkRootStatuses(final RootStatusItem... statuses) {
-    final NodeFileStatusMapping fsm = myIdeaProject.getComponent(NodeFileStatusMapping.class);
+    final NodeFileStatusMapping fsm = NodeFileStatusMapping.getInstance(myIdeaProject);
     final SModel model = myDiff.getModelDescriptor();
     // query for first time
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {

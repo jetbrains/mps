@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2021 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -30,10 +30,6 @@
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.vcs.MPSVcsManager</implementation-class>
-    </component>
-    <component>
-      <interface-class>jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping</interface-class>
-      <implementation-class>jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.vcs.integration.GeneratedFileConflictResolving</implementation-class>
@@ -81,6 +77,9 @@
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory" />
+
+    <projectService serviceInterface="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping"
+                    serviceImplementation="jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt"/>
 
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
