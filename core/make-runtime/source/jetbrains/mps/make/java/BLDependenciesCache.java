@@ -21,14 +21,20 @@ import jetbrains.mps.generator.cache.CacheGenerator;
 import jetbrains.mps.generator.cache.ParseFacility;
 import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
 
 public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
 
@@ -43,7 +49,11 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
   }
 
   public CacheGenerator newCacheGenerator(@Nullable ModelDependencies newDeps) {
-    return new CacheGen(newDeps);
+    return new CacheGen(null, null, newDeps);
+  }
+
+  public CacheGenerator newCacheGenerator(@NotNull LanguageRegistry languageRegistry, @NotNull SRepository modelDeps, @Nullable ModelDependencies newDeps) {
+    return new CacheGen(languageRegistry, modelDeps, newDeps);
   }
 
   @Nullable
@@ -53,17 +63,41 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
   }
 
   private class CacheGen implements CacheGenerator {
+    private final LanguageRegistry myLanguageRegistry;
+    private final SRepository myDependencyRegistry;
     private final ModelDependencies myDepsNew;
 
-    public CacheGen(ModelDependencies newDeps) {
+    // modelDeps - registry where imports of the generator's input model get resolved
+    //             likely, GenStatus.inputModel.getRepository(), but doesn't hurt to pass explicitly, imo.
+    public CacheGen(LanguageRegistry languageRegistry, SRepository modelDeps, ModelDependencies newDeps) {
+      myLanguageRegistry = languageRegistry;
+      myDependencyRegistry = modelDeps;
       myDepsNew = newDeps;
     }
 
     @Override
     public void generateCache(GenerationStatus status, StreamHandler handler) {
-      final ModelDependencies deps = myDepsNew;
-      if (deps == null) {
-        return;
+      final ModelDependencies deps = myDepsNew == null ? new ModelDependencies() : myDepsNew;
+      if (myLanguageRegistry != null && myDependencyRegistry != null) {
+        deps.setLanguages(status.getEmployedLanguages());
+        final HashSet<SModuleReference> md = new HashSet<>();
+        // XXX guess, it's worth recording RTs separately from imported models/modules deps, at least for the sake of debug
+        //     and clear idea about where certain dependency came from when looking into 'dependencies' file
+        myLanguageRegistry.withAvailableLanguages(status.getEmployedLanguages().stream(), (lr) -> {
+          md.addAll(lr.getRuntimeModules());
+        });
+        deps.setLanguageRuntimeModules(md);
+        md.clear();
+        // XXX figure out what's with model access here
+        myDependencyRegistry.getModelAccess().runReadAction(()-> {
+          for (SModelReference importedModel : new ModelImports(status.getInputModel()).getImportedModels()) {
+            final SModel m = importedModel.resolve(myDependencyRegistry);
+            if (m != null) {
+              md.add(m.getModule().getModuleReference());
+            }
+          }
+        });
+        deps.setModuleDependencies(md);
       }
       update(status.getInputModel(), deps);
 

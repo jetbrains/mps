@@ -6,8 +6,19 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import java.util.Comparator;
+import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
 
@@ -16,6 +27,11 @@ public class ModelDependencies {
   private static final String DEPENDENCY = "dependency";
   private static final String DEPENDENCIES_ROOT = "dependenciesRoot";
   private Map<String, RootDependencies> myDependencies = MapSequence.fromMap(new HashMap<String, RootDependencies>());
+  private final Collection<SLanguage> myLanguages = new ArrayList<>();
+  private final Collection<SModuleReference> myModuleDeps = new ArrayList<>();
+  private final Collection<SModuleReference> myLangRT = new ArrayList<>();
+  private boolean myHasRuntimeDeps = false;
+
   public ModelDependencies() {
   }
   public void addDependencies(RootDependencies newDependency) {
@@ -31,9 +47,97 @@ public class ModelDependencies {
     MapSequence.fromMap(myDependencies).put(rootDependencies.getClassName(), rootDependencies);
   }
 
+  /**
+   * Provisional, once new approach proves itself, we gonna throw away RootDependencies and 
+   * exact class names they record
+   * 
+   * @since 2021.2
+   * @return true when model's dependencies, used languages and their runtime module have been recorded
+   */
+  public boolean hasRuntimeDeps() {
+    return myHasRuntimeDeps;
+  }
+  /**
+   * 
+   * @return languages actually employed during model generation
+   */
+  @NotNull
+  public Collection<SLanguage> getLanguages() {
+    return myLanguages;
+  }
+
+  public void setLanguages(@Nullable Collection<SLanguage> languages) {
+    myLanguages.clear();
+    if (languages != null) {
+      myLanguages.addAll(languages);
+      myHasRuntimeDeps = true;
+    }
+  }
+
+  /**
+   * 
+   * @return modules of this model's imports; may intersect with runtime modules of employed languages
+   */
+  @NotNull
+  public Collection<SModuleReference> getModuleDependencies() {
+    return myModuleDeps;
+  }
+
+  public void setModuleDependencies(@Nullable Collection<SModuleReference> modules) {
+    myModuleDeps.clear();
+    if (modules != null) {
+      myModuleDeps.addAll(modules);
+      myHasRuntimeDeps = true;
+    }
+  }
+
+  /**
+   * 
+   * @return modules reported by used languages as their runtimes
+   */
+  @NotNull
+  public Collection<SModuleReference> getLanguageRuntimeModules() {
+    return myLangRT;
+  }
+
+  public void setLanguageRuntimeModules(@Nullable Collection<SModuleReference> modules) {
+    myLangRT.clear();
+    if (modules != null) {
+      myLangRT.addAll(modules);
+      myHasRuntimeDeps = true;
+    }
+  }
+
   @NotNull
   public Element toXml() {
     Element root = new Element(DEPENDENCIES_ROOT);
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
+    Comparator<SLanguage> byName1 = Comparator.comparing(new Function<SLanguage, String>() {
+      public String apply(SLanguage l) {
+        return l.getQualifiedName();
+      }
+    });
+    Comparator<SModuleReference> byName2 = Comparator.comparing(new Function<SModuleReference, String>() {
+      public String apply(SModuleReference l) {
+        return l.getModuleName();
+      }
+    });
+    for (SLanguage l : ListSequence.fromList(myLanguages.stream().distinct().sorted(byName1).collect(Collectors.<SLanguage>toList()))) {
+      Element e = new Element("uses");
+      e.setAttribute("language", pf.asString(l));
+      root.addContent(e);
+    }
+    Stream<SModuleReference> ms = Stream.concat(myModuleDeps.stream(), myLangRT.stream());
+    String[] flags = {"", "dp", "rt", "rt+dp"};
+    for (SModuleReference i : ListSequence.fromList(ms.distinct().sorted(byName2).collect(Collectors.<SModuleReference>toList()))) {
+      Element e = new Element("uses");
+      e.setAttribute("module", pf.asString(i));
+      int x = (myModuleDeps.contains(i) ? 1 : 0);
+      x += (myLangRT.contains(i) ? 2 : 0);
+      assert x > 0 : "either collection contains the reference";
+      e.setAttribute("kind", flags[x]);
+      root.addContent(e);
+    }
     String[] list = SetSequence.fromSet(MapSequence.fromMap(myDependencies).keySet()).toGenericArray(String.class);
     Arrays.sort(list);
     for (String rootName : list) {
@@ -47,6 +151,27 @@ public class ModelDependencies {
   @NotNull
   public static ModelDependencies fromXml(Element root) {
     ModelDependencies result = new ModelDependencies();
+    final PersistenceFacade pf = PersistenceFacade.getInstance();
+    for (Element e : root.getChildren("uses")) {
+      String lv = e.getAttributeValue("language");
+      if (lv != null) {
+        result.myLanguages.add(pf.createLanguage(lv));
+        result.myHasRuntimeDeps = true;
+        continue;
+      }
+      String mv = e.getAttributeValue("module");
+      if (mv != null) {
+        SModuleReference mref = pf.createModuleReference(mv);
+        String flags = e.getAttributeValue("kind", "");
+        if (flags.contains("dp")) {
+          result.myModuleDeps.add(mref);
+        }
+        if (flags.contains("rt")) {
+          result.myLangRT.add(mref);
+        }
+        result.myHasRuntimeDeps = true;
+      }
+    }
     for (Element e : root.getChildren(DEPENDENCY)) {
       result.addDependencies(new RootDependencies(e));
     }
