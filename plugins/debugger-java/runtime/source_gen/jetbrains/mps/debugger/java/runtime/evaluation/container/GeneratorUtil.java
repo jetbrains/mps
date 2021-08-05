@@ -31,9 +31,6 @@ import jetbrains.mps.smodel.resources.CResource;
 import java.util.concurrent.ExecutionException;
 import java.lang.reflect.InvocationTargetException;
 import jetbrains.mps.debugger.java.api.evaluation.InvocationTargetEvaluationException;
-import jetbrains.mps.compiler.CompilationResultAdapter;
-import org.eclipse.jdt.internal.compiler.CompilationResult;
-import org.eclipse.jdt.core.compiler.CategorizedProblem;
 
 @GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144107996118", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public class GeneratorUtil {
@@ -80,9 +77,7 @@ public class GeneratorUtil {
           throw new EvaluationException(String.format("Can not load evaluator class %s", fullClassName));
         }
         // else fall-through, up to throws EvaluationException below
-      } catch (InterruptedException e) {
-        throw new EvaluationException(e);
-      } catch (ExecutionException e) {
+      } catch (InterruptedException | ExecutionException e) {
         throw new EvaluationException(e);
       }
     }
@@ -93,34 +88,8 @@ public class GeneratorUtil {
       return (E) clazz.getConstructor(parameterClasses).newInstance(parameters);
     } catch (InvocationTargetException e) {
       throw new InvocationTargetEvaluationException(e.getCause());
-    } catch (NoSuchMethodException e) {
+    } catch (NoSuchMethodException | IllegalAccessException | InstantiationException e) {
       throw new EvaluationException(e);
-    } catch (IllegalAccessException e) {
-      throw new EvaluationException(e);
-    } catch (InstantiationException e) {
-      throw new EvaluationException(e);
-    }
-  }
-  private static class MyCompilationResultAdapter extends CompilationResultAdapter {
-    private final StringBuffer myBuffer = new StringBuffer();
-    private boolean myHasErrors;
-    public MyCompilationResultAdapter() {
-    }
-    @Override
-    public void onCompilationResult(CompilationResult result) {
-      if (result.hasErrors()) {
-        myHasErrors = true;
-        for (CategorizedProblem error : result.getErrors()) {
-          myBuffer.append(error.getMessage());
-          myBuffer.append("\n");
-        }
-      }
-    }
-    public boolean hasErrors() {
-      return myHasErrors;
-    }
-    public String getMessage() {
-      return myBuffer.toString();
     }
   }
 }
