@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,19 +21,14 @@ import jetbrains.mps.generator.cache.CacheGenerator;
 import jetbrains.mps.generator.cache.ParseFacility;
 import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
+import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
 
@@ -80,15 +75,9 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
     @Override
     public ModelDependencies load(InputStream is) throws IOException {
       try {
-        SAXParser saxParser = JDOMUtil.createSAXParser();
-        BLDependenciesHandler handler = new BLDependenciesHandler();
-        saxParser.parse(new InputSource(new InputStreamReader(is, FileUtil.DEFAULT_CHARSET)), handler);
-        ModelDependencies dependencies = handler.getResult();
-        if (dependencies != null) {
-          return dependencies;
-        }
-        throw new IOException("empty result");
-      } catch (SAXException | ParserConfigurationException ex) {
+        return ModelDependencies.fromXml(JDOMUtil.loadDocument(is).getRootElement());
+        // getRootElement throws ISE when there are no elements
+      } catch (JDOMException | IllegalStateException  ex) {
         throw new IOException(ex);
       }
     }

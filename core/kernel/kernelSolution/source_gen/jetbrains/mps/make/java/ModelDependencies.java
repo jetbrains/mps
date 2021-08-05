@@ -6,10 +6,10 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
 import org.jdom.Element;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
-import java.util.List;
 
 @GeneratedClass(node = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)/757342313568265361", model = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)")
 public class ModelDependencies {
@@ -30,6 +30,8 @@ public class ModelDependencies {
   public void replaceRoot(RootDependencies rootDependencies) {
     MapSequence.fromMap(myDependencies).put(rootDependencies.getClassName(), rootDependencies);
   }
+
+  @NotNull
   public Element toXml() {
     Element root = new Element(DEPENDENCIES_ROOT);
     String[] list = SetSequence.fromSet(MapSequence.fromMap(myDependencies).keySet()).toGenericArray(String.class);
@@ -41,10 +43,11 @@ public class ModelDependencies {
     }
     return root;
   }
+
+  @NotNull
   public static ModelDependencies fromXml(Element root) {
-    // FIXME duplicates parsing logic of BLDependencies sax parser!
     ModelDependencies result = new ModelDependencies();
-    for (Element e : ((List<Element>) root.getChildren(DEPENDENCY))) {
+    for (Element e : root.getChildren(DEPENDENCY)) {
       result.addDependencies(new RootDependencies(e));
     }
     return result;

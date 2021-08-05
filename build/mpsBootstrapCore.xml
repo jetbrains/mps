@@ -1114,7 +1114,6 @@
           <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
           <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
-          <language id="l:dcb5a83a-19a8-44ff-a4cb-fc7d324ecc63:jetbrains.mps.core.xml.sax" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
@@ -16320,7 +16319,6 @@
         <module file="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/jetbrains.mps.baseLanguage.util.msd" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/baseLanguageInternal/jetbrains.mps.baseLanguageInternal.mpl" bootstrap="true" />
         <module file="${mps_home}/core/tool/environment/jetbrains.mps.core.tool.environment.msd" bootstrap="true" />
-        <module file="${mps_home}/plugins/mps-core/languages/core.xml.sax/jetbrains.mps.core.xml.sax.mpl" bootstrap="true" />
         <module file="${mps_home}/core/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.devkit" />
         <module file="${mps_home}/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" />
@@ -16421,6 +16419,7 @@
         <module file="${mps_home}/languages/baseLanguage/varVariable/jetbrains.mps.baseLanguage.varVariable.mpl" bootstrap="true" />
         <module file="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" />
         <module file="${mps_home}/plugins/mps-core/languages/core.xml/jetbrains.mps.core.xml.mpl" />
+        <module file="${mps_home}/plugins/mps-core/languages/core.xml.sax/jetbrains.mps.core.xml.sax.mpl" bootstrap="true" />
         <module file="${mps_home}/core/devkits/jetbrains.mps.devkit.templates.devkit" />
         <module file="${mps_home}/editor/editing-runtime/jetbrains.mps.editing.runtime.msd" />
         <module file="${mps_home}/languages/util/execution/util/jetbrains.mps.execution.util.mpl" />
@@ -16434,13 +16433,14 @@
         <module file="${mps_home}/languages/languageDesign/generator/languages/plan/jetbrains.mps.lang.generator.plan.mpl" />
         <module file="${mps_home}/languages/util/makeup/jetbrains.mps.lang.makeup.mpl" />
         <module file="${mps_home}/languages/languageDesign/make/languages/reduced/jetbrains.mps.make.reduced.mpl" />
-        <module file="${mps_home}/core/persistence/jetbrains.mps.persistence.msd" />
         <module file="${mps_home}/core/tool/ant/jetbrains.mps.tool.ant.msd" />
         <module file="${mps_home}/core/tool/builder/jetbrains.mps.tool.builder.msd" />
         <module file="${mps_home}/languages/languageDesign/make/languages/gentest/jetbrains.mps.tool.gentest.mpl" />
         <module file="${mps_home}/editor/typesystemIntegration/typesystemIntegration.msd" />
       </chunk>
-      <chunk />
+      <chunk>
+        <module file="${mps_home}/core/persistence/jetbrains.mps.persistence.msd" />
+      </chunk>
       <jvmargs>
         <arg value="-ea" />
         <arg value="-Xmx512m" />
@@ -30592,6 +30592,7 @@
     <delete dir="${mps_home}/languages/util/regexp/generator/source_gen" />
     <delete dir="${mps_home}/languages/baseLanguage/varVariable/generator/source_gen" />
     <delete dir="${mps_home}/languages/baseLanguage/baseLanguageInternal/generator/source_gen" />
+    <delete dir="${mps_home}/plugins/mps-core/languages/core.xml.sax/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/actions/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/customAspect/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/constraints/legacy/generator/source_gen" />
@@ -30622,5 +30623,6 @@
     <delete dir="${mps_home}/languages/languageDesign/script/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/sharedConcepts/generator/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/source_gen" />
+    <delete dir="${mps_home}/core/persistence/source_gen" />
   </target>
 </project>
