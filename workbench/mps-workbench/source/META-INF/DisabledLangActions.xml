@@ -95,6 +95,12 @@
 
 
     <!-- View -->
+    <!--    <group id="QuickActions">-->
+    <!-- MPS patch: see MPS-24488  TODO: investigate-->
+    <action id="QuickImplementations" class="jetbrains.mps.codeInsight.hint.actions.MockShowImplementationsAction" overrides="true"/>
+    <action id="QuickJavaDoc" class="jetbrains.mps.codeInsight.documentation.actions.MockShowQuickDocInfoAction" overrides="true"/>
+    <!--    </group>-->
+
     <group id="CodeEditorBaseGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    <group id="CodeEditorBaseGroup">-->
     <group id="CodeEditorViewGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
