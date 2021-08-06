@@ -24,12 +24,14 @@ import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import jetbrains.mps.make.java.BLDependenciesCache;
+import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.performance.IPerformanceTracer;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
@@ -41,8 +43,10 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
@@ -59,6 +63,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -228,10 +233,45 @@ public final class ModuleMaker {
 
     // requires SModule knowledge
     // FIXME use stateful dep calculation logic + cached dependencies to speed this up
-    public Collection<SModule> walkDependencies(JM jm) {
+    public Collection<SModule> walkDependencies(JM jm, @Nullable BLDependenciesCache deps) {
       SModule m = toOriginChecked(jm);
       // FIXME meed to decide if SModule *without* JMF could be among dependencies.
       // On one hand, we are not going to use it e.g. for classpath calculation. On the other, it may affect cycles module is part of. Does it matter?
+      if (deps != null) {
+        boolean withNewRT = true;
+        ArrayList<SModuleReference> rv = new ArrayList<>(20);
+        // pretty much what Dependencies.collectDependencies() does
+        for (SModel model : m.getModels()) {
+          if (SModelStereotype.isStubModel(model)) {
+            // FIXME this logic comes from Dependencies.collectDependencies() but I'm not 100% sure it's correct.
+            //    E.g. Make action takes GenerationFacade.canGenerate() models only, which might be ok for IDE Make action
+            //    but generally not perfect either. I'd like to transform any model I like (even if it's stub), and see no
+            //    reason to assume any model was excluded here. Provided we silently ignore missing ModelDependencies (which
+            //    IMO may happen when some of the models were not generated), we can just walk all models here.
+            //    However, for the first round I'd like to stick to legacy logic as close as possible not to address
+            //    unexpected differences in behavior.
+            continue;
+          }
+          final ModelDependencies modelDependencies = deps.get(model);
+          if (modelDependencies == null) {
+            continue;
+          }
+          if (!modelDependencies.hasRuntimeDeps()) {
+            withNewRT = false;
+            break;
+          }
+          rv.addAll(modelDependencies.getModuleDependencies());
+          rv.addAll(modelDependencies.getLanguageRuntimeModules());
+        }
+        if (withNewRT) {
+          // XXX GMDM implicitly uses module's repository; don't see a reason why not to do the same here
+          //     Besides, GMDM doesn't care too much about modules missing in a repo (reports to log), hence the
+          //     same logic seems fine here (at least for the first round)
+          final SRepository repository = m.getRepository();
+          return rv.stream().distinct().map(r -> r.resolve(repository)).filter(Objects::isNull).collect(Collectors.toUnmodifiableList());
+        }
+        // else fall through, resort to default logic
+      }
       return new GlobalModuleDependenciesManager(m).getModules(Deptype.COMPILE);
     }
 
@@ -590,7 +630,7 @@ public final class ModuleMaker {
     // depJM - one of requested modules depend on a module which is not among requested. we keep these targets in depJM
     MC depJM = new MC();
     for (JM jm : initial.allJavaModules()) {
-      Collection<SModule> deps = initial.walkDependencies(jm);
+      Collection<SModule> deps = initial.walkDependencies(jm, myDependenciesCache);
       for (SModule d : deps) {
         if (SModuleOperations.getJavaFacet(d) == null) {
           // we may depend on deployed modules that got classesGen == null, ModulesContainer.isExcluded would give wrong result here
