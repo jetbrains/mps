@@ -18,10 +18,11 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
+import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
+import jetbrains.mps.vcs.changesmanager.CurrentDifference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.vcs.changesmanager.CurrentDifference;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
@@ -44,7 +45,6 @@ import javax.swing.JPanel;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
-import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -77,7 +77,8 @@ public class StructDifferencePane implements PropertyChangeListener {
 
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
-
+  private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
+  private final List<CurrentDifference> myCurrentDifferences = ListSequence.fromList(new ArrayList<CurrentDifference>());
 
   public StructDifferencePane(Project project, final StructChangeSet changeSet, String[] titles) {
     myChangeSet = changeSet;
@@ -109,12 +110,13 @@ public class StructDifferencePane implements PropertyChangeListener {
       public void run() {
         if (myChangeSet.getOldModel() instanceof EditableSModel) {
           final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel());
-
           currentDifference.addDifferenceListener(myDifferenceListener);
+          ListSequence.fromList(myCurrentDifferences).addElement(currentDifference);
         }
         if (myChangeSet.getNewModel() instanceof EditableSModel) {
           final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel());
           currentDifference.addDifferenceListener(myDifferenceListener);
+          ListSequence.fromList(myCurrentDifferences).addElement(currentDifference);
         }
       }
     });
@@ -136,7 +138,7 @@ public class StructDifferencePane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_n8nr2l_a0a5cb(ProjectHelper.getModelAccess(myProject), this);
+      check_n8nr2l_a0a5db(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -285,7 +287,8 @@ public class StructDifferencePane implements PropertyChangeListener {
   private TripleChangeGroupLayout createLayout(TwosideContentPanel panel, boolean inspector) {
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myChangeSet, myOldEditor, myNewEditor, getSplitterRepainter(panel), inspector);
     TripleChangeGroupLayout tripleLayout = new TripleChangeGroupLayout(layout, null, inspector);
-    ChangeGroupMessages.startMaintaining(layout);
+    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, false));
+    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, true));
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
       StructDiffButtonsPainter.addTo(myOldEditor, layout, inspector);
@@ -347,14 +350,14 @@ public class StructDifferencePane implements PropertyChangeListener {
   }
 
   public void dispose() {
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (myChangeSet.getOldModel() instanceof EditableSModel) {
-          myDiffRegistry.getCurrentDifference((EditableSModel) myChangeSet.getOldModel()).removeDifferenceListener(myDifferenceListener);
-        }
-        if (myChangeSet.getNewModel() instanceof EditableSModel) {
-          myDiffRegistry.getCurrentDifference((EditableSModel) myChangeSet.getNewModel()).removeDifferenceListener(myDifferenceListener);
-        }
+    ListSequence.fromList(myCurrentDifferences).visitAll(new IVisitor<CurrentDifference>() {
+      public void visit(CurrentDifference it) {
+        it.removeDifferenceListener(myDifferenceListener);
+      }
+    });
+    ListSequence.fromList(myGutterMessagesRebuilders).visitAll(new IVisitor<ChangeGroupMessages>() {
+      public void visit(ChangeGroupMessages it) {
+        it.dispose();
       }
     });
     myActionGroup.removeAll();
@@ -365,7 +368,7 @@ public class StructDifferencePane implements PropertyChangeListener {
     myOldEditor = null;
     myNewEditor = null;
   }
-  private static void check_n8nr2l_a0a5cb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_n8nr2l_a0a5db(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(new Runnable() {
         public void run() {

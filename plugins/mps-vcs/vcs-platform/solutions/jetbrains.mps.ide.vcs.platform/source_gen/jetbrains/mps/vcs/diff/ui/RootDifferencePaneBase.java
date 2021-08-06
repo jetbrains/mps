@@ -14,9 +14,11 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
+import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.SModelOperations;
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,10 +44,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.project.ProjectHelper;
-import java.util.ArrayList;
 import java.util.Iterator;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
-import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -80,6 +80,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
   protected boolean myDisposed = false;
+  private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
 
 
   public RootDifferencePaneBase(MPSProject project, SNodeId rootId, String rootName, List<String> titles, List<ChangeSet> changeSets, boolean isEditable) {
@@ -328,7 +329,8 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
         assert changeSet != null;
         DiffChangeGroupLayout.SplitterRepainter splitterRepainter = getSplitterRepainter(leftEditor, editor);
         DiffChangeGroupLayout layout = new DiffChangeGroupLayout(getConflictChecker(), changeSet, leftEditor, editor, splitterRepainter, inspector);
-        ChangeGroupMessages.startMaintaining(layout);
+        ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, false));
+        ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, true));
         ListSequence.fromList(layouts).addElement(layout);
       }
       leftEditor = editor;
@@ -401,6 +403,11 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
 
   public void dispose() {
     myDisposed = true;
+    ListSequence.fromList(myGutterMessagesRebuilders).visitAll(new IVisitor<ChangeGroupMessages>() {
+      public void visit(ChangeGroupMessages it) {
+        it.dispose();
+      }
+    });
     myActionGroup.removeAll();
     myActionGroup = null;
     myMainLayout.dispose();

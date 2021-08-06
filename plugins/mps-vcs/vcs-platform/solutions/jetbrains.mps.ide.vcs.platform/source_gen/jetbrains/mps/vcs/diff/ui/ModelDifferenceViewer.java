@@ -14,6 +14,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.vcs.changesmanager.CurrentDifference;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -75,7 +76,10 @@ public class ModelDifferenceViewer implements DataProvider {
   private MergeConflictsBuilder myMergeConflictBuilder;
   private MergeConflictsBuilder myMetaDataMergeConflictBuilder;
   private final Map<EditableSModel, MyDifferenceListener> myDiffListeners = MapSequence.fromMap(new HashMap<EditableSModel, MyDifferenceListener>());
+  private final Map<EditableSModel, CurrentDifference> myCurrentDifferences = MapSequence.fromMap(new HashMap<EditableSModel, CurrentDifference>());
   private final CurrentDifferenceRegistry myDiffRegistry;
+
+
   private ModelDifferenceTree myTree = null;
   private JPanel myComponent = new JPanel(new BorderLayout());
   private JBSplitter myPanel = new JBSplitter(true, 0.25f);
@@ -508,18 +512,19 @@ public class ModelDifferenceViewer implements DataProvider {
     final MyDifferenceListener listener = new MyDifferenceListener();
     myDiffRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
-        myDiffRegistry.getCurrentDifference(model).addDifferenceListener(listener);
+        CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference(model);
+        MapSequence.fromMap(myCurrentDifferences).put(model, currentDifference);
+        currentDifference.addDifferenceListener(listener);
       }
     });
     MapSequence.fromMap(myDiffListeners).put(model, listener);
   }
 
-  private void removeDifferenceListener(final EditableSModel model, final MyDifferenceListener listener) {
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        myDiffRegistry.getCurrentDifference(model).removeDifferenceListener(listener);
-      }
-    });
+  private void removeDifferenceListener(EditableSModel model, MyDifferenceListener listener) {
+    CurrentDifference currentDifference = MapSequence.fromMap(myCurrentDifferences).get(model);
+    if (currentDifference != null) {
+      currentDifference.removeDifferenceListener(listener);
+    }
   }
 
   private class MyDifferenceListener extends CurrentDifferenceAdapter {
@@ -540,10 +545,10 @@ public class ModelDifferenceViewer implements DataProvider {
           syncMetadataChanges();
         }
       });
-      check_b117w_a1a4yc(myRootDifferencePane);
+      check_b117w_a1a4bd(myRootDifferencePane);
     }
   }
-  private static void check_b117w_a1a4yc(RootDifferencePane checkedDotOperand) {
+  private static void check_b117w_a1a4bd(RootDifferencePane checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.rehighlightInReadAction(true);
     }

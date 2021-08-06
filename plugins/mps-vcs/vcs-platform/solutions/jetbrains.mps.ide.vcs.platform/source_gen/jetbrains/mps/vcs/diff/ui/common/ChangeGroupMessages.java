@@ -8,6 +8,7 @@ import jetbrains.mps.nodeEditor.MessagesGutter;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.util.ui.update.Update;
+import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
@@ -23,6 +24,7 @@ public class ChangeGroupMessages {
   private final MessagesGutter myGutter;
   private final MergingUpdateQueue myUpdateQueue;
   private final Object myUpdateIdentity = new Object();
+  private final ChangeGroupInvalidateListener myLayoutListener;
 
   public ChangeGroupMessages(ChangeGroupLayout layout, boolean left) {
     myLayout = layout;
@@ -31,24 +33,28 @@ public class ChangeGroupMessages {
     myGutter = editorComponent.getMessagesGutter();
     myUpdateQueue = new MergingUpdateQueue("ChangeGroupMessages", 500, true, editorComponent, null, null, false);
     myUpdateQueue.setRestartTimerOnAdd(true);
+    myLayoutListener = new ChangeGroupInvalidateListener() {
+      public void changeGroupsInvalidated() {
+        scheduleUpdate();
+      }
+    };
+    myLayout.addInvalidateListener(myLayoutListener);
   }
 
-  public void startMaintaining() {
-    myLayout.addInvalidateListener(new ChangeGroupInvalidateListener() {
-      public void changeGroupsInvalidated() {
-        myUpdateQueue.queue(new Update(myUpdateIdentity) {
-          public void run() {
-            if (myLayout.isValid()) {
-              rebuildGutterMessages();
-            }
-          }
-        });
+  public void scheduleUpdate() {
+    myUpdateQueue.queue(new Update(myUpdateIdentity) {
+      public void run() {
+        if (myLayout.isValid()) {
+          rebuildGutterMessages();
+        }
       }
     });
   }
-
   public void dispose() {
-    myUpdateQueue.dispose();
+    myLayout.removeInvalidateListener(myLayoutListener);
+    // we should always use Disposer#dispose for Disposable objects instead of direct call
+    // of dispose method.
+    Disposer.dispose(myUpdateQueue);
     myGutter.removeMessages(OWNER);
   }
 
@@ -59,11 +65,6 @@ public class ChangeGroupMessages {
         myGutter.add(new MyChangeGroupMessage(cg));
       }
     });
-  }
-
-  public static void startMaintaining(ChangeGroupLayout layout) {
-    new ChangeGroupMessages(layout, false).startMaintaining();
-    new ChangeGroupMessages(layout, true).startMaintaining();
   }
 
   private class MyChangeGroupMessage implements SimpleEditorMessage {

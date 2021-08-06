@@ -49,6 +49,7 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
@@ -453,7 +454,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     AnnotationOptions.getInstance().removeUpdateListener(this);
     myRootAnnotation.dispose();
     myUpdateQueue.cancelAllUpdates();
-    myUpdateQueue.dispose();
+    Disposer.dispose(myUpdateQueue);
     unhighlightCells();
   }
 
