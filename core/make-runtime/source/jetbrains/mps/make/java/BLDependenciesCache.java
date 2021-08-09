@@ -30,11 +30,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SDependency;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayDeque;
 import java.util.HashSet;
 
 public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
@@ -95,10 +98,46 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
           // as it looks into 'explicit' imports only, while there could be 'implicit' import, vital for compilation deps
           final ModelDependencyScanner ds = new ModelDependencyScanner().crossModelReferences(true).usedLanguages(false);
           ds.walk(status.getInputModel());
+          ArrayDeque<SModule> reexportDeps = new ArrayDeque<>();
           for (SModelReference importedModel : ds.getCrossModelReferences()) {
             final SModel m = importedModel.resolve(myDependencyRegistry);
-            if (m != null) {
-              md.add(m.getModule().getModuleReference());
+            if (m == null) {
+              // XXX shall I report here?
+              continue;
+            }
+            if (md.add(m.getModule().getModuleReference())) {
+              reexportDeps.addLast(m.getModule());
+            }
+          }
+          // collect re-exported dependencies for the sake of complete CP
+          // Can do this in ModuleMaker, too, but why not save efforts at some space expense?
+          for (SModuleReference lr : deps.getLanguageRuntimeModules()) {
+            // runtime modules may re-export some important stuff, too, have to include them for re-export consideration
+            if (md.contains(lr)) {
+              continue;
+            }
+            final SModule lrm = lr.resolve(myDependencyRegistry);
+            if (lrm != null) {
+              reexportDeps.addLast(lrm);
+            }
+          }
+
+          while (!reexportDeps.isEmpty()) {
+            final SModule next = reexportDeps.removeFirst();
+            for (SDependency dep : next.getDeclaredDependencies()) {
+              // XXX unclear how to treat EXTENDS b/w languages - some code does this explicitly,
+              // while Language.getDeclaredDependencies suggest EXTENDS is re-exported dependency, hence
+              // dep.isReexport() is enough to catch EXTENDS here.
+              if (!dep.isReexport()) {
+                continue;
+              }
+              if (md.add(dep.getTargetModule())) {
+                final SModule depTarget = dep.getTargetModule().resolve(myDependencyRegistry);
+                // XXX shall report if missing?
+                if (depTarget != null) {
+                  reexportDeps.addLast(depTarget);
+                }
+              }
             }
           }
         });
