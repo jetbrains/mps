@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.make.java;
 
+import jetbrains.mps.extapi.model.TransientSModel;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.GenerationStatus;
 import jetbrains.mps.generator.cache.BaseModelCache;
 import jetbrains.mps.generator.cache.CacheGenerator;
@@ -97,12 +99,18 @@ public class BLDependenciesCache extends BaseModelCache<ModelDependencies> {
           // new ModelImports(status.getInputModel()).getImportedModels() is not enough
           // as it looks into 'explicit' imports only, while there could be 'implicit' import, vital for compilation deps
           final ModelDependencyScanner ds = new ModelDependencyScanner().crossModelReferences(true).usedLanguages(false);
-          ds.walk(status.getInputModel());
+          ds.walk(status.getInputModel()); // don't like both input and output models, however,
+          // there are cases we can not handle without output model imports (util model of a language as its runtime), nor
+          // without input model (InternalClassifier, string-backed references e.g. between behavior models)
+          status.getOutputModels().forEach(ds::walk);
           ArrayDeque<SModule> reexportDeps = new ArrayDeque<>();
           for (SModelReference importedModel : ds.getCrossModelReferences()) {
             final SModel m = importedModel.resolve(myDependencyRegistry);
             if (m == null) {
               // XXX shall I report here?
+              continue;
+            }
+            if (m instanceof TransientSModel || m.getModule() instanceof TransientSModule) {
               continue;
             }
             if (md.add(m.getModule().getModuleReference())) {
