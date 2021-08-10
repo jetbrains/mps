@@ -19,7 +19,7 @@
   <uses module="cddf55b3-117e-46ec-837c-ff50eb7b89b0(jetbrains.mps.lang.feedback.problem.childAndProp)" kind="dp" />
   <uses module="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="dp" />
   <uses module="2bdcefec-ba49-4b32-ab50-ebc7a41d5090(jetbrains.mps.lang.smodel#1139186730696)" kind="dp" />
-  <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+  <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <dependency className="jetbrains.mps.lang.feedback.problem.childAndProp.main.QueriesGenerated">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />

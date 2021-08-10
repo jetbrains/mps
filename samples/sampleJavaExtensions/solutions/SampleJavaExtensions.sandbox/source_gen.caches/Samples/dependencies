@@ -12,10 +12,10 @@
   <uses language="l:cb7388e8-f182-4cda-bd83-9796e8634856:org.jetbrains.mps.samples.ParallelFor" />
   <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
   <uses module="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
-  <uses module="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+  <uses module="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt+dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-  <uses module="562eff3e-65ac-4df8-98d2-6cf36850139c(org.jetbrains.mps.samples.MoneyRuntime)" kind="rt" />
-  <uses module="bc474121-298a-4a06-9066-cd79e543e9d5(org.jetbrains.mps.samples.ParallelForUtils)" kind="rt" />
+  <uses module="562eff3e-65ac-4df8-98d2-6cf36850139c(org.jetbrains.mps.samples.MoneyRuntime)" kind="rt+dp" />
+  <uses module="bc474121-298a-4a06-9066-cd79e543e9d5(org.jetbrains.mps.samples.ParallelForUtils)" kind="rt+dp" />
   <dependency className="Samples.DecisionSample">
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Object" />

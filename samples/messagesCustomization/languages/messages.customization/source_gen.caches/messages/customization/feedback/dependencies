@@ -24,12 +24,12 @@
   <uses module="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" kind="dp" />
   <uses module="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" kind="dp" />
   <uses module="cddf55b3-117e-46ec-837c-ff50eb7b89b0(jetbrains.mps.lang.feedback.problem.childAndProp)" kind="dp" />
-  <uses module="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="rt" />
+  <uses module="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="rt+dp" />
   <uses module="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" kind="rt+dp" />
   <uses module="feec32f9-bc8f-4da8-8efd-7f3f9dd4101b(jetbrains.mps.lang.feedback.problem.scopes)" kind="dp" />
   <uses module="7127d409-29f0-43e8-917f-f016ea288944(jetbrains.mps.lang.feedback.problem.structural)" kind="dp" />
-  <uses module="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" kind="rt" />
-  <uses module="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
+  <uses module="a098f3e2-deaa-4e97-bf80-9109efff59dd(jetbrains.mps.lang.feedback.problem.structure)" kind="rt+dp" />
+  <uses module="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt+dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
   <uses module="7cf7c95b-c81e-4da9-a056-45e480a7abd3(messages.customization)" kind="dp" />
   <dependency className="messages.customization.feedback.BrokenConcept_FeedbackFeedback">

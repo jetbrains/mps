@@ -4,7 +4,7 @@
   <uses language="l:ff24ab03-965e-4d15-9aed-52dc276658f4:jetbrains.mps.samples.complex" />
   <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-  <uses module="b8bf2110-d2b5-478f-87dd-306abe7416fe(jetbrains.mps.samples.complex.runtime)" kind="rt" />
+  <uses module="b8bf2110-d2b5-478f-87dd-306abe7416fe(jetbrains.mps.samples.complex.runtime)" kind="rt+dp" />
   <dependency className="jetbrains.mps.complex.sandbox.Main">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.System" />

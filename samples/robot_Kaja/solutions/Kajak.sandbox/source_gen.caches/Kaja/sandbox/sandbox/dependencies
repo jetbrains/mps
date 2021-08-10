@@ -7,7 +7,7 @@
   <uses language="l:b56912a3-674f-4530-b0cf-55261b526a1f:jetbrains.mps.samples.KajaSceneConstruction" />
   <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-  <uses module="5004e7d9-a353-4cb0-960a-68fc804bd95d(jetbrains.mps.samples.JavaKaja)" kind="rt" />
+  <uses module="5004e7d9-a353-4cb0-960a-68fc804bd95d(jetbrains.mps.samples.JavaKaja)" kind="rt+dp" />
   <dependency className="Kaja.sandbox.sandbox.Dog">
     <classNode dependClassName="java.lang.String" />
     <classNode extendsClassName="JavaKaja.runtime.KajaFrame" />

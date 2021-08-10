@@ -4,7 +4,7 @@
   <uses language="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
   <uses language="l:772f6dcd-8c0d-48f7-869c-908e036f7c8e:jetbrains.mps.sampleXML" />
   <uses language="l:594bd850-39e3-46a5-9ef2-40c70d782c8c:jetbrains.mps.samples.generator_demo.demoLang5" />
-  <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+  <uses module="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt+dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <dependency className="jetbrains.mps.samples.generator_demo.test_models.test5.DemoApp">
     <classNode dependClassName="java.awt.Color" />

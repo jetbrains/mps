@@ -51,7 +51,7 @@
   <uses module="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
   <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-  <uses module="dd209277-71c0-4f07-bfb3-3a07a1dce2ee(jetbrains.mps.samples.customAspect.documentation.runtime)" kind="rt" />
+  <uses module="dd209277-71c0-4f07-bfb3-3a07a1dce2ee(jetbrains.mps.samples.customAspect.documentation.runtime)" kind="rt+dp" />
   <dependency className="jetbrains.mps.samples.customAspect.sampleLanguage.Language">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Override" />

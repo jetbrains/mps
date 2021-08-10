@@ -23,6 +23,7 @@
   <uses module="a8de7923-dc6f-4aa1-b8a9-2d19ffee3edd(jetbrains.mps.console)" kind="dp" />
   <uses module="de1ad86d-6e50-4a02-b306-d4d17f64c375(jetbrains.mps.console.base)" kind="dp" />
   <uses module="995a7394-7f76-4b8b-a929-c53448708106(jetbrains.mps.console.internalCommands)" kind="dp" />
+  <uses module="2e24a298-44d1-4697-baec-5c424fed3a3b(jetbrains.mps.editorlang.runtime)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />

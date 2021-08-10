@@ -14,7 +14,7 @@
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-  <uses module="dd209277-71c0-4f07-bfb3-3a07a1dce2ee(jetbrains.mps.samples.customAspect.documentation.runtime)" kind="rt" />
+  <uses module="dd209277-71c0-4f07-bfb3-3a07a1dce2ee(jetbrains.mps.samples.customAspect.documentation.runtime)" kind="rt+dp" />
   <uses module="4ac0b19e-3e88-4e61-bab3-507ba2cceae8(jetbrains.mps.samples.customAspect.sampleLanguage)" kind="dp" />
   <dependency className="jetbrains.mps.samples.customAspect.sampleLanguage.documentation.DocumentationDescriptor">
     <classNode dependClassName="java.lang.String" />
