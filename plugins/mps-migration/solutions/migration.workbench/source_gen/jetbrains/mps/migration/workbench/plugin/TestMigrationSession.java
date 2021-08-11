@@ -205,9 +205,8 @@ import java.util.Collections;
 
   @Override
   public ProjectMigration nextStepCleanup() {
-    // XXX CleanupProjectMigration doesn't extend ProjectMigration, why, oh why?!
-    final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).ofType(ProjectMigration.class).findFirst(new IWhereFilter<ProjectMigration>() {
-      public boolean accept(ProjectMigration it) {
+    final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst(new IWhereFilter<CleanupProjectMigration>() {
+      public boolean accept(CleanupProjectMigration it) {
         return !(ListSequence.fromList(passedP).contains(it));
       }
     });

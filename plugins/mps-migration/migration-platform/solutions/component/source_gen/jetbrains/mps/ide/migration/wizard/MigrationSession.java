@@ -184,8 +184,8 @@ public interface MigrationSession {
 
     @Override
     public ProjectMigration nextStepCleanup() {
-      ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).ofType(ProjectMigration.class).findFirst(new IWhereFilter<ProjectMigration>() {
-        public boolean accept(ProjectMigration it) {
+      ProjectMigration m = CollectionSequence.fromCollection(getProjectMigrations()).ofType(CleanupProjectMigration.class).findFirst(new IWhereFilter<CleanupProjectMigration>() {
+        public boolean accept(CleanupProjectMigration it) {
           return consider(it);
         }
       });

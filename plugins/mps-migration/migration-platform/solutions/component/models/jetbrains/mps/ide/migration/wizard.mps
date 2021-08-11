@@ -6280,20 +6280,13 @@
                 <ref role="3uigEE" to="bdll:~ProjectMigration" resolve="ProjectMigration" />
               </node>
               <node concept="2OqwBi" id="7W$jB0VF4tu" role="33vP2m">
-                <node concept="2OqwBi" id="7W$jB0VF4tv" role="2Oq$k0">
-                  <node concept="2OqwBi" id="7W$jB0VF4tw" role="2Oq$k0">
-                    <node concept="1rXfSq" id="7W$jB0VF4tx" role="2Oq$k0">
-                      <ref role="37wK5l" node="48vNO9iw2NI" resolve="getProjectMigrations" />
-                    </node>
-                    <node concept="UnYns" id="7W$jB0VF4ty" role="2OqNvi">
-                      <node concept="3uibUv" id="7W$jB0VF4tz" role="UnYnz">
-                        <ref role="3uigEE" to="bdll:~CleanupProjectMigration" resolve="CleanupProjectMigration" />
-                      </node>
-                    </node>
+                <node concept="2OqwBi" id="7W$jB0VF4tw" role="2Oq$k0">
+                  <node concept="1rXfSq" id="7W$jB0VF4tx" role="2Oq$k0">
+                    <ref role="37wK5l" node="48vNO9iw2NI" resolve="getProjectMigrations" />
                   </node>
-                  <node concept="UnYns" id="7W$jB0VF4t$" role="2OqNvi">
-                    <node concept="3uibUv" id="7W$jB0VF4t_" role="UnYnz">
-                      <ref role="3uigEE" to="bdll:~ProjectMigration" resolve="ProjectMigration" />
+                  <node concept="UnYns" id="7W$jB0VF4ty" role="2OqNvi">
+                    <node concept="3uibUv" id="7W$jB0VF4tz" role="UnYnz">
+                      <ref role="3uigEE" to="bdll:~CleanupProjectMigration" resolve="CleanupProjectMigration" />
                     </node>
                   </node>
                 </node>

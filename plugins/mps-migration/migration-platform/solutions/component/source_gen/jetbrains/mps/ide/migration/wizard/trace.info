@@ -313,7 +313,7 @@
       <node id="9161533785922812693" at="175,52,176,30" concept="11" />
       <node id="3577160840697523412" at="179,53,180,72" concept="4" />
       <node id="1458839180078181809" at="181,7,182,15" concept="11" />
-      <node id="9161533785922881385" at="188,52,189,30" concept="11" />
+      <node id="9161533785922881385" at="188,59,189,30" concept="11" />
       <node id="9161533785922890248" at="192,53,193,72" concept="4" />
       <node id="9161533785922890259" at="194,7,195,15" concept="11" />
       <node id="9161533785922427360" at="198,51,199,56" concept="12" />
@@ -364,7 +364,7 @@
       <node id="9161533785922812680" at="171,0,174,0" concept="9" trace="accept#(Ljetbrains/mps/migration/global/ProjectMigration;)Z" />
       <node id="9161533785922812691" at="175,0,178,0" concept="9" trace="accept#(Ljetbrains/mps/migration/global/ProjectMigration;)Z" />
       <node id="9161533785922824974" at="178,9,181,7" concept="8" />
-      <node id="9161533785922881383" at="188,0,191,0" concept="9" trace="accept#(Ljetbrains/mps/migration/global/ProjectMigration;)Z" />
+      <node id="9161533785922881383" at="188,0,191,0" concept="9" trace="accept#(Ljetbrains/mps/migration/global/CleanupProjectMigration;)Z" />
       <node id="9161533785922890246" at="191,9,194,7" concept="8" />
       <node id="9161533785922588642" at="199,56,202,7" concept="8" />
       <node id="7126094407776262840" at="220,29,223,7" concept="8" />
@@ -452,7 +452,7 @@
       <scope id="9161533785922812681" at="171,52,172,64" />
       <scope id="9161533785922812692" at="175,52,176,30" />
       <scope id="9161533785922824976" at="179,53,180,72" />
-      <scope id="9161533785922881384" at="188,52,189,30" />
+      <scope id="9161533785922881384" at="188,59,189,30" />
       <scope id="9161533785922890247" at="192,53,193,72" />
       <scope id="9161533785922588644" at="200,66,201,21" />
       <scope id="7126094407776262842" at="221,70,222,75" />
@@ -594,7 +594,7 @@
       <unit id="7239893004292179026" at="156,98,160,13" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$1$3" />
       <unit id="9161533785922812680" at="170,95,174,7" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$2" />
       <unit id="9161533785922812691" at="174,23,178,7" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$3" />
-      <unit id="9161533785922881383" at="187,168,191,7" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$4" />
+      <unit id="9161533785922881383" at="187,137,191,7" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$4" />
       <unit id="5375498624334926523" at="278,89,282,7" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$5" />
       <unit id="231600208032249617" at="291,0,306,0" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationStepKind" />
       <unit id="3577160840697523898" at="131,70,163,7" name="jetbrains.mps.ide.migration.wizard.MigrationSession$MigrationSessionBase$1" />
