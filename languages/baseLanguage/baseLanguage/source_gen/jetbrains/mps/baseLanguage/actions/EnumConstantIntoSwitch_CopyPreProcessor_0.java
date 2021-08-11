@@ -19,13 +19,13 @@ public final class EnumConstantIntoSwitch_CopyPreProcessor_0 implements CopyPreP
   }
   @Override
   public void preProcessNode(SNode copy, SNode original) {
-    new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumConstantOrigin$$S).set(copy, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, "jetbrains.mps.baseLanguage.structure.EnumConstantOrigin")));
-    SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumConstantOrigin$$S).get(copy), LINKS.originalEnumConstant$dk5J, original);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumConstantCopyPasteOrigin$$S).set(copy, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, "jetbrains.mps.baseLanguage.structure.EnumConstantCopyPasteOrigin")));
+    SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumConstantCopyPasteOrigin$$S).get(copy), LINKS.originalEnumConstant$dk5J, original);
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
-    /*package*/ static final SConcept EnumConstantOrigin$$S = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, "jetbrains.mps.baseLanguage.structure.EnumConstantOrigin");
+    /*package*/ static final SConcept EnumConstantCopyPasteOrigin$$S = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, "jetbrains.mps.baseLanguage.structure.EnumConstantCopyPasteOrigin");
   }
 
   private static final class LINKS {

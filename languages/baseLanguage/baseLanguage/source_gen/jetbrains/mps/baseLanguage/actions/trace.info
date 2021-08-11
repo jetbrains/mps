@@ -2643,14 +2643,14 @@
       <node id="5464647624210443479" at="23,46,24,34" concept="10" />
       <node id="5464647624210472610" at="27,39,28,187" concept="9" />
       <node id="5464647624210482405" at="28,187,29,199" concept="9" />
-      <node id="5464647624211348184" at="29,199,30,168" concept="9" />
-      <node id="5464647624210483232" at="30,168,31,137" concept="4" />
+      <node id="5464647624211348184" at="29,199,30,177" concept="9" />
+      <node id="5464647624210483232" at="30,177,31,137" concept="4" />
       <node id="5464647624210493336" at="31,137,32,81" concept="4" />
       <node id="5464647624210461101" at="32,81,33,61" concept="4" />
       <node id="5464647624210482725" at="33,61,34,13" concept="10" />
       <node id="5464647624210443479" at="38,0,39,0" concept="13" trace="EnumConstantDeclaration$MW" />
       <node id="5464647624210443479" at="39,0,40,0" concept="13" trace="SwitchCase$7o" />
-      <node id="5464647624210443479" at="40,0,41,0" concept="13" trace="EnumConstantOrigin$$S" />
+      <node id="5464647624210443479" at="40,0,41,0" concept="13" trace="EnumConstantCopyPasteOrigin$$S" />
       <node id="5464647624210443479" at="41,0,42,0" concept="13" trace="EnumClass$Vk" />
       <node id="5464647624210443479" at="45,0,46,0" concept="13" trace="originalEnumConstant$dk5J" />
       <node id="5464647624210443479" at="46,0,47,0" concept="13" trace="enumClass$bGAj" />
@@ -2679,15 +2679,15 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/5464647624211263460">
     <file name="EnumConstantIntoSwitch_CopyPreProcessor_0.java">
       <node id="5464647624211266783" at="17,50,18,47" concept="10" />
-      <node id="5464647624211301376" at="21,58,22,272" concept="4" />
-      <node id="5464647624211313890" at="22,272,23,155" concept="4" />
+      <node id="5464647624211301376" at="21,58,22,290" concept="4" />
+      <node id="5464647624211313890" at="22,290,23,164" concept="4" />
       <node id="5464647624211266783" at="27,0,28,0" concept="13" trace="EnumConstantDeclaration$MW" />
-      <node id="5464647624211266783" at="28,0,29,0" concept="13" trace="EnumConstantOrigin$$S" />
+      <node id="5464647624211266783" at="28,0,29,0" concept="13" trace="EnumConstantCopyPasteOrigin$$S" />
       <node id="5464647624211266783" at="32,0,33,0" concept="13" trace="originalEnumConstant$dk5J" />
       <node id="5464647624211266783" at="16,0,20,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5464647624211266783" at="20,0,25,0" concept="8" trace="preProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="5464647624211266783" at="17,50,18,47" />
-      <scope id="5464647624211266785" at="21,58,23,155" />
+      <scope id="5464647624211266785" at="21,58,23,164" />
       <scope id="5464647624211266783" at="16,0,20,0" />
       <scope id="5464647624211266783" at="20,0,25,0">
         <var name="copy" id="5464647624211266783" />
@@ -2699,13 +2699,13 @@
     </file>
     <file name="EnumConstantIntoSwitch_PastePostProcessor_0.java">
       <node id="5464647624211969901" at="14,50,15,47" concept="10" />
-      <node id="5464647624211969970" at="18,49,19,97" concept="4" />
+      <node id="5464647624211969970" at="18,49,19,106" concept="4" />
       <node id="5464647624211969901" at="23,0,24,0" concept="13" trace="EnumConstantDeclaration$MW" />
-      <node id="5464647624211969901" at="24,0,25,0" concept="13" trace="EnumConstantOrigin$$S" />
+      <node id="5464647624211969901" at="24,0,25,0" concept="13" trace="EnumConstantCopyPasteOrigin$$S" />
       <node id="5464647624211969901" at="13,0,17,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5464647624211969901" at="17,0,21,0" concept="8" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="5464647624211969901" at="14,50,15,47" />
-      <scope id="5464647624211969903" at="18,49,19,97" />
+      <scope id="5464647624211969903" at="18,49,19,106" />
       <scope id="5464647624211969901" at="13,0,17,0" />
       <scope id="5464647624211969901" at="17,0,21,0">
         <var name="pastedNode" id="5464647624211969901" />

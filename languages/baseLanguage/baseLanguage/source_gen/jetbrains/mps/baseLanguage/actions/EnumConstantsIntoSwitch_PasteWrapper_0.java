@@ -27,7 +27,7 @@ public final class EnumConstantsIntoSwitch_PasteWrapper_0 implements PasteWrappe
   public SNode wrap(SNode sourceNode) {
     SNode c = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase"));
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-    SNode original = SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumConstantOrigin$$S).get(sourceNode), LINKS.originalEnumConstant$dk5J);
+    SNode original = SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumConstantCopyPasteOrigin$$S).get(sourceNode), LINKS.originalEnumConstant$dk5J);
     SLinkOperations.setTarget(ref, LINKS.enumClass$bGAj, SNodeOperations.as(SNodeOperations.getParent(original), CONCEPTS.EnumClass$Vk));
     SLinkOperations.setTarget(ref, LINKS.enumConstantDeclaration$f1_N, original);
     SLinkOperations.setTarget(c, LINKS.expression$QQk6, ref);
@@ -37,7 +37,7 @@ public final class EnumConstantsIntoSwitch_PasteWrapper_0 implements PasteWrappe
   private static final class CONCEPTS {
     /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
     /*package*/ static final SConcept SwitchCase$7o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase");
-    /*package*/ static final SConcept EnumConstantOrigin$$S = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, "jetbrains.mps.baseLanguage.structure.EnumConstantOrigin");
+    /*package*/ static final SConcept EnumConstantCopyPasteOrigin$$S = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, "jetbrains.mps.baseLanguage.structure.EnumConstantCopyPasteOrigin");
     /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 

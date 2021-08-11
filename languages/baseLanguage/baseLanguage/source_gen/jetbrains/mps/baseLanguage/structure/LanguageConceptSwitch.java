@@ -97,8 +97,8 @@ public final class LanguageConceptSwitch {
   public static final int DoubleType = 85;
   public static final int ElsifClause = 86;
   public static final int EnumClass = 87;
-  public static final int EnumConstantDeclaration = 88;
-  public static final int EnumConstantOrigin = 89;
+  public static final int EnumConstantCopyPasteOrigin = 88;
+  public static final int EnumConstantDeclaration = 89;
   public static final int EnumConstantReference = 90;
   public static final int EnumValueOfExpression = 91;
   public static final int EnumValuesExpression = 92;
@@ -416,8 +416,8 @@ public final class LanguageConceptSwitch {
     builder.put(0xf940d451a6L, DoubleType);
     builder.put(0x118ceceb41aL, ElsifClause);
     builder.put(0xfc367070a5L, EnumClass);
+    builder.put(0x4bd6540fafce749fL, EnumConstantCopyPasteOrigin);
     builder.put(0xfc367388b3L, EnumConstantDeclaration);
-    builder.put(0x4bd6540fafce749fL, EnumConstantOrigin);
     builder.put(0xfc37588bc8L, EnumConstantReference);
     builder.put(0x11d1e5db156L, EnumValueOfExpression);
     builder.put(0x11d1e4bce56L, EnumValuesExpression);

@@ -2346,40 +2346,40 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1083245299891">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="1083245299891" at="100,0,101,0" concept="2" trace="props_EnumConstantDeclaration" />
-      <node id="1083245299891" at="973,52,974,76" concept="5" />
-      <node id="1083245299891" at="974,76,975,35" concept="1" />
-      <node id="1083245299891" at="975,35,976,55" concept="1" />
-      <node id="1083245299891" at="977,9,978,45" concept="6" />
-      <node id="1083245299891" at="972,57,977,9" concept="3" />
-      <scope id="1083245299891" at="973,52,976,55">
+      <node id="1083245299891" at="101,0,102,0" concept="2" trace="props_EnumConstantDeclaration" />
+      <node id="1083245299891" at="980,52,981,76" concept="5" />
+      <node id="1083245299891" at="981,76,982,35" concept="1" />
+      <node id="1083245299891" at="982,35,983,55" concept="1" />
+      <node id="1083245299891" at="984,9,985,45" concept="6" />
+      <node id="1083245299891" at="979,57,984,9" concept="3" />
+      <scope id="1083245299891" at="980,52,983,55">
         <var name="cpb" id="1083245299891" />
       </scope>
-      <scope id="1083245299891" at="972,57,978,45" />
+      <scope id="1083245299891" at="979,57,985,45" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="1083245299891" at="100,0,101,0" concept="7" trace="EnumConstantDeclaration" />
-      <node id="1083245299891" at="418,42,419,56" concept="1" />
+      <node id="1083245299891" at="101,0,102,0" concept="7" trace="EnumConstantDeclaration" />
+      <node id="1083245299891" at="419,66,420,56" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="1083245299891" at="111,0,112,0" concept="2" trace="myConceptEnumConstantDeclaration" />
-      <node id="1083245299891" at="547,57,548,48" concept="6" />
-      <node id="1083245299891" at="1998,81,1999,178" concept="5" />
-      <node id="1083245299891" at="1999,178,2000,34" concept="1" />
-      <node id="1083245299891" at="2001,71,2002,71" concept="1" />
-      <node id="1083245299891" at="2005,71,2006,76" concept="1" />
-      <node id="1083245299891" at="2007,71,2008,76" concept="1" />
-      <node id="1083245299891" at="2008,76,2009,107" concept="1" />
-      <node id="1083245299891" at="2009,107,2010,17" concept="1" />
-      <node id="492581319488141108" at="2010,17,2011,190" concept="1" />
-      <node id="1083245299891" at="2011,190,2012,54" concept="1" />
-      <node id="1083245299891" at="2012,54,2013,22" concept="6" />
-      <node id="1083245299891" at="1998,0,2015,0" concept="8" trace="createDescriptorForEnumConstantDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="1083245299891" at="547,57,548,48" />
-      <scope id="1083245299891" at="1998,81,2013,22">
+      <node id="1083245299891" at="112,0,113,0" concept="2" trace="myConceptEnumConstantDeclaration" />
+      <node id="1083245299891" at="549,57,550,48" concept="6" />
+      <node id="1083245299891" at="2007,81,2008,178" concept="5" />
+      <node id="1083245299891" at="2008,178,2009,34" concept="1" />
+      <node id="1083245299891" at="2010,71,2011,71" concept="1" />
+      <node id="1083245299891" at="2014,71,2015,76" concept="1" />
+      <node id="1083245299891" at="2016,71,2017,76" concept="1" />
+      <node id="1083245299891" at="2017,76,2018,107" concept="1" />
+      <node id="1083245299891" at="2018,107,2019,17" concept="1" />
+      <node id="492581319488141108" at="2019,17,2020,190" concept="1" />
+      <node id="1083245299891" at="2020,190,2021,54" concept="1" />
+      <node id="1083245299891" at="2021,54,2022,22" concept="6" />
+      <node id="1083245299891" at="2007,0,2024,0" concept="8" trace="createDescriptorForEnumConstantDeclaration#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1083245299891" at="549,57,550,48" />
+      <scope id="1083245299891" at="2007,81,2022,22">
         <var name="b" id="1083245299891" />
       </scope>
-      <scope id="1083245299891" at="1998,0,2015,0" />
+      <scope id="1083245299891" at="2007,0,2024,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1083260308424">
@@ -2398,7 +2398,7 @@
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="1083260308424" at="102,0,103,0" concept="7" trace="EnumConstantReference" />
-      <node id="1083260308424" at="420,57,421,54" concept="1" />
+      <node id="1083260308424" at="420,56,421,54" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="1083260308424" at="113,0,114,0" concept="2" trace="myConceptEnumConstantReference" />
@@ -4326,7 +4326,7 @@
       <node id="1178285077437" at="1696,17,1697,22" concept="6" />
       <node id="1178285077437" at="1701,19,1702,71" concept="1" />
       <node id="1178285077437" at="1803,132,1804,71" concept="1" />
-      <node id="1178285077437" at="2003,71,2004,71" concept="1" />
+      <node id="1178285077437" at="2012,71,2013,71" concept="1" />
       <node id="1178285077437" at="2105,130,2106,71" concept="1" />
       <node id="1178285077437" at="2676,34,2677,71" concept="1" />
       <node id="1178285077437" at="2714,34,2715,71" concept="1" />
@@ -4730,7 +4730,7 @@
       <node id="1188208481402" at="595,47,596,38" concept="6" />
       <node id="1188208481402" at="1369,71,1370,71" concept="1" />
       <node id="1188208481402" at="1657,71,1658,71" concept="1" />
-      <node id="1188208481402" at="2002,71,2003,71" concept="1" />
+      <node id="1188208481402" at="2011,71,2012,71" concept="1" />
       <node id="1188208481402" at="2271,71,2272,169" concept="5" />
       <node id="1188208481402" at="2272,169,2273,19" concept="1" />
       <node id="1188208481402" at="2273,19,2274,107" concept="1" />
@@ -4915,7 +4915,7 @@
       <node id="1194952169813" at="164,0,165,0" concept="2" trace="myConceptIMemberContainer" />
       <node id="1194952169813" at="653,50,654,41" concept="6" />
       <node id="1194952169813" at="1658,71,1659,71" concept="1" />
-      <node id="1194952169813" at="2006,76,2007,71" concept="1" />
+      <node id="1194952169813" at="2015,76,2016,71" concept="1" />
       <node id="1194952169813" at="2487,74,2488,172" concept="5" />
       <node id="1194952169813" at="2488,172,2489,19" concept="1" />
       <node id="1194952169813" at="2489,19,2490,107" concept="1" />
@@ -5572,7 +5572,7 @@
       <node id="1204053956946" at="1358,121,1359,71" concept="1" />
       <node id="1204053956946" at="1643,127,1644,71" concept="1" />
       <node id="1204053956946" at="1818,120,1819,71" concept="1" />
-      <node id="1204053956946" at="2004,71,2005,71" concept="1" />
+      <node id="1204053956946" at="2013,71,2014,71" concept="1" />
       <node id="1204053956946" at="2494,69,2495,167" concept="5" />
       <node id="1204053956946" at="2495,167,2496,19" concept="1" />
       <node id="1204053956946" at="2500,76,2501,107" concept="1" />
@@ -5861,7 +5861,7 @@
       <node id="1212170275853" at="1368,130,1369,71" concept="1" />
       <node id="1212170275853" at="1404,34,1405,71" concept="1" />
       <node id="1212170275853" at="1660,71,1661,71" concept="1" />
-      <node id="1212170275853" at="2000,34,2001,71" concept="1" />
+      <node id="1212170275853" at="2009,34,2010,71" concept="1" />
       <node id="1212170275853" at="2579,74,2580,172" concept="5" />
       <node id="1212170275853" at="2580,172,2581,19" concept="1" />
       <node id="1212170275853" at="2581,19,2582,71" concept="1" />
@@ -9723,37 +9723,37 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/5464647624211461279">
     <file name="ConceptPresentationAspectImpl.java">
-      <node id="5464647624211461279" at="101,0,102,0" concept="2" trace="props_EnumConstantOrigin" />
-      <node id="5464647624211461279" at="980,47,981,76" concept="5" />
-      <node id="5464647624211461279" at="981,76,982,154" concept="1" />
-      <node id="5464647624211461279" at="982,154,983,50" concept="1" />
-      <node id="5464647624211461279" at="984,9,985,40" concept="6" />
-      <node id="5464647624211461279" at="979,52,984,9" concept="3" />
-      <scope id="5464647624211461279" at="980,47,983,50">
+      <node id="5464647624211461279" at="100,0,101,0" concept="2" trace="props_EnumConstantCopyPasteOrigin" />
+      <node id="5464647624211461279" at="973,56,974,76" concept="5" />
+      <node id="5464647624211461279" at="974,76,975,154" concept="1" />
+      <node id="5464647624211461279" at="975,154,976,59" concept="1" />
+      <node id="5464647624211461279" at="977,9,978,49" concept="6" />
+      <node id="5464647624211461279" at="972,61,977,9" concept="3" />
+      <scope id="5464647624211461279" at="973,56,976,59">
         <var name="cpb" id="5464647624211461279" />
       </scope>
-      <scope id="5464647624211461279" at="979,52,985,40" />
+      <scope id="5464647624211461279" at="972,61,978,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5464647624211461279" at="101,0,102,0" concept="7" trace="EnumConstantOrigin" />
-      <node id="5464647624211461279" at="419,56,420,57" concept="1" />
+      <node id="5464647624211461279" at="100,0,101,0" concept="7" trace="EnumConstantCopyPasteOrigin" />
+      <node id="5464647624211461279" at="418,42,419,66" concept="1" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="5464647624211461279" at="112,0,113,0" concept="2" trace="myConceptEnumConstantOrigin" />
-      <node id="5464647624211461279" at="549,52,550,43" concept="6" />
-      <node id="5464647624211461279" at="2015,76,2016,179" concept="5" />
-      <node id="5464647624211461279" at="2016,179,2017,34" concept="1" />
-      <node id="5464647624211461279" at="2017,34,2018,127" concept="1" />
-      <node id="5464647624211461279" at="2018,127,2019,113" concept="1" />
-      <node id="5464647624211461279" at="2019,113,2020,17" concept="1" />
-      <node id="5464647624211463158" at="2020,17,2021,178" concept="1" />
-      <node id="5464647624211461279" at="2021,178,2022,22" concept="6" />
-      <node id="5464647624211461279" at="2015,0,2024,0" concept="8" trace="createDescriptorForEnumConstantOrigin#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="5464647624211461279" at="549,52,550,43" />
-      <scope id="5464647624211461279" at="2015,76,2022,22">
+      <node id="5464647624211461279" at="111,0,112,0" concept="2" trace="myConceptEnumConstantCopyPasteOrigin" />
+      <node id="5464647624211461279" at="547,61,548,52" concept="6" />
+      <node id="5464647624211461279" at="1998,85,1999,188" concept="5" />
+      <node id="5464647624211461279" at="1999,188,2000,34" concept="1" />
+      <node id="5464647624211461279" at="2000,34,2001,127" concept="1" />
+      <node id="5464647624211461279" at="2001,127,2002,113" concept="1" />
+      <node id="5464647624211461279" at="2002,113,2003,17" concept="1" />
+      <node id="5464647624211463158" at="2003,17,2004,178" concept="1" />
+      <node id="5464647624211461279" at="2004,178,2005,22" concept="6" />
+      <node id="5464647624211461279" at="1998,0,2007,0" concept="8" trace="createDescriptorForEnumConstantCopyPasteOrigin#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="5464647624211461279" at="547,61,548,52" />
+      <scope id="5464647624211461279" at="1998,85,2005,22">
         <var name="b" id="5464647624211461279" />
       </scope>
-      <scope id="5464647624211461279" at="2015,0,2024,0" />
+      <scope id="5464647624211461279" at="1998,0,2007,0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/5497648299878491908">

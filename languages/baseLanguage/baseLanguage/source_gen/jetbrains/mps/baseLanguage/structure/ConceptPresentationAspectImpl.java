@@ -97,8 +97,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DoubleType;
   private ConceptPresentation props_ElsifClause;
   private ConceptPresentation props_EnumClass;
+  private ConceptPresentation props_EnumConstantCopyPasteOrigin;
   private ConceptPresentation props_EnumConstantDeclaration;
-  private ConceptPresentation props_EnumConstantOrigin;
   private ConceptPresentation props_EnumConstantReference;
   private ConceptPresentation props_EnumValueOfExpression;
   private ConceptPresentation props_EnumValuesExpression;
@@ -969,6 +969,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnumClass = cpb.create();
         }
         return props_EnumClass;
+      case LanguageConceptSwitch.EnumConstantCopyPasteOrigin:
+        if (props_EnumConstantCopyPasteOrigin == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, 0x4bd6540fafce7bf6L, "originalEnumConstant", "", "");
+          props_EnumConstantCopyPasteOrigin = cpb.create();
+        }
+        return props_EnumConstantCopyPasteOrigin;
       case LanguageConceptSwitch.EnumConstantDeclaration:
         if (props_EnumConstantDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -976,13 +983,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnumConstantDeclaration = cpb.create();
         }
         return props_EnumConstantDeclaration;
-      case LanguageConceptSwitch.EnumConstantOrigin:
-        if (props_EnumConstantOrigin == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4bd6540fafce749fL, 0x4bd6540fafce7bf6L, "originalEnumConstant", "", "");
-          props_EnumConstantOrigin = cpb.create();
-        }
-        return props_EnumConstantOrigin;
       case LanguageConceptSwitch.EnumConstantReference:
         if (props_EnumConstantReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
