@@ -241,7 +241,7 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                 monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(String.format("No generated Java class with name %s", Properties.EVALUATOR_NAME))));
                 return new IResult.FAILURE(_output_it4uid_a0b);
               }
-              final Reference<CompilationResult> compilationResult = new Reference<CompilationResult>(null);
+              final Reference<CompilationResult> compilationResult = new Reference<>(null);
               CompilationResultListener listener = new CompilationResultAdapter() {
                 @Override
                 public void onCompilationResult(CompilationResult r) {

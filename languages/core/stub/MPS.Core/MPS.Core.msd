@@ -21,7 +21,6 @@
       <sourceRoot location="util.jar" />
       <sourceRoot location="3rd-party.jar" />
       <PackageScope>
-        <include prefix="org.eclipse."/> <!-- ecj.jar replacement -->
         <include prefix="gnu.trove."/> <!-- trove4j.jar -->
         <include prefix="org.jdom."/> <!-- jdom.jar -->
         <include prefix="org.apache.log4j."/> <!-- log4j.jar -->
@@ -56,6 +55,8 @@
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="true">8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)</dependency>
+    <!-- FIXME remove this dependency; need to get stub dependency for parts of EclipseJavaCompiler from debug.evaluate -->
+    <dependency reexport="false">eb57df31-1cf1-45a8-9e5c-fb583b442849(Eclipse.ECJ)</dependency>
   </dependencies>
   <usedLanguages>
     <usedLanguage>f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)</usedLanguage>
