@@ -100,14 +100,14 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
 
   @Override
   public Collection<CopyPreProcessor> getCopyPreProcessors() {
-    return Arrays.asList(new CopyPreProcessor[]{new BL_CopyPasteHandlers_CopyPreProcessor_0(), new BL_CopyPasteHandlers_CopyPreProcessor_1(), new copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0()});
+    return Arrays.asList(new CopyPreProcessor[]{new BL_CopyPasteHandlers_CopyPreProcessor_0(), new BL_CopyPasteHandlers_CopyPreProcessor_1(), new copyPasteExtendingWithDefaultModifier_CopyPreProcessor_0(), new EnumConstantIntoSwitch_CopyPreProcessor_0()});
   }
   @Override
   public Collection<PastePostProcessor> getPastePostProcessors() {
-    return Arrays.asList(new PastePostProcessor[]{new BL_CopyPasteHandlers_PastePostProcessor_0(), new BL_CopyPasteHandlers_PastePostProcessor_1(), new copyPasteExtendingWithDefaultModifier_PastePostProcessor_0()});
+    return Arrays.asList(new PastePostProcessor[]{new BL_CopyPasteHandlers_PastePostProcessor_0(), new BL_CopyPasteHandlers_PastePostProcessor_1(), new copyPasteExtendingWithDefaultModifier_PastePostProcessor_0(), new EnumConstantIntoSwitch_PastePostProcessor_0()});
   }
   @Override
   public Collection<PasteWrapper> getPasteWrappers() {
-    return Arrays.asList(new PasteWrapper[]{new wrappers_PasteWrapper_0(), new wrappers_PasteWrapper_1(), new wrappers_PasteWrapper_2(), new wrappers_PasteWrapper_3(), new wrappers_PasteWrapper_4(), new wrappers_PasteWrapper_5(), new wrappers_PasteWrapper_6(), new wrappers_PasteWrapper_7(), new wrappers_PasteWrapper_8(), new wrappers_PasteWrapper_9(), new wrappers_PasteWrapper_10(), new wrappers_PasteWrapper_11(), new wrappers_PasteWrapper_12(), new wrappers_PasteWrapper_13(), new wrappers_PasteWrapper_14(), new wrappers_PasteWrapper_15(), new wrappers_PasteWrapper_16(), new wrappers_PasteWrapper_17(), new PasteOverridingForDefaultMethodsAsWell_PasteWrapper_0()});
+    return Arrays.asList(new PasteWrapper[]{new wrappers_PasteWrapper_0(), new wrappers_PasteWrapper_1(), new wrappers_PasteWrapper_2(), new wrappers_PasteWrapper_3(), new wrappers_PasteWrapper_4(), new wrappers_PasteWrapper_5(), new wrappers_PasteWrapper_6(), new wrappers_PasteWrapper_7(), new wrappers_PasteWrapper_8(), new wrappers_PasteWrapper_9(), new wrappers_PasteWrapper_10(), new wrappers_PasteWrapper_11(), new wrappers_PasteWrapper_12(), new wrappers_PasteWrapper_13(), new wrappers_PasteWrapper_14(), new wrappers_PasteWrapper_15(), new wrappers_PasteWrapper_16(), new wrappers_PasteWrapper_17(), new PasteOverridingForDefaultMethodsAsWell_PasteWrapper_0(), new EnumConstantsIntoSwitch_PasteWrapper_0()});
   }
 }

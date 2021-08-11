@@ -2637,6 +2637,83 @@
       <unit id="4931648574701250318" at="13,0,24,0" name="jetbrains.mps.baseLanguage.actions.CatchClause_factories" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/5464647624210443478">
+    <file name="EnumConstantsIntoSwitch_PasteWrapper_0.java">
+      <node id="5464647624210443479" at="19,46,20,47" concept="10" />
+      <node id="5464647624210443479" at="23,46,24,34" concept="10" />
+      <node id="5464647624210472610" at="27,39,28,187" concept="9" />
+      <node id="5464647624210482405" at="28,187,29,199" concept="9" />
+      <node id="5464647624211348184" at="29,199,30,168" concept="9" />
+      <node id="5464647624210483232" at="30,168,31,137" concept="4" />
+      <node id="5464647624210493336" at="31,137,32,81" concept="4" />
+      <node id="5464647624210461101" at="32,81,33,61" concept="4" />
+      <node id="5464647624210482725" at="33,61,34,13" concept="10" />
+      <node id="5464647624210443479" at="38,0,39,0" concept="13" trace="EnumConstantDeclaration$MW" />
+      <node id="5464647624210443479" at="39,0,40,0" concept="13" trace="SwitchCase$7o" />
+      <node id="5464647624210443479" at="40,0,41,0" concept="13" trace="EnumConstantOrigin$$S" />
+      <node id="5464647624210443479" at="41,0,42,0" concept="13" trace="EnumClass$Vk" />
+      <node id="5464647624210443479" at="45,0,46,0" concept="13" trace="originalEnumConstant$dk5J" />
+      <node id="5464647624210443479" at="46,0,47,0" concept="13" trace="enumClass$bGAj" />
+      <node id="5464647624210443479" at="47,0,48,0" concept="13" trace="enumConstantDeclaration$f1_N" />
+      <node id="5464647624210443479" at="48,0,49,0" concept="13" trace="expression$QQk6" />
+      <node id="5464647624210443479" at="18,0,22,0" concept="8" trace="getSourceConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5464647624210443479" at="22,0,26,0" concept="8" trace="getTargetConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5464647624210443479" at="26,0,36,0" concept="8" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5464647624210443479" at="19,46,20,47" />
+      <scope id="5464647624210443479" at="23,46,24,34" />
+      <scope id="5464647624210443479" at="18,0,22,0" />
+      <scope id="5464647624210443479" at="22,0,26,0" />
+      <scope id="5464647624210443481" at="27,39,34,13">
+        <var name="c" id="5464647624210472611" />
+        <var name="original" id="5464647624211348185" />
+        <var name="ref" id="5464647624210482406" />
+      </scope>
+      <scope id="5464647624210443479" at="26,0,36,0">
+        <var name="sourceNode" id="5464647624210443479" />
+      </scope>
+      <unit id="5464647624210443479" at="37,0,43,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantsIntoSwitch_PasteWrapper_0$CONCEPTS" />
+      <unit id="5464647624210443479" at="44,0,50,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantsIntoSwitch_PasteWrapper_0$LINKS" />
+      <unit id="5464647624210443479" at="17,0,51,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantsIntoSwitch_PasteWrapper_0" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/5464647624211263460">
+    <file name="EnumConstantIntoSwitch_CopyPreProcessor_0.java">
+      <node id="5464647624211266783" at="17,50,18,47" concept="10" />
+      <node id="5464647624211301376" at="21,58,22,272" concept="4" />
+      <node id="5464647624211313890" at="22,272,23,155" concept="4" />
+      <node id="5464647624211266783" at="27,0,28,0" concept="13" trace="EnumConstantDeclaration$MW" />
+      <node id="5464647624211266783" at="28,0,29,0" concept="13" trace="EnumConstantOrigin$$S" />
+      <node id="5464647624211266783" at="32,0,33,0" concept="13" trace="originalEnumConstant$dk5J" />
+      <node id="5464647624211266783" at="16,0,20,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5464647624211266783" at="20,0,25,0" concept="8" trace="preProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="5464647624211266783" at="17,50,18,47" />
+      <scope id="5464647624211266785" at="21,58,23,155" />
+      <scope id="5464647624211266783" at="16,0,20,0" />
+      <scope id="5464647624211266783" at="20,0,25,0">
+        <var name="copy" id="5464647624211266783" />
+        <var name="original" id="5464647624211266783" />
+      </scope>
+      <unit id="5464647624211266783" at="31,0,34,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantIntoSwitch_CopyPreProcessor_0$LINKS" />
+      <unit id="5464647624211266783" at="26,0,30,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantIntoSwitch_CopyPreProcessor_0$CONCEPTS" />
+      <unit id="5464647624211266783" at="15,0,35,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantIntoSwitch_CopyPreProcessor_0" />
+    </file>
+    <file name="EnumConstantIntoSwitch_PastePostProcessor_0.java">
+      <node id="5464647624211969901" at="14,50,15,47" concept="10" />
+      <node id="5464647624211969970" at="18,49,19,97" concept="4" />
+      <node id="5464647624211969901" at="23,0,24,0" concept="13" trace="EnumConstantDeclaration$MW" />
+      <node id="5464647624211969901" at="24,0,25,0" concept="13" trace="EnumConstantOrigin$$S" />
+      <node id="5464647624211969901" at="13,0,17,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="5464647624211969901" at="17,0,21,0" concept="8" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="5464647624211969901" at="14,50,15,47" />
+      <scope id="5464647624211969903" at="18,49,19,97" />
+      <scope id="5464647624211969901" at="13,0,17,0" />
+      <scope id="5464647624211969901" at="17,0,21,0">
+        <var name="pastedNode" id="5464647624211969901" />
+      </scope>
+      <unit id="5464647624211969901" at="22,0,26,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantIntoSwitch_PastePostProcessor_0$CONCEPTS" />
+      <unit id="5464647624211969901" at="12,0,27,0" name="jetbrains.mps.baseLanguage.actions.EnumConstantIntoSwitch_PastePostProcessor_0" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/558454895479002756">
     <file name="ModuleDependencyUtils.java">
       <node id="558454895477897463" at="15,50,16,160" concept="4" />

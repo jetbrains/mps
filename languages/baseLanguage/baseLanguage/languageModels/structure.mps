@@ -4975,5 +4975,24 @@
     <property role="3GE5qa" value="classifiers.members" />
     <property role="TrG5h" value="ICustomConstructorReference" />
   </node>
+  <node concept="1TIwiD" id="4Jml0YJNBiv">
+    <property role="EcuMT" value="5464647624211461279" />
+    <property role="3GE5qa" value="classifier" />
+    <property role="TrG5h" value="EnumConstantCopyPasteOrigin" />
+    <ref role="1TJDcQ" to="tpck:2ULFgo8_XDk" resolve="NodeAttribute" />
+    <node concept="1TJgyj" id="4Jml0YJNBJQ" role="1TKVEi">
+      <property role="IQ2ns" value="5464647624211463158" />
+      <property role="20kJfa" value="originalEnumConstant" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="fKQsSyN" resolve="EnumConstantDeclaration" />
+    </node>
+    <node concept="M6xJ_" id="4Jml0YJNBx8" role="lGtFl">
+      <property role="Hh88m" value="enumConstantOrigin" />
+      <node concept="tn0Fv" id="4Jml0YJNB$q" role="HhnKV" />
+      <node concept="trNpa" id="4Jml0YJNBGY" role="EQaZv">
+        <ref role="trN6q" node="fKQsSyN" resolve="EnumConstantDeclaration" />
+      </node>
+    </node>
+  </node>
 </model>
 

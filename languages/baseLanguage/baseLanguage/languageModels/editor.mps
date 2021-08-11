@@ -71696,5 +71696,10 @@
       </node>
     </node>
   </node>
+  <node concept="22mcaB" id="4Jml0YJP$K6">
+    <property role="3GE5qa" value="classifier" />
+    <ref role="aqKnT" to="tpee:4Jml0YJNBiv" resolve="EnumConstantCopyPasteOrigin" />
+    <node concept="22hDWj" id="4Jml0YJP$O_" role="22hAXT" />
+  </node>
 </model>
 
