@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,8 @@ import java.util.Collections;
 import java.util.Set;
 
 /**
+ * FIXME why it's not a TransientSModule, so that we don't need to care about this particular kind of module when we want to
+ *       track 'true' user modules only?
  * TODO: rewrite class loading functional : it must not extend ReloadableModuleBase and be maintained by ClassLoaderManager.
  * TODO: it does not belong to any repository
  */

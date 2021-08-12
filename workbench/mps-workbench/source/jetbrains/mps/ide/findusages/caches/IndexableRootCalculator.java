@@ -16,22 +16,22 @@
 package jetbrains.mps.ide.findusages.caches;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.roots.ex.ProjectRootManagerEx;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.IndexableSetContributorModificationTracker;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.tempmodel.TempModule;
+import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -45,6 +45,7 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -188,6 +189,7 @@ final class IndexableRootCalculator implements Disposable {
 
   private static class ChangeListener implements SRepositoryListener, SModuleListener {
     private final Runnable myInvalidate;
+    private final CycledArray<SModuleReference> myRecentTriggers = new CycledArray<>(13);
 
     /*package*/ ChangeListener(Runnable invalidate) {
       myInvalidate = invalidate;
@@ -195,18 +197,39 @@ final class IndexableRootCalculator implements Disposable {
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
+      if (irrelevant(module)) {
+        return;
+      }
       module.addModuleListener(this);
       myInvalidate.run();
     }
 
+    private boolean irrelevant(SModule module) {
+      return module instanceof TransientSModule || module instanceof TempModule || module instanceof TempModule2;
+    }
+
     @Override
     public void beforeModuleRemoved(@NotNull SModule module) {
+      if (irrelevant(module)) {
+        return;
+      }
       module.removeModuleListener(this);
+      myRecentTriggers.add(module.getModuleReference());
     }
 
     @Override
     public void moduleRemoved(@NotNull SModuleReference moduleReference) {
-      myInvalidate.run();
+      if (myRecentTriggers.remove(moduleReference)) {
+        // want to keep invalidate() call on moduleRemoved(), not beforeModuleRemoved()
+        // not to get accidentally into re-calc for a removed module. I have no means
+        // to figure out here if the module removed was the one I cared about. Using limited
+        // set of references (initialized with an arbitrary size) to prevent memory
+        // leaks.
+        // Indeed, it's unlikely invalidateCache() would get to re-calc right away, but as
+        // long as there's IDEA logic I can't control, it's better to do our best not to get into
+        // trouble (after all, it's just an excessive, likely non-existent indexed root)
+        myInvalidate.run();
+      }
     }
 
     @Override
@@ -214,4 +237,141 @@ final class IndexableRootCalculator implements Disposable {
       myInvalidate.run();
     }
   }
+
+  // linear lookup time, don't allocate too big
+  // add - O(1); contains(T), offer(T) and remove(T) - O(n).
+  private static class CycledArray<T> {
+    private final Object[] myElements;
+    private int myHead, myTail;
+
+    public CycledArray(int size) {
+      if (size <= 0) {
+        throw new IllegalArgumentException();
+      }
+      myElements = new Object[size];
+      myHead = myTail = 0;
+    }
+
+    public void add(T next) {
+      if (myTail == myElements.length) {
+        // wrap around
+        myTail = 0;
+      }
+      if (myTail == myHead) {
+        if (++myHead == myElements.length) {
+          myHead = 0;
+        }
+      }
+      myElements[myTail++] = next;
+    }
+
+    public boolean offer(T element) {
+      if (indexOf(element) == -1) {
+        add(element);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public boolean remove(T element) {
+      final int x = indexOf(element);
+      if (x == -1) {
+        return false;
+      }
+      if (x >= myHead) {
+        if (x == myHead) {
+          if (++myHead == myElements.length) {
+            myHead = 0;
+          }
+        } else {
+          for (int i = 0, cc = x - myHead; i < cc; i++) {
+            myElements[cc - i] = myElements[myHead+i];
+          }
+          myHead++;
+        }
+      } else {
+        assert x >= 0;
+        assert x < myTail;
+        if (x == myTail - 1) {
+          if (--myTail == 0) {
+            myTail = myElements.length;
+          }
+        } else {
+          // copy all but element preceding tail (we're to drop it anyway)
+          for (int i = 0, cc = myTail - 1 - x; i < cc; i++) {
+            myElements[x + i] = myElements[myTail - 1 - i];
+          }
+          myTail--;
+        }
+      }
+      return true;
+    }
+
+    public boolean contains(T element) {
+      return indexOf(element) != -1;
+    }
+
+    private int indexOf(T e) {
+      if (myHead < myTail) {
+        for (int i = myHead; i < myTail; i++) {
+          if (Objects.equals(myElements[i], e)) {
+            return i;
+          }
+        }
+        return -1;
+      }
+      // XXX can't I use // (i+myElements.length) % myElements.length?
+      for (int i = myHead; i < myElements.length; i++) {
+        if (Objects.equals(myElements[i], e)) {
+          return i;
+        }
+      }
+      for (int i = 0; i < myTail; i++) {
+        if (Objects.equals(myElements[i], e)) {
+          return i;
+        }
+      }
+      return -1;
+    }
+  }
+
+//  public static void main(String[] args) {
+//    CycledArray<String> aaa = new CycledArray<>(3);
+//    ensure(aaa.offer("1"));
+//    ensure(aaa.offer("2"));
+//    ensure(aaa.offer("3"));
+//    ensure(aaa.offer("4"));
+//    ensure(aaa.offer("5"));
+//    ensure(!aaa.offer("4"));
+//    //
+//    ensure(aaa.contains("5"));
+//    ensure(aaa.contains("4"));
+//    ensure(aaa.contains("3"));
+//    ensure(!aaa.contains("2"));
+//    ensure(!aaa.contains("1"));
+//    //
+//    ensure(aaa.remove("4"));
+//    ensure(!aaa.contains("4"));
+//    ensure(!aaa.remove("1"));
+//    ensure(!aaa.remove("2"));
+//    //
+//    ensure(!aaa.offer("5"));
+//    ensure(aaa.offer("6"));
+//    ensure(aaa.contains("3"));
+//    ensure(aaa.contains("5"));
+//    ensure(aaa.contains("6"));
+//    //
+//    ensure(aaa.offer("7"));
+//    ensure(!aaa.contains("3"));
+//    ensure(aaa.contains("5"));
+//    ensure(aaa.contains("6"));
+//    ensure(aaa.contains("7"));
+//  }
+//
+//  private static void ensure(boolean r) {
+//    if (!r) {
+//      throw new RuntimeException();
+//    }
+//  }
 }
