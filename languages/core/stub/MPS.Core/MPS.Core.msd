@@ -49,7 +49,6 @@
     <stubModelEntry path="${mps_home}/lib/mps-constraints-runtime.jar" />
     <!-- Some code expects MPS.Core to provide next libraries as classpath. Don't want to add guava, xstream, asm-all unless have to do so-->
     <stubModelEntry path="${platform_lib}/util.jar" />
-    <stubModelEntry path="${platform_lib}/3rd-party.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
