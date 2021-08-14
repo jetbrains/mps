@@ -17,11 +17,11 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.extapi.persistence.FolderDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Bridge VFS and Model worlds in MPS.
@@ -184,24 +185,27 @@ public class SModelFileTracker {
 
     private void addModelToFileCache(SModel md) {
       DataSource source = md.getSource();
-      if (!(source instanceof FileDataSource || source instanceof FolderDataSource)) {
+      if (!(source instanceof FileSystemBasedDataSource)) {
         return;
       }
 
-      IFile file = source instanceof FileDataSource
-          ? ((FileDataSource) source).getFile()
-          : ((FolderDataSource) source).getFolder();
-      myPathsToModels.put(file, md.getReference());
+      var ds = (FileSystemBasedDataSource) source;
+      for (var file : ds.getAffectedFilesWithDirsExtracted().collect(Collectors.toList())) {
+        LogManager.getLogger(SModelFileTracker.class).debug("path->model:" + file + md.getReference());
+        myPathsToModels.put(file, md.getReference());
+      }
     }
 
     private void removeModelFromFileCache(SModel md) {
       DataSource source = md.getSource();
-      if (!(source instanceof FileDataSource || source instanceof FolderDataSource)) return;
+      if (!(source instanceof FileSystemBasedDataSource)) {
+        return;
+      }
 
-      IFile file = source instanceof FileDataSource
-          ? ((FileDataSource) source).getFile()
-          : ((FolderDataSource) source).getFolder();
-      myPathsToModels.remove(file);
+      var ds = (FileSystemBasedDataSource) source;
+      for (var file : ds.getAffectedFilesWithDirsExtracted().collect(Collectors.toList())) {
+        myPathsToModels.remove(file, md.getReference());
+      }
     }
 
     /*package*/ SModelReference findModel(IFile modelFile) {
