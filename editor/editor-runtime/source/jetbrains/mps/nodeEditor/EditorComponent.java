@@ -1027,7 +1027,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     jetbrains.mps.openapi.editor.cells.EditorCell parent = cell;
     List<EditorMessageWithTarget> messages = new ArrayList<>();
     while (parent != null) {
-      if (cell.getBaseline() != parent.getBaseline()) {
+      if (cell.getBottom() < parent.getBottom() && parent.getSNode() != cell.getSNode()) {
+        // HighlighterMessage instances should display a tooltip for the bottom line only if the collection
+        // of cells consists of several lines. this part was removed by 97b7fdbeb0c0032ebe385482023bd515a671fe01, now it's back
         return messages;
       }
       messages.addAll(CellMessagesUtil.getMessages(parent, EditorMessageWithTarget.class));
@@ -1126,8 +1128,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       if (nodeForTypechecking != null) {
         Flags flags = Flags.forRoot(nodeForTypechecking).incremental();
         myTypecheckingSessionHandle = TypecheckingFacade
-                                          .getFromContext()
-                                          .requestNewSession(flags);
+            .getFromContext()
+            .requestNewSession(flags);
       }
     }
   }
