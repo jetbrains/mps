@@ -41,6 +41,5 @@
     <orderEntry type="module" module-name="vcs-core" />
     <orderEntry type="module" module-name="vcs-platform" />
     <orderEntry type="module" module-name="mps-vcs" />
-    <orderEntry type="module" module-name="mps-console" />
   </component>
 </module>
