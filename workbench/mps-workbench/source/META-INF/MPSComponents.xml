@@ -94,12 +94,6 @@
     <component>
       <implementation-class>jetbrains.mps.ide.vfs.DirectoryIndexExcludeUpdater</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.tabs.RepoChangeListener</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.tabs.FileStatusChangeListener</implementation-class>
-    </component>
 
     <component>
       <implementation-class>jetbrains.mps.plugins.projectplugins.ProjectPluginManager</implementation-class>
@@ -134,6 +128,8 @@
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
     <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.RepoChangeListener"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.FileStatusChangeListener"/>
     <applicationService serviceInterface="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"
                         serviceImplementation="jetbrains.mps.ide.vfs.WatchingFileSystemListenersContainer" />
     <notificationGroup id="jetbrains.mps.ide.make.StartupModuleMaker" displayType="STICKY_BALLOON" key="smm.group.name" bundle="jetbrains.mps.ide.make.Messages"/>

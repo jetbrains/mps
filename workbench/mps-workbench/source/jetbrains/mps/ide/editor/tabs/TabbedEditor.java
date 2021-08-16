@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -124,8 +124,8 @@ public class TabbedEditor extends BaseNodeEditor {
     // bloody BaseNodeEditor makes us know about layout used there
     getComponent().add(myTabsPanel, BorderLayout.SOUTH);
 
-    myRepoChangeListener = myProject instanceof MPSProject ? ((MPSProject) myProject).getProject().getComponent(RepoChangeListener.class) : null;
-    myFileStatusListener = myProject instanceof MPSProject ? ((MPSProject) myProject).getProject().getComponent(FileStatusChangeListener.class) : null;
+    myRepoChangeListener = RepoChangeListener.getInstance(mpsProject);
+    myFileStatusListener = FileStatusChangeListener.getInstance(mpsProject);
 
     installTabsComponent();
 

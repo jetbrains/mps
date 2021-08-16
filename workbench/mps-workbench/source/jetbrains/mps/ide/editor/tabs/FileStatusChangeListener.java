@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.editor.tabs;
 
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
@@ -25,8 +25,8 @@ import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
@@ -37,25 +37,27 @@ import java.util.Map;
 
 /**
  * Listener for file changes specific to tabbed editors (VCS changes).
- * Listener is shared between multiple editors (one for project) and available as {@link ProjectComponent}.
+ * Listener is shared between multiple editors (one for project) and available as a project service.
  */
-class FileStatusChangeListener implements FileStatusListener, ProjectComponent {
+class FileStatusChangeListener implements FileStatusListener, Disposable {
   private final Project myProject;
   private final com.intellij.openapi.project.Project myIdeaProject;
   private final Map<SNodeReference, Collection<TabsComponent>> myNodeRef2TabsComponents = new HashMap<>();
 
+  @Nullable
+  static FileStatusChangeListener getInstance(Project mpsProject) {
+    final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
+    return ideaProject == null ? null : ideaProject.getService(FileStatusChangeListener.class);
+  }
+
   public FileStatusChangeListener(com.intellij.openapi.project.Project project) {
     myIdeaProject = project;
     myProject = ProjectHelper.fromIdeaProject(project);
+    FileStatusManager.getInstance(myIdeaProject).addFileStatusListener(this, this);
   }
 
   @Override
-  public void projectOpened() {
-    FileStatusManager.getInstance(myIdeaProject).addFileStatusListener(this);
-  }
-
-  @Override
-  public void projectClosed() {
+  public void dispose() {
     FileStatusManager.getInstance(myIdeaProject).removeFileStatusListener(this);
     myNodeRef2TabsComponents.clear();
   }

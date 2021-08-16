@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,16 @@
  */
 package jetbrains.mps.ide.editor.tabs;
 
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.Disposable;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -35,44 +38,62 @@ import java.util.HashSet;
 /**
  * Listener for model changes specific to tabbed editors.
  * It's the only listener that tracks model changes (i.e. TabsComponent shall not attach own model listeners).
- * Listener is shared between multiple editors (one for project) and available as {@link ProjectComponent}.
+ * Listener is shared between multiple editors (one for project) and available as project service
  * <p/>
  * FIXME for the time being, treats any model/root node removal as worth tab rebuild, perhaps shall respect actual documents (TabsComponent#getAllEditedDocuments())
  *
+ * FIXME I don't like the idea of idea service for an otherwise pure-MPS repo listener,
+ *    can we address MPS-27686 (6df275a2) in less platform-dependent way?
+ *
  * @author Artem Tikhomirov
  */
-class RepoChangeListener extends SRepositoryContentAdapter implements ProjectComponent {
+class RepoChangeListener extends SRepositoryContentAdapter implements Disposable {
   private final Collection<SNodeReference> myChangedRoots = new HashSet<>();
   private final Collection<TabsComponent> myTabsComponents = new HashSet<>();
 
   private final Project myProject;
+
+  @Nullable
+  static RepoChangeListener getInstance(jetbrains.mps.project.Project mpsProject) {
+    final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
+    return ideaProject == null ? null : ideaProject.getService(RepoChangeListener.class);
+  }
 
   public RepoChangeListener(com.intellij.openapi.project.Project project) {
     myProject = ProjectHelper.fromIdeaProject(project);
   }
 
   @Override
-  public void projectOpened() {
-    if (myProject != null) {
-      myProject.getRepository().getModelAccess().runReadAction(() -> subscribeTo(myProject.getRepository()));
-    }
-  }
-
-  @Override
-  public void projectClosed() {
-    if (myProject != null) {
-      myProject.getRepository().getModelAccess().runReadAction(() -> unsubscribeFrom(myProject.getRepository()));
-    }
+  public void dispose() {
+    detachRepoListener();
     myChangedRoots.clear();
     myTabsComponents.clear();
   }
 
-  /*package*/ boolean addTabComponent(@NotNull TabsComponent tabsComponent) {
-    return myTabsComponents.add(tabsComponent);
+  private void attachRepoListener() {
+    if (myProject != null) {
+      new RepoListenerRegistrar(myProject.getRepository(), this).attach();
+    }
   }
 
-  /*package*/ boolean removeTabComponent (@NotNull TabsComponent tabsComponent) {
-    return myTabsComponents.remove(tabsComponent);
+  private void detachRepoListener() {
+    if (myProject != null) {
+      new RepoListenerRegistrar(myProject.getRepository(), this).detach();
+    }
+  }
+
+  /*package*/ void addTabComponent(@NotNull TabsComponent tabsComponent) {
+    if (myTabsComponents.isEmpty()) {
+      attachRepoListener();
+    }
+    myTabsComponents.add(tabsComponent);
+  }
+
+  /*package*/ void removeTabComponent (@NotNull TabsComponent tabsComponent) {
+    myTabsComponents.remove(tabsComponent);
+    if (myTabsComponents.isEmpty()) {
+      detachRepoListener();
+    }
   }
 
   @Override
@@ -113,6 +134,13 @@ class RepoChangeListener extends SRepositoryContentAdapter implements ProjectCom
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
     if (event.isRoot()) {
       myChangedRoots.add(new SNodePointer(event.getModel().getReference(), event.getChild().getNodeId()));
+    }
+  }
+
+  @Override
+  public void propertyChanged(@NotNull SPropertyChangeEvent event) {
+    if (event.getNode().getParent() == null) {
+      myChangedRoots.add(event.getNode().getReference());
     }
   }
 
