@@ -298,7 +298,7 @@ public final class ModuleMaker {
       SModule m = toOriginChecked(jm);
       final JavaModuleFacet jmf = SModuleOperations.getJavaFacet(m);
       final IFile classesOut = jmf.getClassesGen();
-      if (m.isPackaged() || m.isReadOnly() || classesOut == null) {
+      if (m.isReadOnly() || classesOut == null) {
         return;
       }
       final Set<String> allSourcePaths = SModuleOperations.getAllSourcePaths(m);

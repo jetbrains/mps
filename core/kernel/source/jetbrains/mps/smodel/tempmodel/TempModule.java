@@ -38,6 +38,7 @@ import java.util.Set;
  *       track 'true' user modules only?
  * TODO: rewrite class loading functional : it must not extend ReloadableModuleBase and be maintained by ClassLoaderManager.
  * TODO: it does not belong to any repository
+ * FIXME why does TempModule manifests itself as 'isPackaged() == true', anyone? Not to get asked about module source dir?
  */
 public class TempModule extends ReloadableModuleBase implements SModule, MPSModuleOwner {
   private final static Logger LOG = LogManager.getLogger(TempModule.class);
@@ -58,6 +59,7 @@ public class TempModule extends ReloadableModuleBase implements SModule, MPSModu
     dependenciesChanged();
 
     if (withJavaFacet) {
+      // FIXME arguments for sourceGen and classGen locations are ignored
       myJavaModuleFacet = new NaiveJavaModuleFacet(this,
                                                   withSourceGen ? "TEMP_SOURCE_GEN"
                                                                 : null,
