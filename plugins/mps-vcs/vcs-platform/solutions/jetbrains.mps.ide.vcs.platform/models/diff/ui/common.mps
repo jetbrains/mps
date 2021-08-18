@@ -21895,8 +21895,8 @@
         <node concept="3clFbS" id="D356mG1n4z" role="3clF47">
           <node concept="3clFbF" id="312Lf7n$aYh" role="3cqZAp">
             <node concept="10M0yZ" id="312Lf7n$aYi" role="3clFbG">
-              <ref role="1PxDUh" node="D356mG1l9K" resolve="ChangeGroupMessages" />
               <ref role="3cqZAo" node="312Lf7nzMs2" resolve="OWNER" />
+              <ref role="1PxDUh" node="D356mG1l9K" resolve="ChangeGroupMessages" />
             </node>
           </node>
         </node>
@@ -26040,6 +26040,11 @@
       <node concept="3Tm6S6" id="5R_XY2zlXgz" role="1B3o_S" />
       <node concept="10P_77" id="5R_XY2zm3EV" role="1tU5fm" />
     </node>
+    <node concept="312cEg" id="jIWrNkZkc4" role="jymVt">
+      <property role="TrG5h" value="myCanDrawBorders" />
+      <node concept="3Tm6S6" id="jIWrNkZcQO" role="1B3o_S" />
+      <node concept="10P_77" id="jIWrNkZhAo" role="1tU5fm" />
+    </node>
     <node concept="312cEg" id="v7wmxdPqWF" role="jymVt">
       <property role="TrG5h" value="myGroupInvalidateListener" />
       <property role="3TUv4t" value="true" />
@@ -26333,6 +26338,28 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1zZcg$udfjv" role="1B3o_S" />
+    <node concept="2tJIrI" id="26bjO7LhZXn" role="jymVt" />
+    <node concept="3clFb_" id="26bjO7Lit0H" role="jymVt">
+      <property role="TrG5h" value="setCanDrawBorderes" />
+      <node concept="3clFbS" id="26bjO7Lit0K" role="3clF47">
+        <node concept="3clFbF" id="26bjO7LiGLK" role="3cqZAp">
+          <node concept="37vLTI" id="26bjO7LiN9Z" role="3clFbG">
+            <node concept="37vLTw" id="26bjO7LiUrv" role="37vLTx">
+              <ref role="3cqZAo" node="26bjO7Li$zm" resolve="canDrawBorders" />
+            </node>
+            <node concept="37vLTw" id="26bjO7LiGLJ" role="37vLTJ">
+              <ref role="3cqZAo" node="jIWrNkZkc4" resolve="myCanDrawBorders" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="26bjO7LilYa" role="1B3o_S" />
+      <node concept="3cqZAl" id="26bjO7LiqSb" role="3clF45" />
+      <node concept="37vLTG" id="26bjO7Li$zm" role="3clF46">
+        <property role="TrG5h" value="canDrawBorders" />
+        <node concept="10P_77" id="26bjO7Li$zl" role="1tU5fm" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="4CGE8mddCf3" role="jymVt" />
     <node concept="3clFb_" id="4CGE8mddVwA" role="jymVt">
       <property role="TrG5h" value="initEditor" />
@@ -29493,19 +29520,24 @@
       <node concept="3clFbS" id="1zZcg$u8RiU" role="3clF47">
         <node concept="3cpWs8" id="6FQU_9pfyoL" role="3cqZAp">
           <node concept="3cpWsn" id="7SNKzvnRlwc" role="3cpWs9">
-            <property role="TrG5h" value="trackMovedNodes" />
+            <property role="TrG5h" value="drawBorders" />
             <node concept="10P_77" id="7SNKzvnRlw7" role="1tU5fm" />
-            <node concept="2OqwBi" id="7SNKzvnRn5x" role="33vP2m">
-              <node concept="2YIFZM" id="7SNKzvnRn5y" role="2Oq$k0">
-                <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-                <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            <node concept="1Wc70l" id="jIWrNkZteO" role="33vP2m">
+              <node concept="37vLTw" id="jIWrNkZxXE" role="3uHU7B">
+                <ref role="3cqZAo" node="jIWrNkZkc4" resolve="myCanDrawBorders" />
               </node>
-              <node concept="liA8E" id="7SNKzvnRn5z" role="2OqNvi">
-                <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
-                <node concept="Xl_RD" id="7SNKzvnRn5$" role="37wK5m">
-                  <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
+              <node concept="2OqwBi" id="7SNKzvnRn5x" role="3uHU7w">
+                <node concept="2YIFZM" id="7SNKzvnRn5y" role="2Oq$k0">
+                  <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+                  <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
                 </node>
-                <node concept="3clFbT" id="7SNKzvnRn5_" role="37wK5m" />
+                <node concept="liA8E" id="7SNKzvnRn5z" role="2OqNvi">
+                  <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+                  <node concept="Xl_RD" id="7SNKzvnRn5$" role="37wK5m">
+                    <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
+                  </node>
+                  <node concept="3clFbT" id="7SNKzvnRn5_" role="37wK5m" />
+                </node>
               </node>
             </node>
           </node>
@@ -29565,7 +29597,7 @@
                             <property role="3clFbU" value="true" />
                           </node>
                           <node concept="37vLTw" id="6FQU_9pfz_0" role="37wK5m">
-                            <ref role="3cqZAo" node="7SNKzvnRlwc" resolve="trackMovedNodes" />
+                            <ref role="3cqZAo" node="7SNKzvnRlwc" resolve="drawBorders" />
                           </node>
                         </node>
                       </node>
@@ -29585,7 +29617,7 @@
                           </node>
                           <node concept="3clFbT" id="7nybP2Lj7Vj" role="37wK5m" />
                           <node concept="37vLTw" id="6FQU_9pf$5E" role="37wK5m">
-                            <ref role="3cqZAo" node="7SNKzvnRlwc" resolve="trackMovedNodes" />
+                            <ref role="3cqZAo" node="7SNKzvnRlwc" resolve="drawBorders" />
                           </node>
                         </node>
                       </node>

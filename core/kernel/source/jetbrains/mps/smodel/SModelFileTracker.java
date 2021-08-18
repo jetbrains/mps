@@ -190,7 +190,7 @@ public class SModelFileTracker {
       }
 
       var ds = (FileSystemBasedDataSource) source;
-      for (var file : ds.getAffectedFilesWithDirsExtracted().collect(Collectors.toList())) {
+      for (var file : ds.getAffectedFiles()) {
         LogManager.getLogger(SModelFileTracker.class).debug("path->model:" + file + md.getReference());
         myPathsToModels.put(file, md.getReference());
       }
@@ -203,7 +203,7 @@ public class SModelFileTracker {
       }
 
       var ds = (FileSystemBasedDataSource) source;
-      for (var file : ds.getAffectedFilesWithDirsExtracted().collect(Collectors.toList())) {
+      for (var file : ds.getAffectedFiles()) {
         myPathsToModels.remove(file, md.getReference());
       }
     }

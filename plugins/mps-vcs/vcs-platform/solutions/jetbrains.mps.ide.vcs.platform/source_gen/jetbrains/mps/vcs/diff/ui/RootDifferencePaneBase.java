@@ -341,7 +341,9 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   private TripleChangeGroupLayout createTripleLayout(boolean inspector) {
     DiffChangeGroupLayout leftLayout = (DiffChangeGroupLayout) ListSequence.fromList(getLayouts(inspector)).getElement(0);
     DiffChangeGroupLayout rightLayout = (ListSequence.fromList(getLayouts(inspector)).count() > 1 ? (DiffChangeGroupLayout) ListSequence.fromList(getLayouts(inspector)).getElement(1) : null);
-    return new TripleChangeGroupLayout(leftLayout, rightLayout, inspector);
+    TripleChangeGroupLayout tripleLayout = new TripleChangeGroupLayout(leftLayout, rightLayout, inspector);
+    tripleLayout.setCanDrawBorderes(true);
+    return tripleLayout;
   }
 
   protected List<ChangeGroupLayout> getLayouts(boolean inspector) {
