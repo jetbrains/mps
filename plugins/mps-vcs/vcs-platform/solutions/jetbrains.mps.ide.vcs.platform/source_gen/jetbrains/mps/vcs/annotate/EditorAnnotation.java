@@ -664,6 +664,9 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
         NodeEditor newEditor = ((NodeEditor) NavigationSupport.getInstance().openNode(myMpsProject, root, true, false));
         if (newEditor != null) {
           EditorComponent newEditorComponent = newEditor.getCurrentEditorComponent();
+          // Revision editor is read-only and should not be highlighted. 
+          // Similarly, editors in the Diff dialog window are not highlighted.
+          newEditorComponent.getHighlighter().setPaused(true);
           if (newEditorComponent != null) {
             BackgroundableActionLock actionLock = VcsActionsUtil.getAnnotateRootLock(myMpsProject.getProject(), taskName);
             actionLock.lock();
