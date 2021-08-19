@@ -40,7 +40,7 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:conceptArg", QueriesGenerated.varMacro_Value_61_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904783"))));
+    context1 = context1.withVariable("var:conceptArg", QueriesGenerated.varMacro_Value_61_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904783"))));
     Collection<SNode> tlist2 = Collections.emptyList();
     if (QueriesGenerated.ifMacro_Condition_61_0(new IfMacroContext(context1, ifMacroRef_t65l13_b0a0f0g))) {
       Collection<SNode> tlist3 = null;

@@ -68,7 +68,7 @@ public class Template_map_SquaredList extends TemplateDeclarationBase {
                   loopIndex_4++;
                   Collection<SNode> tlist5 = null;
                   TemplateContext context5 = context4;
-                  context5 = context5.withVariable("var:listName", QueriesGenerated.varMacro_Value_2_0(new TemplateVarContext(context4, new SNodePointer("r:5bb953f6-c4e2-4f24-bd95-d2817ceec639(jetbrains.mps.transformation.test.inputLang.generator05.templates@generator)", "4289663133900812616"))));
+                  context5 = context5.withVariable("var:listName", QueriesGenerated.varMacro_Value_2_0(new TemplateVarContext(context5, new SNodePointer("r:5bb953f6-c4e2-4f24-bd95-d2817ceec639(jetbrains.mps.transformation.test.inputLang.generator05.templates@generator)", "4289663133900812616"))));
                   final List<SNode> tlist6 = new ArrayList<SNode>();
                   final Iterable<SNode> loopList6 = QueriesGenerated.sourceNodesQuery_2_1(new SourceSubstituteMacroNodesContext(context5, loopMacroRef_inb1mm_b0a0a9a3a1a1a2a1a3a2a5));
                   int loopIndex_6 = 0;

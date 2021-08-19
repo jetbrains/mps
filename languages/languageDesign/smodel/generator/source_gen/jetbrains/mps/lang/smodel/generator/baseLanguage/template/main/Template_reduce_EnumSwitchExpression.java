@@ -99,7 +99,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
               {
                 Collection<SNode> tlist10 = null;
                 TemplateContext context6 = context5;
-                context6 = context6.withVariable("var:datatypeId", QueriesGenerated.varMacro_Value_138_0(new TemplateVarContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3761295454228088115"))));
+                context6 = context6.withVariable("var:datatypeId", QueriesGenerated.varMacro_Value_138_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3761295454228088115"))));
                 final SNode tnode11 = environment.createOutputNode(myConcepts[6]);
                 {
                   environment.associate(tnode11, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)", "~EnumerationLiteralsIndex.build(long,long,long,long...)");

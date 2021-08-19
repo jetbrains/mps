@@ -152,7 +152,7 @@ public class Template_NodeBuilder_to_methodCall extends TemplateDeclarationBase 
               {
                 Collection<SNode> tlist19 = null;
                 TemplateContext context10 = context7;
-                context10 = context10.withVariable("var:container", QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context7, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "78629976128307438"))));
+                context10 = context10.withVariable("var:container", QueriesGenerated.varMacro_Value_3_0(new TemplateVarContext(context10, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "78629976128307438"))));
                 final SNode tnode20 = environment.createOutputNode(myConcepts[7]);
                 {
                   TemplateContext context11 = context10.subContext();

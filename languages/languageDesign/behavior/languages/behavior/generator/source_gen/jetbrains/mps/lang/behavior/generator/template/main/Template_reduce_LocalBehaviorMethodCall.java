@@ -48,7 +48,7 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:methodDeclaration", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2409421742521899084"))));
+    context1 = context1.withVariable("var:methodDeclaration", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context1, new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2409421742521899084"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
       TemplateContext context2 = context1.subContext();

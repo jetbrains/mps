@@ -41,7 +41,7 @@ public class Template_reduce_ReferenceLinkId_SReferenceLink extends TemplateDecl
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:conceptId", QueriesGenerated.varMacro_Value_101_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904801"))));
+    context1 = context1.withVariable("var:conceptId", QueriesGenerated.varMacro_Value_101_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904801"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
       environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)", "~MetaAdapterFactory");

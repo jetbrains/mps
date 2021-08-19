@@ -87,7 +87,7 @@ public class Template_weave_ConceptSwitchMap extends TemplateDeclarationBase {
                       TemplateContext context6 = context5.subContext(itnode8);
                       Collection<SNode> tlist9 = null;
                       TemplateContext context7 = context6;
-                      context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_97_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
+                      context7 = context7.withVariable("var:cid", QueriesGenerated.varMacro_Value_97_0(new TemplateVarContext(context7, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904796"))));
                       final SNode tnode10 = environment.createOutputNode(myConcepts[6]);
                       {
                         environment.associate(tnode10, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)", "~MetaIdFactory.conceptId(long,long,long)");

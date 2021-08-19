@@ -75,7 +75,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       TemplateContext context1 = context;
-      context1 = context1.withVariable("var:container", QueriesGenerated.varMacro_Value_5_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1724959616550877115"))));
+      context1 = context1.withVariable("var:container", QueriesGenerated.varMacro_Value_5_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1724959616550877115"))));
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         TemplateContext context2 = context1.subContext();

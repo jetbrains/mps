@@ -87,7 +87,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
                   {
                     Collection<SNode> tlist11 = null;
                     TemplateContext context6 = context5;
-                    context6 = context6.withVariable("var:var1", QueriesGenerated.varMacro_Value_1_0(new TemplateVarContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2409421742521903844"))));
+                    context6 = context6.withVariable("var:var1", QueriesGenerated.varMacro_Value_1_0(new TemplateVarContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2409421742521903844"))));
                     final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
                     {
                       environment.nodeCopied(context6, tnode12, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761103");

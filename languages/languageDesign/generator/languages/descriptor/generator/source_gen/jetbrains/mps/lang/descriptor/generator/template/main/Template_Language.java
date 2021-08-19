@@ -43,8 +43,8 @@ public class Template_Language extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:repo", QueriesGenerated.varMacro_Value_0_1(new TemplateVarContext(context, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3242214770611298472"))));
-    context1 = context1.withVariable("var:langModule", QueriesGenerated.varMacro_Value_0_2(new TemplateVarContext(context, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900524"))));
+    context1 = context1.withVariable("var:repo", QueriesGenerated.varMacro_Value_0_1(new TemplateVarContext(context1, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3242214770611298472"))));
+    context1 = context1.withVariable("var:langModule", QueriesGenerated.varMacro_Value_0_2(new TemplateVarContext(context1, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900524"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
       environment.nodeCopied(context1, tnode2, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/9020561928507177266");
@@ -475,7 +475,7 @@ public class Template_Language extends TemplateDeclarationBase {
                           TemplateContext context36 = context35.subContext(itnode72);
                           Collection<SNode> tlist73 = null;
                           TemplateContext context37 = context36;
-                          context37 = context37.withVariable("var:model", QueriesGenerated.varMacro_Value_0_0(new TemplateVarContext(context36, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900521"))));
+                          context37 = context37.withVariable("var:model", QueriesGenerated.varMacro_Value_0_0(new TemplateVarContext(context37, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900521"))));
                           Collection<SNode> tlist74 = null;
                           try {
                             TemplateContext switchContext74 = context37;
@@ -583,7 +583,7 @@ public class Template_Language extends TemplateDeclarationBase {
                   TemplateContext context43 = context42.subContext(itnode89);
                   Collection<SNode> tlist90 = null;
                   TemplateContext context44 = context43;
-                  context44 = context44.withVariable("var:model", QueriesGenerated.varMacro_Value_0_3(new TemplateVarContext(context43, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3242214770611282315"))));
+                  context44 = context44.withVariable("var:model", QueriesGenerated.varMacro_Value_0_3(new TemplateVarContext(context44, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3242214770611282315"))));
                   Collection<SNode> tlist91 = null;
                   try {
                     TemplateContext switchContext91 = context44;

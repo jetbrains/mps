@@ -41,7 +41,7 @@ public class Template_reduce_NodeIdentity_SNodeReference extends TemplateDeclara
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:targetRef", QueriesGenerated.varMacro_Value_124_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904827"))));
+    context1 = context1.withVariable("var:targetRef", QueriesGenerated.varMacro_Value_124_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904827"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
       TemplateContext context2 = context1.subContext();

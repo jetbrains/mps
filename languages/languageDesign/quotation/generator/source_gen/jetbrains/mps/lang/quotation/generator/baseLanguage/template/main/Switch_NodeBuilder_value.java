@@ -794,7 +794,7 @@ public class Switch_NodeBuilder_value extends TemplateSwitchBase implements Temp
             {
               Collection<SNode> tlist7 = null;
               TemplateContext context5 = context2;
-              context5 = context5.withVariable("var:outer", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context2, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143373247"))));
+              context5 = context5.withVariable("var:outer", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143373247"))));
               final List<SNode> tlist8 = new ArrayList<SNode>();
               final Iterable<SNode> loopList8 = QueriesGenerated.sourceNodesQuery_4_0(new SourceSubstituteMacroNodesContext(context5, loopMacroRef_zg3v4g_b0a0a4a2a1a1a2a2o));
               for (SNode itnode8 : loopList8) {

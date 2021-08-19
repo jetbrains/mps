@@ -463,7 +463,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
         {
           Collection<SNode> tlist68 = null;
           TemplateContext context33 = context2;
-          context33 = context33.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_7_0(new TemplateVarContext(context2, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521902666"))));
+          context33 = context33.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_7_0(new TemplateVarContext(context33, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521902666"))));
           final SNode tnode69 = environment.createOutputNode(myConcepts[10]);
           {
             tnode69.setProperty(myProperties[1], "false");

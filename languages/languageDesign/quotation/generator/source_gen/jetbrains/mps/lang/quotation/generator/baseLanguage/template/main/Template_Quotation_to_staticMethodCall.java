@@ -48,7 +48,7 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     TemplateContext context1 = context;
-    context1 = context1.withVariable("var:inputNode", QueriesGenerated.varMacro_Value_2_0(new TemplateVarContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2409421742521904571"))));
+    context1 = context1.withVariable("var:inputNode", QueriesGenerated.varMacro_Value_2_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2409421742521904571"))));
     final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
     {
       TemplateContext context2 = context1.subContext();

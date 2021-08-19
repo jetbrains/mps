@@ -139,7 +139,7 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
           {
             Collection<SNode> tlist14 = null;
             TemplateContext context9 = context4;
-            context9 = context9.withVariable("var:METH", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context4, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832549567"))));
+            context9 = context9.withVariable("var:METH", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context9, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832549567"))));
             final List<SNode> tlist15 = new ArrayList<SNode>();
             final Iterable<SNode> loopList15 = QueriesGenerated.sourceNodesQuery_4_2(new SourceSubstituteMacroNodesContext(context9, loopMacroRef_6isgpe_b0a0a4a3a1a4a2a6));
             int loopIndex_15 = 0;

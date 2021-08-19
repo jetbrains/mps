@@ -303,7 +303,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
               {
                 Collection<SNode> tlist44 = null;
                 TemplateContext context20 = context19;
-                context20 = context20.withVariable("var:templateModelNames", QueriesGenerated.varMacro_Value_6_0(new TemplateVarContext(context19, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900528"))));
+                context20 = context20.withVariable("var:templateModelNames", QueriesGenerated.varMacro_Value_6_0(new TemplateVarContext(context20, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900528"))));
                 final SNode tnode45 = environment.createOutputNode(myConcepts[20]);
                 {
                   TemplateContext context21 = context20.subContext();
@@ -616,7 +616,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
       {
         Collection<SNode> tlist94 = null;
         TemplateContext context45 = context1;
-        context45 = context45.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_6_1(new TemplateVarContext(context1, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900532"))));
+        context45 = context45.withVariable("var:targetLanguages", QueriesGenerated.varMacro_Value_6_1(new TemplateVarContext(context45, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900532"))));
         final SNode tnode95 = environment.createOutputNode(myConcepts[16]);
         {
           tnode95.setProperty(myProperties[2], "false");
