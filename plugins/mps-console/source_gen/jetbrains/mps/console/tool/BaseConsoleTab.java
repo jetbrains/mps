@@ -79,7 +79,6 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.ide.findusages.model.scopes.ProjectScope;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -472,8 +471,8 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       public Project getProject() {
         return myProject;
       }
-      public SearchScope getDefaultSearchScope() {
-        return new ProjectScope(myProject);
+      public SearchScope getScope() {
+        return myProject.getScope();
       }
       public BaseConsoleTab getOutputWindow() {
         return BaseConsoleTab.this;

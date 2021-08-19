@@ -60,11 +60,9 @@
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
-    <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="9erk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model(MPS.Core/)" />
     <import index="ngmm" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view(MPS.Platform/)" />
-    <import index="moux" ref="r:53684c5c-ca9d-4308-a9d7-6866aa7b486b(jetbrains.mps.lang.smodel.query.runtime)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="wvnl" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.extensions(MPS.Editor/)" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
@@ -343,9 +341,7 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615">
-        <child id="1107797138135" name="extendedInterface" index="3HQHJm" />
-      </concept>
+      <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
@@ -7519,19 +7515,19 @@
                 </node>
                 <node concept="3clFb_" id="1hGiwlkUV2G" role="jymVt">
                   <property role="1EzhhJ" value="false" />
-                  <property role="TrG5h" value="getDefaultSearchScope" />
+                  <property role="TrG5h" value="getScope" />
                   <node concept="3uibUv" id="1hGiwlkUV2H" role="3clF45">
                     <ref role="3uigEE" to="lui2:~SearchScope" resolve="SearchScope" />
                   </node>
                   <node concept="3Tm1VV" id="1hGiwlkUV2I" role="1B3o_S" />
                   <node concept="3clFbS" id="1hGiwlkUV2L" role="3clF47">
                     <node concept="3cpWs6" id="1hGiwlkVSwr" role="3cqZAp">
-                      <node concept="2ShNRf" id="1hGiwlkW4Lu" role="3cqZAk">
-                        <node concept="1pGfFk" id="1hGiwlkWzq3" role="2ShVmc">
-                          <ref role="37wK5l" to="mte5:~ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="ProjectScope" />
-                          <node concept="37vLTw" id="758rrhN2J8r" role="37wK5m">
-                            <ref role="3cqZAo" node="758rrhN1tVs" resolve="myProject" />
-                          </node>
+                      <node concept="2OqwBi" id="4LLpBW4mm1v" role="3cqZAk">
+                        <node concept="37vLTw" id="4LLpBW4mh4I" role="2Oq$k0">
+                          <ref role="3cqZAo" node="758rrhN1tVs" resolve="myProject" />
+                        </node>
+                        <node concept="liA8E" id="4LLpBW4mztr" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
                         </node>
                       </node>
                     </node>
@@ -9001,9 +8997,6 @@
   </node>
   <node concept="3HP615" id="jysm2GDsTL">
     <property role="TrG5h" value="ConsoleContext" />
-    <node concept="3uibUv" id="5nAnrpAvAFW" role="3HQHJm">
-      <ref role="3uigEE" to="moux:1ycrhFMLI_B" resolve="QueryExecutionContext" />
-    </node>
     <node concept="3clFb_" id="3MPHfSuPT3Y" role="jymVt">
       <property role="TrG5h" value="getProject" />
       <node concept="3uibUv" id="3ZgZ1njKpcr" role="3clF45">
@@ -9019,6 +9012,14 @@
       </node>
       <node concept="3Tm1VV" id="7L2VFB5mjvj" role="1B3o_S" />
       <node concept="3clFbS" id="7L2VFB5mjvk" role="3clF47" />
+    </node>
+    <node concept="3clFb_" id="4LLpBW4km_T" role="jymVt">
+      <property role="TrG5h" value="getScope" />
+      <node concept="3uibUv" id="4LLpBW4kn0$" role="3clF45">
+        <ref role="3uigEE" to="lui2:~SearchScope" resolve="SearchScope" />
+      </node>
+      <node concept="3Tm1VV" id="4LLpBW4km_W" role="1B3o_S" />
+      <node concept="3clFbS" id="4LLpBW4km_X" role="3clF47" />
     </node>
     <node concept="3Tm1VV" id="jysm2GDsTM" role="1B3o_S" />
   </node>

@@ -1112,13 +1112,13 @@
         <property role="TrG5h" value="execute" />
         <node concept="3cqZAl" id="YwfKjlWDwl" role="3clF45" />
         <node concept="37vLTG" id="YwfKjlWDwm" role="3clF46">
-          <property role="TrG5h" value="context" />
+          <property role="TrG5h" value="consoleContext" />
           <node concept="3uibUv" id="YwfKjlWDwn" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="37vLTG" id="YwfKjlWDwo" role="3clF46">
-          <property role="TrG5h" value="console" />
+          <property role="TrG5h" value="consoleStream" />
           <node concept="3uibUv" id="YwfKjlWDwp" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:5WpmwkrQPPk" resolve="ConsoleStream" />
           </node>

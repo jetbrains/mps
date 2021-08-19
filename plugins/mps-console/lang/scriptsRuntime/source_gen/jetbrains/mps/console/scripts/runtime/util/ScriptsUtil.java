@@ -9,7 +9,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.console.scripts.behavior.AbstractConsoleScript__BehaviorDescriptor;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.console.tool.BaseConsoleTab;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -20,7 +19,7 @@ import jetbrains.mps.ide.platform.refactoring.RefactoringViewItem;
 import jetbrains.mps.ide.refactoring.RefactoringViewItemImpl;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Collections;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
 public class ScriptsUtil {
@@ -41,7 +40,7 @@ public class ScriptsUtil {
     }
     context.getProject().getModelAccess().executeCommand(new Runnable() {
       public void run() {
-        ((BaseConsoleTab) context.getOutputWindow()).execute(ListSequence.fromList(commands).getElement(startWith), null, new Runnable() {
+        context.getOutputWindow().execute(ListSequence.fromList(commands).getElement(startWith), null, new Runnable() {
           public void run() {
             executeCommands(context, commands, startWith + 1);
           }
@@ -82,13 +81,11 @@ public class ScriptsUtil {
   }
 
   private static SearchResults<SNode> nodesToRefactoringResult(Iterable<SNode> nodes) {
-    final SearchResults<SNode> result = new SearchResults<SNode>();
-    Sequence.fromIterable(nodes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        result.getSearchResults().add(new SearchResult<SNode>(it, "Nodes to refactor"));
+    return new SearchResults<SNode>(Collections.emptyList(), Sequence.fromIterable(nodes).select(new ISelector<SNode, SearchResult<SNode>>() {
+      public SearchResult<SNode> select(SNode it) {
+        return new SearchResult<SNode>(it, "Nodes to refactor");
       }
-    });
-    return result;
+    }).toListSequence());
   }
   private static <T> T as_bb8vid_a0a0a0a1a0a0a0a0a0a0b0a2a5(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
