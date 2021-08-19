@@ -3690,8 +3690,14 @@
                     <node concept="37vLTw" id="2BADSPNH74x" role="37wK5m">
                       <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
                     </node>
-                    <node concept="37vLTw" id="2BADSPNH74y" role="37wK5m">
-                      <ref role="3cqZAo" node="5SsFeroaaki" resolve="myProjectMigrationSetup" />
+                    <node concept="2ShNRf" id="3CjQMjNWW_I" role="37wK5m">
+                      <node concept="1pGfFk" id="3CjQMjNXvtI" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" node="10yOEkEz6b" resolve="MigrationSetup" />
+                        <node concept="37vLTw" id="3CjQMjNX_qZ" role="37wK5m">
+                          <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
+                        </node>
+                      </node>
                     </node>
                     <node concept="3clFbT" id="4cEc5tJfzl7" role="37wK5m">
                       <property role="3clFbU" value="true" />

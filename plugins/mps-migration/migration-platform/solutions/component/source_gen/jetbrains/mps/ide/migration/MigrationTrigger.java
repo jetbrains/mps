@@ -489,7 +489,7 @@ __switch__:
   private Tuples._2<MigrationResult, MigrationError> runMigration(boolean updateVersions, boolean migrate) {
     myMigrationRunning = true;
     try {
-      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, myProjectMigrationSetup, true, updateVersions, migrate);
+      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, new MigrationSetup(myMpsProject), true, updateVersions, migrate);
       final MigrationWizard wizard = new MigrationWizard(myProject, session);
       boolean finished = wizard.showAndGet();
       MigrationError errors = session.getError();
