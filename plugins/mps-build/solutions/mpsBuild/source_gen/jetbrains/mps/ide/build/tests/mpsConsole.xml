@@ -353,6 +353,7 @@
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.smodel.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.smodel.query.jar" />
+        <fileset file="${artifacts.mps}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.structure.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />

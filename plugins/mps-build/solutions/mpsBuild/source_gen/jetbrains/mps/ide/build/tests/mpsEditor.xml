@@ -2522,6 +2522,7 @@
         <fileset file="${artifacts.mpsTesting}/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.smodel.query.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
         <fileset file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
         <fileset file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />

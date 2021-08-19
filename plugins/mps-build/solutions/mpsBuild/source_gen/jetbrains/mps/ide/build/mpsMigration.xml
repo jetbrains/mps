@@ -579,6 +579,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.structure.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
         <path refid="path.jdk.classpath" />
@@ -637,6 +638,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.pattern.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.quotation.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>

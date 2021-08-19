@@ -814,6 +814,7 @@
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.descriptor-generator.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.project.jar" />
+        <fileset file="${artifacts.mps}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

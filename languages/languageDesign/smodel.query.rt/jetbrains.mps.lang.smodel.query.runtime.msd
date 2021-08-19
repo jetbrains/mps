@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.lang.smodel.query.runtime" uuid="31f56055-9d30-42b3-a2b1-fb3f554d7075" moduleVersion="0" compileInMPS="false">
+<solution name="jetbrains.mps.lang.smodel.query.runtime" uuid="31f56055-9d30-42b3-a2b1-fb3f554d7075" moduleVersion="0" compileInMPS="true">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">
@@ -7,14 +7,10 @@
     </modelRoot>
   </models>
   <facets>
-    <facet pluginId="com.intellij" type="ideaPlugin" />
     <facet type="java">
-      <classes generated="true" />
+      <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${module}/classes" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
