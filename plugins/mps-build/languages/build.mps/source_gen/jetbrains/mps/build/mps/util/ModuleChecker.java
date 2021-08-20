@@ -555,51 +555,55 @@ public final class ModuleChecker {
     }
 
     /*package*/ void checkTargetLanguages(CheckType type, List<SNode> previous) {
-      if (type.doPartialImport || type.doCheck) {
-        List<Dependency> targetLanguages = Sequence.fromIterable(((Iterable<Dependency>) myModuleDescriptor.getDependencies())).where(new IWhereFilter<Dependency>() {
-          public boolean accept(Dependency it) {
-            return it.getScope() == SDependencyScope.GENERATES_INTO;
+      List<Dependency> targetLanguages = Sequence.fromIterable(((Iterable<Dependency>) myModuleDescriptor.getDependencies())).where(new IWhereFilter<Dependency>() {
+        public boolean accept(Dependency it) {
+          return it.getScope() == SDependencyScope.GENERATES_INTO;
+        }
+      }).distinct().toListSequence();
+      Iterable<SNode> directDep = SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
+      for (Dependency tl : targetLanguages) {
+        SModuleReference moduleRef = tl.getModuleRef();
+        final SNode resolved = SNodeOperations.as(myVisibleModules.resolve(moduleRef), CONCEPTS.BuildMps_Language$RA);
+        if (resolved == null) {
+          report("dependency on a module not visible from current build project: " + tl.getModuleRef().toString());
+          continue;
+        }
+        SNode extracted = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN), LINKS.language$wAwY) == resolved;
           }
-        }).distinct().toListSequence();
-        Iterable<SNode> directDep = SNodeOperations.ofConcept(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
-        for (Dependency tl : targetLanguages) {
-          SModuleReference moduleRef = tl.getModuleRef();
-          final SNode resolved = SNodeOperations.as(myVisibleModules.resolve(moduleRef), CONCEPTS.BuildMps_Language$RA);
-          if (resolved == null) {
-            report("dependency on a module not visible from current build project: " + tl.getModuleRef().toString());
-            continue;
+        });
+        if (extracted != null) {
+          if (type.doPartialImport) {
+            ListSequence.fromList(previous).removeElement(extracted);
           }
-          SNode extracted = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN) && SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$u_ko), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN), LINKS.language$wAwY) == resolved;
-            }
-          });
-          if (extracted != null) {
-            if (type.doPartialImport) {
-              ListSequence.fromList(previous).removeElement(extracted);
-            }
-            continue;
+          continue;
+        }
+        if (Sequence.fromIterable(directDep).any(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return SLinkOperations.getTarget(it, LINKS.language$wAwY) == resolved;
           }
-          if (Sequence.fromIterable(directDep).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.getTarget(it, LINKS.language$wAwY) == resolved;
-            }
-          })) {
-            if (type.doCheck) {
-              String m = String.format("Wrap '%s' with 'extracted' to manage automatically", moduleRef.getModuleName());
-              myReporter.handle(Message.createMessage(MessageKind.INFORMATION, getClass().getName(), m, SNodeOperations.getPointer(myLangNode)));
-            }
-            continue;
-          } else {
-            if (type.doPartialImport) {
-              extracted = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ExtractedModuleDependency$e8);
-              SNode ll = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
-              SLinkOperations.setTarget(ll, LINKS.language$wAwY, resolved);
-              SLinkOperations.setTarget(extracted, LINKS.dependency$u_ko, ll);
-              ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(extracted);
-            } else if (type.doCheck) {
-              report(String.format("Extract dependency to target language '%s'", moduleRef.getModuleName()));
-            }
+        })) {
+          if (type.doCheck) {
+            String m = String.format("Wrap '%s' with 'extracted' to manage automatically", moduleRef.getModuleName());
+            myReporter.handle(Message.createMessage(MessageKind.INFORMATION, getClass().getName(), m, SNodeOperations.getPointer(myLangNode)));
+          }
+          continue;
+        } else {
+          if (type.doPartialImport) {
+            extracted = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ExtractedModuleDependency$e8);
+            SNode ll = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
+            SLinkOperations.setTarget(ll, LINKS.language$wAwY, resolved);
+            SLinkOperations.setTarget(extracted, LINKS.dependency$u_ko, ll);
+            ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(extracted);
+          } else if (type.doFullImport) {
+            // doFullImport comes before doCheck, as LOAD_ALL got both, and I don't want errors to break generation
+            // FIXME this is provisional code, remove after 2021.2 is out and clients get a chance to update their build scripts
+            SNode ll = SModelOperations.createNewNode(SNodeOperations.getModel(myLangNode), null, CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN);
+            SLinkOperations.setTarget(ll, LINKS.language$wAwY, resolved);
+            ListSequence.fromList(SLinkOperations.getChildren(myLangNode, LINKS.dependencies$j8Lj)).addElement(ll);
+          } else if (type.doCheck) {
+            report(String.format("Extract dependency to target language '%s'", moduleRef.getModuleName()));
           }
         }
       }
