@@ -326,9 +326,11 @@
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.behavior.api.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.behavior.runtime.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.constraints.rules.runtime.jar" />
+      <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.feedback.api.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.feedback.context.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.feedback.problem.rt.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.feedback.problem.rules.jar" />
+      <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.messages.api.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.migration.runtime.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
       <library file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.refactoring.runtime.jar" />
@@ -373,7 +375,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />
@@ -424,7 +428,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-behavior-runtime.jar" />

@@ -403,6 +403,7 @@
         <path location="${mps_home}/languages/baseLanguage/collections/languages/trove/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <pathelement path="${build.tmp}/java/out/collections_trove.runtime" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -414,7 +415,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-context.jar" />
@@ -488,7 +488,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.collections_trove.runtime">
+  <target name="java.compile.collections_trove.runtime" depends="fetchDependencies">
     <mkdir dir="${mps_home}/languages/baseLanguage/collections/languages/trove/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/collections_trove.runtime" />
     <javac2 destdir="${build.tmp}/java/out/collections_trove.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -497,6 +497,7 @@
         <path location="${mps_home}/languages/baseLanguage/collections/languages/trove/runtime/source_gen" />
       </src>
       <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${mps_home}/languages/baseLanguage/collections/languages/trove/runtime/lib/trove-2.1.0.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
