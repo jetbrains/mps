@@ -1870,5 +1870,26 @@
     <property role="R4oN_" value="enumerates MPS modules of the layout" />
     <ref role="1TJDcQ" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
   </node>
+  <node concept="1TIwiD" id="7M00clbFm1W">
+    <property role="TrG5h" value="BuildMps_ModuleDependencyTargetLanguage" />
+    <property role="3GE5qa" value="Project.Deps" />
+    <property role="EcuMT" value="8971171305100238972" />
+    <ref role="1TJDcQ" node="4zCbl23d1MR" resolve="BuildMps_ModuleDependency" />
+    <node concept="1TJgyj" id="7M00clbFm1X" role="1TKVEi">
+      <property role="20kJfa" value="language" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="3189788309731922643" />
+      <ref role="20lvS9" node="2L4pT56gD3S" resolve="BuildMps_Language" />
+    </node>
+    <node concept="RPilO" id="7M00clbFm1Y" role="lGtFl">
+      <ref role="RPilL" node="7M00clbFm1X" resolve="language" />
+      <node concept="ROjv2" id="7M00clbFm1Z" role="ROhUF">
+        <property role="1W_73P" value="use " />
+      </node>
+    </node>
+    <node concept="t5JxF" id="7M00clbFm5z" role="lGtFl">
+      <property role="t5JxN" value="Captures GENERATES_INTO dependency scope; to respect runtime modules of languages that show up during m2m" />
+    </node>
+  </node>
 </model>
 

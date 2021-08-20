@@ -6437,5 +6437,25 @@
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
     </node>
   </node>
+  <node concept="24kQdi" id="7M00clbFm20">
+    <property role="3GE5qa" value="Project.Deps" />
+    <ref role="1XX52x" to="kdzh:7M00clbFm1W" resolve="BuildMps_ModuleDependencyTargetLanguage" />
+    <node concept="3EZMnI" id="7M00clbFm22" role="2wV5jI">
+      <node concept="3F0ifn" id="7M00clbFm23" role="3EZMnx">
+        <property role="3F0ifm" value="target" />
+        <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+      </node>
+      <node concept="1iCGBv" id="7M00clbFm24" role="3EZMnx">
+        <ref role="1NtTu8" to="kdzh:7M00clbFm1X" resolve="language" />
+        <node concept="1sVBvm" id="7M00clbFm25" role="1sWHZn">
+          <node concept="3F0A7n" id="7M00clbFm26" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="l2Vlx" id="7M00clbFm27" role="2iSdaV" />
+    </node>
+  </node>
 </model>
 

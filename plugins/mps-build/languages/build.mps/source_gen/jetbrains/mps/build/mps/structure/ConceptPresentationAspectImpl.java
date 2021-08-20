@@ -57,6 +57,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BuildMps_ModuleDependencyOnDevKit;
   private ConceptPresentation props_BuildMps_ModuleDependencyOnJavaModule;
   private ConceptPresentation props_BuildMps_ModuleDependencyOnModule;
+  private ConceptPresentation props_BuildMps_ModuleDependencyTargetLanguage;
   private ConceptPresentation props_BuildMps_ModuleDependencyUseLanguage;
   private ConceptPresentation props_BuildMps_ModuleJavaSource;
   private ConceptPresentation props_BuildMps_ModuleModelRoot;
@@ -335,7 +336,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_IdeaPlugin == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a33b0rc);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a33b0sc);
           props_BuildMps_IdeaPlugin = cpb.create();
         }
         return props_BuildMps_IdeaPlugin;
@@ -437,6 +438,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuildMps_ModuleDependencyOnModule = cpb.create();
         }
         return props_BuildMps_ModuleDependencyOnModule;
+      case LanguageConceptSwitch.BuildMps_ModuleDependencyTargetLanguage:
+        if (props_BuildMps_ModuleDependencyTargetLanguage == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language", "use ", "");
+          props_BuildMps_ModuleDependencyTargetLanguage = cpb.create();
+        }
+        return props_BuildMps_ModuleDependencyTargetLanguage;
       case LanguageConceptSwitch.BuildMps_ModuleDependencyUseLanguage:
         if (props_BuildMps_ModuleDependencyUseLanguage == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

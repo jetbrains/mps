@@ -119,6 +119,10 @@ public class MPSModulesClosure {
     return SLinkOperations.collect(SNodeOperations.ofConcept(dependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnDevKit$4s), LINKS.devkit$Q_pH);
   }
 
+  private static Iterable<SNode> dependencies_targetLanguages(SNode module) {
+    return SLinkOperations.collect(SNodeOperations.ofConcept(dependencies(module), CONCEPTS.BuildMps_ModuleDependencyTargetLanguage$oN), LINKS.language$wAwY);
+  }
+
   private static Iterable<SNode> includingExtended(Iterable<SNode> devkits) {
     return new RecursiveIterator<SNode>(devkits, false) {
       @Override
@@ -240,7 +244,7 @@ public class MPSModulesClosure {
    * RTs of used languages and their dependencies won't hurt either.
    */
   public MPSModulesClosure closure() {
-    // get all direct dependencies abd runtimes, plus re-exported dependencies thereof.
+    // get all direct dependencies and runtimes, plus re-exported dependencies thereof.
     Set<SNode> langs = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> devkits = (myOptions.doesTrackDevkits() ? myDevkits : null);
 
@@ -323,7 +327,7 @@ public class MPSModulesClosure {
    * The modules we need to generate the initial modules
    * To generate a module, we need its languages and all their dependencies.
    * Since we assume that the generator might address any aspect of input language during the generation procedure
-   * we unclude all the runtime dependencies of used languages into the result as well.
+   * we include all the runtime dependencies of used languages into the result as well.
    * Unlike {@link jetbrains.mps.build.mps.util.MPSModulesClosure#runtimeClosure() } or {@link jetbrains.mps.build.mps.util.MPSModulesClosure#designtimeClosure() }, dependencies of the module itself (aka classpath) doesn't look
    * that important (although what if there's utility class in the generator, which depends on external module, and is queried during generation?)
    * todo: Generator's dependencies obviously must be considered separately
@@ -390,13 +394,24 @@ public class MPSModulesClosure {
 
   /**
    * Collects runtime solutions for the given set of languages.
+   * In addition to supplied languages, runtimes of languages they target to (generate into) are collected as well
    * 
    * @param usedLanguages languages to analyze
    * @param languagesWithRuntime will be filled with the used languages that has runtime which IS NOT a regular runtime solution
    * @param runtimeSolutions filled with runtime solutions found for used languages
    */
   private static void fillUsedLanguageRuntimes(Set<SNode> usedLanguages, Set<SNode> languagesWithRuntime, Set<SNode> runtimeSolutions) {
-    for (SNode language : usedLanguages) {
+    Set<SNode> usedAndTargetLanguages = SetSequence.fromSetWithValues(new HashSet<SNode>(), usedLanguages);
+    // XXX here we just go 1 level deep (target languages of used languages, but ignore further possible targets of 
+    // discovered targets. However, this dependency management of build lang makes me sick (duplicating logic we've got 
+    // in MPS elsewhere)
+    SetSequence.fromSet(usedAndTargetLanguages).addSequence(SetSequence.fromSet(usedLanguages).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return dependencies_targetLanguages(it);
+      }
+    }));
+
+    for (SNode language : usedAndTargetLanguages) {
       boolean hasRuntime = false;
       for (SNode rdep : SLinkOperations.getChildren(language, LINKS.runtime$lxKd)) {
         if (!(SNodeOperations.isInstanceOf(rdep, CONCEPTS.BuildMps_ModuleSolutionRuntime$b5))) {
@@ -519,6 +534,7 @@ public class MPSModulesClosure {
     /*package*/ static final SConcept BuildMps_DevKitExportLanguage$EV = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, "jetbrains.mps.build.mps.structure.BuildMps_DevKitExportLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyUseLanguage$uH = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnDevKit$4s = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnDevKit");
+    /*package*/ static final SConcept BuildMps_ModuleDependencyTargetLanguage$oN = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyTargetLanguage");
     /*package*/ static final SConcept BuildMps_Generator$RQ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
     /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
     /*package*/ static final SConcept BuildMps_Solution$R7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
@@ -536,6 +552,7 @@ public class MPSModulesClosure {
     /*package*/ static final SReferenceLink language$qqxl = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL, 0x4780308f5d29d73L, "language");
     /*package*/ static final SReferenceLink language$udAS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, 0x2c4467914643d2d3L, "language");
     /*package*/ static final SReferenceLink devkit$Q_pH = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, 0x4780308f5d5bc4aL, "devkit");
+    /*package*/ static final SReferenceLink language$wAwY = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language");
     /*package*/ static final SContainmentLink extends$SF0h = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
     /*package*/ static final SReferenceLink devkit$uPRS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, 0x4780308f5d2313bL, "devkit");
     /*package*/ static final SContainmentLink accessory$q_0N = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x6e2dd2f4c4c3e91dL, "accessory");
