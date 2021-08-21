@@ -179,6 +179,8 @@
       <zipfileset file="${mps_home}/languages/core/stub/Testbench/Testbench.msd" prefix="modules/Testbench" />
       <zipfileset file="${mps_home}/languages/core/stub/JAXB/JAXB.msd" prefix="modules/JAXB" />
       <zipfileset file="${mps_home}/languages/core/stub/Eclipse.ECJ/Eclipse.ECJ.msd" prefix="modules/Eclipse.ECJ" />
+      <zipfileset file="${mps_home}/languages/core/stub/MPS.Generator/MPS.Generator.msd" prefix="modules/MPS.Generator" />
+      <zipfileset file="${mps_home}/languages/core/stub/MPS.TextGen/MPS.TextGen.msd" prefix="modules/MPS.TextGen" />
     </jar>
     <mkdir dir="${build.layout}/languages/devkits" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.bootstrap-languages.jar" />
@@ -16275,9 +16277,11 @@
         <module file="${mps_home}/languages/core/stub/junit/junit.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.Core/MPS.Core.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.Editor/MPS.Editor.msd" />
+        <module file="${mps_home}/languages/core/stub/MPS.Generator/MPS.Generator.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.IDEA/MPS.IDEA.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.OpenAPI/MPS.OpenAPI.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.Platform/MPS.Platform.msd" />
+        <module file="${mps_home}/languages/core/stub/MPS.TextGen/MPS.TextGen.msd" />
         <module file="${mps_home}/languages/baseLanguage/references/runtime/jetbrains.mps.baseLanguage.references.runtime.msd" />
         <module file="${mps_home}/core/aspects/behavior/behavior-api/jetbrains.mps.lang.behavior.api.msd" />
         <module file="${mps_home}/core/aspects/behavior/behavior-runtime/jetbrains.mps.lang.behavior.runtime.msd" />

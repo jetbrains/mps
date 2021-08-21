@@ -103,9 +103,11 @@
       <modulePath path="$PROJECT_DIR$/languages/core/stub/JDK/JDK.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.Core/MPS.Core.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.Editor/MPS.Editor.msd" folder="core.stub" />
+      <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.Generator/MPS.Generator.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.IDEA/MPS.IDEA.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.OpenAPI/MPS.OpenAPI.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.Platform/MPS.Platform.msd" folder="core.stub" />
+      <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.TextGen/MPS.TextGen.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/MPS.Workbench/MPS.Workbench.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/Testbench/Testbench.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/diffutils/diffutils.msd" folder="core.stub" />
@@ -188,8 +190,8 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/script/jetbrains.mps.lang.script.mpl" folder="core.aspects.script" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/sharedConcepts/jetbrains.mps.lang.sharedConcepts.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/slanguage/jetbrains.mps.lang.slanguage.mpl" folder="core.languages" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/smodel.query/jetbrains.mps.lang.smodel.query.mpl" folder="core.languages.smodel.query" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/smodel.query.rt/jetbrains.mps.lang.smodel.query.runtime.msd" folder="core.languages.smodel.query" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/smodel.query/jetbrains.mps.lang.smodel.query.mpl" folder="core.languages.smodel.query" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/smodel/jetbrains.mps.lang.smodel.mpl" folder="core.languages.smodel" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/smodel/solutions/samples/jetbrains.mps.samples.smodelLanguage-samples.msd" folder="samples" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/structure/jetbrains.mps.lang.structure.mpl" folder="core.aspects.structure" />

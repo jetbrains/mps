@@ -2446,6 +2446,12 @@
             <node concept="1bldCd" id="BXTDJhDAx" role="39821P">
               <ref role="3$exzV" node="BXTDJgQdU" resolve="Eclipse.ECJ" />
             </node>
+            <node concept="1bldCd" id="rD7wKOc$s" role="39821P">
+              <ref role="3$exzV" node="rD7wKO6k$" resolve="MPS.Generator" />
+            </node>
+            <node concept="1bldCd" id="rD7wKOcTC" role="39821P">
+              <ref role="3$exzV" node="rD7wKO5Iy" resolve="MPS.TextGen" />
+            </node>
           </node>
           <node concept="3_J27D" id="10txAzI7sE7" role="Nbhlr">
             <node concept="3Mxwew" id="10txAzI7te9" role="3MwsjC">
@@ -6665,6 +6671,86 @@
             </node>
             <node concept="3qWCbU" id="73GUf$ummdy" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1E1JtA" id="rD7wKO6k$" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="MPS.Generator" />
+        <property role="3LESm3" value="215c4c45-ba99-49f5-9ab7-4b6901a63cfd" />
+        <property role="2GAjPV" value="true" />
+        <node concept="398BVA" id="rD7wKO8wZ" role="3LF7KH">
+          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="rD7wKO8Zk" role="iGT6I">
+            <property role="2Ry0Am" value="languages" />
+            <node concept="2Ry0Ak" id="rD7wKO99s" role="2Ry0An">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="rD7wKO9tF" role="2Ry0An">
+                <property role="2Ry0Am" value="stub" />
+                <node concept="2Ry0Ak" id="rD7wKO9VZ" role="2Ry0An">
+                  <property role="2Ry0Am" value="MPS.Generator" />
+                  <node concept="2Ry0Ak" id="rD7wKOage" role="2Ry0An">
+                    <property role="2Ry0Am" value="MPS.Generator.msd" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="rD7wKOaTu" role="3bR37C">
+          <node concept="3bR9La" id="rD7wKOaTv" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          </node>
+        </node>
+        <node concept="1E1SXE" id="rD7wL0EWf" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="75RBgxKm6HY" resolve="mps-generator" />
+          <node concept="398BVA" id="rD7wL0Frn" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="rD7wL0FK7" role="iGT6I">
+              <property role="2Ry0Am" value="mps-generator.jar" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1E1JtA" id="rD7wKO5Iy" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="MPS.TextGen" />
+        <property role="3LESm3" value="7124e466-fc92-4803-a656-d7a6b7eb3910" />
+        <property role="2GAjPV" value="true" />
+        <node concept="398BVA" id="rD7wKO6BB" role="3LF7KH">
+          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="rD7wKO75W" role="iGT6I">
+            <property role="2Ry0Am" value="languages" />
+            <node concept="2Ry0Ak" id="rD7wKO7qb" role="2Ry0An">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="rD7wKO7Iq" role="2Ry0An">
+                <property role="2Ry0Am" value="stub" />
+                <node concept="2Ry0Ak" id="rD7wKO82D" role="2Ry0An">
+                  <property role="2Ry0Am" value="MPS.TextGen" />
+                  <node concept="2Ry0Ak" id="rD7wKO8mS" role="2Ry0An">
+                    <property role="2Ry0Am" value="MPS.TextGen.msd" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="rD7wKOaTE" role="3bR37C">
+          <node concept="3bR9La" id="rD7wKOaTF" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          </node>
+        </node>
+        <node concept="1E1SXE" id="rD7wL0GzU" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="6g0vjebAkhc" resolve="mps-textgen" />
+          <node concept="398BVA" id="rD7wL0Hdn" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="rD7wL0Hy7" role="iGT6I">
+              <property role="2Ry0Am" value="mps-textgen.jar" />
             </node>
           </node>
         </node>
