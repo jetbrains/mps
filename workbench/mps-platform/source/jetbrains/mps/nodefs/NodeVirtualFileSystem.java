@@ -580,6 +580,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
         deletedFile.invalidate();
       }
 
+      changedFiles.forEach(MPSNodeVirtualFile::updateFields);
       myEventPublisher.changed(new ArrayList<>(changedFiles));
     }
 
