@@ -189,9 +189,9 @@ import java.util.function.Predicate;
       logUnexpectedRuntimeException(ex);
       throw ex;
     } finally {
+      checkState(State.ACTIVE);
       myNotifyGuard.release();
     }
-    checkState(State.ACTIVE);
   }
 
   private void onExit() throws InterruptedException {
@@ -217,9 +217,9 @@ import java.util.function.Predicate;
       logUnexpectedRuntimeException(ex);
       throw ex;
     } finally {
+      checkState(cnt == 0 ? State.READY : State.ACTIVE);
       myNotifyGuard.release();
     }
-    checkState(cnt == 0 ? State.READY : State.ACTIVE);
   }
 
   private void checkState(State expected) {
