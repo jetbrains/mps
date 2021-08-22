@@ -118,7 +118,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 {
                   final SNode tnode14 = environment.createOutputNode(myConcepts[8]);
                   {
-                    environment.associate(tnode14, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleInterpreted2.<init>(jetbrains.mps.smodel.language.LanguageRegistry,jetbrains.mps.smodel.language.LanguageRuntime,jetbrains.mps.smodel.Generator)");
+                    environment.associate(tnode14, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleInterpreted2.<init>(jetbrains.mps.smodel.language.LanguageRegistry,jetbrains.mps.smodel.language.LanguageRuntime,jetbrains.mps.smodel.Generator)");
                     TemplateContext context8 = context7.subContext();
                     {
                       final SNode tnode15 = environment.createOutputNode(myConcepts[9]);
@@ -246,7 +246,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                 TemplateContext context15 = context14.subContext();
                 {
                   final SNode tnode35 = environment.createOutputNode(myConcepts[4]);
-                  environment.associate(tnode35, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleInterpreted2$TemplateModels");
+                  environment.associate(tnode35, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleInterpreted2$TemplateModels");
                   environment.aggregate(tnode34, myAggregationLinks[1], tnode35);
                 }
               }
@@ -279,7 +279,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                           {
                             final SNode tnode41 = environment.createOutputNode(myConcepts[15]);
                             {
-                              environment.associate(tnode41, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleInterpreted2$TemplateModels.templates(java.lang.String,java.lang.Class)");
+                              environment.associate(tnode41, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleInterpreted2$TemplateModels.templates(java.lang.String,java.lang.Class)");
                               TemplateContext context20 = context19.subContext();
                               {
                                 final SNode tnode42 = environment.createOutputNode(myConcepts[16]);
@@ -293,7 +293,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                                   {
                                     final SNode tnode44 = environment.createOutputNode(myConcepts[20]);
                                     SNodeAccessUtil.setPropertyValue(tnode44, myProperties[5], QueriesGenerated.propertyMacro_GetValue_7_2(new PropertyMacroContext(context21, "QueriesGenerated", propertyMacro_mgoy7h_c0a2a0a1a1a1a3a1a2a1a1a3a2a1a1a8a1a8a1a4a5)));
-                                    environment.associate(tnode44, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.impl.query(MPS.Core/)", "~GeneratorQueryProvider");
+                                    environment.associate(tnode44, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.query(MPS.Generator/)", "~GeneratorQueryProvider");
                                     environment.aggregate(tnode43, myAggregationLinks[12], tnode44);
                                   }
                                 }
@@ -351,7 +351,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                   TemplateContext context23 = context22.subContext();
                   {
                     final SNode tnode52 = environment.createOutputNode(myConcepts[4]);
-                    environment.associate(tnode52, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleBase$ReferencedGenerators");
+                    environment.associate(tnode52, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleBase$ReferencedGenerators");
                     environment.aggregate(tnode51, myAggregationLinks[1], tnode52);
                   }
                 }
@@ -384,7 +384,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                             {
                               final SNode tnode58 = environment.createOutputNode(myConcepts[15]);
                               {
-                                environment.associate(tnode58, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleBase$ReferencedGenerators.extended(java.lang.String)");
+                                environment.associate(tnode58, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleBase$ReferencedGenerators.extended(java.lang.String)");
                                 TemplateContext context28 = context27.subContext();
                                 {
                                   final SNode tnode59 = environment.createOutputNode(myConcepts[16]);
@@ -425,7 +425,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                             {
                               final SNode tnode64 = environment.createOutputNode(myConcepts[15]);
                               {
-                                environment.associate(tnode64, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleBase$ReferencedGenerators.employed(java.lang.String)");
+                                environment.associate(tnode64, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleBase$ReferencedGenerators.employed(java.lang.String)");
                                 TemplateContext context32 = context31.subContext();
                                 {
                                   final SNode tnode65 = environment.createOutputNode(myConcepts[16]);
@@ -684,8 +684,8 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
                       {
                         final SNode tnode103 = environment.createOutputNode(myConcepts[14]);
                         {
-                          environment.associate(tnode103, myAssociationLinks[4], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
-                          environment.associate(tnode103, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.asCollection(java.lang.Object...)");
+                          environment.associate(tnode103, myAssociationLinks[4], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
+                          environment.associate(tnode103, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.asCollection(java.lang.Object...)");
                           TemplateContext context54 = context53.subContext();
                           {
                             Collection<SNode> tlist104 = null;
@@ -718,7 +718,7 @@ public class Template_InterpretedGeneratorRuntimeDescriptor extends TemplateDecl
         }
         {
           final SNode tnode107 = environment.createOutputNode(myConcepts[4]);
-          environment.associate(tnode107, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateModuleInterpreted2");
+          environment.associate(tnode107, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModuleInterpreted2");
           environment.aggregate(tnode2, myAggregationLinks[27], tnode107);
         }
       }

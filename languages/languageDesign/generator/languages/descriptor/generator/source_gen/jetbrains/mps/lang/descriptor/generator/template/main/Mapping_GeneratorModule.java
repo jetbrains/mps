@@ -73,8 +73,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       if (QueriesGenerated.rule_Condition_1_0(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         {
-          environment.associate(tnode2, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createStrictlyBeforeRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
-          environment.associate(tnode2, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+          environment.associate(tnode2, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createStrictlyBeforeRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
+          environment.associate(tnode2, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
           TemplateContext context1 = context.subContext();
           {
             Collection<SNode> tlist3 = null;
@@ -93,8 +93,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       } else if (QueriesGenerated.rule_Condition_1_1(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
         final SNode tnode5 = environment.createOutputNode(myConcepts[0]);
         {
-          environment.associate(tnode5, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createBeforeOrTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
-          environment.associate(tnode5, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+          environment.associate(tnode5, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createBeforeOrTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
+          environment.associate(tnode5, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
           TemplateContext context2 = context.subContext();
           {
             Collection<SNode> tlist6 = null;
@@ -113,8 +113,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       } else if (QueriesGenerated.rule_Condition_1_2(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
         final SNode tnode8 = environment.createOutputNode(myConcepts[0]);
         {
-          environment.associate(tnode8, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createStrictlyAfterRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
-          environment.associate(tnode8, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+          environment.associate(tnode8, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createStrictlyAfterRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
+          environment.associate(tnode8, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
           TemplateContext context3 = context.subContext();
           {
             Collection<SNode> tlist9 = null;
@@ -133,8 +133,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       } else if (QueriesGenerated.rule_Condition_1_3(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
         final SNode tnode11 = environment.createOutputNode(myConcepts[0]);
         {
-          environment.associate(tnode11, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createAfterOrTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
-          environment.associate(tnode11, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+          environment.associate(tnode11, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createAfterOrTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
+          environment.associate(tnode11, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
           TemplateContext context4 = context.subContext();
           {
             Collection<SNode> tlist12 = null;
@@ -153,8 +153,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       } else {
         final SNode tnode14 = environment.createOutputNode(myConcepts[0]);
         {
-          environment.associate(tnode14, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createStrictlyTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
-          environment.associate(tnode14, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+          environment.associate(tnode14, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createStrictlyTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
+          environment.associate(tnode14, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
           TemplateContext context5 = context.subContext();
           {
             Collection<SNode> tlist15 = null;
@@ -183,8 +183,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createRefExternal(java.lang.String,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
-        environment.associate(tnode1, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+        environment.associate(tnode1, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createRefExternal(java.lang.String,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
+        environment.associate(tnode1, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -210,8 +210,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
-        environment.associate(tnode1, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createRefNormal(java.lang.String,java.lang.String,java.lang.String)");
+        environment.associate(tnode1, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
+        environment.associate(tnode1, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createRefNormal(java.lang.String,java.lang.String,java.lang.String)");
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -240,8 +240,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-      environment.associate(tnode1, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createRefGlobal()");
-      environment.associate(tnode1, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+      environment.associate(tnode1, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createRefGlobal()");
+      environment.associate(tnode1, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
       return TemplateUtil.singletonList(tnode1);
     }
   }
@@ -253,8 +253,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-      environment.associate(tnode1, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createRefLocal()");
-      environment.associate(tnode1, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+      environment.associate(tnode1, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createRefLocal()");
+      environment.associate(tnode1, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
       return TemplateUtil.singletonList(tnode1);
     }
   }
@@ -267,8 +267,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
       {
-        environment.associate(tnode1, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil.createRefSet(jetbrains.mps.generator.runtime.TemplateMappingConfigRef...)");
-        environment.associate(tnode1, myAssociationLinks[1], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateUtil");
+        environment.associate(tnode1, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createRefSet(jetbrains.mps.generator.runtime.TemplateMappingConfigRef...)");
+        environment.associate(tnode1, myAssociationLinks[1], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil");
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;

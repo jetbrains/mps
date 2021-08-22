@@ -108,7 +108,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.ClassConcept$bK), LINKS.annotation$K49I), LINKS.annotation$12Ek)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.is(it, new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~Generated")));
+        return !(SNodeOperations.is(it, new SNodePointer("215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~Generated")));
       }
     });
   }
@@ -1017,9 +1017,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_8_1(final ReferenceMacroContext _context) {
     if (!(GenUtil.isNodeVariable(_context, SNodeOperations.getParent(_context.getNode())))) {
-      return new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateDeclarationBase.listFragment(int,java.util.Collection)");
+      return new SNodePointer("215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateDeclarationBase.listFragment(int,java.util.Collection)");
     }
-    return new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)", "~TemplateDeclarationBase.nodeFragment(int,org.jetbrains.mps.openapi.model.SNode)");
+    return new SNodePointer("215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateDeclarationBase.nodeFragment(int,org.jetbrains.mps.openapi.model.SNode)");
   }
   public static Object referenceMacro_GetReferent_9_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNodesQuery$XjmI), "QG.templateQuery");

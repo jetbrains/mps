@@ -193,8 +193,8 @@
       <node id="1216860931320" at="30,60,31,30" concept="5" />
       <node id="1216860931320" at="31,30,32,225" concept="5" />
       <node id="1216860931320" at="32,225,33,34" concept="2" />
-      <node id="1216860931320" at="33,34,34,256" concept="2" />
-      <node id="1216860931320" at="34,256,35,24" concept="6" />
+      <node id="1216860931320" at="33,34,34,261" concept="2" />
+      <node id="1216860931320" at="34,261,35,24" concept="6" />
       <node id="1216860931317" at="39,0,40,0" concept="8" trace="GenerationContextType$Xq" />
       <node id="1216860931317" at="16,0,18,0" concept="1" trace="supertypesOf_GenerationContextType_SubtypingRule#()V" />
       <node id="1216860931317" at="18,0,21,0" concept="4" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />

@@ -1006,6 +1006,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="3NsKwMhtduH" role="3bR37C">
+          <node concept="3bR9La" id="3NsKwMhtduI" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:rD7wKO6k$" resolve="MPS.Generator" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="7U3WUIDPa5g" role="2G$12L">
         <property role="TrG5h" value="tests.testDepViewer" />
@@ -1252,6 +1257,11 @@
             <node concept="3qWCbU" id="7U3WUIDPa9U" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="3NsKwMhtdv0" role="3bR37C">
+          <node concept="3bR9La" id="3NsKwMhtdv1" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:rD7wKO6k$" resolve="MPS.Generator" />
           </node>
         </node>
       </node>
