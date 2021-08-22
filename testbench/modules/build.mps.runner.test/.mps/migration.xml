@@ -7,6 +7,7 @@
     <entry key="jetbrains.mps.ide.mpsmigration.v191.SaveAllJavaStubMethodRefsToShortForeignFormat" value="executed" />
     <entry key="jetbrains.mps.ide.mpsmigration.v191.UpdateJavaStubMethodRefs" value="executed" />
     <entry key="jetbrains.mps.ide.mpsmigration.v_2019_3.DefaultFacetExplicitPersistence" value="executed" />
+    <entry key="jetbrains.mps.ide.mpsmigration.v_2021_2.SplitMPSCoreStub" value="executed" />
     <entry key="jetbrains.mps.name2id_gen_perroot" value="executed" />
     <entry key="jetbrains.mps.obsoletePropsCleanup" value="executed" />
     <entry key="jetbrains.mps.projectJavaVersionMigration" value="executed" />
