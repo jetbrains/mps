@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateLoopCounterVariable extends MigrationScriptBase {
-  private final String description = "Use a LOOP.index expression insted of the loop variable";
+  private final String description = "Use a LOOP.index expression instead of the loop variable";
   public String getCaption() {
     return description;
   }
@@ -105,7 +105,7 @@ public class MigrateLoopCounterVariable extends MigrationScriptBase {
       });
       Sequence.fromIterable(loops).subtract(SetSequence.fromSet(toNotClear)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.assign(it, PROPS.counterVarName$YOXn, "");
+          SPropertyOperations.assign(it, PROPS.counterVarName$YOXn, null);
         }
       });
     }

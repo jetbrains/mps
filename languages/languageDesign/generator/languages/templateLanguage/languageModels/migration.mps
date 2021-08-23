@@ -54,9 +54,6 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -921,7 +918,7 @@
     </node>
     <node concept="3tYpXE" id="320zfaIedcF" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="Use a LOOP.index expression insted of the loop variable" />
+      <property role="3tYpXF" value="Use a LOOP.index expression instead of the loop variable" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="320zfaIedcH" role="1B3o_S" />
       <node concept="17QB3L" id="320zfaIedcI" role="1tU5fm" />
@@ -1551,10 +1548,8 @@
                   <node concept="1bVj0M" id="2oHOc8eJiks" role="23t8la">
                     <node concept="3clFbS" id="2oHOc8eJikt" role="1bW5cS">
                       <node concept="3clFbF" id="2oHOc8eJinZ" role="3cqZAp">
-                        <node concept="37vLTI" id="2oHOc8eJjPa" role="3clFbG">
-                          <node concept="Xl_RD" id="2oHOc8eJjRe" role="37vLTx">
-                            <property role="Xl_RC" value="" />
-                          </node>
+                        <node concept="37vLTI" id="3vL64Mrjjqp" role="3clFbG">
+                          <node concept="10Nm6u" id="3vL64Mrjjyx" role="37vLTx" />
                           <node concept="2OqwBi" id="2oHOc8eJiAz" role="37vLTJ">
                             <node concept="37vLTw" id="2oHOc8eJinY" role="2Oq$k0">
                               <ref role="3cqZAo" node="2oHOc8eJiku" resolve="it" />
