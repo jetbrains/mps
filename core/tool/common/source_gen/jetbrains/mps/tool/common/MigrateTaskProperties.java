@@ -10,10 +10,10 @@ import java.io.File;
  */
 @GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/4031029858776329668", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class MigrateTaskProperties {
-  private static final String PRE_CHECK_HALT = "pre-check-halt";
-  private static final String OUT_FILE_NAME = "migration_result.properties";
-  private static final String ERR_CODE_KEY = "mps.migration.errcode";
-
+  private static final String PRE_CHECK_HALT = "migrate.pre-check-halt";
+  private static final String OUT_FILE_NAME = "migrate.output-prop-file";
+  private static final String ERR_CODE_KEY = "migrate.errcode-key";
+  private static final String MAKE_DISTRIB_MODULES = "migrate.make-distrib-modules";
 
   private final Script myScript;
 
@@ -46,4 +46,12 @@ public class MigrateTaskProperties {
     return myScript.getProperty(ERR_CODE_KEY);
   }
 
+  public MigrateTaskProperties makeDistribModules(boolean value) {
+    // FIXME I don't quite understand the need for this, perhaps, shall just drop?
+    myScript.putProperty(MAKE_DISTRIB_MODULES, Boolean.toString(value));
+    return this;
+  }
+  public boolean makeDistribModules() {
+    return Boolean.parseBoolean(myScript.getProperty(MAKE_DISTRIB_MODULES));
+  }
 }

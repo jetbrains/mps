@@ -7,13 +7,13 @@ import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
+import jetbrains.mps.tool.common.MigrateTaskProperties;
 import jetbrains.mps.tool.builder.WorkerHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import java.util.function.Supplier;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.tool.common.MigrateTaskProperties;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.io.File;
 import jetbrains.mps.project.Project;
@@ -48,18 +48,20 @@ public class MigrationWorker extends WorkerBase {
 
   @Override
   public void work() {
-    // todo the following line is needed until we introduce layered migration
-    // FIXME why do I care to make these modules?
-    WorkerHelper compileReloadHelper = new WorkerHelper(myEnvironment.getPlatform());
-    final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-
-    compileReloadHelper.makeAndReload(repo, new Supplier<Collection<SModule>>() {
-      public Collection<SModule> get() {
-        return IterableUtil.asCollection(repo.getModules());
-      }
-    }, myJavaCompilerOptions);
-
     final MigrateTaskProperties taskProps = new MigrateTaskProperties(myWhatToDo);
+    WorkerHelper compileReloadHelper = new WorkerHelper(myEnvironment.getPlatform());
+
+    if (taskProps.makeDistribModules()) {
+      // todo the following line is needed until we introduce layered migration
+      // FIXME why do I care to make these modules?
+      final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
+      compileReloadHelper.makeAndReload(repo, new Supplier<Collection<SModule>>() {
+        public Collection<SModule> get() {
+          return IterableUtil.asCollection(repo.getModules());
+        }
+      }, myJavaCompilerOptions);
+    }
+
     final boolean preCheckFailureHalt = taskProps.isPreCheckFailureHalt();
 
     final Wrappers._boolean result = new Wrappers._boolean(true);

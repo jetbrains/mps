@@ -10746,7 +10746,7 @@
       <node concept="3Tm6S6" id="3vL64MrmOvQ" role="1B3o_S" />
       <node concept="17QB3L" id="3vL64MrmOAF" role="1tU5fm" />
       <node concept="Xl_RD" id="3vL64MrmQE3" role="33vP2m">
-        <property role="Xl_RC" value="pre-check-halt" />
+        <property role="Xl_RC" value="migrate.pre-check-halt" />
       </node>
     </node>
     <node concept="Wx3nA" id="7zEA_IIJpWz" role="jymVt">
@@ -10755,7 +10755,7 @@
       <node concept="3Tm6S6" id="7zEA_IIJpWw" role="1B3o_S" />
       <node concept="17QB3L" id="7zEA_IIJpWx" role="1tU5fm" />
       <node concept="Xl_RD" id="7zEA_IIJpWy" role="33vP2m">
-        <property role="Xl_RC" value="migration_result.properties" />
+        <property role="Xl_RC" value="migrate.output-prop-file" />
       </node>
     </node>
     <node concept="Wx3nA" id="7zEA_IIBdgG" role="jymVt">
@@ -10764,10 +10764,18 @@
       <node concept="3Tm6S6" id="7zEA_IIBdgD" role="1B3o_S" />
       <node concept="17QB3L" id="7zEA_IIBdgE" role="1tU5fm" />
       <node concept="Xl_RD" id="7zEA_IIBdgF" role="33vP2m">
-        <property role="Xl_RC" value="mps.migration.errcode" />
+        <property role="Xl_RC" value="migrate.errcode-key" />
       </node>
     </node>
-    <node concept="2tJIrI" id="3vL64MruN15" role="jymVt" />
+    <node concept="Wx3nA" id="3vL64MrAPTs" role="jymVt">
+      <property role="TrG5h" value="MAKE_DISTRIB_MODULES" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3vL64MrAPTt" role="1B3o_S" />
+      <node concept="17QB3L" id="3vL64MrAPTu" role="1tU5fm" />
+      <node concept="Xl_RD" id="3vL64MrAPTv" role="33vP2m">
+        <property role="Xl_RC" value="migrate.make-distrib-modules" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3vL64Mrnfx1" role="jymVt" />
     <node concept="312cEg" id="3vL64Mrnfwb" role="jymVt">
       <property role="TrG5h" value="myScript" />
@@ -11001,6 +11009,109 @@
       <node concept="17QB3L" id="3vL64MruQsT" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="3vL64MruOJr" role="jymVt" />
+    <node concept="3clFb_" id="3vL64MrATMR" role="jymVt">
+      <property role="TrG5h" value="makeDistribModules" />
+      <node concept="3uibUv" id="3vL64MrAU0y" role="3clF45">
+        <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
+      </node>
+      <node concept="3Tm1VV" id="3vL64MrATMU" role="1B3o_S" />
+      <node concept="3clFbS" id="3vL64MrATMV" role="3clF47">
+        <node concept="3SKdUt" id="3vL64MrAX0j" role="3cqZAp">
+          <node concept="1PaTwC" id="3vL64MrAX0k" role="1aUNEU">
+            <node concept="3oM_SD" id="3vL64MrAX0y" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXao" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXck" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXde" role="1PaTwD">
+              <property role="3oM_SC" value="quite" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXdQ" role="1PaTwD">
+              <property role="3oM_SC" value="understand" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXf_" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXfG" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXfW" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXgC" role="1PaTwD">
+              <property role="3oM_SC" value="this," />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXht" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXiA" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXjl" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrAXl3" role="1PaTwD">
+              <property role="3oM_SC" value="drop?" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3vL64MrAUNJ" role="3cqZAp">
+          <node concept="2OqwBi" id="3vL64MrAV0t" role="3clFbG">
+            <node concept="37vLTw" id="3vL64MrAUNI" role="2Oq$k0">
+              <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
+            </node>
+            <node concept="liA8E" id="3vL64MrAVqq" role="2OqNvi">
+              <ref role="37wK5l" node="KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="3vL64MrAVBf" role="37wK5m">
+                <ref role="3cqZAo" node="3vL64MrAPTs" resolve="MAKE_DISTRIB_MODULES" />
+              </node>
+              <node concept="2YIFZM" id="3vL64MrAW59" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                <node concept="37vLTw" id="3vL64MrAWfP" role="37wK5m">
+                  <ref role="3cqZAo" node="3vL64MrAUCG" resolve="value" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3vL64MrAWr0" role="3cqZAp">
+          <node concept="Xjq3P" id="3vL64MrAWHD" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3vL64MrAUCG" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="3vL64MrAUCF" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="3vL64MrAXHI" role="jymVt">
+      <property role="TrG5h" value="makeDistribModules" />
+      <node concept="10P_77" id="3vL64MrAY3l" role="3clF45" />
+      <node concept="3Tm1VV" id="3vL64MrAXHL" role="1B3o_S" />
+      <node concept="3clFbS" id="3vL64MrAXHM" role="3clF47">
+        <node concept="3cpWs6" id="3vL64MrAZ3k" role="3cqZAp">
+          <node concept="2YIFZM" id="3vL64MrAZdO" role="3cqZAk">
+            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+            <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+            <node concept="2OqwBi" id="3vL64MrAZdP" role="37wK5m">
+              <node concept="37vLTw" id="3vL64MrAZdQ" role="2Oq$k0">
+                <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
+              </node>
+              <node concept="liA8E" id="3vL64MrAZdR" role="2OqNvi">
+                <ref role="37wK5l" node="KL8Aql8eBs" resolve="getProperty" />
+                <node concept="37vLTw" id="3vL64MrAZdV" role="37wK5m">
+                  <ref role="3cqZAo" node="3vL64MrAPTs" resolve="MAKE_DISTRIB_MODULES" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3Tm1VV" id="3vL64MrmMR5" role="1B3o_S" />
     <node concept="3UR2Jj" id="3vL64MrmNmx" role="lGtFl">
       <node concept="TZ5HA" id="3vL64MrmNmy" role="TZ5H$">

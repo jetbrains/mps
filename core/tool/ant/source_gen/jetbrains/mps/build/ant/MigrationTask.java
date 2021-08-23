@@ -26,7 +26,8 @@ public class MigrationTask extends MpsLoadTask {
   public MigrationTask() {
     super("jetbrains.mps.build.migration.MigrationWorker");
     // generally, this task is executed with without explicit fork="true", with default MpsLoadTask.myFork == true.
-    myProps = new MigrateTaskProperties(myWhatToDo).preCheckFailureHalt(true);
+    myProps = new MigrateTaskProperties(myWhatToDo).preCheckFailureHalt(true).makeDistribModules(true);
+    // makeDistribModules==true here is for backwards compatibility
     setFailOnError(true);
   }
 
@@ -66,6 +67,10 @@ public class MigrationTask extends MpsLoadTask {
 
   public void setHaltOnPrecheckFailure(boolean haltOnPrecheckFailure) {
     myProps.preCheckFailureHalt(haltOnPrecheckFailure);
+  }
+
+  public void setMakeDistribModules(boolean makeDistrib) {
+    myProps.makeDistribModules(makeDistrib);
   }
 
   @Override

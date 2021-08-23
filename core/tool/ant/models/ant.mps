@@ -9611,25 +9611,55 @@
         </node>
         <node concept="3clFbF" id="3vL64MrnsQD" role="3cqZAp">
           <node concept="37vLTI" id="3vL64Mrnv1m" role="3clFbG">
-            <node concept="2OqwBi" id="3vL64MrnIlX" role="37vLTx">
-              <node concept="2ShNRf" id="3vL64MrnGpo" role="2Oq$k0">
-                <node concept="1pGfFk" id="3vL64MrnHtN" role="2ShVmc">
-                  <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="asz6:3vL64MrmSlT" resolve="MigrateTaskProperties" />
-                  <node concept="37vLTw" id="3vL64MrnHIS" role="37wK5m">
-                    <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+            <node concept="2OqwBi" id="3vL64MrBJaO" role="37vLTx">
+              <node concept="2OqwBi" id="3vL64MrnIlX" role="2Oq$k0">
+                <node concept="2ShNRf" id="3vL64MrnGpo" role="2Oq$k0">
+                  <node concept="1pGfFk" id="3vL64MrnHtN" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="asz6:3vL64MrmSlT" resolve="MigrateTaskProperties" />
+                    <node concept="37vLTw" id="3vL64MrnHIS" role="37wK5m">
+                      <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="3vL64MrnIVY" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:3vL64MrnfIL" resolve="preCheckFailureHalt" />
+                  <node concept="3clFbT" id="3vL64MrnJdJ" role="37wK5m">
+                    <property role="3clFbU" value="true" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="3vL64MrnIVY" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:3vL64MrnfIL" resolve="preCheckFailureHalt" />
-                <node concept="3clFbT" id="3vL64MrnJdJ" role="37wK5m">
+              <node concept="liA8E" id="3vL64MrBJTR" role="2OqNvi">
+                <ref role="37wK5l" to="asz6:3vL64MrATMR" resolve="makeDistribModules" />
+                <node concept="3clFbT" id="3vL64MrBKff" role="37wK5m">
                   <property role="3clFbU" value="true" />
                 </node>
               </node>
             </node>
             <node concept="37vLTw" id="3vL64MrnsQB" role="37vLTJ">
               <ref role="3cqZAo" node="3vL64Mrnq8_" resolve="myProps" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="3vL64MrBKR5" role="3cqZAp">
+          <node concept="1PaTwC" id="3vL64MrBKR6" role="1aUNEU">
+            <node concept="3oM_SD" id="3vL64MrBL8d" role="1PaTwD">
+              <property role="3oM_SC" value="makeDistribModules==true" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrBL8f" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrBL8i" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrBL8m" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrBL8r" role="1PaTwD">
+              <property role="3oM_SC" value="backwards" />
+            </node>
+            <node concept="3oM_SD" id="3vL64MrBL9M" role="1PaTwD">
+              <property role="3oM_SC" value="compatibility" />
             </node>
           </node>
         </node>
@@ -9973,6 +10003,31 @@
       </node>
       <node concept="3Tm1VV" id="61n5glKlv5X" role="1B3o_S" />
       <node concept="3cqZAl" id="61n5glKlv5Y" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="3vL64MrBvMn" role="jymVt" />
+    <node concept="3clFb_" id="3vL64MrB$2o" role="jymVt">
+      <property role="TrG5h" value="setMakeDistribModules" />
+      <node concept="3clFbS" id="3vL64MrB$2r" role="3clF47">
+        <node concept="3clFbF" id="3vL64MrBC6O" role="3cqZAp">
+          <node concept="2OqwBi" id="3vL64MrBCS4" role="3clFbG">
+            <node concept="37vLTw" id="3vL64MrBC6N" role="2Oq$k0">
+              <ref role="3cqZAo" node="3vL64Mrnq8_" resolve="myProps" />
+            </node>
+            <node concept="liA8E" id="3vL64MrBEcp" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:3vL64MrATMR" resolve="makeDistribModules" />
+              <node concept="37vLTw" id="3vL64MrBH9E" role="37wK5m">
+                <ref role="3cqZAo" node="3vL64MrBAp2" resolve="makeDistrib" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3vL64MrBy6S" role="1B3o_S" />
+      <node concept="3cqZAl" id="3vL64MrBzOq" role="3clF45" />
+      <node concept="37vLTG" id="3vL64MrBAp2" role="3clF46">
+        <property role="TrG5h" value="makeDistrib" />
+        <node concept="10P_77" id="3vL64MrBAp1" role="1tU5fm" />
+      </node>
     </node>
     <node concept="2tJIrI" id="60oBoEdxLi" role="jymVt" />
     <node concept="3clFb_" id="7zEA_IIJ2No" role="jymVt">
