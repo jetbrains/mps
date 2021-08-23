@@ -88,8 +88,14 @@
     <classNode dependClassName="java.util.Properties" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.build.ant.ProjectPath" />
+    <classNode dependClassName="jetbrains.mps.tool.common.MigrateTaskProperties" />
     <classNode dependClassName="jetbrains.mps.tool.common.RepositoryDescriptor" />
     <classNode dependClassName="org.apache.tools.ant.BuildException" />
+    <classNode dependClassName="org.apache.tools.ant.Project" />
+    <classNode dependClassName="org.apache.tools.ant.types.DirSet" />
+    <classNode dependClassName="org.apache.tools.ant.types.Resource" />
+    <classNode dependClassName="org.apache.tools.ant.types.resources.FileProvider" />
     <classNode extendsClassName="jetbrains.mps.build.ant.MpsLoadTask" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.ModuleDataType">
@@ -183,6 +189,11 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
+    <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
+  </dependency>
+  <dependency className="jetbrains.mps.build.ant.ProjectPath">
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.RepositoryDataType">

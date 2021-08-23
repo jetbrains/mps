@@ -5,38 +5,29 @@ package jetbrains.mps.ide.migration;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.Project;
+import java.util.concurrent.atomic.AtomicReference;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.progress.EmptyProgressIndicator;
-import java.util.Properties;
 import jetbrains.mps.ide.migration.wizard.MigrationTask;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
 import org.apache.log4j.Level;
 import jetbrains.mps.messages.LogHandler;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/8164581507603015291", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class AntTaskExecutionUtil {
   private static final Logger LOG = LogManager.getLogger(AntTaskExecutionUtil.class);
-  /**
-   * Coupled with string constant in MigrationTask.ERR_CODE_KEY
-   */
-  private static final String ERR_CODE_KEY = "mps.migration.errcode";
-  /**
-   * Coupled with string constant in MigrationTask.OUT_FILE_NAME
-   */
-  private static final String OUT_FILE_NAME = "migration_result.properties";
-
 
   /**
    * Do not change this method's signature. It is used from MigrationWorker
    */
-  public static void migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
+  @Nullable
+  public static Boolean migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
+    final AtomicReference<Boolean> rv = new AtomicReference<>(null);
 
     MigrationExecutorImpl tracingExecutor = new MigrationExecutorImpl(project) {
       @Override
@@ -59,8 +50,7 @@ public class AntTaskExecutionUtil {
     MigrationSession session = new MigrationSessionImpl(project, setup, new MigrationCheckerImpl(project, setup), tracingExecutor, true, true, true);
     ProgressMonitorAdapter progress = new ProgressMonitorAdapter(new EmptyProgressIndicator());
 
-    final Properties properties = new Properties();
-    properties.setProperty(ERR_CODE_KEY, "0");
+    rv.set(Boolean.TRUE);
 
     MigrationTask task = new MigrationTask(session, progress, haltOnPrecheckFailure) {
       @Override
@@ -78,7 +68,7 @@ public class AntTaskExecutionUtil {
           }
         });
 
-        properties.setProperty(ERR_CODE_KEY, "1");
+        rv.set(Boolean.FALSE);
       }
     };
     task.run();
@@ -89,15 +79,6 @@ public class AntTaskExecutionUtil {
       }
     });
 
-    try {
-      File file = new File(OUT_FILE_NAME);
-      FileOutputStream fileOut = new FileOutputStream(file);
-      properties.store(fileOut, "");
-      fileOut.close();
-    } catch (IOException e) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("Exception on saving result file " + OUT_FILE_NAME, e);
-      }
-    }
+    return rv.get();
   }
 }

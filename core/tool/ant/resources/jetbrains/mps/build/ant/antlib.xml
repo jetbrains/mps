@@ -3,6 +3,7 @@
   <typedef name="jvmarg" classname="jetbrains.mps.build.ant.Arg" />
   <typedef name="jvmargs" classname="jetbrains.mps.build.ant.JvmArgs" />
   <typedef name="macro" classname="jetbrains.mps.build.ant.Macro" />
+  <typedef name="project" classname="jetbrains.mps.build.ant.ProjectPath" />
 
   <taskdef name="migrate" classname="jetbrains.mps.build.ant.MigrationTask" />
 

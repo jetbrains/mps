@@ -13,6 +13,8 @@ import java.util.function.Supplier;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.tool.common.MigrateTaskProperties;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.io.File;
 import jetbrains.mps.project.Project;
 import com.intellij.openapi.application.ApplicationManager;
@@ -20,6 +22,9 @@ import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import java.lang.reflect.Method;
 import com.intellij.openapi.application.ModalityState;
+import java.util.Properties;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MigrationWorker extends WorkerBase {
   private static final String MIGRATION_PLUGIN = "jetbrains.mps.ide.migration.workbench";
@@ -54,6 +59,11 @@ public class MigrationWorker extends WorkerBase {
       }
     }, myJavaCompilerOptions);
 
+    final MigrateTaskProperties taskProps = new MigrateTaskProperties(myWhatToDo);
+    final boolean preCheckFailureHalt = taskProps.isPreCheckFailureHalt();
+
+    final Wrappers._boolean result = new Wrappers._boolean(true);
+
     for (File file : myWhatToDo.getMPSProjectFiles()) {
       final Project[] container = new Project[1];
       container[0] = myEnvironment.openProject(file);
@@ -76,7 +86,12 @@ public class MigrationWorker extends WorkerBase {
             // MPS would resort to proper plugin CL to perform the task.
             Class<?> euClass = PluginManagerCore.getPlugin(PluginId.getId(MIGRATION_PLUGIN)).getPluginClassLoader().loadClass(TASK_EXEC_CLASS);
             Method method = euClass.getMethod("migrate", Project.class, Boolean.TYPE);
-            method.invoke(null, project, myWhatToDo.getHaltOnPrecheckFailure());
+            Object rv = method.invoke(null, project, preCheckFailureHalt);
+            if (rv instanceof Boolean) {
+              result.value &= (Boolean) rv;
+            } else {
+              error(String.format("Migration of project %s didn't yield expected boolean result (%s)", project.getName(), rv));
+            }
           } catch (Exception e) {
             throw new RuntimeException("Exception during migration", e);
           }
@@ -85,6 +100,18 @@ public class MigrationWorker extends WorkerBase {
 
       myEnvironment.closeProject(project);
       myEnvironment.flushAllEvents();
+    }
+
+    // here we treat no projects case as 'success', although that differs from previous logic. Do I care?
+    File propFile = taskProps.outputPropertyFile();
+    if (propFile != null && taskProps.outputPropertyErrorKey() != null) {
+      final Properties properties = new Properties();
+      properties.setProperty(taskProps.outputPropertyErrorKey(), (result.value ? "0" : "1"));
+      try (FileOutputStream fos = new FileOutputStream(propFile)) {
+        properties.store(fos, "");
+      } catch (IOException ex) {
+        log("Exception while saving property file with result code", ex);
+      }
     }
   }
 

@@ -20,7 +20,7 @@ public final class GeneratorProperties {
   private static final String USE_STATIC_REFS = "use-static-refs";
   private static final String SKIP_UNMODIFIED_MODELS = "skip-unmodified-models";
 
-  private Script myScript;
+  private final Script myScript;
 
   public GeneratorProperties(Script script) {
     myScript = script;

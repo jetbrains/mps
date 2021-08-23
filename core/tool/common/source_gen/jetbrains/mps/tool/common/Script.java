@@ -28,7 +28,6 @@ public class Script {
   private static final String PATH = "path";
   private static final String ELEMENT_CHUNK = "chunk";
   private static final String ATTRIBUTE_BOOTSTRAP = "bootstrap";
-  private static final String ATTRIBUTE_HALT_ON_PRECHECK_FAILURE = "haltOnPrecheckFailure";
 
   private final ScriptData myStartupData = new ScriptData();
   private final Set<File> myModels = new LinkedHashSet<File>();
@@ -39,7 +38,6 @@ public class Script {
    */
   private final List<File> myMPSProjects = new ArrayList<File>(3);
   private final Map<List<String>, Boolean> myChunks = new LinkedHashMap<List<String>, Boolean>();
-  private boolean myHaltOnPrecheckFailure = true;
 
   public Script() {
   }
@@ -57,14 +55,6 @@ public class Script {
     if (!(myMPSProjects.contains(projectFile))) {
       myMPSProjects.add(projectFile);
     }
-  }
-
-  public void setHaltOnPrecheckFailure(boolean value) {
-    myHaltOnPrecheckFailure = value;
-  }
-
-  public boolean getHaltOnPrecheckFailure() {
-    return myHaltOnPrecheckFailure;
   }
 
   public void addModelFile(File file) {
@@ -204,7 +194,7 @@ public class Script {
   }
 
   private Element prepareTaskCustomData() {
-    Element data = new Element(ELEMENT_TODO).setAttribute(ATTRIBUTE_HALT_ON_PRECHECK_FAILURE, String.valueOf(myHaltOnPrecheckFailure));
+    Element data = new Element(ELEMENT_TODO);
     for (File f : myModels) {
       data.addContent(new Element(ELEMENT_MODEL).setAttribute(PATH, f.getAbsolutePath()));
     }
@@ -228,7 +218,6 @@ public class Script {
   }
 
   private void parseTaskCustomData(Element elem) {
-    myHaltOnPrecheckFailure = Boolean.valueOf(elem.getAttributeValue(ATTRIBUTE_HALT_ON_PRECHECK_FAILURE));
     for (Element e : elem.getChildren()) {
       String elementName = e.getName();
       if (ELEMENT_MODEL.equals(elementName)) {
