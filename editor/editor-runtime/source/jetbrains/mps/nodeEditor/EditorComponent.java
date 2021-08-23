@@ -2452,9 +2452,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         }
       }
     }
-    if (myNodeSubstituteChooser.isVisible()) {
-      myNodeSubstituteChooser.updateAfterKeyEvent();
-    }
 
     repaintExternalComponent();
   }
@@ -2471,9 +2468,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           break;
         }
       }
-    }
-    if (myNodeSubstituteChooser.isVisible()) {
-      myNodeSubstituteChooser.updateAfterKeyEvent();
     }
 
     repaintExternalComponent();
