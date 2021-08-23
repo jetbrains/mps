@@ -18,7 +18,6 @@
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -104,7 +103,6 @@
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
       <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
-      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -125,10 +123,6 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
-        <child id="1160998896846" name="condition" index="1gVkn0" />
-        <child id="1160998916832" name="message" index="1gVpfI" />
-      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -175,7 +169,6 @@
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
-      <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -823,90 +816,6 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="3cpWs8" id="58MnPCMVwfJ" role="3cqZAp">
-                            <node concept="3cpWsn" id="58MnPCMVwfK" role="3cpWs9">
-                              <property role="TrG5h" value="projects" />
-                              <node concept="10Q1$e" id="58MnPCMVwfF" role="1tU5fm">
-                                <node concept="3uibUv" id="58MnPCMVB76" role="10Q1$1">
-                                  <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
-                                </node>
-                              </node>
-                              <node concept="2OqwBi" id="58MnPCMVwfL" role="33vP2m">
-                                <node concept="2YIFZM" id="58MnPCMVBmG" role="2Oq$k0">
-                                  <ref role="1Pybhc" to="4nm9:~ProjectManager" resolve="ProjectManager" />
-                                  <ref role="37wK5l" to="4nm9:~ProjectManager.getInstance()" resolve="getInstance" />
-                                </node>
-                                <node concept="liA8E" id="58MnPCMVwfN" role="2OqNvi">
-                                  <ref role="37wK5l" to="4nm9:~ProjectManager.getOpenProjects()" resolve="getOpenProjects" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="1gVbGN" id="58MnPCMVBPL" role="3cqZAp">
-                            <node concept="3clFbC" id="58MnPCMVCQr" role="1gVkn0">
-                              <node concept="3cmrfG" id="58MnPCMVCS$" role="3uHU7w">
-                                <property role="3cmrfH" value="1" />
-                              </node>
-                              <node concept="2OqwBi" id="58MnPCMVCka" role="3uHU7B">
-                                <node concept="37vLTw" id="58MnPCMVCf5" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="58MnPCMVwfK" resolve="projects" />
-                                </node>
-                                <node concept="1Rwk04" id="58MnPCMVCtR" role="2OqNvi" />
-                              </node>
-                            </node>
-                            <node concept="3cpWs3" id="58MnPCMVDT8" role="1gVpfI">
-                              <node concept="2OqwBi" id="58MnPCMVE9i" role="3uHU7w">
-                                <node concept="37vLTw" id="58MnPCMVE4Z" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="58MnPCMVwfK" resolve="projects" />
-                                </node>
-                                <node concept="1Rwk04" id="58MnPCMVEn3" role="2OqNvi" />
-                              </node>
-                              <node concept="Xl_RD" id="58MnPCMVDbP" role="3uHU7B">
-                                <property role="Xl_RC" value="more than one project opened: " />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3SKdUt" id="61n5glKoa_U" role="3cqZAp">
-                            <node concept="1PaTwC" id="61n5glKoa_V" role="1aUNEU">
-                              <node concept="3oM_SD" id="61n5glKochU" role="1PaTwD">
-                                <property role="3oM_SC" value="fixme" />
-                              </node>
-                              <node concept="3oM_SD" id="61n5glKoril" role="1PaTwD">
-                                <property role="3oM_SC" value="we" />
-                              </node>
-                              <node concept="3oM_SD" id="61n5glKohQG" role="1PaTwD">
-                                <property role="3oM_SC" value="should" />
-                              </node>
-                              <node concept="3oM_SD" id="61n5glKoiT2" role="1PaTwD">
-                                <property role="3oM_SC" value="close" />
-                              </node>
-                              <node concept="3oM_SD" id="61n5glKokzI" role="1PaTwD">
-                                <property role="3oM_SC" value="via" />
-                              </node>
-                              <node concept="3oM_SD" id="61n5glKolxK" role="1PaTwD">
-                                <property role="3oM_SC" value="environment" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3clFbF" id="58MnPCMVxNS" role="3cqZAp">
-                            <node concept="2OqwBi" id="61n5glKo5JM" role="3clFbG">
-                              <node concept="2YIFZM" id="61n5glKo217" role="2Oq$k0">
-                                <ref role="37wK5l" to="4nm9:~ProjectManager.getInstance()" resolve="getInstance" />
-                                <ref role="1Pybhc" to="4nm9:~ProjectManager" resolve="ProjectManager" />
-                              </node>
-                              <node concept="liA8E" id="61n5glKo6Zi" role="2OqNvi">
-                                <ref role="37wK5l" to="4nm9:~ProjectManager.closeAndDispose(com.intellij.openapi.project.Project)" resolve="closeAndDispose" />
-                                <node concept="AH0OO" id="61n5glKo218" role="37wK5m">
-                                  <node concept="3cmrfG" id="61n5glKo219" role="AHEQo">
-                                    <property role="3cmrfH" value="0" />
-                                  </node>
-                                  <node concept="37vLTw" id="61n5glKo21a" role="AHHXb">
-                                    <ref role="3cqZAo" node="58MnPCMVwfK" resolve="projects" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
                         </node>
                         <node concept="3uVAMA" id="75eqTYkoETS" role="1zxBo5">
                           <node concept="XOnhg" id="75eqTYkoETU" role="1zc67B">
@@ -945,13 +854,16 @@
               </node>
             </node>
             <node concept="3clFbH" id="1_ciHgTajEX" role="3cqZAp" />
-            <node concept="3clFbF" id="6ylsT8BG8Fi" role="3cqZAp">
-              <node concept="2OqwBi" id="6ylsT8BG8PE" role="3clFbG">
-                <node concept="37vLTw" id="6ylsT8BG8Fg" role="2Oq$k0">
-                  <ref role="3cqZAo" node="60oBoEfqOa" resolve="project" />
+            <node concept="3clFbF" id="3vL64MrlAZo" role="3cqZAp">
+              <node concept="2OqwBi" id="3vL64MrlCyA" role="3clFbG">
+                <node concept="37vLTw" id="3vL64MrlAZj" role="2Oq$k0">
+                  <ref role="3cqZAo" to="jo3e:KL8Aqlj5lM" resolve="myEnvironment" />
                 </node>
-                <node concept="liA8E" id="6ylsT8BG92z" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.dispose()" resolve="dispose" />
+                <node concept="liA8E" id="3vL64MrlDAG" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:3hj1t46fvYr" resolve="closeProject" />
+                  <node concept="37vLTw" id="3vL64MrlFad" role="37wK5m">
+                    <ref role="3cqZAo" node="60oBoEfqOa" resolve="project" />
+                  </node>
                 </node>
               </node>
             </node>
