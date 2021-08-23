@@ -30,7 +30,6 @@
     <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="q1l7" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.template(MPS.Generator/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -523,25 +522,14 @@
     <node concept="3Tm1VV" id="huoVGoK" role="1B3o_S" />
     <node concept="312cEg" id="huKZ_il" role="jymVt">
       <property role="TrG5h" value="ctx" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="huKZ_im" role="1B3o_S" />
       <node concept="3uibUv" id="huKZ_MH" role="1tU5fm">
         <ref role="3uigEE" node="huxYGZ1" resolve="PrepStatementUtil.Context" />
       </node>
     </node>
-    <node concept="312cEg" id="huKZAhS" role="jymVt">
-      <property role="TrG5h" value="generator" />
-      <node concept="3Tm6S6" id="huKZAhT" role="1B3o_S" />
-      <node concept="3uibUv" id="huKZALX" role="1tU5fm">
-        <ref role="3uigEE" to="q1l7:~ITemplateGenerator" resolve="ITemplateGenerator" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="3vL64Mr3$2q" role="jymVt" />
     <node concept="3clFbW" id="huKZzow" role="jymVt">
-      <node concept="37vLTG" id="huKZFzV" role="3clF46">
-        <property role="TrG5h" value="generator" />
-        <node concept="3uibUv" id="huKZFTq" role="1tU5fm">
-          <ref role="3uigEE" to="q1l7:~ITemplateGenerator" resolve="ITemplateGenerator" />
-        </node>
-      </node>
       <node concept="3cqZAl" id="huKZzox" role="3clF45" />
       <node concept="3Tm6S6" id="huKZzYY" role="1B3o_S" />
       <node concept="3clFbS" id="huKZzoz" role="3clF47">
@@ -557,19 +545,6 @@
               <node concept="1pGfFk" id="hIfNx$0" role="2ShVmc">
                 <ref role="37wK5l" node="huy2SBg" resolve="PrepStatementUtil.Context" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="huKZKOt" role="3cqZAp">
-          <node concept="37vLTI" id="huKZKOu" role="3clFbG">
-            <node concept="2OqwBi" id="hA2j_Ia" role="37vLTJ">
-              <node concept="Xjq3P" id="huKZLbB" role="2Oq$k0" />
-              <node concept="2OwXpG" id="hA2j_Ib" role="2OqNvi">
-                <ref role="2Oxat5" node="huKZAhS" resolve="generator" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="2BHiRxgma6z" role="37vLTx">
-              <ref role="3cqZAo" node="huKZFzV" resolve="generator" />
             </node>
           </node>
         </node>
@@ -683,7 +658,7 @@
       <node concept="3Tm6S6" id="huL0yom" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="huL0zFL" role="jymVt">
-      <property role="TrG5h" value="prepStatementList" />
+      <property role="TrG5h" value="_prepStatementList" />
       <property role="DiZV1" value="false" />
       <node concept="10Oyi0" id="huUy8dn" role="3clF45" />
       <node concept="37vLTG" id="uFqc7eqWZN" role="3clF46">
@@ -4399,9 +4374,6 @@
             <node concept="2ShNRf" id="hIfNuWA" role="33vP2m">
               <node concept="1pGfFk" id="hIfNuWC" role="2ShVmc">
                 <ref role="37wK5l" node="huKZzow" resolve="PrepStatementUtil" />
-                <node concept="37vLTw" id="2BHiRxgmgua" role="37wK5m">
-                  <ref role="3cqZAo" node="huy9XD1" resolve="generator" />
-                </node>
               </node>
             </node>
           </node>
@@ -4431,12 +4403,6 @@
         <property role="TrG5h" value="slist" />
         <node concept="3Tqbb2" id="huy9Wj$" role="1tU5fm">
           <ref role="ehGHo" to="tpee:fzclF80" resolve="StatementList" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="huy9XD1" role="3clF46">
-        <property role="TrG5h" value="generator" />
-        <node concept="3uibUv" id="huy9Y1O" role="1tU5fm">
-          <ref role="3uigEE" to="q1l7:~ITemplateGenerator" resolve="ITemplateGenerator" />
         </node>
       </node>
     </node>

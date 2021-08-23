@@ -7,7 +7,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.lang.dataFlow.framework.Program;
 import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -50,7 +50,13 @@ public class DataFlowUtil {
       return;
     }
     SModel m = SNodeOperations.getModel(statementList);
-    if (m != null && (m.getModule() instanceof TransientModelsModule)) {
+    // XXX I don't quite get the idea to exclude transient modules here; the marker is kind of
+    // overloaded/unclearly defined. Generally, we use transients for modules users don't intend to 
+    // work with or care to get properly analyzed/checked (e.g. intermediate model transformations),
+    // however, don't quite understand why can't we allow users to perform the check on any model they like.
+    // Besides, there's also unclear distinction between transient model and transient module; I wonder
+    // if we have to respect former in addition/instead of latter.
+    if (m != null && (m.getModule() instanceof TransientSModule)) {
       return;
     }
     try {

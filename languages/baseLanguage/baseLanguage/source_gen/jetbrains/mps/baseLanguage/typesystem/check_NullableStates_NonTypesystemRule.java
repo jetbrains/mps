@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.generator.TransientModelsModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.analyzers.runtime.framework.CustomAnalyzerRunner;
 import java.util.Map;
 import jetbrains.mps.baseLanguage.dataFlow.NullableState;
@@ -39,7 +39,7 @@ public class check_NullableStates_NonTypesystemRule extends AbstractNonTypesyste
   public check_NullableStates_NonTypesystemRule() {
   }
   public void applyRule(final SNode iMethodLike, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.getModel(iMethodLike).getModule() instanceof TransientModelsModule) {
+    if (SNodeOperations.getModel(iMethodLike).getModule() instanceof TransientSModule) {
       return;
     }
     // Find possible NPE

@@ -28,7 +28,6 @@
     <import index="qbve" ref="r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)" />
     <import index="faxn" ref="r:c8f09818-27d0-4e31-9cdf-dedd92fee7ef(jetbrains.mps.baseLanguage.closures.util)" />
     <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
-    <import index="q1l7" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.template(MPS.Generator/)" />
   </imports>
   <registry>
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
@@ -5571,19 +5570,6 @@
                       </node>
                       <node concept="3TrEf2" id="hvkzxgw" role="2OqNvi">
                         <ref role="3Tt5mk" to="tp2c:htbW58J" resolve="body" />
-                      </node>
-                    </node>
-                    <node concept="2OqwBi" id="hRrq45_" role="37wK5m">
-                      <node concept="1eOMI4" id="hRrq45A" role="2Oq$k0">
-                        <node concept="10QFUN" id="hRrq45B" role="1eOMHV">
-                          <node concept="1iwH7S" id="hRrq45C" role="10QFUP" />
-                          <node concept="3uibUv" id="hRrq45D" role="10QFUM">
-                            <ref role="3uigEE" to="q1l7:~TemplateQueryContext" resolve="TemplateQueryContext" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="hRrq45E" role="2OqNvi">
-                        <ref role="37wK5l" to="q1l7:~TemplateQueryContext.getGenerator()" resolve="getGenerator" />
                       </node>
                     </node>
                   </node>

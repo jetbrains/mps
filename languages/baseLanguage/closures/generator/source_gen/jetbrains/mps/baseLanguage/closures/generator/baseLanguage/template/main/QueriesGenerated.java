@@ -46,13 +46,13 @@ import jetbrains.mps.generator.template.WeavingMappingRuleContext;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.closures.helper.PrepStatementUtil;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.baseLanguage.closures.util.Constants;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.TypeDerivable__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.closures.helper.WrappersUtils;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ExpressionStatement__BehaviorDescriptor;
+import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -1484,7 +1484,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_2(final MappingScriptContext _context) {
     for (SNode cl : SModelOperations.nodes(_context.getModel(), CONCEPTS.ClosureLiteral$rp)) {
       if (ClosureLiteralUtil.hasYieldStatement(cl)) {
-        PrepStatementUtil.prepStatementList(_context, SLinkOperations.getTarget(cl, LINKS.body$Ujx2), ((TemplateQueryContext) _context).getGenerator());
+        PrepStatementUtil.prepStatementList(_context, SLinkOperations.getTarget(cl, LINKS.body$Ujx2));
         for (SNode varRef : SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(cl, LINKS.body$Ujx2), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})) {
           if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41) && Values.CLOSURE_DATA.get(_context, SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG)) != null) {
             if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(varRef), CONCEPTS.ClosureArgReference$7X))) {
