@@ -1,0 +1,64 @@
+<project name="migrateSampleAndTestProjects" default="migrateAll" basedir="../">
+  <property name="env.JAVA_HOME" value="${java.home}/.."/>
+  <property name="jdk.home" value="${env.JAVA_HOME}"/>
+  <!-- this has to be specified by caller -->
+  <property name="mps_home" location="build/artifacts/mps"/>
+
+  <!-- see mpsSmartRefAttrMigration.xml for additional details about migrate/@mpsHome -->
+
+  <path id="path.mps.ant.path">
+    <pathelement location="${mps_home}/lib/ant/lib/ant-mps.jar"/>
+    <pathelement location="${mps_home}/lib/util.jar"/>
+  </path>
+
+  <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path"/>
+
+  <target name="migrateAll" depends="migrateSampleProjects, migrateTestProjects">
+    <echo message="Some projects were explicitly excluded, and need to be migrated manually (see sources of this script) "/>
+  </target>
+
+  <dirset id="samples" dir="${basedir}/samples">
+    <present targetdir="${basedir}/samples">
+      <globmapper from="*" to="*/.mps"/>
+    </present>
+    <!-- these projects require IDE and MPS project due to dependencies not available for migrate task -->
+    <!-- Perhaps, can extend dependencies of migrate task with nested plugin or library? -->
+    <exclude name="generator_demo" />
+    <exclude name="messagesCustomization" />
+    <exclude name="customizedDebugger" />
+  </dirset>
+
+  <dirset id="testbench-modules" dir="${basedir}/testbench/modules">
+    <present targetdir="${basedir}/testbench/modules">
+      <globmapper from="*" to="*/.mps"/>
+    </present>
+    <!--
+    alternatively:
+    includes="testFS,testBehavior,simpleProject,testCloneModule,testCompilation,testRefactoring,build.mps.runner.test,build.mps.runner.test/project,testRefactoringWithMigration/MoveConcept_MPS_27372,testCompilationJavaXmlConflict"
+    -->
+    <exclude name="testCompilation" />
+  </dirset>
+
+  <target name="migrateSampleProjects">
+    <echo message="IMPORTANT: This dask doesn't ignore projects with .allow-pending-migrations file (see NoPendingMigrationTest"/>
+    <echo message="  Either revert results in these projects, or use explicit includes attribute in dirset"/>
+    <migrate mpsHome="${mps_home}" makeDistribModules="false">
+      <dirset refid="samples"/>
+      <jvmargs>
+        <arg value="-Xmx1200m" />
+      </jvmargs>
+    </migrate>
+  </target>
+
+  <target name="migrateTestProjects">
+    <migrate mpsHome="${mps_home}" makeDistribModules="false">
+      <project path="${basedir}/languages/languageDesign/generator/project.xmodel.test1"/>
+      <project path="${basedir}/testbench/testsolutions/closures.test"/>
+      <project path="${basedir}/testbench/modules/build.mps.runner.test/project"/>
+      <project path="${basedir}/testbench/modules/testRefactoringWithMigration/MoveConcept_MPS_27372"/>
+      <dirset refid="testbench-modules"/>
+      <jvmargs><arg value="-Xmx1200m" /></jvmargs>
+    </migrate>
+  </target>
+
+</project>

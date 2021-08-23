@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2010 JetBrains s.r.o.
+  ~ Copyright 2003-2021 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -173,4 +173,13 @@
   </target>
 
   <target name="default" depends="check-project-structure, module-tests"/>
+
+  <target name="migrateSamplesAndTests" depends="unpack" description="PROVISIONAL, fix noPendingMigrationTest when there's a new migration">
+    <!-- FIXME not related to test.xml, placed here as I need unpack functionality to use MPS.zip; shall refactor -->
+    <ant antfile="build/migrateSampleAndTestProjects.xml" inheritAll="true" useNativeBasedir="true">
+      <target name="migrateAll"/>
+      <property name="mps_home" value="${mps_build_home}"/>
+    </ant>
+  </target>
+
 </project>
