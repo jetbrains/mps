@@ -10,7 +10,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -57,7 +56,6 @@ public class BL_node_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.parameter$5xBj)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.typeVariableDeclaration$Lipp)));
-          new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(original));
         }
       }
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.Interface$db)) {
@@ -124,7 +122,6 @@ public class BL_node_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.parameter$5xBj)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.typeVariableDeclaration$Lipp)));
-          new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(original));
         }
       }
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IncompleteMemberDeclaration$jI) || SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.PlaceholderMember$s8)) {
@@ -410,7 +407,6 @@ public class BL_node_factories {
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
-    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
     /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
     /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
     /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
