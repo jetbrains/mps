@@ -366,7 +366,7 @@ public final class ModulesMiner {
     String filePath = file.getPath();
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
-      if (file.isInArchive()) {
+      if (file.isInZipArchive()) {
         moduleHome = file.getBundleHome();
       } else {
         // IFile.getBundleHome is not smart enough to recognize META-INF/module.xml in a regular directory (not archive), and yields
