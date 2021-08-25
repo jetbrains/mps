@@ -151,6 +151,7 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="1236262245656" name="jetbrains.mps.lang.editor.structure.MatchingLabelStyleClassItem" flags="ln" index="3mYdg7">
         <property id="1238091709220" name="labelName" index="1413C4" />
       </concept>
@@ -1317,6 +1318,9 @@
       </node>
       <node concept="3F0A7n" id="2MeG3eCdPFS" role="3EZMnx">
         <ref role="1NtTu8" to="c2kz:2MeG3eCdPFJ" resolve="message" />
+        <node concept="1liFee" id="1umdPpxvXhS" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="3F0ifn" id="2MeG3eCdPFW" role="3EZMnx">
         <property role="3F0ifm" value="&lt;-" />
