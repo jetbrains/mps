@@ -90,6 +90,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
@@ -473,6 +474,7 @@
   <node concept="PlHQZ" id="2hxg_BDjKM4">
     <property role="TrG5h" value="IConceptAspect" />
     <property role="EcuMT" value="2621449412040133764" />
+    <node concept="3MrDgS" id="4m7OOLml7GU" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="2A8AB0r$C6l">
     <property role="TrG5h" value="AttributeInfo" />
@@ -1303,6 +1305,7 @@
     <node concept="t5JxF" id="6TyNL3imB7E" role="lGtFl">
       <property role="t5JxN" value="defines a naming policy that all language aspects are recommended to use. May include spaces and other symbols in future. A correct way to generate a unique valid class name from it is now genContext.name from (this.getValidClassName()). It's better to create a generator language feature for that." />
     </node>
+    <node concept="3MrDgS" id="IV8h_9QsUz" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="4PXMYyZ4PZg">
     <property role="EcuMT" value="5583843313507852240" />
