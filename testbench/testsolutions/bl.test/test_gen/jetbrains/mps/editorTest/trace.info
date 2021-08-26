@@ -10386,6 +10386,60 @@
       <unit id="3912044994183004219" at="13,0,40,0" name="jetbrains.mps.editorTest.LeftParenPosition2_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3941626354700970708">
+    <file name="SwitchCreatorToImplicitTypeArguments_Test.java">
+      <node id="3941626354700970708" at="18,54,19,25" concept="11" />
+      <node id="3941626354700970708" at="23,76,24,36" concept="2" />
+      <node id="3941626354700970708" at="29,52,30,19" concept="11" />
+      <node id="3941626354700970708" at="34,51,35,72" concept="2" />
+      <node id="3941626354701044413" at="35,72,36,117" concept="2" />
+      <node id="3941626354701389631" at="36,117,37,0" concept="8" />
+      <node id="3941626354700970708" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3941626354700970708" at="18,0,21,0" concept="1" trace="SwitchCreatorToImplicitTypeArguments_Test#()V" />
+      <node id="3941626354700970708" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3941626354700970708" at="22,0,26,0" concept="5" trace="test_SwitchCreatorToImplicitTypeArguments#()V" />
+      <node id="3941626354700970708" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3941626354700970708" at="18,54,19,25" />
+      <scope id="3941626354700970708" at="23,76,24,36" />
+      <scope id="3941626354700970708" at="29,52,30,19" />
+      <scope id="3941626354700970708" at="18,0,21,0" />
+      <scope id="3941626354700970708" at="29,0,32,0">
+        <var name="owner" id="3941626354700970708" />
+      </scope>
+      <scope id="3941626354700970708" at="34,51,37,0" />
+      <scope id="3941626354700970708" at="22,0,26,0" />
+      <scope id="3941626354700970708" at="33,0,39,0" />
+      <unit id="3941626354700970708" at="27,0,40,0" name="jetbrains.mps.editorTest.SwitchCreatorToImplicitTypeArguments_Test$TestBody" />
+      <unit id="3941626354700970708" at="13,0,41,0" name="jetbrains.mps.editorTest.SwitchCreatorToImplicitTypeArguments_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3941626354701566020">
+    <file name="SwitchAnonymousCreatorToImplicitTypeArguments_Test.java">
+      <node id="3941626354701566020" at="18,63,19,25" concept="11" />
+      <node id="3941626354701566020" at="23,85,24,36" concept="2" />
+      <node id="3941626354701566020" at="29,52,30,19" concept="11" />
+      <node id="3941626354701566020" at="34,51,35,72" concept="2" />
+      <node id="3941626354701566042" at="35,72,36,117" concept="2" />
+      <node id="3941626354701566043" at="36,117,37,0" concept="8" />
+      <node id="3941626354701566020" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3941626354701566020" at="18,0,21,0" concept="1" trace="SwitchAnonymousCreatorToImplicitTypeArguments_Test#()V" />
+      <node id="3941626354701566020" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3941626354701566020" at="22,0,26,0" concept="5" trace="test_SwitchAnonymousCreatorToImplicitTypeArguments#()V" />
+      <node id="3941626354701566020" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3941626354701566020" at="18,63,19,25" />
+      <scope id="3941626354701566020" at="23,85,24,36" />
+      <scope id="3941626354701566020" at="29,52,30,19" />
+      <scope id="3941626354701566020" at="18,0,21,0" />
+      <scope id="3941626354701566020" at="29,0,32,0">
+        <var name="owner" id="3941626354701566020" />
+      </scope>
+      <scope id="3941626354701566020" at="34,51,37,0" />
+      <scope id="3941626354701566020" at="22,0,26,0" />
+      <scope id="3941626354701566020" at="33,0,39,0" />
+      <unit id="3941626354701566020" at="27,0,40,0" name="jetbrains.mps.editorTest.SwitchAnonymousCreatorToImplicitTypeArguments_Test$TestBody" />
+      <unit id="3941626354701566020" at="13,0,41,0" name="jetbrains.mps.editorTest.SwitchAnonymousCreatorToImplicitTypeArguments_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3956753173913342768">
     <file name="LT_PlusExpression_with_Cast_Test.java">
       <node id="3956753173913342768" at="18,45,19,25" concept="11" />

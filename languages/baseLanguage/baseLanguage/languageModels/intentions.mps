@@ -28169,5 +28169,80 @@
       </node>
     </node>
   </node>
+  <node concept="2S6QgY" id="3qNu4$OQp2I">
+    <property role="3GE5qa" value="classifiers" />
+    <property role="TrG5h" value="SwitchToImplicitTypeArgs" />
+    <ref role="2ZfgGC" to="tpee:1k0fX3j6IJx" resolve="IGenericClassCreator" />
+    <node concept="2S6ZIM" id="3qNu4$OQp2J" role="2ZfVej">
+      <node concept="3clFbS" id="3qNu4$OQp2K" role="2VODD2">
+        <node concept="3clFbF" id="3qNu4$OQBfO" role="3cqZAp">
+          <node concept="Xl_RD" id="3qNu4$OQBfN" role="3clFbG">
+            <property role="Xl_RC" value="Switch to Implicit Type Arguments" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="3qNu4$OQp2L" role="2ZfgGD">
+      <node concept="3clFbS" id="3qNu4$OQp2M" role="2VODD2">
+        <node concept="3clFbF" id="3qNu4$OQQD0" role="3cqZAp">
+          <node concept="2OqwBi" id="3qNu4$OQTAP" role="3clFbG">
+            <node concept="2OqwBi" id="3qNu4$OQQPA" role="2Oq$k0">
+              <node concept="2Sf5sV" id="3qNu4$OQQCZ" role="2Oq$k0" />
+              <node concept="2qgKlT" id="3qNu4$OSi9h" role="2OqNvi">
+                <ref role="37wK5l" to="tpek:1HUOkcfjoPx" resolve="getTypeParameter" />
+              </node>
+            </node>
+            <node concept="2Kehj3" id="3qNu4$OQVS1" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3qNu4$OR1Ow" role="3cqZAp">
+          <node concept="37vLTI" id="3qNu4$OR6aO" role="3clFbG">
+            <node concept="3clFbT" id="3qNu4$OR6bz" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="2OqwBi" id="3qNu4$OR4Sz" role="37vLTJ">
+              <node concept="2Sf5sV" id="3qNu4$OR1Ov" role="2Oq$k0" />
+              <node concept="3TrcHB" id="3qNu4$OR5tR" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:1k0fX3i3oGt" resolve="inferTypeParams" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2SaL7w" id="3qNu4$OQCiS" role="2ZfVeh">
+      <node concept="3clFbS" id="3qNu4$OQCiT" role="2VODD2">
+        <node concept="3clFbF" id="3qNu4$OQCrn" role="3cqZAp">
+          <node concept="1Wc70l" id="3qNu4$OSmNs" role="3clFbG">
+            <node concept="2OqwBi" id="3qNu4$OSqMo" role="3uHU7w">
+              <node concept="2OqwBi" id="3qNu4$OSnfa" role="2Oq$k0">
+                <node concept="2Sf5sV" id="3qNu4$OSn19" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="3qNu4$OSqhJ" role="2OqNvi">
+                  <node concept="1xMEDy" id="3qNu4$OSqhL" role="1xVPHs">
+                    <node concept="chp4Y" id="3qNu4$OSqzY" role="ri$Ld">
+                      <ref role="cht4Q" to="tpee:JiVENj$YN9" resolve="IInferenceContextProvider" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2qgKlT" id="3qNu4$OWUXq" role="2OqNvi">
+                <ref role="37wK5l" to="tpek:JiVENj$Z0y" resolve="canProvideInferenceContext" />
+                <node concept="2Sf5sV" id="3qNu4$OWVeH" role="37wK5m" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3qNu4$OQGJv" role="3uHU7B">
+              <node concept="2OqwBi" id="3qNu4$OQCIu" role="2Oq$k0">
+                <node concept="2Sf5sV" id="3qNu4$OQCrm" role="2Oq$k0" />
+                <node concept="2qgKlT" id="3qNu4$ORBWp" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:1HUOkcfjoPx" resolve="getTypeParameter" />
+                </node>
+              </node>
+              <node concept="3GX2aA" id="3qNu4$OQPtE" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

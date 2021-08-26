@@ -236,6 +236,7 @@
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+        <child id="2820489544402271667" name="typeParameter" index="HU9BZ" />
       </concept>
       <concept id="4678410916365116210" name="jetbrains.mps.baseLanguage.structure.DefaultModifier" flags="ng" index="2JFqV2" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -84644,6 +84645,211 @@
       <node concept="yd1bK" id="yCsrj3jLuY" role="3cqZAp">
         <node concept="pLAjd" id="yCsrj3jLv0" role="yd6KS">
           <property role="pLAjf" value="VK_ENTER" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="3qNu4$PheFk">
+    <property role="3GE5qa" value="baseLanguage" />
+    <property role="TrG5h" value="SwitchCreatorToImplicitTypeArguments" />
+    <node concept="1qefOq" id="3qNu4$PheG_" role="25YQCW">
+      <node concept="312cEu" id="3qNu4$PheGJ" role="1qenE9">
+        <property role="TrG5h" value="MyClass" />
+        <node concept="2YIFZL" id="3qNu4$PhfbL" role="jymVt">
+          <property role="TrG5h" value="main" />
+          <node concept="37vLTG" id="3qNu4$PhfbM" role="3clF46">
+            <property role="TrG5h" value="args" />
+            <node concept="10Q1$e" id="3qNu4$PhfbN" role="1tU5fm">
+              <node concept="17QB3L" id="3qNu4$PhfbO" role="10Q1$1" />
+            </node>
+          </node>
+          <node concept="3cqZAl" id="3qNu4$PhfbP" role="3clF45" />
+          <node concept="3Tm1VV" id="3qNu4$PhfbQ" role="1B3o_S" />
+          <node concept="3clFbS" id="3qNu4$PhfbR" role="3clF47">
+            <node concept="3cpWs8" id="3qNu4$PhIlH" role="3cqZAp">
+              <node concept="3cpWsn" id="3qNu4$PhIlI" role="3cpWs9">
+                <property role="TrG5h" value="first" />
+                <node concept="3uibUv" id="3qNu4$PhIeT" role="1tU5fm">
+                  <ref role="3uigEE" node="3qNu4$PheGJ" resolve="MyClass" />
+                  <node concept="3uibUv" id="3qNu4$PhIeW" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="3qNu4$PhIlJ" role="33vP2m">
+                  <node concept="HV5vD" id="3qNu4$PhIlK" role="2ShVmc">
+                    <ref role="HV5vE" node="3qNu4$PheGJ" resolve="MyClass" />
+                    <node concept="3uibUv" id="3qNu4$PhIlL" role="HU9BZ">
+                      <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                    </node>
+                    <node concept="LIFWc" id="3qNu4$PhIlM" role="lGtFl">
+                      <property role="ZRATv" value="true" />
+                      <property role="OXtK3" value="true" />
+                      <property role="p6zMq" value="7" />
+                      <property role="p6zMs" value="7" />
+                      <property role="LIFWd" value="ReferencePresentation_27y5p7_a0a0" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="3qNu4$PheGK" role="1B3o_S" />
+        <node concept="16euLQ" id="3qNu4$PheHo" role="16eVyc">
+          <property role="TrG5h" value="T" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="3qNu4$PhfcV" role="LjaKd">
+      <node concept="1MFPAf" id="3qNu4$PhwEX" role="3cqZAp">
+        <ref role="1MFYO6" to="tpei:3qNu4$OQp2I" resolve="SwitchToImplicitTypeArgs" />
+      </node>
+      <node concept="3clFbH" id="3qNu4$PiOWZ" role="3cqZAp" />
+    </node>
+    <node concept="1qefOq" id="3qNu4$PhfqK" role="25YQFr">
+      <node concept="312cEu" id="3qNu4$PhfqU" role="1qenE9">
+        <property role="TrG5h" value="MyClass" />
+        <node concept="2YIFZL" id="3qNu4$PhfqV" role="jymVt">
+          <property role="TrG5h" value="main" />
+          <node concept="37vLTG" id="3qNu4$PhfqW" role="3clF46">
+            <property role="TrG5h" value="args" />
+            <node concept="10Q1$e" id="3qNu4$PhfqX" role="1tU5fm">
+              <node concept="17QB3L" id="3qNu4$PhfqY" role="10Q1$1" />
+            </node>
+          </node>
+          <node concept="3cqZAl" id="3qNu4$PhfqZ" role="3clF45" />
+          <node concept="3Tm1VV" id="3qNu4$Phfr0" role="1B3o_S" />
+          <node concept="3clFbS" id="3qNu4$Phfr1" role="3clF47">
+            <node concept="3cpWs8" id="3qNu4$PhK$L" role="3cqZAp">
+              <node concept="3cpWsn" id="3qNu4$PhK$M" role="3cpWs9">
+                <property role="TrG5h" value="first" />
+                <node concept="3uibUv" id="3qNu4$PhK$N" role="1tU5fm">
+                  <ref role="3uigEE" node="3qNu4$PhfqU" resolve="MyClass" />
+                  <node concept="3uibUv" id="3qNu4$PhK$O" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="3qNu4$PhK$P" role="33vP2m">
+                  <node concept="HV5vD" id="3qNu4$PhK$Q" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="HV5vE" node="3qNu4$PhfqU" resolve="MyClass" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="3qNu4$Phfr3" role="1B3o_S" />
+        <node concept="16euLQ" id="3qNu4$Phfr4" role="16eVyc">
+          <property role="TrG5h" value="T" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="3qNu4$Pjw14">
+    <property role="3GE5qa" value="baseLanguage" />
+    <property role="TrG5h" value="SwitchAnonymousCreatorToImplicitTypeArguments" />
+    <node concept="3clFbS" id="3qNu4$Pjw1p" role="LjaKd">
+      <node concept="1MFPAf" id="3qNu4$Pjw1q" role="3cqZAp">
+        <ref role="1MFYO6" to="tpei:3qNu4$OQp2I" resolve="SwitchToImplicitTypeArgs" />
+      </node>
+      <node concept="3clFbH" id="3qNu4$Pjw1r" role="3cqZAp" />
+    </node>
+    <node concept="1qefOq" id="3qNu4$Pjw9$" role="25YQCW">
+      <node concept="3HP615" id="3qNu4$PjwaT" role="1qenE9">
+        <property role="TrG5h" value="MyInterface" />
+        <node concept="2YIFZL" id="3qNu4$PjwcY" role="jymVt">
+          <property role="TrG5h" value="main" />
+          <node concept="37vLTG" id="3qNu4$PjwcZ" role="3clF46">
+            <property role="TrG5h" value="args" />
+            <node concept="10Q1$e" id="3qNu4$Pjwd0" role="1tU5fm">
+              <node concept="17QB3L" id="3qNu4$Pjwd1" role="10Q1$1" />
+            </node>
+          </node>
+          <node concept="3cqZAl" id="3qNu4$Pjwd2" role="3clF45" />
+          <node concept="3Tm1VV" id="3qNu4$Pjwd3" role="1B3o_S" />
+          <node concept="3clFbS" id="3qNu4$Pjwd4" role="3clF47">
+            <node concept="3cpWs8" id="3qNu4$Pjwd5" role="3cqZAp">
+              <node concept="3cpWsn" id="3qNu4$Pjwd6" role="3cpWs9">
+                <property role="TrG5h" value="first" />
+                <node concept="3uibUv" id="3qNu4$Pjwd7" role="1tU5fm">
+                  <ref role="3uigEE" node="3qNu4$PjwaT" resolve="MyInterface" />
+                  <node concept="3uibUv" id="3qNu4$Pjwd8" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="3qNu4$Pjwd9" role="33vP2m">
+                  <node concept="YeOm9" id="3qNu4$PjC6q" role="2ShVmc">
+                    <node concept="1Y3b0j" id="3qNu4$PjC6t" role="YeSDq">
+                      <property role="2bfB8j" value="true" />
+                      <property role="373rjd" value="true" />
+                      <ref role="1Y3XeK" node="3qNu4$PjwaT" resolve="MyInterface" />
+                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                      <node concept="3Tm1VV" id="3qNu4$PjC6u" role="1B3o_S" />
+                      <node concept="3uibUv" id="3qNu4$PjC6H" role="2Ghqu4">
+                        <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                      </node>
+                      <node concept="LIFWc" id="3qNu4$PjCxu" role="lGtFl">
+                        <property role="LIFWa" value="8" />
+                        <property role="OXtK3" value="true" />
+                        <property role="p6zMq" value="8" />
+                        <property role="p6zMs" value="8" />
+                        <property role="LIFWd" value="ReferencePresentation_msf9u8_a0a0a" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="3qNu4$PjwaU" role="1B3o_S" />
+        <node concept="16euLQ" id="3qNu4$Pjwcc" role="16eVyc">
+          <property role="TrG5h" value="T" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="3qNu4$PjCgD" role="25YQFr">
+      <node concept="3HP615" id="3qNu4$PjCjQ" role="1qenE9">
+        <property role="TrG5h" value="MyInterface" />
+        <node concept="2YIFZL" id="3qNu4$PjCjR" role="jymVt">
+          <property role="TrG5h" value="main" />
+          <node concept="37vLTG" id="3qNu4$PjCjS" role="3clF46">
+            <property role="TrG5h" value="args" />
+            <node concept="10Q1$e" id="3qNu4$PjCjT" role="1tU5fm">
+              <node concept="17QB3L" id="3qNu4$PjCjU" role="10Q1$1" />
+            </node>
+          </node>
+          <node concept="3cqZAl" id="3qNu4$PjCjV" role="3clF45" />
+          <node concept="3Tm1VV" id="3qNu4$PjCjW" role="1B3o_S" />
+          <node concept="3clFbS" id="3qNu4$PjCjX" role="3clF47">
+            <node concept="3cpWs8" id="3qNu4$PjCjY" role="3cqZAp">
+              <node concept="3cpWsn" id="3qNu4$PjCjZ" role="3cpWs9">
+                <property role="TrG5h" value="first" />
+                <node concept="3uibUv" id="3qNu4$PjCk0" role="1tU5fm">
+                  <ref role="3uigEE" node="3qNu4$PjCjQ" resolve="MyInterface" />
+                  <node concept="3uibUv" id="3qNu4$PjCk1" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="3qNu4$PjCk2" role="33vP2m">
+                  <node concept="YeOm9" id="3qNu4$PjCk3" role="2ShVmc">
+                    <node concept="1Y3b0j" id="3qNu4$PjCk4" role="YeSDq">
+                      <property role="2bfB8j" value="true" />
+                      <property role="373rjd" value="true" />
+                      <ref role="1Y3XeK" node="3qNu4$PjCjQ" resolve="MyInterface" />
+                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                      <node concept="3Tm1VV" id="3qNu4$PjCk5" role="1B3o_S" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="3qNu4$PjCk7" role="1B3o_S" />
+        <node concept="16euLQ" id="3qNu4$PjCk8" role="16eVyc">
+          <property role="TrG5h" value="T" />
         </node>
       </node>
     </node>
