@@ -21,8 +21,6 @@
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="9lvf" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" implicit="true" />
-    <import index="tpfj" ref="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -880,21 +878,21 @@
         <node concept="l2Vlx" id="4L3eaLFn19Z" role="2iSdaV" />
         <node concept="3F0ifn" id="4L3eaLFn1a_" role="3EZMnx">
           <property role="3F0ifm" value="list" />
-          <ref role="1k5W1q" to="tpch:24YP6ZDyde4" resolve="Keyword" />
+          <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
           <node concept="11LMrY" id="4L3eaLFn1aA" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
         </node>
         <node concept="3F0ifn" id="4L3eaLFn1aB" role="3EZMnx">
           <property role="3F0ifm" value="&lt;" />
-          <ref role="1k5W1q" to="tpfj:hFCSAw$" resolve="LeftParen" />
+          <ref role="1k5W1q" to="tpen:hY9fg1G" resolve="LeftParenAfterName" />
         </node>
         <node concept="3F1sOY" id="4L3eaLFn1aC" role="3EZMnx">
           <ref role="1NtTu8" to="tp3j:6q8H2OTpOYg" resolve="parameterType" />
         </node>
         <node concept="3F0ifn" id="4L3eaLFn1aD" role="3EZMnx">
           <property role="3F0ifm" value="&gt;" />
-          <ref role="1k5W1q" to="tpfj:hFCSUmN" resolve="RightParen" />
+          <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
         </node>
         <node concept="3F0A7n" id="4L3eaLFn1aE" role="3EZMnx">
           <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
@@ -933,7 +931,7 @@
         <node concept="3F0ifn" id="4L3eaLFn1aQ" role="3EZMnx">
           <property role="3F0ifm" value=")" />
           <ref role="1ERwB7" to="9lvf:7T23sO8tbnq" resolve="RealObject2Placeholder" />
-          <ref role="1k5W1q" to="tpfj:hFCSUmN" resolve="RightParen" />
+          <ref role="1k5W1q" to="tpen:hFCSUmN" resolve="RightParen" />
           <node concept="2SqB2G" id="4L3eaLFn1aR" role="2SqHTX">
             <property role="TrG5h" value="rightParen" />
           </node>

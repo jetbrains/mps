@@ -17885,11 +17885,6 @@
             <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1038ICHqXD9" role="3bR37C">
-          <node concept="3bR9La" id="1038ICHqXDa" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6L6C" resolve="jetbrains.mps.lang.generator" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1038ICHqXDd" role="3bR37C">
           <node concept="3bR9La" id="1038ICHqXDe" role="1SiIV1">
             <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
