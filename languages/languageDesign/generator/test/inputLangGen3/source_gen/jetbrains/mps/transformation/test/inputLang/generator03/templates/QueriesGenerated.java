@@ -50,7 +50,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format(_context.getTemplateValue(), SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.clz$Kh$s), PROPS.name$MnvL), SPropertyOperations.getString(_context.getNode(), PROPS.namespace$Ki2u));
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return String.format(_context.getTemplateValue(), SPropertyOperations.getString(((SNode) _context.getVariable("var:key")), PROPS.namespace$Ki2u), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
+    return String.format(_context.getTemplateValue(), SPropertyOperations.getString((SNode) _context.getVariable("loop:inputNode"), PROPS.namespace$Ki2u), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     return String.format(_context.getTemplateValue(), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
@@ -83,9 +83,6 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     });
   }
-  public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
-    return _context.getNode();
-  }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
     return _context.getNode();
   }
@@ -95,8 +92,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getNode();
   }
   public static SNode labelMapNode1_1(final TemplateQueryContext _context) {
-    // FIXME I'd like to use LOOP.inputNode once MPS-32699 is merged into master
-    return ((SNode) _context.getVariable("var:key"));
+    return (SNode) _context.getVariable("loop:inputNode");
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
   {
@@ -226,8 +222,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("7424854434324659623", new VVQ(0));
-    vvqMethods.put("7424854434325145669", new VVQ(1));
+    vvqMethods.put("7424854434325145669", new VVQ(0));
   }
   @NotNull
   @Override
@@ -244,8 +239,6 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull TemplateVarContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.varMacro_Value_1_0(ctx);
-        case 1:
           return QueriesGenerated.varMacro_Value_2_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

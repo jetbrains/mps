@@ -6,7 +6,7 @@ import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.SNode;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.TemplateVarContext;
@@ -51,13 +51,13 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_2_3(final PropertyMacroContext _context) {
     return SPropertyOperations.getInteger((SNode) _context.getVariable("loop:inputNode"), PROPS.value$jgCM);
   }
-  public static Iterable<org.jetbrains.mps.openapi.model.SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.values$cF3G);
   }
-  public static Iterable<org.jetbrains.mps.openapi.model.SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.values$cF3G);
   }
-  public static Iterable<org.jetbrains.mps.openapi.model.SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren((SNode) _context.getVariable("loop:inputNode"), LINKS.values$cF3G);
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
@@ -82,7 +82,7 @@ public class QueriesGenerated extends QueryProviderBase {
       this.methodKey = methodKey;
     }
     @NotNull
-    public Collection<org.jetbrains.mps.openapi.model.SNode> evaluate(@NotNull SourceSubstituteMacroNodesContext ctx) throws GenerationFailureException {
+    public Collection<SNode> evaluate(@NotNull SourceSubstituteMacroNodesContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_0(ctx));

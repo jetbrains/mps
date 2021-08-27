@@ -274,19 +274,19 @@ public class QueriesGenerated {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_9_3(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel((jetbrains.mps.smodel.SNode) _context.getVariable("loop:inputNode"), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel((SNode) _context.getVariable("loop:inputNode"), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_9_4(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$hE$), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_9_5(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel((jetbrains.mps.smodel.SNode) _context.getVariable("loop:inputNode"), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel((SNode) _context.getVariable("loop:inputNode"), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_9_6(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$hE$), "parametersFromExpressionsQ");
   }
   public static Object referenceMacro_GetReferent_9_7(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel((jetbrains.mps.smodel.SNode) _context.getVariable("loop:inputNode"), "nodeVariableQ");
+    return _context.getOutputNodeByInputNodeAndMappingLabel((SNode) _context.getVariable("loop:inputNode"), "nodeVariableQ");
   }
   public static Object referenceMacro_GetReferent_9_8(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.expression$hE$), "parametersFromExpressionsQ");
