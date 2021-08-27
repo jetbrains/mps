@@ -30,6 +30,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.HashMap;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.project.Project;
@@ -187,7 +189,13 @@ public class TextGen_Facet extends IFacet.Stub {
                 // collect changes in a module-wide context
                 ModuleStaleFileManager sfm = moduleStaleFilesMap.get(resource.module());
                 if (sfm == null) {
-                  sfm = new ModuleStaleFileManager(resource.module(), Target_make.vars(pa.global()).pathToFile(), genDepsCache, messageHandler);
+                  _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> f2f = new _FunctionTypes._return_P1_E0<IFile, IFile>() {
+                    public IFile invoke(IFile f) {
+                      return Target_make.vars(pa.global()).pathToFile().invoke(f.getPath());
+                    }
+                  };
+
+                  sfm = new ModuleStaleFileManager(resource.module(), f2f, genDepsCache, messageHandler);
                   moduleStaleFilesMap.put(resource.module(), sfm);
                   sfm.collectRetainedFiles(Sequence.fromIterable(resource.retainedModels()).where(new IWhereFilter<SModel>() {
                     public boolean accept(SModel smd) {

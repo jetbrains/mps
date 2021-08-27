@@ -188,6 +188,7 @@
     <classNode dependClassName="java.util.concurrent.ArrayBlockingQueue" />
     <classNode dependClassName="java.util.concurrent.TimeUnit" />
     <classNode dependClassName="java.util.stream.IntStream" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
     <classNode dependClassName="jetbrains.mps.generator.GenerationFacade" />
@@ -237,6 +238,7 @@
     <classNode dependClassName="jetbrains.mps.textgen.trace.TraceInfoCache" />
     <classNode dependClassName="jetbrains.mps.util.IStatus" />
     <classNode dependClassName="jetbrains.mps.vfs.FileSystem" />
+    <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />

@@ -32,7 +32,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 /*package*/ class ModuleStaleFileManager {
   private final SModule myModule;
-  private final _FunctionTypes._return_P1_E0<? extends IFile, ? super String> myPath2File;
+  private final _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> myPath2File;
   private final List<IDelta> myRetainedFilesDelta = ListSequence.fromList(new ArrayList<IDelta>());
   private final List<IDelta> myStaleFilesDelta = ListSequence.fromList(new ArrayList<IDelta>());
   private final Map<IFile, FileDeltaCollector> myModelLocationStreams = new HashMap<IFile, FileDeltaCollector>();
@@ -43,10 +43,9 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
    */
   private final Set<IFile> myStaleFoldersWalked = new HashSet<IFile>();
 
-  public ModuleStaleFileManager(SModule module, _FunctionTypes._return_P1_E0<? extends IFile, ? super String> getFile, GenerationDependenciesCache genDeps, IMessageHandler msgHandler) {
+  public ModuleStaleFileManager(SModule module, _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> getFile, GenerationDependenciesCache genDeps, IMessageHandler msgHandler) {
     myModule = module;
     myFileStorage = new FileProcessor(msgHandler);
-    // FIXME need make.pathToFile to take IFile instead of String, it's odd to go there and back
     myPath2File = getFile;
     myGenDeps = genDeps;
   }
@@ -110,11 +109,11 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     if (outputDir == null || outputRoot == null) {
       return;
     }
-    IFile actualOutputRoot = myPath2File.invoke(outputRoot.getPath());
-    IFile actualModelOutputLoc = myPath2File.invoke(outputDir.getPath());
+    IFile actualOutputRoot = myPath2File.invoke(outputRoot);
+    IFile actualModelOutputLoc = myPath2File.invoke(outputDir);
     gdc.reportGeneratedFiles(actualOutputRoot, actualModelOutputLoc, visitor);
     IFile outputCacheLocation = gtf.getOutputCacheLocation(m);
-    IFile actualCacheLocation = (outputCacheLocation == null ? null : myPath2File.invoke(outputCacheLocation.getPath()));
+    IFile actualCacheLocation = (outputCacheLocation == null ? null : myPath2File.invoke(outputCacheLocation));
     if (actualCacheLocation != null) {
       visitor.accept(actualCacheLocation);
     }
@@ -150,7 +149,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     if (outputRoot == null) {
       return;
     }
-    IFile actualOutputRoot = myPath2File.invoke(outputRoot.getPath());
+    IFile actualOutputRoot = myPath2File.invoke(outputRoot);
     final FilesDelta fd = new FilesDelta(new DeltaKey(myModule, generatedInputModel));
     Consumer<IFile> staleDeltaReporter = new Consumer<IFile>() {
       public void accept(IFile f) {
@@ -161,7 +160,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
       visitFilesDeep(actualOutputRoot, staleDeltaReporter);
     }
     final IFile outputCacheRoot = gtf.getOutputCacheRoot(generatedInputModel);
-    IFile actualOutputCacheRoot = (outputCacheRoot == null ? null : myPath2File.invoke(outputCacheRoot.getPath()));
+    IFile actualOutputCacheRoot = (outputCacheRoot == null ? null : myPath2File.invoke(outputCacheRoot));
     if (outputCacheRoot != null && myStaleFoldersWalked.add(actualOutputCacheRoot)) {
       visitFilesDeep(actualOutputCacheRoot, staleDeltaReporter);
     }
@@ -258,7 +257,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
   private FileDeltaCollector newStreamHandler(SModel model, IFile outputDir) {
     DeltaKey dk = new DeltaKey(model.getModule(), model);
     // FDC needs actual path as it creates IFile from filename string at that location
-    return new FileDeltaCollector(new FilesDelta(dk), myPath2File.invoke(outputDir.getPath()), myFileStorage);
+    return new FileDeltaCollector(new FilesDelta(dk), myPath2File.invoke(outputDir), myFileStorage);
   }
 
   /*package*/ List<IDelta> getModuleWideDelta() {
