@@ -62,7 +62,9 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
         inputRes.value = Sequence.fromIterable(new MakeActionParameters(project).cleanMake(cleanMake).modules(modules).collectInput()).toListSequence();
       }
     });
-    Future<IResult> res = new BuildMakeService().makeAndReload(session, inputRes.value);
+    // FIXME install proper IMakeService in MpsTestsSuite (likely, TestMakeService, to avoid 
+    // superfluous tool.builder dependency here)
+    Future<IResult> res = new BuildMakeService().make(session, inputRes.value);
     try {
       Assert.assertTrue("Make was not successful", res.get().isSucessful());
     } catch (InterruptedException e) {

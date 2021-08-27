@@ -43,7 +43,6 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="bim2" ref="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)" />
-    <import index="drpk" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.make(MPS.Platform/)" />
     <import index="yo81" ref="r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)" />
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="hhlx" ref="r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)" />
@@ -57,7 +56,6 @@
     <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="ztoz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.model(MPS.Core/)" />
-    <import index="fyhl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="pjrh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)" />
@@ -73,13 +71,13 @@
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="hyam" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.event(JDK/)" />
-    <import index="pexp" ref="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)" />
     <import index="lfzw" ref="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)" />
     <import index="vqh0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.make(MPS.Core/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="f3o1" ref="r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)" implicit="true" />
     <import index="k2t0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.checkers(MPS.Core/)" implicit="true" />
     <import index="ew0j" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)" implicit="true" />
+    <import index="4rvk" ref="r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -7975,6 +7973,59 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="1tc5Ng8Lm_F" role="3cqZAp">
+          <node concept="1PaTwC" id="1tc5Ng8Lm_G" role="1aUNEU">
+            <node concept="3oM_SD" id="1tc5Ng8Ln7y" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Ln8q" role="1PaTwD">
+              <property role="3oM_SC" value="install" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8LnaZ" role="1PaTwD">
+              <property role="3oM_SC" value="proper" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Lnp$" role="1PaTwD">
+              <property role="3oM_SC" value="IMakeService" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8LncJ" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Lnfm" role="1PaTwD">
+              <property role="3oM_SC" value="MpsTestsSuite" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Lnrn" role="1PaTwD">
+              <property role="3oM_SC" value="(likely," />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Lnu1" role="1PaTwD">
+              <property role="3oM_SC" value="TestMakeService," />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Lnze" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Ln$e" role="1PaTwD">
+              <property role="3oM_SC" value="avoid" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Ln_f" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1tc5Ng8Lq47" role="3cqZAp">
+          <node concept="1PaTwC" id="1tc5Ng8Lq3T" role="1aUNEU">
+            <node concept="3oM_SD" id="1tc5Ng8Lq3S" role="1PaTwD">
+              <property role="3oM_SC" value="superfluous" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8Lq1Z" role="1PaTwD">
+              <property role="3oM_SC" value="tool.builder" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8LqL4" role="1PaTwD">
+              <property role="3oM_SC" value="dependency" />
+            </node>
+            <node concept="3oM_SD" id="1tc5Ng8LqMq" role="1PaTwD">
+              <property role="3oM_SC" value="here)" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4Rb4I4dvlHj" role="3cqZAp">
           <node concept="3cpWsn" id="4Rb4I4dvlHl" role="3cpWs9">
             <property role="TrG5h" value="res" />
@@ -7991,7 +8042,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4Rb4I4dvlFb" role="2OqNvi">
-                <ref role="37wK5l" to="hhlx:6deNqA_6OCj" resolve="makeAndReload" />
+                <ref role="37wK5l" to="4rvk:9D0Ba05vbq" resolve="make" />
                 <node concept="37vLTw" id="4Rb4I4dvl_H" role="37wK5m">
                   <ref role="3cqZAo" node="4Rb4I4dvlG9" resolve="session" />
                 </node>

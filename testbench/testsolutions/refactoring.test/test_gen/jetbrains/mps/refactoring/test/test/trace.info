@@ -35,31 +35,33 @@
       <node id="5605594918995974925" at="57,5,58,136" concept="7" />
       <node id="5605594918995975017" at="58,136,59,109" concept="7" />
       <node id="5605594918995974539" at="61,25,62,152" concept="2" />
-      <node id="5605594918995974995" at="64,7,65,88" concept="7" />
-      <node id="5605594918995974989" at="66,9,67,76" concept="2" />
-      <node id="5605594918995974961" at="68,38,69,32" concept="2" />
-      <node id="5605594918995974601" at="70,36,71,32" concept="2" />
-      <node id="5605594918995974867" at="73,30,74,32" concept="2" />
+      <node id="1678742273355245931" at="64,7,65,93" concept="9" />
+      <node id="1678742273355260167" at="65,93,66,48" concept="9" />
+      <node id="5605594918995974995" at="66,48,67,79" concept="7" />
+      <node id="5605594918995974989" at="68,9,69,76" concept="2" />
+      <node id="5605594918995974961" at="70,38,71,32" concept="2" />
+      <node id="5605594918995974601" at="72,36,73,32" concept="2" />
+      <node id="5605594918995974867" at="75,30,76,32" concept="2" />
       <node id="5605594918994315932" at="33,0,36,0" concept="1" trace="AbstractRefactoringTest#(Ljava/lang/String;)V" />
       <node id="3441894540445444455" at="54,76,57,5" concept="5" />
       <node id="5605594918995974871" at="61,0,64,0" concept="6" trace="run#()V" />
-      <node id="5605594918995974867" at="72,5,75,5" concept="5" />
+      <node id="5605594918995974867" at="74,5,77,5" concept="5" />
       <node id="5605594918995974875" at="59,109,64,7" concept="2" />
       <node id="5628230513246135153" at="47,0,53,0" concept="6" trace="tearDown#()V" />
-      <node id="5605594918995974931" at="65,88,72,5" concept="14" />
+      <node id="5605594918995974931" at="67,79,74,5" concept="14" />
       <node id="5628230513246122576" at="37,0,46,0" concept="6" trace="setUp#()V" />
-      <node id="3441894540445204818" at="54,0,77,0" concept="6" trace="doMake#(Ljava/util/List;Z)V" />
+      <node id="3441894540445204818" at="54,0,79,0" concept="6" trace="doMake#(Ljava/util/List;Z)V" />
       <scope id="5605594918994315936" at="33,47,34,29" />
       <scope id="3441894540445444455" at="55,30,56,85" />
       <scope id="5605594918995974869" at="61,25,62,152" />
-      <scope id="5605594918995974927" at="66,9,67,76" />
-      <scope id="5605594918995974967" at="68,38,69,32" />
-      <scope id="5605594918995974983" at="70,36,71,32" />
-      <scope id="5605594918995974867" at="73,30,74,32" />
-      <scope id="5605594918995974975" at="68,5,70,5">
+      <scope id="5605594918995974927" at="68,9,69,76" />
+      <scope id="5605594918995974967" at="70,38,71,32" />
+      <scope id="5605594918995974983" at="72,36,73,32" />
+      <scope id="5605594918995974867" at="75,30,76,32" />
+      <scope id="5605594918995974975" at="70,5,72,5">
         <var name="e" id="5605594918995974973" />
       </scope>
-      <scope id="5605594918995974977" at="70,5,72,5">
+      <scope id="5605594918995974977" at="72,5,74,5">
         <var name="e" id="5605594918995974991" />
       </scope>
       <scope id="5605594918994315932" at="33,0,36,0">
@@ -73,17 +75,17 @@
       </scope>
       <scope id="5628230513246135153" at="47,0,53,0" />
       <scope id="5628230513246122576" at="37,0,46,0" />
-      <scope id="3441894540445204822" at="54,76,75,5">
+      <scope id="3441894540445204822" at="54,76,77,5">
         <var name="inputRes" id="5605594918995975021" />
         <var name="res" id="5605594918995974997" />
         <var name="session" id="5605594918995974921" />
       </scope>
-      <scope id="3441894540445204818" at="54,0,77,0">
+      <scope id="3441894540445204818" at="54,0,79,0">
         <var name="cleanMake" id="3441894540446515383" />
         <var name="modules" id="3441894540445276934" />
       </scope>
       <unit id="5605594918995974871" at="60,63,64,5" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest$1" />
-      <unit id="5628230513246118974" at="28,0,79,0" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest" />
+      <unit id="5628230513246118974" at="28,0,81,0" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest" />
     </file>
   </root>
   <root nodeRef="r:7da8cb5d-b937-4ac8-a4e8-0f345dfd2711(jetbrains.mps.refactoring.test.test@tests)/6006982468244433255">
