@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.DataInputStream;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -33,7 +34,13 @@ public final class Files {
   }
 
   public static boolean isJarOrZipFile(@NotNull File file) throws IOException {
-    DataInputStream dis = new DataInputStream(new FileInputStream(file));
+    if (file.isDirectory()) {
+      return false;
+    }
+    if (file.length() < 4) { // less than 4 bytes
+      return false;
+    }
+    var dis = new DataInputStream(new FileInputStream(file));
     int fileSignature = dis.readInt();
     return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
   }
