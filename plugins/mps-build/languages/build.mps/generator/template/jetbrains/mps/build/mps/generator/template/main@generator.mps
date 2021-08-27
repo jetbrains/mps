@@ -4634,6 +4634,46 @@
               </node>
             </node>
           </node>
+          <node concept="398223" id="43_f$S$BGNp" role="39821P">
+            <node concept="1W57fq" id="4k06bsQ64ia" role="lGtFl">
+              <node concept="3IZrLx" id="4k06bsQ64id" role="3IZSJc">
+                <node concept="3clFbS" id="4k06bsQ64ie" role="2VODD2">
+                  <node concept="3clFbF" id="4k06bsQ64ik" role="3cqZAp">
+                    <node concept="3fqX7Q" id="4k06bsQ6kCd" role="3clFbG">
+                      <node concept="2OqwBi" id="4k06bsQ6kCf" role="3fr31v">
+                        <node concept="2OqwBi" id="4k06bsQ6kCg" role="2Oq$k0">
+                          <node concept="30H73N" id="4k06bsQ6kCh" role="2Oq$k0" />
+                          <node concept="3TrEf2" id="4k06bsQ6kCi" role="2OqNvi">
+                            <ref role="3Tt5mk" to="kdzh:5HVSRHdV_$p" resolve="plugin" />
+                          </node>
+                        </node>
+                        <node concept="3TrcHB" id="4k06bsQdkwK" role="2OqNvi">
+                          <ref role="3TsBF5" to="kdzh:4k06bsQdhR3" resolve="pluginXmlProvided" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="43_f$S$BGNq" role="Nbhlr">
+              <node concept="3Mxwew" id="43_f$S$BGNr" role="3MwsjC">
+                <property role="3MwjfP" value="META-INF" />
+              </node>
+            </node>
+            <node concept="m_q07" id="43_f$S$BGNs" role="39821P">
+              <ref role="m_q06" node="5HVSRHdWiAO" resolve="plugin1" />
+              <node concept="5jKBG" id="43_f$S$BGNt" role="lGtFl">
+                <ref role="v9R2y" node="5HVSRHdWi_x" resolve="IdeaPlugin.xml" />
+                <node concept="2OqwBi" id="43_f$S$BGNu" role="v9R3O">
+                  <node concept="30H73N" id="43_f$S$BGNv" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="43_f$S$BGNw" role="2OqNvi">
+                    <ref role="3Tt5mk" to="kdzh:5HVSRHdV_$p" resolve="plugin" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="398223" id="6NgN$9O6NzB" role="39821P">
             <node concept="3_J27D" id="6NgN$9O6NzD" role="Nbhlr">
               <node concept="3Mxwew" id="6NgN$9O6N$c" role="3MwsjC">
