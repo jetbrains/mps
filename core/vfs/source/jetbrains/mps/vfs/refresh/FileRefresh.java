@@ -64,7 +64,7 @@ public final class FileRefresh implements Runnable {
         fs.refresh(myDefaultCachingContext, cachingFiles);
         cachingFiles = cachingFiles.stream().flatMap(
             file -> {
-              if (!file.isInArchive() && file.isDirectory()) {
+              if (!file.isInZipArchive() && file.isDirectory()) {
                 List<IFile> children = file.getChildren();
                 return children != null ? children.stream().map(iFile -> (CachingFile) iFile) : Stream.empty();
               } else if (IFileUtil.isJarFile(file)) {

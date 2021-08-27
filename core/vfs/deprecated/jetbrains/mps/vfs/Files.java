@@ -20,14 +20,22 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.util.Locale;
 
 public final class Files {
-  private static final Logger LOG = LogManager.getLogger(Files.class);
-
   private Files() {
+  }
+
+  public static boolean isJarOrZipFile(@NotNull File file) throws IOException {
+    DataInputStream dis = new DataInputStream(new FileInputStream(file));
+    int fileSignature = dis.readInt();
+    return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
   }
 
   @NotNull

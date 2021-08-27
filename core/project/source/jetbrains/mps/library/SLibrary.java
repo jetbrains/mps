@@ -196,7 +196,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
         SModule module = myRepository.registerModule(mrf.instantiate(moduleHandle.getDescriptor(), moduleHandle.getFile()), this);
         loaded.add(module);
         IFile file = moduleHandle.getFile();
-        if (file.isInArchive()) {
+        if (file.isInZipArchive()) {
           file = file.getBundleHome();
         }
         myFileTracker.track(file, module);

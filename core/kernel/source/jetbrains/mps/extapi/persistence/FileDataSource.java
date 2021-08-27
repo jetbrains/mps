@@ -91,7 +91,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
 
   @Override
   public boolean isReadOnly() {
-    return myFile.isInArchive() || myFile.isReadOnly();
+    return myFile.isInZipArchive() || myFile.isReadOnly();
   }
 
   @NotNull

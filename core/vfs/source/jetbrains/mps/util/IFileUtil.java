@@ -78,7 +78,13 @@ public class IFileUtil {
   }
 
   public static boolean isJarFile(@NotNull IFile file) {
-    return file.getPath().endsWith(Path.DOT_JAR);
+    try {
+      return file.isZipArchive();
+    } catch (IOException e) {
+      String message = String.format("received io error when trying to access the file %s", file);
+      LOG.error(message, e);
+      return false;
+    }
   }
 
   /**

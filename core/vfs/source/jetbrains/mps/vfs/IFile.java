@@ -114,15 +114,22 @@ public interface IFile {
    */
   @Nullable IFile getParent();
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  //Should not have been used. The single use in MPS was a mistake
-  boolean isArchive();
+  /**
+   * @return whether the underlying pathname points exactly to a zip/jar archive file,
+   * meaning the contents is a zip archive
+   */
+  boolean isZipArchive() throws IOException;
 
   /**
-   * @return whether the underlying pathname points to an archive file or some of its contents
+   * @return whether the underlying pathname points to the file inside a zip archive file
    */
-  boolean isInArchive();
+  boolean isInZipArchive();
+
+  @Deprecated
+  @ScheduledForRemoval(inVersion = "2022.2")
+  default boolean isInArchive() {
+    return isInZipArchive();
+  }
 
   /**
    * Not sure if single use justifies existence of the method
@@ -134,12 +141,12 @@ public interface IFile {
   }
 
   /**
-   * @deprecated use {@link #isArchive()} or {@link #isInArchive()}
+   * @deprecated use {@link #isZipArchive()} or {@link #isInZipArchive()}
    */
   @ToRemove(version = 3.4)
   @Deprecated
   default boolean isPackaged() {
-    return isInArchive();
+    return isInZipArchive();
   }
 
   /**

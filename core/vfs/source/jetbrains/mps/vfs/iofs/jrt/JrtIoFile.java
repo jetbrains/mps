@@ -115,13 +115,13 @@ public class JrtIoFile implements IFile {
 
   @Override
   //todo [MM] check this. Initially made as in JarEntryFile, though it doesn't comply with doc
-  public boolean isArchive() {
-    return true;
+  public boolean isZipArchive() {
+    return false;
   }
 
   @Override
-  public boolean isInArchive() {
-    return true;
+  public boolean isInZipArchive() {
+    return false;
   }
 
   @Override

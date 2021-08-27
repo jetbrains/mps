@@ -110,7 +110,7 @@ public class ModuleOutputPaths {
 
     this.sortedModelDirs = DirUtil.sortDirs(Sequence.fromIterable(modelRootPaths).where(new IWhereFilter<IFile>() {
       public boolean accept(IFile f) {
-        return f.isDirectory() && !(f.isInArchive());
+        return f.isDirectory() && !(f.isInZipArchive());
       }
     }).select(new ISelector<IFile, String>() {
       public String select(IFile dir) {
