@@ -55,30 +55,12 @@
   
   <target name="assemble" depends="declare-mps-tasks, classes, fetchDependencies">
     <mkdir dir="${build.layout}/svn4idea" />
-    <unjar src="${mps_home}/plugins/svn4idea/lib/svn4idea.jar" dest="${build.tmp}/default/svn4idea_jar">
-      <patternset>
-        <include name="META-INF/plugin.xml" />
-      </patternset>
-    </unjar>
-    <mkdir dir="${build.layout}/svn4idea/META-INF" />
-    <copy todir="${build.layout}/svn4idea/META-INF">
-      <fileset file="${build.tmp}/default/svn4idea_jar/META-INF/plugin.xml" />
-    </copy>
     <copy todir="${build.layout}/svn4idea">
       <fileset dir="${basedir}/plugins/svn4idea">
         <exclude name="**/*.zip" />
       </fileset>
     </copy>
     <mkdir dir="${build.layout}/git4idea" />
-    <unjar src="${mps_home}/plugins/git4idea/lib/git4idea.jar" dest="${build.tmp}/default/git4idea_jar">
-      <patternset>
-        <include name="META-INF/plugin.xml" />
-      </patternset>
-    </unjar>
-    <mkdir dir="${build.layout}/git4idea/META-INF" />
-    <copy todir="${build.layout}/git4idea/META-INF">
-      <fileset file="${build.tmp}/default/git4idea_jar/META-INF/plugin.xml" />
-    </copy>
     <copy todir="${build.layout}/git4idea">
       <fileset dir="${basedir}/plugins/git4idea">
         <exclude name="**/*.zip" />
@@ -99,6 +81,25 @@
         </extensions>
       </idea-plugin>
     </echoxml>
+    <mkdir dir="${build.layout}/mps-git4idea/lib" />
+    <mkdir dir="${build.tmp}/default/mps-git4idea.jar" />
+    <mkdir dir="${build.tmp}/default/mps-git4idea.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/mps-git4idea.jar/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>jetbrains.mps.git4idea.stubs</id>
+        <name>MPS Git integration - stubs</name>
+        <version>${mpsBootstrapCore.version}</version>
+        <depends>Git4Idea</depends>
+        <depends>jetbrains.mps.core</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-git4idea/lib/mps-git4idea.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/default/mps-git4idea.jar" />
+    </jar>
     <mkdir dir="${build.layout}/mps-git4idea/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar/META-INF" />

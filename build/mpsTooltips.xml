@@ -53,6 +53,10 @@
     <copy todir="${build.layout}/mps-tooltips/META-INF">
       <fileset file="${mps_home}/plugins/mps-tooltips/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/mps-tooltips/lib" />
+    <jar destfile="${build.layout}/mps-tooltips/lib/mps-tooltips.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-tooltips/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.layout}/mps-tooltips/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.editor.tooltips.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.editor.tooltips.jar/META-INF" />

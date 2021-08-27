@@ -43,6 +43,25 @@
         </extensions>
       </idea-plugin>
     </echoxml>
+    <mkdir dir="${build.layout}/test1/lib" />
+    <mkdir dir="${build.tmp}/default/test1.jar" />
+    <mkdir dir="${build.tmp}/default/test1.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/test1.jar/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>test</id>
+        <name>test plugin</name>
+        <version>1.1</version>
+        <depends>jetbrains.mps.core</depends>
+        <depends>jetbrains.mps.build</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <jar destfile="${build.layout}/test1/lib/test1.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/default/test1.jar" />
+    </jar>
     <mkdir dir="${build.layout}/test1/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.sandbox.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.sandbox.jar/META-INF" />

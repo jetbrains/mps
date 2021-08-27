@@ -63,6 +63,7 @@
     <mkdir dir="${build.layout}/mps-console/lib" />
     <jar destfile="${build.layout}/mps-console/lib/mps-console.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/consoleTool" />
+      <zipfileset dir="${plugin_home}/META-INF" prefix="META-INF" />
     </jar>
     <mkdir dir="${build.layout}/mps-console/lang" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.jar" />

@@ -28,6 +28,10 @@
     <copy todir="${build.layout}/jetpad/META-INF">
       <fileset file="${mps_home}/plugins/jetpad/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/jetpad/lib" />
+    <jar destfile="${build.layout}/jetpad/lib/jetpad.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/jetpad/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.layout}/jetpad/languages" />
     <mkdir dir="${build.layout}/jetpad/languages/jetpad" />
     <mkdir dir="${build.tmp}/default/jetbrains.jetpad.jar" />

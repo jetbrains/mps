@@ -53,6 +53,10 @@
     <copy todir="${build.layout}/mps-diagram-editor/META-INF">
       <fileset file="${mps_home}/plugins/mps-diagram-editor/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/mps-diagram-editor/lib" />
+    <jar destfile="${build.layout}/mps-diagram-editor/lib/mps-diagram-editor.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-diagram-editor/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.layout}/mps-diagram-editor/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.editor.diagram.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.editor.diagram.jar/META-INF" />

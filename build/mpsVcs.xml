@@ -347,6 +347,12 @@
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-solutions-jetbrains.mps.vcs.mergehints.plugin-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.layout}/mps-vcs/lib" />
+    <jar destfile="${build.layout}/mps-vcs/lib/mps-vcs.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcs.xml" prefix="META-INF" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/META-INF/MPSVcsGit.xml" prefix="META-INF" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/META-INF/langDesignOptional.xml" prefix="META-INF" />
+      <zipfileset file="${mps_home}/plugins/mps-vcs/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.ide.vcs.jar/META-INF/module.xml">

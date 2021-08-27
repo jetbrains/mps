@@ -35,6 +35,10 @@
     <mkdir dir="${build.tmp}/default/propertyPersistence.zip" />
     <mkdir dir="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence" />
     <mkdir dir="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/lib" />
+    <jar destfile="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/lib/mps-sample-property-persistence.jar" duplicate="preserve">
+      <zipfileset file="${basedir}/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/source_gen/jetbrains/mps/samples/propertyPersistence/ideaPlugin/ideaPlugin/plugin.xml" prefix="META-INF" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/propertyPersistence.zip/mps-sample-property-persistence/lib" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.samples.propertyPersistenceDef.jar/META-INF/module.xml">

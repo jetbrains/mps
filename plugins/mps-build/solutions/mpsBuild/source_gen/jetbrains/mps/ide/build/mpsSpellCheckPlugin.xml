@@ -31,6 +31,10 @@
     <copy todir="${build.layout}/mps-spellcheck/META-INF">
       <fileset file="${mps_home}/plugins/mps-spellcheck/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/mps-spellcheck/lib" />
+    <jar destfile="${build.layout}/mps-spellcheck/lib/mps-spellcheck.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-spellcheck/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.layout}/mps-spellcheck/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.spellcheck.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.spellcheck.jar/META-INF" />

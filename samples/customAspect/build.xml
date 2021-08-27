@@ -67,6 +67,24 @@
         </extensions>
       </idea-plugin>
     </echoxml>
+    <mkdir dir="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/lib" />
+    <mkdir dir="${build.tmp}/default/SampleCustomAspect.jar" />
+    <mkdir dir="${build.tmp}/default/SampleCustomAspect.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/SampleCustomAspect.jar/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>SampleCustomAspect</id>
+        <name>SampleCustomAspect</name>
+        <version>1.0</version>
+        <depends>jetbrains.mps.core</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <jar destfile="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/lib/SampleCustomAspect.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/default/SampleCustomAspect.jar" />
+    </jar>
     <mkdir dir="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages" />
     <mkdir dir="${build.tmp}/default/SampleCustomAspect.zip/SampleCustomAspect/languages/SampleCustomAspect" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox.jar" />

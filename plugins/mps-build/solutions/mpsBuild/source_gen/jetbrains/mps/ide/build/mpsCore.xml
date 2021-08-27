@@ -51,6 +51,10 @@
     <copy todir="${build.layout}/mps-core/META-INF">
       <fileset file="${mps_home}/plugins/mps-core/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/mps-core/lib" />
+    <jar destfile="${build.layout}/mps-core/lib/mps-core.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-core/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.layout}/mps-core/languages" />
     <mkdir dir="${build.layout}/mps-core/languages/languageDesign" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.migration.util.jar" />

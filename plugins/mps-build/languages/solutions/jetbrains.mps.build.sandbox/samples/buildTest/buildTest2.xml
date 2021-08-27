@@ -44,6 +44,25 @@
         </extensions>
       </idea-plugin>
     </echoxml>
+    <mkdir dir="${build.layout}/plugins/mps-buildTest2/lib" />
+    <mkdir dir="${build.tmp}/default/mps-buildTest2.jar" />
+    <mkdir dir="${build.tmp}/default/mps-buildTest2.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/mps-buildTest2.jar/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>jetbrains.mps.buildTest2</id>
+        <name>Build Test SandBox</name>
+        <version>1.0.0</version>
+        <depends>jetbrains.mps.core</depends>
+        <depends>jetbrains.mps.build</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <jar destfile="${build.layout}/plugins/mps-buildTest2/lib/mps-buildTest2.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/default/mps-buildTest2.jar" />
+    </jar>
     <mkdir dir="${build.layout}/plugins/mps-buildTest2/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.sandbox.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.sandbox.jar/META-INF" />

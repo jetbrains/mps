@@ -49,6 +49,24 @@
         </extensions>
       </idea-plugin>
     </echoxml>
+    <mkdir dir="${build.layout}/notesOrganizer/lib" />
+    <mkdir dir="${build.tmp}/default/notesOrganizer.jar" />
+    <mkdir dir="${build.tmp}/default/notesOrganizer.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/notesOrganizer.jar/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>notesOrganizer</id>
+        <name>notesOrganizer</name>
+        <version>1.0</version>
+        <depends>jetbrains.mps.core</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <jar destfile="${build.layout}/notesOrganizer/lib/notesOrganizer.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/default/notesOrganizer.jar" />
+    </jar>
     <mkdir dir="${build.layout}/notesOrganizer/languages" />
     <mkdir dir="${build.layout}/notesOrganizer/languages/notesOrganizer" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.samples.notesOrganizer.jar" />

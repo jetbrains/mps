@@ -56,6 +56,7 @@
     <mkdir dir="${build.layout}/mps-execution-api/lib" />
     <jar destfile="${build.layout}/mps-execution-api/lib/execution-api.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/execution-api" />
+      <zipfileset file="${mps_home}/plugins/execution-api/META-INF/plugin.xml" prefix="META-INF" />
     </jar>
     <mkdir dir="${build.layout}/mps-execution-api/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.api.jar" />
@@ -384,8 +385,13 @@
       <fileset file="${mps_home}/plugins/debugger-api/META-INF/plugin.xml" />
     </copy>
     <mkdir dir="${build.layout}/mps-debugger-api/lib" />
+    <jar destfile="${build.layout}/mps-debugger-api/lib/mps-debugger-api.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/debugger-api/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
+    <mkdir dir="${build.layout}/mps-debugger-api/lib" />
     <jar destfile="${build.layout}/mps-debugger-api/lib/debugger-api.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/debugger-api" />
+      <zipfileset file="${mps_home}/plugins/execution-api/META-INF/plugin.xml" prefix="META-INF" />
     </jar>
     <mkdir dir="${build.layout}/mps-debugger-api/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar" />
@@ -702,6 +708,7 @@
     <mkdir dir="${build.layout}/mps-debugger-java/lib" />
     <jar destfile="${build.layout}/mps-debugger-java/lib/debugger-java.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/debugger-java" />
+      <zipfileset file="${mps_home}/plugins/debugger-java/META-INF/plugin.xml" prefix="META-INF" />
     </jar>
     <mkdir dir="${build.layout}/mps-debugger-java/languages" />
     <mkdir dir="${build.tmp}/default/JDK-tools.jar" />

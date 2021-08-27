@@ -38,6 +38,10 @@
     <copy todir="${build.layout}/dummy-mps/META-INF">
       <fileset file="${basedir}/jetbrains.mps.build.mps.runner.test.buildscript/source_gen/jetbrains/mps/build/mps/runner/test/data/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/dummy-mps/lib" />
+    <jar destfile="${build.layout}/dummy-mps/lib/dummy-mps.jar" duplicate="preserve">
+      <zipfileset file="${basedir}/jetbrains.mps.build.mps.runner.test.buildscript/source_gen/jetbrains/mps/build/mps/runner/test/data/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.mps.runner.test.test6.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.mps.runner.test.test6.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.build.mps.runner.test.test6.jar/META-INF/module.xml">

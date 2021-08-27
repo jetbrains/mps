@@ -31,6 +31,10 @@
     <copy todir="${build.layout}/mps-testing/META-INF">
       <fileset file="${mps_home}/plugins/mps-testing/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/mps-testing/lib" />
+    <jar destfile="${build.layout}/mps-testing/lib/mps-testing.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-testing/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <mkdir dir="${build.layout}/mps-testing/languages" />
     <mkdir dir="${build.layout}/mps-testing/languages/baseLanguage" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.unitTest.jar" />

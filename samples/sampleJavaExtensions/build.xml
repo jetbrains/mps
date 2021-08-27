@@ -50,6 +50,24 @@
         </extensions>
       </idea-plugin>
     </echoxml>
+    <mkdir dir="${build.layout}/SampleJavaExtensions/lib" />
+    <mkdir dir="${build.tmp}/default/SampleJavaExtensions.jar" />
+    <mkdir dir="${build.tmp}/default/SampleJavaExtensions.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/SampleJavaExtensions.jar/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>org.jetbrains.mps.samples.sampleJavaExtensions</id>
+        <name>MPS Sample Java Extensions</name>
+        <version>1.0.0</version>
+        <depends>jetbrains.mps.core</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <jar destfile="${build.layout}/SampleJavaExtensions/lib/SampleJavaExtensions.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/default/SampleJavaExtensions.jar" />
+    </jar>
     <mkdir dir="${build.layout}/SampleJavaExtensions/languages" />
     <mkdir dir="${build.layout}/SampleJavaExtensions/languages/groupedContent" />
     <mkdir dir="${build.tmp}/default/org.jetbrains.mps.samples.Constants.jar" />

@@ -30,6 +30,10 @@
     <copy todir="${build.layout}/mps-java/META-INF">
       <fileset file="${mps_home}/plugins/mps-java/META-INF/plugin.xml" />
     </copy>
+    <mkdir dir="${build.layout}/mps-java/lib" />
+    <jar destfile="${build.layout}/mps-java/lib/mps-java.jar" duplicate="preserve">
+      <zipfileset file="${mps_home}/plugins/mps-java/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
     <copy todir="${build.layout}/mps-java">
       <fileset dir="${artifacts.mpsJavaPlatform}" />
     </copy>
