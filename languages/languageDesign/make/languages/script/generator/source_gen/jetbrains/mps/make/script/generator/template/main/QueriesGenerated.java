@@ -150,7 +150,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.query$gjsg), LINKS.expected$EoYV), CONCEPTS.ExpectedOption$E3), "ExpectedOption_enum");
   }
   public static Object referenceMacro_GetReferent_0_10(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.JobDefinition$Sj, false, false), "JobDefinition_jobMonitor");
+    SNode ancestorJob = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.JobDefinition$Sj, false, false);
+    if ((ancestorJob != null)) {
+      return _context.getOutputNodeByInputNodeAndMappingLabel(ancestorJob, "JobDefinition_jobMonitor");
+    }
+    SNode ancestorConfig = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.ConfigDefinition$YG, false, false);
+    return _context.getOutputNodeByInputNodeAndMappingLabel(ancestorConfig, "ConfigDefinition_jobMonitor");
   }
   public static Object referenceMacro_GetReferent_0_11(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.JobDefinition$Sj, false, false), "JobDefinition_monitor");

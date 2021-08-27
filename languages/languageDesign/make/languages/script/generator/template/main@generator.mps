@@ -1190,20 +1190,70 @@
                     <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068498886296/1068581517664" />
                     <node concept="3$xsQk" id="3bEKrlZKKhI" role="3$ytzL">
                       <node concept="3clFbS" id="3bEKrlZKKhJ" role="2VODD2">
-                        <node concept="3clFbF" id="3bEKrlZKKil" role="3cqZAp">
-                          <node concept="2OqwBi" id="3bEKrlZKKiR" role="3clFbG">
-                            <node concept="1iwH7S" id="3bEKrlZKKiS" role="2Oq$k0" />
-                            <node concept="1iwH70" id="3bEKrlZKKiT" role="2OqNvi">
-                              <ref role="1iwH77" node="2U8Fq3GPMjA" resolve="JobDefinition_jobMonitor" />
-                              <node concept="2OqwBi" id="3bEKrlZKKiU" role="1iwH7V">
-                                <node concept="30H73N" id="3bEKrlZKKiV" role="2Oq$k0" />
-                                <node concept="2Xjw5R" id="3bEKrlZKKiW" role="2OqNvi">
-                                  <node concept="1xMEDy" id="3bEKrlZKKiX" role="1xVPHs">
-                                    <node concept="chp4Y" id="3bEKrlZKKiY" role="ri$Ld">
-                                      <ref role="cht4Q" to="q9ra:230qvwa_MQF" resolve="JobDefinition" />
-                                    </node>
+                        <node concept="3cpWs8" id="5rVd6vTn$Vr" role="3cqZAp">
+                          <node concept="3cpWsn" id="5rVd6vTn$Vs" role="3cpWs9">
+                            <property role="TrG5h" value="ancestorJob" />
+                            <node concept="3Tqbb2" id="5rVd6vTn$Vt" role="1tU5fm">
+                              <ref role="ehGHo" to="q9ra:230qvwa_MQF" resolve="JobDefinition" />
+                            </node>
+                            <node concept="2OqwBi" id="5rVd6vTn$Vu" role="33vP2m">
+                              <node concept="30H73N" id="5rVd6vTn$Vv" role="2Oq$k0" />
+                              <node concept="2Xjw5R" id="5rVd6vTn$Vw" role="2OqNvi">
+                                <node concept="1xMEDy" id="5rVd6vTn$Vx" role="1xVPHs">
+                                  <node concept="chp4Y" id="5rVd6vTn$Vy" role="ri$Ld">
+                                    <ref role="cht4Q" to="q9ra:230qvwa_MQF" resolve="JobDefinition" />
                                   </node>
                                 </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbJ" id="5rVd6vTn$Vz" role="3cqZAp">
+                          <node concept="3clFbS" id="5rVd6vTn$V$" role="3clFbx">
+                            <node concept="3cpWs6" id="5rVd6vTn$V_" role="3cqZAp">
+                              <node concept="2OqwBi" id="5rVd6vTn$VA" role="3cqZAk">
+                                <node concept="1iwH7S" id="5rVd6vTn$VB" role="2Oq$k0" />
+                                <node concept="1iwH70" id="5rVd6vTn$VC" role="2OqNvi">
+                                  <ref role="1iwH77" node="2U8Fq3GPMjA" resolve="JobDefinition_jobMonitor" />
+                                  <node concept="37vLTw" id="5rVd6vTn$VD" role="1iwH7V">
+                                    <ref role="3cqZAo" node="5rVd6vTn$Vs" resolve="ancestorJob" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="5rVd6vTn$VE" role="3clFbw">
+                            <node concept="37vLTw" id="5rVd6vTn$VF" role="2Oq$k0">
+                              <ref role="3cqZAo" node="5rVd6vTn$Vs" resolve="ancestorJob" />
+                            </node>
+                            <node concept="3x8VRR" id="5rVd6vTn$VG" role="2OqNvi" />
+                          </node>
+                        </node>
+                        <node concept="3cpWs8" id="5rVd6vTn$VH" role="3cqZAp">
+                          <node concept="3cpWsn" id="5rVd6vTn$VI" role="3cpWs9">
+                            <property role="TrG5h" value="ancestorConfig" />
+                            <node concept="3Tqbb2" id="5rVd6vTn$VJ" role="1tU5fm">
+                              <ref role="ehGHo" to="q9ra:1HN6OkgRbV$" resolve="ConfigDefinition" />
+                            </node>
+                            <node concept="2OqwBi" id="5rVd6vTn$VK" role="33vP2m">
+                              <node concept="30H73N" id="5rVd6vTn$VL" role="2Oq$k0" />
+                              <node concept="2Xjw5R" id="5rVd6vTn$VM" role="2OqNvi">
+                                <node concept="1xMEDy" id="5rVd6vTn$VN" role="1xVPHs">
+                                  <node concept="chp4Y" id="5rVd6vTn$VO" role="ri$Ld">
+                                    <ref role="cht4Q" to="q9ra:1HN6OkgRbV$" resolve="ConfigDefinition" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="5rVd6vTn$VP" role="3cqZAp">
+                          <node concept="2OqwBi" id="5rVd6vTn$VQ" role="3clFbG">
+                            <node concept="1iwH7S" id="5rVd6vTn$VR" role="2Oq$k0" />
+                            <node concept="1iwH70" id="5rVd6vTn$VS" role="2OqNvi">
+                              <ref role="1iwH77" node="1hl5evVgls8" resolve="ConfigDefinition_jobMonitor" />
+                              <node concept="37vLTw" id="5rVd6vTn$VT" role="1iwH7V">
+                                <ref role="3cqZAo" node="5rVd6vTn$VI" resolve="ancestorConfig" />
                               </node>
                             </node>
                           </node>
