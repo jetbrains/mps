@@ -288,7 +288,6 @@
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
-      <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
         <property id="1200397540847" name="charConstant" index="1XhdNS" />
@@ -3513,61 +3512,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="m01hLHfgG" role="jymVt" />
-    <node concept="3clFbW" id="s2Jv$gDl8u" role="jymVt">
-      <node concept="3cqZAl" id="s2Jv$gDl8v" role="3clF45" />
-      <node concept="3Tm1VV" id="s2Jv$gDx2i" role="1B3o_S" />
-      <node concept="3clFbS" id="s2Jv$gDl8x" role="3clF47">
-        <node concept="1VxSAg" id="m01hLHmWm" role="3cqZAp">
-          <ref role="37wK5l" node="m01hLHh3r" resolve="FilesDelta" />
-          <node concept="2ShNRf" id="m01hLGO2B" role="37wK5m">
-            <node concept="1pGfFk" id="m01hLGOpo" role="2ShVmc">
-              <ref role="37wK5l" node="m01hLGCPm" resolve="DeltaKey" />
-              <node concept="2OqwBi" id="m01hLIjnp" role="37wK5m">
-                <node concept="2YIFZM" id="m01hLL7GL" role="2Oq$k0">
-                  <ref role="37wK5l" node="5iZ9lwGA5Gg" resolve="normalizeAsDir" />
-                  <ref role="1Pybhc" node="5iZ9lwGA2vv" resolve="DirUtil" />
-                  <node concept="2OqwBi" id="m01hLL7GO" role="37wK5m">
-                    <node concept="37vLTw" id="m01hLL7GP" role="2Oq$k0">
-                      <ref role="3cqZAo" node="s2Jv$gDvt1" resolve="dir" />
-                    </node>
-                    <node concept="liA8E" id="m01hLL7GQ" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="m01hLIjnw" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~String.split(java.lang.String,int)" resolve="split" />
-                  <node concept="Xl_RD" id="m01hLIjQB" role="37wK5m">
-                    <property role="Xl_RC" value="/" />
-                  </node>
-                  <node concept="3cmrfG" id="m01hLIkqP" role="37wK5m">
-                    <property role="3cmrfH" value="0" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="s2Jv$gDvt1" role="3clF46">
-        <property role="TrG5h" value="dir" />
-        <node concept="3uibUv" id="s2Jv$gDvt2" role="1tU5fm">
-          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-        </node>
-      </node>
-      <node concept="P$JXv" id="m01hLL823" role="lGtFl">
-        <node concept="TZ5HI" id="m01hLL824" role="3nqlJM">
-          <node concept="TZ5HA" id="m01hLL825" role="3HnX3l">
-            <node concept="1dT_AC" id="m01hLL9Hm" role="1dT_Ay">
-              <property role="1dT_AB" value="use cons that takes DeltaKey, as use of IFile here is confusing, it's merely a hierarchical indicator to merge deltas, and is unrelated to IFiles recorded." />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="m01hLL826" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-    </node>
     <node concept="3clFbW" id="m01hLHh3r" role="jymVt">
       <node concept="3cqZAl" id="m01hLHh3t" role="3clF45" />
       <node concept="3Tm1VV" id="m01hLHy0u" role="1B3o_S" />

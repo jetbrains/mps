@@ -46,6 +46,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
   public ModuleStaleFileManager(SModule module, _FunctionTypes._return_P1_E0<? extends IFile, ? super String> getFile, GenerationDependenciesCache genDeps, IMessageHandler msgHandler) {
     myModule = module;
     myFileStorage = new FileProcessor(msgHandler);
+    // FIXME need make.pathToFile to take IFile instead of String, it's odd to go there and back
     myPath2File = getFile;
     myGenDeps = genDeps;
   }
@@ -91,10 +92,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
       visitGeneratedFiles(m, f);
     }
     ListSequence.fromList(myRetainedFilesDelta).addElement(fd);
-    // It's important to keep user files, and I'd rather say extra keep rather than deal with user files gone
-    // FIXME remove this code after 2018.3
-    Iterable<IDelta> retainedFilesDelta = RetainedUtil.retainedDeltas(myModule, retainedModels, myPath2File);
-    ListSequence.fromList(myRetainedFilesDelta).addSequence(Sequence.fromIterable(retainedFilesDelta));
   }
 
   private void visitGeneratedFiles(SModel m, Consumer<IFile> visitor) {

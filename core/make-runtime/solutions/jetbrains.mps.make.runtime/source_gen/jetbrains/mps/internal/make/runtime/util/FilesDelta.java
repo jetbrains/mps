@@ -23,14 +23,6 @@ public class FilesDelta implements IDelta {
   private Map<IFile, Status> files = MapSequence.fromMap(new HashMap<IFile, Status>());
   private final DeltaKey key;
 
-  /**
-   * 
-   * @deprecated use cons that takes DeltaKey, as use of IFile here is confusing, it's merely a hierarchical indicator to merge deltas, and is unrelated to IFiles recorded.
-   */
-  @Deprecated
-  public FilesDelta(IFile dir) {
-    this(new DeltaKey(DirUtil.normalizeAsDir(dir.getPath()).split("/", 0)));
-  }
   public FilesDelta(DeltaKey dk) {
     this.key = dk;
   }
