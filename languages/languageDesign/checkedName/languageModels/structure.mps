@@ -27,6 +27,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
@@ -52,6 +53,7 @@
   <node concept="PlHQZ" id="4cWf37B8oWS">
     <property role="TrG5h" value="ICheckedNamePolicy" />
     <property role="EcuMT" value="4844813484172611384" />
+    <node concept="3MrDgS" id="6LsRaTz9q6Q" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="4cWf37B8oWT">
     <property role="R5$K7" value="false" />

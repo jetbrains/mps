@@ -86,7 +86,7 @@ public class BuildMps_ModuleDependencyTargetLanguage_SubstituteMenu extends Subs
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "use " + NodePresentationUtil.matchingText(getReferent(), getParentNode(), false) + "";
+        return "target " + NodePresentationUtil.matchingText(getReferent(), getParentNode(), false) + "";
       }
       @Override
       public String getVisibleMatchingText(String pattern) {

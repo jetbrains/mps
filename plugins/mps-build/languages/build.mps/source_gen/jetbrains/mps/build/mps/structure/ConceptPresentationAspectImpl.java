@@ -441,7 +441,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.BuildMps_ModuleDependencyTargetLanguage:
         if (props_BuildMps_ModuleDependencyTargetLanguage == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language", "use ", "");
+          cpb.presentationByReference(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, 0x2c4467914643d2d3L, "language", "target ", "");
           props_BuildMps_ModuleDependencyTargetLanguage = cpb.create();
         }
         return props_BuildMps_ModuleDependencyTargetLanguage;
