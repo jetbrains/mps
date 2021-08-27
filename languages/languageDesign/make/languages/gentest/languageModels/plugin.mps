@@ -563,22 +563,17 @@
                         <property role="TrG5h" value="outDirPath" />
                         <property role="3TUv4t" value="true" />
                         <node concept="3uibUv" id="4I9wxQTnGJP" role="1tU5fm">
-                          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
                         </node>
-                        <node concept="2OqwBi" id="4I9wxQTnEf7" role="33vP2m">
-                          <node concept="liA8E" id="4I9wxQTnEfb" role="2OqNvi">
-                            <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
-                          </node>
-                          <node concept="2YIFZM" id="7OtjhV3M_Ej" role="2Oq$k0">
-                            <ref role="37wK5l" to="w1kc:~SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel)" resolve="getOutputLocation" />
-                            <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
-                            <node concept="2OqwBi" id="7OtjhV3MCdH" role="37wK5m">
-                              <node concept="2GrUjf" id="7OtjhV3MArB" role="2Oq$k0">
-                                <ref role="2Gs0qQ" node="4g8ToP4EII8" resolve="tgres" />
-                              </node>
-                              <node concept="2sxana" id="7OtjhV3MEkS" role="2OqNvi">
-                                <ref role="2sxfKC" to="fn29:44ybjD5JWZk" resolve="modelDescriptor" />
-                              </node>
+                        <node concept="2YIFZM" id="7OtjhV3M_Ej" role="33vP2m">
+                          <ref role="37wK5l" to="w1kc:~SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel)" resolve="getOutputLocation" />
+                          <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
+                          <node concept="2OqwBi" id="7OtjhV3MCdH" role="37wK5m">
+                            <node concept="2GrUjf" id="7OtjhV3MArB" role="2Oq$k0">
+                              <ref role="2Gs0qQ" node="4g8ToP4EII8" resolve="tgres" />
+                            </node>
+                            <node concept="2sxana" id="7OtjhV3MEkS" role="2OqNvi">
+                              <ref role="2sxfKC" to="fn29:44ybjD5JWZk" resolve="modelDescriptor" />
                             </node>
                           </node>
                         </node>
@@ -619,8 +614,13 @@
                         </node>
                         <node concept="liA8E" id="4I9wxQTnA0Z" role="2OqNvi">
                           <ref role="37wK5l" node="1TaHNgiI6gm" resolve="diff" />
-                          <node concept="37vLTw" id="3GM_nagTv3s" role="37wK5m">
-                            <ref role="3cqZAo" node="4I9wxQTnA1a" resolve="outDirPath" />
+                          <node concept="2OqwBi" id="4T2hQQFEAw_" role="37wK5m">
+                            <node concept="37vLTw" id="3GM_nagTv3s" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4I9wxQTnA1a" resolve="outDirPath" />
+                            </node>
+                            <node concept="liA8E" id="4T2hQQFEBkx" role="2OqNvi">
+                              <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                            </node>
                           </node>
                           <node concept="2OqwBi" id="4I9wxQTnEf2" role="37wK5m">
                             <node concept="2Sg_IR" id="4I9wxQTnA1y" role="2Oq$k0">
@@ -629,7 +629,7 @@
                                   <ref role="2bn25l" to="fy8e:taepSZ9rBr" resolve="make" />
                                 </node>
                                 <node concept="2sxana" id="4I9wxQTnA1_" role="2OqNvi">
-                                  <ref role="2sxfKC" to="fy8e:taepSZ9rBV" resolve="pathToFile" />
+                                  <ref role="2sxfKC" to="fy8e:5rVd6vTmgKP" resolve="alternateOutput" />
                                 </node>
                               </node>
                               <node concept="37vLTw" id="3GM_nagTsFg" role="2SgHGx">

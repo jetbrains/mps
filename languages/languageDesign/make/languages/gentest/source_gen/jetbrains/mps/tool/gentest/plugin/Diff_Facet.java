@@ -92,9 +92,9 @@ public class Diff_Facet extends IFacet.Stub {
                   });
                   final Differ differ = new Differ(retainedPaths, vars(pa.global()).excludedFiles());
                   final StringBuilder errors = new StringBuilder();
-                  final String outDirPath = SModelOperations.getOutputLocation(tgres.modelDescriptor()).getPath();
+                  final IFile outDirPath = SModelOperations.getOutputLocation(tgres.modelDescriptor());
 
-                  for (String diff : differ.diff(outDirPath, Target_make.vars(pa.global()).pathToFile().invoke(outDirPath).getPath())) {
+                  for (String diff : differ.diff(outDirPath.getPath(), Target_make.vars(pa.global()).alternateOutput().invoke(outDirPath).getPath())) {
                     errors.append("\n").append(diff);
                   }
                   if (errors.length() > 0) {

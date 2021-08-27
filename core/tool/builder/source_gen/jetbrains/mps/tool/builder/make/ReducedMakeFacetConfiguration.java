@@ -73,9 +73,9 @@ public class ReducedMakeFacetConfiguration {
         MakeFacetInitializer makeFacetInit = new MakeFacetInitializer();
         makeFacetInit.skipReconcile(true);
         // override solution's output path
-        makeFacetInit.setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
-          public IFile invoke(String path) {
-            return outputPathRedirects.getRedirect(path);
+        makeFacetInit.setFileToFile(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
+          public IFile invoke(IFile f) {
+            return outputPathRedirects.getRedirect(f.getPath());
           }
         });
         makeFacetInit.populate(pp);

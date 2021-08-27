@@ -517,16 +517,11 @@
                                 <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
                               </node>
                               <node concept="2Sg_IR" id="36GkqAMyLlU" role="33vP2m">
-                                <node concept="2OqwBi" id="7OtjhV3NY49" role="2SgHGx">
-                                  <node concept="2YIFZM" id="7OtjhV3NXw2" role="2Oq$k0">
-                                    <ref role="37wK5l" to="w1kc:~SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel)" resolve="getOutputLocation" />
-                                    <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
-                                    <node concept="2GrUjf" id="7OtjhV3NXw3" role="37wK5m">
-                                      <ref role="2Gs0qQ" node="5KGdJjE0hIX" resolve="model" />
-                                    </node>
-                                  </node>
-                                  <node concept="liA8E" id="7OtjhV3NYG0" role="2OqNvi">
-                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                                <node concept="2YIFZM" id="7OtjhV3NXw2" role="2SgHGx">
+                                  <ref role="37wK5l" to="w1kc:~SModelOperations.getOutputLocation(org.jetbrains.mps.openapi.model.SModel)" resolve="getOutputLocation" />
+                                  <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
+                                  <node concept="2GrUjf" id="7OtjhV3NXw3" role="37wK5m">
+                                    <ref role="2Gs0qQ" node="5KGdJjE0hIX" resolve="model" />
                                   </node>
                                 </node>
                                 <node concept="2bn25q" id="36GkqAMyLlV" role="2SgG2M">
@@ -534,7 +529,7 @@
                                     <ref role="2bn25l" to="fy8e:taepSZ9rBr" resolve="make" />
                                   </node>
                                   <node concept="2sxana" id="36GkqAMyLlX" role="2OqNvi">
-                                    <ref role="2sxfKC" to="fy8e:taepSZ9rBV" resolve="pathToFile" />
+                                    <ref role="2sxfKC" to="fy8e:5rVd6vTmgKP" resolve="alternateOutput" />
                                   </node>
                                 </node>
                               </node>

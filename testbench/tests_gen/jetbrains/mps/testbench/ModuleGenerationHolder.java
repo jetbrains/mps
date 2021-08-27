@@ -21,7 +21,6 @@ import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -29,6 +28,7 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import difflib.Patch;
@@ -104,9 +104,9 @@ public class ModuleGenerationHolder {
     // trace.info is useless for tests, however we do keep these files in repo, and diffModule test
     // fails if we don't generate one here
     TextGenFacetInitializer tgfi = new TextGenFacetInitializer().generateDebugInfo(true);
-    MakeFacetInitializer mfi = new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
-      public IFile invoke(String path) {
-        return FileSystem.getInstance().getFile(tmpFile(path));
+    MakeFacetInitializer mfi = new MakeFacetInitializer().setFileToFile(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
+      public IFile invoke(IFile f) {
+        return tmpFile(f);
       }
     });
     GenerateFacetInitializer gfi = new GenerateFacetInitializer().setGenerationOptions(optBuilder);
@@ -154,15 +154,17 @@ public class ModuleGenerationHolder {
     return diffs;
   }
 
-  private String tmpFile(String path) {
+  private IFile tmpFile(IFile ff) {
+    final IFileSystem fs = ff.getFS();
+    final String path = ff.getPath();
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
-      return MapSequence.fromMap(path2tmp).get(path);
+      return fs.getFile(MapSequence.fromMap(path2tmp).get(path));
     }
     int idx = path.indexOf('/');
     idx = (idx < 0 ? path.indexOf(File.separator) : idx);
     String tmp = tmpPath + "/" + ((idx < 0 ? path.replace(':', '_') : path.substring(idx + 1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
-    return tmp;
+    return fs.getFile(tmp);
   }
 
   private void diffDirs(final File orig, File revd, final List<String> diffs) {

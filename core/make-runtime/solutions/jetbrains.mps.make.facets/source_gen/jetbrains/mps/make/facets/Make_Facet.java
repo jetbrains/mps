@@ -34,6 +34,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.make.facet.ITargetEx;
 import jetbrains.mps.smodel.resources.CleanupActivityResource;
 import jetbrains.mps.make.script.IConfigMonitor;
+import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -290,12 +291,30 @@ public class Make_Facet extends IFacet.Stub {
         public boolean configure(final IConfigMonitor cmonitor, final IPropertiesAccessor pa) {
           switch (0) {
             case 0:
-              if (vars(pa.global()).pathToFile() == null) {
-                vars(pa.global()).pathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
-                  public IFile invoke(String p) {
-                    return FileSystem.getInstance().getFile(p);
-                  }
-                });
+              if (vars(pa.global()).alternateOutput() == null) {
+                // check if there's code that pass legacy function
+                if (vars(pa.global()).pathToFile() != null) {
+                  cmonitor.reportFeedback(new IFeedback.WARNING(String.valueOf("Don't use string->IFile make.pathToFile function, use {IFile->IFile} alternateOutput, instead")));
+                  vars(pa.global()).alternateOutput(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
+                    public IFile invoke(IFile f) {
+                      return vars(pa.global()).pathToFile().invoke(f.getPath());
+                    }
+                  });
+                } else {
+                  // identity
+                  vars(pa.global()).alternateOutput(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
+                    public IFile invoke(IFile f) {
+                      return f;
+                    }
+                  });
+                  // FIXME remove pathToFile altogether once 2021.2 is out. Left here just in case there's a
+                  // facet that still uses pathToFile. All MPS facets has been updated to use alternateOutput
+                  vars(pa.global()).pathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
+                    public IFile invoke(String s) {
+                      return FileSystem.getInstance().getFile(s);
+                    }
+                  });
+                }
               }
             default:
               return true;
@@ -341,7 +360,7 @@ public class Make_Facet extends IFacet.Stub {
     public <T> T createParameters(Class<T> cls, T copyFrom) {
       T t = createParameters(cls);
       if (t != null) {
-        ((Tuples._1) t).assign((Tuples._1) copyFrom);
+        ((Tuples._2) t).assign((Tuples._2) copyFrom);
       }
       return t;
     }
@@ -351,18 +370,27 @@ public class Make_Facet extends IFacet.Stub {
     public static Parameters vars(IPropertiesPool ppool) {
       return ppool.properties(name, Parameters.class);
     }
-    public static class Parameters extends MultiTuple._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>> {
+    /**
+     * 
+     */
+    public static class Parameters extends MultiTuple._2<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>, _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile>> {
       public Parameters() {
         super();
       }
-      public Parameters(_FunctionTypes._return_P1_E0<? extends IFile, ? super String> pathToFile) {
-        super(pathToFile);
+      public Parameters(_FunctionTypes._return_P1_E0<? extends IFile, ? super String> pathToFile, _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> alternateOutput) {
+        super(pathToFile, alternateOutput);
       }
       public _FunctionTypes._return_P1_E0<? extends IFile, ? super String> pathToFile(_FunctionTypes._return_P1_E0<? extends IFile, ? super String> value) {
         return super._0(value);
       }
+      public _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> alternateOutput(_FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> value) {
+        return super._1(value);
+      }
       public _FunctionTypes._return_P1_E0<? extends IFile, ? super String> pathToFile() {
         return super._0();
+      }
+      public _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> alternateOutput() {
+        return super._1();
       }
     }
   }
@@ -382,6 +410,7 @@ public class Make_Facet extends IFacet.Stub {
         if (properties.hasProperties(name)) {
           Target_make.Parameters props = properties.properties(name, Target_make.Parameters.class);
           MapSequence.fromMap(store).put("jetbrains.mps.make.facets.Make.make.pathToFile", null);
+          MapSequence.fromMap(store).put("jetbrains.mps.make.facets.Make.make.alternateOutput", null);
         }
       }
     }
@@ -399,6 +428,9 @@ public class Make_Facet extends IFacet.Stub {
           Target_make.Parameters props = properties.properties(name, Target_make.Parameters.class);
           if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.Make.make.pathToFile")) {
             props.pathToFile(null);
+          }
+          if (MapSequence.fromMap(store).containsKey("jetbrains.mps.make.facets.Make.make.alternateOutput")) {
+            props.alternateOutput(null);
           }
         }
       } catch (RuntimeException re) {

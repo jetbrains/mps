@@ -13,11 +13,21 @@ import jetbrains.mps.make.facet.ITarget;
 @GeneratedClass(node = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)/6705512905416012324", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
 public final class MakeFacetInitializer implements PropertyPoolInitializer {
   private _FunctionTypes._return_P1_E0<? extends IFile, ? super String> myPathToFile;
+  private _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> myFile2File;
   private Boolean mySkipReconcile;
   public MakeFacetInitializer() {
   }
+  /**
+   * 
+   * @deprecated use setFileToFile() instead
+   */
+  @Deprecated
   public MakeFacetInitializer setPathToFile(_FunctionTypes._return_P1_E0<? extends IFile, ? super String> f) {
     myPathToFile = f;
+    return this;
+  }
+  public MakeFacetInitializer setFileToFile(_FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> f) {
+    myFile2File = f;
     return this;
   }
   public MakeFacetInitializer skipReconcile(Boolean skip) {
@@ -27,10 +37,11 @@ public final class MakeFacetInitializer implements PropertyPoolInitializer {
 
   @Override
   public void populate(IPropertiesPool ppool) {
-    if (myPathToFile != null) {
-      Tuples._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>> makeparams = (Tuples._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>>) ppool.properties(new ITarget.Name("jetbrains.mps.make.facets.Make.make"), Object.class);
+    if (myPathToFile != null || myFile2File != null) {
+      Tuples._2<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>, _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile>> makeparams = (Tuples._2<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>, _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile>>) ppool.properties(new ITarget.Name("jetbrains.mps.make.facets.Make.make"), Object.class);
       if (makeparams != null) {
         makeparams._0(myPathToFile);
+        makeparams._1(myFile2File);
       }
     }
     if (mySkipReconcile != null) {

@@ -110,7 +110,7 @@ public class Binaries_Facet extends IFacet.Stub {
                     });
 
                     for (SModel model : Sequence.fromIterable(models)) {
-                      final IFile outputDir = Target_make.vars(pa.global()).pathToFile().invoke(SModelOperations.getOutputLocation(model).getPath());
+                      final IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(SModelOperations.getOutputLocation(model));
                       Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles;
                       try {
                         generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {

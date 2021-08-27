@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ public class JpsRedirects implements IRedirects {
   }
 
   @Override
-  public IFile getRedirect(String path) {
+  public IFile getRedirect(IFile path) {
     for (OutputPathRedirects redirects : myOutputRedirects) {
       IFile file = redirects.getRedirect(path);
       if (file != null) {

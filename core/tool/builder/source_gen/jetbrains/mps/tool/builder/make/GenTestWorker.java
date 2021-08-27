@@ -41,6 +41,7 @@ import jetbrains.mps.project.AbstractModule;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.tool.common.ScriptProperties;
 import jetbrains.mps.messages.IMessageHandler;
@@ -132,9 +133,9 @@ public class GenTestWorker extends BaseGeneratorWorker {
       }
     };
     ArrayList<PropertyPoolInitializer> ppi = new ArrayList<PropertyPoolInitializer>();
-    ppi.add(new MakeFacetInitializer().setPathToFile(new _FunctionTypes._return_P1_E0<IFile, String>() {
-      public IFile invoke(String path) {
-        return tmpFile(path);
+    ppi.add(new MakeFacetInitializer().setFileToFile(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
+      public IFile invoke(IFile f) {
+        return tmpFile(f);
       }
     }));
     if (isShowDiff()) {
@@ -218,21 +219,23 @@ public class GenTestWorker extends BaseGeneratorWorker {
     MapSequence.fromMap(path2tmp).clear();
   }
 
-  private IFile tmpFile(String path) {
+  private IFile tmpFile(IFile ff) {
+    IFileSystem fs = ff.getFS();
+    final String path = ff.getPath();
     if (MapSequence.fromMap(path2tmp).containsKey(path)) {
-      return FileSystem.getInstance().getFile(MapSequence.fromMap(path2tmp).get(path));
+      return fs.getFile(MapSequence.fromMap(path2tmp).get(path));
     }
-    int idx = path.indexOf("/");
+    int idx = path.indexOf('/');
     if (idx > 0) {
       throw new IllegalArgumentException("not an absolute path '" + path + "'");
     }
     idx = (idx < 0 ? path.indexOf(File.separator) : idx);
-    if (idx > "C:\\".length() && path.indexOf(":") < 0) {
+    if (idx > "C:\\".length() && path.indexOf(':') < 0) {
       throw new IllegalArgumentException("not an absolute path '" + path + "'");
     }
     String tmp = tmpPath + "/" + ((idx != 0 ? path.replace(":", "_w_") : path.substring(1)));
     MapSequence.fromMap(path2tmp).put(path, tmp);
-    return FileSystem.getInstance().getFile(tmp);
+    return fs.getFile(tmp);
   }
 
   private String pathOfTmpFile(IFile file) {

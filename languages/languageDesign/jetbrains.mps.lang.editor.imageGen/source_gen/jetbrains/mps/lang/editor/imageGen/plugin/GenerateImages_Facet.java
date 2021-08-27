@@ -116,7 +116,7 @@ public class GenerateImages_Facet extends IFacet.Stub {
                       collectingNodesMonitor.step(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.getModelName(modelsPair._0()));
                       // XXX what if there are multiple GenerationTargetFacet (now it's only JavaModuleFacet), shall we generate into each? Or identify them somehow?
                       IFile modelOutputLocation = SModelOperations.getOutputLocation(modelsPair._0());
-                      IFile outputDir = Target_make.vars(pa.global()).pathToFile().invoke(modelOutputLocation.getPath());
+                      IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(modelOutputLocation);
                       if (!(MapSequence.fromMap(folder2PrintRunnables).containsKey(outputDir))) {
                         MapSequence.fromMap(folder2PrintRunnables).put(outputDir, ListSequence.fromList(new ArrayList<PrintNodeRunnable>()));
                       }
