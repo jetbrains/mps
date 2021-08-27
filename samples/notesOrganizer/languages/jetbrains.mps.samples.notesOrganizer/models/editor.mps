@@ -88,6 +88,7 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="1139744628335" name="jetbrains.mps.lang.editor.structure.CellModel_Image" flags="sg" stub="8104358048506731195" index="1u4HXA">
         <property id="1139858284555" name="descent" index="1$Qi42" />
@@ -544,6 +545,9 @@
     <node concept="3F0A7n" id="7IxbKGmfvgx" role="2wV5jI">
       <property role="1$x2rV" value="Please describe..." />
       <ref role="1NtTu8" to="g4p9:7IxbKGmfvg5" resolve="text" />
+      <node concept="1liFee" id="16ZuB48ZrV7" role="3F10Kt">
+        <property role="VOm3f" value="true" />
+      </node>
     </node>
   </node>
   <node concept="24kQdi" id="7IxbKGmfvgW">

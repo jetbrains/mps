@@ -97,6 +97,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.text$LyCV);
       }
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.SPELLCHECK, true);
+      editorCell.getStyle().putAll(style);
     }
     @Override
     protected EditorCell createEmptyCell() {

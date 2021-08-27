@@ -180,6 +180,7 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="5730897613506180559" name="jetbrains.mps.lang.editor.structure.CellActionMapImportWildcardSelector" flags="ng" index="1uCOzb" />
       <concept id="2314756748950088783" name="jetbrains.mps.lang.editor.structure.TransformationMenuVariableReference" flags="ng" index="3yx0qK" />
@@ -814,6 +815,9 @@
       </node>
       <node concept="3F1sOY" id="6VR64YFBUC2" role="3EZMnx">
         <ref role="1NtTu8" to="ngid:6VR64YFBMjz" resolve="text" />
+        <node concept="1liFee" id="16ZuB48ZWi0" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="VPM3Z" id="6VR64YFLbfB" role="3F10Kt" />
     </node>

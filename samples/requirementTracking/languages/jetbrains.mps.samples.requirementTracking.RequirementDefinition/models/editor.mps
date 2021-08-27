@@ -27,6 +27,7 @@
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <property id="1139852716018" name="noTargetText" index="1$x2rV" />
         <property id="1140114345053" name="allowEmptyText" index="1O74Pk" />
@@ -149,6 +150,9 @@
       <node concept="3F1sOY" id="3BHdE7cMGpA" role="3EZMnx">
         <ref role="1NtTu8" to="dub1:3BHdE7cMsjM" resolve="description" />
         <node concept="ljvvj" id="3BHdE7cMGDa" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="1liFee" id="16ZuB48Zg8R" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>

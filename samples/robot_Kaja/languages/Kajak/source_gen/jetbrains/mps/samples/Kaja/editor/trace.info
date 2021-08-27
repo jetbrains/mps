@@ -5093,38 +5093,39 @@
       <node id="6405700485436287825" at="77,44,78,36" concept="7" />
       <node id="6405700485436287825" at="78,36,79,84" concept="2" />
       <node id="6405700485436312691" at="79,84,80,61" concept="2" />
-      <node id="6405700485436287825" at="80,61,81,42" concept="2" />
-      <node id="6405700485436287825" at="81,42,82,86" concept="2" />
-      <node id="6405700485436287825" at="82,86,83,33" concept="2" />
-      <node id="6405700485436287825" at="83,33,84,155" concept="7" />
-      <node id="6405700485436287825" at="86,41,87,118" concept="8" />
-      <node id="6405700485436287825" at="90,74,91,89" concept="7" />
-      <node id="6405700485436287825" at="91,89,92,145" concept="8" />
-      <node id="6405700485436287825" at="93,12,94,24" concept="8" />
-      <node id="6405700485436287825" at="95,15,96,40" concept="2" />
-      <node id="6405700485436287815" at="101,0,102,0" concept="11" trace="text$nAoW" />
-      <node id="6405700485436287815" at="105,0,106,0" concept="11" trace="PropertyAttribute$Gb" />
+      <node id="1278875445096971366" at="80,61,81,50" concept="2" />
+      <node id="6405700485436287825" at="81,50,82,42" concept="2" />
+      <node id="6405700485436287825" at="82,42,83,86" concept="2" />
+      <node id="6405700485436287825" at="83,86,84,33" concept="2" />
+      <node id="6405700485436287825" at="84,33,85,155" concept="7" />
+      <node id="6405700485436287825" at="87,41,88,118" concept="8" />
+      <node id="6405700485436287825" at="91,74,92,89" concept="7" />
+      <node id="6405700485436287825" at="92,89,93,145" concept="8" />
+      <node id="6405700485436287825" at="94,12,95,24" concept="8" />
+      <node id="6405700485436287825" at="96,15,97,40" concept="2" />
+      <node id="6405700485436287815" at="102,0,103,0" concept="11" trace="text$nAoW" />
+      <node id="6405700485436287815" at="106,0,107,0" concept="11" trace="PropertyAttribute$Gb" />
       <node id="6405700485436287815" at="34,0,36,0" concept="3" trace="myNode" />
       <node id="6405700485436287815" at="48,0,51,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6405700485436287825" at="86,0,89,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6405700485436287825" at="87,0,90,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6405700485436287815" at="37,0,41,0" concept="1" trace="CommentLine_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6405700485436287815" at="42,0,47,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6405700485436287825" at="84,155,89,9" concept="7" />
-      <node id="6405700485436287825" at="89,9,94,24" concept="5" />
+      <node id="6405700485436287825" at="85,155,90,9" concept="7" />
+      <node id="6405700485436287825" at="90,9,95,24" concept="5" />
       <node id="6405700485436287815" at="52,0,61,0" concept="6" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="3177886886427948945" at="61,0,70,0" concept="6" trace="createComponent_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6405700485436287825" at="71,39,97,5" concept="15" />
-      <node id="6405700485436287825" at="70,0,99,0" concept="6" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="6405700485436287825" at="71,39,98,5" concept="15" />
+      <node id="6405700485436287825" at="70,0,100,0" concept="6" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="6405700485436287815" at="44,26,45,18" />
       <scope id="6405700485436287815" at="48,39,49,32" />
-      <scope id="6405700485436287825" at="86,41,87,118" />
-      <scope id="6405700485436287825" at="95,15,96,40" />
+      <scope id="6405700485436287825" at="87,41,88,118" />
+      <scope id="6405700485436287825" at="96,15,97,40" />
       <scope id="6405700485436287815" at="37,91,39,18" />
-      <scope id="6405700485436287825" at="90,74,92,145">
+      <scope id="6405700485436287825" at="91,74,93,145">
         <var name="manager" id="6405700485436287825" />
       </scope>
       <scope id="6405700485436287815" at="48,0,51,0" />
-      <scope id="6405700485436287825" at="86,0,89,0">
+      <scope id="6405700485436287825" at="87,0,90,0">
         <var name="it" id="6405700485436287825" />
       </scope>
       <scope id="6405700485436287815" at="37,0,41,0">
@@ -5141,19 +5142,19 @@
       </scope>
       <scope id="6405700485436287815" at="52,0,61,0" />
       <scope id="3177886886427948945" at="61,0,70,0" />
-      <scope id="6405700485436287825" at="72,9,94,24">
+      <scope id="6405700485436287825" at="72,9,95,24">
         <var name="currentPropertyAttributes" id="6405700485436287825" />
         <var name="editorCell" id="6405700485436287825" />
         <var name="property" id="6405700485436287825" />
         <var name="propertyAttributes" id="6405700485436287825" />
         <var name="style" id="6405700485436287825" />
       </scope>
-      <scope id="6405700485436287825" at="70,41,97,5" />
-      <scope id="6405700485436287825" at="70,0,99,0" />
-      <unit id="6405700485436287815" at="100,0,103,0" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a$PROPS" />
-      <unit id="6405700485436287815" at="104,0,107,0" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a$CONCEPTS" />
-      <unit id="6405700485436287825" at="85,102,89,7" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a$1" />
-      <unit id="6405700485436287815" at="33,0,108,0" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a" />
+      <scope id="6405700485436287825" at="70,41,98,5" />
+      <scope id="6405700485436287825" at="70,0,100,0" />
+      <unit id="6405700485436287815" at="101,0,104,0" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a$PROPS" />
+      <unit id="6405700485436287815" at="105,0,108,0" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a$CONCEPTS" />
+      <unit id="6405700485436287825" at="86,102,90,7" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a$1" />
+      <unit id="6405700485436287815" at="33,0,109,0" name="jetbrains.mps.samples.Kaja.editor.CommentLine_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:18c202d7-badd-41dd-bd9e-9d42a045e4f4(jetbrains.mps.samples.Kaja.editor)/7060824959893078090">

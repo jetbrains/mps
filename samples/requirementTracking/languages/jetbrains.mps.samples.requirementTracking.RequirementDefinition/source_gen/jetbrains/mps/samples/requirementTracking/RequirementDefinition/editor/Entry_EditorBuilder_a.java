@@ -203,6 +203,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+      style.set(StyleAttributes.SPELLCHECK, true);
       editorCell.getStyle().putAll(style);
     }
     @Override

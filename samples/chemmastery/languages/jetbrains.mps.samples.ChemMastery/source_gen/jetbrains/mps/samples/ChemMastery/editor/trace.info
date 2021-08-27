@@ -2424,47 +2424,50 @@
       <node id="7995886393880455678" at="87,48,88,24" concept="9" />
       <node id="7995886393880455678" at="94,118,95,137" concept="2" />
       <node id="7995886393880455678" at="97,42,98,45" concept="2" />
-      <node id="7995886393880455678" at="102,44,103,41" concept="2" />
-      <node id="7995886393880455678" at="103,41,104,104" concept="2" />
-      <node id="7995886393880455678" at="105,11,106,56" concept="8" />
-      <node id="7995886393880455678" at="106,56,107,43" concept="2" />
-      <node id="7995886393880455678" at="107,43,108,48" concept="2" />
-      <node id="7995886393880455678" at="108,48,109,35" concept="2" />
-      <node id="7995886393880455678" at="109,35,110,26" concept="9" />
-      <node id="7995886393880455678" at="111,17,112,42" concept="2" />
-      <node id="7995886393880455678" at="115,40,116,25" concept="9" />
-      <node id="7995886393880455678" at="121,0,122,0" concept="12" trace="text$LyCV" />
+      <node id="7995886393880455678" at="99,7,100,36" concept="8" />
+      <node id="1278875445097383040" at="100,36,101,50" concept="2" />
+      <node id="7995886393880455678" at="101,50,102,42" concept="2" />
+      <node id="7995886393880455678" at="105,44,106,41" concept="2" />
+      <node id="7995886393880455678" at="106,41,107,104" concept="2" />
+      <node id="7995886393880455678" at="108,11,109,56" concept="8" />
+      <node id="7995886393880455678" at="109,56,110,43" concept="2" />
+      <node id="7995886393880455678" at="110,43,111,48" concept="2" />
+      <node id="7995886393880455678" at="111,48,112,35" concept="2" />
+      <node id="7995886393880455678" at="112,35,113,26" concept="9" />
+      <node id="7995886393880455678" at="114,17,115,42" concept="2" />
+      <node id="7995886393880455678" at="118,40,119,25" concept="9" />
+      <node id="7995886393880455678" at="124,0,125,0" concept="12" trace="text$LyCV" />
       <node id="7995886393880455678" at="27,0,29,0" concept="3" trace="myNode" />
       <node id="7995886393880455678" at="69,0,71,0" concept="3" trace="myNode" />
       <node id="7995886393880455678" at="41,0,44,0" concept="7" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="7995886393880455678" at="93,87,96,7" concept="6" />
       <node id="7995886393880455678" at="96,7,99,7" concept="6" />
-      <node id="7995886393880455678" at="115,0,118,0" concept="7" trace="getNoTargetText#()Ljava/lang/String;" />
+      <node id="7995886393880455678" at="118,0,121,0" concept="7" trace="getNoTargetText#()Ljava/lang/String;" />
       <node id="7995886393880455678" at="30,0,34,0" concept="1" trace="DocumentationEntryContent_ComponentBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7995886393880455678" at="64,0,68,0" concept="7" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="7995886393880455678" at="72,0,76,0" concept="1" trace="textSingleRoleHandler_9r13n4_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="7995886393880455678" at="35,0,40,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7995886393880455678" at="77,0,82,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7995886393880455678" at="83,0,90,0" concept="7" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="7995886393880455678" at="93,0,101,0" concept="7" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="7995886393882462129" at="55,0,64,0" concept="7" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="7995886393880455678" at="104,104,113,7" concept="15" />
+      <node id="7995886393880455678" at="107,104,116,7" concept="15" />
       <node id="7995886393880455678" at="45,0,55,0" concept="7" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="7995886393880455678" at="101,0,115,0" concept="7" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="7995886393880455678" at="93,0,104,0" concept="7" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
+      <node id="7995886393880455678" at="104,0,118,0" concept="7" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="7995886393880455678" at="37,26,38,18" />
       <scope id="7995886393880455678" at="41,39,42,32" />
       <scope id="7995886393880455678" at="79,28,80,20" />
       <scope id="7995886393880455678" at="94,118,95,137" />
       <scope id="7995886393880455678" at="97,42,98,45" />
-      <scope id="7995886393880455678" at="111,17,112,42" />
-      <scope id="7995886393880455678" at="115,40,116,25" />
+      <scope id="7995886393880455678" at="114,17,115,42" />
+      <scope id="7995886393880455678" at="118,40,119,25" />
       <scope id="7995886393880455678" at="30,108,32,18" />
       <scope id="7995886393880455678" at="64,40,66,33">
         <var name="provider" id="7995886393880455678" />
       </scope>
       <scope id="7995886393880455678" at="72,118,74,25" />
       <scope id="7995886393880455678" at="41,0,44,0" />
-      <scope id="7995886393880455678" at="115,0,118,0" />
+      <scope id="7995886393880455678" at="118,0,121,0" />
       <scope id="7995886393880455678" at="30,0,34,0">
         <var name="context" id="7995886393880455678" />
         <var name="node" id="7995886393880455678" />
@@ -2480,10 +2483,9 @@
       <scope id="7995886393880455678" at="83,55,88,24">
         <var name="editorCell" id="7995886393880455678" />
       </scope>
-      <scope id="7995886393880455678" at="105,11,110,26">
+      <scope id="7995886393880455678" at="108,11,113,26">
         <var name="editorCell" id="7995886393880455678" />
       </scope>
-      <scope id="7995886393880455678" at="93,87,99,7" />
       <scope id="7995886393882462129" at="55,41,62,22">
         <var name="editorCell" id="7995886393882462129" />
         <var name="style" id="7995886393882462129" />
@@ -2495,18 +2497,21 @@
         <var name="editorCell" id="7995886393880455678" />
         <var name="style" id="7995886393880455678" />
       </scope>
-      <scope id="7995886393880455678" at="93,0,101,0">
+      <scope id="7995886393882462129" at="55,0,64,0" />
+      <scope id="7995886393880455678" at="93,87,102,42">
+        <var name="style" id="7995886393880455678" />
+      </scope>
+      <scope id="7995886393880455678" at="45,0,55,0" />
+      <scope id="7995886393880455678" at="93,0,104,0">
         <var name="child" id="7995886393880455678" />
         <var name="editorCell" id="7995886393880455678" />
         <var name="isEmpty" id="7995886393880455678" />
       </scope>
-      <scope id="7995886393882462129" at="55,0,64,0" />
-      <scope id="7995886393880455678" at="45,0,55,0" />
-      <scope id="7995886393880455678" at="102,44,113,7" />
-      <scope id="7995886393880455678" at="101,0,115,0" />
-      <unit id="7995886393880455678" at="120,0,123,0" name="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent_ComponentBuilder_a$LINKS" />
-      <unit id="7995886393880455678" at="68,0,119,0" name="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent_ComponentBuilder_a$textSingleRoleHandler_9r13n4_b0" />
-      <unit id="7995886393880455678" at="26,0,124,0" name="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent_ComponentBuilder_a" />
+      <scope id="7995886393880455678" at="105,44,116,7" />
+      <scope id="7995886393880455678" at="104,0,118,0" />
+      <unit id="7995886393880455678" at="123,0,126,0" name="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent_ComponentBuilder_a$LINKS" />
+      <unit id="7995886393880455678" at="68,0,122,0" name="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent_ComponentBuilder_a$textSingleRoleHandler_9r13n4_b0" />
+      <unit id="7995886393880455678" at="26,0,127,0" name="jetbrains.mps.samples.ChemMastery.editor.DocumentationEntryContent_ComponentBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)/7995886393880455712">
