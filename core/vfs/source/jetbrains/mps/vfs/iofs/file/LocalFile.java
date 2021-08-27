@@ -18,7 +18,6 @@ package jetbrains.mps.vfs.iofs.file;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
@@ -235,12 +234,12 @@ class LocalFile implements IFile {
   }
 
   @Override
-  public boolean isZipArchive() throws IOException {
-    return Files.isJarOrZipFile(myFile);
+  public boolean isArchive() {
+    return myPath.endsWith(".jar");
   }
 
   @Override
-  public boolean isInZipArchive() {
+  public boolean isInArchive() {
     return false;
   }
 

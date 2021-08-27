@@ -114,12 +114,12 @@ public class JarEntryFile implements IFile {
   }
 
   @Override
-  public boolean isZipArchive() {
-    return false;
+  public boolean isArchive() {
+    return true;
   }
 
   @Override
-  public boolean isInZipArchive() {
+  public boolean isInArchive() {
     return true;
   }
 

@@ -34,8 +34,6 @@ import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.VFSManager;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleListener;
@@ -44,7 +42,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -148,7 +145,7 @@ final class IndexableRootCalculator implements Disposable {
     return Collections.unmodifiableSet(files);
   }
 
-  private Collection<IFile> getIndexablePaths(@NotNull SModule module) {
+  private static Collection<IFile> getIndexablePaths(@NotNull SModule module) {
     // todo: maybe move getIndexablePaths method to FileBasedModelRoot, or even in ModelRoot classes?
     Set<IFile> result = new HashSet<>();
 
@@ -157,13 +154,7 @@ final class IndexableRootCalculator implements Disposable {
         FileBasedModelRoot fileBasedModelRoot = (FileBasedModelRoot) modelRoot;
         IFile contentRoot = fileBasedModelRoot.getContentDirectory();
         if (contentRoot != null) {
-          try {
-            IFile expanded = stepIntoArchiveIfNeeded(contentRoot);
-            result.add(expanded);
-          } catch (IOException e) {
-            String message = String.format("received io error when expanding archive; contentRoot=%s", contentRoot);
-            LogManager.getLogger(IndexableRootCalculator.class).error(message, e);
-          }
+          result.add(contentRoot);
         }
         // todo: use excluded & source folders like IDEA
       }
@@ -172,18 +163,10 @@ final class IndexableRootCalculator implements Disposable {
     return result;
   }
 
-  // otherwise nothing in jars is indexed; and find usages does not work with stubs
-  // fixme to be replaced with the new path functionality in 2021.3
-  private IFile stepIntoArchiveIfNeeded(@NotNull IFile file) throws IOException {
-    var path = file.getPath();
-    if (file.isZipArchive()) {
-      String suffix = path.endsWith("." + MPSExtentions.MPS_ARCH) ? "!/" : "";
-
-      VFSManager vfsManager = myProject.getComponent(VFSManager.class);
-      return vfsManager.getFileSystem(VFSManager.JAR_FS).findExistingFile(path + suffix);
-    } else {
-      return file;
-    }
+  //
+  private static String exposePath(String path) {
+    String suffix = path.endsWith("." + MPSExtentions.MPS_ARCH) ? "!/" : "";
+    return path + suffix;
   }
 
   /*package*/ void invalidateCache() {

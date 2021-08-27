@@ -42,6 +42,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SaveOptions;
+import org.jetbrains.mps.openapi.model.SaveOptions.SaveOptionsBuilder;
 import org.jetbrains.mps.openapi.module.FacetsFacade;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
@@ -544,7 +545,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @Override
   public boolean isPackaged() {
 //    assertCanRead(); getModuleSourceDir() doesn't require read, why isPackaged() does?
-    return getModuleSourceDir() == null || getModuleSourceDir().isInZipArchive();
+    return getModuleSourceDir() == null || getModuleSourceDir().isInArchive();
   }
 
   /**

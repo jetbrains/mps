@@ -17,7 +17,6 @@ package jetbrains.mps.ide.vfs;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
-import com.intellij.openapi.fileTypes.FileTypes;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.LocalFileSystem;
@@ -55,6 +54,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -563,7 +563,7 @@ public class IdeaFile implements IFile, CachingFile {
   }
 
   @Override
-  public boolean isInZipArchive() {
+  public boolean isInArchive() {
     VirtualFile virtualFile = findVirtualFile();
     if (virtualFile != null) {
       return virtualFile.getFileSystem() instanceof ArchiveFileSystem;
@@ -573,9 +573,8 @@ public class IdeaFile implements IFile, CachingFile {
   }
 
   @Override
-  public boolean isZipArchive() {
-    var virtualFile = findVirtualFile();
-    return virtualFile.getFileType() == FileTypes.ARCHIVE;
+  public boolean isArchive() {
+    return myPath.endsWith(JarFileSystem.PROTOCOL) || myPath.endsWith(Path.ARCHIVE_SEPARATOR);
   }
 
   @Override
@@ -646,7 +645,7 @@ public class IdeaFile implements IFile, CachingFile {
 
   @Override
   public void addListener(@NotNull FileListener listener) {
-    if (isInZipArchive()) {
+    if (isInArchive()) {
       LOG.warn("There might be a problem when adding file listener for the files inside the archive: '" + getPath() + "'");
     }
     getFileSystem().addListener(FileListenerAdapter.adapt(this, listener));
