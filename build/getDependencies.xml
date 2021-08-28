@@ -178,9 +178,7 @@
     <antcall target="clean-platform"/>
 
     <unzip src="${basedir}/../mps-platform.zip" dest="${basedir}/../" overwrite="true">
-      <!--TODO use license files from IDEA Community-->
       <patternset>
-        <exclude name="license/*"/>
         <exclude name="plugins/java-ide-customization/**"/>
         <!-- TODO: Exclude log.xml & mps.svg from platform-->
         <exclude name="bin/log.xml"/>
@@ -188,6 +186,7 @@
       </patternset>
     </unzip>
 
+    <antcall target="update-licence-info"/>
     <antcall target="repackage-java-plugin"/>
     <antcall target="repackage-platform-impl"/>
 
@@ -210,7 +209,11 @@
     <chmod file="${basedir}/../bin/win/WinProcessListHelper.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/append.bat" perm="755"/>
   </target>
-  
+
+  <target name="update-licence-info">
+    <replace dir="${basedir}/../license"  token="IntelliJ IDEA" value="MPS" includes="**/*.txt"/>
+  </target>
+
   <target name="repackage-java-plugin">
     <!-- We need this to initialize JRT FS before repository to read JDK solution later.
     It's quite impossible to change loading of modules/models to lazy variant.
@@ -300,6 +303,7 @@
 
     <delete dir="${basedir}/../build/tools/mac" failonerror="false"/>
   </target>
+
 
   <target name="clean-diffutils">
     <delete file="${diffutils.lib}" failonerror="false"/>
