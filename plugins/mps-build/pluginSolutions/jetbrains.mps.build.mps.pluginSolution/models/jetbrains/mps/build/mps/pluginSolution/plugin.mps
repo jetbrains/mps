@@ -15259,6 +15259,12 @@
                 <node concept="26Ea6D" id="5DYAdUAsP2e" role="26FZ21">
                   <property role="26Ea6C" value="-Dsplash=true" />
                 </node>
+                <node concept="26Ea6D" id="7hIVwb6DkXx" role="26FZ21">
+                  <property role="26Ea6C" value="-DactionSystem.update.actions.async=false" />
+                </node>
+                <node concept="26Ea6D" id="7hIVwb6DkXy" role="26FZ21">
+                  <property role="26Ea6C" value="-DactionSystem.update.actions.async.ui=false" />
+                </node>
                 <node concept="26Ea6D" id="BJYGrH08XG" role="26FZ21">
                   <property role="2eq24a" value="true" />
                   <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
@@ -15354,6 +15360,12 @@
                 </node>
                 <node concept="26Ea6D" id="5DYAdUAsP19" role="2hID6k">
                   <property role="26Ea6C" value="-Dsplash=true" />
+                </node>
+                <node concept="26Ea6D" id="7hIVwb6Cr3f" role="2hID6k">
+                  <property role="26Ea6C" value="-DactionSystem.update.actions.async=false" />
+                </node>
+                <node concept="26Ea6D" id="7hIVwb6Cr4n" role="2hID6k">
+                  <property role="26Ea6C" value="-DactionSystem.update.actions.async.ui=false" />
                 </node>
                 <node concept="26Ea6D" id="2lwFGYOW7EZ" role="2hID6k">
                   <property role="2eq24a" value="true" />
