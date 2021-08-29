@@ -346,6 +346,7 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
         <property id="1200397540847" name="charConstant" index="1XhdNS" />
       </concept>
@@ -6149,13 +6150,33 @@
                 <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
               </node>
             </node>
-            <node concept="3y3z36" id="2BuYHhJnkOv" role="37wK5m">
-              <node concept="10Nm6u" id="2BuYHhJnkTi" role="3uHU7w" />
-              <node concept="2OqwBi" id="2BuYHhJnkpi" role="3uHU7B">
-                <node concept="2WthIp" id="2BuYHhJnkac" role="2Oq$k0" />
-                <node concept="2XshWL" id="2BuYHhJnkGi" role="2OqNvi">
-                  <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellMessage" />
+            <node concept="1Wc70l" id="1BKxgOUmAsT" role="37wK5m">
+              <node concept="3fqX7Q" id="1BKxgOUnpUY" role="3uHU7w">
+                <node concept="2OqwBi" id="1BKxgOUnpV0" role="3fr31v">
+                  <node concept="2OqwBi" id="1BKxgOUnpV1" role="2Oq$k0">
+                    <node concept="2OqwBi" id="1BKxgOUnpV2" role="2Oq$k0">
+                      <node concept="2WthIp" id="1BKxgOUnpV3" role="2Oq$k0" />
+                      <node concept="2XshWL" id="1BKxgOUnpV4" role="2OqNvi">
+                        <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellMessage" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1BKxgOUnpV5" role="2OqNvi">
+                      <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1BKxgOUnpV6" role="2OqNvi">
+                    <ref role="37wK5l" to="5p6x:6STmDFFaSyK" resolve="isLocalRevision" />
+                  </node>
                 </node>
+              </node>
+              <node concept="3y3z36" id="2BuYHhJnkOv" role="3uHU7B">
+                <node concept="2OqwBi" id="2BuYHhJnkpi" role="3uHU7B">
+                  <node concept="2WthIp" id="2BuYHhJnkac" role="2Oq$k0" />
+                  <node concept="2XshWL" id="2BuYHhJnkGi" role="2OqNvi">
+                    <ref role="2WH_rO" node="4eJXCVM8jNM" resolve="getCellMessage" />
+                  </node>
+                </node>
+                <node concept="10Nm6u" id="2BuYHhJnkTi" role="3uHU7w" />
               </node>
             </node>
           </node>
@@ -6325,13 +6346,33 @@
                 <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
               </node>
             </node>
-            <node concept="3y3z36" id="2D243O$s7eR" role="37wK5m">
-              <node concept="10Nm6u" id="2D243O$s7eS" role="3uHU7w" />
-              <node concept="2OqwBi" id="2D243O$s7eT" role="3uHU7B">
-                <node concept="2WthIp" id="2D243O$s7eU" role="2Oq$k0" />
-                <node concept="2XshWL" id="2D243O$s7eV" role="2OqNvi">
-                  <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellMessage" />
+            <node concept="1Wc70l" id="1BKxgOUnV3Y" role="37wK5m">
+              <node concept="3fqX7Q" id="1BKxgOUnY5a" role="3uHU7w">
+                <node concept="2OqwBi" id="1BKxgOUnY5c" role="3fr31v">
+                  <node concept="2OqwBi" id="1BKxgOUnY5d" role="2Oq$k0">
+                    <node concept="2OqwBi" id="1BKxgOUnY5e" role="2Oq$k0">
+                      <node concept="2WthIp" id="1BKxgOUnY5f" role="2Oq$k0" />
+                      <node concept="2XshWL" id="1BKxgOUnY5g" role="2OqNvi">
+                        <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellMessage" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1BKxgOUnY5h" role="2OqNvi">
+                      <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1BKxgOUnY5i" role="2OqNvi">
+                    <ref role="37wK5l" to="5p6x:6STmDFFaSyK" resolve="isLocalRevision" />
+                  </node>
                 </node>
+              </node>
+              <node concept="3y3z36" id="2D243O$s7eR" role="3uHU7B">
+                <node concept="2OqwBi" id="2D243O$s7eT" role="3uHU7B">
+                  <node concept="2WthIp" id="2D243O$s7eU" role="2Oq$k0" />
+                  <node concept="2XshWL" id="2D243O$s7eV" role="2OqNvi">
+                    <ref role="2WH_rO" node="3Y7DjknpJwX" resolve="getCellMessage" />
+                  </node>
+                </node>
+                <node concept="10Nm6u" id="2D243O$s7eS" role="3uHU7w" />
               </node>
             </node>
           </node>
@@ -6730,6 +6771,29 @@
             <node concept="10Nm6u" id="2D243O$rZm6" role="3uHU7w" />
           </node>
         </node>
+        <node concept="3clFbJ" id="1BKxgOUnDKw" role="3cqZAp">
+          <node concept="3clFbS" id="1BKxgOUnDKy" role="3clFbx">
+            <node concept="3cpWs6" id="1BKxgOUnH0S" role="3cqZAp">
+              <node concept="3clFbT" id="1BKxgOUnH95" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="1BKxgOUnFUH" role="3clFbw">
+            <node concept="2OqwBi" id="1BKxgOUnFc$" role="2Oq$k0">
+              <node concept="2OqwBi" id="1BKxgOUnEeY" role="2Oq$k0">
+                <node concept="2WthIp" id="1BKxgOUnDV1" role="2Oq$k0" />
+                <node concept="2XshWL" id="1BKxgOUnELb" role="2OqNvi">
+                  <ref role="2WH_rO" node="3V0wRzjRJPv" resolve="getCellMessage" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1BKxgOUnFFm" role="2OqNvi">
+                <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
+              </node>
+            </node>
+            <node concept="liA8E" id="1BKxgOUnGqS" role="2OqNvi">
+              <ref role="37wK5l" to="5p6x:6STmDFFaSyK" resolve="isLocalRevision" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="2D243O$rZm7" role="3cqZAp">
           <node concept="3cpWsn" id="2D243O$rZm8" role="3cpWs9">
             <property role="TrG5h" value="annotationColumn" />
@@ -7054,13 +7118,33 @@
                 <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
               </node>
             </node>
-            <node concept="3y3z36" id="6PVY$JZgRcv" role="37wK5m">
-              <node concept="10Nm6u" id="6PVY$JZgRcw" role="3uHU7w" />
-              <node concept="2OqwBi" id="6PVY$JZgRcx" role="3uHU7B">
-                <node concept="2WthIp" id="6PVY$JZgRcy" role="2Oq$k0" />
-                <node concept="2XshWL" id="6PVY$JZgRcz" role="2OqNvi">
-                  <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellMessage" />
+            <node concept="1Wc70l" id="1BKxgOUnY$k" role="37wK5m">
+              <node concept="3fqX7Q" id="1BKxgOUo1cg" role="3uHU7w">
+                <node concept="2OqwBi" id="1BKxgOUo1ci" role="3fr31v">
+                  <node concept="2OqwBi" id="1BKxgOUo1cj" role="2Oq$k0">
+                    <node concept="2OqwBi" id="1BKxgOUo1ck" role="2Oq$k0">
+                      <node concept="2WthIp" id="1BKxgOUo1cl" role="2Oq$k0" />
+                      <node concept="2XshWL" id="1BKxgOUo1cm" role="2OqNvi">
+                        <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellMessage" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1BKxgOUo1cn" role="2OqNvi">
+                      <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="1BKxgOUo1co" role="2OqNvi">
+                    <ref role="37wK5l" to="5p6x:6STmDFFaSyK" resolve="isLocalRevision" />
+                  </node>
                 </node>
+              </node>
+              <node concept="3y3z36" id="6PVY$JZgRcv" role="3uHU7B">
+                <node concept="2OqwBi" id="6PVY$JZgRcx" role="3uHU7B">
+                  <node concept="2WthIp" id="6PVY$JZgRcy" role="2Oq$k0" />
+                  <node concept="2XshWL" id="6PVY$JZgRcz" role="2OqNvi">
+                    <ref role="2WH_rO" node="6PVY$JZgRbm" resolve="getCellMessage" />
+                  </node>
+                </node>
+                <node concept="10Nm6u" id="6PVY$JZgRcw" role="3uHU7w" />
               </node>
             </node>
           </node>

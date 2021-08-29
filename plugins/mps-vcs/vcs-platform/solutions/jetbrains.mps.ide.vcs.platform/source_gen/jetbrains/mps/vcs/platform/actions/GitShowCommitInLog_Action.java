@@ -81,6 +81,9 @@ public class GitShowCommitInLog_Action extends BaseAction {
     if (GitShowCommitInLog_Action.this.getCellMessage(event) == null) {
       return false;
     }
+    if (GitShowCommitInLog_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()) {
+      return false;
+    }
     AnnotationColumn annotationColumn = VcsActionsUtil.getAnnotationColumn(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
     if (annotationColumn == null) {
       return false;

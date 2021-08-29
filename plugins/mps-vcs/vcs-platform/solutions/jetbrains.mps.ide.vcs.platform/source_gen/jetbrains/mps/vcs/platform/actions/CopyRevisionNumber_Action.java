@@ -35,7 +35,7 @@ public class CopyRevisionNumber_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(VcsBundle.messagePointer("copy.revision.number.action"));
-    setEnabledState(event.getPresentation(), CopyRevisionNumber_Action.this.getCellMessage(event) != null);
+    setEnabledState(event.getPresentation(), CopyRevisionNumber_Action.this.getCellMessage(event) != null && !(CopyRevisionNumber_Action.this.getCellMessage(event).getCommitsGraphNode().isLocalRevision()));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
