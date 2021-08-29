@@ -136,10 +136,10 @@ import java.awt.Graphics2D;
     return Color.GRAY;
   }
 
-  /*package*/ String getDescription() {
+  /*package*/ String getDescription(final boolean useShortChangeDescriptions) {
     return IterableUtils.join(ListSequence.fromList(getGroup().getChanges()).select(new ISelector<ModelChange, String>() {
       public String select(ModelChange ch) {
-        return ch.getDescription();
+        return (useShortChangeDescriptions ? ch.getShortDescription() : ch.getDescription());
       }
     }), "\n\n");
   }

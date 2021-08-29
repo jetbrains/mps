@@ -259,6 +259,7 @@
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffEditor">
+    <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
     <classNode dependClassName="com.intellij.util.ui.JBUI" />

@@ -44,9 +44,9 @@ public class NodeGroupChange extends StructureChange {
   private final int myResultEnd;
   private List<SNodeId> myPreparedIdsToDelete = null;
   private SNodeId myBeforeAnchorId = null;
-  private String myDescription;
-  private String myShortDescription;
-  private String myInternalDescription;
+  private final String myDescription;
+  private final String myShortDescription;
+  private final String myInternalDescription;
 
 
   public NodeGroupChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldParentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, int begin, int end, int resultBegin, int resultEnd) {
@@ -312,6 +312,10 @@ public class NodeGroupChange extends StructureChange {
 
   public String getDescription(boolean verbose) {
     return (verbose ? myDescription : myShortDescription);
+  }
+
+  public String getShortDescription() {
+    return myShortDescription;
   }
 
   @NotNull

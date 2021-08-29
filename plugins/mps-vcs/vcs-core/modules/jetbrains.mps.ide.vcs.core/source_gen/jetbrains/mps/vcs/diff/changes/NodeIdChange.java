@@ -24,6 +24,8 @@ public class NodeIdChange extends NodeChange {
   private final SContainmentLink myRole;
   private final IdChangeGroup myOldGroup;
   private final IdChangeGroup myNewGroup;
+  private final String myDescription;
+  private final String myShortDescription;
 
 
   public NodeIdChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldParentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, @NotNull SNodeId oldNodeId, @NotNull SNodeId newNodeId) {
@@ -34,6 +36,8 @@ public class NodeIdChange extends NodeChange {
     myOldParentNodeId = oldParentNodeId;
     myNewParentNodeId = newParentNodeId;
     myRole = role;
+    myDescription = createDescription(true);
+    myShortDescription = createDescription(false);
   }
 
   public NodeIdChange(@NotNull ChangeSet changeSet, @NotNull SNodeId oldParentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, @NotNull IdChangeGroup oldGroup, @NotNull IdChangeGroup newGroup) {
@@ -44,6 +48,8 @@ public class NodeIdChange extends NodeChange {
     myOldParentNodeId = oldParentNodeId;
     myNewParentNodeId = newParentNodeId;
     myRole = role;
+    myDescription = createDescription(true);
+    myShortDescription = createDescription(false);
   }
 
   public IdChangeGroup getGroup(boolean isNew) {
@@ -79,7 +85,7 @@ public class NodeIdChange extends NodeChange {
     SNode node = model.getNode(getNodeId(false));
     if (node != null) {
       nodeCopier.replaceNodeId(node, getNodeId(true));
-      check_kkxqie_a1a2a32(myNewGroup, model);
+      check_kkxqie_a1a2a52(myNewGroup, model);
     }
   }
 
@@ -90,10 +96,19 @@ public class NodeIdChange extends NodeChange {
 
   @Override
   public String getDescription() {
-    return getDescription(true);
+    return myDescription;
+  }
+
+  @Override
+  public String getShortDescription() {
+    return myShortDescription;
   }
 
   public String getDescription(boolean verbose) {
+    return (verbose ? myDescription : myShortDescription);
+  }
+
+  private String createDescription(boolean verbose) {
     String role = myRole.getName();
     if (verbose) {
       return String.format("%s ID replaced: new value is #%s", role, getNodeId(true));
@@ -121,7 +136,7 @@ public class NodeIdChange extends NodeChange {
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
   }
-  private static void check_kkxqie_a1a2a32(IdChangeGroup checkedDotOperand, SModel model) {
+  private static void check_kkxqie_a1a2a52(IdChangeGroup checkedDotOperand, SModel model) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setIsApplied(model);
     }
