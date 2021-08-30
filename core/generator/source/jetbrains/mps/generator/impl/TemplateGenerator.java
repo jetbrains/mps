@@ -34,6 +34,7 @@ import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.reference.DynamicReferenceUpdate;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.PostponedReferenceUpdate;
+import jetbrains.mps.generator.impl.reference.ReferenceInfo;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo_CopiedInputNode;
 import jetbrains.mps.generator.impl.template.DeltaBuilder;
 import jetbrains.mps.generator.impl.template.QueryExecutionContextWithTracing;
@@ -896,7 +897,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
    * keep references dynamic during generation (as it only slows down model access due to ongoing scope use.
    * @param dr DynamicReference instance
    */
-  public void registerDynamicReference(@NotNull SReference dr) {
+  public void registerDynamicReference(@NotNull ReferenceInfo.DRI dr) {
     myDynamicRefs.add(dr);
   }
 

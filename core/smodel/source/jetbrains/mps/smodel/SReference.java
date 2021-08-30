@@ -54,6 +54,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
    */
   @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink id, SNode sourceNode, SNode targetNode) {
+    // XXX 1 use in SNode impl
     if (sourceNode.getModel() != null && targetNode.getModel() != null) {
       // 'mature' reference
       return new StaticReference(id, sourceNode, targetNode.getModel().getReference(), targetNode.getNodeId(), targetNode.getName());
@@ -66,7 +67,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
    */
   @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink role, SNode sourceNode, SModelReference targetModelReference, SNodeId targetNodeId) {
-    // FIXME 3 uses in MPS generator
+    // XXX no uses in MPS
     return create(role, sourceNode, targetModelReference, targetNodeId, null);
   }
   /**
@@ -82,7 +83,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
    */
   @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink role, SNode sourceNode, SNodeReference pointer, String resolveInfo) {
-    // 3 uses in MPS own internal classes, 2 in SNode impl, +1 in SLinkOperations
+    // 3 uses in MPS own internal classes: 2 in SNode impl, +1 in SLinkOperations
     return create(role, sourceNode, pointer.getModelReference(), pointer.getNodeId(), resolveInfo);
   }
 

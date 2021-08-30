@@ -18,8 +18,8 @@ package jetbrains.mps.generator.impl.reference;
 import jetbrains.mps.generator.impl.TemplateGenerator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * These references are created in transient models.
@@ -30,7 +30,7 @@ public final class PostponedReference {
   private final SNode mySourceNode;
   private final SReferenceLink myLink;
   private ReferenceInfo myReferenceInfo;
-  private SReference myReplacementReference;
+  private ResolveInfo myReplacementTarget;
   private TemplateGenerator myGenerator;
 
   public PostponedReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull ReferenceInfo referenceInfo) {
@@ -77,7 +77,7 @@ public final class PostponedReference {
   }
 
   public void initReplacementReference() {
-    if (myReplacementReference != null) {
+    if (myReplacementTarget != null) {
       return;
     }
 
@@ -85,7 +85,7 @@ public final class PostponedReference {
       return; // already processed
     }
 
-    myReplacementReference = myReferenceInfo.create(this);
+    myReplacementTarget = myReferenceInfo.create(this);
     // release resources
     myReferenceInfo = null;
   }
@@ -95,6 +95,6 @@ public final class PostponedReference {
    * removes reference in case of error.
    */
   public void replace() {
-    mySourceNode.setReference(myLink, myReplacementReference);
+    mySourceNode.setReference(myLink, myReplacementTarget);
   }
 }

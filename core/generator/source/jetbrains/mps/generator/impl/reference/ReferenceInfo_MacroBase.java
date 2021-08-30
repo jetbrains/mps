@@ -21,9 +21,9 @@ import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * @author Artem Tikhomirov
@@ -36,7 +36,7 @@ public abstract class ReferenceInfo_MacroBase extends ReferenceInfo {
 
   @Nullable
   @Override
-  public final SReference create(@NotNull PostponedReference ref) {
+  public final ResolveInfo create(@NotNull PostponedReference ref) {
     try {
       Object result = expandReferenceMacro(ref);
       if (result instanceof SNode) {
@@ -47,7 +47,7 @@ public abstract class ReferenceInfo_MacroBase extends ReferenceInfo {
         return createDynamicReference(ref, resolveInfoForDynamicResolve, new DynamicReferenceOrigin(getMacroNodeRef(), null));
       } else if (result instanceof SNodeReference) {
         SNodeReference refTarget = (SNodeReference) result;
-        return jetbrains.mps.smodel.SReference.create(ref.getLink(), ref.getSourceNode(), refTarget.getModelReference(), refTarget.getNodeId());
+        return ResolveInfo.of(refTarget, null);
       }
       if (!ref.getLink().isOptional()) {
         return createInvalidReference(ref, getInvalidReferenceResolveInfo());

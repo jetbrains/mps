@@ -24,10 +24,10 @@ import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * Restore a reference originally between template nodes
@@ -49,7 +49,7 @@ public class ReferenceInfo_Template extends ReferenceInfo {
 
   @Nullable
   @Override
-  public SReference create(@NotNull PostponedReference ref) {
+  public ResolveInfo create(@NotNull PostponedReference ref) {
     SNode outputTargetNode = doResolve_Straightforward(ref);
     if (outputTargetNode != null) {
       return createStaticReference(ref, outputTargetNode);

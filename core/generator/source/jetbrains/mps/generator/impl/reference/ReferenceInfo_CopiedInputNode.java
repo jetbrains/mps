@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -49,7 +50,7 @@ public class ReferenceInfo_CopiedInputNode extends ReferenceInfo {
 
   @Nullable
   @Override
-  public SReference create(@NotNull PostponedReference ref) {
+  public ResolveInfo create(@NotNull PostponedReference ref) {
     if (myInputTargetNode != null) {
       // output target node might has been copied (reduced) from the input target node
       // here accept only one-to-one copying
