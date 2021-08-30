@@ -10,7 +10,7 @@
 
   <!-- Next three includes can be removed if PlatformLangXmlPlugin.xml will be imported instead of PlatformLangPlugin.xml -->
   <xi:include href="/META-INF/XmlPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/JsonPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
+  <xi:include href="intellij.json.xml">
     <xi:fallback/>
   </xi:include>
   <xi:include href="/META-INF/SpellCheckerPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
