@@ -24,17 +24,14 @@ import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.favorites.nodes.MPSFavoriteReference;
+import jetbrains.mps.ide.projectPane.favorites.nodes.SRefValue;
 import jetbrains.mps.ide.ui.smodel.ReferenceTreeNode;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.adapter.structure.ref.SReferenceLinkAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import javax.swing.tree.TreeNode;
@@ -47,27 +44,33 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
   @Nullable
   @Override
   public Collection<AbstractTreeNode<?>> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
-    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<TreeNode> references = MPSCommonDataKeys.TREE_NODES.getData(context);
 
     if (references == null) {
-      return result;
+      return null;
     }
+    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
 
     for (TreeNode referenceObject : references) {
       if (!(referenceObject instanceof ReferenceTreeNode)) {
         continue;
       }
-
       ReferenceTreeNode treeNode = (ReferenceTreeNode) referenceObject;
-
-      MPSFavoriteReference favoriteReference = new MPSFavoriteReference(project, treeNode.getRef(), ViewSettings.DEFAULT);
-      result.add(favoriteReference);
+      result.add(new MPSFavoriteReference(project, new SRefValue(treeNode.getRef()), viewSettings));
     }
 
     return result.isEmpty() ? null : result;
 
+  }
+
+  @Nullable
+  @Override
+  public AbstractTreeNode<?> createNode(Project project, Object element, @NotNull ViewSettings viewSettings) {
+    if (element instanceof SRefValue) {
+      return new MPSFavoriteReference(project, (SRefValue) element, viewSettings);
+    }
+    return null;
   }
 
   @Override
@@ -100,20 +103,18 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
   @Nullable
   @Override
   public String getElementUrl(Object element) {
-    if (element instanceof SReference) {
-      SReference reference = (SReference) element;
-      if (!(reference.getLink() instanceof SReferenceLinkAdapter)) {
+    if (element instanceof SRefValue) {
+      SRefValue rv = (SRefValue) element;
+      if (!(rv.getLink() instanceof SReferenceLinkAdapter)) {
         return null;
       }
-      SReferenceLinkAdapter referenceLink = (SReferenceLinkAdapter) reference.getLink();
 
-      String source, target, link;
+      String source, link;
 
-      source = PersistenceFacade.getInstance().asString(((SReference) element).getSourceNode().getReference());
-      target = PersistenceFacade.getInstance().asString(((SReference) element).getTargetNodeReference());
-      link = referenceLink.serialize();
+      source = PersistenceFacade.getInstance().asString(rv.getSource());
+      link = ((SReferenceLinkAdapter) rv.getLink()).serialize();
 
-      return SerializationUtil.getInstance().assemble(new String[]{source, target, link});
+      return SerializationUtil.getInstance().assemble(new String[]{source, link});
     }
     return null;
   }
@@ -128,24 +129,22 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
   @Override
   public Object[] createPathFromUrl(Project project, String url, String moduleName) {
     if (DumbService.isDumb(project) || url == null) {
-      return null;
-    }
-    String[] params = SerializationUtil.getInstance().disassemble(url);
-    if (params.length != 3) {
+      // XXX this is quite an odd code, IDEA could do the check if it needs to, why here?
       return null;
     }
     try {
+      String[] params = SerializationUtil.getInstance().disassemble(url);
+      if (params.length != 2 || params.length != 3) {
+        // FIXME params.length == 3 is legacy scenario with ignored target ref. Left in case
+        //    IDEA serializes these urls somewhere, and we may face them in a next MPS release.
+        //    Feel free to remove this case once 2021.2 is out
+        return null;
+      }
       SNodeReference source = PersistenceFacade.getInstance().createNodeReference(params[0]);
-      SNodeReference target = PersistenceFacade.getInstance().createNodeReference(params[1]);
-      SReferenceLink link = SReferenceLinkAdapter.deserialize(params[2]);
+      // need to skip unused target node pointer params[1] when there are 3 elements in url
+      SReferenceLink link = SReferenceLinkAdapter.deserialize(params[params.length == 3 ? 2 : 1]);
 
-      SRepository repository = ProjectHelper.getProjectRepository(project);
-      ModelAccessHelper helper = new ModelAccessHelper(repository);
-
-      // FIXME potential NPE, source may not resolve, while factory method expects not null
-      SReference reference = helper.runReadAction(() -> jetbrains.mps.smodel.SReference
-                                                            .create(link, source.resolve(repository), target.resolve(repository)));
-      return new Object[]{reference};
+      return new Object[]{new SRefValue(source, link)};
     } catch (Exception e) {
       return null;
     }

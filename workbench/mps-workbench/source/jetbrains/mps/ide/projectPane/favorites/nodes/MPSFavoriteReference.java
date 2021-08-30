@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,17 +26,19 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
 
-public class MPSFavoriteReference extends MPSFavoriteNodeBase<SReference> {
+public class MPSFavoriteReference extends MPSFavoriteNodeBase<SRefValue> {
 
 
-  public MPSFavoriteReference(Project project, @NotNull SReference value, ViewSettings viewSettings) {
+  public MPSFavoriteReference(Project project, @NotNull SRefValue value, ViewSettings viewSettings) {
     super(project, value, viewSettings);
 
-    ProjectHelper.getModelAccess(project).runReadAction(() -> {
-      SNode targetNode = value.getTargetNode();
+    final SRepository projectRepo = ProjectHelper.getProjectRepository(project);
+    projectRepo.getModelAccess().runReadAction(() -> {
+      SNode targetNode = value.getTargetNode(projectRepo);
 
       Icon baseIcon;
       if (PowerSaveMode.isEnabled()) {
@@ -49,7 +51,7 @@ public class MPSFavoriteReference extends MPSFavoriteNodeBase<SReference> {
         }
       }
       myPresentableIcon = new LayeredIcon(baseIcon, Nodes.Symlink);
-      myPresentableText = value.getLink().getName() + ": " + targetNode;
+      myPresentableText = value.getLink().getName() + ": " + targetNode.getPresentation();
 
       myNavigationTarget = targetNode.getReference();
     });

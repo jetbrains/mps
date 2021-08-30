@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,20 +39,28 @@ public class MPSFavoriteModuleProvider extends FavoriteNodeProvider {
   @Nullable
   @Override
   public Collection<AbstractTreeNode<?>> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
-    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<SModule> modules = MPSDataKeys.MODULES.getData(context);
 
     if (modules == null) {
-      return result;
+      return null;
     }
+    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
 
     for (SModule module : modules) {
-      MPSFavoriteModule favoriteModule = new MPSFavoriteModule(project, module.getModuleReference(), ViewSettings.DEFAULT);
-      result.add(favoriteModule);
+      result.add(new MPSFavoriteModule(project, module.getModuleReference(), viewSettings));
     }
 
     return result.isEmpty() ? null : result;
+  }
+
+  @Nullable
+  @Override
+  public AbstractTreeNode<?> createNode(Project project, Object element, @NotNull ViewSettings viewSettings) {
+    if (element instanceof SModuleReference) {
+      return new MPSFavoriteModule(project, (SModuleReference) element, viewSettings);
+    }
+    return null;
   }
 
   @Override
