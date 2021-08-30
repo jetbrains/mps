@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,15 +25,12 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.Icon;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Objects;
 
 abstract class MPSFavoriteNodeBase<T> extends ProjectViewNode<T> {
 
@@ -53,11 +50,7 @@ abstract class MPSFavoriteNodeBase<T> extends ProjectViewNode<T> {
     MPSProject project = ProjectHelper.fromIdeaProject(getProject());
     EditorNavigator navigator = new EditorNavigator(project);
     SNodeReference navigationTarget = myNavigationTarget;
-    boolean isRoot = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
-      SNode navigationNode = navigationTarget.resolve(project.getRepository());
-      return navigationNode != null && Objects.equals(navigationNode, navigationNode.getContainingRoot());
-    });
-    navigator.shallFocus(true).shallSelect(!isRoot).open(navigationTarget);
+    navigator.shallFocus(true).selectIfChild().open(navigationTarget);
   }
 
   @Override
