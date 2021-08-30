@@ -30,7 +30,6 @@ import java.io.IOException;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -38,6 +37,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.internal.collections.runtime.ISequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -223,18 +223,18 @@ public class JavaToMpsConverter {
       }
     });
 
-    final Wrappers._T<IncrementalModelAccess> modelAccess = new Wrappers._T<IncrementalModelAccess>();
+    IncrementalModelAccess modelAccess;
     if (myModelAccess.isCommandAction()) {
-      modelAccess.value = IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE;
+      modelAccess = IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE;
     } else if (myModel != null) {
       // import into single already existing model; use proper command for replacing nodes
-      modelAccess.value = new IncrementalModelAccessWithCommand(myModelAccess, myModels, myMessageHandler);
+      modelAccess = new IncrementalModelAccessWithCommand(myModelAccess, myModels, myMessageHandler);
     } else {
-      modelAccess.value = new IncrementalModelAccessWithoutCommand(myModelAccess, myModels, myMessageHandler);
+      modelAccess = new IncrementalModelAccessWithoutCommand(myModelAccess, myModels, myMessageHandler);
     }
 
     // actually attach roots
-    modelAccess.value.replaceNodes(new Runnable() {
+    modelAccess.replaceNodes(new Runnable() {
       public void run() {
         ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
           public void visit(SModel it) {
@@ -255,12 +255,8 @@ public class JavaToMpsConverter {
 
     myRootCount = myAttachedRoots.size();
 
-    final ProgressMonitor resolveProgress = progress.subTask(30);
-    modelAccess.value.replaceReferences(new Runnable() {
-      public void run() {
-        tryResolveRefs(myAttachedRoots, FeatureKind.CLASS, resolveProgress, modelAccess.value);
-      }
-    });
+    ProgressMonitor resolveProgress = progress.subTask(30);
+    tryResolveRefs(myAttachedRoots, FeatureKind.CLASS, resolveProgress, modelAccess);
 
     progress.done();
   }
@@ -297,11 +293,16 @@ public class JavaToMpsConverter {
     // declarations) having been resolved
     ProgressMonitor resolvePM = progress.subTask(1);
     resolvePM.start("", ListSequence.fromList(myModels).count());
-    for (SModel m : ListSequence.fromList(myModels)) {
+    for (final SModel m : ListSequence.fromList(myModels)) {
       // Here used to be a code JavaParser.tryToResolveUnknowns(myAttachedRoots...), which used to take model of a supplied node to update its imports
       // Now, with YetUnknownResolver that works on a per-model basis, need to group elements of myAttachedRoots by their model, hence intersect(), below
-      YetUnknownResolver yur = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
-      yur.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING), modelAccess);
+      final Wrappers._T<YetUnknownResolver> yur = new Wrappers._T<YetUnknownResolver>();
+      modelAccess.accessModel(new Runnable() {
+        public void run() {
+          yur.value = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
+        }
+      });
+      yur.value.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING), modelAccess);
     }
     resolvePM.done();
 
@@ -399,11 +400,19 @@ public class JavaToMpsConverter {
 
     removeJavaImportsPass(nodes, progress.subTask(1), modelAccess);
 
-    // XXX perhaps, this code shall not be part of public tryResolveRefs invocation (when pasting Java code), or has to be explicit there.
-    for (SModel m : ListSequence.fromList(myModels)) {
-      // could have pass myRepository, intentionally null to get imports explicit
-      new ModelDependencyUpdate(m).updateUsedLanguages().updateImportedModels(null);
-    }
+    // not that import update constitutes reference replacement, just didn't get any better model access handy
+    // FIXME I don't see a point to split the whole operation into the series of read/writeInUpdate, but don't want to deal with this
+    // right now. I suspect whole tryResolveRefs has to be wrapped into proper model access (write in update) as it was
+    // for erroneous MPS-27426 fix (28a6a1a7)
+    modelAccess.replaceReferences(new Runnable() {
+      public void run() {
+        // XXX perhaps, this code shall not be part of public tryResolveRefs invocation (when pasting Java code), or has to be explicit there.
+        for (SModel m : ListSequence.fromList(myModels)) {
+          // could have pass myRepository, intentionally null to get imports explicit
+          new ModelDependencyUpdate(m).updateUsedLanguages().updateImportedModels(null);
+        }
+      }
+    });
 
     progress.done();
   }
