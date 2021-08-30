@@ -85,6 +85,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationInitializedListener implementation="com.intellij.internal.statistic.updater.StatisticsJobsScheduler"/>
+    <applicationInitializedListener implementation="com.intellij.internal.statistic.updater.StatisticsStateCollectorsScheduler"/>
 
     <projectViewPane implementation="jetbrains.mps.ide.projectPane.ProjectPane"/>
     <projectViewPane implementation="jetbrains.mps.ide.projectPane.fileSystem.FileViewProjectPane"/>
