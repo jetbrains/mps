@@ -1240,12 +1240,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
           continue;
         }
         if (inputNodeModel != null) {
-          boolean external = true;
-          if (inputReference instanceof PostponedReference){
-            external = false;
-          } else if (inputNodeModel.getReference().equals(inputReference.getTargetSModelReference())){
-            external = false;
-          }
+          final boolean external = !inputNodeModel.getReference().equals(inputReference.getTargetSModelReference());
           if (inputReference instanceof DynamicReference || external) {
             // dynamic & external references don't need validation => replace input model with output
             SModelReference targetModelReference = external ? inputReference.getTargetSModelReference() : myOutputModelRef;

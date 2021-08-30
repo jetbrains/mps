@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,6 +58,7 @@ public abstract class ReferenceInfo {
     // and thus we don't need to introduce anything extra here.
     final DynamicReference dr = new DynamicReference(ref.getLink(), ref.getSourceNode(), null, resolveInfo);
     dr.setOrigin(origin);
+    ref.getGenerator().registerDynamicReference(dr);
     return dr;
   }
 

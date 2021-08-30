@@ -17,10 +17,7 @@ package jetbrains.mps.generator.impl.reference;
 
 import jetbrains.mps.generator.impl.TemplateGenerator;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.model.ResolveInfo;
-import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
@@ -28,15 +25,26 @@ import org.jetbrains.mps.openapi.model.SReference;
  * These references are created in transient models.
  * They are always internal.
  */
-public class PostponedReference extends jetbrains.mps.smodel.SReference {
+public final class PostponedReference {
 
+  private final SNode mySourceNode;
+  private final SReferenceLink myLink;
   private ReferenceInfo myReferenceInfo;
   private SReference myReplacementReference;
   private TemplateGenerator myGenerator;
 
   public PostponedReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull ReferenceInfo referenceInfo) {
-    super(role, sourceNode);
+    mySourceNode = sourceNode;
+    myLink = role;
     myReferenceInfo = referenceInfo;
+  }
+
+  /*package*/ SNode getSourceNode() {
+    return mySourceNode;
+  }
+
+  /*package*/ SReferenceLink getLink() {
+    return myLink;
   }
 
   /*
@@ -68,56 +76,25 @@ public class PostponedReference extends jetbrains.mps.smodel.SReference {
     return myGenerator;
   }
 
-  @Override
-  @Nullable
-  public synchronized SModelReference getTargetSModelReference() {
+  public void initReplacementReference() {
     if (myReplacementReference != null) {
-      return myReplacementReference.getTargetSModelReference();
+      return;
     }
-    // ok, reference is unresolved and not required
-    return null;
-  }
 
-  @Override
-  protected SNode getTargetNode_internal(ProblemReporter report) {
-    if (myReplacementReference == null) {
-      return null;
+    if (myReferenceInfo == null) {
+      return; // already processed
     }
-    return myReplacementReference.getTargetNode();
+
+    myReplacementReference = myReferenceInfo.create(this);
+    // release resources
+    myReferenceInfo = null;
   }
 
   /**
-   * @return null is not resolved and not required.
-   */
-  public SReference initReplacementReference() {
-    if (myReplacementReference != null) {
-      return myReplacementReference;
-    }
-
-    synchronized (this) {
-      if (myReferenceInfo == null) {
-        return myReplacementReference; // already processed
-      }
-
-      myReplacementReference = myReferenceInfo.create(this);
-      // release resources
-      myReferenceInfo = null;
-    }
-    return myReplacementReference;
-  }
-
-  /**
-   * replaces this instance with ether StaticReference or with DynamicReference. (only static so far)
+   * Place replacement reference (ether StaticReference or with DynamicReference) into model
    * removes reference in case of error.
    */
   public void replace() {
-    getSourceNode().setReference(getLink(), myReplacementReference);
-  }
-
-  @NotNull
-  @Override
-  public ResolveInfo describeTarget() {
-    // FIXME refactor ReferenceInfo to produce ResolveInfo instead of SReference
-    throw new UnsupportedOperationException();
+    mySourceNode.setReference(myLink, myReplacementReference);
   }
 }

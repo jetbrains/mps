@@ -360,7 +360,6 @@ public abstract class DeltaBuilder {
           continue;
         }
         for (SReference reference : next.getReferences()) {
-          assert reference instanceof PostponedReference == false : "!!! unexpected PostponedReference in the input model";
           if (!inputModelRef.equals(reference.getTargetSModelReference())) {
             continue;
           }

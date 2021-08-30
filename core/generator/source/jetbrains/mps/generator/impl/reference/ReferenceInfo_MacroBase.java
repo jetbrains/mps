@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,7 @@ public abstract class ReferenceInfo_MacroBase extends ReferenceInfo {
         return createStaticReference(ref, outputTargetNode);
       } else if (result instanceof String) {
         final String resolveInfoForDynamicResolve = (String) result;
-        final SReference dr = createDynamicReference(ref, resolveInfoForDynamicResolve, new DynamicReferenceOrigin(getMacroNodeRef(), null));
-        ref.getGenerator().registerDynamicReference(dr);
-        return dr;
+        return createDynamicReference(ref, resolveInfoForDynamicResolve, new DynamicReferenceOrigin(getMacroNodeRef(), null));
       } else if (result instanceof SNodeReference) {
         SNodeReference refTarget = (SNodeReference) result;
         return jetbrains.mps.smodel.SReference.create(ref.getLink(), ref.getSourceNode(), refTarget.getModelReference(), refTarget.getNodeId());
