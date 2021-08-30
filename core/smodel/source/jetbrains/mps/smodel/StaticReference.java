@@ -29,7 +29,11 @@ public final class StaticReference extends SReferenceBase {
 
   /**
    * create 'young' reference
+   * @deprecated Don't instantiate SReference or its subclass directly, use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead.
+   *             In 2021.3, the constructor to become package-local for transitional access from SReference.create method
    */
+  @Deprecated(since = "2021.2", forRemoval = true)
+  @ToRemove(version = 2021.2)
   public StaticReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull SNode immatureTargetNode) {
     super(role, sourceNode);
     myImmatureTargetNode = immatureTargetNode;
@@ -41,7 +45,11 @@ public final class StaticReference extends SReferenceBase {
 
   /**
    * create 'mature' reference
+   * @deprecated Don't instantiate SReference or its subclass directly, use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead.
+   *             In 2021.3, the constructor to become package-local for transitional access from SReference.create method
    */
+  @Deprecated(since = "2021.2", forRemoval = true)
+  @ToRemove(version = 2021.2)
   public StaticReference(@NotNull SReferenceLink role,
                          @NotNull SNode sourceNode,
                          @Nullable SModelReference targetModelReference,

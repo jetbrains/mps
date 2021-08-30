@@ -13,10 +13,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.util.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.StaticReference;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
 import java.util.List;
@@ -57,7 +58,7 @@ public class SetReferenceChange extends NodeChange {
 
   @NotNull
   public String getRole() {
-    return myRole.getRoleName();
+    return myRole.getName();
   }
 
   @NotNull
@@ -96,12 +97,10 @@ public class SetReferenceChange extends NodeChange {
       node.setReferenceTarget(myRole, null);
     } else {
       SModelReference targetModelReference = (myTargetModelReference == null ? SModelOperations.getPointer(model) : myTargetModelReference);
-      node.setReferenceTarget(myRole, null);
       if (myTargetNodeId == null) {
         node.setReference(myRole, SNodeOperations.qualifiedResolveInfo(myRole, targetModelReference, myResolveInfo));
       } else {
-        SReference reference = new StaticReference(myRole, node, targetModelReference, myTargetNodeId, myResolveInfo);
-        node.setReference(myRole, reference);
+        node.setReference(myRole, ResolveInfo.of(new SNodePointer(targetModelReference, myTargetNodeId), myResolveInfo));
       }
     }
   }

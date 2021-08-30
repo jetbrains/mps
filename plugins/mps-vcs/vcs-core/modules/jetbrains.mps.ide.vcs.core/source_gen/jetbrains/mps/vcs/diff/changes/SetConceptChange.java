@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.StaticReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -81,11 +80,11 @@ public class SetConceptChange extends NodeChange {
       }
       SNodeId targetNodeId = ref.getTargetNodeId();
       SReferenceLink link = SLinkOperations.getRefLink(ref);
-      String string = SLinkOperations.getResolveInfo(ref);
       if (targetNodeId == null) {
+        String string = SLinkOperations.getResolveInfo(ref);
         newNode.setReference(link, jetbrains.mps.util.SNodeOperations.qualifiedResolveInfo(link, targetModelReference, string));
       } else {
-        newNode.setReference(link, new StaticReference(link, newNode, targetModelReference, targetNodeId, string));
+        newNode.setReference(link, ref.describeTarget());
       }
     }
     for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node))) {

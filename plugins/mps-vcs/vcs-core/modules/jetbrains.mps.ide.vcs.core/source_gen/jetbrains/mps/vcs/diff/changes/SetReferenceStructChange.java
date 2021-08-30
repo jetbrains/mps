@@ -15,8 +15,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.vcs.diff.StructChangeSet;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.smodel.StaticReference;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4664177994951620648", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetReferenceStructChange extends SetReferenceChange {
@@ -31,10 +32,9 @@ public class SetReferenceStructChange extends SetReferenceChange {
     SNode node = model.getNode(getAffectedNodeId(false));
     assert node != null;
     if (getTargetNodeId() == null && getResolveInfo() == null) {
-      node.setReferenceTarget(getRoleLink(), null);
+      node.dropReference(getRoleLink());
     } else {
       SModelReference targetModelReference = (getTargetModelReference() == null ? SModelOperations.getPointer(model) : getTargetModelReference());
-      node.setReferenceTarget(getRoleLink(), null);
       if (getTargetNodeId() == null) {
         node.setReference(getRoleLink(), SNodeOperations.qualifiedResolveInfo(getRoleLink(), targetModelReference, getResolveInfo()));
       } else {
@@ -45,8 +45,7 @@ public class SetReferenceStructChange extends SetReferenceChange {
         if (mapToOldId != null && Objects.equals(targetModelReference, SModelOperations.getPointer(changeset.getNewModel()))) {
           targetNodeId = mapToOldId;
         }
-        SReference reference = new StaticReference(getRoleLink(), node, targetModelReference, targetNodeId, getResolveInfo());
-        node.setReference(getRoleLink(), reference);
+        node.setReference(getRoleLink(), ResolveInfo.of(new SNodePointer(targetModelReference, targetNodeId), getResolveInfo()));
       }
     }
   }

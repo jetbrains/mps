@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,12 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.logging.Log4jUtil;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.WeakSet;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -47,6 +45,14 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     mySourceNode = sourceNode;
   }
 
+  /**
+   * @deprecated Constructing SReference objects with purpose to {@code SNode.setReference()} is discouraged,
+   *             use alternative {@code SNode.setReference()} methods.
+   *             This method have to stay for at least a year to facilitate migration of user code.
+   *             Generally, clients have to use smodel language to manipulate references, but there could be code that does that
+   *             through SNode OpenAPI.
+   */
+  @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink id, SNode sourceNode, SNode targetNode) {
     if (sourceNode.getModel() != null && targetNode.getModel() != null) {
       // 'mature' reference
@@ -55,13 +61,24 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     return new StaticReference(id, sourceNode, targetNode);
   }
 
+  /**
+   * @deprecated see {@link #create(SReferenceLink, SNode, SNode)}, above, for explanation
+   */
+  @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink role, SNode sourceNode, SModelReference targetModelReference, SNodeId targetNodeId) {
-    return new StaticReference(role, sourceNode, targetModelReference, targetNodeId, null);
+    return create(role, sourceNode, targetModelReference, targetNodeId, null);
   }
+  /**
+   * @deprecated see {@link #create(SReferenceLink, SNode, SNode)}, above, for explanation
+   */
+  @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink role, SNode sourceNode, SModelReference targetModelReference, SNodeId targetNodeId, String resolveInfo) {
     return new StaticReference(role, sourceNode, targetModelReference, targetNodeId, resolveInfo);
   }
-
+  /**
+   * @deprecated see {@link #create(SReferenceLink, SNode, SNode)}, above, for explanation
+   */
+  @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink role, SNode sourceNode, SNodeReference pointer, String resolveInfo) {
     return create(role, sourceNode, pointer.getModelReference(), pointer.getNodeId(), resolveInfo);
   }
