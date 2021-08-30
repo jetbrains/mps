@@ -45791,6 +45791,47 @@
     <node concept="1l3spV" id="6WtY9M1bDOP" role="1l3spN">
       <node concept="m$_wl" id="6WtY9M1bDOQ" role="39821P">
         <ref role="m_rDy" node="6WtY9M1bDO_" resolve="jetbrains.mps.ide.java" />
+        <node concept="398223" id="27RA$fwMU4Z" role="39821P">
+          <node concept="3_J27D" id="27RA$fwMU50" role="Nbhlr">
+            <node concept="3Mxwew" id="27RA$fwMU51" role="3MwsjC">
+              <property role="3MwjfP" value="lib" />
+            </node>
+          </node>
+          <node concept="3981dx" id="27RA$fwMU52" role="39821P">
+            <node concept="398223" id="27RA$fwMU53" role="39821P">
+              <node concept="m_q07" id="27RA$fwMU4Y" role="39821P">
+                <ref role="m_q06" node="6WtY9M1bDO_" resolve="jetbrains.mps.ide.java" />
+              </node>
+              <node concept="28jJK3" id="27RA$fwMU5M" role="39821P">
+                <node concept="398BVA" id="27RA$fwMU5N" role="28jJRO">
+                  <ref role="398BVh" node="6WtY9M1bDNn" resolve="mps_home" />
+                  <node concept="2Ry0Ak" id="27RA$fwMU5O" role="iGT6I">
+                    <property role="2Ry0Am" value="plugins" />
+                    <node concept="2Ry0Ak" id="27RA$fwMU5P" role="2Ry0An">
+                      <property role="2Ry0Am" value="mps-java" />
+                      <node concept="2Ry0Ak" id="27RA$fwMU5Q" role="2Ry0An">
+                        <property role="2Ry0Am" value="META-INF" />
+                        <node concept="2Ry0Ak" id="27RA$fwMU5R" role="2Ry0An">
+                          <property role="2Ry0Am" value="JavaWorkbenchActions.xml" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3_J27D" id="27RA$fwMU54" role="Nbhlr">
+                <node concept="3Mxwew" id="27RA$fwMU55" role="3MwsjC">
+                  <property role="3MwjfP" value="META-INF" />
+                </node>
+              </node>
+            </node>
+            <node concept="3_J27D" id="27RA$fwMU56" role="Nbhlr">
+              <node concept="3Mxwew" id="27RA$fwMU57" role="3MwsjC">
+                <property role="3MwjfP" value="mps-java.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="pUk6w" id="5peYeZGo8WW" role="pUk7w" />
         <node concept="3ygNvl" id="24USIKv4QHf" role="39821P">
           <ref role="3ygNvj" node="6qT2v0qOlKz" />
