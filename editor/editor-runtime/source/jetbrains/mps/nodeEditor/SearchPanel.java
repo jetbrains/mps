@@ -66,12 +66,7 @@ public class SearchPanel extends AbstractSearchPanel {
       public void actionPerformed(@NotNull AnActionEvent e) {
         deactivate();
       }
-
-      @Override
-      public void update(@NotNull AnActionEvent e) {
-        e.getPresentation().setEnabled(SearchPanel.this.isVisible());
-      }
-    }.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_EDITOR_ESCAPE), myEditor.getExternalComponent());
+    }.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_EDITOR_ESCAPE), this);
   }
 
   /**
