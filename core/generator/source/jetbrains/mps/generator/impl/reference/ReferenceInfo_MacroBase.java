@@ -52,7 +52,10 @@ public abstract class ReferenceInfo_MacroBase extends ReferenceInfo {
       if (!ref.getLink().isOptional()) {
         return createInvalidReference(ref, getInvalidReferenceResolveInfo());
       }
-      return null; // why not always invalid reference? Is there a convention that RM with null value means "forget it"?
+      // If you wonder why not an invalid reference?
+      // There a convention that RM with null value means "forget it" (e.g. lang.editor generator,
+      // RM for parentStyleClass in reduce_CellModel_Block)
+      return null;
     } catch (GenerationFailureException ex) {
       // It's not nice to handle exception here (it could be exception fro user code and from generator's code, and we have no idea what's the proper way to
       // handle them), but I feel it's worth trying to go on with invalid reference, and handling exception here is much better than silently ignoring it.

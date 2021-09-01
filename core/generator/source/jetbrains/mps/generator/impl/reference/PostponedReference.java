@@ -95,6 +95,12 @@ public final class PostponedReference {
    * removes reference in case of error.
    */
   public void replace() {
-    mySourceNode.setReference(myLink, myReplacementTarget);
+    if (myReplacementTarget != null) {
+      mySourceNode.setReference(myLink, myReplacementTarget);
+    } else {
+      // XXX seems that implementation triggers 'ref changed' event regardless of link presence. Is that what I want here?
+      //     Perhaps, shall check for link presence and clean it only when there's one.
+      mySourceNode.dropReference(myLink);
+    }
   }
 }
