@@ -304,6 +304,35 @@ public class DeprecatedUtil {
         if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(value)) {
           return "" + Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(value, null);
         }
+      } else {
+        SNode deprecatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.HasAnnotation$Dg), LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return SLinkOperations.hasPointer(it, LINKS.annotation$12Ek, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
+          }
+        }).first();
+        if ((deprecatedAnnotation != null)) {
+          SNode sinceValue = ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.since()"));
+            }
+          }).select(new ISelector<SNode, SNode>() {
+            public SNode select(SNode it) {
+              return SLinkOperations.getTarget(it, LINKS.value$Y7om);
+            }
+          }).first();
+          SNode forRemovalFlag = ListSequence.fromList(SLinkOperations.getChildren(deprecatedAnnotation, LINKS.value$uK2B)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return SLinkOperations.hasPointer(it, LINKS.key$bSmV, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated.forRemoval()"));
+            }
+          }).select(new ISelector<SNode, SNode>() {
+            public SNode select(SNode it) {
+              return SLinkOperations.getTarget(it, LINKS.value$Y7om);
+            }
+          }).first();
+          if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(forRemovalFlag) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(sinceValue) && (Boolean) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(forRemovalFlag, null)) {
+            return "" + Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(sinceValue, null);
+          }
+        }
       }
     }
     return null;
