@@ -31,7 +31,9 @@ package jetbrains.mps.util.annotation;
  *   NOTE, as it's just an indicator of the moment we decided to drop certain code element, there's no reason to update version
  *   field for elements that have not been removed for a few release cycles. PLEASE LEAVE IT INTACT.
  * </p>
+ *
+ * @deprecated Use the standard Deprecated annotation instead
  */
-public @interface ToRemove {
+@Deprecated public @interface ToRemove {
   double version();
 }
