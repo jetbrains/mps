@@ -342,14 +342,14 @@ public class SNodeOperations {
     if (parent == null) {
       return result;
     }
-    if (inclusion) {
-      result.add(node);
-    }
     boolean childFound = false;
     SContainmentLink role = node.getContainmentLink();
     assert role != null;
     for (SNode child : parent.getChildren(role)) {
       if (child == node) {
+        if (inclusion) {
+          result.add(node);
+        }
         childFound = true;
       } else
       if (childFound) {

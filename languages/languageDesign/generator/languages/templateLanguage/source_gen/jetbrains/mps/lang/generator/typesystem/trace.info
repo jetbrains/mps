@@ -1075,45 +1075,63 @@
       </scope>
     </file>
     <file name="check_ReferenceMacro_NonTypesystemRule.java">
-      <node id="1226346278940" at="24,9,25,68" concept="11" />
-      <node id="1226346278940" at="25,68,26,250" concept="11" />
-      <node id="1226346278934" at="31,50,32,38" concept="12" />
-      <node id="1226346278934" at="34,68,35,102" concept="12" />
-      <node id="1226346278934" at="37,30,38,17" concept="12" />
-      <node id="1226346278934" at="42,0,43,0" concept="15" trace="TemplateDeclaration$5G" />
-      <node id="1226346278934" at="43,0,44,0" concept="15" trace="ReferenceMacro$30" />
-      <node id="1226346278934" at="19,0,21,0" concept="3" trace="check_ReferenceMacro_NonTypesystemRule#()V" />
-      <node id="1226346278934" at="31,0,34,0" concept="10" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1226346278934" at="34,0,37,0" concept="10" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1226346278934" at="37,0,40,0" concept="10" trace="overrides#()Z" />
-      <node id="1226346278940" at="23,96,27,9" concept="1" />
-      <node id="1226346278938" at="22,142,28,7" concept="9" />
-      <node id="1226346278936" at="21,118,29,5" concept="9" />
-      <node id="1226346278934" at="21,0,31,0" concept="10" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="1226346278934" at="19,51,19,51" />
-      <scope id="1226346278934" at="31,50,32,38" />
-      <scope id="1226346278934" at="34,68,35,102" />
-      <scope id="1226346278934" at="37,30,38,17" />
-      <scope id="1226346278934" at="19,0,21,0" />
-      <scope id="1226346278940" at="24,9,26,250">
+      <node id="1226346278940" at="30,9,31,68" concept="11" />
+      <node id="1226346278940" at="31,68,32,250" concept="11" />
+      <node id="9180430430271282187" at="37,39,38,141" concept="12" />
+      <node id="2055017143027570313" at="41,7,42,66" concept="11" />
+      <node id="2055017143027570313" at="42,66,43,338" concept="11" />
+      <node id="1226346278934" at="47,50,48,38" concept="12" />
+      <node id="1226346278934" at="50,68,51,102" concept="12" />
+      <node id="1226346278934" at="53,30,54,17" concept="12" />
+      <node id="1226346278934" at="58,0,59,0" concept="15" trace="TemplateDeclaration$5G" />
+      <node id="1226346278934" at="59,0,60,0" concept="15" trace="ReferenceMacro$30" />
+      <node id="1226346278934" at="63,0,64,0" concept="15" trace="linkId$P9Fc" />
+      <node id="1226346278934" at="25,0,27,0" concept="3" trace="check_ReferenceMacro_NonTypesystemRule#()V" />
+      <node id="9180430430271280251" at="37,0,40,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="1226346278934" at="47,0,50,0" concept="10" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1226346278934" at="50,0,53,0" concept="10" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1226346278934" at="53,0,56,0" concept="10" trace="overrides#()Z" />
+      <node id="1226346278940" at="29,96,33,9" concept="1" />
+      <node id="2055017143027570313" at="40,22,44,7" concept="1" />
+      <node id="1226346278938" at="28,142,34,7" concept="9" />
+      <node id="1226346278936" at="27,118,35,5" concept="9" />
+      <node id="2055017143027460051" at="35,5,45,5" concept="9" />
+      <node id="1226346278934" at="27,0,47,0" concept="10" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1226346278934" at="25,51,25,51" />
+      <scope id="9180430430271280252" at="37,39,38,141" />
+      <scope id="1226346278934" at="47,50,48,38" />
+      <scope id="1226346278934" at="50,68,51,102" />
+      <scope id="1226346278934" at="53,30,54,17" />
+      <scope id="1226346278934" at="25,0,27,0" />
+      <scope id="1226346278940" at="30,9,32,250">
         <var name="_reporter_2309309498" id="1226346278940" />
         <var name="errorTarget" id="1226346278940" />
       </scope>
-      <scope id="1226346278934" at="31,0,34,0" />
-      <scope id="1226346278934" at="34,0,37,0">
+      <scope id="2055017143027570313" at="41,7,43,338">
+        <var name="_reporter_2309309498" id="2055017143027570313" />
+        <var name="errorTarget" id="2055017143027570313" />
+      </scope>
+      <scope id="9180430430271280251" at="37,0,40,0">
+        <var name="it" id="9180430430271280251" />
+      </scope>
+      <scope id="1226346278934" at="47,0,50,0" />
+      <scope id="1226346278934" at="50,0,53,0">
         <var name="argument" id="1226346278934" />
       </scope>
-      <scope id="1226346278934" at="37,0,40,0" />
-      <scope id="1226346278939" at="23,96,27,9" />
-      <scope id="1226346278937" at="22,142,28,7" />
-      <scope id="1226346278935" at="21,118,29,5" />
-      <scope id="1226346278934" at="21,0,31,0">
+      <scope id="1226346278934" at="53,0,56,0" />
+      <scope id="1226346278939" at="29,96,33,9" />
+      <scope id="2055017143027460053" at="40,22,44,7" />
+      <scope id="1226346278937" at="28,142,34,7" />
+      <scope id="1226346278935" at="27,118,45,5" />
+      <scope id="1226346278934" at="27,0,47,0">
         <var name="macro" id="1226346278934" />
         <var name="status" id="1226346278934" />
         <var name="typeCheckingContext" id="1226346278934" />
       </scope>
-      <unit id="1226346278934" at="41,0,45,0" name="jetbrains.mps.lang.generator.typesystem.check_ReferenceMacro_NonTypesystemRule$CONCEPTS" />
-      <unit id="1226346278934" at="18,0,46,0" name="jetbrains.mps.lang.generator.typesystem.check_ReferenceMacro_NonTypesystemRule" />
+      <unit id="1226346278934" at="62,0,65,0" name="jetbrains.mps.lang.generator.typesystem.check_ReferenceMacro_NonTypesystemRule$PROPS" />
+      <unit id="9180430430271280251" at="36,180,40,5" name="jetbrains.mps.lang.generator.typesystem.check_ReferenceMacro_NonTypesystemRule$1" />
+      <unit id="1226346278934" at="57,0,61,0" name="jetbrains.mps.lang.generator.typesystem.check_ReferenceMacro_NonTypesystemRule$CONCEPTS" />
+      <unit id="1226346278934" at="24,0,66,0" name="jetbrains.mps.lang.generator.typesystem.check_ReferenceMacro_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)/1226346325144">
