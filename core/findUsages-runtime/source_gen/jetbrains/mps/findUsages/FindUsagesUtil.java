@@ -42,7 +42,7 @@ public class FindUsagesUtil {
    * 
    * @deprecated Use {@link jetbrains.mps.findUsages.InstanceLookup } instead
    */
-  @Deprecated(forRemoval = true, since = "2020.3", forRemoval = true)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static void collectInstances(SModel model, Collection<SAbstractConcept> concepts, Consumer<SNode> consumer, @NotNull ProgressMonitor monitor) {
     new InstanceLookup(concepts, consumer).collectInstances(model, monitor);
   }

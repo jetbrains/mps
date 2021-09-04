@@ -34,7 +34,7 @@ public class AttributeOperations {
    * 
    * @deprecated  use {@code  IAttributeDescriptor.set()} instead
    */
-  @Deprecated(forRemoval = true, since = "2020.3", forRemoval = true)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode setAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
     return descriptor.set(node, value);
   }
@@ -50,7 +50,7 @@ public class AttributeOperations {
    * 
    * @deprecated  use {@code  IAttributeDescriptor.setNew()} instead
    */
-  @Deprecated(forRemoval = true, since = "2020.3", forRemoval = true)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
     return descriptor.setNew(node, newConcept);
   }
@@ -58,7 +58,7 @@ public class AttributeOperations {
    * 
    * @deprecated  use {@code  IAttributeDescriptor.addNew} instead
    */
-  @Deprecated(forRemoval = true, since = "2020.3", forRemoval = true)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
     return descriptor.addNew(node, newConcept);
   }
