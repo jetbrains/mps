@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,9 +79,14 @@ public class MPSMakeMediator {
     BuildMakeService buildMakeService = new BuildMakeService();
     MakeSession makeSession = createCleanMakeSession();
 
-    final MakeFacetWrapper makeFacetWrapper = new MakeFacetWrapper(myContext, makeSession, pathsController);
-    ReducedMakeFacetConfiguration makeFacetConfiguration = makeFacetWrapper.constructMakeFacetConfiguration();
-    IScriptController scriptCtl = makeFacetWrapper.configureFacets();
+    // here we use default ScriptBuilder logic to collect all required facets (e.g. including JavaCompile, CopyTraceInfo)
+    // and then turn some of them off in #configureFacet. Note, #createCleanMakeSession(), above, augments
+    // ScriptBuilder with 'ReportFiles' facet which provides set of affected files back to this code (into MPSMakeFilesAfterProcessor)
+    // XXX I don't quite get the approach to turn facets off with dedicated 'facet properties'. Instead,
+    // it seems removing them from the builder is more fruitful approach.
+    // XXX With JavaCompile facet effectively off, I wonder what's with ReloadClasses, is it active?
+    ReducedMakeFacetConfiguration makeFacetConfiguration = new ReducedMakeFacetConfiguration(pathsController.getRedirects());
+    IScriptController scriptCtl = makeFacetConfiguration.configureFacets(makeSession);
 
     try {
       Future<IResult> res = buildMakeService.make(makeSession, resources, null, scriptCtl);
@@ -137,28 +142,6 @@ public class MPSMakeMediator {
 
     private void processMessage(IMessage msg, Kind kind) {
       myContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, kind, msg.getText()));
-    }
-  }
-
-  private static class MakeFacetWrapper {
-    private final CompileContext myContext;
-    private final MakeSession myMakeSession;
-    private final GenerationPathsController myPathsController;
-    private ReducedMakeFacetConfiguration myMakeFacetConfiguration;
-
-    public MakeFacetWrapper(CompileContext context, MakeSession makeSession, GenerationPathsController pathsController) {
-      myContext = context;
-      myMakeSession = makeSession;
-      myPathsController = pathsController;
-    }
-
-    public IScriptController configureFacets() {
-      return myMakeFacetConfiguration.configureFacets(myMakeSession);
-    }
-
-    public ReducedMakeFacetConfiguration constructMakeFacetConfiguration() {
-      myMakeFacetConfiguration = new ReducedMakeFacetConfiguration(myPathsController.getRedirects());
-      return myMakeFacetConfiguration;
     }
   }
 }
