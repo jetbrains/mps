@@ -4343,7 +4343,7 @@
       </node>
     </node>
     <node concept="2AHcQZ" id="2sePq$_siZv" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       <node concept="2B6LJw" id="2sePq$_siZw" role="2B76xF">
         <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
         <node concept="Xl_RD" id="2sePq$_siZr" role="2B70Vg">

@@ -6019,7 +6019,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2sePq$_siXC" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="2sePq$_siXD" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="2sePq$_siX$" role="2B70Vg">
