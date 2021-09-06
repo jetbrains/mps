@@ -100,7 +100,7 @@ public class MPSMakeMediator {
   }
 
   private void reportError(String msg, Throwable e) {
-    myContext.processMessage(new CompilerMessage(msg, Kind.ERROR, e.getMessage()));
+    MPSCompilerUtil.reportError(myContext, msg, e);
   }
 
   private Iterable<MResource> collectResources(final Collection<SModel> models) {

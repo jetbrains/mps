@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.tool.builder.make.ReducedMakeFacetConfiguration;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.jps.builders.logging.ProjectBuilderLogger;
 import org.jetbrains.jps.incremental.CompileContext;
 import org.jetbrains.jps.incremental.FSOperations;
@@ -30,8 +31,6 @@ import org.jetbrains.jps.incremental.ModuleBuildTarget;
 import org.jetbrains.jps.incremental.ModuleLevelBuilder.OutputConsumer;
 import org.jetbrains.jps.incremental.fs.CompilationRound;
 import org.jetbrains.jps.incremental.java.JavaBuilder;
-import org.jetbrains.jps.incremental.messages.BuildMessage.Kind;
-import org.jetbrains.jps.incremental.messages.CompilerMessage;
 import org.jetbrains.jps.model.java.JpsJavaExtensionService;
 import org.jetbrains.jps.util.JpsPathUtil;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -178,7 +177,7 @@ public class MPSMakeFilesAfterProcessor {
     myOutputConsumer.registerOutputFile(target, targetFile, Collections.singletonList(file.getPath()));
   }
 
-  private void reportError(String msg, Throwable e) {
-    myContext.processMessage(new CompilerMessage(msg, Kind.ERROR, e.getMessage()));
+  private void reportError(String msg, @Nullable Throwable e) {
+    MPSCompilerUtil.reportError(myContext, msg, e);
   }
 }
