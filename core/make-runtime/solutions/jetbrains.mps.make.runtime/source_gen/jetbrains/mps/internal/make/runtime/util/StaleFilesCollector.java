@@ -4,16 +4,13 @@ package jetbrains.mps.internal.make.runtime.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vfs.IFile;
-import java.util.Map;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
 import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
@@ -21,11 +18,8 @@ import java.util.Arrays;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
-import java.util.Collections;
 import jetbrains.mps.generator.info.GeneratorPathsComponent;
+import java.util.Collections;
 
 /**
  * IMPORTANT Use of this class is discouraged.
@@ -36,13 +30,11 @@ import jetbrains.mps.generator.info.GeneratorPathsComponent;
  */
 @GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/3251655328352589723", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class StaleFilesCollector {
-  private IFile rootDir;
-  private Map<IFile, List<IFile>> generatedChildren = MapSequence.fromMap(new HashMap<IFile, List<IFile>>());
+  private final IFile rootDir;
   private final Set<IFile> filesToKeep;
 
   public StaleFilesCollector(IFile rootDir) {
     this.rootDir = rootDir;
-    MapSequence.fromMap(generatedChildren).put(rootDir, ListSequence.fromList(new ArrayList<IFile>()));
     filesToKeep = SetSequence.fromSet(new HashSet<IFile>());
   }
 
@@ -98,24 +90,6 @@ public class StaleFilesCollector {
   }
 
   /**
-   * Read cached state of generated files, if any, assuming files were generated under rootDir.
-   * 
-   * The code is intended to handle case when we generate into a root with foreign files we shall keep.
-   * Generally, all the files under rootDir might need deletion (except those explicitly written/kept).
-   * Files left after excluding those touched are additionally filtered through 'foreign' roots in a way
-   * that we consider only generated files under output root (intersect in getChildren).
-   */
-  public void recordGeneratedChildren(GenerationDependenciesCache genDeps, SModel model) {
-    List<IFile> genChildren = knownGeneratedChildren(genDeps.get(model));
-    ListSequence.fromList(MapSequence.fromMap(generatedChildren).get(rootDir)).addSequence(ListSequence.fromList(genChildren));
-  }
-
-  private List<IFile> knownGeneratedChildren(GenerationDependencies gd) {
-    // XXX shall report generated children from GD, but as long as there's no use and the class likely to cease, decided to left unimplemented.
-    return Collections.emptyList();
-  }
-
-  /**
    * May be invoked multiple times, updates internal state of what files are considered 'touched' according to delta supplied
    * These files are not reported as 'stale' by {@link jetbrains.mps.internal.make.runtime.util.StaleFilesCollector#reportStaleFilesInto(FilesDelta) }
    */
@@ -155,8 +129,7 @@ public class StaleFilesCollector {
   private Iterable<IFile> getChildren(IFile dir) {
     Iterable<IFile> realChilren = (Iterable<IFile>) dir.getChildren();
     if (GeneratorPathsComponent.getInstance().isForeign(dir)) {
-      List<IFile> genChildren = MapSequence.fromMap(generatedChildren).get(dir);
-      return ListSequence.fromList(genChildren).intersect(Sequence.fromIterable(realChilren));
+      return Sequence.fromIterable(Collections.<IFile>emptyList());
     }
     return realChilren;
   }
