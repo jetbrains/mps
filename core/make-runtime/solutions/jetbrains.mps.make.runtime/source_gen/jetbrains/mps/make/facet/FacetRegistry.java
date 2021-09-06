@@ -24,7 +24,6 @@ import java.util.Collections;
 @GeneratedClass(node = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)/6168415856807659069", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
 public class FacetRegistry implements CoreComponent {
   private static Logger LOG = LogManager.getLogger(FacetRegistry.class);
-  private static FacetRegistry INSTANCE;
   private Map<IFacet.Name, IFacet> facetMap = MapSequence.fromMap(new HashMap<IFacet.Name, IFacet>());
   private Set<Tuples._2<String, IFacet>> facetsForLanguages = SetSequence.fromSet(new HashSet<Tuples._2<String, IFacet>>());
   private final LanguageRegistry myLanguageRegistry;
@@ -38,12 +37,10 @@ public class FacetRegistry implements CoreComponent {
 
   @Override
   public void init() {
-    INSTANCE = this;
   }
 
   @Override
   public void dispose() {
-    INSTANCE = null;
   }
 
   @Deprecated
@@ -97,18 +94,5 @@ public class FacetRegistry implements CoreComponent {
   }
   public Map<IFacet.Name, IFacet> allFacets() {
     return Collections.unmodifiableMap(facetMap);
-  }
-
-  /**
-   * 
-   * @deprecated Use ComponentHost#findComponent() instead
-   */
-  @Deprecated(since = "2018.3", forRemoval = true)
-  public static FacetRegistry getInstance() {
-    if (INSTANCE == null) {
-      LOG.fatal("not initialized");
-      throw new IllegalStateException("not initialized");
-    }
-    return INSTANCE;
   }
 }

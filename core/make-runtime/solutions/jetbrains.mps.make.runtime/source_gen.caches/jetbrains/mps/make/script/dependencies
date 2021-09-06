@@ -117,7 +117,6 @@
     <classNode dependClassName="jetbrains.mps.make.script.IPropertiesPool" />
   </dependency>
   <dependency className="jetbrains.mps.make.script.ScriptBuilder">
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.NullPointerException" />
     <classNode dependClassName="java.lang.Override" />
