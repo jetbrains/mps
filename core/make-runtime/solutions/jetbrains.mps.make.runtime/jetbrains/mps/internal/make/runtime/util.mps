@@ -377,9 +377,6 @@
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
       <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
-      <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb">
-        <child id="1224414456414" name="elementType" index="kMuH3" />
-      </concept>
       <concept id="1237467461002" name="jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation" flags="nn" index="uNJiE" />
       <concept id="1237467705688" name="jetbrains.mps.baseLanguage.collections.structure.IteratorType" flags="in" index="uOF1S">
         <child id="1237467730343" name="elementType" index="uOL27" />
@@ -7715,59 +7712,14 @@
       </node>
       <node concept="3Tm6S6" id="2OwcOGauXin" role="1B3o_S" />
       <node concept="3clFbS" id="2OwcOGauXio" role="3clF47">
-        <node concept="3cpWs8" id="2OwcOGauXip" role="3cqZAp">
-          <node concept="3cpWsn" id="2OwcOGauXiq" role="3cpWs9">
-            <property role="TrG5h" value="realChilren" />
-            <node concept="A3Dl8" id="2OwcOGauXir" role="1tU5fm">
-              <node concept="3uibUv" id="2OwcOGauXis" role="A3Ik2">
-                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-              </node>
-            </node>
-            <node concept="10QFUN" id="2OwcOGauXit" role="33vP2m">
-              <node concept="2OqwBi" id="2OwcOGauXiu" role="10QFUP">
-                <node concept="37vLTw" id="2OwcOGauXiv" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2OwcOGauXiR" resolve="dir" />
-                </node>
-                <node concept="liA8E" id="2OwcOGauXiw" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getChildren()" resolve="getChildren" />
-                </node>
-              </node>
-              <node concept="A3Dl8" id="2OwcOGauXix" role="10QFUM">
-                <node concept="3uibUv" id="2OwcOGauXiy" role="A3Ik2">
-                  <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="2OwcOGauXiz" role="3cqZAp">
-          <node concept="3clFbS" id="2OwcOGauXi$" role="3clFbx">
-            <node concept="3cpWs6" id="2OwcOGauXiG" role="3cqZAp">
-              <node concept="2ShNRf" id="3sDLXoWrrcH" role="3cqZAk">
-                <node concept="kMnCb" id="3sDLXoWr_o9" role="2ShVmc">
-                  <node concept="3uibUv" id="3sDLXoWrBHO" role="kMuH3">
-                    <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="2OwcOGauXiL" role="3clFbw">
-            <node concept="2YIFZM" id="2ev$Zm3yLv8" role="2Oq$k0">
-              <ref role="37wK5l" to="811b:~GeneratorPathsComponent.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="811b:~GeneratorPathsComponent" resolve="GeneratorPathsComponent" />
-            </node>
-            <node concept="liA8E" id="2OwcOGauXiN" role="2OqNvi">
-              <ref role="37wK5l" to="811b:~GeneratorPathsComponent.isForeign(jetbrains.mps.vfs.IFile)" resolve="isForeign" />
-              <node concept="37vLTw" id="2OwcOGauXiO" role="37wK5m">
-                <ref role="3cqZAo" node="2OwcOGauXiR" resolve="dir" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="2OwcOGauXiP" role="3cqZAp">
-          <node concept="37vLTw" id="2OwcOGauXiQ" role="3cqZAk">
-            <ref role="3cqZAo" node="2OwcOGauXiq" resolve="realChilren" />
+          <node concept="2OqwBi" id="3GJltyPKM_l" role="3cqZAk">
+            <node concept="37vLTw" id="3GJltyPKM_m" role="2Oq$k0">
+              <ref role="3cqZAo" node="2OwcOGauXiR" resolve="dir" />
+            </node>
+            <node concept="liA8E" id="3GJltyPKM_n" role="2OqNvi">
+              <ref role="37wK5l" to="3ju5:~IFile.getChildren()" resolve="getChildren" />
+            </node>
           </node>
         </node>
       </node>
@@ -7778,7 +7730,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="2OwcOGauJyq" role="jymVt" />
     <node concept="3Tm1VV" id="2OwcOGat_us" role="1B3o_S" />
     <node concept="3UR2Jj" id="59L961eEwr" role="lGtFl">
       <node concept="TZ5HA" id="59L961eEws" role="TZ5H$">

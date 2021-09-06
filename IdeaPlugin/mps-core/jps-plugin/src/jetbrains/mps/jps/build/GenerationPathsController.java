@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,17 @@
 
 package jetbrains.mps.jps.build;
 
-import jetbrains.mps.generator.info.ForeignPathsProvider;
-import jetbrains.mps.generator.info.GeneratorPathsComponent;
-import jetbrains.mps.internal.make.runtime.util.DirUtil;
 import jetbrains.mps.jps.model.JpsMPSExtensionService;
 import jetbrains.mps.jps.model.JpsMPSModuleExtension;
 import jetbrains.mps.jps.project.JpsMPSProject;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.tool.builder.paths.ModuleOutputPaths;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.jps.incremental.CompileContext;
 import org.jetbrains.jps.incremental.ModuleBuildTarget;
 import org.jetbrains.jps.incremental.storage.BuildDataManager;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -48,7 +43,6 @@ public class GenerationPathsController {
   private final Map<ModuleBuildTarget, File> myOutputRootsPerTarget = new HashMap<ModuleBuildTarget, File>();
 
   private ModuleOutputPaths myOutputPaths;
-  private MyForeignRootPaths myForeignRootPaths;
 
   public GenerationPathsController(JpsMPSProject project, CompileContext context, Iterable<MResource> modelResources) {
     myProject = project;
@@ -66,15 +60,6 @@ public class GenerationPathsController {
 
   private Collection<SModule> getModulesInvolved(Iterable<MResource> resources) {
     return StreamSupport.stream(resources.spliterator(), false).map(MResource::module).collect(Collectors.toList());
-  }
-
-  public void registerForeignPathsProvider() {
-    GeneratorPathsComponent.getInstance().registerForeignPathsProvider(new ForeignPathsProvider() {
-      @Override
-      public String belongsToForeignPath(IFile path) {
-        return myForeignRootPaths != null ? myForeignRootPaths.findForeignPrefix(path.getPath()) : null;
-      }
-    });
   }
 
   public void initWithTargets(Collection<ModuleBuildTarget> targets) {
@@ -103,22 +88,6 @@ public class GenerationPathsController {
         myOutputPaths = new ModuleOutputPaths(getModulesInvolved(myModelResources));
       }
     });
-    myForeignRootPaths = new MyForeignRootPaths(myOutputPaths.getOutputPaths());
     initWithTargets(targets);
-    registerForeignPathsProvider();
-  }
-
-  private static class MyForeignRootPaths {
-    private final String[] myRootPaths;
-
-    public MyForeignRootPaths(Iterable<String> foreignRoots) {
-      myRootPaths = StreamSupport.stream(foreignRoots.spliterator(), false).map(DirUtil::normalizeAsDir).toArray(String[]::new);
-      Arrays.sort(myRootPaths);
-    }
-
-    public String findForeignPrefix(String path) {
-      int idx = DirUtil.findPrefixAsDir(path, myRootPaths);
-      return idx >= 0 ? myRootPaths[idx] : null;
-    }
   }
 }

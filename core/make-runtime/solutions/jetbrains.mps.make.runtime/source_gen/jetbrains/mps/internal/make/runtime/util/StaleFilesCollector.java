@@ -18,8 +18,6 @@ import java.util.Arrays;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.generator.info.GeneratorPathsComponent;
-import java.util.Collections;
 
 /**
  * IMPORTANT Use of this class is discouraged.
@@ -127,11 +125,6 @@ public class StaleFilesCollector {
   }
 
   private Iterable<IFile> getChildren(IFile dir) {
-    Iterable<IFile> realChilren = (Iterable<IFile>) dir.getChildren();
-    if (GeneratorPathsComponent.getInstance().isForeign(dir)) {
-      return Sequence.fromIterable(Collections.<IFile>emptyList());
-    }
-    return realChilren;
+    return dir.getChildren();
   }
-
 }
