@@ -11,8 +11,13 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.project.Project;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.make.script.IScript;
+import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.IFacet;
+import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.GenerationOptions;
@@ -21,7 +26,6 @@ import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
@@ -35,6 +39,20 @@ public class ReducedMakeFacetConfiguration {
   private Map<String, SModel> sources = MapSequence.fromMap(new HashMap<String, SModel>());
   public ReducedMakeFacetConfiguration(IRedirects pathRedirects) {
     this.outputPathRedirects = pathRedirects;
+  }
+  public MakeSession createCleanMakeSession(Project project, IMessageHandler messageHandler) {
+    // XXX it's important that session got clean == true, there are assumptions about
+    // this in code that collects changed files delta (see Binaries facet)
+    return new MakeSession(project, messageHandler, true) {
+      @Override
+      public IScript toScript(ScriptBuilder scriptBuilder) {
+        scriptBuilder.withFacetNames(new IFacet.Name("jetbrains.mps.make.reduced.ReportFiles"));
+        scriptBuilder.withoutFacet(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile"));
+        scriptBuilder.withoutFacet(new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses"));
+        scriptBuilder.withoutFacet(new IFacet.Name("jetbrains.mps.lang.traceable.CopyTraceInfo"));
+        return scriptBuilder.toScript();
+      }
+    };
   }
   public List<String> getWrittenFiles() {
     return ListSequence.fromList(writtenFiles).asUnmodifiable();
@@ -56,13 +74,6 @@ public class ReducedMakeFacetConfiguration {
       @Override
       public void setup(IPropertiesPool pp, Iterable<ITarget> toExecute, Iterable<? extends IResource> input) {
         new GenerateFacetInitializer().setGenerationOptions(optBuilder).populate(pp);
-
-        Tuples._1<Boolean> skipCopyTraceinfo = (Tuples._1<Boolean>) pp.properties(new ITarget.Name("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo"), Object.class);
-        if (skipCopyTraceinfo != null) {
-          skipCopyTraceinfo._0(true);
-        }
-
-        new JavaCompileFacetInitializer().skipCompilation(true).populate(pp);
 
         Tuples._4<List<String>, List<String>, List<String>, Map<String, SModel>> report = (Tuples._4<List<String>, List<String>, List<String>, Map<String, SModel>>) pp.properties(new ITarget.Name("jetbrains.mps.make.reduced.ReportFiles.report"), Object.class);
         report._0(writtenFiles);

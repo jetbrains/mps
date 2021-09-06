@@ -20,12 +20,9 @@ import jetbrains.mps.idea.core.make.MPSMakeConstants;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.jps.project.JpsMPSProject;
 import jetbrains.mps.make.MakeSession;
-import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IResult;
-import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
-import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.resources.MResource;
@@ -77,7 +74,6 @@ public class MPSMakeMediator {
     pathsController.init(myModelToTargetMap.values());
 
     BuildMakeService buildMakeService = new BuildMakeService();
-    MakeSession makeSession = createCleanMakeSession();
 
     // here we use default ScriptBuilder logic to collect all required facets (e.g. including JavaCompile, CopyTraceInfo)
     // and then turn some of them off in #configureFacet. Note, #createCleanMakeSession(), above, augments
@@ -86,6 +82,7 @@ public class MPSMakeMediator {
     // it seems removing them from the builder is more fruitful approach.
     // XXX With JavaCompile facet effectively off, I wonder what's with ReloadClasses, is it active?
     ReducedMakeFacetConfiguration makeFacetConfiguration = new ReducedMakeFacetConfiguration(pathsController.getRedirects());
+    MakeSession makeSession = makeFacetConfiguration.createCleanMakeSession(myProject, myMessageHandler);
     IScriptController scriptCtl = makeFacetConfiguration.configureFacets(makeSession);
 
     try {
@@ -100,18 +97,6 @@ public class MPSMakeMediator {
     }
 
     return false;
-  }
-
-  private MakeSession createCleanMakeSession() {
-    // XXX it's important that session got clean == true, there are assumptions about
-    //     this in code that collects changed files delta (see Binaries facet)
-    return new MakeSession(myProject, myMessageHandler, true) {
-      @Override
-      public IScript toScript(ScriptBuilder scriptBuilder) {
-        scriptBuilder.withFacetNames(new IFacet.Name("jetbrains.mps.make.reduced.ReportFiles"));
-        return scriptBuilder.toScript();
-      }
-    };
   }
 
   private void reportError(String msg, Throwable e) {
