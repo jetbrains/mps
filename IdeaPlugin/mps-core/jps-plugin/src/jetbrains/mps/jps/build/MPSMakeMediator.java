@@ -95,9 +95,7 @@ public class MPSMakeMediator {
       final MPSMakeFilesAfterProcessor afterProcessor = new MPSMakeFilesAfterProcessor(myModelToTargetMap, pathsController, myOutputConsumer, myContext);
       success &= afterProcessor.process(makeFacetConfiguration);
       return success;
-    } catch (InterruptedException e) {
-      reportError(BUNDLE.getString("error.while.make"), e);
-    } catch (ExecutionException e) {
+    } catch (InterruptedException | ExecutionException e) {
       reportError(BUNDLE.getString("error.while.make"), e);
     }
 
@@ -105,6 +103,8 @@ public class MPSMakeMediator {
   }
 
   private MakeSession createCleanMakeSession() {
+    // XXX it's important that session got clean == true, there are assumptions about
+    //     this in code that collects changed files delta (see Binaries facet)
     return new MakeSession(myProject, myMessageHandler, true) {
       @Override
       public IScript toScript(ScriptBuilder scriptBuilder) {
