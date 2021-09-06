@@ -36,18 +36,14 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class GenerationPathsController {
-  private final JpsMPSProject myProject;
   private final CompileContext myContext;
-  private final Iterable<MResource> myModelResources;
   private final JpsRedirects myRedirects = new JpsRedirects();
   private final Map<ModuleBuildTarget, File> myOutputRootsPerTarget = new HashMap<ModuleBuildTarget, File>();
 
   private ModuleOutputPaths myOutputPaths;
 
-  public GenerationPathsController(JpsMPSProject project, CompileContext context, Iterable<MResource> modelResources) {
-    myProject = project;
+  public GenerationPathsController(CompileContext context) {
     myContext = context;
-    myModelResources = modelResources;
   }
 
   public JpsRedirects getRedirects() {
@@ -58,11 +54,11 @@ public class GenerationPathsController {
     return myOutputRootsPerTarget.get(target);
   }
 
-  private Collection<SModule> getModulesInvolved(Iterable<MResource> resources) {
+  private static Collection<SModule> getModulesInvolved(Iterable<MResource> resources) {
     return StreamSupport.stream(resources.spliterator(), false).map(MResource::module).collect(Collectors.toList());
   }
 
-  public void initWithTargets(Collection<ModuleBuildTarget> targets) {
+  private void initWithTargets(Collection<ModuleBuildTarget> targets) {
     Set<ModuleBuildTarget> processed = new HashSet<ModuleBuildTarget>();
     for (ModuleBuildTarget target : targets) {
       if (processed.contains(target)) continue;
@@ -81,13 +77,8 @@ public class GenerationPathsController {
     }
   }
 
-  public void init(Collection<ModuleBuildTarget> targets) {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myOutputPaths = new ModuleOutputPaths(getModulesInvolved(myModelResources));
-      }
-    });
+  public void init(JpsMPSProject project, Iterable<MResource> modelResources, Collection<ModuleBuildTarget> targets) {
+    project.getModelAccess().runReadAction(() -> myOutputPaths = new ModuleOutputPaths(getModulesInvolved(modelResources)));
     initWithTargets(targets);
   }
 }

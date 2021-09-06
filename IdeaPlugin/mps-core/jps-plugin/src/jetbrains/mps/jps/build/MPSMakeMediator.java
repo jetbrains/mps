@@ -70,8 +70,8 @@ public class MPSMakeMediator {
    */
   public boolean build() {
     Iterable<MResource> resources = collectResources(myModelToTargetMap.keySet());
-    GenerationPathsController pathsController = new GenerationPathsController(myProject, myContext, resources);
-    pathsController.init(myModelToTargetMap.values());
+    GenerationPathsController pathsController = new GenerationPathsController(myContext);
+    pathsController.init(myProject, resources, myModelToTargetMap.values());
 
     BuildMakeService buildMakeService = new BuildMakeService();
 
