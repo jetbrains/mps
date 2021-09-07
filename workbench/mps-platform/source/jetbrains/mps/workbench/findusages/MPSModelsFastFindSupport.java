@@ -16,12 +16,14 @@
 package jetbrains.mps.workbench.findusages;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.AccessToken;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.SlowOperations;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.findUsages.InstanceLookup;
 import jetbrains.mps.findUsages.ModelImportLookup;
@@ -243,7 +245,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
 
       Collection<VirtualFile> matchingFiles;
 
-      try {
+      try (AccessToken unused = SlowOperations.allowSlowOperations("mps.find-usage")) {
         matchingFiles = MPSModelsIndexer.getContainingFiles(entry, allFiles);
       } catch (ProcessCanceledException | IndexNotReadyException ex) {
         fileMatchFailedAtLeastOnce = true;

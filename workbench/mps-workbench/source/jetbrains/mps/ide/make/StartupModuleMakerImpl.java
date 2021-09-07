@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.make;
 
 import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
@@ -24,7 +25,7 @@ import com.intellij.openapi.project.DumbModeTask;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
-import jetbrains.mps.compiler.JavaCompilerOptions;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -35,7 +36,6 @@ import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectLibraryManager;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.PathManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -44,11 +44,13 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Compiles all project modules at startup
  */
+@SuppressWarnings("UnstableApiUsage")
 public final class StartupModuleMakerImpl extends StartupModuleMaker implements StartupActivity.Background {
   private static final Logger LOG = LogManager.getLogger(StartupModuleMakerImpl.class);
 
@@ -94,34 +96,42 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
 
   private void doBuild(ProgressMonitor monitor) {
     LOG.info("Building modules on startup");
-    myMPSProject.getModelAccess().runWriteAction(() -> {
-      // XXX used to collect project modules in a separate read action with no apparent reason
-      final Collection<SModule> modules = getModules();
-      final ModuleMaker maker = new ModuleMaker();
-      final ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-      final MPSCompilationResult compileResult = reloadManager.computeNoReload(() -> {
-        monitor.start("", 4);
-        JavaCompilerOptions compilerOptions = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject);
-        MPSCompilationResult result = maker.make(modules, monitor.subTask(3, SubProgressKind.REPLACING), compilerOptions);
-        // XXX why not result.isOk && isCompiledAnything to trigger reload?
-        myComponents.getClassLoaderManager().reloadModules(modules, monitor.subTask(1, SubProgressKind.REPLACING));
-        monitor.done();
-        return result;
+    final ModuleMaker maker = new ModuleMaker();
+    maker.options(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject));
+    final ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
+    reloadManager.computeNoReload(() -> {
+      monitor.start("", 5);
+      final ArrayList<SModule> modules = new ArrayList<>(100);
+      myMPSProject.getModelAccess().runReadAction(() -> {
+        fillModules(modules);
+        maker.prepare(modules, false, monitor.subTask(2, SubProgressKind.REPLACING));
       });
-      if (!compileResult.isOk()) {
-        final Notification n = new Notification(StartupModuleMaker.class.getName(), MPSIcons.Small.Error, NotificationType.ERROR);
-        n.setTitle(String.format("Project compilation on startup failed, %d errors and %d warnings", compileResult.getErrorsCount(), compileResult.getWarningsCount()));
+
+      MPSCompilationResult cr = maker.make(monitor.subTask(2, SubProgressKind.REPLACING));
+      if (cr.isOk()) {
+        if (cr.isCompiledAnything()) {
+          final ClassLoaderManager clm = myComponents.getClassLoaderManager();
+          myMPSProject.getModelAccess().runWriteAction(() -> clm.reloadModules(modules, monitor.subTask(1, SubProgressKind.REPLACING)));
+        }
+      } else {
+        final NotificationGroup ng = NotificationGroup.findRegisteredGroup(StartupModuleMaker.class.getName());
+        final Notification n = ng.createNotification("", NotificationType.ERROR);
+        n.setIcon(MPSIcons.Small.Error);
+        n.setTitle(String.format("Project compilation on startup failed, %d errors and %d warnings", cr.getErrorsCount(), cr.getWarningsCount()));
         n.setImportant(true);
         Notifications.Bus.notify(n, myMPSProject.getProject());
+        LOG.info(n.getTitle());
       }
+      return null;
     });
     LOG.info("Building on startup is finished");
   }
 
-  private Collection<SModule> getModules() {
+  private void fillModules(Collection<SModule> modules) {
     if (PathManager.isFromSources()) {
-      return IterableUtil.asCollection(myMPSProject.getRepository().getModules());
+      myMPSProject.getRepository().getModules().forEach(modules::add);
+    } else {
+      modules.addAll(myMPSProject.getProjectModulesWithGenerators());
     }
-    return myMPSProject.getProjectModulesWithGenerators();
   }
 }
