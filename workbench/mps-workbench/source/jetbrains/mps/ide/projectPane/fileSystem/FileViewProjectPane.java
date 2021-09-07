@@ -125,7 +125,9 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   }
 
   public void rebuildTreeLater() {
-    getTree().rebuildLater();
+    if (isInitialized()) {
+      getTree().rebuildLater();
+    }
   }
 
   @NotNull
