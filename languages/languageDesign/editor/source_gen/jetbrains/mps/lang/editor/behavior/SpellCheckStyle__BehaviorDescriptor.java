@@ -10,11 +10,14 @@ import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -23,14 +26,18 @@ public final class SpellCheckStyle__BehaviorDescriptor extends BaseBHDescriptor 
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x285484667d1e37e8L, "jetbrains.mps.lang.editor.structure.SpellCheckStyle");
 
   public static final SMethod<StyleAttribute<Boolean>> getStyleAttribute_id3a0zHG4tjdX = new SMethodBuilder<StyleAttribute<Boolean>>(new SJavaCompoundTypeImpl(StyleAttribute.class)).name("getStyleAttribute").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3a0zHG4tjdX").build();
+  public static final SMethod<Boolean> isApplicableToCellConcept_id2u3gVK1lsco = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isApplicableToCellConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2u3gVK1lsco").build(SMethodBuilder.createJavaParameter((Class<SConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStyleAttribute_id3a0zHG4tjdX);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getStyleAttribute_id3a0zHG4tjdX, isApplicableToCellConcept_id2u3gVK1lsco);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static StyleAttribute<Boolean> getStyleAttribute_id3a0zHG4tjdX(@NotNull SNode __thisNode__) {
     return StyleAttributes.SPELLCHECK;
+  }
+  /*package*/ static boolean isApplicableToCellConcept_id2u3gVK1lsco(@NotNull SAbstractConcept __thisConcept__, SConcept cellConcept) {
+    return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(cellConcept), CONCEPTS.CellModel_AbstractLabel$uT);
   }
 
   /*package*/ SpellCheckStyle__BehaviorDescriptor() {
@@ -62,6 +69,8 @@ public final class SpellCheckStyle__BehaviorDescriptor extends BaseBHDescriptor 
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((Boolean) isApplicableToCellConcept_id2u3gVK1lsco(concept, (SConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -77,5 +86,9 @@ public final class SpellCheckStyle__BehaviorDescriptor extends BaseBHDescriptor 
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept CellModel_AbstractLabel$uT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel");
   }
 }

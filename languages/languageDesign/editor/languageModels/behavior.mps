@@ -27732,6 +27732,33 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="1DoUKCiwM_N" role="13h7CS">
+      <property role="TrG5h" value="isApplicableToCellConcept" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="2u3gVK1lsco" resolve="isApplicableToCellConcept" />
+      <node concept="3Tm1VV" id="1DoUKCiwM_O" role="1B3o_S" />
+      <node concept="3clFbS" id="1DoUKCiwMAc" role="3clF47">
+        <node concept="3clFbF" id="1DoUKCixcsY" role="3cqZAp">
+          <node concept="2OqwBi" id="1DoUKCixcK6" role="3clFbG">
+            <node concept="37vLTw" id="1DoUKCixcsS" role="2Oq$k0">
+              <ref role="3cqZAo" node="1DoUKCiwMAd" resolve="cellConcept" />
+            </node>
+            <node concept="2Zo12i" id="1DoUKCixd5q" role="2OqNvi">
+              <node concept="chp4Y" id="1DoUKCixdw$" role="2Zo12j">
+                <ref role="cht4Q" to="tpc2:fHev3Dc" resolve="CellModel_AbstractLabel" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1DoUKCiwMAd" role="3clF46">
+        <property role="TrG5h" value="cellConcept" />
+        <node concept="3bZ5Sz" id="1DoUKCiwMAe" role="1tU5fm">
+          <ref role="3bZ5Sy" to="tpc2:fBEYTCT" resolve="EditorCellModel" />
+        </node>
+      </node>
+      <node concept="10P_77" id="1DoUKCiwMAf" role="3clF45" />
+    </node>
   </node>
   <node concept="13h7C7" id="AV1oJuQ$hf">
     <property role="3GE5qa" value="Stylesheet" />
