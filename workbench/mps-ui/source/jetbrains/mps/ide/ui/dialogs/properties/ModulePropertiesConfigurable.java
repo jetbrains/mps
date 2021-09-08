@@ -306,7 +306,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
   /*package*/ void findLanguageUsages(List<SLanguage> languages) {
     ModelsScope scope = new ModelAccessHelper(myModuleRepository).runReadAction(() -> new ModelsScope(myModule.getModels()));
-    final SearchQuery query = new SearchQuery(new GenericHolder<Collection<SLanguage>>(languages, "Languages"), scope);
+    final SearchQuery query = new SearchQuery(new GenericHolder<>(languages, "Languages"), scope);
     final IResultProvider provider =
         FindUtils.makeProvider(new CompositeFinder(new LanguageModelImportFinder()), new CompositeFinder(new LanguageUsagesFinder()));
     showUsageImpl(query, provider);
