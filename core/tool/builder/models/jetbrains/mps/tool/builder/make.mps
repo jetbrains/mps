@@ -2752,6 +2752,85 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="3xrc37t0RE0" role="3cqZAp">
+          <node concept="3clFbS" id="3xrc37t0RE2" role="3clFbx">
+            <node concept="3clFbF" id="3xrc37t0ync" role="3cqZAp">
+              <node concept="2OqwBi" id="3xrc37t0_gg" role="3clFbG">
+                <node concept="37vLTw" id="3xrc37t0yna" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2XB5puvoi4y" resolve="settings" />
+                </node>
+                <node concept="liA8E" id="3xrc37t13LR" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.setShowInfo(boolean)" resolve="setShowInfo" />
+                  <node concept="3clFbT" id="3xrc37t15jk" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="3xrc37t1aRz" role="3cqZAp">
+              <node concept="2OqwBi" id="3xrc37t1aR$" role="3clFbG">
+                <node concept="37vLTw" id="3xrc37t1aR_" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2XB5puvoi4y" resolve="settings" />
+                </node>
+                <node concept="liA8E" id="3xrc37t1aRA" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.setShowWarnings(boolean)" resolve="setShowWarnings" />
+                  <node concept="3clFbT" id="3xrc37t1aRB" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3xrc37t0WJD" role="3clFbw">
+            <node concept="Xl_RD" id="3xrc37t0SRr" role="2Oq$k0">
+              <property role="Xl_RC" value="info" />
+            </node>
+            <node concept="liA8E" id="3xrc37t0XQH" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String)" resolve="equalsIgnoreCase" />
+              <node concept="2OqwBi" id="3xrc37t0Cp$" role="37wK5m">
+                <node concept="liA8E" id="3xrc37t0Fho" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:3xrc37t0m3Y" resolve="getMessageLevel" />
+                </node>
+                <node concept="37vLTw" id="3xrc37t0M0F" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2XB5puvnQMU" resolve="gp" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3xrc37t1l7D" role="3cqZAp">
+          <node concept="3clFbS" id="3xrc37t1l7F" role="3clFbx">
+            <node concept="3clFbF" id="3xrc37t1wSj" role="3cqZAp">
+              <node concept="2OqwBi" id="3xrc37t1wSk" role="3clFbG">
+                <node concept="37vLTw" id="3xrc37t1wSl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2XB5puvoi4y" resolve="settings" />
+                </node>
+                <node concept="liA8E" id="3xrc37t1wSm" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.setShowWarnings(boolean)" resolve="setShowWarnings" />
+                  <node concept="3clFbT" id="3xrc37t1wSn" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3xrc37t1pWC" role="3clFbw">
+            <node concept="Xl_RD" id="3xrc37t1nG$" role="2Oq$k0">
+              <property role="Xl_RC" value="warn" />
+            </node>
+            <node concept="liA8E" id="3xrc37t1uMX" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.equalsIgnoreCase(java.lang.String)" resolve="equalsIgnoreCase" />
+              <node concept="2OqwBi" id="3xrc37t1vPf" role="37wK5m">
+                <node concept="liA8E" id="3xrc37t1vPg" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:3xrc37t0m3Y" resolve="getMessageLevel" />
+                </node>
+                <node concept="37vLTw" id="3xrc37t1vPh" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2XB5puvnQMU" resolve="gp" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="KL8Aqll4ok" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyyIhM" role="3clFbG">
             <ref role="37wK5l" to="jo3e:KL8Aqlj5zc" resolve="info" />
@@ -2759,7 +2838,7 @@
               <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <node concept="Xl_RD" id="KL8Aqll4os" role="37wK5m">
-                <property role="Xl_RC" value="Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, warnings are %s, static references to replace dynamic is %s, skip unmodified models is %s" />
+                <property role="Xl_RC" value="Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, child warnings are %s, static references to replace dynamic is %s, skip unmodified models is %s" />
               </node>
               <node concept="AH0OO" id="2XB5puvuU6e" role="37wK5m">
                 <node concept="3K4zz7" id="2XB5puvuYam" role="AHEQo">
