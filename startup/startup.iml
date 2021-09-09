@@ -21,25 +21,5 @@
     </orderEntry>
     <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="module" module-name="startup-util" />
-    <orderEntry type="module" module-name="debugger-api-api" />
-    <orderEntry type="module" module-name="debugger-api-runtime" />
-    <orderEntry type="module" module-name="debugger-java-api" />
-    <orderEntry type="module" module-name="debugger-java-customViewers" />
-    <orderEntry type="module" module-name="debugger-java-runtime" />
-    <orderEntry type="module" module-name="execution-api" />
-    <orderEntry type="module" module-name="execution-impl" />
-    <orderEntry type="module" module-name="ideaIntegrationCommon" />
-    <orderEntry type="module" module-name="migration-platform" />
-    <orderEntry type="module" module-name="mps-devkit" />
-    <orderEntry type="module" module-name="mps-httpsupport" />
-    <orderEntry type="module" module-name="mps-java-core" />
-    <orderEntry type="module" module-name="mps-java-platform" />
-    <orderEntry type="module" module-name="mps-java-workbench" />
-    <orderEntry type="module" module-name="mps-memtool" />
-    <orderEntry type="module" module-name="mps-modelchecker" />
-    <orderEntry type="module" module-name="mps-samples" />
-    <orderEntry type="module" module-name="vcs-core" />
-    <orderEntry type="module" module-name="vcs-platform" />
-    <orderEntry type="module" module-name="mps-vcs" />
   </component>
 </module>
