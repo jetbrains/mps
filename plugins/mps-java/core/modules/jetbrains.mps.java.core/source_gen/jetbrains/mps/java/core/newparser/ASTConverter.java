@@ -770,9 +770,9 @@ public class ASTConverter {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < typRef.tokens.length; i++) {
       if (i > 0) {
-        sb.append(".");
+        sb.append('.');
       }
-      sb.append(new String(typRef.tokens[i]));
+      sb.append(typRef.tokens[i]);
     }
     String qname = sb.toString();
 
@@ -851,9 +851,9 @@ public class ASTConverter {
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < tokens.length; i++) {
       if (i > 0) {
-        sb.append(".");
+        sb.append('.');
       }
-      sb.append(new String(tokens[i]));
+      sb.append(tokens[i]);
     }
 
     if (typ instanceof ArrayTypeReference && !(typ instanceof ParameterizedSingleTypeReference) || typ instanceof ArrayQualifiedTypeReference && !(typ instanceof ParameterizedQualifiedTypeReference)) {

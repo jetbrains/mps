@@ -8093,9 +8093,9 @@
                       <ref role="3cqZAo" node="31WmxQNAIHn" resolve="sb" />
                     </node>
                     <node concept="liA8E" id="31WmxQNAIHy" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
-                      <node concept="Xl_RD" id="31WmxQNAIHz" role="37wK5m">
-                        <property role="Xl_RC" value="." />
+                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
+                      <node concept="1Xhbcc" id="1jN8rBle9p6" role="37wK5m">
+                        <property role="1XhdNS" value="." />
                       </node>
                     </node>
                   </node>
@@ -8116,22 +8116,17 @@
                   <ref role="3cqZAo" node="31WmxQNAIHn" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="31WmxQNAIHE" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
-                  <node concept="2ShNRf" id="31WmxQNAIHF" role="37wK5m">
-                    <node concept="1pGfFk" id="31WmxQNAIHG" role="2ShVmc">
-                      <ref role="37wK5l" to="wyt6:~String.&lt;init&gt;(char[])" resolve="String" />
-                      <node concept="AH0OO" id="31WmxQNAIHH" role="37wK5m">
-                        <node concept="37vLTw" id="3GM_nagTtiF" role="AHEQo">
-                          <ref role="3cqZAo" node="31WmxQNAIHM" resolve="i" />
-                        </node>
-                        <node concept="2OqwBi" id="31WmxQNAIHJ" role="AHHXb">
-                          <node concept="37vLTw" id="2BHiRxglWL7" role="2Oq$k0">
-                            <ref role="3cqZAo" node="31WmxQNAIIw" resolve="typRef" />
-                          </node>
-                          <node concept="2OwXpG" id="31WmxQNAIHL" role="2OqNvi">
-                            <ref role="2Oxat5" to="twf3:~QualifiedTypeReference.tokens" resolve="tokens" />
-                          </node>
-                        </node>
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(char[])" resolve="append" />
+                  <node concept="AH0OO" id="31WmxQNAIHH" role="37wK5m">
+                    <node concept="37vLTw" id="3GM_nagTtiF" role="AHEQo">
+                      <ref role="3cqZAo" node="31WmxQNAIHM" resolve="i" />
+                    </node>
+                    <node concept="2OqwBi" id="31WmxQNAIHJ" role="AHHXb">
+                      <node concept="37vLTw" id="2BHiRxglWL7" role="2Oq$k0">
+                        <ref role="3cqZAo" node="31WmxQNAIIw" resolve="typRef" />
+                      </node>
+                      <node concept="2OwXpG" id="31WmxQNAIHL" role="2OqNvi">
+                        <ref role="2Oxat5" to="twf3:~QualifiedTypeReference.tokens" resolve="tokens" />
                       </node>
                     </node>
                   </node>
@@ -8897,9 +8892,9 @@
                       <ref role="3cqZAo" node="1r06YY5P1jJ" resolve="sb" />
                     </node>
                     <node concept="liA8E" id="1r06YY5P1jU" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
-                      <node concept="Xl_RD" id="1r06YY5P1jV" role="37wK5m">
-                        <property role="Xl_RC" value="." />
+                      <ref role="37wK5l" to="wyt6:~StringBuilder.append(char)" resolve="append" />
+                      <node concept="1Xhbcc" id="1jN8rBljURh" role="37wK5m">
+                        <property role="1XhdNS" value="." />
                       </node>
                     </node>
                   </node>
@@ -8920,18 +8915,13 @@
                   <ref role="3cqZAo" node="1r06YY5P1jJ" resolve="sb" />
                 </node>
                 <node concept="liA8E" id="1r06YY5P1k2" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
-                  <node concept="2ShNRf" id="1r06YY5P1k3" role="37wK5m">
-                    <node concept="1pGfFk" id="1r06YY5P1k4" role="2ShVmc">
-                      <ref role="37wK5l" to="wyt6:~String.&lt;init&gt;(char[])" resolve="String" />
-                      <node concept="AH0OO" id="1r06YY5VF6N" role="37wK5m">
-                        <node concept="37vLTw" id="1r06YY5VWGY" role="AHEQo">
-                          <ref role="3cqZAo" node="1r06YY5P1ka" resolve="i" />
-                        </node>
-                        <node concept="37vLTw" id="1r06YY5VECB" role="AHHXb">
-                          <ref role="3cqZAo" node="1r06YY5MguR" resolve="tokens" />
-                        </node>
-                      </node>
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(char[])" resolve="append" />
+                  <node concept="AH0OO" id="1r06YY5VF6N" role="37wK5m">
+                    <node concept="37vLTw" id="1r06YY5VWGY" role="AHEQo">
+                      <ref role="3cqZAo" node="1r06YY5P1ka" resolve="i" />
+                    </node>
+                    <node concept="37vLTw" id="1r06YY5VECB" role="AHHXb">
+                      <ref role="3cqZAo" node="1r06YY5MguR" resolve="tokens" />
                     </node>
                   </node>
                 </node>
