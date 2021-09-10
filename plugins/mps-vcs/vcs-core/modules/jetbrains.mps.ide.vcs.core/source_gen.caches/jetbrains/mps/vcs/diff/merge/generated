@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6j02ykam5ivh62e0qmvoke5kfxsx2d5">
+<product version="3" modelHash="-5z4psrh3730ndqnz2sxhbobijwuc2q5">
   <files names="MergeConflictsBuilder.java:MergeSession.java:MergeSessionState.java:MergeTemporaryModel.java:SNodeCompare.java" />
 </product>
 

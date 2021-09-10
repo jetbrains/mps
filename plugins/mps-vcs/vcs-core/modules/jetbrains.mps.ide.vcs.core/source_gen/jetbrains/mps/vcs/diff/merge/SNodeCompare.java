@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SReference;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.DynamicReference;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -68,7 +69,7 @@ public class SNodeCompare {
       if (!(Objects.equals(aRef.getTargetSModelReference(), bRef.getTargetSModelReference()))) {
         return false;
       }
-      if (!(Objects.equals(((jetbrains.mps.smodel.SReference) aRef).getResolveInfo(), ((jetbrains.mps.smodel.SReference) bRef).getResolveInfo()))) {
+      if (!(Objects.equals(SLinkOperations.getResolveInfo(aRef), SLinkOperations.getResolveInfo(bRef)))) {
         return false;
       }
       if (aRef instanceof DynamicReference || bRef instanceof DynamicReference) {

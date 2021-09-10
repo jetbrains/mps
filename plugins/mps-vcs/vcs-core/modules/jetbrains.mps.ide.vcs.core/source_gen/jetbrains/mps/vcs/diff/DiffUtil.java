@@ -29,6 +29,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.DynamicReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -165,7 +166,7 @@ __switch__:
                       return false;
                     case 2:
                       this.__CP__ = 1;
-                      this.yield((NodeChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
+                      this.yield((NodeChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(newReference), refsAreEqual));
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -196,9 +197,9 @@ __switch__:
   }
 
   private static boolean referencesDifferByResolveInfo(@NotNull SNode oldNode, @NotNull SNode newNode, SReferenceLink role) {
-    SReference oldReference = oldNode.getReference(role);
-    SReference newReference = newNode.getReference(role);
-    return !(Objects.equals(check_z8xa03_a0c0t(((jetbrains.mps.smodel.SReference) oldReference)), check_z8xa03_a0c0t_0(((jetbrains.mps.smodel.SReference) newReference))));
+    SReference oldReference = SNodeOperations.getReference(oldNode, role);
+    SReference newReference = SNodeOperations.getReference(newNode, role);
+    return !(Objects.equals(SLinkOperations.getResolveInfo(oldReference), SLinkOperations.getResolveInfo(newReference)));
   }
 
   /*package*/ static boolean allReferencesAreEqual(@NotNull SNode oldNode, @NotNull SNode newNode) {
@@ -280,9 +281,9 @@ __switch__:
     }
     return null;
   }
-  private static String check_z8xa03_g0a0a0a0a9a51(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_z8xa03_g0a0a0a0a9a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
+      return SLinkOperations.getResolveInfo(checkedDotOperand);
     }
     return null;
   }
@@ -307,18 +308,6 @@ __switch__:
   private static SModelReference check_z8xa03_a0f0r(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
-    }
-    return null;
-  }
-  private static String check_z8xa03_a0c0t(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
-    }
-    return null;
-  }
-  private static String check_z8xa03_a0c0t_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
