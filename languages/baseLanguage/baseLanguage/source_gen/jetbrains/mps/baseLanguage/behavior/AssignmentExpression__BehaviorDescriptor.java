@@ -17,7 +17,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -69,7 +68,12 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
     SNode varDeclStmnt = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
     SLinkOperations.setNewChild(varDeclStmnt, LINKS.localVariableDeclaration$RpjM, null);
     SNode ref = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.lValue$splI), CONCEPTS.VariableReference$TC);
-    String name = (varName == null ? ((SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG) == null) ? ((SReference) SNodeOperations.getReference(ref, LINKS.variableDeclaration$N1XG)).getResolveInfo() : SPropertyOperations.getString(SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL)) : varName);
+    // XXX both uses of the method check VariableReference points to LocalVariableDeclaration, therefore seems safe to 
+    // assume ref.variableDeclaration never null, and branch with resolveInfo is dead.
+    // However, I'm not certain I get the idea of this refactoring, MPS-8420 suggests it's for cases when there no LVD
+    // (indeed, with LVD present this intention just duplicates it), and if the reference is broken, rev.variableDeclaration.name 
+    // might be worse than ref.reference<variableDeclaration>.resolveInfo
+    String name = (varName == null ? ((SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG) == null) ? SLinkOperations.getResolveInfo(SNodeOperations.getReference(ref, LINKS.variableDeclaration$N1XG)) : SPropertyOperations.getString(SLinkOperations.getTarget(ref, LINKS.variableDeclaration$N1XG), PROPS.name$MnvL)) : varName);
     SPropertyOperations.set(SLinkOperations.getTarget(varDeclStmnt, LINKS.localVariableDeclaration$RpjM), PROPS.name$MnvL, name);
     SLinkOperations.setTarget(SLinkOperations.getTarget(varDeclStmnt, LINKS.localVariableDeclaration$RpjM), LINKS.type$a1UY, SNodeOperations.copyNode(varType));
     SLinkOperations.setTarget(SLinkOperations.getTarget(varDeclStmnt, LINKS.localVariableDeclaration$RpjM), LINKS.initializer$2twD, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.rValue$spNK)));
