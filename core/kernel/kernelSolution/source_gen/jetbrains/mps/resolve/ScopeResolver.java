@@ -12,6 +12,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.scope.ErrorScope;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 @GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/3671170675134061970", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ScopeResolver implements IResolver {
@@ -26,7 +27,7 @@ public class ScopeResolver implements IResolver {
       return false;
     }
     SNode result = null;
-    String resolveInfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
+    String resolveInfo = SLinkOperations.getResolveInfo(reference);
     if (resolveInfo != null) {
       try {
         result = refScope.resolve(sourceNode, resolveInfo);
