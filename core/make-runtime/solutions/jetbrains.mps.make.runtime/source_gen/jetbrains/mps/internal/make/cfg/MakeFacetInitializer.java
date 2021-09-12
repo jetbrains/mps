@@ -10,7 +10,7 @@ import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.facet.ITarget;
 
-@GeneratedClass(node = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)/6705512905416012324", model = "r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)")
+@GeneratedClass(node = "r:206a650a-84a9-4d9d-b500-9531083f6fce(jetbrains.mps.internal.make.cfg)/6705512905416012324", model = "r:206a650a-84a9-4d9d-b500-9531083f6fce(jetbrains.mps.internal.make.cfg)")
 public final class MakeFacetInitializer implements PropertyPoolInitializer {
   private _FunctionTypes._return_P1_E0<? extends IFile, ? super String> myPathToFile;
   private _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> myFile2File;
