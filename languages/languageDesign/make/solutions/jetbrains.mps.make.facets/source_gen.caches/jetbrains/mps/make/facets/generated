@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-e7dtuwlgyt8flpjirgo35ffadea7ek2">
-  <files names="BootstrapMakeFacets.java:FacetAspectDescriptor.java:FacetManifest.java:Facets_ApplicationPlugin.java:JavaCompile_Facet.java:MakeFacets_AppPluginPart.java:Make_Facet.java:ReloadClasses_Facet.java:startup.properties" />
+<product version="3" modelHash="6iny08qhzeyqajcm5wd2h0tpmh9ll3f">
+  <files names="BootstrapMakeFacets.java:FacetAspectDescriptor.java:FacetManifest.java:JavaCompile_Facet.java:Make_Facet.java:ModuleActivator.java:ReloadClasses_Facet.java" />
 </product>
 
