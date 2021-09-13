@@ -353,6 +353,7 @@
         <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/languages/make/jetbrains.mps.make.facets.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
