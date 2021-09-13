@@ -884,12 +884,19 @@
                       </node>
                     </node>
                     <node concept="3clFbS" id="_hR$3XCoWU" role="3clFbx">
+                      <node concept="3cpWs8" id="7SE8WSo7JvS" role="3cqZAp">
+                        <node concept="3cpWsn" id="7SE8WSo7JvT" role="3cpWs9">
+                          <property role="TrG5h" value="isDeveloperMode" />
+                          <property role="3TUv4t" value="true" />
+                          <node concept="10P_77" id="7SE8WSo7I2F" role="1tU5fm" />
+                          <node concept="3clFbT" id="7SE8WSo7JvU" role="33vP2m" />
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="5LCzy_UYuM1" role="3cqZAp">
                         <node concept="1rXfSq" id="4hiugqyz8Og" role="3clFbG">
                           <ref role="37wK5l" node="6hQteoiVf7C" resolve="createEvaluationContainer" />
-                          <node concept="10M0yZ" id="7GZZbkPAwz" role="37wK5m">
-                            <ref role="1PxDUh" to="i1lu:7GZZbkP$rA" resolve="Properties" />
-                            <ref role="3cqZAo" to="i1lu:7GZZbkPAws" resolve="IS_DEVELOPER_MODE" />
+                          <node concept="37vLTw" id="7SE8WSo7JvV" role="37wK5m">
+                            <ref role="3cqZAo" node="7SE8WSo7JvT" resolve="b" />
                           </node>
                           <node concept="37vLTw" id="2BHiRxglf6y" role="37wK5m">
                             <ref role="3cqZAo" node="6hQteoiVpzC" resolve="selectedNodes" />
