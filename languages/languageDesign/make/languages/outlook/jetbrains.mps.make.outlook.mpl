@@ -142,6 +142,9 @@
     <module reference="dc54e1b2-86b3-49d2-9014-a76af17af22a(jetbrains.mps.make.outlook)" version="0" />
     <module reference="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b(jetbrains.mps.make.script)" version="0" />
   </dependencyVersions>
+  <runtime>
+    <dependency reexport="false">a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)</dependency>
+  </runtime>
   <extendedLanguages />
 </language>
 

@@ -22538,6 +22538,9 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.make.facet" />
         <property role="3LESm3" value="696c1165-4a59-463b-bc5d-902caab85dd0" />
+        <node concept="1E0d5M" id="3Ch7xrbMWBq" role="1E1XAP">
+          <ref role="1E0d5P" node="7Kfy9QB6LgV" resolve="jetbrains.mps.make.runtime" />
+        </node>
         <node concept="3rtmxn" id="EpEP7iiicr" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiics" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiict" role="3LXTna">
@@ -22954,6 +22957,9 @@
           <node concept="Rbm2T" id="7M00clf_w6B" role="1SiIV1">
             <ref role="1E1Vl2" node="7Kfy9QB6L0h" resolve="jetbrains.mps.baseLanguage.collections" />
           </node>
+        </node>
+        <node concept="1E0d5M" id="3Ch7xrbMWiG" role="1E1XAP">
+          <ref role="1E0d5P" node="7Kfy9QB6LgV" resolve="jetbrains.mps.make.runtime" />
         </node>
       </node>
       <node concept="1E1JtD" id="3MI1gu0QImv" role="2G$12L">
