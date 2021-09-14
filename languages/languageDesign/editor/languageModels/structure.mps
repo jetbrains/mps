@@ -3188,7 +3188,7 @@
     <property role="TrG5h" value="CellLayout_Superscript" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="CellLayout" />
-    <property role="34LRSv" value="superscript" />
+    <property role="34LRSv" value="super/subscript" />
     <property role="EcuMT" value="1886960078078641793" />
     <ref role="1TJDcQ" node="g6iR17a" resolve="CellLayout" />
   </node>
@@ -8104,6 +8104,16 @@
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
   </node>
+  <node concept="1TIwiD" id="AV1oJuQyTS">
+    <property role="R5$K7" value="false" />
+    <property role="R5$K2" value="false" />
+    <property role="TrG5h" value="TransparentStyleSheetItem" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="Stylesheet" />
+    <property role="34LRSv" value="transparent" />
+    <property role="EcuMT" value="701160265283677816" />
+    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
+  </node>
   <node concept="1TIwiD" id="7I1om2Aqt7L">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
@@ -8120,16 +8130,6 @@
     <property role="3GE5qa" value="Stylesheet" />
     <property role="TrG5h" value="SpellCheckStyle" />
     <property role="34LRSv" value="spellcheck" />
-    <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
-  </node>
-  <node concept="1TIwiD" id="AV1oJuQyTS">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="TransparentStyleSheetItem" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="3GE5qa" value="Stylesheet" />
-    <property role="34LRSv" value="transparent" />
-    <property role="EcuMT" value="701160265283677816" />
     <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
   </node>
 </model>

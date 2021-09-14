@@ -750,7 +750,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CellLayout_Superscript:
         if (props_CellLayout_Superscript == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("superscript");
+          cpb.rawPresentation("super/subscript");
           props_CellLayout_Superscript = cpb.create();
         }
         return props_CellLayout_Superscript;
