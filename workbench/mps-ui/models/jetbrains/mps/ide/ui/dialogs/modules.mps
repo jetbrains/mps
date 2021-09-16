@@ -1675,35 +1675,7 @@
       <property role="1EzhhJ" value="true" />
       <node concept="3Tmbuc" id="g46k2sdTTr" role="1B3o_S" />
       <node concept="17QB3L" id="g46k2sd8tk" role="3clF45" />
-      <node concept="3clFbS" id="g46k2sd8tl" role="3clF47">
-        <node concept="3cpWs6" id="g46k2sd8tm" role="3cqZAp">
-          <node concept="3cpWs3" id="g46k2sd8tn" role="3cqZAk">
-            <node concept="1rXfSq" id="g46k2sd8to" role="3uHU7w">
-              <ref role="37wK5l" node="g46k2scpfc" resolve="getModuleName" />
-            </node>
-            <node concept="3cpWs3" id="g46k2sd8tp" role="3uHU7B">
-              <node concept="3cpWs3" id="g46k2sd8tq" role="3uHU7B">
-                <node concept="3cpWs3" id="g46k2sd8tr" role="3uHU7B">
-                  <node concept="37vLTw" id="g46k2sd8ts" role="3uHU7B">
-                    <ref role="3cqZAo" node="g46k2sbNvv" resolve="myProjectPath" />
-                  </node>
-                  <node concept="10M0yZ" id="g46k2sd8tt" role="3uHU7w">
-                    <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
-                    <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                  </node>
-                </node>
-                <node concept="Xl_RD" id="g46k2sd8tu" role="3uHU7w">
-                  <property role="Xl_RC" value="solutions" />
-                </node>
-              </node>
-              <node concept="10M0yZ" id="g46k2sd8tv" role="3uHU7w">
-                <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="g46k2sd8tl" role="3clF47" />
     </node>
     <node concept="2tJIrI" id="g46k2sdX57" role="jymVt" />
     <node concept="2tJIrI" id="g46k2sd6ul" role="jymVt" />
