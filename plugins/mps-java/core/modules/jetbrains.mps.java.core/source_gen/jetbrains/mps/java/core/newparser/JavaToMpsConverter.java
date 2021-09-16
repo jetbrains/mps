@@ -37,7 +37,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.internal.collections.runtime.ISequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -291,19 +290,19 @@ public class JavaToMpsConverter {
 
     // this happens on the level of expressions, but relies on top-level references (from class and method
     // declarations) having been resolved
-    ProgressMonitor resolvePM = progress.subTask(1);
+    final ProgressMonitor resolvePM = progress.subTask(1);
     resolvePM.start("", ListSequence.fromList(myModels).count());
-    for (final SModel m : ListSequence.fromList(myModels)) {
-      // Here used to be a code JavaParser.tryToResolveUnknowns(myAttachedRoots...), which used to take model of a supplied node to update its imports
-      // Now, with YetUnknownResolver that works on a per-model basis, need to group elements of myAttachedRoots by their model, hence intersect(), below
-      final Wrappers._T<YetUnknownResolver> yur = new Wrappers._T<YetUnknownResolver>();
-      modelAccess.accessModel(new Runnable() {
-        public void run() {
-          yur.value = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
+    modelAccess.replaceReferences(new Runnable() {
+      public void run() {
+        for (SModel m : ListSequence.fromList(myModels)) {
+          // Here used to be a code JavaParser.tryToResolveUnknowns(myAttachedRoots...), which used to take model of a supplied node to update its imports
+          // Now, with YetUnknownResolver that works on a per-model basis, need to group elements of myAttachedRoots by their model, hence intersect(), below
+          YetUnknownResolver yur;
+          yur = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
+          yur.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING));
         }
-      });
-      yur.value.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING), modelAccess);
-    }
+      }
+    });
     resolvePM.done();
 
     resolveUpdatePass("type references", nodes, new _FunctionTypes._return_P1_E0<Iterable<SReference>, SNode>() {

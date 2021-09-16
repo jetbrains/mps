@@ -26666,162 +26666,162 @@
             </node>
           </node>
         </node>
-        <node concept="2Gpval" id="3ypfuX62uFH" role="3cqZAp">
-          <node concept="2GrKxI" id="3ypfuX62uFJ" role="2Gsz3X">
-            <property role="TrG5h" value="m" />
-          </node>
-          <node concept="37vLTw" id="3ypfuX62yUp" role="2GsD0m">
-            <ref role="3cqZAo" node="2Uk7YSyPsl_" resolve="myModels" />
-          </node>
-          <node concept="3clFbS" id="3ypfuX62uFN" role="2LFqv$">
-            <node concept="3SKdUt" id="3ypfuX62RHw" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXohrR" role="1aUNEU">
-                <node concept="3oM_SD" id="ATZLwXohrS" role="1PaTwD">
-                  <property role="3oM_SC" value="Here" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrT" role="1PaTwD">
-                  <property role="3oM_SC" value="used" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrU" role="1PaTwD">
-                  <property role="3oM_SC" value="to" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrV" role="1PaTwD">
-                  <property role="3oM_SC" value="be" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrW" role="1PaTwD">
-                  <property role="3oM_SC" value="a" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrX" role="1PaTwD">
-                  <property role="3oM_SC" value="code" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrY" role="1PaTwD">
-                  <property role="3oM_SC" value="JavaParser.tryToResolveUnknowns(myAttachedRoots...)," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohrZ" role="1PaTwD">
-                  <property role="3oM_SC" value="which" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs0" role="1PaTwD">
-                  <property role="3oM_SC" value="used" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs1" role="1PaTwD">
-                  <property role="3oM_SC" value="to" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs2" role="1PaTwD">
-                  <property role="3oM_SC" value="take" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs3" role="1PaTwD">
-                  <property role="3oM_SC" value="model" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs4" role="1PaTwD">
-                  <property role="3oM_SC" value="of" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs5" role="1PaTwD">
-                  <property role="3oM_SC" value="a" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs6" role="1PaTwD">
-                  <property role="3oM_SC" value="supplied" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs7" role="1PaTwD">
-                  <property role="3oM_SC" value="node" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs8" role="1PaTwD">
-                  <property role="3oM_SC" value="to" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohs9" role="1PaTwD">
-                  <property role="3oM_SC" value="update" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsa" role="1PaTwD">
-                  <property role="3oM_SC" value="its" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsb" role="1PaTwD">
-                  <property role="3oM_SC" value="imports" />
-                </node>
-              </node>
+        <node concept="3clFbF" id="3I9YdaU3mNU" role="3cqZAp">
+          <node concept="2OqwBi" id="3I9YdaU3zeE" role="3clFbG">
+            <node concept="37vLTw" id="3I9YdaU3mNS" role="2Oq$k0">
+              <ref role="3cqZAo" node="FOYqCnrmA9" resolve="modelAccess" />
             </node>
-            <node concept="3SKdUt" id="3ypfuX62Xdc" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXohsc" role="1aUNEU">
-                <node concept="3oM_SD" id="ATZLwXohsd" role="1PaTwD">
-                  <property role="3oM_SC" value="Now," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohse" role="1PaTwD">
-                  <property role="3oM_SC" value="with" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsf" role="1PaTwD">
-                  <property role="3oM_SC" value="YetUnknownResolver" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsg" role="1PaTwD">
-                  <property role="3oM_SC" value="that" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsh" role="1PaTwD">
-                  <property role="3oM_SC" value="works" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsi" role="1PaTwD">
-                  <property role="3oM_SC" value="on" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsj" role="1PaTwD">
-                  <property role="3oM_SC" value="a" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsk" role="1PaTwD">
-                  <property role="3oM_SC" value="per-model" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsl" role="1PaTwD">
-                  <property role="3oM_SC" value="basis," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsm" role="1PaTwD">
-                  <property role="3oM_SC" value="need" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsn" role="1PaTwD">
-                  <property role="3oM_SC" value="to" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohso" role="1PaTwD">
-                  <property role="3oM_SC" value="group" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsp" role="1PaTwD">
-                  <property role="3oM_SC" value="elements" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsq" role="1PaTwD">
-                  <property role="3oM_SC" value="of" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsr" role="1PaTwD">
-                  <property role="3oM_SC" value="myAttachedRoots" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohss" role="1PaTwD">
-                  <property role="3oM_SC" value="by" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohst" role="1PaTwD">
-                  <property role="3oM_SC" value="their" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsu" role="1PaTwD">
-                  <property role="3oM_SC" value="model," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsv" role="1PaTwD">
-                  <property role="3oM_SC" value="hence" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsw" role="1PaTwD">
-                  <property role="3oM_SC" value="intersect()," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXohsx" role="1PaTwD">
-                  <property role="3oM_SC" value="below" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="3ypfuX641az" role="3cqZAp">
-              <node concept="3cpWsn" id="3ypfuX641a$" role="3cpWs9">
-                <property role="TrG5h" value="yur" />
-                <node concept="3uibUv" id="3ypfuX641ar" role="1tU5fm">
-                  <ref role="3uigEE" node="3ypfuX5LZxj" resolve="YetUnknownResolver" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="3I9YdaU3mNU" role="3cqZAp">
-              <node concept="2OqwBi" id="3I9YdaU3zeE" role="3clFbG">
-                <node concept="37vLTw" id="3I9YdaU3mNS" role="2Oq$k0">
-                  <ref role="3cqZAo" node="FOYqCnrmA9" resolve="modelAccess" />
-                </node>
-                <node concept="liA8E" id="3I9YdaU3PDD" role="2OqNvi">
-                  <ref role="37wK5l" node="FOYqCnnT2g" resolve="accessModel" />
-                  <node concept="1bVj0M" id="3I9YdaU4_Ih" role="37wK5m">
-                    <node concept="3clFbS" id="3I9YdaU4_Ii" role="1bW5cS">
+            <node concept="liA8E" id="3I9YdaU3PDD" role="2OqNvi">
+              <ref role="37wK5l" node="FOYqCnnT8n" resolve="replaceReferences" />
+              <node concept="1bVj0M" id="3I9YdaU4_Ih" role="37wK5m">
+                <node concept="3clFbS" id="3I9YdaU4_Ii" role="1bW5cS">
+                  <node concept="2Gpval" id="3ypfuX62uFH" role="3cqZAp">
+                    <node concept="2GrKxI" id="3ypfuX62uFJ" role="2Gsz3X">
+                      <property role="TrG5h" value="m" />
+                    </node>
+                    <node concept="37vLTw" id="3ypfuX62yUp" role="2GsD0m">
+                      <ref role="3cqZAo" node="2Uk7YSyPsl_" resolve="myModels" />
+                    </node>
+                    <node concept="3clFbS" id="3ypfuX62uFN" role="2LFqv$">
+                      <node concept="3SKdUt" id="3ypfuX62RHw" role="3cqZAp">
+                        <node concept="1PaTwC" id="ATZLwXohrR" role="1aUNEU">
+                          <node concept="3oM_SD" id="ATZLwXohrS" role="1PaTwD">
+                            <property role="3oM_SC" value="Here" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrT" role="1PaTwD">
+                            <property role="3oM_SC" value="used" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrU" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrV" role="1PaTwD">
+                            <property role="3oM_SC" value="be" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrW" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrX" role="1PaTwD">
+                            <property role="3oM_SC" value="code" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrY" role="1PaTwD">
+                            <property role="3oM_SC" value="JavaParser.tryToResolveUnknowns(myAttachedRoots...)," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohrZ" role="1PaTwD">
+                            <property role="3oM_SC" value="which" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs0" role="1PaTwD">
+                            <property role="3oM_SC" value="used" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs1" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs2" role="1PaTwD">
+                            <property role="3oM_SC" value="take" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs3" role="1PaTwD">
+                            <property role="3oM_SC" value="model" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs4" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs5" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs6" role="1PaTwD">
+                            <property role="3oM_SC" value="supplied" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs7" role="1PaTwD">
+                            <property role="3oM_SC" value="node" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs8" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohs9" role="1PaTwD">
+                            <property role="3oM_SC" value="update" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsa" role="1PaTwD">
+                            <property role="3oM_SC" value="its" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsb" role="1PaTwD">
+                            <property role="3oM_SC" value="imports" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="3ypfuX62Xdc" role="3cqZAp">
+                        <node concept="1PaTwC" id="ATZLwXohsc" role="1aUNEU">
+                          <node concept="3oM_SD" id="ATZLwXohsd" role="1PaTwD">
+                            <property role="3oM_SC" value="Now," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohse" role="1PaTwD">
+                            <property role="3oM_SC" value="with" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsf" role="1PaTwD">
+                            <property role="3oM_SC" value="YetUnknownResolver" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsg" role="1PaTwD">
+                            <property role="3oM_SC" value="that" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsh" role="1PaTwD">
+                            <property role="3oM_SC" value="works" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsi" role="1PaTwD">
+                            <property role="3oM_SC" value="on" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsj" role="1PaTwD">
+                            <property role="3oM_SC" value="a" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsk" role="1PaTwD">
+                            <property role="3oM_SC" value="per-model" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsl" role="1PaTwD">
+                            <property role="3oM_SC" value="basis," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsm" role="1PaTwD">
+                            <property role="3oM_SC" value="need" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsn" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohso" role="1PaTwD">
+                            <property role="3oM_SC" value="group" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsp" role="1PaTwD">
+                            <property role="3oM_SC" value="elements" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsq" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsr" role="1PaTwD">
+                            <property role="3oM_SC" value="myAttachedRoots" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohss" role="1PaTwD">
+                            <property role="3oM_SC" value="by" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohst" role="1PaTwD">
+                            <property role="3oM_SC" value="their" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsu" role="1PaTwD">
+                            <property role="3oM_SC" value="model," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsv" role="1PaTwD">
+                            <property role="3oM_SC" value="hence" />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsw" role="1PaTwD">
+                            <property role="3oM_SC" value="intersect()," />
+                          </node>
+                          <node concept="3oM_SD" id="ATZLwXohsx" role="1PaTwD">
+                            <property role="3oM_SC" value="below" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3cpWs8" id="3ypfuX641az" role="3cqZAp">
+                        <node concept="3cpWsn" id="3ypfuX641a$" role="3cpWs9">
+                          <property role="TrG5h" value="yur" />
+                          <node concept="3uibUv" id="3ypfuX641ar" role="1tU5fm">
+                            <ref role="3uigEE" node="3ypfuX5LZxj" resolve="YetUnknownResolver" />
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="3I9YdaU44XV" role="3cqZAp">
                         <node concept="37vLTI" id="3I9YdaU44XX" role="3clFbG">
                           <node concept="2ShNRf" id="3ypfuX641a_" role="37vLTx">
@@ -26850,35 +26850,32 @@
                           </node>
                         </node>
                       </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="3ypfuX62pZ6" role="3cqZAp">
-              <node concept="2OqwBi" id="3ypfuX62Zh9" role="3clFbG">
-                <node concept="37vLTw" id="3ypfuX641aI" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3ypfuX641a$" resolve="yur" />
-                </node>
-                <node concept="liA8E" id="3ypfuX631N1" role="2OqNvi">
-                  <ref role="37wK5l" node="3ypfuX5Mo8k" resolve="tryResolveUnknowns" />
-                  <node concept="2OqwBi" id="3ypfuX63KBp" role="37wK5m">
-                    <node concept="37vLTw" id="3ypfuX63BXe" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3ypfuX63hRa" resolve="resolvePM" />
-                    </node>
-                    <node concept="liA8E" id="3ypfuX63OhU" role="2OqNvi">
-                      <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int,org.jetbrains.mps.openapi.util.SubProgressKind)" resolve="subTask" />
-                      <node concept="3cmrfG" id="3ypfuX63ShX" role="37wK5m">
-                        <property role="3cmrfH" value="1" />
+                      <node concept="3clFbF" id="3ypfuX62pZ6" role="3cqZAp">
+                        <node concept="2OqwBi" id="3ypfuX62Zh9" role="3clFbG">
+                          <node concept="37vLTw" id="3ypfuX641aI" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3ypfuX641a$" resolve="yur" />
+                          </node>
+                          <node concept="liA8E" id="3ypfuX631N1" role="2OqNvi">
+                            <ref role="37wK5l" node="3ypfuX5Mo8k" resolve="tryResolveUnknowns" />
+                            <node concept="2OqwBi" id="3ypfuX63KBp" role="37wK5m">
+                              <node concept="37vLTw" id="3ypfuX63BXe" role="2Oq$k0">
+                                <ref role="3cqZAo" node="3ypfuX63hRa" resolve="resolvePM" />
+                              </node>
+                              <node concept="liA8E" id="3ypfuX63OhU" role="2OqNvi">
+                                <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int,org.jetbrains.mps.openapi.util.SubProgressKind)" resolve="subTask" />
+                                <node concept="3cmrfG" id="3ypfuX63ShX" role="37wK5m">
+                                  <property role="3cmrfH" value="1" />
+                                </node>
+                                <node concept="Rm8GO" id="3ypfuX63Z0p" role="37wK5m">
+                                  <ref role="Rm8GQ" to="yyf4:~SubProgressKind.REPLACING" resolve="REPLACING" />
+                                  <ref role="1Px2BO" to="yyf4:~SubProgressKind" resolve="SubProgressKind" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                       </node>
-                      <node concept="Rm8GO" id="3ypfuX63Z0p" role="37wK5m">
-                        <ref role="Rm8GQ" to="yyf4:~SubProgressKind.REPLACING" resolve="REPLACING" />
-                        <ref role="1Px2BO" to="yyf4:~SubProgressKind" resolve="SubProgressKind" />
-                      </node>
                     </node>
-                  </node>
-                  <node concept="37vLTw" id="3ypfuX638RE" role="37wK5m">
-                    <ref role="3cqZAo" node="FOYqCnrmA9" resolve="modelAccess" />
                   </node>
                 </node>
               </node>
@@ -43126,61 +43123,66 @@
                 </node>
               </node>
             </node>
+            <node concept="3SKdUt" id="2qPEb$nWEP1" role="3cqZAp">
+              <node concept="1PaTwC" id="2qPEb$nWEP2" role="1aUNEU">
+                <node concept="3oM_SD" id="2qPEb$nWIPs" role="1PaTwD">
+                  <property role="3oM_SC" value="JFTR," />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWIUe" role="1PaTwD">
+                  <property role="3oM_SC" value="collectYetUnresolved," />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWIPu" role="1PaTwD">
+                  <property role="3oM_SC" value="despite" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWIPx" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWIP_" role="1PaTwD">
+                  <property role="3oM_SC" value="name," />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWIT5" role="1PaTwD">
+                  <property role="3oM_SC" value="may" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWITb" role="1PaTwD">
+                  <property role="3oM_SC" value="alter" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWITi" role="1PaTwD">
+                  <property role="3oM_SC" value="model" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWITq" role="1PaTwD">
+                  <property role="3oM_SC" value="(see" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWITH" role="1PaTwD">
+                  <property role="3oM_SC" value="subst" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWITR" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="2qPEb$nWIU2" role="1PaTwD">
+                  <property role="3oM_SC" value="collectYetUnresolved(node&lt;IYetUnresolved&gt;))" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="3ypfuX5P$X4" role="3cqZAp">
               <node concept="3cpWsn" id="3ypfuX5P$X5" role="3cpWs9">
                 <property role="TrG5h" value="anyUnresolvedYet" />
                 <property role="3TUv4t" value="true" />
-                <node concept="3uibUv" id="3ypfuX5P$X6" role="1tU5fm">
-                  <ref role="3uigEE" to="i5cy:~AtomicBoolean" resolve="AtomicBoolean" />
-                </node>
-                <node concept="2ShNRf" id="3ypfuX5P_3N" role="33vP2m">
-                  <node concept="1pGfFk" id="3ypfuX5PCuu" role="2ShVmc">
-                    <ref role="37wK5l" to="i5cy:~AtomicBoolean.&lt;init&gt;(boolean)" resolve="AtomicBoolean" />
-                    <node concept="3clFbT" id="3ypfuX5PCw3" role="37wK5m">
-                      <property role="3clFbU" value="false" />
+                <node concept="10P_77" id="2qPEb$nWi9g" role="1tU5fm" />
+                <node concept="1rXfSq" id="3ypfuX5PvNG" role="33vP2m">
+                  <ref role="37wK5l" node="3ypfuX5MAA$" resolve="collectYetUnresolved" />
+                  <node concept="2OqwBi" id="3ypfuX5PvNH" role="37wK5m">
+                    <node concept="37vLTw" id="3ypfuX5PvNI" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3ypfuX5Mo8D" resolve="progressForThisPass" />
                     </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="3ypfuX5PCBg" role="3cqZAp">
-              <node concept="2OqwBi" id="3ypfuX5PCLD" role="3clFbG">
-                <node concept="37vLTw" id="3ypfuX5PCBe" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3ypfuX5Mo9g" resolve="modelAccess" />
-                </node>
-                <node concept="liA8E" id="3ypfuX5PCRI" role="2OqNvi">
-                  <ref role="37wK5l" node="FOYqCnnT2g" resolve="accessModel" />
-                  <node concept="1bVj0M" id="3ypfuX5PCUC" role="37wK5m">
-                    <node concept="3clFbS" id="3ypfuX5PCUD" role="1bW5cS">
-                      <node concept="3clFbF" id="3ypfuX5PCYH" role="3cqZAp">
-                        <node concept="2OqwBi" id="3ypfuX5PD7y" role="3clFbG">
-                          <node concept="37vLTw" id="3ypfuX5PCYF" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3ypfuX5P$X5" resolve="anyUnresolvedYet" />
-                          </node>
-                          <node concept="liA8E" id="3ypfuX5PDqX" role="2OqNvi">
-                            <ref role="37wK5l" to="i5cy:~AtomicBoolean.set(boolean)" resolve="set" />
-                            <node concept="1rXfSq" id="3ypfuX5PvNG" role="37wK5m">
-                              <ref role="37wK5l" node="3ypfuX5MAA$" resolve="collectYetUnresolved" />
-                              <node concept="2OqwBi" id="3ypfuX5PvNH" role="37wK5m">
-                                <node concept="37vLTw" id="3ypfuX5PvNI" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="3ypfuX5Mo8D" resolve="progressForThisPass" />
-                                </node>
-                                <node concept="liA8E" id="3ypfuX5PvNJ" role="2OqNvi">
-                                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int,org.jetbrains.mps.openapi.util.SubProgressKind)" resolve="subTask" />
-                                  <node concept="3cmrfG" id="3ypfuX5PvNK" role="37wK5m">
-                                    <property role="3cmrfH" value="2" />
-                                  </node>
-                                  <node concept="Rm8GO" id="3ypfuX5PvNL" role="37wK5m">
-                                    <ref role="Rm8GQ" to="yyf4:~SubProgressKind.REPLACING" resolve="REPLACING" />
-                                    <ref role="1Px2BO" to="yyf4:~SubProgressKind" resolve="SubProgressKind" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
+                    <node concept="liA8E" id="3ypfuX5PvNJ" role="2OqNvi">
+                      <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int,org.jetbrains.mps.openapi.util.SubProgressKind)" resolve="subTask" />
+                      <node concept="3cmrfG" id="3ypfuX5PvNK" role="37wK5m">
+                        <property role="3cmrfH" value="2" />
                       </node>
-                      <node concept="3clFbH" id="3ypfuX5PCWJ" role="3cqZAp" />
+                      <node concept="Rm8GO" id="3ypfuX5PvNL" role="37wK5m">
+                        <ref role="1Px2BO" to="yyf4:~SubProgressKind" resolve="SubProgressKind" />
+                        <ref role="Rm8GQ" to="yyf4:~SubProgressKind.REPLACING" resolve="REPLACING" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -43188,53 +43190,34 @@
             </node>
             <node concept="3clFbJ" id="3ypfuX5PkKI" role="3cqZAp">
               <node concept="3clFbS" id="3ypfuX5PkKK" role="3clFbx">
-                <node concept="3clFbF" id="3ypfuX5PEFx" role="3cqZAp">
-                  <node concept="2OqwBi" id="3ypfuX5PEPm" role="3clFbG">
-                    <node concept="37vLTw" id="3ypfuX5PEFv" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3ypfuX5Mo9g" resolve="modelAccess" />
-                    </node>
-                    <node concept="liA8E" id="3ypfuX5PEVr" role="2OqNvi">
-                      <ref role="37wK5l" node="FOYqCnnTeC" resolve="replaceNodes" />
-                      <node concept="1bVj0M" id="3ypfuX5PEYm" role="37wK5m">
-                        <node concept="3clFbS" id="3ypfuX5PEYn" role="1bW5cS">
-                          <node concept="3clFbF" id="3ypfuX5Pl7p" role="3cqZAp">
-                            <node concept="1rXfSq" id="3ypfuX5Pl7n" role="3clFbG">
-                              <ref role="37wK5l" node="3ypfuX5NudL" resolve="replaceYetUnresolved" />
-                              <node concept="2OqwBi" id="3ypfuX5PljN" role="37wK5m">
-                                <node concept="37vLTw" id="3ypfuX5PlcG" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="3ypfuX5Mo8D" resolve="progressForThisPass" />
-                                </node>
-                                <node concept="liA8E" id="3ypfuX5Plwy" role="2OqNvi">
-                                  <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int,org.jetbrains.mps.openapi.util.SubProgressKind)" resolve="subTask" />
-                                  <node concept="3cmrfG" id="3ypfuX5PlyB" role="37wK5m">
-                                    <property role="3cmrfH" value="1" />
-                                  </node>
-                                  <node concept="Rm8GO" id="3ypfuX5Pl_t" role="37wK5m">
-                                    <ref role="Rm8GQ" to="yyf4:~SubProgressKind.REPLACING" resolve="REPLACING" />
-                                    <ref role="1Px2BO" to="yyf4:~SubProgressKind" resolve="SubProgressKind" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3clFbF" id="3ypfuX5SH_R" role="3cqZAp">
-                            <node concept="1rXfSq" id="3ypfuX5SH_P" role="3clFbG">
-                              <ref role="37wK5l" node="3ypfuX5PVHn" resolve="updateWithImportsOfResolved" />
-                            </node>
-                          </node>
+                <node concept="3clFbF" id="3ypfuX5Pl7p" role="3cqZAp">
+                  <node concept="1rXfSq" id="3ypfuX5Pl7n" role="3clFbG">
+                    <ref role="37wK5l" node="3ypfuX5NudL" resolve="replaceYetUnresolved" />
+                    <node concept="2OqwBi" id="3ypfuX5PljN" role="37wK5m">
+                      <node concept="37vLTw" id="3ypfuX5PlcG" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3ypfuX5Mo8D" resolve="progressForThisPass" />
+                      </node>
+                      <node concept="liA8E" id="3ypfuX5Plwy" role="2OqNvi">
+                        <ref role="37wK5l" to="yyf4:~ProgressMonitor.subTask(int,org.jetbrains.mps.openapi.util.SubProgressKind)" resolve="subTask" />
+                        <node concept="3cmrfG" id="3ypfuX5PlyB" role="37wK5m">
+                          <property role="3cmrfH" value="1" />
+                        </node>
+                        <node concept="Rm8GO" id="3ypfuX5Pl_t" role="37wK5m">
+                          <ref role="Rm8GQ" to="yyf4:~SubProgressKind.REPLACING" resolve="REPLACING" />
+                          <ref role="1Px2BO" to="yyf4:~SubProgressKind" resolve="SubProgressKind" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
+                <node concept="3clFbF" id="3ypfuX5SH_R" role="3cqZAp">
+                  <node concept="1rXfSq" id="3ypfuX5SH_P" role="3clFbG">
+                    <ref role="37wK5l" node="3ypfuX5PVHn" resolve="updateWithImportsOfResolved" />
+                  </node>
+                </node>
               </node>
-              <node concept="2OqwBi" id="3ypfuX5PDZW" role="3clFbw">
-                <node concept="37vLTw" id="3ypfuX5PDNk" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3ypfuX5P$X5" resolve="anyUnresolvedYet" />
-                </node>
-                <node concept="liA8E" id="3ypfuX5PEba" role="2OqNvi">
-                  <ref role="37wK5l" to="i5cy:~AtomicBoolean.get()" resolve="get" />
-                </node>
+              <node concept="37vLTw" id="3ypfuX5PDNk" role="3clFbw">
+                <ref role="3cqZAo" node="3ypfuX5P$X5" resolve="anyUnresolvedYet" />
               </node>
               <node concept="9aQIb" id="3ypfuX5PMlR" role="9aQIa">
                 <node concept="3clFbS" id="3ypfuX5PMlS" role="9aQI4">
@@ -43280,12 +43263,6 @@
         <property role="TrG5h" value="progress" />
         <node concept="3uibUv" id="3ypfuX5Mo9f" role="1tU5fm">
           <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="3ypfuX5Mo9g" role="3clF46">
-        <property role="TrG5h" value="modelAccess" />
-        <node concept="3uibUv" id="3ypfuX5Mo9h" role="1tU5fm">
-          <ref role="3uigEE" node="FOYqCnnT0z" resolve="IncrementalModelAccess" />
         </node>
       </node>
       <node concept="3Tm1VV" id="3ypfuX5PFtT" role="1B3o_S" />
