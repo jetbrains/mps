@@ -34,6 +34,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import javax.swing.JScrollPane;
@@ -65,9 +67,11 @@ public class DiffEditor implements EditorMessageOwner {
   private String myTitle;
   private final JComponent myTitleComponent;
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
+  private final MPSProject myMpsProject;
 
 
   public DiffEditor(final MPSProject project, SNode node, String contentTitle, boolean rightToLeft, boolean isInspectorShown) {
+    myMpsProject = project;
     myIsInspectorShown = isInspectorShown;
     myTitle = contentTitle;
     myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft);
@@ -212,8 +216,12 @@ public class DiffEditor implements EditorMessageOwner {
     return (inspector ? myInspectorComponent : myMainEditorComponent);
   }
 
-  public void highlightChange(SModel model, ModelChange change, boolean isOldEditor, ChangeEditorMessage.ConflictChecker conflictChecker) {
-    final List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, this, conflictChecker);
+  public void highlightChange(final SModel model, final ModelChange change, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
+    final List<ChangeEditorMessage> messages = new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(new Computable<List<ChangeEditorMessage>>() {
+      public List<ChangeEditorMessage> compute() {
+        return ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
+      }
+    });
     if (ListSequence.fromList(messages).isEmpty()) {
       return;
     }
@@ -229,16 +237,20 @@ public class DiffEditor implements EditorMessageOwner {
     });
   }
 
-  public void highlightChanges(final SModel model, Iterable<ModelChange> changes, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
+  public void highlightChanges(final SModel model, final Iterable<ModelChange> changes, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
     final List<ChangeEditorMessage> allMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
-    Sequence.fromIterable(changes).visitAll(new IVisitor<ModelChange>() {
-      public void visit(ModelChange change) {
-        List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
-        if (ListSequence.fromList(messages).isEmpty()) {
-          return;
-        }
-        MapSequence.fromMap(myChangeToMessages).put(change, messages);
-        ListSequence.fromList(allMessages).addSequence(ListSequence.fromList(messages));
+    new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(new Runnable() {
+      public void run() {
+        Sequence.fromIterable(changes).visitAll(new IVisitor<ModelChange>() {
+          public void visit(ModelChange change) {
+            List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
+            if (ListSequence.fromList(messages).isEmpty()) {
+              return;
+            }
+            MapSequence.fromMap(myChangeToMessages).put(change, messages);
+            ListSequence.fromList(allMessages).addSequence(ListSequence.fromList(messages));
+          }
+        });
       }
     });
     if (ListSequence.fromList(allMessages).isEmpty()) {
