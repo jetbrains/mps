@@ -141,7 +141,7 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     return mySolution;
   }
 
-  /*package*/ MPSProject getProject() {
+  public MPSProject getProject() {
     return myMpsProject;
   }
 }

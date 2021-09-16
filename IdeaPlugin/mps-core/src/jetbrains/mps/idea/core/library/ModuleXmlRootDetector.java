@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.library;
 
 import com.intellij.openapi.application.ApplicationManager;
@@ -31,6 +30,8 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -55,7 +56,10 @@ public class ModuleXmlRootDetector extends RootDetector {
 
     // Take MPSCoreComponent from idea.Application here to access Platform for ModulesMiner purposes
     MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-    final Collection<ModuleHandle> collectedModules = new ModulesMiner(mpsCore.getPlatform()).collectModules(VirtualFileUtils.toIFile(rootCandidate)).getCollectedModules();
+    VFSManager vfsManager = mpsCore.getPlatform().findComponent(VFSManager.class);
+    // likely, need IFile based on IdeaFileSystem, see puzzling "== fs" check in filterRootsWithLoadedModules, below
+    IFile mpsFile = vfsManager.getFileSystem(VFSManager.FILE_FS).getFile(rootCandidate.getPath());
+    final Collection<ModuleHandle> collectedModules = new ModulesMiner(mpsCore.getPlatform()).collectModules(mpsFile).getCollectedModules();
     final MPSModuleRepository deploymentRepo = mpsCore.getPlatform().findComponent(MPSModuleRepository.class);
     if (deploymentRepo == null) {
       return Collections.emptyList();
@@ -73,6 +77,7 @@ public class ModuleXmlRootDetector extends RootDetector {
       // need only loaded modules
       // we may want loading in the future, but the time has not come yet
       if (handle.getDescriptor() != null && handle.getDescriptor().getModuleReference().resolve(deploymentRepo) != null) {
+        // XXX why not fs.findFileByPath(handle.getFile().getPath())?! Why this odd == fs check?
         VirtualFile ideaFile = VirtualFileUtils.getOrCreateVirtualFile(handle.getFile());
         // we compare file system since idea has been very, very bad:( See DetectedRootsChooserDialog.createTreeTable
         // problem in VfsUtilCore.getRelativePath

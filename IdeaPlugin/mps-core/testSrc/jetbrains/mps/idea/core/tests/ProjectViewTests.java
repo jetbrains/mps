@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.vfs.IFile;
 import org.junit.Assert;
 
+import java.io.File;
 import java.util.Collections;
 
 /**
@@ -69,7 +70,7 @@ public class ProjectViewTests extends BaseProjectViewTestCase {
     FacetType<MPSFacet, MPSFacetConfiguration> facetType = FacetTypeRegistry.getInstance().findFacetType(MPSFacetType.ID);
     Assert.assertNotNull("MPS facet type is not found", facetType);
     MPSFacet facet = facetManager.createFacet(facetType, "MPS", null);
-    IFile path = VirtualFileUtils.toIFile(getContentRoot().findChild("src"));
+    File path = getContentRoot().findChild("src").toNioPath().toFile();
     final MPSConfigurationBean cfgBean = facet.getConfiguration().getBean();
     cfgBean.setModelRootDescriptors(Collections.singleton(DefaultModelRoot.createSingleFolderDescriptor(path)));
     facet.setConfiguration(cfgBean);

@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
-import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -30,7 +29,9 @@ import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,7 +44,6 @@ import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public abstract class ToggleFBModelRootKindAction extends ToggleAction implements CustomComponentAction, DumbAware {
@@ -62,7 +62,7 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
 
   @Override
   public boolean isSelected(AnActionEvent e) {
-    final List<IFile> selectedFiles = getSelectedFiles();
+    final List<IFile> selectedFiles = getSelectedFiles(e);
     if (selectedFiles.isEmpty()) {
       return false;
     }
@@ -84,7 +84,7 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
 
   @Override
   public void setSelected(AnActionEvent e, final boolean enabled) { // if enabled == false, then the selection was disabled
-    final List<IFile> selectedFiles = getSelectedFiles();
+    final List<IFile> selectedFiles = getSelectedFiles(e);
     assert !selectedFiles.isEmpty();
 
     final FileBasedModelRoot modelRoot = myModelRootEditor.getFileBasedModelRootEntry().getModelRoot();
@@ -111,14 +111,18 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
     super.update(e);
     final Presentation presentation = e.getPresentation();
     presentation.setEnabled(true);
-    final List<IFile> files = getSelectedFiles();
+    final List<IFile> files = getSelectedFiles(e);
     if (files.isEmpty()) {
       presentation.setEnabled(false);
     }
   }
 
   @NotNull
-  protected final List<IFile> getSelectedFiles() {
+  private final List<IFile> getSelectedFiles(AnActionEvent e) {
+    final MPSProject mpsProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
+    if (mpsProject == null) {
+      return Collections.emptyList();
+    }
     final TreePath[] selectionPaths = myTree.getSelectionPaths();
     if (selectionPaths == null) {
       return Collections.emptyList();
@@ -136,7 +140,8 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
         selected.add(file);
       }
     }
-    return selected.stream().map(VirtualFileUtils::toIFile).filter(Objects::nonNull).collect(Collectors.toList());
+    final IdeaFileSystem fs = mpsProject.getFileSystem();
+    return selected.stream().map(fs::fromVirtualFile).collect(Collectors.toList());
   }
 
   @NotNull

@@ -111,8 +111,9 @@ public final class VirtualFileUtils {
    * @return null if current fs is not idea-based (it is very unlikely but still)
    */
   @Nullable
-  @Deprecated
+  @Deprecated(forRemoval = true)
   public static IFile toIFile(@NotNull VirtualFile f) {
+    LOG.error("VirtualFileUtils.toIFile will be removed in the next release", new Throwable());
     FileSystem fs = FileSystemExtPoint.getFS();
     if (fs instanceof IdeaFileSystem) {
       return ((IdeaFileSystem) fs).fromVirtualFile(f);
