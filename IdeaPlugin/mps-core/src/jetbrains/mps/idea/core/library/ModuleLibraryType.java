@@ -79,7 +79,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
   }
 
   @Nullable
-  public static VirtualFile getJarFile(String path) {
+  private static VirtualFile getJarFile(String path) {
     VirtualFile vFile = VirtualFileManager.getInstance().findFileByUrl(VirtualFileManager.constructUrl(LocalFileSystem.PROTOCOL, path));
     if (vFile == null || vFile.isDirectory() || vFile.getFileType() != FileTypes.ARCHIVE) {
       return null;
@@ -87,7 +87,8 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
     return JarFileSystem.getInstance().findFileByPath(vFile.getPath() + JarFileSystem.JAR_SEPARATOR);
   }
 
-  public static Set<VirtualFile> getModuleJars(AbstractModule usedModule) {
+  // FIXME refactor to give OrderRoot right away
+  /*package*/ static Set<VirtualFile> getModuleJars(AbstractModule usedModule) {
     Set<VirtualFile> stubFiles = new HashSet<VirtualFile>();
     for (String stubPath : SModuleOperations.getJavaFacet(usedModule).getClassPath()) {
       VirtualFile jarFile = getJarFile(stubPath);
@@ -132,13 +133,15 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
 
   private Set<OrderRoot> createRootsFor(SRepository repository, List<SModuleReference> chosenElements) {
     final Set<OrderRoot> roots = new LinkedHashSet<OrderRoot>();
-    for (SModuleReference moduleReference : chosenElements) {
-      AbstractModule module = new ModelAccessHelper(repository).runReadAction(() -> (AbstractModule) moduleReference.resolve(repository));
-      roots.add(new OrderRoot(VirtualFileUtils.getOrCreateVirtualFile(module.getDescriptorFile()), ModuleXmlRootDetector.MPS_MODULE_XML, false));
-      for (VirtualFile virtualFile : getModuleJars(module)) {
-        roots.add(new OrderRoot(virtualFile, OrderRootType.CLASSES, false));
+    repository.getModelAccess().runReadAction(() -> {
+      for (SModuleReference moduleReference : chosenElements) {
+        AbstractModule module = (AbstractModule) moduleReference.resolve(repository);
+        roots.add(ModuleXmlRootDetector.asOrderRoot(module));
+        for (VirtualFile virtualFile : getModuleJars(module)) {
+          roots.add(new OrderRoot(virtualFile, OrderRootType.CLASSES, false));
+        }
       }
-    }
+    });
     return roots;
   }
 
@@ -245,7 +248,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
         @Override
         public VirtualFile[] selectFiles(@NotNull JComponent parent, @Nullable VirtualFile initialSelection, @Nullable final Module contextModule, @NotNull final LibraryEditor libraryEditor) {
           final SRepository repository = ProjectHelper.getProjectRepository(contextModule.getProject());
-          List<SModuleReference> visibleModules = calculateVisibleModules(repository, new HashSet<VirtualFile>(Arrays.asList(libraryEditor.getFiles(ModuleXmlRootDetector.MPS_MODULE_XML))));
+          List<SModuleReference> visibleModules = calculateVisibleModules(repository, new HashSet<>(Arrays.asList(libraryEditor.getFiles(ModuleXmlRootDetector.MPS_MODULE_XML))));
 
           ChooseElementsDialog<SModuleReference> chooser = new SModuleReferenceChooserDialog(repository, parent, visibleModules);
           chooser.show();
@@ -258,10 +261,8 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
             public void run() {
               for (SModuleReference module : chosenElements) {
                 AbstractModule chosenModule = (AbstractModule) module.resolve(repository);
-                addedDescriptors.add(VirtualFileUtils.getOrCreateVirtualFile(chosenModule.getDescriptorFile()));
-                for (VirtualFile virtualFile : getModuleJars(chosenModule)) {
-                  addedJars.add(virtualFile);
-                }
+                addedDescriptors.add(ModuleXmlRootDetector.asOrderRoot(chosenModule).getFile());
+                addedJars.addAll(getModuleJars(chosenModule));
               }
             }
           });
@@ -286,7 +287,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
           if (module instanceof SolutionIdea || ((AbstractModule) module).getDescriptorFile() == null) {
             continue;
           }
-          if (excluded.contains(VirtualFileUtils.getOrCreateVirtualFile(((AbstractModule) module).getDescriptorFile()))) {
+          if (excluded.contains(ModuleXmlRootDetector.asOrderRoot((AbstractModule) module).getFile())) {
             // skip solutions that are already in a lib
             continue;
           }
@@ -298,12 +299,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
         }
       }
     });
-    Comparator<SModuleReference> moduleComparator = new Comparator<SModuleReference>() {
-      @Override
-      public int compare(SModuleReference o1, SModuleReference o2) {
-        return o1.getModuleName().compareTo(o2.getModuleName());
-      }
-    };
+    Comparator<SModuleReference> moduleComparator = Comparator.comparing(SModuleReference::getModuleName);
     Collections.sort(availableSolutions, moduleComparator);
     Collections.sort(availableLanguages, moduleComparator);
     List<SModuleReference> result = new ArrayList<SModuleReference>();

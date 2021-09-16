@@ -18,6 +18,7 @@ package jetbrains.mps.idea.core.library;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.roots.OrderRootType;
+import com.intellij.openapi.roots.libraries.ui.OrderRoot;
 import com.intellij.openapi.roots.libraries.ui.OrderRootTypePresentation;
 import com.intellij.openapi.roots.libraries.ui.RootDetector;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -28,6 +29,7 @@ import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.icons.MPSIcons;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.vfs.IFile;
@@ -43,6 +45,17 @@ public class ModuleXmlRootDetector extends RootDetector {
   public static final OrderRootType MPS_MODULE_XML = new OrderRootType("MPS_MODULE_XML") {
   };
   private static final ModuleXmlRootDetector INSTANCE = new ModuleXmlRootDetector();
+
+  /**
+   * I don't buy the idea of dedicated OrderRootType to keep information about MPS modules associated
+   * with IDEA library. To me, LibraryEx.getProperties():LibraryProperties looks much more appealing.
+   * My idea is to keep SModuleReference(s) in properties, so that there's no need to care about module descriptor file at all.
+   * However, until I get to VirtualFileUtils.getOrCreateVirtualFile() refactoring, keep it the way it
+   * was, just under a single point of access.
+   */
+  /*package*/ static OrderRoot asOrderRoot(AbstractModule mpsModule) {
+    return new OrderRoot(VirtualFileUtils.getOrCreateVirtualFile(mpsModule.getDescriptorFile()), ModuleXmlRootDetector.MPS_MODULE_XML, false);
+  }
 
   protected ModuleXmlRootDetector() {
     super(MPS_MODULE_XML, false, MPSBundle.message("mps.module.xml.root.type"));
