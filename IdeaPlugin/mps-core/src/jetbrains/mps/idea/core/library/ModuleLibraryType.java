@@ -65,12 +65,14 @@ import javax.swing.JComponent;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
 
@@ -87,8 +89,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
     return JarFileSystem.getInstance().findFileByPath(vFile.getPath() + JarFileSystem.JAR_SEPARATOR);
   }
 
-  // FIXME refactor to give OrderRoot right away
-  /*package*/ static Set<VirtualFile> getModuleJars(AbstractModule usedModule) {
+  /*package*/ static Collection<OrderRoot> getModuleJarsAsRoots(AbstractModule usedModule) {
     Set<VirtualFile> stubFiles = new HashSet<VirtualFile>();
     for (String stubPath : SModuleOperations.getJavaFacet(usedModule).getClassPath()) {
       VirtualFile jarFile = getJarFile(stubPath);
@@ -96,7 +97,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
         stubFiles.add(jarFile);
       }
     }
-    return stubFiles;
+    return stubFiles.stream().map((jf -> new OrderRoot(jf, OrderRootType.CLASSES, false))).collect(Collectors.toUnmodifiableList());
   }
 
   @Override
@@ -137,9 +138,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
       for (SModuleReference moduleReference : chosenElements) {
         AbstractModule module = (AbstractModule) moduleReference.resolve(repository);
         roots.add(ModuleXmlRootDetector.asOrderRoot(module));
-        for (VirtualFile virtualFile : getModuleJars(module)) {
-          roots.add(new OrderRoot(virtualFile, OrderRootType.CLASSES, false));
-        }
+        roots.addAll(getModuleJarsAsRoots(module));
       }
     });
     return roots;
@@ -254,23 +253,21 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
           chooser.show();
           final List<SModuleReference> chosenElements = chooser.getChosenElements();
 
-          final Set<VirtualFile> addedDescriptors = new LinkedHashSet<VirtualFile>();
-          final Set<VirtualFile> addedJars = new LinkedHashSet<VirtualFile>();
+          final Set<VirtualFile> addedDescriptors = new LinkedHashSet<>();
+          final Set<OrderRoot> addedJarRoots = new LinkedHashSet<>();
           repository.getModelAccess().runReadAction(new Runnable() {
             @Override
             public void run() {
               for (SModuleReference module : chosenElements) {
                 AbstractModule chosenModule = (AbstractModule) module.resolve(repository);
                 addedDescriptors.add(ModuleXmlRootDetector.asOrderRoot(chosenModule).getFile());
-                addedJars.addAll(getModuleJars(chosenModule));
+                addedJarRoots.addAll(getModuleJarsAsRoots(chosenModule));
               }
             }
           });
           // that's a hack
           // I want to add 2 different root types here: classes and module xml-s
-          for (VirtualFile classesJar : addedJars) {
-            libraryEditor.addRoot(classesJar, OrderRootType.CLASSES);
-          }
+          libraryEditor.addRoots(addedJarRoots);
           return addedDescriptors.toArray(new VirtualFile[addedDescriptors.size()]);
         }
       });

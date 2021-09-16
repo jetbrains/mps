@@ -18,7 +18,6 @@ package jetbrains.mps.idea.core.library;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.LibraryOrderEntry;
 import com.intellij.openapi.roots.OrderEntry;
-import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.roots.libraries.DummyLibraryProperties;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar;
@@ -77,6 +76,8 @@ public class ModuleLibrariesUtil {
   }
 
   private static boolean isSuitableModule(SModule module) {
+    // XXX I wonder if I have to check JavaModuleFacet presence, as MLT.getModuleJarsAsRoots assumes there's one always.
+    //     However, with JMF not mandatory for quite some time already, we may eventually face modules without one.
     return (module instanceof Solution) && !(module instanceof SolutionIdea) && !(module instanceof StubSolutionIdea);
   }
 
@@ -140,8 +141,7 @@ public class ModuleLibrariesUtil {
     if (library != null) {
       return library;
     }
-    Set<VirtualFile> stubFiles = ModuleLibraryType.getModuleJars(usedModule);
-    return createAutoLibrary(usedModule, stubFiles, container);
+    return createAutoLibrary(usedModule, container);
   }
 
   @Nullable
@@ -155,15 +155,12 @@ public class ModuleLibrariesUtil {
     return null;
   }
 
-  private static Library createAutoLibrary(AbstractModule module, Collection<VirtualFile> libraryFiles, LibrariesContainer container) {
+  private static Library createAutoLibrary(AbstractModule module, LibrariesContainer container) {
     String libName = LIBRARY_PREFIX + module.getModuleName() + AUTO_SUFFIX;
 
     NewLibraryEditor editor = new NewLibraryEditor();
     editor.setName(libName);
-    for (VirtualFile classRoot : libraryFiles) {
-      editor.addRoot(classRoot, OrderRootType.CLASSES);
-    }
-
+    editor.addRoots(ModuleLibraryType.getModuleJarsAsRoots(module));
     editor.addRoots(Collections.singleton(ModuleXmlRootDetector.asOrderRoot(module)));
     editor.setType(ModuleLibraryType.getInstance());
     editor.setProperties(new DummyLibraryProperties());
