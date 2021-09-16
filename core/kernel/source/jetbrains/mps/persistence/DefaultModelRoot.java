@@ -35,6 +35,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -327,6 +328,11 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
                                   boolean register) throws ModelCannotBeCreatedException {
     try {
       SModel model = modelFactory.create(dataSource, new SModelName(parameters.getModelName()), parameters.convertToLoadingOptions());
+      if (model instanceof EditableSModel) {
+        // treat newly created model as modified. Perhaps, it has to be ModelFactory to set this
+        // but doesn't hurt to force it here anyway.
+        ((EditableSModel) model).setChanged(true);
+      }
       if (register) {
         registerModel(model);
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.project;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
@@ -27,8 +26,6 @@ import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -39,7 +36,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -146,7 +142,11 @@ public class SModuleOperations {
     return new TreeSet<>(paths);
   }
 
+  /**
+   * @deprecated It's unclear what 'adjustments' refer to; no reason to prefer this method to regular {@code ModelRoot.createModel()}
+   */
   @Nullable
+  @Deprecated(since = "2021.3", forRemoval = true)
   public static EditableSModel createModelWithAdjustments(@NotNull String name, @NotNull ModelRoot root) {
     try {
       return createModelWithAdjustments(name, root, null);
@@ -160,7 +160,7 @@ public class SModuleOperations {
    *             there are 2 uses in mbeddr
    */
   @NotNull
-@Deprecated(since = "2018.3", forRemoval = true)
+  @Deprecated(since = "2018.3", forRemoval = true)
   public static EditableSModel createModelWithAdjustments(@NotNull String name,
                                                           @NotNull ModelRoot root,
                                                           @Nullable ModelFactoryType modelFactoryType) throws ModelCannotBeCreatedException {
@@ -173,12 +173,10 @@ public class SModuleOperations {
     }
     ModelsAutoImportsManager.doAutoImport(root.getModule(), model);
 
-    // FIXME something bad: see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
-    // model.getSModel() ?
-    model.setChanged(true);
+    new MissingDependenciesFixer(model).fixModuleDependencies();
+
     model.save();
 
-    new MissingDependenciesFixer(model).fixModuleDependencies();
     return model;
   }
 

@@ -105,15 +105,7 @@ public class NewModelAction extends NewModelActionBase {
               return null;
             }
 
-            // FIXME something bad: see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
-            // model.getSModel() ?
             template.preConfigure(model);
-
-            // likely, model.isChanged == true, but just in case it's not, force save
-            // I'm not even sure it's the right moment to save, why not after all the imports has been fixed/auto-added, but
-            // this is the way it was prior to 585b7169 I'm about to revert.
-            model.setChanged(true);
-            model.save();
 
             final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
             if (mpsProject != null) {

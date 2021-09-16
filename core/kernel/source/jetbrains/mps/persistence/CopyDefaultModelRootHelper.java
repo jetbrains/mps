@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,7 +88,9 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
     if (targetModel instanceof GeneratableSModel && modelDataToCopy instanceof GeneratableSModel) {
       ((GeneratableSModel) targetModel).setDoNotGenerate(((GeneratableSModel) modelDataToCopy).isDoNotGenerate());
     }
-    saveModel(targetModel);
+    if (targetModel instanceof EditableSModel) {
+      ((EditableSModel) targetModel).save();
+    }
     return targetModel;
   }
 
@@ -111,13 +113,5 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
       name = myTargetModule.getModuleName() + name.substring(mySourceModule.getModuleName().length());
     }
     return name;
-  }
-
-  // FIXME see MPS-18545
-  private static void saveModel(@NotNull SModel targetModel) {
-    if (targetModel instanceof EditableSModel) {
-      ((EditableSModel) targetModel).setChanged(true);
-      ((EditableSModel) targetModel).save();
-    }
   }
 }

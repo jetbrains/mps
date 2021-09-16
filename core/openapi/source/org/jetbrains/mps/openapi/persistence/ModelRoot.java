@@ -120,6 +120,12 @@ public interface ModelRoot {
    * <p>
    *   Default implementation returns {@code null} to match defaults of {@link #canCreateModel(SModelName)}.
    * </p>
+   * <p>
+   *   Generally, one may expect to get {@link org.jetbrains.mps.openapi.model.EditableSModel} (what would
+   *   be a point to create a model one can not edit?). {@code EditableSModel} shall report itself as
+   *   {@link org.jetbrains.mps.openapi.model.EditableSModel#isChanged()} then.
+   *   Likely, {@link SModel#isLoaded()} has to be {@code false}, although not 100% certain on that
+   * </p>
    *
    * @param modelName -- might fq name or just simple short model name. Up to implementor
    *                  @see org.jetbrains.mps.openapi.model.SModelName

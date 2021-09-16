@@ -1118,8 +1118,6 @@ public class JavaToMpsConverter {
       myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("Failed to create model for package %s", pkgFqName)));
       return null;
     }
-    // FIXME
-    modelDescr.load();
 
     return modelDescr;
   }

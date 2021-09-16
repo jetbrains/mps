@@ -34512,23 +34512,6 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="D47cPOPUr5" role="3cqZAp">
-          <node concept="1PaTwC" id="D47cPOPUr6" role="1aUNEU">
-            <node concept="3oM_SD" id="D47cPOPUtu" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3jMdymaGxEi" role="3cqZAp">
-          <node concept="2OqwBi" id="3jMdymaGJpt" role="3clFbG">
-            <node concept="37vLTw" id="3jMdymaGxEh" role="2Oq$k0">
-              <ref role="3cqZAo" node="2Uk7YSyHBMn" resolve="modelDescr" />
-            </node>
-            <node concept="liA8E" id="3jMdymaGK12" role="2OqNvi">
-              <ref role="37wK5l" to="mhbf:~SModel.load()" resolve="load" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbH" id="6hPnq0Qe0Rb" role="3cqZAp" />
         <node concept="3cpWs6" id="2Uk7YSyHBMy" role="3cqZAp">
           <node concept="37vLTw" id="3GM_nagT$Fo" role="3cqZAk">

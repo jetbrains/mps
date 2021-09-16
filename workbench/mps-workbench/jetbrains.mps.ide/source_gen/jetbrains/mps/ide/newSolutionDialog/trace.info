@@ -188,15 +188,10 @@
       <node id="2273513587775220675" at="352,48,353,30" concept="3" />
       <node id="2273513587775220680" at="353,30,354,32" concept="3" />
       <node id="2273513587775220685" at="354,32,355,13" concept="8" />
-      <node id="9055454263366726643" at="360,85,361,76" concept="7" />
-      <node id="9055454263366754491" at="361,76,362,20" concept="9" />
-      <node id="9055454263366770050" at="362,20,363,112" concept="9" />
-      <node id="3065096181600335113" at="363,112,364,28" concept="9" />
-      <node id="9055454263366821556" at="364,28,365,21" concept="3" />
-      <node id="8784082215682926302" at="365,21,366,21" concept="8" />
-      <node id="8784082215682018945" at="368,5,369,117" concept="13" />
-      <node id="5890305283801268194" at="373,0,374,0" concept="11" trace="MappingConfiguration$7j" />
-      <node id="5890305283801268194" at="377,0,378,0" concept="11" trace="name$MnvL" />
+      <node id="8784082215682926302" at="360,85,361,60" concept="8" />
+      <node id="8784082215682018945" at="363,5,364,117" concept="13" />
+      <node id="5890305283801268194" at="368,0,369,0" concept="11" trace="MappingConfiguration$7j" />
+      <node id="5890305283801268194" at="372,0,373,0" concept="11" trace="name$MnvL" />
       <node id="7732484735482254207" at="131,0,134,5" concept="5" />
       <node id="1464483148409684000" at="166,21,169,5" concept="5" />
       <node id="8784082215665182087" at="176,0,179,0" concept="12" trace="createLanguage#(Ljava/lang/String;Ljava/lang/String;Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/smodel/Language;" />
@@ -214,12 +209,14 @@
       <node id="6456559845239236618" at="313,0,316,0" concept="12" trace="getModuleFile#(Ljava/lang/String;Ljetbrains/mps/vfs/IFile;Ljava/lang/String;)Ljetbrains/mps/vfs/IFile;" />
       <node id="7078490058112055369" at="325,10,328,5" concept="1" />
       <node id="2273513587775220632" at="341,78,344,5" concept="5" />
+      <node id="8784082215682016091" at="359,51,362,7" concept="5" />
       <node id="8050999366830929490" at="196,0,200,0" concept="6" trace="run#()V" />
       <node id="3323820114976211365" at="241,14,245,9" concept="5" />
       <node id="255299930511425304" at="253,61,257,7" concept="5" />
       <node id="6245638960930910535" at="91,27,96,7" concept="15" />
       <node id="6405495463223742815" at="214,90,219,7" concept="7" />
       <node id="3323820114976200316" at="241,12,246,7" concept="1" />
+      <node id="8784082215682004375" at="358,79,363,5" concept="4" />
       <node id="7732484735482453153" at="151,0,157,5" concept="14" />
       <node id="8050999366830920571" at="194,87,200,7" concept="3" />
       <node id="255299930511425297" at="252,45,258,5" concept="4" />
@@ -228,15 +225,13 @@
       <node id="4815386055822680401" at="299,141,306,5" concept="5" />
       <node id="5049856602248782874" at="194,0,202,0" concept="12" trace="runModuleCreation#(Ljetbrains/mps/project/Project;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <node id="8784082215664449138" at="273,0,281,0" concept="12" trace="createMainLanguageAspects#(Ljetbrains/mps/smodel/Language;)V" />
-      <node id="8784082215682016091" at="359,51,367,7" concept="5" />
+      <node id="8784082215681997156" at="358,0,366,0" concept="12" trace="createModel#(Lorg/jetbrains/mps/openapi/module/SModule;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
       <node id="6245638960930910535" at="88,122,97,5" concept="1" />
       <node id="4543209876460447554" at="118,0,128,0" concept="12" trace="createSolution#(Ljava/lang/String;Ljava/lang/String;Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/project/Solution;" />
       <node id="8784082215665268238" at="183,0,193,0" concept="12" trace="createDevKit#(Ljava/lang/String;Ljava/lang/String;Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/project/DevKit;" />
-      <node id="8784082215682004375" at="358,79,368,5" concept="4" />
       <node id="8784082215681783033" at="66,0,78,0" concept="12" trace="createRuntimeSolution#(Ljetbrains/mps/smodel/Language;Ljava/lang/String;Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/project/Solution;" />
       <node id="255299930511425313" at="258,5,270,5" concept="5" />
       <node id="3323820114976153639" at="233,49,246,7" concept="5" />
-      <node id="8784082215681997156" at="358,0,371,0" concept="12" trace="createModel#(Lorg/jetbrains/mps/openapi/module/SModule;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
       <node id="2273513587775220600" at="336,0,350,0" concept="12" trace="createNewLanguageDescriptor#(Ljava/lang/String;Ljetbrains/mps/vfs/IFile;)Ljetbrains/mps/project/structure/modules/LanguageDescriptor;" />
       <node id="3323820114976084022" at="232,5,247,5" concept="4" />
       <node id="2273513587775220486" at="317,0,335,0" concept="12" trace="createNewSolutionDescriptor#(Ljava/lang/String;Ljetbrains/mps/vfs/IFile;)Ljetbrains/mps/project/structure/modules/SolutionDescriptor;" />
@@ -262,6 +257,7 @@
       <scope id="6456559845239236624" at="313,90,314,53" />
       <scope id="7078490058112055397" at="323,68,324,124" />
       <scope id="2273513587775220636" at="342,34,343,123" />
+      <scope id="8784082215682016093" at="360,85,361,60" />
       <scope id="7732484735482453161" at="154,29,156,36" />
       <scope id="8050999366830929491" at="196,25,198,19" />
       <scope id="3323820114976211367" at="242,50,244,112" />
@@ -286,11 +282,15 @@
         <var name="namespace" id="6456559845239236615" />
         <var name="rootPath" id="6456559845239236616" />
       </scope>
+      <scope id="8784082215682004378" at="359,51,362,7" />
       <scope id="8050999366830929490" at="196,0,200,0" />
       <scope id="3323820114976200317" at="241,14,245,9" />
       <scope id="255299930511425303" at="253,61,257,7" />
       <scope id="2273513587775220669" at="351,79,355,13">
         <var name="d" id="2273513587775220671" />
+      </scope>
+      <scope id="8784082215682004375" at="358,79,363,5">
+        <var name="root" id="8784082215682004376" />
       </scope>
       <scope id="5049856602248782877" at="194,87,200,7" />
       <scope id="3323820114976153641" at="234,32,240,9" />
@@ -301,9 +301,7 @@
       <scope id="2273513587775220664" at="351,0,357,0">
         <var name="namespace" id="2273513587775220667" />
       </scope>
-      <scope id="8784082215682016093" at="360,85,366,21">
-        <var name="model" id="9055454263366726644" />
-      </scope>
+      <scope id="8784082215681997159" at="358,79,364,117" />
       <scope id="6245638960930910535" at="89,5,96,7">
         <var name="extLang_it" id="6245638960930910536" />
         <var name="extLang_var" id="6245638960930910536" />
@@ -325,7 +323,10 @@
       <scope id="8784082215664449138" at="273,0,281,0">
         <var name="language" id="8784082215664451668" />
       </scope>
-      <scope id="8784082215682004378" at="359,51,367,7" />
+      <scope id="8784082215681997156" at="358,0,366,0">
+        <var name="modelName" id="8784082215682002868" />
+        <var name="module" id="8784082215682001672" />
+      </scope>
       <scope id="8784082215681783036" at="66,131,76,19">
         <var name="basePath" id="4543209876460447662" />
         <var name="namespace" id="4543209876460447673" />
@@ -347,10 +348,6 @@
         <var name="namespace" id="7680937379535338393" />
         <var name="templateModel" id="8623608763345593587" />
       </scope>
-      <scope id="8784082215682004375" at="358,79,368,5">
-        <var name="root" id="8784082215682004376" />
-      </scope>
-      <scope id="8784082215681997159" at="358,79,369,117" />
       <scope id="8784082215681783033" at="66,0,78,0">
         <var name="language" id="8784082215681928559" />
         <var name="languageRootPath" id="8784082215681931702" />
@@ -362,10 +359,6 @@
         <var name="moduleLocation" id="255299930512951164" />
       </scope>
       <scope id="3323820114976084025" at="233,49,246,7" />
-      <scope id="8784082215681997156" at="358,0,371,0">
-        <var name="modelName" id="8784082215682002868" />
-        <var name="module" id="8784082215682001672" />
-      </scope>
       <scope id="2273513587775220600" at="336,0,350,0">
         <var name="descriptorFile" id="2273513587775220605" />
         <var name="languageNamespace" id="2273513587775220603" />
@@ -438,11 +431,11 @@
         <var name="namespace" id="4543209876460424814" />
         <var name="rootPath" id="4543209876460424816" />
       </scope>
-      <unit id="5890305283801268194" at="372,0,375,0" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil$CONCEPTS" />
-      <unit id="5890305283801268194" at="376,0,379,0" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil$PROPS" />
+      <unit id="5890305283801268194" at="367,0,370,0" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil$CONCEPTS" />
+      <unit id="5890305283801268194" at="371,0,374,0" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil$PROPS" />
       <unit id="6405495463223742822" at="215,74,219,5" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil$2" />
       <unit id="8050999366830929490" at="195,58,200,5" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil$1" />
-      <unit id="5890305283801268194" at="63,0,380,0" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil" />
+      <unit id="5890305283801268194" at="63,0,375,0" name="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil" />
     </file>
   </root>
 </debug-info>

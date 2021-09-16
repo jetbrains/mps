@@ -126,8 +126,6 @@ public class ModelCreateHelper {
           return null;
         }
         final EditableSModel rv = ((EditableSModel) result);
-        // newly created model is not marked as changed, won't get saved unless we tell it is.
-        rv.setChanged(true);
         if (myClone == null) {
           // due to threading issues and invokeLater processing, we have to do save here, in this platform write action
           // so that dumb mode triggered from ProjectRootManagerComponent (wicked processing of a new model file created event)
