@@ -29,10 +29,8 @@ import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.application.ApplicationManager;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SRepository;
 import javax.lang.model.SourceVersion;
-import jetbrains.mps.ide.NewModuleCheckUtil;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NameUtil;
@@ -45,6 +43,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.DefaultModelRoot;
@@ -52,7 +51,6 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.ProjectPathUtil;
-import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -79,10 +77,11 @@ public class NewModuleUtil {
   }
 
   public static Solution createSandboxSolution(Language language, String languageRootPath, MPSProject project) throws IOException {
+    // XXX I don't think it's smart to create sandbox inside language dir. Rather have to be its sibling
     String basePath = languageRootPath + File.separator + "sandbox";
     String namespace = language.getModuleName() + ".sandbox";
 
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, basePath, MPSExtentions.DOT_SOLUTION);
+    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(basePath), MPSExtentions.DOT_SOLUTION);
     assert !(descriptorFile.exists());
     SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
 
@@ -117,7 +116,7 @@ public class NewModuleUtil {
    * create new solution module and register it with the project
    */
   public static Solution createSolution(String namespace, String rootPath, MPSProject project) {
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, rootPath, MPSExtentions.DOT_SOLUTION);
+    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(rootPath), MPSExtentions.DOT_SOLUTION);
     assert !(descriptorFile.exists());
     SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
     Solution module = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
@@ -128,7 +127,7 @@ public class NewModuleUtil {
   }
 
   public static Language createLanguage(String namespace, String rootPath, MPSProject project, boolean saveProject) {
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, rootPath, MPSExtentions.DOT_LANGUAGE);
+    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(rootPath), MPSExtentions.DOT_LANGUAGE);
 
     if (descriptorFile.exists()) {
       throw new IllegalArgumentException("Descriptor file " + descriptorFile + " already exists");
@@ -182,7 +181,7 @@ public class NewModuleUtil {
    * create new devkit module and register it with the project
    */
   public static DevKit createDevKit(String namespace, String rootPath, MPSProject project) {
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, rootPath, MPSExtentions.DOT_DEVKIT);
+    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(rootPath), MPSExtentions.DOT_DEVKIT);
     assert !(descriptorFile.exists());
     DevkitDescriptor descriptor = createNewDevkitDescriptor(namespace);
     DevKit module = (DevKit) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
@@ -201,39 +200,51 @@ public class NewModuleUtil {
     });
   }
 
-  public static String check(@Nullable final SRepository repo, String extension, final String namespace, String rootPath) {
+  public static String check(MPSProject mpsProject, String extension, final String namespace, String rootPath) {
     if (MPSExtentions.DOT_LANGUAGE.equals(extension) && !(SourceVersion.isName(namespace))) {
       return "Language namespace should be valid Java package";
     }
     if (rootPath.length() == 0) {
       return "Path should be specified";
     }
-    String message = NewModuleCheckUtil.checkModuleDirectory(new File(rootPath), extension, "Module");
-    if (message != null) {
-      return message;
-    }
     if (namespace.length() == 0) {
       return "Namespace should be specified";
     }
-    // If don't have repository then there are no duplicated module name
-    boolean duplicateName = (repo == null ? false : new ModelAccessHelper(repo).runReadAction(new Computable<Boolean>() {
+    final SRepository repo = mpsProject.getRepository();
+    // FIXME in fact, no reason to bother with identical name, it's module id that matters
+    boolean duplicateName = new ModelAccessHelper(repo).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
         return !(new ModuleRepositoryFacade(repo).getModulesByName(namespace).isEmpty());
       }
-    }));
+    });
     if (duplicateName) {
       return "Module namespace already exists";
     }
     if (NameUtil.shortNameFromLongName(namespace).length() == 0) {
       return "Enter valid namespace";
     }
-    IFile moduleDir = getModuleFile(namespace, rootPath, extension).getParent();
-    // FIXME it's suspicious to check existence of a model directory to tell existence of a module
-    // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring
-    if (moduleDir.findChild(Language.LANGUAGE_MODELS).exists() || moduleDir.findChild(Language.LEGACY_LANGUAGE_MODELS).exists() || moduleDir.findChild(Solution.SOLUTION_MODELS).exists()) {
-      return "Module already exists in this folder";
+    IFile moduleDir = getModuleFile(namespace, mpsProject.getFileSystem().getFile(rootPath), extension).getParent();
+    if (!(moduleDir.exists())) {
+      return null;
     }
-
+    if (!(moduleDir.isDirectory())) {
+      return String.format("%s is not a directory", moduleDir.getPath());
+    }
+    for (IFile child : moduleDir.getChildren()) {
+      if (child.isDirectory()) {
+        // FIXME it's suspicious to check existence of a model directory to tell existence of a module
+        // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring
+        // FWIW, LANGUAGE_MODELS==SOLUTION_MODELS
+        if (Language.LANGUAGE_MODELS.equals(child.getName()) || Language.LEGACY_LANGUAGE_MODELS.equals(child.getName()) || Solution.SOLUTION_MODELS.equals(child.getName())) {
+          return "Module already exists in this folder";
+        }
+      } else {
+        if (child.getName().endsWith(extension)) {
+          // that's what NewModuleCheckUtil.checkModuleDirectory (6b693c1e) did.
+          return String.format("Selected folder already contains module descriptor file (%s)", child.getPath());
+        }
+      }
+    }
     return null;
   }
 
@@ -299,9 +310,8 @@ public class NewModuleUtil {
     return generatorDescriptor;
   }
 
-  private static IFile getModuleFile(String namespace, String rootPath, String extension) {
-    String path = rootPath + File.separator + namespace + extension;
-    return FileSystem.getInstance().getFile(path);
+  private static IFile getModuleFile(String namespace, IFile rootPath, String extension) {
+    return rootPath.findChild(namespace + extension);
   }
 
   private static SolutionDescriptor createNewSolutionDescriptor(String namespace, IFile descriptorFile) {
