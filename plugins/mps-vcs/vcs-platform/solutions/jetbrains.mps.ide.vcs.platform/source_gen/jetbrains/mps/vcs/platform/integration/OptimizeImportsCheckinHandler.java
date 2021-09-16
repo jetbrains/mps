@@ -15,15 +15,15 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.SModelFileTracker;
 import java.util.Collection;
-import java.io.File;
+import com.intellij.openapi.vfs.VirtualFile;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.ArrayList;
-import jetbrains.mps.vfs.FileSystem;
 import com.intellij.openapi.progress.Task;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -74,16 +74,15 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
   }
   @Override
   public CheckinHandler.ReturnResult beforeCheckin() {
-    final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     if (getSettings().OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT && mpsProject != null) {
       final SRepository repository = mpsProject.getRepository();
       SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(repository);
-      // FIXME there's getVirtualFiles that we can make use of to get IFile, provided there's access to project FS through MPSProject
-      Collection<File> affectedFiles = myPanel.getFiles();
-      // XXX getFiles gives deleted files as well (unlike getVirtualFiles), are we sure we'd need to use this method?! 
+      Collection<VirtualFile> affectedFiles = myPanel.getVirtualFiles();
+      // note, unlike getVirtualFiles, getFiles gives deleted files as well
       final List<SModel> affectedModels = new ArrayList<SModel>();
-      for (File file : affectedFiles) {
-        SModel model = modelFileTracker.findModel(FileSystem.getInstance().getFile(file.getAbsolutePath()));
+      for (VirtualFile file : affectedFiles) {
+        SModel model = modelFileTracker.findModel(mpsProject.getFileSystem().fromVirtualFile(file));
         if (model == null) {
           continue;
         }

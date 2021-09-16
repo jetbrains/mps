@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
 
+import java.io.File;
 import java.util.Objects;
 
 /**
@@ -52,6 +53,12 @@ public final class FilePerRootDataSource extends FolderDataSource {
 
   @Internal
   public static boolean isPerRootPersistenceFile(@NotNull IFile file) {
+    // I don't like this pair of methods, nor the way they are used in vcs!
+    return isPerRootPersistenceFile(new File(file.getPath()));
+  }
+
+  @Internal
+  public static boolean isPerRootPersistenceFile(@NotNull File file) {
     String fileName = file.getName();
     if (MPSExtentions.DOT_MODEL_HEADER.equals(fileName)) {
       return true;
