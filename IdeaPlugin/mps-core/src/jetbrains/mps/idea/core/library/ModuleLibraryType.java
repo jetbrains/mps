@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,8 +73,9 @@ import java.util.List;
 import java.util.Set;
 
 public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
+
   public ModuleLibraryType() {
-    super(MpsModuleLibraryKindContainer.MPS_MODULE_LIBRARY_KIND);
+    super(new MpsModuleLibraryKind());
   }
 
   @Nullable
@@ -167,19 +168,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
   }
 
   public static boolean isMPSModuleLibrary(Library l) {
-    return isModuleLibrary(l);
-  }
-
-  /**
-   * @deprecated use {@link #isMPSModuleLibrary(Library)}, with name that reflects intention better
-   */
-  @Deprecated
-  public static boolean isModuleLibrary(Library l) {
-    if (l instanceof LibraryEx) {
-      PersistentLibraryKind<?> kind = ((LibraryEx) l).getKind();
-      return kind != null && MpsModuleLibraryKindContainer.MPS_MODULE_LIBRARY_KIND.getKindId().equals(kind.getKindId());
-    }
-    return false;
+    return l instanceof LibraryEx && MpsModuleLibraryKind.is(((LibraryEx) l).getKind());
   }
 
   public static ModuleLibraryType getInstance() {
@@ -321,5 +310,30 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
     result.addAll(availableSolutions);
     result.addAll(availableLanguages);
     return result;
+  }
+
+  static class MpsModuleLibraryKind extends PersistentLibraryKind<DummyLibraryProperties> {
+    private static final String ID = "mps.solution.library";
+
+    MpsModuleLibraryKind() {
+      super(ID);
+    }
+
+    @NotNull
+    @Override
+    public DummyLibraryProperties createDefaultProperties() {
+      return new DummyLibraryProperties();
+    }
+
+    @NotNull
+    @Override
+    public OrderRootType[] getAdditionalRootTypes() {
+      return new OrderRootType[]{ModuleXmlRootDetector.MPS_MODULE_XML};
+    }
+
+    static boolean is(PersistentLibraryKind<?> other) {
+      // Perhaps, with IDEA-98118 fixed, could use MLT.getInstance().getKind() == other
+      return other != null && ID.equals(other.getKindId());
+    }
   }
 }
