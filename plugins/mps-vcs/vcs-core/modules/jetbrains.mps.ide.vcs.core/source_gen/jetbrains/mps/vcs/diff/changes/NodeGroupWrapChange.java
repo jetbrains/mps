@@ -22,6 +22,11 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.diff.DiffUtil;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4047500669634631216", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
@@ -260,5 +265,27 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
   public WrappingNodesGroup getWrappingGroup() {
     return myWrappingGroup;
+  }
+
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNew) {
+    if (isNew == isWrap()) {
+      return super.createMessageTargetsWithIds(isNew);
+    }
+    // main difference here with the super method is that we don't create messages
+    // for internal changes in wrapped area and use only really wrapped unchanged groups. 
+    return ListSequence.fromList(getWrappingGroup().getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
+      public boolean accept(ModifiedNodesGroup it) {
+        return it.isWrappedMove();
+      }
+    }).translate(new ITranslator2<ModifiedNodesGroup, ModifiedNode>() {
+      public Iterable<ModifiedNode> translate(ModifiedNodesGroup it) {
+        return it.getModifiedNodes();
+      }
+    }).select(new ISelector<ModifiedNode, Tuples._2<SNodeId, MessageTarget>>() {
+      public Tuples._2<SNodeId, MessageTarget> select(ModifiedNode it) {
+        return MultiTuple.<SNodeId,MessageTarget>from(it.getNodeId(), ((MessageTarget) new NodeMessageTarget()));
+      }
+    }).toListSequence();
   }
 }
