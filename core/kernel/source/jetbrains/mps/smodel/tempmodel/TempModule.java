@@ -41,8 +41,6 @@ import java.util.Set;
  * FIXME why does TempModule manifests itself as 'isPackaged() == true', anyone? Not to get asked about module source dir?
  */
 public class TempModule extends ReloadableModuleBase implements SModule, MPSModuleOwner {
-  private final static Logger LOG = LogManager.getLogger(TempModule.class);
-
   private final ModuleDescriptor myDescriptor;
   private final JavaModuleFacet myJavaModuleFacet;
 
@@ -59,7 +57,6 @@ public class TempModule extends ReloadableModuleBase implements SModule, MPSModu
     dependenciesChanged();
 
     if (withJavaFacet) {
-      // FIXME arguments for sourceGen and classGen locations are ignored
       myJavaModuleFacet = new NaiveJavaModuleFacet(this,
                                                   withSourceGen ? "TEMP_SOURCE_GEN"
                                                                 : null,

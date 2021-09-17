@@ -131,7 +131,7 @@ public class DeployScript {
     private TemporalModuleWithDescriptorFile(@NotNull IFile baseDir) {
       super(baseDir.findChild("module.msd"));
       setModuleReference(new ModuleReference("Temp module for assembling plugins", ModuleId.regular()));
-      myJavaModuleFacet = new NaiveJavaModuleFacet(this, "MODULE_SOURCE_GEN", "MODULE_CLASSES_GEN");
+      myJavaModuleFacet = new NaiveJavaModuleFacet(this, baseDir.findChild("MODULE_SOURCE_GEN"), baseDir.findChild("MODULE_CLASSES_GEN"));
     }
 
     @NotNull

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,17 @@ package jetbrains.mps.smodel.tempmodel;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * A simple java facet provided with two locations of source_gen and classes_gen
@@ -37,9 +36,6 @@ import java.util.Set;
  * Created by apyshkin on 12/7/17.
  */
 public final class NaiveJavaModuleFacet implements JavaModuleFacet {
-  private final static Logger LOG = LogManager.getLogger(TempModule.class);
-
-  @NotNull
   private final AbstractModule myOwningModule;
   private final IFile mySourceGen;
   private final IFile myClassesGen;
@@ -51,9 +47,19 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   }
 
   public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable String sourceGen, @NotNull String classesGen) {
+    this(owningModule, (f) -> owningModule.getFileSystem().getFile(f.getAbsolutePath()), sourceGen, classesGen);
+  }
+
+  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @NotNull Function<File, IFile> fsMap, @Nullable String sourceGen, @NotNull String classesGen) {
     myOwningModule = owningModule;
-    mySourceGen = sourceGen == null ? null : createTempDirectory("TempModule_source_gen");
-    myClassesGen = createTempDirectory("TempModule_classes_gen");
+    mySourceGen = sourceGen == null ? null : fsMap.apply(FileUtil.createTmpDir(sourceGen));
+    myClassesGen = fsMap.apply(FileUtil.createTmpDir(classesGen));
+  }
+
+  public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable IFile sourceGen, @NotNull IFile classesGen) {
+    myOwningModule = owningModule;
+    mySourceGen = sourceGen;
+    myClassesGen = classesGen;
   }
 
   @Override
@@ -107,26 +113,5 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   @Override
   public void load(Memento memento) {
     throw new UnsupportedOperationException();
-  }
-
-  private IFile createTempDirectory(@NotNull String prefix) {
-    try {
-      final File temp;
-
-      temp = File.createTempFile(prefix, "");
-
-      if (!(temp.delete())) {
-        throw new IOException("Could not delete temp file: " + temp.getAbsolutePath());
-      }
-
-      if (!(temp.mkdir())) {
-        throw new IOException("Could not create temp directory: " + temp.getAbsolutePath());
-      }
-
-      return myOwningModule.getFileSystem().getFile(temp.getAbsolutePath());
-    } catch (IOException e) {
-      LOG.error(e.toString(), e);
-      return null;
-    }
   }
 }
