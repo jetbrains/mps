@@ -5,6 +5,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.openapi.util.Key;
+import java.io.File;
 import jetbrains.mps.project.Project;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -13,13 +14,14 @@ import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.io.File;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
@@ -37,11 +39,10 @@ import java.util.concurrent.ExecutionException;
 import org.apache.log4j.Level;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.smodel.tempmodel.NaiveJavaModuleFacet;
-import jetbrains.mps.vfs.IFile;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -51,6 +52,7 @@ public class DeployScript {
   public static final Key<DeployScript> KEY = Key.create("Deploy.Script");
 
   private final TemporalModuleWithDescriptorFile myModule;
+  private final File myModuleBaseDir;
   private final Project myProject;
   private final Set<SModel> myModelsToMake = SetSequence.fromSet(new HashSet<SModel>());
   private final String myDeployScriptPath;
@@ -58,7 +60,10 @@ public class DeployScript {
 
   public DeployScript(@NotNull Project project, List<SNodeReference> plugins) {
     myProject = project;
-    myModule = new TemporalModuleWithDescriptorFile(FileUtil.createTmpDir().getAbsolutePath());
+    IFileSystem pojoFS = project.getComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
+    // in fact, can use IFile for all cases, but just got tired refactoring JB's code
+    myModuleBaseDir = FileUtil.createTmpDir();
+    myModule = new TemporalModuleWithDescriptorFile(pojoFS.getFile(myModuleBaseDir));
     SRepository projectRepo = project.getRepository();
     assert projectRepo instanceof SRepositoryExt;
     ((SRepositoryExt) projectRepo).registerModule(myModule, project);
@@ -66,10 +71,10 @@ public class DeployScript {
     SModel model = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forExistingModule(myModule));
     SetSequence.fromSet(myModelsToMake).addElement(model);
 
-    SNode deployScriptNode = DeployScriptCreator.createDeployScript(myProject, plugins, myModule.getBaseDirectory());
+    SNode deployScriptNode = DeployScriptCreator.createDeployScript(myProject, plugins, myModuleBaseDir);
     model.addRootNode(deployScriptNode);
-    myDeployScriptPath = new File(myModule.getBaseDirectory(), BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(deployScriptNode)).getAbsolutePath();
-    myArtifactsPath = new File(new File(new File(myModule.getBaseDirectory(), "build"), "artifacts"), SPropertyOperations.getString(deployScriptNode, PROPS.name$MnvL)).getAbsolutePath();
+    myDeployScriptPath = new File(myModuleBaseDir, BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(deployScriptNode)).getAbsolutePath();
+    myArtifactsPath = new File(new File(new File(myModuleBaseDir, "build"), "artifacts"), SPropertyOperations.getString(deployScriptNode, PROPS.name$MnvL)).getAbsolutePath();
 
     new ModelDependencyUpdate(model).updateUsedLanguages().updateImportedModels(projectRepo).updateModuleDependencies(projectRepo);
   }
@@ -115,7 +120,7 @@ public class DeployScript {
       public void run() {
         SRepository projectRepo = myProject.getRepository();
         ((SRepositoryExt) projectRepo).unregisterModule(myModule, myProject);
-        FileUtil.delete(myModule.getBaseDirectory());
+        FileUtil.delete(myModuleBaseDir);
       }
     });
   }
@@ -123,15 +128,10 @@ public class DeployScript {
   private static class TemporalModuleWithDescriptorFile extends AbstractModule {
     private final SModuleFacet myJavaModuleFacet;
 
-    private TemporalModuleWithDescriptorFile(@NotNull String baseDir) {
-      super(IoFileSystem.INSTANCE.getFile(baseDir).findChild("module.msd"));
+    private TemporalModuleWithDescriptorFile(@NotNull IFile baseDir) {
+      super(baseDir.findChild("module.msd"));
       setModuleReference(new ModuleReference("Temp module for assembling plugins", ModuleId.regular()));
       myJavaModuleFacet = new NaiveJavaModuleFacet(this, "MODULE_SOURCE_GEN", "MODULE_CLASSES_GEN");
-    }
-
-    public File getBaseDirectory() {
-      IFile moduleSourceDir = getModuleSourceDir();
-      return new File(moduleSourceDir.getPath());
     }
 
     @NotNull
