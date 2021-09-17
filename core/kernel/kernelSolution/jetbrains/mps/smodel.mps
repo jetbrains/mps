@@ -7757,7 +7757,14 @@
     <node concept="3Tm1VV" id="5qGXSHdtRTo" role="1B3o_S" />
     <node concept="3UR2Jj" id="5qGXSHdulxX" role="lGtFl">
       <node concept="TZ5HA" id="5qGXSHdulxY" role="TZ5H$">
-        <node concept="1dT_AC" id="5qGXSHdulxZ" role="1dT_Ay" />
+        <node concept="1dT_AC" id="5qGXSHdulxZ" role="1dT_Ay">
+          <property role="1dT_AB" value="Update MPS internal records of versions for module dependencies. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5ziLofeze4R" role="TZ5H$">
+        <node concept="1dT_AC" id="5ziLofeze4S" role="1dT_Ay">
+          <property role="1dT_AB" value="These versions are persisted as part of module descriptor." />
+        </node>
       </node>
     </node>
   </node>
