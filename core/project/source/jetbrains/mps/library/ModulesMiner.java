@@ -337,6 +337,30 @@ public final class ModulesMiner {
       }
       // XXX now we ignore deployment descriptors here, is it desired?
       if (trySourceModuleDescriptorsFromFile(child)) {
+        // There used to be a hack in JavaModuleFacetImpl.getClassPath():
+        // >>>
+        // Solution(s) bundled into single jar with classes (both from hand-written and generated sources) at the root.
+        // HACK. Fallback for manually bundled modules (vcs.jar or mps-core.jar):
+        //   my.jar
+        //     compile output of module1
+        //   modules
+        //      module sources of module1
+        // There's no DD there, and assumption is that there are classes at the jar root.
+        // Not yet sure what's the right way to deal with them:
+        //   - specify DD (META-INF/module.xml) at build time looks most 'honest', however, with multiple modules inside same jar it's not an option,
+        //     unless we can make DD per module, not per jar (requires support in MM.tryReadFromModulesDir). Support in Build language needed, too (to
+        //     specify 'module descriptor of' under 'folder with sources of'
+        //   - Patch MD in MM when loaded from modules/ location (e.g. add DD with proper classpath there). (+) keep knowledge about deployment layout
+        //     inside MM.
+        //   - Hack in JMFI.getClassPath()
+        // <<<
+        // MPS no longer bundles such modules, nor does mbeddr (well, in MPS there are jars with stub modules packaged this way, but they don't
+        //     assume classes in the same jar, rather reference external jars in their source module descriptors).
+        //     I don't see a point to keep this hack, however, one can never be sure if there's any code elsewhere that still uses this approach
+        //     so I leave this note here. I suppose it's always possible to workaround the case with individual jars
+        //     (+meta-inf/plugin descriptor, +module/sources of), but in case it turns out we have to support the aforementioned case, this is the
+        //     place to fix. Here, one would need to patch source module discovered by trySourceModuleDescriptorsFromFile to use 'bundleHome' value as
+        //     an addition to module classpath.
         return true;
       }
     }
