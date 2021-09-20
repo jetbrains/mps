@@ -21,73 +21,81 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:c5d41a19-6eb6-4d90-a314-8eea0aaaa458(jetbrains.mps.samples.propertyPersistenceDef.persistence)/1147274425808310333">
     <file name="PropertyFilesStubModelRootEntryFactory.java">
-      <node id="1147274425808453911" at="12,113,13,53" concept="10" />
-      <node id="1147274425808312221" at="10,0,15,0" concept="8" trace="getModelRootEntry#(Ljetbrains/mps/samples/propertyPersistenceDef/persistence/PropertyFilesStubModelRoot;)Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntry;" />
-      <scope id="1147274425808312232" at="12,113,13,53" />
-      <scope id="1147274425808312221" at="10,0,15,0">
+      <node id="4657891101580138222" at="13,0,14,0" concept="5" trace="myProject" />
+      <node id="4657891101580149125" at="14,70,15,65" concept="4" />
+      <node id="1147274425808453911" at="20,113,21,64" concept="10" />
+      <node id="4657891101580129076" at="14,0,17,0" concept="2" trace="PropertyFilesStubModelRootEntryFactory#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="1147274425808312221" at="18,0,23,0" concept="8" trace="getModelRootEntry#(Ljetbrains/mps/samples/propertyPersistenceDef/persistence/PropertyFilesStubModelRoot;)Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntry;" />
+      <scope id="4657891101580129080" at="14,70,15,65" />
+      <scope id="1147274425808312232" at="20,113,21,64" />
+      <scope id="4657891101580129076" at="14,0,17,0">
+        <var name="ideaProject" id="4657891101580131395" />
+      </scope>
+      <scope id="1147274425808312221" at="18,0,23,0">
         <var name="root" id="1147274425808312227" />
       </scope>
-      <unit id="1147274425808310333" at="9,0,16,0" name="jetbrains.mps.samples.propertyPersistenceDef.persistence.PropertyFilesStubModelRootEntryFactory" />
+      <unit id="1147274425808310333" at="12,0,24,0" name="jetbrains.mps.samples.propertyPersistenceDef.persistence.PropertyFilesStubModelRootEntryFactory" />
     </file>
   </root>
   <root nodeRef="r:c5d41a19-6eb6-4d90-a314-8eea0aaaa458(jetbrains.mps.samples.propertyPersistenceDef.persistence)/1147274425808312850">
     <file name="PropertyFilesStubModelRootEntry.java">
-      <node id="1147274425808317814" at="20,75,21,56" concept="4" />
-      <node id="1147274425808389522" at="21,56,22,23" concept="4" />
-      <node id="1147274425808409718" at="27,52,28,18" concept="10" />
-      <node id="1147274425808412225" at="32,34,33,44" concept="10" />
-      <node id="1147274425808416449" at="36,28,37,37" concept="10" />
-      <node id="1147274425808400940" at="41,43,42,39" concept="10" />
-      <node id="1147274425808420229" at="45,98,46,56" concept="4" />
-      <node id="1147274425808424592" at="49,101,50,59" concept="4" />
-      <node id="1147274425808426076" at="54,43,55,49" concept="10" />
-      <node id="1147274425808432704" at="58,47,59,46" concept="4" />
-      <node id="1147274425808440370" at="62,38,63,43" concept="4" />
-      <node id="1147274425808446410" at="66,25,67,30" concept="4" />
-      <node id="2773971779182568089" at="15,0,17,0" concept="5" trace="myModelRootData" />
-      <node id="2773971779182568094" at="17,0,19,0" concept="5" trace="myRoot" />
-      <node id="1147274425808389502" at="20,0,24,0" concept="2" trace="PropertyFilesStubModelRootEntry#(Ljetbrains/mps/samples/propertyPersistenceDef/persistence/PropertyFilesStubModelRoot;)V" />
-      <node id="1147274425808313744" at="35,0,39,0" concept="8" trace="isValid#()Z" />
-      <node id="1147274425808313761" at="44,0,48,0" concept="8" trace="addModelRootEntryListener#(Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntry/ModelRootEntryListener;)V" />
-      <node id="1147274425808313770" at="48,0,52,0" concept="8" trace="removeModelRootEntryListener#(Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntry/ModelRootEntryListener;)V" />
-      <node id="1147274425808313789" at="57,0,61,0" concept="8" trace="setForegroundColor#(Ljava/awt/Color;)V" />
-      <node id="1147274425808313798" at="61,0,65,0" concept="8" trace="resetForegroundColor#()V" />
-      <node id="1147274425808313805" at="65,0,69,0" concept="8" trace="dispose#()V" />
-      <node id="1147274425808313727" at="25,0,30,0" concept="8" trace="getModelRoot#()Ljetbrains/mps/samples/propertyPersistenceDef/persistence/PropertyFilesStubModelRoot;" />
-      <node id="1147274425808313735" at="30,0,35,0" concept="8" trace="getDetailsText#()Ljava/lang/String;" />
-      <node id="1147274425808313752" at="39,0,44,0" concept="8" trace="getEditor#()Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntryEditor;" />
-      <node id="1147274425808313779" at="52,0,57,0" concept="8" trace="getDetailsComponent#()Ljavax/swing/JComponent;" />
-      <scope id="1147274425808313733" at="27,52,28,18" />
-      <scope id="1147274425808313740" at="32,34,33,44" />
-      <scope id="1147274425808313748" at="36,28,37,37" />
-      <scope id="1147274425808313757" at="41,43,42,39" />
-      <scope id="1147274425808313768" at="45,98,46,56" />
-      <scope id="1147274425808313777" at="49,101,50,59" />
-      <scope id="1147274425808313785" at="54,43,55,49" />
-      <scope id="1147274425808313796" at="58,47,59,46" />
-      <scope id="1147274425808313803" at="62,38,63,43" />
-      <scope id="1147274425808313810" at="66,25,67,30" />
-      <scope id="1147274425808389506" at="20,75,22,23" />
-      <scope id="1147274425808389502" at="20,0,24,0">
+      <node id="1147274425808317814" at="21,98,22,68" concept="4" />
+      <node id="1147274425808389522" at="22,68,23,23" concept="4" />
+      <node id="1147274425808409718" at="28,52,29,18" concept="10" />
+      <node id="1147274425808412225" at="33,34,34,44" concept="10" />
+      <node id="1147274425808416449" at="37,28,38,37" concept="10" />
+      <node id="1147274425808400940" at="42,43,43,39" concept="10" />
+      <node id="1147274425808420229" at="46,98,47,56" concept="4" />
+      <node id="1147274425808424592" at="50,101,51,59" concept="4" />
+      <node id="1147274425808426076" at="55,43,56,49" concept="10" />
+      <node id="1147274425808432704" at="59,47,60,46" concept="4" />
+      <node id="1147274425808440370" at="63,38,64,43" concept="4" />
+      <node id="1147274425808446410" at="67,25,68,30" concept="4" />
+      <node id="2773971779182568089" at="16,0,18,0" concept="5" trace="myModelRootData" />
+      <node id="2773971779182568094" at="18,0,20,0" concept="5" trace="myRoot" />
+      <node id="1147274425808389502" at="21,0,25,0" concept="2" trace="PropertyFilesStubModelRootEntry#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/samples/propertyPersistenceDef/persistence/PropertyFilesStubModelRoot;)V" />
+      <node id="1147274425808313744" at="36,0,40,0" concept="8" trace="isValid#()Z" />
+      <node id="1147274425808313761" at="45,0,49,0" concept="8" trace="addModelRootEntryListener#(Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntry/ModelRootEntryListener;)V" />
+      <node id="1147274425808313770" at="49,0,53,0" concept="8" trace="removeModelRootEntryListener#(Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntry/ModelRootEntryListener;)V" />
+      <node id="1147274425808313789" at="58,0,62,0" concept="8" trace="setForegroundColor#(Ljava/awt/Color;)V" />
+      <node id="1147274425808313798" at="62,0,66,0" concept="8" trace="resetForegroundColor#()V" />
+      <node id="1147274425808313805" at="66,0,70,0" concept="8" trace="dispose#()V" />
+      <node id="1147274425808313727" at="26,0,31,0" concept="8" trace="getModelRoot#()Ljetbrains/mps/samples/propertyPersistenceDef/persistence/PropertyFilesStubModelRoot;" />
+      <node id="1147274425808313735" at="31,0,36,0" concept="8" trace="getDetailsText#()Ljava/lang/String;" />
+      <node id="1147274425808313752" at="40,0,45,0" concept="8" trace="getEditor#()Lorg/jetbrains/mps/openapi/ui/persistence/ModelRootEntryEditor;" />
+      <node id="1147274425808313779" at="53,0,58,0" concept="8" trace="getDetailsComponent#()Ljavax/swing/JComponent;" />
+      <scope id="1147274425808313733" at="28,52,29,18" />
+      <scope id="1147274425808313740" at="33,34,34,44" />
+      <scope id="1147274425808313748" at="37,28,38,37" />
+      <scope id="1147274425808313757" at="42,43,43,39" />
+      <scope id="1147274425808313768" at="46,98,47,56" />
+      <scope id="1147274425808313777" at="50,101,51,59" />
+      <scope id="1147274425808313785" at="55,43,56,49" />
+      <scope id="1147274425808313796" at="59,47,60,46" />
+      <scope id="1147274425808313803" at="63,38,64,43" />
+      <scope id="1147274425808313810" at="67,25,68,30" />
+      <scope id="1147274425808389506" at="21,98,23,23" />
+      <scope id="1147274425808389502" at="21,0,25,0">
+        <var name="mpsProject" id="4657891101580174731" />
         <var name="root" id="1147274425808389521" />
       </scope>
-      <scope id="1147274425808313744" at="35,0,39,0" />
-      <scope id="1147274425808313761" at="44,0,48,0">
+      <scope id="1147274425808313744" at="36,0,40,0" />
+      <scope id="1147274425808313761" at="45,0,49,0">
         <var name="listener" id="1147274425808313765" />
       </scope>
-      <scope id="1147274425808313770" at="48,0,52,0">
+      <scope id="1147274425808313770" at="49,0,53,0">
         <var name="listener" id="1147274425808313774" />
       </scope>
-      <scope id="1147274425808313789" at="57,0,61,0">
+      <scope id="1147274425808313789" at="58,0,62,0">
         <var name="color" id="1147274425808313793" />
       </scope>
-      <scope id="1147274425808313798" at="61,0,65,0" />
-      <scope id="1147274425808313805" at="65,0,69,0" />
-      <scope id="1147274425808313727" at="25,0,30,0" />
-      <scope id="1147274425808313735" at="30,0,35,0" />
-      <scope id="1147274425808313752" at="39,0,44,0" />
-      <scope id="1147274425808313779" at="52,0,57,0" />
-      <unit id="1147274425808312850" at="14,0,70,0" name="jetbrains.mps.samples.propertyPersistenceDef.persistence.PropertyFilesStubModelRootEntry" />
+      <scope id="1147274425808313798" at="62,0,66,0" />
+      <scope id="1147274425808313805" at="66,0,70,0" />
+      <scope id="1147274425808313727" at="26,0,31,0" />
+      <scope id="1147274425808313735" at="31,0,36,0" />
+      <scope id="1147274425808313752" at="40,0,45,0" />
+      <scope id="1147274425808313779" at="53,0,58,0" />
+      <unit id="1147274425808312850" at="15,0,71,0" name="jetbrains.mps.samples.propertyPersistenceDef.persistence.PropertyFilesStubModelRootEntry" />
     </file>
   </root>
   <root nodeRef="r:c5d41a19-6eb6-4d90-a314-8eea0aaaa458(jetbrains.mps.samples.propertyPersistenceDef.persistence)/4006994020106270256">

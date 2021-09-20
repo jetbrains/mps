@@ -114,9 +114,9 @@ public class ModelRootContentEntriesEditor implements Disposable {
     myProject = p;
     // XXX I'm puzzled with mix of ModelRoot and ModelRootDescriptor in ModelRootEntryPersistence, shall stick to one
     //     i.e. basically have to decide whether we edit SModule or ModuleDescriptor.
-    myRootEntryPersistence = new ModelRootEntryPersistence(PersistenceFacade.getInstance());
+    myRootEntryPersistence = new ModelRootEntryPersistence(p, PersistenceFacade.getInstance());
     for (ModelRootDescriptor descriptor : modelRoots) {
-      ModelRootEntry entry = myRootEntryPersistence.getModelRootEntry(descriptor);
+      ModelRootEntry<?> entry = myRootEntryPersistence.getModelRootEntry(descriptor);
       if (entry != null) {
         Disposer.register(this, entry);
         ModelRootEntryContainer container = new ModelRootEntryContainer(entry);

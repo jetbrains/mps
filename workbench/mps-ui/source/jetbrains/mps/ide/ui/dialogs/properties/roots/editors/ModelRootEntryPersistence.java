@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,13 @@
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
 import jetbrains.mps.ide.ui.dialogs.properties.persistence.ModelRootEntryEP;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
+import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryFactory;
 
 import java.util.function.BiConsumer;
 
@@ -29,19 +31,22 @@ import java.util.function.BiConsumer;
  * for {@link ModelRootEntry}.
  */
 final class ModelRootEntryPersistence {
+  private final MPSProject myProject;
   private final PersistenceFacade myPersistenceFacade;
   // list with sequential search is perfectly ok, we don't expect it to grow too big
 
-  public ModelRootEntryPersistence(PersistenceFacade persistenceFacade) {
+  public ModelRootEntryPersistence(MPSProject mpsProject, PersistenceFacade persistenceFacade) {
+    myProject = mpsProject;
     myPersistenceFacade = persistenceFacade;
   }
 
   @Nullable
-  public ModelRootEntry getModelRootEntry(ModelRoot modelRoot) {
+  public ModelRootEntry<?> getModelRootEntry(ModelRoot modelRoot) {
     final String kind = modelRoot.getType();
     for (ModelRootEntryEP extension : ModelRootEntryEP.EP_NAME.getExtensionList()) {
       if (kind.equals(extension.rootType)) {
-        return extension.getModelRootEntryFactory().getModelRootEntry(modelRoot);
+        final ModelRootEntryFactory<ModelRoot> mreFactory = extension.getModelRootEntryFactory(myProject);
+        return mreFactory.getModelRootEntry(modelRoot);
       }
     }
     return null;
@@ -53,7 +58,7 @@ final class ModelRootEntryPersistence {
     }
   }
 
-  public ModelRootEntry getModelRootEntry(ModelRootDescriptor descriptor) {
+  public ModelRootEntry<?> getModelRootEntry(ModelRootDescriptor descriptor) {
     ModelRoot modelRoot = myPersistenceFacade.getModelRootFactory(descriptor.getType()).create();
     modelRoot.load(descriptor.getMemento());
 

@@ -32,6 +32,9 @@
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
+    <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
+    <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
@@ -116,6 +119,7 @@
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
+        <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -2913,6 +2917,42 @@
   </node>
   <node concept="312cEu" id="ZFW0c2ct0X">
     <property role="TrG5h" value="PropertyFilesStubModelRootEntryFactory" />
+    <property role="1EXbeo" value="true" />
+    <node concept="312cEg" id="42$9Ot08LrI" role="jymVt">
+      <property role="TrG5h" value="myProject" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="42$9Ot08KrX" role="1B3o_S" />
+      <node concept="3uibUv" id="42$9Ot08N07" role="1tU5fm">
+        <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
+      </node>
+    </node>
+    <node concept="3clFbW" id="42$9Ot08JcO" role="jymVt">
+      <node concept="3cqZAl" id="42$9Ot08JcQ" role="3clF45" />
+      <node concept="3Tm1VV" id="42$9Ot08JcR" role="1B3o_S" />
+      <node concept="3clFbS" id="42$9Ot08JcS" role="3clF47">
+        <node concept="3clFbF" id="42$9Ot08O65" role="3cqZAp">
+          <node concept="37vLTI" id="42$9Ot08OUn" role="3clFbG">
+            <node concept="2YIFZM" id="42$9Ot08R$a" role="37vLTx">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <node concept="37vLTw" id="42$9Ot08Sr_" role="37wK5m">
+                <ref role="3cqZAo" node="42$9Ot08JL3" resolve="ideaProject" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="42$9Ot08O64" role="37vLTJ">
+              <ref role="3cqZAo" node="42$9Ot08LrI" resolve="myProject" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="42$9Ot08JL3" role="3clF46">
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="42$9Ot08JL2" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="42$9Ot08SAu" role="jymVt" />
     <node concept="3Tm1VV" id="ZFW0c2ct0Y" role="1B3o_S" />
     <node concept="3uibUv" id="ZFW0c2ctlN" role="EKbjA">
       <ref role="3uigEE" to="3fr7:~ModelRootEntryFactory" resolve="ModelRootEntryFactory" />
@@ -2946,6 +2986,9 @@
           <node concept="2ShNRf" id="ZFW0c2d04h" role="3clFbG">
             <node concept="1pGfFk" id="ZFW0c2d2q7" role="2ShVmc">
               <ref role="37wK5l" node="ZFW0c2cKlY" resolve="PropertyFilesStubModelRootEntry" />
+              <node concept="37vLTw" id="42$9Ot08YSu" role="37wK5m">
+                <ref role="3cqZAo" node="42$9Ot08LrI" resolve="myProject" />
+              </node>
               <node concept="37vLTw" id="ZFW0c2d2$6" role="37wK5m">
                 <ref role="3cqZAo" node="ZFW0c2ctuz" resolve="root" />
               </node>
@@ -2960,6 +3003,7 @@
   </node>
   <node concept="312cEu" id="ZFW0c2ctCi">
     <property role="TrG5h" value="PropertyFilesStubModelRootEntry" />
+    <property role="1EXbeo" value="true" />
     <node concept="312cEg" id="2pZ8abj8Eap" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -3005,7 +3049,10 @@
           <node concept="37vLTI" id="ZFW0c2cvqi" role="3clFbG">
             <node concept="2ShNRf" id="ZFW0c2cvFE" role="37vLTx">
               <node concept="1pGfFk" id="ZFW0c2cJgh" role="2ShVmc">
-                <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.&lt;init&gt;(jetbrains.mps.extapi.persistence.FileBasedModelRoot)" resolve="FileBasedModelRootEntry" />
+                <ref role="37wK5l" to="v2y9:~FileBasedModelRootEntry.&lt;init&gt;(jetbrains.mps.project.MPSProject,jetbrains.mps.extapi.persistence.FileBasedModelRoot)" resolve="FileBasedModelRootEntry" />
+                <node concept="37vLTw" id="42$9Ot08Xip" role="37wK5m">
+                  <ref role="3cqZAo" node="42$9Ot08Umb" resolve="mpsProject" />
+                </node>
                 <node concept="37vLTw" id="ZFW0c2cLPC" role="37wK5m">
                   <ref role="3cqZAo" node="ZFW0c2cKmh" resolve="root" />
                 </node>
@@ -3028,6 +3075,12 @@
               <ref role="3cqZAo" node="ZFW0c2cKmh" resolve="root" />
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="42$9Ot08Umb" role="3clF46">
+        <property role="TrG5h" value="mpsProject" />
+        <node concept="3uibUv" id="42$9Ot08Vlc" role="1tU5fm">
+          <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
         </node>
       </node>
       <node concept="37vLTG" id="ZFW0c2cKmh" role="3clF46">

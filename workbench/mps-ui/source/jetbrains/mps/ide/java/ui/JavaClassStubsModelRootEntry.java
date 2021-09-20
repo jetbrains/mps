@@ -20,6 +20,7 @@ import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEditor;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEntry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
@@ -36,8 +37,8 @@ public final class JavaClassStubsModelRootEntry implements ModelRootEntry<JavaCl
   @NotNull private final FileBasedModelRootEntry myModelRootData;
   @NotNull private final JavaClassStubsModelRoot myRoot;
 
-  public JavaClassStubsModelRootEntry(@NotNull JavaClassStubsModelRoot root) {
-    myModelRootData = new FileBasedModelRootEntry(root);
+  public JavaClassStubsModelRootEntry(MPSProject mpsProject, @NotNull JavaClassStubsModelRoot root) {
+    myModelRootData = new FileBasedModelRootEntry(mpsProject, root);
     myRoot = root;
   }
 
