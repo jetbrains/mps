@@ -1353,7 +1353,7 @@
                     <node concept="39821Y" id="6RQrEjN19G6" role="39821P">
                       <node concept="2c44te" id="6RQrEjN19O7" role="lGtFl">
                         <node concept="37vLTw" id="6RQrEjN1d$6" role="2c44t1">
-                          <ref role="3cqZAo" node="6RQrEjN1d$2" resolve="node" />
+                          <ref role="3cqZAo" node="6RQrEjN1d$2" resolve="pluginDescriptorRef" />
                         </node>
                       </node>
                     </node>

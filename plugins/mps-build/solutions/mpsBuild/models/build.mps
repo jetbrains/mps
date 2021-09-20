@@ -28655,7 +28655,7 @@
           <ref role="3_I8Xa" node="6Hpa5co69Cc" resolve="mps-tooltips" />
         </node>
         <node concept="3_I8Xc" id="1Z_UwmOKF0$" role="39821P">
-          <ref role="3_I8Xa" node="cOLqWIvF0f" resolve="mps-build" />
+          <ref role="3_I8Xa" node="cOLqWIvF0f" resolve="mps-build-ui" />
         </node>
         <node concept="3ygNvl" id="22B44hbKflt" role="39821P">
           <ref role="3ygNvj" node="25y4WSoTpV4" />

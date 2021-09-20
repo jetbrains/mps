@@ -12638,7 +12638,7 @@
                 <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
                 <node concept="2YIFZM" id="76PQpE9Pdp7" role="37wK5m">
                   <ref role="37wK5l" to="g1qu:~JBUI$Borders.empty()" resolve="empty" />
-                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="Borders" />
+                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
                 </node>
               </node>
             </node>
@@ -12651,7 +12651,7 @@
               <node concept="liA8E" id="76PQpE9Pdpb" role="2OqNvi">
                 <ref role="37wK5l" to="dxuu:~JScrollPane.setViewportBorder(javax.swing.border.Border)" resolve="setViewportBorder" />
                 <node concept="2YIFZM" id="76PQpE9Pdpc" role="37wK5m">
-                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="Borders" />
+                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
                   <ref role="37wK5l" to="g1qu:~JBUI$Borders.empty()" resolve="empty" />
                 </node>
               </node>
@@ -12972,7 +12972,7 @@
                 <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
                 <node concept="2YIFZM" id="2WRsZZH3aX2" role="37wK5m">
                   <ref role="37wK5l" to="g1qu:~JBUI$Borders.empty()" resolve="empty" />
-                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="Borders" />
+                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
                 </node>
               </node>
             </node>
@@ -12986,7 +12986,7 @@
                 <ref role="37wK5l" to="dxuu:~JScrollPane.setViewportBorder(javax.swing.border.Border)" resolve="setViewportBorder" />
                 <node concept="2YIFZM" id="2WRsZZH3aX7" role="37wK5m">
                   <ref role="37wK5l" to="g1qu:~JBUI$Borders.empty()" resolve="empty" />
-                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="Borders" />
+                  <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
                 </node>
               </node>
             </node>
@@ -26461,7 +26461,7 @@
               <ref role="37wK5l" node="SPcVHEdIP$" resolve="createUpdaterListener" />
             </node>
             <node concept="37vLTw" id="SPcVHElWmR" role="37vLTJ">
-              <ref role="3cqZAo" node="SPcVHEgsny" resolve="myMainUpdaterListener" />
+              <ref role="3cqZAo" node="SPcVHEgsny" resolve="myUpdaterListener" />
             </node>
           </node>
         </node>
@@ -28017,7 +28017,7 @@
                     </node>
                     <node concept="3clFbF" id="5eAF82hljmt" role="3cqZAp">
                       <node concept="1rXfSq" id="5eAF82hljmu" role="3clFbG">
-                        <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorsAndSplitters" />
+                        <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorMessagesAndSplitters" />
                       </node>
                     </node>
                   </node>
@@ -28366,7 +28366,7 @@
                     </node>
                     <node concept="3clFbF" id="4CGE8mdaYOQ" role="3cqZAp">
                       <node concept="1rXfSq" id="4CGE8mdaYOO" role="3clFbG">
-                        <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorsAndSplitters" />
+                        <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorMessagesAndSplitters" />
                       </node>
                     </node>
                   </node>
@@ -28395,7 +28395,7 @@
                     </node>
                     <node concept="3clFbF" id="4CGE8mdb13E" role="3cqZAp">
                       <node concept="1rXfSq" id="4CGE8mdb13C" role="3clFbG">
-                        <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorsAndSplitters" />
+                        <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorMessagesAndSplitters" />
                       </node>
                     </node>
                   </node>
@@ -28491,7 +28491,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="2QtLBtEjTef" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
               </node>
@@ -28549,7 +28549,7 @@
                               </node>
                               <node concept="3clFbF" id="6IoQNzsZCrU" role="3cqZAp">
                                 <node concept="1rXfSq" id="6IoQNzsZCrV" role="3clFbG">
-                                  <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorsAndSplitters" />
+                                  <ref role="37wK5l" node="1zZcg$u6JP4" resolve="repaintEditorMessagesAndSplitters" />
                                 </node>
                               </node>
                             </node>
@@ -30379,7 +30379,7 @@
                 <ref role="3cqZAo" node="6GIMOf7VXXc" resolve="leftEditor" />
               </node>
               <node concept="liA8E" id="6GIMOf7VVEq" role="2OqNvi">
-                <ref role="37wK5l" node="6rfWsXMjTR9" resolve="getMessagesPanelOffset" />
+                <ref role="37wK5l" node="6rfWsXMjTR9" resolve="getScrollPanelOffset" />
                 <node concept="37vLTw" id="1Zi6V729iL0" role="37wK5m">
                   <ref role="3cqZAo" node="5R_XY2zm4fK" resolve="myIsInspector" />
                 </node>
@@ -30416,7 +30416,7 @@
                 <ref role="3cqZAo" node="6lKULjmJ6g8" resolve="rightEditor" />
               </node>
               <node concept="liA8E" id="6GIMOf7VVEG" role="2OqNvi">
-                <ref role="37wK5l" node="6rfWsXMjTR9" resolve="getMessagesPanelOffset" />
+                <ref role="37wK5l" node="6rfWsXMjTR9" resolve="getScrollPanelOffset" />
                 <node concept="37vLTw" id="1Zi6V729k4X" role="37wK5m">
                   <ref role="3cqZAo" node="5R_XY2zm4fK" resolve="myIsInspector" />
                 </node>

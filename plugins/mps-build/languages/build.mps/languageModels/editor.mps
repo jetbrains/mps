@@ -4118,7 +4118,7 @@
               <node concept="2OqwBi" id="1RsDREuRIkS" role="3clFbG">
                 <node concept="pncrf" id="1RsDREuRI0A" role="2Oq$k0" />
                 <node concept="2qgKlT" id="1RsDREuRJlG" role="2OqNvi">
-                  <ref role="37wK5l" to="2txq:1RsDREuQnlU" resolve="generateDescrptor" />
+                  <ref role="37wK5l" to="2txq:1RsDREuQnlU" resolve="isAutoLayoutForPluginDescriptorNeeded" />
                   <node concept="10Nm6u" id="74dbRRYr$zd" role="37wK5m" />
                 </node>
               </node>

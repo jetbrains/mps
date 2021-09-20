@@ -10156,7 +10156,7 @@
             <node concept="liA8E" id="3vL64Mrvu07" role="2OqNvi">
               <ref role="37wK5l" to="asz6:3vL64MruPjf" resolve="outputPropertyErrorKey" />
               <node concept="37vLTw" id="3vL64Mrv_qM" role="37wK5m">
-                <ref role="3cqZAo" node="3vL64Mrv_qK" resolve="string" />
+                <ref role="3cqZAo" node="3vL64Mrv_qK" resolve="errCodeKey" />
               </node>
             </node>
           </node>

@@ -84784,7 +84784,7 @@
                       <property role="2bfB8j" value="true" />
                       <property role="373rjd" value="true" />
                       <ref role="1Y3XeK" node="3qNu4$PjwaT" resolve="MyInterface" />
-                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                       <node concept="3Tm1VV" id="3qNu4$PjC6u" role="1B3o_S" />
                       <node concept="3uibUv" id="3qNu4$PjC6H" role="2Ghqu4">
                         <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />

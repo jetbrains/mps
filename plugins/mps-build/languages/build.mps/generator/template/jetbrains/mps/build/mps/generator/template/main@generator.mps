@@ -4755,7 +4755,7 @@
                     <node concept="2OqwBi" id="1RsDREuRFCj" role="3clFbG">
                       <node concept="30H73N" id="1RsDREuRFhf" role="2Oq$k0" />
                       <node concept="2qgKlT" id="1RsDREuRG5R" role="2OqNvi">
-                        <ref role="37wK5l" to="2txq:1RsDREuQnlU" resolve="generateDescrptor" />
+                        <ref role="37wK5l" to="2txq:1RsDREuQnlU" resolve="isAutoLayoutForPluginDescriptorNeeded" />
                         <node concept="2OqwBi" id="1RsDREuZxSc" role="37wK5m">
                           <node concept="2YIFZM" id="1RsDREuZxSd" role="2Oq$k0">
                             <ref role="1Pybhc" to="o3n2:4jjtc7WZOAv" resolve="Context" />

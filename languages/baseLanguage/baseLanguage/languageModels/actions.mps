@@ -7796,7 +7796,7 @@
                       <node concept="2z4iKi" id="7cbdSGc9nSI" role="1tU5fm" />
                       <node concept="2OqwBi" id="7cbdSGc9nSJ" role="33vP2m">
                         <node concept="37vLTw" id="7cbdSGc9nSK" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7cbdSGc9nS_" resolve="fieldReferenceOperation" />
+                          <ref role="3cqZAo" node="7cbdSGc9nS_" resolve="methodCallOperation" />
                         </node>
                         <node concept="37Cfm0" id="7cbdSGc9nSL" role="2OqNvi">
                           <node concept="1aIX9F" id="7cbdSGc9nSM" role="37CeNk">
@@ -7825,7 +7825,7 @@
                       <node concept="17QB3L" id="7cbdSGc9nSV" role="1tU5fm" />
                       <node concept="2OqwBi" id="7cbdSGc9nSW" role="33vP2m">
                         <node concept="37vLTw" id="7cbdSGc9nSX" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7cbdSGc9nSH" resolve="fieldDeclarationReference" />
+                          <ref role="3cqZAo" node="7cbdSGc9nSH" resolve="methodDeclarationReference" />
                         </node>
                         <node concept="1FfNbt" id="7cbdSGc9nSY" role="2OqNvi" />
                       </node>
