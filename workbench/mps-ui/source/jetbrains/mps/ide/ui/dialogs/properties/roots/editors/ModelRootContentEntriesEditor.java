@@ -5,7 +5,6 @@ package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -36,7 +35,6 @@ import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.roots.editors.ModelRootEntryContainer.ContentEntryEditorListener;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
@@ -47,7 +45,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.workbench.ActionPlace;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -83,6 +80,7 @@ import static com.intellij.openapi.vfs.VfsUtilCore.isAncestor;
  * UIComponent which contains all the module roots.
  * It is located in the module properties dialog.
  */
+@SuppressWarnings("UnstableApiUsage")
 public class ModelRootContentEntriesEditor implements Disposable {
 
   private final static Logger LOG = LogManager.getLogger(ModelRootContentEntriesEditor.class);
@@ -354,9 +352,10 @@ public class ModelRootContentEntriesEditor implements Disposable {
       for (ModelRootEntryContainer existingEntryContainer : myModelRootEntries) {
         if (entry.getClass().equals(existingEntryContainer.getModelRootEntry().getClass())) {
           FileBasedModelRoot existingModelRoot = (FileBasedModelRoot) existingEntryContainer.getModelRootEntry().getModelRoot();
-          VirtualFile vFile = VirtualFileUtils.getVirtualFile(existingModelRoot.getContentRoot());
-          if (vFile == null){
-            LOG.error("Can't find file for model root. This root will not be checked for intersection with others. Path: " + existingModelRoot.getContentRoot());
+          @SuppressWarnings("removal")
+          VirtualFile vFile = existingModelRoot.getContentDirectory() == null ? null : myProject.getFileSystem().asVirtualFile(existingModelRoot.getContentDirectory());
+          if (vFile == null) {
+            LOG.error("Can't find file for model root. This root will not be checked for intersection with others. Path: " + existingModelRoot.getContentDirectory());
             continue;
           }
           candidatesForIntersection.add(vFile);
@@ -368,13 +367,12 @@ public class ModelRootContentEntriesEditor implements Disposable {
       IFile contentRoot = getInitialPath();
       VirtualFile chosen = null;
       do {
-        VirtualFile contentRootVFile = VirtualFileUtils.getProjectVirtualFile(contentRoot);
-        VirtualFile[] files = FileChooser.chooseFiles(fileChooserDescriptor, null, null, contentRootVFile);
-        if (files.length == 0) {
+        @SuppressWarnings("removal")
+        VirtualFile contentRootVFile = myProject.getFileSystem().asVirtualFile(contentRoot);
+        chosen = FileChooser.chooseFile(fileChooserDescriptor, null, null, contentRootVFile);
+        if (chosen == null) {
           return false;
         } else {
-          assert files.length == 1; // internal contract of the <code>FileChooser</code>
-          chosen = files[0];
           for (VirtualFile candidate : candidatesForIntersection) {
             if (doIntersect(chosen, candidate)) {
               Messages.showWarningDialog(myMainPanel,
@@ -386,6 +384,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
               break;
             }
           }
+          //noinspection removal
           if (chosen != null && !myProject.getFileSystem().canConvert(chosen)) {
             final String m = "Can use local filesystem location only. Actual FS is %s";
             Messages.showWarningDialog(myMainPanel, String.format(m, chosen.getFileSystem().getProtocol()), "Bad model root location");
@@ -394,6 +393,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
         }
       } while (chosen == null);
 
+      //noinspection removal
       contentRoot = myProject.getFileSystem().fromVirtualFile(chosen);
       FileBasedModelRoot modelRoot = (FileBasedModelRoot) entry.getModelRoot();
       modelRoot.setContentDirectory(contentRoot);
@@ -405,6 +405,8 @@ public class ModelRootContentEntriesEditor implements Disposable {
       return true;
     }
 
+    // FIXME if we could do same check for IFile, don't need to convert IFile to VirtualFile, above
+    //       there's FileUtil.isAncestor(String,String), I don't like the fact it deals with strings.
     private boolean doIntersect(VirtualFile chosen, VirtualFile candidate) {
       return isAncestor(candidate, chosen, true) || isAncestor(candidate, chosen, false);
     }
