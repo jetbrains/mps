@@ -186,13 +186,13 @@
       <node concept="2YIFZL" id="1whNchEKZ9p" role="jymVt">
         <property role="TrG5h" value="execute" />
         <node concept="37vLTG" id="1whNchEKZ9q" role="3clF46">
-          <property role="TrG5h" value="context" />
+          <property role="TrG5h" value="consoleContext" />
           <node concept="3uibUv" id="1whNchEKZ9r" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="37vLTG" id="1whNchEKZ9s" role="3clF46">
-          <property role="TrG5h" value="console" />
+          <property role="TrG5h" value="consoleStream" />
           <node concept="3uibUv" id="1whNchEKZ9t" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:5WpmwkrQPPk" resolve="ConsoleStream" />
           </node>
@@ -248,13 +248,13 @@
         <property role="TrG5h" value="execute" />
         <node concept="3cqZAl" id="23X86fnVai1" role="3clF45" />
         <node concept="37vLTG" id="23X86fnVai2" role="3clF46">
-          <property role="TrG5h" value="context" />
+          <property role="TrG5h" value="consoleontext" />
           <node concept="3uibUv" id="23X86fnVai3" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="37vLTG" id="23X86fnVai4" role="3clF46">
-          <property role="TrG5h" value="console" />
+          <property role="TrG5h" value="consoleStream" />
           <node concept="3uibUv" id="23X86fnVai5" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:5WpmwkrQPPk" resolve="ConsoleStream" />
           </node>

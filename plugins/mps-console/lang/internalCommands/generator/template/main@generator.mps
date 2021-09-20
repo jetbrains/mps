@@ -28,10 +28,6 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -55,9 +51,6 @@
         <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
-        <child id="1079359253376" name="expression" index="1eOMHV" />
-      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -198,13 +191,13 @@
       <node concept="2YIFZL" id="4PRmqZeEG9Z" role="jymVt">
         <property role="TrG5h" value="execute" />
         <node concept="37vLTG" id="4PRmqZeEGa0" role="3clF46">
-          <property role="TrG5h" value="context" />
+          <property role="TrG5h" value="consoleContext" />
           <node concept="3uibUv" id="4PRmqZeEGa1" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
         </node>
         <node concept="37vLTG" id="4PRmqZeEGa2" role="3clF46">
-          <property role="TrG5h" value="console" />
+          <property role="TrG5h" value="consoleStream" />
           <node concept="3uibUv" id="4PRmqZeEGa3" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:5WpmwkrQPPk" resolve="ConsoleStream" />
           </node>
@@ -214,25 +207,18 @@
         <node concept="3clFbS" id="4PRmqZeEGa6" role="3clF47">
           <node concept="3clFbF" id="4PRmqZeEGa7" role="3cqZAp">
             <node concept="2OqwBi" id="7M1Gaz37Rge" role="3clFbG">
-              <node concept="1eOMI4" id="3ZgZ1njTt2X" role="2Oq$k0">
-                <node concept="10QFUN" id="3ZgZ1njTt2Y" role="1eOMHV">
-                  <node concept="2OqwBi" id="3ZgZ1njTt2U" role="10QFUP">
-                    <node concept="37vLTw" id="3ZgZ1njTt2V" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4PRmqZeEGa0" resolve="context" />
-                    </node>
-                    <node concept="liA8E" id="3ZgZ1njTt2W" role="2OqNvi">
-                      <ref role="37wK5l" to="qgo0:7L2VFB5mjvh" resolve="getOutputWindow" />
-                    </node>
-                  </node>
-                  <node concept="3uibUv" id="3ZgZ1njTt3x" role="10QFUM">
-                    <ref role="3uigEE" to="qgo0:4gO8Gruz$1J" resolve="BaseConsoleTab" />
-                  </node>
-                </node>
-              </node>
               <node concept="liA8E" id="7M1Gaz37VIH" role="2OqNvi">
                 <ref role="37wK5l" to="qgo0:7M1Gaz36FXw" resolve="getConsoleModel" />
               </node>
               <node concept="raruj" id="7M1Gaz37VO6" role="lGtFl" />
+              <node concept="2OqwBi" id="3ZgZ1njTt2U" role="2Oq$k0">
+                <node concept="37vLTw" id="3ZgZ1njTt2V" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4PRmqZeEGa0" resolve="consoleContext" />
+                </node>
+                <node concept="liA8E" id="3ZgZ1njTt2W" role="2OqNvi">
+                  <ref role="37wK5l" to="qgo0:7L2VFB5mjvh" resolve="getOutputWindow" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
