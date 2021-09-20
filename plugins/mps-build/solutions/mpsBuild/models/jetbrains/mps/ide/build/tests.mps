@@ -185,6 +185,7 @@
       <concept id="7655580649838764660" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml" flags="ng" index="1kK7hY">
         <reference id="7655580649838764661" name="module" index="1kK7hZ" />
         <child id="7477562766051177430" name="sourceDescriptorFile" index="2JVP1x" />
+        <child id="8488591998064324395" name="classpathEntries" index="3E5mpp" />
         <child id="506537499308757750" name="sourcesJarLocation" index="3SGgvt" />
       </concept>
       <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
@@ -8047,6 +8048,9 @@
               </node>
               <node concept="1kK7hY" id="42$9Ot098sJ" role="39821P">
                 <ref role="1kK7hZ" node="6sT62Z6Skja" resolve="UtilSolution" />
+                <node concept="1cIVw3" id="4INM4QAf$hg" role="3E5mpp">
+                  <property role="1cIVw0" value="../../lib/UtilSolution.jar" />
+                </node>
                 <node concept="1cIVw3" id="42$9Ot098tG" role="3SGgvt">
                   <property role="1cIVw0" value="." />
                 </node>
