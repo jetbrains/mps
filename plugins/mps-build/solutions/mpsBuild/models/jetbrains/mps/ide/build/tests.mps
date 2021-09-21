@@ -7974,13 +7974,42 @@
               </node>
             </node>
             <node concept="3981dx" id="6sT62Z6Skh7" role="39821P">
+              <node concept="Saw0i" id="6sT62Z6Skha" role="39821P">
+                <ref role="Saw0g" node="6sT62Z6Skja" resolve="UtilSolution" />
+              </node>
+              <node concept="398223" id="42$9Ot098s_" role="39821P">
+                <node concept="3_J27D" id="42$9Ot098sB" role="Nbhlr">
+                  <node concept="3Mxwew" id="42$9Ot098sF" role="3MwsjC">
+                    <property role="3MwjfP" value="META-INF" />
+                  </node>
+                </node>
+                <node concept="1kK7hY" id="42$9Ot098sJ" role="39821P">
+                  <ref role="1kK7hZ" node="6sT62Z6Skja" resolve="UtilSolution" />
+                  <node concept="1cIVw3" id="4INM4QAf$hg" role="3E5mpp">
+                    <property role="1cIVw0" value="." />
+                  </node>
+                  <node concept="1cIVw3" id="42$9Ot098tG" role="3SGgvt">
+                    <property role="1cIVw0" value="." />
+                  </node>
+                  <node concept="1cIVw3" id="42$9Ot098tI" role="2JVP1x">
+                    <property role="1cIVw0" value="UtilSolution.msd" />
+                  </node>
+                </node>
+              </node>
+              <node concept="398223" id="42$9Ot098t7" role="39821P">
+                <node concept="3_J27D" id="42$9Ot098t9" role="Nbhlr">
+                  <node concept="3Mxwew" id="42$9Ot098th" role="3MwsjC">
+                    <property role="3MwjfP" value="module" />
+                  </node>
+                </node>
+                <node concept="3$exzU" id="42$9Ot098tE" role="39821P">
+                  <ref role="3$exzV" node="6sT62Z6Skja" resolve="UtilSolution" />
+                </node>
+              </node>
               <node concept="3_J27D" id="6sT62Z6Skh8" role="Nbhlr">
                 <node concept="3Mxwew" id="6sT62Z6Skh9" role="3MwsjC">
                   <property role="3MwjfP" value="UtilSolution.jar" />
                 </node>
-              </node>
-              <node concept="Saw0i" id="6sT62Z6Skha" role="39821P">
-                <ref role="Saw0g" node="6sT62Z6Skja" resolve="UtilSolution" />
               </node>
             </node>
             <node concept="3981dx" id="6sT62Z6Skhf" role="39821P">
@@ -8037,42 +8066,6 @@
           <node concept="3_J27D" id="42$9Ot098r3" role="Nbhlr">
             <node concept="3Mxwew" id="42$9Ot098rE" role="3MwsjC">
               <property role="3MwjfP" value="reflectiveTest" />
-            </node>
-          </node>
-          <node concept="3981dx" id="42$9Ot098sp" role="39821P">
-            <node concept="398223" id="42$9Ot098s_" role="39821P">
-              <node concept="3_J27D" id="42$9Ot098sB" role="Nbhlr">
-                <node concept="3Mxwew" id="42$9Ot098sF" role="3MwsjC">
-                  <property role="3MwjfP" value="META-INF" />
-                </node>
-              </node>
-              <node concept="1kK7hY" id="42$9Ot098sJ" role="39821P">
-                <ref role="1kK7hZ" node="6sT62Z6Skja" resolve="UtilSolution" />
-                <node concept="1cIVw3" id="4INM4QAf$hg" role="3E5mpp">
-                  <property role="1cIVw0" value="../../lib/UtilSolution.jar" />
-                </node>
-                <node concept="1cIVw3" id="42$9Ot098tG" role="3SGgvt">
-                  <property role="1cIVw0" value="." />
-                </node>
-                <node concept="1cIVw3" id="42$9Ot098tI" role="2JVP1x">
-                  <property role="1cIVw0" value="UtilSolution.msd" />
-                </node>
-              </node>
-            </node>
-            <node concept="398223" id="42$9Ot098t7" role="39821P">
-              <node concept="3_J27D" id="42$9Ot098t9" role="Nbhlr">
-                <node concept="3Mxwew" id="42$9Ot098th" role="3MwsjC">
-                  <property role="3MwjfP" value="module" />
-                </node>
-              </node>
-              <node concept="3$exzU" id="42$9Ot098tE" role="39821P">
-                <ref role="3$exzV" node="6sT62Z6Skja" resolve="UtilSolution" />
-              </node>
-            </node>
-            <node concept="3_J27D" id="42$9Ot098sr" role="Nbhlr">
-              <node concept="3Mxwew" id="42$9Ot098sx" role="3MwsjC">
-                <property role="3MwjfP" value="UtilSolution.jar" />
-              </node>
             </node>
           </node>
           <node concept="3981dx" id="42$9Ot098tM" role="39821P">
