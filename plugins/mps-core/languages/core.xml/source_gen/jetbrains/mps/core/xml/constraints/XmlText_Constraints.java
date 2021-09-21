@@ -34,7 +34,7 @@ public class XmlText_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return XmlNameUtil.isCharData(propertyValue) && !(propertyValue.startsWith(" "));
+      return XmlNameUtil.isCharData(propertyValue);
     }
   }
   @Override
