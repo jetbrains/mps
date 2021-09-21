@@ -27,7 +27,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -65,8 +64,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
   /**
    * @deprecated Use of default value to detect aspect source root or to check module existence is wrong.
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static final String LEGACY_LANGUAGE_MODELS = "languageModels";
 
   @NotNull private LanguageDescriptor myLanguageDescriptor;
@@ -336,8 +334,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
    *            Then, we could decide whether we truly need access to language's concept nodes this way, or shall use
    *            LanguageAspects instead.
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public List<SNode> getConceptDeclarations() {
     // FIXME there are uses in mbeddr
     SModel structureModel = getStructureModelDescriptor();
@@ -418,8 +415,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return getModuleName() + " [language]";
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //no full equivalent to this method, use appropriate method from LanguageAspectSupport
   private LanguageAspect getAspectForModel(@NotNull org.jetbrains.mps.openapi.model.SModel sm) {
     for (LanguageAspect la : LanguageAspect.values()) {
@@ -434,8 +430,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return getLanguageFor(modelDescriptor);
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //no full equivalent to this method, use appropriate method from LanguageAspectSupport
   //no usages in MPS, 4 uses in mbeddr
   @Nullable

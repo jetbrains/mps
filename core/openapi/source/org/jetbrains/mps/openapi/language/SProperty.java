@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.language;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -37,8 +36,7 @@ public interface SProperty extends SConceptFeature {
   //left for compatibility with "interpreting" code
   //use SProperty in code instead
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   SNode getDeclarationNode();
 
   /**

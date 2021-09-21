@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="eqhfibazscqu1ua4gwq5xsym3rg8fbr">
+<product version="3" modelHash="-6mvz8mak9uoce4rauugycs2a37kq2wx">
   <files names="CoreNodeRefactorings_ActionGroup.java:Default_KeymapChanges.java:ExtensionDescriptor.java:ModelRefactoring_ActionGroup.java:MoveModelActionExecutor.java:MoveModelDialog.java:MoveModel_Action.java:MoveNodes_Action.java:Refactoring_ApplicationPlugin.java:RenameNode_Action.java:TouchBarDefault_shift_move_ActionGroup.java:TouchBarDefault_shift_rename_ActionGroup.java:UpdateDependentModelsRefactoringParticipant.java" />
 </product>
 

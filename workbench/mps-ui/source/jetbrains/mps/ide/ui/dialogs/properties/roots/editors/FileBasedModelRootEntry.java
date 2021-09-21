@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
 import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Modules;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.Gray;
@@ -34,8 +36,10 @@ import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
@@ -71,13 +75,45 @@ import static jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedMod
 
 public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedModelRoot>, ModelRootEntryExt {
   private final EventDispatcher<ModelRootEntryListener> myEventDispatcher = EventDispatcher.create(ModelRootEntryListener.class);
+  private final MPSProject myProject;
   private final FileBasedModelRoot myFileBasedModelRoot;
   private final Map<JComponent, Color> myComponentToForegroundMap = new HashMap<>();
 
   private FileBasedModelRootEditor myFileBasedModelRootEditor;
 
+  /**
+   * @deprecated use argument that additionally takes {@code MPSProject}, editing a root may need access to project settings
+   */
+  @Deprecated
   public FileBasedModelRootEntry(@NotNull FileBasedModelRoot modelRoot) {
+    //noinspection UnstableApiUsage
+    Logger.getLogger(FileBasedModelRootEntry.class).warn("Use FileBasedModelRootEntry cons with project argument", new Throwable());
+    MPSProject p = null;
+    for (Project ideaProject : ProjectManager.getInstance().getOpenProjects()) {
+      if (ideaProject.isDisposed()) {
+        continue;
+      }
+      p = ProjectHelper.fromIdeaProject(ideaProject);
+      if (p != null) {
+        break;
+      }
+    }
+    assert p != null : "use FileBasedModelRootEntry with explicit project";
+    myProject = p;
     myFileBasedModelRoot = modelRoot;
+  }
+
+  public FileBasedModelRootEntry(@NotNull MPSProject mpsProject, @NotNull FileBasedModelRoot modelRoot) {
+    // XXX alternatively, may supply idea project right into getEditor, as this set of API depends on IDEA anyway
+    ///    (ModelRootEntry extends Disposable), which might be easier from migration standpoint.
+    //     However, decided to pass it into cons as there might be project settings one may need to access
+    //     prior to editor construction.
+    myProject = mpsProject;
+    myFileBasedModelRoot = modelRoot;
+  }
+
+  /*package*/ MPSProject getProject() {
+    return myProject;
   }
 
   @NotNull
@@ -95,7 +131,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   @Nullable
   @Override
   public JComponent getDetailsComponent() {
-    JBPanel panel = new JBPanel(new GridBagLayout());
+    @SuppressWarnings("rawtypes")
+    JBPanel<JBPanel> panel = new JBPanel<>(new GridBagLayout());
     for (SourceRootKind kind : myFileBasedModelRoot.getSupportedFileKinds1()) {
       Collection<SourceRoot> sourceRoots = myFileBasedModelRoot.getSourceRoots(kind);
 
@@ -157,7 +194,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 0));
     registerTextComponent(titleLabel, foregroundColor);
 
-    final JBPanel groupPanel = new JBPanel(new BorderLayout());
+    @SuppressWarnings("rawtypes")
+    final JBPanel<JBPanel> groupPanel = new JBPanel<>(new BorderLayout());
     groupPanel.setOpaque(false);
     groupPanel.add(titleLabel, BorderLayout.NORTH);
     groupPanel.add(panel, BorderLayout.CENTER);
@@ -173,13 +211,13 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
     JLabel label2Return = new JLabel(pathPresentation);
 
-    VirtualFile virtualFile = VirtualFileUtils.getProjectVirtualFile(sourceRoot.getAbsolutePath());
-    if (virtualFile != null && virtualFile.exists()) {
+    final IFile srcRootFile = sourceRoot.getAbsolutePath();
+    if (srcRootFile != null && srcRootFile.exists()) {
       HoverHyperlinkLabel hyperlinkLabel = new HoverHyperlinkLabel(pathPresentation, foreground);
       hyperlinkLabel.setMinimumSize(new Dimension(0, 0));
       hyperlinkLabel.addHyperlinkListener(e -> {
         if (myFileBasedModelRootEditor != null) {
-          myFileBasedModelRootEditor.selectFile(sourceRoot.getAbsolutePath());
+          myFileBasedModelRootEditor.selectFile(srcRootFile);
         }
       });
       registerTextComponent(hyperlinkLabel, foreground);

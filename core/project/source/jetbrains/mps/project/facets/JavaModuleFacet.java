@@ -140,8 +140,8 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   default IFile getOutputCacheLocation(@NotNull SModel model) {
     final SModule associatedModule = getModule();
     assert model.getModule() == associatedModule;
-    IFile outputRoot = getOutputRoot();
-    return outputRoot == null ? null : FileGenerationUtil.getDefaultOutputDir(model.getReference(), FileGenerationUtil.getCachesDir(outputRoot));
+    IFile outputRoot = getOutputCacheRoot(model);
+    return outputRoot == null ? null : FileGenerationUtil.getDefaultOutputDir(model.getReference(), outputRoot);
   }
 
   /**

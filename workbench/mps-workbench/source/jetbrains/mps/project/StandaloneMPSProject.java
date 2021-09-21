@@ -30,7 +30,6 @@ import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.LogManager;
@@ -129,13 +128,13 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   // todo remove; project descriptor is its internal substance which represents the persistence data
   @NotNull
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   public ProjectDescriptor getProjectDescriptor() {
     return myProjectDescriptor;
   }
 
   // todo remove
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   public void setProjectDescriptor(ProjectDescriptor projectDescriptor) {
     myProjectDescriptor = projectDescriptor;
     update();

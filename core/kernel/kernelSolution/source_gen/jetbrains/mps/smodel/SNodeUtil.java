@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -92,8 +91,7 @@ public final class SNodeUtil {
    * 
    * @deprecated Since 2017.1 editor automatically detects whether the concept cannot be used as a substitute by noticing that its substitute menu is empty
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+  @Deprecated(since = "2018.3", forRemoval = true)
   public static boolean isDefaultSubstitutable(SAbstractConcept concept) {
     // 1 use in mbeddr
     return !(concept.isAbstract()) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IDontSubstituteByDefault$GY));
@@ -132,18 +130,27 @@ public final class SNodeUtil {
   public static boolean getLinkDeclaration_IsReference(SNode link) {
     return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   public static boolean getLinkDeclaration_IsExactlyOneMultiplicity(SNode link) {
     return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$cxYK), 0xfc6f3944c4L);
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   public static boolean getLinkDeclaration_IsAtLeastOneMultiplicity(SNode link) {
     return SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$cxYK), 0xfc6f3944c4L) || SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.sourceCardinality$cxYK), 0xfc6f3944c6L);
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   public static boolean getLinkDeclaration_IsSingular(SNode link) {
     SNode genuineLinkDeclaration = ((SNode) SModelUtil.getGenuineLinkDeclaration(link));
     return SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, PROPS.sourceCardinality$cxYK), 0xfc6f3944c3L) || SEnumOperations.isMember(SPropertyOperations.getEnum(genuineLinkDeclaration, PROPS.sourceCardinality$cxYK), 0xfc6f3944c4L);
@@ -151,14 +158,20 @@ public final class SNodeUtil {
   public static boolean isSideTransformInfo(SNode node) {
     return SNodeOperations.getConcept(node).equals(CONCEPTS.SideTransformInfo$Hi);
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   public static boolean isAtLeastOne(String cardinality) {
     cardinality = defaultCardinalityIfNotSet(cardinality);
     return SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1")).equals(cardinality) || SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c6L, "_1__n")).equals(cardinality);
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   public static boolean isAtMostOne(String cardinality) {
     cardinality = defaultCardinalityIfNotSet(cardinality);
     return SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1")).equals(cardinality) || SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1")).equals(cardinality);
@@ -166,8 +179,11 @@ public final class SNodeUtil {
   public static SReferenceLink getLink(SNode attribute) {
     return ((SReferenceLink) (SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")));
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   private static String defaultCardinalityIfNotSet(String cardinality) {
     // couldn't use type for cardinality (enummember<Cardinality> is SNode)
     // can't use link.sourceCardinality.is because I need sourceCardinality to be *bootstrap* property, which is possible at the moment

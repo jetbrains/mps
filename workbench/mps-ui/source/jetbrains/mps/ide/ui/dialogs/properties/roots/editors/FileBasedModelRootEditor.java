@@ -12,6 +12,7 @@ import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -28,7 +29,6 @@ import com.intellij.openapi.roots.ui.configuration.actions.IconWithTextAction;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.ui.TreeSpeedSearch;
 import com.intellij.ui.roots.ToolbarPanel;
@@ -38,7 +38,7 @@ import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.actions.MPSActionPlaces;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -56,6 +56,8 @@ import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 public class FileBasedModelRootEditor implements ModelRootEntryEditor {
   protected Tree myTree;
@@ -142,15 +144,14 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     myTreePanel.setVisible(true);
     myFileBasedModelRootEntry = fileBasedModelRootEntry;
 
-    IFile path = myFileBasedModelRootEntry.getModelRoot().getContentDirectory();
+    setRoot(myFileBasedModelRootEntry.getModelRoot().getContentDirectory());
 
-    VirtualFile file = path == null ? null : VirtualFileUtils.getProjectVirtualFile(path);
-    setRoot(file);
-
+    // XXX i wonder if (why not) IDEA itself selects roots specified in descriptor.
     final Runnable init = () -> {
       myFileSystemTree.updateTree();
-      if (file != null) {
-        myFileSystemTree.select(file, null);
+      final VirtualFile[] roots = myDescriptor.getRoots().toArray(new VirtualFile[0]);
+      if (roots.length > 0) {
+        myFileSystemTree.select(roots, null);
       }
     };
 
@@ -178,15 +179,18 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     createEditingActions();
   }
 
-  private void setRoot(VirtualFile file) {
+  private void setRoot(IFile file) {
     if (file != null) {
-      myDescriptor.setRoots(file);
+      @SuppressWarnings("removal")
+      VirtualFile vf = myFileBasedModelRootEntry.getProject().getFileSystem().asVirtualFile(file);
+      myDescriptor.setRoots(vf);
       myDescriptor.setTitle(FileUtil.toSystemDependentName(file.getPath()));
     }
   }
 
   public void selectFile(@NotNull IFile file) {
-    VirtualFile file2Select = VirtualFileUtils.getProjectVirtualFile(file);
+    @SuppressWarnings("removal")
+    VirtualFile file2Select = myFileBasedModelRootEntry.getProject().getFileSystem().asVirtualFile(file);
     if (file2Select == null) {
       return;
     }
@@ -261,14 +265,14 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
           Actions.NewFolder);
     }
 
-    @NotNull
     @Override
-    public JComponent createCustomComponent(@NotNull Presentation presentation) {
-      return IconWithTextAction.createCustomComponentImpl(this, presentation);
+    public @NotNull JComponent createCustomComponent(@NotNull Presentation presentation, @NotNull String place, @NotNull DataContext dataContext) {
+      return IconWithTextAction.createCustomComponentImpl(this, presentation, place);
     }
   }
 
   private class ChooseModelRootContentFolder extends AnAction implements DumbAware {
+    // XXX there's myDescriptor:FileChooserDescriptor in outer class, can't we share them?
     private final FileChooserDescriptor myDescriptor;
 
     public ChooseModelRootContentFolder() {
@@ -279,21 +283,22 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-      VirtualFile[] files = FileChooser.chooseFiles(myDescriptor, null, null,
-          VirtualFileManager.getInstance().findFileByUrl(
-              VirtualFileManager.constructUrl("file", myFileBasedModelRootEntry.getModelRoot().getContentRoot())
-          )
-      );
+      final List<VirtualFile> displayedRoots = FileBasedModelRootEditor.this.myDescriptor.getRoots();
+      final VirtualFile actualRoot = displayedRoots.size() > 1 ? displayedRoots.get(0) : null;
+      final MPSProject mpsProject = myFileBasedModelRootEntry.getProject();
+      VirtualFile file = FileChooser.chooseFile(myDescriptor, null, mpsProject.getProject(), actualRoot);
 
-      if (files.length != 1) {
+      if (file == null || Objects.equals(actualRoot, file)) {
+        // XXX not sure not to clear contentRoot when file==null is correct, but it used to be NPE anyway
         return;
       }
-
       FileBasedModelRootEntry fileBasedModelRootEntry = FileBasedModelRootEditor.this.myFileBasedModelRootEntry;
-      fileBasedModelRootEntry.getModelRoot().setContentRoot(files[0].getPath());
-      FileBasedModelRootEditor.this.myFileBasedModelRootEntry = null;
+      //noinspection removal
+      fileBasedModelRootEntry.getModelRoot().setContentDirectory(mpsProject.getFileSystem().fromVirtualFile(file));
+      // update mechanism copied from setDescriptor(), above
+      FileBasedModelRootEditor.this.setFileBasedModelRootEntry(null);
       FileBasedModelRootEditor.this.setFileBasedModelRootEntry(fileBasedModelRootEntry);
-      FileBasedModelRootEditor.this.myFileBasedModelRootEntry.updateUI();
+      fileBasedModelRootEntry.updateUI();
     }
   }
 }

@@ -31,7 +31,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -87,8 +86,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_CustomChildConcept imple
   /**
    * @deprecated override {@link #getConceptOfChild(SNode, SNode, SAbstractConcept, EditorContext)} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.2)
+  @Deprecated(since = "2020.2", forRemoval = true)
   protected SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, IOperationContext context,
                                     EditorContext editorContext) {
     return null;

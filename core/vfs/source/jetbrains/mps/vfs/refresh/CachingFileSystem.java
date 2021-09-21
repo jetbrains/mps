@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.vfs.refresh;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +43,6 @@ public interface CachingFileSystem extends jetbrains.mps.vfs.FileSystem {
    * @deprecated replaced with per-project {@code org.jetbrains.mps.project.Project#reconcileProjectFiles(Iterable<IFile>)}
    *             present implementation is no-op
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   default void scheduleUpdateForWrittenFiles(Iterable<IFile> writtenFiles) {};
 }

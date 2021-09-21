@@ -19,7 +19,6 @@ import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.No
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.TreeNodeUpdater;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -57,8 +56,7 @@ public abstract class TreeUpdateVisitor implements TreeNodeVisitor {
   /**
    * @deprecated see {@link TreeNodeUpdater#addUpdate(MPSTreeNode, NodeUpdate)}
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   protected final void addUpdate(MPSTreeNode node, @Nullable NodeUpdate r) {
     final TreeNodeUpdater u = myUpdater;
     if (u != null) {

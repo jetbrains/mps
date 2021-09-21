@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.module.SModule;
 
 /**
@@ -29,8 +28,7 @@ import org.jetbrains.mps.openapi.module.SModule;
  *
  * @deprecated It has been to decided to get rid of additional classnotfoundexceptions
  */
-@ToRemove(version = 3.4)
-@Deprecated
+@Deprecated(since = "3.4", forRemoval = true)
 public class ModuleIsNotLoadableException extends ClassNotFoundException {
   private final SModule myModule;
 

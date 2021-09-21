@@ -21,7 +21,6 @@ import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -78,8 +77,7 @@ public final class DynamicReference extends SReferenceBase {
    * @deprecated use {@link SNodeLegacy#setReference(String, SModelReference, String)} instead.
    *             There are no uses in MPS code, the cons will be removed in the future versions
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
     this(((ConceptMetaInfoConverter) sourceNode.getConcept()).convertAssociation(role), sourceNode, resolveInfo);
   }

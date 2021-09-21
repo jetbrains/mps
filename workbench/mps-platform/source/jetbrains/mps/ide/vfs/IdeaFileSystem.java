@@ -21,7 +21,6 @@ import com.intellij.openapi.vfs.SafeWriteRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
@@ -31,8 +30,7 @@ import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Deprecated
-@ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
 public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWriteRequestor, FileSystem, IFileSystem, CachingFileSystem {
   private FileSystem myOldFileSystem;
 

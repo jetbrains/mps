@@ -23,7 +23,9 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
+import java.util.ArrayList;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/8998650098108147555", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public abstract class HierarchicalNodeGroupChange extends StructureChange {
@@ -139,11 +141,23 @@ public abstract class HierarchicalNodeGroupChange extends StructureChange {
     if (isEmpty(isNew)) {
       return ListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getParentId(isNew), ((MessageTarget) new DeletedNodeMessageTarget(getLink(isNew), getEnd(isNew)))));
     }
-    return ListSequence.fromList(getIds(isNew)).select(new ISelector<SNodeId, Tuples._2<SNodeId, MessageTarget>>() {
-      public Tuples._2<SNodeId, MessageTarget> select(SNodeId it) {
-        return MultiTuple.<SNodeId,MessageTarget>from(it, ((MessageTarget) new NodeMessageTarget()));
+    final List<Tuples._2<SNodeId, MessageTarget>> result = ListSequence.fromList(new ArrayList<Tuples._2<SNodeId, MessageTarget>>());
+    ListSequence.fromList(getGroup(isNew).getModifiedNodes()).visitAll(new IVisitor<ModifiedNode>() {
+      public void visit(ModifiedNode it) {
+        SNode child = it.getNode();
+        ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(child.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+        ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode attr) {
+            return !(AttributeOperations.isChildAttribute(attr));
+          }
+        }).visitAll(new IVisitor<SNode>() {
+          public void visit(SNode attr) {
+            ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(attr.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+          }
+        });
       }
-    }).toListSequence();
+    });
+    return result;
   }
 
   protected String getMultiLineIdsString(boolean isNew) {

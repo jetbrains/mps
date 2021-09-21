@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.references;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -37,8 +36,7 @@ public final class UnregisteredNodes {
    * this flag was introduced to address MPS-18309, commit a73f01c9. It merely hides a problem rather than resolves any
    * @deprecated caller shall take different approach to make sure it doesn't violate any SModel contract.
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   public static WarningLevel setWarningLevel(WarningLevel level) {
     WarningLevel oldLevel = myWarningLevel;
     myWarningLevel = level;

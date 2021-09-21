@@ -19,30 +19,25 @@ import com.intellij.icons.AllIcons.ObjectBrowser;
 import jetbrains.mps.icons.MPSIcons.Generator;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.util.annotation.ToRemove;
 
 import javax.swing.Icon;
 
-@Deprecated
-@ToRemove(version = 2017.1)
+@Deprecated(since = "2017.1", forRemoval = true)
 public class Icons {
   /**
    * @deprecated use {@link Generator#Output} instead
    */
-  @Deprecated
-  @ToRemove(version = 2017.1)
+@Deprecated(since = "2017.1", forRemoval = true)
   public static final Icon OUTPUT = Generator.Output;
 
   /**
    * @deprecated use {@link ObjectBrowser#SortByType} instead
    */
-  @Deprecated
-  @ToRemove(version = 2017.1)
+@Deprecated(since = "2017.1", forRemoval = true)
   public static final Icon SORT_NODES_BY_ASPECT_ICON = IdeIcons.PROJECT_ICON;
   /**
    * @deprecated use {@link Models#AspectModel} instead
    * */
-  @Deprecated
-  @ToRemove(version = 2017.1)
+@Deprecated(since = "2017.1", forRemoval = true)
   public static final Icon GROUP_ASPECTS_ICON = Models.AspectModel;
 }

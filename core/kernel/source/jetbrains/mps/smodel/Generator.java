@@ -25,7 +25,6 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -173,8 +172,7 @@ public class Generator extends ReloadableModuleBase {
    *             XXX what's the contract of the method, is it supposed to give source language of a generator that is part of a language or
    *             for it shall give Language for standalone generator as well?
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   @Nullable
   public Language getSourceLanguage() {
     return mySourceLanguage;

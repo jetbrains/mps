@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,17 @@
 
 package jetbrains.mps.jps.build;
 
-import jetbrains.mps.generator.info.ForeignPathsProvider;
-import jetbrains.mps.generator.info.GeneratorPathsComponent;
-import jetbrains.mps.internal.make.runtime.util.DirUtil;
 import jetbrains.mps.jps.model.JpsMPSExtensionService;
 import jetbrains.mps.jps.model.JpsMPSModuleExtension;
 import jetbrains.mps.jps.project.JpsMPSProject;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.tool.builder.paths.ModuleOutputPaths;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.jps.incremental.CompileContext;
 import org.jetbrains.jps.incremental.ModuleBuildTarget;
 import org.jetbrains.jps.incremental.storage.BuildDataManager;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -41,19 +36,14 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class GenerationPathsController {
-  private final JpsMPSProject myProject;
   private final CompileContext myContext;
-  private final Iterable<MResource> myModelResources;
   private final JpsRedirects myRedirects = new JpsRedirects();
   private final Map<ModuleBuildTarget, File> myOutputRootsPerTarget = new HashMap<ModuleBuildTarget, File>();
 
   private ModuleOutputPaths myOutputPaths;
-  private MyForeignRootPaths myForeignRootPaths;
 
-  public GenerationPathsController(JpsMPSProject project, CompileContext context, Iterable<MResource> modelResources) {
-    myProject = project;
+  public GenerationPathsController(CompileContext context) {
     myContext = context;
-    myModelResources = modelResources;
   }
 
   public JpsRedirects getRedirects() {
@@ -64,20 +54,11 @@ public class GenerationPathsController {
     return myOutputRootsPerTarget.get(target);
   }
 
-  private Collection<SModule> getModulesInvolved(Iterable<MResource> resources) {
+  private static Collection<SModule> getModulesInvolved(Iterable<MResource> resources) {
     return StreamSupport.stream(resources.spliterator(), false).map(MResource::module).collect(Collectors.toList());
   }
 
-  public void registerForeignPathsProvider() {
-    GeneratorPathsComponent.getInstance().registerForeignPathsProvider(new ForeignPathsProvider() {
-      @Override
-      public String belongsToForeignPath(IFile path) {
-        return myForeignRootPaths != null ? myForeignRootPaths.findForeignPrefix(path.getPath()) : null;
-      }
-    });
-  }
-
-  public void initWithTargets(Collection<ModuleBuildTarget> targets) {
+  private void initWithTargets(Collection<ModuleBuildTarget> targets) {
     Set<ModuleBuildTarget> processed = new HashSet<ModuleBuildTarget>();
     for (ModuleBuildTarget target : targets) {
       if (processed.contains(target)) continue;
@@ -96,29 +77,8 @@ public class GenerationPathsController {
     }
   }
 
-  public void init(Collection<ModuleBuildTarget> targets) {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        myOutputPaths = new ModuleOutputPaths(getModulesInvolved(myModelResources));
-      }
-    });
-    myForeignRootPaths = new MyForeignRootPaths(myOutputPaths.getOutputPaths());
+  public void init(JpsMPSProject project, Iterable<MResource> modelResources, Collection<ModuleBuildTarget> targets) {
+    project.getModelAccess().runReadAction(() -> myOutputPaths = new ModuleOutputPaths(getModulesInvolved(modelResources)));
     initWithTargets(targets);
-    registerForeignPathsProvider();
-  }
-
-  private static class MyForeignRootPaths {
-    private final String[] myRootPaths;
-
-    public MyForeignRootPaths(Iterable<String> foreignRoots) {
-      myRootPaths = StreamSupport.stream(foreignRoots.spliterator(), false).map(DirUtil::normalizeAsDir).toArray(String[]::new);
-      Arrays.sort(myRootPaths);
-    }
-
-    public String findForeignPrefix(String path) {
-      int idx = DirUtil.findPrefixAsDir(path, myRootPaths);
-      return idx >= 0 ? myRootPaths[idx] : null;
-    }
   }
 }

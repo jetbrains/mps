@@ -9,7 +9,7 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
@@ -28238,6 +28238,71 @@
                 </node>
               </node>
               <node concept="3GX2aA" id="3qNu4$OQPtE" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="2S6QgY" id="2_9uqMUZApe">
+    <property role="TrG5h" value="RemoveCastExpr" />
+    <ref role="2ZfgGC" to="tpee:f_0QFTa" resolve="CastExpression" />
+    <node concept="2S6ZIM" id="2_9uqMUZApf" role="2ZfVej">
+      <node concept="3clFbS" id="2_9uqMUZApg" role="2VODD2">
+        <node concept="3clFbF" id="2_9uqMUZAuK" role="3cqZAp">
+          <node concept="Xl_RD" id="2_9uqMUZAuJ" role="3clFbG">
+            <property role="Xl_RC" value="Remove Cast Expression" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="2_9uqMUZAph" role="2ZfgGD">
+      <node concept="3clFbS" id="2_9uqMUZApi" role="2VODD2">
+        <node concept="3clFbJ" id="2_9uqMUZFm8" role="3cqZAp">
+          <node concept="2OqwBi" id="2_9uqMUZFVD" role="3clFbw">
+            <node concept="2OqwBi" id="2_9uqMUZFxV" role="2Oq$k0">
+              <node concept="2Sf5sV" id="2_9uqMUZFmx" role="2Oq$k0" />
+              <node concept="1mfA1w" id="2_9uqMUZFMI" role="2OqNvi" />
+            </node>
+            <node concept="1mIQ4w" id="2_9uqMUZGd1" role="2OqNvi">
+              <node concept="chp4Y" id="2_9uqMUZGfz" role="cj9EA">
+                <ref role="cht4Q" to="tpee:fHeOMHZ" resolve="ParenthesizedExpression" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="2_9uqMUZFma" role="3clFbx">
+            <node concept="3clFbF" id="2_9uqMUZGjj" role="3cqZAp">
+              <node concept="2OqwBi" id="2_9uqMUZGOa" role="3clFbG">
+                <node concept="2OqwBi" id="2_9uqMUZGs$" role="2Oq$k0">
+                  <node concept="2Sf5sV" id="2_9uqMUZGji" role="2Oq$k0" />
+                  <node concept="1mfA1w" id="2_9uqMUZGHn" role="2OqNvi" />
+                </node>
+                <node concept="1P9Npp" id="2_9uqMUZGZJ" role="2OqNvi">
+                  <node concept="2OqwBi" id="2_9uqMUZHbX" role="1P9ThW">
+                    <node concept="2Sf5sV" id="2_9uqMUZH1W" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="2_9uqMUZHs9" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:f_0QFTc" resolve="expression" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="9aQIb" id="2_9uqMUZHwT" role="9aQIa">
+            <node concept="3clFbS" id="2_9uqMUZHwU" role="9aQI4">
+              <node concept="3clFbF" id="2_9uqMUZHDk" role="3cqZAp">
+                <node concept="2OqwBi" id="2_9uqMUZHMC" role="3clFbG">
+                  <node concept="2Sf5sV" id="2_9uqMUZHDj" role="2Oq$k0" />
+                  <node concept="1P9Npp" id="2_9uqMUZIwY" role="2OqNvi">
+                    <node concept="2OqwBi" id="2_9uqMUZIFn" role="1P9ThW">
+                      <node concept="2Sf5sV" id="2_9uqMUZIxO" role="2Oq$k0" />
+                      <node concept="3TrEf2" id="2_9uqMUZIZb" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tpee:f_0QFTc" resolve="expression" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

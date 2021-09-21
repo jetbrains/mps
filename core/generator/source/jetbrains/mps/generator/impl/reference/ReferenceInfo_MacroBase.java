@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * @author Artem Tikhomirov
@@ -36,7 +36,7 @@ public abstract class ReferenceInfo_MacroBase extends ReferenceInfo {
 
   @Nullable
   @Override
-  public final SReference create(@NotNull PostponedReference ref) {
+  public final ResolveInfo create(@NotNull PostponedReference ref) {
     try {
       Object result = expandReferenceMacro(ref);
       if (result instanceof SNode) {
@@ -44,17 +44,18 @@ public abstract class ReferenceInfo_MacroBase extends ReferenceInfo {
         return createStaticReference(ref, outputTargetNode);
       } else if (result instanceof String) {
         final String resolveInfoForDynamicResolve = (String) result;
-        final SReference dr = createDynamicReference(ref, resolveInfoForDynamicResolve, new DynamicReferenceOrigin(getMacroNodeRef(), null));
-        ref.getGenerator().registerDynamicReference(dr);
-        return dr;
+        return createDynamicReference(ref, resolveInfoForDynamicResolve, new DynamicReferenceOrigin(getMacroNodeRef(), null));
       } else if (result instanceof SNodeReference) {
         SNodeReference refTarget = (SNodeReference) result;
-        return jetbrains.mps.smodel.SReference.create(ref.getLink(), ref.getSourceNode(), refTarget.getModelReference(), refTarget.getNodeId());
+        return ResolveInfo.of(refTarget, null);
       }
       if (!ref.getLink().isOptional()) {
         return createInvalidReference(ref, getInvalidReferenceResolveInfo());
       }
-      return null; // why not always invalid reference? Is there a convention that RM with null value means "forget it"?
+      // If you wonder why not an invalid reference?
+      // There a convention that RM with null value means "forget it" (e.g. lang.editor generator,
+      // RM for parentStyleClass in reduce_CellModel_Block)
+      return null;
     } catch (GenerationFailureException ex) {
       // It's not nice to handle exception here (it could be exception fro user code and from generator's code, and we have no idea what's the proper way to
       // handle them), but I feel it's worth trying to go on with invalid reference, and handling exception here is much better than silently ignoring it.

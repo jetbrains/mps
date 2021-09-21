@@ -23,7 +23,6 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -160,8 +159,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
    * Format: <code>[ moduleID / ] modelID [ ([moduleName /] modelName ) ]</code>
    */
   @NotNull
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static SModelReference parseReference(String s) {
     Pair<Pair<SModuleId, String>, Pair<SModelId, String>> parseResult = parseReference_internal(s);
     SModuleId moduleId = parseResult.o1.o1;
@@ -263,7 +261,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
    * forever. Perhaps, we can move it into persistence/vcs modules and bury it there? Another alternative is to introduce
    * new model identity to replace 'f:' identity, and leave dedicated SModelId factory for the legacy support in vcs/persistence only.
    */
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   @Nullable
   @Hack
   private static SModuleId extractModuleIdFromModelIdIfJavaStub(SModelId modelId) {
@@ -291,8 +289,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
    *
    * @return <code>true</code> if it's model id of java stub and it includes module id as it used to do in MPS 3.2 and earlier
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   private static boolean isVerboseJavaStubModelId(SModelId id) {
     if (ForeignSModelId.TYPE.equals(id.getType()) && id instanceof ForeignSModelId) {
       String idValue = ((ForeignSModelId) id).getId();
@@ -312,8 +309,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
    * IMPORTANT: see {@link #extractModuleIdFromModelIdIfJavaStub(SModelId)} for the reasons we didn't remove it.
    * @return <code>true</code> if it's model id of java stub in its legacy form (i.e. foreign, f:java_stub#...), either with or without module id part.
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   private static boolean isLegacyJavaStubModelId(SModelId id) {
     if (ForeignSModelId.TYPE.equals(id.getType()) && id instanceof ForeignSModelId) {
       String idValue = ((ForeignSModelId) id).getId();
@@ -326,7 +322,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
   /**
    * Here we duplicate code of JavaPackageNameStub, not to introduce dependency to [java-stub] module
    */
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   @Hack
   private static SModelId newJavaPackageStubFromLegacy(SModelId id) {
     // pre: isLegacyJavaStubModel()

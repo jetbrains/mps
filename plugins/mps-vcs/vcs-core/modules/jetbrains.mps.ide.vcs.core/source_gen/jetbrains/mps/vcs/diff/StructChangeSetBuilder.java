@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.vcs.diff.changes.SetReferenceStructChange;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -77,7 +78,7 @@ public class StructChangeSetBuilder {
     if (!(equalsReference(oldReference, newReference, oldToNewMap, false))) {
       SModelReference targetModel = check_okvhpb_a0a0c0i(newReference);
       SNodeId targetId = (newReference instanceof DynamicReference ? null : check_okvhpb_a0a1a2a8(newReference));
-      ListSequence.fromList(myNewChanges).addElement(new SetReferenceStructChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, targetId, check_okvhpb_g0a0a2a2a8(((jetbrains.mps.smodel.SReference) newReference))));
+      ListSequence.fromList(myNewChanges).addElement(new SetReferenceStructChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, targetId, SLinkOperations.getResolveInfo(newReference)));
     }
   }
   private void buildForNode(final Map<SNode, SNode> oldToNewMap, @NotNull final SNode oldNode, @NotNull final SNode newNode) {
@@ -334,12 +335,6 @@ outer:
   private static SNodeId check_okvhpb_a0a1a2a8(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
-    }
-    return null;
-  }
-  private static String check_okvhpb_g0a0a2a2a8(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
     }
     return null;
   }

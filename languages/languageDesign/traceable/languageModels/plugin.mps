@@ -22,13 +22,6 @@
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
-      <concept id="1239360506533" name="jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration" flags="ng" index="2fD8I5">
-        <child id="1239529553065" name="component" index="2pHZQ9" />
-      </concept>
-      <concept id="1239462176079" name="jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration" flags="ng" index="2lGYhJ">
-        <property id="1240400839614" name="final" index="3dDGau" />
-        <child id="1239462974287" name="type" index="2lK19J" />
-      </concept>
       <concept id="1239576519914" name="jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentAccessOperation" flags="nn" index="2sxana">
         <reference id="1239576542472" name="component" index="2sxfKC" />
       </concept>
@@ -173,7 +166,6 @@
         <property id="184542595914096177" name="weight" index="1xVfUM" />
         <child id="2360002718792633290" name="job" index="ElM8M" />
         <child id="6418371274763146553" name="dependency" index="15LFui" />
-        <child id="7320828025189219295" name="parameters" index="1aI7mi" />
         <child id="119022571401949664" name="input" index="3D36I5" />
       </concept>
       <concept id="6418371274763029523" name="jetbrains.mps.make.facet.structure.FacetDeclaration" flags="ng" index="15KeUS">
@@ -184,9 +176,6 @@
         <property id="8351679702044326377" name="qualifier" index="3HPxAp" />
         <reference id="6418371274763029603" name="dependsOn" index="15KeV8" />
       </concept>
-      <concept id="7320828025189345662" name="jetbrains.mps.make.facet.structure.ParametersDeclaration" flags="ng" index="1aIAsN" />
-      <concept id="7320828025189375155" name="jetbrains.mps.make.facet.structure.LocalParametersComponentExpression" flags="nn" index="1aIXbY" />
-      <concept id="7320828025189375154" name="jetbrains.mps.make.facet.structure.LocalParametersExpression" flags="nn" index="1aIXbZ" />
       <concept id="119022571402207412" name="jetbrains.mps.make.facet.structure.ResourceClassifierType" flags="in" index="3D27Fh" />
       <concept id="119022571401949652" name="jetbrains.mps.make.facet.structure.ResourceTypeDeclaration" flags="ng" index="3D36IL">
         <child id="119022571401949655" name="resourceType" index="3D36IM" />
@@ -206,7 +195,6 @@
         <child id="2360002718792622193" name="resource" index="ElOA9" />
       </concept>
       <concept id="4671800353872995469" name="jetbrains.mps.make.script.structure.ConceptFunctionParameter_progressMonitor" flags="nn" index="EWnkA" />
-      <concept id="7077360340906447917" name="jetbrains.mps.make.script.structure.ResultStatement" flags="nn" index="3D7k6m" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -263,26 +251,6 @@
       <node concept="2aLE7I" id="emRLGQDYpS" role="ElM8M">
         <node concept="ElOhj" id="emRLGQDYpT" role="2aLE7H">
           <node concept="3clFbS" id="emRLGQDYpU" role="2VODD2">
-            <node concept="3clFbJ" id="1igPMF3DttP" role="3cqZAp">
-              <node concept="3clFbS" id="1igPMF3DttQ" role="3clFbx">
-                <node concept="3D7k6m" id="1igPMF3Dtyf" role="3cqZAp" />
-              </node>
-              <node concept="2OqwBi" id="1igPMF3DttW" role="3clFbw">
-                <node concept="10M0yZ" id="1igPMF3DttT" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
-                  <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
-                </node>
-                <node concept="liA8E" id="1igPMF3Dtyb" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Boolean.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="1aIXbY" id="1igPMF3Dtyc" role="37wK5m">
-                    <node concept="1aIXbZ" id="1igPMF3Dtyd" role="2Oq$k0" />
-                    <node concept="2sxana" id="1igPMF3Dtye" role="2OqNvi">
-                      <ref role="2sxfKC" node="1igPMF3Dttp" resolve="skipCopying" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="3hEqlZ1qKCA" role="3cqZAp">
               <node concept="2OqwBi" id="3hEqlZ1qKCW" role="3clFbG">
                 <node concept="EWnkA" id="3hEqlZ1qKCB" role="2Oq$k0" />
@@ -749,17 +717,6 @@
       <node concept="3D36IL" id="emRLGQDYpV" role="3D36I5">
         <node concept="3D27Fh" id="4g8ToP4XNjH" role="3D36IM">
           <ref role="3uigEE" to="fn29:1Xl3kQ1uadv" resolve="TResource" />
-        </node>
-      </node>
-      <node concept="1aIAsN" id="1igPMF3Dttn" role="1aI7mi">
-        <property role="TrG5h" value="Parameters" />
-        <node concept="3Tm1VV" id="1igPMF3Dtto" role="1B3o_S" />
-        <node concept="2lGYhJ" id="1igPMF3Dttp" role="2pHZQ9">
-          <property role="3dDGau" value="false" />
-          <property role="TrG5h" value="skipCopying" />
-          <node concept="3uibUv" id="1igPMF3DttN" role="2lK19J">
-            <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
-          </node>
         </node>
       </node>
     </node>

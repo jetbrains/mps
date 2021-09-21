@@ -4,7 +4,6 @@
     <root id="root">
       <element id="archive" name="mps-core.jar">
         <element id="module-output" name="kernel" />
-        <element id="module-output" name="make-facets" />
         <element id="module-output" name="make-runtime" />
         <element id="module-output" name="util-core" />
         <element id="module-output" name="typesystemEngine" />

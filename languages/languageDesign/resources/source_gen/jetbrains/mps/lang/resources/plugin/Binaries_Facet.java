@@ -138,8 +138,15 @@ public class Binaries_Facet extends IFacet.Stub {
                           }
                         }
                       });
-                      // though StaleFilesCollector is discouraged, we need to delete old resource files, therefore we have to use it here unless we move Resource processing into textgen aspect
-                      new StaleFilesCollector(outputDir).updateDelta(fdc.getDelta());
+                      if (!(monitor.getSession().isCleanMake())) {
+                        // though StaleFilesCollector is discouraged, we need to delete old resource files, therefore we have to use it here unless we move Resource processing into textgen aspect
+                        // In case of 'clean' session, it's TextGen facet that collects (and reports as stale) all files under output dir.
+                        // For an ordinary build (clean == false), I leave this code as I suppose it may report outdated (aka stale) resource files.
+                        // Java files, or anything coming from TextGen facet, are handled by files recorded in 'generated'.
+                        // I hope to refactor the whole Make process to keep content creation logic separate from delta authoring, so that we won't need to 
+                        // deal with stale 'Resource' artifacts here explicitly, but until then, have to keep ordinary build and renamed resource file scenario in mind
+                        new StaleFilesCollector(outputDir).updateDelta(fdc.getDelta());
+                      }
                       ListSequence.fromList(deltaList).addElement(fdc.getDelta());
                     }
                   }

@@ -15,15 +15,13 @@
  */
 package jetbrains.mps.compiler;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @deprecated {@link JavaCompiler} approacj has been replaced with the one backed by {@code javax.tools.JavaCompiler}
  * @author Artem Tikhomirov
  */
-@Deprecated
-@ToRemove(version = 2021.2)
+@Deprecated(since = "2021.2", forRemoval = true)
 public interface ErrorSink {
   void fatalError(@NotNull String message);
   // FIXME see JavaCompiler#addSource(JavaFile) rant why I don't use JavaFile here

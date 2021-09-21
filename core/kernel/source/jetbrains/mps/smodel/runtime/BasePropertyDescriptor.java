@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.STypeId;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -27,14 +26,12 @@ public class BasePropertyDescriptor implements PropertyDescriptor {
   private final String myName;
   private SNodeReference mySrcNode;
 
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public BasePropertyDescriptor(SPropertyId id, String name) {
     this(id, name,null, null);
   }
 
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public BasePropertyDescriptor(SPropertyId id, String name, @Nullable SNodeReference srcNode) {
     this(id, name,null, srcNode);
   }

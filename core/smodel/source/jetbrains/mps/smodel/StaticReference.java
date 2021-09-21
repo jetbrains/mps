@@ -6,7 +6,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +32,6 @@ public final class StaticReference extends SReferenceBase {
    *             In 2021.3, the constructor to become package-local for transitional access from SReference.create method
    */
   @Deprecated(since = "2021.2", forRemoval = true)
-  @ToRemove(version = 2021.2)
   public StaticReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull SNode immatureTargetNode) {
     super(role, sourceNode);
     myImmatureTargetNode = immatureTargetNode;
@@ -49,7 +47,6 @@ public final class StaticReference extends SReferenceBase {
    *             In 2021.3, the constructor to become package-local for transitional access from SReference.create method
    */
   @Deprecated(since = "2021.2", forRemoval = true)
-  @ToRemove(version = 2021.2)
   public StaticReference(@NotNull SReferenceLink role,
                          @NotNull SNode sourceNode,
                          @Nullable SModelReference targetModelReference,
@@ -191,8 +188,7 @@ public final class StaticReference extends SReferenceBase {
    *             (2) Is flawed with respect to global repository assumption, references are resolved with null repository
    *             To be replaced with #getTargetModel_Fair
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   private SModel getTargetSModel() {
     SModel current = getSourceNode().getModel();
     if (current != null && current.getReference().equals(getTargetSModelReference())) return current;

@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.adapter.structure.property.InvalidProperty;
 import jetbrains.mps.smodel.adapter.structure.ref.InvalidReferenceLink;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -32,13 +31,12 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 /**
  * {@link jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter} covers transition from string to meta-object within SConcept scope.
  * To get SLanguage or SConcept/SInterfaceConcept, there's no other alternative at the moment but to use static methods of this class.
+ * @deprecated use MetaAdapterFactory instead
  */
-@Deprecated //use MetaAdapterFactory instead
-@ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
 public class MetaAdapterFactoryByName {
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //no usages in MPS except SModelUtil.findConceptDeclaration
   public static SConcept getConcept(String conceptName) {
     SAbstractConcept c = ConceptRegistry.getInstance().getConceptByName(conceptName);
@@ -46,8 +44,7 @@ public class MetaAdapterFactoryByName {
     return new InvalidConcept(conceptName);
   }
 
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static SInterfaceConcept getInterfaceConcept(String conceptName) {
     SAbstractConcept c = ConceptRegistry.getInstance().getConceptByName(conceptName);
     if (c instanceof SInterfaceConcept) return ((SInterfaceConcept) c);
@@ -57,8 +54,7 @@ public class MetaAdapterFactoryByName {
   /**
    * Generally, this method shall not be used directly. Consider using {@link jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter#convertProperty(String)} instead
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static SProperty getProperty(String conceptName, String propName) {
     SAbstractConcept c = ConceptRegistry.getInstance().getConceptByName(conceptName);
     if (!c.isValid()) return new InvalidProperty(conceptName, propName);
@@ -68,8 +64,7 @@ public class MetaAdapterFactoryByName {
   /**
    * Generally, this method shall not be used directly. Consider using {@link jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter#convertAssociation(String)} instead
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static SReferenceLink getReferenceLink(String conceptName, String refName) {
     SAbstractConcept c = ConceptRegistry.getInstance().getConceptByName(conceptName);
     if (!c.isValid()) return new InvalidReferenceLink(conceptName, refName);
@@ -79,8 +74,7 @@ public class MetaAdapterFactoryByName {
   /**
    * Generally, this method shall not be used directly. Consider using {@link jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter#convertAggregation(String)}} instead
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static SContainmentLink getContainmentLink(String conceptName, String linkName) {
     SAbstractConcept c = ConceptRegistry.getInstance().getConceptByName(conceptName);
     if (!c.isValid()) return new InvalidContainmentLink(conceptName, linkName);

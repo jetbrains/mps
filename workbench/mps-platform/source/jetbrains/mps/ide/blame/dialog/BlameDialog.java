@@ -48,7 +48,6 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.ide.blame.api.Reporter;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

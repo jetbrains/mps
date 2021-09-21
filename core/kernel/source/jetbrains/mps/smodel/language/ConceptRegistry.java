@@ -29,7 +29,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -148,8 +147,7 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
     return myConstraintsRegistry.getConstraintsDescriptor(concept);
   }
 
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   //this method is here for compatibility purposes.
   //remove as soon as there's no need in optimizing by-name stuff
   // which is unlikely to happen provided we have support for legacy persistence that needs by-name concepts.

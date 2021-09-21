@@ -1223,29 +1223,29 @@
   </root>
   <root nodeRef="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)/5881102044690179271">
     <file name="ITestNodeWrapper.java">
-      <node id="5881102044690179276" at="29,0,30,0" concept="9" trace="getNodePointer#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="5881102044690179280" at="48,0,49,0" concept="9" trace="isTestCase#()Z" />
-      <node id="4624926939404484369" at="82,0,83,0" concept="9" trace="canRunInProcess#()Z" />
-      <node id="5881102044690179272" at="26,0,28,0" concept="9" trace="getNode#()null" />
-      <node id="8107514631987099417" at="42,0,44,0" concept="9" trace="getTestNodeModule#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
-      <node id="5881102044690179284" at="54,0,56,0" concept="9" trace="getTestCase#()Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;" />
-      <node id="5881102044690179289" at="57,0,59,0" concept="9" trace="getTestMethods#()Ljava/lang/Iterable;" />
-      <node id="5881102044690179295" at="63,0,65,0" concept="9" trace="getName#()Ljava/lang/String;" />
-      <node id="5881102044690179300" at="69,0,71,0" concept="9" trace="getFqName#()Ljava/lang/String;" />
-      <node id="5881102044690179309" at="79,0,81,0" concept="9" trace="getTestRunParameters#()Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestParameters;" />
-      <node id="5881102044690179305" at="75,0,78,0" concept="9" trace="getCachedFqName#()Ljava/lang/String;" />
-      <scope id="5881102044690179276" at="29,0,30,0" />
-      <scope id="5881102044690179280" at="48,0,49,0" />
-      <scope id="4624926939404484369" at="82,0,83,0" />
-      <scope id="5881102044690179272" at="26,0,28,0" />
-      <scope id="8107514631987099417" at="42,0,44,0" />
-      <scope id="5881102044690179284" at="54,0,56,0" />
-      <scope id="5881102044690179289" at="57,0,59,0" />
-      <scope id="5881102044690179295" at="63,0,65,0" />
-      <scope id="5881102044690179300" at="69,0,71,0" />
-      <scope id="5881102044690179309" at="79,0,81,0" />
-      <scope id="5881102044690179305" at="75,0,78,0" />
-      <unit id="5881102044690179271" at="21,0,84,0" name="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
+      <node id="5881102044690179276" at="28,0,29,0" concept="9" trace="getNodePointer#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="5881102044690179280" at="47,0,48,0" concept="9" trace="isTestCase#()Z" />
+      <node id="4624926939404484369" at="80,0,81,0" concept="9" trace="canRunInProcess#()Z" />
+      <node id="5881102044690179272" at="25,0,27,0" concept="9" trace="getNode#()null" />
+      <node id="8107514631987099417" at="41,0,43,0" concept="9" trace="getTestNodeModule#()Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
+      <node id="5881102044690179284" at="53,0,55,0" concept="9" trace="getTestCase#()Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;" />
+      <node id="5881102044690179289" at="56,0,58,0" concept="9" trace="getTestMethods#()Ljava/lang/Iterable;" />
+      <node id="5881102044690179295" at="62,0,64,0" concept="9" trace="getName#()Ljava/lang/String;" />
+      <node id="5881102044690179300" at="68,0,70,0" concept="9" trace="getFqName#()Ljava/lang/String;" />
+      <node id="5881102044690179305" at="74,0,76,0" concept="9" trace="getCachedFqName#()Ljava/lang/String;" />
+      <node id="5881102044690179309" at="77,0,79,0" concept="9" trace="getTestRunParameters#()Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestParameters;" />
+      <scope id="5881102044690179276" at="28,0,29,0" />
+      <scope id="5881102044690179280" at="47,0,48,0" />
+      <scope id="4624926939404484369" at="80,0,81,0" />
+      <scope id="5881102044690179272" at="25,0,27,0" />
+      <scope id="8107514631987099417" at="41,0,43,0" />
+      <scope id="5881102044690179284" at="53,0,55,0" />
+      <scope id="5881102044690179289" at="56,0,58,0" />
+      <scope id="5881102044690179295" at="62,0,64,0" />
+      <scope id="5881102044690179300" at="68,0,70,0" />
+      <scope id="5881102044690179305" at="74,0,76,0" />
+      <scope id="5881102044690179309" at="77,0,79,0" />
+      <unit id="5881102044690179271" at="20,0,82,0" name="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
     </file>
   </root>
   <root nodeRef="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)/5881102044690182514">

@@ -61,7 +61,6 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.FileSystemModelHelper;
@@ -115,8 +114,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   /**
    * @deprecated use {@link #BaseLogicalViewProjectPane(Project)} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   protected BaseLogicalViewProjectPane(Project project, ProjectView projectView) {
     super(project);
   }

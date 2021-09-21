@@ -37,7 +37,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.internal.collections.runtime.ISequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -69,13 +68,13 @@ import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
@@ -291,19 +290,19 @@ public class JavaToMpsConverter {
 
     // this happens on the level of expressions, but relies on top-level references (from class and method
     // declarations) having been resolved
-    ProgressMonitor resolvePM = progress.subTask(1);
+    final ProgressMonitor resolvePM = progress.subTask(1);
     resolvePM.start("", ListSequence.fromList(myModels).count());
-    for (final SModel m : ListSequence.fromList(myModels)) {
-      // Here used to be a code JavaParser.tryToResolveUnknowns(myAttachedRoots...), which used to take model of a supplied node to update its imports
-      // Now, with YetUnknownResolver that works on a per-model basis, need to group elements of myAttachedRoots by their model, hence intersect(), below
-      final Wrappers._T<YetUnknownResolver> yur = new Wrappers._T<YetUnknownResolver>();
-      modelAccess.accessModel(new Runnable() {
-        public void run() {
-          yur.value = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
+    modelAccess.replaceReferences(new Runnable() {
+      public void run() {
+        for (SModel m : ListSequence.fromList(myModels)) {
+          // Here used to be a code JavaParser.tryToResolveUnknowns(myAttachedRoots...), which used to take model of a supplied node to update its imports
+          // Now, with YetUnknownResolver that works on a per-model basis, need to group elements of myAttachedRoots by their model, hence intersect(), below
+          YetUnknownResolver yur;
+          yur = new YetUnknownResolver(m, ListSequence.fromList(SModelOperations.roots(m, null)).intersect(ListSequence.fromList(myAttachedRoots)));
+          yur.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING));
         }
-      });
-      yur.value.tryResolveUnknowns(resolvePM.subTask(1, SubProgressKind.REPLACING), modelAccess);
-    }
+      }
+    });
     resolvePM.done();
 
     resolveUpdatePass("type references", nodes, new _FunctionTypes._return_P1_E0<Iterable<SReference>, SNode>() {
@@ -1107,7 +1106,7 @@ public class JavaToMpsConverter {
         return null;
       }
     } else {
-      DefaultModelRoot modelRoot = getFirstRootToCreateModel(pkgFqName);
+      ModelRoot modelRoot = getFirstRootToCreateModel(new SModelName(pkgFqName));
       if (modelRoot == null) {
         myMessageHandler.handle(new Message(MessageKind.ERROR, "Failed to find model root to create model in"));
         return null;
@@ -1119,7 +1118,6 @@ public class JavaToMpsConverter {
       myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("Failed to create model for package %s", pkgFqName)));
       return null;
     }
-    modelDescr.load();
 
     return modelDescr;
   }
@@ -1145,13 +1143,10 @@ public class JavaToMpsConverter {
   }
 
   @Nullable
-  private DefaultModelRoot getFirstRootToCreateModel(String packageName) {
+  private ModelRoot getFirstRootToCreateModel(SModelName packageName) {
     for (ModelRoot root : Sequence.fromIterable(myModule.getModelRoots())) {
-      if (!(root instanceof DefaultModelRoot)) {
-        continue;
-      }
       if (root.canCreateModel(packageName)) {
-        return (DefaultModelRoot) root;
+        return root;
       }
     }
     return null;

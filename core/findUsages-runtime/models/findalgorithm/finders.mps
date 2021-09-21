@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -112,9 +112,6 @@
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -1045,17 +1042,20 @@
       <property role="TrG5h" value="getSearchedNodes" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="6hZLf2Yqwk$" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="6hZLf2Yqwk_" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="1MqieoZsRsH" role="2B70Vg">
-            <property role="$nhwW" value="2018.3" />
-          </node>
-        </node>
-      </node>
       <node concept="2AHcQZ" id="6hZLf2YqwkB" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="2sePq$_siLO" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siLL" role="2B70Vg">
+            <property role="Xl_RC" value="2018.3" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siLP" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siLQ" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
       </node>
       <node concept="37vLTG" id="6hZLf2YqwkC" role="3clF46">
         <property role="TrG5h" value="node" />
@@ -1108,6 +1108,9 @@
           <node concept="1dT_AC" id="6hZLf2Yqwnh" role="1dT_Ay">
             <property role="1dT_AB" value="@deprecated" />
           </node>
+        </node>
+        <node concept="TZ5HI" id="2sePq$_siLM" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siLN" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2471,13 +2474,16 @@
     </node>
     <node concept="2AHcQZ" id="2361KXam34G" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="7XXCsc0Wdv7" role="2AJF6D">
-      <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-      <node concept="2B6LJw" id="7XXCsc0WdOQ" role="2B76xF">
-        <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-        <node concept="3b6qkQ" id="7XXCsc0WdUt" role="2B70Vg">
-          <property role="$nhwW" value="2019.3" />
+      <node concept="2B6LJw" id="2sePq$_siLS" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="2sePq$_siLR" role="2B70Vg">
+          <property role="Xl_RC" value="2019.3" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="2sePq$_siLT" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2sePq$_siLU" role="2B70Vg">
+          <property role="3clFbU" value="true" />
         </node>
       </node>
     </node>

@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.module;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,8 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * With default interface methods, one can use {@link SRepositoryListener} directly
  * Keep this class at least for few releases (I'd say couple of years), it's not that urgent to remove it
  */
-@Deprecated(forRemoval = true)
-@ToRemove(version = 2021.1)
+@Deprecated(since = "2021.1", forRemoval = true)
 public abstract class SRepositoryListenerBase implements SRepositoryListener {
   @Override
   public void moduleAdded(@NotNull SModule module) {

@@ -23,7 +23,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.ToStringComparator;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -86,8 +85,7 @@ public class DevKit extends AbstractModule {
    * Once there are no uses, rename getAllExportedLanguageIds to this method and deprecate the former. And, please, stop using Iterable when there's Collection.
    * It's plain stupid to write for() just to add all elements of the iterable to another collection (and don't get me started about IterableUtil.asCollection)
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public List<Language> getAllExportedLanguages() {
     List<Language> result = new ArrayList<>();
     for (DevKit dk : getAllExtendedDevkits()) {

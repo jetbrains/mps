@@ -24,7 +24,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -179,8 +178,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
    * @return named model
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 2017.3)
+@Deprecated(since = "2017.3", forRemoval = true)
   public SModel getModelByName(@Nullable String modelQualifiedName) {
     if (modelQualifiedName == null) {
       return null;
@@ -262,8 +260,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
    * @deprecated If there's need for extending language, shall add <code>Language.getDirectlyExtendingLanguage</code>.
    * There's single use in mbeddr.
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public Collection<Language> getAllExtendingLanguages(Language l) {
     final SModuleReference lRef = l.getModuleReference();
     List<Language> result = new LinkedList<>();

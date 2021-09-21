@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.SimpleLRUCache;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -51,8 +50,7 @@ public class LanguageScopeFactory implements CoreComponent, LanguageRegistryList
   /**
    * @deprecated
    */
-  @Deprecated
-  @ToRemove(version = 2018.2)
+@Deprecated(since = "2018.2", forRemoval = true)
   public static LanguageScopeFactory getInstance() {
     return INSTANCE;
   }

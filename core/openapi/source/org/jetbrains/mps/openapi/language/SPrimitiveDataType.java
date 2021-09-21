@@ -15,15 +15,12 @@
  */
 package org.jetbrains.mps.openapi.language;
 
-import jetbrains.mps.util.annotation.ToRemove;
-
 /**
  * It represents primitive data types, such as int, string or boolean.
  *
  * @deprecated Use one of SPrimitiveTypes
  */
-@Deprecated
-@ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
 public interface SPrimitiveDataType extends SDataType {
   int STRING = 0;
   int BOOL = 1;

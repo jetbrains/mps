@@ -18,7 +18,6 @@ package jetbrains.mps.text;
 import jetbrains.mps.textgen.trace.ScopePositionInfo;
 import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import jetbrains.mps.textgen.trace.UnitPositionInfo;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -38,7 +37,7 @@ import java.util.Map;
  * FIXME Consider {@link jetbrains.mps.text.impl.RegularTextUnit#addContextObject(String, Object)} - could we use same mechanism?
  * @author Artem Tikhomirov
  */
-@ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
 public interface CompatibilityTextUnit extends TextUnit {
   @Nullable
   Map<SNode, TraceablePositionInfo> getPositions();

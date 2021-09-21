@@ -15,7 +15,6 @@ import jetbrains.mps.internal.make.runtime.script.ValidationError;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.make.facet.FacetRegistry;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.script.InvalidScript;
 import java.util.Map;
@@ -31,34 +30,33 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 @GeneratedClass(node = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)/1479818508463261244", model = "r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)")
 public class ScriptBuilder {
   private static Logger LOG = LogManager.getLogger(ScriptBuilder.class);
-  private Set<IFacet.Name> facets = SetSequence.fromSet(new HashSet<IFacet.Name>());
+  private final Set<IFacet.Name> myRequestedFacets = SetSequence.fromSet(new HashSet<IFacet.Name>());
+  private final Set<IFacet.Name> myExcludedFacets = SetSequence.fromSet(new HashSet<IFacet.Name>());
   private Set<ITarget.Name> requestedTargets = SetSequence.fromSet(new HashSet<ITarget.Name>());
   private ITarget.Name finalTarget;
   private ITarget.Name startingTarget;
   private List<ValidationError> errors = ListSequence.fromList(new ArrayList<ValidationError>());
   private final FacetRegistry myFacetRegistry;
 
-  /**
-   * 
-   * @deprecated replace with the one that takes FacetRegistry argument
-   */
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  public ScriptBuilder() {
-    this(FacetRegistry.getInstance());
-  }
   public ScriptBuilder(FacetRegistry facetRegistry) {
     myFacetRegistry = facetRegistry;
   }
   public ScriptBuilder withFacetName(IFacet.Name facetName) {
-    SetSequence.fromSet(facets).addElement(facetName);
+    SetSequence.fromSet(myRequestedFacets).addElement(facetName);
+    SetSequence.fromSet(myExcludedFacets).removeElement(facetName);
     return this;
   }
   public ScriptBuilder withFacetNames(IFacet.Name... facetNames) {
     return withFacetNames(Sequence.fromArray(facetNames));
   }
   public ScriptBuilder withFacetNames(Iterable<IFacet.Name> facetNames) {
-    SetSequence.fromSet(facets).addSequence(Sequence.fromIterable(facetNames));
+    SetSequence.fromSet(myRequestedFacets).addSequence(Sequence.fromIterable(facetNames));
+    SetSequence.fromSet(myExcludedFacets).removeSequence(Sequence.fromIterable(facetNames));
+    return this;
+  }
+  public ScriptBuilder withoutFacet(IFacet.Name... facetNames) {
+    SetSequence.fromSet(myExcludedFacets).addSequence(Sequence.fromIterable(Sequence.fromArray(facetNames)));
+    SetSequence.fromSet(myRequestedFacets).removeSequence(Sequence.fromIterable(Sequence.fromArray(facetNames)));
     return this;
   }
   public ScriptBuilder withAuxTarget(ITarget.Name targetName) {
@@ -85,7 +83,7 @@ public class ScriptBuilder {
     return this;
   }
   public IScript toScript() {
-    if (SetSequence.fromSet(facets).isEmpty()) {
+    if (SetSequence.fromSet(myRequestedFacets).isEmpty()) {
       // well, in fact this could be legitimate scenario, when there are no facets for a set of models/modules and the set could be ignored 
       // however, at the moment, with lang.core as a super-language of any other and make facets it provides by default, empty script is likely an error
       // we do handle 'no used languages' case (MPS-26995) in ModulesClusterizer at the moment.
@@ -116,7 +114,7 @@ public class ScriptBuilder {
   }
   private Map<IFacet.Name, IFacet> collectFacets() {
     Map<IFacet.Name, IFacet> facetsView = MapSequence.fromMap(new HashMap<IFacet.Name, IFacet>());
-    for (IFacet.Name fn : SetSequence.fromSet(facets)) {
+    for (IFacet.Name fn : SetSequence.fromSet(myRequestedFacets)) {
       IFacet fct = myFacetRegistry.lookup(fn);
       if (fct != null) {
         MapSequence.fromMap(facetsView).put(fn, fct);
@@ -222,12 +220,18 @@ public class ScriptBuilder {
       if (f != null) {
         ListSequence.fromList(destination).addElement(f);
       } else {
-        if (required) {
-          String msg = String.format("facet %s requested by %s not found", requestee, requestor.getName());
-          error(msg);
-        } else {
-          LOG.debug("not found optional facet: " + requestee + " for facet " + requestor.getName());
-        }
+        reportMissing(requestor, requestee, required);
+      }
+    }
+    private void reportMissing(IFacet requestor, IFacet.Name requestee, boolean required) {
+      String reason = "";
+      if (SetSequence.fromSet(myExcludedFacets).contains(requestee)) {
+        reason = "; facet has been explicitly excluded from the script";
+      }
+      if (required) {
+        error(String.format("facet %s requested by %s not found%s", requestee, requestor.getName(), reason));
+      } else {
+        LOG.debug(String.format("optional facet %s requested by %s not found, ignored%s", requestee, requestor.getName(), reason));
       }
     }
   }

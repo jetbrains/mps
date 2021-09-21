@@ -20,6 +20,7 @@ import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -143,7 +144,7 @@ public class SetReferenceChange extends NodeChange {
     if (!(Objects.equals(oldRef.getTargetSModelReference(), newRef.getTargetSModelReference()))) {
       formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
         public String invoke(SReference ref) {
-          return String.format("[model=%s,\n  id=%s, resolveInfo=%s]", ref.getTargetSModelReference(), ref.getTargetNodeId(), ((jetbrains.mps.smodel.SReference) ref).getResolveInfo());
+          return String.format("[model=%s,\n  id=%s, resolveInfo=%s]", ref.getTargetSModelReference(), ref.getTargetNodeId(), SLinkOperations.getResolveInfo(ref));
         }
       };
     } else if (!(Objects.equals(oldRef.getTargetNodeId(), newRef.getTargetNodeId()))) {
@@ -152,11 +153,11 @@ public class SetReferenceChange extends NodeChange {
           return String.format("[id=%s, resolveInfo=%s]", ref.getTargetNodeId(), ref.getTargetNodeId());
         }
       };
-    } else if (!(Objects.equals(((jetbrains.mps.smodel.SReference) oldRef).getResolveInfo(), ((jetbrains.mps.smodel.SReference) newRef).getResolveInfo()))) {
+    } else if (!(Objects.equals(SLinkOperations.getResolveInfo(oldRef), SLinkOperations.getResolveInfo(newRef)))) {
       what = "resolve info";
       formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
         public String invoke(SReference ref) {
-          return String.format("'%s'", ((jetbrains.mps.smodel.SReference) ref).getResolveInfo());
+          return String.format("'%s'", SLinkOperations.getResolveInfo(ref));
         }
       };
     }
@@ -191,7 +192,7 @@ public class SetReferenceChange extends NodeChange {
       // This is internal reference
       targetModel = null;
     }
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a14(ref), check_mgdhcs_g0a5a14(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a14(ref), SLinkOperations.getResolveInfo(ref), myResolveInfoOnly);
   }
 
   @Override
@@ -219,12 +220,6 @@ public class SetReferenceChange extends NodeChange {
   private static SNodeId check_mgdhcs_f0a5a14(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
-    }
-    return null;
-  }
-  private static String check_mgdhcs_g0a5a14(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
     }
     return null;
   }

@@ -18,7 +18,6 @@ package jetbrains.mps.smodel.presentation;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -46,8 +45,7 @@ public class ReferenceConceptUtil {
    * @param concept with is possibly 'pure reference' concept.
    * @return characteristic reference or NULL
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   //we need to provide generated variant of specialized refs before removing this (see MPS-23362)
   public static SNode getCharacteristicReference(final SNode concept) {
     // uses in mbeddr

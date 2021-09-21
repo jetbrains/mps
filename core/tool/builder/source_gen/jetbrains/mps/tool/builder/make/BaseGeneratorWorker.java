@@ -64,7 +64,14 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     settings.setShowBadChildWarning(warnings);
     settings.setCreateStaticReferences(useStaticRefs);
     settings.setCheckModelsBeforeGeneration(false);
-    info(String.format("Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, warnings are %s, static references to replace dynamic is %s, skip unmodified models is %s", onoff[(strictMode ? 0 : 1)], onoff[(parallelMode ? 0 : 1)], (parallelMode ? threadCount : 1), onoff[(inplace ? 0 : 1)], onoff[(warnings ? 0 : 1)], onoff[(useStaticRefs ? 0 : 1)], onoff[(mySkipUnmodifiedModels ? 0 : 1)]));
+    if ("info".equalsIgnoreCase(gp.getMessageLevel())) {
+      settings.setShowInfo(true);
+      settings.setShowWarnings(true);
+    }
+    if ("warn".equalsIgnoreCase(gp.getMessageLevel())) {
+      settings.setShowWarnings(true);
+    }
+    info(String.format("Generating: strict mode is %s, parallel generation is %s (%d threads), in-place is %s, child warnings are %s, static references to replace dynamic is %s, skip unmodified models is %s", onoff[(strictMode ? 0 : 1)], onoff[(parallelMode ? 0 : 1)], (parallelMode ? threadCount : 1), onoff[(inplace ? 0 : 1)], onoff[(warnings ? 0 : 1)], onoff[(useStaticRefs ? 0 : 1)], onoff[(mySkipUnmodifiedModels ? 0 : 1)]));
   }
 
   protected void showStatistic() {

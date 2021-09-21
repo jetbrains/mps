@@ -5,7 +5,6 @@ package jetbrains.mps.findUsages;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.annotations.NotNull;
@@ -24,9 +23,10 @@ import java.util.LinkedHashSet;
 public class FindUsagesManager extends FindUsagesFacade implements CoreComponent {
   /**
    * @deprecated it's {@link CoreComponent}, use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} to retrieve an instance
+   * 
+   * @deprecated 
    */
-  @Deprecated
-  @ToRemove(version = 2018.2)
+  @Deprecated(since = "2018.2", forRemoval = true)
   public static FindUsagesManager getInstance() {
     return (FindUsagesManager) FindUsagesFacade.INSTANCE;
   }

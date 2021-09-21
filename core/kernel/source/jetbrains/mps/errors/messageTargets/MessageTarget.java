@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
-import jetbrains.mps.util.annotation.ToRemove;
 
 /**
  * Cyril.Konopko, 18.02.2010
@@ -27,15 +26,13 @@ public interface MessageTarget {
    * @deprecated {@code MessageTarget} has to vary in implementation rather than exposing dubious 'target' kind.
    *             For transition, may check {@code MessageTarget} instanceof respective subclass.
    */
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   MessageTargetEnum getTarget();
 
   /**
    * @deprecated first of all, string meta-objects are legacy; second, {@code MessageTarget} shall hide its implementation inside rather than expose it.
    */
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   String getRole();
 
   boolean sameAs(MessageTarget messageTarget);

@@ -22,7 +22,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
@@ -91,8 +90,7 @@ public final class VirtualFileUtils {
    * (we would rather make them read-only)
    */
   @Hack
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static VirtualFile getOrCreateVirtualFile(@NotNull IFile file) {
     if (file.getFileSystem() instanceof IoFileSystem) {
       file = FileSystemExtPoint.getFS().getFile(file.getPath());
@@ -113,8 +111,9 @@ public final class VirtualFileUtils {
    * @return null if current fs is not idea-based (it is very unlikely but still)
    */
   @Nullable
-  @Deprecated
+  @Deprecated(forRemoval = true)
   public static IFile toIFile(@NotNull VirtualFile f) {
+    LOG.error("VirtualFileUtils.toIFile will be removed in the next release", new Throwable());
     FileSystem fs = FileSystemExtPoint.getFS();
     if (fs instanceof IdeaFileSystem) {
       return ((IdeaFileSystem) fs).fromVirtualFile(f);
@@ -172,7 +171,7 @@ public final class VirtualFileUtils {
    *
    * @return true - event is from IdeaFile processing, false - event from refresh or any other VirtualFile changes
    */
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   public static boolean isFileEventFromMPS(VFileEvent event) {
     return event.getRequestor() instanceof IdeaFileSystem;
   }

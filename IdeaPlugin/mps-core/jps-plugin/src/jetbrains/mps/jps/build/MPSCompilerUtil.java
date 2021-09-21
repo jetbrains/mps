@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package jetbrains.mps.jps.build;
 
 import jetbrains.mps.idea.core.make.MPSMakeConstants;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.jps.incremental.CompileContext;
 import org.jetbrains.jps.incremental.messages.BuildMessage.Kind;
 import org.jetbrains.jps.incremental.messages.CompilerMessage;
@@ -39,4 +40,9 @@ public class MPSCompilerUtil {
       context.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, msg));
     }
   }
+
+  public static void reportError(CompileContext context, String msg, @Nullable Throwable ex) {
+    context.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.ERROR, ex == null ? msg : msg + ". Exception: " + ex.getMessage()));
+  }
+
 }

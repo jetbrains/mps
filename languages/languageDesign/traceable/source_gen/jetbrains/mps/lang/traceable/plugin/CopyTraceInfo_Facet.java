@@ -29,9 +29,8 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.make.script.IConfig;
-import jetbrains.mps.make.script.IPropertiesPool;
 import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.make.script.IPropertiesPool;
 
 public class CopyTraceInfo_Facet extends IFacet.Stub {
   private List<ITarget> targets = ListSequence.fromList(new ArrayList<ITarget>());
@@ -69,9 +68,6 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
           final Iterable<TResource> input = (Iterable<TResource>) (Iterable) rawInput;
           switch (0) {
             case 0:
-              if (Boolean.TRUE.equals(vars(pa.global()).skipCopying())) {
-                return new IResult.SUCCESS(_output_zgz0lb_a0a);
-              }
               progressMonitor.start("Copying resources", 2);
               progressMonitor.step("trace.info");
               try {
@@ -170,57 +166,23 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
       return null;
     }
     public <T> T createParameters(Class<T> cls) {
-      return cls.cast(new Parameters());
+      return null;
     }
     public <T> T createParameters(Class<T> cls, T copyFrom) {
       T t = createParameters(cls);
-      if (t != null) {
-        ((Tuples._1) t).assign((Tuples._1) copyFrom);
-      }
       return t;
     }
     public int workEstimate() {
       return 30;
-    }
-    public static Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Parameters.class);
-    }
-    public static class Parameters extends MultiTuple._1<Boolean> {
-      public Parameters() {
-        super();
-      }
-      public Parameters(Boolean skipCopying) {
-        super(skipCopying);
-      }
-      public Boolean skipCopying(Boolean value) {
-        return super._0(value);
-      }
-      public Boolean skipCopying() {
-        return super._0();
-      }
     }
   }
   public static class TargetProperties implements IPropertiesPersistence {
     public TargetProperties() {
     }
     public void storeValues(Map<String, String> store, IPropertiesPool properties) {
-      {
-        ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo");
-        if (properties.hasProperties(name)) {
-          Target_copyTraceInfo.Parameters props = properties.properties(name, Target_copyTraceInfo.Parameters.class);
-          MapSequence.fromMap(store).put("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo.skipCopying", String.valueOf(props.skipCopying()));
-        }
-      }
     }
     public void loadValues(Map<String, String> store, IPropertiesPool properties) {
       try {
-        {
-          ITarget.Name name = new ITarget.Name("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo");
-          Target_copyTraceInfo.Parameters props = properties.properties(name, Target_copyTraceInfo.Parameters.class);
-          if (MapSequence.fromMap(store).containsKey("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo.skipCopying")) {
-            props.skipCopying(Boolean.valueOf(MapSequence.fromMap(store).get("jetbrains.mps.lang.traceable.CopyTraceInfo.copyTraceInfo.skipCopying")));
-          }
-        }
       } catch (RuntimeException re) {
       }
     }

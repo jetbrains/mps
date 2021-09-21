@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDispatchable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -45,8 +44,7 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
    * @deprecated in use by generated code till 2021.1. Keep for at least a year to facilitate migration of projects
    *             and libraries with compiled code.
    */
-  @Deprecated(forRemoval = true, since = "2021.2")
-  @ToRemove(version = 2021.2)
+  @Deprecated(since = "2021.2", forRemoval = true)
   public BaseReferenceConstraintsDescriptor(SReferenceLink referenceLink, ConstraintsDescriptor container) {
     this.myReferenceLink = referenceLink;
     this.container = container;

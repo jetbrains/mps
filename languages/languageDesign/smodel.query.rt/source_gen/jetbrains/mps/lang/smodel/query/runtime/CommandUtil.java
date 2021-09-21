@@ -26,7 +26,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
@@ -136,8 +135,11 @@ public class CommandUtil {
     return check_1pinza_a0a12(aModule);
   }
 
-  @Deprecated
-  @ToRemove(version = 2018.1)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2018.1", forRemoval = true)
   public static SearchScope createConsoleScope(@Nullable final SearchScope baseScope, final boolean includeReadOnly, QueryExecutionContext context) {
     SearchScope scope = (baseScope == null ? context.getDefaultSearchScope() : baseScope);
     return (includeReadOnly ? scope : new EditableFilteringScope(scope));

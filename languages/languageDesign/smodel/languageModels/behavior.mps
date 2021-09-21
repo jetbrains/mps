@@ -135,9 +135,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123134" name="parameter" index="3clF46" />
@@ -2010,14 +2007,22 @@
       </node>
       <node concept="2AHcQZ" id="4EpASiDXq7a" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="4EpASiDXq7W" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="4EpASiDXq8J" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="4EpASiDXqf5" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siID" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siI_" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siIE" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siIF" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siIA" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siIB" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siIC" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2082,14 +2087,22 @@
       </node>
       <node concept="2AHcQZ" id="7E3Sw0Hhxe1" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="ghLQxy_N0" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="ghLQxy_Nr" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="ghLQxyA10" role="2B70Vg">
-            <property role="$nhwW" value="2018.3" />
+        <node concept="2B6LJw" id="2sePq$_siIK" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siIG" role="2B70Vg">
+            <property role="Xl_RC" value="2018.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siIL" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siIM" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siIH" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siII" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siIJ" role="3HnX3l" />
         </node>
       </node>
     </node>

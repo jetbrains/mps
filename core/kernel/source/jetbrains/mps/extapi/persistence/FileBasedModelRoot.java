@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.path.Path;
@@ -36,13 +35,10 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
 import static java.util.Collections.unmodifiableList;
 import static jetbrains.mps.util.FileUtil.getAbsolutePath;
 import static jetbrains.mps.util.FileUtil.getUnixPath;
@@ -86,12 +82,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   public static final String LOCATION = "location"; // TODO: 12/20/16 lower visibility
   private static final String PATH = "path";
 
-  @ToRemove(version = 3.5)
-  @Deprecated
-  @Nullable
-  @Immutable
-  private final List<String> mySupportedFileKinds; // null <=> default constructor is used
-
   /**
    * Ancestor for all the source paths
    * Commonly it is a module root folder and 'models' directory is its default source root
@@ -104,39 +94,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   private final List<PathListener> myListeners = new ArrayList<>();
 
   protected FileBasedModelRoot() {
-    mySupportedFileKinds = null;
-    mySourcePathStorage = new SourcePaths();
-  }
-
-  /**
-   * @deprecated use {@link #FileBasedModelRoot()} instead and
-   * define your own {@link #getSupportedFileKinds1()}
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected FileBasedModelRoot(String[] supportedFileKinds) {
-    mySupportedFileKinds = supportedFileKinds != null ? List.of(supportedFileKinds)
-                                                      : emptyList();
     mySourcePathStorage = new SourcePaths((sourceRootKind) -> getSupportedFileKinds1().contains(sourceRootKind));
-  }
-
-  /**
-   * @deprecated use {@link #getContentDirectory()} instead
-   */
-  @Deprecated
-  @Nullable
-  public final String getContentRoot() {
-    return myContentDir != null ? myContentDir.getPath() : null;
-  }
-
-  /**
-   * @deprecated use {@link #setContentDirectory(IFile)} instead
-   */
-  @Deprecated
-  public final void setContentRoot(@NotNull String path) {
-    checkNotRegistered();
-
-    myContentDir = myFileSystem.getFile(path);
   }
 
   @Nullable
@@ -149,7 +107,14 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     myContentDir = contentDir;
   }
 
+  /**
+   * @deprecated use of this method is discouraged.
+   *    On one hand, it's reasonable to expect that FileBasedModelRoot knows about FileSystem,
+   *    on the other, uses seem to deal with limitation of the class itself (e.g. api to add source roots),
+   *    rather than need for MR to expose FS.
+   */
   @NotNull
+  @Deprecated(since = "2021.3")
   public final FileSystem getFileSystem() {
     return myFileSystem;
   }
@@ -160,7 +125,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @NotNull
   @Immutable
   public /*abstract*/ List<SourceRootKind> getSupportedFileKinds1() {
-    return unmodifiableList(asList(SourceRootKinds.values()));
+    return List.of(SourceRootKinds.values());
   }
 
   /**
@@ -200,49 +165,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       ((EditableSModule) getModule()).setChanged();
     }
     return rv;
-  }
-
-  /**
-   * helper method (for legacy resolve)
-   */
-  @NotNull
-  private SourceRootKind resolveKindByName(@NotNull String kindName) {
-    for (SourceRootKind kind : getSupportedFileKinds1()) {
-      if (kind.getName().equals(kindName)) {
-        return kind;
-      }
-    }
-    throw new FileKindIsNotAllowedException(kindName);
-  }
-
-  /**
-   * @see SourcePaths
-   * @deprecated <code>String</code> is not the best choice. Consider using {@link #getSupportedFileKinds1()}
-   */
-  @Deprecated
-  @Immutable
-  public final Collection<String> getSupportedFileKinds() {
-    List<String> legacyFileKinds = mySupportedFileKinds;
-    if (legacyFileKinds != null) {
-      return legacyFileKinds;
-    } else {
-      return getSupportedFileKinds1().stream()
-                                     .map(SourceRootKind::getName)
-                                     .collect(Collectors.toList());
-    }
-  }
-
-  /**
-   * @deprecated use {@link #getSourceRoots(SourceRootKind)} instead
-   */
-  @NotNull
-  @Deprecated
-  public final Collection<String> getFiles(@NotNull String kind) {
-    List<SourceRoot> roots = getSourceRoots(resolveKindByName(kind));
-    return roots.stream()
-                .map(SourceRoot::getAbsolutePath) // unfortunately I am sure that plenty clients rely on the absolute path here.
-                .map(IFile::getPath)
-                .collect(Collectors.toUnmodifiableList());
   }
 
   @Override

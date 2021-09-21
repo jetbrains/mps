@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
@@ -122,9 +122,6 @@
       <concept id="1225271221393" name="jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression" flags="nn" index="17QLQc" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -1421,14 +1418,22 @@
     </node>
     <node concept="2AHcQZ" id="4fSpAVATV_d" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="2AHcQZ" id="4fSpAVATV_A" role="2AJF6D">
-      <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-      <node concept="2B6LJw" id="4fSpAVATV_B" role="2B76xF">
-        <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-        <node concept="3b6qkQ" id="4fSpAVATV_C" role="2B70Vg">
-          <property role="$nhwW" value="3.3" />
+      <node concept="2B6LJw" id="2sePq$_siN7" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="2sePq$_siN3" role="2B70Vg">
+          <property role="Xl_RC" value="3.3" />
         </node>
+      </node>
+      <node concept="2B6LJw" id="2sePq$_siN8" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2sePq$_siN9" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="2sePq$_siN4" role="lGtFl">
+      <node concept="TZ5HI" id="2sePq$_siN5" role="3nqlJM">
+        <node concept="TZ5HA" id="2sePq$_siN6" role="3HnX3l" />
       </node>
     </node>
   </node>
@@ -2026,13 +2031,16 @@
       </node>
       <node concept="2AHcQZ" id="zFlAU0Tiby" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="6$c9D61FTv1" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="6$c9D61FTDA" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="6$c9D61FTMT" role="2B70Vg">
-            <property role="$nhwW" value="2018.3" />
+        <node concept="2B6LJw" id="2sePq$_siNb" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNa" role="2B70Vg">
+            <property role="Xl_RC" value="2018.3" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNc" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siNd" role="2B70Vg">
+            <property role="3clFbU" value="true" />
           </node>
         </node>
       </node>
@@ -2341,14 +2349,22 @@
       </node>
       <node concept="2AHcQZ" id="DN11tz1io2" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="DN11tz1io3" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="DN11tz1io4" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="DN11tz1io5" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siNi" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNe" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNj" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siNk" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siNf" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siNg" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siNh" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2400,14 +2416,22 @@
       </node>
       <node concept="2AHcQZ" id="DN11tz1hkb" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="DN11tz1hN3" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="DN11tz1hXi" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="DN11tz1igs" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siNp" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNl" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNq" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siNr" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siNm" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siNn" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siNo" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2481,14 +2505,22 @@
       </node>
       <node concept="2AHcQZ" id="DN11tz1iyi" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="DN11tz1iFH" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="DN11tz1iFI" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="DN11tz1iFJ" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siNw" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNs" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNx" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siNy" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siNt" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siNu" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siNv" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2588,14 +2620,22 @@
       </node>
       <node concept="2AHcQZ" id="DN11tz1iSH" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="DN11tz1j0k" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="DN11tz1j0l" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="DN11tz1j0m" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siNB" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNz" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNC" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siND" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siN$" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siN_" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siNA" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2666,14 +2706,22 @@
       </node>
       <node concept="2AHcQZ" id="DN11tz1jqx" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="DN11tz1jqy" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="DN11tz1jqz" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="DN11tz1jq$" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siNI" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNE" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNJ" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siNK" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siNF" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siNG" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siNH" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -2851,14 +2899,22 @@
       </node>
       <node concept="2AHcQZ" id="DN11tz1jBL" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="DN11tz1jBM" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="DN11tz1jBN" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="DN11tz1jBO" role="2B70Vg">
-            <property role="$nhwW" value="2019.3" />
+        <node concept="2B6LJw" id="2sePq$_siNP" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="2sePq$_siNL" role="2B70Vg">
+            <property role="Xl_RC" value="2019.3" />
           </node>
+        </node>
+        <node concept="2B6LJw" id="2sePq$_siNQ" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2sePq$_siNR" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2sePq$_siNM" role="lGtFl">
+        <node concept="TZ5HI" id="2sePq$_siNN" role="3nqlJM">
+          <node concept="TZ5HA" id="2sePq$_siNO" role="3HnX3l" />
         </node>
       </node>
     </node>
@@ -7701,7 +7757,14 @@
     <node concept="3Tm1VV" id="5qGXSHdtRTo" role="1B3o_S" />
     <node concept="3UR2Jj" id="5qGXSHdulxX" role="lGtFl">
       <node concept="TZ5HA" id="5qGXSHdulxY" role="TZ5H$">
-        <node concept="1dT_AC" id="5qGXSHdulxZ" role="1dT_Ay" />
+        <node concept="1dT_AC" id="5qGXSHdulxZ" role="1dT_Ay">
+          <property role="1dT_AB" value="Update MPS internal records of versions for module dependencies. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5ziLofeze4R" role="TZ5H$">
+        <node concept="1dT_AC" id="5ziLofeze4S" role="1dT_Ay">
+          <property role="1dT_AB" value="These versions are persisted as part of module descriptor." />
+        </node>
       </node>
     </node>
   </node>

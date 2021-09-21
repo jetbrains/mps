@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
@@ -33,8 +32,7 @@ import java.net.URL;
  * @since 29/12/16
  * @deprecated consider using {@link PreinstalledPathDataSourceFactories} instead
  */
-@ToRemove(version=2022.2)
-@Deprecated
+@Deprecated(since = "2021.1", forRemoval = true)
 public interface DataSourceFactoryFromURL {
   /**
    * Creates a new <code>DataSource</code>

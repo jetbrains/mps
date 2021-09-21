@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
   </languages>
   <imports>
@@ -381,7 +381,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5oWXrvV1i5l" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="3qtoL7fxNO6" role="jymVt" />
@@ -577,7 +577,7 @@
             <node concept="10P_77" id="3vL64MroH9Q" role="1tU5fm" />
             <node concept="2OqwBi" id="3vL64MroHzp" role="33vP2m">
               <node concept="37vLTw" id="3vL64Mrye0x" role="2Oq$k0">
-                <ref role="3cqZAo" node="3vL64Mrye0t" resolve="properties" />
+                <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
               </node>
               <node concept="liA8E" id="3vL64MroHzt" role="2OqNvi">
                 <ref role="37wK5l" to="asz6:3vL64Mrni5x" resolve="isPreCheckFailureHalt" />

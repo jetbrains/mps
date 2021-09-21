@@ -16,7 +16,6 @@
 package jetbrains.mps.vfs.impl;
 
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
@@ -28,8 +27,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @deprecated access instance through VFSManager.getFileSystem()
  */
-@Deprecated
-@ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
 public class IoFileSystem implements FileSystem {
   private static final Logger LOG = LogManager.getLogger(IoFileSystem.class);
 
@@ -51,8 +49,7 @@ public class IoFileSystem implements FileSystem {
 
   @NotNull
   @Override
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   //use either JarIoFS or LocalIoFS
   public IFile getFile(@NotNull String path) {
     path = FileUtil.getCanonicalPath(path);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="d365aobt4cgl674pqcatrmmguh0xodw">
+<product version="3" modelHash="-9atmaay9jqwahcnsvqnqxoso995jr9h">
   <files names="MethodCallsCache.java:MethodCallsFixer.java:MethodCallsUpdateSession.java:UpdateSessionEventVisitor.java" />
 </product>
 

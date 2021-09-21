@@ -8,6 +8,7 @@ import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.baseLanguage.javastub.JavadocSupplier;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelId;
@@ -38,7 +39,6 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 
@@ -62,6 +62,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   }
 
   @Override
+  @Nullable
   public SModel getModel(@NotNull SModelId id) {
     // todo implement
     return null;
@@ -183,16 +184,6 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   @Override
   public boolean canCreateModels() {
     return false;
-  }
-
-  @Override
-  public boolean canCreateModel(@NotNull String string) {
-    return false;
-  }
-
-  @Override
-  public SModel createModel(@NotNull String string) {
-    return null;
   }
 
   private void getModelDescriptors(Map<SModelId, SModel> result, IFile file, String prefix) {

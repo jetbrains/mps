@@ -40,6 +40,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
@@ -304,6 +305,9 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     if (myJavaModuleFacet.getModule() instanceof Solution) {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
+      if (!descriptor.getCompileInMPS() && myCompileInMPS.isSelected()) {
+        myJavaModuleFacet.setGeneratedClassesLocation(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN));
+      }
       descriptor.setCompileInMPS(myCompileInMPS.isSelected());
       descriptor.setKind((SolutionKind) mySolutionKind.getSelectedItem());
       myJavaModuleFacet.setLanguageLevel(((LanguageLevelPresentation) myLanguageLevel.getSelectedItem()).myValue);

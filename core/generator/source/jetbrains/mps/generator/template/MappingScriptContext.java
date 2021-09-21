@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -24,8 +23,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 public class MappingScriptContext extends TemplateQueryContext {
   private final SModel myModel;
 
-  @Deprecated
-  @ToRemove(version = 2021.1)
+@Deprecated(since = "2021.1", forRemoval = true)
   public MappingScriptContext(SModel model, @NotNull SNodeReference mappingScript, @NotNull ITemplateGenerator generator) {
     super(mappingScript, generator);
     myModel = model;

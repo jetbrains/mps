@@ -21,7 +21,6 @@ import jetbrains.mps.make.java.RootDependencies;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.FlattenIterable;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -107,8 +106,7 @@ class Dependencies {
    *             there's no point in bogus file lookup logic independent of any other module file management
    *             remove once 2021.1 is out
    */
-  @Deprecated
-  @ToRemove(version = 2021.1)
+@Deprecated(since = "2021.1", forRemoval = true)
   public long getJavaFileLastModified(String fqName) {
     return 0;
   }

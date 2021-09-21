@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.FileSystem;
@@ -49,7 +48,7 @@ public class IFileUtil {
       out.write(bytes);
       return true;
     } catch (IOException e) {
-      LOG.error(String.format("Faile to copy %s to %s", oldFile, newFile), e);
+      LOG.error(String.format("Failed to copy %s to %s", oldFile, newFile), e);
       return false;
     } finally {
       FileUtil.closeFileSafe(in);
@@ -93,7 +92,7 @@ public class IFileUtil {
    *
    * @param jarFile shall be {@link #isJarFile(IFile) java archive file}
    */
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   @NotNull
   public static IFile stepIntoJar(@NotNull IFile jarFile) {
     assert isJarFile(jarFile) : jarFile;

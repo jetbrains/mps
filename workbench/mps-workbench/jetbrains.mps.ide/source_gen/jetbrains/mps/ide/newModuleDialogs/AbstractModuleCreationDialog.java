@@ -66,7 +66,7 @@ public abstract class AbstractModuleCreationDialog<R extends AbstractModule> ext
   }
 
   protected boolean check() {
-    myError = NewModuleUtil.check(myProject.getRepository(), getExtension(), mySettings.getModuleName(), mySettings.getModuleLocation());
+    myError = NewModuleUtil.check(myProject, getExtension(), mySettings.getModuleName(), mySettings.getModuleLocation());
     setErrorText(myError);
     return myError == null;
   }

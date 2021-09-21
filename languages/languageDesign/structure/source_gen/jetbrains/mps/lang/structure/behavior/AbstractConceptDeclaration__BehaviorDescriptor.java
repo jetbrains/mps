@@ -19,7 +19,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.util.Pair;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.kernel.model.SModelUtil;
 import java.util.ArrayList;
@@ -82,8 +81,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   /*package*/ static SModel getAspectModel_id7g4OXB0yli3(@NotNull SNode __thisNode__, LanguageAspect aspect) {
     // [MM] this usage of LanguageAspect is reviewed
     Language language = SModelUtil.getDeclaringLanguage(__thisNode__);
@@ -96,8 +94,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     }
     return md;
   }
-  @Deprecated
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   /*package*/ static List<SNode> findConceptAspectCollection_id1n18fON7w20(@NotNull SNode __thisNode__, LanguageAspect aspect) {
     // [MM] this usage of LanguageAspect is reviewed
     List<SNode> result = new ArrayList<SNode>();
@@ -105,8 +102,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id7g4OXB0yl26.invoke(__thisNode__, model, result);
     return result;
   }
-  @Deprecated
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   /*package*/ static SNode findConceptAspect_id7g4OXB0ykew(@NotNull SNode __thisNode__, LanguageAspect aspect) {
     SModel model = AbstractConceptDeclaration__BehaviorDescriptor.getAspectModel_id7g4OXB0yli3.invoke(__thisNode__, aspect);
     return AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspect_id7g4OXB0yku$.invoke(__thisNode__, model);
@@ -127,8 +123,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
     }
     return null;
   }
-  @Deprecated
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   /*package*/ static void findConceptAspectCollection_id7g4OXB0yl26(@NotNull SNode __thisNode__, SModel model, List<SNode> collection) {
     if (model == null) {
       return;

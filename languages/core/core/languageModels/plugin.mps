@@ -8,7 +8,7 @@
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="-1" />
     <use id="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b" name="jetbrains.mps.make.script" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
   </languages>
   <imports>
@@ -139,6 +139,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -3870,7 +3873,7 @@
                               <ref role="2Gs0qQ" node="6Fk9mCuSRNO" resolve="sfm" />
                             </node>
                             <node concept="liA8E" id="62_3EAEFdPv" role="2OqNvi">
-                              <ref role="37wK5l" node="6Fk9mCuPGOD" resolve="getModuleWideDelta" />
+                              <ref role="37wK5l" node="6Fk9mCuQSol" resolve="completeDelta" />
                             </node>
                           </node>
                         </node>
@@ -7133,10 +7136,8 @@
       </node>
       <node concept="2ShNRf" id="6SL1vERuwgy" role="33vP2m">
         <node concept="1pGfFk" id="6SL1vERuwNQ" role="2ShVmc">
+          <property role="373rjd" value="true" />
           <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
-          <node concept="3uibUv" id="6SL1vERuxcf" role="1pMfVU">
-            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-          </node>
         </node>
       </node>
       <node concept="z59LJ" id="6SL1vERvcEr" role="lGtFl">
@@ -7144,6 +7145,23 @@
           <node concept="1dT_AC" id="6SL1vERvcEt" role="1dT_Ay">
             <property role="1dT_AB" value="in use for 'clean' make only, for #collectGeneratedFilesForceClean not to walk same output root again and again, reporting same files as stale multiple times." />
           </node>
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="39stND38xRx" role="jymVt">
+      <property role="TrG5h" value="myRetainedFolders" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="39stND38tS6" role="1B3o_S" />
+      <node concept="3uibUv" id="39stND38xKE" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
+        <node concept="3uibUv" id="39stND38xLf" role="11_B2D">
+          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="39stND38_zs" role="33vP2m">
+        <node concept="1pGfFk" id="39stND38ELD" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
         </node>
       </node>
     </node>
@@ -7784,6 +7802,53 @@
                       <ref role="37wK5l" to="rk9m:s2Jv$gDl8M" resolve="kept" />
                       <node concept="37vLTw" id="5pk83j3xirk" role="37wK5m">
                         <ref role="3cqZAo" node="5pk83j3xirl" resolve="f" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbJ" id="39stND38TSF" role="3cqZAp">
+                  <node concept="3clFbS" id="39stND38TSH" role="3clFbx">
+                    <node concept="3clFbF" id="39stND393Yu" role="3cqZAp">
+                      <node concept="2OqwBi" id="39stND3972S" role="3clFbG">
+                        <node concept="37vLTw" id="39stND393Ys" role="2Oq$k0">
+                          <ref role="3cqZAo" node="39stND38xRx" resolve="myRetainedFolders" />
+                        </node>
+                        <node concept="liA8E" id="39stND39a1c" role="2OqNvi">
+                          <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                          <node concept="37vLTw" id="39stND39c3$" role="37wK5m">
+                            <ref role="3cqZAo" node="5pk83j3xirl" resolve="f" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="39stND38YFg" role="3clFbw">
+                    <node concept="37vLTw" id="39stND38WFG" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5pk83j3xirl" resolve="f" />
+                    </node>
+                    <node concept="liA8E" id="39stND391A3" role="2OqNvi">
+                      <ref role="37wK5l" to="3ju5:~IFile.isDirectory()" resolve="isDirectory" />
+                    </node>
+                  </node>
+                  <node concept="9aQIb" id="39stND39ey8" role="9aQIa">
+                    <node concept="3clFbS" id="39stND39ey9" role="9aQI4">
+                      <node concept="3clFbF" id="39stND39hkL" role="3cqZAp">
+                        <node concept="2OqwBi" id="39stND39qp9" role="3clFbG">
+                          <node concept="37vLTw" id="39stND39oiO" role="2Oq$k0">
+                            <ref role="3cqZAo" node="39stND38xRx" resolve="myRetainedFolders" />
+                          </node>
+                          <node concept="liA8E" id="39stND39tmX" role="2OqNvi">
+                            <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                            <node concept="2OqwBi" id="39stND39ypb" role="37wK5m">
+                              <node concept="37vLTw" id="39stND39w0l" role="2Oq$k0">
+                                <ref role="3cqZAo" node="5pk83j3xirl" resolve="f" />
+                              </node>
+                              <node concept="liA8E" id="39stND39$L2" role="2OqNvi">
+                                <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -8749,6 +8814,42 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="39stND3arWz" role="3cqZAp">
+          <node concept="3cpWsn" id="39stND3arWD" role="3cpWs9">
+            <property role="TrG5h" value="avoidFilesInFoldersOfRetainedModels" />
+            <node concept="3uibUv" id="39stND3arWF" role="1tU5fm">
+              <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+              <node concept="3uibUv" id="39stND3ay$R" role="11_B2D">
+                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+              </node>
+            </node>
+            <node concept="1bVj0M" id="39stND3b1M_" role="33vP2m">
+              <node concept="3clFbS" id="39stND3b1MB" role="1bW5cS">
+                <node concept="3clFbF" id="39stND3b97h" role="3cqZAp">
+                  <node concept="3fqX7Q" id="39stND3blUi" role="3clFbG">
+                    <node concept="2OqwBi" id="39stND3blUk" role="3fr31v">
+                      <node concept="37vLTw" id="39stND3blUl" role="2Oq$k0">
+                        <ref role="3cqZAo" node="39stND38xRx" resolve="myRetainedFolders" />
+                      </node>
+                      <node concept="liA8E" id="39stND3blUm" role="2OqNvi">
+                        <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+                        <node concept="37vLTw" id="39stND3blUn" role="37wK5m">
+                          <ref role="3cqZAo" node="39stND3b3Zv" resolve="f" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="37vLTG" id="39stND3b3Zv" role="1bW2Oz">
+                <property role="TrG5h" value="f" />
+                <node concept="3uibUv" id="39stND3b3Zu" role="1tU5fm">
+                  <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="6SL1vERuxXI" role="3cqZAp">
           <node concept="3clFbS" id="6SL1vERuxXK" role="3clFbx">
             <node concept="3clFbF" id="6SL1vERu3We" role="3cqZAp">
@@ -8759,6 +8860,9 @@
                 </node>
                 <node concept="37vLTw" id="6SL1vERu7yJ" role="37wK5m">
                   <ref role="3cqZAo" node="6SL1vERu7y_" resolve="staleDeltaReporter" />
+                </node>
+                <node concept="37vLTw" id="39stND3bqrd" role="37wK5m">
+                  <ref role="3cqZAo" node="39stND3arWD" resolve="avoidFilesInFoldersOfRetainedModels" />
                 </node>
               </node>
             </node>
@@ -8830,6 +8934,9 @@
                 </node>
                 <node concept="37vLTw" id="6SL1vERu8DJ" role="37wK5m">
                   <ref role="3cqZAo" node="6SL1vERu7y_" resolve="staleDeltaReporter" />
+                </node>
+                <node concept="37vLTw" id="39stND3btoV" role="37wK5m">
+                  <ref role="3cqZAo" node="39stND3arWD" resolve="avoidFilesInFoldersOfRetainedModels" />
                 </node>
               </node>
             </node>
@@ -8998,20 +9105,35 @@
             </node>
             <node concept="3clFbJ" id="6SL1vERvoTq" role="3cqZAp">
               <node concept="3clFbS" id="6SL1vERvoTs" role="3clFbx">
-                <node concept="3clFbF" id="6SL1vERvp7e" role="3cqZAp">
-                  <node concept="2OqwBi" id="6SL1vERvp_Y" role="3clFbG">
-                    <node concept="37vLTw" id="6SL1vERvp7b" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6SL1vERvj8U" resolve="fqueue" />
+                <node concept="3clFbJ" id="39stND3af_x" role="3cqZAp">
+                  <node concept="3clFbS" id="39stND3af_z" role="3clFbx">
+                    <node concept="3clFbF" id="6SL1vERvp7e" role="3cqZAp">
+                      <node concept="2OqwBi" id="6SL1vERvp_Y" role="3clFbG">
+                        <node concept="37vLTw" id="6SL1vERvp7b" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6SL1vERvj8U" resolve="fqueue" />
+                        </node>
+                        <node concept="liA8E" id="6SL1vERvqgQ" role="2OqNvi">
+                          <ref role="37wK5l" to="33ny:~ArrayDeque.addAll(java.util.Collection)" resolve="addAll" />
+                          <node concept="2OqwBi" id="6SL1vERvqpF" role="37wK5m">
+                            <node concept="37vLTw" id="6SL1vERvqkN" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6SL1vERvoD9" resolve="f" />
+                            </node>
+                            <node concept="liA8E" id="6SL1vERvq$Z" role="2OqNvi">
+                              <ref role="37wK5l" to="3ju5:~IFile.getChildren()" resolve="getChildren" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                     </node>
-                    <node concept="liA8E" id="6SL1vERvqgQ" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~ArrayDeque.addAll(java.util.Collection)" resolve="addAll" />
-                      <node concept="2OqwBi" id="6SL1vERvqpF" role="37wK5m">
-                        <node concept="37vLTw" id="6SL1vERvqkN" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6SL1vERvoD9" resolve="f" />
-                        </node>
-                        <node concept="liA8E" id="6SL1vERvq$Z" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~IFile.getChildren()" resolve="getChildren" />
-                        </node>
+                  </node>
+                  <node concept="2OqwBi" id="39stND39XS5" role="3clFbw">
+                    <node concept="37vLTw" id="39stND39UJs" role="2Oq$k0">
+                      <ref role="3cqZAo" node="39stND39Bxe" resolve="folderVisitPredicate" />
+                    </node>
+                    <node concept="liA8E" id="39stND3a0fw" role="2OqNvi">
+                      <ref role="37wK5l" to="82uw:~Predicate.test(java.lang.Object)" resolve="test" />
+                      <node concept="37vLTw" id="39stND3a3m8" role="37wK5m">
+                        <ref role="3cqZAo" node="6SL1vERvoD9" resolve="f" />
                       </node>
                     </node>
                   </node>
@@ -9068,6 +9190,15 @@
         <node concept="3uibUv" id="6SL1vERu3Jp" role="1tU5fm">
           <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
           <node concept="3uibUv" id="6SL1vERu3Jq" role="11_B2D">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="39stND39Bxe" role="3clF46">
+        <property role="TrG5h" value="folderVisitPredicate" />
+        <node concept="3uibUv" id="39stND39Eou" role="1tU5fm">
+          <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+          <node concept="3uibUv" id="39stND39J$4" role="11_B2D">
             <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
           </node>
         </node>

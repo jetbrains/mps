@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.structure;
 
 import jetbrains.mps.smodel.language.ExtensionRegistry;
 import jetbrains.mps.util.EqualUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.annotations.Immutable;
 
 import java.util.Objects;
@@ -36,8 +35,7 @@ public class ExtensionPoint<T> {
     myId = id;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public ExtensionPoint(String id, Class<T> type) {
     myId = id;
   }

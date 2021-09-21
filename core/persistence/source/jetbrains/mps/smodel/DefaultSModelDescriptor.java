@@ -98,9 +98,6 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
     return new ModelLoadResult<>(result.getModel(), result.getState());
   }
 
-  protected boolean shouldCorrectModelRef(){
-    return false;
-  }
 
   /**
    * Since we expose persistence aspects of a model from (openapi)SModel, it's reasonable to keep

@@ -14,50 +14,80 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import java.util.function.Function;
+import java.util.concurrent.CopyOnWriteArraySet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.ArrayList;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
-import jetbrains.mps.util.annotation.ToRemove;
+import java.util.stream.Stream;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)/6168415856807659069", model = "r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)")
-public class FacetRegistry implements CoreComponent {
+public final class FacetRegistry implements CoreComponent {
   private static Logger LOG = LogManager.getLogger(FacetRegistry.class);
-  private static FacetRegistry INSTANCE;
   private Map<IFacet.Name, IFacet> facetMap = MapSequence.fromMap(new HashMap<IFacet.Name, IFacet>());
   private Set<Tuples._2<String, IFacet>> facetsForLanguages = SetSequence.fromSet(new HashSet<Tuples._2<String, IFacet>>());
   private final LanguageRegistry myLanguageRegistry;
+  private final Map<SLanguage, Set<IFacet>> myLang2Facet = new HashMap<>();
+
 
   public FacetRegistry(LanguageRegistry languageRegistry) {
     // 1. languageRegistry could be null to facilitate unit tests.
     // 2. technically, package-local visibility would suffice, however, MPS could not guess it's the same package for two models with same qualified name.
-    // 3. FIXME In fact, there's not too much reason to pass LanguageRegistry here, we use it to go from namespace in IFacet.Name to SLanguage. IFacet.Name could give SLanguage right away.
     myLanguageRegistry = languageRegistry;
   }
 
   @Override
   public void init() {
-    INSTANCE = this;
   }
 
   @Override
   public void dispose() {
-    INSTANCE = null;
+    myLang2Facet.clear();
+    SetSequence.fromSet(facetsForLanguages).clear();
+    MapSequence.fromMap(facetMap).clear();
   }
 
-  @Deprecated
+  @Deprecated(forRemoval = true)
   public void register(IFacet facet) {
-    register(null, facet);
-  }
-  public void register(String languageNamespace, IFacet facet) {
     if (MapSequence.fromMap(facetMap).containsKey(facet.getName())) {
       throw new IllegalArgumentException("already registered");
     }
     MapSequence.fromMap(facetMap).put(facet.getName(), facet);
+  }
+
+  /**
+   * FIXME I wonder if we can register IFacet.Name instead (with ModuleRuntime/LanguageRuntime or identity thereof)
+   * to get IFacet instance only when there's true need (i.e. language use)
+   * 
+   * @deprecated use alternative with SLanguage
+   */
+  @Deprecated(forRemoval = true, since = "2021.3")
+  public void register(String languageNamespace, IFacet facet) {
+    // I'm aware of uses in MPS only, remove the method once 2021.3 is out
+    register(facet);
     SetSequence.fromSet(facetsForLanguages).addElement(MultiTuple.<String,IFacet>from(languageNamespace, facet));
   }
+
+  public void register(SLanguage language, IFacet facet) {
+    register(facet);
+    Function<SLanguage, CopyOnWriteArraySet<IFacet>> ff = new Function<SLanguage, CopyOnWriteArraySet<IFacet>>() {
+      public CopyOnWriteArraySet<IFacet> apply(SLanguage l) {
+        return new CopyOnWriteArraySet<IFacet>();
+      }
+    };
+    myLang2Facet.computeIfAbsent(language, ff).add(facet);
+  }
+
   public void unregister(final IFacet facet) {
     if (!(MapSequence.fromMap(facetMap).containsKey(facet.getName()))) {
       throw new IllegalArgumentException("not registered");
@@ -68,7 +98,21 @@ public class FacetRegistry implements CoreComponent {
         return !(facet.equals(it._1()));
       }
     }));
+    final ArrayList<SLanguage> toDrop = new ArrayList<>(2);
+    myLang2Facet.forEach(new BiConsumer<SLanguage, Set<IFacet>>() {
+      public void accept(SLanguage k, Set<IFacet> v) {
+        if (v.remove(facet)) {
+          toDrop.add(k);
+        }
+      }
+    });
+    toDrop.forEach(new Consumer<SLanguage>() {
+      public void accept(SLanguage it) {
+        myLang2Facet.remove(it);
+      }
+    });
   }
+
   public IFacet lookup(IFacet.Name fn) {
     LanguageRegistry langReg = myLanguageRegistry;
     if (langReg != null) {
@@ -85,7 +129,15 @@ public class FacetRegistry implements CoreComponent {
     LOG.debug("facet not found, loading using deprecated mechanism " + fn);
     return MapSequence.fromMap(facetMap).get(fn);
   }
+
+
+  /**
+   * 
+   * @deprecated use alternative that takes SLanguage, it's bad idea to use name to identify a module
+   */
+  @Deprecated(forRemoval = true, since = "2021.3")
   public Iterable<IFacet> getFacetsForLanguage(final String languageNamespace) {
+    // to my best knowledge, there were no uses except for MPS implementation (Cluster)
     return SetSequence.fromSet(facetsForLanguages).where(new IWhereFilter<Tuples._2<String, IFacet>>() {
       public boolean accept(Tuples._2<String, IFacet> it) {
         return languageNamespace.equals(it._0());
@@ -96,21 +148,51 @@ public class FacetRegistry implements CoreComponent {
       }
     });
   }
-  public Map<IFacet.Name, IFacet> allFacets() {
-    return Collections.unmodifiableMap(facetMap);
+
+  /**
+   * Unlike legacy getFacetsForLanguage(String), looks up facets for the language in the LanguageRegistry
+   */
+  public Iterable<IFacet> getFacetsForLanguages(Iterable<SLanguage> languages) {
+    Iterable<IFacet> legacyFacets = Sequence.fromIterable(languages).translate(new ITranslator2<SLanguage, IFacet>() {
+      public Iterable<IFacet> translate(SLanguage it) {
+        return getFacetsForLanguage(it.getQualifiedName());
+      }
+    });
+    Iterable<IFacet> newFacets = Sequence.fromIterable(languages).translate(new ITranslator2<SLanguage, IFacet>() {
+      public Iterable<IFacet> translate(SLanguage it) {
+        return myLang2Facet.getOrDefault(it, Collections.<IFacet>emptySet());
+      }
+    });
+    if (myLanguageRegistry == null) {
+      // in fact, as long as we don't use this method in tests, we can assume LR != null
+      return Sequence.fromIterable(newFacets).union(Sequence.fromIterable(legacyFacets));
+    }
+    final ArrayList<IFacet> forLang = new ArrayList<>();
+    // XXX would be handy to have sequence.toStream
+    myLanguageRegistry.withAvailableLanguages(Stream.of(Sequence.fromIterable(languages).toGenericArray(SLanguage.class)), new Consumer<LanguageRuntime>() {
+      public void accept(LanguageRuntime lr) {
+        MakeAspectDescriptor ma = lr.getAspect(MakeAspectDescriptor.class);
+        if (ma != null) {
+          ma.getManifest().facets().forEach(new Consumer<IFacet>() {
+            public void accept(IFacet it) {
+              forLang.add(it);
+            }
+          });
+        }
+      }
+    });
+    // XXX Do I need to care about ordering. Seems right to have mechanism to override coming first, 
+    //    although I'd like to get rid of IFacet instance registration eventually
+    // XXX What about possible duplicates, do I care?
+    return Sequence.fromIterable(newFacets).union(Sequence.fromIterable(legacyFacets)).union(ListSequence.fromList(forLang));
   }
 
   /**
    * 
-   * @deprecated Use ComponentHost#findComponent() instead
+   * @deprecated not bad per se, just beware it gives explicitly registered facets only.
    */
   @Deprecated
-  @ToRemove(version = 2018.3)
-  public static FacetRegistry getInstance() {
-    if (INSTANCE == null) {
-      LOG.fatal("not initialized");
-      throw new IllegalStateException("not initialized");
-    }
-    return INSTANCE;
+  public Map<IFacet.Name, IFacet> allFacets() {
+    return Collections.unmodifiableMap(facetMap);
   }
 }

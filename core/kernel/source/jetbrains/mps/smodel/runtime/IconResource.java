@@ -16,7 +16,6 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.classloading.ModuleClassLoader;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -45,8 +44,7 @@ public class IconResource {
    * For internal use only
    * Tmp solution until we migrate to non-static IconManager.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public boolean isAlreadyReloaded() {
     Class c = myResourceProvider.get();
     if (c == null) {
@@ -56,8 +54,7 @@ public class IconResource {
     return cl instanceof ModuleClassLoader && ((ModuleClassLoader) cl).isDisposed();
   }
 
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   //left for compatibility purposes. Does not allow to use 2x & dark icons
   public InputStream getResource() {
     Class c = myResourceProvider.get();

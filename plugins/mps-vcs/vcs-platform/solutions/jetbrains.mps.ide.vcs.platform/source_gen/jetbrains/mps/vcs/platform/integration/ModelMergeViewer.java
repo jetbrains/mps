@@ -20,8 +20,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.diff.contents.FileContent;
 import java.io.File;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
-import jetbrains.mps.persistence.FilePerRootDataSource;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.vcs.util.MergeConstants;
@@ -78,7 +76,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
       final String ext;
       // FIXME see VCSPersistenceUtil.saveModel, it's odd code that deals with persistence kind and extension both to select proper model factory
       //      Besides, there's similar code in ConflictinModelsUtil!
-      boolean perRootPersistenceFile = FilePerRootDataSource.isPerRootPersistenceFile(FileSystem.getInstance().getFile(file.getPath()));
+      boolean perRootPersistenceFile = ConflictingModelsUtil.isPerRootPersistenceFile(file);
       if (perRootPersistenceFile) {
         // load model partially from per-root persistence with "normal" persistence loading
         ext = MPSExtentions.MODEL;

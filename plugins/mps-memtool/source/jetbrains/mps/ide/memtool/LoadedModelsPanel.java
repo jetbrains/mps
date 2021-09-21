@@ -15,6 +15,10 @@
  */
 package jetbrains.mps.ide.memtool;
 
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
+import com.intellij.notification.NotificationType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
@@ -30,7 +34,9 @@ import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.Activatable;
 import com.intellij.util.ui.update.UiNotifyConnector;
 import jetbrains.mps.icons.MPSIcons.ProjectPane;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.CancellableReadAction;
 import org.jetbrains.annotations.Nls;
@@ -63,10 +69,16 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
   private final MouseListener myActionListener = new MouseAdapter() {
     @Override
     public void mouseClicked(MouseEvent e) {
+      if (MPSCoreComponents.getInstance().getPlatform().findComponent(MakeServiceComponent.class).isSessionActive()) {
+        final NotificationGroup ng = NotificationGroupManager.getInstance().getNotificationGroup("MPS Memory Stats");
+        final Notification n = ng.createNotification("Can not perform cleanup while Make is in progress", NotificationType.INFORMATION);
+        n.notify(myProject.getProject());
+        return;
+      }
       new UnloadModelsActivity(myProject.getRepository()).run();
 
       // not that I really want to perform model walk in EDT, but it used to be that way for some time,
-      // and it's user action, after all, he can expect to see some delay
+      // and it's user action, after all, he could reasonably expect to see some delay
       updateState();
     }
   };

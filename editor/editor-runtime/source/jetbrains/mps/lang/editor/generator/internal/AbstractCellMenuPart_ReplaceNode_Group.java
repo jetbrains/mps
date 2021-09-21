@@ -29,7 +29,6 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -144,8 +143,7 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
   /**
    * @deprecated override {@link #createParameterObjects(SNode, EditorContext)} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.2)
+  @Deprecated(since = "2020.2", forRemoval = true)
   protected List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
     return null;
   }
@@ -158,8 +156,7 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
   /**
    * @deprecated override {@link #createReplacementNode(Object, SNode, SModel, EditorContext)} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.2)
+  @Deprecated(since = "2020.2", forRemoval = true)
   protected SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext,
       EditorContext editorContext) {
     return null;

@@ -5,7 +5,6 @@ package jetbrains.mps.vcs.platform.mergedriver;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.project.Project;
 import com.intellij.notification.Notification;
-import jetbrains.mps.util.annotation.ToRemove;
 import com.intellij.ide.util.PropertiesComponent;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -36,7 +35,11 @@ public class MergeDriverNotification {
     myProject = project;
     unsetObsoleteProperty();
   }
-  @ToRemove(version = 2020.1)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2020.1", forRemoval = true)
   private static void unsetObsoleteProperty() {
     // this property removed in 2019.2, we wait for two releases till it will be cleared from config file
     PropertiesComponent.getInstance().unsetValue(SUPPRESSED_PROPERTY_NAME);

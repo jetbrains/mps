@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6dqoifaj0v1mmotjyfjvuh2kl3oz05e">
+<product version="3" modelHash="7tqff1glrffso286bdd00uk0jdw566x">
   <files names="BaseTestClass.java:CustomPropertyAccess_Test.java:CustomPropertyReferences1_Test.java:CustomPropertyReferences2_Test.java:CustomPropertyReferences3_Test.java:PropertiesTest_Test.java:PropertyInheritance_Test.java:PropertyNameClash_Test.java:TestClass.java" />
 </product>
 

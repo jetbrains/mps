@@ -20,7 +20,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.util.annotation.ToRemove;
 import java.util.ArrayList;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -89,8 +88,7 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean applicableToModel_id1653mnvAf1y(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  @Deprecated(since = "2019.3", forRemoval = true)
   /*package*/ static boolean applicableToConceptProperty_id1653mnvAgpp(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
@@ -103,8 +101,7 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean applicableToLink_id1653mnvAgvK(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
-  @Deprecated
-  @ToRemove(version = 2018.3)
+  @Deprecated(since = "2018.3", forRemoval = true)
   /*package*/ static boolean applicableToConcept_id1653mnvAgvQ(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }

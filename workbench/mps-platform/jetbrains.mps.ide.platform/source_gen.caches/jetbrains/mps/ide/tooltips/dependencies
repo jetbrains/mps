@@ -32,7 +32,6 @@
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTipData" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.TooltipComponent" />
     <classNode dependClassName="jetbrains.mps.util.HtmlCharsUtil" />
-    <classNode dependClassName="org.jetbrains.annotations.ApiStatus" />
   </dependency>
   <dependency className="jetbrains.mps.ide.tooltips.ToolTip">
     <classNode dependClassName="com.intellij.codeInsight.hint.HintUtil" />
@@ -61,7 +60,6 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTipData" />
     <classNode dependClassName="jetbrains.mps.util.WindowsUtil" />
-    <classNode dependClassName="org.jetbrains.annotations.ApiStatus" />
   </dependency>
   <dependency className="jetbrains.mps.ide.tooltips.ToolTipData">
     <classNode dependClassName="com.intellij.util.ui.UIUtil" />
@@ -72,14 +70,12 @@
     <classNode dependClassName="javax.swing.border.EmptyBorder" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTip" />
-    <classNode dependClassName="org.jetbrains.annotations.ApiStatus" />
   </dependency>
   <dependency className="jetbrains.mps.ide.tooltips.TooltipComponent">
     <classNode dependClassName="java.awt.event.MouseEvent" />
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="org.jetbrains.annotations.ApiStatus" />
   </dependency>
 </dependenciesRoot>
 

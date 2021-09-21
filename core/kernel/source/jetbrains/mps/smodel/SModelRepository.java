@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.persistence.DataSourceBase;
 import jetbrains.mps.smodel.SModelId.ModelNameSModelId;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -66,8 +65,7 @@ public class SModelRepository {
   /**
    * @deprecated global collection of SModels doesn't allow us to move forward. Do not use.
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static SModelRepository getInstance() {
     LOG.error("SModelRepository.getInstance() has been deprecated since MPS 3.3 (4 years ago!) and will be removed in MPS 2019.3. Please refactor your code!");
     return INSTANCE;

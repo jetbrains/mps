@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -67,8 +66,7 @@ public interface DataSourceFactoryRule {
    * @deprecated use the {@link #spawn(Path)}
    */
   @Nullable
-  @ToRemove(version=2022.2)
-  @Deprecated
+  @Deprecated(since = "2021.1", forRemoval = true)
   DataSourceFactoryFromURL spawn(@NotNull URL url);
 
   /**

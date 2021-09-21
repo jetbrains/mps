@@ -7,7 +7,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="f3c7" ref="r:86d21248-3bf4-41d8-8375-ab68885d035f(jetbrains.mps.debugger.java.runtime.evaluation.model)" />
@@ -884,12 +884,19 @@
                       </node>
                     </node>
                     <node concept="3clFbS" id="_hR$3XCoWU" role="3clFbx">
+                      <node concept="3cpWs8" id="7SE8WSo7JvS" role="3cqZAp">
+                        <node concept="3cpWsn" id="7SE8WSo7JvT" role="3cpWs9">
+                          <property role="TrG5h" value="isDeveloperMode" />
+                          <property role="3TUv4t" value="true" />
+                          <node concept="10P_77" id="7SE8WSo7I2F" role="1tU5fm" />
+                          <node concept="3clFbT" id="7SE8WSo7JvU" role="33vP2m" />
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="5LCzy_UYuM1" role="3cqZAp">
                         <node concept="1rXfSq" id="4hiugqyz8Og" role="3clFbG">
                           <ref role="37wK5l" node="6hQteoiVf7C" resolve="createEvaluationContainer" />
-                          <node concept="10M0yZ" id="7GZZbkPAwz" role="37wK5m">
-                            <ref role="1PxDUh" to="i1lu:7GZZbkP$rA" resolve="Properties" />
-                            <ref role="3cqZAo" to="i1lu:7GZZbkPAws" resolve="IS_DEVELOPER_MODE" />
+                          <node concept="37vLTw" id="7SE8WSo7JvV" role="37wK5m">
+                            <ref role="3cqZAo" node="7SE8WSo7JvT" resolve="b" />
                           </node>
                           <node concept="37vLTw" id="2BHiRxglf6y" role="37wK5m">
                             <ref role="3cqZAo" node="6hQteoiVpzC" resolve="selectedNodes" />

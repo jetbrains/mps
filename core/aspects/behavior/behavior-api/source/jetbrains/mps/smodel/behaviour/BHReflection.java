@@ -20,7 +20,6 @@ import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -50,8 +49,7 @@ public final class BHReflection {
   /**
    * @deprecated operand is not null actually, use #invoke0 below instead
    */
-  @Deprecated
-  @ToRemove(version = 2018.1)
+@Deprecated(since = "2018.1", forRemoval = true)
   public static Object invoke(@Nullable SNode operand, @NotNull SMethodId methodId, Object... parameters) {
     return invoke0(operand, operand.getConcept(), methodId, parameters);
   }
@@ -59,8 +57,7 @@ public final class BHReflection {
   /**
    * @deprecated operand is not null actually, use #invoke0 below instead
    */
-  @Deprecated
-  @ToRemove(version = 2018.1)
+@Deprecated(since = "2018.1", forRemoval = true)
   public static Object invoke(@Nullable SAbstractConcept operand, @NotNull SMethodId methodId, Object... parameters) {
     return invoke0(operand, operand, methodId, parameters);
   }

@@ -17,7 +17,6 @@ package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -38,8 +37,7 @@ public interface TemplateMappingScript {
   /**
    * @deprecated use {@link #apply(SModel, TemplateExecutionEnvironment)} instead
    */
-  @ToRemove(version = 2021.1)
-  @Deprecated
+@Deprecated(since = "2021.1", forRemoval = true)
   default void apply(SModel model, ITemplateGenerator generator) throws GenerationFailureException {
     // no-op to let subclasses not implement this one
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,15 @@
  */
 package jetbrains.mps.smodel.runtime;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.ComponentHost;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Generic representation of a deployed module.
@@ -31,11 +36,14 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
  * @author Artem Tikhomirov
  * @since 2018.3
  */
+@SuppressWarnings("UnstableApiUsage")
 public final class ModuleRuntime {
   @NotNull
   private final SModuleReference myModuleReference;
   @NotNull
   private final ClassLoader myModuleClassLoader;
+  @Nullable
+  private Activator myModuleActivator;
 
   public ModuleRuntime(@NotNull SModuleReference moduleReference, @NotNull ClassLoader moduleClassLoader) {
     myModuleReference = moduleReference;
@@ -54,11 +62,39 @@ public final class ModuleRuntime {
   }
 
   public void activate(ModuleRuntimeContext context) {
-    // no-op at the moment, shall take generated activator class (or even few, perhaps?), instantiate and exectute it inside try {} catch (Throwable)
+    if (!RuntimeFlags.enabledModuleActivators()) {
+      return;
+    }
+    // provisional code at the moment, DO NOT TREAT AS API, just need to work around a limitation while fixing another issue
+    // shall take generated activator class (or even few, perhaps?), instantiate and execute it inside try {} catch (Throwable)
+    final String cn = myModuleReference.getModuleName() + ".ModuleActivator";
+    try {
+      final Class<?> activatorClass = myModuleClassLoader.loadClass(cn);
+      if (!Activator.class.isAssignableFrom(activatorClass)) {
+        Logger.getLogger(getClass()).warn(String.format("Class %s is not instance of MR.Activator, ignored", cn));
+        return;
+      }
+      Constructor<? extends Activator> cc = activatorClass.asSubclass(Activator.class).getConstructor(ComponentHost.class);
+      myModuleActivator = cc.newInstance(context.getComponentHost());
+      try {
+        myModuleActivator.activate();
+      } catch (Throwable th) {
+        Logger.getLogger(getClass()).error(String.format("Module activator %s (%s) failed", cn, myModuleReference.getModuleName()), th);
+      }
+    } catch (IllegalAccessException | InstantiationException | InvocationTargetException ex) {
+      Logger.getLogger(getClass()).warn(String.format("Failed to instantiate activator %s", cn), ex);
+    } catch (NoSuchMethodException | SecurityException ex) {
+      Logger.getLogger(getClass()).warn(String.format("Constructor of activator class %s is not available:%s", cn, ex.getMessage()));
+    } catch (ClassNotFoundException ex) {
+      // ignore; expected scenario as long as we try to guess name of activator class;
+    }
   }
 
   public void deactivate(ModuleRuntimeContext context) {
-
+    if (myModuleActivator != null) {
+      myModuleActivator.deactivate();
+      myModuleActivator = null;
+    }
   }
 
   // instantiated once during module lifecycle
@@ -67,11 +103,27 @@ public final class ModuleRuntime {
     return null;
   }
 
+  @Override
+  public String toString() {
+    return String.format("MRT for %s[%s]", myModuleReference.getModuleName(), myModuleActivator == null ? null : myModuleActivator.getClass().getName());
+  }
+
   public interface ModuleRuntimeAspectKey<T> {
     T cast(Object instance);
   }
 
   public interface ModuleRuntimeContext {
     ComponentHost getComponentHost();
+  }
+
+  // XXX provisional code, just to make some progress with make.facets extraction.
+  // Shall consider what would be the proper mechanism to pass component host (i.e. if we stick to Activator class
+  // and not on-demand aspects):
+  //    - cons argument (present provisional approach, allows final fields in impl),
+  //    - context into methods (like this class)
+  //    - abstract class with setContext invoked from this MR and client code accessing one through getContext/getPlatform()
+  public interface Activator {
+    default void activate() {}
+    default void deactivate() {}
   }
 }

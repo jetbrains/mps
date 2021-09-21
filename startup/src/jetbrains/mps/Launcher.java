@@ -19,7 +19,7 @@ import java.util.List;
 public class Launcher {
   public static void main(String[] args) throws Exception {
     String mpsInternal = System.getProperty("mps.internal");
-    System.setProperty("idea.is.internal", mpsInternal != null ? mpsInternal : "false");
+    System.setProperty("idea.is.internal", mpsInternal != null ? mpsInternal : Boolean.toString(false));
 
     String fsNotifierKey = "idea.filewatcher.executable.path";
     String altExecPath = System.getProperty(fsNotifierKey);
@@ -31,7 +31,8 @@ public class Launcher {
     }
     System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
     System.setProperty("idea.platform.prefix", "Idea");
-    System.setProperty("ide.new.project.model", "false"); // Temporary disable new project model in all places
+    System.setProperty("ide.new.project.model", Boolean.toString(false)); // Temporary disable new project model in all places
+    System.setProperty("splash", Boolean.toString(true));
 
     // Temporary workaround for loading plugins when running MPS from sources
     if (Files.isDirectory(Paths.get(PathManager.getHomePath(), ".mps"))) {
@@ -47,6 +48,10 @@ public class Launcher {
       if (!plugins.isEmpty()) {
         System.setProperty("plugin.path", String.join(File.pathSeparator, plugins));
       }
+    } else {
+      // Only enable legacy mode in distribution
+      System.setProperty("actionSystem.update.actions.async", Boolean.toString(false));
+      System.setProperty("actionSystem.update.actions.async.ui", Boolean.toString(false));
     }
 
     Main.main(args);
@@ -67,10 +72,8 @@ public class Launcher {
   private static String getFsNotifierName() {
     if (SystemInfo.isWindows) {
       return "fsnotifier.exe";
-    } else if (SystemInfo.isMac) {
+    } else if (SystemInfo.isMac || SystemInfo.isLinux) {
       return "fsnotifier";
-    } else if (SystemInfo.isLinux) {
-      return SystemInfo.is64Bit ? "fsnotifier64" : "fsnotifier";
     }
 
     return null;

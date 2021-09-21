@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,20 +30,20 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.persistence.DataSourceFactoryBridge.DSourceAndOptions;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelCreationException;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
@@ -82,6 +82,7 @@ import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
  * @author evgeny
  * @since 11/9/12
  */
+@SuppressWarnings("UnstableApiUsage")
 public final class DefaultModelRoot extends FileBasedModelRoot implements CopyableModelRoot<DefaultModelRoot> {
   private static final Logger LOG = LogManager.getLogger(DefaultModelRoot.class);
   private final ModelFactoryRegistry myModelFactoryRegistry;
@@ -106,7 +107,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
    * JpsTestModelsEnvironment.createModelRoot relied on DMR, which is wrong, although used to work)
    *
    */
-  @ToRemove(version = 0)
+  @Deprecated(since = "0", forRemoval = true)
   private DefaultModelRoot(int ignored) {
     myModelFactoryRegistry = null;
     myDataSourceRegistry = null;
@@ -172,7 +173,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
   }
 
   @Override
-  public boolean canCreateModel(@NotNull String modelName) {
+  public boolean canCreateModel(@NotNull SModelName modelName) {
     if (!canCreateModels()) {
       return false;
     }
@@ -186,12 +187,12 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
       // XXX could iterate over all source roots to find the one capable to create a model, but the rest of MR API (namely, createModel) would need
       //     to figure out proper source root as well, which is not a task I'd like to tackle now. I'd use object return value instead of simple
       //     boolean here, which would keep all relevant data (model factory, source root) for model creation
-      DSourceAndOptions<DataSource> result = getDataSourceFactoryBridge().create(new SModelName(modelName),
+      DSourceAndOptions<DataSource> result = getDataSourceFactoryBridge().create(modelName,
                                                                                  Defaults.sourceRoot(this),
                                                                                  Defaults.DATA_SOURCE_TYPE);
       DataSource dataSource = result.getDataSource();
       ModelLoadingOption[] modelLoadingOptions = result.getOptions().convertToLoadingOptions();
-      return NO_PROBLEM == defaultMF.canCreate(dataSource, new SModelName(modelName), modelLoadingOptions);
+      return NO_PROBLEM == defaultMF.canCreate(dataSource, modelName, modelLoadingOptions);
     } catch (NoSourceRootsInModelRootException | DataSourceFactoryNotFoundException | SourceRootDoesNotExistException ignored) {
     }
     return false;
@@ -327,6 +328,11 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
                                   boolean register) throws ModelCannotBeCreatedException {
     try {
       SModel model = modelFactory.create(dataSource, new SModelName(parameters.getModelName()), parameters.convertToLoadingOptions());
+      if (model instanceof EditableSModel) {
+        // treat newly created model as modified. Perhaps, it has to be ModelFactory to set this
+        // but doesn't hurt to force it here anyway.
+        ((EditableSModel) model).setChanged(true);
+      }
       if (register) {
         registerModel(model);
       }
@@ -374,8 +380,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
    * Obviously whilst the model root descriptors are in the <code>AbstractModule</code> we
    * need this method
    */
-  @ToRemove(version = 3.6)
-  @Deprecated
+@Deprecated(since = "3.6", forRemoval = true)
   public ModelRootDescriptor toDescriptor() {
     ModelRootDescriptor result = new ModelRootDescriptor(getType());
     save(result.getMemento());

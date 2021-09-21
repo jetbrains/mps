@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,8 +44,7 @@ import java.util.Iterator;
  * @deprecated better use {@link CustomPersistenceModelWithHeader}
  * @see XmlPersistence for example
  */
-@ToRemove(version = 191)
-@Deprecated
+@Deprecated(since = "191", forRemoval = true)
 public final class CustomPersistenceSModel extends EditableSModelBase implements SingleRootSModel {
   @NotNull
   private final SModelPersistence myPersistence;

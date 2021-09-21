@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.Nullable;
@@ -67,14 +66,12 @@ public class SModelHeader {
    * @deprecated Just a handy alternative accessor for {@code getOptionalProperty(DO_NOT_GENERATE)}. This class is about persisting values, not about
    *             nice typed api. For typed API, use GeneratableSModel, this class has to be generic.
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   public boolean isDoNotGenerate() {
     return Boolean.parseBoolean(getOptionalProperty(DO_NOT_GENERATE));
   }
 
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   public void setDoNotGenerate(boolean doNotGenerate) {
     setOptionalProperty(DO_NOT_GENERATE, Boolean.toString(doNotGenerate));
   }

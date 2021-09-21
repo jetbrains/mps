@@ -5,7 +5,6 @@ package TestLanguage_ACCESORIES.constraints;
 import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
 
 public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor {
@@ -14,7 +13,7 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
 
   @Override
   public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
-    SAbstractConcept cncpt_a0c = concept;
+    SAbstractConcept cncpt = concept;
     return new BaseConstraintsDescriptor(concept);
   }
 }

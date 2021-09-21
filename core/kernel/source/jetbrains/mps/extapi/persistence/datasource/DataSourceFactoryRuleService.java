@@ -16,7 +16,6 @@
 package jetbrains.mps.extapi.persistence.datasource;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -76,8 +75,7 @@ public final class DataSourceFactoryRuleService implements CoreComponent  {
   }
 
   @Nullable
-  @ToRemove(version=2022.2)
-  @Deprecated
+  @Deprecated(since = "2021.1", forRemoval = true)
   public synchronized DataSourceFactoryFromURL getFactory(@NotNull URL url) {
     for (DataSourceFactoryRule rule : myFactoryRules) {
       DataSourceFactoryFromURL result = rule.spawn(url);

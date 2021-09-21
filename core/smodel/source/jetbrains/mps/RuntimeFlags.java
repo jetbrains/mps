@@ -15,7 +15,6 @@
  */
 package jetbrains.mps;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 
 /**
@@ -34,6 +33,7 @@ public final class RuntimeFlags {
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourLegacyJavaCompiler = null;
   private static Boolean ourLegacyModuleMaker = null; // false by default
+  private static Boolean ourModuleActivators = null;
 
   private RuntimeFlags() {
   }
@@ -82,8 +82,7 @@ public final class RuntimeFlags {
    *         These days, MPS doesn't need these, the option is left for compatibility in case there's legacy code that depends on presence
    *         of LanguageRuntime instances for every language module.
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2021.1)
+  @Deprecated(since = "2021.1", forRemoval = true)
   public static boolean isUseInterpretedLanguages() {
     if (ourUseInterpretedLanguages == null) {
       ourUseInterpretedLanguages = Boolean.getBoolean("mps.useInterpretedLanguages");
@@ -147,5 +146,17 @@ public final class RuntimeFlags {
       ourLegacyModuleMaker = "legacy".equalsIgnoreCase(val) || "1step".equals(val);
     }
     return ourLegacyModuleMaker;
+  }
+
+  /**
+   * experimental support for activator code in Solution module
+   */
+  public static boolean enabledModuleActivators() {
+    if (ourModuleActivators == null) {
+      final String val = System.getProperty("mps.rt.module.activator");
+      // enabled by default
+      ourModuleActivators = val == null || Boolean.parseBoolean(val);
+    }
+    return ourModuleActivators;
   }
 }

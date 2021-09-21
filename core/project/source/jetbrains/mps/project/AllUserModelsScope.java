@@ -19,7 +19,6 @@ import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -28,8 +27,7 @@ import org.jetbrains.mps.openapi.module.SModule;
  *             No uses in MPS 2020.3 branch nor in mbeddr 2020.2 branch, will be deleted once 2020.3 is out.
  *             Left as a reminder to extract acceptXXX logic into re-usable condition class (filtering out transient/temp models does make sense in certain cases)
  */
-@Deprecated
-@ToRemove(version = 2019.3)
+@Deprecated(since = "2019.3", forRemoval = true)
 public class AllUserModelsScope extends FilteredScope {
   public AllUserModelsScope() {
     super(GlobalScope.getInstance());

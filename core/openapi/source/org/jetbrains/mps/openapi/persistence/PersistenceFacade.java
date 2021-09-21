@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.persistence;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -71,8 +70,7 @@ public abstract class PersistenceFacade {
    * Retrieves the factory associated with the given file extension.
    * @deprecated use {@link PersistenceFacade#getModelFactory(ModelFactoryType)} instead
    */
-  @ToRemove(version = 181)
-  @Deprecated
+@Deprecated(since = "181", forRemoval = true)
   public abstract ModelFactory getModelFactory(@Nullable String extension);
 
   /**
@@ -92,8 +90,7 @@ public abstract class PersistenceFacade {
    * Retrieves the factory for default MPS storage format (xml-based).
    * @deprecated unclear contract, use {@code ModelFactoryRegistry#getDefault(DataSourceType)} + <code>PreinstalledModelFactoryTypes.PLAIN_XML</code>
    */
-  @ToRemove(version = 181)
-  @Deprecated
+@Deprecated(since = "181", forRemoval = true)
   public abstract ModelFactory getDefaultModelFactory();
 
   /**
@@ -289,22 +286,19 @@ public abstract class PersistenceFacade {
    * see {@link NavigationParticipant}
    * @deprecated No reason to keep this in PersistenceComponent, NavigationParticipant API is cumbersome. Need a replacement API.
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public abstract Set<NavigationParticipant> getNavigationParticipants();
 
   /**
    * @deprecated see {@link #getNavigationParticipants()}
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public abstract void addNavigationParticipant(NavigationParticipant participant);
 
   /**
    * @deprecated see {@link #getNavigationParticipants()}
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public abstract void removeNavigationParticipant(NavigationParticipant participant);
 
   public static final class IncorrectModelReferenceFormatException extends IllegalArgumentException {

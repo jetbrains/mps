@@ -18,6 +18,7 @@ import java.util.Objects;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4664177994951620648", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetReferenceStructChange extends SetReferenceChange {
@@ -61,7 +62,7 @@ public class SetReferenceStructChange extends SetReferenceChange {
       targetModel = null;
     }
 
-    return new SetReferenceStructChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), getRoleLink(), targetModel, check_xjb9w7_f0a6a3(ref), check_xjb9w7_g0a6a3(((jetbrains.mps.smodel.SReference) ref)));
+    return new SetReferenceStructChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), getRoleLink(), targetModel, check_xjb9w7_f0a6a3(ref), SLinkOperations.getResolveInfo(ref));
   }
   private static SModelReference check_xjb9w7_a0d0d(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -72,12 +73,6 @@ public class SetReferenceStructChange extends SetReferenceChange {
   private static SNodeId check_xjb9w7_f0a6a3(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
-    }
-    return null;
-  }
-  private static String check_xjb9w7_g0a6a3(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
     }
     return null;
   }

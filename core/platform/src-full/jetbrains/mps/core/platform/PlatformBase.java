@@ -77,6 +77,7 @@ class PlatformBase implements Platform {
           initAndRegister(new DynamicComponentPlugin());
         }
       }.run();
+      myCore.setParentHost(this);
     }
   }
 
@@ -97,6 +98,7 @@ class PlatformBase implements Platform {
 
   @Override
   public void dispose() {
+    // XXX shall I set parent host of mpsCore to null here?!
     while (!myComponentPlugins.isEmpty()) {
       myComponentPlugins.pop().dispose();
     }

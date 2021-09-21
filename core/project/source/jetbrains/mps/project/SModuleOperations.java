@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,87 +18,33 @@ package jetbrains.mps.project;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
-import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.SModelOperations;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class SModuleOperations {
-  /**
-   * @deprecated use {@link jetbrains.mps.project.facets.GenerationTargetFacet#getOutputLocation(SModel)} or {@link JavaModuleFacet#getOutputRoot()}.
-   *             Even {@code #getOutputRoot(SModel)} is much better as it (a) deals with IFile (b) hints it's root, not model-specific location
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  public static String getOutputPathFor(SModel model) {
-    // FIXME a lot of uses in mbeddr (14!)
-    IFile outputDir = SModelOperations.getOutputLocation(model);
-    return outputDir != null ? outputDir.getPath() : null;
-  }
 
   /**
-   * @deprecated This operation knows about output roots of {@link JavaModuleFacet} and {@link TestsFacet} only. Locations of any other
-   *             {@link GenerationTargetFacet} are ignored. There's only 1 use in MPS. Client code shall not assume there's single output root for a
-   *             module, there could be multiple outputs, specified per model.
-   * @return all locations where generated files (including auxiliary model streams, files with hashes and dependencies) of the module could be found.
+   * A dubious way to ask {@code module.getFacet(JMF.class)}.
+   * MPS used to force {@link JavaModuleFacet} for every module, but that's not true now, one can encounter a module
+   * unrelated to Java.
+   * @throws IllegalArgumentException in case module doesn't have {@link JavaModuleFacet}
    */
-  @ToRemove(version = 3.5)
-  @Deprecated
-  public static Collection<IFile> getOutputRoots(@NotNull SModule module) {
-    // XXX there's jetbrains.mps.tool.builder.paths.ModuleOutputPaths which looks quite similar, shall refactor. It's definitely not tooling-specific code.
-    ArrayList<IFile> rv = new ArrayList<>(4);
-    JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    if (jmf != null) {
-      IFile path = jmf.getOutputRoot();
-      if (path != null) {
-        rv.add(path);
-      }
-      path = jmf.getOutputCacheRoot();
-      if (path != null) {
-        rv.add(path);
-      }
-    }
-    TestsFacet testFacet = module.getFacet(TestsFacet.class);
-    if (testFacet != null) {
-      IFile path = testFacet.getTestsOutputPath();
-      if (path != null) {
-        rv.add(path);
-      }
-      path = testFacet.getOutputCacheRoot();
-      if (path != null) {
-        rv.add(path);
-      }
-    }
-    // XXX see DefaultStreamManager#getOverridenOutputDir(SModel)
-    // we shall iterate over all models of the module, check instanceof GeneratableSModel && isGenerateIntoModelFolder(), and
-    // then (md.getSource() as FileDataSource).getParent(), but GeneratedFilesExcludePolicy which I write the method for, used
-    // to be satisfied with #getOutputRoot(), which didn't check for overridden output root either.
-    return rv;
-  }
-
   @NotNull
   public static JavaModuleFacet getJavaFacet(@NotNull SModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
@@ -149,7 +95,13 @@ public class SModuleOperations {
     return new TreeSet<>(paths);
   }
 
+  /**
+   * @deprecated It's unclear what 'adjustments' refer to; no reason to prefer this method to regular {@code ModelRoot.createModel()}
+   * @see ModelsAutoImportsManager
+   * @see MissingDependenciesFixer#fixModuleDependencies()
+   */
   @Nullable
+  @Deprecated(since = "2021.3", forRemoval = true)
   public static EditableSModel createModelWithAdjustments(@NotNull String name, @NotNull ModelRoot root) {
     try {
       return createModelWithAdjustments(name, root, null);
@@ -160,11 +112,9 @@ public class SModuleOperations {
 
   /**
    * @deprecated to become private, don't use
-   *             there are 2 uses in mbeddr
    */
   @NotNull
-  @ToRemove(version = 2018.3)
-  @Deprecated
+  @Deprecated(since = "2018.3", forRemoval = true)
   public static EditableSModel createModelWithAdjustments(@NotNull String name,
                                                           @NotNull ModelRoot root,
                                                           @Nullable ModelFactoryType modelFactoryType) throws ModelCannotBeCreatedException {
@@ -177,15 +127,18 @@ public class SModuleOperations {
     }
     ModelsAutoImportsManager.doAutoImport(root.getModule(), model);
 
-    // FIXME something bad: see MPS-18545 SModel api: createModel(), setChanged(), isLoaded(), save()
-    // model.getSModel() ?
-    model.setChanged(true);
+    new MissingDependenciesFixer(model).fixModuleDependencies();
+
     model.save();
 
-    new MissingDependenciesFixer(model).fixModuleDependencies();
     return model;
   }
 
+  /**
+   * @deprecated unused, of dubious value. Guess, it's SLibrary responsibility to track changed in module descriptors
+   *             no direct replacement, FS changes has to be tracked by FS listeners.
+   */
+  @Deprecated(since = "2021.3", forRemoval = true)
   public static boolean needReloading(AbstractModule module) {
     // used to check model read for module's repository, now
     // intentionally do not check any longer, as EditableSModel.needsReloading() doesn't require model read, so why would SModule do?
@@ -209,7 +162,13 @@ public class SModuleOperations {
     return timestamp != descriptorFile.lastModified();
   }
 
+  /**
+   * Tries to guess MPS Project from a module based on repository the module belongs to.
+   * No guarantee of success.
+   */
+  @Nullable
   public static Project getProjectForModule(SModule module) {
+    // 2 uses in mbeddr
     if (module == null) {
       return null;
     }

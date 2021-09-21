@@ -17,13 +17,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationException;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.classloading.MPSModuleClassLoader;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -61,20 +58,9 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
   @Override
   public Class generateClass() throws EvaluationException {
     // XXX this method is invoked from EvaluationUi, from a thread without any model access.
+    // but as it used to work for years, don't want to touch it
     SModel containerModel = myContainerModel.resolve(myDebuggerRepository);
-    // FIXME in fact, I'm pretty sure we can accomplish the same with regular dependency to j.m.d.java.api from EvaluationModule
-    //       Then, classpath built for EvaluationModule would include everything we try to push here with an extra CL. However,
-    //       don't want to dive too deep into this mess now, shall refactor make facet to get rid of CResource use anyway, and
-    //       refresh the whole idea of EvaluationModule and its temp models, and how are they handled/processed. Then, this code is likely to fade away.
-    ClassLoader extraCL = new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<MPSModuleClassLoader>() {
-      public MPSModuleClassLoader compute() {
-        SModule extraClasspath = PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)").resolve(myDebuggerRepository);
-        assert extraClasspath instanceof ReloadableModule;
-
-        return ((ReloadableModule) extraClasspath).getClassLoader0();
-      }
-    });
-    return GeneratorUtil.generateAndLoadEvaluatorClass(myProject, containerModel, Properties.EVALUATOR_NAME, Properties.IS_DEVELOPER_MODE, extraCL);
+    return GeneratorUtil.generateAndLoadEvaluatorClass(myProject, containerModel, Properties.EVALUATOR_NAME);
   }
 
   @Override

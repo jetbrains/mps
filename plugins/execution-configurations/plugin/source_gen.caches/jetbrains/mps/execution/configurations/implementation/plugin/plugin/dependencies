@@ -326,7 +326,8 @@
     <classNode dependClassName="jetbrains.mps.smodel.tempmodel.TemporaryModels" />
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
-    <classNode dependClassName="jetbrains.mps.vfs.impl.IoFileSystem" />
+    <classNode dependClassName="jetbrains.mps.vfs.IFileSystem" />
+    <classNode dependClassName="jetbrains.mps.vfs.VFSManager" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />

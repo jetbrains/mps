@@ -8,6 +8,7 @@ import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
 import java.util.zip.ZipFile;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.Semaphore;
 import java.util.HashMap;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -44,7 +45,8 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
   };
   private ZipFile myZipFile;
   private Map<String, Documentation> myClassToDoc;
-  private final AtomicInteger myZipGuard = new AtomicInteger(0);
+  private final AtomicInteger myZipCount = new AtomicInteger(0);
+  private final Semaphore myZipGuard = new Semaphore(1);
 
   public SingleZipWithJavaSources(File zipFile) {
     myZipFileName = zipFile;
@@ -58,12 +60,9 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
 
   @Override
   public void acquire() {
-    if (myZipGuard.getAndIncrement() > 0) {
-      return;
-    }
-    synchronized (this) {
-      if (myZipFile != null) {
-        // e.g. other thread got the guard to 0 and about to release the zip, but we got into synchronized section first
+    myZipGuard.acquireUninterruptibly();
+    try {
+      if (myZipCount.getAndIncrement() > 0) {
         return;
       }
       try {
@@ -72,23 +71,18 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       } catch (IOException ex) {
         Logger.getLogger(SingleZipWithJavaSources.class).info(String.format("%s failed", SingleZipWithJavaSources.class.getSimpleName()), ex);
       }
+    } finally {
+      myZipGuard.release();
     }
   }
 
   @Override
   public void release() {
-    if (myZipGuard.decrementAndGet() > 0) {
-      return;
-    }
-    if (myZipFile == null) {
-      return;
-    }
-    synchronized (this) {
-      // while we were getting ready to release the zip, someone else came and tries to acquire(), don't need to release then.
-      if (myZipGuard.get() != 0) {
+    myZipGuard.acquireUninterruptibly();
+    try {
+      if (myZipCount.decrementAndGet() > 0) {
         return;
       }
-
       try {
         myZipFile.close();
       } catch (IOException ex) {
@@ -97,6 +91,8 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       myZipFile = null;
       myClassToDoc.clear();
       myClassToDoc = null;
+    } finally {
+      myZipGuard.release();
     }
   }
 

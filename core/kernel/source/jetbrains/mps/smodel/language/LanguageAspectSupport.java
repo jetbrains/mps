@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -145,10 +144,10 @@ public class LanguageAspectSupport {
   /**
    * Provisional mechanism to ensure proper aspect devkit is added when model is created.
    * Need to come up with a way to specify devkits in an aspect declaration, perhaps like main/additional languages (though not sure I like it)?
+   * @deprecated use getDefaultDevkit instead
    */
   @NotNull
-  @Deprecated
-  @ToRemove(version = 2018.1) //use getDefaultDevkit instead
+  @Deprecated(since = "2018.1", forRemoval = true)
   public static Collection<SModuleReference> getInitialDevKits(SModel model) {
     LanguageAspectDescriptor newAspect = getNewAspect(model);
     if (newAspect == null) {
@@ -191,8 +190,7 @@ public class LanguageAspectSupport {
   }
 
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //for internal use only
   public static LanguageAspect getOldAspect(SModel model) {
     for (LanguageAspect la : LanguageAspect.values()) {
@@ -202,8 +200,7 @@ public class LanguageAspectSupport {
   }
 
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //for internal use only
   public static LanguageAspectDescriptor getNewAspect(SModel model) {
     for (LanguageAspectDescriptor d : collectAspectsUnsorted()) {

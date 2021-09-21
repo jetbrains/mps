@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,15 @@ package jetbrains.mps.generator.info;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+/**
+ * @deprecated MPS no longer consults this component; the class will be removed once 2021.3 is out
+ */
+@SuppressWarnings("UnstableApiUsage")
+@Deprecated(since = "2021.3", forRemoval = true)
 public class GeneratorPathsComponent implements CoreComponent {
   private static GeneratorPathsComponent INSTANCE;
-  private final List<ForeignPathsProvider> myForeignPathsProviders = Collections.synchronizedList(new ArrayList<>());
 
   public GeneratorPathsComponent() {
   }
@@ -43,20 +44,16 @@ public class GeneratorPathsComponent implements CoreComponent {
   }
 
   public boolean isForeign(final IFile path) {
-    for (ForeignPathsProvider fpp : myForeignPathsProviders) {
-      if (fpp.belongsToForeignPath(path) != null) {
-        return true;
-      }
-    }
+    Logger.getLogger(getClass()).error("The method is no-op", new Throwable());
     return false;
   }
 
   public void registerForeignPathsProvider(ForeignPathsProvider provider) {
-    myForeignPathsProviders.add(provider);
+    Logger.getLogger(getClass()).error("The method is no-op", new Throwable());
   }
 
   public void unregisterForeignPathsProvider(ForeignPathsProvider provider) {
-    myForeignPathsProviders.remove(provider);
+    Logger.getLogger(getClass()).error("The method is no-op", new Throwable());
   }
 
   public static GeneratorPathsComponent getInstance() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="dn1gx1ip494qqg6wlqttd9uix7i78y">
+<product version="3" modelHash="-3dqsil1pka4pkcl037q3unuyuw1g5g7">
   <files names="CompositeScope.java:DelegatingScope.java:EmptyScope.java:ErrorScope.java:FilteringByConceptScope.java:FilteringByNameScope.java:FilteringScope.java:ListScope.java:ModelPlusImportedScope.java:ModelsScope.java:Scope.java:SimpleRoleScope.java" />
 </product>
 

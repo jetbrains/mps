@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.StaticReference;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -52,8 +51,7 @@ public class BareNodeReader {
   /**
    * @deprecated use {@link #BareNodeReader(Supplier, ModelInputStream)} instead
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   public BareNodeReader(@NotNull SModelReference modelReference, @NotNull ModelInputStream is) {
     this (() -> modelReference, is);
   }

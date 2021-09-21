@@ -49,7 +49,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.ListMap;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -357,8 +356,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
     return myCommandGroupId;
   }
 
-  @Deprecated
-  @ToRemove(version = 2018.2)
+@Deprecated(since = "2018.2", forRemoval = true)
   @Override
   public String getRole() {
     SConceptFeature sRole = getSRole();

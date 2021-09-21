@@ -22,7 +22,6 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapter;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -55,8 +54,7 @@ public class ReferenceScopeSubstituteMenuPart implements SubstituteMenuPart {
    * Unused constructor we keep in order to prevent users from https://youtrack.jetbrains.com/issue/MPS-29051
    * There is an issue https://youtrack.jetbrains.com/issue/MPS-28867 which is the reason for rebuilding the language does not recompile existing classes
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public ReferenceScopeSubstituteMenuPart(@NotNull SConcept concept, @NotNull SReferenceLink referenceLink) {
     this(((SAbstractConcept) concept), referenceLink);
   }

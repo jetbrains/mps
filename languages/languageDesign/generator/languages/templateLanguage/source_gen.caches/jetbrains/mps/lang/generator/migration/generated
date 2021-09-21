@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="e0dafoo1caeml19rl3l44x0vwpy4gq">
+<product version="3" modelHash="-5nxx4xqvf1of5a9s2nylkh7bt8wdlyv">
   <files names="MigrateEnumPropertyUsagesAndPropertyPatternVariables.java:MigrateLoopCounterVariable.java:MigrationDescriptor.java:ReplaceIncludeWithCall.java:WeaveEachConsequence.java" />
 </product>
 

@@ -30,7 +30,6 @@ import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +60,7 @@ import java.util.stream.Stream;
  *
  * @author apyshkin
  */
-@ToRemove(version = 223)
+@Deprecated(since = "223", forRemoval = true)
 public final class LegacyAndRulesConstraintsDescriptor implements RulesConstraintsDescriptor {
   private static final Logger LOG = LogManager.getLogger(LegacyAndRulesConstraintsDescriptor.class);
 
@@ -78,8 +77,7 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     myRulesDescriptor = rulesDescriptor;
   }
 
-  @Deprecated
-  @ToRemove(version = 301)
+@Deprecated(since = "301", forRemoval = true)
   public LegacyAndRulesConstraintsDescriptor(@NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
     if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
       throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);

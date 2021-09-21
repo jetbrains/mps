@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.HashMap;
@@ -61,7 +60,7 @@ public class YetUnknownResolver {
    * Handy method that combines other public methods of this class into proper sequence, and wraps calls with proper IncrementalModelAccess
    * Use this method unless you need to handle resolution in some special way (and you are 119% sure you know what you do)
    */
-  public void tryResolveUnknowns(ProgressMonitor progress, IncrementalModelAccess modelAccess) {
+  public void tryResolveUnknowns(ProgressMonitor progress) {
     // make room for this many passes, and just don't advance the progress afterwards
     final int PASSES_TO_SHOW_UNDER_PROGRESS = 5;
     progress.start("", PASSES_TO_SHOW_UNDER_PROGRESS + 1);
@@ -75,20 +74,11 @@ public class YetUnknownResolver {
         progressForThisPass = new EmptyProgressMonitor();
       }
       progressForThisPass.start("", 3);
-      final AtomicBoolean anyUnresolvedYet = new AtomicBoolean(false);
-      modelAccess.accessModel(new Runnable() {
-        public void run() {
-          anyUnresolvedYet.set(collectYetUnresolved(progressForThisPass.subTask(2, SubProgressKind.REPLACING)));
-
-        }
-      });
-      if (anyUnresolvedYet.get()) {
-        modelAccess.replaceNodes(new Runnable() {
-          public void run() {
-            replaceYetUnresolved(progressForThisPass.subTask(1, SubProgressKind.REPLACING));
-            updateWithImportsOfResolved();
-          }
-        });
+      // JFTR, collectYetUnresolved, despite the name, may alter model (see subst in collectYetUnresolved(node<IYetUnresolved>))
+      final boolean anyUnresolvedYet = collectYetUnresolved(progressForThisPass.subTask(2, SubProgressKind.REPLACING));
+      if (anyUnresolvedYet) {
+        replaceYetUnresolved(progressForThisPass.subTask(1, SubProgressKind.REPLACING));
+        updateWithImportsOfResolved();
       } else {
         break;
       }

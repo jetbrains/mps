@@ -18,6 +18,7 @@ package jetbrains.mps.plugins;
 import com.intellij.configurationStore.JdomSerializer;
 import com.intellij.ide.ApplicationInitializedListener;
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.extensions.ExtensionPoint;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
@@ -425,6 +426,16 @@ public class PluginLoaderRegistry implements Disposable {
     public void run(@NotNull ProgressIndicator indicator) {
       // here we just try to update the caption and freeze edt to do our reload of extensions there
       assert !ThreadUtils.isInEDT();
+      // MPS-generated ApplicationPlugins register actions (createGroups->BAP.addAction), and it happens in EDT
+      // (invokeAndWait, below), but ActionManager service doesn't want to be initialized in EDT, therefore we make
+      // sure it's initialized while we're not in EDT. See MPS-33757
+      // FIXME this is a workaround, need a proper fix. I don't understand the limitation of ActionManager/EDT,
+      //       and what's the regular initialization sequence for the ActionManager class (i.e. how does the rest of
+      //       IDEA code make sure it doesn't invoke it accidentally)
+      //       Perhaps, the issue is due to improper timing caused by MyApplicationInitializedListener (need to figure
+      //       out alternative mechanism to trigger plugin reload). Another approach would be not to use EDT for update
+      //       although I expect assumptions about EDT in App/ProjectPlugin initialization code.
+      ActionManager.getInstance();
       boolean showing = indicator.isShowing();
       if (!showing) {
         // we cannot do anything, lets just freeze without any progress

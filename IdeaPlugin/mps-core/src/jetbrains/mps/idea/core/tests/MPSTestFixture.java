@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.tests;
 
 import com.intellij.facet.FacetManager;
@@ -33,10 +32,7 @@ import com.intellij.testFramework.fixtures.TestFixtureBuilder;
 import com.intellij.testFramework.fixtures.impl.BaseFixture;
 import com.intellij.util.ThrowableRunnable;
 import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
-import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import jetbrains.mps.idea.core.facet.MPSFacetConfiguration;
@@ -132,7 +128,7 @@ public class MPSTestFixture extends BaseFixture {
   public IFile getTheSourceRoot(MPSFacet facet) {
     VirtualFile[] ideaSourceRoots = ModuleRootManager.getInstance(facet.getModule()).getSourceRoots();
     Assert.assertEquals(ideaSourceRoots.length, 1);
-    IFile sourceRoot = VirtualFileUtils.toIFile(ideaSourceRoots[0]);
+    IFile sourceRoot = facet.getProject().getFileSystem().fromVirtualFile(ideaSourceRoots[0]);
     Assert.assertNotNull(sourceRoot);
     return sourceRoot;
   }

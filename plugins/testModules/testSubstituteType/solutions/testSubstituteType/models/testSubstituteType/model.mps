@@ -7,7 +7,7 @@
     <use id="9290638e-635b-4ec6-bcad-945ecb88a928" name="testWrappedType" version="-1" />
     <use id="394e3857-3256-4e8b-9601-5abe7ad354d9" name="testOverridingType" version="-1" />
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
     <use id="38be1c36-cdf6-4e3c-b9db-14f88a11fa03" name="testOverridingRule" version="-1" />
   </languages>

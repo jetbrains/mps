@@ -25,7 +25,6 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -117,8 +116,7 @@ final class GenPlanActiveStep {
    * @deprecated unused, just drop it
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public Checkpoint getLastCheckpoint() {
     Checkpoint lastSeen = null;
     for (Step p : myPlan.getSteps()) {

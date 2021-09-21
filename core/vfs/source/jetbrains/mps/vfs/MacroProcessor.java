@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.vfs;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Pattern;
@@ -23,8 +22,7 @@ import java.util.regex.Pattern;
 /**
  * @deprecated there's no need in this interface, use {@link jetbrains.mps.util.MacroHelper}
  */
-@Deprecated
-@ToRemove(version = 2021.1)
+@Deprecated(since = "2021.1", forRemoval = true)
 public interface MacroProcessor {
   Pattern MACRO_PATTERN = Pattern.compile("(\\$\\{[^${]*})");
 

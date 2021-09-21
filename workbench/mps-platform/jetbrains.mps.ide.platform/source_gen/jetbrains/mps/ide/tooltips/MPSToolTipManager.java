@@ -4,7 +4,6 @@ package jetbrains.mps.ide.tooltips;
 
 import java.awt.event.MouseEvent;
 import java.awt.AWTEvent;
-import org.jetbrains.annotations.ApiStatus;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.awt.event.MouseAdapter;
 import com.intellij.ide.IdeTooltip;
@@ -27,8 +26,7 @@ import com.intellij.openapi.application.ApplicationManager;
  * <li>Implement method {@link javax.swing.JComponent#getToolTipText(MouseEvent) } for dynamically changing tooltip</li>
  * </ul>Also your component should have mouse listener, so {@link com.intellij.ide.IdeTooltipManager#eventDispatched(AWTEvent) } can intercept and handle it. <br><br> Additionally you can add client property {@link com.intellij.ide.HelpTooltipManager#SHORTCUT_PROPERTY }to show shortcut on tool tip. <br> Class {@link com.intellij.ide.HelpTooltipManager } will use this method to create and hide tooltip via IntelliJ Platform. <br> Also see {@link com.intellij.ide.IdeTooltipManager }
  */
-@Deprecated
-@ApiStatus.ScheduledForRemoval(inVersion = "2020.1")
+@Deprecated(since = "2020.1", forRemoval = true)
 @GeneratedClass(node = "r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/1657638272963439183", model = "r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)")
 public class MPSToolTipManager {
   private MouseAdapter myMouseListener = new MouseAdapter() {

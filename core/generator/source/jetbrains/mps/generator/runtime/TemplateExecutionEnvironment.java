@@ -23,7 +23,6 @@ import jetbrains.mps.generator.impl.TemplateGenerator;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.QueryExecutionContext;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -70,8 +69,7 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * TemplateGenerator is implementation class and there's no apparent reason why TEE clients might need access to it.
    * @return
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   @NotNull
   TemplateGenerator getGenerator();
 

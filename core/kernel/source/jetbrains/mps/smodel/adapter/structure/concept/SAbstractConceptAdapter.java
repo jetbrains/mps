@@ -35,7 +35,6 @@ import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.NamedElementDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -203,8 +202,7 @@ public abstract class SAbstractConceptAdapter extends SNamedElementAdapter imple
 
   @Nullable
   @Override
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public SNode getDeclarationNode() {
     Language lang = ((Language) getLanguage().getSourceModule());
     if (lang == null) {

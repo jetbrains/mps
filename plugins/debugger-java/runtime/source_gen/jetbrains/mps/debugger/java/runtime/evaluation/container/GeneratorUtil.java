@@ -11,23 +11,20 @@ import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.ScriptBuilder;
-import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
+import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.script.IResult;
-import jetbrains.mps.make.script.IScriptController;
-import jetbrains.mps.make.script.PropertyPoolInitializer;
-import jetbrains.mps.make.script.IPropertiesPool;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.util.JavaNameUtil;
-import jetbrains.mps.smodel.resources.CResource;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
+import jetbrains.mps.module.ReloadableModule;
 import java.util.concurrent.ExecutionException;
 import java.lang.reflect.InvocationTargetException;
 import jetbrains.mps.debugger.java.api.evaluation.InvocationTargetEvaluationException;
@@ -35,46 +32,42 @@ import jetbrains.mps.debugger.java.api.evaluation.InvocationTargetEvaluationExce
 @GeneratedClass(node = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/846214144107996118", model = "r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)")
 public class GeneratorUtil {
   @Nullable
-  public static Class generateAndLoadEvaluatorClass(Project project, final SModel model, String className, boolean developerMode, ClassLoader parentloader) throws EvaluationException {
+  public static Class generateAndLoadEvaluatorClass(Project project, final SModel model, String className) throws EvaluationException {
     IMakeService makeService = project.getComponent(MakeServiceComponent.class).get();
-    MakeSession makeSession = new MakeSession(project, new DefaultMakeMessageHandler(project), false);
+    MakeSession makeSession = new MakeSession(project, new DefaultMakeMessageHandler(project).restrict(MessageKind.ERROR), true) {
+      @Override
+      public IScript toScript(ScriptBuilder scriptBuilder) {
+        // let our make facet inject evaluator class
+        scriptBuilder.withFacetName(new IFacet.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate"));
+        scriptBuilder.withAuxTarget(new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.transformEvaluator"));
+        return super.toScript(scriptBuilder);
+      }
+    };
     if (makeService.openNewSession(makeSession)) {
+      final String fullClassName = JavaNameUtil.packageName(model) + '.' + className;
       try {
-        IScript script = new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator")).toScript();
         Iterable<IResource> resources = new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition(new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
           public Boolean invoke(SModel m) {
             return true;
           }
         }).resources();
-        IResult result = makeService.make(makeSession, resources, script, new IScriptController.Stub2(makeSession, new PropertyPoolInitializer() {
-          public void populate(IPropertiesPool ppool) {
-            // FIXME this is an ugly hack to pass a module to take classpath from when compiling a generated Evaluator class.
-            //       Since there's only transient model after textgen, classpath could not get calculated
-            Tuples._1<SModule> pp = (Tuples._1<SModule>) ppool.properties(new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator"), Object.class);
-            if (pp != null) {
-              pp._0(model.getModule());
-            }
-          }
-        })).get();
+        IResult result = makeService.make(makeSession, resources).get();
         if (result.isSucessful()) {
-          final String fullClassName = JavaNameUtil.packageName(model) + '.' + className;
-          // FIXME I know ICResource is deprecated and FResource replaced with CResource looks a bit odd, however my point is to
-          //       drop FResource from TextGen facet ASAP, not to make java.evaluation perfect. That activity requires thorough redesign of a whole piece
-          //       and I'm not the brave one (too much of a hate flows in me).
-          // In fact, to get anything out from Make facet (MPS-compiled code) to this place (IDEA-compiled code), I still need an IResource declared somewhere
-          // in a module accessible to both lang java.evaluation and this debugger.java.runtime solution. As there's not too many options to put this class to,
-          // I'll end up with IResource declared in this (IDEA-compiled) solution, introducing yet another dependency cycle (this solutuin references Make facet
-          // and JavaDebugEvaluate would reference IResource class), which is not the way I like. Indeed, depedency from solution to language works, as JavaDebugEvaluate
-          // facet reference is translated into a string AND solution is not loaded by MPS (therefore, MPS classloader doesn't deal with the cycle). Nevertheless, I don't like it.
-          for (CResource cres : Sequence.fromIterable(result.output()).ofType(CResource.class)) {
-            try {
-              ClassLoader cl = cres.classes().getClassLoader(parentloader);
-              return cl.loadClass(fullClassName);
-            } catch (ClassNotFoundException ex) {
-              // ignore silently, try another resource
+          Class<?> rv = new ModelAccessHelper(model.getRepository()).runReadAction(new Computable<Class<?>>() {
+            public Class<?> compute() {
+              try {
+                // although model.getModule doesn't require model read, module classloader deep down there does
+                return ((ReloadableModule) model.getModule()).getClassLoader0().loadClass(fullClassName);
+              } catch (ClassNotFoundException ex) {
+                // ignore
+              }
+              return null;
             }
+          });
+          if (rv == null) {
+            throw new EvaluationException(String.format("Can not load evaluator class %s", fullClassName));
           }
-          throw new EvaluationException(String.format("Can not load evaluator class %s", fullClassName));
+          return rv;
         }
         // else fall-through, up to throws EvaluationException below
       } catch (InterruptedException | ExecutionException e) {

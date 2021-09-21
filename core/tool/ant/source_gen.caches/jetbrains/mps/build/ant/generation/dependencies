@@ -34,6 +34,7 @@
     <classNode dependClassName="jetbrains.mps.build.ant.generation.Chunk" />
     <classNode dependClassName="jetbrains.mps.tool.common.GeneratorProperties" />
     <classNode dependClassName="jetbrains.mps.tool.common.JavaCompilerProperties" />
+    <classNode dependClassName="org.apache.tools.ant.Project" />
     <classNode extendsClassName="jetbrains.mps.build.ant.MpsLoadTask" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.generation.ModuleChunkPart">

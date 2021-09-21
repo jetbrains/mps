@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -27,8 +26,7 @@ public final class PropertyMessageTarget implements MessageTarget {
   private final String myPropertyName;
   private final SProperty myProperty;
 
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   public PropertyMessageTarget(String propertyName) {
     myPropertyName = propertyName;
     myProperty = null;

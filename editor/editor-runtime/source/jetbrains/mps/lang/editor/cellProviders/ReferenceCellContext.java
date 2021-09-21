@@ -18,7 +18,6 @@ package jetbrains.mps.lang.editor.cellProviders;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -32,8 +31,7 @@ public class ReferenceCellContext extends BasicCellContext {
   public static final EditorContextKey<SNode> CURRENT_REFERENT_NODE = new EditorContextKey<>();
   public static final EditorContextKey<SAbstractConcept> LINK_TARGET = new EditorContextKey<>();
 
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public ReferenceCellContext(SNode referenceNode, SNode currentReferent, SReferenceLink link) {
     this(referenceNode, currentReferent, link, link.getTargetConcept());
   }

@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.loading.PartialModelDataSupport;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -95,7 +94,7 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
     }
   }
 
-  @ToRemove(version = 0)
+  @Deprecated(since = "0", forRemoval = true)
   private static boolean needToChangeReference(SModelReference oldRef, SModelReference newRef) {
     return !(oldRef.getModelId().equals(newRef.getModelId()) && oldRef.getName().equals(newRef.getName()));
   }

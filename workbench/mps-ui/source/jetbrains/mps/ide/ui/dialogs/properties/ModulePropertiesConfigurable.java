@@ -121,7 +121,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -306,7 +305,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
   /*package*/ void findLanguageUsages(List<SLanguage> languages) {
     ModelsScope scope = new ModelAccessHelper(myModuleRepository).runReadAction(() -> new ModelsScope(myModule.getModels()));
-    final SearchQuery query = new SearchQuery(new GenericHolder<Collection<SLanguage>>(languages, "Languages"), scope);
+    final SearchQuery query = new SearchQuery(new GenericHolder<>(languages, "Languages"), scope);
     final IResultProvider provider =
         FindUtils.makeProvider(new CompositeFinder(new LanguageModelImportFinder()), new CompositeFinder(new LanguageUsagesFinder()));
     showUsageImpl(query, provider);
@@ -1505,7 +1504,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
      * This is temporary helper method for transition period.
      * Should be removed alongside with {@link FacetsFacade#addFactory(String, FacetsFacade.FacetFactory)}.
      */
-    @ToRemove(version = 2020.1)
+    @Deprecated(since = "2020.1", forRemoval = true)
     private String type2PresentationConverter(String facetType) {
       final StringBuilder builder = new StringBuilder(facetType.length());
       if (!facetType.isEmpty()) {

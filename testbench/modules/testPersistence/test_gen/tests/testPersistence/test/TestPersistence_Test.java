@@ -43,6 +43,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Map;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -279,7 +280,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       }
       Assert.assertNotNull(errorString, actualReference);
       // assertIdEqualsOrBothNull(errorString, expectedReference.getTargetNode(), actualReference.getTargetNode());
-      Assert.assertEquals(errorString, ((jetbrains.mps.smodel.SReference) expectedReference).getResolveInfo(), ((jetbrains.mps.smodel.SReference) actualReference).getResolveInfo());
+      Assert.assertEquals(errorString, SLinkOperations.getResolveInfo(expectedReference), SLinkOperations.getResolveInfo(actualReference));
       Assert.assertEquals(errorString, expectedReference.getLink(), actualReference.getLink());
       Assert.assertEquals(errorString, expectedReference.getTargetNodeId(), actualReference.getTargetNodeId());
     }

@@ -7,7 +7,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
@@ -294,8 +294,8 @@
       <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
         <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
-      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
-        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
+      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
+        <reference id="2217234381367530213" name="classifier" index="VXe09" />
       </concept>
       <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
         <child id="6962838954693749192" name="tag" index="qph3F" />
@@ -6840,8 +6840,8 @@
           <node concept="1dT_AA" id="5qGXSHdynkv" role="1dT_Ay">
             <node concept="92FcH" id="5qGXSHdynk_" role="qph3F">
               <node concept="TZ5HA" id="5qGXSHdynkB" role="2XjZqd" />
-              <node concept="VXe0Z" id="5qGXSHdynkI" role="92FcQ">
-                <ref role="VXe0S" node="4JlWzK6XyqG" resolve="getDependencyVersion" />
+              <node concept="VXe08" id="5ziLofeyC2m" role="92FcQ">
+                <ref role="VXe09" to="cttk:5qGXSHdtRTn" resolve="ModuleDependencyVersions" />
               </node>
             </node>
           </node>
@@ -6850,9 +6850,26 @@
           </node>
         </node>
       </node>
+      <node concept="TZ5HA" id="5ziLofeyLpC" role="TZ5H$">
+        <node concept="1dT_AC" id="5ziLofeyLpD" role="1dT_Ay">
+          <property role="1dT_AB" value="Note, this class will be removed once 2021.3 is out, update your uses with ModuleDependencyVersions, it's easy 1-1 migration." />
+        </node>
+      </node>
     </node>
     <node concept="2AHcQZ" id="5qGXSHdymTz" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      <node concept="2B6LJw" id="5ziLofeyBwU" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="5ziLofeyBzh" role="2B70Vg">
+          <property role="Xl_RC" value="2021.1" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="5ziLofeyBzu" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="5ziLofeyBAR" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="4dr7st0kFTM">

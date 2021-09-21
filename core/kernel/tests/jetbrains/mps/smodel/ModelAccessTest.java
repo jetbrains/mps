@@ -94,9 +94,10 @@ public class ModelAccessTest {
     final CountDownLatch cdl = new CountDownLatch(totalThreads);
     for (int i = 0; i < totalThreads; i++) {
       final int delay = 5 + rnd.nextInt(10000)/1000;
+      final int threadIndex = i;
       final Runnable readAction = () -> {
         try {
-          messages.offer(String.format("T%d", delay));
+          messages.offer(String.format("T[%d]:%d", threadIndex, delay));
           Thread.sleep(delay);
         } catch (InterruptedException e) {
           e.printStackTrace();
@@ -118,8 +119,8 @@ public class ModelAccessTest {
     // give it a chance to complete.
     final boolean listenerDone = listenerLatch.await(500, TimeUnit.MILLISECONDS);
     myErrors.checkThat(listenerDone, CoreMatchers.equalTo(true));
-    myErrors.checkThat(messages.size(), CoreMatchers.equalTo(totalThreads + 2)); // message from each thread + start/end messages.
-    myErrors.checkThat(messages.peekFirst(), CoreMatchers.equalTo("START"));
-    myErrors.checkThat(messages.peekLast(), CoreMatchers.equalTo("END"));
+    myErrors.checkThat(messages.toString(), messages.size(), CoreMatchers.equalTo(totalThreads + 2)); // message from each thread + start/end messages.
+    myErrors.checkThat(messages.toString(), messages.peekFirst(), CoreMatchers.equalTo("START"));
+    myErrors.checkThat(messages.toString(), messages.peekLast(), CoreMatchers.equalTo("END"));
   }
 }

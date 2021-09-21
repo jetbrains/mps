@@ -25,7 +25,6 @@ import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -116,8 +115,7 @@ public abstract class ProjectBase extends Project {
    *
    * @return {@code true} if the module is top-level module that needs representation in descriptor file
    */
-  @ToRemove(version = 3.5)
-  @Deprecated
+@Deprecated(since = "3.5", forRemoval = true)
   @Internal
   /*package*/ final boolean addModule0(@NotNull ModulePath path, @NotNull SModule module) {
     if (myModuleToPathMap.containsKey(module.getModuleReference())) {

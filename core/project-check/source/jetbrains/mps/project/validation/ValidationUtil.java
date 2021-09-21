@@ -38,7 +38,6 @@ import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -78,8 +77,7 @@ public class ValidationUtil {
   /**
    * @deprecated Use {@link ModelValidator} instead
    */
-  @Deprecated
-  @ToRemove(version = 2020.1)
+@Deprecated(since = "2020.1", forRemoval = true)
   public static void validateModel(@NotNull final SModel model, @NotNull Processor<? super ModelReportItem> processor) {
     // there was 1 use in mbeddr, in com.mbeddr.mpsutil.projectview.runtime; refactored Oct 5, 2020 in mps/2020.2 branch.
     processor.process(new ModelReportItemBase(MessageStatus.ERROR, model.getReference(), "ValidationUtil.validateModel() is NO-OP, please refactor your code to use ModelValidator!") {

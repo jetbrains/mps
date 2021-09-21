@@ -5,7 +5,6 @@ package jetbrains.mps.idea.java.psiStubs;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.idea.java.psi.JavaPsiListener;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.module.Module;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -26,12 +25,10 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.psi.PsiJavaFile;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
-import org.jetbrains.mps.openapi.persistence.Memento;
 import com.intellij.psi.PsiFileSystemItem;
 
 @GeneratedClass(node = "r:e32ada56-1876-4524-85c0-29075cbd8d32(jetbrains.mps.idea.java.psiStubs)/3118313698926457061", model = "r:e32ada56-1876-4524-85c0-29075cbd8d32(jetbrains.mps.idea.java.psiStubs)")
 public class PsiJavaStubModelRoot extends ModelRootBase implements JavaPsiListener {
-  private static Logger LOG = Logger.getLogger(PsiJavaStubModelRoot.class);
   private static final String TYPE = "JavaPsiStubs";
 
   @NotNull
@@ -148,25 +145,6 @@ public class PsiJavaStubModelRoot extends ModelRootBase implements JavaPsiListen
     }
 
     return new JavaPackageNameStub(packageName).asModelReference(getModule().getModuleReference());
-  }
-  public boolean isReadOnly() {
-    return true;
-  }
-  @Override
-  public boolean canCreateModel(String modelName) {
-    return false;
-  }
-  @Override
-  public SModel createModel(String modelName) {
-    return null;
-  }
-  @Override
-  public void save(Memento memento) {
-    throw new UnsupportedOperationException("JavaPsiStubs: unsupported for now");
-  }
-  @Override
-  public void load(Memento memento) {
-    throw new UnsupportedOperationException("JavaPsiStubs: unsupported for now");
   }
 
   @Override

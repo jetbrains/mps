@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
@@ -24,7 +25,6 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -49,6 +49,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
+@SuppressWarnings("UnstableApiUsage") // just to get rid of errors for log4j.Logger
 public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt, ReferenceScopeHelper.Source {
   private static final Logger LOG = LogManager.getLogger(MPSModuleRepository.class);
   private static MPSModuleRepository ourInstance;
@@ -57,9 +58,9 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   private final CommandListener myCommandListener;
   private final CachingReferenceScopeHelper myScopeCache;
 
-  private Set<SModule> myModules = new LinkedHashSet<>();
-  private Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<>();
-  private ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<>();
+  private final Set<SModule> myModules = new LinkedHashSet<>();
+  private final Map<SModuleId, SModule> myIdToModuleMap = new ConcurrentHashMap<>();
+  private final ManyToManyMap<SModule, MPSModuleOwner> myModuleToOwners = new ManyToManyMap<>();
 
   /**
    * Compatibility code, the instance available through SModelRepository.getInstance for legacy code.
@@ -84,8 +85,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
    * @since 3.2
    * @deprecated
    */
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   public static MPSModuleRepository getInstance() {
     return ourInstance;
   }
@@ -270,7 +270,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     return Collections.unmodifiableSet(myModuleToOwners.getBySecond(moduleOwner));
   }
 
-  public Set<MPSModuleOwner> getOwners(SModule module) {
+  public Set<MPSModuleOwner> getOwners(@NotNull SModule module) {
     getModelAccess().checkReadAccess();
 
     return Collections.unmodifiableSet(myModuleToOwners.getByFirst(module));
@@ -293,6 +293,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   @Override
   public SModel getModel(@NotNull SModelId modelId) {
     if (modelId.isGloballyUnique()) {
+      //noinspection deprecation
       return myModelRepository.getModelDescriptor(modelId);
     }
     return super.getModel(modelId);
@@ -311,7 +312,6 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   public void saveAll() {
     getModelAccess().checkWriteAccess();
     long beginTime = System.nanoTime();
-    LOG.debug("Saving repository");
     try {
       for (SModule module : getModules()) {
         if (module instanceof EditableSModule) {
@@ -324,7 +324,14 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
       myModelRepository.saveAll();
     } finally {
-      LOG.info(String.format("Saving of the repository took %.3f s", (System.nanoTime() - beginTime) / 1e9));
+      final long msElapsed = (System.nanoTime() - beginTime) / 1000000;
+      final long magicLongSaveMS = 2000;
+      final String fmt = "Saving of the repository took %.3f s";
+      if (RuntimeFlags.isInternalMode() || msElapsed > magicLongSaveMS) {
+        LOG.info(String.format(fmt, msElapsed / 1e3));
+      } else if (LOG.isDebugEnabled()) {
+        LOG.debug(String.format(fmt, msElapsed / 1e3));
+      }
     }
   }
 

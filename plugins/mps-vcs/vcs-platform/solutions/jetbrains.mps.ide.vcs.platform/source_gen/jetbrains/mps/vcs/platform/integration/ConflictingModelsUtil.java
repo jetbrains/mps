@@ -27,15 +27,14 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.vcs.merge.MergeData;
 import com.intellij.openapi.vcs.VcsException;
 import org.apache.log4j.Level;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.MPSExtentions;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.persistence.FilePerRootDataSource;
+import java.io.File;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -113,9 +112,8 @@ public class ConflictingModelsUtil {
             continue;
           }
 
-          IFile iFile = FileSystem.getInstance().getFile(file.getPath());
           String ext = file.getExtension();
-          if (FilePerRootDataSource.isPerRootPersistenceFile(iFile)) {
+          if (isPerRootPersistenceFile(file)) {
             ext = MPSExtentions.MODEL;
           }
           final SModel baseModel = loadModel(mergeData.ORIGINAL, ext);
@@ -151,6 +149,11 @@ public class ConflictingModelsUtil {
     return result[0];
   }
 
+  /*package*/ static boolean isPerRootPersistenceFile(VirtualFile file) {
+    // FIXME seems that the code uses extension of file name to select proper model factory, instead of
+    //      supplying proper model factory directly
+    return FilePerRootDataSource.isPerRootPersistenceFile(new File(file.getPath()));
+  }
   public static ModelConflictResolver getModelConflictResolverTask(Project project, MergeProvider provider, com.intellij.openapi.vcs.merge.MergeSession session, List<? extends VirtualFile> conflictedFiles) {
     return new ModelConflictResolver(project, provider, session, conflictedFiles);
   }
@@ -189,9 +192,8 @@ public class ConflictingModelsUtil {
         for (final VirtualFile file : ListSequence.fromList(myConflictedModelFiles)) {
           monitor.step(file.getCanonicalPath());
 
-          IFile iFile = FileSystem.getInstance().getFile(file.getPath());
           final Wrappers._T<String> ext = new Wrappers._T<String>(file.getExtension());
-          if (FilePerRootDataSource.isPerRootPersistenceFile(iFile)) {
+          if (isPerRootPersistenceFile(file)) {
             ext.value = MPSExtentions.MODEL;
           }
           final Wrappers._T<SModel> baseModel = new Wrappers._T<SModel>(null);
@@ -292,7 +294,7 @@ public class ConflictingModelsUtil {
               }
             });
             if (isWritten.value) {
-              check_2bxr1q_a0a2a02a0a5a21g(mySession, file);
+              check_2bxr1q_a0a2a91a0a5a21h(mySession, file);
               VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
               ListSequence.fromList(myResolvedModelFiles).addElement(file);
             }
@@ -307,7 +309,7 @@ public class ConflictingModelsUtil {
         monitor.done();
       }
     }
-    private static void check_2bxr1q_a0a2a02a0a5a21g(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
+    private static void check_2bxr1q_a0a2a91a0a5a21h(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
       if (null != checkedDotOperand) {
         checkedDotOperand.conflictResolvedForFile(file, com.intellij.openapi.vcs.merge.MergeSession.Resolution.Merged);
       }

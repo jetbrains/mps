@@ -18,7 +18,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -62,8 +61,7 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
     SNode container = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.NodeOperationsContainer$aj);
     return SNodeOperations.getParent(container);
   }
-  @Deprecated
-  @ToRemove(version = 2019.2)
+  @Deprecated(since = "2019.2", forRemoval = true)
   /*package*/ static boolean expectsErrorsInside_id3efgZvcKrj8(@NotNull SNode __thisNode__) {
     return true;
   }

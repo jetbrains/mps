@@ -486,38 +486,38 @@
   </root>
   <root nodeRef="r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/5532289631191885613">
     <file name="RefactoringUI.java">
-      <node id="8821602715295954574" at="15,0,16,0" concept="7" trace="prepare#(Ljava/lang/Runnable;)V" />
-      <node id="8821602715295954588" at="16,0,17,0" concept="7" trace="selectParticipants#(Ljava/util/List;)Ljava/util/List;" />
-      <node id="8821602715295954580" at="17,0,18,0" concept="7" trace="runSearch#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
-      <node id="8396809633998128082" at="20,161,21,66" concept="3" />
-      <node id="8396809633998130784" at="23,137,24,81" concept="3" />
-      <node id="8396809633998125004" at="23,0,26,0" concept="7" trace="showRefactoringView#(Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
-      <node id="5532289631196481269" at="18,0,23,0" concept="7" trace="showRefactoringView#(Ljava/lang/Runnable;Ljava/lang/String;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
-      <scope id="8821602715295954574" at="15,0,16,0">
+      <node id="8821602715295954574" at="14,0,15,0" concept="7" trace="prepare#(Ljava/lang/Runnable;)V" />
+      <node id="8821602715295954588" at="15,0,16,0" concept="7" trace="selectParticipants#(Ljava/util/List;)Ljava/util/List;" />
+      <node id="8821602715295954580" at="16,0,17,0" concept="7" trace="runSearch#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
+      <node id="8396809633998128082" at="22,161,23,66" concept="3" />
+      <node id="8396809633998130784" at="25,137,26,81" concept="3" />
+      <node id="8396809633998125004" at="25,0,28,0" concept="7" trace="showRefactoringView#(Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <node id="5532289631196481269" at="21,0,25,0" concept="7" trace="showRefactoringView#(Ljava/lang/Runnable;Ljava/lang/String;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <scope id="8821602715295954574" at="14,0,15,0">
         <var name="task" id="8821602715295954578" />
       </scope>
-      <scope id="8821602715295954588" at="16,0,17,0">
+      <scope id="8821602715295954588" at="15,0,16,0">
         <var name="options" id="8821602715295954591" />
       </scope>
-      <scope id="8821602715295954580" at="17,0,18,0">
+      <scope id="8821602715295954580" at="16,0,17,0">
         <var name="task" id="8821602715295954584" />
       </scope>
-      <scope id="5532289631196481272" at="20,161,21,66" />
-      <scope id="8396809633998125007" at="23,137,24,81" />
-      <scope id="8396809633998125004" at="23,0,26,0">
+      <scope id="5532289631196481272" at="22,161,23,66" />
+      <scope id="8396809633998125007" at="25,137,26,81" />
+      <scope id="8396809633998125004" at="25,0,28,0">
         <var name="searchResults" id="8396809633998125012" />
         <var name="searchTask" id="8396809633998125014" />
         <var name="session" id="8396809633998125016" />
         <var name="task" id="8396809633998125008" />
       </scope>
-      <scope id="5532289631196481269" at="18,0,23,0">
+      <scope id="5532289631196481269" at="21,0,25,0">
         <var name="refactoringName" id="5532289631196606222" />
         <var name="searchResults" id="8821602715296368028" />
         <var name="searchTask" id="5532289631196606224" />
         <var name="session" id="3358842831932233816" />
         <var name="task" id="5532289631196606220" />
       </scope>
-      <unit id="5532289631191885613" at="13,0,27,0" name="jetbrains.mps.refactoring.participant.RefactoringUI" />
+      <unit id="5532289631191885613" at="12,0,29,0" name="jetbrains.mps.refactoring.participant.RefactoringUI" />
     </file>
   </root>
   <root nodeRef="r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/6015942601922580796">

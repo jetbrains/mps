@@ -27,6 +27,7 @@ import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import java.util.function.Consumer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
+import java.util.function.Predicate;
 import java.util.ArrayDeque;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
@@ -41,7 +42,8 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
   /**
    * in use for 'clean' make only, for #collectGeneratedFilesForceClean not to walk same output root again and again, reporting same files as stale multiple times.
    */
-  private final Set<IFile> myStaleFoldersWalked = new HashSet<IFile>();
+  private final Set<IFile> myStaleFoldersWalked = new HashSet<>();
+  private final Set<IFile> myRetainedFolders = new HashSet<>();
 
   public ModuleStaleFileManager(SModule module, _FunctionTypes._return_P1_E0<? extends IFile, ? super IFile> getFile, GenerationDependenciesCache genDeps, IMessageHandler msgHandler) {
     myModule = module;
@@ -84,6 +86,11 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     Consumer<IFile> f = new Consumer<IFile>() {
       public void accept(IFile f) {
         fd.kept(f);
+        if (f.isDirectory()) {
+          myRetainedFolders.add(f);
+        } else {
+          myRetainedFolders.add(f.getParent());
+        }
       }
     };
     for (SModel m : Sequence.fromIterable(retainedModels)) {
@@ -156,20 +163,25 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
         fd.stale(f);
       }
     };
+    Predicate<IFile> avoidFilesInFoldersOfRetainedModels = new Predicate<IFile>() {
+      public boolean test(IFile f) {
+        return !(myRetainedFolders.contains(f));
+      }
+    };
     if (myStaleFoldersWalked.add(actualOutputRoot)) {
-      visitFilesDeep(actualOutputRoot, staleDeltaReporter);
+      visitFilesDeep(actualOutputRoot, staleDeltaReporter, avoidFilesInFoldersOfRetainedModels);
     }
     final IFile outputCacheRoot = gtf.getOutputCacheRoot(generatedInputModel);
     IFile actualOutputCacheRoot = (outputCacheRoot == null ? null : myPath2File.invoke(outputCacheRoot));
     if (outputCacheRoot != null && myStaleFoldersWalked.add(actualOutputCacheRoot)) {
-      visitFilesDeep(actualOutputCacheRoot, staleDeltaReporter);
+      visitFilesDeep(actualOutputCacheRoot, staleDeltaReporter, avoidFilesInFoldersOfRetainedModels);
     }
     if (!(fd.isEmpty())) {
       ListSequence.fromList(myStaleFilesDelta).addElement(fd);
     }
   }
 
-  private static void visitFilesDeep(IFile startDir, Consumer<IFile> visitor) {
+  private static void visitFilesDeep(IFile startDir, Consumer<IFile> visitor, Predicate<IFile> folderVisitPredicate) {
     // reports files only, not directories
     assert startDir != null;
     if (!(startDir.exists())) {
@@ -180,7 +192,9 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     do {
       IFile f = fqueue.removeFirst();
       if (f.isDirectory()) {
-        fqueue.addAll(f.getChildren());
+        if (folderVisitPredicate.test(f)) {
+          fqueue.addAll(f.getChildren());
+        }
       } else {
         visitor.accept(f);
       }

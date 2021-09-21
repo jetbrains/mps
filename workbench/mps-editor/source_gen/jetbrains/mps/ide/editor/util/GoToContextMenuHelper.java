@@ -4,7 +4,6 @@ package jetbrains.mps.ide.editor.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.project.Project;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -33,8 +32,7 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
    * 
    * @deprecated use the new method instead
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+  @Deprecated(since = "2018.3", forRemoval = true)
   public static void showMenu(Project project, String title, List<SNodeReference> nodes, final BaseRenderer renderer, RelativePoint point) {
     if (ListSequence.fromList(nodes).isEmpty()) {
       return;
@@ -56,8 +54,11 @@ public final class GoToContextMenuHelper extends GoToContextMenuHelperBase<NodeN
     openTargets(point, navigatables, title, renderer);
   }
 
-  @ToRemove(version = 2018.3)
-  @Deprecated
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2018.3", forRemoval = true)
   private static void openTargets(RelativePoint p, List<NodeNavigatable> targets, String title, ListCellRenderer listRenderer) {
     assert !(GoToContextMenuHelper.class.getClassLoader() instanceof ModuleClassLoader) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";
     if (targets.isEmpty()) {

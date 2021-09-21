@@ -18,21 +18,19 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.ModuleRuntimeContext;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -60,6 +58,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static java.lang.String.format;
@@ -70,6 +69,7 @@ import static java.lang.String.format;
  *
  * evgeny, 3/11/11
  */
+@SuppressWarnings("UnstableApiUsage")
 public final class LanguageRegistry implements CoreComponent, DeployListener {
   private static final Logger LOG = LogManager.getLogger(LanguageRegistry.class);
 
@@ -79,8 +79,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
    * @deprecated obtain instance through {@link jetbrains.mps.components.ComponentHost#findComponent(Class) componentHost#findComponent(LanguageRegistry.class)}
    *             or use context-specific alternative {@link #getInstance(SRepository)}.
    */
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   public static LanguageRegistry getInstance() {
     return INSTANCE;
   }
@@ -122,9 +121,12 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   private final LanguageExtensionRegistry myExtensionRegistry;
 
-  public LanguageRegistry(ClassLoaderManager loaderManager) {
+  private final Supplier<ComponentHost> myPlatformAccess;
+
+  public LanguageRegistry(ClassLoaderManager loaderManager, Supplier<ComponentHost> platformAccess) {
     myClassLoaderManager = loaderManager;
     myExtensionRegistry = new LanguageExtensionRegistry();
+    myPlatformAccess = platformAccess;
   }
 
   @Override
@@ -325,7 +327,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   @Nullable
   private ModuleRuntime createRuntime(Solution solution) {
-    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader());
+    return new ModuleRuntime(solution.getModuleReference(), solution.getClassLoader0());
   }
 
   public String toString() {
@@ -451,7 +453,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         }
         modulesToUnload.add(moduleRuntime);
       }
-      ModuleRuntimeContext rtc = () -> null;
+      ModuleRuntimeContext rtc = myPlatformAccess::get;
       for (ModuleRuntime rt : modulesToUnload) {
         rt.deactivate(rtc);
       }
@@ -584,7 +586,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       monitor.advance(1);
 
       monitor.step("Activators...");
-      ModuleRuntimeContext rtc = () -> null;
+      ModuleRuntimeContext rtc = myPlatformAccess::get;
       for (ModuleRuntime rt : loadedRuntime2) {
         rt.activate(rtc);
       }

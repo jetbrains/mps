@@ -19,7 +19,6 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.PathMacros;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
@@ -87,8 +86,7 @@ public final class MacrosFactory implements MacroHelper.Source {
   /**
    * @deprecated why would anyone care to cast openapi.SModule to AbstractModule? Use {@link #forModule(SModule)} instead.
    */
-  @Deprecated
-  @ToRemove(version = 2018.1)
+@Deprecated(since = "2018.1", forRemoval = true)
   public static MacroHelper forModule(AbstractModule module) {
     // todo: if descriptor file == null?
     IFile file = module.getDescriptorFile();

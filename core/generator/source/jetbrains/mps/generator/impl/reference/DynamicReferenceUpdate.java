@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.impl.reference;
 
 import jetbrains.mps.generator.impl.TemplateGenerator;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
@@ -32,14 +31,14 @@ import java.util.List;
  */
 public final class DynamicReferenceUpdate {
   private final TemplateGenerator myGenerator;
-  private final List<SReference> myRefs;
+  private final List<ReferenceInfo.DRI> myRefs;
 
   public DynamicReferenceUpdate(@NotNull TemplateGenerator generator) {
     myGenerator = generator;
     myRefs = new ArrayList<>();
   }
 
-  public synchronized void add(@NotNull SReference dr) {
+  public void add(@NotNull ReferenceInfo.DRI dr) {
     myRefs.add(dr);
   }
 
@@ -52,9 +51,9 @@ public final class DynamicReferenceUpdate {
       return;
     }
     final boolean shallWarn = myGenerator.getGeneratorSessionContext().getGenerationOptions().warnDynamicToStaticFailed();
-    for (SReference dr : myRefs) {
-      final SNode srcNode = dr.getSourceNode();
-      String resolveInfo = SLinkOperations.getResolveInfo(dr);
+    for (ReferenceInfo.DRI dr : myRefs) {
+      final SNode srcNode = dr.getSource();
+      String resolveInfo = dr.getResolveInfo();
       if (srcNode == null) {
         myGenerator.getLogger().warning(String.format("Attempt to replace dynamic reference '%s' with static counterpart failed: no source node; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getName(), resolveInfo));
         continue;
@@ -64,7 +63,17 @@ public final class DynamicReferenceUpdate {
         // by MAPSRC node macro
         continue;
       }
-      SNode target = SNodeOperations.getTargetNodeSilently(dr);
+      final SReference dynamicRef = srcNode.getReference(dr.getLink());
+      if (dynamicRef == null) {
+        // srcNode.toString, not getPresentation, as I care to get bit more details about the source node than just name
+        myGenerator.getLogger().error(String.format("No dynamic reference '%s'(%s) to replace in source node %s", dr.getLink().getName(), resolveInfo, srcNode));
+        // it's odd not to find a reference I just inserted into a model.
+        // however, need to address the whole registerDynamicReference()/ResolveInfo workflow first;
+        // now just stick to the old logic as close as possible.
+        // FIXME Proper way is avoid keeping source node and link in DRI
+        continue;
+      }
+      SNode target = SNodeOperations.getTargetNodeSilently(dynamicRef);
       if (target == null) {
         if (shallWarn) {
           myGenerator.getLogger().warning(srcNode.getReference(), String.format("Failed to replace dynamic reference '%s' with static counterpart: no target; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getName(), resolveInfo));

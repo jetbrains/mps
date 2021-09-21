@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -51,8 +50,7 @@ public final class LinkDeclaration__BehaviorDescriptor extends BaseBHDescriptor 
     }
     return LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.specializedLink$7ZCN));
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  @Deprecated(since = "2019.3", forRemoval = true)
   /*package*/ static String getGenuineRole_idhEwIfAe(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(LinkDeclaration__BehaviorDescriptor.getGenuineLink_idhEwIf_V.invoke(__thisNode__), PROPS.role$Nsjf);
   }

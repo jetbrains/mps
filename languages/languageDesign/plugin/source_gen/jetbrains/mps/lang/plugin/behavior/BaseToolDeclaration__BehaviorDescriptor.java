@@ -18,7 +18,6 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -50,8 +49,7 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static String getGeneratedClassFQName_id5FstybB4d8e(@NotNull SNode __thisNode__) {
     return NameUtil.longNameFromNamespaceAndShortName(SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__)), BaseToolDeclaration__BehaviorDescriptor.getGeneratedName_id5FstybB4d83.invoke(__thisNode__));
   }
-  @Deprecated
-  @ToRemove(version = 3.5)
+  @Deprecated(since = "3.5", forRemoval = true)
   /*package*/ static boolean hasNumber_id5FstybB4d8v(@NotNull SNode __thisNode__) {
     return !(isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$DT6H)));
   }

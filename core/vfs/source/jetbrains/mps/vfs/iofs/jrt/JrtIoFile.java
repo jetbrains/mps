@@ -16,7 +16,6 @@
 package jetbrains.mps.vfs.iofs.jrt;
 
 import jetbrains.mps.util.IFileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;

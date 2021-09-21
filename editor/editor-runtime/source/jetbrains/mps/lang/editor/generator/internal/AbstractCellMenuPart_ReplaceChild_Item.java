@@ -27,7 +27,6 @@ import jetbrains.mps.smodel.action.DefaultSChildSetter;
 import jetbrains.mps.smodel.action.IChildNodeSetter;
 import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -89,8 +88,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Item implements Substitu
     /**
      * @deprecated
      */
-  @ToRemove(version = 2020.2)
-  @Deprecated(forRemoval = true)
+  @Deprecated(since = "2020.2", forRemoval = true)
   protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model,
                                          IOperationContext operationContext, EditorContext editorContext){
     return null;

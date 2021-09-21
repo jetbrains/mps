@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,10 +24,10 @@ import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * Restore a reference originally between template nodes
@@ -49,16 +49,14 @@ public class ReferenceInfo_Template extends ReferenceInfo {
 
   @Nullable
   @Override
-  public SReference create(@NotNull PostponedReference ref) {
+  public ResolveInfo create(@NotNull PostponedReference ref) {
     SNode outputTargetNode = doResolve_Straightforward(ref);
     if (outputTargetNode != null) {
       return createStaticReference(ref, outputTargetNode);
     }
     if (myResolveInfo != null) {
       final SNodeReference inputNodeRef = myContext.getInput() == null ? null : myContext.getInput().getReference();
-      final SReference dr = createDynamicReference(ref, myResolveInfo, new DynamicReferenceOrigin(myTemplateSourceNode, inputNodeRef));
-      ref.getGenerator().registerDynamicReference(dr);
-      return dr; 
+      return createDynamicReference(ref, myResolveInfo, new DynamicReferenceOrigin(myTemplateSourceNode, inputNodeRef));
     }
     return createInvalidReference(ref, null);
   }

@@ -32,7 +32,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
@@ -236,8 +235,7 @@ public class ContainerTests<T> extends AbstractContainerParameterizedTest<T> {
       return null;
     }
 
-    @Deprecated
-    @ToRemove(version = 2018.2)
+  @Deprecated(since = "2018.2", forRemoval = true)
     @Override
     public String getRole() {
       return null;

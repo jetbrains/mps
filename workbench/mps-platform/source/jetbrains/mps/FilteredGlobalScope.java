@@ -17,7 +17,6 @@ package jetbrains.mps;
 
 import jetbrains.mps.project.FilteredScope;
 import jetbrains.mps.project.GlobalScope;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -36,8 +35,7 @@ public class FilteredGlobalScope extends FilteredScope {
   /**
    * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
    */
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public FilteredGlobalScope() {
     this(GlobalScope.getInstance());
   }

@@ -19,7 +19,6 @@ import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -62,8 +61,7 @@ public final class EngagedGeneratorCollector {
   /**
    * @deprecated use the cons with {@code LanguageRegistry}. There's no use for additionalLanguages (generation parameters shall fade away; could get replaced with GP if necessary)
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public EngagedGeneratorCollector(@NotNull SModel model, @Nullable Collection<SLanguage> additionalLanguages) {
     myLanguageRegistry = LanguageRegistry.getInstance();
     myModel = model;

@@ -18,7 +18,6 @@ package jetbrains.mps.generator.template;
 import jetbrains.mps.generator.GenerationSessionContext;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -45,8 +44,7 @@ public interface ITemplateGenerator extends GeneratorQueryProvider.Source {
    *   possible. This method is left solely for scenarios of LM registration from inside scripts (through genContext/TemplateQueryContext operations) when
    *   TEE is not available.
    */
-  @ToRemove(version = 2021.1)
-  @Deprecated
+@Deprecated(since = "2021.1", forRemoval = true)
   void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode);
 
   /**

@@ -16,7 +16,6 @@
 package jetbrains.mps.errors.messageTargets;
 
 import jetbrains.mps.util.EqualUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,15 +25,14 @@ import java.util.Objects;
 @Immutable
 public final class DeletedNodeMessageTarget implements MessageTarget {
   private final SContainmentLink myLink;
-  @ToRemove(version = 2019.2)
+  @Deprecated(since = "2019.2", forRemoval = true)
   private String myRole;
   private int myNextChildIndex = -1; // -1 for deleted in single role
 
   /**
    * @deprecated use alternative with S-metaobject
    */
-  @ToRemove(version = 2019.2)
-  @Deprecated
+@Deprecated(since = "2019.2", forRemoval = true)
   public DeletedNodeMessageTarget(@NotNull String role, int nextChildIndex) {
     myRole = role;
     myNextChildIndex = nextChildIndex;
@@ -49,8 +47,7 @@ public final class DeletedNodeMessageTarget implements MessageTarget {
   /**
    * @deprecated use alternative with S-metaobject
    */
-  @ToRemove(version = 2019.2)
-  @Deprecated
+@Deprecated(since = "2019.2", forRemoval = true)
   public DeletedNodeMessageTarget(String role) {
     myRole = role;
     myLink = null;

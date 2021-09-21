@@ -19,6 +19,7 @@ public final class GeneratorProperties {
    */
   private static final String USE_STATIC_REFS = "use-static-refs";
   private static final String SKIP_UNMODIFIED_MODELS = "skip-unmodified-models";
+  private static final String MSG_LEVEL = "message-level";
 
   private final Script myScript;
 
@@ -77,5 +78,12 @@ public final class GeneratorProperties {
   }
   public boolean isSkipUnmodifiedModels() {
     return Boolean.parseBoolean(myScript.getProperty(SKIP_UNMODIFIED_MODELS));
+  }
+  public GeneratorProperties setMessageLevel(String level) {
+    myScript.putProperty(MSG_LEVEL, level);
+    return this;
+  }
+  public String getMessageLevel() {
+    return myScript.getProperty(MSG_LEVEL);
   }
 }

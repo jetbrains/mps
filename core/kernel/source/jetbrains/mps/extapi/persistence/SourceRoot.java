@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.persistence;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,6 +47,6 @@ public interface SourceRoot {
    * Temporarily this method will replace the api.
    * Afterwards there will be only {@link #getPath} method which will return some "Path" entity
    */
-  @ToRemove(version = 3.5)
+  @Deprecated(since = "3.5", forRemoval = true)
   @NotNull IFile getAbsolutePath();
 }

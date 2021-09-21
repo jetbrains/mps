@@ -315,19 +315,21 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((MetaObjectGenerationHelper) _context.getVariable("mogh")).record(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_10_14(final PropertyMacroContext _context) {
-    SReference ref = SNodeOperations.getParent(_context.getNode()).getReference(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
+    SReference ref = SNodeOperations.getReference(SNodeOperations.getParent(_context.getNode()), LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
     if (ref == null) {
       return "";
     }
     SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
-    if (target != null && SNodeOperations.isInstanceOf(target, CONCEPTS.INamedConcept$Kd)) {
-      return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+    String resolveInfo = null;
+    // same ordering preference ri(target), ri(ref) as for refs variable
+    //   (just to match, not to justify)
+    if (target != null) {
+      resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(target);
     }
-    String resolveInfo = ((jetbrains.mps.smodel.SReference) ref).getResolveInfo();
-    if (resolveInfo != null) {
-      return resolveInfo;
+    if (resolveInfo == null) {
+      resolveInfo = SLinkOperations.getResolveInfo(ref);
     }
-    return "";
+    return (resolveInfo != null ? resolveInfo : "");
   }
   public static Object propertyMacro_GetValue_10_15(final PropertyMacroContext _context) {
     return ((VariableNameSource) _context.getVariable("ctx")).newName();
@@ -3685,9 +3687,10 @@ public class QueriesGenerated extends QueryProviderBase {
         SPropertyOperations.assign(refNode, PROPS.templateNodeId$FX8J, GeneratorUtil.getTemplateNodeId(_context.getOriginalCopiedInputNode(targetNode)));
 
         // XXX why not reference.resolveInfo?
+        // JFTR, there's similar code to extract resolveInfo for references with macros
         String resolveInfo = jetbrains.mps.util.SNodeOperations.getResolveInfo(targetNode);
         if (resolveInfo == null) {
-          resolveInfo = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
+          resolveInfo = SLinkOperations.getResolveInfo(reference);
         }
         SPropertyOperations.assign(refNode, PROPS.resolveInfo$FXAL, resolveInfo);
         referenceNode = refNode;

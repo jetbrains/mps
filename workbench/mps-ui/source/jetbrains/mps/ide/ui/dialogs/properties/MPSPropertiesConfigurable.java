@@ -59,7 +59,6 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -87,8 +86,9 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Configuration page consisting of {@link Tab tabs}.
@@ -129,7 +129,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
    *
    * @param tabs initial set of tabs
    */
-  protected void registerTabs(Tab... tabs) {
+  protected final void registerTabs(Tab... tabs) {
     myTabs.addAll(Arrays.asList(tabs));
   }
 
@@ -534,25 +534,33 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       return myUsedLangsTableModel.isModified();
     }
 
-    protected final List<SLanguage> getSelectedLanguages() {
-      final List<SLanguage> languages = new LinkedList<>();
-      myMPSProject.getModelAccess().runReadAction(() -> {
-        for (int i : myUsedLangsTable.getSelectedRows()) {
-          Object value = myUsedLangsTableModel.getValueAt(i, UsedLangsTableModel.ITEM_COLUMN);
-          if (value instanceof Import) {
-            final Import entry = (Import) value;
-            if (entry.myLanguage != null) {
-              languages.add(entry.myLanguage);
-            } else {
-              final SModule devkit = entry.myDevKit.resolve(myMPSProject.getRepository());
-              if (devkit instanceof DevKit) {
-                languages.addAll(IterableUtil.asCollection(((DevKit) devkit).getAllExportedLanguageIds()));
-              }
+    protected final List<SLanguage> toLanguages(Collection<Import> entries) {
+      ArrayList<SLanguage> rv = new ArrayList<>();
+      ArrayList<SModuleReference> devkits = new ArrayList<>();
+      for (Import entry : entries) {
+        if (entry.myLanguage != null) {
+          rv.add(entry.myLanguage);
+        } else {
+          devkits.add(entry.myDevKit);
+        }
+      }
+      if (!devkits.isEmpty()) {
+        final SRepository repo = myMPSProject.getRepository();
+        repo.getModelAccess().runReadAction(() -> {
+          for (SModuleReference mr : devkits) {
+            final SModule devkit = mr.resolve(repo);
+            if (devkit instanceof DevKit) {
+              ((DevKit) devkit).getAllExportedLanguageIds().forEach(rv::add);
             }
           }
-        }
-      });
-      return languages;
+        });
+      }
+      return rv;
+    }
+
+    protected final List<SLanguage> getSelectedLanguages() {
+      final IntStream selectedRows = IntStream.of(myUsedLangsTable.getSelectedRows());
+      return toLanguages(selectedRows.mapToObj(myUsedLangsTableModel::getValueAt).collect(Collectors.toList()));
     }
   }
 

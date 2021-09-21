@@ -33,7 +33,6 @@ import jetbrains.mps.smodel.loading.UpdateModeSupport;
 import jetbrains.mps.smodel.nodeidmap.INodeIdToNodeMap;
 import jetbrains.mps.smodel.nodeidmap.UniversalOptimizedNodeIdMap;
 import jetbrains.mps.util.StatefulUpdate;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -751,7 +750,7 @@ public class SModel implements SModelData, UpdateModeSupport {
    * for clients of #getAllImportElements()
    */
   @NotNull
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   public ImplicitImportsLegacyHolder getImplicitImportsSupport() {
     if (myLegacyImplicitImports == null) {
       myLegacyImplicitImports = new ImplicitImportsLegacyHolder(this);
@@ -763,8 +762,7 @@ public class SModel implements SModelData, UpdateModeSupport {
    * @deprecated though it's our internal API, there's 1 use in mbeddr of this exact method we need to fix first.
    * Once mbeddr use and 2 uses in our model persistence gone, remove the method
    */
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public List<SModuleReference> engagedOnGenerationLanguages() {
     return new SModelLegacy(this).engagedOnGenerationLanguages();
   }

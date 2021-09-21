@@ -24,8 +24,10 @@ import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.smodel.resources.TResource;
+import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.internal.make.runtime.util.DeltaReconciler;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.make.script.IFeedback;
@@ -181,20 +183,20 @@ public class Sample_Facet extends IFacet.Stub {
         @Override
         public IResult execute(final Iterable<IResource> rawInput, final IJobMonitor monitor, final IPropertiesAccessor pa, @NotNull final ProgressMonitor progressMonitor) {
           Iterable<IResource> _output_kf1bs5_a0b = null;
-          final Iterable<TResource> input = (Iterable<TResource>) (Iterable) rawInput;
+          final Iterable<DResource> input = (Iterable<DResource>) (Iterable) rawInput;
           switch (0) {
             case 0:
-              for (IResource resource : input) {
-                TResource tres = (TResource) resource;
-                new DeltaReconciler(tres.delta()).visitAll(new FilesDelta.Visitor() {
-                  @Override
-                  public boolean acceptWritten(IFile file) {
-                    monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf("written file: " + file)));
-                    return true;
-                  }
-                });
-                _output_kf1bs5_a0b = Sequence.fromIterable(_output_kf1bs5_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(resource)));
-              }
+              new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
+                public Iterable<IDelta> translate(DResource tres) {
+                  return tres.delta();
+                }
+              })).visitAll(new FilesDelta.Visitor() {
+                @Override
+                public boolean acceptWritten(IFile file) {
+                  monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf("written file: " + file)));
+                  return true;
+                }
+              });
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_kf1bs5_a0b);
@@ -227,11 +229,11 @@ public class Sample_Facet extends IFacet.Stub {
       return true;
     }
     public boolean producesOutput() {
-      return true;
+      return false;
     }
     public Iterable<Class<? extends IResource>> expectedInput() {
       List<Class<? extends IResource>> rv = ListSequence.fromList(new ArrayList<Class<? extends IResource>>());
-      ListSequence.fromList(rv).addElement(TResource.class);
+      ListSequence.fromList(rv).addElement(DResource.class);
       return rv;
     }
     public Iterable<Class<? extends IResource>> expectedOutput() {

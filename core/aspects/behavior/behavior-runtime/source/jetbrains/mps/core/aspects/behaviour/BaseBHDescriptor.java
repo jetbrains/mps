@@ -26,7 +26,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SParameter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.SModelUtil_new;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -72,8 +71,7 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
    * @deprecated shall use no-arg cons instead, and pass BehaviorRegistry through init()
    *  shall survive 2019.2 release to ensure code generated/compiled with previous MPS releases works (ensures binary compatibility)
    */
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   protected BaseBHDescriptor(BehaviorRegistry behaviorRegistry) {
     myBehaviorRegistry = behaviorRegistry;
   }

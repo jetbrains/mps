@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,6 +103,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
@@ -254,7 +255,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       importedModelsTable.setModel(myImportedModels);
 
       ModelTableCellRender cellRender = new ModelTableCellRender(myMPSProject.getRepository());
-      cellRender.addCellState(m -> m == null, DependencyCellState.NOT_AVAILABLE);
+      cellRender.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
       cellRender.addCellState(m -> !VisibilityUtil.isVisible(myModelDescriptor.getModule(), m), DependencyCellState.NOT_IN_SCOPE);
       final Set<SModelReference> actualCrossModelRefs = getActualCrossModelReferences();
       cellRender.addCellState(m -> !actualCrossModelRefs.contains(m.getReference()), DependencyCellState.UNUSED);
@@ -383,12 +384,10 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       return usedInModel;
     }
 
-    protected void findUsages(final Object value) {
+    protected void findUsages(Collection<SLanguage> languages) {
       final SearchScope scope = new ModelsScope(myModelDescriptor);
-      final UsedLangsTableModel.Import entry = (UsedLangsTableModel.Import) value;
-      final SearchQuery query = new SearchQuery(entry.myLanguage != null ? new LanguageHolder(entry.myLanguage) : new ModuleRefHolder(entry.myDevKit), scope);
-      final IResultProvider provider = FindUtils.makeProvider(new LanguageUsagesFinder());
-      // FIXME FindAction below uses slightly different code to perform search, merge. Unwrap devkit here, do not rely on LanguageUsageFinder to do that?
+      final SearchQuery query = new SearchQuery(new GenericHolder<>(languages, "Languages"), scope);
+      final IResultProvider provider = FindUtils.makeProvider(new CompositeFinder(new LanguageUsagesFinder()));
       showUsageImpl(query, provider);
       forceCancelCloseDialog();
     }
@@ -418,7 +417,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
                 PropertiesBundle.message("model.usedlanguages.delete.warningText")) {
               @Override
               public void doViewAction() {
-                findUsages(entry);
+                findUsages(toLanguages(Collections.singleton(entry)));
               }
             };
             viewUsagesDeleteDialog.show();
@@ -431,12 +430,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       decorator.addExtraAction(new FindActionButton(usedLangsTable) {
         @Override
         public void actionPerformed(AnActionEvent e) {
-          final SearchScope scope = new ModelsScope(myModelDescriptor);
-          final List<SLanguage> languages = getSelectedLanguages();
-          final SearchQuery query = new SearchQuery(new GenericHolder<Collection<SLanguage>>(languages, "Languages"), scope);
-          final IResultProvider provider = FindUtils.makeProvider(new CompositeFinder(new LanguageUsagesFinder()));
-          showUsageImpl(query, provider);
-          forceCancelCloseDialog();
+          findUsages(getSelectedLanguages());
         }
       });
 

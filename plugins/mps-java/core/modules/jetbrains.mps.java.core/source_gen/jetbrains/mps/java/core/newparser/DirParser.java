@@ -19,9 +19,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IFileUtil;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.project.SModuleOperations;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
 
@@ -158,22 +159,23 @@ public class DirParser {
         return model;
       }
     }
-    return createModel(fqName);
+    return createModel(new SModelName(fqName));
   }
-  private SModel createModel(String packageName) {
+  private SModel createModel(SModelName packageName) {
     // first check if it is possible
-    if (getRootToCreateModel(packageName) == null) {
+    ModelRoot rootToCreateModel = getRootToCreateModel(packageName);
+    if (rootToCreateModel == null) {
       LOG.error("Cannot create model " + packageName + " in module " + myModule.getModuleName());
       return null;
     }
 
-    SModel modelDescr = SModuleOperations.createModelWithAdjustments(packageName, getRootToCreateModel(packageName));
+    SModel modelDescr = SModuleOperations.createModelWithAdjustments(packageName.getValue(), rootToCreateModel);
     assert modelDescr != null;
 
     return modelDescr;
   }
   @Nullable
-  private ModelRoot getRootToCreateModel(String packageName) {
+  private ModelRoot getRootToCreateModel(SModelName packageName) {
     for (ModelRoot root : Sequence.fromIterable(myModule.getModelRoots())) {
       if (root.canCreateModel(packageName)) {
         return root;

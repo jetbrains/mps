@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.persistence.datasource;
 
-import jetbrains.mps.util.annotation.ToRemove;
 
 import java.net.URL;
 import java.text.MessageFormat;
@@ -26,8 +25,7 @@ import java.text.MessageFormat;
  *
  * Created by apyshkin on 12/27/16.
  */
-@ToRemove(version=2022.2)
-@Deprecated
+@Deprecated(since = "2021.1", forRemoval = true)
 public final class URLNotSupportedException extends Exception {
   public URLNotSupportedException(DataSourceFactoryFromURL factory, URL problemUrl) {
     super(MessageFormat.format("Factory ''{0}'' is not able to construct data source given the ''{1}''", factory, problemUrl));

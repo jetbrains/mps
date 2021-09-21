@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.vfs.refresh;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,8 +38,7 @@ public interface CachingFile extends IFile {
   @Override
   CachingFile getParent();
 
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   @NotNull
   @Override
   CachingFile getDescendant(@NotNull String suffix);

@@ -25,7 +25,6 @@ import jetbrains.mps.smodel.adapter.BootstrapAdapterFactory;
 import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -214,7 +213,7 @@ final class TestModelFactory {
   // FIXME node add/remove operations don't require EditableSModelBase to dispatch events any more, and we may get back SModelBase as superclass
   // however, at the moment, ther are still casts in #clearEditableChanged() and #isEditableChanged and unless we drop these,
   // the class has to be of EditableSModel
-  @ToRemove(version = 3.3)
+  @Deprecated(since = "3.3", forRemoval = true)
   private static class TestModelBase extends EditableSModelBase {
     private final jetbrains.mps.smodel.SModel myModelData;
 

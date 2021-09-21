@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.tests;
 
 import com.intellij.facet.FacetManager;
@@ -34,13 +33,13 @@ import com.intellij.psi.PsiPackage;
 import com.intellij.refactoring.rename.RenameProcessor;
 import com.intellij.testFramework.MapDataContext;
 import com.intellij.testFramework.TestActionEvent;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.actions.MakeDirAModel;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
 import jetbrains.mps.project.LanguageImportHelper.Interaction;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -58,10 +57,12 @@ import java.util.List;
  */
 public class UseLanguageInPackageTest extends DataMPSFixtureTestCase {
   private VirtualFile myPackageDir;
+  private IFile myPackageDir0;
 
   @Override
   protected void postConfigureSourceRoot(IFile sourceRoot) throws IOException {
-    myPackageDir = VfsUtil.createDirectories(sourceRoot.getPath() + "/com/jetbrains/pkg");
+    myPackageDir0 = IFileUtil.getDescendant(sourceRoot, "com/jetbrains/pkg");
+    myPackageDir = VfsUtil.createDirectories(myPackageDir0.getPath());
   }
 
   protected void doTest(Interaction interaction) {
@@ -115,7 +116,7 @@ public class UseLanguageInPackageTest extends DataMPSFixtureTestCase {
 
     // check no model has been created
     getMpsFixture().getModelAccess().runReadAction(() -> {
-      SModel smodel = SModelFileTracker.getInstance(getMpsFixture().getRepository()).findModel(VirtualFileUtils.toIFile(myPackageDir));
+      SModel smodel = SModelFileTracker.getInstance(getMpsFixture().getRepository()).findModel(myPackageDir0);
       assertNull("Model must not have been created under the directory because the action was cancelled", smodel);
     });
   }
@@ -124,7 +125,7 @@ public class UseLanguageInPackageTest extends DataMPSFixtureTestCase {
     doTest(chooseOnlyBaseLanguageInteraction);
 
     getMpsFixture().getModelAccess().runReadAction(() -> {
-      SModel smodel = SModelFileTracker.getInstance(getMpsFixture().getRepository()).findModel(VirtualFileUtils.toIFile(myPackageDir));
+      SModel smodel = SModelFileTracker.getInstance(getMpsFixture().getRepository()).findModel(myPackageDir0);
       assertNotNull("Model hasn't been created under the directory", smodel);
       Collection<SLanguage> importedLanguages = ((SModelInternal) smodel).importedLanguageIds();
       assertTrue("Model is expected to have exactly one used language", importedLanguages.size() == 1);

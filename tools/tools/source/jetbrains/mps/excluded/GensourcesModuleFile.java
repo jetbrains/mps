@@ -17,7 +17,6 @@ package jetbrains.mps.excluded;
 
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.containers.MultiMap;
 import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
 import org.jdom.Element;
@@ -136,10 +135,15 @@ class GensourcesModuleFile {
           if (myRegularModuleSources.contains(sourcePath)) {
             continue;
           }
-          String sourceCanonical = new File(sourcePath).getCanonicalPath();
+          final File spFile = new File(sourcePath);
+          String sourceCanonical = spFile.getCanonicalPath();
           assert sourceCanonical.startsWith(dir.getCanonicalPath()) : "module generates files to outside of 'root' folder for it:\n" + module.getModuleDir() + "\ngenerates into\n" + sourcePath;
-          if (new File(sourcePath).exists()) {
-            sourceGen.add(sourcePath);
+          if (spFile.isDirectory()) {
+            if (spFile.list().length > 0) {
+              sourceGen.add(sourcePath);
+            } else {
+              System.out.printf("\tEmpty source location %s, ignored\n", spFile);
+            }
           }
         }
         for (IFile classes : module.getClassGenPaths()) {

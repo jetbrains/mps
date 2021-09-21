@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
   }
 
   /**
-   * XXX [artem] no idea what's the contract of the method in regart to threads, whether it has to be outside of EDT or not.
+   * XXX [artem] no idea what's the contract of the method in regard to threads, whether it has to be outside of EDT or not.
    *     Just copied the code outside of MemManager class, left invocation intact
    */
   @Override

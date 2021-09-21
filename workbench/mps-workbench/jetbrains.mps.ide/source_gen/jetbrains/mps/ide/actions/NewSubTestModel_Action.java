@@ -11,7 +11,6 @@ import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
-import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
@@ -19,13 +18,16 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
 import javax.swing.tree.TreeNode;
+import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.project.SModuleOperations;
 import org.apache.log4j.Level;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import java.util.List;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.ide.ui.tree.SortUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.util.SModelNameComparator;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2721881173282450312", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NewSubTestModel_Action extends BaseAction {
@@ -46,7 +48,7 @@ public class NewSubTestModel_Action extends BaseAction {
     if (!(event.getData(MPSCommonDataKeys.TREE_NODE) instanceof SModelTreeNode)) {
       return false;
     }
-    return !(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().hasStereotype()) && event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModelRoot().canCreateModel(new SModelName(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName(), SModelStereotype.TESTS).getValue());
+    return !(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().hasStereotype()) && event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModelRoot().canCreateModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().withStereotype(SModelStereotype.TESTS));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -107,24 +109,24 @@ public class NewSubTestModel_Action extends BaseAction {
     });
   }
   /*package*/ String getTestModelName(final AnActionEvent event) {
-    StringBuilder builder = new StringBuilder();
     String modelBaseName = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName();
-    builder.append(modelBaseName);
     int testModelCount = 0;
-    List<SModel> models = IterableUtil.asList(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModule().getModels());
-    List<SModel> sortedModels = SortUtil.sortModels(models);
-    for (SModel md : sortedModels) {
-      if (!(SModelStereotype.isTestModel(md))) {
-        continue;
+    Iterable<SModel> allModels = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModule().getModels();
+    List<SModel> testModels = IterableUtil.copyToList(Sequence.fromIterable(allModels).where(new IWhereFilter<SModel>() {
+      public boolean accept(SModel it) {
+        return SModelStereotype.isTestModel(it);
       }
+    }));
+    testModels.sort(new SModelNameComparator());
+    for (SModel md : testModels) {
       String name = (testModelCount == 0 ? modelBaseName : modelBaseName + testModelCount);
       if (name.equals(md.getName().getLongName())) {
         testModelCount++;
       }
     }
     if (testModelCount != 0) {
-      builder.append(testModelCount);
+      return modelBaseName + testModelCount;
     }
-    return builder.toString();
+    return modelBaseName;
   }
 }

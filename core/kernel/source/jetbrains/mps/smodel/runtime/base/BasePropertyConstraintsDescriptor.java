@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDispatchable;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
@@ -45,8 +44,7 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
   /**
    * @deprecated in use by generator code till 2021.1. Keep for at least a year to facilitate transition of compiled code.
    */
-  @Deprecated(forRemoval = true, since = "2021.2")
-  @ToRemove(version = 2021.2)
+  @Deprecated(since = "2021.2", forRemoval = true)
   public BasePropertyConstraintsDescriptor(SProperty property, ConstraintsDescriptor container) {
     this.myProperty = property;
     this.container = container;
@@ -173,8 +171,7 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
   }
 
   @Override
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   public void setValue(SNode node, String value) {
     if (!isSetterDefault()) {
       setterDescriptor.setValue(node, value);
@@ -197,8 +194,7 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDis
     }
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   @Override
   public boolean validateValue(SNode node, String value) {
     if (!isValidatorDefault()) {

@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -29,8 +28,7 @@ import org.jetbrains.mps.openapi.persistence.Memento;
  * @deprecated model root factory will pass module to the constructor of any model root
  * @see org.jetbrains.mps.openapi.persistence.ModelRoot
  */
-@Deprecated
-@ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
 public final class MementoWithFS implements Memento {
   @NotNull
   private final Memento myDelegate;

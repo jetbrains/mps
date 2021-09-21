@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.library;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.roots.OrderRootType;
+import com.intellij.openapi.roots.libraries.ui.OrderRoot;
 import com.intellij.openapi.roots.libraries.ui.OrderRootTypePresentation;
 import com.intellij.openapi.roots.libraries.ui.RootDetector;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -29,8 +29,11 @@ import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.icons.MPSIcons;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -42,6 +45,17 @@ public class ModuleXmlRootDetector extends RootDetector {
   public static final OrderRootType MPS_MODULE_XML = new OrderRootType("MPS_MODULE_XML") {
   };
   private static final ModuleXmlRootDetector INSTANCE = new ModuleXmlRootDetector();
+
+  /**
+   * I don't buy the idea of dedicated OrderRootType to keep information about MPS modules associated
+   * with IDEA library. To me, LibraryEx.getProperties():LibraryProperties looks much more appealing.
+   * My idea is to keep SModuleReference(s) in properties, so that there's no need to care about module descriptor file at all.
+   * However, until I get to VirtualFileUtils.getOrCreateVirtualFile() refactoring, keep it the way it
+   * was, just under a single point of access.
+   */
+  /*package*/ static OrderRoot asOrderRoot(AbstractModule mpsModule) {
+    return new OrderRoot(VirtualFileUtils.getOrCreateVirtualFile(mpsModule.getDescriptorFile()), ModuleXmlRootDetector.MPS_MODULE_XML, false);
+  }
 
   protected ModuleXmlRootDetector() {
     super(MPS_MODULE_XML, false, MPSBundle.message("mps.module.xml.root.type"));
@@ -55,7 +69,10 @@ public class ModuleXmlRootDetector extends RootDetector {
 
     // Take MPSCoreComponent from idea.Application here to access Platform for ModulesMiner purposes
     MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
-    final Collection<ModuleHandle> collectedModules = new ModulesMiner(mpsCore.getPlatform()).collectModules(VirtualFileUtils.toIFile(rootCandidate)).getCollectedModules();
+    VFSManager vfsManager = mpsCore.getPlatform().findComponent(VFSManager.class);
+    // likely, need IFile based on IdeaFileSystem, see puzzling "== fs" check in filterRootsWithLoadedModules, below
+    IFile mpsFile = vfsManager.getFileSystem(VFSManager.FILE_FS).getFile(rootCandidate.getPath());
+    final Collection<ModuleHandle> collectedModules = new ModulesMiner(mpsCore.getPlatform()).collectModules(mpsFile).getCollectedModules();
     final MPSModuleRepository deploymentRepo = mpsCore.getPlatform().findComponent(MPSModuleRepository.class);
     if (deploymentRepo == null) {
       return Collections.emptyList();
@@ -73,6 +90,7 @@ public class ModuleXmlRootDetector extends RootDetector {
       // need only loaded modules
       // we may want loading in the future, but the time has not come yet
       if (handle.getDescriptor() != null && handle.getDescriptor().getModuleReference().resolve(deploymentRepo) != null) {
+        // XXX why not fs.findFileByPath(handle.getFile().getPath())?! Why this odd == fs check?
         VirtualFile ideaFile = VirtualFileUtils.getOrCreateVirtualFile(handle.getFile());
         // we compare file system since idea has been very, very bad:( See DetectedRootsChooserDialog.createTreeTable
         // problem in VfsUtilCore.getRelativePath

@@ -10,6 +10,7 @@ import jetbrains.mps.build.ant.ModuleJarDataType;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
+import org.apache.tools.ant.Project;
 
 @GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class GenerateTask extends MpsLoadTask {
@@ -69,5 +70,12 @@ public class GenerateTask extends MpsLoadTask {
   }
   public void setTargetJavaVersion(String targetJavaVersion) {
     myJavaCompilerProperties.setTargetJavaVersion(targetJavaVersion);
+  }
+  public void setMessageLevel(String level) {
+    if ("info".equalsIgnoreCase(level) || "warn".equalsIgnoreCase(level)) {
+      myGenProps.setMessageLevel(level);
+      return;
+    }
+    log(String.format("Unknown message level '%s', ignored", level), Project.MSG_WARN);
   }
 }

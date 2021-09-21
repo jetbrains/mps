@@ -17,7 +17,6 @@ package jetbrains.mps.ide.ui.tree;
 
 import jetbrains.mps.util.SModelNameComparator;
 import jetbrains.mps.util.SModuleNameComparator;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -29,8 +28,7 @@ import java.util.List;
 /**
  * @deprecated extract comparators, use them directly where needed and get rid of this class
  */
-@Deprecated
-@ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
 public class SortUtil {
   // in use by mbeddr, targetchooser
   public static List<SModel> sortModels(List<SModel> modelDescriptors) {

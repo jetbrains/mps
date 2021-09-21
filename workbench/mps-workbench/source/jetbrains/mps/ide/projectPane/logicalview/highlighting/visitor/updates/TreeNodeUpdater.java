@@ -21,7 +21,6 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.CancellableReadAction;
 import jetbrains.mps.util.Pair;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.apache.log4j.Logger;
 
@@ -114,8 +113,7 @@ public final class TreeNodeUpdater {
    *             element properties already updated.
    *             XXX can remove it right away, as mbeddr got their own outdated copy, and no clients are expected to plug into this updater.
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public void addUpdate(MPSTreeNode node, NodeUpdate r) {
     if (!r.needed(node)) {
       return;

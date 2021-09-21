@@ -17,7 +17,6 @@ package jetbrains.mps.module;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSModuleClassLoader;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -104,8 +103,7 @@ public interface ReloadableModule extends SModule {
    * @deprecated use {@link #getClassLoader0()}
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 192)
+@Deprecated(since = "192", forRemoval = true)
   default ClassLoader getClassLoader() {
     return getClassLoader0();
   }
@@ -135,8 +133,7 @@ public interface ReloadableModule extends SModule {
    * @see jetbrains.mps.project.Solution
    * @deprecated bad naming, use #canLoadClasses or sometimes it is more convenient to use getStatus#isDeployed
    */
-  @Deprecated
-  @ToRemove(version = 191)
+@Deprecated(since = "191", forRemoval = true)
   default boolean willLoad() {
     return true;
   }

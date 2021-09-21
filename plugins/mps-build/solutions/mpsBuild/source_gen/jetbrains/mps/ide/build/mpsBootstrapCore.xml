@@ -6,7 +6,7 @@
   <property name="version.major" value="2021" />
   <property name="version.minor" value="2" />
   <property name="version.bugfixNr" value="" />
-  <property name="version.eap" value=" EAP" />
+  <property name="version.eap" value="" />
   <property name="version" value="${version.major}.${version.minor}${version.bugfixNr}${version.eap}" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
@@ -405,6 +405,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -502,6 +503,7 @@
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -606,6 +608,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -690,6 +693,7 @@
           <module ref="34e84b8f-afa8-4364-abcd-a279fddddbe7(jetbrains.mps.editor.runtime)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
@@ -779,6 +783,7 @@
           <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="847a3235-09f9-403c-b6a9-1c294a212e92(Ant)" kind="cl" />
           <module ref="3669929d-7269-4de9-a160-f80b04ef909d(DiffUtils)" kind="cl" />
@@ -862,6 +867,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
@@ -976,15 +982,18 @@
       <module namespace="jetbrains.mps.make.facets" type="solution" uuid="f8e20673-3f65-44e9-84c0-c4a4b6ede37e">
         <dependencies>
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
           <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
           <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
           <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
           <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
-          <module ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd(MPS.Generator)" kind="cl" />
-          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
-          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
           <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
           <module ref="982eb8df-2c96-4bd7-9963-11712ea622e5(jetbrains.mps.lang.resources)" kind="cl" />
           <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="cl" />
@@ -996,20 +1005,34 @@
           <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:696c1165-4a59-463b-bc5d-902caab85dd0:jetbrains.mps.make.facet" />
           <language id="l:95f8a3e6-f994-4ca0-a65e-763c9bae2d3b:jetbrains.mps.make.script" />
         </uses>
-        <library jar="/lib/mps-core.jar" />
-        <sources jar="." descriptor="jetbrains.mps.make.facets.msd" />
+        <classpath>
+          <entry path="." />
+        </classpath>
+        <sources jar="jetbrains.mps.make.facets-src.jar" descriptor="jetbrains.mps.make.facets.msd" />
       </module>
     </echoxml>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/core-make-runtime-solutions-jetbrains.mps.make.facets-models">
-      <fileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/models" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.facets.jar" duplicate="preserve">
-      <zipfileset file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/jetbrains.mps.make.facets.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-make-runtime-solutions-jetbrains.mps.make.facets-models" prefix="module/models" />
+      <fileset dir="${build.tmp}/java/out/jetbrains.mps.make.facets" />
+      <fileset dir="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.make.facets.jar" />
+    </jar>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-make-solutions-jetbrains.mps.make.facets-models">
+      <fileset dir="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.facets-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/jetbrains.mps.make.facets.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-make-solutions-jetbrains.mps.make.facets-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.make.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.make.jar/META-INF" />
@@ -1021,6 +1044,7 @@
           <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
           <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
           <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -1036,6 +1060,7 @@
           <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
           <language id="l:696c1165-4a59-463b-bc5d-902caab85dd0:jetbrains.mps.make.facet" />
         </uses>
         <library jar="/lib/mps-core.jar" />
@@ -1319,6 +1344,7 @@
           <module ref="34e84b8f-afa8-4364-abcd-a279fddddbe7(jetbrains.mps.editor.runtime)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
@@ -2237,7 +2263,6 @@
           <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
           <module ref="20351dc3-a2df-46f5-b667-fc9adab1f1c9(jetbrains.mps.make)" kind="cl" />
-          <module ref="f8e20673-3f65-44e9-84c0-c4a4b6ede37e(jetbrains.mps.make.facets)" kind="cl" />
           <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="cl" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="cl" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="cl" />
@@ -3169,6 +3194,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -3821,6 +3847,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -5275,6 +5302,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
@@ -6228,6 +6256,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
@@ -6954,6 +6983,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
@@ -7142,6 +7172,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
@@ -7349,6 +7380,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -8059,6 +8091,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
@@ -8707,6 +8740,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -9054,6 +9088,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="cl" />
@@ -10090,6 +10125,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
@@ -10295,6 +10331,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -10475,6 +10512,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
@@ -10631,6 +10669,7 @@
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="98b3b6eb-9d60-4e29-9afb-762ac8948292(jetbrains.mps.ide.refactoring.platform)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
@@ -10923,6 +10962,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -11925,6 +11965,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -12101,6 +12142,7 @@
           <module ref="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -12207,6 +12249,7 @@
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="rt" />
           <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
           <module ref="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt" />
           <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
@@ -15141,7 +15184,6 @@
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
-          <language id="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
           <language id="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" />
@@ -16192,6 +16234,7 @@
           <module ref="23949432-aaff-4c03-b7da-26e4e956ccea(jetbrains.mps.baseLanguage.regexp.runtime)" kind="rt" />
           <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
           <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
@@ -16272,7 +16315,7 @@
     <delete dir="${build.layout}" />
   </target>
   
-  <target name="compileJava" depends="java.compile.scripts-runtime, java.compile.pattern-runtime, java.compile.dataflow-rt, java.compile.mps-typesystem, java.compile.aux-runtimes, java.compile.java.modules.cycle.1, java.compile.mps-make-rt, java.compile.kernel-resources, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.feedback-api, java.compile.messages-api, java.compile.messages-for-rules, java.compile.messages-for-structure, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-migration, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editing, java.compile.mps-environment, java.compile.mps-tool, java.compile.platform, java.compile.idea-platform, java.compile.vfs-tracking, java.compile.mps-platform, java.compile.mps-ui, java.compile.mps-icons, java.compile.mps-debugger, java.compile.mps-editor, java.compile.mps-test, java.compile.jetbrains.mps.build.mps.runner.runtime, java.compile.java.modules.cycle.2, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage#1129914002933, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.closures#1199623535494, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.collections#1151699677197, java.compile.jetbrains.mps.baseLanguageInternal, java.compile.jetbrains.mps.baseLanguageInternal#1238251529692, java.compile.jetbrains.mps.baseLanguage.blTypes, java.compile.jetbrains.mps.baseLanguage.checkedDots, java.compile.jetbrains.mps.baseLanguage.checkedDots#4549711462050000009, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.classifiers#1205839057922, java.compile.jetbrains.mps.baseLanguage.constructors, java.compile.jetbrains.mps.baseLanguage.constructors#4413962600136203329, java.compile.jetbrains.mps.baseLanguage.javadoc, java.compile.jetbrains.mps.baseLanguage.jdk7, java.compile.jetbrains.mps.baseLanguage.jdk7#616711547384942258, java.compile.jetbrains.mps.baseLanguage.jdk8, java.compile.jetbrains.mps.baseLanguage.methodReferences, java.compile.jetbrains.mps.baseLanguage.methodReferences.generator, java.compile.jetbrains.mps.baseLanguage.logging, java.compile.jetbrains.mps.baseLanguage.logging#1167240554582, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.overloadedOperators, java.compile.jetbrains.mps.baseLanguage.overloadedOperators#6677452554239623057, java.compile.jetbrains.mps.baseLanguage.tuples, java.compile.jetbrains.mps.baseLanguage.tuples#1238919486295, java.compile.jetbrains.mps.baseLanguage.extensionMethods, java.compile.jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146, java.compile.jetbrains.mps.baseLanguage.regexp, java.compile.jetbrains.mps.baseLanguage.regexp#1174510748147, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.baseLanguage.builders, java.compile.jetbrains.mps.baseLanguage.builders#7057666463730688471, java.compile.jetbrains.mps.baseLanguage.varVariable, java.compile.jetbrains.mps.baseLanguage.varVariable#8067700594454597207, java.compile.jetbrains.mps.baseLanguage.doubleDispatch, java.compile.jetbrains.mps.baseLanguage.doubleDispatch#4496691318496554192, java.compile.jetbrains.mps.lang.feedback, java.compile.jetbrains.mps.lang.feedback#01, java.compile.jetbrains.mps.lang.feedback.messages, java.compile.jetbrains.mps.lang.feedback.messages#01, java.compile.jetbrains.mps.lang.messages, java.compile.jetbrains.mps.lang.messages#8657450212265151934, java.compile.jetbrains.mps.lang.feedback.problem, java.compile.jetbrains.mps.lang.feedback.problem#01, java.compile.jetbrains.mps.lang.feedback.problem.childAndProp, java.compile.jetbrains.mps.lang.feedback.problem.childAndProp#01, java.compile.jetbrains.mps.lang.feedback.problem.failingRule, java.compile.jetbrains.mps.lang.feedback.problem.failingRule#01, java.compile.jetbrains.mps.lang.feedback.problem.scopes, java.compile.jetbrains.mps.lang.feedback.problem.scopes#01, java.compile.jetbrains.mps.lang.feedback.problem.structural, java.compile.jetbrains.mps.lang.feedback.problem.structural#01, java.compile.jetbrains.mps.lang.feedback.skeleton, java.compile.jetbrains.mps.lang.feedback.skeleton#01, java.compile.jetbrains.mps.lang.constraints.msg.specification, java.compile.java.modules.cycle.3, java.compile.jetbrains.mps.lang.context, java.compile.jetbrains.mps.lang.context#01, java.compile.jetbrains.mps.lang.context.defs, java.compile.java.modules.cycle.4, java.compile.jetbrains.mps.lang.context.defs#01, java.compile.jetbrains.mps.lang.dataFlow.analyzers, java.compile.java.modules.cycle.5, java.compile.jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054, java.compile.jetbrains.mps.analyzers.runtime, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.core#9100558062448742579, java.compile.jetbrains.mps.lang.actions, java.compile.jetbrains.mps.lang.actions#1154466409006, java.compile.jetbrains.mps.lang.behavior, java.compile.jetbrains.mps.lang.behavior#1225195312923, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.constraints#1147476727047, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules#01, java.compile.jetbrains.mps.lang.rulesAndMessages, java.compile.jetbrains.mps.lang.rulesAndMessages#01, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, java.compile.jetbrains.mps.lang.dataFlow, java.compile.jetbrains.mps.lang.dataFlow#1206455293228, java.compile.jetbrains.mps.lang.editor, java.compile.jetbrains.mps.lang.editor#1129914002149, java.compile.jetbrains.mps.lang.editor.imageGen, java.compile.jetbrains.mps.lang.editor.imageGen#3245637733310290135, java.compile.jetbrains.mps.lang.editor.menus.extras, java.compile.jetbrains.mps.lang.editor.menus.extras#2926686622729974589, java.compile.jetbrains.mps.lang.editor.menus.extras.runtime, java.compile.jetbrains.mps.lang.extension, java.compile.jetbrains.mps.lang.extension#3729007189729193566, java.compile.jetbrains.mps.lang.findUsages, java.compile.jetbrains.mps.lang.findUsages#1197044805809, java.compile.jetbrains.mps.lang.aspect, java.compile.jetbrains.mps.lang.aspect#3274906159125927726, java.compile.jetbrains.mps.lang.util.order, java.compile.jetbrains.mps.lang.util.order#174635545557533742, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.java.modules.cycle.6, java.compile.jetbrains.mps.lang.generator.generationContext, java.compile.jetbrains.mps.lang.generator.generationContext#1216862161405, java.compile.jetbrains.mps.lang.generator.generationParameters, java.compile.jetbrains.mps.lang.generator.generationParameters#650531548512001931, java.compile.jetbrains.mps.lang.generator, java.compile.jetbrains.mps.lang.generator#1167163152317, java.compile.jetbrains.mps.lang.generator.plan, java.compile.jetbrains.mps.lang.intentions, java.compile.jetbrains.mps.lang.intentions#1192798684353, java.compile.jetbrains.mps.baseLanguage.lightweightdsl, java.compile.jetbrains.mps.baseLanguage.lightweightdsl#3751132065236752909, java.compile.jetbrains.mps.lang.migration, java.compile.jetbrains.mps.lang.migration#3735414794051522719, java.compile.jetbrains.mps.lang.pattern, java.compile.jetbrains.mps.lang.pattern#1174810948060, java.compile.jetbrains.mps.lang.plugin, java.compile.jetbrains.mps.lang.plugin#1203080439937, java.compile.jetbrains.mps.lang.checkedName, java.compile.jetbrains.mps.lang.checkedName#4844813484172930521, java.compile.jetbrains.mps.lang.access, java.compile.jetbrains.mps.lang.access#8974276187400410207, java.compile.jetbrains.mps.lang.resources, java.compile.jetbrains.mps.lang.resources#8974276187400288250, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.quotation, java.compile.jetbrains.mps.lang.quotation#1196351859310, java.compile.jetbrains.mps.lang.refactoring, java.compile.jetbrains.mps.lang.refactoring#1189697379687, java.compile.jetbrains.mps.refactoring.participant, java.compile.jetbrains.mps.lang.script, java.compile.jetbrains.mps.lang.script#1172274134493, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.sharedConcepts#1161623873951, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.smodel#1139186730696, java.compile.jetbrains.mps.lang.slanguage, java.compile.jetbrains.mps.lang.slanguage#8149169565821881093, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.structure#1170324972255, java.compile.jetbrains.mps.lang.textGen, java.compile.jetbrains.mps.lang.textGen#1233678176149, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.typesystem, java.compile.jetbrains.mps.lang.typesystem#1174411220599, java.compile.jetbrains.mps.lang.scopes, java.compile.jetbrains.mps.lang.scopes#8077936094962908999, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query, java.compile.jetbrains.mps.lang.smodel.query#5336086527852811409, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.core.xml, java.compile.jetbrains.mps.core.xml.sax, java.compile.jetbrains.mps.core.xml.sax#2264311582634171386, java.compile.jetbrains.mps.lang.text, java.compile.java.modules.cycle.7, java.compile.jetbrains.mps.make.facet, java.compile.java.modules.cycle.8, java.compile.jetbrains.mps.make.facet#5086995156117116954, java.compile.jetbrains.mps.make.script, java.compile.jetbrains.mps.make.script#4629164904928166564, java.compile.jetbrains.mps.tool.gentest, java.compile.jetbrains.mps.make.reduced, java.compile.jetbrains.mps.lang.makeup, java.compile.jetbrains.mps.execution.util" />
+  <target name="compileJava" depends="java.compile.scripts-runtime, java.compile.pattern-runtime, java.compile.dataflow-rt, java.compile.mps-typesystem, java.compile.aux-runtimes, java.compile.java.modules.cycle.1, java.compile.mps-make-rt, java.compile.kernel-resources, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.feedback-api, java.compile.messages-api, java.compile.messages-for-rules, java.compile.messages-for-structure, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-migration, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editing, java.compile.mps-environment, java.compile.mps-tool, java.compile.platform, java.compile.idea-platform, java.compile.vfs-tracking, java.compile.mps-platform, java.compile.mps-ui, java.compile.mps-icons, java.compile.mps-debugger, java.compile.mps-editor, java.compile.mps-test, java.compile.jetbrains.mps.build.mps.runner.runtime, java.compile.java.modules.cycle.2, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage#1129914002933, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.closures#1199623535494, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.collections#1151699677197, java.compile.jetbrains.mps.baseLanguageInternal, java.compile.jetbrains.mps.baseLanguageInternal#1238251529692, java.compile.jetbrains.mps.baseLanguage.blTypes, java.compile.jetbrains.mps.baseLanguage.checkedDots, java.compile.jetbrains.mps.baseLanguage.checkedDots#4549711462050000009, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.classifiers#1205839057922, java.compile.jetbrains.mps.baseLanguage.constructors, java.compile.jetbrains.mps.baseLanguage.constructors#4413962600136203329, java.compile.jetbrains.mps.baseLanguage.javadoc, java.compile.jetbrains.mps.baseLanguage.jdk7, java.compile.jetbrains.mps.baseLanguage.jdk7#616711547384942258, java.compile.jetbrains.mps.baseLanguage.jdk8, java.compile.jetbrains.mps.baseLanguage.methodReferences, java.compile.jetbrains.mps.baseLanguage.methodReferences.generator, java.compile.jetbrains.mps.baseLanguage.logging, java.compile.jetbrains.mps.baseLanguage.logging#1167240554582, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.overloadedOperators, java.compile.jetbrains.mps.baseLanguage.overloadedOperators#6677452554239623057, java.compile.jetbrains.mps.baseLanguage.tuples, java.compile.jetbrains.mps.baseLanguage.tuples#1238919486295, java.compile.jetbrains.mps.baseLanguage.extensionMethods, java.compile.jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146, java.compile.jetbrains.mps.baseLanguage.regexp, java.compile.jetbrains.mps.baseLanguage.regexp#1174510748147, java.compile.jetbrains.mps.baseLanguage.regexp.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.baseLanguage.builders, java.compile.jetbrains.mps.baseLanguage.builders#7057666463730688471, java.compile.jetbrains.mps.baseLanguage.varVariable, java.compile.jetbrains.mps.baseLanguage.varVariable#8067700594454597207, java.compile.jetbrains.mps.baseLanguage.doubleDispatch, java.compile.jetbrains.mps.baseLanguage.doubleDispatch#4496691318496554192, java.compile.jetbrains.mps.lang.feedback, java.compile.jetbrains.mps.lang.feedback#01, java.compile.jetbrains.mps.lang.feedback.messages, java.compile.jetbrains.mps.lang.feedback.messages#01, java.compile.jetbrains.mps.lang.messages, java.compile.jetbrains.mps.lang.messages#8657450212265151934, java.compile.jetbrains.mps.lang.feedback.problem, java.compile.jetbrains.mps.lang.feedback.problem#01, java.compile.jetbrains.mps.lang.feedback.problem.childAndProp, java.compile.jetbrains.mps.lang.feedback.problem.childAndProp#01, java.compile.jetbrains.mps.lang.feedback.problem.failingRule, java.compile.jetbrains.mps.lang.feedback.problem.failingRule#01, java.compile.jetbrains.mps.lang.feedback.problem.scopes, java.compile.jetbrains.mps.lang.feedback.problem.scopes#01, java.compile.jetbrains.mps.lang.feedback.problem.structural, java.compile.jetbrains.mps.lang.feedback.problem.structural#01, java.compile.jetbrains.mps.lang.feedback.skeleton, java.compile.jetbrains.mps.lang.feedback.skeleton#01, java.compile.jetbrains.mps.lang.constraints.msg.specification, java.compile.java.modules.cycle.3, java.compile.jetbrains.mps.lang.context, java.compile.jetbrains.mps.lang.context#01, java.compile.jetbrains.mps.lang.context.defs, java.compile.java.modules.cycle.4, java.compile.jetbrains.mps.lang.context.defs#01, java.compile.jetbrains.mps.lang.dataFlow.analyzers, java.compile.java.modules.cycle.5, java.compile.jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054, java.compile.jetbrains.mps.analyzers.runtime, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.core#9100558062448742579, java.compile.jetbrains.mps.lang.actions, java.compile.jetbrains.mps.lang.actions#1154466409006, java.compile.jetbrains.mps.lang.behavior, java.compile.jetbrains.mps.lang.behavior#1225195312923, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.constraints#1147476727047, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules#01, java.compile.jetbrains.mps.lang.rulesAndMessages, java.compile.jetbrains.mps.lang.rulesAndMessages#01, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, java.compile.jetbrains.mps.lang.dataFlow, java.compile.jetbrains.mps.lang.dataFlow#1206455293228, java.compile.jetbrains.mps.lang.editor, java.compile.jetbrains.mps.lang.editor#1129914002149, java.compile.jetbrains.mps.lang.editor.imageGen, java.compile.jetbrains.mps.lang.editor.imageGen#3245637733310290135, java.compile.jetbrains.mps.lang.editor.menus.extras, java.compile.jetbrains.mps.lang.editor.menus.extras#2926686622729974589, java.compile.jetbrains.mps.lang.editor.menus.extras.runtime, java.compile.jetbrains.mps.lang.extension, java.compile.jetbrains.mps.lang.extension#3729007189729193566, java.compile.jetbrains.mps.lang.findUsages, java.compile.jetbrains.mps.lang.findUsages#1197044805809, java.compile.jetbrains.mps.lang.aspect, java.compile.jetbrains.mps.lang.aspect#3274906159125927726, java.compile.jetbrains.mps.lang.util.order, java.compile.jetbrains.mps.lang.util.order#174635545557533742, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.java.modules.cycle.6, java.compile.jetbrains.mps.lang.generator.generationContext, java.compile.jetbrains.mps.lang.generator.generationContext#1216862161405, java.compile.jetbrains.mps.lang.generator.generationParameters, java.compile.jetbrains.mps.lang.generator.generationParameters#650531548512001931, java.compile.jetbrains.mps.lang.generator, java.compile.jetbrains.mps.lang.generator#1167163152317, java.compile.jetbrains.mps.lang.generator.plan, java.compile.jetbrains.mps.lang.intentions, java.compile.jetbrains.mps.lang.intentions#1192798684353, java.compile.jetbrains.mps.baseLanguage.lightweightdsl, java.compile.jetbrains.mps.baseLanguage.lightweightdsl#3751132065236752909, java.compile.jetbrains.mps.lang.migration, java.compile.jetbrains.mps.lang.migration#3735414794051522719, java.compile.jetbrains.mps.lang.pattern, java.compile.jetbrains.mps.lang.pattern#1174810948060, java.compile.jetbrains.mps.lang.plugin, java.compile.jetbrains.mps.lang.plugin#1203080439937, java.compile.jetbrains.mps.lang.checkedName, java.compile.jetbrains.mps.lang.checkedName#4844813484172930521, java.compile.jetbrains.mps.lang.access, java.compile.jetbrains.mps.lang.access#8974276187400410207, java.compile.jetbrains.mps.lang.resources, java.compile.jetbrains.mps.lang.resources#8974276187400288250, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.quotation, java.compile.jetbrains.mps.lang.quotation#1196351859310, java.compile.jetbrains.mps.lang.refactoring, java.compile.jetbrains.mps.lang.refactoring#1189697379687, java.compile.jetbrains.mps.refactoring.participant, java.compile.jetbrains.mps.lang.script, java.compile.jetbrains.mps.lang.script#1172274134493, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.sharedConcepts#1161623873951, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.smodel#1139186730696, java.compile.jetbrains.mps.lang.slanguage, java.compile.jetbrains.mps.lang.slanguage#8149169565821881093, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.structure#1170324972255, java.compile.jetbrains.mps.lang.textGen, java.compile.jetbrains.mps.lang.textGen#1233678176149, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.typesystem, java.compile.jetbrains.mps.lang.typesystem#1174411220599, java.compile.jetbrains.mps.lang.scopes, java.compile.jetbrains.mps.lang.scopes#8077936094962908999, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query, java.compile.jetbrains.mps.lang.smodel.query#5336086527852811409, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.core.xml, java.compile.jetbrains.mps.core.xml.sax, java.compile.jetbrains.mps.core.xml.sax#2264311582634171386, java.compile.jetbrains.mps.lang.text, java.compile.java.modules.cycle.7, java.compile.jetbrains.mps.make.facet, java.compile.java.modules.cycle.8, java.compile.jetbrains.mps.make.facet#5086995156117116954, java.compile.jetbrains.mps.make.script, java.compile.jetbrains.mps.make.script#4629164904928166564, java.compile.jetbrains.mps.tool.gentest, java.compile.jetbrains.mps.make.reduced, java.compile.jetbrains.mps.lang.makeup, java.compile.jetbrains.mps.make.facets, java.compile.jetbrains.mps.execution.util" />
   
   <target name="processResources" />
   
@@ -16418,7 +16461,7 @@
         <module file="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/jetbrains.mps.lang.util.order.mpl" bootstrap="true" />
         <module file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make/jetbrains.mps.make.msd" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/make/languages/facet/jetbrains.mps.make.facet.mpl" bootstrap="true" />
-        <module file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/jetbrains.mps.make.facets.msd" bootstrap="true" />
+        <module file="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/jetbrains.mps.make.facets.msd" bootstrap="true" />
         <module file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.runtime/jetbrains.mps.make.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/make/languages/script/jetbrains.mps.make.script.mpl" bootstrap="true" />
         <module file="${mps_home}/core/project/jetbrains.mps.project.msd" bootstrap="true" />
@@ -16683,7 +16726,6 @@
         <pathelement path="${mps_home}/core/make-runtime/source" />
         <pathelement path="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make/source_gen" />
         <pathelement path="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.runtime/source_gen" />
-        <pathelement path="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/source_gen" />
         <pathelement path="${mps_home}/core/resources/source_gen" />
       </src>
       <classpath>
@@ -16724,7 +16766,6 @@
         <pathelement path="${mps_home}/core/make-runtime/source" />
         <pathelement path="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make/source_gen" />
         <pathelement path="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.runtime/source_gen" />
-        <pathelement path="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
@@ -16760,7 +16801,6 @@
       <fileset dir="${mps_home}/core/make-runtime/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
-      <fileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   
@@ -17871,6 +17911,7 @@
         <path location="${mps_home}/languages/languageDesign/smodel.query/source_gen" />
         <path location="${mps_home}/languages/languageDesign/modelapi/source_gen" />
         <path location="${mps_home}/languages/util/core.text/source_gen" />
+        <path location="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
@@ -24682,7 +24723,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.editor.imageGen" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.editor.imageGen" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.make.facets, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/jetbrains.mps.lang.editor.imageGen/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -24748,6 +24789,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.ecj" />
@@ -30663,7 +30705,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.tool.gentest" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.traceable, java.compile.mps-test, java.compile.mps-tool, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.tool.gentest" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.make.facets, java.compile.mps-test, java.compile.mps-tool, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/make/languages/gentest/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.tool.gentest" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.tool.gentest" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -30725,6 +30767,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor.aspects" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <pathelement path="${build.tmp}/java/out/mps-test" />
         <pathelement path="${build.tmp}/java/out/mps-tool" />
         <fileset file="${lib_ext}/diffutils-1.2.1.jar" />
@@ -30742,7 +30785,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.make.reduced" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.make.reduced" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.make.facets, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/make/languages/reduced/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.make.reduced" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.make.reduced" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -30804,6 +30847,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor.aspects" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.ecj" />
@@ -30816,7 +30860,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.makeup" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.makeup" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.make.facets, fetchDependencies">
     <mkdir dir="${mps_home}/languages/util/makeup/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.makeup" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.makeup" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -30875,6 +30919,7 @@
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor.aspects" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.ecj" />
@@ -30884,6 +30929,75 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.makeup">
       <fileset dir="${mps_home}/languages/util/makeup/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+    </copy>
+  </target>
+  
+  <target name="java.compile.jetbrains.mps.make.facets" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.java.modules.cycle.2, fetchDependencies">
+    <mkdir dir="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/source_gen" />
+    <mkdir dir="${build.tmp}/java/out/jetbrains.mps.make.facets" />
+    <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.make.facets" fork="false" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <path location="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/source_gen" />
+      </src>
+      <classpath>
+        <pathelement path="${build.tmp}/java/out/aux-runtimes" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
+        <pathelement path="${build.tmp}/java/out/dataflow-rt" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
+        <pathelement path="${build.tmp}/java/out/feedback-api" />
+        <pathelement path="${build.tmp}/java/out/idea-platform" />
+        <pathelement path="${build.tmp}/java/out/messages-api" />
+        <pathelement path="${build.tmp}/java/out/messages-for-rules" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
+        <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
+        <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/core-components.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-boot-util.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
+        <pathelement path="${build.tmp}/java/out/mps-editing" />
+        <pathelement path="${build.tmp}/java/out/mps-editor-api" />
+        <pathelement path="${build.tmp}/java/out/mps-editorlang-runtime" />
+        <pathelement path="${build.tmp}/java/out/mps-typesystem" />
+        <pathelement path="${build.tmp}/java/out/mps-editor" />
+        <pathelement path="${build.tmp}/java/out/mps-generator" />
+        <pathelement path="${build.tmp}/java/out/kernel-resources" />
+        <pathelement path="${build.tmp}/java/out/mps-make-rt" />
+        <pathelement path="${build.tmp}/java/out/mps-migration" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
+        <pathelement path="${build.tmp}/java/out/platform" />
+        <pathelement path="${build.tmp}/java/out/mps-environment" />
+        <pathelement path="${build.tmp}/java/out/mps-platform" />
+        <pathelement path="${build.tmp}/java/out/mps-project-check" />
+        <pathelement path="${build.tmp}/java/out/mps-textgen" />
+        <pathelement path="${build.tmp}/java/out/mps-ui" />
+        <pathelement path="${build.tmp}/java/out/pattern-runtime" />
+        <pathelement path="${build.tmp}/java/out/scripts-runtime" />
+        <pathelement path="${build.tmp}/java/out/vfs-tracking" />
+        <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <path refid="path.java.library.idea-libraries" />
+        <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <path refid="path.java.library.ecj" />
+        <pathelement path="${build.tmp}/java.modules.cycle.2" />
+        <path refid="path.jdk.classpath" />
+      </classpath>
+    </javac2>
+    <copy todir="${build.tmp}/java/out/jetbrains.mps.make.facets">
+      <fileset dir="${mps_home}/languages/languageDesign/make/solutions/jetbrains.mps.make.facets/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   

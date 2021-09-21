@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.util.NotNullFactory;
 import com.intellij.openapi.util.NotNullLazyValue;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -32,7 +30,6 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
@@ -44,14 +41,11 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
-
-import java.util.function.Predicate;
 
 /**
  * Created by danilla on 28/10/15.
@@ -90,7 +84,7 @@ public class MakeDirAModel extends NewModelActionBase {
       EditableSModel model = null;
       try {
         SModelName newModelName = new SModelName(myModelPrefix);
-        DataSourceFactoryFromName dataSourceFactory = createDataSourceFactory(targetFile);
+        DataSourceFactoryFromName dataSourceFactory = createDataSourceFactory(mpsProject.getFileSystem().fromVirtualFile(targetFile));
         ModelFactory modelFactory = mpsProject.getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
         model = (EditableSModel) myModelRoot.createModel(newModelName, mySourceRoot, dataSourceFactory, modelFactory);
       } catch (ModelCannotBeCreatedException ex) {
@@ -111,7 +105,7 @@ public class MakeDirAModel extends NewModelActionBase {
   }
 
   @NotNull
-  private DataSourceFactoryFromName createDataSourceFactory(VirtualFile targetFile) {
+  private DataSourceFactoryFromName createDataSourceFactory(final IFile targetFolder) {
     return new DataSourceFactoryFromName() {
       @NotNull
       @Override
@@ -122,8 +116,7 @@ public class MakeDirAModel extends NewModelActionBase {
       @NotNull
       @Override
       public DataSource create(@NotNull SModelName modelName, @NotNull SourceRoot sourceRoot) {
-        IFile folder = VirtualFileUtils.toIFile(targetFile);
-        return new FilePerRootDataSource(folder);
+        return new FilePerRootDataSource(targetFolder);
       }
     };
   }

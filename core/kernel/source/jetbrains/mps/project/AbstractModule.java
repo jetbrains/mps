@@ -28,7 +28,6 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import org.apache.log4j.LogManager;
@@ -760,8 +759,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
    * This method is no longer used in MPS, do not resurrect its uses. Although it's not part of openapi, AbstractModule is often deemed as 'almost api',
    * left for one release.
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+@Deprecated(since = "3.5", forRemoval = true)
   public IFile getOutputPath() {
     String outputPath = ProjectPathUtil.getGeneratorOutputPath(getModuleDescriptor());
     return outputPath == null ? null : getFileSystem().getFile(outputPath);
@@ -778,9 +776,8 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
    * @param check is whether to show error for not found version
    * @deprecated hack for migration, will be gone after 3.4
    */
-  @ToRemove(version = 3.4)
+  @Deprecated(since = "3.4", forRemoval = true)
   @Hack
-  @Deprecated
   public int getUsedLanguageVersion(@NotNull SLanguage usedLanguage, boolean check) {
     ModuleDescriptor moduleDescriptor = getModuleDescriptor();
     if (!checkDescriptorNotNull(moduleDescriptor)) {

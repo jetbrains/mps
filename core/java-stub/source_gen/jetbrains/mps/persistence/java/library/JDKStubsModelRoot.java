@@ -55,6 +55,12 @@ public class JDKStubsModelRoot extends ModelRootBase {
   public SModel getModel(@NotNull SModelId id) {
     return null;
   }
+
+  @Override
+  public boolean canCreateModels() {
+    return false;
+  }
+
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
@@ -80,15 +86,6 @@ public class JDKStubsModelRoot extends ModelRootBase {
     });
     res.append("]");
     return res.toString();
-  }
-  @Override
-  public boolean canCreateModel(@NotNull String modelName) {
-    return false;
-  }
-  @Nullable
-  @Override
-  public SModel createModel(@NotNull String modelName) {
-    throw new UnsupportedOperationException();
   }
   @Override
   public void save(@NotNull Memento memento) {

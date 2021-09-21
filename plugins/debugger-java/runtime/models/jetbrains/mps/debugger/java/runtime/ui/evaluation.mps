@@ -7,7 +7,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="tpru" ref="r:00000000-0000-4000-0000-011c895904a6(jetbrains.mps.ide.embeddableEditor)" />
@@ -608,19 +608,6 @@
     <node concept="3uibUv" id="6ra8WUbIhqN" role="1zkMxy">
       <ref role="3uigEE" node="6ra8WUbIhqG" resolve="EvaluationUi" />
     </node>
-    <node concept="312cEg" id="N5Kj01sBBo" role="jymVt">
-      <property role="TrG5h" value="myTabbedPane" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="N5Kj01sBBp" role="1B3o_S" />
-      <node concept="3uibUv" id="N5Kj01sBBq" role="1tU5fm">
-        <ref role="3uigEE" to="dxuu:~JTabbedPane" resolve="JTabbedPane" />
-      </node>
-      <node concept="2ShNRf" id="N5Kj01sBBr" role="33vP2m">
-        <node concept="1pGfFk" id="N5Kj01sBBs" role="2ShVmc">
-          <ref role="37wK5l" to="dxuu:~JTabbedPane.&lt;init&gt;()" resolve="JTabbedPane" />
-        </node>
-      </node>
-    </node>
     <node concept="312cEg" id="N5Kj01sBBz" role="jymVt">
       <property role="TrG5h" value="myEditor" />
       <property role="3TUv4t" value="false" />
@@ -628,13 +615,6 @@
         <ref role="3uigEE" to="tpru:1xyr94TevzE" resolve="EmbeddableEditor" />
       </node>
       <node concept="3Tm6S6" id="N5Kj01sBB_" role="1B3o_S" />
-    </node>
-    <node concept="312cEg" id="N5Kj01sBBA" role="jymVt">
-      <property role="TrG5h" value="myResultEditor" />
-      <node concept="3uibUv" id="6kErf9mSKn0" role="1tU5fm">
-        <ref role="3uigEE" to="tpru:1xyr94TevzE" resolve="EmbeddableEditor" />
-      </node>
-      <node concept="3Tm6S6" id="N5Kj01sBBB" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="N5Kj01sBBD" role="jymVt">
       <property role="TrG5h" value="myEvaluationModel" />
@@ -910,48 +890,12 @@
           </node>
         </node>
         <node concept="3clFbH" id="6klnWqotMOy" role="3cqZAp" />
-        <node concept="3clFbJ" id="6klnWqotMOz" role="3cqZAp">
-          <node concept="3clFbS" id="6klnWqotMO$" role="3clFbx">
-            <node concept="3clFbF" id="6klnWqotMO_" role="3cqZAp">
-              <node concept="2OqwBi" id="6klnWqotMOA" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeuLa3" role="2Oq$k0">
-                  <ref role="3cqZAo" node="N5Kj01sBBo" resolve="myTabbedPane" />
-                </node>
-                <node concept="liA8E" id="6klnWqotMOC" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JTabbedPane.addTab(java.lang.String,java.awt.Component)" resolve="addTab" />
-                  <node concept="Xl_RD" id="6klnWqotMOD" role="37wK5m">
-                    <property role="Xl_RC" value="Main" />
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagT$PF" role="37wK5m">
-                    <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
-                  </node>
-                </node>
-              </node>
+        <node concept="3clFbF" id="6klnWqotMON" role="3cqZAp">
+          <node concept="1rXfSq" id="4hiugqyyYh6" role="3clFbG">
+            <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
+            <node concept="37vLTw" id="3GM_nagTvpK" role="37wK5m">
+              <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
             </node>
-            <node concept="3clFbF" id="6klnWqotMOF" role="3cqZAp">
-              <node concept="1rXfSq" id="4hiugqyyYZY" role="3clFbG">
-                <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
-                <node concept="37vLTw" id="2BHiRxeuhT_" role="37wK5m">
-                  <ref role="3cqZAo" node="N5Kj01sBBo" resolve="myTabbedPane" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="9aQIb" id="6klnWqotMOL" role="9aQIa">
-            <node concept="3clFbS" id="6klnWqotMOM" role="9aQI4">
-              <node concept="3clFbF" id="6klnWqotMON" role="3cqZAp">
-                <node concept="1rXfSq" id="4hiugqyyYh6" role="3clFbG">
-                  <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
-                  <node concept="37vLTw" id="3GM_nagTvpK" role="37wK5m">
-                    <ref role="3cqZAo" node="6klnWqotMO8" resolve="splitPane" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="10M0yZ" id="7GZZbkUTOD" role="3clFbw">
-            <ref role="1PxDUh" to="i1lu:7GZZbkP$rA" resolve="Properties" />
-            <ref role="3cqZAo" to="i1lu:7GZZbkPAws" resolve="IS_DEVELOPER_MODE" />
           </node>
         </node>
         <node concept="3clFbH" id="19lgW7GohxO" role="3cqZAp" />

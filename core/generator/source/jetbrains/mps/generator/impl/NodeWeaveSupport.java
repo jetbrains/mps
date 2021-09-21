@@ -21,7 +21,6 @@ import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.textgen.trace.TracingUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,7 +35,7 @@ import java.util.Iterator;
  * @author Artem Tikhomirov
  * @since 3.3
  */
-@ToRemove(version = 0)  // just a gentle reminder to refactor
+@Deprecated(since = "0", forRemoval = true)  // just a gentle reminder to refactor
 public abstract class NodeWeaveSupport implements ApplySink {
   private TemplateContext myTemplateContext;
   private final SNode myContextParentNode;

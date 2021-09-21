@@ -19,7 +19,6 @@ import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -188,8 +187,7 @@ public enum LanguageAspect {
     return res;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.3)
+@Deprecated(since = "3.3", forRemoval = true)
   //not used in MPS
   //use jetbrains.mps.smodel.language.LanguageAspectSupport.getAspectModels()
   public static Collection<SModel> getAspectModels(Language l) {

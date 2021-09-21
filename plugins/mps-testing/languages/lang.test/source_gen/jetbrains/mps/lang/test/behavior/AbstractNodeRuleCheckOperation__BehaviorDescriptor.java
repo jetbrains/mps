@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -39,8 +38,7 @@ public final class AbstractNodeRuleCheckOperation__BehaviorDescriptor extends Ba
   /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository repository, @Nullable ComponentHost host) {
     return AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(__thisNode__, repository, host).isMessageExpected(reportItem);
   }
-  @ToRemove(version = 193)
-  @Deprecated
+  @Deprecated(since = "193", forRemoval = true)
   /*package*/ static void perform_id7jfLc8W1fp$(@NotNull SNode __thisNode__, SNode node) {
     INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(__thisNode__, node, null);
   }

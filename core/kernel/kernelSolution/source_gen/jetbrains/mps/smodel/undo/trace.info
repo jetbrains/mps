@@ -37,13 +37,13 @@
   </root>
   <root nodeRef="r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873621166">
     <file name="DefaultCommand.java">
-      <node id="6200862514489223972" at="20,58,21,22" concept="8" />
-      <node id="6200862514489223652" at="19,0,23,0" concept="0" trace="DefaultCommand#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <scope id="6200862514489223656" at="20,58,21,22" />
-      <scope id="6200862514489223652" at="19,0,23,0">
+      <node id="6200862514489223972" at="18,58,19,22" concept="8" />
+      <node id="6200862514489223652" at="17,0,21,0" concept="0" trace="DefaultCommand#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <scope id="6200862514489223656" at="18,58,19,22" />
+      <scope id="6200862514489223652" at="17,0,21,0">
         <var name="repository" id="6200862514489223710" />
       </scope>
-      <unit id="63618339873621166" at="15,0,24,0" name="jetbrains.mps.smodel.undo.DefaultCommand" />
+      <unit id="63618339873621166" at="14,0,22,0" name="jetbrains.mps.smodel.undo.DefaultCommand" />
     </file>
   </root>
   <root nodeRef="r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873669826">

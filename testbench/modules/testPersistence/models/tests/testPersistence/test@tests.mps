@@ -6,7 +6,7 @@
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="-1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -348,6 +348,7 @@
       <concept id="1678062499342629858" name="jetbrains.mps.lang.smodel.structure.ModuleRefExpression" flags="ng" index="37shsh">
         <child id="1678062499342629861" name="moduleId" index="37shsm" />
       </concept>
+      <concept id="5708036808576088033" name="jetbrains.mps.lang.smodel.structure.Reference_GetResolveInfo" flags="nn" index="1FfNbt" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
       <concept id="1863527487546129879" name="jetbrains.mps.lang.smodel.structure.ModelPointerExpression" flags="ng" index="1Xw6AR">
         <child id="1863527487546132519" name="modelRef" index="1XwpL7" />
@@ -3468,34 +3469,16 @@
         </node>
         <node concept="3vlDli" id="WyclBLM8dw" role="3cqZAp">
           <node concept="2OqwBi" id="WyclBLy9AZ" role="3tpDZB">
-            <node concept="1eOMI4" id="WyclBLy9B0" role="2Oq$k0">
-              <node concept="10QFUN" id="WyclBLy9B1" role="1eOMHV">
-                <node concept="37vLTw" id="WyclBLy9B2" role="10QFUP">
-                  <ref role="3cqZAo" node="WyclBLy9AE" resolve="expectedReference" />
-                </node>
-                <node concept="3uibUv" id="WyclBLy9B3" role="10QFUM">
-                  <ref role="3uigEE" to="w1kc:~SReference" resolve="SReference" />
-                </node>
-              </node>
+            <node concept="37vLTw" id="WyclBLy9B2" role="2Oq$k0">
+              <ref role="3cqZAo" node="WyclBLy9AE" resolve="expectedReference" />
             </node>
-            <node concept="liA8E" id="WyclBLy9B4" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~SReference.getResolveInfo()" resolve="getResolveInfo" />
-            </node>
+            <node concept="1FfNbt" id="2_9uqMUUwbU" role="2OqNvi" />
           </node>
           <node concept="2OqwBi" id="WyclBLy9B5" role="3tpDZA">
-            <node concept="1eOMI4" id="WyclBLy9B6" role="2Oq$k0">
-              <node concept="10QFUN" id="WyclBLy9B7" role="1eOMHV">
-                <node concept="37vLTw" id="WyclBLy9B8" role="10QFUP">
-                  <ref role="3cqZAo" node="WyclBLy9AF" resolve="actualReference" />
-                </node>
-                <node concept="3uibUv" id="WyclBLy9B9" role="10QFUM">
-                  <ref role="3uigEE" to="w1kc:~SReference" resolve="SReference" />
-                </node>
-              </node>
+            <node concept="37vLTw" id="WyclBLy9B8" role="2Oq$k0">
+              <ref role="3cqZAo" node="WyclBLy9AF" resolve="actualReference" />
             </node>
-            <node concept="liA8E" id="WyclBLy9Ba" role="2OqNvi">
-              <ref role="37wK5l" to="w1kc:~SReference.getResolveInfo()" resolve="getResolveInfo" />
-            </node>
+            <node concept="1FfNbt" id="2_9uqMUUFqy" role="2OqNvi" />
           </node>
           <node concept="3_1$Yv" id="WyclBLMHNe" role="3_9lra">
             <node concept="37vLTw" id="WyclBLMRcu" role="3_1BAH">

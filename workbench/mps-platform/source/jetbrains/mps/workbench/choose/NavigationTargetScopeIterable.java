@@ -20,7 +20,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.workbench.NavigationService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -45,8 +44,7 @@ public class NavigationTargetScopeIterable implements Iterable<NavigationTarget>
   /**
    * @deprecated use {@link #NavigationTargetScopeIterable(SearchScope, MPSProject)} instead as we need Project for {@code NavigationParticipant}s
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public NavigationTargetScopeIterable(@NotNull SearchScope scope, @NotNull SRepository repo) {
     myScope = scope;
     final jetbrains.mps.project.Project project = ProjectHelper.getProject(repo);

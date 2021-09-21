@@ -82,7 +82,7 @@ public class ModulesClusterizer {
     ListSequence.fromList(result).addSequence(Sequence.fromIterable(mr2cluster));
 
     if (Sequence.fromIterable(rest).isNotEmpty()) {
-      ListSequence.fromList(result).addElement(new Cluster(rest, ListSequence.fromList(new ArrayList<SLanguage>()), myLanguageRegistry));
+      ListSequence.fromList(result).addElement(new Cluster(rest, ListSequence.fromList(new ArrayList<SLanguage>())));
     }
 
     return result;
@@ -110,7 +110,7 @@ public class ModulesClusterizer {
     return Sequence.fromIterable(mresBuildOrder).select(new ISelector<Iterable<MResource>, Cluster>() {
       public Cluster select(Iterable<MResource> s) {
 
-        return new Cluster(s, allLanguagesToActivateFacets(s, clst), myLanguageRegistry);
+        return new Cluster(s, allLanguagesToActivateFacets(s, clst));
       }
     });
   }
@@ -148,7 +148,7 @@ public class ModulesClusterizer {
         public boolean accept(MResource r) {
           return SetSequence.fromSet(clusterModules).contains(r.module());
         }
-      }), l2af, myLanguageRegistry));
+      }), l2af));
     }
     System.out.println("<<<<");
     return rv;

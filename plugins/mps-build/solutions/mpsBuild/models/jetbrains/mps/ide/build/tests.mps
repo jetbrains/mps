@@ -170,7 +170,6 @@
         <reference id="3189788309731922643" name="language" index="1E1Vl2" />
       </concept>
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
-      <concept id="2105528055260548241" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_FolderWithSources" flags="ng" index="1bldCd" />
       <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
         <property id="1500819558096356884" name="doNotCompile" index="2GAjPV" />
         <child id="5253498789149547825" name="sources" index="3bR31x" />
@@ -179,6 +178,15 @@
       <concept id="5253498789149585690" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule" flags="ng" index="3bR9La">
         <property id="5253498789149547713" name="reexport" index="3bR36h" />
         <reference id="5253498789149547705" name="module" index="3bR37D" />
+      </concept>
+      <concept id="978600701690054692" name="jetbrains.mps.build.mps.structure.GeneratorInternal_String" flags="ng" index="1cIVw3">
+        <property id="978600701690054695" name="path" index="1cIVw0" />
+      </concept>
+      <concept id="7655580649838764660" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleXml" flags="ng" index="1kK7hY">
+        <reference id="7655580649838764661" name="module" index="1kK7hZ" />
+        <child id="7477562766051177430" name="sourceDescriptorFile" index="2JVP1x" />
+        <child id="8488591998064324395" name="classpathEntries" index="3E5mpp" />
+        <child id="506537499308757750" name="sourcesJarLocation" index="3SGgvt" />
       </concept>
       <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
         <child id="763829979718664967" name="files" index="3rtmxm" />
@@ -7966,22 +7974,41 @@
               </node>
             </node>
             <node concept="3981dx" id="6sT62Z6Skh7" role="39821P">
-              <node concept="3_J27D" id="6sT62Z6Skh8" role="Nbhlr">
-                <node concept="3Mxwew" id="6sT62Z6Skh9" role="3MwsjC">
-                  <property role="3MwjfP" value="UtilSolution.jar" />
-                </node>
-              </node>
               <node concept="Saw0i" id="6sT62Z6Skha" role="39821P">
                 <ref role="Saw0g" node="6sT62Z6Skja" resolve="UtilSolution" />
               </node>
-              <node concept="398223" id="6sT62Z6Skhb" role="39821P">
-                <node concept="3_J27D" id="6sT62Z6Skhc" role="Nbhlr">
-                  <node concept="3Mxwew" id="6sT62Z6Skhd" role="3MwsjC">
-                    <property role="3MwjfP" value="modules" />
+              <node concept="398223" id="42$9Ot098s_" role="39821P">
+                <node concept="3_J27D" id="42$9Ot098sB" role="Nbhlr">
+                  <node concept="3Mxwew" id="42$9Ot098sF" role="3MwsjC">
+                    <property role="3MwjfP" value="META-INF" />
                   </node>
                 </node>
-                <node concept="1bldCd" id="6sT62Z6Skhe" role="39821P">
+                <node concept="1kK7hY" id="42$9Ot098sJ" role="39821P">
+                  <ref role="1kK7hZ" node="6sT62Z6Skja" resolve="UtilSolution" />
+                  <node concept="1cIVw3" id="4INM4QAf$hg" role="3E5mpp">
+                    <property role="1cIVw0" value="." />
+                  </node>
+                  <node concept="1cIVw3" id="42$9Ot098tG" role="3SGgvt">
+                    <property role="1cIVw0" value="." />
+                  </node>
+                  <node concept="1cIVw3" id="42$9Ot098tI" role="2JVP1x">
+                    <property role="1cIVw0" value="UtilSolution.msd" />
+                  </node>
+                </node>
+              </node>
+              <node concept="398223" id="42$9Ot098t7" role="39821P">
+                <node concept="3_J27D" id="42$9Ot098t9" role="Nbhlr">
+                  <node concept="3Mxwew" id="42$9Ot098th" role="3MwsjC">
+                    <property role="3MwjfP" value="module" />
+                  </node>
+                </node>
+                <node concept="3$exzU" id="42$9Ot098tE" role="39821P">
                   <ref role="3$exzV" node="6sT62Z6Skja" resolve="UtilSolution" />
+                </node>
+              </node>
+              <node concept="3_J27D" id="6sT62Z6Skh8" role="Nbhlr">
+                <node concept="3Mxwew" id="6sT62Z6Skh9" role="3MwsjC">
+                  <property role="3MwjfP" value="UtilSolution.jar" />
                 </node>
               </node>
             </node>
@@ -7993,16 +8020,6 @@
               </node>
               <node concept="Saw0i" id="6sT62Z6Skhi" role="39821P">
                 <ref role="Saw0g" node="6sT62Z6SkjQ" resolve="TestBehaviorReflective" />
-              </node>
-              <node concept="398223" id="6sT62Z6Skhj" role="39821P">
-                <node concept="3_J27D" id="6sT62Z6Skhk" role="Nbhlr">
-                  <node concept="3Mxwew" id="6sT62Z6Skhl" role="3MwsjC">
-                    <property role="3MwjfP" value="modules" />
-                  </node>
-                </node>
-                <node concept="1bldCd" id="6sT62Z6Skhm" role="39821P">
-                  <ref role="3$exzV" node="6sT62Z6SkjQ" resolve="TestBehaviorReflective" />
-                </node>
               </node>
             </node>
           </node>
@@ -8043,6 +8060,46 @@
           </node>
           <node concept="L2wRC" id="6sT62Z6Skh$" role="39821P">
             <ref role="L2wRA" node="6sT62Z6Skji" resolve="TestBehavior" />
+          </node>
+        </node>
+        <node concept="398223" id="42$9Ot098r1" role="39821P">
+          <node concept="3_J27D" id="42$9Ot098r3" role="Nbhlr">
+            <node concept="3Mxwew" id="42$9Ot098rE" role="3MwsjC">
+              <property role="3MwjfP" value="reflectiveTest" />
+            </node>
+          </node>
+          <node concept="3981dx" id="42$9Ot098tM" role="39821P">
+            <node concept="398223" id="42$9Ot098tN" role="39821P">
+              <node concept="3_J27D" id="42$9Ot098tO" role="Nbhlr">
+                <node concept="3Mxwew" id="42$9Ot098tP" role="3MwsjC">
+                  <property role="3MwjfP" value="META-INF" />
+                </node>
+              </node>
+              <node concept="1kK7hY" id="42$9Ot098tQ" role="39821P">
+                <ref role="1kK7hZ" node="6sT62Z6SkjQ" resolve="TestBehaviorReflective" />
+                <node concept="1cIVw3" id="42$9Ot098tR" role="3SGgvt">
+                  <property role="1cIVw0" value="." />
+                </node>
+                <node concept="1cIVw3" id="42$9Ot098tS" role="2JVP1x">
+                  <property role="1cIVw0" value="TestBehaviorReflective.msd" />
+                </node>
+              </node>
+            </node>
+            <node concept="398223" id="42$9Ot098tT" role="39821P">
+              <node concept="3_J27D" id="42$9Ot098tU" role="Nbhlr">
+                <node concept="3Mxwew" id="42$9Ot098tV" role="3MwsjC">
+                  <property role="3MwjfP" value="module" />
+                </node>
+              </node>
+              <node concept="3$exzU" id="42$9Ot098tW" role="39821P">
+                <ref role="3$exzV" node="6sT62Z6SkjQ" resolve="TestBehaviorReflective" />
+              </node>
+            </node>
+            <node concept="3_J27D" id="42$9Ot098tX" role="Nbhlr">
+              <node concept="3Mxwew" id="42$9Ot098tY" role="3MwsjC">
+                <property role="3MwjfP" value="TestBehaviorReflective.jar" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3_J27D" id="6sT62Z6Skh_" role="Nbhlr">

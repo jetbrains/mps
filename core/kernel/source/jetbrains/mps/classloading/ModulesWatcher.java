@@ -18,7 +18,6 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.classloading.ModuleUpdater.SearchError;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -381,7 +380,7 @@ public class ModulesWatcher {
      * tmp invalid status.
      * the module might be disposed itself or depend on some disposed module ref
      */
-    @ToRemove(version = 0)
+    @Deprecated(since = "0", forRemoval = true)
     SIMPLY_INVALID,
     /**
      * not tracked by ModulesWatcher

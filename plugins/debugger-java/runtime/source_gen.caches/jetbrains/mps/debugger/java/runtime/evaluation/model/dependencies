@@ -52,20 +52,12 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.java.runtime.evaluation.model.EvaluationWithContextContainer">
-    <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />
-    <classNode dependClassName="com.intellij.ide.plugins.PluginManager" />
-    <classNode dependClassName="com.intellij.ide.plugins.PluginManagerCore" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
-    <classNode dependClassName="com.intellij.openapi.util.text.Strings" />
     <classNode dependClassName="com.sun.jdi.InvalidStackFrameException" />
-    <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.nio.file.Path" />
-    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.LinkedHashMap" />
@@ -76,8 +68,6 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId" />
-    <classNode dependClassName="jetbrains.mps.debug.api.Debuggers" />
-    <classNode dependClassName="jetbrains.mps.debugger.java.runtime.JavaDebugger" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.evaluation.container.BaseLanguagesImportHelper" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.evaluation.container.EvaluationModule" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer" />
@@ -86,7 +76,6 @@
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.evaluation.model.VariableDescription" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.state.DebugSession" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.scopes.ModelsScope" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -125,6 +114,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.FindUsagesFacade" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.runtime.evaluation.container.EvaluationContainer" />

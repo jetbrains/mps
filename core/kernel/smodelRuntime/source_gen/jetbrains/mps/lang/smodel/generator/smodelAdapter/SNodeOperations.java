@@ -23,7 +23,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -343,14 +342,14 @@ public class SNodeOperations {
     if (parent == null) {
       return result;
     }
-    if (inclusion) {
-      result.add(node);
-    }
     boolean childFound = false;
     SContainmentLink role = node.getContainmentLink();
     assert role != null;
     for (SNode child : parent.getChildren(role)) {
       if (child == node) {
+        if (inclusion) {
+          result.add(node);
+        }
         childFound = true;
       } else
       if (childFound) {
@@ -507,8 +506,7 @@ public class SNodeOperations {
    * 
    * @deprecated used in generator of deprecated concept only
    */
-  @Deprecated
-  @ToRemove(version = 3.5)
+  @Deprecated(since = "3.5", forRemoval = true)
   public static SNode getConceptDeclaration(SNode node) {
     return (node == null ? null : node.getConcept().getDeclarationNode());
   }
@@ -589,8 +587,11 @@ public class SNodeOperations {
     }
     return concept;
   }
-  @Deprecated
-  @ToRemove(version = 3.4)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "3.4", forRemoval = true)
   public static SNode asConcept(SNode node, SAbstractConcept castTo) {
     if (node == null) {
       return null;

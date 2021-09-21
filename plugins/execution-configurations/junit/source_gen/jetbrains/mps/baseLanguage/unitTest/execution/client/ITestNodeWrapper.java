@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
-import jetbrains.mps.util.annotation.ToRemove;
 
 /**
  * FIXME  external code sometimes wraps access to methods of this class with model read. It's odd an confusing.
@@ -72,8 +71,7 @@ public interface ITestNodeWrapper<N extends SNode> {
    * 
    * @deprecated identical to {@link jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper#getFqName() }
    */
-  @Deprecated
-  @ToRemove(version = 2018.1)
+  @Deprecated(since = "2018.1", forRemoval = true)
   String getCachedFqName();
 
   @NotNull

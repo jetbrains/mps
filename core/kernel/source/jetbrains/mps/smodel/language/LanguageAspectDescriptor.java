@@ -18,7 +18,6 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.aspects.OrderParticipant;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.util.Icon2IconResourceAdapter_Deprecated;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -74,8 +73,7 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
     return null;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   @Nullable
   public Icon getIcon() {
     return null;

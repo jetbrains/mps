@@ -1174,7 +1174,6 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.java.stub.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.kernel.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.lang.makeup.jar" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.persistence.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.project.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.runtime.jar" />

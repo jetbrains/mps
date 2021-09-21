@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,8 +98,13 @@ public abstract class ModelRootBase implements ModelRoot {
   @NotNull
   public abstract Iterable<SModel> loadModels();
 
+  /**
+   * Provides reasonable default implementation based on {@code SModule.isReadOnly()}
+   */
   @Override
   public boolean canCreateModels() {
+    // XXX likely shall move this down the hierarchy, so that all subclasses don't get this default implementation
+    //     as it's much to rare to get MR that is capable to create model than otherwise.
     SModule module = getModule();
     return module != null && !module.isReadOnly();
   }

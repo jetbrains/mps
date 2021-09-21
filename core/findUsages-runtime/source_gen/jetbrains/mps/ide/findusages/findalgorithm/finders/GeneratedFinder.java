@@ -20,7 +20,6 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
-import jetbrains.mps.util.annotation.ToRemove;
 import java.util.Collections;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -92,9 +91,10 @@ public abstract class GeneratedFinder implements IInterfacedFinder {
   /**
    * I suggest #getXXX method to return smth instead of this
    * @deprecated
+   * 
+   * @deprecated 
    */
-  @ToRemove(version = 2018.3)
-  @Deprecated
+  @Deprecated(since = "2018.3", forRemoval = true)
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
     _results.add(node);
   }

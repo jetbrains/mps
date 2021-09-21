@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -62,8 +61,7 @@ public class BareNodeWriter {
   /**
    * @deprecated use {@link #BareNodeWriter(Predicate, ModelOutputStream, boolean)} instead
    */
-  @Deprecated
-  @ToRemove(version = 2020.2)
+@Deprecated(since = "2020.2", forRemoval = true)
   public BareNodeWriter(@NotNull SModelReference modelReference, @NotNull ModelOutputStream os) {
     this(modelReference::equals, os, true);
   }

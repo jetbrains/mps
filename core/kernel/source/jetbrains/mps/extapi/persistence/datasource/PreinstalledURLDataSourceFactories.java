@@ -18,7 +18,6 @@ package jetbrains.mps.extapi.persistence.datasource;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -34,9 +33,8 @@ import java.net.URL;
  * @author apyshkin
  * @since 29/12/16
  */
-@ToRemove(version=2022.2)
 @Immutable
-@Deprecated
+@Deprecated(since = "2021.1", forRemoval = true)
 public enum PreinstalledURLDataSourceFactories implements DataSourceFactoryFromURL {
   FILE_OR_FOLDER;
 

@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.persistence;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -40,7 +39,6 @@ public interface ModelRoot {
   /**
    * A customizable categorization identifier, such as JavaStubs
    */
-  /*@Deprecated*/
   String getType();
 
   /**
@@ -74,16 +72,25 @@ public interface ModelRoot {
   @NotNull Iterable<SModel> getModels();
 
   /**
-   * There are model roots which are read-only and fix the result of {@link #getModels} right away from the construction
+   * There are model roots which are read-only and fix the result of {@link #getModels} right away from the construction.
+   * One could think of this method as {@code !modelRoot.isReadOnly()}.
+   * <p>
+   * Generally, if a module is read-only, it's unreasonable to expect one can create a model under any module's ModelRoot,
+   * regardless of what {@code canCreateModels()} tells. For a module open for modifications, however, one may encounter
+   * few model roots capable to create a new model, as well as few roots that are not (e.g. java class stubs). To let
+   * clients pick specific root to create models into, this method presents a way to pick those generally capable to
+   * handle creation of a model.
+   * </p>
+   * <p>ModelRoot may be capable to create models, but may reject to create certain models, controlled by {@link #canCreateModel(SModelName)}</p>
+   * <p>
+   *   Default implementation tells false.
+   * </p>
    *
-   * FIXME it is strange to have two similar methods: we are better to merge this method into the method {@link #canCreateModel}.
-   *
-   * @deprecated use specific #canCreateModel(SModelName)
    * @return whether this model root is read-only in the way described above
    */
-  @ToRemove(version = 4.0)
-  @Deprecated
-  boolean canCreateModels();
+  default boolean canCreateModels() {
+    return false;
+  }
 
   /**
    * @return whether a model with a name {@code modelName} can be created under this model root.
@@ -91,16 +98,34 @@ public interface ModelRoot {
    * @deprecated use the one with SModelName as parameter
    * @param modelName -- the same as in the {@link #createModel(String)}
    */
-  @Deprecated
-  boolean canCreateModel(@NotNull String modelName);
+  @Deprecated(forRemoval = true)
+  default boolean canCreateModel(@NotNull String modelName) {
+    // there are uses of the method in mbeddr; not sure about overrides.
+    // Perhaps, have to mark final in a release prior to removal
+    return canCreateModel(new SModelName(modelName));
+  }
 
+  /**
+   * Default implementation answers "no" to any model name.
+   *
+   * @return {@code true} if model root may create a new model under supplied name
+   */
   default boolean canCreateModel(@NotNull SModelName modelName) {
-    return canCreateModel(modelName.getValue());
+    return false;
   }
 
   /**
    * Creates a new model with the given name.
    * The new model will be contained in this model root (methods #getModel, #getModels).
+   * <p>
+   *   Default implementation returns {@code null} to match defaults of {@link #canCreateModel(SModelName)}.
+   * </p>
+   * <p>
+   *   Generally, one may expect to get {@link org.jetbrains.mps.openapi.model.EditableSModel} (what would
+   *   be a point to create a model one can not edit?). {@code EditableSModel} shall report itself as
+   *   {@link org.jetbrains.mps.openapi.model.EditableSModel#isChanged()} then.
+   *   Likely, {@link SModel#isLoaded()} has to be {@code false}, although not 100% certain on that
+   * </p>
    *
    * @param modelName -- might fq name or just simple short model name. Up to implementor
    *                  @see org.jetbrains.mps.openapi.model.SModelName
@@ -108,16 +133,27 @@ public interface ModelRoot {
 //   * @return null if failed, for instance {@link #canCreateModel(String)} returned false.
    */
   /*@Deprecated*/
-  @Nullable SModel createModel(@NotNull String modelName);
+  @Nullable
+  default SModel createModel(@NotNull String modelName) {
+    return null;
+  }
 
   /**
    * Gives the model root the opportunity to persist into the supplied memento whatever configuration information
    * may be needed to restore the models in the future.
+   *
+   * Default implementation is blank.
    */
-  void save(@NotNull Memento memento);
+  default void save(@NotNull Memento memento) {
+    // no-op
+  }
 
   /**
    * Allows the model root to read its previously saved configuration information
+   *
+   * Default implementation is blank.
    */
-  void load(@NotNull Memento memento);
+  default void load(@NotNull Memento memento) {
+    // no-op
+  }
 }

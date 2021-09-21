@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.ScriptBuilder;
 
@@ -52,8 +51,7 @@ public class MakeSession {
    * 
    * @deprecated according to Fedor, obsolete functionality. There are usecases when we can benefit from sticky make session and its explicit shutdown, perhaps shall resurrect.
    */
-  @Deprecated
-  @ToRemove(version = 3.2)
+  @Deprecated(since = "3.2", forRemoval = true)
   public boolean isSticky() {
     return myIsSticky;
   }

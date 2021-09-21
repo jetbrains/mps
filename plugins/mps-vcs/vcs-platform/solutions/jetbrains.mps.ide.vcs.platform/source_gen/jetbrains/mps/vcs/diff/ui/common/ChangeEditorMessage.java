@@ -6,26 +6,28 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import java.util.Set;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.awt.Graphics;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -40,10 +42,8 @@ import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748335691", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeEditorMessage extends EditorMessageWithTarget {
@@ -52,13 +52,23 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   @Nullable
   private final ConflictChecker myConflictsChecker;
   private boolean myHighlighted;
-
+  private final Set<SNodeId> myDescendantIds;
+  @Nullable
+  private final SNode myAttributedNode;
 
   protected ChangeEditorMessage(SNode node, MessageTarget target, EditorMessageOwner owner, ModelChange change, @Nullable ConflictChecker conflictChecker, boolean highlighted) {
     super(node, MessageStatus.OK, target, null, "", owner);
     myChange = change;
     myConflictsChecker = conflictChecker;
     myHighlighted = highlighted;
+    // change messages should be created inside read action
+    // we calculate descendant ids and attributed node here in order to avoid using read action during painting
+    myDescendantIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(SNodeOperations.getNodeDescendants(((SNode) node), null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
+      public SNodeId select(SNode it) {
+        return it.getNodeId();
+      }
+    }));
+    myAttributedNode = ((AttributeOperations.isAttribute(node) && !(AttributeOperations.isChildAttribute(node))) ? node.getParent() : null);
   }
 
   public boolean isConflicted() {
@@ -92,7 +102,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     return myHighlighted;
   }
 
-  private void paintSelection(Graphics graphics, Color color, Color backgroundColor, Iterable<SNodeId> allowedNodes, Iterable<SNodeId> movedNodes, EditorCell editorCell) {
+  private void paintSelection(Graphics graphics, Color color, Color backgroundColor, Iterable<SNodeId> movedNodes, EditorCell editorCell) {
 
     if (!(editorCell instanceof EditorCell_Collection)) {
       ((jetbrains.mps.nodeEditor.cells.EditorCell) editorCell).paintSelection(graphics, color, false);
@@ -109,9 +119,9 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
       Color childCellColor = (useBackgroundColor ? backgroundColor : color);
 
       if (childCell instanceof EditorCell_Collection) {
-        paintSelection(graphics, childCellColor, backgroundColor, allowedNodes, movedNodes, ((EditorCell_Collection) childCell));
+        paintSelection(graphics, childCellColor, backgroundColor, movedNodes, ((EditorCell_Collection) childCell));
       } else {
-        if (Sequence.fromIterable(allowedNodes).contains(childCell.getSNode().getNodeId())) {
+        if (SetSequence.fromSet(myDescendantIds).contains(childCell.getSNode().getNodeId())) {
           ((jetbrains.mps.nodeEditor.cells.EditorCell) childCell).paintSelection(graphics, childCellColor, false);
         }
       }
@@ -131,20 +141,9 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
         changeType = myChange.getType();
       }
       Color c = ChangeColors.getInstance().getDiffColor((isConflicted() ? ChangeType.CONFLICTED : changeType));
-      final SNode node = getNode();
-      final Wrappers._T<Iterable<SNodeId>> descendantIds = new Wrappers._T<Iterable<SNodeId>>();
-      new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(new Runnable() {
-        public void run() {
-          descendantIds.value = ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{})).select(new ISelector<SNode, SNodeId>() {
-            public SNodeId select(SNode it) {
-              return it.getNodeId();
-            }
-          });
-        }
-      });
       Iterable<SNodeId> movedIds;
       if (myChange instanceof NodeGroupMoveChange) {
-        movedIds = descendantIds.value;
+        movedIds = myDescendantIds;
       } else if (myChange instanceof NodeGroupWrapChange) {
         WrappingNodesGroup wrappingGroup = ((NodeGroupWrapChange) myChange).getWrappingGroup();
         movedIds = ListSequence.fromList(wrappingGroup.getWrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
@@ -159,7 +158,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
       } else {
         movedIds = Sequence.fromIterable(Collections.<SNodeId>emptyList());
       }
-      paintSelection(graphics, c, editor.getBackground(), descendantIds.value, movedIds, cell);
+      paintSelection(graphics, c, editor.getBackground(), movedIds, cell);
       repaintConflictedMessages(graphics, cell);
     } else {
       if (myMessageTarget instanceof DeletedNodeMessageTarget) {
@@ -282,13 +281,13 @@ __switch__:
                       this.__CP__ = 6;
                       break;
                     case 7:
-                      this._7__yield_myu41h_a0a0a0a0a0a53_it = Sequence.fromIterable(invoke(_4_child)).iterator();
+                      this._7__yield_myu41h_a0a0a0a0a0a63_it = Sequence.fromIterable(invoke(_4_child)).iterator();
                     case 8:
-                      if (!(this._7__yield_myu41h_a0a0a0a0a0a53_it.hasNext())) {
+                      if (!(this._7__yield_myu41h_a0a0a0a0a0a63_it.hasNext())) {
                         this.__CP__ = 5;
                         break;
                       }
-                      this._7__yield_myu41h_a0a0a0a0a0a53 = this._7__yield_myu41h_a0a0a0a0a0a53_it.next();
+                      this._7__yield_myu41h_a0a0a0a0a0a63 = this._7__yield_myu41h_a0a0a0a0a0a63_it.next();
                       this.__CP__ = 9;
                       break;
                     case 2:
@@ -300,7 +299,7 @@ __switch__:
                       break;
                     case 10:
                       this.__CP__ = 8;
-                      this.yield(_7__yield_myu41h_a0a0a0a0a0a53);
+                      this.yield(_7__yield_myu41h_a0a0a0a0a0a63);
                       return true;
                     case 12:
                       this.__CP__ = 1;
@@ -329,8 +328,8 @@ __switch__:
               }
               private EditorCell _4_child;
               private Iterator<EditorCell> _4_child_it;
-              private EditorCell _7__yield_myu41h_a0a0a0a0a0a53;
-              private Iterator<EditorCell> _7__yield_myu41h_a0a0a0a0a0a53_it;
+              private EditorCell _7__yield_myu41h_a0a0a0a0a0a63;
+              private Iterator<EditorCell> _7__yield_myu41h_a0a0a0a0a0a63_it;
             };
           }
         };
@@ -404,33 +403,14 @@ __switch__:
       return new Bounds(-1, -1);
     }
 
-    final SNode node = getNode();
+    SNode node = getNode();
     Bounds nodeBounds = getCellInBothWaysBounds(editorComponent, myMessageTarget, node);
 
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.Attribute$g1))) {
+    if (myAttributedNode == null) {
       return nodeBounds;
     }
 
-    final Wrappers._T<SNode> attributedNode = new Wrappers._T<SNode>();
-    new ModelAccessHelper(editorComponent.getEditorContext().getRepository()).runReadAction(new Runnable() {
-      public void run() {
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv)) {
-            attributedNode.value = SLinkOperations.getTarget((SNodeOperations.cast(node, CONCEPTS.BaseCommentAttribute$nv)), LINKS.commentedNode$MYvG);
-          } else {
-            attributedNode.value = null;
-          }
-        } else {
-          attributedNode.value = SNodeOperations.getParent(node);
-        }
-      }
-    });
-
-    if (attributedNode.value == null) {
-      return nodeBounds;
-    }
-
-    Bounds parentBounds = getCellInBothWaysBounds(editorComponent, myMessageTarget, attributedNode.value);
+    Bounds parentBounds = getCellInBothWaysBounds(editorComponent, myMessageTarget, myAttributedNode);
     if ((int) nodeBounds.start() == (int) parentBounds.start() && (int) nodeBounds.end() == (int) parentBounds.end()) {
       return nodeBounds;
     }
@@ -476,11 +456,5 @@ __switch__:
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
-    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink commentedNode$MYvG = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

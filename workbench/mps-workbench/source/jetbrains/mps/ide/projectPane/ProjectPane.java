@@ -66,7 +66,6 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
@@ -332,8 +331,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   /**
    * @deprecated use {@link #rebuild()} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(since = "2020.3", forRemoval = true)
   public void rebuildTree() {
     // @see #updateFromRoot
     updateFromRoot(true);

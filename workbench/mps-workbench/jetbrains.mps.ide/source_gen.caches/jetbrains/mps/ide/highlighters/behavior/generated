@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-651v3pg7v8p0r25900f3ogra566acf4">
+<product version="3" modelHash="cnqsyyhi6vr266ns13ws2n60hg9i980">
   <files names="AncestorsMethodsLookup.java:ConceptInheritanceHighlighter.java:DescendantsMethodsLookup.java:EmptyProgressMonitorWithCancellable.java:MethodIsOverriddenEditorMessage.java:MethodOverridesEditorMessage.java:OverrideConceptMethodsChecker.java" />
 </product>
 

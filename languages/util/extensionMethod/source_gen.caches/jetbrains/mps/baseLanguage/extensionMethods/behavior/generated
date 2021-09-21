@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-g8ashwdum8983eaw5qjueg06nxf5yz">
+<product version="3" modelHash="-ddo7njsw9w8thcidmgrx85bwxqa0t60">
   <files names="BaseExtensionMethodContainer__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:ExtensionMethodCall__BehaviorDescriptor.java:ExtensionMethodDeclaration__BehaviorDescriptor.java:ExtensionStaticFieldDeclaration__BehaviorDescriptor.java:ExtensionStaticFieldReference__BehaviorDescriptor.java" />
 </product>
 

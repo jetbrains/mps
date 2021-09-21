@@ -16,7 +16,6 @@
 package jetbrains.mps.smodel.action;
 
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -53,7 +52,7 @@ public interface IReferentPresentationProvider {
    * 3.4->3.5 compatibility method. after 3.5 use {@link #DEFAULT_PRESENTATION} instead
    * [artem] In 2020.1 the method is referenced in editor templates, can not replace it with the constant.
    */
-  @ToRemove(version = 2017.2)
+  @Deprecated(since = "2017.2", forRemoval = true)
   static IReferentPresentationProvider getDefaultPresentation(@NotNull SReferenceLink link) {
     return DEFAULT_PRESENTATION;
   }
@@ -62,7 +61,7 @@ public interface IReferentPresentationProvider {
    * 3.4->3.5 compatibility method. after 3.5 use {@link #DEFAULT_MATCHING_TEXT} instead
    * TODO check if the method is referenced in editor templates, replace two uses in hand-written code with the constance if not
    */
-  @ToRemove(version = 2017.2)
+  @Deprecated(since = "2017.2", forRemoval = true)
   static IReferentPresentationProvider getDefaultMatchingText(@NotNull SReferenceLink link) {
     return DEFAULT_MATCHING_TEXT;
   }
@@ -71,7 +70,7 @@ public interface IReferentPresentationProvider {
    * 3.4->3.5 compatibility method. after 3.5 use {@link #DEFAULT_VISIBLE_MATCHING_TEXT} instead
    * TODO check if the method is referenced in editor templates, replace two uses in hand-written code with the constance if not
    */
-  @ToRemove(version = 2017.2)
+  @Deprecated(since = "2017.2", forRemoval = true)
   static IReferentPresentationProvider getDefaultVisibleMatchingText(@NotNull SReferenceLink link) {
     return DEFAULT_VISIBLE_MATCHING_TEXT;
   }

@@ -29,7 +29,6 @@ import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -88,8 +87,7 @@ public class MPSCoreComponents implements Disposable {
   /**
    * @deprecated it's our implementation part, shall drop once no uses
    */
-  @Deprecated
-  @ToRemove(version = 0)
+@Deprecated(since = "0", forRemoval = true)
   public MPSModuleRepository getModuleRepository() {
     return myPlatform.findComponent(MPSModuleRepository.class);
   }

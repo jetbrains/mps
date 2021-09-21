@@ -4,7 +4,7 @@
   <languages>
     <use id="4b7c56eb-9347-4ed1-a5d9-938a850b9e1d" name="jetbrains.mps.baseLanguage.date" version="0" />
     <use id="1c5b433b-3a0b-47c4-bed8-d496b01eb018" name="jetbrains.mps.baseLanguage.box" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />

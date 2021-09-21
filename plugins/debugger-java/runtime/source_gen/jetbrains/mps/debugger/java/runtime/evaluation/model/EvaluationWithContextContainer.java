@@ -18,11 +18,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.BaseLanguagesImportHelper;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -33,10 +32,12 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.LinkedHashMap;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.sun.jdi.InvalidStackFrameException;
 import org.apache.log4j.Level;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -53,19 +54,8 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.smodel.CopyUtil;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.extensions.PluginId;
-import com.intellij.ide.plugins.PluginManager;
-import jetbrains.mps.debug.api.Debuggers;
-import jetbrains.mps.debugger.java.runtime.JavaDebugger;
-import java.io.File;
-import java.util.ArrayList;
-import com.intellij.ide.plugins.PluginManagerCore;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import java.nio.file.Path;
-import com.intellij.openapi.util.text.Strings;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.SNodePointer;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -104,18 +94,25 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     new ModelDependencyUpdate(containerModel).updateUsedLanguages().updateImportedModels(myDebuggerRepository).updateModuleDependencies(myDebuggerRepository);
   }
 
-  private void setUpDependencies(final EvaluationModule containerModule, SModel containerModel) {
-    ListSequence.fromList(myEvaluationContext.getClassPath()).union(ListSequence.fromList(getDebuggerStubPath())).visitAll(new IVisitor<String>() {
-      public void visit(String it) {
-        containerModule.addClassPathItem(it);
-      }
-    });
-    containerModule.updateModelsSet();
+  private void setUpDependencies(EvaluationModule containerModule, SModel containerModel) {
+    // alternative to myEvaluationContext.getClassPath(), just depend from a module rather than
+    // use its calculated execution classpath (btw, how come exec classpath helped compilation?!)
+    SModule locationModule = myEvaluationContext.getLocationModule();
+    if (locationModule != null) {
+      containerModule.addDependency(locationModule.getModuleReference(), false);
+    }
+    // alternative to getDebuggerStubPath(), again direct module dependencies shall induce
+    // relevant lib/ and the rest
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)"), false);
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("fcffe3cf-3ebc-4d3d-989b-2f30533bc904(jetbrains.mps.debugger.java.runtime)"), false);
+    // next dependency was part of EvaluationContainer.generateClass(). No idea if it's necessary, doesn't hurt to have, I suppose.
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)"), false);
+    // XXX not sure there's any reason to add JDK explicitly, as it's likely to get there trough dependencies anyway
+    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
 
     ModelImports modelImports = new ModelImports(containerModel);
     modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x7da4580f9d754603L, 0x816251a896d78375L, "jetbrains.mps.debugger.java.evaluation"));
     modelImports.addUsedLanguage(MetaAdapterFactory.getLanguage(0x802088974572437dL, 0xb50e8f050cba9566L, "jetbrains.mps.debugger.java.privateMembers"));
-    containerModule.addDependency(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"), false);
   }
   private void tryToImport(final SNode evaluatorNode, List<SNodeReference> nodesToImport) {
     BaseLanguagesImportHelper helper = new MyBaseLanguagesImportHelper(evaluatorNode);
@@ -214,6 +211,10 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     return classifierType;
   }
   public SNode findUnit(final String unitName) {
+    // FIXME I wonder if this code to respect stub models first is related to the face EvaluationModule used to expose its 
+    // dependencies as stubs (when it was populated with classpath of a dependency instead of dependency itself).
+    // In either case, I suspect we shall look through models visible in EvaluationModule only, not the whole repository?
+
     // I hate the next piece of code
     // (and this class in general, since it inherited a lot of the ugly stuff from the old evaluation code)
     ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myDebuggerRepository);
@@ -277,52 +278,6 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     // FIXME return value is ignored (callback is employed instead), shall change IEvaluationContainer.copy to reflect this
     return rv;
   }
-  public static List<String> getDebuggerStubPath() {
-    PluginId apiPlugin = PluginManager.getPluginByClassName(Debuggers.class.getName());
-    PluginId javaPlugin = PluginManager.getPluginByClassName(JavaDebugger.class.getName());
-
-    List<File> paths = ListSequence.fromList(new ArrayList<File>());
-    ListSequence.fromList(paths).addSequence(ListSequence.fromList(getClassPath(check_v5yv3u_a0a0e0v(PluginManagerCore.getPlugin(apiPlugin)))));
-    ListSequence.fromList(paths).addSequence(ListSequence.fromList(getClassPath(check_v5yv3u_a0a0f0v(PluginManagerCore.getPlugin(javaPlugin)))));
-
-    return ListSequence.fromList(paths).select(new ISelector<File, String>() {
-      public String select(File it) {
-        return (String) it.getAbsolutePath();
-      }
-    }).toListSequence();
-  }
-
-  @NotNull
-  private static List<File> getClassPath(Path path) {
-    if (path == null) {
-      return Collections.EMPTY_LIST;
-    }
-    File file = path.toFile();
-    if (!(file.isDirectory())) {
-      return Collections.singletonList(file);
-    }
-    List<File> result = new ArrayList<>();
-    File classesDir = new File(file, "classes");
-    if (classesDir.exists()) {
-      result.add(classesDir);
-    }
-    File[] files = new File(file, "lib").listFiles();
-    if (files == null || files.length <= 0) {
-      return result;
-    }
-    for (File f : files) {
-      if (f.isFile()) {
-        String name = f.getName();
-        if (Strings.endsWithIgnoreCase(name, ".jar") || Strings.endsWithIgnoreCase(name, ".zip")) {
-          result.add(f);
-        }
-      } else {
-        result.add(f);
-      }
-    }
-    return result;
-  }
-
 
   private static String modelFqNameFromUnitName(String unitName) {
     int lastDot = unitName.lastIndexOf('.');
@@ -356,18 +311,6 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       SLinkOperations.setTarget(newVariableReference, LINKS.baseVariableDeclaration$v20M, variable);
       return newVariableReference;
     }
-  }
-  private static Path check_v5yv3u_a0a0e0v(IdeaPluginDescriptor checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getPluginPath();
-    }
-    return null;
-  }
-  private static Path check_v5yv3u_a0a0f0v(IdeaPluginDescriptor checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getPluginPath();
-    }
-    return null;
   }
 
   private static final class CONCEPTS {

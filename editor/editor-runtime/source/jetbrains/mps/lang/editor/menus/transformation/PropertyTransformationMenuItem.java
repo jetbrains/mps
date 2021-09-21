@@ -28,7 +28,6 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -50,8 +49,7 @@ public class PropertyTransformationMenuItem extends ActionItemBase implements Ba
   /**
    * @deprecated Use another constructor that passes values as is
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public PropertyTransformationMenuItem(@NotNull SProperty property, String string, @NotNull TransformationMenuContext context) {
     this(property, property.getType().fromString(string), context);
   }

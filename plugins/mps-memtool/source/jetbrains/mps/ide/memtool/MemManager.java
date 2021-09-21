@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,6 @@
  */
 package jetbrains.mps.ide.memtool;
 
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationGroupManager;
-import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
@@ -75,16 +72,6 @@ public class MemManager implements StartupActivity.Background {
       myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
       new MyRepeatingCleanup(Math.round(sec * 1000)).run();
     }
-  }
-
-
-  public void cleanupFromAction() {
-    if (myComponentHost.findComponent(MakeServiceComponent.class).isSessionActive()) {
-      final Notification n = NotificationGroupManager.getInstance().getNotificationGroup("MPS Memory Stats").createNotification().setContent("Can not perform cleanup while Make is in progress");
-      Notifications.Bus.notify(n, myProject);
-      return;
-    }
-    cleanup();
   }
 
   private void cleanup() {

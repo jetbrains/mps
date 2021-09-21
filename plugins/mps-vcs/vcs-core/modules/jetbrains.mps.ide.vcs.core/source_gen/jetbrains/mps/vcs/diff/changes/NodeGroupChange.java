@@ -29,6 +29,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -339,12 +340,22 @@ public class NodeGroupChange extends StructureChange {
 
     List<? extends SNode> editedChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(getParent(isNewModel), myRole));
 
-    List<Tuples._2<SNodeId, MessageTarget>> result = ListSequence.fromList(new ArrayList<Tuples._2<SNodeId, MessageTarget>>());
+    final List<Tuples._2<SNodeId, MessageTarget>> result = ListSequence.fromList(new ArrayList<Tuples._2<SNodeId, MessageTarget>>());
     for (int i = changeBegin; i < changeEnd; i++) {
       if (i >= editedChildren.size()) {
         break;
       }
-      ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(editedChildren.get(i).getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+      SNode child = editedChildren.get(i);
+      ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(child.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+      ListSequence.fromList(AttributeOperations.getAllAttributes(child)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode attr) {
+          return !(AttributeOperations.isChildAttribute(attr));
+        }
+      }).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode attr) {
+          ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(attr.getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+        }
+      });
     }
     return result;
   }

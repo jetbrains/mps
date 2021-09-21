@@ -35,7 +35,6 @@
     <orderEntry type="module" module-name="refactoring" />
     <orderEntry type="module" module-name="resources_en" />
     <orderEntry type="module" module-name="ant-mps-common" />
-    <orderEntry type="module" module-name="make-facets" />
     <orderEntry type="module" module-name="editing-runtime" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
   </component>

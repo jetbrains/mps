@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
@@ -42,8 +41,11 @@ public class DefaultRefactoringUI implements RefactoringUI {
     myProject = project;
     myRefactoringName = refactoringName;
   }
-  @Deprecated
-  @ToRemove(version = 2019.3)
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(since = "2019.3", forRemoval = true)
   public DefaultRefactoringUI(MPSProject mpsProject) {
     myRepository = mpsProject.getRepository();
     myProject = mpsProject.getProject();

@@ -103,7 +103,6 @@
     <classNode dependClassName="jetbrains.mps.util.IFileUtil" />
     <classNode dependClassName="jetbrains.mps.util.MacroHelper" />
     <classNode dependClassName="jetbrains.mps.util.MacrosFactory" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="jetbrains.mps.vfs.util.PathFormatChecker" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

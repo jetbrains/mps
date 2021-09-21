@@ -12,6 +12,7 @@ import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -51,9 +52,15 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
   }
 
   @Override
-  public SModel getModel(SModelId id) {
+  @Nullable
+  public SModel getModel(@NotNull SModelId id) {
     // TODO why is this method empty? Why does it exist? It seems not to be used
     return null;
+  }
+
+  @Override
+  public boolean canCreateModels() {
+    return false;
   }
 
   @Override
@@ -132,15 +139,5 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
   @Override
   public void copyTo(@NotNull PropertyFilesStubModelRoot targetModelRoot) throws CopyNotSupportedException {
     new CopyFileBasedModelRootHelper(this, targetModelRoot).copy();
-  }
-
-  @Override
-  public boolean canCreateModel(String string) {
-    return false;
-  }
-
-  @Override
-  public SModel createModel(String string) {
-    return null;
   }
 }

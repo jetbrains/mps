@@ -20,7 +20,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -70,8 +69,7 @@ public abstract class WrapSubstituteMenuTransformationMenuPart implements Transf
     return context.getNode();
   }
 
-  @Deprecated
-  @ToRemove(version = 2017.2)
+@Deprecated(since = "2017.2", forRemoval = true)
   protected void execute(SNode targetNode, SubstituteMenuItem item, TransformationMenuContext context, String pattern) {
     // made not abstract for compatibility reasons.
   }

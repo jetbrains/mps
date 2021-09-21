@@ -18,7 +18,6 @@ import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.ProjectUtil;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import java.util.Collection;
 import jetbrains.mps.library.ModulesMiner;
@@ -73,23 +72,24 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    VirtualFile chosenDir = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), ((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), ProjectUtil.guessProjectDir(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject()));
+    final MPSProject mpsProject = ((MPSProject) MapSequence.fromMap(_params).get("project"));
+    VirtualFile chosenDir = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), mpsProject.getProject(), ProjectUtil.guessProjectDir(mpsProject.getProject()));
     if (chosenDir == null) {
       return;
     }
 
-    final IFile dir = VirtualFileUtils.toIFile(chosenDir);
-    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
+    final IFile dir = mpsProject.getFileSystem().fromVirtualFile(chosenDir);
+    ModelAccess modelAccess = mpsProject.getRepository().getModelAccess();
     modelAccess.executeCommandInEDT(new Runnable() {
       public void run() {
-        Collection<ModulesMiner.ModuleHandle> modules = new ModulesMiner(((MPSProject) MapSequence.fromMap(_params).get("project")).getPlatform()).collectModules(dir).getCollectedModules();
+        Collection<ModulesMiner.ModuleHandle> modules = new ModulesMiner(mpsProject.getPlatform()).collectModules(dir).getCollectedModules();
         VisibleModules visible = new VisibleModules(((SNode) MapSequence.fromMap(_params).get("node")));
         visible.collect();
 
         List<ImportModuleHelper> helpers = new ArrayList<ImportModuleHelper>();
         final PathConverter pathConverter = new PathConverter(((SNode) MapSequence.fromMap(_params).get("node")));
 
-        DefaultMessageHandler msgHandler = new DefaultMessageHandler(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject());
+        DefaultMessageHandler msgHandler = new DefaultMessageHandler(mpsProject.getProject());
 
         for (ModulesMiner.ModuleHandle handle : modules) {
           SModuleReference modRef = handle.getDescriptor().getModuleReference();

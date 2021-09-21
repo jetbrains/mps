@@ -11,6 +11,7 @@ import java.util.List;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
 import java.util.Collections;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.vfs.IFile;
@@ -52,11 +53,17 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
   }
 
   @Override
-  public SModel getModel(SModelId id) {
+  @Nullable
+  public SModel getModel(@NotNull SModelId id) {
     // TODO
     return null;
   }
 
+
+  @Override
+  public boolean canCreateModels() {
+    return false;
+  }
   protected MPSJavaSrcDataSource newDataSource(IFile dir) {
     return new MPSJavaSrcDataSource(dir);
   }
@@ -123,16 +130,5 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
   @Override
   public void copyTo(@NotNull JavaSourceStubModelRoot targetModelRoot) throws CopyNotSupportedException {
     new CopyFileBasedModelRootHelper(this, targetModelRoot).copy();
-  }
-
-
-  @Override
-  public boolean canCreateModel(String string) {
-    return false;
-  }
-
-  @Override
-  public SModel createModel(String string) {
-    return null;
   }
 }

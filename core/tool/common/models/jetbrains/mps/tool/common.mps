@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
@@ -7600,6 +7600,17 @@
         <property role="Xl_RC" value="skip-unmodified-models" />
       </node>
     </node>
+    <node concept="Wx3nA" id="3xrc37t09IM" role="jymVt">
+      <property role="2dlcS1" value="false" />
+      <property role="2dld4O" value="false" />
+      <property role="TrG5h" value="MSG_LEVEL" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3xrc37t09IN" role="1B3o_S" />
+      <node concept="17QB3L" id="3xrc37t09IO" role="1tU5fm" />
+      <node concept="Xl_RD" id="3xrc37t09IP" role="33vP2m">
+        <property role="Xl_RC" value="message-level" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="2XB5puvmQ8d" role="jymVt" />
     <node concept="312cEg" id="2XB5puvmPVf" role="jymVt">
       <property role="TrG5h" value="myScript" />
@@ -8094,6 +8105,58 @@
           <property role="1dT_AB" value="Facility to pass generator parameters from ant task to actual worker via script" />
         </node>
       </node>
+    </node>
+    <node concept="3clFb_" id="3xrc37t0fTJ" role="jymVt">
+      <property role="TrG5h" value="setMessageLevel" />
+      <node concept="3uibUv" id="3xrc37t0gk9" role="3clF45">
+        <ref role="3uigEE" node="2XB5puvk9rk" resolve="GeneratorProperties" />
+      </node>
+      <node concept="3Tm1VV" id="3xrc37t0fTM" role="1B3o_S" />
+      <node concept="3clFbS" id="3xrc37t0fTN" role="3clF47">
+        <node concept="3clFbF" id="3xrc37t0hO3" role="3cqZAp">
+          <node concept="2OqwBi" id="3xrc37t0iqW" role="3clFbG">
+            <node concept="37vLTw" id="3xrc37t0hO2" role="2Oq$k0">
+              <ref role="3cqZAo" node="2XB5puvmPVf" resolve="myScript" />
+            </node>
+            <node concept="liA8E" id="3xrc37t0iSr" role="2OqNvi">
+              <ref role="37wK5l" node="KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="3xrc37t0jev" role="37wK5m">
+                <ref role="3cqZAo" node="3xrc37t09IM" resolve="MSG_LEVEL" />
+              </node>
+              <node concept="37vLTw" id="3xrc37t0jS1" role="37wK5m">
+                <ref role="3cqZAo" node="3xrc37t0htY" resolve="level" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3xrc37t0kei" role="3cqZAp">
+          <node concept="Xjq3P" id="3xrc37t0kNS" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3xrc37t0htY" role="3clF46">
+        <property role="TrG5h" value="level" />
+        <node concept="17QB3L" id="3xrc37t0htX" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="3xrc37t0m3Y" role="jymVt">
+      <property role="TrG5h" value="getMessageLevel" />
+      <node concept="3clFbS" id="3xrc37t0m41" role="3clF47">
+        <node concept="3cpWs6" id="3xrc37t0nir" role="3cqZAp">
+          <node concept="2OqwBi" id="3xrc37t0o2n" role="3cqZAk">
+            <node concept="37vLTw" id="3xrc37t0nDE" role="2Oq$k0">
+              <ref role="3cqZAo" node="2XB5puvmPVf" resolve="myScript" />
+            </node>
+            <node concept="liA8E" id="3xrc37t0ozk" role="2OqNvi">
+              <ref role="37wK5l" node="KL8Aql8eBs" resolve="getProperty" />
+              <node concept="37vLTw" id="3xrc37t0oUY" role="37wK5m">
+                <ref role="3cqZAo" node="3xrc37t09IM" resolve="MSG_LEVEL" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3xrc37t0l_n" role="1B3o_S" />
+      <node concept="17QB3L" id="3xrc37t0m2l" role="3clF45" />
     </node>
   </node>
   <node concept="312cEu" id="3pzB6wMWmOx">

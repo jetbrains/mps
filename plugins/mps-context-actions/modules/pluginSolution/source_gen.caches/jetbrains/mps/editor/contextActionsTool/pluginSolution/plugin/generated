@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-eutfb1g6km2774bptdy42f01f6lri4n">
+<product version="3" modelHash="e94y6l0pnydhf5zzsc15etj073hza3q">
   <files names="ChangeViewAction.java:ConceptInstanceActionHelper.java:ContextActionsTool_Tool.java:ContextActionsUtil.java:EmptyIcon.java:ExpandCollapseIcon.java:ExpandingFlowLayout.java:Folder.java:HoverLabel.java:ImageUtil.java:ItemConverter.java:ItemExecutor.java:PluginSolution_ProjectPlugin.java:ScaledIcon.java:SearchField.java:ToolComponent.java:ToolController.java:ViewType.java" />
 </product>
 

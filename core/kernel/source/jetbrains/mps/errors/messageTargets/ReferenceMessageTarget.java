@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractLink;
@@ -28,8 +27,7 @@ public final class ReferenceMessageTarget implements MessageTarget {
   private final String myRoleName;
   private final SAbstractLink myRole;
 
-  @Deprecated
-  @ToRemove(version = 2019.2)
+@Deprecated(since = "2019.2", forRemoval = true)
   public ReferenceMessageTarget(String role) {
     myRoleName = role;
     myRole = null;

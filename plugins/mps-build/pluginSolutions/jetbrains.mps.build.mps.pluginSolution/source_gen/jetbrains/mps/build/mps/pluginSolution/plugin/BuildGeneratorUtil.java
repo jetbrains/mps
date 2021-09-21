@@ -7,11 +7,9 @@ import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 
 /*package*/ class BuildGeneratorUtil {
@@ -25,13 +23,8 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
       }
     }
     for (ModelRoot mr : solution.getModelRoots()) {
-      if (mr.canCreateModel(modelName.getValue())) {
-        SModel model = mr.createModel(modelName.getValue());
-        if (model instanceof EditableSModel) {
-          //  XXX is there true need to setChanged newly created model?
-          ((EditableSModel) model).setChanged(true);
-        }
-        return model;
+      if (mr.canCreateModel(modelName)) {
+        return mr.createModel(modelName.getValue());
       }
     }
     return null;
@@ -43,17 +36,18 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
       return null;
     }
 
-    final FileSystem fileSystem = solutionBaseDirFile.getFileSystem();
-    String solutionBaseDirPath = solutionBaseDirFile.getPath();
+    final IFile baseDir = solutionBaseDirFile.getParent();
+    final String solutionBaseName = solutionBaseDirFile.getName();
     int i = 0;
     while (!(BuildGeneratorUtil.isValidSolutionDir(solutionBaseDirFile))) {
-      solutionBaseDirFile = fileSystem.getFile(solutionBaseDirPath + i);
+      solutionBaseDirFile = baseDir.findChild(solutionBaseName + i);
       i++;
     }
 
     if (!(solutionBaseDirFile.exists())) {
       solutionBaseDirFile.mkdirs();
     }
+    // FIXME NewModuleUtil needs IFile for dir anyway, why do we convert it to string here, just to get converted to IFile back?
     Solution solution = NewModuleUtil.createSolution(solutionName, solutionBaseDirFile.getPath(), mpsProject);
     mpsProject.save();
     return solution;

@@ -24,7 +24,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Objects;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
@@ -220,8 +219,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     }
     return sb.toString();
   }
-  @ToRemove(version = 2018.2)
-  @Deprecated
+  @Deprecated(since = "2018.2", forRemoval = true)
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
     return false;
   }

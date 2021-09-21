@@ -17,7 +17,6 @@ package jetbrains.mps.project;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -34,7 +33,7 @@ public final class ModelsAutoImportsManager implements CoreComponent {
   // todo: is auto imports workbench functionality?
   private Set<AutoImportsContributor> contributors = new HashSet<>();
 
-  @ToRemove(version = 2018.3)
+  @Deprecated(since = "2018.3", forRemoval = true)
   private static ModelsAutoImportsManager ourInstance;
 
   @Override
@@ -90,8 +89,7 @@ public final class ModelsAutoImportsManager implements CoreComponent {
    * In use in the single place, SModuleOperations.createModelWithAdjustments(), which is extensively used throughout MPS code (26 uses to date) and in mbeddr (6 uses)
    * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class)} and instance method {@link #performImports(SModule, SModel)} instead
    */
-  @Deprecated
-  @ToRemove(version = 2018.3)
+@Deprecated(since = "2018.3", forRemoval = true)
   public static void doAutoImport(SModule module, SModel model) {
     ourInstance.performImports(module, model);
   }

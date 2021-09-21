@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -451,8 +450,7 @@ public class FileUtil {
     return false;
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   @NotNull
   public static String getUnixPath(@NotNull String path) {
     return path.replace(Path.WIN_SEPARATOR, Path.UNIX_SEPARATOR);

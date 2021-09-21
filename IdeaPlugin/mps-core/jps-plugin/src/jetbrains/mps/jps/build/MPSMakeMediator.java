@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,12 +20,9 @@ import jetbrains.mps.idea.core.make.MPSMakeConstants;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.jps.project.JpsMPSProject;
 import jetbrains.mps.make.MakeSession;
-import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IResult;
-import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
-import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.resources.MResource;
@@ -73,15 +70,20 @@ public class MPSMakeMediator {
    */
   public boolean build() {
     Iterable<MResource> resources = collectResources(myModelToTargetMap.keySet());
-    GenerationPathsController pathsController = new GenerationPathsController(myProject, myContext, resources);
-    pathsController.init(myModelToTargetMap.values());
+    GenerationPathsController pathsController = new GenerationPathsController(myContext);
+    pathsController.init(myProject, resources, myModelToTargetMap.values());
 
     BuildMakeService buildMakeService = new BuildMakeService();
-    MakeSession makeSession = createCleanMakeSession();
 
-    final MakeFacetWrapper makeFacetWrapper = new MakeFacetWrapper(myContext, makeSession, pathsController);
-    ReducedMakeFacetConfiguration makeFacetConfiguration = makeFacetWrapper.constructMakeFacetConfiguration();
-    IScriptController scriptCtl = makeFacetWrapper.configureFacets();
+    // here we use default ScriptBuilder logic to collect all required facets (e.g. including JavaCompile, CopyTraceInfo)
+    // and then turn some of them off in #configureFacet. Note, #createCleanMakeSession(), above, augments
+    // ScriptBuilder with 'ReportFiles' facet which provides set of affected files back to this code (into MPSMakeFilesAfterProcessor)
+    // XXX I don't quite get the approach to turn facets off with dedicated 'facet properties'. Instead,
+    // it seems removing them from the builder is more fruitful approach.
+    // XXX With JavaCompile facet effectively off, I wonder what's with ReloadClasses, is it active?
+    ReducedMakeFacetConfiguration makeFacetConfiguration = new ReducedMakeFacetConfiguration(pathsController.getRedirects());
+    MakeSession makeSession = makeFacetConfiguration.createCleanMakeSession(myProject, myMessageHandler);
+    IScriptController scriptCtl = makeFacetConfiguration.configureFacets(makeSession);
 
     try {
       Future<IResult> res = buildMakeService.make(makeSession, resources, null, scriptCtl);
@@ -90,27 +92,15 @@ public class MPSMakeMediator {
       final MPSMakeFilesAfterProcessor afterProcessor = new MPSMakeFilesAfterProcessor(myModelToTargetMap, pathsController, myOutputConsumer, myContext);
       success &= afterProcessor.process(makeFacetConfiguration);
       return success;
-    } catch (InterruptedException e) {
-      reportError(BUNDLE.getString("error.while.make"), e);
-    } catch (ExecutionException e) {
+    } catch (InterruptedException | ExecutionException e) {
       reportError(BUNDLE.getString("error.while.make"), e);
     }
 
     return false;
   }
 
-  private MakeSession createCleanMakeSession() {
-    return new MakeSession(myProject, myMessageHandler, true) {
-      @Override
-      public IScript toScript(ScriptBuilder scriptBuilder) {
-        scriptBuilder.withFacetNames(new IFacet.Name("jetbrains.mps.make.reduced.ReportFiles"));
-        return scriptBuilder.toScript();
-      }
-    };
-  }
-
   private void reportError(String msg, Throwable e) {
-    myContext.processMessage(new CompilerMessage(msg, Kind.ERROR, e.getMessage()));
+    MPSCompilerUtil.reportError(myContext, msg, e);
   }
 
   private Iterable<MResource> collectResources(final Collection<SModel> models) {
@@ -137,28 +127,6 @@ public class MPSMakeMediator {
 
     private void processMessage(IMessage msg, Kind kind) {
       myContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, kind, msg.getText()));
-    }
-  }
-
-  private static class MakeFacetWrapper {
-    private final CompileContext myContext;
-    private final MakeSession myMakeSession;
-    private final GenerationPathsController myPathsController;
-    private ReducedMakeFacetConfiguration myMakeFacetConfiguration;
-
-    public MakeFacetWrapper(CompileContext context, MakeSession makeSession, GenerationPathsController pathsController) {
-      myContext = context;
-      myMakeSession = makeSession;
-      myPathsController = pathsController;
-    }
-
-    public IScriptController configureFacets() {
-      return myMakeFacetConfiguration.configureFacets(myMakeSession);
-    }
-
-    public ReducedMakeFacetConfiguration constructMakeFacetConfiguration() {
-      myMakeFacetConfiguration = new ReducedMakeFacetConfiguration(myPathsController.getRedirects());
-      return myMakeFacetConfiguration;
     }
   }
 }

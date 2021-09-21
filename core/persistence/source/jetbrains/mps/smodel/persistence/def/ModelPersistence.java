@@ -32,7 +32,6 @@ import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.apache.log4j.LogManager;
@@ -252,8 +251,7 @@ public class ModelPersistence {
    *             we remove it in coming releases
    */
   @NotNull
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2021.2)
+  @Deprecated(since = "2021.2", forRemoval = true)
   public static Document saveModel(@NotNull SModel sourceModel) {
     // XXX is there need for the method? Who might care to get XML Document for a model except our own
     //     implementation code (addressed by modelToXml() method)?

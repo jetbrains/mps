@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3hezyd80rp1tkp02jtf4skd4or57tly">
+<product version="3" modelHash="-2jbkwhi4xrqlmya6jdciqhtqi3c5bjb">
   <files names="CheckAnnotationOnContainerNode.java:CheckNodeForErrors.java:EditorTestCase_TestNode.java:MigrationDescriptor.java:MigrationTestCase_migration.java" />
 </product>
 

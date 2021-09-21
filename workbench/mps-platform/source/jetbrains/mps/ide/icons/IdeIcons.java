@@ -24,7 +24,6 @@ import jetbrains.mps.fileTypes.FileIcons;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.icons.MPSIcons.ToolWindows;
-import jetbrains.mps.util.annotation.ToRemove;
 
 import javax.swing.Icon;
 

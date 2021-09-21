@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,6 +94,10 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
   }
 
+  public void setGeneratedClassesLocation(IFile classesGen) {
+    myGeneratedClassesLocation = classesGen;
+  }
+
   @NotNull
   public AbstractModule getAbstractModule() {
     return (AbstractModule) super.getModule();
@@ -144,22 +148,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
           LOG.error(String.format("Deployed generator module %s without deployment descriptor. Generator classes would be missing. File: %s",
                                   abstractModule.getModuleReference(),
                                   abstractModule.getDescriptorFile()));
-        } else if (abstractModule.getDescriptorFile() != null) {
-          // CASE 2. Solution(s) bundled into single jar with classes (both from hand-written and generated sources) at the root.
-          // HACK. Fallback for manually bundled modules (vcs.jar or mps-core.jar):
-          //   my.jar
-          //     compile output of module1
-          //   modules
-          //      module sources of module1
-          // There's no DD there, and assumption is that there are classes at the jar root.
-          // Not yet sure what's the right way to deal with them:
-          //   - specify DD (META-INF/module.xml) at build time looks most 'honest', however, with multiple modules inside same jar it's not an option,
-          //     unless we can make DD per module, not per jar (requires support in MM.tryReadFromModulesDir). Support in Build language needed, too (to
-          //     specify 'module descriptor of' under 'folder with sources of'
-          //   - Patch MD in MM when loaded from modules/ location (e.g. add DD with proper classpath there). (+) keep knowledge about deployment layout
-          //     inside MM.
-          //   - Hack here
-          classesGen = abstractModule.getDescriptorFile().getBundleHome();
         }
       }
     }

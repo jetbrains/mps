@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,6 @@ import java.util.List;
 
 /**
  * evgeny, 12/11/12
- * XXX imo, the only justification for this class to subclass DefaultModelRoot is that there's code in MPS that does instanceof check
  */
 public class CachedDefaultModelRoot extends ModelRootBase {
 
@@ -80,16 +79,6 @@ public class CachedDefaultModelRoot extends ModelRootBase {
     return false;
   }
 
-  @Override
-  public boolean canCreateModel(@NotNull String modelName) {
-    return false;
-  }
-
-  @Nullable
-  @Override
-  public SModel createModel(@NotNull String modelName) {
-    return null;
-  }
 
   @Override
   public void save(@NotNull Memento memento) {

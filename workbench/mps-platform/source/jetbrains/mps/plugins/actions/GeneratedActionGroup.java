@@ -19,7 +19,6 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.Constraints;
 import com.intellij.openapi.extensions.PluginId;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.BaseGroup;
@@ -44,8 +43,7 @@ public abstract class GeneratedActionGroup extends BaseGroup {
     addActionSafe(ActionManager.getInstance().getAction(id));
   }
 
-  @Deprecated
-  @ToRemove(version = 2021.1)
+@Deprecated(since = "2021.1", forRemoval = true)
   protected final void addParameterizedAction(BaseAction action, PluginId unused, Object... params) {
     // keep for couple of releases once 21.1 is out, code generated with 2020.3 invoked this method
     addParameterizedAction(action, params);

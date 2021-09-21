@@ -352,7 +352,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 List<IDelta> moduleWideStaleFiles = ListSequence.fromList(new ArrayList<IDelta>());
                 for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
                   // Though we no longer walk FS when completing the delta, let it do the job prior to flushing anything to disk not to get confused with new files just in case.
-                  ListSequence.fromList(moduleWideStaleFiles).addSequence(ListSequence.fromList(sfm.getModuleWideDelta()));
+                  ListSequence.fromList(moduleWideStaleFiles).addSequence(ListSequence.fromList(sfm.completeDelta()));
                 }
                 _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(moduleWideStaleFiles))));
 

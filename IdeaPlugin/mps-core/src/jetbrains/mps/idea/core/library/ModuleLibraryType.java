@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,20 +65,23 @@ import javax.swing.JComponent;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
+
   public ModuleLibraryType() {
-    super(MpsModuleLibraryKindContainer.MPS_MODULE_LIBRARY_KIND);
+    super(new MpsModuleLibraryKind());
   }
 
   @Nullable
-  public static VirtualFile getJarFile(String path) {
+  private static VirtualFile getJarFile(String path) {
     VirtualFile vFile = VirtualFileManager.getInstance().findFileByUrl(VirtualFileManager.constructUrl(LocalFileSystem.PROTOCOL, path));
     if (vFile == null || vFile.isDirectory() || vFile.getFileType() != FileTypes.ARCHIVE) {
       return null;
@@ -86,7 +89,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
     return JarFileSystem.getInstance().findFileByPath(vFile.getPath() + JarFileSystem.JAR_SEPARATOR);
   }
 
-  public static Set<VirtualFile> getModuleJars(AbstractModule usedModule) {
+  /*package*/ static Collection<OrderRoot> getModuleJarsAsRoots(AbstractModule usedModule) {
     Set<VirtualFile> stubFiles = new HashSet<VirtualFile>();
     for (String stubPath : SModuleOperations.getJavaFacet(usedModule).getClassPath()) {
       VirtualFile jarFile = getJarFile(stubPath);
@@ -94,7 +97,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
         stubFiles.add(jarFile);
       }
     }
-    return stubFiles;
+    return stubFiles.stream().map((jf -> new OrderRoot(jf, OrderRootType.CLASSES, false))).collect(Collectors.toUnmodifiableList());
   }
 
   @Override
@@ -131,13 +134,13 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
 
   private Set<OrderRoot> createRootsFor(SRepository repository, List<SModuleReference> chosenElements) {
     final Set<OrderRoot> roots = new LinkedHashSet<OrderRoot>();
-    for (SModuleReference moduleReference : chosenElements) {
-      AbstractModule module = new ModelAccessHelper(repository).runReadAction(() -> (AbstractModule) moduleReference.resolve(repository));
-      roots.add(new OrderRoot(VirtualFileUtils.getOrCreateVirtualFile(module.getDescriptorFile()), ModuleXmlRootDetector.MPS_MODULE_XML, false));
-      for (VirtualFile virtualFile : getModuleJars(module)) {
-        roots.add(new OrderRoot(virtualFile, OrderRootType.CLASSES, false));
+    repository.getModelAccess().runReadAction(() -> {
+      for (SModuleReference moduleReference : chosenElements) {
+        AbstractModule module = (AbstractModule) moduleReference.resolve(repository);
+        roots.add(ModuleXmlRootDetector.asOrderRoot(module));
+        roots.addAll(getModuleJarsAsRoots(module));
       }
-    }
+    });
     return roots;
   }
 
@@ -167,19 +170,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
   }
 
   public static boolean isMPSModuleLibrary(Library l) {
-    return isModuleLibrary(l);
-  }
-
-  /**
-   * @deprecated use {@link #isMPSModuleLibrary(Library)}, with name that reflects intention better
-   */
-  @Deprecated
-  public static boolean isModuleLibrary(Library l) {
-    if (l instanceof LibraryEx) {
-      PersistentLibraryKind<?> kind = ((LibraryEx) l).getKind();
-      return kind != null && MpsModuleLibraryKindContainer.MPS_MODULE_LIBRARY_KIND.getKindId().equals(kind.getKindId());
-    }
-    return false;
+    return l instanceof LibraryEx && MpsModuleLibraryKind.is(((LibraryEx) l).getKind());
   }
 
   public static ModuleLibraryType getInstance() {
@@ -256,31 +247,27 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
         @Override
         public VirtualFile[] selectFiles(@NotNull JComponent parent, @Nullable VirtualFile initialSelection, @Nullable final Module contextModule, @NotNull final LibraryEditor libraryEditor) {
           final SRepository repository = ProjectHelper.getProjectRepository(contextModule.getProject());
-          List<SModuleReference> visibleModules = calculateVisibleModules(repository, new HashSet<VirtualFile>(Arrays.asList(libraryEditor.getFiles(ModuleXmlRootDetector.MPS_MODULE_XML))));
+          List<SModuleReference> visibleModules = calculateVisibleModules(repository, new HashSet<>(Arrays.asList(libraryEditor.getFiles(ModuleXmlRootDetector.MPS_MODULE_XML))));
 
           ChooseElementsDialog<SModuleReference> chooser = new SModuleReferenceChooserDialog(repository, parent, visibleModules);
           chooser.show();
           final List<SModuleReference> chosenElements = chooser.getChosenElements();
 
-          final Set<VirtualFile> addedDescriptors = new LinkedHashSet<VirtualFile>();
-          final Set<VirtualFile> addedJars = new LinkedHashSet<VirtualFile>();
+          final Set<VirtualFile> addedDescriptors = new LinkedHashSet<>();
+          final Set<OrderRoot> addedJarRoots = new LinkedHashSet<>();
           repository.getModelAccess().runReadAction(new Runnable() {
             @Override
             public void run() {
               for (SModuleReference module : chosenElements) {
                 AbstractModule chosenModule = (AbstractModule) module.resolve(repository);
-                addedDescriptors.add(VirtualFileUtils.getOrCreateVirtualFile(chosenModule.getDescriptorFile()));
-                for (VirtualFile virtualFile : getModuleJars(chosenModule)) {
-                  addedJars.add(virtualFile);
-                }
+                addedDescriptors.add(ModuleXmlRootDetector.asOrderRoot(chosenModule).getFile());
+                addedJarRoots.addAll(getModuleJarsAsRoots(chosenModule));
               }
             }
           });
           // that's a hack
           // I want to add 2 different root types here: classes and module xml-s
-          for (VirtualFile classesJar : addedJars) {
-            libraryEditor.addRoot(classesJar, OrderRootType.CLASSES);
-          }
+          libraryEditor.addRoots(addedJarRoots);
           return addedDescriptors.toArray(new VirtualFile[addedDescriptors.size()]);
         }
       });
@@ -297,7 +284,7 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
           if (module instanceof SolutionIdea || ((AbstractModule) module).getDescriptorFile() == null) {
             continue;
           }
-          if (excluded.contains(VirtualFileUtils.getOrCreateVirtualFile(((AbstractModule) module).getDescriptorFile()))) {
+          if (excluded.contains(ModuleXmlRootDetector.asOrderRoot((AbstractModule) module).getFile())) {
             // skip solutions that are already in a lib
             continue;
           }
@@ -309,17 +296,37 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
         }
       }
     });
-    Comparator<SModuleReference> moduleComparator = new Comparator<SModuleReference>() {
-      @Override
-      public int compare(SModuleReference o1, SModuleReference o2) {
-        return o1.getModuleName().compareTo(o2.getModuleName());
-      }
-    };
+    Comparator<SModuleReference> moduleComparator = Comparator.comparing(SModuleReference::getModuleName);
     Collections.sort(availableSolutions, moduleComparator);
     Collections.sort(availableLanguages, moduleComparator);
     List<SModuleReference> result = new ArrayList<SModuleReference>();
     result.addAll(availableSolutions);
     result.addAll(availableLanguages);
     return result;
+  }
+
+  static class MpsModuleLibraryKind extends PersistentLibraryKind<DummyLibraryProperties> {
+    private static final String ID = "mps.solution.library";
+
+    MpsModuleLibraryKind() {
+      super(ID);
+    }
+
+    @NotNull
+    @Override
+    public DummyLibraryProperties createDefaultProperties() {
+      return new DummyLibraryProperties();
+    }
+
+    @NotNull
+    @Override
+    public OrderRootType[] getAdditionalRootTypes() {
+      return new OrderRootType[]{ModuleXmlRootDetector.MPS_MODULE_XML};
+    }
+
+    static boolean is(PersistentLibraryKind<?> other) {
+      // Perhaps, with IDEA-98118 fixed, could use MLT.getInstance().getKind() == other
+      return other != null && ID.equals(other.getKindId());
+    }
   }
 }

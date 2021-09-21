@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.util.annotation.ToRemove;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,8 +34,7 @@ public class AttributeOperations {
    * 
    * @deprecated  use {@code  IAttributeDescriptor.set()} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode setAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
     return descriptor.set(node, value);
   }
@@ -52,8 +50,7 @@ public class AttributeOperations {
    * 
    * @deprecated  use {@code  IAttributeDescriptor.setNew()} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
     return descriptor.setNew(node, newConcept);
   }
@@ -61,8 +58,7 @@ public class AttributeOperations {
    * 
    * @deprecated  use {@code  IAttributeDescriptor.addNew} instead
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
     return descriptor.addNew(node, newConcept);
   }
@@ -88,8 +84,7 @@ public class AttributeOperations {
    * 
    * @deprecated use {@code IAttributeDescriptor.add()}
    */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 2020.3)
+  @Deprecated(forRemoval = true, since = "2020.3")
   public static SNode addAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
     ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).addElement(value);
     descriptor.update(value);

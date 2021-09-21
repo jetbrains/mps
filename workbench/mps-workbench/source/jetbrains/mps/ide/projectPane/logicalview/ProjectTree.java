@@ -38,7 +38,6 @@ import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -124,8 +123,7 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
     return root;
   }
 
-  @Deprecated
-  @ToRemove(version = 2019.1)
+@Deprecated(since = "2019.1", forRemoval = true)
   public void expandProjectNode() {
     this.expandPath(new TreePath(myProjectTreeNode.getPath()));
   }

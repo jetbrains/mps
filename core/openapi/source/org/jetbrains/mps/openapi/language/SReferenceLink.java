@@ -15,7 +15,6 @@
  */
 package org.jetbrains.mps.openapi.language;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -43,8 +42,7 @@ public interface SReferenceLink extends SAbstractLink {
   //left for compatibility with "interpreting" code
   //use SReferenceLink in code instead
   @Nullable
-  @Deprecated
-  @ToRemove(version = 3.4)
+@Deprecated(since = "3.4", forRemoval = true)
   SNode getDeclarationNode();
 
   /**

@@ -19,6 +19,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.properties.roots.editors.FileBasedModelRootEntry" />
     <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryEditor" />
@@ -26,10 +27,13 @@
     <classNode extendsClassName="org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryExt" />
   </dependency>
   <dependency className="jetbrains.mps.java.workbench.extensions.JavaSourceStubsModelRootEntryFactory">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot" />
     <classNode dependClassName="jetbrains.mps.java.workbench.extensions.JavaSourceStubsModelRootEntry" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry" />
     <classNode extendsClassName="org.jetbrains.mps.openapi.ui.persistence.ModelRootEntryFactory" />

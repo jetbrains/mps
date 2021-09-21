@@ -35,7 +35,6 @@
     <orderEntry type="module" module-name="dataflow-rt" scope="TEST" />
     <orderEntry type="module" module-name="resources" scope="TEST" />
     <orderEntry type="module" module-name="resources_en" scope="TEST" />
-    <orderEntry type="module" module-name="make-facets" scope="TEST" />
     <orderEntry type="module" module-name="environment" />
     <orderEntry type="module" module-name="editorlang-runtime" scope="TEST" />
     <orderEntry type="module" module-name="persistence" scope="TEST" />

@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
@@ -32,8 +31,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  * User: shatalin
  * Date: 08/12/15
  */
-@Deprecated
-@ToRemove(version = 2017.3)
+@Deprecated(since = "2017.3", forRemoval = true)
 public class CopyFacetUtil {
   private static final String SCRIPTS_TARGET_PROPERTY = CopyFacetUtil.class.getName() + ".target.path";
 

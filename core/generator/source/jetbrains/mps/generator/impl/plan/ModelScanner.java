@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.FastNodeFinder;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -76,7 +75,7 @@ public final class ModelScanner {
    *
    * Drop once there's no use of this method.
    */
-  @ToRemove(version = 0)
+  @Deprecated(since = "0", forRemoval = true)
   public ModelScanner scanInLegacyMode(SModel model) {
     scan(model);
 
