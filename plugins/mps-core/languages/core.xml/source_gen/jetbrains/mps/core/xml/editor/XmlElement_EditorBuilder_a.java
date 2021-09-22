@@ -48,6 +48,7 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.core.xml.behavior.XmlElement__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -313,7 +314,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("refNodeList_content");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
-    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
+    style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_vc3gub_a1b0a0d0());
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setSRole(handler.getElementSRole());
@@ -391,6 +392,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
         }
       }
     }
+  }
+  private boolean _StyleParameter_QueryFunction_vc3gub_a1b0a0d0() {
+    return !((boolean) XmlPart__BehaviorDescriptor.isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo.invoke(ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.content$zkQy)).first()));
   }
   private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "</");

@@ -26,12 +26,16 @@ public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9$").build();
   public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9E").build();
   public static final SMethod<Boolean> isTextLike_id1Qs9WekVZ9O = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isTextLike").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9O").build();
+  public static final SMethod<Boolean> isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyTextOnLineWithOpenTag").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Q3yR6CdyTo").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isOneLineBlock_id1Qs9WekVZ7e, isFirstPositionAllowed_id1Qs9WekVZ7m, isLastPositionAllowed_id1Qs9WekVZ8v, onNewLine_id1Qs9WekVZ9$, hasNewLineAfter_id1Qs9WekVZ9E, isTextLike_id1Qs9WekVZ9O, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static boolean isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo(@NotNull SNode __thisNode__) {
+    return false;
+  }
 
   /*package*/ XmlPart__BehaviorDescriptor() {
   }
@@ -48,6 +52,8 @@ public final class XmlPart__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 6:
+        return (T) ((Boolean) isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

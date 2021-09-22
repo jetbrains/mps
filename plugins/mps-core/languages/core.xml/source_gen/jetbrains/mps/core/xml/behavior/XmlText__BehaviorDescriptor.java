@@ -29,8 +29,9 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> hasNewLineAfter_id1Qs9WekVZ9E = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasNewLineAfter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9E").build();
   public static final SMethod<Boolean> onNewLine_id1Qs9WekVZ9$ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("onNewLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Qs9WekVZ9$").build();
   public static final SMethod<Boolean> textLike_id1653mnvAgu_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("textLike").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgu_").build();
+  public static final SMethod<Boolean> isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isEmptyTextOnLineWithOpenTag").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Q3yR6CdyTo").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m, hasNewLineAfter_id1Qs9WekVZ9E, onNewLine_id1Qs9WekVZ9$, textLike_id1653mnvAgu_);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLastPositionAllowed_id1Qs9WekVZ8v, isFirstPositionAllowed_id1Qs9WekVZ7m, hasNewLineAfter_id1Qs9WekVZ9E, onNewLine_id1Qs9WekVZ9$, textLike_id1653mnvAgu_, isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -58,6 +59,9 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean textLike_id1653mnvAgu_(@NotNull SAbstractConcept __thisConcept__) {
     return true;
   }
+  /*package*/ static boolean isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo(@NotNull SNode __thisNode__) {
+    return isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$6Orv)) && (SNodeOperations.getPrevSibling(__thisNode__) == null) && (SNodeOperations.getNextSibling(__thisNode__) != null);
+  }
 
   /*package*/ XmlText__BehaviorDescriptor() {
   }
@@ -82,6 +86,8 @@ public final class XmlText__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) hasNewLineAfter_id1Qs9WekVZ9E(node));
       case 3:
         return (T) ((Boolean) onNewLine_id1Qs9WekVZ9$(node));
+      case 5:
+        return (T) ((Boolean) isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

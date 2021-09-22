@@ -2,6 +2,7 @@
 <model ref="r:ea884767-f424-4c97-a82e-eccd57dbc217(jetbrains.mps.core.xml.textGen)">
   <persistence version="9" />
   <languages>
+    <use id="b83431fe-5c8f-40bc-8a36-65e25f4dd253" name="jetbrains.mps.lang.textGen" version="1" />
     <devkit ref="fa73d85a-ac7f-447b-846c-fcdc41caa600(jetbrains.mps.devkit.aspect.textgen)" />
   </languages>
   <imports>
@@ -147,6 +148,7 @@
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
+      <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -301,8 +303,28 @@
         </node>
         <node concept="3clFbJ" id="2EZ251g0QUK" role="3cqZAp">
           <node concept="3clFbS" id="2EZ251g0QUL" role="3clFbx">
-            <node concept="lc7rE" id="2EZ251g0R4S" role="3cqZAp">
-              <node concept="l8MVK" id="2EZ251g0R4U" role="lcghm" />
+            <node concept="3clFbJ" id="1Q3yR6Cf9QY" role="3cqZAp">
+              <node concept="3clFbS" id="1Q3yR6Cf9R0" role="3clFbx">
+                <node concept="lc7rE" id="2EZ251g0R4S" role="3cqZAp">
+                  <node concept="l8MVK" id="2EZ251g0R4U" role="lcghm" />
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="1Q3yR6Cffyx" role="3clFbw">
+                <node concept="2OqwBi" id="1Q3yR6Cffyz" role="3fr31v">
+                  <node concept="2OqwBi" id="1Q3yR6Cffy$" role="2Oq$k0">
+                    <node concept="2OqwBi" id="1Q3yR6Cffy_" role="2Oq$k0">
+                      <node concept="117lpO" id="1Q3yR6CffyA" role="2Oq$k0" />
+                      <node concept="3Tsc0h" id="1Q3yR6CffyB" role="2OqNvi">
+                        <ref role="3TtcxE" to="iuxj:1q3yNZeA$$y" resolve="content" />
+                      </node>
+                    </node>
+                    <node concept="1uHKPH" id="1Q3yR6CffyC" role="2OqNvi" />
+                  </node>
+                  <node concept="2qgKlT" id="1Q3yR6CffyD" role="2OqNvi">
+                    <ref role="37wK5l" to="t7at:1Q3yR6CdyTo" resolve="isEmptyTextOnLineWithOpenTag" />
+                  </node>
+                </node>
+              </node>
             </node>
             <node concept="3izx1p" id="i1nHRwk" role="3cqZAp">
               <node concept="3clFbS" id="i1nHRwl" role="3izTki">

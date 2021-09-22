@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.xml.behavior.XmlElement__BehaviorDescriptor;
+import jetbrains.mps.core.xml.behavior.XmlPart__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -47,7 +48,9 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
     }
     tgs.append(">");
     if ((boolean) XmlElement__BehaviorDescriptor.isMultiline_id7HilnpQ3Ckr.invoke(ctx.getPrimaryInput())) {
-      tgs.newLine();
+      if (!((boolean) XmlPart__BehaviorDescriptor.isEmptyTextOnLineWithOpenTag_id1Q3yR6CdyTo.invoke(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$zkQy)).first()))) {
+        tgs.newLine();
+      }
       ctx.getBuffer().area().increaseIndent();
       tgs.indent();
       for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.content$zkQy)) {

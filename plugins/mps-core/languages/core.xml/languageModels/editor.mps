@@ -584,6 +584,7 @@
         <child id="1225621943565" name="element" index="1sKFgg" />
         <child id="1225621960341" name="index" index="1sKJu8" />
       </concept>
+      <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -947,7 +948,28 @@
                   <property role="VOm3f" value="true" />
                 </node>
                 <node concept="pVoyu" id="1q3yNZeAIdl" role="3F10Kt">
-                  <property role="VOm3f" value="true" />
+                  <node concept="3nzxsE" id="1Q3yR6CcA1V" role="3n$kyP">
+                    <node concept="3clFbS" id="1Q3yR6CcA1W" role="2VODD2">
+                      <node concept="3clFbF" id="1Q3yR6CdDay" role="3cqZAp">
+                        <node concept="3fqX7Q" id="1Q3yR6CdDTn" role="3clFbG">
+                          <node concept="2OqwBi" id="1Q3yR6CdDTp" role="3fr31v">
+                            <node concept="2OqwBi" id="1Q3yR6CeyU2" role="2Oq$k0">
+                              <node concept="2OqwBi" id="1Q3yR6CevWC" role="2Oq$k0">
+                                <node concept="pncrf" id="1Q3yR6CdDTq" role="2Oq$k0" />
+                                <node concept="3Tsc0h" id="1Q3yR6CeweN" role="2OqNvi">
+                                  <ref role="3TtcxE" to="iuxj:1q3yNZeA$$y" resolve="content" />
+                                </node>
+                              </node>
+                              <node concept="1uHKPH" id="1Q3yR6CeDWg" role="2OqNvi" />
+                            </node>
+                            <node concept="2qgKlT" id="1Q3yR6CdDTr" role="2OqNvi">
+                              <ref role="37wK5l" to="t7at:1Q3yR6CdyTo" resolve="isEmptyTextOnLineWithOpenTag" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
                 <node concept="ljvvj" id="1q3yNZeAIdm" role="3F10Kt">
                   <property role="VOm3f" value="true" />
