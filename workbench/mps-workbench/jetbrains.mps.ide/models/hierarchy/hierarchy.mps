@@ -61,6 +61,8 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="tywb" ref="r:92932ea9-7c1a-42ec-ba50-b485e2406f2b(jetbrains.mps.ide.ui.util)" />
     <import index="ewej" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.font(JDK/)" />
+    <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -262,6 +264,9 @@
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
+      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
+        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
+      </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
@@ -277,9 +282,12 @@
         <child id="1144231399730" name="condition" index="1Dwp0S" />
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
+      <concept id="5351203823916832286" name="jetbrains.mps.baseLanguage.structure.ResourceVariable" flags="ng" index="3J1hQo" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
+        <child id="5351203823916750334" name="resource" index="3J1_TS" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
         <child id="1163668914799" name="condition" index="3K4Cdx" />
@@ -1015,11 +1023,8 @@
                 <ref role="37wK5l" node="3cy8vNEdt5T" resolve="AbstractHierarchyView.RootPanel" />
               </node>
             </node>
-            <node concept="2OqwBi" id="YlfeaJOShU" role="37vLTJ">
-              <node concept="Xjq3P" id="YlfeaJOSh_" role="2Oq$k0" />
-              <node concept="2OwXpG" id="YlfeaJOShZ" role="2OqNvi">
-                <ref role="2Oxat5" node="51NkKCgB3dh" resolve="myComponent" />
-              </node>
+            <node concept="37vLTw" id="3WF3aHSnMbY" role="37vLTJ">
+              <ref role="3cqZAo" node="51NkKCgB3dh" resolve="myComponent" />
             </node>
           </node>
         </node>
@@ -1067,6 +1072,33 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3clFbS" id="5CK42mQosJu" role="3clF47">
+        <node concept="3cpWs8" id="3WF3aHSnQgu" role="3cqZAp">
+          <node concept="3cpWsn" id="3WF3aHSnQgv" role="3cpWs9">
+            <property role="TrG5h" value="toolbar" />
+            <node concept="3uibUv" id="3WF3aHSnNQx" role="1tU5fm">
+              <ref role="3uigEE" to="qkt:~ActionToolbar" resolve="ActionToolbar" />
+            </node>
+            <node concept="2OqwBi" id="3WF3aHSnQgw" role="33vP2m">
+              <node concept="2YIFZM" id="3WF3aHSnQgx" role="2Oq$k0">
+                <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
+                <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
+              </node>
+              <node concept="liA8E" id="3WF3aHSnQgy" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
+                <node concept="10M0yZ" id="3WF3aHSnQgz" role="37wK5m">
+                  <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
+                  <ref role="3cqZAo" to="qkt:~ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR" resolve="TYPE_HIERARCHY_VIEW_TOOLBAR" />
+                </node>
+                <node concept="1rXfSq" id="3WF3aHSnQg$" role="37wK5m">
+                  <ref role="37wK5l" node="51NkKCgB3f5" resolve="createButtonsGroup" />
+                </node>
+                <node concept="3clFbT" id="3WF3aHSnQg_" role="37wK5m">
+                  <property role="3clFbU" value="true" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="5CK42mQosJM" role="3cqZAp">
           <node concept="3cpWsn" id="5CK42mQosJL" role="3cpWs9">
             <property role="3TUv4t" value="false" />
@@ -1075,27 +1107,24 @@
               <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
             </node>
             <node concept="2OqwBi" id="5CK42mQosJO" role="33vP2m">
-              <node concept="2OqwBi" id="5CK42mQosJP" role="2Oq$k0">
-                <node concept="2YIFZM" id="5CK42mQosKC" role="2Oq$k0">
-                  <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                </node>
-                <node concept="liA8E" id="5CK42mQosJR" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                  <node concept="10M0yZ" id="5CK42mQosRY" role="37wK5m">
-                    <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                    <ref role="3cqZAo" to="qkt:~ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR" resolve="TYPE_HIERARCHY_VIEW_TOOLBAR" />
-                  </node>
-                  <node concept="1rXfSq" id="5CK42mQosJT" role="37wK5m">
-                    <ref role="37wK5l" node="51NkKCgB3f5" resolve="createButtonsGroup" />
-                  </node>
-                  <node concept="3clFbT" id="5CK42mQosJU" role="37wK5m">
-                    <property role="3clFbU" value="true" />
-                  </node>
-                </node>
+              <node concept="37vLTw" id="3WF3aHSnQgA" role="2Oq$k0">
+                <ref role="3cqZAo" node="3WF3aHSnQgv" resolve="createActionToolbar" />
               </node>
               <node concept="liA8E" id="5CK42mQosJV" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionToolbar.getComponent()" resolve="getComponent" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3WF3aHSo4u3" role="3cqZAp">
+          <node concept="2OqwBi" id="3WF3aHSo6pa" role="3clFbG">
+            <node concept="37vLTw" id="3WF3aHSo4u1" role="2Oq$k0">
+              <ref role="3cqZAo" node="3WF3aHSnQgv" resolve="toolbar" />
+            </node>
+            <node concept="liA8E" id="3WF3aHSoapb" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~ActionToolbar.setTargetComponent(javax.swing.JComponent)" resolve="setTargetComponent" />
+              <node concept="37vLTw" id="3WF3aHSof5y" role="37wK5m">
+                <ref role="3cqZAo" node="51NkKCgB3dh" resolve="myComponent" />
               </node>
             </node>
           </node>
@@ -9220,6 +9249,7 @@
     </node>
     <node concept="312cEg" id="51NkKCgB40F" role="jymVt">
       <property role="TrG5h" value="myVisited" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="51NkKCgB40G" role="1tU5fm">
         <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
         <node concept="3Tqbb2" id="7pTo6H6lPIo" role="11_B2D" />
@@ -9681,14 +9711,32 @@
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="51NkKCgB44c" role="3cqZAp">
-          <node concept="37vLTI" id="51NkKCgB44d" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuDZ7" role="37vLTJ">
-              <ref role="3cqZAo" node="51NkKCgB40B" resolve="myInitialized" />
+          <node concept="1wplmZ" id="3WF3aHSptts" role="1zxBo6">
+            <node concept="3clFbS" id="3WF3aHSpttt" role="1wplMD">
+              <node concept="3clFbF" id="51NkKCgB44c" role="3cqZAp">
+                <node concept="37vLTI" id="51NkKCgB44d" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeuDZ7" role="37vLTJ">
+                    <ref role="3cqZAo" node="51NkKCgB40B" resolve="myInitialized" />
+                  </node>
+                  <node concept="3clFbT" id="51NkKCgB44f" role="37vLTx">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="3clFbT" id="51NkKCgB44f" role="37vLTx">
-              <property role="3clFbU" value="true" />
+          </node>
+          <node concept="3J1hQo" id="3WF3aHSq5dZ" role="3J1_TS">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="unused" />
+            <node concept="3uibUv" id="3WF3aHSqaFx" role="1tU5fm">
+              <ref role="3uigEE" to="bd8o:~AccessToken" resolve="AccessToken" />
+            </node>
+            <node concept="2YIFZM" id="3WF3aHSp4FW" role="33vP2m">
+              <ref role="37wK5l" to="9w4s:~SlowOperations.allowSlowOperations(java.lang.String)" resolve="allowSlowOperations" />
+              <ref role="1Pybhc" to="9w4s:~SlowOperations" resolve="SlowOperations" />
+              <node concept="Xl_RD" id="3WF3aHSp4FX" role="37wK5m">
+                <property role="Xl_RC" value="hierarchy-tree" />
+              </node>
             </node>
           </node>
         </node>
