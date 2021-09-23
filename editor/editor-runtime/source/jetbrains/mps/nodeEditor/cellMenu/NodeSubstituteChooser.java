@@ -538,6 +538,10 @@ public class NodeSubstituteChooser implements KeyboardHandler {
   public boolean processKeyPressed(EditorContext editorContext, KeyEvent keyEvent) {
     String oldPattern = getPatternEditor().getPattern();
     if (getPatternEditor().processKeyPressed(keyEvent)) {
+      if (!isVisible()) {
+        // The event may cause the chooser to close
+        return true;
+      }
       if (oldPattern.length() > getPatternEditor().getPattern().length()) {
         setUserChoseItem(false);
       }
@@ -559,6 +563,10 @@ public class NodeSubstituteChooser implements KeyboardHandler {
   @Override
   public boolean processKeyTyped(EditorContext editorContext, KeyEvent keyEvent) {
     if (getPatternEditor().processKeyTyped(keyEvent)) {
+      if (!isVisible()) {
+        // The event may cause the chooser to close
+        return true;
+      }
       processEventAfterPatternEditor();
       return true;
     }
