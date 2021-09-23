@@ -56,6 +56,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_crdhdg_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
+    HandleXmlTextSplitMerge.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createProperty_0());
     if (nodeCondition_crdhdg_a1a()) {
       editorCell.addEditorCell(createConstant_0());
@@ -76,6 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, _StyleParameter_QueryFunction_crdhdg_a0a0());
       editorCell.getStyle().putAll(style);
+      HandleXmlTextSplitMerge.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.XmlText$q9));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
