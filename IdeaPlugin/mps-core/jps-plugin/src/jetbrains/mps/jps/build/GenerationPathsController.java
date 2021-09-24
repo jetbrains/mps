@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,7 +90,7 @@ public class GenerationPathsController {
         final File tmpOutputRoot = pathsCalculator.getTmpOutputRoot();
         final File cachesOutputRoot = pathsCalculator.getCachesOutputRoot();
         final boolean transientOutputFolder = pathsCalculator.isTransientOutputFolder();
-        myRedirects.addRedirects(myOutputPaths, tmpOutputRoot.getPath(), cachesOutputRoot.getPath(), transientOutputFolder);
+        myRedirects.addRedirects(myOutputPaths, tmpOutputRoot, cachesOutputRoot, transientOutputFolder);
         myOutputRootsPerTarget.put(target, pathsCalculator.getOutputPath());
       }
     }

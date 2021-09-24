@@ -112,7 +112,7 @@ public class MPSMakeFilesAfterProcessor {
       }
       if (!isJava(writtenFile)) {
         // all non-java files got to be copied (which are not in the caches folder, e.g. dependencies/generated)
-        if (!myPathsController.getRedirects().isInCacheOutput(writtenPath)) {
+        if (!myPathsController.getRedirects().isInCacheOutput(writtenFile)) {
           try {
             copyResource(target, writtenFile);
           } catch (IOException e) {
