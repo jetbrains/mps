@@ -10,7 +10,6 @@ import javax.swing.JLayeredPane;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import java.awt.BorderLayout;
 import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.ui.ColoredSideBorder;
 import java.awt.Color;
@@ -31,6 +30,7 @@ import java.awt.event.FocusEvent;
   private JLayeredPane myLayeredPane;
   private BaseVersionEditorComponent myBaseEditor;
   private ActionToolbar myToolbar;
+
   public PopupPanel(ChangeStripsPainter painter, ChangeGroup group) {
     myChangeGroup = group;
     myPainter = painter;
@@ -40,7 +40,7 @@ import java.awt.event.FocusEvent;
 
     JPanel toolbarPanel = new JPanel(new BorderLayout());
     toolbarPanel.setOpaque(false);
-    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.POPUP, ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup")), true);
+    myToolbar = ActionManager.getInstance().createActionToolbar("popup panel toolbar", ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup")), true);
     myToolbar.setTargetComponent(myPainter.getEditorComponent());
     toolbarPanel.add(myToolbar.getComponent(), BorderLayout.WEST);
     add(toolbarPanel, BorderLayout.NORTH);
@@ -53,9 +53,11 @@ import java.awt.event.FocusEvent;
       add(myBaseEditor.getScrollPane(), BorderLayout.CENTER);
     }
   }
+
   /*package*/ ChangeGroup getChangeGroup() {
     return myChangeGroup;
   }
+
   public void show(int x, int y) {
     myLayeredPane = myEditor.getRootPane().getLayeredPane();
     setLocation(SwingUtilities.convertPoint(myEditor, x, y, myLayeredPane));
@@ -75,14 +77,17 @@ import java.awt.event.FocusEvent;
 
     addListeners();
   }
+
   private void addListeners() {
     myEditor.addMouseListener(myMouseListener);
     myEditor.addFocusListener(myFocusListener);
   }
+
   private void removeListeners() {
     myEditor.removeFocusListener(myFocusListener);
     myEditor.removeMouseListener(myMouseListener);
   }
+
   /*package*/ void dispose() {
     if (myLayeredPane == null) {
       return;
