@@ -25,6 +25,7 @@ import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.tool.builder.make.BuildMakeService;
@@ -127,6 +128,9 @@ public class MPSMakeMediator {
 
     private void processMessage(IMessage msg, Kind kind) {
       myContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, kind, msg.getText()));
+      if (msg.getException() != null && msg.getKind() == MessageKind.ERROR) {
+        myContext.processMessage(CompilerMessage.createInternalBuilderError(MPSMakeConstants.BUILDER_ID, msg.getException()));
+      }
     }
   }
 }
