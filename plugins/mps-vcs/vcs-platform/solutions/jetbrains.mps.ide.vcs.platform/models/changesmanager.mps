@@ -56,6 +56,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
+    <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -286,6 +287,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+      <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -1332,13 +1334,52 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbF" id="7znbqLix6Zy" role="3cqZAp">
-                <node concept="2OqwBi" id="7znbqLix7Lh" role="3clFbG">
-                  <node concept="37vLTw" id="7znbqLix6Zw" role="2Oq$k0">
-                    <ref role="3cqZAo" node="58EREyZPAic" resolve="clm" />
+              <node concept="3J1_TO" id="4q0vic29aE7" role="3cqZAp">
+                <node concept="3uVAMA" id="4q0vic29e9o" role="1zxBo5">
+                  <node concept="XOnhg" id="4q0vic29e9p" role="1zc67B">
+                    <property role="TrG5h" value="e" />
+                    <node concept="nSUau" id="4q0vic29e9q" role="1tU5fm">
+                      <node concept="3uibUv" id="4q0vic29eHK" role="nSUat">
+                        <ref role="3uigEE" to="xygl:~ProcessCanceledException" resolve="ProcessCanceledException" />
+                      </node>
+                    </node>
                   </node>
-                  <node concept="liA8E" id="7znbqLix8UZ" role="2OqNvi">
-                    <ref role="37wK5l" to="1037:~ChangeListManagerImpl.waitForUpdate()" resolve="waitForUpdate" />
+                  <node concept="3clFbS" id="4q0vic29e9r" role="1zc67A">
+                    <node concept="3clFbJ" id="4q0vic29iI7" role="3cqZAp">
+                      <node concept="3fqX7Q" id="4q0vic29jQk" role="3clFbw">
+                        <node concept="37vLTw" id="4q0vic29k9D" role="3fr31v">
+                          <ref role="3cqZAo" node="212jB9aS6Nb" resolve="myDisposed" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="4q0vic29iI9" role="3clFbx">
+                        <node concept="RRSsy" id="4q0vic2aebT" role="3cqZAp">
+                          <property role="RRSoG" value="gZ5fh_4/error" />
+                          <node concept="Xl_RD" id="4q0vic2aebV" role="RRSoy">
+                            <property role="Xl_RC" value="received while for an update from ChangeListManagerImpl" />
+                          </node>
+                          <node concept="37vLTw" id="4q0vic2ak7e" role="RRSow">
+                            <ref role="3cqZAo" node="4q0vic29e9p" resolve="e" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="9aQIb" id="4q0vic2alFp" role="9aQIa">
+                        <node concept="3clFbS" id="4q0vic2alFq" role="9aQI4">
+                          <node concept="3zACq4" id="4q0vic2aml$" role="3cqZAp" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbS" id="4q0vic29aE9" role="1zxBo7">
+                  <node concept="3clFbF" id="7znbqLix6Zy" role="3cqZAp">
+                    <node concept="2OqwBi" id="7znbqLix7Lh" role="3clFbG">
+                      <node concept="37vLTw" id="7znbqLix6Zw" role="2Oq$k0">
+                        <ref role="3cqZAo" node="58EREyZPAic" resolve="clm" />
+                      </node>
+                      <node concept="liA8E" id="7znbqLix8UZ" role="2OqNvi">
+                        <ref role="37wK5l" to="1037:~ChangeListManagerImpl.waitForUpdate()" resolve="waitForUpdate" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>

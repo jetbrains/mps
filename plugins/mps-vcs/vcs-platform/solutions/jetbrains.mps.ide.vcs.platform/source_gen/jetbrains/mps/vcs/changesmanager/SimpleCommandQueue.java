@@ -14,6 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.apache.log4j.Level;
 import com.intellij.openapi.vcs.changes.ChangeListManagerImpl;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
+import com.intellij.openapi.progress.ProcessCanceledException;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3722815385094205361", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public final class SimpleCommandQueue {
@@ -128,7 +129,17 @@ public final class SimpleCommandQueue {
         };
         ChangeListManagerImpl clm = (ChangeListManagerImpl) ChangeListManager.getInstance(myProject);
         clm.executeOnUpdaterThread(flushingRunnable);
-        clm.waitForUpdate();
+        try {
+          clm.waitForUpdate();
+        } catch (ProcessCanceledException e) {
+          if (!(myDisposed)) {
+            if (LOG.isEnabledFor(Level.ERROR)) {
+              LOG.error("received while for an update from ChangeListManagerImpl", e);
+            }
+          } else {
+            break;
+          }
+        }
       }
     }
   }
