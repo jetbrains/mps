@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.script.ScriptBuilder;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.tool.builder.make.BuildMakeService;
@@ -137,6 +138,9 @@ public class MPSMakeMediator {
 
     private void processMessage(IMessage msg, Kind kind) {
       myContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, kind, msg.getText()));
+      if (msg.getException() != null && msg.getKind() == MessageKind.ERROR) {
+        myContext.processMessage(CompilerMessage.createInternalBuilderError(MPSMakeConstants.BUILDER_ID, msg.getException()));
+      }
     }
   }
 
