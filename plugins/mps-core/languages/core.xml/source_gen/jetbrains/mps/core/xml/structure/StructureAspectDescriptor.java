@@ -42,6 +42,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptXmlProcessingInstruction = createDescriptorForXmlProcessingInstruction();
   /*package*/ final ConceptDescriptor myConceptXmlProlog = createDescriptorForXmlProlog();
   /*package*/ final ConceptDescriptor myConceptXmlPrologElement = createDescriptorForXmlPrologElement();
+  /*package*/ final ConceptDescriptor myConceptXmlSingleLineText = createDescriptorForXmlSingleLineText();
   /*package*/ final ConceptDescriptor myConceptXmlText = createDescriptorForXmlText();
   /*package*/ final ConceptDescriptor myConceptXmlTextValue = createDescriptorForXmlTextValue();
   /*package*/ final ConceptDescriptor myConceptXmlValuePart = createDescriptorForXmlValuePart();
@@ -63,7 +64,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptXmlAttribute, myConceptXmlBaseAttribute, myConceptXmlBaseElement, myConceptXmlBasePrologElement, myConceptXmlCDATA, myConceptXmlCharRef, myConceptXmlCharRefValue, myConceptXmlComment, myConceptXmlCommentLine, myConceptXmlContent, myConceptXmlDeclaration, myConceptXmlDoctypeDeclaration, myConceptXmlDocument, myConceptXmlElement, myConceptXmlEntityRef, myConceptXmlEntityRefValue, myConceptXmlExternalId, myConceptXmlFile, myConceptXmlNoSpaceValue, myConceptXmlPart, myConceptXmlProcessingInstruction, myConceptXmlProlog, myConceptXmlPrologElement, myConceptXmlText, myConceptXmlTextValue, myConceptXmlValuePart, myConceptXmlWhitespace);
+    return Arrays.asList(myConceptXmlAttribute, myConceptXmlBaseAttribute, myConceptXmlBaseElement, myConceptXmlBasePrologElement, myConceptXmlCDATA, myConceptXmlCharRef, myConceptXmlCharRefValue, myConceptXmlComment, myConceptXmlCommentLine, myConceptXmlContent, myConceptXmlDeclaration, myConceptXmlDoctypeDeclaration, myConceptXmlDocument, myConceptXmlElement, myConceptXmlEntityRef, myConceptXmlEntityRefValue, myConceptXmlExternalId, myConceptXmlFile, myConceptXmlNoSpaceValue, myConceptXmlPart, myConceptXmlProcessingInstruction, myConceptXmlProlog, myConceptXmlPrologElement, myConceptXmlSingleLineText, myConceptXmlText, myConceptXmlTextValue, myConceptXmlValuePart, myConceptXmlWhitespace);
   }
 
   @Override
@@ -116,6 +117,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptXmlProlog;
       case LanguageConceptSwitch.XmlPrologElement:
         return myConceptXmlPrologElement;
+      case LanguageConceptSwitch.XmlSingleLineText:
+        return myConceptXmlSingleLineText;
       case LanguageConceptSwitch.XmlText:
         return myConceptXmlText;
       case LanguageConceptSwitch.XmlTextValue:
@@ -362,6 +365,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL);
     b.origin("r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)/7604553062773674213");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForXmlSingleLineText() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.core.xml", "XmlSingleLineText", 0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1ff12ac079bd229fL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.core.xml.structure.XmlText", 0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L);
+    b.origin("r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)/2301667890727559839");
+    b.version(2);
+    b.alias("single line text");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForXmlText() {

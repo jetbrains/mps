@@ -2332,5 +2332,57 @@
       </node>
     </node>
   </node>
+  <node concept="13h7C7" id="1ZLaG1TJiWU">
+    <ref role="13h7C2" to="iuxj:1ZLaG1TJiav" resolve="XmlSingleLineText" />
+    <node concept="13hLZK" id="1ZLaG1TJiWV" role="13h7CW">
+      <node concept="3clFbS" id="1ZLaG1TJiWW" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="1ZLaG1TJiZx" role="13h7CS">
+      <property role="TrG5h" value="hasNewLineAfter" />
+      <ref role="13i0hy" node="1Qs9WekVZ9E" resolve="hasNewLineAfter" />
+      <node concept="3Tm1VV" id="1ZLaG1TJiZy" role="1B3o_S" />
+      <node concept="3clFbS" id="1ZLaG1TJiZR" role="3clF47">
+        <node concept="3clFbF" id="1ZLaG1TJjf5" role="3cqZAp">
+          <node concept="3clFbT" id="1ZLaG1TJjf4" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="10P_77" id="1ZLaG1TJiZS" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1ZLaG1TJiZX" role="13h7CS">
+      <property role="TrG5h" value="onNewLine" />
+      <property role="DiZV1" value="false" />
+      <ref role="13i0hy" node="1Qs9WekVZ9$" resolve="onNewLine" />
+      <node concept="3Tm1VV" id="1ZLaG1TJiZY" role="1B3o_S" />
+      <node concept="3clFbS" id="1ZLaG1TJj0B" role="3clF47">
+        <node concept="3clFbF" id="1ZLaG1TJjkI" role="3cqZAp">
+          <node concept="3clFbT" id="1ZLaG1TJjkH" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="10P_77" id="1ZLaG1TJj0C" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1ZLaG1TJjDB" role="13h7CS">
+      <property role="2Ki8OM" value="true" />
+      <property role="TrG5h" value="oneLineBlock" />
+      <ref role="13i0hy" node="1653mnvAgno" resolve="oneLineBlock" />
+      <node concept="3Tm1VV" id="1ZLaG1TJjDC" role="1B3o_S" />
+      <node concept="3clFbS" id="1ZLaG1TJjDH" role="3clF47">
+        <node concept="3clFbF" id="1ZLaG1TJjNd" role="3cqZAp">
+          <node concept="3clFbT" id="1ZLaG1TJjNc" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="10P_77" id="1ZLaG1TJjDI" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1ZLaG1TK$8T" role="13h7CS">
+      <property role="TrG5h" value="isEmptyTextOnLineWithOpenTag" />
+      <ref role="13i0hy" node="1Q3yR6CdyTo" resolve="isEmptyTextOnLineWithOpenTag" />
+      <node concept="3Tm1VV" id="1ZLaG1TK$8U" role="1B3o_S" />
+      <node concept="3clFbS" id="1ZLaG1TK$9f" role="3clF47">
+        <node concept="3clFbF" id="1ZLaG1TK$jO" role="3cqZAp">
+          <node concept="3clFbT" id="1ZLaG1TK$jN" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="10P_77" id="1ZLaG1TK$9g" role="3clF45" />
+    </node>
+  </node>
 </model>
 

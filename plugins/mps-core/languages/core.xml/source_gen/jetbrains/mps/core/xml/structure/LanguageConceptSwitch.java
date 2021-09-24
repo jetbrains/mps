@@ -32,10 +32,11 @@ public final class LanguageConceptSwitch {
   public static final int XmlProcessingInstruction = 20;
   public static final int XmlProlog = 21;
   public static final int XmlPrologElement = 22;
-  public static final int XmlText = 23;
-  public static final int XmlTextValue = 24;
-  public static final int XmlValuePart = 25;
-  public static final int XmlWhitespace = 26;
+  public static final int XmlSingleLineText = 23;
+  public static final int XmlText = 24;
+  public static final int XmlTextValue = 25;
+  public static final int XmlValuePart = 26;
+  public static final int XmlWhitespace = 27;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x479c7a8c02f943b5L, 0x9139d910cb22f298L);
@@ -62,6 +63,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x5c842a42c5494875L, XmlProcessingInstruction);
     builder.put(0x5c842a42c5494871L, XmlProlog);
     builder.put(0x6988ccb84e3bd0e5L, XmlPrologElement);
+    builder.put(0x1ff12ac079bd229fL, XmlSingleLineText);
     builder.put(0x16838b3fce9aa513L, XmlText);
     builder.put(0x5c842a42c54cfd1fL, XmlTextValue);
     builder.put(0x5c842a42c54cfd1cL, XmlValuePart);

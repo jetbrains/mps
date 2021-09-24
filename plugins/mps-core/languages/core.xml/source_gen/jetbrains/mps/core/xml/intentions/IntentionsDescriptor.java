@@ -42,9 +42,10 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept
-          intentions = new IntentionFactory[2];
+          intentions = new IntentionFactory[3];
           intentions[0] = new TurnToCData_Intention();
           intentions[1] = new SurroundWithCData_Intention();
+          intentions[2] = new ToggleSingleLineXmlText_Intention();
         }
         break;
       default:
@@ -56,11 +57,12 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[4];
+    IntentionFactory[] rv = new IntentionFactory[5];
     rv[0] = new SurroundWithElement_Intention();
     rv[1] = new TurnToCData_Intention();
     rv[2] = new SurroundWithCData_Intention();
     rv[3] = new TurnToElement_Intention();
+    rv[4] = new ToggleSingleLineXmlText_Intention();
     return Arrays.asList(rv);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL), MetaIdFactory.conceptId(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L)).seal();

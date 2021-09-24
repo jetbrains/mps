@@ -81,6 +81,7 @@
       <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
         <property id="2162403111523065396" name="cellId" index="1lyBwo" />
       </concept>
+      <concept id="8383079901754291618" name="jetbrains.mps.lang.editor.structure.CellModel_NextEditor" flags="ng" index="B$lHz" />
       <concept id="3473224453637651916" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder" flags="ng" index="CtIbL">
         <property id="3473224453637651917" name="placeInCell" index="CtIbK" />
       </concept>
@@ -4780,6 +4781,7 @@
   <node concept="22mcaB" id="1wEcoXjJGCV">
     <ref role="aqKnT" to="iuxj:1q3yNZeAEkj" resolve="XmlText" />
     <node concept="22hDWj" id="6UtCO5dGVMu" role="22hAXT" />
+    <node concept="2VfDsV" id="1ZLaG1TK0nk" role="3ft7WO" />
     <node concept="3eGOop" id="1wEcoXjJGrs" role="3ft7WO">
       <ref role="3EoQqy" to="iuxj:1q3yNZeAEkj" resolve="XmlText" />
       <node concept="16NfWO" id="1wEcoXjJGrt" role="upBLP">
@@ -5713,6 +5715,25 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="1ZLaG1TJiHs">
+    <ref role="1XX52x" to="iuxj:1ZLaG1TJiav" resolve="XmlSingleLineText" />
+    <node concept="3EZMnI" id="1ZLaG1TJiJU" role="2wV5jI">
+      <node concept="3F0ifn" id="1ZLaG1TJiMt" role="3EZMnx">
+        <property role="3F0ifm" value="[" />
+        <node concept="3mYdg7" id="1ZLaG1TLo2y" role="3F10Kt">
+          <property role="1413C4" value="singleLineText" />
+        </node>
+      </node>
+      <node concept="B$lHz" id="1ZLaG1TJiT_" role="3EZMnx" />
+      <node concept="3F0ifn" id="1ZLaG1TJiNL" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+        <node concept="3mYdg7" id="1ZLaG1TLo3o" role="3F10Kt">
+          <property role="1413C4" value="singleLineText" />
+        </node>
+      </node>
+      <node concept="2iRfu4" id="1ZLaG1TJiJX" role="2iSdaV" />
     </node>
   </node>
 </model>
