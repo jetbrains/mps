@@ -175,7 +175,7 @@ public class DependenciesPanel extends JPanel {
     group.add(new CloseAction());
     group.add(new RerunAction());
     group.add(new ToggleUsedLanguages());
-    return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true).getComponent();
+    return ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true).getComponent();
   }
 
   public boolean isMeta() {

@@ -164,7 +164,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
     showSource = new ShowSourceAction("Show Source", AllIcons.Actions.Preview, false);
     showSource.registerCustomShortcutSet(new CompositeShortcutSet(CommonShortcuts.getViewSource(), CommonShortcuts.CTRL_ENTER), myPanel);
     group.add(showSource);
-    return ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, group, true);
+    return ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true);
   }
 
   private void updateControls() {

@@ -5582,8 +5582,8 @@
               </node>
               <node concept="liA8E" id="2p3Oqnx0Trt" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                <node concept="10M0yZ" id="2p3Oqnx0Tru" role="37wK5m">
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
+                <node concept="10M0yZ" id="1V_XV5a7Z8j" role="37wK5m">
+                  <ref role="3cqZAo" to="qkt:~ActionPlaces.TOOLBAR" resolve="TOOLBAR" />
                   <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
                 </node>
                 <node concept="3$FqnI" id="7V1YZ6sOIsy" role="37wK5m">

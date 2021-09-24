@@ -10183,8 +10183,8 @@
             <node concept="2OqwBi" id="5zPLqcHJBj8" role="33vP2m">
               <node concept="liA8E" id="5zPLqcHJBj9" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                <node concept="10M0yZ" id="5zPLqcHJBja" role="37wK5m">
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
+                <node concept="10M0yZ" id="1V_XV5adIUj" role="37wK5m">
+                  <ref role="3cqZAo" to="qkt:~ActionPlaces.TOOLBAR" resolve="TOOLBAR" />
                   <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
                 </node>
                 <node concept="37vLTw" id="5zPLqcHJBjb" role="37wK5m">
@@ -15253,9 +15253,9 @@
             <node concept="2OqwBi" id="778KdJ_sY65" role="33vP2m">
               <node concept="liA8E" id="778KdJ_sY66" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                <node concept="10M0yZ" id="778KdJ_sY67" role="37wK5m">
+                <node concept="10M0yZ" id="1V_XV5ae6jW" role="37wK5m">
+                  <ref role="3cqZAo" to="qkt:~ActionPlaces.TOOLBAR" resolve="TOOLBAR" />
                   <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
                 </node>
                 <node concept="37vLTw" id="778KdJ_tM2d" role="37wK5m">
                   <ref role="3cqZAo" node="778KdJ_sY5R" resolve="actionGroup" />

@@ -40,7 +40,7 @@ import java.awt.event.FocusEvent;
 
     JPanel toolbarPanel = new JPanel(new BorderLayout());
     toolbarPanel.setOpaque(false);
-    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup")), true);
+    myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.POPUP, ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup")), true);
     myToolbar.setTargetComponent(myPainter.getEditorComponent());
     toolbarPanel.add(myToolbar.getComponent(), BorderLayout.WEST);
     add(toolbarPanel, BorderLayout.NORTH);
