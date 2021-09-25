@@ -163,7 +163,7 @@ public final class CommitsGraphNode implements Comparable {
     }
   }
 
-  /*package*/ boolean isDescendantOf(CommitsGraphNode node) {
+  public boolean isDescendantOf(CommitsGraphNode node) {
     return SetSequence.fromSet(getAncestors()).contains(node);
   }
 

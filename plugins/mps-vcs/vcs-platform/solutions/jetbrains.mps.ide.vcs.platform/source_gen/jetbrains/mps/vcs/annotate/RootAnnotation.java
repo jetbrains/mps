@@ -11,29 +11,28 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.vcs.history.RootCommitsGraphTraverser;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.Map;
+import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.concurrent.ConcurrentHashMap;
+import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CopyOnWriteArrayList;
+import jetbrains.mps.vcs.history.CommitsGraph;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.mps.openapi.model.SModel;
-import com.intellij.openapi.vcs.history.VcsRevisionNumber;
-import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.vcs.history.CurrentRevision;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.vcs.history.VcsRevisionNumber;
+import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Objects;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import java.util.Collection;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
@@ -47,7 +46,6 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
@@ -60,22 +58,21 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   private final ModelAccess myModelAccess;
   private RootCommitsGraphTraverser myRevisionsGraphTraverser;
   private final VirtualFile myFile;
-  private final Project myProject;
+  private final Map<CommitsGraphNode, RevisionChanges> myAnnotation = new ConcurrentHashMap<CommitsGraphNode, RevisionChanges>();
+  @Nullable
   private CommitsGraphNode myLocalCommitsGraphNode;
-  private Map<CommitsGraphNode, RevisionChanges> myAnnotation = new ConcurrentHashMap<CommitsGraphNode, RevisionChanges>();
-  private RevisionChanges myLocalChanges;
-  private List<CommitsGraphNode> myProcessedCommits = new CopyOnWriteArrayList<CommitsGraphNode>();
+  private final List<CommitsGraphNode> myProcessedCommits = new CopyOnWriteArrayList<CommitsGraphNode>();
+  private final CommitsGraph myCommitsGraph;
 
 
-  /*package*/ RootAnnotation(VirtualFile file, SNodeId rootId, ModelAccess modelAccess, Project project) {
+  /*package*/ RootAnnotation(VirtualFile file, SNodeId rootId, ModelAccess modelAccess, @NotNull CommitsGraph commitsGraph) {
     myFile = file;
     myRootId = rootId;
     myModelAccess = modelAccess;
-    myProject = project;
+    myCommitsGraph = commitsGraph;
   }
 
-  /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel, final VcsRevisionNumber revisionNumber) throws RootCommitsGraphTraverser.ModelReadException, CommitsGraph.BuildException {
-    CommitsGraph commitsGraph = new CommitsGraph(myProject, myFile, revisions);
+  /*package*/ void annotate(List<VcsFileRevision> revisions, SModel currentModel) throws RootCommitsGraphTraverser.ModelReadException {
     CurrentRevision currentRevision = new CurrentRevision(myFile, new VcsRevisionNumber() {
       @Override
       public int compareTo(VcsRevisionNumber p0) {
@@ -89,13 +86,9 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     });
     if (currentModel != null) {
       myLocalCommitsGraphNode = new CommitsGraphNode(currentRevision, currentModel);
-      commitsGraph.addLocalRevisionNode(myLocalCommitsGraphNode);
+      myCommitsGraph.addLocalRevisionNode(myLocalCommitsGraphNode);
     }
-    CommitsGraphNode startNode = (revisionNumber == null ? commitsGraph.getHeadNode() : CollectionSequence.fromCollection(commitsGraph.getNodes()).where(new IWhereFilter<CommitsGraphNode>() {
-      public boolean accept(CommitsGraphNode it) {
-        return Objects.equals(it.getRevision().getRevisionNumber(), revisionNumber);
-      }
-    }).first());
+    CommitsGraphNode startNode = myCommitsGraph.getHeadNode();
     if (startNode == null) {
       return;
     }
@@ -107,46 +100,16 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     }
   }
 
+  /*package*/ CommitsGraph getCommitsGraph() {
+    return myCommitsGraph;
+  }
+
   /*package*/ void cancelAnnotate() {
-    check_nt8dt4_a0a71(myRevisionsGraphTraverser);
+    check_nt8dt4_a0a81(myRevisionsGraphTraverser);
   }
 
-  /*package*/ synchronized List<RevisionChanges> getChanges() {
-    final List<RevisionChanges> result = ListSequence.fromList(new ArrayList<RevisionChanges>());
-    if (myLocalChanges != null) {
-      ListSequence.fromList(result).addElement(myLocalChanges);
-    }
-    Sequence.fromIterable(MapSequence.fromMap(myAnnotation).values()).visitAll(new IVisitor<RevisionChanges>() {
-      public void visit(RevisionChanges it) {
-        Collection<RevisionNodeChange> visibleChanges = getVisibleChanges(it.getNodeChanges());
-        if (CollectionSequence.fromCollection(visibleChanges).isNotEmpty()) {
-          ListSequence.fromList(result).addElement(new RevisionChanges(it.getCommitsGraphNode(), visibleChanges));
-        }
-      }
-    });
-    return result;
-  }
-
-  private Collection<RevisionNodeChange> getVisibleChanges(Collection<RevisionNodeChange> changes) {
-    if (myLocalChanges == null) {
-      return CollectionSequence.fromCollectionWithValues(new ArrayList<RevisionNodeChange>(), changes);
-    }
-    return CollectionSequence.fromCollection(changes).where(new IWhereFilter<RevisionNodeChange>() {
-      public boolean accept(RevisionNodeChange change) {
-        return changeIsVisible(change);
-      }
-    }).toListSequence();
-  }
-
-  private boolean changeIsVisible(final RevisionNodeChange commitChange) {
-    return CollectionSequence.fromCollection(myLocalChanges.getNodeChanges()).where(new IWhereFilter<RevisionNodeChange>() {
-      public boolean accept(RevisionNodeChange localChange) {
-        return commitChange.sameAs(localChange);
-      }
-    }).isEmpty();
-  }
-
-  /*package*/ void dispose() {
+  /*package*/ synchronized Collection<RevisionChanges> getChanges() {
+    return CollectionSequence.fromCollectionWithValues(new ArrayList<RevisionChanges>(), MapSequence.fromMap(myAnnotation).values());
   }
 
   /*package*/ void addUpdateListener(@NotNull RootAnnotationUpdateListener r) {
@@ -241,6 +204,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   @Override
   public void processLastCommit(@NotNull CommitsGraphNode graphNode) {
     SModel model = graphNode.getLoadedModel();
+    graphNode.setIdChanges(Sequence.fromIterable(Collections.<ModelChange>emptyList()));
     processCommitChanges(Arrays.asList(new AddRootChange(new ChangeSetImpl(model, model), myRootId)), graphNode.getNodeWithLoadedModel());
   }
 
@@ -248,7 +212,6 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     if (myLocalCommitsGraphNode == null || ListSequence.fromList(myLocalCommitsGraphNode.getParents()).isEmpty() || !(ListSequence.fromList(myLocalCommitsGraphNode.getParents()).first().isModelLoaded())) {
       return;
     }
-    myLocalChanges = null;
     processSimpleCommit(myLocalCommitsGraphNode);
   }
 
@@ -281,58 +244,25 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   }
 
   private synchronized void processCommitChanges(List<ModelChange> modelChanges, final CommitsGraphNode graphNode) {
-
     final Set<SNodeId> movedNodesIds = getMovedNodeIds(modelChanges);
-    final Collection<RevisionNodeChange> nodeChanges = CollectionSequence.fromCollection(new ArrayList<RevisionNodeChange>());
-    for (final StructureChange modelChange : ListSequence.fromList(getRelevantChanges(modelChanges))) {
-      final Wrappers._T<Collection<RevisionNodeChange>> revisionNodeChanges = new Wrappers._T<Collection<RevisionNodeChange>>();
-      myModelAccess.runReadAction(() -> revisionNodeChanges.value = RevisionNodeChange.createRevisionNodeChanges(graphNode, modelChange, movedNodesIds));
-      CollectionSequence.fromCollection(revisionNodeChanges.value).visitAll(new IVisitor<RevisionNodeChange>() {
-        public void visit(RevisionNodeChange it) {
-          tryToAddNodeChange(it, graphNode, nodeChanges);
-        }
-      });
-    }
-    if (CollectionSequence.fromCollection(nodeChanges).isNotEmpty()) {
-      if (graphNode.isLocalRevision()) {
-        myLocalChanges = new RevisionChanges(graphNode, nodeChanges);
-      } else {
-        MapSequence.fromMap(myAnnotation).put(graphNode, new RevisionChanges(graphNode, nodeChanges));
+    Collection<RevisionNodeChange> revisionNodeChanges = ListSequence.fromList(getRelevantChanges(modelChanges)).translate(new ITranslator2<StructureChange, RevisionNodeChange>() {
+      public Iterable<RevisionNodeChange> translate(StructureChange it) {
+        return getRevisionNodeChangesForModelChange(it, graphNode, movedNodesIds);
       }
+    }).toListSequence();
+    if (CollectionSequence.fromCollection(revisionNodeChanges).isNotEmpty()) {
+      MapSequence.fromMap(myAnnotation).put(graphNode, new RevisionChanges(graphNode, revisionNodeChanges));
     }
   }
 
-  private void tryToAddNodeChange(final RevisionNodeChange nodeChange, CommitsGraphNode graphNode, Collection<RevisionNodeChange> nodeChanges) {
-
-    if (nodeChange.getMessageTarget() instanceof DeletedNodeMessageTarget) {
-      return;
-    }
-
-    if (graphNode.isLocalRevision()) {
-      CollectionSequence.fromCollection(nodeChanges).addElement(nodeChange);
-      return;
-    }
-
-    RevisionNodeChange sameChange = MapSequence.fromMap(myAnnotation).select(new ISelector<IMapping<CommitsGraphNode, RevisionChanges>, RevisionChanges>() {
-      public RevisionChanges select(IMapping<CommitsGraphNode, RevisionChanges> it) {
-        return it.value();
-      }
-    }).translate(new ITranslator2<RevisionChanges, RevisionNodeChange>() {
-      public Iterable<RevisionNodeChange> translate(RevisionChanges it) {
-        return it.getNodeChanges();
-      }
-    }).where(new IWhereFilter<RevisionNodeChange>() {
+  private Iterable<RevisionNodeChange> getRevisionNodeChangesForModelChange(final StructureChange modelChange, final CommitsGraphNode graphNode, final Set<SNodeId> movedNodesIds) {
+    final Wrappers._T<Collection<RevisionNodeChange>> modelChangeNodeChanges = new Wrappers._T<Collection<RevisionNodeChange>>();
+    myModelAccess.runReadAction(() -> modelChangeNodeChanges.value = RevisionNodeChange.createRevisionNodeChanges(graphNode, modelChange, movedNodesIds));
+    return CollectionSequence.fromCollection(modelChangeNodeChanges.value).where(new IWhereFilter<RevisionNodeChange>() {
       public boolean accept(RevisionNodeChange it) {
-        return it.sameAs(nodeChange);
+        return !(it.getMessageTarget() instanceof DeletedNodeMessageTarget);
       }
-    }).first();
-
-    if (sameChange == null || sameChange.getCommitsGraphNode().compareTo(nodeChange.getCommitsGraphNode()) < 0) {
-      CollectionSequence.fromCollection(nodeChanges).addElement(nodeChange);
-      if (sameChange != null) {
-        CollectionSequence.fromCollection(MapSequence.fromMap(myAnnotation).get(sameChange.getCommitsGraphNode()).getNodeChanges()).removeElement(sameChange);
-      }
-    }
+    });
   }
 
   private ModelChangeSet calcChangeSet(final SModel prevModel, final SModel model, final boolean withOpposite) {
@@ -354,7 +284,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   /*package*/ List<CommitsGraphNode> getProcessedCommits() {
     return myProcessedCommits;
   }
-  private static void check_nt8dt4_a0a71(RootCommitsGraphTraverser checkedDotOperand) {
+  private static void check_nt8dt4_a0a81(RootCommitsGraphTraverser checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.stop();
     }

@@ -66,9 +66,7 @@
     <import index="px75" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.leftHighlighter(MPS.Editor/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="e0ho" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.vcs.log.impl(MPS.IDEA/)" />
-    <import index="iho" ref="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
-    <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
     <import index="idua" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.vcs.log(MPS.IDEA/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="jbqa" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ide(MPS.IDEA/)" />
@@ -4638,7 +4636,6 @@
                   <node concept="37vLTw" id="6_X3MDMUBHy" role="37wK5m">
                     <ref role="3cqZAo" node="3_ALl2yyU3f" resolve="actionLock" />
                   </node>
-                  <node concept="10Nm6u" id="5hLQ1IgACDs" role="37wK5m" />
                 </node>
               </node>
             </node>
@@ -6694,6 +6691,9 @@
       <node concept="tCFHf" id="2Qdh779$UEU" role="ftvYc">
         <ref role="tCJdB" node="2Qdh779$bbR" resolve="AnnotatePreviousRevision" />
       </node>
+      <node concept="tCFHf" id="1YQ$Agpy6zG" role="ftvYc">
+        <ref role="tCJdB" node="1YQ$Agpgz3w" resolve="ExcludeRevision" />
+      </node>
     </node>
     <node concept="tT9cl" id="1Xv6sND23T8" role="2f5YQi">
       <ref role="tU$_T" to="ekwn:1xsN4xJX8VI" resolve="EditorPopup" />
@@ -7155,6 +7155,160 @@
       <node concept="10M0yZ" id="6PVY$JZgRc_" role="3xaMm5">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Annotate" resolve="Annotate" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
+      </node>
+    </node>
+  </node>
+  <node concept="sE7Ow" id="1YQ$Agpgz3w">
+    <property role="3GE5qa" value="Actions" />
+    <property role="TrG5h" value="HideRevision" />
+    <property role="2uzpH1" value="Hide Revision" />
+    <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <node concept="1DS2jV" id="1YQ$Agpgz3x" role="1NuT2Z">
+      <property role="TrG5h" value="component" />
+      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_COMPONENT" resolve="EDITOR_COMPONENT" />
+      <node concept="1oajcY" id="1YQ$Agpgz3y" role="1oa70y" />
+    </node>
+    <node concept="1DS2jV" id="1YQ$Agpgz3z" role="1NuT2Z">
+      <property role="TrG5h" value="cell" />
+      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CELL" resolve="EDITOR_CELL" />
+      <node concept="1oajcY" id="1YQ$Agpgz3$" role="1oa70y" />
+    </node>
+    <node concept="2XrIbr" id="1YQ$Agpgz3_" role="32lrUH">
+      <property role="TrG5h" value="getCellMessage" />
+      <node concept="3uibUv" id="1YQ$Agpgz3A" role="3clF45">
+        <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
+      </node>
+      <node concept="3clFbS" id="1YQ$Agpgz3B" role="3clF47">
+        <node concept="3clFbF" id="1YQ$Agpgz3C" role="3cqZAp">
+          <node concept="2YIFZM" id="1YQ$Agpgz3D" role="3clFbG">
+            <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
+            <ref role="37wK5l" node="4eJXCVM9_O_" resolve="getMessageForCell" />
+            <node concept="2OqwBi" id="1YQ$Agpgz3E" role="37wK5m">
+              <node concept="2WthIp" id="1YQ$Agpgz3F" role="2Oq$k0" />
+              <node concept="1DTwFV" id="1YQ$Agpgz3G" role="2OqNvi">
+                <ref role="2WH_rO" node="1YQ$Agpgz3x" resolve="component" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1YQ$Agpgz3H" role="37wK5m">
+              <node concept="2WthIp" id="1YQ$Agpgz3I" role="2Oq$k0" />
+              <node concept="1DTwFV" id="1YQ$Agpgz3J" role="2OqNvi">
+                <ref role="2WH_rO" node="1YQ$Agpgz3z" resolve="cell" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="1YQ$Agpgz3K" role="1B3o_S" />
+      <node concept="2AHcQZ" id="1YQ$Agpgz3L" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+    </node>
+    <node concept="tnohg" id="1YQ$Agpgz3M" role="tncku">
+      <node concept="3clFbS" id="1YQ$Agpgz3N" role="2VODD2">
+        <node concept="3cpWs8" id="1YQ$Agpgz3O" role="3cqZAp">
+          <node concept="3cpWsn" id="1YQ$Agpgz3P" role="3cpWs9">
+            <property role="TrG5h" value="cellMessage" />
+            <node concept="3uibUv" id="1YQ$Agpgz3Q" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:3WD3WEj2798" resolve="AnnotatedCellMessage" />
+            </node>
+            <node concept="2OqwBi" id="1YQ$Agpgz3R" role="33vP2m">
+              <node concept="2WthIp" id="1YQ$Agpgz3S" role="2Oq$k0" />
+              <node concept="2XshWL" id="1YQ$Agpgz3T" role="2OqNvi">
+                <ref role="2WH_rO" node="1YQ$Agpgz3_" resolve="getCellMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1YQ$Agpgz3U" role="3cqZAp">
+          <node concept="3cpWsn" id="1YQ$Agpgz3V" role="3cpWs9">
+            <property role="TrG5h" value="annotationColumn" />
+            <node concept="3uibUv" id="1YQ$Agpgz3W" role="1tU5fm">
+              <ref role="3uigEE" to="bvbc:hapR_kTy$1" resolve="AnnotationColumn" />
+            </node>
+            <node concept="2YIFZM" id="1YQ$Agpgz3X" role="33vP2m">
+              <ref role="1Pybhc" node="78RbNhWi9Md" resolve="VcsActionsUtil" />
+              <ref role="37wK5l" node="4eJXCVM8M3c" resolve="getAnnotationColumn" />
+              <node concept="2OqwBi" id="1YQ$Agpgz3Y" role="37wK5m">
+                <node concept="2WthIp" id="1YQ$Agpgz3Z" role="2Oq$k0" />
+                <node concept="1DTwFV" id="1YQ$Agpgz40" role="2OqNvi">
+                  <ref role="2WH_rO" node="1YQ$Agpgz3x" resolve="component" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1YQ$Agpgz41" role="3cqZAp">
+          <node concept="3clFbS" id="1YQ$Agpgz42" role="3clFbx">
+            <node concept="3cpWs6" id="1YQ$Agpgz43" role="3cqZAp" />
+          </node>
+          <node concept="22lmx$" id="1YQ$Agpgz44" role="3clFbw">
+            <node concept="3clFbC" id="1YQ$Agpgz45" role="3uHU7B">
+              <node concept="10Nm6u" id="1YQ$Agpgz46" role="3uHU7w" />
+              <node concept="37vLTw" id="1YQ$Agpgz47" role="3uHU7B">
+                <ref role="3cqZAo" node="1YQ$Agpgz3V" resolve="annotationColumn" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="1YQ$Agpgz48" role="3uHU7w">
+              <node concept="10Nm6u" id="1YQ$Agpgz49" role="3uHU7w" />
+              <node concept="37vLTw" id="1YQ$Agpgz4a" role="3uHU7B">
+                <ref role="3cqZAo" node="1YQ$Agpgz3P" resolve="cellMessage" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1YQ$Agpgz4b" role="3cqZAp">
+          <node concept="2OqwBi" id="1YQ$Agpgz4c" role="3clFbG">
+            <node concept="2OqwBi" id="1YQ$Agpgz4d" role="2Oq$k0">
+              <node concept="37vLTw" id="1YQ$Agpgz4e" role="2Oq$k0">
+                <ref role="3cqZAo" node="1YQ$Agpgz3V" resolve="annotationColumn" />
+              </node>
+              <node concept="liA8E" id="1YQ$Agpgz4f" role="2OqNvi">
+                <ref role="37wK5l" to="bvbc:51QsBmumgLR" resolve="getEditorAnnotation" />
+              </node>
+            </node>
+            <node concept="liA8E" id="1YQ$Agpgz4g" role="2OqNvi">
+              <ref role="37wK5l" to="bvbc:1YQ$AgphouZ" resolve="excludeRevision" />
+              <node concept="2OqwBi" id="1YQ$Agpgz4h" role="37wK5m">
+                <node concept="37vLTw" id="1YQ$Agpgz4i" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1YQ$Agpgz3P" resolve="cellMessage" />
+                </node>
+                <node concept="liA8E" id="1YQ$Agpgz4j" role="2OqNvi">
+                  <ref role="37wK5l" to="bvbc:nCL4V20hTI" resolve="getCommitsGraphNode" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="tkhdA" id="1YQ$Agpgz4k" role="tmbBb">
+      <node concept="3clFbS" id="1YQ$Agpgz4l" role="2VODD2">
+        <node concept="3clFbF" id="1YQ$Agpgz4u" role="3cqZAp">
+          <node concept="1rXfSq" id="1YQ$Agpgz4v" role="3clFbG">
+            <ref role="37wK5l" to="7bx7:~BaseAction.setEnabledState(com.intellij.openapi.actionSystem.Presentation,boolean)" resolve="setEnabledState" />
+            <node concept="2OqwBi" id="1YQ$Agpgz4w" role="37wK5m">
+              <node concept="tl45R" id="1YQ$Agpgz4x" role="2Oq$k0" />
+              <node concept="liA8E" id="1YQ$Agpgz4y" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="3y3z36" id="1YQ$Agpgz4z" role="37wK5m">
+              <node concept="10Nm6u" id="1YQ$Agpgz4$" role="3uHU7w" />
+              <node concept="2OqwBi" id="1YQ$Agpgz4_" role="3uHU7B">
+                <node concept="2WthIp" id="1YQ$Agpgz4A" role="2Oq$k0" />
+                <node concept="2XshWL" id="1YQ$Agpgz4B" role="2OqNvi">
+                  <ref role="2WH_rO" node="1YQ$Agpgz3_" resolve="getCellMessage" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1QGGSu" id="1YQ$Agpgz4C" role="3Uehp1">
+      <node concept="10M0yZ" id="5tfq$cL$Qu5" role="3xaMm5">
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Vcs.Remove" resolve="Remove" />
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Vcs" resolve="Vcs" />
       </node>
     </node>
   </node>

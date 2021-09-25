@@ -32,6 +32,9 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import java.util.Collection;
+import java.util.Objects;
+import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.annotations.NotNull;
@@ -39,17 +42,16 @@ import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.Objects;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import java.awt.Color;
 import java.util.Iterator;
-import java.util.Collection;
 import jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.ui.EditorNotifications;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
@@ -71,15 +73,13 @@ import com.intellij.diff.DiffManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
-import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
-import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import java.io.IOException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1507597541852241756", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
-public final class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.UpdateListener {
+public final class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.UpdateListener, RootAnnotation.RootAnnotationUpdateListener {
 
   private final EditorComponent myEditorComponent;
   private final RootAnnotation myRootAnnotation;
@@ -94,18 +94,27 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private List<VcsFileRevision> myAllRevisions;
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
   private CommitsGraphNode myCommitUnderMouse;
+  private final List<CommitsGraphNode> myHiddenRevisions = ListSequence.fromList(new ArrayList<CommitsGraphNode>());
+  @Nullable
+  private final VcsFileRevision myRevision;
 
 
-  /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, MPSProject mpsProject, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions) {
+  /*package*/ EditorAnnotation(EditorComponent editorComponent, VirtualFile file, AbstractVcs vcs, MPSProject mpsProject, RootAnnotation rootAnnotation, List<VcsFileRevision> revisions, @Nullable VcsFileRevision revision) {
     myEditorComponent = editorComponent;
     myFile = file;
     myVcs = vcs;
     myMpsProject = mpsProject;
     myRootAnnotation = rootAnnotation;
     myAllRevisions = revisions;
-    myRootAnnotation.addUpdateListener((RevisionChanges changes) -> processVcsChanges(changes));
+    myRevision = revision;
+    myRootAnnotation.addUpdateListener(this);
     myUpdateQueue = new MergingUpdateQueue(getClass().getSimpleName(), 300, true, null, null, null, false);
     AnnotationOptions.getInstance().addUpdateListener(this);
+  }
+
+  @Override
+  public void revisionProcessed(RevisionChanges changes) {
+    processVcsChanges(changes);
   }
 
   /*package*/ interface LineAnnotationsUpdateListener {
@@ -232,7 +241,9 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   private void resetCellAnnotations() {
     MapSequence.fromMap(myCellAnnotations).clear();
-    myRootAnnotation.resetLocalChanges();
+    if (myRevision == null) {
+      myRootAnnotation.resetLocalChanges();
+    }
     createAnnotations();
   }
 
@@ -247,13 +258,81 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     List<RevisionChanges> changesGroups = ListSequence.fromList(new ArrayList<RevisionChanges>());
     synchronized (myVcsChangesGroups) {
       ListSequence.fromList(myVcsChangesGroups).clear();
-      ListSequence.fromList(changesGroups).addSequence(ListSequence.fromList(myRootAnnotation.getChanges()));
+      ListSequence.fromList(changesGroups).addSequence(CollectionSequence.fromCollection(getChanges()));
     }
     ListSequence.fromList(changesGroups).visitAll(new IVisitor<RevisionChanges>() {
       public void visit(RevisionChanges changes) {
         createAnnotationsForChanges(changes);
       }
     });
+  }
+
+  private Collection<RevisionChanges> getChanges() {
+    final Collection<RevisionChanges> result = CollectionSequence.fromCollection(new ArrayList<RevisionChanges>());
+    final CommitsGraphNode revisionNode = (myRevision == null ? null : CollectionSequence.fromCollection(myRootAnnotation.getCommitsGraph().getNodes()).findFirst(new IWhereFilter<CommitsGraphNode>() {
+      public boolean accept(CommitsGraphNode it) {
+        return Objects.equals(it.getRevision().getRevisionNumber(), myRevision.getRevisionNumber());
+      }
+    }));
+    CollectionSequence.fromCollection(myRootAnnotation.getChanges()).visitAll(new IVisitor<RevisionChanges>() {
+      public void visit(RevisionChanges it) {
+        addRevisionChangesToResult(it, revisionNode, result);
+      }
+    });
+    return CollectionSequence.fromCollection(result).where(new IWhereFilter<RevisionChanges>() {
+      public boolean accept(RevisionChanges it) {
+        return CollectionSequence.fromCollection(it.getNodeChanges()).isNotEmpty();
+      }
+    }).toListSequence();
+  }
+
+  private void addRevisionChangesToResult(RevisionChanges revisionChanges, CommitsGraphNode revisionNode, final Collection<RevisionChanges> result) {
+
+    if (ListSequence.fromList(myHiddenRevisions).contains(revisionChanges.getCommitsGraphNode())) {
+      return;
+    }
+
+    if (revisionNode != null && revisionNode != revisionChanges.getCommitsGraphNode() && !(revisionNode.isDescendantOf(revisionChanges.getCommitsGraphNode()))) {
+      return;
+    }
+
+    Iterable<RevisionNodeChange> revisionNodeChanges = CollectionSequence.fromCollection(revisionChanges.getNodeChanges()).where(new IWhereFilter<RevisionNodeChange>() {
+      public boolean accept(RevisionNodeChange revisionNodeChange) {
+        return !(revisionNodeChange.getMessageTarget() instanceof DeletedNodeMessageTarget);
+      }
+    });
+    final Collection<RevisionNodeChange> latestNodeChanges = CollectionSequence.fromCollection(new ArrayList<RevisionNodeChange>());
+    Sequence.fromIterable(revisionNodeChanges).visitAll(new IVisitor<RevisionNodeChange>() {
+      public void visit(RevisionNodeChange it) {
+        final RevisionNodeChange sameChange = findSameChange(it, result);
+        if (sameChange == null || sameChange.getCommitsGraphNode().compareTo(it.getCommitsGraphNode()) < 0) {
+          CollectionSequence.fromCollection(latestNodeChanges).addElement(it);
+          if (sameChange != null) {
+            CollectionSequence.fromCollection(CollectionSequence.fromCollection(result).findFirst(new IWhereFilter<RevisionChanges>() {
+              public boolean accept(RevisionChanges it) {
+                return CollectionSequence.fromCollection(it.getNodeChanges()).contains(sameChange);
+              }
+            }).getNodeChanges()).removeElement(sameChange);
+          }
+        }
+      }
+    });
+    if (CollectionSequence.fromCollection(latestNodeChanges).isNotEmpty()) {
+      CollectionSequence.fromCollection(result).addElement(new RevisionChanges(revisionChanges.getCommitsGraphNode(), latestNodeChanges));
+    }
+  }
+
+  @Nullable
+  private static RevisionNodeChange findSameChange(final RevisionNodeChange nodeChange, Collection<RevisionChanges> revisionChangeses) {
+    return CollectionSequence.fromCollection(revisionChangeses).translate(new ITranslator2<RevisionChanges, RevisionNodeChange>() {
+      public Iterable<RevisionNodeChange> translate(RevisionChanges it) {
+        return it.getNodeChanges();
+      }
+    }).where(new IWhereFilter<RevisionNodeChange>() {
+      public boolean accept(RevisionNodeChange it) {
+        return it.sameAs(nodeChange);
+      }
+    }).first();
   }
 
   private Set<CellAnnotation> createAnnotationsForChanges(RevisionChanges changes) {
@@ -265,9 +344,15 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   private Set<CellAnnotation> createAnnotationsForChange(final RevisionNodeChange change) {
-    return SetSequence.fromSetWithValues(new HashSet<CellAnnotation>(), ListSequence.fromList(getCellsForChange(change)).select(new ISelector<EditorCell, CellAnnotation>() {
+    List<EditorCell> cells = getCellsForChange(change);
+    final Set<SNodeId> cellNodeIds = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(cells).select(new ISelector<EditorCell, SNodeId>() {
+      public SNodeId select(EditorCell it) {
+        return it.getSNode().getNodeId();
+      }
+    }));
+    return SetSequence.fromSetWithValues(new HashSet<CellAnnotation>(), ListSequence.fromList(cells).select(new ISelector<EditorCell, CellAnnotation>() {
       public CellAnnotation select(EditorCell cell) {
-        return createCellAnnotation(cell, change);
+        return createCellAnnotation(cell, change, cellNodeIds);
       }
     }).where(new NotNullWhereFilter<CellAnnotation>()));
   }
@@ -281,7 +366,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   }
 
   @Nullable
-  private CellAnnotation createCellAnnotation(@NotNull EditorCell cell, RevisionNodeChange change) {
+  private CellAnnotation createCellAnnotation(@NotNull EditorCell cell, RevisionNodeChange change, Set<SNodeId> cellNodeIds) {
 
     CellAnnotation oldAnnotation = MapSequence.fromMap(myCellAnnotations).get(cell);
     if (oldAnnotation != null && oldAnnotation.getCommitsGraphNode().compareTo(change.getCommitsGraphNode()) > 0) {
@@ -289,13 +374,16 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     }
 
     Set<RevisionNodeChange> changes = SetSequence.fromSet(new HashSet<RevisionNodeChange>());
+    Set<SNodeId> allowedNodeIds = SetSequence.fromSet(new HashSet<SNodeId>());
     if (oldAnnotation != null && oldAnnotation.getCommitsGraphNode() == change.getCommitsGraphNode()) {
       SetSequence.fromSet(changes).addSequence(SetSequence.fromSet(oldAnnotation.getChanges()));
+      SetSequence.fromSet(allowedNodeIds).addSequence(SetSequence.fromSet(oldAnnotation.getAllowedNodeIds()));
     }
     if (!(SetSequence.fromSet(changes).contains(change))) {
       SetSequence.fromSet(changes).addElement(change);
     }
-    CellAnnotation newAnnotation = new CellAnnotation(cell, change.getCommitsGraphNode(), changes);
+    SetSequence.fromSet(allowedNodeIds).addSequence(SetSequence.fromSet(cellNodeIds));
+    CellAnnotation newAnnotation = new CellAnnotation(cell, change.getCommitsGraphNode(), changes, allowedNodeIds);
     MapSequence.fromMap(myCellAnnotations).put(cell, newAnnotation);
     return newAnnotation;
   }
@@ -320,6 +408,15 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       return;
     }
 
+    final SNodeId cellNodeId = cell.getSNode().getNodeId();
+    if (!(SetSequence.fromSet(cellAnnotation.getAllowedNodeIds()).contains(cellNodeId)) && !(SetSequence.fromSet(cellAnnotation.getChanges()).translate(new ITranslator2<RevisionNodeChange, SNodeId>() {
+      public Iterable<SNodeId> translate(RevisionNodeChange it) {
+        return it.getNodeIds();
+      }
+    }).contains(cellNodeId))) {
+      return;
+    }
+
     changes = SetSequence.fromSetWithValues(new HashSet<RevisionNodeChange>(), SetSequence.fromSet(changes).where(new IWhereFilter<RevisionNodeChange>() {
       public boolean accept(final RevisionNodeChange it) {
         if (SetSequence.fromSet(it.getNodeIds()).count() == 1) {
@@ -330,7 +427,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
             return !(commentedNode);
           }
         }
-        return !(ListSequence.fromList(it.getMovedChildIds()).contains(cell.getSNode().getNodeId()));
+        return !(ListSequence.fromList(it.getMovedChildIds()).contains(cellNodeId));
       }
     }));
 
@@ -380,7 +477,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       }
     });
     myLineAnnotationsRef.set(lineAnnotations);
-    check_coav66_a3a36(myLineAnnotationsUpdateListener);
+    check_coav66_a3a37(myLineAnnotationsUpdateListener);
   }
 
   @NotNull
@@ -426,9 +523,11 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   public void dispose() {
     AnnotationOptions.getInstance().removeUpdateListener(this);
-    myRootAnnotation.dispose();
+    myRootAnnotation.removeUpdateListener(this);
     myUpdateQueue.cancelAllUpdates();
     Disposer.dispose(myUpdateQueue);
+    ListSequence.fromList(myHiddenRevisions).clear();
+    EditorNotifications.getInstance(myMpsProject.getProject()).updateAllNotifications();
     unhighlightCells();
   }
 
@@ -556,7 +655,34 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ShowAllAffectedGenericAction.showSubmittedFiles(myMpsProject.getProject(), revision.getRevisionNumber(), myFile, myVcs.getKeyInstanceMethod());
   }
 
-  public void showDiff(final CommitsGraphNode node) {
+  public void hideRevision(@NotNull CommitsGraphNode node) {
+    ListSequence.fromList(myHiddenRevisions).addElement(node);
+    onHiddenRevisionsUpdate();
+  }
+
+  public void showHiddenRevisions() {
+    ListSequence.fromList(myHiddenRevisions).clear();
+    onHiddenRevisionsUpdate();
+  }
+
+  public void showLastHiddenRevision() {
+    if (ListSequence.fromList(myHiddenRevisions).isEmpty()) {
+      return;
+    }
+    ListSequence.fromList(myHiddenRevisions).removeLastElement();
+    onHiddenRevisionsUpdate();
+  }
+
+  private void onHiddenRevisionsUpdate() {
+    updateAndRepaint();
+    EditorNotifications.getInstance(myMpsProject.getProject()).updateAllNotifications();
+  }
+
+  /*package*/ List<CommitsGraphNode> getHiddenRevisions() {
+    return myHiddenRevisions;
+  }
+
+  public void showDiff(@NotNull final CommitsGraphNode node) {
 
     final Reference<VcsException> exception1 = new Reference<VcsException>();
     final Reference<DiffRequest> request = new Reference<DiffRequest>();
@@ -606,36 +732,36 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
         }
       }
     });
-
   }
 
   public void annotateRevision(final VcsFileRevision revision) {
-    final SModel commitModel = loadRevisionModel(revision);
-    if (commitModel == null) {
-      return;
-    }
-    final SNode root = commitModel.getNode(getRootId());
-    if (root == null) {
-      return;
-    }
-
-    final String shortCommit = revision.getRevisionNumber().asString().substring(0, 8);
-    final String taskName = root.getPresentation() + "(" + shortCommit + ")";
-    getModelAccess().runWriteAction(() -> DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true));
-
-    getModelAccess().runReadInEDT(() -> {
-      Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
-      if (newEditor != null) {
-        EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
-        if (newEditorComponent != null) {
-          // Revision editor is read-only and should not be highlighted. 
-          // Similarly, editors in the Diff dialog window are not highlighted.
-          newEditorComponent.getHighlighter().setPaused(true);
-          BackgroundableActionLock actionLock = VcsActionsUtil.getAnnotateRootLock(myMpsProject.getProject(), taskName);
-          actionLock.lock();
-          ProgressManager.getInstance().run(new AnnotateBackgroundableTask(myMpsProject, taskName, newEditorComponent, myFile, myVcs, actionLock, revision));
-        }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      final SModel commitModel = loadRevisionModel(revision);
+      if (commitModel == null) {
+        return;
       }
+      final SNode root = commitModel.getNode(getRootId());
+      if (root == null) {
+        return;
+      }
+
+      final String shortCommit = revision.getRevisionNumber().asString().substring(0, 8);
+      getModelAccess().runWriteAction(() -> DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true));
+
+      getModelAccess().runReadInEDT(() -> {
+        Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
+        if (newEditor != null) {
+          EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
+          if (newEditorComponent != null) {
+            // Revision editor is read-only and should not be highlighted. 
+            // Similarly, editors in the Diff dialog window are not highlighted.
+            newEditorComponent.getHighlighter().setPaused(true);
+            EditorAnnotation revisionEditorAnnotation = new EditorAnnotation(newEditorComponent, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, revision);
+            AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation);
+            revisionEditorAnnotation.updateAndRepaint();
+          }
+        }
+      });
     });
   }
 
@@ -654,7 +780,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     }
     return commitModel;
   }
-  private static void check_coav66_a3a36(LineAnnotationsUpdateListener checkedDotOperand) {
+  private static void check_coav66_a3a37(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.lineAnnotationsUpdated();
     }

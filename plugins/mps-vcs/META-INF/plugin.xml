@@ -83,6 +83,7 @@
 
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
+    <editorNotificationProvider implementation="jetbrains.mps.vcs.annotate.AnnotationEditorNotificationProvider"/>
 
     <!--
       FIXME has to point to /languages as it's in build layout in mpsVcs but that would lead to module discovery errors when running from sources

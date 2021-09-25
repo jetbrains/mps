@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.vcs.history.CommitsGraphNode;
 import java.util.Set;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6338414166353859879", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
@@ -17,26 +18,34 @@ public final class CellAnnotation {
   private final CommitsGraphNode myRevisionsGraphNode;
   @NotNull
   private final Set<RevisionNodeChange> myChanges;
+  @NotNull
+  private final Set<SNodeId> myAllowedNodeIds;
 
 
-  /*package*/ CellAnnotation(@NotNull EditorCell cell, @NotNull CommitsGraphNode revisionsGraphNode, @NotNull Set<RevisionNodeChange> changes) {
+  /*package*/ CellAnnotation(@NotNull EditorCell cell, @NotNull CommitsGraphNode revisionsGraphNode, @NotNull Set<RevisionNodeChange> changes, @NotNull Set<SNodeId> nodeIds) {
     myCell = cell;
     myRevisionsGraphNode = revisionsGraphNode;
     myChanges = changes;
+    myAllowedNodeIds = nodeIds;
   }
 
-  public EditorCell getCell() {
+  /*package*/ EditorCell getCell() {
     return myCell;
   }
 
   @NotNull
-  public CommitsGraphNode getCommitsGraphNode() {
+  /*package*/ CommitsGraphNode getCommitsGraphNode() {
     return myRevisionsGraphNode;
   }
 
   @NotNull
-  public Set<RevisionNodeChange> getChanges() {
+  /*package*/ Set<RevisionNodeChange> getChanges() {
     return myChanges;
+  }
+
+  @NotNull
+  /*package*/ Set<SNodeId> getAllowedNodeIds() {
+    return myAllowedNodeIds;
   }
 
   public boolean isEarlierThanRevision(@NotNull VcsFileRevision revision) {
