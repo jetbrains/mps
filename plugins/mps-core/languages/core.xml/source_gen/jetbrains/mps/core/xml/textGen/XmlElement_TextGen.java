@@ -26,7 +26,7 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
       tgs.indent();
     }
     tgs.append("<");
-    tgs.append(XmlCharEscape.escape(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$ZoHR)));
+    tgs.append(XmlCharEscape.escapeIdentidier(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$ZoHR)));
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.attributes$ZouQ)).isNotEmpty()) {
       tgs.append(" ");
     }
@@ -69,7 +69,7 @@ public class XmlElement_TextGen extends TextGenDescriptorBase {
       ctx.getBuffer().area().decreaseIndent();
     }
     tgs.append("</");
-    tgs.append(XmlCharEscape.escape(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$ZoHR)));
+    tgs.append(XmlCharEscape.escapeIdentidier(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.tagName$ZoHR)));
     tgs.append(">");
   }
 

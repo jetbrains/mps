@@ -5,18 +5,40 @@ package jetbrains.mps.core.xml.textGen;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class XmlCharEscape {
-  private static final Map<Character, String> codes = MapSequence.fromMap(new HashMap<Character, String>());
+  private static final Map<Character, String> codesForIdentifiers = MapSequence.fromMap(new HashMap<Character, String>());
+  private static final Map<Character, String> codesForAttributes = MapSequence.fromMap(new HashMap<Character, String>());
+  private static final Map<Character, String> codesForText = MapSequence.fromMap(new HashMap<Character, String>());
 
   static {
-    MapSequence.fromMap(codes).put('&', "&amp;");
-    MapSequence.fromMap(codes).put('"', "&quote;");
-    MapSequence.fromMap(codes).put('<', "&lt;");
-    MapSequence.fromMap(codes).put('>', "&gt;");
+    MapSequence.fromMap(codesForIdentifiers).put('&', "&amp;");
+    MapSequence.fromMap(codesForIdentifiers).put('"', "&quote;");
+    MapSequence.fromMap(codesForIdentifiers).put('\'', "&apos;");
+    MapSequence.fromMap(codesForIdentifiers).put('<', "&lt;");
+    MapSequence.fromMap(codesForIdentifiers).put('>', "&gt;");
+
+    MapSequence.fromMap(codesForAttributes).put('&', "&amp;");
+    MapSequence.fromMap(codesForAttributes).put('"', "&quote;");
+    MapSequence.fromMap(codesForAttributes).put('<', "&lt;");
+
+    MapSequence.fromMap(codesForText).put('&', "&amp;");
+    MapSequence.fromMap(codesForText).put('<', "&lt;");
   }
 
-  public static String escape(final String value) {
+  public static String escapeIdentidier(final String value) {
+    return escape(value, codesForIdentifiers);
+  }
+  public static String escapeAttributeValue(final String value) {
+    return escape(value, codesForAttributes);
+  }
+  public static String escapeText(final String value) {
+    return escape(value, codesForText);
+  }
+
+  private static String escape(final String value, Map<Character, String> dictionary) {
     if ((value == null || value.length() == 0)) {
       return value;
     }
@@ -24,12 +46,19 @@ public class XmlCharEscape {
     boolean changed = false;
     for (int i = 0; i < value.length(); i++) {
       char c = value.charAt(i);
-      if (MapSequence.fromMap(codes).containsKey(c)) {
-        changed = true;
-        result.append(MapSequence.fromMap(codes).get(c));
-      } else {
-        result.append(c);
+      if (MapSequence.fromMap(dictionary).containsKey(c)) {
+        final String followingSubstring = value.substring(i);
+        if (c != '&' || Sequence.fromIterable(MapSequence.fromMap(codesForIdentifiers).values()).all(new IWhereFilter<String>() {
+          public boolean accept(String it) {
+            return !(followingSubstring.startsWith(it));
+          }
+        })) {
+          changed = true;
+          result.append(MapSequence.fromMap(dictionary).get(c));
+          continue;
+        }
       }
+      result.append(c);
     }
     return (changed ? result.toString() : value);
   }

@@ -13,7 +13,7 @@ public class XmlCommentLine_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(XmlCharEscape.escape(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$2Bfv)));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$2Bfv));
   }
 
   private static final class PROPS {

@@ -1,30 +1,30 @@
 <components>
   <component name="openapi">    
-    <subsystem_id>&lt;&lt;API&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;API>></subsystem_id>
     <dependencies></dependencies>
   </component>
   <component name="Tuples-runtime">    
-    <subsystem_id>&lt;&lt;runtime&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;runtime>></subsystem_id>
     <dependencies></dependencies>
   </component>
   <component name="Closures-runtime">    
-    <subsystem_id>&lt;&lt;runtime&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;runtime>></subsystem_id>
     <dependencies></dependencies>
   </component>
   <component name="smodel">    
-    <subsystem_id>&lt;&lt;module&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;module>></subsystem_id>
     <dependencies>      
       <dependsOn>openapi</dependsOn>
     </dependencies>
   </component>
   <component name="collections-runtime">    
-    <subsystem_id>&lt;&lt;runtime&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;runtime>></subsystem_id>
     <dependencies>      
       <dependsOn>Closures-runtime</dependsOn>
     </dependencies>
   </component>
   <component name="kernel">    
-    <subsystem_id>&lt;&lt;module&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;module>></subsystem_id>
     <dependencies>      
       <dependsOn>openapi</dependsOn>
       <dependsOn>smodel</dependsOn>
@@ -35,7 +35,7 @@
     </dependencies>
   </component>
   <component name="typesystemEngine">    
-    <subsystem_id>&lt;&lt;module&gt;&gt;</subsystem_id>
+    <subsystem_id>&lt;&lt;module>></subsystem_id>
     <dependencies>      
       <dependsOn>collections-runtime</dependsOn>
       <dependsOn>kernel</dependsOn>

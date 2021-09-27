@@ -21,7 +21,7 @@ public class XmlTextValue_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("\t\t");
     }
-    tgs.append(XmlCharEscape.escape(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$_LaO)));
+    tgs.append(XmlCharEscape.escapeAttributeValue(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$_LaO)));
     if ((boolean) XmlValuePart__BehaviorDescriptor.hasNewLineAfter_id2EZ251g0bSd.invoke(ctx.getPrimaryInput())) {
       if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(ctx.getPrimaryInput()), CONCEPTS.XmlValuePart$G) && (boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(ctx.getPrimaryInput()), CONCEPTS.XmlValuePart$G))) {
         return;
