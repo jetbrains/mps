@@ -18270,6 +18270,7 @@
                               <node concept="3cpWs8" id="1JAxb5h3Nbb" role="3cqZAp">
                                 <node concept="3cpWsn" id="1JAxb5h3Nbc" role="3cpWs9">
                                   <property role="TrG5h" value="text" />
+                                  <node concept="17QB3L" id="1JAxb5h3Nbd" role="1tU5fm" />
                                   <node concept="2OqwBi" id="2_9uqMUWcmN" role="33vP2m">
                                     <node concept="Xl_RD" id="1JAxb5h3Nbk" role="2Oq$k0">
                                       <property role="Xl_RC" value="Bad reference: [%s] -&gt; %s" />
@@ -18291,7 +18292,6 @@
                                       </node>
                                     </node>
                                   </node>
-                                  <node concept="17QB3L" id="1JAxb5h3Nbd" role="1tU5fm" />
                                 </node>
                               </node>
                               <node concept="3clFbH" id="1JAxb5h3Nc6" role="3cqZAp" />
@@ -41294,9 +41294,9 @@
             </node>
             <node concept="liA8E" id="_dGddVVXyb" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-              <node concept="10M0yZ" id="_dGddVW1aS" role="37wK5m">
+              <node concept="10M0yZ" id="1V_XV5a9_Ar" role="37wK5m">
+                <ref role="3cqZAo" to="qkt:~ActionPlaces.TOOLBAR" resolve="TOOLBAR" />
                 <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
               </node>
               <node concept="37vLTw" id="_dGddVVXyd" role="37wK5m">
                 <ref role="3cqZAo" node="_dGddVVXx7" resolve="group" />

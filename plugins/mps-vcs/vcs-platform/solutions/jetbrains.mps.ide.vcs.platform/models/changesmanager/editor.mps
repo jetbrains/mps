@@ -4945,9 +4945,9 @@
               </node>
               <node concept="liA8E" id="bnI1yDxAgh" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                <node concept="10M0yZ" id="bnI1yDxAgi" role="37wK5m">
+                <node concept="10M0yZ" id="1V_XV5acJdD" role="37wK5m">
+                  <ref role="3cqZAo" to="qkt:~ActionPlaces.POPUP" resolve="POPUP" />
                   <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.UNKNOWN" resolve="UNKNOWN" />
                 </node>
                 <node concept="3$FqnI" id="bnI1yDxAgj" role="37wK5m">
                   <ref role="3$FqnG" to="zbx9:78RbNhWi9LZ" resolve="ChangesStrip" />

@@ -84,7 +84,7 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     myBreakpointsScrollPane = ScrollPaneFactory.createScrollPane(myViews[myCurrentViewIndex].getMainComponent());
     myBreakpointsScrollPane.getViewport().setBackground(UIManager.getColor("Table.background"));
     myMainPanel.add(myBreakpointsScrollPane, BorderLayout.CENTER);
-    ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.UNKNOWN, createActionGroup(), true);
+    ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, createActionGroup(), true);
     myMainPanel.add(actionToolbar.getComponent(), BorderLayout.NORTH);
     myMainPanel.setMinimumSize(new Dimension(500, 500));
     //  register keyboard/mouse actions on all views
