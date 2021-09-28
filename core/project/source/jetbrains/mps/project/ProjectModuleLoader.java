@@ -122,6 +122,7 @@ import java.util.regex.Matcher;
           fireModuleNotFound(modulePath);
         }
       } catch (PathFormatException e) {
+        // fixme apyshkin
         Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
         if (matcher.find()) {
           LOG.warn("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");

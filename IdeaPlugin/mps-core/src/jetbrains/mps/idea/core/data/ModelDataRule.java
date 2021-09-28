@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.idea.core.data;
 
+import com.intellij.diff.editor.DiffContentVirtualFile;
 import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
@@ -45,6 +46,9 @@ public class ModelDataRule implements GetDataRule {
     }
     if (virtualFile instanceof MPSModelVirtualFile) {
       return ((MPSModelVirtualFile)virtualFile).getModelReference().resolve(project.getRepository());
+    }
+    if (virtualFile instanceof DiffContentVirtualFile) {
+      return null;
     }
     return SModelFileTracker.getInstance(project.getRepository()).findModel(project.getFileSystem().fromVirtualFile(virtualFile));
   }

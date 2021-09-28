@@ -58,6 +58,7 @@ public interface IFileSystem {
       IFile f = getFile(path);
       return f.exists() ? f : null;
     } catch (PathFormatException e) {
+      // fixme apyshkin
       return null;
     }
   }

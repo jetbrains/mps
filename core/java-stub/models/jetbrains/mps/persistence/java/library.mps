@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -32,6 +33,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="45y3" ref="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
+    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -233,6 +235,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
         <property id="1200397540847" name="charConstant" index="1XhdNS" />
@@ -329,6 +334,7 @@
         <child id="1197932525128" name="key" index="3ElVtu" />
       </concept>
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
+      <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
     </language>
   </registry>
   <node concept="312cEu" id="5JsnGMj1qcN">
@@ -1821,6 +1827,22 @@
         <ref role="3uigEE" node="5JsnGMj1qiW" resolve="JavaClassStubsModelRoot" />
       </node>
     </node>
+    <node concept="Wx3nA" id="2koUMFkWeN8" role="jymVt">
+      <property role="TrG5h" value="LOG" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2koUMFkW4R3" role="1B3o_S" />
+      <node concept="3uibUv" id="2koUMFkWdwp" role="1tU5fm">
+        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+      </node>
+      <node concept="2YIFZM" id="2koUMFkWm1o" role="33vP2m">
+        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <node concept="3VsKOn" id="2koUMFkWobf" role="37wK5m">
+          <ref role="3VsUkX" node="5JsnGMj1qiW" resolve="JavaClassStubsModelRoot" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2koUMFkWq6I" role="jymVt" />
     <node concept="312cEg" id="3mzc6JEn9ey" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -2578,6 +2600,23 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="2koUMFl3rG7" role="3cqZAp">
+          <node concept="3cpWsn" id="2koUMFl3rGd" role="3cpWs9">
+            <property role="TrG5h" value="visitedFiles" />
+            <node concept="2hMVRd" id="2koUMFl3rGf" role="1tU5fm">
+              <node concept="3uibUv" id="2koUMFl3z0S" role="2hN53Y">
+                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="2koUMFl3OpM" role="33vP2m">
+              <node concept="2i4dXS" id="2koUMFl3U05" role="2ShVmc">
+                <node concept="3uibUv" id="2koUMFl41FZ" role="HW$YZ">
+                  <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="2Dokkv7hXE_" role="3cqZAp" />
         <node concept="1DcWWT" id="6STCsy2s48B" role="3cqZAp">
           <node concept="37vLTw" id="6STCsy2s48U" role="1DdaDG">
@@ -2591,6 +2630,29 @@
             </node>
           </node>
           <node concept="3clFbS" id="6STCsy2s48D" role="2LFqv$">
+            <node concept="3clFbF" id="2koUMFkX62S" role="3cqZAp">
+              <node concept="2OqwBi" id="2koUMFkX8Rm" role="3clFbG">
+                <node concept="37vLTw" id="2koUMFkX62Q" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2koUMFkWeN8" resolve="LOG" />
+                </node>
+                <node concept="liA8E" id="2koUMFkXck9" role="2OqNvi">
+                  <ref role="37wK5l" to="q7tw:~Logger.trace(java.lang.Object)" resolve="trace" />
+                  <node concept="3cpWs3" id="2koUMFkXlZy" role="37wK5m">
+                    <node concept="2OqwBi" id="2koUMFkXoII" role="3uHU7w">
+                      <node concept="37vLTw" id="2koUMFkXmZE" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6STCsy2s48R" resolve="file" />
+                      </node>
+                      <node concept="liA8E" id="2koUMFkXsXh" role="2OqNvi">
+                        <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="2koUMFkXeHo" role="3uHU7B">
+                      <property role="Xl_RC" value="collecting jar files from " />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="4r96ppgPlMy" role="3cqZAp">
               <node concept="1rXfSq" id="4r96ppgPlMz" role="3clFbG">
                 <ref role="37wK5l" node="74EzGwfNX06" resolve="collectJarFiles" />
@@ -2602,6 +2664,9 @@
                 </node>
                 <node concept="37vLTw" id="2Dokkv7jzEE" role="37wK5m">
                   <ref role="3cqZAo" node="2Dokkv7i1d4" resolve="jarsToLoad" />
+                </node>
+                <node concept="37vLTw" id="2koUMFl4gKU" role="37wK5m">
+                  <ref role="3cqZAo" node="2koUMFl3rGd" resolve="visitedFiles" />
                 </node>
               </node>
             </node>
@@ -3179,6 +3244,79 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="2koUMFl4DIR" role="3cqZAp">
+          <node concept="3clFbS" id="2koUMFl4DIS" role="3clFbx">
+            <node concept="3clFbF" id="2koUMFl4PXj" role="3cqZAp">
+              <node concept="2OqwBi" id="2koUMFl4SqK" role="3clFbG">
+                <node concept="37vLTw" id="2koUMFl4PXh" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2koUMFkWeN8" resolve="LOG" />
+                </node>
+                <node concept="liA8E" id="2koUMFl4ULL" role="2OqNvi">
+                  <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object)" resolve="warn" />
+                  <node concept="3cpWs3" id="2koUMFl5fi2" role="37wK5m">
+                    <node concept="2OqwBi" id="2koUMFl5gKV" role="3uHU7w">
+                      <node concept="37vLTw" id="2koUMFl5fkw" role="2Oq$k0">
+                        <ref role="3cqZAo" node="74EzGwfNX08" resolve="file" />
+                      </node>
+                      <node concept="liA8E" id="2koUMFl5km$" role="2OqNvi">
+                        <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="2koUMFl4YiA" role="3uHU7B">
+                      <property role="Xl_RC" value="The file is already visited; ignoring " />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="2koUMFl4DIT" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="2koUMFl4DIU" role="3clFbw">
+            <node concept="37vLTw" id="2koUMFl4DIV" role="2Oq$k0">
+              <ref role="3cqZAo" node="2koUMFl4jQP" resolve="visitedFiles" />
+            </node>
+            <node concept="3JPx81" id="2koUMFl5sMr" role="2OqNvi">
+              <node concept="37vLTw" id="2koUMFl5wGC" role="25WWJ7">
+                <ref role="3cqZAo" node="74EzGwfNX08" resolve="file" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2koUMFl5BB8" role="3cqZAp">
+          <node concept="2OqwBi" id="2koUMFl5DJJ" role="3clFbG">
+            <node concept="37vLTw" id="2koUMFl5BB6" role="2Oq$k0">
+              <ref role="3cqZAo" node="2koUMFl4jQP" resolve="visitedFiles" />
+            </node>
+            <node concept="TSZUe" id="2koUMFl5I2z" role="2OqNvi">
+              <node concept="37vLTw" id="2koUMFl5I50" role="25WWJ7">
+                <ref role="3cqZAo" node="74EzGwfNX08" resolve="file" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2koUMFkXwy4" role="3cqZAp">
+          <node concept="2OqwBi" id="2koUMFkXwy5" role="3clFbG">
+            <node concept="37vLTw" id="2koUMFkXwyJ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2koUMFkWeN8" resolve="LOG" />
+            </node>
+            <node concept="liA8E" id="2koUMFkXwy6" role="2OqNvi">
+              <ref role="37wK5l" to="q7tw:~Logger.trace(java.lang.Object)" resolve="trace" />
+              <node concept="3cpWs3" id="2koUMFkXwy7" role="37wK5m">
+                <node concept="2OqwBi" id="2koUMFkXwy8" role="3uHU7w">
+                  <node concept="37vLTw" id="2koUMFkXwy9" role="2Oq$k0">
+                    <ref role="3cqZAo" node="74EzGwfNX08" resolve="file" />
+                  </node>
+                  <node concept="liA8E" id="2koUMFkXwya" role="2OqNvi">
+                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="2koUMFkXwyb" role="3uHU7B">
+                  <property role="Xl_RC" value="#collectJarFiles " />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="74EzGwfNX0o" role="3cqZAp">
           <node concept="22lmx$" id="74EzGwfNX0p" role="3clFbw">
             <node concept="2OqwBi" id="74EzGwfNX0q" role="3uHU7B">
@@ -3274,6 +3412,9 @@
                 <node concept="37vLTw" id="74EzGwfNX0Z" role="37wK5m">
                   <ref role="3cqZAo" node="74EzGwfNX0d" resolve="archiveFiles" />
                 </node>
+                <node concept="37vLTw" id="2koUMFl5P5p" role="37wK5m">
+                  <ref role="3cqZAo" node="2koUMFl4jQP" resolve="visitedFiles" />
+                </node>
               </node>
             </node>
           </node>
@@ -3288,10 +3429,10 @@
         </node>
       </node>
       <node concept="37vLTG" id="74EzGwfNX0a" role="3clF46">
-        <property role="TrG5h" value="excluded" />
-        <node concept="3uibUv" id="74EzGwfNX0b" role="1tU5fm">
+        <property role="TrG5h" value="excludedFiles" />
+        <node concept="3uibUv" id="2koUMFl22XP" role="1tU5fm">
           <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
-          <node concept="3uibUv" id="74EzGwfNX0c" role="11_B2D">
+          <node concept="3uibUv" id="2koUMFl26mt" role="11_B2D">
             <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
           </node>
         </node>
@@ -3300,6 +3441,14 @@
         <property role="TrG5h" value="archiveFiles" />
         <node concept="2hMVRd" id="74EzGwfNX0e" role="1tU5fm">
           <node concept="3uibUv" id="74EzGwfNX0f" role="2hN53Y">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="2koUMFl4jQP" role="3clF46">
+        <property role="TrG5h" value="visitedFiles" />
+        <node concept="2hMVRd" id="2koUMFl4o8j" role="1tU5fm">
+          <node concept="3uibUv" id="2koUMFl4rOq" role="2hN53Y">
             <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
           </node>
         </node>
