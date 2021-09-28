@@ -5,6 +5,8 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.baseLanguage.javastub.JavadocSupplier;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
@@ -44,6 +46,8 @@ import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 
 @GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/6619269785060746428", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JavaClassStubsModelRoot extends FileBasedModelRoot implements CopyableModelRoot<JavaClassStubsModelRoot> {
+  private static final Logger LOG = LogManager.getLogger(JavaClassStubsModelRoot.class);
+
   private PackageScopeControl myPackageScope;
   private JavadocSupplier myDocSupplier;
   private final ClassStubRootConfiguration myStubPathProvider;
@@ -114,9 +118,11 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
 
     Set<IFile> jarsToLoad = new HashSet<IFile>();
     final Set<IFile> cpRootsToLoad = new HashSet<IFile>();
+    Set<IFile> visitedFiles = SetSequence.fromSet(new HashSet<IFile>());
 
     for (IFile file : files) {
-      collectJarFiles(file, excludedFiles, jarsToLoad);
+      LOG.trace("collecting jar files from " + file.getPath());
+      collectJarFiles(file, excludedFiles, jarsToLoad, visitedFiles);
 
       // we suppose here that each path can be either a jar-file or a classes directory or a jar directory,
       // but does not contain both jar files and class files
@@ -165,10 +171,16 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     return rv;
   }
 
-  private static void collectJarFiles(final IFile file, Collection<IFile> excluded, Set<IFile> archiveFiles) {
-    if (excluded.contains(file)) {
+  private static void collectJarFiles(final IFile file, Collection<IFile> excludedFiles, Set<IFile> archiveFiles, Set<IFile> visitedFiles) {
+    if (excludedFiles.contains(file)) {
       return;
     }
+    if (SetSequence.fromSet(visitedFiles).contains(file)) {
+      LOG.warn("The file is already visited; ignoring " + file.getPath());
+      return;
+    }
+    SetSequence.fromSet(visitedFiles).addElement(file);
+    LOG.trace("#collectJarFiles " + file.getPath());
     if (file.getPath().endsWith(".jar") || file.getPath().endsWith(".zip")) {
       SetSequence.fromSet(archiveFiles).addElement(file);
       return;
@@ -177,7 +189,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       return;
     }
     for (IFile child : file.getChildren()) {
-      collectJarFiles(child, excluded, archiveFiles);
+      collectJarFiles(child, excludedFiles, archiveFiles, visitedFiles);
     }
   }
 

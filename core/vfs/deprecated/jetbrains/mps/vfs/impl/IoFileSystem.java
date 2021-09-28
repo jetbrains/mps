@@ -71,6 +71,7 @@ public class IoFileSystem implements FileSystem {
       IFile f = getFile(path);
       return f.exists() ? f : null;
     } catch (PathFormatException e) {
+      // fixme apyshkin
       return null;
     }
   }

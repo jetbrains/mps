@@ -22,7 +22,9 @@ import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -78,9 +80,9 @@ public abstract class RealClassPathItem extends AbstractClassPathItem {
       } else if (file.isDirectory()) {
         return new FileClassPathItem(path);
       } else if (archiveSep != -1) {
-        throw new IllegalArgumentException(String.format("Path `%s' points to the location inside the jar which is not supported", path));
+        throw new IllegalArgumentException(String.format("Path '%s' points to the location inside the jar which is not supported", path));
       } else {
-        throw new IllegalArgumentException(String.format("Path `%s' does not point to a directory or to a jar/zip location", path));
+        throw new IllegalArgumentException(String.format("Path '%s' does not point to a directory or to a jar/zip location", path));
       }
     } catch (IOException e) {
       throw new RuntimeException(e);

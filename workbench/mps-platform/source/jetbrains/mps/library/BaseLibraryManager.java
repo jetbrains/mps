@@ -79,7 +79,7 @@ public abstract class BaseLibraryManager implements BaseComponent, PersistentSta
           IFile file = FileSystem.getInstance().getFile(path);
           result.add(new LibDescriptor(file));
         } catch (PathFormatException e) {
-          // fixme Michael Muhin
+          // fixme apyshkin
           Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
           if (matcher.find()) {
             LogManager.getLogger(BaseLibraryManager.class).warn("Some paths might contain unknown macros, please define them in 'Path variables'");

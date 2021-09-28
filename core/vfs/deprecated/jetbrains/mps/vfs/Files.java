@@ -21,7 +21,6 @@ import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.DataInputStream;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,10 +29,34 @@ import java.net.URL;
 import java.util.Locale;
 
 public final class Files {
+  private static final Logger LOG = LogManager.getLogger(Files.class);
+
   private Files() {
   }
 
   public static boolean isJarOrZipFile(@NotNull File file) throws IOException {
+    boolean result = isJarOrZipFile0(file);
+    String absolutePath = file.getAbsolutePath();
+    if (!result && (absolutePath.endsWith(".zip") || absolutePath.endsWith(".jar"))) {
+      LOG.warn(String.format("The path '%s' ends with '.jar' or '.zip' but the contents are not recognized as a zip archive", absolutePath));
+      printDebugOnSuspiciousArchive(file);
+    }
+    return result;
+  }
+
+  private static void printDebugOnSuspiciousArchive(@NotNull File file) throws IOException {
+    if (file.isDirectory()) {
+      LOG.warn(" the file is a directory");
+    }
+    if (file.length() < 4) { // less than 4 bytes
+      LOG.warn(" the file length is less than 4 bytes");
+    }
+    var dis = new DataInputStream(new FileInputStream(file));
+    int fileSignature = dis.readInt();
+    LOG.warn(" the file signature is " + fileSignature);
+  }
+
+  private static boolean isJarOrZipFile0(@NotNull File file) throws IOException {
     if (file.isDirectory()) {
       return false;
     }

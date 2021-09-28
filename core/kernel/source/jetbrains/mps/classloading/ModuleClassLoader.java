@@ -215,6 +215,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     // loading from ModuleClassLoaders firstly; it's faster, we can tell right here if we can find class there.
     for (ClassLoader depCL : dependencyClassLoaders) {
       if (depCL instanceof ModuleClassLoader) {
+        LOG.trace("checking dep moduleclassloader " + depCL);
         ModuleClassLoader depCL1 = (ModuleClassLoader) depCL;
         if (depCL1.mySupport.canFindClass(name)) {
           // here it will certainly load with class loader depCL
@@ -225,6 +226,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
 
     for (ClassLoader depCL : dependencyClassLoaders) {
       if (!(depCL instanceof ModuleClassLoader)) {
+        LOG.trace("checking dep classloader " + depCL);
         try {
           return Class.forName(name, false, depCL);
         } catch (ClassNotFoundException ignored) {

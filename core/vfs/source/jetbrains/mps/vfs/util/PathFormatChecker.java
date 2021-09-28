@@ -16,12 +16,16 @@
 package jetbrains.mps.vfs.util;
 
 import jetbrains.mps.vfs.IFileSystem;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
 //this is an internal class with assertions usable for checking formats of file paths in File/Jar/Jrt FSes
 public final class PathFormatChecker {
+  private static final Logger LOG = LogManager.getLogger(PathFormatChecker.class);
+
   private final String myPath;
 
   public PathFormatChecker(@NotNull String path) {
@@ -29,19 +33,21 @@ public final class PathFormatChecker {
   }
 
   public PathFormatChecker osIndependentPath() {
+    // the backslash is valid on linux, for example
+    // we have faced such a file https://github.com/systemd/systemd/blob/main/units/system-systemd%5Cx2dcryptsetup.slice
+    // obviously it does not do much, still we are not able to work with project file a\b.class on linux,
+    // but at least now, when just traversing some tree with such file names, we do not crash
     if (myPath.contains("\\")) {
-      throw new PathFormatException("Not os-independent path: " + myPath, myPath);
+      LOG.warn("Possibly not os-independent path: " + myPath, new PathFormatException("", myPath));
     }
     return this;
   }
 
-  /*
-    Michael, by the way some filesystems can create paths with '\'
-   */
   public PathFormatChecker osDependentPath() {
-    String badSeparator = File.separator.equals("/") ? "\\" : "/";
+    String badSeparator = "/".equals(File.separator) ? "\\" : "/";
+
     if (myPath.contains(badSeparator)) {
-      throw new PathFormatException("Not os-dependent path: " + myPath, myPath);
+      LOG.warn("Possibly not os-dependent path: " + myPath, new PathFormatException("", myPath));
     }
     return this;
   }
@@ -89,8 +95,7 @@ public final class PathFormatChecker {
   }
 
   /**
-   * Control flow exception for now
-   * MM, please rewrite this hell
+   * fixme control flow exception for now
    */
   public static final class PathFormatException extends RuntimeException {
     @NotNull
