@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.ShowBoundariesArea;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.braces.BracePair;
@@ -34,6 +35,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class BracesHighlighter {
+
+  private static final Color BRACES_LEFT_HIGHLIGHT_COLOR = new JBColor(0x93D9D9, 0x3B514D);
 
   private final Set<EditorCell> myHighlightedCells = new HashSet<>();
   private final Set<EditorCell> myLeftHighlightedCells = new HashSet<>();
@@ -113,6 +116,8 @@ public class BracesHighlighter {
       EditorColorsScheme scheme = EditorColorsManager.getInstance().getGlobalScheme();
       Color c = mba.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
       // Logic taken from com.intellij.openapi.editor.markup.DefaultLineMarkerRenderer
+      c = c != null ? c : mba.get(StyleAttributes.TEXT_COLOR);
+      c = c != null ? c : BRACES_LEFT_HIGHLIGHT_COLOR;
       c = ColorUtil.isDark(scheme.getDefaultBackground()) ? ColorUtil.shift(c, 1.5d) : c.darker();
       ((EditorComponent) bracePair.mySecondCell.getEditorComponent()).leftHighlightCells(
           (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.mySecondCell,
