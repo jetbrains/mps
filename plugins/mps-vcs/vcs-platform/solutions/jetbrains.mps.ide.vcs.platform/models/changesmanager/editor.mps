@@ -4844,6 +4844,7 @@
         <ref role="3uigEE" to="qkt:~ActionToolbar" resolve="ActionToolbar" />
       </node>
     </node>
+    <node concept="2tJIrI" id="2d6eGLKgLBZ" role="jymVt" />
     <node concept="3clFbW" id="2vWZukgxAEq" role="jymVt">
       <node concept="3cqZAl" id="2vWZukgxAEr" role="3clF45" />
       <node concept="3Tm1VV" id="2vWZukgxAEs" role="1B3o_S" />
@@ -4945,9 +4946,8 @@
               </node>
               <node concept="liA8E" id="bnI1yDxAgh" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                <node concept="10M0yZ" id="1V_XV5acJdD" role="37wK5m">
-                  <ref role="3cqZAo" to="qkt:~ActionPlaces.POPUP" resolve="POPUP" />
-                  <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
+                <node concept="Xl_RD" id="2d6eGLKgzCa" role="37wK5m">
+                  <property role="Xl_RC" value="popup panel toolbar" />
                 </node>
                 <node concept="3$FqnI" id="bnI1yDxAgj" role="37wK5m">
                   <ref role="3$FqnG" to="zbx9:78RbNhWi9LZ" resolve="ChangesStrip" />
@@ -5234,6 +5234,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="2d6eGLKgChg" role="jymVt" />
     <node concept="3clFb_" id="2GFh7wrO2g$" role="jymVt">
       <property role="TrG5h" value="getChangeGroup" />
       <node concept="3uibUv" id="2GFh7wrO2g_" role="3clF45">
@@ -5247,6 +5248,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="2d6eGLKgGRy" role="jymVt" />
     <node concept="3clFb_" id="2twBGhzw_SN" role="jymVt">
       <property role="TrG5h" value="show" />
       <node concept="37vLTG" id="2twBGhzw_SU" role="3clF46">
@@ -5482,6 +5484,7 @@
       </node>
       <node concept="3Tm1VV" id="2twBGhzw_SQ" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="2d6eGLKgGRz" role="jymVt" />
     <node concept="3clFb_" id="2twBGhzw_Nm" role="jymVt">
       <property role="TrG5h" value="addListeners" />
       <node concept="3cqZAl" id="2twBGhzw_Nn" role="3clF45" />
@@ -5515,6 +5518,7 @@
       </node>
       <node concept="3Tm6S6" id="2twBGhzw_Np" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="2d6eGLKgGR$" role="jymVt" />
     <node concept="3clFb_" id="2twBGhzw_Nq" role="jymVt">
       <property role="TrG5h" value="removeListeners" />
       <node concept="3cqZAl" id="2twBGhzw_Nr" role="3clF45" />
@@ -5548,6 +5552,7 @@
       </node>
       <node concept="3Tm6S6" id="2twBGhzw_Nt" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="2d6eGLKgGR_" role="jymVt" />
     <node concept="3clFb_" id="2twBGhzw_Sv" role="jymVt">
       <property role="TrG5h" value="dispose" />
       <node concept="3cqZAl" id="2twBGhzw_Sw" role="3clF45" />

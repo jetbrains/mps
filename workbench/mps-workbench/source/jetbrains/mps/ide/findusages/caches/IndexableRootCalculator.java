@@ -26,6 +26,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.IndexableSetContributorModificationTracker;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
@@ -155,9 +156,8 @@ final class IndexableRootCalculator implements Disposable {
 
     for (ModelRoot modelRoot : module.getModelRoots()) {
       if (modelRoot instanceof FileBasedModelRoot) {
-        FileBasedModelRoot fileBasedModelRoot = (FileBasedModelRoot) modelRoot;
-        IFile contentRoot = fileBasedModelRoot.getContentDirectory();
-        if (contentRoot != null) {
+        for (var sourceRoot : ((FileBasedModelRoot) modelRoot).getSourceRoots(SourceRootKinds.SOURCES)) {
+          IFile contentRoot = sourceRoot.getAbsolutePath();
           try {
             IFile expanded = stepIntoArchiveIfNeeded(contentRoot);
             result.add(expanded);
@@ -166,7 +166,6 @@ final class IndexableRootCalculator implements Disposable {
             LogManager.getLogger(IndexableRootCalculator.class).error(message, e);
           }
         }
-        // todo: use excluded & source folders like IDEA
       }
     }
 

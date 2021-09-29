@@ -47,6 +47,6 @@ public interface SourceRoot {
    * Temporarily this method will replace the api.
    * Afterwards there will be only {@link #getPath} method which will return some "Path" entity
    */
-  @Deprecated(since = "3.5", forRemoval = true)
+  @ToRemove(version = 2023.1)
   @NotNull IFile getAbsolutePath();
 }

@@ -427,67 +427,30 @@
       <node concept="3Tm1VV" id="1s_TLxa97VM" role="1B3o_S" />
       <node concept="3cqZAl" id="1s_TLxa97VN" role="3clF45" />
       <node concept="3clFbS" id="1s_TLxa97VO" role="3clF47">
-        <node concept="3SKdUt" id="o76KkZUXZP" role="3cqZAp">
-          <node concept="1PaTwC" id="o76KkZUXZQ" role="1aUNEU">
-            <node concept="3oM_SD" id="o76KkZUXZS" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
+        <node concept="3SKdUt" id="7rb2_bmZzVr" role="3cqZAp">
+          <node concept="1PaTwC" id="7rb2_bmZzVs" role="1aUNEU">
+            <node concept="3oM_SD" id="7rb2_bmZ$HD" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
             </node>
-            <node concept="3oM_SD" id="o76KkZUY51" role="1PaTwD">
-              <property role="3oM_SC" value="current" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY5D" role="1PaTwD">
-              <property role="3oM_SC" value="contract" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY6q" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY6O" role="1PaTwD">
-              <property role="3oM_SC" value="that" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY7f" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY0k" role="1PaTwD">
-              <property role="3oM_SC" value="can" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY0v" role="1PaTwD">
-              <property role="3oM_SC" value="be" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY0F" role="1PaTwD">
-              <property role="3oM_SC" value="executed" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY1g" role="1PaTwD">
-              <property role="3oM_SC" value="in" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY1u" role="1PaTwD">
-              <property role="3oM_SC" value="&quot;later&quot;," />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY25" role="1PaTwD">
-              <property role="3oM_SC" value="but" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY2l" role="1PaTwD">
-              <property role="3oM_SC" value="only" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY2I" role="1PaTwD">
-              <property role="3oM_SC" value="when" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY38" role="1PaTwD">
-              <property role="3oM_SC" value="it's" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY3r" role="1PaTwD">
-              <property role="3oM_SC" value="not" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY3J" role="1PaTwD">
-              <property role="3oM_SC" value="project" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY4c" role="1PaTwD">
-              <property role="3oM_SC" value="disposal" />
-            </node>
-            <node concept="3oM_SD" id="o76KkZUY4E" role="1PaTwD">
-              <property role="3oM_SC" value="" />
+            <node concept="3oM_SD" id="7rb2_bmZ$HF" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="7rb2_bmZtsK" role="3cqZAp">
+          <node concept="2OqwBi" id="7rb2_bmZtsL" role="3clFbw">
+            <node concept="37vLTw" id="7rb2_bmZtsM" role="2Oq$k0">
+              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
+            </node>
+            <node concept="liA8E" id="7rb2_bmZtsN" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="7rb2_bmZtsO" role="3clFbx">
+            <node concept="3cpWs6" id="7rb2_bmZtsP" role="3cqZAp" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="7rb2_bmZsuW" role="3cqZAp" />
         <node concept="3clFbF" id="4sfB6SDPRak" role="3cqZAp">
           <node concept="1rXfSq" id="4sfB6SDPRal" role="3clFbG">
             <ref role="37wK5l" node="4tfwdmbGEtd" resolve="disposeRunContentDescriptors" />

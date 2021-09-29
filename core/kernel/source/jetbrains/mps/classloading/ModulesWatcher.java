@@ -187,9 +187,10 @@ public class ModulesWatcher {
     if (LOG.isTraceEnabled()) {
       for (var module : allInvalid) {
         Collection<SModuleReference> directDependencies = getDirectDependencies(Collections.singleton(module));
+        directDependencies.remove(module);
         for (var depRef : directDependencies) {
           if (rootInvalid.contains(depRef)) {
-            LOG.trace(MessageFormat.format("The module ''{0}'' is invalid" +
+            LOG.trace(MessageFormat.format("The module ''{0}'' is invalid " +
                                            "since it has a direct dependency on the root invalid module ''{1}''", module, depRef));
           } else if (allInvalid.contains(depRef)) {
             LOG.trace(MessageFormat.format("The module ''{0}'' is invalid and " +
@@ -198,6 +199,7 @@ public class ModulesWatcher {
         }
         Collection<SModuleReference> dependencies = new LinkedHashSet<>(getDependencies(Collections.singleton(module)));
         dependencies.removeAll(directDependencies); // I've already shown these
+        dependencies.remove(module);
         for (var depRef : dependencies) {
           if (rootInvalid.contains(depRef)) {
             LOG.trace(MessageFormat.format("The module ''{0}'' is" +
@@ -278,7 +280,7 @@ public class ModulesWatcher {
 
     if (modulesWithAbsentDeps.containsKey(module)) {
       List<SearchError> errors = modulesWithAbsentDeps.get(module);
-      return String.format("%s has got an absent dependency and therefore was marked invalid for class loading: %s", module, errors.get(0).getMsg());
+      return String.format("%s was marked invalid for class loading: %s", module, errors.get(0).getMsg());
     }
     for (SDependency dep : module.getDeclaredDependencies()) {
       if (dep.getScope() == SDependencyScope.DESIGN || dep.getScope() == SDependencyScope.GENERATES_INTO) {

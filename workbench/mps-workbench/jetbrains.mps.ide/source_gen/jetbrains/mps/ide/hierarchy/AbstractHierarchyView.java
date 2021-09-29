@@ -18,9 +18,10 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
 import com.intellij.usageView.UsageViewBundle;
 import com.intellij.ui.ScrollPaneFactory;
-import javax.swing.JComponent;
+import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import javax.swing.JComponent;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.ide.hierarchy.toggle.GroupedToggleAction;
@@ -99,14 +100,16 @@ public abstract class AbstractHierarchyView extends BaseProjectTool {
       }
     };
     myHierarchyTree.setRootVisible(false);
-    this.myComponent = new RootPanel();
+    myComponent = new RootPanel();
     myComponent.setContent(ScrollPaneFactory.createScrollPane(myHierarchyTree, true));
     myHierarchyTree.setHierarchyNode(null);
     createControlPanel();
   }
 
   protected void createControlPanel() {
-    JComponent buttonsPanel = ActionManager.getInstance().createActionToolbar(ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR, createButtonsGroup(), true).getComponent();
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR, createButtonsGroup(), true);
+    JComponent buttonsPanel = toolbar.getComponent();
+    toolbar.setTargetComponent(myComponent);
     myComponent.setToolbar(buttonsPanel);
   }
 

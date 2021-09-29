@@ -208,7 +208,7 @@ public class ModuleUpdater {
   private boolean comesWithInvalidIdeaPluginFacet(ReloadableModule module) {
     var facet = module.getFacet(IdeaPluginModuleFacet.class);
     if (facet != null && !facet.isValid()) {
-      SearchError error = SearchError.of("The module " + module.getModuleReference() + " comes with invalid idea plugins facet " + facet.getPluginId());
+      SearchError error = SearchError.of("The module '" + module.getModuleReference() + "' comes with invalid idea plugin facet '" + facet.getPluginId() + "'");
       myModulesWithAbsentDeps.put(module, Collections.singletonList(error));
       return true;
     }

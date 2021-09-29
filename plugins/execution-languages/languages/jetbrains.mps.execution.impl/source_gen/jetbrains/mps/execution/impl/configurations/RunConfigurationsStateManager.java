@@ -66,7 +66,11 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
 
   @Override
   public void beforePluginsUnloaded(List<PluginContributor> contributors) {
-    // the current contract is that this can be executed in "later", but only when it's not project disposal 
+    // same here
+    if (myProject.isDisposed()) {
+      return;
+    }
+
     disposeRunContentDescriptors();
   }
 

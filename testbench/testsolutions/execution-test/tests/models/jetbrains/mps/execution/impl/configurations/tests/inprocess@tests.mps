@@ -722,7 +722,7 @@
                       <node concept="3cpWs3" id="5vTxdEzyTZI" role="3uHU7B">
                         <node concept="3cpWs3" id="5vTxdEzyTZJ" role="3uHU7B">
                           <node concept="Xl_RD" id="5vTxdEzyTZK" role="3uHU7B">
-                            <property role="Xl_RC" value="The number of failed tests be equal to " />
+                            <property role="Xl_RC" value="The number of failed tests must be equal to " />
                           </node>
                           <node concept="37vLTw" id="2SyXq5Nj$ga" role="3uHU7w">
                             <ref role="3cqZAo" node="2SyXq5NjyAj" resolve="failedMustBe" />
@@ -780,19 +780,16 @@
                           <ref role="3cqZAo" node="5vTxdEzyTYB" resolve="runState" />
                         </node>
                         <node concept="liA8E" id="2SyXq5NjpGv" role="2OqNvi">
-                          <ref role="37wK5l" to="sfqd:7B_GGkKFYTc" resolve="getFailedTests" />
+                          <ref role="37wK5l" to="sfqd:7B_GGkKFCvn" resolve="getCompletedTests" />
                         </node>
                       </node>
                       <node concept="3cpWs3" id="2SyXq5NjpGw" role="3uHU7B">
                         <node concept="3cpWs3" id="2SyXq5NjpGx" role="3uHU7B">
                           <node concept="Xl_RD" id="2SyXq5NjpGy" role="3uHU7B">
-                            <property role="Xl_RC" value="The number of completed tests be equal to " />
+                            <property role="Xl_RC" value="The number of completed tests must be equal to " />
                           </node>
-                          <node concept="2OqwBi" id="2SyXq5NjpGz" role="3uHU7w">
-                            <node concept="37vLTw" id="2SyXq5NjpG$" role="2Oq$k0">
-                              <ref role="3cqZAo" node="5vTxdEzyU0s" resolve="failure" />
-                            </node>
-                            <node concept="34oBXx" id="2SyXq5NjpG_" role="2OqNvi" />
+                          <node concept="37vLTw" id="3WF3aHSmObd" role="3uHU7w">
+                            <ref role="3cqZAo" node="2SyXq5NjwJP" resolve="completedMustBe" />
                           </node>
                         </node>
                         <node concept="Xl_RD" id="2SyXq5NjpGA" role="3uHU7w">
@@ -842,11 +839,8 @@
                       <ref role="37wK5l" to="7fn4:73dkH4PmkFg" resolve="getMessages" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="5vTxdEzyU0e" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                    <node concept="Xl_RD" id="5vTxdEzyU0f" role="37wK5m">
-                      <property role="Xl_RC" value="" />
-                    </node>
+                  <node concept="liA8E" id="3WF3aHSmSO4" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>

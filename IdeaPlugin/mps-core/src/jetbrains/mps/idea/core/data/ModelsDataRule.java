@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,8 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.SModelFileTracker;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -36,25 +35,17 @@ import java.util.List;
 public class ModelsDataRule implements GetDataRule {
   @Nullable
   @Override
-  public Object getData(DataProvider dataProvider) {
+  public Object getData(@NotNull DataProvider dataProvider) {
     VirtualFile[] virtualFiles = PlatformDataKeys.VIRTUAL_FILE_ARRAY.getData(dataProvider);
     if (virtualFiles == null) {
       return null;
     }
-
-    final MPSProject project = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(dataProvider));
-    if (project == null) {
-      return null;
-    }
+    MPSProject project = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(dataProvider));
+    var extractor = new ModelFromVirtualFileExtractor(project);
 
     List<SModel> result = new ArrayList<>();
-    final SModelFileTracker ft = SModelFileTracker.getInstance(project.getRepository());
     for (VirtualFile f : virtualFiles) {
-      IdeaFileSystem fs = project.getFileSystem();
-      if (!fs.canConvert(f)) {
-        continue;
-      }
-      final SModel model = ft.findModel(fs.fromVirtualFile(f));
+      var model = extractor.extract(f);
       if (model != null) {
         result.add(model);
       }
