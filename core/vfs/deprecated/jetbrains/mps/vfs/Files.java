@@ -45,11 +45,17 @@ public final class Files {
   }
 
   private static void printDebugOnSuspiciousArchive(@NotNull File file) throws IOException {
+    if (!file.exists()) {
+      LOG.warn(" the file does not exist");
+      return;
+    }
     if (file.isDirectory()) {
       LOG.warn(" the file is a directory");
+      return;
     }
     if (file.length() < 4) { // less than 4 bytes
       LOG.warn(" the file length is less than 4 bytes");
+      return;
     }
     var dis = new DataInputStream(new FileInputStream(file));
     int fileSignature = dis.readInt();
@@ -57,6 +63,9 @@ public final class Files {
   }
 
   private static boolean isJarOrZipFile0(@NotNull File file) throws IOException {
+    if (!file.exists()) {
+      return false;
+    }
     if (file.isDirectory()) {
       return false;
     }
