@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -59,7 +60,7 @@ public final class IBLDeprecatable__BehaviorDescriptor extends BaseBHDescriptor 
         if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$MnvL) == null) {
           continue;
         }
-        if (SPropertyOperations.getString(annotationLink, PROPS.name$MnvL).equals("Deprecated")) {
+        if (SNodeOperations.is(annotationLink, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))) {
           return true;
         }
       }
