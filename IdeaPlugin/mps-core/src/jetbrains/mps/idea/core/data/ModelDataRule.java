@@ -22,15 +22,22 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ModelDataRule implements GetDataRule {
+  private final ModelFromVirtualFileExtractor myExtractor;
+
+  public ModelDataRule() {
+    myExtractor = new ModelFromVirtualFileExtractor();
+  }
+
   @Nullable
   @Override
-  public Object getData(DataProvider dataProvider) {
+  public Object getData(@NotNull DataProvider dataProvider) {
     VirtualFile virtualFile = PlatformDataKeys.VIRTUAL_FILE.getData(dataProvider);
     MPSProject project = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(dataProvider));
-    return new ModelFromVirtualFileExtractor(project).extract(virtualFile);
+    return myExtractor.extract(virtualFile, project);
   }
 }
 

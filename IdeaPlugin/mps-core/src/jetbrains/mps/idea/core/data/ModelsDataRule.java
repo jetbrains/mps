@@ -33,6 +33,12 @@ import java.util.List;
  * evgeny, 6/28/13
  */
 public class ModelsDataRule implements GetDataRule {
+  private final ModelFromVirtualFileExtractor myExtractor;
+
+  public ModelsDataRule() {
+    myExtractor = new ModelFromVirtualFileExtractor();
+  }
+
   @Nullable
   @Override
   public Object getData(@NotNull DataProvider dataProvider) {
@@ -41,11 +47,10 @@ public class ModelsDataRule implements GetDataRule {
       return null;
     }
     MPSProject project = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(dataProvider));
-    var extractor = new ModelFromVirtualFileExtractor(project);
 
     List<SModel> result = new ArrayList<>();
-    for (VirtualFile f : virtualFiles) {
-      var model = extractor.extract(f);
+    for (VirtualFile file : virtualFiles) {
+      var model = myExtractor.extract(file, project);
       if (model != null) {
         result.add(model);
       }
