@@ -38,6 +38,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.util.Objects;
 
 /**
  * Author: Sergey Dmitriev.
@@ -264,7 +265,12 @@ public class NodeSubstitutePatternEditor {
 
     @Override
     public void execute(CellActionType type) {
+      String originalText = myText;
+      int originalCaret = myCaretPosition;
       myCell.executeTextAction(type, true);
+      if (originalCaret != myCaretPosition || !Objects.equals(myText, originalText)) {
+        return;
+      }
       if (type == CellActionType.BACKSPACE) {
         myText = myText.substring(0, myCaretPosition - 1) + myText.substring(myCaretPosition);
         myCaretPosition--;

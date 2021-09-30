@@ -13,6 +13,7 @@
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -61,6 +62,9 @@
       </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
+        <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -69,6 +73,7 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -7096,6 +7101,89 @@
             <property role="p6zMq" value="16" />
             <property role="p6zMs" value="16" />
             <property role="LIFWd" value="property_name" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="1R3bRRM4Tbj">
+    <property role="TrG5h" value="TestSubstitute_DeleteSelection" />
+    <node concept="3clFbS" id="1R3bRRM4Tbk" role="LjaKd">
+      <node concept="2HxZob" id="1R3bRRM4Tbl" role="3cqZAp">
+        <node concept="1iFQzN" id="1R3bRRM4Tbm" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+        </node>
+      </node>
+      <node concept="yd1bK" id="1R3bRRM4Uii" role="3cqZAp">
+        <node concept="pLAjd" id="1R3bRRM4Uik" role="yd6KS">
+          <property role="pLAjf" value="VK_BACK_SPACE" />
+        </node>
+      </node>
+      <node concept="3vwNmj" id="78ecFBv61ED" role="3cqZAp">
+        <node concept="2OqwBi" id="78ecFBv64a6" role="3vwVQn">
+          <node concept="2OqwBi" id="78ecFBv620k" role="2Oq$k0">
+            <node concept="369mXd" id="78ecFBv61G5" role="2Oq$k0" />
+            <node concept="liA8E" id="78ecFBv645q" role="2OqNvi">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+            </node>
+          </node>
+          <node concept="liA8E" id="78ecFBv64iP" role="2OqNvi">
+            <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
+          </node>
+        </node>
+      </node>
+      <node concept="3vwNmj" id="78ecFBv6a2Y" role="3cqZAp">
+        <node concept="3clFbC" id="78ecFBv6an3" role="3vwVQn">
+          <node concept="2OqwBi" id="78ecFBv6a2Z" role="3uHU7B">
+            <node concept="2OqwBi" id="78ecFBv6a30" role="2Oq$k0">
+              <node concept="369mXd" id="78ecFBv6a31" role="2Oq$k0" />
+              <node concept="liA8E" id="78ecFBv6a32" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+              </node>
+            </node>
+            <node concept="liA8E" id="78ecFBv6aeO" role="2OqNvi">
+              <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+            </node>
+          </node>
+          <node concept="3cmrfG" id="78ecFBv6hhk" role="3uHU7w">
+            <property role="3cmrfH" value="3" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="1R3bRRM4Tcz" role="25YQCW">
+      <node concept="9aQIb" id="1R3bRRM4Tcx" role="1qenE9">
+        <node concept="3clFbS" id="1R3bRRM4Tcy" role="9aQI4">
+          <node concept="3cpWs8" id="1R3bRRM4TAi" role="3cqZAp">
+            <node concept="3cpWsn" id="1R3bRRM4TAj" role="3cpWs9">
+              <property role="TrG5h" value="testObject" />
+              <node concept="3uibUv" id="1R3bRRM4TAk" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+              </node>
+              <node concept="10Nm6u" id="1R3bRRM4TAF" role="33vP2m" />
+              <node concept="LIFWc" id="1R3bRRM4TBn" role="lGtFl">
+                <property role="ZRATv" value="true" />
+                <property role="OXtK3" value="true" />
+                <property role="p6zMq" value="0" />
+                <property role="p6zMs" value="10" />
+                <property role="LIFWd" value="VDNCC_property_name" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="1R3bRRM4TB0" role="25YQFr">
+      <node concept="9aQIb" id="1R3bRRM4TB1" role="1qenE9">
+        <node concept="3clFbS" id="1R3bRRM4TB2" role="9aQI4">
+          <node concept="3cpWs8" id="1R3bRRM4TB3" role="3cqZAp">
+            <node concept="3cpWsn" id="1R3bRRM4TB4" role="3cpWs9">
+              <property role="TrG5h" value="testObject" />
+              <node concept="3uibUv" id="1R3bRRM4TB5" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+              </node>
+              <node concept="10Nm6u" id="1R3bRRM4TB6" role="33vP2m" />
+            </node>
           </node>
         </node>
       </node>
