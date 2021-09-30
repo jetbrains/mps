@@ -5263,7 +5263,7 @@
               <node concept="10Oyi0" id="2AIcjmEiq5I" role="1tU5fm" />
               <node concept="2OqwBi" id="2AIcjmEiqb3" role="33vP2m">
                 <node concept="37vLTw" id="2AIcjmEiqNY" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2AIcjmEiqNT" resolve="label" />
+                  <ref role="3cqZAo" node="2AIcjmEiqNT" resolve="labelCell" />
                 </node>
                 <node concept="liA8E" id="2AIcjmEiqb8" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCell_Label.getCaretPosition()" resolve="getCaretPosition" />

@@ -1111,7 +1111,7 @@
                 <ref role="37wK5l" to="qkt:~ActionToolbar.getComponent()" resolve="getComponent" />
               </node>
               <node concept="37vLTw" id="3WF3aHSnQgA" role="2Oq$k0">
-                <ref role="3cqZAo" node="3WF3aHSnQgv" resolve="createActionToolbar" />
+                <ref role="3cqZAo" node="3WF3aHSnQgv" resolve="toolbar" />
               </node>
             </node>
           </node>
@@ -9730,7 +9730,7 @@
               <node concept="3clFbF" id="51NkKCgB44c" role="3cqZAp">
                 <node concept="37vLTI" id="51NkKCgB44d" role="3clFbG">
                   <node concept="37vLTw" id="2BHiRxeuDZ7" role="37vLTJ">
-                    <ref role="3cqZAo" node="51NkKCgB40B" />
+                    <ref role="3cqZAo" node="51NkKCgB40B" resolve="myInitialized" />
                   </node>
                   <node concept="3clFbT" id="51NkKCgB44f" role="37vLTx">
                     <property role="3clFbU" value="true" />

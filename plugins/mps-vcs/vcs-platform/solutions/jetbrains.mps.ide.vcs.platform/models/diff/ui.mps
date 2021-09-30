@@ -22462,31 +22462,31 @@
               <node concept="2ShNRf" id="VRt2v0uKce" role="3g7hyw">
                 <node concept="1pGfFk" id="VRt2v0uKcf" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="6wKQvsBVQDA" resolve="UseShortChangeDescriptionsAction" />
+                  <ref role="37wK5l" node="6wKQvsBVQDA" resolve="DiffEditorSettingsAction.UseShortChangeDescriptionsAction" />
                 </node>
               </node>
               <node concept="2ShNRf" id="VRt2v0uKcm" role="3g7hyw">
                 <node concept="1pGfFk" id="VRt2v0uKcn" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="6wKQvsBUiT9" resolve="HideIdChangesAction" />
+                  <ref role="37wK5l" node="6wKQvsBUiT9" resolve="DiffEditorSettingsAction.HideIdChangesAction" />
                 </node>
               </node>
               <node concept="2ShNRf" id="VRt2v0uKco" role="3g7hyw">
                 <node concept="1pGfFk" id="VRt2v0uKcp" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="6wKQvsBVcfJ" resolve="HideResolveInfoOnlyAction" />
+                  <ref role="37wK5l" node="6wKQvsBVcfJ" resolve="DiffEditorSettingsAction.HideResolveInfoOnlyAction" />
                 </node>
               </node>
               <node concept="2ShNRf" id="VRt2v0uKcq" role="3g7hyw">
                 <node concept="1pGfFk" id="VRt2v0uKcr" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="6wKQvsBWKGs" resolve="TrackMovedNodesAction" />
+                  <ref role="37wK5l" node="6wKQvsBWKGs" resolve="DiffEditorSettingsAction.TrackMovedNodesAction" />
                 </node>
               </node>
               <node concept="2ShNRf" id="VRt2v0uKcs" role="3g7hyw">
                 <node concept="1pGfFk" id="VRt2v0uKct" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="6wKQvsBXiJN" resolve="HideUnorderedMovesAction" />
+                  <ref role="37wK5l" node="6wKQvsBXiJN" resolve="DiffEditorSettingsAction.HideUnorderedMovesAction" />
                 </node>
               </node>
               <node concept="3uibUv" id="VRt2v0uIIj" role="3g7fb8">
