@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.newTypesystem.operation;
 
 import jetbrains.mps.newTypesystem.state.State;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typesystem.inference.TypeSubstitution;
 
 /**
@@ -42,7 +43,7 @@ public class SubstituteTypeOperation extends AbstractOperation {
 
   @Override
   public String getPresentation() {
-    return "Type " + myTypeSubstitution.getOrigNode() + " substituted with " + myTypeSubstitution.getNewNode();
+    return String.format("Type %s substituted with %s", SNodeUtil.getPresentation(myTypeSubstitution.getOrigNode()), SNodeUtil.getPresentation(myTypeSubstitution.getNewNode()));
   }
 
   @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,10 @@ package jetbrains.mps.newTypesystem.state.blocks;
 
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.state.State;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
 import java.util.Set;
@@ -78,12 +79,12 @@ public class WhenConcreteBlock extends Block {
 
   @Override
   public String getPresentation() {
-    return "when concrete (" + myArgument + ") " + myConditionKind.getPresentation();
+    return String.format("when concrete (%s) %s", SNodeUtil.getPresentation(myArgument), myConditionKind.getPresentation());
   }
 
   @Override
   public String getShortPresentation() {
-    return myConditionKind.getPresentation() + myArgument;
+    return myConditionKind.getPresentation() + SNodeUtil.getPresentation(myArgument);
   }
 
   @Override
