@@ -163,6 +163,7 @@ final class IndexableRootCalculator implements Disposable {
             result.add(expanded);
           } catch (IOException e) {
             String message = String.format("received io error when expanding archive; contentRoot=%s", contentRoot);
+            //noinspection UnstableApiUsage
             LogManager.getLogger(IndexableRootCalculator.class).error(message, e);
           }
         }

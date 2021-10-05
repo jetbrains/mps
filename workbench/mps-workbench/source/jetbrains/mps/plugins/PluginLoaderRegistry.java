@@ -234,7 +234,7 @@ public class PluginLoaderRegistry implements Disposable {
     long beginTime = System.nanoTime();
     try {
       for (final PluginLoader loader : pluginLoaders) {
-        List<PluginContributor> contribList = Collections.unmodifiableList(new ArrayList<>(contributors));
+        List<PluginContributor> contribList = List.copyOf(contributors);
         loader.unloadPlugins(contribList);
         monitor.advance(1);
       }
@@ -487,11 +487,12 @@ public class PluginLoaderRegistry implements Disposable {
               LOG.info("Running Update Task : loaders " + loadersDelta + "; contributors : " + contributorsDelta + "; " + Thread.currentThread());
               fireBeforePluginsUnloaded(loadersDelta, contributorsDelta);
               monitor.step("Unloading...");
-              removeLoaders(monitor, loadersDelta);
-              removeContributors(monitor, contributorsDelta);
               clearIDEMenusFromOurActionRefs();
               clearIDEASerializationCaches();
               clearIDEAIconsGlobalCache(snapshot.getCLsToBeDisposed());
+
+              removeLoaders(monitor, loadersDelta);
+              removeContributors(monitor, contributorsDelta);
               monitor.step("Loading...");
               addLoaders(monitor, loadersDelta);
               addIdeaExtPointPluginContributors(monitor);
