@@ -17,6 +17,7 @@ package jetbrains.mps.ide.findusages.caches;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
@@ -162,6 +163,7 @@ final class IndexableRootCalculator implements Disposable {
             result.add(expanded);
           } catch (IOException e) {
             String message = String.format("received io error when expanding archive; contentRoot=%s", contentRoot);
+            //noinspection UnstableApiUsage
             LogManager.getLogger(IndexableRootCalculator.class).error(message, e);
           }
         }
@@ -199,7 +201,7 @@ final class IndexableRootCalculator implements Disposable {
           // makeRootsChange event dispatch requires write lock
           ProjectRootManagerEx.getInstanceEx(myProject.getProject()).makeRootsChange(()->{}, false, true);
         });
-      });
+      }, ModalityState.defaultModalityState(), myProject.getProject().getDisposed());
     }
   }
 
