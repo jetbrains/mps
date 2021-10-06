@@ -18,8 +18,9 @@ package jetbrains.mps.project.facets;
 import org.jetbrains.annotations.Nullable;
 
 public enum JavaLanguageLevel {
-  JAVA_7(7, ""),
+  JAVA_7(7, "", false),
   JAVA_8(8," - default and static interface methods"),
+  JAVA_8_NO_LAMBDA(8, " - default and static interface methods (do not generate lambdas)", false),
   JAVA_9(9," - private interface methods"),
   JAVA_10(10," - local variable type inference");
 
@@ -33,9 +34,15 @@ public enum JavaLanguageLevel {
 
   private final int myLevel;
   private final String myDescription;
-  JavaLanguageLevel(int level, String description) {
+  private final boolean myTargetsLambdas;
+
+  JavaLanguageLevel(int level, String description, boolean targetsLambdas) {
     myLevel = level;
     myDescription = description;
+    myTargetsLambdas = targetsLambdas;
+  }
+  JavaLanguageLevel(int level, String description) {
+    this(level, description, true);
   }
   public String toString() {
     return getFullDescription();
@@ -51,6 +58,9 @@ public enum JavaLanguageLevel {
   }
   public boolean isAtLeast(JavaLanguageLevel threshold) {
     return this.getLevel() >= threshold.getLevel();
+  }
+  public boolean doTargetLambda() {
+    return this.myTargetsLambdas;
   }
   public boolean covers(@Nullable JavaLanguageLevel found) {
     return found == null || this.getLevel() <= found.getLevel();

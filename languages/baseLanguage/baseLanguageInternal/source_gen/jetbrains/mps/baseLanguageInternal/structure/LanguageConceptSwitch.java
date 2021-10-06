@@ -25,17 +25,18 @@ public final class LanguageConceptSwitch {
   public static final int InternalClassCreator = 13;
   public static final int InternalClassExpression = 14;
   public static final int InternalClassifierType = 15;
-  public static final int InternalNewExpression = 16;
-  public static final int InternalPartialFieldReference = 17;
-  public static final int InternalPartialInstanceMethodCall = 18;
-  public static final int InternalStaticFieldReference = 19;
-  public static final int InternalStaticMethodCall = 20;
-  public static final int InternalSuperMethodCallOperation = 21;
-  public static final int InternalThisExpression = 22;
-  public static final int InternalTypedStaticFieldReference = 23;
-  public static final int InternalVariableReference = 24;
-  public static final int TypeHintExpression = 25;
-  public static final int WeakClassReference = 26;
+  public static final int InternalLambdaExpression = 16;
+  public static final int InternalNewExpression = 17;
+  public static final int InternalPartialFieldReference = 18;
+  public static final int InternalPartialInstanceMethodCall = 19;
+  public static final int InternalStaticFieldReference = 20;
+  public static final int InternalStaticMethodCall = 21;
+  public static final int InternalSuperMethodCallOperation = 22;
+  public static final int InternalThisExpression = 23;
+  public static final int InternalTypedStaticFieldReference = 24;
+  public static final int InternalVariableReference = 25;
+  public static final int TypeHintExpression = 26;
+  public static final int WeakClassReference = 27;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L);
@@ -55,6 +56,7 @@ public final class LanguageConceptSwitch {
     builder.put(0xf46f1c42ee50930L, InternalClassCreator);
     builder.put(0x1117461827dL, InternalClassExpression);
     builder.put(0x1118e558c6dL, InternalClassifierType);
+    builder.put(0x2e340d59f2201f2cL, InternalLambdaExpression);
     builder.put(0x11157a3736dL, InternalNewExpression);
     builder.put(0x1122dd58737L, InternalPartialFieldReference);
     builder.put(0x1116962fa68L, InternalPartialInstanceMethodCall);

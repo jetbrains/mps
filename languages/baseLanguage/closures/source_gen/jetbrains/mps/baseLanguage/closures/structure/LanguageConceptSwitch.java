@@ -19,15 +19,16 @@ public final class LanguageConceptSwitch {
   public static final int ControlAbstractionDeclaration = 7;
   public static final int FunctionMethodDeclaration = 8;
   public static final int FunctionType = 9;
-  public static final int InferredClosureParameterDeclaration = 10;
-  public static final int InvokeExpression = 11;
-  public static final int InvokeFunctionExpression = 12;
-  public static final int InvokeFunctionOperation = 13;
-  public static final int PairOfInts = 14;
-  public static final int StringPropertyHolder = 15;
-  public static final int UnboundClosureParameterDeclaration = 16;
-  public static final int YieldAllStatement = 17;
-  public static final int YieldStatement = 18;
+  public static final int IIncompatibleWithJavaLambda = 10;
+  public static final int InferredClosureParameterDeclaration = 11;
+  public static final int InvokeExpression = 12;
+  public static final int InvokeFunctionExpression = 13;
+  public static final int InvokeFunctionOperation = 14;
+  public static final int PairOfInts = 15;
+  public static final int StringPropertyHolder = 16;
+  public static final int UnboundClosureParameterDeclaration = 17;
+  public static final int YieldAllStatement = 18;
+  public static final int YieldStatement = 19;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xfd3920347849419dL, 0x907112563d152375L);
@@ -41,6 +42,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x11e49dc8097L, ControlAbstractionDeclaration);
     builder.put(0x42d79e63a78a7784L, FunctionMethodDeclaration);
     builder.put(0x1174a4d19ffL, FunctionType);
+    builder.put(0x77a6a261781b92e3L, IIncompatibleWithJavaLambda);
     builder.put(0x2308899d335ce07aL, InferredClosureParameterDeclaration);
     builder.put(0x117545d385aL, InvokeExpression);
     builder.put(0x1174a964795L, InvokeFunctionExpression);

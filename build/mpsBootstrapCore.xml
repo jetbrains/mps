@@ -6459,6 +6459,7 @@
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="86ef8290-12bb-4ca7-947f-093788f263a9(jetbrains.mps.lang.project)" kind="cl" />
           <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
+          <module ref="7a5dda62-9140-4668-ab76-d5ed1746f2b2(jetbrains.mps.lang.typesystem)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
@@ -7002,6 +7003,7 @@
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
           <module ref="c7d01124-66d5-486d-8b50-7fdccb60b839(jetbrains.mps.baseLanguage.util)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="cl" />
           <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="cl" />
           <module ref="f4ad079d-bc71-4ffb-9600-9328705cf998(jetbrains.mps.lang.descriptor)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
@@ -13431,6 +13433,7 @@
           <module ref="5dc5fc0d-37ef-4782-8192-8b5ce1f69f80(jetbrains.mps.baseLanguage.extensionMethods)" kind="cl" />
           <module ref="96ee7a94-411d-4cf8-9b94-96cad7e52411(jetbrains.mps.baseLanguage.jdk7)" kind="cl" />
           <module ref="e39e4a59-8cb6-498e-860e-8fa8361c0d90(jetbrains.mps.baseLanguage.scopes)" kind="cl" />
+          <module ref="c7d01124-66d5-486d-8b50-7fdccb60b839(jetbrains.mps.baseLanguage.util)" kind="cl" />
           <module ref="df345b11-b8c7-4213-ac66-48d2a9b75d88(jetbrains.mps.baseLanguageInternal)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
@@ -15722,6 +15725,8 @@
           <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
           <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
+          <module ref="e39e4a59-8cb6-498e-860e-8fa8361c0d90(jetbrains.mps.baseLanguage.scopes)" kind="cl" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
           <module ref="a9e4c532-c5f5-4bb7-99ef-42abb73bbb70(jetbrains.mps.lang.descriptor.aspects)" kind="cl" />
           <module ref="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="cl" />
@@ -21759,7 +21764,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.feedback.problem.failingRule#01" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.idea-platform, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.lang.constraints.rules#01, java.compile.feedback-api, java.compile.messages-api, java.compile.messages-for-rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.mps-migration, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.feedback.problem, java.compile.jetbrains.mps.lang.feedback.problem#01, java.compile.jetbrains.mps.lang.feedback.problem.failingRule, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.feedback.problem.failingRule#01" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.idea-platform, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.lang.constraints.rules#01, java.compile.feedback-api, java.compile.messages-api, java.compile.messages-for-rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.mps-migration, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.feedback.problem, java.compile.jetbrains.mps.lang.feedback.problem#01, java.compile.jetbrains.mps.lang.feedback.problem.failingRule, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/feedback/problem/failingRule/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.failingRule#01" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.failingRule#01" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -21823,6 +21828,8 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem#01" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.failingRule" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <path refid="path.java.library.ecj" />
@@ -22395,7 +22402,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.java.modules.cycle.3" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.editor, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.project, fetchDependencies">
+  <target name="java.compile.java.modules.cycle.3" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.baseLanguage.classifiers, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.editor, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.project, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.3" />
     <javac destdir="${build.tmp}/java.modules.cycle.3" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
@@ -22468,6 +22475,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.sharedConcepts" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.classifiers" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.closures" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections" />
@@ -22475,7 +22483,6 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.editor" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.modelapi" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel" />
-        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.project" />
       </classpath>
@@ -22631,7 +22638,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.context.defs" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.traceable, java.compile.java.modules.cycle.3, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.context.defs" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-ui, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, java.compile.java.modules.cycle.3, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/context.defs/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.context.defs" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.context.defs" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -22696,6 +22703,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.sharedConcepts" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -22710,7 +22718,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.java.modules.cycle.4" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.context.defs, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, fetchDependencies">
+  <target name="java.compile.java.modules.cycle.4" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.context.defs, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.4" />
     <javac destdir="${build.tmp}/java.modules.cycle.4" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
       <compilerarg value="-Xlint:none" />
@@ -22781,6 +22789,8 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
       </classpath>
     </javac>
   </target>
@@ -23994,7 +24004,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.constraints.rules#01" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, java.compile.jetbrains.mps.lang.context.defs, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.traceable, java.compile.java.modules.cycle.4, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.constraints.rules#01" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.constraints.rules, java.compile.jetbrains.mps.lang.constraints.rules.kinds, java.compile.jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082, java.compile.jetbrains.mps.lang.context.defs, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, java.compile.java.modules.cycle.4, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/constraints/rules/rules/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules#01" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules#01" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -24060,6 +24070,8 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.context.defs" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
@@ -24323,7 +24335,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.constraints, java.compile.jetbrains.mps.lang.constraints.rules.skeleton, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/constraints/rules/skeleton/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -24388,7 +24400,9 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor#9020561928507175817" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.project" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
@@ -25341,7 +25355,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.findUsages#1197044805809" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.findUsages, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.findUsages#1197044805809" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-migration, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor#9020561928507175817, java.compile.jetbrains.mps.lang.findUsages, java.compile.jetbrains.mps.lang.project, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.sharedConcepts, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/findUsages/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.findUsages#1197044805809" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.findUsages#1197044805809" fork="false" encoding="utf8" includeantruntime="false" debug="true">
@@ -25404,8 +25418,10 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.descriptor#9020561928507175817" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.findUsages" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.project" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.sharedConcepts" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />

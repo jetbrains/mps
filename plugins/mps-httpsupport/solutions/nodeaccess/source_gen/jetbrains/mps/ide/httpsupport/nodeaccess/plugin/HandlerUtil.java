@@ -12,10 +12,10 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.ProjectUtil;
-import com.intellij.openapi.application.ApplicationManager;
 import java.util.Collection;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.openapi.application.ApplicationManager;
 import java.util.stream.Stream;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
@@ -92,11 +92,12 @@ public class HandlerUtil {
 
   public static Iterable<VirtualFile> findFilesByName(final Project project, final String fileName) {
     final com.intellij.openapi.project.Project ideaProject = ideaProject(project);
-    return ApplicationManager.getApplication().runReadAction(new com.intellij.openapi.util.Computable<Collection<VirtualFile>>() {
+    com.intellij.openapi.util.Computable<Collection<VirtualFile>> function = new com.intellij.openapi.util.Computable<Collection<VirtualFile>>() {
       public Collection<VirtualFile> compute() {
         return FilenameIndex.getVirtualFilesByName(ideaProject, fileName, GlobalSearchScope.everythingScope(ideaProject));
       }
-    });
+    };
+    return ApplicationManager.getApplication().runReadAction(function);
   }
 
   public static boolean tryOpenNodeByGeneratedFile(final Project project, final VirtualFile file, final Integer line) {

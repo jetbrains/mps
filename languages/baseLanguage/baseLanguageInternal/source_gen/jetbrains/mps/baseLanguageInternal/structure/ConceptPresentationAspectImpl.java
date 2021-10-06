@@ -25,6 +25,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_InternalClassCreator;
   private ConceptPresentation props_InternalClassExpression;
   private ConceptPresentation props_InternalClassifierType;
+  private ConceptPresentation props_InternalLambdaExpression;
   private ConceptPresentation props_InternalNewExpression;
   private ConceptPresentation props_InternalPartialFieldReference;
   private ConceptPresentation props_InternalPartialInstanceMethodCall;
@@ -158,6 +159,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_InternalClassifierType = cpb.create();
         }
         return props_InternalClassifierType;
+      case LanguageConceptSwitch.InternalLambdaExpression:
+        if (props_InternalLambdaExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("InternalLambdaExpression");
+          props_InternalLambdaExpression = cpb.create();
+        }
+        return props_InternalLambdaExpression;
       case LanguageConceptSwitch.InternalNewExpression:
         if (props_InternalNewExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

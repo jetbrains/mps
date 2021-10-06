@@ -29,6 +29,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new InternalClassExpression_TextGen();
       case LanguageConceptSwitch.InternalClassifierType:
         return new InternalClassifierType_TextGen();
+      case LanguageConceptSwitch.InternalLambdaExpression:
+        return new InternalLambdaExpression_TextGen();
       case LanguageConceptSwitch.InternalNewExpression:
         return new InternalNewExpression_TextGen();
       case LanguageConceptSwitch.InternalPartialFieldReference:

@@ -671,5 +671,36 @@
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
+  <node concept="1TIwiD" id="2SO3lBM81WG">
+    <property role="EcuMT" value="3329300704499081004" />
+    <property role="TrG5h" value="InternalLambdaExpression" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="2SO3lBM826m" role="1TKVEi">
+      <property role="IQ2ns" value="3329300704499081622" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="returnType" />
+      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
+    </node>
+    <node concept="1TJgyj" id="htbW2KO" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="parameter" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1199569906740" />
+      <ref role="20lvS9" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
+    </node>
+    <node concept="1TJgyj" id="htbW58J" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="body" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1199569916463" />
+      <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
+    </node>
+    <node concept="PrWs8" id="3_DeNwNwfaW" role="PzmwI">
+      <ref role="PrY4T" to="tpee:i2fhoOR" resolve="IMethodLike" />
+    </node>
+    <node concept="PrWs8" id="52yXSKNkUaf" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+  </node>
 </model>
 

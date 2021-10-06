@@ -20,6 +20,7 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -181,6 +182,9 @@
       <property role="IQ2ns" value="1199711344856" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
+    <node concept="PrWs8" id="7uACA5S6UFg" role="PzmwI">
+      <ref role="PrY4T" node="7uACA5S6Tbz" resolve="IIncompatibleWithJavaLambda" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hun63U2">
     <property role="R5$K7" value="false" />
@@ -197,6 +201,9 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1200830928149" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="7uACA5S6Vcl" role="PzmwI">
+      <ref role="PrY4T" node="7uACA5S6Tbz" resolve="IIncompatibleWithJavaLambda" />
     </node>
   </node>
   <node concept="1TIwiD" id="hwBqR26">
@@ -268,6 +275,9 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1228997959377" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="7uACA5S6V0L" role="PzmwI">
+      <ref role="PrY4T" node="7uACA5S6Tbz" resolve="IIncompatibleWithJavaLambda" />
     </node>
   </node>
   <node concept="1TIwiD" id="hT9QNxK">
@@ -409,6 +419,10 @@
     <property role="34LRSv" value="var" />
     <property role="R4oN_" value="inferred type" />
     <ref role="1TJDcQ" to="tpee:4ctkEngA$UD" resolve="UndefinedType" />
+  </node>
+  <node concept="PlHQZ" id="7uACA5S6Tbz">
+    <property role="EcuMT" value="8621757076157993699" />
+    <property role="TrG5h" value="IIncompatibleWithJavaLambda" />
   </node>
 </model>
 

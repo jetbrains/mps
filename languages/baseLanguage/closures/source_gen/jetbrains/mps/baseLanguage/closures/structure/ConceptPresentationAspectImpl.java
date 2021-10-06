@@ -19,6 +19,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ControlAbstractionDeclaration;
   private ConceptPresentation props_FunctionMethodDeclaration;
   private ConceptPresentation props_FunctionType;
+  private ConceptPresentation props_IIncompatibleWithJavaLambda;
   private ConceptPresentation props_InferredClosureParameterDeclaration;
   private ConceptPresentation props_InvokeExpression;
   private ConceptPresentation props_InvokeFunctionExpression;
@@ -110,6 +111,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_FunctionType = cpb.create();
         }
         return props_FunctionType;
+      case LanguageConceptSwitch.IIncompatibleWithJavaLambda:
+        if (props_IIncompatibleWithJavaLambda == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IIncompatibleWithJavaLambda = cpb.create();
+        }
+        return props_IIncompatibleWithJavaLambda;
       case LanguageConceptSwitch.InferredClosureParameterDeclaration:
         if (props_InferredClosureParameterDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

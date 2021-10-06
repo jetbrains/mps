@@ -17,7 +17,7 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/2883693069523015134">
     <file name="mpsConstraints.xml">
-      <unit id="2883693069523015134" at="1,0,1069,10" name="jetbrains.mps.ide.build.tests.mpsConstraints" />
+      <unit id="2883693069523015134" at="1,0,1070,10" name="jetbrains.mps.ide.build.tests.mpsConstraints" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3071492597344792659">

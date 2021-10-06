@@ -203,9 +203,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return !(ClosureLiteralUtil.hasYieldStatement(_context.getNode())) && !(Values.LITERAL_TARGET.isSet(_context, _context.getNode()));
   }
   public static boolean rule_Condition_0_31(final BaseMappingRuleContext _context) {
-    return !(ClosureLiteralUtil.hasYieldStatement(_context.getNode())) && Values.LITERAL_TARGET.isSet(_context, _context.getNode());
+    SNode clType = (SNode) Values.LITERAL_TARGET.get(_context, _context.getNode());
+
+    return !(ClosureLiteralUtil.hasYieldStatement(_context.getNode())) && (clType != null) && !(ClosureLiteralUtil.canTargetJavaLambda(_context.getNode(), clType, _context));
   }
   public static boolean rule_Condition_0_32(final BaseMappingRuleContext _context) {
+    SNode clType = (SNode) Values.LITERAL_TARGET.get(_context, _context.getNode());
+
+    return (clType != null) && ClosureLiteralUtil.canTargetJavaLambda(_context.getNode(), clType, _context);
+  }
+  public static boolean rule_Condition_0_33(final BaseMappingRuleContext _context) {
     return !(Values.PREP_DATA.isSet(_context, _context.getNode())) || Values.POST_DATA.isSet(_context, _context.getNode());
   }
   public static boolean rule_Condition_32_0(final BaseMappingRuleContext _context) {
@@ -1061,6 +1068,20 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_42_1(final SourceSubstituteMacroNodeContext _context) {
     return ((SNode) _context.getVariable("var:wrapperType"));
   }
+  public static SNode sourceNodeQuery_43_0(final SourceSubstituteMacroNodeContext _context) {
+    SNode literal = _context.getNode();
+    SNode ct = (SNode) Values.LITERAL_TARGET.get(_context, literal);
+    if (ct != null) {
+      Iterable<SNode> imds = Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(ct, LINKS.classifier$cxMr));
+      if (Sequence.fromIterable(imds).isNotEmpty()) {
+        return FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(Sequence.fromIterable(imds).first(), LINKS.returnType$5xoi), ct)));
+      }
+    }
+    return FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(FunctionType__BehaviorDescriptor.getNormalizedReturnType_idhEwIOp4.invoke(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.FunctionType$9U))));
+  }
+  public static SNode sourceNodeQuery_43_1(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.body$Ujx2);
+  }
   public static Object templateArgumentQuery_42_0(final TemplateArgumentContext _context) {
     return _context.getNode();
   }
@@ -1434,6 +1455,27 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return res;
   }
+  public static Iterable<SNode> sourceNodesQuery_43_0(final SourceSubstituteMacroNodesContext _context) {
+    List<SNode> paramDecls = SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$b4Y3);
+    SNode ct = (SNode) Values.LITERAL_TARGET.get(_context, _context.getNode());
+    SNode imd = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(ct, LINKS.classifier$cxMr))).first();
+    List<SNode> res = ListSequence.fromList(new ArrayList<SNode>());
+    int idx = 0;
+    for (SNode pd : SLinkOperations.getChildren(imd, LINKS.parameter$5xBj)) {
+      if (idx >= ListSequence.fromList(paramDecls).count()) {
+        _context.showErrorMessage(_context.getNode(), "Method parameters count doesn't match closure parameters count: " + SPropertyOperations.getString(imd, PROPS.shortDescription$Yd4v));
+        break;
+      }
+      SNode newpd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
+      SLinkOperations.setTarget(newpd, LINKS.type$a1UY, SNodeOperations.cast(FunctionTypeUtil.unmeet(FunctionTypeUtil.unbound(ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(pd, LINKS.type$a1UY), ct))), CONCEPTS.Type$bu));
+      SPropertyOperations.set(newpd, PROPS.name$MnvL, SPropertyOperations.getString(ListSequence.fromList(paramDecls).getElement(idx), PROPS.name$MnvL));
+      SPropertyOperations.set(newpd, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(ListSequence.fromList(paramDecls).getElement(idx), PROPS.isFinal$gvTP));
+      ListSequence.fromList(SLinkOperations.getChildren(newpd, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(paramDecls).getElement(idx), LINKS.annotation$K49I)));
+      idx++;
+      ListSequence.fromList(res).addElement(newpd);
+    }
+    return res;
+  }
   public static SNode mapSrcMacro_map_0_0(final MapSrcMacroContext _context) {
     SNode oldDecl = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.original$UBy7), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
     SNode newDecl = _context.getOutputNodeByInputNodeAndMappingLabel(oldDecl, "wrapped_localVar");
@@ -1795,7 +1837,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  public static void mappingScript_CodeBlock_43(final MappingScriptContext _context) {
+  public static void mappingScript_CodeBlock_44(final MappingScriptContext _context) {
     List<SNode> vds = SModelOperations.nodes(_context.getModel(), CONCEPTS.CastExpression$$8);
     for (SNode vd : vds) {
       FunctionTypeUtil.prepAdaptations(_context, SLinkOperations.getTarget(vd, LINKS.type$XD7M), SLinkOperations.getTarget(vd, LINKS.expression$XDmN));
@@ -1912,7 +1954,7 @@ public class QueriesGenerated extends QueryProviderBase {
         case 15:
           return QueriesGenerated.rule_Condition_0_28(ctx);
         case 16:
-          return QueriesGenerated.rule_Condition_0_32(ctx);
+          return QueriesGenerated.rule_Condition_0_33(ctx);
         case 17:
           return QueriesGenerated.rule_Condition_32_4(ctx);
         case 18:
@@ -2150,7 +2192,7 @@ public class QueriesGenerated extends QueryProviderBase {
           QueriesGenerated.mappingScript_CodeBlock_38(ctx);
           return;
         case 13:
-          QueriesGenerated.mappingScript_CodeBlock_43(ctx);
+          QueriesGenerated.mappingScript_CodeBlock_44(ctx);
           return;
         default:
           throw new GenerationFailureException(String.format("There's no code block with method index %d ", methodKey));
@@ -2266,6 +2308,8 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("1869794201078502039", new SNQ(i++));
     snqMethods.put("1336567499628828754", new SNQ(i++));
     snqMethods.put("1336567499628873686", new SNQ(i++));
+    snqMethods.put("3329300704499988332", new SNQ(i++));
+    snqMethods.put("3329300704499617301", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -2441,6 +2485,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_42_0(ctx);
         case 79:
           return QueriesGenerated.sourceNodeQuery_42_1(ctx);
+        case 80:
+          return QueriesGenerated.sourceNodeQuery_43_0(ctx);
+        case 81:
+          return QueriesGenerated.sourceNodeQuery_43_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -2494,6 +2542,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("3381384562914378531", new SNsQ(i++));
     snsqMethods.put("3381384562914377977", new SNsQ(i++));
     snsqMethods.put("3381384562914378263", new SNsQ(i++));
+    snsqMethods.put("3329300704497742443", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -2599,6 +2648,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_40_1(ctx));
         case 44:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_40_2(ctx));
+        case 45:
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_43_0(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -2948,6 +2999,7 @@ public class QueriesGenerated extends QueryProviderBase {
     isccMethods.put("1201016704100", new ISCC(i++));
     isccMethods.put("3381384562914435174", new ISCC(i++));
     isccMethods.put("1201016789639", new ISCC(i++));
+    isccMethods.put("3329300704496773925", new ISCC(i++));
     isccMethods.put("608109309169759536", new ISCC(i++));
     isccMethods.put("7001216437968756005", new ISCC(i++));
     isccMethods.put("7001216437968756130", new ISCC(i++));
@@ -2981,14 +3033,16 @@ public class QueriesGenerated extends QueryProviderBase {
         case 5:
           return QueriesGenerated.rule_Condition_0_31(ctx);
         case 6:
-          return QueriesGenerated.rule_Condition_32_1(ctx);
+          return QueriesGenerated.rule_Condition_0_32(ctx);
         case 7:
-          return QueriesGenerated.rule_Condition_32_2(ctx);
+          return QueriesGenerated.rule_Condition_32_1(ctx);
         case 8:
-          return QueriesGenerated.rule_Condition_32_3(ctx);
+          return QueriesGenerated.rule_Condition_32_2(ctx);
         case 9:
-          return QueriesGenerated.rule_Condition_32_5(ctx);
+          return QueriesGenerated.rule_Condition_32_3(ctx);
         case 10:
+          return QueriesGenerated.rule_Condition_32_5(ctx);
+        case 11:
           return QueriesGenerated.rule_Condition_32_6(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for inline switch's case %s (key: #%d)", ctx.getTemplateReference(), methodKey));

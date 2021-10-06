@@ -180,7 +180,9 @@ public final class IdeaEnvironment extends EnvironmentBase {
     Disposable disposable0 = null;
     if (testMode) {
       disposable0 = new Disposable() {
+        @Override
         public void dispose() {
+          // Explicit abstract class instead of lambda to avoid issues with WeakHashMap
         }
       };
       // for ant tests we run with the flag, which disables the checks

@@ -1457,24 +1457,38 @@
           </node>
           <node concept="9aQIb" id="5vvH8dSW4QH" role="9aQIa">
             <node concept="3clFbS" id="5vvH8dSW4QI" role="9aQI4">
+              <node concept="3cpWs8" id="7dM7P9ImWqo" role="3cqZAp">
+                <node concept="3cpWsn" id="7dM7P9ImWqp" role="3cpWs9">
+                  <property role="TrG5h" value="function" />
+                  <node concept="3uibUv" id="7dM7P9ImZXK" role="1tU5fm">
+                    <ref role="3uigEE" to="zn9m:~Computable" resolve="Computable" />
+                    <node concept="3uibUv" id="7dM7P9In2PE" role="11_B2D">
+                      <ref role="3uigEE" node="1crbmp8Of6p" resolve="AbstractInstaller.State" />
+                    </node>
+                  </node>
+                  <node concept="1bVj0M" id="7dM7P9ImWqq" role="33vP2m">
+                    <node concept="3clFbS" id="7dM7P9ImWqr" role="1bW5cS">
+                      <node concept="3clFbF" id="7dM7P9ImWqs" role="3cqZAp">
+                        <node concept="1rXfSq" id="7dM7P9ImWqt" role="3clFbG">
+                          <ref role="37wK5l" node="vM_ZBYYySe" resolve="installForRoot" />
+                          <node concept="37vLTw" id="7dM7P9ImWqu" role="37wK5m">
+                            <ref role="3cqZAo" node="5vvH8dSUh6_" resolve="vcsRootPath" />
+                          </node>
+                          <node concept="37vLTw" id="7dM7P9ImWqv" role="37wK5m">
+                            <ref role="3cqZAo" node="5vvH8dSUhy_" resolve="dryRun" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3cpWs6" id="5vvH8dSULC3" role="3cqZAp">
                 <node concept="2OqwBi" id="5vvH8dSUO_A" role="3cqZAk">
                   <node concept="liA8E" id="5vvH8dSUO_C" role="2OqNvi">
                     <ref role="37wK5l" to="bd8o:~Application.runWriteAction(com.intellij.openapi.util.Computable)" resolve="runWriteAction" />
-                    <node concept="1bVj0M" id="5vvH8dSUO_D" role="37wK5m">
-                      <node concept="3clFbS" id="5vvH8dSUO_E" role="1bW5cS">
-                        <node concept="3clFbF" id="5vvH8dSW_u6" role="3cqZAp">
-                          <node concept="1rXfSq" id="5vvH8dSW_u8" role="3clFbG">
-                            <ref role="37wK5l" node="vM_ZBYYySe" resolve="installForRoot" />
-                            <node concept="37vLTw" id="5vvH8dSW_u9" role="37wK5m">
-                              <ref role="3cqZAo" node="5vvH8dSUh6_" resolve="vcsRootPath" />
-                            </node>
-                            <node concept="37vLTw" id="5vvH8dSW_ua" role="37wK5m">
-                              <ref role="3cqZAo" node="5vvH8dSUhy_" resolve="dryRun" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
+                    <node concept="37vLTw" id="7dM7P9ImWqw" role="37wK5m">
+                      <ref role="3cqZAo" node="7dM7P9ImWqp" resolve="function" />
                     </node>
                   </node>
                   <node concept="2YIFZM" id="6pjhMZUR2fl" role="2Oq$k0">
