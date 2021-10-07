@@ -840,13 +840,13 @@
       <node id="6923385624929494145" at="68,63,69,300" concept="3" />
       <node id="7854334384284976424" at="71,80,72,65" concept="6" />
       <node id="7854334384284976424" at="72,65,73,63" concept="6" />
-      <node id="7854334384284976424" at="73,63,74,265" concept="3" />
+      <node id="7854334384284976424" at="73,63,74,243" concept="3" />
       <node id="7854334384284977606" at="76,93,77,65" concept="6" />
       <node id="7854334384284977606" at="77,65,78,63" concept="6" />
       <node id="7854334384284977606" at="78,63,79,337" concept="3" />
       <node id="2501421320959199496" at="81,79,82,59" concept="6" />
       <node id="2501421320959199496" at="82,59,83,63" concept="6" />
-      <node id="2501421320959199496" at="83,63,84,1166" concept="3" />
+      <node id="2501421320959199496" at="83,63,84,1144" concept="3" />
       <node id="1217271586585" at="25,0,27,0" concept="8" trace="ourParamCache" />
       <node id="1217271586585" at="27,0,29,0" concept="4" trace="myWithCommandRule" />
       <node id="1217271586585" at="30,0,33,0" concept="2" trace="UnexpectedReturnInAnonymousClass_Test#()V" />
@@ -877,7 +877,7 @@
         <var name="nodeToCheck" id="6923385624929494145" />
         <var name="operation" id="6923385624929494145" />
       </scope>
-      <scope id="7854334384284976424" at="71,80,74,265">
+      <scope id="7854334384284976424" at="71,80,74,243">
         <var name="nodeToCheck" id="7854334384284976424" />
         <var name="operation" id="7854334384284976424" />
       </scope>
@@ -885,7 +885,7 @@
         <var name="nodeToCheck" id="7854334384284977606" />
         <var name="operation" id="7854334384284977606" />
       </scope>
-      <scope id="2501421320959199496" at="81,79,84,1166">
+      <scope id="2501421320959199496" at="81,79,84,1144">
         <var name="nodeToCheck" id="2501421320959199496" />
         <var name="operation" id="2501421320959199496" />
       </scope>

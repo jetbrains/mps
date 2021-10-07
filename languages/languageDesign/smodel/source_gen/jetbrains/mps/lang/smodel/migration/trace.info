@@ -7797,6 +7797,85 @@
       <unit id="7537235726516919699" at="33,0,157,0" name="jetbrains.mps.lang.smodel.migration.MigrateCastExpression" />
     </file>
   </root>
+  <root nodeRef="r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)/756663934398885081">
+    <file name="ExplicitNodePresentation.java">
+      <node id="756663934398885081" at="22,0,23,0" concept="5" trace="description" />
+      <node id="756663934398885081" at="23,30,24,23" concept="10" />
+      <node id="756663934398885081" at="27,33,28,16" concept="10" />
+      <node id="756663934398885081" at="30,41,31,17" concept="4" />
+      <node id="756663934398885081" at="31,17,32,16" concept="10" />
+      <node id="756663934398888037" at="35,5,36,64" concept="9" />
+      <node id="756663934398888037" at="36,64,37,90" concept="9" />
+      <node id="756663934398888037" at="39,52,40,36" concept="10" />
+      <node id="756663934398920787" at="43,156,44,43" concept="11" />
+      <node id="756663934398928161" at="45,287,46,84" concept="9" />
+      <node id="756663934398940868" at="46,84,47,142" concept="9" />
+      <node id="756663934398929896" at="47,142,48,70" concept="4" />
+      <node id="756663934398946571" at="48,70,49,104" concept="4" />
+      <node id="756663934398956200" at="51,287,52,83" concept="9" />
+      <node id="756663934398964346" at="52,83,53,141" concept="9" />
+      <node id="756663934398957820" at="53,141,54,70" concept="4" />
+      <node id="756663934398971866" at="54,70,55,104" concept="4" />
+      <node id="756663934398885081" at="60,50,61,147" concept="10" />
+      <node id="756663934398885081" at="65,0,66,0" concept="13" trace="rightExpression$nvX" />
+      <node id="756663934398885081" at="66,0,67,0" concept="13" trace="leftExpression$sEj" />
+      <node id="756663934398885081" at="67,0,68,0" concept="13" trace="operand$w6IR" />
+      <node id="756663934398885081" at="68,0,69,0" concept="13" trace="operation$gs9E" />
+      <node id="756663934398885081" at="72,0,73,0" concept="13" trace="SNodeType$hR" />
+      <node id="756663934398885081" at="73,0,74,0" concept="13" trace="StringLiteral$xu" />
+      <node id="756663934398885081" at="74,0,75,0" concept="13" trace="DotExpression$yW" />
+      <node id="756663934398885081" at="75,0,76,0" concept="13" trace="Node_PresentationOperation$DL" />
+      <node id="756663934398885081" at="76,0,77,0" concept="13" trace="PlusExpression$k0" />
+      <node id="756663934398885081" at="23,0,26,0" concept="8" trace="getCaption#()Ljava/lang/String;" />
+      <node id="756663934398888037" at="39,0,42,0" concept="8" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="756663934398885081" at="60,0,63,0" concept="8" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="756663934398885081" at="26,0,30,0" concept="8" trace="isRerunnable#()Z" />
+      <node id="756663934398885081" at="30,0,34,0" concept="8" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="756663934398888037" at="37,90,42,8" concept="9" />
+      <node id="756663934398892520" at="44,43,50,9" concept="7" />
+      <node id="756663934398913854" at="50,9,56,9" concept="7" />
+      <node id="756663934398891300" at="42,8,57,7" concept="6" />
+      <node id="756663934398888037" at="34,42,58,5" concept="0" />
+      <node id="756663934398885081" at="34,0,60,0" concept="8" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="756663934398885081" at="23,30,24,23" />
+      <scope id="756663934398885081" at="27,33,28,16" />
+      <scope id="756663934398888037" at="39,52,40,36" />
+      <scope id="756663934398885081" at="60,50,61,147" />
+      <scope id="756663934398885081" at="30,41,32,16" />
+      <scope id="756663934398885081" at="23,0,26,0" />
+      <scope id="756663934398888037" at="39,0,42,0" />
+      <scope id="756663934398885081" at="60,0,63,0" />
+      <scope id="756663934398885081" at="26,0,30,0" />
+      <scope id="756663934398885081" at="30,0,34,0">
+        <var name="m" id="756663934398885081" />
+      </scope>
+      <scope id="756663934398892522" at="45,287,49,104">
+        <var name="de" id="756663934398940869" />
+        <var name="nodeExpr" id="756663934398928162" />
+      </scope>
+      <scope id="756663934398913870" at="51,287,55,104">
+        <var name="de" id="756663934398964347" />
+        <var name="nodeExpr" id="756663934398956201" />
+      </scope>
+      <scope id="756663934398891306" at="43,156,56,9" />
+      <scope id="756663934398891300" at="42,8,57,7">
+        <var name="pe" id="756663934398891302" />
+      </scope>
+      <scope id="756663934398888037" at="35,5,57,7">
+        <var name="context" id="756663934398888037" />
+        <var name="scope_skz2ag_a0e" id="756663934398888037" />
+        <var name="scope_skz2ag_a0e_0" id="756663934398888037" />
+      </scope>
+      <scope id="756663934398885081" at="34,42,58,5" />
+      <scope id="756663934398885081" at="34,0,60,0">
+        <var name="m" id="756663934398885081" />
+      </scope>
+      <unit id="756663934398888037" at="38,42,42,7" name="jetbrains.mps.lang.smodel.migration.ExplicitNodePresentation$1" />
+      <unit id="756663934398885081" at="64,0,70,0" name="jetbrains.mps.lang.smodel.migration.ExplicitNodePresentation$LINKS" />
+      <unit id="756663934398885081" at="71,0,78,0" name="jetbrains.mps.lang.smodel.migration.ExplicitNodePresentation$CONCEPTS" />
+      <unit id="756663934398885081" at="21,0,79,0" name="jetbrains.mps.lang.smodel.migration.ExplicitNodePresentation" />
+    </file>
+  </root>
   <root nodeRef="r:18ddb7a1-bae8-47e8-a653-f672ff99522d(jetbrains.mps.lang.smodel.migration)/8460355373818949613">
     <file name="MigrateEnumPropertyUsages.java">
       <node id="8460355373818949613" at="29,0,30,0" concept="5" trace="description" />

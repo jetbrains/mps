@@ -2244,7 +2244,7 @@
                                     <ref role="39XzEq" to="tpeh:6O0cS8DYTYB" />
                                   </node>
                                   <node concept="1DMPye" id="6O0cS8EskkE" role="1DMPz9">
-                                    <property role="1DMPyf" value="Error: (instance of IntegerType) is expected to be returned from the method" />
+                                    <property role="1DMPyf" value="Error: int is expected to be returned from the method" />
                                   </node>
                                 </node>
                               </node>
