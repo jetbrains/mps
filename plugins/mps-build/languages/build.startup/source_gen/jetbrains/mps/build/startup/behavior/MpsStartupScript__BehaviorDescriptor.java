@@ -93,13 +93,13 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
     });
   }
   /*package*/ static Iterable<SNode> getCommentedVmOptionsLines_id31jVCtHhzv9(@NotNull SNode __thisNode__, boolean is64bit) {
-    return Sequence.fromIterable(Sequence.fromArray(MpsStartupScript__BehaviorDescriptor.getCommentedVmoptions_id31jVCtHh$86.invokeSpecial(__thisNode__, ((boolean) is64bit)).split("\\s"))).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return (it != null && it.length() > 0);
+    return Sequence.fromIterable(MpsStartupScript__BehaviorDescriptor.getCommentedOptions_id54lRqzvvwVL.invokeSpecial(__thisNode__, ((boolean) is64bit))).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return isNotEmptyString(SPropertyOperations.getString(it, PROPS.options$D2Jv));
       }
-    }).select(new ISelector<String, SNode>() {
-      public SNode select(String it) {
-        return createTextLine_p7akvg_a0a0a0a0f(it);
+    }).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return createTextLine_p7akvg_a0a0a0a0f("#" + SPropertyOperations.getString(it, PROPS.options$D2Jv));
       }
     });
   }
@@ -206,6 +206,9 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
   }
   public static String trim_9sggks_a0a0r(String str) {
     return (str == null ? null : str.trim());
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
