@@ -403,7 +403,6 @@
         <child id="8795525031433238889" name="textColor" index="HFo83" />
         <child id="781140262677914381" name="company" index="IuKBz" />
         <child id="781140262677906594" name="whatsnew" index="IuMTc" />
-        <child id="781140262677761833" name="plugins" index="IvIn7" />
         <child id="8877724874822185910" name="feedbackUrl" index="2Mmf0a" />
         <child id="3497141547781549827" name="codename" index="2OjNyQ" />
         <child id="1462305029084462472" name="buildDate" index="R$TG_" />
@@ -28040,11 +28039,6 @@
           <node concept="3Mxwew" id="57dcfYPs$y0" role="3MwsjC">
             <property role="3MwjfP" value="https://www.jetbrains.com/?fromIDE" />
           </node>
-        </node>
-      </node>
-      <node concept="NbPM2" id="57dcfYPuvRk" role="IvIn7">
-        <node concept="3Mxwew" id="57dcfYPuvRj" role="3MwsjC">
-          <property role="3MwjfP" value="https://plugins.jetbrains.com/" />
         </node>
       </node>
       <node concept="NbPM2" id="57dcfYPuvRo" role="3$Ir1d">

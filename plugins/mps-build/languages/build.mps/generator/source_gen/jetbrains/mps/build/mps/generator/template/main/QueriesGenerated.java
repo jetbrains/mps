@@ -461,7 +461,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return "/" + BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.welcomeLogo$kmjM));
   }
   public static Object propertyMacro_GetValue_8_34(final PropertyMacroContext _context) {
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding"))));
+    if ((SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD) != null) && !(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding")))).isBlank())) {
+      return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding"))));
+    }
+    return _context.getTemplateValue();
   }
   public static Object propertyMacro_GetValue_8_35(final PropertyMacroContext _context) {
     return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.updateWebsite$3wnJ), LINKS.checkUrl$L5Io), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding"))));
@@ -936,54 +939,51 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.edition$LSAW), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding")))));
   }
   public static boolean ifMacro_Condition_8_23(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD) != null) && !(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding")))).isBlank());
-  }
-  public static boolean ifMacro_Condition_8_24(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.updateWebsite$3wnJ) != null);
   }
-  public static boolean ifMacro_Condition_8_25(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_24(final IfMacroContext _context) {
     return isNotEmptyString(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.help$pHDr), LINKS.file$7xzx), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding")))));
   }
-  public static boolean ifMacro_Condition_8_26(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_25(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.help$pHDr) != null);
   }
-  public static boolean ifMacro_Condition_8_27(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_26(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.documentation$2S7O) != null);
   }
-  public static boolean ifMacro_Condition_8_28(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_27(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.support$ZnCU) != null);
   }
-  public static boolean ifMacro_Condition_8_29(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_28(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.feedbackUrl$D0L$) != null);
   }
-  public static boolean ifMacro_Condition_8_30(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_29(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.whatsnew$KhWO) != null);
   }
-  public static boolean ifMacro_Condition_8_31(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_30(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.keymap$i0Aq) != null);
   }
-  public static boolean ifMacro_Condition_8_32(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_31(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.stats$rW6s) != null);
   }
-  public static boolean ifMacro_Condition_8_33(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_32(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.icon16$9V9L) != null);
   }
-  public static boolean ifMacro_Condition_8_34(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_33(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.icon32$9UUK) != null);
   }
-  public static boolean ifMacro_Condition_8_35(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_34(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.icon128$$$91) != null);
   }
-  public static boolean ifMacro_Condition_8_36(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_35(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.svg$AjjI) != null);
   }
-  public static boolean ifMacro_Condition_8_37(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_36(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.svg_small$ASoc) != null);
   }
-  public static boolean ifMacro_Condition_8_38(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_37(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.icon$bVaC) != null);
   }
-  public static boolean ifMacro_Condition_8_39(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_8_38(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.aboutScreen$4jLX) != null);
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
@@ -1447,7 +1447,7 @@ public class QueriesGenerated extends QueryProviderBase {
     //    which is to be reduced to path value later.
     return Sequence.fromIterable(Sequence.fromArray(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPluginPaths(_context))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0e0sm(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0e0rm(it);
       }
     });
   }
@@ -1495,7 +1495,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_10_5(final SourceSubstituteMacroNodesContext _context) {
     return Sequence.fromIterable(Sequence.fromArray(((String[]) _context.getVariable("var:requiredPlugins")))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0a0xm(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0a0wm(it);
       }
     });
   }
@@ -1860,7 +1860,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a473(it._1(), it._0());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a373(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -2375,7 +2375,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("4783730913495463581", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), null));
     pvqMethods.put("4783730913495430922", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "mps"));
     pvqMethods.put("772379520212879620", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "/logo.png"));
-    pvqMethods.put("781140262678149977", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "http://plugins"));
+    pvqMethods.put("781140262678149977", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "https://plugins.jetbrains.com/"));
     pvqMethods.put("1462305029084461923", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "http://check"));
     pvqMethods.put("1462305029084461948", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "http://update"));
     pvqMethods.put("1462305029084452899", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "help.jar"));
@@ -2801,7 +2801,6 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("1938598294982493000", new IfMC(i++));
     imcMethods.put("781140262677966745", new IfMC(i++));
     imcMethods.put("4783730913495457059", new IfMC(i++));
-    imcMethods.put("781140262678141910", new IfMC(i++));
     imcMethods.put("1462305029084461972", new IfMC(i++));
     imcMethods.put("5053813598678952392", new IfMC(i++));
     imcMethods.put("1462305029084452922", new IfMC(i++));
@@ -2966,42 +2965,40 @@ public class QueriesGenerated extends QueryProviderBase {
         case 56:
           return QueriesGenerated.ifMacro_Condition_8_38(ctx);
         case 57:
-          return QueriesGenerated.ifMacro_Condition_8_39(ctx);
-        case 58:
           return QueriesGenerated.ifMacro_Condition_9_0(ctx);
-        case 59:
+        case 58:
           return QueriesGenerated.ifMacro_Condition_9_1(ctx);
-        case 60:
+        case 59:
           return QueriesGenerated.ifMacro_Condition_9_2(ctx);
-        case 61:
+        case 60:
           return QueriesGenerated.ifMacro_Condition_9_3(ctx);
-        case 62:
+        case 61:
           return QueriesGenerated.ifMacro_Condition_10_0(ctx);
-        case 63:
+        case 62:
           return QueriesGenerated.ifMacro_Condition_10_1(ctx);
-        case 64:
+        case 63:
           return QueriesGenerated.ifMacro_Condition_10_2(ctx);
-        case 65:
+        case 64:
           return QueriesGenerated.ifMacro_Condition_10_3(ctx);
-        case 66:
+        case 65:
           return QueriesGenerated.ifMacro_Condition_10_4(ctx);
-        case 67:
+        case 66:
           return QueriesGenerated.ifMacro_Condition_10_5(ctx);
-        case 68:
+        case 67:
           return QueriesGenerated.ifMacro_Condition_10_6(ctx);
-        case 69:
+        case 68:
           return QueriesGenerated.ifMacro_Condition_10_7(ctx);
-        case 70:
+        case 69:
           return QueriesGenerated.ifMacro_Condition_10_8(ctx);
-        case 71:
+        case 70:
           return QueriesGenerated.ifMacro_Condition_10_9(ctx);
-        case 72:
+        case 71:
           return QueriesGenerated.ifMacro_Condition_10_10(ctx);
-        case 73:
+        case 72:
           return QueriesGenerated.ifMacro_Condition_17_0(ctx);
-        case 74:
+        case 73:
           return QueriesGenerated.ifMacro_Condition_17_1(ctx);
-        case 75:
+        case 74:
           return QueriesGenerated.ifMacro_Condition_19_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -3333,17 +3330,17 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0sm(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0rm(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0xm(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0wm(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a473(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a373(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
