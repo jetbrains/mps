@@ -696,10 +696,21 @@ public class SNodeOperations {
     }
   }
 
+  public static String present(SNode node) {
+    // Important: we take SNode here, not node<> as there are issues with library classes and
+    //    uses of them from a language that have respective argument types already reduced.
+    //   But for implementation, we shall invoke BEHAVIOR getPresentation(), not the one
+    //   available from SNode API
+    // Indeed clients can invoke getPresentation() behavior directly, this RT methods just
+    // gives extra layer to control for node<>.presentation operation, in case we need one later.
+    return ((String) BHReflection.invoke0(((SNode) node), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
     /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 
   private static final class LINKS {

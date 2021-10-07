@@ -9672,5 +9672,26 @@
       </node>
     </node>
   </node>
+  <node concept="13h7C7" id="7eq243tTA1I">
+    <property role="3GE5qa" value="operation.node" />
+    <ref role="13h7C2" to="tp25:7eq243tT_Ux" resolve="Node_PresentationOperation" />
+    <node concept="13hLZK" id="7eq243tTA1J" role="13h7CW">
+      <node concept="3clFbS" id="7eq243tTA1K" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="7eq243tTA37" role="13h7CS">
+      <property role="2Ki8OM" value="true" />
+      <property role="TrG5h" value="applicableToNode" />
+      <ref role="13i0hy" node="1653mnvAgrs" resolve="applicableToNode" />
+      <node concept="3Tm1VV" id="7eq243tTA38" role="1B3o_S" />
+      <node concept="3clFbS" id="7eq243tTA3d" role="3clF47">
+        <node concept="3clFbF" id="7eq243tTAAZ" role="3cqZAp">
+          <node concept="3clFbT" id="7eq243tTAAY" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="7eq243tTA3e" role="3clF45" />
+    </node>
+  </node>
 </model>
 

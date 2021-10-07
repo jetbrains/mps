@@ -16602,5 +16602,31 @@
       </node>
     </node>
   </node>
+  <node concept="1YbPZF" id="7eq243tTAKX">
+    <property role="TrG5h" value="typeof_Node_PresentationOperation" />
+    <property role="3GE5qa" value="operation.node" />
+    <node concept="3clFbS" id="7eq243tTAKY" role="18ibNy">
+      <node concept="1Z5TYs" id="7eq243tTC76" role="3cqZAp">
+        <node concept="mw_s8" id="7eq243tTCiu" role="1ZfhKB">
+          <node concept="2pJPEk" id="7eq243tTCiq" role="mwGJk">
+            <node concept="2pJPED" id="7eq243tTCis" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:hP7QB7G" resolve="StringType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="7eq243tTC79" role="1ZfhK$">
+          <node concept="1Z2H0r" id="7eq243tTBUw" role="mwGJk">
+            <node concept="1YBJjd" id="7eq243tTBWm" role="1Z2MuG">
+              <ref role="1YBMHb" node="7eq243tTAL0" resolve="op" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="7eq243tTAL0" role="1YuTPh">
+      <property role="TrG5h" value="op" />
+      <ref role="1YaFvo" to="tp25:7eq243tT_Ux" resolve="Node_PresentationOperation" />
+    </node>
+  </node>
 </model>
 
